@@ -2103,7 +2103,13 @@ native 指定 Hom augmentation に回収し、弱同値性を追加入力なし�
 ホモトピー型の同型で、同じ全代数の reduced hammock への因子化を保持する。
 `cAlgMappingSpaceComparisonIso/cAlgMappingSpaceComparisonIso_unit` は既存 CAlg_R の実際の
 Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の DK 比較の回収。
-全自然性・元の代数射の類との整合、∞ 局所化の普遍性は後続。
+`freeResolutionMap_object` は元の選択対象の係数自然性。
+`FixedObjectDiagram.categoryMap/graphWordMap/hammockMap` は同じ全語の係数自然変換。
+`freeHammockWordMap/freeHammockMap/freeHammockDiagonalMap` は元の自由解像への代入。
+`freeHammockDiagonalMap_augmentation/reduction/comparison` は元の左右射の係数正方形。
+`dkHammockComparisonIso_coefficient` は anodyne 局所化内の比較同型の全相対関手への自然性。
+`cofibrantAlgebraDKHammockComparisonIso_factorization` は同じ元の代数の比較との照合。
+元の代数射に沿う両端点の高次自然性・類との整合、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。

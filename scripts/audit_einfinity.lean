@@ -7405,6 +7405,34 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak,
       `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.reducedMap_weak]
 
+@[noinline] private def e2RequiredBatch119 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.categoryMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.categoryWordMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.graphWordMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.hammockMap,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.hammockMap_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMap_object,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockWordMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockFixedFunctor_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_reduction,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockValue_map,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGraphMap_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockMap_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalMap_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_coefficient,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso_factorization]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7436,7 +7464,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -17873,3 +17901,57 @@ example {P Q R : SSet.{e2ComplexLimitUniverse}} (f : P ⟶ Q) (g : Q ⟶ R)
     (hfg : IsWeakHomotopyEquivalence (f ≫ g)) (hQ : IsWeaklyContractible Q) :
     IsWeaklyContractible P := contractible_of_weak_factor f g hfg hQ
 end e2DKMappingFixtures
+
+-- 元の全語の係数写像と左右の比較正方形を実際の任意の相対関手で検証する。
+section e2DKCoefficientFixtures
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
+variable {C D : RelativeCategory.{e2ComplexLimitUniverse}} (F : C ⟶ D) (X Y : C.category)
+example (n : SimplexCategoryᵒᵖ) :
+    ((freeResolutionMap F).app n).functor.obj (freeResolutionObject C n X) =
+      freeResolutionObject D n (F.functor.obj X) := freeResolutionMap_object F n X
+
+example (w : Word) :
+    (freeHammockWordMap F X Y).app w ≫
+        (pointwiseCocone
+          (freeHammockWordDiagram D (F.functor.obj X) (F.functor.obj Y))).ι.app w =
+      (pointwiseCocone (freeHammockWordDiagram C X Y)).ι.app w ≫ freeHammockMap F X Y :=
+  freeHammockMap_inclusion F X Y w
+
+example : freeHammockDiagonalMap F X Y ≫
+        freeHammockDiagonalAugmentation D (F.functor.obj X) (F.functor.obj Y) =
+      freeHammockDiagonalAugmentation C X Y ≫ Relative.colimitMap F X Y :=
+  freeHammockDiagonalMap_augmentation F X Y
+
+example : freeHammockDiagonalMap F X Y ≫
+        freeHammockDiagonalReduction D (F.functor.obj X) (F.functor.obj Y) =
+      freeHammockDiagonalReduction C X Y ≫ Relative.reducedMap F X Y :=
+  freeHammockDiagonalMap_reduction F X Y
+
+example (w : Word) (n : SimplexCategoryᵒᵖ) :
+    ((freeHammockWordMap F X Y).app w).app n ≫
+        (freeHammockLocalizationObjects D).graphValue n w (F.functor.obj X) (F.functor.obj Y) =
+      (freeHammockLocalizationObjects C).graphValue n w X Y ≫
+        (Functor.const SimplexCategoryᵒᵖ).map ((localizationHomMap F X Y).app n) :=
+  freeHammockGraphMap_comparison F X Y w n
+
+example : freeHammockDiagonalMap F X Y ≫
+        freeHammockDiagonalComparison D (F.functor.obj X) (F.functor.obj Y) =
+      freeHammockDiagonalComparison C X Y ≫ localizationHomMap F X Y :=
+  freeHammockDiagonalMap_comparison F X Y
+
+example : AnodyneHomotopy.anodyneQ.map (localizationHomMap F X Y) ≫
+        (dkHammockComparisonIso D (F.functor.obj X) (F.functor.obj Y)).hom =
+      (dkHammockComparisonIso C X Y).hom ≫
+        AnodyneHomotopy.anodyneQ.map (Relative.reducedMap F X Y) :=
+  dkHammockComparisonIso_coefficient F X Y
+
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (cofibrantAlgebraRelativeCategory A).category) :
+    (cofibrantAlgebraDKHammockComparisonIso A X Y).hom =
+      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
+        AnodyneHomotopy.anodyneQ.map (cofibrantAlgebraHammockInclusionMap A X Y) :=
+  cofibrantAlgebraDKHammockComparisonIso_factorization A X Y
+end e2DKCoefficientFixtures
