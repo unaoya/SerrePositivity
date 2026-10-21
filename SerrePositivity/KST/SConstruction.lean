@@ -1901,4 +1901,10 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveNativeNaturali
 public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPair
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveTensor
 public import SerrePositivity.KST.SConstruction.DGNerveTensorNaturality
+public import SerrePositivity.KST.SConstruction.ComonoidFunctorPairLaws
+public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPairCoherence
+public import SerrePositivity.KST.SConstruction.DGNerveTensorAssociativity
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNerveUnits
+public import SerrePositivity.KST.SConstruction.DGNerveTensorUnits
+public import SerrePositivity.KST.SConstruction.DGNerveTensorSimplex
 /-! # ∞-S• 構成と連結 K 理論 -/

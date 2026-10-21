@@ -23193,3 +23193,84 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgNerveTensor_naturality
 #print axioms SerrePositivity.KST.SConstruction.dgNerveTensor_naturality
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_associativity
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_associativity
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_unit
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_unit
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_right_unit
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_right_unit
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_associativity
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_left_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_left_unit
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_right_unit
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_right_unit
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveTensor_associativity
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensor_associativity
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitLeft
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitLeft
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitRight
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitRight
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitLeft_unitor
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitLeft_unitor
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitRight_unitor
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNerveUnitRight_unitor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitLeft
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitLeft
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitRight
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitRight
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitLeft_app
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitLeft_app
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitRight_app
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitRight_app
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitLeft_unitor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitLeft_unitor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitRight_unitor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitRight_unitor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_pullback
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_pullback
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_app
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_app
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitSimplex
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitSimplex
+
+#check @SerrePositivity.KST.SConstruction.dgNerveUnitSimplex_pullback
+#print axioms SerrePositivity.KST.SConstruction.dgNerveUnitSimplex_pullback
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_unit_left
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_unit_left
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_unit_right
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_unit_right
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_left_unitor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_left_unitor
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_right_unitor
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_right_unitor
