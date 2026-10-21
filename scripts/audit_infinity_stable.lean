@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionSemifree
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionHom
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionRawFactorHom
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionHom
+import SerrePositivity.InfinityCategories.Derived.FunctorHomChainTransport
 import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom
 import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationInclusion
@@ -4455,6 +4461,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionSemifree,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionHom,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionRawFactorHom,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompositionHom,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomChainTransport,
+
     `SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom,
     `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationInclusion,
