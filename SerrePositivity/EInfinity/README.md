@@ -1825,6 +1825,20 @@ inclusion_colimitMap_isWeakHomotopyEquivalence` は同じ元の個々の比較�
 finiteHull_subset_colimitMap_isWeakHomotopyEquivalence` は証明済みの元の被覆へ代入する。
 根だけ・空集合の包・任意可換環の実際の全自由次数も検証。
 全被覆への有限支持と filtered 余極限による移送・命題2.2の両弱比較は未完成。
+`FiniteQuiver.inclusion_star_injective/inclusion_pathStar_injective/pathInclusion_faithful`
+は元の有限頂点の包含による生成辺と全射列の忠実性。
+`liftPath/liftPath_projection/liftArrow/liftArrow_projection/liftArrow_unique` は
+内部の全頂点を含む元の射列の一意な持ち上げ。
+`diagramPathSupport/diagramPathSupport_arrow/diagramPathSupport_vertex` と
+`FiniteQuiver.liftFunctor/liftFunctor_projection` は元の有限図式の同じ全射列を回収する。
+`zigzagPathSupport/gridPathSupport` は元の全横列・全縦射の内部頂点を集める。
+`FiniteGrid.row/map/functor/row_projection/map_projection/functor_projection` は
+同じ有限支持内の全 grid を元の同じ関手へ厳密に回収する。
+`QuiverTree.endpointHull/endpointHull_closed/endpointHull_mono` は両端を含む根に閉じた有限包。
+`FiniteGrid.hull/rootedFunctor/rootedFunctor_projection/rootedHammock_isWeaklyContractible`
+は元の全有限 grid をそのような有限包へ因子化し、同じ包の可縮性へ接続する。
+空語・元の有限図式・任意可換環の実際の全自由次数と全 hammock 次数でも検証。
+有限部分集合の厳密な全図式・全語との整合・全被覆への filtered 余極限は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

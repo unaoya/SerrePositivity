@@ -1489,3 +1489,15 @@ public import SerrePositivity.EInfinity.Hammock.QuiverTreeRootContractible
 public import SerrePositivity.EInfinity.Hammock.SubsingletonCategoryContractible
 public import SerrePositivity.EInfinity.Hammock.SubsingletonCategoryRows
 public import SerrePositivity.EInfinity.Hammock.WeakTwoOfSix
+public import SerrePositivity.EInfinity.Hammock.FiniteDiagramPathSupport
+public import SerrePositivity.EInfinity.Hammock.FiniteGridFunctor
+public import SerrePositivity.EInfinity.Hammock.FiniteGridMaps
+public import SerrePositivity.EInfinity.Hammock.FiniteGridRootHull
+public import SerrePositivity.EInfinity.Hammock.FiniteGridRows
+public import SerrePositivity.EInfinity.Hammock.FiniteQuiverArrowLift
+public import SerrePositivity.EInfinity.Hammock.FiniteQuiverFaithful
+public import SerrePositivity.EInfinity.Hammock.FiniteQuiverFunctorLift
+public import SerrePositivity.EInfinity.Hammock.FiniteQuiverPathLift
+public import SerrePositivity.EInfinity.Hammock.FiniteQuiverPathRelative
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeEndpointHull
+public import SerrePositivity.EInfinity.Hammock.ZigzagPathSupport
