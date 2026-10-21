@@ -11665,3 +11665,48 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localEdgeFamily_relativeHom_trivial
 #print axioms localEdgeFamily_relativeHom_trivial
+
+#check @tensorFamilyCurry
+#print axioms tensorFamilyCurry
+
+#check @tensorFamilyUncurry
+#print axioms tensorFamilyUncurry
+
+#check @tensorFamilyCurry_uncurry
+#print axioms tensorFamilyCurry_uncurry
+
+#check @tensorFamilyUncurry_curry
+#print axioms tensorFamilyUncurry_curry
+
+#check @tensorFamilyCurry_injective
+#print axioms tensorFamilyCurry_injective
+
+#check @tensorFamilyCurry_post
+#print axioms tensorFamilyCurry_post
+
+#check @tensorFamilyCurry_source
+#print axioms tensorFamilyCurry_source
+
+#check @tensorFamilyCurry_parameter
+#print axioms tensorFamilyCurry_parameter
+
+#check @tensorFamilyCurry_constant
+#print axioms tensorFamilyCurry_constant
+
+#check @relativeFunctorPre_tensor_trivial_of_vertexFibers
+#print axioms relativeFunctorPre_tensor_trivial_of_vertexFibers
+
+#check @curry_vertex_prismEvaluation
+#print axioms curry_vertex_prismEvaluation
+
+#check @localPrism_tensorSource_sections_trivial
+#print axioms localPrism_tensorSource_sections_trivial
+
+#check @prismSource_tensor_shape
+#print axioms prismSource_tensor_shape
+
+#check @localPrism_source_sections_trivial
+#print axioms localPrism_source_sections_trivial
+
+#check @localPrism_source_cocones_trivial
+#print axioms localPrism_source_cocones_trivial
