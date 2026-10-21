@@ -18489,3 +18489,64 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeConnectionDeletionPath_exists_expression
 #check @SerrePositivity.KST.SConstruction.cubeConnectionDeletionPath_normalization
 #print axioms SerrePositivity.KST.SConstruction.cubeConnectionDeletionPath_normalization
+
+#check @SerrePositivity.KST.SConstruction.CubeFaceConnectionResult
+#print axioms SerrePositivity.KST.SConstruction.CubeFaceConnectionResult
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultVertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultPoint
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultPoint
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultKeep
+#check @SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_zero
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_zero
+#check @SerrePositivity.KST.SConstruction.cubeVertexConnection_cons
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexConnection_cons
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultPoint_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultPoint_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultKeep_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultKeep_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalConnectZero
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalConnectZero
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalConnectZero_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalConnectZero_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalConnect
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalConnect
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormalConnect_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormalConnect_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_connection_constants
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_connection_constants
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_connection_right_one_prefix
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_connection_right_one_prefix
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_connection_left_zero_prefix
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_connection_left_zero_prefix
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_connection_left_one_prefix
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_connection_left_one_prefix
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult_point
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult_point
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult_keep
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResult_keep
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceNormal_connectZero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceNormal_connectZero
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceNormal_connect
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceNormal_connect
+#check @SerrePositivity.KST.SConstruction.CubeThreeNormal
+#print axioms SerrePositivity.KST.SConstruction.CubeThreeNormal
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalVertex
+#check @SerrePositivity.KST.SConstruction.cubeDeletionNormalId_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeDeletionNormalId_vertex
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultThree
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultThree
+#check @SerrePositivity.KST.SConstruction.cubeFaceConnectionResultThree_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceConnectionResultThree_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal
+#check @SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResultThree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFaceConnectionResultThree
+#check @SerrePositivity.KST.SConstruction.cubeFaceNormal_connection_three
+#print axioms SerrePositivity.KST.SConstruction.cubeFaceNormal_connection_three
+#check @SerrePositivity.KST.SConstruction.cubeFacePath_connection_normalization
+#print axioms SerrePositivity.KST.SConstruction.cubeFacePath_connection_normalization
