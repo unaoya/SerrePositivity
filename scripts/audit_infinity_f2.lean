@@ -2675,3 +2675,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitSourceValueMap_eq
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalValueIso
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyEvaluation
+#check @SerrePositivity.InfinityCategories.F2.coherentRightPointCoefficient_family
+#check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyTransportIso
+#check @SerrePositivity.InfinityCategories.F2.functorPairRight
+#check @SerrePositivity.InfinityCategories.F2.functorPairRight_vertex
+#check @SerrePositivity.InfinityCategories.F2.functorIsoLiftRight
+#check @SerrePositivity.InfinityCategories.F2.pointedValueFamilyTransportIso
