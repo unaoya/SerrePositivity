@@ -20,10 +20,6 @@ open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Homot
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 
-lemma homPre_arrow_congr {A B X : SSet.{u}} (i : A ⟶ B)
-    {F G F' G' : B ⟶ X} {α : FunctorHom F G} {β : FunctorHom F' G'}
-    (h : Arrow.mk α = Arrow.mk β) : Arrow.mk (homPre i α) = Arrow.mk (homPre i β) :=
-  congrArg (hoFunctor.map ((pre i).app X)).toFunctor.mapArrow.obj h
 
 namespace HomotopyFiberConeComparison
 

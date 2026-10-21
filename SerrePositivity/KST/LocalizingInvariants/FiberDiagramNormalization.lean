@@ -31,9 +31,9 @@ def normalized (D : FiberDiagram.{u}) : FiberDiagram.{u} where
 
 def normalizationDiagramIso (D : FiberDiagram.{u}) :
     FunctorIso D.triangle.square (normalized D).triangle.square :=
-  Classical.choice (FiberComparison.nonempty_functorIso
+  (FiberComparison.relativeFunctorIso
     (NativeFiber.asFiberSquare D.triangle D.isFiber)
-    (FiberModel.homotopyFiberSquare (NativeFiber.rightMap D.triangle)))
+    (FiberModel.homotopyFiberSquare (NativeFiber.rightMap D.triangle))).iso
 
 def normalization (D : FiberDiagram.{u}) : D ≅ normalized D where
   hom := (normalizationDiagramIso D).hom

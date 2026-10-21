@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareComparison
+public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRelativeComparison
 public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleHoMap
 
 /-!
@@ -36,6 +37,6 @@ def fiberShortComplexIso {X : SSet.{u}} [Quasicategory X]
     [HasZeroMorphisms (hoFunctor.obj X)] {x y : X _⦋0⦌}
     {f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y} (s t : FiberSquare f) :
     s.toZeroTriangle.hoShortComplex ≅ t.toZeroTriangle.hoShortComplex :=
-  shortComplexIso s.toZeroTriangle t.toZeroTriangle (Classical.choice (nonempty_functorIso s t))
+  shortComplexIso s.toZeroTriangle t.toZeroTriangle (relativeFunctorIso s t).iso
 
 end SerrePositivity.KST.LocalizingInvariants.FiberComparison

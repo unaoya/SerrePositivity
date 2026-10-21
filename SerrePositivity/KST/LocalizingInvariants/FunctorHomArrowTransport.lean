@@ -11,7 +11,8 @@ public import Mathlib.CategoryTheory.Comma.Arrow
 
 @[expose] public section
 universe u v
-open CategoryTheory
+open CategoryTheory MonoidalClosed SSet
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {B : Type u} [Category.{v} B]
 
@@ -49,5 +50,10 @@ lemma hom_eq_of_arrow_mk_eq {a b : B} {f g : a ⟶ b}
     (h : Arrow.mk f = Arrow.mk g) : f = g := by
   obtain ⟨_, _, he⟩ := (Arrow.mk_eq_mk_iff _ _).mp h
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using he
+
+lemma homPre_arrow_congr {A B X : SSet.{u}} (i : A ⟶ B)
+    {F G F' G' : B ⟶ X} {α : FunctorHom F G} {β : FunctorHom F' G'}
+    (h : Arrow.mk α = Arrow.mk β) : Arrow.mk (homPre i α) = Arrow.mk (homPre i β) :=
+  congrArg (hoFunctor.map ((pre i).app X)).toFunctor.mapArrow.obj h
 
 end SerrePositivity.KST.LocalizingInvariants
