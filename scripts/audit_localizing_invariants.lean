@@ -218,7 +218,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation,
     `SerrePositivity.KST.LocalizingInvariants.FixedFractionPinchedEvaluation,
     `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion,
-    `SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison]
+    `SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.TriangleThirdEdgeBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -173,4 +173,14 @@ public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion
 
 public import SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+
+public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+
+public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles
+
+public import SerrePositivity.KST.LocalizingInvariants.TriangleThirdEdgeBoundary
+
+public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
