@@ -1542,4 +1542,10 @@ public import SerrePositivity.KST.SConstruction.NecklaceInStructuralIso
 public import SerrePositivity.KST.SConstruction.NecklaceInStructuralNaturality
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalIdentity
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalComposeCell
+public import SerrePositivity.KST.SConstruction.CubicalExternalColimits
+public import SerrePositivity.KST.SConstruction.CubicalDayKanComparison
+public import SerrePositivity.KST.SConstruction.CubicalDayColimits
+public import SerrePositivity.KST.SConstruction.CubicalDayBicolimit
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalComposition
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalCompositionNaturality
 /-! # ∞-S• 構成と連結 K 理論 -/
