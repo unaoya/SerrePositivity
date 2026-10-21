@@ -599,7 +599,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroProjection,
     `SerrePositivity.KST.LocalizingInvariants.DGDerivationSection,
     `SerrePositivity.KST.LocalizingInvariants.DGDerivationSectionEquiv,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientMap]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientMap,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTruncationLift,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleAlongMono,
+    `SerrePositivity.KST.LocalizingInvariants.CochainHomShiftedSupport,
+    `SerrePositivity.KST.LocalizingInvariants.CochainActionTruncationDesc,
+    `SerrePositivity.KST.LocalizingInvariants.TensorTripleActionComposition,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleAlongEpi,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestriction,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimodulePostnikov,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerActions,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerActionNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBaseNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
