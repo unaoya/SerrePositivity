@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckHomComponents
 public import SerrePositivity.EInfinity.Hammock.TwoSidedBar
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
@@ -35,7 +36,7 @@ def vertex (i : Fin (n + 1)) : total F G :=
 
 def leftArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
     (e.obj i).left.obj i ⟶ (F.map (e.map h).base.op).toFunctor.obj ((e.obj j).left.obj j) :=
-  (e.obj i).left.map h ≫ eqToHom (congrArg (fun q => q.obj j) (e.map h).left.symm)
+  ContravariantThomason.leftArrow F (FrameHom.Thomason.values G n) e h
 
 def rightArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
     (G.map (e.map h).base).toFunctor.obj ((e.obj i).right.obj i) ⟶ (e.obj j).right.obj j :=
@@ -45,10 +46,8 @@ def arrow {i j : Fin (n + 1)} (h : i ⟶ j) : vertex F G e i ⟶ vertex F G e j 
   homMk (e.map h).base (leftArrow F G e h) (rightArrow F G e h)
 
 lemma leftArrow_id_heq (i : Fin (n + 1)) :
-    HEq (leftArrow F G e (𝟙 i)) (𝟙 ((e.obj i).left.obj i)) := by
-  unfold leftArrow
-  simp only [comp_eqToHom_heq_iff]
-  exact heq_of_eq ((e.obj i).left.map_id i)
+    HEq (leftArrow F G e (𝟙 i)) (𝟙 ((e.obj i).left.obj i)) :=
+  ContravariantThomason.leftArrow_id_heq F (FrameHom.Thomason.values G n) e i
 
 lemma rightArrow_id_heq (i : Fin (n + 1)) :
     HEq (rightArrow F G e (𝟙 i)) (𝟙 ((e.obj i).right.obj i)) := by
@@ -58,16 +57,8 @@ lemma rightArrow_id_heq (i : Fin (n + 1)) :
 
 lemma leftArrow_comp_heq {i j k : Fin (n + 1)} (h : i ⟶ j) (l : j ⟶ k) :
     HEq (leftArrow F G e (h ≫ l))
-      (leftArrow F G e h ≫ (F.map (e.map h).base.op).toFunctor.map (leftArrow F G e l)) := by
-  have hn := eqToHom_naturality
-    (fun q : ComposableArrows (F.obj (op (e.obj i).base)) n => q.map l) (e.map h).left.symm
-  change (e.obj i).left.map l ≫ eqToHom _ =
-    eqToHom _ ≫ (F.map (e.map h).base.op).toFunctor.map ((e.obj j).left.map l) at hn
-  unfold leftArrow
-  simp only [Functor.map_comp, eqToHom_map, Category.assoc]
-  rw [← reassoc_of% hn]
-  simp only [eqToHom_trans, ← Category.assoc, comp_eqToHom_heq_iff, heq_comp_eqToHom_iff]
-  rfl
+      (leftArrow F G e h ≫ (F.map (e.map h).base.op).toFunctor.map (leftArrow F G e l)) :=
+  ContravariantThomason.leftArrow_comp_heq F (FrameHom.Thomason.values G n) e h l
 
 lemma rightArrow_comp_heq {i j k : Fin (n + 1)} (h : i ⟶ j) (l : j ⟶ k) :
     HEq (rightArrow F G e (h ≫ l))

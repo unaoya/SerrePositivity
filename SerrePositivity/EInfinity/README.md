@@ -1929,6 +1929,15 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 は元の底の全射と両ラベルを保持する底の変更と比較射の自然性。
 `map_forgetLeft` は左ラベルを忘れると既存の一方向 Thomason 比較射そのものへ戻ることを証明。
 元の二方向比較射自身の弱同値性（DK9.5）、単体的な底の弱不変性、hammock への代入は後続。
+`TwoSidedThomason.map_isWeakHomotopyEquivalence` は元の二方向比較射自身の弱同値性
+（DK9.5）。`TwoSidedMixedLabel.equivalence` が元の全圏の両ラベルを整理し、
+`TwoSidedWeightedLeftSource.spaceIso/simplex_transport` と
+`TwoSidedWeightedLeft.map_eq_transport/map_isWeakHomotopyEquivalence` が
+既存の一方向比較の反転を元の重み付き左射そのものへ戻す。
+`TwoSidedThomason.weightedLeft_map_factorization` と
+`weightedLeft_diagonalMap_isWeakHomotopyEquivalence` により元の対角射を閉じる。
+任意可換環の実際の cofibrant 代数圏・全自由次数でも検証。
+単体的な底の弱不変性、hammock 左射、既存 Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

@@ -38,7 +38,7 @@ lemma simplex_naturality (α : F ⟶ F') (β : G ⟶ G') {n : ℕ}
   · refine (coefficientMap_leftMap_heq α β (arrow F G e h)).trans ?_
     change HEq ((α.app (op (e.obj i).base)).toFunctor.map (leftArrow F G e h))
       (leftArrow F' G' _ h)
-    unfold leftArrow
+    unfold leftArrow ContravariantThomason.leftArrow
     simp only [Functor.map_comp, eqToHom_map, comp_eqToHom_heq_iff, heq_comp_eqToHom_iff]
     rfl
   · refine (coefficientMap_rightMap_heq α β (arrow F G e h)).trans ?_
