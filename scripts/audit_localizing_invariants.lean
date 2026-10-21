@@ -654,7 +654,20 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapLaws,
     `SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeMapSurjective,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathFunctor,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapSurjective]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapSurjective,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidObjectAlongFamily,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackStructure,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackUniversal,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.CochainPullbackQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathEndpointsQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeZeroLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathGradedZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathGradedPair,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathEndpointsSurjective,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathLift]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
