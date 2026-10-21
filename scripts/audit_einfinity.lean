@@ -5936,6 +5936,38 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.QuiverTree.rootVertices_subset_path,
       `SerrePositivity.EInfinity.Hammock.QuiverTree.rootVertices_subset_of_mem]
 
+@[noinline] private def e2RequiredBatch88 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_generator,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_generator_of_ne,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapsedVertex_incident,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_generator_incident,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveDeformation,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeDeformation,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.deformation,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveDeformation_app,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeDeformation_app,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveComponent,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveComponent_of_ne,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveComponent_leaf,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeComponent,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeComponent_of_ne,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeComponent_leaf,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.positiveComponent_generator,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.negativeComponent_generator,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.incoming_eq_positive,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.no_outgoing_positive,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.outgoing_eq_negative,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.no_incoming_negative,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.parentVertex,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.leafVertex,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapsedVertex,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseFunctor,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapsedVertex_of_ne,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapsedVertex_leaf,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseFunctor_obj,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_obj_of_ne,
+      `SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_obj_leaf]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5967,7 +5999,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -14228,4 +14260,98 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
   let := FreeQuiverCover.quiver (Q := Q) A
   let := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
   exact QuiverTree.LeafDeletion.inclusion_retraction_underlying
+    (FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne)
+
+-- 葉の向きが正のときの全射列での自然性。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S)
+    (g : D.parent ⟶ D.leaf) (hg : D.edge.val = g.toPos) :
+    letI := FiniteQuiver.quiver S
+    ∀ {x y : Paths (FiniteQuiver.Vertex S)} (f : x ⟶ y),
+      D.collapseFunctor.map f ≫ (D.positiveDeformation g hg).app y =
+        (D.positiveDeformation g hg).app x ≫ f := by
+  let := FiniteQuiver.quiver S
+  intro x y f
+  exact (D.positiveDeformation g hg).naturality f
+
+-- 葉の向きが負のときの全射列での自然性。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S)
+    (g : D.leaf ⟶ D.parent) (hg : D.edge.val = g.toNeg) :
+    letI := FiniteQuiver.quiver S
+    ∀ {x y : Paths (FiniteQuiver.Vertex S)} (f : x ⟶ y),
+      f ≫ (D.negativeDeformation g hg).app y =
+        (D.negativeDeformation g hg).app x ≫ D.collapseFunctor.map f := by
+  let := FiniteQuiver.quiver S
+  intro x y f
+  exact (D.negativeDeformation g hg).naturality f
+
+-- 葉における正の成分は同じ元の接続辺を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S)
+    (g : D.parent ⟶ D.leaf) (hg : D.edge.val = g.toPos) :
+    letI := FiniteQuiver.quiver S
+    (D.positiveDeformation g hg).app
+        ((Paths.of (FiniteQuiver.Vertex S)).obj D.leafVertex) =
+      eqToHom (D.collapse_obj_leaf D.leafVertex rfl) ≫
+        (Paths.of (FiniteQuiver.Vertex S)).map
+          (show D.parentVertex ⟶ D.leafVertex from g) ≫ eqToHom rfl := by
+  let := FiniteQuiver.quiver S
+  exact D.positiveComponent_leaf g D.leafVertex rfl
+
+-- 葉における負の成分も同じ元の接続辺を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S)
+    (g : D.leaf ⟶ D.parent) (hg : D.edge.val = g.toNeg) :
+    letI := FiniteQuiver.quiver S
+    (D.negativeDeformation g hg).app
+        ((Paths.of (FiniteQuiver.Vertex S)).obj D.leafVertex) =
+      eqToHom rfl ≫ (Paths.of (FiniteQuiver.Vertex S)).map
+        (show D.leafVertex ⟶ D.parentVertex from g) ≫
+          eqToHom (D.collapse_obj_leaf D.leafVertex rfl).symm := by
+  let := FiniteQuiver.quiver S
+  exact D.negativeComponent_leaf g D.leafVertex rfl
+
+-- 葉以外では元の対象の等式による恒等射となる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    {T : WideSubquiver (Quiver.Symmetrify Q)} [Quiver.Arborescence T]
+    {S : Finset Q} (D : QuiverTree.LeafDeletion T S)
+    (g : D.parent ⟶ D.leaf) (hg : D.edge.val = g.toPos)
+    (x : FiniteQuiver.Vertex S) (hx : x.val ≠ D.leaf) :
+    letI := FiniteQuiver.quiver S
+    (D.positiveDeformation g hg).app ((Paths.of (FiniteQuiver.Vertex S)).obj x) =
+      eqToHom (D.collapse_obj_of_ne x hx) := D.positiveComponent_of_ne g x hx
+
+-- 任意可換環の実際の全自由次数で元の有限木の自然変形を使う。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    ∀ (S : Finset (FreeQuiverCover.Vertex (Q := Q) A))
+      (hne : ∃ x ∈ S, x ≠ FreeQuiverCover.root (Q := Q) A),
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    letI := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
+    let D := FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne
+    letI := FiniteQuiver.quiver (FreeQuiverCover.finiteHull (Q := Q) A S)
+    (D.collapseFunctor ⟶ 𝟭 (Paths (FiniteQuiver.Vertex (FreeQuiverCover.finiteHull (Q := Q) A S)))) ⊕
+      (𝟭 (Paths (FiniteQuiver.Vertex (FreeQuiverCover.finiteHull (Q := Q) A S))) ⟶
+        D.collapseFunctor) := by
+  intro C W Q S hne
+  let := FreeQuiverCover.quiver (Q := Q) A
+  let := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
+  exact QuiverTree.LeafDeletion.deformation
     (FreeQuiverCover.finiteHullLeafDeletion (Q := Q) A S hne)

@@ -1768,7 +1768,17 @@ hammock 上の値 β の fiber を元の被覆の固定端点 hammock へ同定�
 恒等射へ、他の辺を同じ元の生成辺へ送る。`inclusion_retraction` は残りの自由圏上の
 厳密な恒等性。`retractionRelative/inclusionRelative` は元の二つの全指定相対関手。
 空集合の包・任意可換環の実際の全自由次数と同じ関手の左逆でも検証。
-逆順の合成と恒等関手を結ぶ自然変換・hammock のホモトピー・成分可縮性・両弱比較は未完成。
+逆順の合成と恒等関手を結ぶ自然変換は下記の通り完成。hammock のホモトピー・成分可縮性・両弱比較は未完成。
+`LeafDeletion.collapseFunctor` は元の葉の除去と包含の逆順の合成で、
+`collapse_generator_of_ne/collapse_generator_incident` が全生成辺の像を回収する。
+`incoming_eq_positive/outgoing_eq_negative/no_outgoing_positive/no_incoming_negative` は
+葉に接する元の生成辺と向きを一意に回収する。
+`positiveComponent/negativeComponent` は葉では元の接続辺、他では対象の等式による恒等射。
+`positiveComponent_generator/negativeComponent_generator` は全生成辺での自然性、
+`positiveDeformation/negativeDeformation/deformation` は全射列への自然変換を提供する。
+元の接続辺の向きに応じて E→𝟭 または 𝟭→E を選び、成分の回収も証明する。
+両方向と元の各成分、任意可換環の実際の全自由次数でも検証。
+hammock のホモトピーへの移送・成分可縮性・命題2.2の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

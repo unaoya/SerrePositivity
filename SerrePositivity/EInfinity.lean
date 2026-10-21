@@ -1443,3 +1443,9 @@ public import SerrePositivity.EInfinity.Hammock.QuiverTreeRetractionIdentity
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeRetractionRelative
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeRootHeights
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeRootVertices
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeCollapseGenerators
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformation
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformationComponents
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformationNaturality
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeafEdgeOrientation
+public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeafEndofunctor
