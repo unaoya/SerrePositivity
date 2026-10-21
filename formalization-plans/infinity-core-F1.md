@@ -13,11 +13,11 @@
   同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
-  像の Cat∞ 値関手への実現と元の主写像との分解等式、実際の区間 Hom 作用を構成済み。
+  零次元セル上では元の分類写像の同値と、元の Hom の core の区間作用の同値を追加仮定なしに証明済み。
   元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
   元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
-  底変換比較の同じ可逆辺の Hom を共通 Kan 空間とし、二射影で元の両側の Hom 作用を厳密に回収した。
+  同じ底変換比較の Hom から実際の輸送を作り、零次元の局所 Hom 比較と元の大域作用の関手同型も構成済み。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
   全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
 - **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
@@ -58,7 +58,7 @@
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
 - `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
-- `cocartesianStraighteningHomInterval`、`cocartesianBaseChangeJointComparisonIso`
+- `cocartesianStraighteningHomInterval`、`cocartesianZeroSimplexStraighteningEquivalence`
 
 ### 依存と提供
 
@@ -70,18 +70,8 @@
 
 ### 未コミット
 
-- 共有制限は `a12f7e9f4`、空間値同値は `e987f35af`、前層は `56dd08ad4`、相対延長は `bf56a0416`。
-- cocartesian ∞ 圏は `733a24a2b`、分類写像は `87acb9df5`、weighted nerve は `9d911c9c1`。
-- 局所 strict 化と有限 nerve 上の本質的全射性は `e8f0b2913`。
-- 一般の cocartesian 標的で終点指定の可逆辺 lift と全相対 Hom の制限同値は `767961448`。
-- 同型不変な水平辺条件への制限と strict transport の全相対 Hom 作用の同値は `aece542ae`。
-- core の同値性と中間の像への coherent 比較の同値は `8c5d49f2d`。
-- core 上の混合対角評価、Cat∞ 値関手への実現と元の主写像との分解等式は `c89a910c5`。
-- 実現の頂点・成分評価、区間 Hom 作用の展開・評価と主写像への接続は `145575290`。
-- 全相対 Hom と section の単射による同値持ち上げと core の制限の Kan 性は `ff4f803a7`。
-- section の core の点ごとの可逆性、余極限に沿う一意な貼り合わせと極限錐は `e105f1a5e`。
-- 指定辺を保つ相対 Hom とその core の降下、元の cocartesian Hom への適用は `ba41905f0`。
-- 比較同型は `62f2e2da9`、降下は `6d4656950`、Kan 性は `f4ffceb6e`、元の Hom 作用は `cdefd9158`。
+- なし。検証済みの F1 所有ファイルを、集約・監査・本計画と同一の保存単位でコミットする。
+- 他レーンの編集・ステージは保存対象外。実施記録は各コミットメッセージに置く。
 
 ### 既知の問題
 
@@ -94,10 +84,10 @@
 
 ### 次の一手
 
-添字制限・豊穣前合成の実現自然性と、元の主写像を両端に持つ底全体の比較の関手同型まで完了。
+零次元セルの分類同値・同じ元の Hom 作用の同値性と、局所比較から大域作用への関手同型まで完了。
 分類先の両端固定の区間 Hom も、全パラメーターの一意な貼り合わせと厳密な極限錐まで完了。
-元の比較の同じ円柱の Hom 四角形まで完了。二射影は trivial Kan fibration で両側の元の作用を回収する。
-次は同じ Hom 比較をセルで比較し、降下図式への整合性と局所の同値性から一般の充満忠実性へ戻す。
+同じ比較 Hom の二射影は trivial Kan fibration。切断による実際の輸送も元の作用と関手同型で整合する。
+次は一次元セル上の同じ Hom 作用の同値性を証明し、有限セル・骨格の降下から一般の充満忠実性へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

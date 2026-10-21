@@ -1854,3 +1854,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSpan
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSpanNaturality
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomCriterion
+
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramSingletonEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.SubsingletonFunctorEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSingletonFullyFaithful
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianZeroSimplexEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransport
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianZeroCellHomComparison
