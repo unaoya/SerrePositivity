@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransportAlgebra
 
 /-!
 概要：明示した端点等式の下で、指定同型の逆と二段の後合成の型付き一致を保つ。
@@ -31,6 +32,15 @@ lemma functorIso_postcomp_postcomp_heq_of_heq {X Y Z W : SSet.{u}}
     HEq ((e'.postcomp p).postcomp q) ((e.postcomp p).postcomp q) := by
   subst f' g'
   cases eq_of_heq h
+  rfl
+
+/-- 元の端点補正を二段の後合成の前に入れても指定値を保つ。 -/
+lemma functorIsoOfEq_postcomp_twice_heq {A X Y Z : SSet.{u}}
+    {f g f' g' : A ⟶ X} (e : FunctorIso f g) (hf : f = f') (hg : g = g')
+    (p : X ⟶ Y) (q : Y ⟶ Z) :
+    HEq (((functorIsoOfEq e hf hg).postcomp p).postcomp q)
+      ((e.postcomp p).postcomp q) := by
+  subst f' g'
   rfl
 
 end SerrePositivity.InfinityCategories.F2

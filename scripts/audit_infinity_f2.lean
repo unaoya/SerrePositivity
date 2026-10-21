@@ -2324,3 +2324,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftCorrectionImage
 
 #check @SerrePositivity.InfinityCategories.F2.cospanRectificationLeftIso_inverse_whisker_image
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonBaseCompatibility
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftSourceMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftMiddleMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftValueTargetMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftTargetMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonLeftSectionImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelFirstPathValueImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeCommonComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeNativeComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementSectionIso_precomp_endpoint_image
+#check @SerrePositivity.InfinityCategories.F2.functorIso_cancel_inverse_prefix
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_postcomp_twice_heq

@@ -68,4 +68,15 @@ lemma functorIso_precomp_precomp_postcomp_heq {A B X Y Z : SSet.{u}}
   have h := functorIso_precomp_heq_of_heq d (e.postcomp w) hf hg he (q ≫ p)
   exact h.trans (functorIso_precomp_heq_of_map_eq d hr)
 
+/-- 指定正方形の共通の前置同型を、その逆との合成で消去する。 -/
+lemma functorIso_cancel_inverse_prefix {A X : SSet.{u}} {f g h i j k : A ⟶ X}
+    (n : FunctorIso f g) (a : FunctorIso f h) (b : FunctorIso h i)
+    (c : FunctorIso i j) (d : FunctorIso g k) (e : FunctorIso k j)
+    (hs : a ≪≫ b ≪≫ c = n ≪≫ d ≪≫ e) :
+    (n.symm ≪≫ a) ≪≫ b ≪≫ c = d ≪≫ e := by
+  calc
+    _ = n.symm ≪≫ (a ≪≫ b ≪≫ c) := by simp only [Iso.trans_assoc]
+    _ = n.symm ≪≫ (n ≪≫ d ≪≫ e) := congrArg (fun t => n.symm ≪≫ t) hs
+    _ = _ := by simp only [← Iso.trans_assoc, Iso.symm_self_id, Iso.refl_trans]
+
 end SerrePositivity.InfinityCategories.F2
