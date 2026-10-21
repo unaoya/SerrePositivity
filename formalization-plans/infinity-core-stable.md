@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 元の全射・一般準同型比較と実導来射作用の一致、恒等・合成・可換四角形の整合性の6新規モジュール、Derived 集約、両監査、本計画の10パスが未コミット。対象・集約・12公開署名検査と両全体監査は成功。他レーンの変更は変更しない。
+- 元の全射・一般準同型比較と実導来射作用の一致、恒等・合成・可換四角形の整合性の6新規モジュール、Derived 集約、両監査、本計画の10パスを `5207b6a0c` に保存済み。対象・集約・12公開署名検査と両全体監査は成功。現在地の更新は本計画のみ。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- `dgKernelDerivedInfinity_comparison_hom` と `dgKernelDerivedInfinity_comparison_eq_mapIso` で、従来の実 span 比較を元の射作用に同定した。恒等・合成・元の双加群同型作用との一致と任意可換四角形の自然性も、指定比較を変えずに証明した。次は一般 cell 模型の元の出力比較 `dgKernelDerivedInfinity_targetModelIso` の自然性へ進む。`/tmp/d-beta5-target-model-augmentation-naturality.lean` では、q・q′ と原 kernel 射 a・模型射 b の四角形 b≫q′=q≫Res(a) から、元の `dgKernelTargetModelAugmentation` の全 Hom 自然な四角形を、同じ延長–制限随伴の転置で検証済み（警告なし・許容三公理のみ、未集約）。入力対象宇宙を固定する旧補題を使わず、同じ tensor 評価式を直接照合した。`/tmp/d-beta5-target-model-iso-naturality.lean` で出力模型比較の自然性への接続を試作中。その後、元の κ の二変数自然性と今回の一般準同型比較の自然性で出力模型比較を接続し、入力比較・cell 模型比較・一般合成の全 coherence へ進む。選択済み比較を再定義して代用しない。Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 も未完。
+- `dgKernelDerivedInfinity_comparison_hom` と `dgKernelDerivedInfinity_comparison_eq_mapIso` で、従来の実 span 比較を元の射作用に同定した。恒等・合成・元の双加群同型作用との一致と任意可換四角形の自然性も、指定比較を変えずに証明した。次は一般 cell 模型の元の出力比較 `dgKernelDerivedInfinity_targetModelIso` の自然性へ進む。`/tmp/d-beta5-target-model-augmentation-naturality.lean` では、q・q′ と原 kernel 射 a・模型射 b の四角形 b≫q′=q≫Res(a) から、元の `dgKernelTargetModelAugmentation` の全 Hom 自然な四角形を、同じ延長–制限随伴の転置で検証済み（警告なし・許容三公理のみ、未集約）。入力対象宇宙を固定する旧補題を使わず、同じ tensor 評価式を直接照合した。`/tmp/d-beta5-target-model-iso-naturality.lean` で前合成の恒等射保存・augmentation の自然性・graph に特殊化した元の κ の自然性まで警告なし・許容三公理で検証済み（未集約）。元の出力模型比較の自然性は、三つの可換四角形を合成する `iso_three_step_square` へ分割して試作中。現行検査の実行ハンドルは session 57501、ログは `/tmp/d-beta5-target-model-iso-naturality.log`。終了を確認するまで同じハンドルを poll し、観測 timeout で再起動しない。一括証明は kernel 制限に達したため、上限を変えず独立補題と局所書換えへ分けた。その後、元の κ の二変数自然性と今回の一般準同型比較の自然性で出力模型比較を接続し、入力比較・cell 模型比較・一般合成の全 coherence へ進む。入力側の `dgKernelDerivedInfinity_sourceRestrictionIso` の自然性は未提供で、現存 κ 自然性の四端の右相対 K-flat 仮定をそのまま使うと原 kernel に平坦性を要求するため、graph が第一因子の場合の外側 kernel を平坦と仮定しない拡張が必要。選択済み比較を再定義して代用しない。Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 も未完。
 
 ## 目標と原典
 
