@@ -5484,6 +5484,61 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Relative.arrowPoint_map,
       `SerrePositivity.EInfinity.Hammock.Relative.colimitUnit_point]
 
+@[noinline] private def e2RequiredBatch79 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_unit,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_composition,
+      `SerrePositivity.EInfinity.Hammock.arrowMap,
+      `SerrePositivity.EInfinity.Hammock.arrowMap_identity,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.Objects,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.category,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.comp_simplex,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.unit_simplex,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.simplexFunctor,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.simplexFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.EnrichedDegree.simplexFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap_marked,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap_generator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap_unit,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap_comp,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockFoldMap_unique,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.existsUnique_hammockFoldMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.hammockEnrichedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.restrictHammockEnrichedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.restrict_hammock_extend,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.extend_hammock_restrict,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.hammockEnrichedFunctorEquiv,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.degreeData,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.generatorMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap_unit,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap_comp,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap_marked,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap_generator,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.enrichedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint_nil,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint_cons,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint_unit,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint_append,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.marked_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.generator_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldPoint_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.foldMap_unique,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.existsUnique_foldMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.restrictEnrichedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.EnrichedFoldData.ext,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.restrict_extend,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.extend_restrict,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.enrichedFunctorEquiv,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_unitMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_composition,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.generatorMap_gluing,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_arrowMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.marked_unitMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.marked_composition]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5515,7 +5570,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13186,4 +13241,77 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
     EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (Paths C) :=
   MarkedSpine.enrichedCategory (freeResolutionGeneratorBase
+    (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+
+
+-- 任意の豊穣目標への全因子列の評価は全単体作用素と一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] {W : MorphismProperty C}
+    (F : MarkedSpine.EnrichedFoldData W D) {X Y : Paths C} {n m : SimplexCategoryᵒᵖ}
+    (θ : n ⟶ m) (t : MarkedSpine W Y n X) :
+    (F.obj X ⟶[SSet.{e2ComplexLimitUniverse}] F.obj Y).map θ (F.foldPoint n t) =
+      F.foldPoint m (MarkedSpine.map θ t) := F.foldPoint_simplex θ t
+
+-- 元の hammock 自身への拡張は二つの生成部分の像を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] {W : MorphismProperty C}
+    (F : MarkedSpine.EnrichedFoldData W D) (X Y : Paths C) (g : FactorTarget.Index W) :
+    AllMarked.inclusion W X Y ≫ F.hammockFoldMap X Y = F.marked X Y ∧
+      arrowMap W.paths g.val.hom.toPath ≫ F.hammockFoldMap g.val.left g.val.right = F.generator g :=
+  ⟨F.hammockFoldMap_marked X Y, F.hammockFoldMap_generator g⟩
+
+-- 単位と合成の保存は元の全語の余極限上の元の二射について成立する。
+open CategoryTheory MonoidalCategory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] {W : MorphismProperty C}
+    (F : MarkedSpine.EnrichedFoldData W D) (X Y Z : Paths C) :
+    colimitUnit W.paths X ≫ F.hammockFoldMap X X = eId SSet.{e2ComplexLimitUniverse} (F.obj X) ∧
+      colimitComposition W.paths X Y Z ≫ F.hammockFoldMap X Z =
+        (F.hammockFoldMap X Y ⊗ₘ F.hammockFoldMap Y Z) ≫
+          eComp SSet.{e2ComplexLimitUniverse} (F.obj X) (F.obj Y) (F.obj Z) :=
+  ⟨F.hammockFoldMap_unit X, F.hammockFoldMap_comp X Y Z⟩
+
+-- 元の hammock からの豊穣関手と二つの生成部分の像の指定は全単射である。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) :
+    letI := Hammock.enrichedCategory W.paths
+    EnrichedFunctor SSet.{e2ComplexLimitUniverse} (Paths C) D ≃ MarkedSpine.EnrichedFoldData W D :=
+  MarkedSpine.hammockEnrichedFunctorEquiv W
+
+-- 指定した元の全単体写像は拡張の後の制限で厳密に回収される。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [EnrichedCategory SSet.{e2ComplexLimitUniverse} D] {W : MorphismProperty C}
+    (F : MarkedSpine.EnrichedFoldData W D) :
+    MarkedSpine.restrictHammockEnrichedFunctor W (F.hammockEnrichedFunctor W) = F :=
+  MarkedSpine.restrict_hammock_extend F
+
+-- 任意可換環の実際の全自由次数から任意の豊穣目標への同じ拡張を代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (D : Type (e2ComplexLimitUniverse + 1)) [EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} D]
+    (F : let W := (freeResolutionGeneratorBase
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      MarkedSpine.EnrichedFoldData W D) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    letI : EnrichedCategory SSet.{e2ComplexLimitUniverse + 1}
+        ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category :=
+      show EnrichedCategory SSet.{e2ComplexLimitUniverse + 1} (Paths C) from
+        Hammock.enrichedCategory W.paths
+    EnrichedFunctor SSet.{e2ComplexLimitUniverse + 1}
+      ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category D :=
+  F.hammockEnrichedFunctor (freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences

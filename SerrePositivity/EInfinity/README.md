@@ -1668,6 +1668,19 @@ prefix と残りの元の hammock の点の回収・逆向きの因子列の回�
 `precompSimplex/fold_simplex/mapTarget/fold_target` は全単体作用素と目標関手への整合。
 任意可換環の実際の全自由次数へも代入して検証。豊穣目標の全次数の評価圏と全単体作用素を
 束ねた自由積の単体的 pushout の普遍性・全指定自由圏の成分の可縮性・両弱比較は後続。
+`EnrichedDegree.category/simplexFunctor` は任意の SSet 豊穣目標の各次数の評価圏と元の全作用素。
+`MarkedSpine.EnrichedFoldData` は元の指定 hammock と非指定生成矢の像の指定。
+`degreeData/foldPoint/foldPoint_simplex/foldMap/enrichedFunctor` は元の全因子列からの豊穣拡張。
+`existsUnique_foldMap/restrictEnrichedFunctor/enrichedFunctorEquiv` は全因子列についての普遍性。
+`arrowMap`・`AllMarked.inclusion_unit/inclusion_composition` と
+`extraction_unitMap/extraction_composition/extraction_arrowMap/generatorMap_gluing` は
+元の hammock 自身と同じ元の生成部分への移送。
+`hammockFoldMap/existsUnique_hammockFoldMap/hammockEnrichedFunctor` は元の全語の余極限からの
+同じ元の単位・合成を保つ一意な拡張。
+`restrictHammockEnrichedFunctor/restrict_hammock_extend/extend_hammock_restrict` と
+`hammockEnrichedFunctorEquiv` は任意の豊穣目標について対象写像・元の全 Hom を含む両逆。
+任意可換環の実際の全自由次数へも代入して検証。非指定自由部分からの豊穣関手と生成矢の像の
+同値への接続・全指定自由圏の成分の可縮性・命題2.2の両弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
