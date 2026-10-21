@@ -432,7 +432,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapComparison,
     `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberMapNaturality,
     `SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison,
-    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism]
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism,
+    `SerrePositivity.KST.LocalizingInvariants.FiberMappingAnodyneFamily,
+    `SerrePositivity.KST.LocalizingInvariants.FiberMappingFibration,
+    `SerrePositivity.KST.LocalizingInvariants.FiberMappingPathLift,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareFiberMap,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareFiberGroups,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareFiberInclusion,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumTriangleMappingEdge,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumTriangleDifference,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightMappingPath,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelGroups,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramNormalization]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
