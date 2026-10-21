@@ -1876,4 +1876,11 @@ public import SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecoveryCond
 public import SerrePositivity.KST.SConstruction.SimplexHAInverseCellRecovery
 public import SerrePositivity.KST.SConstruction.SimplexHAInverseNativeDecodedComponent
 public import SerrePositivity.KST.SConstruction.SimplexHANativeInverse
+public import SerrePositivity.KST.SConstruction.SimplexSubsetImageOrder
+public import SerrePositivity.KST.SConstruction.NecklaceInSimplexVertexEquality
+public import SerrePositivity.KST.SConstruction.NecklaceLambdaCellPostcomposition
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetImage
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaImageCell
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeInjectiveComponent
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeInjectiveNaturality
 /-! # ∞-S• 構成と連結 K 理論 -/

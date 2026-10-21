@@ -23005,3 +23005,31 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexEquiv
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexEquiv
+
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetOrder_image_inj
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetOrder_image_inj
+
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplex_eq_of_vertices
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplex_eq_of_vertices
+
+#check @SerrePositivity.KST.SConstruction.necklaceLambdaCell_post
+#print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_post
+
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_image_inj
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetAt_image_inj
+
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_image_inj_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_image_inj_heq
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_precompose_hom_of_inj
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_precompose_hom_of_inj
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_precompose_of_inj
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_precompose_of_inj
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_precompose_of_inj
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplex_precompose_of_inj
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_pullback_of_inj
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_pullback_of_inj
