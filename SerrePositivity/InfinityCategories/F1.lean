@@ -2271,3 +2271,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangl
 public import SerrePositivity.InfinityCategories.F1.HomTransportSquareCoherence
 public import SerrePositivity.InfinityCategories.F1.IntervalHomPathMapNaturality
 public import SerrePositivity.InfinityCategories.F1.IntervalHomPostcompositionEquality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalHomCellEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSimplexCellIndex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeAssociativity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeObjectIso
