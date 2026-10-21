@@ -1681,6 +1681,19 @@ prefix と残りの元の hammock の点の回収・逆向きの因子列の回�
 `hammockEnrichedFunctorEquiv` は任意の豊穣目標について対象写像・元の全 Hom を含む両逆。
 任意可換環の実際の全自由次数へも代入して検証。非指定自由部分からの豊穣関手と生成矢の像の
 同値への接続・全指定自由圏の成分の可縮性・命題2.2の両弱比較は後続。
+`DiscreteEnrichment.enrichedCategory/functorEquiv` は任意の圏の元の離散豊穣化と通常の関手の比較。
+`FreeDiscreteEnrichment.functorEquiv` は元の自由圏の離散豊穣関手と生成 quiver の像の全単射。
+`EnrichedFoldData.unmarkedEnrichedFunctor/unmarkedEnrichedFunctor_generator/markedEnrichedFunctor`
+は元の二つの部分からの関手と同じ元の生成矢の回収。
+`EnrichedParts/foldData/parts/enrichedPartsEquiv` は共通対象の表示の等式を保持する関手の組との同値。
+`EnrichedHomTransport.point_homOf_heq` は元の等式による Hom の移送を underlying 射へ照合。
+`markedInclusionFunctor/unmarkedInclusionFunctor/unmarkedInclusion_generator` は元の二つの包含。
+`restrict_marked_comp/restrict_unmarked_comp/restrictParts/freeProductFunctorEquiv` は元の包含との
+合成による制限自身の全単射。`freeProductExtension/existsUnique_freeProductExtension` と
+`freeProductExtension_marked/freeProductExtension_unmarked/freeProduct_hom_ext` は任意の豊穣目標への
+拡張・元の二脚の回収・一意性。DK 命題3.2の自由積の豊穣普遍性をこの形で完成。
+任意可換環の実際の全自由次数でも検証。§5.8の全指定自由圏の成分の可縮性と命題2.2の両弱比較、
+Map^h の高次比較・∞ 局所化の普遍性は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
