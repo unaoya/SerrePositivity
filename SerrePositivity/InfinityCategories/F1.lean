@@ -1880,3 +1880,7 @@ public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingSimplex
 public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingLift
 
 public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingPullback
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingFibration
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingCorePullback
