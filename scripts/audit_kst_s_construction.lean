@@ -21727,3 +21727,67 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_one_rawValue
 #check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_rawValue
 #print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_edge_rawValue
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_mem
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_mem
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_disjoint
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_disjoint
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_card
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_dimension
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_zero
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_nonempty
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_nonempty
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_two
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_two
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_min
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_min
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_max
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_max
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeRange_succ
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeRange_succ
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_succ
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_succ
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_not_mem
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_not_mem
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_erase
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_erase
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_insert_tail
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_insert_tail
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_mem
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_mem
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_left
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_left
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_right
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_strict_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_strict_right
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_left_decode
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_filter_left_decode
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_card
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_card
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_dimension
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_dimension
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_two
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_left_two
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_two
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_right_two
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_min
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_min
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_max
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_max
+#check @SerrePositivity.KST.SConstruction.simplexSubsetEraseNormalizedCoordinate_right_count
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetEraseNormalizedCoordinate_right_count
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_index
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_cut_index
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_erase_coordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_erase_coordinate
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_split_coordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_split_coordinate

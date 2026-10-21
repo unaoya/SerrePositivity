@@ -1722,4 +1722,11 @@ public import SerrePositivity.KST.SConstruction.SimplexHADecodeValues
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeCells
 public import SerrePositivity.KST.SConstruction.SimplexHARawWordComposition
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeRawValues
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubset
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetEndpoints
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetRecursion
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetFilters
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetDimensions
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCutBounds
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCoordinate
 /-! # ∞-S• 構成と連結 K 理論 -/
