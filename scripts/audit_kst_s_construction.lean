@@ -21651,3 +21651,35 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordValue_mpr
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordValue_mpr
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordAt_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordAt_value
+#check @SerrePositivity.KST.SConstruction.simplexHAComponent_degree_transport
+#print axioms SerrePositivity.KST.SConstruction.simplexHAComponent_degree_transport
+#check @SerrePositivity.KST.SConstruction.simplexHABeadTail_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadTail_value
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_zero_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_zero_value
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_zero
+#check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift
+#print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift
+#check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_top
+#print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_top
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_eq_chain
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_eq_chain
+#check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_post
+#check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_recovery
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordCell_mpr
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordCell_mpr
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordAt_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordAt_cell
+#check @SerrePositivity.KST.SConstruction.simplexHABeadTail_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadTail_cell
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_zero_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_zero_cell
+#check @SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_subset_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAZeroChainLift_subset_recovery
