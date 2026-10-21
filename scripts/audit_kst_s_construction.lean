@@ -18550,3 +18550,74 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubeFaceNormal_connection_three
 #check @SerrePositivity.KST.SConstruction.cubeFacePath_connection_normalization
 #print axioms SerrePositivity.KST.SConstruction.cubeFacePath_connection_normalization
+
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalPrefix
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalPrefix
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalWithFace
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalWithFace
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalWithFace_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalWithFace_vertex
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalAfterDeletion
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalAfterDeletion
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalAfterConnection
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalAfterConnection
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalAfterDeletion_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalAfterDeletion_vertex
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalAfterConnection_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalAfterConnection_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_withFace
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_withFace
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_afterDeletion
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_afterDeletion
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_afterConnection
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_afterConnection
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalId
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalId
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalPoint
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalPoint
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalDelete
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalDelete
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalConnect
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalConnect
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalId_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalId_vertex
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalPoint_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalPoint_vertex
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalDelete_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalDelete_vertex
+#check @SerrePositivity.KST.SConstruction.cubeThreeNormalConnect_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeThreeNormalConnect_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_id
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_point
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_point
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_delete
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_delete
+#check @SerrePositivity.KST.SConstruction.serreCubeThreeNormal_connect
+#print axioms SerrePositivity.KST.SConstruction.serreCubeThreeNormal_connect
+#check @SerrePositivity.KST.SConstruction.CubeMixedExpression
+#print axioms SerrePositivity.KST.SConstruction.CubeMixedExpression
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionVertex
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionVertex
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionNormal
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionNormal_vertex
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionNormal_vertex
+#check @SerrePositivity.KST.SConstruction.serreCubeMixedExpression
+#print axioms SerrePositivity.KST.SConstruction.serreCubeMixedExpression
+#check @SerrePositivity.KST.SConstruction.serreCubeMixedExpressionNormal
+#print axioms SerrePositivity.KST.SConstruction.serreCubeMixedExpressionNormal
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionPath
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionPath
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionPath_concrete
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionPath_concrete
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionPath_serre
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionPath_serre
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionAppend
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionAppend
+#check @SerrePositivity.KST.SConstruction.cubeMixedExpressionAppend_path
+#print axioms SerrePositivity.KST.SConstruction.cubeMixedExpressionAppend_path
+#check @SerrePositivity.KST.SConstruction.cubeWordPath_exists_mixedExpression
+#print axioms SerrePositivity.KST.SConstruction.cubeWordPath_exists_mixedExpression
+#check @SerrePositivity.KST.SConstruction.cubeWordPath_normalization
+#print axioms SerrePositivity.KST.SConstruction.cubeWordPath_normalization

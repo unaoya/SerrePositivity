@@ -1371,4 +1371,8 @@ public import SerrePositivity.KST.SConstruction.SerreCubeFaceConnectionResult
 public import SerrePositivity.KST.SConstruction.SerreCubeFaceNormalConnection
 public import SerrePositivity.KST.SConstruction.CubeThreeNormal
 public import SerrePositivity.KST.SConstruction.CubeFaceConnectionPathNormalization
+public import SerrePositivity.KST.SConstruction.CubeThreeNormalResults
+public import SerrePositivity.KST.SConstruction.CubeThreeNormalUpdates
+public import SerrePositivity.KST.SConstruction.CubeMixedExpression
+public import SerrePositivity.KST.SConstruction.CubeMixedPathNormalization
 /-! # ∞-S• 構成と連結 K 理論 -/
