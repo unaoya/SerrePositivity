@@ -1962,6 +1962,18 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 任意可換環の実際の自由相対解像・標準の同じ対象表示でも検証。
 元の比較射のこの同型下での照合、DK10.4–10.5の弱不変性、左 hammock 射、
 既存 Map^h の高次比較は未完成。
+`FixedVertices.homSpaceMap/homProductMap/leftDiagramMap/rightDiagramMap/leftSpaceMap/rightSpaceMap`
+は元の比較射の Hom と両係数への自然な作用。
+`TwoSidedDiagram.leftLabelComparison/rightLabelComparison/chainRowMap_app` と
+`FixedVertices.productMap_app/productsIso_inv_naturality` により、元の比較射を
+同じ有限 Hom 積・両係数の直積の和へ厳密に戻す。
+`FixedVertices.productMap_weak/chainRowMap_weak/diagonalTotalMap_weak` は元の
+単体的二方向比較射自身の弱不変性（DK10.4–10.6）。底は元の固定 Hom、
+左右係数は固定対象の元の対角の弱同値性だけを要求し、通常の各次数には要求しない。
+`diagonalTotalMap_weak_of_fullyFaithful_base` は固定底を含む係数不変性、
+`diagonalTotalMap_weak_of_isIso_coefficients` は恒等係数を含む底の Hom 弱不変性。
+任意可換環の実際の自由解像と元の全係数自然変換でも検証。
+全語の graph への移送、左 hammock 射、既存 Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

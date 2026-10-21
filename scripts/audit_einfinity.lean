@@ -6779,6 +6779,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productIso,
       `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso]
 
+@[noinline] private def e2RequiredBatch106 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.leftLabelComparison,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.rightLabelComparison,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.chainRowMap_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productMap_weak,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.chainRowMap_weak,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.diagonalTotalMap_weak,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.diagonalTotalMap_weak_of_fullyFaithful_base,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.diagonalTotalMap_weak_of_isIso_coefficients,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.right_app_transport_congr,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.left_app_transport_congr,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightDiagram,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftDiagram,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightSpaceMap_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftSpaceMap_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpaceMap_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homProductMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homProductMap_weak,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpaceIso_hom,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.homSpaceMap_weak_of_fullyFaithful,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.rightSpaceMap_weak_of_isIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.leftSpaceMap_weak_of_isIso,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productMap,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productMap_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso_inv_app,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices.productsIso_inv_naturality]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6810,7 +6843,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -16249,5 +16282,100 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
         IndexedSum.space (TwoSidedDiagram.FixedVertices.product D p hp k) := by
   intro C B L T k D p hp
   exact TwoSidedDiagram.FixedVertices.productsIso D p hp k
+
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+section e2TwoSidedWeakFixtures
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
+open SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
+
+variable {D E : SimplicialObject Data.{e2ComplexLimitUniverse}} {O : Type e2ComplexLimitUniverse}
+  (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
+  (q : (n : SimplexCategoryᵒᵖ) → O ≃ (E.obj n).base)
+  (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
+    (D.map θ).base.obj (p n o) = p m o)
+  (hq : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
+    (E.map θ).base.obj (q n o) = q m o)
+  (τ : D ⟶ E) (hτ : ∀ n o, (τ.app n).base.obj (p n o) = q n o)
+include p q hp hq hτ
+
+-- 元の chainRowMap は元の Hom・両係数の直積の和そのもの。
+example (k : SimplexCategoryᵒᵖ) :
+    (productsIso D p hp k).inv ≫ chainRowMap τ k =
+      IndexedSum.map (productMap p q hp hq τ hτ k) ≫ (productsIso E q hq k).inv :=
+  productsIso_inv_naturality p q hp hq τ hτ k
+
+-- 各通常次数の弱同値性を要求せず、固定 Hom と係数の対角で判定する。
+example (hH : ∀ X Y, IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
+    (hL : ∀ X, IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X))
+    (hR : ∀ X, IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X))
+    (k : SimplexCategoryᵒᵖ) : IsWeakHomotopyEquivalence (chainRowMap τ k) :=
+  chainRowMap_weak p q hp hq τ hτ hH hL hR k
+
+-- 元の全圏の対角射自身を同じ三つの入力で閉じる。
+example (hH : ∀ X Y, IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
+    (hL : ∀ X, IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X))
+    (hR : ∀ X, IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X)) :
+    IsWeakHomotopyEquivalence (diagonalTotalMap τ) :=
+  diagonalTotalMap_weak p q hp hq τ hτ hH hL hR
+
+-- 固定底を含む充満忠実な底では元の係数の対角だけを要求する。
+example (hF : ∀ n, (τ.app n).base.FullyFaithful)
+    (hL : ∀ X, IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X))
+    (hR : ∀ X, IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X)) :
+    IsWeakHomotopyEquivalence (diagonalTotalMap τ) :=
+  diagonalTotalMap_weak_of_fullyFaithful_base p q hp hq τ hτ hF hL hR
+
+-- 恒等係数を含む同型係数では、底の実際の Hom 弱比較だけを要求する。
+example (hH : ∀ X Y, IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
+    (hL : ∀ n X, IsIso ((τ.app n).left.app (Opposite.op (p n X))))
+    (hR : ∀ n X, IsIso ((τ.app n).right.app (p n X))) :
+    IsWeakHomotopyEquivalence (diagonalTotalMap τ) :=
+  diagonalTotalMap_weak_of_isIso_coefficients p q hp hq τ hτ hH hL hR
+
+-- 充満忠実性から得る同型も元の同じ Hom 比較射を回収する。
+example (hF : ∀ n, (τ.app n).base.FullyFaithful) (X Y : O) :
+    (homSpaceIso p q hp hq τ hτ hF X Y).hom = homSpaceMap p q hp hq τ hτ X Y :=
+  homSpaceIso_hom p q hp hq τ hτ hF X Y
+
+-- 各係数圏の同型から元の対角の射自身の弱同値性を回収する。
+example (X : O) (hL : ∀ n, IsIso ((τ.app n).left.app (Opposite.op (p n X))))
+    (hR : ∀ n, IsIso ((τ.app n).right.app (p n X))) :
+    IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X) ∧
+      IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X) :=
+  ⟨leftSpaceMap_weak_of_isIso p q hp hq τ hτ X hL,
+    rightSpaceMap_weak_of_isIso p q hp hq τ hτ X hR⟩
+end e2TwoSidedWeakFixtures
+
+-- 任意可換環の実際の自由解像で、元の全係数自然変換を固定底定理へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    let B := freeResolutionUnderlyingDiagram C
+    ∀ {L L' : Transfunctor.Covariant (B ⋙ Cat.opFunctor)} {T T' : Transfunctor.Covariant B}
+      (α : L ⟶ L') (β : T ⟶ T'),
+      let D := Transfunctor.twoSidedDiagram B L T
+      let E := Transfunctor.twoSidedDiagram B L' T'
+      let τ : D ⟶ E := Transfunctor.twoSidedDiagramMap α β
+      let p : (n : SimplexCategoryᵒᵖ) → C.category ≃ B.obj n :=
+        fun n => (freeResolutionObjectEquiv C n).symm
+      let hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) o,
+          (B.map θ).toFunctor.obj (p n o) = p m o :=
+        fun θ o => freeResolutionObject_naturality C θ o
+      (∀ X, IsWeakHomotopyEquivalence
+        (TwoSidedDiagram.FixedVertices.leftSpaceMap p p hp hp τ (fun _ _ => rfl) X)) →
+      (∀ X, IsWeakHomotopyEquivalence
+        (TwoSidedDiagram.FixedVertices.rightSpaceMap p p hp hp τ (fun _ _ => rfl) X)) →
+      IsWeakHomotopyEquivalence (TwoSidedDiagram.diagonalTotalMap τ) := by
+  intro C B L L' T T' α β D E τ p hp hL hR
+  have hF (n : SimplexCategoryᵒᵖ) : (τ.app n).base.FullyFaithful :=
+    Functor.FullyFaithful.id _
+  exact TwoSidedDiagram.FixedVertices.diagonalTotalMap_weak_of_fullyFaithful_base
+    (D := D) (E := E) p p hp hp τ (fun _ _ => rfl) hF hL hR
 
 end
