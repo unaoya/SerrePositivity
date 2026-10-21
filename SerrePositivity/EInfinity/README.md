@@ -1893,6 +1893,14 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `freeHammockDiagonalComparison_isWeakHomotopyEquivalence` は元の対角の右射自身の弱同値性。
 同じ全自由次数・全作用素・端点移送・離散対角同型を保持する。
 単体集合モデル構造は入力しない。左射の弱同値性と Map^h の高次比較は未完成。
+`freeResolutionHomRepresentationIso` とその augmentation の可換式は、
+標準生成対象の Hom と元の選択対象による Hom を同じ augmentation の上で照合する。
+`freeResolutionGeneratorHomExtraDegeneracy/freeResolutionMarkedHomExtraDegeneracy` は
+元の射を一文字の列へ送る全追加退化。底の Hom と指定射の Hom の同じ augmentation への
+実際の収縮を構成し、`freeResolutionHomAugmentation_isWeakHomotopyEquivalence` と
+`freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence` を証明した。
+任意可換環の全 cofibrant 代数でも検証。単体集合モデル・指定射の飽和性は不要。
+DK2.4による元の左 hammock 比較への移送と Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

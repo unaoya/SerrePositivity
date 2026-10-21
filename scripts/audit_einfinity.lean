@@ -6406,6 +6406,49 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch99 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_eq_homObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject_naturality,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomObject_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_face_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_degeneracy_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHom_augmentation_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmented,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomExtraDegeneracy,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.singlePath_conjugate_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.singlePath_map_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_lift_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_degeneracy_lift_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomSection_augmentation_lift_heq,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_succ,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_degeneracy_succ,
+      `SerrePositivity.EInfinity.SimplicialLocalization.generatorHomExtra_face_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomRepresentationIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomRepresentationIso_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomSubcomplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomSection,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomExtra,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmented,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomExtraDegeneracy,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionUnderlyingDiagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionUnderlyingAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionHomAugmentation_app,
+      `SerrePositivity.EInfinity.SimplicialLocalization.underlyingCategoryFunctor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6437,7 +6480,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15363,3 +15406,50 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     ∀ X Y : C.category, IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
   intro C X Y
   exact freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
+
+-- 元の選択対象による底の Hom augmentation 自身を、一般の相対圏で検査する。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    IsWeakHomotopyEquivalence (freeResolutionHomAugmentation C X Y) :=
+  freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 対象表示の同型は元の augmentation の可換式を保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    (freeResolutionHomRepresentationIso C X Y).hom ≫
+      freeResolutionGeneratorHomAugmentation C X Y = freeResolutionHomAugmentation C X Y :=
+  freeResolutionHomRepresentationIso_augmentation C X Y
+
+-- 指定射の類に飽和性を仮定せず、同じ指定 Hom の augmentation を検査する。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    IsWeakHomotopyEquivalence (freeResolutionMarkedHomAugmentation C X Y) :=
+  freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 任意可換環の全 cofibrant 代数で、元の選択対象による底の Hom へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category, IsWeakHomotopyEquivalence (freeResolutionHomAugmentation C X Y) := by
+  intro C X Y
+  exact freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 任意可換環の同じ指定射に対する Hom augmentation の弱比較。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category, IsWeakHomotopyEquivalence (freeResolutionMarkedHomAugmentation C X Y) := by
+  intro C X Y
+  exact freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+-- 同じ指定 Hom augmentation の反転性も、単体集合モデルを仮定せず回収する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.SimplicialModel in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (freeResolutionMarkedHomAugmentation C X Y)) :=
+  ExtraDegeneracyContraction.localized_augmentation_isIso
+    (freeResolutionMarkedHomExtraDegeneracy C X Y)
