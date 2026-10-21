@@ -51,7 +51,7 @@
   **P_Σ 入口：sifted 性・filtered からの入口・弱可縮性を証明。** 元の F2 の二項積の全空間 Kan 比較を sifted な底へ一般化し、空積の比較も証明。底の quasicategory 性は不要。
   **元の全空間 Kan 模型を頂点とする native 空積・二項積を構成。** 同じ比較辺の全錐円柱は底図式を固定し、読み戻した両脚は元の全空間射影の Kan 置換にホモトピック。
   **点ごとの coherent 積の元の小さい全空間→pullback の前合成同値を完了。** 両射影の fiber 作用を元の辺の輸送と照合。sifted な底で元の余極限 Kan 比較のホモトピー同値・両脚・単位式まで完了。底の quasicategory 性は不要。
-  **積図式の元の余極限頂点を持つ native 二項積錐を構成。** 同じ比較辺の全錐円柱・両 Kan 脚を保持。脚の単位表現の全余錐を、元の射影変換と指定単位の任意の合成三角形の余錐へ比較。coherent 辺に沿う余錐輸送と単位表現の同定、P_Σ は未完了。
+  **積図式の元の余極限頂点を持つ native 二項積錐を構成。** 同じ比較辺の全錐円柱・両 Kan 脚を保持。**実際の両脚の coherent 辺が元の `coconePointHomFamily` に作用する全余錐を、元の射影変換と指定単位の合成余錐へ同定。** 元の fiber 値比較と右 Hom 比較の両逆・輸送自然性を証明し、単位表現との間の比較を完了。P_Σ は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -88,16 +88,16 @@
   `unitCommaTargetFiber_isInitial_iff_of_homMk_eq`、`commaSectionUnit_initialCondition`、`exists_unit_initialCondition_of_fiberInitial`、
   `unitIntervalMap_commaTransportIso`、`qcat_exists_adjunction_unitHom_iff_commaInitial`、`exists_qcatAdjunction_of_commaFiberInitial`、`isReflectiveSubcategory_of_localReplacements`、
   `IsSiftedInfinity`、`isWeaklyContractible_of_sifted`、`totalKanProductComparison_homotopyEquivalence_of_sifted`、`continuousKanReplacement_isContractibleKan_of_sifted`、
-  `siftedProductNativeCone_isLimit`、`siftedProductNativeKanLeg_left`、`siftedProductNativeKanLeg_right`、`siftedEmptyProductNativeCone_isLimit`、`spaceTensorProduct`、`coherentSpaceTensorProduct_vertex`、`spaceTensorProductFstHomotopy_component`、`spaceTensorProductSndHomotopy_component`、`coherentSpaceTensorProductTotalComparison`、`coherentSpaceTensorProductTotalComparison_isPrecompositionEquivalence`、`coherentSpaceTensorProductTotalComparison_fiber`、`coherentProductTotalKanComparison_homotopyEquivalence`、`siftedCoherentProductNativeCone_isLimit`、`siftedCoherentProductNativeKanLeg_left`、`siftedCoherentProductNativeKanLeg_right`、`siftedCoherentProductLeftLegCoconeIso`、`siftedCoherentProductRightLegCoconeIso`。 Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
+  `siftedProductNativeCone_isLimit`、`siftedProductNativeKanLeg_left`、`siftedProductNativeKanLeg_right`、`siftedEmptyProductNativeCone_isLimit`、`spaceTensorProduct`、`coherentSpaceTensorProduct_vertex`、`spaceTensorProductFstHomotopy_component`、`spaceTensorProductSndHomotopy_component`、`coherentSpaceTensorProductTotalComparison`、`coherentSpaceTensorProductTotalComparison_isPrecompositionEquivalence`、`coherentSpaceTensorProductTotalComparison_fiber`、`coherentProductTotalKanComparison_homotopyEquivalence`、`siftedCoherentProductNativeCone_isLimit`、`siftedCoherentProductNativeKanLeg_left`、`siftedCoherentProductNativeKanLeg_right`、`siftedCoherentProductLeftLegCoconeIso`、`siftedCoherentProductRightLegCoconeIso`、`pointedValue_transportIso`、`totalKanNativeCoconeIso`、`siftedCoherentProductLeftNativeCoconeIso`、`siftedCoherentProductRightNativeCoconeIso`。 Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   集約 `InfinityCategories/HomotopyLimits.lean`・全監査 `scripts/audit_homotopy_limits.lean` を Sp・E2b に提供。規約は `foundations.md` §8、README は規約だけ。
-- **未コミット**：なし（今回の保存単位：coherent 積図式の native 積錐・両 Kan 脚・単位表現の全余錐比較の6モジュール30宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド7049 jobs・全4586宣言監査は終了コード0、標準三公理のみ。新規6モジュール30宣言に警告・sorry・追加公理なし。
+- **未コミット**：なし（今回の保存単位：元の fiber 値比較の輸送自然性・実際の native 積脚の全余錐作用比較の9モジュール26宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド7149 jobs・全4612宣言監査は終了コード0、標準三公理のみ。新規9モジュール26宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：native 積の脚の coherent 辺に沿う余錐輸送と、完成済みの単位表現の余錐を同定。`pointedSpaceFiberValueEquivalence` と `pointedRightFiberComparison` の両逆・輸送互換を照合し、元の `coconePointHomFamily` の像へ反映。その後 P_Σ を構成（HTT 5.5.8.8・10・11）。局所置換の存在（5.5.4.15・5.5.5.14）も残る。
+- **次の一手**：N-4：定値終対象 coherent 図式の元の余極限頂点を底の Kan 置換と比較し、sifted 余極限の空積保存を完了する。小さい全空間の射影を元の fiber 値同値と任意の底上の fiberwise 判定で照合。その後 P_Σ の定義・Yoneda の因子化・sifted 余極限閉性と生成・普遍性へ進む（HTT 5.5.8.8・10・11・14・15）。
   comma の局所随伴判定・局所置換からの反射は完成。逆向きの比較 fiber のホモトピーを再実装せず、同じ単位比較と普遍輸送の照合を使用。
   生成閉包＝局所同値の定理と反射の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を作る存在部分が残る。入力フィールドに仮定して完成とは扱わない。
   F1 の前層・Yoneda は正本・ソースで提供済みと確認。F2 の Ind・compact は進行中、presentable・随伴関手定理は後段。条件付き反射だけで局所化の存在の完成としない。F1・F2 は読み取り専用。
