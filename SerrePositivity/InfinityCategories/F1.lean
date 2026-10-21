@@ -2601,3 +2601,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalL
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeFactorization
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeCoherence
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoWhiskeredPasting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalCompositionNative
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalNativeTransportCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeGlobalCoherence

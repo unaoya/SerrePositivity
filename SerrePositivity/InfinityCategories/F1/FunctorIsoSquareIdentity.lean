@@ -48,4 +48,27 @@ def FunctorIso.sourceMap {X Y : SSet.{u}} {f g : X ⟶ Y} (_e : FunctorIso f g) 
 def FunctorIso.targetMap {X Y : SSet.{u}} {f g : X ⟶ Y} (_e : FunctorIso f g) :
     X ⟶ Y := g
 
+/-- 同じ前合成作用の二分解は、指定同型の両端も同じ射として回収する。 -/
+lemma FunctorIso.precomp_square_endpoints {H₀ H₁ X Y K : SSet.{u}}
+    {f g : X ⟶ Y} (e : FunctorIso f g)
+    (p₀ : H₀ ⟶ X) (r₀ : K ⟶ H₀) (p₁ : H₁ ⟶ X) (r₁ : K ⟶ H₁)
+    (h : r₀ ≫ p₀ = r₁ ≫ p₁) :
+    ((e.precomp p₀).precomp r₀).sourceMap =
+      ((e.precomp p₁).precomp r₁).sourceMap ∧
+    ((e.precomp p₀).precomp r₀).targetMap =
+      ((e.precomp p₁).precomp r₁).targetMap := by
+  constructor
+  · simpa only [sourceMap, Category.assoc] using congrArg (fun m ↦ m ≫ f) h
+  · simpa only [targetMap, Category.assoc] using congrArg (fun m ↦ m ≫ g) h
+
+/-- 端点正規化後の始点は、元の始点を回収する同じ射から回収される。 -/
+lemma functorIsoOfEq_sourceMap_of_eq {X Y : SSet.{u}} {f g f' g' a : X ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (h : a = f) :
+    a = (F2.functorIsoOfEq e hf hg).sourceMap := h.trans hf
+
+/-- 端点正規化後の終点は、元の終点を回収する同じ射から回収される。 -/
+lemma functorIsoOfEq_targetMap_of_eq {X Y : SSet.{u}} {f g f' g' a : X ⟶ Y}
+    (e : FunctorIso f g) (hf : f = f') (hg : g = g') (h : a = g) :
+    a = (F2.functorIsoOfEq e hf hg).targetMap := h.trans hg
+
 end SerrePositivity.InfinityCategories
