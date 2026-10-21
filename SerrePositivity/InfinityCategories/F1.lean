@@ -2040,3 +2040,15 @@ public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDia
 public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceFiber
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalVertex
+
+public import SerrePositivity.InfinityCategories.F1.VertexFiberPointIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionHornBoundary
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalFaces
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionDiagonalCriterion
