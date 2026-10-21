@@ -519,7 +519,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowTriangles,
     `SerrePositivity.KST.LocalizingInvariants.StrictCoherentArrowPresentation,
     `SerrePositivity.KST.LocalizingInvariants.FiberCospanRightShape,
-    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightPresentation]
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightPresentation,
+    `SerrePositivity.KST.LocalizingInvariants.FunctorHomInvertibility,
+    `SerrePositivity.KST.LocalizingInvariants.ConeHomInvertibility,
+    `SerrePositivity.KST.LocalizingInvariants.StrictDiagramHomIso,
+    `SerrePositivity.KST.LocalizingInvariants.FibrationReplacementMapInvertible,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberComparisonInvertible,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareFiberComparison,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumBFPiTransport,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareFiberGroupComparison,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopySquareRightPresentation,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
