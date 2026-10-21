@@ -2441,3 +2441,17 @@ public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareExactIso
 public import SerrePositivity.InfinityCategories.F1.PullbackCompatiblePathHomotopy
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedCoherence
+
+public import SerrePositivity.InfinityCategories.F1.FullyFaithfulFunctorIsoCoherence
+
+public import SerrePositivity.InfinityCategories.F1.VertexIsoMappingLaws
+
+public import SerrePositivity.InfinityCategories.F1.VertexFiberIsoProjection
+
+public import SerrePositivity.InfinityCategories.F1.TrivialKanFunctorIsoProjection
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionUnitCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomNaturalityLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomLiftCoherence

@@ -2,7 +2,7 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1。straightening → Yoneda・前層。twisted arrow・Hom 関手は α2b と分担。
 
-## 引き継ぎ（2026-10-21）
+## 引き継ぎ（2026-10-22）
 
 ### 現在地
 
@@ -98,7 +98,7 @@
 `cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は、同じ元の全 fibration の分類と全 Hom 作用の同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
 元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
-全局所 Hom の指定結合同型と元の分類作用・既存の Hom 輸送を結び、`cocartesianLocalHomComparison_cellOverNaturalityIso` で同じ共有セルへの自然性を構成済み。元の二辺と同じ一つの共有頂点の cospan は三成分とも Kan 間の同値。指定 path を保持する補正により厳密な自然変換を作り、`cocartesianTwoSimplexStrictPullbackMap_isQCatEquivalence` で実際の pullback 射の同値性を証明した。`cocartesianTwoSimplexCorrectedFirstSquare_coherence`・`SecondSquare_coherence` は、補正 path の辺の類から作った成分同型の後合成が元の両脚の自然性そのものと一致することを保証する。`pullbackCompatiblePathHomotopy` は共有頂点で厳密に整合する二つの成分 path の全円柱を同じ pullback へ貼り合わせる。次は大域分類作用から各セルへの既存の自然性と、両脚の自然性との共有頂点での三角形の等式を示す。その整合性から成分 path を組み立て、元の分類 Hom 作用と補正 pullback 比較を同定し、同じ二次元 Segal 比較を結論する。その後、全単体、有限セル・骨格の降下から一般の充満忠実性を結論する。照合・二次元の目安 2〜4 時間、有限セル・骨格の降下 4〜8 時間、一般の充満忠実性と監査 2〜4 時間（暫定）。
+全局所 Hom の指定結合同型と元の分類作用・既存の Hom 輸送を結び、`cocartesianLocalHomComparison_cellOverNaturalityIso` で同じ共有セルへの自然性を構成済み。元の二辺と同じ一つの共有頂点の cospan は三成分とも Kan 間の同値。指定 path を保持する補正により厳密な自然変換を作り、`cocartesianTwoSimplexStrictPullbackMap_isQCatEquivalence` で実際の pullback 射の同値性を証明した。`cocartesianTwoSimplexCorrectedFirstSquare_coherence`・`SecondSquare_coherence` は、補正 path の辺の類から作った成分同型の後合成が元の両脚の自然性そのものと一致することを保証する。`pullbackCompatiblePathHomotopy` は共有頂点で厳密に整合する二つの成分 path の全円柱を同じ pullback へ貼り合わせる。`functorIsoOfTrivialKanFibration_postcomp`・`homSpanSectionSourceIso_projection` で既存の大域 fiber 内比較と局所切断の単位比較の射影が同じ端点等式を回収することを証明した。大域自然性の fiber 内比較を `cocartesianBaseChangeHomNaturalityLiftIso` に抽出し、`cocartesianBaseChangeHomNaturalityIso_lift_heq` で既存の自然性が同じ比較の零射影の端点正規化であることを検証済み。`IsFullyFaithful.postcomp_functorIso_injective` と逆像の回収則により、指定同型の値の一致を共通 Hom 上で検査できる。次はこれらを既存の比較三角形の Hom の各射影に適用し、大域分類作用から各セルへの自然性と両脚の自然性との共有頂点での三角形の等式を示す。その整合性から成分 path を組み立て、元の分類 Hom 作用と補正 pullback 比較を同定し、同じ二次元 Segal 比較を結論する。その後、全単体、有限セル・骨格の降下から一般の充満忠実性を結論する。照合・二次元の目安 2〜4 時間、有限セル・骨格の降下 4〜8 時間、一般の充満忠実性と監査 2〜4 時間（暫定）。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
