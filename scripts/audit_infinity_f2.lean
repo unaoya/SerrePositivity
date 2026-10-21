@@ -2445,3 +2445,27 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_iff_of_iso
 #check @SerrePositivity.InfinityCategories.F2.initialBoundaryLifting_coconeRestriction_of_pointwise
 #check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.F2.homotopyVertexEdge_precomp
+#check @SerrePositivity.InfinityCategories.F2.colimitHomotopy_isInvertible_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.colimitHomotopy_vertex_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.arrowFamilyHomotopy
+#check @SerrePositivity.InfinityCategories.F2.arrowFamilyHomotopy_vertex_edge
+#check @SerrePositivity.InfinityCategories.F2.isEquivalencePathVertex_colimitVertex
+#check @SerrePositivity.InfinityCategories.F2.isEquivalencePathVertex_of_pointwiseColimit
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_restrict_iff_of_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.stdSimplex_firstVertex_mono
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_stdSimplex_iff_firstVertex
+#check @SerrePositivity.InfinityCategories.F2.pointConeDegeneracy
+#check @SerrePositivity.InfinityCategories.F2.pointConeDegeneracy_inr
+#check @SerrePositivity.InfinityCategories.F2.pointConeDegeneracy_face_one
+#check @SerrePositivity.InfinityCategories.F2.pointConeDegeneracy_face_zero
+#check @SerrePositivity.InfinityCategories.F2.pointConeDegeneracy_inl
+#check @SerrePositivity.InfinityCategories.F2.pointConeIdentityComparison
+#check @SerrePositivity.InfinityCategories.F2.pointConeIdentityComparison_projection_edge
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_point_iff_invertible
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_point_iff_edge
+#check @SerrePositivity.InfinityCategories.F2.coneInitialLeg
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_iff_initialLeg
+#check @SerrePositivity.InfinityCategories.F2.pointwiseColimit_preserves_initialShapeLimits
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_simplex
