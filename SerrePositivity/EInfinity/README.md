@@ -2052,7 +2052,17 @@ native 指定 Hom augmentation に回収し、弱同値性を追加入力なし�
 `freeWordDiagonalAugmentation_backwardBackward_weak/cons_backwardBackward_weak` は
 残りの元の語だけを帰納仮定とする後向き二列の段階。
 `freeWordDiagonalAugmentation_twoBackward_weak` は元の二列の無条件の弱同値性。
-任意可換環の実モデルの二列・三列へも適用する。混合二方向・空語と全語の帰納は後続。
+任意可換環の実モデルの二列・三列へも適用する。
+`Zigzag.Relative.empty_fixed_isEquivalence` は対象単射な元の相対関手による空語の圏同値。
+`FixedObjectDiagram.wordDiagonalAugmentation_empty_weak` は同じ空語の対角比較の弱同値性。
+`freeWordDiagonalAugmentation_empty_weak` は元の自由解像の空語の左射自身の弱同値性。
+`CoefficientProduct.diagram` は元の二つの Cat 値係数の積と全関手則。
+`FirstColumn.forwardBackwardFunctor` は +− の通常 Hom と残りの共変係数の積への切断。
+`forwardBackwardRebuild_object/forwardBackwardRebuild_functor_obj/forwardBackwardPreimage_map`
+は元の全対象・全縦射の両往復を回収する。
+`forwardBackwardCatIso/forwardBackwardGraphIso` は同じ切断関手を順方向とする厳密な同型。
+任意可換環の実モデルの全自由次数と空語へも適用する。+− の全自然性と対角比較、
+−+ の分解・係数の弱比較と全語の帰納は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
