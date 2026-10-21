@@ -2651,3 +2651,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeHomotopy_target
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitAdjustedEdge
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitEdge_homMk_eq_native
+
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeValue
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeValue_edge
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityIdentity_edge
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareDiagonalEdge
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareDiagonal
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareDiagonal_edge
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareUpperIso
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareLowerIso
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareValueIso
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareUpperIso_heq
+#check @SerrePositivity.InfinityCategories.F2.kanFixedSquareLowerIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValueNativeIso
