@@ -7617,6 +7617,41 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso_postcompose,
       `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso_precompose]
 
+@[noinline] private def e2RequiredBatch126 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.componentsFunctor,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.componentsFactorization,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.map,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.map_comp,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.map_actual,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.iso,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.iso_hom,
+      `SerrePositivity.EInfinity.Hammock.AnodyneComponents.iso_fac,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.rowValue_eq,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.graphMap,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.graphMap_app,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.graphMap_wordAction,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.colimitValue,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.graphInclusion_colimitValue,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.reducedValue,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.graphNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.UniverseValue.colimitNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.ThreeArrow.special_value,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComponentsIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComponentsIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComponentsIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComponentsIso_hammock,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComponentsIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComponentsIso_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockValue,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockValue_reduction,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_value,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_value_zero,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockPiZeroValue,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComponentsIso_value,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockPiZeroValue_bijective,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammockPiZeroEquiv]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7648,7 +7683,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18447,3 +18482,37 @@ example
           ((cofibrantAlgebraDKInclusion A).obj Z))) :=
   cAlgMappingSpaceComparisonIso_precompose A Z f
 end e2DKMappingSpaceNaturalityFixtures
+
+section e2HigherComparisonComponentsFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory HomotopicalAlgebra Opposite
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) :
+    AnodyneComponents.map (AnodyneHomotopy.anodyneQ.map f) = SSet.π₀Functor.map f :=
+  AnodyneComponents.map_actual f
+variable (A : Type e2ComplexLimitUniverse) [CommRing A]
+example (X Y : CAlgSimplicialCategory A) :
+    SSet.π₀Functor.map (exInfinityUnit.app
+        (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
+      (cAlgMappingSpaceComponentsIso A X Y).hom =
+    (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom :=
+  cAlgMappingSpaceComponentsIso_unit A X Y
+
+variable (X Y : (BarrattEccles.operad A).Algebra)
+example
+    (z : SSet.π₀ (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.obj (((mappingSpace A).obj (op X)).obj Y))) :
+    let := modelCategory A
+    algebraReducedHammockPiZeroValue A X Y
+        ((mappingSpaceReducedHammockComponentsIso A X Y).hom z) =
+      mappingSpacePiZeroEquiv A (weakEquivalences (BarrattEccles.operad A).Algebra).Q (op X) Y
+        (UniverseLiftPiZero.down (((mappingSpace A).obj (op X)).obj Y) z) :=
+  mappingSpaceReducedHammockComponentsIso_value A X Y z
+
+example :
+    let := modelCategory A
+    Function.Bijective (algebraReducedHammockPiZeroValue A X Y) :=
+  algebraReducedHammockPiZeroValue_bijective A X Y
+end e2HigherComparisonComponentsFixtures

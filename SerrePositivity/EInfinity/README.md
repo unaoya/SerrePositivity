@@ -2151,7 +2151,18 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 元の Map^h の同じ比較の前合成・後合成・両端同時の自然性。
 `cAlgMappingSpaceComparisonIso_postcompose/precompose` は元の両作用を同じ Ex∞ で送った
 実 Kan Hom の比較の自然性。元の Ex∞ 単位の同じ比較の回収式を保持する。
-既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
+`AnodyneComponents.componentsFunctor/map/iso` は元の anodyne 局所化へ降ろした π₀ の作用。
+`map_actual/iso_fac` は元の実単体写像と同じ左右射を π₀ で回収する。
+`mappingSpaceReducedHammockComponentsIso/cofibrantAlgebraDKMappingSpaceComponentsIso`
+と `cAlgMappingSpaceComponentsIso` は同じ高次比較が誘導する実際の π₀ 同型。
+それぞれの `_fac/_hammock/_unit` は元の因子化と同じ Ex∞ 単位を保持する。
+`UniverseValue.graphMap/colimitValue/reducedValue` は Hom の宇宙が異なる元の全語の評価。
+`ThreeArrow.special_value` は元の三本矢の二つの逆射と中間射を回収する。
+`mappingSpaceReducedHammockNerveMap_value/value_zero` は同じ全図式と零単体の値。
+`mappingSpaceReducedHammockComponentsIso_value` は全 π₀ 類での既存 Map^h 同値との一致。
+`algebraReducedHammockPiZeroValue_bijective/algebraReducedHammockPiZeroEquiv` は
+同じ元の評価そのものによる hammock の π₀ と普通の局所化 Hom の同値。
+native DK 側の評価との照合を通じた既存 DK/Map^h π₀ 同値との一致、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性まで完成。既存 π₀ 同値との整合、∞ 局所化の普遍性は後続。
