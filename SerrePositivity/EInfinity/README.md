@@ -1757,6 +1757,18 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 hammock 上の値 β の fiber を元の被覆の固定端点 hammock へ同定する。空語・任意可換環の
 実際の全自由次数と既存の同じ評価で検証。有限部分木の葉の除去による成分可縮性、
 元の両弱比較・既存 DK Hom の高次比較は未完成。
+`pathVertices` と `QuiverTree.rootVertices/rootHull/RootClosed` は元の根からの有限射列による
+有限包を構成し、祖先への閉性・最小性・単調性・空集合の包を証明する。
+`RootClosed.erase_max/parent_mem_of_closed/LeafDeletion/chooseLeafDeletion` は最大高さの葉・
+残る親・元の接続辺と除去後の閉性を保持し、頂点数が真に減ることを証明する。
+`FreeQuiverCover.finiteHull/finiteHull_closed/finiteHullLeafDeletion` は元の被覆の証明済みの
+測地木・薄さへ代入する。`FiniteQuiver.quiver/pathInclusion/subsetFunctor` は元の有限頂点
+部分型の生成辺を保持する自由圏の界面で、quiver は局所的に選ぶ。
+`LeafDeletion.retractVertex/retractArrow/retractionFunctor` は葉だけを親へ送り、接する辺を
+恒等射へ、他の辺を同じ元の生成辺へ送る。`inclusion_retraction` は残りの自由圏上の
+厳密な恒等性。`retractionRelative/inclusionRelative` は元の二つの全指定相対関手。
+空集合の包・任意可換環の実際の全自由次数と同じ関手の左逆でも検証。
+逆順の合成と恒等関手を結ぶ自然変換・hammock のホモトピー・成分可縮性・両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
