@@ -639,7 +639,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellPrimitives,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellAlgebraLift,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellColimitDesc,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionLift]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionMapLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathModel,
+    `SerrePositivity.KST.LocalizingInvariants.CochainTensorPrecomposeZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathDiagonal,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathHomotopy]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
