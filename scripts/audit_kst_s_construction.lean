@@ -22596,3 +22596,123 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHAChainLift_top_image
 #print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_top_image
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_last_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_last_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_range
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_range
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_subset
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalOrder_subset
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_restrict
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_restrict
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_post
+
+#check @SerrePositivity.KST.SConstruction.serreCubeAugmentation_dimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeAugmentation_dimension
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHomIso
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHomIso
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHomIso_augmentation
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHomIso_augmentation
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_augmentation_eq_inv
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_augmentation_eq_inv
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_augmentation_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_augmentation_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_id_eq_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_id_eq_hom
+
+#check @SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_id_isIso
+#print axioms SerrePositivity.KST.SConstruction.simplexDiagonalLambdaHom_id_isIso
+
+#check @SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_id
+
+#check @SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_post
+#print axioms SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_post
+
+#check @SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexLambdaDiagonalMap_recovery
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_self
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_self
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_of_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_of_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_of_gt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_of_gt
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_id
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_post
+
+#check @SerrePositivity.KST.SConstruction.simplexLambdaVertexEquiv
+#print axioms SerrePositivity.KST.SConstruction.simplexLambdaVertexEquiv
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseObj
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseObj
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseObj_vertex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseObj_vertex
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_vertices
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_vertices
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_id
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_id
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_post
+
+#check @SerrePositivity.KST.SConstruction.enrichedHom_left_unit_composition
+#print axioms SerrePositivity.KST.SConstruction.enrichedHom_left_unit_composition
+
+#check @SerrePositivity.KST.SConstruction.enrichedHom_right_unit_composition
+#print axioms SerrePositivity.KST.SConstruction.enrichedHom_right_unit_composition
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_left_diagonal
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_left_diagonal
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_right_diagonal
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_right_diagonal
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_left_reverse
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_left_reverse
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_right_reverse
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_right_reverse
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_of_strict
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_of_strict

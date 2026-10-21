@@ -1837,4 +1837,13 @@ public import SerrePositivity.KST.SConstruction.SimplexHAChainLiftRecovery
 public import SerrePositivity.KST.SConstruction.SimplexHAChainLiftFaces
 public import SerrePositivity.KST.SConstruction.SimplexHAAllTailSourceBoundary
 public import SerrePositivity.KST.SConstruction.SimplexHAChainLiftTopImage
+public import SerrePositivity.KST.SConstruction.SimplexHAStrictIntervalOrder
+public import SerrePositivity.KST.SConstruction.SimplexHAIntervalHomMap
+public import SerrePositivity.KST.SConstruction.SimplexDiagonalLambdaHom
+public import SerrePositivity.KST.SConstruction.SimplexLambdaDiagonalMap
+public import SerrePositivity.KST.SConstruction.SimplexHAHomMap
+public import SerrePositivity.KST.SConstruction.SimplexHAOriginalHomMap
+public import SerrePositivity.KST.SConstruction.EnrichedHomUnitComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAHomEasyComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAHomCompositionReduction
 /-! # ∞-S• 構成と連結 K 理論 -/
