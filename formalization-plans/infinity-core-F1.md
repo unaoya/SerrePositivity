@@ -97,8 +97,8 @@
 `cocartesianHomFixedComponentComparison_isQCatEquivalence` と
 `cocartesianTransportDiagramHomInterval_isQCatEquivalence` により、元の一次元の全 Hom 作用は同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
-元の相対 Hom・指定辺保存 Hom に加え、両射影を底変換した元の cocartesian Hom の core も、単射脚を持つ底の pushout を厳密な pullback に写すと証明済み。
-次は共有頂点を持つ区間にこの貼り合わせを適用し、分類先の区間 Hom と底変換の比較 span を束ねて、同じ分類 Hom 作用の全単体での同値性を証明する。
+元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
+次は底変換の比較 span をこの両側の Segal 比較と整合させ、同じ分類 Hom 作用の二次元・全単体での同値性を証明する。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
