@@ -32,13 +32,12 @@ def cocartesianBaseChangeTransportTriangleSecondIso
             ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
             ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)))
       (cocartesianBaseChangeTriangleHomFirst l k p q ≫
-        cocartesianBaseChangeRestrictedHomSpanOne l k p q) := by
-  have e := FunctorIso.precomp (cocartesianBaseChangeSecondHomCompositeTransportIso l k p q)
-    (cocartesianBaseChangeTriangleHomSecond l k p q)
-  simp only [← Category.assoc] at e
-  rw [← cocartesianBaseChangeTriangleHom_second_one l k p q,
-    ← cocartesianBaseChangeTriangleHom_middle l k p q] at e
-  simpa only [Category.assoc] using e
+        cocartesianBaseChangeRestrictedHomSpanOne l k p q) :=
+  F2.functorIsoOfEq
+    (FunctorIso.precomp (cocartesianBaseChangeSecondHomCompositeTransportIso l k p q)
+      (cocartesianBaseChangeTriangleHomSecond l k p q))
+    (by rw [← Category.assoc, ← cocartesianBaseChangeTriangleHom_second_one l k p q])
+    (cocartesianBaseChangeTriangleHom_middle l k p q).symm
 
 /-- 比較三角形の直接の輸送に指定された同型。 -/
 def cocartesianBaseChangeTransportTriangleDirectIso
@@ -49,10 +48,11 @@ def cocartesianBaseChangeTransportTriangleDirectIso
         cocartesianBaseChangeHomSpanOne (l ⋙ k) p q) ≫ (cocartesianBaseChangeHomTransport (l ⋙ k) p q ≫
         cocartesianBaseChangeHomCompositionNormalization l k p q))
       (cocartesianBaseChangeTriangleHomFirst l k p q ≫
-        cocartesianBaseChangeRestrictedHomSpanZero l k p q) := by
-  have e := (cocartesianBaseChangeTriangleHomLong_transportIso l k p q).postcomp
-    (cocartesianBaseChangeHomCompositionNormalization l k p q)
-  rw [cocartesianBaseChangeTriangleHom_zero_normalization l k p q] at e
-  simpa only [Category.assoc] using e
+        cocartesianBaseChangeRestrictedHomSpanZero l k p q) :=
+  F2.functorIsoOfEq
+    ((cocartesianBaseChangeTriangleHomLong_transportIso l k p q).postcomp
+      (cocartesianBaseChangeHomCompositionNormalization l k p q))
+    (Category.assoc _ _ _)
+    (cocartesianBaseChangeTriangleHom_zero_normalization l k p q)
 
 end SerrePositivity.InfinityCategories

@@ -34,4 +34,20 @@ lemma functorIsoOfEq_precomp_heq {A E K : SSet.{u}}
   subst f' g'
   rfl
 
+/-- 端点だけの正規化後に後合成しても、指定された元の同型の値を保持する。 -/
+lemma functorIsoOfEq_postcomp_heq {A E B : SSet.{u}}
+    {f g f' g' : A ⟶ E} (e : FunctorIso f g) (hf : f = f') (hg : g = g')
+    (p : E ⟶ B) :
+    HEq ((F2.functorIsoOfEq e hf hg).postcomp p) (e.postcomp p) := by
+  subst f' g'
+  rfl
+
+/-- 端点正規化された同じ指定値との等式は、後合成後もその元の値を保持する。 -/
+lemma functorIsoOfEq_postcomp_heq_of_eq {A E B : SSet.{u}}
+    {f g f' g' : A ⟶ E} (e : FunctorIso f g) (hf : f = f') (hg : g = g')
+    (e' : FunctorIso f' g') (he : F2.functorIsoOfEq e hf hg = e') (p : E ⟶ B) :
+    HEq (e'.postcomp p) (e.postcomp p) := by
+  subst e'
+  exact functorIsoOfEq_postcomp_heq e hf hg p
+
 end SerrePositivity.InfinityCategories
