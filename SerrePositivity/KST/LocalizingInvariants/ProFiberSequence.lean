@@ -6,7 +6,8 @@ public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumValues
 /-!
 概要：実 fiber 図式の塔と、元の三対象・包含・射影の pro 値。
 方針：全正方形の比較を評価する関手を既存の Tower・LevelHom へ適用する。
-規約：接続射の自然性は未主張。使われ方：自然な長完全列と pro 切除の接続。
+規約：各段の接続射を保持し、ProFiberConnecting でレベル射へ昇格する。
+使われ方：自然な長完全列と pro 切除の接続。
 -/
 
 @[expose] public section

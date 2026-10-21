@@ -686,4 +686,12 @@ public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingArrowCongr
 public import SerrePositivity.KST.LocalizingInvariants.HomotopySquareCanonicalRight
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramModelEquality
 
+public import SerrePositivity.KST.LocalizingInvariants.ArrowTransportNaturality
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramFiberGroupNaturality
+public import SerrePositivity.KST.LocalizingInvariants.FunctorHomEvaluateArrowIdentity
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramBaseGroupNaturality
+public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramBoundaryNaturality
+public import SerrePositivity.KST.LocalizingInvariants.ProFiberConnecting
+public import SerrePositivity.KST.LocalizingInvariants.ProFiberProjectionEquivalence
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
