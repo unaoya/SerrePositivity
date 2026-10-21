@@ -48,6 +48,8 @@
   標的固定の二重 fiber 内の同じ Hom 類の二辺を頂点同型で比較し、代表不変性と `UnitCommaInitialCondition` を持つ coherent な関手・単位を回収。
   **comma 始対象条件から、元の指定単位の標準写像空間比較の同値性と ∞ 随伴を構成。** 同じ合成三角形の円柱を、同じ comma 頂点で評価した left fibration の普遍輸送と照合。
   **各対象の局所置換が与えられれば、局所全部分圏の反射を構成。** presentable 性からの局所置換の存在は未証明。
+  **P_Σ 入口：sifted 性・filtered からの入口・弱可縮性を証明。** 元の F2 の二項積の全空間 Kan 比較を sifted な底へ一般化し、空積の比較も証明。底の quasicategory 性は不要。
+  native な余極限余錐への積比較の接続と、P_Σ の構成・普遍性は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -71,9 +73,6 @@
   `reflective_isLocal_iff_invertedEdges`、`reflective_localEquivalenceHom_iff`、`reflective_localEquivalences_eq`、
   `localEquivalenceHom_iff_edge_mem`、`localEquivalences_compStruct`、
   `localEquivalences_compStruct_cancel_left`、`localEquivalences_compStruct_cancel_right`、
-  `isLocalForHom_iff_constantHom_bijective`、`isLocalForHom_edge_iff_sourceRestriction_trivial`、
-  `sourceRestriction_trivial_of_localObject`、`spanCoconeMapping_right_trivial_of_localObject`、
-  `spanCoconeMapping_rightTarget_trivial_of_localObject`、
   `iteratedSliceUnderIso`、`iteratedSliceUnderIso_restriction`、`sliceUnderRestrict_cocone_trivial`、
   `pushoutCoconeRestriction_trivial`、`isLocalForHom_pushout_top_of_bottom`、
   `localEquivalences_pushout_bottom_top`、`localEquivalences_pushout_left_right`。
@@ -87,17 +86,18 @@
   `cosliceCommaComparison_isQCatEquivalence`、`localReplacementCommaPoint_isInitial`、`localReplacementCommaPoint_uncurry`、`unitCommaFiber_initial_exists_of_localReplacements`、
   `commaRelativeInitialProjection_trivialKanFibration`、`exists_unitCommaSection_of_fiberInitial`、`commaSectionUnit`、`commaSectionUnit_component`、
   `unitCommaTargetFiber_isInitial_iff_of_homMk_eq`、`commaSectionUnit_initialCondition`、`exists_unit_initialCondition_of_fiberInitial`、
-  `unitIntervalMap_commaTransportIso`、`qcat_exists_adjunction_unitHom_iff_commaInitial`、`exists_qcatAdjunction_of_commaFiberInitial`、`isReflectiveSubcategory_of_localReplacements`。
+  `unitIntervalMap_commaTransportIso`、`qcat_exists_adjunction_unitHom_iff_commaInitial`、`exists_qcatAdjunction_of_commaFiberInitial`、`isReflectiveSubcategory_of_localReplacements`、
+  `IsSiftedInfinity`、`isWeaklyContractible_of_sifted`、`totalKanProductComparison_homotopyEquivalence_of_sifted`、`continuousKanReplacement_isContractibleKan_of_sifted`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   集約 `InfinityCategories/HomotopyLimits.lean`・全監査 `scripts/audit_homotopy_limits.lean` を Sp・E2b に提供。規約は `foundations.md` §8、README は規約だけ。
-- **未コミット**：なし（今回の保存単位：comma 始対象からの単位比較・∞ 随伴・局所置換からの反射の5モジュール16宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド6355 jobs・全4443宣言監査は終了コード0、標準三公理のみ。新規5モジュール16宣言に警告・sorry・追加公理なし。
+- **未コミット**：なし（今回の保存単位：sifted 性と元の空積・二項積の比較の4モジュール13監査対象（クラスと生成宣言を含む）、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド6438 jobs・全4456宣言監査は終了コード0、標準三公理のみ。新規4モジュールに警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：P_Σ の入口として sifted 性と有限積との交換を整備（HTT 5.5.8.1・8・11）。局所置換の存在（5.5.4.15・5.5.5.14）も残る。閉性・生成閉包を再実装しない。
+- **次の一手**：N-4：元の sifted 積比較を native な余極限余錐へ接続し、P_Σ を構成（HTT 5.5.8.8・10・11）。局所置換の存在（5.5.4.15・5.5.5.14）も残る。閉性・生成閉包を再実装しない。
   comma の局所随伴判定・局所置換からの反射は完成。逆向きの比較 fiber のホモトピーを再実装せず、同じ単位比較と普遍輸送の照合を使用。
   生成閉包＝局所同値の定理と反射の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を作る存在部分が残る。入力フィールドに仮定して完成とは扱わない。
   F1 の前層・Yoneda は正本・ソースで提供済みと確認。F2 の Ind・compact は進行中、presentable・随伴関手定理は後段。条件付き反射だけで局所化の存在の完成としない。F1・F2 は読み取り専用。
