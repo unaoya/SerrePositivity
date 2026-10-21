@@ -2543,3 +2543,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondF
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoPastingTransport
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleSecondNaturality
+
+public import SerrePositivity.InfinityCategories.F1.HomTransportSquareEndpointNormalization
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionRestrictionIdentity
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionRestrictionCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleTerminalAction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeCompositionArgument
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeFirstRestrictionFactor
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestrictionNormalizedIdentity

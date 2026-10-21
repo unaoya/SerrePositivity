@@ -55,4 +55,14 @@ lemma functorIsoOfEq_precomp_postcomp_heq_of_eq {H X Y K : SSet.{u}}
   exact (heq_of_eq (F2.functorIso_precomp_postcomp e r p).symm).trans
     (functorIsoOfEq_postcomp_heq_of_eq (e.precomp r) hf hg d hd p).symm
 
+/-- 同じ合成作用を与える二つの前合成の分解は、指定同型の同じ値を回収する。 -/
+lemma functorIso_precomp_square_heq {H₀ H₁ X Y K : SSet.{u}}
+    {f g : X ⟶ Y} (e : FunctorIso f g)
+    (p₀ : H₀ ⟶ X) (r₀ : K ⟶ H₀) (p₁ : H₁ ⟶ X) (r₁ : K ⟶ H₁)
+    (h : r₀ ≫ p₀ = r₁ ≫ p₁) :
+    HEq ((e.precomp p₀).precomp r₀) ((e.precomp p₁).precomp r₁) := by
+  exact (heq_of_eq (F2.functorIso_precomp_precomp e p₀ r₀)).trans
+    ((F2.functorIso_precomp_heq_of_map_eq e h).trans
+      (heq_of_eq (F2.functorIso_precomp_precomp e p₁ r₁).symm))
+
 end SerrePositivity.InfinityCategories
