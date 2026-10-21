@@ -20693,3 +20693,63 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_left_unit
 #check @SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_right_unit
 #print axioms SerrePositivity.KST.SConstruction.cubicalLambdaOplaxTensor_right_unit
+#check @SerrePositivity.KST.SConstruction.necklaceInOfIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceInOfIso
+#check @SerrePositivity.KST.SConstruction.necklaceInToOfIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceInToOfIso
+#check @SerrePositivity.KST.SConstruction.necklaceInOfIso_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.necklaceInOfIso_hom_ext
+#check @SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.necklaceInOfIso_isTerminal
+#check @SerrePositivity.KST.SConstruction.necklaceInOfIso_cell_isIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceInOfIso_cell_isIso
+#check @SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso
+#check @SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_hom
+#check @SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_cell
+#check @SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_cell_inv
+#print axioms SerrePositivity.KST.SConstruction.necklaceIsoCubicalMappingIso_cell_inv
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_simplex
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_simplex
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_monotone
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexVertexMap_monotone
+#check @SerrePositivity.KST.SConstruction.necklaceSimplexVertexOrderHom
+#print axioms SerrePositivity.KST.SConstruction.necklaceSimplexVertexOrderHom
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplex_first_le_last
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplex_first_le_last
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplex_isEmpty
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplex_isEmpty
+#check @SerrePositivity.KST.SConstruction.necklaceBead
+#print axioms SerrePositivity.KST.SConstruction.necklaceBead
+#check @SerrePositivity.KST.SConstruction.simplexBeadFirstVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadFirstVertex
+#check @SerrePositivity.KST.SConstruction.simplexBeadLastVertex
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLastVertex
+#check @SerrePositivity.KST.SConstruction.simplexBeadFirstVertex_val
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadFirstVertex_val
+#check @SerrePositivity.KST.SConstruction.simplexBeadLastVertex_val
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLastVertex_val
+#check @SerrePositivity.KST.SConstruction.necklaceBead_dimension
+#print axioms SerrePositivity.KST.SConstruction.necklaceBead_dimension
+#check @SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso
+#check @SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso_hom
+#check @SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso_cell_inv
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadCubicalMappingIso_cell_inv
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso_forget
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso_forget
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso_hom
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomComonoidIso_hom
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso_diagonal
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso_diagonal
+#check @SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso_augmentation
+#print axioms SerrePositivity.KST.SConstruction.simplexBeadLambdaHomIso_augmentation

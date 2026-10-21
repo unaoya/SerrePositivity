@@ -1572,4 +1572,9 @@ public import SerrePositivity.KST.SConstruction.DGTensorUnitorLaws
 public import SerrePositivity.KST.SConstruction.DGTensorUnitors
 public import SerrePositivity.KST.SConstruction.ComonoidPairUnit
 public import SerrePositivity.KST.SConstruction.CubicalLambdaOplaxUnitLaws
+public import SerrePositivity.KST.SConstruction.NecklaceInIsoTerminal
+public import SerrePositivity.KST.SConstruction.NecklaceIsoCubicalMapping
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexMaps
+public import SerrePositivity.KST.SConstruction.SimplexBeadCubicalMapping
+public import SerrePositivity.KST.SConstruction.SimplexBeadLambdaHom
 /-! # ∞-S• 構成と連結 K 理論 -/
