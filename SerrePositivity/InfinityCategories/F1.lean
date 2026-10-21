@@ -2725,3 +2725,19 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexTargetR
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexTargetFactorization
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSegalComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStandardOverIsos
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStandardOverNaturality
+
+public import SerrePositivity.InfinityCategories.F1.SpanPullbackIsomorphism
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverIsomorphism
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStandardTargetComponents
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStandardTargetPullback
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStandardTargetFactorization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexTargetRestrictionEquivalence
