@@ -2297,3 +2297,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeR
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSectionAction
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSectionPostHom
+
+public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeDiagramHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeCoherentEdge

@@ -1,0 +1,27 @@
+module
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramCategory
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingVertices
+
+/-!
+概要：元の strict な自然変換を、quasicategory 値図式の圏の通常の射にする。
+方針：元の変換の頂点をテンソル単位からの射へ移す。
+規約：core による移送が保持する元の通常の射を使う。
+使われ方：底全体の結合比較を同じ coherent な辺へ実現する。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory SSet
+namespace SerrePositivity.InfinityCategories
+
+/-- 元の自然変換を、全 strict 変換の core で豊穣化した図式の圏の通常の射にする。 -/
+def quasicategoryDiagramHom {C : Type u} [Category.{u} C]
+    {F G : QuasicategoryDiagramCategory C}
+    (η : F.val ⋙ quasicategoryObjectForget ⟶ G.val ⋙ quasicategoryObjectForget) : F ⟶ G :=
+  (SSet.unitHomEquiv _).symm (strictDiagramMappingVertex η)
+
+end SerrePositivity.InfinityCategories
