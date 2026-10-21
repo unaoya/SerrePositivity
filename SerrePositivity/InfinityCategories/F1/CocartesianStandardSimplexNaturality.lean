@@ -54,4 +54,18 @@ def cocartesianStandardSimplexHomComparison_naturalityIso :
   · rw [cocartesianStandardSimplexHomComparison_presentation p q σ]
     rfl
 
+/-- 同じ底上の可換式で端点を指定した、全局所比較の自然性。 -/
+def cocartesianStandardSimplexHomComparison_overNaturalityIso
+    (τ : (Δ[m] : SSet.{u}) ⟶ nerve C) (h : f ≫ σ = τ) :
+    FunctorIso
+      (((cocartesianPullbackNativeCoreFunctor p.val.hom q.val.hom) ⋙
+        SSet.uliftFunctor.{u + 1, u}).map
+          (Over.homMk f h : Over.mk τ ⟶ Over.mk σ).op ≫
+          cocartesianStandardSimplexHomComparison τ p q)
+      (cocartesianStandardSimplexHomComparison σ p q ≫
+        (intervalDiagramOverFunctor P Q).map (uliftOverMorphism
+          (Over.homMk f h : Over.mk τ ⟶ Over.mk σ)).op) := by
+  subst τ
+  exact cocartesianStandardSimplexHomComparison_naturalityIso f σ p q
+
 end SerrePositivity.InfinityCategories

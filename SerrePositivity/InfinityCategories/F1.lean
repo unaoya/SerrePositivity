@@ -3037,3 +3037,21 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianNervePresentation
 public import SerrePositivity.InfinityCategories.F1.SimplexNerveRestrictionOver
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStandardSimplexNaturality
+
+public import SerrePositivity.InfinityCategories.F1.HornBoundarySimplexOverMaps
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNativeRestrictionMap
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneHornLocalNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalSource
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalRestrictions
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalCorrection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalFiberEquivalence

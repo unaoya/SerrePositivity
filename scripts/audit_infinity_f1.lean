@@ -8518,3 +8518,71 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_restrictionPresentation
 
 #check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_naturalityIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_overNaturalityIso
+
+#check @SerrePositivity.InfinityCategories.boundarySimplexOverMap
+
+#check @SerrePositivity.InfinityCategories.faceSimplexOverMap
+
+#check @SerrePositivity.InfinityCategories.hornSimplexOverMap
+
+#check @SerrePositivity.InfinityCategories.faceSimplexOverMap_comp
+
+#check @SerrePositivity.InfinityCategories.hornSimplexOverMap_comp
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeLiftPre_map_comp
+
+#check @SerrePositivity.InfinityCategories.cocartesianNativeLiftCoreFunctor_obj_kan
+
+#check @SerrePositivity.InfinityCategories.cocartesianNativeLiftCore_obj_kan
+
+#check @SerrePositivity.InfinityCategories.hornOneSimplexOverMap
+
+#check @SerrePositivity.InfinityCategories.hornOnePointSimplexOverMap
+
+#check @SerrePositivity.InfinityCategories.hornOnePointSimplexOverMap_comp
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneHornHomComparison_localNaturalityIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalSourceFace
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalSourceHorn
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_localSourceProduct
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalTargetFace
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalTargetHorn
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_localTargetProduct
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomComparison_localNaturalityIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianIntervalLiftOverFunctor_obj_kan
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalSourceRestriction
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalTargetRestriction
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalSourceRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalTargetRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalHomCorrection
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHom
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHom_comm
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHomIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHom_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHomIso_boundary
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalFiberComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalFiberComparison_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalFiberComparison_isQCatEquivalence
