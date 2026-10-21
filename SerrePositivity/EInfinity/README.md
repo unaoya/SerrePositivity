@@ -1500,7 +1500,18 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 全列・全縦射を含む元の τ への厳密な回収。前後の空語も含む。
 `refinedSimplex_recovery/refinedSimplex_inclusion` は元の Word 図式の作用と同じ余極限の
 標準射で、同じ元の単体を回収する。任意可換環の実際の全自由次数でも検証。
-prefix・残りの全単体作用素と全語への整合・反復・積分解は後続。
+prefix・残りの全単体作用素への整合は以下で完成。全語への整合・反復・積分解は後続。
+`firstColumn_simplex` は面・退化で基準行が変わっても同じ最小列の番号を回収する。
+`ColumnSplit.*_precomp` は元の語の切断と再添字の整合。
+`Attachments.sourceJoint_simplex/targetJoint_simplex/leftAttachment_simplex/rightAttachment_simplex`
+と各 block の `*_simplex` は元の接合点・接続自然変換・全縦射を保持する。
+`prefixDiagram_simplex/residualDiagram_simplex/refinedDiagram_simplex/refinedFunctor_simplex`
+は元の全図式の整合。`refinedSimplex_simplex/refinementMap_simplex` は元の全作用素と同じ圧縮射。
+`AttachedPrefix.index_simplex/diagram_simplex/residual_simplex/generator_simplex/functor_simplex`
+は実際に選んだ最初の列と因子の再添字を照合する。
+`markedFunctor_simplex/markedSimplex_simplex` は実際の指定部分圏の W-hammock へも移す。
+端点と語の表示が異なる因子は異種等式、固定端点の refined 全図式・単体は厳密な等式。
+任意可換環の実際の全自由次数にも適用。語の作用・reduction・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
