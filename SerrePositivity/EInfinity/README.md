@@ -1808,7 +1808,23 @@ hammock のホモトピーへの移送・成分可縮性・命題2.2の両弱比
 `LeafDeletion.collapseRelative/collapse_colimitMap_isWeakHomotopyEquivalence` は
 葉を除去して戻す合成を元の全端点の hammock 上の弱同値へ移す。葉が端点でも除外しない。
 空語・全語の元の標準射・任意可換環の実際の全自由次数でも検証。
-葉の除去と包含自体の各弱比較・有限木と全被覆の可縮性・命題2.2の両弱比較は未完成。
+葉の除去と包含自体の各弱比較・有限木の可縮性は下記の通り完成。全被覆の可縮性・命題2.2の両弱比較は未完成。
+`weak_middle_of_composites/contractible_of_weak_factor` は元の Kan 標的の反変 π₀ から
+二対六則と可縮な因子による可縮性を回収する。
+`SubsingletonCategory.row_eq/simplex_eq/colimit_point_eq_unit/colimit_isTerminal` は
+一対象で薄い元の圏の全行・全単体・空語からの単位の回収と元の余極限の終対象性。
+`QuiverTree.root_no_arrow/root_path_eq_nil/rootPathsSubsingleton/rootPathsThin` は
+根だけの元の有限集合に生成辺が無く、元の自由圏が一対象で薄いことを証明する。
+`root_colimit_isWeaklyContractible` と `LeafDeletion.collapse_colimitMap_factor/
+contractible_of_remaining` を頂点集合の強い帰納で接続し、
+`finite_colimit_isWeaklyContractible` が根に閉じた元の有限部分木の全端点を扱う。
+`FiniteQuiver.subsetRelative` と `subset_colimitMap_isWeakHomotopyEquivalence`、
+`LeafDeletion.retraction_colimitMap_isWeakHomotopyEquivalence/
+inclusion_colimitMap_isWeakHomotopyEquivalence` は同じ元の個々の比較射も回収する。
+`FreeQuiverCover.finiteHull_colimit_isWeaklyContractible/
+finiteHull_subset_colimitMap_isWeakHomotopyEquivalence` は証明済みの元の被覆へ代入する。
+根だけ・空集合の包・任意可換環の実際の全自由次数も検証。
+全被覆への有限支持と filtered 余極限による移送・命題2.2の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
