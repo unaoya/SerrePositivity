@@ -7283,3 +7283,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianIsoTransportHomPath_ι
 #check @SerrePositivity.InfinityCategories.cocartesianIsoTransportHomPath_zero
 #check @SerrePositivity.InfinityCategories.cocartesianIsoTransportHomPath_one
+#check @SerrePositivity.InfinityCategories.intervalFunctorVertexEdge_injective
+#check @SerrePositivity.InfinityCategories.intervalFamily_vertex_edge
+#check @SerrePositivity.InfinityCategories.cocartesianIsoTransportHomPath_native_vertex
+#check @SerrePositivity.InfinityCategories.cocartesianIsoTransportNativeHomComparison

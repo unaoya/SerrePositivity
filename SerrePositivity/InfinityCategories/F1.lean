@@ -2371,3 +2371,9 @@ public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedCompari
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportEdge
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportHomPath
+
+public import SerrePositivity.InfinityCategories.F1.IntervalFamilyVertexEdge
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativePath
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomComparison
