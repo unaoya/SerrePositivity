@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
 public import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite
 public import SerrePositivity.InfinityCategories.Stable.InitialEdgeIso
 public import SerrePositivity.InfinityCategories.Stable.TriangleMorphismExtension

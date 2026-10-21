@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
 import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseBoundary
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseComparisonCut
@@ -4254,9 +4255,20 @@ open Lean in
 #check SerrePositivity.InfinityCategories.kanHomotopyOpposite_vertex_edge
 
 open Lean Elab Command in
+#check SerrePositivity.InfinityCategories.functorOppositeHomEquiv_postcomp
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOppositeHomEquiv
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOppositeHomEquiv_spec
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOppositeHomEquiv_naturality_right
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOppositeHomEquiv_naturality_left
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOppositeHomEquiv_precomp
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOfOpposite
+#check SerrePositivity.InfinityCategories.qcatAdjunctionOfOpposite_homEquiv
+
+open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite,
     `SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugBaseComparisonCut,
