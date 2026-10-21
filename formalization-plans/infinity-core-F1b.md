@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の全空間模型の native 余極限性と filtered 有限検出を証明済み。a6 は元の模型 fiber・全空間比較の同値性、指定 path・二脚の整合、coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は元の余極限頂点を持つ native 引き戻し極限錐、終対象・空形状・全標準単体の交換、形状の接着の錐空間の native 極限性を証明。finiteShape_cell_induction と CoherentFilteredLimitExchangeShape、空形状・単体の極限の存在を整備。部分極限の coherent な錐族と底を固定する比較三角形、元の全関手 cospan 錐の二三角形を保つ coherent 表示と各点の a6 への適用を構成。coherentColimitFunctor は全小 coherent 図式の元の全空間頂点と native 余錐を厳密に保ち、coherentCompletedLimit_iff_colimitFunctor は元の任意の指定点ごとの余錐による完成を全錐の像へ比較。元の単位正方形の上下三角形から輸送の同型を反映し、coherentColimitIntervalNativeHomotopy は指定辺と native 区間表示の両端固定全円柱を保持。coherentColimitTransportValueIso は元の具体的 Kan 頂点射との輸送の値の比較。coherentColimitEdgeValueNativeIso は同じ全円柱の上下二単体から Kan 値の射の比較を構成し、kanFixedSquareUpperIso_heq・kanFixedSquareLowerIso_heq は元の精密化同型を保持。未完：native 区間表示の Kan 値と a6 の coherentTotalMapNativeValueDown の比較の整合、元の二三角形・指定 path を保つ全錐比較と余極限関手の引き戻し保存、部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
+  一般 coherent 図式の全空間模型の native 余極限性と filtered 有限検出を証明済み。a6 は元の模型 fiber・全空間比較の同値性、指定 path・二脚の整合、coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は元の余極限頂点を持つ native 引き戻し極限錐、終対象・空形状・全標準単体の交換、形状の接着の錐空間の native 極限性を証明。finiteShape_cell_induction と CoherentFilteredLimitExchangeShape、空形状・単体の極限の存在を整備。部分極限の coherent な錐族と底を固定する比較三角形、元の全関手 cospan 錐の二三角形を保つ coherent 表示と各点の a6 への適用を構成。coherentColimitFunctor は全小 coherent 図式の元の全空間頂点と native 余錐を厳密に保ち、coherentCompletedLimit_iff_colimitFunctor は元の任意の指定点ごとの余錐による完成を全錐の像へ比較。元の単位正方形の上下三角形から輸送の同型を反映し、coherentColimitIntervalNativeHomotopy は指定辺と native 区間表示の両端固定全円柱を保持。coherentColimitTransportValueIso は元の具体的 Kan 頂点射との輸送の値の比較。coherentColimitEdgeValueNativeIso は同じ全円柱の上下二単体から Kan 値の射の比較を構成し、kanFixedSquareUpperIso_heq・kanFixedSquareLowerIso_heq は元の精密化同型を保持。coherentColimitEdgeValueIso は元の余極限辺の Kan 値を、同じ始域の表示変更を保って a6 の coherentTotalMapNativeValueDown と直接比較。HomotopyLimits.pointedValue_transportIso を読み取り専用で再利用し、選択済み値比較を保持。未完：これらの指定比較の元の二三角形・指定 path との整合、全錐比較と余極限関手の引き戻し保存、部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド8918 jobs、公理監査9437宣言・F1/F1B 同時 import 成功、標準三公理のみ。任意の空間辺の Kan 値・元の固定端点正方形の共通対角と二単体・精密化の指定同型・元の余極限辺の Kan 値の比較の追加14公開宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
+  検証：三集約同時ビルド8941 jobs、公理監査9482宣言・F1/F1B 同時 import 成功、標準三公理のみ。任意の指定辺の値と辺輸送の自然性・native 輸送の同じ辺への比較・始域表示の移送・元の余極限辺の Kan 値から a6 の指定 Kan 射への直接比較の追加8公開宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1 a7：元の指定余錐による完成を coherentColimitFunctor の全錐の像へ比較済み。元の指定辺と a6 の native 区間表示の両端固定全円柱、および同じ上下二単体の精密化からの Kan 値の比較 coherentColimitEdgeValueNativeIso まで構成済み。次は native 区間表示の Kan 値と coherentTotalMapNativeValueDown の比較を元の二三角形・指定 path と整合させ、全錐の像の極限性と引き戻し保存を示す。F1 の pointedSpaceFiberHomEquivalence は値の同値を与えるが、選択済み輸送との同定は別の証明が必要。辺の類の一致だけで全錐の比較を結論しない。続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction（HTT §5.3.3、残り6〜12時間、暫定）。strict な通常図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
+- F2N-1 a7：元の任意の指定余錐による完成を coherentColimitFunctor の全錐の像へ比較済み。coherentColimitEdgeValueIso は元の余極限指定辺の Kan 値を、同じ始域表示を保って a6 の coherentTotalMapNativeValueDown と直接比較。HomotopyLimits.pointedValue_transportIso を読み取り専用で再利用し、選択済み値比較を保持した。次は coherentKanRightCompositionTransport_diagonalIso と pointedValue_transportIso の元の全族の比較を使い、これらの指定比較の二三角形・指定 path との整合を示して全錐を束ねる。その全錐の極限性から引き戻し保存へ接続する。辺ごとの同型だけでは全錐比較を結論しない。続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction（HTT §5.3.3、残り6〜12時間、暫定）。strict な通常図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
 
 ## 0. 目標と範囲
 

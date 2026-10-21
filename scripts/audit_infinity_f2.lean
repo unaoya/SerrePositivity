@@ -2666,3 +2666,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValue
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalValue
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValueNativeIso
+
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeTransportValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeFiberEdgeIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalLiftIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueObject_transport
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitSourceObjectMap
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitSourceValueMap_eq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitEdgeValueIso
