@@ -13797,3 +13797,41 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms commutingArrowSquareEdge_one
 #check @standardCoconeKanLeg_naturality
 #print axioms standardCoconeKanLeg_naturality
+#check @arrowFunctorVertex_zero
+#print axioms arrowFunctorVertex_zero
+#check @arrowFunctorVertex_one
+#print axioms arrowFunctorVertex_one
+#check @discreteConeArrowDiagram
+#print axioms discreteConeArrowDiagram
+#check @discreteConeArrowLeg
+#print axioms discreteConeArrowLeg
+#check @discreteConeArrowCone
+#print axioms discreteConeArrowCone
+#check @discreteConeArrowCone_vertex
+#print axioms discreteConeArrowCone_vertex
+#check @discreteConeArrowCone_leg_zero
+#print axioms discreteConeArrowCone_leg_zero
+#check @discreteConeArrowCone_leg_one
+#print axioms discreteConeArrowCone_leg_one
+#check @discreteConeArrowDiagram_zero
+#print axioms discreteConeArrowDiagram_zero
+#check @discreteConeArrowDiagram_one
+#print axioms discreteConeArrowDiagram_one
+#check @discreteConeArrowCone_zero
+#print axioms discreteConeArrowCone_zero
+#check @discreteConeArrowCone_one
+#print axioms discreteConeArrowCone_one
+#check @arrowFunctorFamilyHomotopy
+#print axioms arrowFunctorFamilyHomotopy
+#check @arrowFunctorFamilyHomotopy_vertex
+#print axioms arrowFunctorFamilyHomotopy_vertex
+#check @joinVertexSummands
+#print axioms joinVertexSummands
+#check @discreteConeArrowHomotopy
+#print axioms discreteConeArrowHomotopy
+#check @discreteConeArrowHomotopy_isInvertible
+#print axioms discreteConeArrowHomotopy_isInvertible
+#check @discreteConeIsoOfLegClasses
+#print axioms discreteConeIsoOfLegClasses
+#check @isLimitCone_iff_discreteLegClasses
+#print axioms isLimitCone_iff_discreteLegClasses
