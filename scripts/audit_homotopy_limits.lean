@@ -11500,3 +11500,111 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spanCoconeMapping_rightTarget_trivial_of_localObject
 #print axioms spanCoconeMapping_rightTarget_trivial_of_localObject
+
+#check @iteratedSliceUnderForwardFamily
+#print axioms iteratedSliceUnderForwardFamily
+
+#check @iteratedSliceUnderForwardFamily_uncurry
+#print axioms iteratedSliceUnderForwardFamily_uncurry
+
+#check @iteratedSliceUnderInnerFamily
+#print axioms iteratedSliceUnderInnerFamily
+
+#check @iteratedSliceUnderInnerFamily_uncurry
+#print axioms iteratedSliceUnderInnerFamily_uncurry
+
+#check @iteratedSliceUnderInnerFamily_fixed
+#print axioms iteratedSliceUnderInnerFamily_fixed
+
+#check @iteratedSliceUnderBackwardFamily
+#print axioms iteratedSliceUnderBackwardFamily
+
+#check @iteratedSliceUnderBackwardFamily_uncurry
+#print axioms iteratedSliceUnderBackwardFamily_uncurry
+
+#check @iteratedSliceUnderFamily_backward_forward
+#print axioms iteratedSliceUnderFamily_backward_forward
+
+#check @iteratedSliceUnderFamily_forward_backward
+#print axioms iteratedSliceUnderFamily_forward_backward
+
+#check @iteratedSliceUnderForwardFamily_naturality
+#print axioms iteratedSliceUnderForwardFamily_naturality
+
+#check @iteratedSliceUnderBackwardFamily_naturality
+#print axioms iteratedSliceUnderBackwardFamily_naturality
+
+#check @iteratedSliceUnderHomEquiv
+#print axioms iteratedSliceUnderHomEquiv
+
+#check @iteratedSliceUnderMap
+#print axioms iteratedSliceUnderMap
+
+#check @iteratedSliceUnderForwardFamily_eq
+#print axioms iteratedSliceUnderForwardFamily_eq
+
+#check @iteratedSliceUnderInv
+#print axioms iteratedSliceUnderInv
+
+#check @iteratedSliceUnderBackwardFamily_eq
+#print axioms iteratedSliceUnderBackwardFamily_eq
+
+#check @iteratedSliceUnderIso
+#print axioms iteratedSliceUnderIso
+
+#check @iteratedSliceUnderForwardFamily_projection
+#print axioms iteratedSliceUnderForwardFamily_projection
+
+#check @iteratedSliceUnderIso_projection
+#print axioms iteratedSliceUnderIso_projection
+
+#check @uncurriedSliceUnderRestriction
+#print axioms uncurriedSliceUnderRestriction
+
+#check @uncurriedSliceUnderRestriction_uncurry
+#print axioms uncurriedSliceUnderRestriction_uncurry
+
+#check @iteratedSliceUnderForwardFamily_restriction
+#print axioms iteratedSliceUnderForwardFamily_restriction
+
+#check @iteratedSliceUnderIso_restriction
+#print axioms iteratedSliceUnderIso_restriction
+
+#check @uncurriedSliceUnderRestriction_projection
+#print axioms uncurriedSliceUnderRestriction_projection
+
+#check @uncurriedSliceUnderRestriction_trivial
+#print axioms uncurriedSliceUnderRestriction_trivial
+
+#check @sliceUnderRestrict_cocone_trivial
+#print axioms sliceUnderRestrict_cocone_trivial
+
+#check @local_squareTopEdge_rightAnodyne
+#print axioms local_squareTopEdge_rightAnodyne
+
+#check @local_squareTopEdge_mono
+#print axioms local_squareTopEdge_mono
+
+#check @pushoutCoconeRestriction_trivial
+#print axioms pushoutCoconeRestriction_trivial
+
+#check @pushoutTopCoconeRestriction_trivial
+#print axioms pushoutTopCoconeRestriction_trivial
+
+#check @spanCoconeMapping_rightTarget_trivial_of_local
+#print axioms spanCoconeMapping_rightTarget_trivial_of_local
+
+#check @local_pushout_topSource_shape
+#print axioms local_pushout_topSource_shape
+
+#check @isLocalForHom_pushout_top_of_bottom
+#print axioms isLocalForHom_pushout_top_of_bottom
+
+#check @isLocalForHom_pushout_right_of_left
+#print axioms isLocalForHom_pushout_right_of_left
+
+#check @localEquivalences_pushout_bottom_top
+#print axioms localEquivalences_pushout_bottom_top
+
+#check @localEquivalences_pushout_left_right
+#print axioms localEquivalences_pushout_left_right
