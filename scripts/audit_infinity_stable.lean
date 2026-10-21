@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutSigmaReindex
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorContributionsSum
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedNormalization
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorUnselectedNormalization
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedTermDecomposition
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInternalSums
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorDeletionTerms
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedSplit
@@ -3782,6 +3787,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutSigmaReindex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorContributionsSum,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedNormalization,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorUnselectedNormalization,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedTermDecomposition,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorInternalSums,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorDeletionTerms,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorSelectedSplit,
