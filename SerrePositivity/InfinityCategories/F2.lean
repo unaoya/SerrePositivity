@@ -310,6 +310,20 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitZeroFaceE
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitZeroFaceSpecifiedTriangle
 
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitPointedFaceOriginal
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitPointedFixedFaceFamily
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitPointedFixedFaceOriginal
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitZeroFaceSourceComponent
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitZeroFaceSourceWitness
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceComparison
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceComponent
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceFamilyData
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceRestricted
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceUniversal
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceUniversalData
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceWrapped
+public import SerrePositivity.InfinityCategories.F2.FunctorTrianglePointedChoice
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
