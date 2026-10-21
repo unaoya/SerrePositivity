@@ -1534,4 +1534,12 @@ public import SerrePositivity.KST.SConstruction.ObjectEqualityMaps
 public import SerrePositivity.KST.SConstruction.NecklaceCubeMonoidalCoherence
 public import SerrePositivity.KST.SConstruction.NecklaceCubeMonoidal
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMonoidal
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeInclusions
+public import SerrePositivity.KST.SConstruction.NecklaceInPoint
+public import SerrePositivity.KST.SConstruction.NecklaceAssociatorAugmentation
+public import SerrePositivity.KST.SConstruction.NecklaceUnitorAugmentation
+public import SerrePositivity.KST.SConstruction.NecklaceInStructuralIso
+public import SerrePositivity.KST.SConstruction.NecklaceInStructuralNaturality
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalIdentity
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalComposeCell
 /-! # ∞-S• 構成と連結 K 理論 -/

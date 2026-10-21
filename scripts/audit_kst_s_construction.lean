@@ -20289,3 +20289,93 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_counit
 #check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator_cell
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator_cell
+#check @SerrePositivity.KST.SConstruction.necklaceEqToHom_simplex_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceEqToHom_simplex_val
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inr
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inr
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl
+#check @SerrePositivity.KST.SConstruction.simplicialConst_zero_apply
+#print axioms SerrePositivity.KST.SConstruction.simplicialConst_zero_apply
+#check @SerrePositivity.KST.SConstruction.necklaceInPoint
+#print axioms SerrePositivity.KST.SConstruction.necklaceInPoint
+#check @SerrePositivity.KST.SConstruction.necklaceInPoint_necklace
+#print axioms SerrePositivity.KST.SConstruction.necklaceInPoint_necklace
+#check @SerrePositivity.KST.SConstruction.necklaceInPoint_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceInPoint_map
+#check @SerrePositivity.KST.SConstruction.necklaceInPoint_postcompose_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceInPoint_postcompose_map
+#check @SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInPointPostcomposeHom
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_desc
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_desc
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator_augmentation
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator_augmentation
+#check @SerrePositivity.KST.SConstruction.necklacePointInr_isIso
+#print axioms SerrePositivity.KST.SConstruction.necklacePointInr_isIso
+#check @SerrePositivity.KST.SConstruction.necklacePointInl_isIso
+#print axioms SerrePositivity.KST.SConstruction.necklacePointInl_isIso
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor_desc
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor_desc
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor_desc
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor_desc
+#check @SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_augmentation
+#print axioms SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_augmentation
+#check @SerrePositivity.KST.SConstruction.necklaceInRightUnitor_augmentation
+#print axioms SerrePositivity.KST.SConstruction.necklaceInRightUnitor_augmentation
+#check @SerrePositivity.KST.SConstruction.necklaceInIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceInIso
+#check @SerrePositivity.KST.SConstruction.necklaceInIso_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInIso_hom
+#check @SerrePositivity.KST.SConstruction.necklaceInIso_inv
+#print axioms SerrePositivity.KST.SConstruction.necklaceInIso_inv
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator
+#check @SerrePositivity.KST.SConstruction.necklaceInLeftUnitor
+#print axioms SerrePositivity.KST.SConstruction.necklaceInLeftUnitor
+#check @SerrePositivity.KST.SConstruction.necklaceInRightUnitor
+#print axioms SerrePositivity.KST.SConstruction.necklaceInRightUnitor
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator_hom
+#check @SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_hom
+#check @SerrePositivity.KST.SConstruction.necklaceInRightUnitor_hom
+#print axioms SerrePositivity.KST.SConstruction.necklaceInRightUnitor_hom
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceInLeftUnitor_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceInRightUnitor_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceInRightUnitor_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator_pentagon
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator_pentagon
+#check @SerrePositivity.KST.SConstruction.necklaceInAssociator_triangle
+#print axioms SerrePositivity.KST.SConstruction.necklaceInAssociator_triangle
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalIdentity
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalIdentity
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalIdentity_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalIdentity_unit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalIdentity_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalIdentity_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_relation
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_relation
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_apply
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_apply
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inl_inl_assoc
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inr_inl_assoc
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_inr_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_inr_assoc
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor_inr_assoc
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl_assoc
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor_inl_assoc
