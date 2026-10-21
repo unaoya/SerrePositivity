@@ -230,7 +230,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators,
     `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies,
     `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber,
-    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration]
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration,
+    `SerrePositivity.KST.LocalizingInvariants.SpanEndpointComplement,
+    `SerrePositivity.KST.LocalizingInvariants.SpanEndpointCocartesian,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

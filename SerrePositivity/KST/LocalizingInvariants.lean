@@ -197,4 +197,12 @@ public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration
 
+public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointComplement
+
+public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointCocartesian
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
