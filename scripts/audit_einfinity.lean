@@ -6271,6 +6271,64 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.ValueSupport.weak_of_singleton_restrictions,
       `SerrePositivity.EInfinity.Hammock.ValueSupport.weak_of_contractible_fibers]
 
+@[noinline] private def e2RequiredBatch95 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.IndexedSum.space,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.label,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.inclusion,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.singletonIso,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.map,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.map_label,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.singletonIso_naturality,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.evaluatePoint_unpack,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsIso_evaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.evaluation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.hammockEvaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.hammockEvaluation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.products,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsMap_weak,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.sumProducts,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.sumProductsMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.sumProductsMap_weak,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.pack,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpack,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpack_pack,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.pack_unpack,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpack_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsIso,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsIso_hom_nil,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.productsIso_hom_cons,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueHomType,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueHom,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueSpace,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.evaluatePoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.evaluatePoint_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.evaluation,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueObjects,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueCategory,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueMarkedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueMarkedFunctor_map_isIso,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.precompose,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.compose,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.precompose_id,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.precompose_comp,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.compose_precompose,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.compose_id,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.id_compose,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.ValueSpine.compose_assoc,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.packValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpackValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpackValue_packValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.packValue_unpackValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.unpackValue_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.valueProductsIso,
+      `SerrePositivity.EInfinity.Hammock.tensorHomotopyMap,
+      `SerrePositivity.EInfinity.Hammock.tensorHomotopy,
+      `SerrePositivity.EInfinity.Hammock.IndexedSum.map_weak,
+      `SerrePositivity.EInfinity.Hammock.tensor_isSimplicialHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.weakTensor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6302,7 +6360,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15051,3 +15109,55 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       IsWeakHomotopyEquivalence (UnmarkedGenerators.AllMarked.nativeValue W X Y) := by
   intro C W X Y
   exact UnmarkedGenerators.AllMarked.nativeValue_isWeakHomotopyEquivalence W X Y
+
+-- 任意の元の二つの弱比較の直積。始終域の Kan 性は不要。
+open CategoryTheory MonoidalCategory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock in
+example {A B C D : SSet.{e2ComplexLimitUniverse}} {f : A ⟶ B} {g : C ⟶ D}
+    (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) :
+    IsWeakHomotopyEquivalence (f ⊗ₘ g) := weakTensor hf hg
+
+-- 空の場合も含む任意の同じ添字での依存和の比較。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {I : Type e2ComplexLimitUniverse} {A B : I → SSet.{e2ComplexLimitUniverse}}
+    (f : ∀ i, A i ⟶ B i) (hf : ∀ i, IsWeakHomotopyEquivalence (f i)) :
+    IsWeakHomotopyEquivalence (IndexedSum.map f) := IndexedSum.map_weak f hf
+
+-- 長さ零の元の指定因子を同じ全因子列へ回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) (n : SimplexCategoryᵒᵖ)
+    (p : (UnmarkedGenerators.AllMarked.nativeSpace W X Y).obj n) :
+    (MarkedSpine.productsIso W Y X).hom.app n ⟨[], p⟩ = MarkedSpine.nil X p :=
+  MarkedSpine.productsIso_hom_nil W Y X p
+
+-- 元の hammock から全指定因子の値の列への同じ評価自身の弱同値性。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    IsWeakHomotopyEquivalence (MarkedSpine.hammockEvaluation W Y X) :=
+  MarkedSpine.hammockEvaluation_isWeakHomotopyEquivalence W Y X
+
+-- 値の因子列の圏への元の指定部分の矢は実際に反転される。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : Quiver.FreeGroupoid (MarkedGenerators.quiver W)} (p : X ⟶ Y) :
+    letI := MarkedSpine.valueCategory W
+    IsIso ((MarkedSpine.valueMarkedFunctor W).map p) :=
+  MarkedSpine.valueMarkedFunctor_map_isIso W p
+
+-- 任意可換環の全自由次数の元の全因子列の評価へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    ∀ X Y : Paths C, IsWeakHomotopyEquivalence (MarkedSpine.hammockEvaluation W Y X) := by
+  intro C W X Y
+  exact MarkedSpine.hammockEvaluation_isWeakHomotopyEquivalence W Y X

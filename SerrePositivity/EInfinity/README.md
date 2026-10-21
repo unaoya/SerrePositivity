@@ -1859,6 +1859,16 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `AllMarked.nativeFreeEvaluation/nativeValue/nativeValue_isWeakHomotopyEquivalence`
 は元の指定部分圏の実際の評価の弱同値性。任意可換環の全自由次数へも代入して検証。
 両 DK 比較射の弱同値性と Map^h の高次比較は引き続き未完成。
+`tensorHomotopy/weakTensor` は元の有限積の弱比較を、Kan 置換の単位の消去で与える。
+`IndexedSum.space/singletonIso/map_weak` は任意の同じ添字の依存和の弱比較。
+`MarkedSpine.products/productsMap_weak/sumProductsMap_weak/productsIso` は
+元の全因子列を非指定生成列ごとの有限個の指定因子の積の和へ厳密に戻す。
+`ValueSpine/valueProductsIso/evaluation_isWeakHomotopyEquivalence` と
+`hammockEvaluation_isWeakHomotopyEquivalence` は元の全指定因子を自由 groupoid の値に
+置き換えた離散な因子列への同じ全評価自身の弱同値性。
+`ValueSpine.compose/compose_assoc/valueCategory/valueMarkedFunctor` は値の因子列の
+局所選択する圏構造と指定自由 groupoid の包含。元の指定矢を実際に反転する。
+通常の局所化 Hom との同定と両 DK 比較射の弱同値性は引き続き未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

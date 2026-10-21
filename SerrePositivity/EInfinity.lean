@@ -1527,3 +1527,14 @@ public import SerrePositivity.EInfinity.Hammock.ValueSupportFiniteWeak
 public import SerrePositivity.EInfinity.Hammock.ValueSupportSingletonWeak
 public import SerrePositivity.EInfinity.Hammock.ValueSupportSubcomplex
 public import SerrePositivity.EInfinity.Hammock.ValueSupportWeak
+public import SerrePositivity.EInfinity.Hammock.IndexedSum
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineEvaluationWeak
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineProducts
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineProductsIso
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpine
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineCategory
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineComposition
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineProductsIso
+public import SerrePositivity.EInfinity.Hammock.TensorHomotopy
+public import SerrePositivity.EInfinity.Hammock.WeakIndexedSum
+public import SerrePositivity.EInfinity.Hammock.WeakTensor
