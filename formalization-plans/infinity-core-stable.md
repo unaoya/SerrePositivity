@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 本保存対象は、指定余単位と入力・出力比較の自然性、元の厳密変換の nerve 射・両射影・対象宇宙の持ち上げとの照合の12新規モジュール、Derived 集約、両監査、本計画の16パス。次の恒等入力比較・二段分解・従来の raw 出力比較の射の7宣言は `/tmp/` で検証済み・未集約。
+- 指定余単位と入力・出力比較の自然性、元の厳密変換の nerve 射・両射影・対象宇宙の持ち上げとの照合の12新規モジュール、Derived 集約、両監査、本計画の16パスを `d0e6e948f` に保存済み。次の恒等入力比較・二段分解・従来の raw 出力比較の射の7宣言は `/tmp/` で検証済み・未集約。現在地の更新は本計画のみ。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 元の二経路の厳密 dg 変換の nerve 射と両射影を接続し、`dgModuleResolutionChangeIdentity_source_comparison_naturality` と `dgModuleResolutionChangeIdentity_output_comparison_naturality` で、既存の持ち上げ済み入力同値・指定逆・指定比較を保つ射の自然性まで構成した。12新規モジュール・20公開署名は集約・両公理監査済み。次は `/tmp/d-beta5-resolution-change-comparison-hom.lean` の7宣言を分割統合する。恒等前合成の簡約、従来の `qCatResolutionOutputComparisonIso` と恒等入力の `qCatResolutionOutputPrecompIso` の同値、二段前合成則への代入、実変更 dg 関手の入力・出力射影、元の右側出力比較の分解、`dgModuleResolutionChangeIdentity_comparison_hom` による従来の raw 出力比較の射の共役式は検証済み（警告なし・許容三公理のみ、未集約）。これは元の Q_F・Q_G・Id 出力分解の同じ指定逆を保持する。次に raw 出力射影と lifted 出力射影の上げ下げを、指定比較の出力後合成則で照合し、元の `dgModuleResolvedInfinity_changeIso` と `dgModuleResolvedInfinity_rawFactorIso` の同じ指定値へ戻す。F.comp Id = F の輸送も元の値を保持する。持ち上げた元の入力変換を Up_C で前合成すると、同じ a の nerve 射の Up_Raw による後合成を回収するので、同じ L₀ 後合成と照合する。その後、従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` の hom と元の導来射作用を同定し、実 span の切断と両合成から一般準同型比較との一致へ進む。選択済み比較を再定義して代用しない。実行中の試作はない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- 元の二経路の厳密 dg 変換の nerve 射と両射影を接続し、`dgModuleResolutionChangeIdentity_source_comparison_naturality` と `dgModuleResolutionChangeIdentity_output_comparison_naturality` で、既存の持ち上げ済み入力同値・指定逆・指定比較を保つ射の自然性まで構成した。12新規モジュール・20公開署名は集約・両公理監査済み。次は `/tmp/d-beta5-resolution-change-comparison-hom.lean` の7宣言を分割統合する。恒等前合成の簡約、従来の `qCatResolutionOutputComparisonIso` と恒等入力の `qCatResolutionOutputPrecompIso` の同じ値への同定、二段前合成則への代入、実変更 dg 関手の入力・出力射影、元の右側出力比較の分解、`dgModuleResolutionChangeIdentity_comparison_hom` による従来の raw 出力比較の射の共役式は検証済み（警告なし・許容三公理のみ、未集約）。これは元の Q_F・Q_G・Id 出力分解の同じ指定逆を保持する。次に raw 出力射影と lifted 出力射影の上げ下げを、指定比較の出力後合成則で照合し、元の `dgModuleResolvedInfinity_changeIso` と `dgModuleResolvedInfinity_rawFactorIso` の同じ指定値へ戻す。F.comp Id = F の輸送も元の値を保持する。持ち上げた元の入力変換を Up_C で前合成すると、同じ a の nerve 射の Up_Raw による後合成を回収するので、同じ L₀ 後合成と照合する。その後、従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` の hom と元の導来射作用を同定し、実 span の切断と両合成から一般準同型比較との一致へ進む。選択済み比較を再定義して代用しない。実行中の試作はない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
 
 ## 目標と原典
 
