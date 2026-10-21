@@ -2929,3 +2929,13 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackM
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackMarkedCore
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackBoundaryFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackNativeCore
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackNativeBoundary
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackNativeLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldNativeLiftBoundary
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentScaffoldExtension
