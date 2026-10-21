@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DeformationRetractTriangle
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationRetract
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatOriginalUnitSquare
+import SerrePositivity.InfinityCategories.Derived.DeformationUnitSquare
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatUnitCoherence
 import SerrePositivity.InfinityCategories.Derived.DGProjectiveAugmentationHom
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedUnitInclusion
 import SerrePositivity.InfinityCategories.Derived.DGResolvedProjectiveVertex
@@ -4477,6 +4482,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DeformationRetractTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmentationRetract,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatOriginalUnitSquare,
+    `SerrePositivity.InfinityCategories.Derived.DeformationUnitSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatUnitCoherence,
+
     `SerrePositivity.InfinityCategories.Derived.DGProjectiveAugmentationHom,
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedUnitInclusion,
     `SerrePositivity.InfinityCategories.Derived.DGResolvedProjectiveVertex,
