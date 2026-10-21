@@ -1479,4 +1479,11 @@ public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidCompariso
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidUnit
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidMonoidal
 public import SerrePositivity.KST.SConstruction.CubicalSerreDayComonoidRecovery
+public import SerrePositivity.KST.SConstruction.NecklaceShape
+public import SerrePositivity.KST.SConstruction.NecklaceSimplicialSet
+public import SerrePositivity.KST.SConstruction.NecklaceCategory
+public import SerrePositivity.KST.SConstruction.NecklaceIn
+public import SerrePositivity.KST.SConstruction.NecklaceVertices
+public import SerrePositivity.KST.SConstruction.NecklaceSimplexVertices
+public import SerrePositivity.KST.SConstruction.NecklacePostcomposition
 /-! # ∞-S• 構成と連結 K 理論 -/
