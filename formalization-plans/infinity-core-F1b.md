@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。元の native 全錐と実局所比較を共通の始点固定 prism 空間で照合。明示した頂点同定と端点補正の相殺から、native 全錐の指定 path の fiber 像、元の左右の実際の三角形同型の合成、模型 fiber 比較の指定可換同型の三者の型付き等式を証明。元の全 pointed 錐を図式上の切断族へ表示し、展開が同じ全錐の厳密な制限であることを証明。始点族を既存の二つの fiber 同型へ同定し、各点の元の native 錐が極限なら、この実際の切断族は同値だと証明。cospan の切断空間を左右の辺の切断の共通終点での厳密な引き戻しへ表示し、両終点制限の Kan fibration 性・辺の始点制限の自明 Kan 性を証明。同じ元の切断族からこの引き戻しへの比較は同値で、両射影の展開は元の全 pointed 錐の同じ左右の辺。全三角形の一つの指定比較を三面の切断族の同型へ写し、図式側の指定同型の始点を元の引き戻し比較の両射影へ厳密に同定。局所三角形の中間頂点・図式側の辺の始点評価は、元の実際の小さい第一 fiber 射の pointed 表示と包含後に一致。図式側の辺の両端点を元の値へ明示的に同定し、始点評価と縮小の fiber 同型による元の小さい fiber への比較同値を構成。全 native 三角形の同じ指定比較から、評価した左右の脚と元の実際の二つの fiber 射との fiber 内の型付き同型を構成し、両同型を元の宇宙へ下降。局所全三角形の最終頂点は実際の二つの fiber 射の合成。明示した共通 Z の fiber への終点評価は Kan fibration。左右の native 最終頂点の小さい fiber 内の厳密な一致から、同じ全三角形比較の左右の終点像を合成した指定同型を構成し、元の宇宙へ下降。旧 prism の終点・縮小・下降・fiber Hom の出力を、持ち上げた fiber 間の関手空間への一つの単体的写像と下降で表示。全 pointed 座標の一致から、新しい直接 fiber 終点評価とその写像の合成の厳密な一致を証明し、任意の指定同型の旧出力を同じ直接評価の像の下降へ同定。curry 後の終点評価も元の全 prism の直接評価と厳密に一致。全延長空間から図式辺・長辺の切断を共通の小さい fiber で終点評価する写像の厳密な一致も証明。長辺を共通の底へ移して直接 fiber 評価する写像と同定し、同じ全三角形の任意の指定同型について旧長辺出力と図式辺の終点像の下降を HEq で照合。未完：この切断模型の指定同型と既存の模型 path の指定類の一致、模型 fiber 比較への普遍性の移送、一般の有限極限交換・Ind。
+  一般 coherent filtered 図式の全空間模型の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補と全空間模型への比較を構成。元の各点の全 pointed 錐を図式上の切断族へ表示し、native 錐が極限ならこの実際の切断族は同値だと証明。cospan の切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点制限の自明 Kan 性と終点制限の Kan fibration 性を証明。全三角形の同じ指定比較から、native な左右の脚と元の実際の小さい fiber 射との型付き同型を構成して下降。共通長辺からの直接 fiber 評価と旧終点・縮小・下降・fiber Hom の全出力関手は厳密に一致。元の全三角形の実延長の頂点公式から四つの端点を明示し、左右の指定像の端点補正を相殺。切断模型の指定 path の下降と既存の native path、実際の模型 fiber 比較の指定可換同型との型付き等式を、元の fiber 射の合成式による明示した端点補正の下で証明。未完：二辺の切断の引き戻しの普遍性を元の模型 fiber 比較へ移すこと、一般の有限極限交換・Ind。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド 8404 jobs、公理監査 6444 宣言・同時 import 成功。全延長空間からの終点評価・二面と共通長辺の写像の厳密な一致・指定像の下降の追加8宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  検証：三集約同時ビルド 8427 jobs、公理監査 6750 宣言・同時 import 成功。全出力関手の一致・四つの実頂点・左右の指定像の合成・指定 path の下降・実模型の可換同型との型付き一致の追加34宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1：trianglePrismFiberFunctor_heq_final を左右の元の nativePointedTriangleComparisonIso に適用し、coherentCospanNativeLeft/RightFinalFiberIso の端点補正と照合する。左右の指定像を合成して coherentCospanNativeSectionFiberPathDownIso = coherentCospanNativeFiberPathIso を証明。その後、二辺の切断の引き戻しから元の path 引き戻しへの比較と同値性を構成し、模型 fiber 比較の同値性へ接続する。
+- F2N-1：二辺の切断の引き戻しから元の二つの小さい fiber 射による path 引き戻しへの比較と同値性を構成する。始点評価の自明 Kan 性、終点評価の Kan fibration 性、元の左右の脚の指定比較を使う。coherentCospanModelFiberPathIso_eq_section_down が与える指定可換同型の一致で、元の模型 fiber 比較の同値性へ普遍性を移送。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
 

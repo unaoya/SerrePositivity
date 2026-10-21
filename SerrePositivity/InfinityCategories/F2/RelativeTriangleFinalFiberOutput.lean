@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionCurryTargetCoordinates
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionCurryIsoImage
 
 /-!
 概要：全三角形の図式辺と長辺の切断を、同じ最後の小さい fiber で評価して比較する。
@@ -62,5 +63,20 @@ lemma relativeTriangleFinalFiberOutput_zero_one
   unfold relativeTriangleFinalFiberOutput
   rw [relativeExtensionCurryRestriction_target_pointed,
     relativeExtensionCurryRestriction_target_pointed, trianglePrismFinalVertex_eq]
+
+/-- 全延長の実頂点の像は、同じ面の切断族の指定 fiber 評価の関手頂点である。 -/
+lemma relativeTriangleFinalFiberOutput_vertex (face : Fin 3)
+    (he : (stdSimplex.δ face ≫ D).app (Opposite.op ⦋0⦌)
+      (stdSimplex.obj₀Equiv.symm 1) = J.app _ (ULift.up b))
+    (W : (Δ[2] : SSet.{u + 1}) ⊗ A ⟶ PointedSpaceInfinity.{u})
+    (hW : W ≫ pointedSpaceProjection = fst Δ[2] A ≫ D) (hWi : i ≫ W = v) :
+    (relativeTriangleFinalFiberOutput J b D i v hv face he).app _
+      (relativeFunctorExtensionSpaceVertexEquiv pointedSpaceProjection
+        (fst Δ[2] A ≫ D) i v hv ⟨W, hW, hWi⟩) =
+      functorVertex (pointedTriangleFaceSections D W hW face ≫
+        pointedSectionTargetFiber J b (stdSimplex.δ face ≫ D) he) := by
+  exact relativeExtensionCurryRestriction_postcomp_vertex pointedSpaceProjection
+    (fst Δ[2] A ≫ D) i v hv (stdSimplex.δ face ▷ A) (stdSimplex.δ face ≫ D)
+    (by rw [← Category.assoc, whiskerRight_fst, Category.assoc]) W hW hWi _
 
 end SerrePositivity.InfinityCategories.F2

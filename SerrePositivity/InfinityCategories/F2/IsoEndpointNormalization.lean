@@ -68,4 +68,10 @@ lemma functor_mapIso_span {C : Type u} [Category.{v} C]
   subst b
   simp only [eqToIso_refl, Iso.refl_trans, Functor.mapIso_trans, Functor.mapIso_symm]
 
+/-- 明示した端点等式で指定同型を補正すると、同じ値の指定同型へ厳密に一致する。 -/
+lemma isoNormalizeEndpoints_eq_of_heq {C : Type u} [Category.{v} C]
+    {a b a' b' : C} (e : a ≅ b) (e' : a' ≅ b') (ha : a = a') (hb : b = b')
+    (he : HEq e e') : isoNormalizeEndpoints e ha hb = e' := by
+  exact eq_of_heq ((iso_endpoints_heq e ha hb).trans he)
+
 end SerrePositivity.InfinityCategories.F2
