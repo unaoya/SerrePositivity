@@ -21,7 +21,6 @@
   右随伴の後合成の任意単体集合パラメータの Hom 同型・RightKanHom 普遍性から、元の指定極限錐の保存を証明。添字に quasicategory 性を仮定しない。
   **N-3 の指定された Tot・hG・fiber への適用は Sp の既存定理で達成。** 元の BF 対象・指定辺を保持する公開界面を読み取り専用で照合・検証。
   `homotopyFixedPointsInfinityCone_isLimit`・`homotopyTotalizationInfinityCone_isLimit` は元の作用図式・余単体図式の実 ∞ 極限錐。
-  `FiberModel.homotopyFiberSquare` は元の BF fiber、`bottom_naturality`・`right_naturality` は元の包含・射の類との整合性。
   任意 coherent cospan の極限・任意辺の fiber も提供済み。Sp の任意 coherent 図式の極限・全有限極限・安定性まで完成とは扱わない。
   **N-4 着手。** `IsLocalObject W` を元の指定辺の写像空間の前合成同値で定義し、局所対象の全部分 quasicategory を構成。
   pinched・区間模型の局所性を照合。局所性の合成・二つから三つ目・対象同型不変性、任意単体集合パラメータの定値 Hom の全単射を証明。
@@ -45,7 +44,8 @@
   **局所対象へ向かう元の局所同値自身が、局所余錐圏の始対象。** 終点を重ねる元の退化三角形を使用し、一点余錐の脚が元の辺であることまで厳密に照合。
   **join 型 coslice の底変換から `unitCommaFiber` への標準比較の同値性を完了。** 任意 G:Y→X に対し標的図式を保持し、全パラメータで fiber 比較を既存の区間比較と厳密に同定。
   元の局所置換を指定 comma 始対象へ移し、その矢印の族が元の辺であることを厳密に回収。各対象の局所置換の存在から、各 comma の始対象の存在を導出。coherent な反射は未構成。
-  各 comma の始対象から相対始対象射影の自明 Kan 性を回収し、普遍矢印の coherent な切断を構成。同じ円柱から標的関手と単位を取り、各成分の元の頂点辺の類との一致を証明。単位の随伴普遍性は未接続。
+  各 comma の始対象から相対始対象射影の自明 Kan 性を回収し、普遍矢印の coherent な切断を構成。同じ円柱から標的関手と単位を取り、各成分の元の頂点辺の類との一致を証明。
+  標的固定の二重 fiber 内の同じ Hom 類の二辺を頂点同型で比較し、代表不変性と `UnitCommaInitialCondition` を持つ coherent な関手・単位を回収。写像空間の単位比較・随伴性は未接続。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -77,7 +77,6 @@
   `localEquivalences_pushout_bottom_top`、`localEquivalences_pushout_left_right`。
   `relativeHomFamilyProjection_trivial`、`relativeHomFamily_exists_extension_over_base`、
   `cosliceRestriction_homotopyEquivalence_iff_sections`、`isLocalForHom_edge_iff_sectionRestriction_trivial`、
-  `relativeHomFiber_isContractibleKan_of_restriction_trivial`、`localEdgeFamily_relativeHom_trivial`、
   `relativeFunctorPre_tensor_trivial_of_vertexFibers`、`localPrism_source_sections_trivial`、`localPrism_source_cocones_trivial`、
   `isLocalForHom_initialRestriction_of_fiber_equivalence`、`localEquivalences_colimitRestriction_comparison`、`localEquivalences_colimitPrism_source_comparison`、
   `colimitPrismTotalCocone_isColimit`、`colimitPrismComparisonEdge_projection`、`localEquivalences_colimitPrism_apex`、
@@ -86,19 +85,20 @@
   `stronglySaturatedClosure`、`IsOfSmallStrongGeneration`、`isLocalObject_stronglySaturatedClosure_iff`、`stronglySaturatedClosure_eq_localEquivalences_of_localReplacements`、
   `localTargetCoconeSpace`、`localTargetCoconeRestriction_source_isQCatEquivalence`、`edgeSourcePointCocone_leg_edge`、`localReplacement_edgeSource_isInitial`、
   `cosliceCommaComparison_isQCatEquivalence`、`localReplacementCommaPoint_isInitial`、`localReplacementCommaPoint_uncurry`、`unitCommaFiber_initial_exists_of_localReplacements`、
-  `commaRelativeInitialProjection_trivialKanFibration`、`exists_unitCommaSection_of_fiberInitial`、`commaSectionUnit`、`commaSectionUnit_component`。
+  `commaRelativeInitialProjection_trivialKanFibration`、`exists_unitCommaSection_of_fiberInitial`、`commaSectionUnit`、`commaSectionUnit_component`、
+  `unitCommaTargetFiber_isInitial_iff_of_homMk_eq`、`commaSectionUnit_initialCondition`、`exists_unit_initialCondition_of_fiberInitial`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
-  N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：普遍 comma の coherent 切断・元の円柱の単位の2モジュール5宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド6339 jobs・全4412宣言監査は終了コード0、標準三公理のみ。新規2モジュール5宣言に警告・sorry・追加公理なし。
+  集約 `InfinityCategories/HomotopyLimits.lean`・全監査 `scripts/audit_homotopy_limits.lean` を Sp・E2b に提供。規約は `foundations.md` §8、README は規約だけ。
+- **未コミット**：なし（今回の保存単位：単位の代表不変性・coherent 切断からの comma 始対象条件の5モジュール15宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **既知の問題**：N の対象ビルド6346 jobs・全4427宣言監査は終了コード0、標準三公理のみ。新規5モジュール15宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
 - **次の一手**：N-4：局所置換の存在・反射の構成、その後 P_Σ（HTT 5.5.4.15・5.5.5.14・5.5.8）。完成済みの閉性・生成閉包を再実装しない。
-  `exists_unitCommaSection_of_fiberInitial` の切断 s の相対始対象性から、`commaSectionUnit G s hs` の単位比較の同値性を導き、∞ 随伴を構成する。
-  `unitCommaSection η` は η のホモトピー代表を選び直す。元の s との境界固定比較で相対始対象性を移すか、元の円柱から単位比較の同値性を直接証明。両者の一致を仮定しない。
+  `exists_unit_initialCondition_of_fiberInitial` の単位の始対象条件から、写像空間の単位比較の同値性を導き、∞ 随伴を構成する。
+  既存の比較の往復ホモトピーは片側だけ。逆向きの可縮性は未証明であり、両方向の写像の存在だけから同値性を推論しない。
   生成閉包＝局所同値の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を構成する存在部分も未完。入力フィールドに仮定して完成とは扱わない。
   F2 の正本では Ind・compact が進行中で、presentable・随伴関手定理は後段。反射の存在を既存反射の条件付き特徴づけだけで完成としない。F2 は読み取り専用。
   E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
