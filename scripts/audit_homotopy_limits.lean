@@ -13675,3 +13675,31 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms presheafCoconeStandardApexHom
 #check @presheafCoconeStandardUnit_square
 #print axioms presheafCoconeStandardUnit_square
+#check @coconeTransformationPointAt
+#print axioms coconeTransformationPointAt
+#check @coconeTransformationPointAt_self
+#print axioms coconeTransformationPointAt_self
+#check @realizedCoconeTransformationIso
+#print axioms realizedCoconeTransformationIso
+#check @coconeRealizationComparisonIso
+#print axioms coconeRealizationComparisonIso
+#check @coherentTransformationTriangleOfHomClass
+#print axioms coherentTransformationTriangleOfHomClass
+#check @coherentTransformationTriangleOfHomClass_diagonal
+#print axioms coherentTransformationTriangleOfHomClass_diagonal
+#check @kanNativeCoconeIsoOfUnitTriangle
+#print axioms kanNativeCoconeIsoOfUnitTriangle
+#check @kanNativeCoconeIsoOfUnitHomClass
+#print axioms kanNativeCoconeIsoOfUnitHomClass
+#check @intervalRecoveredHom_eq_of_vertexIso
+#print axioms intervalRecoveredHom_eq_of_vertexIso
+#check @nativeTotalUnitTransformationIso
+#print axioms nativeTotalUnitTransformationIso
+#check @nativeTotalUnitTransformation_homMk
+#print axioms nativeTotalUnitTransformation_homMk
+#check @kanNativeCoconeIsoOfNativeUnitHomClass
+#print axioms kanNativeCoconeIsoOfNativeUnitHomClass
+#check @coconeAction_reflects_edge_homMk
+#print axioms coconeAction_reflects_edge_homMk
+#check @totalKanNativeEdge_homMk_of_coconeIso
+#print axioms totalKanNativeEdge_homMk_of_coconeIso
