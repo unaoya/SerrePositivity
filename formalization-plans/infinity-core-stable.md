@@ -54,7 +54,7 @@
 
 ### 主要宣言（名前のみ。正確な型は Lean）
 
-- `IsStable`・`suspensionEquivalence`・`pretriangulated_ho`・`isTriangulated_ho`・`exactFunctor_isTriangulated`。
+- `dgModuleIdentityResolutionPostcomp_square`・`dgModuleIdentityResolutionPostcompAction`・`dgModuleIdentityResolutionPrecompAction`・`IsStable`・`suspensionEquivalence`・`pretriangulated_ho`・`isTriangulated_ho`・`exactFunctor_isTriangulated`。
 - `cofiberBoundaryLiftQ_differential`・`cofiberBoundaryLiftA_differential`・`standardCofiberCocone_isColimit`・`derivedInfinityCategory_isStable`。
 - `derivedStableHomotopyEquivalenceCommShift`・`derivedStableHomotopyEquivalenceIsTriangulated`。
 - `dgModuleNerve_isStable`・`dgRoofCorrespondenceMap`・`dgRoofCorrespondenceFiberIso`・`dgQuotientRoofCorrespondenceProjection_leftFibration`。
@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 本保存対象は、実入力変更の分解対象と閉射・左右合成の三成分・全パラメータの正方形判定の8新規モジュール、Derived 集約、両監査、本計画の12パス。元の実前合成と分解変更への代入、厳密 dg 変換への包装の試作は `/tmp/` に置き、この保存範囲に含めない。
+- 実入力変更の分解対象と閉射・左右合成の三成分・全パラメータの正方形判定の8新規モジュール、Derived 集約、両監査、本計画の12パスを `0c28ffc30` に保存済み。元の実前合成と分解変更への代入・厳密 dg 変換の包装の試作は `/tmp/` に置き、未集約。現在地の更新は本計画のみ。他レーンの未コミット変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 元の準同型の実射作用の可逆性と、その同型の恒等・合成・元の双加群同型作用との一致は統合・両公理監査済み。実入力変更射は、入力成分 a・replacement 成分恒等・比較 cochain 零を厳密に回収する。`dgModuleIdentityResolutionPostcompAction` と `dgModuleIdentityResolutionPrecompAction` の三成分、`dgModuleIdentityResolutionPostcomp_square` による全 Hom 正方形の判定まで構成した。試作 `/tmp/d-beta5-resolution-precomp-change-square.lean` は元の `dgModuleResolutionPrecompHom` と `dgModuleResolutionChangeHom` の同じ正方形を証明済み（警告なし・許容三公理のみ、未集約）。端点が展開で異なる具体式への rw は型照合で失敗したため、実二射影の式と比較 cochain の式を明示して `Category.assoc`・`congrArg`・等式推移で接続した。`/tmp/d-beta5-strict-nat-trans-unit-naturality.lean` は同じ単位からの射の左右合成の全斉次評価と、全 Hom 自然性から厳密 dg 変換への包装の3宣言を検証済み（同条件、未集約）。次はこれらを元の二経路へ適用して厳密 dg 変換を作り、入力射影では元の a・replacement では恒等変換を回収する。その後、入力同値の単位の自然性から従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` と実射作用を同定し、実 span の切断と両合成から一般準同型比較との一致へ進む。包装の試作 `/tmp/d-beta5-resolution-change-identity-strict.lean` は関手構造体の一括展開で heartbeat 上限に達した。上限を変更せず、元の鎖写像の等式と単位合成の評価補題を直接適用する形へ分割する。実行中の試作はない。選択済み比較を再定義して代用しない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- 元の準同型の実射作用の可逆性と、その同型の恒等・合成・元の双加群同型作用との一致は統合・両公理監査済み。実入力変更射は、入力成分 a・replacement 成分恒等・比較 cochain 零を厳密に回収する。`dgModuleIdentityResolutionPostcompAction` と `dgModuleIdentityResolutionPrecompAction` の三成分、`dgModuleIdentityResolutionPostcomp_square` による全 Hom 正方形の判定まで構成した。試作 `/tmp/d-beta5-resolution-precomp-change-square.lean` は元の `dgModuleResolutionPrecompHom` と `dgModuleResolutionChangeHom` の同じ正方形を証明済み（警告なし・許容三公理のみ、未集約）。端点が展開で異なる具体式への rw は型照合で失敗したため、実二射影の式と比較 cochain の式を明示して `Category.assoc`・`congrArg`・等式推移で接続した。`/tmp/d-beta5-strict-nat-trans-unit-naturality.lean` は同じ単位からの射の左右合成の全斉次評価と、全 Hom 自然性から厳密 dg 変換への包装の3宣言を検証済み（同条件、未集約）。次はこれらを元の二経路へ適用して厳密 dg 変換を作り、入力射影では元の a・replacement では恒等変換を回収する。その後、入力同値の単位の自然性から従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` と実射作用を同定し、実 span の切断と両合成から一般準同型比較との一致へ進む。包装の試作は関手構造体の一括展開・斉次自然性の直接証明のいずれも heartbeat 上限に達した。上限は変更しない。`/tmp/d-beta5-resolution-change-native-unit-component.lean` は同じ元の二関手の対象を端点とする実単位射 `dgModuleResolutionChangeIdentityUnitComponent` を独立に構成し、警告なし・許容三公理のみで検証済み（未集約）。この成分を使った包装 `/tmp/d-beta5-resolution-change-native-strict.lean` も一括の simp で heartbeat 上限に達した。次は左右合成と元の二つの Hom 作用の4接続を個別の型付き等式として証明し、`congrArg` と等式推移で正方形の一致を厳密変換へ反映する。実行中の試作はない。選択済み比較を再定義して代用しない。模型変更の全自然性・一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
 
 ## 目標と原典
 
