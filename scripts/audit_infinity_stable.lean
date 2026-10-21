@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverAcyclic
+import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSpanMaps
+import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSurjectiveSpan
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoTransfer
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoSpanMaps
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoSurjectiveSpan
+import SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoComparison
 import SerrePositivity.InfinityCategories.Derived.EnrichedDifferencePostcompose
 import SerrePositivity.InfinityCategories.Derived.EnrichedCompositionChange
 import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSquare
@@ -3689,6 +3696,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverAcyclic,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSpanMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSurjectiveSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoTransfer,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoSpanMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleQuasiIsoSurjectiveSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoComparison,
     `SerrePositivity.InfinityCategories.Derived.EnrichedDifferencePostcompose,
     `SerrePositivity.InfinityCategories.Derived.EnrichedCompositionChange,
     `SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSquare,
