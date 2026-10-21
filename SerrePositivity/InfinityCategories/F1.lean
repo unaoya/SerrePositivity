@@ -2673,3 +2673,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalOverNatur
 public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalCellOverNaturalityEndpoints
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalCellOverNaturalityTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSharedNaturalityTriangle
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSharedNaturalityComponents
