@@ -2609,3 +2609,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalC
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalNativeTransportCoherence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeGlobalCoherence
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoSymmetricWhisker
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalRestrictionFactorization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalRestrictionCoherence

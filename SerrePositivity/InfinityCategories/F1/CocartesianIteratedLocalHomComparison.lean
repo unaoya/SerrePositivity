@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomComparison
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransportRestriction
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalRestrictionFactorization
 
 /-!
 概要：元の局所 Hom 比較をさらに制限し、元の局所分類作用との自然な正方形を構成する。
@@ -53,16 +54,9 @@ def cocartesianIteratedLocalHomComparison_restrictionIso :
           ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
             cocartesianStrictTransportCoherentDiagram p.val.hom)
           ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
-            cocartesianStrictTransportCoherentDiagram q.val.hom)) := by
-  have e₁ := (cocartesianBaseChangeHomNaturalityIso l
-    ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-    ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)).postcomp
-      (cocartesianBaseChangeRestrictedHomTransport l k p q)
-  have e₂ := FunctorIso.precomp (cocartesianBaseChangeHomTransport_restrictionIso l k p q).symm
-    (cocartesianStraighteningHomInterval
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))
-  simpa only [cocartesianIteratedLocalHomComparison, cocartesianLocalHomComparison,
-    cocartesianBaseChangeHomRestrictionZero, Category.assoc] using e₁ ≪≫ e₂
+            cocartesianStrictTransportCoherentDiagram q.val.hom)) :=
+  F2.functorIsoOfEq (cocartesianIteratedLocalRestrictionCompositeIso l k p q)
+    (cocartesianIteratedLocalRestrictionComposite_source l k p q)
+    (cocartesianIteratedLocalRestrictionComposite_target l k p q)
 
 end SerrePositivity.InfinityCategories

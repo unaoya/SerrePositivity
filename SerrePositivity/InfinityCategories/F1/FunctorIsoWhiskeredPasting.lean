@@ -55,4 +55,21 @@ lemma functorIso_normalized_postcomp_precomp_twice_target
       (((e.precomp r).postcomp p).postcomp q).targetMap := by
   simp only [FunctorIso.targetMap, Category.assoc]
 
+/-- 同じ指定二因子の合成は、三端点と前合成した指定値を保って貼り合う。 -/
+lemma functorIso_precomp_paste_heq {H X K : SSet.{u}}
+    {f g h : H ⟶ X} (e : FunctorIso f g) (d : FunctorIso g h) (r : K ⟶ H)
+    {a b c : K ⟶ X} (E : FunctorIso a b) (N : FunctorIso b c)
+    (hf : (e.precomp r).sourceMap = E.sourceMap)
+    (hg : (e.precomp r).targetMap = E.targetMap)
+    (hh : (d.precomp r).targetMap = N.targetMap)
+    (he : HEq E (e.precomp r)) (hd : HEq N (d.precomp r)) :
+    HEq (FunctorIso.precomp (e ≪≫ d) r) (E ≪≫ N) := by
+  change r ≫ f = a at hf
+  change r ≫ g = b at hg
+  change r ≫ h = c at hh
+  subst a b c
+  cases eq_of_heq he
+  cases eq_of_heq hd
+  rw [F2.functorIso_precomp_trans]
+
 end SerrePositivity.InfinityCategories
