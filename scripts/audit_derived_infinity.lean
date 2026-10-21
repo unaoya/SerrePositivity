@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorBlockDifferential
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality
 import SerrePositivity.InfinityCategories.Derived.DGNerveNoninjectiveCutProduct
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorNoninjective
@@ -3179,6 +3181,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorBlockDifferential,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGNerveNoninjectiveCutProduct,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorNoninjective,
