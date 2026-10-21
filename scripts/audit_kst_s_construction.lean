@@ -19899,3 +19899,83 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDesc
 #check @SerrePositivity.KST.SConstruction.necklaceCubicalDesc_cell
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDesc_cell
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_left
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_left
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_right
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_right
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_seam
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_joint_seam
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeLeftVertex
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeLeftVertex
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeRightVertex
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeRightVertex
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeLeftClamp
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeLeftClamp
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeRightClamp
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeRightClamp
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_left
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_left
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_right
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_right
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_leftClamp
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_leftClamp
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_rightClamp
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_rightClamp
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_split
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_allows_split
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.orderMap
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.orderMap
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_vertex
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_constant
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.orderMap_constant
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeFst
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeFst
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeSnd
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeSnd
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_fst
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_fst
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_snd
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_snd
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_left_recover
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_left_recover
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_right_recover
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_right_recover
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_simplex_cover
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_simplex_cover
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_hom_ext
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.pointMap
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.pointMap
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_app
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.pointMap_app
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_seam
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_seam
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_constant_agree
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_constant_agree
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inl
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inl
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inr
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeGlue_inr
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeDesc
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_desc
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_desc
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_desc
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_desc
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedge_isPushout
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedge_isPushout
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgePushoutIso
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_pushoutIso
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInl_pushoutIso
+#check @SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso
+#print axioms SerrePositivity.KST.SConstruction.NecklaceShape.wedgeInr_pushoutIso

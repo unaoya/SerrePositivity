@@ -1501,4 +1501,8 @@ public import SerrePositivity.KST.SConstruction.NecklaceNumericNormalForm
 public import SerrePositivity.KST.SConstruction.NecklaceConcreteCube
 public import SerrePositivity.KST.SConstruction.NecklaceNumericCubeComparison
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeShape
+public import SerrePositivity.KST.SConstruction.NecklaceOrderMap
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeMaps
+public import SerrePositivity.KST.SConstruction.NecklaceWedgePushout
 /-! # ∞-S• 構成と連結 K 理論 -/
