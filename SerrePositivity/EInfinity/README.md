@@ -1538,6 +1538,16 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 `FirstFactorAction.prefix_vertices/residual_vertices/prefix_apps/residual_apps` は最小非指定列で
 内部切断端点を含む全頂点・全縦射を保持する。任意可換環の実際の全自由次数も検証。
 横の列と切断の接続自然変換の比較、全図式の同定、余極限の像の一致・反復・積分解は後続。
+`Word.ColumnSplit.beforeBlock/afterBlock` と `ColumnSplit.before_arrow/after_arrow` は
+切断した前後の全列を元の連続部分の同じ列へ回収する。
+`before_segment/after_segment` と `Attachments.prefix_segment_before/residual_segment_after` は
+前後の全区間合成を元の同じ区間へ照合する。空区間・全方向を含む。
+`Direction.block_arrow_heq` と各 `*_direction_arrow/*_direction_before/*_direction_after` は
+元の方向付き列を回収する。`prefixCutVertex_block/residualCutVertex_block` は元の cut を保持。
+`Attachments.prefix_outer_direction/prefix_outer_arrow/residual_outer_direction/residual_outer_arrow`
+は内部切断列以外の全横列と、元の制限射による語の作用の一致。
+任意可換環の実際の全自由次数でも検証。内部接続列・全因子図式の同定、
+同じ余極限の像の一致・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

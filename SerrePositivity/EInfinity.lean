@@ -1202,3 +1202,13 @@ public import SerrePositivity.EInfinity.Hammock.WordCutFactorMaps
 public import SerrePositivity.EInfinity.Hammock.WordCutFactorPrefixCuts
 public import SerrePositivity.EInfinity.Hammock.WordCutFactorResidualCuts
 public import SerrePositivity.EInfinity.Hammock.WordCutFactorVertices
+public import SerrePositivity.EInfinity.Hammock.DirectionBlockArrows
+public import SerrePositivity.EInfinity.Hammock.UnmarkedAttachedFactorDirections
+public import SerrePositivity.EInfinity.Hammock.UnmarkedAttachedFactorSegments
+public import SerrePositivity.EInfinity.Hammock.UnmarkedPrefixWordActionOuter
+public import SerrePositivity.EInfinity.Hammock.UnmarkedResidualWordActionOuter
+public import SerrePositivity.EInfinity.Hammock.WordColumnSplitBlocks
+public import SerrePositivity.EInfinity.Hammock.WordCutFactorBlockCuts
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitArrows
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitDirections
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitSegments

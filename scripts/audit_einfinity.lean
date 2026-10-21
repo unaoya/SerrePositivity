@@ -5066,6 +5066,29 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixVertex_last,
       `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualVertex_zero]
 
+@[noinline] private def e2RequiredBatch68 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Direction.block_arrow_heq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_direction_before,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_direction_after,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_segment_before,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_segment_after,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_outer_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_outer_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_outer_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_outer_arrow,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.beforeBlock,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.afterBlock,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.beforeBlock_vertex,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.afterBlock_vertex,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixCutVertex_block,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualCutVertex_block,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_arrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_arrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_direction_arrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_direction_arrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_segment,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_segment]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5097,7 +5120,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -11979,3 +12002,97 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
   Hammock.UnmarkedGenerators.FirstFactorAction.generator_eq
     (freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hT
+
+
+-- 元の前後の連続部分の包含は同じ元の頂点を保持する。
+open SerrePositivity.EInfinity.Hammock in
+example (w : Word) (p : Fin w.length)
+    (k : Fin ((Word.ColumnSplit.before w p).length + 1))
+    (l : Fin ((Word.ColumnSplit.after w p).length + 1)) :
+    (Word.ColumnSplit.beforeBlock w p).vertex k = Word.ColumnSplit.beforeVertex w p k ∧
+    (Word.ColumnSplit.afterBlock w p).vertex l = Word.ColumnSplit.afterVertex w p l :=
+  ⟨Word.ColumnSplit.beforeBlock_vertex w p k, Word.ColumnSplit.afterBlock_vertex w p l⟩
+
+-- 抽出した前の全区間合成を、元の同じ区間へ回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) [W.IsMultiplicative]
+    {w : Word} {A B : D ⥤ C} (p : Fin w.length) (F : Zigzag.MovingDiagram D C W w A B)
+    (d : D) (δ : Direction) (u v : Fin ((Word.ColumnSplit.before w p).length + 1)) (huv : u ≤ v)
+    (hd : ∀ j : Fin (Word.ColumnSplit.before w p).length,
+      u.val ≤ j.val → j.val < v.val → (Word.ColumnSplit.before w p).direction j = δ) :
+    HEq (Segment.map δ ((Zigzag.MovingDiagram.ColumnSplit.before p F).obj d) u v huv hd)
+      (Segment.map δ (F.obj d) ((Word.ColumnSplit.beforeBlock w p).vertex u)
+        ((Word.ColumnSplit.beforeBlock w p).vertex v)
+        ((Word.ColumnSplit.beforeBlock w p).vertex_monotone huv)
+        ((Word.ColumnSplit.beforeBlock w p).interval_direction δ u v hd)) :=
+  Zigzag.MovingDiagram.ColumnSplit.before_segment p F d δ u v huv hd
+
+-- 同じ回収を後の全区間と全方向でも検証する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) [W.IsMultiplicative]
+    {w : Word} {A B : D ⥤ C} (p : Fin w.length) (F : Zigzag.MovingDiagram D C W w A B)
+    (d : D) (δ : Direction) (u v : Fin ((Word.ColumnSplit.after w p).length + 1)) (huv : u ≤ v)
+    (hd : ∀ j : Fin (Word.ColumnSplit.after w p).length,
+      u.val ≤ j.val → j.val < v.val → (Word.ColumnSplit.after w p).direction j = δ) :
+    HEq (Segment.map δ ((Zigzag.MovingDiagram.ColumnSplit.after p F).obj d) u v huv hd)
+      (Segment.map δ (F.obj d) ((Word.ColumnSplit.afterBlock w p).vertex u)
+        ((Word.ColumnSplit.afterBlock w p).vertex v)
+        ((Word.ColumnSplit.afterBlock w p).vertex_monotone huv)
+        ((Word.ColumnSplit.afterBlock w p).interval_direction δ u v hd)) :=
+  Zigzag.MovingDiagram.ColumnSplit.after_segment p F d δ u v huv hd
+
+-- prefix の内部切断列以外の全横列は元の制限射と一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (i : Fin a.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) (hi : a.direction i = .forward)
+    (hT : UnmarkedGenerators.column W ((τ ⋙ WordAction.functor f).obj 0) (f.orderHom i) ≠ [])
+    (d : Fin (n.unop.len + 1)) (k : Fin (Word.ColumnSplit.before b (f.orderHom i)).length) :
+    HEq ((WordAction.obj (Word.CutFactor.prefixMap f i hi)
+      ((UnmarkedGenerators.Attachments.prefixDiagram W τ i h).obj d)).arrow (k.castAdd 1))
+      (((UnmarkedGenerators.Attachments.prefixDiagram W (τ ⋙ WordAction.functor f)
+        (f.orderHom i) hT).obj d).arrow (k.castAdd 1)) :=
+  UnmarkedGenerators.Attachments.prefix_outer_arrow W f τ i h hi hT d k
+
+-- 残りの内部切断列以外も、元の全方向の横列を保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (i : Fin a.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) (hi : a.direction i = .forward)
+    (hT : UnmarkedGenerators.column W ((τ ⋙ WordAction.functor f).obj 0) (f.orderHom i) ≠ [])
+    (d : Fin (n.unop.len + 1)) (k : Fin (Word.ColumnSplit.after b (f.orderHom i)).length) :
+    HEq ((WordAction.obj (Word.CutFactor.residualMap f i hi)
+      ((UnmarkedGenerators.Attachments.residualDiagram W τ i h).obj d)).arrow (k.natAdd 1))
+      (((UnmarkedGenerators.Attachments.residualDiagram W (τ ⋙ WordAction.functor f)
+        (f.orderHom i) hT).obj d).arrow (k.natAdd 1)) :=
+  UnmarkedGenerators.Attachments.residual_outer_arrow W f τ i h hi hT d k
+
+-- 任意可換環の実際の全自由次数でも同じ元の横列を検証する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {a b : Hammock.Word} (f : a ⟶ b)
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
+    (i : Fin a.length)
+    (h : Hammock.UnmarkedGenerators.column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ []) (hi : a.direction i = .forward)
+    (hT : let W := (freeResolutionGeneratorBase
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      Hammock.UnmarkedGenerators.column W ((τ ⋙ Hammock.WordAction.functor f).obj 0)
+        (f.orderHom i) ≠ [])
+    (d : Fin (m.unop.len + 1)) (k : Fin (Hammock.Word.ColumnSplit.before b (f.orderHom i)).length) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    HEq ((Hammock.WordAction.obj (Hammock.Word.CutFactor.prefixMap f i hi)
+      ((Hammock.UnmarkedGenerators.Attachments.prefixDiagram W τ i h).obj d)).arrow (k.castAdd 1))
+      (((Hammock.UnmarkedGenerators.Attachments.prefixDiagram W (τ ⋙ Hammock.WordAction.functor f)
+        (f.orderHom i) hT).obj d).arrow (k.castAdd 1)) :=
+  Hammock.UnmarkedGenerators.Attachments.prefix_outer_arrow
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ i h hi hT d k
