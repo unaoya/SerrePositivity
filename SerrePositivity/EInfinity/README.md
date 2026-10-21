@@ -1558,7 +1558,14 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 `prefix_colimit_image/residual_colimit_image` は同じ元の hammock 余極限の像の一致。
 `marked_prefix_functor/marked_prefix_colimit_image` は実際の指定部分圏の W-hammock にも適用。
 任意可換環の実際の全自由次数でも検証。生成矢の表示を移した各幅での一段の比較であり、
-因子を依存和の単体集合の射へ束ねる工程、reduction・反復・積分解は後続。
+依存和の単体集合の射と全語の非空部分の余極限への降下は以下。reduction・反復・積分解は後続。
+`FactorTarget.space` は元の非指定生成矢で指定 prefix と残りの hammock を束ねる単体集合。
+`NonemptyGraph.simplicialSet/wordDiagram` は元の非空列を持つ単体の全語の図式。
+`FirstFactor.point/point_simplex/point_wordAction` は実際の W-hammock の prefix と残りの
+切断点を全単体作用素・全語の圧縮・恒等列の挿入に整合させる。
+`cutMap/cutCocone/colimitCut` は元の非空部分の全語の余極限からの切断射。
+`inclusion_colimitCut/colimitCut_unique/inclusion_ambientMap` は元の各語の切断・標準射と一意性を回収。
+任意可換環の実際の全自由次数でも検証。元の全 hammock の非空部分との同定・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
