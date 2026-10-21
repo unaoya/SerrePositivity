@@ -2616,3 +2616,26 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCocone
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeDiagonalCoconeIso
+
+#check @SerrePositivity.InfinityCategories.F2.intervalMappingUncurry_vertex
+#check @SerrePositivity.InfinityCategories.F2.constantTransformationPrism_coherentVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalConstantHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitTargetLowerTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalVertex_uncurry
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalVertex_constant
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalRelativeComposite
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalRelativeComposite_coordinates
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberTransportIso
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso
+#check @SerrePositivity.InfinityCategories.F2.coherentVertexOfHomotopy_cocone
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFiberHomIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransport
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerAction
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitTransportValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitTransportValueIso
