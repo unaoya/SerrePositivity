@@ -1779,4 +1779,11 @@ public import SerrePositivity.KST.SConstruction.SimplexHASingletonFaceComponents
 public import SerrePositivity.KST.SConstruction.SimplexHAOrientedRhsFaces
 public import SerrePositivity.KST.SConstruction.SimplexHATopCompatibility
 public import SerrePositivity.KST.SConstruction.SimplexHATopAllDimensions
+public import SerrePositivity.KST.SConstruction.SerreCubeAppendEdgeDifferential
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorDifferential
+public import SerrePositivity.KST.SConstruction.SimplexHABeadWordBoundary
+public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorBoundary
+public import SerrePositivity.KST.SConstruction.SerreCubeZeroGeneratorDifferential
+public import SerrePositivity.KST.SConstruction.SimplexHABeadWordBoundaryZero
+public import SerrePositivity.KST.SConstruction.SimplexHAZeroGeneratorCompatibility
 /-! # ∞-S• 構成と連結 K 理論 -/

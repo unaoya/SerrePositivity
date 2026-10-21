@@ -22131,3 +22131,38 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_degree_transport
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm_all
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm_all
+
+#check @SerrePositivity.KST.SConstruction.serreCubeFace_zero_difference
+#print axioms SerrePositivity.KST.SConstruction.serreCubeFace_zero_difference
+#check @SerrePositivity.KST.SConstruction.serreCubeAppendEdge_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeAppendEdge_d
+#check @SerrePositivity.KST.SConstruction.serreCubeEndpoint_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeEndpoint_d
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_point_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_point_d
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_keep_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_keep_d
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_join_differential
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_join_differential
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_differential
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_differential
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorBoundaryValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorBoundaryValue
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_differential
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_differential
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_differential
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_differential
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_zero_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_zero_d
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue_zero
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_closed
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_closed
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorBoundaryValue_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorBoundaryValue_zero
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_generator_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_generator_comm
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_zero_comm
