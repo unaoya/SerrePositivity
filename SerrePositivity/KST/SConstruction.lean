@@ -1663,4 +1663,14 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNativeComposit
 public import SerrePositivity.KST.SConstruction.NecklaceSingleCoordinateValue
 public import SerrePositivity.KST.SConstruction.SimplexSubsetCoordinateSign
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitFaceSign
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeNormalizedComponent
+public import SerrePositivity.KST.SConstruction.SimplexSubsetMappedFaceTop
+public import SerrePositivity.KST.SConstruction.ConcreteCubeFaceConjugation
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNormalizedDimensions
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNormalizedCube
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNormalizedComparison
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNormalizedLambda
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitFlatNormalization
+public import SerrePositivity.KST.SConstruction.SimplexSubsetMappedOneFaceTop
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeFaceTerm
 /-! # ∞-S• 構成と連結 K 理論 -/

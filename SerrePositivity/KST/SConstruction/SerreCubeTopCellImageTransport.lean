@@ -43,4 +43,18 @@ lemma serreCubeTopCellImage_cast_dimension {K : Complex A} {m n : ℕ} (h : m = 
   exact (congrArg (fun g => g ≫ f) ((serreConcreteCubeComplexFunctor A).map_id _)).trans
     (Category.id_comp _)
 
+/-- 元の次元移送後の最高生成元像は、元の後合成を保って同じ指定次数へ移る。 -/
+lemma serreCubeTopCellImage_cast_dimension_post {K L : Complex A} {m n : ℕ}
+    (h : m = n) (k : ℤ) (hm : -(m : ℤ) = k) (hn : -(n : ℤ) = k)
+    (f : serreCubeComplex A n ⟶ K) (g : K ⟶ L) :
+    eqToHom (congrArg L.X hm)
+        (serreCubeTopCellImage A L m
+          (((serreConcreteCubeComplexFunctor A).map
+            (concreteCubeDimensionIso (X := ConcreteCube.mk m) (Y := ConcreteCube.mk n) h).hom ≫
+              f) ≫ g)) =
+      eqToHom (congrArg L.X hn) (serreCubeTopCellImage A L n (f ≫ g)) := by
+  exact (congrArg (fun l => eqToHom (congrArg L.X hm) (serreCubeTopCellImage A L m l))
+    (Category.assoc _ _ _)).trans
+      (serreCubeTopCellImage_cast_dimension A h k hm hn (f ≫ g))
+
 end SerrePositivity.KST.SConstruction
