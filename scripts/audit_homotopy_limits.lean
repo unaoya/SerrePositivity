@@ -11800,3 +11800,33 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localEquivalences_colimitPrism_apex
 #print axioms localEquivalences_colimitPrism_apex
+
+#check @arrowVertexEdge
+#print axioms arrowVertexEdge
+
+#check @uncurry_vertex_prismEvaluation
+#print axioms uncurry_vertex_prismEvaluation
+
+#check @arrowCocone_prism_diagram
+#print axioms arrowCocone_prism_diagram
+
+#check @arrowCocone_endpoint_val
+#print axioms arrowCocone_endpoint_val
+
+#check @arrowCocone_vertex_prismEdge
+#print axioms arrowCocone_vertex_prismEdge
+
+#check @localEquivalences_arrowCocone_of_endpoints
+#print axioms localEquivalences_arrowCocone_of_endpoints
+
+#check @isColimitCone_functor_evaluation_of_pointwise_exists
+#print axioms isColimitCone_functor_evaluation_of_pointwise_exists
+
+#check @localEquivalences_arrowColimit
+#print axioms localEquivalences_arrowColimit
+
+#check @IsStronglySaturatedEdgeSetOfShapes
+#print axioms IsStronglySaturatedEdgeSetOfShapes
+
+#check @localEquivalences_stronglySaturated
+#print axioms localEquivalences_stronglySaturated

@@ -28,13 +28,13 @@
   `reflective_isLocal_iff_unit_local` は既存反射の局所対象を全単位成分への局所性で特徴づける。逆向きは元の単位の両逆を回収。
   既存反射について、局所対象と元の反転辺集合の局所対象の一致、および S-equivalence と元の反転辺集合の一致を証明（HTT 5.5.4.2(1)・(2)）。
   `LocalEquivalenceHom`・`localEquivalences` を元の射・一次単体で定義。元の辺集合の包含、単調性・冪等性、局所対象の不変性を証明。
-  元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。強飽和性の任意小余極限条件は未証明。
+  元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。任意小余極限条件も下記の元の矢印圏の余錐で証明。
   全単体集合パラメータの定値 Hom の全単射と局所性の同値を公開。元の辺への局所性を終点固定 coslice の始点制限の trivial Kan 性と照合。
   元の span の左枝が指定辺集合に属するとき、局所対象への余錐の右枝・右枝終点への制限の trivial Kan 性を証明。余錐空間の厳密な引き戻しを使用。
   **元の任意の coherent な pushout での S-equivalence の保存を完了。** 下辺→上辺と左辺→右辺の両向きを公開。安定性は不要。
   反復 coslice の厳密な同型と元の左因子への制限の一致を構成し、余極限余錐全体から底図式への coslice 制限の trivial Kan 性を導出。
   これを元の span の余錐制限と正方形の上辺の right anodyne 性で結び、追加の写像空間条件を仮定せず元の脚を保存。
-  強飽和性の条件(1) pushout と(3) 元の二単体の三辺は完了。(2) 矢印圏内の任意小余極限での閉性は未証明。
+  **局所同値の強飽和性（HTT 5.5.4.5・5.5.4.11）を完了。** pushout・矢印圏内の任意小余極限・元の二単体の二つから三つ目と全可逆辺を保持。
   右ファイブレーションの相対 Hom の各頂点の fiber の可縮性から、任意の底 K 上で、元の部分族・始点側・底を保つ任意の単射に沿う持ち上げを証明。
   余錐・切断の制限を反転の自然同型で照合し、元の辺への局所性を辺上の切断の始点制限の自明 Kan 性と同定。
   局所性から元の相対 Hom の持ち上げ fiber の可縮性を回収し、任意の底 K 上の局所辺の族の相対 Hom の自明 Kan 性を証明。
@@ -42,7 +42,9 @@
   二つの left fibration の始対象間の指定比較辺と任意の余錐制限について、fiber 制限の同値性から元の比較辺の像の局所性を証明。
   **両端が余極限余錐の元の coherent な prism について、底の全垂直辺が S-equivalence なら元の頂点辺も S-equivalence と証明。**
   終点面から全図式の余極限性を回収し、指定比較辺の底の像を元の頂点辺と厳密に同定。K の nerve・quasicategory 性は仮定しない。
-  辺集合の小生成・強飽和性全体、反射の存在、Bousfield 局所化・P_Σ の構成は未完了。
+  元の任意の矢印圏の余極限余錐の両端評価を、F2 の点ごとの余極限の存在と余錐全体の同型から回収。元の頂点辺の所属を証明。
+  小添字 u と対象圏の宇宙 max(u,v) を分離し、ulift した全小形状の余極限の存在から強飽和性を集約。大きい宇宙の全余極限は要求しない。
+  辺集合の小生成、反射の存在、Bousfield 局所化・P_Σ の構成は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
   1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
   2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
@@ -81,24 +83,24 @@
   `relativeHomFiber_isContractibleKan_of_restriction_trivial`、`localEdgeFamily_relativeHom_trivial`、
   `relativeFunctorPre_tensor_trivial_of_vertexFibers`、`localPrism_source_sections_trivial`、`localPrism_source_cocones_trivial`、
   `isLocalForHom_initialRestriction_of_fiber_equivalence`、`localEquivalences_colimitRestriction_comparison`、`localEquivalences_colimitPrism_source_comparison`、
-  `colimitPrismTotalCocone_isColimit`、`colimitPrismComparisonEdge_projection`、`localEquivalences_colimitPrism_apex`。
+  `colimitPrismTotalCocone_isColimit`、`colimitPrismComparisonEdge_projection`、`localEquivalences_colimitPrism_apex`、
+  `isColimitCone_functor_evaluation_of_pointwise_exists`、`localEquivalences_arrowColimit`、`IsStronglySaturatedEdgeSetOfShapes`、`localEquivalences_stronglySaturated`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：元の余極限余錐間 prism の全余錐・指定比較辺・頂点辺の局所同値性の5モジュール24宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
+- **未コミット**：なし（今回の保存単位：元の矢印圏の余極限余錐と両端評価の照合・任意小余極限閉性・強飽和性の4モジュール10宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は N 旧稿と確認し、修正版を正しい場所へ保存後に削除済み。
-- **既知の問題**：N の対象ビルド6240 jobs・全4338宣言監査は終了コード0、標準三公理のみ。新規5モジュール24宣言に警告・sorry・追加公理なし。
-  Sp の既存界面は対象5366/5370 jobs と13宣言の型・公理確認が終了コード0、標準三公理のみ。両 import 閉包に他レーンの未コミット差分なし。
+- **既知の問題**：N の対象ビルド6256 jobs・全4348宣言監査は終了コード0、標準三公理のみ。新規4モジュール10宣言に警告・sorry・追加公理なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：任意の小余極限での閉性（HTT 5.5.4.5(2)・5.5.4.11）。今回の元の prism の定理を、元の矢印圏内の余極限余錐へ適用する。
-  c : JoinCocone(r : K→Fun(Δ¹,X)) に対し G=uncurry(c.val)。両端評価と `colimitPrismEndpoint G j` を全射の等式で照合し、元の c.vertex の辺を G の頂点辺と同定。
-  まず両端評価の余極限性を明示した場合を閉じる。その後、C が小余極限を持つという原典の前提から任意の元の余極限余錐の両端評価が余極限となることを回収する。
-  F2 の `exists_colimitCone_functor_of_pointwise` で点ごとに余極限の余錐を作り、余極限余錐の同型と評価による同型の保存で、元の指定余錐へ移す。F2 は読み取り専用。
-  片向きの `isColimitCone_functor_of_pointwise` だけで元の任意の余錐の評価保存を済ませず、小余極限の存在の前提を保持する。
-  `sliceUnderUncurry_eqToHom` は既存 `InitialRestrictionBaseEvaluation` の宣言を再利用。反復 coslice の同名宣言を再定義しない。反射の存在・強飽和性全体・P_Σ は未完了。
+- **次の一手**：N-4：局所対象の極限閉性、その後に小生成・反射の存在（HTT 5.5.4・5.5.8）。強飽和性を未完として再実装しない。
+  D : K→X の全頂点が W-局所なら、元の指定極限錐 c の頂点も W-局所であることを証明。まず coneSectionHomComparison と coslice の前合成を全パラメータで照合する。
+  `F1B.kanIsPrecompositionEquivalence_of_leftFibration_fibers` は任意の底で使用可。D に引き戻した表現可能 left fibration の fiber の同値を、切断空間の同値へ移す入口を調べる。
+  `relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence` は底の quasicategory 性を要求する。任意 K の極限閉性にそのまま適用せず、追加の仮定で弱めない。
+  F2 の正本では Ind・compact が進行中で、presentable・随伴関手定理は後段。反射の存在を既存反射の条件付き特徴づけだけで完成としない。F2 は読み取り専用。
+  `sliceUnderUncurry_eqToHom` は既存 `InitialRestrictionBaseEvaluation` の宣言を再利用。反復 coslice の同名宣言を再定義しない。反射の存在・小生成・P_Σ は未完了。
   E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
   原典は [HTT 5.2.4.6・Remark 5.2.4.7、5.5.4・5.5.8](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）。
 
