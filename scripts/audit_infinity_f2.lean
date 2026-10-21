@@ -1685,3 +1685,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLeftTriangleComparison
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeRightTriangleComparison
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanPointedConeLift_common_long
+
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrism_initial_square
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrism_initial
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrismExtensionRestriction
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrismExtension_contractible
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrismExtensionRestriction_vertex_value
+#check @SerrePositivity.InfinityCategories.F2.triangleLongPrismExtensionRestriction_vertexIso
+#check @SerrePositivity.InfinityCategories.F2.nativePointedTriangleLongComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.nativePointedTriangleLongComparisonIso_eq
+#check @SerrePositivity.InfinityCategories.F2.nativePointedTriangleLongComparison_source_value
+#check @SerrePositivity.InfinityCategories.F2.nativePointedTriangleLongComparison_target_value
+#check @SerrePositivity.InfinityCategories.F2.contractibleVertexIso_span
+#check @SerrePositivity.InfinityCategories.F2.contractibleVertexIso_span_map
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLeftLongComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeRightLongComparison

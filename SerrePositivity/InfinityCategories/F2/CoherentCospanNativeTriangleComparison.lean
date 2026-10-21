@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.NativePointedTriangleComparison
+public import SerrePositivity.InfinityCategories.F2.NativePointedTriangleLongComparison
+public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoSpan
 public import SerrePositivity.InfinityCategories.F2.CoherentSmallFiberTriangleInitial
 
 /-!
@@ -48,5 +49,19 @@ lemma coherentCospanPointedConeLift_common_long :
     (fun f : (Δ[1] : SSet.{u + 1}) ⟶ join Δ[0] (horn 2 2 : SSet.{u + 1}) => (f ▷ a) ≫ L)
     cospanCone_isPushout.w
   simpa only [comp_whiskerRight, Category.assoc] using h
+
+/-- 元の左三角形の指定比較を、同じ始点固定の長辺 prism 空間へ写す。 -/
+def coherentCospanNativeLeftLongComparison :=
+  nativePointedTriangleLongComparisonIso c s hs (SSet.yonedaEquiv horn₂₂.ι₀₂)
+    (coherentSmallFiberPointedTriangle F X Z C.toLeft C.fromLeft C.leftTriangle b)
+    (coherentCospanPointedFiberTriangle_left_projection F b X Y Z C)
+    (coherentSmallFiberPointedTriangle_initial F X Z C.toLeft C.fromLeft C.leftTriangle b)
+
+/-- 元の右三角形の指定比較を、同じ始点固定の長辺 prism 空間へ写す。 -/
+def coherentCospanNativeRightLongComparison :=
+  nativePointedTriangleLongComparisonIso c s hs (SSet.yonedaEquiv horn₂₂.ι₁₂)
+    (coherentSmallFiberPointedTriangle F Y Z C.toRight C.fromRight C.rightTriangle b)
+    (coherentCospanPointedFiberTriangle_right_projection F b X Y Z C)
+    (coherentSmallFiberPointedTriangle_initial F Y Z C.toRight C.fromRight C.rightTriangle b)
 
 end SerrePositivity.InfinityCategories.F2
