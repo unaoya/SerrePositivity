@@ -4523,6 +4523,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockLocalizationObjects,
       `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalDiscreteIso]
 
+@[noinline] private def e2RequiredBatch54 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionGeneratorBase,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_eq_freeGeneratorBase,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionMarkedEquivalence_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolution_existsUnique_extension,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.unmarked,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.extendPrefunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.extendFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.extend_marked,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.extend_unmarked,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.marked_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.unmarked_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.inverts_iff_generators,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.inverts_iff_markedRestriction,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.jointly_ext,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.extend_unique,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition.existsUnique_extension,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.toWide,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.fromWide,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.equivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.toWide_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.quiver,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.forget,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.lift,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_lift,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_mem,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.lift_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.homEquiv,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_injective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.MarkedGenerators.inclusion_range]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4554,7 +4587,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10446,3 +10479,58 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R]
     (freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
       localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y) :=
   ⟨freeHammockDiagonalReduction _ X Y, freeHammockDiagonalComparison _ X Y⟩
+
+-- 元の指定射列は、指定生成矢の自由射列に移して戻すと同じ射列になる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y) (hp : W.paths p) :
+    (MarkedGenerators.inclusion W).map (MarkedGenerators.lift W p hp) = p :=
+  MarkedGenerators.inclusion_lift W p hp
+
+-- 元の恒等射も指定生成矢の一文字として残り、空列には潰れない。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] (X : C) :
+    ((MarkedGenerators.inclusion W).map (Quiver.Hom.toPath
+      (show @Quiver.Hom (MarkedGenerators.quiver W) _ X X from
+        ⟨𝟙 X, W.id_mem X⟩))).length = 1 := rfl
+
+-- 元の自由次数の指定部分圏との圏同値は、元の包含の同じ因子化を持つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ) :
+    (freeResolutionMarkedEquivalence C n).functor ⋙
+      wideSubcategoryInclusion ((freeResolution C).obj n).weakEquivalences =
+        MarkedGenerators.inclusion (freeResolutionGeneratorBase C n).weakEquivalences :=
+  freeResolutionMarkedEquivalence_inclusion C n
+
+-- 自由解像の全次数で、共通対象表示を持つ二つの生成部分から一意に貼り合わせる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
+    {D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} D]
+    (F : Paths (MarkedGenerators.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ⥤ D)
+    (G : Paths (MarkedGenerators.quiver
+      (GeneratorPartition.unmarked (freeResolutionGeneratorBase C n).weakEquivalences)) ⥤ D)
+    (h : ∀ X : (freeResolutionGeneratorBase C n).category, F.obj X = G.obj X) :
+    ∃! H : ((freeResolution C).obj n).category ⥤ D,
+      MarkedGenerators.inclusion (freeResolutionGeneratorBase C n).weakEquivalences ⋙ H = F ∧
+        MarkedGenerators.inclusion
+          (GeneratorPartition.unmarked (freeResolutionGeneratorBase C n).weakEquivalences) ⋙ H =
+            G := freeResolution_existsUnique_extension C n F G h
+
+-- 局所化への入力の全指定射列の反転は、指定生成部分の全射の反転と同値。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) (L : Paths C ⥤ D) :
+    W.paths.IsInvertedBy L ↔
+      (⊤ : MorphismProperty (Paths (MarkedGenerators.quiver W))).IsInvertedBy
+        (MarkedGenerators.inclusion W ⋙ L) :=
+  GeneratorPartition.inverts_iff_markedRestriction W L
+
+-- 任意可換環の実際の DK 入力の全自由次数に、指定部分圏との圏同値を代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
+    Paths (MarkedGenerators.quiver (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) ≌
+        WideSubcategory ((freeResolution
+          (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences :=
+  freeResolutionMarkedEquivalence (BarrattEccles.cofibrantAlgebraRelativeCategory R) n

@@ -1412,6 +1412,14 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `freeHammockDiagonalComparison` はその対角で、既存 `localizationHom` を標的とする。
 `freeHammockHomComparison_fac` は元の各語の標準射で同じ評価を回収する。
 任意可換環の既存の DK 入力にも代入済み。左右の比較射の弱同値性は未完成。
+`MarkedGenerators.homEquiv` は指定生成矢の自由射列と元の W.paths の射の全単射。
+`MarkedGenerators.equivalence` は同じ自由圏と元の指定矢の部分圏の圏同値で、
+`toWide_inclusion` は元の包含への因子化。恒等射の一文字も空列とは区別して保持する。
+`GeneratorPartition.existsUnique_extension` は指定・非指定の生成部分の関手の貼り合わせの
+普遍性。共通対象表示の等式を移送し、元の Paths C への拡張の存在と一意性を証明する。
+`inverts_iff_markedRestriction` は W.paths の反転と指定生成部分の全射の反転の同値。
+`freeResolutionMarkedEquivalence/freeResolution_existsUnique_extension` は元の全自由次数への
+代入。これらは比較補題2.3の自由積による帰着の準備であり、弱同値性の証明は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
