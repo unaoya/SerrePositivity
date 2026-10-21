@@ -1756,4 +1756,11 @@ public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorDecodeFace
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightComposition
 public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorStandardCell
 public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorCellComparison
+public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorMapRecovery
+public import SerrePositivity.KST.SConstruction.SimplexHADegreeMapRecovery
+public import SerrePositivity.KST.SConstruction.SimplexHADegreeNaturality
+public import SerrePositivity.KST.SConstruction.SerreCubeTopGeneratorIndex
+public import SerrePositivity.KST.SConstruction.SimplexHATopDecodeValue
+public import SerrePositivity.KST.SConstruction.SimplexHATopValueRecovery
+public import SerrePositivity.KST.SConstruction.SimplexHATopDifferential
 /-! # ∞-S• 構成と連結 K 理論 -/

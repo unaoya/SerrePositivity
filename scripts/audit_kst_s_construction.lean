@@ -21990,3 +21990,34 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_cell_standard
 #check @SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_cell_standard
 #print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_cell_standard
+
+#check @SerrePositivity.KST.SConstruction.complexMap_degree_cast
+#print axioms SerrePositivity.KST.SConstruction.complexMap_degree_cast
+#check @SerrePositivity.KST.SConstruction.complexMap_degree_cast_cancel
+#print axioms SerrePositivity.KST.SConstruction.complexMap_degree_cast_cancel
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_map_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_map_recovery
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_map_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_map_recovery
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_post
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_post
+#check @SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex
+#check @SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_freeDimension
+#check @SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_degree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_degree
+#check @SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_cast
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopGeneratorIndex_cast
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_top_value
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_top_value
+#check @SerrePositivity.KST.SConstruction.complexElement_degree_cast_heq
+#print axioms SerrePositivity.KST.SConstruction.complexElement_degree_cast_heq
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_top_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_top_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_differential
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_differential
