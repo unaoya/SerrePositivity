@@ -1838,3 +1838,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeConeSections
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeConeSections_uncurry
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeConeSections_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanLeftTarget
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanRightTarget
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanLeftInclusion
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanRightInclusion
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanSections_isPullback
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanSectionsIso
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanSectionsIso_left
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanSectionsIso_right
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorOverPre_fibration_of_mono
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanLeftTarget_fibration
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanRightTarget_fibration
+#check @SerrePositivity.InfinityCategories.F2.relativeCospanEdgeSource_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback_right
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback_left_uncurry
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback_right_uncurry
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeSectionPullback_isQCatEquivalence

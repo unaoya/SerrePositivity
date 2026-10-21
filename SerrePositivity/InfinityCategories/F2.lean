@@ -188,7 +188,9 @@ public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeFiberPat
 
 public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedFiberTriangleIso
 
-public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeConeSections
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeSectionPullback
+
+public import SerrePositivity.InfinityCategories.F2.RelativeCospanSectionFibrations
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
