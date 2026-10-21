@@ -1735,6 +1735,16 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 空語・任意可換環の実際の全自由次数の指定生成 quiver でも検証。
 射影後の持ち上げの回収・全語の作用と全単体作用素への整合、有限部分木の縮約による
 成分可縮性と元の両弱比較は未完成。
+`FreeQuiverCover.projectedPrefix_eq_label/projectedValue_eq/zigzagFiberProjection` は被覆の元の
+全頂点のラベルと終点の値 β を回収し、元の値の fiber への射影関手を構成する。
+`zigzagLiftFunctor_fiberProjection/zigzagFiberProjection_liftFunctor` は対象・全縦射を含む
+両合成の恒等性。`zigzagFiberEquivalence/zigzagFiberCategoryIso` の両関手は元の持ち上げと射影。
+`zigzagFiberWordAction` は元の全語の作用の制限そのもので、両関手と厳密に可換する。
+`fiberCategoryDiagramIso/fiberGraphDiagramIso/fiberGraphColimitIso` は全語・全単体作用素に
+自然な圏値・nerve 図式の同型と、その余極限から被覆の元の hammock への同型。
+`fiberGraphColimitIso_fac` は元の各語の標準射の回収。空語と任意可換環の実際の全自由次数も検証。
+元の hammock 上の値の fiber と値の fiber の図式の余極限の同定、有限部分木の葉の除去を
+使う成分可縮性、元の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

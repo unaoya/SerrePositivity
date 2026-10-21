@@ -5751,6 +5751,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagColumnLift,
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagColumnLift_projection]
 
+@[noinline] private def e2RequiredBatch85 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberCategoryDiagram,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverCategoryDiagram,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberCategoryDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphDiagram,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.coverGraphDiagram,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphDiagramIso_hom_app,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphDiagramIso_inv_app,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphColimitIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projectedValue_eq,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection_inclusion,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberWordAction,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberWordAction_inclusion,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.valueFiberFunctor_ext,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberWordAction_id,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberWordAction_comp,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.Vertex.path_heq,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projected_forward_label,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projected_backward_label,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projectedPrefix_first,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projectedLabel_edge,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.projectedPrefix_eq_label,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberProjection_word_obj,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection_wordAction,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftFunctor_wordAction,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberCategoryIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.valueFiber_hom_hext,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftFunctor_fiberProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection_liftFunctor,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathProjection_hom_hext,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagVertex_projected_eq,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLift_fiberProjection_obj,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection_lift_obj]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5782,7 +5820,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13826,3 +13864,82 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
         (FreeQuiverCover.zigzagValueProperty (Q := Q) A w Y β).ι := by
   intro C W Q β
   exact FreeQuiverCover.zigzagLiftFunctor_projection (Q := Q) A
+
+-- 元の射影の接頭値は被覆の元の全頂点ラベルに等しい。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    {w : Word} {Y : Paths Q}
+    {β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y} :
+    letI := FreeQuiverCover.quiver A
+    ∀ (Z : Zigzag (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex A))) w
+      ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.root A))
+      ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.fiberEndpoint A Y β)))
+      (j : Fin (w.length + 1)),
+      FreeQuiverCover.zigzagPrefix A ((FreeQuiverCover.zigzagProjection A w Y β).obj Z) j =
+        (Z.vertex j).path := FreeQuiverCover.projectedPrefix_eq_label A
+
+-- 元の二つの関手を持つ厳密な圏同型を得る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (w : Word) (Y : Paths Q)
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    letI := FreeQuiverCover.quiver A
+    Cat.of (FreeQuiverCover.ZigzagValueFiber A w Y β) ≅
+      Cat.of (Zigzag (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex A))) w
+        ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.root A))
+        ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.fiberEndpoint A Y β))) :=
+  FreeQuiverCover.zigzagFiberCategoryIso A w Y β
+
+-- 元の全語の作用と持ち上げ関手が厳密に可換する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    letI := FreeQuiverCover.quiver A
+    ∀ {a b : Word} (f : a ⟶ b),
+      FreeQuiverCover.zigzagFiberWordAction A Y β f ⋙ FreeQuiverCover.zigzagLiftFunctor A b Y β =
+        FreeQuiverCover.zigzagLiftFunctor A a Y β ⋙ WordAction.functor f :=
+  FreeQuiverCover.zigzagLiftFunctor_wordAction A Y β
+
+-- 空語の逆向きの単体写像も元の射影の nerve そのものである。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    let Y := (Paths.of Q).obj A
+    letI := FreeQuiverCover.quiver A
+    (FreeQuiverCover.fiberGraphDiagramIso A Y (𝟙 _)).inv.app Word.empty =
+      nerveMap (FreeQuiverCover.zigzagFiberProjection A Word.empty Y (𝟙 _)) :=
+  FreeQuiverCover.fiberGraphDiagramIso_inv_app A _ _ Word.empty
+
+-- 全語の余極限の同型は元の各標準射で回収される。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y)
+    (w : Word) :
+    letI := FreeQuiverCover.quiver A
+    colimit.ι (FreeQuiverCover.fiberGraphDiagram A Y β) w ≫
+      (FreeQuiverCover.fiberGraphColimitIso A Y β).hom =
+        nerveMap (FreeQuiverCover.zigzagLiftFunctor A w Y β) ≫
+          graphInclusion (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex A)))
+            ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.root A))
+            ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.fiberEndpoint A Y β)) w :=
+  FreeQuiverCover.fiberGraphColimitIso_fac A Y β w
+
+-- 任意可換環の実際の全自由次数の指定生成 quiver の全語の余極限へ代入する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
+    let Y := (Paths.of Q).obj B
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    colimit (FreeQuiverCover.fiberGraphDiagram (Q := Q) A Y β) ≅
+      colimitGraph (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex (Q := Q) A)))
+        ((Paths.of (FreeQuiverCover.Vertex (Q := Q) A)).obj (FreeQuiverCover.root (Q := Q) A))
+        ((Paths.of (FreeQuiverCover.Vertex (Q := Q) A)).obj
+          (FreeQuiverCover.fiberEndpoint (Q := Q) A Y β)) := by
+  intro C W Q β
+  exact FreeQuiverCover.fiberGraphColimitIso (Q := Q) A ((Paths.of Q).obj B) β
