@@ -5789,6 +5789,80 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLift_fiberProjection_obj,
       `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagFiberProjection_lift_obj]
 
+@[noinline] private def e2RequiredBatch86 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphValue,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphValue_wordAction,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphValueLabels,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValue,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphInclusion_hammockValue,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValue_eq_colimitValue,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValueFiber,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.valueFiberColimitIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValueFiberCoverIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.valueFiberColimitIso_fac_inclusion,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.existingHammockValueFiberCoverIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphInclusion,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphFiberLift,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.graphFiberLift_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphInclusion_bijective,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberGraphIso_hom,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberValueDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberValueDiagramIso_hom_inclusion,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiberCocone,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.desc_label,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientCoconeFiberEquiv,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiberCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimitLabel,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimitLabel_ι,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientToChosenFiberEquiv,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimitFiberEquiv,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimitFiberEquiv_apply_ι,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiberDiagram,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.totalLabel,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.label_rel,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.label_eqvGen,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.totalFiber,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiberDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimit_map_label,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.chosenFiberMap,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.chosenFiberMap_ι,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.colimitFiberEquiv_natural,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberMap_injective,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberMap_surjective,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberEquiv,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberEquiv_apply_ι,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiberForgetCocone,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.forgetQuotient,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.forgetQuotient_label,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberMap,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.quotientFiberMap_ι,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiber_rel,
+      `SerrePositivity.EInfinity.Hammock.LabelledColimit.fiber_eqvGen,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberCoconeApp,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberCocone,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberCoconeApp_inclusion,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.colimitFiberIso,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.colimitFiberIso_fac,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.colimitFiberIso_fac_inclusion,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.degreeLabels,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.degreeColimitCocone,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.degreeColimit_isColimit,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberDegree_isColimit,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.Labels,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberDiagram,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.valueCocone,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.fiberInclusion,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.colimitValue,
+      `SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit.ι_colimitValue,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.value_simplex,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.space,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.inclusion,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.value_map,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.map,
+      `SerrePositivity.EInfinity.Hammock.SimplicialValueFiber.map_inclusion]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5820,7 +5894,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13943,3 +14017,77 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
           (FreeQuiverCover.fiberEndpoint (Q := Q) A Y β)) := by
   intro C W Q β
   exact FreeQuiverCover.fiberGraphColimitIso (Q := Q) A ((Paths.of Q).obj B) β
+
+-- 任意の添字圏の型値図式で元の余極限と fiber が交換する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {I : Type e2ComplexLimitUniverse} [Category I] {F : I ⥤ Type e2ComplexLimitUniverse}
+    (c : F.CoconeTypes) (β : c.pt) [HasColimit F]
+    [HasColimit (LabelledColimit.fiberDiagram c β)] :
+    colimit (LabelledColimit.fiberDiagram c β) ≃
+      {z : colimit F // LabelledColimit.colimitLabel c z = β} :=
+  LabelledColimit.colimitFiberEquiv c β
+
+-- 単体集合での同型も filtered 性やモデル構造を要求しない。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {I : Type e2ComplexLimitUniverse} [Category I]
+    {X : I ⥤ SSet.{e2ComplexLimitUniverse}} {B : Type e2ComplexLimitUniverse}
+    (L : SimplicialLabelledColimit.Labels X B) (β : B)
+    [HasColimit X] [HasColimitsOfShape I (Type e2ComplexLimitUniverse)] :
+    colimit (SimplicialLabelledColimit.fiberDiagram L β) ≅
+      SimplicialValueFiber.space (SimplicialLabelledColimit.colimitValue L) β :=
+  SimplicialLabelledColimit.colimitFiberIso L β
+
+-- 元の全語の標準射と元の fiber の包含を回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y)
+    (w : Word) :
+    colimit.ι (FreeQuiverCover.fiberGraphDiagram A Y β) w ≫
+      (FreeQuiverCover.valueFiberColimitIso A Y β).hom ≫
+        SimplicialValueFiber.inclusion (FreeQuiverCover.hammockValue A Y) β =
+          nerveMap (FreeQuiverCover.zigzagValueProperty A w Y β).ι ≫
+            graphInclusion (⊤ : MorphismProperty (Paths Q)) ((Paths.of Q).obj A) Y w :=
+  FreeQuiverCover.valueFiberColimitIso_fac_inclusion A Y β w
+
+-- 既存の同じ評価の fiber は元の被覆の hammock に同型である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    letI := FreeQuiverCover.quiver A
+    SimplicialValueFiber.space (Zigzag.Value.colimitValue FreeQuiverCover.positiveEvaluation
+      FreeQuiverCover.positiveEvaluation_inverts_top ((Paths.of Q).obj A) Y) β ≅
+      colimitGraph (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex A)))
+        ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.root A))
+        ((Paths.of (FreeQuiverCover.Vertex A)).obj (FreeQuiverCover.fiberEndpoint A Y β)) :=
+  FreeQuiverCover.existingHammockValueFiberCoverIso A Y β
+
+-- 空語でも全部分圏の nerve と元の graph の値の fiber を同定する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    let Y := (Paths.of Q).obj A
+    (FreeQuiverCover.fiberGraphDiagram A Y (𝟙 _)).obj Word.empty ≅
+      SimplicialValueFiber.space (FreeQuiverCover.graphValue A Y Word.empty) (𝟙 _) :=
+  FreeQuiverCover.fiberGraphIso A _ _ Word.empty
+
+-- 任意可換環の実際の全自由次数でも既存の評価の同じ fiber を同定する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
+    let Y := (Paths.of Q).obj B
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    SimplicialValueFiber.space (Zigzag.Value.colimitValue
+      (FreeQuiverCover.positiveEvaluation (Q := Q))
+      (FreeQuiverCover.positiveEvaluation_inverts_top (Q := Q)) ((Paths.of Q).obj A) Y) β ≅
+      colimitGraph (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex (Q := Q) A)))
+        ((Paths.of (FreeQuiverCover.Vertex (Q := Q) A)).obj (FreeQuiverCover.root (Q := Q) A))
+        ((Paths.of (FreeQuiverCover.Vertex (Q := Q) A)).obj
+          (FreeQuiverCover.fiberEndpoint (Q := Q) A Y β)) := by
+  intro C W Q β
+  exact FreeQuiverCover.existingHammockValueFiberCoverIso (Q' := Q) A ((Paths.of Q).obj B) β

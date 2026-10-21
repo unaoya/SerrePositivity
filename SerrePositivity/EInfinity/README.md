@@ -1745,6 +1745,18 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 `fiberGraphColimitIso_fac` は元の各語の標準射の回収。空語と任意可換環の実際の全自由次数も検証。
 元の hammock 上の値の fiber と値の fiber の図式の余極限の同定、有限部分木の葉の除去を
 使う成分可縮性、元の両弱比較は未完成。
+`LabelledColimit.fiber_eqvGen/quotientFiberEquiv/colimitFiberEquiv` は任意の型値図式の自然な
+ラベルについて元の余極限と値の fiber を交換する。添字圏の filtered 性は要求しない。
+`colimitFiberEquiv_natural/fiberCocone_isColimit` は元の写像への自然性と任意の余極限余錐への移送。
+`SimplicialValueFiber.space` は元の単体を保持する fiber、`SimplicialLabelledColimit.colimitFiberIso`
+は元の単体集合の余極限との交換同型で、元の各標準射を包含とともに回収する。
+`FreeQuiverCover.graphValue/hammockValue/hammockValue_eq_colimitValue` は元の値による評価と
+既存の評価との厳密な一致。`fiberGraphIso/fiberValueDiagramIso` は元の各 graph の値の fiber と
+全部分圏の nerve の同型を全語・全単体作用素に自然に束ねる。
+`valueFiberColimitIso/hammockValueFiberCoverIso/existingHammockValueFiberCoverIso` は元の
+hammock 上の値 β の fiber を元の被覆の固定端点 hammock へ同定する。空語・任意可換環の
+実際の全自由次数と既存の同じ評価で検証。有限部分木の葉の除去による成分可縮性、
+元の両弱比較・既存 DK Hom の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
