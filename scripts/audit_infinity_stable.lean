@@ -1,3 +1,22 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorFields
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawConjugation
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeHom
+import SerrePositivity.InfinityCategories.Derived.FunctorHomConjugationPrecomp
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeActionUnlift
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorUnfold
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorRawValue
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionReplacementUnlift
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionRawChange
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawValue
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcompositionTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompIdentity
+import SerrePositivity.InfinityCategories.Derived.ResolutionComparisonPrecompIdentity
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputChangeComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComparisonData
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComparisonHom
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeOutputComparisonNaturality
 import SerrePositivity.InfinityCategories.Derived.ResolutionOutputHomNaturality
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeSourceComparisonNaturality
@@ -4612,6 +4631,32 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorFields,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawConjugation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeHom,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomConjugationPrecomp,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeActionUnlift,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorUnfold,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorRawValue,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionReplacementUnlift,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionRawChange,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeRawValue,
+
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcompositionTransport,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompIdentity,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionComparisonPrecompIdentity,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputChangeComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComparisonData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComparisonHom,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeOutputComparisonNaturality,
 
     `SerrePositivity.InfinityCategories.Derived.ResolutionOutputHomNaturality,
