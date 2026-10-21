@@ -4742,6 +4742,72 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.simplexColumn_ne_nil,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowGenerator_simplex]
 
+@[noinline] private def e2RequiredBatch60 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.nonemptyColumns,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.mem_nonemptyColumns,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.nonemptyColumns_nonempty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn_nonempty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn_le,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.before_firstColumn_empty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.before_firstColumn_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn_forward,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn_hom,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.firstColumn_row,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.before_firstColumn_row_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.beforeFirstColumn,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.beforeFirstColumn_arrow_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.beforeFirstColumn_map_mem,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.before,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.after,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middle,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.whole,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.whole_length,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.whole_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middle_column_cast,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.before_first_empty,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.after_last_empty,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.beforeVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middleVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.afterVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.before_vertex_cast,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middle_vertex_cast,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.after_vertex_cast,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middleVertex_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middleVertex_last,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.beforeVertex_last,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.afterVertex_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.ColumnSplit.middle_forward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.expanded,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.middle,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.rebuilt,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.rebuilt_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.recombine,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.recombine_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ofFunctor_fixedFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_vertex,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.middle_vertex,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_vertex,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_map_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.middle_map_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_map_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_arrow_mem,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.middle_arrow,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_refl,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_roundtrip,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_obj_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_map_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_vertex,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_map_app_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_arrow_mem,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_arrow_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.changeWord_fixedFunctor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4773,7 +4839,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -11059,3 +11125,57 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m k : SimplexCategory�
   Hammock.UnmarkedGenerators.rowColumn_simplex
     (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
       τ i h θ hθ
+
+-- 任意の列の元の番号と向きを保持して、元の語そのものに貼り戻す。
+open SerrePositivity.EInfinity.Hammock in
+example (w : Word) (p : Fin w.length) :
+    Word.ColumnSplit.whole w p = w ∧
+      Fin.cast (Word.ColumnSplit.whole_length w p)
+        (((0 : Fin 1).natAdd (Word.ColumnSplit.before w p).length).castAdd
+          (Word.ColumnSplit.after w p).length) = p :=
+  ⟨Word.ColumnSplit.whole_eq w p, Word.ColumnSplit.middle_column_cast w p⟩
+
+-- 一列だけの場合、向きによらず前後の語はともに空である。
+open SerrePositivity.EInfinity.Hammock in
+example (d : Direction) :
+    Word.ColumnSplit.before (Word.single d) (0 : Fin 1) = Word.empty ∧
+      Word.ColumnSplit.after (Word.single d) (0 : Fin 1) = Word.empty :=
+  ⟨Word.ColumnSplit.before_first_empty _ _ rfl, Word.ColumnSplit.after_last_empty _ _ rfl⟩
+
+-- 両端も動く任意の元の図式を切って貼り戻し、元の全対象と全縦射の図式を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {w : Word} {A B : D ⥤ C} (p : Fin w.length) (F : Zigzag.MovingDiagram D C W w A B) :
+    Zigzag.MovingDiagram.ColumnSplit.recombine p F = F :=
+  Zigzag.MovingDiagram.ColumnSplit.recombine_eq p F
+
+-- 元の固定端点の関手も同じ全射の関手に戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {w : Word} {X Y : C} (p : Fin w.length) (F : D ⥤ Zigzag W w X Y) :
+    Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor p F = F :=
+  Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor_eq p F
+
+-- 最初の非指定列より前の全語は、全行・全縦射で指定射列を保つ。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (h : ∃ j, UnmarkedGenerators.column W (τ.obj 0) j ≠ [])
+    {k l : Fin (n.unop.len + 1)} (f : k ⟶ l)
+    (j : Fin (Word.ColumnSplit.before w (UnmarkedGenerators.firstColumn W (τ.obj 0) h)).length) :
+    W.paths (((UnmarkedGenerators.beforeFirstColumn W τ h).obj k).arrow j) ∧
+      W.paths (((UnmarkedGenerators.beforeFirstColumn W τ h).map f).app j.castSucc) :=
+  ⟨UnmarkedGenerators.beforeFirstColumn_arrow_mem W τ h k j,
+    UnmarkedGenerators.beforeFirstColumn_map_mem W τ h f j.castSucc⟩
+
+-- 任意可換環の元の全自由次数で、元の全行の関手を任意の列で切って回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {w : Hammock.Word}
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
+    (p : Fin w.length) : Hammock.Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor p τ = τ :=
+  Hammock.Zigzag.MovingDiagram.ColumnSplit.recombinedFunctor_eq p τ

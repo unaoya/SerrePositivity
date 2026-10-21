@@ -1130,3 +1130,11 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedDiagramGeneratorTranspor
 public import SerrePositivity.EInfinity.Hammock.UnmarkedRowFactorizationSimplex
 public import SerrePositivity.EInfinity.Hammock.UnmarkedRowSimplexDiagram
 public import SerrePositivity.EInfinity.Hammock.UnmarkedRowSimplexGenerator
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstColumn
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstColumnPrefix
+public import SerrePositivity.EInfinity.Hammock.WordColumnSplit
+public import SerrePositivity.EInfinity.Hammock.WordColumnSplitVertices
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitDiagram
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitFunctor
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitRecovery
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingDiagramWordChange

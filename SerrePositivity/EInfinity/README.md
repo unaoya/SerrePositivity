@@ -1464,6 +1464,15 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 `rowPrefix_simplex/rowGeneratorMap_simplex/rowResidual_simplex/rowColumn_simplex` は
 端点表示を含む自然変換全体の整合。任意可換環の実際の全自由次数でも検証。
 全語を切って貼り戻す図式・語の作用への両立・積分解と弱比較は後続。
+`Word.ColumnSplit.before/middle/after/whole_eq` は任意列の前後の元の語と同じ一列の
+厳密な分解。元の列番号・全方向・全頂点と接合点を回収し、空の前後の語を含む。
+`MovingDiagram.changeWord` は全対象・全縦射を保つ語の表示変更で、固定端点では
+元の `WordAction` と一致する。`MovingDiagram.ColumnSplit.before/middle/after` は
+元の動く端点の全図式の切断で、`recombine_eq/recombinedFunctor_eq` は元の図式・関手を回収。
+`before_vertex/middle_vertex/after_vertex` と全縦成分・`middle_arrow` は元の同じ位置への照合。
+`UnmarkedGenerators.firstColumn` は最初の非指定列。位置は全縦射・全行で同じで、forward。
+`beforeFirstColumn_arrow_mem/beforeFirstColumn_map_mem` は切り出した前の全語の全列・全縦射の指定性。
+任意可換環の元の全自由次数でも検証。列内部の切断との接続・W-hammock への回収は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
