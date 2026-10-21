@@ -3017,3 +3017,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOrigin
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryOriginal
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianNativeRestrictionFibration
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryCorrection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryFiberComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalBoundaryFiberEquivalence

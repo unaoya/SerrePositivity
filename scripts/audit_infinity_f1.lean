@@ -8464,3 +8464,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.core_cocartesianPullbackNativeRestriction_fibration
 
 #check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeLiftRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryTargetRestriction
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryTargetRestriction_fibration
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryHomCorrection
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryCorrectedHom
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryCorrectedHom_comm
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryCorrectedHomIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryCorrectedHomIso_boundary
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFiberComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFiberComparison_ι
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFiberComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianIntervalBoundaryFiberComparison_isQCatEquivalence
