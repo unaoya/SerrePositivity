@@ -1943,4 +1943,8 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedFuncto
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedRecovery
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInfinityFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInfinityStableValues
+public import SerrePositivity.KST.SConstruction.ExactnessEquivalenceReflection
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationExact
+public import SerrePositivity.KST.SConstruction.DGStandardExactness
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionExactnessReduction
 /-! # ∞-S• 構成と連結 K 理論 -/

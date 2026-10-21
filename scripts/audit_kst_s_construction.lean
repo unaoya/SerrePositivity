@@ -23784,3 +23784,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PerfDGInput.category
 #print axioms SerrePositivity.KST.SConstruction.PerfDGInput.category
+
+#check @SerrePositivity.KST.SConstruction.isExactFunctor_comp_equivalence_iff
+#print axioms SerrePositivity.KST.SConstruction.isExactFunctor_comp_equivalence_iff
+
+#check @SerrePositivity.KST.SConstruction.isExactFunctor_equivalence_comp_iff
+#print axioms SerrePositivity.KST.SConstruction.isExactFunctor_equivalence_comp_iff
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNerveEquivalence_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNerveEquivalence_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNerve_isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNerve_isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNerve_comp_isExactFunctor_iff
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNerve_comp_isExactFunctor_iff
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationStableMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationStableMap
+
+#check @SerrePositivity.KST.SConstruction.dgNerve_map_isExactFunctor_iff_standard
+#print axioms SerrePositivity.KST.SConstruction.dgNerve_map_isExactFunctor_iff_standard
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGExtensionAfterEvaluation_isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGExtensionAfterEvaluation_isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStandardExtensionAfterEvaluation_isExactFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStandardExtensionAfterEvaluation_isExactFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAction_isExactFunctor_iff_standardEvaluation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAction_isExactFunctor_iff_standardEvaluation
