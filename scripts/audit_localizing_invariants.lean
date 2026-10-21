@@ -337,7 +337,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath,
     `SerrePositivity.KST.LocalizingInvariants.CompositionDiagonalTransport,
     `SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare,
-    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare]
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFrameBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFrameFunctoriality,
+    `SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension,
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFrameEdges,
+    `SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization,
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientNormalizedCone,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationExact,
+    `SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
