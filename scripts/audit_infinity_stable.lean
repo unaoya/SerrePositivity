@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityFunctorProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityStrictProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityProjection
+import SerrePositivity.InfinityCategories.Derived.HomSquareHEq
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityNaturality
+import SerrePositivity.InfinityCategories.Derived.DGUnitCompositionMapTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityObjects
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityWhiskering
+import SerrePositivity.InfinityCategories.Derived.DGUnitCompositionMap
+import SerrePositivity.InfinityCategories.Derived.DGUnitCompositionEvaluation
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransUnitNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompChangeSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityComponent
 import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompSquare
 import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompAction
 import SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPrecompAction
@@ -4586,6 +4600,25 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityFunctorProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityStrictProjection,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityProjection,
+
+    `SerrePositivity.InfinityCategories.Derived.HomSquareHEq,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGUnitCompositionMapTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityObjects,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityWhiskering,
+
+    `SerrePositivity.InfinityCategories.Derived.DGUnitCompositionMap,
+    `SerrePositivity.InfinityCategories.Derived.DGUnitCompositionEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransUnitNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompChangeSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityComponent,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompSquare,
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleIdentityResolutionPostcompAction,
