@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveH0Naturality
+import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceSection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedClassicalComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelInfinityClassicalComparison
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFunctorExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedLimitTransfer
 import SerrePositivity.InfinityCategories.Derived.DGHomConeLimitCriterion
@@ -3266,10 +3272,25 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_precompose_kan
 #print axioms SerrePositivity.InfinityCategories.dgRoofCorrespondenceMap_continuousKan_isQCatEquivalence
 
+#check SerrePositivity.InfinityCategories.dgNerveEdgeClosed_map
+#check SerrePositivity.InfinityCategories.dgNerveMap_toH0_naturality
+#check SerrePositivity.InfinityCategories.dgStableHomotopyEquivalence_naturalityIso
+#check SerrePositivity.InfinityCategories.dgModuleResolvedSourceSection_comp_source
+#check SerrePositivity.InfinityCategories.dgModuleResolvedSourceSection_homotopyIso
+#check SerrePositivity.InfinityCategories.dgModuleResolvedInfinity_classicalIso
+#check SerrePositivity.InfinityCategories.dgKernelDerivedInfinity_classicalIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveH0Naturality,
+    `SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceSection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSourceHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedClassicalComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelInfinityClassicalComparison,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFunctorExact,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedLimitTransfer,
     `SerrePositivity.InfinityCategories.Derived.DGHomConeLimitCriterion,
