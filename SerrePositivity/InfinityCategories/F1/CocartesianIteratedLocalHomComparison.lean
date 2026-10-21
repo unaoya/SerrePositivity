@@ -63,6 +63,6 @@ def cocartesianIteratedLocalHomComparison_restrictionIso :
       ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
       ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q))
   simpa only [cocartesianIteratedLocalHomComparison, cocartesianLocalHomComparison,
-    Category.assoc] using e₁ ≪≫ e₂
+    cocartesianBaseChangeHomRestrictionZero, Category.assoc] using e₁ ≪≫ e₂
 
 end SerrePositivity.InfinityCategories

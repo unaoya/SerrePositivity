@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryIso
 
 /-!
 概要：同じ Hom 比較 span の指定された輸送は、span の射に関して自然。
@@ -46,10 +46,8 @@ def homSpanSectionTransportNaturalityIso
     (h₀ : p₀ ≫ u₀ = r ≫ q₀) (h₁ : p₁ ≫ u₁ = r ≫ q₁) :
     FunctorIso ((s₀ ≫ p₀) ≫ u₀) (u₁ ≫ (s₁ ≫ q₀)) := by
   apply homTransportSquareCoherence p₀ p₁ q₀ q₁ r (s₀ ≫ p₀) (s₁ ≫ q₀) u₀ u₁ hp₁
-  · simpa only [Category.id_comp] using
-      homSpanSectionTransportFactorIso p₁ p₀ s₀ hp₁.isFullyFaithful hs₀ (𝟙 H₀)
-  · simpa only [Category.id_comp] using
-      homSpanSectionTransportFactorIso q₁ q₀ s₁ hq₁ hs₁ (𝟙 H₁)
+  · exact homSpanSectionBoundaryIso p₁ p₀ s₀ hp₁.isFullyFaithful hs₀
+  · exact homSpanSectionBoundaryIso q₁ q₀ s₁ hq₁ hs₁
   · exact eqToIso (congrArg (fun f : H₀ ⟶ Y₀ ↦ SSet.HomotopyCategory.mk (functorVertex f)) h₀)
   · exact eqToIso (congrArg (fun f : H₀ ⟶ Y₁ ↦ SSet.HomotopyCategory.mk (functorVertex f)) h₁)
 

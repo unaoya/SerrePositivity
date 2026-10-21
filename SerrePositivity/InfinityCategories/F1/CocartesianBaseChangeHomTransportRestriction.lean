@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestric
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestrictedHomTransport
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransport
 public import SerrePositivity.InfinityCategories.F1.HomTransportSquareCoherence
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomRestrictionMaps
 
 /-!
 概要：既存の元の底変換 Hom 輸送は、元の図式の底の制限に関して自然。
@@ -26,16 +27,8 @@ def cocartesianBaseChangeHomTransport_restrictionIso
     (l : A ⥤ D) (k : D ⥤ C) (p q : CocartesianFibrationCategory (nerve C)) :
     FunctorIso
       (cocartesianBaseChangeHomTransport k p q ≫
-        intervalDiagramRestriction ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap l))
-          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
-            cocartesianStrictTransportCoherentDiagram p.val.hom)
-          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
-            cocartesianStrictTransportCoherentDiagram q.val.hom))
-      (intervalDiagramRestriction ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap l))
-          (cocartesianStrictTransportCoherentDiagram
-            ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p).val.hom)
-          (cocartesianStrictTransportCoherentDiagram
-            ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q).val.hom) ≫
+        cocartesianBaseChangeHomRestrictionZero l k p q)
+      (cocartesianBaseChangeHomRestrictionOne l k p q ≫
         cocartesianBaseChangeRestrictedHomTransport l k p q) := by
   have : TrivialKanFibration (cocartesianBaseChangeHomSpanOne k p q) :=
     cocartesianBaseChangeHomSpanOne_trivialKanFibration k p q
@@ -48,16 +41,8 @@ def cocartesianBaseChangeHomTransport_restrictionIso
     (cocartesianBaseChangeRestrictedHomMap l k p q)
     (cocartesianBaseChangeHomSpanOneSection k p q)
     (cocartesianBaseChangeRestrictedHomSpanOneSection l k p q)
-    (intervalDiagramRestriction ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap l))
-      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
-        cocartesianStrictTransportCoherentDiagram p.val.hom)
-      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k) ≫
-        cocartesianStrictTransportCoherentDiagram q.val.hom))
-    (intervalDiagramRestriction ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap l))
-      (cocartesianStrictTransportCoherentDiagram
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p).val.hom)
-      (cocartesianStrictTransportCoherentDiagram
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q).val.hom))
+    (cocartesianBaseChangeHomRestrictionZero l k p q)
+    (cocartesianBaseChangeHomRestrictionOne l k p q)
     (isQCatEquivalence_of_trivialKanFibration _) (isFullyFaithful_of_trivialKanFibration _)
     (cocartesianBaseChangeHomSpanOneSection_projection k p q)
     (cocartesianBaseChangeRestrictedHomSpanOneSection_projection l k p q)

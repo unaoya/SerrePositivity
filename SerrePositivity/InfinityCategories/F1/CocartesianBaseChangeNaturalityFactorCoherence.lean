@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNaturalitySectionCoherence
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionFactorCoherence
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryCoherence
 
 /-!
 概要：元の大域分類 Hom の自然性は、既存の span 輸送の因子比較そのもの。
@@ -38,5 +38,19 @@ lemma cocartesianBaseChangeHomNaturalityIso_factor_heq
       (cocartesianBaseChangeHomSpanOne_isFullyFaithful k p q)
       (cocartesianBaseChangeHomSpanOneSection_projection k p q)
       (cocartesianBaseChangeHomComparison k p q)).symm
+
+/-- 元の大域自然性は、同じ指定 span 境界比較を元の全 Hom 作用で引き戻したもの。 -/
+lemma cocartesianBaseChangeHomNaturalityIso_boundary_heq
+    {C D : Type u} [Category.{u} C] [Category.{u} D] (k : D ⥤ C)
+    (p q : CocartesianFibrationCategory (nerve C)) :
+    HEq (cocartesianBaseChangeHomNaturalityIso k p q)
+      ((homSpanSectionBoundaryIso
+        (cocartesianBaseChangeHomSpanOne k p q) (cocartesianBaseChangeHomSpanZero k p q)
+        (cocartesianBaseChangeHomSpanOneSection k p q)
+        (cocartesianBaseChangeHomSpanOne_isFullyFaithful k p q)
+        (cocartesianBaseChangeHomSpanOneSection_projection k p q)).precomp
+          (cocartesianBaseChangeHomComparison k p q)) := by
+  exact (cocartesianBaseChangeHomNaturalityIso_factor_heq k p q).trans
+    (heq_of_eq (homSpanSectionBoundaryIso_precomp _ _ _ _ _ _)).symm
 
 end SerrePositivity.InfinityCategories

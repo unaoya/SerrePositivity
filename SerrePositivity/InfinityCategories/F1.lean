@@ -2473,3 +2473,19 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNatural
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNaturalityFactorCoherence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleLongNaturality
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryIso
+
+public import SerrePositivity.InfinityCategories.F1.HomTransportSquareIdentity
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryCoherence
+
+public import SerrePositivity.InfinityCategories.F1.HomTransportSquarePrecomposition
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomRestrictionMaps
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestrictionSquareIdentity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleFirstNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeOriginalHomRestrictionIdentity
