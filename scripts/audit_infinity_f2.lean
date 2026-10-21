@@ -2469,3 +2469,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_iff_initialLeg
 #check @SerrePositivity.InfinityCategories.F2.pointwiseColimit_preserves_initialShapeLimits
 #check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_simplex
+
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_iff_of_val
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_functorVertex
+#check @SerrePositivity.InfinityCategories.F2.exists_pointwiseLimitConeFamily
+#check @SerrePositivity.InfinityCategories.F2.pointwiseLimitFamilyCone
+#check @SerrePositivity.InfinityCategories.F2.pointwiseLimitFamilyCone_evaluate_iff
+#check @SerrePositivity.InfinityCategories.F2.pointwiseLimitFamilyCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.pointwiseLimitFamilyCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.exists_homotopy_to_relativeTerminal_family
+#check @SerrePositivity.InfinityCategories.F2.terminalBoundaryLifting_of_limitConeFamily
+#check @SerrePositivity.InfinityCategories.F2.exists_limitConeFamilyComparison
+#check @SerrePositivity.InfinityCategories.F2.exists_limitConeFamilyReplacement
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_point
+#check @SerrePositivity.InfinityCategories.F2.hasLimit_of_initialShape
+#check @SerrePositivity.InfinityCategories.F2.HasSpaceLimitsOfShape
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_of_iso
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_of_empty
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_empty
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_simplex
