@@ -23493,3 +23493,81 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.smallDGNativeNerve_quasicategory
 #print axioms SerrePositivity.KST.SConstruction.smallDGNativeNerve_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_fixed
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_fixed
+
+#check @SerrePositivity.KST.SConstruction.dgNativeSimplex_map_pullback
+#print axioms SerrePositivity.KST.SConstruction.dgNativeSimplex_map_pullback
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_pullback
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_pullback
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_vertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameter
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameter
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameter_kan
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameter_kan
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_uncurry
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_uncurry
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_right_point
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_right_point
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_point_right
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_point_right
+
+#check @SerrePositivity.KST.SConstruction.dgNativePointSimplex
+#print axioms SerrePositivity.KST.SConstruction.dgNativePointSimplex
+
+#check @SerrePositivity.KST.SConstruction.dgNativePointSimplex_pullback
+#print axioms SerrePositivity.KST.SConstruction.dgNativePointSimplex_pullback
+
+#check @SerrePositivity.KST.SConstruction.dgNativePointSimplex_zero
+#print axioms SerrePositivity.KST.SConstruction.dgNativePointSimplex_zero
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_right
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_right
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_fixed
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_fixed
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterPoint
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterPoint
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterPoint_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeParameterPoint_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_fixed
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_fixed
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_fixed
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeFamilyMap_fixed
