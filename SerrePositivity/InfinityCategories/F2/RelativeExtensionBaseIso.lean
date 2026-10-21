@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionDataIso
 
 /-!
 概要：底の図式の等式で、始点固定の延長空間を同型に移す。
@@ -22,37 +22,13 @@ variable {A D E B : SSet.{u}} (p : E ⟶ B) (b b' : A ⟶ B) (i : D ⟶ A)
 
 /-- 底の等式で証明成分だけを更新し、元の全単体を保つ射。 -/
 def relativeExtensionBaseMap :
-    relativeFunctorExtensionSpace p b i v hv ⟶ relativeFunctorExtensionSpace p b' i v hv' where
-  app _ := ↾fun x => ⟨⟨x.val.val, by subst b'; exact x.val.property⟩,
-    by subst b'; exact x.property⟩
-  naturality _ _ _ := by
-    apply ConcreteCategory.hom_ext
-    intro x
-    apply Subtype.ext
-    apply Subtype.ext
-    rfl
+    relativeFunctorExtensionSpace p b i v hv ⟶ relativeFunctorExtensionSpace p b' i v hv' :=
+  relativeExtensionDataMap p b b' i v v hv hv' h rfl
 
 /-- 底の図式の等式による、同じ始点付き延長空間の厳密な同型。 -/
 def relativeExtensionBaseIso :
-    relativeFunctorExtensionSpace p b i v hv ≅ relativeFunctorExtensionSpace p b' i v hv' where
-  hom := relativeExtensionBaseMap p b b' i v hv hv' h
-  inv := relativeExtensionBaseMap p b' b i v hv' hv h.symm
-  hom_inv_id := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro x
-    apply Subtype.ext
-    apply Subtype.ext
-    rfl
-  inv_hom_id := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro x
-    apply Subtype.ext
-    apply Subtype.ext
-    rfl
+    relativeFunctorExtensionSpace p b i v hv ≅ relativeFunctorExtensionSpace p b' i v hv' :=
+  relativeExtensionDataIso p b b' i v v hv hv' h rfl
 
 /-- 底の移送は、元の全延長の内部 Hom 成分を厳密に保持する。 -/
 lemma relativeExtensionBaseIso_vertex_value
