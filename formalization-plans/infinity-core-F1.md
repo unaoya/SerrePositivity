@@ -96,7 +96,8 @@
 一次元の元の固定成分比較と標準対角 fiber 比較は、同じ第二三角形全体の一致で厳密に同定した。
 `cocartesianHomFixedComponentComparison_isQCatEquivalence` と
 `cocartesianTransportDiagramHomInterval_isQCatEquivalence` により、元の一次元の全 Hom 作用は同値。
-次は高次単体上の同じ比較を区間の貼り合わせ・制限の Kan 性へ帰着し、全単体の Hom 作用の同値を証明する。
+元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
+次は区間の貼り合わせと底変換の比較 span の自然性を束ね、同じ分類 Hom 作用の全単体での同値性を証明する。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 

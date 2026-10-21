@@ -2122,3 +2122,29 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionTr
 public import SerrePositivity.InfinityCategories.F1.CocartesianPostcompositionComparisonEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramAnodyneRestriction
+
+public import SerrePositivity.InfinityCategories.F1.FullRestrictionPullback
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeOverAnodyneRestriction
+
+public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorEquivalenceRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackMarkCover
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackAnodyneRestriction
+
+public import SerrePositivity.InfinityCategories.F1.HigherHornEdgeCover
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHigherHornRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianFactorizationTriangle
+
+public import SerrePositivity.InfinityCategories.F1.InnerTwoHornEdges
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianInnerTwoHornDetection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianInnerTwoHornRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianInnerHornHomRestriction
