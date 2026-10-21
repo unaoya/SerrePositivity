@@ -13835,3 +13835,53 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms discreteConeIsoOfLegClasses
 #check @isLimitCone_iff_discreteLegClasses
 #print axioms isLimitCone_iff_discreteLegClasses
+#check @presheafEvaluationComparisonApexEdge_homMk
+#print axioms presheafEvaluationComparisonApexEdge_homMk
+#check @presheafEvaluationComparisonApexEdge_isInvertible
+#print axioms presheafEvaluationComparisonApexEdge_isInvertible
+#check @presheafColimitLeg_representative_naturality
+#print axioms presheafColimitLeg_representative_naturality
+#check @sigmaColimitLeg_representative_naturality
+#print axioms sigmaColimitLeg_representative_naturality
+#check @sigmaColimitApexComparisonEdge
+#print axioms sigmaColimitApexComparisonEdge
+#check @sigmaColimitComponentComparisonEdge
+#print axioms sigmaColimitComponentComparisonEdge
+#check @sigmaColimitApexComparisonEdge_isInvertible
+#print axioms sigmaColimitApexComparisonEdge_isInvertible
+#check @sigmaColimitComponentComparisonEdge_isInvertible
+#print axioms sigmaColimitComponentComparisonEdge_isInvertible
+#check @sigmaColimitComparisonLeg_commutes
+#print axioms sigmaColimitComparisonLeg_commutes
+#check @sigmaColimitFiniteImageConeIso
+#print axioms sigmaColimitFiniteImageConeIso
+#check @presheafColimitVertex_mapNonemptyCone_isLimit
+#print axioms presheafColimitVertex_mapNonemptyCone_isLimit
+#check @sigmaPresheafAmbientColimit_mapNonemptyCone_isLimit
+#print axioms sigmaPresheafAmbientColimit_mapNonemptyCone_isLimit
+#check @presheafColimitVertex_preservesFiniteProducts
+#print axioms presheafColimitVertex_preservesFiniteProducts
+#check @presheafColimitVertex_isSigmaPresheaf
+#print axioms presheafColimitVertex_isSigmaPresheaf
+#check @sigmaPresheafAmbientColimit_isSigmaPresheaf
+#print axioms sigmaPresheafAmbientColimit_isSigmaPresheaf
+#check @fullSubcomplex_vertex_extension
+#print axioms fullSubcomplex_vertex_extension
+#check @isColimitCone_of_fullSubcomplex
+#print axioms isColimitCone_of_fullSubcomplex
+#check @fullSubcomplexCocone_vertices
+#print axioms fullSubcomplexCocone_vertices
+#check @fullSubcomplexCoconeLift
+#print axioms fullSubcomplexCoconeLift
+#check @fullSubcomplexCoconeLift_inclusion
+#print axioms fullSubcomplexCoconeLift_inclusion
+#check @sigmaPresheafSiftedColimitCone
+#print axioms sigmaPresheafSiftedColimitCone
+#check @sigmaPresheafSiftedColimitCone_inclusion
+#print axioms sigmaPresheafSiftedColimitCone_inclusion
+#check @sigmaPresheafSiftedColimitCone_isColimit
+#print axioms sigmaPresheafSiftedColimitCone_isColimit
+#check @sigmaPresheafSiftedColimitCone_inclusion_isColimit
+#print axioms sigmaPresheafSiftedColimitCone_inclusion_isColimit
+#check @sigmaPresheaf_hasColimit_of_sifted
+#print axioms sigmaPresheaf_hasColimit_of_sifted
