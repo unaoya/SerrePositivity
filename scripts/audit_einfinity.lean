@@ -6169,6 +6169,70 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.gridPathSupport_horizontal,
       `SerrePositivity.EInfinity.Hammock.gridPathSupport_vertical]
 
+@[noinline] private def e2RequiredBatch93 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FaithfulObjectEmbedding.map_heq_reflect,
+      `SerrePositivity.EInfinity.Hammock.FaithfulObjectEmbedding.postcompose_injective,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.pathInclusion_obj_injective,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.zigzagProjection_obj_injective,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.zigzagProjection_faithful,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.gridProjection_injective,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.graphProjection_injective,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetPrefunctor_refl,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetPrefunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetPrefunctor_inclusion,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetFunctor_refl,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.FiniteQuiver.subsetFunctor_pathInclusion,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.colimit_isWeaklyContractible,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.hammockValueFiber_isWeaklyContractible,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.existingHammockValueFiber_isWeaklyContractible,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.arrow_heq_of_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.obj_injective,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.functor_faithful,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.postcompose_injective,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphWordDiagram,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphWordProjection,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.hull,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.left,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.right,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.termCategory,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.mapFunctor,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.mapFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.mapFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.hammockDiagram_obj_isWeaklyContractible,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.colimit_isWeaklyContractible,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.categoryDiagram,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphDiagram,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.categoryCocone,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphCocone,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.degreeCocone,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.degree_surjective,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.degree_equal,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.degree_isColimit,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphCocone_isColimit,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphColimitIso,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphColimitDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.wordDiagram_eq,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.hammockDiagram,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.hammockColimitIso,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.hammockColimitIso_fac,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.projectionFunctor,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.mapFunctor_projection,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.projectionFunctor_obj_injective,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.projectionFunctor_faithful,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.projection_nerve_injective,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.liftSimplex,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.liftSimplex_projection,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.graphMap_projection,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.wordActionFunctor,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.wordActionFunctor_id,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.wordActionFunctor_comp,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.mapFunctor_wordAction,
+      `SerrePositivity.EInfinity.Hammock.RootedFinite.projectionFunctor_wordAction,
+      `SerrePositivity.EInfinity.Hammock.weakFiniteSubsetColimitMap,
+      `SerrePositivity.EInfinity.Hammock.finiteSubsetColimit_isWeaklyContractible]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6200,7 +6264,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -14840,3 +14904,63 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
   let := FreeQuiverCover.spanningTreeArborescence (Q := Q) A
   intro a X Y σ
   exact FiniteGrid.rootedFunctor_projection (FreeQuiverCover.spanningTree (Q := Q) A) σ
+
+-- 有限集合の包含で移した元の zigzag の単体を射影が区別する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    (T : WideSubquiver (Quiver.Symmetrify Q)) [Quiver.Arborescence T]
+    (X Y : Q) (a : Word) (S : Finset Q) (n : SimplexCategoryᵒᵖ) :
+    Function.Injective ((nerveMap (RootedFinite.projectionFunctor T X Y a S)).app n) :=
+  RootedFinite.projection_nerve_injective T X Y a S n
+
+-- 全端点の元の hammock を有限包の元の余極限から回収する。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    (T : WideSubquiver (Quiver.Symmetrify Q)) [Quiver.Arborescence T] (X Y : Q) :
+    colimit (RootedFinite.hammockDiagram T X Y) ≅
+      colimitGraph (⊤ : MorphismProperty (Paths Q)) ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
+  RootedFinite.hammockColimitIso T X Y
+
+-- 根付き木の全体の同じ hammock の可縮性。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    (T : WideSubquiver (Quiver.Symmetrify Q)) [Quiver.Arborescence T]
+    [Quiver.IsThin (Quiver.FreeGroupoid Q)] (X Y : Q) :
+    IsWeaklyContractible (colimitGraph (⊤ : MorphismProperty (Paths Q))
+      ((Paths.of Q).obj X) ((Paths.of Q).obj Y)) :=
+  RootedFinite.colimit_isWeaklyContractible T X Y
+
+-- 元の評価の fiber の可縮性は被覆性を追加の入力にしない。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
+    (A : Q) (Y : Paths Q)
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    IsWeaklyContractible (SimplicialValueFiber.space
+      (Zigzag.Value.colimitValue FreeQuiverCover.positiveEvaluation
+        FreeQuiverCover.positiveEvaluation_inverts_top ((Paths.of Q).obj A) Y) β) :=
+  FreeQuiverCover.existingHammockValueFiber_isWeaklyContractible A Y β
+
+-- 各項の弱同値を元の有限部分集合の余極限の同じ射へ移す。
+open CategoryTheory CategoryTheory.Limits SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse}
+    {F G : Finset Q ⥤ SSet.{e2ComplexLimitUniverse}} (η : F ⟶ G)
+    (hη : ∀ S, IsWeakHomotopyEquivalence (η.app S)) :
+    IsWeakHomotopyEquivalence (colim.map η) := weakFiniteSubsetColimitMap η hη
+
+-- 任意可換環の実際の全自由次数で被覆全体へ代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    ∀ X Y : Paths (FreeQuiverCover.Vertex (Q := Q) A),
+      IsWeaklyContractible (colimitGraph
+        (⊤ : MorphismProperty (Paths (FreeQuiverCover.Vertex (Q := Q) A))) X Y) := by
+  intro C W Q
+  exact FreeQuiverCover.colimit_isWeaklyContractible (Q := Q) A

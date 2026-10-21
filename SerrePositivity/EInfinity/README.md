@@ -1838,7 +1838,16 @@ finiteHull_subset_colimitMap_isWeakHomotopyEquivalence` は証明済みの元の
 `FiniteGrid.hull/rootedFunctor/rootedFunctor_projection/rootedHammock_isWeaklyContractible`
 は元の全有限 grid をそのような有限包へ因子化し、同じ包の可縮性へ接続する。
 空語・元の有限図式・任意可換環の実際の全自由次数と全 hammock 次数でも検証。
-有限部分集合の厳密な全図式・全語との整合・全被覆への filtered 余極限は未完成。
+有限部分集合の厳密な全図式・全語との整合・全被覆への filtered 余極限も完成。
+`RootedFinite.graphColimitIso/graphColimitDiagramIso/hammockColimitIso` は
+有限包の全語の余極限から元の全体の hammock を回収し、同じ全標準射を保持する。
+`weakFiniteSubsetColimitMap/finiteSubsetColimit_isWeaklyContractible` は元の有限部分集合の
+filtered 余極限へ各項の弱同値と弱可縮性を移す。
+`RootedFinite.colimit_isWeaklyContractible` と
+`FreeQuiverCover.colimit_isWeaklyContractible` は全被覆の元の全端点の hammock の弱可縮性。
+`hammockValueFiber_isWeaklyContractible/existingHammockValueFiber_isWeaklyContractible` は
+元の評価の各 fiber の弱可縮性。任意可換環の実際の全自由次数への代入も検証する。
+左右の DK 比較射の弱同値性と Map^h の高次比較は引き続き未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
