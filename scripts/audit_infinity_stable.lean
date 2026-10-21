@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGHomSourceOppositeComparison
+import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaIsoNaturality
+import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaOppositeComparison
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSourceSpaceComparison
+import SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberComposition
+import SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberUniverse
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetPointedFiberEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGPointedTransportRepresentation
+import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaPointedDisplay
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetTransportRepresentation
+import SerrePositivity.InfinityCategories.Derived.DGHomTargetSpaceComparison
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetSpaceComparison
 import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedChainMap
 import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedCoordinates
 import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiber
@@ -3650,6 +3662,20 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGHomSourceOppositeComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaIsoNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaOppositeComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSourceSpaceComparison,
+
+    `SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberUniverse,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetPointedFiberEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGPointedTransportRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaPointedDisplay,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetTransportRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.DGHomTargetSpaceComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetSpaceComparison,
+
     `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedChainMap,
     `SerrePositivity.InfinityCategories.Derived.DGLeftPinchedCoordinates,
     `SerrePositivity.InfinityCategories.Derived.DGClosedCosliceFiber,
