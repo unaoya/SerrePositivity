@@ -1355,4 +1355,13 @@ public import SerrePositivity.KST.SConstruction.CubeDeletionFaceNormal
 public import SerrePositivity.KST.SConstruction.SerreCubeDeletionFaceNormal
 public import SerrePositivity.KST.SConstruction.CubeFaceDeletionExpression
 public import SerrePositivity.KST.SConstruction.CubeFaceDeletionPathNormalization
+public import SerrePositivity.KST.SConstruction.CubeConnectionVertexRecursion
+public import SerrePositivity.KST.SConstruction.CubeDeletionConnectionNormal
+public import SerrePositivity.KST.SConstruction.CubeConnectionNormalDeletion
+public import SerrePositivity.KST.SConstruction.SerreCubeDeletionConnectionNormal
+public import SerrePositivity.KST.SConstruction.SerreCubeConnectionNormalDeletion
+public import SerrePositivity.KST.SConstruction.CubeDeletionNormalComposition
+public import SerrePositivity.KST.SConstruction.CubeDeletionConnectionUpdates
+public import SerrePositivity.KST.SConstruction.CubeConnectionDeletionExpression
+public import SerrePositivity.KST.SConstruction.CubeConnectionDeletionPathNormalization
 /-! # ∞-S• 構成と連結 K 理論 -/
