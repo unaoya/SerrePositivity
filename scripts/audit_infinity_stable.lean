@@ -1,3 +1,19 @@
+import SerrePositivity.InfinityCategories.Derived.EnrichedDifferencePostcompose
+import SerrePositivity.InfinityCategories.Derived.EnrichedCompositionChange
+import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSquare
+import SerrePositivity.InfinityCategories.Derived.ResolutionProjectionComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeData
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeCompositionMaps
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeCompositePrimitive
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeFunctor
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeInfinity
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorDegreeSurjective
+import SerrePositivity.InfinityCategories.Derived.DGKernelComparisonNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelComparisonInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationProjectiveIso
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
@@ -3673,6 +3689,23 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.EnrichedDifferencePostcompose,
+    `SerrePositivity.InfinityCategories.Derived.EnrichedCompositionChange,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainSquare,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionProjectionComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeCompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeCompositePrimitive,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedChangeComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorDegreeSurjective,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelComparisonNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelComparisonInfinity,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationProjectiveIso,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison,
