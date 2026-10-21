@@ -1838,3 +1838,19 @@ public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedHomInte
 public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningHomInterval
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalHomCriterion
+
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.InvertibleFunctorEdgePath
+
+public import SerrePositivity.InfinityCategories.F1.IntervalHomPathSpan
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomPath
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomPathVertices
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSpan
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomSpanNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomCriterion
