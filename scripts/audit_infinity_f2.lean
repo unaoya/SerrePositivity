@@ -2294,3 +2294,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.iso_square_transport
 #check @SerrePositivity.InfinityCategories.F2.uliftFunctorSpaceInv_post
 #check @SerrePositivity.InfinityCategories.F2.uliftFunctorSpaceInv_pre
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightCorrectionImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightImage
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightCorrectionSourceMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightMiddleMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightTargetMap
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanCommonRightValueImage
+#check @SerrePositivity.InfinityCategories.F2.cospanRectificationLeftIso_inverse_image
+#check @SerrePositivity.InfinityCategories.F2.cospanRectificationRightIso_inverse_image
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_pair_heq_of_comp_eq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_symm_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_postcomp_heq_of_heq

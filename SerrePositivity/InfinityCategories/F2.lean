@@ -232,6 +232,8 @@ public import SerrePositivity.InfinityCategories.F2.CoherentCospanCommonRightIso
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanCommonPathClasses
 public import SerrePositivity.InfinityCategories.F2.CoherentNativePathWhiskerComparison
 public import SerrePositivity.InfinityCategories.F2.CoherentNativeKanPostImage
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanCommonRightImage
+public import SerrePositivity.InfinityCategories.F2.CospanLeftInverseImage
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
