@@ -21931,3 +21931,62 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_point_one_hom
 #check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_edge_hom
 #print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_edge_hom
+
+#check @SerrePositivity.KST.SConstruction.serreCubeChainReindex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainReindex
+#check @SerrePositivity.KST.SConstruction.serreCubeChainReindex_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainReindex_heq
+#check @SerrePositivity.KST.SConstruction.serreCubeChainReindex_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainReindex_id
+#check @SerrePositivity.KST.SConstruction.serreCubeChainReindex_comp
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainReindex_comp
+#check @SerrePositivity.KST.SConstruction.serreCubeChainReindex_face
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainReindex_face
+#check @SerrePositivity.KST.SConstruction.serreCubeChain_comp_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChain_comp_heq
+#check @SerrePositivity.KST.SConstruction.serreCubeTail_dimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTail_dimension
+#check @SerrePositivity.KST.SConstruction.serreCubeTailNormalize
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTailNormalize
+#check @SerrePositivity.KST.SConstruction.serreCubeTailNormalize_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTailNormalize_heq
+#check @SerrePositivity.KST.SConstruction.serreCubeTailNormalize_id
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTailNormalize_id
+#check @SerrePositivity.KST.SConstruction.serreCubeTailNormalize_comp
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTailNormalize_comp
+#check @SerrePositivity.KST.SConstruction.serreCubeTailNormalize_face
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTailNormalize_face
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_heq
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_zero_left
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_zero_left
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_singleton
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_singleton
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_point_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_point_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_point_one
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_point_one
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_tail_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_tail_heq
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_edge
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDecodeFace_edge
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_composition
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightFace_composition
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_zero
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_point_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_point_zero
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_point_one
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_point_one
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_edge
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorStandardCell_edge
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_base_cell
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_base_cell
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_cell_standard
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_cell_standard
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_cell_standard
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorWord_cell_standard

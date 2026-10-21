@@ -19,8 +19,9 @@ def simplexHABeadWordDecode {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
       (serreCubeGeneratorFreeDimension m i + T.card - 1) := by
   induction m generalizing T with
   | zero =>
-    simpa only [serreCubeGeneratorFreeDimension, zero_add] using
-      simplexHABeadTail T hT (v 0) hb
+    exact simplexHABeadWordReindex rfl
+      (by simp only [serreCubeGeneratorFreeDimension, zero_add])
+      (simplexHABeadTail T hT (v 0) hb)
   | succ m ih =>
     obtain ⟨i, j⟩ := i
     let vp : Fin (m + 1) ↪o Fin (n + 1) := Fin.castSuccOrderEmb.trans v

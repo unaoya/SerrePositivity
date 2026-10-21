@@ -1750,4 +1750,10 @@ public import SerrePositivity.KST.SConstruction.SerreCubeRightExtensionFace
 public import SerrePositivity.KST.SConstruction.SerreCubeFaceNormalRightExtension
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightFace
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightFaceChain
+public import SerrePositivity.KST.SConstruction.SerreCubeChainReindex
+public import SerrePositivity.KST.SConstruction.SerreCubeTailNormalize
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorDecodeFace
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorStandardCell
+public import SerrePositivity.KST.SConstruction.SimplexHAGeneratorCellComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
