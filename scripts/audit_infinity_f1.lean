@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.F1
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.cocartesianTransportDiagramMixedHom_naturality
+#check @SerrePositivity.InfinityCategories.cocartesianTransportDiagramMixedHom_fiber
+#check @SerrePositivity.InfinityCategories.cocartesianHomSourceComponent_mixedHom_fiber
+
 /-!
 概要：F1 の全宣言の公理依存を監査する。
 方針：宣言元モジュールで抽出し、生成宣言も含め再帰的に公理を調べる。

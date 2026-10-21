@@ -1952,3 +1952,5 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHorn
 public import SerrePositivity.InfinityCategories.F1.VertexFiberIsPullbackIso
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalCompositionFiber
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportMixedHomNaturality

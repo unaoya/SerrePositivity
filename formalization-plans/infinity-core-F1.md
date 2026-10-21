@@ -92,13 +92,13 @@
 
 ### 次の一手
 
-零次元セルの分類同値・同じ元の Hom 作用の同値性と、局所比較から大域作用への関手同型まで完了。
-分類先の両端固定の区間 Hom も、全パラメーターの一意な貼り合わせと厳密な極限錐まで完了。
+零次元セルの同じ分類・Hom 作用の同値、局所比較の関手同型、分類先の区間 Hom の厳密な極限まで完了。
 一次元の strict Hom の二成分による復元・一意性と、core の同じ射影による pullback 表示まで完了。
 同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
-次は元の source 比較の第一三角形を指定 fiber に揃え、外ホーン fiber と元の後合成 fiber を同じ作用で比較する。
+元の source 比較の成分 fiber 上で混合 Hom 作用が全高次で一定になることは、同じ宇宙でも証明済み。
+次は第一三角形全体を指定 fiber に揃え、外ホーン fiber と元の後合成 fiber を同じ作用で比較する。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 
