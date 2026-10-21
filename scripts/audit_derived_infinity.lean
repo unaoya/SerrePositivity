@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DeformationDescentNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIsoRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonNormalized
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedRestrictionResolution
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSquareTransport
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleSemifreeResolution
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionNaturality
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonNaturality
 import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityNerveHom
 import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightUnit
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleIso
@@ -3928,6 +3936,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DeformationDescentNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIsoRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonNormalized,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedRestrictionResolution,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSquareTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleSemifreeResolution,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatRestrictionNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatComparisonNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelIdentityNerveHom,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightUnit,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelBimoduleIso,
