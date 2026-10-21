@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveTripleBoundary
+import SerrePositivity.InfinityCategories.Derived.DGTensorGradedComposition
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriple
+import SerrePositivity.InfinityCategories.Derived.DGNerveThreePointIndex
+import SerrePositivity.InfinityCategories.Derived.DGNerveThreeSimplexCriterion
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronEquation
+import SerrePositivity.InfinityCategories.Derived.DGTensorThreeSimplex
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriangle
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidateTwoSimplex
 import SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronBoundary
@@ -3737,6 +3744,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTripleBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorGradedComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriple,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveThreePointIndex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveThreeSimplexCriterion,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorThreeSimplex,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriangle,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidateTwoSimplex,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronBoundary,
