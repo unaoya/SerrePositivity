@@ -1956,4 +1956,12 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactFamily
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedExactFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedExactRecovery
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactInfinityFunctor
+public import SerrePositivity.KST.SConstruction.SExactValues
+public import SerrePositivity.KST.SConstruction.SExactFamilyAction
+public import SerrePositivity.KST.SConstruction.SExactFamilyCoherence
+public import SerrePositivity.KST.SConstruction.SExactFamilyMap
+public import SerrePositivity.KST.SConstruction.SExactEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.SExactCoreEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.SExactInfinityFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/
