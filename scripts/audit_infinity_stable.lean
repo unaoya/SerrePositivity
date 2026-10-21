@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFunctorExact
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedLimitTransfer
+import SerrePositivity.InfinityCategories.Derived.DGHomConeLimitCriterion
+import SerrePositivity.InfinityCategories.Derived.ConeHomTestUniverse
+import SerrePositivity.InfinityCategories.Derived.LeftFibrationConeUniverse
+import SerrePositivity.InfinityCategories.Derived.LeftTransportConeRestriction
+import SerrePositivity.InfinityCategories.Derived.LeftFibrationConeInvariance
+import SerrePositivity.InfinityCategories.Derived.LeftFibrationFiberInvariance
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeRawFunctorExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedZeroObjects
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedHomTargetComparison
@@ -3836,6 +3844,14 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFunctorExact,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedLimitTransfer,
+    `SerrePositivity.InfinityCategories.Derived.DGHomConeLimitCriterion,
+    `SerrePositivity.InfinityCategories.Derived.ConeHomTestUniverse,
+    `SerrePositivity.InfinityCategories.Derived.LeftFibrationConeUniverse,
+    `SerrePositivity.InfinityCategories.Derived.LeftTransportConeRestriction,
+    `SerrePositivity.InfinityCategories.Derived.LeftFibrationConeInvariance,
+    `SerrePositivity.InfinityCategories.Derived.LeftFibrationFiberInvariance,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeRawFunctorExact,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedZeroObjects,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedHomTargetComparison,
