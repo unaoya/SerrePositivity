@@ -2331,3 +2331,21 @@ public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalP
 public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalPrismSimplex
 
 public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramOrdinaryMixedHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportSectionComparison
+
+public import SerrePositivity.InfinityCategories.F1.EnrichedHomCongrComposition
+
+public import SerrePositivity.InfinityCategories.F1.EnrichedHomCongrUnit
+
+public import SerrePositivity.InfinityCategories.F1.EnrichedOrdinaryFunctorWhisker
+
+public import SerrePositivity.InfinityCategories.F1.IsoTransportCategory
+
+public import SerrePositivity.InfinityCategories.F1.IsoTransportEnrichedFunctor
+
+public import SerrePositivity.InfinityCategories.F1.IsoTransportEnrichedNaturality
+
+public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryComparison
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryHomWhisker
