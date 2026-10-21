@@ -1530,6 +1530,14 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 接頭射・残りを元の切断と前後の元の射列から回収する。後置区間の指定性は仮定しない。
 端の空区間・任意可換環の実際の全自由次数でも検証。
 前後の語の制限射と全図式の比較、prefix・残りの余極限の像の一致、反復・積分解は後続。
+`Word.CutFactor.prefixMap/residualMap` は元の語の射を前後の因子の語へ制限し、
+元の列・方向・恒等・合成を厳密に保持する。`prefix_cut/residual_cut` と各 `*_cut_eq` は
+前後の全頂点で元の cut と同じ頂点を回収する。空 fiber も含む。
+`Attachments.prefix_vertex/residual_vertex/prefix_map_app/residual_map_app` は切断因子を
+元の前後の全頂点・全縦射へ照合する。各 `*_action_vertex/*_action_app` は元の語の作用と比較。
+`FirstFactorAction.prefix_vertices/residual_vertices/prefix_apps/residual_apps` は最小非指定列で
+内部切断端点を含む全頂点・全縦射を保持する。任意可換環の実際の全自由次数も検証。
+横の列と切断の接続自然変換の比較、全図式の同定、余極限の像の一致・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

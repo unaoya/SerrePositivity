@@ -5018,6 +5018,54 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.sandwich_left,
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.sandwich_right]
 
+@[noinline] private def e2RequiredBatch67 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_vertex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_vertex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_map_app,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_map_app,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_action_vertex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_action_vertex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_action_app,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_action_app,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.generator_eq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_vertices,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_vertices,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_apps,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_apps,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixWord,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualWord,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixColumn_le,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.le_residualColumn,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefix_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residual_direction,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixCutVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualCutVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixCutVertex_original,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualCutVertex_original,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefix_cut_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residual_cut_eq,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixColumn_map,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualColumn_map,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixMap_id,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualMap_id,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixMap_last,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualMap_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixOrderHom,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualOrderHom,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixMap,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualMap,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.cut_le_column,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefix_cut,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residual_cut,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualVertex,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.prefixVertex_last,
+      `SerrePositivity.EInfinity.Hammock.Word.CutFactor.residualVertex_zero]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5049,7 +5097,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -11836,3 +11884,98 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
   Hammock.UnmarkedGenerators.FirstFiber.prefixMap_mem
     (freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f S hS
+
+
+-- 元の制限射は prefix と残りの双方で合成を厳密に保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b c : Word} (f : a ⟶ b) (g : b ⟶ c) (i : Fin a.length)
+    (hi : a.direction i = .forward) :
+    Word.CutFactor.prefixMap (f ≫ g) i hi = Word.CutFactor.prefixMap f i hi ≫
+      Word.CutFactor.prefixMap g (f.orderHom i) ((f.direction_eq i).trans hi) ∧
+    Word.CutFactor.residualMap (f ≫ g) i hi = Word.CutFactor.residualMap f i hi ≫
+      Word.CutFactor.residualMap g (f.orderHom i) ((f.direction_eq i).trans hi) :=
+  ⟨Word.CutFactor.prefixMap_comp f i hi g, Word.CutFactor.residualMap_comp f i hi g⟩
+
+-- prefix の前の全頂点では制限射の cut が元の cut 自身へ戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b : Word} (f : a ⟶ b) (i : Fin a.length) (hi : a.direction i = .forward)
+    (k : Fin ((Word.ColumnSplit.before b (f.orderHom i)).length + 1)) :
+    ((Word.CutFactor.prefixMap f i hi).cut
+      (Word.leftVertex (Word.ColumnSplit.before b (f.orderHom i)) (Word.single .forward) k)).val =
+      (f.cut (Word.CutFactor.prefixVertex b (f.orderHom i) k)).val :=
+  Word.CutFactor.prefix_cut f i hi k
+
+-- 残りの後の全頂点では元の番号を足すと同じ元の cut に戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {a b : Word} (f : a ⟶ b) (i : Fin a.length) (hi : a.direction i = .forward)
+    (k : Fin ((Word.ColumnSplit.after b (f.orderHom i)).length + 1)) :
+    i.val + ((Word.CutFactor.residualMap f i hi).cut
+      (Word.rightVertex (Word.single .forward) (Word.ColumnSplit.after b (f.orderHom i)) k)).val =
+      (f.cut (Word.CutFactor.residualVertex b (f.orderHom i) k)).val :=
+  Word.CutFactor.residual_cut f i hi k
+
+-- 内部切断端点を含む prefix の全頂点を元の語の図式へ回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n)
+    (h : ∃ i, UnmarkedGenerators.column W (τ.obj 0) i ≠ [])
+    (hT : UnmarkedGenerators.column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h)) ≠ [])
+    (d : Fin (n.unop.len + 1))
+    (k : Fin ((Word.CutFactor.prefixWord b
+      (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h))).length + 1)) :
+    (WordAction.obj (Word.CutFactor.prefixMap f (UnmarkedGenerators.firstColumn W (τ.obj 0) h)
+      (UnmarkedGenerators.firstColumn_forward W (τ.obj 0) h))
+      ((UnmarkedGenerators.Attachments.prefixDiagram W τ
+        (UnmarkedGenerators.firstColumn W (τ.obj 0) h)
+        (UnmarkedGenerators.firstColumn_nonempty W (τ.obj 0) h)).obj d)).vertex k =
+    ((UnmarkedGenerators.Attachments.prefixDiagram W (τ ⋙ WordAction.functor f)
+      (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h)) hT).obj d).vertex k :=
+  UnmarkedGenerators.FirstFactorAction.prefix_vertices W f τ h hT d k
+
+-- 残りの内部切断端点を含む全縦成分は同じ元の射へ戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n)
+    (h : ∃ i, UnmarkedGenerators.column W (τ.obj 0) i ≠ [])
+    (hT : UnmarkedGenerators.column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h)) ≠ [])
+    {d e : Fin (n.unop.len + 1)} (g : d ⟶ e)
+    (k : Fin ((Word.CutFactor.residualWord b
+      (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h))).length + 1)) :
+    HEq ((WordAction.movingMap
+      (Word.CutFactor.residualMap f (UnmarkedGenerators.firstColumn W (τ.obj 0) h)
+        (UnmarkedGenerators.firstColumn_forward W (τ.obj 0) h))
+      ((UnmarkedGenerators.Attachments.residualDiagram W τ
+        (UnmarkedGenerators.firstColumn W (τ.obj 0) h)
+        (UnmarkedGenerators.firstColumn_nonempty W (τ.obj 0) h)).map g)).app k)
+      (((UnmarkedGenerators.Attachments.residualDiagram W (τ ⋙ WordAction.functor f)
+        (f.orderHom (UnmarkedGenerators.firstColumn W (τ.obj 0) h)) hT).map g).app k) :=
+  UnmarkedGenerators.FirstFactorAction.residual_apps W f τ h hT g k
+
+-- 任意可換環の実際の全自由次数の切断端点にも同じ生成矢の回収を適用する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {a b : Hammock.Word} (f : a ⟶ b)
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
+    (h : ∃ i, Hammock.UnmarkedGenerators.column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ [])
+    (hT : let W := (freeResolutionGeneratorBase
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      Hammock.UnmarkedGenerators.column W ((τ ⋙ Hammock.WordAction.functor f).obj 0)
+        (f.orderHom (Hammock.UnmarkedGenerators.firstColumn W (τ.obj 0) h)) ≠ []) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    Hammock.UnmarkedGenerators.rowGenerator W (τ ⋙ Hammock.WordAction.functor f)
+      (f.orderHom (Hammock.UnmarkedGenerators.firstColumn W (τ.obj 0) h)) hT =
+    Hammock.UnmarkedGenerators.rowGenerator W τ
+      (Hammock.UnmarkedGenerators.firstColumn W (τ.obj 0) h)
+      (Hammock.UnmarkedGenerators.firstColumn_nonempty W (τ.obj 0) h) :=
+  Hammock.UnmarkedGenerators.FirstFactorAction.generator_eq
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hT
