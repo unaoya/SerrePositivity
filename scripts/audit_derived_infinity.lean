@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompWhisker
+import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftNervePrecomposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecompComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorNaturality
 import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparison
 import SerrePositivity.InfinityCategories.Derived.ResolutionCounitComparison
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoFaithfulTransport
@@ -3825,6 +3830,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompWhisker,
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftNervePrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecompComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparison,
     `SerrePositivity.InfinityCategories.Derived.ResolutionCounitComparison,
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoFaithfulTransport,
