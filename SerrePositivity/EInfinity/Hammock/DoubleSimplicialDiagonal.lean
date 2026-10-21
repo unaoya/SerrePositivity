@@ -41,4 +41,12 @@ def diagonalConstantIso (X : SSet.{u}) :
     change (𝟙 _ ≫ X.map θ) ≫ 𝟙 _ = 𝟙 _ ≫ X.map θ
     simp)
 
+/-- 内側の次数が定数である二重単体集合の対角は元の外側の単体集合。 -/
+def diagonalDiscreteIso (X : SSet.{u}) :
+    diagonalFunctor.obj (X ⋙ Functor.const SimplexCategoryᵒᵖ) ≅ X :=
+  NatIso.ofComponents (fun n => Iso.refl (X.obj n)) (by
+    intro n m θ
+    change (X.map θ ≫ 𝟙 _) ≫ 𝟙 _ = 𝟙 _ ≫ X.map θ
+    simp)
+
 end SerrePositivity.EInfinity.Hammock.DoubleSimplicial

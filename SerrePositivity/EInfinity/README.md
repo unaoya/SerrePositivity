@@ -1403,7 +1403,15 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `freeHammockAugmentation` は元の hammock への自然な比較である。
 `freeHammockDiagonal`・`freeHammockDiagonalAugmentation` は元の対角とその左射、
 `freeHammockDiagonalReduction` は元の reduced hammock への同じ左比較。
-左射の弱同値性と元の DK Hom への右比較は未完成。
+`Zigzag.Value.value` は forward 列を Q.map、backward 列を元の wIso の逆射として
+評価する。全縦射・全語の合成と恒等列の挿入に不変であり、`colimitValue` は元の全語の
+余極限から定数 Hom への評価。相対関手・後合成・固定端点の等式移送への自然性も証明済み。
+`FixedObjectDiagram.LocalizationObjects.hammockEvaluation` はこれを全相対作用素で束ねる。
+`freeResolutionObject_localized` は既存 DK Hom の対象との一致を証明し、
+`freeHammockHomComparison` は元の全自由次数から既存の局所化 Hom への自然な右比較。
+`freeHammockDiagonalComparison` はその対角で、既存 `localizationHom` を標的とする。
+`freeHammockHomComparison_fac` は元の各語の標準射で同じ評価を回収する。
+任意可換環の既存の DK 入力にも代入済み。左右の比較射の弱同値性は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

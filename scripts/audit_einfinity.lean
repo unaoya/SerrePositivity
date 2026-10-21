@@ -4452,6 +4452,77 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_fac]
 
+@[noinline] private def e2RequiredBatch53 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homTransport,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.graphValue,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.colimitValue,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.colimitValue_fac,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.graphEvaluation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.hammockEvaluation,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homSimplicialDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.hammockDiagram,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.value,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.value_naturality,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.graphMap_wordAction,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.graphInclusion_colimitValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.reducedValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.graphNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.localizationValue,
+      `SerrePositivity.EInfinity.Hammock.reducedLocalizationValue,
+      `SerrePositivity.EInfinity.Hammock.graphInclusion_localizationValue,
+      `SerrePositivity.EInfinity.Hammock.graphNormalization_reducedLocalizationValue,
+      `SerrePositivity.EInfinity.Hammock.localized_edge_backward,
+      `SerrePositivity.EInfinity.Hammock.localization_value_relative,
+      `SerrePositivity.EInfinity.Hammock.fixedLocalizationObject_eq,
+      `SerrePositivity.EInfinity.Hammock.localization_value_fixed,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.intervalBackwardIso,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.intervalValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.intervalValue_refl,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.intervalValue_comp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.intervalValue_adjacent,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_map_adjacent,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_interval,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_comparison,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_fixed_comparison,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.rowValue_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.graphMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.graphMap_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_comm,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.pathMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.backwardIso,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_forward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_backward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.postInverts,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_postcompose,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_postcompose,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_postcompose,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.relativeInverts,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.arrow_relative_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_relative,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_relative,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_relative,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_functor_congr,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_endpoint_change,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.wordAction_value,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.wordAction_edge,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.cutFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_wordAction,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_app,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionObject_localized,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockLocalizationObjects,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalDiscreteIso]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4483,7 +4554,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10322,3 +10393,56 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R]
       Hammock.reducedSimplicialSet
         (BarrattEccles.cofibrantAlgebraRelativeCategory R).weakEquivalences X Y :=
   freeHammockDiagonalReduction (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
+
+-- 全自由次数で、元の自由対象の局所化像は既存 DK Hom の対象と一致する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (n : SimplexCategoryᵒᵖ)
+    (X : C.category) :
+    ((freeResolution C).obj n).weakEquivalences.Q.obj (freeResolutionObject C n X) =
+      localizedFreeResolutionObject C n X := freeResolutionObject_localized C n X
+
+-- 右比較は空語を含む全語の元の余極限の標準射で同じ評価を回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) (w : Hammock.Word) :
+    Hammock.graphInclusion ((freeResolution C).obj n).weakEquivalences
+      (freeResolutionObject C n X) (freeResolutionObject C n Y) w ≫
+        (freeHammockHomComparison C X Y).app n =
+          (freeHammockLocalizationObjects C).graphValue n w X Y :=
+  freeHammockHomComparison_fac C X Y n w
+
+-- 元の全単体作用素に対し、局所化 Hom への評価が厳密に自然である。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
+    (freeHammockResolution C X Y).map θ ≫ (freeHammockHomComparison C X Y).app m =
+      (freeHammockHomComparison C X Y).app n ≫
+        (localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ).map θ :=
+  (freeHammockHomComparison C X Y).naturality θ
+
+-- 右比較の対角成分は元の各次数の評価そのもの。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) :
+    (freeHammockDiagonalComparison C X Y).app n =
+      ((freeHammockHomComparison C X Y).app n).app n :=
+  freeHammockDiagonalComparison_app C X Y n
+
+-- 任意可換環の既存の cofibrant 代数の DK 入力に、元の右比較を代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
+    freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y :=
+  freeHammockDiagonalComparison (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y
+
+-- 同じ入力の左比較と右比較は、同じ元の自由 hammock の対角を共通始域に持つ。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
+    (freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      Hammock.reducedSimplicialSet
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R).weakEquivalences X Y) ×
+    (freeHammockDiagonal (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y ⟶
+      localizationHom (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y) :=
+  ⟨freeHammockDiagonalReduction _ X Y, freeHammockDiagonalComparison _ X Y⟩
