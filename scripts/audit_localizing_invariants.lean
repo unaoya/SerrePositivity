@@ -262,7 +262,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.TammeOreCartesianSpanLift,
     `SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianLift,
     `SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseChange,
-    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction]
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionPrism,
+    `SerrePositivity.KST.LocalizingInvariants.FinalFiberGroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.InitialFiberRetraction,
+    `SerrePositivity.KST.LocalizingInvariants.InitialFiberGroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges,
+    `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso,
+    `SerrePositivity.KST.LocalizingInvariants.TammeSpanDiagramFibers,
+    `SerrePositivity.KST.LocalizingInvariants.TammeDenominatorGroupoidComparison,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalPullbackFiberInclusions,
+    `SerrePositivity.KST.LocalizingInvariants.FiberTransportGroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.TammeSpanTransportGroupoidCompletion]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

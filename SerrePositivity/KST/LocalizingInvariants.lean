@@ -261,4 +261,28 @@ public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseC
 
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction
 
+public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionPrism
+
+public import SerrePositivity.KST.LocalizingInvariants.FinalFiberGroupoidCompletion
+
+public import SerrePositivity.KST.LocalizingInvariants.InitialFiberRetraction
+
+public import SerrePositivity.KST.LocalizingInvariants.InitialFiberGroupoidCompletion
+
+public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
+
+public import SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges
+
+public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDiagramFibers
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeDenominatorGroupoidComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.IntervalPullbackFiberInclusions
+
+public import SerrePositivity.KST.LocalizingInvariants.FiberTransportGroupoidCompletion
+
+public import SerrePositivity.KST.LocalizingInvariants.TammeSpanTransportGroupoidCompletion
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
