@@ -18684,3 +18684,94 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_connection
 #check @SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor
 #print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor
+
+#check @SerrePositivity.KST.SConstruction.CubicalSet
+#print axioms SerrePositivity.KST.SConstruction.CubicalSet
+#check @SerrePositivity.KST.SConstruction.cubicalYoneda
+#print axioms SerrePositivity.KST.SConstruction.cubicalYoneda
+#check @SerrePositivity.KST.SConstruction.cubicalCell
+#print axioms SerrePositivity.KST.SConstruction.cubicalCell
+#check @SerrePositivity.KST.SConstruction.cubicalCell_equiv
+#print axioms SerrePositivity.KST.SConstruction.cubicalCell_equiv
+#check @SerrePositivity.KST.SConstruction.cubicalCell_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalCell_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChains
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChains
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeUnit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeUnit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCell_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCell_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeUnit_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChainsCubeUnit_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagram
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagram
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChainsColimitIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChainsColimitIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChainsColimitIso_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChainsColimitIso_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChains_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChains_hom_ext
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCocone
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCocone
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDesc
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDesc
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDesc_fac
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDesc_fac
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_id
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_id
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_relation
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_relation
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_naturality
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeDiagonal
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeDiagonal
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeAugmentation
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeAugmentation
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor_comul
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor_comul
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor_counit
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeComplexFunctor_counit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_relation
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_relation
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_generator
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_generator
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAugmentation
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAugmentation
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAugmentation_generator
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAugmentation_generator
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAugmentation_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAugmentation_naturality
+#check @SerrePositivity.KST.SConstruction.comonoidGenerator_left_counit
+#print axioms SerrePositivity.KST.SConstruction.comonoidGenerator_left_counit
+#check @SerrePositivity.KST.SConstruction.comonoidGenerator_right_counit
+#print axioms SerrePositivity.KST.SConstruction.comonoidGenerator_right_counit
+#check @SerrePositivity.KST.SConstruction.comonoidGenerator_coassoc
+#print axioms SerrePositivity.KST.SConstruction.comonoidGenerator_coassoc
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_left_counit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_left_counit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_right_counit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_right_counit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_coassoc
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDiagonal_coassoc
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonObj
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonObj
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidFunctor
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidFunctor
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeUnit
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeUnit
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeUnit_app_isIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeUnit_app_isIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeIso

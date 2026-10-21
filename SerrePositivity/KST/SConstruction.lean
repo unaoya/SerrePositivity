@@ -1381,4 +1381,12 @@ public import SerrePositivity.KST.SConstruction.CubeDeletionConnectionDetection
 public import SerrePositivity.KST.SConstruction.CubeThreeNormalDetection
 public import SerrePositivity.KST.SConstruction.SerreCubeWordIndependence
 public import SerrePositivity.KST.SConstruction.SerreConcreteCubeFunctor
+public import SerrePositivity.KST.SConstruction.CubicalPresheaf
+public import SerrePositivity.KST.SConstruction.CubicalSerreChains
+public import SerrePositivity.KST.SConstruction.CubicalSerreColimit
+public import SerrePositivity.KST.SConstruction.CubicalSerreGenerators
+public import SerrePositivity.KST.SConstruction.CubicalSerreDiagonal
+public import SerrePositivity.KST.SConstruction.ComonoidGeneratorLaws
+public import SerrePositivity.KST.SConstruction.CubicalSerreComonoid
+public import SerrePositivity.KST.SConstruction.CubicalSerreRepresentable
 /-! # ∞-S• 構成と連結 K 理論 -/
