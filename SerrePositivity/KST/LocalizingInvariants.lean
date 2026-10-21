@@ -694,4 +694,10 @@ public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramBoundaryNatur
 public import SerrePositivity.KST.LocalizingInvariants.ProFiberConnecting
 public import SerrePositivity.KST.LocalizingInvariants.ProFiberProjectionEquivalence
 
+public import SerrePositivity.KST.LocalizingInvariants.ProGroupFiveTermZero
+public import SerrePositivity.KST.LocalizingInvariants.ProSpectrumPiConnectivity
+public import SerrePositivity.KST.LocalizingInvariants.ProFiberPiConnectivity
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumPiConnectivity
+public import SerrePositivity.KST.LocalizingInvariants.InvariantConnectivity
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

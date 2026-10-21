@@ -557,7 +557,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.FiberDiagramBaseGroupNaturality,
     `SerrePositivity.KST.LocalizingInvariants.FiberDiagramBoundaryNaturality,
     `SerrePositivity.KST.LocalizingInvariants.ProFiberConnecting,
-    `SerrePositivity.KST.LocalizingInvariants.ProFiberProjectionEquivalence]
+    `SerrePositivity.KST.LocalizingInvariants.ProFiberProjectionEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.ProGroupFiveTermZero,
+    `SerrePositivity.KST.LocalizingInvariants.ProSpectrumPiConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.ProFiberPiConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumPiConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantConnectivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
