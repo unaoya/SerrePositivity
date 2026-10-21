@@ -2204,3 +2204,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison_isWeakHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison_homotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison_right
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanConeKanComparison_path
