@@ -2142,10 +2142,19 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 は実際の関手的分解による同じ reduced 比較の始域自然性。
 `mappingSpaceReducedHammockComparisonIso_precompose/naturality` は既存 Map^h の同じ比較の
 始域自然性と、任意の両端点射を同時に動かす全自然性。
-cofibrant 包含・HomLift の作用との照合、既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
+`MixedRelative.graphDiagramMap/colimitMap/reducedMap` は Hom の宇宙が異なる元の相対写像。
+`composePoint_map/arrowPoint_map` と `reducedMap_postcompose/precompose` は元の点と両作用の保存。
+`cofibrantAlgebraHammockInclusionMap_eq_mixed` は HomLift を通る既存包含そのものとの一致。
+`cofibrantAlgebraHammockInclusionMap_postcompose/precompose` は同じ包含の両作用の正方形。
+`cofibrantAlgebraDKHammockComparisonIso_postcompose/precompose` は既存代数 DK 比較の自然性。
+`cofibrantAlgebraDKMappingSpaceComparisonIso_postcompose/precompose/naturality` は実 DK Hom と
+元の Map^h の同じ比較の前合成・後合成・両端同時の自然性。
+`cAlgMappingSpaceComparisonIso_postcompose/precompose` は元の両作用を同じ Ex∞ で送った
+実 Kan Hom の比較の自然性。元の Ex∞ 単位の同じ比較の回収式を保持する。
+既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
-その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。
+元の代数射による前後合成の自然性まで完成。既存 π₀ 同値との整合、∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

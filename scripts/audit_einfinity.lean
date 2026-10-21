@@ -7587,6 +7587,36 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComparisonIso_precompose,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComparisonIso_naturality]
 
+@[noinline] private def e2RequiredBatch125 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.graphMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.graphDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.colimitMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.graphInclusion_colimitMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.reducedMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.reducedColimitIso_map,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.graphNormalization_reducedMap,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.graphInclusion_point,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.append_simplex,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.composePoint_map,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.forward_obj,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.arrowSimplex_map,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.arrowPoint_map,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.colimitMap_postcompose,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.colimitMap_precompose,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.reducedMap_postcompose,
+      `SerrePositivity.EInfinity.Hammock.MixedRelative.reducedMap_precompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_eq_mixed,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_postcompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_precompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso_postcompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso_precompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComparisonIso_postcompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComparisonIso_precompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComparisonIso_naturality,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso_postcompose,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso_precompose]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7618,7 +7648,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18372,3 +18402,48 @@ example (B' B D D' : (cofibrantAlgebraRelativeCategory A).category) (f : B' ⟶ 
             algebraReducedHammockPostcompose A (i.obj B') (i.map g)) :=
   mappingSpaceReducedHammockComparisonIso_naturality A _ _
 end e2MappingSpacePrecomposeFixtures
+
+section e2DKMappingSpaceNaturalityFixtures
+open CategoryTheory Opposite
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.SimplicialModel
+open SerrePositivity.KST.Comparison
+variable (A : Type e2ComplexLimitUniverse) [CommRing A]
+example
+    {X' X Y Y' : (cofibrantAlgebraRelativeCategory A).category} (f : X' ⟶ X) (g : Y ⟶ Y') :
+    AnodyneHomotopy.anodyneQ.map
+        (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Y f ≫
+          localizationPostcompose (cofibrantAlgebraRelativeCategory A) X' g) ≫
+      (cofibrantAlgebraDKMappingSpaceComparisonIso A X' Y').hom =
+    (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom ≫
+      AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
+        ((((mappingSpace A).map ((cofibrantAlgebraDKInclusion A).map f).op).app
+            ((cofibrantAlgebraDKInclusion A).obj Y)) ≫
+          (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X'))).map
+            ((cofibrantAlgebraDKInclusion A).map g)))) :=
+  cofibrantAlgebraDKMappingSpaceComparisonIso_naturality A f g
+
+example
+    (X : (cofibrantAlgebraRelativeCategory A).category)
+    {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
+    AnodyneHomotopy.anodyneQ.map
+        (exInfinity.map (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g)) ≫
+      (cAlgMappingSpaceComparisonIso A X Z).hom =
+    (cAlgMappingSpaceComparisonIso A X Y).hom ≫
+      AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
+        (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).map
+          ((cofibrantAlgebraDKInclusion A).map g))) :=
+  cAlgMappingSpaceComparisonIso_postcompose A X g
+
+example
+    (Z : (cofibrantAlgebraRelativeCategory A).category)
+    {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
+    AnodyneHomotopy.anodyneQ.map
+        (exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f)) ≫
+      (cAlgMappingSpaceComparisonIso A X Z).hom =
+    (cAlgMappingSpaceComparisonIso A Y Z).hom ≫
+      AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
+        (((mappingSpace A).map ((cofibrantAlgebraDKInclusion A).map f).op).app
+          ((cofibrantAlgebraDKInclusion A).obj Z))) :=
+  cAlgMappingSpaceComparisonIso_precompose A Z f
+end e2DKMappingSpaceNaturalityFixtures
