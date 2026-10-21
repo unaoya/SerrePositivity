@@ -1689,4 +1689,11 @@ public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorFaceEvaluation
 public import SerrePositivity.KST.SConstruction.SerreCubeFaceTopExt
 public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaGeneratorExt
 public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorSpan
+public import SerrePositivity.KST.SConstruction.SerreIntervalDualCoordinates
+public import SerrePositivity.KST.SConstruction.SerreIntervalEndpointDuals
+public import SerrePositivity.KST.SConstruction.SerreIntervalDegreeLift
+public import SerrePositivity.KST.SConstruction.SerreCubeDegreeLift
+public import SerrePositivity.KST.SConstruction.SerreCubeDegreeLiftRecovery
+public import SerrePositivity.KST.SConstruction.SerreCubeDegreeValuesEquiv
+public import SerrePositivity.KST.SConstruction.SerreCubeChainLift
 /-! # ∞-S• 構成と連結 K 理論 -/

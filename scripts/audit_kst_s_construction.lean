@@ -21549,3 +21549,63 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator
 #check @SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator_span
 #print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeGenerator_span
+#check @SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate
+#check @SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate
+#check @SerrePositivity.KST.SConstruction.serreIntervalEdgeCoordinate
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalEdgeCoordinate
+#check @SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_zero
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_zero
+#check @SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_zero
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_zero
+#check @SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_upper
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_upper
+#check @SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_upper
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_upper
+#check @SerrePositivity.KST.SConstruction.serreIntervalEdgeCoordinate_edge
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalEdgeCoordinate_edge
+#check @SerrePositivity.KST.SConstruction.serreInterval_upper_eq_endpoints
+#print axioms SerrePositivity.KST.SConstruction.serreInterval_upper_eq_endpoints
+#check @SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_one
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalUnitCoordinate_one
+#check @SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_one
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalBoundaryCoordinate_one
+#check @SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate
+#check @SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate_zero
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate_zero
+#check @SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate_one
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalZeroCoordinate_one
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift_zero
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift_zero
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift_one
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeZeroLift_one
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeEdgeLift
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeEdgeLift
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeEdgeLift_edge
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeEdgeLift_edge
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeLift
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeLift
+#check @SerrePositivity.KST.SConstruction.serreIntervalDegreeLift_generator
+#print axioms SerrePositivity.KST.SConstruction.serreIntervalDegreeLift_generator
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeLift
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeLift
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeLift_succ_ι
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeLift_succ_ι
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeLift_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeLift_generator
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeLift_recovery
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeLift_recovery
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeValuesEquiv
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeValuesEquiv
+#check @SerrePositivity.KST.SConstruction.serreCubeDegreeLift_post
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDegreeLift_post
+#check @SerrePositivity.KST.SConstruction.serreCubeChainLift
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainLift
+#check @SerrePositivity.KST.SConstruction.serreCubeChainLift_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainLift_generator
+#check @SerrePositivity.KST.SConstruction.serreCubeChainLift_eq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainLift_eq
