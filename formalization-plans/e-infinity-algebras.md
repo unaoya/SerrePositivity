@@ -28,13 +28,15 @@
   `reflective_isLocal_iff_unit_local` は既存反射の局所対象を全単位成分への局所性で特徴づける。逆向きは元の単位の両逆を回収。
   既存反射について、局所対象と元の反転辺集合の局所対象の一致、および S-equivalence と元の反転辺集合の一致を証明（HTT 5.5.4.2(1)・(2)）。
   `LocalEquivalenceHom`・`localEquivalences` を元の射・一次単体で定義。元の辺集合の包含、単調性・冪等性、局所対象の不変性を証明。
-  元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。強飽和性の余極限・pushout 条件は未証明。
+  元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。強飽和性の任意小余極限条件は未証明。
   全単体集合パラメータの定値 Hom の全単射と局所性の同値を公開。元の辺への局所性を終点固定 coslice の始点制限の trivial Kan 性と照合。
   元の span の左枝が指定辺集合に属するとき、局所対象への余錐の右枝・右枝終点への制限の trivial Kan 性を証明。余錐空間の厳密な引き戻しを使用。
   **元の任意の coherent な pushout での S-equivalence の保存を完了。** 下辺→上辺と左辺→右辺の両向きを公開。安定性は不要。
   反復 coslice の厳密な同型と元の左因子への制限の一致を構成し、余極限余錐全体から底図式への coslice 制限の trivial Kan 性を導出。
   これを元の span の余錐制限と正方形の上辺の right anodyne 性で結び、追加の写像空間条件を仮定せず元の脚を保存。
   強飽和性の条件(1) pushout と(3) 元の二単体の三辺は完了。(2) 矢印圏内の任意小余極限での閉性は未証明。
+  右ファイブレーションの相対 Hom について、各頂点の持ち上げ fiber の可縮性から任意の底 K 上の全境界充填性を証明。
+  任意の単射に沿う部分族を、元の始点側の族と底を厳密に保って延長する。局所性からこの fiber の可縮性への比較は未証明。
   N-1 の部分余極限構成は再開せず、既存の一般的な余錐・coslice の補題を局所化に使う。
   辺集合の小生成・強飽和性全体、反射の存在、Bousfield 局所化・P_Σ の構成は未完了。
 - **残り**（依存順。時間は再開時の粗い見積もり）：
@@ -76,20 +78,22 @@
   `iteratedSliceUnderIso`、`iteratedSliceUnderIso_restriction`、`sliceUnderRestrict_cocone_trivial`、
   `pushoutCoconeRestriction_trivial`、`isLocalForHom_pushout_top_of_bottom`、
   `localEquivalences_pushout_bottom_top`、`localEquivalences_pushout_left_right`。
+  `relativeHomFamilyProjection_trivial`、`relativeHomFamily_exists_extension_over_base`。
   Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
 - **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
   N の集約は `InfinityCategories/HomotopyLimits.lean`、全監査は `scripts/audit_homotopy_limits.lean`。提供先は Sp・E2b。
   型は Lean、運用は `foundations.md` §8。README は規約だけ、実施記録はコミットメッセージ。全体チェックリストはコーディネータが更新する。
-- **未コミット**：なし（今回の保存単位：反復 coslice・余極限の制限・元の pushout での局所同値保存の6モジュール36宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
+- **未コミット**：なし（今回の保存単位：右ファイブレーションの相対 Hom 族の持ち上げの1モジュール4宣言、集約・全監査、本 N 節）。他レーンの差分は保存対象外。
   root の迷子 `InfinityCategories/HomotopyLimits/RelativeFreePathBoundary.lean` は N 旧稿と確認し、修正版を正しい場所へ保存後に削除済み。
-- **既知の問題**：N の対象ビルド6171 jobs・全4274宣言監査は終了コード0、標準三公理のみ。新規6モジュールに警告・sorry・追加公理なし。
+- **既知の問題**：N の対象ビルド6173 jobs・全4278宣言監査は終了コード0、標準三公理のみ。新規1モジュール4宣言に警告・sorry・追加公理なし。
   Sp の既存界面は対象5366/5370 jobs と13宣言の型・公理確認が終了コード0、標準三公理のみ。両 import 閉包に他レーンの未コミット差分なし。
   `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
   E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
   Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
 - **次の一手**：N-4：任意の小余極限での閉性（HTT 5.5.4.5(2)・5.5.4.11）。まず α : Δ¹⊗K→X の全垂直辺が z に対して局所なら、終点固定余錐を始点面へ制限する射が同値となることを証明。
-  `isLocalForHom_edge_iff_sourceRestriction_trivial` の K=Δ⁰ の充填性を一般の K の相対骨格へ延長する入口を調べる。K は nerve・quasicategory に限定しない。
+  `i=δ¹`、`p=sliceOverProjection(z)` として、局所性から `relativeHomFamilyProjection_trivial` の頂点 fiber の可縮性を導く。
+  辺上の切断空間と終点固定余錐の始点制限の比較が必要。両模型は高次では定義上同一でない。K は任意の単体集合。
   `sliceUnderRestrict_cocone_trivial` と組み合わせて、元の余極限比較辺の局所性を回収。矢印圏の条件へまとめる際は端点での余極限性を照合し、C が小余極限を持つという原典の前提を保持する。
   `F2.coconeTransformationMap_isQCatEquivalence` は余錐空間と定値図式への変換空間の比較。点ごとの局所性から変換の局所性は未証明であり、単なる成分の π₀ の一致で代用しない。
   `sliceUnderUncurry_eqToHom` は既存 `InitialRestrictionBaseEvaluation` の宣言を再利用。反復 coslice の同名宣言を再定義しない。反射の存在・強飽和性全体・P_Σ は未完了。

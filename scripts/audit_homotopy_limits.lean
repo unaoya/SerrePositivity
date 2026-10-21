@@ -11608,3 +11608,15 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localEquivalences_pushout_left_right
 #print axioms localEquivalences_pushout_left_right
+
+#check @relativeHomFamilyProjection
+#print axioms relativeHomFamilyProjection
+
+#check @relativeHomFamilyProjection_trivial
+#print axioms relativeHomFamilyProjection_trivial
+
+#check @relativeHomFamily_exists_extension
+#print axioms relativeHomFamily_exists_extension
+
+#check @relativeHomFamily_exists_extension_over_base
+#print axioms relativeHomFamily_exists_extension_over_base
