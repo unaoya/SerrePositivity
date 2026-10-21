@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeOutputComparisonNaturality
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeSourceComparisonNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLiftedInput
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeLiftedSourceSquare
+import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerMapTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedSquare
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHomTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityNerveProjection
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentity
+import SerrePositivity.InfinityCategories.Derived.ResolutionCounitHomNaturality
+import SerrePositivity.InfinityCategories.Derived.ResolutionSourceHomNaturality
 import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTransport
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityFunctorProjection
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityStrictProjection
@@ -4025,6 +4037,25 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeOutputComparisonNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputHomNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeSourceComparisonNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLiftedInput,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeLiftedSourceSquare,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerMapTransport,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedSquare,
+
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityNerveProjection,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentity,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionCounitHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionSourceHomNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTransport,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityFunctorProjection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionChangeIdentityStrictProjection,
