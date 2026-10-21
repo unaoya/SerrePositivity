@@ -6831,3 +6831,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeFunctorPushoutLift_snd
 #check @SerrePositivity.InfinityCategories.relativeFunctorPushout_hom_ext
 #check @SerrePositivity.InfinityCategories.relativeFunctorOverPre_isPullback_of_isPushout
+#check @SerrePositivity.InfinityCategories.markedCocartesianFunctorPredicate_of_two_markCovers
+#check @SerrePositivity.InfinityCategories.markedCocartesianFunctorPre_isPullback_of_isPushout
