@@ -1960,3 +1960,13 @@ public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
 public import SerrePositivity.InfinityCategories.F1.CompositionTriangleVertices
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalSourceComposition
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSourceCoherentMixedHom
+
+public import SerrePositivity.InfinityCategories.F1.CoherentRightIntervalCutSimplex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTransportHomCutSimplex
+
+public import SerrePositivity.InfinityCategories.F1.CoherentRightIntervalCutHom
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSourceCutMixedHom
