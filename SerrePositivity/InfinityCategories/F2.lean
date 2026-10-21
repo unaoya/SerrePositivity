@@ -188,7 +188,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeFiberPat
 
 public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedFiberTriangleIso
 
-public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeFaceSections
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeLegFiberDown
 
 public import SerrePositivity.InfinityCategories.F2.PointedTriangleDiagramSource
 
