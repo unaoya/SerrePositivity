@@ -1565,7 +1565,18 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 切断点を全単体作用素・全語の圧縮・恒等列の挿入に整合させる。
 `cutMap/cutCocone/colimitCut` は元の非空部分の全語の余極限からの切断射。
 `inclusion_colimitCut/colimitCut_unique/inclusion_ambientMap` は元の各語の切断・標準射と一意性を回収。
-任意可換環の実際の全自由次数でも検証。元の全 hammock の非空部分との同定・反復・積分解は後続。
+任意可換環の実際の全自由次数でも検証。元の全 hammock の非空部分との同定は以下。反復・積分解は後続。
+`nonemptyColumns_wordAction_iff/nonemptyColumns_simplex_iff` は元の非空列条件を保存・反映。
+`FirstFactor.detector/ambientMap_detector/ambientMap_injective/ambientMap_mono` は
+同じ元の全 hammock 上の検出射と非空余極限の包含の単射性を証明する。
+`GeneratorWord.composable_hom_eq_nil_iff` と `edge_column/value_eq_nil_iff/value_ne_nil_iff` は
+元の評価・全隣接列・非空非指定文字列の存在を照合する。
+`ambientMap_range` は元の包含の像が元の `colimitValue` の非空部分に正確に一致することを証明。
+`NonemptyValue.space` はこの元の部分単体集合であり、`nonemptyIso_hom_inclusion` は
+全語の非空余極限との同型の後の包含が元の `ambientMap` 自身であることを回収する。
+`nonemptyCut/inclusion_nonemptyCut/inclusion_nonemptyIso_val` は元の非空部分上の切断と
+元の各語の標準射・切断を回収。任意可換環の実際の全自由次数でも検証。
+残りの文字列が元の先頭を除いたものである式・長さの反復・逆構成・自由積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

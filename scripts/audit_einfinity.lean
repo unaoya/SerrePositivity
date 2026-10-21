@@ -5168,6 +5168,44 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AttachedPrefix.residualWord_simplex,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AttachedPrefix.residualFunctor_simplex]
 
+@[noinline] private def e2RequiredBatch71 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.colimit_point_surjective,
+      `SerrePositivity.EInfinity.Hammock.OptionSpace.space,
+      `SerrePositivity.EInfinity.Hammock.OptionSpace.inclusion,
+      `SerrePositivity.EInfinity.Hammock.OptionSpace.inclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.detectWord,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.inclusion_detectWord,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.detectWord_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.graphInclusion_detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.ambientMap_detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.ambientMap_injective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.ambientMap_mono,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.colimitValue_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.colimitValue_ambient_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.ambientMap_range,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.valueMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.valueMap_bijective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyIso,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyIso_hom_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyIso_hom_cut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.inclusion_nonemptyCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.inclusion_nonemptyIso_val,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.nonemptyColumns_wordAction_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.nonemptyColumns_simplex_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.NonemptyValue.value_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.NonemptyValue.space,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.NonemptyValue.inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.edge_column,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.path_adjacent_column,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_path_hom,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_eq_nil_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_ne_nil_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.word_eqToHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_transport,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.composable_hom_eq_nil_iff]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5199,7 +5237,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -12379,5 +12417,60 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     FirstFactor.inclusion W X Y w ≫ FirstFactor.colimitCut W X Y = FirstFactor.cutMap W w X Y :=
   FirstFactor.inclusion_colimitCut
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y w
+
+
+-- 元の評価が空でないことは元の非空列の存在と同値である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} (S : Zigzag W.paths w X Y) :
+    value W S ≠ [] ↔ ∃ i, column W S i ≠ [] := value_ne_nil_iff W S
+
+-- 全語の非空部分から元の hammock への射自身が単射である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) : Mono (FirstFactor.ambientMap W X Y) :=
+  FirstFactor.ambientMap_mono W X Y
+
+-- 同じ元の包含の像を既存の非指定文字列評価で正確に判定する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) (n : SimplexCategoryᵒᵖ)
+    (x : (colimitGraph W.paths X Y).obj n) :
+    (∃ z, (FirstFactor.ambientMap W X Y).app n z = x) ↔ (colimitValue W X Y).app n x ≠ [] :=
+  FirstFactor.ambientMap_range W X Y n x
+
+-- 元の非空部分への同型の後の包含は元の ambientMap である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    (FirstFactor.nonemptyIso W X Y).hom ≫ NonemptyValue.inclusion W X Y =
+      FirstFactor.ambientMap W X Y := FirstFactor.nonemptyIso_hom_inclusion W X Y
+
+-- 元の非空部分上の切断射は各語の同じ切断を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) (w : Word) :
+    (FirstFactor.inclusion W X Y w ≫ (FirstFactor.nonemptyIso W X Y).hom) ≫
+      FirstFactor.nonemptyCut W X Y = FirstFactor.cutMap W w X Y :=
+  FirstFactor.inclusion_nonemptyCut W X Y w
+
+-- 任意可換環の実際の全自由次数の同じ端点でも元の切断を回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category)
+    (w : Word) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    (FirstFactor.inclusion W X Y w ≫ (FirstFactor.nonemptyIso W X Y).hom) ≫
+      FirstFactor.nonemptyCut W X Y = FirstFactor.cutMap W w X Y :=
+  FirstFactor.inclusion_nonemptyCut
     (freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences X Y w

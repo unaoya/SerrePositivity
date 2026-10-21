@@ -1240,3 +1240,13 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorTargetTransport
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyGraph
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyWordDiagram
 public import SerrePositivity.EInfinity.Hammock.UnmarkedResidualHammockSimplex
+public import SerrePositivity.EInfinity.Hammock.ColimitPoints
+public import SerrePositivity.EInfinity.Hammock.OptionSpace
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyDetector
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyEmbedding
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyImage
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyIso
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyReflection
+public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptySpace
+public import SerrePositivity.EInfinity.Hammock.UnmarkedValueNonempty
+public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPath
