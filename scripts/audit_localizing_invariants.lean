@@ -684,7 +684,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeComparison,
     `SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeQuasiIso,
     `SerrePositivity.KST.LocalizingInvariants.CochainPullbackCoconeComparison,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackComparisonQuasiIso]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackComparisonQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainConeMapQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainConeQuotientComparison,
+    `SerrePositivity.KST.LocalizingInvariants.CochainConeShortExact,
+    `SerrePositivity.KST.LocalizingInvariants.CochainConeSplitPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionCone,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionConeMap]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
