@@ -51,4 +51,26 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeFiberSequence
 
+public import SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting
+
+public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence
+
+public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction
+
+public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal
+
+public import SerrePositivity.KST.LocalizingInvariants.ParametricDiagramGluing
+
+public import SerrePositivity.KST.LocalizingInvariants.InverseAttachment
+
+public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction
+
+public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting
+
+public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal
+
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationResolution
+
+public import SerrePositivity.KST.LocalizingInvariants.GeneralLocalization
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
