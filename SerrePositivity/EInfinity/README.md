@@ -1627,6 +1627,19 @@ hammock と元の包含・全関手の回収と全語の作用への整合。
 任意の余極限の三因子を貼って切ると元の Total 生成矢と残りの非指定文字列を回収する。
 任意可換環の実際の全自由次数でも検証。prefix と残りの hammock の点そのものの回収、
 逆向きの因子列の回収・一意性・積分解・自由積の pushout・DK の両弱比較は後続。
+`GeneratorWord.FixedCut.length_factorization/left_length_of_one/right_length_of_one` は元の
+raw な一文字の列の前後の長さ零を回収し、`left_eqToHom_of_one/right_eqToHom_of_one` は
+元の端点等式による移送として実際の射を回収する。元の恒等文字と空の射列は区別する。
+`zeroNatTrans_eqToHom/zeroNatTrans_heq_id` は全成分が長さ零の自然変換全体を関手の等式の移送へ回収。
+`Pasted.column_length_one/selected_column_length_one/cut_left_length_zero/cut_right_length_zero` は
+元の貼り戻しの全行で raw な長さを照合する。
+`leftAttachment_eqToHom/rightAttachment_eqToHom/sourceJoint_eq/targetJoint_eq` は左右の元の
+接続自然変換全体と接合点関手を元の生成矢の端点の定数関手へ回収。
+`before_word/after_word/prefix_word/residual_word` は元の前後の語を回収する。
+`before_vertex/before_arrow/before_map_app/after_vertex/after_arrow/after_map_app` と
+`before_diagram/after_diagram` は元の全頂点・横列・縦射・端点関手を含む前後の全図式の回収。
+任意可換環の実際の全自由次数でも検証。長さ零の内部列を恒等列の挿入として標準射へ渡す工程、
+prefix と残りの元の hammock の点の回収・逆向きの因子列の回収・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
