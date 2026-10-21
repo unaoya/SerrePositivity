@@ -1546,8 +1546,19 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 元の方向付き列を回収する。`prefixCutVertex_block/residualCutVertex_block` は元の cut を保持。
 `Attachments.prefix_outer_direction/prefix_outer_arrow/residual_outer_direction/residual_outer_arrow`
 は内部切断列以外の全横列と、元の制限射による語の作用の一致。
-任意可換環の実際の全自由次数でも検証。内部接続列・全因子図式の同定、
-同じ余極限の像の一致・反復・積分解は後続。
+任意可換環の実際の全自由次数でも検証。内部接続列・全因子図式と同じ余極限の像の
+比較は以下で完成。反復・積分解は後続。
+`FixedCut.changeGenerator/changeGenerator_left/changeGenerator_right` と
+`FirstFactorAction.row_cut_left/row_cut_right` は圧縮後の全行の切断の前後を元へ回収。
+`Attachments.prefix_inner_segment/residual_inner_segment` は内部接続列を含む区間の合成を回収。
+`prefix_inner_action_arrow/residual_inner_action_arrow/prefix_columns/residual_columns` は残る内部列と
+全横列を照合。`prefix_diagram/residual_diagram` は元の全因子図式の異種等式であり、
+`prefix_functor/residual_functor` は元の端点表示を移した全関手の厳密な等式。
+`EndpointChange.colimitMap/inclusion/image_eq` は同じ元の標準余錐の端点移送。
+`prefix_colimit_image/residual_colimit_image` は同じ元の hammock 余極限の像の一致。
+`marked_prefix_functor/marked_prefix_colimit_image` は実際の指定部分圏の W-hammock にも適用。
+任意可換環の実際の全自由次数でも検証。生成矢の表示を移した各幅での一段の比較であり、
+因子を依存和の単体集合の射へ束ねる工程、reduction・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

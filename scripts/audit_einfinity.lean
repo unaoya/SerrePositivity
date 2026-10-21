@@ -5089,6 +5089,49 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.before_segment,
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.after_segment]
 
+@[noinline] private def e2RequiredBatch69 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.EndpointChange.colimitMap,
+      `SerrePositivity.EInfinity.Hammock.EndpointChange.inclusion,
+      `SerrePositivity.EInfinity.Hammock.EndpointChange.image_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.EndpointChange.comp_eq_of_heq,
+      `SerrePositivity.EInfinity.Hammock.Segment.toColumn_heq,
+      `SerrePositivity.EInfinity.Hammock.Segment.fromColumn_heq,
+      `SerrePositivity.EInfinity.Hammock.MarkedZigzag.liftFunctor_reflection,
+      `SerrePositivity.EInfinity.Hammock.MarkedZigzag.functor_heq_of_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_inner_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_inner_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_colimit_image,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_colimit_image,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.marked_prefix_colimit_image,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_columns,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_columns,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_diagram,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_diagram,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_functor_heq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_functor_heq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_functor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_functor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_arrow_mem_of_first,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.imagePrefix_arrow_mem,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.markedImagePrefixFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.marked_prefix_functor_heq,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.marked_prefix_functor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_inner_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.prefix_inner_segment,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_inner_action_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.prefix_inner_action_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_inner_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.residual_inner_segment,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_inner_action_direction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.residual_inner_action_arrow,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.row_cut_left,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction.row_cut_right,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.object_hext_endpoints,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.hext_endpoints,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.changeGenerator,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.changeGenerator_left,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FixedCut.changeGenerator_right]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5120,7 +5163,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -12096,3 +12139,136 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
   Hammock.UnmarkedGenerators.Attachments.prefix_outer_arrow
     (freeResolutionGeneratorBase
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ i h hi hT d k
+
+
+-- 全横列を含む prefix の全図式を元の語の作用へ照合する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (h : ∃ i, column W (τ.obj 0) i ≠ [])
+    (hT : column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    HEq (Zigzag.MovingDiagram.wordAction
+          (prefixMap f (AttachedPrefix.index W τ h) (firstColumn_forward W (τ.obj 0) h))
+          (AttachedPrefix.diagram W τ h))
+        (Attachments.prefixDiagram W (τ ⋙ WordAction.functor f)
+          (f.orderHom (AttachedPrefix.index W τ h)) hT) :=
+  prefix_diagram W f τ h hT
+
+-- 元の端点表示を移すと prefix の全関手は厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (h : ∃ i, column W (τ.obj 0) i ≠ [])
+    (hT : column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    AttachedPrefix.functor W τ h ⋙ WordAction.functor
+          (prefixMap f (AttachedPrefix.index W τ h) (firstColumn_forward W (τ.obj 0) h)) ⋙
+          Zigzag.EndpointChange.functor rfl
+            (congrArg (fun g : Quiver.Total C => (show Paths C from g.left))
+              (generator_eq W f τ h hT)).symm =
+        Attachments.prefixFunctor W (τ ⋙ WordAction.functor f)
+          (f.orderHom (AttachedPrefix.index W τ h)) hT :=
+  prefix_functor W f τ h hT
+
+-- 同じ元の残りの全関手も厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (h : ∃ i, column W (τ.obj 0) i ≠ [])
+    (hT : column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    Attachments.residualFunctor W τ (AttachedPrefix.index W τ h) (AttachedPrefix.nonempty W τ h) ⋙
+          WordAction.functor
+            (residualMap f (AttachedPrefix.index W τ h) (firstColumn_forward W (τ.obj 0) h)) ⋙
+          Zigzag.EndpointChange.functor
+            (congrArg (fun g : Quiver.Total C => (show Paths C from g.right))
+              (generator_eq W f τ h hT)).symm rfl =
+        Attachments.residualFunctor W (τ ⋙ WordAction.functor f)
+          (f.orderHom (AttachedPrefix.index W τ h)) hT :=
+  residual_functor W f τ h hT
+
+-- 残りの同じ元の hammock 余極限の標準射の像を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (h : ∃ i, column W (τ.obj 0) i ≠ [])
+    (hT : column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    let i := AttachedPrefix.index W τ h
+        let B : Paths C := (rowGenerator W τ i (AttachedPrefix.nonempty W τ h)).right
+        let B' : Paths C := (rowGenerator W (τ ⋙ WordAction.functor f) (f.orderHom i) hT).right
+        let hp : B = B' := (congrArg (fun g : Quiver.Total C => (show Paths C from g.right))
+          (generator_eq W f τ h hT)).symm
+        (EndpointChange.colimitMap W.paths hp rfl).app n
+          ((graphInclusion W.paths B Y (residualWord a i)).app n
+            (Attachments.residualFunctor W τ i (AttachedPrefix.nonempty W τ h))) =
+        (graphInclusion W.paths B' Y (residualWord b (f.orderHom i))).app n
+          (Attachments.residualFunctor W (τ ⋙ WordAction.functor f) (f.orderHom i) hT) :=
+  residual_colimit_image W f τ h hT
+
+-- 実際の指定部分圏の W-hammock 余極限でも prefix の像を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (f : a ⟶ b) (τ : (graph W.paths a X Y).obj n) (h : ∃ i, column W (τ.obj 0) i ≠ [])
+    (hT : column W ((τ ⋙ WordAction.functor f).obj 0)
+      (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    let i := AttachedPrefix.index W τ h
+        let A : Paths C := (rowGenerator W τ i (AttachedPrefix.nonempty W τ h)).left
+        let A' : Paths C := (rowGenerator W (τ ⋙ WordAction.functor f) (f.orderHom i) hT).left
+        let hp : A = A' := (congrArg (fun g : Quiver.Total C => (show Paths C from g.left))
+          (generator_eq W f τ h hT)).symm
+        (EndpointChange.colimitMap (⊤ : MorphismProperty (WideSubcategory W.paths)) rfl
+          (congrArg (fun Z : Paths C => (⟨Z⟩ : WideSubcategory W.paths)) hp)).app n
+          ((graphInclusion (⊤ : MorphismProperty (WideSubcategory W.paths))
+            ⟨X⟩ ⟨A⟩ (prefixWord a i)).app n (AttachedPrefix.markedSimplex W τ h)) =
+        (graphInclusion (⊤ : MorphismProperty (WideSubcategory W.paths))
+          ⟨X⟩ ⟨A'⟩ (prefixWord b (f.orderHom i))).app n (markedImagePrefixFunctor W f τ h hT) :=
+  marked_prefix_colimit_image W f τ h hT
+
+-- 任意可換環の実際の全自由次数で、指定 prefix の全関手の回収を検証する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {a b : Word} (f : a ⟶ b)
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences a X Y).obj m)
+    (h : ∃ i, column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ [])
+    (hT : let W := (freeResolutionGeneratorBase
+        (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+      column W ((τ ⋙ WordAction.functor f).obj 0)
+        (f.orderHom (AttachedPrefix.index W τ h)) ≠ []) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    AttachedPrefix.markedFunctor W τ h ⋙ WordAction.functor
+          (prefixMap f (AttachedPrefix.index W τ h) (firstColumn_forward W (τ.obj 0) h)) ⋙
+          Zigzag.EndpointChange.functor rfl
+            (congrArg (fun Z : Paths C => (⟨Z⟩ : WideSubcategory W.paths))
+              (congrArg (fun g : Quiver.Total C => (show Paths C from g.left))
+                (generator_eq W f τ h hT)).symm) = markedImagePrefixFunctor W f τ h hT :=
+  marked_prefix_functor
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences f τ h hT
