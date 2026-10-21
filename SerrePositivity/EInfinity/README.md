@@ -1382,6 +1382,18 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `threeArrowGraphInclusion_isWeakHomotopyEquivalence` は元の三列の標準射自身の弱同値性。
 `BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence` は任意可換環の
 元の Map^h の共通始域から元の全語の余極限への右射を同じ実モデルと分解で反転する。
+`Zigzag.Relative.functor` は元の相対関手による固定語の全対象・全縦射の写像。
+`chain_eq`・`segment_map_heq` と `wordAction_functor_eq` は元の全 fiber の合成と
+恒等列の挿入との厳密な両立。モデル構造は要求しない。
+`Hammock.Relative.graphDiagramMap`・`colimitMap`・`reducedMap` は同じ相対関手の
+全語の自然変換・余極限の写像・元の縮約同型による reduced hammock の写像。
+元の標準射・正規化・augmentation への一致と、恒等・合成則を備える。
+`threeArrowNormalization_isWeakHomotopyEquivalence` は元の三列の正規化の弱同値性。
+`BarrattEccles.algebraReducedHammock`・`algebraHammockReductionIso` は元の実 E 代数への代入。
+`mappingSpaceReducedHammockNerveMap` は元の Map^h の同じ共通始域からの右射で、
+元の augmentation への回収式と弱ホモトピー同値性を持つ。
+既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
+相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。

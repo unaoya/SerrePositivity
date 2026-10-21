@@ -4371,6 +4371,40 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.algebraHammockGraphInclusion_threeArrow_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch51 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.Relative.obj,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.map,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.functor,
+      `SerrePositivity.EInfinity.Hammock.Direction.mapFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.chain_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.segment_map_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.columnAux_functor_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.column_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.wordAction_obj_eq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.wordAction_functor_eq,
+      `SerrePositivity.EInfinity.Hammock.Relative.categoryDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphDiagramMap,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphDiagramMap_app,
+      `SerrePositivity.EInfinity.Hammock.Relative.colimitMap,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphInclusion_colimitMap,
+      `SerrePositivity.EInfinity.Hammock.Relative.reducedMap,
+      `SerrePositivity.EInfinity.Hammock.Relative.reducedMap_augmentation,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphNormalization_reducedMap,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.functor_id,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Relative.functor_comp,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphDiagramMap_id,
+      `SerrePositivity.EInfinity.Hammock.Relative.graphDiagramMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Relative.colimitMap_id,
+      `SerrePositivity.EInfinity.Hammock.Relative.colimitMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Relative.reducedMap_id,
+      `SerrePositivity.EInfinity.Hammock.Relative.reducedMap_comp,
+      `SerrePositivity.EInfinity.Hammock.threeArrowNormalization_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraReducedHammock,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockReductionIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4402,7 +4436,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10141,3 +10175,56 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R]
     (X Y : (BarrattEccles.operad R).Algebra) :
     IsWeakHomotopyEquivalence (BarrattEccles.mappingSpaceHammockColimitNerveMap R X Y) :=
   BarrattEccles.mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence R X Y
+
+-- 元の相対関手と元の全語の作用は、元の対象で厳密に可換。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [SmallCategory C] [SmallCategory D]
+    {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
+    (F : LocalizerMorphism W V) {a b : Word} {X Y : C} (f : a ⟶ b) (S : Zigzag W a X Y) :
+    WordAction.obj f (Zigzag.Relative.obj F S) = Zigzag.Relative.obj F (WordAction.obj f S) :=
+  Zigzag.Relative.wordAction_obj_eq F f S
+
+-- 相対関手の合成は元の reduced hammock の全単体作用素で厳密に保たれる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D E : Type e2ComplexLimitUniverse} [SmallCategory C] [SmallCategory D] [SmallCategory E]
+    {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
+    {U : MorphismProperty E} [U.IsMultiplicative]
+    (F : LocalizerMorphism W V) (G : LocalizerMorphism V U) (X Y : C) :
+    Relative.reducedMap (F.comp G) X Y = Relative.reducedMap F X Y ≫
+      Relative.reducedMap G (F.functor.obj X) (F.functor.obj Y) :=
+  Relative.reducedMap_comp F G X Y
+
+-- 元の各固定語の正規化との自然性を、同じ相対関手で保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [SmallCategory C] [SmallCategory D]
+    {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
+    (F : LocalizerMorphism W V) (X Y : C) (w : Word) :
+    graphNormalization W X Y w ≫ Relative.reducedMap F X Y =
+      (Relative.graphDiagramMap F X Y).app w ≫
+        graphNormalization V (F.functor.obj X) (F.functor.obj Y) w :=
+  Relative.graphNormalization_reducedMap F X Y w
+
+-- 元の三列の正規化自体はモデル圏の元の分解から弱同値となる。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (graphNormalization (weakEquivalences C) X Y Word.threeArrow) :=
+  threeArrowNormalization_isWeakHomotopyEquivalence X Y cof
+
+-- 任意可換環の元の Map^h の共通始域から reduced hammock への右射は弱同値。
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.operad R).Algebra) :
+    IsWeakHomotopyEquivalence (BarrattEccles.mappingSpaceReducedHammockNerveMap R X Y) :=
+  BarrattEccles.mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence R X Y
+
+-- 右射は元の縮約 augmentation を合成すると元の余極限への右射に厳密に戻る。
+open CategoryTheory SerrePositivity.EInfinity in
+example (R : Type e2ComplexLimitUniverse) [CommRing R]
+    (X Y : (BarrattEccles.operad R).Algebra) :
+    BarrattEccles.mappingSpaceReducedHammockNerveMap R X Y ≫
+      (BarrattEccles.algebraHammockReductionIso R X Y).inv =
+        BarrattEccles.mappingSpaceHammockColimitNerveMap R X Y :=
+  BarrattEccles.mappingSpaceReducedHammockNerveMap_augmentation R X Y

@@ -1055,3 +1055,11 @@ public import SerrePositivity.EInfinity.Hammock.PaddedThreeWeakComparison
 public import SerrePositivity.EInfinity.Hammock.ThreeArrowCompositeWeakComparison
 public import SerrePositivity.EInfinity.Hammock.ThreeArrowGraphWeakComparison
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitWeakComparison
+public import SerrePositivity.EInfinity.Hammock.RelativeZigzagFunctor
+public import SerrePositivity.EInfinity.Hammock.RelativeSegmentFunctor
+public import SerrePositivity.EInfinity.Hammock.RelativeWordAction
+public import SerrePositivity.EInfinity.Hammock.RelativeGraphDiagram
+public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
+public import SerrePositivity.EInfinity.Hammock.RelativeFunctorLaws
+public import SerrePositivity.EInfinity.Hammock.ThreeArrowReducedWeakComparison
+public import SerrePositivity.EInfinity.BarrattEccles.ReducedHammockWeakComparison
