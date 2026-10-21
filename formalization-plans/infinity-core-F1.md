@@ -66,7 +66,7 @@
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
 - `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
-- `cocartesianStraighteningHomInterval`、`cocartesianZeroSimplexStraighteningEquivalence`
+- `cocartesianStraighteningHomInterval`、`cocartesianZeroSimplexStraighteningEquivalence`、`cocartesianBaseChangeHomTransport_compositionIso`、`cocartesianBaseChangeHomTransport_restrictionIso`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@
 `cocartesianStraighteningHomInterval_oneSimplex_isQCatEquivalence` は、同じ元の全 fibration の分類と全 Hom 作用の同値。
 元の cocartesian Hom の core と分類先の区間 Hom の全内ホーン制限は自明 Kan と証明済み。二次元の欠ける長辺は同じ三角形分解で保存を反映した。
 元の Hom の core と分類先の区間 Hom は、同じ共有頂点で貼る二区間の厳密な pullback。二次元単体からこの同じ pullback への両比較は自明 Kan と証明済み。
-三角形の各面の Hom 射影は同値。第二面を二回目の比較と結合比較の同じ分解三角形の長辺へ戻し、全 Hom の三射影の同値性・元の作用の回収・共有中間 Hom の厳密な一致を証明済み。結合比較と既存の二回目の輸送の合成は同じ共通 Hom の両評価を結ぶ。次は元の直接の輸送との合成則と底制限自然性を閉じ、両側の Segal 制限から二次元・全単体へ進む。
+元の既存の Hom 輸送の底制限自然性と、結合比較・二回目の比較・最初の比較の底制限を合成した輸送との合成則を証明済み。第二面の同じ Hom へ二段の輸送を降ろし、元の直接の輸送を回収した。端点表示の変更は同じ恒等写像の Hom 作用による厳密な同型。次はこの同じ合成則と自然性を両側の Segal 制限へ適用し、元の分類 Hom 作用の二次元・全単体での同値性を証明する。
 その後は底の被覆による大域充満忠実性と、本質的全射性・一般の底への帰着。Cat∞ 値分類は未完了。
 正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
