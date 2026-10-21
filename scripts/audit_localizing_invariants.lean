@@ -317,7 +317,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison,
     `SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison,
     `SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueSquare,
-    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueCone]
+    `SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueCone,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.CofiberFamilyRightHom,
+    `SerrePositivity.KST.LocalizingInvariants.FunctorHomExchange,
+    `SerrePositivity.KST.LocalizingInvariants.LaxCounitRightHom,
+    `SerrePositivity.KST.LocalizingInvariants.LaxCounitUnitComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -62,7 +62,9 @@ def cofiber_unitIso : FunctorIso (cofiber p q)
     rw [functorHomHomotopy_hom] at hi
     exact hi
   have e := asIso α
-  simpa only [Category.comp_id, Category.assoc] using e
+  change FunctorIso (cofiber p q)
+    ((cofiber p q ≫ (laxFst p q).hom) ≫ LaxInclusion.fromC p q) at e
+  exact e
 
 def cofiber_fromCIso : FunctorIso (cofiber p q)
     ((laxFst p q).hom ≫ LaxInclusion.fromC p q) :=
