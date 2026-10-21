@@ -2387,3 +2387,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativ
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomOne
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomTransport
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRawHomWhisker
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRawHomCongr
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportNativeHomMap
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeHomTransportIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalHomNativeIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomNativeRestrictionIso
