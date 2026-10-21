@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductAtDegree
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstErase
+public import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstInsert
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundarySum
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibnizSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSignedCutComposition

@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductAtDegree
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstErase
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstInsert
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundarySum
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibnizSigns
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorSignedCutComposition
@@ -3768,6 +3771,10 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductAtDegree,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstErase,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstInsert,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundarySum,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibnizSigns,
 
