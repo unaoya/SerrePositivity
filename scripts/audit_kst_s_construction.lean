@@ -22750,3 +22750,91 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition_one_face
 #print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaCell_composition_one_face
+
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictInterval_split_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictInterval_split_dimension
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_apply
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_apply
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_val
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_val
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_last_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_last_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_left
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_left
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_cut
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_cut
+
+#check @SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHAStrictIntervalSplitOrder_right
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_dimension
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorComposition_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorComposition_heq
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorComposition_dimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorComposition_dimension
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift_one_tensor
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalChainLift_one_tensor
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalCompose_source_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalCompose_source_dimension
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube_one_face
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube_one_face
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube_serre
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalComposeStandardCube_serre
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_composition
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_composition
+
+#check @SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_composition_one_tensor
+#print axioms SerrePositivity.KST.SConstruction.simplexIntervalLambdaHomIso_composition_one_tensor
+
+#check @SerrePositivity.KST.SConstruction.enrichedHom_composition_of_tensor_comparison
+#print axioms SerrePositivity.KST.SConstruction.enrichedHom_composition_of_tensor_comparison
+
+#check @SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexHAIntervalHomMap_comp
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_strict
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp_strict
+
+#check @SerrePositivity.KST.SConstruction.simplexHAHomMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexHAHomMap_comp
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_comp
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOriginalHomMap_comp
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_obj_vertex
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_obj_vertex
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_map_vertices
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_map_vertices
+
+#check @SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAInverseFunctor_post

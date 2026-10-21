@@ -1850,4 +1850,14 @@ public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeRefinement
 public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeOneFace
 public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaCell
 public import SerrePositivity.KST.SConstruction.SimplexIntervalSerreComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAStrictIntervalSplit
+public import SerrePositivity.KST.SConstruction.SimplexHAChainLiftTransport
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorCompositionTransport
+public import SerrePositivity.KST.SConstruction.SimplexHAIntervalOneTensor
+public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeStandardCube
+public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeStandardSerre
+public import SerrePositivity.KST.SConstruction.SimplexIntervalLambdaStandardComposition
+public import SerrePositivity.KST.SConstruction.EnrichedHomCompositionComparison
+public import SerrePositivity.KST.SConstruction.SimplexHAIntervalComposition
+public import SerrePositivity.KST.SConstruction.SimplexHAInverseFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/
