@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonUnitInverse
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelMapQuasiIso
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonCocycle
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompFaithfulTyped
+import SerrePositivity.InfinityCategories.Derived.IsoHomRightCancellation
+import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelChoiceIndependence
 import SerrePositivity.InfinityCategories.Derived.FunctorHomIsoPrecompExchange
 import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonSquares
 import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelNaturality
@@ -4644,6 +4651,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonValue,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonUnitInverse,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelMapQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonCocycle,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompFaithfulTyped,
+    `SerrePositivity.InfinityCategories.Derived.IsoHomRightCancellation,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelChoiceIndependence,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomIsoPrecompExchange,
     `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonSquares,
     `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelNaturality,
