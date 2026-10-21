@@ -1921,6 +1921,14 @@ DK2.4による元の左 hammock 比較への移送と Map^h の高次比較は�
 `TwoSidedBar.map_isWeakHomotopyEquivalence` は元の二方向 bar の対角射自身の両係数不変性。
 `DoubleSimplicial.diagonalFunctor_map_weak_of_columns` は同じ対角射への列ごとの弱判定。
 DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hammock graph への代入は後続。
+`TwoSidedGrothendieck.hom_ext_heq` と成分の単位・合成・係数回収は元の三成分の射を判定する。
+`TwoSidedThomason.simplex` は元の両ラベルの対角頂点と左右の端点移送を持つ元の全射列。
+`simplex_operator` と `map` は元の二方向 bar から元の全圏の nerve への実際の単体写像。
+`map_naturality` は元の両係数自然変換と比較射の厳密な正方形。
+`TwoSidedElements.pre`・`TwoSidedBar.baseChange` と `TwoSidedThomason.map_baseChange`
+は元の底の全射と両ラベルを保持する底の変更と比較射の自然性。
+`map_forgetLeft` は左ラベルを忘れると既存の一方向 Thomason 比較射そのものへ戻ることを証明。
+元の二方向比較射自身の弱同値性（DK9.5）、単体的な底の弱不変性、hammock への代入は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

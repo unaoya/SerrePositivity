@@ -6551,6 +6551,51 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.TwoSidedElements.lift_reindex,
       `SerrePositivity.EInfinity.Hammock.TwoSidedElements.lift_map]
 
+@[noinline] private def e2RequiredBatch102 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.TwoSidedBar.baseChangeRows,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedBar.baseChange,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedBar.baseChange_map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedElements.pre,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedElements.pre_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedElements.pre_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.catEqToHom_app_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unop_catEqToHom_app_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.coefficientMap_leftMap_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.coefficientMap_rightMap_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unop_eqToHom_heq_id,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.unop_eqToHom_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.hom_ext_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.leftMap_id_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightMap_id_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.leftMap_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck.rightMap_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.labels,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.vertex,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.leftArrow,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.rightArrow,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.arrow,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.leftArrow_id_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.rightArrow_id_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.leftArrow_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.rightArrow_comp_heq,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex_baseChange,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_baseChange,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_vertex,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.forgetLeftElements,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.forgetLeftElements_naturality,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.forgetLeftRows,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.forgetLeftBar,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.forgetLeftTotal,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex_forgetLeft,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.map_forgetLeft,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex_projection,
+      `SerrePositivity.EInfinity.Hammock.TwoSidedThomason.simplex_operator]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6582,7 +6627,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15694,3 +15739,92 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
       IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
   intro C X Y
   exact freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y
+
+noncomputable section
+
+-- 元の二方向 bar から元の全圏の nerve への射そのものを検査する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶
+      nerve (TwoSidedGrothendieck.total F G) := TwoSidedThomason.map F G
+
+-- 元の全単体で底の全射列を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) (n : ℕ)
+    (e : ComposableArrows (TwoSidedThomason.labels F G n) n) :
+    TwoSidedThomason.simplex F G e ⋙ TwoSidedGrothendieck.projection =
+      e ⋙ TwoSidedElements.projection _ _ := TwoSidedThomason.simplex_projection F G e
+
+-- 元の左右の係数自然変換と元の比較射の厳密な正方形。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    {F F' : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
+    {G G' : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}} (α : F ⟶ F') (β : G ⟶ G') :
+    TwoSidedThomason.map F G ≫ nerveMap (TwoSidedGrothendieck.coefficientMap α β) =
+      TwoSidedBar.map (Functor.whiskerRight α nerveFunctor)
+        (Functor.whiskerRight β nerveFunctor) ≫ TwoSidedThomason.map F' G' :=
+  TwoSidedThomason.map_naturality α β
+
+-- 任意の底の関手で元の比較射の正方形は厳密に可換。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {V W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} V]
+    [Category.{e2ComplexLimitUniverse} W] (H : V ⥤ W)
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    TwoSidedThomason.map (H.op ⋙ F) (H ⋙ G) ≫
+      nerveMap (TwoSidedGrothendieck.baseChange H F G) =
+        TwoSidedBar.baseChange H (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫
+          TwoSidedThomason.map F G := TwoSidedThomason.map_baseChange H F G
+
+-- 左を忘れると既存の一方向 Thomason 比較射そのものに戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) :
+    TwoSidedThomason.map F G ≫ nerveMap (TwoSidedThomason.forgetLeftTotal F G) =
+      TwoSidedThomason.forgetLeftBar (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫
+        SerrePositivity.EInfinity.FrameHom.Thomason.map G :=
+  TwoSidedThomason.map_forgetLeft F G
+
+-- 元の両ラベルの対角頂点を全次数でそのまま保持する。
+open CategoryTheory Opposite SerrePositivity.EInfinity.Hammock in
+example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
+    (F : Wᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse})
+    (G : W ⥤ Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}) (n : ℕ)
+    (e : ComposableArrows (TwoSidedThomason.labels F G n) n) (i : Fin (n + 1)) :
+    ((TwoSidedThomason.map F G).app (op (SimplexCategory.mk n)) e).obj i =
+      TwoSidedGrothendieck.mk F G (e.obj i).base ((e.obj i).left.obj i)
+        ((e.obj i).right.obj i) := TwoSidedThomason.map_vertex F G n e i
+
+-- 任意可換環の実際の cofibrant 代数を底として同じ比較射を構成する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := (BarrattEccles.cofibrantAlgebraRelativeCategory R).category
+    ∀ (F : Cᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1})
+      (G : C ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1}),
+      TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶
+        nerve (TwoSidedGrothendieck.total F G) := by
+  intro C F G
+  exact TwoSidedThomason.map F G
+
+-- 任意可換環の元の全自由次数の augmentation の底の関手へ代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ (n : SimplexCategoryᵒᵖ)
+      (F : C.categoryᵒᵖ ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1})
+      (G : C.category ⥤ Cat.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1}),
+      let H := ((freeResolutionAugmentationNatTrans C).app n).functor
+      TwoSidedThomason.map (H.op ⋙ F) (H ⋙ G) ≫
+        nerveMap (TwoSidedGrothendieck.baseChange H F G) =
+          TwoSidedBar.baseChange H (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫
+            TwoSidedThomason.map F G := by
+  intro C n F G H
+  exact TwoSidedThomason.map_baseChange H F G
+
+end
