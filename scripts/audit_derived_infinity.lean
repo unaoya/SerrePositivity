@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskering
+import SerrePositivity.InfinityCategories.Derived.FunctorHomSquareTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedRestrictionResolution
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawFactorValue
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomSemifreeResolution
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomRestrictionNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedWhiskerSquare
+import SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedPathReflection
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomWhisker
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedHom
+import SerrePositivity.InfinityCategories.Derived.DeformationDescentTypedHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomComparisonNaturality
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomFunctor
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomRawFactor
 import SerrePositivity.InfinityCategories.Derived.FullyFaithfulFunctorHomRecovery
@@ -3970,6 +3982,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskering,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomSquareTransport,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedRestrictionResolution,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawFactorValue,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomSemifreeResolution,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomRestrictionNaturality,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedWhiskerSquare,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomLiftedPathReflection,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatBimoduleHomWhisker,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedHom,
+    `SerrePositivity.InfinityCategories.Derived.DeformationDescentTypedHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatHomComparisonNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomFunctor,
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedHomRawFactor,
     `SerrePositivity.InfinityCategories.Derived.FullyFaithfulFunctorHomRecovery,
