@@ -2023,7 +2023,7 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 `freeFirstMarkedObjectEquiv` は元の全自由次数の指定部分圏の対象表示と全作用素の回収。
 `freeFirstSourceHomIso_augmentation/freeFirstHomSpaceMap_weak` は底の元の固定 Hom 比較と
 既存の native 指定 Hom augmentation の正方形による同じ比較射自身の弱同値性。
-他の向きと全語の帰納、左 hammock 射全体の弱比較は後続。
+他の向きと全語の帰納、元の左 hammock 射の弱比較は下記の全語の定理へ接続する。
 `FirstColumn.freeFirstRightSpaceIso_augmentation/freeFirstRightSpaceMap_weak` は
 元の右係数の対角を同じ通常の Hom augmentation に回収し、同じ右射の弱同値性を証明。
 `freeFirstLeftCategoryDiagramIso/freeFirstLeftSpaceIso_augmentation/freeFirstLeftSpaceMap_weak`
@@ -2073,10 +2073,24 @@ native 指定 Hom augmentation に回収し、弱同値性を追加入力なし�
 `freeWordDiagonalAugmentation_forwardBackward_weak/cons_forwardBackward_weak` は
 残りの元の backward 語だけを帰納仮定とする +− の段階。
 `freeWordDiagonalAugmentation_twoForwardBackward_weak` は元の二列の無条件の弱同値性。
-−+ の分解・係数の弱比較と全語の帰納は後続。
-既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
-相対関手による写像の構成だけで比較の弱同値性を完成としない。
-既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
+`FirstColumn.backwardForwardFunctor/backwardForwardGraphIso` は −+ の元の切断と厳密な同型。
+`backwardForward_relative_functor/backwardForwardDiagonalAugmentation_square` は
+同じ全相対自然性と元の左比較射の対角正方形。
+`freeReverseFirstLeftSpaceIso_augmentation/freeReverseFirstLeftSpaceMap_weak` は
+元の左比較射を native 指定 Hom と残りの forward 語の対角比較の積へ回収する。
+`freeWordDiagonalAugmentation_backwardForward_weak/cons_backwardForward_weak` は
+残りの語だけを帰納仮定とする −+ の段階。
+`freeWordDiagonalAugmentation_weak` は空語と四方向の段階を結んだ元の全語の比較。
+`FixedObjectDiagram.wordDiagonalDiagram_proper` は元の対角の全語の図式の proper 性。
+`DoubleSimplicial.diagonalColimitIso_ι` は同じ余極限と対角の交換で全標準射を回収する。
+`freeHammockDiagonalColimitIso_augmentation` は元の左射と元の colim.map の厳密な正方形。
+`freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence` と
+`freeHammockDiagonalReduction_isWeakHomotopyEquivalence` は元の左射自身の弱同値性。
+既存の右射の弱同値性と合わせ DK 命題2.2の両射が揃う。
+実 DK Hom と既存 Map^h の比較の結論・全自然性、∞ 局所化の普遍性は後続。
+Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
+同じ共通始域からの全単体比較を、cofibrant 代数と全代数の比較・元の Map^h へ結ぶ
+結論と全自然性、∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

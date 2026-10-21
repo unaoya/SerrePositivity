@@ -7267,6 +7267,99 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_forwardBackward_weak,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoForwardBackward_weak]
 
+@[noinline] private def e2RequiredBatch117 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonal_preservesColimitsOfShape,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalPointwiseIsColimit,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalColimitIso,
+      `SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalColimitIso_ι,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_obj_bijective,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_isIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardCatIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardCatIso_hom,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardGraphIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardGraphIso_hom,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardData,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDataMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDataMap_id,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDataMap_comp,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalTotalTargetIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalAugmentation_square,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalAugmentation_weak_iff,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagram,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardCategoryDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardGraphDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardGraphDiagramIso_hom_app,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardDiagonalIso_hom_app,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardPreimage_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_full,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_isEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardEquivalence,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_map_injective,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_faithful,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardMap_id,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardMap_comp,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardLeftCoefficient,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardObject,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardBase,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardHead_comm,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardPreimage,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardPreimage_app,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardPreimage_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardPreimage_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_head,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_object,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_functor_obj,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardFunctor_essSurj,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuildTail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuildHead,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuild_joint_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuildMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuildMap_joint,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRebuildMap_tail,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForward_relative_map,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForward_relative_functor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForwardRelativeFunctor,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForward_relative_head,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.backwardForward_relative_obj,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstTargetObjectEquiv,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstTargetObjectEquiv_naturality,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstSourceHomIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstTargetHomIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstHomSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstSourceHomIso_augmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstHomSpaceMap_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstLeftSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstLeftSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstTargetLeftSpaceIso,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstLeftSpaceIso_augmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstLeftSpaceMap_weak,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeBackwardForwardDiagram,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeBackwardForwardAugmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstMarkedObjectEquiv_naturality,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstMarkedObjectEquiv_augmentation,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstRightSpaceMap,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstRightSpaceMap_eq_id,
+      `SerrePositivity.EInfinity.Hammock.FirstColumn.freeReverseFirstRightSpaceMap_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_backwardForward_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_cons_backwardForward_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_twoBackwardForward_weak,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.wordDiagonalDiagram_proper,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalColimitIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalColimitIso_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_weak]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7298,7 +7391,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -17591,3 +17684,69 @@ example {P Q P' Q' : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimi
       (Functor.whiskerRight (CoefficientProduct.change (𝟭 _) α β) nerveFunctor)) :=
   CoefficientProduct.diagonalMap_weak α β hα hβ
 end e2MixedStepFixtures
+
+-- 残る混合方向・全語・DK 命題2.2の元の両射を検証する。
+section e2LeftComparisonFixtures
+open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.Hammock.FirstColumn
+open SerrePositivity.EInfinity.SimplicialLocalization
+variable (C : RelativeCategory.{e2ComplexLimitUniverse}) (w : Word) (X Y : C.category)
+example (Z : backwardForwardTarget C.weakEquivalences w X Y) :
+    (backwardForwardFunctor C.weakEquivalences w X Y).obj
+      (backwardForwardRebuild C.weakEquivalences w X Y Z) = Z :=
+  backwardForwardRebuild_object _ _ _ _ _
+
+example {S T : backwardForwardSource C.weakEquivalences w X Y}
+    (h : (backwardForwardFunctor C.weakEquivalences w X Y).obj S ⟶
+      (backwardForwardFunctor C.weakEquivalences w X Y).obj T) :
+    (backwardForwardFunctor C.weakEquivalences w X Y).map
+      (backwardForwardPreimage C.weakEquivalences w X Y h) = h :=
+  backwardForwardPreimage_map _ _ _ _ _
+
+example (D : RelativeCategory.{e2ComplexLimitUniverse}) (F : C ⟶ D)
+    (X' Y' : D.category) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y') :
+    Zigzag.Relative.fixedFunctor F hX hY ⋙ backwardForwardFunctor D.weakEquivalences w X' Y' =
+      backwardForwardFunctor C.weakEquivalences w X Y ⋙ backwardForwardRelativeFunctor w F hX hY :=
+  backwardForward_relative_functor w F hX hY
+
+example : IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app
+    (Word.cons .backward (Word.single .forward))) :=
+  freeWordDiagonalAugmentation_twoBackwardForward_weak C X Y
+
+example : IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) :=
+  freeWordDiagonalAugmentation_weak C w X Y
+
+example : ProperDiagram (FixedObjectDiagram.wordDiagonalDiagram (freeResolution C) C
+    (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X) X Y) :=
+  FixedObjectDiagram.wordDiagonalDiagram_proper _ _ _ _ _ _
+
+example : IsWeakHomotopyEquivalence (freeHammockDiagonalAugmentation C X Y) :=
+  freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence C X Y
+
+example : IsWeakHomotopyEquivalence (freeHammockDiagonalReduction C X Y) :=
+  freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y
+
+example : IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) :=
+  freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
+
+example : (freeHammockDiagonalColimitIso C X Y).hom ≫
+    freeHammockDiagonalAugmentation C X Y = colim.map (freeWordDiagonalAugmentation C X Y) :=
+  freeHammockDiagonalColimitIso_augmentation C X Y
+
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ (w : Word) (X Y : C.category),
+      IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) := by
+  intro C w X Y
+  exact freeWordDiagonalAugmentation_weak C w X Y
+
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category,
+      IsWeakHomotopyEquivalence (freeHammockDiagonalReduction C X Y) ∧
+        IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
+  intro C X Y
+  exact ⟨freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y,
+    freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y⟩
+end e2LeftComparisonFixtures
