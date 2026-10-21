@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 本保存対象は、点ごとの可逆性・厳密変換の頂点閉射の回収・半自由入力上の準同型性・元の導来射作用の準同型反転・その同型の恒等と合成と元の双加群同型作用との一致の9新規モジュール、Derived 集約、両監査、本計画の13パス。次の指定比較同定の試作は `/tmp/` に置き、保存範囲に含めない。
+- 元の準同型の実射作用の可逆性と恒等・合成則の9新規モジュール、Derived 集約、両監査、本計画の13パスを `9ee4967c9` に保存済み。次の指定比較同定の試作は `/tmp/` に置き、未集約。現在地の更新は本計画のみ。他レーンの未コミット変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- `dgKernelDerivedFunctorHomFunctor_map_isIso_of_quasiIso` は、半自由入力上の同じ通常 tensor 成分の準同型性・実出力分解による反転・全関手射の点ごとの可逆性・同じ raw factor 自然同型から、元の実射作用そのものの可逆性を証明する。`dgKernelDerivedQuasiIsoMapIso` は同じ射を hom として持ち、恒等・合成・元の双加群同型作用との一致まで統合・両公理監査済み。次は従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` の hom と同じ実射作用の一致を証明し、実 span の切断と両合成から従来の一般準同型比較との一致を導く。選択済み比較の定義を変更して代用しない。方針は恒等加群関手の分解圏への二経路を、入力成分 a・replacement 成分恒等・比較 cochain 零の厳密 dg 変換で接続し、入力同値の単位の自然性から元の比較を回収すること。試作 `/tmp/d-beta5-identity-resolution-change-component.lean` で実対象・比較差零の構成を検証中。この同定後に元の cell 模型比較の全自然性、一般 cell 模型の全 coherence、Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 へ進む。
+- `dgKernelDerivedFunctorHomFunctor_map_isIso_of_quasiIso` は、半自由入力上の同じ通常 tensor 成分の準同型性・実出力分解による反転・全関手射の点ごとの可逆性・同じ raw factor 自然同型から、元の実射作用そのものの可逆性を証明する。`dgKernelDerivedQuasiIsoMapIso` は同じ射を hom として持ち、恒等・合成・元の双加群同型作用との一致まで統合・両公理監査済み。次は従来の `dgKernelDerivedInfinity_mapIso_of_surjective_quasiIso` の hom と同じ実射作用の一致を証明し、実 span の切断と両合成から従来の一般準同型比較との一致を導く。選択済み比較の定義を変更して代用しない。方針は恒等加群関手の分解圏への二経路を、入力成分 a・replacement 成分恒等・比較 cochain 零の厳密 dg 変換で接続し、入力同値の単位の自然性から元の比較を回収すること。試作 `/tmp/d-beta5-identity-resolution-change-component.lean` の8宣言で、実対象・比較差零・微分境界式・実持ち上げ・同じ入力射と出力恒等と比較 cochain 零の回収を検証済み（警告なし・許容三公理のみ、未集約）。次はこの成分族の全 Hom 自然性を証明して厳密 dg 変換へまとめる。実行中の試作はない。この同定後に元の cell 模型比較の全自然性、一般 cell 模型の全 coherence、Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 へ進む。
 
 ## 目標と原典
 
