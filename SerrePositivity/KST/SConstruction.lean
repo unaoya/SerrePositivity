@@ -1774,4 +1774,9 @@ public import SerrePositivity.KST.SConstruction.SimplexHADegreeFaceValues
 public import SerrePositivity.KST.SConstruction.SimplexHAFaceVertexCount
 public import SerrePositivity.KST.SConstruction.SimplexHAFaceInteriorEquiv
 public import SerrePositivity.KST.SConstruction.SimplexHAFaceRhsSum
+public import SerrePositivity.KST.SConstruction.SimplexHAOrientedFaceValues
+public import SerrePositivity.KST.SConstruction.SimplexHASingletonFaceComponents
+public import SerrePositivity.KST.SConstruction.SimplexHAOrientedRhsFaces
+public import SerrePositivity.KST.SConstruction.SimplexHATopCompatibility
+public import SerrePositivity.KST.SConstruction.SimplexHATopAllDimensions
 /-! # ∞-S• 構成と連結 K 理論 -/

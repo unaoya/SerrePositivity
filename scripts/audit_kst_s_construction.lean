@@ -22096,3 +22096,38 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHARhs_interior
 #check @SerrePositivity.KST.SConstruction.simplexHADecode_rhs_faces
 #print axioms SerrePositivity.KST.SConstruction.simplexHADecode_rhs_faces
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_face
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_one_face_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_one_face_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSingleton_degree
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSingleton_degree
+#check @SerrePositivity.KST.SConstruction.complexElement_degree_cast_eq
+#print axioms SerrePositivity.KST.SConstruction.complexElement_degree_cast_eq
+#check @SerrePositivity.KST.SConstruction.simplexHAErasedFaceComponent
+#print axioms SerrePositivity.KST.SConstruction.simplexHAErasedFaceComponent
+#check @SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage
+#check @SerrePositivity.KST.SConstruction.simplexHADeletedFaceValue_component_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADeletedFaceValue_component_heq
+#check @SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage_zero
+#check @SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage_one
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrientedFaceImage_one
+#check @SerrePositivity.KST.SConstruction.simplexHADecode_term_oriented_faces
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecode_term_oriented_faces
+#check @SerrePositivity.KST.SConstruction.simplexHADecode_rhs_oriented_faces
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecode_rhs_oriented_faces
+#check @SerrePositivity.KST.SConstruction.complexElement_degree_cast_injective
+#print axioms SerrePositivity.KST.SConstruction.complexElement_degree_cast_injective
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_top_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_oriented_top_comm
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_degree_transport
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_degree_transport
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm_all
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_top_comm_all
