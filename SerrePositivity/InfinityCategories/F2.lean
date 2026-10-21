@@ -252,6 +252,10 @@ public import SerrePositivity.InfinityCategories.F2.FiniteShapeCellInduction
 
 public import SerrePositivity.InfinityCategories.F2.CoherentFilteredEmptyExchange
 
+public import SerrePositivity.InfinityCategories.F2.CoherentFilteredExchangeIso
+
+public import SerrePositivity.InfinityCategories.F2.FunctorPointwiseColimitCriterion
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。

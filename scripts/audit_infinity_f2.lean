@@ -2431,3 +2431,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorVertexConeMap
 #check @SerrePositivity.InfinityCategories.F2.functorVertexCone
 #check @SerrePositivity.InfinityCategories.F2.functorVertexCone_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_iff_of_coconeMap_eq
+#check @SerrePositivity.InfinityCategories.F2.functorCoconePrecomp_evaluate
+#check @SerrePositivity.InfinityCategories.F2.reindexFunctorCocone
+#check @SerrePositivity.InfinityCategories.F2.IsPointwiseColimitCone.reindex
+#check @SerrePositivity.InfinityCategories.F2.reindexFunctorCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.functorVertexMap_precomp
+#check @SerrePositivity.InfinityCategories.F2.functorVertexConeMap_precomp
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_restrict_iff_of_isIso
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_reindex_iff
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_of_iso
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_iff_of_iso
+#check @SerrePositivity.InfinityCategories.F2.initialBoundaryLifting_coconeRestriction_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_of_pointwise

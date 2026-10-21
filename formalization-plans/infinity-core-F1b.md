@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の有限検出・Kan 積比較を証明済み。a6 は各点の native 極限性から元の実模型 fiber・全空間比較の同値性を得て、指定 path の宇宙下降・二脚の底の整合・引き戻し全体の貼り合わせにより coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は coherentCospanNativeLimitCone で元の余極限頂点を持つ極限錐を構成し、FstIso・SndIso と coherentCospanNativeLimitCone_projection_commutativity で元の二脚・native 指定 path を保持。coherentFilteredColimitVertex_isTerminal で各値が終対象の filtered 図式の任意の指定余極限頂点も終対象と証明。形状の pushout の全錐・頂点固定の錐空間を二部分の厳密な引き戻しへ表示し、coneMappingShapePushoutIso_fst・_snd で元の二制限を保持。単射側の制限の Kan fibration 性と coneMappingShapePushoutNativeCone_isLimit により、元の全錐空間を頂点とする 𝒮 の極限錐も構成。finiteSkeleton_exists_top・finiteRelativeSkeleton_exists_top で有限段までの停止、finiteCellShapeIndex で各付着の有限性を証明。finiteShape_cell_induction により、空形状・標準単体・有限和・単射側のある pushout への閉性から全有限形状へ帰納できる。CoherentFilteredLimitExchangeShape は錐形状上の関手の族の元の点ごとの余極限余錐を量化し、極限錐の族の完成後の極限性を述べる。coherentFilteredLimitExchangeShape_of_empty・_empty で任意の空形状と帰納の空部分複体の条件を証明。未完：同型不変性・単体・有限和・接着をこの述語へ接続する工程、Ind・compact・冪等完備化・安定性・compact 生成、その後の presentable・随伴関手定理。
+  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の有限検出・Kan 積比較を証明済み。a6 は各点の native 極限性から元の実模型 fiber・全空間比較の同値性を得て、指定 path の宇宙下降・二脚の底の整合・引き戻し全体の貼り合わせにより coherentCospanConeNativeComparison_isWeakHomotopyEquivalence まで完了。a7 は coherentCospanNativeLimitCone で元の余極限頂点を持つ極限錐を構成し、FstIso・SndIso と coherentCospanNativeLimitCone_projection_commutativity で元の二脚・native 指定 path を保持。coherentFilteredColimitVertex_isTerminal で各値が終対象の filtered 図式の任意の指定余極限頂点も終対象と証明。形状の pushout の全錐・頂点固定の錐空間を二部分の厳密な引き戻しへ表示し、coneMappingShapePushoutIso_fst・_snd で元の二制限を保持。単射側の制限の Kan fibration 性と coneMappingShapePushoutNativeCone_isLimit により、元の全錐空間を頂点とする 𝒮 の極限錐も構成。finiteSkeleton_exists_top・finiteRelativeSkeleton_exists_top で有限段までの停止、finiteCellShapeIndex で各付着の有限性を証明。finiteShape_cell_induction により、空形状・標準単体・有限和・単射側のある pushout への閉性から全有限形状へ帰納できる。CoherentFilteredLimitExchangeShape は錐形状上の関手の族の元の点ごとの余極限余錐を量化し、極限錐の族の完成後の極限性を述べる。coherentFilteredLimitExchangeShape_of_empty・_empty で任意の空形状と帰納の空部分複体の条件を証明。coherentFilteredLimitExchangeShape_of_iso で形状同型への不変性、IsPointwiseColimitCone.reindex で再添字付けの保存、isColimitCone_of_pointwise で関手 ∞ 圏の余極限判定を証明。未完：単体・有限和・接着をこの述語へ接続する工程、Ind・compact・冪等完備化・安定性・compact 生成、その後の presentable・随伴関手定理。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド8765 jobs、公理監査9018宣言・F1/F1B 同時 import 成功、標準三公理のみ。元の coherent 余錐を量化する交換の述語・点ごとの余極限評価・任意の空形状の極限判定・空形状の交換の追加11宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
+  検証：三集約同時ビルド8777 jobs、公理監査9031宣言・F1/F1B 同時 import 成功、標準三公理のみ。同型形状への交換の輸送・元の余錐の再添字付け・点ごとの余極限から関手 ∞ 圏の余極限への判定の追加13宣言も型検査。追加 ModelCategory 仮定・ソースの名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1 a7：元の二脚・指定 path を保つ引き戻し交換、終対象の交換、形状の接着の錐空間と native 極限性、finiteShape_cell_induction まで完了。一般 coherent な錐形状上の族の元の点ごとの余極限余錐を量化する CoherentFilteredLimitExchangeShape を定式化し、空形状の条件は証明済み。次は形状同型による前合成と点ごとの余極限性の保存を証明し、単体・有限和・単射側の接着の閉性を接続してセル帰納を適用する（HTT §5.3.3、残り15〜30時間）。strict な通常の小圏の図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
+- F2N-1 a7：元の二脚・指定 path を保つ引き戻し交換、終対象の交換、形状の接着の錐空間と native 極限性、finiteShape_cell_induction まで完了。一般 coherent な錐形状上の族の元の点ごとの余極限余錐を量化する CoherentFilteredLimitExchangeShape を定式化し、空形状の条件は証明済み。形状同型への不変性、元の余錐の再添字付けによる点ごとの余極限性の保存、元の点ごとの余極限から関手 ∞ 圏の余極限への判定も証明済み。次は指定余極限頂点で比較辺の可逆性を示して単体の場合を証明し、有限和・単射側の接着の閉性を接続してセル帰納を適用する（HTT §5.3.3、残り6〜12時間、暫定）。strict な通常の小圏の図式だけでは完了としない。その後 F2N-2〜5、presentable・随伴関手定理。
 
 ## 0. 目標と範囲
 
