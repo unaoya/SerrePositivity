@@ -22380,3 +22380,138 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_zeroEdge_source_boundary
 #print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_zeroEdge_source_boundary
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_degree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_degree
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_freeDimension
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorSplit
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorSplit
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorSplit_concat
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorSplit_concat
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_split
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_split
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_surjective
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_surjective
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_insert
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_insert
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_tensor
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorConcat_tensor
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair_generator
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair_d
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair_d
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair_hom
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair_hom
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair_rightExtension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair_rightExtension
+
+#check @SerrePositivity.KST.SConstruction.serreCubeRightFace_tensorPair
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightFace_tensorPair
+
+#check @SerrePositivity.KST.SConstruction.serreCube_tensor_generator_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.serreCube_tensor_generator_hom_ext
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorPair_cast_left
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorPair_cast_left
+
+#check @SerrePositivity.KST.SConstruction.serreCubeRightFace_tensor_generator
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightFace_tensor_generator
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorComposition
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorComposition
+
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorComposition_apply
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorComposition_apply
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitLeft
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitLeft
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRight
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRight
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitCut
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitCut
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitLeft_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitLeft_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitLeft_last_lt
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitLeft_last_lt
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRight_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRight_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRight_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRight_last
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitLeft_prefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitLeft_prefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitCut_prefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitCut_prefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRight_prefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRight_prefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitLeft_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitLeft_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitCut_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitCut_zero
+
+#check @SerrePositivity.KST.SConstruction.dgForward_heq
+#print axioms SerrePositivity.KST.SConstruction.dgForward_heq
+
+#check @SerrePositivity.KST.SConstruction.dgForward_assoc_heq
+#print axioms SerrePositivity.KST.SConstruction.dgForward_assoc_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRawValue
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_rawTail
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_zero_rawTail
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRawValue_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRawValue_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRawValue_one
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRawValue_one
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRawValue_edge
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRawValue_edge
+
+#check @SerrePositivity.KST.SConstruction.simplexHASplitRawValue_zero_right
+#print axioms SerrePositivity.KST.SConstruction.simplexHASplitRawValue_zero_right
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_split_one_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_split_one_rawValue
+
+#check @SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_split_one_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAGeneratorValue_split_one_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_tensor_generator
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_tensor_generator
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_tensor_restriction
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_one_tensor_restriction
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_tensor_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_tensor_zero
