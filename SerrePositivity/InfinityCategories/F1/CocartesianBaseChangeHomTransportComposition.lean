@@ -1,10 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleHomZeroNormalization
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleHomRestrictedTransport
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSecondHomCompositeTransport
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleCoherence
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTransportTriangleData
 
 /-!
 概要：元の直接の底変換 Hom 輸送は、元の二回の比較と結合比較の輸送の合成と同型。
@@ -42,15 +38,7 @@ def cocartesianBaseChangeHomTransport_compositionIso
       cocartesianBaseChangeHomSpanOne (l ⋙ k) p q)
   · exact cocartesianBaseChangeTriangleHomLong_one_isQCatEquivalence l k p q
   · exact cocartesianBaseChangeTriangleHomFirst_restrictedTransportIso l k p q
-  · have e := FunctorIso.precomp (cocartesianBaseChangeSecondHomCompositeTransportIso l k p q)
-      (cocartesianBaseChangeTriangleHomSecond l k p q)
-    simp only [← Category.assoc] at e
-    rw [← cocartesianBaseChangeTriangleHom_second_one l k p q,
-      ← cocartesianBaseChangeTriangleHom_middle l k p q] at e
-    simpa only [Category.assoc] using e
-  · have e := (cocartesianBaseChangeTriangleHomLong_transportIso l k p q).postcomp
-      (cocartesianBaseChangeHomCompositionNormalization l k p q)
-    rw [cocartesianBaseChangeTriangleHom_zero_normalization l k p q] at e
-    simpa only [Category.assoc] using e
+  · exact cocartesianBaseChangeTransportTriangleSecondIso l k p q
+  · exact cocartesianBaseChangeTransportTriangleDirectIso l k p q
 
 end SerrePositivity.InfinityCategories

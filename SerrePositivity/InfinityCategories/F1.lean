@@ -2455,3 +2455,9 @@ public import SerrePositivity.InfinityCategories.F1.HomSpanSectionUnitCoherence
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomNaturalityLift
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomLiftCoherence
+
+public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleIdentity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTransportTriangleData
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTransportTriangleIdentity
