@@ -595,4 +595,10 @@ public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanHomotopyUniquen
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRightUniqueness
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightRestriction
 
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalPath
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalConstant
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitInterval
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumPostcompositionPrism
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPrism
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
