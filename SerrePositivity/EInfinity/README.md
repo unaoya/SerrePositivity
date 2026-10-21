@@ -2002,7 +2002,18 @@ DK9.5の元の Grothendieck nerve との比較、単体的な底の変更、hamm
 元の zigzag と先頭列の離散 Hom を係数とする二方向 Grothendieck 圏への関手。
 底の元の指定射、元の全縦射、恒等・合成を保持し、同じ元の関手の忠実性も証明。
 `ZigzagAppend.Part.leftObj_obj/rightObj_obj` は全方向・空語での逆向きの対象回収。
-この関手の充満性・本質的全射性、他の向き、全相対作用素への自然性は後続。
+他の向きと単体図式への分解は後続。
+`FirstColumn.forwardForwardRebuild_object/forwardForwardRebuild_functor_obj` は
+同じ切断関手の対象の両往復。元の全射の貼り戻しと全成分の回収、
+`forwardForwardPreimage_map` による同じ元の射の回収から充満性も証明。
+`forwardForwardEquivalence` の関手部分は元の切断関手そのものであり、
+`forwardForwardFunctor_weak` はその nerve 自身の弱同値性（先頭二列が forward）。
+`forwardForwardData/forwardForwardDataMap` は元の底と両係数と相対関手による比較。
+`RelativeAppendParts` は全方向・空語の左右の切り出しの元の相対自然性。
+`forwardForward_relative_obj` は固定端点の表示を移す元の全圏関手で同じ対象を回収。
+`forwardForward_relative_functor` は元の相対関手・底と両係数の比較との全対象・全射の
+正方形の厳密な一致。`forwardForwardCatIso/forwardForwardGraphIso` は同じ元の切断関手を
+順方向とする厳密な同型。これらを単体図式に束ねる工程と他の向きは後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
