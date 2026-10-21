@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGNerveSelectedCutIndex
+public import SerrePositivity.InfinityCategories.Derived.DGNerveSelectedCutHom
+public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorNativeCutSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutCrossCounting
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCutSigns
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutLeibniz
