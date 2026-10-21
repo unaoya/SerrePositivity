@@ -2399,3 +2399,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeH
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalHomNativeIso
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomNativeRestrictionIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellOverNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCellCospan
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexLocalComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexLocalNaturality
