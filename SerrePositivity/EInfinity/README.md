@@ -1724,6 +1724,17 @@ Map^h の高次比較・∞ 局所化の普遍性は後続。
 証明済みの連結性・薄さへ代入する。根以外があれば根以外の葉を選べる。
 任意可換環の実際の全自由次数の指定生成 quiver でも全生成辺の木への所属を検証。
 有限部分木の葉の除去を使う hammock の変形・成分可縮性・両弱比較は未完成。
+`FreeQuiverCover.pathStar_endpoint/liftPath_endpoint/liftPathTo/existsUnique_liftPathTo` は
+ラベルが整合する元の正向き射列を指定両端の間へ一意に持ち上げる。
+`DiagramLabels/diagramLift/diagramLift_projection` はラベル付きの元の全図式を持ち上げて戻す。
+`zigzagPrefix/zigzagVertex/zigzagPrefix_naturality/zigzagPrefix_arrow` は元の全指定 zigzag の
+部分射列の値による全頂点・全縦射・全横列のラベルの整合。
+`ZigzagValueFiber/fiberEndpoint/zigzagLift/zigzagLiftMap/zigzagLiftFunctor` は元の値の fiber から
+固定根・固定終点を持つ被覆の zigzag 圏への関手で、元の全可換正方形を保持する。
+`zigzagLiftFunctor_projection` は持ち上げ後の射影が元の全部分圏の包含に厳密に一致すること。
+空語・任意可換環の実際の全自由次数の指定生成 quiver でも検証。
+射影後の持ち上げの回収・全語の作用と全単体作用素への整合、有限部分木の縮約による
+成分可縮性と元の両弱比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

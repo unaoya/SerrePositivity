@@ -1389,3 +1389,15 @@ public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteLeaf
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeHeight
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeLeaf
 public import SerrePositivity.EInfinity.Hammock.QuiverTreePathLabel
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverDiagramLabels
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverDiagramLift
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverLiftEndpoint
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverLiftTo
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagFiber
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagHorizontal
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagLabels
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagLift
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagLiftFunctor
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagLiftMap
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagProjection
+public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverZigzagVertical

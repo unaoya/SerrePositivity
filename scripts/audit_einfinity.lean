@@ -5707,6 +5707,50 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.QuiverTree.rootHom,
       `SerrePositivity.EInfinity.Hammock.QuiverTree.rootHom_label]
 
+@[noinline] private def e2RequiredBatch84 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FreeQuiverCover.DiagramLabels,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.DiagramLabels.vertex,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.diagramLift,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.diagramLift_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.diagramLift_map_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathStar_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPath_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPathTo_endpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPathTo,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathStar_transport,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPathTo_star,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPathTo_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.liftPathTo_unique,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.existsUnique_liftPathTo,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagValueProperty,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.ZigzagValueFiber,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.fiberEndpoint,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_last_heq_value,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagVertex_last,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_edge,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_forward,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_backward,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_arrow_transport,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_arrow,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation_inverts_top,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagVertex,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_first,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagVertex_first,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLift,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLift_arrow_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftFunctor,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftMap,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftMap_app_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.pathProjectionRelative,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagProjection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLift_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagLiftFunctor_projection,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagPrefix_naturality,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagColumnLabels,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagColumnLift,
+      `SerrePositivity.EInfinity.Hammock.FreeQuiverCover.zigzagColumnLift_projection]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5738,7 +5782,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -13715,3 +13759,70 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
         f.toNeg ∈ FreeQuiverCover.spanningTree (Q := MarkedGenerators.quiver W) A y x :=
   FreeQuiverCover.every_edge_in_spanningTree (Q := MarkedGenerators.quiver
     (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences) A
+
+-- 指定両端のラベルが整合すれば元の正向き射列は一意に持ち上がる。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (x y : FreeQuiverCover.Vertex A) (p : Quiver.Path x.base y.base)
+    (h : x.path ≫ FreeQuiverCover.positiveEvaluation.map p = y.path) :
+    letI := FreeQuiverCover.quiver A
+    ∃! q : Quiver.Path x y, (FreeQuiverCover.projection A).mapPath q = p :=
+  FreeQuiverCover.existsUnique_liftPathTo A x y p h
+
+-- 任意のラベル付き図式は射影で元の関手に戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    {D : Type e2ComplexLimitUniverse} [Category D] (F : D ⥤ Paths Q)
+    (L : FreeQuiverCover.DiagramLabels A F) :
+    letI := FreeQuiverCover.quiver A
+    FreeQuiverCover.diagramLift A L ⋙ FreeQuiverCover.pathProjection A = F :=
+  FreeQuiverCover.diagramLift_projection A L
+
+-- 元の全縦射に沿って元の接頭ラベルが整合する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    {w : Word} {Y : Paths Q}
+    {S T : Zigzag (⊤ : MorphismProperty (Paths Q)) w ((Paths.of Q).obj A) Y}
+    (f : S ⟶ T) (j : Fin (w.length + 1)) :
+    FreeQuiverCover.zigzagPrefix A S j ≫ FreeQuiverCover.positiveEvaluation.map (f.app j) =
+      FreeQuiverCover.zigzagPrefix A T j := FreeQuiverCover.zigzagPrefix_naturality A f j
+
+-- 元の値の fiber の持ち上げと射影は元の包含に厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
+    (w : Word) (Y : Paths Q)
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    letI := FreeQuiverCover.quiver A
+    FreeQuiverCover.zigzagLiftFunctor A w Y β ⋙ FreeQuiverCover.zigzagProjection A w Y β =
+      (FreeQuiverCover.zigzagValueProperty A w Y β).ι :=
+  FreeQuiverCover.zigzagLiftFunctor_projection A
+
+-- 空語・根の恒等値でも元の同じ包含を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q) :
+    let Y := (Paths.of Q).obj A
+    letI := FreeQuiverCover.quiver A
+    FreeQuiverCover.zigzagLiftFunctor A Word.empty Y (𝟙 _) ⋙
+      FreeQuiverCover.zigzagProjection A Word.empty Y (𝟙 _) =
+        (FreeQuiverCover.zigzagValueProperty A Word.empty Y (𝟙 _)).ι :=
+  FreeQuiverCover.zigzagLiftFunctor_projection A
+
+-- 任意可換環の実際の全自由次数の指定生成 quiver へ持ち上げ関手を代入する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (A B : (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)
+    (w : Word) :
+    let C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category
+    let W : MorphismProperty C := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    let Q := MarkedGenerators.quiver W
+    ∀ β : (Quiver.FreeGroupoid.of Q).obj A ⟶ (Quiver.FreeGroupoid.of Q).obj B,
+    let Y := (Paths.of Q).obj B
+    letI := FreeQuiverCover.quiver (Q := Q) A
+    FreeQuiverCover.zigzagLiftFunctor (Q := Q) A w Y β ⋙
+      FreeQuiverCover.zigzagProjection (Q := Q) A w Y β =
+        (FreeQuiverCover.zigzagValueProperty (Q := Q) A w Y β).ι := by
+  intro C W Q β
+  exact FreeQuiverCover.zigzagLiftFunctor_projection (Q := Q) A
