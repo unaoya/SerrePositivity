@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonRawSource
+import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
+import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBasePrecomp
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrecompCylinders
+import SerrePositivity.InfinityCategories.Derived.DGModuleInputUpAugmentationSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompAugmentationSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompAugmentationHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAugmentationSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAugmentationEq
 import SerrePositivity.InfinityCategories.Derived.ResolutionStrictCounitComparison
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictCounit
 import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
@@ -4434,6 +4444,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonRawSource,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBasePrecomp,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrecompCylinders,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleInputUpAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAugmentationEq,
+
     `SerrePositivity.InfinityCategories.Derived.ResolutionStrictCounitComparison,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictCounit,
     `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange,
