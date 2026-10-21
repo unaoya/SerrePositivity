@@ -8486,3 +8486,35 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFiberComparison_isQCatEquivalence
 
 #check @SerrePositivity.InfinityCategories.cocartesianIntervalBoundaryFiberComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.functor_eq_of_nerveMap_eq
+
+#check @SerrePositivity.InfinityCategories.simplexNerveMapFunctor
+
+#check @SerrePositivity.InfinityCategories.simplexNerveMapFunctor_nerveMap
+
+#check @SerrePositivity.InfinityCategories.simplexNerveBaseFunctor_comp
+
+#check @SerrePositivity.InfinityCategories.uliftOverFunctor
+
+#check @SerrePositivity.InfinityCategories.contravariantComparisonIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianNerveNativeHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianNervePresentationHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_presentation
+
+#check @SerrePositivity.InfinityCategories.cocartesianNervePresentationHomComparison_eq_of_eq
+
+#check @SerrePositivity.InfinityCategories.cocartesianNerveNativeHomComparison_naturalityIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianNervePresentationHomComparison_naturalityIso
+
+#check @SerrePositivity.InfinityCategories.simplexNerveRestrictionOverIso
+
+#check @SerrePositivity.InfinityCategories.simplexNerveRestrictionOverIso_comm
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_restrictionPresentation
+
+#check @SerrePositivity.InfinityCategories.cocartesianStandardSimplexHomComparison_naturalityIso

@@ -3023,3 +3023,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryCorrec
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryFiberComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalBoundaryFiberEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.SimplexNerveNaturality
+
+public import SerrePositivity.InfinityCategories.F1.UniverseOverFunctor
+
+public import SerrePositivity.InfinityCategories.F1.ContravariantComparisonIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNervePresentationComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianNervePresentationNaturality
+
+public import SerrePositivity.InfinityCategories.F1.SimplexNerveRestrictionOver
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStandardSimplexNaturality
