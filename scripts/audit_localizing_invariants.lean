@@ -623,7 +623,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShift,
     `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftRestriction,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerRestrictionIso,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayer]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayer,
+    `SerrePositivity.KST.LocalizingInvariants.DGEndAlgebra,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolution,
+    `SerrePositivity.KST.LocalizingInvariants.CochainBoundaryFillingEpi,
+    `SerrePositivity.KST.LocalizingInvariants.DGCellAugmentationFilling,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellAugmentation,
+    `SerrePositivity.KST.LocalizingInvariants.CochainSurjectiveQuasiIsoLifts,
+    `SerrePositivity.KST.LocalizingInvariants.CochainCycleCoverLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolutionMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraFreeGeneratorExt,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellStages,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellAlgebraLift]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
