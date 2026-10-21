@@ -37,13 +37,8 @@ local notation "Z" => ((Δ[1] ◁ 𝟙 A) ⊗ₘ SSet.const T.diagonal) ≫
 local notation "w" => unstraighteningMappingTriangleLongWitness F G J (SSet.const x)
   (SSet.const y) (SSet.const T.diagonal) T.diagram T.first T.second T.long
 
-/-- 同じ二つの実 prism の制限後の局所指定比較の、正規化同型による直接の像。 -/
-def coherentRestrictedPrismComparisonIso
-    (q : (Δ[1] : SSet.{u + 1}) ⊗ a ⟶ SpaceInfinity.{u})
-    (hq : src ≫ pointedSpaceProjection = prismEndpoint 0 a ≫ q)
-    (hd : prismParameterRestriction s ≫ d = q) :
-    VertexIso (coherentRestrictedPrismUniversalVertex F G J x y T b q hq hd)
-      (coherentRestrictedPrismLongVertex F G J x y T b q hq hd) := by
+/-- 既存の同じ二 prism の制限空間内の指定比較。終点評価前の値を固定する。 -/
+def coherentRestrictedPrismChoiceIso :=
   let r := prismExtensionRestriction pointedSpaceProjection d v hv s
   let z := relativeFunctorExtensionSpaceVertexEquiv pointedSpaceProjection d
     (prismEndpoint 0 A ▷ Δ[0]) v hv
@@ -54,7 +49,16 @@ def coherentRestrictedPrismComparisonIso
   let hr := relativeFunctorExtensionSpace_isContractibleKan pointedSpaceProjection
     (prismParameterRestriction s ≫ d) (prismEndpoint 0 a) (prismEndpoint_zero_leftAnodyne a)
     (s ≫ v) (by rw [Category.assoc, hv]; rfl)
-  exact VertexIso.map (hr.vertexIso (r.app (Opposite.op ⦋0⦌) z) (r.app (Opposite.op ⦋0⦌) t))
+  hr.vertexIso (r.app (Opposite.op ⦋0⦌) z) (r.app (Opposite.op ⦋0⦌) t)
+
+/-- 同じ二つの実 prism の制限後の局所指定比較の、正規化同型による直接の像。 -/
+def coherentRestrictedPrismComparisonIso
+    (q : (Δ[1] : SSet.{u + 1}) ⊗ a ⟶ SpaceInfinity.{u})
+    (hq : src ≫ pointedSpaceProjection = prismEndpoint 0 a ≫ q)
+    (hd : prismParameterRestriction s ≫ d = q) :
+    VertexIso (coherentRestrictedPrismUniversalVertex F G J x y T b q hq hd)
+      (coherentRestrictedPrismLongVertex F G J x y T b q hq hd) :=
+  VertexIso.map (coherentRestrictedPrismChoiceIso F G J x y T b)
     (coherentRestrictedPrismNormalizationIso F G J x y T b q hq hd).hom
 
 /-- 元の局所指定比較の直接の像は、同じ実頂点間の標準比較の指定値に等しい。 -/

@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の二脚・全 path の指定可換同型は元の左右 fiber 三角形比較の合成に一致。各三角形比較は同じ長辺の局所延長比較と制限・縮小・下降後も指定値で整合。元の各点の native 錐と全 pointed 三角形の底・全辺を照合し、元の始点族を固定した全錐を持ち上げた。左右三角形の長辺の指定像を、底・初期値の明示移送で共通の可縮な prism 空間へ揃えた。既存の prismExtensionRestriction の普遍 prism と実長辺頂点を同じ空間へ移し、普遍頂点は左右で同一、長辺頂点は元の native 比較の頂点と厳密に一致。元の二つの局所指定比較の直接の像の合成は、native 全錐からの同じ指定長辺同型に等しい。未完：終点評価・縮小下降後の指定 fiber 同型との照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の指定可換同型は元の左右 fiber 三角形比較の合成に一致。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。底・初期値の移送と実際の引き戻し終点評価は厳密に交換。指定像を既存の unstraighteningIdentityRestrictedEndpointIso と正規化局所比較へ HEq で照合。実終点評価・縮小・宇宙下降・fiber Hom を一つのホモトピー圏の関手に構成し、元の共通空間の局所側・native 側の指定同型は同じ小さい fiber の関手の指定同型へ写る。未完：両端を実際の関手頂点へ正規化し既存の指定 fiber 三角形同型と照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド 8287 jobs、公理監査 5165 宣言・同時 import 成功。元の実延長の移送・局所比較と native 長辺比較の一致の追加29宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  検証：三集約同時ビルド 8301 jobs、公理監査 5315 宣言・同時 import 成功。実終点の交換・指定像の縮小下降関手の追加19宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1：coherentCospanRestrictedPrismPathIso_eq_native を終点評価へ写し、unstraighteningIdentityRestrictedEndpointIso と正規化した実際の局所比較との交換を証明する。同じ指定値を縮小・下降と relativeFunctorBaseFiberHom へ通し、元の左右 fiber 三角形同型の合成と native 錐の指定可換性を照合する。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
+- F2N-1：coherentCospanPrismFiberFunctor の普遍・実長辺頂点の像を、元の実際の fiber 射の関手頂点へ正規化する。終点の厳密な交換と restrictedUniversalEndpoint_vertex・restrictedTriangleEndpoint_vertex を使い、coherentRestrictedPrismComparisonIso_endpoint_heq_normalized を同じ縮小・下降関手へ通す。既存の coherentTransformationTriangleFiberIso との指定値を照合し、左右の合成へ進む。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
 
 ## 0. 目標と範囲
 

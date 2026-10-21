@@ -49,8 +49,8 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   任意の有限標的射の二入力を、共通の元の境界円柱を保って元の fiber へ同時に輸送・反映し、実際の比較射への相対有限検出・持ち上げを構成。値の射の境界と全比較円柱の制限を厳密に保持。
   任意の Kan 境界で相対持ち上げを構成し、境界移動を除去。元の全空間 Kan 引き戻し比較の弱同値性・ホモトピー逆を全標準境界の path 置換充填から証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較の頂点辺・恒等図式辺を持つ全錐比較と各脚の h での自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の二脚・全 path の指定可換同型は元の左右 fiber 三角形比較の合成に一致。各三角形比較は同じ長辺の局所延長比較と制限・縮小・下降後も指定値で整合。元の各点の native 錐と全 pointed 三角形の底・全辺を照合し、元の始点族を固定した全錐を持ち上げた。左右三角形の長辺の指定像を、底・初期値の明示移送で共通の可縮な prism 空間へ揃えた。既存の prismExtensionRestriction の普遍 prism と実長辺頂点を同じ空間へ移し、普遍頂点は左右で同一、長辺頂点は元の native 比較の頂点と厳密に一致。元の二つの局所指定比較の直接の像の合成は、native 全錐からの同じ指定長辺同型に等しい。未完：終点評価・縮小下降後の指定 fiber 同型との照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
-  三集約同時ビルド 8287 jobs、公理監査 5165 宣言・同時 import 成功。元の実延長の移送・局所比較と native 長辺比較の一致の追加29宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の指定可換同型は元の左右 fiber 三角形比較の合成に一致。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。底・初期値の移送と実際の引き戻し終点評価は厳密に交換。指定像を既存の unstraighteningIdentityRestrictedEndpointIso と正規化局所比較へ HEq で照合。実終点評価・縮小・宇宙下降・fiber Hom を一つのホモトピー圏の関手に構成し、元の共通空間の局所側・native 側の指定同型は同じ小さい fiber の関手の指定同型へ写る。未完：両端を実際の関手頂点へ正規化し既存の指定 fiber 三角形同型と照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
+  三集約同時ビルド 8301 jobs、公理監査 5315 宣言・同時 import 成功。実終点の交換・指定像の縮小下降関手の追加19宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -102,7 +102,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1：coherentCospanRestrictedPrismPathIso_eq_native を終点評価へ写し、unstraighteningIdentityRestrictedEndpointIso と正規化した実際の局所比較との交換を証明する。同じ指定値を縮小・下降と relativeFunctorBaseFiberHom へ通し、元の左右 fiber 三角形同型の合成と native 錐の指定可換性を照合する。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
+- F2N-1：coherentCospanPrismFiberFunctor の普遍・実長辺頂点の像を、元の実際の fiber 射の関手頂点へ正規化する。終点の厳密な交換と restrictedUniversalEndpoint_vertex・restrictedTriangleEndpoint_vertex を使い、coherentRestrictedPrismComparisonIso_endpoint_heq_normalized を同じ縮小・下降関手へ通す。既存の coherentTransformationTriangleFiberIso との指定値を照合し、左右の合成へ進む。各点の native 錐の普遍性から実際の模型 fiber 比較の同値性を導き、native 比較候補へ進む。
   元の指定 path と境界の全円柱を保持する。有限写像空間の π₀ の全射性だけでは弱同値性を結論しない。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
@@ -169,7 +169,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   任意の Kan 始域境界への相対持ち上げと、その境界を厳密に固定する補正を構成。
   全標準境界の path 置換終点の自明 Kan 性から、元の比較の弱同値性と単体的ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成し、全錐の可逆比較・元の比較の頂点辺・恒等図式辺・各脚の自然性を保持。
-  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の二脚・全 path の指定可換同型は元の左右 fiber 三角形比較の合成に一致。各三角形比較は同じ長辺の局所延長比較と制限・縮小・下降後も指定値で整合。元の各点の native 錐と全 pointed 三角形の底・全辺を照合し、元の始点族を固定した全錐を持ち上げた。左右三角形の長辺の指定像を、底・初期値の明示移送で共通の可縮な prism 空間へ揃えた。既存の prismExtensionRestriction の普遍 prism と実長辺頂点を同じ空間へ移し、普遍頂点は左右で同一、長辺頂点は元の native 比較の頂点と厳密に一致。元の二つの局所指定比較の直接の像の合成は、native 全錐からの同じ指定長辺同型に等しい。未完：終点評価・縮小下降後の指定 fiber 同型との照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
+  一般 coherent 図式の native 余極限性と Kan 積比較、元の宇宙の引き戻し比較候補・全空間模型への比較を構成。fiber の指定可換同型は元の左右 fiber 三角形比較の合成に一致。元の native 錐の二単体・全辺を保つ pointed 全錐と既存の実延長頂点を同じ始点固定 prism 空間へ揃え、元の局所指定比較の合成と native 指定長辺同型の等式を証明済み。底・初期値の移送と実際の引き戻し終点評価は厳密に交換。指定像を既存の unstraighteningIdentityRestrictedEndpointIso と正規化局所比較へ HEq で照合。実終点評価・縮小・宇宙下降・fiber Hom を一つのホモトピー圏の関手に構成し、元の共通空間の局所側・native 側の指定同型は同じ小さい fiber の関手の指定同型へ写る。未完：両端を実際の関手頂点へ正規化し既存の指定 fiber 三角形同型と照合、native 普遍性からの fiber 同値性、一般の有限極限交換・Ind。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
@@ -179,7 +179,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：元の二三角形と共通の全 native 錐の始点固定比較を構成済み。長辺への制限とその指定値は証明済み。底移送と共通空間での指定比較の合成まで証明済み。元の実延長頂点の移送・局所指定比較の合成と native 長辺同型の等式まで証明済み。次は終点評価との交換を証明し、縮小・下降後の指定 fiber 同型へ接続する。各点の native 錐の普遍性から元の fiber 比較の同値性を証明し、native 比較候補の弱同値性へ接続。
+- 次の一手：元の二三角形と共通の全 native 錐の始点固定比較を構成済み。長辺への制限とその指定値は証明済み。底移送と共通空間での指定比較の合成まで証明済み。元の実延長頂点の移送・局所指定比較の合成と native 長辺同型の等式まで証明済み。終点の交換と縮小・下降・fiber Hom の同じ関手による局所側・native 側の指定像の等式まで証明済み。次は両端を実際の fiber 射の関手頂点へ正規化し、既存の指定 fiber 三角形同型と照合する。各点の native 錐の普遍性から元の fiber 比較の同値性を証明し、native 比較候補の弱同値性へ接続。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
