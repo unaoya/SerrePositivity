@@ -2109,7 +2109,12 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 `freeHammockDiagonalMap_augmentation/reduction/comparison` は元の左右射の係数正方形。
 `dkHammockComparisonIso_coefficient` は anodyne 局所化内の比較同型の全相対関手への自然性。
 `cofibrantAlgebraDKHammockComparisonIso_factorization` は同じ元の代数の比較との照合。
-元の代数射に沿う両端点の高次自然性・類との整合、∞ 局所化の普遍性は後続。
+`Relative.fixedColimitMap_composePoint` は固定端点の移送後も同じ合成を保存する。
+`FixedObjectDiagram.hammockComposition` は全相対作用素に自然な元の各次数の合成。
+`freeHammockDiagonalComposition_augmentation/comparison` は元の左右射の合成正方形。
+`dkHammockComparison_composition` は元の span とその積から得る anodyne 局所化内の正方形。
+`dkHammockComparisonIso_reduction` は同じ比較と既存 reduced 比較の一致。
+元の代数射の代入による両端点の高次自然性・類との整合、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。
