@@ -274,7 +274,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.TammeDenominatorGroupoidComparison,
     `SerrePositivity.KST.LocalizingInvariants.IntervalPullbackFiberInclusions,
     `SerrePositivity.KST.LocalizingInvariants.FiberTransportGroupoidCompletion,
-    `SerrePositivity.KST.LocalizingInvariants.TammeSpanTransportGroupoidCompletion]
+    `SerrePositivity.KST.LocalizingInvariants.TammeSpanTransportGroupoidCompletion,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierInvariantFiber,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierReflectiveCompatibility,
+    `SerrePositivity.KST.LocalizingInvariants.LaxVerdierInvariantExact]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
