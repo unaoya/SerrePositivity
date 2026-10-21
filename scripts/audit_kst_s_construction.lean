@@ -22191,3 +22191,99 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_face
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_one
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_point_one
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex_freeDimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex_freeDimension
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex_degree
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorRightIndex_degree
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_castSucc
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_castSucc
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_last
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_prefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_prefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderRange_succ
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderRange_succ
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_range
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderAppendLast_range
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailPrefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailPrefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailPrefix_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailPrefix_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailPrefix_bound_irrel
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailPrefix_bound_irrel
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailPrefix_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailPrefix_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailPrefix_range
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailPrefix_range
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_congr_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_congr_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHATailUnion_bound
+#print axioms SerrePositivity.KST.SConstruction.simplexHATailUnion_bound
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_rightTail
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordDecode_rightTail
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailOrder
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailOrder
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailOrder_range
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailOrder_range
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailOrder_separated
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailOrder_separated
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailOrder_bound
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailOrder_bound
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailOrder_card
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailOrder_card
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_dimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_dimension
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_decode
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_decode
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_word
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_word
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordRawValue_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadWordBoundaryValue_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_rawValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_rawValue
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_boundaryValue
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_boundaryValue

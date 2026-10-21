@@ -1792,4 +1792,11 @@ public import SerrePositivity.KST.SConstruction.DGRightCycleComposition
 public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceValues
 public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceRestriction
 public import SerrePositivity.KST.SConstruction.SimplexHAOneFaceDefect
+public import SerrePositivity.KST.SConstruction.SerreCubeGeneratorRightIndex
+public import SerrePositivity.KST.SConstruction.SimplexHAOrderAppendLast
+public import SerrePositivity.KST.SConstruction.SimplexHATailPrefix
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeRightTail
+public import SerrePositivity.KST.SConstruction.SimplexHARightTailOrder
+public import SerrePositivity.KST.SConstruction.SimplexHARightTailPrefix
+public import SerrePositivity.KST.SConstruction.SimplexHARightTailValues
 /-! # ∞-S• 構成と連結 K 理論 -/
