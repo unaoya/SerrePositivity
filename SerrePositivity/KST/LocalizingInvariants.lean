@@ -205,4 +205,14 @@ public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
 
+public import SerrePositivity.KST.LocalizingInvariants.ArrowPostcompositionSquare
+
+public import SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily
+
+public import SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

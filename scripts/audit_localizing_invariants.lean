@@ -234,7 +234,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SpanEndpointComplement,
     `SerrePositivity.KST.LocalizingInvariants.SpanEndpointCocartesian,
     `SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge,
-    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge]
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge,
+    `SerrePositivity.KST.LocalizingInvariants.ArrowPostcompositionSquare,
+    `SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily,
+    `SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

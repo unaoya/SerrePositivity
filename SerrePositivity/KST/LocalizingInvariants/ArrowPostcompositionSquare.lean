@@ -1,0 +1,75 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
+public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
+
+/-!
+概要：二つの合成可能な辺を、始点の縦辺が厳密な恒等である実正方形へ拡張する。
+方針：内二ホーンの充填を、正方形の頂点を 0,1,0,2 へ送る単調写像で引き戻す。
+規約：元の第一辺と標的の辺を保持。使われ方：span の cocartesian lift の存在。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.LocalizingInvariants
+
+def arrowPostcompositionFoldOrder : Fin 2 × Fin 2 →o Fin 3 where
+  toFun p := if p.1 = 0 then 0 else if p.2 = 0 then 1 else 2
+  monotone' := by decide
+
+def arrowPostcompositionFold : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] :=
+  stdSimplexProductMap arrowPostcompositionFoldOrder
+
+lemma arrowPostcompositionFold_zero : (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≫
+    arrowPostcompositionFold = stdSimplex.δ (2 : Fin 3) := by
+  apply SSet.yonedaEquiv.injective
+  decide
+
+lemma arrowPostcompositionFold_target : prismEndpoint 1 (Δ[1] : SSet.{u}) ≫
+    arrowPostcompositionFold = stdSimplex.δ (0 : Fin 3) := by
+  apply SSet.yonedaEquiv.injective
+  decide
+
+lemma arrowPostcompositionFold_source : prismEndpoint 0 (Δ[1] : SSet.{u}) ≫
+    arrowPostcompositionFold = stdSimplex.isTerminalObj₀.from Δ[1] ≫
+      stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
+  apply SSet.yonedaEquiv.injective
+  decide
+
+lemma exists_arrowPostcompositionSquare {X : SSet.{u}} [Quasicategory X]
+    {a b c : X _⦋0⦌}
+    (f : Truncated.Edge (X := (truncation 2).obj X) a b)
+    (g : Truncated.Edge (X := (truncation 2).obj X) b c) :
+    ∃ H : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X,
+      SSet.ι₀ ≫ H = SSet.yonedaEquiv.symm f.edge ∧
+      prismEndpoint 0 Δ[1] ≫ H = SSet.const a ∧
+      prismEndpoint 1 Δ[1] ≫ H = SSet.yonedaEquiv.symm g.edge := by
+  obtain ⟨⟨k, t⟩⟩ := Truncated.Quasicategory₂.fill21 f g
+  let T : (Δ[2] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm t.simplex
+  have ht₂ : stdSimplex.δ (2 : Fin 3) ≫ T = SSet.yonedaEquiv.symm f.edge := by
+    dsimp only [T]
+    rw [stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm t.d₂
+  have ht₀ : stdSimplex.δ (0 : Fin 3) ≫ T = SSet.yonedaEquiv.symm g.edge := by
+    dsimp only [T]
+    rw [stdSimplex.δ_comp_yonedaEquiv_symm]
+    exact congrArg SSet.yonedaEquiv.symm t.d₀
+  have hf₀ : stdSimplex.δ (1 : Fin 2) ≫ SSet.yonedaEquiv.symm f.edge = SSet.const a := by
+    apply SSet.yonedaEquiv.injective
+    change X.δ 1 f.edge = PinchedHom.constant a 0
+    rw [pinchedConstant_zero]
+    exact f.src_eq
+  refine ⟨arrowPostcompositionFold ≫ T, ?_, ?_, ?_⟩
+  · rw [← Category.assoc, arrowPostcompositionFold_zero, ht₂]
+  · rw [← Category.assoc, arrowPostcompositionFold_source, Category.assoc, Category.assoc, ht₂]
+    exact (congrArg (fun k : (Δ[0] : SSet.{u}) ⟶ X =>
+      stdSimplex.isTerminalObj₀.from Δ[1] ≫ k) hf₀).trans (SSet.comp_const _ _)
+  · rw [← Category.assoc, arrowPostcompositionFold_target, ht₀]
+
+end SerrePositivity.KST.LocalizingInvariants
