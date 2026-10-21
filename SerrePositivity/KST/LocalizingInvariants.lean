@@ -854,4 +854,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullback
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso
 
+public import SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeComparison
+public import SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeQuasiIso
+public import SerrePositivity.KST.LocalizingInvariants.CochainPullbackCoconeComparison
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackComparisonQuasiIso
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

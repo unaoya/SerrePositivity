@@ -680,7 +680,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCocone,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLinearPath,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLinearLift,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeComparison,
+    `SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainPullbackCoconeComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackComparisonQuasiIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
