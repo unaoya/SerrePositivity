@@ -1389,4 +1389,16 @@ public import SerrePositivity.KST.SConstruction.CubicalSerreDiagonal
 public import SerrePositivity.KST.SConstruction.ComonoidGeneratorLaws
 public import SerrePositivity.KST.SConstruction.CubicalSerreComonoid
 public import SerrePositivity.KST.SConstruction.CubicalSerreRepresentable
+public import SerrePositivity.KST.SConstruction.CubeRightKeep
+public import SerrePositivity.KST.SConstruction.CubeLeftKeepCoordinates
+public import SerrePositivity.KST.SConstruction.CubeLeftKeep
+public import SerrePositivity.KST.SConstruction.CubePathNaturality
+public import SerrePositivity.KST.SConstruction.SerreCubeRightKeep
+public import SerrePositivity.KST.SConstruction.CubeRightWhisker
+public import SerrePositivity.KST.SConstruction.CubeLeftWhisker
+public import SerrePositivity.KST.SConstruction.CubeKeepInterchange
+public import SerrePositivity.KST.SConstruction.CubeWordRightKeep
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorIso
+public import SerrePositivity.KST.SConstruction.MonoidalRightTensorStep
+public import SerrePositivity.KST.SConstruction.SerreCubeRightTensorFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

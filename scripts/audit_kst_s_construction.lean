@@ -18775,3 +18775,102 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeUnit_app_isIso
 #check @SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeIso
 #print axioms SerrePositivity.KST.SConstruction.cubicalSerreComonoidCubeIso
+
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep_id
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep_id
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep_comp
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep_face
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep_face
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep_degeneracy
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightKeep_connection
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightKeep_connection
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_rightKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_rightKeep
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightKeep
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightKeep
+#check @SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_snoc
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexDegeneracy_snoc
+#check @SerrePositivity.KST.SConstruction.cubeVertexFace_snoc
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexFace_snoc
+#check @SerrePositivity.KST.SConstruction.cubeVertexConnection_snoc
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexConnection_snoc
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_id
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_id
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_comp
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_face
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_face
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_degeneracy
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_connection
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftKeep_connection
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_leftKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_leftKeep
+#check @SerrePositivity.KST.SConstruction.concreteCubeLeftKeep
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeLeftKeep
+#check @SerrePositivity.KST.SConstruction.cubePath_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubePath_naturality
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_face
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_face
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_degeneracy
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_degeneracy
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_connection
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeRightKeep_connection
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightWhisker
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightWhisker
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_rightWhisker
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_rightWhisker
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightWhisker_id
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightWhisker_id
+#check @SerrePositivity.KST.SConstruction.cubeVertexRightWhisker_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexRightWhisker_comp
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightWhisker
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightWhisker
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightWhisker_zero_map
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightWhisker_zero_map
+#check @SerrePositivity.KST.SConstruction.concreteCubeRightWhisker_succ_map
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeRightWhisker_succ_map
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker
+#check @SerrePositivity.KST.SConstruction.cubeMapGenerated_leftWhisker
+#print axioms SerrePositivity.KST.SConstruction.cubeMapGenerated_leftWhisker
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker_id
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker_id
+#check @SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker_comp
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexLeftWhisker_comp
+#check @SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker
+#check @SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker_zero_map
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker_zero_map
+#check @SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker_succ_map
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeLeftWhisker_succ_map
+#check @SerrePositivity.KST.SConstruction.cubeVertexKeep_interchange
+#print axioms SerrePositivity.KST.SConstruction.cubeVertexKeep_interchange
+#check @SerrePositivity.KST.SConstruction.cubeGeneratorRightKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeGeneratorRightKeep
+#check @SerrePositivity.KST.SConstruction.cubeWordRightKeepPrefunctor
+#print axioms SerrePositivity.KST.SConstruction.cubeWordRightKeepPrefunctor
+#check @SerrePositivity.KST.SConstruction.cubeWordRightKeep
+#print axioms SerrePositivity.KST.SConstruction.cubeWordRightKeep
+#check @SerrePositivity.KST.SConstruction.cubeWordRightKeep_generator
+#print axioms SerrePositivity.KST.SConstruction.cubeWordRightKeep_generator
+#check @SerrePositivity.KST.SConstruction.cubeGeneratorRightKeep_concrete
+#print axioms SerrePositivity.KST.SConstruction.cubeGeneratorRightKeep_concrete
+#check @SerrePositivity.KST.SConstruction.cubeWordRightKeep_concrete
+#print axioms SerrePositivity.KST.SConstruction.cubeWordRightKeep_concrete
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_succ
+#check @SerrePositivity.KST.SConstruction.monoidalRightTensor_step
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightTensor_step
+#check @SerrePositivity.KST.SConstruction.serreCubeRightTensorFunctor
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightTensorFunctor
