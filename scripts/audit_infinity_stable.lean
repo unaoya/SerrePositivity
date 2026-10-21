@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorSectionHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawFactorHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactorEq
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactor
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorCore
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorTransport
@@ -4416,6 +4422,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorSectionHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawFactorHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationRawHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactorEq,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactor,
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorCore,
