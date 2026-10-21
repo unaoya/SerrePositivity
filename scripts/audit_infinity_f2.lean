@@ -2152,3 +2152,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorIsoRepresentative_postcomp_hom
 #check @SerrePositivity.InfinityCategories.F2.strictPullback_functorIso_exists
 #check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationHomotopy
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelPathIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelPathIso_eq_section_down
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelPathHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelPathIso_eq_homotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelPathLiftIso_eq_section
+#check @SerrePositivity.InfinityCategories.F2.functorSpaceDown_faithful
+#check @SerrePositivity.InfinityCategories.F2.functorIsoDown_injective
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackPathIso_precomp_heq_of_path_eq
+#check @SerrePositivity.InfinityCategories.F2.uliftHomotopyEdge_functorSpaceInv
+#check @SerrePositivity.InfinityCategories.F2.functorIsoDown_uliftHomotopy
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyUp
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyUp_map_homMk
+#check @SerrePositivity.InfinityCategories.F2.uliftTruncatedEdge_down
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_up
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_faithful
