@@ -20,8 +20,8 @@
   元の Hom 作用の成分評価を標準 Hom 同値と厳密に結び、一次元の同じ全 Hom 作用の同値性を
   実際の固定成分の全 fiber 比較の同値性へ必要十分に還元した。固定成分比較自体の同値性は未証明。
   両側の一成分評価の Kan 性、source の固定成分 fiber と後合成 fiber の厳密な同型も証明済み。
-  分類先の固定成分 fiber の三辺固定 prism と二三角形の表示は、全族を厳密に保持する。
-  元の第一三角形を、同じ始域輸送辺と指定成分を固定した可縮 Kan 空間へ写し、展開で厳密に回収した。
+  分類先の実際の固定成分 fiber は、同じ第二三角形の外ホーン延長を表す厳密な pullback と証明済み。
+  第一三角形への制限は Kan fibration。任意の指定合成三角形の外ホーン fiber から元の固定成分 fiber へ同値。
   元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
   元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
@@ -97,8 +97,8 @@
 一次元の strict Hom の二成分による復元・一意性と、core の同じ射影による pullback 表示まで完了。
 同じ全 Hom 作用の同値性は、実際の固定成分比較 `cocartesianHomFixedComponentComparison` の
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
-同じ第一三角形の可縮な比較先への制限写像と、元の三角形を回収する展開まで完了。
-次は第二三角形の外ホーン延長を表す pullback を構成し、指定 fiber と source の後合成 fiber を比較する。
+実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
+次は元の source 比較の第一三角形を指定 fiber に揃え、外ホーン fiber と元の後合成 fiber を同じ作用で比較する。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
 

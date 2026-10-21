@@ -1926,3 +1926,29 @@ public import SerrePositivity.InfinityCategories.F1.LocalIntervalDiagramEdges
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomSquareFaces
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalCompositionTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleCospan
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalTriangleNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHorn
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHornSquare
+
+public import SerrePositivity.InfinityCategories.F1.LocalIntervalSquareReindex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalHomSquareCurry
+
+public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFamilyFaces
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHornGluing
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHornLift
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHornPullback
+
+public import SerrePositivity.InfinityCategories.F1.VertexFiberIsPullbackIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalCompositionFiber
