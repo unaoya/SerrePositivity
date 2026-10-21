@@ -98,9 +98,9 @@
 全 fiber での同値性と同値。分類先の fiber の三辺固定 prism の厳密な往復と、二三角形への制限は完了。
 実際の外ホーン pullback、第一三角形制限の Kan 性、指定外ホーン fiber から元の Hom fiber への同値まで完了。
 元の source 比較の成分 fiber 上で混合 Hom 作用が全高次で一定になることは、同じ宇宙でも証明済み。
-次は第一三角形全体を指定 fiber に揃え、外ホーン fiber と元の後合成 fiber を同じ作用で比較する。
-同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
-全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
+固定成分から同じ比較先の `cocartesianIntervalSourceCompositionVertex` を指定し、展開・対角まで証明済み。
+次は元の比較の第一三角形全体とこの指定三角形の一致を証明し、外ホーン fiber と後合成 fiber を比較する。
+同じ主写像の充満忠実性・本質的全射性・一般の底への帰着は残る。正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
 
 ## 0. 目標と範囲
 
