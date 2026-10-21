@@ -13703,3 +13703,25 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coconeAction_reflects_edge_homMk
 #check @totalKanNativeEdge_homMk_of_coconeIso
 #print axioms totalKanNativeEdge_homMk_of_coconeIso
+#check @pointHomTransportCylinderEdge
+#print axioms pointHomTransportCylinderEdge
+#check @pointHomTransportCylinderEdge_projection
+#print axioms pointHomTransportCylinderEdge_projection
+#check @preConstant_evaluation_factor
+#print axioms preConstant_evaluation_factor
+#check @coconeWholeEdgeTop_constant
+#print axioms coconeWholeEdgeTop_constant
+#check @coconeEdgeAction
+#print axioms coconeEdgeAction
+#check @coconeEdgeAction_vertex
+#print axioms coconeEdgeAction_vertex
+#check @coconeEdgeActionTransport
+#print axioms coconeEdgeActionTransport
+#check @coconeEdgeActionTransport_top
+#print axioms coconeEdgeActionTransport_top
+#check @coconeTransformationPointAt_edge
+#print axioms coconeTransformationPointAt_edge
+#check @coconeEdgeAction_unit_square
+#print axioms coconeEdgeAction_unit_square
+#check @totalKanNativeEdge_homMk_of_unit_square
+#print axioms totalKanNativeEdge_homMk_of_unit_square
