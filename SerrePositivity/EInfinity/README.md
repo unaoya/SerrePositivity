@@ -1439,6 +1439,14 @@ hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較�
 正規化に不変で、元の標準射と augmentation を回収する。後ろ向き列の逆射の寄与も空。
 `freeHammockGeneratorWordValue` は元の全自由次数・既存固定端点への代入。
 各切断の一意性・全縦射の切断・hammock の積分解・弱比較は後続。
+`GeneratorWord.initialLength_first_split` は元の射列だけから最初の切断位置を回収する。
+`first_split_total/first_split_unique` は同じ先頭 Total 矢と両側の射列の一意性。
+`first_split_square/first_split_square_same_arrow` は元の可換正方形を接頭列と残りへ分解する。
+`FirstCut` の存在は `firstCut_nonempty_iff`、一意性は `firstCut_ext` で証明済み。
+`firstCut` は非空の非指定文字列から選ぶ切断で、`firstCut_erasure` は先頭と残りを回収する。
+`column_firstCut_square/column_firstCut_row` は元の全縦射・全行への代入。
+`rowFirstCut` は基準行の非空性だけから全行の切断を得る。後ろ向き列には切断は存在しない。
+任意可換環の元の全自由次数でも検証。固定生成矢での図式への整列・反復・積分解は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

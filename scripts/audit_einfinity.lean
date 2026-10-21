@@ -4646,6 +4646,26 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_square,
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_eqToHom]
 
+@[noinline] private def e2RequiredBatch57 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_firstCut_square,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_firstCut_row,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.columnFirstCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.rowFirstCut,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_firstCut_forward,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FirstCut,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.firstCut_ext,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.firstCut_subsingleton,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.firstCut_nonempty_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.firstCut,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.firstCut_erasure,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.initialLength,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.initialLength_first_split,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_square,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_square_same_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_total,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_same_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.first_split_unique]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4677,7 +4697,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10730,3 +10750,66 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total
         (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)) :=
   freeHammockGeneratorWordValue (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y n
+
+-- 最初の切断の全データは元の射列だけから一意に決まる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} {p : Quiver.Path X Y}
+    (P Q : GeneratorWord.FirstCut W p) : P = Q := GeneratorWord.firstCut_ext W P Q
+
+-- 同じ非指定矢で両表示を揃えると、元の正方形から通常の等式で両側を回収する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y X' Y' A B : C}
+    (p : Quiver.Path X Y) (q : Quiver.Path X' Y')
+    (u : Quiver.Path X X') (v : Quiver.Path Y Y') (hu : W.paths u)
+    (e : A ⟶ B) (left : Quiver.Path X A) (right : Quiver.Path B Y)
+    (left' : Quiver.Path X' A) (right' : Quiver.Path B Y')
+    (hl : W.paths left) (hl' : W.paths left') (he : ¬ W e)
+    (hp : p = left.comp (e.toPath.comp right))
+    (hq : q = left'.comp (e.toPath.comp right')) (h : p.comp v = u.comp q) :
+    left = u.comp left' ∧ right.comp v = right' :=
+  GeneratorWord.first_split_square_same_arrow W p q u v hu e left right left' right'
+    hl hl' he hp hq h
+
+-- 基準行の非空文字列だけから、全行に最初の切断が得られる。
+open CategoryTheory SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Hammock.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (Hammock.graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : Hammock.UnmarkedGenerators.column W (τ.obj 0) i ≠ []) (k : Fin (n.unop.len + 1)) :
+    SimplicialLocalization.GeneratorWord.FirstCut W ((τ.obj k).arrow i) :=
+  Hammock.UnmarkedGenerators.rowFirstCut W τ i h k
+
+-- 元の全縦射は、同じ非指定矢と両側の射列の正方形を同時に保持する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Hammock.Word} {X Y : Paths C}
+    {S T : Hammock.Zigzag W.paths w X Y} (f : S ⟶ T) (i : Fin w.length)
+    (P : GeneratorWord.FirstCut W (S.arrow i)) (Q : GeneratorWord.FirstCut W (T.arrow i)) :
+    (⟨P.source, P.target, P.arrow⟩ : Quiver.Total C) = ⟨Q.source, Q.target, Q.arrow⟩ ∧
+      HEq P.left ((f.app (w.source i)).comp Q.left) ∧
+        HEq (P.right.comp (f.app (w.target i))) Q.right :=
+  Hammock.UnmarkedGenerators.column_firstCut_square W f i P Q
+
+-- 選んだ切断でも、元の消去文字列の先頭と残りをそのまま回収する。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y)
+    (hp : GeneratorWord.erase W p ≠ []) :
+    GeneratorWord.erase W p =
+      ⟨(GeneratorWord.firstCut W p hp).source, (GeneratorWord.firstCut W p hp).target,
+        (GeneratorWord.firstCut W p hp).arrow⟩ ::
+          GeneratorWord.erase W (GeneratorWord.firstCut W p hp).right :=
+  GeneratorWord.firstCut_erasure W (GeneratorWord.firstCut W p hp)
+
+-- 任意可換環の実際の DK 入力の元の全自由次数で、切断を構成できる。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (p : X ⟶ Y) (hp : GeneratorWord.erase
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        p ≠ []) :
+    GeneratorWord.FirstCut
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        p := GeneratorWord.firstCut _ p hp
