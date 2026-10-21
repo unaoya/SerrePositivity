@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGFunctorGradedShift
+import SerrePositivity.InfinityCategories.Derived.DGResolutionGradedShift
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeGradedShift
+import SerrePositivity.InfinityCategories.Derived.DGGradedConjugation
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionGradedLifting
 import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyMorita
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeClassicalComparison
 import SerrePositivity.InfinityCategories.Derived.DGKernelClassicalComparison
@@ -3807,6 +3812,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorGradedShift,
+    `SerrePositivity.InfinityCategories.Derived.DGResolutionGradedShift,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeGradedShift,
+    `SerrePositivity.InfinityCategories.Derived.DGGradedConjugation,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionGradedLifting,
     `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionHomotopyMorita,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeClassicalComparison,
     `SerrePositivity.InfinityCategories.Derived.DGKernelClassicalComparison,
