@@ -15,7 +15,7 @@
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
   像の Cat∞ 値関手への実現と元の主写像との分解等式、実際の区間 Hom 作用を構成済み。
   区間作用の端点・成分評価と主写像への接続は証明済み。その作用の同値性は未証明。
-  元の cocartesian Hom の core は、底を覆う余極限の各底変換の元の Hom の core の厳密な極限。
+  元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、元の辺の被覆と全空間の余極限、単射による core 制限の Kan 性も証明済み。
   比較を底全体・全 fibration の族へ実現し、元の二つの分類主写像を両端に持つ関手同型を構成済み。
 - 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
@@ -81,7 +81,7 @@
 - 全相対 Hom と section の単射による同値持ち上げと core の制限の Kan 性は `ff4f803a7`。
 - section の core の点ごとの可逆性、余極限に沿う一意な貼り合わせと極限錐は `e105f1a5e`。
 - 指定辺を保つ相対 Hom とその core の降下、元の cocartesian Hom への適用は `ba41905f0`。
-- 底変換は `7146ba706`、底全体の族は `c2829bdfe`、両端の正規化は `a2d8a134e`。
+- 底変換は `7146ba706`、底全体の比較同型は `62f2e2da9`。区間 Hom の降下を今回保存する。
 
 ### 既知の問題
 
@@ -94,10 +94,10 @@
 
 ### 次の一手
 
-元の Hom の core の降下・極限錐と単射による core 制限の Kan 性、strict transport の底変換比較まで完了。
 添字制限・豊穣前合成の実現自然性と、元の主写像を両端に持つ底全体の比較の関手同型まで完了。
-同じ辺の二変数での評価は元の底変換比較成分に一致し、その可逆性を点ごとの判定で証明済み。
-同じ区間 Hom 作用の同値性を証明し、`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` へ戻す。
+分類先の両端固定の区間 Hom も、全パラメーターの一意な貼り合わせと厳密な極限錐まで完了。
+次は分類先の単射による制限の Kan 性と、同じ比較作用のセル制限との整合性を証明する。
+区間作用の同値性を示し、`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。

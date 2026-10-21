@@ -1808,3 +1808,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointCo
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeJointComparisonIso
+
+public import SerrePositivity.InfinityCategories.F1.FunctorSpaceColimit
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestriction
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitFamily
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitDescent
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverRestriction
+
+public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitCone
