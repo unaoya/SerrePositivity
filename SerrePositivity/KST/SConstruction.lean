@@ -1525,4 +1525,13 @@ public import SerrePositivity.KST.SConstruction.NecklaceWedgeNumericJoin
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeNumericMap
 public import SerrePositivity.KST.SConstruction.NecklaceCubeTensorComparison
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalTensorComparison
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeStructure
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeStructureVertices
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeStructureNaturality
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeCoherence
+public import SerrePositivity.KST.SConstruction.NecklaceWedgeMonoidal
+public import SerrePositivity.KST.SConstruction.ObjectEqualityMaps
+public import SerrePositivity.KST.SConstruction.NecklaceCubeMonoidalCoherence
+public import SerrePositivity.KST.SConstruction.NecklaceCubeMonoidal
+public import SerrePositivity.KST.SConstruction.NecklaceCubicalMonoidal
 /-! # ∞-S• 構成と連結 K 理論 -/

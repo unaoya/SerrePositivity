@@ -20187,3 +20187,105 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalTensorNatIso
 #check @SerrePositivity.KST.SConstruction.necklaceCubicalTensorIso_cell
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalTensorIso_cell
+#check @SerrePositivity.KST.SConstruction.necklacePoint
+#print axioms SerrePositivity.KST.SConstruction.necklacePoint
+#check @SerrePositivity.KST.SConstruction.necklace_eq_of_shape
+#print axioms SerrePositivity.KST.SConstruction.necklace_eq_of_shape
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor
+#check @SerrePositivity.KST.SConstruction.necklaceVertexMap_eqToHom_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceVertexMap_eqToHom_val
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeMap_eqToHom
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeMap_eqToHom
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_val
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_left
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_left
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_middle
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_middle
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_right
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_vertex_right
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor_vertex_right
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor_vertex_right
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor_vertex_left
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor_vertex_left
+#check @SerrePositivity.KST.SConstruction.necklacePointWedge_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.necklacePointWedge_vertex_surjective
+#check @SerrePositivity.KST.SConstruction.necklaceWedgePoint_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgePoint_vertex_surjective
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceLeftUnitor_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceLeftUnitor_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceRightUnitor_naturality
+#print axioms SerrePositivity.KST.SConstruction.necklaceRightUnitor_naturality
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_pentagon
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_pentagon
+#check @SerrePositivity.KST.SConstruction.necklaceAssociator_triangle
+#print axioms SerrePositivity.KST.SConstruction.necklaceAssociator_triangle
+#check @SerrePositivity.KST.SConstruction.necklaceMonoidalStruct
+#print axioms SerrePositivity.KST.SConstruction.necklaceMonoidalStruct
+#check @SerrePositivity.KST.SConstruction.necklaceMonoidal
+#print axioms SerrePositivity.KST.SConstruction.necklaceMonoidal
+#check @SerrePositivity.KST.SConstruction.necklaceMonoidal_tensor
+#print axioms SerrePositivity.KST.SConstruction.necklaceMonoidal_tensor
+#check @SerrePositivity.KST.SConstruction.IsObjectEqualityMap
+#print axioms SerrePositivity.KST.SConstruction.IsObjectEqualityMap
+#check @SerrePositivity.KST.SConstruction.objectEqualityMap_id
+#print axioms SerrePositivity.KST.SConstruction.objectEqualityMap_id
+#check @SerrePositivity.KST.SConstruction.objectEqualityMap_eqToHom
+#print axioms SerrePositivity.KST.SConstruction.objectEqualityMap_eqToHom
+#check @SerrePositivity.KST.SConstruction.objectEqualityMap_comp
+#print axioms SerrePositivity.KST.SConstruction.objectEqualityMap_comp
+#check @SerrePositivity.KST.SConstruction.objectEqualityMap_map
+#print axioms SerrePositivity.KST.SConstruction.objectEqualityMap_map
+#check @SerrePositivity.KST.SConstruction.objectEqualityMap_eq
+#print axioms SerrePositivity.KST.SConstruction.objectEqualityMap_eq
+#check @SerrePositivity.KST.SConstruction.concreteCubeDimensionIso_objectEqualityMap
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeDimensionIso_objectEqualityMap
+#check @SerrePositivity.KST.SConstruction.concreteCubeTensor_objectEqualityMap
+#print axioms SerrePositivity.KST.SConstruction.concreteCubeTensor_objectEqualityMap
+#check @SerrePositivity.KST.SConstruction.necklacePoint_dimension
+#print axioms SerrePositivity.KST.SConstruction.necklacePoint_dimension
+#check @SerrePositivity.KST.SConstruction.necklaceCubeUnitIso
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeUnitIso
+#check @SerrePositivity.KST.SConstruction.necklaceCubeTensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeTensor_associativity
+#check @SerrePositivity.KST.SConstruction.necklaceCubeTensor_left_unitality
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeTensor_left_unitality
+#check @SerrePositivity.KST.SConstruction.necklaceCubeTensor_right_unitality
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeTensor_right_unitality
+#check @SerrePositivity.KST.SConstruction.necklaceCubeCoreMonoidal
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeCoreMonoidal
+#check @SerrePositivity.KST.SConstruction.necklaceCubeMonoidal
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeMonoidal
+#check @SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_tensorator
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_tensorator
+#check @SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_cotensorator
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_cotensorator
+#check @SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_unit
+#check @SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_counit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubeMonoidal_counit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDayMonoidal
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDayMonoidal
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_obj
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_obj
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_map
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_map
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_cotensorator
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_cotensorator
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_unit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_unit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_counit
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_counit
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator_cell
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalDay_tensorator_cell
