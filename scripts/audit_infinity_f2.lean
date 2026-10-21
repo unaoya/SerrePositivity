@@ -2380,3 +2380,34 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalVertex_isTerminal
 #check @SerrePositivity.InfinityCategories.F2.coherentFilteredColimitVertex_isTerminal
+
+#check @SerrePositivity.InfinityCategories.F2.coneMappingKanObject
+#check @SerrePositivity.InfinityCategories.F2.coneRestrictionKanMap
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestrictionKanMap
+#check @SerrePositivity.InfinityCategories.F2.sliceOverRestrict_rightFibration_of_mono
+#check @SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_rightFibration
+#check @SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_fibration
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutNativeCone
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutNativeCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutNativeCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushout_isPullback
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutIso
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutIso_fst
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushoutIso_snd
+#check @SerrePositivity.InfinityCategories.F2.coneMappingShapePushout_right_fibration
+#check @SerrePositivity.InfinityCategories.F2.coneMappingSpace
+#check @SerrePositivity.InfinityCategories.F2.coneMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.coneRestrictionFiberMap
+#check @SerrePositivity.InfinityCategories.F2.coneMappingSpace_restrict_ι
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestriction
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestriction_uncurry
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestrictionFiber
+#check @SerrePositivity.InfinityCategories.F2.normalizedConeRestrictionFiber_eq
+#check @SerrePositivity.InfinityCategories.F2.conePushoutBoundary_eq
+#check @SerrePositivity.InfinityCategories.F2.sliceOverRestrict_hasLiftingProperty_of_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.sliceOverRestrict_subcomplex_rightFibration
+#check @SerrePositivity.InfinityCategories.F2.sliceShapePushout_isPullback
+#check @SerrePositivity.InfinityCategories.F2.sliceShapePushoutIso
+#check @SerrePositivity.InfinityCategories.F2.sliceShapePushout_comm
+#check @SerrePositivity.InfinityCategories.F2.sliceShapePushout_lift
