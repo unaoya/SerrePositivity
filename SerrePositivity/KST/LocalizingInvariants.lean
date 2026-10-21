@@ -183,4 +183,14 @@ public import SerrePositivity.KST.LocalizingInvariants.TriangleThirdEdgeBoundary
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation
 
+public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointShape
+
+public import SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory
+
+public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
+
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

@@ -223,7 +223,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation,
     `SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles,
     `SerrePositivity.KST.LocalizingInvariants.TriangleThirdEdgeBoundary,
-    `SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation]
+    `SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.SpanEndpointShape,
+    `SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory,
+    `SerrePositivity.KST.LocalizingInvariants.FixedSpanApexComparison,
+    `SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators,
+    `SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
