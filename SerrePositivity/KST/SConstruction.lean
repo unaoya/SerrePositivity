@@ -1673,4 +1673,12 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNormalizedLamb
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitFlatNormalization
 public import SerrePositivity.KST.SConstruction.SimplexSubsetMappedOneFaceTop
 public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeFaceTerm
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInteriorCoordinates
+public import SerrePositivity.KST.SConstruction.SimplexSubsetInteriorSum
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeCoordinateBoundary
+public import SerrePositivity.KST.SConstruction.SerreCubeTopCellImageDifferentialTransport
+public import SerrePositivity.KST.SConstruction.SerreCubeFaceTopDimension
+public import SerrePositivity.KST.SConstruction.SimplexSubsetUniformFaceBoundary
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeDifferentialBoundary
+public import SerrePositivity.KST.SConstruction.CubicalLambdaNativeSimplex
 /-! # ∞-S• 構成と連結 K 理論 -/
