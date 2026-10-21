@@ -22515,3 +22515,84 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_tensor_zero
 #print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_one_tensor_zero
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGenerator_endpoint_cases
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGenerator_endpoint_cases
+
+#check @SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeGeneratorDegree_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_heq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_first
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_first
+
+#check @SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_last
+#print axioms SerrePositivity.KST.SConstruction.simplexHAOrderDimensionCast_last
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_generator_zero_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_generator_zero_heq
+
+#check @SerrePositivity.KST.SConstruction.SimplexHAChainLiftExists
+#print axioms SerrePositivity.KST.SConstruction.SimplexHAChainLiftExists
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLiftOfDefect
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLiftOfDefect
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_of_chain
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero_of_chain
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_endpoint_concat_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_endpoint_concat_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_exists
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_exists
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeDefect_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_comm
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_comm
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_comm
+
+#check @SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_source_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplexHADegreeLift_generator_source_boundary
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_f
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_f
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_generator
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_generator
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_eq
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_eq
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_map_recovery
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_map_recovery
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_post
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_post
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_zero
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_zero_face
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_one_tensor
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_one_tensor
+
+#check @SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_source_boundary
+#print axioms SerrePositivity.KST.SConstruction.simplexHARightTailPrefix_source_boundary
+
+#check @SerrePositivity.KST.SConstruction.simplexHAChainLift_top_image
+#print axioms SerrePositivity.KST.SConstruction.simplexHAChainLift_top_image
