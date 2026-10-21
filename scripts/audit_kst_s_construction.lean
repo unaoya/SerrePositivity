@@ -21403,3 +21403,31 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_top_composition_post
 #check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition_post
 #print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition_post
+#check @SerrePositivity.KST.SConstruction.dgCompose_degree_transport
+#print axioms SerrePositivity.KST.SConstruction.dgCompose_degree_transport
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetSplitLeft_dimension
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetSplitLeft_dimension
+#check @SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetSplitRight_dimension
+#print axioms SerrePositivity.KST.SConstruction.necklaceInSimplexSubsetSplitRight_dimension
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_degree
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_degree
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplitMappedTopImage
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitMappedTopImage
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_cutCompose
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_cutCompose
+#check @SerrePositivity.KST.SConstruction.necklaceSingleAscending_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceSingleAscending_val
+#check @SerrePositivity.KST.SConstruction.necklaceSingleCoordinate_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceSingleCoordinate_val
+#check @SerrePositivity.KST.SConstruction.simplexSubsetStrictRight_card
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetStrictRight_card
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCoordinate_right_count
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCoordinate_right_count
+#check @SerrePositivity.KST.SConstruction.simplexSubsetCoordinate_sign
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetCoordinate_sign
+#check @SerrePositivity.KST.SConstruction.necklaceWedgeBeadMissingCoordinate_val
+#print axioms SerrePositivity.KST.SConstruction.necklaceWedgeBeadMissingCoordinate_val
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_face_coordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_face_coordinate
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_face_sign
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_face_sign

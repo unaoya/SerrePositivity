@@ -1657,4 +1657,10 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaGeneratorNeck
 public import SerrePositivity.KST.SConstruction.SerreCubeTopMappedComposition
 public import SerrePositivity.KST.SConstruction.NecklaceLambdaMappedTop
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitMappedTop
+public import SerrePositivity.KST.SConstruction.DGComposeDegreeTransport
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitDegrees
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitNativeComposition
+public import SerrePositivity.KST.SConstruction.NecklaceSingleCoordinateValue
+public import SerrePositivity.KST.SConstruction.SimplexSubsetCoordinateSign
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitFaceSign
 /-! # ∞-S• 構成と連結 K 理論 -/
