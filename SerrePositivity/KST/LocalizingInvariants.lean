@@ -585,4 +585,9 @@ public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeTranspor
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.MappingPathUnitNaturality
+public import SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge
+public import SerrePositivity.KST.LocalizingInvariants.FiberMappingRelativePath
+public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPath
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

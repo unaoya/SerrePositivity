@@ -462,7 +462,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ReplacedFiberCubeHom,
     `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeTransportIso,
     `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison,
-    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareComparison]
+    `SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareComparison,
+    `SerrePositivity.KST.LocalizingInvariants.MappingPathUnitNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge,
+    `SerrePositivity.KST.LocalizingInvariants.FiberMappingRelativePath,
+    `SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPath]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
