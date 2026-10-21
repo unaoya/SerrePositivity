@@ -3969,6 +3969,53 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.obj,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Factorization.projection]
 
+@[noinline] private def e2RequiredBatch44 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.BackwardZigzag.movingHom_id,
+      `SerrePositivity.EInfinity.Hammock.BackwardZigzag.movingHom_comp,
+      `SerrePositivity.EInfinity.Hammock.BackwardZigzag.movingHom_app_comp,
+      `SerrePositivity.EInfinity.Hammock.BackwardZigzag.movingHom_app_comp_assoc,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.leftBoundaryComparison_first,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.leftBoundaryComparison_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.rightBoundaryComparison_first,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.rightBoundaryComparison_last,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.movingHom_id,
+      `SerrePositivity.EInfinity.Hammock.ForwardPath.movingHom_comp,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.Moving.fixedMap_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.pathEvaluation,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.zigzagObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.zigzagMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.zigzagMap_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.zigzagMap_comp,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.zigzagFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.middleArrow,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackInputs,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackLeft,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackLeftProjection,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackLeftProjection_trivialFibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackLeft_map_weak,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackMiddle,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackOuterLeft,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackMiddle_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutInputs,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutRight,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutRightInclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutMiddle,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutOuterRight,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutRightInclusion_trivialCofibration,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutRight_map_weak,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.Hom,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.Hom.app,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.Hom.natTrans,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackCounitData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pullbackCounit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutUnitData,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutUnit]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -3999,7 +4046,7 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9384,3 +9431,61 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   dsimp only
   intro ha hu hb
   exact Factorization.projection (BarrattEccles.mappingCofibrantFactorization A) L R a ha u hu b hb
+
+-- 元の左右射列の図式は、全体の同じ語の zigzag 関手を与える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
+    [ModelCategory C] {n m : ℕ} {X Y : C} (F : Family D C n m X Y) :
+    D ⥤ Zigzag (weakEquivalences C) (word n m) X Y := F.zigzagFunctor
+
+-- 同じ元の分解を使った、全体の counit の自然性。局所端点は動いてよい。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
+    [ModelCategory C] {n m : ℕ} {X Y : C} (F : Family D C n m X Y)
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) {d d' : D} (f : d ⟶ d') :
+    (F.pullbackFunctor cof).map f ≫ (F.pullbackCounit cof).app d' =
+      (F.pullbackCounit cof).app d ≫ F.zigzagFunctor.map f :=
+  (F.pullbackCounit cof).naturality f
+
+-- 置換された中央の実際の自然な脚は全て自明 cofibration。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
+    [ModelCategory C] {n m : ℕ} {X Y : C} (F : Family D C n m X Y)
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) (d : D) :
+    trivialCofibrations C ((F.pullbackFamily cof).middle.app d) :=
+  F.pullbackMiddle_trivialCofibration cof d
+
+-- 中央が自明 cofibration の図式では、元の全体の unit が自然である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
+    [ModelCategory C] {n m : ℕ} {X Y : C} (F : Family D C n m X Y)
+    (hc : ∀ d, trivialCofibrations C (F.middle.app d)) {d d' : D} (f : d ⟶ d') :
+    F.zigzagFunctor.map f ≫ (F.pushoutUnit hc).app d' =
+      (F.pushoutUnit hc).app d ≫ (F.pushoutFunctor hc).map f := (F.pushoutUnit hc).naturality f
+
+-- 左右とも長さ零でも、左置換の図式を右へ置換する自然変換が使える。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {D C : Type e2ComplexLimitUniverse} [SmallCategory D] [SmallCategory C]
+    [ModelCategory C] {X Y : C} (F : Family D C 0 0 X Y)
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    F.pullbackFunctor cof ⟶
+      (F.pullbackFamily cof).pushoutFunctor (F.pullbackMiddle_trivialCofibration cof) :=
+  (F.pullbackFamily cof).pushoutUnit (F.pullbackMiddle_trivialCofibration cof)
+
+-- 任意可換環の元の E 代数の具体的モデルと同じ構成済み分解への代入。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
+    (D : Type e2ComplexLimitUniverse) [SmallCategory D]
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    let := BarrattEccles.modelCategory A
+    ∀ F : Family D (BarrattEccles.operad A).Algebra n m X Y,
+      F.pullbackFunctor (BarrattEccles.mappingCofibrantFactorization A) ⟶ F.zigzagFunctor := by
+  let := BarrattEccles.modelCategory A
+  dsimp only
+  intro F
+  exact F.pullbackCounit (BarrattEccles.mappingCofibrantFactorization A)

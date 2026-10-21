@@ -1321,8 +1321,16 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 同じ語の zigzag への実際の射。`pushoutInclusion` は中央の自明 cofibration を
 指定中間対象の恒等列にした同じ語の zigzag への実際の射。左右の長さ零も含む。
 `MiddleBackward.Factorization.projection` は同じ指定関手的分解を代入した成分。
-全体の置換関手・自然変換と充満部分圏の比較、成分と三列の包含の弱同値性、
-既存 DK Hom の高次比較は後続。対象と射の構成だけで nerve の弱同値性を主張しない。
+`MiddleBackward.Family` は元の左右射列の関手と三つの自然な脚・全縦弱同値を記録する。
+`zigzagFunctor` は元の全体の関手であり、恒等・合成を同じ全成分で検証する。
+`Family.Hom.natTrans` は左右の自然な比較を全体の実際の自然変換へ移す。
+`pullbackInputs` は同じ指定関手的分解による comma 図式であり、
+`pullbackFunctor`・`pullbackCounit` は左置換の全体の関手と元への自然変換。
+`pullbackMiddle_trivialCofibration` は正規化後の中央の自然な脚の自明性。
+`pushoutFunctor`・`pushoutUnit` は中央が自明 cofibration の図式の右置換と自然変換。
+元の任意の固定語の graph からのブロック抽出と再構成の同定、充満部分圏の比較、
+成分と三列の包含の弱同値性、DK Hom の高次比較は後続。
+自然変換の存在だけで元の語の挿入関手の nerve の弱同値性を主張しない。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
