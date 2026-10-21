@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorCore
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionCoreRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionExtraction
 import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoPostcompConjugate
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactor
@@ -3836,6 +3841,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionRawFactor,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorCore,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionCoreRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionExtraction,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange,
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoPostcompConjugate,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactor,
