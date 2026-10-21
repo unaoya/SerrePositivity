@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompPointwiseInvertible
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionHomotopyInvertible
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertexClosed
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictNatTransInvertible
+import SerrePositivity.InfinityCategories.Derived.FunctorHomIsIsoTransport
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleResolvedMapInvertible
+import SerrePositivity.InfinityCategories.Derived.DGSemifreeKernelBimoduleQuasiIso
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedQuasiIsoMapInvertible
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedQuasiIsoMapAction
 import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedMapBridges
 import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedPathReflection
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedTypedHom
@@ -4569,6 +4578,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompPointwiseInvertible,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionHomotopyInvertible,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransVertexClosed,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictNatTransInvertible,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomIsIsoTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleResolvedMapInvertible,
+    `SerrePositivity.InfinityCategories.Derived.DGSemifreeKernelBimoduleQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedQuasiIsoMapInvertible,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedQuasiIsoMapAction,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedMapBridges,
     `SerrePositivity.InfinityCategories.Derived.FunctorHomTypedPathReflection,
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedTypedHom,
