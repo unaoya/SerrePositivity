@@ -1360,8 +1360,17 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `pullbackOriginalCounit`・`pushoutOriginalUnit` は元の全体の恒等図式との自然な比較。
 `Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence` は元の全体の中央列が
 自明 cofibration の全部分圏への包含自身の弱同値性。任意の前後の語で第一工程は完了。
-任意の前後の語での第二の包含・元の挿入写像への接続、全語の成分と三列の包含の
-弱同値性、DK Hom の高次比較は後続。第一の包含だけで元の挿入の弱同値性とはしない。
+`MovingFamily.precomp`・`MovingDiagram.precomp` は端点の評価関手も含めて制限する。
+`Context.TrivialCofibration.rightReplacement/rightUnit` は同じ全部分圏上の右置換と unit。
+`rightReplacement_identity` は元の全体の同じ中央列が実際の恒等列であること。
+`Context.Erasure` は元の eraseInclusion の WordAction を使用する。
+`preimageObj`・`originalFunctor_obj_preimage` は既存の恒等列による像の特徴付けから、
+元の右置換の実際の前像と厳密な対象の回収を与える。本質像への所属は証明済み。
+`rightReplacementCompIso`・`unit` で第二の包含を反転し、第一の包含と合成する。
+`graphMap_isWeakHomotopyEquivalence` は任意の前後の語を持つ元の中央 backward 列の
+元の eraseInclusion の graph 写像自身の弱同値性。左右の長さ零も含む。
+padding された全語の列の分解と元の挿入への照合、全語の成分と三列の包含の
+弱同値性、DK Hom の高次比較は後続。局所の比較だけで全語の結論とはしない。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

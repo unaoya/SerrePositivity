@@ -4278,6 +4278,50 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.inclusion_localized_isIso,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence]
 
+@[noinline] private def e2RequiredBatch49 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.precomp,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.precomp_zigzagObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.MovingFamily.precomp_movingDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.precomp,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.Hom.precomp,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.middleColumn_property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceFamily,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceFamily_middle_trivial,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourcePrefix,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceSuffix,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceRebuiltDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceRebuiltFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.sourceRebuiltFunctor_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.rightDiagram,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.rightReplacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.rebuiltUnit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.rightUnit,
+      `SerrePositivity.EInfinity.Hammock.IdentityColumn.of_heq_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.TrivialCofibration.rightReplacement_identity,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.sourceWord,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.wordMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_full,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_faithful,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_middle_trivial,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor_comp_inclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor_full,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor_faithful,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.rightReplacement_identityOutside,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.preimageObj,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_obj_preimage,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.rightReplacement_essImage,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.rightReplacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.rightReplacementCompIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.underlyingUnit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.unit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.functor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.originalFunctor_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Context.Erasure.graphMap_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4309,7 +4353,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9933,4 +9977,66 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : Word) (n m : ℕ)
   let := BarrattEccles.modelCategory R
   dsimp only
   exact Context.TrivialCofibration.inclusion_isWeakHomotopyEquivalence a b n m X Y
+    (BarrattEccles.mappingCofibrantFactorization R)
+
+-- 元の全体の右置換の中央列は、実際の対象と射の意味で恒等列である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) (S : Context.TrivialCofibration.Objects a b n m X Y) :
+    IdentityColumn ((Context.TrivialCofibration.rightReplacement a b n m X Y).obj S)
+      (Context.middleColumn a b n m) :=
+  Context.TrivialCofibration.rightReplacement_identity a b n m X Y S
+
+-- 元の削除語の実際の前像は、右置換の同じ対象を厳密に回収する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) (S : Context.TrivialCofibration.Objects a b n m X Y) :
+    (Context.Erasure.originalFunctor a b n m X Y).obj
+      (Context.Erasure.preimageObj a b n m X Y S) =
+        (Context.TrivialCofibration.rightReplacement a b n m X Y).obj S :=
+  Context.Erasure.originalFunctor_obj_preimage a b n m X Y S
+
+-- 第二の包含自身の nerve を、元の unit と本質像の持ち上げで反転する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) :
+    IsWeakHomotopyEquivalence (nerveMap (Context.Erasure.functor a b n m X Y)) :=
+  Context.Erasure.functor_isWeakHomotopyEquivalence a b n m X Y
+
+-- 任意の前後の語を持つ元の eraseInclusion の graph 写像自身が弱同値。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence ((graphDiagram (weakEquivalences C) X Y).map
+      (Word.eraseInclusion (Context.wholeWord a b n m) (Context.middleColumn a b n m))) :=
+  Context.Erasure.graphMap_isWeakHomotopyEquivalence a b n m X Y cof
+
+-- 左右の forward ブロックがともに長さ零でも、元の挿入の結論を得る。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (a b : Word) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence ((graphDiagram (weakEquivalences C) X Y).map
+      (Word.eraseInclusion (Context.wholeWord a b 0 0) (Context.middleColumn a b 0 0))) :=
+  Context.Erasure.graphMap_isWeakHomotopyEquivalence a b 0 0 X Y cof
+
+-- 任意可換環の実際のモデルと既存の分解から、元の任意の前後の語の結論を得る。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (a b : Word) (n m : ℕ)
+    (X Y : (BarrattEccles.operad R).Algebra) :
+    let := BarrattEccles.modelCategory R
+    IsWeakHomotopyEquivalence
+      ((graphDiagram (weakEquivalences (BarrattEccles.operad R).Algebra) X Y).map
+        (Word.eraseInclusion (Context.wholeWord a b n m) (Context.middleColumn a b n m))) := by
+  let := BarrattEccles.modelCategory R
+  dsimp only
+  exact Context.Erasure.graphMap_isWeakHomotopyEquivalence a b n m X Y
     (BarrattEccles.mappingCofibrantFactorization R)
