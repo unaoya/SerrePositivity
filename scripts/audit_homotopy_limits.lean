@@ -13725,3 +13725,41 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coconeEdgeAction_unit_square
 #check @totalKanNativeEdge_homMk_of_unit_square
 #print axioms totalKanNativeEdge_homMk_of_unit_square
+#check @coconeWholeEdgeApex
+#print axioms coconeWholeEdgeApex
+#check @coconeWholeEdgeApex_constant_hom
+#print axioms coconeWholeEdgeApex_constant_hom
+#check @nativeCoconeApexIso
+#print axioms nativeCoconeApexIso
+#check @nativeCoconeApexIso_homMk
+#print axioms nativeCoconeApexIso_homMk
+#check @nativeCoconeApexIso_constant_hom
+#print axioms nativeCoconeApexIso_constant_hom
+#check @nativeCoconeApexIso_constant_inv
+#print axioms nativeCoconeApexIso_constant_inv
+#check @coconeStandardVertexHom
+#print axioms coconeStandardVertexHom
+#check @coconeStandardVertexHom_constant
+#print axioms coconeStandardVertexHom_constant
+#check @coconeStandardVertexEdge
+#print axioms coconeStandardVertexEdge
+#check @coconeStandardVertexEdge_homMk
+#print axioms coconeStandardVertexEdge_homMk
+#check @coconeStandardVertexEdge_constant_hom
+#print axioms coconeStandardVertexEdge_constant_hom
+#check @coconeStandardVertexUnit_square
+#print axioms coconeStandardVertexUnit_square
+#check @standardCoconeKanLegEdge
+#print axioms standardCoconeKanLegEdge
+#check @standardCoconeKanLegEdge_homMk
+#print axioms standardCoconeKanLegEdge_homMk
+#check @standardCoconeKanLeg_unit_square
+#print axioms standardCoconeKanLeg_unit_square
+#check @standardCoconeKanLeg_homMk
+#print axioms standardCoconeKanLeg_homMk
+#check @presheafCoconeImageLeg_apex
+#print axioms presheafCoconeImageLeg_apex
+#check @presheafColimitLegConjugate
+#print axioms presheafColimitLegConjugate
+#check @presheafColimitLegConjugate_homMk
+#print axioms presheafColimitLegConjugate_homMk
