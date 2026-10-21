@@ -26,6 +26,23 @@ local notation "f" => coherentTransformationTotalMap F G x
 local notation "hf" => coherentTransformationTotalMap_projection F G x
 local notation "m" => smallUnstraighteningSourceRestriction F (vertexFiberι pF b)
 
+/-- 小さい fiber 射は、縮小前の全空間への元の包含とも厳密に可換。 -/
+lemma coherentFiberSourceRestriction_naturality :
+    (SSet.uliftFunctor.{u + 1, u}).map (vertexFiberMap pF pG f hf b) ≫
+        (smallUnstraighteningSourceRestriction G (vertexFiberι pG b)).left =
+      (m).left ≫ (leftUnstraighteningMappingVertexMap F G x).val := by
+  change (SSet.uliftFunctor.{u + 1, u}).map (vertexFiberMap pF pG f hf b) ≫
+    ((SSet.uliftFunctor.{u + 1, u}).map (vertexFiberι pG b) ≫
+      (smallLeftUnstraighteningIso G).hom) = _
+  rw [← Category.assoc, ← Functor.map_comp, vertexFiberMap_ι,
+    Functor.map_comp, Category.assoc]
+  change (SSet.uliftFunctor.{u + 1, u}).map (vertexFiberι pF b) ≫
+    (SSet.uliftFunctor.{u + 1, u}).map
+      (smallLeftUnstraighteningOverMap F G (leftUnstraighteningMappingVertexMap F G x).val) ≫
+      (smallLeftUnstraighteningIso G).hom = _
+  rw [smallLeftUnstraighteningOverMap_naturality]
+  rfl
+
 /-- 実際の小さい fiber 射を持ち上げて pointed 始点族へ写すと、元の全空間作用に等しい。 -/
 lemma coherentFiberPointedSource_naturality :
     (SSet.uliftFunctor.{u + 1, u}).map (vertexFiberMap pF pG f hf b) ≫

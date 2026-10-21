@@ -190,6 +190,8 @@ public import SerrePositivity.InfinityCategories.F2.CoherentRestrictedFiberTrian
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeLegFiberDown
 
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeSectionFiberPath
+
 public import SerrePositivity.InfinityCategories.F2.PointedTriangleDiagramSource
 
 public import SerrePositivity.InfinityCategories.F2.RelativeCospanSectionFibrations
