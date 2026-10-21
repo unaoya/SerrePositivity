@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoPostcompConjugate
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompCompositionEq
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionCore
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompWhisker
 import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftNervePrecomposition
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecompComposition
@@ -4405,6 +4411,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoPostcompConjugate,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawFactorSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecompCompositionEq,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositionCore,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompWhisker,
     `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftNervePrecomposition,
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputUnliftedPrecompComposition,
