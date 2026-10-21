@@ -2359,3 +2359,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportInfin
 public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryDiagramComparison
 
 public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedOrdinaryNaturality
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonArrowValue
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportFamilyVertex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIsoTransportFamilyEdge
