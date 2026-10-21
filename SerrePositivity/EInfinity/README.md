@@ -1654,6 +1654,20 @@ prefix と残りの元の hammock の点の回収・逆向きの因子列の回�
 反復抽出と貼り戻しの両逆と元の hammock と全因子列の単体的同型を完成する。
 任意可換環の実際の全自由次数へも代入して検証。自由積の単体的 pushout の普遍性・
 全指定自由圏の成分の可縮性・命題2.2の左右の弱比較・既存 Map^h との高次比較は後続。
+`Zigzag.Relative.append_obj/append_functor` と `Relative.composePoint_map/arrowPoint_map/colimitUnit_point`
+は元の相対関手による連結・全余極限の合成・一列・単位の保存。
+`AllMarked.nativeComposePoint/nativeUnitPoint` は元の指定部分圏の合成と単位の点。
+`inclusion_composePoint/inclusion_unitPoint` は元の包含自身の保存。
+`MarkedSpine.prepend/append` は接合点の指定二因子を元の指定 hammock 内で合成する明示的な連結。
+`glue_append/extraction_composePoint/composition_gluing` は元の同型の二射の合成保存。
+`unitPoint/append_left_unit/append_right_unit/append_assoc/unitMap_gluing` と
+`enrichedCategory/degreeCategory` は元の全因子列の豊穣圏・各次数の圏を完成する。
+`generatorPoint/glue_generatorPoint/cons_decomposition` は同じ元の生成矢と三因子分解。
+`FoldData.fold/fold_append/fold_unique/existsUnique_fold/functor` は指定因子と非指定生成矢の像から
+任意の圏への次数ごとの一意な合成保存拡張。
+`precompSimplex/fold_simplex/mapTarget/fold_target` は全単体作用素と目標関手への整合。
+任意可換環の実際の全自由次数へも代入して検証。豊穣目標の全次数の評価圏と全単体作用素を
+束ねた自由積の単体的 pushout の普遍性・全指定自由圏の成分の可縮性・両弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
