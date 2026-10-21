@@ -4016,6 +4016,92 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutUnitData,
       `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.pushoutUnit]
 
+@[noinline] private def e2RequiredBatch45 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.Zigzag.columnDiagram,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.columnDiagram_mem,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.firstEvaluationIso,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.lastEvaluationIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftWithMiddle,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.firstColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.lastColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.first_direction,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.left_direction,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middle_direction,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.right_direction,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.last_direction,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.first_source,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.first_target,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.left_source,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.left_target,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middle_source,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middle_target,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.right_source,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.right_target,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.last_source,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.last_target,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.length_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftVertex_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightVertex_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.firstColumn_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.leftColumn_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.middleColumn_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.rightColumn_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.lastColumn_val,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.vertex_cases,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Positions.column_cases,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftPath,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightPath,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftPathMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightPathMap,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftPath_map_succ_heq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightPath_map_succ_heq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.middleLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightLeg,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.middleLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightLeg_mem,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.family,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.leftLeg_heq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.middleLeg_heq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rightLeg_heq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuildFunctor,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_leftVertex,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_rightVertex,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_vertex,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_firstColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_leftColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_middleColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_rightColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_lastColumn,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_arrow,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_map_left,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_map_right,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.hom_first_heq_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.hom_last_heq_id,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuilt_map_app,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuildFunctor_eq,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract.rebuildIso,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_left_property,
+      `SerrePositivity.EInfinity.Hammock.ZigzagAppend.arrow_right_property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.Family.middleColumn_property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.property,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.Objects,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.inclusion,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.replacement,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.counit,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.Hammock.MiddleBackward.TrivialCofibration.inclusion_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4046,7 +4132,7 @@ run_cmd do
       e2RequiredBatch28, e2RequiredBatch29, e2RequiredBatch30, e2RequiredBatch31,
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
-      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44] do
+      e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -9489,3 +9575,65 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
   dsimp only
   intro F
   exact F.pullbackCounit (BarrattEccles.mappingCofibrantFactorization A)
+
+-- 元の固定語の全対象・全縦射を抽出し再構成した関手は、元の恒等関手と等しい。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (n m : ℕ) (X Y : C) :
+    (Extract.rebuildFunctor : Zigzag (weakEquivalences C) (word n m) X Y ⥤ _) = 𝟭 _ :=
+  Extract.rebuildFunctor_eq
+
+-- 置換は中央の実際の列が自明 cofibration の全部分圏に着地する。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n m : ℕ} {X Y : C} (S : Zigzag (weakEquivalences C) (word n m) X Y)
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    trivialCofibrations C (((TrivialCofibration.replacement cof).obj S).obj.arrow
+      (Positions.middleColumn n m)) := ((TrivialCofibration.replacement cof).obj S).property
+
+-- counit は元の恒等図式へ向かう自然変換であり、元の全縦射に自然。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    {n m : ℕ} {X Y : C} {S T : Zigzag (weakEquivalences C) (word n m) X Y} (f : S ⟶ T)
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    ((TrivialCofibration.replacement cof ⋙ TrivialCofibration.inclusion).map f) ≫
+        (TrivialCofibration.counit cof).app T = (TrivialCofibration.counit cof).app S ≫ f :=
+  (TrivialCofibration.counit cof).naturality f
+
+-- 元の包含の nerve 自身が anodyne 局所化で反転される。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.SimplicialModel
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (n m : ℕ) (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
+      (TrivialCofibration.inclusion (C := C) (n := n) (m := m) (X := X) (Y := Y)))) :=
+  TrivialCofibration.inclusion_localized_isIso cof
+
+-- 左右とも長さ零でも元の包含の nerve が弱ホモトピー同値である。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
+    (X Y : C) (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (nerveMap
+      (TrivialCofibration.inclusion (C := C) (n := 0) (m := 0) (X := X) (Y := Y))) :=
+  TrivialCofibration.inclusion_isWeakHomotopyEquivalence cof
+
+-- 任意可換環の実モデルと既存の同じ分解から元の包含の弱同値性を得る。
+open CategoryTheory HomotopicalAlgebra SerrePositivity.InfinityCategories
+    SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock.MiddleBackward in
+example (A : Type e2ComplexLimitUniverse) [CommRing A] (n m : ℕ)
+    (X Y : (BarrattEccles.operad A).Algebra) :
+    let := BarrattEccles.modelCategory A
+    IsWeakHomotopyEquivalence (nerveMap (TrivialCofibration.inclusion
+      (C := (BarrattEccles.operad A).Algebra) (n := n) (m := m) (X := X) (Y := Y))) := by
+  let := BarrattEccles.modelCategory A
+  dsimp only
+  exact TrivialCofibration.inclusion_isWeakHomotopyEquivalence
+    (BarrattEccles.mappingCofibrantFactorization A)

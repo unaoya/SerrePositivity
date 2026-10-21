@@ -1,0 +1,98 @@
+module
+
+public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositions
+public import SerrePositivity.EInfinity.Hammock.ZigzagColumnDiagram
+
+/-!
+# 元の固定語の zigzag 圏から左右の forward 射列を抽出する
+
+概要：元の頂点と隣接射を使い、左右の指定長の射列と全縦射を抽出する。
+方針：元の列の端点を位置の等式で移し、標準の隣接射列の構成へ渡す。
+規約：射列の長さは元の n,m。差の長さへの未証明の同一視を使わない。
+使われ方：元の固定語の graph を添字とする Family の構成。
+-/
+
+@[expose] public section
+universe u v
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+namespace SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
+
+variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicative]
+  {n m : ℕ} {X Y : C}
+
+def leftPath (S : Zigzag W (word n m) X Y) : ComposableArrows C n :=
+  ComposableArrows.mkOfObjOfMapSucc (fun i => S.vertex (Positions.leftVertex n m i))
+    (fun i => (Zigzag.columnDiagram (Positions.leftColumn n m i)
+      (Positions.leftVertex n m i.castSucc) (Positions.leftVertex n m i.succ)
+      (Positions.left_source n m i).symm (Positions.left_target n m i)).app S)
+
+def rightPath (S : Zigzag W (word n m) X Y) : ComposableArrows C m :=
+  ComposableArrows.mkOfObjOfMapSucc (fun i => S.vertex (Positions.rightVertex n m i))
+    (fun i => (Zigzag.columnDiagram (Positions.rightColumn n m i)
+      (Positions.rightVertex n m i.castSucc) (Positions.rightVertex n m i.succ)
+      (Positions.right_source n m i).symm (Positions.right_target n m i)).app S)
+
+def leftPathMap {S T : Zigzag W (word n m) X Y} (f : Zigzag.Hom S T) :
+    leftPath S ⟶ leftPath T :=
+  ComposableArrows.homMk (fun i => f.app (Positions.leftVertex n m i)) (by
+    intro i hi
+    dsimp only [leftPath]
+    rw [ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi,
+      ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
+    dsimp only [Zigzag.columnDiagram]
+    exact Segment.square_transport f _ _ _ (Positions.left_source n m ⟨i, hi⟩).symm
+      (Positions.left_target n m ⟨i, hi⟩))
+
+def rightPathMap {S T : Zigzag W (word n m) X Y} (f : Zigzag.Hom S T) :
+    rightPath S ⟶ rightPath T :=
+  ComposableArrows.homMk (fun i => f.app (Positions.rightVertex n m i)) (by
+    intro i hi
+    dsimp only [rightPath]
+    rw [ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi,
+      ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
+    dsimp only [Zigzag.columnDiagram]
+    exact Segment.square_transport f _ _ _ (Positions.right_source n m ⟨i, hi⟩).symm
+      (Positions.right_target n m ⟨i, hi⟩))
+
+def leftFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C n where
+  obj := leftPath
+  map := leftPathMap
+  map_id _ := by
+    apply NatTrans.ext
+    funext i
+    rfl
+  map_comp _ _ := by
+    apply NatTrans.ext
+    funext i
+    rfl
+
+def rightFunctor : Zigzag W (word n m) X Y ⥤ ComposableArrows C m where
+  obj := rightPath
+  map := rightPathMap
+  map_id _ := by
+    apply NatTrans.ext
+    funext i
+    rfl
+  map_comp _ _ := by
+    apply NatTrans.ext
+    funext i
+    rfl
+
+lemma leftPath_map_succ_heq (S : Zigzag W (word n m) X Y) (i : ℕ) (hi : i < n) :
+    HEq ((leftPath S).map' i (i + 1)) (S.arrow (Positions.leftColumn n m ⟨i, hi⟩)) := by
+  rw [leftPath, ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
+  dsimp only [Zigzag.columnDiagram]
+  simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
+  rfl
+
+lemma rightPath_map_succ_heq (S : Zigzag W (word n m) X Y) (i : ℕ) (hi : i < m) :
+    HEq ((rightPath S).map' i (i + 1)) (S.arrow (Positions.rightColumn n m ⟨i, hi⟩)) := by
+  rw [rightPath, ComposableArrows.mkOfObjOfMapSucc_map_succ _ _ i hi]
+  dsimp only [Zigzag.columnDiagram]
+  simp only [eqToHom_comp_heq_iff, comp_eqToHom_heq_iff]
+  rfl
+
+end SerrePositivity.EInfinity.Hammock.MiddleBackward.Extract

@@ -1328,9 +1328,16 @@ backward 一列ずつを両端に付け、`paddingInclusionNat` は元の中央�
 `pullbackFunctor`・`pullbackCounit` は左置換の全体の関手と元への自然変換。
 `pullbackMiddle_trivialCofibration` は正規化後の中央の自然な脚の自明性。
 `pushoutFunctor`・`pushoutUnit` は中央が自明 cofibration の図式の右置換と自然変換。
-元の任意の固定語の graph からのブロック抽出と再構成の同定、充満部分圏の比較、
+`MiddleBackward.Extract.family` は元の固定語の zigzag 圏からブロック図式を抽出する。
+`rebuilt_eq` は元の全頂点・全列の厳密な回収、`rebuildFunctor_eq` は
+元の全縦射も含めた恒等図式との等式。Family を外部入力にはしない。
+`MiddleBackward.TrivialCofibration` は中央の実際の列が自明 cofibration の全部分圏。
+`replacement`・`counit` は同じ元の包含と元の恒等図式に対する関手的置換。
+`inclusion_localized_isIso`・`inclusion_isWeakHomotopyEquivalence` はその包含自身の
+nerve の反転性・弱ホモトピー同値性。同じ指定分解から、長さ零も含めて証明する。
+恒等列の挿入を扱う第二工程、元の任意の prefix/suffix への貼り合わせ、
 成分と三列の包含の弱同値性、DK Hom の高次比較は後続。
-自然変換の存在だけで元の語の挿入関手の nerve の弱同値性を主張しない。
+第一の全部分圏の比較だけで、元の恒等列の挿入の弱同値性を完成としない。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
