@@ -1425,4 +1425,10 @@ public import SerrePositivity.KST.SConstruction.CubicalDayRepresentableNaturalit
 public import SerrePositivity.KST.SConstruction.CubicalDayTensor
 public import SerrePositivity.KST.SConstruction.CubicalDayTensorLaws
 public import SerrePositivity.KST.SConstruction.CubicalDayUnit
+public import SerrePositivity.KST.SConstruction.CubicalDayStructuralCells
+public import SerrePositivity.KST.SConstruction.CubicalDayYonedaAssociativity
+public import SerrePositivity.KST.SConstruction.CubicalDayYonedaData
+public import SerrePositivity.KST.SConstruction.CubicalDayYonedaMonoidal
+public import SerrePositivity.KST.SConstruction.CubicalDayYonedaRecovery
+public import SerrePositivity.KST.SConstruction.CubicalDayYonedaUnitCoherence
 /-! # ∞-S• 構成と連結 K 理論 -/

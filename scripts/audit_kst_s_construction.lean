@@ -19120,3 +19120,49 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.cubicalDayUnitProjection_inclusion
 #check @SerrePositivity.KST.SConstruction.cubicalDayUnitIso
 #print axioms SerrePositivity.KST.SConstruction.cubicalDayUnitIso
+#check @SerrePositivity.KST.SConstruction.cubicalDayAssociator_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayAssociator_cell
+#check @SerrePositivity.KST.SConstruction.cubicalDayLeftUnitor_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayLeftUnitor_cell
+#check @SerrePositivity.KST.SConstruction.cubicalDayRightUnitor_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayRightUnitor_cell
+#check @SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_associativity
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_associativity
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda
+#check @SerrePositivity.KST.SConstruction.cubicalDayYonedaTensor
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYonedaTensor
+#check @SerrePositivity.KST.SConstruction.cubicalDayYonedaUnit
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYonedaUnit
+#check @SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_identity
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_identity
+#check @SerrePositivity.KST.SConstruction.cubicalDayUnitInclusion_identity
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayUnitInclusion_identity
+#check @SerrePositivity.KST.SConstruction.cubicalNatTrans_restrict
+#print axioms SerrePositivity.KST.SConstruction.cubicalNatTrans_restrict
+#check @SerrePositivity.KST.SConstruction.cubicalDayYonedaCoreMonoidal
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYonedaCoreMonoidal
+#check @SerrePositivity.KST.SConstruction.cubicalDayYonedaMonoidal
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYonedaMonoidal
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_map_natTrans
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_map_natTrans
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_tensorator_natTrans
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_tensorator_natTrans
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_unit_natTrans
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_unit_natTrans
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_cotensorator_natTrans
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_cotensorator_natTrans
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_counit_natTrans
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_counit_natTrans
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_tensorator_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_tensorator_cell
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_faithful
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_faithful
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_full
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_full
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_leftUnit_retraction
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_leftUnit_retraction
+#check @SerrePositivity.KST.SConstruction.cubicalDayYoneda_rightUnit_retraction
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayYoneda_rightUnit_retraction
