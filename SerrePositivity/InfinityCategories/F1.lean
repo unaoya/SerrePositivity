@@ -2283,3 +2283,5 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianSimplexCellIndex
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeAssociativity
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeObjectIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeSections

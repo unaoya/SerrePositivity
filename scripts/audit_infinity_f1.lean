@@ -7181,3 +7181,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianBaseChangeNativeAssociativity_inv_preserves
 #check @SerrePositivity.InfinityCategories.cocartesianBaseChangeNativeObjectIso
 #check @SerrePositivity.InfinityCategories.cocartesianBaseChangeNativeHomIso
+#check @SerrePositivity.InfinityCategories.cocartesianBaseChangeAssociativityComponent_native_uncurry
