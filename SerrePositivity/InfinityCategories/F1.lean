@@ -2557,3 +2557,11 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeComposi
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeFirstRestrictionFactor
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestrictionNormalizedIdentity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalFactorNaturality
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoPastingIdentity
+
+public import SerrePositivity.InfinityCategories.F1.HomSpanSectionRestrictionNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeRestrictionNaturalityTriangle
