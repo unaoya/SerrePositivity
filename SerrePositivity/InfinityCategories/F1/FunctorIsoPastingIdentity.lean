@@ -27,4 +27,28 @@ lemma functorIsoPastingHEq_of_eq_of_heq {X Y : SSet.{u}} {a b c a' c' : X ⟶ Y}
     FunctorIsoPastingHEq e d n := by
   exact HEq.trans (heq_of_eq h) hn.symm
 
+/-- 三端点を同じ表示に正規化すると、指定された貼り合わせは通常の等式になる。 -/
+lemma FunctorIsoPastingHEq.normalized {X Y : SSet.{u}} {a b c a' b' c' : X ⟶ Y}
+    (e : FunctorIso a b) (d : FunctorIso b c) (n : FunctorIso a' c')
+    (ha : a = a') (hb : b = b') (hc : c = c') (h : FunctorIsoPastingHEq e d n) :
+    F2.functorIsoOfEq e ha hb ≪≫ F2.functorIsoOfEq d hb hc = n := by
+  subst a' b' c'
+  exact eq_of_heq h
+
+/-- 指定された第二因子を、正規化した第一因子の逆と終辺の合成に分解する等式。 -/
+def FunctorIsoPastingRightFactorIdentity {X Y : SSet.{u}} {a b c a' b' c' : X ⟶ Y}
+    (e : FunctorIso a b) (d : FunctorIso b c) (n : FunctorIso a' c')
+    (ha : a = a') (hb : b = b') (hc : c = c') : Prop :=
+    F2.functorIsoOfEq d hb hc = (F2.functorIsoOfEq e ha hb).symm ≪≫ n
+
+/-- 同じ端点へ正規化した第二因子は、指定された第一因子の逆と終辺の合成。 -/
+lemma FunctorIsoPastingHEq.rightFactor {X Y : SSet.{u}} {a b c a' b' c' : X ⟶ Y}
+    (e : FunctorIso a b) (d : FunctorIso b c) (n : FunctorIso a' c')
+    (ha : a = a') (hb : b = b') (hc : c = c') (h : FunctorIsoPastingHEq e d n) :
+    FunctorIsoPastingRightFactorIdentity e d n ha hb hc := by
+  unfold FunctorIsoPastingRightFactorIdentity
+  have hh := FunctorIsoPastingHEq.normalized e d n ha hb hc h
+  rw [← hh]
+  simp only [← Iso.trans_assoc, Iso.symm_self_id, Iso.refl_trans]
+
 end SerrePositivity.InfinityCategories
