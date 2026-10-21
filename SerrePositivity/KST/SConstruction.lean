@@ -1375,4 +1375,10 @@ public import SerrePositivity.KST.SConstruction.CubeThreeNormalResults
 public import SerrePositivity.KST.SConstruction.CubeThreeNormalUpdates
 public import SerrePositivity.KST.SConstruction.CubeMixedExpression
 public import SerrePositivity.KST.SConstruction.CubeMixedPathNormalization
+public import SerrePositivity.KST.SConstruction.CubeNormalEndpoints
+public import SerrePositivity.KST.SConstruction.CubeDeletionNormalUsed
+public import SerrePositivity.KST.SConstruction.CubeDeletionConnectionDetection
+public import SerrePositivity.KST.SConstruction.CubeThreeNormalDetection
+public import SerrePositivity.KST.SConstruction.SerreCubeWordIndependence
+public import SerrePositivity.KST.SConstruction.SerreConcreteCubeFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/
