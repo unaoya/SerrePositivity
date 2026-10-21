@@ -1648,4 +1648,13 @@ public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitOneFace
 public import SerrePositivity.KST.SConstruction.NecklaceLambdaCell
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitLambdaCell
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitCubicalTensor
+public import SerrePositivity.KST.SConstruction.CubicalSerreGeneratorTensor
+public import SerrePositivity.KST.SConstruction.NecklaceLambdaComposition
+public import SerrePositivity.KST.SConstruction.NecklaceLambdaTopComposition
+public import SerrePositivity.KST.SConstruction.SerreCubeTopCellImageTransport
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitTopComposition
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaGeneratorNecklace
+public import SerrePositivity.KST.SConstruction.SerreCubeTopMappedComposition
+public import SerrePositivity.KST.SConstruction.NecklaceLambdaMappedTop
+public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitMappedTop
 /-! # ∞-S• 構成と連結 K 理論 -/

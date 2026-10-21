@@ -21369,3 +21369,37 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitLambdaCell_one_face
 #check @SerrePositivity.KST.SConstruction.simplexSubsetSplitCubicalTensor_composition
 #print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplitCubicalTensor_composition
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_eq_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_eq_cell
+#check @SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_tensor
+#print axioms SerrePositivity.KST.SConstruction.cubicalDayCubeInclusion_tensor
+#check @SerrePositivity.KST.SConstruction.cubicalSerreGenerator_tensor
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreGenerator_tensor
+#check @SerrePositivity.KST.SConstruction.necklaceCubicalCompose_generator
+#print axioms SerrePositivity.KST.SConstruction.necklaceCubicalCompose_generator
+#check @SerrePositivity.KST.SConstruction.necklaceLambdaCell_composition
+#print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_composition
+#check @SerrePositivity.KST.SConstruction.necklaceLambdaCell_top_composition
+#print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_top_composition
+#check @SerrePositivity.KST.SConstruction.serreCubeTopCellImage_post
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopCellImage_post
+#check @SerrePositivity.KST.SConstruction.serreCubeTopCellImage_cast_post
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopCellImage_cast_post
+#check @SerrePositivity.KST.SConstruction.serreCubeTopCellImage_cast_dimension
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopCellImage_cast_dimension
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaGenerator_necklace
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaGenerator_necklace
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_hom_necklace
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaNativeSimplexData_hom_necklace
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorPair_composition
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorPair_composition
+#check @SerrePositivity.KST.SConstruction.serreCubeComposition_post
+#print axioms SerrePositivity.KST.SConstruction.serreCubeComposition_post
+#check @SerrePositivity.KST.SConstruction.serreCubeTopCellImage_composition_post
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTopCellImage_composition_post
+#check @SerrePositivity.KST.SConstruction.necklaceLambdaCell_top_composition_post
+#print axioms SerrePositivity.KST.SConstruction.necklaceLambdaCell_top_composition_post
+#check @SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition_post
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetSplit_top_composition_post
