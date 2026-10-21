@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelEssentialSurjectivity
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInclusion
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInfinity
+import SerrePositivity.InfinityCategories.Derived.DGKernelProjectiveInput
+import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelResolution
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecomposition
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionPerfectComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelMoritaCriterionInfinity
 import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity
 import SerrePositivity.InfinityCategories.Derived.DGResolutionHomologyDetection
 import SerrePositivity.InfinityCategories.Derived.DGFunctorGradedCycleLifting
@@ -3818,6 +3827,15 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelEssentialSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelProjectiveInput,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectKernelResolution,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionPerfectComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelMoritaCriterionInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity,
     `SerrePositivity.InfinityCategories.Derived.DGResolutionHomologyDetection,
     `SerrePositivity.InfinityCategories.Derived.DGFunctorGradedCycleLifting,
