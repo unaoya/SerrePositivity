@@ -2060,3 +2060,46 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndCone_right
 #check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison
 #check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_homotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.vertexFiberProjectionIso
+#check @SerrePositivity.InfinityCategories.F2.vertexFiberProjectionIso_hom_ι
+#check @SerrePositivity.InfinityCategories.F2.vertexFiberMap_target_projection
+#check @SerrePositivity.InfinityCategories.F2.vertexFiberMap_source_projection
+
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputIsoHom
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputIsoHom_path
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputIsoHom_left
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputIsoHom_right
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelLeftInputFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelRightInputFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelLeftInputFiberIso_arrow
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelRightInputFiberIso_arrow
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelInputPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelInputPullbackIso_path
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelInputPullbackIso_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanModelInputPullbackIso_right
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelFiberComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelFiberComparison_left
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelFiberComparison_right
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNormalizedModelFiberComparison_path
+
+#check @SerrePositivity.InfinityCategories.F2.intervalCospanSSetSection
+#check @SerrePositivity.InfinityCategories.F2.intervalCospanEndSection
+#check @SerrePositivity.InfinityCategories.F2.intervalCospanEndSection_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackEndComparison
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackEndComparison_homotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_naturality
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_detect_homotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.equivalencePathInclusion_inv_endpoint
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLift
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLift_projection
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLift_endpoint
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLift_other_endpoint
+
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLiftEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.kanSpecifiedIntervalLiftEndpoint_homotopyEquivalence

@@ -208,6 +208,15 @@ public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeSectionE
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeFiberSectionsIso
 
+public import SerrePositivity.InfinityCategories.F2.VertexFiberProjectionIso
+public import SerrePositivity.InfinityCategories.F2.IntervalPullbackInputIso
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanModelFiberInputIso
+public import SerrePositivity.InfinityCategories.F2.CoherentCospanNormalizedModelFiberComparison
+public import SerrePositivity.InfinityCategories.F2.IntervalCospanEndModels
+public import SerrePositivity.InfinityCategories.F2.StrictKanPullbackEndNaturality
+public import SerrePositivity.InfinityCategories.F2.KanSpecifiedIntervalLift
+public import SerrePositivity.InfinityCategories.F2.KanSpecifiedIntervalLiftEquivalence
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
