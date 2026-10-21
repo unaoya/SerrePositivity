@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriangle
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidateTwoSimplex
+import SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronBoundary
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronSingleCuts
+import SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronCutProduct
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronExtremeCuts
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronExpansion
 import SerrePositivity.InfinityCategories.Derived.DGNerveListCutProduct
 import SerrePositivity.InfinityCategories.Derived.DGNerveListCutLow
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutProduct
@@ -3156,6 +3163,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriangle,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorCandidateTwoSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronSingleCuts,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTetrahedronCutProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronExtremeCuts,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTetrahedronExpansion,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveListCutProduct,
     `SerrePositivity.InfinityCategories.Derived.DGNerveListCutLow,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutProduct,
