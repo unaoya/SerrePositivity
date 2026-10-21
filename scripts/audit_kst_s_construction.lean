@@ -24702,3 +24702,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PointedSSetObject.obj
 #print axioms SerrePositivity.KST.SConstruction.PointedSSetObject.obj
+
+#check @SerrePositivity.KST.SConstruction.coordinateEnrichedDiagonalAction
+#print axioms SerrePositivity.KST.SConstruction.coordinateEnrichedDiagonalAction
+
+#check @SerrePositivity.KST.SConstruction.coordinateEnrichedDiagonalAction_app
+#print axioms SerrePositivity.KST.SConstruction.coordinateEnrichedDiagonalAction_app
+
+#check @SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly_enriched_naturality
+#print axioms SerrePositivity.KST.SConstruction.coordinateDiagonalAssembly_enriched_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMultiDiagonalAssembly_action
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMultiDiagonalAssembly_action
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_mem_zeroRange
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_mem_zeroRange
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_mem_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionAction_mem_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionBoundaryAction_inclusion
