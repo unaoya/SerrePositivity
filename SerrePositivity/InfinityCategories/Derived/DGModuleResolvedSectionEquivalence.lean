@@ -22,7 +22,8 @@ def dgModuleResolvedSourceSectionEquivalence :
   hom := dgNerve.map (dgUniverseLiftUp.{u, max (u + 1) v, max (u + 1) v} R C) ≫
     (dgModuleFunctorResolutionSourceNerveEquivalence R C E F).inv
   inv := dgNerve.map (dgModuleFunctorResolutionSource R C E F)
-  homInvIso := by
-    rw [dgModuleResolvedSourceSection_comp_source]
+  homInvIso := eqToIso (congrArg
+    (fun f : dgNerve R C ⟶ dgNerve R C ↦ HomotopyCategory.mk (functorVertex f))
+    (dgModuleResolvedSourceSection_comp_source R C E F))
   invHomIso := dgModuleResolvedProjectionSectionIso R C E F
 end SerrePositivity.InfinityCategories

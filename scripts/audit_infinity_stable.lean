@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle
+import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
+import SerrePositivity.InfinityCategories.Stable.EquivalenceTriangleCoherence
+import SerrePositivity.InfinityCategories.Stable.FunctorIsoArrowTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionSourceDown
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionComparisonProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionCounit
+import SerrePositivity.InfinityCategories.Stable.AdjunctionCompositeCounit
+import SerrePositivity.InfinityCategories.Stable.QCatAdjunctionCompositeCounit
+import SerrePositivity.InfinityCategories.Stable.QCatAdjunctionTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelAdjunctionCounit
 import SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit
 import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery
 import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit
@@ -4330,6 +4342,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle,
+    `SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence,
+    `SerrePositivity.InfinityCategories.Stable.EquivalenceTriangleCoherence,
+    `SerrePositivity.InfinityCategories.Stable.FunctorIsoArrowTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionSourceDown,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionComparisonProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionCounit,
+    `SerrePositivity.InfinityCategories.Stable.AdjunctionCompositeCounit,
+    `SerrePositivity.InfinityCategories.Stable.QCatAdjunctionCompositeCounit,
+    `SerrePositivity.InfinityCategories.Stable.QCatAdjunctionTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelAdjunctionCounit,
+
     `SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit,
     `SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery,
     `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit,
