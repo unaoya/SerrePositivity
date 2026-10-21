@@ -19278,3 +19278,91 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.serreCubeRightBlockNatural_all
 #check @SerrePositivity.KST.SConstruction.serreCubeTensorIso_tensorMap_naturality_right
 #print axioms SerrePositivity.KST.SConstruction.serreCubeTensorIso_tensorMap_naturality_right
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_unit
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_unit
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step_iso
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step_iso
+#check @SerrePositivity.KST.SConstruction.MonoidalPowerCoherenceEquation
+#print axioms SerrePositivity.KST.SConstruction.MonoidalPowerCoherenceEquation
+#check @SerrePositivity.KST.SConstruction.MonoidalPowerCoherenceStepEquation
+#print axioms SerrePositivity.KST.SConstruction.MonoidalPowerCoherenceStepEquation
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step_equation
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_step_equation
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_leftUnit_step
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_leftUnit_step
+#check @SerrePositivity.KST.SConstruction.monoidalPowerCoherence_leftUnit_zero
+#print axioms SerrePositivity.KST.SConstruction.monoidalPowerCoherence_leftUnit_zero
+#check @SerrePositivity.KST.SConstruction.monoidalLeftUnitComparison_inverse
+#print axioms SerrePositivity.KST.SConstruction.monoidalLeftUnitComparison_inverse
+#check @SerrePositivity.KST.SConstruction.monoidalRightUnitComparison_inverse
+#print axioms SerrePositivity.KST.SConstruction.monoidalRightUnitComparison_inverse
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_tensor_associativity
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_tensor_associativity
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeCoreMonoidal
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeCoreMonoidal
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMonoidal
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMonoidal
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_tensorator
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_tensorator
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_cotensorator
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_cotensorator
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_unit
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_unit
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_counit
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_counit
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_map_tensor
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_map_tensor
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeComplexMonoidal
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeComplexMonoidal
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_associator
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_associator
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_leftUnitor
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_leftUnitor
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_rightUnitor
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeFunctor_rightUnitor
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_leftUnit
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_leftUnit
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_rightUnit
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_rightUnit
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_leftUnit_inv
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_leftUnit_inv
+#check @SerrePositivity.KST.SConstruction.serreConcreteCube_rightUnit_inv
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCube_rightUnit_inv
+#check @SerrePositivity.KST.SConstruction.serreCubeDimensionMap
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDimensionMap
+#check @SerrePositivity.KST.SConstruction.serreCubeDimensionMap_refl
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDimensionMap_refl
+#check @SerrePositivity.KST.SConstruction.serreCubeDimensionMap_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDimensionMap_succ
+#check @SerrePositivity.KST.SConstruction.serreConcreteCubeMap_dimension
+#print axioms SerrePositivity.KST.SConstruction.serreConcreteCubeMap_dimension
+#check @SerrePositivity.KST.SConstruction.serreCubeDimensionMap_assoc_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDimensionMap_assoc_succ
+#check @SerrePositivity.KST.SConstruction.serreCubeDimensionMap_zero_add_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeDimensionMap_zero_add_succ
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_zero
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_zero
+#check @SerrePositivity.KST.SConstruction.SerreCubeTensorAssociativeStep
+#print axioms SerrePositivity.KST.SConstruction.SerreCubeTensorAssociativeStep
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_step_of
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_step_of
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_succ_of_step
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_succ_of_step
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_succ
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_succ
+#check @SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_all
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensorAssociative_all
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_leftUnit
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_leftUnit
+#check @SerrePositivity.KST.SConstruction.serreCubeTensor_rightUnit
+#print axioms SerrePositivity.KST.SConstruction.serreCubeTensor_rightUnit
+#check @SerrePositivity.KST.SConstruction.serreCubeRightSplit
+#print axioms SerrePositivity.KST.SConstruction.serreCubeRightSplit
+#check @SerrePositivity.KST.SConstruction.serreCubeLeftSplit
+#print axioms SerrePositivity.KST.SConstruction.serreCubeLeftSplit
+#check @SerrePositivity.KST.SConstruction.serreCubeAssociatorHom
+#print axioms SerrePositivity.KST.SConstruction.serreCubeAssociatorHom
+#check @SerrePositivity.KST.SConstruction.SerreCubeTensorAssociative
+#print axioms SerrePositivity.KST.SConstruction.SerreCubeTensorAssociative

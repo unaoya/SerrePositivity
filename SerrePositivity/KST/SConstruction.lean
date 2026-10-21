@@ -1444,4 +1444,13 @@ public import SerrePositivity.KST.SConstruction.SerreCubeTensorHomLaws
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorHomValues
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorNaturality
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorRightNaturality
+public import SerrePositivity.KST.SConstruction.MonoidalPowerCoherenceStep
+public import SerrePositivity.KST.SConstruction.MonoidalUnitComparisonInverse
+public import SerrePositivity.KST.SConstruction.SerreConcreteCubeMonoidal
+public import SerrePositivity.KST.SConstruction.SerreConcreteCubeMonoidalRecovery
+public import SerrePositivity.KST.SConstruction.SerreConcreteCubeStructuralMaps
+public import SerrePositivity.KST.SConstruction.SerreCubeDimensionTransport
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorAssociativity
+public import SerrePositivity.KST.SConstruction.SerreCubeTensorUnitCoherence
+public import SerrePositivity.KST.SConstruction.SerreCubeTripleComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
