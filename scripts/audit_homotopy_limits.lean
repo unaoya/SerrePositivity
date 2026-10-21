@@ -11620,3 +11620,48 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @relativeHomFamily_exists_extension_over_base
 #print axioms relativeHomFamily_exists_extension_over_base
+
+#check @cosliceOppositeIso_restrict
+#print axioms cosliceOppositeIso_restrict
+
+#check @relativeFunctorOppositeIso_pre
+#print axioms relativeFunctorOppositeIso_pre
+
+#check @cosliceReverseFiberIso
+#print axioms cosliceReverseFiberIso
+
+#check @cosliceReverseFiberIso_ι
+#print axioms cosliceReverseFiberIso_ι
+
+#check @cosliceReverseFiberIso_restrict
+#print axioms cosliceReverseFiberIso_restrict
+
+#check @cosliceRestriction_homotopyEquivalence_iff_op_slice
+#print axioms cosliceRestriction_homotopyEquivalence_iff_op_slice
+
+#check @relativeFunctorPre_homotopyEquivalence_iff_op
+#print axioms relativeFunctorPre_homotopyEquivalence_iff_op
+
+#check @relativeFunctorPre_homotopyEquivalence_iff_totalIso
+#print axioms relativeFunctorPre_homotopyEquivalence_iff_totalIso
+
+#check @cosliceRestriction_homotopyEquivalence_iff_sections
+#print axioms cosliceRestriction_homotopyEquivalence_iff_sections
+
+#check @relativeFunctorPre_rightFibration
+#print axioms relativeFunctorPre_rightFibration
+
+#check @isLocalForHom_edge_iff_sectionRestriction
+#print axioms isLocalForHom_edge_iff_sectionRestriction
+
+#check @isLocalForHom_edge_iff_sectionRestriction_trivial
+#print axioms isLocalForHom_edge_iff_sectionRestriction_trivial
+
+#check @relativeHomFiber_isContractibleKan_of_restriction_trivial
+#print axioms relativeHomFiber_isContractibleKan_of_restriction_trivial
+
+#check @localEdgeFamily_vertexFiber_isContractibleKan
+#print axioms localEdgeFamily_vertexFiber_isContractibleKan
+
+#check @localEdgeFamily_relativeHom_trivial
+#print axioms localEdgeFamily_relativeHom_trivial
