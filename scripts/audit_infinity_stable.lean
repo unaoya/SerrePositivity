@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveFaces
+import SerrePositivity.InfinityCategories.Derived.DGNerveListCutHEq
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutImageIndex
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductPullback
 import SerrePositivity.InfinityCategories.Derived.DGNerveTripleBoundary
 import SerrePositivity.InfinityCategories.Derived.DGTensorGradedComposition
 import SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriple
@@ -3744,6 +3748,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveListCutHEq,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutImageIndex,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductPullback,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveTripleBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGTensorGradedComposition,
     `SerrePositivity.InfinityCategories.Derived.DGNerveTensorTriple,
