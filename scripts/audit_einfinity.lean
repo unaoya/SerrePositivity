@@ -4857,6 +4857,37 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.sourceJoint_eq,
       `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.ColumnSplit.targetJoint_eq]
 
+@[noinline] private def e2RequiredBatch62 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.ForwardTriple.append,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.composite_append,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.collapse_append,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.column_heq,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.composite,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.obj_eq,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.collapse_diagram,
+      `SerrePositivity.EInfinity.Hammock.ForwardTriple.segment_composite,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.forward_arrow_comm,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.backward_arrow_comm,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.forwardChainHom,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.backwardChainHom,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.point_transport,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.forward_map_comm,
+      `SerrePositivity.EInfinity.Hammock.Segment.Moving.backward_map_comm,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.collapsedColumnDiagram,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.collapse_blocks,
+      `SerrePositivity.EInfinity.Hammock.WordAction.moving_segment_square,
+      `SerrePositivity.EInfinity.Hammock.WordAction.moving_column_comm,
+      `SerrePositivity.EInfinity.Hammock.WordAction.movingMap,
+      `SerrePositivity.EInfinity.Hammock.WordAction.movingMap_id,
+      `SerrePositivity.EInfinity.Hammock.WordAction.movingMap_comp,
+      `SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.word,
+      `SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.direction,
+      `SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.collapse,
+      `SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.cut_zero,
+      `SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.cut_last,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.wordAction_fixedFunctor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4888,7 +4919,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -11305,3 +11336,72 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
         τ h := Hammock.UnmarkedGenerators.AttachedPrefix.markedFunctor_inclusion
           (freeResolutionGeneratorBase
             (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ h
+
+
+-- 元の三列 collapse の両端の cut を保持する。
+open SerrePositivity.EInfinity.Hammock in
+example : Word.ForwardTriple.collapse.cut 0 = (0 : Fin 4) ∧
+    Word.ForwardTriple.collapse.cut (Fin.last 1) = (Fin.last 3 : Fin 4) :=
+  ⟨Word.ForwardTriple.cut_zero, Word.ForwardTriple.cut_last⟩
+
+-- 元の三射の連結を、元の WordAction で同じ合成射へ戻す。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {X Y Z V : C}
+    (e : X ⟶ Y) (f : Y ⟶ Z) (g : Z ⟶ V) :
+    WordAction.obj Word.ForwardTriple.collapse (ForwardTriple.append (W := W) e f g) =
+      ForwardZigzag.obj (e ≫ f ≫ g) := ForwardTriple.collapse_append e f g
+
+-- 端点も動く縦射の合成を元の語の作用が保持する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {a b : Word} (f : a ⟶ b)
+    {X Y X' Y' X'' Y'' : C} {S : Zigzag W a X Y} {T : Zigzag W a X' Y'}
+    {U : Zigzag W a X'' Y''} (g : Zigzag.MovingHom S T) (h : Zigzag.MovingHom T U) :
+    WordAction.movingMap f (g.comp h) =
+      (WordAction.movingMap f g).comp (WordAction.movingMap f h) :=
+  WordAction.movingMap_comp f g h
+
+-- 固定端点では既存の元の WordAction.functor と厳密に一致する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] (W : MorphismProperty C) [W.IsMultiplicative]
+    {a b : Word} (f : a ⟶ b) {X Y : C}
+    (F : Zigzag.MovingDiagram D C W a ((Functor.const D).obj X) ((Functor.const D).obj Y)) :
+    (Zigzag.MovingDiagram.wordAction f F).fixedFunctor =
+      F.fixedFunctor ⋙ WordAction.functor f := Zigzag.MovingDiagram.wordAction_fixedFunctor f F
+
+-- 内部切断の全三列は元の同じ列の全図式を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (i : Fin w.length)
+    (h : UnmarkedGenerators.column W (τ.obj 0) i ≠ []) :
+    Zigzag.MovingDiagram.wordAction Word.ForwardTriple.collapse
+      (((UnmarkedGenerators.Attachments.leftBlock W τ i h).append
+        (UnmarkedGenerators.Attachments.generatorBlock W τ i h)).append
+          (UnmarkedGenerators.Attachments.rightBlock W τ i h)) =
+      UnmarkedGenerators.Attachments.collapsedColumnDiagram W τ i h :=
+  UnmarkedGenerators.Attachments.collapse_blocks W τ i h
+
+-- 任意可換環の実際の自由解像の各次数にも、同じ局所回収を適用する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
+    {w : Hammock.Word}
+    {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
+    (τ : (Hammock.graph ((freeResolution
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).weakEquivalences w X Y).obj m)
+    (i : Fin w.length)
+    (h : Hammock.UnmarkedGenerators.column
+      (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+        (τ.obj 0) i ≠ []) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    Hammock.Zigzag.MovingDiagram.wordAction Hammock.Word.ForwardTriple.collapse
+      (((Hammock.UnmarkedGenerators.Attachments.leftBlock W τ i h).append
+        (Hammock.UnmarkedGenerators.Attachments.generatorBlock W τ i h)).append
+          (Hammock.UnmarkedGenerators.Attachments.rightBlock W τ i h)) =
+      Hammock.UnmarkedGenerators.Attachments.collapsedColumnDiagram W τ i h :=
+  Hammock.UnmarkedGenerators.Attachments.collapse_blocks
+    (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences τ i h

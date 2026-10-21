@@ -1146,3 +1146,13 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedCutAttachmentDiagrams
 public import SerrePositivity.EInfinity.Hammock.UnmarkedCutAttachments
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPrefixHammock
 public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitJoints
+public import SerrePositivity.EInfinity.Hammock.ForwardTripleAppend
+public import SerrePositivity.EInfinity.Hammock.ForwardTripleCollapse
+public import SerrePositivity.EInfinity.Hammock.ForwardTripleDiagram
+public import SerrePositivity.EInfinity.Hammock.ForwardTripleSegment
+public import SerrePositivity.EInfinity.Hammock.MovingSegmentChains
+public import SerrePositivity.EInfinity.Hammock.MovingSegmentNaturality
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutTripleCollapse
+public import SerrePositivity.EInfinity.Hammock.WordActionMovingMap
+public import SerrePositivity.EInfinity.Hammock.WordForwardTripleCollapse
+public import SerrePositivity.EInfinity.Hammock.ZigzagMovingWordAction
