@@ -1601,7 +1601,20 @@ hammock と元の包含・全関手の回収と全語の作用への整合。
 実際の W-hammock の点とし、元の同じ生成矢と文字列を保持する。
 `MarkedSpine.map/space/wordValue` と `markedSpine_simplex/extraction/extraction_wordValue` は
 元の全単体作用素に自然な反復抽出射と元の生成文字列評価の回収。任意可換環の実際の全自由次数でも検証。
-元の貼り戻しとの両逆・因子の一意性・自由積の単体的 pushout・DK の両弱比較は後続。
+元の貼り戻しと抽出の片側の逆関係は以下。逆向きの回収・因子の一意性・自由積の pushout は後続。
+`composePoint/composePoint_inclusions/arrowPoint/arrowPoint_simplex` は元の合成と
+同じ生成射の一定単体の標準射を各次数で回収する。
+`FactorTarget.pastePoint/pastePoint_simplex/paste` は実際の指定 prefix・同じ生成矢・残りを
+元の包含と元の hammock 合成で接続する単体写像。
+`MovingDiagram.append_fixedFunctor`・`Attachments.generator_fixedFunctor/refinedFunctor_pair` は
+元の全図式を同じ三因子の連結関手に回収する。
+`FirstFactor.paste_point/cutMap_paste/colimitCut_paste/nonemptyCut_paste` は元の一段の切断を
+貼ると元の同じ単体・標準射・非空部分の包含自身に戻ることを証明する。
+`MarkedSpine.glue/glue_simplex/gluing` は実際の有限切断列全体の単体的貼り戻し。
+`glue_markedSpine/extraction_gluing` は元の全 hammock 上で抽出の後の貼り戻しが元の恒等射。
+`extraction_injective/gluing_surjective` は同じ射自身の全次数での単射性・全射性。
+任意可換環の実際の全自由次数でも検証。逆向きの貼り戻し後の因子回収・一意性・
+積分解・自由積の単体的 pushout・DK の両弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

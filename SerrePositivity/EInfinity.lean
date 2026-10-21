@@ -1269,3 +1269,11 @@ public import SerrePositivity.EInfinity.Hammock.MarkedSpineExtraction
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineSimplex
 public import SerrePositivity.EInfinity.Hammock.UnmarkedEmptySpace
 public import SerrePositivity.EInfinity.Hammock.UnmarkedMarkedSpine
+public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPoints
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineExtractionGluing
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineGluing
+public import SerrePositivity.EInfinity.Hammock.UnmarkedCutPasteRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPaste
+public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstFactorPasteRecovery
+public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinedPairing
+public import SerrePositivity.EInfinity.Hammock.ZigzagFixedAppendFunctor

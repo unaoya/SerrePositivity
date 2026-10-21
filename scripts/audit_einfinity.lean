@@ -5295,6 +5295,33 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_empty,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_nonempty]
 
+@[noinline] private def e2RequiredBatch74 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.composePoint,
+      `SerrePositivity.EInfinity.Hammock.composePoint_simplex,
+      `SerrePositivity.EInfinity.Hammock.composePoint_inclusions,
+      `SerrePositivity.EInfinity.Hammock.arrowSimplex,
+      `SerrePositivity.EInfinity.Hammock.arrowPoint,
+      `SerrePositivity.EInfinity.Hammock.arrowPoint_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.glue_markedSpine,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_gluing,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_injective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.gluing_surjective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.glue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.glue_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.gluing,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.gluing_nil,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.gluing_cons,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.cutMap_paste,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.colimitCut_paste,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.nonemptyCut_paste,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pastePoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.pastePoint_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget.paste,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.paste_point,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.generator_fixedFunctor,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Attachments.refinedFunctor_pair,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.MovingDiagram.append_fixedFunctor]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5326,7 +5353,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -12681,4 +12708,60 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
     FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.wordValue W Y X = colimitValue W X Y :=
   FirstFactor.extraction_wordValue (freeResolutionGeneratorBase
+    (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
+
+
+-- 元の三因子の貼り戻しは同じ元の単体の標準射へ戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (graph W.paths w X Y).obj n) (h : ∃ j, column W (τ.obj 0) j ≠ []) :
+    (FactorTarget.paste W X Y).app n (FirstFactor.point W τ h) =
+      (graphInclusion W.paths X Y w).app n τ := FirstFactor.paste_point W τ h
+
+-- 実際の非空部分の切断と貼り戻しで元の包含自身を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    FirstFactor.nonemptyCut W X Y ≫ FactorTarget.paste W X Y = NonemptyValue.inclusion W X Y :=
+  FirstFactor.nonemptyCut_paste W X Y
+
+-- 貼り戻しは元の全指定因子・同じ生成矢の全単体作用素に自然である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y X : Paths C) {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
+    (t : FirstFactor.MarkedSpine W Y n X) :
+    FirstFactor.MarkedSpine.glue (FirstFactor.MarkedSpine.map θ t) =
+      (colimitGraph W.paths X Y).map θ (FirstFactor.MarkedSpine.glue t) :=
+  FirstFactor.MarkedSpine.glue_simplex θ t
+
+-- 元の全 hammock で反復抽出の後の貼り戻しが元の恒等射である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y X : Paths C) :
+    FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.gluing W Y X =
+      𝟙 (colimitGraph W.paths X Y) := FirstFactor.extraction_gluing W Y X
+
+-- 同じ抽出射自身は全次数で単射である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y X : Paths C) (n : SimplexCategoryᵒᵖ) :
+    Function.Injective ((FirstFactor.extraction W Y X).app n) :=
+  FirstFactor.extraction_injective W Y X n
+
+-- 任意可換環の実際の全自由次数で同じ元の恒等射を回収する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.gluing W Y X =
+      𝟙 (colimitGraph W.paths X Y) :=
+  FirstFactor.extraction_gluing (freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X
