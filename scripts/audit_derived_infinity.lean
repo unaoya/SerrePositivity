@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.ParameterBiprodMapDifference
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompData
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompProjection
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompCompositionMaps
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompPrimitive
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompFunctor
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompInfinity
+import SerrePositivity.InfinityCategories.Derived.ResolutionOutputPrecomposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionPrecomp
 import SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverAcyclic
 import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSpanMaps
 import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSurjectiveSpan
@@ -3122,6 +3132,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ParameterBiprodMapDifference,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompData,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompCompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompInfinity,
+    `SerrePositivity.InfinityCategories.Derived.ResolutionOutputPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionPrecomp,
     `SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverAcyclic,
     `SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSpanMaps,
     `SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSurjectiveSpan,
