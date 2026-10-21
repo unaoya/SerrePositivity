@@ -5,6 +5,8 @@ public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeEquivalencePathExtension
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
+public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
 /-!
 概要：指定ホモトピーで可換な射を、同じ底の射へ厳密に写る射に補正する。
@@ -17,8 +19,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
-open CategoryTheory SSet
+open CategoryTheory MonoidalCategory SSet
 open SSet.modelCategoryQuillen
+open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 variable {E B T : SSet.{u}} [KanComplex E] [KanComplex B]
   (p : E ⟶ B) [HomotopicalAlgebra.Fibration p]
@@ -50,10 +53,28 @@ lemma kanHomotopyRectification_over : kanHomotopyRectification p a b H ≫ p = b
   rw [kanHomotopyRectificationPath, HomotopyLimits.kanSpecifiedPathLift_other_endpoint]
   exact homotopyEquivalencePath_one H
 
-/-- 同じ指定持ち上げから得られる、元の射から補正後の射への関手同型。 -/
+/-- 同じ持ち上げの全可逆 path から、元の射と補正後の射の間の円柱を読む。 -/
+def kanHomotopyRectificationHomotopy : SSet.Homotopy a (kanHomotopyRectification p a b H) where
+  h := (kanHomotopyRectificationPath p a b H ▷ (Δ[1] : SSet.{u})) ≫
+    (equivalencePathHomotopy E).h
+  h₀ := by
+    change _ = a
+    rw [SSet.ι₀_comp_assoc, (equivalencePathHomotopy E).h₀]
+    exact kanHomotopyRectificationPath_source p a b H
+  h₁ := by
+    change _ = kanHomotopyRectification p a b H
+    rw [SSet.ι₁_comp_assoc, (equivalencePathHomotopy E).h₁]
+    rfl
+  rel := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro x
+    exact False.elim x.1.property
+
+/-- 同じ指定持ち上げの全円柱の類を保持する、元の射から補正後の射への関手同型。 -/
 def kanHomotopyRectificationIso : FunctorIso a (kanHomotopyRectification p a b H) :=
-  functorIsoOfEq (F1B.kanEquivalencePath_functorIso (kanHomotopyRectificationPath p a b H))
-    (kanHomotopyRectificationPath_source p a b H) rfl
+  functorIsoOfSimplicialHomotopy (kanHomotopyRectificationHomotopy p a b H)
 
 /-- 元の射が同値なら、指定ホモトピーによる厳密化後も同値。 -/
 lemma kanHomotopyRectification_homotopyEquivalence [KanComplex T]

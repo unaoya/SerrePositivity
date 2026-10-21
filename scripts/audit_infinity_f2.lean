@@ -2135,3 +2135,20 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso
 #check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_fst
 #check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_snd
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLeftLegFinalImage_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeRightLegFinalImage_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeLeftTargetEvaluation_comparison
+#check @SerrePositivity.InfinityCategories.F2.coherentCospanNativeRightTargetEvaluation_comparison
+#check @SerrePositivity.InfinityCategories.F2.equivalencePathHomotopy_map
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationHomotopy_image
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationIso_image
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_postcomp_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_postcomp_postcomp_heq
+#check @SerrePositivity.InfinityCategories.F2.pointedSectionTargetFiber_transport
+#check @SerrePositivity.InfinityCategories.F2.strictPullbackRightHomotopyBase
+#check @SerrePositivity.InfinityCategories.F2.strictPullback_exists_homotopy
+#check @SerrePositivity.InfinityCategories.F2.strictPullbackImage_eq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoRepresentative_postcomp_hom
+#check @SerrePositivity.InfinityCategories.F2.strictPullback_functorIso_exists
+#check @SerrePositivity.InfinityCategories.F2.kanHomotopyRectificationHomotopy

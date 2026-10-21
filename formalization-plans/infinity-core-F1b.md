@@ -53,9 +53,9 @@
   任意の Kan 境界への持ち上げと境界移動の除去も構成。全標準境界の path 置換充填から、元の Kan 引き戻し比較の弱同値性・ホモトピー逆を証明。
   元の引き戻し全空間を native 極限錐の頂点に構成。元の比較辺と恒等図式辺を持つ可逆な全錐比較・各脚の自然性を保持。
   置換の元の path の指定同型と切断上の定値性・標準同型への簡約を証明。交換則と全円柱の一致から区間錐・全空間錐の二射影の指定比較・元の全 path・native 可換性の最終整合を証明。
-  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。宇宙持ち上げが Kan fibration と厳密な引き戻しの二射影を保つことから、小さい実 fiber の interval 模型を持ち上げて native 切断の厳密な引き戻しへ送る具体的な比較とホモトピー同値性を証明。元の模型比較をこの比較へ合成し、同じ native な二脚との指定関手同型を構成。未完：二つの指定同型の共通終点での整合を元の指定 path から示し、引き戻し全体へ貼り合わせて実模型 fiber 比較へ同値性を移すこと、一般の有限極限交換・Ind。
+  一般 coherent 図式の元の全空間余錐の native 余極限性と、filtered 図式の元の Kan 積・引き戻し比較の弱同値性を証明。各点の native 極限錐から元の pointed 切断族への比較同値を構成。切断空間を二辺の切断の共通終点での厳密な引き戻しへ表示し、始点の自明 Kan 性・終点の Kan fibration 性を証明。同じ全三角形から二脚の指定同型と指定 path の下降の型付き等式を保持。実 fiber cospan から切断 cospan への厳密な自然変換を構成し、その全成分と end 比較はホモトピー同値。元の同じ切断族から切断 end への実比較も各点の極限性から同値。入力 fiber の射影表示の同型で実模型比較を正規化し、二脚と全 path を厳密に保持。任意の Kan cospan と interval 引き戻しを左脚置換後の同じ end への実ホモトピー同値で比較。厳密な引き戻しの end 比較の自然性・同値判定、全区間 path と端点を保つ Kan 持ち上げ・終点同値も証明。宇宙持ち上げが Kan fibration と厳密な引き戻しの二射影を保つことから、小さい実 fiber の interval 模型を持ち上げて native 切断の厳密な引き戻しへ送る具体的な比較とホモトピー同値性を証明。元の模型比較をこの比較へ合成し、同じ native な二脚との指定関手同型を構成。共通点の同型による終点評価を元の全三角形の fiber 評価へ厳密に同定し、native 二脚の共通点像と既存の最終 fiber の指定同型の型付き一致を証明。厳密化の指定同型を同じ持ち上げの全円柱から直接定義し、底の元の全円柱・指定類を厳密に回収。底の指定類が一致する二脚を、右の全円柱と左の指定類を保持して引き戻し全体へ貼る一般補題を証明。未完：元の実模型の二脚の底の整合への適用、実模型 fiber 比較への同値性の移送、一般の有限極限交換・Ind。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド 8510 jobs、公理監査 7417 宣言・同時 import 成功。宇宙持ち上げの Kan fibration・引き戻し保存、元の全 path の厳密化、実 fiber interval 模型から切断模型への比較同値、元の模型との合成と二脚の指定同型の追加31宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
+  検証：三集約同時ビルド 8529 jobs、公理監査 7478 宣言・同時 import 成功。底で整合する二脚の全体への貼り合わせ、共通点評価と最終 fiber 像の比較、厳密化の元の全円柱と指定類の回収の追加16宣言も型検査。標準三公理のみ、追加 ModelCategory 仮定・名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -75,7 +75,7 @@
 - `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence`
+- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 
-- F2N-1：coherentCospanNativeIntervalComparison は元の小さい interval 模型の持ち上げから native 切断の厳密な引き戻しへの具体的なホモトピー同値。元の模型との合成 coherentCospanModelNativeComparison と、同じ native な二脚との coherentCospanModelNativeLeftIso・RightIso まで検証済み。次は二つの同型を f・g で写した像の整合を、kanHomotopyRectificationPath_projection と coherentCospanModelFiberPathIso_eq_section_down から、明示した端点補正の下で証明する。その整合から F1B.exists_kanHomotopyRepresentative_lift で左ホモトピーの底の代表を右と厳密に揃え、引き戻し全体の関手同型を構成して元の模型比較へ同値性を移す。二脚の同型だけで全体の同値性を結論しない。その後一般の有限極限交換、Indκ。
+- F2N-1：次は kanHomotopyRectificationIso_image を元の模型比較へ前合成し、coherentCospanNativeLeft/RightLegFinalImage_heq と元の模型 path の比較で二脚の底の整合を証明する。模型 path の既存等式は小宇宙、共通終点像は持ち上げた宇宙なので、functorSpaceDown の忠実性を証明するか、元の同一円柱の直接移送で接続する。下降の等式だけから上の等式を仮定しない。底の整合後は strictPullback_functorIso_exists（右の全円柱・左の指定類を保持する代表の厳密化）で全体を貼り合わせ、実模型比較の同値性へ移す。その後一般の有限極限交換、Indκ。
 
 ## 0. 目標と範囲
 
