@@ -7360,6 +7360,51 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalReduction_isWeakHomotopyEquivalence,
       `SerrePositivity.EInfinity.SimplicialLocalization.freeWordDiagonalAugmentation_weak]
 
+@[noinline] private def e2RequiredBatch118 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.algebraRelativeCategory,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantToAlgebraDKRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraToCofibrantDKRelative,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraDKComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantDKComparison_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraDKComparison_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantToAlgebraDK_colimitMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraToCofibrantDK_colimitMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantToAlgebraDK_reducedMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraToCofibrantDK_reducedMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.algebraHammockHomLiftIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockGraphInclusionMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockGraphInclusionMap_app,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraHammockInclusionMap_normalization,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDiagonalHammockMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDiagonalHammockMap_weak,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKHammockComparisonIso_fac,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantAlgebraDKMappingSpaceComparisonIso_hammock,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgMappingSpaceComparisonIso_unit,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComparisonIso,
+      `SerrePositivity.EInfinity.BarrattEccles.mappingSpaceReducedHammockComparisonIso_fac,
+      `SerrePositivity.EInfinity.Hammock.HomLift.colimitIso,
+      `SerrePositivity.EInfinity.Hammock.HomLift.reducedIso,
+      `SerrePositivity.EInfinity.Hammock.HomLift.colimitIso_graphInclusion,
+      `SerrePositivity.EInfinity.Hammock.HomLift.reducedIso_graphNormalization,
+      `SerrePositivity.EInfinity.Hammock.HomLift.liftedWeak,
+      `SerrePositivity.EInfinity.Hammock.HomLift.liftedWeak_isMultiplicative,
+      `SerrePositivity.EInfinity.Hammock.HomLift.down,
+      `SerrePositivity.EInfinity.Hammock.HomLift.up,
+      `SerrePositivity.EInfinity.Hammock.HomLift.downFunctor,
+      `SerrePositivity.EInfinity.Hammock.HomLift.upFunctor,
+      `SerrePositivity.EInfinity.Hammock.HomLift.down_up,
+      `SerrePositivity.EInfinity.Hammock.HomLift.up_down,
+      `SerrePositivity.EInfinity.Hammock.HomLift.graphIso,
+      `SerrePositivity.EInfinity.Hammock.HomLift.graphDiagramIso,
+      `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.colimitMap_weak,
+      `SerrePositivity.EInfinity.Hammock.RelativeEquivalence.reducedMap_weak]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7391,7 +7436,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -17750,3 +17795,81 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
   exact ⟨freeHammockDiagonalReduction_isWeakHomotopyEquivalence C X Y,
     freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y⟩
 end e2LeftComparisonFixtures
+
+-- 元の相対逆・ULift・cofibrant 包含と実際の CAlg Hom の比較を検証する。
+section e2DKMappingFixtures
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.SimplicialModel
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    {V : MorphismProperty D} [V.IsMultiplicative] (F : LocalizerMorphism W V)
+    (G : LocalizerMorphism V W) (η : (F.comp G).functor ⟶ 𝟭 C) (hη : ∀ X, W (η.app X))
+    (ε : (G.comp F).functor ⟶ 𝟭 D) (hε : ∀ X, V (ε.app X)) (X Y : C) :
+    IsWeakHomotopyEquivalence (Relative.reducedMap F X Y) :=
+  RelativeEquivalence.reducedMap_weak F G η hη ε hε X Y
+
+example {B : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUniverse} B]
+    (W : MorphismProperty B) [W.IsMultiplicative] (w : Word) (X Y : B) :
+    IsIso (HomLift.graphIso (C := B) W w X Y).hom := by infer_instance
+
+example {B : Type (e2ComplexLimitUniverse + 1)} [Category.{e2ComplexLimitUniverse} B]
+    (W : MorphismProperty B) [W.IsMultiplicative] (w : Word) (X Y : B) :
+    graphNormalization (HomLift.liftedWeak (C := B) W)
+        (ULiftHom.objUp.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1} X)
+        (ULiftHom.objUp.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse + 1} Y) w ≫
+      (HomLift.reducedIso (C := B) W X Y).hom =
+        (HomLift.graphIso (C := B) W w X Y).hom ≫ graphNormalization W X Y w :=
+  HomLift.reducedIso_graphNormalization (C := B) W X Y w
+
+variable (A : Type e2ComplexLimitUniverse) [CommRing A]
+  (X Y : (cofibrantAlgebraRelativeCategory A).category)
+example : (cofibrantAlgebraRelativeCategory A).weakEquivalences ((cofibrantDKComparison A).app X) :=
+  cofibrantDKComparison_weak A X
+
+example : IsWeakHomotopyEquivalence (cofibrantAlgebraHammockInclusionMap A X Y) :=
+  cofibrantAlgebraHammockInclusionMap_weak A X Y
+
+example (w : Word) (n : SimplexCategoryᵒᵖ)
+    (σ : (graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y).obj n) :
+    let := modelCategory A
+    (cofibrantAlgebraHammockGraphInclusionMap A X Y w).app n σ =
+      σ ⋙ Zigzag.Relative.functor (cofibrantAlgebraDKInclusionRelative A) :=
+  cofibrantAlgebraHammockGraphInclusionMap_app A X Y w n σ
+
+example : IsWeakHomotopyEquivalence (cofibrantAlgebraDiagonalHammockMap A X Y) :=
+  cofibrantAlgebraDiagonalHammockMap_weak A X Y
+
+example : AnodyneHomotopy.anodyneQ.obj (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) ≅
+    AnodyneHomotopy.anodyneQ.obj (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1,
+      e2ComplexLimitUniverse}.obj (((mappingSpace A).obj
+        (Opposite.op ((cofibrantAlgebraDKInclusion A).obj X))).obj
+          ((cofibrantAlgebraDKInclusion A).obj Y))) :=
+  cofibrantAlgebraDKMappingSpaceComparisonIso A X Y
+
+example : (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom ≫
+    (mappingSpaceReducedHammockComparisonIso A ((cofibrantAlgebraDKInclusion A).obj X)
+      ((cofibrantAlgebraDKInclusion A).obj Y)).hom =
+      (cofibrantAlgebraDKHammockComparisonIso A X Y).hom :=
+  cofibrantAlgebraDKMappingSpaceComparisonIso_hammock A X Y
+
+example (X Y : CAlgSimplicialCategory A) :
+    AnodyneHomotopy.anodyneQ.obj (SimplicialCategory.sHom X Y) ≅
+      AnodyneHomotopy.anodyneQ.obj (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1,
+        e2ComplexLimitUniverse}.obj (((mappingSpace A).obj
+          (Opposite.op ((cofibrantAlgebraDKInclusion A).obj X))).obj
+            ((cofibrantAlgebraDKInclusion A).obj Y))) :=
+  cAlgMappingSpaceComparisonIso A X Y
+
+example (X Y : CAlgSimplicialCategory A) :
+    AnodyneHomotopy.anodyneQ.map ((kanLocalizationUnit
+        (cofibrantAlgebraRelativeCategory A)).map X Y) ≫
+      (cAlgMappingSpaceComparisonIso A X Y).hom =
+        (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom :=
+  cAlgMappingSpaceComparisonIso_unit A X Y
+
+-- 既存の二対六則・可縮性の公開界面も保持する。
+example {P Q R : SSet.{e2ComplexLimitUniverse}} (f : P ⟶ Q) (g : Q ⟶ R)
+    (hfg : IsWeakHomotopyEquivalence (f ≫ g)) (hQ : IsWeaklyContractible Q) :
+    IsWeaklyContractible P := contractible_of_weak_factor f g hfg hQ
+end e2DKMappingFixtures

@@ -2087,10 +2087,26 @@ native 指定 Hom augmentation に回収し、弱同値性を追加入力なし�
 `freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence` と
 `freeHammockDiagonalReduction_isWeakHomotopyEquivalence` は元の左射自身の弱同値性。
 既存の右射の弱同値性と合わせ DK 命題2.2の両射が揃う。
-実 DK Hom と既存 Map^h の比較の結論・全自然性、∞ 局所化の普遍性は後続。
+`Hammock.RelativeEquivalence.colimitMap_weak/reducedMap_weak` は元の相対逆と両指定
+自然変換から同じ hammock Hom 射自身の弱同値性を得る。
+`Hammock.HomLift.graphDiagramIso/colimitIso/reducedIso` は同じ元の Hom の ULift の
+全 zigzag・全作用素・全標準射・正規化を保持する厳密な同型。
+`algebraRelativeCategory/cofibrantToAlgebraDKRelative/algebraToCofibrantDKRelative` は
+元の全代数の Hom だけを揃え、同じ包含と指定 cofibrant 置換を保つ。
+`cofibrantDKComparison/algebraDKComparison` は同じ指定比較の全成分と自然性。
+`cofibrantAlgebraHammockInclusionMap_weak` は元の cofibrant 包含の実際の Hom 射の弱同値性。
+`cofibrantAlgebraHammockGraphInclusionMap_app` と `cofibrantAlgebraHammockInclusionMap_normalization`
+は全語の元の射列・同じ包含と正規化の一致。
+`cofibrantAlgebraDKHammockComparisonIso_fac/mappingSpaceReducedHammockComparisonIso_fac` は
+元の二つの共通始域から実際の全単体の射を回収する。
+`cofibrantAlgebraDKMappingSpaceComparisonIso` は実 DK Hom と元の Map^h の持ち上げの
+ホモトピー型の同型で、同じ全代数の reduced hammock への因子化を保持する。
+`cAlgMappingSpaceComparisonIso/cAlgMappingSpaceComparisonIso_unit` は既存 CAlg_R の実際の
+Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の DK 比較の回収。
+全自然性・元の代数射の類との整合、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
-同じ共通始域からの全単体比較を、cofibrant 代数と全代数の比較・元の Map^h へ結ぶ
-結論と全自然性、∞ 局所化の普遍性は後続。
+同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
+その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
