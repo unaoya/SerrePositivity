@@ -11710,3 +11710,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @localPrism_source_cocones_trivial
 #print axioms localPrism_source_cocones_trivial
+
+#check @isLocalForHom_edge_iff_coslicePrecomposition
+#print axioms isLocalForHom_edge_iff_coslicePrecomposition
+
+#check @isLocalForHom_initialRestriction_iff_precomposition
+#print axioms isLocalForHom_initialRestriction_iff_precomposition
+
+#check @isLocalForHom_initialRestriction_of_fiber_equivalence
+#print axioms isLocalForHom_initialRestriction_of_fiber_equivalence
+
+#check @isLocalForHom_colimitRestriction_comparison
+#print axioms isLocalForHom_colimitRestriction_comparison
+
+#check @localEquivalences_colimitRestriction_comparison
+#print axioms localEquivalences_colimitRestriction_comparison
+
+#check @localEquivalences_colimitPrism_source_comparison
+#print axioms localEquivalences_colimitPrism_source_comparison
