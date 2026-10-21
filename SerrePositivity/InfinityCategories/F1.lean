@@ -2865,3 +2865,15 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldStandardT
 public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldTargetRestrictionEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianFiniteSimplexEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.UniversePushouts
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentPullbacks
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentFibrations
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentFibers
+
+public import SerrePositivity.InfinityCategories.F1.SimplexAttachmentOver
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentExtensionKan
