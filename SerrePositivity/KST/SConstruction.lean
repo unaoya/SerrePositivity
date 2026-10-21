@@ -1453,4 +1453,11 @@ public import SerrePositivity.KST.SConstruction.SerreCubeDimensionTransport
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorAssociativity
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorUnitCoherence
 public import SerrePositivity.KST.SConstruction.SerreCubeTripleComparison
+public import SerrePositivity.KST.SConstruction.CubicalSerreAdjunction
+public import SerrePositivity.KST.SConstruction.CubicalSerreCellRestriction
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayPair
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayComparison
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayNaturality
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayRepresentable
+public import SerrePositivity.KST.SConstruction.CubicalSerreDayUnit
 /-! # ∞-S• 構成と連結 K 理論 -/

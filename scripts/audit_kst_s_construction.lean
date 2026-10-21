@@ -19366,3 +19366,66 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.serreCubeAssociatorHom
 #check @SerrePositivity.KST.SConstruction.SerreCubeTensorAssociative
 #print axioms SerrePositivity.KST.SConstruction.SerreCubeTensorAssociative
+
+#check @SerrePositivity.KST.SConstruction.cubicalSerreRestrictedYoneda
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreRestrictedYoneda
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChains_isLeftKanExtension
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChains_isLeftKanExtension
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAdjunction
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAdjunction
+#check @SerrePositivity.KST.SConstruction.cubicalSerreChains_preservesColimits
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreChains_preservesColimits
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAdjunction_homEquiv_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAdjunction_homEquiv_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreAdjunction_inverse_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreAdjunction_inverse_cell
+#check @SerrePositivity.KST.SConstruction.cubicalCell_restrict
+#print axioms SerrePositivity.KST.SConstruction.cubicalCell_restrict
+#check @SerrePositivity.KST.SConstruction.cubicalCell_identity
+#print axioms SerrePositivity.KST.SConstruction.cubicalCell_identity
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCell_identity
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCell_identity
+#check @SerrePositivity.KST.SConstruction.cubicalSerreCell_restrict
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreCell_restrict
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayPair
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayPair
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayPair_restrict
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayPair_restrict
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayPair_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayPair_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayPairTransform
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayPairTransform
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayTensorAdjoint
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayTensorAdjoint
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDay_hom_ext
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDay_hom_ext
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_naturality
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparisonNat
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGeneratorIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGeneratorIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGeneratorIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGeneratorIso_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGenerator_comparison
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayCubeGenerator_comparison
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_representable_isIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayComparison_representable_isIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayCubeComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayCubeComparisonIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGeneratorIso
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGeneratorIso
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGeneratorIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitGeneratorIso_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_hom
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_hom
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_cell
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_cell
+#check @SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_augmentation
+#print axioms SerrePositivity.KST.SConstruction.cubicalSerreDayUnitIso_augmentation
