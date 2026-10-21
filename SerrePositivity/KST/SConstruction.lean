@@ -1729,4 +1729,13 @@ public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetFilters
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetDimensions
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCutBounds
 public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCoordinate
+public import SerrePositivity.KST.SConstruction.SerreCubeChainFace
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaCellAtDimension
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaSpecifiedFace
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCell
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetZeroFace
+public import SerrePositivity.KST.SConstruction.SimplexHABeadTailComparison
+public import SerrePositivity.KST.SConstruction.SimplexHADecodeSubsetCellRecursion
+public import SerrePositivity.KST.SConstruction.SerreCubeComplexDimensionComparison
+public import SerrePositivity.KST.SConstruction.SimplexSubsetLambdaSpecifiedOneFace
 /-! # ∞-S• 構成と連結 K 理論 -/

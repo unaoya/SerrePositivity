@@ -21791,3 +21791,51 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_erase_coordinate
 #check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_split_coordinate
 #print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_split_coordinate
+#check @SerrePositivity.KST.SConstruction.serreCubeComplexMap_dimension_inv
+#print axioms SerrePositivity.KST.SConstruction.serreCubeComplexMap_dimension_inv
+#check @SerrePositivity.KST.SConstruction.serreCubeChainFace
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainFace
+#check @SerrePositivity.KST.SConstruction.serreCubeChainFace_refl
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainFace_refl
+#check @SerrePositivity.KST.SConstruction.serreCubeChainFace_naturality
+#print axioms SerrePositivity.KST.SConstruction.serreCubeChainFace_naturality
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_refl
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_refl
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_congr
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_congr
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_canonical_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_canonical_heq
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCell_heq_of_eq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCell_heq_of_eq
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_zero_face_at
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAtDimension_zero_face_at
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_canonical_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_canonical_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_congr_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_congr_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubset_face_codimension
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubset_face_codimension
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeFaceCoordinate
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeFaceCoordinate
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_zero_face
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_zero_face
+#check @SerrePositivity.KST.SConstruction.simplexHABeadTail_cell_canonical_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexHABeadTail_cell_canonical_heq
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_edge
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_edge
+#check @SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_zero
+#print axioms SerrePositivity.KST.SConstruction.simplexHADecodeSubsetCell_zero
+#check @SerrePositivity.KST.SConstruction.serreCubeComplexMap_dimension_hom
+#print axioms SerrePositivity.KST.SConstruction.serreCubeComplexMap_dimension_hom
+#check @SerrePositivity.KST.SConstruction.serreCubeComplex_dimension_precomp_heq
+#print axioms SerrePositivity.KST.SConstruction.serreCubeComplex_dimension_precomp_heq
+#check @SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_one_face_heq
+#print axioms SerrePositivity.KST.SConstruction.simplexSubsetLambdaCellAt_one_face_heq
