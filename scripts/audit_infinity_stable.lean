@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus
+import SerrePositivity.InfinityCategories.Derived.ComplexTensorBoundary
+import SerrePositivity.InfinityCategories.Derived.DGTensorBoundary
+import SerrePositivity.InfinityCategories.Derived.DGTensorClosedCycles
+import SerrePositivity.InfinityCategories.Derived.DGTensorTriangleData
+import SerrePositivity.InfinityCategories.Derived.DGTensorLowSimplex
+import SerrePositivity.InfinityCategories.Derived.DGTensorTwoDegeneracy
 import SerrePositivity.InfinityCategories.Derived.DGHomTensorMap
 import SerrePositivity.InfinityCategories.Derived.DGHomTensorFunctor
 import SerrePositivity.InfinityCategories.Derived.DGHomTensorRestrictions
@@ -3714,6 +3721,13 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus,
+    `SerrePositivity.InfinityCategories.Derived.ComplexTensorBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorClosedCycles,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorTriangleData,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorLowSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGTensorTwoDegeneracy,
     `SerrePositivity.InfinityCategories.Derived.DGHomTensorMap,
     `SerrePositivity.InfinityCategories.Derived.DGHomTensorFunctor,
     `SerrePositivity.InfinityCategories.Derived.DGHomTensorRestrictions,

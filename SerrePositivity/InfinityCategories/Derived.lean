@@ -1,4 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus
+public import SerrePositivity.InfinityCategories.Derived.ComplexTensorBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGTensorBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGTensorClosedCycles
+public import SerrePositivity.InfinityCategories.Derived.DGTensorTriangleData
+public import SerrePositivity.InfinityCategories.Derived.DGTensorLowSimplex
+public import SerrePositivity.InfinityCategories.Derived.DGTensorTwoDegeneracy
 public import SerrePositivity.InfinityCategories.Derived.DGHomTensorMap
 public import SerrePositivity.InfinityCategories.Derived.DGHomTensorFunctor
 public import SerrePositivity.InfinityCategories.Derived.DGHomTensorRestrictions
