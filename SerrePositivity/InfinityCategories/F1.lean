@@ -2411,3 +2411,21 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCellCos
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexLocalComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexLocalNaturality
+
+public import SerrePositivity.InfinityCategories.F1.FunctorSquarePathLift
+
+public import SerrePositivity.InfinityCategories.F1.PathCorrectedFunctorSquare
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCellMono
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexLocalPathLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedSquares
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStrictComparison
+
+public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSourceLifting
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexStrictPullback
