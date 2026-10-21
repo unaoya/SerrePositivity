@@ -1878,6 +1878,21 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `nativeFreeEvaluation_descent/nativeValue_localizationValue` は元の指定因子の評価を
 同じ局所化評価へ回収する。任意可換環の全自由次数への代入も検証。
 全因子列の評価と同じ局所化評価の一致、両 DK 比較射の弱同値性は引き続き未完成。
+`Zigzag.Value.edge_append_left_heq/edge_append_right_heq/path_append_left/path_append_right`
+は元の連結の値の射列を左右へ回収する。`value_append/value_empty/value_forward` と
+`colimitValue_composePoint/colimitValue_arrowPoint` は元の合成・空語・生成射の評価。
+`MarkedSpine.hammockEvaluation_localizationValue` は全因子列の元の評価を
+同じ通常の局所化評価そのものと照合する。
+`free_localizationValue_isWeakHomotopyEquivalence` は元の自由圏の評価自身の弱同値性。
+`LocalizationObjects.homTransportIso/colimitValue_weak_of_localizationValue` と
+`freeHammockHomComparison_app_isWeakHomotopyEquivalence` は既存 DK Hom への元の右射の
+各自由次数の成分自身の弱同値性。任意可換環の全自由次数・全 cofibrant 代数でも検証。
+対角の元の右比較の弱同値性も完成。左比較の弱同値性と Map^h の高次比較は未完成。
+`anodyneQ_map_isIso_of_weak/DoubleSimplicial.diagonalFunctor_map_weak` は
+元の弱同値を既存のモデル不要の anodyne 局所化の対角定理へ接続する。
+`freeHammockDiagonalComparison_isWeakHomotopyEquivalence` は元の対角の右射自身の弱同値性。
+同じ全自由次数・全作用素・端点移送・離散対角同型を保持する。
+単体集合モデル構造は入力しない。左射の弱同値性と Map^h の高次比較は未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

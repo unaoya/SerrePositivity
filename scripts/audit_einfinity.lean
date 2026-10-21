@@ -6374,6 +6374,38 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.localizationToValue_marked,
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.localizationToValue_unmarked]
 
+@[noinline] private def e2RequiredBatch97 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homTransportEquiv,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.homTransportIso,
+      `SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects.colimitValue_weak_of_localizationValue,
+      `SerrePositivity.EInfinity.Hammock.free_localizationValue_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitValue_inclusion_app,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitValue_composePoint,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_forward,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_empty,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.colimitValue_arrowPoint,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.glue_localizationValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.hammockEvaluation_localizationValue,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.value_append,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.map_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.map_unop_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.iso_inv_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_append_left_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.edge_append_right_heq,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.appendLeftFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.appendRightFunctor,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_append_left,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_append_right,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_append_left_hom,
+      `SerrePositivity.EInfinity.Hammock.Zigzag.Value.path_append_right_hom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockHomComparison_app_isWeakHomotopyEquivalence]
+
+@[noinline] private def e2RequiredBatch98 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor_map_weak,
+      `SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_homotopyEquivalence,
+      `SerrePositivity.EInfinity.Hammock.anodyneQ_map_isIso_of_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockDiagonalComparison_isWeakHomotopyEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -6405,7 +6437,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -15262,3 +15294,72 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
       (Functor.const SimplexCategoryᵒᵖ).obj (W.paths.Q.obj X ⟶ W.paths.Q.obj Y) := by
   intro C W X Y
   exact MarkedSpine.valueLocalizationHomIso W X Y
+
+-- 任意の元の反転関手で、左右の全語の連結を同じ値の合成として回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} (L : C ⥤ D)
+    (hL : W.IsInvertedBy L) {a b : Word} {X Y Z : C}
+    (S : Zigzag W a X Y) (T : Zigzag W b Y Z) :
+    Zigzag.Value.value L hL (ZigzagAppend.obj S T) =
+      Zigzag.Value.value L hL S ≫ Zigzag.Value.value L hL T :=
+  Zigzag.Value.value_append L hL S T
+
+-- 空語の評価は元の単位で、W の乗法性を要求しない。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} (L : C ⥤ D)
+    (hL : W.IsInvertedBy L) (X : C) :
+    Zigzag.Value.value L hL (emptyObj W X) = 𝟙 (L.obj X) := Zigzag.Value.value_empty L hL X
+
+-- 同じ元の余極限上の合成を同じ元の評価が保存する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock in
+example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    [Category.{e2ComplexLimitUniverse} D] {W : MorphismProperty C} [W.IsMultiplicative]
+    (L : C ⥤ D) (hL : W.IsInvertedBy L) (X Y Z : C) (n : SimplexCategoryᵒᵖ)
+    (p : (colimitGraph W X Y).obj n) (q : (colimitGraph W Y Z).obj n) :
+    (Zigzag.Value.colimitValue L hL X Z).app n (composePoint W X Y Z p q) =
+      (Zigzag.Value.colimitValue L hL X Y).app n p ≫
+        (Zigzag.Value.colimitValue L hL Y Z).app n q :=
+  Zigzag.Value.colimitValue_composePoint L hL X Y Z p q
+
+-- 元の自由圏の通常の局所化評価自身が弱同値となる。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    IsWeakHomotopyEquivalence (localizationValue W.paths X Y) :=
+  free_localizationValue_isWeakHomotopyEquivalence W X Y
+
+-- 既存 DK Hom への元の右比較射の各自由次数の成分自身を検証する。
+open CategoryTheory SerrePositivity.InfinityCategories
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (C : RelativeCategory.{e2ComplexLimitUniverse}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) :
+    IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) :=
+  freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
+
+-- 任意可換環の実際の全自由次数・全 cofibrant 代数の元の同じ右射に代入する。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ) :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category,
+      IsWeakHomotopyEquivalence ((freeHammockHomComparison C X Y).app n) := by
+  intro C X Y
+  exact freeHammockHomComparison_app_isWeakHomotopyEquivalence C X Y n
+
+-- 任意の二重単体集合で、同じ対角写像の弱同値をモデル構造なしで得る。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
+example {B D : SimplicialObject SSet.{e2ComplexLimitUniverse}} (f : B ⟶ D)
+    (hf : ∀ n, IsWeakHomotopyEquivalence (f.app n)) :
+    IsWeakHomotopyEquivalence (DoubleSimplicial.diagonalFunctor.map f) :=
+  DoubleSimplicial.diagonalFunctor_map_weak f hf
+
+-- 任意可換環の実際の全 cofibrant 代数で元の対角の右比較射自身へ適用。
+open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+  SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] :
+    let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
+    ∀ X Y : C.category, IsWeakHomotopyEquivalence (freeHammockDiagonalComparison C X Y) := by
+  intro C X Y
+  exact freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y
