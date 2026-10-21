@@ -1259,3 +1259,13 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstFactorValue
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueFlatten
 public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPathFlatten
+public import SerrePositivity.EInfinity.Hammock.AllMarkedDetector
+public import SerrePositivity.EInfinity.Hammock.AllMarkedEmbedding
+public import SerrePositivity.EInfinity.Hammock.AllMarkedEmptyIso
+public import SerrePositivity.EInfinity.Hammock.AllMarkedImage
+public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
+public import SerrePositivity.EInfinity.Hammock.AllMarkedSimplex
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineExtraction
+public import SerrePositivity.EInfinity.Hammock.MarkedSpineSimplex
+public import SerrePositivity.EInfinity.Hammock.UnmarkedEmptySpace
+public import SerrePositivity.EInfinity.Hammock.UnmarkedMarkedSpine

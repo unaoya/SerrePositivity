@@ -5238,6 +5238,63 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_eq_nil_of_marked,
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.composable_hom_flatten]
 
+@[noinline] private def e2RequiredBatch73 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.detectWord,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.graphMap_detectWord,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.detectWord_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.graphInclusion_detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_detector,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_injective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_mono,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyValueMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyValueMap_bijective,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyIso,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyIso_hom_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyLift,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyLift_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyValueMap_emptyLift,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.emptyLift_unique,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.holds_value_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.value_graphMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion_range,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeGraph,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeSpace,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeInclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.graphMap,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.nativeInclusion_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.lift,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.lift_inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.graphMap_holds,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.lift_reflection,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.lift_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.lift_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.Holds,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.holds_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.holds_simplex_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked.holds_word_iff,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.extraction_wordValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.map,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.map_id,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.map_comp,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.word_map,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.space,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.wordValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.EmptyValue.value_simplex,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.EmptyValue.space,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.EmptyValue.inclusion,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine.word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.Spine.marked,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.Spine.marked_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_word,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_empty,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.markedSpine_nonempty]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -5269,7 +5326,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -12571,3 +12628,57 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
     (FirstFactor.spine W Y m X x).word = (colimitValue W X Y).app m x :=
   FirstFactor.spine_word (freeResolutionGeneratorBase
     (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y m X x
+
+
+-- 指定部分圏の実際の hammock からの元の包含自身が単射である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) : Mono (AllMarked.inclusion W X Y) :=
+  AllMarked.inclusion_mono W X Y
+
+-- 同じ包含の像が元の空文字列評価の fiber である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) (n : SimplexCategoryᵒᵖ)
+    (x : (colimitGraph W.paths X Y).obj n) :
+    (∃ z, (AllMarked.inclusion W X Y).app n z = x) ↔ (colimitValue W X Y).app n x = [] :=
+  AllMarked.inclusion_range W X Y n x
+
+-- 元の空文字列部分から実際の指定 hammock に持ち上げて包含すると元の点へ戻る。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (X Y : Paths C) :
+    AllMarked.emptyLift W X Y ≫ AllMarked.inclusion W X Y = EmptyValue.inclusion W X Y :=
+  AllMarked.emptyLift_inclusion W X Y
+
+-- 指定 hammock を全因子に持つ反復切断は元の全単体作用素に自然である。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y : Paths C) {n m : SimplexCategoryᵒᵖ}
+    (θ : n ⟶ m) (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+    FirstFactor.MarkedSpine.map θ (FirstFactor.markedSpine W Y n X x) =
+      FirstFactor.markedSpine W Y m X ((colimitGraph W.paths X Y).map θ x) :=
+  FirstFactor.markedSpine_simplex W Y θ X x
+
+-- 元の抽出射は同じ元の生成文字列評価を回収する。
+open CategoryTheory SerrePositivity.EInfinity.Hammock
+  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) (Y X : Paths C) :
+    FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.wordValue W Y X = colimitValue W X Y :=
+  FirstFactor.extraction_wordValue W Y X
+
+-- 任意可換環の実際の全自由次数で抽出射と元の非指定文字列を照合する。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
+  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.UnmarkedGenerators in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category) :
+    let W := (freeResolutionGeneratorBase
+      (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences
+    FirstFactor.extraction W Y X ≫ FirstFactor.MarkedSpine.wordValue W Y X = colimitValue W X Y :=
+  FirstFactor.extraction_wordValue (freeResolutionGeneratorBase
+    (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).weakEquivalences Y X

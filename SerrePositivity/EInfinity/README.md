@@ -1588,8 +1588,20 @@ prefix・残りの同じ余極限の像の一致、reduction・反復・積分�
 `cutRec/cutRec_empty/cutRec_nonempty` は同じ残りの点による長さの依存再帰。
 `Spine/spineWithValue/spine_word/spine_empty/spine_nonempty` は各次数の元の指定 prefix と
 同じ生成矢を有限回取り出し、元の生成文字列を厳密に回収する。任意可換環の実モデルでも検証。
-終端は元の空文字列の hammock の点。指定部分圏の hammock との終端の同定、反復の全単体作用素への
-自然性、貼り戻しとの逆関係と積分解・単体的 pushout は後続。
+終端の実際の指定部分圏への同定と反復の全単体作用素への自然性は以下。
+貼り戻しとの逆関係と積分解・単体的 pushout は後続。
+`AllMarked.Holds/holds_iff/holds_simplex_iff/holds_word_iff` は元の全行・全列の指定性を保存・反映。
+`nativeSpace/inclusion/lift/lift_inclusion/lift_reflection/lift_word` は実際の指定部分圏の
+hammock と元の包含・全関手の回収と全語の作用への整合。
+`detector/inclusion_detector/inclusion_injective/inclusion_mono` は同じ元の包含の単射性。
+`holds_value_iff/inclusion_range` は元の全列の指定性と元の評価の空性・包含の像を正確に照合。
+`EmptyValue.space` と `AllMarked.emptyIso/emptyIso_hom_inclusion/emptyLift_inclusion/emptyLift_unique`
+は元の空文字列部分と実際の指定 hammock の同型・元の点の一意な回収。
+`MarkedSpine/markedSpine_word/markedSpine_empty/markedSpine_nonempty` は全 prefix と終端を
+実際の W-hammock の点とし、元の同じ生成矢と文字列を保持する。
+`MarkedSpine.map/space/wordValue` と `markedSpine_simplex/extraction/extraction_wordValue` は
+元の全単体作用素に自然な反復抽出射と元の生成文字列評価の回収。任意可換環の実際の全自由次数でも検証。
+元の貼り戻しとの両逆・因子の一意性・自由積の単体的 pushout・DK の両弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
