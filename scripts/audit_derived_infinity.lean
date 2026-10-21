@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstRight
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstLeft
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstSum
+import SerrePositivity.InfinityCategories.Derived.DGNerveListCutRhsHEq
+import SerrePositivity.InfinityCategories.Derived.DGNerveCutRhsBoundarySum
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductAtDegree
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstErase
 import SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstInsert
@@ -3197,6 +3202,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstRight,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstLeft,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutBoundaryFirstSum,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveListCutRhsHEq,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCutRhsBoundarySum,
+
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductAtDegree,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstErase,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCutProductFirstInsert,
