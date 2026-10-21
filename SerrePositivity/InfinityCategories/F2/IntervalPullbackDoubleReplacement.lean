@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.StrictKanPullbackMapEquivalence
 public import SerrePositivity.InfinityCategories.F2.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F2.IntervalPullbackCoordinates
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
 
 /-!
@@ -28,6 +29,20 @@ def intervalPullbackDoubleReplacementComparison : intervalPullback f g ⟶
     (𝟙 _) (intervalReplacementSection g) (𝟙 _)
     (by simp only [Category.comp_id, Category.id_comp])
     (by rw [Category.comp_id, intervalReplacementSection_endpoint])
+
+/-- 同じ比較の第一射影は元の第一置換への射影そのもの。 -/
+lemma intervalPullbackDoubleReplacementComparison_left :
+    intervalPullbackDoubleReplacementComparison f g ≫
+      pullback.fst (intervalReplacementEndpoint f) (intervalReplacementEndpoint g) =
+        pullback.fst (intervalReplacementEndpoint f) g := by
+  simp only [intervalPullbackDoubleReplacementComparison, pullback.map,
+    pullback.lift_fst, Category.comp_id]
+
+/-- 同じ比較の第二射影は元の第二入力と指定定値切断の合成。 -/
+lemma intervalPullbackDoubleReplacementComparison_right :
+    intervalPullbackDoubleReplacementComparison f g ≫
+      pullback.snd (intervalReplacementEndpoint f) (intervalReplacementEndpoint g) =
+        intervalPullbackRight f g ≫ intervalReplacementSection g := pullback.lift_snd _ _ _
 
 /-- 第二脚の同じ定値切断から作った引き戻し比較自体がホモトピー同値。 -/
 lemma intervalPullbackDoubleReplacementComparison_homotopyEquivalence :

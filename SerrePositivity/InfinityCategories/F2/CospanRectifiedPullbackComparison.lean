@@ -32,6 +32,20 @@ def cospanRectifiedPullbackComparison : intervalPullback f g ⟶
     (cospanRectificationLeftMap_over f f' s v e).symm
     (cospanRectificationRightMap_over g g' t v d).symm
 
+/-- 同じ比較の第一射影は元の第一射影と指定左厳密化の合成。 -/
+lemma cospanRectifiedPullbackComparison_left :
+    cospanRectifiedPullbackComparison f g f' g' s t v e d ≫
+      pullback.fst (intervalReplacementEndpoint f') (intervalReplacementEndpoint g') =
+        pullback.fst (intervalReplacementEndpoint f) g ≫
+          cospanRectificationLeftMap f f' s v e := pullback.lift_fst _ _ _
+
+/-- 同じ比較の第二射影は元の第二入力と指定右厳密化の合成。 -/
+lemma cospanRectifiedPullbackComparison_right :
+    cospanRectifiedPullbackComparison f g f' g' s t v e d ≫
+      pullback.snd (intervalReplacementEndpoint f') (intervalReplacementEndpoint g') =
+        intervalPullbackRight f g ≫ cospanRectificationRightMap g g' t v d :=
+  pullback.lift_snd _ _ _
+
 /-- 元の三成分が同値なら、指定同型で厳密化した同じ引き戻し比較も同値。 -/
 lemma cospanRectifiedPullbackComparison_homotopyEquivalence
     (hs : IsSimplicialHomotopyEquivalence s) (ht : IsSimplicialHomotopyEquivalence t)
