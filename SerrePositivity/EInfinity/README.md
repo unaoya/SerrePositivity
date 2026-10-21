@@ -2114,7 +2114,13 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 `freeHammockDiagonalComposition_augmentation/comparison` は元の左右射の合成正方形。
 `dkHammockComparison_composition` は元の span とその積から得る anodyne 局所化内の正方形。
 `dkHammockComparisonIso_reduction` は同じ比較と既存 reduced 比較の一致。
-元の代数射の代入による両端点の高次自然性・類との整合、∞ 局所化の普遍性は後続。
+`freeHammockArrowZero_comparison/augmentation` は元の射を共通始域の零単体から回収する。
+`freeHammockArrowPoint_comparison/augmentation` は同じ回収の全単体写像としての等式。
+`dkHammockColimitComparisonIso_arrow` と `dkHammockComparisonIso_arrow` は同じ元の点を保つ。
+`freeHammockPostcompose_comparison/augmentation` と前合成版は元の左右射の可換式。
+`dkHammockColimitComparisonIso_postcompose/precompose` は元の射による両端点自然性。
+`dkHammockComparisonIso_postcompose/precompose` は既存 reduced 比較への同じ自然性。
+既存 Map^h の両端作用との照合・既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 その全自然性・元の代数射の類への整合、∞ 局所化の普遍性は後続。

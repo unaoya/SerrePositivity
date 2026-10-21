@@ -7459,6 +7459,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparison_composition,
       `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_reduction]
 
+@[noinline] private def e2RequiredBatch121 : Array Lean.Name :=
+  #[
+      `SerrePositivity.EInfinity.Hammock.Relative.fixedColimitMap_arrowPoint,
+      `SerrePositivity.EInfinity.Hammock.reducedArrowMap,
+      `SerrePositivity.EInfinity.Hammock.reducedPostcomposeMap,
+      `SerrePositivity.EInfinity.Hammock.reducedPrecomposeMap,
+      `SerrePositivity.EInfinity.Hammock.reducedColimitIso_postcompose,
+      `SerrePositivity.EInfinity.Hammock.reducedColimitIso_precompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeResolutionArrowZero_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowZero_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.unitPointMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationArrowPoint,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockArrowPoint_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_arrow,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationPostcompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPostcompose_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.localizationPrecompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockPrecompose_augmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_postcompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockColimitComparisonIso_precompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_postcompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_precompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.dkHammockComparisonIso_arrow]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7490,7 +7523,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18026,3 +18059,68 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A]
           localizationComposition (cofibrantAlgebraRelativeCategory A) X Y Z :=
   freeHammockDiagonalComposition_comparison (cofibrantAlgebraRelativeCategory A) X Y Z
 end e2DKCompositionFixtures
+
+-- 元の射を持つ共通始域の点と、同じ射による両端点作用を検証する。
+section e2DKEndpointFixtures
+open CategoryTheory MonoidalCategory Opposite SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
+open scoped Simplicial
+variable (C : RelativeCategory.{e2ComplexLimitUniverse}) {X Y Z : C.category}
+example (f : X ⟶ Y) :
+    (freeHammockDiagonalComparison C X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
+      localizationArrowZero C f := freeHammockArrowZero_comparison C f
+
+example (f : X ⟶ Y) :
+    (freeHammockDiagonalAugmentation C X Y).app (op ⦋0⦌) (freeHammockArrowZero C f) =
+      arrowPoint C.weakEquivalences f (op ⦋0⦌) := freeHammockArrowZero_augmentation C f
+
+example (f : X ⟶ Y) :
+    freeHammockArrowPoint C f ≫ freeHammockDiagonalComparison C X Y =
+      localizationArrowPoint C f := freeHammockArrowPoint_comparison C f
+
+example (f : X ⟶ Y) :
+    freeHammockArrowPoint C f ≫ freeHammockDiagonalAugmentation C X Y =
+      arrowMap C.weakEquivalences f := freeHammockArrowPoint_augmentation C f
+
+example (f : X ⟶ Y) :
+    AnodyneHomotopy.anodyneQ.map (localizationArrowPoint C f) ≫
+        (dkHammockComparisonIso C X Y).hom =
+      AnodyneHomotopy.anodyneQ.map (reducedArrowMap C.weakEquivalences f) :=
+  dkHammockComparisonIso_arrow C f
+
+example (X : C.category) (g : Y ⟶ Z) :
+    AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫
+        (dkHammockComparisonIso C X Z).hom =
+      (dkHammockComparisonIso C X Y).hom ≫
+        AnodyneHomotopy.anodyneQ.map (reducedPostcomposeMap C.weakEquivalences X g) :=
+  dkHammockComparisonIso_postcompose C X g
+
+example (Z : C.category) (f : X ⟶ Y) :
+    AnodyneHomotopy.anodyneQ.map (localizationPrecompose C Z f) ≫
+        (dkHammockComparisonIso C X Z).hom =
+      (dkHammockComparisonIso C Y Z).hom ≫
+        AnodyneHomotopy.anodyneQ.map (reducedPrecomposeMap C.weakEquivalences Z f) :=
+  dkHammockComparisonIso_precompose C Z f
+
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y Z : (cofibrantAlgebraRelativeCategory A).category) (g : Y ⟶ Z) :
+    AnodyneHomotopy.anodyneQ.map
+        (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g) ≫
+      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Z).hom =
+    (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom ≫
+      AnodyneHomotopy.anodyneQ.map
+        (reducedPostcomposeMap (cofibrantAlgebraRelativeCategory A).weakEquivalences X g) :=
+  dkHammockComparisonIso_postcompose (cofibrantAlgebraRelativeCategory A) X g
+
+open SerrePositivity.EInfinity.BarrattEccles in
+example (A : Type e2ComplexLimitUniverse) [CommRing A]
+    (X Y : (cofibrantAlgebraRelativeCategory A).category) (f : X ⟶ Y) :
+    AnodyneHomotopy.anodyneQ.map
+        (localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f) ≫
+      (dkHammockComparisonIso (cofibrantAlgebraRelativeCategory A) X Y).hom =
+    AnodyneHomotopy.anodyneQ.map
+      (reducedArrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences f) :=
+  dkHammockComparisonIso_arrow (cofibrantAlgebraRelativeCategory A) f
+end e2DKEndpointFixtures
