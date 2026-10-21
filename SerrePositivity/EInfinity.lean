@@ -1538,3 +1538,13 @@ public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineProductsIso
 public import SerrePositivity.EInfinity.Hammock.TensorHomotopy
 public import SerrePositivity.EInfinity.Hammock.WeakIndexedSum
 public import SerrePositivity.EInfinity.Hammock.WeakTensor
+public import SerrePositivity.EInfinity.Hammock.AllMarkedLocalizationValueComparison
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineCoreDescent
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineDescent
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineDescentRecovery
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineFold
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineGenerators
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineLocalization
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineLocalizationEquivalence
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineLocalizationHom
+public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineLocalizationMarked

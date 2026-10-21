@@ -1869,6 +1869,15 @@ filtered 余極限へ各項の弱同値と弱可縮性を移す。
 `ValueSpine.compose/compose_assoc/valueCategory/valueMarkedFunctor` は値の因子列の
 局所選択する圏構造と指定自由 groupoid の包含。元の指定矢を実際に反転する。
 通常の局所化 Hom との同定と両 DK 比較射の弱同値性は引き続き未完成。
+`MarkedSpine.valueLift/valueLift_inverts` は元の自由圏から値の因子列への関手と
+元の W.paths の反転。`markedValueDescent/valueFoldFunctor/valueDescent/valueDescent_fac`
+は Core への元の指定生成矢の像を延長し、元の任意の反転関手を厳密に回収する。
+`localizationToValue/valueToLocalization/valueLocalizationEquivalence` は元の通常の局所化との
+厳密な両往復を持つ比較。`localizationHomEquiv/valueLocalizationHomIso` は
+元の同じ Q の Hom と値の因子列の同型であり、元の両関手の射写像を順逆射にする。
+`nativeFreeEvaluation_descent/nativeValue_localizationValue` は元の指定因子の評価を
+同じ局所化評価へ回収する。任意可換環の全自由次数への代入も検証。
+全因子列の評価と同じ局所化評価の一致、両 DK 比較射の弱同値性は引き続き未完成。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。
