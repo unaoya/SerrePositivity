@@ -1828,3 +1828,13 @@ public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostLifting
 public import SerrePositivity.InfinityCategories.F1.KanEquivalenceLiftingFibration
 
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestrictionFibration
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramRealizationVertices
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedHomInterval
+
+public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedHomIntervalNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningHomInterval
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalHomCriterion

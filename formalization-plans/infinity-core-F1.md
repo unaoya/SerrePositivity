@@ -14,7 +14,7 @@
   各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
   core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
   像の Cat∞ 値関手への実現と元の主写像との分解等式、実際の区間 Hom 作用を構成済み。
-  区間作用の端点・成分評価と主写像への接続は証明済み。その作用の同値性は未証明。
+  元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
   元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
   底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
   比較を底全体・全 fibration の族へ実現し、元の二つの分類主写像を両端に持つ関手同型を構成済み。
@@ -58,7 +58,7 @@
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
 - `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
 - `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
-- `cocartesianSectionsCoreEnrichedEvaluation`、`cocartesianBaseChangeJointComparisonIso`
+- `cocartesianStraighteningHomInterval`、`cocartesianBaseChangeJointComparisonIso`
 
 ### 依存と提供
 
@@ -81,7 +81,7 @@
 - 全相対 Hom と section の単射による同値持ち上げと core の制限の Kan 性は `ff4f803a7`。
 - section の core の点ごとの可逆性、余極限に沿う一意な貼り合わせと極限錐は `e105f1a5e`。
 - 指定辺を保つ相対 Hom とその core の降下、元の cocartesian Hom への適用は `ba41905f0`。
-- 底全体の比較同型は `62f2e2da9`、区間 Hom の降下は `6d4656950`。単射制限の Kan 性を今回保存。
+- 比較同型は `62f2e2da9`、区間 Hom の降下は `6d4656950`、単射制限の Kan 性は `f4ffceb6e`。
 
 ### 既知の問題
 
@@ -90,14 +90,14 @@
   一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
 - 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
 - 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  区間作用の同値性を仮定した接続は証明済みだが、その入力は未証明。Cat∞ 分類は未完了。
+  元の Hom の core の同じ区間作用の同値性を仮定した接続は証明済み。入力は未証明で分類は未完了。
 
 ### 次の一手
 
 添字制限・豊穣前合成の実現自然性と、元の主写像を両端に持つ底全体の比較の関手同型まで完了。
 分類先の両端固定の区間 Hom も、全パラメーターの一意な貼り合わせと厳密な極限錐まで完了。
-分類先の同じ区間 Hom の単射制限も Kan fibration と証明済み。次は比較作用のセル制限との整合性。
-区間作用の同値性を示し、`cocartesianStraighteningCoherentMap_isFullyFaithful_of_homInterval` へ戻す。
+元の Hom の core の同じ区間作用の底制限・底変換の両式まで完了。次は比較同型との Hom 四角形を作る。
+セル上の同値性と降下から `cocartesianStraighteningCoherentMap_isFullyFaithful_of_originalHomInterval` へ戻す。
 同じ主写像の充満忠実性、任意の通常 nerve 上の本質的全射性と一般の底への帰着は残る。
 
 全体の正本は [foundations.md](foundations.md)。F0 は [infinity-core.md](infinity-core.md) を使う。
