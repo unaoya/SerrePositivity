@@ -2693,3 +2693,23 @@ public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareGlobalTri
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedGlobalCoherence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexCorrectedSharedComparison
+
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationEdgeRepresentative
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoEdgeRepresentative
+
+public import SerrePositivity.InfinityCategories.F1.PullbackCompatibleEdgeHomotopy
+
+public import SerrePositivity.InfinityCategories.F1.PullbackCompatibleFunctorIso
+
+public import SerrePositivity.InfinityCategories.F1.PullbackCommonNormalizedIso
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianGlobalHomCellRestriction
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexGlobalPullbackMaps
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexGlobalPullbackComponents
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexGlobalPullbackEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexGlobalPullbackComparison
