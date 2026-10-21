@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity
+import SerrePositivity.InfinityCategories.Derived.DGResolutionHomologyDetection
+import SerrePositivity.InfinityCategories.Derived.DGFunctorGradedCycleLifting
+import SerrePositivity.InfinityCategories.Derived.DGGradedCycleRecovery
+import SerrePositivity.InfinityCategories.Derived.DGFunctorZeroCycleLifting
+import SerrePositivity.InfinityCategories.Derived.ComplexCycleQuasiIsoCriterion
 import SerrePositivity.InfinityCategories.Derived.DGFunctorGradedShift
 import SerrePositivity.InfinityCategories.Derived.DGResolutionGradedShift
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeGradedShift
@@ -3238,6 +3244,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity,
+    `SerrePositivity.InfinityCategories.Derived.DGResolutionHomologyDetection,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorGradedCycleLifting,
+    `SerrePositivity.InfinityCategories.Derived.DGGradedCycleRecovery,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorZeroCycleLifting,
+    `SerrePositivity.InfinityCategories.Derived.ComplexCycleQuasiIsoCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGFunctorGradedShift,
     `SerrePositivity.InfinityCategories.Derived.DGResolutionGradedShift,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeGradedShift,
