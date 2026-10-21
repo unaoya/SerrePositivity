@@ -2647,3 +2647,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianGlobalNativeRestr
 public import SerrePositivity.InfinityCategories.F1.CocartesianLocalNativeRestrictionGlobalEndpoints
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOriginalNativeRestrictionTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverNaturalityInput
+
+public import SerrePositivity.InfinityCategories.F1.FullyFaithfulNormalizedIsoRecovery
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverNaturalityCoherence

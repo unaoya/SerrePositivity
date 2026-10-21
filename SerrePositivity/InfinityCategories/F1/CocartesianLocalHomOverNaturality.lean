@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverRestriction
+public import SerrePositivity.InfinityCategories.F1.CocartesianLocalHomOverNaturalityInput
 
 /-!
 概要：元の局所比較を、源・標的の同じ底上の射に沿う厳密な二つの制限で結ぶ。
@@ -33,14 +33,10 @@ def cocartesianLocalHomComparison_overNaturalityIso
           (cocartesianStrictTransportCoherentDiagram q.val.hom)
           (a := Over.mk ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (l ⋙ k))))
           (b := Over.mk ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap k)))
-          (uliftOverMorphism (cocartesianBaseChangeOverMap l k))) := by
-  have hN := (qCatEquivalenceOfIso
-    (asIso (cocartesianBaseChangeHomCompositionNormalization l k p q))).isQCatEquivalence
-  have hff : IsFullyFaithful (cocartesianBaseChangeHomCompositionNormalization l k p q) :=
-    hN.isFullyFaithful
-  apply hff.preimageFunctorIso
-  simp only [Category.assoc]
-  rw [cocartesianLocalHomOverRestriction_normalization]
-  exact cocartesianLocalHomComparison_nativeRestrictionIso l k p q
+          (uliftOverMorphism (cocartesianBaseChangeOverMap l k))) :=
+  (cocartesianLocalHomOverNormalization_isFullyFaithful l k p q).preimageFunctorIso
+    (F := cocartesianLocalHomOverNaturalitySource l k p q)
+    (G := cocartesianLocalHomOverNaturalityTarget l k p q)
+    (cocartesianLocalHomOverNaturalityInputIso l k p q)
 
 end SerrePositivity.InfinityCategories
