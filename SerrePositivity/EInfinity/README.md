@@ -2120,6 +2120,12 @@ Kan Hom との比較と、元の Ex∞ 単位の前合成による同じ生の D
 `freeHammockPostcompose_comparison/augmentation` と前合成版は元の左右射の可換式。
 `dkHammockColimitComparisonIso_postcompose/precompose` は元の射による両端点自然性。
 `dkHammockComparisonIso_postcompose/precompose` は既存 reduced 比較への同じ自然性。
+`FrameHom.frameSpanTargetHomotopy` は元の要素圏の全単体を保持する右脚比較のホモトピー。
+`sourceFrameSpecialHammockHomotopy` は同じ終域への frame Hom と既存 Map^h への実際の代入。
+`sourceFrameIndexAugmentation_targetComparison` は同じ全要素圏の左比較の正方形。
+`sourceFrameReducedHammockComparison_targetComparison` は既存 reduced 比較との同じ因子化。
+`sourceFrameReducedHammockComparison_isIso/sourceFrameReducedHammockNerveMap_weak` は
+同じ比較の可逆性と元の nerve 射自身の弱同値性。
 既存 Map^h の両端作用との照合・既存 π₀ 同値との一致、∞ 局所化の普遍性は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
