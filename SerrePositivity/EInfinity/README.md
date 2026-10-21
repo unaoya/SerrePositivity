@@ -1429,6 +1429,16 @@ nerve の反転性・弱ホモトピー同値性。同じ指定分解から、�
 `freeResolutionBlockEquiv/freeResolutionBlockCategoryEquivalence` は元の全自由次数への代入で、
 元の射・恒等・合成を回収する。任意可換環の既存固定端点でも検証済み。
 hammock の全行・全縦射の分解と命題3.2の単体的 pushout、比較射の弱同値性は後続。
+`GeneratorWord.erase` は元の生成矢の始域・終域・射を保った非指定文字列。
+`erase_comp/erase_eq_nil_iff/erase_square` は連結、指定射列の消去とその正確な逆、
+元の指定縦射の可換正方形での不変性。`exists_first_of_erase_ne_nil` は指定接頭列・
+最初の非指定矢・残りへの元の射列の切断、`erase_first_split` はその文字列の先頭を回収。
+`Hammock.UnmarkedGenerators.column_hom/column_row/column_backward` は元の全列・全行への代入。
+`GeneratorWord.functor` は文字列の連結を合成とする一対象圏への関手で、指定射列を恒等へ送る。
+既存の評価を代入した `UnmarkedGenerators.value/colimitValue/reducedValue` は全語の作用と
+正規化に不変で、元の標準射と augmentation を回収する。後ろ向き列の逆射の寄与も空。
+`freeHammockGeneratorWordValue` は元の全自由次数・既存固定端点への代入。
+各切断の一意性・全縦射の切断・hammock の積分解・弱比較は後続。
 既存 DK Hom との比較は Dwyer–Kan 命題2.2の二つの比較を構成して検証する必要がある。
 相対関手による写像の構成だけで比較の弱同値性を完成としない。
 既存 DK Hom の自由解像との高次の照合と ∞ 局所化の普遍性は後続。

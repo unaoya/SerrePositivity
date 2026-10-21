@@ -4611,6 +4611,41 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Form.nil,
       `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlocks.Form.snoc]
 
+@[noinline] private def e2RequiredBatch56 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_hom,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_backward,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.column_row,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_hom,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.value_wordAction,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.graphValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.graphInclusion_colimitValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.reducedValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.graphNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.colimitNormalization_reducedValue,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.edge_forward,
+      `SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.edge_backward,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGeneratorWordValue,
+      `SerrePositivity.EInfinity.SimplicialLocalization.freeHammockGeneratorWordValue_fac,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.WordObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.wordCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.functor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.inverts,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.exists_first_unmarked,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.exists_first_of_erase_ne_nil,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_first_split,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.letters,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.letters_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_eq_filter,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_eq_nil_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_marked,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_square,
+      `SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.erase_eqToHom]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -4642,7 +4677,7 @@ run_cmd do
       e2RequiredBatch32, e2RequiredBatch33, e2RequiredBatch34, e2RequiredBatch35,
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
-      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55] do
+      e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -10641,3 +10676,57 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
     (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm
       (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _ f) = f :=
   (freeResolutionBlockEquiv (BarrattEccles.cofibrantAlgebraRelativeCategory R) n _ _).symm_apply_apply f
+
+-- 元の指定縦射の可換正方形は、非指定生成矢の同じ文字列を保つ。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y X' Y' : C}
+    (p : Quiver.Path X Y) (q : Quiver.Path X' Y')
+    (u : Quiver.Path X X') (v : Quiver.Path Y Y')
+    (hu : W.paths u) (hv : W.paths v) (h : p.comp v = u.comp q) :
+    GeneratorWord.erase W p = GeneratorWord.erase W q := GeneratorWord.erase_square W p q u v hu hv h
+
+-- 元の全行・全列の非指定生成文字列は、元の全縦射に沿って一定。
+open CategoryTheory SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Hammock.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+    (τ : (Hammock.graph W.paths w X Y).obj n) (k : Fin (n.unop.len + 1)) (i : Fin w.length) :
+    Hammock.UnmarkedGenerators.column W (τ.obj k) i =
+      Hammock.UnmarkedGenerators.column W (τ.obj 0) i :=
+  Hammock.UnmarkedGenerators.column_row W τ k i
+
+-- 後ろ向き列の評価は空文字列であり、逆射も空文字列。
+open CategoryTheory SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {w : Hammock.Word} {X Y : Paths C}
+    (S : Hammock.Zigzag W.paths w X Y) (i : Fin w.length)
+    (hi : w.direction i = .backward) :
+    Hammock.Zigzag.Value.edge (SimplicialLocalization.GeneratorWord.functor W)
+      (SimplicialLocalization.GeneratorWord.inverts W) S i = [] :=
+  Hammock.UnmarkedGenerators.edge_backward W S i hi
+
+-- 同じ全語の作用で列を合成・挿入しても、非指定文字列の評価は変わらない。
+open CategoryTheory SerrePositivity.EInfinity in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {a b : Hammock.Word} {X Y : Paths C} (f : a ⟶ b)
+    (S : Hammock.Zigzag W.paths a X Y) :
+    Hammock.UnmarkedGenerators.value W (Hammock.WordAction.obj f S) =
+      Hammock.UnmarkedGenerators.value W S := Hammock.UnmarkedGenerators.value_wordAction W f S
+
+-- 非空の非指定文字列は、元の指定接頭列・最初の非指定矢・残りに切れる。
+open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization in
+example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
+    (W : MorphismProperty C) {X Y : C} (p : Quiver.Path X Y)
+    (hp : GeneratorWord.erase W p ≠ []) :
+    ∃ (A B : C) (e : A ⟶ B) (left : Quiver.Path X A) (right : Quiver.Path B Y),
+      W.paths left ∧ ¬ W e ∧ p = left.comp (e.toPath.comp right) :=
+  GeneratorWord.exists_first_of_erase_ne_nil W p hp
+
+-- 任意可換環の既存 DK 入力の各次数で、元の全語の余極限から評価できる。
+open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization in
+example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒᵖ)
+    (X Y : (BarrattEccles.cofibrantAlgebraRelativeCategory R).category) :
+    (freeHammockResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y).obj n ⟶
+      (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total
+        (freeResolutionGeneratorBase (BarrattEccles.cofibrantAlgebraRelativeCategory R) n).category)) :=
+  freeHammockGeneratorWordValue (BarrattEccles.cofibrantAlgebraRelativeCategory R) X Y n
