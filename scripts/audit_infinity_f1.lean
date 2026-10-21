@@ -8084,3 +8084,35 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianSimplexBoundaryOriginalHomIso
 #check @SerrePositivity.InfinityCategories.cocartesianSimplexBoundaryFiberTransport
 #check @SerrePositivity.InfinityCategories.cocartesianSimplexBoundaryFiberTransport_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.exists_cocartesianComparisonTriangle_over
+
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_partialPullback_map_of_vertical
+
+#check @SerrePositivity.InfinityCategories.comparisonTriangleSecondFace_const
+
+#check @SerrePositivity.InfinityCategories.pullbackComparisonTriangle
+
+#check @SerrePositivity.InfinityCategories.pullbackComparisonTriangle_fst
+
+#check @SerrePositivity.InfinityCategories.pullbackComparisonTriangle_snd
+
+#check @SerrePositivity.InfinityCategories.pullbackComparisonTriangle_face
+
+#check @SerrePositivity.InfinityCategories.pullbackComparisonTriangle_vertical
+
+#check @SerrePositivity.InfinityCategories.preservesCocartesianPullbackEdges_of_matching_lifts
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldOverMap
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackOverMap
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackOverMap_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawHomPre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawHomPre_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawCorePre
+
+#check @SerrePositivity.InfinityCategories.cocartesianScaffoldPullbackRawCorePre_isQCatEquivalence

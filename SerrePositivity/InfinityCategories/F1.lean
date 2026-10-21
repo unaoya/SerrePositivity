@@ -2903,3 +2903,13 @@ public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeSimplicialBoundaryFiberEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianSimplexBoundaryHomTransport
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianComparisonTriangleProjection
+
+public import SerrePositivity.InfinityCategories.F1.PullbackVerticalInvertible
+
+public import SerrePositivity.InfinityCategories.F1.PullbackComparisonTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackLiftPreservation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianScaffoldPullbackHom
