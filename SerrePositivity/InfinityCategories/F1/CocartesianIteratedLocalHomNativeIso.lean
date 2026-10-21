@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeHomTransportIso
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeHomTransportComposition
 public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalHomComparison
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeFactorization
 
 /-!
 概要：元の二重局所比較は、指定結合同型で運んだ直接の局所比較と関手同型。
@@ -27,20 +28,9 @@ def cocartesianIteratedLocalHomComparison_nativeIso
       (((SSet.uliftFunctor.{u + 1, u}).map (cocartesianBaseChangeNativeHomIso l k p q).hom ≫
         cocartesianLocalHomComparison (l ⋙ k) p q) ≫
         cocartesianBaseChangeHomCompositionNormalization l k p q)
-      (cocartesianIteratedLocalHomComparison l k p q) := by
-  have e₁ := FunctorIso.precomp (cocartesianBaseChangeHomTransport_compositionIso l k p q)
-    ((SSet.uliftFunctor.{u + 1, u}).map (cocartesianBaseChangeNativeHomIso l k p q).hom ≫
-      cocartesianStraighteningHomInterval
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap (l ⋙ k))).obj p)
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap (l ⋙ k))).obj q))
-  have e₂ := (cocartesianBaseChangeNativeHomTransportIso l k p q).postcomp
-    (cocartesianBaseChangeHomTransport l
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q) ≫
-      cocartesianBaseChangeRestrictedHomTransport l k p q)
-  simp only [Category.assoc] at e₁ e₂
-  have e := e₁.symm ≪≫ e₂
-  simpa only [cocartesianLocalHomComparison, cocartesianIteratedLocalHomComparison,
-    Category.assoc] using e
+      (cocartesianIteratedLocalHomComparison l k p q) :=
+  F2.functorIsoOfEq (cocartesianIteratedLocalNativeCompositeIso l k p q)
+    (cocartesianIteratedLocalNativeComposite_source l k p q)
+    (cocartesianIteratedLocalNativeComposite_target l k p q)
 
 end SerrePositivity.InfinityCategories

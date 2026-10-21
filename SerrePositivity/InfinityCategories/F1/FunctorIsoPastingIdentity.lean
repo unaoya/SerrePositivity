@@ -51,4 +51,17 @@ lemma FunctorIsoPastingHEq.rightFactor {X Y : SSet.{u}} {a b c a' b' c' : X ⟶ 
   rw [← hh]
   simp only [← Iso.trans_assoc, Iso.symm_self_id, Iso.refl_trans]
 
+/-- 始点だけを同じ表示へ移した、指定された貼り合わせの等式。 -/
+def FunctorIsoPastingSourceIdentity {X Y : SSet.{u}} {a b c a' : X ⟶ Y}
+    (e : FunctorIso a b) (d : FunctorIso b c) (n : FunctorIso a' c)
+    (ha : a = a') : Prop := F2.functorIsoOfEq e ha rfl ≪≫ d = n
+
+/-- 始点だけの正規化では、同じ第二因子をそのまま保持できる。 -/
+lemma FunctorIsoPastingHEq.normalizeSource {X Y : SSet.{u}} {a b c a' : X ⟶ Y}
+    (e : FunctorIso a b) (d : FunctorIso b c) (n : FunctorIso a' c)
+    (ha : a = a') (h : FunctorIsoPastingHEq e d n) :
+    FunctorIsoPastingSourceIdentity e d n ha := by
+  subst a'
+  exact eq_of_heq h
+
 end SerrePositivity.InfinityCategories

@@ -2581,3 +2581,23 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeFirstGl
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeFirstGlobalFactorDecomposition
 
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleCancellation
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
+
+public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleReindex
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeOriginalGlobalTriangleIsos
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalTriangleEndpoints
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalTransportTriangle
+
+public import SerrePositivity.InfinityCategories.F1.FunctorIsoLocalTriangleIdentity
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalSecondFactors
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalLocalTriangle
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeFactorization
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianIteratedLocalNativeCoherence

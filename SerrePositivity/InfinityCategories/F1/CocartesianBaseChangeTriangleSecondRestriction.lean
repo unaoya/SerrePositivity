@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleSecondEndpoints
 public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeTriangleSecondNaturality
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeGlobalSecondFactors
 
 /-!
 概要：第二辺をさらに制限した指定値は、既存の結合比較と二回目の大域自然性の制限。
@@ -45,21 +46,8 @@ def cocartesianBaseChangeSecondGlobalNaturalityIso :
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
           ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) ≫
         cocartesianBaseChangeHomRestrictionOne l k p q) :=
-  ((cocartesianBaseChangeNativeHomTransportIso l k p q).precomp
-    ((SSet.uliftFunctor.{u + 1, u}).map
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).map p q) ≫
-      (SSet.uliftFunctor.{u + 1, u}).map
-        ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap l)).map
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)))).postcomp
-            (cocartesianBaseChangeHomTransport l
-              ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-              ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)) ≪≫
-    (cocartesianBaseChangeHomNaturalityIso l
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p)
-      ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj q)).precomp
-        ((SSet.uliftFunctor.{u + 1, u}).map
-          ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).map p q))
+  cocartesianBaseChangeGlobalNativeTransportFactorIso l k p q ≪≫
+    cocartesianBaseChangeGlobalSecondNaturalityFactorIso l k p q
 
 /-- 元の三角形の同じ第二辺を制限しても、二つの指定因子の合成を保持する。 -/
 lemma cocartesianBaseChangeTransportTriangleSecondIso_restriction_naturality_heq :

@@ -64,4 +64,15 @@ lemma cocartesianBaseChangeFirstGlobalFactorDecomposition :
     (cocartesianBaseChangeFirstGlobalPasting l k p q)
   exact h
 
+/-- 始点のみをそろえた元の第一辺の制限正方形は、同じ大域自然性に貼り合う。 -/
+lemma cocartesianBaseChangeFirstGlobalPasting_normalized :
+    FunctorIsoPastingSourceIdentity
+      (cocartesianBaseChangeFirstGlobalRestrictionIso l k p q)
+      (cocartesianBaseChangeFirstGlobalFactorIso l k p q)
+      ((cocartesianBaseChangeHomNaturalityIso k p q).postcomp
+        (cocartesianBaseChangeHomRestrictionZero l k p q))
+      (cocartesianBaseChangeFirstGlobalRestriction_source l k p q) := by
+  exact FunctorIsoPastingHEq.normalizeSource _ _ _ _
+    (cocartesianBaseChangeFirstGlobalPasting l k p q)
+
 end SerrePositivity.InfinityCategories
