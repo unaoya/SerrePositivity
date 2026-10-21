@@ -2951,3 +2951,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianFiniteHornOver
 public import SerrePositivity.InfinityCategories.F1.CocartesianAnodyneScaffoldTarget
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianHigherHornTargetComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornNativeTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornScaffoldTarget
