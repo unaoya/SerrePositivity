@@ -2639,3 +2639,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitTransportValue
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitTransportValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransport_mapIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeIntervalVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeEdge_hom
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeHomotopy_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeHomotopy_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitAdjustedEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitEdge_homMk_eq_native
