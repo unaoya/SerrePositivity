@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComposition
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionAugmentation
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionKFlat
 import SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle
 import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
 import SerrePositivity.InfinityCategories.Stable.EquivalenceTriangleCoherence
@@ -3767,6 +3773,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedIso,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionKFlat,
+
     `SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle,
     `SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence,
     `SerrePositivity.InfinityCategories.Stable.EquivalenceTriangleCoherence,
