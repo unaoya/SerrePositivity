@@ -2411,3 +2411,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.sliceShapePushoutIso
 #check @SerrePositivity.InfinityCategories.F2.sliceShapePushout_comm
 #check @SerrePositivity.InfinityCategories.F2.sliceShapePushout_lift
+
+#check @SerrePositivity.InfinityCategories.F2.skeleton_eq_top_of_dimension
+#check @SerrePositivity.InfinityCategories.F2.finiteSkeleton_exists_top
+#check @SerrePositivity.InfinityCategories.F2.finiteCellShapeIndex
+#check @SerrePositivity.InfinityCategories.F2.finiteCellShapeIndex_isEmpty
+#check @SerrePositivity.InfinityCategories.F2.finiteRelativeSkeleton_exists_top
+#check @SerrePositivity.InfinityCategories.F2.finiteCellShapeAttachment_mono
+#check @SerrePositivity.InfinityCategories.F2.finiteShape_cell_induction
