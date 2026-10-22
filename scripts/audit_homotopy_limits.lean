@@ -1,7 +1,7 @@
 import SerrePositivity.InfinityCategories.HomotopyLimits
 
 set_option pp.universes true
-set_option pp.explicit true
+set_option pp.explicit false
 
 open SerrePositivity.InfinityCategories.HomotopyLimits
 
@@ -14269,3 +14269,129 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaPresheaf_sifted_induction
 #print axioms sigmaPresheaf_sifted_induction
+
+#check @sigmaVertexPoint_inclusion
+#print axioms sigmaVertexPoint_inclusion
+
+#check @sigmaLeftKanShapeAmbientIso
+#print axioms sigmaLeftKanShapeAmbientIso
+
+#check @sigmaLeftKanShapeAmbientIso_hom_projection
+#print axioms sigmaLeftKanShapeAmbientIso_hom_projection
+
+#check @sigmaLeftKanCommaIso
+#print axioms sigmaLeftKanCommaIso
+
+#check @sigmaLeftKanCommaIso_hom_projection
+#print axioms sigmaLeftKanCommaIso_hom_projection
+
+#check @sigmaLeftKanCommaIso_inv_projection
+#print axioms sigmaLeftKanCommaIso_inv_projection
+
+#check @sigmaLeftKanProjection_rightFibration
+#print axioms sigmaLeftKanProjection_rightFibration
+
+#check @sigmaLeftKanShape_quasicategory
+#print axioms sigmaLeftKanShape_quasicategory
+
+#check @sigmaElementsLeftKanComparison
+#print axioms sigmaElementsLeftKanComparison
+
+#check @sigmaElementsLeftKanComparison_isQCatEquivalence
+#print axioms sigmaElementsLeftKanComparison_isQCatEquivalence
+
+#check @sigmaElementsLeftKanComparison_projection
+#print axioms sigmaElementsLeftKanComparison_projection
+
+#check @sigmaElementsLeftKanComparison_diagram
+#print axioms sigmaElementsLeftKanComparison_diagram
+
+#check @PreservesSmallSiftedColimits
+#print axioms PreservesSmallSiftedColimits
+
+#check @HasSmallSiftedColimits
+#print axioms HasSmallSiftedColimits
+
+#check @PreservesSmallSiftedColimits.of_functorIso
+#print axioms PreservesSmallSiftedColimits.of_functorIso
+
+#check @sigma_hasSmallSiftedColimits
+#print axioms sigma_hasSmallSiftedColimits
+
+#check @sigmaInclusion_map_isColimit
+#print axioms sigmaInclusion_map_isColimit
+
+#check @sigmaInclusion_preservesSmallSiftedColimits
+#print axioms sigmaInclusion_preservesSmallSiftedColimits
+
+#check @sigmaLeftKanDiagram_hasColimit
+#print axioms sigmaLeftKanDiagram_hasColimit
+
+#check @sigma_exists_leftKanExtension
+#print axioms sigma_exists_leftKanExtension
+
+#check @sigmaLeftKanExtension_unit_isIso
+#print axioms sigmaLeftKanExtension_unit_isIso
+
+#check @sigmaLeftKanExtensionRecoveryIso
+#print axioms sigmaLeftKanExtensionRecoveryIso
+
+#check @sigma_exists_leftKanExtension_with_recovery
+#print axioms sigma_exists_leftKanExtension_with_recovery
+
+#check @sigmaVertexPresheaf_mem
+#print axioms sigmaVertexPresheaf_mem
+
+#check @sigmaVertexDensityCocone
+#print axioms sigmaVertexDensityCocone
+
+#check @sigmaVertexDensityCocone_vertex
+#print axioms sigmaVertexDensityCocone_vertex
+
+#check @sigmaVertexDensityCocone_isColimit
+#print axioms sigmaVertexDensityCocone_isColimit
+
+#check @sigmaVertexDensity_image_isColimit
+#print axioms sigmaVertexDensity_image_isColimit
+
+#check @sigmaLeftKanShapeAmbientIso_coconeMap
+#print axioms sigmaLeftKanShapeAmbientIso_coconeMap
+
+#check @sigmaLeftKanCommaIso_hom_coconeMap
+#print axioms sigmaLeftKanCommaIso_hom_coconeMap
+
+#check @sigmaLeftKanCommaIso_inv_coconeMap
+#print axioms sigmaLeftKanCommaIso_inv_coconeMap
+
+#check @sigmaVertexDensityCocone_val_inclusion
+#print axioms sigmaVertexDensityCocone_val_inclusion
+
+#check @sigmaElementsLeftKanComparison_coconeMap
+#print axioms sigmaElementsLeftKanComparison_coconeMap
+
+#check @sigmaLeftKanCanonicalCocone_restrict_val
+#print axioms sigmaLeftKanCanonicalCocone_restrict_val
+
+#check @sigmaSiftedContinuous_canonicalColimits
+#print axioms sigmaSiftedContinuous_canonicalColimits
+
+#check @sigmaSiftedContinuous_isLeftKanExtension
+#print axioms sigmaSiftedContinuous_isLeftKanExtension
+
+#check @SiftedContinuousFunctorInfinity
+#print axioms SiftedContinuousFunctorInfinity
+
+#check @siftedContinuousFunctorInfinity_quasicategory
+#print axioms siftedContinuousFunctorInfinity_quasicategory
+
+#check @siftedContinuousFunctorInclusion
+#print axioms siftedContinuousFunctorInclusion
+
+#check @siftedContinuousFunctorInclusion_isFullyFaithful
+#print axioms siftedContinuousFunctorInclusion_isFullyFaithful
+
+#check @sigmaSiftedContinuousRestriction
+#print axioms sigmaSiftedContinuousRestriction
+
+#check @sigmaSiftedContinuousRestriction_isFullyFaithful
+#print axioms sigmaSiftedContinuousRestriction_isFullyFaithful
