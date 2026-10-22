@@ -763,7 +763,23 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageDerivedDerivation,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageDerivedLift,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageHomotopyFiber,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImagePullback]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImagePullback,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionComposition,
+    `SerrePositivity.KST.LocalizingInvariants.CochainPullbackLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPrimitiveBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullbackBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullbackChainLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullbackCoordinates,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullbackExt,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassCokernelPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassCommonBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangeCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangeLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangePullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangeWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientComposition]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
