@@ -499,3 +499,10 @@ public import SerrePositivity.KST.Fibration.ExInfinityCommSqEdges
 public import SerrePositivity.KST.Fibration.QuotientSKernelEdges
 public import SerrePositivity.KST.Fibration.KanTerminalComparison
 public import SerrePositivity.KST.Fibration.QuotientSKernelTerminalCorner
+public import SerrePositivity.KST.Fibration.CoreSingleCoordinates
+public import SerrePositivity.KST.Fibration.EnrichedObjectRelabelling
+public import SerrePositivity.KST.Fibration.StableCoreSingleKanFunctor
+public import SerrePositivity.KST.Fibration.CoreSingleKanCoordinates
+public import SerrePositivity.KST.Fibration.StableCoreSingleKanHom
+public import SerrePositivity.KST.Fibration.QuotientSCoreSingleEdges
+public import SerrePositivity.KST.Fibration.StableMultiKanTerminal
