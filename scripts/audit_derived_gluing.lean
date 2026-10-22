@@ -153,7 +153,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapLeftComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleQuasiIso,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeHomotopyRepresentation]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeHomotopyRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Nonempty,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftRepresentative,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomotopyFull,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosureCone,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftRepresentativeMaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ZeroRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ZeroObject,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PositiveShiftRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosurePositive]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

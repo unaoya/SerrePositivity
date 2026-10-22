@@ -148,3 +148,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapLef
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleQuasiIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeHomotopyRepresentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Nonempty
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftRepresentative
+public import SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomotopyFull
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosureCone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftRepresentativeMaps
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ZeroRepresentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ZeroObject
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PositiveShiftRepresentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosurePositive
