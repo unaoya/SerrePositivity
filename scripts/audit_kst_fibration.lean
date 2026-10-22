@@ -330,7 +330,14 @@ run_cmd do
     `SerrePositivity.KST.Fibration.SpanCompatibleComparison,
     `SerrePositivity.KST.Fibration.StrictTransportComparisonSpan,
     `SerrePositivity.KST.Fibration.SpanCompatibleTransportRepresentation,
-    `SerrePositivity.KST.Fibration.SpanTransportPointedTriangle]
+    `SerrePositivity.KST.Fibration.SpanTransportPointedTriangle,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportRestriction,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientTriangle,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientFiber,
+    `SerrePositivity.KST.Fibration.RelativeFunctorEvaluationVertex,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientPoints,
+    `SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

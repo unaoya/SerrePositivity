@@ -324,3 +324,10 @@ public import SerrePositivity.KST.Fibration.SpanCompatibleComparison
 public import SerrePositivity.KST.Fibration.StrictTransportComparisonSpan
 public import SerrePositivity.KST.Fibration.SpanCompatibleTransportRepresentation
 public import SerrePositivity.KST.Fibration.SpanTransportPointedTriangle
+public import SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan
+public import SerrePositivity.KST.Fibration.ScaffoldTransportRestriction
+public import SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientTriangle
+public import SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientFiber
+public import SerrePositivity.KST.Fibration.RelativeFunctorEvaluationVertex
+public import SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientPoints
+public import SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient
