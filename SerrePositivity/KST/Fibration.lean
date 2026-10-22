@@ -15,3 +15,9 @@ public import SerrePositivity.KST.Fibration.RelativeSQuotient
 public import SerrePositivity.KST.Fibration.RelativeSKernel
 public import SerrePositivity.KST.Fibration.RelativeSFunctor
 public import SerrePositivity.KST.Fibration.RelativeSKernelSquare
+public import SerrePositivity.KST.Fibration.KernelCofiberModel
+public import SerrePositivity.KST.Fibration.WeakCofiberVertices
+public import SerrePositivity.KST.Fibration.FullPredicateRestriction
+public import SerrePositivity.KST.Fibration.WeakArrowCategory
+public import SerrePositivity.KST.Fibration.WeakArrowEquivalence
+public import SerrePositivity.KST.Fibration.WeakArrowAdditivity

@@ -21,7 +21,13 @@ run_cmd do
     `SerrePositivity.KST.Fibration.RelativeSQuotient,
     `SerrePositivity.KST.Fibration.RelativeSKernel,
     `SerrePositivity.KST.Fibration.RelativeSFunctor,
-    `SerrePositivity.KST.Fibration.RelativeSKernelSquare]
+    `SerrePositivity.KST.Fibration.RelativeSKernelSquare,
+    `SerrePositivity.KST.Fibration.KernelCofiberModel,
+    `SerrePositivity.KST.Fibration.WeakCofiberVertices,
+    `SerrePositivity.KST.Fibration.FullPredicateRestriction,
+    `SerrePositivity.KST.Fibration.WeakArrowCategory,
+    `SerrePositivity.KST.Fibration.WeakArrowEquivalence,
+    `SerrePositivity.KST.Fibration.WeakArrowAdditivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
