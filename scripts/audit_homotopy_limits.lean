@@ -14395,3 +14395,27 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaSiftedContinuousRestriction_isFullyFaithful
 #print axioms sigmaSiftedContinuousRestriction_isFullyFaithful
+
+#check @sigmaLeftKanExtension_canonicalColimits
+#print axioms sigmaLeftKanExtension_canonicalColimits
+
+#check @sigmaCanonicalColimits_iff_densityImages
+#print axioms sigmaCanonicalColimits_iff_densityImages
+
+#check @sigmaLeftKanExtension_density_image_isColimit
+#print axioms sigmaLeftKanExtension_density_image_isColimit
+
+#check @sigma_isLeftKanExtension_refl_iff_densityImages
+#print axioms sigma_isLeftKanExtension_refl_iff_densityImages
+
+#check @sigma_exists_densityLeftKanExtension_with_recovery
+#print axioms sigma_exists_densityLeftKanExtension_with_recovery
+
+#check @covariantRepresentableDiagram_reflects_isLimit
+#print axioms covariantRepresentableDiagram_reflects_isLimit
+
+#check @isColimitCone_iff_fullHomCone
+#print axioms isColimitCone_iff_fullHomCone
+
+#check @preservesSmallSiftedColimits_iff_fullHomCones
+#print axioms preservesSmallSiftedColimits_iff_fullHomCones

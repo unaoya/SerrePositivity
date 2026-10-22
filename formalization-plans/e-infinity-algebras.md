@@ -6,7 +6,7 @@
 
 ### N（γ1.5・γ3）
 
-- **現在地**：**P-1 g の sifted 生成を完了。元の sifted 保存関手からの Yoneda 制限射自身の全充満忠実性も完了。** 元の指定頂点・全密度余錐と元の左 Kan 添字の厳密な比較を保持。小さい sifted 余極限を持つ標的へ任意の C 上の図式の全左 Kan 延長を構成し、同じ指定単位の可逆性と全関手同型による回収を証明。延長の sifted 保存性・制限の本質的全射性、HTT 5.5.8.14 の simplicial Ind 表示と 5.5.8.15 の filtered/geometric 版は未完了。F2N-3 は a7 の実証拠差し替えだけ残す（提供後1コミット）。
+- **現在地**：**P-1 g の sifted 生成を完了。元の sifted 保存関手からの Yoneda 制限射自身の全充満忠実性も完了。** 元の指定頂点・全密度余錐と元の左 Kan 添字の厳密な比較を保持。小さい sifted 余極限を持つ標的へ任意の C 上の図式の全左 Kan 延長を構成し、同じ指定単位の可逆性と全関手同型による回収を証明。元の延長による全密度余錐像の余極限性と、全 Hom 錐による元の余極限の双方向判定も証明。延長の sifted 保存性・制限の本質的全射性、HTT 5.5.8.14 の simplicial Ind 表示と 5.5.8.15 の filtered/geometric 版は未完了。F2N-3 は a7 の実証拠差し替えだけ残す（提供後1コミット）。
   **F2N-4(a)〜(e) 完了。(e) は F1 の密度余錐と元の恒等点の実因子化を使用し、ℵ₀ の比較も構成。** 冪等完備化は 10-22 10:10 ユーザー承認で F1b から移管。
   **N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
   任意 coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram`・`F2.coherentDiagramTotalCocone_isColimit` を読み取り専用で使用。N の部分余極限経路は打ち切り。
@@ -88,16 +88,16 @@
   `ind_isIdempotentComplete`、`idemToCompactInd`、`idemToCompactInd_isFullyFaithful`、`idemToCompactInd_isEssentiallySurjective_iff_retracts`、
   `weakHomotopyEquivalence_mapPiZero_surjective`、`colimitCoconeLeg_point_representative`、`representationValueTransportIso`、`IsKappaCompact.retract_of_colimit`、
   `indCompact_retract_yoneda`、`idemToCompactInd_isQCatEquivalence`、`compactIndEquivalence`、`compactIndYoneda_isIdempotentCompletion`、`compactIndOmegaEquivalence`、`isFilteredInfinity_ulift`、`isKappaCompact_of_isInitialVertex`、`isCompact_of_isInitialVertex`、`isKappaCompact_colimit_of_exchange`、`isKappaCompact_finiteColimit_of_exchange`、`hasFiniteColimits_kappaCompactObjects_of_exchange`。
-  P-1 g：`isSiftedInfinity_of_hasBinaryCoproducts`、`sigmaElementsYonedaDiagram`、`sigmaDensityCocone`、`sigmaDensityCocone_isColimit`、`smallLeftConeRestriction_isQCatEquivalence_of_finiteProducts`、`classifiedConeExtension_isContractibleKan`、`exists_classifiedConeLift`、`exists_classifiedLimitCone`、`sigmaPresheafElements_isSifted`、`sigmaPresheaf_siftedPresentation`、`sigmaPresheaf_sifted_induction`、`HasSmallSiftedColimits`、`PreservesSmallSiftedColimits`、`sigmaElementsLeftKanComparison`、`sigma_exists_leftKanExtension_with_recovery`、`sigmaSiftedContinuous_isLeftKanExtension`、`sigmaSiftedContinuousRestriction_isFullyFaithful`。N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
+  P-1 g：`isSiftedInfinity_of_hasBinaryCoproducts`、`sigmaElementsYonedaDiagram`、`sigmaDensityCocone`、`sigmaDensityCocone_isColimit`、`smallLeftConeRestriction_isQCatEquivalence_of_finiteProducts`、`classifiedConeExtension_isContractibleKan`、`exists_classifiedConeLift`、`exists_classifiedLimitCone`、`sigmaPresheafElements_isSifted`、`sigmaPresheaf_siftedPresentation`、`sigmaPresheaf_sifted_induction`、`HasSmallSiftedColimits`、`PreservesSmallSiftedColimits`、`sigmaElementsLeftKanComparison`、`sigma_exists_leftKanExtension_with_recovery`、`sigmaSiftedContinuous_isLeftKanExtension`、`sigmaSiftedContinuousRestriction_isFullyFaithful`、`sigma_exists_densityLeftKanExtension_with_recovery`、`isColimitCone_iff_fullHomCone`。N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。P（`F2/Presentable/`）も読み取り専用。所有は `HomotopyLimits/`・既存 N 集約・監査、`InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
   F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind・Ind 安定性、F1b が a7、P が accessible・presentable・局所化の存在、N が P-1 g と a7 差し替え。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の P_Σ Kan 比較・延長・制限の全充満忠実性9モジュール42宣言・既存 N 集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **未コミット**：なし（今回の密度余錐像・全 Hom 判定2モジュール8宣言・既存 N 集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
 - **既知の問題**：compact 独立集約7354 jobs・全273宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
-  N 集約は今回8326 jobs・全5370宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
+  N 集約は今回8519 jobs・全5378宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
 - **次の一手**：構成した元の左 Kan 延長の sifted 余極限保存を証明し、保存関手の元の Yoneda 制限の本質的全射性と同値へ接続する。任意の元の sifted 図式とその指定全余錐の像を保持し、保存性を未証明の入力に置かない。
-  小さい元の圏との比較、同じ標準 Kan 余錐と全密度余錐の厳密な一致、保存関手自身の標準 Kan 条件と実際の制限の全充満忠実性は保存済み。simplicial Ind・filtered/geometric 版と Yoneda の有限余積保存、HTT 5.5.8.15(2)(3) は残る。P は読み取り専用、局所化の存在は P の担当。
+  同じ元の延長の全密度余錐像の余極限性は保存済み。元の任意の余錐の保存は全 Hom 錐の極限性へ双方向に還元できるので、まず延長の全自然 Hom 表示を構成する。simplicial Ind・filtered/geometric 版と Yoneda の有限余積保存、HTT 5.5.8.15(2)(3) は残る。P は読み取り専用、局所化の存在は P の担当。
   F2N-3 は F1b の a7 提供後、`IndFiniteLimitExchangeInput.exchange` への実証拠受け渡しだけを1コミットで保存。N-2 の再監査は不要。
   原典：[HTT §4.4.5・§5.1.4・5.5.8.14〜15](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（いずれも本文照合済み）。
 
