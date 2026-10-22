@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparison
+public import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonCoherence
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamilyBaseChange
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCanonicalComparison

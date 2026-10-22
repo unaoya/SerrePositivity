@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonCoherence
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamilyBaseChange
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCanonicalComparison
@@ -4120,6 +4122,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonCoherence,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamilyBaseChange,
 
