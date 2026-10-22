@@ -405,3 +405,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictClassifiedIndCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictClassifiedIndCocone_inclusion_val
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_preservesSmallKappaFilteredColimits_iff_strictClassified
+#check @SerrePositivity.InfinityCategories.F2.Ind.coconeTransformationMap_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.kanCanonical_sliceUnderRestrict_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.kanCanonical_isColimitCone_iff_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_coefficient
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_projection

@@ -229,3 +229,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetR
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictClassifiedIndCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.IndPreservationStrictReduction
+public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.KanCanonicalCoconeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationTotalAssembly
