@@ -399,3 +399,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_canonicalColimits
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_canonicalLeftKanExtension_with_recovery
 #check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_density_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.preservesSmallKappaFilteredColimits_of_poset

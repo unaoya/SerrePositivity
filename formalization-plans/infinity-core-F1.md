@@ -34,8 +34,8 @@
   `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
   `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
   `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  任意の κ-filtered 余錐の保存性と、実際の制限関手の本質的全射性は未証明。
-- 独立集約 7090 jobs、公理監査 1872 宣言、標準三公理のみ。
+  任意の κ-filtered 余錐の保存性は `preservesSmallKappaFilteredColimits_of_poset` で通常の小さい κ-filtered poset 上へ帰着。延長の保存性と制限関手の本質的全射性は未証明。
+- 独立集約 7091 jobs、公理監査 1873 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -97,7 +97,7 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `ind_exists_leftKanExtension` は正則 κ と小さい κ-filtered 余極限を持つ D に対し、元の C → D の左 Kan 延長を構成済み。
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
 `indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
-次は任意の小さい κ-filtered 図式と元の native 余極限余錐について、延長による同じ像の余極限性を証明する。
+次は保存性の poset 帰着を使い、小さい κ-filtered poset 上の元の coherent 図式と native 余錐の像の余極限性を証明する。
 各 Indκ 値の元の元の圏・その全図式の余極限と cofinality を使い、密度余錐の保存から一般の保存へ移す。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
