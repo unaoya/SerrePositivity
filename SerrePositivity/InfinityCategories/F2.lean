@@ -829,6 +829,25 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawTrianglePo
 public import
   SerrePositivity.InfinityCategories.F2.CoherentColimitIntervalModelRawLastFactorization
 
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitIntervalModelUniversalRawRemainder
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawFirstUnitComparison
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawFirstUnitEndpoints
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawFirstUnitModel
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawFirstUnitTransportValue
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawFirstUnitValue
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawUnitFiberTransportValue
+
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoPostPairTransport
+
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoInversePrePostValue
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -1926,3 +1945,31 @@ public import
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTriangleLongPointComparison_heq_transport
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelRawLastRemainder_heq_factorization
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUniversalRawRemainder
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelRawLastRemainder_eq_universal_first
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_universal_raw_transport
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitInversePoint
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnit_middle_map
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnit_source_value_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnit_middle_value_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_raw_point
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitValueComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitValueComparison_eq_reduced
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitValueComparison_model
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitInverseTransportValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitInverseTransportValue_heq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitTransportValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitTransportValue_heq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitInversePoint_value_heq_lower
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawFirstUnitComparison_value_heq_reduced
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransportValueTo_heq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransport_raw_source_map
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransport_raw_target_map
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_pair_heq_of_pair_eq
+#check @SerrePositivity.InfinityCategories.F2.postcomp_pair_eq_of_pair_eq
+
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_inverse_pre_post_value_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_trans_twice

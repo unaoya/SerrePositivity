@@ -32,12 +32,12 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  元の a6 模型三角形式を三因子へ縮約。全第一辺選択上の自然性の二実成分を元の指定比較へ同定し、新長辺残余を第一辺指定比較の最後辺輸送と普遍三角形比較の合成へ分解。逆・任意の実前後合成・元の模型残余への代入も証明。
+  新長辺残余の全第一辺族による分解を元の模型式へ代入。逆第一辺指定比較と raw 二面比較を実中間点で合成し、その値と上側単位から元の模型単位比較を回収。最後辺輸送後も合成の値を保ち、元の模型三角形式を普遍三角形残余・第一辺合成輸送・最後辺模型単位の三因子へ縮約。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
-  検証：三集約同時ビルド9943 jobs、公理監査15496宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  全第一辺比較の二実成分・指定第一辺比較の像・新長辺残余の分解・元の模型残余への代入を含む追加53明示宣言を型検査。
+  検証：三集約同時ビルド9952 jobs、公理監査15599宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  実端点を保つ第一辺合成比較・元の模型単位比較の回収・最後辺輸送の値・模型三角形の普遍残余への縮約を含む追加25明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 - F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
@@ -97,7 +97,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  RawLastLongNormalizedRemainderIso_eq_factorization は同じ新長辺残余の厳密な分解。IntervalModelRawLastRemainder_heq_factorization で元の模型残余にも代入済み。次はこの逆第一辺因子を RawUnitFiberTransportValueTo と合成し、RawUnitFiber_model_image により元の最初辺模型比較へ照合。残る普遍三角形の像を同じ全区間族の指定三角形比較へ戻す。
+  IntervalModel_universal_raw_transport は元の模型三角形式を普遍三角形残余・第一辺合成輸送・最後辺模型単位へ縮約。RawFirstUnitTransportValue_heq_raw は元の二因子を同じ raw 合成比較の像へ同定。次は RawFirstUnitValueComparison_model を使って輸送後の全区間族を元の模型単位比較へ照合し、普遍三角形残余の像を同じ指定三角形比較へ戻す。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
@@ -184,7 +184,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  元の a6 模型三角形式を三因子へ縮約。全第一辺選択上の自然性の二実成分を元の指定比較へ同定し、新長辺残余を第一辺指定比較の最後辺輸送と普遍三角形比較の合成へ分解。逆・任意の実前後合成・元の模型残余への代入も証明。
+  新長辺残余の全第一辺族による分解を元の模型式へ代入。逆第一辺指定比較と raw 二面比較を実中間点で合成し、その値と上側単位から元の模型単位比較を回収。最後辺輸送後も合成の値を保ち、元の模型三角形式を普遍三角形残余・第一辺合成輸送・最後辺模型単位の三因子へ縮約。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
@@ -204,7 +204,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  RawLastLongNormalizedRemainderIso_eq_factorization は同じ新長辺残余の厳密な分解。IntervalModelRawLastRemainder_heq_factorization で元の模型残余にも代入済み。次はこの逆第一辺因子を RawUnitFiberTransportValueTo と合成し、RawUnitFiber_model_image により元の最初辺模型比較へ照合。残る普遍三角形の像を同じ全区間族の指定三角形比較へ戻す。
+  IntervalModel_universal_raw_transport は元の模型三角形式を普遍三角形残余・第一辺合成輸送・最後辺模型単位へ縮約。RawFirstUnitTransportValue_heq_raw は元の二因子を同じ raw 合成比較の像へ同定。次は RawFirstUnitValueComparison_model を使って輸送後の全区間族を元の模型単位比較へ照合し、普遍三角形残余の像を同じ指定三角形比較へ戻す。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
