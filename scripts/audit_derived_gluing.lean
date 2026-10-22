@@ -391,7 +391,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPath,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPathLegs,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePathPostEvaluation,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPathEndpoints]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPathEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ActionYonedaInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedModelInverseNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCoefficientActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedPrecompositionComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedPrecompositionAW,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCoefficientComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCoefficientCompositionPrisms,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedFamilyCompositionPost,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientTriangles]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
