@@ -7,6 +7,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.BaseChangeImageSectionValue,
+    `SerrePositivity.KST.Fibration.BaseChangeSectionFiberPoint,
+    `SerrePositivity.KST.Fibration.VertexFiberZeroSection,
+    `SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint,
+    `SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange,
+
     `SerrePositivity.KST.Fibration.StraighteningBaseChangeRightEndpoints,
     `SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints,
     `SerrePositivity.KST.Fibration.PointedSpaceEqualityTransport,

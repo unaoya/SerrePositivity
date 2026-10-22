@@ -415,3 +415,8 @@ public import SerrePositivity.KST.Fibration.PointedSpaceEqualityTransport
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality
+public import SerrePositivity.KST.Fibration.BaseChangeImageSectionValue
+public import SerrePositivity.KST.Fibration.BaseChangeSectionFiberPoint
+public import SerrePositivity.KST.Fibration.VertexFiberZeroSection
+public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint
+public import SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange
