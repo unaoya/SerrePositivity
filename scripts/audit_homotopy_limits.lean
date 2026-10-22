@@ -13997,3 +13997,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms twistedArrowPointedSourceEdge_projection
 #check @twistedArrowPointedTargetEdge_projection
 #print axioms twistedArrowPointedTargetEdge_projection
+#check @leftFibrationEdge_pointTransportIso
+#print axioms leftFibrationEdge_pointTransportIso
+#check @leftFibrationEdge_pointVertexIso
+#print axioms leftFibrationEdge_pointVertexIso
+#check @yonedaIdentityCommonFiberPoint
+#print axioms yonedaIdentityCommonFiberPoint
+#check @yonedaIdentitySourceBaseEdge
+#print axioms yonedaIdentitySourceBaseEdge
+#check @yonedaIdentityTargetBaseEdge
+#print axioms yonedaIdentityTargetBaseEdge
+#check @yonedaIdentitySourceTransportIso
+#print axioms yonedaIdentitySourceTransportIso
+#check @yonedaIdentityTargetTransportIso
+#print axioms yonedaIdentityTargetTransportIso
+#check @yonedaIdentityPointTransportsIso
+#print axioms yonedaIdentityPointTransportsIso
+#check @yonedaIdentitySourceBaseEdge_edge
+#print axioms yonedaIdentitySourceBaseEdge_edge
+#check @yonedaIdentityTargetBaseEdge_edge
+#print axioms yonedaIdentityTargetBaseEdge_edge
+#check @yonedaIdentityCommonFiber_base
+#print axioms yonedaIdentityCommonFiber_base
+#check @edgeTransport_target_congr
+#print axioms edgeTransport_target_congr
+#check @edgeTransportPointsIso_target_congr
+#print axioms edgeTransportPointsIso_target_congr
+#check @yonedaIdentityNormalizedSourceEdge
+#print axioms yonedaIdentityNormalizedSourceEdge
+#check @yonedaIdentityNormalizedTargetEdge
+#print axioms yonedaIdentityNormalizedTargetEdge
+#check @yonedaIdentityNormalizedSourcePoint
+#print axioms yonedaIdentityNormalizedSourcePoint
+#check @yonedaIdentityNormalizedTargetPoint
+#print axioms yonedaIdentityNormalizedTargetPoint
+#check @yonedaIdentityNormalizedTransportsIso
+#print axioms yonedaIdentityNormalizedTransportsIso
+#check @yonedaIdentityNormalizedSourceEdge_edge
+#print axioms yonedaIdentityNormalizedSourceEdge_edge
+#check @yonedaIdentityNormalizedTargetEdge_edge
+#print axioms yonedaIdentityNormalizedTargetEdge_edge
+#check @unstraighteningFiberHom_vertex
+#print axioms unstraighteningFiberHom_vertex
+#check @canonicalYonedaFiberEvaluation_vertex
+#print axioms canonicalYonedaFiberEvaluation_vertex
+#check @canonicalYonedaFiberEvaluation_vertexTransportIso
+#print axioms canonicalYonedaFiberEvaluation_vertexTransportIso
+#check @yonedaRepresentableNativeEdge
+#print axioms yonedaRepresentableNativeEdge
+#check @yonedaRepresentableNativeEdge_edge
+#print axioms yonedaRepresentableNativeEdge_edge
+#check @yonedaRepresentableNativeEdge_evaluated
+#print axioms yonedaRepresentableNativeEdge_evaluated
+#check @yonedaRepresentableNativeEdge_evaluationIso
+#print axioms yonedaRepresentableNativeEdge_evaluationIso
