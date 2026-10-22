@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
+public import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
+public import SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn
+public import SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting
+public import SerrePositivity.InfinityCategories.Stable.PointedConeLeftFibration
 public import SerrePositivity.InfinityCategories.Stable.LoopConeClassifier
 public import SerrePositivity.InfinityCategories.Stable.LoopSourceUniversalUnit
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison

@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
+import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
+import SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn
+import SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting
+import SerrePositivity.InfinityCategories.Stable.PointedConeLeftFibration
 import SerrePositivity.InfinityCategories.Stable.LoopConeClassifier
 import SerrePositivity.InfinityCategories.Stable.LoopSourceUniversalUnit
 import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison
@@ -4239,6 +4244,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber,
+
+    `SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono,
+    `SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn,
+    `SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting,
+    `SerrePositivity.InfinityCategories.Stable.PointedConeLeftFibration,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeClassifier,
     `SerrePositivity.InfinityCategories.Stable.LoopSourceUniversalUnit,
 
