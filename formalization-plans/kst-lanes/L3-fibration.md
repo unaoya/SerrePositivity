@@ -58,12 +58,12 @@
   恒等錐評価は全写像空間で充満忠実、固定した点の延長空間は可縮 Kan。実恒等点の同型から相対三角比較を回収。
   実 coslice 辺を同じ三辺の合成三角形へ展開し、輸送した実点の矢印の類は元の点の射と底の辺の合成と証明。
   全変換空間の pointed 作用を元の比較二胞体の成分との合成で表示。商・初頂点の制限も指定同型の実成分で正規化。
-  元の射の類の等式を実ホモトピー三角形から同じ coslice fiber 内の辺・頂点同型へ戻し、小さい宇宙へ反映。指定の一点の式から相対三角比較を回収。
-- 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
-  自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8593 jobs・専用監査 297 モジュール 1646 宣言 が成功。
-  標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4853 モジュールは EInfinity を含まない。全体 24717 jobs で成功。
+  元の射の類の等式を実ホモトピー三角形から同じ coslice fiber 内の頂点同型へ戻し、小さい宇宙へ反映。
+  商・初頂点の指定値同型で恒等点の比較像を戻すと、元の strict Kan 比較による実像を厳密に回収。
+  coherent な合成三角形で点の射との合成を計算。商の分類成分の実制限も回収し、合成恒等点を native 実像と指定分類成分だけで表示。
+- 工程 (c) の必要条件：K-5 の実 Sp 長完全列で右射影の全射性と接続射の自明性を同定。左項が連結なら零次射影は全射。十分条件は未証明。
+- 対象 8621 jobs・専用監査 303 モジュール 1677 宣言・全体 24758 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4881 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -84,7 +84,7 @@
   weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_of_identity_hom。
 - weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
   weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
-- cosliceFiberVertexIsoOfHomEq、weakQuotientCosliceCompositePoint_normalized_hom、weakQuotientMappingComparison_component_restriction。
+- weakIdentityQuotientPointHom_native_image、fractionKanQuotientDiagram_classificationIso_component、weakQuotientCosliceCompositePoint_native_image_hom。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -98,12 +98,11 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（実 coslice 合成・点の射の類の反映・実成分制限の8モジュール、集約・監査・本計画を含める）。
+- なし（native 成分・恒等点実像・指定分類成分の6モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
-- 商上の span 図式の恒等点の普遍性と分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
+- native 実像を分類成分が復元写像の指定恒等点へ送る式は未証明。span 側の普遍性・分数比較の同値性・cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- 商・初頂点の実成分制限式で同じ native 恒等点評価へ戻し、分類同型を通した復元写像の指定恒等点の射の類と比較。
-  weakQuotientCosliceTriangle_of_identity_hom の一点の式を証明。span 側の普遍性・もう一方の逆条件・元の分数比較の同値性へ進む。
+- 分類成分を初頂点へ制限して、native 実像の恒等点正規化と復元写像の指定点を比較する。一点の式から相対三角比較、span 側の普遍性・もう一方の逆条件・元の分数比較の同値性へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

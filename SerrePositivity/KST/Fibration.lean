@@ -296,3 +296,9 @@ public import SerrePositivity.KST.Fibration.FunctorIsoComponent
 public import SerrePositivity.KST.Fibration.WeakComparisonComponentRestriction
 public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
 public import SerrePositivity.KST.Fibration.WeakQuotientCosliceHomTriangle
+public import SerrePositivity.KST.Fibration.WeakNativeComponentRestriction
+public import SerrePositivity.KST.Fibration.WeakIdentityNativeComparison
+public import SerrePositivity.KST.Fibration.KanPointComponentComposition
+public import SerrePositivity.KST.Fibration.WeakIdentityNativeImage
+public import SerrePositivity.KST.Fibration.FractionClassificationRestriction
+public import SerrePositivity.KST.Fibration.WeakNativeClassificationPoint
