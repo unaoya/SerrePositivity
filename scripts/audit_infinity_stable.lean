@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.ModulePiZeroBoundary
+import SerrePositivity.InfinityCategories.Derived.MooreZeroHomology
+import SerrePositivity.InfinityCategories.Derived.ModulePiZeroMoore
+import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedPiCriterion
 import SerrePositivity.InfinityCategories.Derived.ModuleSphereNaturality
 import SerrePositivity.InfinityCategories.Derived.MooreCyclesNaturality
 import SerrePositivity.InfinityCategories.Derived.MooreHomologyNaturality
@@ -4799,6 +4803,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ModulePiZeroBoundary,
+    `SerrePositivity.InfinityCategories.Derived.MooreZeroHomology,
+    `SerrePositivity.InfinityCategories.Derived.ModulePiZeroMoore,
+    `SerrePositivity.InfinityCategories.Derived.ModuleNormalizedPiCriterion,
+
     `SerrePositivity.InfinityCategories.Derived.ModuleSphereNaturality,
     `SerrePositivity.InfinityCategories.Derived.MooreCyclesNaturality,
     `SerrePositivity.InfinityCategories.Derived.MooreHomologyNaturality,
