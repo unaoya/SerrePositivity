@@ -28629,3 +28629,69 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgStrictCommaTensorLeft_zero
 #print axioms SerrePositivity.KST.SConstruction.dgStrictCommaTensorLeft_zero
+
+#check @SerrePositivity.KST.SConstruction.dgStrictCommaComparison_precompose
+#print axioms SerrePositivity.KST.SConstruction.dgStrictCommaComparison_precompose
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_id
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_id
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_firstPrimitive
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_firstPrimitive
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_secondPrimitive
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_secondPrimitive
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_comp
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_comp
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_source
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_source
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_replacement
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_replacement
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_augmentation
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.toDGFunctor_augmentation
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingObject
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingObject
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingCommaFamily
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingCommaFamily
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_toComma
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_toComma
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_right
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_right
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_leftModule
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_leftModule
+
+#check @SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_left
+#print axioms SerrePositivity.KST.SConstruction.dgStrictGluingFunctor_left
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFamily
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFamily
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_source
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_source
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_replacement
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_replacement
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_augmentation
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_augmentation

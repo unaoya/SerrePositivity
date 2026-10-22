@@ -2316,4 +2316,10 @@ public import SerrePositivity.KST.SConstruction.DGGluingFunctorLift
 public import SerrePositivity.KST.SConstruction.DGStrictCommaFamily
 public import SerrePositivity.KST.SConstruction.DGStrictCommaTensorZero
 
+public import SerrePositivity.KST.SConstruction.DGStrictCommaUnit
+public import SerrePositivity.KST.SConstruction.DGStrictCommaComposition
+public import SerrePositivity.KST.SConstruction.DGStrictCommaFunctor
+public import SerrePositivity.KST.SConstruction.DGStrictGluingFunctor
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionCommaFunctor
+
 /-! # ∞-S• 構成と連結 K 理論 -/
