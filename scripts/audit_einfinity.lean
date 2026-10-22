@@ -9159,6 +9159,26 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeSimplex_pullback_injective,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeSimplex_tail]
 
+@[noinline] private def e2RequiredBatch181 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.prepend_injOn_iff,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.withoutFirst_image_prepend_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_hom_mixed_reindex_noninjective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_obj_prepend_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_pullback_hom_mixed_not_inj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_pullback_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_pullback_hom_mixed_of_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_pullback_hom_ordinary_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeSimplex_pullback_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_pullback_tail_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_top_noninjective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMaxOfCard_image_of_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_image_reindex_of_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_image_reindex_of_injOn_smul,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_reindex_noninjective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectionOfCard_image_of_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.simplexSurjective_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_top_surjective_noninjective]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9192,7 +9212,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -22913,4 +22933,186 @@ example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) 
     Simplex A (Complex A) (n + 1) := normalizedTensorConeSimplex A X Y c
 
 end e2ConeSimplexFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2ConeMapU
+section e2ConeMapFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
+open scoped Simplicial
+variable (A : Type e2ConeMapU) [CommRing A] (X Y : Complex A)
+
+example {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
+    (I : Finset (Fin (m + 2))) :
+    Set.InjOn (prependOrderHom θ) (I : Set (Fin (m + 2))) ↔
+      Set.InjOn θ ((withoutFirst I) : Set (Fin (m + 1))) :=
+  prepend_injOn_iff θ I
+
+example {m n : ℕ} (θ : Fin (m + 1) →o Fin (n + 1))
+    (I : Finset (Fin (m + 2))) :
+    withoutFirst (I.image (prependOrderHom θ)) = (withoutFirst I).image θ :=
+  withoutFirst_image_prepend_map θ I
+
+example {m n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I)
+    (hn : ¬Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))) :
+    (normalizedTensorConeData A X Y
+      ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk = 0 :=
+  normalizedTensorConeData_hom_mixed_reindex_noninjective A X Y c θ I a b k hI ha hb hk ha0 h0 hn
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 2)) :
+    (normalizedTensorConeData A X Y c).obj (prependOrderHom θ.toOrderHom i) =
+      (normalizedTensorConeData A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj i :=
+  normalizedTensorConeData_obj_prepend_map A X Y c θ i
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I)
+    (hn : ¬Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))) :
+    HEq (((normalizedTensorConeData A X Y c).pullback
+      (prependOrderHom θ.toOrderHom)).hom I a b k hI ha hb hk)
+      ((normalizedTensorConeData A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom
+        I a b k hI ha hb hk) :=
+  normalizedTensorConeData_pullback_hom_mixed_not_inj A X Y c θ I a b k hI ha hb hk ha0 h0 hn
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (normalizedTensorConeData A X Y c).pullback (prependOrderHom θ.toOrderHom) =
+      normalizedTensorConeData A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) :=
+  normalizedTensorConeData_pullback_map A X Y c θ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I)
+    (hθ : Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))) :
+    HEq (((normalizedTensorConeData A X Y c).pullback
+      (prependOrderHom θ.toOrderHom)).hom I a b k hI ha hb hk)
+      ((normalizedTensorConeData A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom
+          I a b k hI ha hb hk) :=
+  normalizedTensorConeData_pullback_hom_mixed_of_injOn A X Y c θ I a b k hI ha hb hk ha0 h0 hθ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
+    HEq (((normalizedTensorConeData A X Y c).pullback
+      (prependOrderHom θ.toOrderHom)).hom I a b k hI ha hb hk)
+      ((normalizedTensorConeData A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom
+        I a b k hI ha hb hk) :=
+  normalizedTensorConeData_pullback_hom_ordinary_map A X Y c θ I a b k hI ha hb hk ha0
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (normalizedTensorConeSimplex A X Y c).pullback (prependOrderHom θ.toOrderHom) =
+      normalizedTensorConeSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) :=
+  normalizedTensorConeSimplex_pullback_map A X Y c θ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    ((normalizedTensorConeData A X Y c).pullback (prependOrderHom θ.toOrderHom)).pullback
+      (Fin.succOrderEmb (m + 1)).toOrderHom =
+      (normalizedTensorConeData A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).pullback
+        (Fin.succOrderEmb (m + 1)).toOrderHom :=
+  normalizedTensorConeData_pullback_tail_map A X Y c θ
+
+example {m n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (hn : ¬Function.Injective θ.toOrderHom) (k : ℤ)
+    (hk : k = 1 - ((Finset.univ : Finset (Fin (m + 1))).card : ℤ)) :
+    (normalizedTensorElementUniversalLinear A X Y
+      ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component
+        Finset.univ k Finset.univ_nonempty hk = 0 :=
+  normalizedTensorElementUniversalLinear_top_noninjective A X Y c θ hn k hk
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) (r : ℕ) (hc : J.card = r + 1) :
+    HEq (normalizedTensorElementSelectedCochainAtMaxOfCard A X Y c
+      (J.image θ.toOrderHom) k (hJ.image θ.toOrderHom)
+      (by rw [Finset.card_image_of_injOn hi]; exact hk) r
+      (by rw [Finset.card_image_of_injOn hi]; exact hc))
+      (normalizedTensorElementSelectedCochainAtMaxOfCard A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+        J k hJ hk r hc) :=
+  normalizedTensorElementSelectedCochainAtMaxOfCard_image_of_injOn A X Y c θ J k hJ hk hi r hc
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    HEq (normalizedTensorElementSelectedCochainAtMax A X Y c
+      (J.image θ.toOrderHom) k (hJ.image θ.toOrderHom)
+      (by rw [Finset.card_image_of_injOn hi]; exact hk))
+      (normalizedTensorElementSelectedCochainAtMax A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+        J k hJ hk) :=
+  normalizedTensorElementSelectedCochainAtMax_image_reindex_of_injOn A X Y c θ J k hJ hk hi
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (J : Finset (Fin (m + 1)))
+    (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) (r : ℤˣ) :
+    HEq (r • normalizedTensorElementSelectedCochainAtMax A X Y c
+      (J.image θ.toOrderHom) k (hJ.image θ.toOrderHom)
+      (by rw [Finset.card_image_of_injOn hi]; exact hk))
+      (r • normalizedTensorElementSelectedCochainAtMax A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+        J k hJ hk) :=
+  normalizedTensorElementSelectedCochainAtMax_image_reindex_of_injOn_smul A X Y c θ J k hJ hk hi r
+
+example {m n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (J : Finset (Fin (m + 1))) (k : ℤ)
+    (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hn : ¬Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    normalizedTensorElementSelectedCochainAtMax A X Y
+      ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) J k hJ hk = 0 :=
+  normalizedTensorElementSelectedCochainAtMax_reindex_noninjective A X Y c θ J k hJ hk hn
+
+example {m n r : ℕ}
+    (J : Finset (Fin (m + 1))) (θ : ⦋m⦌ ⟶ ⦋n⦌) (hc : J.card = r + 1)
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    normalizedTensorElementSelectionOfCard (J.image θ.toOrderHom) r
+      (by rw [Finset.card_image_of_injOn hi]; exact hc) =
+      normalizedTensorElementSelectionOfCard J r hc ≫ θ :=
+  normalizedTensorElementSelectionOfCard_image_of_injOn J θ hc hi
+
+example {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (hs : Function.Surjective θ.toOrderHom) :
+    θ.toOrderHom (Fin.last m) = Fin.last n :=
+  simplexSurjective_last θ hs
+
+example {m n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (θ : ⦋m⦌ ⟶ ⦋n⦌) (hs : Function.Surjective θ.toOrderHom)
+    (hn : ¬Function.Injective θ.toOrderHom) (k : ℤ)
+    (hk : k = 1 - ((Finset.univ : Finset (Fin (m + 1))).card : ℤ)) :
+    (normalizedTensorElementUniversalLinear A X Y
+      ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component
+        Finset.univ k Finset.univ_nonempty hk = 0 :=
+  normalizedTensorElementUniversalLinear_top_surjective_noninjective A X Y c θ hs hn k hk
+
+end e2ConeMapFixtures
 end

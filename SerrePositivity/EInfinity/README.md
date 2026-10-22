@@ -2581,4 +2581,14 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 選択列の全頂点集合の終端方程式を、同じ元の集合へ厳密に移送する。
 `normalizedTensorConeSimplex` は元の実生データを保持する全次数の実 cone 単体。
 `normalizedTensorConeSimplex_pullback_injective` と `_tail` は全単射制限と同じ通常末尾面の一致。
-退化を含む全作用素への自然性・大域 cone/prism と同じ屋根との比較、U の∞極限保存・G1′は未完了。
+退化を含む全作用素への自然性は下記に完成。大域 cone/prism と同じ屋根との比較、U の∞極限保存・G1′は未完了。
+
+`normalizedTensorElementUniversalLinear_top_noninjective` は元の任意の非単射作用素で制限した
+最上位 cochain の消滅。元の epi-mono 像分解を使い、終端を保つ全射の実消滅へ還元する。
+`normalizedTensorElementSelectedCochainAtMax_reindex_noninjective` は任意の選択集合の退化消滅。
+`normalizedTensorElementSelectedCochainAtMax_image_reindex_of_injOn` と `_smul` は、元の作用素が
+選択集合上で単射な場合の像との比較。作用素全体の単射性や frame 射の単射性を仮定しない。
+`normalizedTensorConeData_pullback_map` は退化・非退化・通常成分を含む元の全データの一致。
+`normalizedTensorConeSimplex_pullback_map` は実 cone 単体の全作用素への自然性。
+通常成分の潰れた辺も同じ通常末尾面と元の nerve 自然性で保持する。
+大域 coslice 写像・cone/prism と元の屋根の全比較、同じ U の∞極限保存・G1′は未完了。
