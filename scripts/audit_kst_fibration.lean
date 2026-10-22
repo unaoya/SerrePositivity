@@ -7,6 +7,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.ZeroStableHomTransport,
+    `SerrePositivity.KST.Fibration.CoherentSimplexHomVertices,
+    `SerrePositivity.KST.Fibration.StableHomCompositionVertices,
+    `SerrePositivity.KST.Fibration.CoherentTrianglePaths,
+    `SerrePositivity.KST.Fibration.StableTriangleZeroHom,
+    `SerrePositivity.KST.Fibration.VerdierTriangleZeroHom,
     `SerrePositivity.KST.Fibration.ZeroFunctorLocus,
     `SerrePositivity.KST.Fibration.ZeroStableHomFamilies,
     `SerrePositivity.KST.Fibration.ZeroStableHom,

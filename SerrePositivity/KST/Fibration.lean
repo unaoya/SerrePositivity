@@ -512,3 +512,9 @@ public import SerrePositivity.KST.Fibration.ZeroStableHom
 public import SerrePositivity.KST.Fibration.VerdierZeroTriangle
 public import SerrePositivity.KST.Fibration.ZeroStableHomExtension
 public import SerrePositivity.KST.Fibration.ZeroStableHomComparison
+public import SerrePositivity.KST.Fibration.ZeroStableHomTransport
+public import SerrePositivity.KST.Fibration.CoherentSimplexHomVertices
+public import SerrePositivity.KST.Fibration.StableHomCompositionVertices
+public import SerrePositivity.KST.Fibration.CoherentTrianglePaths
+public import SerrePositivity.KST.Fibration.StableTriangleZeroHom
+public import SerrePositivity.KST.Fibration.VerdierTriangleZeroHom
