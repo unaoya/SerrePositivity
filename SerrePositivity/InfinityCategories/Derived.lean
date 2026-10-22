@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentComplete
 public import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentChangeCoherence

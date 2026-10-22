@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentComplete
 import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentChangeCoherence
@@ -4188,6 +4189,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentComplete,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentChangeCoherence,
