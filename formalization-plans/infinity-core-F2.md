@@ -11,7 +11,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - 第 1 部（B4・B5、F2L-1〜4）は完了。coherent nerve の Cat_∞、引き戻しと lax pullback、
   写像空間の普遍性、同値矢印の全部分圏との比較、安定性と完全な両射影まで証明済み。
-- F2N-1〜5（旧 N）は F1b へ移管。§3 が第 2 部の正本。
+- 第 2 部の正本は §3。10-22 12:35 改訂：F2N-1・3・5 は F1b、F2N-2（Ind）は F1、F2N-4 は N。
   正則 κ の小さい join・coslice、filtered 性と coslice の弱可縮性・対角の cofinality の双方向判定を証明。
   通常 filtered 図式の有限内部 Hom・path 引き戻しの交換、元の標準余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit は全空間模型と元の単位から構成。
@@ -35,15 +35,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   元の fiber 終点・全輸送の指定比較の合成則と、同じ区間の任意の指定持ち上げを経由する値の一致を証明。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
-  その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
+  F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
   検証：三集約同時ビルド9681 jobs、公理監査12360宣言・F1/F1B 同時 import 成功、標準三公理のみ。
   元の定値三角形因子の回収・fiber 終点と全区間輸送の指定比較の合成を含む追加14明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
 - F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
-- F2N-2：前層内の Indκ、生成と保存関手の延長の普遍性。50〜120 時間。
-- F2N-3・4：compact・retract、coherent 冪等図式と完備化の普遍性。各 30〜100 時間。
+- F2N-2（F1）：前層内の Indκ、生成と保存関手の延長の普遍性。F2/Ind/・Ind.lean は読み取り専用。
+- F2N-3（F1b）：compact・Yoneda・retract、30〜80 時間。F2N-4（N）：冪等完備化、所有外。
 - F2N-5：Ind(C) の安定性、冪等完備 C の compact 生成。40〜100 時間。
 - その後 F2 後半：presentable と随伴関手定理（F1b）。HTT §5.5、Kerodon 9。細分化は §4。
   Bousfield 局所化・P_Σ は従来どおり N の I-b の範囲。
@@ -72,11 +72,11 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - N の HomotopyLimits（γ3c の 𝒮 の余極限）と F1 の straightening は読み取り専用。
   γ4 は前提として一括仮定せず、必要な公開界面と提供済みの範囲を確認する。
-- D の β4 と K-基盤へ第 1 部の界面を提供。第 2 部の Ind・compact・冪等完備化は F1b が提供する。
+- D・K へ第 1 部と compact・安定性を提供。Ind は F1 の公開宣言を使い、必要時に未提供なら F1 に依頼して待つ。
 
 ### 未コミット
 
-- 今回の所有変更は保存済み。別作業の Idempotent 集約・サブディレクトリは保存対象外（編集なし）。
+- 今回の所有変更は保存済み。F1 の Ind と N の Idempotent の集約・サブディレクトリは所有・保存対象外。
 
 ### 既知の問題
 
@@ -104,7 +104,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
   HTT §5.3.3、a7 残り12〜24時間（暫定。三角形に沿う全指定因子の照合に不確実性）。strict 図式だけでは完了としない。
-  その後 F2N-2〜5、presentable・随伴関手定理（原典・見積もりは F2 計画 §3–4）。
+  a7 後は承認を待たず F2N-3 へ。その後 F1 の Ind・N の冪等完備化を利用して F2N-5。
 
 ## 0. 目標と範囲
 
@@ -114,7 +114,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 | F2L-2 | F1b | 完了：Cat_∞ の引き戻し、全試験写像空間の普遍性、二射影と指定 path の同時比較 | Kerodon §5.5.3、HTT §3.3.3 |
 | F2L-3 | F1b | 完了：lax pullback、対象三つ組、native 極限錐、全試験関手 core、Remark 6 の写像空間の 𝒮 内の極限性 | Tamme §1 Definition 5・Remark 6 |
 | F2L-4 | F1b（D と接続） | 完了：通常の引き戻しとの比較、安定性・完全な両射影、極限・余極限の成分判定 | Tamme §1 Remark 7・Lemma 8 |
-| F2N-1〜5 | F1b（10-20 に N から移管） | filtered、Ind、compact、冪等完備化、Ind の安定性 | HTT §5.1.4・§5.3、Kerodon 9 |
+| F2N-1〜5 | F1b（1・3・5）、F1（2）、N（4） | filtered、Ind、compact、冪等完備化、Ind の安定性 | HTT §5.1.4・§5.3、Kerodon 9 |
 | F2 後半 | F1b（presentable・随伴関手定理）／N（Bousfield・P_Σ） | presentable、随伴関手定理、Bousfield 局所化、P_Σ | HTT §5.5、Kerodon 9 |
 
 F2-lite の範囲に presentable・Pr^L のテンソル積・HA §4.8 は含めない。
@@ -151,11 +151,11 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - [Kerodon §4.9.4](https://kerodon.net/tag/03S1) の κ-small、[§9.1.1](https://kerodon.net/tag/02P8) の filtered ∞ 圏。
   9.1.1.16 の正則 κ 版 coslice、9.1.1.17 の弱可縮性、9.1.1.18 の対角判定、9.1.1.19 の同値不変性、9.1.1.20 の Kan 判定を証明済み。
 
-## 3. F2-lite 第 2 部（F1b、旧 N から移管）
+## 3. F2-lite 第 2 部（10-22 12:35 分担改訂）
 
-### 引き継ぎ（F1b、2026-10-20 移管）
+### 引き継ぎ（F1b：F2N-1・3・5、F1：F2N-2、N：F2N-4）
 
-- 現在地：F2N-1〜5 を旧 N から F1b へ移管。第 1 部の Cat_∞・lax pullback は完了済み。
+- 現在地：F1b は a7 → F2N-3 → F2N-5。Ind は F1、冪等完備化は N。第 1 部は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
   相対有限検出と全空間模型の元の余錐の native 余極限性を証明。小さい底上の一般 coherent 図式の HasColimit を公開。
@@ -188,14 +188,14 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   元の fiber 終点・全輸送の指定比較の合成則と、同じ区間の任意の指定持ち上げを経由する値の一致を証明。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
-  その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
-- 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
+  F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
+- 残り：F1b は F2N-1 → F2N-3 → F2N-5。F2N-5 は F1 の F2N-2 と N の F2N-4 完成後。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
   N の一般の coherent 図式の余極限・γ4 の最新状況は e-infinity-algebras.md を参照。
   移管前の詳細は [archive/infinity-core-F2-N-handoff-2026-10-20.md](archive/infinity-core-F2-N-handoff-2026-10-20.md)。
-- 提供：K-基盤へ Ind の κ 版・compact・冪等完備化、D へ安定性の界面。
-- 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
+- 提供：K-基盤へ κ-compact・retract 閉性と compact 生成、D へ安定性の界面。
+- 所有：F2/ のうち Ind/・Ind.lean（F1）と Idempotent/・Idempotent.lean（N）を除く。F2 集約・監査と両計画も所有。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
 - 次の一手：F2N-1 a7：値へ写した全三角形の整合式の外側因子を消去し、a6 の指定 path と全錐へ接続する。
@@ -211,14 +211,14 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
   HTT §5.3.3、a7 残り12〜24時間（暫定。三角形に沿う全指定因子の照合に不確実性）。strict 図式だけでは完了としない。
-  その後 F2N-2〜5、presentable・随伴関手定理（原典・見積もりは F2 計画 §3–4）。
+  a7 後は承認を待たず F2N-3 へ。その後 F1 の Ind・N の冪等完備化を利用して F2N-5。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
 | F2N-1 | F1b | filtered ∞ 圏と κ-filtered の定義、cofinality、𝒮 の filtered 余極限と有限極限の交換。一般の coherent な図式で証明する | HTT §5.3.1–3 | 40〜100 時間 |
-| F2N-2 | F1b | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
+| F2N-2 | F1（10-22 12:35 移管） | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
 | F2N-3 | F1b | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
-| F2N-4 | F1b | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
+| F2N-4 | N | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
 | F2N-5 | F1b | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
 
 宇宙は第 1 部と共通。κ の正則性・図式の小ささを明示し、Indω と非連結 K 用の大きい κ を混同しない。
