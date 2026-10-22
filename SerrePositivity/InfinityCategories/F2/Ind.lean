@@ -232,3 +232,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndPreservationStrictRed
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.KanCanonicalCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationTotalAssembly
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTotalBoundedEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTopChain
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTopPrism
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTopPrismCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedBoundedPrism

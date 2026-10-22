@@ -411,3 +411,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_coefficient
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTotalBoundedEvaluation_assembly
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedTotal_boundedEvaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTopPrism_zero
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTopPrism_one
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTopPrism_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedBoundedPrism_assembly
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedTotal_stageTransport
