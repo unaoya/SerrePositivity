@@ -196,7 +196,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.FactorSubcategories,
     `SerrePositivity.InfinityCategories.Derived.Gluing.FactorObjects,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LeftFactorHom,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeRightProjection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RightFactorHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DFactorComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorHomotopyEquivalences,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyProjectionHoms,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorHomotopySections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CProjectionAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DProjectionAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ProjectionAdjunctionUnits]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

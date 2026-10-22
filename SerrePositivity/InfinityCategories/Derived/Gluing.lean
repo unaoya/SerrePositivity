@@ -191,3 +191,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorSubcategor
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorObjects
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LeftFactorHom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeRightProjection
+public import SerrePositivity.InfinityCategories.Derived.Gluing.RightFactorHom
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DFactorComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorHomotopyEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyProjectionHoms
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorHomotopySections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CProjectionAdjunction
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DProjectionAdjunction
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ProjectionAdjunctionUnits
