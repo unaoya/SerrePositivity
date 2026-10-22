@@ -14097,3 +14097,55 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms unstraighteningFiberHom_precompose_evaluateIso
 #check @canonicalYonedaFiberEvaluation_precomposeIso
 #print axioms canonicalYonedaFiberEvaluation_precomposeIso
+#check @intervalMappingUncurry_const_edge
+#print axioms intervalMappingUncurry_const_edge
+#check @edgePrism_start_tensor
+#print axioms edgePrism_start_tensor
+#check @edgePrism_finish_tensor
+#print axioms edgePrism_finish_tensor
+#check @unstraighteningEvaluationInterval
+#print axioms unstraighteningEvaluationInterval
+#check @unstraighteningEvaluationInterval_uncurry
+#print axioms unstraighteningEvaluationInterval_uncurry
+#check @unstraighteningBaseSquare
+#print axioms unstraighteningBaseSquare
+#check @unstraighteningBaseSquare_zero
+#print axioms unstraighteningBaseSquare_zero
+#check @unstraighteningBaseSquare_one
+#print axioms unstraighteningBaseSquare_one
+#check @unstraighteningBaseSquare_inner_zero
+#print axioms unstraighteningBaseSquare_inner_zero
+#check @unstraighteningBaseSquare_inner_one
+#print axioms unstraighteningBaseSquare_inner_one
+#check @diagonalFiberTransport_const_source
+#print axioms diagonalFiberTransport_const_source
+#check @unstraighteningFiberEvaluation_diagonalIso
+#print axioms unstraighteningFiberEvaluation_diagonalIso
+#check @unstraighteningTransportSquare
+#print axioms unstraighteningTransportSquare
+#check @unstraighteningFiberEvaluation_baseTransportIso
+#print axioms unstraighteningFiberEvaluation_baseTransportIso
+#check @yonedaOppositeBaseEdge
+#print axioms yonedaOppositeBaseEdge
+#check @yonedaOppositeBaseEdge_edge
+#print axioms yonedaOppositeBaseEdge_edge
+#check @yonedaOppositeBaseEdge_representable
+#print axioms yonedaOppositeBaseEdge_representable
+#check @canonicalYonedaFiberEvaluation_baseIso
+#print axioms canonicalYonedaFiberEvaluation_baseIso
+#check @canonicalYonedaFiberEvaluation_naturalityIso
+#print axioms canonicalYonedaFiberEvaluation_naturalityIso
+#check @intervalFunctorMap_precomposeIso
+#print axioms intervalFunctorMap_precomposeIso
+#check @intervalMappingPostOfEq_refl_eq_functorMap
+#print axioms intervalMappingPostOfEq_refl_eq_functorMap
+#check @intervalMappingPostOfEq_precomposeIso
+#print axioms intervalMappingPostOfEq_precomposeIso
+#check @sigmaYonedaNativeEdge
+#print axioms sigmaYonedaNativeEdge
+#check @sigmaYonedaNativeEdge_edge
+#print axioms sigmaYonedaNativeEdge_edge
+#check @sigmaYonedaNativeEdge_inclusion
+#print axioms sigmaYonedaNativeEdge_inclusion
+#check @sigmaYonedaFiberEvaluation_naturalityIso
+#print axioms sigmaYonedaFiberEvaluation_naturalityIso
