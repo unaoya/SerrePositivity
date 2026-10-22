@@ -56,3 +56,13 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.PointJoinNerveExt
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullCoconePoint
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCocone
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingImageLeftComma
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSourceLeftComma
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingLeftCommaContractibility
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLeftCofinality
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRestriction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullCone
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullConePoint
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PointConeLimit
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimit

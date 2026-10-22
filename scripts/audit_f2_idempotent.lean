@@ -748,3 +748,102 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @StrongSplitting.postcomposeCocone_isColimit
 #print axioms StrongSplitting.postcomposeCocone_isColimit
+
+#check @walkingImageLeftCommaSection
+#print axioms walkingImageLeftCommaSection
+
+#check @walkingImageLeftCommaSection_obj
+#print axioms walkingImageLeftCommaSection_obj
+
+#check @walkingImageLeftComma_proj_section
+#print axioms walkingImageLeftComma_proj_section
+
+#check @walkingImageLeftCommaIso
+#print axioms walkingImageLeftCommaIso
+
+#check @walkingSourceLeftCommaPoint
+#print axioms walkingSourceLeftCommaPoint
+
+#check @walkingSourceLeftCommaArrow
+#print axioms walkingSourceLeftCommaArrow
+
+#check @walkingSourceLeftComma_isTerminal
+#print axioms walkingSourceLeftComma_isTerminal
+
+#check @walkingSourceLeftComma_isWeaklyContractible
+#print axioms walkingSourceLeftComma_isWeaklyContractible
+
+#check @walkingImageLeftComma_isWeaklyContractible
+#print axioms walkingImageLeftComma_isWeaklyContractible
+
+#check @walkingLeftComma_isWeaklyContractible
+#print axioms walkingLeftComma_isWeaklyContractible
+
+#check @walkingLeftCommaSliceIso
+#print axioms walkingLeftCommaSliceIso
+
+#check @walkingLeftCommaSliceIso_projection
+#print axioms walkingLeftCommaSliceIso_projection
+
+#check @idemInclusion_slice_isWeaklyContractible
+#print axioms idemInclusion_slice_isWeaklyContractible
+
+#check @idemInclusion_isLeftCofinal
+#print axioms idemInclusion_isLeftCofinal
+
+#check @idemInclusion_leftAnodyne
+#print axioms idemInclusion_leftAnodyne
+
+#check @idemConeRestriction_trivialKanFibration
+#print axioms idemConeRestriction_trivialKanFibration
+
+#check @idemCone_isLimit_iff_restrict
+#print axioms idemCone_isLimit_iff_restrict
+
+#check @walkingFullCone
+#print axioms walkingFullCone
+
+#check @walkingFullJoinCone
+#print axioms walkingFullJoinCone
+
+#check @walkingFullJoinCone_point
+#print axioms walkingFullJoinCone_point
+
+#check @walkingFullJoinCone_restrict
+#print axioms walkingFullJoinCone_restrict
+
+#check @walkingFullJoinCone_image_leg
+#print axioms walkingFullJoinCone_image_leg
+
+#check @walkingFullJoinCone_point_restrict
+#print axioms walkingFullJoinCone_point_restrict
+
+#check @pointCone_isLimit_of_constant
+#print axioms pointCone_isLimit_of_constant
+
+#check @splittingDiagramCone
+#print axioms splittingDiagramCone
+
+#check @splittingDiagramCone_point
+#print axioms splittingDiagramCone_point
+
+#check @walkingImagePoint_leftAnodyne
+#print axioms walkingImagePoint_leftAnodyne
+
+#check @splittingDiagramCone_isLimit
+#print axioms splittingDiagramCone_isLimit
+
+#check @StrongSplitting.cone_restrict
+#print axioms StrongSplitting.cone_restrict
+
+#check @StrongSplitting.cone_isLimit
+#print axioms StrongSplitting.cone_isLimit
+
+#check @StrongSplitting.hasLimit
+#print axioms StrongSplitting.hasLimit
+
+#check @IsIdempotentComplete.hasLimit
+#print axioms IsIdempotentComplete.hasLimit
+
+#check @StrongSplitting.postcomposeCone_isLimit
+#print axioms StrongSplitting.postcomposeCone_isLimit
