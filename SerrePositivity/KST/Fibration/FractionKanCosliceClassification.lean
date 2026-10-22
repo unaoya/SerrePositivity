@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
+public import SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint
 public import SerrePositivity.KST.Fibration.ScaffoldCandidateClassification
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
@@ -26,8 +26,7 @@ def fractionKanSimplexClassificationIso {X Q : SSet.{u}}
           (sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x))))) := by
   let p := sliceUnderProjection (yonedaEquiv.symm (F.app (Opposite.op ⦋0⦌) x))
   let k := transportSimplexFirstVertexMap X ≫ F
-  have e := leftCocartesianKanComparisonIso (pullback.snd p k) ≪≫
-    leftStraighteningCandidate_classificationIso (pullback.snd p k) ≪≫
+  have e := leftCocartesianKanClassificationIso (pullback.snd p k) ≪≫
     (leftStraighteningInfinityDiagram_baseChangeIso p k).symm
   simpa only [k, p, Functor.map_comp, Category.assoc, cocartesianKanCoherentDiagram,
     fractionSimplexKanMappingDiagram, fractionSimplexCosliceProjection] using e

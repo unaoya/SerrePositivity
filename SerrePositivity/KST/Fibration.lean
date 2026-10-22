@@ -360,3 +360,8 @@ public import SerrePositivity.KST.Fibration.ScaffoldCandidateNativeComparison
 public import SerrePositivity.KST.Fibration.ScaffoldCandidateClassification
 public import SerrePositivity.KST.Fibration.ConnectiveFiberCriterion
 public import SerrePositivity.KST.Fibration.FiberCofinalityObstruction
+public import SerrePositivity.KST.Fibration.FunctorIsoComponentLaws
+public import SerrePositivity.KST.Fibration.KanDiagramValueIso
+public import SerrePositivity.KST.Fibration.KanCompletionPointHom
+public import SerrePositivity.KST.Fibration.LeftCocartesianKanPointHom
+public import SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint

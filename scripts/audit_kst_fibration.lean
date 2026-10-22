@@ -366,7 +366,12 @@ run_cmd do
     `SerrePositivity.KST.Fibration.PointKanHomVertices,
     `SerrePositivity.KST.Fibration.PointedLeftResolutionVertices,
     `SerrePositivity.KST.Fibration.ScaffoldCandidateNativeComparison,
-    `SerrePositivity.KST.Fibration.ScaffoldCandidateClassification]
+    `SerrePositivity.KST.Fibration.ScaffoldCandidateClassification,
+    `SerrePositivity.KST.Fibration.FunctorIsoComponentLaws,
+    `SerrePositivity.KST.Fibration.KanDiagramValueIso,
+    `SerrePositivity.KST.Fibration.KanCompletionPointHom,
+    `SerrePositivity.KST.Fibration.LeftCocartesianKanPointHom,
+    `SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
