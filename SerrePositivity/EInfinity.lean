@@ -2062,3 +2062,10 @@ public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingHomology
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgVertexPresentation
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgZeroDegreeDiscrete
 public import SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso
+public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomComparison
+public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomEquivalence
+public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomFrames
+public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomKan
+public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomMappingSpace
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeCAlgSource
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeFunctor

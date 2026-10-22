@@ -2375,6 +2375,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `cAlgUnderlyingHomologyIso` は同じ U 像と元の底の複体の全整数次数のホモロジー比較。
 `cAlgUnderlyingDisc_iff_discrete` は同じ U 像の離散性と元の離散入力の本質像との同値。
 `cAlgUnderlyingDisc_iff_discreteUnder` は既存 D(R) 比較と同じ環の Under 入力での特徴付け。
+`freeProbeFunctor` は同じ複体の cofibrant probe の実自由 E 代数関手で、元の擬同型を保つ。
+`freeProbeCAlgSource` は元の全複体 nerve から既存 CAlg_R への実写像で、同じ擬同型を反転する。
+`freeHomFromLeft`・`freeHomFromRight` は自由 probe の標準 frame Hom と元の底への frame Hom から共通 Kan Hom への全二変数自然 span。
+両射自身は単体的ホモトピー同値。右側の標的は元の E 代数の同じ底である。
+`freeHomToMappingSpace` は左端と同じ既存 Map^h の全自然なホモトピー同値比較。
+既存 D(R) からの導来左関手・全 coherent ∞ 随伴との接続は未完成。
 同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
