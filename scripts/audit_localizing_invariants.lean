@@ -1110,7 +1110,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RelativeTammePullback,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassGlue,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficientHomotopy]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficientHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassInverse,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetract,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetractBase]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

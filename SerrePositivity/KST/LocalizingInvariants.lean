@@ -1346,4 +1346,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficientHomotopy
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassInverse
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetract
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetractBase
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
