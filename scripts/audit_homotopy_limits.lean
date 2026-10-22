@@ -14419,3 +14419,18 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @preservesSmallSiftedColimits_iff_fullHomCones
 #print axioms preservesSmallSiftedColimits_iff_fullHomCones
+
+#check @uliftInternalHomComparison_evaluation
+#print axioms uliftInternalHomComparison_evaluation
+
+#check @presheafUniverseDiagram
+#print axioms presheafUniverseDiagram
+
+#check @presheafUniverseDiagram_evaluation
+#print axioms presheafUniverseDiagram_evaluation
+
+#check @presheafUniverseDiagram_restriction
+#print axioms presheafUniverseDiagram_restriction
+
+#check @presheafUniverseDiagram_map_isColimit
+#print axioms presheafUniverseDiagram_map_isColimit
