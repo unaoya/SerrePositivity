@@ -30,3 +30,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isEssentiallySurjective
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_pinchedHomMap_isEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceComparisonOver_fiber_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceComparisonOver_fiber_equivalence_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isFullyFaithful_iff_cosliceComparisonOver
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationEdge_evaluation_square
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationFiberEvaluation_original_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_cosliceFiber_isEquivalence

@@ -16,7 +16,11 @@
 - `covariantHomComparison` は任意の元の関手の全共変 Hom 比較。元の coslice 作用を厳密な底変換へ因子化し、
   left fibration の元の辺を straightening で送り、定義の全表現可能関手へ戻した関手圏の射。
   値ごとの同値族だけではない。各成分と元の `pinchedHomMap` の照合は未証明。
-- 独立集約ビルド成功（7565 jobs）、公理監査 46 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 実 coslice 比較の各 fiber を引き戻し fiber 同型で元の後合成へ厳密に回収し、同じ `pinchedHomMap` の同値性との同値を証明。
+  `isFullyFaithful_iff_cosliceComparisonOver` は全始点での前合成同値性による全充満忠実性の判定。
+  分類評価の全自然性と、実 fiber 評価が同じ `vertexFiberMap` の coherent 辺を回収する一単体の等式も証明。
+  同じ Ind 比較の二つの生成対象で、元の実 coslice fiber 比較自身が同値であることまで接続。
+- 独立集約ビルド成功（7569 jobs）、公理監査 54 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：比較の全充満忠実性、Ind_κ(C₀) との同値・同値不変性、濃度変更（HTT 5.4.2〜5.4.4）。24〜60 時間（暫定）。
@@ -38,6 +42,9 @@
 - `indComparison_isEssentiallySurjective`、`IsKappaAccessible.exists_surjective_indComparison`
 - `indComparison_generator_pinchedHomMap_isEquivalence`
 - `covariantHomComparison`、`cosliceComparisonOver`、`leftClassificationHom`
+- `cosliceComparisonOver_fiber_postcomp`、`cosliceComparisonOver_fiber_equivalence_iff`
+- `isFullyFaithful_iff_cosliceComparisonOver`、`indComparison_generator_cosliceFiber_isEquivalence`
+- `leftClassificationEdge_evaluation_square`、`leftFibrationFiberEvaluation_original_edge`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -52,6 +59,9 @@
   `covariantHomComparison` の全自然な射は構成済み。最初にその各成分を元の `pinchedHomMap` と照合する。
   `leftStraighteningInfinityMap_evaluateIso` は全 left fibrations 上で分類の評価と実 fiber 評価を比較する。
   `Compact.covariantRepresentableInfinity_cosliceIso` の両側の成分と合わせ、同じ元の coslice の作用へ戻す。
+  分類の元の辺の評価可換式と実 fiber 辺の厳密な一致は提供済み（上記主要宣言）。
+  次は `leftClassificationHom` の端点輸送と `covariantHomComparison` の三つの指定同型の成分を揃え、
+  評価成分の可逆性を `cosliceComparisonOver_fiber_equivalence_iff` の同じ元の fiber 射へ反映する。
   次に始域の単一 filtered 表示と全反変 Hom の極限表示を使い、任意の二対象へ拡張する。
   F1 の関手圏の普遍性は、比較関手自身の同値性の代用にしない。
 
