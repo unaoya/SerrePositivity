@@ -14,8 +14,7 @@
   全整数次数の作用を同定し、比較差の可換正方形から native Hom との鎖同型を構成。
 - native Hom に単位・合成・結合律を移し、実 dg gluing 圏を構成した。
   元の Hom 射影による左右 dg 射影と、元の単位・合成の両成分との厳密な一致も完成。
-- 元の第三 cochain と代表表示の比較、単位の第三成分零、閉射の比較ホモトピーと実 cone 係数を構成。
-  包含・次数別行列式・比較ホモトピー零の場合の既存 cone 写像との一致も検証。
+- 第三 cochain の代表表示との比較・単位の第三成分零、閉射の比較ホモトピーと実 cone 係数の包含・行列式を証明。
 - 三項行列を全 Hom end 内に構成し、各対象での評価が実 cone 係数であることから閉性を証明。
   全 dg 自然な実加群射 `dgGluingConeMorphism` と、右包含との厳密な可換性まで完成。
 - 通常 tensor–Yoneda の単位と実 cone 保存を接続し、双加群像の cone と代表加群 cone の tensor 像の
@@ -39,7 +38,8 @@
   右係数は、同じ右作用の厳密正方形の標準 cone 写像そのものと証明。D の Yoneda cone 加群からの全 Hom 同型も構成。
   tensor–Yoneda の列比較を全 Hom に拡張し、試験対象の augmentation と通常 tensor による右作用を構成。
   代表上で元の右作用を回収し、全次数合成との整合性・右 Hom cone から tensor 像への写像と両包含を証明。
-  既存の右係数との一致・両代表比較の接続、試験対象に関する dg 自然性、シフトは未完。
+  Yoneda 円錐同型を標準 Hom 円錐比較で回収し、右係数を同じ右 Yoneda 円錐への kernel 全 Hom 作用と同定。
+  左右の標的同型の接続・両代表比較、試験対象に関する dg 自然性、シフトは未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -50,8 +50,7 @@
 - `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`
 - `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`
 - `dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
-- `dgGluingConeSquareMap`・`dgGluingConeSquareMatrix_eq`
-- `dgGluingCoconeSquareMap`・`dgGluingConeCoconeIso`・`dgGluingConeCoconeMap_inr`
+- `dgGluingConeSquareMap`・`dgGluingConeSquareMatrix_eq`・`dgGluingCoconeSquareMap`・`dgGluingConeCoconeIso`
 - `dgGluingComposition_comparison`・`dgGluingPostcomposition_comparison`・`dgGluingPostcomposition_fst`
 - `dgGluingCoconeExtractMap_recovery`・`dgGluingHomConeIso`・`dgGluingHomConeBottom_cochain`
 - `dgGluingCommaPost_bottom`・`dgGluingHomRepresentableIso_inr`・`dgGluingHomConeBottom_action`
@@ -63,6 +62,7 @@
 - `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
 - `dgGluingKernelConeIso`・`dgGluingKernelConeIso_inr`・`dgGluingCommaKernelConeIso`
 - `dgGluingKernelColumnIso_hom_naturality`・`dgGluingKernelHomAction_yoneda`・`dgGluingKernelHomConeAction_inl`
+- `dgGluingYonedaConeIso_canonical`・`dgGluingHomConeRightTensorTargetIso`・`dgGluingHomConeRightCoefficient_kernel_module`
 - `DGGluingConeRepresentative`・`dgGluingChooseConeRepresentative`
 - `dgGluingConeObject`・`dgGluingConeObject_augmentation`・`dgGluingConeObject_leftIso`・`dgGluingConeObject_rightIso`
 - `dgGluingConeObject_augmentation_transport`・`dgGluingConeRightHomotopyIso`・`dgGluingConeAugmentationCore_hom`
@@ -87,17 +87,18 @@
 - `dgGluingConeObject` と元の閉射の標準 cone の全 Yoneda Hom を比較する。
   両成分の代表比較と `dgGluingConeObject_augmentation_transport`・`dgGluingConeAugmentationCore_hom`
   で同じ比較射の図式を接続する。左は `dgGluingHomConeLeftCoefficient_module` で同じ cone 比較加群射の後合成に接続済み。
-  右は `dgGluingKernelHomConeAction` と既存の右係数を同じ Yoneda cone 比較で結ぶ。
-  `dgGluingKernelHomConeAction_inl`・`_inr` と `dgGluingCommaKernelConeIso` で同じ右像の cone を回収する。
+  右は `dgGluingHomConeRightCoefficient_kernel_module` で同じ右 Yoneda cone への全 Hom 作用に接続済み。
+  `dgGluingHomConeRightTensorTargetIso` と、左で使用した `dgGluingHomConeImageModuleIso` に
+  `dgGluingCommaKernelConeIso` の後合成を続けた同型を同定し、左右係数の標的を揃える。
   左右の代表比較を合わせ、代表対象の augmentation の mapping cocone Hom への同型を全 dg 自然性ごと証明する。
   代表対象としての cone のホモトピー表現可能性を証明した後、シフトを構成し、
   `dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）へ接続する。
   候補対象・成分の K の同型・augmentation のホモトピーだけでは、cone の表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 54モジュール・集約のビルド成功（4968 jobs）、公理監査1054宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要14署名も検査済み。
-  新規5モジュール、集約・監査・本計画の専有8パスだけを保存。他レーンの差分は含めない。
+- 61モジュール・集約のビルド成功（4975 jobs）、公理監査1216宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要19署名も検査済み。
+  新規7モジュール、集約・監査・本計画の専有10パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

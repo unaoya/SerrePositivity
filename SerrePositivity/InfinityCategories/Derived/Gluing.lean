@@ -53,3 +53,10 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomAction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomComposition
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomCochain
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomCone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomCone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.YonedaConeCanonical
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightTensor
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightTensorEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightKernelComparison
