@@ -408,3 +408,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ArrowPrismCut
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeSurjective
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationExtension
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExtension
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramConePointRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramInitialConeFamily
+public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationPrismCorner
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrism
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrismPoint

@@ -755,3 +755,22 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_isIso
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationExtend_inclusion
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_extension
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramShapePoint
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramConePoint_value
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramShapeFirstPoint_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_initialCone_family
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_arrowDiagram_initialCone_family
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePoint_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_rightFibration_prism_corner_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramShapeFirstPoint_leftAnodyne
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_arrowDiagram_initialCone_family
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_rightFibration_prism_corner_lift
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_point
