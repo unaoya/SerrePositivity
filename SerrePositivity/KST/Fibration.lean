@@ -451,3 +451,6 @@ public import SerrePositivity.KST.Fibration.KanPointSurjectivity
 public import SerrePositivity.KST.Fibration.WeakComparisonComponentSurjectivity
 public import SerrePositivity.KST.Fibration.FullyFaithfulPrecomposition
 public import SerrePositivity.KST.Fibration.WeakComparisonFullyFaithfulInput
+public import SerrePositivity.KST.Fibration.SComponentExactness
+public import SerrePositivity.KST.Fibration.RelativeSCofiberCriterion
+public import SerrePositivity.KST.Fibration.RelativeSWeakStability

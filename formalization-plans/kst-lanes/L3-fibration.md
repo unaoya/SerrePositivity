@@ -8,8 +8,8 @@
 ### 現在地
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、
   二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
-- 工程 (b)：全相対 S_n・W 判定・面退化・core 包含・商への射と核四角形を構成。
-  W 辺・相対 cofiber 射影は trivial Kan。K-1 で全正有限反復の加法性へ接続。
+- 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
+  同じ実 cofiber による相対辺判定と、全 n の二対三・pushout・pullback・拡大安定性を証明。W 辺・相対 cofiber 射影は trivial Kan、全正反復の加法性へ接続済み。
 - 有限 W 列の初期頂点・連続 cofiber 比較は、零長で厳密同型、全長・全正反復で局所化同型。
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
 - 元の核包含を実核への完全同値へ制限し、K-2 Segal 実現で元の核四角形を homotopy pullback と証明。
@@ -48,8 +48,8 @@
 - 工程 (d) はユーザー指定の相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、K:S→Sp。
   ν の像が K-5 VerdierDiagram となる D β3 の dg 列に (b)(c) を適用し、固定 S• 比較で K へ戻す。定理は未完。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10620 jobs・監査 452 モジュール 2558 宣言・全体 25373 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6825 モジュールは EInfinity を含まない。
+- 対象 10623 jobs・監査 455 モジュール 2570 宣言・全体 25452 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6828 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -58,7 +58,7 @@
 ### 主要宣言（共通接頭辞 SerrePositivity.KST.Fibration）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
-- relativeSConstruction、relativeSimplicialSConstruction、relativeSimplicialQuotientMap、relativeSimplicialKernelSquare。
+- relativeSConstruction_mem_edge_iff_cofiber_zero、relativeSConstruction_mem_edge_iff_sPostcomp_invertible、relativeSConstruction_extension。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison。
 - fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、weakQuotientCosliceUnit_identity。
@@ -92,15 +92,15 @@
   RelativeFiberEquivalence と Quillen A。任意 W への制限・底変換・元の射影の照合は K-F が証明する。
 - 相対 (d) の追加固定入力三点を K-S•（01a151d3-f75d-7ef2-9d1f-908c85eb1be1）へ依頼済み。
   DGKFixedInterface・DGKFixedSConstruction は読み取り専用。固定 ν・K の頂点・辺と既存の厳密 dg の K₀ 自然比較・負次数消滅を使う。
-- 商・分数・局所化は Sp 正本。一般 fractionMappingComparison の同値性を Sp に依頼し L9 受付に登録済み。充満忠実性のみでも接続可能と補足。
+- 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（実成分の本質的全射性・充満忠実性入力への接続の5モジュール、集約・監査・本計画）。
+- なし（S 評価・実 cofiber 辺判定・全段の弱辺安定性の3モジュール、集約・監査・本計画）。
 ### 既知の問題
-- 一般分数比較の同値性、span 側の普遍性、商実現比較、β3 提示との照合、相対 Sp 値 K-6 は未完。
+- 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- Sp の一般分数比較同値の公開を確認する。任意の相対 Verdier 四角形の元の K 右辺の実 π₀ 全射性・実 fiber 連結性を、β3 提示へ接続する。
+- Sp の一般分数比較の充満忠実性・有限線型図式の局所化・厚い β3 列の実核接続の公開を確認し、元の相対 S 商実現比較と固定 K へ接続する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
