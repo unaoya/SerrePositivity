@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChange
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoIdentityHorizontalSquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftFactorization
+import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCompositor
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCompositorNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoHorizontalNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoCancellationNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftComposition
+import SerrePositivity.InfinityCategories.Derived.QCatEquivalencePreservingCounit
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparison
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonCoherence
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue
@@ -4697,6 +4708,25 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChange,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoIdentityHorizontalSquare,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftFactorization,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCompositor,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCompositorNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoHorizontalNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoCancellationNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellLiftComposition,
+    `SerrePositivity.InfinityCategories.Derived.QCatEquivalencePreservingCounit,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparison,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonCoherence,
 
