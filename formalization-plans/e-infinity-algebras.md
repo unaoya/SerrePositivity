@@ -34,14 +34,23 @@
   正次は同じ全図式を固定した全境界を充填し、分裂があれば `strongSplittingSpace_isContractibleKan`。余極限・極限がある場合も同じ fiber の可縮性。
   有効な元の全図式の全部分 quasicategory `effectiveIdempotents` を構成。元の制限を因子化した `effectiveSplittingRestriction` 自身が自明 Kan fibration。
   全部分圏の包含後に元の前合成そのものを厳密に回収。弱い図式の延長空間やホモトピー圏の一意性だけで代用しない。
-  **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
-  元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
+  **F2N-4(b) 完了、(c) は存在定理まで。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` は全部分 quasicategory。元の包含・Yoneda 因子化は充満忠実で、包含後に元の全 Yoneda を厳密に回収。
+  元の二元モノイドの全乗法を保つ宇宙変更から、持ち上げた元の全 Idem と大きい宇宙の同じ Idem の厳密な同型を構成。
+  F1 の小さい前層余極限を元の全図式へ戻し、`presheafInfinity_isIdempotentComplete` を証明。元の強い分裂は同じ全図式を厳密に回収。
+  `StrongSplitting.liftFullSubcomplex` は retract に閉じた全部分圏への分裂の反映。包含後に元の周囲の全分裂を厳密に回収し、一般の retract 閉包の冪等完備性を結論。
+  `idem_isIdempotentComplete`、元の Idem(C) 内部での Yoneda 像への retract、`idemYoneda_isIdempotentCompletion` を証明。HTT 5.1.4.1〜2 の定義による存在を完了。関手 ∞ 圏の普遍性・一意性は未証明。
+  **HTT 5.1.4.3 完了。** 左右 fibration の標的が冪等完備なら全体も冪等完備。元の Idem 包含の左右 anodyne 性で、同じ底の強い分裂全体を厳密に持ち上げる。
+  任意の元の図式上の slice・coslice の冪等完備性を証明。添字の quasicategory 性は不要。
 - **残り**（依存順、粗い見積もり）：
-  1. F2N-4(b)・(c)：前層圏の冪等完備性、retract 閉包への分裂の反映、`Idem C` の冪等完備性、元の因子化による関手 ∞ 圏の普遍性・一意性。HTT 5.1.4.2〜9、25〜70時間。
+  1. F2N-4(c)：slice の冪等完備化・cofinal 性、全関手の標準左 Kan 性、冪等完備な標的への延長、元の因子化による関手 ∞ 圏の普遍性・一意性。HTT 5.1.4.4〜9、20〜60時間。
   2. F2N-4(d)：安定 ∞ 圏の冪等完備化の安定性。元の零対象・有限極限余極限の閉性を証明。HA 1.1.3.7、15〜40時間。
   3. F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1b の F2N-2・F2N-3 の実際の Ind・compact 界面の後。HTT 5.3.4.17・5.3.5、15〜40時間。
   N-4 の局所化・P_Σ の残り e・f・g、E2b の DK/∞ 局所化の普遍性への γ4 の接続、Sp の残る安定性との整合は第 II 段。
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
+  `idemShapeUniverseIso`、`presheafInfinity_isIdempotentComplete`、`StrongSplitting.liftFullSubcomplex_inclusion`、
+  `fullSubcomplex_isIdempotentComplete`、`retractClosure_isIdempotentComplete`、`idem_isIdempotentComplete`、
+  `IsIdempotentCompletion`、`idemVertex_retract_idemYoneda`、`idemYoneda_isIdempotentCompletion`、
+  `isIdempotentComplete_of_rightFibration`、`isIdempotentComplete_of_leftFibration`、`sliceOver_isIdempotentComplete`、`sliceUnder_isIdempotentComplete`、
   `strongSplittingRestriction_isFullyFaithful`、`strongSplittingSpaceVertexEquiv`、`strongSplittingSpace_isContractibleKan`、
   `effectiveIdempotents`、`effectiveSplittingRestriction_inclusion`、`effectiveSplittingRestriction_trivialKanFibration`、
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
@@ -65,11 +74,11 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の7モジュール27宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド4652 jobs・全424宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし（今回の9モジュール24宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド6550 jobs・全448宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(b)：前層 ∞ 圏の冪等完備性へ進む。F1 の `presheafInfinity_hasColimit` は小さい底の ULift 上の図式を受け取るため、元の IdemShape とその ULift の同型を包含・全図式を保って照合する。元の指定図式の余極限を構成し、保存済み `strongSplitting_exists_of_hasColimit` に渡す。その後 retract 閉包への強い分裂の反映と `Idem C` の冪等完備性。関手 ∞ 圏の普遍性は別途必要。
+- **次の一手**：F2N-4(c)：HTT 5.1.4.4〜6 の slice 上の冪等完備化と cofinal 性へ進む。元の充満忠実な包含での pullback と slice 射影を保持し、指定された元の retract を右 fibration で持ち上げて、slice の全対象が元の像の retract であることを証明。5.1.4.3 の slice 冪等完備性は保存済み。その後始対象を持つ冪等完備化の元の底の弱可縮性、Quillen A による cofinal 性、5.1.4.7 の全標準左 Kan 余錐へ接続する。延長の存在・5.1.4.9 の全関手 ∞ 圏の同値は別途必要。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 

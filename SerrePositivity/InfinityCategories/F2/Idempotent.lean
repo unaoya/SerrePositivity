@@ -87,3 +87,12 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingSp
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingSpaceContractibility
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveIdempotents
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveSplittingRestriction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ScalarUniverse
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafComplete
+public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemComplete
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractReflection
+public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F2.Idempotent.FibrationComplete
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SliceComplete

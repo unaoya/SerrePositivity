@@ -1075,3 +1075,75 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @effectiveSplittingRestriction_trivialKanFibration
 #print axioms effectiveSplittingRestriction_trivialKanFibration
+
+#check @walkingScalarUniverse
+#print axioms walkingScalarUniverse
+
+#check @walkingScalarUniverse_inverse
+#print axioms walkingScalarUniverse_inverse
+
+#check @walkingIdemUniverseUp
+#print axioms walkingIdemUniverseUp
+
+#check @walkingIdemUniverseDown
+#print axioms walkingIdemUniverseDown
+
+#check @idemShapeUniverseIso
+#print axioms idemShapeUniverseIso
+
+#check @presheafIdempotent_hasColimit
+#print axioms presheafIdempotent_hasColimit
+
+#check @presheafIdempotent_strongSplitting
+#print axioms presheafIdempotent_strongSplitting
+
+#check @presheafInfinity_isIdempotentComplete
+#print axioms presheafInfinity_isIdempotentComplete
+
+#check @StrongSplitting.vertices_mem
+#print axioms StrongSplitting.vertices_mem
+
+#check @StrongSplitting.liftFullSubcomplex
+#print axioms StrongSplitting.liftFullSubcomplex
+
+#check @StrongSplitting.liftFullSubcomplex_inclusion
+#print axioms StrongSplitting.liftFullSubcomplex_inclusion
+
+#check @fullSubcomplex_isIdempotentComplete
+#print axioms fullSubcomplex_isIdempotentComplete
+
+#check @retractClosure_isIdempotentComplete
+#print axioms retractClosure_isIdempotentComplete
+
+#check @idem_isIdempotentComplete
+#print axioms idem_isIdempotentComplete
+
+#check @idemIdempotent_hasColimit
+#print axioms idemIdempotent_hasColimit
+
+#check @VertexRetraction.ofFullyFaithful
+#print axioms VertexRetraction.ofFullyFaithful
+
+#check @isVertexRetractOf_iff_map_of_fullyFaithful
+#print axioms isVertexRetractOf_iff_map_of_fullyFaithful
+
+#check @IsIdempotentCompletion
+#print axioms IsIdempotentCompletion
+
+#check @idemVertex_retract_idemYoneda
+#print axioms idemVertex_retract_idemYoneda
+
+#check @idemYoneda_isIdempotentCompletion
+#print axioms idemYoneda_isIdempotentCompletion
+
+#check @isIdempotentComplete_of_rightFibration
+#print axioms isIdempotentComplete_of_rightFibration
+
+#check @isIdempotentComplete_of_leftFibration
+#print axioms isIdempotentComplete_of_leftFibration
+
+#check @sliceOver_isIdempotentComplete
+#print axioms sliceOver_isIdempotentComplete
+
+#check @sliceUnder_isIdempotentComplete
+#print axioms sliceUnder_isIdempotentComplete
