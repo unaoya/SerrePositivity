@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCoherentUnits
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalAugmentation
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalResolution
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoWhiskerSpan
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalComparison
+import SerrePositivity.InfinityCategories.Derived.DGDiagonalBimoduleUnit
+import SerrePositivity.InfinityCategories.Derived.DGKernelGraphDiagonalUnit
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoUnitTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelGraphDerivedDiagonalUnit
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoInverseCellUnit
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalUnit
 import SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition
 import SerrePositivity.InfinityCategories.Derived.QCatHomWhiskering
 import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentWhiskerTriangles
@@ -4160,6 +4171,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCoherentUnits,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalResolution,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoWhiskerSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGDiagonalBimoduleUnit,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGraphDiagonalUnit,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoUnitTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGraphDerivedDiagonalUnit,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoInverseCellUnit,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalUnit,
+
     `SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition,
     `SerrePositivity.InfinityCategories.Derived.QCatHomWhiskering,
     `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentWhiskerTriangles,
