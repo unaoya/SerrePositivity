@@ -141,3 +141,12 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSlicePullback
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionLimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionColimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExact
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CartesianWeakRetraction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.LeftFibrationRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PointSliceArrows
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ArrowRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionArrowRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionArrow
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStrongSplitting
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionArrowSplitting

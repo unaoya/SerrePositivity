@@ -1438,3 +1438,69 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @idemYoneda_isExactFunctor
 #print axioms idemYoneda_isExactFunctor
+
+#check @cartesian_weakDiagram_lift_exists
+#print axioms cartesian_weakDiagram_lift_exists
+
+#check @leftFibration_retract_lift
+#print axioms leftFibration_retract_lift
+
+#check @pointSliceArrowMap
+#print axioms pointSliceArrowMap
+
+#check @pointSliceArrowMap_vertex
+#print axioms pointSliceArrowMap_vertex
+
+#check @pointCosliceArrowMap
+#print axioms pointCosliceArrowMap
+
+#check @pointCosliceArrowMap_vertex
+#print axioms pointCosliceArrowMap_vertex
+
+#check @pointSliceArrow_source
+#print axioms pointSliceArrow_source
+
+#check @pointSliceArrow_target
+#print axioms pointSliceArrow_target
+
+#check @pointCosliceArrow_source
+#print axioms pointCosliceArrow_source
+
+#check @pointCosliceArrow_target
+#print axioms pointCosliceArrow_target
+
+#check @arrowPointCone
+#print axioms arrowPointCone
+
+#check @arrowPointCocone
+#print axioms arrowPointCocone
+
+#check @pointSliceArrowMap_arrowPointCone
+#print axioms pointSliceArrowMap_arrowPointCone
+
+#check @pointCosliceArrowMap_arrowPointCocone
+#print axioms pointCosliceArrowMap_arrowPointCocone
+
+#check @arrow_source_retract_lift
+#print axioms arrow_source_retract_lift
+
+#check @arrow_target_retract_lift
+#print axioms arrow_target_retract_lift
+
+#check @arrow_retract_lift
+#print axioms arrow_retract_lift
+
+#check @IsIdempotentCompletion.arrow_retract
+#print axioms IsIdempotentCompletion.arrow_retract
+
+#check @functor_isIdempotentComplete
+#print axioms functor_isIdempotentComplete
+
+#check @IsIdempotentCompletion.arrow
+#print axioms IsIdempotentCompletion.arrow
+
+#check @VertexRetraction.strongSplitting_exists
+#print axioms VertexRetraction.strongSplitting_exists
+
+#check @IsIdempotentCompletion.arrow_strongSplitting
+#print axioms IsIdempotentCompletion.arrow_strongSplitting
