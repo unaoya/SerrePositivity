@@ -2398,4 +2398,19 @@ public import SerrePositivity.KST.SConstruction.DGGluingAxesRepresentableCompone
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomZero
 public import SerrePositivity.KST.SConstruction.DGSimplexCommonUniverse
 
+public import SerrePositivity.KST.SConstruction.DGGluingAxesDerivedTriangle
+public import SerrePositivity.KST.SConstruction.DGGluingAxesImageGeneration
+public import SerrePositivity.KST.SConstruction.DGGluingAxesPerfectGeneration
+public import SerrePositivity.KST.SConstruction.DGGluingDiagonalLeftGeneration
+public import SerrePositivity.KST.SConstruction.DGGluingDiagonalQuotientGeneration
+public import SerrePositivity.KST.SConstruction.DGGluingDiagonalQuotientPoint
+public import SerrePositivity.KST.SConstruction.DGGluingLeftAxisImageGeneration
+public import SerrePositivity.KST.SConstruction.DGGluingRightPointGeneration
+public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientGeneration
+
+public import SerrePositivity.KST.SConstruction.DGRepresentableEndMorita
+public import SerrePositivity.KST.SConstruction.DGRepresentableFiniteCellThick
+public import SerrePositivity.KST.SConstruction.DGRepresentableThickGeneration
+public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientMorita
+
 /-! # ∞-S• 構成と連結 K 理論 -/

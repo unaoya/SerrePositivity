@@ -29439,3 +29439,90 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgSimplex_commonUniverse_map
 #print axioms SerrePositivity.KST.SConstruction.dgSimplex_commonUniverse_map
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesDerivedConeIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesDerivedConeIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_distinguished
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_distinguished
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_mor₁
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_mor₁
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_mor₂
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesDerivedTriangle_mor₂
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxes_image_representable_mem
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxes_image_representable_mem
+
+#check @SerrePositivity.KST.SConstruction.dgGluingPerfectOver_image_le_iff_axes
+#print axioms SerrePositivity.KST.SConstruction.dgGluingPerfectOver_image_le_iff_axes
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisObjects
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisObjects
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxes_representable_mem
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxes_representable_mem
+
+#check @SerrePositivity.KST.SConstruction.dgGluingPerfect_le_iff_axes
+#print axioms SerrePositivity.KST.SConstruction.dgGluingPerfect_le_iff_axes
+
+#check @SerrePositivity.KST.SConstruction.dgGluingPerfectOver_axes_eq
+#print axioms SerrePositivity.KST.SConstruction.dgGluingPerfectOver_axes_eq
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_image_mem_of_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_image_mem_of_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgGluingPerfectOver_image_le_of_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgGluingPerfectOver_image_le_of_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfect_le_of_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfect_le_of_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfectOver_right_eq
+#print axioms SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfectOver_right_eq
+
+#check @SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfect_le_of_point
+#print axioms SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfect_le_of_point
+
+#check @SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfectOver_point_eq
+#print axioms SerrePositivity.KST.SConstruction.dgGluingDiagonalQuotient_perfectOver_point_eq
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_image_mem_of_right_middle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_image_mem_of_right_middle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingRightAxis_image_mem_of_point
+#print axioms SerrePositivity.KST.SConstruction.dgGluingRightAxis_image_mem_of_point
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotient_perfectOver_point_eq
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotient_perfectOver_point_eq
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableEndMap_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableEndMap_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableEndPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableEndPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableThick_biprod
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableThick_biprod
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableThick_of_finiteCell
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableThick_of_finiteCell
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableThick_of_perfect
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableThick_of_perfect
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentablePerfectPoint
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentablePerfectPoint
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentablePerfectPoint_thickGenerates
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentablePerfectPoint_thickGenerates
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientPerfectEquivalence
