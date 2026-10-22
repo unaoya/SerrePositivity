@@ -270,3 +270,71 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms alternatingCellBoundary
 #check @alternatingCellBoundary_innerAnodyne
 #print axioms alternatingCellBoundary_innerAnodyne
+#check @walkingAbsorber
+#print axioms walkingAbsorber
+#check @walkingAbsorber_mul
+#print axioms walkingAbsorber_mul
+#check @mul_walkingAbsorber
+#print axioms mul_walkingAbsorber
+#check @walkingScalar
+#print axioms walkingScalar
+#check @walkingAbsorbingHom
+#print axioms walkingAbsorbingHom
+#check @walkingAbsorbingHom_comp
+#print axioms walkingAbsorbingHom_comp
+#check @comp_walkingAbsorbingHom
+#print axioms comp_walkingAbsorbingHom
+#check @walkingAbsorbingHom_image
+#print axioms walkingAbsorbingHom_image
+#check @walkingAbsorbingHom_section
+#print axioms walkingAbsorbingHom_section
+#check @walkingAbsorbingHom_retraction
+#print axioms walkingAbsorbingHom_retraction
+#check @walkingAbsorbingHom_idempotent
+#print axioms walkingAbsorbingHom_idempotent
+#check @alternatingObject
+#print axioms alternatingObject
+#check @alternatingChainMap
+#print axioms alternatingChainMap
+#check @alternatingChainMap_self
+#print axioms alternatingChainMap_self
+#check @alternatingChainMap_comp
+#print axioms alternatingChainMap_comp
+#check @alternatingChain
+#print axioms alternatingChain
+#check @alternatingCell
+#print axioms alternatingCell
+#check @alternatingCell_obj
+#print axioms alternatingCell_obj
+#check @alternatingCell_source_iff
+#print axioms alternatingCell_source_iff
+#check @alternatingChainMap_castLE
+#print axioms alternatingChainMap_castLE
+#check @alternatingPrefix
+#print axioms alternatingPrefix
+#check @alternatingCell_prefix
+#print axioms alternatingCell_prefix
+#check @alternatingChain_two
+#print axioms alternatingChain_two
+#check @alternatingCell_one
+#print axioms alternatingCell_one
+#check @retractionStage
+#print axioms retractionStage
+#check @retractionStage_mono
+#print axioms retractionStage_mono
+#check @retractionStage_one
+#print axioms retractionStage_one
+#check @weakShapeStageOneIso
+#print axioms weakShapeStageOneIso
+#check @weakShapeStageOneIso_ι
+#print axioms weakShapeStageOneIso_ι
+#check @retractionStageMap
+#print axioms retractionStageMap
+#check @retractionStageMap_ι
+#print axioms retractionStageMap_ι
+#check @retractionStageCell
+#print axioms retractionStageCell
+#check @retractionStageCell_ι
+#print axioms retractionStageCell_ι
+#check @retractionStageCell_prefix
+#print axioms retractionStageCell_prefix

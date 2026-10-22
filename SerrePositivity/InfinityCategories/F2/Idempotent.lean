@@ -19,3 +19,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.PuncturedFaceAnod
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceFiniteAnodyne
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceInnerAnodyne
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingCellBoundary
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingAbsorption
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingSimplex
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingRestriction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStages
