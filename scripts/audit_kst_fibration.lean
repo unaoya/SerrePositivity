@@ -84,7 +84,10 @@ run_cmd do
     `SerrePositivity.KST.Fibration.CompletedTwoSection,
     `SerrePositivity.KST.Fibration.ComposableWeakObjectStep,
     `SerrePositivity.KST.Fibration.ObjectSinglePairComparison,
-    `SerrePositivity.KST.Fibration.ComposableWeakSingleStep]
+    `SerrePositivity.KST.Fibration.ComposableWeakSingleStep,
+    `SerrePositivity.KST.Fibration.FinTwoProductIso,
+    `SerrePositivity.KST.Fibration.ComposableWeakTwoFactor,
+    `SerrePositivity.KST.Fibration.WeakStringTwoSingleAdditivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

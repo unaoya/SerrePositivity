@@ -78,3 +78,6 @@ public import SerrePositivity.KST.Fibration.CompletedTwoSection
 public import SerrePositivity.KST.Fibration.ComposableWeakObjectStep
 public import SerrePositivity.KST.Fibration.ObjectSinglePairComparison
 public import SerrePositivity.KST.Fibration.ComposableWeakSingleStep
+public import SerrePositivity.KST.Fibration.FinTwoProductIso
+public import SerrePositivity.KST.Fibration.ComposableWeakTwoFactor
+public import SerrePositivity.KST.Fibration.WeakStringTwoSingleAdditivity

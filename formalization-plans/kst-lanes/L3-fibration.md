@@ -24,7 +24,7 @@
 - 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
   各射影は元の評価を回収し、任意の制限後の頂点・実合成辺との厳密な対応も証明。
   一辺では同じ二成分が既存の加法性写像を回収し、全正有限反復で局所化同型。
-  二辺以上の比較の同値性・全列の加法性比較の自然性・実現後の fiber 比較は未完。
+  二辺の単回比較は局所化同型。全反復・三辺以上の同値性・全列の自然性・実現後の fiber 比較は未完。
 - 二辺では、二短辺の W 条件が元の全二単体条件を反映することを証明し、内ホーン制限を
   trivial Kan fibration・完全な安定圏同値にした。標的は共有端点上の二つの W 辺図式圏の
   厳密な引き戻し。元の両短辺を回収し、元の二辺の有限比較をこの同値と同じ積比較に因子分解済み。
@@ -32,13 +32,13 @@
   零対象・実押し出しの両成分反映を証明し、全 S_n・元の object S でも厳密引き戻しとした。
   第二辺の全 cofiber 補完を持つ安定模型を構成。元の二辺へ忘れる射影は trivial Kan fibration。
   相対 K-1 の単体左 fiber 定理を基底変換し K-2 を適用し、元の第一 W 辺 × 第二核値 cofiber
-  への射対が object S・単回実現で局所化同型と証明。全反復・全有限列への拡張は未完。
+  への射対が object S・単回実現で局所化同型と証明。一辺の加法性と合成し、
+  Fin 2 積の元の両射影を保つ同型で weakStringFiniteComparison q 2 1 の局所化同型も証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7178 jobs・専用監査 79 モジュール 527 宣言が成功。
+- 現在の対象ビルド 7181 jobs・専用監査 82 モジュール 539 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3461 モジュールは EInfinity を含まない。全体 23958 jobs で成功。
-
+  所有 import 閉包 3464 モジュールは EInfinity を含まない。全体 23958 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -47,7 +47,6 @@
 3. K(D) → K(C) → K(C/D) の fiber 列（連結版、Sp 値）。K-5 の形と π 同値検出へ
    接続する（BGT §7–8、暫定 16–32 時間）。
 4. 冪等完備化と非連結化への入力の整理（BGT §9、暫定 8–16 時間。K-7 本体は別工程）。
-
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Fibration`）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
@@ -59,8 +58,7 @@
   weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringCategory、weakStringCategory_isStable、weakStringStableSimplicial、
   weakStringMultiRealization、weakStringEdgeExact、weakStringCofiberExact_reindex。
-- cofiberFamily_isCofiber、weakStringCofiberFamily_reindex、weakStringCofiberFamily_quotient、
-  weakStringOctahedronFamily、weakStringOctahedronFamily_middle_kernel。
+- cofiberFamily_isCofiber、weakStringCofiberFamily_reindex、weakStringOctahedronFamily。
 - weakStringOctahedronRelativeExact、weakStringTriangleMultiAddition、
   weakStringTriangleMultiAddition_reindex、weakStringKernelCofiber_degenerate_isZeroVertex。
 - weakStringVertexExact、weakStringVertexExact_reindex、weakStringCofiberSubobject_eq、
@@ -75,6 +73,7 @@
 - relativeCofiberBaseChange_localized_isIso、completedTwo_objectS_isPullback、
   completedTwoSection_objectS_localized_isIso、composableWeakObjectStep_localized_isIso、
   composableWeakMultiStep_one_localized_isIso（元の第一辺と第二 cofiber の射対）。
+- composableWeakTwoComparison_factor、weakStringFiniteComparison_two_one_localized_isIso。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -94,15 +93,16 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の相対基底変換・補完した二辺模型・object S と単回実現の11モジュール等を含める）。
+- なし（今回の Fin 2 積・二辺の因子分解・単回比較の3モジュール・集約・監査・本計画を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  composableWeakMultiStep_one_localized_isIso と一辺の加法性を合成し、Fin 2 積の同型で
-  composableWeakTwoComparison q 1・weakStringFiniteComparison q 2 1 の局所化同型を証明する。
-  同じ引き戻しと補完を全反復・全有限列へ拡張し、再添字整合性・商の写像空間・cofinality へ進む。
+  二辺の第一辺・第二 cofiber の射対を全正有限反復へ移す。まず補完した模型の両射影の
+  零対象・押し出しの共同反映を S_n 後も示し、S/相対 cofiber 交換の同型と照合する。
+  各行で同じ射対を回収して反復の対角へ移し、因子分解から二辺の全反復比較へ接続する。
+  その後、全有限列・再添字整合性・商の写像空間・cofinality へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
