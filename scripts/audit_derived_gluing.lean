@@ -9,7 +9,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ActionElements,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomComplex,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomCalculus,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.RepresentableModel]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RepresentableModel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationElements,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ActionYoneda,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomComparisonProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Category,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Projections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Composition]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

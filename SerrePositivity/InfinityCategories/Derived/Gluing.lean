@@ -4,3 +4,11 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ActionElements
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomComplex
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomCalculus
 public import SerrePositivity.InfinityCategories.Derived.Gluing.RepresentableModel
+public import SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationElements
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ActionYoneda
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomComparisonProjections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Category
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Projections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Composition
