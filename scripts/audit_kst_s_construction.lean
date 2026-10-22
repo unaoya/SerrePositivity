@@ -27294,3 +27294,219 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.stableZeroBoundaryAction_inclusion
 #print axioms SerrePositivity.KST.SConstruction.stableZeroBoundaryAction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgKHomotopyMap_id
+#print axioms SerrePositivity.KST.SConstruction.dgKHomotopyMap_id
+
+#check @SerrePositivity.KST.SConstruction.dgKHomotopyMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgKHomotopyMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgKHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKHomotopyFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKHomotopyNatIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKHomotopyNatIso
+
+#check @SerrePositivity.KST.SConstruction.perfectStableVertexPredicate
+#print axioms SerrePositivity.KST.SConstruction.perfectStableVertexPredicate
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinity
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinity
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinity_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinity_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_isFullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_isFullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.perfectStableVertex
+#print axioms SerrePositivity.KST.SConstruction.perfectStableVertex
+
+#check @SerrePositivity.KST.SConstruction.perfectStableObject
+#print axioms SerrePositivity.KST.SConstruction.perfectStableObject
+
+#check @SerrePositivity.KST.SConstruction.perfectStableObject_isIdempotentComplete
+#print axioms SerrePositivity.KST.SConstruction.perfectStableObject_isIdempotentComplete
+
+#check @SerrePositivity.KST.SConstruction.perfectStableObject_vertex
+#print axioms SerrePositivity.KST.SConstruction.perfectStableObject_vertex
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_vertex
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_vertex
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.right_complete
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.right_complete
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.leftVertex
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.leftVertex
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.middleVertex
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.middleVertex
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.rightVertex
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.rightVertex
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.projection
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.projection
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.inclusion_isFullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.inclusion_isFullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.projection_kills_inclusion
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.projection_kills_inclusion
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_positive_isConnected
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_positive_isConnected
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_negative_subsingleton
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_negative_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_negative_eq_one
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_negative_eq_one
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOrdinaryFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_id
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_id
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFHomotopyFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFHomotopyFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFHomotopyFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGStableModelFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGStableModelFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFAdditiveHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFAdditiveHomotopyFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgKAdditiveHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKAdditiveHomotopyFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKAdditiveNatIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKAdditiveNatIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFKZeroNatIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFKZeroNatIso
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.mk
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.mk
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.verdier
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.verdier
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.left_complete
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.left_complete
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.middle_complete
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.middle_complete
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.right
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.right
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.completion
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.completion
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.isCompletion
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.isCompletion
+
+#check @SerrePositivity.KST.SConstruction.PreservesPerfectZeroCategories
+#print axioms SerrePositivity.KST.SConstruction.PreservesPerfectZeroCategories
+
+#check @SerrePositivity.KST.SConstruction.PreservesPerfectFilteredColimits
+#print axioms SerrePositivity.KST.SConstruction.PreservesPerfectFilteredColimits
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant
+
+#check @SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant
+#print axioms SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.fiberTriangle
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.fiberTriangle
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.fiberTriangle_isFiber
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.fiberTriangle_isFiber
+
+#check @SerrePositivity.KST.SConstruction.PerfectSemiorthogonalDecomposition
+#print axioms SerrePositivity.KST.SConstruction.PerfectSemiorthogonalDecomposition
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence_projection
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence_projection
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.mk
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.mk
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.toPerfectVerdierSequence
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.toPerfectVerdierSequence
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.square
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.square
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.left_eq
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.left_eq
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.middle_eq
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.middle_eq
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.right_eq
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.right_eq
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.bottom_edge
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.bottom_edge
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.right_edge
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.right_edge
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.zero_corner
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierDiagram.zero_corner
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.mk
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.mk
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesZero
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesZero
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesFilteredColimits
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesFilteredColimits
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesVerdier
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.preservesVerdier
+
+#check @SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.mk
+#print axioms SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.mk
+
+#check @SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.hom
+#print axioms SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.hom
+
+#check @SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.isLocalizing
+#print axioms SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.isLocalizing
