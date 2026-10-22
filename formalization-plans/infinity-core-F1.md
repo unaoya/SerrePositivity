@@ -1,6 +1,6 @@
 # F1：fibration・straightening・Yoneda（レーン α2）
 
-> **v2 の位置づけ（2026-10-22 10:10 変更）**：foundations.md §6 の F1。第 I 段は F1-4 → F1-5 → F1-3b。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-22 10:10 変更）**：foundations.md §6 の F1。第 I 段の指定工程 F1-4 → F1-5 → F1-3b は完了。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ（2026-10-22）
 
@@ -19,13 +19,18 @@
   `coneSectionsNativeComparisonIso` は全高次パラメータで元の比較射を保持する。
 - `representablePresheafInfinity_isLimit`：表現可能前層は任意の小さい形状の元の極限全錐を保存。
   像の極限の存在の追加仮定も解消。HTT 5.1.3.2。
-- 次は F1-5。一般底の Cat∞ 分類には戻らない。
+- **F1-5 完了**：`isLimitCone_iff_representablePresheafInfinity` が Cᵒᵖ 上の同じ全錐を検出。
+  `isLimitCone_iff_covariantRepresentableInfinity` が二重反転を明示して元の C 上の小さい極限を特徴づける。
+  `covariantRepresentableValueEquivalence` はその関手の値を元の Hom(x,y) と比較する。
+- **F1-3b 完了**：元の `twistedArrowHomInfinity` が Cᵒᵖ × C 上の一つの coherent な Hom 図式。
+  `homInfinityJointValueEquivalence` で同じ共同評価の値を元の標準写像空間へ比較。
+  `homInfinityCovariant_eq_yonedaEvaluation`、`coyonedaInfinityMap_uncurry`、指定頂点の式も証明。
+  既存の twisted arrow の left fibration 性と全体の pointed fiber 比較を集約・監査で再確認。
 
 ### 残り（依存順）
 
-1. **F1-5**：表現可能関手による極限の特徴づけ。HTT 5.1.3.2。8〜24時間（暫定）。
-2. **F1-3b**：Hom : Cᵒᵖ × C → 𝒮 の二変数関手化。Kerodon 8、HTT 5.1.3。8〜24時間（暫定）。
-3. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
+- 第 I 段の今回の指定工程に残りなし。F1-4（HTT 5.1.2.2–5.1.2.4）、F1-5（HTT 5.1.3.2）、F1-3b（Kerodon 8）を完了。
+1. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
 
 ### 主要宣言（名前のみ）
 
@@ -39,7 +44,10 @@
 - `presheafInfinity_hasColimit`、`presheafInfinity_isColimit_iff_evaluation`
 - `presheafInfinity_exists_limitCone`、`presheafInfinity_hasLimit`
 - `presheafInfinity_evaluation_small_isLimit`、`presheafInfinity_small_isLimit_iff_evaluation`
-- `representablePresheafInfinity_isLimit`
+- `representablePresheafInfinity_isLimit`、`isLimitCone_iff_representablePresheafInfinity`
+- `covariantRepresentableInfinity`、`isLimitCone_iff_covariantRepresentableInfinity`
+- `covariantRepresentableValueEquivalence`、`homInfinityJointValueEquivalence`
+- `homInfinityCovariant`、`homInfinityCovariant_eq_yonedaEvaluation`、`coyonedaInfinityMap`、`coyonedaInfinityMap_uncurry`
 - `coherentSpaceSectionsObject`、`coherentDiagramSectionsCone`、`coherentDiagramSectionsCone_vertex`
 - `coherentDiagramSectionsCone_isLimit`、`hasLimit_coherentSpaceDiagram`
 - `coherentSectionsConeHomComparison_isQCatEquivalence`、`coneSectionsNativeComparisonIso`
@@ -59,7 +67,7 @@
 
 - 有限単体の分類同値から一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
 - 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
-- F1-5 では全表現可能関手の作用を元の全錐に適用した判定を証明する。極限保存だけでは検出を主張しない。
+- 反変前層と共変 Hom は区別する。F1-5 の共変判定は二重反転の同型と元の全錐・脚の比較で証明した。
 
 ### 再開点（第 II 段、3行）
 
@@ -69,11 +77,9 @@
 
 ### 次の一手
 
-F1-5：元の全錐が極限であることと、全表現可能関手での同じ像の極限性を比較する。
-既存の表現可能前層の極限保存、Yoneda の充満忠実性、各点極限の検出を接続する。
-`representablePresheafInfinity y` の始域は Cᵒᵖ なので、共変 Hom の判定とは反転を明示して区別する。
-必要なら native な右写像空間の錐比較に直接戻し、保存のみで検出を推論しない。
-F1-5 の後は既存の `twistedArrowHomInfinity`・`homInfinityJointEvaluation` の二変数性と値の比較を監査する。
+今回の承認範囲 F1-4 → F1-5 → F1-3b は完了。第 II 段へ自動で戻らない。
+第 II 段を再開する場合は上の「再開点」3行から始める。
+前層・表現可能関手・二変数 Hom の利用者は上の主要宣言を集約 F1 から import できる。
 
 ## 0. 目標と範囲
 

@@ -3257,3 +3257,19 @@ public import SerrePositivity.InfinityCategories.F1.ConstantSourceSectionMap
 public import SerrePositivity.InfinityCategories.F1.PresheafAllSmallLimits
 
 public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafAllSmallLimits
+
+public import SerrePositivity.InfinityCategories.F1.CoherentPointedRestrictionReflection
+
+public import SerrePositivity.InfinityCategories.F1.CovariantRepresentableInfinity
+
+public import SerrePositivity.InfinityCategories.F1.CovariantRepresentableValues
+
+public import SerrePositivity.InfinityCategories.F1.HomInfinityBifunctor
+
+public import SerrePositivity.InfinityCategories.F1.NativePointedRestrictionReflection
+
+public import SerrePositivity.InfinityCategories.F1.RepresentableLimitCharacterization
+
+public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafLimitDetection
+
+public import SerrePositivity.InfinityCategories.F1.SSetProductEvaluation

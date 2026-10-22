@@ -9250,3 +9250,43 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.presheafInfinity_small_isLimit_iff_evaluation
 
 #check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit
+
+#check @SerrePositivity.InfinityCategories.relativeRestriction_isQCatEquivalence_of_coherentPointed
+
+#check @SerrePositivity.InfinityCategories.covariantRepresentableInfinity
+
+#check @SerrePositivity.InfinityCategories.covariantRepresentableInfinity_isLimit_iff_opposite
+
+#check @SerrePositivity.InfinityCategories.covariantRepresentableValueEquivalence
+
+#check @SerrePositivity.InfinityCategories.homInfinityJointValueEquivalence
+
+#check @SerrePositivity.InfinityCategories.twistedArrowHomValueEquivalence
+
+#check @SerrePositivity.InfinityCategories.homInfinityCovariant
+
+#check @SerrePositivity.InfinityCategories.homInfinityCovariant_eq_yonedaEvaluation
+
+#check @SerrePositivity.InfinityCategories.homInfinityCovariantValueEquivalence
+
+#check @SerrePositivity.InfinityCategories.coyonedaInfinityMap
+
+#check @SerrePositivity.InfinityCategories.coyonedaInfinityMap_uncurry
+
+#check @SerrePositivity.InfinityCategories.coyonedaInfinityMap_vertex
+
+#check @SerrePositivity.InfinityCategories.coherentPointedRestriction_of_nativeCone_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.isLimitCone_iff_covariantRepresentableInfinity
+
+#check @SerrePositivity.InfinityCategories.covariantRepresentableInfinity_isLimit
+
+#check @SerrePositivity.InfinityCategories.isLimitCone_of_covariantRepresentableInfinity
+
+#check @SerrePositivity.InfinityCategories.isLimitCone_of_representablePresheafInfinity
+
+#check @SerrePositivity.InfinityCategories.isLimitCone_iff_representablePresheafInfinity
+
+#check @SerrePositivity.InfinityCategories.ssetLift_apply
+
+#check @SerrePositivity.InfinityCategories.ssetConst_zero_apply
