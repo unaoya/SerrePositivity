@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
 import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
 import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence
@@ -4807,6 +4808,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation,
+
     `SerrePositivity.InfinityCategories.Derived.ModuleTranslation,
     `SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi,
     `SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence,

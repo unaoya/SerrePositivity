@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceTriangleCoherence
