@@ -249,3 +249,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedC
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSpecialization
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomMappingModel
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomMappingComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedCompositeTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPullbackComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIsoPrecomposition
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomFaithfulnessCriterion
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathLift
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathPullback
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathModel
