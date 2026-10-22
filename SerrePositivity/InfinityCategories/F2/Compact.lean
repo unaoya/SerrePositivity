@@ -11,3 +11,9 @@ public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationCosl
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationTransport
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
+public import SerrePositivity.InfinityCategories.F2.Compact.WeakUniverse
+public import SerrePositivity.InfinityCategories.F2.Compact.CanonicalCoconeWeakEquivalence
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentation
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentationRestriction
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconeRepresentations

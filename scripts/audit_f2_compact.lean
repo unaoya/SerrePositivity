@@ -142,3 +142,75 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @yonedaInfinityMap_evaluationIso
 #print axioms yonedaInfinityMap_evaluationIso
+
+#check @weakHomotopyEquivalence_ulift_of_anodyne
+#print axioms weakHomotopyEquivalence_ulift_of_anodyne
+
+#check @weakHomotopyEquivalence_ulift
+#print axioms weakHomotopyEquivalence_ulift
+
+#check @weakHomotopyEquivalence_iff_of_functorIso
+#print axioms weakHomotopyEquivalence_iff_of_functorIso
+
+#check @coherentLargeTotalUnit_isWeakHomotopyEquivalence
+#print axioms coherentLargeTotalUnit_isWeakHomotopyEquivalence
+
+#check @coherentTotalCoconeFiberValue_isWeakHomotopyEquivalence
+#print axioms coherentTotalCoconeFiberValue_isWeakHomotopyEquivalence
+
+#check @coherentTotalCoconeFiber_isWeakHomotopyEquivalence
+#print axioms coherentTotalCoconeFiber_isWeakHomotopyEquivalence
+
+#check @spaceUniverseUnstraightening_classificationIso
+#print axioms spaceUniverseUnstraightening_classificationIso
+
+#check @spaceUniverseUnstraighteningComparison
+#print axioms spaceUniverseUnstraighteningComparison
+
+#check @spaceUniverseUnstraighteningComparison_projection
+#print axioms spaceUniverseUnstraighteningComparison_projection
+
+#check @spaceUniverseUnstraighteningComparison_isPrecompositionEquivalence
+#print axioms spaceUniverseUnstraighteningComparison_isPrecompositionEquivalence
+
+#check @spaceUniverseTotalComparison
+#print axioms spaceUniverseTotalComparison
+
+#check @spaceUniverseTotalComparison_projection
+#print axioms spaceUniverseTotalComparison_projection
+
+#check @spaceUniverseTotalComparison_isPrecompositionEquivalence
+#print axioms spaceUniverseTotalComparison_isPrecompositionEquivalence
+
+#check @spaceUniverseTransportRepresentation
+#print axioms spaceUniverseTransportRepresentation
+
+#check @spaceUniverseRepresentationRestrict
+#print axioms spaceUniverseRepresentationRestrict
+
+#check @spaceUniverseRepresentationRestrict_diagram
+#print axioms spaceUniverseRepresentationRestrict_diagram
+
+#check @spaceUniverseRepresentationRestrict_pointedMap
+#print axioms spaceUniverseRepresentationRestrict_pointedMap
+
+#check @spaceUniverseCoconeSourceRepresentation
+#print axioms spaceUniverseCoconeSourceRepresentation
+
+#check @spaceUniverseCoconeSourceRepresentation_diagram
+#print axioms spaceUniverseCoconeSourceRepresentation_diagram
+
+#check @spaceUniverseCoconeSourceRepresentation_pointedMap
+#print axioms spaceUniverseCoconeSourceRepresentation_pointedMap
+
+#check @spaceUniverseCocone_vertex_eq
+#print axioms spaceUniverseCocone_vertex_eq
+
+#check @spaceUniverseCoconeVertexRepresentation
+#print axioms spaceUniverseCoconeVertexRepresentation
+
+#check @spaceUniverseCoconeVertexRepresentation_diagram
+#print axioms spaceUniverseCoconeVertexRepresentation_diagram
+
+#check @spaceUniverseCoconeVertexRepresentation_pointedMap
+#print axioms spaceUniverseCoconeVertexRepresentation_pointedMap
