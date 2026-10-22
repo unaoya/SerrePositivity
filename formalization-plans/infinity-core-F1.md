@@ -31,8 +31,11 @@
   `indLeftKanDiagram_hasColimit` と `ind_exists_leftKanExtension` は、小さい κ-filtered 余極限を持つ D への指定単位付き左 Kan 延長の存在。
   `indLeftKanCanonicalCocone_restrict_val` は元の局所比較で制限した標準 Kan 全余錐が密度余錐の同じ像に厳密に一致。
   `indContinuous_canonicalColimits` により保存関手は標準左 Kan 条件を満たし、元の制限射の充満忠実性を結論。
-  延長の κ-filtered 余極限保存、Yoneda 上の回収、実際の制限関手の本質的全射性は未証明。
-- 独立集約 7074 jobs、公理監査 1823 宣言、標準三公理のみ。
+  `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
+  `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
+  `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
+  任意の κ-filtered 余錐の保存性と、実際の制限関手の本質的全射性は未証明。
+- 独立集約 7090 jobs、公理監査 1872 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -61,6 +64,7 @@
 - `indElementsLeftKanComparison_isQCatEquivalence`、`indElementsLeftKanComparison_diagram`
 - `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
+- `indLeftKanExtensionRecoveryIso`、`indLeftKanExtension_canonicalColimits`、`indLeftKanExtension_density_image_isColimit`
 
 ### 依存と提供
 
@@ -80,11 +84,11 @@
 - (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
 - `Compact.PreservesKappaFilteredColimits` はさらに持ち上げた始域の関手を扱う。Indκ と D の宇宙を照合して使う。
 - 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使う。
-- F1b の既存の左 Kan 単位可逆性定理は `InnerFibration δ` を要する。`indYoneda` のこの性質は未証明なので仮定として追加しない。
+- 指定単位の回収は inner 性を要しない新しい一般定理で解決済み。密度余錐の保存だけで任意の κ-filtered 保存性を結論しない。
 
 ### 次の一手
 
-(d)：元の `indKappaContinuousRestriction` の充満忠実性は証明済み。本質的全射性と延長の保存性・回収を証明する。
+(d)：元の制限射の充満忠実性と、左 Kan 延長の存在・元の Yoneda 上の回収は証明済み。任意の κ-filtered 保存性が残る。
 Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保存性は元の native 余錐への作用で定義する。
 `PreservesSmallKappaFilteredColimits` は同じ宇宙の元の余錐の像で保存性を定義。F2 の filtered 定義を再利用。
 元の Indκ 頂点を持つ `indVertexDensityCocone` と保存関手による同じ余極限の像まで証明済み。
@@ -92,8 +96,9 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `indElementsLeftKanComparison` は元の局所 Kan 添字へ同じ射影を保つ同値。任意の制限図式も厳密に回収する。
 `ind_exists_leftKanExtension` は正則 κ と小さい κ-filtered 余極限を持つ D に対し、元の C → D の左 Kan 延長を構成済み。
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
-次は `ind_exists_leftKanExtension` の延長の κ-filtered 保存性と、指定単位の Yoneda 上での可逆性を証明する。
-元の局所添字の小さい模型と (c) の表示を使う。`InnerFibration (indYoneda κ C)` は仮定しない。
+`indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
+次は任意の小さい κ-filtered 図式と元の native 余極限余錐について、延長による同じ像の余極限性を証明する。
+各 Indκ 値の元の元の圏・その全図式の余極限と cofinality を使い、密度余錐の保存から一般の保存へ移す。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点

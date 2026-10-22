@@ -384,3 +384,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.indContinuous_canonicalColimits
 #check @SerrePositivity.InfinityCategories.F2.Ind.indContinuous_isLeftKanExtension
 #check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_identity
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSliceComparison_fiber_hom
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSliceComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSliceKanComparison_identity
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointSliceKanComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftKanIdentity_isTerminal_of_fullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftKanExtension_unit_isIso_of_fullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_unit_isIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtensionRecoveryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension_with_recovery
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_canonicalColimits
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_canonicalLeftKanExtension_with_recovery
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_density_image_isColimit

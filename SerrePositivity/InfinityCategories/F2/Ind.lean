@@ -216,3 +216,12 @@ public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestrict
 public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityKanCoconeMap
 public import SerrePositivity.InfinityCategories.F2.Ind.IndContinuousLeftKan
 public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionFullyFaithful
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSlicePostcomp
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceComparisonFiber
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceComparisonEquivalence
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceKanComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulKanUnit
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanUnitRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanCanonical
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanDensityImage
