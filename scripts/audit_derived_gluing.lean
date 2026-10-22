@@ -281,7 +281,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedChainMapFibration,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceFibration,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimit,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimitProjections]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimitProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedModuleValues,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedCoefficientHomSpan,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedCoefficientMappingSpan,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedCoefficientAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedUniverseIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedUniverseNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientMappingSpan,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientMapping,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientEvaluationSection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ChosenCoefficientMapping]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -43,6 +43,10 @@
   同じ path 空間の引き戻し同型は両射影を保存。零複体への実ホモトピー同値と、その空間模型での同値も供給。
   任意の次数別全射な鎖写像の相対 horn を、指定最上位成分・欠面の削除方程式から充填。擬同型性なしで Kan fibration を得る。
   同じ path 射影に適用し、元の cocone 空間を頂点とする空間の ∞ 極限錐を構成。二脚は元の path 写像・射影の厳密な辺。
+  β5 の同じ導来比較の頂点を実半自由分解へ同定。代表加群の射影性から、実導来 Hom と元の係数の準同型 span を構成。
+  二 augmentation と Yoneda 評価の四角形は全鎖写像・全 pinched 空間で厳密に可換。対象宇宙変更は線形成分と全鎖写像作用を保存。
+  係数評価の自明 Kan fibration の厳密切断から、元の M の空間模型→指定された導来端点間 Hom の選択したホモトピー同値を供給。
+  同じ augmentation を通す回収式を保持する。元の全 arrow 族の Hom 作用との照合は未証明で、比較全体の充満忠実性はまだ結論しない。
   空間模型での同値性・本質的全射性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -70,6 +74,7 @@
 - `dgGluingCoconePathPullbackCone_isLimit`・`dgGluingCoconePathContraction`・`dgGluingCoconePathProjection_surjective`・`dgGluingHomComplex_path_isPullback`
 - `dgGluingComplexPinchedMap_isPullback`・`dgGluingCoconePathSpaceIso`・`dgGluingHomComplex_pathSpace_isPullback`・`dgGluingCoconePathSpace_zero_equivalence`
 - `dgGluingPinchedChainMap_fibration`・`dgGluingCoconePathSpaceProjection_fibration`・`dgGluingCoconePathSpaceCone_isLimit` と `_path`・`_base`
+- `dgGluingChosenCoefficientMappingComparison` と `_equivalence`・`_augmentation`、`dgGluingUniverseCoefficientAugmentation_square`・`dgGluingComplexPinchedUniverseIso_naturality`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -87,11 +92,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   `dgGluingCoconePathSpaceCone_isLimit`・同じ二脚・零模型への同値から、F2 の指定矢印空間の極限錐への比較を構成する。
-  引き戻し保存・path 射影の Kan fibration は証明済み。β5 の代表加群の Hom 比較で導来係数へ接続し、充満忠実性の判定定理へ適用する。
+  `dgGluingChosenCoefficientMappingComparison_augmentation` を使い、元の全 arrow 族の Hom 作用と同じ augmentation span の像を照合する。
+  係数比較は選択した切断を使う。同じ実比較射への照合後に、充満忠実性の判定定理へ適用する。
 
 ### 未コミット・既知の問題
-- 277モジュール・集約ビルド成功（6233 jobs）、公理監査3997宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開29署名を検査済み。新規10モジュール、集約・監査・本計画の専有13パスだけを保存。他レーンの差分は含めない。
+- 289モジュール・集約ビルド成功（6245 jobs）、公理監査4069宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開50署名を検査済み。新規12モジュール、集約・監査・本計画の専有15パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
