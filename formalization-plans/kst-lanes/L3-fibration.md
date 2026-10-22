@@ -27,16 +27,11 @@
 - 二辺の内ホーン制限は W 条件を反映し、trivial Kan fibration・完全な安定圏同値。
   元の両短辺を保つ安定な厳密引き戻しである。単体左 fiber・Quillen A を基底変換し、
   零・実押し出しの共同反映と S/cofiber 交換で全 S_n・全多重対角の同じ射対の同値性を証明。
-- 全有限列の帰納の入力：先行 Δ[n+1] と最後の Δ[1] の元の零単体上の押し出しを構成。
-  長い Δ[n+2] への包含は inner anodyne、全図式圏への制限は trivial Kan fibration。
-  共有端点を先行単体の最終頂点と同定し、先行 W 列・最後の W 辺の安定な厳密引き戻しも構成。
-  core 値図式の厳密貼合せ・内 anodyne 延長・同じ制限の全関手圏内の自然同型で W 条件を反映。
-  W 制限後も trivial Kan fibration・完全な同値で、全正有限反復の局所化同型と両実成分の回収を証明。
-  先行列・最後辺の共同反映と、任意の実 W 辺の全 cofiber 補完・同じ切断を構成。
-  共有端点を既存の最終頂点評価と厳密に照合し、RelativePullback の全反復定理に接続。
-  元の長い W 列 → 先行列 × 最後の核値 cofiber の射対は全正有限反復で局所化同型。
-  先行包含を最後の標準面射、最後の実辺を連続辺の終端添字と厳密照合。
-  Fin の終端追加の積同型・同じ全成分の帰納式により、全正有限長の有限比較の同値性を証明。
+- 先行 Δ[n+1] と最後の Δ[1] の零単体上の押し出しを構成。長い単体への包含は inner anodyne。
+  core 値図式の厳密貼合せ・延長・全関手圏内の同型で W 条件を反映し、制限は trivial Kan fibration。
+  共有端点を元の最終頂点と照合した安定な厳密引き戻しで、両成分は零・実押し出しを共同反映。
+  全 cofiber 補完を持つ同じ模型・切断を RelativePullback の全反復定理へ接続。
+  元の先行面・最後の連続辺・Fin 終端積を保つ帰納式により、全正有限長の有限比較も局所化同型。
 - 元の S_n(W 列_m) の頂点と wS_n(B) の実 m 単体を、内部 Hom の交換で厳密に同定。
   全零対角・実押し出し・W 条件を保ち、両方向の全面・全退化で可換。object S(W 列) と
   相対 S の交換した二重単体集合・対角の厳密同型を構成。K-1 の各行の object/core 比較から、
@@ -44,11 +39,14 @@
   同じ単回反復実現 F₁ の対角へ自然な座標同型で接続。包含側の任意の完全関手による
   W 列の後合成は安定な入力の単体的自然変換で、実単体・二重単体・対角の交換と厳密に可換。
   相対 S の核側の写像を同じ W 列の core/単回反復実現へ運ぶ可換四角形を証明。
+  零長同型の逆と元の退化で全定数 W 列を構成。全単体作用素・完全関手と厳密に可換で全頂点を回収。
+  gapped 交換と object/core 比較を通し、元の core 包含が相対 S の実比較の後で同じ定数包含になる
+  局所化等式を証明（core S・同じ F₁ の両模型）。fiber 性はこの照合からまだ未主張。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7247 jobs・専用監査 146 モジュール 875 宣言が成功。
+- 現在の対象ビルド 7255 jobs・専用監査 154 モジュール 906 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3530 モジュールは EInfinity を含まない。全体 24060 jobs で成功。
+  所有 import 閉包 3538 モジュールは EInfinity を含まない。全体 24126 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -76,6 +74,8 @@
 - weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、
   relativeSWeakStringCoreComparison_localized_isIso（元の実比較射）。
 - relativeSWeakStringMultiComparison_square、relativeSWeakStringCoreComparison_square。
+- weakStringConstantExact、weakStringStableConstant、
+  relativeSWeakStringMultiComparison_coreInclusion、weakStringRealizationConstantDiagonal_postcomp。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -95,14 +95,14 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の W 列の後合成・比較の完全関手自然性・元の核側の可換四角形の8モジュール等を含める）。
+- なし（今回の定数 W 列・元の core 包含の実照合・局所化での比較の8モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  元の core 包含に対応する定数 W 列を構成し、相対 S と F₁ の比較がこの包含を保つことを照合。
-  全長の加法性から homotopy fiber 比較へ進む。有限積の自然性・商の写像空間・cofinality も未完。
+  元の core 包含・核側の写像を保つ比較で relativeSimplicialKernelSquare を W 列側へ移す。
+  全長の加法性から homotopy fiber 性を証明する。有限積の自然性・商の写像空間・cofinality も未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

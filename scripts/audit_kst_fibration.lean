@@ -151,7 +151,15 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakStringGappedPostcomposition,
     `SerrePositivity.KST.Fibration.WeakStringObjectRelativePostcomp,
     `SerrePositivity.KST.Fibration.WeakStringRelativeCorePostcomp,
-    `SerrePositivity.KST.Fibration.WeakStringRelativeMultiPostcomp]
+    `SerrePositivity.KST.Fibration.WeakStringRelativeMultiPostcomp,
+    `SerrePositivity.KST.Fibration.TopClosedStableIso,
+    `SerrePositivity.KST.Fibration.WeakStringConstants,
+    `SerrePositivity.KST.Fibration.WeakStringConstantNaturality,
+    `SerrePositivity.KST.Fibration.WeakStringRealizationConstants,
+    `SerrePositivity.KST.Fibration.WeakStringGappedConstants,
+    `SerrePositivity.KST.Fibration.WeakStringConstantCoreInclusion,
+    `SerrePositivity.KST.Fibration.WeakStringCoreInclusionComparison,
+    `SerrePositivity.KST.Fibration.WeakStringConstantPostcomposition]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
