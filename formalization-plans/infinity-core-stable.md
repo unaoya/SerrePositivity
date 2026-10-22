@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 一般許容 cell の coherent 合成比較・射自然性・模型変更の値・可逆性・旧比較との一致・恒等性・選択独立性・cocycle の3新規モジュール、Derived 集約、両監査、本計画の7パス。対象・両集約（10583 jobs）・12公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査成功。検証済み7パスを保存する。前回保存は `a23726b1f`（計画 `47bae3da0`）。他レーンの変更は変更しない。
+- 一般許容 cell の coherent 合成比較・射自然性・模型変更の値・可逆性・旧比較との一致・恒等性・選択独立性・cocycle の3新規モジュール、Derived 集約、両監査、本計画の7パス。対象・両集約（10583 jobs）・12公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査成功。検証済み7パスを `7d6c2c908` に保存済み。前回保存は `a23726b1f`（計画 `47bae3da0`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- d は随伴・両三角式・五角式・単位・自然性の現到達点で完了（2026-10-22 コーディネータ指示）。旧 homInvIso と coherent な比較の一致、および kernel nerve パラメータまでの追加の全高次 coherence は β4・K-8d8 の要求界面に不要で後段へ戻す。β4 は D2 所有。今回追加の一般許容 cell 合成比較・射自然性・実模型変更の値と可逆性・旧模型変更との一致・選択独立性・恒等性・cocycle は3モジュール12宣言、対象・両集約（10583 jobs）・公開署名検証済み。両全体監査は終端0（Derived 19792宣言／2201モジュール、Stable 20904／2471）。検証済み7パスを保存する。ログは `/tmp/d-beta5-general-cell-coherent-{derived,stable}-audit.log`。f に着手：`Perfect/EnhancementIdempotents` の実 H⁰ 分裂を、F2 の元の全 Idem 図式を回収する強分裂へ接続する。`DGStableHomotopyEquivalence` と F2 の Yoneda 冪等完備化を使い、H⁰ 分裂だけで完了とは数えない。f の7宣言は `/tmp/d-beta5-perfect-idempotent-complete-source.lean` に公開形式で整理し、同名 ready の検証（終端0、7明示署名、公理監査、警告なし）まで成功。`fullFaithful_retract_iso_in_image`・`idempotentComplete_of_ulift_ho_complete`・`dgNerve_isIdempotentComplete_of_h0`・`dgModulePerfectInfinityCategory_isIdempotentComplete`・`dgAlgebraPerfectInfinityCategory_isIdempotentComplete` を含む。現監査の保存後に統合し、両集約と両全体監査を行う。続いて g の既存 Dold–Kan 比較と非可換 dg 代数化を照合する。
+- d は随伴・両三角式・五角式・単位・自然性の現到達点で完了（2026-10-22 コーディネータ指示）。旧 homInvIso と coherent な比較の一致、および kernel nerve パラメータまでの追加の全高次 coherence は β4・K-8d8 の要求界面に不要で後段へ戻す。β4 は D2 所有。今回追加の一般許容 cell 合成比較・射自然性・実模型変更の値と可逆性・旧模型変更との一致・選択独立性・恒等性・cocycle は3モジュール12宣言、対象・両集約（10583 jobs）・公開署名検証済み。両全体監査は終端0（Derived 19792宣言／2201モジュール、Stable 20904／2471）。検証済み7パスを `7d6c2c908` に保存済み。ログは `/tmp/d-beta5-general-cell-coherent-{derived,stable}-audit.log`。f に着手：`Perfect/EnhancementIdempotents` の実 H⁰ 分裂を、F2 の元の全 Idem 図式を回収する強分裂へ接続する。`DGStableHomotopyEquivalence` と F2 の Yoneda 冪等完備化を使い、H⁰ 分裂だけで完了とは数えない。f の7宣言は `/tmp/d-beta5-perfect-idempotent-complete-source.lean` に公開形式で整理し、同名 ready の検証（終端0、7明示署名、公理監査、警告なし）まで成功。`fullFaithful_retract_iso_in_image`・`idempotentComplete_of_ulift_ho_complete`・`dgNerve_isIdempotentComplete_of_h0`・`dgModulePerfectInfinityCategory_isIdempotentComplete`・`dgAlgebraPerfectInfinityCategory_isIdempotentComplete` を含む。現監査の保存後に統合し、両集約と両全体監査を行う。続いて g の既存 Dold–Kan 比較と非可換 dg 代数化を照合する。
 
 ## 目標と原典
 
