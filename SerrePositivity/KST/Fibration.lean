@@ -105,3 +105,12 @@ public import SerrePositivity.KST.Fibration.InnerAnodyneCoreReflection
 public import SerrePositivity.KST.Fibration.TailWeakReflection
 public import SerrePositivity.KST.Fibration.WeakStringTailEquivalence
 public import SerrePositivity.KST.Fibration.WeakStringTailComponents
+public import SerrePositivity.KST.Fibration.ReindexJointReflection
+public import SerrePositivity.KST.Fibration.FullSubcomplexJointReflection
+public import SerrePositivity.KST.Fibration.TailWeakJointReflection
+public import SerrePositivity.KST.Fibration.WeakCofiberCompletion
+public import SerrePositivity.KST.Fibration.WeakCofiberCompletionSection
+public import SerrePositivity.KST.Fibration.TailWeakEndpoint
+public import SerrePositivity.KST.Fibration.TailRelativeCompletion
+public import SerrePositivity.KST.Fibration.TailWeakMultiStep
+public import SerrePositivity.KST.Fibration.WeakStringTailMultiStep

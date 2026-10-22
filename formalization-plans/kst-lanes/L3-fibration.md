@@ -6,9 +6,8 @@
 
 ## 引き継ぎ（2026-10-22）
 ### 現在地
-- 工程 (a) 完了。`IsVerdierSequence` の核条件から包含の本質像が安定閉包と一致すると証明。
-  cofiber による W 所属と商の実辺の可逆性を同定し、実二単体の二対三性、実押し出し・
-  引き戻しでの保存と反映、実 cofiber 列間のホモトピーに対する拡大安定性を証明済み。
+- 工程 (a) 完了。`IsVerdierSequence` の核条件から包含の本質像と安定閉包を同定。
+  cofiber の W 条件と商の可逆性、実二対三・押し出し・引き戻し・ホモトピーに対する拡大安定性を証明。
 - 工程 (a) は thick 性より弱い安定な本質像で成立。冪等完備化・fiber 性は未主張。
 - 工程 (b)：相対図式の全単体・W 判定・内ホーン充填・再添字・core 包含を構成し、
   商の関手圏の core の逆像と同定。具体的 wS•C・商への自然変換・核の可換四角形へ接続済み。
@@ -40,11 +39,14 @@
   共有端点を先行単体の最終頂点と同定し、先行 W 列・最後の W 辺の安定な厳密引き戻しも構成。
   core 値図式の厳密貼合せ・内 anodyne 延長・同じ制限の全関手圏内の自然同型で W 条件を反映。
   W 制限後も trivial Kan fibration・完全な同値で、全正有限反復の局所化同型と両実成分の回収を証明。
+  先行列・最後辺の共同反映と、任意の実 W 辺の全 cofiber 補完・同じ切断を構成。
+  共有端点を既存の最終頂点評価と厳密に照合し、RelativePullback の全反復定理に接続。
+  元の長い W 列 → 先行列 × 最後の核値 cofiber の射対は全正有限反復で局所化同型。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7205 jobs・専用監査 106 モジュール 674 宣言が成功。
+- 現在の対象ビルド 7214 jobs・専用監査 115 モジュール 719 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3488 モジュールは EInfinity を含まない。全体 23982 jobs で成功。
+  所有 import 閉包 3497 モジュールは EInfinity を含まない。全体 23993 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -60,19 +62,18 @@
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
 - weakCofiberProjection_trivialKanFibration、weakArrowMultiAdditivityMap_localized_isIso。
-- weakStringOctahedronRelativeExact、weakStringTriangleMultiAddition_reindex。
-- weakStringVertexExact_reindex、weakStringFiniteComparison、
-  weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
+- weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
 - weakStringFiniteComparison_two_factor、weakStringFiniteComparison_two_localized_isIso_iff。
 - relativeCofiberBaseChange_localized_isIso、completedTwo_objectS_isPullback、
   composableWeakObjectStep_localized_isIso、composableWeakMultiStep_one_localized_isIso。
-- composableWeakTwoComparison_factor、weakStringFiniteComparison_two_one_localized_isIso。
 - RelativePullback.multiPair_localized_isIso、composableWeakMultiStep_localized_isIso、
   weakStringFiniteComparison_two_localized_isIso（全正有限反復、元の全成分を回収）。
 - standardTail_isPushout、standardTailInclusion_innerAnodyne、standardTailEndpoint_eq_yoneda、
   tailWeak_isPullback、tailWeakPrefixExact、tailWeakEdgeExact。
 - weakStringPredicate_iff_tail、weakStringTailEquivalence、
   weakStringTail_multiRealization_localized_isIso、weakStringTail_prefix_ambient。
+- tailWeak_jointReflection、weakCofiberCompletionEquivalence、tailPrefixEndpointTop_eq、
+  tailRelativePullback、weakStringTailMultiStep_localized_isIso（全長・全正有限反復）。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -92,16 +93,15 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の core 因子分解・W 条件反映・切断の同値と両実成分の6モジュール等を含める）。
+- なし（今回の共同反映・任意の W 辺の補完・先行列と最後の cofiber 比較の9モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  全有限列を「先行列と最後の W 辺」の共有端点上の引き戻しで比較する。
-  tailWeakModel の両射影の零対象・押し出しの共同反映と、最後の辺の全 cofiber 補完模型を構成。
-  元の先行包含・最後の辺を標準 face と連続辺の添字で照合し、RelativePullback の全反復定理を
-  同じ射対へ適用して有限積の帰納へ接続する。切断の同値だけから積比較の同値性は結論しない。
+  standardTailPrefix ≫ standardTailInclusion を元の最後の面射、最後の辺を連続辺の添字と照合。
+  Fin の終端追加による積の同型を構成し、weakStringTailMultiStep と既存の全有限積比較の
+  同じ初期頂点・全 cofiber を照合して、全長の積比較の同値性を帰納で証明する。
   続いて再添字整合性・商の写像空間・cofinality・実現後の fiber 比較へ進む。
 
 ## 規約
