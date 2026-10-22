@@ -464,3 +464,13 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismCone
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismConeComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeUncurry
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeBoundaryMap
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeBoundaryVertex
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismFixedBoundaryIso

@@ -1,6 +1,18 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.fixedCoconeBoundary
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeBoundaryMap_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeBoundaryMap_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceFixedBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismFixedBoundaryIso
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeBoundaryMap_vertex
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismFixedBoundaryIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalJoin_last
 #check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection_last
 #check @SerrePositivity.InfinityCategories.F2.Ind.conePointSliceBoundaryRelativeIso
