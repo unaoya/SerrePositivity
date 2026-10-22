@@ -82,3 +82,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsComparison_identity
 #check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsEvaluation_identity
 #check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsEvaluation_isWeakHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityRecoveredHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCoconeTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.coconeTransformationPointAt_post
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationCoconeTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluatedFiberMap_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationFiberIso
