@@ -1960,3 +1960,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofPrefixH
 public import SerrePositivity.EInfinity.Hammock.LeftRoofLeftIdentity
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixHomotopy
+public import SerrePositivity.EInfinity.FrameHom.NerveNatTransCylinder
+public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixCylinder

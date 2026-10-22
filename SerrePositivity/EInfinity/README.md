@@ -2278,6 +2278,9 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `AnodyneFamilyHomotopy` は全写像の局所化等式から、同じ全パラメータの実ホモトピーを回収する。
 `cofibrantSourceRoofProductCommaNativeIntervalCell_eq_reference` は全区間族の射の厳密な一致。
 native pinched 族も弱同値。hR は元の native roof 区間族の全合成三角形へ還元される。
+`nerveNatTransHomotopy_app` は元の自然変換円柱を任意次数・任意時間単体で計算する。
+`LeftRoof.Prefix.component` と `graphHomotopy_h_app/arrowHomotopy_h_app` は同じ四列円柱と
+その余極限像の全単体公式。円柱を選び直さず、元の時間関手をそのまま用いる。
 `LeftRoof.Prefix` は始点 i を固定した Under i 全体の元の四列図式と実円柱を保持する。
 `arrowHomotopy` は元の右脚の定数族から、p_i を前合成した同じ roof 全族への実ホモトピー。
 恒等左脚の roof は同じ forward 射へ厳密に正規化され、円柱の写像は元の四列のまま。
