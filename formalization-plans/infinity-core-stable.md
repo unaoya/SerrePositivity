@@ -87,7 +87,7 @@
 
 ### 未コミット
 
-- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。実 loop 分類同値の11パスは `8817402da` に保存済み。普遍錐の選択忘却の5パスは `39fd4a8ad` に保存済み。今回は零隅四角形・普遍錐表示・始対象移送の8新規モジュール、Stable 集約、両監査、本計画の12パスを保存する。他レーンの変更は保持する。
+- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。実 loop 分類同値の11パスは `8817402da` に保存済み。普遍錐の選択忘却の5パスは `39fd4a8ad` に保存済み。零隅四角形・普遍錐表示・始対象移送の12パスは `1c983a40b` に保存済み。本体の未保存変更なし。今回の計画更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 - D7・β3・β5 は完了。実 loop 分類同値は `8817402da`、普遍錐の選択忘却は `39fd4a8ad` に保存済み。今回 `ConeInputFullSubcomplex`・`ZeroOuterCospans`・`ZeroCornerSquareConeModel`・`LoopDiagramUniversalConeModel`・`LoopConeChoiceModel`・`ConeInputSourceFiber`・`ZeroOuterConeSourceInitial`・`ZeroCornerSquareSourceInitial` の8モジュール・28公開宣言を統合。全零隅四角形と零外端 cospan 上の任意錐の実引き戻し、loop 図式と同じ入力上の普遍錐族を厳密に同定した。同じ cone 評価・頂点評価を保つ同型と選択忘却を接続し、有限極限・指定 loop 切断・Ω 同値から全零隅四角形の始点固定圏の始対象の存在 `zeroCornerSquareSourceFiber_hasInitial` を証明した。対象・両集約（10990 jobs）・28明示署名・両全体監査が終端0（Derived 20695宣言／2279モジュール、Stable 21810／2549、許容三公理のみ）、警告なし。ログは `/tmp/d-zero-corner-initial-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は固定した実 span の余錐圏との比較。`/tmp/d-zero-outer-spans.lean` の10宣言は、零終点の二本の辺から span 族を構成し、その始点射影の自明 Kan fibration 性と始点固定 fiber の可縮 Kan 性まで試作・明示署名・三公理検査が終端0、警告なし（`/tmp/d-zero-outer-spans-signatures.log`）。`/tmp/d-contractible-base-initial-fiber.lean` の2宣言も同検査が終端0：quasicategory の全空間と可縮 Kan の底に対し、`F1B.KanEquivalenceLifting p` から実 fiber 包含の同値性と始対象性を移す（最初の同値性補題は署名の型付け用に冗長な `[InnerFibration p]` を明示）。本体未統合なので配置前に不存在・衝突を確認する。`/tmp/d-zero-corner-span-restriction.lean` は、全零隅四角形を同じ零終点 span へ制限する実写像と、その全可逆辺持ち上げ性を接続中。F1 の `kanEquivalenceLifting_fullRestriction`・`kanEquivalenceLifting_pre` を読み取り専用で再利用。制限が始点評価を厳密に保つ式、始点固定 fiber の持ち上げ性、上記可縮な底への適用、その二重 fiber と実固定境界の余錐圏の同型が次に必要。押し出し普遍性・一般 fiber/cofiber・有限余極限・一般 IsStable は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
+- 次は固定した実 span の余錐圏との比較。`/tmp/d-zero-corner-fixed-span-initial.lean` の24宣言は、零終点の二辺からの span 族、始点射影の自明 Kan fibration 性と始点固定 fiber の可縮 Kan 性、quasicategory の全空間での可縮な底への実 fiber 包含の同値性・始対象移送、全零隅四角形の実 span 制限と同じ始点の保存、制限の始点固定 fiber の `F1B.KanEquivalenceLifting`、元の二重 fiber の厳密同型を接続した。`zeroCornerSquareFixedSpanFiber_hasInitial` は指定した実 span 上の厳密 fiber の始対象の存在を与える。試作・24明示署名・三公理検査が終端0、警告なし。本体未統合。一般同値性補題の署名の冗長な `[InnerFibration p]` は hp から供給する。署名監査用は `/tmp/d-zero-corner-fixed-span-initial-signatures.lean` と同 `.log`。予定は `Stable/ZeroOuterSpans.lean`・`ContractibleBaseInitialFiber.lean`・`ZeroCornerSquareSpan.lean`・`ZeroCornerSquareSpanSourceFiber.lean`・`ZeroCornerSquareFixedSpanInitial.lean`（新規パス・宣言の不存在と衝突を再確認して分割統合）。F1 の `kanEquivalenceLifting_fullRestriction`・`kanEquivalenceLifting_pre`、HL の `vertexFiberMapFiberIso` を読み取り専用で再利用する。次に `zeroOuterSpanVertex_square_iff` と `coneInputFullSubcomplexIso` で全零隅四角形を span 制限の実引き戻しへ同定し、F1B の `cofinalVertexFiberBaseChangeIso` で同じ実固定 span の全四角形 fiber へ移す。その raw fiber を `spanCoconeSquareIso` の全関手同型で実 `coconeFamily` へ移し、押し出しの普遍性を回収する。固定 span の余錐圏との最終比較・押し出し普遍性・一般 fiber/cofiber・有限余極限・一般 IsStable は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
 - K-S• の追加要求：`D0 := dgAlgebraCategory R B`、`C := SmallPerfectDGModuleOver R D0 Set.univ` に対し、自由 representable に対応する実小代表 `b : C` と `modulePerfectOver R C {b} = modulePerfect R C` を供給する。既存 SmallEnhancement の実代表と Perf 比較同型の3宣言は `/tmp/d-small-perfect-generator.lean` で試作・明示署名・三公理検査が終端0（`/tmp/d-small-perfect-generator-signatures.log`）。本体未統合。結論の生成性を仮定する API では代用しない。未提供。
 
 ## 目標と原典
