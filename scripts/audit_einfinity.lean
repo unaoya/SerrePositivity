@@ -8948,6 +8948,25 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_naturality,
       `SerrePositivity.EInfinity.ComplexLimits.standardDoldKanModuleIso_zero_eval]
 
+@[noinline] private def e2RequiredBatch172 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.truncationExtendedInclusionOfShape,
+      `SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquivOfShape_inclusion,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainsTruncationHomEquiv_inclusion,
+      `SerrePositivity.EInfinity.ComplexLimits.truncationExtendedZeroInclusion,
+      `SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquivOfShape_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.truncationExtendedZeroInclusion_mono,
+      `SerrePositivity.EInfinity.ComplexLimits.gammaDegreeZero_raw_injective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainsTruncationHomEquiv_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexZeroGenerator,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexHomEquiv_zero_raw,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexChainAugmentation_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexCochainAugmentation_zero_apply,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexCochainAugmentation_zero_generator,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_curry,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexCochainAugmentation_zero_generator_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_curry_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_gamma_zero_raw]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8981,7 +9000,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21801,3 +21820,76 @@ example (X : Complex A) : normalizedTensorAugmentationVertex A X =
 
 end
 end e2UniversalSimplexFixtures
+
+
+section e2RawIdentityFixtures
+noncomputable section
+universe e2RawIdentityU
+open CategoryTheory MonoidalCategory HomologicalComplex AlgebraicTopology SSet
+open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Surjection
+open scoped Simplicial
+variable (A : Type e2RawIdentityU) [CommRing A]
+
+example (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
+    (he : e = ComplexShape.embeddingUpIntLE 0) (L : ChainComplex (ModuleCat A) ℕ)
+    (H : Complex A) (f : L.extend e ⟶ H) :
+    extendMap (extendTruncationHomEquivOfShape A e he L H f) e ≫
+      truncationExtendedInclusionOfShape A e he H = f :=
+  extendTruncationHomEquivOfShape_inclusion A e he L H f
+
+example (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ))
+    (he : e = ComplexShape.embeddingUpIntLE 0) (hz : e.f 0 = (0 : ℤ))
+    (L : ChainComplex (ModuleCat A) ℕ) (H : Complex A) (f : L.extend e ⟶ H) :
+    (extendTruncationHomEquivOfShape A e he L H f).f 0 ≫
+      truncationExtendedZeroInclusion A e he hz H = (L.extendXIso e hz).inv ≫ f.f 0 :=
+  extendTruncationHomEquivOfShape_zero A e he hz L H f
+
+example (H : Complex A)
+    (f : (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj ⦋0⦌) ⟶ H) :
+    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      embeddingDownNat_eq_upIntLE_zero rfl H
+      ((gammaDegreeZeroIso (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom
+        (normalizedSimplexHomEquiv A H ⦋0⦌ f)) = f.f 0 (normalizedSimplexZeroGenerator A) :=
+  normalizedSimplexHomEquiv_zero_raw A H f
+
+example (n : SimplexCategory) (x : (SSet.stdSimplex.obj n : SSet.{0}) _⦋0⦌) :
+    (normalizedSimplexChainContraction A n).hom.f 0
+      ((mooreDegreeZeroIso ((BarrattEccles.linearization A).obj
+        (SSet.stdSimplex.obj n))).inv (ModuleCat.freeMk (ULift.up x))) = (1 : A) :=
+  normalizedSimplexChainAugmentation_zero A n x
+
+example : (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).hom
+    ((normalizedSimplexCochainContraction A ⦋0⦌).hom.f 0
+      (normalizedSimplexZeroGenerator A)) = (1 : A) :=
+  normalizedSimplexCochainAugmentation_zero_generator A
+
+example (X : Complex A) :
+    (tensorHomEquiv X ((BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj ⦋0⦌)) X
+      ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌)).f 0
+        (normalizedSimplexZeroGenerator A) = CochainComplex.HomComplex.Cochain.ofHom (𝟙 X) :=
+  normalizedTensorAugmentation_curry_zero A X
+
+example (X : Complex A) :
+    truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      embeddingDownNat_eq_upIntLE_zero rfl (homComplex A X X)
+      ((gammaDegreeZeroIso ((homComplex A X X).truncLE'
+        (ComplexShape.embeddingUpIntLE 0))).hom
+        (normalizedSimplexTensorHomEquiv A X X ⦋0⦌
+          ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌))) =
+    CochainComplex.HomComplex.Cochain.ofHom (𝟙 X) := normalizedTensorAugmentation_gamma_zero_raw A X
+
+example (H : Complex A) : Function.Injective
+    (fun x => truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+      embeddingDownNat_eq_upIntLE_zero rfl H
+      ((gammaDegreeZeroIso (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom x)) :=
+  gammaDegreeZero_raw_injective A H
+
+example (H : Complex A) : Mono (truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
+    embeddingDownNat_eq_upIntLE_zero rfl H) :=
+  truncationExtendedZeroInclusion_mono A _ embeddingDownNat_eq_upIntLE_zero rfl H
+
+end
+end e2RawIdentityFixtures

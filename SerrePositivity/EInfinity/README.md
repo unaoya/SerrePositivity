@@ -2484,3 +2484,11 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `doldKanAdjunction_zero_eval`・`standardDoldKanModuleIso_zero_eval`・`normalizedSimplexHomEquiv_zero_eval` は
 元の実 DK・標準 Hom・正規化 Hom の零次数を、同じ正規化鎖射・自由生成元で評価する。
 恒等辺への零次数同定・実屋根評価との全族比較・標準 U 単位誘導射の弱同値性・∞ 極限保存・G1′ は未完了。
+
+`extendTruncationHomEquivOfShape_inclusion` は同じ延長・切断 Hom 同値と包含による元の射の回収。
+`normalizedSimplexHomEquiv_zero_raw` は実 Γ 零次数像を元の複体射の同じ零次数生成元での直接値へ戻す。
+`normalizedSimplexChainAugmentation_zero` と `normalizedSimplexCochainAugmentation_zero_generator` は元の生成元を 1 に送る。
+`normalizedTensorAugmentation_curry_zero` は元のテンソル augmentation の curry の同じ生成元での値が恒等 cochain であること。
+`normalizedTensorAugmentation_gamma_zero_raw` は同じ Γ 零次数像の単射な包含による直接値が恒等 cochain となることを示す。
+`gammaDegreeZero_raw_injective` はその直接評価の単射性。資源上限・標数・cofibrancy の追加仮定はない。
+この延長切断包含と既存 cycles 包含の同定、標準閉辺側との零次数照合、実屋根評価と標準 U 三角形は未完了。
