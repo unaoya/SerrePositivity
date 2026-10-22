@@ -37,11 +37,11 @@
   ラベル付き積の元の射影は cofinal。小さい単射な図式を未使用頂点の同じ積内の単射な錐へ拡大できる。
   `coneApex_isTerminalVertex` は任意の左因子の右錐の終頂点。左因子にも錐にも QC 仮定なし。
   元の部分複体を小さい終頂点付き部分複体へ拡大し、同じ部分族の κ-filtered 被覆と包含余極限まで証明。
+  `terminalSubcomplexBaseMap` は同じ包含順の nerve から元の底への写像。指定頂点と各鎖の所属を保持。
   一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6555 jobs、公理監査 960 宣言、標準三公理のみ。
+- 独立集約 6564 jobs、公理監査 999 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
-- 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
 ### 残り（依存順）
 
@@ -68,7 +68,7 @@
 - `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
 - `hasKappaFilteredElements_of_strictClassified_colimit`
 - `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
-- `exists_small_terminalSubcomplex`、`terminalSubcomplexFamilyCocone_isColimit`
+- `exists_small_terminalSubcomplex`、`terminalSubcomplexFamilyCocone_isColimit`、`terminalSubcomplexBaseMap`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -94,10 +94,10 @@
 
 ### 次の一手
 
-(c)：小さい終頂点付き部分複体の同じ族が κ-filtered で元のラベル付き積を被覆するところまで証明済み。
-次はこの包含順の nerve から元の積への実際の cofinal map を構成する。被覆だけからは結論しない。
-各部分複体の終頂点を選び、包含の有限鎖に沿う境界を終頂点条件で充填する。元の底への射影と合成する。
-その cofinal 性を示し、元の coherent 図式から strict right fibration 図式への比較を構成する。
+(c)：小さい終頂点付き部分複体の κ-filtered 被覆と、その包含順の nerve から元の底への写像まで証明済み。
+`terminalCarrierProjection_trivialKanFibration` の切断で全鎖を実現。指定終頂点と各鎖の最後の部分複体への所属を保持。
+次は実際の `terminalSubcomplexBaseMap` の cofinal 性を示す。射影の切断や被覆だけからは結論しない。
+元の各 coslice の引き戻しの弱可縮性を示し、元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。

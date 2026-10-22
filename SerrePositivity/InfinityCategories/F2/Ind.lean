@@ -68,3 +68,12 @@ public import SerrePositivity.InfinityCategories.F2.Ind.TerminalLastFaceCriterio
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeApexTerminal
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexEnlargement
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexCover
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrier
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierBoundary
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierBound
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierFiller
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierVertex
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierPositiveLift
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierProjection
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierRealization
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexRealization
