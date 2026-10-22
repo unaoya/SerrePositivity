@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerCompositeVertices
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerTransportVertices
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleConstantTargetValue
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoPresentation
 
@@ -29,7 +30,8 @@ local notation "m" => CategoryTheory.Functor.map (ihom (leftUnstraightening F))
   (QCatEquivalence.hom (pointedSpaceFiberValueEquivalence z))
 
 /-- 元の下面の全空間作用の比較を、そのまま元の値への後合成で写す。 -/
-def coherentColimitLowerTriangleActionIso :=
+def coherentColimitLowerTriangleActionIso :
+    FunctorIso (coherentColimitLowerAction B H) (coherentColimitLowerCompositeAction B H) :=
   FunctorIso.postcomp
     (unstraighteningTriangleVertexIso F
       (SSet.const (coherentDiagramTotalCocone F).vertex) (SSet.const z)

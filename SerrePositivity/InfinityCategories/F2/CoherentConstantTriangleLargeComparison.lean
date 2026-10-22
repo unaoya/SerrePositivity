@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitRepresentation
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoTargetFactorValue
 
 /-!
 概要：指定表現を持つ元の三角形の大きい全空間上の比較を保持する。
@@ -42,7 +43,7 @@ def coherentConstantTriangleLargeComparison :
         (coherentTransformationTotalMap F G t ≫ a) := by
     rw [Functor.map_comp, ← Category.assoc, ← Category.assoc,
       coherentTransformationTotalMap_lift]
-  exact functorIsoOfEq (e ≪≫ er) rfl hlift
+  exact e ≪≫ functorIsoOfEq er rfl hlift
 
 /-- 大きい比較の表示変更は、同じ上面と第二辺の表現の比較合成の値を保持する。 -/
 lemma coherentConstantTriangleLargeComparison_heq_raw :
@@ -53,6 +54,6 @@ lemma coherentConstantTriangleLargeComparison_heq_raw :
         ≪≫ (CoherentConstantRepresentation.largeIso G z a R).precomp
           (leftUnstraighteningMappingVertexMap F G t).val) := by
   unfold coherentConstantTriangleLargeComparison
-  exact functorIsoOfEq_heq _ rfl _
+  exact functorIso_trans_target_heq _ _ _
 
 end SerrePositivity.InfinityCategories.F2

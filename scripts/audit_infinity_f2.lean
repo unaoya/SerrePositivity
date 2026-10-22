@@ -3397,3 +3397,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleActionComparison
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison_map_heq_action
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_source_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_middle_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_target_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_component
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_eq_triangle_transport
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeAction_unit_lift
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactorIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperNativeFactorIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperTransportFactorIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso_eq_triangle_transport
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeTriangleActionComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitActionComparison_eq_conjugate
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeTriangleActionComparison_heq_original
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison_eq_factors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_heq_conjugate
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_trans_target_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperCompositeAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_eq_conjugate
