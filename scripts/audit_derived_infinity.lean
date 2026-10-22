@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyPostcompHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawHomNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoModelComparisonTransfer
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelTargetChoice
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelChoice
 import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonValue
 import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonUnitInverse
 import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelMapQuasiIso
@@ -4076,6 +4082,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyPostcompHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawHomNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoModelComparisonTransfer,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelTargetChoice,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelChoice,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonValue,
 
     `SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelComparisonUnitInverse,
