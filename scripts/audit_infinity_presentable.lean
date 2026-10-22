@@ -106,3 +106,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.kanCone_isLimit_iff_bousfieldKanComparison
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_forget
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceDiagramStrictificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceFamilyStrictificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceFamilyStrictificationRestrictIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.uliftInitialConeIso_inr
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictificationIso

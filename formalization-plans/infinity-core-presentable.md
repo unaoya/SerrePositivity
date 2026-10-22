@@ -50,7 +50,9 @@
 - 任意の内部 Hom と weighted sections の全自然な交換同型と、元の錐の比較射との整合性を証明。
 - Kan 値の任意の strict 錐の native な極限性を元の比較の弱同値性で検出する iff を証明。
   小さい poset 上の strict な native 極限錐族の μ-filtered 余極限も native な極限錐。任意の coherent な族への移送は未完。
-- 独立集約ビルド成功（7645 jobs）、公理監査 382 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- F1 の実際の分類の余単位と transport 表現から、任意の小圏上の図式・積添字上の全族の同時 strictification を証明。
+  WithInitial と錐形状の宇宙同型で元の全錐族を一つの関手同型で回収。元の図式への包含も保持。極限性の輸送は未完。
+- 独立集約ビルド成功（7648 jobs）、公理監査 409 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -62,17 +64,15 @@
 7. P_Σ の普遍性と sifted 余極限による生成（5.5.8.14〜15）：N の `SigmaPresheafInfinity`・sifted 閉性・Yoneda の因子化を再利用する。
 
 ### 依存と提供
-- 読み取り専用：`InfinityCategories/F2/Ind/`（F1）、`F2/Idempotent/`・`F2/Compact/`・`HomotopyLimits/`（N）、`F1/`（前層・Yoneda）、`F1B/`（Kan 拡張・局所化）、`Core/`。
+- 読み取り専用：`F2/Ind/`（F1）、`F2/Idempotent/`・`F2/Compact/`・`HomotopyLimits/`（N）、`F1/`、`F1B/`、`Core/`、`Stable/UniverseJoinSimplexShapes`（宇宙同型）。
 - 提供先：第 II 段の BS-7（animated 環）、降下理論、K 第 II 段。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`HasKappaFilteredGeneratorPresentation`
 - `IsKappaAccessibleFunctor`、`IsAccessibleFunctor`、`indYoneda_isKappaCompactGenerating`、`indInfinity_isKappaAccessible`
 - `IsKappaCompactGenerating.compact_iff_retract`、`IsKappaAccessible.exists_indComparison`
-- `covariantHomComparison`、`cosliceComparisonOver`、`leftClassificationHom`
 - `pinchedHomMap_equivalence_of_source_colimit`、`indComparison_isFullyFaithful`、`indComparisonEquivalence`
 - `IsKappaAccessible.exists_indRepresentation`、`IsKappaAccessible.exists_indEquivalence`
-- `IsKappaCompactGenerating.of_equivalence`、`isKappaAccessible_iff_equivalence`、`isAccessible_iff_equivalence`
 - `isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
 - `isKappaAccessibleFunctor_iff_equivalence_conjugate`、`isAccessibleFunctor_iff_equivalence_conjugate`
 - `IsCardinalChangeBound`、`exists_regular_cardinalChangeBound_family`
@@ -85,7 +85,7 @@
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
 - `cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence`
-- `weightedSectionsCotensorIso`、`weightedConeComparison_cotensor`
+- `spaceDiagramStrictificationIso`、`spaceFamilyStrictificationIso`、`coneFamilyStrictificationIso`
 - `kanCone_isLimit_iff_bousfieldKanComparison`、`cardinalFilteredKanConeColimit_isLimit`
 
 ### 未コミット
@@ -97,7 +97,7 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。under-section の共同復元で、strict な native 極限錐族の保存を任意の coherent な族へ移す。
+- 工程 (1) の濃度変更。共同 strictification の WithInitial 制限を実際の strict 錐族へ読み戻し、極限性・点ごとの余極限性を移す。
   同じ native な μ-filtered 交換を証明し、μ-small 部分余極限の μ-compact 性を N の Hom 錐族で導く。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
   元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。

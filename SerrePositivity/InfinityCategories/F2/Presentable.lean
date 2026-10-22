@@ -21,3 +21,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallStrictLimit
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanConeContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.CardinalFilteredKanCones
+public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStrictification
