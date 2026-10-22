@@ -2502,3 +2502,17 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 元の正規化 Hom 単体族と同じ augmentation の合成が同じ g の閉辺の定数族に一致すること。
 小ささ・標数・cofibrancy の追加仮定はない。全単体を束ねた大域族の三角形、
 標準 U 単位誘導射自体の弱同値性、comma 始対象性、∞ 極限保存・G1′ は未完了。
+
+`normalizedTensorRoofEvaluation_family_map` は元の任意 n/K の実屋根評価を同じ関手 F で送る。
+`normalizedTensorElementIndex` は元の正規化 Hom の反対要素圏の対象/Hom の明示的な ULift。
+同じ全単体と全作用素の `normalizedTensorElementDiagram`、元の augmentation と評価を構成。
+`normalizedTensorElementDerivedAugmentationIso` は同じ augmentation の全円柱による同型。
+`normalizedTensorElementDerivedRoof` はその逆と元の全評価二胞体の合成である。
+`normalizedTensorElementDerivedRoofFamily_triangle` は両端を元の定値図式に戻した大域三角形。
+`normalizedTensorElementParameterMap` は同じ全単体から元の正規化 Hom への終端 augmentation。
+`normalizedTensorElementLiftNerveIso` は宇宙調整の厳密な同型であり、同じパラメータ射と
+`normalizedTensorElementPinchedMap` 自身の anodyne 局所化後の可逆性を証明済み。
+`normalizedTensorElementDerivedPinchedMap` は同じ元の半自由分解による大域評価族。
+`complexOrdinaryDerivedNatTransAmbient_component` は元の全円柱の成分を同じ閉辺の分解像に同定する。
+上記の全自然変換による実屋根と、元の pinched 評価族そのものとの大域的一致は未証明。
+この一致を保った標準 U 単位誘導射の弱同値性・comma 始対象性・∞ 極限保存・G1′も未完了。

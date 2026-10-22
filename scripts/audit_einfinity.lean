@@ -8993,6 +8993,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.truncLE'ToRestriction_cycles,
       `SerrePositivity.EInfinity.ComplexLimits.truncationExtendedZeroInclusion_cycles]
 
+@[noinline] private def e2RequiredBatch174 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexDiagramAmbientVertexIso,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransAmbient_component,
+      `SerrePositivity.EInfinity.ComplexLimits.intervalFamilyFunctorMap_triangle,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorRoofEvaluation_family_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedRoofFamily,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedRoofFamily_triangle,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedAugmentationIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedEvaluation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedRoof,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedAugmentationIso_hom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedRoof_triangle,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementIndex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementIndexCategory,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDegree,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDiagram,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentation_quasiIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDiagram_map_quasiIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftNerveMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementParameterMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementPinchedMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementDerivedPinchedMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftNerveInverse,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftNerveIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementParameterMap_localized_isIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementPinchedMap_localized_isIso,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedConstant_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedConstantIso,
+      `SerrePositivity.EInfinity.FrameHom.MixedNerve.nerveMap_const]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9026,7 +9059,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21996,4 +22029,99 @@ example (X Y : Complex A) (n : SimplexCategory)
   normalizedTensorRoofEvaluation_family A X Y n g K t
 
 end e2RoofFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2ElementU
+section e2ElementFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.SimplicialModel
+open scoped Simplicial
+variable (A : Type e2ElementU) [CommRing A]
+variable {I : Type (e2ElementU + 1)} [Category.{e2ElementU} I]
+
+example {C : SSet.{e2ElementU + 1}}
+    (F : dgNerve A (Complex A) ⟶ C) (X Y : Complex A) (n : SimplexCategory)
+    (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (K : SSet.{e2ElementU + 1})
+    (t : K ⟶ SSet.uliftFunctor.{e2ElementU + 1, e2ElementU}.obj (SSet.stdSimplex.obj n)) :
+    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map
+      (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A)
+          ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n))))) ≫
+      intervalFamilyHom (t ≫ normalizedTensorHomPinchedSimplex A X Y n g ≫
+        pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
+          (Simplex.vertex X) (Simplex.vertex Y) ≫
+        intervalFunctorMap F (Simplex.vertex X) (Simplex.vertex Y)) =
+    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map
+      (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A) ((complexToClosed A).map g)))) :=
+  normalizedTensorRoofEvaluation_family_map A F X Y n g K t
+
+example (X Y : Complex A) (s : normalizedTensorElementIndex A X Y) :
+    QuasiIso ((normalizedTensorElementAugmentation A X Y).app s) :=
+  normalizedTensorElementAugmentation_quasiIso A X Y s
+
+example (X Y : Complex A)
+    {s t : normalizedTensorElementIndex A X Y} (f : s ⟶ t) :
+    QuasiIso ((normalizedTensorElementDiagram A X Y).map f) :=
+  normalizedTensorElementDiagram_map_quasiIso A X Y f
+
+example (X Y : Complex A) :
+    (normalizedTensorElementDerivedAugmentationIso A X Y).hom =
+    complexOrdinaryDerivedNatTransHom A (normalizedTensorElementAugmentation A X Y) :=
+  normalizedTensorElementDerivedAugmentationIso_hom A X Y
+
+example (X Y : Complex A) :
+    (normalizedTensorElementDerivedAugmentationIso A X Y).hom ≫
+      normalizedTensorElementDerivedRoof A X Y =
+    normalizedTensorElementDerivedEvaluation A X Y :=
+  normalizedTensorElementDerivedRoof_triangle A X Y
+
+example (X Y : Complex A) :
+    ((normalizedTensorElementDerivedAugmentationIso A X Y).hom ≫
+      (complexOrdinaryDerivedConstantIso A (normalizedTensorElementIndex A X Y) X).hom) ≫
+        normalizedTensorElementDerivedRoofFamily A X Y =
+    normalizedTensorElementDerivedEvaluation A X Y ≫
+      (complexOrdinaryDerivedConstantIso A (normalizedTensorElementIndex A X Y) Y).hom :=
+  normalizedTensorElementDerivedRoofFamily_triangle A X Y
+
+example (X Y : Complex A) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (normalizedTensorElementParameterMap A X Y)) :=
+  normalizedTensorElementParameterMap_localized_isIso A X Y
+
+example (X Y : Complex A) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (normalizedTensorElementPinchedMap A X Y)) :=
+  normalizedTensorElementPinchedMap_localized_isIso A X Y
+
+example {F G : I ⥤ Complex A}
+    (η : F ⟶ G) (i : I) :
+    (complexDiagramAmbientVertexIso A F i).inv ≫
+      functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (nerveVertex i) ≫
+        (complexDiagramAmbientVertexIso A G i).hom =
+    (hoFunctor.map (complexSemifreeResolutionInfinity A)).toFunctor.map
+      (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A) ((complexToClosed A).map (η.app i)))) :=
+  complexOrdinaryDerivedNatTransAmbient_component A η i
+
+example (X : Complex A) :
+    nerveMap ((Functor.const I).obj X) ≫ complexOrdinaryDerivedSource A =
+    SSet.const ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) :=
+  complexOrdinaryDerivedConstant_eq A I X
+
+example (X Y : Complex A) (n : SimplexCategory)
+    (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (K : SSet.{e2ElementU + 1})
+    (t : K ⟶ SSet.uliftFunctor.{e2ElementU + 1, e2ElementU}.obj (SSet.stdSimplex.obj n)) :=
+  normalizedTensorRoofEvaluation_family_map A (complexSemifreeResolutionInfinity A) X Y n g K t
+
+example (X Y : Complex A) : Category.{e2ElementU} (normalizedTensorElementIndex A X Y) :=
+  inferInstance
+
+end e2ElementFixtures
 end
