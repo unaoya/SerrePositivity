@@ -779,7 +779,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangePath,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangePullback,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangeWitness,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientComposition]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackPathComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathCospanComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonExtensionComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageClassComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageExtension,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageExtensionComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageZeroStartDerivation,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageZeroStartLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageZeroStartModel]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
