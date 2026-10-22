@@ -364,7 +364,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointPath,
     `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathSpace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathSpaceLimit,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointPathSpace]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointPathSpace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedZero,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedBiprodPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedBiprodIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedBiprodNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathProduct,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointProductPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointProduct,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointProductLimit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointProductLimit]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
