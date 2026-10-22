@@ -1070,7 +1070,21 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellClassComposition,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassEndpoints,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroRight,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroRightCoefficient]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroRightCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionBaseEquality,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftFromRestriction,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRestrictionCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroDescNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightShiftedCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightBaseIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightStandardClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellLiftOverNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellClassOverNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellClassOverImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassWitness]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
