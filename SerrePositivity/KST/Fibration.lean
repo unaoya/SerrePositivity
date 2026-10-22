@@ -365,3 +365,8 @@ public import SerrePositivity.KST.Fibration.KanDiagramValueIso
 public import SerrePositivity.KST.Fibration.KanCompletionPointHom
 public import SerrePositivity.KST.Fibration.LeftCocartesianKanPointHom
 public import SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint
+public import SerrePositivity.KST.Fibration.DoubleEvaluationTranspose
+public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangePoint
+public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangeJointPoint
+public import SerrePositivity.KST.Fibration.TransportSectionBaseChangePoint
+public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRestriction
