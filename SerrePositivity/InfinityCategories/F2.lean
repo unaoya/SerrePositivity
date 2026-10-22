@@ -873,6 +873,21 @@ public import
 public import
   SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompEndpointTransport
 
+public import
+  SerrePositivity.InfinityCategories.F2.FunctorVertexEquivPostVertex
+public import
+  SerrePositivity.InfinityCategories.F2.PointedEdgeTransportValueChange
+public import
+  SerrePositivity.InfinityCategories.F2.PointedIntervalTransportAtUniversalIso
+public import
+  SerrePositivity.InfinityCategories.F2.PointedSpaceEdgeValueIso
+public import
+  SerrePositivity.InfinityCategories.F2.PointedValueMorphismIntervalIso
+public import
+  SerrePositivity.InfinityCategories.F2.PointedValueMorphismUniversalAction
+public import
+  SerrePositivity.InfinityCategories.F2.SpaceEdgeCanonicalVertices
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -2026,3 +2041,17 @@ public import
 #check @SerrePositivity.InfinityCategories.F2.coconeFiberValueMapAt_eq_valueTo
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalSourceValueMap_eq_valueTo
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorVertexEquiv_symm_post_vertex
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_edge_value_change
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_universalIso
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_universalIso_heq_app
+#check @SerrePositivity.InfinityCategories.F2.pointedSpaceEdgeValueIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueMorphismIntervalIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomTransport_morphism_vertex
+#check @SerrePositivity.InfinityCategories.F2.pointedValueMorphismUniversalActionIso
+#check @SerrePositivity.InfinityCategories.F2.pointedRightMorphismEdge_recover
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_vertex
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_vertex
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_to_object
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_to_object

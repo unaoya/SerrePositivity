@@ -29,13 +29,13 @@
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  元の raw 輸送を同じ a6 比較・native 表現で具体的 Kan 頂点射へ比較し、元の余錐での像から元の模型単位比較を厳密に回収。値射の充満忠実性で逆第一辺・二面合成比較をその元の模型指定値へ反映。最後辺への輸送も値まで一致し、元の模型三角形式の第一辺輸送を同じ模型比較で表示済み。
+  第一辺の元の模型指定値への反映と最後辺輸送への代入は完了。全区間比較の指定点を普遍輸送へ回収し、全 Kan Hom の元の指定成分と比較。元の任意の Space 辺の厳密な復元・両端等式を保ち、同じ実区間輸送を元の Kan 射へ値比較する界面を構成。普遍三角形残余の値の照合は未完。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9964 jobs、公理監査15752宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の raw 輸送と Kan 頂点射の比較・元の模型単位比較の回収・fiber での指定値の反映・模型第一辺の輸送を含む追加27明示宣言を型検査。
+  検証：三集約同時ビルド9971 jobs、公理監査15806宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  元の全比較の指定点成分・全 Kan Hom の同じ成分・任意の実 Space 辺と両端を保持する値比較を含む追加13明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -87,7 +87,7 @@
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  IntervalModel_model_first_transport は同じ元の模型三角形を普遍三角形残余・模型第一辺輸送・最後辺模型単位で表示。RawTransportModelUnitComparison_eq_model と ModelFirstUnitComparison_eq_raw により第一辺の値は元の a6 比較そのもの。次は RawUniversalTriangleComparison の値を、元の coherentColimitFunctor の同じ全二単体の指定三角形同型へ照合する。必要な任意の初期値・元の指定 path・両辺比較を保持して PointedValueTriangle_isoSquare へ接続し、普遍残余を同じ全区間族の三角形へ戻す。
+  IntervalModel_model_first_transport と ModelFirstUnitComparison_eq_raw により第一辺輸送の値は元の a6 比較へ同定済み。次は元の coherentColimitApexTriangle の三辺へ pointedSpaceEdgeValueIso を適用。pointedIntervalTransportAt_universalIso_heq_app で元の全比較成分を保持し、RawUniversalTriangleComparison の値を同じ二単体の PointedValueTriangle_isoSquare へ照合する。元の任意初期値・指定 path・両辺比較を保ち、普遍残余を同じ全区間族の三角形へ戻す。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。

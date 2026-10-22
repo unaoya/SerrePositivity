@@ -4420,3 +4420,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconeFiberValueMapAt_eq_valueTo
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalSourceValueMap_eq_valueTo
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorVertexEquiv_symm_post_vertex
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_edge_value_change
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_universalIso
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_universalIso_heq_app
+#check @SerrePositivity.InfinityCategories.F2.pointedSpaceEdgeValueIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueMorphismIntervalIso
+#check @SerrePositivity.InfinityCategories.F2.pointedValueHomTransport_morphism_vertex
+#check @SerrePositivity.InfinityCategories.F2.pointedValueMorphismUniversalActionIso
+#check @SerrePositivity.InfinityCategories.F2.pointedRightMorphismEdge_recover
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_vertex
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_vertex
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_to_object
+#check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_to_object
