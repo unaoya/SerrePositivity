@@ -2662,3 +2662,13 @@ slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次
 `normalizedTensorElementSelectedCochainAtMax_evaluation_pinched` と `_evaluation_compose` は
 任意非空部分集合の最大点付き選択 cochain と符号付き終端合成を同じ元の成分へ戻す。
 大域評価三角形の混合 cochain・全 HA・全作用素自然性は未完了。
+
+`coneTriangleFrontIndex` と `coneTriangleBackIndex` は三相の時刻から元の cone と
+終端付き単体の添字へ移る単調写像。`_reindex` は任意の面・退化に対し、元の
+prependOrderHom・extendOrderHom を使う二つの可換式を与える。
+三角形の実混合 cochain と全 HA は引き続き未完了。
+
+`normalizedTensorElementEvaluationJoin` は元の実評価の通常余錐を同じ複体 dg nerve へ送る。
+`_restrict_simplex` は同じ終端付き実列の閉 nerve 単体、`_prism` は元の全自然変換円柱を
+厳密に回収する。`normalizedTensorElementEvaluatedColumn` は全対象・全前面射・終端射を保持。
+大域 Δ² 三角形の混合 cochain と HA は未完了。
