@@ -242,7 +242,22 @@ run_cmd do
     `SerrePositivity.KST.Fibration.QuasicategoryUniverseReflection,
     `SerrePositivity.KST.Fibration.SmallSpaceDiagram,
     `SerrePositivity.KST.Fibration.SpaceDiagramLocalizationDescent,
-    `SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent]
+    `SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent,
+    `SerrePositivity.KST.Fibration.PointSourceFatDiagram,
+    `SerrePositivity.KST.Fibration.PointSourceCosliceData,
+    `SerrePositivity.KST.Fibration.FractionFamilyArrow,
+    `SerrePositivity.KST.Fibration.PointSourceCosliceFixedHomotopy,
+    `SerrePositivity.KST.Fibration.PointSourceCosliceFiber,
+    `SerrePositivity.KST.Fibration.FractionFamilyCoslice,
+    `SerrePositivity.KST.Fibration.PointSourceFatRestriction,
+    `SerrePositivity.KST.Fibration.FixedFractionCosliceComparison,
+    `SerrePositivity.KST.Fibration.SectionPostToLeftFibration,
+    `SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration,
+    `SerrePositivity.KST.Fibration.FractionCosliceBaseChange,
+    `SerrePositivity.KST.Fibration.StrictTransportPostEvaluation,
+    `SerrePositivity.KST.Fibration.FractionSimplexKanComparison,
+    `SerrePositivity.KST.Fibration.WeakSpanKanMappingComparison,
+    `SerrePositivity.KST.Fibration.FixedFractionCosliceGroupoid]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
