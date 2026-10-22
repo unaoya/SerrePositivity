@@ -107,7 +107,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelRightArrow,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullhomotopy,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeBoundary,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConePost]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConePost,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeNullCochain,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.GradedPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCochainElement,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaConeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeConeLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleBoundaryElement,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.GradedPostcompositionClosed,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaGradedPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapRightComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeNullElementKernel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullAction]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
