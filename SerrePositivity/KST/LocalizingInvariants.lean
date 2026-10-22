@@ -1068,4 +1068,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGRestrictionCompositionS
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionStrict
 public import SerrePositivity.KST.LocalizingInvariants.DGStrictAdjointComparisonComponent
 
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionCells
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionIsoComponent
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionNerveIso
+public import SerrePositivity.KST.LocalizingInvariants.DGPerfectExtensionCompositionIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantComposition
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
