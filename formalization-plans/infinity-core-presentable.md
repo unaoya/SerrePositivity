@@ -6,7 +6,7 @@
 ## 引き継ぎ（2026-10-23）
 
 ### 現在地
-- 工程 (1) 進行中。κ-accessible を「正則 κ・小さい κ-filtered 余極限・小さい κ-compact 全部分生成圏」で定義。
+- 工程 (1) の定義・Ind iff・関手・濃度変更の主経路を実証。κ-accessible を「正則 κ・小さい κ-filtered 余極限・小さい κ-compact 全部分生成圏」で定義。
   生成は各対象を厳密な頂点とする単一の全余錐表示。Ind との同値・比較の充満忠実性は定義に入れていない。
 - 正則 κ の `IndInfinity κ A` の κ-accessibility を証明。F1 の単一 filtered 表示の同じ全余錐を Ind 内へ持ち上げ、N の Yoneda compact 性と合成。
 - κ-accessible 関手は Ind の native な小さい κ-filtered 余極限保存を再利用。恒等・合成・濃度の単調性・全関手同型不変性を証明。
@@ -45,19 +45,19 @@
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。Space の poset 形状の全 coherent 交換へ接続。
 - weighted sections・Bousfield–Kan 模型の strict 連続性、元の比較の弱同値保存、内部 Hom との全自然な交換を証明。元の全脚を保持。
 - Kan 値 strict 錐の native 極限性の比較射による iff と保存性を証明。F1 の分類で全錐族を同時 strict 化し、元の全脚を読み戻す。
-- 同時 strict 化した全錐族へ元の点ごとの余極限を、指定頂点の等号を保持して輸送。各段階の極限性も保存・反映。
-- thin な添字の二つの錐添字写像を全単体で一致させ、元の Kan 図式の実現を N の strictCoherentConeMap そのものへ戻した。
-- 通常の Kan 図式族を束縛する関手と全余錐の実現を構成。元の積図式との全単体の一致、点ごとの native 余極限性を証明。
+- 同時 strict 化した全錐族の指定点ごとの余極限を輸送。thin な錐添字の一致から元の strictCoherentConeMap を回収し、全脚と native な極限性を比較。
 - WithInitial の元の錐の比較を二つの連続関手間の自然変換にし、同じ strict 余極限錐自身の native な極限性を証明。
 - **小さい poset の極限と、一般の μ-filtered ∞ 添字の coherent 全錐族の指定点ごとの余極限の交換を証明。**
   cofinal μ-filtered poset への元の全余錐の制限で一般添字へ拡張。元の図式・全錐・指定余錐を量化し、交換を仮定に入れない。
 - 正則濃度・κ-small 性・κ-filtered 性の宇宙移送、μ-filtered 全錐反映を証明し、小さい poset 余極限の μ-compact 閉性を証明。
 - 元の小さい生成圏の μ-small poset 図式を宇宙 u の一つの符号型へ移し、共通の小さい μ-compact 余極限族を選択。
   各指定対象の厳密な全表示の全項はこの族の一項と頂点同型を持つ。Ind 内の小さい頂点族上の全部分複体は全次数で小さい。
-- 独立集約ビルド成功（7705 jobs）、公理監査 564 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 小さい全部分模型と同型飽和の全同値を構成し、全表示を小さい生成圏へ移送。元の指定頂点を厳密に保持。
+  `IsKappaAccessible.of_cardinalChangeBound` により圏自身の μ-accessibility を証明。任意の上限超えと小さい族の共通濃度も実証。
+- 独立集約ビルド成功（7710 jobs）、公理監査 589 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
-### 残り（依存順）
-1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
+### 工程（依存順）
+1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
 2. presentable の定義、前層 ∞ 圏・Ind_κ(C) の presentable 性（5.5.1.1、5.5.1.8）、局所小ささ。
 3. presentable の小さい極限・余極限（5.5.2.4、5.5.3.13）。
 4. 随伴関手定理：余極限を保つ関手は左随伴、accessible かつ極限を保つ関手は右随伴（5.5.2.9）。
@@ -66,7 +66,7 @@
 7. P_Σ の普遍性と sifted 余極限による生成（5.5.8.14〜15）：N の `SigmaPresheafInfinity`・sifted 閉性・Yoneda の因子化を再利用する。
 
 ### 依存と提供
-- 読み取り専用：`F2/Ind/`（F1）、`F2/Idempotent/`・`F2/Compact/`・`HomotopyLimits/`（N）、`F1/`、`F1B/`、`Core/`、`Stable/UniverseJoinSimplexShapes`（宇宙同型）。
+- 読み取り専用：`F2/Ind/`（F1）、`F2/Idempotent/`・`F2/Compact/`・`HomotopyLimits/`（N）、`F1/`、`F1B/`、`Core/`、`Stable/UniverseJoinSimplexShapes`・`UniverseHorns`（宇宙同型）。
 - 提供先：第 II 段の BS-7（animated 環）、降下理論、K 第 II 段。
 
 ### 主要宣言
@@ -89,19 +89,19 @@
 - `coherentCardinalFilteredLimitExchange_poset`、`isKappaFiltered_ulift`、`isMuCompact_smallPosetColimit`
 - `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
 - `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
+- `IsKappaAccessible.of_cardinalChangeBound`、`IsAccessible.exists_larger`、`exists_common_accessibilityCardinal`
 
 ### 未コミット
 - なし。工程 (1) の検証済み区切りを所有ファイルのみ保存。
 
 ### 既知の問題
-- accessible 圏の濃度変更は未証明。κ ≤ μ だけで単調性を結論せず、必要な正則性・濃度条件を保持する。
+- 濃度変更は `IsCardinalChangeBound κ μ` と μ の正則性の下で実証。κ ≤ μ だけによる単調性は主張しない。
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。Ind 内の共通の小さい μ-compact 頂点族の全部分圏を、宇宙 u の模型へ縮小する。
-  その本質像との同値を通じて全表示の項の頂点同型を一つの coherent な表示へ移し、小さい全部分生成圏を構成する。
-  共通の小さい頂点族と各指定対象の全表示は完了。小さい生成圏・圏自身の μ-accessibility は未証明。
-  その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
+- 工程 (2)。元の全図式の native な小余極限の存在と accessibility によって presentable を定義する。
+  F1 の前層の小余極限と N の compact 界面を確認し、前層の小さい compact 生成圏を構成する。
+  任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約
 - 配置 `SerrePositivity/InfinityCategories/F2/Presentable/`、集約 `F2/Presentable.lean`、監査 `scripts/audit_infinity_presentable.lean`。

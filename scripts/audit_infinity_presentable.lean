@@ -146,3 +146,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.small_fullSubcomplexOnRange
 #check @SerrePositivity.InfinityCategories.F2.Presentable.ind_small_fullSubcomplexOnRange
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.exists_smallFamilyPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.quasicategory_of_ulift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFullModelInclusion_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFamilySaturationComparison_isEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.generatorPresentation_of_familySaturation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFullModelInclusion_isKappaCompactGenerating
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isMuAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal

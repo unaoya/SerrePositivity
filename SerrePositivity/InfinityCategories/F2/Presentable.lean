@@ -31,3 +31,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.KappaFilteredUni
 public import SerrePositivity.InfinityCategories.F2.Presentable.CompactPartialPresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFullSubcomplex
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPresentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
