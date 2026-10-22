@@ -7866,6 +7866,82 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_degree,
     `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_isLeftCofinal_iff_raw]
 
+@[noinline] private def e2RequiredBatch134 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductElements,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductFirst,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductFirstNerve,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductOver,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductOverNerve,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductIso,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductIso_source,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductIso_over,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofTarget,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProjection,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameArrow_invertible,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProjection_rightFibration,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProjection_leftFibration,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofTarget_quasicategory,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSlice,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegree,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceOver,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceOver_projection,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreeModel,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceDegreeMap,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSliceDegreeMap_source,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_iff_slices,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetOverBaseMap_projection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSlice,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceOver_projection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_source,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenSliceDegreeMap_over,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTarget,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection_rightFibration,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTarget_quasicategory,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetProjection_leftFibration,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetDegree_vertex,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetPoint_projection,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.lifted,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.toLifted,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.fromLifted,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.commaNerveIso,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.sourceNerveIso,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.baseMap,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.projection,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.isPullback,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.pullbackIso,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.pullbackIso_source,
+    `SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback.pullbackIso_over,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.degree,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.toCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.fromCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.equivalence,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.toCostructured_arrow,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.toCostructured_first,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.firstComponent,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.toCostructured_projection,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.toCostructured_fromCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.fromCostructured_toCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexElements.nerveIso,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.elements,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.productElements,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.degree,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.firstComponent,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.toCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.fromCostructured,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.equivalence,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.toCostructured_inverse,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.fromCostructured_inverse,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.toCostructured_projection,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.over,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.over_projection,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.over_arrow,
+    `SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver.nerveIso]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7899,7 +7975,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133] do
+      e2RequiredBatch133, e2RequiredBatch134] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18944,3 +19020,34 @@ example {E : SSet.{e2ComplexLimitUniverse + 1}} [SSet.Quasicategory E]
     HasLimit (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
   cofibrantSourceFrame_hasLimit A X F hF
 end e2NativeSourceFrameRightKanFixtures
+
+section e2NativeRoofSliceProductFixtures
+universe e2RoofSliceUniverse
+open CategoryTheory Limits Opposite SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (A : Type e2RoofSliceUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+example : SSet.Quasicategory (cofibrantSourceRoofTarget A X Y) :=
+  cofibrantSourceRoofTarget_quasicategory A X Y
+example : RightFibration (cofibrantSourceRoofProjection A X Y) :=
+  cofibrantSourceRoofProjection_rightFibration A X Y
+example : LeftFibration (cofibrantSourceRoofProjection A X Y) :=
+  cofibrantSourceRoofProjection_leftFibration A X Y
+example : IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
+    ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
+      IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) :=
+  cofibrantSourceRoofMap_isLeftCofinal_iff_slices A X Y
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+example : nerve (cofibrantSourceRoofProductElements A X Y b) ≅
+    cofibrantSourceRoofDegreeModel A X Y b := cofibrantSourceRoofProductIso A X Y b
+example : (cofibrantSourceRoofProductIso A X Y b).hom ≫ pullback.fst _ _ =
+    cofibrantSourceRoofProductFirstNerve A X Y b := cofibrantSourceRoofProductIso_source A X Y b
+example : (cofibrantSourceRoofProductIso A X Y b).hom ≫ pullback.snd _ _ =
+    cofibrantSourceRoofProductOverNerve A X Y b := cofibrantSourceRoofProductIso_over A X Y b
+example : cofibrantSourceRoofSliceDegreeMap A X Y b ≫ pullback.fst _ _ = pullback.fst _ _ :=
+  cofibrantSourceRoofSliceDegreeMap_source A X Y b
+example : cofibrantSourceRoofSliceOver A X Y b ≫
+    nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) =
+      pullback.fst _ _ ≫ sourceFrameElementDegreeNerve A X Y :=
+  cofibrantSourceRoofSliceOver_projection A X Y b
+end e2NativeRoofSliceProductFixtures

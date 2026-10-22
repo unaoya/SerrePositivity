@@ -1899,3 +1899,11 @@ public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRoof
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowRightKan
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKan
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource
+
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofDegreeModel
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSlices
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofTarget
+public import SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback
+public import SerrePositivity.EInfinity.FrameHom.ProductSimplexElements
+public import SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver

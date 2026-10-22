@@ -2212,7 +2212,14 @@ e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単�
 再添字後の固定終域の矢の nerve 全体の厳密な同型。対象の宇宙が異なるため全単体の作用を明示する。
 `cofibrantSourceFrameRoofMap` はその元の全単体から同じ q の実屋根比較への写像。
 次数射影を保持し、その left cofinal 性は元の raw 屋根比較の left cofinal 性と同値。
-left cofinal 性本体・標準右 Kan 条件・単位可逆性と局所化普遍性本体は後続。
+`cofibrantSourceRoofTarget_quasicategory` と元の frame 射の反転により、
+屋根標的は quasicategory、次数射影は左右のファイブレーションとなる。
+`cofibrantSourceRoofMap_isLeftCofinal_iff_slices` は実際の全 Quillen A slice の判定。
+`cofibrantSourceRoofSliceDegreeMap` は同じ指定点の次数へ向かう Over 図式を保持する。
+`cofibrantSourceRoofProductIso` はこの次数モデルと、元の sourceFrameHom×Δ[n] の
+Hom を上げた反対要素圏の nerve との厳密な同型で、元の二つの射影を保つ。
+`MixedNerveCostructuredPullback.pullbackIso` は対象宇宙だけが異なる元の関手にも使える。
+実 slice の弱可縮性・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
