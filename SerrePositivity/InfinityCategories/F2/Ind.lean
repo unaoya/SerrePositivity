@@ -19,3 +19,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceCompa
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsWeakEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberMap
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityJointRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRelativeImage
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityLiftedEvaluation

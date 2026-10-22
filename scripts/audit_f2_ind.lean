@@ -29,6 +29,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityDiagramHomotopy_evaluation
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluatedTransformationVertex_restriction
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityJointRestriction_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.coherentMapRealizationLargeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationRelativeImageIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityLiftedEvaluationIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
