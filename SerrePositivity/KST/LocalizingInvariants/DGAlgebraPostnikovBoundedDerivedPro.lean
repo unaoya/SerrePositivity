@@ -38,19 +38,31 @@ lemma postnikovQuotientLevelHom_transition (a b : ℤ) (hab : b ≤ a) :
 
 variable {C : Type v} [Category.{w} C] (L : Mon (Complex R) ⥤ C)
 
-lemma postnikovQuotientLevelHom_isProIso_of_bounded (hL : InvertsQuasiIsos R L)
+lemma postnikovQuotientLevelHom_isProIso_of_bounded_connective
+    (hL : InvertsConnectiveQuasiIsos R L)
     (b : ℤ) (hb : 0 ≤ b) (a : ℤ) (hab : b ≤ a)
     (hB : ∀ i, (A.obj i).obj.X.IsGE (-a))
     (hA : ∀ j : ℤ, b < j → j ≤ a →
       IsProZero ((A.map (nonpositiveInclusion R)).map (groups R j))) :
     IsProIso ((postnikovQuotientLevelHom R A b).map L) := by
   have : ∀ i, IsIso (((postnikovQuotientLevelHom R A a).map L).app i) :=
-    fun i => hL _ (postnikovQuotient_quasiIso R (A.obj i).obj a (hB i))
+    fun i => hL (by change (A.obj i).obj.X.IsLE 0; infer_instance)
+      (postnikov_isConnective R (A.obj i).obj a) _
+      (postnikovQuotient_quasiIso R (A.obj i).obj a (hB i))
   have hu := TowerDiagram.isProIso_of_levelwiseIso ((postnikovQuotientLevelHom R A a).map L)
-  have ht := postnikovTransitionLevelHom_isProIso_finite R A L hL b hb a hab hA
+  have ht := postnikovTransitionLevelHom_isProIso_finite_of_connective R A L hL b hb a hab hA
   have hc := hu.comp ht
   rw [← TowerDiagram.levelHom_map_comp, postnikovQuotientLevelHom_transition] at hc
   exact hc
+
+lemma postnikovQuotientLevelHom_isProIso_of_bounded (hL : InvertsQuasiIsos R L)
+    (b : ℤ) (hb : 0 ≤ b) (a : ℤ) (hab : b ≤ a)
+    (hB : ∀ i, (A.obj i).obj.X.IsGE (-a))
+    (hA : ∀ j : ℤ, b < j → j ≤ a →
+      IsProZero ((A.map (nonpositiveInclusion R)).map (groups R j))) :
+    IsProIso ((postnikovQuotientLevelHom R A b).map L) :=
+  postnikovQuotientLevelHom_isProIso_of_bounded_connective R A L
+    (hL.connective R L) b hb a hab hB hA
 
 lemma postnikovQuotientQuasiIsoLocalization_isProIso_of_bounded
     (b : ℤ) (hb : 0 ≤ b) (a : ℤ) (hab : b ≤ a)

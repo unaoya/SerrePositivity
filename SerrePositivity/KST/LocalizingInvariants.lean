@@ -1082,4 +1082,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SpectrumPiNativeConnectiv
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantTowers
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovValueTower
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantQuasiIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteValuePro
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

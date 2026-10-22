@@ -34,7 +34,8 @@ lemma postnikovTransitionLevelHom_comp (a b c : ℤ) (hab : b ≤ a) (hbc : c �
 
 variable {C : Type v} [Category.{w} C] (L : Mon (Complex R) ⥤ C)
 
-lemma postnikovTransitionLevelHom_isProIso_finite (hL : InvertsQuasiIsos R L)
+lemma postnikovTransitionLevelHom_isProIso_finite_of_connective
+    (hL : InvertsConnectiveQuasiIsos R L)
     (b : ℤ) (hb : 0 ≤ b) (a : ℤ) (hab : b ≤ a)
     (hA : ∀ j : ℤ, b < j → j ≤ a →
       IsProZero ((A.map (nonpositiveInclusion R)).map (groups R j))) :
@@ -48,11 +49,19 @@ lemma postnikovTransitionLevelHom_isProIso_finite (hL : InvertsQuasiIsos R L)
   | succ a hab ih =>
     intro hA
     have ha : 0 ≤ a := hb.trans hab
-    have hs := postnikovTransitionLevelHom_isProIso_succ R A L hL a ha
+    have hs := postnikovTransitionLevelHom_isProIso_succ_of_connective R A L hL a ha
       (hA (a + 1) (by omega) le_rfl)
     have ht := ih (fun j hj hja => hA j hj (by omega))
     have hc := hs.comp ht
     rw [← TowerDiagram.levelHom_map_comp, postnikovTransitionLevelHom_comp] at hc
     exact hc
+
+lemma postnikovTransitionLevelHom_isProIso_finite (hL : InvertsQuasiIsos R L)
+    (b : ℤ) (hb : 0 ≤ b) (a : ℤ) (hab : b ≤ a)
+    (hA : ∀ j : ℤ, b < j → j ≤ a →
+      IsProZero ((A.map (nonpositiveInclusion R)).map (groups R j))) :
+    IsProIso ((postnikovTransitionLevelHom R A a b hab).map L) :=
+  postnikovTransitionLevelHom_isProIso_finite_of_connective R A L
+    (hL.connective R L) b hb a hab hA
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

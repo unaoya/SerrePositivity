@@ -29,7 +29,8 @@ def postnikovTransitionLevelHom (a b : ℤ) (hab : b ≤ a) :
 
 variable {C : Type v} [Category.{w} C] (L : Mon (Complex R) ⥤ C)
 
-lemma postnikovTransitionLevelHom_isProIso_succ (hL : InvertsQuasiIsos R L)
+lemma postnikovTransitionLevelHom_isProIso_succ_of_connective
+    (hL : InvertsConnectiveQuasiIsos R L)
     (n : ℤ) (hn : 0 ≤ n)
     (hA : IsProZero ((A.map (nonpositiveInclusion R)).map (groups R (n + 1)))) :
     IsProIso ((postnikovTransitionLevelHom R A (n + 1) n (by omega)).map L) := by
@@ -38,7 +39,9 @@ lemma postnikovTransitionLevelHom_isProIso_succ (hL : InvertsQuasiIsos R L)
   let f := (A.transition hi).hom
   let r := postnikovImageFactorisationBaseProjection R f n hn
   let t := postnikovImageFactorisationTarget R f n hn
-  have hr : IsIso (L.map r) := hL r hq
+  have hr : IsIso (L.map r) := hL
+    (postnikovImageFactorisationObject_isConnective R f n hn)
+    (postnikov_isConnective R (A.obj m).obj n) r hq
   refine ⟨m, hi, inv (L.map r) ≫ L.map t, ?_, ?_⟩
   · change L.map (postnikovTransition R (A.obj m).obj (n + 1) n (by omega)) ≫
       (inv (L.map r) ≫ L.map t) = L.map (postnikovMap R f (n + 1))
@@ -47,9 +50,16 @@ lemma postnikovTransitionLevelHom_isProIso_succ (hL : InvertsQuasiIsos R L)
   · change (inv (L.map r) ≫ L.map t) ≫
       L.map (postnikovTransition R (A.obj i).obj (n + 1) n (by omega)) =
         L.map (postnikovMap R f n)
-    have he := (postnikovImageFactorisationBaseWitness R f n hn).map_eq R L hL
+    have he := (postnikovImageFactorisationBaseWitness R f n hn).map_eq_of_connective R L hL
+      (postnikov_isConnective R (A.obj i).obj n)
     change L.map (r ≫ postnikovMap R f n) =
       L.map (t ≫ postnikovTransition R (A.obj i).obj (n + 1) n (by omega)) at he
     rw [Category.assoc, ← L.map_comp, ← he, L.map_comp, IsIso.inv_hom_id_assoc]
+
+lemma postnikovTransitionLevelHom_isProIso_succ (hL : InvertsQuasiIsos R L)
+    (n : ℤ) (hn : 0 ≤ n)
+    (hA : IsProZero ((A.map (nonpositiveInclusion R)).map (groups R (n + 1)))) :
+    IsProIso ((postnikovTransitionLevelHom R A (n + 1) n (by omega)).map L) :=
+  postnikovTransitionLevelHom_isProIso_succ_of_connective R A L (hL.connective R L) n hn hA
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

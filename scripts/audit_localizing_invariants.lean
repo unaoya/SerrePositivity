@@ -881,7 +881,9 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantFunctor,
     `SerrePositivity.KST.LocalizingInvariants.SpectrumPiNativeConnectivity,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantTowers,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovValueTower]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovValueTower,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteValuePro]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
