@@ -34,7 +34,12 @@
 - 極限側でも相対終対象の元の射影の充満忠実性から、同じ全比較の可逆成分条件を元の全錐の頂点へ延長。
   共変 Hom の極限保存、指定二対象の実比較の反転前後の同値性、元の余錐像の厳密な反転式を合成。
   `pinchedHomMap_equivalence_of_source_colimit` を Ind の始域の単一表示へ適用し、上記の全充満忠実性を得た。
-- 独立集約ビルド成功（7606 jobs）、公理監査 111 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
+  任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
+- κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
+  族と各部分集合の nerve の filtered 性は、元の全 coherent な試験図式について成立。
+  部分集合の nerve は全非退化単体を数える `IsKappaSmall μ` も満たす。圏の濃度変更自身は未証明。
+- 独立集約ビルド成功（7609 jobs）、公理監査 134 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -68,6 +73,9 @@
 - `IsKappaCompactGenerating.of_equivalence`、`isKappaAccessible_iff_equivalence`、`isAccessible_iff_equivalence`
 - `isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
 - `isKappaAccessibleFunctor_iff_equivalence_conjugate`、`isAccessibleFunctor_iff_equivalence_conjugate`
+- `IsCardinalChangeBound`、`exists_regular_cardinalChangeBound_family`
+- `SmallFilteredPieces`、`exists_smallFilteredPiece_containing`、`smallFilteredPieces_cover`
+- `smallFilteredPieces_nerve_isKappaFiltered`、`smallFilteredPiece_nerve_properties`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -77,9 +85,10 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。必要な正則濃度の条件を明示し、元の小さい κ-compact 生成圏から適切な μ-compact 生成圏を構成する。
+- 工程 (1) の濃度変更。元の μ-small coherent 部分図式を、同じ κ-filtered μ-small 部分 poset の nerve へ厳密に因子化する。
+  部分余極限を元の全図式へ接続し、小さい κ-compact 生成圏から適切な μ-compact 生成圏を構成する。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
-  濃度条件の集合論と小さい部分表示の構成を揃え、存在量化した accessibility を共通の濃度で使える界面へ接続する。
+  濃度条件の集合論と部分 poset の filtered 性・小ささは完了。全表示の組立てと μ-compact 性は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約

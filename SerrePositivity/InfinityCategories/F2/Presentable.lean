@@ -14,3 +14,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.IndGeneratorMapp
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctorEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetNerve

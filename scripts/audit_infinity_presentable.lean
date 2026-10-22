@@ -55,3 +55,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_indEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessible_iff_indEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessibleFunctor_iff_equivalence_conjugate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_regular_cardinalChangeBound_family
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFilteredPiece_containing
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_cover
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPiece_nerve_properties
