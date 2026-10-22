@@ -2475,3 +2475,12 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `freeProbeDerivedUnitAmbientHom_eq` はその同じ導来単位成分と元の自由単位辺の分解像の一致。
 `freeProbeDerivedUnitNormalizedHom_family` は同じ導来単位成分の前合成を任意 K の正規化 Hom の全族に同定する。
 実屋根評価との幾何的照合・標準 U 単位誘導射自体の弱同値性・∞ 極限保存・G1′ は未完了。
+
+`normalizedTensorUniversalSimplex` は同じ X⊗NΔn の恒等射から作る実 dg nerve の普遍 Hom 族。
+`normalizedTensorUniversalSimplex_evaluation` と `_naturality` は元の評価射と全ての面・退化への厳密な式。
+`normalizedTensorUniversalSimplex_augmentation` は同じ augmentation の像が明示した零次数像の定数族となることを示す。
+その `normalizedTensorAugmentationVertex` と恒等辺との同定は未証明である。
+`gammaDegreeZeroIso` は同じ Moore 零次数包含と元の DK counit による実 Γ の零次数同型。
+`doldKanAdjunction_zero_eval`・`standardDoldKanModuleIso_zero_eval`・`normalizedSimplexHomEquiv_zero_eval` は
+元の実 DK・標準 Hom・正規化 Hom の零次数を、同じ正規化鎖射・自由生成元で評価する。
+恒等辺への零次数同定・実屋根評価との全族比較・標準 U 単位誘導射の弱同値性・∞ 極限保存・G1′ は未完了。

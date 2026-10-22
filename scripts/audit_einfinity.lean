@@ -8924,6 +8924,30 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryAmbientVertexIso,
       `SerrePositivity.EInfinity.FrameHom.functorHomEvaluate_homotopy_transport]
 
+@[noinline] private def e2RequiredBatch171 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.doldKanAdjunction_zero_eval,
+      `SerrePositivity.EInfinity.ComplexLimits.mooreDegreeZeroIso,
+      `SerrePositivity.EInfinity.ComplexLimits.mooreDegreeZeroIso_naturality,
+      `SerrePositivity.EInfinity.ComplexLimits.mooreDegreeZeroIso_inv_naturality,
+      `SerrePositivity.EInfinity.ComplexLimits.gammaDegreeZeroIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainsHomEquiv_zero_eval,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexHomEquiv_zero_eval,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomRepresentable_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.ulift_map_const,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentationVertex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomPinchedSimplex_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomRepresentable,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomRepresentable_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomRepresentable_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomPinchedSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomPinchedSimplex_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomPinchedSimplex_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_evaluation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_naturality,
+      `SerrePositivity.EInfinity.ComplexLimits.standardDoldKanModuleIso_zero_eval]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8957,7 +8981,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21706,3 +21730,74 @@ example (X : Complex A) (B : (BarrattEccles.operad A).Algebra)
 
 end
 end e2UnitComponentFixtures
+
+
+section e2UniversalSimplexFixtures
+noncomputable section
+universe e2UniversalU e2UniversalV
+open CategoryTheory AlgebraicTopology SSet
+open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.EInfinity.ComplexLimits DoldKanComparison
+open SerrePositivity.EInfinity.Surjection
+open scoped Simplicial
+variable (A : Type e2UniversalU) [CommRing A]
+
+example (X Y : Complex A) (n : SimplexCategory)
+    (g : (normalizedSimplexTensor A X).obj n ⟶ Y) :
+    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap (homPostcompose X g) =
+      normalizedTensorHomPinchedSimplex A X Y n g :=
+  normalizedTensorUniversalSimplex_evaluation A X Y n g
+
+example (X : Complex A) {n m : SimplexCategory} (f : n ⟶ m) :
+    SSet.uliftFunctor.{e2UniversalU + 1, e2UniversalU}.map (SSet.stdSimplex.map f) ≫
+      normalizedTensorUniversalSimplex A X m =
+    normalizedTensorUniversalSimplex A X n ≫
+      pinchedHomChainMap (homPostcompose X ((normalizedSimplexTensor A X).map f)) :=
+  normalizedTensorUniversalSimplex_naturality A X f
+
+example (X : Complex A) (n : SimplexCategory) :
+    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap
+      (homPostcompose X ((normalizedSimplexTensorAugmentation A X).app n)) =
+    SSet.const (normalizedTensorAugmentationVertex A X) :=
+  normalizedTensorUniversalSimplex_augmentation A X n
+
+example (X : Complex A) (n : SimplexCategory) :
+    normalizedTensorHomRepresentable A X X n ((normalizedSimplexTensorAugmentation A X).app n) =
+      SSet.const ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌) :=
+  normalizedTensorHomRepresentable_augmentation A X n
+
+example (L : ChainComplex (ModuleCat.{e2UniversalU} A) ℕ) :
+    ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ SimplicialObject (ModuleCat A)).obj L).obj
+      (Opposite.op ⦋0⦌) ≅ L.X 0 := gammaDegreeZeroIso L
+
+example (W : SimplicialObject (ModuleCat.{e2UniversalU} A))
+    (L : ChainComplex (ModuleCat A) ℕ)
+    (f : (normalizedMooreComplex (ModuleCat A)).obj W ⟶ L) :
+    (((Abelian.DoldKan.equivalence : SimplicialObject (ModuleCat A) ≌
+      ChainComplex (ModuleCat A) ℕ).toAdjunction.homEquiv W L) f).app (Opposite.op ⦋0⦌) ≫
+      (gammaDegreeZeroIso L).hom = (mooreDegreeZeroIso W).inv ≫ f.f 0 :=
+  doldKanAdjunction_zero_eval W L f
+
+example (S : SSet.{0}) (H : Complex A) (f : (BarrattEccles.normalizedFunctor A).obj S ⟶ H) :
+    (normalizedChainsHomEquiv A S H f).app (Opposite.op ⦋0⦌) ≫
+      (gammaDegreeZeroIso (H.truncLE' (ComplexShape.embeddingUpIntLE 0))).hom =
+    (mooreDegreeZeroIso ((BarrattEccles.linearization A).obj S)).inv ≫
+      (normalizedChainsTruncationHomEquiv A S H f).f 0 := normalizedChainsHomEquiv_zero_eval A S H f
+
+example {D : Type e2UniversalV} [DGCategory A D] (x y : D) :
+    (standardDoldKanModuleIso (R := A) x y).hom.app (Opposite.op ⦋0⦌) ≫
+      (gammaDegreeZeroIso (connectiveHomComplex (R := A) x y)).hom =
+    (mooreDegreeZeroIso (standardModule (R := A) x y)).inv ≫
+      (standardNormalizationIso (R := A) x y).hom.f 0 := standardDoldKanModuleIso_zero_eval x y
+
+example (H : Complex A)
+    (f : (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj ⦋0⦌) ⟶ H) :=
+  normalizedSimplexHomEquiv_zero_eval A H f
+
+example (X : Complex A) : normalizedTensorAugmentationVertex A X =
+    (normalizedTensorPinchedIso A X X).hom.app (Opposite.op ⦋0⦌)
+      (ULift.up ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌)) := rfl
+
+end
+end e2UniversalSimplexFixtures
