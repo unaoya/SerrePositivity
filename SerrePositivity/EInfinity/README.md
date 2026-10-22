@@ -2234,8 +2234,17 @@ Hom を上げた反対要素圏の nerve との厳密な同型で、元の二つ
 `cofibrantSourceRoofCornerEvaluation` は任意可換環の元の corner から、この写像空間への実弱同値。
 `cofibrantSourceRoofProductHomMap` は元の積単体からこの同じ写像空間への具体的な射。
 その弱同値性は ProductCornerMap の弱同値性と同値であり、得られれば実 slice の弱可縮性と
-屋根比較の left cofinal 性が従う。その射自身と既存 Kan Hom 高次比較との全単体の照合、
-left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+屋根比較の left cofinal 性が従う。`ProductSimplexProjection.projection_weak` は任意の M で元の M×Δ[n]→M の弱同値性。
+`ProductSimplexLiftedOver.firstNerveMap_weak` は同じ Hom ULift の要素圏の第一射影自身の弱同値性。
+元の終端 augmentation と全単体で可換であり、M の Kan 性や非空性を要求しない。
+`cofibrantSourceRoofProductDegreeHammockMap_weak` は元の第一射影・sourceFrame 比較・
+D_n→X の元の augmentation による前合成を接続した、指定次数の実 hammock Hom への弱比較。
+`kanHammockHomPinchedMap` は元の Kan hammock Hom から同じ q の頂点の pinched Hom への弱比較。
+`cofibrantKanHammockInclusionEquivalence` は元の包含を同じ Ex∞ で送った実射を順方向に持つ。
+その逆と比較を使う `cofibrantHammockPinchedReferenceMap` は弱同値で、包含との全関手同型を保持。
+`cofibrantSourceRoofProductPinchedReferenceMap_weak` は実 ProductHomMap と同じ始終域を持つ
+具体的な基準射の弱同値性。両射の全ホモトピーが得られれば実屋根比較の cofinal 性が従う。
+そのホモトピー本体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
