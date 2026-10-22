@@ -216,3 +216,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramJointValueIso_inv_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightValueRecovery_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightValueRecovery_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionTotalForget
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffold_over_product
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffold_value
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffoldValueMap_eq
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffoldValueMap_trivialKanFibration

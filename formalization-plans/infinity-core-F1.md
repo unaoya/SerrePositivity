@@ -41,8 +41,11 @@
   `presheafDiagramRightStrict` は任意の coherent 前層図式の共同 unstraightening から作る strict right fibration 図式。
   `presheafDiagramJointEvaluation_value` は共同評価の添字での制限と元の前層値そのものの等式。
   `presheafDiagramRightValueRecovery` は strict 値から元の値の小さい right 復元への底上の射で、同値性も証明。
-  一般 coherent 前層図式の大域分類比較、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
-- 独立集約 6647 jobs、公理監査 1175 宣言、標準三公理のみ。
+  `underSectionScaffold` は under 切断の replacement から元の共同全空間への一つの大域射。
+  `underSectionScaffold_over_product` は元の積の両射影を保つ底上の等式。
+  `underSectionScaffoldValueMap_eq` はその同じ大域射の各値の制限と既存評価の厳密な一致。制限射は trivial Kan。
+  この replacement と strict 分類図式との大域比較、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
+- 独立集約 6652 jobs、公理監査 1199 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 
 ### 残り（依存順）
@@ -73,6 +76,7 @@
 - `terminalSubcomplexBaseMap_isRightCofinal`、`exists_cofinal_kappaFiltered_poset`
 - `underSectionStrictDiagram`、`underSectionEvaluate`、`underSectionEvaluate_isQCatEquivalence`
 - `presheafDiagramRightStrict`、`presheafDiagramRightValueRecovery_isQCatEquivalence`
+- `underSectionScaffold_over_product`、`underSectionScaffoldValueMap_eq`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -102,7 +106,11 @@
 次はその nerve 上の一般 coherent 前層図式を strict right fibration 図式へ移す、同じ大域分類値の比較を構成する。
 通常の under 圏上のパラメータ付き相対切断の strict 図式と、同じ各値への底上の評価の同値性まで証明済み。
 反対化した strict right fibration 図式と、元の共同 unstraightening から各指定値への底上の比較同値まで証明済み。
-次はパラメータ付き切断を元の添字上の strict transport へ自然に写し、scaffold により大域比較を構成する。
+パラメータ付き切断の全空間の図式を元の添字上の strict transport へ自然に写し、scaffold により元の共同全空間への
+大域射を構成済み。元の積の両射影を保ち、各値の制限は元の同じ trivial Kan 評価に厳密に一致する。
+次はこの replacement と weighted nerve 側の strict 分類図式を、元の前層変数の底を保つ大域比較で結ぶ。
+底上の scaffold 比較の同値性と分類への移送を示し、元の coherent 前層図式との一つの FunctorIso を実現する。
+replacement の全空間が left fibration であるとは仮定しない。既存の scaffold span と相対比較を再利用する。
 各値の同値だけで大域の比較や元の余錐の比較を代用しない。
 元の図式との全変換を実現し、同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。
 原典は HTT 5.3.5.3 と添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。

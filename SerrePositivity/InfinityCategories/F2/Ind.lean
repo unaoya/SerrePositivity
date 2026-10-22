@@ -120,3 +120,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointFibr
 public import SerrePositivity.InfinityCategories.F2.Ind.UncurryGraphVertex
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointValue
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramValueRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.ParametrizedSectionsForget
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionTotalDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffold
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldBase
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldValue
