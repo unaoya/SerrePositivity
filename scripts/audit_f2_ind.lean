@@ -39,6 +39,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationGlobalComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationConstantComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationValueComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafRightFiberPointedIso_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafRightFiberValueEquivalence_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityRestrictedGlobalValueMap_factorization
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityRestrictedSmallValueMap_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityPresentation
+#check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_of_kappaFiltered_elements
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

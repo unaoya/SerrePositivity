@@ -1,67 +1,49 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。次は F2N-2（Indκ）を F1b から引き取る。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。F2N-2（Indκ）の (a) 密度と (b) 最小閉包の構成を完了し、(c) を進める。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ：F2N-2（2026-10-22）
 
 ### 現在地
 
 - F1-4・F1-5・F1-3b は `6f10976ea` まで完了。F1 集約 7661 jobs、公理監査 16236 宣言、標準三公理のみ。
-- **F2N-2(a) 進行中**：元の小さい right unstraightening を添字とする同じ Yoneda 図式を固定。
-  `presheafElementsYonedaDiagram_vertex` で各項が元の表現可能前層であることを照合。
-  同じ図式の native な各点余極限候補とは別に、元の F を頂点とする指定密度余錐を構成。余極限性は未証明。
-- `presheafYonedaSliceCocone` は元の F 自体を指定頂点とする標準全余錐。
-  `presheafYonedaSliceFiberValueEquivalence` は同じ射影の各 fiber を元の F(x) と比較する。
-  `presheafElementsYonedaSliceComparison` は、小さい元の圏から同じ slice への一つの底上の比較。
-  その比較から余錐を戻すと、構成した同じ `presheafDensityCocone` と厳密に一致する。
-- **(a) の大域評価**：right fibration の相対 twisted arrow 右端比較の全境界充填を証明。
-  `twistedArrowRightSection` は底の全 twisted arrow と指定終点を厳密に保つ一つの切断。
-  `presheafTwistedElementsEvaluation` は同じ小さい元の圏を終点とする全族から元の F への pointed 評価。
-  共同 Hom の底変換の復元同値を介して相対射を延長し、c1 で実際の自然変換へ実現。
-  `presheafDensityCoconeRealization` を F2 の両端固定 fat join 実現へ精密化。同じ全変換の円柱への往復も照合。
-  元の大域評価との相対写像空間内の同型も保存。比較の fiber 同値性と同じ密度余錐の余極限性が残る。
-- **(a) の全空間側の弱同値**：`twistedIdentityFiberEvaluation_isQCatEquivalence` は同じ大域切断の恒等点上の作用を判定。
-  `twistedSourceElementsComparison_identity` で、始対象上の標準 fiber 包含と同じ恒等点包含を厳密に照合。
-  `twistedSourceElementsEvaluation_isWeakHomotopyEquivalence` は始点固定の全族の同じ評価の弱同値性。
-  まだ native 密度余錐の `F2.coconeFiberMap` と同定していないので、密度定理は未完。
-- **native 評価との接続**：`presheafDensityEvaluationFiberIso` は、同じ評価余錐の実際の
-  `F2.coconeFiberValueMapAt` を `presheafDensityEvaluatedFiberMap` へ比較する関手同型。
-  後者は元の大域密度変換を評価し、元の unstraightening 写像空間比較で写したもの。
-  始点固定の全族の弱同値との接続が残る。余錐の余極限性はまだ主張しない。
-  `presheafDensityEvaluationReconstruction` は同じ始点固定の全族から同じ評価図式への前合成同値。
-  `presheafDensityEvaluationGlobalComparisonIso` はその上で同じ `imageIso` と `evaluationIso` を合成。
-  `presheafDensityEvaluationConstantComparisonIso` で同じ定値標的へ戻し、
-  `presheafDensityEvaluationValueComparisonIso` は同じ実際の評価 fiber 写像の前合成を
-  `presheafDensityRestrictedGlobalValueMap` へ比較する関手同型。集約 6176 jobs・監査 624 宣言、標準三公理のみ。
-- **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
+- **F2N-2(a) 完了**：`presheafDensityCocone_isColimit` は元の前層 F を指定頂点とする、
+  元の小さい right unstraightening の元の圏上の表現可能図式の同じ native 密度余錐の余極限性。
+  `presheafDensityCocone_vertex` と `presheafElementsYonedaDiagram_vertex` で指定頂点と各項を照合。
+  `presheafDensityPresentation` は元の F 自体の同じ小さい余極限表示。HTT 5.1.5.3。
+- **(a) の比較の整合性**：元の大域 twisted-arrow 切断の評価を c1 で一つの全変換に実現。
+  `presheafDensityEvaluationValueComparisonIso` は実際の評価 fiber 値写像の同じ復元射上での関手同型。
+  `presheafDensityRestrictedGlobalValueMap_factorization` はその同じ値写像を、証明済みの始点固定評価と
+  元の fiber 値比較の合成へ厳密に同定する。小さい弱同値を必要な持ち上げた Kan 標的への前合成同値へ移し、
+  元の評価余錐の余極限性を検出。別の余錐の存在や頂点だけの同値で代用しない。
+- `presheafElementsYonedaSliceComparison` は同じ小さい元の圏から元の Yoneda slice への底上の比較。
+  その標準余錐を戻すと同じ `presheafDensityCocone` に厳密に一致する。
+- **(b) 完了**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
-  `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
+  `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` は内在する小さい κ-filtered 余極限と包含の保存・検出。
   閉包の最小性は頂点条件の包含の主張であり、(d) の関手の延長の普遍性ではない。
+- **(c) 進行中**：`isIndVertex_of_kappaFiltered_elements` は元の right unstraightening の元の圏が
+  κ-filtered なら、同じ密度余錐によって最小閉包に属する方向。任意の κ で成立。
+  逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
+- 独立集約 6185 jobs、公理監査 684 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
 ### 残り（依存順）
 
-1. **(a)** 元の F を、同じ小さい元の圏の Yoneda 図式の余極限として実現。HTT 5.1.5.3。24〜48時間（暫定）。
-2. **(b)** 最小閉包としての構成と包含による小さい κ-filtered 余極限の保存・検出を実装済み。原典の右 fibration 定義との一致は (c)。
-3. **(c)** 各 Indκ 対象の表現可能前層の κ-filtered 余極限表示と、右 fibration 定義との一致。HTT 5.3.5.4。16〜40時間（暫定）。
+1. **(a)** 完了。元の F 自体の小さい表現可能図式による密度。HTT 5.1.5.3。
+2. **(b)** 完了。最小閉包としての構成・Yoneda の因子化・小さい κ-filtered 余極限の保存と検出。
+3. **(c)** Indκ 対象の単一 κ-filtered 表示と右 fibration 定義との一致。逆方向が残る。HTT 5.3.5.4。16〜40時間（暫定）。
 4. **(d)** κ-filtered 余極限を保つ延長の実際の制限関手の同値。HTT 5.3.5.10、Kerodon 9。32〜80時間（暫定）。
 
 ### 主要宣言（名前のみ）
 
 - `presheafElementsYonedaDiagram`、`presheafElementsYonedaDiagram_vertex`
-- `presheafElementsColimitCocone`、`presheafElementsColimitCocone_isColimit`
-- `presheafYonedaSliceProjection`、`presheafYonedaSliceCocone`、`presheafYonedaSliceCocone_vertex`
-- `presheafYonedaSliceFiberValueEquivalence`、`presheafElementsCoconeOfComparison`
-- `relativeEdgewiseRightComparison_trivialKanFibration`、`twistedArrowSourceLift_projection`
-- `presheafTwistedElementsEvaluation`、`presheafTwistedElementsEvaluation_projection`
-- `presheafDensityJointHomotopy`、`presheafDensityCocone`、`presheafDensityCocone_vertex`
-- `presheafElementsYonedaSliceComparison`、`presheafElementsYonedaSliceComparison_cocone`
-- `twistedSourceElementsEvaluation_identity`、`twistedSourceElementsEvaluation_isWeakHomotopyEquivalence`
-- `presheafDensityEvaluationCoconeTransformationIso`、`presheafDensityEvaluationFiberIso`
-- `presheafDensityEvaluationValueComparisonIso`、`presheafDensityRestrictedGlobalValueMap`
-- `presheafDensityJointRestriction_vertex`、`presheafDensityEvaluationReconstruction_isPrecompositionEquivalence`
-- `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
+- `presheafDensityCocone`、`presheafDensityCocone_vertex`、`presheafDensityCocone_isColimit`
+- `presheafDensityPresentation`、`presheafDensityEvaluationCocone_isColimit`
+- `presheafDensityEvaluationValueComparisonIso`、`presheafDensityRestrictedGlobalValueMap_factorization`
+- `presheafDensityEvaluationReconstruction_isPrecompositionEquivalence`、`presheafElementsYonedaSliceComparison`
+- `isIndVertex_of_kappaFiltered_elements`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -81,25 +63,18 @@
 
 ### 既知の問題
 
-- (a) の余極限の存在だけでは、その頂点が F である密度定理を結論しない。
-- 最小閉包の定義だけでは (c) の単一の κ-filtered 表示も、HTT の右 fibration 定義との一致も結論しない。
+- 最小閉包の定義だけでは (c) の単一 κ-filtered 表示も、HTT の右 fibration 定義との一致も結論しない。
 - (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
-- 原典のモデル構造による証明は輸入せず、既存の ∞ 圏的比較と各点構成で接続する。
+- 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使った。
 
 ### 次の一手
 
-(a)：`presheafDensityEvaluationFiberIso` の標的 `presheafDensityEvaluatedFiberMap F x` を、
-`twistedSourceElementsEvaluation (smallRightUnstraighteningProjection F) x` へ比較する。
-`presheafDensityEvaluationValueComparisonIso` で同じ復元射上の実際の値写像まで接続済み。
-`presheafDensityRestrictedGlobalValueMap` を元の `twistedSourceElementsEvaluation` と fiber 値の比較の合成へ照合。
-元の反転 fiber と小さい left unstraightening の fiber は全空間の反転同型で比較する。
-`smallLeftUnstraighteningFiberValueEquivalence` と大きい比較の可換式を使い、同じ値への弱同値を得る。
-その後は同じ評価復元射の前合成同値性と上の関手同型で実際の fiber 写像へ戻す。
-同じ `presheafDensityCocone F` の各評価の余極限性を示し、前層の評価による検出で密度を結論する。
-評価後の同じ `F2.coconeFiberMap` の弱同値性を示せば、`F2.isColimitCone_of_coconeFiberMap_weakEquivalence` が使える。
-宇宙を上げる際は、小さい Kan 標的への前合成同値と `F2.ulift_pre_homotopyEquivalence` の利用を優先する。
-同じ全余錐を (c) の指定表示へ使い、別の余極限の存在や各点だけの同値で密度を主張しない。
-報告後は承認を待たず (a) を続行する。
+(c)：前層の元の right unstraightening の元の圏が κ-filtered であるという頂点条件を定める。
+正則 κ の下で、その条件の同型閉性と小さい κ-filtered 余極限閉性を示す。
+`isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
+κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
+その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。
+報告後は承認を待たず (c) を続行する。
 
 ## F1 の完了済み範囲と第 II 段の再開点
 
