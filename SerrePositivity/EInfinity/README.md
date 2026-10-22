@@ -2219,7 +2219,15 @@ e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単�
 `cofibrantSourceRoofProductIso` はこの次数モデルと、元の sourceFrameHom×Δ[n] の
 Hom を上げた反対要素圏の nerve との厳密な同型で、元の二つの射影を保つ。
 `MixedNerveCostructuredPullback.pullbackIso` は対象宇宙だけが異なる元の関手にも使える。
-実 slice の弱可縮性・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`pointSliceCornerMap_fibration` は左ファイブレーションの指定点への全錐から、
+元の始点と底の錐を保持する corner への射の全ホーンを充填する。
+`cofibrantSourceRoofSliceDegreeMap_fibration` は元の次数比較射そのものに適用する。
+`cofibrantSourceRoofSliceProductMap` は元の積単体の nerve へ戻す Kan fibration で、
+始域・Over の両射影を保持し、その各 fiber は Kan 複体となる。
+`roofQuillenDegreeCorner_isPullback` は実 slice 全体の厳密な引き戻し表示。
+`cofibrantSourceRoofProductCornerMap` は同じ積単体から実 corner への比較射。
+この射の弱同値性から実 slice の弱可縮性と屋根比較の left cofinal 性が従うことは証明済み。
+その弱同値性自体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。

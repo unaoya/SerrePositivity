@@ -1907,3 +1907,9 @@ public import SerrePositivity.EInfinity.FrameHom.FrameRoofTarget
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveCostructuredPullback
 public import SerrePositivity.EInfinity.FrameHom.ProductSimplexElements
 public import SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver
+
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSliceCriterion
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSliceFibration
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility
+public import SerrePositivity.EInfinity.FrameHom.PointSliceCornerFibration
