@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber
+import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval
+import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierFiberEquivalence
+import SerrePositivity.InfinityCategories.Stable.LoopConeSourceInitial
+import SerrePositivity.InfinityCategories.Stable.VertexFiberSwap
+import SerrePositivity.InfinityCategories.Stable.FixedApexConeFiber
+import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexComparison
 import SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily
 import SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality
 import SerrePositivity.InfinityCategories.Stable.TerminalRightFibrationComparison
@@ -7432,6 +7439,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber,
+    `SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval,
+    `SerrePositivity.InfinityCategories.Stable.LoopConeClassifierFiberEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.LoopConeSourceInitial,
+
+    `SerrePositivity.InfinityCategories.Stable.VertexFiberSwap,
+    `SerrePositivity.InfinityCategories.Stable.FixedApexConeFiber,
+    `SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexComparison,
+
 
     `SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily,
     `SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality,
