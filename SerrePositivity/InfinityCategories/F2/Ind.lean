@@ -175,3 +175,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity
 public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyColimitValueDetection
 public import SerrePositivity.InfinityCategories.F2.Ind.DensityHomotopyDetection
 public import SerrePositivity.InfinityCategories.F2.Ind.RestrictionInvertibilityDetection
+public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceFiberProjection
+public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceFiberMap
+public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationFiberCriterion
+public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceValue
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityIdentityValue

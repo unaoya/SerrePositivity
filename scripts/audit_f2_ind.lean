@@ -316,3 +316,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.continuousHomotopy_vertex_isInvertible
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_reflects_isInvertibleEdge
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceFiberMappingIso_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceMapping_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isQCatEquivalence_of_rightFibration_fibers
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceValue
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_isQCatEquivalence_of_values
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityValue_factorization
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityValue_isQCatEquivalence
