@@ -13923,3 +13923,77 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms sigmaYonedaSmallRelativeComparison_isQCatEquivalence
 #check @sigmaYonedaFiberEvaluation_eq_relative
 #print axioms sigmaYonedaFiberEvaluation_eq_relative
+#check @twistedArrowSourceEdgeOrderHom
+#print axioms twistedArrowSourceEdgeOrderHom
+#check @twistedArrowTargetEdgeOrderHom
+#print axioms twistedArrowTargetEdgeOrderHom
+#check @edgewiseWeight_reindex_comp_map
+#print axioms edgewiseWeight_reindex_comp_map
+#check @twistedArrowConstantEdgeOrderHom
+#print axioms twistedArrowConstantEdgeOrderHom
+#check @twistedArrowSourceEdge_zero_face
+#print axioms twistedArrowSourceEdge_zero_face
+#check @twistedArrowSourceEdge_one_face
+#print axioms twistedArrowSourceEdge_one_face
+#check @twistedArrowTargetEdge_zero_face
+#print axioms twistedArrowTargetEdge_zero_face
+#check @twistedArrowTargetEdge_one_face
+#print axioms twistedArrowTargetEdge_one_face
+#check @twistedArrowEdgeVertex
+#print axioms twistedArrowEdgeVertex
+#check @twistedArrowSourceEdgeSimplex
+#print axioms twistedArrowSourceEdgeSimplex
+#check @twistedArrowTargetEdgeSimplex
+#print axioms twistedArrowTargetEdgeSimplex
+#check @twistedArrowConstantEdgeOrderHom_comp
+#print axioms twistedArrowConstantEdgeOrderHom_comp
+#check @twistedArrowSourceEdgeSimplex_src
+#print axioms twistedArrowSourceEdgeSimplex_src
+#check @twistedArrowSourceEdgeSimplex_tgt
+#print axioms twistedArrowSourceEdgeSimplex_tgt
+#check @twistedArrowTargetEdgeSimplex_src
+#print axioms twistedArrowTargetEdgeSimplex_src
+#check @twistedArrowTargetEdgeSimplex_tgt
+#print axioms twistedArrowTargetEdgeSimplex_tgt
+#check @twistedArrowSourceEdge
+#print axioms twistedArrowSourceEdge
+#check @twistedArrowTargetEdge
+#print axioms twistedArrowTargetEdge
+#check @twistedArrowSourceEdgeSimplex_right
+#print axioms twistedArrowSourceEdgeSimplex_right
+#check @twistedArrowTargetEdgeSimplex_left
+#print axioms twistedArrowTargetEdgeSimplex_left
+#check @twistedArrowTargetEdgeSimplex_right
+#print axioms twistedArrowTargetEdgeSimplex_right
+#check @twistedArrowSourceEdgeSimplex_left
+#print axioms twistedArrowSourceEdgeSimplex_left
+#check @twistedArrowOppositeEdge
+#print axioms twistedArrowOppositeEdge
+#check @twistedArrowSourceEdge_projection
+#print axioms twistedArrowSourceEdge_projection
+#check @twistedArrowTargetEdge_projection
+#print axioms twistedArrowTargetEdge_projection
+#check @twistedArrowSourceEdgeLift
+#print axioms twistedArrowSourceEdgeLift
+#check @twistedArrowTargetEdgeLift
+#print axioms twistedArrowTargetEdgeLift
+#check @twistedArrowSourceEdgeLift_fst
+#print axioms twistedArrowSourceEdgeLift_fst
+#check @twistedArrowTargetEdgeLift_fst
+#print axioms twistedArrowTargetEdgeLift_fst
+#check @twistedArrowPointedDisplay_identity
+#print axioms twistedArrowPointedDisplay_identity
+#check @twistedArrowPointedEdgeVertex
+#print axioms twistedArrowPointedEdgeVertex
+#check @twistedArrowPointedSourceEdge
+#print axioms twistedArrowPointedSourceEdge
+#check @twistedArrowPointedTargetEdge
+#print axioms twistedArrowPointedTargetEdge
+#check @twistedArrowPointedSourceEdge_edge
+#print axioms twistedArrowPointedSourceEdge_edge
+#check @twistedArrowPointedTargetEdge_edge
+#print axioms twistedArrowPointedTargetEdge_edge
+#check @twistedArrowPointedSourceEdge_projection
+#print axioms twistedArrowPointedSourceEdge_projection
+#check @twistedArrowPointedTargetEdge_projection
+#print axioms twistedArrowPointedTargetEdge_projection
