@@ -2335,7 +2335,16 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `cAlgLocalizationSource_isLocalization` と
 `cAlgLocalizationPrecomposition_isQCatEquivalence` は既存 CAlg_R への元の局所化写像について、
 任意 quasicategory 標的の全反転関手 ∞ 圏への前合成が同値であることを証明する。
-γ2 e は完成。既存 D(R) への U・離散対象・∞ 極限・G1′ は後続。
+γ2 e は完成。
+`complexSemifreeResolutionInfinity` は同じ一点 dg 加群の実出力分解を既存 D(R) へ評価する。
+`complexSemifreeResolutionInfinity_invertsQuasiIso` は元の複体の準同型辺の反転。
+`complexSemifreeResolutionAugmentationHomotopy` は元の全複体 dg nerve への全 augmentation。
+`cofibrantAlgebraUnderlyingDerivedSource_inverts` は元の通常 E 代数忘却の実反転関手。
+`cAlgForgetDerived : CAlg_R A ⟶ derivedInfinityCategory A` は既存 D(R) への実忘却 ∞ 関手 U。
+`cAlgForgetDerived_sourceIso` は元の通常忘却の D(R) 値解像への全関手同型。
+`cAlgForgetDerived_valueVertexIso` は任意の元の E 代数の像を同じ実半自由複体へ比較する。
+`cAlgForgetDerivedValueAugmentation_quasiIso` はその同じ複体から元の底の複体への擬同型。
+U の離散入力・離散性・∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
