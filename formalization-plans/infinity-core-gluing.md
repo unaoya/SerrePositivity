@@ -44,7 +44,8 @@
   評価の両包含を同定し、右包含では既存の点ごとの同値の順射との一致を証明。左評価は指定 native 境界元の全次数後合成と同定。
   円錐交換・左右分解・kernel 比較の左包含の第一・第三成分と負符号を証明。
   kernel 左包含の source・replacement は元の Hom 射影・Yoneda・同じ加群 Hom 円錐左包含と厳密に一致。
-  指定 kernel 零 cochain の両成分を単位への制限で回収し、第三成分零を cochain と同じ次数 −1 元の両方で証明。
+  指定 kernel 境界元の両成分は同じ実 `moduleConeInlElement`。第三成分零と符号付き合成公式を使い、左包含の全次数作用を回収。
+  `dgGluingHomConeKernelIso_inl` により標準 kernel Hom 円錐の左包含と指定境界元の後合成を cochain 全体として厳密に同定。
   左包含での既存同値との一致、加群射の同値性、零・整数シフトの閉性は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
@@ -55,7 +56,7 @@
 - `dgGluingHomRepresentableIso`・`dgGluingHomRepresentableIso_left`・`dgGluingHomRepresentableIso_right`
 - `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`
 - `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`・`dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
-- `dgGluingConeSquareMatrix_eq`・`dgGluingConeCoconeIso`・`dgGluingCoconeExtractConeIso_inl_snd`
+- `dgGluingConeSquareMatrix_eq`・`dgGluingConeCoconeIso`・`dgGluingHomConeKernelIso_inl`
 - `dgGluingComposition_comparison`・`dgGluingPostcomposition_comparison`・`dgGluingPostcomposition_fst`
 - `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
 - `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
@@ -73,7 +74,7 @@
 - `dgGluingConeNullCochain`・`dgGluingConeModuleNullElement_boundary`・`dgGluingConeModuleMap`・`dgGluingChosenConeModuleMap`
 - `dgGluingConeModuleMapEvaluation_inl`・`dgGluingConeModuleMapEvaluation_inr_comparison`・`dgGluingConeNullElement_kernel`
 - `dgGluingHomConeKernelIso_inl_source`・`dgGluingHomConeKernelIso_inl_replacement`・`dgGluingHomConeKernelIso_inl_snd`
-- `dgGluingKernelConeNullCochain_source`・`dgGluingKernelConeNullCochain_replacement`・`dgGluingKernelConeNullElement_primitive`
+- `dgGluingKernelConeNullElement_source`・`dgGluingKernelConeNullElement_replacement`・`dgGluingKernelConeNullAction_primitive`
 
 ### 残り（依存順）
 1. (a) 残り：零・シフト・cone の全 dg 自然な表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -92,15 +93,14 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- 指定 kernel 零 cochain の単位への両成分を実 `moduleConeInlElement` と同定し、第三成分零と合わせて全次数後合成を回収。
+- `dgGluingHomConeKernelIso_inl` を同じ実代表射の後合成と native/kernel Hom 同型へ接続。
   指定 cochain を保持する `dgGluingConeModuleMap` の左評価を既存の点ごとの同値の順射へ接続し、円錐の両包含による一意性を使う。
   加群射の点ごとの準同型性から射影的加群間の K の同型へ接続し、零・整数シフトも構成する。
   任意の零ホモトピーの選び直しや点ごとの Hom 同値だけでは、全 dg 自然な円錐表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 127モジュール・集約のビルド成功（5043 jobs）、公理監査2478宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom・主経路の `ModelCategory` 仮定なし。今回の公開20署名を検査済み。
-  新規10モジュール、集約・監査・本計画の専有13パスだけを保存。他レーンの差分は含めない。
+- 138モジュール・集約ビルド成功（5054 jobs）、公理監査2619宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開19署名を検査済み。新規11モジュール、集約・監査・本計画の専有14パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
