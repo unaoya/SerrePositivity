@@ -28,12 +28,15 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   firstEndpointComparison_eq_symm は中間比較＝元の第一指定始域比較の逆を証明。
   specifiedTriangle_heq_threeEdges は元の相対三角形比較の前合成を、同じ全実三角形の
   長辺比較≫第二比較の逆≫第一比較の逆の native 後合成へ値まで同定。
-  元の零面・固定面の全持ち上げに適用済み。共有辺の始点・実 prism の一致から指定値を保つ補題も証明。
-  未完：四面の共有辺の同定・三関係、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
+  元の零面・固定面への適用と、六共有辺の実 prism・実終点・元の指定比較の一致を証明。
+  始点が動く三辺も実始点を厳密に同定。元の三角形比較は全相対始域で自然で、その成分を元の前合成へ回収。
+  sequentialPostComparison_app_eq_threeEdges は同じ native 後合成の頂点で三辺の式を厳密に保持。
+  functorTetrahedronIso_square_of_edge_comparisons は第零面の自然性と四面の式から共有比較を相殺する一般補題。
+  未完：四面の頂点表示の正規化・元の三関係への具体化、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
-  検証：三集約同時ビルド9406 jobs、公理監査11188宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  三辺による元の指定三角形比較と零面・固定面への適用を含む追加51明示宣言を型検査。
+  検証：三集約同時ビルド9440 jobs、公理監査11427宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  六共有辺・指定三角形比較の厳密な三辺表示・自然性・相殺補題を含む追加49明示宣言を型検査。
   追加 ModelCategory 仮定・F1/F1B と F2 のソースの名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -63,7 +66,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 - `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso` / `F2.coherentCospanConeNativeComparison` / `F2.coherentCospanConeValuePathHomotopy_unit` / `F2.coherentCospanConeTotalModelComparison_over_base` / `F2.coherentCospanConeTotalModelFiberComparison_path_ι` / `F2.coherentCospanConeRelativeValuePathIso_eq` / `F2.coherentCospanConePointwiseCone_vertex` / `F2.coherentCospanConePointwiseCone_leftTriangle` / `F2.unstraighteningMappingTrianglePrism` / `F2.coherentTransformationTriangleLift_long` / `F2.coherentTransformationPointedTriangle_projection` / `F2.relativeExtensionRestriction_vertex` / `F2.prismExtensionComparison_restrict` / `F2.coherentTriangleExtensionComparison_restrict` / `F2.coherentTriangleExtensionRestriction_long` / `F2.relativeFunctorBaseChangeInverse_overPre` / `F2.prismExtensionPullbackEndpoint_restrict` / `F2.prismExtensionPullbackComparison_restrict` / `F2.relativeFunctorCurryHom_pre` / `F2.relativeFunctorCurryHom_evaluate` / `F2.prismExtensionCurryWitnessIso_restrict` / `F2.unstraighteningSourceComparisonIso_app_pre` / `F2.coherentTriangleCurryIso_restrict` / `F2.unstraighteningTriangleRelativeVertexIso_pre` / `F2.coherentSmallTriangleRelativeIso_pre` / `F2.unstraighteningTriangleRelativeVertexIso_pre_eq` / `F2.coherentSmallTriangleRelativeIso_pre_heq_endpoint` / `F2.coherentSmallFiberPointedTriangle_projection` / `F2.coherentSmallTriangleRelativeIso_pre_eq_endpoint` / `F2.coherentTransformationTriangleFiberIso_heq_endpoint` / `F2.relativeIsoFiberHomotopy_hom` / `F2.coherentCospanConeFiberComparisonPathIso_eq` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq` / `F2.functorIsoDown_injective` / `F2.coherentCospanNormalizedModelPathLiftIso_eq_section` / `F2.coherentCospanCommonLeftIso` / `F2.coherentCospanCommonRightIso` / `F2.intervalReplacementSectionIso_endpoint` / `F2.coherentCospanConeNativePathDownIso_whisker` / `F2.coherentTotalNativeKanIso_postValueImage` / `F2.coherentCospanCommonRightImage` / `F2.cospanRectificationLeftIso_inverse_image` / `F2.coherentCospanNativeFirstPathIso_heq` / `F2.coherentCospanModelFirstPathIso_heq` / `F2.coherentCospanCommonComparisonIso` / `F2.coherentCospanConeNativeComparison_homotopyEquivalence` / `F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence` / `F2.coherentCospanNativeLimitCone` / `F2.coherentCospanNativeLimitCone_isLimit` / `F2.coherentCospanNativeLimitCone_vertex` / `F2.coherentCospanNativeLimitConeFstIso` / `F2.coherentCospanNativeLimitConeSndIso` / `F2.coherentCospanNativeLimitCone_projection_commutativity` / `F2.coherentFilteredColimitVertex_isTerminal` / `F2.coneMappingShapePushoutIso` / `F2.coneMappingShapePushout_right_fibration` / `F2.coneMappingShapePushoutNativeCone_isLimit` / `F2.finiteShape_cell_induction` / `F2.CoherentFilteredLimitExchangeShape` / `F2.coherentColimitFunctor` / `F2.coherentCompletedLimit_iff_colimitFunctor` / `F2.coherentCospanOfFunctorTriangles` / `F2.functorCospanNativeLimitCone_isLimit` / `F2.exists_limitFamilyRestrictionTriangle` / `F2.coneFamilyReindex_apex` / `F2.exists_limitConeFamilyReplacement` / `F2.HasSpaceLimitsOfShape` / `F2.coherentFilteredLimitExchangeShape_simplex` / `F2.coherentFilteredLimitExchangeShape_of_empty`
 
-- `F2.FunctorTrianglePointedWitness.specifiedTriangle_heq_threeEdges` / `F2.functorHomotopySourceEndpointIso_heq_of_prism`
+- `F2.FunctorTrianglePointedWitness.sequentialPostComparison_app_eq_threeEdges` / `F2.functorTetrahedronIso_square_of_edge_comparisons`
 
 ### 依存と提供
 
@@ -88,18 +91,20 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 次の一手
 
-- F2N-1 a7：まず元の同じ全三単体の各辺の比較を四面で同定する。
-  specifiedTriangle_heq_threeEdges と零面・固定面への適用は全係数 EF⊗K と元の指定値を保持。
-  functorHomotopySourceEndpointIso_heq_of_prism は始点と実 prism の厳密な一致から共有辺の指定値を同定する。
-  各面の実中間・実終点を全三単体の頂点制限へ揃え、simplicial な面の共有辺公式で同じ六比較へ戻す。
-  第一比較の逆の後合成も firstInverseNativeComparison の同じ指定値を保持し、四面の式から三関係を得る。
-  六側面と共有面を消去して a6 の native 合成比較との整合を示し、coherentColimitApexTriangle_isoSquare と結ぶ。
+- F2N-1 a7：四面の頂点表示を、同じ全三単体の共通の四頂点へ揃える。
+  六共有辺は CoherentColimitUnitShared{First,InitialDiagonal,Long,Middle,MiddleDiagonal,Last}Edge で
+  実 prism・終点・指定比較を同定済み。始点が動く三辺も実始点の厳密な一致を保持。
+  functorHomotopySourcePostIso は元の比較を native 後合成の頂点からの同型として表示する。
+  sequentialPostComparison_app_eq_threeEdges は元の各面の自然な比較の成分＝三辺の指定比較の厳密な式。
+  まず面3の中間・終点を共通の頂点1・2、面2の終点を頂点3とし、六共有辺の等式で残る表示を正規化。
+  相対後合成の hoFunctor 像を通常の合成関手へ揃え、四面の指定式を同じ六比較へ移す。
+  functorTetrahedronIso_square_of_edge_comparisons を元の三三単体へ具体化して三関係を得る。
+  六側面と共有面を消去して a6 の native 合成比較と coherentColimitApexTriangle_isoSquare に接続する。
   二三角形・指定 path を保つ native 全錐比較を束ね、その極限性から引き戻し保存へ接続する。
-  面ごとの式・辺ごとの同型だけでは全錐比較の完了としない。
+  面ごとの式・辺ごとの同型・一般的な相殺補題だけでは元の三関係・全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
-  HTT §5.3.3、a7 残り12〜24時間（暫定。共有辺の指定値の照合に不確実性）。strict な通常図式だけでは完了としない。
+  HTT §5.3.3、a7 残り12〜24時間（暫定。全指定比較の正規化に不確実性）。strict な通常図式だけでは完了としない。
   その後 F2N-2〜5、presentable・随伴関手定理（原典・見積もりは F2 計画 §3–4）。
-  元の指定 path と境界の全円柱を保持し、有限写像空間の π₀ の全射性だけで弱同値性を結論しない。
 
 ## 0. 目標と範囲
 
@@ -176,8 +181,11 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   firstEndpointComparison_eq_symm は中間比較＝元の第一指定始域比較の逆を証明。
   specifiedTriangle_heq_threeEdges は元の相対三角形比較の前合成を、同じ全実三角形の
   長辺比較≫第二比較の逆≫第一比較の逆の native 後合成へ値まで同定。
-  元の零面・固定面の全持ち上げに適用済み。共有辺の始点・実 prism の一致から指定値を保つ補題も証明。
-  未完：四面の共有辺の同定・三関係、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
+  元の零面・固定面への適用と、六共有辺の実 prism・実終点・元の指定比較の一致を証明。
+  始点が動く三辺も実始点を厳密に同定。元の三角形比較は全相対始域で自然で、その成分を元の前合成へ回収。
+  sequentialPostComparison_app_eq_threeEdges は同じ native 後合成の頂点で三辺の式を厳密に保持。
+  functorTetrahedronIso_square_of_edge_comparisons は第零面の自然性と四面の式から共有比較を相殺する一般補題。
+  未完：四面の頂点表示の正規化・元の三関係への具体化、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
@@ -189,16 +197,19 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 所有：F2/、F2 集約・監査、本計画と F1b 計画。HomotopyLimits/ と F1/ は編集しない。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
-- 次の一手：F2N-1 a7：まず元の同じ全三単体の各辺の比較を四面で同定する。
-  specifiedTriangle_heq_threeEdges と零面・固定面への適用は全係数 EF⊗K と元の指定値を保持。
-  functorHomotopySourceEndpointIso_heq_of_prism は始点と実 prism の厳密な一致から共有辺の指定値を同定する。
-  各面の実中間・実終点を全三単体の頂点制限へ揃え、simplicial な面の共有辺公式で同じ六比較へ戻す。
-  第一比較の逆の後合成も firstInverseNativeComparison の同じ指定値を保持し、四面の式から三関係を得る。
-  六側面と共有面を消去して a6 の native 合成比較との整合を示し、coherentColimitApexTriangle_isoSquare と結ぶ。
+- 次の一手：F2N-1 a7：四面の頂点表示を、同じ全三単体の共通の四頂点へ揃える。
+  六共有辺は CoherentColimitUnitShared{First,InitialDiagonal,Long,Middle,MiddleDiagonal,Last}Edge で
+  実 prism・終点・指定比較を同定済み。始点が動く三辺も実始点の厳密な一致を保持。
+  functorHomotopySourcePostIso は元の比較を native 後合成の頂点からの同型として表示する。
+  sequentialPostComparison_app_eq_threeEdges は元の各面の自然な比較の成分＝三辺の指定比較の厳密な式。
+  まず面3の中間・終点を共通の頂点1・2、面2の終点を頂点3とし、六共有辺の等式で残る表示を正規化。
+  相対後合成の hoFunctor 像を通常の合成関手へ揃え、四面の指定式を同じ六比較へ移す。
+  functorTetrahedronIso_square_of_edge_comparisons を元の三三単体へ具体化して三関係を得る。
+  六側面と共有面を消去して a6 の native 合成比較と coherentColimitApexTriangle_isoSquare に接続する。
   二三角形・指定 path を保つ native 全錐比較を束ね、その極限性から引き戻し保存へ接続する。
-  面ごとの式・辺ごとの同型だけでは全錐比較の完了としない。
+  面ごとの式・辺ごとの同型・一般的な相殺補題だけでは元の三関係・全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
-  HTT §5.3.3、a7 残り12〜24時間（暫定。共有辺の指定値の照合に不確実性）。strict な通常図式だけでは完了としない。
+  HTT §5.3.3、a7 残り12〜24時間（暫定。全指定比較の正規化に不確実性）。strict な通常図式だけでは完了としない。
   その後 F2N-2〜5、presentable・随伴関手定理（原典・見積もりは F2 計画 §3–4）。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |

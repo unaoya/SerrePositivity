@@ -26,4 +26,12 @@ lemma vertexIso_trans_heq_of_heq {X : SSet.{u}} {a b c a' b' c' : X _⦋0⦌}
   cases eq_of_heq hg
   rfl
 
+/-- 同じ元の指定頂点同型の表示変更は、その逆の指定値も保持する。 -/
+lemma vertexIso_symm_heq_of_heq {X : SSet.{u}} {a b a' b' : X _⦋0⦌}
+    (f : VertexIso a b) (f' : VertexIso a' b') (ha : a = a') (hb : b = b')
+    (hf : HEq f f') : HEq f.symm f'.symm := by
+  subst a' b'
+  cases eq_of_heq hf
+  rfl
+
 end SerrePositivity.InfinityCategories.F2

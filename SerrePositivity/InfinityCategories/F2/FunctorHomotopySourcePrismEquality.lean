@@ -19,9 +19,10 @@ namespace SerrePositivity.InfinityCategories.F2
 
 /-- 同じ実延長と同じ終点の底を持つ証拠の実終点は、二射影を含めて厳密に一致する。 -/
 lemma RelativeExtensionEndpointWitness.endpoint_eq_of_extension
-    {A D C E Q B : SSet.{u}} {q : E ⟶ B} {b : A ⟶ B} {i : D ⟶ A} {v : D ⟶ E}
+    {A D C E Q B : SSet.{u}} {q : E ⟶ B} {b : A ⟶ B} {i : D ⟶ A} {v v' : D ⟶ E}
     {j : C ⟶ A} {f : Q ⟶ B} {a : C ⟶ Q}
-    (w w' : RelativeExtensionEndpointWitness q b i v j f a)
+    (w : RelativeExtensionEndpointWitness q b i v j f a)
+    (w' : RelativeExtensionEndpointWitness q b i v' j f a)
     (he : w.extension = w'.extension) : w.endpoint = w'.endpoint := by
   apply pullback.hom_ext
   · exact w.evaluate.symm.trans ((congrArg (fun e => j ≫ e) he).trans w'.evaluate)
