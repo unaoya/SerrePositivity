@@ -180,3 +180,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationFiberCriterion
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceValue
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityIdentityValue
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityIdentityReconstruction
+public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconeIntervalPrism
+public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceInterval
+public import SerrePositivity.InfinityCategories.F2.Ind.ConstantIntervalTranspose
+public import SerrePositivity.InfinityCategories.F2.Ind.DensityFiberTransformationRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.DensityFiberTransformationFamily

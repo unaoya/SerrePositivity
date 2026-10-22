@@ -330,3 +330,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityValue_factorization
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityValue_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityReconstruction_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityNativeIdentityValueIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityNativeIdentityValue_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.coconeTransformationPointAt_interval
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceInterval_prism
+#check @SerrePositivity.InfinityCategories.F2.Ind.constantIntervalTranspose_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.densityFiberTransformationRestriction_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.densityFiberTransformationFamily_native
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityFiberIntervalIso
