@@ -521,7 +521,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientDirectCylinder,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientDirectNormalization,
     `SerrePositivity.InfinityCategories.Derived.Gluing.RelativePrismHomotopy,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeTrivialFibrationHomotopy]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeTrivialFibrationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPinchedPrismCorrectionSum,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPinchedPrismCutSecond,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPinchedPrismCutZero,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPinchedPrismLinearCorrection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPinchedPrismMixedCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismActualCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismCorrectionEdge,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismUnitCut,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorPinchedSimplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeAugmentationPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismActualCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCorrection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCorrectionSum,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCylinderCorrection]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
