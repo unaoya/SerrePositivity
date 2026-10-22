@@ -700,3 +700,51 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @idemCocone_isColimit_iff_restrict
 #print axioms idemCocone_isColimit_iff_restrict
+
+#check @walkingFullCocone
+#print axioms walkingFullCocone
+
+#check @walkingFullJoinCocone
+#print axioms walkingFullJoinCocone
+
+#check @walkingFullJoinCocone_point
+#print axioms walkingFullJoinCocone_point
+
+#check @walkingFullJoinCocone_restrict
+#print axioms walkingFullJoinCocone_restrict
+
+#check @walkingFullJoinCocone_image_leg
+#print axioms walkingFullJoinCocone_image_leg
+
+#check @pointJoinNerve_hom_ext
+#print axioms pointJoinNerve_hom_ext
+
+#check @walkingFullJoinCocone_point_restrict
+#print axioms walkingFullJoinCocone_point_restrict
+
+#check @splittingDiagramCocone
+#print axioms splittingDiagramCocone
+
+#check @splittingDiagramCocone_point
+#print axioms splittingDiagramCocone_point
+
+#check @walkingImagePoint_rightAnodyne
+#print axioms walkingImagePoint_rightAnodyne
+
+#check @splittingDiagramCocone_isColimit
+#print axioms splittingDiagramCocone_isColimit
+
+#check @StrongSplitting.cocone_restrict
+#print axioms StrongSplitting.cocone_restrict
+
+#check @StrongSplitting.cocone_isColimit
+#print axioms StrongSplitting.cocone_isColimit
+
+#check @StrongSplitting.hasColimit
+#print axioms StrongSplitting.hasColimit
+
+#check @IsIdempotentComplete.hasColimit
+#print axioms IsIdempotentComplete.hasColimit
+
+#check @StrongSplitting.postcomposeCocone_isColimit
+#print axioms StrongSplitting.postcomposeCocone_isColimit
