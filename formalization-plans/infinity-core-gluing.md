@@ -33,10 +33,8 @@
 - 工程 (d) 進行中。始域の実写像空間を同じ mapping cocone Hom 複体の空間模型へ同定し、導来 lax pullback の実写像空間への比較射を構成。
   同じ比較射を F2 の厳密な写像空間引き戻しへ移し、両射影と端点輸送を保って元の矢印族・二射影の対の Hom 作用へ照合。
   元の比較の充満忠実性は、この具体的引き戻し比較が全対象対で実ホモトピー同値であることと同値。Kan 仮定は追加しない。
-- 複体側では、mapping cocone を恒等写像の cocone からの path 射影と元の差写像の厳密な引き戻しと証明。
-  全持ち上げの両射影・一意性、path 複体の実収縮・射影の次数別全射性を供給し、gluing の元の差へ適用。
-  任意複体の厳密な引き戻しを、次数別持ち上げ・微分方程式の反映から実 pinched 空間の引き戻しへ移す。
-  同じ path 空間の引き戻し同型は両射影を保存。零複体への実ホモトピー同値と、その空間模型での同値も供給。
+- 複体側では mapping cocone を、恒等 cocone の path 射影と元の差の厳密な引き戻しと証明。両射影・持ち上げ一意性・実収縮・次数別全射性を供給。
+  任意複体の厳密な引き戻しを実 pinched 空間へ移す。同じ path 空間同型は両射影を保存し、零複体への実ホモトピー同値と空間模型での同値も供給。
   任意の次数別全射な鎖写像の相対 horn を、指定最上位成分・欠面の削除方程式から充填。擬同型性なしで Kan fibration を得る。
   同じ path 射影に適用し、元の cocone 空間を頂点とする空間の ∞ 極限錐を構成。二脚は元の path 写像・射影の厳密な辺。
   β5 の頂点の実半自由分解・元の係数の準同型 span・二 augmentation の厳密可換四角形を供給。対象宇宙変更は線形成分と全鎖写像作用を保存。
@@ -44,10 +42,11 @@
   実入力が射影的なら半自由出力 Hom 射影が準同型。β5 の同じ切断を合成し、元の導来比較自体の Hom 作用が射影的始域から同値と証明。
   代表加群に適用した canonical な係数比較は、模型・端点同型を除くと一般宇宙の元の導来 Hom 作用を厳密に回収。全 lax 比較の充満忠実性は未完。
   元の一般宇宙の比較の本質的全射性を証明。任意の導来辺を閉加群射で表し、同じ augmentation の gluing 対象へ戻す。
-  一般宇宙間の nerve の全 Hom 作用を元の Hom 鎖写像へ厳密に照合し、追加共通宇宙での複体模型・前後合成との可換性も証明。
-  実導来 lax 比較の二脚を複体模型へ戻すと元の左右 Hom 鎖射影に一致。端点輸送・元の全単体作用を保持。
+  一般宇宙の nerve の全 Hom 作用・複体模型・前後合成を厳密に照合。実導来 lax 比較の二脚は、端点輸送込みで元の左右 Hom 鎖射影に一致。
   矢印圏の区間 Hom を共通対角の二合成三角形へ分け、厳密な往復同値・全パラメーターでの自然性・四辺の式を証明。
   同じ実 lax Hom 比較をこの表示へ移し、固定二辺を元の augmentation の導来像と同定。区間 Hom の回収・共通対角・両端成分評価も保持。
+  始辺固定の合成対応・第二辺への trivial Kan fibration・同じ対角評価を構成。始辺固定／終辺固定の実三角形族の持ち上げは三辺を回収。
+  両合成対応の対角引き戻しは Kan で空間の実 ∞ 極限錐を供給。矢印 Hom への比較は全族で単射。逆方向・同型性は未完。
   全写像空間の比較同値性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -78,6 +77,7 @@
 - `dgGluingUniverseLaxComparison_vertex_image`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
 - `dgGluingUniverseFunctorHomAction`・`dgGluingUniverseFunctorHomModelComparison_eq`・`dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq`
 - `dgGluingArrowHomTriangleEquiv`・`dgGluingArrowHomTriangles_naturality`・`dgGluingLaxHomArrowIntervalComparison_action`・`dgGluingLaxHomArrowTriangles_recover`
+- `dgGluingFirstFixedCompositionSecond_trivialKanFibration`・`dgGluingArrowCompositionCone_isLimit`・`dgGluingArrowCompositionPullbackToHom_mono`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -95,12 +95,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
-  矢印側は `dgGluingLaxHomArrowTriangles` に移し四辺・共通対角を照合済み。次は二合成三角形を、同じ合成対応の対角引き戻しで表示する。
+  次は `dgGluingArrowCompositionPullbackToHom` の逆を、矢印 Hom の同じ二三角形と両合成対応の持ち上げから構成し、元の三辺で往復則を証明する。
   canonical な係数比較・`dgGluingCoconePathSpaceCone_isLimit` で全引き戻し比較を同値にし、充満忠実性の判定定理へ適用する。
 
 ### 未コミット・既知の問題
-- 334モジュール・集約ビルド成功（7210 jobs）、公理監査4347宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開28署名を検査済み。新規8モジュール、集約・監査・本計画の専有11パスだけを保存。他レーンの差分は含めない。
+- 343モジュール・集約ビルド成功（7235 jobs）、公理監査4422宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開48署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
