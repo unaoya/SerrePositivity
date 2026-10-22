@@ -420,3 +420,8 @@ public import SerrePositivity.KST.Fibration.BaseChangeSectionFiberPoint
 public import SerrePositivity.KST.Fibration.VertexFiberZeroSection
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint
 public import SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange
+public import SerrePositivity.KST.Fibration.ScaffoldCandidateReconstruction
+public import SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification
+public import SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange
+public import SerrePositivity.KST.Fibration.CoslicePointFamilyAt
+public import SerrePositivity.KST.Fibration.ScaffoldCosliceExtension
