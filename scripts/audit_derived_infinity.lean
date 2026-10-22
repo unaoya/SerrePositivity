@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSourceEquivalenceSquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellTargetNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoModelNaturalityTransfer
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelNaturality
 import SerrePositivity.InfinityCategories.Derived.DGKernelSourceRestrictionNaturality
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoTwoStepSquare
 import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphInfinityNaturality
@@ -4106,6 +4112,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSourceEquivalenceSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceValue,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellTargetNaturality,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoModelNaturalityTransfer,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelSourceRestrictionNaturality,
 
 
