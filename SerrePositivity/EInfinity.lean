@@ -2033,3 +2033,12 @@ public import SerrePositivity.EInfinity.ComplexLimits.SemifreeClosedDerivedCompa
 public import SerrePositivity.EInfinity.ComplexLimits.ModuleSingleDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteImage
+public import SerrePositivity.EInfinity.Operad.ConnectiveCover
+public import SerrePositivity.EInfinity.BarrattEccles.ConnectiveCover
+public import SerrePositivity.EInfinity.Operad.TensorPowerTruncationDesc
+public import SerrePositivity.EInfinity.Operad.ZeroTruncation
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroTruncation
+public import SerrePositivity.EInfinity.HomologyZero.TruncationRigidity
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeAction
+public import SerrePositivity.EInfinity.Operad.AlgebraOperadEpi
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeComAlgebra

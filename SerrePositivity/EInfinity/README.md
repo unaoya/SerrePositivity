@@ -2358,7 +2358,14 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `discreteCAlgUnderEmbedding_forgetIso` は同じ U との合成と既存 discreteEmbedding の全関手同型。
 `discreteCAlgUnderEmbedding_underlyingDisc` は同じ成分から全非零次数のホモロジー消滅を移す。
 `cAlgUnderlyingDisc` は既存 derivedInfinityDisc による同じ U 像の条件。
-離散対象の本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
+`Operad.Algebra.connectiveCover` は元の τ≤0 を全作用・代数包含と共に代数化する。
+`Operad.Algebra.descendCoefficientPower` は全 arity の入力を元の τ≥0 商へ降ろす。
+`Operad.Algebra.zeroTruncation` は元の非正代数の τ≥0 を代数化し、元の射影を代数射にする。
+`BarrattEccles.zeroDegreeModel` は任意の元の E 代数の τ≥0τ≤0 の零次集中模型。
+底が IsLE 0・IsGE 0 なら同じ包含と同じ射影が擬同型となる。
+`zeroDegreeAction_factor` は零次集中 E 代数の元の全作用の実 augmentation による厳密な因子化。
+`zeroDegreeComAlgebra` は同じ底の Com 代数構造、`zeroDegreeComRestrictionIso` は元の E 代数との同型。
+既存 H⁰ 可換代数の離散像との同定・本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。

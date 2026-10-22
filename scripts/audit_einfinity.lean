@@ -8494,6 +8494,46 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgUnderEmbedding_underlyingDisc
   ]
 
+@[noinline] private def e2RequiredBatch155 : Array Lean.Name :=
+  #[
+    `SerrePositivity.EInfinity.Operad.Algebra.power_nonpositive,
+    `SerrePositivity.EInfinity.Operad.Algebra.connectiveCoverAction,
+    `SerrePositivity.EInfinity.Operad.Algebra.connectiveCoverAction_inclusion,
+    `SerrePositivity.EInfinity.Operad.Algebra.connectiveCover,
+    `SerrePositivity.EInfinity.Operad.Algebra.connectiveCoverInclusion,
+    `SerrePositivity.EInfinity.BarrattEccles.arity_nonpositive,
+    `SerrePositivity.EInfinity.BarrattEccles.connectiveCover,
+    `SerrePositivity.EInfinity.BarrattEccles.connectiveCoverInclusion,
+    `SerrePositivity.EInfinity.BarrattEccles.connectiveCoverInclusion_quasiIso,
+    `SerrePositivity.EInfinity.Operad.Algebra.descendPower,
+    `SerrePositivity.EInfinity.Operad.Algebra.projection_descendPower,
+    `SerrePositivity.EInfinity.Operad.Algebra.descendCoefficientPower,
+    `SerrePositivity.EInfinity.Operad.Algebra.projection_descendCoefficientPower,
+    `SerrePositivity.EInfinity.Operad.Algebra.powerMap_epi,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationAction,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationAction_projection,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncation,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationProjection,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationProjection_quasiIso,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncation_nonpositive,
+    `SerrePositivity.EInfinity.Operad.Algebra.zeroTruncation_nonnegative,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroTruncation,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroTruncationProjection,
+    `SerrePositivity.EInfinity.BarrattEccles.connectiveCover_nonpositive,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeModel,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeModelProjection,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeModel_nonpositive,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeModel_nonnegative,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeModelProjection_quasiIso,
+    `SerrePositivity.EInfinity.HomologyZero.nonpositive_nonnegative_homotopy_eq,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeComAction,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeAction_factor,
+    `SerrePositivity.EInfinity.Operad.Algebra.ofOperadEpi,
+    `SerrePositivity.EInfinity.BarrattEccles.augmentation_epi,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeComAlgebra,
+    `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeComRestrictionIso
+  ]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8527,7 +8567,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20456,3 +20496,44 @@ example (B : Under (CommRingCat.of A)) : cAlgUnderlyingDisc A
     ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B)) :=
   discreteCAlgUnderEmbedding_underlyingDisc A B
 end e2ExistingDiscreteComparisonFixtures
+
+section e2ZeroDegreeModelFixtures
+universe e2ZeroDegreeModelUniverse
+open CategoryTheory MonoidalCategory
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.BarrattEccles
+open scoped Simplicial
+variable (A : Type e2ZeroDegreeModelUniverse) [CommRing A]
+example (X Q T : Complex A) [X.IsStrictlyLE 0] [Q.IsStrictlyLE 0] [T.IsStrictlyGE 0]
+    (n : ℕ) (f : Q ⊗ SerrePositivity.TensorPowers.power X n ⟶ T) :
+    (Q ◁ SerrePositivity.TensorPowers.map (X.πTruncGE 0) n) ≫
+      SerrePositivity.EInfinity.Operad.Algebra.descendCoefficientPower X Q n f = f :=
+  SerrePositivity.EInfinity.Operad.Algebra.projection_descendCoefficientPower X Q n f
+example (P : SerrePositivity.EInfinity.Operad A)
+    (hP : ∀ n, (P.arity n).IsStrictlyLE 0) (B : P.Algebra) [B.carrier.IsStrictlyLE 0]
+    (n : ℕ) :
+    (P.arity n ◁ SerrePositivity.TensorPowers.map (B.carrier.πTruncGE 0) n) ≫
+      SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationAction hP B n =
+        B.action n ≫ B.carrier.πTruncGE 0 :=
+  SerrePositivity.EInfinity.Operad.Algebra.zeroTruncationAction_projection hP B n
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) [B.carrier.IsLE 0] :
+    QuasiIso (connectiveCoverInclusion A B).hom :=
+  connectiveCoverInclusion_quasiIso A B
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsLE 0] [B.carrier.IsGE 0] : QuasiIso (zeroDegreeModelProjection A B).hom :=
+  zeroDegreeModelProjection_quasiIso A B
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
+    (zeroDegreeModel A B).carrier.IsStrictlyLE 0 ∧
+      (zeroDegreeModel A B).carrier.IsStrictlyGE 0 :=
+  ⟨zeroDegreeModel_nonpositive A B, zeroDegreeModel_nonnegative A B⟩
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0] (n : ℕ) :
+    ((augmentation A).map.app (SerrePositivity.FiniteBijection.of n) ▷
+      SerrePositivity.TensorPowers.power B.carrier n) ≫ zeroDegreeComAction B n = B.action n :=
+  zeroDegreeAction_factor B n
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0] :
+    SerrePositivity.EInfinity.Operad.restrictAlgebraObj (augmentation A)
+      (zeroDegreeComAlgebra A B) ≅ B :=
+  zeroDegreeComRestrictionIso A B
+end e2ZeroDegreeModelFixtures
