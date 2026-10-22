@@ -474,3 +474,15 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeBound
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeBoundaryVertex
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismFixedBoundaryIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeMapRightAnodyne
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeFoldNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismTerminalEdge
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedRelativeLiftBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismTerminalRelativeIso

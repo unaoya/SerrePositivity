@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneMap_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_edge
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationTerminalEdge_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismCone_terminalEdge
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismStandard_terminalEdge
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneFixedRelativeLiftIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismTerminalRelativeIso
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneMap_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_edge
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismTerminalRelativeIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_old
 #check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_tip
 #check @SerrePositivity.InfinityCategories.F2.Ind.fixedCoconeBoundary
