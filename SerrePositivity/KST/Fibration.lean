@@ -1,3 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.WeakEquivalences
 public import SerrePositivity.KST.Fibration.Extension
+public import SerrePositivity.KST.Fibration.RelativeDiagram
+public import SerrePositivity.KST.Fibration.RelativeDiagramMap
+public import SerrePositivity.KST.Fibration.RelativeDiagramCore
+public import SerrePositivity.KST.Fibration.RelativeSimplicialDiagram
+public import SerrePositivity.KST.Fibration.RelativeDiagramKernel

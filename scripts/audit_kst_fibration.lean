@@ -7,7 +7,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[`SerrePositivity.KST.Fibration.WeakEquivalences,
-    `SerrePositivity.KST.Fibration.Extension]
+    `SerrePositivity.KST.Fibration.Extension,
+    `SerrePositivity.KST.Fibration.RelativeDiagram,
+    `SerrePositivity.KST.Fibration.RelativeDiagramMap,
+    `SerrePositivity.KST.Fibration.RelativeDiagramCore,
+    `SerrePositivity.KST.Fibration.RelativeSimplicialDiagram,
+    `SerrePositivity.KST.Fibration.RelativeDiagramKernel]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
