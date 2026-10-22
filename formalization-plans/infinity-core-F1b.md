@@ -25,14 +25,16 @@
   六共有辺の実 prism・実始点・実終点・指定比較を保ち、四面を同じ共通四頂点と六比較へ正規化。
   CoherentColimitUnitTetrahedronBoundary.comparison_square は同じ全族の四面の厳密な可換性。
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
-  coherentColimitUnitFirstNativeRelation・MiddleNativeRelation・LastNativeRelation は元の三三単体の三関係。
-  全係数 EF⊗K と元の指定値を保持。relativeFunctorTensorPre_vertexIso_injective は点を持つ全係数の追加から指定等式を反映。
-  未完：三関係の共通全空間への反映・内部面の消去、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
+  三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
+  coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
+  coherentColimitUnitValueComparison_heq_native は同じ二面の比較合成を a6 の標的表示へ値まで回収。
+  coherentColimitUnitValueComparison_total_heq_nativeRelative は二面の比較合成を相対比較へ値まで回収。
+  未完：a6 の指定作用比較との照合、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9472 jobs、公理監査11690宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  共通四頂点・六比較、元の三三単体の三関係、切断による反映を含む追加67明示宣言を型検査。
+  検証：三集約同時ビルド9506 jobs、公理監査11933宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  共通全空間への反映・内部面の消去・native 標的輸送を含む追加35明示宣言を型検査。
   追加 ModelCategory 仮定・F1/F1B と F2 のソースの名前衝突なし。
 
 ### 残り（依存順、実作業時間の概算）
@@ -55,7 +57,7 @@
 
 - `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq` / `F2.functorIsoDown_injective` / `F2.coherentCospanNormalizedModelPathLiftIso_eq_section` / `F2.coherentCospanCommonLeftIso` / `F2.coherentCospanCommonRightIso` / `F2.intervalReplacementSectionIso_endpoint` / `F2.coherentCospanConeNativePathDownIso_whisker` / `F2.coherentTotalNativeKanIso_postValueImage` / `F2.coherentCospanCommonRightImage` / `F2.cospanRectificationLeftIso_inverse_image` / `F2.coherentCospanNativeFirstPathIso_heq` / `F2.coherentCospanModelFirstPathIso_heq` / `F2.coherentCospanCommonComparisonIso` / `F2.coherentCospanConeNativeComparison_homotopyEquivalence` / `F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence` / `F2.coherentCospanNativeLimitCone` / `F2.coherentCospanNativeLimitCone_isLimit` / `F2.coherentCospanNativeLimitCone_vertex` / `F2.coherentCospanNativeLimitConeFstIso` / `F2.coherentCospanNativeLimitConeSndIso` / `F2.coherentCospanNativeLimitCone_projection_commutativity` / `F2.coherentFilteredColimitVertex_isTerminal` / `F2.coneMappingShapePushoutIso` / `F2.coneMappingShapePushout_right_fibration` / `F2.coneMappingShapePushoutNativeCone_isLimit` / `F2.finiteShape_cell_induction` / `F2.CoherentFilteredLimitExchangeShape` / `F2.coherentColimitFunctor` / `F2.coherentCompletedLimit_iff_colimitFunctor` / `F2.coherentCospanOfFunctorTriangles` / `F2.functorCospanNativeLimitCone_isLimit` / `F2.exists_limitFamilyRestrictionTriangle` / `F2.coneFamilyReindex_apex` / `F2.exists_limitConeFamilyReplacement` / `F2.HasSpaceLimitsOfShape` / `F2.coherentFilteredLimitExchangeShape_simplex` / `F2.coherentFilteredLimitExchangeShape_of_empty`
 
-- `F2.coherentColimitUnitFirstNativeRelation` / `F2.coherentColimitUnitMiddleNativeRelation` / `F2.coherentColimitUnitLastNativeRelation`
+- `F2.coherentColimitUnitTriangleValue_coherence` / `F2.coherentColimitNativeUnitRelativeComparison` / `F2.coherentColimitUnitValueComparison_total_heq_nativeRelative`
 
 ### 依存と提供
 
@@ -78,17 +80,16 @@
 
 ### 次の一手
 
-- F2N-1 a7：三つの全選択族の指定関係を共通の元の全空間上へ戻し、二内部面を消去する。
-  元の三関係は coherentColimitUnit{First,Middle,Last}NativeRelation。各底は fst EF K≫pF、全初期値は fst EF K。
-  functorTrianglePostComparison_app_heq_pre と sequential 表示の保持から、各成分を元の相対三角形比較の前合成へ戻す。
-  F1 の relativeFunctorPostHom_overPre と合成則で、関係全体を relativeFunctorPre pJ pF (fst EF K) の像へ揃える。
-  relativeFunctorTensorPre_vertexIso_injective を元の choice_vertex で適用して指定等式を反映する。
-  内部面は coherentColimitUnitInteriorFirst・InteriorLast として元の同じ実図式を共有している。
-  三関係から内部面を消去し、元の上下単位三角形と定値余極限三角形の指定比較の整合を得る。
-  a6 の native 合成比較と coherentColimitApexTriangle_isoSquare へ接続し、二三角形・指定 path を保つ全錐比較を束ねる。
-  その極限性から引き戻し保存へ接続。三関係・辺ごとの同型だけでは全錐比較の完了としない。
+- F2N-1 a7：元の二面の比較合成を a6 の指定作用比較へ値まで照合する。
+  同じ全空間上の三関係と内部面の消去は coherentColimitUnitTriangleValue_coherence で完了。
+  coherentColimitUnitValueComparison_total_heq_nativeRelative で元の二面の相対比較合成を回収済み。
+  constantUnstraighteningFiberProjection と pointedSpaceFiberValueEquivalence.hom で指定値を写す。
+  その値を coherentColimitLowerActionIso.symm≪≫coherentColimitUpperActionIso へ照合する。
+  上面の native 単位表現・下面の coconeIntervalFiberHomIso の指定共役因子も保持して消去する。
+  a6 の native 合成比較と coherentColimitApexTriangle_isoSquare へ接続し、二三角形・指定 path の全錐比較を束ねる。
+  その極限性から引き戻し保存へ接続。native 整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
-  HTT §5.3.3、a7 残り12〜24時間（暫定。全指定値の反映・照合に不確実性）。strict な通常図式だけでは完了としない。
+  HTT §5.3.3、a7 残り12〜24時間（暫定。a6 の全指定値との照合に不確実性）。strict 図式だけでは完了としない。
   その後 F2N-2〜5、presentable・随伴関手定理（原典・見積もりは F2 計画 §3–4）。
 
 ## 0. 目標と範囲

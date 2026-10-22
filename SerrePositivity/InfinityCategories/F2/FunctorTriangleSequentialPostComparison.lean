@@ -38,6 +38,14 @@ local notation "hp" => relativeFunctorPost_comp (leftUnstraighteningProjection F
 def functorTriangleSequentialPostComparison : FunctorIso Pc (Pa ≫ Pb) :=
   functorIsoOfEq (functorTrianglePostComparison T p) rfl (hp).symm
 
+/-- 元の sequential 表示の成分は、元の後合成の比較の同じ指定成分を保持する。 -/
+lemma functorTriangleSequentialPostComparison_app_heq_post
+    (x : (relativeFunctorSpace (leftUnstraighteningProjection F) p) _⦋0⦌) :
+    HEq ((functorTriangleSequentialPostComparison T p).app x)
+      ((functorTrianglePostComparison T p).app x) :=
+  functorIso_app_heq_of_heq (functorTriangleSequentialPostComparison T p)
+    (functorTrianglePostComparison T p) rfl hp (functorIsoOfEq_heq _ rfl (hp).symm) x
+
 /-- 表示変更後の成分も、元の全実三辺の同じ指定比較による合成の値を保つ。 -/
 lemma FunctorTrianglePointedWitness.sequentialPostComparison_app_heq_threeEdges
     {s : C ⟶ leftUnstraightening F} (w : FunctorTrianglePointedWitness T p s)

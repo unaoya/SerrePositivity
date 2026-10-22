@@ -3294,3 +3294,52 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorOverPre_vertexIso_injective_of_section
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorTensorPre_vertexIso_injective
 #check @SerrePositivity.InfinityCategories.F2.tetrahedronFaceDiagram_edge
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitFirstTotalRelation
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitLastTotalRelation
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitMiddleTotalRelation
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleValue_coherence
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_precomp_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_heq_of_vertex_eq
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparisonReindex
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_reindexed
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_tensor_pre
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_overPre_app_heq
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_heq
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_app_heq
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPost_overPre
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.left_map_heq
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.square_of_reindexed
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.whisker_map_heq
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.right_map_heq
+#check @SerrePositivity.InfinityCategories.F2.threeTriangleIso_cancel
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_post
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitUpperComparison_app_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitLowerComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_identity_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison_total_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_total_heq_nativeRelative

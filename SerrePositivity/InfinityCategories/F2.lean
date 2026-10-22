@@ -452,9 +452,106 @@ public import SerrePositivity.InfinityCategories.F2.FunctorTriangleWitnessSource
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorPreSplitReflection
 public import SerrePositivity.InfinityCategories.F2.TetrahedronFaceDiagramEdges
 
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitFirstTotalRelation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitLastTotalRelation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitMiddleTotalRelation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTriangleValueCoherence
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueComparison
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentPre
+public import SerrePositivity.InfinityCategories.F2.FunctorTetrahedronPostReindex
+public import SerrePositivity.InfinityCategories.F2.FunctorTetrahedronPostReindexReflection
+public import SerrePositivity.InfinityCategories.F2.FunctorTetrahedronTensorReflection
+public import SerrePositivity.InfinityCategories.F2.FunctorTrianglePostOverPreEvaluation
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleRelativeComparison
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorPostIsoOverPre
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorPostIsoOverPreEvaluation
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorPostOverPre
+public import SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex
+public import SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindexLeft
+public import SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindexReflection
+public import SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindexRight
+public import SerrePositivity.InfinityCategories.F2.ThreeTriangleIsoCancellation
+
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTargetTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitComparisonTarget
+public import SerrePositivity.InfinityCategories.F2.FunctorSquareTargetTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitNativeUnitValueComparison
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTotalComponent
+public import SerrePositivity.InfinityCategories.F2.FunctorSquareTotalComponent
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTotalComparison
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
 規約：F1b が filtered・Ind・compact・冪等完備化を担当する。
 使われ方：Cat_∞ の極限、lax pullback、安定 ∞ 圏への接続。
 -/
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitFirstTotalRelation
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitLastTotalRelation
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitMiddleTotalRelation
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleValue_coherence
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_precomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_heq_of_vertex_eq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparisonReindex
+
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_reindexed
+
+#check @SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_tensor_pre
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_overPre_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_heq
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorPost_overPre
+
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex
+
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.left_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.square_of_reindexed
+
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.whisker_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.right_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.threeTriangleIso_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_post
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitUpperComparison_app_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitLowerComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_app_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_identity_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison_total_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_total_heq_nativeRelative
