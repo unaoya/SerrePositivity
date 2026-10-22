@@ -142,7 +142,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullElementComponents,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullActionPrimitive,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullActionProjections,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelLeftAction]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelLeftAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.GradedPostFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonConeData,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonHomIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonConeModels,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonConeLaws,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeNullPostFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapLeftComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeHomotopyRepresentation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

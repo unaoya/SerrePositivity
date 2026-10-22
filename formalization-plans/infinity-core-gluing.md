@@ -19,10 +19,8 @@
   実加群同型・包含の整合性を構成。前三角性から K(C)・K(D) の cone 代表を選び、実閉射と逆ホモトピーを回収。
 - 元の両圏の前三角性を明示入力に、同じ cone 比較射を代表対象へ移した閉元から
   gluing の対象候補 `dgGluingConeObject` を構成。実 augmentation の厳密な回収と、両成分の K の cone 比較まで完成。
-- 候補の augmentation と元の比較射の移送後の射を結ぶ全 dg 自然なホモトピーを証明。
-  右移送は K(C) の同型であり、その射が同じ実代表射の tensor 像であることまで回収した。
-- ホモトピー可換な正方形の cocone 写像を第三 cochain ごと構成し、
-  `Cone(coconeSquareMap) ≅ Cocone(coneSquareMap)` を全整数次数で証明。
+- augmentation の移送ホモトピー、右移送の K(C) 同型性と同じ代表射の実 tensor 像との一致を証明。
+- 第三 cochain ごとの `Cone(coconeSquareMap) ≅ Cocone(coneSquareMap)` を全整数次数で証明。
   四成分の交換は `(a,b,c,d) ↦ (a,c,−b,d)`。右包含は既存の厳密 cocone 写像と一致。
 - 実合成・閉後合成の第三 cochain を全 Hom tensor 上で同定し、回収下辺・ホモトピーを元の双加群作用・閉射の第三成分と同定。
   `dgGluingHomConeExplicitIso` は標準 Hom 円錐を明示係数の mapping cocone と同定。
@@ -31,7 +29,6 @@
   右係数は、同じ右作用の厳密正方形の標準 cone 写像そのものと証明。D の Yoneda cone 加群からの全 Hom 同型も構成。
   tensor–Yoneda の列比較を全 Hom に拡張し、試験対象の augmentation と通常 tensor による右作用を構成。
   代表上で元の右作用を回収し、全次数合成との整合性・右 Hom cone から tensor 像への写像と両包含を証明。
-  Yoneda 円錐同型を標準 Hom 円錐比較で回収し、右係数を同じ右 Yoneda 円錐への kernel 全 Hom 作用と同定。
   左右の標的同型を揃え、`dgGluingHomConeKernelIso` で実 Hom 円錐を標準加群円錐への加群 comma Hom と同定。
   augmentation の同じ全 dg 自然な境界から標準円錐→選んだ対象の実閉 comma 射を構成し、両成分の K の代表同型を回収。
   任意の加群 comma 試験対象からの実後合成はホモトピー同値。`dgGluingHomConeKernelRepresentativeEquiv` で元の Hom 円錐を同じ代表対象への kernel Hom に移す。
@@ -46,7 +43,10 @@
   kernel 左包含の source・replacement は元の Hom 射影・Yoneda・同じ加群 Hom 円錐左包含と厳密に一致。
   指定 kernel 境界元の両成分は同じ実 `moduleConeInlElement`。第三成分零と符号付き合成公式を使い、左包含の全次数作用を回収。
   `dgGluingHomConeKernelIso_inl` により標準 kernel Hom 円錐の左包含と指定境界元の後合成を cochain 全体として厳密に同定。
-  左包含での既存同値との一致、加群射の同値性、零・整数シフトの閉性は未完。
+  native へ戻した左包含と既存同値の順射の一致を証明。両包含の一意性により `dgGluingConeModuleMapEvaluation_eq` を回収。
+  指定 cochain を保持する同じ加群射は対象ごとの準同型。射影的加群間の準同型として K(Gluing) の同型を構成。
+  `dgGluingChosenConeHomotopyRepresentable` は元の両圏の前三角性を明示入力に標準 Yoneda 加群円錐の全 dg 自然なホモトピー表現可能性を供給。
+  零・整数シフトの閉性と、表現可能対象の同型閉包の三角的閉性への統合は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -73,11 +73,11 @@
 - `dgGluingSmall`・`dgGluingKernelConeInr`・`dgGluingConeInr`・`dgGluingHomConeKernelIso_inr`
 - `dgGluingConeNullCochain`・`dgGluingConeModuleNullElement_boundary`・`dgGluingConeModuleMap`・`dgGluingChosenConeModuleMap`
 - `dgGluingConeModuleMapEvaluation_inl`・`dgGluingConeModuleMapEvaluation_inr_comparison`・`dgGluingConeNullElement_kernel`
-- `dgGluingHomConeKernelIso_inl_source`・`dgGluingHomConeKernelIso_inl_replacement`・`dgGluingHomConeKernelIso_inl_snd`
-- `dgGluingKernelConeNullElement_source`・`dgGluingKernelConeNullElement_replacement`・`dgGluingKernelConeNullAction_primitive`
+- `dgGluingConeModuleMapEvaluation_eq`・`dgGluingConeModuleMap_quasiIso`・`dgGluingConeModuleHomotopyIso`
+- `dgGluingConeHomotopyRepresentable`・`dgGluingChosenConeHomotopyRepresentable`
 
 ### 残り（依存順）
-1. (a) 残り：零・シフト・cone の全 dg 自然な表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
+1. (a) 残り：零・整数シフトの表現可能性、同型閉包の三角的閉性を統合し `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
 2. (b) 半直交分解 ⟨C, D⟩：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
 3. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
 4. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -93,14 +93,14 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingHomConeKernelIso_inl` を同じ実代表射の後合成と native/kernel Hom 同型へ接続。
-  指定 cochain を保持する `dgGluingConeModuleMap` の左評価を既存の点ごとの同値の順射へ接続し、円錐の両包含による一意性を使う。
-  加群射の点ごとの準同型性から射影的加群間の K の同型へ接続し、零・整数シフトも構成する。
-  任意の零ホモトピーの選び直しや点ごとの Hom 同値だけでは、全 dg 自然な円錐表現可能性完了とは数えない。
+- 標準 Yoneda 円錐の表現可能性を使い、恒等射の円錐から零の表現可能性を回収する。
+  元の両圏の前三角性から零・シフト代表を選び、整数シフトの同じ加群比較を構成。
+  K(Gluing) の表現可能対象の同型閉包に閉性を移し、`IsDGPretriangulated` へまとめる。
+  完了した円錐比較は全 dg 自然な実加群射の K の同型であり、点ごとの Hom 同値だけで代用していない。
 
 ### 未コミット・既知の問題
-- 138モジュール・集約ビルド成功（5054 jobs）、公理監査2619宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開19署名を検査済み。新規11モジュール、集約・監査・本計画の専有14パスだけを保存。他レーンの差分は含めない。
+- 149モジュール・集約ビルド成功（5065 jobs）、公理監査2784宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開28署名を検査済み。新規11モジュール、集約・監査・本計画の専有14パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
