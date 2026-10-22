@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentComposition
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichUnitComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoCompositorNaturality
+import SerrePositivity.InfinityCategories.Derived.IsoSpanSquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositorPostSpan
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositorPreSpan
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichSourceUnitTransfer
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichTargetUnitComparison
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichTargetUnitTransfer
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSpanUnits
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceUnitSpan
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellTargetUnitSpan
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentUnits
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentNaturality
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCoherentUnits
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalAugmentation
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalResolution
@@ -4171,6 +4185,21 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentComposition,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichUnitComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoCompositorNaturality,
+    `SerrePositivity.InfinityCategories.Derived.IsoSpanSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositorPostSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositorPreSpan,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichSourceUnitTransfer,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichTargetUnitComparison,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichTargetUnitTransfer,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSpanUnits,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceUnitSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellTargetUnitSpan,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentUnits,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCoherentUnits,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalAugmentation,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellDiagonalResolution,
