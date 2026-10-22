@@ -180,3 +180,7 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModules
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleShift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentableModule
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleMap
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleQuasiIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftHomotopyRepresentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated

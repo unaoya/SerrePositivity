@@ -7,40 +7,19 @@
 ## 引き継ぎ（2026-10-22）
 
 ### 現在地
-- 工程 (a) 進行中。任意の `Bimodule R C D` の閉次数零元を持つ対象と、比較差 `gμ − νf` の mapping cocone としての実 Hom 複体を構成。
-  二射影・第三 cochain・全次数の微分式、任意複体からの持ち上げと一意性を証明。
-- Yoneda の全 Hom 同型で実 comma dg 圏から単位・合成・結合律を移し、native gluing の実 dg 圏を構成。
-  左右 dg 射影、単位・合成の二成分、第三 cochain と代表表示との厳密な整合性を証明。
-- 全 Hom end 内の三項行列から全 dg 自然な `dgGluingConeMorphism` を構成。
-  通常 tensor–Yoneda の単位と実円錐保存を接続し、像の円錐と代表加群円錐の tensor 像の実加群同型を構成。
-- 元の両圏の前三角性を明示入力に、K(C)・K(D) の円錐代表を選び、実閉射と全 dg 自然な逆ホモトピーを回収。
-  移送した同じ比較閉元から `dgGluingConeObject` を構成。augmentation の厳密な回収・移送ホモトピーと両成分の K の比較を証明。
-- `Cone(coconeSquareMap) ≅ Cocone(coneSquareMap)` の交換を全整数次数で構成。四成分は `(a,b,c,d) ↦ (a,c,−b,d)`。
-  閉後合成の回収下辺・ホモトピーを元の双加群作用・第三成分と同定し、`dgGluingHomConeExplicitIso` と左右分解を構成。
-- 左右の評価円錐・全 Yoneda Hom・tensor の列比較を揃え、`dgGluingHomConeKernelIso` で標準加群円錐への kernel comma Hom と同定。
-  標準円錐→同じ代表対象の実閉 comma 射を構成。その実後合成は各試験対象でホモトピー同値。
-- native/kernel Hom 同型は両射影・第三 cochain・単位・全整数次数の合成を保存する。
-  `dgGluingToKernelComma` と直接表示の同じ比較関手を構成。native gluing の Small 性も証明。
-- native 閉円錐包含と指定零 cochain を構成し、kernel・native・全 Yoneda Hom end の間で同じ cochain を保持。
-  `dgGluingHomConeKernelIso_inl` は左包含を同じ指定境界元の全次数作用と同定。両成分は実加群円錐の左包含元、第三成分は零。
-- `dgGluingConeModuleMap` は指定境界元による全 dg 自然な実加群円錐射。
-  評価の両包含が点ごとの既存同値の順射と一致し、`dgGluingConeModuleMapEvaluation_eq` を証明。
-  同じ加群射の準同型性を証明し、射影的加群間の準同型として K(Gluing) の同型を構成。
-  `dgGluingChosenConeHomotopyRepresentable` は元の両圏の前三角性を明示入力に標準 Yoneda 円錐の全 dg 自然なホモトピー表現可能性を供給。
-- 恒等射の円錐から零加群の表現可能性を回収し、K(Gluing) で零を表す実 gluing 対象と代表加群の同型を構成。
-  表現可能対象の同型閉包の `ContainsZero`・[1] および全非負整数シフト閉性を証明。
-- K の代表加群間の任意の射を元の閉 dg 射へ持ち上げ、任意の distinguished 三角形の最初の二対象から第三対象への閉性を証明。
-  `dgGluingRepresentable_isTriangulatedClosed₃` は標準 Yoneda 円錐に限らない同型閉包の全円錐閉性。
-- 元の C・D の任意整数シフト代表から実 gluing 候補を構成し、augmentation の厳密な回収・移送ホモトピーと両成分の K の比較を供給。
-  正規化した kernel のシフト同型を使い、標準 kernel シフトから同じ候補への実閉 comma 射を構成。後合成は各 Hom 複体でホモトピー同値。
-- 標準 kernel シフトとの閉斉次射影・包含を全整数 n で構成。両成分は正規化した標準射影・包含、第三成分は零。
-  augmentation の両厳密正方形と、通常順の両合成が実 comma 単位になることを証明。
-- kernel comma への Small 仮定なしに、native gluing 上の制限 Hom 加群値 dg 関手を構成。
-  同じ斉次単位から `dgGluingKernelHomModuleShiftIso` を作り、native 代表加群と制限 Hom 加群の実同型も供給。
-- `dgGluingShiftModuleMap` は任意整数シフトの Yoneda 加群から、同じ実 gluing 候補の代表加群への全 dg 自然な実比較。
-  元の両圏の前三角性を明示入力に取る選択版も構成。比較射の quasi-isomorphism 性は未証明。
-- gluing 自体の負シフトの全 dg 自然な加群表現可能性、全整数シフト閉性と前三角性への統合は未完。
-  工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
+- 工程 (a) 完了。`DGGluingObject` の対象、比較差 `gμ − νf` の mapping cocone としての実 Hom 複体、全次数の微分・単位・合成・結合律を構成。
+  native dg 圏、左右 dg 射影、実 comma・通常 kernel comma への比較関手を供給。native/kernel Hom 同型は全次数の合成・単位を保存。
+- 元の両圏の前三角性を明示入力に、円錐代表と任意整数シフト代表から実 gluing 対象を構成。
+  augmentation の厳密な回収、同じ代表射との全 dg 自然な移送ホモトピー、両成分の K の比較を証明。
+- 円錐比較 `dgGluingConeModuleMap` は、指定境界元による全 dg 自然な実加群射。評価は構成済みの Hom 円錐ホモトピー同値と一致。
+  同じ射の quasi-isomorphism 性と K(Gluing) の代表同型を証明し、標準 Yoneda 円錐のホモトピー表現可能性を供給。
+- 標準 kernel シフトと元の対象の閉斉次射影・包含を構成。両 augmentation 正方形は厳密、第三成分は零、両合成は実 comma 単位。
+  kernel comma の Small 性を要求せず native gluing 上の制限 Hom 加群値 dg 関手を構成し、同じ元から実加群シフト同型を得た。
+- `dgGluingShiftModuleMap` の閉射評価を同じ kernel 後合成と同定し、既存の Hom ホモトピー同値から quasi-isomorphism 性を証明。
+  射影的加群間の射として K の同型を得て、負も含む全整数シフトの全 dg 自然なホモトピー表現可能性を供給。
+- 代表加群の同型閉包は零・全整数シフト・任意 distinguished 三角形の円錐で閉じる。
+  `dgGluing_isDGPretriangulated` は元の C・D の前三角性だけを明示入力に、構成した実 gluing の前三角性を結論する。
+- 工程 (b)〜(f) は未着手。次は (b) の二つの充満 dg 部分圏と射影・随伴を構成する。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -75,14 +54,14 @@
 - `dgGluingKernelShiftRepresentativePostEquiv`・`dgGluingNormalizedShiftSquare`・`dgGluingKernelShiftProjection_closed`
 - `dgGluingKernelShiftInclusion_closed`・`dgGluingKernelShiftOutIn`・`dgGluingKernelShiftInOut`
 - `dgGluingKernelHomModuleShiftIso`・`dgGluingKernelRepresentableModuleIso`・`dgGluingChosenShiftModuleMap`
+- `dgGluingShiftModuleMap_quasiIso`・`dgGluingChosenShiftHomotopyRepresentable`・`dgGluing_isDGPretriangulated`
 
 ### 残り（依存順）
-1. (a) 残り：負シフトの表現可能性、全整数シフトと三角的閉性を統合し `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
-2. (b) 半直交分解 ⟨C, D⟩：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
-3. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
-4. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
-5. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
-6. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
+1. (b) 半直交分解 ⟨D, C⟩（K-8b の Map(left,right)=0）：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
+2. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
+3. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
+4. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
+5. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。
 
 ### 依存と提供
@@ -93,13 +72,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- 制限 Hom 加群関手の閉射の評価を、同じ kernel comma の実後合成と同定する。
-  `dgGluingKernelShiftRepresentativePostEquiv` でその quasi-isomorphism 性を示し、`dgGluingShiftModuleMap` に移す。
-  射影的加群間の準同型として K のシフト代表同型を得て、既存の零・全円錐閉性と合わせて前三角性を証明する。
+- (b) 左右どちらかがホモトピー零である対象の充満 dg 部分圏を定義し、左右射影による元の二圏との比較を構成する。
+  元の前三角圏の零対象は K で零を表す対象なので、厳密な零 Hom と仮定せず、代表加群の可縮性を使う。
+  KL §4.2 と K-8b の規約 Map(D,C)=0 に沿い、順序 ⟨D,C⟩ の射影・随伴と実半直交分解を組み立てる。
 
 ### 未コミット・既知の問題
-- 181モジュール・集約ビルド成功（5098 jobs）、公理監査3230宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開38署名を検査済み。新規12モジュール、集約・監査・本計画の専有15パスだけを保存。他レーンの差分は含めない。
+- 185モジュール・集約ビルド成功（5102 jobs）、公理監査3294宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開11署名を検査済み。新規4モジュール、集約・監査・本計画の専有7パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

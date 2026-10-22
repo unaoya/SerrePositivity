@@ -185,7 +185,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModules,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleShift,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentableModule,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleMap]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftHomotopyRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
