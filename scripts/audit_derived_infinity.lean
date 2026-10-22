@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition
+import SerrePositivity.InfinityCategories.Derived.QCatHomWhiskering
+import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentWhiskerTriangles
+import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentTriangles
+import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceHomInvCorrection
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichMiddleChange
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionSandwichValue
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionPentagon
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichPentagon
@@ -4154,6 +4160,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition,
+    `SerrePositivity.InfinityCategories.Derived.QCatHomWhiskering,
+    `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentWhiskerTriangles,
+
+    `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceCoherentTriangles,
+    `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceHomInvCorrection,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichMiddleChange,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionSandwichValue,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionPentagon,
 
