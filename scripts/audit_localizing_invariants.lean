@@ -1151,7 +1151,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateLayerValue,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraShiftedLayerCochainNaturality,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCoefficientTriangles,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateHomologyTriangles]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateHomologyTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationAdditive,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffineMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffineOperation,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffinePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapAffine,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffinePathLinear,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeClassPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathSurjectiveSource]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -1392,5 +1392,15 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCand
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraShiftedLayerCochainNaturality
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCoefficientTriangles
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateHomologyTriangles
+public import SerrePositivity.KST.LocalizingInvariants.DGDerivationAdditive
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffineMap
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffineOperation
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffinePath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapAffine
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffinePathLinear
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitness
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeClassPath
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathSurjectiveSource
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
