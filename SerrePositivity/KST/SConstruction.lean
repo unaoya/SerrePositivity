@@ -2460,4 +2460,8 @@ public import SerrePositivity.KST.SConstruction.DGKUniverseMorita
 public import SerrePositivity.KST.SConstruction.DGKUniverseQuasiEquivalence
 public import SerrePositivity.KST.SConstruction.DGOdotInputMorita
 
+public import SerrePositivity.KST.SConstruction.DGAlgebraEnvelopeGenerator
+public import SerrePositivity.KST.SConstruction.DGOdotGenerators
+public import SerrePositivity.KST.SConstruction.DGOdotMorita
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -30060,3 +30060,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputKEdge_isInvertible
 #print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputKEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelope_perfectOver_representable_eq
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelope_perfectOver_representable_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotGeneratorConditions
+#print axioms SerrePositivity.KST.SConstruction.dgOdotGeneratorConditions
+
+#check @SerrePositivity.KST.SConstruction.dgOdotEndInclusion_isEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotEndInclusion_isEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotPerfectNerveEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotPerfectNerveEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputMap_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputMap_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputNuMap_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputNuMap_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputKMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputKMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputKEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputKEdge_isInvertible

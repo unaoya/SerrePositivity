@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotPerfectComparison
 /-! # 実 ⊙ の Perf native nerve と元の商 Perf の比較
 概要：元の実 ⊙ から商への射が、その元の自由代表と native Perf 同値を保持する。
 方針：実 dg Perf 準同値に D の nerve 比較を適用し、元の representable 比較も回収する。
-規約：自由生成の二条件は未供給。使われ方：具体的商の冪等完備化への接続。
+規約：この比較は二生成条件を明示入力とする。使われ方：具体的商の冪等完備化への接続。
 -/
 @[expose] public section
 noncomputable section

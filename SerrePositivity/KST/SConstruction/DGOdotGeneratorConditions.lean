@@ -3,9 +3,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotQuotient
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareGeneration
 
 /-! # 実 dg 代数四角形の自由生成条件と元の End 包含
-概要：未供給の実自由生成条件を明示し、同じ実代数四角形の元の End 包含へ接続する。
+概要：左右の実自由生成条件を明示し、同じ実代数四角形の元の End 包含へ接続する。
 方針：構成済みの実比較対角に対する生成・Morita 判定を、そのまま特殊化する。
-規約：生成条件は結論として主張しない。使われ方：D の実自由生成 API の接続先。
+規約：生成条件の供給は DGOdotGenerators で行う。使われ方：D の実自由生成 API の接続先。
 -/
 @[expose] public section
 noncomputable section
@@ -25,7 +25,7 @@ local notation "CL" => DGSmallPerfectArrowTarget R (A) (C) (L)
 local notation "DR" => DGSmallPerfectArrowTarget R (A) (D) (G)
 local notation "I" => dgOdotQuotientInput R d
 
-/-- D の実自由生成 API から供給すべき、同じ小模型の二つの具体的条件。 -/
+/-- D の実自由生成 API から供給する、同じ小模型の二つの具体的条件。 -/
 structure DGOdotGeneratorConditions : Prop where
   left : modulePerfectOver R (CL)
     {dgSmallPerfectArrowTargetRepresentable R (A) (C) (L)
