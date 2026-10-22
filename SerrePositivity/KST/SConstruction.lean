@@ -2413,4 +2413,9 @@ public import SerrePositivity.KST.SConstruction.DGRepresentableFiniteCellThick
 public import SerrePositivity.KST.SConstruction.DGRepresentableThickGeneration
 public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientMorita
 
+public import SerrePositivity.KST.SConstruction.DGEndInclusionPerfectFull
+public import SerrePositivity.KST.SConstruction.DGEndInclusionPerfectGeneration
+public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientEndInclusion
+public import SerrePositivity.KST.SConstruction.DGStrictSquareRightEndComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

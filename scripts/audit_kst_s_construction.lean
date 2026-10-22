@@ -29526,3 +29526,45 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientPerfectEquivalence
 #print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusion_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusion_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusionDerivedFullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusionDerivedFullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusionPerfectFullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusionPerfectFullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusionPerfect_essSurj
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusionPerfect_essSurj
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusionPerfect_isEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusionPerfect_isEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgEndInclusionPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgEndInclusionPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusion_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusion_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusionPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusionPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusion_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEndInclusion_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareRightQuotientEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightQuotientEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareRightQuotientEndMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightQuotientEndMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectAt
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectAt
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectClosedIso
