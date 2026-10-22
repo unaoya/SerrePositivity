@@ -2404,3 +2404,8 @@ Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
 [Berger–Fresse 2004](https://arxiv.org/pdf/math/0109158)。
+
+標準単体の元の追加退化から正規化鎖と整数次数の鎖収縮を構成した。
+`ComplexLimits.normalizedSimplexTensorAugmentation` は同じ X⊗N(Δⁿ) から X への全自然 augmentation。
+各成分と全ての面・退化は任意の非有界 X で擬同型。flatness や cofibrancy の入力は不要。
+Reedy cofibrancy・標準 frame との比較・標準単位比較の弱同値性は未証明。
