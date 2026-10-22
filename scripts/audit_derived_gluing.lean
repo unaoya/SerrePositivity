@@ -228,7 +228,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaCoefficientActions,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientPreAction,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientModuleMap]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaCoefficientPostInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientPostAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomFunctorMaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomFunctorMapElements,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleFunctorNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientTransformation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.GluingFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NerveStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NerveLaxComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NerveAugmentationVertex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveLaxComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveCompatibility]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -13,7 +13,7 @@
   同じ比較射の擬同型性・射影性から K の代表同型を得る。augmentation と両成分の移送比較も同じ射に保持する。
 - `dgGluing_isDGPretriangulated` は、代表加群の同型閉包の零・全整数シフト・任意 distinguished 円錐閉性から実 gluing の前三角性を結論する。
   閉斉次シフト単位と円錐の指定境界元を使い、点ごとの同値を全 dg 自然な加群比較で実現している。
-- 工程 (b) 進行中。片側が H⁰ で零となる対象の実充満 dg 部分圏 `DGGluingCFactor`・`DGGluingDFactor` と両包含・制限射影を構成。
+- 工程 (b) の dg・H⁰・K の界面を構成済み。片側が H⁰ で零となる対象の実充満 dg 部分圏 `DGGluingCFactor`・`DGGluingDFactor` と両包含・制限射影を構成。
   元の前三角性からホモトピー零対象を選び、両制限射影の実対象での全射性を証明。厳密零対象・零 Hom の仮定は追加しない。
 - C 因子への左 Hom 射影、D 因子からの右 Hom 射影は擬同型。両充満因子と元の C・D の dg 準同値を証明。
   `dgGluingFactors_semiorthogonal` は順序 ⟨D,C⟩ の実 Hom 複体の全次数 acyclic 性。
@@ -28,58 +28,36 @@
   標準 bottom 包含は全因子対で擬同型。両 Hom 射影は零、第三成分は恒等。比較元零の仮定なし。
 - comma の標準 bottom 包含は全次数の前後合成を保存し、native 係数包含と全 Yoneda 同型を通して一致。
   native 前合成を元の反変 M 作用と同定し、各 D 因子対象について C 因子上の全 dg 自然な係数加群射を構成。
-  評価は同じ包含、その加群射は擬同型。D 変数の全次数自然性・関手間比較は未完。(b) 継続中、(c)〜(f) 未着手。
+  評価は同じ包含、その加群射は擬同型。D 変数の全 Hom 自然性も検証し、同じ成分の厳密 dg 自然変換を供給。
+  元の gluing 関手 `dgGluingFunctor` は D→Mod(C), M[-1]。次数零だけの自然性で代用していない。
+- (c) 進行中。共通対象宇宙で dg nerve の二射影・augmentation の全単体構造変換を構成。
+  native 加群 dg nerve を標的とする F2 の lax pullback への実比較は二射影・矢印族を厳密に回収し、頂点辺は元の augmentation。
+  β5 の全加群恒等関手の実半自由出力分解で後合成し、導来加群 ∞ 圏 D(C) を標的とする同じ lax pullback 比較も構成。
+  導来矢印族と頂点辺は元の同じ族・辺の出力分解像と厳密に一致。一般宇宙の移送は未完。(d)〜(f) 未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
-- `dgGluingHom_d_comparison`・`dgGluingHom_ext`・`dgGluingHomLift_unique`・`dgGluingAugmentation_value`
-- `DGGluingRepresentableCategory`・`dgGluingRepresentableRight`・`dgGluingRepresentableLeftModule`
 - `dgGluingHomRepresentableIso`・`dgGluingHomRepresentableIso_left`・`dgGluingHomRepresentableIso_right`
-- `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`
-- `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`・`dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
-- `dgGluingConeSquareMatrix_eq`・`dgGluingConeCoconeIso`・`dgGluingHomConeKernelIso_inl`
-- `dgGluingComposition_comparison`・`dgGluingPostcomposition_comparison`・`dgGluingPostcomposition_fst`
-- `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
-- `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
-- `dgGluingKernelConeIso`・`dgGluingKernelConeIso_inr`・`dgGluingCommaKernelConeIso`
-- `dgGluingKernelColumnIso_hom_naturality`・`dgGluingKernelHomAction_yoneda`・`dgGluingKernelHomConeAction_inl`
-- `dgGluingYonedaConeIso_canonical`・`dgGluingHomConeRightTensorTargetIso`・`dgGluingHomConeRightCoefficient_kernel_module`
-- `DGGluingConeRepresentative`・`dgGluingChooseConeRepresentative`
-- `dgGluingConeObject`・`dgGluingConeObject_augmentation`・`dgGluingConeObject_leftIso`・`dgGluingConeObject_rightIso`
-- `dgGluingConeObject_augmentation_transport`・`dgGluingConeRightHomotopyIso`
-- `dgGluingHomConeKernelIso`・`dgGluingKernelConeRepresentativeMap`・`dgGluingKernelConeRepresentativeMap_source_homotopy`
-- `dgGluingCoconeExtract_isIso`・`dgGluingCommaPostHomotopy_isIso`・`dgGluingHomConeKernelRepresentativeEquiv`
-- `dgGluingKernelHomIso`・`dgGluingKernelHomIso_identity`・`dgGluingHomConeNativeEquiv`
-- `dgGluingCommaToKernel`・`dgGluingKernelHomIso_factorization`・`dgGluingToKernelComma`・`dgGluingKernelHomIso_composition`
-- `dgGluingSmall`・`dgGluingKernelConeInr`・`dgGluingConeInr`・`dgGluingHomConeKernelIso_inr`
-- `dgGluingConeNullCochain`・`dgGluingConeModuleNullElement_boundary`・`dgGluingConeModuleMap`・`dgGluingChosenConeModuleMap`
-- `dgGluingConeModuleMapEvaluation_inl`・`dgGluingConeModuleMapEvaluation_inr_comparison`・`dgGluingConeNullElement_kernel`
-- `dgGluingConeModuleMapEvaluation_eq`・`dgGluingConeModuleMap_quasiIso`・`dgGluingConeModuleHomotopyIso`
-- `dgGluingConeHomotopyRepresentable`・`dgGluingChosenConeHomotopyRepresentable`
-- `dgGluingZeroHomotopyRepresentable`・`dgGluingZeroObject`・`dgGluingZeroRepresentableIso`
-- `dgGluingRepresentableProperty_shift_nat`・`dgGluingRepresentable_containsZero`・`dgGluingRepresentable_isTriangulatedClosed₃`
-- `DGGluingShiftRepresentative`・`dgGluingChooseShiftRepresentative`・`dgGluingShiftRepresentativeHomInv_homotopy`
-- `dgGluingShiftObject`・`dgGluingShiftObject_augmentation_transport`・`dgGluingKernelShiftRepresentativeMap`
-- `dgGluingKernelShiftRepresentativePostEquiv`・`dgGluingNormalizedShiftSquare`・`dgGluingKernelShiftProjection_closed`
-- `dgGluingKernelShiftInclusion_closed`・`dgGluingKernelShiftOutIn`・`dgGluingKernelShiftInOut`
-- `dgGluingKernelHomModuleShiftIso`・`dgGluingKernelRepresentableModuleIso`・`dgGluingChosenShiftModuleMap`
-- `dgGluingShiftModuleMap_quasiIso`・`dgGluingChosenShiftHomotopyRepresentable`・`dgGluing_isDGPretriangulated`
-- `DGGluingCFactor`・`DGGluingDFactor`・`dgGluingFactorZeroObject`・`dgGluingCFactorProjection`
-- `dgGluingCFactorProjection_quasiEquivalence`・`dgGluingLeftHomMap_quasiIso_of_target_right_zero`・`dgGluingFactors_semiorthogonal`
-- `dgGluingDFactorProjection_quasiEquivalence`・`dgGluingCFactorHomotopyEquivalence`・`dgGluingDFactorHomotopyEquivalence`
+- `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`・`dgGluingComposition_comparison`
+- `dgGluingConeObject`・`dgGluingChosenConeModuleMap`・`dgGluingConeModuleMap_quasiIso`
+- `dgGluingChosenShiftModuleMap`・`dgGluingShiftModuleMap_quasiIso`・`dgGluing_isDGPretriangulated`
+- `DGGluingCFactor`・`DGGluingDFactor`・`dgGluingFactorZeroObject`・`dgGluingFactors_semiorthogonal`
+- `dgGluingCFactorProjection_quasiEquivalence`・`dgGluingDFactorProjection_quasiEquivalence`
 - `dgGluingCProjectionAdjunction`・`dgGluingDProjectionAdjunction`・`dgGluingCSectionHomotopyFullyFaithful`・`dgGluingDSectionHomotopyFullyFaithful`
-- `dgGluingDecompositionArrow`・`dgGluingDecompositionCFactor`・`dgGluingDecompositionCSectionIso`
 - `dgGluingDecompositionTriangle`・`dgGluingDecompositionTriangle_distinguished`・`dgGluingDecompositionTriangle_mor₁`
-- `dgGluingCrossHomFunctor`・`dgGluingCrossCoefficientFunctor`・`dgGluingCrossHomCoefficientMap_quasiIso`
-- `dgGluingCrossHomCoefficientMap_primitive`・`dgGluingCommaForward_primitive`・`dgGluingComma_forward_bottom`
-- `dgGluingCrossHomCoefficientMap_pre`・`dgGluingCrossHomCoefficientModuleMap`・`dgGluingCrossHomCoefficientModuleMap_quasiIso`
+- `dgGluingFunctor`・`dgGluingCrossHomFunctor`・`dgGluingCrossCoefficientFunctor`・`dgGluingCrossHomCoefficientMap_quasiIso`
+- `dgGluingCrossHomCoefficientMap_pre`・`dgGluingCrossHomCoefficientMap_post`・`dgGluingCrossHomCoefficientModuleMap_quasiIso`
+- `dgGluingCrossHomCoefficientModuleMap_naturality`・`dgGluingCrossHomCoefficientComparison`・`dgGluingCrossHomCoefficientComparison_app`
+- `dgGluingLeftNerve`・`dgGluingRightNerve`・`dgGluingAugmentationNerveHomotopy`・`dgGluingAugmentationNerveHomotopy_vertex_edge`
+- `dgGluingNerveLaxComparison`・`dgGluingNerveLaxComparison_fst`・`dgGluingNerveLaxComparison_snd`・`dgGluingNerveLaxComparison_arrow`
+- `dgGluingModuleDerivedComparison`・`dgGluingDerivedNerveLaxComparison`・`dgGluingDerivedAugmentationArrowFamily_postcompose`
+- `dgGluingDerivedNerveLaxComparison_fst`・`dgGluingDerivedNerveLaxComparison_snd`・`dgGluingDerivedAugmentationHomotopy_vertex_edge`
 
 ### 残り（依存順）
-1. (b) 残り：係数 M[-1] の D 変数の全次数自然性、同じ dg 関手間比較。C 変数の dg 加群射・擬同型、充満因子・半直交性・両 H⁰ 随伴・K 分解三角形は構成済み。KL §4.2。見積り 1 日。
-2. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
-3. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
-4. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
-5. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
+1. (c) 共通対象宇宙で native 加群 dg nerve・導来加群 ∞ 圏上の同じ実比較を構成済み。一般宇宙への移送整合を供給。Tamme Definition 5。見積り 1 日。
+2. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
+3. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
+4. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。
 
 ### 依存と提供
@@ -90,13 +68,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingCommaBottom_forward`・`dgGluingCrossHomCoefficientMap_comma_apply`・`dgGluingYonedaCoefficient_post` で、
-  native 後合成と元の共変 M 作用を同定。`moduleShiftHom_π_v (-1)` の符号と照合し、構成済みの係数加群射の
-  D 変数の全次数自然性を示す。同じ射を dg 関手間比較へ束ねる。C 変数の全 dg 自然性・加群擬同型は構成済み。
+- `dgGluingDerivedNerveLaxComparison` を正本とし、構成済みの二射影・元の構造辺を保持して一般宇宙への移送を供給する。
+  β5 の `dgModuleResolvedInfinity_rawFactorIso` は同じ係数脚を単独の出力分解関手と比較する入口。
+  続いて実 mapping cocone Hom と F2 Remark 6 の写像空間模型を比較し、充満忠実性・本質的全射性と全試験関手の普遍性へ進む。
 
 ### 未コミット・既知の問題
-- 224モジュール・集約ビルド成功（5145 jobs）、公理監査3710宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開21署名を検査済み。新規7モジュール、集約・監査・本計画の専有10パスだけを保存。他レーンの差分は含めない。
+- 238モジュール・集約ビルド成功（5347 jobs）、公理監査3782宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開37署名を検査済み。新規14モジュール、集約・監査・本計画の専有17パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
