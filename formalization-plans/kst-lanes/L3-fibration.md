@@ -14,8 +14,7 @@
   K-1 により W 辺の正の全有限反復の二評価の加法性を証明。全有限 W 列の図式圏も安定。
   全ての面・退化は完全で、StableModel 値の単体的対象と各段の反復実現を構成済み。
 - 全合成辺に共通の cofiber 補完を構成し、元の実四角形・始点・核値 cofiber を回収。
-  補完と cofiber は全再添字と厳密に可換。退化辺の核値 cofiber 族は全関手圏で零対象。
-  関手圏内の八面体族を E(ker q,B,ker q) へ制限し、元の三辺の全正有限反復加法性を証明。
+  全再添字と厳密に可換。退化の cofiber は零で、関手圏内の八面体族から元の三辺の全正反復加法性を証明。
 - 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
   全射影・再添字後の実合成辺を回収。一辺では同じ二成分が既存の加法性写像を回収。
   零長では初期頂点評価・空積を除く射が厳密同型。零長を含む全長で全正有限反復の局所化同型。
@@ -29,15 +28,12 @@
   共有端点を元の最終頂点と照合した安定な厳密引き戻しで、両成分は零・実押し出しを共同反映。
   同じ全 cofiber 補完を RelativePullback の全反復定理へ接続し、先行面・最後の辺・Fin 終端積で帰納。
 - 元の S_n(W 列_m) の頂点と wS_n(B) の実 m 単体を、内部 Hom の交換で厳密に同定。
-  全零対角・実押し出し・W 条件を保ち、両方向の全面・全退化で可換。object S(W 列) と
-  相対 S の交換した二重単体集合・対角の厳密同型を構成。K-1 の各行の object/core 比較から、
+  全零対角・実押し出し・W 条件と全面・全退化を保つ二重単体・対角の厳密同型と K-1 object/core 比較で、
   相対 S の対角 → W 列の core S 実現の対角の実際の比較射が局所化同型と証明。
-  同じ単回反復実現 F₁ の対角へ自然な座標同型で接続。包含側の任意の完全関手による
-  W 列の後合成は安定な入力の単体的自然変換で、実単体・二重単体・対角の交換と厳密に可換。
+  同じ F₁ の対角へ自然な同型で接続。完全関手の W 列後合成は実単体・二重単体・対角の交換と可換。
   相対 S の核側の写像を同じ W 列の core/単回反復実現へ運ぶ可換四角形を証明。
   零長同型の逆と元の退化で全定数 W 列を構成。全単体作用素・完全関手と厳密に可換で全頂点を回収。
-  gapped 交換と object/core 比較を通し、元の core 包含が相対 S の実比較の後で同じ定数包含になる
-  局所化等式を証明。object/core 比較を前合成した厳密な四角形で元の core 包含を保持。
+  gapped 交換と object/core の前合成の厳密な四角形で、元の core 包含と同じ定数包含を保持。
 - 元の Verdier 包含を実核部分圏へ制限し、元の写像空間の充満忠実性と核条件から完全な同値を構成。
   包含を通る合成の核は元の包含側の圏と厳密同型。核への後合成は全正有限反復で局所化同型。
   全 cofiber の後合成の自然同型から、全長・全正反復の有限積比較の後合成等式を局所化で証明。
@@ -47,12 +43,15 @@
   全面・全退化を合成し、K-2 Segal 実現で全行と対角の元の四角形も homotopy pullback。
   零行同型で定数包含へ移し、object/core の厳密比較で元の相対 S 核四角形の実現も同じ性質。
   包含側の全相対 S_n の零対象の収縮を対角へ送り、一点への元の射は局所化同型。
-  同じ単回実現 F₁ の包含側の W 列対角の一点射も局所化同型。商との比較は未完。
+  同じ単回実現 F₁ の包含側の W 列対角の一点射も局所化同型。
+  元の S₀ の零対象で基点を指定し、相対 core 包含の実 homotopy fiber と core S(D) の局所化同型を構成。
+  同じ fiber 射影との合成は元の Verdier 包含の実現射を回収。商の core S との実 fiber 比較も構成。
+  商実現射影の局所化同型性を明示的に入力すれば商 fiber 同型と同じ射影式を得る。この入力は未証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7623 jobs・専用監査 191 モジュール 1024 宣言 が成功。
+- 現在の対象ビルド 7629 jobs・専用監査 197 モジュール 1058 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3886 モジュールは EInfinity を含まない。全体 24239 jobs で成功。
+  所有 import 閉包 3892 モジュールは EInfinity を含まない。全体 24341 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -72,9 +71,10 @@
 - tailRelativePullback、weakStringTailMultiStep_localized_isIso（元の全長・全正有限反復の射対）。
 - weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、
   relativeSWeakStringCoreComparison_localized_isIso（元の実比較射）。
-- relativeSWeakStringMultiComparison_square、relativeSWeakStringCoreComparison_square。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSKernelDiagonal_toPoint_localized_isIso、weakStringKernelDiagonal_toPoint_localized_isIso。
+- relativeSFibrationFiberIso、relativeSFibrationFiberIso_hom_projection、relativeToQuotientSFiberMap、
+  quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力する条件付き）。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
@@ -98,12 +98,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の零行・定数包含・相対 S 核四角形・対角の一点射の9モジュール等を含める）。
+- なし（今回の指定基点・実 fiber 比較・元の包含射の回収・商 fiber への実比較の6モジュール等を含める）。
 ### 既知の問題
-- K-6 全体・有限 W 列比較の全単体的自然性・連結版の cofinality 条件は未完。
+- 商の ∞ 写像空間比較・cofinality 十分条件・Sp 値の K-6 は未完。K-5 の fraction 比較も同値性未証明。
 ### 次の一手
-- 相対 S の商射影を、商の core S の実現と比較する。元の写像空間の局所化を使う。
-  指定した基点上の homotopy fiber への移送、cofinality の十分条件、Sp 値への接続も未完。
+- 相対 S の商射影を商の core S の実現と比較する。実 ∞ 局所化の分数・cofinality の証明が必要。
+  指定 fiber・元の包含・商 fiber 比較は構成済み。商実現比較の可逆性、cofinality 十分条件、Sp 値が未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
