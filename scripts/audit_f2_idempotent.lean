@@ -922,3 +922,75 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @isIdempotentComplete_iff_hasColimits
 #print axioms isIdempotentComplete_iff_hasColimits
+
+#check @walkingScalar_mul_comm
+#print axioms walkingScalar_mul_comm
+
+#check @walkingScalar_reverse_triple
+#print axioms walkingScalar_reverse_triple
+
+#check @walkingIdemToOpposite
+#print axioms walkingIdemToOpposite
+
+#check @walkingIdemFromOpposite
+#print axioms walkingIdemFromOpposite
+
+#check @walkingIdemOppositeIso
+#print axioms walkingIdemOppositeIso
+
+#check @walkingReverseHom
+#print axioms walkingReverseHom
+
+#check @walkingReverseHom_comp
+#print axioms walkingReverseHom_comp
+
+#check @walkingSplitToOpposite
+#print axioms walkingSplitToOpposite
+
+#check @walkingSplitFromOpposite
+#print axioms walkingSplitFromOpposite
+
+#check @walkingSplitOppositeIso
+#print axioms walkingSplitOppositeIso
+
+#check @walkingInclusion_toOpposite
+#print axioms walkingInclusion_toOpposite
+
+#check @idemOppositeIso
+#print axioms idemOppositeIso
+
+#check @splitOppositeIso
+#print axioms splitOppositeIso
+
+#check @idemOppositeIso_inclusion
+#print axioms idemOppositeIso_inclusion
+
+#check @idemOppositeIso_inv_inclusion
+#print axioms idemOppositeIso_inv_inclusion
+
+#check @OppositeStrongSplitting
+#print axioms OppositeStrongSplitting
+
+#check @StrongSplitting.toOpposite
+#print axioms StrongSplitting.toOpposite
+
+#check @OppositeStrongSplitting.toStrong
+#print axioms OppositeStrongSplitting.toStrong
+
+#check @oppositeIdempotent
+#print axioms oppositeIdempotent
+
+#check @oppositeIdempotent_hasColimit_of_hasLimit
+#print axioms oppositeIdempotent_hasColimit_of_hasLimit
+
+#check @oppositeIdempotentSplittingToOriginal
+#print axioms oppositeIdempotentSplittingToOriginal
+
+#check @strongSplitting_exists_of_hasLimit
+#print axioms strongSplitting_exists_of_hasLimit
+
+#check @nonemptyStrongSplitting_iff_hasLimit
+#print axioms nonemptyStrongSplitting_iff_hasLimit
+
+#check @isIdempotentComplete_iff_hasLimits
+#print axioms isIdempotentComplete_iff_hasLimits

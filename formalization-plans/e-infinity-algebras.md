@@ -41,7 +41,7 @@
   **元の Ret 濾過の全被覆性・無限合成・HTT 4.4.5.6 を完了。** 元の二対象・二元の射を分類し、恒等値の隣接射の潰しは元の全単体と厳密に一致。非退化単体を元の交互セルの面へ入れ、退化も含め第 n+1 段階に収容。
   `retractionStageCocone_isColimit` は元の段階包含を脚とする元の分裂添字の余極限。`weakComparison_innerAnodyne` は元の標準比較そのものを可算無限合成で証明。
   `weakDiagram_extension_exists`・`weakDiagram_strongSplitting_exists` は任意の quasicategory 内で指定した弱い全 retract 図式を厳密に回収。`weakDiagramExtensionSpace_isContractibleKan` は同じ弱い全図式を固定した元の延長空間の可縮性。
-  既に指定した全 Idem 図式の分裂空間の可縮性・同じ Idem 図式の余極限や極限との同値は未証明。弱い図式の延長空間の可縮性で代用しない。
+  同じ全 Idem 図式の余極限・極限と強い分裂の存在の同値は以下で証明。指定した全 Idem 図式の分裂空間の可縮性は未証明。弱い図式の延長空間の可縮性で代用しない。
   **指定した全 Idem 図式の元の錐・余錐と HTT 4.4.5.9〜10 を完了。** `StrongSplitting.cone`・`.cocone` は元の全図式を厳密に回収し、元の分裂頂点・包含辺・射影辺を保持。任意の後合成とも全錐の等式で整合。
   `idemConeRetraction` は元の右錐から元の全 Idem への厳密な retract。`idemShapeContraction` は元の吸収元の全自然変換から、恒等射と元の一点への定値射の全ホモトピーを構成。
   `idemShape_isWeaklyContractible` は元の Idem に Kan 性を仮定しない弱可縮性。`walkingImage_isInitial`・`walkingImage_isTerminal` は元の分裂対象の通常の添字内での普遍性。
@@ -58,12 +58,15 @@
   これで強い分裂から同じ全 Idem 図式の余極限・極限の存在への二つの含意を完了。余極限から強い分裂への逆方向は以下で証明。極限からの逆方向と、指定した全 Idem 図式の分裂空間の可縮性は未証明。
   **HTT 4.4.5.14 の余極限から強い分裂への逆方向を完了。** 全頂点が元の非分裂対象である元の全単体を全 Idem 単体へ復元し、元の全部分複体との包含を保つ厳密な同型を構成。`idemInclusion_innerFibration`・`idemInclusion_isFullyFaithful` を実際に証明。
   元の分裂対象での左局所射影そのものは同型。非分裂対象では元の恒等頂点が終対象。指定した元の Idem 図式の余極限から全左局所余極限を構成し、F1B の厳密な左 Kan 延長へ渡す。
-  `strongSplitting_exists_of_hasColimit` は元の全図式を厳密に回収。`nonemptyStrongSplitting_iff_hasColimit`・`isIdempotentComplete_iff_hasColimits` で、同じ全図式の余極限による判定を完了。極限からの逆方向と全分裂空間の可縮性は未証明。
+  `strongSplitting_exists_of_hasColimit` は元の全図式を厳密に回収。`nonemptyStrongSplitting_iff_hasColimit`・`isIdempotentComplete_iff_hasColimits` で、同じ全図式の余極限による判定を完了。極限からの逆方向も以下で証明。全分裂空間の可縮性は未証明。
+  **HTT 4.4.5.14〜15 の極限からの逆方向も完了。** 元の二元モノイドの可換性から、元の Idem・分裂添字と反対圏の圏同型を構成。元の全包含と反転同型の正方形を厳密に照合。
+  指定した元の全図式の極限を反転図式の余極限へ移し、保存済みの厳密な分裂存在を適用。元の包含の可換性と二重反転の自然同型で、元の全図式の厳密な強い分裂へ戻す。
+  `strongSplitting_exists_of_hasLimit`・`nonemptyStrongSplitting_iff_hasLimit`・`isIdempotentComplete_iff_hasLimits` を証明。強い分裂・同じ図式の余極限・極限の存在の同値は完成。指定した全図式の全分裂空間の可縮性は未証明。
   同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
   **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
   元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
 - **残り**（依存順、粗い見積もり）：
-  1. F2N-4(a)：極限から強い分裂への逆方向、指定した全 Idem 図式の分裂空間の可縮性。HTT 4.4.5.12〜16、15〜40時間。
+  1. F2N-4(a)：指定した全 Idem 図式の全分裂空間の可縮性。HTT 4.4.5.16、8〜25時間。
   2. F2N-4(b)・(c)：前層圏の冪等完備性、retract 閉包への分裂の反映、`Idem C` の冪等完備性、元の因子化による関手 ∞ 圏の普遍性・一意性。HTT 5.1.4.2〜9、25〜70時間。
   3. F2N-4(d)：安定 ∞ 圏の冪等完備化の安定性。元の零対象・有限極限余極限の閉性を証明。HA 1.1.3.7、15〜40時間。
   4. F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1b の F2N-2・F2N-3 の実際の Ind・compact 界面の後。HTT 5.3.4.17・5.3.5、15〜40時間。
@@ -71,6 +74,7 @@
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
   `WeakShape`、`WeakRetractionDiagram`、`weakDiagramEquiv`、`weakComparison`、`RetractionTriangle`、`VertexRetraction.triangle_exists`、`RetractionTriangle.weakDiagram`、
+  `idemOppositeIso_inclusion`、`OppositeStrongSplitting.toStrong`、`strongSplitting_exists_of_hasLimit`、`nonemptyStrongSplitting_iff_hasLimit`、`isIdempotentComplete_iff_hasLimits`、
   `idemSourceIso_inclusion`、`idemInclusion_innerFibration`、`idemInclusion_isFullyFaithful`、`strongSplitting_exists_of_hasColimit`、`nonemptyStrongSplitting_iff_hasColimit`、`isIdempotentComplete_iff_hasColimits`、
   `idemInclusion_isLeftCofinal`、`idemInclusion_leftAnodyne`、`idemConeRestriction_trivialKanFibration`、`idemCone_isLimit_iff_restrict`、`StrongSplitting.cone_isLimit`、`StrongSplitting.hasLimit`、`StrongSplitting.postcomposeCone_isLimit`、`IsIdempotentComplete.hasLimit`、
   `StrongSplitting.cocone_isColimit`、`StrongSplitting.hasColimit`、`StrongSplitting.postcomposeCocone_isColimit`、`IsIdempotentComplete.hasColimit`、
@@ -89,11 +93,11 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の8モジュール25宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド4521 jobs・全373宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし（今回の6モジュール24宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド4528 jobs・全397宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(a)：HTT 4.4.5.14 の極限から強い分裂への逆方向へ進む。元の二元モノイドの可換性から WalkingIdem と WalkingSplit の反対圏との同型を、元の包含・分裂二対象・元の射を保って構成する。F1B の `kanNerveOppositeIso` と `kanHasLimit_iff_hasColimit_op` で、指定された全 Idem 図式の極限を元の反転図式の余極限へ移し、証明済みの `strongSplitting_exists_of_hasColimit` を適用。元の全包含との厳密な可換性と二重反転で同じ元の全図式の強い分裂へ戻す。その後 4.4.5.16 の全分裂空間の可縮性。完成済みの厳密な左 Kan 延長・元の包含の inner 性と充満忠実性・余極限による判定を再実装しない。
+- **次の一手**：F2N-4(a)：HTT 4.4.5.16 の全分裂空間へ進む。まず元の任意の F : SplitShape→X の全標準左 Kan 余錐の余極限性を証明。X 点は F1B の `kanLeftCanonical_isColimit_at_image`、Y 点は `idemImageKanShapeIso` と `kanNerveLeftCanonicalCocone` で構成済みの同じ Idem 余錐へ照合する。F1B の `kanLeftCanonical_pinchedHomMap_equivalence` から元の前合成の充満忠実性を得る。元の前合成は単射上の制限として inner fibration。固定した元の全 Idem 図式上の fiber で正次境界を充填し、零次は保存済みの厳密な強い分裂を選んで、全分裂空間の可縮 Kan 性を証明。弱い retract 図式上の fiber や h 圏の分裂の一意性で代用しない。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 

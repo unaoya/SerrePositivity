@@ -74,3 +74,9 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.PointColimitExist
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemImageKanShape
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLocalColimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingIdemOpposite
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplitOpposite
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ShapeOppositeIso
+public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeStrongSplitting
+public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeIdempotent
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence
