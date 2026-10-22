@@ -28410,3 +28410,120 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.valuePullbackCone_vertex_value
 #print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.valuePullbackCone_vertex_value
+
+#check @SerrePositivity.KST.SConstruction.dgQuotientImage
+#print axioms SerrePositivity.KST.SConstruction.dgQuotientImage
+
+#check @SerrePositivity.KST.SConstruction.PointedDGQuotientObject
+#print axioms SerrePositivity.KST.SConstruction.PointedDGQuotientObject
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientProjection
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientProjection
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientVertex
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientVertex
+
+#check @SerrePositivity.KST.SConstruction.PointedDGQuotientEndObject
+#print axioms SerrePositivity.KST.SConstruction.PointedDGQuotientEndObject
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndInclusion
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndInclusion
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndUnitMap
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndUnitMap
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndUnitMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndUnitMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_X
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_X
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_d
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_d
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_multiplication
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEnd_multiplication
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEpsilon
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEpsilon
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEpsilon_d
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEpsilon_d
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_map
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_map
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_unitMap
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_unitMap
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_epsilon
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_epsilon
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_epsilon_d
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientEndExtension_epsilon_d
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonal_isZero
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonal_isZero
+
+#check @SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEnd_isZero
+#print axioms SerrePositivity.KST.SConstruction.pointedDGQuotientDiagonalEnd_isZero
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.leftZero
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.leftZero
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.leftZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.leftZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.rightPoint
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.rightPoint
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.ofClosedZero
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.ofClosedZero
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_left
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_left
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_right
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_right
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_comparison
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_comparison
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_left_isZero
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.point_left_isZero
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.quotientObject
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.quotientObject
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endObject
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.projection
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.projection
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endInclusion
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endInclusion
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endUnitMap
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.endUnitMap
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.end_hom
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.end_hom
+
+#check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal_isZero
+#print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal_isZero
