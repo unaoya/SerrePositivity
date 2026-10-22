@@ -10,6 +10,10 @@
 - **F2N-2(a) 進行中**：元の小さい right unstraightening を添字とする同じ Yoneda 図式を固定。
   `presheafElementsYonedaDiagram_vertex` で各項が元の表現可能前層であることを照合。
   同じ図式の native な各点余極限を構成。頂点が元の F である密度定理は未証明。
+- `presheafYonedaSliceCocone` は元の F 自体を指定頂点とする標準全余錐。
+  `presheafYonedaSliceFiberValueEquivalence` は同じ射影の各 fiber を元の F(x) と比較する。
+  小さい元の圏からの一つの底上の比較写像は未構成。各点の同値の存在で代用しない。
+  `presheafElementsCoconeOfComparison` は、その指定比較を入力すると小さい同じ図式へ全余錐を戻す。
 - **(b) の構成部分**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   閉包の最小性は頂点条件の包含の主張であり、(d) の関手の延長の普遍性ではない。
@@ -27,6 +31,8 @@
 
 - `presheafElementsYonedaDiagram`、`presheafElementsYonedaDiagram_vertex`
 - `presheafElementsColimitCocone`、`presheafElementsColimitCocone_isColimit`
+- `presheafYonedaSliceProjection`、`presheafYonedaSliceCocone`、`presheafYonedaSliceCocone_vertex`
+- `presheafYonedaSliceFiberValueEquivalence`、`presheafElementsCoconeOfComparison`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -53,9 +59,10 @@
 
 ### 次の一手
 
-(a)：`presheafElementsYonedaDiagram F` から元の F への同じ自然変換・native 余錐を構成する。
-Yoneda の実際の恒等点評価と right fibration の全写像空間比較を使い、各点で元の F の値を余極限として回収する。
-別の余極限の選択との対象同型だけに弱めず、同じ全余錐の普遍性を証明して (c) の指定表示へ使う。
+(a)：小さい元の圏の持ち上げから `presheafYonedaSlice F` への一つの底上の比較 k を構成する。
+元の Yoneda の恒等点評価の自然性と right fibration の全族の比較を使い、各 fiber の比較を全単体へ束ねる。
+`presheafElementsCoconeOfComparison F k hk` で元の F を頂点とする小さい全余錐を回収し、その余極限性を証明する。
+同じ全余錐を (c) の指定表示へ使い、別の余極限の存在や各点だけの同値で密度を主張しない。
 報告後は承認を待たず (a) を続行する。
 
 ## F1 の完了済み範囲と第 II 段の再開点
@@ -103,8 +110,8 @@ Kerodon 5.6 の証明（5.3 の「fibration の ∞ 圏」、5.4 の （∞,2）
 
 ## 2. 設計上の決定
 
-- 配置は `SerrePositivity/InfinityCategories/F1/`、namespace `SerrePositivity.InfinityCategories`。
-  集約 `InfinityCategories/F1.lean` をルートに 1 行で追加する。
+- 完了済み F1 は `InfinityCategories/F1/` と集約 `F1.lean`。
+  F2N-2 は独立した `InfinityCategories/F2/Ind/` と `F2/Ind.lean`。既存の F2 集約と Idempotent は変更しない。
 - fibration は `MorphismProperty.rlp` 流儀で定義し、A2d の left/right fibration と整合させる。
 - Cat_∞ と 𝒮 は coherent nerve で定義する（γ1）。両者の極限・余極限は F2 まで主張しない。
 - straightening は left fibration・𝒮 値の場合を先に完成させ、cocartesian・Cat_∞ 値へ拡張する。

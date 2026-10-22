@@ -34,3 +34,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.indInclusionPresheaf_isFullyFaithful
 #check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_inclusion
 #check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSlice
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceProjection
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceCocone_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceFiberMappingIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafYonedaSliceFiberValueEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsCoconeOfComparison
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsCoconeOfComparison_vertex
