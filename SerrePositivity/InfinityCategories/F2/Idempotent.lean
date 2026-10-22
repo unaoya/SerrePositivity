@@ -46,3 +46,8 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingCo
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRetraction
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemWeakContractibility
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingImageUniversal
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingImageComma
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSourceComma
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingCommaContractibility
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCofinality
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction

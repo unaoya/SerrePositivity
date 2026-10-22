@@ -646,3 +646,57 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @walkingImage_isTerminal
 #print axioms walkingImage_isTerminal
+
+#check @walkingImageCommaSection
+#print axioms walkingImageCommaSection
+
+#check @walkingImageCommaSection_obj
+#print axioms walkingImageCommaSection_obj
+
+#check @walkingImageComma_proj_section
+#print axioms walkingImageComma_proj_section
+
+#check @walkingImageCommaIso
+#print axioms walkingImageCommaIso
+
+#check @walkingSourceCommaPoint
+#print axioms walkingSourceCommaPoint
+
+#check @walkingSourceCommaArrow
+#print axioms walkingSourceCommaArrow
+
+#check @walkingSourceComma_isInitial
+#print axioms walkingSourceComma_isInitial
+
+#check @walkingSourceComma_isWeaklyContractible
+#print axioms walkingSourceComma_isWeaklyContractible
+
+#check @walkingImageComma_isWeaklyContractible
+#print axioms walkingImageComma_isWeaklyContractible
+
+#check @walkingComma_isWeaklyContractible
+#print axioms walkingComma_isWeaklyContractible
+
+#check @walkingCommaCosliceIso
+#print axioms walkingCommaCosliceIso
+
+#check @walkingCommaCosliceIso_projection
+#print axioms walkingCommaCosliceIso_projection
+
+#check @idemInclusion_coslice_isWeaklyContractible
+#print axioms idemInclusion_coslice_isWeaklyContractible
+
+#check @idemInclusion_isRightCofinal
+#print axioms idemInclusion_isRightCofinal
+
+#check @idemInclusion_mono
+#print axioms idemInclusion_mono
+
+#check @idemInclusion_rightAnodyne
+#print axioms idemInclusion_rightAnodyne
+
+#check @idemCoconeRestriction_trivialKanFibration
+#print axioms idemCoconeRestriction_trivialKanFibration
+
+#check @idemCocone_isColimit_iff_restrict
+#print axioms idemCocone_isColimit_iff_restrict
