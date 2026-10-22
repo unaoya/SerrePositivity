@@ -2614,3 +2614,11 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeSimplexAugmentation` は元の実 cone 単体への実際の代入。
 終端を追加した二重 cone や大域三角形の存在を入力に仮定していない。
 同じ augmentation・評価との全三角形、元の屋根との全比較、同じ U の∞極限保存・G1′は未完了。
+
+`complexRightConeSimplex` は指定 `ComplexSimplexAugmentation` を持つ任意の実複体 dg 単体に、
+同じ終端を追加した実単体。生データだけでなく全有限集合の HA 方程式を証明している。
+`complexRightConeData_front` と `complexRightConeSimplex_front` は元の全前面の厳密な回収。
+`complexRightConeData_term_last` は終端側の全内部項の相殺で、二点右切断には元の全斉次整合を使う。
+`normalizedTensorDoubleConeSimplex` は元の実 cone と augmentation 自身への代入。
+先端 X・元の frame 列・終端 X を持ち、前面は同じ元の cone 単体。
+二重 cone の全作用素への自然性、大域二次 prism と全三角形、元の屋根との比較は未完了。

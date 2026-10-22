@@ -9231,6 +9231,32 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.ComplexSimplexAugmentation.app,
       `SerrePositivity.EInfinity.ComplexLimits.ComplexSimplexAugmentation.hom_naturality]
 
+@[noinline] private def e2RequiredBatch184 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_differential_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_hom_ordinary,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_hom_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeObj,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeObj_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeObj_ne_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeObj_castSucc,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_front,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_equation_without_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeIndex_recover,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeIndex_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_front_compose,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_equation_pair,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_equation_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeSimplex_data,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeSimplex_front,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_terminal_compose,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_term_last,
+      `SerrePositivity.EInfinity.ComplexLimits.complexRightConeData_hom_last_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_last]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9264,7 +9290,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -23455,4 +23481,174 @@ example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) 
   normalizedTensorConeSimplexAugmentation A X Y c
 
 end e2ConeAugFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2RightConeU
+section e2RightConeFixtures
+open CategoryTheory
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+variable (A : Type e2RightConeU) [CommRing A] (X Y : Complex A)
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    differential A ((complexRightConeData A η).hom I a b k hI ha hb hk) = 0 :=
+  complexRightConeData_differential_last A η I a b k hI ha hb hk hbl
+
+example {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (n + 1)) :
+    HEq ((complexRightConeData A η).hom I a b k hI ha hb hk)
+      ((s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).hom I a b k hI ha hb hk) :=
+  complexRightConeData_hom_ordinary A η I a b k hI ha hb hk hbl
+
+example {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((complexRightConeData A η).hom I a b k hI ha hb hk)
+      (closedNerveHom ((complexToClosed A).map (η.app ((Fin.last n).predAboveOrderHom a))) k) :=
+  complexRightConeData_hom_last A η I a b k hI ha hb hk hbl
+
+example {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A) :
+    complexRightConeObj A s X (Fin.last (n + 1)) = X :=
+  complexRightConeObj_last A s X
+
+example {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A)
+    (i : Fin (n + 2)) (hi : i ≠ Fin.last (n + 1)) :
+    complexRightConeObj A s X i = s.obj ((Fin.last n).predAboveOrderHom i) :=
+  complexRightConeObj_ne_last A s X i hi
+
+example {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A)
+    (i : Fin (n + 1)) : complexRightConeObj A s X i.castSucc = s.obj i :=
+  complexRightConeObj_castSucc A s X i
+
+example {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) :
+    (complexRightConeData A η).pullback Fin.castSuccOrderEmb.toOrderHom = s.toSimplexData :=
+  complexRightConeData_front A η
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) (I : Finset (Fin (n + 2)))
+    (hl : Fin.last (n + 1) ∉ I) : (complexRightConeData A η).Equation I :=
+  complexRightConeData_equation_without_last A η I hl
+
+example {n : ℕ} (i : Fin (n + 2))
+    (hi : i ≠ Fin.last (n + 1)) :
+    ((Fin.last n).predAboveOrderHom i).castSucc = i :=
+  complexRightConeIndex_recover i hi
+
+example {n : ℕ} (I : Finset (Fin (n + 2)))
+    (b : Fin (n + 2)) (hI : 2 ≤ I.card) (hb : b = I.max' (Index.nonempty hI))
+    (hbl : b ≠ Fin.last (n + 1)) :
+    Set.InjOn (Fin.last n).predAboveOrderHom (I : Set (Fin (n + 2))) :=
+  complexRightConeIndex_injOn I b hI hb hbl
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (n + 1)) :
+    compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
+      (η.app ((Fin.last n).predAboveOrderHom b)))).val
+      ((s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).hom I a b k hI ha hb hk)
+      (add_zero k) =
+      closedNerveHom ((complexToClosed A).map (η.app ((Fin.last n).predAboveOrderHom a))) k :=
+  complexRightConeData_front_compose A η I a b k hI ha hb hk hbl
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) (I : Finset (Fin (n + 2))) (hc : I.card = 2) :
+    (complexRightConeData A η).Equation I :=
+  complexRightConeData_equation_pair A η I hc
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) (I : Finset (Fin (n + 2)))
+    (hl : Fin.last (n + 1) ∈ I) : (complexRightConeData A η).Equation I :=
+  complexRightConeData_equation_last A η I hl
+
+example {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) :
+    (complexRightConeSimplex A η).toSimplexData = complexRightConeData A η :=
+  complexRightConeSimplex_data A η
+
+example {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) :
+    (complexRightConeSimplex A η).pullback Fin.castSuccOrderEmb.toOrderHom = s :=
+  complexRightConeSimplex_front A η
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1))
+    (j : Fin (n + 2)) (hj : j ∈ I) (haj : a < j) (hjb : j < b)
+    (hrc : (I.filter (j ≤ ·)).card = 2) :
+    HEq (compose A
+      ((complexRightConeData A η).hom (I.filter (j ≤ ·)) j b
+        (2 - ((I.filter (j ≤ ·)).card : ℤ))
+        (Index.right_two hj (by rw [hb]; exact I.max'_mem _) hjb)
+        (Index.right_min hj _) (Index.right_max (by rw [hb]; exact I.isGreatest_max' _) hjb.le _)
+        rfl)
+      ((complexRightConeData A η).hom (I.filter (· ≤ j)) a j
+        (2 - ((I.filter (· ≤ j)).card : ℤ)) (Index.left_two (by rw [ha]; exact I.min'_mem _) hj haj)
+        (Index.left_min (by rw [ha]; exact I.isLeast_min' _) haj.le _) (Index.left_max hj _) rfl)
+      (show (2 - ((I.filter (· ≤ j)).card : ℤ)) +
+        (2 - ((I.filter (j ≤ ·)).card : ℤ)) = k + 1 by
+          have := Index.split_card hj; omega))
+      (closedNerveHom ((complexToClosed A).map (η.app ((Fin.last n).predAboveOrderHom a)))
+        (2 - ((I.filter (· ≤ j)).card : ℤ))) :=
+  complexRightConeData_terminal_compose A η I a b k hI ha hb hk hbl j hj haj hjb hrc
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1))
+    (j : Fin (n + 2)) (hj : j ∈ I) (haj : a < j) (hjb : j < b) :
+    (complexRightConeData A η).term I a b k hI ha hb hk j hj haj hjb = 0 :=
+  complexRightConeData_term_last A η I a b k hI ha hb hk hbl j hj haj hjb
+
+example {n : ℕ}
+    {s : Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) (hk0 : k ≠ 0) :
+    (complexRightConeData A η).hom I a b k hI ha hb hk = 0 :=
+  complexRightConeData_hom_last_zero A η I a b k hI ha hb hk hbl hk0
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorDoubleConeSimplex A X Y c).pullback Fin.castSuccOrderEmb.toOrderHom =
+      normalizedTensorConeSimplex A X Y c :=
+  normalizedTensorDoubleConeSimplex_front A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorDoubleConeSimplex A X Y c).obj (Fin.last (n + 2)) = X :=
+  normalizedTensorDoubleConeSimplex_last A X Y c
+
+example {n : ℕ} {s : Simplex A (Complex A) n} (η : ComplexSimplexAugmentation A s X) :
+    Simplex A (Complex A) (n + 1) := complexRightConeSimplex A η
+
+example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    Simplex A (Complex A) (n + 2) := normalizedTensorDoubleConeSimplex A X Y c
+
+end e2RightConeFixtures
 end
