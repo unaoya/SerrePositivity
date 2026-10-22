@@ -631,3 +631,17 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.compactYoneda_isQCatEquivalence
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indVertex_has_filteredYonedaPresentation
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_eta
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_precomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramComma
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaProjection
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_eta
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaCocone_vertex

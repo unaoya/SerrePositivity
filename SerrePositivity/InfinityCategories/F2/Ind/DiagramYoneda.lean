@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
 public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpaceVertex
+public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
 
 /-!
 概要：元の小さい coherent 図式全体への Ind Yoneda の作用。
@@ -47,5 +48,11 @@ lemma diagramYoneda_restrict (κ : Cardinal.{u}) {J K C : SSet.{u}}
   apply CategoryTheory.Functor.functorHom_ext
   intro d α
   rfl
+
+/-- 元の図式版 Yoneda は全写像空間で充満忠実。形状の有限性も不要。 -/
+lemma diagramYoneda_isFullyFaithful (κ : Cardinal.{u}) (K C : SSet.{u})
+    [Quasicategory C] : IsFullyFaithful (diagramYoneda κ K C) :=
+  (qCatEquivalenceOfIso (uliftFunctorSpaceIso K C)).isQCatEquivalence.isFullyFaithful.comp
+    ((indYoneda_isFullyFaithful κ C).postcompose ((SSet.uliftFunctor.{u + 1, u}).obj K))
 
 end SerrePositivity.InfinityCategories.F2.Ind
