@@ -9,10 +9,8 @@
 ### 現在地
 - 工程 (a) 完了。`DGGluingObject` の対象、比較差 `gμ − νf` の mapping cocone としての実 Hom 複体、全次数の微分・単位・合成・結合律を構成。
   native dg 圏、左右 dg 射影、実 comma・通常 kernel comma への比較関手を供給。native/kernel Hom 同型は全次数の合成・単位を保存。
-- 元の C・D の前三角性を明示入力に、実 gluing 円錐・全整数シフト代表と、その全 dg 自然な Yoneda 加群比較を構成。
-  同じ比較射の擬同型性・射影性から K の代表同型を得る。augmentation と両成分の移送比較も同じ射に保持する。
-- `dgGluing_isDGPretriangulated` は、代表加群の同型閉包の零・全整数シフト・任意 distinguished 円錐閉性から実 gluing の前三角性を結論する。
-  閉斉次シフト単位と円錐の指定境界元を使い、点ごとの同値を全 dg 自然な加群比較で実現している。
+- 元の C・D の前三角性を明示入力に、実 gluing 円錐・全整数シフト代表と全 dg 自然な Yoneda 加群比較を構成。augmentation・両成分の比較も同じ射に保持。
+- `dgGluing_isDGPretriangulated` は代表加群の同型閉包の零・全整数シフト・任意 distinguished 円錐閉性から結論。点ごとの比較は全 dg 自然な加群射で実現。
 - 工程 (b) の dg・H⁰・K の界面を構成済み。片側が H⁰ で零となる対象の実充満 dg 部分圏 `DGGluingCFactor`・`DGGluingDFactor` と両包含・制限射影を構成。
   元の前三角性からホモトピー零対象を選び、両制限射影の実対象での全射性を証明。厳密零対象・零 Hom の仮定は追加しない。
 - C 因子への左 Hom 射影、D 因子からの右 Hom 射影は擬同型。両充満因子と元の C・D の dg 準同値を証明。
@@ -48,6 +46,8 @@
   実入力が射影的なら半自由出力 Hom 射影が準同型。β5 の同じ切断を合成し、元の導来比較自体の Hom 作用が射影的始域から同値と証明。
   代表加群に適用した canonical な係数比較は、模型・端点同型を除くと一般宇宙の元の導来 Hom 作用を厳密に回収。全 lax 比較の充満忠実性は未完。
   元の一般宇宙の比較の本質的全射性を証明。任意の導来辺を閉加群射で表し、同じ augmentation の gluing 対象へ戻す。
+  一般宇宙間の nerve の全 Hom 作用を元の Hom 鎖写像へ厳密に照合し、追加共通宇宙での複体模型・前後合成との可換性も証明。
+  実導来 lax 比較の二脚を複体模型へ戻すと元の左右 Hom 鎖射影に一致。端点輸送・元の全単体作用を保持。
   全写像空間の比較同値性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -75,9 +75,9 @@
 - `dgGluingCoconePathPullbackCone_isLimit`・`dgGluingCoconePathContraction`・`dgGluingCoconePathProjection_surjective`・`dgGluingHomComplex_path_isPullback`
 - `dgGluingComplexPinchedMap_isPullback`・`dgGluingCoconePathSpaceIso`・`dgGluingHomComplex_pathSpace_isPullback`・`dgGluingCoconePathSpace_zero_equivalence`
 - `dgGluingPinchedChainMap_fibration`・`dgGluingCoconePathSpaceProjection_fibration`・`dgGluingCoconePathSpaceCone_isLimit` と `_path`・`_base`
-- `dgGluingChosenCoefficientMappingComparison` と `_equivalence`・`_augmentation`、`dgGluingUniverseCoefficientAugmentation_square`・`dgGluingComplexPinchedUniverseIso_naturality`
 - `dgGluingModuleDerivedHomMap_equivalence`・`dgGluingCanonicalCoefficientMappingComparison` と `_equivalence`・`_universe_action`
 - `dgGluingUniverseLaxComparison_vertex_image`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
+- `dgGluingUniverseFunctorHomAction`・`dgGluingUniverseFunctorHomModelComparison_eq`・`dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -94,13 +94,13 @@
 
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
-  `dgGluingCoconePathSpaceCone_isLimit`・同じ二脚・零模型への同値から、F2 の指定矢印空間の極限錐への比較を構成する。
-  `dgGluingCanonicalCoefficientMappingComparison_universe_action` を使い、元の全 arrow 族・二射影の Hom 作用を保つ極限錐の比較を同値と証明する。
-  canonical な係数比較は元の導来 Hom 作用そのもの。全引き戻し比較への照合後に、充満忠実性の判定定理へ適用する。
+  入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
+  次は F2 の矢印圏の写像空間を、指定した二つの合成の間の path 空間へ比較し、同じ augmentation prism の作用を照合する。
+  canonical な係数比較・`dgGluingCoconePathSpaceCone_isLimit` で全引き戻し比較を同値にし、充満忠実性の判定定理へ適用する。
 
 ### 未コミット・既知の問題
-- 317モジュール・集約ビルド成功（7183 jobs）、公理監査4240宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開30署名を検査済み。新規16モジュール、集約・監査・本計画の専有19パスだけを保存。他レーンの差分は含めない。
+- 326モジュール・集約ビルド成功（7192 jobs）、公理監査4274宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開19署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

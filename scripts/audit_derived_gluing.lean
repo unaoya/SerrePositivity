@@ -321,7 +321,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedModuleArrow,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonVertexImage,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputEssentialImage,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEssentialSurjectivity]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEssentialSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomChainMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomChainMapComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomModelNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomModelComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorHomAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorHomModelComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseProjectionHomAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomProjectionModels]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
