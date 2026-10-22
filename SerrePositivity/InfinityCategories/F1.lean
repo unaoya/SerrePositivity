@@ -3121,3 +3121,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobal
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobalPullbackNative
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobalPullbackTarget
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobalPullbackComponents
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobalPullbackComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryCoherentOriginal
