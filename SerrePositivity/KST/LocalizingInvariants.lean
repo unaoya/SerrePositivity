@@ -1500,4 +1500,12 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionCo
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionBoundary
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionHom
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathProductPrimitive
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionFaces
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathProductPrimitiveZero
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionProduct
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionAlgebra
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeConnection
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

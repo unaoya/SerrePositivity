@@ -1247,7 +1247,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathCochainExt,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionCochain,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionBoundary,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionHom]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionHom,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathProductPrimitive,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathProductPrimitiveZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionProduct,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionAlgebra,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeConnection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -79,4 +79,32 @@ lemma cochainLeftProduct_natural :
     ← Cochain.ofHom_comp, leftProduct_natural_closed f k a b ha,
     Cochain.ofHom_comp, ← Cochain.comp_assoc_of_third_is_zero_cochain]
 
+/-- 比較 cochain の右積を同じ実代数射で後合成する。 -/
+lemma cochainRightProduct_post {T : Complex R} (a : T ⟶ A.X)
+    (h : Cochain T A.X n) :
+    (((tensorRightHom T T A.X).f n h).comp
+      (Cochain.ofHom ((𝟙 A.X ⊗ₘ a) ≫ μ[A.X])) (add_zero n)).comp
+        (Cochain.ofHom f.hom) (add_zero n) =
+      ((tensorRightHom T T B.X).f n
+        (h.comp (Cochain.ofHom f.hom) (add_zero n))).comp
+          (Cochain.ofHom ((𝟙 B.X ⊗ₘ (a ≫ f.hom)) ≫ μ[B.X])) (add_zero n) := by
+  have h₀ := cochainRightProduct_natural f (𝟙 T) a (a ≫ f.hom)
+    (Category.id_comp _) n h (h.comp (Cochain.ofHom f.hom) (add_zero n))
+    (Cochain.id_comp _)
+  simpa only [tensorHom_id, id_whiskerRight, Cochain.id_comp] using h₀.symm
+
+/-- 左積にも同じ後合成式が成り立つ。 -/
+lemma cochainLeftProduct_post {T : Complex R} (a : T ⟶ A.X)
+    (h : Cochain T A.X n) :
+    (((tensorLeftHom T T A.X).f n h).comp
+      (Cochain.ofHom ((a ⊗ₘ 𝟙 A.X) ≫ μ[A.X])) (add_zero n)).comp
+        (Cochain.ofHom f.hom) (add_zero n) =
+      ((tensorLeftHom T T B.X).f n
+        (h.comp (Cochain.ofHom f.hom) (add_zero n))).comp
+          (Cochain.ofHom (((a ≫ f.hom) ⊗ₘ 𝟙 B.X) ≫ μ[B.X])) (add_zero n) := by
+  have h₀ := cochainLeftProduct_natural f (𝟙 T) a (a ≫ f.hom)
+    (Category.id_comp _) n h (h.comp (Cochain.ofHom f.hom) (add_zero n))
+    (Cochain.id_comp _)
+  simpa only [tensorHom_id, id_whiskerRight, Cochain.id_comp] using h₀.symm
+
 end SerrePositivity.KST.LocalizingInvariants

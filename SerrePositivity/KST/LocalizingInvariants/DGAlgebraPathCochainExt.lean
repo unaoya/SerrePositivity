@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathMapLaws
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPrimitiveBoundary
 public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary
 
 /-!
@@ -61,18 +61,5 @@ lemma cochain_ext {K : Complex R} {n : ℤ} (f g : Cochain K (algebra R B).X n)
     rw [Cochain.comp_v f (primitive R B) _ p q (q - 1) hpq (by omega),
       Cochain.comp_v g (primitive R B) _ p q (q - 1) hpq (by omega)] at h
     exact h
-
-lemma primitive_boundary : δ (-1) 0 (primitive R B) +
-    Cochain.ofHom ((source R B).hom - (target R B).hom) = 0 := by
-  have h := complexMappingCocone_snd_boundary (difference R B)
-  have hd : mappingCocone.fst (difference R B) ≫ difference R B =
-      (source R B).hom - (target R B).hom := by
-    have hd := difference_eq R B
-    calc
-      _ = mappingCocone.fst (difference R B) ≫ (biprod.fst - biprod.snd) :=
-        congrArg (fun k => mappingCocone.fst (difference R B) ≫ k) hd
-      _ = _ := by rw [Preadditive.comp_sub]; rfl
-  rw [hd] at h
-  exact h
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path
