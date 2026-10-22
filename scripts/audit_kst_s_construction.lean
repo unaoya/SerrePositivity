@@ -26685,3 +26685,129 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_localized_isIso
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.assemblyTargetAdjoint_localized_isIso_of_anodyne
+#print axioms SerrePositivity.KST.SConstruction.assemblyTargetAdjoint_localized_isIso_of_anodyne
+
+#check @SerrePositivity.KST.SConstruction.assemblyAdjoint_piIsomorphism_of_anodyne_units
+#print axioms SerrePositivity.KST.SConstruction.assemblyAdjoint_piIsomorphism_of_anodyne_units
+
+#check @SerrePositivity.KST.SConstruction.kanPiIsomorphism_of_pointed_component
+#print axioms SerrePositivity.KST.SConstruction.kanPiIsomorphism_of_pointed_component
+
+#check @SerrePositivity.KST.SConstruction.pointedCylinderOmegaLoop_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedCylinderOmegaLoop_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.evaluationCylinderAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.evaluationCylinderAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.cylinderAssemblyAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.cylinderAssemblyAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedMonicReplacementSource_component
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedMonicReplacementSource_component
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletion_component_square
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletion_component_square
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_component
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_component
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinder_component_square
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinder_component_square
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinder_component_square_post
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinder_component_square_post
+
+#check @SerrePositivity.KST.SConstruction.pointedAdjoinHomEquiv_pre
+#print axioms SerrePositivity.KST.SConstruction.pointedAdjoinHomEquiv_pre
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderCurry_end
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderCurry_end
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_end
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_end
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_zero
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_zero
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_one
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFamily_one
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEdge
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEdge
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderHomotopy
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderHomotopy
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderHomotopy_base
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderHomotopy_base
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_component
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_component
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstOmegaZero_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstOmegaZero_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstOmegaLoop_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstOmegaLoop_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstStructureAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFFirstStructureAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence_omegaCondition
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence_omegaCondition
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_zero
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_zero
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_sigma
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFOmegaSpectrum_sigma
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageOmega_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageOmega_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaBoundary_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaBoundary_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaSource_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaSource_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaRawSource_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaRawSource_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaTarget_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaTarget_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaLoop_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaLoop_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaAssemblyLoop_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepOmegaAssemblyLoop_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap_suspension
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap_suspension
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTarget_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTarget_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_unit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism
