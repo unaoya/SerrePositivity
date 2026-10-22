@@ -1234,7 +1234,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedTransition,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedClassMap,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRight,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedCandidateRoof]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedCandidateRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackPathLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathBoundaryRectangle,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathBoundaryRectangle,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellFixedPathNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellFixedNonpositiveNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellPathNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellPathNaturalitySquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingSquare]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
