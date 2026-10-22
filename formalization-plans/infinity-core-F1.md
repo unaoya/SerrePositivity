@@ -34,8 +34,8 @@
   `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
   `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
   `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  `ind_preservesSmallKappaFilteredColimits_iff_strictClassified` は全保存性を strict 分類標準余錐へ帰着。全図式同型による帰還、各段の κ-filtered 性、標準 Kan 図式の全余錐制限同値も証明。weighted 全空間から元の全空間余極限への比較と全脚の一致を構成。小さい全 weighted 図式を比較先の値を厳密に固定した全円柱で一段へ輸送済み。cofinality・延長の保存性・本質的全射性は未証明。
-- 独立集約 7104 jobs、公理監査 1928 宣言、標準三公理のみ。
+  `ind_preservesSmallKappaFilteredColimits_iff_strictClassified` は全保存性を strict 分類標準余錐へ帰着。全図式同型による帰還、各段の κ-filtered 性、標準 Kan 図式の全余錐制限同値も証明。weighted 全空間から元の全空間余極限への元の比較は right cofinal。全 coslice の κ-filtered 性を、一段への値固定輸送・全 join の相対因子分解・段内の余錐で証明。延長の保存性と本質的全射性は未証明。
+- 独立集約 7113 jobs、公理監査 1950 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -64,7 +64,7 @@
 - `indElementsLeftKanComparison_isQCatEquivalence`、`indElementsLeftKanComparison_diagram`
 - `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
-- `indLeftKanExtensionRecoveryIso`、`indLeftKanExtension_canonicalColimits`、`indLeftKanExtension_density_image_isColimit`、`strictClassifiedIndCocone`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly`、`exists_weightedTotal_stageTransport`
+- `indLeftKanExtensionRecoveryIso`、`indLeftKanExtension_canonicalColimits`、`indLeftKanExtension_density_image_isColimit`、`strictClassifiedIndCocone`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly`、`exists_weightedTotal_stageTransport`、`strictRightFibrationTotalAssembly_isRightCofinal`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
 `indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
 次は strict 分類標準余錐 `strictClassifiedIndCocone` の左 Kan 延長による像の余極限性を証明する。元の全空間は各段と余極限とも κ-filtered。
-`exists_weightedTotal_stageTransport` は小さい全 weighted 図式を、比較先の値を厳密に固定した全円柱で一段へ輸送する。下区間上の元の図式も保持。次は coslice 引き戻しの図式へこの円柱を持ち上げ、元の coslice の全図式を相対因子分解で後続段へ下ろし、各段の κ-filtered 性で余錐を作る。Quillen A による cofinality と密度余極限の Kan 合成が残る。
+`strictRightFibrationTotalAssembly_isRightCofinal` まで証明済み。全 coslice の κ-filtered 性から Quillen A を適用し、元の全比較を保つ。次はこの同じ cofinal 比較で全空間の密度余錐を weighted 全空間へ制限し、各段の密度余極限との Kan 合成を証明する。任意の coherent 余錐への帰還と全余錐の標準 Kan 制限同値は利用可能。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点

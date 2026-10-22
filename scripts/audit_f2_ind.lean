@@ -418,3 +418,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedTopPrism_cocone
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedBoundedPrism_assembly
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedTotal_stageTransport
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_coslice_join_at_stage
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_coslicePullback_cocone_of_stage
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedNerveTransportPrism_assembly
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_weightedTotalCoslice_cocone_of_stage
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTotalCoslice_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_isRightCofinal
