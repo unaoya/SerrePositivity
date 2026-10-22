@@ -251,3 +251,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RightClassifiedIndDensit
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityImage
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityStandardVertex
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityFiber
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityFiberImage
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityRelativeFamilyImage

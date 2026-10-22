@@ -430,3 +430,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_image_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCocone_vertex_eq_standard
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityFiber_diagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_allFibers_hasColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_allFibers_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityRelativeFamily_image_colimits
