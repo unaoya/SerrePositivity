@@ -2221,4 +2221,12 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFQuasiEquival
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFRealizationInvariance
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMoritaAction
 public import SerrePositivity.KST.SConstruction.StrictSimplicialOrdinaryMap
+public import SerrePositivity.KST.SConstruction.PointedComponentNaturalSquare
+public import SerrePositivity.KST.SConstruction.PointedComponentSquareComposition
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFKZero
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFPiZero
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAIntegerNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOANaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOARawNaturality
+public import SerrePositivity.KST.SConstruction.SpectrumIntegerComponentEquality
 /-! # ∞-S• 構成と連結 K 理論 -/
