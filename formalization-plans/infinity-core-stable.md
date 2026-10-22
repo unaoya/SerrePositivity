@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 関手・D/Perf は `78413300c` に保存済み。今回の正次数 π の自然性の5新規モジュール・集約・両監査・本計画の9パスを保存する。他レーンの変更は保持する。
+- 関手・D/Perf は `78413300c`、正次数 π の自然性の検証済み9パスは `b6da607d2` に保存済み。今回の試作検証結果の計画更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 - g の実 Mon 包装は `d5f1dd249`、正規化関手と D/Perf の実 tensor 不変性は `78413300c` に保存済み。今回の5モジュールは `ModuleSphereNaturality`（10宣言）・`MooreCyclesNaturality`（6）・`MooreHomologyNaturality`（4）・`ModulePiMooreNaturality`（3）・`DGSimplicialRingPiMoore`（2）。球面単体・正次数 Moore 核・境界商の実線形射から、元の抽象的 cycles と実ホモロジー射まで可換式を照合した。`modulePiMooreGroupEquiv_naturality` は既存の正次数 π と同じ Moore ホモロジーの群同型の自然性、`modulePiMap_bijective_iff_homologyMap` は零基点での正次数 π の全単射性と同じホモロジー射の全単射性の同値を与える。実単体環の台 Kan 複体へ群同型を適用した。対象・両集約（10945 jobs）・25明示署名は成功。両全体監査も終端0（Derived 20377宣言／2237モジュール、Stable 21490／2507）。ログは `/tmp/d-beta5-moore-natural-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は零次数・全基点を補って単体の弱同値と Moore 準同型の同値判定を閉じる。`/tmp/d-beta5-module-pizero.lean` は実辺の差から正規化一次境界を作る両方向、π₀ と零次単体の境界商の全単射と自然性、同じ商と実 Moore H₀ の同型と自然性、`modulePiZeroMooreEquiv` とその自然性・全単射性の比較まで終端0。最後に `moduleNormalizedMap_quasiIso_iff_zeroBasepointPi`（π₀ と零基点の全正次数 π による準同型判定）を追加して検証中。本体未統合。全基点への移送は加法による実 simplicial translation の同型を使う。KST の `KanPiIsomorphism` は全基点・零次数込み、`PointedKanWhitehead.exists_pointedHomotopyInverse` はその条件から実逆と両区間ホモトピーを作る（追加入力の HT-KQ なし）。F1B の弱同値は全 Kan 標的への π₀ 前合成検査なので、この実逆と接続する。g 全体は未完。d・f は完了、β4 は D2 所有。原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
+- 次は零次数・全基点を補って単体の弱同値と Moore 準同型の同値判定を閉じる。`/tmp/d-beta5-module-pizero.lean` は実辺の差から正規化一次境界を作る両方向、π₀ と零次単体の境界商の全単射と自然性、同じ商と実 Moore H₀ の同型と自然性、`modulePiZeroMooreEquiv` とその自然性・全単射性の比較まで終端0。`moduleNormalizedMap_quasiIso_iff_zeroBasepointPi`（π₀ と零基点の全正次数 π による準同型判定）まで23宣言が終端0。`/tmp/d-beta5-module-pizero-signatures.lean` による23明示署名・公理検査も終端0、警告なし。本体未統合。まず23宣言を境界商・H₀ 比較・π₀ 自然性に分けて統合する。全基点への移送は加法による実 simplicial translation の同型を使う。KST の `KanPiIsomorphism` は全基点・零次数込み、`PointedKanWhitehead.exists_pointedHomotopyInverse` はその条件から実逆と両区間ホモトピーを作る（追加入力の HT-KQ なし）。F1B の弱同値は全 Kan 標的への π₀ 前合成検査なので、この実逆と接続する。g 全体は未完。d・f は完了、β4 は D2 所有。原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
 
 ## 目標と原典
 
