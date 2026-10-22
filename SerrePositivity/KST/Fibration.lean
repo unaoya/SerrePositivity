@@ -340,3 +340,11 @@ public import SerrePositivity.KST.Fibration.PointedResolutionProjection
 public import SerrePositivity.KST.Fibration.OppositeKanResolutionEvaluation
 public import SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint
 public import SerrePositivity.KST.Fibration.NativeCoefficientResolutionPointHom
+public import SerrePositivity.KST.Fibration.FunctorIsoValue
+public import SerrePositivity.KST.Fibration.FunctorIsoValueCurry
+public import SerrePositivity.KST.Fibration.KanDiagramComponentPointHom
+public import SerrePositivity.KST.Fibration.KanEnrichedJointPointHom
+public import SerrePositivity.KST.Fibration.KanEnrichedRealizationValue
+public import SerrePositivity.KST.Fibration.KanEnrichedRealizationPointHom
+public import SerrePositivity.KST.Fibration.EdgewiseDiagonalPoint
+public import SerrePositivity.KST.Fibration.KanEnrichedEdgewisePointHom

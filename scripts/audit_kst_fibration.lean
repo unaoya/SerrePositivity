@@ -346,7 +346,15 @@ run_cmd do
     `SerrePositivity.KST.Fibration.PointedResolutionProjection,
     `SerrePositivity.KST.Fibration.OppositeKanResolutionEvaluation,
     `SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint,
-    `SerrePositivity.KST.Fibration.NativeCoefficientResolutionPointHom]
+    `SerrePositivity.KST.Fibration.NativeCoefficientResolutionPointHom,
+    `SerrePositivity.KST.Fibration.FunctorIsoValue,
+    `SerrePositivity.KST.Fibration.FunctorIsoValueCurry,
+    `SerrePositivity.KST.Fibration.KanDiagramComponentPointHom,
+    `SerrePositivity.KST.Fibration.KanEnrichedJointPointHom,
+    `SerrePositivity.KST.Fibration.KanEnrichedRealizationValue,
+    `SerrePositivity.KST.Fibration.KanEnrichedRealizationPointHom,
+    `SerrePositivity.KST.Fibration.EdgewiseDiagonalPoint,
+    `SerrePositivity.KST.Fibration.KanEnrichedEdgewisePointHom]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
