@@ -34,8 +34,8 @@
   `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
   `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
   `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較の right cofinal 性、同じ全密度余錐と左 Kan 像の余極限性、元の密度を左制限に持つ大域相対 join 族の全 fiber の普遍性を証明。共同 weighted 分類と元の strict right 分類の全添字上の同型を Indκ 内へ持ち上げた。元の twisted-arrow 全評価を c1 で実現した一つの全変換を Indκ 内へ持ち上げ、同じ係数制限を `weightedIndDensityCoefficientCocone` に実現済み。同じ係数復元の前合成同値・値 fiber 同値、元の全評価の係数因子分解、元の係数評価の始点固定値写像 `weightedCoefficientSourceValue` の小さい Kan 標的とその持ち上げへの前合成同値を証明。`weightedCoefficientSourceIntoTotal_isPullback` は元の係数・始点族を元の全共同射影の引き戻しにし、`weightedCoefficientEvaluationReconstruction` は同じ全復元の底変換で元の評価図式を復元する。同じ係数全空間と全復元の制限を厳密に保ち、前合成同値。`weightedCoefficientNativeJointRestriction_vertex` は元の native 評価変換の頂点を元の共同変換の同じ制限へ厳密に同定。`weightedCoefficientNativeCoconeRelativeImageIso` は同じ native 評価余錐の標準変換の実際の像を元の共同実現射の同じ制限へ相対比較。始点固定の値写像への全比較、指定係数余錐の余極限性、大域右制限との全比較・一般保存性・本質的全射性は未証明。
-- 独立集約 7199 jobs、公理監査 2573 宣言、標準三公理のみ。
+  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較の right cofinal 性、同じ全密度余錐と左 Kan 像の余極限性、元の密度を左制限に持つ大域相対 join 族の全 fiber の普遍性を証明。共同 weighted 分類と元の strict right 分類の全添字上の同型を Indκ 内へ持ち上げた。元の twisted-arrow 全評価を c1 で実現した一つの全変換を Indκ 内へ持ち上げ、同じ係数制限を `weightedIndDensityCoefficientCocone` に実現。`weightedCoefficientNativeValueComparisonIso` は同じ native 評価余錐の実際の fiber 値写像を、同じ復元射上で元の全評価の制限へ比較。元の係数評価への厳密な pointed 因子分解と同じ値 fiber 比較により、実際の native 評価 fiber 写像の前合成同値を証明。`weightedIndDensityCoefficientCocone_isColimit` は同じ指定係数余錐そのものの余極限性、`weightedIndDensityCoefficientCocone_image_isColimit` は同じ指定余錐の左 Kan 像の余極限性（元の係数全空間が κ-filtered）。一般保存性は仮定していない。元の全変換と左 Kan 像の局所 Kan 条件、大域右制限との全比較・一般保存性・本質的全射性は未証明。
+- 独立集約 7214 jobs、公理監査 2805 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -65,6 +65,7 @@
 - `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
 - `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`、`weightedMap_trivialKanFibration`、`weightedTwistedSourceLift`、`weightedTwistedPullbackIso`、`weightedIndDensityHomotopy`、`weightedIndDensityCoefficientCocone`、`weightedTwistedCoefficientLift_canonicalIso`、`weightedLeftCoefficientRecovery_isPrecompositionEquivalence`、`weightedCoefficientJointEvaluation_factorization`
+- `weightedCoefficientNativeValueComparisonIso`、`weightedIndDensityCoefficientCocone_isColimit`、`weightedIndDensityCoefficientCocone_image_isColimit`
 
 ### 依存と提供
 
@@ -98,7 +99,7 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
 `indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
 次は strict 分類標準余錐 `strictClassifiedIndCocone` の左 Kan 延長による像の余極限性を証明する。元の全空間は各段と余極限とも κ-filtered。
-`weightedIndDensityCoefficientCocone` は元の全変換の同じ係数制限を実現した指定 native 余錐。`weightedCoefficientSourceValue_pre`・`_ulift_pre` は元の係数評価の始点固定値写像への必要な前合成同値。`weightedCoefficientEvaluationReconstruction` は元の全 twisted-arrow 復元射を係数・始点へ底変換した同じ評価図式の復元で、元の全空間成分と全復元の制限を厳密に保ち、前合成同値。`weightedCoefficientNativeEvaluationCocone` は元の Indκ 係数余錐そのものの包含・始点評価による像。`weightedCoefficientNativeJointRestriction_vertex` により元の native 評価変換頂点を元の共同変換の同じ制限へ同定し、`weightedCoefficientNativeCoconeRelativeImageIso` により同じ native 評価余錐の標準変換の実際の unstraightening の像を元の共同実現射の同じ制限へ相対比較済み。次は同じ native 評価図式を底とする復元で、この相対像比較を元の始点固定の族へ前合成し、共同実現射と元の全評価の同じ相対同型を移す。元の係数因子分解と値 fiber 比較で `weightedCoefficientSourceValue` に比較し、指定余錐の実際の評価 fiber 写像へ前合成同値を移して F2 の native 判定で指定係数余錐の余極限性を結論する。包含による検出と既存の指定 fiber 余錐の像の保存性から同じ変換と左 Kan 像の局所普遍性を得て、大域右制限との全比較・Kan 合成・一般保存性へ戻る。頂点ごとの同型だけで代用しない。
+`weightedIndDensityCoefficientCocone_isColimit` と `weightedIndDensityCoefficientCocone_image_isColimit` により、元の全変換の同じ係数制限を実現した指定 native 余錐と、その左 Kan 像の余極限性を証明済み。元の native 評価余錐の実際の fiber 値写像を、元の全復元射の同じ底変換上で元の制限全評価へ比較し、同じ係数値作用への pointed 因子分解・値 fiber 比較・小さい Kan 標的とその持ち上げへの前合成同値から F2 の native 判定を適用した。包含・評価による検出も元の余錐を保持する。次は元の `weightedIndDensityHomotopy` の係数制限と同じ余錐実現の比較を、元の weighted fiber 同型に沿って移し、同じ全変換と左 Kan 像の局所 Kan 条件を得る。F1B の指定単位を保持する相対 join 実現・strictification と大域 Hom 普遍性を使い、既存の大域相対 join 族の右制限と元の共同分類の全比較へ戻る。元の `weightedIndClassificationIso` で strict 分類へ移し、Kan 合成・標準余錐の像の余極限性・一般保存性へ進む。対象ごとの頂点同型だけで全比較を代用しない。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点
