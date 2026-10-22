@@ -3143,3 +3143,15 @@ public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExponential
 public import SerrePositivity.InfinityCategories.F1.PullbackConstantTensor
 
 public import SerrePositivity.InfinityCategories.F1.CoherentConstantSourceComparison
+
+public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningSectionsIso
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSmallConstantSource
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSectionsUnitRepresentation
+
+public import SerrePositivity.InfinityCategories.F1.HomotopyFatCone
+
+public import SerrePositivity.InfinityCategories.F1.HomotopyConeRealization
+
+public import SerrePositivity.InfinityCategories.F1.CoherentDiagramSectionsCone

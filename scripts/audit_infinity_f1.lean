@@ -8890,3 +8890,41 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentConstantSourceMap
 
 #check @SerrePositivity.InfinityCategories.coherentConstantSourceMap_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.smallUnstraighteningSectionsIso
+
+#check @SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap
+
+#check @SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsIdentity
+
+#check @SerrePositivity.InfinityCategories.CoherentSectionsRepresentation
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsIdentityRepresentation
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsIdentityHomotopy
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderProjection
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderProjection_zero
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderProjection_one
+
+#check @SerrePositivity.InfinityCategories.homotopyFatCone
+
+#check @SerrePositivity.InfinityCategories.homotopyFatCone_inl
+
+#check @SerrePositivity.InfinityCategories.homotopyFatCone_inr
+
+#check @SerrePositivity.InfinityCategories.homotopyFatCone_cylinder
+
+#check @SerrePositivity.InfinityCategories.HomotopyConeRealization
+
+#check @SerrePositivity.InfinityCategories.homotopyConeRealization
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeRealization
+
+#check @SerrePositivity.InfinityCategories.coherentDiagramSectionsCone
+
+#check @SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_vertex

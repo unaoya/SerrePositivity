@@ -19,6 +19,9 @@
 - 一般形状の全切断を小さい Kan 対象に束ね、元の底を保つ普遍的評価を構成した。
   `coherentConstantSourceMap_isQCatEquivalence` は、定値図式からの元の全変換を
   pointed fiber から全切断への内部 Hom と比較する同値。任意の底・全高次パラメータで成立。
+- `coherentSmallConstantSourceMap_isQCatEquivalence` は同じ比較を元の小さい空間の値へ正規化。
+  全切断の恒等射を表す変換と比較同型を選び、`coherentDiagramSectionsCone` へ実現した。
+  元の図式・全切断の頂点・全円柱の両端固定比較を保持。極限性の証明は残る。
 
 ### 残り（依存順）
 
@@ -46,6 +49,8 @@
 - `representablePresheafInfinity_isLimit_of_hasLimit`
 - `coherentSpaceSectionsObject`、`coherentSpaceSectionsEvaluation`
 - `relativeFunctorExponentialIso`、`coherentConstantSourceMap_isQCatEquivalence`
+- `coherentSmallConstantSourceMap_isQCatEquivalence`、`coherentSectionsIdentityRepresentation`
+- `coherentDiagramSectionsCone`、`coherentDiagramSectionsCone_vertex`
 
 ### 依存と提供
 
@@ -76,10 +81,10 @@
 
 ### 次の一手
 
-`coherentConstantSourceMap` の pointed fiber を `pointedSpaceFiberValueEquivalence` で元の空間の値へ移し、
-大きい全切断を `coherentSpaceSectionsObject` の宇宙持ち上げへ厳密に移す。
-比較の本質的全射性で小さい全切断の恒等射を表す定値始域の変換を選び、native な錐へ実現する。
-その指定変換と全試験空間への比較を追跡し、一般小極限の普遍性を閉じる。
+`coherentDiagramSectionsCone F` の全試験空間での Hom 比較を、
+`coherentSmallConstantSourceMap F z` と全切断の恒等射を表す指定変換の合成へ比較する。
+錐の実現が保持する全円柱・両端固定比較を使い、元の比較射の同値性から native な極限性を結論する。
+F2 の `CoconeFiberColimitCriterion`・全空間の指定単位の追跡は読み取り専用の双対設計の参考。
 その後、各点存在を解消して F1-4 を閉じ、F1-5・F1-3b へ進む。
 
 ## 0. 目標と範囲
