@@ -441,3 +441,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily_with_KanImage
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensity_globalFamily_homUniversal
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily_with_universal_KanImage
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightWeightedClassificationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightWeightedClassification_isIndVertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndClassificationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndClassificationIso_inclusion

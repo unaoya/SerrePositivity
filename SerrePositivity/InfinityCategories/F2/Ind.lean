@@ -259,3 +259,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.UniverseCocartesianHornL
 public import SerrePositivity.InfinityCategories.F2.Ind.UniverseCocartesianFibration
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityGlobalFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityGlobalUniversal
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightWeightedClassification
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassification
