@@ -1297,3 +1297,78 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @exists_diagram_of_retract_presheaves
 #print axioms exists_diagram_of_retract_presheaves
+
+#check @idemUniverseConeShapeIso_inl
+#print axioms idemUniverseConeShapeIso_inl
+
+#check @idemUniverseConeShapeIso_inv_inl
+#print axioms idemUniverseConeShapeIso_inv_inl
+
+#check @idemUniverseSliceOverIso_projection
+#print axioms idemUniverseSliceOverIso_projection
+
+#check @idemSliceOverRestrict_projection
+#print axioms idemSliceOverRestrict_projection
+
+#check @idemSliceOverEqIso_projection
+#print axioms idemSliceOverEqIso_projection
+
+#check @pointSliceUniverseIso
+#print axioms pointSliceUniverseIso
+
+#check @pointSliceUniverseIso_projection
+#print axioms pointSliceUniverseIso_projection
+
+#check @leftKanShapeUniverseIso
+#print axioms leftKanShapeUniverseIso
+
+#check @leftKanShapeUniverseIso_projection
+#print axioms leftKanShapeUniverseIso_projection
+
+#check @leftKanShapeUniverseIso_slice
+#print axioms leftKanShapeUniverseIso_slice
+
+#check @idemUliftMap_mono
+#print axioms idemUliftMap_mono
+
+#check @IsFullyFaithful.ulift
+#print axioms IsFullyFaithful.ulift
+
+#check @presheafLocalKanDiagram_hasColimit
+#print axioms presheafLocalKanDiagram_hasColimit
+
+#check @exists_presheafKan_strict_extension
+#print axioms exists_presheafKan_strict_extension
+
+#check @IsVertexRetractOf.ulift
+#print axioms IsVertexRetractOf.ulift
+
+#check @presheafCompletionExtension_values
+#print axioms presheafCompletionExtension_values
+
+#check @exists_presheafCompletion_extension
+#print axioms exists_presheafCompletion_extension
+
+#check @exists_extension_to_complete_of_full_inclusion
+#print axioms exists_extension_to_complete_of_full_inclusion
+
+#check @IsIdempotentCompletion.exists_extension
+#print axioms IsIdempotentCompletion.exists_extension
+
+#check @IsIdempotentCompletion.pre_isEssentiallySurjective
+#print axioms IsIdempotentCompletion.pre_isEssentiallySurjective
+
+#check @IsIdempotentCompletion.pre_isQCatEquivalence
+#print axioms IsIdempotentCompletion.pre_isQCatEquivalence
+
+#check @idempotentCompletionUniversalEquivalence
+#print axioms idempotentCompletionUniversalEquivalence
+
+#check @idemYoneda_pre_isQCatEquivalence
+#print axioms idemYoneda_pre_isQCatEquivalence
+
+#check @idemYonedaUniversalEquivalence
+#print axioms idemYonedaUniversalEquivalence
+
+#check @IsIdempotentCompletion.equivalence_unique
+#print axioms IsIdempotentCompletion.equivalence_unique

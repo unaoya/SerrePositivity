@@ -120,3 +120,15 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteYonedaEqu
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EssentialImageLift
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EssentialImageDiagram
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafDiagramRecovery
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseSliceProjection
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniversePointSlice
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseFullyFaithful
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafLocalKanColimits
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafKanExtension
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafCompletionValues
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExtension
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExtensionImage
+public import SerrePositivity.InfinityCategories.F2.Idempotent.UniversalProperty
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionUniqueness
