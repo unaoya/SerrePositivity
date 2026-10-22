@@ -14,10 +14,8 @@
   K-1 により W 辺の正の全有限反復の二評価の加法性を証明。全有限 W 列の図式圏も安定。
   全ての面・退化は完全で、StableModel 値の単体的対象と各段の反復実現を構成済み。
 - 全合成辺に共通の cofiber 補完を構成し、元の実四角形・始点・核値 cofiber を回収。
-  全再添字と厳密に可換。退化の cofiber は零で、関手圏内の八面体族から元の三辺の全正反復加法性を証明。
 - 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
-  零長は厳密同型、全長・全正反復は局所化同型。有限積比較そのものの全単体的自然同値は未主張。
-  内部面は隣接 cofiber の加法、第零面は核の作用、退化は零 cofiber と全関手圏で照合。
+  零長は厳密同型、全長・全正反復は局所化同型。全単体的な有限積比較の自然同値は未主張。
 - 二辺の内ホーン制限は W 条件を反映し、trivial Kan fibration・完全な安定圏同値。
   元の両短辺を保つ厳密引き戻しと単体左 fiber・Quillen A・S/cofiber 交換で全 S_n・全多重対角へ接続。
 - 先行 Δ[n+1] と最後の Δ[1] の零単体上の押し出しを構成。長い単体への包含は inner anodyne。
@@ -47,12 +45,14 @@
 - 全辺局所化の単位を全 Kan 標的で検査し、厳密な関手的 Kan 模型との実同値を証明。
   span の全単体圏上の coherent な空間値図式を構成。各値は元の両端固定分数の亜群化と同値。
   strict section の元の評価 prism で初頂点辺を反転し、同じ coherent 図式を元の底へ降下。
-  制限の全関手 ∞ 圏内の自然同型と初頂点での値を保持。商への降下・写像空間比較は未証明。
+  両側区間 prism により W の全逆像を反転し、全辺の厳密被覆と制限同型で底上の W 反転も証明。
+  元の全充満像を小さい宇宙へ縮小して商の全関手 ∞ 圏の普遍性を適用し、同じ図式を商へ降下。
+  底・全単体圏への制限の自然同型と、初頂点の元の strict Kan 分数値を回収。表現可能性は未証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8244 jobs・専用監査 225 モジュール 1174 宣言 が成功。
+- 現在の対象ビルド 8265 jobs・専用監査 237 モジュール 1226 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4505 モジュールは EInfinity を含まない。全体 24493 jobs で成功。
+  所有 import 閉包 4526 モジュールは EInfinity を含まない。全体 24520 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -74,8 +74,8 @@
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
 - exists_relative_weakOreFamily、weakOreFamilySpace_isContractibleKan、exists_weakMarkedSpanCartesianLift、
   weakSpanDenominatorBaseChange_cartesianFibration、weakDenominatorSpanTransport_groupoidCompletion_isEquivalence。
-- weakSpanKanCoherentDiagram_inverts_initial、weakSpanKanSpaceDiagram、
-  weakSpanKanSpaceDiagram_restrictionIso、weakSpanKanSpaceDiagram_initialVertexIso。
+- weakSpanKanSpaceDiagram_inverts_weak、weakSpanKanQuotientDiagram、
+  weakSpanKanQuotientDiagram_restrictionIso、weakSpanKanQuotientDiagram_simplexIso。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
@@ -97,12 +97,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の評価 prism・初頂点辺の反転・全関手 ∞ 圏による底への降下の9モジュール等を含める）。
+- なし（今回の両側区間 prism・W 反転・小さい全充満像を通る商降下の12モジュール等を含める）。
 ### 既知の問題
 - 商の ∞ 写像空間比較・cofinality 十分条件・Sp 値の K-6 は未完。K-5 の fraction 比較も同値性未証明。
 ### 次の一手
-- 降下した同じ空間値図式の W 反転を示す。商への降下には、商局所化の宇宙と Space∞ の宇宙の整合も要る。
-  商写像空間比較・cofinality 十分条件・Sp 値は未完。
+- 商上の同じ分数図式から商の写像空間への coherent な比較と、恒等 span の普遍点を構成する。
+  表現可能性・既存の分数評価との同一比較・cofinality 十分条件・Sp 値は未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
