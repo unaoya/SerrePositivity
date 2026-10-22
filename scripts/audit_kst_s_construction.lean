@@ -26094,3 +26094,63 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap_mono
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedIsPushout_anodyne_right
+#print axioms SerrePositivity.KST.SConstruction.pointedIsPushout_anodyne_right
+
+#check @SerrePositivity.KST.SConstruction.pointedPushout_inr_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedPushout_inr_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedFromPoint_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedFromPoint_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedSmashPoint_isZero
+#print axioms SerrePositivity.KST.SConstruction.pointedSmashPoint_isZero
+
+#check @SerrePositivity.KST.SConstruction.pointedSmashPointMap_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedSmashPointMap_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedSmashBoundaryFromPoint_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedSmashBoundaryFromPoint_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedWhiskerRight_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedWhiskerRight_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedUnderlyingProductSquare
+#print axioms SerrePositivity.KST.SConstruction.pointedUnderlyingProductSquare
+
+#check @SerrePositivity.KST.SConstruction.pointedProductPushoutProduct_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedProductPushoutProduct_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedSmashPushoutProduct_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedSmashPushoutProduct_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_zero_eq
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_zero_eq
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_one_eq
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_one_eq
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderProjection_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderProjection_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderTargetMap_anodyne
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderTargetMap_anodyne
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderProjectionMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderProjectionMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderSourceMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderSourceMap_localized_isIso
