@@ -391,3 +391,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaKappaCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeCommaRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTrivialLift
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeCommaInitial
+public import SerrePositivity.InfinityCategories.F2.Ind.CommaPostcomp
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramCommaEvaluation

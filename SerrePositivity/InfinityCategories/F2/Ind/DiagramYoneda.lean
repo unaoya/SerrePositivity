@@ -55,4 +55,15 @@ lemma diagramYoneda_isFullyFaithful (κ : Cardinal.{u}) (K C : SSet.{u})
   (qCatEquivalenceOfIso (uliftFunctorSpaceIso K C)).isQCatEquivalence.isFullyFaithful.comp
     ((indYoneda_isFullyFaithful κ C).postcompose ((SSet.uliftFunctor.{u + 1, u}).obj K))
 
+/-- 図式 Yoneda の全作用は、元の任意の頂点での評価と厳密に可換。 -/
+lemma diagramYoneda_evaluate (κ : Cardinal.{u}) {K C : SSet.{u}} [Quasicategory C]
+    (k : K _⦋0⦌) :
+    diagramYoneda κ K C ≫ evaluateFunctorAt (Y := IndInfinity κ C) (ULift.up k) =
+      (SSet.uliftFunctor.{u + 1, u}).map (evaluateFunctorAt (Y := C) k) ≫ indYoneda κ C := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro s
+  rfl
+
 end SerrePositivity.InfinityCategories.F2.Ind

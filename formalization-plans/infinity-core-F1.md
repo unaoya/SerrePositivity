@@ -13,13 +13,11 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7669 jobs、公理監査 3123 宣言、標準三公理のみ。
+- 現区切り：独立集約 7672 jobs、公理監査 3144 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
   `indVertex_cone_isLimit_of_exchange` は交換が成り立つ形状の元の極限全錐を、すべての Ind 前層が保存する条件付き定理。
-  `indObject_finiteColimit_isLimit` は明示交換入力のもとで、C の指定有限余極限の反転全錐の同じ前層による像の極限性。
-  `indYoneda_finiteOppositeCone_isLimit` は元の指定有限余極限の反転全錐の、正規化した反転 Yoneda による像の極限性。
   `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
   `indYoneda_finiteColimit_isColimit` は同じ指定元余錐の native な Yoneda 像の余極限性まで帰還。
   Ind の任意の有限図式の余極限存在や安定性は未証明。
@@ -39,6 +37,8 @@
   `coneCommaRestriction_isPullback` と `_trivialKanFibration` は left anodyne な形状制限の実比較。
   `indConeCommaPointRestriction_projection` は始点図式を保つ。`_trivialKanFibration` は全境界の持ち上げ。
   `nonempty_indConeComma_cocone` と `_coslice_cocone` は始対象形状の全錐 comma と指定図式下の κ-small 試験余錐。
+  `diagramCommaEvaluation` と `smallDiagramCommaEvaluation` は各指定値の実 Ind comma への全評価。
+  両 `_projection` は元の C の図式評価、両 `_coconeMap` は同じ標準全余錐の評価を厳密に回収。cofinal 性は未証明。
 
 ### 残り（依存順）
 
@@ -56,15 +56,13 @@
 - `indYoneda_isZero_of_zero`、`ind_hasZeroVertex`、`ind_hasZeroVertex_of_stable`
 - `conePresheafRestriction`、`conePresheafRestriction_isPointwiseColimit`、`indVertex_cone_isLimit_of_exchange`
 - `indPresheaf_finiteCone_isLimit`、`indPresheaf_finiteColimit_isLimit`、`indObject_finiteColimit_isLimit`
-- `oppositeYonedaSliceProjection`、`oppositeElementsYonedaSliceComparison_projection`、`oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence`
-- `indCommaCoslicePullbackIso`、`indCommaCoslicePullbackIso_projection`、`leftFibrationConeRestriction_baseChange_iff`
-- `ind_finiteColimit_cosliceSections_isQCatEquivalence`、`indYoneda_finiteOppositeCone_isLimit`
 - `joinUniverseReverse_hom`、`joinUniverseReverse_inv`、`uliftCoconeReverse_val`、`indYoneda_finiteColimit_isColimit`
 
 - `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
 - `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_isFullyFaithful`
 - `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
 - `nonempty_indComma_cocone`、`nonempty_indConeComma_cocone_of_initial`、`nonempty_indConeComma_coslice_cocone`
+- `diagramCommaEvaluation_uncurry`、`smallDiagramCommaEvaluation_projection`、`smallDiagramCommaEvaluation_coconeMap`
 
 ### 依存と提供
 
@@ -78,7 +76,7 @@
 
 ### 未コミット
 
-- なし。始対象形状の全錐 comma の点制限と指定図式下の κ-small 試験余錐まで検証済み。
+- なし。小さい全図式 comma の各頂点評価と元の標準全余錐の厳密な回収まで検証済み。
 
 ### 既知の問題
 
@@ -95,8 +93,10 @@
 `smallDiagramComma` の小ささ・実比較・全図式射影は済み。次は P の頂点を下から追加する補間で κ-filtered 性を証明。
 局所入力 `nonempty_indComma_cocone` と `_coslice_cocone` は証明済み。κ-small 試験族・指定全境界を保つ。
 上方区間の始対象への点制限は `indConeCommaPointRestriction` で実現済み。射影を厳密に保ち、全比較が自明 Kan。
-次は頂点追加の実補間領域と境界 M=(P≤a×B)∪(P<a×{∞}) を構成し、局所余錐を貼り合わせる。
-まず P=[1]。全図式 comma の各頂点評価を実 scalar comma への射として作り、元の始点と変換の評価を厳密に揃える。
+各頂点の実 scalar comma への評価と全標準余錐の等式は証明済み。次は P=[1] の元の試験族を二段で補間する。
+まず元の試験族の始点側の表示を揃え、その新しい始点から終点側の図式への境界を含めて終点側を表示する。
+局所的には `nonempty_indConeComma_coslice_cocone` を用い、既存の A 上の元の全変換を固定して二段を貼り合わせる。
+有限 P の境界は (N(P≤a)×B)∪(N(P<a)×{∞})。B は一般の κ-small 試験形状として扱い、poset nerve だけの試験で済ませない。
 次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
 HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。
 cofiber は余極限の合成、fiber は明示交換入力による前層の点ごとの引き戻し交換で示し、零角の一致から安定性へ戻す。

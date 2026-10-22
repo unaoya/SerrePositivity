@@ -685,3 +685,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_coslice_cocone
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointRestriction_trivialKanFibration
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_coslice_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaPostcomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaPostcomp_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaPostcomp_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.commaTransport_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluationRaw
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_coconeMap
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_coconeMap
