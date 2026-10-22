@@ -242,7 +242,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NerveAugmentationVertex,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveStructure,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveLaxComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveCompatibility]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedNerveCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseNerveMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseNerveProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseAugmentationPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseNerveLaxComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedLaxComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismUnitEdge,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseAugmentationVertex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSpecialization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomMappingModel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomMappingComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -30,10 +30,12 @@
   native 前合成を元の反変 M 作用と同定し、各 D 因子対象について C 因子上の全 dg 自然な係数加群射を構成。
   評価は同じ包含、その加群射は擬同型。D 変数の全 Hom 自然性も検証し、同じ成分の厳密 dg 自然変換を供給。
   元の gluing 関手 `dgGluingFunctor` は D→Mod(C), M[-1]。次数零だけの自然性で代用していない。
-- (c) 進行中。共通対象宇宙で dg nerve の二射影・augmentation の全単体構造変換を構成。
-  native 加群 dg nerve を標的とする F2 の lax pullback への実比較は二射影・矢印族を厳密に回収し、頂点辺は元の augmentation。
-  β5 の全加群恒等関手の実半自由出力分解で後合成し、導来加群 ∞ 圏 D(C) を標的とする同じ lax pullback 比較も構成。
-  導来矢印族と頂点辺は元の同じ族・辺の出力分解像と厳密に一致。一般宇宙の移送は未完。(d)〜(f) 未着手。
+- 工程 (c) の実比較を一般対象宇宙で構成済み。元の C・D・M・gluing の Hom は変えず、nerve の単体のみ共通宇宙へ ULift。
+  二射影と元の augmentation の全 prism は面・退化と可換。native 加群 nerve と β5 の導来加群 ∞ 圏上の lax pullback 比較を供給。
+  二射影・全矢印族を厳密に回収し、実頂点辺は元の augmentation の持ち上げ、その導来像そのもの。
+  共通対象宇宙では、一般宇宙の native・導来構造変換が先の実全単体族の持ち上げに一致。
+- 工程 (d) 進行中。始域の実写像空間を同じ mapping cocone Hom 複体の空間模型へ同定し、導来 lax pullback の実写像空間への比較射を構成。
+  この射と元の比較写像が誘導する Hom 写像の一致を証明。同値性・本質的全射性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -52,12 +54,15 @@
 - `dgGluingNerveLaxComparison`・`dgGluingNerveLaxComparison_fst`・`dgGluingNerveLaxComparison_snd`・`dgGluingNerveLaxComparison_arrow`
 - `dgGluingModuleDerivedComparison`・`dgGluingDerivedNerveLaxComparison`・`dgGluingDerivedAugmentationArrowFamily_postcompose`
 - `dgGluingDerivedNerveLaxComparison_fst`・`dgGluingDerivedNerveLaxComparison_snd`・`dgGluingDerivedAugmentationHomotopy_vertex_edge`
+- `dgGluingUniverseLeftNerve`・`dgGluingUniverseRightNerve`・`dgGluingUniverseAugmentationHomotopy_vertex_edge`
+- `dgGluingUniverseDerivedNerveLaxComparison` と `_fst`・`_snd`・`_arrow`、`dgGluingUniverseDerivedAugmentationArrowFamily_postcompose`
+- `dgGluingUniverseAugmentationPrism_specialization`・`dgGluingUniverseDerivedAugmentationHomotopy_specialization`
+- `dgGluingUniverseHomMappingIso`・`dgGluingLaxHomMappingComparison`・`dgGluingLaxHomMappingComparison_source`
 
 ### 残り（依存順）
-1. (c) 共通対象宇宙で native 加群 dg nerve・導来加群 ∞ 圏上の同じ実比較を構成済み。一般宇宙への移送整合を供給。Tamme Definition 5。見積り 1 日。
-2. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
-3. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
-4. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
+1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
+2. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
+3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。
 
 ### 依存と提供
@@ -68,13 +73,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingDerivedNerveLaxComparison` を正本とし、構成済みの二射影・元の構造辺を保持して一般宇宙への移送を供給する。
-  β5 の `dgModuleResolvedInfinity_rawFactorIso` は同じ係数脚を単独の出力分解関手と比較する入口。
-  続いて実 mapping cocone Hom と F2 Remark 6 の写像空間模型を比較し、充満忠実性・本質的全射性と全試験関手の普遍性へ進む。
+- 一般宇宙の `dgGluingUniverseDerivedNerveLaxComparison` を正本とし、`dgGluingLaxHomMappingComparison` の同値性を証明する。
+  `dgGluingUniverseHomMappingIso` が始域の全 mapping cocone 複体模型を供給。F2 の `laxPullbackMappingSpaceCone_isLimit` が標的側の Remark 6 の native 極限錐。
+  元の二射影と指定構造辺を保って両模型を照合し、全写像空間での同値性から充満忠実性へ進む。β5 の `dgModuleResolvedInfinity_rawFactorIso` は同じ係数脚の比較入口。
 
 ### 未コミット・既知の問題
-- 238モジュール・集約ビルド成功（5347 jobs）、公理監査3782宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開37署名を検査済み。新規14モジュール、集約・監査・本計画の専有17パスだけを保存。他レーンの差分は含めない。
+- 250モジュール・集約ビルド成功（5385 jobs）、公理監査3833宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開39署名を検査済み。新規12モジュール、集約・監査・本計画の専有15パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
