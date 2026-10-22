@@ -66,3 +66,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.twistedArrowSourceLift_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafTwistedElementsEvaluation
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafTwistedElementsEvaluation_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedElementsBaseChangeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedElementsReconstruction_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityJointHomotopy
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityDiagramHomotopy
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_cocone

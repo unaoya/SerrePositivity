@@ -9,16 +9,18 @@
 - F1-4・F1-5・F1-3b は `6f10976ea` まで完了。F1 集約 7661 jobs、公理監査 16236 宣言、標準三公理のみ。
 - **F2N-2(a) 進行中**：元の小さい right unstraightening を添字とする同じ Yoneda 図式を固定。
   `presheafElementsYonedaDiagram_vertex` で各項が元の表現可能前層であることを照合。
-  同じ図式の native な各点余極限を構成。頂点が元の F である密度定理は未証明。
+  同じ図式の native な各点余極限候補とは別に、元の F を頂点とする指定密度余錐を構成。余極限性は未証明。
 - `presheafYonedaSliceCocone` は元の F 自体を指定頂点とする標準全余錐。
   `presheafYonedaSliceFiberValueEquivalence` は同じ射影の各 fiber を元の F(x) と比較する。
-  小さい元の圏からの一つの底上の比較写像は未構成。各点の同値の存在で代用しない。
-  `presheafElementsCoconeOfComparison` は、その指定比較を入力すると小さい同じ図式へ全余錐を戻す。
+  `presheafElementsYonedaSliceComparison` は、小さい元の圏から同じ slice への一つの底上の比較。
+  その比較から余錐を戻すと、構成した同じ `presheafDensityCocone` と厳密に一致する。
 - **(a) の大域評価**：right fibration の相対 twisted arrow 右端比較の全境界充填を証明。
   `twistedArrowRightSection` は底の全 twisted arrow と指定終点を厳密に保つ一つの切断。
   `presheafTwistedElementsEvaluation` は同じ小さい元の圏を終点とする全族から元の F への pointed 評価。
-  その底の厳密な等式まで。共同 Hom 図式の自然変換への移送と密度余錐の余極限性は未証明。
-  独立集約 6099 jobs、公理監査 100 宣言、標準三公理のみ。
+  共同 Hom の底変換の復元同値を介して相対射を延長し、c1 で実際の自然変換へ実現。
+  `presheafDensityCoconeRealization` は、同じ自然変換を native 全余錐へ戻す頂点固定の全円柱も保持。
+  元の大域評価との相対写像空間内の同型も保存。比較の fiber 同値性と同じ密度余錐の余極限性が残る。
+  独立集約 6109 jobs、公理監査 257 宣言、標準三公理のみ。
 - **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
@@ -42,6 +44,8 @@
 - `presheafYonedaSliceFiberValueEquivalence`、`presheafElementsCoconeOfComparison`
 - `relativeEdgewiseRightComparison_trivialKanFibration`、`twistedArrowSourceLift_projection`
 - `presheafTwistedElementsEvaluation`、`presheafTwistedElementsEvaluation_projection`
+- `presheafDensityJointHomotopy`、`presheafDensityCocone`、`presheafDensityCocone_vertex`
+- `presheafElementsYonedaSliceComparison`、`presheafElementsYonedaSliceComparison_cocone`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -69,11 +73,11 @@
 
 ### 次の一手
 
-(a)：`E := smallRightUnstraightening F` とし、`presheafTwistedElementsEvaluation F` を使う。
-同じ C.op × E 上で、Tw(C) の底変換の分類図式を元の共同 Hom 図式と比較し、
-pointed 評価を c1 の写像空間比較により共同 Hom 図式から F への一つの自然変換へ移す。
-curry して、E の持ち上げから `presheafYonedaSlice F` への底上の比較 k を回収する。
-`presheafElementsCoconeOfComparison F k hk` で元の F を頂点とする小さい全余錐を回収し、その余極限性を証明する。
+(a)：構成済みの `presheafElementsYonedaSliceComparison F` の各 fiber を、元の Yoneda 評価と比較する。
+`PresheafDensityTransformation.evaluationIso`・c1 の `imageIso`・native 実現の全円柱を使い、
+元の twisted arrow の切断からの評価を同じ比較の fiber 作用へ移す。各点で別の射を選び直さない。
+同じ `presheafDensityCocone F` の各評価の余極限性を示し、前層の評価による検出で密度を結論する。
+評価後の同じ `F2.coconeFiberMap` の弱同値性を示せば、`F2.isColimitCone_of_coconeFiberMap_weakEquivalence` が使える。
 同じ全余錐を (c) の指定表示へ使い、別の余極限の存在や各点だけの同値で密度を主張しない。
 報告後は承認を待たず (a) を続行する。
 
