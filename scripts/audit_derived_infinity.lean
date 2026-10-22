@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
+import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
+import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingWeakEquivalence
 import SerrePositivity.InfinityCategories.Derived.ModulePiZeroBoundary
 import SerrePositivity.InfinityCategories.Derived.MooreZeroHomology
 import SerrePositivity.InfinityCategories.Derived.ModulePiZeroMoore
@@ -4228,6 +4232,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ModuleTranslation,
+    `SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi,
+    `SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingWeakEquivalence,
+
     `SerrePositivity.InfinityCategories.Derived.ModulePiZeroBoundary,
     `SerrePositivity.InfinityCategories.Derived.MooreZeroHomology,
     `SerrePositivity.InfinityCategories.Derived.ModulePiZeroMoore,

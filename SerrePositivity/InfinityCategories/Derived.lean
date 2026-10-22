@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
+public import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
+public import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence
+public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingWeakEquivalence
 public import SerrePositivity.InfinityCategories.Derived.ModulePiZeroBoundary
 public import SerrePositivity.InfinityCategories.Derived.MooreZeroHomology
 public import SerrePositivity.InfinityCategories.Derived.ModulePiZeroMoore
