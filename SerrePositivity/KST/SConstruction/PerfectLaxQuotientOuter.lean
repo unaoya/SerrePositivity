@@ -1,0 +1,105 @@
+module
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientRectangleLift
+
+/-! # 比較長方形の外周と元の商・完備化の列
+概要：同じ長方形の外周に、元の包含と完備化後の商射・零角を厳密に回収する。
+方針：指定した上下の合成三角形の対角と、元の左面の包含を使う。
+規約：新しい正方形を選び直さない。使われ方：不変量の二つの fiber 列の消去。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.KST.SConstruction
+open CategoryTheory MonoidalCategory SSet
+open SerrePositivity.InfinityCategories LocalizingInvariants
+open scoped Simplicial
+namespace PerfectLaxQuotient
+variable {C D B : StableCategory.{u}} {p : ExactMap C B} {q : ExactMap D B}
+  (d : PerfectLaxQuotient p q)
+
+/-- 元の全長方形の外周を、Verdier 列の向きへ転置する。 -/
+def rawOuterSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ StableInfinity.{u} :=
+  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare d.rawRectangle.diagram 1
+
+/-- 外周の下辺は、元の包含そのもの。 -/
+lemma rawOuterSquare_bottom : squareBottomEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (stableArrow d.inclusion).edge := by
+  rw [rawOuterSquare, square_transpose_bottom, pastingSquare_outer_leftEdge,
+    d.rawRectangle.left_eq, square_transpose_left, d.universalRawSquare_edges.1]
+
+/-- 外周の右辺は、元の実商と完備化の合成そのもの。 -/
+lemma rawOuterSquare_right : squareRightEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (stableArrow d.sequence.projection).edge := by
+  rw [rawOuterSquare, square_transpose_right, pastingSquare_topEdge,
+    d.rawRectangle.top_eq, stdSimplex.δ_comp_yonedaEquiv_symm,
+    (LaxUniversalDifference.quotientCompositionTriangle p q d.sequence.projection).d₁]
+  rfl
+
+/-- 外周の左辺は、元の左端から元の零圏への射。 -/
+lemma rawOuterSquare_left : squareLeftEdge ≫ d.rawOuterSquare =
+    SSet.yonedaEquiv.symm (stableArrow (toZeroCategory d.left)).edge := by
+  rw [rawOuterSquare, square_transpose_left, pastingSquare_bottomEdge,
+    d.rawRectangle.bottom_eq, stdSimplex.δ_comp_yonedaEquiv_symm,
+    (LaxUniversalDifference.zeroCompositionTriangle p q d.inclusion d.sequence.projection).d₁]
+
+/-- 外周の四角は、元の左端・lax 圏・完備化先と元の零圏。 -/
+lemma rawOuterSquare_vertices :
+    squareVertex d.rawOuterSquare 0 0 = stableVertex d.left ∧
+      squareVertex d.rawOuterSquare 1 0 = stableVertex (laxCategory p q) ∧
+      squareVertex d.rawOuterSquare 1 1 = stableVertex d.sequence.right ∧
+      squareVertex d.rawOuterSquare 0 1 = stableVertex zeroCategory.{u} := by
+  constructor
+  · have h := squareBottomEdge_source d.rawOuterSquare
+    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (stableArrow d.inclusion).src_eq] at h
+    exact h.symm
+  constructor
+  · have h := squareBottomEdge_target d.rawOuterSquare
+    rw [d.rawOuterSquare_bottom, Equiv.apply_symm_apply, (stableArrow d.inclusion).tgt_eq] at h
+    exact h.symm
+  constructor
+  · have h := squareRightEdge_target d.rawOuterSquare
+    rw [d.rawOuterSquare_right, Equiv.apply_symm_apply,
+      (stableArrow d.sequence.projection).tgt_eq] at h
+    exact h.symm
+  · have h := squareLeftEdge_target d.rawOuterSquare
+    rw [d.rawOuterSquare_left, Equiv.apply_symm_apply,
+      (stableArrow (toZeroCategory d.left)).tgt_eq] at h
+    exact h.symm
+
+/-- Cat^perf の同じ長方形の外周。 -/
+def outerSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u} :=
+  (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫ pastingSquare d.rectangleDiagram 1
+
+/-- 外周の持ち上げも、元の安定圏値の全外周を回収する。 -/
+lemma outerSquare_inclusion : d.outerSquare ≫ perfectStableInfinityInclusion =
+    d.rawOuterSquare := by
+  change _ ≫ (_ ≫ (d.rectangleDiagram ≫ perfectStableInfinityInclusion)) = _
+  rw [d.rectangleDiagram_inclusion]
+  rfl
+
+/-- 同じ外周は、元の実商と完備化を持つ列の coherent 提示そのもの。 -/
+def outerDiagram : PerfectVerdierDiagram.{u} where
+  toPerfectVerdierSequence := d.sequence
+  square := d.outerSquare
+  left_eq := by
+    apply Subtype.ext
+    exact d.rawOuterSquare_vertices.1
+  middle_eq := by
+    apply Subtype.ext
+    exact d.rawOuterSquare_vertices.2.1
+  right_eq := by
+    apply Subtype.ext
+    exact d.rawOuterSquare_vertices.2.2.1
+  bottom_edge := by
+    rw [d.outerSquare_inclusion]
+    exact d.rawOuterSquare_bottom
+  right_edge := by
+    rw [d.outerSquare_inclusion]
+    exact d.rawOuterSquare_right
+  zero_corner := by
+    change IsZeroCategory (stableObject (squareVertex d.rawOuterSquare 0 1))
+    rw [d.rawOuterSquare_vertices.2.2.2, stableObject_vertex]
+    exact zeroCategory_isZero
+
+end PerfectLaxQuotient
+end SerrePositivity.KST.SConstruction

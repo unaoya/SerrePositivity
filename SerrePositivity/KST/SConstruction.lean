@@ -2276,4 +2276,10 @@ public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientSquare
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientUniversalComparison
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientUniversalLift
 
+public import SerrePositivity.KST.SConstruction.PerfectIdentityLaxSequence
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientRectangle
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientRectangleLift
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientOuter
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientPullback
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -27924,3 +27924,60 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalSquare_inclusion
 #print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalSquare_inclusion
+
+#check @SerrePositivity.KST.SConstruction.perfectIdentityLaxSequence
+#print axioms SerrePositivity.KST.SConstruction.perfectIdentityLaxSequence
+
+#check @SerrePositivity.KST.SConstruction.perfectIdentityLaxSequence_projection
+#print axioms SerrePositivity.KST.SConstruction.perfectIdentityLaxSequence_projection
+
+#check @SerrePositivity.KST.SConstruction.perfectIdentityLaxRawSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.perfectIdentityLaxRawSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawRectangle
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawRectangle
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawRectangle_vertex_complete
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawRectangle_vertex_complete
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_inclusion
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_inclusion
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_left
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_left
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_right
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rectangleDiagram_right
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_bottom
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_bottom
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_right
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_right
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_left
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_left
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_vertices
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.rawOuterSquare_vertices
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerSquare
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerSquare
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerSquare_inclusion
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerSquare_inclusion
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerDiagram
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.outerDiagram
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare
+
+#check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare_isPullback
+#print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare_isPullback
