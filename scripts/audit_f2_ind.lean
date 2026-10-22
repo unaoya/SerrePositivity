@@ -449,3 +449,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightTwistedComparison_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightTwistedLeftEvaluation
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedEvaluation_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedSimplexCoefficient_map
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedBoundary_lift_with_coefficient
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedMap_boundary_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedMap_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedComparison_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedEvaluation_over
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedSourceLift_nonempty

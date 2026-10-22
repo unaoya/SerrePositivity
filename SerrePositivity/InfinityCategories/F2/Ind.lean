@@ -263,3 +263,14 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightWeightedClass
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassification
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightTwistedDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightTwistedEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientMap
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedBoundaryDiagrams
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedBoundaryPrefixAgreement
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedBoundaryFaceAgreement
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedBoundaryLift
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedSimplexRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedMapBoundaryLift
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedMapTrivialKan
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedSourceBase
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedSourceLift

@@ -34,8 +34,8 @@
   `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
   `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
   `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較は right cofinal。同じ全密度余錐と左 Kan 像の余極限性、標準余錐との頂点の厳密な一致を証明。cocartesian fibration の宇宙移送を外側ホーンから証明し、元の密度図式を左制限に持つ一つの大域相対 join 図式を構成。全 fiber の native 余極限性と、その左 Kan 像の同じ普遍性も証明。両者の指定単位について全添字上の Hom 普遍性を接続済み。共同 weighted 分類と元の strict right 分類の全添字上の同型を構成し、Indκ 内にも持ち上げた。包含後は元の指定比較を回収する。twisted-arrow の相対右端比較を元の全通常図式に自然に組み、全成分の自明 Kan 性と、反転した左端の共同 weighted 評価・厳密な底の可換性まで証明。右制限と元の標準分類図式の全比較・一般保存性・本質的全射性は未証明。
-- 独立集約 7134 jobs、公理監査 2022 宣言、標準三公理のみ。
+  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較は right cofinal。同じ全密度余錐と左 Kan 像の余極限性、標準余錐との頂点の厳密な一致を証明。cocartesian fibration の宇宙移送を外側ホーンから証明し、元の密度図式を左制限に持つ一つの大域相対 join 図式を構成。全 fiber の native 余極限性と、その左 Kan 像の同じ普遍性も証明。両者の指定単位について全添字上の Hom 普遍性を接続済み。共同 weighted 分類と元の strict right 分類の全添字上の同型を構成し、Indκ 内にも持ち上げた。包含後は元の指定比較を回収する。twisted-arrow の相対右端比較を元の全通常図式に自然に組み、weighted 全空間の同じ比較自身の自明 Kan 性と前合成同値を証明。係数の Kan 性は不要。元の共同評価を保持する全高次の相対持ち上げまで構成。右制限と元の標準分類図式の全比較・一般保存性・本質的全射性は未証明。
+- 独立集約 7145 jobs、公理監査 2087 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -64,7 +64,7 @@
 - `indElementsLeftKanComparison_isQCatEquivalence`、`indElementsLeftKanComparison_diagram`
 - `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
-- `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`
+- `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`、`weightedMap_trivialKanFibration`、`weightedTwistedSourceLift`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
 `indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
 次は strict 分類標準余錐 `strictClassifiedIndCocone` の左 Kan 延長による像の余極限性を証明する。元の全空間は各段と余極限とも κ-filtered。
-`exists_weightedDensity_globalFamily_with_KanImage` は元の weighted 密度図式を左制限に持つ一つの大域相対 join 図式と、全 fiber の native 余極限性・左 Kan 像の同じ普遍性を構成済み。射影の cocartesian 性の宇宙移送は追加仮定なしに証明。`exists_weightedDensity_globalFamily_with_universal_KanImage` は同じ全族と左 Kan 像の指定単位について大域的 Hom 普遍性も与える。`weightedIndClassificationIso` は共同 weighted 分類と元の strict 分類の全比較を Indκ 内へ持ち上げる。`strictRightTwistedComparison` は元の全通常図式に自然な相対右端比較で、全成分は自明 Kan。`weightedRightTwistedEvaluation_projection` は同じ全族の反転した左端評価と共同射影の厳密な可換性。次はこの相対比較の weighted 全空間での前合成同値を証明し、元の weighted 密度図式からこの分類図式への指定変換を降ろす。Kan 係数に限定された既存の weighted 比較定理は、そのままでは適用できない。大域全族の右制限との比較後、同じ標準余錐へ Kan 合成を戻す。対象ごとの頂点同型だけで代用しない。
+`exists_weightedDensity_globalFamily_with_KanImage` は元の weighted 密度図式を左制限に持つ一つの大域相対 join 図式と、全 fiber の native 余極限性・左 Kan 像の同じ普遍性を構成済み。射影の cocartesian 性の宇宙移送は追加仮定なしに証明。`exists_weightedDensity_globalFamily_with_universal_KanImage` は同じ全族と左 Kan 像の指定単位について大域的 Hom 普遍性も与える。`weightedIndClassificationIso` は共同 weighted 分類と元の strict 分類の全比較を Indκ 内へ持ち上げる。`strictRightTwistedComparison` は元の全通常図式に自然な相対右端比較で、全成分は自明 Kan。`weightedRightTwistedEvaluation_projection` は同じ全族の反転した左端評価と共同射影の厳密な可換性。`weightedMap_trivialKanFibration` は成分ごとの自明 Kan 性から同じ weighted 比較の自明 Kan 性を証明し、`weightedRightTwistedComparison_isPrecompositionEquivalence` を追加仮定なしに与える。`weightedTwistedSourceLift` は元の全評価を保持する共同底上の一つの相対持ち上げ。次は `weightedNerve (strictRightTwistedElementsDiagram F)` と `pullback (edgewiseRight C) (weightedIndDensityBase F)` を元の両射影を保つ同型で比較し、この持ち上げを共同 Hom の unstraightening に沿って降ろして、同じ weighted 密度図式から共同分類への指定変換を作る。大域全族の右制限との比較後、同じ標準余錐へ Kan 合成を戻す。対象ごとの頂点同型だけで代用しない。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点
