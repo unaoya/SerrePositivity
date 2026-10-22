@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraNaturality
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraFunctor
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDerivedInfinity
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnitLaws
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebra
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainAssociativity
@@ -4216,6 +4219,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDerivedInfinity,
+
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnitLaws,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebra,
 
