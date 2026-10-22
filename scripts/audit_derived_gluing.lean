@@ -162,7 +162,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ZeroRepresentation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ZeroObject,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PositiveShiftRepresentation,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosurePositive]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyClosurePositive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftObject,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftObject,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftObjectTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftObjectComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftRepresentativeHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeStrictCycles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.BiproductCycles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaStrictGradedElements,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftProjection]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
