@@ -207,3 +207,11 @@ public import SerrePositivity.KST.Fibration.WeakMarkedSpanCartesianLift
 public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
 public import SerrePositivity.KST.Fibration.WeakSpanTransportGroupoidCompletion
 public import SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport
+public import SerrePositivity.KST.Fibration.GroupoidCompletionWeakUnit
+public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
+public import SerrePositivity.KST.Fibration.StrictKanCompletion
+public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
+public import SerrePositivity.KST.Fibration.WeakSpanKanDiagram
+public import SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps
+public import SerrePositivity.KST.Fibration.WeakSpanChosenKanTransport
