@@ -1,6 +1,19 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSmallDiagram_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSmallDiagram_yoneda
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationLiftedCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCommaFamily_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCommaFamily_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCoherentDiagram_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSmallDiagram_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCommaFamily_old_projection
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationLiftedCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCommaFamily_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCommaFamily_old_projection
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_iff_of_iso
 #check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_range_of_mono
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_small_codiscreteConeRange

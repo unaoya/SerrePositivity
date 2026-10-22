@@ -440,3 +440,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationTipLin
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSquare
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSquareTip
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCoherentCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSmallDiagram
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationLiftedCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCommaFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationDiagramBoundary
