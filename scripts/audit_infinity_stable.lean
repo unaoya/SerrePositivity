@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Stable.FixedInitialHomotopy
+import SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism
+import SerrePositivity.InfinityCategories.Stable.LeftAnodyneLimitRestriction
+import SerrePositivity.InfinityCategories.Stable.ExcisionCorePunctured
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanCode
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanToHorn
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanEdges
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanFromHorn
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanHornIso
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanBoundary
 import SerrePositivity.InfinityCategories.Stable.Strip3Pasting
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnStrips
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnFaces
@@ -7580,6 +7590,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.FixedInitialHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism,
+    `SerrePositivity.InfinityCategories.Stable.LeftAnodyneLimitRestriction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCorePunctured,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanCode,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanToHorn,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanEdges,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanFromHorn,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanHornIso,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanBoundary,
+
     `SerrePositivity.InfinityCategories.Stable.Strip3Pasting,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnStrips,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnFaces,
