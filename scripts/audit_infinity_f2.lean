@@ -5021,3 +5021,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZero_morphism_coherence
 #check @SerrePositivity.InfinityCategories.F2.vertexIso_map_heq_refl_of_heq
 #check @SerrePositivity.InfinityCategories.F2.vertexIso_trans_heq_of_right_refl
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionReversePrism_app_val
+#check @SerrePositivity.InfinityCategories.F2.reverseKanNerveSpaceIso_simplex
+#check @SerrePositivity.InfinityCategories.F2.pointedReverseKanCompositionPrism_coordinates
+#check @SerrePositivity.InfinityCategories.F2.pointedReverseMorphismPrism
+#check @SerrePositivity.InfinityCategories.F2.pointedReverseMorphismPrism_coordinates
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedFamily_coordinates
+#check @SerrePositivity.InfinityCategories.F2.pointedCoherentMorphismPrism_coordinates
+#check @SerrePositivity.InfinityCategories.F2.coherentReverseThickening_initial_map
+#check @SerrePositivity.InfinityCategories.F2.coneInitialParameter_reflected_coefficient
+#check @SerrePositivity.InfinityCategories.F2.pointedMorphismPrism_obj
+#check @SerrePositivity.InfinityCategories.F2.coherentReverseComposition_initial_transport
+#check @SerrePositivity.InfinityCategories.F2.coherentReverseComposition_initial_one
+#check @SerrePositivity.InfinityCategories.F2.coherentReverseComposition_initial_zero_constant
