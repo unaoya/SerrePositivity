@@ -121,7 +121,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapEvaluation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapRightComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeNullElementKernel,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullAction]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeBiproductLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCochainPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomConeLeftInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeModuleLeftInclusions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeSplitLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelLeftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelLeftComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullComponents]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

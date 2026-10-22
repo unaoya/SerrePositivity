@@ -24,14 +24,9 @@
 - ホモトピー可換な正方形の cocone 写像を第三 cochain ごと構成し、
   `Cone(coconeSquareMap) ≅ Cocone(coneSquareMap)` を全整数次数で証明。
   四成分の交換は `(a,b,c,d) ↦ (a,c,−b,d)`。右包含は既存の厳密 cocone 写像と一致。
-- 実 gluing 合成の第三 cochain を全 Hom tensor 上で回収し、閉射の実後合成の二射影と第三 cochain を同定。
-  `dgGluingHomConeIso` により実 Hom 後合成の標準 cone を回収係数の mapping cocone と同定。
-- 閉射の後合成の第三 cochain を二項に因子分解し、右包含への制限を元の像の射の作用と同定。
-  右包含の Yoneda 比較との整合性を使い、`dgGluingHomConeBottom_action` で元の双加群作用まで回収。
-- 左包含上の第二項を全次数の加群 Hom 後合成へ移し、回収ホモトピーを同じ閉射の第三成分の評価と同定。
-  `dgGluingHomConeExplicitIso` は元の双加群作用・第三成分を明示した係数への、実 Hom 後合成の標準 cone の鎖同型。
-- 直和写像の cone の実鎖同型と実包含を構成し、`dgGluingHomConeSplitIso` で左右 Hom cone を分離。
-  分解後の係数は左右の制限の和。左の差写像・第三成分は負の左作用・負の同じ第三成分、右は右作用・第三成分零。
+- 実合成・閉後合成の第三 cochain を全 Hom tensor 上で同定し、回収下辺・ホモトピーを元の双加群作用・閉射の第三成分と同定。
+  `dgGluingHomConeExplicitIso` は標準 Hom 円錐を明示係数の mapping cocone と同定。
+  `dgGluingHomConeSplitIso` は左右 Hom cone を分離し、左係数の負符号と右係数の第三成分零を保持する。
 - 左の評価 cone を同じ加群 cone の全 Hom と同定し、左係数を `dgGluingConeMorphism` の実後合成の負と同定。
   右係数は、同じ右作用の厳密正方形の標準 cone 写像そのものと証明。D の Yoneda cone 加群からの全 Hom 同型も構成。
   tensor–Yoneda の列比較を全 Hom に拡張し、試験対象の augmentation と通常 tensor による右作用を構成。
@@ -47,7 +42,10 @@
   native 閉包含 `dgGluingConeInr` と全 dg 自然な Yoneda 加群射を構成。合成の指定零 cochain を native・kernel・Yoneda Hom end 間で保持。
   `dgGluingConeModuleMap` は指定境界元による実加群円錐→代表加群の dg 自然な射。元の両圏の前三角性を明示入力とする版も構成。
   評価の両包含を同定し、右包含では既存の点ごとの同値の順射との一致を証明。左評価は指定 native 境界元の全次数後合成と同定。
-  円錐交換の左包含の第一・第三成分と負符号も証明。左包含での既存同値との一致、加群射の同値性、零・整数シフトの閉性は未完。
+  円錐交換・左右分解・kernel 比較の左包含の第一・第三成分と負符号を証明。
+  kernel 左包含の source・replacement は元の Hom 射影・Yoneda・同じ加群 Hom 円錐左包含と厳密に一致。
+  指定 kernel 零 cochain の両成分を単位への制限で回収し、第三成分零を cochain と同じ次数 −1 元の両方で証明。
+  左包含での既存同値との一致、加群射の同値性、零・整数シフトの閉性は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -74,6 +72,8 @@
 - `dgGluingSmall`・`dgGluingKernelConeInr`・`dgGluingConeInr`・`dgGluingHomConeKernelIso_inr`
 - `dgGluingConeNullCochain`・`dgGluingConeModuleNullElement_boundary`・`dgGluingConeModuleMap`・`dgGluingChosenConeModuleMap`
 - `dgGluingConeModuleMapEvaluation_inl`・`dgGluingConeModuleMapEvaluation_inr_comparison`・`dgGluingConeNullElement_kernel`
+- `dgGluingHomConeKernelIso_inl_source`・`dgGluingHomConeKernelIso_inl_replacement`・`dgGluingHomConeKernelIso_inl_snd`
+- `dgGluingKernelConeNullCochain_source`・`dgGluingKernelConeNullCochain_replacement`・`dgGluingKernelConeNullElement_primitive`
 
 ### 残り（依存順）
 1. (a) 残り：零・シフト・cone の全 dg 自然な表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -92,15 +92,15 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- 標準 kernel 円錐の左包含を、`dgGluingKernelConeNullElement` による全次数後合成と同定。
+- 指定 kernel 零 cochain の単位への両成分を実 `moduleConeInlElement` と同定し、第三成分零と合わせて全次数後合成を回収。
   指定 cochain を保持する `dgGluingConeModuleMap` の左評価を既存の点ごとの同値の順射へ接続し、円錐の両包含による一意性を使う。
   加群射の点ごとの準同型性から射影的加群間の K の同型へ接続し、零・整数シフトも構成する。
   任意の零ホモトピーの選び直しや点ごとの Hom 同値だけでは、全 dg 自然な円錐表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 117モジュール・集約のビルド成功（5033 jobs）、公理監査2287宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom・主経路の `ModelCategory` 仮定なし。今回の公開45署名を検査済み。
-  新規14モジュール、集約・監査・本計画の専有17パスだけを保存。他レーンの差分は含めない。
+- 127モジュール・集約のビルド成功（5043 jobs）、公理監査2478宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom・主経路の `ModelCategory` 仮定なし。今回の公開20署名を検査済み。
+  新規10モジュール、集約・監査・本計画の専有13パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
