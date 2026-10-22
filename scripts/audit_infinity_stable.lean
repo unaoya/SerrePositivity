@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeDiagramLift
+import SerrePositivity.InfinityCategories.Stable.ExcisionReplacementRestriction
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionFamily
+import SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanRestriction
+import SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCornerRestriction
+import SerrePositivity.InfinityCategories.Stable.FunctorEdgeArrowFamily
+import SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparison
+import SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonEvaluation
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionSquare
+import SerrePositivity.InfinityCategories.Stable.ExcisionPullbackComparisonFamily
+import SerrePositivity.InfinityCategories.Stable.EquivalenceArrowLimits
+import SerrePositivity.InfinityCategories.Stable.PullbackComparisonComponentInvertible
+import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
+import SerrePositivity.InfinityCategories.Stable.LimitConeVertexTransport
 import SerrePositivity.InfinityCategories.Stable.OrderRetractionInitial
 import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedIndex
 import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedRetraction
@@ -7632,6 +7646,21 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeDiagramLift,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionReplacementRestriction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionFamily,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanRestriction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCornerRestriction,
+    `SerrePositivity.InfinityCategories.Stable.FunctorEdgeArrowFamily,
+    `SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparison,
+    `SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionSquare,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionPullbackComparisonFamily,
+    `SerrePositivity.InfinityCategories.Stable.EquivalenceArrowLimits,
+    `SerrePositivity.InfinityCategories.Stable.PullbackComparisonComponentInvertible,
+    `SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget,
+    `SerrePositivity.InfinityCategories.Stable.LimitConeVertexTransport,
+
     `SerrePositivity.InfinityCategories.Stable.OrderRetractionInitial,
     `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedIndex,
     `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedRetraction,
