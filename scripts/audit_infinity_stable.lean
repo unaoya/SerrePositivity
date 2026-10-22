@@ -1,3 +1,18 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreTranspose
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperSeedCorner
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectangleCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectanglePushout
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerComma
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerKanShape
+import SerrePositivity.InfinityCategories.Stable.ThinNerveVertexExt
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerCocone
+import SerrePositivity.InfinityCategories.Stable.PosetClosurePrism
+import SerrePositivity.InfinityCategories.Stable.PosetClosureRetraction
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCorePoint
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectangle
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerSeedCorner
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectangleCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectanglePushout
 import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationBimodule
 import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationKernel
 import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationEquivalence
@@ -7515,6 +7530,23 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreTranspose,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperSeedCorner,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectangleCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectanglePushout,
+
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerComma,
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerKanShape,
+    `SerrePositivity.InfinityCategories.Stable.ThinNerveVertexExt,
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerCocone,
+    `SerrePositivity.InfinityCategories.Stable.PosetClosurePrism,
+    `SerrePositivity.InfinityCategories.Stable.PosetClosureRetraction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCorePoint,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectangle,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerSeedCorner,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectangleCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridLowerRectanglePushout,
+
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationBimodule,
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationKernel,
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationEquivalence,
