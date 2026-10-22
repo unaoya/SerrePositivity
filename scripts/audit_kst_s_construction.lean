@@ -26991,3 +26991,111 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.soaExInfinityAdjoint_component
 #print axioms SerrePositivity.KST.SConstruction.soaExInfinityAdjoint_component
+
+#check @SerrePositivity.KST.SConstruction.dgNerve_map_isQCatEquivalence_iff_standard
+#print axioms SerrePositivity.KST.SConstruction.dgNerve_map_isQCatEquivalence_iff_standard
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanMap_piIsomorphism_of_localized
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanMap_piIsomorphism_of_localized
+
+#check @SerrePositivity.KST.SConstruction.pointedPiIsomorphism_of_weakComparisonSquare
+#print axioms SerrePositivity.KST.SConstruction.pointedPiIsomorphism_of_weakComparisonSquare
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapBoundary_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapBoundary_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_boundary
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_boundary
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_boundary
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_boundary
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaStableEquivalence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaStableEquivalence
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaStableEquivalence_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaStableEquivalence_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaRealization_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaRealization_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_levelwise
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_levelwise
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaGroupEquiv
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaGroupEquiv
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaGroupEquiv_apply
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaGroupEquiv_apply
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaInfinity_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMoritaInfinity_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_edge
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_edge
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_morita_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_morita_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_morita_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFBoundaryOrdinaryMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFBoundaryOrdinaryMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStageComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_positive_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_positive_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_zero_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_zero_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_quasiEquivalence_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_quasiEquivalence_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInputStableMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInputStableMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanMap_piIsomorphism_of_realization
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBoundaryKanMap_piIsomorphism_of_realization
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_realization
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_levelwise_of_realization
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_realization
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_piIsomorphism_of_realization
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGMoritaAction_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGMoritaAction_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_hom
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_hom
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_of_hom
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_of_hom
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_comp
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_comp
+
+#check @SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_post
+#print axioms SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_post
+
+#check @SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_pre
+#print axioms SerrePositivity.KST.SConstruction.simplicialHomEquiv_comp_pre
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialOrdinaryMap_naturality

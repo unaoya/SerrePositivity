@@ -2210,4 +2210,15 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOASpectrumC
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAStructure
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStepAdjointComponent
 public import SerrePositivity.KST.SConstruction.SOAExInfinityAdjointComparison
+public import SerrePositivity.KST.SConstruction.DGStandardEquivalence
+public import SerrePositivity.KST.SConstruction.ExInfinityPointedWeakEquivalence
+public import SerrePositivity.KST.SConstruction.PointedWeakComparisonSquare
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMapWeakEquivalence
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMorita
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMoritaInfinity
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFOrdinaryNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFQuasiEquivalence
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFRealizationInvariance
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGMoritaAction
+public import SerrePositivity.KST.SConstruction.StrictSimplicialOrdinaryMap
 /-! # ∞-S• 構成と連結 K 理論 -/
