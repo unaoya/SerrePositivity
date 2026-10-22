@@ -7,6 +7,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.SpectrumKanEvaluationOrdinary,
+    `SerrePositivity.KST.Fibration.RawFiberKanEvaluation,
+    `SerrePositivity.KST.Fibration.BFFiberKanEvaluation,
+    `SerrePositivity.KST.Fibration.FiberSquareKanEvaluation,
+    `SerrePositivity.KST.Fibration.PointedKanInvertiblePi,
+    `SerrePositivity.KST.Fibration.PositiveKanEvaluationDetection,
+    `SerrePositivity.KST.Fibration.DGRelativePositiveDetection,
     `SerrePositivity.KST.Fibration.CoreEnrichedPrecompose,
     `SerrePositivity.KST.Fibration.CofiberFamilyPrecompose,
     `SerrePositivity.KST.Fibration.DGNuMultiRealization,
