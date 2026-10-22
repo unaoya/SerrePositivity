@@ -1282,7 +1282,15 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCellClassCompositionSquare,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquarePrecomp,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellAffineComposition,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareComposition]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCellClassWitnessHom,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareReindex,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationAffine,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellAffineFactorizationSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightAffineCompositeSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellFourthRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightComparisonRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightAffineRefinement]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
