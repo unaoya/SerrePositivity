@@ -95,12 +95,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
-  元 lax Hom と係数模型を同じ入力付き模型へ移し、入力を固定する二三角形の全変形と `dgGluingLaxHomDiagonalComparisonBoundary` を供給済み。係数合成三角形は native 合成 prism からの具体的なものへ置換済み。主係数 path は元 Hom の負 primitive による直接ホモトピーへ両端固定で正規化済み。native augmentation prism の実混合切断和は、第二切断以外の消去と全次数の Yoneda 比較により、削除符号込みでこの同じ負 primitive へ照合済み。恒等 augmentation と実 cochain 持ち上げによる明示的な全 prism は構成済み。円柱特殊化の基底固定式と既存の選択円柱との両端・基底固定比較を証明。全係数から明示 prism の後合成自然性を証明し、円柱 extension によって元 Hom の負 primitive の明示 prism と主係数 path を両端固定で比較。canonical 導来係数 Hom と主比較の区間 Hom へ全二次元族を移し、同じ係数対角ホモトピーとも両端固定で比較。元 gluing prism の全相の実係数から単体的正規化族を再構成し、全明示族と厳密照合。元 pinched Hom と共通宇宙の導来区間 Hom 上で、主係数対角族との両端固定比較も構成。次は正規化族を元 F2 比較の二三角形・入力変形からの全区間族へ同定し、三次元整合性と境界充填を構成する。個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。
+  元 lax Hom と係数模型を同じ入力付き模型へ移し、入力を固定する二三角形の全変形と `dgGluingLaxHomDiagonalComparisonBoundary` を供給済み。係数合成三角形は native 合成 prism からの具体的なものへ置換済み。主係数 path は元 Hom の負 primitive による直接ホモトピーへ両端固定で正規化済み。native augmentation prism の実混合切断和は、第二切断以外の消去と全次数の Yoneda 比較により、削除符号込みでこの同じ負 primitive へ照合済み。恒等 augmentation と実 cochain 持ち上げによる明示的な全 prism は構成済み。円柱特殊化の基底固定式と既存の選択円柱との両端・基底固定比較を証明。全係数から明示 prism の後合成自然性を証明し、円柱 extension によって元 Hom の負 primitive の明示 prism と主係数 path を両端固定で比較。canonical 導来係数 Hom と主比較の区間 Hom へ全二次元族を移し、同じ係数対角ホモトピーとも両端固定で比較。元 gluing prism の全相の実係数から単体的正規化族を再構成し、全明示族と厳密照合。元 pinched Hom と共通宇宙の導来区間 Hom 上で、主係数対角族との両端固定比較も構成。任意 dg 関手の comma から標的恒等 comma への dg 関手 `dgGluingCommaImageFunctor` を、二射影・全比較 cochain・単位・合成を保存して構成。恒等 comma の標準閉射の実前後合成は primitive を保ち、二作用 gμ・νf と元の負 primitive の明示 cochain lift に厳密一致（`dgGluingCommaNormalizedHom_eq_cochainLift`）。同じ実正規化 Hom からの恒等 comma prism は、全明示 cochain prism と全パラメータで一致（`dgGluingCommaNormalizedPrism_model`）。次はこの実閉射による合成三角形を `dgPinchedCompositionFamilyPrism`（標的 Small 不要）から構成し、元 augmentation prism の恒等 comma への移送と照合して、元 F2 二三角形との三次元整合性・境界充填を構成する。個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。
   元の両 Hom 入力・augmentation prism・二三角形を保持して正本の実 lax Hom 比較と `dgGluingHomDerivedCompositionInputPathComparison` を照合する。入力付き path 比較の同値性を正本の全引き戻し比較へ移し、充満忠実性の判定へ適用する。
 
 ### 未コミット・既知の問題
-- 619モジュール・集約ビルド成功（8614 jobs）、公理監査5766宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開57署名を検査済み。新規29モジュールと集約・監査・本計画の専有32パスだけを保存。他レーンの差分は含めない。
+- 636モジュール・集約ビルド成功（8631 jobs）、公理監査5952宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開67署名を検査済み。新規17モジュールと集約・監査・本計画の専有20パスだけを保存。他レーンの差分は含めない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
 

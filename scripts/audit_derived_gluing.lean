@@ -623,7 +623,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePrismNormalizedPathComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePrismNormalizedSimplex,
     `SerrePositivity.InfinityCategories.Derived.Gluing.RelativePrismHomotopyPrecomp,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.SimplicialMapOfPointwise]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SimplicialMapOfPointwise,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageCompositePrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageCompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaNormalizedCochainLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaNormalizedHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaNormalizedHomLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaNormalizedPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaGeneralDifference,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationClosed,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationEdges,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizeHom]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
