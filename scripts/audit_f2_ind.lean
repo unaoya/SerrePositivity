@@ -576,3 +576,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex_of_stable
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex_of_stable
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePresheafRestriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePresheafRestriction_isLimit_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePresheafRestriction_isPointwiseColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertex_cone_isLimit_of_exchange
+#check @SerrePositivity.InfinityCategories.F2.Ind.indPresheaf_finiteCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.indPresheaf_finiteColimit_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.indObject_finiteColimit_isLimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indObject_finiteColimit_isLimit

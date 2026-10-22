@@ -359,3 +359,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableTerminalVal
 public import SerrePositivity.InfinityCategories.F2.Ind.InitialEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaInitial
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaZero
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePresheafRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteConeExactness
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitExactness
