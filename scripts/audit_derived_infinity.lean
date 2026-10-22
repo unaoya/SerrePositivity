@@ -1,3 +1,19 @@
+import SerrePositivity.InfinityCategories.Stable.OrderRetractionInitial
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedIndex
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedRetraction
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedInitial
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedCones
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridInitialPoint
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullInitialFunctors
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullInitialInverse
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullJoinIso
+import SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacement
+import SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacementSquare
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullInputCospan
+import SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacementPullback
+import SerrePositivity.InfinityCategories.Stable.FunctorFiniteLimits
+import SerrePositivity.InfinityCategories.Stable.FunctorPullbackSquares
+import SerrePositivity.InfinityCategories.Stable.ArrowPullbackSquareExists
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputConeRestriction
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputComparisonEdges
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterEdgeProjection
@@ -4434,6 +4450,23 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.OrderRetractionInitial,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedIndex,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedRetraction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedInitial,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedCones,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridInitialPoint,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullInitialFunctors,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullInitialInverse,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullJoinIso,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacement,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacementSquare,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullInputCospan,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionInitialReplacementPullback,
+    `SerrePositivity.InfinityCategories.Stable.FunctorFiniteLimits,
+    `SerrePositivity.InfinityCategories.Stable.FunctorPullbackSquares,
+    `SerrePositivity.InfinityCategories.Stable.ArrowPullbackSquareExists,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputConeRestriction,
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputComparisonEdges,
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterEdgeProjection,
