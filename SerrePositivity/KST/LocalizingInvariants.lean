@@ -1750,4 +1750,17 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessSourceChange
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeBaseChangeFollowing
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightNativeFollowing
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightFollowing
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedSquare
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassHomotopy
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedModel
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
