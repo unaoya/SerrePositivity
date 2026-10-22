@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainNormalization
+public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCoefficientComplex
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleDegeneracy
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws

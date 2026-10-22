@@ -89,18 +89,19 @@
 
 ### 未コミット
 
-- g の実退化因子・射影整合性・実 Moore 乗法の結合・両単位・次数移送の5新規モジュール（32公開宣言）、Derived 集約、両監査、本計画の9パス。対象・両集約（10912 jobs）・32公開署名・ソース検査は成功、新規ソースに警告なし。両全体監査も成功。検証済み9パスを保存する。前回保存は `573c55819`（計画 `a29d49fab`）。他レーンの変更は変更しない。
+- 前工程の実 Moore 乗法32宣言は `12553553a` に保存済み。現在は g の `DGSimplicialRingCochainNormalization`・`DGSimplicialRingCoefficientComplex`（計20公開宣言）、Derived 集約、両監査、本計画の6パス。対象・両集約（10914 jobs）・20明示署名は成功。両全体監査も終端0（Derived 19932宣言／2213モジュール、Stable 21045／2483）。この6パスを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10912 jobs）。公理監査は Derived 19905 宣言／2211 モジュール、Stable 21018／2481。許容三公理のみ。今回までの保存対象1142新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10914 jobs）。公理監査は Derived 19932 宣言／2213 モジュール、Stable 21045／2483。許容三公理のみ。今回までの保存対象1144新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- d・f は完了、β4 は D2 所有。g の `DGSimplicialRingShuffleDegeneracy`（4宣言）・`DGSimplicialRingShuffleProjection`（11）・`DGSimplicialRingProjectedLaws`（5）・`DGSimplicialRingNormalizedDegreeProduct`（9）・`DGSimplicialRingNormalizedDegreeLaws`（3）を統合した。元の実 Moore 乗法の次数別成分を保持し、共通の実退化因子、PInfty の退化零化、両入力の射影への不変性から結合・左右単位則を回収した。次数移送は元の複体の eqToHom、包含の単射性で同じ対象へ戻す。対象・両集約（10912 jobs）・32公開署名・ソース検査は成功、新規ソースに警告なし。両全体監査は終端0（Derived 19905宣言／2211モジュール、Stable 21018／2481）。検証済み9パスを保存する。ログは `/tmp/d-beta5-normalized-ring-moore-laws-{derived,stable}-audit.log`。次工程：`embeddingDownNat` に沿う零延長で Moore 次数 n を cochain 次数 −n へ移す関手、実各次数の同型・微分・準同型の成分と正次数零化、準同型性の保存・反映まで10宣言は `/tmp/d-beta5-simplicial-ring-cochain.lean` で終端0。公開形式の同名 ready も10明示署名・公理監査・警告なしで終端0。同宇宙の整数係数 `ULift ℤ` への実加群圏同値による移送も `/tmp/d-beta5-simplicial-ring-cochain-coefficient.lean` で終端0、正次数零化と準同型性の保存・反映を保持する。公開形式の同名 ready で計20宣言を検証中。将来の公開 source は `/tmp/d-beta5-simplicial-ring-{cochain,cochain-coefficient}-source.lean`、予定名は `DGSimplicialRingCochainNormalization`（10宣言）・`DGSimplicialRingCoefficientComplex`（10）。さらに元の全 tensor 図式の乗法則、標準 cochain dg 代数と D(A) への接続、準同型不変性を証明する。係数と加群を同宇宙に置く既存 Complex の規約を守り、単体環の対象宇宙を縮めない。g 全体は未完。
+- d・f は完了、β4 は D2 所有。g の実 Moore 乗法の結合・両単位則は `12553553a` に保存済み。今回の20宣言は実 Moore 正規化を零延長で cochain 次数 −n へ移し、各次数の同型・微分・射成分・正次数零化と準同型性の保存・反映を与える。`ULift ℤ` への実加群圏同値で同宇宙の既存 dg 複体へ接続し、対象宇宙を縮めない。対象・両集約・20明示署名は成功、新規ソースに警告なし。両全体監査は終端0（Derived 19932宣言／2213モジュール、Stable 21045／2483）。検証済み6パスを保存する。ログは `/tmp/d-beta5-normalized-ring-cochain-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
+- 次は元の実 Moore 乗法を標準 cochain tensor の乗法へ移し、微分整合性・結合・両単位の全 tensor 図式、実 dg 代数関手と D(A)・Perf(A) 接続、準同型不変性を証明する。`/tmp/d-beta5-scalar-tensor-probe.lean` は整数 tensor から係数移送後の標準 tensor への実比較の試作で、型検査は未成功。`ModuleCat` の格納された整数作用と標準作用、`ULift.module` と tensor の作用の diamond を、元の作用を明示して解消する。制限値の引き上げや型検査の無効化は行わない。現在の20宣言は基礎 dg 複体だけであり、g 全体は未完。
 
 ## 目標と原典
 
