@@ -1228,3 +1228,72 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @idemYoneda_pre_isFullyFaithful
 #print axioms idemYoneda_pre_isFullyFaithful
+
+#check @IsIdempotentComplete.ulift
+#print axioms IsIdempotentComplete.ulift
+
+#check @isIdempotentComplete_of_ulift
+#print axioms isIdempotentComplete_of_ulift
+
+#check @isIdempotentComplete_iff_ulift
+#print axioms isIdempotentComplete_iff_ulift
+
+#check @IsIdempotentComplete.of_equivalence
+#print axioms IsIdempotentComplete.of_equivalence
+
+#check @isIdempotentComplete_iff_of_equivalence
+#print axioms isIdempotentComplete_iff_of_equivalence
+
+#check @retract_iso_in_complete_fullSubcomplex
+#print axioms retract_iso_in_complete_fullSubcomplex
+
+#check @IsIdempotentComplete.fullVertexImage
+#print axioms IsIdempotentComplete.fullVertexImage
+
+#check @IsIdempotentComplete.retract_iso_in_image
+#print axioms IsIdempotentComplete.retract_iso_in_image
+
+#check @yonedaRetract_iso_representable
+#print axioms yonedaRetract_iso_representable
+
+#check @isRetractPresheaf_iff_representable_of_complete
+#print axioms isRetractPresheaf_iff_representable_of_complete
+
+#check @idemYoneda_isEssentiallySurjective_of_complete
+#print axioms idemYoneda_isEssentiallySurjective_of_complete
+
+#check @idemYoneda_isQCatEquivalence_of_complete
+#print axioms idemYoneda_isQCatEquivalence_of_complete
+
+#check @idemYonedaEquivalenceOfComplete
+#print axioms idemYonedaEquivalenceOfComplete
+
+#check @fullEssentialImage
+#print axioms fullEssentialImage
+
+#check @fullEssentialImage_quasicategory
+#print axioms fullEssentialImage_quasicategory
+
+#check @essentialImageLift
+#print axioms essentialImageLift
+
+#check @essentialImageLift_inclusion
+#print axioms essentialImageLift_inclusion
+
+#check @essentialImageLift_isFullyFaithful
+#print axioms essentialImageLift_isFullyFaithful
+
+#check @essentialImageLift_isEssentiallySurjective
+#print axioms essentialImageLift_isEssentiallySurjective
+
+#check @essentialImageLift_isQCatEquivalence
+#print axioms essentialImageLift_isQCatEquivalence
+
+#check @essentialImageEquivalence
+#print axioms essentialImageEquivalence
+
+#check @exists_diagram_in_fullyFaithful_source
+#print axioms exists_diagram_in_fullyFaithful_source
+
+#check @exists_diagram_of_retract_presheaves
+#print axioms exists_diagram_of_retract_presheaves
