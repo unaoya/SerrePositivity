@@ -8860,3 +8860,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit_of_hasLimit
 
 #check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit_of_spaceLimitsOfShape
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsObject
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsVertex
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsVertex_object
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsEvaluation
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsEvaluation_projection
+
+#check @SerrePositivity.InfinityCategories.coherentSpaceSectionsHomEquiv
+
+#check @SerrePositivity.InfinityCategories.relativeFunctorUncurryHom
+
+#check @SerrePositivity.InfinityCategories.relativeFunctorExponentialIso
+
+#check @SerrePositivity.InfinityCategories.pullbackConstantToTensor
+
+#check @SerrePositivity.InfinityCategories.tensorToPullbackConstant
+
+#check @SerrePositivity.InfinityCategories.pullbackConstantTensorIso
+
+#check @SerrePositivity.InfinityCategories.constantUnstraighteningSourceOverIso
+
+#check @SerrePositivity.InfinityCategories.constantUnstraighteningSourceRelativeIso
+
+#check @SerrePositivity.InfinityCategories.coherentConstantSourceMap
+
+#check @SerrePositivity.InfinityCategories.coherentConstantSourceMap_isQCatEquivalence

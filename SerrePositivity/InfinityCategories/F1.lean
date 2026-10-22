@@ -3135,3 +3135,11 @@ public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseLimits
 public import SerrePositivity.InfinityCategories.F1.PresheafSmallLimits
 
 public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafLimits
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSpaceSectionsObject
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExponential
+
+public import SerrePositivity.InfinityCategories.F1.PullbackConstantTensor
+
+public import SerrePositivity.InfinityCategories.F1.CoherentConstantSourceComparison

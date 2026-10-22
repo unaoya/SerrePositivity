@@ -16,6 +16,9 @@
   極限は各点の存在を明示した構成・保存・検出まで。形状ごとの F2 の空間値極限条件との接続も証明。
 - 表現可能前層は、像の極限の存在のもとで任意の形状の元の極限全錐を保存する。
   有限性・離散性は使わない。一般の小さい空間値極限の存在は未解決。
+- 一般形状の全切断を小さい Kan 対象に束ね、元の底を保つ普遍的評価を構成した。
+  `coherentConstantSourceMap_isQCatEquivalence` は、定値図式からの元の全変換を
+  pointed fiber から全切断への内部 Hom と比較する同値。任意の底・全高次パラメータで成立。
 
 ### 残り（依存順）
 
@@ -41,6 +44,8 @@
 - `presheafInfinity_hasLimit_of_evaluation`、`presheafInfinity_isLimit_iff_evaluation`
 - `presheafInfinity_hasLimit_of_spaceLimitsOfShape`
 - `representablePresheafInfinity_isLimit_of_hasLimit`
+- `coherentSpaceSectionsObject`、`coherentSpaceSectionsEvaluation`
+- `relativeFunctorExponentialIso`、`coherentConstantSourceMap_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -71,9 +76,11 @@
 
 ### 次の一手
 
-F2・N の Kan な切断模型と小さい積・引き戻し・塔から、一般 coherent 小極限の native 錐への接続を調べる。
-現在の `presheafInfinity_hasLimit_of_evaluation` の各点存在を解消し、余極限側と同じ無条件の小極限を提供する。
-続いて表現可能前層と極限の交換、F1-5、F1-3b へ進む。
+`coherentConstantSourceMap` の pointed fiber を `pointedSpaceFiberValueEquivalence` で元の空間の値へ移し、
+大きい全切断を `coherentSpaceSectionsObject` の宇宙持ち上げへ厳密に移す。
+比較の本質的全射性で小さい全切断の恒等射を表す定値始域の変換を選び、native な錐へ実現する。
+その指定変換と全試験空間への比較を追跡し、一般小極限の普遍性を閉じる。
+その後、各点存在を解消して F1-4 を閉じ、F1-5・F1-3b へ進む。
 
 ## 0. 目標と範囲
 
