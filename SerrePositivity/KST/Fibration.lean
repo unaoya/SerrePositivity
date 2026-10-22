@@ -260,3 +260,10 @@ public import SerrePositivity.KST.Fibration.WeakIdentitySpanPoint
 public import SerrePositivity.KST.Fibration.LeftFibrationInvertedBaseChange
 public import SerrePositivity.KST.Fibration.FractionKanWeakInversion
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
+public import SerrePositivity.KST.Fibration.DiagramSumSource
+public import SerrePositivity.KST.Fibration.SpaceDiagramPair
+public import SerrePositivity.KST.Fibration.UliftLocalizationPreFaithful
+public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
+public import SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom
+public import SerrePositivity.KST.Fibration.WeakQuotientMappingComparison
+public import SerrePositivity.KST.Fibration.SpaceLocalizationUniversality

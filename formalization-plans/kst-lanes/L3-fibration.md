@@ -25,7 +25,6 @@
   包含を通る合成の核は元の包含側の圏と厳密同型。核への後合成は全正有限反復で局所化同型。
   全 cofiber の後合成の自然同型から、全長・全正反復の有限積比較の後合成等式を局所化で証明。
   核係数の有限積同型と実射対の厳密な立方体で、元の初期評価四角形は homotopy pullback。
-  右消去で先頭を保つ全再添字、第零面は正の段の連結性と退縮検出で証明。
   全面・全退化を合成し、K-2 Segal 実現で全行と対角の元の四角形も homotopy pullback。
   零行同型で定数包含へ移し、object/core の厳密比較で元の相対 S 核四角形の実現も同じ性質。
   包含側の全相対 S_n の零対象の収縮を対角へ送り、一点への元の射は局所化同型。
@@ -45,14 +44,15 @@
 - 元の全 span 族から商の coslice への実評価を構成し、元の可変終点を全単体で厳密に被覆。
   固定 fiber では既存の分数評価と実ホモトピーで一致し、亜群化後の元の fraction 比較も自然同型で回収。
   全 strict section 図式の自然変換と coherent な実辺を構成。元の fiber 評価との厳密可換性も証明。
-  全関手 ∞ 圏の普遍性で同じ比較二胞体を元の底へ降下し、元の制限等式と実ホモトピー代表を保持。
-  coslice 側の W 反転を実可逆辺の lift で証明し、比較の両側の図式を元の商上に構成。
+  二つの任意の空間値図式を共通の小さい全充満標的へ制限し、Space∞ 値の前合成の全写像空間の充満忠実性を証明。
+  宇宙を揃えた全反転関手 ∞ 圏への前合成は実際の同値。同じ比較二胞体を元の商へ降下。
+  coslice 側の W 反転も証明し、商上の比較の制限・実同型での正規化・実ホモトピー代表の回収式を保持。
   恒等 span の元の固定分数点・strict section 点・Kan 点を構成し、同じ評価の厳密な回収式を証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8533 jobs・専用監査 261 モジュール 1386 宣言 が成功。
+- 現在の対象ビルド 8543 jobs・専用監査 268 モジュール 1420 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4793 モジュールは EInfinity を含まない。全体 24627 jobs で成功。
+  所有 import 閉包 4803 モジュールは EInfinity を含まない。全体 24643 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -74,8 +74,8 @@
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
 - exists_relative_weakOreFamily、weakOreFamilySpace_isContractibleKan、exists_weakMarkedSpanCartesianLift、
   weakSpanDenominatorBaseChange_cartesianFibration、weakDenominatorSpanTransport_groupoidCompletion_isEquivalence。
-- weakSpanSpaceMappingComparison、weakSpanSpaceMappingComparison_pre、fractionKanQuotientDiagram。
-- weakIdentityFixedSpan、weakIdentityStrictSectionPoint_evaluate、weakIdentityKanPoint_evaluate。
+- spaceLocalizationPre_fullyFaithful、spaceLocalizationPrecomposition_isQCatEquivalence。
+- weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
@@ -97,12 +97,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の底への比較降下・coslice 側の商降下・恒等 span の指定点の9モジュール等を含める）。
+- なし（今回の共通の小さい全充満標的・Space∞ 値普遍性・比較二胞体の商降下の7モジュール等を含める）。
 ### 既知の問題
-- 比較二胞体の商降下・恒等点の普遍性・分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
+- 恒等点の商側の評価・普遍性・分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- 両側の商図式の値を含む小さい全充満標的へ比較二胞体を制限し、商の全関手 ∞ 圏の普遍性で降下する。
-  宇宙降下後の回収式を保持。恒等 span の評価・普遍性から分数比較の同値性へ進む。
+- 恒等 span の商側での評価を恒等射へ正規化し、商上の coslice 図式を表現可能な写像空間図式と照合する。
+  同じ恒等点の普遍性で元の分数比較の同値性を証明。cofinality 十分条件・Sp 値も未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
