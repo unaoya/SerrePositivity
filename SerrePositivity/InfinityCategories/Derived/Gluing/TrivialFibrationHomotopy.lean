@@ -1,32 +1,23 @@
 module
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
 
-/-! 自明 Kan fibration への合成が等しい二写像を、全パラメータを保つ実ホモトピーで結ぶ。 -/
+/-! 自明 Kan fibration の同じ基底上で、全時刻の基底を固定する実ホモトピーを選ぶ。 -/
 @[expose] public section
 noncomputable section
-set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.InfinityCategories
-open CategoryTheory MonoidalClosed SSet
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 
 def dgGluingHomotopy_of_trivialFibration_post_eq {A E B : SSet.{u}}
-    [Quasicategory E] (p : E ⟶ B)
-    [TrivialKanFibration p] (f g : A ⟶ E) (h : f ≫ p = g ≫ p) : SSet.Homotopy f g := by
-  let q := (ihom A).map p
-  let b := functorVertex (g ≫ p)
-  have hc := vertexFiber_isContractibleKan q b
-  have := hc.kanComplex
-  let v₀ : (vertexFiber q b) _⦋0⦌ := ⟨functorVertex f, by
-    rw [pinchedConstant_zero]
-    change functorVertex (f ≫ p) = functorVertex (g ≫ p)
-    rw [h]⟩
-  let v₁ : (vertexFiber q b) _⦋0⦌ := ⟨functorVertex g, by
-    rw [pinchedConstant_zero]
-    rfl⟩
-  let e := VertexIso.map (terminalVertexIso (hc.isTerminalVertex v₀)
-    (hc.isTerminalVertex v₁)) (vertexFiberι q b)
-  exact simplicialHomotopyOfFunctorEdge (FunctorIso.edge e)
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E) (h : f ≫ p = g ≫ p) :
+    SSet.Homotopy f g :=
+  Classical.choose (exists_homotopy_over_trivialKanFibration p f g h)
+
+lemma dgGluingHomotopy_of_trivialFibration_post_eq_over {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E) (h : f ≫ p = g ≫ p) :
+    (dgGluingHomotopy_of_trivialFibration_post_eq p f g h).h ≫ p =
+      fst A (Δ[1] : SSet.{u}) ≫ g ≫ p :=
+  Classical.choose_spec (exists_homotopy_over_trivialKanFibration p f g h)
 
 end SerrePositivity.InfinityCategories

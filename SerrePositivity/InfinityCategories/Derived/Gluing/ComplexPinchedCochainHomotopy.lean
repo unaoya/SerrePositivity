@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinder
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue
 public import SerrePositivity.InfinityCategories.Derived.ComplexPinchedQuasiIso
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
@@ -28,9 +29,10 @@ def dgGluingComplexPinchedCylinderHomotopy (K : Complex R) :
 def dgGluingComplexPinchedHomotopy_of_cochain {K L : Complex R}
     (f g : K ⟶ L) (h : Cochain K L (-1)) (he : δ (-1) 0 h = Cochain.ofHom (g - f)) :
     SSet.Homotopy (complexPinchedMap.{u, v} f) (complexPinchedMap.{u, v} g) := by
-  have H := functorHomotopyPostcomp (dgGluingComplexPinchedCylinderHomotopy.{u, v} K)
-    (complexPinchedMap.{u, v} (dgGluingCochainCylinderExtension f g h he))
-  simpa only [← complexPinchedMap_comp, dgGluingCochainCylinderExtension_zero,
-    dgGluingCochainCylinderExtension_one] using H
+  refine stableHomotopyRetarget
+    (functorHomotopyPostcomp (dgGluingComplexPinchedCylinderHomotopy.{u, v} K)
+      (complexPinchedMap.{u, v} (dgGluingCochainCylinderExtension f g h he))) ?_ ?_
+  · rw [← complexPinchedMap_comp, dgGluingCochainCylinderExtension_zero]
+  · rw [← complexPinchedMap_comp, dgGluingCochainCylinderExtension_one]
 
 end SerrePositivity.InfinityCategories

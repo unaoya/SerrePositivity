@@ -507,7 +507,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTriangleRecovery,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedCoefficientTriangleRecovery,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCanonicalCoefficientTriangles,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinderExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinderMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinderPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainHomotopyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedCylinderNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedCylinderOver,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedCylinderPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientCylinderCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientCylinderNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientDirectCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientDirectNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativePrismHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeTrivialFibrationHomotopy]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
