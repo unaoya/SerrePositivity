@@ -39,6 +39,9 @@
   復元射の実 fiber 点をその同じ逆成分で計算。単体→under 切断の元の共同・実現比較は同じ制限像の点を保持し、curry・転置でも成分を保持。
 - 元の左右の底変換成分は、それぞれ像の単体・pullback 対象での同じ初頂点切断比較と HEq。
   元の under 実現比較全体と共同 under 比較の指定成分は厳密一致。初頂点切断比較と実 under 制限成分へ分解し、同じ切断点の実制限像を回収。
+- 元の初頂点 pullback 比較の指定逆成分は、同じ厳密持ち上げ点を回収。初頂点制限全体の同じ指定成分は
+  元の under 制限と厳密持ち上げの合成 firstVertexStrictSectionMap の点像を回収し、実対象図式の初頂点同型とも HEq。
+  持ち上げ切断の恒等射評価を第一射影で読むと、元の単体切断の初頂点を厳密に回収する。
 - 工程 (c)：中央・右項の π が k 未満で消えると、左 fiber の同じ消滅 ⇔ πₖ 射影全射を K-5 の実長完全列で証明。
   中央 πⱼ=0 なら右 πⱼ₊₁／射影の像 ≃ 左 fiber の πⱼ。代表元では元の接続射。零次余核の障害を明示。
 - 固定 dg K の実頂点・実辺の整数 π 作用を、同じ BF スペクトル射の作用と可換に比較。
@@ -47,8 +50,8 @@
   ν の像が K-5 VerdierDiagram となる D β3 の dg Verdier 列に (b)(c) を適用し、固定 S• 比較で K へ戻す。
   K-S• へ依頼した固定入力は ν、K、頂点・辺での S• スペクトル同定の三点。一般 StableCategory 上の K は依頼しない。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10451 jobs・監査 390 モジュール 2234 宣言・全体 25165 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6658 モジュールは EInfinity を含まない。
+- 対象 10456 jobs・監査 395 モジュール 2260 宣言・全体 25168 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6663 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 必要な cofinality 条件を厳密 dg 上の固定 K と比較する（BGT §7–8、16–32時間）。
@@ -69,6 +72,8 @@
   transportUnderJointComponentIso_pointHom、transportUnderJointComponentIso_heq_realizationMap。
 - straighteningBaseChangeRightChart_heq_firstVertex、straighteningBaseChangeLeftChart_heq_firstVertex、
   straighteningUnderRealizationChart_eq_joint、straighteningUnderRealizationChart_pointHom。
+- firstVertexRestrictionChart_pointHom_strictSection、firstVertexStrictSectionMap_evaluate_fst、
+  firstVertexDiagramIso_heq_restrictionChart。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
   leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
 - fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、
@@ -82,13 +87,13 @@
 - 商・分数・局所化は Sp 正本。一般 fractionMappingComparison の同値性を Sp に依頼し、L9 受付に登録済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（二重評価の前合成・初頂点切断比較・左右成分・under 共同比較と実現比較の5モジュール、集約・監査・本計画）。
+- なし（底変換逆成分・初頂点 pullback 比較・全制限比較・厳密切断と恒等射評価・実図式成分の5モジュール、集約・監査・本計画）。
 ### 既知の問題
 - 一般分数比較の同値性、span 側の普遍性、商実現比較、具体的商射の π₀ 全射性、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
 - Sp の一般分数比較同値の公開を確認する。固定 dg K の実 π 比較は構成済みだが、具体的商射の π₀ 全射性は未証明。
-  独立に、初頂点 under 比較に続く pullback 切断比較と opposite 比較の同じ成分を接続し、元の大域成分の点を pointed 復元射の指定点へ移す。
+  独立に、元の初頂点制限成分で回収した同じ厳密切断点を opposite 成分へ送り、元の native 表現制限の点と照合して pointed 復元射の指定点へ移す。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

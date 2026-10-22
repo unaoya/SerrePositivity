@@ -389,3 +389,8 @@ public import SerrePositivity.KST.Fibration.StraighteningSectionChart
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.StraighteningUnderSectionChart
 public import SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart
+public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangeBackwardPoint
+public import SerrePositivity.KST.Fibration.FirstVertexUnderBaseChange
+public import SerrePositivity.KST.Fibration.FirstVertexRestrictionChart
+public import SerrePositivity.KST.Fibration.FirstVertexStrictSection
+public import SerrePositivity.KST.Fibration.FirstVertexDiagramComponent
