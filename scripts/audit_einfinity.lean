@@ -8534,6 +8534,47 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeComRestrictionIso
   ]
 
+@[noinline] private def e2RequiredBatch156 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.zeroDegreeDiscreteAlgebra,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeDiscreteComparison,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeDiscreteComparison_quasiIso,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeHomologyComHom,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeHomologyComIso,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeHomologyAlgebraIso,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeToSingle_nullary,
+      `SerrePositivity.EInfinity.BarrattEccles.zeroDegreeToSingle_binary,
+      `SerrePositivity.EInfinity.HomologyZero.singlePairing_value,
+      `SerrePositivity.EInfinity.HomologyZero.singleValue_injective,
+      `SerrePositivity.EInfinity.HomologyZero.singleValue_map,
+      `SerrePositivity.EInfinity.HomologyZero.singleValue_identity,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeComponentIso,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeToSingle,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeFromSingle,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeHomologyIso,
+      `SerrePositivity.EInfinity.HomologyZero.componentHomologyLinearEquiv_cycle,
+      `SerrePositivity.EInfinity.HomologyZero.componentHomologyLinearEquiv_unit,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegree_hom_ext,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegree_pairing_ext,
+      `SerrePositivity.EInfinity.HomologyZero.classMap_injective,
+      `SerrePositivity.EInfinity.HomologyZero.cyclesHomologyLinearEquiv,
+      `SerrePositivity.EInfinity.HomologyZero.componentCyclesLinearEquiv,
+      `SerrePositivity.EInfinity.HomologyZero.componentHomologyLinearEquiv,
+      `SerrePositivity.EInfinity.HomologyZero.singleUnit,
+      `SerrePositivity.EInfinity.HomologyZero.singleValue,
+      `SerrePositivity.EInfinity.HomologyZero.singleUnit_value,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeToSingle_unit_value,
+      `SerrePositivity.EInfinity.HomologyZero.zeroDegreeToSingle_unit,
+      `SerrePositivity.EInfinity.Operad.Algebra.actionHom_of_composition,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutative_action_one,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutative_actionHom_of_zero_two,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeHomOfZeroTwo,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeUnit,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeBinary,
+      `SerrePositivity.EInfinity.Operad.Algebra.binaryInput_naturality,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeHomOfUnitBinary,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeUnit_ofMonoid,
+      `SerrePositivity.EInfinity.Operad.Algebra.commutativeBinary_ofMonoid]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8567,7 +8608,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20537,3 +20578,46 @@ example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
       (zeroDegreeComAlgebra A B) ≅ B :=
   zeroDegreeComRestrictionIso A B
 end e2ZeroDegreeModelFixtures
+
+section e2ZeroDegreeHomologyFixtures
+universe e2ZeroDegreeHomologyUniverse
+open CategoryTheory MonoidalCategory
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity.HomologyZero
+variable (A : Type e2ZeroDegreeHomologyUniverse) [CommRing A]
+example (K : Complex A) [K.IsStrictlyLE 0] [K.IsStrictlyGE 0] :
+    K ≅ (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0).obj (K.homology 0) :=
+  zeroDegreeHomologyIso K
+example (K : Complex A) [K.IsStrictlyLE 0] [K.IsStrictlyGE 0]
+    (f : 𝟙_ (Complex A) ⟶ K) :
+    singleValue (K.homology 0) (f ≫ zeroDegreeToSingle K) = unitClass K f :=
+  zeroDegreeToSingle_unit_value K f
+example (X Y : (commutativeOperad A).Algebra) (f : X.carrier ⟶ Y.carrier)
+    (h0 : Operad.Algebra.commutativeUnit X ≫ f = Operad.Algebra.commutativeUnit Y)
+    (h2 : Operad.Algebra.commutativeBinary X ≫ f =
+      (f ⊗ₘ f) ≫ Operad.Algebra.commutativeBinary Y) : X ⟶ Y :=
+  Operad.Algebra.commutativeHomOfUnitBinary X Y f h0 h2
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0] :
+    zeroDegreeComAlgebra A B ≅ (discreteCommutativeFunctor A).obj (homologyCommAlgebra B) :=
+  zeroDegreeHomologyComIso A B
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0] :
+    B ≅ (discreteAlgebraFunctor A).obj (homologyCommAlgebra B) :=
+  zeroDegreeHomologyAlgebraIso A B
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsStrictlyLE 0] [B.carrier.IsStrictlyGE 0] (n : ℕ) :
+    (zeroDegreeComAlgebra A B).action n ≫ (zeroDegreeHomologyIso B.carrier).hom =
+      (𝟙 ((commutativeOperad A).arity n) ⊗ₘ
+        SerrePositivity.TensorPowers.map (zeroDegreeHomologyIso B.carrier).hom n) ≫
+          ((discreteCommutativeFunctor A).obj (homologyCommAlgebra B)).action n :=
+  (zeroDegreeHomologyComHom A B).comm n
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra) :
+    connectiveCover A B ⟶ (discreteAlgebraFunctor A).obj (zeroDegreeDiscreteAlgebra A B) :=
+  zeroDegreeDiscreteComparison A B
+example (B : (SerrePositivity.EInfinity.BarrattEccles.operad A).Algebra)
+    [B.carrier.IsLE 0] [B.carrier.IsGE 0] : QuasiIso (zeroDegreeDiscreteComparison A B).hom :=
+  zeroDegreeDiscreteComparison_quasiIso A B
+end e2ZeroDegreeHomologyFixtures

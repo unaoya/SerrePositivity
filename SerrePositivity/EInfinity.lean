@@ -2042,3 +2042,16 @@ public import SerrePositivity.EInfinity.HomologyZero.TruncationRigidity
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeAction
 public import SerrePositivity.EInfinity.Operad.AlgebraOperadEpi
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeComAlgebra
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeDiscreteSpan
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeHomologyIso
+public import SerrePositivity.EInfinity.BarrattEccles.ZeroDegreeHomologyProduct
+public import SerrePositivity.EInfinity.HomologyZero.SinglePairingValue
+public import SerrePositivity.EInfinity.HomologyZero.SingleValueMaps
+public import SerrePositivity.EInfinity.HomologyZero.ZeroDegreeComplexIso
+public import SerrePositivity.EInfinity.HomologyZero.ZeroDegreeHomExt
+public import SerrePositivity.EInfinity.HomologyZero.ZeroDegreeLinear
+public import SerrePositivity.EInfinity.HomologyZero.ZeroDegreeUnitValue
+public import SerrePositivity.EInfinity.Operad.AlgebraHomComposition
+public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraGeneration
+public import SerrePositivity.EInfinity.Operad.CommutativeBinaryCriterion
+public import SerrePositivity.EInfinity.Operad.CommutativeMonoidOperations

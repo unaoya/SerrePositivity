@@ -2365,7 +2365,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 底が IsLE 0・IsGE 0 なら同じ包含と同じ射影が擬同型となる。
 `zeroDegreeAction_factor` は零次集中 E 代数の元の全作用の実 augmentation による厳密な因子化。
 `zeroDegreeComAlgebra` は同じ底の Com 代数構造、`zeroDegreeComRestrictionIso` は元の E 代数との同型。
-既存 H⁰ 可換代数の離散像との同定・本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
+`zeroDegreeHomologyAlgebraIso` は零次集中 E 代数と既存 H⁰ 可換代数の離散像との全 arity 同型。
+底の同型は元の classMap・unitClass を保つ標準 H⁰ 同型であり、同じ単位と積を保つ。
+`commutativeHomOfUnitBinary` は元の単位・二項積の保存から全 Com 作用の保存を得る。
+`zeroDegreeDiscreteComparison` は元の connectiveCover から零次模型の H⁰ の離散像への実代数射。
+底が IsLE 0・IsGE 0 なら、この射と元の包含はともに擬同型となる。
+CAlg_R の元の頂点における本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
