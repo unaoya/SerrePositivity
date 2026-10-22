@@ -1147,3 +1147,84 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @sliceUnder_isIdempotentComplete
 #print axioms sliceUnder_isIdempotentComplete
+
+#check @weakImagePoint_rightAnodyne
+#print axioms weakImagePoint_rightAnodyne
+
+#check @weakDiagram_lift_exists
+#print axioms weakDiagram_lift_exists
+
+#check @weakSourcePoint
+#print axioms weakSourcePoint
+
+#check @weakComparison_sourcePoint
+#print axioms weakComparison_sourcePoint
+
+#check @RetractionTriangle.weakDiagram_sourcePoint
+#print axioms RetractionTriangle.weakDiagram_sourcePoint
+
+#check @rightFibration_retract_lift
+#print axioms rightFibration_retract_lift
+
+#check @IsIdempotentCompletion.pullback_rightFibration
+#print axioms IsIdempotentCompletion.pullback_rightFibration
+
+#check @IsIdempotentCompletion.sliceOver
+#print axioms IsIdempotentCompletion.sliceOver
+
+#check @homotopy_exists_of_fullyFaithful
+#print axioms homotopy_exists_of_fullyFaithful
+
+#check @terminalRetract_contraction_exists
+#print axioms terminalRetract_contraction_exists
+
+#check @isWeaklyContractible_of_terminalRetract
+#print axioms isWeaklyContractible_of_terminalRetract
+
+#check @IsIdempotentCompletion.isWeaklyContractible_of_terminal
+#print axioms IsIdempotentCompletion.isWeaklyContractible_of_terminal
+
+#check @IsIdempotentCompletion.slice_isWeaklyContractible
+#print axioms IsIdempotentCompletion.slice_isWeaklyContractible
+
+#check @IsIdempotentCompletion.isLeftCofinal
+#print axioms IsIdempotentCompletion.isLeftCofinal
+
+#check @IsIdempotentComplete.op
+#print axioms IsIdempotentComplete.op
+
+#check @IsVertexRetractOf.op
+#print axioms IsVertexRetractOf.op
+
+#check @IsIdempotentCompletion.op
+#print axioms IsIdempotentCompletion.op
+
+#check @IsIdempotentCompletion.isRightCofinal
+#print axioms IsIdempotentCompletion.isRightCofinal
+
+#check @sliceCanonicalCocone
+#print axioms sliceCanonicalCocone
+
+#check @sliceCanonicalCocone_identity_restrict
+#print axioms sliceCanonicalCocone_identity_restrict
+
+#check @sliceCanonicalCocone_isColimit
+#print axioms sliceCanonicalCocone_isColimit
+
+#check @leftKanCanonicalCocone_slice_restrict_val
+#print axioms leftKanCanonicalCocone_slice_restrict_val
+
+#check @IsIdempotentCompletion.canonicalCocones_isColimit
+#print axioms IsIdempotentCompletion.canonicalCocones_isColimit
+
+#check @IsIdempotentCompletion.pre_isFullyFaithful
+#print axioms IsIdempotentCompletion.pre_isFullyFaithful
+
+#check @IsIdempotentCompletion.vertexImage
+#print axioms IsIdempotentCompletion.vertexImage
+
+#check @IsIdempotentCompletion.pre_isFullyFaithful_general
+#print axioms IsIdempotentCompletion.pre_isFullyFaithful_general
+
+#check @idemYoneda_pre_isFullyFaithful
+#print axioms idemYoneda_pre_isFullyFaithful
