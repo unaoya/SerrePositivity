@@ -1,6 +1,13 @@
 import SerrePositivity.InfinityCategories.F1
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTargetRestriction_fibration
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomCorrection
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryCorrectedHom_comm
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryCorrectedHomIso_boundary
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryFiberComparison_ι
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryFiberComparison_isQCatEquivalence
+
 #check @SerrePositivity.InfinityCategories.coherentHomIntervalComparison_vertex
 #check @SerrePositivity.InfinityCategories.coherentHomIntervalComparison_vertex_edge
 #check @SerrePositivity.InfinityCategories.compositionTriangleCompStruct_horn

@@ -3128,6 +3128,10 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryGlobal
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryCoherentOriginal
 
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryCorrection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryFiberComparison
+
 public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
 
 public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseLimits
