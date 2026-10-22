@@ -7,6 +7,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.DGInputArrowData,
+    `SerrePositivity.KST.Fibration.DGRelativeRightArrow,
+    `SerrePositivity.KST.Fibration.DGRelativePiZero,
+    `SerrePositivity.KST.Fibration.DGRelativeFiberSquare,
     `SerrePositivity.KST.Fibration.DGKZeroComparison,
     `SerrePositivity.KST.Fibration.DGKPiZeroCofinality,
     `SerrePositivity.KST.Fibration.DGKFiberConnectivity,

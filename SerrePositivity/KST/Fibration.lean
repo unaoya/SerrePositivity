@@ -442,3 +442,7 @@ public import SerrePositivity.KST.Fibration.DGKZeroComparison
 public import SerrePositivity.KST.Fibration.DGKPiZeroCofinality
 public import SerrePositivity.KST.Fibration.DGKFiberConnectivity
 public import SerrePositivity.KST.Fibration.DGKInputFiberSquare
+public import SerrePositivity.KST.Fibration.DGInputArrowData
+public import SerrePositivity.KST.Fibration.DGRelativeRightArrow
+public import SerrePositivity.KST.Fibration.DGRelativePiZero
+public import SerrePositivity.KST.Fibration.DGRelativeFiberSquare
