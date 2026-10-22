@@ -2712,3 +2712,8 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `sign_second_card` は元の最小点・最大点・濃度・切断符号を計算する。
 `normalizedTensorTriangleData_hom_evaluation_edge` は同じ実評価射の閉成分との一致。
 残る主切断 cochain の値と符号の比較・混合 HA・大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_principal_cochain` と Pinched 版は元の主切断 cochain を
+同じ中央部分集合の符号付き選択 cochain／線形成分へ回収する。
+`principal_cut_sign` は元の両切断の重みと cone cochain の符号を比較する。
+元の実評価辺・単位との合成、混合 HA・全自然性・大域評価三角形は未完了。
