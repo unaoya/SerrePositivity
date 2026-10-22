@@ -29,13 +29,13 @@
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  同じ最初辺を固定した二つの全三角形の長辺・最後辺の指定比較は全係数で厳密に一致。最後辺を同じ raw 普遍輸送にした全持ち上げ・実終点を構成し、元の全三角形との長辺・最後辺比較の一致まで証明。
+  同じ最初辺を固定した二つの全三角形の長辺・最後辺の指定比較は全係数で厳密に一致。raw 普遍最終辺の全持ち上げの長辺を元の長区間の全輸送として構成し、元の長辺輸送との endpointIso の一点値を元の最後辺の指定 PointIso の前合成へ値まで同定。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9873 jobs、公理監査14493宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  同じ最初辺固定の指定比較の制限、実 prism 比較と endpointIso の一致、元の raw 普遍最終辺の全持ち上げ・実両端・同じ長辺比較を含む追加45明示宣言を型検査。
+  検証：三集約同時ビルド9885 jobs、公理監査14797宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  指定 fiber 比較の前合成・実 prism 制限と元の endpointIso の一致、元の一点 prism・長区間の二実輸送・同じ最後辺の指定 PointIso への照合を含む追加23明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -87,7 +87,7 @@
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  TriangleRawLastLongComparison_eq_last は同じ元の全三角形と raw 普遍最終辺の全持ち上げについて、長辺・最後辺の指定比較の全係数での一致。次は最後辺比較を元の ConstantTransportPointIso の前合成へ値まで照合し、元の長辺残余との合成を消去する。
+  TriangleRawLastLongEndpointIso_heq_point は元の二長辺輸送の endpointIso の一点値と、元の最後辺の指定 ConstantTransportPointIso の第一作用前合成の一致。次は pointedIntervalTransportComparison_trans を同じ二長辺輸送に適用し、元の RemainderIso の逆と PointIso の合成を新長辺輸送の残余の逆へ消去する。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
