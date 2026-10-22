@@ -448,3 +448,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationLif
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCommaFamily
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationDiagramBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RightAnodyneRelativeLiftIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.JoinAssociatorOuterPair
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparison

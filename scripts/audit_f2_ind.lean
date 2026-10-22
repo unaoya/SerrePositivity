@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneLiftFunctorIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_outerPair
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTip_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceRelativeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryRelativeIso
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryRelativeIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSmallDiagram_lift
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSmallDiagram_yoneda
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationLiftedCocone_vertex
