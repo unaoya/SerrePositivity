@@ -13,7 +13,10 @@
 - 全 κ-compact 対象が生成対象の retract であることと、その逆を証明。元の生成族・対象を保持。
 - 定義の小さい生成圏から κ-連続な Ind 比較を構成し、生成関手の全自然同型による回収・本質的全射性を証明。
   生成対象間の実際の `pinchedHomMap` の同値性まで。任意の Ind 対象間の充満忠実性と Ind 表現同値は未証明。
-- 独立集約ビルド成功（7564 jobs）、公理監査 33 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- `covariantHomComparison` は任意の元の関手の全共変 Hom 比較。元の coslice 作用を厳密な底変換へ因子化し、
+  left fibration の元の辺を straightening で送り、定義の全表現可能関手へ戻した関手圏の射。
+  値ごとの同値族だけではない。各成分と元の `pinchedHomMap` の照合は未証明。
+- 独立集約ビルド成功（7565 jobs）、公理監査 46 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：比較の全充満忠実性、Ind_κ(C₀) との同値・同値不変性、濃度変更（HTT 5.4.2〜5.4.4）。24〜60 時間（暫定）。
@@ -34,6 +37,7 @@
 - `IsKappaCompactGenerating.compact_iff_retract`、`IsKappaAccessible.exists_indComparison`
 - `indComparison_isEssentiallySurjective`、`IsKappaAccessible.exists_surjective_indComparison`
 - `indComparison_generator_pinchedHomMap_isEquivalence`
+- `covariantHomComparison`、`cosliceComparisonOver`、`leftClassificationHom`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -45,6 +49,9 @@
 ### 次の一手
 - 工程 (1) の比較の充満忠実性。まず元の生成対象から任意の Ind 対象への写像空間比較を、
   単一 filtered 表示・両側の compact 性・同じ全余錐像の保存で証明する。
+  `covariantHomComparison` の全自然な射は構成済み。最初にその各成分を元の `pinchedHomMap` と照合する。
+  `leftStraighteningInfinityMap_evaluateIso` は全 left fibrations 上で分類の評価と実 fiber 評価を比較する。
+  `Compact.covariantRepresentableInfinity_cosliceIso` の両側の成分と合わせ、同じ元の coslice の作用へ戻す。
   次に始域の単一 filtered 表示と全反変 Hom の極限表示を使い、任意の二対象へ拡張する。
   F1 の関手圏の普遍性は、比較関手自身の同値性の代用にしない。
 

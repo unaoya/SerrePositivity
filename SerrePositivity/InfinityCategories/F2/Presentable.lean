@@ -6,3 +6,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CompactGenerator
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparisonSurjective
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparisonGenerators
+public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison

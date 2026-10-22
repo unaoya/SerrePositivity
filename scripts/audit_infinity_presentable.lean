@@ -29,3 +29,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indComparison
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isEssentiallySurjective
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_pinchedHomMap_isEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparison
