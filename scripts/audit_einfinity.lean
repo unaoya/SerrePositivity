@@ -8967,6 +8967,32 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_curry_zero,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_gamma_zero_raw]
 
+@[noinline] private def e2RequiredBatch173 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexToClosed_edgeChainMap,
+      `SerrePositivity.EInfinity.ComplexLimits.complexToClosed_edge_invertible,
+      `SerrePositivity.EInfinity.ComplexLimits.complexToClosed_edge_id,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_edge_invertible,
+      `SerrePositivity.EInfinity.ComplexLimits.complexToClosed_postcomposition,
+      `SerrePositivity.EInfinity.ComplexLimits.complexPinchedPostcomposition_family,
+      `SerrePositivity.EInfinity.ComplexLimits.extendOppositePoint,
+      `SerrePositivity.EInfinity.ComplexLimits.truncLEIso_inv_point,
+      `SerrePositivity.EInfinity.ComplexLimits.extendedTruncationInclusion_restriction,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_augmentation_family,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_augmentation_inverse,
+      `SerrePositivity.EInfinity.ComplexLimits.complexClosedIdentity_value,
+      `SerrePositivity.EInfinity.ComplexLimits.complexIdentityDoldKanVertex,
+      `SerrePositivity.EInfinity.ComplexLimits.complexIdentityDoldKanVertex_raw,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentation_gamma_zero_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.complexIdentityDoldKanVertex_pinched,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorAugmentationVertex_identity,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorUniversalSimplex_augmentation_identity,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorRoofEvaluation_family,
+      `SerrePositivity.EInfinity.ComplexLimits.standardDoldKanPinchedComparison,
+      `SerrePositivity.EInfinity.ComplexLimits.standardMooreZeroIso_inv_value,
+      `SerrePositivity.EInfinity.ComplexLimits.standardDoldKanModuleIso_zero_raw,
+      `SerrePositivity.EInfinity.ComplexLimits.truncLE'ToRestriction_cycles,
+      `SerrePositivity.EInfinity.ComplexLimits.truncationExtendedZeroInclusion_cycles]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9000,7 +9026,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21893,3 +21919,81 @@ example (H : Complex A) : Mono (truncationExtendedZeroInclusion A ComplexShape.e
 
 end
 end e2RawIdentityFixtures
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2RoofU
+section e2RoofFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+variable (A : Type e2RoofU) [CommRing A]
+
+example (X : Complex A) :
+    normalizedTensorAugmentationVertex A X =
+      pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)) :=
+  normalizedTensorAugmentationVertex_identity A X
+
+example (X : Complex A)
+    (n : SimplexCategory) :
+    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap
+      (homPostcompose X ((normalizedSimplexTensorAugmentation A X).app n)) =
+    SSet.const (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) :=
+  normalizedTensorUniversalSimplex_augmentation_identity A X n
+
+example (X : Complex A) {P Q : Complex A} (f : P ⟶ Q)
+    (K : SSet.{e2RoofU + 1}) (g : K ⟶ DGNerve.pinchedHom A (Complex A) X P) :
+    dgPinchedFamilyHom A (Complex A) (g ≫ pinchedHomChainMap (homPostcompose X f)) =
+    dgPinchedFamilyHom A (Complex A) g ≫ constantFunctorHomMap K
+      (Truncated.HomotopyCategory.homMk
+        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) :=
+  complexPinchedPostcomposition_family A X f K g
+
+example (X : Complex A) :
+    dgClosedEdge A (Complex A) ((complexToClosed A).map (𝟙 X)) =
+      Truncated.Edge.id (X := (truncation 2).obj (dgNerve A (Complex A))) (Simplex.vertex X) :=
+  complexToClosed_edge_id A X
+
+example (X : Complex A) (n : SimplexCategory) :
+    IsInvertibleEdge (X := dgNerve A (Complex A)) (dgClosedEdge A (Complex A)
+      ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n))) :=
+  normalizedTensorAugmentation_edge_invertible A X n
+
+example (X : Complex A)
+    (n : SimplexCategory) (K : SSet.{e2RoofU + 1})
+    (t : K ⟶ SSet.uliftFunctor.{e2RoofU + 1, e2RoofU}.obj (SSet.stdSimplex.obj n)) :
+    dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorUniversalSimplex A X n) ≫
+      constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A)
+          ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n)))) =
+    𝟙 _ :=
+  normalizedTensorUniversalSimplex_augmentation_family A X n K t
+
+example (X : Complex A)
+    (n : SimplexCategory) (K : SSet.{e2RoofU + 1})
+    (t : K ⟶ SSet.uliftFunctor.{e2RoofU + 1, e2RoofU}.obj (SSet.stdSimplex.obj n)) :
+    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A)
+          ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n)))) ≫
+      dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorUniversalSimplex A X n) =
+    𝟙 _ :=
+  normalizedTensorUniversalSimplex_augmentation_inverse A X n K t
+
+example (X Y : Complex A) (n : SimplexCategory)
+    (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (K : SSet.{e2RoofU + 1})
+    (t : K ⟶ SSet.uliftFunctor.{e2RoofU + 1, e2RoofU}.obj (SSet.stdSimplex.obj n)) :
+    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+        (dgClosedEdge A (Complex A)
+          ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n)))) ≫
+      dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorHomPinchedSimplex A X Y n g) =
+    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (dgNerve A (Complex A)))
+      (dgClosedEdge A (Complex A) ((complexToClosed A).map g))) :=
+  normalizedTensorRoofEvaluation_family A X Y n g K t
+
+end e2RoofFixtures
+end
