@@ -293,7 +293,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientAugmentationSquare,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientMapping,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientEvaluationSection,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ChosenCoefficientMapping]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ChosenCoefficientMapping,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TrivialFibrationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedCochainHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolutionHomAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorHomModelMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolutionActualHomAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolutionHomAugmentationChainHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ResolutionProjectiveSourceHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleResolutionSection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedHomMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientYonedaSpaceIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientMapping]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
