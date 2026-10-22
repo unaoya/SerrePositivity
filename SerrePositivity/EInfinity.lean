@@ -2055,3 +2055,10 @@ public import SerrePositivity.EInfinity.Operad.AlgebraHomComposition
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraGeneration
 public import SerrePositivity.EInfinity.Operad.CommutativeBinaryCriterion
 public import SerrePositivity.EInfinity.Operad.CommutativeMonoidOperations
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteRecognition
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteUnderRecognition
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingHomology
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgVertexPresentation
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgZeroDegreeDiscrete
+public import SerrePositivity.EInfinity.SimplicialLocalization.NerveWeakVertexIso

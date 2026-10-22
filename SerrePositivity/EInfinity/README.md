@@ -2370,7 +2370,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `commutativeHomOfUnitBinary` は元の単位・二項積の保存から全 Com 作用の保存を得る。
 `zeroDegreeDiscreteComparison` は元の connectiveCover から零次模型の H⁰ の離散像への実代数射。
 底が IsLE 0・IsGE 0 なら、この射と元の包含はともに擬同型となる。
-CAlg_R の元の頂点における本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
+`cAlgVertexIsoOfQuasiIso` は元の任意擬同型代数射を同じ CAlg_R の頂点同型へ送る。
+`cAlgVertexRepresentativeIso` は任意 CAlg_R 頂点の元の cofibrant 代数による表示。
+`cAlgUnderlyingHomologyIso` は同じ U 像と元の底の複体の全整数次数のホモロジー比較。
+`cAlgUnderlyingDisc_iff_discrete` は同じ U 像の離散性と元の離散入力の本質像との同値。
+`cAlgUnderlyingDisc_iff_discreteUnder` は既存 D(R) 比較と同じ環の Under 入力での特徴付け。
+同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
@@ -2378,7 +2383,7 @@ Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 既存 discreteEmbedding との全比較と離散入力の像の消滅は完成。
-離散対象の本質像の逆包含・同じ U の ∞ 極限保存・G1′ は未完成。
+離散対象の本質像の両包含は完成。同じ U の ∞ 極限保存・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
