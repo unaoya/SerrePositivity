@@ -129,3 +129,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_nerve_poset
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pointwiseColimitCocone_restrict_rightCofinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_poset
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound.lift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_ulift_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaFiltered_ulift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nervePosetUniverseOppositeIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredLimitExchangeShape_ulift_poset_op
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pointwiseColimit_of_cardinalExchange
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isMuCompact_smallPosetColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isMuCompact_smallPosetColimit_of_kappaCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactPartialPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_muCompactPresentation

@@ -44,7 +44,7 @@
   μ-small κ-filtered 制限の余極限として保持する。元の図式を通常の nerve に限定しない。
 - 非可算正則 μ について、μ-small 形状の全単体と単体圏の全射の個数を同じ μ で評価。
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
-  Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。全 coherent な Space の交換は未証明。
+  Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。Space の poset 形状の全 coherent 交換へ接続。
 - weighted sections・Bousfield–Kan 模型の strict 連続性、元の比較の弱同値保存、内部 Hom との全自然な交換を証明。元の全脚を保持。
 - Kan 値 strict 錐の native 極限性の比較射による iff と保存性を証明。F1 の分類で全錐族を同時 strict 化し、元の全脚を読み戻す。
 - 同時 strict 化した全錐族へ元の点ごとの余極限を、指定頂点の等号を保持して輸送。各段階の極限性も保存・反映。
@@ -53,7 +53,9 @@
 - WithInitial の元の錐の比較を二つの連続関手間の自然変換にし、同じ strict 余極限錐自身の native な極限性を証明。
 - **小さい poset の極限と、一般の μ-filtered ∞ 添字の coherent 全錐族の指定点ごとの余極限の交換を証明。**
   cofinal μ-filtered poset への元の全余錐の制限で一般添字へ拡張。元の図式・全錐・指定余錐を量化し、交換を仮定に入れない。
-- 独立集約ビルド成功（7669 jobs）、公理監査 486 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 正則濃度・κ-small 性・κ-filtered 性の宇宙移送、μ-filtered 全錐反映を証明し、小さい poset 余極限の μ-compact 閉性を証明。
+- κ-accessible 圏の各指定対象を、μ-compact な項の小さい μ-filtered 全表示で回収。指定頂点は厳密な等式。
+- 独立集約ビルド成功（7694 jobs）、公理監査 521 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -85,22 +87,20 @@
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
-- `kanFamilyRealizedColimitCocone_pointwise`、`coneFamilyModelStrictLimit_iff`、`withInitialFilteredColimit_isLimit`
-- `coherentCardinalFilteredLimitExchange_nerve_poset`、`coherentCardinalFilteredLimitExchange_poset`
+- `coherentCardinalFilteredLimitExchange_poset`、`isKappaFiltered_ulift`、`isMuCompact_smallPosetColimit`
+- `exists_compactPartialPresentation`、`IsKappaAccessible.exists_muCompactPresentation`
 
 ### 未コミット
-- なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
+- なし。工程 (1) の検証済み区切りを所有ファイルのみ保存。
 
 ### 既知の問題
 - accessible 圏の濃度変更は未証明。κ ≤ μ だけで単調性を結論せず、必要な正則性・濃度条件を保持する。
-- 既存の有限 coherent 交換界面も条件付き。これを仮定せず、P で μ-small 版の実証拠を構成する。
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。N の Hom 錐族（SpaceInfinity の宇宙 u+1）に合わせ、交換の宇宙移送と μ-filtered 版の全錐反映を構成する。
-  実証済みの poset 極限交換から μ-small κ-filtered 部分余極限の μ-compact 性を導き、元の全表示を保持する。
-  単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
-  元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。
+- 工程 (1) の濃度変更。小さい元の生成圏の μ-small な図式を、対象に依存しない小さい族にまとめる。
+  実証済みの μ-compact な部分余極限をその族へ輸送し、小さい全部分生成圏を構成する。
+  各指定対象の μ-compact な μ-filtered 全表示は完了。共通の小さい生成圏と圏自身の μ-accessibility は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約

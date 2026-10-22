@@ -27,3 +27,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyColimi
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStageComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentPosetLimitExchange
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentFilteredPosetExchange
+public import SerrePositivity.InfinityCategories.F2.Presentable.KappaFilteredUniverse
+public import SerrePositivity.InfinityCategories.F2.Presentable.CompactPartialPresentation
