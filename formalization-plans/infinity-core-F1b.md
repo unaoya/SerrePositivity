@@ -28,14 +28,14 @@
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子の値の整合式・a6 中央比較への照合・辺の制限・上側単位因子の交換消去、定値三角形因子の回収を証明。
-  元の定値余極限三角形の一点比較・二実終点を回収し、元の定値輸送比較からの逆合成消去を任意の始域・値で証明。
+  元の raw/native 区間族・単位の実二座標・成分の値を照合し、既存の下側因子を同じ実一点輸送比較へ同定。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9733 jobs、公理監査12832宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の定値三角形の同じ一点比較・両実終点・元の輸送比較の逆合成消去を含む追加21明示宣言を型検査。
+  検証：三集約同時ビルド9747 jobs、公理監査12924宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  raw/native 表示、元の単位の二座標、下側因子と定値三角形因子の値の照合を含む追加21明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -86,8 +86,8 @@
   ConstantTransportIso_heq_triangle と LongTransport_prism・endpoint・map_vertex は元の長辺証拠を指定比較へ入力済み。
   coherentColimitConstantTriangleTransport_cancel_original は元の三角形比較の逆で元の定値輸送比較の先頭因子を消去済み。
   同じ _precomp_postcomp は任意の始域制限と値への後合成でも消去を保持。元の二実終点・指定長辺を保持済み。
-  次は rawInterval/native Interval の端点表示を coherentDiagramTotalCocone_vertex で揃え、元の単位・値へこの式を適用。
-  coconeIntervalFiberTransportIso_heq_constant・FiberHomIso_heq_curry で LowerTransportFactorIso の元の成分へ運ぶ。
+  LowerTransportFactorIso_heq_constant_point_unit と ConstantTriangleValue_heq_fiber_unit で元の二因子を同じ単位・値へ照合済み。
+  次は両者を cancel_original_precomp_postcomp と元の五因子の整合式へ照合し、下側因子を消去。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。

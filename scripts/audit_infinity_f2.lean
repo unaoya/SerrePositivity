@@ -3685,3 +3685,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleTransport_cancel_original
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleTransport_cancel_original_precomp_postcomp
+
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberMap_eq_unit_projection
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_eq_unit_tensor
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_point
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_app_heq_constant
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_app_heq_unit
+
+#check @SerrePositivity.InfinityCategories.F2.intervalMappingVertexFamily_heq_of_target_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalFamily_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_app_heq_of_target_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_app_value_heq_of_target_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_raw_component
+
+#check @SerrePositivity.InfinityCategories.F2.functorCurry_point_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_source_point_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_target_point_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_app_map_heq_unit
+
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_postcomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_raw_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_constant_point
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_constant_point_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleValue_heq_fiber_unit
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_precomp_postcomp
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_precomp_postcomp_heq
