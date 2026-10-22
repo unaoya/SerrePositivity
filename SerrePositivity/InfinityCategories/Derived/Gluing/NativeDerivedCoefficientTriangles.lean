@@ -1,8 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientComposition
 public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionFunctorTriangle
 
-/-! 導来比較の同じ実三辺を保持する、全パラメーターの合成三角形。 -/
+/-! native 合成 prism から直接作り、導来比較の同じ実三辺を保持する合成三角形。 -/
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -45,9 +46,29 @@ lemma dgGluingModuleDerivedRightCoefficientTriangle_nonempty (X Y : DGGluingObje
   exact dgGluingModuleDerivedRightCoefficientFamily_comp R C D M X Y
 
 def dgGluingModuleDerivedLeftCoefficientTriangle (X Y : DGGluingObject R C D M) :=
-  Classical.choice (dgGluingModuleDerivedLeftCoefficientTriangle_nonempty R C D M X Y)
+  Eq.mp
+    (congrArg (fun f => FunctorCompositionTriangle
+      (dgGluingModuleDerivedFamilyHomotopy R C (dgGluingNativeLeftCoefficientInput R C D M X Y))
+      (dgGluingModuleDerivedFamilyHomotopy R C
+        (SSet.const (pinchedClosedVertex R (RightModule R C) (dgGluingAugmentation R C D M Y))))
+      (dgGluingModuleDerivedFamilyHomotopy R C f))
+      (dgGluingNativeLeftCoefficientComposition R C D M X Y))
+    (dgGluingDGCompositionFunctorTriangle R (RightModule R C)
+      (dgGluingNativeLeftCoefficientInput R C D M X Y)
+      (SSet.const (pinchedClosedVertex R (RightModule R C) (dgGluingAugmentation R C D M Y)))
+      (dgModuleResolvedInfinity R (RightModule R C) C (DGFunctor.id (RightModule R C))))
 
 def dgGluingModuleDerivedRightCoefficientTriangle (X Y : DGGluingObject R C D M) :=
-  Classical.choice (dgGluingModuleDerivedRightCoefficientTriangle_nonempty R C D M X Y)
+  Eq.mp
+    (congrArg (fun f => FunctorCompositionTriangle
+      (dgGluingModuleDerivedFamilyHomotopy R C
+        (SSet.const (pinchedClosedVertex R (RightModule R C) (dgGluingAugmentation R C D M X))))
+      (dgGluingModuleDerivedFamilyHomotopy R C (dgGluingNativeRightCoefficientInput R C D M X Y))
+      (dgGluingModuleDerivedFamilyHomotopy R C f))
+      (dgGluingNativeRightCoefficientComposition R C D M X Y))
+    (dgGluingDGCompositionFunctorTriangle R (RightModule R C)
+      (SSet.const (pinchedClosedVertex R (RightModule R C) (dgGluingAugmentation R C D M X)))
+      (dgGluingNativeRightCoefficientInput R C D M X Y)
+      (dgModuleResolvedInfinity R (RightModule R C) C (DGFunctor.id (RightModule R C))))
 
 end SerrePositivity.InfinityCategories

@@ -3,6 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoeffi
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientDiagonalBoundary
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopyInverse
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue
 
 /-! 同じ実係数 path を、主比較と同じ二合成対応の対角間の全区間族へ移す。 -/
 @[expose] public section
@@ -35,13 +36,37 @@ def dgGluingHomDerivedCompositionUncurriedHomotopy (X Y : DGGluingObject R C D M
     (dgGluingHomDerivedLastComposition_diagonal R C D M X Y).symm
     (dgGluingHomDerivedFirstComposition_diagonal R C D M X Y).symm
 
+lemma dgGluingHomDerivedCompositionUncurriedHomotopy_h (X Y : DGGluingObject R C D M) :
+    (dgGluingHomDerivedCompositionUncurriedHomotopy R C D M X Y).h =
+      (dgGluingHomDerivedCoefficientDiagonalHomotopy R C D M X Y).h := by
+  exact dgGluingHomotopyRetarget_h
+    (dgGluingHomDerivedCoefficientDiagonalHomotopy R C D M X Y)
+    (dgGluingHomDerivedLastComposition_diagonal R C D M X Y).symm
+    (dgGluingHomDerivedFirstComposition_diagonal R C D M X Y).symm
+
+lemma dgGluingHomDerivedCompositionUncurriedHomotopy_source (X Y : DGGluingObject R C D M) :
+    (prismEndpoint 0 _ ▷ (Δ[1] : SSet.{max (u + 1) v w})) ≫
+        (dgGluingHomDerivedCompositionUncurriedHomotopy R C D M X Y).h =
+      SSet.const ((dgGluingUniverseDerivedYoneda.{u, v, w} R C).app (Opposite.op ⦋0⦌)
+        (ULift.up (DGNerve.Simplex.vertex X.left))) := by
+  rw [dgGluingHomDerivedCompositionUncurriedHomotopy_h R C D M X Y]
+  exact dgGluingHomDerivedCoefficientDiagonalHomotopy_source R C D M X Y
+
+lemma dgGluingHomDerivedCompositionUncurriedHomotopy_target (X Y : DGGluingObject R C D M) :
+    (prismEndpoint 1 _ ▷ (Δ[1] : SSet.{max (u + 1) v w})) ≫
+        (dgGluingHomDerivedCompositionUncurriedHomotopy R C D M X Y).h =
+      SSet.const ((dgGluingUniverseDerivedCoefficient R C D M).app (Opposite.op ⦋0⦌)
+        (ULift.up (DGNerve.Simplex.vertex Y.right))) := by
+  rw [dgGluingHomDerivedCompositionUncurriedHomotopy_h R C D M X Y]
+  exact dgGluingHomDerivedCoefficientDiagonalHomotopy_target R C D M X Y
+
 def dgGluingHomDerivedCompositionDiagonalHomotopy (X Y : DGGluingObject R C D M) :
     SSet.Homotopy (dgGluingHomDerivedLastCompositionDiagonal R C D M X Y)
       (dgGluingHomDerivedFirstCompositionDiagonal R C D M X Y) :=
   dgGluingIntervalUncurryHomotopyInverse
     (dgGluingHomDerivedCompositionUncurriedHomotopy R C D M X Y)
-    (dgGluingHomDerivedCoefficientDiagonalHomotopy_source R C D M X Y)
-    (dgGluingHomDerivedCoefficientDiagonalHomotopy_target R C D M X Y)
+    (dgGluingHomDerivedCompositionUncurriedHomotopy_source R C D M X Y)
+    (dgGluingHomDerivedCompositionUncurriedHomotopy_target R C D M X Y)
 
 lemma dgGluingHomDerivedCompositionDiagonalHomotopy_evaluate
     (X Y : DGGluingObject R C D M) :
@@ -51,10 +76,11 @@ lemma dgGluingHomDerivedCompositionDiagonalHomotopy_evaluate
         (Δ[1] : SSet.{max (u + 1) v w})).hom ≫
       intervalMappingUncurry (dgGluingHomDerivedCompositionDiagonalHomotopy R C D M X Y).h =
     (dgGluingHomDerivedCoefficientDiagonalHomotopy R C D M X Y).h :=
-  dgGluingIntervalUncurryHomotopyInverseMap_evaluate
+  (dgGluingIntervalUncurryHomotopyInverseMap_evaluate
     (dgGluingHomDerivedCompositionUncurriedHomotopy R C D M X Y)
-    (dgGluingHomDerivedCoefficientDiagonalHomotopy_source R C D M X Y)
-    (dgGluingHomDerivedCoefficientDiagonalHomotopy_target R C D M X Y)
+    (dgGluingHomDerivedCompositionUncurriedHomotopy_source R C D M X Y)
+    (dgGluingHomDerivedCompositionUncurriedHomotopy_target R C D M X Y)).trans
+      (dgGluingHomDerivedCompositionUncurriedHomotopy_h R C D M X Y)
 
 def dgGluingHomDerivedCompositionDiagonalPath (X Y : DGGluingObject R C D M) :=
   dgGluingHomotopyIntervalPath (dgGluingHomDerivedCompositionDiagonalHomotopy R C D M X Y)

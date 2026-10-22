@@ -493,7 +493,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomTriangleHomotopyBoundaries,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomDiagonalDeformations,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleBoundary,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomDiagonalComparisonBoundary]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomDiagonalComparisonBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.JoinTensorLeftFactorNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.JoinParameterComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.JoinParameterIntervalPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismTriangleEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTriangleFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTrianglePost,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorTriangleOfFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionFunctorTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedCoefficientTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTriangleRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedCoefficientTriangleRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCanonicalCoefficientTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
