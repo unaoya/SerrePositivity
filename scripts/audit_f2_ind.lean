@@ -599,3 +599,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.oppositeIndLeftKanCommaIso_inv_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_finiteColimit_commaSections_isQCatEquivalence
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_finiteColimit_commaSections_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.pullbackRightBaseIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.pullbackRightBaseIso_hom_fst
+#check @SerrePositivity.InfinityCategories.F2.Ind.pullbackRightBaseIso_hom_snd
+#check @SerrePositivity.InfinityCategories.F2.Ind.oppositeIndYoneda
+#check @SerrePositivity.InfinityCategories.F2.Ind.indCommaCoslicePullbackIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indCommaCoslicePullbackIso_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftFibrationConeRestriction_baseChange_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_finiteColimit_cosliceSections_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteOppositeCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinReverseIso_inv_app
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteOppositeCone_isLimit

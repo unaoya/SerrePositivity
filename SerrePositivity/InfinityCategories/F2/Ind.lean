@@ -368,3 +368,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.OppositeUnstraighteningS
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceOppositeComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaSliceSections
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteIndCommaSections
+public import SerrePositivity.InfinityCategories.F2.Ind.PullbackRightBaseIso
+public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaPullbackIso
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeSectionBaseChange
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaOppositeLimits
+public import SerrePositivity.InfinityCategories.F2.Ind.JoinReverseInverseEvaluation
