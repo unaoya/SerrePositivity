@@ -4464,3 +4464,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_tail
 #check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift
 #check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_projection
+
+#check @SerrePositivity.InfinityCategories.F2.prependOrderHom_delta
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_face
+#check @SerrePositivity.InfinityCategories.F2.coherentConeTailExtension_positive_face
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_positive_face
+#check @SerrePositivity.InfinityCategories.F2.pointedSimplexCoordinates_face
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_coordinates
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_face_coordinates
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_positive_face
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_head
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_tailMap
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_head_comp

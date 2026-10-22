@@ -29,13 +29,13 @@
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  第一辺の元の模型指定値への反映・最後辺輸送への代入は完了。元の三実辺・共通三頂点・指定 path の四因子境界を構成し、全初期値の再制限と候補の値回収・一致判定を証明。元の任意の Space 単体へ一点 Hom の全単体係数を前置する実 pointed 単体を構成し、射影で元の全単体を厳密に回収。候補と元の普遍比較の一致は未完。
+  第一辺の元の模型指定値への反映・最後辺輸送への代入は完了。元の三実辺・共通三頂点・指定 path の四因子境界を構成し、全初期値の再制限と候補の値回収・一致判定を証明。元の任意の Space 単体へ一点 Hom の全単体係数を前置する実 pointed 単体を構成し、射影で元の全単体を厳密に回収。全ての pointed 面の座標・初点を残す面の全単体での一致・元の全 Hom に沿う head 合成則まで証明。候補と元の普遍比較の一致は未完。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9981 jobs、公理監査15893宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の三実辺の値比較・指定 path の四因子境界・全初期値の自然性・候補の値と一致判定・任意単体への全係数付き一点前置を含む追加28明示宣言を型検査。
+  検証：三集約同時ビルド9984 jobs、公理監査15904宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  元の全係数を保つ pointed 面・実 coslice 面の全単体での同定・元の全 Hom に沿う head 合成則を含む追加11明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -88,7 +88,7 @@
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  ApexRawTriangleCandidate_eq_universal_iff の右辺（元の普遍比較の値＝同じ四因子境界式）を証明する。spaceSimplexPointedLift は元の s の head を一点へ置換する実単体を提供（p : Δ[n] → sHom(pointKanObject, s.obj 0).op、射影は厳密に s）。次は n=2、s := coherentColimitApexTriangle B T として四面を計算し、元の三つの coherentCompositionSquare の全 Hom 成分・指定精密化との一致を証明。既存の HomotopyLimits.ConeInitialFixed・CosliceSourcePrecomposition を読み取り専用で再利用し、反転 Hom 係数と右 Hom 成分を無条件に同一視しない。一致を境界式へ反映し、候補を元の普遍比較へ戻す。
+  ApexRawTriangleCandidate_eq_universal_iff の右辺（元の普遍比較の値＝同じ四因子境界式）を証明する。spaceSimplexPointedLift_face_coordinates は全ての実 pointed 面を同じ拡張単体の面へ戻し、positive_face は元の初点を残す面を元の面の持ち上げへ厳密に同定。Augmentation_head_comp は元の全 Hom と同じ head の合成則。次は n=2、s := coherentColimitApexTriangle B T とし、特に初点を除く面（δ₁ の拡張単体、係数の標的は元の s.obj 0）の Hom を元の三つの coherentCompositionSquare の全成分・指定精密化へ照合する。HomotopyLimits.ConeInitialFixed・CosliceSourcePrecomposition を読み取り専用で再利用し、反転 Hom 係数と右 Hom 成分を無条件に同一視しない。一致を境界式へ反映し、候補を元の普遍比較へ戻す。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
