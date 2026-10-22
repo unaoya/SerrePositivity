@@ -4103,3 +4103,64 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelTransportRemainder
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_outer_cancel
+
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_eq_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_pre
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_valueTo_eq
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_triple_transport_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawConstantFiberProjection
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitPointValueTo_transport_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitAction_transport_heq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_value_fiberMap
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitAction_valueTo_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_pair_comparison_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberComparison_valueTo_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_postcompose_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_postcompose_iso_injective
+
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_postcompose_functorIso_injective
+
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_postcompose_transport_injective
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberValue_source_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberValue_target_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberValue_eq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberComparison_eq_iff_valueTo
+
+#check @SerrePositivity.InfinityCategories.F2.iso_sandwich_injective
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiber_model_image
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberComparison_eq_iff_model
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransport_source_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransport_target_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitFiberTransportValueTo
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRightTailTransportValueTo_eq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_fiber_transport
