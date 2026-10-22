@@ -485,3 +485,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluation_canonicalIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCanonicalSourceValue_ι
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCanonicalSourceValue_identity_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeConstantValueIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientSourceValue_canonicalIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCanonicalSourceValue_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientSourceValue_pre
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientSourceValue_ulift_pre
+#check @SerrePositivity.InfinityCategories.F2.Ind.homotopyCoconeTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCoconeTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCoconePostTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluationBase_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluationBase_target
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluationRelativeImageIso
