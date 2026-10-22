@@ -34,13 +34,13 @@ def targetLayerIso : (d.targetModel R).X.homology (-2) ≅ (d.numeratorLayer R).
     (d.classSource_homology_zero R _ (by omega)) (d.classSource_homology_zero R _ (by omega))
 
 def pathLayerIso : (d.pathModel R).X.homology (-2) ≅ (d.numeratorLayer R).X.homology (-3) :=
-  SquareZeroExtension.layerHomologyIso (d.numeratorLayer R) 
+  SquareZeroExtension.layerHomologyIso (d.numeratorLayer R)
     (MappingPath.target R (d.imageClass R)) (-2)
     (d.pathSource_homology_zero R _ (by omega)) (d.pathSource_homology_zero R _ (by omega))
 
 def targetComposedLayerIso :
     (d.targetComposedModel R).X.homology (-2) ≅ (d.numeratorLayer R).X.homology (-3) :=
-  SquareZeroExtension.layerHomologyIso (d.numeratorLayer R) 
+  SquareZeroExtension.layerHomologyIso (d.numeratorLayer R)
     (𝟙 (d.classSource R) ≫ d.targetClass R) (-2)
     (d.classSource_homology_zero R _ (by omega)) (d.classSource_homology_zero R _ (by omega))
 
