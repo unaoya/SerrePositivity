@@ -22,10 +22,8 @@
 - accessible 関手の全自然同型不変性、両側の同値による共役不変性を証明。同じ κ の保存性と存在量化版の両方。
 - `covariantHomComparison` は元の coslice 作用・straightening を通る全共変 Hom 比較。
   関手圏の指定評価成分の可逆性と、元の `pinchedHomMap` の同値性の同値を証明。
-- 実 coslice 比較の各 fiber を引き戻し fiber 同型で元の後合成へ厳密に回収し、同じ `pinchedHomMap` の同値性との同値を証明。
-  `isFullyFaithful_iff_cosliceComparisonOver` は全始点での前合成同値性による全充満忠実性の判定。
-  分類評価の全自然性と、実 fiber 評価が同じ `vertexFiberMap` の coherent 辺を回収する一単体の等式も証明。
-  同じ Ind 比較の二つの生成対象で、元の実 coslice fiber 比較自身が同値であることまで接続。
+- 実 coslice fiber 比較を元の後合成へ厳密に回収。分類評価の全自然性と、同じ coherent 辺の回収式を証明。
+  全始点の coslice 比較による全充満忠実性の判定と、Ind 生成対象での実 fiber 比較の同値性を提供。
 - 関手圏の元の全比較の可逆成分条件を、両側が保存する同じ余極限・極限の頂点へ延長。
   共変 Hom の余極限・極限保存と元の余錐の反転式から、Ind の両変数の単一表示を通じて上記の全充満忠実性を得た。
 - 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
@@ -43,7 +41,11 @@
 - 部分添字射影の各左 Kan 局所添字の κ-filtered 性を証明。N の宇宙同型と F1B の局所存在定理から、
   一つの全単位変換を持つ coherent な左 Kan 拡張を構成。fiber の局所比較の right cofinal 性も証明。
   `exists_smallPartialColimitFamily` は元の全図式の各部分余極限を、延長の指定値そのものを頂点として回収する。
-- 独立集約ビルド成功（7624 jobs）、公理監査 269 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 同じ部分余極限族の μ-filtered 余極限から、元の全表示の指定頂点そのものを回収。
+  既存の二つの余極限を一点への Kan として比較し、指定単位の Hom 普遍性の合成で頂点同型を構成した。
+  `exists_filteredPartialPresentation` は任意の小さい κ-filtered ∞ 添字を扱い、全項を元の図式の
+  μ-small κ-filtered 制限の余極限として保持する。元の図式を通常の nerve に限定しない。
+- 独立集約ビルド成功（7629 jobs）、公理監査 285 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -63,7 +65,6 @@
 - `IsKappaAccessibleFunctor`、`IsAccessibleFunctor`、`indYoneda_isKappaCompactGenerating`、`indInfinity_isKappaAccessible`
 - `IsKappaCompactGenerating.compact_iff_retract`、`IsKappaAccessible.exists_indComparison`
 - `indComparison_isEssentiallySurjective`、`IsKappaAccessible.exists_surjective_indComparison`
-- `indComparison_generator_pinchedHomMap_isEquivalence`
 - `covariantHomComparison`、`cosliceComparisonOver`、`leftClassificationHom`
 - `isFullyFaithful_iff_cosliceComparisonOver`、`indComparison_generator_cosliceFiber_isEquivalence`
 - `covariantHomComparison_component_isIso_iff`、`functorHomComparison_colimit_vertex`
@@ -84,6 +85,7 @@
 - `smallFilteredTotal_restrict_isColimit_iff`、`smallFilteredTotalDiagram_restrict_fiber`
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
+- `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -93,10 +95,10 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。構成済みの coherent な部分余極限族から、元の全表示の頂点を μ-filtered 余極限として回収する。
-  元の左 Kan 変換を通る全余錐の合成を証明し、値射影の cofinal 性と接続する。
+- 工程 (1) の濃度変更。構成済みの μ-filtered 表示の各項について、元の μ-small κ-filtered 部分余極限の μ-compact 性を証明する。
+  μ-filtered 余極限と μ-small 極限の全 coherent な交換を証明し、N の compact 閉性へ接続する。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
-  部分余極限の coherent な族と値の回収は完了。元の頂点の全表示・μ-compact 性・小さい生成圏は未証明。
+  元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約

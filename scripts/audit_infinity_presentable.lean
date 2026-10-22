@@ -79,3 +79,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallPieceFiberKanComparisonUniverse_projection
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_leftKan_value_isPartialColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanHomUniversal_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKan_nerveTerminal_colimitValue
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKan_colimitVertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallFilteredPartialColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_filteredPartialPresentation
