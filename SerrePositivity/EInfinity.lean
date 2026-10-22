@@ -1893,3 +1893,9 @@ public import SerrePositivity.EInfinity.FrameHom.FrameArrowCategory
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowElements
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowLimits
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameElements
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRightKan
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRoof
+public import SerrePositivity.EInfinity.FrameHom.FrameArrowRightKan
+public import SerrePositivity.EInfinity.FrameHom.FrameRightKan
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource

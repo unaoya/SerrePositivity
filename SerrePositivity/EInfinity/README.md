@@ -2205,7 +2205,14 @@ e の入口：`freeHammockDiagonalUnit` は各自由次数の元の空語の単�
 `cofibrantDKSourceFrame` は元の関手的 source frame を同じ cofibrant DK 圏へ持ち上げる。
 `cofibrantSourceFrameHomIso` は同じ元の sourceFrameHom との全次数の厳密な同型。
 `cofibrantSourceFrameTotal_hasLimit` は任意の元の擬同型反転関手の全 frame 矢図式の実極限存在。
-元の right Kan 形状への実比較・left cofinal 性・標準単位条件と普遍性本体は後続。
+`cofibrantSourceFrameRightKanMap` と `cofibrantSourceFrameRightKanTotalMap` は、
+元の qX における実 right Kan 形状への次数圏・全矢圏からの比較。
+元の始域射影と全 rightKanDiagram の制限を厳密に保持し、次数比較の全像は coslice の始対象。
+`sourceFrameElementsDKNerveIso` は元の sourceFrameHom の全単体・全作用素と
+再添字後の固定終域の矢の nerve 全体の厳密な同型。対象の宇宙が異なるため全単体の作用を明示する。
+`cofibrantSourceFrameRoofMap` はその元の全単体から同じ q の実屋根比較への写像。
+次数射影を保持し、その left cofinal 性は元の raw 屋根比較の left cofinal 性と同値。
+left cofinal 性本体・標準右 Kan 条件・単位可逆性と局所化普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。

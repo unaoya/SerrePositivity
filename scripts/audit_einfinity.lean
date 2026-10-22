@@ -7817,6 +7817,55 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.FrameHom.FrameArrows.identityInclusion_nerve_target,
     `SerrePositivity.EInfinity.FrameHom.FrameArrows.target_hasLimit_iff]
 
+@[noinline] private def e2RequiredBatch133 : Array Lean.Name :=
+  #[
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementCategory,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsToDK,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameDKToElements,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsDKEquivalence,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsToDK_degree,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsToDK_arrow,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsToDK_inverse,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameDKToElements_inverse,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementDegree,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementsDKNerveIso,
+    `SerrePositivity.EInfinity.BarrattEccles.sourceFrameElementDegreeNerve,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockVertex,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameAugmentation_invertible,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap_projection,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap_initial,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap_diagram,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanTotalMap,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanTotalMap_projection,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrame_hasLimit,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap_degree,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap_isLeftCofinal_iff_raw,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.totalAugmentation,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonCell,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonHomotopy,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanComparisonHomotopy_hom,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanCosliceRealization,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_projection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_coslice,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.rightKanMap_diagram,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanHomotopy,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanCosliceRealization,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_projection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_coslice,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_coslice_initial,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanMap_diagram,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSource,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso_degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofSourceIso_over,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_degree,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_isLeftCofinal_iff_raw]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -7849,7 +7898,8 @@ run_cmd do
       e2RequiredBatch36, e2RequiredBatch37, e2RequiredBatch38, e2RequiredBatch39,
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
-      e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132] do
+      e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
+      e2RequiredBatch133] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -18862,3 +18912,35 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : BarrattEccles.Cofi
     (BarrattEccles.cofibrantSourceFrameHomIso A X Y).hom.app (op ⦋n⦌) f = f.hom :=
   BarrattEccles.cofibrantSourceFrameHomIso_hom A X Y f
 end e2SourceFrameTotalLimitFixtures
+
+section e2NativeSourceFrameRightKanFixtures
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory Limits Opposite SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity.FrameHom.FrameArrows
+open scoped Simplicial
+variable (A : Type e2ComplexLimitUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+example : cofibrantSourceFrameRightKanMap A X ≫
+    rightKanProjection (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (cofibrantHammockVertex A X) = nerveMap (cofibrantDKSourceFrame A X) :=
+  cofibrantSourceFrameRightKanMap_projection A X
+example (n : (nerve (AsSmall.{e2ComplexLimitUniverse + 1} SimplexCategory)) _⦋0⦌) :
+    IsInitialVertex ((cofibrantSourceFrameRightKanMap A X ≫ pullback.fst _ _).app (op ⦋0⦌) n) :=
+  cofibrantSourceFrameRightKanMap_initial A X n
+example : cofibrantSourceFrameRightKanTotalMap A X ≫
+    rightKanProjection (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+      (cofibrantHammockVertex A X) = nerveMap (target (cofibrantDKSourceFrame A X)) :=
+  cofibrantSourceFrameRightKanTotalMap_projection A X
+example : nerve (sourceFrameElementCategory A X Y) ≅
+    nerve (CostructuredArrow (cofibrantDKSourceFrame A X)
+      (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
+  sourceFrameElementsDKNerveIso A X Y
+example : cofibrantSourceFrameRoofMap A X Y ≫ pullback.snd _ _ =
+    sourceFrameElementDegreeNerve A X Y := cofibrantSourceFrameRoofMap_degree A X Y
+example {E : SSet.{e2ComplexLimitUniverse + 1}} [SSet.Quasicategory E]
+    (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
+    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    HasLimit (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
+  cofibrantSourceFrame_hasLimit A X F hF
+end e2NativeSourceFrameRightKanFixtures
