@@ -1508,4 +1508,17 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionAl
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionNaturality
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeConnection
 
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessRectangle
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessRectangleBoundary
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessRectangleTransport
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRectangleOfHom
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingZeroSquare
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingContour
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseChange
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseContour
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
