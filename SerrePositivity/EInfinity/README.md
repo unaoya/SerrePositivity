@@ -2344,15 +2344,21 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `cAlgForgetDerived_sourceIso` は元の通常忘却の D(R) 値解像への全関手同型。
 `cAlgForgetDerived_valueVertexIso` は任意の元の E 代数の像を同じ実半自由複体へ比較する。
 `cAlgForgetDerivedValueAugmentation_quasiIso` はその同じ複体から元の底の複体への擬同型。
-U の離散入力・離散性・∞ 極限保存・G1′ は後続。
+`algebraCAlgSource` は元の全 E 代数の nerve から CAlg_R への実 ∞ 関手。
+`discreteCAlgEmbedding` は離散可換 A 代数の nerve から CAlg_R への実 ∞ 関手。
+`discreteCAlgEmbedding_vertexIso` は既存 discreteCAlgVertex との全頂点比較。
+`MixedNerve.homotopy` は対象と Hom の宇宙が異なる通常圏の元の自然変換円柱。
+`complexOrdinaryDerivedNatTransIso` は全成分の擬同型を D(R) の全関手同型へ送る。
+`algebraCAlgSource_underlyingDerivedIso` は同じ U と元の非置換通常忘却の全比較。
+`discreteCAlgEmbedding_underlyingDerivedIso` は同じ全比較の離散入力への制限。
+既存 discreteEmbedding との全比較・離散性・同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
-∞ 局所化の普遍性、
-忘却先と既存 D(R) との比較、離散対象の ∞ 関手と離散性・極限保存・G1′ は未完成。
+既存 D(R) の discreteEmbedding との全比較・離散性・極限保存・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、

@@ -2023,3 +2023,8 @@ public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionAugmentation
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerivedValue
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteEmbedding
+public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
+public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransIso
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
