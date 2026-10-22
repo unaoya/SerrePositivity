@@ -994,3 +994,84 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @isIdempotentComplete_iff_hasLimits
 #print axioms isIdempotentComplete_iff_hasLimits
+
+#check @walkingImageCanonicalCocone_eq
+#print axioms walkingImageCanonicalCocone_eq
+
+#check @idemImageCanonicalCocone_eq
+#print axioms idemImageCanonicalCocone_eq
+
+#check @idemImageCanonicalCocone_postcomp
+#print axioms idemImageCanonicalCocone_postcomp
+
+#check @idemImageCanonicalCocone_isColimit
+#print axioms idemImageCanonicalCocone_isColimit
+
+#check @splittingCanonicalCocones_isColimit
+#print axioms splittingCanonicalCocones_isColimit
+
+#check @strongSplittingRestriction
+#print axioms strongSplittingRestriction
+
+#check @strongSplittingRestriction_innerFibration
+#print axioms strongSplittingRestriction_innerFibration
+
+#check @strongSplittingRestriction_isFullyFaithful
+#print axioms strongSplittingRestriction_isFullyFaithful
+
+#check @strongSplittingRestriction_trivialKanFibration_of_complete
+#print axioms strongSplittingRestriction_trivialKanFibration_of_complete
+
+#check @strongSplittingSpace
+#print axioms strongSplittingSpace
+
+#check @strongSplittingSpaceVertex
+#print axioms strongSplittingSpaceVertex
+
+#check @strongSplittingOfSpaceVertex
+#print axioms strongSplittingOfSpaceVertex
+
+#check @strongSplittingSpaceVertexEquiv
+#print axioms strongSplittingSpaceVertexEquiv
+
+#check @strongSplittingSpace_isContractibleKan
+#print axioms strongSplittingSpace_isContractibleKan
+
+#check @strongSplittingSpace_isContractibleKan_of_hasColimit
+#print axioms strongSplittingSpace_isContractibleKan_of_hasColimit
+
+#check @strongSplittingSpace_isContractibleKan_of_hasLimit
+#print axioms strongSplittingSpace_isContractibleKan_of_hasLimit
+
+#check @IsEffectiveIdempotentVertex
+#print axioms IsEffectiveIdempotentVertex
+
+#check @effectiveIdempotents
+#print axioms effectiveIdempotents
+
+#check @effectiveIdempotents_quasicategory
+#print axioms effectiveIdempotents_quasicategory
+
+#check @strongSplittingRestriction_effective_vertex
+#print axioms strongSplittingRestriction_effective_vertex
+
+#check @effectiveSplittingRestriction
+#print axioms effectiveSplittingRestriction
+
+#check @effectiveSplittingRestriction_inclusion
+#print axioms effectiveSplittingRestriction_inclusion
+
+#check @effectiveSplittingRestriction_hasLiftingProperty
+#print axioms effectiveSplittingRestriction_hasLiftingProperty
+
+#check @effectiveSplittingRestriction_innerFibration
+#print axioms effectiveSplittingRestriction_innerFibration
+
+#check @effectiveSplittingRestriction_isFullyFaithful
+#print axioms effectiveSplittingRestriction_isFullyFaithful
+
+#check @effectiveSplittingRestriction_surjective
+#print axioms effectiveSplittingRestriction_surjective
+
+#check @effectiveSplittingRestriction_trivialKanFibration
+#print axioms effectiveSplittingRestriction_trivialKanFibration

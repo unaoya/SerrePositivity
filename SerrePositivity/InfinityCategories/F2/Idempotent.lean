@@ -80,3 +80,10 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.ShapeOppositeIso
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeStrongSplitting
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeIdempotent
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ImageCanonicalCocone
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingCanonicalColimits
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingRestriction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingSpace
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingSpaceContractibility
+public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveIdempotents
+public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveSplittingRestriction
