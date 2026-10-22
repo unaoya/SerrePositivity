@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSharedEdges
+import SerrePositivity.InfinityCategories.Stable.PosetOrderIsoLowerCocone
+import SerrePositivity.InfinityCategories.Stable.PosetOrderIsoCanonicalColimit
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridLeftPushout
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFullPastCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanRetraction
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanShape
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSquare
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanProjection
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalPushout
 import SerrePositivity.InfinityCategories.Stable.ExcisionCornerSpan
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanRetraction
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanShape
@@ -4366,6 +4377,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSharedEdges,
+
+    `SerrePositivity.InfinityCategories.Stable.PosetOrderIsoLowerCocone,
+    `SerrePositivity.InfinityCategories.Stable.PosetOrderIsoCanonicalColimit,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridLeftPushout,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFullPastCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanRetraction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanShape,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSquare,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanProjection,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalPushout,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionCornerSpan,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanRetraction,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanShape,
