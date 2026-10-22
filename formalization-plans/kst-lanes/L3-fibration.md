@@ -25,11 +25,14 @@
   各射影は元の評価を回収し、任意の制限後の頂点・実合成辺との厳密な対応も証明。
   一辺では同じ二成分が既存の加法性写像を回収し、全正有限反復で局所化同型。
   二辺以上の比較の同値性・全列の加法性比較の自然性・実現後の fiber 比較は未完。
+- 二辺では、二短辺の W 条件が元の全二単体条件を反映することを証明し、内ホーン制限を
+  trivial Kan fibration・完全な安定圏同値にした。標的は共有端点上の二つの W 辺図式圏の
+  厳密な引き戻し。元の両短辺を回収し、元の二辺の有限比較をこの同値と同じ積比較に因子分解済み。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7151 jobs・専用監査 53 モジュール 383 宣言が成功。
+- 現在の対象ビルド 7158 jobs・専用監査 60 モジュール 429 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3434 モジュールは EInfinity を含まない。全体 23893 jobs で成功。
+  所有 import 閉包 3441 モジュールは EInfinity を含まない。全体 23922 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -63,6 +66,9 @@
 - weakStringVertexExact、weakStringVertexExact_reindex、weakStringCofiberSubobject_eq、
   weakStringFiniteComparison、weakStringFiniteComparison_cofiber、
   weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
+- composableWeakArrow_isPullback、weakStringTwoHornEquivalence、
+  weakStringTwoHorn_multiRealization_localized_isIso、weakStringFiniteComparison_two_factor、
+  weakStringFiniteComparison_two_localized_isIso_iff。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -82,7 +88,7 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の有限列比較・頂点評価・一辺の同値の5モジュール・集約・監査・本計画を含める）。
+- なし（今回の二辺の内ホーン・厳密引き戻し・切断因子分解の7モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
@@ -90,9 +96,9 @@
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  構成した有限列比較を、初辺と残りの列への切断で分解する。
-  一辺の局所化同型と三辺の実現射の整合性を使い、二辺以上の比較の同値性を証明する。
-  共通補完の再添字可換性を保持して K-2 の単体積版 Quillen A に接続する。
+  内ホーンの引き戻し模型上の積比較に、K-1 の単体左 fiber の quotient 同値を基底変換し K-2 を適用する。
+  まず左 fiber の厳密基底変換と、対象の object S 図式がこの具体的引き戻しを保つことを証明する。
+  二辺の積比較から全有限列へ進み、共通補完の再添字可換性を保持する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 
 ## 規約

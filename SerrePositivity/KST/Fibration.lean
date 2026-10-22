@@ -52,3 +52,10 @@ public import SerrePositivity.KST.Fibration.WeakStringFiniteComparison
 public import SerrePositivity.KST.Fibration.WeakStringCofiberSource
 public import SerrePositivity.KST.Fibration.WeakStringOneEquivalence
 public import SerrePositivity.KST.Fibration.WeakStringFiniteComparisonOne
+public import SerrePositivity.KST.Fibration.WeakStringTwoCriterion
+public import SerrePositivity.KST.Fibration.ComposableWeakArrows
+public import SerrePositivity.KST.Fibration.WeakStringTwoHornEquivalence
+public import SerrePositivity.KST.Fibration.FullPredicatePullback
+public import SerrePositivity.KST.Fibration.ComposableWeakArrowPullback
+public import SerrePositivity.KST.Fibration.WeakStringTwoHornComponents
+public import SerrePositivity.KST.Fibration.WeakStringTwoCutComparison
