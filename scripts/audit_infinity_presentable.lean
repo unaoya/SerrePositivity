@@ -47,3 +47,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparisonEquivalence_hom
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indRepresentation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.of_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_indEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessible_iff_indEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessibleFunctor_iff_equivalence_conjugate

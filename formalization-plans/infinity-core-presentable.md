@@ -15,6 +15,11 @@
   **元の任意の二対象間の `pinchedHomMap` の同値性・比較自身の全充満忠実性・全 ∞ 圏同値を証明。**
   `IsKappaAccessible.exists_indRepresentation` は定義の小さい compact 生成圏と κ-連続同値を回収。
   同値の順射は元の比較関手そのもの。`exists_indEquivalence` は小さい A の Indκ(A) との明示的な同値の存在。
+- **同値不変性と Ind による完全な必要十分条件を証明。** 正則性を明示し、任意の指定 Ind 同値からも定義の accessibility を回収。
+  `isKappaAccessible_iff_indEquivalence`・`isAccessible_iff_indEquivalence` は小さい A、Indκ(A) と標的が u+1 の規約を保持。
+  全余錐の同値による保存・反映、小さい κ-filtered 余極限の存在、compact 性、同じ小さい生成圏の全表示を輸送。
+  表示の頂点は同値類だけでなく指定対象そのものへ厳密に戻す。
+- accessible 関手の全自然同型不変性、両側の同値による共役不変性を証明。同じ κ の保存性と存在量化版の両方。
 - `covariantHomComparison` は任意の元の関手の全共変 Hom 比較。元の coslice 作用を厳密な底変換へ因子化し、
   left fibration の元の辺を straightening で送り、定義の全表現可能関手へ戻した関手圏の射。
   値ごとの同値族だけではない。指定評価成分の可逆性と元の `pinchedHomMap` の同値性の同値を証明。
@@ -29,10 +34,10 @@
 - 極限側でも相対終対象の元の射影の充満忠実性から、同じ全比較の可逆成分条件を元の全錐の頂点へ延長。
   共変 Hom の極限保存、指定二対象の実比較の反転前後の同値性、元の余錐像の厳密な反転式を合成。
   `pinchedHomMap_equivalence_of_source_colimit` を Ind の始域の単一表示へ適用し、上記の全充満忠実性を得た。
-- 独立集約ビルド成功（7599 jobs）、公理監査 91 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 独立集約ビルド成功（7606 jobs）、公理監査 111 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
-1. accessible ∞ 圏：同値不変性と Ind 表現による完全な iff、濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。16〜40 時間（暫定）。
+1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
 2. presentable の定義、前層 ∞ 圏・Ind_κ(C) の presentable 性（5.5.1.1、5.5.1.8）、局所小ささ。
 3. presentable の小さい極限・余極限（5.5.2.4、5.5.3.13）。
 4. 随伴関手定理：余極限を保つ関手は左随伴、accessible かつ極限を保つ関手は右随伴（5.5.2.9）。
@@ -59,20 +64,23 @@
 - `functorHomComparison_limit_vertex`、`pinchedHomMap_equivalence_iff_op`
 - `pinchedHomMap_equivalence_of_source_colimit`、`indComparison_isFullyFaithful`、`indComparisonEquivalence`
 - `IsKappaAccessible.exists_indRepresentation`、`IsKappaAccessible.exists_indEquivalence`
+- `equivalence_isColimitCone_iff`、`covariantHomComparisonIso`、`isKappaCompact_iff_equivalence`
+- `IsKappaCompactGenerating.of_equivalence`、`isKappaAccessible_iff_equivalence`、`isAccessible_iff_equivalence`
+- `isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
+- `isKappaAccessibleFunctor_iff_equivalence_conjugate`、`isAccessibleFunctor_iff_equivalence_conjugate`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
 
 ### 既知の問題
-- accessible の同値不変性と、任意の指定 Ind 同値から accessibility を回収する逆方向は未証明。
+- accessible 圏の濃度変更は未証明。κ ≤ μ だけで単調性を結論せず、必要な正則性・濃度条件を保持する。
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の同値不変性。まず任意の元の全余錐の同値による保存・反映を、反転錐の既存の極限保存から証明。
-  小さい κ-filtered 余極限の存在を同値で輸送する。元の `covariantHomComparison` は充満忠実な関手について
-  全成分が可逆なので全関手同型を与える。その全比較と元の余錐像の式で compact 性を輸送する。
-  同じ小さい生成圏・生成表示を輸送し、任意の Ind 同値から accessibility を回収して完全な iff を公開。
-  続いて濃度変更と accessible 関手の必要な基本性質を進める。
+- 工程 (1) の濃度変更。必要な正則濃度の条件を明示し、元の小さい κ-compact 生成圏から適切な μ-compact 生成圏を構成する。
+  単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
+  濃度条件の集合論と小さい部分表示の構成を揃え、存在量化した accessibility を共通の濃度で使える界面へ接続する。
+  その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/InfinityCategories/F2/Presentable/`、集約 `F2/Presentable.lean`、監査 `scripts/audit_infinity_presentable.lean`。

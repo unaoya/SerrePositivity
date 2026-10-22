@@ -12,3 +12,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.HomClassificatio
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomFiberEvaluationEdge
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndGeneratorMapping
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctorEquivalence
