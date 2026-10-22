@@ -3215,3 +3215,13 @@ public import SerrePositivity.InfinityCategories.F1.SliceConeFamilyEndpoints
 public import SerrePositivity.InfinityCategories.F1.SourceConstantTransformationHomotopy
 
 public import SerrePositivity.InfinityCategories.F1.TimeMinimumParameters
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSectionsConeIdentity
+
+public import SerrePositivity.InfinityCategories.F1.ConeRealizationTransformation
+
+public import SerrePositivity.InfinityCategories.F1.ConeTransformationPointAt
+
+public import SerrePositivity.InfinityCategories.F1.HomotopyConeBoundary
+
+public import SerrePositivity.InfinityCategories.F1.SourceConstantTransformationVertex

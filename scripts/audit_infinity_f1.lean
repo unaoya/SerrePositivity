@@ -9158,3 +9158,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.timeMinimumAlong_const_zero
 
 #check @SerrePositivity.InfinityCategories.timeMinimumAlong_const_one
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeIdentityIso
+
+#check @SerrePositivity.InfinityCategories.coneRealizationTransformationHomotopy
+
+#check @SerrePositivity.InfinityCategories.coneTransformationPointAt
+
+#check @SerrePositivity.InfinityCategories.coneTransformationPointAt_prism
+
+#check @SerrePositivity.InfinityCategories.homotopyConeRealization_left
+
+#check @SerrePositivity.InfinityCategories.homotopyConeRealization_right
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_of_edge
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_vertex

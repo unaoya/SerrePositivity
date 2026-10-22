@@ -27,6 +27,8 @@
   fat 錐側は `fatConeTransformationIso` で厳密に同型。任意の形状・全パラメータを保持。
 - 元の錐の全 Hom 作用を同じ三角形で表し、三辺と両端固定の最小値変形を照合。
   `conePointHomNativeCompositionIso` で、元の標準比較の像を同じ二変換の実際の相対合成へ戻した。
+- 実現した錐の標準変換を元の指定変換へ戻す全ホモトピーも構成。
+  `coherentSectionsConeIdentityIso` はその小さい全切断への像を元の恒等射と比較する。
 
 ### 残り（依存順）
 
@@ -81,7 +83,6 @@
   この条件を新しい公理や instance 仮定として主経路に置かず、native な極限錐への接続を残す。
 
 ### 再開点（第 II 段、3行）
-
 1. `dc768ab4b`：有限二単体の coherent 境界比較の同値と、元の大域作用への `cocartesianTwoBoundaryCoherentHomComparison_originalIso` まで保存済み。
 2. 次は同じ比較を任意の底の二次元セルへ移し、局所比較の自然性と指定境界値の fiber 比較を揃える。
 3. その後は高次境界・有限セル・骨格降下で一般充満忠実性を閉じ、本質的全射性・一般底・宇宙へ進む。
@@ -91,7 +92,8 @@
 `coherentDiagramSectionsCone F` の全試験空間での Hom 比較に
 `coneTransformationMap F z` と `coherentSmallConstantSourceMap F z` を合成する。
 同じ錐の標準変換と定値図式の全 Hom 作用との相対合成への比較は構成済み。
-次は実現した錐の標準変換を全切断の恒等射を表す指定変換へ戻し、同じ合成の同値性を示す。
+実現した錐の標準変換と指定恒等射の比較は `coherentSectionsConeIdentityIso` で構成済み。
+次はこの指定同型を全試験空間の Hom 作用へ移し、同じ実際の合成の同値性を示す。
 錐の実現が保持する全円柱・両端固定比較を使い、元の比較射の同値性から native な極限性を結論する。
 F2 の `CoconeFiberColimitCriterion`・全空間の指定単位の追跡は読み取り専用の双対設計の参考。
 その後、各点存在を解消して F1-4 を閉じ、F1-5・F1-3b へ進む。
