@@ -28,11 +28,11 @@
   `F2.coconeFiberValueMapAt` を `presheafDensityEvaluatedFiberMap` へ比較する関手同型。
   後者は元の大域密度変換を評価し、元の unstraightening 写像空間比較で写したもの。
   始点固定の全族の弱同値との接続が残る。余錐の余極限性はまだ主張しない。
-  `presheafDensityEvaluationRelativeImageIso` は、その実際の unstraightening の像を
-  元の大域実現射の制限へ相対 Hom 内で比較する。同じ `imageIso` を持ち上げて底変換自然性を適用。
-  `presheafDensityLiftedEvaluationIso` は元の大域評価との `evaluationIso` も同じ大きい全空間へ移す。
   `presheafDensityEvaluationReconstruction` は同じ始点固定の全族から同じ評価図式への前合成同値。
-  同じ大きい全空間での元の実現射との合成も照合。集約 6164 jobs・監査 505 宣言、標準三公理のみ。
+  `presheafDensityEvaluationGlobalComparisonIso` はその上で同じ `imageIso` と `evaluationIso` を合成。
+  `presheafDensityEvaluationConstantComparisonIso` で同じ定値標的へ戻し、
+  `presheafDensityEvaluationValueComparisonIso` は同じ実際の評価 fiber 写像の前合成を
+  `presheafDensityRestrictedGlobalValueMap` へ比較する関手同型。集約 6176 jobs・監査 624 宣言、標準三公理のみ。
 - **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
@@ -59,7 +59,7 @@
 - `presheafElementsYonedaSliceComparison`、`presheafElementsYonedaSliceComparison_cocone`
 - `twistedSourceElementsEvaluation_identity`、`twistedSourceElementsEvaluation_isWeakHomotopyEquivalence`
 - `presheafDensityEvaluationCoconeTransformationIso`、`presheafDensityEvaluationFiberIso`
-- `presheafDensityEvaluationRelativeImageIso`、`presheafDensityLiftedEvaluationIso`
+- `presheafDensityEvaluationValueComparisonIso`、`presheafDensityRestrictedGlobalValueMap`
 - `presheafDensityJointRestriction_vertex`、`presheafDensityEvaluationReconstruction_isPrecompositionEquivalence`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
@@ -90,11 +90,11 @@
 
 (a)：`presheafDensityEvaluationFiberIso` の標的 `presheafDensityEvaluatedFiberMap F x` を、
 `twistedSourceElementsEvaluation (smallRightUnstraighteningProjection F) x` へ比較する。
-評価変換の実際の像は元の大域実現射の制限と比較済み。元の大域評価同型も持ち上げ済み。
-元の復元射の始点固定と前合成同値性は証明済み。
-`presheafDensityEvaluationRelativeImageIso` をその上へ写し、`presheafDensityLiftedEvaluationIso` と合成する。
-底の表示は `presheafDensityEvaluationReconstruction_projection` と元の共同射影の正方形で揃える。
-`presheafTwistedElementsMap_lifted` で元の pointed 評価へ戻す。各点で別の射を選び直さない。
+`presheafDensityEvaluationValueComparisonIso` で同じ復元射上の実際の値写像まで接続済み。
+`presheafDensityRestrictedGlobalValueMap` を元の `twistedSourceElementsEvaluation` と fiber 値の比較の合成へ照合。
+元の反転 fiber と小さい left unstraightening の fiber は全空間の反転同型で比較する。
+`smallLeftUnstraighteningFiberValueEquivalence` と大きい比較の可換式を使い、同じ値への弱同値を得る。
+その後は同じ評価復元射の前合成同値性と上の関手同型で実際の fiber 写像へ戻す。
 同じ `presheafDensityCocone F` の各評価の余極限性を示し、前層の評価による検出で密度を結論する。
 評価後の同じ `F2.coconeFiberMap` の弱同値性を示せば、`F2.isColimitCone_of_coconeFiberMap_weakEquivalence` が使える。
 宇宙を上げる際は、小さい Kan 標的への前合成同値と `F2.ulift_pre_homotopyEquivalence` の利用を優先する。

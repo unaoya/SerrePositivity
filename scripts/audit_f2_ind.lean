@@ -36,6 +36,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_map
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_realization
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationGlobalComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationConstantComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationValueComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
