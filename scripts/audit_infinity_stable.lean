@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
+import SerrePositivity.InfinityCategories.Stable.SquareDiagonalEquivalence
+import SerrePositivity.InfinityCategories.Stable.FunctorEdgeSquareReadback
+import SerrePositivity.InfinityCategories.Stable.LimitConeDiagonalVertex
+import SerrePositivity.InfinityCategories.Stable.ConeSquareInitialVertex
+import SerrePositivity.InfinityCategories.Stable.ArrowPullbackDiagonal
+import SerrePositivity.InfinityCategories.Stable.ExcisionArrowPullbackDiagonal
+import SerrePositivity.InfinityCategories.Stable.ExcisionFullCoreConeChoice
 import SerrePositivity.InfinityCategories.Stable.PosetSubtypeDiagramLift
 import SerrePositivity.InfinityCategories.Stable.ExcisionReplacementRestriction
 import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionFamily
@@ -7646,6 +7654,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.SquareDiagonal,
+    `SerrePositivity.InfinityCategories.Stable.SquareDiagonalEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.FunctorEdgeSquareReadback,
+    `SerrePositivity.InfinityCategories.Stable.LimitConeDiagonalVertex,
+    `SerrePositivity.InfinityCategories.Stable.ConeSquareInitialVertex,
+    `SerrePositivity.InfinityCategories.Stable.ArrowPullbackDiagonal,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionArrowPullbackDiagonal,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFullCoreConeChoice,
+
     `SerrePositivity.InfinityCategories.Stable.PosetSubtypeDiagramLift,
     `SerrePositivity.InfinityCategories.Stable.ExcisionReplacementRestriction,
     `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionFamily,
