@@ -377,3 +377,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.AugmentedUniverseReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.JoinUniverseReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.UliftCoconeReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaColimitPreservation
+public import SerrePositivity.InfinityCategories.F2.Ind.CompactGeneration
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramYoneda

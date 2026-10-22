@@ -1,6 +1,6 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v2 の位置づけ（2026-10-23 移管）**：F1-4・F1-5・F1-3b、F2N-2(a)〜(d) は完了。次は F2N-5（Ind の安定性と compact 生成、F1b から移管）。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-23 移管）**：F1-4・F1-5・F1-3b、F2N-2(a)〜(d) は完了。次は F2N-5(a)(b)（Ind の有限存在と安定性、F1b から移管）。(c) compact 生成は完了。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ：F2N-5（2026-10-23）
 
@@ -13,7 +13,7 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7395 jobs、公理監査 3047 宣言、標準三公理のみ。
+- 現区切り：独立集約 7657 jobs、公理監査 3056 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -34,14 +34,19 @@
   `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
   `indYoneda_finiteColimit_isColimit` は同じ指定元余錐の native な Yoneda 像の余極限性まで帰還。
   Ind の任意の有限図式の余極限存在や安定性は未証明。
-- **(c) 未着手**：N の `Compact.indYoneda_isKappaCompact`、`idemToCompactInd_isQCatEquivalence_of_retracts` は利用候補。
-  後者は元の compact Ind 対象の Yoneda retract 回収を入力として要求する。回収を証明済みとは扱わない。
+- **(c) 完了**：N の `indCompact_retract_yoneda` は同じ元の compact Ind 対象の Yoneda retract 回収を証明済み。
+  `compactYoneda_isQCatEquivalence` は正則 κ と冪等完備 C のもとで、元の全 compact Yoneda 自身の同値性。
+  `compactGenerationEquivalence` は ULift C ≃ Indκ(C)^κ、`_hom` は同じ順射の厳密な回収。
+  `indVertex_has_filteredYonedaPresentation` は任意の元の Ind 頂点そのものを頂点とする、小さい単一 κ-filtered Yoneda 表示。
+  生成元の κ-compact 性は N の `Compact.indYoneda_isKappaCompact`。一般有限極限交換や安定性に依存しない。
+- `diagramYoneda` は全 coherent 図式に対する同じ Yoneda の作用。`_vertex` は元の全図式の像、
+  `_restrict` は形状制限との全次数の厳密な自然性。有限図式の単一 filtered 表示そのものはまだ証明していない。
 
 ### 残り（依存順）
 
 1. **(a)** 元の有限 coherent 図式の filtered 表示、有限余極限・有限極限の存在。零対象は済み。HTT 5.3.5.15。16〜40時間（暫定）。
 2. **(b)** 有限図式表示と明示交換入力から安定性を証明。F1b の a7 提供後、交換入力へ実証拠を渡す。HA 1.1.3.6。24〜60時間（暫定、提供待ちを含まず）。
-3. **(c)** compact 対象の Yoneda retract 回収と、冪等完備 C に対する Indκ(C)^κ ≃ C。F2N-4(e)・F2N-3(d) と合流。HTT 5.3.5.11。16〜40時間（暫定）。
+3. **(c) 完了**：N の元の retract 回収と合流し、正則 κ・冪等完備 C に対する同じ compact Yoneda の全同値と filtered 生成。HTT 5.3.5.11。
 
 ### 主要宣言（名前のみ）
 
@@ -60,6 +65,9 @@
 - `ind_finiteColimit_cosliceSections_isQCatEquivalence`、`indYoneda_finiteOppositeCone_isLimit`
 - `joinUniverseReverse_hom`、`joinUniverseReverse_inv`、`uliftCoconeReverse_val`、`indYoneda_finiteColimit_isColimit`
 
+- `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
+- `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_vertex`、`diagramYoneda_restrict`
+
 ### 依存と提供
 
 - 所有は `InfinityCategories/F2/Ind/`、独立集約 `F2/Ind.lean`、`scripts/audit_f2_ind.lean`、本計画。
@@ -72,26 +80,26 @@
 
 ### 未コミット
 
-- なし。指定元有限余錐の native な Yoneda 保存まで対象ビルドと公理監査を通した区切り。
+- なし。compact 生成の同値と図式作用まで対象ビルドと公理監査を通した区切り。
 
 ### 既知の問題
 
-- F2N-5 の有限余極限・有限極限・安定性・compact 比較は未証明。零対象だけで (a) 完了とはしない。
+- F2N-5(a)(b) の有限余極限・有限極限・安定性は未証明。零対象だけで (a) 完了とはしない。(c) は完了。
 - `IndFiniteLimitExchangeInput` の構成子は一般有限極限交換の証拠を要求する。現在は供給する定理が未提供。
 - C の `IsStable` は零対象・fiber/cofiber・零角の判定による定義。有限全形状の存在への公開 API は再確認が必要。追加仮定で回避しない。
-- compact 側は元の全共変 Hom による定義と追加の宇宙持ち上げを持つ。Ind の native 小さい添字版と厳密に照合する。
 
 ### 次の一手
 
 `indYoneda_finiteColimit_isColimit` により、明示交換入力のもとで同じ元の有限余極限余錐を Ind Yoneda が保存することまで完了。
 次は有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による単一 filtered 表示を構成する。
-まず Fun(K,C) → Fun(ULift K,Indκ C) の全射を定め、指定図式への全 coherent 変換を持つ表示添字を扱う。
+`diagramYoneda` で Fun(K,C) → Fun(ULift K,Indκ C) の全作用と形状自然性は済み。次は指定図式への全 coherent 変換を持つ表示添字。
+この comma は最初は大きい宇宙にあり、小さい表示への比較と κ-filtered 性を元の全図式を保って証明する。
 各頂点を別々に表示するだけではなく、元の全単体・辺・境界を保持する一つの図式表示を得る。
 κ-filtered 性と元の指定図式を頂点とする全余錐の普遍性は証明すべき結論であり、入力にしない。
 C の `IsStable` から有限余極限を得る公開 API は検索で未確認。`Stable/Definition` は有限存在から安定性への十分条件のみ。
 不足分を所有内で証明し、その有限余極限と図式表示で元の Ind 図式の native 余極限を構成する。
 有限極限と安定性では `IndFiniteLimitExchangeInput` を明示引数にし、交換の証拠を内製しない。
-compact 部分の回収は N の既存の全比較と retract API を再利用する。
+compact 部分は完了済み。N の元の回収・冪等完備性の宇宙不変性と全充満忠実像の retract 回収を用いた。
 
 ## F2N-2 の完了界面
 

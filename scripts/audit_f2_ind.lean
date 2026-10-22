@@ -620,3 +620,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.uliftCoconeReverse_val
 #check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteColimit_isColimit
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteColimit_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactYoneda_isEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactYoneda_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence_hom
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertex_has_filteredYonedaPresentation
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_restrict
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.compactYoneda_isQCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indVertex_has_filteredYonedaPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramYoneda_restrict
