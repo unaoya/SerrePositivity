@@ -30,14 +30,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  coherentColimitUpperActionIso_eq_triangle は既存の上面作用比較を同じ全上面の比較へ値まで同定。
-  coherentColimitLowerCompositeIso_app_heq_triangle は下面の区間族比較を同じ全下面の相対比較へ同定。
-  coherentColimitLowerActionIso_heq_factors は既存の下面作用比較の三角形・指定区間輸送の二因子を保持。
+  constantUnstraighteningRelativeIso_value_eq_projection は全係数で相対 Hom の作用を fiber 射影へ厳密に同定。
+  coherentColimitLowerCompositeIso_map_heq_action・UpperRelativeComparison_map_heq_action は同じ二面の値の照合。
+  coherentColimitNativeUnitRelativeComparison_map_heq_action は二面の比較合成全体の同じ値への像を同定。
   未完：a6 の指定作用比較との照合、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
-  検証：三集約同時ビルド9524 jobs、公理監査11961宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  既存の上下作用の指定値の回収・表現の縮小と復元を含む追加13明示宣言を型検査。
+  検証：三集約同時ビルド9542 jobs、公理監査12051宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  全係数の射影表示・上下二面の像・二面の比較合成全体の像を含む追加14明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -66,7 +66,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
 - `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso` / `F2.coherentCospanConeNativeComparison` / `F2.coherentCospanConeValuePathHomotopy_unit` / `F2.coherentCospanConeTotalModelComparison_over_base` / `F2.coherentCospanConeTotalModelFiberComparison_path_ι` / `F2.coherentCospanConeRelativeValuePathIso_eq` / `F2.coherentCospanConePointwiseCone_vertex` / `F2.coherentCospanConePointwiseCone_leftTriangle` / `F2.unstraighteningMappingTrianglePrism` / `F2.coherentTransformationTriangleLift_long` / `F2.coherentTransformationPointedTriangle_projection` / `F2.relativeExtensionRestriction_vertex` / `F2.prismExtensionComparison_restrict` / `F2.coherentTriangleExtensionComparison_restrict` / `F2.coherentTriangleExtensionRestriction_long` / `F2.relativeFunctorBaseChangeInverse_overPre` / `F2.prismExtensionPullbackEndpoint_restrict` / `F2.prismExtensionPullbackComparison_restrict` / `F2.relativeFunctorCurryHom_pre` / `F2.relativeFunctorCurryHom_evaluate` / `F2.prismExtensionCurryWitnessIso_restrict` / `F2.unstraighteningSourceComparisonIso_app_pre` / `F2.coherentTriangleCurryIso_restrict` / `F2.unstraighteningTriangleRelativeVertexIso_pre` / `F2.coherentSmallTriangleRelativeIso_pre` / `F2.unstraighteningTriangleRelativeVertexIso_pre_eq` / `F2.coherentSmallTriangleRelativeIso_pre_heq_endpoint` / `F2.coherentSmallFiberPointedTriangle_projection` / `F2.coherentSmallTriangleRelativeIso_pre_eq_endpoint` / `F2.coherentTransformationTriangleFiberIso_heq_endpoint` / `F2.relativeIsoFiberHomotopy_hom` / `F2.coherentCospanConeFiberComparisonPathIso_eq` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq` / `F2.functorIsoDown_injective` / `F2.coherentCospanNormalizedModelPathLiftIso_eq_section` / `F2.coherentCospanCommonLeftIso` / `F2.coherentCospanCommonRightIso` / `F2.intervalReplacementSectionIso_endpoint` / `F2.coherentCospanConeNativePathDownIso_whisker` / `F2.coherentTotalNativeKanIso_postValueImage` / `F2.coherentCospanCommonRightImage` / `F2.cospanRectificationLeftIso_inverse_image` / `F2.coherentCospanNativeFirstPathIso_heq` / `F2.coherentCospanModelFirstPathIso_heq` / `F2.coherentCospanCommonComparisonIso` / `F2.coherentCospanConeNativeComparison_homotopyEquivalence` / `F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence` / `F2.coherentCospanNativeLimitCone` / `F2.coherentCospanNativeLimitCone_isLimit` / `F2.coherentCospanNativeLimitCone_vertex` / `F2.coherentCospanNativeLimitConeFstIso` / `F2.coherentCospanNativeLimitConeSndIso` / `F2.coherentCospanNativeLimitCone_projection_commutativity` / `F2.coherentFilteredColimitVertex_isTerminal` / `F2.coneMappingShapePushoutIso` / `F2.coneMappingShapePushout_right_fibration` / `F2.coneMappingShapePushoutNativeCone_isLimit` / `F2.finiteShape_cell_induction` / `F2.CoherentFilteredLimitExchangeShape` / `F2.coherentColimitFunctor` / `F2.coherentCompletedLimit_iff_colimitFunctor` / `F2.coherentCospanOfFunctorTriangles` / `F2.functorCospanNativeLimitCone_isLimit` / `F2.exists_limitFamilyRestrictionTriangle` / `F2.coneFamilyReindex_apex` / `F2.exists_limitConeFamilyReplacement` / `F2.HasSpaceLimitsOfShape` / `F2.coherentFilteredLimitExchangeShape_simplex` / `F2.coherentFilteredLimitExchangeShape_of_empty`
 
-- `F2.coherentColimitUnitTriangleValue_coherence` / `F2.coherentColimitNativeUnitRelativeComparison` / `F2.coherentColimitUnitValueComparison_total_heq_nativeRelative`
+- `F2.coherentColimitUnitTriangleValue_coherence` / `F2.coherentColimitUnitTriangleActionComparison` / `F2.coherentColimitNativeUnitRelativeComparison_map_heq_action`
 
 ### 依存と提供
 
@@ -76,7 +76,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 未コミット
 
-- 所有パスの未コミットなし（本保存後）。移管前の N の記載は archive に保持。
+- 今回の所有変更は保存済み。別作業の F2/Idempotent/ は未追跡で保存対象外（出現を確認、編集なし）。
 
 ### 既知の問題
 
@@ -96,8 +96,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   coherentColimitUnitValueComparison_total_heq_nativeRelative で元の二面の相対比較合成を回収済み。
   上面の指定表現の縮小・復元は coherentConstantTriangleRepresentation_largeIso_eq で元の値へ回収済み。
   上面作用は coherentColimitUpperActionIso_eq_triangle、下面作用は LowerActionIso_heq_factors で分解済み。
-  下面の族の成分を LowerCompositeIso_app_heq_triangle で同じ相対比較へ戻し、同じ q≫m で写す。
-  constantUnstraighteningRelativeIso と fiber 射影の作用を揃え、上下の指定単位・区間輸送の共役因子を消去する。
+  相対 Hom の作用と fiber 射影は value_eq_projection で全係数で厳密に一致。上下二面の像の値も照合済み。
+  coherentColimitNativeUnitRelativeComparison_map_heq_action で二面合成全体を同じ値への作用へ回収済み。
+  残る外側の native 単位表現・coconeIntervalFiberHomIso・native 作用比較の指定共役因子を揃えて消去する。
   a6 の native 合成比較と coherentColimitApexTriangle_isoSquare へ接続し、二三角形・指定 path の全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。native 整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
@@ -181,9 +182,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  coherentColimitUpperActionIso_eq_triangle は既存の上面作用比較を同じ全上面の比較へ値まで同定。
-  coherentColimitLowerCompositeIso_app_heq_triangle は下面の区間族比較を同じ全下面の相対比較へ同定。
-  coherentColimitLowerActionIso_heq_factors は既存の下面作用比較の三角形・指定区間輸送の二因子を保持。
+  constantUnstraighteningRelativeIso_value_eq_projection は全係数で相対 Hom の作用を fiber 射影へ厳密に同定。
+  coherentColimitLowerCompositeIso_map_heq_action・UpperRelativeComparison_map_heq_action は同じ二面の値の照合。
+  coherentColimitNativeUnitRelativeComparison_map_heq_action は二面の比較合成全体の同じ値への像を同定。
   未完：a6 の指定作用比較との照合、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
@@ -201,8 +202,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   coherentColimitUnitValueComparison_total_heq_nativeRelative で元の二面の相対比較合成を回収済み。
   上面の指定表現の縮小・復元は coherentConstantTriangleRepresentation_largeIso_eq で元の値へ回収済み。
   上面作用は coherentColimitUpperActionIso_eq_triangle、下面作用は LowerActionIso_heq_factors で分解済み。
-  下面の族の成分を LowerCompositeIso_app_heq_triangle で同じ相対比較へ戻し、同じ q≫m で写す。
-  constantUnstraighteningRelativeIso と fiber 射影の作用を揃え、上下の指定単位・区間輸送の共役因子を消去する。
+  相対 Hom の作用と fiber 射影は value_eq_projection で全係数で厳密に一致。上下二面の像の値も照合済み。
+  coherentColimitNativeUnitRelativeComparison_map_heq_action で二面合成全体を同じ値への作用へ回収済み。
+  残る外側の native 単位表現・coconeIntervalFiberHomIso・native 作用比較の指定共役因子を揃えて消去する。
   a6 の native 合成比較と coherentColimitApexTriangle_isoSquare へ接続し、二三角形・指定 path の全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。native 整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。

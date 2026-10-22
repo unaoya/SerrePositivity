@@ -490,6 +490,14 @@ public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleRepr
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleRelativeFamilyValue
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleFamilyValueTransport
 public import SerrePositivity.InfinityCategories.F2.VertexIsoIsoRoundtrip
+public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningRelativeProjection
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleConstantTargetValue
+public import SerrePositivity.InfinityCategories.F2.FunctorSquareConstantTargetValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerCompositeVertices
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerTriangleAction
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleSecondVertexTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperTriangleAction
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTriangleAction
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -592,3 +600,31 @@ public import SerrePositivity.InfinityCategories.F2.VertexIsoIsoRoundtrip
 #check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_heq_of_family_eq
 
 #check @SerrePositivity.InfinityCategories.F2.vertexIso_map_iso_roundtrip
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_hom_eq_projection
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_eq_projection
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleConstantTargetActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison_map_constantTarget
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareRelativeComparison_map_constantTarget
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerComposite_source_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerComposite_target_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerTriangleActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso_map_heq_action
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleVertexIso_postcomp_heq_second_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperTriangleActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperRelativeComparison_map_heq_action
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleActionComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison_map_heq_action
