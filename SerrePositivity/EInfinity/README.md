@@ -2442,3 +2442,11 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 右端は元の X,Y の `complexOrdinaryDerivedSource` 値の pinched Hom で、元の probe 比較の逆を前合成する。
 `normalizedOrdinaryDerivedHomMap_family` は任意パラメータ T で同じ前合成の全区間族の公式。
 実自由忘却 Hom span・同じ U の作用との全族の整合、および標準単位誘導射そのものの弱同値性は未証明。
+
+`ComplexLimits.normalizedTensorHomDoldKanIso` は始域に反変・標的に共変な全二変数自然同型。
+各成分の順逆の射は元の `normalizedSimplexTensorHomIso` と厳密に同じ。実 smart 切断写像と Γ の前後作用を保持する。
+`BarrattEccles.freeNormalizedProbeFrame` は同じ QX⊗N(Δ•) の自由 E 代数像で、実 Reedy cofibrancy と同じ FQX への弱 augmentation を持つ。
+`freeNormalizedHomFromStandard_homotopyEquivalence` と
+`freeNormalizedHomFromDoldKan_homotopyEquivalence` は元の標準自由 probe Hom と同じ実 DK Hom から共通 Kan Hom への全自然な実弱 span。
+`freeNormalizedProbeHomAdjunctionIso_augmentation` と `freeNormalizedProbeDoldKanIso_augmentation` は全単体次数で同じ自由単位・augmentation を回収する。
+これらの全比較と既存 D(R) 側の実 Hom span・U の作用の全パラメータ族での整合は未証明。

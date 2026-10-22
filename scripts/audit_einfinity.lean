@@ -8800,6 +8800,47 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.framedLimitKProjectiveProbe,
       `SerrePositivity.EInfinity.ComplexLimits.semifreeKProjectiveTarget]
 
+@[noinline] private def e2RequiredBatch167 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromDoldKan,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromDoldKan_homotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromStandard_homotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromTensor_homotopyEquivalence,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeHom_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomMiddle_kanComplex,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeHom,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedCommonFrame,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomMiddle,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromStandard,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedHomFromTensor,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeHomAdjunctionIso,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeHomAdjunctionIso_apply,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeHomAdjunctionIso_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeDoldKanIso,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeDoldKanIso_apply,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeDoldKanIso_augmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeFrame,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeAugmentation,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeFrame_cofibrant,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeFrame_homotopicallyConstant,
+      `SerrePositivity.EInfinity.BarrattEccles.freeNormalizedProbeAugmentation_weak,
+      `SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquivOfShape_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainsTruncationHomEquiv_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainsHomEquiv_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.linearizedSimplexHomEquiv_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexHomEquiv_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorHomEquiv_postcomp,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorHomEquiv_precomp,
+      `SerrePositivity.EInfinity.ComplexLimits.internalHom_pre_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomBifunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.actualDoldKanHomBifunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomDoldKanIso,
+      `SerrePositivity.EInfinity.ComplexLimits.actualDoldKanHomBifunctor_obj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomDoldKanIso_hom_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomDoldKanIso_inv_app,
+      `SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.truncLEIso_inv_naturality,
+      `SerrePositivity.EInfinity.ComplexLimits.extendTruncationHomEquiv_postcomp]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8833,7 +8874,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21299,3 +21340,94 @@ example (X Y : Complex A) (T : SSet.{e2KProjectiveDerivedSpanUniverse + 1})
   normalizedOrdinaryDerivedHomMap_family A X Y T f
 
 end e2KProjectiveDerivedSpanFixtures
+
+section e2FreeNormalizedHomFixtures
+universe e2FreeNormalizedHomUniverse
+open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra MonoidalCategory
+open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.InfinityCategories
+variable (A : Type e2FreeNormalizedHomUniverse) [CommRing A]
+example {K L : Complex A} (f : K ⟶ L)
+    (e : (ComplexShape.down ℕ).Embedding (ComplexShape.up ℤ)) [e.IsTruncLE] :
+    HomologicalComplex.extendMap (HomologicalComplex.truncLE'Map f e) e ≫
+      (L.truncLEIso e).inv = (K.truncLEIso e).inv ≫ HomologicalComplex.truncLEMap f e :=
+  truncLEIso_inv_naturality f e
+example (P : ChainComplex (ModuleCat.{e2FreeNormalizedHomUniverse} A) ℕ) {K L : Complex A}
+    (f : P.extend (ComplexShape.embeddingUpIntLE 0) ⟶ K) (g : K ⟶ L) :
+    extendTruncationHomEquiv P L (f ≫ g) = extendTruncationHomEquiv P K f ≫
+      HomologicalComplex.truncLE'Map g (ComplexShape.embeddingUpIntLE 0) :=
+  extendTruncationHomEquiv_postcomp P f g
+example (X : Complex A) {Y Z : Complex A} (n : SimplexCategory)
+    (f : (normalizedSimplexTensor A X).obj n ⟶ Y) (g : Y ⟶ Z) :
+    normalizedSimplexTensorHomEquiv A X Z n (f ≫ g) =
+      ((truncatedDoldKanFunctor A).map (homPostcompose X g)).app (Opposite.op n)
+        (normalizedSimplexTensorHomEquiv A X Y n f) :=
+  normalizedSimplexTensorHomEquiv_postcomp A X n f g
+example {X X' : Complex A} (Y : Complex A) (g : X' ⟶ X) (n : SimplexCategory)
+    (f : (normalizedSimplexTensor A X).obj n ⟶ Y) :
+    normalizedSimplexTensorHomEquiv A X' Y n
+      ((g ▷ (BarrattEccles.normalizedFunctor A).obj (SSet.stdSimplex.obj n)) ≫ f) =
+      ((truncatedDoldKanFunctor A).map (homPrecompose g Y)).app (Opposite.op n)
+        (normalizedSimplexTensorHomEquiv A X Y n f) :=
+  normalizedSimplexTensorHomEquiv_precomp A Y g n f
+example {X X' : Complex A} (g : X' ⟶ X) (Y : Complex A) :
+    (MonoidalClosed.pre g).app Y = homPrecompose g Y := internalHom_pre_eq A g Y
+example : normalizedTensorHomBifunctor A ≅ actualDoldKanHomBifunctor A :=
+  normalizedTensorHomDoldKanIso A
+example (X Y : Complex A) :
+    ((actualDoldKanHomBifunctor A).obj (Opposite.op X)).obj Y =
+      DoldKanComparison.doldKanHomSpace (R := A) (D := Complex A) X Y :=
+  actualDoldKanHomBifunctor_obj A X Y
+example (X Y : Complex A) :
+    (((normalizedTensorHomDoldKanIso A).hom.app (Opposite.op X)).app Y) =
+      (normalizedSimplexTensorHomIso A X Y).hom := normalizedTensorHomDoldKanIso_hom_app A X Y
+example (X Y : Complex A) :
+    (((normalizedTensorHomDoldKanIso A).inv.app (Opposite.op X)).app Y) =
+      (normalizedSimplexTensorHomIso A X Y).inv := normalizedTensorHomDoldKanIso_inv_app A X Y
+open BarrattEccles
+example (X : Complex A) : letI := BarrattEccles.modelCategory A
+    reedyLeft simplex (cofibrations (BarrattEccles.operad A).Algebra)
+      (initial.to ((freeNormalizedProbeFrame A).obj X)) := freeNormalizedProbeFrame_cofibrant A X
+example (X : Complex A) (n : SimplexCategory) : letI := BarrattEccles.modelCategory A
+    weakEquivalences (BarrattEccles.operad A).Algebra (((freeNormalizedProbeAugmentation A).app X).app n) :=
+  freeNormalizedProbeAugmentation_weak A X n
+example (X : (Complex A)ᵒᵖ) (B : (BarrattEccles.operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromStandard A).app X).app B) :=
+  freeNormalizedHomFromStandard_homotopyEquivalence A X B
+example (X : (Complex A)ᵒᵖ) (B : (BarrattEccles.operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromTensor A).app X).app B) :=
+  freeNormalizedHomFromTensor_homotopyEquivalence A X B
+example (X : (Complex A)ᵒᵖ) (B : (BarrattEccles.operad A).Algebra) :
+    IsSimplicialHomotopyEquivalence (((freeNormalizedHomFromDoldKan A).app X).app B) :=
+  freeNormalizedHomFromDoldKan_homotopyEquivalence A X B
+example (X : (Complex A)ᵒᵖ) (B : (BarrattEccles.operad A).Algebra) :
+    SSet.KanComplex (((freeNormalizedHomMiddle A).obj X).obj B) :=
+  freeNormalizedHomMiddle_kanComplex A X B
+example (X : Complex A) (B : (BarrattEccles.operad A).Algebra) (n : SimplexCategory)
+    (f : ((freeNormalizedProbeFrame A).obj X).obj n ⟶ B) :
+    ((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
+      (Opposite.op n)) f =
+    (BarrattEccles.operad A).freeAlgebraAdjunction.unit.app
+      (((normalizedProbeTensorFrame A).obj X).obj n) ≫
+        (Operad.Algebra.forget (BarrattEccles.operad A)).map f :=
+  freeNormalizedProbeHomAdjunctionIso_apply A X B n f
+example (X : Complex A) (B : (BarrattEccles.operad A).Algebra) (n : SimplexCategory)
+    (f : (freeProbeFunctor A).obj X ⟶ B) :
+    ((((freeNormalizedProbeHomAdjunctionIso A).hom.app (Opposite.op X)).app B).app
+      (Opposite.op n)) (((freeNormalizedProbeAugmentation A).app X).app n ≫ f) =
+    ((normalizedProbeTensorAugmentation A).app X).app n ≫
+      (BarrattEccles.operad A).freeAlgebraAdjunction.unit.app ((ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
+        (Operad.Algebra.forget (BarrattEccles.operad A)).map f :=
+  freeNormalizedProbeHomAdjunctionIso_augmentation A X B n f
+example (X : Complex A) (B : (BarrattEccles.operad A).Algebra) (n : SimplexCategory)
+    (f : (freeProbeFunctor A).obj X ⟶ B) :
+    ((((freeNormalizedProbeDoldKanIso A).hom.app (Opposite.op X)).app B).app
+      (Opposite.op n)) (((freeNormalizedProbeAugmentation A).app X).app n ≫ f) =
+    normalizedSimplexTensorHomEquiv A ((ComplexLimits.framedLimitProbeFunctor A).obj X) B.carrier n
+      (((normalizedProbeTensorAugmentation A).app X).app n ≫
+        (BarrattEccles.operad A).freeAlgebraAdjunction.unit.app ((ComplexLimits.framedLimitProbeFunctor A).obj X) ≫
+          (Operad.Algebra.forget (BarrattEccles.operad A)).map f) :=
+  freeNormalizedProbeDoldKanIso_augmentation A X B n f
+
+end e2FreeNormalizedHomFixtures
