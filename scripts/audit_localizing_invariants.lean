@@ -753,7 +753,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedMap,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedMapLaws,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeMap,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeMapOperator]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeMapOperator,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellQuasiIsoLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleCokernel,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleCokernelActions,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleCokernelSupport,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageKernel,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleQuotient,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageDerivedDerivation,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageDerivedLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImageHomotopyFiber,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroImagePullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
