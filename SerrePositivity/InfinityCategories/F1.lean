@@ -3055,3 +3055,19 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalR
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalCorrection
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalFiberEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornSharedRestrictions
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornSharedOriginal
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornSharedNaturality
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornSharedCorrection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryDiagramComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundarySharedComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryFaceComparison
+
+public import SerrePositivity.InfinityCategories.F1.KanSpanPullbackComparison
