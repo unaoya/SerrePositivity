@@ -56,11 +56,14 @@
   元の商比較二胞体を全写像空間の比較で小さい底上の実写像へ移し、同じ代表辺の類と相対頂点を厳密に回収。
   coslice 単位との合成の恒等点は、同じ coherent 比較二胞体の pointed-space fiber 作用と厳密に一致。
   恒等錐評価は全写像空間で充満忠実、固定した点の延長空間は可縮 Kan。実恒等点の同型から相対三角比較を回収。
+  実 coslice 辺を同じ三辺の合成三角形へ展開し、輸送した実点の矢印の類は元の点の射と底の辺の合成と証明。
+  全変換空間の pointed 作用を元の比較二胞体の成分との合成で表示。商・初頂点の制限も指定同型の実成分で正規化。
+  元の射の類の等式を実ホモトピー三角形から同じ coslice fiber 内の辺・頂点同型へ戻し、小さい宇宙へ反映。指定の一点の式から相対三角比較を回収。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8572 jobs・専用監査 289 モジュール 1587 宣言 が成功。
+- 現在の対象ビルド 8593 jobs・専用監査 297 モジュール 1646 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4832 モジュールは EInfinity を含まない。全体 24695 jobs で成功。
+  所有 import 閉包 4853 モジュールは EInfinity を含まない。全体 24717 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -72,17 +75,16 @@
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Fibration`）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
-- relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
-- relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
-  relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
+- relativeSConstruction、relativeSimplicialSConstruction、relativeSimplicialQuotientMap、relativeSimplicialKernelSquare。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
 - spaceLocalizationPre_fullyFaithful、spaceLocalizationPrecomposition_isQCatEquivalence。
 - weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
 - fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、
-  weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_relativeIso。
+  weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_of_identity_hom。
 - weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
   weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
+- cosliceFiberVertexIsoOfHomEq、weakQuotientCosliceCompositePoint_normalized_hom、weakQuotientMappingComparison_component_restriction。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -96,12 +98,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（実比較二胞体・coslice 合成の点作用の5モジュール、集約・監査・本計画を含める）。
+- なし（実 coslice 合成・点の射の類の反映・実成分制限の8モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
 - 商上の span 図式の恒等点の普遍性と分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- 合成の実恒等点と同じ coslice 復元写像の恒等点を、商上の比較の元の制限式・native 恒等点正規化で同定する。
-  相対三角比較を回収し、span 側の同じ恒等点の普遍性・もう一方の逆条件から元の分数比較の同値性を導く。
+- 商・初頂点の実成分制限式で同じ native 恒等点評価へ戻し、分類同型を通した復元写像の指定恒等点の射の類と比較。
+  weakQuotientCosliceTriangle_of_identity_hom の一点の式を証明。span 側の普遍性・もう一方の逆条件・元の分数比較の同値性へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

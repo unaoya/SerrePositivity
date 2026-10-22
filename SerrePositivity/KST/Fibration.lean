@@ -288,3 +288,11 @@ public import SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison
 public import SerrePositivity.KST.Fibration.CoslicePointComparison
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointAction
 public import SerrePositivity.KST.Fibration.WeakQuotientCoslicePointAction
+public import SerrePositivity.KST.Fibration.CosliceEdgeComposition
+public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
+public import SerrePositivity.KST.Fibration.PointedTransformationPointHom
+public import SerrePositivity.KST.Fibration.WeakQuotientCosliceIdentityHom
+public import SerrePositivity.KST.Fibration.FunctorIsoComponent
+public import SerrePositivity.KST.Fibration.WeakComparisonComponentRestriction
+public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
+public import SerrePositivity.KST.Fibration.WeakQuotientCosliceHomTriangle

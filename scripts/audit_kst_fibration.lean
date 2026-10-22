@@ -294,7 +294,15 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison,
     `SerrePositivity.KST.Fibration.CoslicePointComparison,
     `SerrePositivity.KST.Fibration.SmallUnstraighteningPointAction,
-    `SerrePositivity.KST.Fibration.WeakQuotientCoslicePointAction]
+    `SerrePositivity.KST.Fibration.WeakQuotientCoslicePointAction,
+    `SerrePositivity.KST.Fibration.CosliceEdgeComposition,
+    `SerrePositivity.KST.Fibration.CosliceTransportPointHom,
+    `SerrePositivity.KST.Fibration.PointedTransformationPointHom,
+    `SerrePositivity.KST.Fibration.WeakQuotientCosliceIdentityHom,
+    `SerrePositivity.KST.Fibration.FunctorIsoComponent,
+    `SerrePositivity.KST.Fibration.WeakComparisonComponentRestriction,
+    `SerrePositivity.KST.Fibration.CosliceFiberHomClass,
+    `SerrePositivity.KST.Fibration.WeakQuotientCosliceHomTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
