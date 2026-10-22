@@ -3643,3 +3643,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.constantDiagramSourceComparison_heq_transport
 
 #check @SerrePositivity.InfinityCategories.F2.constantDiagramTriangleComparison_heq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_curry_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_map
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_map_of_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso_source
+
+#check @SerrePositivity.InfinityCategories.F2.functorSpaceCurryMap_evaluate
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_curry_app_heq_precomp
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTriangleComparison_app_heq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.constantTargetTriangleVertexIso_heq_component
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_postcomp_app_heq_of_family_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleFiberComparison_heq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransport_endpoint_point
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_endpoint_point
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleFiberIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleFiberIso_eq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_symm_cancel_prefix
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransport_source_point
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransportPointIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransportPointIso_eq_witness
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleTransport_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleTransport_cancel_original
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleTransport_cancel_original_precomp_postcomp

@@ -31,13 +31,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子の値の整合式・a6 中央比較への照合・辺の制限・上側単位因子の交換消去、定値三角形因子の回収を証明。
-  元の二実証拠の指定相対比較・curry・全三角形比較の fiber 像を、同じ二実輸送の endpointIso とその curry へ同定。
+  元の定値余極限三角形の一点比較・二実終点を回収し、元の定値輸送比較からの逆合成消去を任意の始域・値で証明。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
-  検証：三集約同時ビルド9721 jobs、公理監査12666宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の二実証拠・両端の底・全三角形比較を同じ endpointIso へ照合する追加14明示宣言を型検査。
+  検証：三集約同時ビルド9733 jobs、公理監査12832宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  元の定値三角形の同じ一点比較・両実終点・元の輸送比較の逆合成消去を含む追加21明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 - F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
@@ -94,9 +94,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   出発点は coherentColimitUnitValueAction_coherence。上側の単位因子は UpperUnitFactor_triangle_cancel で消去済み。
   ConstantTriangleValue_heq_total は右側の元の定値三角形因子を同じ単位での前合成へ回収済み。
   ConstantTransportIso_heq_triangle と LongTransport_prism・endpoint・map_vertex は元の長辺証拠を指定比較へ入力済み。
-  constantDiagramTriangleComparison_heq_fiber は元の三辺・全三角形の比較を同じ長辺 endpointIso の全 curry へ同定済み。
-  次は元の定値余極限三角形へ適用し、rawInterval の三辺等式・一点評価を通して元の値比較へ戻す。
-  ConstantTransportIso_heq_triangle の同じ最初の endpointIso を消去し、同じ長辺の残りの輸送比較へ接続する。
+  coherentColimitConstantTriangleTransport_cancel_original は元の三角形比較の逆で元の定値輸送比較の先頭因子を消去済み。
+  同じ _precomp_postcomp は任意の始域制限と値への後合成でも消去を保持。元の二実終点・指定長辺を保持済み。
+  次は rawInterval/native Interval の端点表示を coherentDiagramTotalCocone_vertex で揃え、元の単位・値へこの式を適用。
   coconeIntervalFiberTransportIso_heq_constant・FiberHomIso_heq_curry で LowerTransportFactorIso の元の成分へ運ぶ。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
@@ -183,7 +183,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子の値の整合式・a6 中央比較への照合・辺の制限・上側単位因子の交換消去、定値三角形因子の回収を証明。
-  元の二実証拠の指定相対比較・curry・全三角形比較の fiber 像を、同じ二実輸送の endpointIso とその curry へ同定。
+  元の定値余極限三角形の一点比較・二実終点を回収し、元の定値輸送比較からの逆合成消去を任意の始域・値で証明。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
@@ -201,9 +201,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   出発点は coherentColimitUnitValueAction_coherence。上側の単位因子は UpperUnitFactor_triangle_cancel で消去済み。
   ConstantTriangleValue_heq_total は右側の元の定値三角形因子を同じ単位での前合成へ回収済み。
   ConstantTransportIso_heq_triangle と LongTransport_prism・endpoint・map_vertex は元の長辺証拠を指定比較へ入力済み。
-  constantDiagramTriangleComparison_heq_fiber は元の三辺・全三角形の比較を同じ長辺 endpointIso の全 curry へ同定済み。
-  次は元の定値余極限三角形へ適用し、rawInterval の三辺等式・一点評価を通して元の値比較へ戻す。
-  ConstantTransportIso_heq_triangle の同じ最初の endpointIso を消去し、同じ長辺の残りの輸送比較へ接続する。
+  coherentColimitConstantTriangleTransport_cancel_original は元の三角形比較の逆で元の定値輸送比較の先頭因子を消去済み。
+  同じ _precomp_postcomp は任意の始域制限と値への後合成でも消去を保持。元の二実終点・指定長辺を保持済み。
+  次は rawInterval/native Interval の端点表示を coherentDiagramTotalCocone_vertex で揃え、元の単位・値へこの式を適用。
   coconeIntervalFiberTransportIso_heq_constant・FiberHomIso_heq_curry で LowerTransportFactorIso の元の成分へ運ぶ。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
