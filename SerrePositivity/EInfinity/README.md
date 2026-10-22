@@ -2677,3 +2677,9 @@ prependOrderHom・extendOrderHom を使う二つの可換式を与える。
 貼り合わせる。`normalizedTensorTriangleData_hom_front/back/pinched` は全分岐の成分式。
 `coneTriangleFrontIndex_injOn_iff` と Back 版は零相・二相の一意性による単射性の判定。
 同じデータの全 HA・全作用素自然性と大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_equation_front/back` は元の実混合データの HA を、
+二相を含まない／零相を含まない任意の有限部分集合で証明する。
+`normalizedTensorTriangleFront_Back_hom` は中央相の二表示の全 cochain の一致。
+`simplexData_equation_of_agreementOn` は同じ部分集合の全 cochain の比較による方程式の移送。
+零→二の混合 HA・全作用素自然性・大域評価三角形は未完了。
