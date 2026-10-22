@@ -21,3 +21,8 @@ public import SerrePositivity.KST.Fibration.FullPredicateRestriction
 public import SerrePositivity.KST.Fibration.WeakArrowCategory
 public import SerrePositivity.KST.Fibration.WeakArrowEquivalence
 public import SerrePositivity.KST.Fibration.WeakArrowAdditivity
+public import SerrePositivity.KST.Fibration.WeakStrings
+public import SerrePositivity.KST.Fibration.WeakStringsSimplicial
+public import SerrePositivity.KST.Fibration.WeakArrowClosedPredicate
+public import SerrePositivity.KST.Fibration.WeakStringsStability
+public import SerrePositivity.KST.Fibration.WeakStringsExact

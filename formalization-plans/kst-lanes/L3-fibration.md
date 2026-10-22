@@ -27,12 +27,15 @@
   W 辺を対象とする全部分図式圏への元の cofiber 射影は trivial Kan fibration。
   全境界持ち上げから W 辺図式の安定性と完全な ∞ 圏同値を導き、元の射影を回収する。
   この同値の coherent な逆を通す正有限反復実現の加法性と両射影の式を証明済み。
-  W 辺の列の単体的構造への自然性・実現後の fiber 比較は未完。
+  全有限 W 列を全高次自然変換込みの全部分図式圏で構成し、全合成辺で W 判定を証明。
+  一辺の段との一致・全面退化・任意の列図式圏の安定性・制限の完全性を証明済み。
+  `StableModel` 値の単体的対象と段ごとの反復 core S 実現へ束ねた。
+  列全体の加法性比較の自然性・実現後の fiber 比較は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 6155 jobs・専用監査 22 モジュール 145 宣言が成功。
+- 現在の対象ビルド 6160 jobs・専用監査 27 モジュール 202 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 2523 モジュールは EInfinity を含まない。全体は再試行 23756 jobs で成功。
+  所有 import 閉包 2528 モジュールは EInfinity を含まない。全体 23771 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -48,12 +51,8 @@
   mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - relativeDiagram、relativeDiagram_mem_edge_iff、relativeDiagram_mem_iff、
-  relativeDiagram_quasicategory、relativeDiagramEvaluation、relativeDiagramMap、
-  relativeDiagramMap_id、relativeDiagramMap_comp、relativeDiagramMap_evaluation、
-  relativeDiagramCoreInclusion、relativeDiagramCoreInclusion_naturality、
-  relativeDiagram_eq_of_verdier、relativeDiagram_eq_top_of_kernel、
-  relativeSimplicialDiagram、relativeSimplicialDiagramInclusion、
-  relativeSimplicialDiagramCoreInclusion。
+  relativeDiagramMap、relativeDiagramCoreInclusion、relativeDiagram_eq_of_verdier、
+  relativeSimplicialDiagram、relativeSimplicialDiagramCoreInclusion。
 - functorCore_mem_iff、relativeDiagram_eq_functorCore_preimage、
   relativeDiagramFunctorCoreMap、relativeDiagram_eq_fullFunctorCore_preimage、
   relativeDiagramFullFunctorCoreMap、relativeDiagramFullFunctorCoreMap_core、
@@ -70,7 +69,10 @@
   weakCofiberProjection_trivialKanFibration、weakArrowCofiberEquivalence、
   weakArrowCofiberEquivalence_hom、weakArrowMultiAdditivityMap、
   weakArrowMultiAdditivityMap_localized_isIso、weakArrowMultiAdditivityMap_fst、
-  weakArrowMultiAdditivityMap_snd。
+  weakArrowMultiAdditivityMap_snd、weakArrowClosedPredicate_iff。
+- weakStringCategory、weakStringPredicate_iff_allEdges、weakStringCategory_one、
+  weakStringClosedPredicate、weakStringCategory_isStable、weakStringMap_preservesCofiberData、
+  weakStringExactMap、weakStringStableSimplicial、weakStringMultiRealization。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -88,15 +90,15 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の W 辺図式と相対 cofiber 比較の6モジュール・集約・監査・本計画を含める）。
+- なし（今回の W 列・安定閉性・完全性の5モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。全体の共有ルートの一時的な olean 欠落は再試行で解消。
-  K-6 全体・W 辺の有限列への比較の自然性・連結版の cofinality 条件は未完。
+  K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  構成した一つの W 辺の比較・加法性を、W 辺の全有限列とその面・退化へ拡張する。
+  構成した W 列の単体的安定圏へ、一つの W 辺の cofiber 比較・加法性を拡張する。
   同じ cofiber の選択の coherent な比較を保ち、K-2 の単体積版 Quillen A に接続する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 
