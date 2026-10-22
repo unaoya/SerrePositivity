@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation
 import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
 import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
@@ -4808,6 +4809,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation,
+
     `SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation,
 
     `SerrePositivity.InfinityCategories.Derived.ModuleTranslation,
