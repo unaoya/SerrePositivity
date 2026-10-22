@@ -263,7 +263,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputTransport,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathLift,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathPullback,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathModel]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathModel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPullbackDegrees,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackData,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackSimplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackElements,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackPreservation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceContraction]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

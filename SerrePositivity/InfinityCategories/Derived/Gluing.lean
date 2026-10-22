@@ -258,3 +258,11 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputTrans
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathLift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathPullback
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathModel
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPullbackDegrees
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackData
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackSimplex
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackElements
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackPreservation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedPullback
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpace
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceContraction

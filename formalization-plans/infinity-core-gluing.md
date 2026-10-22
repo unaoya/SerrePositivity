@@ -39,6 +39,8 @@
   元の比較の充満忠実性は、この具体的引き戻し比較が全対象対で実ホモトピー同値であることと同値。Kan 仮定は追加しない。
 - 複体側では、mapping cocone を恒等写像の cocone からの path 射影と元の差写像の厳密な引き戻しと証明。
   全持ち上げの両射影・一意性、path 複体の実収縮・射影の次数別全射性を供給し、gluing の元の差へ適用。
+  任意複体の厳密な引き戻しを、次数別持ち上げ・微分方程式の反映から実 pinched 空間の引き戻しへ移す。
+  同じ path 空間の引き戻し同型は両射影を保存。零複体への実ホモトピー同値と、その空間模型での同値も供給。
   空間模型での同値性・本質的全射性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -64,6 +66,7 @@
 - `dgGluingUniverseHomMappingIso`・`dgGluingLaxHomMappingComparison`・`dgGluingLaxHomMappingComparison_source`
 - `dgGluingLaxHomPullbackComparison` と `_arrow_transport`・`_inputs_transport`、`dgGluingUniverseDerivedNerveLaxComparison_fullyFaithful_iff`
 - `dgGluingCoconePathPullbackCone_isLimit`・`dgGluingCoconePathContraction`・`dgGluingCoconePathProjection_surjective`・`dgGluingHomComplex_path_isPullback`
+- `dgGluingComplexPinchedMap_isPullback`・`dgGluingCoconePathSpaceIso`・`dgGluingHomComplex_pathSpace_isPullback`・`dgGluingCoconePathSpace_zero_equivalence`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -80,12 +83,12 @@
 
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
-  複体側の `dgGluingCoconePathPullbackCone_isLimit`・収縮・次数別全射性を空間模型へ移し、F2 の指定矢印写像空間の引き戻しと照合する。
-  `complexPinchedSpace` の引き戻し保存と path 射影の Kan fibration が次の入口。β5 の代表加群からの Hom 比較で導来係数へ接続し、充満忠実性の判定定理へ適用する。
+  `dgGluingCoconePathSpaceIso`・零模型への同値を使い、次数別全射な path 射影の Kan fibration を構成して F2 の指定矢印空間と照合する。
+  引き戻し保存は証明済み。β5 の代表加群からの Hom 比較で導来係数へ接続し、充満忠実性の判定定理へ適用する。
 
 ### 未コミット・既知の問題
-- 259モジュール・集約ビルド成功（6206 jobs）、公理監査3903宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開32署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
+- 267モジュール・集約ビルド成功（6215 jobs）、公理監査3941宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開25署名を検査済み。新規8モジュール、集約・監査・本計画の専有11パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
