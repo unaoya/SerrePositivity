@@ -520,3 +520,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientNativeEvaluationCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientCocone_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.homotopyTransformationClassIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_of_coconeTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityRelativeDiagram_left
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityRelativeDiagram_right
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityRelativeHomotopy_hom_eq
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndRelativeCoefficientTransformationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndRelativeCoefficientCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndRelativeCoefficientCocone_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeJoinFiberEmbedding_fst
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeJoinFiberEmbedding_prism
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeJoinFiberCocone_vertex
