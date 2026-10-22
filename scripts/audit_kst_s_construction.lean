@@ -29337,3 +29337,105 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgModuleSquare_isPushout_postcompose_homotopy
 #print axioms SerrePositivity.KST.SConstruction.dgModuleSquare_isPushout_postcompose_homotopy
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCofiberLowerCell_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCofiberLowerCell_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCofiberUpperCell_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCofiberUpperCell_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesTriangleLift
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesTriangleLift
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCofiberLowerCell
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCofiberLowerCell
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCofiberUpperCell
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCofiberUpperCell
+
+#check @SerrePositivity.KST.SConstruction.DGGluingAxesCommonUniverse
+#print axioms SerrePositivity.KST.SConstruction.DGGluingAxesCommonUniverse
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonUp
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonUp
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonLowerCell
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonLowerCell
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonUpperCell
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonUpperCell
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonCells_compatible
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonCells_compatible
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonLowerCell_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonLowerCell_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCommonUpperCell_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCommonUpperCell_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_bottom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_bottom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_vertex01
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_vertex01
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeZeroTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeZeroTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeZeroTriangle_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeZeroTriangle_isCofiber
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_lower
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_lower
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_upper
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_upper
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_isPushout
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesNativeSquare_isPushout
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_bottom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_bottom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_top
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_top
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentable_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaHom_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaHom_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaHom_subsingleton
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaHom_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.dgSimplex_map_comp
+#print axioms SerrePositivity.KST.SConstruction.dgSimplex_map_comp
+
+#check @SerrePositivity.KST.SConstruction.dgSimplex_map_face
+#print axioms SerrePositivity.KST.SConstruction.dgSimplex_map_face
+
+#check @SerrePositivity.KST.SConstruction.dgSimplex_commonUniverse_map
+#print axioms SerrePositivity.KST.SConstruction.dgSimplex_commonUniverse_map

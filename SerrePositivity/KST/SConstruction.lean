@@ -2389,4 +2389,13 @@ public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaCofiber
 public import SerrePositivity.KST.SConstruction.DGGluingClosedZero
 public import SerrePositivity.KST.SConstruction.DGModuleSquareHomotopyPostcompose
 
+public import SerrePositivity.KST.SConstruction.DGGluingAxesCofiberCellImages
+public import SerrePositivity.KST.SConstruction.DGGluingAxesCofiberCells
+public import SerrePositivity.KST.SConstruction.DGGluingAxesCommonCells
+public import SerrePositivity.KST.SConstruction.DGGluingAxesNativeCofiber
+public import SerrePositivity.KST.SConstruction.DGGluingAxesNativeSquare
+public import SerrePositivity.KST.SConstruction.DGGluingAxesRepresentableComponents
+public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomZero
+public import SerrePositivity.KST.SConstruction.DGSimplexCommonUniverse
+
 /-! # ∞-S• 構成と連結 K 理論 -/
