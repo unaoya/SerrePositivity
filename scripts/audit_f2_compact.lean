@@ -655,3 +655,78 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @colimitCoconeLeg_point_representative
 #print axioms colimitCoconeLeg_point_representative
+
+#check @unstraighteningValueTransportIso
+#print axioms unstraighteningValueTransportIso
+
+#check @representationFiberValueEquivalence
+#print axioms representationFiberValueEquivalence
+
+#check @representationValueTransportIso
+#print axioms representationValueTransportIso
+
+#check @coconeTransportLeg_post_edge
+#print axioms coconeTransportLeg_post_edge
+
+#check @coconeLegPoint_reindex
+#print axioms coconeLegPoint_reindex
+
+#check @mappedColimitCoconeLeg_point_representative
+#print axioms mappedColimitCoconeLeg_point_representative
+
+#check @componentRepresentative_reflect
+#print axioms componentRepresentative_reflect
+
+#check @representationCocone_point_factorization
+#print axioms representationCocone_point_factorization
+
+#check @representationCocone_edge_factorization
+#print axioms representationCocone_edge_factorization
+
+#check @cosliceIdentityFiberPoint
+#print axioms cosliceIdentityFiberPoint
+
+#check @cosliceIdentityEdge_retract
+#print axioms cosliceIdentityEdge_retract
+
+#check @nativeCosliceRepresentation
+#print axioms nativeCosliceRepresentation
+
+#check @nativeCovariantRepresentationIso
+#print axioms nativeCovariantRepresentationIso
+
+#check @IsKappaCompact.nativeCoslice_preserves
+#print axioms IsKappaCompact.nativeCoslice_preserves
+
+#check @nativeCosliceCocone_retract
+#print axioms nativeCosliceCocone_retract
+
+#check @IsKappaCompact.retract_of_colimit
+#print axioms IsKappaCompact.retract_of_colimit
+
+#check @indCompact_retract_yoneda
+#print axioms indCompact_retract_yoneda
+
+#check @compactInd_retract_yoneda
+#print axioms compactInd_retract_yoneda
+
+#check @idemToCompactInd_isEssentiallySurjective
+#print axioms idemToCompactInd_isEssentiallySurjective
+
+#check @idemToCompactInd_isQCatEquivalence
+#print axioms idemToCompactInd_isQCatEquivalence
+
+#check @compactIndEquivalence
+#print axioms compactIndEquivalence
+
+#check @compactIndEquivalence_hom
+#print axioms compactIndEquivalence_hom
+
+#check @compactIndYoneda_isFullyFaithful
+#print axioms compactIndYoneda_isFullyFaithful
+
+#check @compactIndYoneda_isIdempotentCompletion
+#print axioms compactIndYoneda_isIdempotentCompletion
+
+#check @compactIndOmegaEquivalence
+#print axioms compactIndOmegaEquivalence
