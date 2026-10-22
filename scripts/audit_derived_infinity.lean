@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension
+import SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits
+import SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits
+import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
+import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+import SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits
 import SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence
 import SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence
 import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInclusion
@@ -4304,6 +4310,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension,
+    `SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits,
+    `SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits,
+
+    `SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn,
+    `SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet,
+    `SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits,
+
     `SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence,
 
     `SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence,
