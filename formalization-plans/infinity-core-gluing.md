@@ -7,7 +7,18 @@
 ## 引き継ぎ（2026-10-22）
 
 ### 現在地
-- 未着手。計画の骨子のみ。
+- 工程 (a) 進行中。任意の `Bimodule R C D` の閉次数零元を持つ対象、
+  比較差 `gμ − νf` の実鎖写像、その mapping cocone としての全 Hom 複体を構成。
+  二射影、全次数の微分式、任意パラメータ複体からの持ち上げ・比較の回収・一意性まで証明済み。
+- Yoneda による同じ閉元の代表加群表示と、β5 の実 comma dg 圏の充満対象族を構成。
+  この表示には単位・合成・結合律と右 dg 射影・左代表加群値 dg 射影がある。
+  native Hom との鎖同型・合成移送と前三角性は未完であり、工程 (a) 完了とは数えない。
+
+### 主要宣言
+- `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
+- `dgGluingHom_d_comparison`・`dgGluingHom_ext`・`dgGluingHomLift_unique`
+- `dgGluingAugmentation_value`・`DGGluingRepresentableCategory`
+- `dgGluingRepresentableRight`・`dgGluingRepresentableLeftModule`
 
 ### 残り（依存順）
 1. 双加群 M : Dᵒᵖ ⊗ C → Ch に沿う gluing 圏 C ×_M D（対象 (c, d, φ : M(d, c) の元)、Hom 複体、合成、微分）と pretriangulated 性。Kuznetsov–Lunts。
@@ -22,7 +33,14 @@
 - 提供先：Sp（K-8 の ⊙ の同定）、K-F・K-S•（Verdier 列の具体例）。
 
 ### 次の一手
-- 工程 1。β5 の主要宣言（infinity-core-stable.md）から双加群と相対 tensor の名前を拾い、gluing の Hom 複体を定義する。
+- native Hom と代表加群表示の Hom の鎖同型を、Yoneda の全次数評価と比較差の可換性から構成。
+  単位・合成を native Hom へ移し、シフト・cone の表現可能性（KL Lemma 4.3）へ進む。
+
+### 未コミット・既知の問題
+- 初期5モジュール・集約のビルド成功（4484 jobs）、公理監査88宣言成功。許容三公理のみ。
+  新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。専有パスだけ保存する。
+- β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
+  双加群の添字の表記より、比較差と F2 の矢印方向を正本にする。
 
 ## 規約
 - 配置 `SerrePositivity/InfinityCategories/Derived/Gluing/`、集約 `Derived/Gluing.lean`、監査 `scripts/audit_derived_gluing.lean`。
