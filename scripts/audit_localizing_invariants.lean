@@ -955,7 +955,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveProRoofComposition,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnectiveRoofReflection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneConnectiveInverseRoof,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneInvariantInverseRoof]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneInvariantInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraComposedPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathOperations,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraIteratedCellResolution,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellQuasiIsoPathReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofCellRefinement]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
