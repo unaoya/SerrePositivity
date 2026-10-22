@@ -429,7 +429,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopyInverse,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionDiagonalPath,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPathPullback]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPathPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientCompositionLifts,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TrivialKanSectionEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputFibers,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputSections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionInputLifts,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputDiagonals,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionInputPathPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputPathForget,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StrictPathPullbackMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
