@@ -564,3 +564,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestrictionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestrictionEquivalence_hom
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.IndFiniteLimitExchangeInput
+#check @SerrePositivity.InfinityCategories.F2.Ind.representablePresheafValue_isTerminal_of_initial
+#check @SerrePositivity.InfinityCategories.F2.Ind.representablePresheaf_isTerminal_of_terminal
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertex_evaluation_isTerminal_of_initial
+#check @SerrePositivity.InfinityCategories.F2.Ind.isContractibleKan_ulift
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_vertex_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isInitial_of_initial
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isTerminal_of_terminal
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isZero_of_zero
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex_of_stable
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_hasZeroVertex_of_stable

@@ -354,3 +354,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.NativeKanColimitTransfer
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassificationImage
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitExchangeInput
+public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableTerminalValues
+public import SerrePositivity.InfinityCategories.F2.Ind.InitialEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.YonedaInitial
+public import SerrePositivity.InfinityCategories.F2.Ind.YonedaZero
