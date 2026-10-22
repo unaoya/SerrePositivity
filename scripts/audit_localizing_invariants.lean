@@ -989,7 +989,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofBaseChange,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBaseChangedLayerSquareZero,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBaseChangeValues,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofDenominator]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofDenominator,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraExtensionBaseChangeMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraExtensionBaseChangeKernelMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofSource,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofTransfer,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovKernelHomologyNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionBaseChangeMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBaseChangedKernelHomologyNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofKernelTransfer,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofTransferValues,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBaseChangedLayerNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
