@@ -415,7 +415,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientTriangles,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathHomotopy,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopy,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientDiagonalHomotopy]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientDiagonalHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopyBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientDiagonalBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedConstantIntervalFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexConstantFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleDerivedClosedFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleDerivedClosedFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientFixedEdges,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientVariableEdges,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientCompositionLifts,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopyInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionDiagonalPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPathPullback]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
