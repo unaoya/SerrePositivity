@@ -14149,3 +14149,51 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms sigmaYonedaNativeEdge_inclusion
 #check @sigmaYonedaFiberEvaluation_naturalityIso
 #print axioms sigmaYonedaFiberEvaluation_naturalityIso
+
+#check @constantDiagram_isRightCofinal_of_hasColimits
+#print axioms constantDiagram_isRightCofinal_of_hasColimits
+
+#check @binaryDiagonal_isRightCofinal_of_hasCoproducts
+#print axioms binaryDiagonal_isRightCofinal_of_hasCoproducts
+
+#check @isSiftedInfinity_of_hasBinaryCoproducts
+#print axioms isSiftedInfinity_of_hasBinaryCoproducts
+
+#check @sigmaElementsYonedaDiagram
+#print axioms sigmaElementsYonedaDiagram
+
+#check @sigmaElementsYonedaDiagram_inclusion
+#print axioms sigmaElementsYonedaDiagram_inclusion
+
+#check @sigmaDensityAmbientCocone
+#print axioms sigmaDensityAmbientCocone
+
+#check @sigmaDensityAmbientCocone_vertex
+#print axioms sigmaDensityAmbientCocone_vertex
+
+#check @sigmaDensityAmbientCocone_isColimit
+#print axioms sigmaDensityAmbientCocone_isColimit
+
+#check @sigmaDensityCocone
+#print axioms sigmaDensityCocone
+
+#check @sigmaDensityCocone_inclusion
+#print axioms sigmaDensityCocone_inclusion
+
+#check @sigmaDensityCocone_isColimit
+#print axioms sigmaDensityCocone_isColimit
+
+#check @smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit
+#print axioms smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit
+
+#check @smallLeftConeRestriction_isQCatEquivalence_of_finiteProducts
+#print axioms smallLeftConeRestriction_isQCatEquivalence_of_finiteProducts
+
+#check @coneExtension_isContractibleKan_of_restriction_equivalence
+#print axioms coneExtension_isContractibleKan_of_restriction_equivalence
+
+#check @classifiedConeExtension_isContractibleKan
+#print axioms classifiedConeExtension_isContractibleKan
+
+#check @exists_classifiedConeLift
+#print axioms exists_classifiedConeLift
