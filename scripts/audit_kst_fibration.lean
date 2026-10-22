@@ -7,6 +7,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.RelativeComparisonRightSection,
+    `SerrePositivity.KST.Fibration.WeakCosliceComparisonSection,
+    `SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection,
+
     `SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange,
     `SerrePositivity.KST.Fibration.VertexFiberBaseChangeHom,
     `SerrePositivity.KST.Fibration.WeakIdentityScaffoldImage,

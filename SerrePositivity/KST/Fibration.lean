@@ -432,3 +432,6 @@ public import SerrePositivity.KST.Fibration.WeakIdentityScaffoldFiber
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport
 public import SerrePositivity.KST.Fibration.WeakIdentityScaffoldClassification
 public import SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle
+public import SerrePositivity.KST.Fibration.RelativeComparisonRightSection
+public import SerrePositivity.KST.Fibration.WeakCosliceComparisonSection
+public import SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection
