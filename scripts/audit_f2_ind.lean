@@ -32,6 +32,16 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.Ind.terminalCarrierLift_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalSubcomplex_indexCocone
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalSubcomplex_cosliceCone
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalCarrier_cone_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.nestedCosliceCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalCarrier_cosliceCone
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalCarrierCoslice_isFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexCarrierValue_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Ind.isRightCofinal_section_of_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexBaseMap_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_cardinalFiltered_poset
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_nerve_of_cardinalFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset
 
 /-!
 概要：F2N-2 の独立集約に属する全宣言の公理依存を監査する。

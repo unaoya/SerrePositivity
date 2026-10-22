@@ -32,13 +32,12 @@
   `rightStraighteningSmallRecovery` は元の全空間から同じ分類値の元の right unstraightening への底上の同値。
   `hasKappaFilteredElements_rightStraightening_iff` は同じ分類値の条件と元の全空間の条件の一致。任意の κ。
   `hasKappaFilteredElements_of_strictClassified_colimit` は正則 κ で同じ strict 分類図式の任意の native 余極限への保存。
-  ラベル付き積の元の射影は cofinal。小さい単射な図式を未使用頂点の同じ積内の単射な錐へ拡大できる。
-  `coneApex_isTerminalVertex` は任意の左因子の右錐の終頂点。左因子にも錐にも QC 仮定なし。
-  元の部分複体を小さい終頂点付き部分複体へ拡大し、同じ部分族の κ-filtered 被覆と包含余極限まで証明。
-  `terminalSubcomplexBaseMap` は同じ包含順の nerve から元の底への写像。指定頂点と各鎖の所属を保持。
-  終頂点上の coslice fiber は可縮 Kan。元の有限 coslice 図式の展開と添字を同じ部分複体の指定終頂点へ延長済み。
+  `terminalSubcomplexBaseMap_isRightCofinal` は保存済みの同じ包含順の nerve から元の底への写像の cofinal 性。
+  元の coslice 引き戻しの有限余錐を構成し、同じ実現空間の値写像と同じ射影の切断に Quillen A を適用。
+  `exists_cofinal_kappaFiltered_poset` は任意の小さい κ-filtered ∞ 圏への小さい poset の cofinal map。
+  添字の通常の κ-filtered 性と、その nerve の全 κ-small 図式に対する κ-filtered 性を両方証明。HTT 5.3.1.18。
   一般 coherent 図式の strict 化、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
-- 独立集約 6590 jobs、公理監査 1030 宣言、標準三公理のみ。
+- 独立集約 6630 jobs、公理監査 1072 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 
 ### 残り（依存順）
@@ -66,7 +65,7 @@
 - `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
 - `hasKappaFilteredElements_of_strictClassified_colimit`
 - `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
-- `exists_small_terminalSubcomplex`、`terminalSubcomplexFamilyCocone_isColimit`、`terminalSubcomplexBaseMap`
+- `terminalSubcomplexBaseMap_isRightCofinal`、`exists_cofinal_kappaFiltered_poset`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -92,12 +91,11 @@
 
 ### 次の一手
 
-(c)：小さい終頂点付き部分複体の κ-filtered 被覆と、その包含順の nerve から元の底への写像まで証明済み。
-`terminalCarrierProjection_trivialKanFibration` の切断で全鎖を実現。指定終頂点と各鎖の最後の部分複体への所属を保持。
-次は `exists_terminalSubcomplex_cosliceCone` の二つの余錐を `Stable/DiagramNestedCoslice` と `terminalCarrierLift` で束ねる。
-元の図式への制限と指定終頂点を保持し、値写像の coslice 引き戻しの有限余錐を作る。
-実現空間の射影の切断との比較で同じ `terminalSubcomplexBaseMap` の cofinal 性を示し、元の coherent 図式を strict 化する。
-原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
+(c)：任意の小さい κ-filtered ∞ 圏への、小さい通常の κ-filtered poset からの cofinal map まで証明済み。
+次はその nerve 上の一般 coherent 前層図式を strict right fibration 図式へ移す、同じ大域分類値の比較を構成する。
+まず通常の under 圏上の相対切断を制限で束ねる strict 化を検討。F1 の `relativeFunctorPre_trivialKanFibration` を再利用する。
+元の図式との全変換を実現し、同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。
+原典は HTT 5.3.5.3 と添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
 その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。
