@@ -18,3 +18,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPartialColi
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredPartialPresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallInternalHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallStrictLimitExchange
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanContinuity

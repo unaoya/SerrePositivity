@@ -92,3 +92,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_tensor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallInternalHom_preservesCardinalFilteredColimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallSSetLimitColimitIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_endIndex_arrow
+#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsLimitIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsFunctor_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsCardinalFilteredIso_ι
+#check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanWeight_poset_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanHolimFunctor_poset_preservesCardinalFilteredColimits

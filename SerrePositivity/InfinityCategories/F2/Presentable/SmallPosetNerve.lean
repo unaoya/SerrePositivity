@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredPieces
 
 /-!
-概要：元の μ-small poset の nerve が、非退化単体の個数でも μ-small であること。
+概要：元の μ-small thin 圏の nerve が、非退化単体の個数でも μ-small であること。
 方針：各単体を有限列へ埋め込み、明示的な冪の評価と正則性で全次数を数える。
 規約：単に各次数が小さいだけでは終えず、全非退化単体を同じ μ で評価する。
 使われ方：濃度変更の部分表示を元の IsKappaSmall で検査する。
@@ -18,10 +18,11 @@ open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
-/-- 明示的な冪の評価のもとで、小さい poset の nerve の全非退化単体も小さい。 -/
+/-- 明示的な冪の評価のもとで、小さい thin 圏の nerve の全非退化単体も小さい。 -/
 lemma isKappaSmall_nerve_of_cardinalChangeBound {κ μ : Cardinal.{u}}
     [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ)
-    (I : Type u) [PartialOrder I] (hI : HasCardinalLT I μ) : IsKappaSmall μ (nerve I) := by
+    (I : Type u) [SmallCategory I] [Quiver.IsThin I] (hI : HasCardinalLT I μ) :
+    IsKappaSmall μ (nerve I) := by
   have hNat : HasCardinalLT (ULift.{u} ℕ) μ := by
     rw [hasCardinalLT_iff_cardinal_mk_lt]
     simpa only [Cardinal.mk_uLift, Cardinal.mk_nat, Cardinal.lift_aleph0] using

@@ -45,7 +45,10 @@
 - 非可算正則 μ について、μ-small 形状の全単体と単体圏の全射の個数を同じ μ で評価。
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。全 coherent な Space の交換は未証明。
-- 独立集約ビルド成功（7635 jobs）、公理監査 311 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 同じ weighted sections の end 図式を関手的に構成し、元の誘導射を保つ μ-filtered 連続性を証明。
+  標準比較同型は元の各余極限脚を厳密に保持。小さい poset の Bousfield–Kan 重みの μ-small 性も証明し、
+  元の `bousfieldKanHolimFunctor` の strict な μ-filtered 保存へ接続。thin 圏の nerve の小ささも提供。
+- 独立集約ビルド成功（7639 jobs）、公理監査 337 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -65,11 +68,8 @@
 - `IsKappaAccessibleFunctor`、`IsAccessibleFunctor`、`indYoneda_isKappaCompactGenerating`、`indInfinity_isKappaAccessible`
 - `IsKappaCompactGenerating.compact_iff_retract`、`IsKappaAccessible.exists_indComparison`
 - `covariantHomComparison`、`cosliceComparisonOver`、`leftClassificationHom`
-- `covariantHomComparison_component_isIso_iff`、`functorHomComparison_colimit_vertex`
-- `functorHomComparison_limit_vertex`、`pinchedHomMap_equivalence_iff_op`
 - `pinchedHomMap_equivalence_of_source_colimit`、`indComparison_isFullyFaithful`、`indComparisonEquivalence`
 - `IsKappaAccessible.exists_indRepresentation`、`IsKappaAccessible.exists_indEquivalence`
-- `equivalence_isColimitCone_iff`、`covariantHomComparisonIso`、`isKappaCompact_iff_equivalence`
 - `IsKappaCompactGenerating.of_equivalence`、`isKappaAccessible_iff_equivalence`、`isAccessible_iff_equivalence`
 - `isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
 - `isKappaAccessibleFunctor_iff_equivalence_conjugate`、`isAccessibleFunctor_iff_equivalence_conjugate`
@@ -77,7 +77,6 @@
 - `SmallFilteredPieces`、`exists_smallFilteredPiece_containing`、`smallFilteredPieces_cover`
 - `smallFilteredPieces_nerve_isKappaFiltered`、`smallFilteredPiece_nerve_properties`
 - `exists_smallFilteredPiece_factorization`、`nerveSubsetLift_transition`
-- `smallFilteredNerveCocone_isColimit`、`exists_smallFiltered_partialColimit`
 - `SmallFilteredTotal`、`smallFilteredTotalValue_isRightCofinal`
 - `smallFilteredTotal_restrict_isColimit_iff`、`smallFilteredTotalDiagram_restrict_fiber`
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
@@ -85,6 +84,8 @@
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
 - `smallShape_isCardinalPresentable`、`smallShape_relative_factorization`
 - `smallInternalHom_preservesCardinalFilteredColimits`、`smallSSetLimitColimitIso`
+- `weightedSectionsFunctor_preservesCardinalFilteredColimits`、`weightedSectionsCardinalFilteredIso_ι`
+- `bousfieldKanHolimFunctor_poset_preservesCardinalFilteredColimits`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -95,8 +96,8 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。構成済みの strict な小さい極限・内部 Hom の保存を weighted sections の連続性へ接続する。
-  次に native な coherent 交換を証明し、μ-small 部分余極限の μ-compact 性を N の Hom 錐族で導く。
+- 工程 (1) の濃度変更。構成済みの Bousfield–Kan 模型の連続性を、元の coherent な全図式・全錐へ移す。
+  同じ native な μ-filtered 交換を証明し、μ-small 部分余極限の μ-compact 性を N の Hom 錐族で導く。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
   元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
