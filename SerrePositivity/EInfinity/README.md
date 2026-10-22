@@ -2299,7 +2299,14 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `RoofPrefix.pathMap_comp_enriched/pathMap_comp_one_enriched` は 00 と 01 の実豊穣合成式。
 `cofibrantSourceRoofProductCommaPrefixPathMap` は任意可換環の実 comma の同じ Kan Hom への代入。
 `cofibrantSourceRoofProductCommaNativeFamilyMap_pinched` は元の native pinched 族と厳密に一致。
-混合 coherent 単体の全対象・全 Hom・単位・合成の組立、全単体作用素・両端の同定と
+`CoherentRightCone.diagram` は元の通常の前面と指定した最後 Hom を一つの全豊穣関手へ組む。
+`RoofPrefix.frontDiagram` は元の評価自然変換の通常円柱を同じ Kan 源関手で送ったもの。
+`lastHom_comp` は元の時間の 00・01・11 の全合成条件を追加入力なしで証明する。
+`RoofPrefix.mixedDiagram/simplex` は同じ前面・全 path Hom・単位・全合成を持つ混合図式。
+`simplex_target/sliceSimplex` は最後の頂点を同じ Y に固定した錐単体を与える。
+`cofibrantSourceRoofProductCommaNativeSimplex/NativeSliceSimplex` は任意可換環の実 comma への代入。
+後者の標的は元の cofibrantHammockVertex A Y 上の slice そのもの。
+混合単体の全単体作用素への自然性・全 prism への組立・両端と底円柱の同定、
 native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。

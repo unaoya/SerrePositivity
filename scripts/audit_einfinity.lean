@@ -8284,6 +8284,43 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap_pinched,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaPrefixPathMap]
 
+@[noinline] private def e2RequiredBatch147 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.CoherentRightCone.vertex,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.obj,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.obj_cast,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.obj_last,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.front_le,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.frontHom,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.frontHom_const,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_last_last,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_cast_last,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_cast_cast,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.id_iff_normalized,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_map_id,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_map_comp,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.diagram,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.lift_const_tensor,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.unitHom_transport,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontRaw,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_obj_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_obj_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_zero_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.frontDiagram_map_one_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.lastHom_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.mixedDiagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_target,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.sliceSimplex,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex_target,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSliceSimplex]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8317,7 +8354,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19983,3 +20020,37 @@ example (hj : t j = 1) :
     (cofibrantSourceRoofProductCommaRightLeg A X Y b)
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) D t i j hij hj
 end e2PrefixPathFixtures
+
+section e2NativeSimplexFixtures
+universe e2NativeSimplexUniverse
+open CategoryTheory MonoidalCategory SSet SimplicialThickening
+open SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+variable (A : Type e2NativeSimplexUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+variable {n : ℕ} (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
+variable (t : Fin (n + 1) →o Fin 2)
+example : (sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y))) _⦋n⦌ :=
+  cofibrantSourceRoofProductCommaNativeSliceSimplex A X Y b Γ t
+example :
+    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (PinchedHom.lastVertex n).op
+      (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t) = cofibrantHammockVertex A Y :=
+  cofibrantSourceRoofProductCommaNativeSimplex_target A X Y b Γ t
+variable (i j k : SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
+example :
+    let T : EnrichedFunctor SSet.{e2NativeSimplexUniverse + 1}
+        (SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
+        (KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
+      cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t
+    eId SSet i ≫ T.map i i = eId SSet (T.obj i) :=
+  (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t).map_id i
+example :
+    let T : EnrichedFunctor SSet.{e2NativeSimplexUniverse + 1}
+        (SimplicialThickening (ULift.{e2NativeSimplexUniverse + 1} (Fin (n + 2))))
+        (KanHammockCategory (cofibrantAlgebraRelativeCategory A)) :=
+      cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t
+    eComp SSet i j k ≫ T.map i k = (T.map i j ⊗ₘ T.map j k) ≫
+      eComp SSet (T.obj i) (T.obj j) (T.obj k) :=
+  (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t).map_comp i j k
+end e2NativeSimplexFixtures
