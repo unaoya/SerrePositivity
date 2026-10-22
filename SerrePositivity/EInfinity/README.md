@@ -2629,3 +2629,14 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorDoubleConeOverSimplex` は同じ終端 X 上の slice の実単体。
 `_naturality` は元の始点付き全作用素との整合、`_projection` は同じ元の cone 単体への厳密な射影。
 slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次 prism と全三角形は未完了。
+
+`normalizedTensorDoubleConeSimplex_end_edge` は両先端間の実辺と同じ恒等射の通常単体との一致。
+`normalizedTensorDoubleConeOverSimplex_first_vertex` は slice 頂点全体の恒等錐との同定。
+`normalizedTensorDoubleConeUnderOverMap` と `normalizedTensorDoubleConeOverJoin` は同じ全族の束ね。
+`normalizedTensorDoubleConeOverJoin_projection` は元の大域 cone 自身への厳密な射影。
+`normalizedTensorDoubleConeJoin` は実大域二重 join で、元の前面・終端・両先端の恒等族を回収する。
+`normalizedTensorDoubleConeSlicePrism` は恒等錐から同じ slice 図式への実全 prism。
+`_projection` は既存の元の cone prism 全体との厳密な一致。
+`normalizedTensorDoubleConeSliceEvaluation_triangle` は元の全 cone 族と構成した slice 評価族の
+合成が全パラメータ関手圏で恒等となること。元の通常 augmentation の円柱との一致は未証明。
+その同定後に元の augmentation の逆との比較・評価三角形・元の全屋根比較へ進む。
