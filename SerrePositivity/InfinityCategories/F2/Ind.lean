@@ -394,3 +394,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeCommaInitial
 public import SerrePositivity.InfinityCategories.F2.Ind.CommaPostcomp
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramCommaEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallPushout
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCorner
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCocone

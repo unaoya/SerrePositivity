@@ -11,9 +11,7 @@
   (d) 元の制限射 `indKappaContinuousRestriction` 自体の全 ∞ 圏同値と、元の順射を保持する同値データまで。
 - **F2N-5(a) 零対象を証明**：`indYoneda_isZero_of_zero` は ℵ₀ ≤ κ のもとで、元の零対象の同じ Yoneda 像が Indκ の零対象であること。
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
-  始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
-  `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7672 jobs、公理監査 3144 宣言、標準三公理のみ。
+- 現区切り：独立集約 7676 jobs、公理監査 3160 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -39,6 +37,8 @@
   `nonempty_indConeComma_cocone` と `_coslice_cocone` は始対象形状の全錐 comma と指定図式下の κ-small 試験余錐。
   `diagramCommaEvaluation` と `smallDiagramCommaEvaluation` は各指定値の実 Ind comma への全評価。
   両 `_projection` は元の C の図式評価、両 `_coconeMap` は同じ標準全余錐の評価を厳密に回収。cofinal 性は未証明。
+  `arrowInterpolationCorner A` は (A⊗Δ¹) と (A⋆Δ⁰) を元の始点族 A で貼った実 pushout。全円柱への比較は単射、正則 κ で κ-small。
+  `arrowInterpolationGlue` は両側の全図式を厳密に回収。`exists_indComma_arrowInterpolation_cocone` は境界の一致する両族を実 scalar comma 内で貼り、その全図式の余錐を構成。
 
 ### 残り（依存順）
 
@@ -51,18 +51,16 @@
 - `IndInfinity`、`indYoneda`、`indInclusionPresheaf`、`ind_isColimit_iff_inclusion`
 - `presheafDensityCocone_isColimit`、`isIndVertex_iff_singleFilteredPresentation`
 - `indLeftKanExtension_preservesSmallKappaFilteredColimits`、`indKappaContinuousRestrictionEquivalence`、`indKappaContinuousRestrictionEquivalence_hom`
-- `IndFiniteLimitExchangeInput`、`representablePresheafValue_isTerminal_of_initial`、`representablePresheaf_isTerminal_of_terminal`
 - `indVertex_evaluation_isTerminal_of_initial`、`indYoneda_isInitial_of_initial`、`indYoneda_isTerminal_of_terminal`
 - `indYoneda_isZero_of_zero`、`ind_hasZeroVertex`、`ind_hasZeroVertex_of_stable`
-- `conePresheafRestriction`、`conePresheafRestriction_isPointwiseColimit`、`indVertex_cone_isLimit_of_exchange`
-- `indPresheaf_finiteCone_isLimit`、`indPresheaf_finiteColimit_isLimit`、`indObject_finiteColimit_isLimit`
 - `joinUniverseReverse_hom`、`joinUniverseReverse_inv`、`uliftCoconeReverse_val`、`indYoneda_finiteColimit_isColimit`
 
 - `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
 - `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_isFullyFaithful`
 - `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
 - `nonempty_indComma_cocone`、`nonempty_indConeComma_cocone_of_initial`、`nonempty_indConeComma_coslice_cocone`
-- `diagramCommaEvaluation_uncurry`、`smallDiagramCommaEvaluation_projection`、`smallDiagramCommaEvaluation_coconeMap`
+- `smallDiagramCommaEvaluation_coconeMap`、`arrowInterpolationCornerInclusion_mono`、`arrowInterpolationCorner_isKappaSmall`
+- `arrowInterpolationGlue_old`、`arrowInterpolationGlue_source`、`exists_indComma_arrowInterpolation_cocone`
 
 ### 依存と提供
 
@@ -76,7 +74,7 @@
 
 ### 未コミット
 
-- なし。小さい全図式 comma の各頂点評価と元の標準全余錐の厳密な回収まで検証済み。
+- なし。二段補間の実境界領域・単射性・κ-small 性・両全図式の厳密な貼り合わせと局所余錐まで検証済み。
 
 ### 既知の問題
 
@@ -94,8 +92,10 @@
 局所入力 `nonempty_indComma_cocone` と `_coslice_cocone` は証明済み。κ-small 試験族・指定全境界を保つ。
 上方区間の始対象への点制限は `indConeCommaPointRestriction` で実現済み。射影を厳密に保ち、全比較が自明 Kan。
 各頂点の実 scalar comma への評価と全標準余錐の等式は証明済み。次は P=[1] の元の試験族を二段で補間する。
-まず元の試験族の始点側の表示を揃え、その新しい始点から終点側の図式への境界を含めて終点側を表示する。
-局所的には `nonempty_indConeComma_coslice_cocone` を用い、既存の A 上の元の全変換を固定して二段を貼り合わせる。
+元の円柱族 F と始点余錐 G が同じ境界で一致すれば、κ-small な補間領域 `arrowInterpolationCorner` 上で厳密に貼り、その実 scalar comma 図式の余錐を取れる。
+次は join(arrowInterpolationCorner A,Δ⁰) と (A⋆Δ⁰)⊗Δ¹ の全形状比較を構成し、旧円柱と始点余錐上の厳密な一致を証明する。
+順射は join の結合同型で二重の右端点を潰す写像と、区間の最後の頂点への join 評価を積に束ねる候補。全単体の比較は未証明。
+この形状比較で得た局所余錐を元の全円柱へ戻す。元の試験族から互換な F,G を作る際も、全変換・指定境界を保つ。
 有限 P の境界は (N(P≤a)×B)∪(N(P<a)×{∞})。B は一般の κ-small 試験形状として扱い、poset nerve だけの試験で済ませない。
 次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
 HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。

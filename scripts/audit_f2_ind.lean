@@ -701,3 +701,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_coconeMap
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_uncurry
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.pushout_simplex_covered
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_pushout_of_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCorner
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCorner_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationGlue
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationGlue_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationGlue_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCorner_isKappaSmall
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_cocone
