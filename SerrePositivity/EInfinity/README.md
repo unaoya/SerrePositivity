@@ -2252,7 +2252,13 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `PinchedFamilyWeakDetection` は全パラメータの区間族の射の一致から元の pinched 族へ弱同値性を反映。
 `cofibrantSourceRoofMap_isLeftCofinal_of_interval_triangles` は実射と基準射の全区間族が
 それぞれ同じ左脚との合成で元の右脚を回収することから、実屋根の cofinal 性を導く。
-その二つの全三角形本体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`roofTargetFiberPinchedIso_slice` は元の fiber 同型の qY slice への全包含を保持する。
+`roofCornerEvaluationSliceHomotopy` は実評価までの同じ slice 内の全円柱。
+`roofCornerEvaluation_triangle` は任意パラメータに対する幾何的な全合成三角形。
+`cofibrantSourceRoofProductCommaCornerMap_diagram` は始域を元の comma 全図式へ厳密に戻す。
+`cofibrantSourceRoofProductGeometric_triangle` は同じ ActualIntervalCell の幾何的三角形。
+幾何的左右の脚と標準 EvaluationIso・RightCell との同定、基準射側の全三角形、
+left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
