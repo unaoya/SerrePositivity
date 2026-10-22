@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 任意 dg 加群値関手の合成比較の自然性、第一 kernel だけの平坦性による元の κ の右変数自然性、元の source graph・始域制限比較の任意射自然性の10新規モジュール、Derived 集約、両監査、本計画の14パス。対象・両集約（10491 jobs）・10公開署名・ソース検査は成功。両全体監査も成功。元の指定 cell 入力比較の値と自然性への移送は `/tmp/` で検証中。他レーンの変更は変更しない。
+- 任意 dg 加群値関手の合成比較の自然性、第一 kernel だけの平坦性による元の κ の右変数自然性、元の source graph・始域制限比較の任意射自然性の10新規モジュール、Derived 集約、両監査、本計画の14パスを `e0ac8abeb` に保存済み。対象・両集約（10491 jobs）・10公開署名・ソース検査は成功。両全体監査も成功。元の指定 cell 入力比較の値・自然性と canonical cell 出力比較の自然性は `/tmp/` で4宣言とも警告なし・許容三公理で検証済み、未集約。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 第一 kernel だけの右相対 K-flat 性で、元の κ の右変数自然性 `dgKernelDerivedInfinity_compIso_right_naturality` を証明した。任意 dg 加群値関手の `dgModuleResolved_compositor_hom_naturality_of_raw` で raw factor・augmentation・通常比較の三段経路を先に接続し、同じ実 kernel データを渡して kernel timeout を解消した。上限は変更していない。後続 kernel の平坦性・射の可逆性は不要。元の source graph 比較、同じ graph 合成双加群同型とその導来像の自然性から、元の `dgKernelDerivedInfinity_sourceRestrictionIso_hom_naturality` まで10新規モジュールで統合済み。対象・両集約・10公開署名は成功。両全体監査も成功。ログは `/tmp/d-beta5-native-squares-{derived,stable}-audit.log`。次は同じ指定入力逆を保つ `dgKernelDerivedInfinity_cellSourceIso` の自然性へ移す。一般の同値に沿う移送 `functorIso_source_equivalence_square`、元の cell 入力比較の同じ値の回収、元の `dgKernelDerivedInfinity_cellSourceIso_hom_naturality` は `/tmp/` で三宣言とも検証済み、未集約。元の値の回収に不要な simp 引数を除いた `/tmp/d-beta5-cell-source-naturality-retry.lean` は session 64897、ログ `/tmp/d-beta5-cell-source-naturality-clean.log` で再検証中。canonical cell 出力比較の任意射自然性は `/tmp/d-beta5-canonical-cell-target-naturality.lean`、session 68472、同名 `.log` で検証中。augmentation と可換な模型射 b を条件として同じ `dgKernelCellModel_targetIso` の自然性を得る。まず両ハンドルを確認する。成功した cell 入力比較・出力比較を保持し、次に元の `dgKernelDerivedInfinity_cellModelIso` 全体の自然性へ接続する。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- 第一 kernel だけの右相対 K-flat 性で、元の κ の右変数自然性 `dgKernelDerivedInfinity_compIso_right_naturality` を証明した。任意 dg 加群値関手の `dgModuleResolved_compositor_hom_naturality_of_raw` で raw factor・augmentation・通常比較の三段経路を先に接続し、同じ実 kernel データを渡して kernel timeout を解消した。上限は変更していない。後続 kernel の平坦性・射の可逆性は不要。元の source graph 比較、同じ graph 合成双加群同型とその導来像の自然性から、元の `dgKernelDerivedInfinity_sourceRestrictionIso_hom_naturality` まで10新規モジュールで統合済み。対象・両集約・10公開署名は成功。両全体監査も成功。ログは `/tmp/d-beta5-native-squares-{derived,stable}-audit.log`。次は同じ指定入力逆を保つ `dgKernelDerivedInfinity_cellSourceIso` の自然性へ移す。一般の同値に沿う移送 `functorIso_source_equivalence_square`、元の cell 入力比較の同じ値の回収、元の `dgKernelDerivedInfinity_cellSourceIso_hom_naturality` は `/tmp/` で三宣言とも検証済み、未集約。元の値の回収の不要な simp 引数も除いた `/tmp/d-beta5-cell-source-naturality-retry.lean`（ログ `/tmp/d-beta5-cell-source-naturality-clean.log`）の三宣言は警告なし・許容三公理で成功。`/tmp/d-beta5-canonical-cell-target-naturality.lean` の `dgKernelCellModel_targetIso_hom_naturality` も同じ条件で成功、同名 `.log`。augmentation と可換な模型射 b を条件として同じ canonical 出力比較の自然性を得た。実行中の試作・監査はない。最初にこの4宣言を分割統合する。一般の source equivalence 四角形・元の cell 入力比較の値の回収・同じ cell 入力比較の自然性・canonical 出力比較の自然性を、それぞれ明示 import を持つモジュールへ置く。続いて出力比較の逆四角形を同じ指定入力逆で前合成し、元の cell 入力比較の四角形と二段合成して、元の `dgKernelDerivedInfinity_cellModelIso` 全体の自然性へ接続する。原 kernel は平坦と仮定せず、augmentation と可換な模型射 b の条件を明示する。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
 
 ## 目標と原典
 
