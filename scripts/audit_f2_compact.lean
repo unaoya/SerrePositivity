@@ -757,3 +757,66 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @isCompact_of_isInitialVertex
 #print axioms isCompact_of_isInitialVertex
+
+#check @terminalBoundary_reflects_invertibleEdge
+#print axioms terminalBoundary_reflects_invertibleEdge
+
+#check @limitConeVertex_terminalBoundary
+#print axioms limitConeVertex_terminalBoundary
+
+#check @limitConeEdge_reflects_invertible
+#print axioms limitConeEdge_reflects_invertible
+
+#check @colimitComparisonApexEdge
+#print axioms colimitComparisonApexEdge
+
+#check @colimitComparisonApex_map_isInvertible
+#print axioms colimitComparisonApex_map_isInvertible
+
+#check @exists_spaceFunctor_pointwiseColimit
+#print axioms exists_spaceFunctor_pointwiseColimit
+
+#check @pointwiseColimit_of_limit_exchange
+#print axioms pointwiseColimit_of_limit_exchange
+
+#check @flipFamily_evaluate_vertex
+#print axioms flipFamily_evaluate_vertex
+
+#check @colimitRepresentableFamily
+#print axioms colimitRepresentableFamily
+
+#check @colimitRepresentableFamily_vertex
+#print axioms colimitRepresentableFamily_vertex
+
+#check @colimitRepresentableFamily_isLimit
+#print axioms colimitRepresentableFamily_isLimit
+
+#check @colimitRepresentableFamily_apex
+#print axioms colimitRepresentableFamily_apex
+
+#check @colimitRepresentableFamily_right
+#print axioms colimitRepresentableFamily_right
+
+#check @homConeCocone
+#print axioms homConeCocone
+
+#check @homConeCocone_inner_isLimit
+#print axioms homConeCocone_inner_isLimit
+
+#check @homConeCocone_vertex_isLimit
+#print axioms homConeCocone_vertex_isLimit
+
+#check @homConeCocone_right_isColimit
+#print axioms homConeCocone_right_isColimit
+
+#check @homConeCocone_apex_isColimit
+#print axioms homConeCocone_apex_isColimit
+
+#check @isKappaCompact_colimit_of_exchange
+#print axioms isKappaCompact_colimit_of_exchange
+
+#check @isKappaCompact_finiteColimit_of_exchange
+#print axioms isKappaCompact_finiteColimit_of_exchange
+
+#check @hasFiniteColimits_kappaCompactObjects_of_exchange
+#print axioms hasFiniteColimits_kappaCompactObjects_of_exchange

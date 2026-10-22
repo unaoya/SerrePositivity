@@ -78,3 +78,12 @@ public import SerrePositivity.InfinityCategories.F2.Compact.FiniteUniverse
 public import SerrePositivity.InfinityCategories.F2.Compact.FilteredUniverse
 public import SerrePositivity.InfinityCategories.F2.Compact.TerminalApexColimit
 public import SerrePositivity.InfinityCategories.F2.Compact.InitialCompact
+public import SerrePositivity.InfinityCategories.F2.Compact.TerminalBoundaryReflection
+public import SerrePositivity.InfinityCategories.F2.Compact.LimitConeEdgeReflection
+public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex
+public import SerrePositivity.InfinityCategories.F2.Compact.ExchangeCoconeCompletion
+public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.F2.Compact.HomConeFamily
+public import SerrePositivity.InfinityCategories.F2.Compact.HomConeCocone
+public import SerrePositivity.InfinityCategories.F2.Compact.ColimitClosureExchange
+public import SerrePositivity.InfinityCategories.F2.Compact.FiniteColimitClosure
