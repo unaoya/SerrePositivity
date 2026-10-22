@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedTransition
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessSourceChange
 
 /-!
 概要：指定右経路を使う class 互換性から、元の Γ の実相対模型射を組み直す。
@@ -22,17 +23,19 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 def classFixedRelativeWitness : SquareZero.RelativeWitness
-    (d.classProjection R) (d.numeratorLayer R) (d.imageClass R) (d.targetClass R) where
-  hom := (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse d.inverse).hom
-  source_eq :=
+    (d.classProjection R) (d.numeratorLayer R) (d.imageClass R) (d.targetClass R) :=
+  (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
+    d.inverse).changeSource
+    (d.sourceClass_coefficient R).symm
+
+lemma classFixedRelativeWitness_hom :
+    (d.classFixedRelativeWitness R).hom =
     (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
-      d.inverse).source_eq.trans (d.sourceClass_coefficient R).symm
-  target_eq :=
-    (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
-      d.inverse).target_eq
-  projection_eq :=
-    (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
-      d.inverse).projection_eq
+      d.inverse).hom := by
+  let h := SquareZero.RelativeWitness.changeSource_hom
+    (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse d.inverse)
+    (d.sourceClass_coefficient R).symm
+  exact h
 
 def classFixedDefect : SquareZero.RelativeWitness (d.classProjection R) (d.numeratorLayer R)
     (d.targetClass R) (d.targetClass R) :=

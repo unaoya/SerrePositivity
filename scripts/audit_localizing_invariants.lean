@@ -1382,7 +1382,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenAffineImage,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenAffineContour,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectRestored,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectProjection]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficients,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientTriangle,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientZeroMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassPostCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCoefficients,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCoefficientModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCoefficientPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassCoefficientChange,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectCoefficientModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessSourceChange]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
