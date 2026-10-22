@@ -48,6 +48,7 @@
   矢印 Hom と両合成対応の対角引き戻しの厳密な同型を証明。逆は元の二三角形の持ち上げ。矢印 Hom 自体を頂点とする空間の ∞ 極限錐も供給。
   同じ実 lax Hom 比較をこの対角引き戻しへ移し、augmentation の導来二辺・両射影・元の全二三角形の回収を証明。
   元の νf・gμ を実加群 Hom の前後合成・AW 合成族へ厳密に照合。対象圏の小ささなしの閉前合成成分式を供給し、元の augmentation の全合成 prism・両端・射影を回収。β5 の実導来 Hom 作用で移した合成方程式と、同じ実三辺を持つ導来合成三角形も供給。
+  同じ二三角形を実二単体族へ評価し、全三辺を保持して共通宇宙へ移送。canonical 係数比較への対角の一致を証明し、元の gluing Hom で制限した両対角を実係数 path の両端へ厳密に照合。同じ全区間族から対角間の実ホモトピーを構成。
   全写像空間の比較同値性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -72,12 +73,11 @@
 - `dgGluingLaxHomPullbackComparison` と `_arrow_transport`・`_inputs_transport`、`dgGluingUniverseDerivedNerveLaxComparison_fullyFaithful_iff`
 - `dgGluingHomTwoEndpointPath_isPullback`・`dgGluingHomTwoEndpointPath_primitive`・`dgGluingHomTwoEndpointPathSpaceCone_isLimit`・`dgGluingTwoEndpointPathSpaceCone_path`
 - `dgGluingHomCoefficientPathPullbackComparison_equivalence`・`dgGluingDerivedHomCoefficientPathComparison_equivalence` と `_path`・`_inputs`、`dgGluingDerivedHomCoefficientIntervalPath_start`・`dgGluingDerivedHomCoefficientIntervalPath_end`
-- `dgGluingPinchedChainMap_fibration`・`dgGluingCoconePathSpaceProjection_fibration`・`dgGluingCoconePathSpaceCone_isLimit` と `_path`・`_base`
 - `dgGluingModuleDerivedHomMap_equivalence`・`dgGluingCanonicalCoefficientMappingComparison` と `_equivalence`・`_universe_action`
 - `dgGluingUniverseLaxComparison_vertex_image`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
 - `dgGluingUniverseFunctorHomAction`・`dgGluingUniverseFunctorHomModelComparison_eq`・`dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq`
 - `dgGluingArrowHomTriangleEquiv`・`dgGluingArrowCompositionIso`・`dgGluingArrowHomCompositionCone_isLimit`・`dgGluingLaxHomArrowCompositionComparison`
-- `dgGluingNativeLeftCoefficientCompositionPrism`・`dgGluingNativeRightCoefficientCompositionPrism`・`dgGluingModuleDerivedLeftCoefficientTriangle`・`dgGluingModuleDerivedRightCoefficientTriangle`
+- `dgGluingHomDerivedLeftCoefficientTriangle_diagonal`・`dgGluingHomDerivedRightCoefficientTriangle_diagonal`・`dgGluingHomDerivedCoefficientDiagonalHomotopy`・`dgGluingUniverseDerivedLeftCoefficientTriangleFamily`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -95,12 +95,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
-  次は `dgGluingModuleDerivedLeftCoefficientTriangle`・`dgGluingModuleDerivedRightCoefficientTriangle` を共通宇宙へ移し、元の augmentation・二入力・二作用の導来像を同じ三辺として回収する。
-  `dgGluingDerivedHomCoefficientPathComparison` の区間族とつなぎ、正本比較の二三角形を保って `dgGluingArrowHomCompositionCone` へ照合する。全引き戻し比較の同値性を充満忠実性の判定へ適用する。
+  次は `dgGluingHomDerivedCoefficientDiagonalHomotopy` の全区間の境界固定を回収し、二三角形と対角 path を合成対応の引き戻し模型へ移す。
+  正本の実 lax Hom 比較の元の augmentation prism・二射影・二三角形を保って照合する。`dgGluingDerivedHomCoefficientPathComparison` の同値性を全引き戻し比較へ移し、充満忠実性の判定へ適用する。
 
 ### 未コミット・既知の問題
-- 397モジュール・集約ビルド成功（8344 jobs）、公理監査4712宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開31署名を検査済み。新規10モジュール、集約・監査・本計画の専有13パスだけを保存。他レーンの差分は含めない。
+- 411モジュール・集約ビルド成功（8358 jobs）、公理監査4776宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開42署名を検査済み。新規14モジュール、集約・監査・本計画の専有17パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

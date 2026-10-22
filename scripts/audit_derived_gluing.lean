@@ -401,7 +401,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCoefficientCompositionPrisms,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedFamilyCompositionPost,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientComposition,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientTriangles]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTriangleEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleDerivedFamilyEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleDerivedCoefficientTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePinchedIntervalFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleDerivedFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleDerivedSimplexFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedCoefficientTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedCoefficientActionFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedCoefficientTriangleDiagonals,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientDiagonalHomotopy]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
