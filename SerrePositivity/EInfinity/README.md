@@ -2257,7 +2257,13 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `roofCornerEvaluation_triangle` は任意パラメータに対する幾何的な全合成三角形。
 `cofibrantSourceRoofProductCommaCornerMap_diagram` は始域を元の comma 全図式へ厳密に戻す。
 `cofibrantSourceRoofProductGeometric_triangle` は同じ ActualIntervalCell の幾何的三角形。
-幾何的左右の脚と標準 EvaluationIso・RightCell との同定、基準射側の全三角形、
+`nerveCoconePrism_eq_natTrans` は通常の余錐の join prism と同じ自然変換の全円柱の一致。
+`nerveOverRightSliceMap_evaluation_h` は点図式の輸送と同じ q の後合成を通しても全円柱を保つ。
+`cofibrantSourceRoofProductCommaRightSlice` は実 corner の全錐を元の D_m→Y の Over 図式へ戻す。
+`cofibrantSourceRoofProductGeometricRightHomotopy_h` は元の標準右脚との全円柱の厳密な一致。
+`cofibrantSourceRoofProductGeometricRightCell_eq` と `Geometric_triangle_right_standard` により、
+実射側の全三角形 hA は幾何的左脚と EvaluationIso.hom の一致だけへ還元される。
+幾何的左脚と標準 EvaluationIso.hom の同定、基準射側の全三角形、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。

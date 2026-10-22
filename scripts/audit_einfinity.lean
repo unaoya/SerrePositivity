@@ -8094,6 +8094,27 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetSlicePointIso,
       `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFiberPinchedIso_slice]
 
+@[noinline] private def e2RequiredBatch140 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricRightHomotopy_h,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricRightCell_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometric_triangle_right_standard,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductActual_triangle_of_left_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRoofMap_normalizedOver,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightOver,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightOver_nerve,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaRightSlice,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_over,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofRightSliceMap,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRoofMap_normalizedOver,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerSourceSliceMap_eq_source,
+      `SerrePositivity.EInfinity.FrameHom.nerveNatTransHomotopy_mixed,
+      `SerrePositivity.EInfinity.FrameHom.rightMappingSpacePrism_mixed,
+      `SerrePositivity.EInfinity.FrameHom.nerveCoconePrism_eq_natTrans,
+      `SerrePositivity.EInfinity.FrameHom.sliceOverUncurry_pointTransport,
+      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap,
+      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_uncurry,
+      `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_evaluation_h]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8127,7 +8148,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19423,3 +19444,54 @@ example : cofibrantSourceRoofProductGeometricLeftCell A X Y b ≫
       cofibrantSourceRoofProductGeometricRightCell A X Y b :=
   cofibrantSourceRoofProductGeometric_triangle A X Y b
 end e2NativeRoofGeometricTriangleFixtures
+
+section e2NativeRoofRightPrismFixtures
+universe e2RoofRightPrismUniverse
+open CategoryTheory Limits Opposite SSet MonoidalCategory
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.FrameHom.FrameArrows
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
+open scoped Simplicial
+example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
+    [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (c : Cocone F) :
+    (β_ (nerve I) (Δ[1] : SSet.{e2RoofRightPrismUniverse})).hom ≫
+      rightMappingSpacePrism (nerve I) ≫ (F1B.kanNerveCoconeEquiv c).val =
+        (F1B.kanNerveNatTransHomotopy c.ι).h := nerveCoconePrism_eq_natTrans F c
+example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
+    [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (Y : C)
+    {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
+    frameRoofMap F Y q ≫ pullback.fst _ _ =
+      nerveMap (CostructuredArrow.toOver F Y) ≫ (F1B.kanNerveOverIso Y).hom ≫
+        sliceOverPostcomp (SSet.yonedaEquiv.symm (nerveVertex Y)) q := frameRoofMap_over F Y q
+example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
+    [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
+    {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
+    sliceOverUncurry (nerveOverRightSliceMap Y T q) =
+      (F1B.kanNerveCoconeEquiv ((F1B.kanOverForgetCocone Y).whisker T)).val ≫ q :=
+  nerveOverRightSliceMap_uncurry Y T q
+example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
+    [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
+    {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
+    (functorHomotopyPrecomp (roofSliceEvaluationHomotopy
+      (q.app (op ⦋0⦌) (nerveVertex Y))) (nerveOverRightSliceMap Y T q)).h =
+      (F1B.kanNerveNatTransHomotopy ((F1B.kanOverForgetCocone Y).whisker T).ι).h ≫ q :=
+  nerveOverRightSliceMap_evaluation_h Y T q
+variable (A : Type e2RoofRightPrismUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+example : (cofibrantSourceRoofProductGeometricRightHomotopy A X Y b).h =
+    (cofibrantSourceRoofProductCommaRightHomotopy A X Y b).h :=
+  cofibrantSourceRoofProductGeometricRightHomotopy_h A X Y b
+example : cofibrantSourceRoofProductGeometricRightCell A X Y b =
+    cofibrantSourceRoofProductCommaRightCell A X Y b :=
+  cofibrantSourceRoofProductGeometricRightCell_eq A X Y b
+example : cofibrantSourceRoofProductGeometricLeftCell A X Y b ≫
+    cofibrantSourceRoofProductActualIntervalCell A X Y b =
+      cofibrantSourceRoofProductCommaRightCell A X Y b :=
+  cofibrantSourceRoofProductGeometric_triangle_right_standard A X Y b
+example (hL : cofibrantSourceRoofProductGeometricLeftCell A X Y b =
+    (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom) :
+    (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
+      cofibrantSourceRoofProductActualIntervalCell A X Y b =
+        cofibrantSourceRoofProductCommaRightCell A X Y b :=
+  cofibrantSourceRoofProductActual_triangle_of_left_eq A X Y b hL
+end e2NativeRoofRightPrismFixtures
