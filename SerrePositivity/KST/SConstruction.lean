@@ -2229,4 +2229,18 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAIntegerNa
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOANaturality
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOARawNaturality
 public import SerrePositivity.KST.SConstruction.SpectrumIntegerComponentEquality
+public import SerrePositivity.KST.SConstruction.DGStandardFunctorIsoReflection
+public import SerrePositivity.KST.SConstruction.FunctorIsoEquivalenceReflection
+public import SerrePositivity.KST.SConstruction.PointedKanReplacementComponents
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFDGKIntegerNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAInverseIntegerNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationIntegerNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationNaturality
+public import SerrePositivity.KST.SConstruction.StableBoundaryFunctorIsoComponents
+public import SerrePositivity.KST.SConstruction.StableBoundaryPointedFunctor
+public import SerrePositivity.KST.SConstruction.StableBoundaryReducedAction
+public import SerrePositivity.KST.SConstruction.StableBoundaryReducedLaws
+public import SerrePositivity.KST.SConstruction.StableKFunctorIsoInvariance
+public import SerrePositivity.KST.SConstruction.StableMultiRealizationAction
+public import SerrePositivity.KST.SConstruction.StableZeroBoundaryAction
 /-! # ∞-S• 構成と連結 K 理論 -/

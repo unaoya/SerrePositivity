@@ -27162,3 +27162,135 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.spectrumHomotopyMap_eq_of_levelwise_component
 #print axioms SerrePositivity.KST.SConstruction.spectrumHomotopyMap_eq_of_levelwise_component
+
+#check @SerrePositivity.KST.SConstruction.dgStandardFunctorIso_to_native
+#print axioms SerrePositivity.KST.SConstruction.dgStandardFunctorIso_to_native
+
+#check @SerrePositivity.KST.SConstruction.functorIsoReflectPreEquivalence
+#print axioms SerrePositivity.KST.SConstruction.functorIsoReflectPreEquivalence
+
+#check @SerrePositivity.KST.SConstruction.functorIsoReflectPostEquivalence
+#print axioms SerrePositivity.KST.SConstruction.functorIsoReflectPostEquivalence
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanEnrichedFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.exInfinityPointedKanMap_component
+#print axioms SerrePositivity.KST.SConstruction.exInfinityPointedKanMap_component
+
+#check @SerrePositivity.KST.SConstruction.pointedKanReplacement_map_component
+#print axioms SerrePositivity.KST.SConstruction.pointedKanReplacement_map_component
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison_integer_naturality
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison_integer_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv_naturality
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_integer_apply
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_integer_apply
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_integer_naturality
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_integer_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFEvaluation_integer_naturality
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFEvaluation_integer_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGEvaluationNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFEvaluationInputComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFEvaluationInputComparison
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedMap_component_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedMap_component_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryPointedObject
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryPointedObject
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryPointedEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_collapse
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_collapse
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_quotient
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_quotient
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_basepoint
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_basepoint
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_unit
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_unit
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_comp
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_comp
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_hom
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryReducedAction_hom
+
+#check @SerrePositivity.KST.SConstruction.stableBoundaryKanMap_component_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.stableBoundaryKanMap_component_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableKRawMap_component_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.stableKRawMap_component_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableKSpectrumMap_component_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.stableKSpectrumMap_component_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableKHomotopyMap_eq_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.stableKHomotopyMap_eq_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.kHomotopyMap_eq_of_exact_functorIso
+#print axioms SerrePositivity.KST.SConstruction.kHomotopyMap_eq_of_exact_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationValue
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationValue
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_app
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_app
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_unit
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_unit
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_comp
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_comp
+
+#check @SerrePositivity.KST.SConstruction.stableExactInputMap
+#print axioms SerrePositivity.KST.SConstruction.stableExactInputMap
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_hom
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_hom
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_zeroOperator
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_zeroOperator
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_mem_zeroRange
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_mem_zeroRange
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationAction_mem_zeroBoundary
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationAction_mem_zeroBoundary
+
+#check @SerrePositivity.KST.SConstruction.stableZeroBoundaryAction
+#print axioms SerrePositivity.KST.SConstruction.stableZeroBoundaryAction
+
+#check @SerrePositivity.KST.SConstruction.stableZeroBoundaryAction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.stableZeroBoundaryAction_inclusion
