@@ -28941,3 +28941,141 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.perfectDGGluingRightAxisRetractionAt_naturality
 #print axioms SerrePositivity.KST.SConstruction.perfectDGGluingRightAxisRetractionAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgBimoduleClosedZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgBimoduleClosedZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgBimoduleClosedZero_hom
+#print axioms SerrePositivity.KST.SConstruction.dgBimoduleClosedZero_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxisObject
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxisObject
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_obj
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_obj
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_right
+
+#check @SerrePositivity.KST.SConstruction.dgCommaZeroReplacement_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgCommaZeroReplacement_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgCommaZeroReplacementInverse
+#print axioms SerrePositivity.KST.SConstruction.dgCommaZeroReplacementInverse
+
+#check @SerrePositivity.KST.SConstruction.dgCommaZeroReplacementIso
+#print axioms SerrePositivity.KST.SConstruction.dgCommaZeroReplacementIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxisHomIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxisHomIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxisHomIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxisHomIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map_isIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_map_isIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgCommaHom_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgCommaHom_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxes_right_left_hom_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxes_right_left_hom_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingZeroComparison_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgGluingZeroComparison_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift
+#print axioms SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift
+
+#check @SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingZeroComparisonLift_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgBimoduleClosedZeroLeft_value
+#print axioms SerrePositivity.KST.SConstruction.dgBimoduleClosedZeroLeft_value
+
+#check @SerrePositivity.KST.SConstruction.dgBimoduleClosedZeroRight_value
+#print axioms SerrePositivity.KST.SConstruction.dgBimoduleClosedZeroRight_value
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFromRightAxisHomIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFromRightAxisHomIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFromRightAxisHomIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFromRightAxisHomIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingToLeftAxisHomIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingToLeftAxisHomIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingToLeftAxisHomIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingToLeftAxisHomIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLeftAxis_nerve_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLeftAxis_nerve_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis
+#print axioms SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis
+
+#check @SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis_nerve_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxis_nerve_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxisRetractionAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxisRetractionAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxisRetractionAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGGluingLeftAxisRetractionAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxes_comp_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxes_comp_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_middle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_middle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_f
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_f
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_g
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_g

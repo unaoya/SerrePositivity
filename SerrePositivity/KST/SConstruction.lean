@@ -2346,4 +2346,18 @@ public import SerrePositivity.KST.SConstruction.PerfectDGFullyFaithful
 public import SerrePositivity.KST.SConstruction.DGUniverseQuasiFullyFaithful
 public import SerrePositivity.KST.SConstruction.PerfectDGGluingRightAxis
 
+public import SerrePositivity.KST.SConstruction.DGBimoduleClosedZero
+public import SerrePositivity.KST.SConstruction.DGGluingLeftAxis
+public import SerrePositivity.KST.SConstruction.DGCommaZeroReplacementProjection
+public import SerrePositivity.KST.SConstruction.DGGluingLeftAxisHom
+public import SerrePositivity.KST.SConstruction.DGCommaHomZero
+public import SerrePositivity.KST.SConstruction.DGGluingAxesOrthogonal
+public import SerrePositivity.KST.SConstruction.DGGluingZeroComparisonLift
+public import SerrePositivity.KST.SConstruction.DGBimoduleAxisZero
+public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
+public import SerrePositivity.KST.SConstruction.DGGluingAxesMixedHom
+public import SerrePositivity.KST.SConstruction.DGGluingLeftAxisNerve
+public import SerrePositivity.KST.SConstruction.PerfectDGGluingLeftAxis
+public import SerrePositivity.KST.SConstruction.DGGluingAxesComplex
+
 /-! # ∞-S• 構成と連結 K 理論 -/
