@@ -1115,7 +1115,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassInverse,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroNaturality,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetract,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetractBase]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRetractBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassBaseZeroIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassTransition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassTransitionWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandard,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardZeroGlue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassBaseZeroWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassCompatibility,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassCompatibilityTriangles,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassInverseData]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
