@@ -212,3 +212,61 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms weakShapeImageIso_ι
 #check @weakTriangle_imageIso
 #print axioms weakTriangle_imageIso
+#check @missingFaceComplex
+#print axioms missingFaceComplex
+#check @mem_missingFaceComplex
+#print axioms mem_missingFaceComplex
+#check @puncturedFace
+#print axioms puncturedFace
+#check @missingFaceStage
+#print axioms missingFaceStage
+#check @missingFaceComplex_le_stage
+#print axioms missingFaceComplex_le_stage
+#check @missingFaceStage_insert
+#print axioms missingFaceStage_insert
+#check @face_erase_le_complement
+#print axioms face_erase_le_complement
+#check @puncturedFace_le_face
+#print axioms puncturedFace_le_face
+#check @missingFaceComplex_complement
+#print axioms missingFaceComplex_complement
+#check @missingFaceStage_inf_face
+#print axioms missingFaceStage_inf_face
+#check @missingFaceStage_pushout
+#print axioms missingFaceStage_pushout
+#check @missingFaceCardFamily
+#print axioms missingFaceCardFamily
+#check @mem_missingFaceCardFamily
+#print axioms mem_missingFaceCardFamily
+#check @missingFaceCardStage_inf_face
+#print axioms missingFaceCardStage_inf_face
+#check @mem_puncturedFace
+#print axioms mem_puncturedFace
+#check @mem_horn_missing_vertex
+#print axioms mem_horn_missing_vertex
+#check @faceCoordinates
+#print axioms faceCoordinates
+#check @faceCoordinates_vertex
+#print axioms faceCoordinates_vertex
+#check @puncturedFace_coordinate_preimage
+#print axioms puncturedFace_coordinate_preimage
+#check @relativeFacePreimage_isIso
+#print axioms relativeFacePreimage_isIso
+#check @relativeFacePreimageArrowIso
+#print axioms relativeFacePreimageArrowIso
+#check @puncturedFace_innerAnodyne
+#print axioms puncturedFace_innerAnodyne
+#check @faceCoordinates_index_inner
+#print axioms faceCoordinates_index_inner
+#check @missingFaceStage_attach_innerAnodyne
+#print axioms missingFaceStage_attach_innerAnodyne
+#check @missingFaceStage_innerAnodyne
+#print axioms missingFaceStage_innerAnodyne
+#check @missingFaceComplex_innerAnodyne
+#print axioms missingFaceComplex_innerAnodyne
+#check @alternatingSourceVertices
+#print axioms alternatingSourceVertices
+#check @alternatingCellBoundary
+#print axioms alternatingCellBoundary
+#check @alternatingCellBoundary_innerAnodyne
+#print axioms alternatingCellBoundary_innerAnodyne

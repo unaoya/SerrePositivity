@@ -10,3 +10,12 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangl
 public import SerrePositivity.InfinityCategories.F2.Idempotent.TriangleKernel
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakMono
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakImage
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaces
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceAttachment
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceCardStage
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PuncturedCoordinates
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeFacePreimage
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PuncturedFaceAnodyne
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceFiniteAnodyne
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceInnerAnodyne
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingCellBoundary
