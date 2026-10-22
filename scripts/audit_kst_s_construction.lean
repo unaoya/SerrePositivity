@@ -30192,3 +30192,51 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_π
 #print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_π
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_add
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_add
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_smul
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_smul
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_differential
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_differential
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_comp
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_comp
+
+#check @SerrePositivity.KST.SConstruction.dgGluingPrimitive_differential
+#print axioms SerrePositivity.KST.SConstruction.dgGluingPrimitive_differential
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetModuleMap_cycle
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetModuleMap_cycle
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_apply
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_apply
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_differential
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_differential
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeLinear
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeLinear
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeLinear_comm
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeLinear_comm
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeHomMap
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeHomMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_apply
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_apply

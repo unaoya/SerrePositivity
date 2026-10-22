@@ -2476,4 +2476,12 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingConeDifferential
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeComposition
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeElement
 
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeDifferential
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveDifferential
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeComponents
+public import SerrePositivity.KST.SConstruction.DGHomGluingConePrimitiveDifferential
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeHomMap
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeHomMap
+
 /-! # ∞-S• 構成と連結 K 理論 -/
