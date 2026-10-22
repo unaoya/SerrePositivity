@@ -467,7 +467,25 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPathFactorization,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputPathTransportEquivalence,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputPathFactorization,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputPathEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputPathEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedEndpointUncurry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomComponentEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePinchedComplexIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorPinchedModelMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorIntervalImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleFunctorFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleFunctorEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseModuleFamilyPrecomp,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedModuleInputFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseNerveComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomTriangleVariableEdges,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomCompositionInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomCompositionInputLifts,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedDiagonalStrictForget,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputStrictForget,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
