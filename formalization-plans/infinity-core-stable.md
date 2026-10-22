@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 実図式 fiber の5パスは `e75631846` に保存済み。今回の終対象比較・実 slice 自然性・極限錐比較の5新規モジュール、Stable 集約、両監査、本計画の9パスも検証成功、保存対象とする。他レーンの変更は保持する。
+- 実図式 fiber は `e75631846`、終対象比較・実 slice 自然性・極限錐比較の9パスは `d7eaa9a21` に保存済み。今回の計画更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -99,7 +99,7 @@
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- D7・β3・β5 は完了。実 comma 関手と普遍単位は `cdf04de6d`、固定頂点の左 fibration は `7d73c69ed`、図式固定 fiber の実比較は `e75631846`。今回の `TerminalComparisonIntervalFamily`・`SliceEvaluationNaturality`・`TerminalRightFibrationComparison`・`TerminalComparisonFiberTransfer`・`LimitConeTerminalComparison` は12公開宣言。終対象への任意の比較を射影した同じ実区間族を構成し、比較の選択独立性、実 slice 評価の後合成自然性、right fibration の場合の同値性を証明した。二つの自明 Kan fibration の span と標準の slice–錐 fiber 同値を使い、極限錐への任意の比較の同じ実区間族も同値にした。既存 F1B の前合成式を再利用。対象・両集約（10972 jobs）・12明示署名・両全体監査が終端0（Derived 20560宣言／2263モジュール、Stable 21675／2533、許容三公理のみ）。ログは `/tmp/d-terminal-cone-comparison-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
+- D7・β3・β5 は完了。実 comma 関手と普遍単位は `cdf04de6d`、固定頂点の左 fibration は `7d73c69ed`、図式固定 fiber の実比較は `e75631846`。`d7eaa9a21` の `TerminalComparisonIntervalFamily`・`SliceEvaluationNaturality`・`TerminalRightFibrationComparison`・`TerminalComparisonFiberTransfer`・`LimitConeTerminalComparison` は12公開宣言。終対象への任意の比較を射影した同じ実区間族を構成し、比較の選択独立性、実 slice 評価の後合成自然性、right fibration の場合の同値性を証明した。二つの自明 Kan fibration の span と標準の slice–錐 fiber 同値を使い、極限錐への任意の比較の同じ実区間族も同値にした。既存 F1B の前合成式を再利用。対象・両集約（10972 jobs）・12明示署名・両全体監査が終端0（Derived 20560宣言／2263モジュール、Stable 21675／2533、許容三公理のみ）。ログは `/tmp/d-terminal-cone-comparison-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
 - 次は `/tmp/d-vertex-fiber-swap.lean`（6宣言）と `/tmp/d-loop-cone-vertices.lean`（10）を本体へ統合する。予定は `Stable/VertexFiberSwap.lean`（二重 fiber 交換・輸送の3宣言）、`Stable/FixedApexConeFiber.lean`（錐頂点評価と二重 fiber 同型の3）、`Stable/LoopConeFixedApexComparison.lean`（10）。二つの strict fiber の順序交換と全錐への包含式、元の loop cospan と普遍錐の頂点値、固定頂点の錐を `loopConeObjects` へ戻す実 lift、元の比較を底の図式を全時刻で固定して錐圏へ持ち上げる `loopConeFixedApexComparison` と同じ区間族の同値性まで試作が終端0。16明示署名・公理検査も終端0、警告なし。ログは `/tmp/d-vertex-fiber-swap-signatures.log`・`/tmp/d-loop-cone-vertices-signatures.log`。本体未統合なので不存在・未追跡を確認して登録する。その後、この同じ lift を `loopConeSourceDiagramFiberIso` と厳密交換同型に照合し、`F1B.kanUnitCommaFiberIntervalIso` を通した既存 `loopConeClassifierDiagramFiberMap` と同じ円柱で一致させる。各図式の比較同値性から、既存 `loopConeClassifierSourceFiberMap_isQCatEquivalence_of_diagramFibers` に渡す。任意の点ごとの同値で代用しない。全錐側への始対象性の移送、押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
 
 ## 目標と原典
