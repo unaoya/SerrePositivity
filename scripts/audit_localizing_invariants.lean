@@ -715,7 +715,20 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeBoundary,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedClassComparison,
     `SerrePositivity.KST.LocalizingInvariants.ProSpectrumEventualConnectivity,
-    `SerrePositivity.KST.LocalizingInvariants.InvariantEventualConnectivity]
+    `SerrePositivity.KST.LocalizingInvariants.InvariantEventualConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.CochainBiprodQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.CochainCoconeShiftCoordinates,
+    `SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeMapQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackSourceMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackSourceQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbationMapFrom,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovAlgebraPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellHomotopyPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovHomotopyPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedInclusion,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovUnderlyingPullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeInclusion,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackConeLimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
