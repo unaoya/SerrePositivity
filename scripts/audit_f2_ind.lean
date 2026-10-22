@@ -1,6 +1,19 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalJoin_last
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection_last
+#check @SerrePositivity.InfinityCategories.F2.Ind.conePointSliceBoundaryRelativeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismCone_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismBaseCone_fixed
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismCone_tip_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismCone_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismBaseCone_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismConeBoundaryRelativeIso
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection_last
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrismConeBoundaryRelativeIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneLiftFunctorIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_outerPair

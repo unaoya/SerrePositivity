@@ -456,3 +456,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.JoinAssociatorOuterPair
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceLift
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IntervalTerminalSliceLast
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismCone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismConeComparison
