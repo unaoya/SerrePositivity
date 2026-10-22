@@ -56,3 +56,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegValueCompar
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegPointRepresentatives
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPointRepresentatives
 public import SerrePositivity.InfinityCategories.F2.Compact.FunctorComponentComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegComposition
+public import SerrePositivity.InfinityCategories.F2.Compact.PointRepresentativesComposition
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegPointTransfer

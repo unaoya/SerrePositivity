@@ -631,3 +631,27 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @componentRepresentative_of_valueIso
 #print axioms componentRepresentative_of_valueIso
+
+#check @spaceInfinityEdgeValue_isQCatEquivalence
+#print axioms spaceInfinityEdgeValue_isQCatEquivalence
+
+#check @coconeVertexEdge
+#print axioms coconeVertexEdge
+
+#check @coconeLegCompositionHomotopy
+#print axioms coconeLegCompositionHomotopy
+
+#check @componentRepresentative_of_triangle
+#print axioms componentRepresentative_of_triangle
+
+#check @HasCoconeLegPointRepresentatives
+#print axioms HasCoconeLegPointRepresentatives
+
+#check @hasCoconeLegPointRepresentatives_of_edge
+#print axioms hasCoconeLegPointRepresentatives_of_edge
+
+#check @hasCoconeLegPointRepresentatives_of_iso
+#print axioms hasCoconeLegPointRepresentatives_of_iso
+
+#check @colimitCoconeLeg_point_representative
+#print axioms colimitCoconeLeg_point_representative

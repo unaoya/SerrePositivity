@@ -58,7 +58,7 @@
   **(d) の実比較を構成。** 元の恒等図式の余錐から Idem 形状の任意 κ での κ-filtered 性を証明。同じ全 Idem 図式の小さい余極限により `ind_isIdempotentComplete` と `compactInd_isIdempotentComplete` を構成。
   `idemToCompactInd` は元の包含を保持する充満忠実な全比較。両 Yoneda の全因子化も厳密に一致。本質全射性と「全 compact Ind 対象が元の Yoneda 像の retract」の同値を証明。retract 回収自体は未証明。
   **元の値からの点の回収を証明。** 離散 Kan 標的の全ラベルで成分を分離し、`weakHomotopyEquivalence_mapPiZero_surjective` を元の始域の Kan 性なしに証明。
-  `coherentTotalKan_point_representative` は元の全空間 Kan 模型の任意の点を、元の一つの値から同じ比較射で成分まで回収。底の filtered 性も不要。元の脚の全一単体との一致・fiber 制限の実輸送・Kan 値への全自然比較も構成。`coherentTotalCoconeLeg_point_representative` は標準余錐の点を元の同じ脚の作用で回収。任意余錐への移送・恒等射の因子化は未完。
+  `coherentTotalKan_point_representative` は元の全空間 Kan 模型の任意の点を、元の一つの値から同じ比較射で成分まで回収。底の filtered 性も不要。元の脚の全一単体との一致・fiber 制限の実輸送・Kan 値への全自然比較も構成。`coherentTotalCoconeLeg_point_representative` は標準余錐の点を元の同じ脚の作用で回収。余錐同型と元の全合成三角形で任意の指定余極限余錐へ移送し、`colimitCoconeLeg_point_representative` を構成。恒等射の因子化は未完。
 - **残り**（依存順、粗い見積もり）：
   1. F2N-3(c) の有限余極限閉性：構成済みの元の全 Hom 極限錐を、filtered 余極限・有限極限の交換へ接続。HTT 5.3.4、12〜30時間。F1b の交換定理を読み取り専用で使用。
   2. F2N-3(d)・F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。実際の充満忠実な比較と必要十分判定は完成。F1 の単一 κ-filtered 表示は提供済み。compact 性による恒等射の一項への因子化と同じ retract の回収が残る。HTT 5.3.4.17・5.3.5、15〜40時間。
@@ -86,17 +86,17 @@
   `spaceUniverseCoconeSourceRepresentation`、`spaceUniverseCoconeVertexRepresentation`、`spaceUniverseDiagram_map_isColimit`、
   `yonedaInfinityMap_isKappaCompact`、`fullSubcomplexCovariantIso`、`ind_isKappaCompact_of_presheaf`、`indYoneda_isKappaCompact`、`colimitRepresentableCone_isLimit`、`colimitRepresentableRestriction_isLimit`、
   `ind_isIdempotentComplete`、`idemToCompactInd`、`idemToCompactInd_isFullyFaithful`、`idemToCompactInd_isEssentiallySurjective_iff_retracts`、
-  `weakHomotopyEquivalence_mapPiZero_surjective`、`coherentTotalKan_point_representative`。
+  `weakHomotopyEquivalence_mapPiZero_surjective`、`coherentTotalKan_point_representative`、`coconeLegFiberMap_valueIso`、`colimitCoconeLeg_point_representative`。
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。所有は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
   F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind（F2N-2）、F1b が filtered の交換・Ind 安定性（F2N-1・5）、N が compact・冪等完備化（F2N-3・4）。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の compact 余錐脚・点回収6モジュール19宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：compact 独立集約6830 jobs・全210宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
+- **未コミット**：なし（今回の compact 指定余錐への移送4モジュール8宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：compact 独立集約6843 jobs・全218宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   N-1〜4 の既存保存は今回も7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
 - **次の一手**：F2N-3(d)・F2N-4(e)。F1 は `isIndVertex_iff_singleFilteredPresentation`・元の指定 Ind 頂点を厳密に保つ `indVertexDensityCocone` を保存済み（正則 κ）。小さい κ-filtered な元の表現可能図式に compact 性を適用し、元の恒等射を一つの項へ因子化する。
-  `coherentTotalCoconeLeg_point_representative` は標準余錐の点を元の同じ脚の Kan 値の作用から回収。これを任意の余極限余錐へ、余錐同型と元の `legCompStruct` の三角形で移送。元の Hom の後合成との整合を保ち恒等射を因子化。同じ retract を `idemToCompactInd_isEssentiallySurjective_iff_retracts` へ代入。本質全射性は未完。
+  `colimitCoconeLeg_point_representative` を元の Hom の指定余極限へ適用。添字の二重 ULift を正規化し、`covariantRepresentableInfinity_cosliceIso` の全自然比較を元の脚の辺へ制限。元の coslice の輸送と Hom 後合成を照合し恒等射を因子化。同じ retract を `idemToCompactInd_isEssentiallySurjective_iff_retracts` へ代入。本質全射性は未完。
   (c) は F1b の F2N-1 a7 の一般 coherent filtered 余極限・有限極限交換を待つ。元の Hom の全極限表示と任意の図式への制限は保存済み。通常の filtered 図式の交換だけで一般 coherent 図式の閉性を完了扱いしない。F1・F1B・Ind は読み取り専用。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（いずれも本文照合済み）。
