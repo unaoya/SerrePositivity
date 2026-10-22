@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- canonical cell 比較と後続作用に関する augmentation 比較の自然性の6新規モジュール、Derived 集約、両監査、本計画の10パスを保存対象とする。対象・集約ビルド、9公開署名の型・公理・ソース検査と両全体監査は成功。次の raw 比較の前合成と二射影上の自然性6宣言は `/tmp/` で検証済み・未集約。他レーンの変更は変更しない。
+- canonical cell 比較と後続作用に関する augmentation 比較の自然性の6新規モジュール、Derived 集約、両監査、本計画の10パスを `6a818c9c6` に保存済み。対象・集約ビルド、9公開署名の型・公理・ソース検査と両全体監査は成功。次の raw 比較の前合成と二射影・指定切断後の自然性8宣言は `/tmp/` で検証済み・未集約。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 元の canonical `dgKernelCellModel_targetIso` と全体の `dgKernelDerivedInfinity_cellModelIso` を別模型へ比較する3補題を統合した。元の入力側比較と指定逆は保持している。続く3モジュールで、元の augmentation の resolved 比較と raw 比較の射の全関手自然性を、後続 kernel の K-flat 性を仮定せず統合した。次は `/tmp/d-beta5-augmentation-core-naturality.lean` を検証する。端点輸送による同じ全関手射、任意の dg 入力前合成による実射作用、二段前合成への整合性の5宣言は警告なし・許容三公理で検証済み（未集約）。これを元の二射影の表示へ移す `dgModuleAugmentationRawFactorCoreIso_hom_naturality` も警告なし・許容三公理で検証済み（計6宣言、未集約）。同じ指定入力切断で前合成した `dgModuleResolvedAugmentationRawFactorIso_hom_naturality` を現行 session 4859 で検査中。終了を確認するまで同じハンドルを poll し、観測 timeout で再起動しない。元の κ の raw 計算式 `dgKernelDerivedInfinity_compIso_rawFactor_hom` と通常 tensor の実自然性に接続し、外側 kernel の平坦性を要求しない自然性を証明する。入力側の `dgKernelDerivedInfinity_sourceRestrictionIso` の自然性は未提供で、現存 κ 自然性の四端の右相対 K-flat 仮定をそのまま使うと原 kernel に平坦性を要求するため、この拡張が必要。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- 元の canonical `dgKernelCellModel_targetIso` と全体の `dgKernelDerivedInfinity_cellModelIso` を別模型へ比較する3補題と、元の augmentation の resolved/raw 比較の全関手自然性を統合・監査済み。後続 kernel の K-flat 性を仮定せず、元の入力側比較と指定逆を保持した。次は `/tmp/d-beta5-augmentation-core-naturality.lean` の8宣言を分割統合する。端点輸送で同じ射を保つ定義と異種等式、任意 dg 入力前合成の射作用と二段前合成への整合性、元の二射影上の `dgModuleAugmentationRawFactorCoreIso_hom_naturality`、SSet 上の切断・射影による四角形移送、同じ指定切断後の `dgModuleResolvedAugmentationRawFactorIso_hom_naturality` まで警告なし・許容三公理で検証済み（未集約）。一括証明の kernel timeout を一般の SSet 上の移送補題への分割で解消し、上限を変更していない。実行中の試作・監査はない。続いて実後続双加群射 g の作用をこの前合成作用へ同定し、元の κ の raw 計算式 `dgKernelDerivedInfinity_compIso_rawFactor_hom` と通常 tensor の実自然性へ接続する。まず第一 kernel を固定し、外側 kernel の平坦性を要求しない右変数自然性を証明する。入力側の `dgKernelDerivedInfinity_sourceRestrictionIso` の自然性は未提供で、現存 κ 自然性の四端の右相対 K-flat 仮定をそのまま使うと原 kernel に平坦性を要求するため、この拡張が必要。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
 
 ## 目標と原典
 
