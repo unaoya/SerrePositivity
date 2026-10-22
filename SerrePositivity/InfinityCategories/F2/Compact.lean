@@ -21,3 +21,14 @@ public import SerrePositivity.InfinityCategories.F2.Compact.UnstraighteningVerte
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPrism
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeTotalPrism
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniversePrism
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeVertexFiberIso
+public import SerrePositivity.InfinityCategories.F2.Compact.RepresentationPointedFiber
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseVertex
+public import SerrePositivity.InfinityCategories.F2.Compact.RepresentationDiagramComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconeCylinder
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseImage
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseImagePrism
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseFiberComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact

@@ -289,3 +289,114 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @coconeUniversePrism_projection
 #print axioms coconeUniversePrism_projection
+
+#check @coconeVertexFiberIso
+#print axioms coconeVertexFiberIso
+
+#check @coconeVertexFiberIso_hom_ι
+#print axioms coconeVertexFiberIso_hom_ι
+
+#check @representationPointedFiberMap
+#print axioms representationPointedFiberMap
+
+#check @representationPointedFiberMap_ι
+#print axioms representationPointedFiberMap_ι
+
+#check @representationPointedFiberMap_isQCatEquivalence
+#print axioms representationPointedFiberMap_isQCatEquivalence
+
+#check @coconeUniverseVertex_value
+#print axioms coconeUniverseVertex_value
+
+#check @coconeUniverseVertexMap
+#print axioms coconeUniverseVertexMap
+
+#check @coconeUniverseVertexMap_ι
+#print axioms coconeUniverseVertexMap_ι
+
+#check @coconeUniverseVertexMap_isQCatEquivalence
+#print axioms coconeUniverseVertexMap_isQCatEquivalence
+
+#check @coconeUniversePrism_one_fiber
+#print axioms coconeUniversePrism_one_fiber
+
+#check @representationDiagramComparison
+#print axioms representationDiagramComparison
+
+#check @representationDiagramComparison_pointed
+#print axioms representationDiagramComparison_pointed
+
+#check @representationDiagramComparison_projection
+#print axioms representationDiagramComparison_projection
+
+#check @representationDiagramComparison_isPrecompositionEquivalence
+#print axioms representationDiagramComparison_isPrecompositionEquivalence
+
+#check @uliftSimplexPrism_precomp
+#print axioms uliftSimplexPrism_precomp
+
+#check @uliftCoconeUnitCylinder
+#print axioms uliftCoconeUnitCylinder
+
+#check @coconeUniverseImage
+#print axioms coconeUniverseImage
+
+#check @coconeUniverseImage_vertex
+#print axioms coconeUniverseImage_vertex
+
+#check @coconeUniverseImage_val
+#print axioms coconeUniverseImage_val
+
+#check @coconeUniverseSourceComparison
+#print axioms coconeUniverseSourceComparison
+
+#check @coconeUniverseSourceComparison_pointed
+#print axioms coconeUniverseSourceComparison_pointed
+
+#check @coconeUniverseSourceComparison_projection
+#print axioms coconeUniverseSourceComparison_projection
+
+#check @coconeUniverseSourceComparison_isPrecompositionEquivalence
+#print axioms coconeUniverseSourceComparison_isPrecompositionEquivalence
+
+#check @coconeUniverseImagePrism
+#print axioms coconeUniverseImagePrism
+
+#check @coconeUniverseImagePrism_zero
+#print axioms coconeUniverseImagePrism_zero
+
+#check @coconeUniverseImagePrism_one
+#print axioms coconeUniverseImagePrism_one
+
+#check @coconeUniverseImagePrism_projection
+#print axioms coconeUniverseImagePrism_projection
+
+#check @coconeUniverseFiberIso
+#print axioms coconeUniverseFiberIso
+
+#check @coconeUniverseImage_fiber_weakEquivalence
+#print axioms coconeUniverseImage_fiber_weakEquivalence
+
+#check @coconeUniverseImage_isColimit_of_fiber_weakEquivalence
+#print axioms coconeUniverseImage_isColimit_of_fiber_weakEquivalence
+
+#check @spaceUniverseDiagram_map_isColimit
+#print axioms spaceUniverseDiagram_map_isColimit
+
+#check @spaceUniverseDiagram_preservesKappaFilteredColimits
+#print axioms spaceUniverseDiagram_preservesKappaFilteredColimits
+
+#check @ulift_mapJoinCocone_val
+#print axioms ulift_mapJoinCocone_val
+
+#check @mapJoinCocone_universe_comp
+#print axioms mapJoinCocone_universe_comp
+
+#check @presheafEvaluationUniverse_preservesKappaFilteredColimits
+#print axioms presheafEvaluationUniverse_preservesKappaFilteredColimits
+
+#check @representablePresheafInfinity_isKappaCompact
+#print axioms representablePresheafInfinity_isKappaCompact
+
+#check @yonedaInfinityMap_isKappaCompact
+#print axioms yonedaInfinityMap_isKappaCompact
