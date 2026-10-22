@@ -29946,3 +29946,87 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotRightEndMap
 #print axioms SerrePositivity.KST.SConstruction.dgOdotRightEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseLift_small
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseLift_small
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseInput
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputVertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputVertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotOriginalRightInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotOriginalRightInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightInputMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightInputMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightInputTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightInputTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightNuTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightNuTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightKTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightKTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectCompositionIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectCompositionIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_point
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToQuotient_point
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientRepresentableIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientRepresentableIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectNerveEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraQuotientPerfectNerveEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraToOriginalEnd
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraToOriginalEnd
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEndMap_realization
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEndMap_realization
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightMap_toEnd
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightMap_toEnd
+
+#check @SerrePositivity.KST.SConstruction.dgOdotOriginalRightToQuotient
+#print axioms SerrePositivity.KST.SConstruction.dgOdotOriginalRightToQuotient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightMap_toQuotient
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightMap_toQuotient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectAt
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectAt
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectClosedIso

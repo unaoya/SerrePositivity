@@ -2448,4 +2448,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
 public import SerrePositivity.KST.SConstruction.DGOdotInput
 public import SerrePositivity.KST.SConstruction.DGOdotQuotient
 
+public import SerrePositivity.KST.SConstruction.DGKUniverseInput
+public import SerrePositivity.KST.SConstruction.DGOdotInputTriangle
+public import SerrePositivity.KST.SConstruction.DGOdotPerfectComparison
+public import SerrePositivity.KST.SConstruction.DGOdotPerfectNerve
+public import SerrePositivity.KST.SConstruction.DGOdotRightAlgebraComparison
+public import SerrePositivity.KST.SConstruction.DGOdotRightQuotientComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
