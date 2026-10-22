@@ -8716,6 +8716,51 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.tensor_isKProjective,
       `SerrePositivity.EInfinity.coconeIdentityProjectionNullhomotopy]
 
+@[noinline] private def e2RequiredBatch164 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.quasiIso_of_epi_acyclicKernel,
+      `SerrePositivity.EInfinity.ComplexLimits.codisk,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHom,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHom_recovery,
+      `SerrePositivity.EInfinity.ComplexLimits.codisk_acyclic,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskFunctor,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskAdjunction,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskFunctor_map_homEquiv,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskFunctor_map_fibration,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskFunctor_map_quasiIso,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHomEquiv,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHomEquiv_apply,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHomEquiv_precomp,
+      `SerrePositivity.EInfinity.ComplexLimits.codiskHomEquiv_symm_precomp,
+      `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibrant_component_projective,
+      `SerrePositivity.EInfinity.ComplexLimits.homPostcompose_cofibrant_trivialFibration,
+      `SerrePositivity.EInfinity.ComplexLimits.homFunctor_cofibrant_isRightQuillen,
+      `SerrePositivity.EInfinity.ComplexLimits.tensorLeft_cofibrant_isLeftQuillen,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorMonomorphism_cofibration,
+      `SerrePositivity.EInfinity.ComplexLimits.complexDisk_component_projective,
+      `SerrePositivity.EInfinity.ComplexLimits.homPostcompose_degreewise_surjective,
+      `SerrePositivity.EInfinity.ComplexLimits.homPostcompose_cofibrant_fibration,
+      `SerrePositivity.EInfinity.ComplexLimits.identityCoconeSnd_boundary,
+      `SerrePositivity.EInfinity.ComplexLimits.identityCocone_hom_ext,
+      `SerrePositivity.EInfinity.ComplexLimits.identityCoconeHomEquiv,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomFromStandard_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomFromTensor_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomDoldKanIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeStandardFrame,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeStandardHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeCommonFrame,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomMiddle,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomFromStandard,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomFromTensor,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorFrame,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorAugmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorFrame_cofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorAugmentation_weak,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorFamily,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorFamilyAugmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensor_reedyCofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensor_homotopicallyConstant]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8749,7 +8794,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21065,3 +21110,56 @@ example (X : Complex A) (hX : (projectiveGeneratingCofibrations A).rlp.llp
 example (X : Complex A) : Homotopy (mappingCocone.fst (𝟙 X)) 0 :=
   coconeIdentityProjectionNullhomotopy X
 end e2NormalizedReedyFixtures
+
+section e2ProbeTensorQuillenFixtures
+universe e2ProbeTensorUniverse
+open CategoryTheory CategoryTheory.Limits MonoidalCategory HomotopicalAlgebra
+open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
+variable (A : Type e2ProbeTensorUniverse) [CommRing A]
+example (P : Complex A) (M : ModuleCat.{e2ProbeTensorUniverse} A) (n : ℤ) :
+    (P ⟶ codisk M n) ≃ (P.X n ⟶ M) := codiskHomEquiv P M n
+example (n : ℤ) :
+    HomologicalComplex.eval (ModuleCat.{e2ProbeTensorUniverse} A) (.up ℤ) n ⊣ codiskFunctor A n :=
+  codiskAdjunction A n
+example (n : ℤ) {M N : ModuleCat.{e2ProbeTensorUniverse} A} (q : M ⟶ N) [Epi q] :
+    (projectiveGeneratingCofibrations A).rlp ((codiskFunctor A n).map q) := by
+  rw [projectiveGeneratingCofibrations_rlp]
+  exact ⟨codiskFunctor_map_fibration A n q, codiskFunctor_map_quasiIso A n q⟩
+variable (P : Complex A) (hP : (projectiveGeneratingCofibrations A).rlp.llp
+  (0 : (HomologicalComplex.zero : Complex A) ⟶ P))
+example (n : ℤ) : Projective (P.X n) := projectiveCofibrant_component_projective P hP n
+example : letI := projectiveModelCategory A
+    SerrePositivity.Quillen.IsRightQuillen (homFunctor P) :=
+  homFunctor_cofibrant_isRightQuillen P hP
+example : letI := projectiveModelCategory A
+    SerrePositivity.Quillen.IsLeftQuillen (tensorLeft P) :=
+  tensorLeft_cofibrant_isLeftQuillen P hP
+example (n : ℕ) : (projectiveGeneratingCofibrations A).rlp.llp
+    (P ◁ (BarrattEccles.normalizedFunctor A).map (SSet.boundary.{0} n).ι) :=
+  normalizedTensorMonomorphism_cofibration P hP _
+example : letI := projectiveModelCategory A
+    reedyLeft simplex (cofibrations (Complex A)) (initial.to (normalizedSimplexTensor A P)) :=
+  normalizedSimplexTensor_reedyCofibrant A P hP
+example (X : Complex A) : letI := projectiveModelCategory A
+    reedyLeft simplex (cofibrations (Complex A))
+      (initial.to ((normalizedProbeTensorFrame A).obj X)) :=
+  normalizedProbeTensorFrame_cofibrant A X
+example (X : Complex A) (n : SimplexCategory) :
+    QuasiIso (((normalizedProbeTensorAugmentation A).app X).app n) :=
+  normalizedProbeTensorAugmentation_weak A X n
+example (X : (Complex A)ᵒᵖ) (Y : Complex A) :
+    SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence
+      (((normalizedProbeHomFromStandard A).app X).app Y) :=
+  normalizedProbeHomFromStandard_homotopyEquivalence A X Y
+example (X : (Complex A)ᵒᵖ) (Y : Complex A) :
+    SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence
+      (((normalizedProbeHomFromTensor A).app X).app Y) :=
+  normalizedProbeHomFromTensor_homotopyEquivalence A X Y
+example (X Y : Complex A) :
+    ((normalizedProbeTensorHom A).obj (Opposite.op X)).obj Y ≅
+      SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomSpace
+        (R := A) (D := Complex A) ((framedLimitProbeFunctor A).obj X) Y :=
+  normalizedProbeHomDoldKanIso A X Y
+
+end e2ProbeTensorQuillenFixtures
