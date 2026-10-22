@@ -355,7 +355,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionIsoNaturality,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomCompositionLimit,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowComposition,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowCompositionTriangles]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowCompositionTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexTwoEndpointPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeTwoEndpointPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPathEndpointSection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathSpace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathSpaceLimit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTwoEndpointPathSpace]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
