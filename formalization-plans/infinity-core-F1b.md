@@ -29,13 +29,13 @@
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  元の a6 模型三角形式は新長辺残余・raw 二面輸送・最後辺模型単位の三因子へ縮約済み。同じ指定二単体上の raw 普遍二辺三角形と、全第一辺選択空間上の全三角形・長区間輸送・固定長辺普遍輸送への全比較を構成。第一辺終点比較の最後辺輸送が全長辺比較と交換する全族の自然性を証明。元の定値第一辺・普遍第一辺を同じ選択空間へ入れ、元の実頂点での全 prism・fiber 終点の厳密な回収まで証明。
+  元の a6 模型三角形式を三因子へ縮約。全第一辺選択上の自然性の二実成分を元の指定比較へ同定し、新長辺残余を第一辺指定比較の最後辺輸送と普遍三角形比較の合成へ分解。逆・任意の実前後合成・元の模型残余への代入も証明。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9914 jobs、公理監査15162宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の全二単体の底・raw 普遍三角形・全第一辺選択上の全長辺比較と自然性・元の実頂点での評価を含む追加53明示宣言を型検査。
+  検証：三集約同時ビルド9943 jobs、公理監査15496宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  全第一辺比較の二実成分・指定第一辺比較の像・新長辺残余の分解・元の模型残余への代入を含む追加53明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -87,7 +87,7 @@
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  RawFirstChoiceTriangleComparison_first_transport は全第一辺選択上で、元の第一辺終点比較の最後辺輸送と全長辺比較の厳密な交換式。次は ConstantVertex・UniversalVertex 間の指定同型へ適用し、RelativeExtensionUniversalPrism_at_vertex・Endpoint_at_vertex で両辺の実 prism・終点を回収。二辺が同じ全持ち上げの指定長辺比較の恒等性で二成分を RawLastLongRemainderIso・RawUniversalTriangleComparison に同定し、新長辺残余を最初辺指定比較の最後辺輸送へ照合する。
+  RawLastLongNormalizedRemainderIso_eq_factorization は同じ新長辺残余の厳密な分解。IntervalModelRawLastRemainder_heq_factorization で元の模型残余にも代入済み。次はこの逆第一辺因子を RawUnitFiberTransportValueTo と合成し、RawUnitFiber_model_image により元の最初辺模型比較へ照合。残る普遍三角形の像を同じ全区間族の指定三角形比較へ戻す。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
