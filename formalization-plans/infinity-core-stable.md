@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- loop 二評価の準備は `e5ce2b1d1` に保存済み。今回の `Stable/LoopSourcePresentation.lean`・Stable 集約・両監査・本計画の5パスを保存する。他レーンの変更は保持する。
+- 始点表示は `da398660d` に保存済み。今回の全錐比較3新規モジュール・Stable 集約・両監査・本計画の7パスを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10955 jobs）。公理監査は Derived 20463 宣言／2247 モジュール、Stable 21576／2517。許容三公理のみ。今回までの保存対象1178新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10958 jobs）。公理監査は Derived 20480 宣言／2250 モジュール、Stable 21595／2520。許容三公理のみ。今回までの保存対象1181新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- D7・β3・β5 は完了。loop 切断・二評価の準備4宣言は `e5ce2b1d1` に保存済み。今回の `Stable/LoopSourcePresentation` は6宣言。二評価の実頂点式、元の同じ実 LoopSquare と全図式頂点の回収、任意の対象を始点に持つ LoopSquare の同型までの存在、同始点の任意の全図式族の比較を証明した。安定性・有限余極限の追加仮定なし。対象・両集約（10955 jobs）・6明示署名は成功。両全体監査も終端0（Derived 20463宣言／2247モジュール、Stable 21576／2517）。ログは `/tmp/d-loop-source-{target,aggregate,signatures,derived-audit,stable-audit}.log`。一般安定性判定は未完。
-- 次は固定した loop cospan の全錐を loop 頂点への slice で表示する比較と、終点を変える族の相対単位を統合する。`/tmp/d-loop-cone-classifier.lean` の5宣言は実 cospan 錐の頂点の同定、全錐の実 ∞ 圏と点上 slice の同値、底との厳密な可換式まで終端0。`Derived/RightFibrationTerminalRepresentation` の一般表示を使い、対象ごとに非普遍錐も含めて比較する。`/tmp/d-relative-terminal-section-unit.lean` の2宣言は、相対終対象の切断 r から id→p≫r の実関手辺と底 p 上で時刻に定値な全単体ホモトピーを構成し、明示署名・公理検査が終端0。点ごとの終点条件を `terminalBoundaryLifting_ihom_of_pointwise` で全パラメータへ移し、関手圏の strict fiber 内の終対象性を使う。両試作は本体未統合。これを universal cone 射影の切断へ適用して、全零角四角形から `unitComma Ω` への全関手を作る。各終点での同値を選ぶだけで代用しない。全関手の同値性、loop 四角形の押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
+- D7・β3・β5 は完了。loop 切断・二評価は `e5ce2b1d1`、実始点表示は `da398660d` に保存済み。今回の3モジュールは `RelativeTerminalSectionComparison`（4宣言）・`LoopCospanRepresentation`（5）・`LoopConeFamilyComparison`（2）。任意の二つの図式族の底が等しく終点族が各点で相対終対象なら、底を全時刻で固定する実関手辺と全単体ホモトピーを構成した。元の fixed cospan の非普遍錐も含む全錐の実 ∞ 圏を loop 頂点への点上 slice と同値にし、射影を厳密に保持。全錐から指定 universal loop 錐の族への全パラメータ比較も接続した。対象・両集約（10958 jobs）・11明示署名は成功。両全体監査も終端0（Derived 20480宣言／2250モジュール、Stable 21595／2520）。ログは `/tmp/d-loop-cone-comparison-{target,aggregate,signatures,derived-audit,stable-audit}.log`。一般安定性判定は未完。
+- 次は `/tmp/d-loop-cone-classifier-family-source.lean` の15宣言を `Stable/LoopConeClassifier.lean`（予定名）へ統合する。全 loop cospan 上の任意錐を射影の pullback `loopConeObjects` で構成し、底を固定した比較を錐頂点で評価。`loopConeClassifier` は `unitComma (loopDiagramEvaluation X 0 0)` への実関手で、始点と loop 図式の二射影を厳密に保持する。`loopConeClassifierSourceFiberMap` は始点固定ファイバーへの同じ実写像で、loop 図式への射影と厳密可換。`/tmp/d-loop-cone-classifier-family-ready.lean` は公開形式の15明示署名・公理検査が終端0、警告なし（source109行）。本体未統合なので不存在・未追跡を確認して登録・検証する。次の主対象はこの始点固定ファイバー射の同値性。固定 cospan の全錐表示と実比較ホモトピーを照合し、点ごとの任意同値では代用しない。全錐側の固定始点射影を left fibration として表示し、F1 の fiberwise 比較を使う案を検討中（未証明）。同値な始点評価の逆を左随伴とする unit の comma 始対象性は `/tmp/d-loop-universal-unit.lean` で別途検証中。押し出し普遍性、一般 fiber/cofiber と有限余極限も未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
 
 ## 目標と原典
 

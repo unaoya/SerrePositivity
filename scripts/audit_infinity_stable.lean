@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison
+import SerrePositivity.InfinityCategories.Stable.RelativeTerminalSectionComparison
+import SerrePositivity.InfinityCategories.Stable.LoopCospanRepresentation
 import SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation
 import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
@@ -4809,6 +4812,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison,
+
+
+    `SerrePositivity.InfinityCategories.Stable.RelativeTerminalSectionComparison,
+    `SerrePositivity.InfinityCategories.Stable.LoopCospanRepresentation,
+
     `SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation,
 
     `SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation,

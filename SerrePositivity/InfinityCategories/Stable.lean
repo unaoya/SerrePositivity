@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison
+public import SerrePositivity.InfinityCategories.Stable.RelativeTerminalSectionComparison
+public import SerrePositivity.InfinityCategories.Stable.LoopCospanRepresentation
 public import SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation
 public import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle
