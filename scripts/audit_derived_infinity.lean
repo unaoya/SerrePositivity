@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNegativeProductLaws
+import SerrePositivity.InfinityCategories.Derived.DGIntegerCoefficientTensor
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGMooreProduct
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNegativeProduct
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainProductComponents
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnit
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainNormalization
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCoefficientComplex
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleDegeneracy
@@ -4200,6 +4206,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNegativeProductLaws,
+
+
+    `SerrePositivity.InfinityCategories.Derived.DGIntegerCoefficientTensor,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGMooreProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNegativeProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainProductComponents,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnit,
+
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainNormalization,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCoefficientComplex,
 
