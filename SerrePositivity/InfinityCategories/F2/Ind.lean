@@ -346,3 +346,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberCoefficientColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
+public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeNativeRestriction
