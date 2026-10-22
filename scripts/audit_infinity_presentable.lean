@@ -101,3 +101,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_ι_π
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsCotensorIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedConeComparison_cotensor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanCone_isLimit_iff_bousfieldKanComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_forget
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_isLimit

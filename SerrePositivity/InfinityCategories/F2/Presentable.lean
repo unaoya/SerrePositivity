@@ -20,3 +20,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallInternalHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallStrictLimitExchange
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanConeContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.CardinalFilteredKanCones

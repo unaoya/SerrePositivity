@@ -45,11 +45,12 @@
 - 非可算正則 μ について、μ-small 形状の全単体と単体圏の全射の個数を同じ μ で評価。
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。全 coherent な Space の交換は未証明。
-- weighted sections の end 図式を関手的に構成し、元の誘導射・余極限脚を保つ μ-filtered 連続性を証明。
-  小さい poset の Bousfield–Kan 重みの μ-small 性と元の holim 関手の strict な保存、thin 圏の nerve の小ささも提供。
-- strict 錐族の各段階の元の Bousfield–Kan 比較が弱同値なら、同じ余極限錐の比較も弱同値であることを証明。
-  元の頂点族の余極限を頂点として保持し、全脚の回収と比較射の厳密な一致も証明。native な極限性への移送は未完。
-- 独立集約ビルド成功（7640 jobs）、公理監査 354 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- weighted sections の end と小さい poset の Bousfield–Kan 模型の μ-filtered strict 連続性を証明。元の誘導射・余極限脚を保持。
+- strict 錐族の比較の弱同値性を同じ余極限錐へ移送し、頂点・全脚・比較射の厳密な回収も証明。
+- 任意の内部 Hom と weighted sections の全自然な交換同型と、元の錐の比較射との整合性を証明。
+- Kan 値の任意の strict 錐の native な極限性を元の比較の弱同値性で検出する iff を証明。
+  小さい poset 上の strict な native 極限錐族の μ-filtered 余極限も native な極限錐。任意の coherent な族への移送は未完。
+- 独立集約ビルド成功（7645 jobs）、公理監査 382 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -83,9 +84,9 @@
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
-- `smallInternalHom_preservesCardinalFilteredColimits`、`smallSSetLimitColimitIso`
-- `weightedSectionsFunctor_preservesCardinalFilteredColimits`、`weightedSectionsCardinalFilteredIso_ι`
 - `cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence`
+- `weightedSectionsCotensorIso`、`weightedConeComparison_cotensor`
+- `kanCone_isLimit_iff_bousfieldKanComparison`、`cardinalFilteredKanConeColimit_isLimit`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -96,7 +97,7 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。strict 錐族の比較射の弱同値保存を、元の coherent な全図式・全錐の極限性へ移す。
+- 工程 (1) の濃度変更。under-section の共同復元で、strict な native 極限錐族の保存を任意の coherent な族へ移す。
   同じ native な μ-filtered 交換を証明し、μ-small 部分余極限の μ-compact 性を N の Hom 錐族で導く。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
   元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。
