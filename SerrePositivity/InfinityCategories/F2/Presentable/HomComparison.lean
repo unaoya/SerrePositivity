@@ -49,6 +49,15 @@ lemma cosliceComparisonOver_projection {C D : SSet.{u}} (G : C ⟶ D) (x : C _�
       pullback.snd (sliceUnderProjection (SSet.yonedaEquiv.symm x ≫ G)) G =
         sliceUnderProjection (SSet.yonedaEquiv.symm x) := pullback.lift_snd _ _ _
 
+/-- 標的の同じ共変 Hom を、元の関手による像の点を持つ coslice の分類へ戻す。 -/
+def covariantHomTargetCosliceIso {C D : SSet.{u}} [Quasicategory D]
+    (G : C ⟶ D) (x : C _⦋0⦌) :
+    FunctorIso (covariantRepresentableInfinity (G.app (Opposite.op ⦋0⦌) x))
+      (leftStraighteningInfinityDiagram
+        (sliceUnderProjection (SSet.yonedaEquiv.symm x ≫ G))) := by
+  rw [SSet.yonedaEquiv_symm_comp]
+  exact Compact.covariantRepresentableInfinity_cosliceIso _
+
 /-- 元の共変表現可能関手から、標的の同じ共変表現可能関手の制限への全自然な射。 -/
 def covariantHomComparison {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
     (G : C ⟶ D) (x : C _⦋0⦌) :
@@ -60,15 +69,10 @@ def covariantHomComparison {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
   let q := sliceUnderProjection (SSet.yonedaEquiv.symm x ≫ G)
   have : LeftFibration (pullback.snd q G) :=
     ⟨leftFibrations.pullback_snd q G (LeftFibration.mem (p := q))⟩
-  have e : FunctorIso (covariantRepresentableInfinity (G.app (Opposite.op ⦋0⦌) x))
-      (leftStraighteningInfinityDiagram q) := by
-    dsimp only [q]
-    rw [SSet.yonedaEquiv_symm_comp]
-    exact Compact.covariantRepresentableInfinity_cosliceIso _
   exact (Compact.covariantRepresentableInfinity_cosliceIso x).hom ≫
     leftClassificationHom p (pullback.snd q G) (cosliceComparisonOver G x)
       (cosliceComparisonOver_projection G x) ≫
     (leftStraighteningInfinityDiagram_baseChangeIso q G).inv ≫
-    (e.precomp ((SSet.uliftFunctor.{u + 1, u}).map G)).inv
+    ((covariantHomTargetCosliceIso G x).precomp ((SSet.uliftFunctor.{u + 1, u}).map G)).inv
 
 end SerrePositivity.InfinityCategories.F2.Presentable

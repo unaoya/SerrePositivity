@@ -36,3 +36,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationEdge_evaluation_square
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationFiberEvaluation_original_edge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_cosliceFiber_isEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparison_component_isIso_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomComparison_colimit_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_of_compact_colimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_yoneda_pinchedHomMap_isEquivalence

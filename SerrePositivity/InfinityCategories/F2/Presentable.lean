@@ -10,3 +10,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparisonFibers
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomClassificationEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomFiberEvaluationEdge
+public import SerrePositivity.InfinityCategories.F2.Presentable.IndGeneratorMapping
