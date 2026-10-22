@@ -730,3 +730,30 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @compactIndOmegaEquivalence
 #print axioms compactIndOmegaEquivalence
+
+#check @ulift_mem_degenerate_iff
+#print axioms ulift_mem_degenerate_iff
+
+#check @uliftNondegenerateEquiv
+#print axioms uliftNondegenerateEquiv
+
+#check @finite_ulift_iff
+#print axioms finite_ulift_iff
+
+#check @finite_smallSimplicialSet
+#print axioms finite_smallSimplicialSet
+
+#check @isFilteredInfinity_ulift
+#print axioms isFilteredInfinity_ulift
+
+#check @isColimitCone_of_terminal_values
+#print axioms isColimitCone_of_terminal_values
+
+#check @covariantRepresentableValue_isTerminal_of_initial
+#print axioms covariantRepresentableValue_isTerminal_of_initial
+
+#check @isKappaCompact_of_isInitialVertex
+#print axioms isKappaCompact_of_isInitialVertex
+
+#check @isCompact_of_isInitialVertex
+#print axioms isCompact_of_isInitialVertex

@@ -74,3 +74,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.FilteredRetraction
 public import SerrePositivity.InfinityCategories.F2.Compact.IndCompactRetraction
 public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndCompletion
+public import SerrePositivity.InfinityCategories.F2.Compact.FiniteUniverse
+public import SerrePositivity.InfinityCategories.F2.Compact.FilteredUniverse
+public import SerrePositivity.InfinityCategories.F2.Compact.TerminalApexColimit
+public import SerrePositivity.InfinityCategories.F2.Compact.InitialCompact
