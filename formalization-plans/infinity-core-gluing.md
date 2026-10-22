@@ -4,7 +4,7 @@
 > F1b の F2L-2〜4（Cat_∞ の lax pullback、安定性）を読み取り専用で使い、dg gluing の dg nerve が lax pullback であることを証明する。
 > 用途は K-基盤 2（Tamme・Land–Tamme）の対象供給と、⊙ の Verdier 商の dg 側の同定。
 
-## 引き継ぎ（2026-10-22）
+## 引き継ぎ（2026-10-23）
 
 ### 現在地
 - 工程 (a) 完了。`DGGluingObject` の対象、比較差 `gμ − νf` の mapping cocone としての実 Hom 複体、全次数の微分・単位・合成・結合律を構成。
@@ -37,7 +37,7 @@
   任意複体の厳密な引き戻しを実 pinched 空間へ移す。同じ path 空間同型は両射影を保存し、零複体への実ホモトピー同値と空間模型での同値も供給。
   同じ恒等 cocone の分解用複体を二端点 path に用い、元の gluing Hom からの写像の始終点を νf・gμ、primitive を元の比較 cochain と厳密に同定。
   同じ二端点の厳密引き戻しを構成。次数別切断から端点対の Kan fibration を得て、元の Hom 空間模型を頂点とする ∞ 極限錐・両脚を供給。
-  直和複体の実空間模型を直積へ厳密に同定。元の二作用の直積による引き戻し・∞ 極限錐を構成。係数の二端点 path を同じ係数空間内の通常区間族へ両端点を保って同値に移し、元の gluing Hom から通常 path 引き戻しへの実比較のホモトピー同値性を証明。
+  直和複体の実空間模型を直積へ厳密に同定。元の二作用の直積による引き戻し・∞ 極限錐を構成。係数の二端点 path を同じ係数空間内の通常区間族へ両端点を保って同値に移し、元の gluing Hom から通常 path 引き戻しへの実比較のホモトピー同値性を証明。共通宇宙と canonical な実導来係数 Hom へ移した同じ比較も同値。全区間族・左右射影と、νf・gμ の導来像である両端を回収。
   任意の次数別全射な鎖写像の相対 horn を指定最上位成分・削除方程式から充填。擬同型性なしの Kan fibration と、元の cocone 空間を頂点とする旧 path の ∞ 極限錐も供給。
   β5 の実半自由分解・係数の準同型 span・二 augmentation の厳密可換四角形を構成。同じ全比較 cochain の円柱・全空間ホモトピー・鎖ホモトピーを元の nerve Hom 作用へ照合。
   射影的入力なら半自由出力 Hom 射影は準同型。同じ切断から元の導来 Hom 作用の同値性を証明。代表加群の canonical な係数比較は、模型・端点同型を除き一般宇宙の元の作用を厳密に回収。
@@ -71,7 +71,7 @@
 - `dgGluingUniverseHomMappingIso`・`dgGluingLaxHomMappingComparison`・`dgGluingLaxHomMappingComparison_source`
 - `dgGluingLaxHomPullbackComparison` と `_arrow_transport`・`_inputs_transport`、`dgGluingUniverseDerivedNerveLaxComparison_fullyFaithful_iff`
 - `dgGluingHomTwoEndpointPath_isPullback`・`dgGluingHomTwoEndpointPath_primitive`・`dgGluingHomTwoEndpointPathSpaceCone_isLimit`・`dgGluingTwoEndpointPathSpaceCone_path`
-- `dgGluingComplexPinchedBiprodIso`・`dgGluingHomTwoEndpointProductCone_isLimit`・`dgGluingCoefficientIntervalPathComparison_equivalence`・`dgGluingHomCoefficientPathPullbackComparison_equivalence`
+- `dgGluingHomCoefficientPathPullbackComparison_equivalence`・`dgGluingDerivedHomCoefficientPathComparison_equivalence` と `_path`・`_inputs`、`dgGluingDerivedHomCoefficientIntervalPath_start`・`dgGluingDerivedHomCoefficientIntervalPath_end`
 - `dgGluingPinchedChainMap_fibration`・`dgGluingCoconePathSpaceProjection_fibration`・`dgGluingCoconePathSpaceCone_isLimit` と `_path`・`_base`
 - `dgGluingModuleDerivedHomMap_equivalence`・`dgGluingCanonicalCoefficientMappingComparison` と `_equivalence`・`_universe_action`
 - `dgGluingUniverseLaxComparison_vertex_image`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
@@ -95,12 +95,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
-  次は `dgGluingHomCoefficientPathPullbackComparison` の通常係数 path 模型と `dgGluingArrowHomCompositionCone` を、同じ augmentation prism の Hom 作用を保って比較する。
-  canonical な係数比較と元の augmentation prism を保って両極限錐を比較し、全引き戻し比較の同値性を充満忠実性の判定へ適用する。
+  次は `dgGluingDerivedHomCoefficientPathComparison` の実導来係数 Hom 内の path 模型と `dgGluingArrowHomCompositionCone` を、同じ augmentation prism の Hom 作用を保って比較する。
+  canonical な係数移送の同値性・全区間族と端点は証明済み。元の augmentation prism の二三角形へ照合し、全引き戻し比較の同値性を充満忠実性の判定へ適用する。
 
 ### 未コミット・既知の問題
-- 378モジュール・集約ビルド成功（7295 jobs）、公理監査4634宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開27署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
+- 387モジュール・集約ビルド成功（7307 jobs）、公理監査4681宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開32署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

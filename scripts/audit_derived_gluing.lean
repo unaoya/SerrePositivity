@@ -382,7 +382,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientIntervalPath,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientPathPullback,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientPathPullbackEquivalence,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientPathEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientPathEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ProductHomotopyEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KanIntervalPathTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KanPathPullbackTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePathPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomCoefficientPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPathLegs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePathPostEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedHomCoefficientPathEndpoints]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
