@@ -2090,4 +2090,9 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyUni
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComposition
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationReassociate
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationWhisker
+public import SerrePositivity.KST.SConstruction.PointedMappingLocalizedImage
+public import SerrePositivity.KST.SConstruction.SuspensionLocalizedEquivalence
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyLeftEquivalence
+public import SerrePositivity.KST.SConstruction.ClosedTensorMappingLaws
+public import SerrePositivity.KST.SConstruction.PointedTensorEnrichedFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

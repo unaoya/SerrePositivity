@@ -25476,3 +25476,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PointedSpanDiagram.diagram
 #print axioms SerrePositivity.KST.SConstruction.PointedSpanDiagram.diagram
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingImage_edge
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingImage_edge
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingImage
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingImage
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingImage_mk
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingImage_mk
+
+#check @SerrePositivity.KST.SConstruction.pointedMappingImage_eq_of_component
+#print axioms SerrePositivity.KST.SConstruction.pointedMappingImage_eq_of_component
+
+#check @SerrePositivity.KST.SConstruction.suspensionImage_isIso_of_inverse_components
+#print axioms SerrePositivity.KST.SConstruction.suspensionImage_isIso_of_inverse_components
+
+#check @SerrePositivity.KST.SConstruction.suspensionImage_isIso_of_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.suspensionImage_isIso_of_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.closedTensorMapping_curry'
+#print axioms SerrePositivity.KST.SConstruction.closedTensorMapping_curry'
+
+#check @SerrePositivity.KST.SConstruction.closedTensorMapping_id
+#print axioms SerrePositivity.KST.SConstruction.closedTensorMapping_id
+
+#check @SerrePositivity.KST.SConstruction.closedTensorMapping_parameter
+#print axioms SerrePositivity.KST.SConstruction.closedTensorMapping_parameter
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMapping_vertex
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMapping_vertex
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor_hom
