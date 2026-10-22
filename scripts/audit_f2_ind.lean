@@ -1,6 +1,18 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_pre
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_square
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSliceCoconeUncurry_fixedSource
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalSliceFamily_sourceTip
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalCoconeFamily_terminalEdge
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_tip
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_square
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_tip
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.coneMap_rightAnodyne
 #check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_naturality
 #check @SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_projection

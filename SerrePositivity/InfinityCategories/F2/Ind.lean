@@ -486,3 +486,17 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismTermin
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedRelativeLiftBoundary
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrismTerminalRelativeIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedRelativeLiftRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeSourceRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeFixedSource
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedRelativeLiftSquareRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalSliceFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalCoconeFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismFamily
