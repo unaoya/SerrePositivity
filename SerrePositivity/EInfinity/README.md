@@ -2450,3 +2450,12 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 `freeNormalizedHomFromDoldKan_homotopyEquivalence` は元の標準自由 probe Hom と同じ実 DK Hom から共通 Kan Hom への全自然な実弱 span。
 `freeNormalizedProbeHomAdjunctionIso_augmentation` と `freeNormalizedProbeDoldKanIso_augmentation` は全単体次数で同じ自由単位・augmentation を回収する。
 これらの全比較と既存 D(R) 側の実 Hom span・U の作用の全パラメータ族での整合は未証明。
+
+`ComplexLimits.doldKanHomPinchedIso_chainMap` は元の実 DK/pinched 同型の任意 Hom 鎖写像への自然性。
+実 Moore・smart 切断・Γ 写像を通じて同じ比較の前後作用を保持する。
+`normalizedTensorPinchedIso_precomp_family` は任意 K の全区間族で同じ複体射の前合成を回収する。
+小ささの追加仮定は不要で、全複体の dg nerve に適用できる。
+`BarrattEccles.freeUnitNormalizedHom_family` は元の自由単位への同じ全族公式の代入。
+`freeDerivedHomFromStandard`・`freeDerivedHomToCommon`・`freeDerivedHomToUnderlying` は
+同じ半自由標的の正規化 Hom で接合した実 span の三射で、いずれもホモトピー同値。
+同じ U の ∞ 作用と元の自由単位を結ぶ全族の三角形、∞ 極限保存、G1′ は未完了。
