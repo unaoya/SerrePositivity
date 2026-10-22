@@ -2318,9 +2318,15 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `kanHammockHomPinchedMap_app_val` は端点輸送後も同じ coherent 単体の値を保持する。
 `cofibrantSourceRoofProductCommaNativePrism_one` は実一端と元の NativePinchedMap の slice 像の厳密な等式。
 `cofibrantSourceRoofProductCommaNativePrism_one_evaluation` は全三角形の一端条件 ht 本体。
-実 native prism の零端と標準右脚の同定、
-native roof の全三角形と hR 本体、
-left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`TerminalCoconeSimplex.diagram_join` は通常右余錐の元の全有限単体表示。
+`CoherentRightCone.diagram_eq_order` と `RoofPrefix.simplex_zero` は零端の全 Hom を同定する。
+`RoofPrefix.prism_zero_uncurry` は同じ元の通常右余錐の全 join 写像との厳密な一致。
+`cofibrantSourceRoofProductCommaNativePrism_zero_evaluation` は零端条件 hb 本体。
+`cofibrantSourceRoofProductCommaNative_triangle` は元の EvaluationIso.hom と
+同じ NativeIntervalCell の合成が元の RightCell となる全関手圏の三角形 hN。
+`cofibrantSourceRoofProductReference_triangle` は追加入力なしの hR 本体。
+`cofibrantSourceRoofMap_isLeftCofinal` は元の実屋根写像自身の left cofinal 性。
+標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。

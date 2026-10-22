@@ -1,0 +1,81 @@
+module
+
+public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZeroSlice
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrism
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofProductFunctorCell
+
+/-!
+# 元の実 native prism の零端は同じ通常右脚の全円柱
+
+概要：零端の通常右余錐表示を任意可換環の実 comma へ代入する。
+方針：同じ頂点表示の等号と全 slice 単体の値の一致を使う。
+規約：元の qY・元の全右脚・元の円柱を保持する。
+使われ方：native roof 全三角形の零端条件 hb。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open CategoryTheory Limits SSet MonoidalCategory SimplicialLocalization
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+
+private lemma uncurry_point_ext {S E : SSet.{u}} {p q : (Δ[0] : SSet.{u}) ⟶ E}
+    (h : p = q) (f : S ⟶ sliceOver p) (g : S ⟶ sliceOver q)
+    (hv : ∀ (n : ℕ) (a : S _⦋n⦌), (f.app (Opposite.op ⦋n⦌) a).val =
+      (g.app (Opposite.op ⦋n⦌) a).val) : sliceOverUncurry f = sliceOverUncurry g := by
+  subst q
+  have he : f = g := by
+    apply SSet.hom_ext
+    rintro ⟨⟨n⟩⟩
+    apply ConcreteCategory.hom_ext
+    intro a
+    exact Subtype.ext (hv n a)
+  rw [he]
+
+variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
+  (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+
+lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
+    sliceOverUncurry (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
+      (F1B.kanNerveCoconeEquiv (Cocone.mk
+        (show (cofibrantAlgebraRelativeCategory A).category from Y)
+        (cofibrantSourceRoofProductCommaRightLeg A X Y b))).val ≫
+      hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) := by
+  let P := RoofPrefix.prism (cofibrantAlgebraRelativeCategory A)
+    (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
+    (cofibrantSourceRoofProductCommaRightLeg A X Y b)
+    (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f)
+  have hq := congrArg (fun z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌ =>
+    SSet.yonedaEquiv.symm z)
+    (hammockLocalizationNerveMap_vertex (cofibrantAlgebraRelativeCategory A)
+      (show (cofibrantAlgebraRelativeCategory A).category from Y))
+  refine (uncurry_point_ext hq
+    (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b)
+    (prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
+  exact RoofPrefix.prism_zero_uncurry (cofibrantAlgebraRelativeCategory A)
+    (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
+    (cofibrantSourceRoofProductCommaRightLeg A X Y b)
+    (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f)
+
+lemma cofibrantSourceRoofProductCommaNativePrism_zero_evaluation :
+    (β_ (nerve (cofibrantSourceRoofProductComma A X Y b)) (Δ[1] : SSet.{u + 1})).hom ≫
+      rightMappingSpacePrism _ ≫ sliceOverUncurry
+        (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
+    (cofibrantSourceRoofProductCommaRightHomotopy A X Y b).h := by
+  rw [cofibrantSourceRoofProductCommaNativePrism_zero_uncurry A X Y b]
+  have h := FrameHom.nerveCoconePrism_eq_natTrans
+    (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (Cocone.mk (show (cofibrantAlgebraRelativeCategory A).category from Y)
+      (cofibrantSourceRoofProductCommaRightLeg A X Y b))
+  exact (congrArg (fun f => f ≫
+    hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) h)
+
+end SerrePositivity.EInfinity.BarrattEccles
