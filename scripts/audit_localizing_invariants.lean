@@ -890,7 +890,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ZeroComplexHomology,
     `SerrePositivity.KST.LocalizingInvariants.ProZeroComplexReflection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroPro,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroValues]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroValues,
+    `SerrePositivity.KST.LocalizingInvariants.ProCospanBaseChange,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackIdentity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackSquareLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroBaseChange,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroBaseFactor]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
