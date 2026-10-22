@@ -2531,3 +2531,15 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorElementSelectedCochain_image` は元の列への同じ後合成での回収式。
 大域 cone/prism 自体と全 HA 方程式・全自然性、元の pinched 族との大域比較は未完了。
 これらを保った標準 U 単位誘導射の弱同値性・∞ 極限保存・G1′も未完了。
+
+`normalizedTensorConeData` は元の全単体列に始点 X を加えた実 cone の生の単体データ。
+始点を含む成分は同じ選択普遍 cochain に次数 k の `k.negOnePow` を掛けたもの。
+この符号は pinched 線形削除方程式から left cone の HA 方程式へ移るためのもの。
+他の成分は元の frame 図式を閉 nerve に送った同じ通常単体から取る。
+`normalizedTensorConeData_hom_mixed` と `_hom_ordinary` は実成分を同じ元の射へ回収する。
+`normalizedTensorConeData_tail` は始点を除く面が元の frame 単体であるという全成分の等式。
+`normalizedTensorConeData_equation_without_zero` は始点を含まない全成分の HA 方程式。
+`normalizedTensorConeData_equation_pair` は全ての二点成分の HA 方程式。
+`normalizedTensorConeEdgeSimplex` は各元の単体要素への実 cone 辺を与える。
+始点を含む三点以上の混合 HA 方程式と全作用素への自然性は未証明。
+したがって全次数の実 cone/prism と元の大域 pinched 族との比較、U の∞極限保存・G1′は未完了。
