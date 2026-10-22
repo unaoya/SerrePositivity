@@ -41,11 +41,10 @@
   Yoneda 円錐同型を標準 Hom 円錐比較で回収し、右係数を同じ右 Yoneda 円錐への kernel 全 Hom 作用と同定。
   左右の標的同型を揃え、`dgGluingHomConeKernelIso` で実 Hom 円錐を標準加群円錐への加群 comma Hom と同定。
   augmentation の同じ全 dg 自然な境界から標準円錐→選んだ対象の実閉 comma 射を構成し、両成分の K の代表同型を回収。
-  任意の加群 comma 試験対象からの同じ実後合成はホモトピー同値であり、その順射の厳密な一致も証明。
-  `dgGluingHomConeKernelRepresentativeEquiv` で元の Hom 円錐を選んだ対象の kernel 表示への Hom にホモトピー同値で移す。
-  native/kernel Hom の実鎖同型を構成し、両射影・第三 cochain・閉単位を厳密に回収した。
-  `dgGluingHomConeNativeEquiv` は元の両圏の前三角性から、同じ円錐対象への native Hom との点ごとの実ホモトピー同値を供給。
-  全次数合成との整合性、試験対象に関する全 dg 自然性、零・シフトの閉性は未完。
+  任意の加群 comma 試験対象からの実後合成はホモトピー同値。`dgGluingHomConeKernelRepresentativeEquiv` で元の Hom 円錐を同じ代表対象への kernel Hom に移す。
+  native/kernel Hom の実鎖同型は両射影・第三 cochain・閉単位・全整数次数の合成を厳密に保存する。
+  同じ二比較の合成 `dgGluingToKernelComma` を構成。`dgGluingHomConeNativeEquiv` は同じ円錐対象への点ごとの実ホモトピー同値。
+  試験対象に関する円錐比較の全 dg 自然性、零・整数シフトの閉性は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -73,6 +72,7 @@
 - `dgGluingHomConeKernelIso`・`dgGluingKernelConeRepresentativeMap`・`dgGluingKernelConeRepresentativeMap_source_homotopy`
 - `dgGluingCoconeExtract_isIso`・`dgGluingCommaPostHomotopy_isIso`・`dgGluingHomConeKernelRepresentativeEquiv`
 - `dgGluingKernelHomIso`・`dgGluingKernelHomIso_identity`・`dgGluingHomConeNativeEquiv`
+- `dgGluingCommaToKernel`・`dgGluingKernelHomIso_factorization`・`dgGluingToKernelComma`・`dgGluingKernelHomIso_composition`
 
 ### 残り（依存順）
 1. (a) 残り：零・シフト・cone の全 dg 自然な表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -91,15 +91,15 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingKernelHomIso` の全次数合成との整合性を証明し、同じ kernel 表示への実 dg 関手を得る。
-  `dgGluingHomConeNativeEquiv` の順射について、試験対象に関する全 dg 自然性を揃え、
-  Yoneda 加群円錐の K の同型へ接続する。零・整数シフトも構成し、`dgRepresentableHomotopyProperty` の三角的閉性へ進む。
+- `dgGluingToKernelComma` の合成保存を使い、円錐包含と第三 cochain を native 側へ回収する。
+  それらから全 dg 自然な Yoneda 加群円錐→代表加群の射を作り、既存の点ごとの Hom 同値との一致を証明。
+  射影的加群間の準同型性から K の同型へ接続する。零・整数シフトも構成し、`dgRepresentableHomotopyProperty` の三角的閉性へ進む。
   点ごとの Hom 複体のホモトピー同値だけでは、全 dg 自然な加群としての円錐表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 76モジュール・集約のビルド成功（4992 jobs）、公理監査1517宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要15署名も検査済み。
-  新規4モジュール、集約・監査・本計画の専有7パスだけを保存。他レーンの差分は含めない。
+- 85モジュール・集約のビルド成功（5001 jobs）、公理監査1677宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要27署名も検査済み。
+  新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

@@ -80,7 +80,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomProjections,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomIdentity,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeNativeRepresentation]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeNativeRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelColumnComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TensorPrimitiveTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelCompositionMaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelPrimitives,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelFunctor]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

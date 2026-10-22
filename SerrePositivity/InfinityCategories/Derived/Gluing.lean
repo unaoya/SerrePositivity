@@ -75,3 +75,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomCompari
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomProjections
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomIdentity
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeNativeRepresentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelColumnComposition
+public import SerrePositivity.InfinityCategories.Derived.Gluing.TensorPrimitiveTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelProjections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelCompositionMaps
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelPrimitives
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelFunctor
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomFactorization
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelFunctor
