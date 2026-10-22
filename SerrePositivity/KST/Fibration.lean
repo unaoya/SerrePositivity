@@ -467,3 +467,8 @@ public import SerrePositivity.KST.Fibration.DGKSBoundaryPi
 public import SerrePositivity.KST.Fibration.DGKNativeSBoundaryPi
 public import SerrePositivity.KST.Fibration.DGKSBoundaryCoherentComparison
 public import SerrePositivity.KST.Fibration.DGKPositiveEvaluation
+public import SerrePositivity.KST.Fibration.CoreEnrichedPrecompose
+public import SerrePositivity.KST.Fibration.CofiberFamilyPrecompose
+public import SerrePositivity.KST.Fibration.DGNuMultiRealization
+public import SerrePositivity.KST.Fibration.DGNuBoundaryFamily
+public import SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity

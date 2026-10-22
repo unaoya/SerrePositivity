@@ -7,6 +7,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.CoreEnrichedPrecompose,
+    `SerrePositivity.KST.Fibration.CofiberFamilyPrecompose,
+    `SerrePositivity.KST.Fibration.DGNuMultiRealization,
+    `SerrePositivity.KST.Fibration.DGNuBoundaryFamily,
+    `SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity,
     `SerrePositivity.KST.Fibration.DGKSBoundaryCoherentComparison,
     `SerrePositivity.KST.Fibration.DGKPositiveEvaluation,
     `SerrePositivity.KST.Fibration.DGKSBoundaryPi,
