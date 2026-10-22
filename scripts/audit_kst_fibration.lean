@@ -7,6 +7,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.SStageKernelPredicate,
+    `SerrePositivity.KST.Fibration.VerdierSStageKernel,
+    `SerrePositivity.KST.Fibration.VerdierSStageInclusion,
     `SerrePositivity.KST.Fibration.SComponentExactness,
     `SerrePositivity.KST.Fibration.RelativeSCofiberCriterion,
     `SerrePositivity.KST.Fibration.RelativeSWeakStability,

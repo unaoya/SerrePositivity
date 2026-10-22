@@ -454,3 +454,6 @@ public import SerrePositivity.KST.Fibration.WeakComparisonFullyFaithfulInput
 public import SerrePositivity.KST.Fibration.SComponentExactness
 public import SerrePositivity.KST.Fibration.RelativeSCofiberCriterion
 public import SerrePositivity.KST.Fibration.RelativeSWeakStability
+public import SerrePositivity.KST.Fibration.SStageKernelPredicate
+public import SerrePositivity.KST.Fibration.VerdierSStageKernel
+public import SerrePositivity.KST.Fibration.VerdierSStageInclusion
