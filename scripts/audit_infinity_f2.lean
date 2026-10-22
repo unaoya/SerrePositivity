@@ -4522,3 +4522,29 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceSimplexSourceCone_initial_vertex
 
 #check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedCoefficients
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedFirstIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLongIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedFirstIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLongIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedFaceIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedFaceIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentCosliceSourcePrecomposition_fixed
+#check @SerrePositivity.InfinityCategories.F2.coherentCosliceSourcePrecomposition_hom
+#check @SerrePositivity.InfinityCategories.F2.oppositeHomPrecomposition_fixed
+#check @SerrePositivity.InfinityCategories.F2.oppositeHomPrecomposition
+#check @SerrePositivity.InfinityCategories.F2.weightedConePrecompositionMap_constant
+#check @SerrePositivity.InfinityCategories.F2.pointedCoherentSourcePrecomposition_fixed
+#check @SerrePositivity.InfinityCategories.F2.relativeVertexIsoOfEq
+#check @SerrePositivity.InfinityCategories.F2.relativeVertexIsoOfEq_heq
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedFamilyRestrictionIso_initial
+#check @SerrePositivity.InfinityCategories.F2.vertexIsoOfEq_map_heq
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedFamilyRestrictionIso_precomp
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedFamilyRestrictionIso_congr
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedFamilyRestrictionIso_shared
+#check @SerrePositivity.InfinityCategories.F2.spaceTrianglePointedFamilyFaceIso
+#check @SerrePositivity.InfinityCategories.F2.spaceTrianglePointedFamilyFaceIso_heq
+#check @SerrePositivity.InfinityCategories.F2.spaceTrianglePointedFace_projection
+#check @SerrePositivity.InfinityCategories.F2.spaceTrianglePointedFace_base
