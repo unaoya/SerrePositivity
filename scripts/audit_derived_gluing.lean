@@ -535,7 +535,28 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismActualCoefficients,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCorrection,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCorrectionSum,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCylinderCorrection]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePinchedPrismCylinderCorrection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainIdentityCommaLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainIdentityCommaPinchedInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismConstantInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismZeroPhase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedUnitModel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorPinchedSimplexChainMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorPinchedSimplexNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientAugmentationHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyOfPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaHomLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaObject,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPinchedHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPinchedPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPinchedPrismFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPinchedProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismZero,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismZeroCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaProjectionChainMaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SimplexCoefficientExt]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
