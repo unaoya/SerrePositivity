@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- coherent cell 合成子・旧合成子との補正・五角式、κ の準同型自然性、実 tensor span と左右単位三角式、任意射自然性の14新規モジュール、Derived 集約、両監査、本計画の18パス。対象・両集約（10580 jobs）・20公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査も成功。検証済み18パスを保存する。前回保存は `f999a4067`（計画 `f1c24cfd4`）。他レーンの変更は変更しない。
+- coherent cell 合成子・旧合成子との補正・五角式、κ の準同型自然性、実 tensor span と左右単位三角式、任意射自然性の14新規モジュール、Derived 集約、両監査、本計画の18パス。対象・両集約（10580 jobs）・20公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査も成功。検証済み18パスを `a23726b1f` に保存済み。前回保存は `f999a4067`（計画 `f1c24cfd4`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- canonical cell 模型の coherent 合成子の五角式・左右単位三角式・任意射自然性を統合した。左右単位は実対角双加群の共通半自由分解からの tensor span の像であり、κ の逆から定義したものではない。旧 homInvIso と coherent な比較の一致は未証明で、旧合成子そのものの両単位三角式とは主張しない。対象・両集約・20公開署名・両全体監査は終端0。18パスだけ保存する。ログは `/tmp/d-beta5-cell-compositor-units-{derived,stable}-audit.log`。次は `/tmp/d-beta5-general-cell-coherent-comparison.lean` の一般許容模型版・canonical 値・射自然性の3宣言を module 形式で検証・統合する。同じ実模型変更射の比較値・可逆性の5宣言も `/tmp/d-beta5-general-cell-coherent-change.lean` で検証済み（計8宣言、終端0、許容三公理のみ）。その後、模型変更の恒等・合成・選択独立性と五角式・単位式を照合する。全高次 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。今回の結果は h Fun 値で、新しい kernel nerve 入力の ∞ 関手とは主張しない。
+- canonical cell 模型の coherent 合成子の五角式・左右単位三角式・任意射自然性を統合した。左右単位は実対角双加群の共通半自由分解からの tensor span の像であり、κ の逆から定義したものではない。旧 homInvIso と coherent な比較の一致は未証明で、旧合成子そのものの両単位三角式とは主張しない。対象・両集約・20公開署名・両全体監査は終端0。18パスを `a23726b1f` に保存済み。ログは `/tmp/d-beta5-cell-compositor-units-{derived,stable}-audit.log`。次は `/tmp/d-beta5-general-cell-coherent-comparison.lean` の一般許容模型版・canonical 値・射自然性の3宣言を module 形式で検証・統合する。同じ実模型変更射の比較値・可逆性の5宣言も `/tmp/d-beta5-general-cell-coherent-change.lean` で検証済み（計8宣言、終端0、許容三公理のみ）。その後、模型変更の恒等・合成・選択独立性と五角式・単位式を照合する。全高次 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。今回の結果は h Fun 値で、新しい kernel nerve 入力の ∞ 関手とは主張しない。
 
 ## 目標と原典
 
