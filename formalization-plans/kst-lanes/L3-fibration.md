@@ -14,7 +14,7 @@
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
 - 元の核包含を実核への完全同値へ制限し、K-2 Segal 実現で元の核四角形を homotopy pullback と証明。
   relativeSFibrationFiberIso は実 fiber と core S(D) の局所化同型で、同じ射影は元の包含の実現射。
-  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零合成二胞体の全図式比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
+  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定二胞体の実 Hom 族への読み出しと全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
 - Ore・分母輸送・固定分数・可変終点 coslice の既存構成は保持し、新設は Sp 正本へ依頼する。
   全 span 族の評価・全単体被覆・W 反転・降下・同じ分数比較の回収を構成。一般比較同値・span 普遍性は未証明。
   tamme* の lax 専用仮定を一般 Verdier 商へ流用しない。H⁰ の普遍性で全写像空間を代用しない。
@@ -51,8 +51,8 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10723 jobs・監査 507 モジュール 2913 宣言・全体 25641 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6928 モジュールは EInfinity を含まない。
+- 対象 10729 jobs・監査 513 モジュール 2952 宣言・全体 25653 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6934 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -61,7 +61,7 @@
 ### 主要宣言（共通接頭辞 SerrePositivity.KST.Fibration）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - verdierSStageKernelEquivalence_inclusion、verdierSPostcomp_fullyFaithful、verdierSPostcomp_kernel、relativeSConstruction_mem_edge_iff_cofiber_image。
-- weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback、relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison、quotientSKernelInfinitySquare_isPullback、quotientSKernelInfinitySquare_right、quotientSKernelInfinitySquare_bottom、quotientSKernelInfinitySquare_corner_isTerminal、stableCoreSingleKanEnrichedFunctor_eq、stableMultiSingleKan_edge、quotientSKernelInfinitySquare_right_eq_verdierSingle、quotientSKernelInfinitySquare_bottom_eq_verdierSingle、quotientSKernelCornerIso_verdierSingle、exInfinityCommSqInfinitySquare_isPullback、strictCoherentCone_isLimit_iff_of_transformation、fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、weakQuotientCosliceUnit_identity。
+- weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback、relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison、quotientSKernelInfinitySquare_isPullback、quotientSKernelInfinitySquare_right、quotientSKernelInfinitySquare_bottom、quotientSKernelInfinitySquare_corner_isTerminal、stableCoreSingleKanEnrichedFunctor_eq、stableMultiSingleKan_edge、quotientSKernelInfinitySquare_right_eq_verdierSingle、quotientSKernelInfinitySquare_bottom_eq_verdierSingle、quotientSKernelCornerIso_verdierSingle、zeroStableHomSpace_isContractibleKan、zeroStableHomFamily_extend、zeroStableHomMultiFamilyIso、verdierDiagramZeroTriangle、exInfinityCommSqInfinitySquare_isPullback、strictCoherentCone_isLimit_iff_of_transformation、fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、weakQuotientCosliceUnit_identity。
 - weakSpanKanMappingComparison_value_equivalence_iff、weakIdentityKanMappingComparisonUnitIso、leftStraighteningCandidate_classificationIso_pointHom、leftCocartesianKanClassificationIso_pointHom。
 - dgKPiComparison、dgKPiComparison_naturality、dgKPiMap_surjective_iff、dgKNativeSBoundaryPiEquiv_naturality、dgKNativePiMap_bijective_iff_sBoundary、dgRelativeVerdierSBoundaryFixedKSquareIso、dgRelativeKPositiveSquare_isPullback_iff、spectrumFiberSquare_evaluation_isPullback、spectrumEdge_isInvertible_of_positive_evaluation、dgRelativeK_isPullback_iff_sBoundary、stableBoundaryQuotientKanIso、verdierMultiBoundaryForget_isPullback_iff、spectrumEdge_isInvertible_of_positive_spaceEvaluation、dgRelativeK_isPullback_iff_multiRealization。
 - dgKInputK_preservesRelativeZero、dgRelativeK_zero_corner、dgRelativeKZeroTriangle、dgRelativeFiberVertexComparison、dgRelativeK_isPullback_of_fiberComparison_pi_nonnegative。
@@ -95,12 +95,12 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（core S と一回の反復実現の全 Hom 座標・元の包含商辺と三頂点・終角同型の7モジュール、集約・監査・本計画）。
+- なし（零値完全関手の全 Hom 部分空間・相対延長・全正反復作用への比較・元の Verdier 零角付き四角形の6モジュール、集約・監査・本計画）。
 ### 既知の問題
 - 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- 元の商核四角形と指定 Verdier 四角形の零合成二胞体を全図式で比較する。包含・商辺と三頂点の一致、終角同型だけから全四角形同型は推論しない。続いて元の全正反復実現へ接続する。Sp の三件の不足 API と商実現比較への接続を確認する。
+- 指定 Verdier 四角形の上下三角形の thickening の長 Hom から、元の Kan Hom 内の自然同値族を取り出す。零値条件の辺不変性で全族を零値部分空間へ制限する。zeroStableHomFamily_extend で指定部分族を保ち、元の商核四角形との全図式比較へ進む。二辺・三頂点・終角同型だけから四角形同型は推論しない。Sp の三件の不足 API と商実現比較への接続も確認する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 

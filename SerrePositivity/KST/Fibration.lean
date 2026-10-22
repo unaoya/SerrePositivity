@@ -506,3 +506,9 @@ public import SerrePositivity.KST.Fibration.CoreSingleKanCoordinates
 public import SerrePositivity.KST.Fibration.StableCoreSingleKanHom
 public import SerrePositivity.KST.Fibration.QuotientSCoreSingleEdges
 public import SerrePositivity.KST.Fibration.StableMultiKanTerminal
+public import SerrePositivity.KST.Fibration.ZeroFunctorLocus
+public import SerrePositivity.KST.Fibration.ZeroStableHomFamilies
+public import SerrePositivity.KST.Fibration.ZeroStableHom
+public import SerrePositivity.KST.Fibration.VerdierZeroTriangle
+public import SerrePositivity.KST.Fibration.ZeroStableHomExtension
+public import SerrePositivity.KST.Fibration.ZeroStableHomComparison
