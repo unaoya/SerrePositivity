@@ -15,4 +15,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRep
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctorEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPartialColimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotalDiagram
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPartialColimitFamily

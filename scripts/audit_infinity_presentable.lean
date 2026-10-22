@@ -72,3 +72,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalValue_isRightCofinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotal_restrict_isColimit_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalDiagram_restrict_fiber
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_leftKanShape_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_exists_leftKanExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_initial_comma
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPieceFiberKanComparison_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPieceFiberKanComparisonUniverse_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_leftKan_value_isPartialColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitFamily
