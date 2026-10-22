@@ -3797,3 +3797,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_square_iff
 
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_inverse_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso_postcomp_value
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso_value_precomp_heq_actions
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeImageIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeIso_image
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalCompletedTransportIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeTransportIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeImageIso_eq_anchors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeIso_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeIso_unique
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeIntervalTransportAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeIntervalTransportActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeIntervalTransportActionIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleIntervalAction_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleIntervalAction_inverse_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso_unique

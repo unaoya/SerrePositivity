@@ -27,15 +27,15 @@
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  元の全三角形の同じ模型比較から二 native 表現の比較を反映。hu・逆自然性・同じ像による一意性を証明。
+  元の選択済み区間比較の普遍輸送像・同じ二成分の正方形・一意性を証明。全 Hom の普遍作用比較と模型三角形の整合も保持。
   元の raw/native 区間族・単位の実二座標・成分の値を照合し、既存の下側因子を同じ実一点輸送比較へ同定。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9763 jobs、公理監査13041宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の模型比較の反映・同じ三角形からの hu・逆自然性・同じ像による一意性を含む追加18明示宣言を型検査。
+  検証：三集約同時ビルド9769 jobs、公理監査13150宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  選択済み区間比較の指定像・二成分の正方形・一意性、全 Hom の普遍作用と模型三角形の整合を含む追加15明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -86,8 +86,8 @@
   LowerTransportFactorIso_heq_constant_point_unit と ConstantTriangleValue_heq_fiber_unit で元の二因子を同じ単位・値へ照合済み。
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
-  CoherentTotalTriangleNativeComparison_square は元の小全空間三角形の同じ模型比較を反映した hu。inverse_naturality・square_iff も証明済み。
-  次は完成済みの指定三角形比較の像を同じ模型比較へ照合し、square_iff で同じ反映と値まで同定して五因子の消去式へ代入する。
+  IntervalNativeIso_square・unique は元の指定二成分の正方形。FiberTransportIso_unique は同じ上下作用への二段の像から元の比較を反映。
+  次は全 Hom の IntervalTransportAction と TotalTriangleIntervalAction_square で完成済み三角形の像を照合し、一意性で同定して消去式へ代入する。
   下側輸送・上側単位・上側 native の元の外側因子を消去し、同じ三辺と指定三角形の関係を回収する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
