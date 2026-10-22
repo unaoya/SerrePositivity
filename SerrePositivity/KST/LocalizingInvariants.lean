@@ -1380,5 +1380,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCand
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverInvertingFunctor
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofCoverValueTransport
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateConnectiveBase
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassSourceHomology
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassLayerIsos
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassLayerMaps
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

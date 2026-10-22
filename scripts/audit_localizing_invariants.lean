@@ -1139,7 +1139,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateBaseTriangles,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverInvertingFunctor,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofCoverValueTransport,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateConnectiveBase]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateConnectiveBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassSourceHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassLayerIsos,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassLayerMaps]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
