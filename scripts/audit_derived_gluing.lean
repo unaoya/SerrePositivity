@@ -89,7 +89,25 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelPrimitives,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelFunctor,
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomFactorization,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelFunctor]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Size,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaStrictLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelClosedReflection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeRightArrow,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeRightArrow,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeRightModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeConeInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeModuleInclusions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeSplitInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaStrictPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeStrictPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelRightArrow,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullhomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConePost]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
