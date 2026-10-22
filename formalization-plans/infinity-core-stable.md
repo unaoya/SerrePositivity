@@ -87,7 +87,7 @@
 
 ### 未コミット
 
-- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。実 loop 分類同値の11パスは `8817402da` に保存済み。普遍錐の選択忘却の5パスは `39fd4a8ad` に保存済み。零隅四角形・普遍錐表示・始対象移送の12パスは `1c983a40b` に保存済み。今回は固定 span・余錐比較・suspension 存在と切断の11新規モジュール、Stable 集約、両監査、本計画の15パスを保存する。他レーンの変更は保持する。
+- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。実 loop 分類同値の11パスは `8817402da` に保存済み。普遍錐の選択忘却の5パスは `39fd4a8ad` に保存済み。零隅四角形・普遍錐表示・始対象移送の12パスは `1c983a40b` に保存済み。固定 span・余錐比較・suspension 存在と切断の15パスは `4537d8c04` に保存済み。本体の未保存変更なし。今回の計画更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -98,7 +98,7 @@
 
 ### 次の一手
 - D7・β3・β5 は完了。実 loop 分類同値は `8817402da`、普遍錐の選択忘却は `39fd4a8ad`、全零隅四角形の始点固定圏の始対象は `1c983a40b` に保存済み。今回 `ZeroOuterSpans`・`ContractibleBaseInitialFiber`・`ZeroCornerSquareSpan`・`ZeroCornerSquareSpanSourceFiber`・`ZeroCornerSquareFixedSpanInitial`・`ZeroCornerSquareSpanPullback`・`SquareFixedSpanCocone`・`LoopZeroOuterSpanColimit`・`LoopSuspensionSquareExists`・`SuspensionEvaluationFromSquares`・`SuspensionSectionFromLoop` の11モジュール・39公開宣言を統合。零終点 span の始点射影の自明 Kan fibration 性と始点固定 fiber の可縮 Kan 性、固定実 span の四角形 fiber の始対象、同じ入力の余錐圏との実同型を接続し、両外端が零の任意 span の `HasColimit` と各頂点の実 `SuspensionSquare` を得た。安定性を使わない正次境界充填と存在から suspension の始点評価の自明 Kan fibration 性、厳密切断・その同値性、`suspensionFunctorOfLoopEquivalence : X ⟶ X` を構成した。対象・両集約（11002 jobs）・39明示署名・両全体監査が終端0（Derived 20767宣言／2290モジュール、Stable 21882／2560、許容三公理のみ）、警告なし。ログは `/tmp/d-suspension-existence-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`。一般同値性補題の冗長な `[InnerFibration p]` は `KanEquivalenceLifting p` から供給する。
-- 次は元の loop 四角形の普遍性の照合。全始点固定 loop 錐と `unitCommaFiber G x` の保存済み実分類同値を使い、`G := loopDiagramEvaluation X 0 0` が同値のとき comma 頂点が始対象であることと、その実矢印が可逆であることを結ぶ。普遍 loop 錐を自身に比較する元の円柱は固定 cospan の終対象間の辺なので可逆で、これを実分類・選択忘却・固定 span の余錐比較に戻して同じ loop 四角形の押し出し性を示す必要がある。suspension と loop の全図式比較、suspension 関手と Ω の逆性・随伴の同定、一般 fiber/cofiber の存在と任意 ZeroTriangle の両方向、有限余極限、一般 IsStable は未証明。`/tmp/d-unit-comma-arrow.lean` は次工程用の実 comma ホモトピーの Ho 自然変換・頂点成分・定値始域の辺作用・自然性の試作（生の Ho 関手値を端点に保持する）。本体未統合。F1B `kanUnitCommaFiberProjection_leftFibration`・Core `leftFibration_reflects_invertibleEdge`・保存済み `loopSourceUnit_initial` が候補。新しい分数・局所化 API は作らない。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
+- 次は元の loop 四角形の普遍性の照合。全始点固定 loop 錐と `unitCommaFiber G x` の保存済み実分類同値を使い、`G := loopDiagramEvaluation X 0 0` が同値のとき comma 頂点が始対象であることと、その実矢印が可逆であることを結ぶ。普遍 loop 錐を自身に比較する元の円柱は固定 cospan の終対象間の辺なので可逆で、これを実分類・選択忘却・固定 span の余錐比較に戻して同じ loop 四角形の押し出し性を示す必要がある。suspension と loop の全図式比較、suspension 関手と Ω の逆性・随伴の同定、一般 fiber/cofiber の存在と任意 ZeroTriangle の両方向、有限余極限、一般 IsStable は未証明。`/tmp/d-unit-comma-arrow.lean` は次工程用の実 comma ホモトピーの Ho 自然変換・頂点成分・定値始域の辺作用・自然性の試作（生の Ho 関手値を端点に保持する）。4宣言の試作・明示署名・三公理検査が終端0、警告なし。署名監査用は `/tmp/d-unit-comma-arrow-signatures.lean` と同 `.log`。定値関手の Ho 端点を `mk x` へ勝手に置き換えず、`PinchedHom.constant x 0` のまま使う。`hoConstMap_edge` の恒等辺の型引数は `(V := (truncation 2).obj X)`。本体未統合。F1B `kanUnitCommaFiberProjection_leftFibration`・Core `leftFibration_reflects_invertibleEdge`・保存済み `loopSourceUnit_initial` が候補。新しい分数・局所化 API は作らない。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
 - K-S• の追加要求：`D0 := dgAlgebraCategory R B`、`C := SmallPerfectDGModuleOver R D0 Set.univ` に対し、自由 representable に対応する実小代表 `b : C` と `modulePerfectOver R C {b} = modulePerfect R C` を供給する。既存 SmallEnhancement の実代表と Perf 比較同型の3宣言は `/tmp/d-small-perfect-generator.lean` で試作・明示署名・三公理検査が終端0（`/tmp/d-small-perfect-generator-signatures.log`）。本体未統合。結論の生成性を仮定する API では代用しない。未提供。
 
 ## 目標と原典
