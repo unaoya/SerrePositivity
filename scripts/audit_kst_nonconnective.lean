@@ -7,18 +7,41 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.KST.NonConnective.SequentialSpectrum,
-    `SerrePositivity.KST.NonConnective.SequentialPi,
-    `SerrePositivity.KST.NonConnective.SequentialComparison,
-    `SerrePositivity.KST.NonConnective.SequentialRawHomDiagram,
-    `SerrePositivity.KST.NonConnective.SequentialCoherentLift,
+    `SerrePositivity.KST.NonConnective.SequentialBFArrowFactorization,
+    `SerrePositivity.KST.NonConnective.SequentialBFArrowStage,
+    `SerrePositivity.KST.NonConnective.SequentialCandidateColimit,
+    `SerrePositivity.KST.NonConnective.SequentialCandidateLegs,
+    `SerrePositivity.KST.NonConnective.SequentialCandidatePi,
+    `SerrePositivity.KST.NonConnective.SequentialCofibrantColimit,
     `SerrePositivity.KST.NonConnective.SequentialCoherentCocone,
+    `SerrePositivity.KST.NonConnective.SequentialCoherentLift,
+    `SerrePositivity.KST.NonConnective.SequentialColimit,
+    `SerrePositivity.KST.NonConnective.SequentialColimitPi,
+    `SerrePositivity.KST.NonConnective.SequentialComparison,
+    `SerrePositivity.KST.NonConnective.SequentialConeComparison,
+    `SerrePositivity.KST.NonConnective.SequentialDiagramReplacement,
+    `SerrePositivity.KST.NonConnective.SequentialDiagramTransport,
+    `SerrePositivity.KST.NonConnective.SequentialEdgePi,
+    `SerrePositivity.KST.NonConnective.SequentialHomLimitCompatibility,
+    `SerrePositivity.KST.NonConnective.SequentialHomStep,
+    `SerrePositivity.KST.NonConnective.SequentialIndexFunctors,
+    `SerrePositivity.KST.NonConnective.SequentialLatchingHom,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimit,
+    `SerrePositivity.KST.NonConnective.SequentialLevelColimitMap,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimitUniversal,
     `SerrePositivity.KST.NonConnective.SequentialLevelHomLimit,
-    `SerrePositivity.KST.NonConnective.SequentialHomStep,
-    `SerrePositivity.KST.NonConnective.SequentialHomLimitCompatibility,
-    `SerrePositivity.KST.NonConnective.SequentialRawHomLimit]
+    `SerrePositivity.KST.NonConnective.SequentialNativeHomLimit,
+    `SerrePositivity.KST.NonConnective.SequentialPi,
+    `SerrePositivity.KST.NonConnective.SequentialPointedPushoutMono,
+    `SerrePositivity.KST.NonConnective.SequentialRawHomDiagram,
+    `SerrePositivity.KST.NonConnective.SequentialRawHomLimit,
+    `SerrePositivity.KST.NonConnective.SequentialRelativeCofibration,
+    `SerrePositivity.KST.NonConnective.SequentialRelativeHomFamily,
+    `SerrePositivity.KST.NonConnective.SequentialRelativeHomFibration,
+    `SerrePositivity.KST.NonConnective.SequentialRelativeHomNext,
+    `SerrePositivity.KST.NonConnective.SequentialResizedDiagramIso,
+    `SerrePositivity.KST.NonConnective.SequentialSpectrum,
+    `SerrePositivity.KST.NonConnective.SequentialTowerIndex]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -63,3 +86,19 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.sequentialHomLimitFamily_condition
 #check SerrePositivity.KST.NonConnective.sequentialRawHomLimitLift_fac
 #check SerrePositivity.KST.NonConnective.sequentialRawHomIsLimit
+
+#check SerrePositivity.KST.NonConnective.sequentialBFArrow_fac
+#check SerrePositivity.KST.NonConnective.sequentialBFArrowRight_piIsomorphism
+#check SerrePositivity.KST.NonConnective.sequentialBFArrowLeft_isRelativeCofibration
+#check SerrePositivity.KST.NonConnective.sequentialRawHomPre_fibration
+#check SerrePositivity.KST.NonConnective.sequentialDiagramReplacementComparison_piIsomorphism
+#check SerrePositivity.KST.NonConnective.sequentialReplacementLevelCocone_isColimit
+#check SerrePositivity.KST.NonConnective.sequentialSpColimitCocone_isColimit
+#check SerrePositivity.KST.NonConnective.sequentialLevelColimitMap_piIsomorphism
+#check SerrePositivity.KST.NonConnective.sequentialLevelColimitHomotopyIso_ι
+#check SerrePositivity.KST.NonConnective.sequentialCandidateColimitCocone_isColimit
+#check SerrePositivity.KST.NonConnective.sequentialCandidateColimitCocone_vertex
+#check SerrePositivity.KST.NonConnective.sequentialCandidateColimitLeg_hom_eq
+#check SerrePositivity.KST.NonConnective.sequentialCandidateColimitLeg_pi
+#check SerrePositivity.KST.NonConnective.sequentialCandidatePiCoconeIsColimit
+#check SerrePositivity.KST.NonConnective.sequentialCandidateColimitHomotopyIso_ι
