@@ -376,3 +376,27 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms alternatingCellBoundaryLift_ι
 #check @alternatingCellBoundaryLift_square
 #print axioms alternatingCellBoundaryLift_square
+#check @walkingAbsorber_ne_one
+#print axioms walkingAbsorber_ne_one
+#check @chainScalar
+#print axioms chainScalar
+#check @alternatingCell_scalar
+#print axioms alternatingCell_scalar
+#check @alternatingChainMap_scalar_ne
+#print axioms alternatingChainMap_scalar_ne
+#check @alternatingChainMap_scalar_source
+#print axioms alternatingChainMap_scalar_source
+#check @alternatingCell_equal_source_iff
+#print axioms alternatingCell_equal_source_iff
+#check @alternatingCell_equal_ordered_indices
+#print axioms alternatingCell_equal_ordered_indices
+#check @alternatingCell_equal_indices
+#print axioms alternatingCell_equal_indices
+#check @alternatingCell_odd_injection_exists
+#print axioms alternatingCell_odd_injection_exists
+#check @alternatingCell_odd_rank_le
+#print axioms alternatingCell_odd_rank_le
+#check @alternatingCell_preimage_le_boundary
+#print axioms alternatingCell_preimage_le_boundary
+#check @alternatingCell_stage_preimage
+#print axioms alternatingCell_stage_preimage

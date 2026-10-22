@@ -26,3 +26,6 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStages
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OddDeletionOrder
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OddDeletion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageBoundary
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingScalar
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingOddRank
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePreimage
