@@ -403,3 +403,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCutRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.ConePrefix
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeMono
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePrefixDetermination
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowPrismCut
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeSurjective
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationExtension
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExtension

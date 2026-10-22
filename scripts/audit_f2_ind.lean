@@ -737,3 +737,21 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_inr
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_range_iff
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.pullCut_prefix
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinSimplex_prefix_cut
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneSimplex_eq_of_prefix
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalZeroCut_lt
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalZeroCut_ge
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowPrismCut_le
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_arrowPrism_prefix_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_app_surjective
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_app_bijective
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_isIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationExtend
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationExtend_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneSimplex_eq_of_prefix
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationExtend_inclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_extension
