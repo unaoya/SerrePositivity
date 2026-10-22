@@ -89,19 +89,20 @@
 
 ### 未コミット
 
-- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。今回の7新規モジュール、Stable 集約、両監査、本計画の11パスを保存する。他レーンの変更は保持する。
+- 実図式 fiber は `e75631846`、終対象比較・極限錐比較は `d7eaa9a21` に保存済み。実 loop 分類同値の11パスは `8817402da` に保存済み。今回は `UniversalConeChoiceProjection.lean`、Stable 集約、両監査、本計画の5パスを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10979 jobs）。公理監査は Derived 20616 宣言／2270 モジュール、Stable 21731／2540。許容三公理のみ。今回までの保存対象1201新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10981 jobs）。公理監査は Derived 20628 宣言／2271 モジュール、Stable 21743／2541。許容三公理のみ。今回までの保存対象1202新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 - D7・β3・β5 は完了。実 comma 関手と普遍単位は `cdf04de6d`、固定頂点の左 fibration は `7d73c69ed`、図式固定 fiber は `e75631846`、終対象・極限錐比較は `d7eaa9a21` に保存済み。今回 `VertexFiberSwap`・`FixedApexConeFiber`・`LoopConeFixedApexComparison`・`LoopConeFixedApexDiagramFiber`・`LoopConeClassifierInterval`・`LoopConeClassifierFiberEquivalence`・`LoopConeSourceInitial` の7モジュール・30公開宣言を統合した。二重 fiber の実交換同型、固定頂点の実 lift と同じ比較円柱、comma の実区間模型との厳密一致から `loopConeClassifierDiagramFiberMap_isQCatEquivalence` と `loopConeClassifierSourceFiberMap_isQCatEquivalence` を証明。指定切断と Ω 同値から、始点固定の全 loop 錐に始対象が存在する `loopConeSourceFiber_hasInitial_of_loopEquivalence` を得た。対象・両集約（10979 jobs）・30明示署名・両全体監査が終端0（Derived 20616宣言／2270モジュール、Stable 21731／2540、許容三公理のみ）。ログは `/tmp/d-loop-classifier-complete-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は有限極限から、普遍錐の選択を忘れる射影の自明 Kan fibration 性を、同じ始点固定 fiber へ移す。`KST/LocalizingInvariants/LimitProjectionExistence` の全極限錐射影と Core の `pullbackMapRightOfComp` を読み取り専用で使用する。その後 loop 図式を零隅 cospan 上の普遍錐族へ厳密に同定し、全零隅四角形側へ始対象性を移す。実際の固定境界の余錐圏との比較、押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
-- K-S• の追加要求：`D0 := dgAlgebraCategory R B`、`C := SmallPerfectDGModuleOver R D0 Set.univ` に対し、自由 representable に対応する実小代表 `b : C` と `modulePerfectOver R C {b} = modulePerfect R C` を供給する。既存 SmallEnhancement の代表・比較を調査中。結論の生成性を仮定する API では代用しない。未提供。
+- `UniversalConeChoiceProjection` の8公開宣言を追加。任意の入力図式族に普遍錐の選択を加える実引き戻しを構成し、選択を忘れる比較が元の全錐を厳密に保つこと、全入力の極限の存在から同じ比較と固定頂点 fiber の比較が自明 Kan fibration となること、始対象性の移送を証明した。対象・両集約（10981 jobs）・8明示署名・両全体監査が終端0（Derived 20628宣言／2271モジュール、Stable 21743／2541、許容三公理のみ）。ログは `/tmp/d-universal-cone-choice-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`。`KST/LocalizingInvariants/LimitProjectionExistence` と Core の `pullbackMapRightOfComp` を読み取り専用で再利用する。
+- 次は零隅 cospan と全零隅四角形を定義し、loop 図式を同じ cospan 上の普遍錐族に厳密に同定する。試作は `/tmp/d-zero-corner-cone-model.lean`（全部分複体と実引き戻しの同型、零外端の条件、全零隅四角形の錐表示、loop の普遍錐表示）。この同定を上記の選択忘却と接続し、全零隅四角形側へ始対象性を移す。実際の固定境界の余錐圏との比較、押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
+- K-S• の追加要求：`D0 := dgAlgebraCategory R B`、`C := SmallPerfectDGModuleOver R D0 Set.univ` に対し、自由 representable に対応する実小代表 `b : C` と `modulePerfectOver R C {b} = modulePerfect R C` を供給する。既存 SmallEnhancement の実代表と Perf 比較同型の3宣言は `/tmp/d-small-perfect-generator.lean` で試作・明示署名・三公理検査が終端0（`/tmp/d-small-perfect-generator-signatures.log`）。本体未統合。結論の生成性を仮定する API では代用しない。未提供。
 
 ## 目標と原典
 

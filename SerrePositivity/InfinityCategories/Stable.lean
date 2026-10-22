@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.UniversalConeChoiceProjection
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber
 public import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval
 public import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierFiberEquivalence

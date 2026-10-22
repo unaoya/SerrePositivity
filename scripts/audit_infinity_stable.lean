@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.UniversalConeChoiceProjection
 import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber
 import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval
 import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierFiberEquivalence
@@ -7439,6 +7440,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniversalConeChoiceProjection,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber,
     `SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval,
     `SerrePositivity.InfinityCategories.Stable.LoopConeClassifierFiberEquivalence,
