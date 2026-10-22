@@ -25,3 +25,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStrict
 public import SerrePositivity.InfinityCategories.F2.Presentable.StrictConeFamilyRead
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyColimitTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStageComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentPosetLimitExchange
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentFilteredPosetExchange

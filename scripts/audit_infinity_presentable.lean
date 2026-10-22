@@ -121,3 +121,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictRealization_stage_map
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStage_isLimit_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictModelColimit_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanDiagramBundle_evaluation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanFamilyRealizedColimitCocone_pointwise
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanFamily_realization_curry
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyModelStrictLimit_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.withInitialFilteredColimit_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_nerve_poset
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pointwiseColimitCocone_restrict_rightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_poset

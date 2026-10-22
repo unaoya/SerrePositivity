@@ -45,15 +45,15 @@
 - 非可算正則 μ について、μ-small 形状の全単体と単体圏の全射の個数を同じ μ で評価。
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。全 coherent な Space の交換は未証明。
-- weighted sections・小さい poset の Bousfield–Kan 模型の strict 連続性と、錐族の比較の弱同値保存を証明。元の全脚を保持。
-- 任意の内部 Hom と weighted sections の全自然な交換同型と、元の錐の比較射との整合性を証明。
-- Kan 値の strict 錐の native な極限性の比較射による iff と、小さい poset 上の strict 極限錐族の μ-filtered 保存を証明。
-- F1 の実際の分類から図式・全錐族を同時 strict 化。WithInitial の共同図式から元の頂点・全脚を読み戻し、保存界面の段階錐と一致。
+- weighted sections・Bousfield–Kan 模型の strict 連続性、元の比較の弱同値保存、内部 Hom との全自然な交換を証明。元の全脚を保持。
+- Kan 値 strict 錐の native 極限性の比較射による iff と保存性を証明。F1 の分類で全錐族を同時 strict 化し、元の全脚を読み戻す。
 - 同時 strict 化した全錐族へ元の点ごとの余極限を、指定頂点の等号を保持して輸送。各段階の極限性も保存・反映。
 - thin な添字の二つの錐添字写像を全単体で一致させ、元の Kan 図式の実現を N の strictCoherentConeMap そのものへ戻した。
-  元の coherent 段階錐の極限性から、同じ共同 strict 模型の指定 μ-filtered 余極限錐の native な極限性を証明。
-  残りは strict 模型の余極限全錐と、元の指定された点ごとの余極限余錐との同定。一般 coherent 交換自身は未完。
-- 独立集約ビルド成功（7657 jobs）、公理監査 440 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 通常の Kan 図式族を束縛する関手と全余錐の実現を構成。元の積図式との全単体の一致、点ごとの native 余極限性を証明。
+- WithInitial の元の錐の比較を二つの連続関手間の自然変換にし、同じ strict 余極限錐自身の native な極限性を証明。
+- **小さい poset の極限と、一般の μ-filtered ∞ 添字の coherent 全錐族の指定点ごとの余極限の交換を証明。**
+  cofinal μ-filtered poset への元の全余錐の制限で一般添字へ拡張。元の図式・全錐・指定余錐を量化し、交換を仮定に入れない。
+- 独立集約ビルド成功（7669 jobs）、公理監査 486 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -85,8 +85,8 @@
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
-- `strictConeFamilyStage_recovered`、`strictConeFamilyColimit_isLimit`
-- `withInitialKanCone_coherentMap`、`coneFamilyStage_isLimit_iff`、`coneFamilyStrictModelColimit_isLimit`
+- `kanFamilyRealizedColimitCocone_pointwise`、`coneFamilyModelStrictLimit_iff`、`withInitialFilteredColimit_isLimit`
+- `coherentCardinalFilteredLimitExchange_nerve_poset`、`coherentCardinalFilteredLimitExchange_poset`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -97,8 +97,8 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。KanDiagramObject 値の strict 余錐を実現し、Ind の strictNativeCocone_isColimit_of_filtered_forget で点ごとに検証する。
-  同じ native な μ-filtered 交換を証明し、μ-small 部分余極限の μ-compact 性を N の Hom 錐族で導く。
+- 工程 (1) の濃度変更。N の Hom 錐族（SpaceInfinity の宇宙 u+1）に合わせ、交換の宇宙移送と μ-filtered 版の全錐反映を構成する。
+  実証済みの poset 極限交換から μ-small κ-filtered 部分余極限の μ-compact 性を導き、元の全表示を保持する。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
   元の指定頂点の μ-filtered 全表示は完了。μ-compact 性と、対象に依存しない小さい生成圏は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
