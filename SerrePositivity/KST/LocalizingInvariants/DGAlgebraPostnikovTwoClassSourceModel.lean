@@ -40,12 +40,12 @@ lemma sourceCellMap_quasiIso : QuasiIso (d.sourceCellMap R).hom := by
     (hφ' := cellResolutionMap_quasiIso R (d.lowerBaseInverse R).roof.denominator
       (d.lowerBaseInverse R).roof.denominator_quasiIso)
 
-abbrev sourceCellModel := HomotopyPullbackModel.algebra R
+abbrev sourceCellModel : Mon (Complex R) := HomotopyPullbackModel.algebra R
   (postnikovCellClass R (B.obj d.layerInverse.zero.stage).obj 1 (by omega))
   (SquareZero.zeroSection (postnikov R (B.obj d.layerInverse.zero.stage).obj 1)
     (postnikovShiftedLayerBimodule R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) 1))
 
-abbrev originalSourceModel := HomotopyPullbackModel.algebra R
+abbrev originalSourceModel : Mon (Complex R) := HomotopyPullbackModel.algebra R
   (postnikovPerturbedClass R (B.obj d.layerInverse.zero.stage).obj 1 (by omega))
   (SquareZero.zeroSection (postnikov R (B.obj d.layerInverse.zero.stage).obj 1)
     (postnikovShiftedLayerBimodule R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) 1))

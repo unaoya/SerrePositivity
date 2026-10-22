@@ -27,12 +27,12 @@ def targetCellMap : d.classSource R ⟶ cellResolution R (postnikov R (A.obj j).
   postnikovCommonClassCompatibilityToCell R f d.baseInverse d.layerInverse ≫
     cellResolutionMap R (d.targetBase R)
 
-abbrev targetCellModel := HomotopyPullbackModel.algebra R
+abbrev targetCellModel : Mon (Complex R) := HomotopyPullbackModel.algebra R
   (postnikovCellClass R (A.obj j).obj 1 (by omega))
   (SquareZero.zeroSection (postnikov R (A.obj j).obj 1)
     (postnikovShiftedLayerBimodule R (A.obj j).obj 1 (by omega) 1))
 
-abbrev originalTargetModel := HomotopyPullbackModel.algebra R
+abbrev originalTargetModel : Mon (Complex R) := HomotopyPullbackModel.algebra R
   (postnikovPerturbedClass R (A.obj j).obj 1 (by omega))
   (SquareZero.zeroSection (postnikov R (A.obj j).obj 1)
     (postnikovShiftedLayerBimodule R (A.obj j).obj 1 (by omega) 1))
