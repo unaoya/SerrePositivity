@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterCospan
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanDiagram
+import SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitExtension
+import SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedOuterCone
+import SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitCone
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonEdge
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSourceCone
+import SerrePositivity.InfinityCategories.Stable.ThinNerveConeComparison
+import SerrePositivity.InfinityCategories.Stable.PullbackConeVertex
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceBoundary
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceComparisons
 import SerrePositivity.InfinityCategories.Stable.FixedInitialHomotopy
 import SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism
 import SerrePositivity.InfinityCategories.Stable.LeftAnodyneLimitRestriction
@@ -4408,6 +4419,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterCospan,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanDiagram,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitExtension,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedOuterCone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitCone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonEdge,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSourceCone,
+    `SerrePositivity.InfinityCategories.Stable.ThinNerveConeComparison,
+    `SerrePositivity.InfinityCategories.Stable.PullbackConeVertex,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceBoundary,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceComparisons,
+
     `SerrePositivity.InfinityCategories.Stable.FixedInitialHomotopy,
     `SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism,
     `SerrePositivity.InfinityCategories.Stable.LeftAnodyneLimitRestriction,
