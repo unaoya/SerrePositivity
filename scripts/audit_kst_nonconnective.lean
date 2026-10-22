@@ -15,7 +15,10 @@ run_cmd do
     `SerrePositivity.KST.NonConnective.SequentialCoherentCocone,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimit,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimitUniversal,
-    `SerrePositivity.KST.NonConnective.SequentialLevelHomLimit]
+    `SerrePositivity.KST.NonConnective.SequentialLevelHomLimit,
+    `SerrePositivity.KST.NonConnective.SequentialHomStep,
+    `SerrePositivity.KST.NonConnective.SequentialHomLimitCompatibility,
+    `SerrePositivity.KST.NonConnective.SequentialRawHomLimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -56,3 +59,7 @@ run_cmd do
 
 #check SerrePositivity.KST.NonConnective.sequentialLevelHomIsLimit
 #check SerrePositivity.KST.NonConnective.sequentialHomLimitFamily_fac
+
+#check SerrePositivity.KST.NonConnective.sequentialHomLimitFamily_condition
+#check SerrePositivity.KST.NonConnective.sequentialRawHomLimitLift_fac
+#check SerrePositivity.KST.NonConnective.sequentialRawHomIsLimit
