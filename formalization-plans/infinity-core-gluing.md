@@ -41,7 +41,9 @@
   Yoneda 円錐同型を標準 Hom 円錐比較で回収し、右係数を同じ右 Yoneda 円錐への kernel 全 Hom 作用と同定。
   左右の標的同型を揃え、`dgGluingHomConeKernelIso` で実 Hom 円錐を標準加群円錐への加群 comma Hom と同定。
   augmentation の同じ全 dg 自然な境界から標準円錐→選んだ対象の実閉 comma 射を構成し、両成分の K の代表同型を回収。
-  その Hom 後合成のホモトピー同値性、試験対象に関する dg 自然性、シフトは未完。
+  任意の加群 comma 試験対象からの同じ実後合成はホモトピー同値であり、その順射の厳密な一致も証明。
+  `dgGluingHomConeKernelRepresentativeEquiv` で元の Hom 円錐を選んだ対象の kernel 表示への Hom にホモトピー同値で移す。
+  native Hom との比較、試験対象に関する dg 自然性、シフトは未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -50,8 +52,7 @@
 - `DGGluingRepresentableCategory`・`dgGluingRepresentableRight`・`dgGluingRepresentableLeftModule`
 - `dgGluingHomRepresentableIso`・`dgGluingHomRepresentableIso_left`・`dgGluingHomRepresentableIso_right`
 - `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`
-- `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`
-- `dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
+- `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`・`dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
 - `dgGluingConeSquareMap`・`dgGluingConeSquareMatrix_eq`・`dgGluingCoconeSquareMap`・`dgGluingConeCoconeIso`
 - `dgGluingComposition_comparison`・`dgGluingPostcomposition_comparison`・`dgGluingPostcomposition_fst`
 - `dgGluingCoconeExtractMap_recovery`・`dgGluingHomConeIso`・`dgGluingHomConeBottom_cochain`
@@ -69,6 +70,7 @@
 - `dgGluingConeObject`・`dgGluingConeObject_augmentation`・`dgGluingConeObject_leftIso`・`dgGluingConeObject_rightIso`
 - `dgGluingConeObject_augmentation_transport`・`dgGluingConeRightHomotopyIso`・`dgGluingConeAugmentationCore_hom`
 - `dgGluingHomConeKernelIso`・`dgGluingKernelConeRepresentativeMap`・`dgGluingKernelConeRepresentativeMap_source_homotopy`
+- `dgGluingCoconeExtract_isIso`・`dgGluingCommaPostHomotopy_isIso`・`dgGluingHomConeKernelRepresentativeEquiv`
 
 ### 残り（依存順）
 1. (a) 残り：シフト・cone の表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -87,18 +89,16 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingKernelConeRepresentativeMap` の両成分は K で同型。任意試験対象からの Hom 後合成も
-  ホモトピー同値であることを、mapping cocone の成分のホモトピー同値性から示す。
-  `dgGluingHomConeKernelIso` と合わせ、選んだ `dgGluingConeObject` による元の Hom 円錐の表現を回収する。
-  kernel 表示の gluing 対象への Hom と native Hom の比較、試験対象に関する全 dg 自然性を揃える。
-  cone のホモトピー表現可能性を証明した後、シフトを構成し、
-  `dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）へ接続する。
-  実閉代表射と成分の K の同型だけでは、cone の表現可能性完了とは数えない。
+- native Hom と kernel 表示の対象間の Hom を、同じ tensor–Yoneda 列比較の全次数自然性で同定する。
+  `dgGluingHomConeKernelRepresentativeEquiv` と合わせ、選んだ gluing 対象への native Hom との比較を回収する。
+  順射の試験対象に関する全 dg 自然性を証明し、Yoneda 加群円錐のホモトピー表現可能性へ接続する。
+  その後シフトを構成し、`dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）を証明する。
+  点ごとの Hom 複体のホモトピー同値だけでは、全 dg 自然な加群としての円錐表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 66モジュール・集約のビルド成功（4981 jobs）、公理監査1355宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要21署名も検査済み。
-  新規5モジュール、集約・監査・本計画の専有8パスだけを保存。他レーンの差分は含めない。
+- 72モジュール・集約のビルド成功（4988 jobs）、公理監査1436宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要22署名も検査済み。
+  新規6モジュール、集約・監査・本計画の専有9パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

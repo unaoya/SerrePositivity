@@ -70,7 +70,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelCommaObjects,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelModel,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CommaBoundaryLift,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeRepresentatives]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeHomotopyCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomPostHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyBiproduct,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostCocone,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostHomotopyCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentativeHomotopy]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -65,3 +65,9 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelCommaObjec
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelModel
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaBoundaryLift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeRepresentatives
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeHomotopyCriterion
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomPostHomotopy
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyBiproduct
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostCocone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostHomotopyCriterion
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentativeHomotopy
