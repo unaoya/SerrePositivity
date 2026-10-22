@@ -77,4 +77,10 @@ lemma indArrowSourceSliceLift_old_projection :
   simp only [Category.assoc, HomotopyLimits.sliceOverRestrict_projection]
   rw [← pullback.condition]
 
+/-- 余錐頂点上の全辺も、元の同じ指定区間図式を保持する。 -/
+lemma indArrowSourceSliceLift_tip :
+    sliceOverUncurry (joinInr T (Δ[0] : SSet.{u + 1}) ≫ indArrowSourceSliceLift κ D H) =
+      (joinStdSimplexIso 0 0).hom ≫ (liftedIntervalToSmall.{u} ≫ D) :=
+  intervalSliceConeLift_tip _ _
+
 end SerrePositivity.InfinityCategories.F2.Ind

@@ -26,7 +26,8 @@ def rightIntervalUniverseShape (A : SSet.{u}) :
       (HomotopyLimits.uliftStdSimplexIso.{u, u + 1} 1).hom)
 
 /-- この元の円柱の全形状比較は、実際の同型。 -/
-instance rightIntervalUniverseShape_isIso (A : SSet.{u}) : IsIso (rightIntervalUniverseShape A) := by
+instance rightIntervalUniverseShape_isIso (A : SSet.{u}) :
+    IsIso (rightIntervalUniverseShape A) := by
   dsimp only [rightIntervalUniverseShape]
   infer_instance
 
@@ -50,5 +51,24 @@ lemma rightIntervalUniverseShape_zero (A : SSet.{u}) :
   apply ConcreteCategory.hom_ext
   intro x
   rfl
+
+/-- 逆比較でも元の全零端点は厳密に回収される。 -/
+lemma rightIntervalUniverseShape_inv_zero (A : SSet.{u}) :
+    SSet.ι₀ ≫ inv (rightIntervalUniverseShape A) =
+      (SSet.uliftFunctor.{u + 1, u}).map (SSet.ι₀ : A ⟶ A ⊗ Δ[1]) := by
+  calc
+    _ = ((SSet.uliftFunctor.{u + 1, u}).map SSet.ι₀ ≫ rightIntervalUniverseShape A) ≫
+        inv (rightIntervalUniverseShape A) := by rw [rightIntervalUniverseShape_zero]
+    _ = _ := by rw [Category.assoc, IsIso.hom_inv_id, Category.comp_id]
+
+/-- 逆比較も元の全パラメーター制限と厳密に可換。 -/
+lemma rightIntervalUniverseShape_inv_naturality {A B : SSet.{u}} (f : A ⟶ B) :
+    ((SSet.uliftFunctor.{u + 1, u}).map f ▷ (Δ[1] : SSet.{u + 1})) ≫
+      inv (rightIntervalUniverseShape B) = inv (rightIntervalUniverseShape A) ≫
+        (SSet.uliftFunctor.{u + 1, u}).map (f ▷ (Δ[1] : SSet.{u})) := by
+  apply (cancel_mono (rightIntervalUniverseShape B)).mp
+  simp only [Category.assoc, IsIso.inv_hom_id, Category.comp_id,
+    rightIntervalUniverseShape_naturality]
+  simp only [← Category.assoc, IsIso.inv_hom_id, Category.id_comp]
 
 end SerrePositivity.InfinityCategories.F2.Ind

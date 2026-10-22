@@ -431,3 +431,12 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEndpointCompatib
 public import SerrePositivity.InfinityCategories.F2.Ind.RightIntervalUniverseShape
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationData
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExistence
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCylinder
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSlice
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationInverseBoundary
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationGlue
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationTipTriangle
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationTipLine
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSquare
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSquareTip
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCoherentCocone

@@ -830,3 +830,31 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily_zero
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indArrow_endpoint_family
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationData_nonempty
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightIntervalUniverseShape_inv_zero
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightIntervalUniverseShape_inv_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationRawCylinder
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationRawCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationRawCylinder_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSliceCylinder_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSliceCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSliceCylinder_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationDiagram_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso_inv_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso_inv_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationGlue_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationGlue_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationSourceTip_triangle
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso_inv_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCoherentDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCoherentCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCoherentCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationRawCylinder_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSliceCylinder_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationCoherentCocone_vertex
