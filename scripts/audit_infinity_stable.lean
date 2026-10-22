@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnitLaws
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebra
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainAssociativity
 import SerrePositivity.InfinityCategories.Derived.TensorArrowConjugation
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainBidegree
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainBidegreeDifferential
@@ -4788,6 +4791,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainUnitLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebra,
+
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainAssociativity,
+
     `SerrePositivity.InfinityCategories.Derived.TensorArrowConjugation,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainBidegree,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainBidegreeDifferential,

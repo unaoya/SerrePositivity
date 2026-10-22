@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- 検証済み11パスは `7d826ba71` に保存済み。今回の計画状態の更新だけを保存する。他レーンの変更は保持する。
+- 今回の3新規モジュール・集約・両監査・本計画の7パスを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10927 jobs）。公理監査は Derived 20226 宣言／2226 モジュール、Stable 21339／2496。許容三公理のみ。今回までの保存対象1157新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10930 jobs）。公理監査は Derived 20294 宣言／2229 モジュール、Stable 21407／2499。許容三公理のみ。今回までの保存対象1160新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- d・f は完了、β4 は D2 所有。g の今回の7モジュールは `DGSimplicialRingMooreProductDifferential`（10宣言）・`DGSimplicialRingCoefficientProductDifferential`（6）・`TensorArrowConjugation`（10）・`DGSimplicialRingCochainBidegree`（4）・`DGSimplicialRingCochainBidegreeDifferential`（3）・`DGSimplicialRingCochainTensorDifferential`（4）・`DGSimplicialRingCochainMultiplication`（2）。元の Moore 乗法の二微分項・零次数境界・二変数自然性を実標準 tensor へ移し、同じ実次数同型による共役が Leibniz 式を保つことから cochain 三場合の式を得た。標準 tensor の全成分を照合し、正次数の零化と余積の普遍性で `simplicialRingDGCochainMultiplication` を実鎖写像として構成した。各次数は保存済みの同じ乗法成分そのもの。対象・両集約（10927 jobs）・39署名は成功。両全体監査も終端0（Derived 20226宣言／2226モジュール、Stable 21339／2496）。検証済み11パスは `7d826ba71` に保存済み。ログは `/tmp/d-beta5-cochain-leibniz-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は既存の `simplicialRingDGCochainUnit` の全 tensor 左右単位則、同じ乗法・単位による Mon(Complex) への包装、実 dg 代数関手と D(A)・Perf(A) 接続、準同型不変性を閉じる。`/tmp/d-beta5-cochain-multiplication-assoc.lean` は三重 tensor の任意の中間次数での表示・評価、同じ実 associator の両中間次数の式、元の乗法の負次数での評価と純三重 tensor の結合、全 tensor 結合図式の計6宣言が終端0。公開形式の同名 ready も6明示署名・公理検査に成功、警告なし。次の予定名は `DGSimplicialRingCochainAssociativity`、source は `/tmp/d-beta5-cochain-multiplication-assoc-source.lean`。左右単位は unitor の逆を前合成し、`HomologicalComplex.leftUnitor'_inv`・`rightUnitor'_inv` と既存単位の零次成分で計算すれば、負次数の同じ左右単位則へ戻せる（未証明）。`HomologicalAlgebra/CochainTensorTriple` の実三重包含・外延性と `CochainTensorHomogeneous` の評価式を読み取り専用で使う。g 全体は未完。単体環の可換性・原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
+- g の今回の3モジュールは `DGSimplicialRingCochainAssociativity`（6宣言）・`DGSimplicialRingCochainUnitLaws`（5）・`DGSimplicialRingDGAlgebra`（4）。元の同じ乗法鎖写像の全 tensor 結合図式と左右単位図式を証明し、`simplicialRingNormalizedDGAlgebra` を実 `Mon(Complex)` として構成した。単位同型の逆の全次数計算と、正次数零化・純三重 tensor の外延性を使う。複体・乗法・単位を変更せず、可換性や平坦性を仮定しない。対象・両集約（10930 jobs）・15明示署名は成功。両全体監査も終端0（Derived 20294宣言／2229モジュール、Stable 21407／2499）。ログは `/tmp/d-beta5-cochain-monoid-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
+- 次は正規化 dg 代数関手・D(A) と Perf(A)・準同型不変性を本体へ統合する。`/tmp/d-beta5-cochain-multiplication-naturality.lean` は実係数 Moore 乗法・共役した負次数乗法・全 tensor 乗法の自然性、正規化元1と実 cochain 単位の保存、同じ鎖写像による Mon の射と恒等・合成を保つ関手まで終端0。そこへ既存の dg 代数の D・Perf による界面と正規化射の準同型性に沿う実 tensor の ∞ 圏同値を追加し検証中（まだ本体未統合）。単体の弱同値と Moore 準同型の同定は既存 DK 比較から確認する。g 全体は未完。d・f は完了、β4 は D2 所有。原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
 
 ## 目標と原典
 
