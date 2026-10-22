@@ -6,103 +6,41 @@
 
 ### N（γ1.5・γ3）
 
-- **現在地**：**N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
-  任意の小さい底上の coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram` を使用。
-  `F2.coherentDiagramTotalCocone_isColimit` は元の全空間余錐の native 余極限性。F2 集約・`infinity-core-F2.md` は読み取り専用。
-  **N の部分余極限経路は打ち切り。** 指定余錐の未証明の余極限性や無限骨格の接続を再開しない。
-  **N-2（γ4）完了。** 固定 SM7・豊穣随伴の Hom 同型と合成互換を明示した simplicial Quillen 随伴について証明。
-  元の cf 対応圏の coherent nerve は quasicategory、Δ¹ 上の元の射影は CartesianFibration かつ CocartesianFibration。
-  元の右 Q(RY)→RY と左 LX→R_D(LX) の随伴像の外側ホーン充填は全次数で完了。二つの未知 Hom・全境界可換性を再実装しない。
-  元の cf nerve 間の左右導来関手、標準単位・余単位・h Fun 内の両三角恒等式を持つ `QCatAdjunction` を構成。
-  単位は同じ標準輸送比較のホモトピー。元の両包含・端点 fiber 同型・左右の全候補辺を保持する。
-  元の通常の左右 cf 置換関手と比較自然変換を構成し、通常の nerve 全体を元の導来関手と `FunctorIso` で照合。
-  左の比較は元の coCartesian prism の終点を持ち上げ空間の可縮 Kan 性で比較し、全忠実な指定 fiber へ反映する。
-  `quillenCfDerivedAdjunctionWithComparisons_exists` は同じ単位の ∞ 随伴・両側 fibration・両通常置換との比較・任意 coherent 図式の指定極限保存を集約。
-  右随伴の後合成の任意単体集合パラメータの Hom 同型・RightKanHom 普遍性から、元の指定極限錐の保存を証明。添字に quasicategory 性を仮定しない。
-  **N-3 の指定された Tot・hG・fiber への適用は Sp の既存定理で達成。** 元の BF 対象・指定辺を保持する公開界面を読み取り専用で照合・検証。
-  `homotopyFixedPointsInfinityCone_isLimit`・`homotopyTotalizationInfinityCone_isLimit` は元の作用図式・余単体図式の実 ∞ 極限錐。
-  任意 coherent cospan の極限・任意辺の fiber も提供済み。Sp の任意 coherent 図式の極限・全有限極限・安定性まで完成とは扱わない。
-  **N-4 着手。** `IsLocalObject W` を元の指定辺の写像空間の前合成同値で定義し、局所対象の全部分 quasicategory を構成。
-  pinched・区間模型の局所性を照合。局所性の合成・二つから三つ目・対象同型不変性、任意単体集合パラメータの定値 Hom の全単射を証明。
-  `reflective_isLocal_iff_unit_local` は既存反射の局所対象を全単位成分への局所性で特徴づける。逆向きは元の単位の両逆を回収。
-  既存反射について、局所対象と元の反転辺集合の局所対象の一致、および S-equivalence と元の反転辺集合の一致を証明（HTT 5.5.4.2(1)・(2)）。
-  `LocalEquivalenceHom`・`localEquivalences` を元の射・一次単体で定義。元の辺集合の包含、単調性・冪等性、局所対象の不変性を証明。
-  元の二単体の三辺について二つから三つ目の性質を証明し、全可逆辺を含むことも回収。任意小余極限条件も下記の元の矢印圏の余錐で証明。
-  全単体集合パラメータの定値 Hom の全単射と局所性の同値を公開。元の辺への局所性を終点固定 coslice の始点制限の trivial Kan 性と照合。
-  元の span の左枝が指定辺集合に属するとき、局所対象への余錐の右枝・右枝終点への制限の trivial Kan 性を証明。余錐空間の厳密な引き戻しを使用。
-  **元の任意の coherent な pushout での S-equivalence の保存を完了。** 下辺→上辺と左辺→右辺の両向きを公開。安定性は不要。
-  反復 coslice の厳密な同型と元の左因子への制限の一致を構成し、余極限余錐全体から底図式への coslice 制限の trivial Kan 性を導出。
-  **局所同値の強飽和性（HTT 5.5.4.5・5.5.4.11）を完了。** pushout・矢印圏内の任意小余極限・元の二単体の二つから三つ目と全可逆辺を保持。
-  **両端が余極限余錐の元の coherent な prism について、底の全垂直辺が S-equivalence なら元の頂点辺も S-equivalence と証明。**
-  終点面から全図式の余極限性を回収し、指定比較辺の底の像を元の頂点辺と厳密に同定。K の nerve・quasicategory 性は仮定しない。
-  元の任意の矢印圏の余極限余錐の両端評価を、F2 の点ごとの余極限の存在と余錐全体の同型から回収。元の頂点辺の所属を証明。
-  小添字 u と対象圏の宇宙 max(u,v) を分離し、ulift した全小形状の余極限の存在から強飽和性を集約。大きい宇宙の全余極限は要求しない。
-  **局所対象の任意 coherent 極限での閉性を完了。** `isLocalObject_limitCone` は元の指定極限錐の頂点を保存し、添字 K の quasicategory 性・反射の存在を要求しない。
-  小添字を指定した `stronglySaturatedClosure` の最小性・強飽和性・冪等性と、小生成の定義を構成。生成閉包は元の局所対象・局所同値・局所全部分圏を保持。
-  **生成閉包内の局所置換の存在から、生成閉包＝局所同値と小生成性を導出。** 元の hX の Hom の持ち上げ・置換間の可逆辺・元の二単体を使用。局所置換の存在、無条件の反射の存在、P_Σ の残る生成・普遍性は未完了。
-  局所終点を持つ元の余錐圏を引き戻しで構成し、局所同値の始点・終点への余錐制限が圏同値であることを証明。
-  **局所対象へ向かう元の局所同値自身が、局所余錐圏の始対象。** 終点を重ねる元の退化三角形を使用し、一点余錐の脚が元の辺であることまで厳密に照合。
-  **join 型 coslice の底変換から `unitCommaFiber` への標準比較の同値性を完了。** 任意 G:Y→X に対し標的図式を保持し、全パラメータで fiber 比較を既存の区間比較と厳密に同定。
-  元の局所置換を指定 comma 始対象へ移し、その矢印の族が元の辺であることを厳密に回収。各対象の局所置換の存在から、各 comma の始対象の存在を導出。
-  各 comma の始対象から相対始対象射影の自明 Kan 性を回収し、普遍矢印の coherent な切断を構成。同じ円柱から標的関手と単位を取り、各成分の元の頂点辺の類との一致を証明。
-  標的固定の二重 fiber 内の同じ Hom 類の二辺を頂点同型で比較し、代表不変性と `UnitCommaInitialCondition` を持つ coherent な関手・単位を回収。
-  **comma 始対象条件から、元の指定単位の標準写像空間比較の同値性と ∞ 随伴を構成。** 同じ合成三角形の円柱を、同じ comma 頂点で評価した left fibration の普遍輸送と照合。
-  **各対象の局所置換が与えられれば、局所全部分圏の反射を構成。** presentable 性からの局所置換の存在は未証明。
-  **P_Σ 入口：sifted 性・filtered からの入口・弱可縮性を証明。** 元の F2 の二項積の全空間 Kan 比較を sifted な底へ一般化し、空積の比較も証明。底の quasicategory 性は不要。
-  **P_Σ：元の P(C) 内の全部分 quasicategory・充満忠実な包含・元の Yoneda の有限積保存と P_Σ への充満忠実な因子化を完了。sifted 余極限閉性を完了。** 任意の小さい sifted な底 B 上の元の図式 r について、F2 の coherent 空間値余極限を読み取り専用で使い、全評価が余極限となる実際の前層余極限全余錐 q を供給。元の有限離散極限全錐 c の実際の頂点関手像を、元の全評価 Kan 脚を持つ標準全錐と関手同型で結び、非空有限積保存を証明。既存の空積の結果と合わせ、元の頂点関手の全有限積保存と q.vertex の `IsSigmaPresheaf` を証明。元の全余錐そのものを P_Σ 内へ制限し、全部分複体への余極限性の反映で内部余極限性を回収。`sigmaPresheafSiftedColimitCone_inclusion` は包含後に元の前層余極限全余錐への厳密な一致、`sigmaPresheafSiftedColimitCone_isColimit`・`sigmaPresheaf_hasColimit_of_sifted` は内部の実際の余錐・存在。底の quasicategory 性も、頂点の P_Σ 所属という未証明入力も要求しない。P_Σ 内の Yoneda の有限余積保存・sifted 生成・普遍性は残る。
-  **点ごとの coherent 積の元の小さい全空間→pullback の前合成同値を完了。** 両射影の fiber 作用を元の辺の輸送と照合。sifted な底で元の余極限 Kan 比較のホモトピー同値・両脚・単位式まで完了。底の quasicategory 性は不要。
-  **Yoneda 評価の自然性を P_Σ の元の全区間 Hom まで完了。** 元の任意の辺の Tw の恒等点輸送比較と、選択済みの前合成そのものを対角辺とする全三角形族を使用。元の全変換の共同評価を、元の底辺と同じ四辺を持つ正方形へ制限し、同じ正方形の普遍輸送の比較から `unstraighteningFiberEvaluation_baseTransportIso` を証明。元の反転辺の表現可能前層での像を同じ指定反変辺と厳密に同定し、`canonicalYonedaFiberEvaluation_naturalityIso` で元の前合成後の恒等点評価と、終点での同じ評価の後に標的の元の反変辺の標準輸送を続けた作用を比較。元の包含の Hom 作用と元の前合成の全パラメータでの可換性を証明し、`sigmaYonedaFiberEvaluation_naturalityIso` で P_Σ の元の Yoneda 辺へ移送。点ごとの比較を自然な族とは仮定しない。有限余積の余錐像そのものの余極限性、sifted 生成・普遍性は残る。
-- **残り**（依存順。時間は再開時の粗い見積もり）：
-  1. E2b へ γ4 を提供し、元の DK 豊穣化・忘却関手と接続。E2 の高次 Hom 比較と ∞ 局所化の普遍性が先。HTT 1.1.5.10・5.2.4.6、16〜40時間。
-  2. N-4（I-b）：Bousfield 局所化・P_Σ。presentable・随伴関手定理は F1b、N は局所対象・局所化と sifted 生成を分担。HTT 5.5.4・5.5.8、規模は入口調査後に再見積もり。
-  3. Sp の残る一般 coherent 極限・安定性の供給は Sp レーンと整合させる。Sp の `IsStable` は I-b 末尾に延期済み。
-  Ind・compact・冪等完備化・Ind の安定性は F1b の担当。`infinity-core-F2.md` §3 を読み取り専用で使う。
-- **主要宣言**（名前のみ。断りなしは namespace `SerrePositivity.InfinityCategories.HomotopyLimits`）：
-  `F2.coherentDiagramTotalCocone_isColimit`、`F2.hasColimit_coherentSpaceDiagram`、`FixedSimplicialPushoutProduct`、`EnrichedAdjunctionHomComposition`、
-  `quillenCfCollageInfinity_quasicategory`、`quillenCfBottomFiberIso`、`quillenCfTopFiberIso`、
-  `quillenCfRightLiftEdge_isCartesian`、`quillenCfLeftLiftEdge_isCocartesian`、
-  `quillenCfCollageProjection_cartesianFibration`、`quillenCfCollageProjection_cocartesianFibration`、
-  `quillenCfLeftDerived`、`quillenCfRightDerived`、`quillenCfDerivedUnitMappingSpaceCondition_exists`、`quillenCfDerivedAdjunction_exists`、
-  `rightKanHomUniversal_postcomp_of_unitCondition`、`mapJoinCone_isLimit_of_adjunction`、
-  `quillenCfRightDerived_mapJoinCone_isLimit`、`quillenCfRightDerived_hasLimit_postcomp`、
-  `quillenCfRightReplacement_transport_exists`、`quillenCfLeftReplacement_transport_exists`、
-  `quillenCfRightReplacementFunctor`、`quillenCfLeftReplacementFunctor`、`quillenCfRightReplacementComparison`、`quillenCfLeftReplacementComparison`、
-  `quillenCfRightDerived_ordinaryComparison`、`quillenCfLeftDerived_ordinaryComparison`、`quillenCfDerivedAdjunctionWithComparisons_exists`、
-  `IsLocalForHom`、`isLocalForHom_iff_interval`、`isLocalForHom_constantHom_bijective`、
-  `IsLocalObject`、`localObjectsSubcomplex`、`isLocalObject_iff_of_vertexIso`、
-  `isIso_of_isLocalForHom_source_target`、`reflectiveUnit_isLocalForHom`、`reflective_isLocal_iff_unit_local`、
-  `LocalEquivalenceHom`、`localEquivalences`、`localEquivalences_idempotent`、
-  `reflective_isLocal_iff_invertedEdges`、`reflective_localEquivalenceHom_iff`、`reflective_localEquivalences_eq`、
-  `localEquivalenceHom_iff_edge_mem`、`localEquivalences_compStruct`、`localEquivalences_compStruct_cancel_left`、`localEquivalences_compStruct_cancel_right`、
-  `iteratedSliceUnderIso`、`iteratedSliceUnderIso_restriction`、`sliceUnderRestrict_cocone_trivial`、
-  `localEquivalences_pushout_bottom_top`、`localEquivalences_pushout_left_right`。
-  `cosliceRestriction_homotopyEquivalence_iff_sections`、`isLocalForHom_edge_iff_sectionRestriction_trivial`、
-  `isLocalForHom_initialRestriction_of_fiber_equivalence`、`localEquivalences_colimitRestriction_comparison`、`localEquivalences_colimitPrism_source_comparison`、
-  `colimitPrismTotalCocone_isColimit`、`colimitPrismComparisonEdge_projection`、`localEquivalences_colimitPrism_apex`、
-  `isColimitCone_functor_evaluation_of_pointwise_exists`、`localEquivalences_arrowColimit`、`IsStronglySaturatedEdgeSetOfShapes`、`localEquivalences_stronglySaturated`、
-  `localDiagram_coslicePrecomposition_isQCatEquivalence`、`isLocalForHom_limitCone_of_sections`、`isLocalObject_limitCone`、
-  `stronglySaturatedClosure`、`IsOfSmallStrongGeneration`、`isLocalObject_stronglySaturatedClosure_iff`、`stronglySaturatedClosure_eq_localEquivalences_of_localReplacements`、
-  `localTargetCoconeSpace`、`localTargetCoconeRestriction_source_isQCatEquivalence`、`edgeSourcePointCocone_leg_edge`、`localReplacement_edgeSource_isInitial`、
-  `cosliceCommaComparison_isQCatEquivalence`、`localReplacementCommaPoint_isInitial`、`localReplacementCommaPoint_uncurry`、`unitCommaFiber_initial_exists_of_localReplacements`、
-  `commaRelativeInitialProjection_trivialKanFibration`、`exists_unitCommaSection_of_fiberInitial`、`commaSectionUnit`、`commaSectionUnit_component`、
-  `unitCommaTargetFiber_isInitial_iff_of_homMk_eq`、`commaSectionUnit_initialCondition`、`exists_unit_initialCondition_of_fiberInitial`、
-  `unitIntervalMap_commaTransportIso`、`qcat_exists_adjunction_unitHom_iff_commaInitial`、`exists_qcatAdjunction_of_commaFiberInitial`、`isReflectiveSubcategory_of_localReplacements`、
-  `IsSiftedInfinity`、`isWeaklyContractible_of_sifted`、`totalKanProductComparison_homotopyEquivalence_of_sifted`、`continuousKanReplacement_isContractibleKan_of_sifted`、
-  `IsSiftedInfinity`、`PreservesFiniteProductsFromSmallSource`、`SigmaPresheafInfinity`、`sigmaYonedaInfinityMap`、`sigmaYonedaInfinityMap_isFullyFaithful`、`sigmaPresheafColimitFiniteCone_isLimit`、`sigmaColimitFiniteImageConeIso`、`presheafColimitVertex_mapNonemptyCone_isLimit`、`presheafColimitVertex_preservesFiniteProducts`、`presheafColimitVertex_isSigmaPresheaf`、`sigmaPresheafAmbientColimit_isSigmaPresheaf`、`fullSubcomplexCoconeLift_inclusion`、`isColimitCone_of_fullSubcomplex`、`sigmaPresheafSiftedColimitCone`、`sigmaPresheafSiftedColimitCone_inclusion`、`sigmaPresheafSiftedColimitCone_isColimit`、`sigmaPresheafSiftedColimitCone_inclusion_isColimit`、`sigmaPresheaf_hasColimit_of_sifted`、`yonedaIdentityNormalizedTransportsIso`、`canonicalYonedaFiberEvaluation_vertexTransportIso`、`yonedaRepresentableNativeEdge_evaluationIso`、`unstraighteningFiberHom_precomposeIso`、`canonicalYonedaFiberEvaluation_precomposeIso`、`unstraighteningFiberEvaluation_baseTransportIso`、`canonicalYonedaFiberEvaluation_naturalityIso`、`intervalMappingPostOfEq_precomposeIso`、`sigmaYonedaFiberEvaluation_naturalityIso`。 Sp の正本は `kst-lanes/L9-spectra.md` の値域界面表。N の残りの公開名・型は集約と全監査を参照。
-- **依存と提供**：F1・F1b、F2 の coherent 余極限、HomotopyFunctionComplex、Coherent、Stable、KST/Spectra・LocalizingInvariants を読み取り専用で使用。
-  集約 `InfinityCategories/HomotopyLimits.lean`・全監査 `scripts/audit_homotopy_limits.lean` を Sp・E2b に提供。規約は `foundations.md` §8、README は規約だけ。
-- **未コミット**：なし（今回の保存単位：`ConstantEdgeIntervalFamilies`・`UnstraighteningNaturalitySquare`・`DiagonalEvaluationTransport`・`UnstraighteningBaseTransport`・`YonedaBaseNaturality`・`IntervalPrecompositionPostMap`・`SigmaYonedaNaturality` の7モジュール26宣言、集約・全監査、本 N 節）。他レーンの差分は対象外。
-- **既知の問題**：N の対象ビルド7604 jobs・全5288宣言監査は終了コード0、標準三公理のみ。新規7モジュール26宣言に警告・sorry・追加公理なし。
-  `Inputs/Homotopy/KanQuillen.lean` は既存 sorry を含むので import しない。主経路に `ModelCategory SSet` を仮定しない。
-  固定 SM7 と豊穣随伴の合成互換は simplicial model/adjunction の明示入力。通常の Quillen 随伴だけから導いたとは扱わず、適用先では元のデータとの互換を証明する。
-  E2b は DK 型なので、この入力を未証明のまま代入しない。`Localization.IsLocalization` の定義だけを任意 W の局所化の存在定理と扱わない。
-  Sp の局所 Kan 性・Ω 条件・cofibrancy を保持。他レーンの import 閉包が壊れたら回避せず停止し、作業中変更を保存しない。
-- **次の一手**：N-4：元の Yoneda の有限余積保存。元の P_Σ の同じ区間 Hom の前合成と、標的前層の元の反変辺の標準輸送の全評価自然性は `sigmaYonedaFiberEvaluation_naturalityIso` まで完成。元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用する。同じ余錐像の各脚の Hom 前合成を保存済みの自然性で同じ値図式の輸送へ照合し、全余錐そのものの余極限性を写像空間で判定。空添字も含む。底方向の正方形輸送や前合成の全三角形族を再実装しない。その後 sifted な要素図式による生成・普遍性。HTT 5.5.8.10・11・14・15。
-  comma の局所随伴判定・局所置換からの反射は完成。逆向きの比較 fiber のホモトピーを再実装せず、同じ単位比較と普遍輸送の照合を使用。
-  生成閉包＝局所同値の定理と反射の定理の `hreplace` は未供給。presentable 圏の小さい辺族から局所置換を作る存在部分が残る。入力フィールドに仮定して完成とは扱わない。
-  F1 の前層・Yoneda は正本・ソースで提供済みと確認。F2 の Ind・compact は進行中、presentable・随伴関手定理は後段。条件付き反射だけで局所化の存在の完成としない。F1・F2 は読み取り専用。
-  E2b の `cAlgForgetLocalization` の終域は元の全複体の具体的局所化。D(R) との比較・高次 Hom 比較・∞ 局所化の普遍性は E2 側で未提供と再確認。γ4 の入力を先取りしない。
-  原典は [HTT 5.2.4.6・Remark 5.2.4.7、5.5.4・5.5.8](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）。
+- **現在地**：**F2N-4 冪等完備化へ移行（10-22 10:10 ユーザー承認、F1b から移管）。**
+  **N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
+  任意 coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram`・`F2.coherentDiagramTotalCocone_isColimit` を読み取り専用で使用。N の部分余極限経路は打ち切り。
+  **N-2（γ4）完了。** 固定 SM7・豊穣随伴の元の Hom 同型と合成互換を明示した simplicial Quillen 随伴について証明。
+  元の cf 対応圏の coherent nerve、Δ¹ 上の両側 fibration、左右の元の導来関手・標準単位余単位・両三角恒等式、通常の cf 置換との比較を構成。
+  `quillenCfDerivedAdjunctionWithComparisons_exists` は同じ単位の ∞ 随伴・両側 fibration・両通常置換との比較・任意 coherent 図式の指定極限保存を集約。添字の quasicategory 性は不要。
+  **N-3 の指定された Tot・hG・fiber への適用は Sp の既存定理で達成。** 元の BF 対象・指定辺を保持して読み取り専用で照合。Sp の一般 coherent 極限・全有限極限・安定性の完成とは扱わない。
+  **N-4 は休止。残る e・f・g は第 II 段。** 局所同値の強飽和性・任意 coherent 極限での局所対象の閉性、各対象の局所置換が与えられた場合の反射を証明済み。presentable 性からの局所置換の存在は未証明。
+  P_Σ の全部分 quasicategory・元の Yoneda の充満忠実な因子化・sifted 余極限閉性を完了。
+  **有限余積保存の途中の区切り：P_Σ の元の全区間 Hom の評価自然性まで保存済み（b0ccafbc8）。** 元の Tw の恒等点輸送、同じ選択済み前合成を対角辺とする全三角形族、元の共同評価の四辺を保持した正方形輸送を使用。`sigmaYonedaFiberEvaluation_naturalityIso` は元の Yoneda 辺への前合成後の全評価と、元の標的前層の同じ反変辺の標準輸送を比較。有限余積保存そのもの・sifted 生成・普遍性は未完了。
+  **F2N-4(a) 着手。** `IdemShape` は恒等と非恒等冪等元を持つ一対象圏の nerve、`SplitShape` はその二つの形式的像の圏の nerve。通常の Karoubi は添字模型だけに使用。
+  `CoherentIdempotent` は元の全 Idem 上の写像。`StrongSplitting` は同じ包含による制限で元の全図式を厳密に回収する写像。元の全図式から得た自己射の冪等性と、強い分裂から同じ二頂点の retract を回収。
+  同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
+  **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
+  元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
+- **残り**（依存順、粗い見積もり）：
+  1. F2N-4(a)：弱い retract 三角形から強い coherent 分裂への延長、強い分裂と同じ Idem 図式の余極限・極限の同値、分裂空間の可縮性。HTT 4.4.5.6〜16、15〜40時間。
+  2. F2N-4(b)・(c)：前層圏の冪等完備性、retract 閉包への分裂の反映、`Idem C` の冪等完備性、元の因子化による関手 ∞ 圏の普遍性・一意性。HTT 5.1.4.2〜9、25〜70時間。
+  3. F2N-4(d)：安定 ∞ 圏の冪等完備化の安定性。元の零対象・有限極限余極限の閉性を証明。HA 1.1.3.7、15〜40時間。
+  4. F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1b の F2N-2・F2N-3 の実際の Ind・compact 界面の後。HTT 5.3.4.17・5.3.5、15〜40時間。
+  N-4 の局所化・P_Σ の残り e・f・g、E2b の DK/∞ 局所化の普遍性への γ4 の接続、Sp の残る安定性との整合は第 II 段。
+- **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
+  `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
+  `CoherentIdempotent.endomorphism_idem`、`StrongSplitting.vertexRetraction`、`VertexRetraction.isoOfSameIdempotent`、`VertexRetraction.hom_unique`、
+  `IsVertexRetractOf`、`retractClosure`、`retractClosure_idempotent`、`IsRetractPresheaf`、`Idem`、`idemInclusionPresheaf`、`idemYoneda`、`idemYoneda_inclusion`、`idemYoneda_isFullyFaithful`、`idemVertex_retract_yoneda`。
+  N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
+- **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
+  F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
+- **未コミット**：なし（F2N-4 の4モジュール57宣言、独立集約・監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド4115 jobs・全57宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+  `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
+  同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
+- **次の一手**：F2N-4(a)：元の弱い retract 三角形 Ret と強い分裂添字 `SplitShape` の包含を構成し、HTT 4.4.5.6〜8 の内角充填による延長へ進む。元の二射・同じ恒等辺・冪等図式の全次数を保持。次に同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
+  **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
+  原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 
 ### E2a（既存の引き継ぎ）
 
