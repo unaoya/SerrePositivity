@@ -13,11 +13,15 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.Category
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Projections
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Composition
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CompositionComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.Postcomposition
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedSquareHomotopy
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeSquare
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeSquare
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeExtraction
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso

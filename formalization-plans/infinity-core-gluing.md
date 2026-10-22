@@ -28,7 +28,10 @@
 - ホモトピー可換な正方形の cocone 写像を第三 cochain ごと構成し、
   `Cone(coconeSquareMap) ≅ Cocone(coneSquareMap)` を全整数次数で証明。
   四成分の交換は `(a,b,c,d) ↦ (a,c,−b,d)`。右包含は既存の厳密 cocone 写像と一致。
-  gluing の Yoneda Hom への適用・標準 cone 比較とシフトは未完。
+- 実 gluing 合成の第三 cochain を全 Hom tensor 上で回収し、閉射の実後合成の二射影と第三 cochain を同定。
+  射影と可換な cocone 写像から下辺・比較ホモトピーを回収し、元の写像の厳密な再構成を証明。
+  `dgGluingHomConeIso` により実 Hom 後合成の標準 cone を回収係数の mapping cocone と同定。
+  回収係数と既存の加群 cone 係数の一致、試験対象に関する dg 自然性、シフトは未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -43,6 +46,8 @@
 - `dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
 - `dgGluingConeSquareMap`・`dgGluingConeSquareMatrix_eq`
 - `dgGluingCoconeSquareMap`・`dgGluingConeCoconeIso`・`dgGluingConeCoconeMap_inr`
+- `dgGluingComposition_comparison`・`dgGluingPostcomposition_comparison`・`dgGluingPostcomposition_fst`
+- `dgGluingCoconeExtractMap_recovery`・`dgGluingHomConeIso`・`dgGluingHomConeBottom_cochain`
 - `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
 - `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
 - `dgGluingKernelConeIso`・`dgGluingKernelConeIso_inr`・`dgGluingCommaKernelConeIso`
@@ -69,16 +74,19 @@
 ### 次の一手
 - `dgGluingConeObject` と元の閉射の標準 cone の全 Yoneda Hom を比較する。
   両成分の代表比較と `dgGluingConeObject_augmentation_transport`・`dgGluingConeAugmentationCore_hom`
-  で同じ比較射の図式を接続する。閉射の後合成の第三成分を全 Hom 上で同定し、
-  `dgGluingConeCoconeIso` を同じ Hom の正方形に適用して、標準 cone 比較を全整数次数・dg 自然性ごと構成する。
+  で同じ比較射の図式を接続する。`dgGluingHomConeBottom_cochain` の回収した下辺を、
+  `dgGluingCompositePrimitive` の二項と cocone 右包含で計算し、元の右成分に沿う双加群作用と同定する。
+  第一項には `complexRightUnitInsertion_cochain`、第二項には右包含の左射影が零であることを使う。
+  回収ホモトピーも `dgGluingHomConeHomotopy_eq` から既存の閉射の比較ホモトピーへ移し、
+  `dgGluingHomConeIso` の係数を同じ加群 cone 係数と同定し、試験対象に関する全 dg 自然性を証明する。
   代表対象としての cone のホモトピー表現可能性を証明した後、シフトを構成し、
   `dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）へ接続する。
   候補対象・成分の K の同型・augmentation のホモトピーだけでは、cone の表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 27モジュール・集約のビルド成功（4941 jobs）、公理監査462宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要6署名も検査済み。
-  今回の3モジュール・集約・監査・本計画を専有6パスだけで保存する。他レーンの差分は含めない。
+- 31モジュール・集約のビルド成功（4945 jobs）、公理監査571宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要8署名も検査済み。
+  今回の4モジュール・集約・監査・本計画を専有7パスだけで保存する。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
