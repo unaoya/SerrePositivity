@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Stable.Strip3Pasting
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnStrips
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnFaces
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnPushouts
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnSources
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnSuspensions
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionShape
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionParameters
+import SerrePositivity.InfinityCategories.Stable.CurryVertexEvaluation
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionFamily
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionEvaluation
+import SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimits
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionFunctorComparison
+import SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimitPushout
 import SerrePositivity.InfinityCategories.Stable.Grid22Pasting
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreOuterPushout
@@ -7566,6 +7580,21 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.Strip3Pasting,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnStrips,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnFaces,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnPushouts,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnSources,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRowColumnSuspensions,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionShape,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionParameters,
+    `SerrePositivity.InfinityCategories.Stable.CurryVertexEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionFamily,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimits,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionFunctorComparison,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionFiniteColimitPushout,
+
     `SerrePositivity.InfinityCategories.Stable.Grid22Pasting,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreOuterPushout,
