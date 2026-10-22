@@ -5140,3 +5140,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.fiberTransportFamily_endpointIso_precomposeSource_point
 #check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportAt_universalIso_precomp_heq_source_endpoint
 #check @SerrePositivity.InfinityCategories.F2.pointedIntervalUniversalSource_comparison_trans
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLongNativeComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLongComparison_trans_universal
