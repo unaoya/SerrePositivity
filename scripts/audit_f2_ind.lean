@@ -262,3 +262,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_fiber
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_isPrecompositionEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductClassificationIso

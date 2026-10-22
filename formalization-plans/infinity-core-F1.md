@@ -36,8 +36,9 @@
   `strictLeftTransportSectionDiagram` は全単体と元の添字を同時に動かす Kan 値図式 H。
   `sectionProductScaffold` は H の replacement から共同 weighted 射影の初頂点引き戻しへの大域射で、両射影を保持。
   同じ射の fiber 作用を元の初頂点評価と係数 fiber 同型へ同定し、前合成同値性まで証明済み。
-  分類比較、right 反転との整合性、逆方向と単一 κ-filtered 表示は未証明。
-- 独立集約 6719 jobs、公理監査 1386 宣言、標準三公理のみ。
+  `sectionProductClassificationIso` は元の共同分類の初頂点制限と H の weighted 分類の一つの大域同型。
+  Kan 図式値の実現との比較、right 反転との整合性、逆方向と単一 κ-filtered 表示は未証明。
+- 独立集約 6720 jobs、公理監査 1396 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -93,8 +94,8 @@ strict left 分類像を底の全単体上の相対切断へ戻す大域同型�
 添字 (i,s) ∈ I × TransportSimplexCategory B の Kan 図式 H と、初頂点座標で評価する大域射まで構成済み。
 `sectionProductScaffold` は H の replacement から元の共同 weighted fibration の同じ初頂点引き戻しへの射。
 同じ射の係数作用を初頂点の相対切断評価と元の fiber 同型へ同定し、前合成同値性まで証明済み。
-次はこの scaffold と taut scaffold の共通置換から、H の分類と初頂点引き戻しの分類を大域的に結ぶ。
-`strictLeftClassificationSectionIso` の Kan 図式値の実現と H の積上の実現も、同じ全高次で照合して局所化で戻す。
+同じ scaffold と taut scaffold の共通置換により、元の共同分類の初頂点制限と H の weighted 分類は大域同型。
+次は weighted の coherent 単位で H 自体の実現へ移し、`strictLeftClassificationSectionIso` の実現と照合して局所化で戻す。
 left/right 二重反転の自然な底上の比較も保持して、元の F との既存の同型に接続する。
 span の元の両 scaffold への制限を保持し、各値の同値だけで大域比較や元の余錐の比較を代用しない。
 同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。HTT 5.3.5.3、5.3.1.18。

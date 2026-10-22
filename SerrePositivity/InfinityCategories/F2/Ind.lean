@@ -154,3 +154,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.VertexFiberIsoProjection
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCoefficientFiberIso
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductValueEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldEquivalence
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductClassification
