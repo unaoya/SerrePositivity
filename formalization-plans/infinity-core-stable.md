@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- f の実 Perf の coherent 冪等完備性の1新規モジュール（7公開宣言）、Derived 集約、両監査、本計画の5パス。対象・両集約（10819 jobs）・7公開署名・両全体監査は成功、新規ソースに警告なし。検証済み5パスを保存する。前回保存は `7d6c2c908`（計画 `f8773294a`）。他レーンの変更は変更しない。
+- f の実 Perf の coherent 冪等完備性の1新規モジュール（7公開宣言）、Derived 集約、両監査、本計画の5パス。対象・両集約（10819 jobs）・7公開署名・両全体監査は成功、新規ソースに警告なし。検証済み5パスを `5cdbdd9a5` に保存済み。前回保存は `7d6c2c908`（計画 `f8773294a`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- d は随伴・三角式・五角式・単位・自然性の現到達点で完了。旧 homInvIso との一致・追加の kernel nerve パラメータの全高次 coherence は β4・K-8d8 に不要で後段へ戻す（2026-10-22 コーディネータ指示）。f の `DGPerfectIdempotentComplete` を統合した。`idempotentComplete_of_ulift_ho_complete` は充満忠実像の retract と元の Yoneda 冪等完備化から、元の全 Idem 図式を厳密に回収する強分裂を与える。対象宇宙の dg 持ち上げの H⁰ 同値によって、`dgNerve_isIdempotentComplete_of_h0` へ接続し、`dgModulePerfectInfinityCategory_isIdempotentComplete`・`dgAlgebraPerfectInfinityCategory_isIdempotentComplete` まで証明した。対象・両集約（10819 jobs）・7公開署名・両全体監査は終端0（Derived 19799宣言／2202モジュール、Stable 20912／2472）。f 完了。ログは `/tmp/d-beta5-perfect-complete-{derived,stable}-audit.log`。検証済み5パスだけ保存する。g に着手：KST の `NormalizedShuffle` は整数係数の正規化 shuffle 鎖写像を提供する。単体環の元の積との合成から実正規化乗法とその自然性の9宣言を `/tmp/d-beta5-simplicial-ring-normalized-mul-source.lean`、KST shuffle と E の経路・符号・三入力の三座標・積符号の一致の9宣言を `/tmp/d-beta5-shuffle-coherence-bridge-source.lean` に整理済み。各 ready は9明示署名・公理監査・警告なしで終端0、未集約。実単体環の shuffle 積・三入力の実作用・結合則の5宣言も `/tmp/d-beta5-simplicial-ring-shuffle-assoc.lean` で検証済み（終端0、結合則の公理は許容三公理のみ）。単位・自然性を `/tmp/d-beta5-simplicial-ring-shuffle-units.lean` で検証中。結合・単位・標準 cochain dg 代数への移送と導来 ∞ 圏の接続は未完。β4 は D2 所有で、D は β3 の実 Verdier 列を供給する。
+- d は随伴・三角式・五角式・単位・自然性の現到達点で完了。旧 homInvIso との一致・追加の kernel nerve パラメータの全高次 coherence は β4・K-8d8 に不要で後段へ戻す（2026-10-22 コーディネータ指示）。f の `DGPerfectIdempotentComplete` を統合した。`idempotentComplete_of_ulift_ho_complete` は充満忠実像の retract と元の Yoneda 冪等完備化から、元の全 Idem 図式を厳密に回収する強分裂を与える。対象宇宙の dg 持ち上げの H⁰ 同値によって、`dgNerve_isIdempotentComplete_of_h0` へ接続し、`dgModulePerfectInfinityCategory_isIdempotentComplete`・`dgAlgebraPerfectInfinityCategory_isIdempotentComplete` まで証明した。対象・両集約（10819 jobs）・7公開署名・両全体監査は終端0（Derived 19799宣言／2202モジュール、Stable 20912／2472）。f 完了。ログは `/tmp/d-beta5-perfect-complete-{derived,stable}-audit.log`。検証済み5パスを `5cdbdd9a5` に保存済み。g に着手：KST の `NormalizedShuffle` は整数係数の正規化 shuffle 鎖写像を提供する。単体環の元の積との合成から実正規化乗法とその自然性の9宣言を `/tmp/d-beta5-simplicial-ring-normalized-mul-source.lean`、KST shuffle と E の経路・符号・三入力の三座標・積符号の一致の9宣言を `/tmp/d-beta5-shuffle-coherence-bridge-source.lean` に整理済み。各 ready は9明示署名・公理監査・警告なしで終端0、未集約。実単体環の shuffle 積・三入力の実作用・結合則・両単位・自然性の9宣言も `/tmp/d-beta5-simplicial-ring-shuffle-product-source.lean` に整理し、同名 ready で9明示署名・公理監査・警告なしの終端0。同じ実積と KST shuffle の元の二重次数成分の純テンソル上の値の一致も `/tmp/d-beta5-simplicial-ring-shuffle-native-source.lean` に整理し、同名 ready の公開署名・公理監査・警告なしで終端0。計28宣言は未集約。次は4公開モジュールへ統合する。予定のモジュール名は `DGSimplicialRingNormalization`（9宣言）、`DGNormalizedRingShuffleCoherence`（9）、`DGSimplicialRingShuffleProduct`（9）、`DGSimplicialRingShuffleNative`（1）。後二つの source の import はこの予定名を使う。実正規化乗法そのものの結合・単位、標準 cochain dg 代数への移送と導来 ∞ 圏の接続は未完。β4 は D2 所有で、D は β3 の実 Verdier 列を供給する。
 
 ## 目標と原典
 
