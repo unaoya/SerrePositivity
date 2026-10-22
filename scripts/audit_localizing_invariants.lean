@@ -1370,7 +1370,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightLiftProjection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightDenLiftComparison,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightRestored,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightRestoredProjection]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightRestoredProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathImageWhisker,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationDirect,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationDirectCommon,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationDirectImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectData,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectZeroMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectPaths,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenAffineImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenAffineContour,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectRestored,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectProjection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
