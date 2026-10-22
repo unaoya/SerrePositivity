@@ -26,6 +26,9 @@
   **HTT 4.4.5.8 の内角 anodyne 補題を完了。** `missingFaceComplex J` は元の単体の頂点像が J を含まない面の合併。元の面の貼付けの交わりを `puncturedFace` と同定し、元の座標の包含を標準ホーンへ矢印同型で照合。
   `missingFaceStage_innerAnodyne` は指定面と内点を含む下方閉じた有限族への元の包含を、実際のホーン pushout の有限合成で証明。最大頂点数の面を除く有限帰納を使用し、全体の存在を入力に仮定しない。
   `missingFaceComplex_innerAnodyne` は i,k∈J・i<j<k・j∉J から元の包含そのものの inner anodyne 性を結論。`alternatingCellBoundary_innerAnodyne` は元の奇数頂点集合 {1,3,…,2m−1} のセル境界について全 m≥2 の同じ包含の inner anodyne 性。Ret の濾過の pushout と無限合成はまだ未証明。
+  **元の交互列の全単体と像の増大列を構成。** `alternatingCell m` は偶数位置 Y・奇数位置 X を持つ元の Δ²ᵐ→SplitShape。長さ零の恒等と正の長さの元の吸収射で全射・恒等・合成を構成し、元の包含・射影・非恒等冪等元を回収。
+  `alternatingCell_prefix` は元の先頭部分への制限の全 nerve 単体での厳密な一致。`alternatingCell_one` は保存済みの元の分裂三角形そのもの。
+  `retractionStage m` はこの元の全セルの像。元の部分複体としての単調性・全セルの制限と構造射の厳密な可換性を証明。第一段階は `weakRetractionImage` そのもの、`weakShapeStageOneIso_ι` は元の商からの同型後の包含が同じ `weakComparison` であること。全被覆性・逆像境界・各段階の pushout は未証明。
   同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
   **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
   元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
@@ -38,6 +41,7 @@
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
   `WeakShape`、`WeakRetractionDiagram`、`weakDiagramEquiv`、`weakComparison`、`RetractionTriangle`、`VertexRetraction.triangle_exists`、`RetractionTriangle.weakDiagram`、
+  `alternatingCell`、`alternatingCell_prefix`、`alternatingCell_one`、`retractionStage`、`retractionStage_mono`、`retractionStage_one`、`weakShapeStageOneIso_ι`、`retractionStageCell_prefix`、
   `missingFaceStage_inf_face`、`puncturedFace_coordinate_preimage`、`puncturedFace_innerAnodyne`、`missingFaceStage_innerAnodyne`、`missingFaceComplex_innerAnodyne`、`alternatingCellBoundary_innerAnodyne`、
   `walkingRetractionTriangle_kernel`、`weakComparison_mono`、`weakComparison_range`、`weakShapeImageIso`、`weakShapeImageIso_ι`、
   `isVertexRetractOf_iff_retractionTriangle`、`CoherentIdempotent.endomorphism_idem`、`StrongSplitting.vertexRetraction`、`VertexRetraction.isoOfSameIdempotent`、`VertexRetraction.hom_unique`、
@@ -45,11 +49,11 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の9モジュール29宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド4130 jobs・全134宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし。4モジュール34宣言・独立集約・全監査を aa39ceb18 に保存し、本 N 節は他レーンのステージ済み差分の解消後に別保存。他レーンの差分は対象外。
+- **既知の問題**：F2N-4 の集約ビルド4134 jobs・全168宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(a)：`weakRetractionImage` を Ret(1) とする HTT 4.4.5.6 の元の濾過を構成する。Ret(m) は Idem 部分への逆像が (m−1)-骨格を経由する元の単体からなる部分複体。元の交互列 Y→X→Y→…→X→Y の Δ²ᵐ の nerve 単体を構成し、その元の境界の像・逆像を `alternatingCellBoundary m` と厳密に照合して Ret(m−1)→Ret(m) の pushout を証明する。4.4.5.8 と奇数頂点境界の inner anodyne 性は完成済みなので再実装しない。全濾過の合成後、`weakShapeImageIso_ι` で元の商の標準比較へ戻す。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
+- **次の一手**：F2N-4(a)：m≥2 について `(retractionStage (m−1)).preimage (alternatingCell m) = alternatingCellBoundary m` を元の全単体で証明。奇数頂点一つを避ける面は、その両側の Y を同じ位置へ潰して元の短い交互列へ厳密に因子化する。逆向きは全奇数頂点を通る単体の X→X の元の非恒等射を保存し、短い列には同じ数の異なる奇数位置が無いことを使う。元のセルの核を境界内の同一視に分類して各段階の実際の pushout を証明し、全被覆性・無限合成へ進む。交互列の全射と先頭制限、4.4.5.8、奇数頂点境界の inner anodyne 性、Ret(1) の同型を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 
