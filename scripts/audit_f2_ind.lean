@@ -665,3 +665,8 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramComma_obj_small
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaProjection_rightFibration
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_cocone_liftedShape_of_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_coslice_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_coslice_cocone

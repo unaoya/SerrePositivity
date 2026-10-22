@@ -386,3 +386,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.JoinBoundaryMapSmallness
 public import SerrePositivity.InfinityCategories.F2.Ind.CommaSimplexSmallness
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramComma
+public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaKappaCocone

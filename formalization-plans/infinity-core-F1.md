@@ -13,16 +13,13 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7664 jobs、公理監査 3098 宣言、標準三公理のみ。
+- 現区切り：独立集約 7666 jobs、公理監査 3101 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
   `indVertex_cone_isLimit_of_exchange` は交換が成り立つ形状の元の極限全錐を、すべての Ind 前層が保存する条件付き定理。
   表現可能前層での極限保存から、全錐上の同型と κ-filtered 閉包で元の Ind 頂点まで拡張した。
   `indObject_finiteColimit_isLimit` は明示交換入力のもとで、C の指定有限余極限の反転全錐の同じ前層による像の極限性。
-  `indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence` は同じ全余錐の反転境界に沿う、元の小さい全空間上の切断制限自身の同値。
-  同じ right unstraightening の反転全空間の同型と native 全錐の宇宙持ち上げで、底を保持したまま大きい切断制限へ移した。
-  `ind_finiteColimit_commaSections_isQCatEquivalence` は厳密な `indLeftKanCommaIso` の反転で、任意の元の Ind 頂点の実際の comma 上の同じ切断制限へ帰還する。
   `leftFibrationConeRestriction_baseChange_iff` と全制限自然性で、同じ全錐の像の全係数の coslice 切断制限へ戻した。
   `indYoneda_finiteOppositeCone_isLimit` は元の指定有限余極限の反転全錐の、正規化した反転 Yoneda による像の極限性。
   `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
@@ -39,12 +36,13 @@
   `diagramComma_obj_small` は全次数の実単体の小ささ。固定頂点写像の符号化を Space∞ → 前層 → Ind → 全図式と伝えて証明。
   `smallDiagramCommaIso` は ULift した小さい実模型との同型、`_projection` は元の全図式への射影の厳密な一致。
   小さい射影の right fibration 性・全空間の quasicategory 性・同じ図式を頂点とする標準全余錐は証明済み。κ-filtered 性・余極限性は未証明。
-  `commaFamilyLift` の全射回収・往復・任意の制限自然性を証明。境界を含む元の全変換を保持する。
+  `commaFamilyLift` は全射回収・往復・制限自然性を保持。
+  `nonempty_indComma_cocone` と `_coslice_cocone` は元の Ind 頂点への実 comma 上で、κ-small 試験図式と指定図式下の余錐の存在。
 
 ### 残り（依存順）
 
-1. **(a)** 元の有限 coherent 図式の filtered 表示、有限余極限・有限極限の存在。零対象は済み。HTT 5.3.5.15。16〜40時間（暫定）。
-2. **(b)** 有限図式表示と明示交換入力から安定性を証明。F1b の a7 提供後、交換入力へ実証拠を渡す。HA 1.1.3.6。24〜60時間（暫定、提供待ちを含まず）。
+1. **(a)** 有限半順序形状（まず射・span）の filtered 表示、有限余極限・有限極限の存在。零対象は済み。HTT 5.3.5.15。16〜40時間（暫定）。
+2. **(b)** 有限半順序図式表示と明示交換入力から安定性を証明。F1b の a7 提供後、交換入力へ実証拠を渡す。HA 1.1.3.6。24〜60時間（暫定、提供待ちを含まず）。
 3. **(c) 完了**：N の元の retract 回収と合流し、正則 κ・冪等完備 C に対する同じ compact Yoneda の全同値と filtered 生成。HTT 5.3.5.11。
 
 ### 主要宣言（名前のみ）
@@ -66,6 +64,7 @@
 - `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
 - `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_isFullyFaithful`
 - `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
+- `nonempty_indComma_cocone`、`nonempty_indComma_coslice_cocone`
 
 ### 依存と提供
 
@@ -79,29 +78,30 @@
 
 ### 未コミット
 
-- なし。元の全図式 comma の小ささと実同型・小さい射影・標準全余錐まで検証済み。
+- なし。元の実 comma と指定図式下の κ-small 試験余錐まで検証済み。
 
 ### 既知の問題
 
 - F2N-5(a)(b) の有限余極限・有限極限・安定性は未証明。零対象だけで (a) 完了とはしない。(c) は完了。
 - `IndFiniteLimitExchangeInput` の構成子は一般有限極限交換の証拠を要求する。現在は供給する定理が未提供。
-- C の `IsStable` は零対象・fiber/cofiber・零角の判定による定義。有限全形状の存在への公開 API は再確認が必要。追加仮定で回避しない。
+- **経路修正**：[HTT 5.3.5.15・Warning 5.3.5.16](https://people.math.harvard.edu/~lurie/papers/HTT.pdf) は有限半順序集合の nerve を要求。任意の有限単体集合への filtered 図式表示の拡張は偽。
+- 全形状で証明した充満忠実性・comma の小ささは有効。filtered 性・標準余錐の余極限性は有限半順序形状で証明する。
+- `IsStable` から有限全形状の存在への公開 API は未確認。追加仮定で回避しない。
 
 ### 次の一手
 
 `indYoneda_finiteColimit_isColimit` により、明示交換入力のもとで同じ元の有限余極限余錐を Ind Yoneda が保存することまで完了。
-次は有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による単一 filtered 表示を構成する。
-`smallDiagramComma κ D` は小さい quasicategory、元の C の全図式への right fibration 射影と実比較同型を持つ。
-次は有限 K に対し、この小さい添字の κ-filtered 性を証明する。κ-small な試験形状 A 上の元の全族を延長する。
-`commaFamilyLift_eta` と `_precomp` で全族とその境界を元の全余錐へ戻し、K の有限セルに沿って表示を同時に整える。
-元の各 Ind 頂点の `indVertexElements_isKappaFiltered` と κ-small 形状の有限結合の小ささを用いる。有限単体だけへ主張を弱めない。
-その後、`smallDiagramCommaCocone` の元の全図式圏内での余極限性を証明し、有限図式の単一表示を結論する。
-各頂点を別々に表示するだけではなく、元の全単体・辺・境界を保持する一つの図式表示を得る。
-κ-filtered 性と元の指定図式を頂点とする全余錐の普遍性は証明すべき結論であり、入力にしない。
-C の `IsStable` から有限余極限を得る公開 API は検索で未確認。`Stable/Definition` は有限存在から安定性への十分条件のみ。
-不足分を所有内で証明し、その有限余極限と図式表示で元の Ind 図式の native 余極限を構成する。
-有限極限と安定性では `IndFiniteLimitExchangeInput` を明示引数にし、交換の証拠を内製しない。
-compact 部分は完了済み。N の元の回収・冪等完備性の宇宙不変性と全充満忠実像の retract 回収を用いた。
+まず有限半順序集合 P の nerve 上の図式の単一 filtered 表示を構成する（HTT 5.3.5.15）。任意の有限 K への誤った一般化を追わない。
+`smallDiagramComma` の小ささ・実比較・全図式射影は済み。次は P の頂点を下から追加する補間で κ-filtered 性を証明。
+局所入力 `nonempty_indComma_cocone` と `_coslice_cocone` は証明済み。κ-small 試験族・指定全境界を保つ。
+各新頂点 a の上方区間の始対象 a への制限を比較し、局所 comma の指定図式下の余錐へ帰着する。
+`nervePoint_leftAnodyne` と既存の `parametrizedSectionsPointRestriction_trivialKanFibration` / `underSectionEvaluate` が利用候補。
+その局所比較を有限半順序 P の元の補間領域へ貼り合わせ、全 comma の余錐を得る。主張はまだ未証明。
+次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
+HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。
+cofiber は余極限の合成、fiber は明示交換入力による前層の点ごとの引き戻し交換で示し、零角の一致から安定性へ戻す。
+有限全形状の存在は一般安定性の存在定理を所有内で補い結論する。元の C の有限全存在を追加仮定にしない。
+交換入力の証拠は未提供のまま、compact 部分は完了済み。引用を Lean の証明の代わりにしない。
 
 ## F2N-2 の完了界面
 
