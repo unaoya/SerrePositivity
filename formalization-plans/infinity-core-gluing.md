@@ -47,7 +47,8 @@
   同じ全比較 cochain から実円柱・全空間ホモトピー・鎖ホモトピーを構成し、元の二つの nerve 射影の Hom 作用へ照合。
   実入力が射影的なら半自由出力 Hom 射影が準同型。β5 の同じ切断を合成し、元の導来比較自体の Hom 作用が射影的始域から同値と証明。
   代表加群に適用した canonical な係数比較は、模型・端点同型を除くと一般宇宙の元の導来 Hom 作用を厳密に回収。全 lax 比較の充満忠実性は未完。
-  空間模型での同値性・本質的全射性・全試験関手の普遍性は未完。(e)・(f) 未着手。
+  元の一般宇宙の比較の本質的全射性を証明。任意の導来辺を閉加群射で表し、同じ augmentation の gluing 対象へ戻す。
+  全写像空間の比較同値性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -76,9 +77,10 @@
 - `dgGluingPinchedChainMap_fibration`・`dgGluingCoconePathSpaceProjection_fibration`・`dgGluingCoconePathSpaceCone_isLimit` と `_path`・`_base`
 - `dgGluingChosenCoefficientMappingComparison` と `_equivalence`・`_augmentation`、`dgGluingUniverseCoefficientAugmentation_square`・`dgGluingComplexPinchedUniverseIso_naturality`
 - `dgGluingModuleDerivedHomMap_equivalence`・`dgGluingCanonicalCoefficientMappingComparison` と `_equivalence`・`_universe_action`
+- `dgGluingUniverseLaxComparison_vertex_image`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
 
 ### 残り（依存順）
-1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
+1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
 2. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
 3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、Sp の K-8d8 への `IsVerdierSequence` の供給（D と共同）。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。
@@ -97,8 +99,8 @@
   canonical な係数比較は元の導来 Hom 作用そのもの。全引き戻し比較への照合後に、充満忠実性の判定定理へ適用する。
 
 ### 未コミット・既知の問題
-- 301モジュール・集約ビルド成功（6275 jobs）、公理監査4173宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開44署名を検査済み。新規12モジュール、集約・監査・本計画の専有15パスだけを保存。他レーンの差分は含めない。
+- 317モジュール・集約ビルド成功（7183 jobs）、公理監査4240宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開30署名を検査済み。新規16モジュール、集約・監査・本計画の専有19パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

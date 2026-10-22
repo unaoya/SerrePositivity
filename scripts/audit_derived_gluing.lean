@@ -305,7 +305,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleResolutionSection,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedHomMap,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientYonedaSpaceIso,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientMapping]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientMapping,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalHomMapCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.EdgeRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedArrowOfEdge,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedArrowRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ObjectOfModuleArrow,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputVertices,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedHomMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedArrowOfULiftEdge,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedArrowRepresentation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.EdgeEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedArrowOfEq,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedModuleArrow,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonVertexImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputEssentialImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEssentialSurjectivity]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
