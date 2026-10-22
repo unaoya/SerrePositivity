@@ -2288,4 +2288,11 @@ public import SerrePositivity.KST.SConstruction.TammePerfectValueSplit
 public import SerrePositivity.KST.SConstruction.TammePerfectProjectionAxes
 public import SerrePositivity.KST.SConstruction.TammePerfectProjectionEquivalence
 
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientValueVertices
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductSquare
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductVertices
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductComponents
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductComponentValues
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientCompletionLegs
+
 /-! # ∞-S• 構成と連結 K 理論 -/
