@@ -245,3 +245,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedStagePrismAssemb
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTotalCoslice
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCosliceStageCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTotalAssemblyCofinal
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanOriginalDensity
+public import SerrePositivity.InfinityCategories.F2.Ind.RightClassifiedIndDensityCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.RightClassifiedIndDensityImage
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityImage
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityStandardVertex

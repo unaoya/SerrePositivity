@@ -424,3 +424,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_weightedTotalCoslice_cocone_of_stage
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedTotalCoslice_isKappaFiltered
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationTotalAssembly_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_originalDensity_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightClassifiedIndDensityCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightClassifiedIndDensity_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_image_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCocone_vertex_eq_standard
