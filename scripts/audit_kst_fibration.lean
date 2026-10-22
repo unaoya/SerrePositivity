@@ -168,7 +168,17 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakCofiberPostcomposition,
     `SerrePositivity.KST.Fibration.WeakCofiberRawProjection,
     `SerrePositivity.KST.Fibration.WeakStringCofiberPostcomparison,
-    `SerrePositivity.KST.Fibration.WeakStringCofiberPostRealization]
+    `SerrePositivity.KST.Fibration.WeakStringCofiberPostRealization,
+    `SerrePositivity.KST.Fibration.LocalizedPairBothEquality,
+    `SerrePositivity.KST.Fibration.LocalizedFiniteProductEquality,
+    `SerrePositivity.KST.Fibration.TopPostcomposition,
+    `SerrePositivity.KST.Fibration.WeakStringVertexPostcomposition,
+    `SerrePositivity.KST.Fibration.WeakStringFinitePostMap,
+    `SerrePositivity.KST.Fibration.WeakStringFinitePostNaturality,
+    `SerrePositivity.KST.Fibration.FiniteProductLocalizedIso,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteKernelIso,
+    `SerrePositivity.KST.Fibration.ProductCoefficientHomotopyPullback,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteCoordinatePullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -8,7 +8,6 @@
 ### 現在地
 - 工程 (a) 完了。`IsVerdierSequence` の核条件から包含の本質像と安定閉包を同定。
   cofiber の W 条件と商の可逆性、実二対三・押し出し・引き戻し・ホモトピーに対する拡大安定性を証明。
-- 工程 (a) は thick 性より弱い安定な本質像で成立。冪等完備化・fiber 性は未主張。
 - 工程 (b)：相対図式の全単体・W 判定・内ホーン充填・再添字・core 包含を構成し、
   商の core の逆像と同定し、wS•C・商への自然変換・核の四角形へ接続。核側の全相対 S_n は弱可縮。
 - W 辺と E(C,C,ker q) の元の射影は trivial Kan fibration で、完全な ∞ 圏同値を構成済み。
@@ -25,8 +24,8 @@
   全面・全退化の元の成分を照合。内部面の合成は隣接 cofiber の K-1 加法、
   第零面の初期成分は初期頂点と第一 cofiber の核の作用。退化の挿入 cofiber は全関手圏で零。
 - 二辺の内ホーン制限は W 条件を反映し、trivial Kan fibration・完全な安定圏同値。
-  元の両短辺を保つ安定な厳密引き戻しである。単体左 fiber・Quillen A を基底変換し、
-  零・実押し出しの共同反映と S/cofiber 交換で全 S_n・全多重対角の同じ射対の同値性を証明。
+  元の両短辺を保つ厳密引き戻しに、単体左 fiber・Quillen A・S/cofiber 交換を接続し、
+  全 S_n・全多重対角の同じ射対の同値性を証明。
 - 先行 Δ[n+1] と最後の Δ[1] の零単体上の押し出しを構成。長い単体への包含は inner anodyne。
   core 値図式の厳密貼合せ・延長・全関手圏内の同型で W 条件を反映し、制限は trivial Kan fibration。
   共有端点を元の最終頂点と照合した安定な厳密引き戻しで、両成分は零・実押し出しを共同反映。
@@ -44,12 +43,14 @@
   局所化等式を証明（core S・同じ F₁ の両模型）。fiber 性はこの照合からまだ未主張。
 - 元の Verdier 包含を実核部分圏へ制限し、元の写像空間の充満忠実性と核条件から完全な同値を構成。
   包含を通る合成の核は元の包含側の圏と厳密同型。核への後合成は全正有限反復で局所化同型。
-  全共通 cofiber の二つの後合成は同じ実底辺を持ち、全関手圏内の自然同型と全正反復の整合性を証明。
+  全 cofiber の後合成の自然同型から、全長・全正反復の有限積比較の後合成等式を局所化で証明。
+  核係数の有限積の後合成は局所化同型で、有限積座標上の初期射影の四角形は homotopy pullback。
+  元の W 列の四角形への移行には、比較のホモトピー整合性を保つ接続がなお必要。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7271 jobs・専用監査 163 モジュール 950 宣言が成功。
+- 現在の対象ビルド 7421 jobs・専用監査 173 モジュール 979 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3554 モジュールは EInfinity を含まない。全体 24141 jobs で成功。
+  所有 import 閉包 3684 モジュールは EInfinity を含まない。全体 24152 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -76,14 +77,16 @@
   relativeSWeakStringMultiComparison_coreInclusion、weakStringRealizationConstantDiagonal_postcomp。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
+- weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
+  weakStringFiniteInitialPostSquare_homotopyPullback（有限積座標上）。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
 - 工程 (a) の直接入力は K-5 の `VerdierSequence` と Stable の実 cofiber・八面体・
   基底変更・前三角構造。SConstruction と Spectra の直接 import はない。
 - 工程 (b) は F1 の `CoreKan` と、K-S• の `StructureMapCofibers` を直接 import する。
-  固定界面は L1 §6 の `Gapped`・全 Ar 評価・`sMap_gapped_evaluate`・
-  `sPostcomp_gapped_evaluate`。依頼先は `01a151d3-f75d-7ef2-9d1f-908c85eb1be1`。
+  固定界面は L1 §6 の `Gapped`・全 Ar 評価・`sMap_gapped_evaluate`・`sPostcomp_gapped_evaluate`。
+  依頼先は `01a151d3-f75d-7ef2-9d1f-908c85eb1be1`。
   K-1 の ClosedStablePredicate 版相対加法性は任意 W 辺版の定理ではないので、
   W の保存・相対比較を別に証明する。K-3 以降の移動中の界面には依存しない。
   追加固定界面は L1 §6 の `cofiberDiagrams`・`cofiberProjection`・
@@ -95,13 +98,11 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の実核の同値・核への後合成・共通 cofiber の全族後合成比較の9モジュール等を含める）。
+- なし（今回の有限積の後合成・核係数同型・座標上の pullback の10モジュール等を含める）。
 ### 既知の問題
-- 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
-  K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
+- K-6 全体・有限 W 列比較の全単体的自然性・連結版の cofinality 条件は未完。
 ### 次の一手
-- `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  核への後合成の同値と cofiber 後合成比較を、全長の有限積比較の元の全成分へ接続する。
+- 局所化等式だけで厳密な比較立方体を代用せず、元の W 列の初期評価四角形へ移す。
   再添字四角形の homotopy pullback 性から K-2 の Segal 実現へ進む。商の写像空間・cofinality も未完。
 
 ## 規約
