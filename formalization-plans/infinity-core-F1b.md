@@ -30,13 +30,13 @@
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
   第一辺の模型比較への反映・最後辺輸送と四因子境界式は構成済み。全反転 Hom の pointed 族と元の raw 普遍三角形の始点固定比較を構成。
-  同じ全比較の三面・三頂点・終点像と実長辺輸送の一致、指定普遍比較の係数自然性、値式の全係数同値による忠実な反映を証明。既存の値比較と元の固定値射の指定単位・余単位の両三角恒等式を任意の全係数で証明。元の右 Hom の全族比較を、元の合成四角形の全二 Hom 比較と同定。任意の全係数の二段制限の指定自然性、全直積上の一つの比較による表示、動く点の同型に対する評価・輸送の指定正方形の可換性を証明。同じ正方形の評価・輸送作用を元の値比較の指定因子へ同定。元の余単位の全係数成分を代入し、元の始点単位輸送へ厳密に回収。pointedValueFamilyTransportIso_at_right は元の値比較を同じ評価余単位・終点余単位逆・全右 Hom 比較の三因子へ整理する。元の三辺と指定精密化による長辺値式の照合は未完。
+  同じ全比較の三面・三頂点・終点像と実長辺輸送の一致、指定普遍比較の係数自然性、値式の全係数同値による忠実な反映を証明。既存の値比較と元の固定値射の指定単位・余単位の両三角恒等式を任意の全係数で証明。元の右 Hom の全族比較を、元の合成四角形の全二 Hom 比較と同定。任意の全係数の二段制限の指定自然性、全直積上の一つの比較による表示、動く点の同型に対する評価・輸送の指定正方形の可換性を証明。同じ正方形の評価・輸送作用を元の値比較の指定因子へ同定。元の余単位の全係数成分を代入し、元の始点単位輸送へ厳密に回収。pointedValueFamilyTransportIso_at_right は元の値比較を同じ評価余単位・終点余単位逆・全右 Hom 比較の三因子へ整理する。coherentCompositionTetrahedron は元の三角形・最大 path 表示・退化辺を面に持つ。第二面の実 Hom 辺・円柱・指定同型は元の指定精密化に一致し、全 Hom 係数の pointed 族も第一面で元の族に厳密に戻る。長辺値式への四面比較の適用は未完。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド10065 jobs、公理監査16654宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  全右 Hom 正方形の二作用と元の因子の一致、余単位代入、元の三因子の直接回収、終点余単位の自然性、元の右逆を入力した全値比較の整理式を含む追加19明示宣言を型検査。
+  検証：三集約同時ビルド10075 jobs、公理監査16715宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  元の指定精密化を保つ合成比較三単体、三つの厳密な面・第二面の実 Hom 辺と指定円柱・同型、全係数の元の pointed 族の回収を含む追加28明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -88,7 +88,7 @@
   PointedFirst/Last/LongIso は三面を元の実 prism に同定済み。RestrictionIso_precomp/shared と initial は二段制限・共有制限・初点の整合。
   三頂点の作用は SpaceTrianglePointedVertexActions で計算済み。Middle/TargetCoefficientMap は元の実 fiber 内の同じ全係数作用。
   PointedMiddle/TargetEndpointIso は同じ全比較の終点像。PointedLongTransport は δ₁ ▷ A ≫ spaceSimplexPointedFamily s と同じ実両端を持つ元の長区間の輸送証人。
-  TargetEndpointIso_eq_longEndpointComparison と TargetEndpointIso_trans_universal は元の同じ全比較の終点像と長辺輸送の一致・合成則。RawUniversalTriangleComparison_precomp は指定比較そのものの係数自然性。次は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂ を、元の右 Hom 成分・単位と係数の値像で証明する。pointedValueRightComparison_triangle と triangle_inverse は既存の指定単位・余単位の両三角式。pointedFiberValueTo_triangle_at と triangle_inverse_at は元の固定値射と同じ逆射を任意の全係数で保つ。値照合ではこれらを用い、指定因子を別の同型へ置き換えない。 pointedRightFamilyTransportIso_action_square は同じ全族の動く点同型に対する厳密な可換式。両 ActionIso の因子同定と余単位代入は完了。pointedValueFamilyTransportIso_factorization は元の三因子そのもの、at_right は同じ評価余単位・終点余単位逆・全右 Hom 比較への厳密な整理式。次は元の三辺と pointedValueTriangle_isoSquare の指定精密化を同じ全係数で入力し、二辺合成と長辺の差を元の普遍三角形の比較に同定する。coherent 合成四角形の同じ全二 Hom 比較を使い、整合を仮定しない。
+  TargetEndpointIso_eq_longEndpointComparison と TargetEndpointIso_trans_universal は元の同じ全比較の終点像と長辺輸送の一致・合成則。RawUniversalTriangleComparison_precomp は指定比較そのものの係数自然性。次は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂ を、元の右 Hom 成分・単位と係数の値像で証明する。pointedValueRightComparison_triangle と triangle_inverse は既存の指定単位・余単位の両三角式。pointedFiberValueTo_triangle_at と triangle_inverse_at は元の固定値射と同じ逆射を任意の全係数で保つ。値照合ではこれらを用い、指定因子を別の同型へ置き換えない。 pointedRightFamilyTransportIso_action_square は同じ全族の動く点同型に対する厳密な可換式。両 ActionIso の因子同定と余単位代入は完了。pointedValueFamilyTransportIso_factorization は元の三因子そのもの、at_right は同じ評価余単位・終点余単位逆・全右 Hom 比較への厳密な整理式。coherentCompositionTetrahedron s は頂点 (0,0,1,2)・時刻 (0,1,1,1) の実三単体。face_one は元の s、face_zero は coherentSimplexMaximalization s、face_three は元の最初の辺の退化。face_two_homotopy と spaceCompositionTetrahedron_face_two_prism/iso は元の指定精密化・円柱・同型そのものを保持する。pointed_face_one は全独立 Hom 係数で元の pointed 族を回収。次はこの同じ三単体の全 pointed 族の四面比較で、零面の二辺厳密合成を既存の coherent 合成四角形の比較へ同定し、第二面を元の指定精密化へ戻して長辺値式を得る。零面の係数は元の K₀ から固定し、K₀=K₁ の表示だけで別の族へ置き換えない。整合を仮定しない。
   δ₀ の面の係数は元の s.obj 0 のまま保持する。RawUniversalBoundary_iff_coefficient と of_long_value は、値照合から恒等初期値と任意の全初期値への忠実な反映を証明済み。反映を未証明の値式の代わりに使わない。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
