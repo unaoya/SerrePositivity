@@ -1,5 +1,15 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.IsoFiveFactorCancellation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueTriangleCancellation
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentNaturality
+public import SerrePositivity.InfinityCategories.F2.CoherentCoconeTransportActionNaturality
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeActionComponents
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeActionPresentation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperNativeFactorPresentation
+public import SerrePositivity.InfinityCategories.F2.IsoComparisonNaturalityTransfer
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeActionNaturality
+
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompPostcompAssociation
 
 public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportUnit
@@ -1070,3 +1080,37 @@ public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValu
 #check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_precomp_postcomp
 
 #check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_precomp_postcomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.iso_five_factor_cancel_prefix
+
+#check @SerrePositivity.InfinityCategories.F2.iso_conjugation_of_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_triangle_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_vertexIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_vertexIso_conjugation
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_vertexIso_comparison_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_vertexIso_comparison_inverse_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeTransportActionIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeTransportActionIso_conjugation
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponentsIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponents_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionIso_heq_components
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionIso_symm_heq_components
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperNativeFactorIso_heq_components
+
+#check @SerrePositivity.InfinityCategories.F2.iso_comparison_naturality_transfer
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponentsIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponentsIso_inverse_naturality

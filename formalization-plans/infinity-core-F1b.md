@@ -27,15 +27,15 @@
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  元の五因子の値の整合式・a6 中央比較への照合・辺の制限・上側単位因子の交換消去、定値三角形因子の回収を証明。
+  元の五因子から元の定値三角形因子を逆合成して消去。全 Hom の自然性と上側 native 因子の元の二成分表示を証明。
   元の raw/native 区間族・単位の実二座標・成分の値を照合し、既存の下側因子を同じ実一点輸送比較へ同定。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9747 jobs、公理監査12924宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  raw/native 表示、元の単位の二座標、下側因子と定値三角形因子の値の照合を含む追加21明示宣言を型検査。
+  検証：三集約同時ビルド9756 jobs、公理監査12982宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  元の五因子の先頭消去・全 Hom の自然性・既存 native 因子の成分表示を含む追加17明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -81,14 +81,14 @@
 ### 次の一手
 
 - F2N-1 a7：値へ写した全三角形の整合式の外側因子を消去し、a6 の指定 path と全錐へ接続する。
-  出発点は coherentColimitUnitValueAction_coherence。上側の単位因子は UpperUnitFactor_triangle_cancel で消去済み。
-  ConstantTriangleValue_heq_total は右側の元の定値三角形因子を同じ単位での前合成へ回収済み。
-  ConstantTransportIso_heq_triangle と LongTransport_prism・endpoint・map_vertex は元の長辺証拠を指定比較へ入力済み。
-  coherentColimitConstantTriangleTransport_cancel_original は元の三角形比較の逆で元の定値輸送比較の先頭因子を消去済み。
-  同じ _precomp_postcomp は任意の始域制限と値への後合成でも消去を保持。元の二実終点・指定長辺を保持済み。
+  元の五因子は UnitValueAction_triangle_cancel で元の定値三角形の同じ逆を左合成し、先頭因子を消去済み。
+  長辺と最後辺は UnitValueAction_total_heq_native・precomp_firstEdge で元の a6 の中央比較へ接続できる。
   LowerTransportFactorIso_heq_constant_point_unit と ConstantTriangleValue_heq_fiber_unit で元の二因子を同じ単位・値へ照合済み。
-  次は両者を cancel_original_precomp_postcomp と元の五因子の整合式へ照合し、下側因子を消去。
-  UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
+  cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
+  UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
+  NativeActionComponentsIso_inverse_naturality は指定余錐比較の正方形 hu の下で、同じ全 Hom の逆比較の自然性を保持。
+  次は元の native 表現・元の全三角形比較から hu を証明し、長辺・最後辺の比較を元の五因子の消去式に代入する。
+  下側輸送・上側単位・上側 native の元の外側因子を消去し、同じ三辺と指定三角形の関係を回収する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNative
 public import SerrePositivity.InfinityCategories.F2.CoherentCoconeTransportAction
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeActionComponents
 
 /-!
 概要：元の native 余極限写像の輸送作用を、元の単位と具体的な Kan 頂点射へ比較する。
@@ -39,19 +40,8 @@ def coherentTotalMapNativeActionIso :
     FunctorIso (coherentTotalMapNativeAction F G a)
       (coherentLargeTotalUnit F ≫
         (SSet.uliftFunctor.{u + 1, u}).map (coherentTotalVertexMap F G a)) := by
-  have et := (coherentCoconeTransportActionIso F (coherentDiagramTotalCocone F)
-    (coherentDiagramTotalVertex G)).app (coherentTotalMapNativeRepresentation F G a).1
-  have eu := (coherentTotalMapNativeComparisonIso F G a).map
-    (smallUnstraighteningHomIso F
-      (spaceInfinityObject (coherentDiagramTotalVertex G)).obj).inv
-  rw [smallUnstraighteningHomIso_inv_vertex] at eu
-  have e := et.symm ≪≫ eu
-  have hs : functorVertex (coherentTotalMapNativeAction F G a) =
-      (coherentCoconeTransportAction F (coherentDiagramTotalCocone F)
-        (coherentDiagramTotalVertex G)).app (Opposite.op ⦋0⦌)
-          (coherentTotalMapNativeRepresentation F G a).1 :=
-    (functorVertexEquiv _ _).apply_symm_apply _
-  rw [← hs] at e
-  simpa only [coherentLargeTotalUnit, Functor.map_comp, Category.assoc] using e
+  exact vertexIsoOfEq (coherentTotalMapNativeActionComponentsIso F G a)
+    ((functorVertexEquiv _ _).apply_symm_apply _).symm
+    (congrArg functorVertex (coherentTotalMapNativeActionComponents_target F G a))
 
 end SerrePositivity.InfinityCategories.F2
