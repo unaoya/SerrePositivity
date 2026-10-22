@@ -1,0 +1,57 @@
+# K-7 工程 b：D 側への未供給入力一覧
+
+2026-10-23。D の β5 と β3 を読み取り専用で確認した。`DGModuleCompactEquivalence` は通常の compact/perfect 比較であり、非可算 κ の dg 小模型の供給ではない。D の計画も同じ追加依存を未提供としている。依頼の仲介はコーディネータが行い、K-7 から D へ直接送信しない。
+
+## 必要な二つの値（未構成）
+
+```lean
+-- R : Type u, [CommRing R], D : Type v, [DGCategory R D], [Small.{u} D]
+-- κ : Cardinal.{u}, Cardinal.aleph0 < κ, κ.IsRegular
+I : DGKappaConeInput R D κ
+P : DGKappaPerfectInput R D I
+```
+
+正確な依存型・宇宙・名前は `KST/NonConnective/DGKappaConeInput.lean` と `DGKappaPerfectInput.lean` が正本。以下では `Q := I.objects`、`C := DGFullSubcategory (ModuleCategory R D) Q`、`V M := dgConeModuleDerivedVertex R D M`、`φ := dgKappaConeDerivedComparison R D I` と略記する。V の値域は β5 の実半自由模型 `dgModuleDerivedInfinityCategory R D`。
+
+## `DGKappaConeInput` のフィールド名と型
+
+| 名前 | 型 |
+|---|---|
+| `uncountable` | `Cardinal.aleph0 < κ` |
+| `regular` | `κ.IsRegular` |
+| `objects` | `Set (ModuleCategory R D)` |
+| `small` | `Small.{u} C` |
+| `pretriangulated` | `IsDGPretriangulated R C` |
+| `projective` | `∀ M, Q M → moduleHomotopicallyProjective R D M` |
+| `derivedFullyFaithful` | `IsFullyFaithful φ` |
+| `kappaCompact` | `∀ M, Q M → F2.Compact.IsKappaCompact κ (V M)` |
+| `covers` | `∀ y, F2.Compact.IsKappaCompact κ y → ∃ M, Q M ∧ Nonempty (VertexIso (V M) y)` |
+| `countableClosed` | `∀ M : ℕ → ModuleCategory R D, (∀ n, Q (M n)) → Q (∐ M)` |
+| `binaryClosed` | `∀ M N, Q M → Q N → Q (M ⨿ N)` |
+| `perfectCovers` | `∀ M, modulePerfect R D ((moduleToDerived R D).obj M) → ∃ N, Q N ∧ Nonempty ((moduleToDerived R D).obj N ≅ (moduleToDerived R D).obj M)` |
+
+`objects` は同型コピー全体を含む replete な対象型である必要はなく、実加群の選んだ代表系。その代表系自体に small 性と実直和の閉性が必要。全加群圏全体や全 κ-compact 加群型の small 性を仮定してはいない。
+
+κ-compact 性は、通常の Hom 集合の有限台条件ではなく、F2 の全共変 Hom 関手による κ-filtered 余極限保存で検査する。可算直和の κ-compact 閉性を κ の記号だけから推論せず、`countableClosed` を明示する。
+
+## `DGKappaPerfectInput` のフィールド名と型
+
+`S := dgStableClosureNerve R C (dgKappaConePerfectObjects R D I)`、`j := dgStableClosureInclusion R C (dgKappaConePerfectObjects R D I)` と略記する。
+
+| 名前 | 型 |
+|---|---|
+| `comparison` | `dgModulePerfectInfinityCategory R D ⟶ S` |
+| `isEquivalence` | `IsQCatEquivalence comparison` |
+| `inclusion` | `FunctorIso ((comparison ≫ j) ≫ φ) (dgPerfectInclusionInfinity R D)` |
+
+通常の導来圏での `perfectCovers` だけから、この全写像空間の同値と全関手比較を結論していない。
+
+## K-7 側で構成する出力
+
+- 実 dg 加群の可算直和の全 Hom chain map、単位・豊穣合成の保存、射影性の保存。
+- 同じ C 上の実 dg 自己関手 T と id ⊕ T、両向きの全斉次射に自然な厳密 dg 変換、各成分の指定した両側逆。
+- 元の dg nerve 上の実関手同型 `dgKappaSwindleInfinityIso`。swindle 自体は I・P のフィールドに含めない。
+- C の同じ perfect 対象で零化する cell 分解後の Drinfeld 商、実商関手、安定性と β3 の Verdier 列、固定 `PerfDGInput` への包装。
+- P を入力した元の Perf の全頂点の零化。
+
+入力 I・P の存在、F1 の Ind 安定性、K-6、K の加法性による消滅、懸垂の全入力射に対する反復作用は、この工程の出力から証明済みと扱わない。

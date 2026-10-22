@@ -7,6 +7,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGCountableSum,
+    `SerrePositivity.KST.NonConnective.DGCountableSwindle,
+    `SerrePositivity.KST.NonConnective.DGKappaConeInput,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfectInput,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspension,
+    `SerrePositivity.KST.NonConnective.DGKappaSwindle,
+    `SerrePositivity.KST.NonConnective.DGKappaSwindleInfinity,
+    `SerrePositivity.KST.NonConnective.DGSumFamily,
+    `SerrePositivity.KST.NonConnective.DGSwindleEnriched,
+    `SerrePositivity.KST.NonConnective.DGSwindleStrict,
     `SerrePositivity.KST.NonConnective.SequentialBFArrowFactorization,
     `SerrePositivity.KST.NonConnective.SequentialBFArrowStage,
     `SerrePositivity.KST.NonConnective.SequentialCandidateColimit,
@@ -102,3 +112,23 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.sequentialCandidateColimitLeg_pi
 #check SerrePositivity.KST.NonConnective.sequentialCandidatePiCoconeIsColimit
 #check SerrePositivity.KST.NonConnective.sequentialCandidateColimitHomotopyIso_ι
+
+#check SerrePositivity.KST.NonConnective.DGKappaConeInput
+#check SerrePositivity.KST.NonConnective.DGKappaConeInput.derivedFullyFaithful
+#check SerrePositivity.KST.NonConnective.DGKappaConeInput.kappaCompact
+#check SerrePositivity.KST.NonConnective.DGKappaConeInput.covers
+#check SerrePositivity.KST.NonConnective.DGKappaConeInput.countableClosed
+#check SerrePositivity.KST.NonConnective.DGKappaPerfectInput
+#check SerrePositivity.KST.NonConnective.DGKappaPerfectInput.inclusion
+#check SerrePositivity.KST.NonConnective.dgCountableSumHom_injection
+#check SerrePositivity.KST.NonConnective.dgCountableSumFunctor
+#check SerrePositivity.KST.NonConnective.dgSwindleHom_enriched_naturality
+#check SerrePositivity.KST.NonConnective.dgKappaConeCountableSum
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleStrictHom
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleStrictInv
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleComponentIso
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleInfinityIso
+#check SerrePositivity.KST.NonConnective.dgKappaConeCountableSum_isExactFunctor
+#check SerrePositivity.KST.NonConnective.dgKappaSuspension_isStableVerdierSequence
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionKInput
+#check SerrePositivity.KST.NonConnective.dgKappaSuspension_kills_perfect
