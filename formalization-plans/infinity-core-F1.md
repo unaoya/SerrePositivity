@@ -34,8 +34,8 @@
   `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
   `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
   `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較は right cofinal。同じ全密度余錐と左 Kan 像の余極限性、標準余錐との頂点の厳密な一致を証明。元の密度を左制限に持つ大域相対 join 図式と、全 fiber の native 余極限性・左 Kan 像の同じ普遍性を構成済み。共同 weighted 分類と元の strict right 分類の全添字上の同型を Indκ 内へ持ち上げた。twisted-arrow の weighted 相対比較自体の自明 Kan 性・前合成同値を証明。元の引き戻しへの同型は両射影と共同底を厳密に保つ。この同型と c1 で元の全評価を実現した `weightedIndDensityHomotopy` は、元の weighted 表現可能図式から添字射影で制限した共同分類への Indκ 内の一つの変換。包含後は元の全円柱そのもの。同じ係数変換を `weightedIndDensityCoefficientCocone` に実現し、元の全空間上の同じ指定余錐と円柱を保持。`weightedTwistedCoefficientLift_canonicalIso` は指定係数評価が元の right fibration の同じ twisted-arrow 持ち上げと反対底上で相対同型であることを証明。指定変換の各 fiber の余極限性、大域右制限との全比較・一般保存性・本質的全射性は未証明。
-- 独立集約 7177 jobs、公理監査 2309 宣言、標準三公理のみ。
+  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較は right cofinal。同じ全密度余錐と左 Kan 像の余極限性、標準余錐との頂点の厳密な一致を証明。元の密度を左制限に持つ大域相対 join 図式と、全 fiber の native 余極限性・左 Kan 像の同じ普遍性を構成済み。共同 weighted 分類と元の strict right 分類の全添字上の同型を Indκ 内へ持ち上げた。twisted-arrow の weighted 相対比較自体の自明 Kan 性・前合成同値を証明。元の引き戻しへの同型は両射影と共同底を厳密に保つ。この同型と c1 で元の全評価を実現した `weightedIndDensityHomotopy` は、元の weighted 表現可能図式から添字射影で制限した共同分類への Indκ 内の一つの変換。包含後は元の全円柱そのもの。同じ係数変換を `weightedIndDensityCoefficientCocone` に実現し、元の全空間上の同じ指定余錐と円柱を保持。`weightedTwistedCoefficientLift_canonicalIso` は指定係数評価が元の right fibration の同じ twisted-arrow 持ち上げと反対底上で相対同型であることを証明。共同分類の同じ復元射を各添字グラフへ戻した `weightedLeftCoefficientRecovery` の前合成同値性・各値の fiber 同値を証明。同じ係数図式の頂点は指定 native 余錐の包含後の頂点と厳密に一致。元の全評価の係数制限が同じ係数評価とこの同じ復元を通る因子分解まで証明。指定変換の各 fiber の余極限性、大域右制限との全比較・一般保存性・本質的全射性は未証明。
+- 独立集約 7182 jobs、公理監査 2349 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -64,7 +64,7 @@
 - `indElementsLeftKanComparison_isQCatEquivalence`、`indElementsLeftKanComparison_diagram`
 - `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
-- `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`、`weightedMap_trivialKanFibration`、`weightedTwistedSourceLift`、`weightedTwistedPullbackIso`、`weightedIndDensityHomotopy`、`weightedIndDensityCoefficientCocone`、`weightedTwistedCoefficientLift_canonicalIso`
+- `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`、`weightedMap_trivialKanFibration`、`weightedTwistedSourceLift`、`weightedTwistedPullbackIso`、`weightedIndDensityHomotopy`、`weightedIndDensityCoefficientCocone`、`weightedTwistedCoefficientLift_canonicalIso`、`weightedLeftCoefficientRecovery_isPrecompositionEquivalence`、`weightedCoefficientJointEvaluation_factorization`
 
 ### 依存と提供
 
@@ -98,7 +98,7 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
 `indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
 次は strict 分類標準余錐 `strictClassifiedIndCocone` の左 Kan 延長による像の余極限性を証明する。元の全空間は各段と余極限とも κ-filtered。
-`weightedIndDensityHomotopy` は元の weighted 表現可能図式から添字射影で制限した `weightedIndClassification` への一つの変換。`weightedIndDensityCoefficientCocone` はその元の係数包含での制限を実現する指定 native 余錐で、全円柱の包含後の一致も証明済み。`weightedCoefficient_isPullback` の厳密なグラフ比較で、全評価の係数を元の反転全空間へ戻した。`weightedTwistedCoefficientLift_canonicalIso` は、この係数評価を元の right fibration の同じ `twistedArrowSourceLift` と元の反対底上で相対同型にする。次は共同分類の `leftStraighteningInfinityReconstruction` を各添字グラフへ底変換し、元の反転全空間から同じ分類頂点の小さい left unstraightening への同じ底上の復元同値を作る。この復元と指定評価の因子分解を保ち、元の各 right fibration の始点固定・恒等 fiber の比較と F2 の native な評価余錐判定で、指定係数余錐の余極限性を証明する。既存の指定 fiber 余錐の像の保存性から同じ変換と左 Kan 像の局所普遍性を得て、大域右制限との全比較・Kan 合成・一般保存性へ戻る。頂点ごとの同型だけで代用しない。
+`weightedIndDensityCoefficientCocone` は同じ全変換の元の係数包含での制限を実現する指定 native 余錐。`weightedTwistedCoefficientLift_canonicalIso` は係数評価を元の right fibration の同じ `twistedArrowSourceLift` と反対底上で相対同型にする。`weightedLeftCoefficientRecovery` は元の共同復元射を各添字グラフへ底変換した同じ底上の復元で、前合成同値性・各値の実際の fiber 同値まで証明。`weightedIndDensityCoefficientCocone_vertex_inclusion` は指定余錐の頂点と同じ係数分類図式の厳密な一致。`weightedCoefficientJointEvaluation_factorization` は元の全評価の係数制限が、同じ係数評価と同じ係数復元を通る厳密な因子分解。次は元の各 right fibration の始点を固定し、この係数評価と復元の合成を指定余錐の実際の評価 fiber 写像へ比較する。元の `twistedSourceElementsIdentityInclusion` の比較と、元の恒等 fiber 上の twisted-arrow 評価・復元 fiber 同値を使い、F2 の native な評価余錐判定で指定係数余錐の余極限性を結論する。既存の指定 fiber 余錐の像の保存性から同じ変換と左 Kan 像の局所普遍性を得て、大域右制限との全比較・Kan 合成・一般保存性へ戻る。頂点ごとの同型だけで代用しない。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点

@@ -57,4 +57,18 @@ lemma weightedDensityTwistedJointMap_projection :
       (leftFibrationWeightedProjection (F ⋙ rightFibrationOppositeOrdinary C)))
     (weightedTwistedNativeJointBase F) rfl).lift_snd _ _ _
 
+/-- 同じ全評価の共同分類への像は、元の評価と同じ共同復元射の合成そのもの。 -/
+lemma weightedDensityTwistedJointMap_joint :
+    weightedDensityTwistedJointMap F ≫ smallLeftUnstraighteningMap
+      (weightedDensityJointTargetDiagram F)
+      (leftStraighteningInfinityDiagram
+        (leftFibrationWeightedProjection (F ⋙ rightFibrationOppositeOrdinary C)))
+      (weightedTwistedNativeJointBase F) rfl =
+    weightedTwistedNativeLift F ≫ leftStraighteningInfinityReconstruction
+      (leftFibrationWeightedProjection (F ⋙ rightFibrationOppositeOrdinary C)) :=
+  (smallLeftUnstraighteningMap_isPullback (weightedDensityJointTargetDiagram F)
+    (leftStraighteningInfinityDiagram
+      (leftFibrationWeightedProjection (F ⋙ rightFibrationOppositeOrdinary C)))
+    (weightedTwistedNativeJointBase F) rfl).lift_fst _ _ _
+
 end SerrePositivity.InfinityCategories.F2.Ind

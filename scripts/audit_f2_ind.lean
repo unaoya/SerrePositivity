@@ -474,3 +474,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedCoefficientLift_evaluationIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.twistedArrowSourceLift_restrictIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedCoefficientLift_canonicalIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftCoefficientRecovery_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftCoefficientRecovery_joint
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftCoefficientRecovery_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftCoefficientRecovery_fiber_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientCocone_vertex_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityTwistedJointMap_joint
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientJointEvaluation_factorization
