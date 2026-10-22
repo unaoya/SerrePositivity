@@ -550,3 +550,99 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @weakDiagram_strongSplitting_exists
 #print axioms weakDiagram_strongSplitting_exists
+
+#check @walkingCocone
+#print axioms walkingCocone
+
+#check @walkingCone
+#print axioms walkingCone
+
+#check @walkingCocone_leg
+#print axioms walkingCocone_leg
+
+#check @walkingCone_leg
+#print axioms walkingCone_leg
+
+#check @walkingCone_cocone
+#print axioms walkingCone_cocone
+
+#check @walkingCocone_cone
+#print axioms walkingCocone_cone
+
+#check @walkingJoinCocone
+#print axioms walkingJoinCocone
+
+#check @walkingJoinCone
+#print axioms walkingJoinCone
+
+#check @walkingJoinCocone_point
+#print axioms walkingJoinCocone_point
+
+#check @walkingJoinCone_vertex
+#print axioms walkingJoinCone_vertex
+
+#check @walkingJoinCocone_leg
+#print axioms walkingJoinCocone_leg
+
+#check @walkingJoinCone_leg
+#print axioms walkingJoinCone_leg
+
+#check @StrongSplitting.cocone
+#print axioms StrongSplitting.cocone
+
+#check @StrongSplitting.cone
+#print axioms StrongSplitting.cone
+
+#check @StrongSplitting.cocone_point
+#print axioms StrongSplitting.cocone_point
+
+#check @StrongSplitting.cocone_vertex
+#print axioms StrongSplitting.cocone_vertex
+
+#check @StrongSplitting.cone_vertex
+#print axioms StrongSplitting.cone_vertex
+
+#check @StrongSplitting.cocone_leg
+#print axioms StrongSplitting.cocone_leg
+
+#check @StrongSplitting.cone_leg
+#print axioms StrongSplitting.cone_leg
+
+#check @StrongSplitting.cocone_map
+#print axioms StrongSplitting.cocone_map
+
+#check @StrongSplitting.cone_map
+#print axioms StrongSplitting.cone_map
+
+#check @walkingIdemCocone
+#print axioms walkingIdemCocone
+
+#check @idemConeRetraction
+#print axioms idemConeRetraction
+
+#check @idemConeRetraction_inl
+#print axioms idemConeRetraction_inl
+
+#check @idemConeRetraction_inr
+#print axioms idemConeRetraction_inr
+
+#check @walkingIdemCocone_leg
+#print axioms walkingIdemCocone_leg
+
+#check @idemShapeContraction
+#print axioms idemShapeContraction
+
+#check @idemShape_isWeaklyContractible
+#print axioms idemShape_isWeaklyContractible
+
+#check @walkingHom_from_image
+#print axioms walkingHom_from_image
+
+#check @walkingHom_to_image
+#print axioms walkingHom_to_image
+
+#check @walkingImage_isInitial
+#print axioms walkingImage_isInitial
+
+#check @walkingImage_isTerminal
+#print axioms walkingImage_isTerminal

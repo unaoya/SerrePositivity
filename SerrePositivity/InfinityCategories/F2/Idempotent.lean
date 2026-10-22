@@ -40,3 +40,9 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageEx
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageColimit
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakInnerAnodyne
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakExtension
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingCones
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingJoinCones
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingCones
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRetraction
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemWeakContractibility
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingImageUniversal
