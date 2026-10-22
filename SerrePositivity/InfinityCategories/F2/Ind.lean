@@ -373,3 +373,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaPullbackIso
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeSectionBaseChange
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaOppositeLimits
 public import SerrePositivity.InfinityCategories.F2.Ind.JoinReverseInverseEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.AugmentedUniverseReverse

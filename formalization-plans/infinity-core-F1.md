@@ -13,7 +13,7 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7391 jobs、公理監査 3036 宣言、標準三公理のみ。
+- 現区切り：独立集約 7392 jobs、公理監査 3041 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -85,7 +85,8 @@
 必要な式は mapJoinCone(uliftOppositeIso X).hom(JoinCone.ulift(kanCoconeReverseCone c)) の全射と、
 kanCoconeReverseCone(JoinCocone.ulift c) を (uliftOppositeIso K).hom で制限した全射との一致。
 `joinReverseIso_inv_app` は実反転同型の逆射を明示的な切断反転同値の逆へ戻す。失敗中の試行は `/tmp/f1-ind-ulift-cocone-reverse-draft.lean` に保存し、集約外。
-join の順反転射と `uliftJoinIso` の自然性を先に証明し、同型の順射で消去して逆射の式を得る。補った次数の ULift 移送は cast と可換（次数の等式の帰納法）。
+`augmentedReversePairUp` で切断表示の順反転と ULift の可換性まで証明済み。次数の cast・op 比較も `AugmentedUniverseReverse` に保存。
+次はこれを join の全順射と `uliftJoinIso` の可換性へ束ね、同型の順射で消去して逆射の式を得る。
 この式を後合成し、`isLimitCone_restrict_iff_of_isIso` と `F2.isLimitCone_reverse_postcomp_iff` で同じ元の有限余極限余錐の保存へ戻す。
 交換入力の証拠は未提供のまま。頂点だけの同型で全射の式を代用しない。
 続いて有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による filtered 表示を構成する。

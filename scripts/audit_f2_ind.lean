@@ -610,3 +610,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteOppositeCone_isLimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.joinReverseIso_inv_app
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteOppositeCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.augmentedUniverseUp_cast
+#check @SerrePositivity.InfinityCategories.F2.Ind.augmentedUniverseDown_cast
+#check @SerrePositivity.InfinityCategories.F2.Ind.augmentedUniverseUp_op
+#check @SerrePositivity.InfinityCategories.F2.Ind.augmentedReversePairUp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.augmentedReversePairUp
