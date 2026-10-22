@@ -209,3 +209,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_map
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionRightStrictDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightStrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramJointEvaluation_value
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramJointValueIso_inv_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightValueRecovery_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightValueRecovery_isQCatEquivalence

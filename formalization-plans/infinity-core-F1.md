@@ -38,8 +38,11 @@
   添字の通常の κ-filtered 性と、その nerve の全 κ-small 図式に対する κ-filtered 性を両方証明。HTT 5.3.1.18。
   `underSectionStrictDiagram` は積 B × nerve I 上の left fibration を、B を保つ under 切断の strict 図式へ束ねる。
   `underSectionEvaluate` は同じ添字での元の引き戻しへの底上の評価で、trivial Kan fibration と同値性を証明。
+  `presheafDiagramRightStrict` は任意の coherent 前層図式の共同 unstraightening から作る strict right fibration 図式。
+  `presheafDiagramJointEvaluation_value` は共同評価の添字での制限と元の前層値そのものの等式。
+  `presheafDiagramRightValueRecovery` は strict 値から元の値の小さい right 復元への底上の射で、同値性も証明。
   一般 coherent 前層図式の大域分類比較、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
-- 独立集約 6642 jobs、公理監査 1136 宣言、標準三公理のみ。
+- 独立集約 6647 jobs、公理監査 1175 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 
 ### 残り（依存順）
@@ -69,6 +72,7 @@
 - `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
 - `terminalSubcomplexBaseMap_isRightCofinal`、`exists_cofinal_kappaFiltered_poset`
 - `underSectionStrictDiagram`、`underSectionEvaluate`、`underSectionEvaluate_isQCatEquivalence`
+- `presheafDiagramRightStrict`、`presheafDiagramRightValueRecovery_isQCatEquivalence`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -97,7 +101,8 @@
 (c)：任意の小さい κ-filtered ∞ 圏への、小さい通常の κ-filtered poset からの cofinal map まで証明済み。
 次はその nerve 上の一般 coherent 前層図式を strict right fibration 図式へ移す、同じ大域分類値の比較を構成する。
 通常の under 圏上のパラメータ付き相対切断の strict 図式と、同じ各値への底上の評価の同値性まで証明済み。
-次は反対化で strict right fibration 図式へ移し、元の coherent 前層図式の共同 left fibration から大域比較を構成する。
+反対化した strict right fibration 図式と、元の共同 unstraightening から各指定値への底上の比較同値まで証明済み。
+次はパラメータ付き切断を元の添字上の strict transport へ自然に写し、scaffold により大域比較を構成する。
 各値の同値だけで大域の比較や元の余錐の比較を代用しない。
 元の図式との全変換を実現し、同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。
 原典は HTT 5.3.5.3 と添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。

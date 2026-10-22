@@ -115,3 +115,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ParametrizedPointRestric
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionFamilyPointBase
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionInitialBase
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionRightDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointFibration
+public import SerrePositivity.InfinityCategories.F2.Ind.UncurryGraphVertex
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointValue
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramValueRecovery
