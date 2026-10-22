@@ -400,3 +400,42 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms alternatingCell_preimage_le_boundary
 #check @alternatingCell_stage_preimage
 #print axioms alternatingCell_stage_preimage
+
+#check @oddPositionSelection_strictMono
+#print axioms oddPositionSelection_strictMono
+
+#check @alternatingCell_odd_positions_fixed_exists
+#print axioms alternatingCell_odd_positions_fixed_exists
+
+#check @alternatingCell_equal_odd_of_fixed_positions
+#print axioms alternatingCell_equal_odd_of_fixed_positions
+
+#check @simplex_position_le_of_image_lt
+#print axioms simplex_position_le_of_image_lt
+
+#check @alternatingCell_eq_of_odd_hits
+#print axioms alternatingCell_eq_of_odd_hits
+
+#check @alternatingCell_odd_hits_of_not_boundary
+#print axioms alternatingCell_odd_hits_of_not_boundary
+
+#check @alternatingCell_kernel
+#print axioms alternatingCell_kernel
+
+#check @retractionStageMap_mono
+#print axioms retractionStageMap_mono
+
+#check @retractionStageCell_app_surjective
+#print axioms retractionStageCell_app_surjective
+
+#check @retractionStage_isPullback_app
+#print axioms retractionStage_isPullback_app
+
+#check @retractionStage_isPushout_app
+#print axioms retractionStage_isPushout_app
+
+#check @retractionStage_isPushout
+#print axioms retractionStage_isPushout
+
+#check @retractionStageMap_innerAnodyne
+#print axioms retractionStageMap_innerAnodyne

@@ -29,3 +29,6 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageBo
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingScalar
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingOddRank
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePreimage
+public import SerrePositivity.InfinityCategories.F2.Idempotent.OddPositionFixity
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingCellKernel
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePushout
