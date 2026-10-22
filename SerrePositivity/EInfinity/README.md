@@ -2603,3 +2603,14 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeDerivedFamilyHom` は既存の同じ半自由分解関手を代入した実大域射。
 `normalizedTensorElementNerveDiagram_derived` は元の大域屋根と同じ通常導来図式への厳密一致。
 同じ augmentation・評価との全三角形、元の屋根の全比較、同じ U の∞極限保存・G1′は未完了。
+
+`normalizedTensorElementSelectedCochainAtMax_augmentation_zero` と `_augmentation_vertex` は
+元の選択 cochain の全正次消滅と、零次での同じ恒等 cochain 像。符号付き・実 dg 合成の式も保持。
+`normalizedTensorConeAugmentationAt` は先端で恒等、他の対象で元の同じ frame augmentation。
+`_reindex` は全作用素との整合、`_quasiIso` は全対象での擬同型性。
+`normalizedTensorConeAugmentationAt_compose` は全有限集合・全次数での元の実合成式。
+零次は始点 augmentation、正次は零であり、通常・混合成分を同じ元の射で検証している。
+`ComplexSimplexAugmentation` はこの全斉次合成式だけをまとめる界面。
+`normalizedTensorConeSimplexAugmentation` は元の実 cone 単体への実際の代入。
+終端を追加した二重 cone や大域三角形の存在を入力に仮定していない。
+同じ augmentation・評価との全三角形、元の屋根との全比較、同じ U の∞極限保存・G1′は未完了。
