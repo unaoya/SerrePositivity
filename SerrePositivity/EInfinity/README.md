@@ -2278,7 +2278,12 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `AnodyneFamilyHomotopy` は全写像の局所化等式から、同じ全パラメータの実ホモトピーを回収する。
 `cofibrantSourceRoofProductCommaNativeIntervalCell_eq_reference` は全区間族の射の厳密な一致。
 native pinched 族も弱同値。hR は元の native roof 区間族の全合成三角形へ還元される。
-その native roof の全三角形と hR 本体、
+`LeftRoof.Prefix` は始点 i を固定した Under i 全体の元の四列図式と実円柱を保持する。
+`arrowHomotopy` は元の右脚の定数族から、p_i を前合成した同じ roof 全族への実ホモトピー。
+恒等左脚の roof は同じ forward 射へ厳密に正規化され、円柱の写像は元の四列のまま。
+`inclusion_underMap/restrictedRoofMap_underMap` は始点を変える元の射への厳密な整合。
+`cofibrantSourceRoofProductCommaPrefixHomotopy` は任意可換環の元の全 comma 図式への代入。
+coherent Hom の path 切断と全合成・単体作用素への接続、native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。

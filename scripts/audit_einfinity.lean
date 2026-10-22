@@ -8180,6 +8180,40 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_component,
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_sourceComparison]
 
+@[noinline] private def e2RequiredBatch143 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaPrefixHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaPrefixHomotopy_h,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.insertLeftIdentity,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.insertLeftIdentity_cut,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.insertLeftIdentity_obj,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.colimitRowMap_leftIdentity,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedRoofMap,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.constantRoofMap,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.upperMap_eq,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.lowerMap_eq,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.normalizedHomotopy,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.normalizedHomotopy_h,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.constantRoofMap_eq_rightArrow,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.arrowHomotopy,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.arrowHomotopy_h,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedRoofMap_eq_precomp,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedRoofMap_underMap,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedFrame,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.fixedSource,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.inclusion,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedAugmentation,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedRightLeg,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.augmentation_triangle,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.right_triangle,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedAugmentation_weak,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.restrictedFrame_map_weak,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.fixedSource_map_weak,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.upperDiagram,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.lowerDiagram,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.graphHomotopy,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.colimitHomotopy,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.inclusion_underMap]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8213,7 +8247,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19684,3 +19718,70 @@ example (hN : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
     IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_native_triangles A X Y hN
 end e2NativeRoofReferenceFixtures
+
+section e2RoofPrefixHomotopyFixtures
+universe e2RoofPrefixUniverse e2RoofPrefixHomUniverse
+open CategoryTheory Limits Opposite SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
+open SerrePositivity.EInfinity.BarrattEccles
+open scoped Simplicial
+example {C : Type e2RoofPrefixUniverse} [Category.{e2RoofPrefixHomUniverse} C]
+    (W : MorphismProperty C) [W.IsMultiplicative] {x y : C} (f : x ⟶ y) :
+    colimitRowMap (LeftRoof.obj W (𝟙 x) (W.id_mem x) f) = arrowMap W f :=
+  LeftRoof.colimitRowMap_leftIdentity W f
+variable {I C : Type e2RoofPrefixUniverse} [Category.{e2RoofPrefixUniverse} I]
+  [Category.{e2RoofPrefixUniverse} C] (W : MorphismProperty C) [W.IsMultiplicative]
+  (U : I ⥤ C) {x y : C} (p : U ⟶ (Functor.const I).obj x) (hp : ∀ i, W (p.app i))
+  (σ : U ⟶ (Functor.const I).obj y) (hU : ∀ {i j} (f : i ⟶ j), W (U.map f)) (i : I)
+example : LeftRoof.Prefix.inclusion U i ≫ LeftRoof.Prefix.restrictedAugmentation U p i =
+    (Functor.const (Under i)).map (p.app i) := LeftRoof.Prefix.augmentation_triangle U p i
+example : LeftRoof.Prefix.inclusion U i ≫ LeftRoof.Prefix.restrictedRightLeg U σ i =
+    (Functor.const (Under i)).map (σ.app i) := LeftRoof.Prefix.right_triangle U σ i
+example {j : I} (a : i ⟶ j) :
+    Functor.whiskerLeft (Under.map a) (LeftRoof.Prefix.inclusion U i) =
+      (Functor.const (Under j)).map (U.map a) ≫ LeftRoof.Prefix.inclusion U j :=
+  LeftRoof.Prefix.inclusion_underMap U i a
+example : (LeftRoof.Prefix.normalizedHomotopy W U p hp σ hU i).h =
+    (LeftRoof.Prefix.graphHomotopy W U p hp σ hU i).h ≫
+      graphInclusion W (U.obj i) y LeftRoof.Precompose.word :=
+  LeftRoof.Prefix.normalizedHomotopy_h W U p hp σ hU i
+example : SSet.Homotopy
+    ((toUnit (nerve (Under i)) : nerve (Under i) ⟶ 𝟙_ SSet.{e2RoofPrefixUniverse}) ≫
+      arrowMap W (σ.app i))
+    (LeftRoof.Prefix.restrictedRoofMap W U p hp σ hU i ≫
+      precomposePointMap (arrowMap W (p.app i)) y) :=
+  LeftRoof.Prefix.arrowHomotopy W U p hp σ hU i
+example : LeftRoof.Prefix.restrictedRoofMap W U p hp σ hU i =
+    nerveMap (Under.forget i) ≫ LeftRoof.Precompose.SameUniverse.diagramColimitMap W
+      (LeftRoof.diagram W U p hp σ hU) :=
+  LeftRoof.Prefix.restrictedRoofMap_eq_precomp W U p hp σ hU i
+example {j : I} (a : i ⟶ j) :
+    nerveMap (Under.map a) ≫ LeftRoof.Prefix.restrictedRoofMap W U p hp σ hU i =
+      LeftRoof.Prefix.restrictedRoofMap W U p hp σ hU j :=
+  LeftRoof.Prefix.restrictedRoofMap_underMap W U p hp σ hU i a
+example : LeftRoof.Prefix.constantRoofMap W U σ i =
+    (toUnit (nerve (Under i)) : nerve (Under i) ⟶ 𝟙_ SSet.{e2RoofPrefixUniverse}) ≫
+      arrowMap W (σ.app i) := LeftRoof.Prefix.constantRoofMap_eq_rightArrow W U σ i
+variable (A : Type e2RoofPrefixUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+variable (s : cofibrantSourceRoofProductComma A X Y b)
+example : SSet.Homotopy
+    (toUnit (nerve (Under s)) ≫ arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      ((cofibrantSourceRoofProductCommaRightLeg A X Y b).app s))
+    (nerveMap (Under.forget s) ≫ cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫
+      precomposePointMap (arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
+        ((cofibrantSourceRoofProductCommaEvaluation A X Y b).app s))
+        (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
+  cofibrantSourceRoofProductCommaPrefixHomotopy A X Y b s
+example : (cofibrantSourceRoofProductCommaPrefixHomotopy A X Y b s).h =
+    (LeftRoof.Prefix.graphHomotopy (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      (cofibrantSourceRoofProductCommaDiagram A X Y b)
+      (cofibrantSourceRoofProductCommaEvaluation A X Y b)
+      (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
+      (cofibrantSourceRoofProductCommaRightLeg A X Y b)
+      (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) s).h ≫
+    graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj s)
+      (show (cofibrantAlgebraRelativeCategory A).category from Y) LeftRoof.Precompose.word :=
+  cofibrantSourceRoofProductCommaPrefixHomotopy_h A X Y b s
+end e2RoofPrefixHomotopyFixtures

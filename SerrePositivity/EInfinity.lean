@@ -1956,3 +1956,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativeP
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativeRoofComparison
 public import SerrePositivity.EInfinity.FrameHom.AnodyneFamilyHomotopy
 public import SerrePositivity.EInfinity.Hammock.LeftRoofSameUniverseComparison
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofPrefixHomotopy
+public import SerrePositivity.EInfinity.Hammock.LeftRoofLeftIdentity
+public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
+public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixHomotopy
