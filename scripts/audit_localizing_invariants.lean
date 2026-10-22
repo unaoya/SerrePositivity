@@ -1187,7 +1187,9 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffine,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassPath,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathWitnessLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathSquare]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

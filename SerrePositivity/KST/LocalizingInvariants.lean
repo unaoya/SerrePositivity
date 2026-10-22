@@ -1430,4 +1430,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffi
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathWitnessLift
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathSquare
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
