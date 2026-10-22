@@ -690,7 +690,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.CochainConeShortExact,
     `SerrePositivity.KST.LocalizingInvariants.CochainConeSplitPullback,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionCone,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionConeMap]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovExtensionConeMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbedMultiplication,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbation,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeOperator,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeActions,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroProductElements,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbationDefect,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivationTests,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivationMixed,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivation,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedExtension]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
