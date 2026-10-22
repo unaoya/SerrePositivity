@@ -2282,4 +2282,10 @@ public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientRectangleLift
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientOuter
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientPullback
 
+public import SerrePositivity.KST.SConstruction.PerfectInvariantZeroMap
+public import SerrePositivity.KST.SConstruction.PerfectInvariantSpectrum
+public import SerrePositivity.KST.SConstruction.TammePerfectValueSplit
+public import SerrePositivity.KST.SConstruction.TammePerfectProjectionAxes
+public import SerrePositivity.KST.SConstruction.TammePerfectProjectionEquivalence
+
 /-! # ∞-S• 構成と連結 K 理論 -/

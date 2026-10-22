@@ -1,0 +1,68 @@
+module
+public import SerrePositivity.KST.SConstruction.PerfectInvariantSpectrum
+public import SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant
+public import SerrePositivity.KST.SConstruction.PerfectVerdierRawSquare
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumZeroClass
+
+/-! # Cat^perf の零関手の不変量値は零射
+概要：全対象を零化する同じ完全関手の値は、元の h Sp の零射となる。
+方針：元の零安定圏を通る関手との全関手同型と、同じ不変量の零保存を使う。
+規約：不変量を全 StableInfinity へ拡張しない。使われ方：Tamme の両射影の照合。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.KST.SConstruction
+open CategoryTheory Limits SSet Spectra
+open SerrePositivity.InfinityCategories LocalizingInvariants
+open F2.Idempotent
+open scoped Simplicial
+private lemma perfectTransportedZero {K : Type*} [Category K] [HasZeroMorphisms K]
+    {X Y A B : K} (e : X ≅ A) (d : Y ≅ B) :
+    e.hom ≫ (0 : A ⟶ B) ≫ d.inv = 0 := by
+  simp only [zero_comp, comp_zero]
+
+variable {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
+
+include hF in
+/-- 元の全対象を零化する完全関手の Cat^perf 不変量値は、同じ値の間の零射。 -/
+lemma IsPerfectLocalizingInvariant.perfectValue_zero_of_zero_values
+    {A B : StableCategory.{u}} (f : ExactMap A B)
+    (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
+    (hf : ∀ a, IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
+    perfectInvariantHoArrow F f hA hB = 0 := by
+  let G : A ⟶ B := (toZeroCategory A : A ⟶ zeroCategory) ≫ fromZeroCategory B
+  have hG : ∀ a, IsZeroVertex (G.hom.app (Opposite.op ⦋0⦌) a) := by
+    intro a
+    change IsZeroVertex (((toZeroCategory A).hom ≫ (fromZeroCategory B).hom).app _ a)
+    rw [throughZero_hom, zeroDiagram_const_vertex]
+    exact (chosenZeroVertex B.obj).isZero
+  have e : FunctorIso f.hom G.hom := zeroDiagramFunctorIso _ _ hf hG
+  have hz : IsZero (perfectInvariantHoObject F
+      (perfectStableVertex zeroCategory.{u} perfectZeroCategory_isIdempotentComplete)) :=
+    (hF.preservesZero
+      (perfectStableVertex zeroCategory perfectZeroCategory_isIdempotentComplete)
+      zeroCategory_isZero).isZeroHo
+  calc
+    perfectInvariantHoArrow F f hA hB = perfectInvariantHoArrow F G hA hB :=
+      perfectInvariantHoArrow_eq_of_functorIso F hA hB e
+    _ = perfectInvariantHoArrow F (toZeroCategory A) hA
+          perfectZeroCategory_isIdempotentComplete ≫
+        perfectInvariantHoArrow F (fromZeroCategory B)
+          perfectZeroCategory_isIdempotentComplete hB :=
+      perfectInvariantHoArrow_comp F _ _ hA perfectZeroCategory_isIdempotentComplete hB
+    _ = 0 := by
+      rw [hz.eq_zero_of_tgt (perfectInvariantHoArrow F (toZeroCategory A) hA
+        perfectZeroCategory_isIdempotentComplete), zero_comp]
+
+include hF in
+/-- 元の零関手の同じ BF 表示間の射の類も零である。 -/
+lemma IsPerfectLocalizingInvariant.perfectSpectrum_zero_of_zero_values
+    {A B : StableCategory.{u}} (f : ExactMap A B)
+    (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
+    (hf : ∀ a, IsZeroVertex (f.hom.app (Opposite.op ⦋0⦌) a)) :
+    perfectInvariantSpectrumHom F f hA hB = 0 := by
+  rw [perfectInvariantSpectrumHom, hF.perfectValue_zero_of_zero_values f hA hB hf]
+  exact perfectTransportedZero (SpectrumHo.spectrumIso _) (SpectrumHo.spectrumIso _)
+
+end SerrePositivity.KST.SConstruction

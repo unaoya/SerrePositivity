@@ -27981,3 +27981,84 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare_isPullback
 #print axioms SerrePositivity.KST.SConstruction.PerfectLaxQuotient.universalValueSquare_isPullback
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectValue_zero_of_zero_values
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectValue_zero_of_zero_values
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSpectrum_zero_of_zero_values
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSpectrum_zero_of_zero_values
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrum
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrum
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumIso
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumIso
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom_comp
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom_comp
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom_id
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumHom_id
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumMap
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumMap
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantSpectrumMap_hom
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantSpectrumMap_hom
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison_inl
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison_inl
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison_inr
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueFactorComparison_inr
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison_C
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison_C
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison_D
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeValueSplitComparison_D
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectProjectionHom
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectProjectionHom
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectProjectionHom_fst
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectProjectionHom_fst
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectProjectionHom_snd
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectProjectionHom_snd
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromC
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromC
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromD
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_fromD
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_isIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionHom_isIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_hom
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_hom
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_fst
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_fst
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_snd
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_snd
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_inv_inl
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_inv_inl
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_inv_inr
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammePerfectProjectionEquivalence_inv_inr
