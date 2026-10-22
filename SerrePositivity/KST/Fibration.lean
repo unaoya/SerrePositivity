@@ -283,3 +283,8 @@ public import SerrePositivity.KST.Fibration.WeakIdentityKanValue
 public import SerrePositivity.KST.Fibration.PointedSpaceHomPoint
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint
 public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
+public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
+public import SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison
+public import SerrePositivity.KST.Fibration.CoslicePointComparison
+public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointAction
+public import SerrePositivity.KST.Fibration.WeakQuotientCoslicePointAction
