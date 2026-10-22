@@ -481,3 +481,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientCocone_vertex_inclusion
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityTwistedJointMap_joint
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientJointEvaluation_factorization
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluation_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientEvaluation_canonicalIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCanonicalSourceValue_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficientCanonicalSourceValue_identity_isQCatEquivalence

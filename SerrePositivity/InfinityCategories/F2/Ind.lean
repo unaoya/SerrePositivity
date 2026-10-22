@@ -299,3 +299,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedLeftCoefficientE
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientDiagramVertex
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedCoefficientIntoTotal
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientJointEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientSourceValue
