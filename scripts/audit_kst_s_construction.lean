@@ -25110,3 +25110,198 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.strictSimplicialTransformation_componentHom
 #print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformation_componentHom
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedObject_basepoint
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedObject_basepoint
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedConstant
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedConstant
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointed_axisLeft
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointed_axisLeft
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointed_axisRight
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointed_axisRight
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_closed_inclusion
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedEnrichedFunctor_closed_inclusion
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedFamily_closed_inclusion
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedFamily_closed_inclusion
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedFamily_strength
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedFamily_strength
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedMap_id
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedMap_id
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedMap_comp
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedMap_comp
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedOrdinaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedOrdinaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedUnit_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedUnit_naturality
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSmashObject
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSmashObject
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_axisLeft
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_axisLeft
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_axisRight
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_axisRight
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmashPair
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmashPair
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSmashMap
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSmashMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_product_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_product_naturality
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_unit_product
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmash_unit_product
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_unit
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSmashMap_unit
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetCircleObject
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetCircleObject
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionObject
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionObject
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionUnit
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionUnit
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_unit
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_unit
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_source_quotient
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_source_quotient
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_target_quotient
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_target_quotient
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_family_action
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionMap
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionMap
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_quotient_strength
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionComparison_quotient_strength
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionStrength_family
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionStrength_family
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedThenSuspensionFunctor
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedThenSuspensionFunctor
+
+#check @SerrePositivity.KST.SConstruction.suspensionThenCoaugmentedFunctor
+#print axioms SerrePositivity.KST.SConstruction.suspensionThenCoaugmentedFunctor
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation_action
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedPointedSuspensionTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorLeftStrength
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorLeftStrength
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorRightStrength
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorRightStrength
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_associativity
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_associativity
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_action
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_strength
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedClosedFamilyMap_strength
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorLeftStrength_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorLeftStrength_naturality
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorRightStrength_naturality
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorRightStrength_naturality
+
+#check @SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_quotient_action
+#print axioms SerrePositivity.KST.SConstruction.coaugmentedTensorStrength_quotient_action
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionUnit
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionUnit
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_quotient
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_quotient
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_unit
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_unit
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionTransformation
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionTransformation
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.pointedStrictTransformationOfAction_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedStrictTransformationOfAction_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedStrictTransformationOfAction
+#print axioms SerrePositivity.KST.SConstruction.pointedStrictTransformationOfAction
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionSuspensionComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionSuspensionComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionSuspensionComparison_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGOneDirectionSuspensionComparison_app
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialTransformationPrecompose
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformationPrecompose
+
+#check @SerrePositivity.KST.SConstruction.suspensionFamily_evaluation
+#print axioms SerrePositivity.KST.SConstruction.suspensionFamily_evaluation
+
+#check @SerrePositivity.KST.SConstruction.suspensionFamily_evaluation_post
+#print axioms SerrePositivity.KST.SConstruction.suspensionFamily_evaluation_post
