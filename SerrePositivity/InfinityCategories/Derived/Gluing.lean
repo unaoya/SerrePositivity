@@ -60,3 +60,8 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightTens
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeEvaluation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightTensorEvaluation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightKernelComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeTargetComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelCommaObjects
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeKernelModel
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaBoundaryLift
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeRepresentatives
