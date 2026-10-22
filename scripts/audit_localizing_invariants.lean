@@ -742,7 +742,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapPrimitive,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapCocone,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapQuasiIso,
-    `SerrePositivity.KST.LocalizingInvariants.DGDerivationImageExtensionQuasiIso]
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationImageExtensionQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbationMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellClassNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellDerivationNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellLiftNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassImageObstruction,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBimoduleMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedMapLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeMapOperator]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
