@@ -26,6 +26,20 @@ lemma dgGluingCoconeMap_inr :
     simp only [Category.assoc, mappingCocone.inr_v_snd_v_assoc, mappingCocone.inr_v_snd_v,
       Category.comp_id]
 
+lemma dgGluingCoconeMap_inl :
+    (mappingCocone.inl μ).comp
+      (Cochain.ofHom (complexMappingCoconeMap μ ν a b h)) (add_zero 0) =
+    (Cochain.ofHom a).comp (mappingCocone.inl ν) (zero_add 0) := by
+  apply Cochain.ext₀
+  intro n
+  simp only [Cochain.comp_zero_cochain_v, Cochain.ofHom_v]
+  apply complexMappingCocone_X_ext ν n
+  · simp only [Category.assoc, complexMappingCoconeMap_f_fst_f,
+      mappingCocone.inl_v_fst_f_assoc, mappingCocone.inl_v_fst_f, Category.comp_id]
+  · rw [Category.assoc, complexMappingCoconeMap_f_snd_v]
+    simp only [Category.assoc, mappingCocone.inl_v_snd_v_assoc,
+      mappingCocone.inl_v_snd_v, comp_zero, zero_comp]
+
 section Native
 universe v w
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
@@ -40,5 +54,14 @@ lemma dgGluingHomRepresentableIso_inr :
         (dgGluingCommaObject R C D M X) (dgGluingCommaObject R C D M Y))).val (zero_add 1) := by
   simp only [dgGluingHomRepresentableIso, complexMappingCoconeMapIso, Iso.symm_hom]
   exact dgGluingCoconeMap_inr _ _ _ _ _
+
+lemma dgGluingHomRepresentableIso_inl :
+    (mappingCocone.inl (dgGluingDifference R C D M X Y)).comp
+      (Cochain.ofHom (dgGluingHomRepresentableIso R C D M X Y).hom) (add_zero 0) =
+    (Cochain.ofHom (dgGluingHomComponentsIso R C D M X Y).hom).comp
+      (mappingCocone.inl (dgFunctorCommaDifference R D (RightModule R C) M.toFunctor
+        (dgGluingCommaObject R C D M X) (dgGluingCommaObject R C D M Y))) (zero_add 0) := by
+  simp only [dgGluingHomRepresentableIso, complexMappingCoconeMapIso]
+  exact dgGluingCoconeMap_inl _ _ _ _ _
 end Native
 end SerrePositivity.InfinityCategories
