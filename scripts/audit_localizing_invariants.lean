@@ -808,7 +808,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageExtension,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageFactorisation,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageHomology,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionProjection]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionProjection,
+    `SerrePositivity.KST.LocalizingInvariants.CochainCoconeBiprodMap,
+    `SerrePositivity.KST.LocalizingInvariants.CochainSplitCoconeNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassLayerHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageFactorisationLayers,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageFactorisationSuccessor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageTargetConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageModelMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageSourceLayer,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageTargetLayer,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerInclusion,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionMap]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
