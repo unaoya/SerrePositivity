@@ -8341,6 +8341,18 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_app,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_projection]
 
+@[noinline] private def e2RequiredBatch149 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_cast_last_normalized,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.hom_cast_cast_normalized,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.frontHom_fixed,
+      `SerrePositivity.EInfinity.FrameHom.CoherentRightCone.diagram_eq_comparison,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.simplex_one,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockHomPinchedMap_app_val,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeSimplex_one,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePinchedMap_app_val,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_one,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativePrism_one_evaluation]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8374,7 +8386,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20109,3 +20121,33 @@ example :
       (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h :=
   cofibrantSourceRoofProductCommaNativePrism_projection A X Y b
 end e2NativePrismFixtures
+
+section e2NativePrismOneFixtures
+universe e2NativePrismOneUniverse
+open CategoryTheory MonoidalCategory SSet
+open SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+variable (A : Type e2NativePrismOneUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+example :
+    prismEndpoint 1 (nerve (cofibrantSourceRoofProductComma A X Y b)) ≫
+      cofibrantSourceRoofProductCommaNativePrism A X Y b =
+    cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
+      pinchedFamilySlice (kanHammockNerve (cofibrantAlgebraRelativeCategory A))
+        (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+        (cofibrantHammockVertex A Y) :=
+  cofibrantSourceRoofProductCommaNativePrism_one A X Y b
+example :
+    (β_ (nerve (cofibrantSourceRoofProductComma A X Y b))
+      (Δ[1] : SSet.{e2NativePrismOneUniverse + 1})).hom ≫ rightMappingSpacePrism _ ≫
+      sliceOverUncurry (prismEndpoint 1 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
+    (intervalFamilyHomotopy (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
+      pinchedHomToIntervalMappingSpace _ _)).h :=
+  cofibrantSourceRoofProductCommaNativePrism_one_evaluation A X Y b
+example {n : ℕ} (Γ : (nerve (cofibrantSourceRoofProductComma A X Y b)) _⦋n⦌) :
+    cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ (OrderHom.const _ 1) =
+    ((cofibrantSourceRoofProductCommaNativePinchedMap A X Y b).app (Opposite.op ⦋n⦌) Γ).val :=
+  (cofibrantSourceRoofProductCommaNativeSimplex_one A X Y b Γ).trans
+    (cofibrantSourceRoofProductCommaNativePinchedMap_app_val A X Y b Γ).symm
+end e2NativePrismOneFixtures

@@ -2313,7 +2313,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `CoherentRightCone.diagram_front` は追加終点を除くと元の通常図式の coherent 表示になる。
 `RoofPrefix.prism_projection` は同じ評価自然変換の元の全円柱への射影式。
 `cofibrantSourceRoofProductCommaNativePrism_projection` は元の EvaluationHomotopy.h との厳密な一致。
-実 native prism の零端・一端と標準右脚・native pinched 族の同定、
+`CoherentRightCone.diagram_eq_comparison` は定値前面の全 coherent 錐を元の Hom 比較単体へ戻す。
+`RoofPrefix.simplex_one` は同じ native familyMap の元の比較単体との全 Hom の一致。
+`kanHammockHomPinchedMap_app_val` は端点輸送後も同じ coherent 単体の値を保持する。
+`cofibrantSourceRoofProductCommaNativePrism_one` は実一端と元の NativePinchedMap の slice 像の厳密な等式。
+`cofibrantSourceRoofProductCommaNativePrism_one_evaluation` は全三角形の一端条件 ht 本体。
+実 native prism の零端と標準右脚の同定、
 native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
