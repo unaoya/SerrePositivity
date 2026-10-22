@@ -17,3 +17,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraighten
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentation
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentationRestriction
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconeRepresentations
+public import SerrePositivity.InfinityCategories.F2.Compact.UnstraighteningVertexPrism
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPrism
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeTotalPrism
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniversePrism

@@ -214,3 +214,78 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @spaceUniverseCoconeVertexRepresentation_pointedMap
 #print axioms spaceUniverseCoconeVertexRepresentation_pointedMap
+
+#check @unstraighteningTransformationFamily_at_vertex
+#print axioms unstraighteningTransformationFamily_at_vertex
+
+#check @unstraighteningVertexPrism
+#print axioms unstraighteningVertexPrism
+
+#check @unstraighteningVertexPrism_zero
+#print axioms unstraighteningVertexPrism_zero
+
+#check @unstraighteningVertexPrism_one
+#print axioms unstraighteningVertexPrism_one
+
+#check @unstraighteningVertexPrism_projection
+#print axioms unstraighteningVertexPrism_projection
+
+#check @coconeFiberBasePrism
+#print axioms coconeFiberBasePrism
+
+#check @coconeFiberBasePrism_zero
+#print axioms coconeFiberBasePrism_zero
+
+#check @coconeFiberBasePrism_one
+#print axioms coconeFiberBasePrism_one
+
+#check @coconeFiberPrism
+#print axioms coconeFiberPrism
+
+#check @coconeFiberPrism_zero
+#print axioms coconeFiberPrism_zero
+
+#check @coconeFiberPrism_one
+#print axioms coconeFiberPrism_one
+
+#check @coconeFiberPrism_projection
+#print axioms coconeFiberPrism_projection
+
+#check @coconeFiberVertex_value
+#print axioms coconeFiberVertex_value
+
+#check @coconeFiberVertexInclusion
+#print axioms coconeFiberVertexInclusion
+
+#check @coconeFiberVertexInclusion_pointed
+#print axioms coconeFiberVertexInclusion_pointed
+
+#check @coconeFiberVertexInclusion_projection
+#print axioms coconeFiberVertexInclusion_projection
+
+#check @coconeFiberTotalPrism
+#print axioms coconeFiberTotalPrism
+
+#check @coconeFiberTotalPrism_pointed
+#print axioms coconeFiberTotalPrism_pointed
+
+#check @coconeFiberTotalPrism_projection
+#print axioms coconeFiberTotalPrism_projection
+
+#check @coconeFiberTotalPrism_zero
+#print axioms coconeFiberTotalPrism_zero
+
+#check @coconeFiberTotalPrism_one
+#print axioms coconeFiberTotalPrism_one
+
+#check @coconeUniversePrism
+#print axioms coconeUniversePrism
+
+#check @coconeUniversePrism_zero
+#print axioms coconeUniversePrism_zero
+
+#check @coconeUniversePrism_one
+#print axioms coconeUniversePrism_one
+
+#check @coconeUniversePrism_projection
+#print axioms coconeUniversePrism_projection

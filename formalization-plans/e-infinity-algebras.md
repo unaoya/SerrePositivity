@@ -48,6 +48,8 @@
   `yonedaInfinityMap_evaluationIso` は元の Yoneda 埋め込みの指定頂点からの全 Hom 関手と、元の前層評価・指定した `spaceUniverseDiagram` の合成との全自然同型。値ごとの同値だけで代用しない。宇宙変更の小さい余極限保存と compact 性本体はまだ未完。
   **宇宙変更の全空間比較を構成。** 元の任意の弱ホモトピー同値を、同じ写像の任意の宇宙持ち上げで保存する。元の全空間余錐の指定 fiber 写像は、小さい検査標的だけでなく一段大きい全 Kan 標的で弱同値。
   `spaceUniverseTransportRepresentation` は指定した同じ宇宙変更が元の全空間の持ち上げを実際に表現するデータ。元の一つの余錐全体から図式部分と指定頂点へ cartesian 制限し、両図式と元の pointed 写像を厳密に回収。元の fiber 写像と宇宙変更後の同じ余錐の fiber 写像の可換性、余極限保存はまだ未完。
+  **同じ fiber 写像の全 prism を構成。** 元の全余錐の全空間内で、始点は図式部分の包含、終点は元の `coconeFiberMap` と指定頂点の包含の合成。
+  同じ一つの宇宙変更表現で prism 全体を送り、両端と元の join 円柱の底を厳密に回収。終点 fiber の同値比較・余極限保存そのものは未完。
 - **残り**（依存順、粗い見積もり）：
   1. F2N-3(b)：指定した空間の宇宙変更の小さい余極限保存、前層・Ind 内の compact 性。全 Hom と評価の自然比較は完成。HTT 5.3.5.5・11、12〜30時間。
   2. F2N-3(c) の有限余極限閉性：元の全 Hom の極限表示と filtered 余極限・有限極限の交換を照合。HTT 5.3.4、12〜30時間。F1b の交換定理を読み取り専用で使用。
@@ -77,12 +79,12 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。所有は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
   F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind（F2N-2）、F1b が filtered の交換・Ind 安定性（F2N-1・5）、N が compact・冪等完備化（F2N-3・4）。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の compact 6モジュール24宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：compact 独立集約6585 jobs・全71宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
+- **未コミット**：なし（今回の compact prism 4モジュール25宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：compact 独立集約6618 jobs・全96宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   N-1〜4 の既存保存は今回も7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-3(b)。同じ元の全空間余錐について、`spaceUniverseCoconeSourceRepresentation` と `spaceUniverseCoconeVertexRepresentation` の pointed 写像の厳密な制限式を使い、元の `coconeFiberMap` と宇宙変更後の同じ余錐の fiber 写像を全自然同型で比較。保存済みの元の弱同値を同じ射へ移し、`isColimitCone_of_coconeFiberMap_weakEquivalence` で余極限保存を結論する。
+- **次の一手**：F2N-3(b)。保存済みの `coconeUniversePrism` の同じ終点を指定頂点の fiber へ持ち上げ、元の同じ全余錐の表現の fiber 同値性で実際の頂点比較射の同値性を証明。同じ始点・同じ底の prism の終点一意性で、元の `coconeFiberMap` と宇宙変更後の同じ余錐の fiber 写像を全自然同型で比較。保存済みの元の弱同値を同じ射へ移し、`isColimitCone_of_coconeFiberMap_weakEquivalence` で余極限保存を結論する。
   `yonedaInfinityMap_evaluationIso` と `presheafInfinity_evaluation_isColimit` を合成して元の Yoneda 像の κ-compact 性へ接続。宇宙変更を値の型の一致だけで代用しない。Ind へは元の包含の余極限保存と全 Hom 比較で移送する。
   F2N-4(e) は保留。F1 の Ind(c) の単一 filtered 表示は未完。提供後、compact な Ind 対象の恒等射を一つの表現可能な項へ因子化して retract を回収し、元の Yoneda retract 閉包との全 ∞ 圏同値を構成する。未提供の compact 性や単一 filtered 表示を入力に置いて完成とは扱わない。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
