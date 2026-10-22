@@ -3531,3 +3531,43 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource
 
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_projection
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTriangleLongTransport
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex_constant
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_first_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_last_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_long_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransportIso_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongWitness
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_prism
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningFiberProjection_ι
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_endpoint
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleLongWitness_leftPrism_eq_of_families
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningFamilyWitness_leftPrism_source
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningFamilyWitness_leftPrism_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_endpoint
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map_vertex

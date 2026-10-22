@@ -546,10 +546,20 @@ public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportValue
 public import SerrePositivity.InfinityCategories.F2.CoconeIntervalHomValue
 public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportSource
 
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTriangleTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawInterval
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleFaces
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleLongValue
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportCoordinates
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleLongDataEquality
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningFamilyPrismEndpoints
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleLongEndpoint
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
-規約：F1b が filtered・Ind・compact・冪等完備化を担当する。
+規約：F1b は filtered・compact・安定性、F1 は Ind、N は冪等完備化を担当する。
 使われ方：Cat_∞ の極限、lax pullback、安定 ∞ 圏への接続。
 -/
 
@@ -810,3 +820,43 @@ public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportSourc
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource
 
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_projection
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTriangleLongTransport
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawIntervalVertex_constant
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_first_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_last_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangle_long_rawInterval
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTransportIso_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongWitness
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_prism
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningFiberProjection_ι
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_endpoint
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleLongWitness_leftPrism_eq_of_families
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningFamilyWitness_leftPrism_source
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningFamilyWitness_leftPrism_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_endpoint
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map_vertex
