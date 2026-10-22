@@ -1189,7 +1189,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathWitnessLift,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathSquare]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeCellPathSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeHomotopyPullbackPathLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeHomotopyPullbackPathWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathPullbackDoubleLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAffineDoublePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeTransportSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeTransportSquareEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeTransportHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCellWitnessSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCellTransportHomotopy]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
