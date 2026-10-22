@@ -30030,3 +30030,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectClosedIso
 #print axioms SerrePositivity.KST.SConstruction.dgOdotRightQuotientPerfectClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgKPerfectExtensionCompositionIso
+#print axioms SerrePositivity.KST.SConstruction.dgKPerfectExtensionCompositionIso
+
+#check @SerrePositivity.KST.SConstruction.dgKPerfectExtension_comp_isEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKPerfectExtension_comp_isEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseLiftFunctor_factorization
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseLiftFunctor_factorization
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseLiftFunctor_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseLiftFunctor_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseLiftDown_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseLiftDown_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKUniverseLiftUp_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKUniverseLiftUp_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputMap_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputMap_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputNuMap_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputNuMap_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputKMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputKMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInputKEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInputKEdge_isInvertible

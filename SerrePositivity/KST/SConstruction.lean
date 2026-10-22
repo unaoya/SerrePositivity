@@ -2455,4 +2455,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotPerfectNerve
 public import SerrePositivity.KST.SConstruction.DGOdotRightAlgebraComparison
 public import SerrePositivity.KST.SConstruction.DGOdotRightQuotientComparison
 
+public import SerrePositivity.KST.SConstruction.DGKPerfectComposition
+public import SerrePositivity.KST.SConstruction.DGKUniverseMorita
+public import SerrePositivity.KST.SConstruction.DGKUniverseQuasiEquivalence
+public import SerrePositivity.KST.SConstruction.DGOdotInputMorita
+
 /-! # ∞-S• 構成と連結 K 理論 -/
