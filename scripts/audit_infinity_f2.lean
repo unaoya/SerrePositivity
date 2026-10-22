@@ -4609,3 +4609,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawUniversalBoundary_iff_long_value
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawUniversalBoundary_of_long_value
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff_long_value
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_id
+#check @SerrePositivity.InfinityCategories.F2.functorIso_unit_self_whisker
+#check @SerrePositivity.InfinityCategories.F2.functorIso_triangle_precomp
+#check @SerrePositivity.InfinityCategories.F2.functorIso_triangle_inverse_precomp
+#check @SerrePositivity.InfinityCategories.F2.inverseComparisonCounit
+#check @SerrePositivity.InfinityCategories.F2.inverseComparisonCounit_triangle
+#check @SerrePositivity.InfinityCategories.F2.inverseComparisonCounit_triangle_inverse
+#check @SerrePositivity.InfinityCategories.F2.pointedValueRightComparison_counitIso_eq_inverseComparisonCounit
+#check @SerrePositivity.InfinityCategories.F2.pointedValueRightComparison_triangle
+#check @SerrePositivity.InfinityCategories.F2.pointedValueRightComparison_triangle_inverse
+#check @SerrePositivity.InfinityCategories.F2.pointedValueRightComparison_triangle_at
+#check @SerrePositivity.InfinityCategories.F2.pointedValueRightComparison_triangle_inverse_at
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueFrom
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueFrom_eq_cast
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueToUnitIso
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueToCounitIso
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueToRightEquivalence
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_triangle
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_triangle_inverse
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_triangle_at
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_triangle_inverse_at
