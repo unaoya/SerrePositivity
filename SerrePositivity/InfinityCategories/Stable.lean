@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily
+public import SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality
+public import SerrePositivity.InfinityCategories.Stable.TerminalRightFibrationComparison
+public import SerrePositivity.InfinityCategories.Stable.TerminalComparisonFiberTransfer
+public import SerrePositivity.InfinityCategories.Stable.LimitConeTerminalComparison
 public import SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers
 public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 public import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono

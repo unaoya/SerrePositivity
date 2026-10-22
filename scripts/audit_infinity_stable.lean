@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily
+import SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality
+import SerrePositivity.InfinityCategories.Stable.TerminalRightFibrationComparison
+import SerrePositivity.InfinityCategories.Stable.TerminalComparisonFiberTransfer
+import SerrePositivity.InfinityCategories.Stable.LimitConeTerminalComparison
 import SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers
 import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
@@ -7427,6 +7432,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+
+    `SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily,
+    `SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality,
+    `SerrePositivity.InfinityCategories.Stable.TerminalRightFibrationComparison,
+    `SerrePositivity.InfinityCategories.Stable.TerminalComparisonFiberTransfer,
+    `SerrePositivity.InfinityCategories.Stable.LimitConeTerminalComparison,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers,
 ] ++
     stableAuditExpectedChunk0 ++
