@@ -574,3 +574,60 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @coherentTotalKan_point_representative
 #print axioms coherentTotalKan_point_representative
+
+#check @coconeTransportLeg
+#print axioms coconeTransportLeg
+
+#check @coconeHomotopyLeg_edge
+#print axioms coconeHomotopyLeg_edge
+
+#check @coconeTransportLeg_edge
+#print axioms coconeTransportLeg_edge
+
+#check @coconeLegFiberSource
+#print axioms coconeLegFiberSource
+
+#check @coconeLegFiberSource_pointed
+#print axioms coconeLegFiberSource_pointed
+
+#check @coconeLegFiberSource_projection
+#print axioms coconeLegFiberSource_projection
+
+#check @coconeLegFiberMap
+#print axioms coconeLegFiberMap
+
+#check @coconeLegFiberMap_transportIso
+#print axioms coconeLegFiberMap_transportIso
+
+#check @coconeLegFiberMap_valueIso
+#print axioms coconeLegFiberMap_valueIso
+
+#check @coconeLegValueMap
+#print axioms coconeLegValueMap
+
+#check @coconeLegValueMap_iso
+#print axioms coconeLegValueMap_iso
+
+#check @coconeLeg_point_representative_of_weak
+#print axioms coconeLeg_point_representative_of_weak
+
+#check @coherentTotalCoconeLeg_point_representative
+#print axioms coherentTotalCoconeLeg_point_representative
+
+#check @coconeLegFiberSource_hom
+#print axioms coconeLegFiberSource_hom
+
+#check @coconeFiberSource_point
+#print axioms coconeFiberSource_point
+
+#check @coconeFiber_point_representative_of_weak
+#print axioms coconeFiber_point_representative_of_weak
+
+#check @functorIso_point_component
+#print axioms functorIso_point_component
+
+#check @qCatEquivalence_inv_hom_component
+#print axioms qCatEquivalence_inv_hom_component
+
+#check @componentRepresentative_of_valueIso
+#print axioms componentRepresentative_of_valueIso

@@ -50,3 +50,9 @@ public import SerrePositivity.InfinityCategories.F2.Compact.ComponentLabels
 public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
 public import SerrePositivity.InfinityCategories.F2.Compact.WeakComponents
 public import SerrePositivity.InfinityCategories.F2.Compact.TotalPointRepresentatives
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegFiberTransport
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegValueComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegPointRepresentatives
+public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPointRepresentatives
+public import SerrePositivity.InfinityCategories.F2.Compact.FunctorComponentComparison
