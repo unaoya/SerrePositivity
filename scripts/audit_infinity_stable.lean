@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalization
+import SerrePositivity.InfinityCategories.Derived.DGNormalizedRingShuffleCoherence
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProduct
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleNative
 import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentComplete
 import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange
@@ -4764,6 +4768,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalization,
+    `SerrePositivity.InfinityCategories.Derived.DGNormalizedRingShuffleCoherence,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleNative,
+
     `SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentComplete,
 
     `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift,
