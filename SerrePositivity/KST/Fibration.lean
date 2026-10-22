@@ -114,3 +114,9 @@ public import SerrePositivity.KST.Fibration.TailWeakEndpoint
 public import SerrePositivity.KST.Fibration.TailRelativeCompletion
 public import SerrePositivity.KST.Fibration.TailWeakMultiStep
 public import SerrePositivity.KST.Fibration.WeakStringTailMultiStep
+public import SerrePositivity.KST.Fibration.StandardJoinTailFace
+public import SerrePositivity.KST.Fibration.StandardTailCoordinates
+public import SerrePositivity.KST.Fibration.FinSnocProductIso
+public import SerrePositivity.KST.Fibration.WeakStringTailCanonicalComponents
+public import SerrePositivity.KST.Fibration.WeakStringFiniteRecursion
+public import SerrePositivity.KST.Fibration.WeakStringFiniteEquivalence

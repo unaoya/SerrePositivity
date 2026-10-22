@@ -120,7 +120,13 @@ run_cmd do
     `SerrePositivity.KST.Fibration.TailWeakEndpoint,
     `SerrePositivity.KST.Fibration.TailRelativeCompletion,
     `SerrePositivity.KST.Fibration.TailWeakMultiStep,
-    `SerrePositivity.KST.Fibration.WeakStringTailMultiStep]
+    `SerrePositivity.KST.Fibration.WeakStringTailMultiStep,
+    `SerrePositivity.KST.Fibration.StandardJoinTailFace,
+    `SerrePositivity.KST.Fibration.StandardTailCoordinates,
+    `SerrePositivity.KST.Fibration.FinSnocProductIso,
+    `SerrePositivity.KST.Fibration.WeakStringTailCanonicalComponents,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteRecursion,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteEquivalence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
