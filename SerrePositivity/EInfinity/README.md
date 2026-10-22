@@ -2467,3 +2467,11 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 `normalizedTensorHom_precomp_family_map` は元の複体射による全族の前合成を任意の F で送り、同じ辺の像の前合成へ同定する。
 F を元の半自由分解関手、射を元の自由単位に取れる。資源上限・小ささ・cofibrancy の仮定は追加しない。
 同じ U の全作用と標準自由単位誘導射を結ぶ幾何的三角形、∞ 極限保存と G1′ は未完了。
+
+`complexOrdinaryAmbient_hom` は元の通常複体射の像を同じ閉 dg 辺の分解像へ端点等式で照合する。
+`complexOrdinaryDerivedNatTransHom_component` は元の全円柱の二胞体評価を同じ成分辺の像へ回収する。
+`freeProbeUnitOrdinaryHom` と `freeProbeDerivedUnitRecoveredHom` は元の図式頂点の等式輸送を含む同じ単位成分。
+後者は元の全比較・元の `freeProbeDerivedUnit`・元の回収等式を評価する。
+`freeProbeDerivedUnitAmbientHom_eq` はその同じ導来単位成分と元の自由単位辺の分解像の一致。
+`freeProbeDerivedUnitNormalizedHom_family` は同じ導来単位成分の前合成を任意 K の正規化 Hom の全族に同定する。
+実屋根評価との幾何的照合・標準 U 単位誘導射自体の弱同値性・∞ 極限保存・G1′ は未完了。

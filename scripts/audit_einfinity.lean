@@ -8904,6 +8904,26 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.pinchedPostcompose_family,
       `SerrePositivity.EInfinity.ComplexLimits.pinchedPostcompose_intervalFamily]
 
+@[noinline] private def e2RequiredBatch170 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitAmbientHom,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitAmbientHom_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitNormalizedHom_family,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitRecoveredHom,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeDerivedUnitRecoveredHom_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeUnitOrdinaryHom,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeUnitHom_component,
+      `SerrePositivity.EInfinity.BarrattEccles.freeProbeUnitHom_ambient,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHom,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedNatTransHom_component,
+      `SerrePositivity.EInfinity.ComplexLimits.complexDiagramDerived_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.complexDiagramDerivedVertexIso,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryAmbient_edge,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryAmbient_hom,
+      `SerrePositivity.EInfinity.ComplexLimits.complexClosedNerve_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryAmbient_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryAmbientVertexIso,
+      `SerrePositivity.EInfinity.FrameHom.functorHomEvaluate_homotopy_transport]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8937,7 +8957,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21614,3 +21634,75 @@ example (X : Complex A) (B : (BarrattEccles.operad A).Algebra)
 
 end
 end e2DerivedFamilyFixtures
+
+
+section e2UnitComponentFixtures
+noncomputable section
+universe e2UnitComponentU
+open CategoryTheory SSet
+open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity.Surjection
+open scoped Simplicial
+variable (A : Type e2UnitComponentU) [CommRing A]
+
+example {X Y : Complex A} (f : X ⟶ Y) :
+    (complexOrdinaryAmbientVertexIso A X).inv ≫
+      Truncated.HomotopyCategory.homMk
+        ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated ≫
+      (complexOrdinaryAmbientVertexIso A Y).hom =
+    (hoFunctor.map (complexSemifreeResolutionInfinity A)).toFunctor.map
+      (Truncated.HomotopyCategory.homMk
+        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) :=
+  complexOrdinaryAmbient_hom A f
+
+example {I : Type (e2UnitComponentU + 1)} [Category.{e2UnitComponentU} I]
+    {F G : I ⥤ Complex A} (η : F ⟶ G) (i : I) :
+    (complexDiagramDerivedVertexIso A F i).inv ≫
+      functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (nerveVertex i) ≫
+      (complexDiagramDerivedVertexIso A G i).hom =
+    Truncated.HomotopyCategory.homMk
+      ((nerve.edgeMk (η.app i)).map (complexOrdinaryDerivedSource A)).toTruncated :=
+  complexOrdinaryDerivedNatTransHom_component A η i
+
+example (X : Complex A) : freeProbeUnitOrdinaryHom A X =
+    Truncated.HomotopyCategory.homMk
+      ((nerve.edgeMk ((freeProbeUnitNatTrans A).app X)).map
+        (complexOrdinaryDerivedSource A)).toTruncated := freeProbeUnitHom_component A X
+
+example (X : Complex A) : freeProbeDerivedUnitRecoveredHom A X =
+    freeProbeUnitOrdinaryHom A X := freeProbeDerivedUnitRecoveredHom_eq A X
+
+example (X : Complex A) : freeProbeDerivedUnitRecoveredHom A X =
+    (complexDiagramDerivedVertexIso A (ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
+      functorHomEvaluate ((complexProbeDerivedSourceIso A).hom ≫ freeProbeDerivedUnit A ≫
+        (freeProbeUnderlyingDerivedSourceIso A).hom) (nerveVertex X) ≫
+      (complexDiagramDerivedVertexIso A
+        (freeProbeFunctor A ⋙ Operad.Algebra.forget (BarrattEccles.operad A)) X).hom := rfl
+
+example (X : Complex A) : freeProbeDerivedUnitAmbientHom A X =
+    (hoFunctor.map (complexSemifreeResolutionInfinity A)).toFunctor.map
+      (Truncated.HomotopyCategory.homMk (dgClosedEdge A (Complex A)
+        ((complexToClosed A).map ((BarrattEccles.operad A).freeAlgebraAdjunction.unit.app
+          ((ComplexLimits.framedLimitProbeFunctor A).obj X))))) :=
+  freeProbeDerivedUnitAmbientHom_eq A X
+
+example (X Y : Complex A) (K : SSet.{e2UnitComponentU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2UnitComponentU + 1, e2UnitComponentU}.obj
+      ((cosimplicialHom (normalizedSimplexTensor A
+        ((freeProbeFunctor A).obj X).carrier)).obj Y)) :=
+  freeProbeDerivedUnitNormalizedHom_family A X Y K g
+
+example (X : Complex A) (B : (BarrattEccles.operad A).Algebra)
+    (K : SSet.{e2UnitComponentU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2UnitComponentU + 1, e2UnitComponentU}.obj
+      ((cosimplicialHom (normalizedSimplexTensor A
+        ((freeProbeFunctor A).obj X).carrier)).obj
+        (complexSemifreeResolutionValue A B.carrier).val)) :=
+  freeProbeDerivedUnitNormalizedHom_family A X
+    (complexSemifreeResolutionValue A B.carrier).val K g
+
+end
+end e2UnitComponentFixtures
