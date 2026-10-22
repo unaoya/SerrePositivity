@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
+public import SerrePositivity.KST.Fibration.ScaffoldCandidateClassification
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningBaseChange
@@ -15,18 +16,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-
-/-- nerve 上の分類候補と実際の分類図式を、同じ相対表現を通して比較する。 -/
-def leftStraighteningCandidate_classificationIso
-    {I : Type u} [Category.{u} I] {E : SSet.{u}}
-    (p : E ⟶ nerve I) [LeftFibration p] :
-    FunctorIso (leftStraighteningCandidate p) (leftStraighteningInfinityDiagram p) := by
-  have (n : SimplexCategoryᵒᵖ) : Small.{u} ((SSet.uliftFunctor.{u + 1, u}).obj E |>.obj n) :=
-    inferInstanceAs (Small.{u} (ULift.{u + 1} (E.obj n)))
-  let R := smallFiberLeftStraighteningRepresentation
-    ((SSet.uliftFunctor.{u + 1, u}).map p) (hasSmallSimplexFibers_of_small_total _)
-  exact nerveStraighteningRepresentationIso p R ≪≫
-    (leftStraighteningInfinityDiagram_representationIso p R).symm
 
 /-- 元の全単体圏上の strict Kan 値を、同じ section 比較と表現で分類図式へ送る。 -/
 def fractionKanSimplexClassificationIso {X Q : SSet.{u}}

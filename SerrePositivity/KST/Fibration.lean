@@ -348,3 +348,13 @@ public import SerrePositivity.KST.Fibration.KanEnrichedRealizationValue
 public import SerrePositivity.KST.Fibration.KanEnrichedRealizationPointHom
 public import SerrePositivity.KST.Fibration.EdgewiseDiagonalPoint
 public import SerrePositivity.KST.Fibration.KanEnrichedEdgewisePointHom
+public import SerrePositivity.KST.Fibration.FunctorIsoDoubleEvaluation
+public import SerrePositivity.KST.Fibration.KanEnrichedDoubleEvaluation
+public import SerrePositivity.KST.Fibration.KanEnrichedEdgewiseDoubleEvaluation
+public import SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom
+public import SerrePositivity.KST.Fibration.StrictTransportOppositeEvaluation
+public import SerrePositivity.KST.Fibration.StrictTransportOppositePointHom
+public import SerrePositivity.KST.Fibration.PointKanHomVertices
+public import SerrePositivity.KST.Fibration.PointedLeftResolutionVertices
+public import SerrePositivity.KST.Fibration.ScaffoldCandidateNativeComparison
+public import SerrePositivity.KST.Fibration.ScaffoldCandidateClassification
