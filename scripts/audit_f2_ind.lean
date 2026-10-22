@@ -264,3 +264,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_isPrecompositionEquivalence
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductClassificationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedClassificationRealizationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductDiagonalRealization
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductJointRealization_eq
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductClassificationRealizationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductJointRealization_curry
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftWeightedClassificationIso

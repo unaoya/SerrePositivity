@@ -155,3 +155,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCoefficien
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductValueEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductClassification
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedClassificationRealization
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductDiagonalRealization
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductJointRealization
+public import SerrePositivity.InfinityCategories.F2.Ind.NerveProductSwapIso
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCurry
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftWeightedClassification
