@@ -16,7 +16,6 @@
 - 全合成辺に共通の cofiber 補完を構成し、元の実四角形・始点・核値 cofiber を回収。
   全再添字と厳密に可換。退化の cofiber は零で、関手圏内の八面体族から元の三辺の全正反復加法性を証明。
 - 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
-  全射影・再添字後の実合成辺を回収。一辺では同じ二成分が既存の加法性写像を回収。
   零長は厳密同型、全長・全正反復は局所化同型。有限積比較そのものの全単体的自然同値は未主張。
   内部面は隣接 cofiber の加法、第零面は核の作用、退化は零 cofiber と全関手圏で照合。
 - 二辺の内ホーン制限は W 条件を反映し、trivial Kan fibration・完全な安定圏同値。
@@ -27,14 +26,13 @@
 - 元の S_n(W 列_m) の頂点と wS_n(B) の実 m 単体を、内部 Hom の交換で厳密に同定。
   全零対角・実押し出し・W 条件と全面・全退化を保つ二重単体・対角の厳密同型と K-1 object/core 比較で、
   相対 S の対角 → W 列の core S 実現の対角の実際の比較射が局所化同型と証明。
-  同じ F₁ へ自然に接続し、完全関手の後合成は交換と可換で、核側の写像を同じ W 列へ運ぶ。
   零長同型の逆と元の退化で全定数 W 列を構成。全単体作用素・完全関手と厳密に可換で全頂点を回収。
   gapped 交換と object/core の前合成の厳密な四角形で、元の core 包含と同じ定数包含を保持。
 - 元の Verdier 包含を実核部分圏へ制限し、元の写像空間の充満忠実性と核条件から完全な同値を構成。
   包含を通る合成の核は元の包含側の圏と厳密同型。核への後合成は全正有限反復で局所化同型。
   全 cofiber の後合成の自然同型から、全長・全正反復の有限積比較の後合成等式を局所化で証明。
-  核係数の有限積同型と元の初期評価の実射対の厳密な立方体で、元の初期評価四角形は homotopy pullback。
-  右消去から先頭を保つ全再添字、第零面は正の段の連結性と退縮検出で証明。
+  核係数の有限積同型と実射対の厳密な立方体で、元の初期評価四角形は homotopy pullback。
+  右消去で先頭を保つ全再添字、第零面は正の段の連結性と退縮検出で証明。
   全面・全退化を合成し、K-2 Segal 実現で全行と対角の元の四角形も homotopy pullback。
   零行同型で定数包含へ移し、object/core の厳密比較で元の相対 S 核四角形の実現も同じ性質。
   包含側の全相対 S_n の零対象の収縮を対角へ送り、一点への元の射は局所化同型。
@@ -48,12 +46,13 @@
   元の各 W 辺上で指定した実 span 輸送は、亜群化後に単体的ホモトピー同値。
 - 全辺局所化の単位を全 Kan 標的で検査し、厳密な関手的 Kan 模型との実同値を証明。
   span の全単体圏上の coherent な空間値図式を構成。各値は元の両端固定分数の亜群化と同値。
-  選択済みの W 輸送も同じ Kan 模型で同値。初頂点辺の反転・底と商への降下はまだ未証明。
+  strict section の元の評価 prism で初頂点辺を反転し、同じ coherent 図式を元の底へ降下。
+  制限の全関手 ∞ 圏内の自然同型と初頂点での値を保持。商への降下・写像空間比較は未証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8177 jobs・専用監査 216 モジュール 1131 宣言 が成功。
+- 現在の対象ビルド 8244 jobs・専用監査 225 モジュール 1174 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4438 モジュールは EInfinity を含まない。全体 24488 jobs で成功。
+  所有 import 閉包 4505 モジュールは EInfinity を含まない。全体 24493 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -75,8 +74,8 @@
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
 - exists_relative_weakOreFamily、weakOreFamilySpace_isContractibleKan、exists_weakMarkedSpanCartesianLift、
   weakSpanDenominatorBaseChange_cartesianFibration、weakDenominatorSpanTransport_groupoidCompletion_isEquivalence。
-- weakSpanKanCoherentDiagram、weakSpanKanValueGroupoidEquivalence、
-  weakSpanChosenKanTransport_isQCatEquivalence、groupoidCompletionKanComparison_isQCatEquivalence。
+- weakSpanKanCoherentDiagram_inverts_initial、weakSpanKanSpaceDiagram、
+  weakSpanKanSpaceDiagram_restrictionIso、weakSpanKanSpaceDiagram_initialVertexIso。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
@@ -98,12 +97,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の厳密 Kan 模型・全単体圏上の coherent 図式・各値と W 輸送の比較の8モジュール等を含める）。
+- なし（今回の評価 prism・初頂点辺の反転・全関手 ∞ 圏による底への降下の9モジュール等を含める）。
 ### 既知の問題
 - 商の ∞ 写像空間比較・cofinality 十分条件・Sp 値の K-6 は未完。K-5 の fraction 比較も同値性未証明。
 ### 次の一手
-- strict section 評価の prism で初頂点を保つ辺の反転を示し、coherent Kan 図式を底へ降下する。
-  その後、宇宙も揃えて商の全関手 ∞ 圏の普遍性へ接続。商写像空間・cofinality 十分条件・Sp 値は未完。
+- 降下した同じ空間値図式の W 反転を示す。商への降下には、商局所化の宇宙と Space∞ の宇宙の整合も要る。
+  商写像空間比較・cofinality 十分条件・Sp 値は未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

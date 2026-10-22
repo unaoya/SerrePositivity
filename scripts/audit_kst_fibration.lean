@@ -221,7 +221,16 @@ run_cmd do
     `SerrePositivity.KST.Fibration.CocartesianKanDiagram,
     `SerrePositivity.KST.Fibration.WeakSpanKanDiagram,
     `SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps,
-    `SerrePositivity.KST.Fibration.WeakSpanChosenKanTransport]
+    `SerrePositivity.KST.Fibration.WeakSpanChosenKanTransport,
+    `SerrePositivity.KST.Fibration.SectionEdgePrism,
+    `SerrePositivity.KST.Fibration.StrictTransportUnderEdge,
+    `SerrePositivity.KST.Fibration.StrictTransportEvaluationPrism,
+    `SerrePositivity.KST.Fibration.ConstantFiberPrism,
+    `SerrePositivity.KST.Fibration.PullbackStrictEvaluation,
+    `SerrePositivity.KST.Fibration.PullbackStrictConstantEdge,
+    `SerrePositivity.KST.Fibration.TransportSimplexConstantEdge,
+    `SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion,
+    `SerrePositivity.KST.Fibration.WeakSpanKanDescent]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

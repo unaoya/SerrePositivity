@@ -215,3 +215,12 @@ public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
 public import SerrePositivity.KST.Fibration.WeakSpanKanDiagram
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps
 public import SerrePositivity.KST.Fibration.WeakSpanChosenKanTransport
+public import SerrePositivity.KST.Fibration.SectionEdgePrism
+public import SerrePositivity.KST.Fibration.StrictTransportUnderEdge
+public import SerrePositivity.KST.Fibration.StrictTransportEvaluationPrism
+public import SerrePositivity.KST.Fibration.ConstantFiberPrism
+public import SerrePositivity.KST.Fibration.PullbackStrictEvaluation
+public import SerrePositivity.KST.Fibration.PullbackStrictConstantEdge
+public import SerrePositivity.KST.Fibration.TransportSimplexConstantEdge
+public import SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion
+public import SerrePositivity.KST.Fibration.WeakSpanKanDescent
