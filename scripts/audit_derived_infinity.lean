@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelSourceRestrictionNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoTwoStepSquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphInfinityNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphDerivedBimoduleNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositorRawNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionRightNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelRawFactorHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelRawFactorPrecompHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelResolvedAugmentationHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleNaturality
 import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentityMap
 import SerrePositivity.InfinityCategories.Derived.IsoRawFactorSquare
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompNaturalitySquare
@@ -4096,6 +4106,21 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelSourceRestrictionNaturality,
+
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoTwoStepSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphInfinityNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphDerivedBimoduleNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedCompositorRawNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionRightNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelRawFactorHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelRawFactorPrecompHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelResolvedAugmentationHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentityMap,
 
     `SerrePositivity.InfinityCategories.Derived.IsoRawFactorSquare,
