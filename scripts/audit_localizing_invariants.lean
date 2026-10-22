@@ -874,7 +874,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionIsoComponent,
     `SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionNerveIso,
     `SerrePositivity.KST.LocalizingInvariants.DGPerfectExtensionCompositionIso,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantComposition]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGRestrictionIdentityStrict,
+    `SerrePositivity.KST.LocalizingInvariants.DGExtensionIdentityComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGPerfectExtensionIdentityIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumPiNativeConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantTowers,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovValueTower]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
