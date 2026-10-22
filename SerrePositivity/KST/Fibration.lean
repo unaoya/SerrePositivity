@@ -438,3 +438,7 @@ public import SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection
 public import SerrePositivity.KST.Fibration.VerdierKZeroSurjectivity
 public import SerrePositivity.KST.Fibration.DGNuKZeroCofinality
 public import SerrePositivity.KST.Fibration.KZeroCofinalityObstruction
+public import SerrePositivity.KST.Fibration.DGKZeroComparison
+public import SerrePositivity.KST.Fibration.DGKPiZeroCofinality
+public import SerrePositivity.KST.Fibration.DGKFiberConnectivity
+public import SerrePositivity.KST.Fibration.DGKInputFiberSquare
