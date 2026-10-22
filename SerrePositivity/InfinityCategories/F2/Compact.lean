@@ -5,3 +5,9 @@ public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRetractions
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 public import SerrePositivity.InfinityCategories.F2.Compact.Subcategory
+public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
+public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationCoslice
+public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationTransport
+public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationEquivalence
+public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
