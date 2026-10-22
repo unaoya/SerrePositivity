@@ -56,14 +56,14 @@
   恒等錐評価は全写像空間で充満忠実、固定した点の延長空間は可縮 Kan。実恒等点の同型から相対三角比較を回収。
   実 coslice 辺を同じ三辺の合成三角形へ展開し、輸送した実点の矢印の類は元の点の射と底の辺の合成と証明。
   pointed 作用と指定成分の合成を同定。商・初頂点の指定値同型で native 比較像を回収し、点の射の等式を実 fiber 同型へ反映。
-  native 比較の全 fiber 写像・点を元の pointedMap で回収。同じ表現空間の同時評価は元の diagramIso の指定成分そのもの。
-  同じ表現比較に対し、元の pointedMap の点の射と指定 fiber の実点の射は、同じ diagramIso の指定成分との合成で比較先の点へ移る。
-  分類同型の商・初頂点制限を元の section・表現・底変換で計算。可縮空間から選んだ比較・nerve の coherent transport 比較も同じ実点を保つ。
-  全写像空間から作った同じ小さい実比較は可逆な二胞体を前合成同値へ送り、fiber 点の射も元の成分で計算。
-  指定成分の作用を保持する pointed 復元射の底・同値性を証明。復元点の射は native 恒等点の射と分類逆成分との合成。native 恒等点の任意の同じ相対表現への比較式も回収。
+  native 比較の全 fiber 点を元の pointedMap で回収し、同じ表現比較の指定 diagramIso 成分が実点の射を保つ。
+  全写像空間から作った小さい実比較は可逆な二胞体を前合成同値へ送り、fiber 点の射を元の成分で計算。
+  pointed 復元射の底・同値性・native 恒等点との分類逆成分による点の式を証明。
+  元の strict 復元 span の二脚・weighted 因子分解を保持し、相対前合成の本質的全射性から同じ三角を持つ表現を構成。
+  同じ三角を元の指定点で評価し、全空間・pointed-space の実比較と元の点の射の合成式を回収。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列で右射影の全射性と接続射の自明性を同定。左項が連結なら零次射影は全射。十分条件は未証明。
-- 対象 8639 jobs・専用監査 321 モジュール 1776 宣言・全体 24817 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4899 モジュールは EInfinity を含まない。
+- 対象 8644 jobs・専用監査 325 モジュール 1856 宣言・全体 24831 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4904 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -84,7 +84,7 @@
   weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_of_identity_hom。
 - weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
   weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
-- transportWitnessDiagramValueIso_eq、transportRepresentationFiberPointHom_diagramIso、nerveCoherentTransportRepresentationIso_pointHom、nativeCosliceIdentityPoint_comparison。
+- SpanCompatibleComparison、spanCompatibleComparison、StrictTransportComparisonSpan、StrictTransportComparisonSpan.representation、StrictTransportComparisonSpan.representationPointedPointIso_pointHom。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -97,12 +97,13 @@
   RelativeCofiberLeftFiber・RelativeFiberEquivalence は L1 §6 の固定界面。K-F の基底変更と Quillen A へ接続。
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
+- 商・分数・局所化は Sp 正本（10-22 19:50）。新規補題は Sp に依頼。既存構成は保持し、tamme* の lax 専用仮定を一般 Verdier W に流用しない。
 ### 未コミット
-- なし（同時評価の指定成分・表現比較の実点・native 恒等点の比較の6モジュール、集約・監査・本計画を含める）。
+- なし（指定 span の相対三角・同じ表現・指定点比較の4モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
-- native 実像と pointed 復元点の一致は未証明。既存 nerve directComparison の存在選択は元の復元 span との相対三角比較を保持しない。指定点の主経路には対応を保持する K-F の表現を用いる。span 側の普遍性・分数比較・cofinality・Sp 値 K-6 も未完。
+- native 実像と pointed 復元点の一致は未証明。任意に選んだ strict span には元の scaffold 点との対応が未付与。span 側の普遍性・分数比較・cofinality・Sp 値 K-6 も未完。
 ### 次の一手
-- relativeFunctor の前合成同値に沿う延長で、元の復元 span との相対三角比較も保持する nerve 表現を K-F に構成する。cocartesian Kan の native 実像との対応を示し、同じ表現比較の点の式で pointed 復元の恒等点へ接続する。
+- Sp に一般 Verdier W の分数比較同値を依頼済み。依存部分は提供待ち。一般の exists_innerFibration_comparison_span の元の scaffold 埋め込みと二脚の制限等式を選択データに保持し、同じ表現の点比較へ接続する。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

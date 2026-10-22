@@ -320,3 +320,7 @@ public import SerrePositivity.KST.Fibration.TransportRepresentationPointHom
 public import SerrePositivity.KST.Fibration.ChosenRepresentationPointHom
 public import SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom
 public import SerrePositivity.KST.Fibration.NativeRepresentationComparisonPoint
+public import SerrePositivity.KST.Fibration.SpanCompatibleComparison
+public import SerrePositivity.KST.Fibration.StrictTransportComparisonSpan
+public import SerrePositivity.KST.Fibration.SpanCompatibleTransportRepresentation
+public import SerrePositivity.KST.Fibration.SpanTransportPointedTriangle
