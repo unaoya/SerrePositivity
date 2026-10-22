@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationBimodule
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationKernel
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationEquivalence
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationGenerator
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectRepresentablePoint
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectRepresentableGenerator
+import SerrePositivity.InfinityCategories.Derived.DGAlgebraSmallPerfectGenerator
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridIndex
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareIndex
@@ -4326,6 +4333,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationBimodule,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationKernel,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectEvaluationGenerator,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectRepresentablePoint,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectRepresentableGenerator,
+    `SerrePositivity.InfinityCategories.Derived.DGAlgebraSmallPerfectGenerator,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridIndex,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareIndex,
