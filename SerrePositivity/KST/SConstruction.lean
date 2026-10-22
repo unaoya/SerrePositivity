@@ -2501,4 +2501,14 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetContracted
 public import SerrePositivity.KST.SConstruction.DGOdotTargetFunctor
 public import SerrePositivity.KST.SConstruction.DGOdotTargetQuotient
 
+public import SerrePositivity.KST.SConstruction.DGEndIsoConjugation
+public import SerrePositivity.KST.SConstruction.DGEndYonedaInverse
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeRightRestriction
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeConjugation
+public import SerrePositivity.KST.SConstruction.DGHomGluingRightConeHom
+public import SerrePositivity.KST.SConstruction.DGPerfectEndIsoComparison
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRightEnd
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRightRecovery
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRightBase
+
 /-! # ∞-S• 構成と連結 K 理論 -/
