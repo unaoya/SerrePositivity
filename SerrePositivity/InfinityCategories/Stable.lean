@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.LoopConeClassifier
+public import SerrePositivity.InfinityCategories.Stable.LoopSourceUniversalUnit
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison
 public import SerrePositivity.InfinityCategories.Stable.RelativeTerminalSectionComparison
 public import SerrePositivity.InfinityCategories.Stable.LoopCospanRepresentation
