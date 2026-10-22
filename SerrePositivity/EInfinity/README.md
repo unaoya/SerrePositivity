@@ -2409,3 +2409,9 @@ Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 `ComplexLimits.normalizedSimplexTensorAugmentation` は同じ X⊗N(Δⁿ) から X への全自然 augmentation。
 各成分と全ての面・退化は任意の非有界 X で擬同型。flatness や cofibrancy の入力は不要。
 Reedy cofibrancy・標準 frame との比較・標準単位比較の弱同値性は未証明。
+
+`ComplexLimits.normalizedMonomorphism_cofibration` は元の小さい単体集合の全単射を実射影 cofibration へ送る。
+元の Moore 包含・射影で次数別分裂を構成し、射影 cokernel と全障害 cocycle の消滅で証明した。
+`normalizedCochain_cofibrant` は任意の単体集合について同じ正規化複体の cofibrancy を与える。
+`projectiveCofibration_of_projectiveCokernel` は各次数射影の K-projective cokernel を持つ単射の一般判定。
+latching 余極限保存との接続と、cofibrant X のテンソルへの拡張は未完成。

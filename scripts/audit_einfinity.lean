@@ -8681,6 +8681,29 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorAugmentation,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensor_map_quasiIso]
 
+@[noinline] private def e2RequiredBatch162 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.extendMap_degreewise_isSplitMono,
+      `SerrePositivity.EInfinity.ComplexLimits.freeMapRetraction,
+      `SerrePositivity.EInfinity.ComplexLimits.freeMap_isSplitMono,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjective_eq_delta_of_cocycle,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedLinearSplitting,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedNondegenerateChainIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainFreeIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChain_projective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedCochain_projective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedCochain_isKProjective,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedCochain_cofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedCochainMap_degreewise_isSplitMono,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedMonomorphism_cofibration,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedMooreMap_isSplitMono,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedChainMap_isSplitMono,
+      `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibration_of_projectiveCokernel,
+      `SerrePositivity.EInfinity.ComplexLimits.mono_projectiveCokernel_lifting,
+      `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibrant_of_isKProjective,
+      `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibrant_of_boundedAbove,
+      `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibration_of_boundedAboveCokernel,
+      `SerrePositivity.EInfinity.ComplexLimits.splitMono_cokernel_projective]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8714,7 +8737,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20950,3 +20973,46 @@ example (X : Complex A) (n : SimplexCategory) :
 example (X : Complex A) {n m : SimplexCategory} (f : n ⟶ m) :
     QuasiIso ((normalizedSimplexTensor A X).map f) := normalizedSimplexTensor_map_quasiIso A X f
 end e2SimplexContractionFixtures
+
+section e2NormalizedCofibrationFixtures
+universe e2NormalizedCofibrationUniverse e2NormalizedCofibrationHom
+open CategoryTheory CategoryTheory.Limits CochainComplex HomComplex
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.ComplexLimits
+open scoped Simplicial
+variable (A : Type e2NormalizedCofibrationUniverse) [CommRing A]
+example {C : Type e2NormalizedCofibrationUniverse} [Category.{e2NormalizedCofibrationHom} C]
+    [Abelian C] {P K : CochainComplex C ℤ} [P.IsKProjective] (hK : K.Acyclic)
+    (β : Cocycle P K 1) : ∃ α : Cochain P K 0, δ 0 1 α = β.1 :=
+  kProjective_eq_delta_of_cocycle β hK 0 (by simp)
+example {C : Type e2NormalizedCofibrationUniverse} [Category.{e2NormalizedCofibrationHom} C]
+    [Abelian C] {W Z X Y : C} (i : W ⟶ Z) [Mono i] [Projective (cokernel i)]
+    (p : X ⟶ Y) [Epi p] : HasLiftingProperty i p := mono_projectiveCokernel_lifting i p
+example {W Z : Complex A} (i : W ⟶ Z) [Mono i]
+    [∀ n : ℤ, Projective ((cokernel i).X n)] [CochainComplex.IsKProjective (cokernel i)] :
+    (projectiveGeneratingCofibrations A).rlp.llp i :=
+  projectiveCofibration_of_projectiveCokernel i
+example (P : Complex A) (d : ℤ) [P.IsStrictlyLE d] [∀ n : ℤ, Projective (P.X n)] :
+    (projectiveGeneratingCofibrations A).rlp.llp
+      (0 : (HomologicalComplex.zero : Complex A) ⟶ P) := projectiveCofibrant_of_boundedAbove P d
+example (X : SSet.{0}) (n : ℕ) :
+    ((AlgebraicTopology.normalizedMooreComplex (ModuleCat A)).obj
+      ((BarrattEccles.linearization A).obj X)).X n ≅
+        (ModuleCat.free A).obj (ULift.{e2NormalizedCofibrationUniverse} (X.nonDegenerate n)) :=
+  normalizedChainFreeIso A X n
+example (X : SSet.{0}) (n : ℤ) :
+    Projective (((BarrattEccles.normalizedFunctor A).obj X).X n) :=
+  normalizedCochain_projective A X n
+example (X : SSet.{0}) :
+    CochainComplex.IsKProjective ((BarrattEccles.normalizedFunctor A).obj X) :=
+  normalizedCochain_isKProjective A X
+example (X : SSet.{0}) : (projectiveGeneratingCofibrations A).rlp.llp
+    (0 : (HomologicalComplex.zero : Complex A) ⟶ (BarrattEccles.normalizedFunctor A).obj X) :=
+  normalizedCochain_cofibrant A X
+example {X Y : SSet.{0}} (f : X ⟶ Y) [Mono f] :
+    (projectiveGeneratingCofibrations A).rlp.llp ((BarrattEccles.normalizedFunctor A).map f) :=
+  normalizedMonomorphism_cofibration A f
+example (n : ℕ) : (projectiveGeneratingCofibrations A).rlp.llp
+    ((BarrattEccles.normalizedFunctor A).map (SSet.boundary.{0} n).ι) :=
+  normalizedMonomorphism_cofibration A _
+end e2NormalizedCofibrationFixtures
