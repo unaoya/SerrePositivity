@@ -456,3 +456,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedComparison_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedEvaluation_over
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedSourceLift_nonempty
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedProjections_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedPullbackIso_jointBase
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedNativeLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityTwistedJointMap_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityTransformation_nonempty
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityDiagramHomotopy
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityHomotopy
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityHomotopy_inclusion

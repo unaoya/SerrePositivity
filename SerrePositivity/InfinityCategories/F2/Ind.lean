@@ -274,3 +274,14 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedMapTrivialKan
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedSourceBase
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedSourceLift
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedPullbackCoefficient
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedProjections
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedProjectionRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedProjectionExistence
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedPullbackIso
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedNativeBase
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedNativeLift
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityJointMap
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityTransformation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityDiagramHomotopy
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityHomotopy
