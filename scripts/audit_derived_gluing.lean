@@ -347,7 +347,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.FirstFixedCompositionExt,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionPullback,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionLimit,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionMono]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionMono,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowEdgeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomCompositionFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomCompositionLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionIsoNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomCompositionLimit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowCompositionTriangles]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
