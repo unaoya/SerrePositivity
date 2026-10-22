@@ -1,0 +1,48 @@
+module
+public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementUniversalAugmentation
+
+/-!
+概要：元の実 augmentation は普遍 cochain の全正次成分を零に送る。
+方針：同じ恒等辺の定値単体の線形表示を使い、非単射引き戻しの成分を消す。
+規約：任意の二点以上の部分集合と元の実 augmentation を保持する。
+使われ方：大域 prism の augmentation 合成が恒等円柱となる成分式。
+-/
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.ComplexLimits
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open DGNerve.PinchedHom
+open scoped Simplicial
+variable (A : Type u) [CommRing A] (X Y : Complex A)
+
+lemma normalizedTensorElementUniversalLinear_augmentation {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      (homPostcompose X
+        ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n))))
+      (normalizedTensorElementUniversalLinear A X Y c) =
+    LinearSimplex.pullback (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom
+      (toLinearSimplex (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)))) := by
+  have h := congrArg (toLinearSimplex (A := A) (D := Complex A) (x := X) (y := X))
+    (normalizedTensorElementUniversalSimplex_augmentation A X Y c)
+  exact (pinchedHomChainMapSimplex_linear _ _).symm.trans
+    (h.trans (toLinearSimplex_pullback _ _))
+
+lemma normalizedTensorElementUniversalLinear_augmentation_zero {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ)) :
+    (homPostcompose X
+      ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n)))).f k
+      ((normalizedTensorElementUniversalLinear A X Y c).val.component J k
+        (Index.nonempty hJ) hk) = 0 := by
+  have h := congrArg (fun s : LinearSimplex A X X n =>
+      s.val.component J k (Index.nonempty hJ) hk)
+    (normalizedTensorElementUniversalLinear_augmentation A X Y c)
+  exact h.trans (LinearData.pullback_component_of_not_inj (A := A) (D := Complex A)
+    (x := X) (y := X) _ _ J k (Index.nonempty hJ) hk (not_injOn_constant hJ))
+
+end SerrePositivity.EInfinity.ComplexLimits

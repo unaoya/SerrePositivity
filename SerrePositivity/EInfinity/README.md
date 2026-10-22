@@ -2516,3 +2516,18 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `complexOrdinaryDerivedNatTransAmbient_component` は元の全円柱の成分を同じ閉辺の分解像に同定する。
 上記の全自然変換による実屋根と、元の pinched 評価族そのものとの大域的一致は未証明。
 この一致を保った標準 U 単位誘導射の弱同値性・comma 始対象性・∞ 極限保存・G1′も未完了。
+
+`normalizedTensorElementUniversalFamily` は同じ全単体列の終端における元の普遍 Hom 族。
+`normalizedTensorElementUniversalFamily_reindex` と
+`normalizedTensorElementUniversalSimplex_reindex` は、
+終端を変える全作用素と同じ frame 射による後合成の厳密な一致。
+`normalizedTensorElementParameterMap_app` は元の大域パラメータ射の全次数の直接値。
+`normalizedTensorElementPinchedMap_app` は元の大域 pinched 写像の各単体が、
+同じ終端普遍単体を元の評価自然変換の成分で送った像であることを示す。
+`normalizedTensorElementUniversalLinear` はその同じ普遍単体の実 cochain 表示。
+全有限部分集合の微分方程式、全再添字・単射/非単射成分の式、
+元の augmentation による恒等定値単体への一致・全正次 cochain の消滅を証明済み。
+`normalizedTensorElementSelectedCochain` と `_AtMax` は選んだ列の最上位普遍 cochain。
+`normalizedTensorElementSelectedCochain_image` は元の列への同じ後合成での回収式。
+大域 cone/prism 自体と全 HA 方程式・全自然性、元の pinched 族との大域比較は未完了。
+これらを保った標準 U 単位誘導射の弱同値性・∞ 極限保存・G1′も未完了。

@@ -9026,6 +9026,32 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedConstantIso,
       `SerrePositivity.EInfinity.FrameHom.MixedNerve.nerveMap_const]
 
+@[noinline] private def e2RequiredBatch175 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementParameterMap_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHomPinchedSimplex_id_eval,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementPinchedMap_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelection,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochain,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochain_image,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelection_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementTerminalParameter,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalFamily,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalSimplex_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_augmentation_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_component_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_component_inj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_component_not_inj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalFamily_evaluation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalFamily_augmentation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_equation,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalFamily_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalSimplex_reindex]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9059,7 +9085,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -22124,4 +22150,146 @@ example (X Y : Complex A) : Category.{e2ElementU} (normalizedTensorElementIndex 
   inferInstance
 
 end e2ElementFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2TerminalU
+section e2TerminalFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve DGNerve.PinchedHom
+open scoped Simplicial
+variable (A : Type e2TerminalU) [CommRing A]
+
+example (X Y : Complex A) {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    SSet.uliftFunctor.{e2TerminalU + 1, e2TerminalU}.map (SSet.stdSimplex.map θ) ≫
+      normalizedTensorElementUniversalFamily A X Y c =
+    normalizedTensorElementUniversalFamily A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) ≫
+      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+        (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))) :=
+  normalizedTensorElementUniversalFamily_reindex A X Y c θ
+
+example (X Y : Complex A) {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (DGNerve.pinchedHom A (Complex A) X
+      ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n)))).map θ.op
+        (normalizedTensorElementUniversalSimplex A X Y c) =
+    (pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))).app (Opposite.op ⦋m⦌)
+      (normalizedTensorElementUniversalSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) :=
+  normalizedTensorElementUniversalSimplex_reindex A X Y c θ
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    normalizedTensorElementUniversalFamily A X Y c ≫
+      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+        (homPostcompose X ((normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n)))) =
+    SSet.uliftFunctor.{e2TerminalU + 1, e2TerminalU}.map
+      (SSet.stdSimplex.map (normalizedTensorElementTerminalParameter A X Y c)) ≫
+      normalizedTensorHomPinchedSimplex A X Y
+        ((normalizedTensorElementDegree A X Y).obj (c.obj (Fin.last n)))
+        ((normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n))) :=
+  normalizedTensorElementUniversalFamily_evaluation A X Y c
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    normalizedTensorElementUniversalFamily A X Y c ≫
+      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+        (homPostcompose X
+          ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n)))) =
+    SSet.const (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) :=
+  normalizedTensorElementUniversalFamily_augmentation A X Y c
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorElementParameterMap A X Y).app (Opposite.op ⦋n⦌) c =
+    ULift.up ((normalizedSimplexTensor A X).map
+      (normalizedTensorElementTerminalParameter A X Y c) ≫
+        (normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n))) :=
+  normalizedTensorElementParameterMap_app A X Y c
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c =
+    (pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      (homPostcompose X
+        ((normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n))))).app
+          (Opposite.op ⦋n⦌) (normalizedTensorElementUniversalSimplex A X Y c) :=
+  normalizedTensorElementPinchedMap_app A X Y c
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    differential A ((normalizedTensorElementUniversalLinear A X Y c).val.component J k hJ hk) =
+      (normalizedTensorElementUniversalLinear A X Y c).val.rhs J k hk :=
+  normalizedTensorElementUniversalLinear_equation A X Y c J k hJ hk
+
+example (X Y : Complex A) {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    LinearSimplex.pullback θ.toOrderHom (normalizedTensorElementUniversalLinear A X Y c) =
+    pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+        (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))))))
+      (normalizedTensorElementUniversalLinear A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) :=
+  normalizedTensorElementUniversalLinear_reindex A X Y c θ
+
+example (X Y : Complex A) {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (J : Finset (Fin (m + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+      (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
+      ((normalizedTensorElementUniversalLinear A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) =
+    (normalizedTensorElementUniversalLinear A X Y c).val.component (J.image θ.toOrderHom) k
+      (hJ.image θ.toOrderHom) (by rw [Finset.card_image_of_injOn hi]; exact hk) :=
+  normalizedTensorElementUniversalLinear_component_inj A X Y c θ J k hJ hk hi
+
+example (X Y : Complex A) {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (J : Finset (Fin (m + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hi : ¬ Set.InjOn θ.toOrderHom (J : Set (Fin (m + 1)))) :
+    (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+      (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
+      ((normalizedTensorElementUniversalLinear A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) = 0 :=
+  normalizedTensorElementUniversalLinear_component_not_inj A X Y c θ J k hJ hk hi
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ)) :
+    (homPostcompose X
+      ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n)))).f k
+      ((normalizedTensorElementUniversalLinear A X Y c).val.component J k
+        (Index.nonempty hJ) hk) = 0 :=
+  normalizedTensorElementUniversalLinear_augmentation_zero A X Y c J k hJ hk
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+      (c.map (homOfLE (Fin.le_last
+        ((normalizedTensorElementSelection J hJ).toOrderHom (Fin.last (J.card - 1)))))))).f k
+      (normalizedTensorElementSelectedCochain A X Y c J k hJ hk) =
+    (normalizedTensorElementUniversalLinear A X Y c).val.component J k hJ hk :=
+  normalizedTensorElementSelectedCochain_image A X Y c J k hJ hk
+
+example {n : ℕ} (J : Finset (Fin (n + 1)))
+    (hJ : J.Nonempty) :
+    (normalizedTensorElementSelection J hJ).toOrderHom (Fin.last (J.card - 1)) = J.max' hJ :=
+  normalizedTensorElementSelection_last J hJ
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :=
+  normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk
+
+end e2TerminalFixtures
 end
