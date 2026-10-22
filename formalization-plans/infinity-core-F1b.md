@@ -28,14 +28,14 @@
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
-  元の raw/native 区間族・単位の実二座標を保ち、下側因子を同じ固定 native 値への実一点輸送比較へ同定。
+  元の raw/native 区間族の実両端を固定値で揃え、下側因子を元の一点比較へ等式で同定。元の模型五因子式から下側外側因子を消去済み。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
-  未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
+  未完：残り二因子と上側単位の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9812 jobs、公理監査13581宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  固定値への全射影・実三頂点・元の五因子全式の a6 への代入・下側輸送・定値三角形の同じ固定値表示を含む追加28明示宣言を型検査。
+  検証：三集約同時ビルド9827 jobs、公理監査13826宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  raw/native の実両端、元の一点比較の厳密同定、定値三角形の実終点、元の模型五因子式からの下側消去・最後辺の native 中央比較の実前合成を含む追加22明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -87,7 +87,7 @@
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
   IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
-  IntervalModel_five_factors は元の五因子全式を同じ実三頂点で模型式へ代入済み。下側輸送と定値三角形を同じ pointedFiberValueTo へ照合済み。次は実両端を揃えて cancel_original_precomp_postcomp を適用し、下側因子を消去する。
+  IntervalModel_lower_cancel は元の模型五因子式の下側因子を消去済み。RightTailValueTo の最後辺は UnitValueActionTo_firstEdge_heq_native で同じ native 中央比較の前合成へ同定済み。次は最初辺の後合成を同じ区間族へ戻し、上側単位を消去する。
   最初辺の後合成因子を、元の最後辺の区間族と同じ普遍輸送成分へ照合し、同じ三辺と指定三角形の関係を回収する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。

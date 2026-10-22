@@ -3997,3 +3997,50 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_source_fiberMap_heq_over_base
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleValueTo_heq_fiber_unit
+
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalRelativeComposite_valueTo_vertex_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransport_valueTo_vertex_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerRaw_source_valueTo_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerRaw_target_valueTo_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerPoint_source_valueTo_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerPoint_target_valueTo_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerPoint_valueTo_eq_lowerFactor
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIsoOfEq_inverse_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleRemainderIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerValueTo_triangle_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_fiberMap_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.functorSequentialPost_fiberMap_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleValueTo_target_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleProjectionTo_eq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleProjectionTo_lower_cancel
+
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIsoOfEq_trans
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitRightTailValueTo
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_lower_cancel
+
+
+#check @SerrePositivity.InfinityCategories.F2.constantTargetValueProjectionTo_overPre
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueActionTo_overPre_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueActionTo_precomp_firstEdge
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueActionTo_firstEdge_heq_native
