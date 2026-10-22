@@ -533,6 +533,19 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperUnitTria
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperUnitCancellation
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompCompositionValue
 
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleSourceComponentMap
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleSourceValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleValue
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointValue
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointComposition
+public import SerrePositivity.InfinityCategories.F2.FiberTransportFamilyComparisonComposition
+public import SerrePositivity.InfinityCategories.F2.PointedIntervalComparisonComposition
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportComparisonValue
+public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportValue
+
+public import SerrePositivity.InfinityCategories.F2.CoconeIntervalHomValue
+public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportSource
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -769,3 +782,31 @@ public import SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompComposition
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactor_triangle_cancel
 
 #check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_precomp_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_source_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_source_value_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_source_value_heq_over_base
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleValue_heq_total
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_trans
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamily_endpointIso_trans
+
+#check @SerrePositivity.InfinityCategories.F2.pointedIntervalTransportComparison_trans
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso_heq_witness
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingTransportIso_heq_via
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberTransportIso_heq_constant
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalFiberHomIso_heq_curry
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource
+
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_projection

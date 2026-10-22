@@ -1,7 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoconeIntervalComposite
+public import SerrePositivity.InfinityCategories.F2.CoconeIntervalTransportSource
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 
 /-!
 概要：任意の指定区間による余錐単位の合成を、その区間の普遍 fiber 輸送に比較する。
@@ -27,27 +28,12 @@ def coconeIntervalFiberTransportIso :
       (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom))
       (lift (fst (leftUnstraightening F) T ≫ coconeFiberMap c) (snd _ T) ≫
         (pointedIntervalTransport a).endpoint) := by
-  let E := leftUnstraightening F
-  let C := leftUnstraightening (SSet.const c.vertex : B ⟶ _)
-  let S : E ⊗ T ⟶ C ⊗ T :=
-    lift (lift (fst E T ≫ coconeFiberMap c) (fst E T ≫ leftUnstraighteningProjection F) ≫
-      (constantPullbackFiberIso pointedSpaceProjection c.vertex).inv) (snd E T)
-  have hS : S ≫ (constantUnstraighteningFiberProjection B c.vertex ▷ T) =
-      lift (fst E T ≫ coconeFiberMap c) (snd E T) := by
-    apply CartesianMonoidalCategory.hom_ext
-    · rw [Category.assoc, whiskerRight_fst, ← Category.assoc, lift_fst]
-      dsimp only [S, constantUnstraighteningFiberProjection]
-      simp only [Category.assoc, Iso.inv_hom_id_assoc, lift_fst]
-    · rw [Category.assoc, whiskerRight_snd, lift_snd]
-      rfl
-  have e := (constantDiagramMappingTransportIso B a).precomp S
-  change FunctorIso (S ≫ _) (S ≫ (constantUnstraighteningFiberProjection B c.vertex ▷ T) ≫
-    (pointedIntervalTransport a).endpoint) at e
-  rw [← Category.assoc, hS] at e
-  have he := coconeIntervalRelativeComposite_coordinates c a
-  exact Eq.mpr (congrArg (fun q : E ⊗ T ⟶ vertexFiber pointedSpaceProjection z =>
-    FunctorIso q (lift (fst E T ≫ coconeFiberMap c) (snd E T) ≫
-      (pointedIntervalTransport a).endpoint)) he) e
+  exact functorIsoOfEq
+    ((constantDiagramMappingTransportIso B a).precomp (coconeIntervalTransportSource c T))
+    (coconeIntervalRelativeComposite_coordinates c a).symm
+    ((Category.assoc _ _ _).symm.trans
+      (congrArg (fun f => f ≫ (pointedIntervalTransport a).endpoint)
+        (coconeIntervalTransportSource_projection c T)))
 
 /-- 元の任意区間族の相対合成を、元の fiber 写像による前合成として全写像空間で読む。 -/
 def coconeIntervalFiberHomIso :
