@@ -30,11 +30,14 @@
   厳密な引き戻し。元の両短辺を回収し、元の二辺の有限比較をこの同値と同じ積比較に因子分解済み。
   単体左 fiber の厳密基底変換同型を構成し、K-2 の単体積版 Quillen A を基底変換後へ移した。
   零対象・実押し出しの両成分反映を証明し、全 S_n・元の object S でも厳密引き戻しとした。
+  第二辺の全 cofiber 補完を持つ安定模型を構成。元の二辺へ忘れる射影は trivial Kan fibration。
+  相対 K-1 の単体左 fiber 定理を基底変換し K-2 を適用し、元の第一 W 辺 × 第二核値 cofiber
+  への射対が object S・単回実現で局所化同型と証明。全反復・全有限列への拡張は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7167 jobs・専用監査 68 モジュール 460 宣言が成功。
+- 現在の対象ビルド 7178 jobs・専用監査 79 モジュール 527 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3450 モジュールは EInfinity を含まない。全体 23931 jobs で成功。
+  所有 import 閉包 3461 モジュールは EInfinity を含まない。全体 23958 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -56,15 +59,10 @@
   weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringCategory、weakStringCategory_isStable、weakStringStableSimplicial、
   weakStringMultiRealization、weakStringEdgeExact、weakStringCofiberExact_reindex。
-- weakStringKernelCofiber、weakStringCofiberVertex_bottom、weakStringCofiberVertex_kernel。
 - cofiberFamily_isCofiber、weakStringCofiberFamily_reindex、weakStringCofiberFamily_quotient、
   weakStringOctahedronFamily、weakStringOctahedronFamily_middle_kernel。
-- cofiberFamilyUntranspose、weakStringOctahedronRelativeExact、weakStringOctahedronSourceExact_eq、
-  weakStringOctahedronTargetExact_comparison。
-- kernelRelativeMiddle、kernelMultiAddition_of_relativeFunctor、
-  weakStringOctahedronMiddleExact_comparison、weakStringTriangleMultiAddition、
-  weakStringTriangleMultiAddition_reindex、weakStringCofiberMultiPair_reindex、
-  weakStringKernelCofiber_degenerate_isZeroVertex。
+- weakStringOctahedronRelativeExact、weakStringTriangleMultiAddition、
+  weakStringTriangleMultiAddition_reindex、weakStringKernelCofiber_degenerate_isZeroVertex。
 - weakStringVertexExact、weakStringVertexExact_reindex、weakStringCofiberSubobject_eq、
   weakStringFiniteComparison、weakStringFiniteComparison_cofiber、
   weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
@@ -74,7 +72,9 @@
 - simplexFiberBaseChangeIso、simplexFiberQuotient_baseChange、productQuillenA_baseChange。
 - composableWeakArrow_isGapped_iff、composableWeakArrow_sConstruction_isPullback、
   composableWeakArrow_objectS_isPullback（全零単体・単体作用素を含む厳密引き戻し）。
-
+- relativeCofiberBaseChange_localized_isIso、completedTwo_objectS_isPullback、
+  completedTwoSection_objectS_localized_isIso、composableWeakObjectStep_localized_isIso、
+  composableWeakMultiStep_one_localized_isIso（元の第一辺と第二 cofiber の射対）。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -89,20 +89,20 @@
   `cofiberProjection_trivialKanFibration`。W 条件への制限と全境界持ち上げは K-F が証明した。
   追加固定界面（L1 §6）：MultiRealizationFunctorIso の
   multiRealization_map_positive_localized_eq_of_functorIso（正の全反復、ModelCategory 引数なし）。
+  RelativeCofiberLeftFiber と RelativeFiberEquivalence の相対左 fiber・quotient 局所化同型も
+  L1 §6 に固定済み（相対 fiber 内の ρ・θ に基づく）。K-F の基底変換と Quillen A へ接続した。
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の W 辺包含の完全性・反映・S_n と object S の引き戻しの6モジュール等を含める）。
+- なし（今回の相対基底変換・補完した二辺模型・object S と単回実現の11モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
-
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  二辺の元の object S 引き戻しに相対 cofiber の単体左 fiber 条件を移し、K-2 を適用する。
-  RelativeFiberEquivalence.relativeCofiberLeftFiberQuotient_localized_isIso と射影の定義を
-  L1 §6 の固定 K-1/K-2 界面へ追加するよう K-S• へ依頼済み（2026-10-22）。供給確認まで使用を待つ。
-  二辺から全有限列へ進み再添字整合性を保持し、商比較の写像空間と cofinality も証明する。
+  composableWeakMultiStep_one_localized_isIso と一辺の加法性を合成し、Fin 2 積の同型で
+  composableWeakTwoComparison q 1・weakStringFiniteComparison q 2 1 の局所化同型を証明する。
+  同じ引き戻しと補完を全反復・全有限列へ拡張し、再添字整合性・商の写像空間・cofinality へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
