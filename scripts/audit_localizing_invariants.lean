@@ -1298,7 +1298,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroAffineRefinement,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroAffineMap,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareBoundary,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueContourRefinement]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueContourRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageRelative,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageForward,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageCompositionEdges,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageComposite,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageCompositeMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRestrictionEqualityIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationImageIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationImagePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaBImagePath]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
