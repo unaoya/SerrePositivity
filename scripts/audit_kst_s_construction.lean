@@ -29079,3 +29079,60 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_g
 #print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplex_g
+
+#check @SerrePositivity.KST.SConstruction.dgClosedComparison_reflect
+#print axioms SerrePositivity.KST.SConstruction.dgClosedComparison_reflect
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_hom_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_hom_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightComparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftComparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightClosedComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightClosedComparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftClosedComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftClosedComparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaRightMap
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaRightMap
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaLeftMap
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaLeftMap
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYoneda_comp_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYoneda_comp_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_inr
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_inr
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_eval
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_eval
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison_inr
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison_inr
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison_quasiIso
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeBiprodConeComparison_quasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle_map
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle_map

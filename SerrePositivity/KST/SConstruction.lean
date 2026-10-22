@@ -2360,4 +2360,11 @@ public import SerrePositivity.KST.SConstruction.DGGluingLeftAxisNerve
 public import SerrePositivity.KST.SConstruction.PerfectDGGluingLeftAxis
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComplex
 
+public import SerrePositivity.KST.SConstruction.DGClosedComparisonReflection
+public import SerrePositivity.KST.SConstruction.DGGluingAxesHomNaturality
+public import SerrePositivity.KST.SConstruction.DGGluingAxesComparisons
+public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaCone
+public import SerrePositivity.KST.SConstruction.MappingCoconeBiprodCofiber
+public import SerrePositivity.KST.SConstruction.DGGluingAxesComplexFunctor
+
 /-! # ∞-S• 構成と連結 K 理論 -/
