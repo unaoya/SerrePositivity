@@ -1,5 +1,13 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.FullyFaithfulVertexIsoImage
+public import SerrePositivity.InfinityCategories.F2.FullyFaithfulComparisonSquare
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeHomComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeRepresentationComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeModelComparison
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleSmallTotalAction
+public import SerrePositivity.InfinityCategories.F2.CoherentTotalTriangleNativeComparison
+
 public import SerrePositivity.InfinityCategories.F2.IsoFiveFactorCancellation
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueTriangleCancellation
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentNaturality
@@ -1114,3 +1122,39 @@ public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValu
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponentsIso_naturality
 
 #check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeActionComponentsIso_inverse_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_preimage
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_injective
+
+#check @SerrePositivity.InfinityCategories.F2.fullyFaithfulComparisonPreimage
+
+#check @SerrePositivity.InfinityCategories.F2.fullyFaithfulComparisonPreimage_square
+
+#check @SerrePositivity.InfinityCategories.F2.fullyFaithfulComparisonPreimage_unique
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeHomComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeHomComparison_isFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeRepresentationComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeRepresentationComparison_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeModel_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeModelComparison
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSmallTotalActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeModelComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_unique
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_square_iff
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeComparison_inverse_naturality
