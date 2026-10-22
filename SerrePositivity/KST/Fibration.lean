@@ -59,3 +59,5 @@ public import SerrePositivity.KST.Fibration.FullPredicatePullback
 public import SerrePositivity.KST.Fibration.ComposableWeakArrowPullback
 public import SerrePositivity.KST.Fibration.WeakStringTwoHornComponents
 public import SerrePositivity.KST.Fibration.WeakStringTwoCutComparison
+public import SerrePositivity.KST.Fibration.SimplexFiberBaseChange
+public import SerrePositivity.KST.Fibration.ProductQuillenABaseChange

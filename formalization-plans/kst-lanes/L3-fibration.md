@@ -28,11 +28,12 @@
 - 二辺では、二短辺の W 条件が元の全二単体条件を反映することを証明し、内ホーン制限を
   trivial Kan fibration・完全な安定圏同値にした。標的は共有端点上の二つの W 辺図式圏の
   厳密な引き戻し。元の両短辺を回収し、元の二辺の有限比較をこの同値と同じ積比較に因子分解済み。
+  単体左 fiber の厳密基底変換同型を構成し、K-2 の単体積版 Quillen A を基底変換後へ移した。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7158 jobs・専用監査 60 モジュール 429 宣言が成功。
+- 現在の対象ビルド 7160 jobs・専用監査 62 モジュール 444 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3441 モジュールは EInfinity を含まない。全体 23922 jobs で成功。
+  所有 import 閉包 3443 モジュールは EInfinity を含まない。全体 23931 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -69,6 +70,7 @@
 - composableWeakArrow_isPullback、weakStringTwoHornEquivalence、
   weakStringTwoHorn_multiRealization_localized_isIso、weakStringFiniteComparison_two_factor、
   weakStringFiniteComparison_two_localized_isIso_iff。
+- simplexFiberBaseChangeIso、simplexFiberQuotient_baseChange、productQuillenA_baseChange。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -88,7 +90,7 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の二辺の内ホーン・厳密引き戻し・切断因子分解の7モジュール・集約・監査・本計画を含める）。
+- なし（今回の単体左 fiber・Quillen A 基底変換の2モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
@@ -97,7 +99,7 @@
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
   内ホーンの引き戻し模型上の積比較に、K-1 の単体左 fiber の quotient 同値を基底変換し K-2 を適用する。
-  まず左 fiber の厳密基底変換と、対象の object S 図式がこの具体的引き戻しを保つことを証明する。
+  対象の object S 図式がこの具体的引き戻しを保つことを、零対角と押し出しの共同反映から証明する。
   二辺の積比較から全有限列へ進み、共通補完の再添字可換性を保持する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 
