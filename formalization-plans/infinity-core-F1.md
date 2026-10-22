@@ -1,85 +1,74 @@
-# F1：fibration・straightening・Yoneda（レーン α2）
+# F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v2 の位置づけ（2026-10-22 10:10 変更）**：foundations.md §6 の F1。第 I 段の指定工程 F1-4 → F1-5 → F1-3b は完了。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。次は F2N-2（Indκ）を F1b から引き取る。Cat∞ 値の一般底分類は第 II 段。
 
-## 引き継ぎ（2026-10-22）
+## 引き継ぎ：F2N-2（2026-10-22）
 
 ### 現在地
 
-- 空間値 straightening は一般の小さい quasicategory 上で完了。単位・余単位・三角恒等式の明示構成は任意。
-- F1-2 は完了：前層 ∞ 圏・制限・評価・定値前層、right fibration 分類、Yoneda の構成・充満忠実性。
-- Cat∞ 値分類の第 I 段の区切りは全有限単体底での同じ分類主写像の同値
-  `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`（06:21）。一般底の分類は未完了。
-- 一般底の検証済み区切りは `dc768ab4b`。二次元標準境界の coherent 比較の同値と元の大域作用への指定同型まで保存。
-- **F1-4 完了**：前層の任意の小さい極限・余極限の存在を各点で構成し、元の全評価による保存・検出を証明。
-  `presheafInfinity_hasLimit`、`presheafInfinity_hasColimit`。底・形状の quasicategory 性や有限性は不要。
-- 任意の小さい空間値図式の native な極限錐を元の小さい全切断で構成。
-  `coherentDiagramSectionsCone_isLimit`、`hasLimit_coherentSpaceDiagram`。追加の存在条件は解消した。
-- 元の錐の全 Hom 比較を、同じ三角形の相対合成と全切断の同じ恒等射の指定比較へ移して証明。
-  `coneSectionsNativeComparisonIso` は全高次パラメータで元の比較射を保持する。
-- `representablePresheafInfinity_isLimit`：表現可能前層は任意の小さい形状の元の極限全錐を保存。
-  像の極限の存在の追加仮定も解消。HTT 5.1.3.2。
-- **F1-5 完了**：`isLimitCone_iff_representablePresheafInfinity` が Cᵒᵖ 上の同じ全錐を検出。
-  `isLimitCone_iff_covariantRepresentableInfinity` が二重反転を明示して元の C 上の小さい極限を特徴づける。
-  `covariantRepresentableValueEquivalence` はその関手の値を元の Hom(x,y) と比較する。
-- **F1-3b 完了**：元の `twistedArrowHomInfinity` が Cᵒᵖ × C 上の一つの coherent な Hom 図式。
-  `homInfinityJointValueEquivalence` で同じ共同評価の値を元の標準写像空間へ比較。
-  `homInfinityCovariant_eq_yonedaEvaluation`、`coyonedaInfinityMap_uncurry`、指定頂点の式も証明。
-  既存の twisted arrow の left fibration 性と全体の pointed fiber 比較を集約・監査で再確認。
+- F1-4・F1-5・F1-3b は `6f10976ea` まで完了。F1 集約 7661 jobs、公理監査 16236 宣言、標準三公理のみ。
+- **F2N-2(a) 進行中**：元の小さい right unstraightening を添字とする同じ Yoneda 図式を固定。
+  `presheafElementsYonedaDiagram_vertex` で各項が元の表現可能前層であることを照合。
+  同じ図式の native な各点余極限を構成。頂点が元の F である密度定理は未証明。
+- **(b) の構成部分**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
+  `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
+  閉包の最小性は頂点条件の包含の主張であり、(d) の関手の延長の普遍性ではない。
+- `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
+- 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
 ### 残り（依存順）
 
-- 第 I 段の今回の指定工程に残りなし。F1-4（HTT 5.1.2.2–5.1.2.4）、F1-5（HTT 5.1.3.2）、F1-3b（Kerodon 8）を完了。
-1. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
+1. **(a)** 元の F を、同じ小さい元の圏の Yoneda 図式の余極限として実現。HTT 5.1.5.3。24〜48時間（暫定）。
+2. **(b)** Indκ 内の小さい κ-filtered 余極限の存在と、包含による保存・検出。HTT 5.3.5.1–3。8〜24時間（暫定）。
+3. **(c)** 各 Indκ 対象の表現可能前層の κ-filtered 余極限表示と、右 fibration 定義との一致。HTT 5.3.5.4。16〜40時間（暫定）。
+4. **(d)** κ-filtered 余極限を保つ延長の実際の制限関手の同値。HTT 5.3.5.10、Kerodon 9。32〜80時間（暫定）。
 
 ### 主要宣言（名前のみ）
 
-- `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
-- `RightFibrationInfinity`、`rightStraighteningInfinityEquivalence`、`rightUnstraighteningInfinityMap`
-- `PresheafInfinity`、`presheafInfinityEvaluation`、`presheafInfinityRestriction`
-- `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafValueEquivalence`
-- `yonedaInfinityMap_isFullyFaithful`、`yonedaPresheafEvaluation_isQCatEquivalence`
-- `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`
-- `cocartesianTwoBoundaryCoherentHomComparison_originalIso`
-- `presheafInfinity_hasColimit`、`presheafInfinity_isColimit_iff_evaluation`
-- `presheafInfinity_exists_limitCone`、`presheafInfinity_hasLimit`
-- `presheafInfinity_evaluation_small_isLimit`、`presheafInfinity_small_isLimit_iff_evaluation`
-- `representablePresheafInfinity_isLimit`、`isLimitCone_iff_representablePresheafInfinity`
-- `covariantRepresentableInfinity`、`isLimitCone_iff_covariantRepresentableInfinity`
-- `covariantRepresentableValueEquivalence`、`homInfinityJointValueEquivalence`
-- `homInfinityCovariant`、`homInfinityCovariant_eq_yonedaEvaluation`、`coyonedaInfinityMap`、`coyonedaInfinityMap_uncurry`
-- `coherentSpaceSectionsObject`、`coherentDiagramSectionsCone`、`coherentDiagramSectionsCone_vertex`
-- `coherentDiagramSectionsCone_isLimit`、`hasLimit_coherentSpaceDiagram`
-- `coherentSectionsConeHomComparison_isQCatEquivalence`、`coneSectionsNativeComparisonIso`
+- `presheafElementsYonedaDiagram`、`presheafElementsYonedaDiagram_vertex`
+- `presheafElementsColimitCocone`、`presheafElementsColimitCocone_isColimit`
+- `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
+- `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
+- `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 
 ### 依存と提供
 
-- F0・Coherent・Stable・F1B・F2・HomotopyLimits は読み取り専用。
-- F1-4・F1-5 は F1b の F2N-2（Ind）・F2N-3 へ提供。Cat∞ 値一般分類は第 I 段の利用者なし。
-- 所有は F1/、F1.lean、audit_infinity_f1.lean、本計画のみ。他レーン不変。
-- 新規 sorry・公理・未証明引用なし。主経路に同値性や ModelCategory の追加 instance 仮定なし。
+- 配置・所有は `InfinityCategories/F2/Ind/`、独立集約 `F2/Ind.lean`、`scripts/audit_f2_ind.lean`、本計画。
+- F2 の既存ファイル・集約 F2.lean（F1b）と F2/Idempotent/（N）は読み取り専用。ルート集約を変更しない。
+- F1 の前層・Yoneda・right unstraightening、F1b の filtered・κ-filtered・cofinality を再利用。
+- κ・C・小さい添字は宇宙 u、前層と Indκ は宇宙 u+1。(d) の D と関手空間も対応する宇宙で明示する。
+- 新規 sorry・公理・引用なし。主経路に同値性や ModelCategory の追加 instance 仮定なし。
+- 新規モジュールは 100 行以内、計画は 300 行以内。自分のファイルのみ `git commit --only`。
 
 ### 未コミット
 
-- なし。通る所有ファイルを集約・監査とともに `git commit --only` で早めに保存する。
+- なし。対象ビルドと独立公理監査の通る区切りを、独立集約とともに早めに保存する。
 
 ### 既知の問題
 
-- 有限単体の分類同値から一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
-- 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
-- 反変前層と共変 Hom は区別する。F1-5 の共変判定は二重反転の同型と元の全錐・脚の比較で証明した。
+- (a) の余極限の存在だけでは、その頂点が F である密度定理を結論しない。
+- 最小閉包の定義だけでは (c) の単一の κ-filtered 表示も、HTT の右 fibration 定義との一致も結論しない。
+- (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
+- 原典のモデル構造による証明は輸入せず、既存の ∞ 圏的比較と各点構成で接続する。
+
+### 次の一手
+
+(a)：`presheafElementsYonedaDiagram F` から元の F への同じ自然変換・native 余錐を構成する。
+Yoneda の実際の恒等点評価と right fibration の全写像空間比較を使い、各点で元の F の値を余極限として回収する。
+別の余極限の選択との対象同型だけに弱めず、同じ全余錐の普遍性を証明して (c) の指定表示へ使う。
+報告後は承認を待たず (a) を続行する。
+
+## F1 の完了済み範囲と第 II 段の再開点
+
+- 空間値 straightening・right fibration 分類・Yoneda は完了。F1-4・F1-5・F1-3b は `6f10976ea` で完了。
+- 前層の小さい極限・余極限、評価による保存・検出、表現可能関手による極限の特徴づけ、二変数 Hom を提供済み。
+- Cat∞ 値分類は全有限単体底の `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence` で区切る。
 
 ### 再開点（第 II 段、3行）
 
 1. `dc768ab4b`：有限二単体の coherent 境界比較の同値と、元の大域作用への `cocartesianTwoBoundaryCoherentHomComparison_originalIso` まで保存済み。
 2. 次は同じ比較を任意の底の二次元セルへ移し、局所比較の自然性と指定境界値の fiber 比較を揃える。
 3. その後は高次境界・有限セル・骨格降下で一般充満忠実性を閉じ、本質的全射性・一般底・宇宙へ進む。
-
-### 次の一手
-
-今回の承認範囲 F1-4 → F1-5 → F1-3b は完了。第 II 段へ自動で戻らない。
-第 II 段を再開する場合は上の「再開点」3行から始める。
-前層・表現可能関手・二変数 Hom の利用者は上の主要宣言を集約 F1 から import できる。
 
 ## 0. 目標と範囲
 
