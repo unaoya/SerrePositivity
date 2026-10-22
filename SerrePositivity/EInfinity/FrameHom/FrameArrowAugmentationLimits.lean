@@ -7,6 +7,7 @@ public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConst
 public import SerrePositivity.InfinityCategories.Derived.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
+public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 
 /-!
 # 元の augmentation を反転する関手の全矢図式の実極限
@@ -30,21 +31,28 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
   {E : SSet.{u}} [SSet.Quasicategory E] (F : nerve C ⟶ E)
   (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
 
+def augmentationHomotopy : SSet.Homotopy (nerveMap A ≫ F)
+    (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X))) :=
+  stableHomotopyRetarget
+    (HomotopyClasses.postHomotopy F (F1B.kanNerveNatTransHomotopy p)) rfl
+    (by rw [F1B.kanNerveMap_const, SSet.const_comp])
+
 def augmentationFunctorIso :
     FunctorIso (nerveMap A ≫ F) (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X))) := by
-  let H := HomotopyClasses.postHomotopy F (F1B.kanNerveNatTransHomotopy p)
-  have hi : FunctorIso (nerveMap A ≫ F)
-      (nerveMap ((Functor.const I).obj X) ≫ F) :=
-    functorIsoOfPointwiseInvertibleHomotopy H (by
-      intro z
-      obtain ⟨i, rfl⟩ := ComposableArrows.mk₀_surjective z
-      have he : (simplicialHomotopyVertexEdge H (nerveVertex i)).edge =
-          ((nerve.edgeMk (p.app i)).map F).edge := by
-        change F.app _ ((simplicialHomotopyVertexEdge
-          (F1B.kanNerveNatTransHomotopy p) (nerveVertex i)).edge) = _
-        exact congrArg (F.app _) (F1B.kanNerveNatTransHomotopy_component p i)
-      exact (isInvertibleEdge_congr he).mpr (hp i))
-  simpa only [F1B.kanNerveMap_const, SSet.const_comp] using hi
+  let H := augmentationHomotopy A p F
+  apply functorIsoOfPointwiseInvertibleHomotopy H
+  intro z
+  obtain ⟨i, rfl⟩ := ComposableArrows.mk₀_surjective z
+  have he : (simplicialHomotopyVertexEdge H (nerveVertex i)).edge =
+      ((nerve.edgeMk (p.app i)).map F).edge := by
+    change F.app _ ((simplicialHomotopyVertexEdge
+      (F1B.kanNerveNatTransHomotopy p) (nerveVertex i)).edge) = _
+    exact congrArg (F.app _) (F1B.kanNerveNatTransHomotopy_component p i)
+  exact (isInvertibleEdge_congr he).mpr (hp i)
+
+lemma augmentationFunctorIso_hom : (augmentationFunctorIso A p F hp).hom =
+    SSet.Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (augmentationHomotopy A p F)) := rfl
 
 include hp in
 lemma target_hasLimit_of_inverting_augmentation (hI : IsWeaklyContractible (nerve I)) :

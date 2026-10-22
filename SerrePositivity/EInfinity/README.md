@@ -2263,7 +2263,14 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `cofibrantSourceRoofProductGeometricRightHomotopy_h` は元の標準右脚との全円柱の厳密な一致。
 `cofibrantSourceRoofProductGeometricRightCell_eq` と `Geometric_triangle_right_standard` により、
 実射側の全三角形 hA は幾何的左脚と EvaluationIso.hom の一致だけへ還元される。
-幾何的左脚と標準 EvaluationIso.hom の同定、基準射側の全三角形、
+`terminalFiberBaseHomotopy` は元の実評価円柱を同じ底へ射影し、全関手圏の終対象射へ同定する。
+`cofibrantSourceRoofProductBaseHomotopy_hom_eq` は同じ comma 全底図式の標準終対象円柱との一致。
+`augmentationHomotopy` は元の augmentation 円柱の端点だけを揃え、同型の順方向の射を保つ。
+`cofibrantSourceRoofProductGeometricLeftCell_eq` は幾何的左脚と元の EvaluationIso.hom の等式。
+`cofibrantSourceRoofProductActual_triangle` は実射側の全三角形 hA を追加入力なしに証明する。
+`cofibrantSourceRoofProductActualIntervalCell_eq_comparison` は実区間族が元の逆左脚と右脚の合成。
+`cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle` は実屋根 cofinality を残る hR だけへ還元。
+基準射側の全三角形 hR、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。

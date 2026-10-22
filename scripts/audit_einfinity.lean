@@ -8115,6 +8115,40 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_uncurry,
       `SerrePositivity.EInfinity.FrameHom.nerveOverRightSliceMap_evaluation_h]
 
+@[noinline] private def e2RequiredBatch141 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaOver,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductNormalizedMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductNormalizedMap_over,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductBaseHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductBaseHomotopy_hom_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricLeftHomotopy_h_base,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreeTransportIso_inv_over,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCornerMap_normalizedOver,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaCornerMap_normalizedOver,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaEvaluationHomotopy,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaEvaluationHomotopy_h,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaEvaluationHomotopy_hom,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductOverTerminalHomotopy_evaluation_h,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductGeometricLeftCell_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductActual_triangle,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductActualIntervalCell_eq_comparison,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductHomMap_weak_of_reference_triangle,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeNormalizationMap_inv_over,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofQuillenDegreeCornerMap_normalizedOver,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluationLeftHomotopy_h_base,
+      `SerrePositivity.EInfinity.FrameHom.overTerminalTransformation,
+      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy,
+      `SerrePositivity.EInfinity.FrameHom.overTerminalTransformation_forget,
+      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy_forget_h,
+      `SerrePositivity.EInfinity.FrameHom.overTerminalHomotopy_map_forget_h,
+      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy,
+      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_h,
+      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_hom_eq,
+      `SerrePositivity.EInfinity.FrameHom.terminalFiberBaseHomotopy_hom_eq_retarget,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationHomotopy,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationFunctorIso_hom]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8148,7 +8182,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19495,3 +19529,73 @@ example (hL : cofibrantSourceRoofProductGeometricLeftCell A X Y b =
         cofibrantSourceRoofProductCommaRightCell A X Y b :=
   cofibrantSourceRoofProductActual_triangle_of_left_eq A X Y b hL
 end e2NativeRoofRightPrismFixtures
+
+section e2NativeRoofLeftCellFixtures
+universe e2RoofLeftCellUniverse
+open CategoryTheory Limits Opposite SSet
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.FrameHom.FrameArrows
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
+open scoped Simplicial
+example {E B S : SSet.{e2RoofLeftCellUniverse}} [Quasicategory B] (p : E ⟶ B)
+    (t : B _⦋0⦌) (R : RoofTerminalEvaluation p t) (g : S ⟶ E) (ht : IsTerminalVertex t)
+    (H : SSet.Homotopy (g ≫ p) (SSet.const (X := S) t)) :
+    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (terminalFiberBaseHomotopy p t R g)) =
+        SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) :=
+  terminalFiberBaseHomotopy_hom_eq p t R g ht H
+example {I C : Type e2RoofLeftCellUniverse} [Category.{e2RoofLeftCellUniverse} I]
+    [Category.{e2RoofLeftCellUniverse} C] (D : I ⥤ C) {x : C}
+    (p : D ⟶ (Functor.const I).obj x) {E : SSet.{e2RoofLeftCellUniverse}} [Quasicategory E]
+    (q : nerve C ⟶ E)
+    (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map q).toTruncated) :
+    (augmentationFunctorIso D p q hp).hom =
+      SSet.Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (augmentationHomotopy D p q)) :=
+  augmentationFunctorIso_hom D p q hp
+variable (A : Type e2RoofLeftCellUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+example : cofibrantSourceRoofProductNormalizedMap A X Y b ≫
+    roofCornerNormalizedProjection (cofibrantDKSourceFrame A X)
+      (show (cofibrantAlgebraRelativeCategory A).category from Y)
+      (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b =
+    nerveMap (cofibrantSourceRoofProductCommaOver A X Y b) :=
+  cofibrantSourceRoofProductNormalizedMap_over A X Y b
+example : (cofibrantSourceRoofProductGeometricLeftHomotopy A X Y b).h =
+    (cofibrantSourceRoofProductBaseHomotopy A X Y b).h ≫
+      nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) ≫
+        nerveMap (cofibrantDKSourceFrame A X) ≫
+          SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) :=
+  cofibrantSourceRoofProductGeometricLeftHomotopy_h_base A X Y b
+example : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (cofibrantSourceRoofProductBaseHomotopy A X Y b)) =
+    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
+        (cofibrantSourceRoofProductCommaOver A X Y b))) :=
+  cofibrantSourceRoofProductBaseHomotopy_hom_eq A X Y b
+example : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b)) =
+      (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom :=
+  cofibrantSourceRoofProductCommaEvaluationHomotopy_hom A X Y b
+example : cofibrantSourceRoofProductGeometricLeftCell A X Y b =
+    (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom :=
+  cofibrantSourceRoofProductGeometricLeftCell_eq A X Y b
+example : (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
+    cofibrantSourceRoofProductActualIntervalCell A X Y b =
+      cofibrantSourceRoofProductCommaRightCell A X Y b :=
+  cofibrantSourceRoofProductActual_triangle A X Y b
+example : cofibrantSourceRoofProductActualIntervalCell A X Y b =
+    cofibrantSourceRoofProductCommaComparisonCell A X Y b :=
+  cofibrantSourceRoofProductActualIntervalCell_eq_comparison A X Y b
+example (hR : (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
+    cofibrantSourceRoofProductReferenceIntervalCell A X Y b =
+      cofibrantSourceRoofProductCommaRightCell A X Y b) :
+    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
+  cofibrantSourceRoofProductHomMap_weak_of_reference_triangle A X Y b hR
+example (hR : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
+    (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
+      cofibrantSourceRoofProductReferenceIntervalCell A X Y b =
+        cofibrantSourceRoofProductCommaRightCell A X Y b) :
+    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+  cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle A X Y hR
+end e2NativeRoofLeftCellFixtures
