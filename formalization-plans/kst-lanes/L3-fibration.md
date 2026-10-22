@@ -55,15 +55,15 @@
   coslice 単位との合成の恒等点は、同じ coherent 比較二胞体の pointed-space fiber 作用と厳密に一致。
   恒等錐評価は全写像空間で充満忠実、固定した点の延長空間は可縮 Kan。実恒等点の同型から相対三角比較を回収。
   実 coslice 辺を同じ三辺の合成三角形へ展開し、輸送した実点の矢印の類は元の点の射と底の辺の合成と証明。
-  全変換空間の pointed 作用を元の比較二胞体の成分との合成で表示。商・初頂点の制限も指定同型の実成分で正規化。
-  元の射の類の等式を実ホモトピー三角形から同じ coslice fiber 内の頂点同型へ戻し、小さい宇宙へ反映。
-  商・初頂点の指定値同型で恒等点の比較像を戻すと、元の strict Kan 比較による実像を厳密に回収。
+  pointed 作用と指定成分の合成を同定。商・初頂点の指定値同型で native 比較像を回収し、点の射の等式を実 fiber 同型へ反映。
+  native 比較の全 fiber 写像・点・pointed-space 頂点を、同じ表現の元の pointedMap で厳密に回収。
+  実 coslice 内の任意の射の類から点の射の自然性を証明。同じ表現空間の二射影を指定点で同時評価し、分類側の射との自然性を保持。
   分類同型の商・初頂点制限を同じ section・表現・底変換で計算し、合成恒等点をその零添字成分で表示。
   全写像空間から作った同じ小さい実比較は可逆な二胞体を前合成同値へ送り、fiber 点の射も元の成分で計算。
-  指定分類成分の作用を保持する pointed 復元射を構成。底の可換性・同値性・恒等錐での実 fiber 点とその射の回収式を証明。
+  指定分類成分の作用を保持する pointed 復元射の底・同値性を証明。復元点の射は、同じ native 恒等点の射と分類同型の逆成分との合成。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列で右射影の全射性と接続射の自明性を同定。左項が連結なら零次射影は全射。十分条件は未証明。
-- 対象 8628 jobs・専用監査 310 モジュール 1721 宣言・全体 24771 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4888 モジュールは EInfinity を含まない。
+- 対象 8633 jobs・専用監査 315 モジュール 1754 宣言・全体 24773 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4893 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -84,7 +84,7 @@
   weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_of_identity_hom。
 - weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
   weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
-- fractionIdentityNativeClassificationHom_eq、weakQuotientCosliceCompositePoint_section_image_hom、pointedLeftStraighteningReconstruction_pointHom、pointedCosliceReconstructionPoint_pointHom。
+- nativeLeftTransportComparison_pointedImage_val、transportWitnessPointHom_naturality、pointedCosliceReconstructionPoint_native_pointHom、weakQuotientCosliceCompositePoint_section_image_hom。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -98,11 +98,11 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（分類成分の零添字計算・同じ実写像の可逆性・pointed 復元の7モジュール、既存分類・集約・監査・本計画を含める）。
+- なし（native 表現点・coslice 射の自然性・表現空間同時評価の5モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
 - native 実像と pointed 復元の指定恒等点の一致は未証明。点の主経路には指定成分の作用を保持する K-F の復元を使う。span 側の普遍性・分数比較・cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- native 表現の小さい比較による点を元の pointedMap で回収し、section 分類成分が送る native 実像と同じ表現の恒等点を比較する。pointed 復元への相対三角比較から span 側の普遍性・もう一方の逆条件・分数比較の同値性へ進む。
+- 表現空間の同時評価の自然性を、同じ diagramIso の実成分と native 恒等点の射へ正規化する。section 分類成分の native 実像と比較し、pointed 復元への相対三角比較・span 側の普遍性・もう一方の逆条件・分数比較へ進む。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

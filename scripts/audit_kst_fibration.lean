@@ -315,7 +315,12 @@ run_cmd do
     `SerrePositivity.KST.Fibration.SmallUnstraighteningIsoHom,
     `SerrePositivity.KST.Fibration.SmallUnstraighteningPointHom,
     `SerrePositivity.KST.Fibration.PointedClassificationReconstruction,
-    `SerrePositivity.KST.Fibration.PointedCosliceReconstruction]
+    `SerrePositivity.KST.Fibration.PointedCosliceReconstruction,
+    `SerrePositivity.KST.Fibration.NativeRepresentationPoint,
+    `SerrePositivity.KST.Fibration.CoslicePointHomNaturality,
+    `SerrePositivity.KST.Fibration.PointedFamilyPointHom,
+    `SerrePositivity.KST.Fibration.PointedCosliceNativePoint,
+    `SerrePositivity.KST.Fibration.TransportWitnessPointEvaluation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

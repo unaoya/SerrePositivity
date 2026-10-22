@@ -309,3 +309,8 @@ public import SerrePositivity.KST.Fibration.SmallUnstraighteningIsoHom
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointHom
 public import SerrePositivity.KST.Fibration.PointedClassificationReconstruction
 public import SerrePositivity.KST.Fibration.PointedCosliceReconstruction
+public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
+public import SerrePositivity.KST.Fibration.CoslicePointHomNaturality
+public import SerrePositivity.KST.Fibration.PointedFamilyPointHom
+public import SerrePositivity.KST.Fibration.PointedCosliceNativePoint
+public import SerrePositivity.KST.Fibration.TransportWitnessPointEvaluation
