@@ -170,3 +170,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsClosure
 public import SerrePositivity.InfinityCategories.F2.Ind.SingleFilteredPresentation
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.ContinuousFunctorRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity
+public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyColimitValueDetection
+public import SerrePositivity.InfinityCategories.F2.Ind.DensityHomotopyDetection
+public import SerrePositivity.InfinityCategories.F2.Ind.RestrictionInvertibilityDetection

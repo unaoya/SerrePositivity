@@ -306,3 +306,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.KappaContinuousFunctorInfinity
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.indDensityCocone_inclusion
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertexDensityCocone_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertexDensity_image_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.continuousHomotopy_vertex_isInvertible
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_reflects_isInvertibleEdge
