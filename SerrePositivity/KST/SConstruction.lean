@@ -2382,4 +2382,11 @@ public import SerrePositivity.KST.SConstruction.DGGluingHomCoconeModel
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisCoconeModel
 public import SerrePositivity.KST.SConstruction.MappingCoconeZeroLeft
 
+public import SerrePositivity.KST.SConstruction.DGClosedTriangleHomIsoLift
+public import SerrePositivity.KST.SConstruction.DGClosedTriangleHomIsoLiftModule
+public import SerrePositivity.KST.SConstruction.DGGluingAxesRepresentableCofiber
+public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaCofiber
+public import SerrePositivity.KST.SConstruction.DGGluingClosedZero
+public import SerrePositivity.KST.SConstruction.DGModuleSquareHomotopyPostcompose
+
 /-! # ∞-S• 構成と連結 K 理論 -/

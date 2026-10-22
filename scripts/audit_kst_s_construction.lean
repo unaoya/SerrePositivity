@@ -29265,3 +29265,75 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_snd
 #print axioms SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_snd
+
+#check @SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift
+#print axioms SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift
+
+#check @SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_triple
+#print axioms SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_triple
+
+#check @SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLiftModule_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLiftModule_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_map_module
+#print axioms SerrePositivity.KST.SConstruction.dgClosedTriangleHomIsoLift_map_module
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiber_top_factor
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiber_top_factor
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberData
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberData
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_isPushout
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_isPushout
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesRepresentableCofiberSquare_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberData
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberData
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberData_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberData_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_isPushout
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_isPushout
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_bottom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_bottom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaCofiberSquare_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingClosedZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingClosedZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingClosedZero_representable_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingClosedZero_representable_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgModuleSquare_postcomposeSliceEdge_invertible
+#print axioms SerrePositivity.KST.SConstruction.dgModuleSquare_postcomposeSliceEdge_invertible
+
+#check @SerrePositivity.KST.SConstruction.dgModuleSquare_postcomposeHomotopyFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.dgModuleSquare_postcomposeHomotopyFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.dgModuleSquare_isPushout_postcompose_homotopy
+#print axioms SerrePositivity.KST.SConstruction.dgModuleSquare_isPushout_postcompose_homotopy
