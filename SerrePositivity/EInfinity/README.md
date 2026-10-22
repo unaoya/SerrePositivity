@@ -2459,3 +2459,11 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 `freeDerivedHomFromStandard`・`freeDerivedHomToCommon`・`freeDerivedHomToUnderlying` は
 同じ半自由標的の正規化 Hom で接合した実 span の三射で、いずれもホモトピー同値。
 同じ U の ∞ 作用と元の自由単位を結ぶ全族の三角形、∞ 極限保存、G1′ は未完了。
+
+`normalizedKProjectiveHomIso_inclusion` は元の実 dg 包含で全複体側の同じ正規化 Hom 同型を回収する。
+`normalizedKProjectiveDerivedHomMap_ambient` は端点等式の輸送後、同じ全複体の半自由分解関手の Hom 作用と一致する。
+`normalizedKProjectiveDerivedHomMap_family` と `normalizedProbeDerivedHomMap_family` は任意 K の全区間族を保持する。
+後者の `normalizedProbeDerivedRetractHom` は元の retract の同じ成分で、元の Hom 比較を厳密に回収する。
+`normalizedTensorHom_precomp_family_map` は元の複体射による全族の前合成を任意の F で送り、同じ辺の像の前合成へ同定する。
+F を元の半自由分解関手、射を元の自由単位に取れる。資源上限・小ささ・cofibrancy の仮定は追加しない。
+同じ U の全作用と標準自由単位誘導射を結ぶ幾何的三角形、∞ 極限保存と G1′ は未完了。

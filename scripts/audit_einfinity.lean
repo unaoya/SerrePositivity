@@ -8889,6 +8889,21 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.pinchedHomCompositionFamily_enriched_pre,
       `SerrePositivity.EInfinity.ComplexLimits.pinchedEnrichedPrecomposition_family]
 
+@[noinline] private def e2RequiredBatch169 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.intervalFamilyFunctorMap_precompose,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveAmbientDerivedEndpointIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveDerivedHomMap_ambient,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveHomIso_inclusion,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveDerivedHomMap_interval,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveDerivedHomMap_family,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedHomMap_family,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedRetractHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedHomMap_eq_postcompose,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorHom_precomp_family_map,
+      `SerrePositivity.EInfinity.ComplexLimits.pinchedEndpointIso_map,
+      `SerrePositivity.EInfinity.ComplexLimits.pinchedPostcompose_family,
+      `SerrePositivity.EInfinity.ComplexLimits.pinchedPostcompose_intervalFamily]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8922,7 +8937,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21528,3 +21543,74 @@ example (X : Complex A) (B : (BarrattEccles.operad A).Algebra) :
 example (X : Complex A) (B : (BarrattEccles.operad A).Algebra) :
     freeDerivedHomToUnderlying A X B = normalizedOrdinaryDerivedHomMap A X B.carrier := rfl
 end
+
+
+
+section e2DerivedFamilyFixtures
+noncomputable section
+universe e2DerivedFamilyU
+open CategoryTheory MonoidalClosed SSet
+open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.Surjection
+open scoped Simplicial
+variable (A : Type e2DerivedFamilyU) [CommRing A]
+
+example (X Y : KProjectiveComplex A) :
+    normalizedKProjectiveDerivedHomMap A X Y ≫
+      (kProjectiveAmbientDerivedEndpointIso A X Y).hom =
+    (normalizedTensorPinchedIso A X.val Y.val).hom ≫
+      pinchedHomMap (complexSemifreeResolutionInfinity A)
+        (Simplex.vertex X.val) (Simplex.vertex Y.val) :=
+  normalizedKProjectiveDerivedHomMap_ambient A X Y
+
+example (Y : Complex A) : normalizedProbeDerivedRetractHom A Y =
+    ((complexSemifreeResolutionRetractIso A).app
+      (Simplex.vertex (complexSemifreeResolutionValue A Y))).hom := rfl
+
+example (X Y : Complex A) : normalizedProbeDerivedHomMap A X Y =
+    normalizedKProjectiveDerivedHomMap A
+      (framedLimitKProjectiveProbe A X) (semifreeKProjectiveTarget A Y) ≫
+        PinchedInterval.postcompose _ (normalizedProbeDerivedRetractHom A Y) :=
+  normalizedProbeDerivedHomMap_eq_postcompose A X Y
+
+example (X Y : KProjectiveComplex A) (K : SSet.{e2DerivedFamilyU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2DerivedFamilyU + 1, e2DerivedFamilyU}.obj
+      ((cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val)) :=
+  normalizedKProjectiveDerivedHomMap_family A X Y K g
+
+example (X Y : Complex A) (K : SSet.{e2DerivedFamilyU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2DerivedFamilyU + 1, e2DerivedFamilyU}.obj
+      (((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
+        (complexSemifreeResolutionValue A Y).val)) :=
+  normalizedProbeDerivedHomMap_family A X Y K g
+
+example {K C : SSet.{e2DerivedFamilyU + 1}} [Quasicategory C]
+    {x y z : C _⦋0⦌} (δ : (HomotopyCategory.mk y : hoFunctor.obj C) ⟶ HomotopyCategory.mk z)
+    (g : K ⟶ pinchedHom x y) :
+    intervalFamilyHom (g ≫ PinchedInterval.postcompose x δ ≫
+      pinchedHomToIntervalMappingSpace x z) =
+    intervalFamilyHom (g ≫ pinchedHomToIntervalMappingSpace x y) ≫ constantFunctorHomMap K δ :=
+  pinchedPostcompose_intervalFamily δ g
+
+example {C : SSet.{e2DerivedFamilyU + 1}} (F : dgNerve A (Complex A) ⟶ C)
+    {X X' : Complex A} (Y : Complex A) (f : X' ⟶ X) (K : SSet.{e2DerivedFamilyU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2DerivedFamilyU + 1, e2DerivedFamilyU}.obj
+      ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)) :=
+  normalizedTensorHom_precomp_family_map A F Y f K g
+
+example (X : Complex A) (B : (BarrattEccles.operad A).Algebra)
+    (K : SSet.{e2DerivedFamilyU + 1})
+    (g : K ⟶ SSet.uliftFunctor.{e2DerivedFamilyU + 1, e2DerivedFamilyU}.obj
+      ((cosimplicialHom (normalizedSimplexTensor A
+        ((BarrattEccles.operad A).freeAlgebraFunctor.obj
+          ((ComplexLimits.framedLimitProbeFunctor A).obj X)).carrier)).obj
+        (complexSemifreeResolutionValue A B.carrier).val)) :=
+  normalizedTensorHom_precomp_family_map A (complexSemifreeResolutionInfinity A)
+    (complexSemifreeResolutionValue A B.carrier).val
+    ((BarrattEccles.operad A).freeAlgebraAdjunction.unit.app
+      ((ComplexLimits.framedLimitProbeFunctor A).obj X)) K g
+
+end
+end e2DerivedFamilyFixtures
