@@ -8772,6 +8772,34 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTensorHom_kanComplex,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeHomMiddle_kanComplex]
 
+@[noinline] private def e2RequiredBatch166 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexOrdinaryDerivedSource_vertex_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSource_vertex_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSourceInclusionIso,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSource_isFullyFaithful,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSource_isEssentiallySurjective,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSource_isQCatEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.complexKProjective,
+      `SerrePositivity.EInfinity.ComplexLimits.KProjectiveComplex,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveComplexInclusion,
+      `SerrePositivity.EInfinity.ComplexLimits.kProjectiveDerivedSource,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveHomIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveDerivedHomMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedKProjectiveDerivedHomMap_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedOrdinaryDerivedHomMap_family,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedEndpointIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedOrdinaryDerivedHomMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedOrdinaryDerivedHomMap_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedHomMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedHomMap_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedSpanLeft,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeDerivedSpanLeft_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTargetReplacementMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedProbeTargetReplacementMap_homotopyEquivalence,
+      `SerrePositivity.EInfinity.ComplexLimits.complexProbeDerivedSourceVertexIso,
+      `SerrePositivity.EInfinity.ComplexLimits.framedLimitKProjectiveProbe,
+      `SerrePositivity.EInfinity.ComplexLimits.semifreeKProjectiveTarget]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8805,7 +8833,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21211,3 +21239,63 @@ example (X Y : Complex A) (f : X ⟶ Y) (n : SimplexCategory) :
   normalizedOriginalHomComparison_augmentation A X Y f n
 
 end e2NormalizedOriginalFixtures
+
+section e2KProjectiveDerivedSpanFixtures
+universe e2KProjectiveDerivedSpanUniverse
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
+open DGNerve
+open scoped Simplicial
+variable (A : Type e2KProjectiveDerivedSpanUniverse) [CommRing A]
+example (X : Complex A) : (framedLimitKProjectiveProbe A X).val =
+    (framedLimitProbeFunctor A).obj X := rfl
+example : FunctorIso (kProjectiveDerivedSource A ≫
+    dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)))
+    (dgNerve.map (kProjectiveComplexInclusion A)) := kProjectiveDerivedSourceInclusionIso A
+example : IsFullyFaithful (kProjectiveDerivedSource A) :=
+  kProjectiveDerivedSource_isFullyFaithful A
+example : IsEssentiallySurjective (kProjectiveDerivedSource A) :=
+  kProjectiveDerivedSource_isEssentiallySurjective A
+example : IsQCatEquivalence (kProjectiveDerivedSource A) :=
+  kProjectiveDerivedSource_isQCatEquivalence A
+example (X Y : KProjectiveComplex A) :
+    IsSimplicialHomotopyEquivalence (normalizedKProjectiveDerivedHomMap A X Y) :=
+  normalizedKProjectiveDerivedHomMap_homotopyEquivalence A X Y
+example (X Y : Complex A) :
+    IsSimplicialHomotopyEquivalence (normalizedProbeTargetReplacementMap A X Y) :=
+  normalizedProbeTargetReplacementMap_homotopyEquivalence A X Y
+example (X Y : Complex A) :
+    IsSimplicialHomotopyEquivalence (normalizedProbeDerivedSpanLeft A X Y) :=
+  normalizedProbeDerivedSpanLeft_homotopyEquivalence A X Y
+example (X Y : Complex A) :
+    IsSimplicialHomotopyEquivalence (normalizedProbeDerivedHomMap A X Y) :=
+  normalizedProbeDerivedHomMap_homotopyEquivalence A X Y
+example (X Y : Complex A) :
+    IsSimplicialHomotopyEquivalence (normalizedOrdinaryDerivedHomMap A X Y) :=
+  normalizedOrdinaryDerivedHomMap_homotopyEquivalence A X Y
+example (X : Complex A) :
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
+      Simplex.vertex (complexSemifreeResolutionValue A X) :=
+  complexOrdinaryDerivedSource_vertex_eq A X
+example (X : Complex A) :
+    VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((framedLimitProbeFunctor A).obj X)))
+      ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) :=
+  complexProbeDerivedSourceVertexIso A X
+example (X Y : Complex A) (T : SSet.{e2KProjectiveDerivedSpanUniverse + 1})
+    (f : T ⟶ SSet.uliftFunctor.{e2KProjectiveDerivedSpanUniverse + 1, e2KProjectiveDerivedSpanUniverse}.obj
+      (((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
+        (complexSemifreeResolutionValue A Y).val)) :
+    let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
+    let qx := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex ((framedLimitProbeFunctor A).obj X))
+    let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)
+    intervalFamilyHom (f ≫ normalizedOrdinaryDerivedHomMap A X Y ≫
+      PinchedInterval.comparison x y) =
+    constantFunctorHomMap T (complexProbeDerivedSourceVertexIso A X).inv ≫
+      intervalFamilyHom (f ≫ normalizedProbeDerivedHomMap A X Y ≫
+        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ PinchedInterval.comparison qx y) :=
+  normalizedOrdinaryDerivedHomMap_family A X Y T f
+
+end e2KProjectiveDerivedSpanFixtures

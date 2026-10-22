@@ -2433,4 +2433,12 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 `ComplexLimits.normalizedOriginalHomComparison_homotopyEquivalence` は元の始域の標準 Hom を同じ共通 Hom へ送る全自然な実ホモトピー同値。
 三つの probe Hom と元の標準 Hom の Kan 性も、単体集合のモデルを仮定せず証明した。
 `normalizedOriginalHomComparison_augmentation` は元の任意の複体射の二つの augmentation 表示が全単体次数で同じ共通像を持つ厳密な等式。
-既存 D(R) の同じ頂点の Hom への接続と、標準単位比較そのものの弱同値性は未証明。
+既存 D(R) の同じ通常導来源の値の Hom への実弱 span も完成。標準単位比較そのものの弱同値性は未証明。
+
+`ComplexLimits.kProjectiveDerivedSource_isQCatEquivalence` は元の K-projective 複体の dg nerve から既存 D(R) への同じ半自由分解の ∞ 同値。
+`normalizedKProjectiveDerivedHomMap_homotopyEquivalence` は同じ実分解関手が誘導する具体的な Hom 比較。
+`normalizedProbeDerivedSpanLeft_homotopyEquivalence` と
+`normalizedOrdinaryDerivedHomMap_homotopyEquivalence` は、同じ半自由標的置換を中間項とする実弱 span を与える。
+右端は元の X,Y の `complexOrdinaryDerivedSource` 値の pinched Hom で、元の probe 比較の逆を前合成する。
+`normalizedOrdinaryDerivedHomMap_family` は任意パラメータ T で同じ前合成の全区間族の公式。
+実自由忘却 Hom span・同じ U の作用との全族の整合、および標準単位誘導射そのものの弱同値性は未証明。
