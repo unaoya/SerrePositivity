@@ -1058,4 +1058,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovDerived
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteDerivedPro
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoLocalization
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBoundedDerivedPro
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCounitHomNaturality
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

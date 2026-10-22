@@ -861,7 +861,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathInvertingFunctor,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovDerivedPro,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteDerivedPro,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoLocalization]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoLocalization,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBoundedDerivedPro,
+    `SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGExtensionCounitHomNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
