@@ -2694,3 +2694,14 @@ prependOrderHom・extendOrderHom を使う二つの可換式を与える。
 元の pinched 項全体との一致を与える。`ConeHeadIndex.second` と
 `left_card_two_iff_second` は左切断が二点のとき唯一残る最初から二番目の点。
 中央相の切断合成和・混合 HA 全体・大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_middle_sum` は元の実三角形の中央相の全切断和を
+最後から二番目の一項へ戻す。`normalizedTensorTrianglePinched_middle_sum` は元の
+pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
+`withoutFirst_image_coneTriangleFrontIndex` と withoutLast 版は元の添字像の全回収式。
+残る二つの一項の比較・混合 HA・全作用素自然性・大域評価三角形は未完了。
+
+`normalizedTensorTriangle_middle_sum_heq_of_not_both` は、最初／最後から二番目が両方とも
+中央相にある場合を除き、元の二つの中央相の切断和全体を比較する。
+相の重複による非単射性で、残った一項も零となることを証明する。
+主場合の非零成分と符号の比較、混合 HA 全体・全自然性・大域評価三角形は未完了。
