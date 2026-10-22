@@ -446,3 +446,8 @@ public import SerrePositivity.KST.Fibration.DGInputArrowData
 public import SerrePositivity.KST.Fibration.DGRelativeRightArrow
 public import SerrePositivity.KST.Fibration.DGRelativePiZero
 public import SerrePositivity.KST.Fibration.DGRelativeFiberSquare
+public import SerrePositivity.KST.Fibration.UnstraighteningComponentSurjectivity
+public import SerrePositivity.KST.Fibration.KanPointSurjectivity
+public import SerrePositivity.KST.Fibration.WeakComparisonComponentSurjectivity
+public import SerrePositivity.KST.Fibration.FullyFaithfulPrecomposition
+public import SerrePositivity.KST.Fibration.WeakComparisonFullyFaithfulInput

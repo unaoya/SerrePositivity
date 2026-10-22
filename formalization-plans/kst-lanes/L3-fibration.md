@@ -22,8 +22,7 @@
   豊穣実現・curry・転置・反転・strict transport の同じ指定成分を、元の点の作用と照合済み。
 - 切断の底変換・under 実現・初頂点制限・反転・共通 Hom 解像の指定成分を、元の実図式と照合。
   同じ strict 持ち上げの恒等射評価は、第一射影により元の単体切断の初頂点を厳密に回収する。
-- 設計修正：F1 の exists_leftCoherentTransport_directComparison は底上の同値のみを指定し、
-  scaffold の指定三角形を残さない。この界面から元の係数点との一致は推論しない。
+- F1 の exists_leftCoherentTransport_directComparison は底上の同値だけで指定 scaffold 三角形を残さず、元の係数点との一致は推論しない。
 - scaffoldNerveRepresentationIso は指定 scaffold 三角形を保持し、係数点を元の恒等射評価の同じ fiber 点の
   pointedMap 像へ送ると証明。scaffoldStraighteningRepresentationIso はその指定制限比較を Sp の前合成充満忠実性で戻す。
   新主経路の scaffoldPointedReconstruction は実射・射影・前合成同値・fiber 点計算を構成。
@@ -36,7 +35,8 @@
 - 既存の分数分類を新比較へ接続。元の恒等 span の strict Kan 比較像は、既存の固定分数評価を経由して
   同じ scaffold 復元恒等点へ送られる。元の coslice 合成は新復元射と全相対写像空間で自然同型で、無条件に前合成同値。
   元の比較に、商上の実右逆と全相対写像空間内の余単位を構成。同じ右逆を全 fiber へ制限し、余単位と本質的全射性を証明。
-  逆順の span 三角形・充満忠実性・比較射単体の同値性・span 普遍性は未証明。片側三角形だけからは結論しない。
+  同じ比較二胞体の成分の点の射の全射性を、元の strict Kan 比較成分の実本質的全射性へ移送。
+  Sp 正本の全終点の充満忠実性を入力すれば元の商上の比較自体が可逆となる。逆順の span 三角形・正本の充満忠実性・無条件の比較同値・span 普遍性は未証明。
 - 工程 (c)：中央・右 π の k 未満の消滅の下で、左 fiber の同じ消滅 ⇔ πₖ 射影全射を K-5 の実長完全列で証明。
   中央 πⱼ=0 なら右 πⱼ₊₁／射影像 ≃ 左 fiber πⱼ。代表元は元の接続射。零次余核の障害を明示。
 - 固定 dg K の実頂点・実辺の整数 π 作用を同じ BF 射と可換に比較し、πⱼ 全射性の同値を証明。
@@ -48,8 +48,8 @@
 - 工程 (d) はユーザー指定の相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、K:S→Sp。
   ν の像が K-5 VerdierDiagram となる D β3 の dg 列に (b)(c) を適用し、固定 S• 比較で K へ戻す。定理は未完。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10615 jobs・監査 447 モジュール 2537 宣言・全体 25340 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6820 モジュールは EInfinity を含まない。
+- 対象 10620 jobs・監査 452 モジュール 2558 宣言・全体 25373 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6825 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -80,8 +80,8 @@
 - verdierKZeroMap_surjective、verdierKZeroCofinalityObstruction_subsingleton、dgNuKZeroMap_surjective_of_verdier。
 - dgKPiZeroMap_surjective_of_verdier、dgKBFHomotopyFiber_negative_subsingleton_of_verdier、
   dgKInputFiberSquare、dgRelativePiZeroMap_surjective、dgRelativeFiberSquare_negative_subsingleton。
-- weakCosliceComparisonRightSection、weakCosliceComparisonRightSection_relativeCounit、
-  weakCosliceComparisonFiberRightSection_counit、weakCosliceComparisonFiber_isEssentiallySurjective。
+- weakCosliceComparisonFiber_isEssentiallySurjective、weakSpanKanMappingComparison_value_isEssentiallySurjective、
+  weakQuotientMappingComparison_isIso_of_fraction_fullyFaithful。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
   leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
 - fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、
@@ -95,14 +95,14 @@
 - 商・分数・局所化は Sp 正本。一般 fractionMappingComparison の同値性を Sp に依頼し L9 受付に登録済み。充満忠実性のみでも接続可能と補足。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（相対右辺・π₀・実 fiber の4モジュール、K₀ 全射版の fiber 補題、集約・監査・本計画）。
+- なし（実成分の本質的全射性・充満忠実性入力への接続の5モジュール、集約・監査・本計画）。
 ### 既知の問題
 - 一般分数比較の同値性、span 側の普遍性、商実現比較、β3 提示との照合、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
 - Sp の一般分数比較同値の公開を確認する。任意の相対 Verdier 四角形の元の K 右辺の実 π₀ 全射性・実 fiber 連結性を、β3 提示へ接続する。
-  元の比較の実右逆と相対余単位は構成済み。逆順の合成を元の span 族へ制限し、既存の W 輸送・指定恒等点と照合する。
-  span 側の三角形と充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
+  元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
+  span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
