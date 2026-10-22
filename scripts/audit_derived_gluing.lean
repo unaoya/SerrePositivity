@@ -572,7 +572,29 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjection,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjectionCoordinates,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjectionInput,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedChainMapComponent]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedChainMapComponent,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationCylinderExtension,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationCylinderNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainAugmentationCongr,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainAugmentationPost,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainIdentityCommaPostData,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainPostBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexAugmentationCongr,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexAugmentationPost,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexScalarHEqComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientAugmentationCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomCoefficientAugmentationNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedAugmentationIntervalNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedAugmentationNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientIntervalPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismChainComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismChainInputComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismCoefficientComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismInactiveComponent,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathHomotopyPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UliftPrismHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UliftPrismHomotopyBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UliftPrismUncurry]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
