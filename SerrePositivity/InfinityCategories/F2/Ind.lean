@@ -9,3 +9,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSlice
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceFiber
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsCoconeComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.FullJoinVertices
+public import SerrePositivity.InfinityCategories.F2.Ind.FullCosliceLift
+public import SerrePositivity.InfinityCategories.F2.Ind.FullColimitReflection
+public import SerrePositivity.InfinityCategories.F2.Ind.FullCoconeLift
+public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits

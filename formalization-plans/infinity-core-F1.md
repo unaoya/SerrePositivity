@@ -14,8 +14,10 @@
   `presheafYonedaSliceFiberValueEquivalence` は同じ射影の各 fiber を元の F(x) と比較する。
   小さい元の圏からの一つの底上の比較写像は未構成。各点の同値の存在で代用しない。
   `presheafElementsCoconeOfComparison` は、その指定比較を入力すると小さい同じ図式へ全余錐を戻す。
-- **(b) の構成部分**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
+- **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
+  `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
+  独立集約 6090 jobs、公理監査は標準三公理のみで完了。
   閉包の最小性は頂点条件の包含の主張であり、(d) の関手の延長の普遍性ではない。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
@@ -23,7 +25,7 @@
 ### 残り（依存順）
 
 1. **(a)** 元の F を、同じ小さい元の圏の Yoneda 図式の余極限として実現。HTT 5.1.5.3。24〜48時間（暫定）。
-2. **(b)** Indκ 内の小さい κ-filtered 余極限の存在と、包含による保存・検出。HTT 5.3.5.1–3。8〜24時間（暫定）。
+2. **(b)** 最小閉包としての構成と包含による小さい κ-filtered 余極限の保存・検出を実装済み。原典の右 fibration 定義との一致は (c)。
 3. **(c)** 各 Indκ 対象の表現可能前層の κ-filtered 余極限表示と、右 fibration 定義との一致。HTT 5.3.5.4。16〜40時間（暫定）。
 4. **(d)** κ-filtered 余極限を保つ延長の実際の制限関手の同値。HTT 5.3.5.10、Kerodon 9。32〜80時間（暫定）。
 
@@ -36,6 +38,7 @@
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
+- `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
 
 ### 依存と提供
 

@@ -52,3 +52,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsCoconeOfComparison
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsCoconeOfComparison_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_of_fullInclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.fullCoconeLift_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_colimitCone
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_isColimit_iff_inclusion
