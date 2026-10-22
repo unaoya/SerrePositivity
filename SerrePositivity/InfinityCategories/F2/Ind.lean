@@ -77,3 +77,13 @@ public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierPositiveL
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierProjection
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierRealization
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexRealization
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalPointJoinExtension
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCosliceBoundary
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCosliceFiber
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexFiniteBound
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalVertexCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.NerveSublevelLift
+public import SerrePositivity.InfinityCategories.F2.Ind.NerveBoundCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierLift
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexIndexCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexCosliceCone

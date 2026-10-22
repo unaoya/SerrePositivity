@@ -21,6 +21,17 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexRealization_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexRealization_range_le
 #check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexBaseMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_pointJoinBoundary_extension_over_terminal
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_pointCosliceBoundary_lift_over_terminal
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointCoslice_terminalFiber_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Ind.finite_join_of_finite
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalSubcomplex_finite_bound
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_joinCocone_at_terminal
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_nerve_joinCocone_at_bound
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalCarrierLift_value
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalCarrierLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalSubcomplex_indexCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_terminalSubcomplex_cosliceCone
 
 /-!
 概要：F2N-2 の独立集約に属する全宣言の公理依存を監査する。
