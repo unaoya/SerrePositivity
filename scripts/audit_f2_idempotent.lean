@@ -116,3 +116,65 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms idemYoneda_isFullyFaithful
 #check @idemVertex_retract_yoneda
 #print axioms idemVertex_retract_yoneda
+#check @longEdgeCollapse
+#print axioms longEdgeCollapse
+#check @WeakShape
+#print axioms WeakShape
+#check @weakTriangle
+#print axioms weakTriangle
+#check @weakImagePoint
+#print axioms weakImagePoint
+#check @weakTriangle_longEdge
+#print axioms weakTriangle_longEdge
+#check @WeakRetractionDiagram
+#print axioms WeakRetractionDiagram
+#check @weakDesc
+#print axioms weakDesc
+#check @weakDesc_triangle
+#print axioms weakDesc_triangle
+#check @weakDesc_imagePoint
+#print axioms weakDesc_imagePoint
+#check @weakDiagram_ext
+#print axioms weakDiagram_ext
+#check @weakDiagramEquiv
+#print axioms weakDiagramEquiv
+#check @walkingRetractionTriangle
+#print axioms walkingRetractionTriangle
+#check @walkingRetractionTriangle_section
+#print axioms walkingRetractionTriangle_section
+#check @walkingRetractionTriangle_retraction
+#print axioms walkingRetractionTriangle_retraction
+#check @walkingRetractionTriangle_longEdge
+#print axioms walkingRetractionTriangle_longEdge
+#check @weakComparison
+#print axioms weakComparison
+#check @weakComparison_triangle
+#print axioms weakComparison_triangle
+#check @weakComparison_imagePoint
+#print axioms weakComparison_imagePoint
+#check @StrongSplitting.weakDiagram
+#print axioms StrongSplitting.weakDiagram
+#check @StrongSplitting.weakDiagram_triangle
+#print axioms StrongSplitting.weakDiagram_triangle
+#check @RetractionTriangle
+#print axioms RetractionTriangle
+#check @RetractionTriangle.vertexRetraction
+#print axioms RetractionTriangle.vertexRetraction
+#check @VertexRetraction.triangle_exists
+#print axioms VertexRetraction.triangle_exists
+#check @RetractionTriangle.diagram
+#print axioms RetractionTriangle.diagram
+#check @RetractionTriangle.diagram_longEdge
+#print axioms RetractionTriangle.diagram_longEdge
+#check @RetractionTriangle.weakDiagram
+#print axioms RetractionTriangle.weakDiagram
+#check @RetractionTriangle.weakDiagram_triangle
+#print axioms RetractionTriangle.weakDiagram_triangle
+#check @RetractionTriangle.weakDiagram_imagePoint
+#print axioms RetractionTriangle.weakDiagram_imagePoint
+#check @RetractionTriangle.weakDiagram_section
+#print axioms RetractionTriangle.weakDiagram_section
+#check @RetractionTriangle.weakDiagram_retraction
+#print axioms RetractionTriangle.weakDiagram_retraction
+#check @isVertexRetractOf_iff_retractionTriangle
+#print axioms isVertexRetractOf_iff_retractionTriangle
