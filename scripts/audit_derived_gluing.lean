@@ -454,7 +454,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackCoordinates,
     `SerrePositivity.InfinityCategories.Derived.Gluing.StrictIntervalPullbackComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.StrictPathPullbackEquivalence,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputSectionFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedIntervalEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientIntervalMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputSectionDiagonals,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KanPathInputTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputPairSection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputPathTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPathPostcomp,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPathFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputPathTransportEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputPathFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedInputPathEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
