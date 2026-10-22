@@ -10,7 +10,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 - 第 1 部（B4・B5、F2L-1〜4）は完了。coherent nerve の Cat_∞、引き戻しと lax pullback、
   写像空間の普遍性、同値矢印の全部分圏との比較、安定性と完全な両射影まで証明済み。
-- 第 2 部の正本は §3。10-22 12:35 改訂：F2N-1・3・5 は F1b、F2N-2（Ind）は F1、F2N-4 は N。
+- 第 2 部の正本は §3。10-23 改訂：F1b は a7 のみ。F2N-2・5 は F1、F2N-3・4 は N。
   正則 κ の小さい join・coslice、filtered 性と coslice の弱可縮性・対角の cofinality の双方向判定を証明。
   通常 filtered 図式の有限内部 Hom・path 引き戻しの交換、元の標準余錐の native 余極限性を証明。
   小さい底上の任意の coherent 空間値図式の HasColimit は全空間模型と元の単位から構成。
@@ -32,19 +32,19 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
   第一辺の模型比較への反映・最後辺輸送と四因子境界式は構成済み。全反転 Hom の pointed 族と元の raw 普遍三角形の始点固定比較を構成。
-  元の全 pointed 比較の三面・三頂点・終点像、実長辺輸送、係数自然性と同値による反映は証明済み。coherentCompositionTetrahedron は元の指定三角形・最大化・退化辺を保持する。ZeroCylinderIso_eq_comparison と ZeroComparison_hom_eq_cylinder は元の実全係数円柱の類と既存の指定比較そのものの一致。ZeroEndpointEdge_hom_action は同じ実終点円柱を元の反転精密化の全 Hom 合成作用へ同定。pointedOppositeTriangleFunctorIso はその同じ類を元の二段作用から長辺作用への関手同型へ正規化し、ZeroComparison_endpoint_value_heq_normalized は既存の指定終点比較の任意の同じ値写像の像をその後合成へ同定する。coherentKanTwoSidedIntervalIso は F1 の実二側円柱を標準頂点上の左右区間族へ移す。edgewiseRefinementLeft/RightResolution は元の一単体と反転を保持する二つの実共通解像の係数で、主射影二つは元の一単体、残り二つは元の両端へ定値。EdgewiseRefinementEdges は二辺の実始点と同じ実共通終点を保持。coherentKanRefinementRight/Left_naturality は F1 の指定左右区間比較の同じ二自然性正方形。coherentKanRefinement_common_component_cancel は同じ共通終点成分を消去し、四つの元の辺の類と両定値成分を保持する。CoherentKanRefinementIntervalEdges は四辺の像を元の精密化・反転精密化・二定値辺へ同定。coherentKanLeftHomInterval_reverse は係数の交換同型だけで F1 の元の反転 Kan 輸送の区間へ戻す。残りは二定値辺の類の除去、同じ全係数輸送への接続、指定単位・余単位の三因子整理と長辺値式への合成。
+  元の指定終点比較の値は pointedOppositeTriangleFunctorIso の後合成へ同定済み。coherentKanRefinement_original_square は二定値辺を除去し、元の精密化の左・右区間像と同じ指定両端比較の整合式を証明する。coherentKanRefinement_value_square はその同じ普遍輸送と終点値の像。pointedValueTriangleIntervalImage_iso は右区間の値を元の pointedValueTriangleTransportIso そのものへ同定。pointedReverseKanFiberComparison_normalized と pointedReverseKanHomComposition_normalized は反転 Kan の全 fiber 比較と全二係数合成を元の coherent 比較・反転 Hom 合成へ厳密に戻す。pointedLeftHomValueActionIso はその全作用と左区間輸送の値の関手同型。pointedHomRefinement_value_coherence は元の反転精密化の作用から元の右区間輸送へ、同じ全係数・指定両端比較を保持した整合式。残りはこの成分を既存の指定比較へ照合し、単位・余単位の三因子を整理して長辺値式へ合成する。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
-  F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
-  検証：三集約同時ビルド10171 jobs、公理監査17417宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  共通解像の実両端・持ち上げた二辺・指定左右区間比較の二自然性正方形・四辺の像・同じ共通終点成分の消去・F1 の反転区間への接続を含む追加35明示宣言を型検査。
+  F1b は a7 のみ担当。完了時は F1 の交換入力に合う定理を公開し、次の割り当てを待つ。
+  検証：三集約同時ビルド10199 jobs、公理監査17601宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  二定値辺の除去・元の左右区間の値・全反転 Hom 作用と左輸送の全族比較・元の右精密化までの整合を含む追加48明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 - F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
 - F2N-2（F1）：前層内の Indκ、生成と保存関手の延長の普遍性。F2/Ind/・Ind.lean は読み取り専用。
-- F2N-3（F1b）：compact・Yoneda・retract、30〜80 時間。F2N-4（N）：冪等完備化、所有外。
-- F2N-5：Ind(C) の安定性、冪等完備 C の compact 生成。40〜100 時間。
-- その後 F2 後半：presentable と随伴関手定理（F1b）。HTT §5.5、Kerodon 9。細分化は §4。
+- F2N-3（N）：compact・Yoneda・retract、30〜80 時間。F2N-4（N）：冪等完備化、所有外。
+- F2N-5（F1）：Ind(C) の安定性、冪等完備 C の compact 生成。40〜100 時間。
+- その後 F2 後半：presentable と随伴関手定理（担当は次の割り当て待ち）。HTT §5.5、Kerodon 9。細分化は §4。
   Bousfield 局所化・P_Σ は従来どおり N の I-b の範囲。
 
 ### 主要宣言（検証済みのみ）
@@ -66,16 +66,16 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackCone_projection_commutativity` / `F2.fiberwisePullbackTotalRawPathHomotopy_curry` / `F2.coherentTotalMapNativeFiberTransportIso` / `F2.coherentTotalMapNativeValueIso` / `F2.coherentTransformationNativeCoconeIso` / `F2.coherentCospanConeNativeComparison` / `F2.coherentCospanConeValuePathHomotopy_unit` / `F2.coherentCospanConeTotalModelComparison_over_base` / `F2.coherentCospanConeTotalModelFiberComparison_path_ι` / `F2.coherentCospanConeRelativeValuePathIso_eq` / `F2.coherentCospanConePointwiseCone_vertex` / `F2.coherentCospanConePointwiseCone_leftTriangle` / `F2.unstraighteningMappingTrianglePrism` / `F2.coherentTransformationTriangleLift_long` / `F2.coherentTransformationPointedTriangle_projection` / `F2.relativeExtensionRestriction_vertex` / `F2.prismExtensionComparison_restrict` / `F2.coherentTriangleExtensionComparison_restrict` / `F2.coherentTriangleExtensionRestriction_long` / `F2.relativeFunctorBaseChangeInverse_overPre` / `F2.prismExtensionPullbackEndpoint_restrict` / `F2.prismExtensionPullbackComparison_restrict` / `F2.relativeFunctorCurryHom_pre` / `F2.relativeFunctorCurryHom_evaluate` / `F2.prismExtensionCurryWitnessIso_restrict` / `F2.unstraighteningSourceComparisonIso_app_pre` / `F2.coherentTriangleCurryIso_restrict` / `F2.unstraighteningTriangleRelativeVertexIso_pre` / `F2.coherentSmallTriangleRelativeIso_pre` / `F2.unstraighteningTriangleRelativeVertexIso_pre_eq` / `F2.coherentSmallTriangleRelativeIso_pre_heq_endpoint` / `F2.coherentSmallFiberPointedTriangle_projection` / `F2.coherentSmallTriangleRelativeIso_pre_eq_endpoint` / `F2.coherentTransformationTriangleFiberIso_heq_endpoint` / `F2.relativeIsoFiberHomotopy_hom` / `F2.coherentCospanConeFiberComparisonPathIso_eq` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq` / `F2.functorIsoDown_injective` / `F2.coherentCospanNormalizedModelPathLiftIso_eq_section` / `F2.coherentCospanCommonLeftIso` / `F2.coherentCospanCommonRightIso` / `F2.intervalReplacementSectionIso_endpoint` / `F2.coherentCospanConeNativePathDownIso_whisker` / `F2.coherentTotalNativeKanIso_postValueImage` / `F2.coherentCospanCommonRightImage` / `F2.cospanRectificationLeftIso_inverse_image` / `F2.coherentCospanNativeFirstPathIso_heq` / `F2.coherentCospanModelFirstPathIso_heq` / `F2.coherentCospanCommonComparisonIso` / `F2.coherentCospanConeNativeComparison_homotopyEquivalence` / `F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence` / `F2.coherentCospanNativeLimitCone` / `F2.coherentCospanNativeLimitCone_isLimit` / `F2.coherentCospanNativeLimitCone_vertex` / `F2.coherentCospanNativeLimitConeFstIso` / `F2.coherentCospanNativeLimitConeSndIso` / `F2.coherentCospanNativeLimitCone_projection_commutativity` / `F2.coherentFilteredColimitVertex_isTerminal` / `F2.coneMappingShapePushoutIso` / `F2.coneMappingShapePushout_right_fibration` / `F2.coneMappingShapePushoutNativeCone_isLimit` / `F2.finiteShape_cell_induction` / `F2.CoherentFilteredLimitExchangeShape` / `F2.coherentColimitFunctor` / `F2.coherentCompletedLimit_iff_colimitFunctor` / `F2.coherentCospanOfFunctorTriangles` / `F2.functorCospanNativeLimitCone_isLimit` / `F2.exists_limitFamilyRestrictionTriangle` / `F2.coneFamilyReindex_apex` / `F2.exists_limitConeFamilyReplacement` / `F2.HasSpaceLimitsOfShape` / `F2.coherentFilteredLimitExchangeShape_simplex` / `F2.coherentFilteredLimitExchangeShape_of_empty`
 
 - `F2.coherentColimitUnitValueAction_coherence` / `F2.coherentColimitUnitValueAction_total_heq_native` / `F2.coherentColimitUnitValueAction_precomp_firstEdge`
-- `F2.coherentColimitApexRawTriangleBoundaryAt` / `F2.coherentColimitApexRawTriangleBoundaryAt_precomp` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff` / `F2.spaceSimplexPointedLift` / `F2.spaceSimplexPointedLift_projection` / `F2.spaceSimplexPointedFamily` / `F2.coherentColimitApexCoefficientMap` / `F2.coherentColimitApexPointedFamilyComparisonIso` / `F2.coherentColimitApexPointedFamilyRestrictionIso` / `F2.coherentColimitApexPointedFirstIso` / `F2.coherentColimitApexPointedLastIso` / `F2.coherentColimitApexPointedLongIso` / `F2.pointedCoherentSourcePrecomposition_fixed` / `F2.spaceTrianglePointedFamily_middle_action` / `F2.spaceTrianglePointedFamily_target_action` / `F2.coherentColimitApexMiddleCoefficientMap` / `F2.coherentColimitApexTargetCoefficientMap` / `F2.coherentColimitApexPointedMiddleEndpointIso` / `F2.coherentColimitApexPointedTargetEndpointIso` / `F2.coherentColimitApexPointedLongComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_eq_longEndpointComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_trans_universal` / `F2.coherentColimitRawUniversalTriangleComparison_precomp` / `F2.coherentColimitApexRawUniversalBoundary_iff_coefficient` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff_long_value` / `F2.pointedValueRightComparison_triangle` / `F2.pointedValueRightComparison_triangle_inverse` / `F2.pointedFiberValueToRightEquivalence` / `F2.pointedFiberValueTo_triangle_at` / `F2.pointedFiberValueTo_triangle_inverse_at` / `F2.pointedRightFamilyTransportIso_precomp_heq` / `F2.pointedRightFamilyTransportIso_heq_universal` / `F2.pointedRightFamilyTransportIso_action_square` / `F2.pointedRightFamilyTransportIso_counit_square` / `F2.pointedValueFamilyTargetCounitIso_conjugation` / `F2.pointedValueFamilyTransportIso_at_right` / `F2.spaceCompositionZeroPointedHomotopy_projection` / `F2.spaceCompositionZeroPointedHomotopy_initial` / `F2.spaceCompositionZeroExtensionPath_uncurry` / `F2.spaceCompositionZeroCylinderIso_eq_comparison` / `F2.spaceCompositionTetrahedronZeroComparison_hom_eq_cylinder` / `F2.spaceCompositionZeroComparison_endpoint_hom` / `F2.spaceCompositionZeroEndpointEdge_action` / `F2.spaceCompositionZeroCosliceEndpointFiber` / `F2.spaceCompositionZeroCosliceEndpoint_refinement`
+- `F2.coherentColimitApexRawTriangleBoundaryAt` / `F2.coherentColimitApexRawTriangleBoundaryAt_precomp` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff` / `F2.spaceSimplexPointedLift` / `F2.spaceSimplexPointedLift_projection` / `F2.spaceSimplexPointedFamily` / `F2.coherentColimitApexCoefficientMap` / `F2.coherentColimitApexPointedFamilyComparisonIso` / `F2.coherentColimitApexPointedFamilyRestrictionIso` / `F2.coherentColimitApexPointedFirstIso` / `F2.coherentColimitApexPointedLastIso` / `F2.coherentColimitApexPointedLongIso` / `F2.pointedCoherentSourcePrecomposition_fixed` / `F2.spaceTrianglePointedFamily_middle_action` / `F2.spaceTrianglePointedFamily_target_action` / `F2.coherentColimitApexMiddleCoefficientMap` / `F2.coherentColimitApexTargetCoefficientMap` / `F2.coherentColimitApexPointedMiddleEndpointIso` / `F2.coherentColimitApexPointedTargetEndpointIso` / `F2.coherentColimitApexPointedLongComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_eq_longEndpointComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_trans_universal` / `F2.coherentColimitRawUniversalTriangleComparison_precomp` / `F2.coherentColimitApexRawUniversalBoundary_iff_coefficient` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff_long_value` / `F2.pointedValueRightComparison_triangle` / `F2.pointedValueRightComparison_triangle_inverse` / `F2.pointedFiberValueToRightEquivalence` / `F2.pointedFiberValueTo_triangle_at` / `F2.pointedFiberValueTo_triangle_inverse_at` / `F2.pointedRightFamilyTransportIso_precomp_heq` / `F2.pointedRightFamilyTransportIso_heq_universal` / `F2.pointedRightFamilyTransportIso_action_square` / `F2.pointedRightFamilyTransportIso_counit_square` / `F2.pointedValueFamilyTargetCounitIso_conjugation` / `F2.pointedValueFamilyTransportIso_at_right` / `F2.spaceCompositionZeroPointedHomotopy_projection` / `F2.spaceCompositionZeroPointedHomotopy_initial` / `F2.spaceCompositionZeroExtensionPath_uncurry` / `F2.spaceCompositionZeroCylinderIso_eq_comparison` / `F2.spaceCompositionTetrahedronZeroComparison_hom_eq_cylinder` / `F2.spaceCompositionZeroComparison_endpoint_hom` / `F2.spaceCompositionZeroEndpointEdge_action` / `F2.spaceCompositionZeroCosliceEndpointFiber` / `F2.spaceCompositionZeroCosliceEndpoint_refinement` / `F2.coherentKanRefinement_original_square` / `F2.coherentKanRefinement_value_square` / `F2.pointedValueTriangleIntervalImage_iso` / `F2.pointedLeftHomValueActionIso` / `F2.pointedHomRefinement_value_coherence`
 
 ### 依存と提供
 
 - N の HomotopyLimits（γ3c の 𝒮 の余極限）と F1 の straightening は読み取り専用。
   γ4 は前提として一括仮定せず、必要な公開界面と提供済みの範囲を確認する。
-- D・K へ第 1 部と compact・安定性を提供。Ind は F1 の公開宣言を使い、必要時に未提供なら F1 に依頼して待つ。
+- 第 1 部を D・K へ提供済み。F1 へ全有限 K の CoherentFilteredLimitExchangeShape K を提供予定。compact は N、Ind の安定性は F1。
 
 ### 未コミット
-- 今回の所有変更は保存済み。F1 の Ind と N の Idempotent の集約・サブディレクトリは所有・保存対象外。
+- 今回の所有変更は保存済み。F1 の Ind、N の Compact・Idempotent の集約・サブディレクトリは所有・保存対象外。
 
 ### 既知の問題
 
@@ -96,14 +96,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   PointedFirst/Last/LongIso は三面を元の実 prism に同定済み。RestrictionIso_precomp/shared と initial は二段制限・共有制限・初点の整合。
   三頂点の作用は SpaceTrianglePointedVertexActions で計算済み。Middle/TargetCoefficientMap は元の実 fiber 内の同じ全係数作用。
   PointedMiddle/TargetEndpointIso は同じ全比較の終点像。PointedLongTransport は δ₁ ▷ A ≫ spaceSimplexPointedFamily s と同じ実両端を持つ元の長区間の輸送証人。
-  次の値照合は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂。既存の指定比較の値・元の三辺・指定精密化を保持する。spaceCompositionZeroComparison_endpoint_value_heq_normalized は元の指定終点同型の値を (pointedOppositeTriangleFunctorIso s).postcomp V へ同定済み。pointedOppositeHomAction_vertex と uliftOppositeKanPostcomposition_comp は両端を元の二段作用・長辺作用へ正規化する。coherentKanTwoSidedIntervalIso は同じ全共通 Hom 解像上の F1 の左右区間比較。edgewiseRefinementRightResolution e / LeftResolution e は重み同型の後で (0,0,0,1) / (0,1,1,1) の退化を元の e へ前合成した実一単体で、RightResolution_right は e、LeftResolution_left は opObjEquiv.symm e、他二射影は元の両端へ定値（EdgewiseRefinementConstantProjections）。EdgewiseRefinementEndpoints/Edges/VertexProjections は二辺の実始点と同じ共通終点、元の二端点の射影を保持済み。coherentKanRefinementRight/Left_naturality は同じ F1 の指定比較の二正方形。coherentKanRefinement_common_component_cancel は同じ共通終点の成分を消去し、四辺の元の類と二つの定値成分を保持する。CoherentKanRefinementIntervalEdges は実辺全体の像を元の e・op e・両定値辺へ一致。次は残る二つの定値辺の類を端点の表示変更を保持して除去する。まず X.map (const ⦋1⦌ ⦋1⦌ j).op e を X.σ 0 (X.δ j.rev e) へ戻し、反転側は SSet.op_σ、区間の像は自然性で同じ退化辺へ戻す。coherentKanLeftHomInterval_reverse により左区間族は F1.PointedReverseCompositionTransport の元の反転 Kan 区間に係数交換だけで一致するので、同じ全係数作用をその parametrizedIso/diagonalIso に接続する。元の一単体の逆辺を選ばず、その値の式に pointedValueFamilyTransportIso_at_right と指定単位・余単位の両三角式を入力し、三因子を整理する。これを pointedValueTriangle_isoSquare と零面の二辺厳密合成の coherent 合成四角形へ接続して長辺値式を得る。零面の係数は元の K₀ に固定し、別の族への等式や値の整合を仮定しない。
+  次の値照合は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂。pointedHomRefinement_value_coherence K L e は元の反転精密化の作用と元の右区間輸送を、同じ指定左右比較と pointedLeftHomValueActionIso の両端成分で接続済み。まず s := coherentColimitApexTriangle B T、e := coherentTriangleHomotopy s を入れ、左の元の類を pointedOppositeTriangleFunctorIso の値へ、右の元の類を pointedValueTriangleTransportIso へ正規化する（後者は pointedValueTriangleIntervalImage_iso）。両端成分は元の指定比較と照合し、pointedValueFamilyTransportIso_at_right と指定単位・余単位の両三角式で三因子を整理する。pointedValueTriangle_isoSquare と零面の二辺厳密合成の coherent 合成四角形へ接続して長辺値式を得る。零面の係数は元の K₀ に固定し、値の整合を仮定しない。
   δ₀ の面の係数は元の s.obj 0 のまま保持する。RawUniversalBoundary_iff_coefficient と of_long_value は、値照合から恒等初期値と任意の全初期値への忠実な反映を証明済み。反映を未証明の値式の代わりに使わない。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
   HTT §5.3.3、a7 残り12〜24時間（暫定。三角形に沿う全指定因子の照合に不確実性）。strict 図式だけでは完了としない。
-  a7 後は承認を待たず F2N-3 へ。その後 F1 の Ind・N の冪等完備化を利用して F2N-5。
+  a7 後は全有限 K の CoherentFilteredLimitExchangeShape K を公開し、F1 の IndFiniteLimitExchangeInput.exchange に渡せることを確認して報告、次の割り当てを待つ。
 
 ## 0. 目標と範囲
 
@@ -154,7 +154,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 
 ### 引き継ぎ（F1b：F2N-1・3・5、F1：F2N-2、N：F2N-4）
 
-- 現在地：F1b は a7 → F2N-3 → F2N-5。Ind は F1、冪等完備化は N。第 1 部は完了済み。
+- 現在地：F1b は a7 のみ。Ind・F2N-5 は F1、compact・冪等完備化は N。第 1 部は完了済み。
   F2N-1 は正則 κ の小さい join・coslice、一般の弱可縮性、対角関手の cofinality とその逆の判定まで証明。
   通常の指定 filtered 余錐の native な普遍性、path 座標を保つ交換同型、任意の strict Kan cospan の native な比較を証明。
   相対有限検出と全空間模型の元の余錐の native 余極限性を証明。小さい底上の一般 coherent 図式の HasColimit を公開。
@@ -185,17 +185,17 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
   模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
   第一辺の模型比較への反映・最後辺輸送と四因子境界式は構成済み。全反転 Hom の pointed 族と元の raw 普遍三角形の始点固定比較を構成。
-  元の全 pointed 比較の三面・三頂点・終点像、実長辺輸送、係数自然性と同値による反映は証明済み。coherentCompositionTetrahedron は元の指定三角形・最大化・退化辺を保持する。ZeroCylinderIso_eq_comparison と ZeroComparison_hom_eq_cylinder は元の実全係数円柱の類と既存の指定比較そのものの一致。ZeroEndpointEdge_hom_action は同じ実終点円柱を元の反転精密化の全 Hom 合成作用へ同定。pointedOppositeTriangleFunctorIso はその同じ類を元の二段作用から長辺作用への関手同型へ正規化し、ZeroComparison_endpoint_value_heq_normalized は既存の指定終点比較の任意の同じ値写像の像をその後合成へ同定する。coherentKanTwoSidedIntervalIso は F1 の実二側円柱を標準頂点上の左右区間族へ移す。edgewiseRefinementLeft/RightResolution は元の一単体と反転を保持する二つの実共通解像の係数で、主射影二つは元の一単体、残り二つは元の両端へ定値。EdgewiseRefinementEdges は二辺の実始点と同じ実共通終点を保持。coherentKanRefinementRight/Left_naturality は F1 の指定左右区間比較の同じ二自然性正方形。coherentKanRefinement_common_component_cancel は同じ共通終点成分を消去し、四つの元の辺の類と両定値成分を保持する。CoherentKanRefinementIntervalEdges は四辺の像を元の精密化・反転精密化・二定値辺へ同定。coherentKanLeftHomInterval_reverse は係数の交換同型だけで F1 の元の反転 Kan 輸送の区間へ戻す。残りは二定値辺の類の除去、同じ全係数輸送への接続、指定単位・余単位の三因子整理と長辺値式への合成。
+  元の指定終点比較の値は pointedOppositeTriangleFunctorIso の後合成へ同定済み。coherentKanRefinement_original_square は二定値辺を除去し、元の精密化の左・右区間像と同じ指定両端比較の整合式を証明する。coherentKanRefinement_value_square はその同じ普遍輸送と終点値の像。pointedValueTriangleIntervalImage_iso は右区間の値を元の pointedValueTriangleTransportIso そのものへ同定。pointedReverseKanFiberComparison_normalized と pointedReverseKanHomComposition_normalized は反転 Kan の全 fiber 比較と全二係数合成を元の coherent 比較・反転 Hom 合成へ厳密に戻す。pointedLeftHomValueActionIso はその全作用と左区間輸送の値の関手同型。pointedHomRefinement_value_coherence は元の反転精密化の作用から元の右区間輸送へ、同じ全係数・指定両端比較を保持した整合式。残りはこの成分を既存の指定比較へ照合し、単位・余単位の三因子を整理して長辺値式へ合成する。
   未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
-  F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
-- 残り：F1b は F2N-1 → F2N-3 → F2N-5。F2N-5 は F1 の F2N-2 と N の F2N-4 完成後。
+  F1b は a7 のみ担当。完了時は F1 の交換入力に合う定理を公開し、次の割り当てを待つ。
+- 残り：F1b は F2N-1 a7 のみ。F2N-3 は N、F2N-5 は F1。
 - 依存：N の HomotopyLimits と F1 の straightening・前層・Yoneda は読み取り専用。
   F1 計画では前層・Yoneda は後続工程。提供済みの範囲をソースで確認し、存在を仮定して済ませない。
   N の一般の coherent 図式の余極限・γ4 の最新状況は e-infinity-algebras.md を参照。
   移管前の詳細は [archive/infinity-core-F2-N-handoff-2026-10-20.md](archive/infinity-core-F2-N-handoff-2026-10-20.md)。
-- 提供：K-基盤へ κ-compact・retract 閉性と compact 生成、D へ安定性の界面。
-- 所有：F2/ のうち Ind/・Ind.lean（F1）と Idempotent/・Idempotent.lean（N）を除く。F2 集約・監査と両計画も所有。
+- 提供：F1 の IndFiniteLimitExchangeInput.exchange と同じ仮定・結論の全有限形状の交換定理。compact は N、Ind の安定性は F1。
+- 所有：F2/ のトップレベルのみ。Ind/・Ind.lean（F1）、Compact/・Compact.lean と Idempotent/・Idempotent.lean（N）は読み取り専用。F2 集約・監査と両計画も所有。
 - 既知の問題：通常の小圏の strict 図式だけでは一般の filtered 図式を網羅しない。
   Ind の生成・普遍性、冪等完備化の普遍性は構造の仮定にせず証明する。
 - 次の一手：F2N-1 a7：ApexRawTriangleCandidate_eq_universal_iff の右辺（元の普遍比較の値＝同じ四因子境界式）を証明する。
@@ -204,22 +204,22 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   PointedFirst/Last/LongIso は三面を元の実 prism に同定済み。RestrictionIso_precomp/shared と initial は二段制限・共有制限・初点の整合。
   三頂点の作用は SpaceTrianglePointedVertexActions で計算済み。Middle/TargetCoefficientMap は元の実 fiber 内の同じ全係数作用。
   PointedMiddle/TargetEndpointIso は同じ全比較の終点像。PointedLongTransport は δ₁ ▷ A ≫ spaceSimplexPointedFamily s と同じ実両端を持つ元の長区間の輸送証人。
-  次の値照合は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂。既存の指定比較の値・元の三辺・指定精密化を保持する。spaceCompositionZeroComparison_endpoint_value_heq_normalized は元の指定終点同型の値を (pointedOppositeTriangleFunctorIso s).postcomp V へ同定済み。pointedOppositeHomAction_vertex と uliftOppositeKanPostcomposition_comp は両端を元の二段作用・長辺作用へ正規化する。coherentKanTwoSidedIntervalIso は同じ全共通 Hom 解像上の F1 の左右区間比較。edgewiseRefinementRightResolution e / LeftResolution e は重み同型の後で (0,0,0,1) / (0,1,1,1) の退化を元の e へ前合成した実一単体で、RightResolution_right は e、LeftResolution_left は opObjEquiv.symm e、他二射影は元の両端へ定値（EdgewiseRefinementConstantProjections）。EdgewiseRefinementEndpoints/Edges/VertexProjections は二辺の実始点と同じ共通終点、元の二端点の射影を保持済み。coherentKanRefinementRight/Left_naturality は同じ F1 の指定比較の二正方形。coherentKanRefinement_common_component_cancel は同じ共通終点の成分を消去し、四辺の元の類と二つの定値成分を保持する。CoherentKanRefinementIntervalEdges は実辺全体の像を元の e・op e・両定値辺へ一致。次は残る二つの定値辺の類を端点の表示変更を保持して除去する。まず X.map (const ⦋1⦌ ⦋1⦌ j).op e を X.σ 0 (X.δ j.rev e) へ戻し、反転側は SSet.op_σ、区間の像は自然性で同じ退化辺へ戻す。coherentKanLeftHomInterval_reverse により左区間族は F1.PointedReverseCompositionTransport の元の反転 Kan 区間に係数交換だけで一致するので、同じ全係数作用をその parametrizedIso/diagonalIso に接続する。元の一単体の逆辺を選ばず、その値の式に pointedValueFamilyTransportIso_at_right と指定単位・余単位の両三角式を入力し、三因子を整理する。これを pointedValueTriangle_isoSquare と零面の二辺厳密合成の coherent 合成四角形へ接続して長辺値式を得る。零面の係数は元の K₀ に固定し、別の族への等式や値の整合を仮定しない。
+  次の値照合は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂。pointedHomRefinement_value_coherence K L e は元の反転精密化の作用と元の右区間輸送を、同じ指定左右比較と pointedLeftHomValueActionIso の両端成分で接続済み。まず s := coherentColimitApexTriangle B T、e := coherentTriangleHomotopy s を入れ、左の元の類を pointedOppositeTriangleFunctorIso の値へ、右の元の類を pointedValueTriangleTransportIso へ正規化する（後者は pointedValueTriangleIntervalImage_iso）。両端成分は元の指定比較と照合し、pointedValueFamilyTransportIso_at_right と指定単位・余単位の両三角式で三因子を整理する。pointedValueTriangle_isoSquare と零面の二辺厳密合成の coherent 合成四角形へ接続して長辺値式を得る。零面の係数は元の K₀ に固定し、値の整合を仮定しない。
   δ₀ の面の係数は元の s.obj 0 のまま保持する。RawUniversalBoundary_iff_coefficient と of_long_value は、値照合から恒等初期値と任意の全初期値への忠実な反映を証明済み。反映を未証明の値式の代わりに使わない。
   RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
   HTT §5.3.3、a7 残り12〜24時間（暫定。三角形に沿う全指定因子の照合に不確実性）。strict 図式だけでは完了としない。
-  a7 後は承認を待たず F2N-3 へ。その後 F1 の Ind・N の冪等完備化を利用して F2N-5。
+  a7 後は全有限 K の CoherentFilteredLimitExchangeShape K を公開し、F1 の IndFiniteLimitExchangeInput.exchange に渡せることを確認して報告、次の割り当てを待つ。
 
 | 工程 | 担当 | 内容と受入条件 | 原典 | 見積もり |
 | --- | --- | --- | --- | --- |
 | F2N-1 | F1b | filtered ∞ 圏と κ-filtered の定義、cofinality、𝒮 の filtered 余極限と有限極限の交換。一般の coherent な図式で証明する | HTT §5.3.1–3 | 40〜100 時間 |
 | F2N-2 | F1（10-22 12:35 移管） | 前層の全部分 ∞ 圏として Indκ(C) を構成。filtered 余極限による生成と、保存関手の延長の普遍性を証明する | HTT 5.3.5.1–10 | 50〜120 時間 |
-| F2N-3 | F1b | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
+| F2N-3 | N | κ-compact、Yoneda 像の compact 性、retract による閉性、Ind の compact 対象の比較 | HTT §5.3.4、5.3.5.5・11 | 30〜80 時間 |
 | F2N-4 | N | coherent な冪等図式と分裂、前層内の retract 閉包、冪等完備化の普遍性、compact 部分との同定 | HTT §5.1.4、5.3.4.17 | 40〜100 時間 |
-| F2N-5 | F1b | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
+| F2N-5 | F1 | C が小安定なら Ind(C) は安定。有限図式の filtered 表示と極限余極限の交換から証明し、冪等完備 C の compact 生成を公開 | HTT 5.3.3・5.3.5.15、HA §1.1.3 | 40〜100 時間 |
 
 宇宙は第 1 部と共通。κ の正則性・図式の小ささを明示し、Indω と非連結 K 用の大きい κ を混同しない。
 有限図式を C 内の図式の filtered 余極限で表示する際は、HTT 5.3.5.15 の有限半順序集合という条件を保持する。
