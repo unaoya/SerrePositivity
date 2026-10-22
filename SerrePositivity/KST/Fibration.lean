@@ -10,3 +10,8 @@ public import SerrePositivity.KST.Fibration.FunctorCoreCriterion
 public import SerrePositivity.KST.Fibration.FullFunctorCore
 public import SerrePositivity.KST.Fibration.KernelWeakContractibility
 public import SerrePositivity.KST.Fibration.ConnectiveFiberObstruction
+public import SerrePositivity.KST.Fibration.RelativeSConstruction
+public import SerrePositivity.KST.Fibration.RelativeSQuotient
+public import SerrePositivity.KST.Fibration.RelativeSKernel
+public import SerrePositivity.KST.Fibration.RelativeSFunctor
+public import SerrePositivity.KST.Fibration.RelativeSKernelSquare

@@ -1,0 +1,47 @@
+module
+public import SerrePositivity.KST.Fibration.RelativeSFunctor
+public import SerrePositivity.KST.Fibration.RelativeSKernel
+
+/-! # 元の包含を保つ相対 S• 四角形
+
+core S•A → wS•(A, qf) と core S•B → wS•(B, q) の間に、
+元の完全関手による可換四角形を構成する。実現後の pullback 性は別の証明課題。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+open SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.Fibration
+
+/-- K-5 の完全関手による、元の各段の core S• の射。 -/
+def coreSExactMap {A B : StableCategory.{u}} (f : ExactMap A B) :
+    simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor ⟶
+      simplicialSConstruction B.obj ⋙ quasicategoryCoreFunctor where
+  app n := quasicategoryCoreMap (sPostcomp n.unop.len f.hom (exactMap_preservesSData f))
+  naturality {n m} θ := by
+    change quasicategoryCoreFunctor.map (sMap A.obj θ.unop.toOrderHom) ≫
+        quasicategoryCoreFunctor.map
+          (sPostcomp m.unop.len f.hom (exactMap_preservesSData f)) =
+      quasicategoryCoreFunctor.map
+          (sPostcomp n.unop.len f.hom (exactMap_preservesSData f)) ≫
+        quasicategoryCoreFunctor.map (sMap B.obj θ.unop.toOrderHom)
+    rw [← Functor.map_comp, ← Functor.map_comp, exactSPostcomp_reindex]
+
+/-- 元の core 包含と相対包含は、全段・全単体作用素で可換な四角形をなす。 -/
+theorem relativeSimplicialKernelSquare {A B : StableCategory.{u}} {C : SSet.{u}}
+    (f : ExactMap A B) (q : B.obj ⟶ C) :
+    CommSq (relativeSimplicialSConstructionCoreInclusion (f.hom ≫ q))
+      (coreSExactMap f) (relativeSimplicialFunctorMap f q)
+      (relativeSimplicialSConstructionCoreInclusion q) := by
+  constructor
+  apply NatTrans.ext
+  funext n
+  exact relativeSFunctorMap_core f q n.unop.len
+
+end SerrePositivity.KST.Fibration
