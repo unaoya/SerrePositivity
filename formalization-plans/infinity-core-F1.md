@@ -35,12 +35,12 @@
   `strictRightFibrationColimitFiberIso` は同じ余極限の fiber と元の各 fiber の余極限との同型。
   元の全空間の脚が誘導する fiber 写像との一致、同じ通常の余錐の余極限性まで証明済み。
   `strictRightFibrationFiberNativeCocone_isColimit` はその同じ余錐の SpaceInfinity 内の余極限性。
-  `strictRightStraighteningOriginalFiberDiagramIso` は元の分類の評価図式と right fiber 図式の反転の関手同型。
-  共通 Hom 解像の反転との比較も、元の通常の全図式上の関手同型として証明済み。
-  `strictRightStraighteningCocone` は元の全空間の余極限の脚を分類して得た同じ前層余錐。
-  coherent な前層余極限との比較はまだ未証明。通常の strict 余極限をそのまま ∞ 余極限とは主張しない。
+  `strictRightStraighteningColimitFiberCoconeIso` は同じ前層余錐の全評価 join 射と実際の反転 fiber 余錐の関手同型。
+  `strictRightStraighteningCocone_isColimit` は同じ strict filtered 余極限の分類余錐の native な余極限性。
+  元の全空間の余極限の脚と全高次の整合性を保持し、別の余錐の存在で代用しない。
+  一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6510 jobs、公理監査 825 宣言、標準三公理のみ。
+- 独立集約 6528 jobs、公理監査 850 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -65,7 +65,7 @@
 - `strictRightFibrationColimit`、`strictRightFibrationColimitProjection_ι`
 - `strictRightFibrationColimit_isKappaFiltered`
 - `strictRightFibrationColimitFiberIso`、`strictRightFibrationFiberNativeCocone_isColimit`
-- `strictRightStraighteningOriginalFiberDiagramIso`、`strictRightStraighteningCocone`
+- `strictRightStraighteningColimitFiberCoconeIso`、`strictRightStraighteningCocone_isColimit`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -93,8 +93,8 @@
 
 (c)：`HasKappaFilteredElements` の同型閉性と Yoneda 像は証明済み。
 正則 κ の下で小さい κ-filtered 余極限閉性を示す。strict 模型の閉性と相対因子分解は証明済み。
-元の分類の評価図式から元の right fiber 図式の反転まで、大域的な関手同型は証明済み。
-次はこの比較を同じ `strictRightStraighteningCocone` 全体へ延長し、元の fiber 余錐の普遍性へ接続する。
+同じ `strictRightStraighteningCocone` 全体の評価比較と、前層 ∞ 圏内の余極限性は証明済み。
+次はその頂点の元の right unstraightening と strict な全空間を比較し、元の κ-filtered 条件へ接続する。
 κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。

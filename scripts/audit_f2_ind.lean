@@ -73,6 +73,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningOriginalFiberDiagramIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.coherentReturn_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictNativeCocone_postcomp_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationOppositeCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningColimitFiberCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictOppositeFiberNativeCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

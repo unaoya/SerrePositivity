@@ -40,3 +40,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppo
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningFiberDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.CoherentReturnPostcomposition
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningFiberCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictOppositeFiberColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningColimit
