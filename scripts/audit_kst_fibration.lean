@@ -12,7 +12,11 @@ run_cmd do
     `SerrePositivity.KST.Fibration.RelativeDiagramMap,
     `SerrePositivity.KST.Fibration.RelativeDiagramCore,
     `SerrePositivity.KST.Fibration.RelativeSimplicialDiagram,
-    `SerrePositivity.KST.Fibration.RelativeDiagramKernel]
+    `SerrePositivity.KST.Fibration.RelativeDiagramKernel,
+    `SerrePositivity.KST.Fibration.FunctorCoreCriterion,
+    `SerrePositivity.KST.Fibration.FullFunctorCore,
+    `SerrePositivity.KST.Fibration.KernelWeakContractibility,
+    `SerrePositivity.KST.Fibration.ConnectiveFiberObstruction]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

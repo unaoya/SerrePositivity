@@ -12,8 +12,6 @@
   引き戻しでの保存と反映、実 cofiber 列間のホモトピーに対する拡大安定性を証明済み。
 - この工程は thick 性より弱い安定な本質像で成立する。商の冪等完備化や連結 K の
   fiber 性はまだ主張しない。拡大安定性の三角形の射は実ホモトピーから構成する。
-- 対象ビルド 2830 jobs・専用監査 2 モジュール 13 宣言・全体 23534 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
 - 工程 (b) の準備：任意の評価族の商像が core に属する全単体から `relativeDiagram` を
   構成。実辺と全単体の成分ごとの W 判定、全頂点の保持、内ホーン充填を証明済み。
   評価を再添字する実射の恒等・合成・包含後の回収と core 評価との可換性も証明済み。
@@ -21,7 +19,14 @@
   核に属する全評価で相対条件が自動的に成立することを証明済み。
   評価と再添字が可換な単体的図式に対して `relativeSimplicialDiagram` を構成した。
   これは一般構成であり、具体的 S• への接続・実現・fiber 比較は未完。
-- 現在の対象ビルド 2835 jobs・専用監査 7 モジュール 47 宣言・全体 23677 jobs が成功。
+- 工程 (b) の商比較：関手 ∞ 圏の core の全単体を頂点評価で判定し、相対図式を
+  後合成による core の逆像と同定。指定全部分図式圏への商の実射があるとき、
+  その core への実比較を構成し、元の core 上の商射と周囲への包含を回収する。
+  gapped 条件や局所化比較の存在を仮定・完成扱いするものではない。
+- 核に入る評価を持つ図式が零対象を持つなら、相対部分複体は弱可縮と証明済み。
+- 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
+  自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
+- 現在の対象ビルド 5729 jobs・専用監査 11 モジュール 63 宣言・全体 23709 jobs が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
 
 ### 残り（依存順）
@@ -44,6 +49,11 @@
   relativeDiagram_eq_of_verdier、relativeDiagram_eq_top_of_kernel、
   relativeSimplicialDiagram、relativeSimplicialDiagramInclusion、
   relativeSimplicialDiagramCoreInclusion。
+- functorCore_mem_iff、relativeDiagram_eq_functorCore_preimage、
+  relativeDiagramFunctorCoreMap、relativeDiagram_eq_fullFunctorCore_preimage、
+  relativeDiagramFullFunctorCoreMap、relativeDiagramFullFunctorCoreMap_core、
+  relativeDiagramFullFunctorCoreMap_ambient、relativeDiagram_kernel_isWeaklyContractible、
+  fiberProjection_surjective_iff_boundary_trivial、connectiveFiber_projection_piZero_surjective。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -54,9 +64,12 @@
   K-S•（`01a151d3-f75d-7ef2-9d1f-908c85eb1be1`）へ、K-1・K-2 の範囲で固定して使える
   S_n の全 Ar 評価・再添字との厳密可換性の最小公開名、および相対 W 版に使える
   加法性・homotopy fiber 比較の界面を依頼済み。返答を待ち、内部宣言を独自に使わない。
+- 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
+  Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の一般相対図式の5モジュール・集約・監査・本計画を同じ保存単位に含める）。
+- なし（今回の商比較・核の弱可縮性・連結 fiber 必要条件の4モジュールと集約・監査・
+  本計画を同じ保存単位に含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。K-6 全体と連結版の cofinality 条件は未完。
@@ -64,6 +77,8 @@
 ### 次の一手
 - K-S• の依頼への返答と L1 計画の界面記録を確認し、固定された評価・再添字を
   `relativeSimplicialDiagram` へ入力して具体的 wS•C を構成する。
+  商比較には `relativeDiagramFullFunctorCoreMap` を、核の可縮項には
+  `relativeDiagram_kernel_isWeaklyContractible` を使う。
   その後 core S•D → core S•C → wS•C の実現後の fiber 比較へ進む。
   未返答時は SConstruction の内部への依存を追加せず、所有境界を守る。
 

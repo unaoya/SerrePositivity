@@ -6,3 +6,7 @@ public import SerrePositivity.KST.Fibration.RelativeDiagramMap
 public import SerrePositivity.KST.Fibration.RelativeDiagramCore
 public import SerrePositivity.KST.Fibration.RelativeSimplicialDiagram
 public import SerrePositivity.KST.Fibration.RelativeDiagramKernel
+public import SerrePositivity.KST.Fibration.FunctorCoreCriterion
+public import SerrePositivity.KST.Fibration.FullFunctorCore
+public import SerrePositivity.KST.Fibration.KernelWeakContractibility
+public import SerrePositivity.KST.Fibration.ConnectiveFiberObstruction
