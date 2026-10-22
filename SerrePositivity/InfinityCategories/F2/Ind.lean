@@ -340,3 +340,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeCoeff
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberEmbedding
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberPrism
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberVertex
+public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPrism
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberCoefficient
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberTransformation
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberCoefficientColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
