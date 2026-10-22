@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone
+import SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction
+import SerrePositivity.InfinityCategories.Stable.PosetNestedBoundCocone
+import SerrePositivity.InfinityCategories.Stable.PosetNestedBoundColimit
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridPastCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanRetraction
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanShapeMaps
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanShapeIso
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSquare
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterPushout
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreTranspose
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperSeedCorner
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectangleCocone
@@ -4348,6 +4359,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone,
+    `SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction,
+    `SerrePositivity.InfinityCategories.Stable.PosetNestedBoundCocone,
+    `SerrePositivity.InfinityCategories.Stable.PosetNestedBoundColimit,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridPastCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanRetraction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanShapeMaps,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanShapeIso,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSquare,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterPushout,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreTranspose,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperSeedCorner,
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridUpperRectangleCocone,
