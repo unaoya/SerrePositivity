@@ -3903,3 +3903,39 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleSmallIso_heq_smallFunctor
 
 #check @SerrePositivity.InfinityCategories.F2.functorTriangleSmallTotalActionIso_heq_smallFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.uliftVertexIso_eq_mapIso
+
+#check @SerrePositivity.InfinityCategories.F2.uliftVertexIso_downVertexIso
+
+#check @SerrePositivity.InfinityCategories.F2.uliftVertexIso_heq_of_heq
+
+#check @SerrePositivity.InfinityCategories.F2.uliftVertexIso_mapped_down_heq
+
+#check @SerrePositivity.InfinityCategories.F2.uliftFunctorSpaceIso_post
+
+#check @SerrePositivity.InfinityCategories.F2.uliftFunctorSpaceIso_inv_post_hom
+
+#check @SerrePositivity.InfinityCategories.F2.smallTotalHomShrink
+
+#check @SerrePositivity.InfinityCategories.F2.smallTotalHomShrink_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.smallTotalHomShrink_post_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningFunctorIso_post_lift_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeModel_smallMap_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeModelComparison_heq_of_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeModelComparison_smallFunctor_heq_large
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeModelComparison_heq_large_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeModelTarget_eq_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalTriangleNativeModelComparison_eq_unit_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalNativeModel_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_vertexMap_heq

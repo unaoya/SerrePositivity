@@ -17,6 +17,14 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.F2
 
+/-- 元の関手同型の後合成は、同じ内部 Hom の射による指定値の像。 -/
+lemma functorIso_postcomp_vertexMap_heq {X Y Z : SSet.{u}} {f g : X ⟶ Y}
+    (e : FunctorIso f g) (q : Y ⟶ Z) :
+    HEq (e.postcomp q) (VertexIso.map e ((ihom X).map q)) := by
+  rw [functorIso_postcomp_eq_mapIso]
+  simp only [VertexIso.map, hoFunctor_map, Functor.toCatHom_toFunctor]
+  rfl
+
 /-- 同じ内部 Hom の合成作用の像は、元の関手同型の前後合成と値まで一致する。 -/
 lemma functorIso_whisker_vertexMap_heq {A X Y Z : SSet.{u}} {f g : X ⟶ Y}
     (e : FunctorIso f g) (a : A ⟶ X) (v : Y ⟶ Z) :

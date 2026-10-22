@@ -30,14 +30,14 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  元の模型正方形の上側 native 因子を消去し、同じ単位終点の三角形交換を証明。小さい三角形と元の全空間三角形の縮小の指定値も同定。
+  元の模型三角形の単位後合成・宇宙往復を同定し、a6 の元の区間比較の三角形交換式へ同じ模型値を等式で代入済み。
   元の raw/native 区間族・単位の実二座標・成分の値を照合し、既存の下側因子を同じ実一点輸送比較へ同定。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   F1b は a7 後に F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化完成後に F2N-5。
-  検証：三集約同時ビルド9787 jobs、公理監査13372宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の上側 native 因子の消去・全三角形の単位交換・相対縮小の忘却と同じ全空間三角形の指定値の照合を含む追加15明示宣言を型検査。
+  検証：三集約同時ビルド9798 jobs、公理監査13406宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  指定同型の宇宙往復・全 Hom の縮小後合成・模型三角形の単位像と実両端・元の区間比較の三角形式への代入を含む追加18明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 - F2N-1：𝒮 の一般 coherent filtered 余極限と有限極限との交換。全空間模型の native 余極限性は証明済み。
@@ -96,9 +96,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   LowerTransportFactorIso_heq_constant_point_unit と ConstantTriangleValue_heq_fiber_unit で元の二因子を同じ単位・値へ照合済み。
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
-  IntervalModel_square_reduced・ModelUnitComparison_eq_reduced は元の選択済み比較の三因子への還元。ModelUnitComparison_triangle は元の単位交換。
-  次は SmallTotalActionIso_heq_smallFunctor の同じ指定値を単位で後合成し、持ち上げ・縮小の往復を消して TotalTriangleNativeModelComparison へ照合。五因子の整合式へ代入する。
-  下側輸送・上側単位・上側 native の元の外側因子を消去し、同じ三辺と指定三角形の関係を回収する。
+  IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
+  次はこの式の上側三角形項と UnitValueAction_coherence の同じ項を照合し、五因子式を代入。下側輸送・上側単位を消去し、同じ作用の充満忠実性で反映する。
+  最初辺の後合成因子を、元の最後辺の区間族と同じ普遍輸送成分へ照合し、同じ三辺と指定三角形の関係を回収する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
@@ -182,7 +182,7 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  元の模型正方形の上側 native 因子を消去し、同じ単位終点の三角形交換を証明。小さい三角形と元の全空間三角形の縮小の指定値も同定。
+  元の模型三角形の単位後合成・宇宙往復を同定し、a6 の元の区間比較の三角形交換式へ同じ模型値を等式で代入済み。
   元の raw/native 区間族・単位の実二座標・成分の値を照合し、既存の下側因子を同じ実一点輸送比較へ同定。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
@@ -203,9 +203,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   LowerTransportFactorIso_heq_constant_point_unit と ConstantTriangleValue_heq_fiber_unit で元の二因子を同じ単位・値へ照合済み。
   cancel_original_precomp_postcomp と UpperUnitFactor_triangle_cancel は同じ元の指定三角形・実終点の消去式。
   UpperNativeFactorIso_heq_components は同じ nativeActionComponentsIso の逆へ値まで同定済み。
-  IntervalModel_square_reduced・ModelUnitComparison_eq_reduced は元の選択済み比較の三因子への還元。ModelUnitComparison_triangle は元の単位交換。
-  次は SmallTotalActionIso_heq_smallFunctor の同じ指定値を単位で後合成し、持ち上げ・縮小の往復を消して TotalTriangleNativeModelComparison へ照合。五因子の整合式へ代入する。
-  下側輸送・上側単位・上側 native の元の外側因子を消去し、同じ三辺と指定三角形の関係を回収する。
+  IntervalNativeModel_triangle は元の三辺・模型比較を保つ単位交換式。NativeModelComparison_eq_unit_triangle は実両端を明示した同じ指定値の一致。
+  次はこの式の上側三角形項と UnitValueAction_coherence の同じ項を照合し、五因子式を代入。下側輸送・上側単位を消去し、同じ作用の充満忠実性で反映する。
+  最初辺の後合成因子を、元の最後辺の区間族と同じ普遍輸送成分へ照合し、同じ三辺と指定三角形の関係を回収する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
