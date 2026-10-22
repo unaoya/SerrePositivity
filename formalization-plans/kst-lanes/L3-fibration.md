@@ -11,10 +11,8 @@
   cofiber による W 所属と商の実辺の可逆性を同定し、実二単体の二対三性、実押し出し・
   引き戻しでの保存と反映、実 cofiber 列間のホモトピーに対する拡大安定性を証明済み。
 - 工程 (a) は thick 性より弱い安定な本質像で成立。冪等完備化・fiber 性は未主張。
-- 工程 (b) の一般構成：`relativeDiagram` の全単体・W 辺判定・内ホーン充填・
-  厳密な再添字・core 包含と商の選択独立性を証明済み。全評価が核に入ると条件は自動。
-  `relativeSimplicialDiagram` を具体的 S• に接続済み。相対図式は商の関手圏の core の
-  逆像であり、指定全部分図式圏への比較は元の core 上の商射と周囲への包含を回収する。
+- 工程 (b)：`relativeDiagram` の全単体・W 判定・内ホーン充填・厳密な再添字・core 包含、
+  商の選択独立性を証明し、商の関手圏の core の逆像と同定。具体的 S• へ接続済み。
 - 核に入る評価を持つ図式が零対象を持つなら、相対部分複体は弱可縮と証明済み。
 - K-S• の固定界面（L1 §6）を受領し、全 gapped 図式を保持した具体的 wS•C を構成。
   全 Ar 成分での W 判定・全ての面退化・元の core からの包含を接続済み。
@@ -35,12 +33,15 @@
   最後の比較列の三頂点の核値性を証明し、E(ker q,B,ker q) 値の完全関手を構成済み。
   元の実四角形の族を包含で回収し、始点は第一短辺の共通 cofiber と厳密に一致。
   cofiber 評価は第二短辺の共通 cofiber と核の実関手圏で自然同型。八面体の再添字比較は未完。
+  核の相対 middle 完全関手と、K-1 の全正有限反復加法射・任意相対完全関手の因子分解を構成。
+  八面体の middle と長辺の核値 cofiber の自然同型、比較列の全反復加法性も証明済み。
+  元の三辺への局所化等式の書き換えは、下記の K-S• 固定界面待ち。
   列全体の加法性比較の自然性・実現後の fiber 比較は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 6174 jobs・専用監査 41 モジュール 311 宣言が成功。
+- 現在の対象ビルド 6178 jobs・専用監査 45 モジュール 340 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 2542 モジュールは EInfinity を含まない。最新全体ビルドは下記の別レーン衝突で失敗。
+  所有 import 閉包 2546 モジュールは EInfinity を含まない。全体 23871 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -52,28 +53,25 @@
 4. 冪等完備化と非連結化への入力の整理（BGT §9、暫定 8–16 時間。K-7 本体は別工程）。
 
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Fibration`）
-- weakEquivalences、stableClosure_essentialImage、mem_weakEquivalences_iff、
-  mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
+- weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - relativeDiagram、relativeSimplicialDiagram、relativeDiagramFullFunctorCoreMap。
 - relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
-  relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、
-  relativeSimplicialFunctorMap、relativeSimplicialKernelSquare。
+  relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
 - sInputModel、kernelClosedPredicate、weakCofiberModel、weakCofiberAdditivity_localized_isIso、
   weakCofiberProjection_trivialKanFibration、weakArrowCofiberEquivalence、
   weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringCategory、weakStringCategory_isStable、weakStringStableSimplicial、
   weakStringMultiRealization、weakStringEdgeExact、weakStringCofiberExact_reindex。
 - weakStringKernelCofiber、weakStringCofiberVertex_bottom、weakStringCofiberVertex_kernel。
-- cofiberFamily_isCofiber、weakStringCofiberFamily_bottom、weakStringCofiberFamily_reindex、
-  weakStringCofiberFamily_quotient、weakStringOctahedronFamily、
-  weakStringOctahedronFamily_compositeComparison、weakStringOctahedronFamily_nextComparison、
-  weakStringOctahedronFamily_middle_kernel。
-- cofiberFamilyUntranspose、cofiberFamily_preservesCofiberData_of_endpoints、
-  weakStringOctahedronCofiberExact、weakStringOctahedronRelativeExact、
-  weakStringOctahedronRelativeExact_inclusion、weakStringOctahedronSourceExact_eq、
+- cofiberFamily_isCofiber、weakStringCofiberFamily_reindex、weakStringCofiberFamily_quotient、
+  weakStringOctahedronFamily、weakStringOctahedronFamily_middle_kernel。
+- cofiberFamilyUntranspose、weakStringOctahedronRelativeExact、weakStringOctahedronSourceExact_eq、
   weakStringOctahedronTargetExact_comparison。
+- kernelRelativeMiddle、kernelMultiAddition_of_relativeFunctor、
+  weakStringOctahedronMiddleExact_comparison、weakStringOctahedronMultiAddition、
+  pair_right_eq_of_anodyneQ_eq。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -87,20 +85,22 @@
   W の保存・相対比較を別に証明する。K-3 以降の移動中の界面には依存しない。
   追加固定界面は L1 §6 の `cofiberDiagrams`・`cofiberProjection`・
   `cofiberProjection_trivialKanFibration`。W 条件への制限と全境界持ち上げは K-F が証明した。
+  追加依頼（10-22、同チャットで作業中）：FunctorIso f.val g.val から正の全反復実現射の
+  anodyne 局所化像の等号を与える supporting interface。L1 §6 の固定記録を待つ。
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の八面体比較列の相対完全関手化の6モジュール・集約・監査・本計画を含める）。
+- なし（今回の核の全反復加法性・middle 比較の4モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
-- 所有 import 閉包の破損なし。全体は F1.IntervalMinimum / F1B.IntervalPrefix の intervalMinimum 同名衝突。
+- 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  E(ker q,B,ker q) 値の完全関手に K-1 を適用し、全有限反復の三辺の加法性比較へ進む。
-  八面体族の再添字比較を揃え、列全体の加法性比較へ渡す。
+  K-S• の依頼済み固定界面を受領し、middle・target の自然同型を全反復実現射の等式へ移す。
+  元の三辺の加法性等式と再添字の整合性を揃え、列全体の加法性比較へ渡す。
   共通補完の再添字可換性を保持して K-2 の単体積版 Quillen A に接続する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 

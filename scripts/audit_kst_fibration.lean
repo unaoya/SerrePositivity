@@ -46,7 +46,11 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakStringOctahedronExact,
     `SerrePositivity.KST.Fibration.CofiberFamilyKernelRestriction,
     `SerrePositivity.KST.Fibration.WeakStringOctahedronRelative,
-    `SerrePositivity.KST.Fibration.WeakStringOctahedronEvaluations]
+    `SerrePositivity.KST.Fibration.WeakStringOctahedronEvaluations,
+    `SerrePositivity.KST.Fibration.KernelRelativeMiddle,
+    `SerrePositivity.KST.Fibration.KernelMultiAddition,
+    `SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle,
+    `SerrePositivity.KST.Fibration.LocalizedPairEquality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

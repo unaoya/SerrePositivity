@@ -40,3 +40,7 @@ public import SerrePositivity.KST.Fibration.WeakStringOctahedronExact
 public import SerrePositivity.KST.Fibration.CofiberFamilyKernelRestriction
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronRelative
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronEvaluations
+public import SerrePositivity.KST.Fibration.KernelRelativeMiddle
+public import SerrePositivity.KST.Fibration.KernelMultiAddition
+public import SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle
+public import SerrePositivity.KST.Fibration.LocalizedPairEquality
