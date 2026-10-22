@@ -32,3 +32,11 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePr
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OddPositionFixity
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingCellKernel
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePushout
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification
+public import SerrePositivity.InfinityCategories.F2.Idempotent.AbsorbingChainFace
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdentityCollapse
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdentityCollapseChain
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageExhaustive
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageColimit
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakInnerAnodyne
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakExtension

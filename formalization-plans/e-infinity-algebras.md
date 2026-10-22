@@ -22,27 +22,31 @@
   `VertexRetraction.triangle_exists` は元の二射の類を保つ実際の二単体を回収。`RetractionTriangle.weakDiagram` は同じ三角形を元の商へ降ろし、元の二辺・分裂頂点を厳密に回収する。
   `weakComparison` は元の包含・射影の合成二単体を同じ商へ降ろした、強い分裂添字への標準比較。両辺と分裂頂点への一致を証明。
   **Ret の商と元の分裂二単体の像の同定を完了。** 全次数で、同じ像の二単体の単体は、同じ単体か双方が元の長辺を経由すると分類。中央頂点の逆像と単調性を使い、非退化単体だけに制限しない。
-  元の商への全射性と核の分類から `weakComparison_mono` を証明。`weakShapeImageIso` は元の商と元の二単体の像の同型で、同型後の包含は `weakComparison` そのもの。inner anodyne 性は未証明。
+  元の商への全射性と核の分類から `weakComparison_mono` を証明。`weakShapeImageIso` は元の商と元の二単体の像の同型で、同型後の包含は `weakComparison` そのもの。inner anodyne 性は以下で証明。
   **HTT 4.4.5.8 の内角 anodyne 補題を完了。** `missingFaceComplex J` は元の単体の頂点像が J を含まない面の合併。元の面の貼付けの交わりを `puncturedFace` と同定し、元の座標の包含を標準ホーンへ矢印同型で照合。
   `missingFaceStage_innerAnodyne` は指定面と内点を含む下方閉じた有限族への元の包含を、実際のホーン pushout の有限合成で証明。最大頂点数の面を除く有限帰納を使用し、全体の存在を入力に仮定しない。
-  `missingFaceComplex_innerAnodyne` は i,k∈J・i<j<k・j∉J から元の包含そのものの inner anodyne 性を結論。`alternatingCellBoundary_innerAnodyne` は元の奇数頂点集合 {1,3,…,2m−1} のセル境界について全 m≥2 の同じ包含の inner anodyne 性。Ret の濾過の全被覆性と無限合成は未証明。
+  `missingFaceComplex_innerAnodyne` は i,k∈J・i<j<k・j∉J から元の包含そのものの inner anodyne 性を結論。`alternatingCellBoundary_innerAnodyne` は元の奇数頂点集合 {1,3,…,2m−1} のセル境界について全 m≥2 の同じ包含の inner anodyne 性。Ret の濾過の全被覆性と無限合成も以下で証明。
   **元の交互列の全単体と像の増大列を構成。** `alternatingCell m` は偶数位置 Y・奇数位置 X を持つ元の Δ²ᵐ→SplitShape。長さ零の恒等と正の長さの元の吸収射で全射・恒等・合成を構成し、元の包含・射影・非恒等冪等元を回収。
   `alternatingCell_prefix` は元の先頭部分への制限の全 nerve 単体での厳密な一致。`alternatingCell_one` は保存済みの元の分裂三角形そのもの。
-  `retractionStage m` はこの元の全セルの像。元の部分複体としての単調性・全セルの制限と構造射の厳密な可換性を証明。第一段階は `weakRetractionImage` そのもの、`weakShapeStageOneIso_ι` は元の商からの同型後の包含が同じ `weakComparison` であること。全被覆性は未証明。
+  `retractionStage m` はこの元の全セルの像。元の部分複体としての単調性・全セルの制限と構造射の厳密な可換性を証明。第一段階は `weakRetractionImage` そのもの、`weakShapeStageOneIso_ι` は元の商からの同型後の包含が同じ `weakComparison` であること。全被覆性も以下で証明。
   **奇数頂点を避ける各面の元の因子化と境界の前段階への制限を完了。** `oddFaceCollapse` は隣接する二つの Y を潰す元の順序射。偶奇保存と潰れる二位置を計算し、元の全射・恒等・合成を持つ `oddFaceChain` を証明。
   `alternatingCell_oddFace` は元の奇数頂点の余面を、同じ元の短い交互セルへ厳密に因子化。`alternatingCellBoundary_le_preimage` は元の境界全体が元の前段階の逆像に入る向き。
-  `alternatingCellBoundaryLift` は元の全境界から元の前段階への実際の写像。元の包含後に同じ全セルの制限を回収し、`alternatingCellBoundaryLift_square` は元のセルと元の段階包含の正方形の厳密な可換性。全被覆性は未証明。
+  `alternatingCellBoundaryLift` は元の全境界から元の前段階への実際の写像。元の包含後に同じ全セルの制限を回収し、`alternatingCellBoundaryLift_square` は元のセルと元の段階包含の正方形の厳密な可換性。全被覆性も以下で証明。
   **元の前段階の逆像＝元のセル境界を完了。** `chainScalar` は元の全 nerve 単体の射を元の二元モノイドの値で比較。X の元の恒等 1 と、異なる奇数位置間の元の冪等元 e を区別し、同じ全セル像の下では奇数位置の違いを潰せないと証明。
   `alternatingCell_odd_injection_exists` は全奇数位置を通る元の単体から、同じ全セル像を持つ列の奇数位置への実際の単射を構成。選んだ元の位置 v と両列の値の一致を保持。`alternatingCell_odd_rank_le` は元の位置数の比較。
-  `alternatingCell_stage_preimage m` は全 m≥0 で `(retractionStage m).preimage (alternatingCell (m+1)) = alternatingCellBoundary (m+1)` を全次数で厳密に証明。対象の偶奇だけから単射性を仮定しない。残る全被覆性・無限合成は未証明。
+  `alternatingCell_stage_preimage m` は全 m≥0 で `(retractionStage m).preimage (alternatingCell (m+1)) = alternatingCellBoundary (m+1)` を全次数で厳密に証明。対象の偶奇だけから単射性を仮定しない。全被覆性・無限合成も以下で証明。
   **元の全セルの核と隣接段階の実際の pushout を完了。** 選んだ奇数位置の順序自己単射は恒等。全奇数位置の一致と元の単調性から、境界外の単体は退化を含め一意と証明。
   `alternatingCell_kernel` は同じ全セル像を持つ二単体を、元から等しい場合か双方が元の境界に入る場合へ分類。元の逆像境界と合わせ、`retractionStage_isPushout` は同じ四射の単体集合の pushout。
-  `retractionStageMap_innerAnodyne` は全 m≥1 の元の隣接段階包含の inner anodyne 性。全被覆性・無限合成・`weakComparison` 自身の inner anodyne 性は未証明。
+  `retractionStageMap_innerAnodyne` は全 m≥1 の元の隣接段階包含の inner anodyne 性。全被覆性・無限合成・`weakComparison` 自身の inner anodyne 性は以下で証明。
+  **元の Ret 濾過の全被覆性・無限合成・HTT 4.4.5.6 を完了。** 元の二対象・二元の射を分類し、恒等値の隣接射の潰しは元の全単体と厳密に一致。非退化単体を元の交互セルの面へ入れ、退化も含め第 n+1 段階に収容。
+  `retractionStageCocone_isColimit` は元の段階包含を脚とする元の分裂添字の余極限。`weakComparison_innerAnodyne` は元の標準比較そのものを可算無限合成で証明。
+  `weakDiagram_extension_exists`・`weakDiagram_strongSplitting_exists` は任意の quasicategory 内で指定した弱い全 retract 図式を厳密に回収。`weakDiagramExtensionSpace_isContractibleKan` は同じ弱い全図式を固定した元の延長空間の可縮性。
+  既に指定した全 Idem 図式の分裂空間の可縮性・同じ Idem 図式の余極限や極限との同値は未証明。弱い図式の延長空間の可縮性で代用しない。
   同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
   **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
   元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
 - **残り**（依存順、粗い見積もり）：
-  1. F2N-4(a)：弱い retract 三角形から強い coherent 分裂への延長、強い分裂と同じ Idem 図式の余極限・極限の同値、分裂空間の可縮性。HTT 4.4.5.6〜16、15〜40時間。
+  1. F2N-4(a)：強い分裂と同じ全 Idem 図式の余極限・極限の同値、指定した全 Idem 図式の分裂空間の可縮性。HTT 4.4.5.12〜16、15〜40時間。
   2. F2N-4(b)・(c)：前層圏の冪等完備性、retract 閉包への分裂の反映、`Idem C` の冪等完備性、元の因子化による関手 ∞ 圏の普遍性・一意性。HTT 5.1.4.2〜9、25〜70時間。
   3. F2N-4(d)：安定 ∞ 圏の冪等完備化の安定性。元の零対象・有限極限余極限の閉性を証明。HA 1.1.3.7、15〜40時間。
   4. F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1b の F2N-2・F2N-3 の実際の Ind・compact 界面の後。HTT 5.3.4.17・5.3.5、15〜40時間。
@@ -50,6 +54,8 @@
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
   `WeakShape`、`WeakRetractionDiagram`、`weakDiagramEquiv`、`weakComparison`、`RetractionTriangle`、`VertexRetraction.triangle_exists`、`RetractionTriangle.weakDiagram`、
+  `walkingSplit_object_cases`、`walkingHom_cases`、`absorbingChainFace_eq`、`identityCollapse_chain_eq`、`retractionStage_contains_simplex`、`retractionStage_iSup_succ`、
+  `retractionStageCocone_isColimit`、`weakComparison_innerAnodyne`、`weakComparisonRestriction_trivialKanFibration`、`weakDiagram_extension_exists`、`weakDiagram_strongSplitting_exists`、`weakDiagramExtensionSpace_isContractibleKan`、
   `alternatingCell_kernel`、`retractionStage_isPullback_app`、`retractionStage_isPushout_app`、`retractionStage_isPushout`、`retractionStageMap_innerAnodyne`、
   `chainScalar`、`alternatingCell_equal_indices`、`alternatingCell_odd_injection_exists`、`alternatingCell_odd_rank_le`、`alternatingCell_stage_preimage`、
   `oddFaceCollapse`、`oddFaceChain`、`alternatingCell_oddFace`、`alternatingCellBoundary_le_preimage`、`alternatingCellBoundaryLift`、`alternatingCellBoundaryLift_square`、
@@ -61,11 +67,11 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の3モジュール13宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド4143 jobs・全212宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし（今回の8モジュール37宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド4151 jobs・全249宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(a)：元の交互セルの像の増大列の全被覆性を証明する。分裂添字の対象は X・Y、非恒等射は元の吸収射であることを分類し、非退化 nerve 単体を長い交互セルの面へ埋め込む。退化単体へも閉性を使い戻し、第一段階以後の元の包含の inner anodyne 性を無限合成で証明。`weakShapeStageOneIso_ι` から同じ `weakComparison` の inner anodyne 性を回収する。完成済みの核・逆像境界・pushout・各段階の inner anodyne 性を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
+- **次の一手**：F2N-4(a)：HTT 4.4.5.12〜16 の、強い分裂と同じ全 Idem 図式の余極限・極限との同値に進む。まず元の強い分裂添字から元の Idem 図式に分裂頂点を付けた余錐を構成し、元の全図式を制限で厳密に回収する。その後 F1B の余錐・Kan 拡張の界面を読み取り専用で使い、同じ余錐の余極限性と分裂空間の可縮性を証明する。完成済みの Ret の全被覆性・無限合成・`weakComparison_innerAnodyne`・弱い図式を固定した延長と可縮性を再実装しない。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 

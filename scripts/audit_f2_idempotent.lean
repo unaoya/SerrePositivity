@@ -439,3 +439,114 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @retractionStageMap_innerAnodyne
 #print axioms retractionStageMap_innerAnodyne
+
+#check @walkingObject_eq
+#print axioms walkingObject_eq
+
+#check @walkingScalar_cases
+#print axioms walkingScalar_cases
+
+#check @walkingSplit_object_cases
+#print axioms walkingSplit_object_cases
+
+#check @walkingSplit_source_iff
+#print axioms walkingSplit_source_iff
+
+#check @walkingHom_one_endpoints
+#print axioms walkingHom_one_endpoints
+
+#check @walkingHom_cases
+#print axioms walkingHom_cases
+
+#check @absorbingChainPosition
+#print axioms absorbingChainPosition
+
+#check @absorbingChainPosition_strictMono
+#print axioms absorbingChainPosition_strictMono
+
+#check @absorbingChainFaceMap
+#print axioms absorbingChainFaceMap
+
+#check @absorbingChainPosition_obj
+#print axioms absorbingChainPosition_obj
+
+#check @absorbingChainFace_eq
+#print axioms absorbingChainFace_eq
+
+#check @absorbingChain_mem_stage
+#print axioms absorbingChain_mem_stage
+
+#check @identityCollapse
+#print axioms identityCollapse
+
+#check @identityCollapse_succ
+#print axioms identityCollapse_succ
+
+#check @identityCollapse_of_ne
+#print axioms identityCollapse_of_ne
+
+#check @identityCollapse_le
+#print axioms identityCollapse_le
+
+#check @identityCollapseComparison
+#print axioms identityCollapseComparison
+
+#check @walkingScalar_eqToHom_source
+#print axioms walkingScalar_eqToHom_source
+
+#check @walkingHom_eqToHom_of_one
+#print axioms walkingHom_eqToHom_of_one
+
+#check @identityCollapse_obj_eq
+#print axioms identityCollapse_obj_eq
+
+#check @identityCollapseComparison_app
+#print axioms identityCollapseComparison_app
+
+#check @identityCollapse_chain_eq
+#print axioms identityCollapse_chain_eq
+
+#check @walkingChain_degenerate_of_one
+#print axioms walkingChain_degenerate_of_one
+
+#check @walkingChain_nondegenerate_absorbing
+#print axioms walkingChain_nondegenerate_absorbing
+
+#check @retractionStage_contains_simplex
+#print axioms retractionStage_contains_simplex
+
+#check @retractionStage_iSup_succ
+#print axioms retractionStage_iSup_succ
+
+#check @retractionStageFunctor
+#print axioms retractionStageFunctor
+
+#check @retractionStageCocone
+#print axioms retractionStageCocone
+
+#check @retractionStageCocone_isColimit
+#print axioms retractionStageCocone_isColimit
+
+#check @retractionStageOne_transfiniteComposition
+#print axioms retractionStageOne_transfiniteComposition
+
+#check @retractionStageOne_innerAnodyne
+#print axioms retractionStageOne_innerAnodyne
+
+#check @weakComparison_innerAnodyne
+#print axioms weakComparison_innerAnodyne
+
+#check @weakComparisonRestriction_trivialKanFibration
+#print axioms weakComparisonRestriction_trivialKanFibration
+
+#check @weakDiagramExtensionSpace
+#print axioms weakDiagramExtensionSpace
+
+#check @weakDiagramExtensionSpace_isContractibleKan
+#print axioms weakDiagramExtensionSpace_isContractibleKan
+
+#check @weakDiagram_extension_exists
+#print axioms weakDiagram_extension_exists
+
+#check @weakDiagram_strongSplitting_exists
+#print axioms weakDiagram_strongSplitting_exists
