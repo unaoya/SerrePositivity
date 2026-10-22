@@ -67,7 +67,13 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakStringTwoHornComponents,
     `SerrePositivity.KST.Fibration.WeakStringTwoCutComparison,
     `SerrePositivity.KST.Fibration.SimplexFiberBaseChange,
-    `SerrePositivity.KST.Fibration.ProductQuillenABaseChange]
+    `SerrePositivity.KST.Fibration.ProductQuillenABaseChange,
+    `SerrePositivity.KST.Fibration.WeakArrowAmbientExact,
+    `SerrePositivity.KST.Fibration.HornDiagramReflection,
+    `SerrePositivity.KST.Fibration.ComposableWeakArrowReflection,
+    `SerrePositivity.KST.Fibration.GappedPullback,
+    `SerrePositivity.KST.Fibration.ComposableWeakArrowSPullback,
+    `SerrePositivity.KST.Fibration.ComposableWeakArrowObjectPullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

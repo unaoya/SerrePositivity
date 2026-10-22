@@ -29,11 +29,12 @@
   trivial Kan fibration・完全な安定圏同値にした。標的は共有端点上の二つの W 辺図式圏の
   厳密な引き戻し。元の両短辺を回収し、元の二辺の有限比較をこの同値と同じ積比較に因子分解済み。
   単体左 fiber の厳密基底変換同型を構成し、K-2 の単体積版 Quillen A を基底変換後へ移した。
+  零対象・実押し出しの両成分反映を証明し、全 S_n・元の object S でも厳密引き戻しとした。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7160 jobs・専用監査 62 モジュール 444 宣言が成功。
+- 現在の対象ビルド 7167 jobs・専用監査 68 モジュール 460 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3443 モジュールは EInfinity を含まない。全体 23931 jobs で成功。
+  所有 import 閉包 3450 モジュールは EInfinity を含まない。全体 23931 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -71,6 +72,8 @@
   weakStringTwoHorn_multiRealization_localized_isIso、weakStringFiniteComparison_two_factor、
   weakStringFiniteComparison_two_localized_isIso_iff。
 - simplexFiberBaseChangeIso、simplexFiberQuotient_baseChange、productQuillenA_baseChange。
+- composableWeakArrow_isGapped_iff、composableWeakArrow_sConstruction_isPullback、
+  composableWeakArrow_objectS_isPullback（全零単体・単体作用素を含む厳密引き戻し）。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -88,20 +91,18 @@
   multiRealization_map_positive_localized_eq_of_functorIso（正の全反復、ModelCategory 引数なし）。
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
-
 ### 未コミット
-- なし（今回の単体左 fiber・Quillen A 基底変換の2モジュール・集約・監査・本計画を含める）。
-
+- なし（今回の W 辺包含の完全性・反映・S_n と object S の引き戻しの6モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  内ホーンの引き戻し模型上の積比較に、K-1 の単体左 fiber の quotient 同値を基底変換し K-2 を適用する。
-  対象の object S 図式がこの具体的引き戻しを保つことを、零対角と押し出しの共同反映から証明する。
-  二辺の積比較から全有限列へ進み、共通補完の再添字可換性を保持する。
-  商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
+  二辺の元の object S 引き戻しに相対 cofiber の単体左 fiber 条件を移し、K-2 を適用する。
+  RelativeFiberEquivalence.relativeCofiberLeftFiberQuotient_localized_isIso と射影の定義を
+  L1 §6 の固定 K-1/K-2 界面へ追加するよう K-S• へ依頼済み（2026-10-22）。供給確認まで使用を待つ。
+  二辺から全有限列へ進み再添字整合性を保持し、商比較の写像空間と cofinality も証明する。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
