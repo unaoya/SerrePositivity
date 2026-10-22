@@ -640,7 +640,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationHom,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationPrimitive,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationProjections,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizeHom]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizeHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedCompositionPrisms,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedPostcompositionAW,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaAugmentationSliceCube,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageAugmentationComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImageAugmentationPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImagePrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaImagePrismMixed,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaNormalizationCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorPinchedIntervalImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationPrisms,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationCubeIntervalFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismSliceCube]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
