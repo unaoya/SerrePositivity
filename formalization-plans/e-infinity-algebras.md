@@ -6,7 +6,8 @@
 
 ### N（γ1.5・γ3）
 
-- **現在地**：**F2N-4(a)・(b)・(c)・(d) 完了、(e) は未完。** 冪等完備化は 10-22 10:10 ユーザー承認で F1b から移管。
+- **現在地**：**F2N-3（κ-compact）を F1b から移管。(a) と (c) の retract 閉性を完了。(b)・有限余極限閉性・(d) は未完。**
+  **F2N-4(a)・(b)・(c)・(d) 完了、(e) は Ind と compact 界面待ちで保留。** 冪等完備化は 10-22 10:10 ユーザー承認で F1b から移管。
   **N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
   任意 coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram`・`F2.coherentDiagramTotalCocone_isColimit` を読み取り専用で使用。N の部分余極限経路は打ち切り。
   **N-2（γ4）完了。** 固定 SM7・豊穣随伴の元の Hom 同型と合成互換を明示した simplicial Quillen 随伴について証明。
@@ -40,8 +41,13 @@
   **全普遍図式の retract 閉性を完了。** 元の関手の写像空間比較を、前合成の全自然同型を持つ retract 正方形で比較し、相対始対象性と始点境界充填の閉性を証明。全普遍余錐の ∞ 圏は冪等完備。任意の全図式の極限・余極限の存在、元の押し出し・引き戻し四角形、零対象は全関手圏内の retract で閉じる。`bicartesianZeroSquares` の全部分 ∞ 圏と coherent 冪等完備性を構成。下辺への射影と新しい辺への回収も下記で完了。
   **F2N-4(d)：安定性を完了（HA 1.1.3.7）。** 零角の双普遍四角形の下辺射影の正次元全境界充填・充満忠実性と Kan 同値持ち上げを証明。元の辺の retract から像の閉性で双普遍四角形を回収し、指定辺を厳密に保持する実 cofiber を構成。反転で実 fiber も構成し、零角の双方向判定へ接続。
   `IsIdempotentCompletion.isStable` は任意の冪等完備化の安定性。宇宙持ち上げの安定性も証明し、`idem_isStable` は元の `Idem C` 自身の安定性。標的の安定性・新しい普遍図式の存在を入力に仮定しない。
+  **F2N-3 の定義・判定と retract 閉性を完了。** `IsKappaCompact` は κ の宇宙の一般の小さい κ-filtered ∞ 圏と、元の全共変 Hom 関手による指定余極限余錐の保存。添字と標的の宇宙を分け、Ind 用の小さい添字を保持。`IsCompact` は同じ宇宙の ℵ₀ 版。濃度の単調性・filtered 判定・一つの余極限余錐での判定も証明。
+  全共変表現可能関手を一つの反変な単体的関手に束ね、元の対象の retract を全自然 retract へ写す。相対始点境界充填の閉性で全余錐・保存関手の retract 閉性を証明。元の対象の κ-compact 性の retract 閉性・同型不変性を導く。
+  `kappaCompactObjects` は元の全部分 quasicategory、包含は充満忠実。元の圏が coherent 冪等完備なら compact 部分も冪等完備。Yoneda 像の compact 性や Ind の単一 filtered 表示は未証明の入力にしていない。
 - **残り**（依存順、粗い見積もり）：
-  1. F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1 の F2N-2・F1b の F2N-3 の実際の Ind・compact 界面の後。HTT 5.3.4.17・5.3.5、15〜40時間。
+  1. F2N-3(b)：元の表現可能前層の全共変 Hom 関手と評価の比較、前層・Ind 内の compact 性。HTT 5.3.5.5・11、12〜30時間。
+  2. F2N-3(c) の有限余極限閉性：元の全 Hom の極限表示と filtered 余極限・有限極限の交換を照合。HTT 5.3.4、12〜30時間。F1b の交換定理を読み取り専用で使用。
+  3. F2N-3(d)・F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1 の F2N-2 と N の F2N-3(b)・(c) の後。HTT 5.3.4.17・5.3.5、15〜40時間。
   N-4 の局所化・P_Σ の残り e・f・g、E2b の DK/∞ 局所化の普遍性への γ4 の接続、Sp の残る安定性との整合は第 II 段。
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`、型は Lean が正本）：
   `IdemShape`、`SplitShape`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、`IsIdempotentCompletion`、
@@ -57,14 +63,19 @@
   `hasColimit_of_diagram_retract`、`hasLimit_of_diagram_retract`、`bicartesianZeroSquares_isIdempotentComplete`、`bicartesianZeroBottomProjection`、
   `bicartesianZeroBottomProjection_isFullyFaithful`、`bicartesianZeroBottomProjection_kanEquivalenceLifting`、
   `IsIdempotentCompletion.bicartesian_cofiber_exists`、`IsIdempotentCompletion.bicartesian_fiber_exists`、`IsIdempotentCompletion.isStable`、`isStable_ulift`、`idem_isStable`。
+  compact 側（namespace `SerrePositivity.InfinityCategories.F2.Compact`）：`IsKappaCompact`、`IsCompact`、`PreservesKappaFilteredColimits`、`isKappaCompact_of_exists`、
+  `covariantRepresentableDiagram`、`covariantRepresentable_retract`、`IsKappaCompact.of_retract`、`isKappaCompact_iff_of_iso`、
+  `kappaCompactObjects`、`kappaCompactInclusion_isFullyFaithful`、`kappaCompactObjects_isIdempotentComplete`。
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
-- **依存と提供**：F2・F1B・F1 は読み取り専用。所有は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、本 N 節だけ。
-  F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind（F2N-2）、F1b が compact・Ind 安定性（F2N-3・5）、N が F2N-4。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の8モジュール19宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
+- **依存と提供**：F2・F1B・F1 は読み取り専用。所有は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
+  F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind（F2N-2）、F1b が filtered の交換・Ind 安定性（F2N-1・5）、N が compact・冪等完備化（F2N-3・4）。規約は `foundations.md` §8。
+- **未コミット**：なし（今回の compact 5モジュール22宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：compact 独立集約6443 jobs・全22宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
+  F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   N-1〜4 の既存保存は今回も7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(e)。F1 の Ind の単一 filtered 表示と、F1b の compact・Yoneda・retract 界面の保存を確認する。現在 F1 は Ind(c) の coherent 図式への比較と逆方向が未完、F1b は F2N-1 a7 が進行中で compact 界面は未提供。提供後、compact な Ind 対象の恒等射を一つの表現可能な項へ因子化して retract を回収し、元の Yoneda retract 閉包との全 ∞ 圏同値を構成する。HTT 5.3.4.17・5.3.5。未提供の compact 性や単一 filtered 表示を入力に置いて完成とは扱わない。
+- **次の一手**：F2N-3(b)。F1 の `yonedaPresheafEvaluation` と元の前層評価の全自然性を照合し、元の表現可能前層からの共変 Hom 関手全体を同じ評価へ比較する。`presheafInfinity_evaluation_isColimit` で元の全余錐像の普遍性を示す。値ごとの写像空間同値だけでは compact 性を結論しない。Ind への移送は元の包含による余極限保存と全 Hom 比較を使う。
+  F2N-4(e) は保留。F1 の Ind(c) の単一 filtered 表示は未完。提供後、compact な Ind 対象の恒等射を一つの表現可能な項へ因子化して retract を回収し、元の Yoneda retract 閉包との全 ∞ 圏同値を構成する。未提供の compact 性や単一 filtered 表示を入力に置いて完成とは扱わない。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（いずれも本文照合済み）。
 
