@@ -46,3 +46,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.IndComplete
 public import SerrePositivity.InfinityCategories.F2.Compact.IdemToInd
 public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndComparison
 public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndComparisonCriterion
+public import SerrePositivity.InfinityCategories.F2.Compact.ComponentLabels
+public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
+public import SerrePositivity.InfinityCategories.F2.Compact.WeakComponents
+public import SerrePositivity.InfinityCategories.F2.Compact.TotalPointRepresentatives

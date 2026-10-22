@@ -535,3 +535,42 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @idemToCompactInd_isQCatEquivalence_of_retracts
 #print axioms idemToCompactInd_isQCatEquivalence_of_retracts
+
+#check @simplexVertex_component
+#print axioms simplexVertex_component
+
+#check @simplexFirstVertex_component_naturality
+#print axioms simplexFirstVertex_component_naturality
+
+#check @componentLabelMap
+#print axioms componentLabelMap
+
+#check @componentLabelMap_zero
+#print axioms componentLabelMap_zero
+
+#check @componentLabelMap_pre
+#print axioms componentLabelMap_pre
+
+#check @constantToDiscreteNerve
+#print axioms constantToDiscreteNerve
+
+#check @discreteNerve_kanComplex
+#print axioms discreteNerve_kanComplex
+
+#check @discreteNerveComponent
+#print axioms discreteNerveComponent
+
+#check @discreteComponentLabel
+#print axioms discreteComponentLabel
+
+#check @discreteComponentLabel_zero
+#print axioms discreteComponentLabel_zero
+
+#check @discreteComponentLabel_pre
+#print axioms discreteComponentLabel_pre
+
+#check @weakHomotopyEquivalence_mapPiZero_surjective
+#print axioms weakHomotopyEquivalence_mapPiZero_surjective
+
+#check @coherentTotalKan_point_representative
+#print axioms coherentTotalKan_point_representative
