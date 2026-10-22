@@ -3471,3 +3471,35 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_precomp_firstEdge
 
 #check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_post
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleTotalActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_map_constantPost
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.functorHomotopyConstantPost_value_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueIso_triangle_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTrianglePostValue_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactorIso_heq_unitValue
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_square_of_heq
+
+#check @SerrePositivity.InfinityCategories.F2.iso_inverse_exchange_of_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitTriangle_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitTriangle_middle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactor_triangle_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactor_triangle_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_precomp_heq

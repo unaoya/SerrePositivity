@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitNativeUnitTriangle
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerAction
+public import SerrePositivity.InfinityCategories.F2.CoherentNativeUnitValue
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleConstantTargetValue
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleSecondVertexTransport
 
@@ -31,11 +32,8 @@ local notation "m" => CategoryTheory.Functor.map (ihom (leftUnstraightening F))
 
 /-- 元の変換の作用と同じ native 単位表現の作用を、元の値への合成射として読む。 -/
 def coherentColimitUpperCompositeAction :=
-  ((leftUnstraighteningMappingVertexMap F G (coherentVertexOfHomotopy H)).val ≫
-    (leftUnstraighteningMappingVertexMap G (SSet.const z)
-      (coherentNativeUnitRepresentation G).1).val) ≫
-    (constantUnstraighteningFiberProjection ((SSet.uliftFunctor.{u + 1, u}).obj B) z ≫
-      (pointedSpaceFiberValueEquivalence z).hom)
+  (leftUnstraighteningMappingVertexMap F G (coherentVertexOfHomotopy H)).val ≫
+    coherentNativeUnitValueAction G
 
 /-- 元の上面と同じ native 単位表現の全空間比較を、元の値へ写す。 -/
 def coherentColimitUpperTriangleActionIso :

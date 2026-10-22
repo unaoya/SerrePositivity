@@ -519,6 +519,20 @@ public import SerrePositivity.InfinityCategories.F2.FunctorSquareTotalComponentM
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionTotal
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionFirstEdge
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningValuePost
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTotalComponentMap
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTotalAction
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleConstantPostValue
+public import SerrePositivity.InfinityCategories.F2.CoherentNativeUnitValue
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopyConstantPostTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentNativeUnitTriangleExchange
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTrianglePostValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperUnitFactorValue
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoSquareValueTransport
+public import SerrePositivity.InfinityCategories.F2.IsoExchangeCancellation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperUnitTriangle
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperUnitCancellation
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompCompositionValue
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -723,3 +737,35 @@ public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningValue
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_precomp_firstEdge
 
 #check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_post
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleTotalActionIso
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_map_constantPost
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.functorHomotopyConstantPost_value_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentNativeUnitValueIso_triangle_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitTrianglePostValue_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactorIso_heq_unitValue
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_square_of_heq
+
+#check @SerrePositivity.InfinityCategories.F2.iso_inverse_exchange_of_square
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitTriangle_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitTriangle_middle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactor_triangle_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactor_triangle_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_precomp_heq

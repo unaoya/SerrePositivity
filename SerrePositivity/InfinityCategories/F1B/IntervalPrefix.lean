@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
+public import SerrePositivity.InfinityCategories.F1.IntervalMinimum
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
 /-!
@@ -17,14 +17,6 @@ universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：二つの時刻の最小値を取る単体的な射。
-方針：有限順序集合の単調写像を標準単体の直積へ移す。
-規約：端点を 0,1 とする。使われ方：矢印の始点固定の伸長。 -/
-def intervalMinimum : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[1] :=
-  stdSimplexProductMap
-    { toFun := fun p => min p.1 p.2
-      monotone' := fun _ _ h => min_le_min h.1 h.2 }
 
 /-- 概要：パラメータを保ち二つの時刻を最小値でまとめる。
 方針：結合子の後に区間の最小値を作用させる。

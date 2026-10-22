@@ -32,12 +32,13 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   coherentColimitUnitValueAction_coherence は元の全三角形の整合式全体の値への像。元の指定五因子を保持。
   coherentColimitUnitValueAction_total_heq_native は元の余錐の値の比較と a6 の同じ中央比較を照合。
-  coherentColimitUnitValueAction_precomp_firstEdge は最後の辺の指定比較を同じ最初の native 作用で前合成。
-  未完：三角形に沿う指定外側因子の整合・消去、元の二三角形・指定 path の全錐比較、引き戻し保存、
+  単位作用後の全三角形比較は、同じ coherentNativeUnitRepresentation の値への後合成と一致。
+  UpperUnitFactor_triangle_exchange・triangle_cancel は元の長辺・最後の辺の指定単位因子の交換・消去。
+  未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
-  検証：三集約同時ビルド9619 jobs、公理監査12226宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の五因子の値の整合式・全係数の制限の自然性・同じ中央比較への照合を含む追加15明示宣言を型検査。
+  検証：三集約同時ビルド9661 jobs、公理監査12292宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  指定単位値への同定・長辺と最後の辺の単位因子の交換・消去を含む追加16明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -80,7 +81,7 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 
 ### 既知の問題
 
-- F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。前回 F1 の QuasicategoryEnrichedDiagramRealization のエラーは、今回の三集約同時ビルド・同時 import で解消を確認。
+- F1 の前層・Yoneda は F1 計画の後続工程。Ind の存在を仮定して回避しない。F1B の intervalMinimum 複製は straightening 非依存の F1.IntervalMinimum import に置換。衝突ゼロ。
 - 一般の coherent な図式の余極限と、通常の小圏による strict 図式の余極限を区別する。
 - 既存 anodyneKanObject の保存性を仮定せず、連続な Q と単位の anodyne 性・弱同値性を具体的に証明。
   通常の指定余錐の全脚・高次の整合性を保持した native な普遍性まで証明済み。
@@ -94,9 +95,9 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - F2N-1 a7：値へ写した全三角形の整合式の外側因子を消去し、a6 の指定 path と全錐へ接続する。
   出発点は coherentColimitUnitValueAction_coherence。元の五因子の同じ像を保持した等式まで証明済み。
   三辺の元の値は UnitValueAction_total_heq_native、最後の辺の前合成は UnitValueAction_precomp_firstEdge で照合済み。
-  まず左側の単位作用の後の全三角形比較を constantUnstraighteningRelativeIso_value_post で実射の後合成へ戻す。
-  coconeJ.vertex と native J の等式を保ち、coherentNativeUnitRepresentation J の同じ largeIso と UpperUnitFactorIso を揃える。
-  右側の元の定値余極限三角形と LowerTransportFactorIso の指定輸送因子を coherentColimitApexTriangle_isoSquare へ接続する。
+  UnitTrianglePostValue_heq_native は単位作用後の指定三角形比較を同じ native 単位の値へ照合済み。
+  UpperUnitFactor_triangle_cancel は明示的な結合則の下で同じ長辺・最後の辺の単位因子を消去する。
+  次は右側の元の定値余極限三角形と LowerTransportFactorIso を coherentColimitApexTriangle_isoSquare へ接続。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
@@ -183,8 +184,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   coherentColimitUnitValueAction_coherence は元の全三角形の整合式全体の値への像。元の指定五因子を保持。
   coherentColimitUnitValueAction_total_heq_native は元の余錐の値の比較と a6 の同じ中央比較を照合。
-  coherentColimitUnitValueAction_precomp_firstEdge は最後の辺の指定比較を同じ最初の native 作用で前合成。
-  未完：三角形に沿う指定外側因子の整合・消去、元の二三角形・指定 path の全錐比較、引き戻し保存、
+  単位作用後の全三角形比較は、同じ coherentNativeUnitRepresentation の値への後合成と一致。
+  UpperUnitFactor_triangle_exchange・triangle_cancel は元の長辺・最後の辺の指定単位因子の交換・消去。
+  未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
 - 残り：F2N-1 → F2N-2 → F2N-3・4 → F2N-5（下表）。
@@ -199,9 +201,9 @@ Tamme の分裂定理・Verdier 列・Land–Tamme の主定理は K-基盤、dg
 - 次の一手：F2N-1 a7：値へ写した全三角形の整合式の外側因子を消去し、a6 の指定 path と全錐へ接続する。
   出発点は coherentColimitUnitValueAction_coherence。元の五因子の同じ像を保持した等式まで証明済み。
   三辺の元の値は UnitValueAction_total_heq_native、最後の辺の前合成は UnitValueAction_precomp_firstEdge で照合済み。
-  まず左側の単位作用の後の全三角形比較を constantUnstraighteningRelativeIso_value_post で実射の後合成へ戻す。
-  coconeJ.vertex と native J の等式を保ち、coherentNativeUnitRepresentation J の同じ largeIso と UpperUnitFactorIso を揃える。
-  右側の元の定値余極限三角形と LowerTransportFactorIso の指定輸送因子を coherentColimitApexTriangle_isoSquare へ接続する。
+  UnitTrianglePostValue_heq_native は単位作用後の指定三角形比較を同じ native 単位の値へ照合済み。
+  UpperUnitFactor_triangle_cancel は明示的な結合則の下で同じ長辺・最後の辺の単位因子を消去する。
+  次は右側の元の定値余極限三角形と LowerTransportFactorIso を coherentColimitApexTriangle_isoSquare へ接続。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。

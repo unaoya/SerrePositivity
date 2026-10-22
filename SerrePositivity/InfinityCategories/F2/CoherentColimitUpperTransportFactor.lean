@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperActionVa
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperTriangleAction
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoDownHorizontal
 public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleLargeFactors
+public import SerrePositivity.InfinityCategories.F2.CoherentNativeUnitValue
 
 /-!
 概要：既存の上面作用比較から、元の単位表現と native 作用の指定因子を取り出す。
@@ -38,8 +39,8 @@ lemma coherentColimitNativeAction_unit_lift :
 def coherentColimitUpperUnitFactorIso : FunctorIso (coherentColimitUpperCompositeAction B H)
     ((smallLeftUnstraighteningIso F).inv ≫ (SSet.uliftFunctor.{u + 1, u}).map
       (a ≫ coherentDiagramTotalUnit G)) :=
-  functorIsoOfEq ((CoherentConstantRepresentation.largeIso G z (coherentDiagramTotalUnit G)
-    (coherentNativeUnitRepresentation G)).precomp (leftUnstraighteningMappingVertexMap F G t).val)
+  functorIsoOfEq ((coherentNativeUnitValueIso G).precomp
+    (leftUnstraighteningMappingVertexMap F G t).val)
     rfl (coherentTransformationTotalMap_unit_lift F G t)
 
 /-- 元の a6 の native 作用比較の逆を、同じ単位との合成の持ち上げで読む。 -/
