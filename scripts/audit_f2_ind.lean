@@ -371,3 +371,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasColimit_of_equivalentRestriction
 #check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanDiagram_hasColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.fullSlicePullbackIso_hom_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanShapeAmbientIso_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanCommaIso_inv_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.sliceUnderRestrict_equivalence_of_equivalentShape
+#check @SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_equivalentShape
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertexDensityCocone_val_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.indElementsLeftKanComparison_coconeMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanCanonicalCocone_restrict_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indContinuous_canonicalColimits
+#check @SerrePositivity.InfinityCategories.F2.Ind.indContinuous_isLeftKanExtension
+#check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_isFullyFaithful

@@ -209,3 +209,10 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndElementsLeftKanModel
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLocalKanColimits
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanExtension
+public import SerrePositivity.InfinityCategories.F2.Ind.SlicePullbackCoconeTransport
+public import SerrePositivity.InfinityCategories.F2.Ind.IndAmbientCoconeComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaCoconeComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityKanCoconeMap
+public import SerrePositivity.InfinityCategories.F2.Ind.IndContinuousLeftKan
+public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionFullyFaithful
