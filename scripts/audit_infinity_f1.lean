@@ -9174,3 +9174,37 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_of_edge
 
 #check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_vertex
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeValueIdentityIso
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeValueMap_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeMapAt_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coneSectionsMapAt_isQCatEquivalence_iff
+
+#check @SerrePositivity.InfinityCategories.pointedRightHomTransport_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeMap_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coneSectionsHomAction
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeHomAction_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coneSectionsMapAt
+
+#check @SerrePositivity.InfinityCategories.coneSectionsMapAt_vertex
+
+#check @SerrePositivity.InfinityCategories.coneSectionsMap
+
+#check @SerrePositivity.InfinityCategories.coneSectionsValueMapAt
+
+#check @SerrePositivity.InfinityCategories.coneSectionsValueMapAt_smallComparison
+
+#check @SerrePositivity.InfinityCategories.constantUnstraighteningSourceRelativeIso_evaluation
+
+#check @SerrePositivity.InfinityCategories.relativeFunctorExponentialIso_evaluation
+
+#check @SerrePositivity.InfinityCategories.simplicialSectionsRelativeIso_inv_evaluation
+
+#check @SerrePositivity.InfinityCategories.uliftFunctorSpaceIso_hom_vertex

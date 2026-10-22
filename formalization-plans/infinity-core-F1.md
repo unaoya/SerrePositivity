@@ -27,8 +27,9 @@
   fat 錐側は `fatConeTransformationIso` で厳密に同型。任意の形状・全パラメータを保持。
 - 元の錐の全 Hom 作用を同じ三角形で表し、三辺と両端固定の最小値変形を照合。
   `conePointHomNativeCompositionIso` で、元の標準比較の像を同じ二変換の実際の相対合成へ戻した。
-- 実現した錐の標準変換を元の指定変換へ戻す全ホモトピーも構成。
-  `coherentSectionsConeIdentityIso` はその小さい全切断への像を元の恒等射と比較する。
+- 実現した錐の標準変換を元の指定変換へ戻し、その全切断写像自体の同値性を証明。
+  `coherentSectionsConeMap_isQCatEquivalence` と全右 Hom の輸送から、
+  `coherentSectionsConeHomAction_isQCatEquivalence` が全試験空間で成立。元の比較との照合は残る。
 
 ### 残り（依存順）
 
@@ -62,18 +63,15 @@
 - `conePointHomNativeCompositionIso`
 
 ### 依存と提供
-
 - F0・Coherent・Stable・F1B・F2・HomotopyLimits は読み取り専用。
 - F1-4・F1-5 は F1b の F2N-2（Ind）・F2N-3 へ提供。Cat∞ 値一般分類は第 I 段の利用者なし。
 - 所有は F1/、F1.lean、audit_infinity_f1.lean、本計画のみ。他レーン不変。
 - 新規 sorry・公理・未証明引用なし。主経路に同値性や ModelCategory の追加 instance 仮定なし。
 
 ### 未コミット
-
 - なし。通る所有ファイルを集約・監査とともに `git commit --only` で早めに保存する。
 
 ### 既知の問題
-
 - 有限単体の分類同値から、一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
 - 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
 - 全局所 Hom の比較と元の大域作用の比較を区別し、指定同型の共有境界像を保持する。
@@ -93,7 +91,9 @@
 `coneTransformationMap F z` と `coherentSmallConstantSourceMap F z` を合成する。
 同じ錐の標準変換と定値図式の全 Hom 作用との相対合成への比較は構成済み。
 実現した錐の標準変換と指定恒等射の比較は `coherentSectionsConeIdentityIso` で構成済み。
-次はこの指定同型を全試験空間の Hom 作用へ移し、同じ実際の合成の同値性を示す。
+全切断写像自体と、全右 Hom の輸送後の同じ写像への後合成は同値と証明済み。
+次は `constantUnstraighteningSourceRelativeIso_evaluation` と定値図式の輸送比較を使い、
+同じ相対合成の像を `coneSectionsHomAction` へ比較して元の Hom 比較の同値性を結論する。
 錐の実現が保持する全円柱・両端固定比較を使い、元の比較射の同値性から native な極限性を結論する。
 F2 の `CoconeFiberColimitCriterion`・全空間の指定単位の追跡は読み取り専用の双対設計の参考。
 その後、各点存在を解消して F1-4 を閉じ、F1-5・F1-3b へ進む。

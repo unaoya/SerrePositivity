@@ -3225,3 +3225,17 @@ public import SerrePositivity.InfinityCategories.F1.ConeTransformationPointAt
 public import SerrePositivity.InfinityCategories.F1.HomotopyConeBoundary
 
 public import SerrePositivity.InfinityCategories.F1.SourceConstantTransformationVertex
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSectionsConeMapEquivalence
+
+public import SerrePositivity.InfinityCategories.F1.ConeSectionsHomAction
+
+public import SerrePositivity.InfinityCategories.F1.ConeSectionsMap
+
+public import SerrePositivity.InfinityCategories.F1.ConeSectionsValueMap
+
+public import SerrePositivity.InfinityCategories.F1.ConstantSourceRelativeEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExponentialEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpaceVertex
