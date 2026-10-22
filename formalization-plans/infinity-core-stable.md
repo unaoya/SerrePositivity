@@ -1,4 +1,4 @@
-# D レーン：D7 → β3 → β5 → β4
+# D レーン：D7 → β3 → β5（β4 は D2 と接続）
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
@@ -10,7 +10,7 @@
 - β3 完了。実 Verdier over の反転の filtered 性、有限対の全境界・全時刻を保つ実 roof 比較の cofinality と弱ホモトピー同値、任意反転標的への coherent な降下を証明した。
 - `dgQuotientNerveProjection_isLocalization` は任意 quasicategory 標的に対する全前合成の充満忠実性・本質的全射性を与える。局所 K-flat 性を元の Hom に仮定しない平坦分解後の商についても `resolvedDGQuotientFunctor_isLocalization` を証明した。
 - 全零化完全関手 ∞ 圏との同値、実安定閉包の完全充満包含、商の零化・完全性・実安定性、局所 K-flat 商と平坦分解後の商の実 Verdier 列まで統合・公理監査済み。H⁰ の Verdier 商の同値で代用していない。
-- β5：模型変更・一般 cell 模型の全 coherence、Perf の冪等完備性、単体環の Dold–Kan 接続確認。c5・一般 Morita 不変性 e、元の ρ・ξ と K-flat 指定合成比較・元の κ の全射自然性は完了済み。L4 §26、HA §7.1.2。残り複数日。
+- β5：c5・d（tensor–Hom 随伴、三角式・五角式・単位・自然性）・e（一般 Morita 不変性）は完了。残りは f（Perf の冪等完備性、HTT 4.4.5・5.1.4、7宣言は単体検証済み、統合・全体監査は見積り30〜60分）、g（単体環の Dold–Kan 接続、HA §7.1.2・既存 DK 比較、見積り1〜2日）。
 - D・Perf の実 graph tensor、射影的対象を保つ一般 dg 関手の単位・合成の全関手比較、包含との比較四角形、graph Morita 不変性、dg 代数の quasi-isomorphism 不変性まで統合・監査済み。H⁰ の同値に加え、全 source shift から全 Hom の準同型性を検証した。
 - 二変数の実空間値 Hom と同じ全 Hom 複体の pinched 模型の比較、固定入力ごとの複体値 Hom を構成。`dgNerveOppositeIso` は全 HA 方程式・任意の単体作用を保持する厳密な反対圏比較であり、dg 関手に厳密自然。実反対 ∞ 圏からの反変 Hom も統合・監査済み。
 - Morita tensor の同じ逆関手を h Fun 内の三角式付き ∞ 右随伴に昇格。Perf→D の包含との逆関手比較も公開済み。一般 RHom の構成・同定とは区別する。
@@ -45,12 +45,12 @@
 - 一般 RHom の普遍余単位：同じ kernel ∞ 関手の通常の h と、実 kernel 分解の出力射影の H⁰ の両方に、同じ telescope の右随伴を移した。余単位を実閉射で表し、H⁰ の Hom 全単射から零 cycle の持ち上げ・境界反映を回収した。実斉次 shift と単位差の原始元によって全整数次数へ戻し、`dgKernelResolutionCounit_quasiIso_exists` で同じ実余単位の全 Hom 準同型性を証明した。`dgKernelResolutionUniversalCounit` は同じ実データを保持し、全 pinched Hom 空間のホモトピー同値と、元の dg nerve 射・同じ閉余単位による後合成との一致を与える。元の出力の射影性・分解圏の Small 性は不要。追加12モジュール・29明示署名（構成子・射影を含む）は集約ビルド・両公理監査済み。coherent な実右随伴・∞ 随伴は後述で構成した。元の指定余単位との照合・古典比較は後述で完成した。
 
 - 一般右随伴：同じ dg comma の全 Hom・比較 cochain と元の augmentation の全 HA・全面/退化に整合する全単体ホモトピー、普遍余単位の全 Hom 準同型性、標的 nerve の自明 Kan fibration と厳密切断から `dgKernelRightAdjointCandidate` と元の指定 `dgKernelCounitCandidate` を構成した。反対 nerve の厳密自然性と全パラメータ Hom 対応から、標準区間写像空間条件を満たす `dgUniversalRightAdjunction`、入力同値と合成した両三角式付き `dgKernelAdjunction` を得る。`dgUniversalRightAdjunction_counitHom` と `dgKernelAdjunction_counitHom` は両随伴の余単位を元の同じ指定射へ厳密に回収する。元の入力同値の三角整合性、adjointify と合成随伴の式、対象宇宙と端点輸送まで照合した。`QCatAdjunction.toHoAdjunction` と `dgKernelRightAdjoint_classicalIso` により、同じ実右随伴の h を既存 telescope の主導来 RHom と全ての射に自然に比較し、単位・余単位も全自然変換として比較する。元の出力の射影性・入力の Small 性・Hom 平坦性の追加は不要。集約・両公理監査済み。
-- 一般導来合成：元の κ と通常・K-flat 指定合成比較は、任意の双加群射への二変数自然性、五角式、左右単位三角式を持つ。元の ρ・ξ・raw factor と比較自身の恒等・合成・逆の保存も接続済み。任意準同型の同じ実導来射作用の可逆性と従来の span 比較との一致、任意の augmentation 正方形の模型比較・選択独立性・cocycle を証明した。指定 canonical cell 模型間の実厳密 dg 射と augmentation の厳密正方形を構成し、実 h Fun 射作用の恒等・合成・選択比較へ接続した。元の一般 cell 合成子の五角式は原 kernel の平坦性を仮定せず完成。指定余単位を保つ coherent な比較の両三角式と、旧比較からの補正、その補正による合成子の変更式を証明した。coherent な一般 cell 合成子についても、五角式・実対角 tensor span による左右単位三角式・canonical 模型間の実厳密持ち上げに沿う任意射自然性を構成し、対象・両集約（10580 jobs）・20公開署名を検証した。旧比較からの補正式も保持する。両全体公理監査も成功。任意の許容模型への拡張・模型変更・全高次 coherence は次工程。結果は h Fun 値で、新しい kernel nerve パラメータの ∞ 関手とは主張しない。原 Hom の平坦性・原出力の射影性・入力の Small 性は追加しない。
+- 一般導来合成：元の κ と通常・K-flat 指定合成比較は、任意の双加群射への二変数自然性、五角式、左右単位三角式を持つ。元の ρ・ξ・raw factor と比較自身の恒等・合成・逆の保存も接続済み。任意準同型の同じ実導来射作用の可逆性と従来の span 比較との一致、任意の augmentation 正方形の模型比較・選択独立性・cocycle を証明した。指定 canonical cell 模型間の実厳密 dg 射と augmentation の厳密正方形を構成し、実 h Fun 射作用の恒等・合成・選択比較へ接続した。元の一般 cell 合成子の五角式は原 kernel の平坦性を仮定せず完成。指定余単位を保つ coherent な比較の両三角式と、旧比較からの補正、その補正による合成子の変更式を証明した。coherent な一般 cell 合成子についても、五角式・実対角 tensor span による左右単位三角式・canonical 模型間の実厳密持ち上げに沿う任意射自然性を構成し、対象・両集約（10580 jobs）・20公開署名を検証した。旧比較からの補正式も保持する。両全体公理監査も成功。旧 homInvIso との一致・追加の全高次 coherence は β4・K-8d8 の要求界面に不要で、2026-10-22 のコーディネータ指示に従い後段へ戻す。d は完了。結果は h Fun 値で、新しい kernel nerve パラメータの ∞ 関手とは主張しない。原 Hom の平坦性・原出力の射影性・入力の Small 性は追加しない。
 
 ### 残り（依存順、時間は推定）
 
-- β5：模型変更・一般 cell 模型の全 coherence、Perf の冪等完備性、単体環の Dold–Kan 接続確認。c5・一般 Morita 不変性 e、元の ρ・ξ と K-flat 指定合成比較・元の κ の全射自然性は完了済み。L4 §26、HA §7.1.2。残り複数日。
-- β4：dg gluing の nerve と安定 ∞ 圏の lax pullback の同値。α2b の提供済み lax pullback を読み取り専用で使う。Tamme §1、Kuznetsov–Lunts。1〜2 万行、複数日。
+- β5：c5・d（tensor–Hom 随伴、三角式・五角式・単位・自然性）・e（一般 Morita 不変性）は完了。残りは f（Perf の冪等完備性、HTT 4.4.5・5.1.4、7宣言は単体検証済み、統合・全体監査は見積り30〜60分）、g（単体環の Dold–Kan 接続、HA §7.1.2・既存 DK 比較、見積り1〜2日）。
+- β4：D2 が gluing nerve と lax pullback の比較を担当。D は β3 の平坦 Drinfeld 商と実 Verdier 列の供給を共同担当（D2(f)、Tamme §1・Drinfeld Thm 3.4、見積り2〜3日）。
 
 ### 主要宣言（名前のみ。正確な型は Lean）
 
@@ -84,23 +84,23 @@
 
 - Core・F1・F1B・F2・DGNerve・DoldKanComparison・HomotopyLimits・DifferentialGraded・KST は読み取り専用。
 - 提供：Stable の S1〜S6、D(S) の安定性、任意四角形の双カルテジアン判定、D3 の三角同値。
-- 編集対象：Stable/・Derived/、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
+- 編集対象：Stable/・Derived/（D2 所有の Gluing/ は読み取り専用）、両集約と両監査、本計画。明示指示により Derived 計画の D7 状態も更新する。
 - **Sp から D への判定補題要求（2026-10-21、未提供）**：[HA Cor. 1.4.2.27](https://www.math.ias.edu/~lurie/papers/HA.pdf) の (3) ⇒ (1) を F3 の定義で使いたい。正確な要求は、`X : SSet.{u}`、`[Quasicategory X] [HasZeroVertex X] [HasFiniteLimits X]`、実関手 `s : X ⟶ loopDiagrams X`、`hs : s ≫ loopDiagramEvaluation X 1 1 = 𝟙 X`、`hΩ : IsQCatEquivalence (s ≫ loopDiagramEvaluation X 0 0)` から `IsStable X` を得る一般補題。s は実際の普遍 loop 四角形の全単体族であり、安定性を先取りする既存 loopFunctor の使用は避ける。有限余極限・cofiber の存在と任意 ZeroTriangle の fiber/cofiber 同値を結論として証明し、それらを追加仮定にしない。現存の isStable_of_finite_limits_colimits は有限余極限と全四角形の双カルテジアン判定も要求するので代用できない。Sp が自前で証明する場合は Spectra 配下に置き、Stable/ は編集せず後で D が取り込む。Sp への適用には有限極限の包装と実 loop 関手の同値性がなお必要で、要求の記載を証明済みとは数えない。
 
 ### 未コミット
 
-- coherent cell 合成子・旧合成子との補正・五角式、κ の準同型自然性、実 tensor span と左右単位三角式、任意射自然性の14新規モジュール、Derived 集約、両監査、本計画の18パス。対象・両集約（10580 jobs）・20公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査も成功。検証済み18パスを `a23726b1f` に保存済み。前回保存は `f999a4067`（計画 `f1c24cfd4`）。他レーンの変更は変更しない。
+- 一般許容 cell の coherent 合成比較・射自然性・模型変更の値・可逆性・旧比較との一致・恒等性・選択独立性・cocycle の3新規モジュール、Derived 集約、両監査、本計画の7パス。対象・両集約（10583 jobs）・12公開署名・ソース検査は成功、新規ソースの警告なし。両全体監査成功。検証済み7パスを保存する。前回保存は `a23726b1f`（計画 `47bae3da0`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10580 jobs）。公理監査は Derived 19501 宣言／2198 モジュール、Stable 20613／2468。許容三公理のみ。今回までの保存対象1129新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10583 jobs）。公理監査は Derived 19792 宣言／2201 モジュール、Stable 20904／2471。許容三公理のみ。今回までの保存対象1132新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- canonical cell 模型の coherent 合成子の五角式・左右単位三角式・任意射自然性を統合した。左右単位は実対角双加群の共通半自由分解からの tensor span の像であり、κ の逆から定義したものではない。旧 homInvIso と coherent な比較の一致は未証明で、旧合成子そのものの両単位三角式とは主張しない。対象・両集約・20公開署名・両全体監査は終端0。18パスを `a23726b1f` に保存済み。ログは `/tmp/d-beta5-cell-compositor-units-{derived,stable}-audit.log`。次は `/tmp/d-beta5-general-cell-coherent-comparison.lean` の一般許容模型版・canonical 値・射自然性の3宣言を module 形式で検証・統合する。同じ実模型変更射の比較値・可逆性の5宣言も `/tmp/d-beta5-general-cell-coherent-change.lean` で検証済み（計8宣言、終端0、許容三公理のみ）。その後、模型変更の恒等・合成・選択独立性と五角式・単位式を照合する。全高次 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。今回の結果は h Fun 値で、新しい kernel nerve 入力の ∞ 関手とは主張しない。
+- d は随伴・両三角式・五角式・単位・自然性の現到達点で完了（2026-10-22 コーディネータ指示）。旧 homInvIso と coherent な比較の一致、および kernel nerve パラメータまでの追加の全高次 coherence は β4・K-8d8 の要求界面に不要で後段へ戻す。β4 は D2 所有。今回追加の一般許容 cell 合成比較・射自然性・実模型変更の値と可逆性・旧模型変更との一致・選択独立性・恒等性・cocycle は3モジュール12宣言、対象・両集約（10583 jobs）・公開署名検証済み。両全体監査は終端0（Derived 19792宣言／2201モジュール、Stable 20904／2471）。検証済み7パスを保存する。ログは `/tmp/d-beta5-general-cell-coherent-{derived,stable}-audit.log`。f に着手：`Perfect/EnhancementIdempotents` の実 H⁰ 分裂を、F2 の元の全 Idem 図式を回収する強分裂へ接続する。`DGStableHomotopyEquivalence` と F2 の Yoneda 冪等完備化を使い、H⁰ 分裂だけで完了とは数えない。f の7宣言は `/tmp/d-beta5-perfect-idempotent-complete-source.lean` に公開形式で整理し、同名 ready の検証（終端0、7明示署名、公理監査、警告なし）まで成功。`fullFaithful_retract_iso_in_image`・`idempotentComplete_of_ulift_ho_complete`・`dgNerve_isIdempotentComplete_of_h0`・`dgModulePerfectInfinityCategory_isIdempotentComplete`・`dgAlgebraPerfectInfinityCategory_isIdempotentComplete` を含む。現監査の保存後に統合し、両集約と両全体監査を行う。続いて g の既存 Dold–Kan 比較と非可換 dg 代数化を照合する。
 
 ## 目標と原典
 
@@ -158,7 +158,7 @@ F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat
 
 ## β5：非可換 dg 代数の導来 ∞ 圏
 
-着手済み。非可換 dg 代数の D(A)・Perf(A) の実安定性、graph tensor と Morita 不変性、二変数 D(R) 値 Hom の全単体作用と両固定入力の全関手比較（c5）、一般双加群の D・Perf の Morita 不変性（e）は完成。任意 kernel の実導来作用は完全で、同じ指定余単位を持つ ∞ 右随伴と古典的 telescope RHom との全関手比較を持つ。全加群・K-flat 入力の指定半自由分解は実局所化で、全前合成が関手射・同型の等式を反映する。通常・K-flat・元の指定 κ は五角式・左右単位三角式と任意双加群射への二変数自然性を持つ。元の ρ・ξ・raw factor・augmentation 円柱、任意準同型の比較と同じ実射作用、模型変更の恒等・合成・選択独立性・cocycle を照合した。一般 kernel の canonical cell 模型に対する厳密 dg 持ち上げと実 h Fun 射作用の関手性、元の一般 cell 合成子の五角式は完成。coherent な中間比較の両三角式・旧比較からの補正・合成子の変更式を構成した。今回の canonical diagonal cell 模型の単位は実半自由 span の像であり、元の模型比較・指定単位・指定余単位と整合する。coherent な canonical cell 合成子の五角式・左右単位三角式・任意射自然性を構成し、対象・集約・公開署名・両全体監査済み。一般許容模型・模型変更の全 coherence、Perf 冪等完備性、単体環の Dold–Kan 接続確認は未完。一般化は `InfinityCategories/Derived/` に置く。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別する。HA §7.1.2 は比較目標であり引用公理にしない（見積もり複数日）。
+着手済み。非可換 dg 代数の D(A)・Perf(A) の実安定性、graph tensor と Morita 不変性、二変数 D(R) 値 Hom の全単体作用と両固定入力の全関手比較（c5）、一般双加群の D・Perf の Morita 不変性（e）は完成。任意 kernel の実導来作用は完全で、同じ指定余単位を持つ ∞ 右随伴と古典的 telescope RHom との全関手比較を持つ。全加群・K-flat 入力の指定半自由分解は実局所化で、全前合成が関手射・同型の等式を反映する。通常・K-flat・元の指定 κ は五角式・左右単位三角式と任意双加群射への二変数自然性を持つ。元の ρ・ξ・raw factor・augmentation 円柱、任意準同型の比較と同じ実射作用、模型変更の恒等・合成・選択独立性・cocycle を照合した。一般 kernel の canonical cell 模型に対する厳密 dg 持ち上げと実 h Fun 射作用の関手性、元の一般 cell 合成子の五角式は完成。coherent な中間比較の両三角式・旧比較からの補正・合成子の変更式を構成した。今回の canonical diagonal cell 模型の単位は実半自由 span の像であり、元の模型比較・指定単位・指定余単位と整合する。coherent な canonical cell 合成子の五角式・左右単位三角式・任意射自然性を構成し、対象・集約・公開署名・両全体監査済み。d は現到達点で完了。旧 homInvIso との一致・追加の全高次 coherence は β4・K-8d8 に不要で後段へ戻す。残りは f（Perf 冪等完備性）・g（単体環の Dold–Kan 接続確認）。一般化は `InfinityCategories/Derived/` に置く。L4 §26 の dg 圏分解と dg 加群の半自由分解を区別する。HA §7.1.2 は比較目標であり引用公理にしない（見積もり複数日）。
 
 - 非可換 dg 代数 A の半自由 dg 加群から `D(A) := N_dg(Semifree(A))` と Perf(A) を構成する。
 - 双加群による相対テンソル・Hom に必要な分解と閉性を証明し、dg 関手を dg nerve に移す。
@@ -167,7 +167,7 @@ F1b の `Localization.lean` の `IsLocalization` を入口とし、局所 K-flat
 
 ## β4：dg gluing と lax pullback
 
-β5 の後、提供済みの α2b の Cat_∞ の極限・安定な lax pullback に接続する。
+D2 が担当（[D2 計画](infinity-core-gluing.md)）。D は β3 の Verdier 列と β5 の導来 tensor・Hom を供給し、提供済みの α2b の Cat_∞ の極限・安定な lax pullback へ接続する。
 原典は Tamme 2018 §1、Kuznetsov–Lunts。見積もり 1〜2 万行。
 
 - 双加群に沿う gluing の対象・写像複体・合成・微分を具体的に構成する。

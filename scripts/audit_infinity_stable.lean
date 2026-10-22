@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentChangeCoherence
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentComposition
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichUnitComparison
 import SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoCompositorNaturality
@@ -4760,6 +4763,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelGeneralCellCoherentLift,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentCompositionChange,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentChangeCoherence,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCoherentComposition,
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichUnitComparison,
     `SerrePositivity.InfinityCategories.Derived.DGKernelQuasiIsoCompositorNaturality,
