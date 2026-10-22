@@ -25515,3 +25515,147 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor_hom
 #print axioms SerrePositivity.KST.SConstruction.pointedTensorEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.closedTensorMapping_leftUnitor
+#print axioms SerrePositivity.KST.SConstruction.closedTensorMapping_leftUnitor
+
+#check @SerrePositivity.KST.SConstruction.closedTensorMapping_leftUnitor_inv
+#print axioms SerrePositivity.KST.SConstruction.closedTensorMapping_leftUnitor_inv
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorInterval
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorInterval
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalProjection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalProjection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorIntervalEnd_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionMap
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionMap
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEndMap_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_isSplitMono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_isSplitMono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_naturality
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection_naturality
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEndTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEndTransformation
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionTransformation
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEndTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEndTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjectionTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderEnd_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderProjection_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder_projection_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinder_projection_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderProjection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderProjection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_id
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_id
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder_map
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderCylinder_map
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_map
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_map
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_map
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_map
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderMap_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedTensor_parameter_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensor_parameter_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorParameterTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorParameterTransformation
+
+#check @SerrePositivity.KST.SConstruction.pointedTensor_leftUnitor_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensor_leftUnitor_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedTensor_leftUnitor_inv_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensor_leftUnitor_inv_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorTransformation
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorInvTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorInvTransformation
