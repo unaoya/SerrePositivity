@@ -556,7 +556,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismZero,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismZeroCoefficient,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaProjectionChainMaps,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.SimplexCoefficientExt]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SimplexCoefficientExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationCylinderComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationCylinderOver,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.AugmentationCylinderPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainAugmentationProjection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinderProjectionPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainIdentityCommaProjectionInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexAugmentationProjection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexLinearHEq,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedInputChainMap,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismLinearCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismLinearCorrection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismLinearDifference,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjectionCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismProjectionInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedChainMapComponent]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
