@@ -1,5 +1,16 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.SmallRelativeFunctorForget
+public import SerrePositivity.InfinityCategories.F2.SmallUnstraighteningFunctorIsoImage
+public import SerrePositivity.InfinityCategories.F2.SmallRelativeVertexForgetImage
+public import SerrePositivity.InfinityCategories.F2.CoherentTriangleSmallFunctorComparison
+
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperNativeCancellation
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitNativeModelEndpoints
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitIntervalModelReduction
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitIntervalModelUnitComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitIntervalModelUnitTriangle
+
 public import SerrePositivity.InfinityCategories.F2.CoherentCoconeIntervalActionReflection
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeIntervalComponents
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalTriangleNativeUniversalSquare
@@ -1251,3 +1262,33 @@ public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValu
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso_action_heq
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportIso_action_heq_conjugate
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitActionComparison_cancel_upperNative
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeModelTarget_eq_unit
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeModelSource_eq_action
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperNativeFactorIso_symm_heq_components
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_cancel_upperNative
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_square_reduced
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUnitComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUnitComparison_eq_reduced
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUnitComparison_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_vertex_target_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningRelativeIso_inv_forget
+
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningFunctorIso_heq_down_image
+
+#check @SerrePositivity.InfinityCategories.F2.smallRelativeVertexIso_forget_heq_smallFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleSmallIso_heq_smallFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleSmallTotalActionIso_heq_smallFunctor

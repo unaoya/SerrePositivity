@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.F2.VertexIsoEndpointTransport
 
 /-!
 概要：明示した実両端へ戻した同じ指定比較を、逆との合成で厳密に消去する。
@@ -26,5 +27,13 @@ lemma functorIsoOfEq_symm_cancel_prefix {A X : SSet.{u}} {f g h f' g' : A ⟶ X}
   cases hg
   dsimp only [functorIsoOfEq]
   rw [← hd, ← Iso.trans_assoc, Iso.symm_self_id, Iso.refl_trans]
+
+/-- 同じ終点等式による表示変更を頂点で戻すと、元の指定関手同型を回収する。 -/
+lemma functorIsoOfEq_vertex_target_cancel {X Y : SSet.{u}} {f g g' : X ⟶ Y}
+    (e : FunctorIso f g) (h : g' = g) :
+    vertexIsoOfEq (functorIsoOfEq e rfl h.symm) rfl (congrArg functorVertex h) = e := by
+  subst g'
+  simp only [functorIsoOfEq, vertexIsoOfEq, eqToIso_refl, Iso.refl_symm,
+    Iso.refl_trans, Iso.trans_refl]
 
 end SerrePositivity.InfinityCategories.F2
