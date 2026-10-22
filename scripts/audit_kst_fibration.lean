@@ -53,7 +53,12 @@ run_cmd do
     `SerrePositivity.KST.Fibration.LocalizedPairEquality,
     `SerrePositivity.KST.Fibration.WeakStringCofiberRealization,
     `SerrePositivity.KST.Fibration.WeakStringCofiberDegeneracy,
-    `SerrePositivity.KST.Fibration.WeakStringTriangleAdditivity]
+    `SerrePositivity.KST.Fibration.WeakStringTriangleAdditivity,
+    `SerrePositivity.KST.Fibration.WeakStringVertices,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteComparison,
+    `SerrePositivity.KST.Fibration.WeakStringCofiberSource,
+    `SerrePositivity.KST.Fibration.WeakStringOneEquivalence,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteComparisonOne]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

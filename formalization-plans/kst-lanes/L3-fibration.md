@@ -11,37 +11,25 @@
   cofiber による W 所属と商の実辺の可逆性を同定し、実二単体の二対三性、実押し出し・
   引き戻しでの保存と反映、実 cofiber 列間のホモトピーに対する拡大安定性を証明済み。
 - 工程 (a) は thick 性より弱い安定な本質像で成立。冪等完備化・fiber 性は未主張。
-- 工程 (b)：`relativeDiagram` の全単体・W 判定・内ホーン充填・厳密な再添字・core 包含、
-  商の選択独立性を証明し、商の関手圏の core の逆像と同定。具体的 S• へ接続済み。
-- K-S• の固定界面（L1 §6）を受領し、全 gapped 図式を保持した具体的 wS•C を構成。
-  全 Ar 成分での W 判定・全ての面退化・元の core からの包含を接続済み。
-  wS•C → core S•(C/D) と包含側 wS•(D,qi) → wS•(C,q) を自然変換として構成し、
-  元の core の射を回収する可換四角形を証明済み。核側の全相対 S_n は弱可縮。
-  可換四角形の実現後の homotopy pullback 性・商比較の同値性はまだ主張しない。
-- 商の核を K-1 の `ClosedStablePredicate` として束ね、E(C,C,ker q) を構成した。
-  底辺の W 所属との同定と、元の cofiber 射影の trivial Kan fibration 性を証明。
-  全境界持ち上げから W 辺図式の安定性と完全な ∞ 圏同値を導き、元の射影を回収。
-  この同値の coherent な逆を通す正有限反復実現の加法性と両射影の式を証明済み。
-  全有限 W 列を全高次自然変換込みの全部分図式圏で構成し、全合成辺で W 判定を証明。
-  一辺の段との一致・全面退化・任意の列図式圏の安定性・制限の完全性を証明済み。
-  `StableModel` 値の単体的対象と段ごとの反復 core S 実現へ束ねた。
-  全合成辺の完全な抽出と、全列に共通の相対 cofiber 切断を構成済み。
-  補完・核値 cofiber は全再添字と厳密に可換。実底辺の回収・核所属・零性判定も証明。
-  全 cofiber 族を関手圏の実 cofiber 列へ転置し、再添字・元の核値完全関手を回収。
-  関手圏で全二単体の八面体族を構成し、長辺・第二短辺の共通補完との全図式の自然同型、
-  最後の比較列の三頂点の核値性を証明し、E(ker q,B,ker q) 値の完全関手を構成済み。
-  元の実四角形の族を包含で回収し、始点は第一短辺の共通 cofiber と厳密に一致。
-  cofiber 評価は第二短辺の共通 cofiber と核の実関手圏で自然同型。八面体の再添字比較は未完。
-  核の相対 middle 完全関手と、K-1 の全正有限反復加法射・任意相対完全関手の因子分解を構成。
-  八面体の middle と長辺の核値 cofiber の自然同型、比較列の全反復加法性も証明済み。
-  K-S• 追加固定界面を受領し、元の三辺の cofiber 実現射の加法性を全正有限反復で証明。
-  元の射対の全再添字との厳密な可換性と加法性の再添字整合性、退化辺の核値 cofiber 族の零性も証明。
-  列全体の加法性比較の自然性・実現後の fiber 比較は未完。
+- 工程 (b)：相対図式の全単体・W 判定・内ホーン充填・再添字・core 包含を構成し、
+  商の関手圏の core の逆像と同定。具体的 wS•C・商への自然変換・核の可換四角形へ接続済み。
+  核側の全相対 S_n は弱可縮。実現後の homotopy pullback 性・商比較の同値性は未証明。
+- W 辺と E(C,C,ker q) の元の射影は trivial Kan fibration で、完全な ∞ 圏同値を構成済み。
+  K-1 により W 辺の正の全有限反復の二評価の加法性を証明。全有限 W 列の図式圏も安定。
+  全ての面・退化は完全で、StableModel 値の単体的対象と各段の反復実現を構成済み。
+- 全合成辺に共通の cofiber 補完を構成し、元の実四角形・始点・核値 cofiber を回収。
+  補完と cofiber は全再添字と厳密に可換。退化辺の核値 cofiber 族は全関手圏で零対象。
+  関手圏内の八面体族から E(ker q,B,ker q) 値の完全な比較関手を構成し、元の三辺と比較。
+  K-1/K-2 の固定界面で、三辺の cofiber 実現射の全正有限反復加法性と再添字整合性を証明済み。
+- 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
+  各射影は元の評価を回収し、任意の制限後の頂点・実合成辺との厳密な対応も証明。
+  一辺では同じ二成分が既存の加法性写像を回収し、全正有限反復で局所化同型。
+  二辺以上の比較の同値性・全列の加法性比較の自然性・実現後の fiber 比較は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7146 jobs・専用監査 48 モジュール 349 宣言が成功。
+- 現在の対象ビルド 7151 jobs・専用監査 53 モジュール 383 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3429 モジュールは EInfinity を含まない。全体 23888 jobs で成功。
+  所有 import 閉包 3434 モジュールは EInfinity を含まない。全体 23893 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -72,6 +60,9 @@
   weakStringOctahedronMiddleExact_comparison、weakStringTriangleMultiAddition、
   weakStringTriangleMultiAddition_reindex、weakStringCofiberMultiPair_reindex、
   weakStringKernelCofiber_degenerate_isZeroVertex。
+- weakStringVertexExact、weakStringVertexExact_reindex、weakStringCofiberSubobject_eq、
+  weakStringFiniteComparison、weakStringFiniteComparison_cofiber、
+  weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -91,7 +82,7 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の元の三辺の加法性・再添字・退化零性の3モジュール・集約・監査・本計画を含める）。
+- なし（今回の有限列比較・頂点評価・一辺の同値の5モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
@@ -99,8 +90,8 @@
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  元の初期頂点評価と連続する全辺の共通 cofiber により、有限 W 列全体の積との比較を構成する。
-  一辺の加法性と三辺の実現射の整合性を使い、全列の比較の同値性へ進む。
+  構成した有限列比較を、初辺と残りの列への切断で分解する。
+  一辺の局所化同型と三辺の実現射の整合性を使い、二辺以上の比較の同値性を証明する。
   共通補完の再添字可換性を保持して K-2 の単体積版 Quillen A に接続する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 

@@ -47,3 +47,8 @@ public import SerrePositivity.KST.Fibration.LocalizedPairEquality
 public import SerrePositivity.KST.Fibration.WeakStringCofiberRealization
 public import SerrePositivity.KST.Fibration.WeakStringCofiberDegeneracy
 public import SerrePositivity.KST.Fibration.WeakStringTriangleAdditivity
+public import SerrePositivity.KST.Fibration.WeakStringVertices
+public import SerrePositivity.KST.Fibration.WeakStringFiniteComparison
+public import SerrePositivity.KST.Fibration.WeakStringCofiberSource
+public import SerrePositivity.KST.Fibration.WeakStringOneEquivalence
+public import SerrePositivity.KST.Fibration.WeakStringFiniteComparisonOne
