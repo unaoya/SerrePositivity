@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers
 import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
 import SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn
@@ -7425,7 +7426,9 @@ open Lean Elab Command in
 open Lean in
 run_cmd do
   let env ← getEnv
-  let expected := #[] ++
+  let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers,
+] ++
     stableAuditExpectedChunk0 ++
     stableAuditExpectedChunk1 ++
     stableAuditExpectedChunk2 ++

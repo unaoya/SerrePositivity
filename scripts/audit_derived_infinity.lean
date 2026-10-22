@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers
 import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
 import SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn
@@ -4244,6 +4245,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber,
 
     `SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono,

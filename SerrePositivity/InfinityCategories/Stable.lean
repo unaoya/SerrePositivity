@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers
 public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 public import SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono
 public import SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn

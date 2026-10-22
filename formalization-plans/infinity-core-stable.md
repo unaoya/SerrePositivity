@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- comma 関手と普遍単位は `cdf04de6d`、固定頂点の充填・左 fibration・始点 fiber の9パスは `7d73c69ed` に保存済み。今回の計画更新だけを保存する。他レーンの変更は保持する。
+- comma 関手と普遍単位は `cdf04de6d`、固定頂点の充填・左 fibration・始点 fiber は `7d73c69ed` に保存済み。今回の `LoopConeDiagramFibers`・Stable 集約・両監査・本計画の5パスも検証成功、保存対象とする。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10965 jobs）。公理監査は Derived 20527 宣言／2257 モジュール、Stable 21642／2527。許容三公理のみ。今回までの保存対象1188新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10967 jobs）。公理監査は Derived 20542 宣言／2258 モジュール、Stable 21657／2528。許容三公理のみ。今回までの保存対象1189新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- D7・β3・β5 は完了。全錐比較は `f68e126ac`、実 comma 関手と普遍単位は `cdf04de6d`。`7d73c69ed` の `JoinEndpointPairMono`・`PointedConeInitialHorn`・`PointedConeHornLifting`・`PointedConeLeftFibration`・`LoopConeSourceFiber` は14公開宣言。join の両端を同時に固定した相対外側ホーン延長、固定した錐頂点の厳密 fiber での内・先頭外側・一次ホーンの全持ち上げを証明し、`pointedConeProjection_leftFibration` を得た。全 loop 錐の始点固定 fiber を同じ射影の厳密 pullback として表示し、`loopConeSourceFiberProjection_leftFibration` と fiber 自体の quasicategory 性まで接続した。X の quasicategory 性だけを用い、安定性や有限極限は追加しない。対象・両集約（10965 jobs）・14明示署名が成功。両全体監査も終端0（Derived 20527宣言／2257モジュール、Stable 21642／2527、許容三公理のみ）。ログは `/tmp/d-pointed-cone-{target-final,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は `/tmp/d-loop-diagram-fibers.lean` の5宣言を `Stable/LoopConeDiagramFibers.lean`（予定名）へ統合する。実図式 fiber 写像 `loopConeClassifierDiagramFiberMap`、錐 fiber への厳密同型 `loopConeSourceDiagramFiberIso`、双方の包含式、実 fiber 同値性から元の比較同値性への判定が試作・5明示署名で終端0。警告なし、許容三公理のみ。署名ログは `/tmp/d-loop-diagram-fibers-signatures.log`。本体未統合なので不存在・未追跡を確認して登録する。その後 `loopConeClassifierSourceFiberMap` の実 fiber ごとの同値性。始点固定の全錐射影は今回の left fibration。標的は既存 `F1B.kanUnitCommaFiberProjection_leftFibration`。両者の実比較写像は loop 図式への射影と厳密可換なので、各 loop 図式上の実 fiber 比較を示して F1 の `isQCatEquivalence_of_leftFibration_fibers` に渡す。固定 cospan の `loopCospanConeRepresentation` は全錐の表示だが、同じ比較ホモトピーからの実写像との照合がなお必要。任意の点ごとの同値では代用しない。全錐側への始対象性の移送、押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
+- D7・β3・β5 は完了。全錐比較は `f68e126ac`、実 comma 関手と普遍単位は `cdf04de6d`。`7d73c69ed` の `JoinEndpointPairMono`・`PointedConeInitialHorn`・`PointedConeHornLifting`・`PointedConeLeftFibration`・`LoopConeSourceFiber` は14公開宣言。join の両端を同時に固定した相対外側ホーン延長、固定した錐頂点の厳密 fiber での内・先頭外側・一次ホーンの全持ち上げを証明し、`pointedConeProjection_leftFibration` を得た。全 loop 錐の始点固定 fiber を同じ射影の厳密 pullback として表示し、`loopConeSourceFiberProjection_leftFibration` と fiber 自体の quasicategory 性まで接続した。X の quasicategory 性だけを用い、安定性や有限極限は追加しない。対象・両集約（10967 jobs）・14明示署名が成功。両全体監査も終端0（Derived 20527宣言／2257モジュール、Stable 21642／2527、許容三公理のみ）。ログは `/tmp/d-pointed-cone-{target-final,aggregate,signatures,derived-audit,stable-audit}.log`。
+- `LoopConeDiagramFibers` の5宣言は本体統合済み。実図式 fiber 写像 `loopConeClassifierDiagramFiberMap`、錐 fiber への厳密同型 `loopConeSourceDiagramFiberIso`、双方の包含式、実 fiber 同値性から元の比較同値性への判定を構成した。対象・両集約（10967 jobs）・5明示署名・両全体監査が終端0（Derived 20542宣言／2258モジュール、Stable 21657／2528）。ログは `/tmp/d-loop-diagram-fibers-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`。次は `/tmp/d-terminal-right-fibration-comparison.lean`。終対象への比較の射影を区間写像空間の実族にし、比較ホモトピーの選択独立性、実 slice 評価の後合成自然性、right fibration の終対象比較の同じ実族の同値性を試作で証明した（終端0、本体未統合）。二つの自明 Kan fibration の span を使い、任意の同値の選択では代用していない。`/tmp/d-terminal-fiber-transfer.lean` は標準 fiber 比較への移送を追加して検証中。その後 `loopConeClassifierSourceFiberMap` の実 fiber ごとの同値性。始点固定の全錐射影は今回の left fibration。標的は既存 `F1B.kanUnitCommaFiberProjection_leftFibration`。両者の実比較写像は loop 図式への射影と厳密可換なので、各 loop 図式上の実 fiber 比較を示して F1 の `isQCatEquivalence_of_leftFibration_fibers` に渡す。固定 cospan の `loopCospanConeRepresentation` は全錐の表示だが、同じ比較ホモトピーからの実写像との照合がなお必要。任意の点ごとの同値では代用しない。全錐側への始対象性の移送、押し出し普遍性、一般 fiber/cofiber と有限余極限は未証明。β4 は D2 所有。Sp の正確な要求は「依存と提供」に保持する。
 
 ## 目標と原典
 
