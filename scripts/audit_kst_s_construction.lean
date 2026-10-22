@@ -25980,3 +25980,117 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderProjection_whisker
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderProjection_whisker
+
+#check @SerrePositivity.KST.SConstruction.binaryCofanSourceIsos
+#print axioms SerrePositivity.KST.SConstruction.binaryCofanSourceIsos
+
+#check @SerrePositivity.KST.SConstruction.coproductAttachmentComparison
+#print axioms SerrePositivity.KST.SConstruction.coproductAttachmentComparison
+
+#check @SerrePositivity.KST.SConstruction.coproductAttachment_condition
+#print axioms SerrePositivity.KST.SConstruction.coproductAttachment_condition
+
+#check @SerrePositivity.KST.SConstruction.coproductAttachment_desc_condition
+#print axioms SerrePositivity.KST.SConstruction.coproductAttachment_desc_condition
+
+#check @SerrePositivity.KST.SConstruction.coproductAttachmentDesc
+#print axioms SerrePositivity.KST.SConstruction.coproductAttachmentDesc
+
+#check @SerrePositivity.KST.SConstruction.coproductAttachment_isPushout
+#print axioms SerrePositivity.KST.SConstruction.coproductAttachment_isPushout
+
+#check @SerrePositivity.KST.SConstruction.pointedCoprodDesc_flip_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedCoprodDesc_flip_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair_isPushout
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair_isPushout
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderPair_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderLeft_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderLeft_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderRight_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedDoubleMappingCylinderRight_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedIsPushout_mono_right
+#print axioms SerrePositivity.KST.SConstruction.pointedIsPushout_mono_right
+
+#check @SerrePositivity.KST.SConstruction.pointedPushout_inr_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedPushout_inr_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryInclusion
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryInclusion
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryEnd_inclusion
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryEnd_inclusion
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryStart_inclusion
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryStart_inclusion
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryTensor_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryTensor_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryIsColimit
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryIsColimit
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso_inl
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso_inl
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso_inr
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorBoundaryCoproductIso_inr
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderBoundary_factor
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderBoundary_factor
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorCylinderBoundary_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorCylinderBoundary_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedCoprod_inl_isSplitMono
+#print axioms SerrePositivity.KST.SConstruction.pointedCoprod_inl_isSplitMono
+
+#check @SerrePositivity.KST.SConstruction.pointedCoprod_inr_isSplitMono
+#print axioms SerrePositivity.KST.SConstruction.pointedCoprod_inr_isSplitMono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair_isPushout
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair_isPushout
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderPair_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_factor
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_factor
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderSource_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorMappingCylinderTarget_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderSourceMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderSourceMap_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderTargetMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderTargetMap_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutLeftMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutLeftMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutLeftMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutLeftMap_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyCylinderPushoutRightMap_mono
