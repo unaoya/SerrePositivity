@@ -460,3 +460,6 @@ public import SerrePositivity.KST.Fibration.VerdierSStageInclusion
 public import SerrePositivity.KST.Fibration.ZeroCategorySRealization
 public import SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels
 public import SerrePositivity.KST.Fibration.DGRelativeZeroPreservation
+public import SerrePositivity.KST.Fibration.DGRelativeFiberComparison
+public import SerrePositivity.KST.Fibration.DGRelativeFiberComparisonVertices
+public import SerrePositivity.KST.Fibration.DGRelativeComparisonFiberPi
