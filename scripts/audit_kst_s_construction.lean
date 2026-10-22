@@ -26811,3 +26811,51 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_id
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_id
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_comp
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_comp
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor_evaluation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFEnrichedFunctor_evaluation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInfinityFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_hom
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMap_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_condition
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_condition
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_evaluation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFMapping_evaluation

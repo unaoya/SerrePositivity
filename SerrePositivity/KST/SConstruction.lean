@@ -2193,4 +2193,8 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFFirstOmega
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFOmegaSpectrum
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStepOmega
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyAdjoint
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFInfinityFunctor
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMap
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMapping
 /-! # ∞-S• 構成と連結 K 理論 -/
