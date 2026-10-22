@@ -142,3 +142,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionWeighte
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedLeftSectionRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftClassificationSections
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionBifunctor
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSectionMixedEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductReplacementCoefficient
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductReplacementMap
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductWeightedBase
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffold

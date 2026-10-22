@@ -244,3 +244,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftSectionEvaluation_restriction
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftClassificationSectionIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftFibrationSectionDiagram_coherent
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftSectionProductDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeSection_mixedDiagonal
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductReplacementCoefficient_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductWeightedEvaluation_over_product
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_total
