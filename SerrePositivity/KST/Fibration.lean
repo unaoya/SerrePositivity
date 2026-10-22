@@ -302,3 +302,10 @@ public import SerrePositivity.KST.Fibration.KanPointComponentComposition
 public import SerrePositivity.KST.Fibration.WeakIdentityNativeImage
 public import SerrePositivity.KST.Fibration.FractionClassificationRestriction
 public import SerrePositivity.KST.Fibration.WeakNativeClassificationPoint
+public import SerrePositivity.KST.Fibration.FractionClassificationSimplexRestriction
+public import SerrePositivity.KST.Fibration.FractionNativeClassificationComponent
+public import SerrePositivity.KST.Fibration.FractionIdentityClassificationComponent
+public import SerrePositivity.KST.Fibration.SmallUnstraighteningIsoHom
+public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointHom
+public import SerrePositivity.KST.Fibration.PointedClassificationReconstruction
+public import SerrePositivity.KST.Fibration.PointedCosliceReconstruction
