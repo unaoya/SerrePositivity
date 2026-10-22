@@ -337,7 +337,16 @@ run_cmd do
     `SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientFiber,
     `SerrePositivity.KST.Fibration.RelativeFunctorEvaluationVertex,
     `SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientPoints,
-    `SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient]
+    `SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient,
+    `SerrePositivity.KST.Fibration.OppositeKanCoefficientComparison,
+    `SerrePositivity.KST.Fibration.StrictKanPointedComparison,
+    `SerrePositivity.KST.Fibration.StrictKanCoefficientPointedEvaluation,
+    `SerrePositivity.KST.Fibration.OppositeKanPointedEvaluation,
+    `SerrePositivity.KST.Fibration.ScaffoldWeightedCoherentPoint,
+    `SerrePositivity.KST.Fibration.PointedResolutionProjection,
+    `SerrePositivity.KST.Fibration.OppositeKanResolutionEvaluation,
+    `SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint,
+    `SerrePositivity.KST.Fibration.NativeCoefficientResolutionPointHom]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

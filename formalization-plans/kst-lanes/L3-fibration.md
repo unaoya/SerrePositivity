@@ -60,10 +60,10 @@
   全写像空間から作った小さい実比較は可逆な二胞体を前合成同値へ送り、fiber 点の射を元の成分で計算。
   pointed 復元射の底・同値性・native 恒等点との分類逆成分による点の式を証明。
   元の scaffold の埋め込みと universal・taut 両脚の厳密な制限も保持し、同じ相対三角を持つ表現を構成。
-  同じ三角を係数値と指定点に制限し、恒等射評価・weighted 包含の実像を回収。同じ fiber の点の射は一致し、native 像から weighted 点への指定分類成分の合成式も証明。
+  同じ三角を係数値と指定点に制限し、恒等射評価・weighted 包含の実像を回収。weighted の実係数作用を同じ逆係数と標準 coherent Hom 比較で計算し、頂点表示を揃えると既存の左解像比較と厳密に一致。native 像から同じ左解像点の射への指定成分の合成式も証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列で右射影の全射性と接続射の自明性を同定。左項が連結なら零次射影は全射。十分条件は未証明。
-- 対象 8651 jobs・専用監査 332 モジュール 1927 宣言・全体 24842 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4911 モジュールは EInfinity を含まない。
+- 対象 8660 jobs・専用監査 341 モジュール 1961 宣言・全体 25006 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4920 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -84,7 +84,7 @@
   weakQuotientCosliceCompositePoint_action、weakQuotientCosliceTriangle_of_identity_hom。
 - weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
   weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
-- ScaffoldTransportComparisonSpan、scaffoldTransportComparisonSpan、ScaffoldTransportComparisonSpan.scaffoldTriangle、ScaffoldTransportComparisonSpan.coefficientSourcePointedFiberPoint_eq、ScaffoldTransportComparisonSpan.nativeCoefficientPointHom。
+- oppositeKanUnstraighteningComparison_constant_resolution、ScaffoldTransportComparisonSpan.coefficientWeightedResolutionPoint_eq、ScaffoldTransportComparisonSpan.nativeCoefficientPointHom_resolution。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -99,11 +99,11 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 - 商・分数・局所化は Sp 正本（10-22 19:50）。新規補題は Sp に依頼。既存構成は保持し、tamme* の lax 専用仮定を一般 Verdier W に流用しない。
 ### 未コミット
-- なし（scaffold 制限・係数 fiber 点・native 比較の7モジュール、集約・監査・本計画を含める）。
+- なし（weighted の実係数作用・左解像との一致・native 点の射の9モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
-- native 実像と pointed 復元点の一致は未証明。元の scaffold 係数点は回収済みだが、weighted coherent 比較の係数作用と cocartesian Kan の native 恒等点との対応が未証明。span 側の普遍性・分数比較・cofinality・Sp 値 K-6 も未完。
+- native 実像と pointed 復元点の一致は未証明。weighted の実係数作用は左解像と同定済み。直値・反転値の指定比較成分の点の作用と、scaffold を保持する表現を用いた一般分類比較への接続が未証明。span 側の普遍性・分数比較・cofinality・Sp 値 K-6 も未完。
 ### 次の一手
-- Sp に一般 Verdier W の分数比較同値を依頼済み。依存部分は提供待ち。weightedCoherentConeFiberMap_factorization と oppositePointHomWeightedIso・strictKanUnstraighteningComparison で元の係数点の実像を計算し、native 恒等点との対応へ進む。
+- Sp に一般 Verdier W の分数比較同値を依頼済み。依存部分は提供待ち。leftStraighteningCoherentMap_oppositeVertexIso の指定成分の作用を左解像点で回収する。一般の分類候補比較は任意の nerve 表現でなく、元の scaffold 対応を保持する表現を用いて構成する。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
