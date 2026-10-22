@@ -8684,3 +8684,37 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTargetPullback_kan
 
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryPullbackComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianPullbackNativeLiftCoreFunctor
+
+#check @SerrePositivity.InfinityCategories.intervalDiagramLiftOverFunctor
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_nativeDiagram_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianHornBoundary_targetDiagram_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryNative_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryNativePresentationIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryNativePresentationIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryNativePresentationIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTarget_isPullback
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTargetPresentationIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTargetPresentationIso_hom_fst
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryTargetPresentationIso_hom_snd
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_presentation
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_face
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_horn

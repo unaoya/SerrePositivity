@@ -3077,3 +3077,13 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianRestrictionDiagra
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHornComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryPullbackComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianHornBoundaryDiagramPullbacks
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryNativePresentation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryTargetPresentation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHomComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHomProjections
