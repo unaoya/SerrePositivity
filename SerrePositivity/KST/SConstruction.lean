@@ -2484,4 +2484,21 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingConePrimitiveDifferen
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeHomMap
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeHomMap
 
+public import SerrePositivity.KST.SConstruction.DGHomGluingCommaComponents
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeComponentComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeHomComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeHomUnit
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeCompositionDegree
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeIdentity
+public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveCommaComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveHomComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveUnit
+public import SerrePositivity.KST.SConstruction.DGHomGluingYonedaActions
+public import SerrePositivity.KST.SConstruction.DGHomGluingYonedaComposition
+public import SerrePositivity.KST.SConstruction.DGOdotTargetContracted
+public import SerrePositivity.KST.SConstruction.DGOdotTargetFunctor
+public import SerrePositivity.KST.SConstruction.DGOdotTargetQuotient
+
 /-! # ∞-S• 構成と連結 K 理論 -/

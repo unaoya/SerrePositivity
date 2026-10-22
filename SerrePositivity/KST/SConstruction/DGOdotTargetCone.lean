@@ -5,7 +5,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotQuotient
 /-! # 元の実 dg 代数四角形の終域 cone と対角像の収縮
 概要：同じ実比較対角の元の閉零同型から、実 Perf cone と対象別の収縮元を構成する。
 方針：元の共通終域・実三比較を同じ Hom gluing cone の構成へ渡す。
-規約：全 Hom 上の dg 関手と商からの延長は未構成。S 内の自然な零化も主張しない。
+規約：全 Hom 関手は DGOdotTargetFunctor、商延長は DGOdotTargetQuotient に接続。
+S 内の自然な零化は主張しない。
 使われ方：具体的 ⊙ から元の終域への実比較射の入力。
 -/
 @[expose] public section

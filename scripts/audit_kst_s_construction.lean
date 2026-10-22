@@ -30240,3 +30240,126 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_apply
 #print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_apply
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingCommaPrimitive_element
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingCommaPrimitive_element
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_recover
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_recover
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingCommaLeft_element
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingCommaLeft_element
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingCommaImage_element
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingCommaImage_element
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_comp
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_comp
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_forward
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_forward
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap_unit
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeLeftMap_unit
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap_unit
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeRightMap_unit
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_unit
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConePrimitive_unit
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_unit
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingConeHomMap_unit
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_comp_at
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_comp_at
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleUnit_π
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleUnit_π
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_identity
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_identity
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_forward_comma
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_forward_comma
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_forward
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_forward
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_comp
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingPrimitive_comp
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingUnit_primitive
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingUnit_primitive
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingYoneda_leftAction
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingYoneda_leftAction
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingYoneda_rightAction
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingYoneda_rightAction
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingYoneda_forward
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingYoneda_forward
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingYoneda_inv_element
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingYoneda_inv_element
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingYoneda_inv_hom
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingYoneda_inv_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor_underlying
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor_underlying
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor_homotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetContractedFunctor_homotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_original
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_original
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_epsilon
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientFunctor_epsilon
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap_original
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetQuotientEndMap_original
