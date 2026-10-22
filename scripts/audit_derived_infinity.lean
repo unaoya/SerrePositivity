@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamilyBaseChange
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCanonicalComparison
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamily
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCategory
+import SerrePositivity.InfinityCategories.Derived.FunctorObjectIsoTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelHomFunctor
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelLift
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoSourceEquivalenceSquare
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceValue
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceNaturality
@@ -4112,6 +4120,18 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftComparisonValue,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamilyBaseChange,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCanonicalComparison,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellLiftCategory,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorObjectIsoTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelHomFunctor,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelLift,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoSourceEquivalenceSquare,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceValue,
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceNaturality,
