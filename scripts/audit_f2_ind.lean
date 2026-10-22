@@ -32,6 +32,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.coherentMapRealizationLargeIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationRelativeImageIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityLiftedEvaluationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsBaseChangeIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_map
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationReconstruction_realization
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

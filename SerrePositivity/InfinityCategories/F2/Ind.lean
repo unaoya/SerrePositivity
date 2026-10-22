@@ -21,3 +21,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluatio
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityJointRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRelativeImage
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityLiftedEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationReconstructionNaturality
