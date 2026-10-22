@@ -2380,7 +2380,11 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `freeHomFromLeft`・`freeHomFromRight` は自由 probe の標準 frame Hom と元の底への frame Hom から共通 Kan Hom への全二変数自然 span。
 両射自身は単体的ホモトピー同値。右側の標的は元の E 代数の同じ底である。
 `freeHomToMappingSpace` は左端と同じ既存 Map^h の全自然なホモトピー同値比較。
-既存 D(R) からの導来左関手・全 coherent ∞ 随伴との接続は未完成。
+`freeProbeDerivedUnit` は元の全複体 nerve 上の同じ U 値への全関手の二胞体。
+同じ probe 比較と忘却比較で挟むと元の自由忘却単位の二胞体そのものを回収する。
+`derivedFreeProbeUnitEdge` は任意の既存 D(R) 頂点の実自由 probe への単位辺で、元の射の類を保持する。
+`derivedFreeProbeUnitCommaVertex` は同じ U の各固定始域 comma fiber の実候補頂点。
+候補の標的は同じ自由 probe 頂点。始対象性と全 coherent ∞ 随伴との接続は未完成。
 同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。

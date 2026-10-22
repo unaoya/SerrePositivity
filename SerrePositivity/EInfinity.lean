@@ -2069,3 +2069,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomKan
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomMappingSpace
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeCAlgSource
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeFunctor
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnit
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitVertex
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitComma
+public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedComparison
