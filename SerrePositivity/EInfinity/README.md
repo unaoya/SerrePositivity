@@ -2415,3 +2415,9 @@ Reedy cofibrancy・標準 frame との比較・標準単位比較の弱同値性
 `normalizedCochain_cofibrant` は任意の単体集合について同じ正規化複体の cofibrancy を与える。
 `projectiveCofibration_of_projectiveCokernel` は各次数射影の K-projective cokernel を持つ単射の一般判定。
 latching 余極限保存との接続と、cofibrant X のテンソルへの拡張は未完成。
+
+`ComplexLimits.normalizedSimplex_reedyCofibrant` は元の正規化標準単体の実 Reedy cofibrancy。
+実延長の左随伴性・小さい余極限保存を元の latching 矢の比較に接続した。
+`normalizedSimplexLatchingArrowIso` と `normalizedSimplexTensorLatchingArrowIso` は元の境界の矢全体との実同型。
+`projectiveCofibrant_isKProjective` と `tensor_isKProjective` により、元の cofibrant X の正規化単体テンソルは K-projective。
+テンソル後の Reedy cofibrancy には、なお次数別射影性と境界包含の cofibration 性の接続が残る。

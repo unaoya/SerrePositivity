@@ -36,7 +36,8 @@ private lemma cocone_identity_snd_boundary (Y : Complex A) :
   simp only [mappingCocone.fst, Cochain.ofHom_neg, Cocycle.cochain_ofHom_homOf_eq_coe,
     Cocycle.leftShift, Cocycle.mk_coe, one_smul]
 
-private def cocone_identity_fst_nullhomotopy (Y : Complex A) :
+/-- 恒等射の実 mapping cocone 射影の指定した零ホモトピー。 -/
+def coconeIdentityProjectionNullhomotopy (Y : Complex A) :
     Homotopy (mappingCocone.fst (𝟙 Y)) 0 :=
   (Cochain.equivHomotopy _ _).symm
     ⟨-(mappingCocone.snd (𝟙 Y)), by simp only [cocone_identity_snd_boundary,
@@ -85,7 +86,7 @@ lemma projectiveTrivialCofibration_homotopyEquiv {X Y : Complex A} (f : X ⟶ Y)
   obtain ⟨l⟩ := ((hl p hp).sq_hasLift t).exists_lift
   have hd : Homotopy d 0 := by
     have hh : Homotopy (l.l ≫ p) (l.l ≫ 0) :=
-      (cocone_identity_fst_nullhomotopy Y).compLeft l.l
+      (coconeIdentityProjectionNullhomotopy Y).compLeft l.l
     simpa only [l.fac_right, comp_zero] using hh
   have h : Homotopy (𝟙 Y) (r.l ≫ f) := by
     simpa only [d, sub_add_cancel, zero_add] using hd.add (Homotopy.refl (r.l ≫ f))

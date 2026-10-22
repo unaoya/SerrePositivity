@@ -8704,6 +8704,18 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.projectiveCofibration_of_boundedAboveCokernel,
       `SerrePositivity.EInfinity.ComplexLimits.splitMono_cokernel_projective]
 
+@[noinline] private def e2RequiredBatch163 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.projectiveCofibrant_isKProjective,
+      `SerrePositivity.EInfinity.ComplexLimits.nonpositiveExtend_isLeftAdjoint,
+      `SerrePositivity.EInfinity.ComplexLimits.negativeExtend_isLeftAdjoint,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedFunctor_preservesSmallColimits,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexLatchingArrowIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensorLatchingArrowIso,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplex_reedyCofibrant,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedSimplexTensor_isKProjective,
+      `SerrePositivity.EInfinity.ComplexLimits.tensor_isKProjective,
+      `SerrePositivity.EInfinity.coconeIdentityProjectionNullhomotopy]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8737,7 +8749,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -21016,3 +21028,40 @@ example (n : ℕ) : (projectiveGeneratingCofibrations A).rlp.llp
     ((BarrattEccles.normalizedFunctor A).map (SSet.boundary.{0} n).ι) :=
   normalizedMonomorphism_cofibration A _
 end e2NormalizedCofibrationFixtures
+
+section e2NormalizedReedyFixtures
+universe e2NormalizedReedyUniverse
+open CategoryTheory CategoryTheory.Limits MonoidalCategory CochainComplex
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.DifferentialGraded SerrePositivity.Reedy HomotopicalAlgebra
+variable (A : Type e2NormalizedReedyUniverse) [CommRing A]
+example : ((ComplexShape.embeddingUpIntLE 0).extendFunctor
+    (ModuleCat.{e2NormalizedReedyUniverse} A)).IsLeftAdjoint := nonpositiveExtend_isLeftAdjoint A
+example : (ComplexShape.embeddingDownNat.extendFunctor
+    (ModuleCat.{e2NormalizedReedyUniverse} A)).IsLeftAdjoint := negativeExtend_isLeftAdjoint A
+example : PreservesColimitsOfSize.{0, 0} (BarrattEccles.normalizedFunctor A) :=
+  normalizedFunctor_preservesSmallColimits A
+example : letI := projectiveModelCategory A
+    reedyLeft simplex (cofibrations (Complex A))
+      (initial.to (SSet.stdSimplex ⋙ BarrattEccles.normalizedFunctor A)) :=
+  normalizedSimplex_reedyCofibrant A
+example (n : ℕ) : Arrow.mk ((latchingComparison simplex (SimplexCategory.mk n)).app
+    (SSet.stdSimplex ⋙ BarrattEccles.normalizedFunctor A)) ≅
+      Arrow.mk ((BarrattEccles.normalizedFunctor A).map (SSet.boundary.{0} n).ι) :=
+  normalizedSimplexLatchingArrowIso A n
+example (X : Complex A) (n : ℕ) :
+    Arrow.mk ((latchingComparison simplex (SimplexCategory.mk n)).app (normalizedSimplexTensor A X)) ≅
+      Arrow.mk (X ◁ (BarrattEccles.normalizedFunctor A).map (SSet.boundary.{0} n).ι) :=
+  normalizedSimplexTensorLatchingArrowIso A X n
+example (X : Complex A) (hX : (projectiveGeneratingCofibrations A).rlp.llp
+    (0 : (HomologicalComplex.zero : Complex A) ⟶ X)) : X.IsKProjective :=
+  projectiveCofibrant_isKProjective X hX
+example (X Y : Complex A) [X.IsKProjective] [Y.IsKProjective] :
+    CochainComplex.IsKProjective (X ⊗ Y) := tensor_isKProjective A X Y
+example (X : Complex A) (hX : (projectiveGeneratingCofibrations A).rlp.llp
+    (0 : (HomologicalComplex.zero : Complex A) ⟶ X)) (n : SimplexCategory) :
+    CochainComplex.IsKProjective ((normalizedSimplexTensor A X).obj n) :=
+  normalizedSimplexTensor_isKProjective A X hX n
+example (X : Complex A) : Homotopy (mappingCocone.fst (𝟙 X)) 0 :=
+  coconeIdentityProjectionNullhomotopy X
+end e2NormalizedReedyFixtures
