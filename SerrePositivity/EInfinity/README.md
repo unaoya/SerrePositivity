@@ -2385,6 +2385,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `derivedFreeProbeUnitEdge` は任意の既存 D(R) 頂点の実自由 probe への単位辺で、元の射の類を保持する。
 `derivedFreeProbeUnitCommaVertex` は同じ U の各固定始域 comma fiber の実候補頂点。
 候補の標的は同じ自由 probe 頂点。始対象性と全 coherent ∞ 随伴との接続は未完成。
+`derivedFreeProbeUnitIntervalMap` は同じ U と同じ実単位による標準区間写像空間比較。
+任意のパラメータ族について、その作用を元の単位の前合成と U の後合成へ厳密に回収する。
+`normalizedSimplexTensorHomIso` は同じ X⊗N(Δⁿ) の Hom と同じ dg Hom の実 Dold–Kan Hom の単体集合同型。
+`normalizedSimplexDerivedHomIso` は半自由 X・Y で既存 D(R) の右 pinched Hom への同型。
+元の normalizedFunctor・線形化・smart truncation と全ての単体作用素を保持する。
+テンソル族の frame 性・標準解消との弱比較・標準単位比較の弱同値性は未証明。
 同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
