@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- 一般 cell 模型の合成比較と canonical 値回収、三段合成の全射自然性、実模型・元の canonical 比較の二変数自然性、実 tensor 模型変更の同型と値、invHomIso を保つ三角式付き同値の11新規モジュール、Derived 集約、両監査、本計画の15パスを `900d0b8ed` に保存済み。対象・両集約（10518 jobs）・17公開署名・ソース検査・両全体監査は成功。他レーンの変更は変更しない。
+- 実模型変更の coherence、自由 sphere・余積 Hom の全射性、零像原始元、cone の厳密な後合成、canonical 分解の全 cell 段と余極限の strict lift、双加群・kernel 模型への移送、元の合成比較への無条件の自然性の12新規モジュール、Derived 集約、両監査、本計画の16パスが未コミット。対象・両集約（10531 jobs）・25公開署名・ソース検査・両全体監査は成功。他レーンの変更は変更しない。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10518 jobs）。公理監査は Derived 18430 宣言／2146 モジュール、Stable 19543／2416。許容三公理のみ。今回までの保存対象1077新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10531 jobs）。公理監査は Derived 18669 宣言／2158 モジュール、Stable 19782／2428。許容三公理のみ。今回までの保存対象1089新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- 一般模型の合成比較 `dgKernelDerivedInfinity_compositionCellLiftIso` と canonical 代入で元の `compositionCellIso` を rfl で回収する補題を統合した。同じ三段合成への厳密な因子化と全射自然性を圏一般で証明し、`dgKernelDerivedInfinity_compositionCellLiftIso_hom_naturality` と元の `dgKernelDerivedInfinity_compositionCellIso_hom_naturality` へ接続した。原 kernel の平坦性・射の可逆性は不要で、模型射の augmentation 正方形は厳密な仮定として保つ。模型変更の実 tensor 射の作用も二つの同じ合成比較の差へ同定し、`dgKernelCellCompositionChangeIso` とその値を公開した。恒等正規化の直接試作は上限に当たり終了し、上限を変えず圏一般の恒等水平作用補題で解決した。`QCatEquivalence.adjointEquivalencePreservingCounit` は指定 invHomIso を厳密に保ち、元の homInvIso との一致は主張しない。模型変更の実合成比較の恒等・選択独立性・cocycle の3宣言は `/tmp/d-beta5-cell-composition-change-coherence.lean` と同名ログで検証済み、未集約。直接選択と二段合成の厳密一致は不要。次はこの3宣言を統合し、一般合成の五角式と単位三角式へ接続する。`BimoduleSemifreeResolution.lift_fac` は導来圏での可換性なので、現在の模型射条件へ無条件に代入しない。任意の原射に必要な strict lift または比較 cochain を持つ dg 模型への接続は未完。canonical の strict lift は `Module/ResolutionSequence` の実可算列・`KernelCells` の実 cone・`ConeHomotopyDesc` の境界付き降下と `CellLifting` の境界持ち上げをつなぐ経路を確認した。初期段の実自由 disk 被覆から次数別全射に沿う strict lift の1宣言は `/tmp/d-beta5-disk-cover-strict-lift.lean` と同名ログで検証済み、未集約。kernel cell 段への延長と余極限での整合性は未証明。source 比較の invHomIso と元の合成子の homInvIso の三角整合性も未完。今回の対象・両集約（10518 jobs）・17公開署名・ソース検査・両全体監査は成功。ログは `/tmp/d-beta5-general-cell-compositor-{derived,stable}-audit.log`。今回の結果は h Fun 値で、kernel nerve を入力とする新しい ∞ 関手とは主張しない。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。
+- 実 tensor 模型変更同型の恒等・選択独立性・cocycle を統合した。直接比較射と二段合成の厳密一致は不要。自由 sphere と余積の実 Hom 射の全次数全射性、K-projective 始域の零像原始元、同じ cone 降下の厳密な後合成を証明した。初期 disk 被覆・後続 kernel cell の strict lift から整合する全段を再帰し、実余極限へ降下して `dgModuleResolutionStrictLift_fac` を証明した。`dgBimoduleCanonicalResolutionStrictLift_fac` は指定双加群分解の augmentation square を導来圏への移行なしで厳密に与える。任意元 kernel 射の `dgKernelCellModelStrictLift` と厳密な fac、既存 h Fun 関手の実射作用との一致も統合した。`dgKernelDerivedInfinity_compositionCellIso_hom_naturality_strictLift` は追加の模型射・持ち上げ仮定なしに元の合成比較の二変数自然性を与える。`BimoduleSemifreeResolution.lift_fac` は従来の導来可換な射のまま保持し、別の新しい実 strict lift を構成した。指定 strict lift の実 h Fun 射作用・既存関手作用との同定・恒等・合成・別の厳密模型射との一致の5宣言は `/tmp/d-beta5-cell-strict-hom-functoriality.lean` と `-full.log` で検証済み、未集約。二つの中間同値の消去順序の交換 `functorIsoCancellation_assoc` も `/tmp/d-beta5-cancellation-associativity.lean` と `-retry.log` で検証済み、未集約。`QCatEquivalence.coherentHomInvIso` と三角式付き単位の値回収の2宣言も `/tmp/d-beta5-coherent-hom-inverse.lean` と `-retry.log` で検証済み、未集約。これは指定 invHomIso を保つ構成で、古い homInvIso との一致は未証明。次はこの8宣言を分割統合し、一般合成の五角式と単位三角式へ接続する。全 cell 模型変更の高次 coherence と source 比較の invHomIso・元の合成子の homInvIso の三角整合性は未完。今回の対象・両集約（10531 jobs）・25公開署名・ソース検査・両全体監査は成功。ログは `/tmp/d-beta5-cell-change-strict-{derived,stable}-audit.log`。今回の結果は h Fun 値で、kernel nerve を入力とする新しい ∞ 関手とは主張しない。Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 も未完。
 
 ## 目標と原典
 

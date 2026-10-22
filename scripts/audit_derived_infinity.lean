@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionStrictNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelStrictLift
+import SerrePositivity.InfinityCategories.Derived.DGBimoduleCanonicalStrictLift
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictLiftStages
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictLift
+import SerrePositivity.InfinityCategories.Derived.DGModuleKernelCellStrictLift
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeStrictPostcomposition
+import SerrePositivity.InfinityCategories.Derived.DGModulePrimitiveOverZero
+import SerrePositivity.InfinityCategories.Derived.DGFreeSphereHomSurjective
+import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomSurjective
+import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChangeCoherence
+import SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverStrictLift
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChange
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoIdentityHorizontalSquare
 import SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionNaturality
@@ -4133,6 +4145,27 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionStrictNaturality,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellModelStrictLift,
+
+    `SerrePositivity.InfinityCategories.Derived.DGBimoduleCanonicalStrictLift,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictLiftStages,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictLift,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKernelCellStrictLift,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeStrictPostcomposition,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModulePrimitiveOverZero,
+
+    `SerrePositivity.InfinityCategories.Derived.DGFreeSphereHomSurjective,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomSurjective,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChangeCoherence,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverStrictLift,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelCellCompositionChange,
 
     `SerrePositivity.InfinityCategories.Derived.FunctorIsoIdentityHorizontalSquare,
