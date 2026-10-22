@@ -137,3 +137,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOpposit
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionPointed
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemPointed
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionTerminal
+public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSlicePullback
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionLimits
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionColimits
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExact

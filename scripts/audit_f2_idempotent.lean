@@ -1402,3 +1402,39 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @idem_hasZeroVertex
 #print axioms idem_hasZeroVertex
+
+#check @fullSliceOver_lift
+#print axioms fullSliceOver_lift
+
+#check @fullSliceOver_isPullback
+#print axioms fullSliceOver_isPullback
+
+#check @mapJoinCone_isLimit_fullCompletion
+#print axioms mapJoinCone_isLimit_fullCompletion
+
+#check @IsIdempotentCompletion.mapJoinCone_isLimit
+#print axioms IsIdempotentCompletion.mapJoinCone_isLimit
+
+#check @IsIdempotentCompletion.hasLimit_comp
+#print axioms IsIdempotentCompletion.hasLimit_comp
+
+#check @IsIdempotentCompletion.mapJoinCocone_isColimit
+#print axioms IsIdempotentCompletion.mapJoinCocone_isColimit
+
+#check @IsIdempotentCompletion.hasColimit_comp
+#print axioms IsIdempotentCompletion.hasColimit_comp
+
+#check @IsIdempotentCompletion.preservesPullbackSquare
+#print axioms IsIdempotentCompletion.preservesPullbackSquare
+
+#check @IsIdempotentCompletion.preservesPushoutSquare
+#print axioms IsIdempotentCompletion.preservesPushoutSquare
+
+#check @IsIdempotentCompletion.isExactFunctor
+#print axioms IsIdempotentCompletion.isExactFunctor
+
+#check @IsIdempotentCompletion.preservesFiber
+#print axioms IsIdempotentCompletion.preservesFiber
+
+#check @idemYoneda_isExactFunctor
+#print axioms idemYoneda_isExactFunctor
