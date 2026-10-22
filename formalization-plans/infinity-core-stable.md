@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- g の実整数係数 tensor 同型、実 Moore 乗法の係数移送、負次数の左右単位・結合則、全整数次数の乗法成分と実単位鎖写像：6新規モジュール・37公開宣言、Derived 集約、両監査、本計画の10パス。対象・両集約（10920 jobs）・37明示署名・ソース検査は成功、新規ソースに警告なし。両全体監査も終端0（Derived 20037宣言／2219モジュール、Stable 21150／2489）。この10パスを保存する。前回保存は `29db90fb2`（計画 `bca23d458`）。他レーンの変更は保持する。
+- 検証済み10パスは `de5d36e73` に保存済み。今回の計画状態の更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -99,8 +99,8 @@
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- d・f は完了、β4 は D2 所有。g の今回の6モジュールは `DGIntegerCoefficientTensor`・`DGSimplicialRingDGMooreProduct`・`DGSimplicialRingNegativeProduct`・`DGSimplicialRingNegativeProductLaws`・`DGSimplicialRingCochainProductComponents`・`DGSimplicialRingCochainUnit`。元の格納された整数作用を保つ半線形恒等射を tensor 化し、整数倍の自然性から係数移送後の標準 tensor との実自然同型を得た。元の Moore 乗法と左右単位・結合則を負次数へ戻し、正次数入力を零にした全整数次数の乗法成分を実標準 tensor の各次数へ降下した。元の単位を実 cochain 単位鎖写像へ接続した。対象・両集約・37署名は成功。両全体監査も終端0（Derived 20037宣言／2219モジュール、Stable 21150／2489）。検証済み10パスを保存する。ログは `/tmp/d-beta5-cochain-tensor-{target,laws-target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は `simplicialRingDGCochainMultiplicationComponent` と微分の可換性を証明して実乗法鎖写像へ昇格し、全 tensor 図式の結合・左右単位則、実 dg 代数関手と D(A)・Perf(A) 接続、準同型不変性を閉じる。元の Moore 乗法の二微分項・零次数境界・垂直符号 `(-1)^p` と二変数自然性（10宣言）、実 tensor 比較の前合成則・係数移送後の二微分項と両正次数の Leibniz 式（4宣言）は `/tmp/d-beta5-moore-product-differential.lean` で終端0、警告なし。公開形式は未検証。既存の `simplicialRingDGCochain_d`・`integerCoefficientTensorComparison_naturality` と接続し、負次数の符号が一致すること、正次数入力と零次数境界を照合する。乗法成分はまだ鎖写像とは主張せず、g 全体は未完。単体環の可換性・原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
+- d・f は完了、β4 は D2 所有。g の今回の6モジュールは `DGIntegerCoefficientTensor`・`DGSimplicialRingDGMooreProduct`・`DGSimplicialRingNegativeProduct`・`DGSimplicialRingNegativeProductLaws`・`DGSimplicialRingCochainProductComponents`・`DGSimplicialRingCochainUnit`。元の格納された整数作用を保つ半線形恒等射を tensor 化し、整数倍の自然性から係数移送後の標準 tensor との実自然同型を得た。元の Moore 乗法と左右単位・結合則を負次数へ戻し、正次数入力を零にした全整数次数の乗法成分を実標準 tensor の各次数へ降下した。元の単位を実 cochain 単位鎖写像へ接続した。対象・両集約・37署名は成功。両全体監査も終端0（Derived 20037宣言／2219モジュール、Stable 21150／2489）。検証済み10パスは `de5d36e73` に保存済み。ログは `/tmp/d-beta5-cochain-tensor-{target,laws-target,aggregate,signatures,derived-audit,stable-audit}.log`。
+- 次は `simplicialRingDGCochainMultiplicationComponent` と微分の可換性を証明して実乗法鎖写像へ昇格し、全 tensor 図式の結合・左右単位則、実 dg 代数関手と D(A)・Perf(A) 接続、準同型不変性を閉じる。元の Moore 乗法の二微分項・零次数境界・垂直符号 `(-1)^p` と二変数自然性（10宣言）、実 tensor 比較の前合成則・係数移送後の二微分項と両正次数の Leibniz 式（4宣言）は `/tmp/d-beta5-moore-product-differential.lean` で終端0、警告なし。公開形式の同名 ready も14明示署名・公理検査が終端0、警告なし。次の予定名は `DGSimplicialRingMooreProductDifferential`（10宣言）・`DGSimplicialRingCoefficientProductDifferential`（4宣言）。公開 source は `/tmp/d-beta5-{moore,coefficient}-product-differential-source.lean`。既存の `simplicialRingDGCochain_d`・`integerCoefficientTensorComparison_naturality` と接続し、負次数の符号が一致すること、正次数入力と零次数境界を照合する。乗法成分はまだ鎖写像とは主張せず、g 全体は未完。単体環の可換性・原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
 
 ## 目標と原典
 
