@@ -2306,7 +2306,14 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `simplex_target/sliceSimplex` は最後の頂点を同じ Y に固定した錐単体を与える。
 `cofibrantSourceRoofProductCommaNativeSimplex/NativeSliceSimplex` は任意可換環の実 comma への代入。
 後者の標的は元の cofibrantHammockVertex A Y 上の slice そのもの。
-混合単体の全単体作用素への自然性・全 prism への組立・両端と底円柱の同定、
+`CoherentRightCone.hom_reindex` は全 Hom の最後の頂点固定の添字変換を保持する。
+`RoofPrefix.lastHom_reindex/simplex_naturality/sliceSimplex_naturality` は全ての面・退化への自然性。
+`RoofPrefix.prism` は元の混合単体を一つの全 slice 写像へ束ねる。
+`cofibrantSourceRoofProductCommaNativePrism` は元の qY 上の実 comma 全 prism。
+`CoherentRightCone.diagram_front` は追加終点を除くと元の通常図式の coherent 表示になる。
+`RoofPrefix.prism_projection` は同じ評価自然変換の元の全円柱への射影式。
+`cofibrantSourceRoofProductCommaNativePrism_projection` は元の EvaluationHomotopy.h との厳密な一致。
+実 native prism の零端・一端と標準右脚・native pinched 族の同定、
 native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
