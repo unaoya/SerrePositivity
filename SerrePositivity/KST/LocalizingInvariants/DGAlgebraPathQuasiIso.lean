@@ -16,6 +16,11 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path
 variable {R : Type u} [CommRing R] {A B : Mon (Complex R)} {a b : A ⟶ B}
 
+lemma Witness.quasiIsoAt_iff (w : Witness R a b) (j : ℤ) :
+    QuasiIsoAt a.hom j ↔ QuasiIsoAt b.hom j := by
+  rw [quasiIsoAt_iff_isIso_homologyMap, quasiIsoAt_iff_isIso_homologyMap,
+    w.chainHomotopy.homologyMap_eq]
+
 lemma Witness.quasiIso_iff (w : Witness R a b) : QuasiIso a.hom ↔ QuasiIso b.hom := by
   rw [_root_.quasiIso_iff, _root_.quasiIso_iff]
   apply forall_congr'

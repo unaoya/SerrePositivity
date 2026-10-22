@@ -798,7 +798,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageHomology,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayerHomology,
     `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageHomology,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionHomology]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProjectionQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageFactorisation,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageFactorisationConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageExtension,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageFactorisation,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionProjection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
