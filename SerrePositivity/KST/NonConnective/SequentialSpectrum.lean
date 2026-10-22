@@ -5,7 +5,7 @@ public import SerrePositivity.KST.Spectra.FilteredSpectrumInjection
 /-!
 概要：非連結化に用いる逐次 BF 模型と、その整数 π の余極限。
 方針：Sp レーンの filtered 構成を同じ宇宙の自然数列に特殊化する。
-規約：実 Sp cocone の高次整合と ∞ 余極限性は未提供。このファイルでは主張しない。
+規約：実 Sp cocone は SequentialCoherentCocone で構成する。∞ 余極限性は別工程。
 使われ方：K-7 工程 1。後続の dg 懸垂列を受け取る対象側の界面。
 -/
 

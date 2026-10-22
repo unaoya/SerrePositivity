@@ -9,7 +9,13 @@ run_cmd do
   let expected := #[
     `SerrePositivity.KST.NonConnective.SequentialSpectrum,
     `SerrePositivity.KST.NonConnective.SequentialPi,
-    `SerrePositivity.KST.NonConnective.SequentialComparison]
+    `SerrePositivity.KST.NonConnective.SequentialComparison,
+    `SerrePositivity.KST.NonConnective.SequentialRawHomDiagram,
+    `SerrePositivity.KST.NonConnective.SequentialCoherentLift,
+    `SerrePositivity.KST.NonConnective.SequentialCoherentCocone,
+    `SerrePositivity.KST.NonConnective.SequentialLevelColimit,
+    `SerrePositivity.KST.NonConnective.SequentialLevelColimitUniversal,
+    `SerrePositivity.KST.NonConnective.SequentialLevelHomLimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -37,3 +43,16 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.sequentialPi_subsingleton_of_eventually
 #check SerrePositivity.KST.NonConnective.sequentialInjection_bijective_on
 #check SerrePositivity.KST.NonConnective.sequentialInjection_isInvertible_of_stable
+
+#check SerrePositivity.KST.NonConnective.sequentialRawInjectionCone
+#check SerrePositivity.KST.NonConnective.sequentialReflectedEndProjection_trivial
+#check SerrePositivity.KST.NonConnective.sequentialReflectedBFInjectionPoint_projection
+#check SerrePositivity.KST.NonConnective.sequentialCoherentCocone
+#check SerrePositivity.KST.NonConnective.sequentialCoherentCocone_vertex
+
+#check SerrePositivity.KST.NonConnective.sequentialKanSequence_sigma_mono
+#check SerrePositivity.KST.NonConnective.sequentialLevelColimitIsColimit
+#check SerrePositivity.KST.NonConnective.sequentialReplacementProjection_piIsomorphism
+
+#check SerrePositivity.KST.NonConnective.sequentialLevelHomIsLimit
+#check SerrePositivity.KST.NonConnective.sequentialHomLimitFamily_fac
