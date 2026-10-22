@@ -3571,3 +3571,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_uncurry_ι
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorExtensionEndpoint_constant_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_initial_base
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_endpoint_base
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberComparison_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_eq_of_dataEq
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_source
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_target
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_projection
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightBase
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_initial
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_final
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_eq_endpointIso
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionConstantEndpoint_witnessIso_heq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_constant_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_postcomp_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_constant_fiber

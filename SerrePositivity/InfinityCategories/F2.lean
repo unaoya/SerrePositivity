@@ -556,6 +556,20 @@ public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleLongD
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningFamilyPrismEndpoints
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleLongEndpoint
 
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointEvaluation
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionConstantEndpoint
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionRestrictionEvaluation
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointRestriction
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberComparisonRestriction
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberWitnessRestriction
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberDataEquality
+public import SerrePositivity.InfinityCategories.F2.FiberTransportFamilyRightPrism
+public import SerrePositivity.InfinityCategories.F2.FiberTransportFamilyRightComparison
+public import SerrePositivity.InfinityCategories.F2.FiberTransportFamilyRightComparisonEquality
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionConstantComparison
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryConstantFiber
+public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValue
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -860,3 +874,47 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTrian
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantTriangleLongTransport_map_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_uncurry_ι
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorExtensionEndpoint_constant_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_initial_base
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionRestriction_endpoint_base
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberComparison_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_restriction
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_eq_of_dataEq
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_source
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_target
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightPrism_projection
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightBase
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_initial
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_final
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison
+
+#check @SerrePositivity.InfinityCategories.F2.fiberTransportFamilyRightComparison_eq_endpointIso
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionConstantEndpoint_witnessIso_heq_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_constant_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_postcomp_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_constant_fiber

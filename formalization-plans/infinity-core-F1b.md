@@ -28,14 +28,14 @@
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
   元の五因子の値の整合式・a6 中央比較への照合・辺の制限・上側単位因子の交換消去、定値三角形因子の回収を証明。
-  元の fiber 終点・全輸送の指定比較の合成則と、同じ区間の任意の指定持ち上げを経由する値の一致を証明。
+  元の fiber 終点・全輸送の指定比較の合成・制限・定値 fiber 表示・curry の整合と、右結合 prism 比較＝元の endpointIso を証明。
   元の三辺・全三角形を保持した長辺輸送を指定比較へ入力し、同じ元の長辺 prism・全終点・curry・一点値を厳密に回収。
   未完：下側の指定輸送因子と上側の native 因子の整合・消去、二三角形・指定 path の全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 F2N-3（κ-compact・Yoneda・retract）、F1 の Ind と N の冪等完備化を用いて F2N-5。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9698 jobs、公理監査12449宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  元の三辺と全三角形を保持する長辺証拠・全 prism・終点・curry・一点値の回収を含む追加20明示宣言を型検査。
+  検証：三集約同時ビルド9711 jobs、公理監査12498宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  同じ実終点の指定比較の制限・定値 fiber 表示・右結合 prism・curry の整合を含む追加22明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -81,12 +81,12 @@
 ### 次の一手
 
 - F2N-1 a7：値へ写した全三角形の整合式の外側因子を消去し、a6 の指定 path と全錐へ接続する。
-  出発点は coherentColimitUnitValueAction_coherence。元の五因子の同じ像を保持した等式まで証明済み。
-  UpperUnitFactor_triangle_cancel は明示的な結合則の下で同じ長辺・最後の辺の単位因子を消去する。
+  出発点は coherentColimitUnitValueAction_coherence。上側の単位因子は UpperUnitFactor_triangle_cancel で消去済み。
   ConstantTriangleValue_heq_total は右側の元の定値三角形因子を同じ単位での前合成へ回収済み。
-  ConstantTransportIso_heq_triangle は元の全三角形の長辺の実輸送を、指定比較の経由表示へ入力済み。
-  LongTransport_prism・endpoint・map_vertex は同じ元の長辺証拠と二辺の実作用の合成を厳密に回収。
-  次は元の三角形比較を同じ fiber 終点比較へ戻し、_heq_triangle の最初の指定比較を消去する。
+  ConstantTransportIso_heq_triangle と LongTransport_prism・endpoint・map_vertex は元の長辺証拠を指定比較へ入力済み。
+  relativeExtensionConstantEndpoint_witnessIso_heq_fiber・relativeFunctorCurryIso_constant_fiber で同じ fiber 比較の curry へ移せる。
+  fiberTransportFamilyRightComparison_eq_endpointIso は同じ右結合 prism の比較を元の endpointIso へ戻す。
+  次は unstraighteningSourceComparisonIso_heq_endpoint の同じ普遍 Z・指定 W を二輸送へ照合し、上記を合成して最初の比較を消去。
   coconeIntervalFiberTransportIso_heq_constant・FiberHomIso_heq_curry で LowerTransportFactorIso の元の成分へ運ぶ。
   UpperNativeFactorIso の同じ全 Hom の自然性と合わせ、三角形に沿う外側因子を消去する。
   同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
