@@ -1463,4 +1463,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellNat
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellClassCompositionCongr
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightNaturalitySquare
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellLiftFactorization
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationTarget
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationWitness
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCompositeSquare
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
