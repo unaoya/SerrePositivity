@@ -1424,5 +1424,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClass
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassComposition
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeCoefficientComparison
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeClassMap
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassPostTransport
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffine
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
