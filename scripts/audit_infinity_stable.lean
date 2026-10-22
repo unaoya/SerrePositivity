@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.FinitePosetNerve
+import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
+import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma
+import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftKanShape
+import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftKanExtension
 import SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension
 import SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits
 import SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits
@@ -7492,6 +7497,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.FinitePosetNerve,
+    `SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism,
+    `SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma,
+    `SerrePositivity.InfinityCategories.Stable.FinitePosetLeftKanShape,
+    `SerrePositivity.InfinityCategories.Stable.FinitePosetLeftKanExtension,
+
     `SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension,
     `SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits,
     `SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits,
