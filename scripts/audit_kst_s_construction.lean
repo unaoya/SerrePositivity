@@ -29661,3 +29661,117 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero_isZero
 #print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectArrowTarget
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectArrowTarget
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrow
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrow
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrow_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrow_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetZero
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetRepresentable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetRepresentable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetNerve_isStable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowTargetNerve_isStable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectArrowRepresentableIso
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectArrowRepresentableIso
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectBaseFamily
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectBaseFamily
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectBase
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectBase
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectBaseZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectBaseZero
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectBaseRepresentable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectBaseRepresentable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectBaseZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectBaseZero_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectBaseNerve_isStable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectBaseNerve_isStable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeYoneda
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeYoneda
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareComparisonAt
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareComparisonAt
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareComparisonAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareComparisonAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerFamily
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerFamily
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectSquareCorner
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectSquareCorner
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerSmall
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerSmall
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareCornerInclusion
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectSquareGluing
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectSquareGluing
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_left
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_left
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_right
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_right
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_left_generates
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareDiagonal_left_generates
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotient_perfectOver_point_eq
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotient_perfectOver_point_eq
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareEndInclusion_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareEndInclusion_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareEndInclusion_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareEndInclusion_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareLeftMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotientInput
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotientInput
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotientEnd
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareQuotientEnd
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap_inclusion

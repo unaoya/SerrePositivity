@@ -2426,4 +2426,16 @@ public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeFreeCompar
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeGeneration
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeZero
 
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectArrow
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectArrowObjects
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectBase
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeYoneda
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareComparison
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareCorner
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareDiagonal
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareGeneration
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareLegs
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareQuotientEnd
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareRightEnd
+
 /-! # ∞-S• 構成と連結 K 理論 -/
