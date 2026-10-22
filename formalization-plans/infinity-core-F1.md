@@ -13,7 +13,9 @@
 - 一般底に向けた検証済み作業は `dc768ab4b` まで保存。二次元標準境界の coherent 比較は同値で、
   元の大域作用との指定同型まで構成した。集約ビルド 7277 jobs、公理監査 15838 宣言、標準三公理のみ。
 - **F1-4 進行中**：小さい前層図式の余極限の存在・元の評価による保存・検出を証明。
-  極限は各点の存在を明示した構成・保存・検出まで。𝒮 の一般 coherent 小極限の存在の接続は残る。
+  極限は各点の存在を明示した構成・保存・検出まで。形状ごとの F2 の空間値極限条件との接続も証明。
+- 表現可能前層は、像の極限の存在のもとで任意の形状の元の極限全錐を保存する。
+  有限性・離散性は使わない。一般の小さい空間値極限の存在は未解決。
 
 ### 残り（依存順）
 
@@ -37,6 +39,8 @@
 - `cocartesianTwoBoundaryCoherentHomComparison_originalIso`
 - `presheafInfinity_hasColimit`、`presheafInfinity_isColimit_iff_evaluation`
 - `presheafInfinity_hasLimit_of_evaluation`、`presheafInfinity_isLimit_iff_evaluation`
+- `presheafInfinity_hasLimit_of_spaceLimitsOfShape`
+- `representablePresheafInfinity_isLimit_of_hasLimit`
 
 ### 依存と提供
 
@@ -54,6 +58,10 @@
 - 有限単体の分類同値から、一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
 - 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
 - 全局所 Hom の比較と元の大域作用の比較を区別し、指定同型の共有境界像を保持する。
+- F1-4 の未解決点は `∀ {B : SSet.{u}} (F : ulift B ⟶ SpaceInfinity.{u}), HasLimit F`。
+  F2・N の検索では小余極限の一般存在、空・単体・積・引き戻し・塔の極限まで確認した。
+  `F2.HasSpaceLimitsOfShape B` は条件の定義であり、任意 B での証明ではない。
+  この条件を新しい公理や instance 仮定として主経路に置かず、native な極限錐への接続を残す。
 
 ### 再開点（第 II 段、3行）
 
@@ -63,7 +71,7 @@
 
 ### 次の一手
 
-𝒮 の一般 coherent 小極限の存在を F2・N の模型・native 錐の界面へ接続する。
+F2・N の Kan な切断模型と小さい積・引き戻し・塔から、一般 coherent 小極限の native 錐への接続を調べる。
 現在の `presheafInfinity_hasLimit_of_evaluation` の各点存在を解消し、余極限側と同じ無条件の小極限を提供する。
 続いて表現可能前層と極限の交換、F1-5、F1-3b へ進む。
 

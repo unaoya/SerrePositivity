@@ -8850,3 +8850,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.presheafInfinity_evaluation_isLimit
 
 #check @SerrePositivity.InfinityCategories.presheafInfinity_isLimit_iff_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_exists_limitCone_of_spaceLimitsOfShape
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_hasLimit_of_spaceLimitsOfShape
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_isLimit_iff_evaluation_of_spaceLimitsOfShape
+
+#check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit_of_hasLimit
+
+#check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit_of_spaceLimitsOfShape

@@ -3131,3 +3131,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryCohere
 public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
 
 public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseLimits
+
+public import SerrePositivity.InfinityCategories.F1.PresheafSmallLimits
+
+public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafLimits
