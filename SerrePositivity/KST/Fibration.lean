@@ -120,3 +120,10 @@ public import SerrePositivity.KST.Fibration.FinSnocProductIso
 public import SerrePositivity.KST.Fibration.WeakStringTailCanonicalComponents
 public import SerrePositivity.KST.Fibration.WeakStringFiniteRecursion
 public import SerrePositivity.KST.Fibration.WeakStringFiniteEquivalence
+public import SerrePositivity.KST.Fibration.WeakStringSimplicialIndices
+public import SerrePositivity.KST.Fibration.WeakStringFaceEdges
+public import SerrePositivity.KST.Fibration.WeakStringFiniteFaces
+public import SerrePositivity.KST.Fibration.WeakStringFiniteDegeneracies
+public import SerrePositivity.KST.Fibration.WeakStringCofiberMiddle
+public import SerrePositivity.KST.Fibration.WeakRelativeMultiAction
+public import SerrePositivity.KST.Fibration.WeakStringVertexAction

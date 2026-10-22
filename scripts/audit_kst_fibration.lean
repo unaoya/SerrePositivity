@@ -126,7 +126,14 @@ run_cmd do
     `SerrePositivity.KST.Fibration.FinSnocProductIso,
     `SerrePositivity.KST.Fibration.WeakStringTailCanonicalComponents,
     `SerrePositivity.KST.Fibration.WeakStringFiniteRecursion,
-    `SerrePositivity.KST.Fibration.WeakStringFiniteEquivalence]
+    `SerrePositivity.KST.Fibration.WeakStringFiniteEquivalence,
+    `SerrePositivity.KST.Fibration.WeakStringSimplicialIndices,
+    `SerrePositivity.KST.Fibration.WeakStringFaceEdges,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteFaces,
+    `SerrePositivity.KST.Fibration.WeakStringFiniteDegeneracies,
+    `SerrePositivity.KST.Fibration.WeakStringCofiberMiddle,
+    `SerrePositivity.KST.Fibration.WeakRelativeMultiAction,
+    `SerrePositivity.KST.Fibration.WeakStringVertexAction]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
