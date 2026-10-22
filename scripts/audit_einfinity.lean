@@ -8245,6 +8245,45 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.arrowHomotopy_underMap,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaPrefixHomotopy_underMap]
 
+@[noinline] private def e2RequiredBatch146 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.PathMaximum.LastPath,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFin,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.indexFunctor,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFin_forget,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFin_reindex,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFin_comp,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFunctor,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFunctor_forget,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underPost_map,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFunctor_reindex,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFunctor_comp,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.underFunctor_nerve_forget,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.coordinates,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.coordinates_reindex,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.coordinates_comp,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.coordinates_zero,
+      `SerrePositivity.EInfinity.FrameHom.PathMaximum.coordinates_one_of_source,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_reindex,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_comp,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_zero,
+      `SerrePositivity.EInfinity.Hammock.LeftRoof.Prefix.pathMap_one_of_source,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.familyMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_reindex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_zero,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_one_of_source,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSource_precompose,
+      `SerrePositivity.EInfinity.SimplicialLocalization.kanHammockSource_precompose_family,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_enriched,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_one_of_target,
+      `SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix.pathMap_comp_one_enriched,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap_eq,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaNativeFamilyMap_pinched,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCommaPrefixPathMap]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8278,7 +8317,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19879,3 +19918,68 @@ example :
         (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
   cofibrantSourceRoofProductCommaPrefixHomotopy_underMap A X Y b f
 end e2PrefixNaturalityFixtures
+
+section e2PrefixPathFixtures
+universe e2PrefixPathUniverse
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet SimplicialThickening
+open SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.EInfinity.FrameHom
+open scoped Simplicial
+variable {I : Type e2PrefixPathUniverse} [Category.{e2PrefixPathUniverse} I]
+variable {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
+variable (i j : Fin (n + 1)) (hij : i ≤ j)
+example :
+    eComp SSet (⟨ULift.up i.castSucc⟩ :
+      SimplicialThickening (ULift.{e2PrefixPathUniverse} (Fin (n + 2))))
+      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ PathMaximum.coordinates Γ t i =
+    snd _ _ ≫ PathMaximum.coordinates Γ t j ≫
+      (nerveMap (Under.map (Γ.map (homOfLE hij))) ▷ Δ[1]) :=
+  PathMaximum.coordinates_comp Γ t i j hij
+variable (A : Type e2PrefixPathUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+variable (D : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
+example :
+    cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b ≫
+      kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
+        (show (cofibrantAlgebraRelativeCategory A).category from
+          cofibrantSourceRoofDegreeAlgebra A X Y b)
+        (show (cofibrantAlgebraRelativeCategory A).category from Y) =
+      cofibrantSourceRoofProductCommaNativePinchedMap A X Y b :=
+  cofibrantSourceRoofProductCommaNativeFamilyMap_pinched A X Y b
+example :
+    cofibrantSourceRoofProductCommaPrefixPathMap A X Y b D (OrderHom.const _ 0) i =
+    toUnit _ ≫ ForgetEnrichment.homTo SSet.{e2PrefixPathUniverse + 1}
+      ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
+        ((cofibrantSourceRoofProductCommaRightLeg A X Y b).app (D.obj i))) :=
+  RoofPrefix.pathMap_zero (cofibrantAlgebraRelativeCategory A)
+    (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
+    (cofibrantSourceRoofProductCommaRightLeg A X Y b)
+    (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) D i
+example (hj : t j = 1) :
+    eComp SSet (⟨ULift.up i.castSucc⟩ :
+      SimplicialThickening (ULift.{e2PrefixPathUniverse + 1} (Fin (n + 2))))
+      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫
+        cofibrantSourceRoofProductCommaPrefixPathMap A X Y b D t i =
+    lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{e2PrefixPathUniverse + 1}
+      ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
+        ((cofibrantSourceRoofProductCommaEvaluation A X Y b).app (D.obj i))))
+      (snd _ _ ≫ pathLastMaximumMap j ≫ SSet.yonedaEquiv.symm D ≫
+        cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b) ≫
+      eComp SSet
+        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+          ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj (D.obj i)))
+        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+          (show (cofibrantAlgebraRelativeCategory A).category from
+            cofibrantSourceRoofDegreeAlgebra A X Y b))
+        ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).obj
+          (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
+  RoofPrefix.pathMap_comp_one_enriched (cofibrantAlgebraRelativeCategory A)
+    (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation A X Y b)
+    (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
+    (cofibrantSourceRoofProductCommaRightLeg A X Y b)
+    (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) D t i j hij hj
+end e2PrefixPathFixtures

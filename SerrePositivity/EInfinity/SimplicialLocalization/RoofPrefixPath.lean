@@ -1,0 +1,89 @@
+module
+
+public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixPath
+public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
+
+/-!
+# 元の最大座標 prefix 写像を同じ Kan hammock Hom へ送る
+
+概要：元の全 path 写像を元の Ex∞ 単位で送り、全合成・面と退化・両端を保つ。
+方針：同じ単位の自然性と元の prefix 全円柱の等式を使う。
+規約：元の相対圏・同じ Hom・同じ源関手の通常射を保持する。
+使われ方：native roof prism の最後の頂点への豊穣 Hom の作用。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet SimplicialThickening
+open Hammock SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open scoped Simplicial
+variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+  (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
+  (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
+  (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
+
+def familyMap : nerve I ⟶ exInfinity.obj (colimitGraph C.weakEquivalences X Y) :=
+  LeftRoof.Precompose.SameUniverse.diagramColimitMap C.weakEquivalences
+    (LeftRoof.diagram C.weakEquivalences U p hp σ hU) ≫ exInfinityUnit.app _
+
+def pathMap {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
+    (i : Fin (n + 1)) : nerve (FrameHom.PathMaximum.LastPath.{u} n i) ⟶
+      SimplicialCategory.sHom ((kanHammockSourceFunctor C).obj (U.obj (Γ.obj i)))
+        ((kanHammockSourceFunctor C).obj Y) :=
+  LeftRoof.Prefix.pathMap C.weakEquivalences U p hp σ hU Γ t i ≫ exInfinityUnit.app _
+
+lemma pathMap_reindex {m n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)) :
+    nerveMap (pathLastReindexFunctor.{u} α i) ≫ pathMap C U p hp σ hU Γ t (α.toOrderHom i) =
+      pathMap C U p hp σ hU (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) i := by
+  dsimp only [pathMap]
+  rw [← Category.assoc, LeftRoof.Prefix.pathMap_reindex]
+  rfl
+
+lemma pathMap_comp {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
+    (i j : Fin (n + 1)) (hij : i ≤ j) :
+    eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
+      ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ pathMap C U p hp σ hU Γ t i =
+    snd _ _ ≫ pathMap C U p hp σ hU Γ t j ≫ exInfinity.map
+      (precomposePointMap (arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y) := by
+  dsimp only [pathMap]
+  rw [← Category.assoc, LeftRoof.Prefix.pathMap_comp C.weakEquivalences U p hp σ hU Γ t i j hij]
+  simp only [Category.assoc]
+  have h := exInfinityUnit.naturality
+    (precomposePointMap (arrowMap C.weakEquivalences (U.map (Γ.map (homOfLE hij)))) Y)
+  simp only [Functor.id_map] at h
+  exact congrArg (fun k => snd _ _ ≫
+    LeftRoof.Prefix.pathMap C.weakEquivalences U p hp σ hU Γ t j ≫ k) h
+
+lemma pathMap_zero {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (i : Fin (n + 1)) :
+    pathMap C U p hp σ hU Γ (OrderHom.const _ 0) i =
+      toUnit _ ≫ ForgetEnrichment.homTo SSet.{u}
+        ((kanHammockSourceFunctor C).map (σ.app (Γ.obj i))) := by
+  dsimp only [pathMap]
+  rw [LeftRoof.Prefix.pathMap_zero, kanHammockSourceFunctor_homTo, Category.assoc]
+  rfl
+
+lemma pathMap_one_of_source {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2)
+    (i : Fin (n + 1)) (hi : t i = 1) :
+    pathMap C U p hp σ hU Γ t i = pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
+      familyMap C U p hp σ hU ≫ exInfinity.map
+        (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y) := by
+  dsimp only [pathMap, familyMap]
+  rw [LeftRoof.Prefix.pathMap_one_of_source C.weakEquivalences U p hp σ hU Γ t i hi]
+  simp only [Category.assoc]
+  have h := exInfinityUnit.naturality
+    (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y)
+  simp only [Functor.id_map] at h
+  let L : nerve (FrameHom.PathMaximum.LastPath.{u} n i) ⟶
+      colimitGraph C.weakEquivalences X Y :=
+    pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm Γ ≫
+      LeftRoof.Precompose.SameUniverse.diagramColimitMap C.weakEquivalences
+        (LeftRoof.diagram C.weakEquivalences U p hp σ hU)
+  exact congrArg (fun k : colimitGraph C.weakEquivalences X Y ⟶
+    exInfinity.obj (colimitGraph C.weakEquivalences (U.obj (Γ.obj i)) Y) => L ≫ k) h
+
+end SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix

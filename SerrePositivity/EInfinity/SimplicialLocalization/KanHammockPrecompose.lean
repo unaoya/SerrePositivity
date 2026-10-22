@@ -1,0 +1,57 @@
+module
+
+public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
+
+/-!
+# 元の前合成の Kan 化と同じ豊穣合成の一致
+
+概要：元の通常射による前合成の Ex∞ 像を同じ Kan hammock の豊穣合成へ戻す。
+方針：有限積保存・単位の monoidal 性・元の点の自然性を使う。
+規約：元の通常射・同じ Ex∞・同じ豊穣 Hom と合成を保持する。
+使われ方：native roof prism の 00 と 01 の豊穣合成条件。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.SimplicialLocalization
+open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
+open Hammock SerrePositivity.KST.Comparison
+variable (C : RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y) (Z : C.category)
+
+lemma kanHammockSource_precompose :
+    exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences f) Z) =
+    lift (toUnit _ ≫ ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f))
+      (𝟙 _) ≫ eComp SSet ((kanHammockSourceFunctor C).obj X)
+        ((kanHammockSourceFunctor C).obj Y) ((kanHammockSourceFunctor C).obj Z) := by
+  let p := arrowMap C.weakEquivalences f
+  let B := colimitGraph C.weakEquivalences Y Z
+  have hp : precomposePointMap p Z = lift (toUnit B ≫ p) (𝟙 B) ≫
+      colimitComposition C.weakEquivalences X Y Z := rfl
+  have hu : exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε exInfinity := by
+    simpa using (NatTrans.IsMonoidal.unit (τ := exInfinityUnit.{u}))
+  have hn := exInfinityUnit.naturality p
+  simp only [Functor.id_map] at hn
+  have hc : exInfinity.map (toUnit B ≫ p) = toUnit (exInfinity.obj B) ≫
+      (p ≫ exInfinityUnit.app _) := by
+    rw [exInfinity.map_comp, ← Functor.Monoidal.toUnit_ε,
+      ← hu, Category.assoc, ← hn]
+    exact (Category.assoc _ _ _).symm
+  rw [show arrowMap C.weakEquivalences f = p from rfl, hp, exInfinity.map_comp,
+    ← Functor.Monoidal.lift_μ, hc, exInfinity.map_id,
+    kanHammockSourceFunctor_homTo]
+  rfl
+
+lemma kanHammockSource_precompose_family {K : SSet.{u}}
+    (L : K ⟶ SimplicialCategory.sHom ((kanHammockSourceFunctor C).obj Y)
+      ((kanHammockSourceFunctor C).obj Z)) :
+    L ≫ exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences f) Z) =
+      lift (toUnit K ≫ ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f)) L ≫
+        eComp SSet ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)
+          ((kanHammockSourceFunctor C).obj Z) := by
+  rw [kanHammockSource_precompose, ← Category.assoc, comp_lift]
+  simp only [← Category.assoc, comp_toUnit, Category.comp_id]
+
+end SerrePositivity.EInfinity.SimplicialLocalization

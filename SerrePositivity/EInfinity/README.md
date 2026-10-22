@@ -2292,7 +2292,15 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `coreCylinder_underMap` は始点変更への制限と同じ縮約の全関手としての一致。
 `arrowHomotopy_underMap` は Under.map に沿う元の全 h と始点射による前合成の厳密な等式。
 `cofibrantSourceRoofProductCommaPrefixHomotopy_underMap` は任意可換環の実 comma への代入。
-coherent Hom の path 切断と全合成・単体作用素への接続、native roof の全三角形と hR 本体、
+`PathMaximum.underFunctor/coordinates` は最大座標を元の始点の Under と同じ時間へ送る。
+`coordinates_comp/reindex` は path 合成と全ての面・退化に対する厳密な整合。
+`LeftRoof.Prefix.pathMap` は同じ座標で元の全円柱を評価し、両端と合成を保持する。
+`kanHammockSource_precompose_family` は元の前合成の Ex∞ 像と実 Kan 豊穣合成の厳密な一致。
+`RoofPrefix.pathMap_comp_enriched/pathMap_comp_one_enriched` は 00 と 01 の実豊穣合成式。
+`cofibrantSourceRoofProductCommaPrefixPathMap` は任意可換環の実 comma の同じ Kan Hom への代入。
+`cofibrantSourceRoofProductCommaNativeFamilyMap_pinched` は元の native pinched 族と厳密に一致。
+混合 coherent 単体の全対象・全 Hom・単位・合成の組立、全単体作用素・両端の同定と
+native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
