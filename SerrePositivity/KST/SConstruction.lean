@@ -2269,4 +2269,11 @@ public import SerrePositivity.KST.SConstruction.PerfectLaxIdempotent
 public import SerrePositivity.KST.SConstruction.TammePerfectSequence
 public import SerrePositivity.KST.SConstruction.TammePerfectSplit
 public import SerrePositivity.KST.SConstruction.TammePerfectSplitInfinity
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotient
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientComparison
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientSquare
+
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientUniversalComparison
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientUniversalLift
+
 /-! # ∞-S• 構成と連結 K 理論 -/
