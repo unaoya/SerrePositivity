@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanPullback
+import SerrePositivity.InfinityCategories.Stable.SquareFixedSpanCocone
+import SerrePositivity.InfinityCategories.Stable.LoopZeroOuterSpanColimit
+import SerrePositivity.InfinityCategories.Stable.LoopSuspensionSquareExists
+import SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationFromSquares
+import SerrePositivity.InfinityCategories.Stable.SuspensionSectionFromLoop
+import SerrePositivity.InfinityCategories.Stable.ZeroOuterSpans
+import SerrePositivity.InfinityCategories.Stable.ContractibleBaseInitialFiber
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpan
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanSourceFiber
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInitial
 import SerrePositivity.InfinityCategories.Stable.LoopConeChoiceModel
 import SerrePositivity.InfinityCategories.Stable.ConeInputSourceFiber
 import SerrePositivity.InfinityCategories.Stable.ZeroOuterConeSourceInitial
@@ -4266,6 +4277,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanPullback,
+    `SerrePositivity.InfinityCategories.Stable.SquareFixedSpanCocone,
+    `SerrePositivity.InfinityCategories.Stable.LoopZeroOuterSpanColimit,
+    `SerrePositivity.InfinityCategories.Stable.LoopSuspensionSquareExists,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationFromSquares,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSectionFromLoop,
+
+    `SerrePositivity.InfinityCategories.Stable.ZeroOuterSpans,
+    `SerrePositivity.InfinityCategories.Stable.ContractibleBaseInitialFiber,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpan,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanSourceFiber,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInitial,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeChoiceModel,
     `SerrePositivity.InfinityCategories.Stable.ConeInputSourceFiber,
     `SerrePositivity.InfinityCategories.Stable.ZeroOuterConeSourceInitial,
