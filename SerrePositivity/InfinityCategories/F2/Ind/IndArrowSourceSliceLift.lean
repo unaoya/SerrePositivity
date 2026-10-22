@@ -68,4 +68,13 @@ lemma indArrowSourceSliceLift_precomp {T₀ : SSet.{u + 1}} (g : T₀ ⟶ T) :
   rw [intervalSliceConeLift_precomp]
   simp only [Category.assoc]
 
+/-- 元の全錐族側の包含では、元の C の図式の Yoneda 像を被覆する。 -/
+lemma indArrowSourceSliceLift_old_projection :
+    joinInl T (Δ[0] : SSet.{u + 1}) ≫ indArrowSourceSliceLift κ D H ≫
+      sliceOverProjection (stdSimplex.δ 0 ≫ (liftedIntervalToSmall.{u} ≫ D)) =
+        H ≫ pullback.fst (indYoneda κ C) (sliceOverProjection D) ≫ indYoneda κ C := by
+  rw [indArrowSourceSliceLift_projection, sliceOverUncurry_projection]
+  simp only [Category.assoc, HomotopyLimits.sliceOverRestrict_projection]
+  rw [← pullback.condition]
+
 end SerrePositivity.InfinityCategories.F2.Ind

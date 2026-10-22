@@ -421,3 +421,13 @@ public import SerrePositivity.InfinityCategories.F2.Ind.DiagramConePointUncurry
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSourceSliceLift
 public import SerrePositivity.InfinityCategories.F2.Ind.IntervalTerminalSliceSection
 public import SerrePositivity.InfinityCategories.F2.Ind.IntervalSlicePrismLift
+public import SerrePositivity.InfinityCategories.F2.Ind.LiftedIntervalFlip
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowNormalizedPrism
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrism
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEndpointCommaIso
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSourceEndpointFamily
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEndpointFamily
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEndpointCompatibility
+public import SerrePositivity.InfinityCategories.F2.Ind.RightIntervalUniverseShape
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationData
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExistence

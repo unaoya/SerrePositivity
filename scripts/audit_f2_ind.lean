@@ -801,3 +801,32 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction_uncurry
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_projection_of_initial
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_intervalSlice_prism_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.liftedIntervalFlip
+#check @SerrePositivity.InfinityCategories.F2.Ind.liftedIntervalFlip_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.liftedIntervalFlip_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowOriginalFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowOriginalFamily_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.IndArrowSlicePrism
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrism_nonempty
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointCommaIso_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_old_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceEndpointFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceEndpointFamily_precomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily_zero
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_indArrow_endpoint_family
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightIntervalUniverseShape_zero
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightIntervalUniverseShape_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightIntervalUniverseShape_isIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationData
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationData_nonempty
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSlicePrism_nonempty
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowEndpointFamily_zero
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indArrow_endpoint_family
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationData_nonempty
