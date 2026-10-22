@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Stable.HomotopyVertexArrow
+import SerrePositivity.InfinityCategories.Stable.UnitCommaSectionArrow
+import SerrePositivity.InfinityCategories.Stable.LoopCommaInitialArrow
+import SerrePositivity.InfinityCategories.Stable.UnitCommaFamilyArrow
+import SerrePositivity.InfinityCategories.Stable.UnitCommaArrowNaturality
+import SerrePositivity.InfinityCategories.Stable.UnitCommaInitialArrowCriterion
+import SerrePositivity.InfinityCategories.Stable.LoopSourceUnitInvertible
 import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanPullback
 import SerrePositivity.InfinityCategories.Stable.SquareFixedSpanCocone
 import SerrePositivity.InfinityCategories.Stable.LoopZeroOuterSpanColimit
@@ -7459,6 +7466,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.HomotopyVertexArrow,
+    `SerrePositivity.InfinityCategories.Stable.UnitCommaSectionArrow,
+    `SerrePositivity.InfinityCategories.Stable.LoopCommaInitialArrow,
+    `SerrePositivity.InfinityCategories.Stable.UnitCommaFamilyArrow,
+
+    `SerrePositivity.InfinityCategories.Stable.UnitCommaArrowNaturality,
+    `SerrePositivity.InfinityCategories.Stable.UnitCommaInitialArrowCriterion,
+    `SerrePositivity.InfinityCategories.Stable.LoopSourceUnitInvertible,
+
     `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanPullback,
     `SerrePositivity.InfinityCategories.Stable.SquareFixedSpanCocone,
     `SerrePositivity.InfinityCategories.Stable.LoopZeroOuterSpanColimit,
