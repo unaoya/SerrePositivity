@@ -2197,4 +2197,8 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEnrichedFunc
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFInfinityFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMap
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMapping
+public import SerrePositivity.KST.SConstruction.PointedSOAExInfinityComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEvaluationComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAZeroStructure
 /-! # ∞-S• 構成と連結 K 理論 -/
