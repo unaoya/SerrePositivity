@@ -2519,4 +2519,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetCornerRecovery
 public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebra
 public import SerrePositivity.KST.SConstruction.DGOdotTargetInputTriangle
 
+public import SerrePositivity.KST.SConstruction.DGEndIsoIntertwining
+public import SerrePositivity.KST.SConstruction.DGPerfectEndRepresentation
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRepresentation
+public import SerrePositivity.KST.SConstruction.DGPerfectRealization
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRealizedRepresentation
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRepresentablePoint
+
 /-! # ∞-S• 構成と連結 K 理論 -/
