@@ -897,7 +897,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProProjection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackSquareLift,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroBaseChange,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroBaseFactor]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroBaseFactor,
+    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.ProMonoidPullbackBaseChange,
+    `SerrePositivity.KST.LocalizingInvariants.ProMonoidPullbackLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPullbackTowerComparison,
+    `SerrePositivity.KST.LocalizingInvariants.CochainPullbackBounds,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroComparison,
+    `SerrePositivity.KST.LocalizingInvariants.ProFullSubcategoryLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroClassFactor]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
