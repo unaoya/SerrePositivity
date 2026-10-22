@@ -2705,3 +2705,10 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 中央相にある場合を除き、元の二つの中央相の切断和全体を比較する。
 相の重複による非単射性で、残った一項も零となることを証明する。
 主場合の非零成分と符号の比較、混合 HA 全体・全自然性・大域評価三角形は未完了。
+
+`coneTriangleFrontIndex_injOn_of_second_one` と Back 版は主場合の両作用素の単射性。
+`withoutFirst_image_penultimate_middle` と withoutLast 版は同じ中央相集合の回収式。
+`middle_min_eq_second`・`middle_max_eq_penultimate`・`middle_card_add_two` と
+`sign_second_card` は元の最小点・最大点・濃度・切断符号を計算する。
+`normalizedTensorTriangleData_hom_evaluation_edge` は同じ実評価射の閉成分との一致。
+残る主切断 cochain の値と符号の比較・混合 HA・大域評価三角形は未完了。
