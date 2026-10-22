@@ -2286,6 +2286,12 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 恒等左脚の roof は同じ forward 射へ厳密に正規化され、円柱の写像は元の四列のまま。
 `inclusion_underMap/restrictedRoofMap_underMap` は始点を変える元の射への厳密な整合。
 `cofibrantSourceRoofProductCommaPrefixHomotopy` は任意可換環の元の全 comma 図式への代入。
+`ForwardRoof` は元の三列 X→V←U→Y と全縦射を保持する。
+`coreCylinder_insert` は先頭の恒等列の挿入で元の四列円柱全体を厳密に回収する。
+`ForwardRoof.collapse_obj` は先頭に加わる二つの forward 列を元の合成へ縮約する。
+`coreCylinder_underMap` は始点変更への制限と同じ縮約の全関手としての一致。
+`arrowHomotopy_underMap` は Under.map に沿う元の全 h と始点射による前合成の厳密な等式。
+`cofibrantSourceRoofProductCommaPrefixHomotopy_underMap` は任意可換環の実 comma への代入。
 coherent Hom の path 切断と全合成・単体作用素への接続、native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
