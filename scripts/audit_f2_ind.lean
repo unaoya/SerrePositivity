@@ -1,6 +1,21 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_reconstructed
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_original
+#check @SerrePositivity.InfinityCategories.F2.Ind.fixedArrowPrismBoundary
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismBoundaryMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismReconstructedBoundaryVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismOriginalBoundaryVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowReconstructionPrismIso
+
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismBoundaryIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowReconstructionPrismIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_pre
 #check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_restrict
 #check @SerrePositivity.InfinityCategories.F2.Ind.relativeLiftFixedBoundaryInclusion_square

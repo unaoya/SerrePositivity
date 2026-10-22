@@ -500,3 +500,15 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalSliceFam
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalCoconeFamily
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismOld
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalFamilyVertices
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismEndpoints
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedArrowPrismBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismBoundaryMap
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismComparison
