@@ -32,9 +32,12 @@
   `isKappaFiltered_of_strict_isColimit` と `rightFibration_of_filtered_isColimit` は通常の strict 模型の閉性。
   `strictRightFibrationColimit` は固定底上の同じ全空間の余極限射影を束ねた対象。
   元の脚と射影の等式、および `strictRightFibrationColimit_isKappaFiltered` まで証明済み。
+  `strictRightFibrationColimitFiberIso` は同じ余極限の fiber と元の各 fiber の余極限との同型。
+  元の全空間の脚が誘導する fiber 写像との一致、同じ通常の余錐の余極限性まで証明済み。
+  `strictRightFibrationFiberNativeCocone_isColimit` はその同じ余錐の SpaceInfinity 内の余極限性。
   coherent な前層余極限との比較はまだ未証明。通常の strict 余極限をそのまま ∞ 余極限とは主張しない。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6209 jobs、公理監査 733 宣言、標準三公理のみ。
+- 独立集約 6281 jobs、公理監査 788 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -58,6 +61,7 @@
 - `isKappaFiltered_of_strict_isColimit`、`rightFibration_of_filtered_isColimit`
 - `strictRightFibrationColimit`、`strictRightFibrationColimitProjection_ι`
 - `strictRightFibrationColimit_isKappaFiltered`
+- `strictRightFibrationColimitFiberIso`、`strictRightFibrationFiberNativeCocone_isColimit`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -86,7 +90,8 @@
 
 (c)：`HasKappaFilteredElements` の同型閉性と Yoneda 像は証明済み。
 正則 κ の下で小さい κ-filtered 余極限閉性を示す。strict 模型の閉性と相対因子分解は証明済み。
-固定底上の strict 余極限対象も構成済み。まず元の各 fiber とこの余極限との比較を構成する。
+固定底上の strict 余極限と元の各 fiber との比較、同じ fiber 余錐の native な余極限性は証明済み。
+次は分類写像と大域的な fiber 評価の同型を通し、前層側の同じ余錐の評価へ接続する。
 κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。

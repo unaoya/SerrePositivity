@@ -59,6 +59,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimitProjection_ι
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimit_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.filteredFixedBaseColimit_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimitFiberIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberColimitCocone_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberColimitCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictNativeCocone_isColimit_of_filtered_forget
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberNativeCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberNativeCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
