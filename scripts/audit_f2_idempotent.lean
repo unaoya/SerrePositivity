@@ -178,3 +178,37 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms RetractionTriangle.weakDiagram_retraction
 #check @isVertexRetractOf_iff_retractionTriangle
 #print axioms isVertexRetractOf_iff_retractionTriangle
+#check @walkingSource_ne_image
+#print axioms walkingSource_ne_image
+#check @walkingRetractionTriangle_obj
+#print axioms walkingRetractionTriangle_obj
+#check @walkingRetractionTriangle_one_iff
+#print axioms walkingRetractionTriangle_one_iff
+#check @triangleSimplex_eq_of_one_fibers
+#print axioms triangleSimplex_eq_of_one_fibers
+#check @walkingRetractionTriangle_kernel
+#print axioms walkingRetractionTriangle_kernel
+#check @triangleSimplex_longEdge_factor
+#print axioms triangleSimplex_longEdge_factor
+#check @weakTriangle_eq_of_avoids_one
+#print axioms weakTriangle_eq_of_avoids_one
+#check @longEdgeCollapse_section
+#print axioms longEdgeCollapse_section
+#check @longEdgeCollapse_epi
+#print axioms longEdgeCollapse_epi
+#check @weakTriangle_epi
+#print axioms weakTriangle_epi
+#check @weakTriangle_app_surjective
+#print axioms weakTriangle_app_surjective
+#check @weakComparison_mono
+#print axioms weakComparison_mono
+#check @weakRetractionImage
+#print axioms weakRetractionImage
+#check @weakComparison_range
+#print axioms weakComparison_range
+#check @weakShapeImageIso
+#print axioms weakShapeImageIso
+#check @weakShapeImageIso_ι
+#print axioms weakShapeImageIso_ι
+#check @weakTriangle_imageIso
+#print axioms weakTriangle_imageIso

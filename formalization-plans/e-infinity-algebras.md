@@ -20,7 +20,9 @@
   `CoherentIdempotent` は元の全 Idem 上の写像。`StrongSplitting` は同じ包含による制限で元の全図式を厳密に回収する写像。元の全図式から得た自己射の冪等性と、強い分裂から同じ二頂点の retract を回収。
   **元の弱い retract の商と実際の分裂三角形の照合を完了。** `WeakShape` は Δ² の長辺を Δ⁰ へ潰す pushout。`weakDiagramEquiv` は全 Ret 図式と同じ二単体・同じ指定点の可換データとの全単射。
   `VertexRetraction.triangle_exists` は元の二射の類を保つ実際の二単体を回収。`RetractionTriangle.weakDiagram` は同じ三角形を元の商へ降ろし、元の二辺・分裂頂点を厳密に回収する。
-  `weakComparison` は元の包含・射影の合成二単体を同じ商へ降ろした、強い分裂添字への標準比較。両辺と分裂頂点への一致を証明。単射性・inner anodyne 性はまだ証明していない。
+  `weakComparison` は元の包含・射影の合成二単体を同じ商へ降ろした、強い分裂添字への標準比較。両辺と分裂頂点への一致を証明。
+  **Ret の商と元の分裂二単体の像の同定を完了。** 全次数で、同じ像の二単体の単体は、同じ単体か双方が元の長辺を経由すると分類。中央頂点の逆像と単調性を使い、非退化単体だけに制限しない。
+  元の商への全射性と核の分類から `weakComparison_mono` を証明。`weakShapeImageIso` は元の商と元の二単体の像の同型で、同型後の包含は `weakComparison` そのもの。inner anodyne 性は未証明。
   同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
   **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
   元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
@@ -33,16 +35,17 @@
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
   `WeakShape`、`WeakRetractionDiagram`、`weakDiagramEquiv`、`weakComparison`、`RetractionTriangle`、`VertexRetraction.triangle_exists`、`RetractionTriangle.weakDiagram`、
+  `walkingRetractionTriangle_kernel`、`weakComparison_mono`、`weakComparison_range`、`weakShapeImageIso`、`weakShapeImageIso_ι`、
   `isVertexRetractOf_iff_retractionTriangle`、`CoherentIdempotent.endomorphism_idem`、`StrongSplitting.vertexRetraction`、`VertexRetraction.isoOfSameIdempotent`、`VertexRetraction.hom_unique`、
   `IsVertexRetractOf`、`retractClosure`、`retractClosure_idempotent`、`IsRetractPresheaf`、`Idem`、`idemInclusionPresheaf`、`idemYoneda`、`idemYoneda_inclusion`、`idemYoneda_isFullyFaithful`、`idemVertex_retract_yoneda`。
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の3モジュール31宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：F2N-4 の集約ビルド4118 jobs・全88宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし（今回の3モジュール17宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド4121 jobs・全105宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(a)：`weakComparison : WeakShape → SplitShape` の単射性を証明し、HTT の元の二単体の像 Ret と厳密に同定する。二単体の単体が同じ像を持つのは、同じ単体か、双方が同じ長辺を経由するとき。次に HTT 4.4.5.6〜8 の内角充填による延長へ進む。元の二射・同じ恒等辺・冪等図式の全次数を保持し、Ret の商と三角形の回収を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
+- **次の一手**：F2N-4(a)：元の `weakRetractionImage` を Ret(1) とする HTT 4.4.5.6 の濾過を構成する。Ret(m) は Idem 部分への逆像が (m−1)-骨格を経由する元の単体からなる部分複体。m≥2 の追加は元の交互列 Y→X→Y→…→X→Y の Δ²ᵐ。欠ける面は奇数頂点集合 {1,3,…,2m−1} を含む面であり、HTT 4.4.5.8 の内角ホーン貼付けを証明して各段階と全包含の inner anodyne 性を導く。`weakShapeImageIso_ι` で元の商の標準比較へ戻す。商の核と単射性を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 

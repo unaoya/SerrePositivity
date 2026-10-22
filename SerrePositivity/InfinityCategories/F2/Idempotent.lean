@@ -7,3 +7,6 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafClosure
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakShape
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakComparison
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle
+public import SerrePositivity.InfinityCategories.F2.Idempotent.TriangleKernel
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakMono
+public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakImage
