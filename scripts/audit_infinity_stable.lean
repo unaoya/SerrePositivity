@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion
+import SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeExtensions
 import SerrePositivity.InfinityCategories.Stable.FinitePosetNerve
 import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
 import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma
@@ -7497,6 +7501,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve,
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion,
+    `SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension,
+    `SerrePositivity.InfinityCategories.Stable.PosetSubtypeExtensions,
+
     `SerrePositivity.InfinityCategories.Stable.FinitePosetNerve,
     `SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism,
     `SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma,

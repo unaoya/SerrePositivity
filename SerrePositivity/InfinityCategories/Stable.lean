@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve
+public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion
+public import SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension
+public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeExtensions
 public import SerrePositivity.InfinityCategories.Stable.FinitePosetNerve
 public import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
 public import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma
