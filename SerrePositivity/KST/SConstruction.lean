@@ -2471,4 +2471,9 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingTargetContraction
 public import SerrePositivity.KST.SConstruction.DGOdotTargetCone
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRightCone
 
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeCochain
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeDifferential
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeComposition
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeElement
+
 /-! # ∞-S• 構成と連結 K 理論 -/

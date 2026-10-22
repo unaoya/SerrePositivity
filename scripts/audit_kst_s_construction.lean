@@ -30159,3 +30159,36 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inr
 #print axioms SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inr
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_fst
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_fst
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_snd
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_snd
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_add
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_add
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_smul
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_smul
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_zero_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_zero_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_identity
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_identity
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_differential
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_differential
+
+#check @SerrePositivity.KST.SConstruction.dgGluingConeCochain_comp
+#print axioms SerrePositivity.KST.SConstruction.dgGluingConeCochain_comp
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement
+
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_π
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_π
