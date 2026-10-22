@@ -189,7 +189,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleEvaluation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleQuasiIso,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftHomotopyRepresentation,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroObjects,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroAcyclic,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorSubcategories,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FactorObjects,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LeftFactorHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

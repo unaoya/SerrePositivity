@@ -184,3 +184,10 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleE
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleQuasiIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftHomotopyRepresentation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroObjects
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroAcyclic
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorSubcategories
+public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorObjects
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LeftFactorHom
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison

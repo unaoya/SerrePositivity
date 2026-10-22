@@ -19,7 +19,11 @@
   射影的加群間の射として K の同型を得て、負も含む全整数シフトの全 dg 自然なホモトピー表現可能性を供給。
 - 代表加群の同型閉包は零・全整数シフト・任意 distinguished 三角形の円錐で閉じる。
   `dgGluing_isDGPretriangulated` は元の C・D の前三角性だけを明示入力に、構成した実 gluing の前三角性を結論する。
-- 工程 (b)〜(f) は未着手。次は (b) の二つの充満 dg 部分圏と射影・随伴を構成する。
+- 工程 (b) 進行中。片側が H⁰ で零となる対象の実充満 dg 部分圏 `DGGluingCFactor`・`DGGluingDFactor` と両包含・制限射影を構成。
+  元の前三角性からホモトピー零対象を選び、両制限射影の実対象での全射性を証明。厳密零対象・零 Hom の仮定は追加しない。
+- C 因子への任意対象からの左 Hom 射影は quasi-isomorphism。C 因子の射影と元の C の dg 準同値を証明。
+  `dgGluingFactors_semiorthogonal` は順序 ⟨D,C⟩ の実 Hom 複体の全次数 acyclic 性。
+- (b) の D 因子の比較、射影と随伴、分解三角形・gluing 関手の同定は未完。(c)〜(f) は未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -55,6 +59,8 @@
 - `dgGluingKernelShiftInclusion_closed`・`dgGluingKernelShiftOutIn`・`dgGluingKernelShiftInOut`
 - `dgGluingKernelHomModuleShiftIso`・`dgGluingKernelRepresentableModuleIso`・`dgGluingChosenShiftModuleMap`
 - `dgGluingShiftModuleMap_quasiIso`・`dgGluingChosenShiftHomotopyRepresentable`・`dgGluing_isDGPretriangulated`
+- `DGGluingCFactor`・`DGGluingDFactor`・`dgGluingFactorZeroObject`・`dgGluingCFactorProjection`
+- `dgGluingCFactorProjection_quasiEquivalence`・`dgGluingLeftHomMap_quasiIso_of_target_right_zero`・`dgGluingFactors_semiorthogonal`
 
 ### 残り（依存順）
 1. (b) 半直交分解 ⟨D, C⟩（K-8b の Map(left,right)=0）：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
@@ -72,13 +78,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- (b) 左右どちらかがホモトピー零である対象の充満 dg 部分圏を定義し、左右射影による元の二圏との比較を構成する。
-  元の前三角圏の零対象は K で零を表す対象なので、厳密な零 Hom と仮定せず、代表加群の可縮性を使う。
-  KL §4.2 と K-8b の規約 Map(D,C)=0 に沿い、順序 ⟨D,C⟩ の射影・随伴と実半直交分解を組み立てる。
+- D 因子から任意対象への右 Hom 射影を擬同型と示す。C の零始域と双加群の右加群作用を使い、cocone の両直和成分を交換する。
+  D 因子の元の D との dg 準同値を得て、両射影の H⁰ 随伴と分解三角形を構成する。
+  KL §4.2 と K-8b の規約 Map(D,C)=0 に沿い、gluing 関手の全次数係数 M とシフトを照合する。
 
 ### 未コミット・既知の問題
-- 185モジュール・集約ビルド成功（5102 jobs）、公理監査3294宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開11署名を検査済み。新規4モジュール、集約・監査・本計画の専有7パスだけを保存。他レーンの差分は含めない。
+- 192モジュール・集約ビルド成功（5113 jobs）、公理監査3344宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開36署名を検査済み。新規7モジュール、集約・監査・本計画の専有10パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
