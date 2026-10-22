@@ -1399,7 +1399,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightFollowing,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedSquare,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedModel]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientRestore,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageRestore,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoTargetModelProjections,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightOriginalTriangle,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightOriginalRoof]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
