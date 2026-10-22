@@ -645,3 +645,23 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_eta
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.commaFamilyLift_precomp
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.HasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Ind.space_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Ind.HasSmallFixedVertexMaps.functorSpace
+#check @SerrePositivity.InfinityCategories.F2.Ind.HasSmallFixedVertexMaps.of_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.small_joinMaps_fixedBoundary
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftKanShape_obj_small_of_fixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Ind.indDiagram_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramComma_obj_small
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramComma
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaProjection
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaIso_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaProjection_rightFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramComma_quasicategory
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramComma_obj_small
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaProjection_rightFibration
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaCocone_vertex

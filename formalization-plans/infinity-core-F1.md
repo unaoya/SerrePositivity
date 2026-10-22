@@ -13,7 +13,7 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7659 jobs、公理監査 3075 宣言、標準三公理のみ。
+- 現区切り：独立集約 7664 jobs、公理監査 3098 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -22,12 +22,9 @@
   `indObject_finiteColimit_isLimit` は明示交換入力のもとで、C の指定有限余極限の反転全錐の同じ前層による像の極限性。
   `indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence` は同じ全余錐の反転境界に沿う、元の小さい全空間上の切断制限自身の同値。
   同じ right unstraightening の反転全空間の同型と native 全錐の宇宙持ち上げで、底を保持したまま大きい切断制限へ移した。
-  `indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence` は、この同じ全比較で元の Yoneda slice の切断制限自身へ同値性を移す。
   `ind_finiteColimit_commaSections_isQCatEquivalence` は厳密な `indLeftKanCommaIso` の反転で、任意の元の Ind 頂点の実際の comma 上の同じ切断制限へ帰還する。
-  `indCommaCoslicePullbackIso` は実際の反転 comma と元の同じ対象の coslice の厳密な底変換の同型。元の底射影も厳密に保つ。
   `leftFibrationConeRestriction_baseChange_iff` と全制限自然性で、同じ全錐の像の全係数の coslice 切断制限へ戻した。
   `indYoneda_finiteOppositeCone_isLimit` は元の指定有限余極限の反転全錐の、正規化した反転 Yoneda による像の極限性。
-  全係数の `coneSectionRestriction` 判定から証明し、普遍性を仮定していない。交換入力は依然明示する。
   `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
   `indYoneda_finiteColimit_isColimit` は同じ指定元余錐の native な Yoneda 像の余極限性まで帰還。
   Ind の任意の有限図式の余極限存在や安定性は未証明。
@@ -39,7 +36,9 @@
 - `diagramYoneda` は全 coherent 図式に対する同じ Yoneda の作用。`_vertex` は元の全図式の像、
   `_restrict` は形状制限との全次数の厳密な自然性、`_isFullyFaithful` は任意の形状で全写像空間の充満忠実性。
   `diagramComma` と `diagramCommaCocone` は指定元図式への大きい表示添字と、頂点を厳密に保つ標準全余錐。
-  射影の right fibration 性・添字の quasicategory 性は証明済み。小ささ・κ-filtered 性・余極限性は未証明。
+  `diagramComma_obj_small` は全次数の実単体の小ささ。固定頂点写像の符号化を Space∞ → 前層 → Ind → 全図式と伝えて証明。
+  `smallDiagramCommaIso` は ULift した小さい実模型との同型、`_projection` は元の全図式への射影の厳密な一致。
+  小さい射影の right fibration 性・全空間の quasicategory 性・同じ図式を頂点とする標準全余錐は証明済み。κ-filtered 性・余極限性は未証明。
   `commaFamilyLift` の全射回収・往復・任意の制限自然性を証明。境界を含む元の全変換を保持する。
 
 ### 残り（依存順）
@@ -66,7 +65,7 @@
 
 - `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
 - `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_isFullyFaithful`
-- `diagramComma`、`diagramCommaCocone`、`diagramCommaCocone_vertex`、`commaFamilyLift_eta`、`commaFamilyLift_precomp`
+- `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
 
 ### 依存と提供
 
@@ -80,7 +79,7 @@
 
 ### 未コミット
 
-- なし。図式の充満忠実性・全 comma 族・標準全余錐まで対象ビルドと公理監査を通した区切り。
+- なし。元の全図式 comma の小ささと実同型・小さい射影・標準全余錐まで検証済み。
 
 ### 既知の問題
 
@@ -92,10 +91,11 @@
 
 `indYoneda_finiteColimit_isColimit` により、明示交換入力のもとで同じ元の有限余極限余錐を Ind Yoneda が保存することまで完了。
 次は有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による単一 filtered 表示を構成する。
-`diagramYoneda` の全作用・形状自然性・充満忠実性、`diagramComma` と同じ頂点の標準余錐は済み。
-次は大きい comma の次数ごとの小ささ。表示図式 a を固定した全変換を、C.op×K×(Δ[n]⋆Δ⁰) 上の Space∞ への射へ展開する。
-全頂点値を a の Yoneda 像と指定 D で固定し、`coherentMap_fixedVertices_small` の符号化を利用する。小ささはまだ未証明。
-その後 `smallSimplicialSet` の実同型で小さい模型を作り、`commaFamilyLift_precomp` で全境界を保って κ-filtered 性を証明する。
+`smallDiagramComma κ D` は小さい quasicategory、元の C の全図式への right fibration 射影と実比較同型を持つ。
+次は有限 K に対し、この小さい添字の κ-filtered 性を証明する。κ-small な試験形状 A 上の元の全族を延長する。
+`commaFamilyLift_eta` と `_precomp` で全族とその境界を元の全余錐へ戻し、K の有限セルに沿って表示を同時に整える。
+元の各 Ind 頂点の `indVertexElements_isKappaFiltered` と κ-small 形状の有限結合の小ささを用いる。有限単体だけへ主張を弱めない。
+その後、`smallDiagramCommaCocone` の元の全図式圏内での余極限性を証明し、有限図式の単一表示を結論する。
 各頂点を別々に表示するだけではなく、元の全単体・辺・境界を保持する一つの図式表示を得る。
 κ-filtered 性と元の指定図式を頂点とする全余錐の普遍性は証明すべき結論であり、入力にしない。
 C の `IsStable` から有限余極限を得る公開 API は検索で未確認。`Stable/Definition` は有限存在から安定性への十分条件のみ。

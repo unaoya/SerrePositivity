@@ -381,3 +381,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.CompactGeneration
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramYoneda
 public import SerrePositivity.InfinityCategories.F2.Ind.CommaFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramComma
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedVertexMapSmallness
+public import SerrePositivity.InfinityCategories.F2.Ind.JoinBoundaryMapSmallness
+public import SerrePositivity.InfinityCategories.F2.Ind.CommaSimplexSmallness
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramComma
