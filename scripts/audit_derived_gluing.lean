@@ -173,7 +173,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.BiproductCycles,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CommaStrictGradedElements,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftSquare,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftProjection]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftProjection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftUnits,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftInverseImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftInverseSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaElementExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaGradedUnits,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftUnits,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleShiftGradedIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModules,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleShift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentableModule,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleMap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

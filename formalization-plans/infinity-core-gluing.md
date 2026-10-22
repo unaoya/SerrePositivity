@@ -33,8 +33,12 @@
   `dgGluingRepresentable_isTriangulatedClosed₃` は標準 Yoneda 円錐に限らない同型閉包の全円錐閉性。
 - 元の C・D の任意整数シフト代表から実 gluing 候補を構成し、augmentation の厳密な回収・移送ホモトピーと両成分の K の比較を供給。
   正規化した kernel のシフト同型を使い、標準 kernel シフトから同じ候補への実閉 comma 射を構成。後合成は各 Hom 複体でホモトピー同値。
-- `dgGluingKernelShiftProjection` は標準 kernel シフトから元の対象への閉次数 n の実射影。両側は正規化した標準射影、第三成分は零。
-  augmentation との厳密な斉次可換性を全整数 n で証明。任意次数の二成分から第三成分零の閉 comma 元を組み立てる一般補題も供給。
+- 標準 kernel シフトとの閉斉次射影・包含を全整数 n で構成。両成分は正規化した標準射影・包含、第三成分は零。
+  augmentation の両厳密正方形と、通常順の両合成が実 comma 単位になることを証明。
+- kernel comma への Small 仮定なしに、native gluing 上の制限 Hom 加群値 dg 関手を構成。
+  同じ斉次単位から `dgGluingKernelHomModuleShiftIso` を作り、native 代表加群と制限 Hom 加群の実同型も供給。
+- `dgGluingShiftModuleMap` は任意整数シフトの Yoneda 加群から、同じ実 gluing 候補の代表加群への全 dg 自然な実比較。
+  元の両圏の前三角性を明示入力に取る選択版も構成。比較射の quasi-isomorphism 性は未証明。
 - gluing 自体の負シフトの全 dg 自然な加群表現可能性、全整数シフト閉性と前三角性への統合は未完。
   工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
@@ -69,6 +73,8 @@
 - `DGGluingShiftRepresentative`・`dgGluingChooseShiftRepresentative`・`dgGluingShiftRepresentativeHomInv_homotopy`
 - `dgGluingShiftObject`・`dgGluingShiftObject_augmentation_transport`・`dgGluingKernelShiftRepresentativeMap`
 - `dgGluingKernelShiftRepresentativePostEquiv`・`dgGluingNormalizedShiftSquare`・`dgGluingKernelShiftProjection_closed`
+- `dgGluingKernelShiftInclusion_closed`・`dgGluingKernelShiftOutIn`・`dgGluingKernelShiftInOut`
+- `dgGluingKernelHomModuleShiftIso`・`dgGluingKernelRepresentableModuleIso`・`dgGluingChosenShiftModuleMap`
 
 ### 残り（依存順）
 1. (a) 残り：負シフトの表現可能性、全整数シフトと三角的閉性を統合し `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -87,13 +93,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingKernelShiftProjection` の逆斉次元と単位関係を構成し、標準 kernel シフトとの Hom シフト同型へ接続する。
-  `dgGluingKernelShiftRepresentativePostEquiv` と合わせ、同じ元から全 dg 自然な Yoneda 加群シフト比較を作り準同型性を証明する。
-  負シフト表現可能性を得た後、既存の零・非負シフト・全円錐閉性と合わせて前三角性を証明する。
+- 制限 Hom 加群関手の閉射の評価を、同じ kernel comma の実後合成と同定する。
+  `dgGluingKernelShiftRepresentativePostEquiv` でその quasi-isomorphism 性を示し、`dgGluingShiftModuleMap` に移す。
+  射影的加群間の準同型として K のシフト代表同型を得て、既存の零・全円錐閉性と合わせて前三角性を証明する。
 
 ### 未コミット・既知の問題
-- 169モジュール・集約ビルド成功（5085 jobs）、公理監査3068宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開40署名を検査済み。新規11モジュール、集約・監査・本計画の専有14パスだけを保存。他レーンの差分は含めない。
+- 181モジュール・集約ビルド成功（5098 jobs）、公理監査3230宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開38署名を検査済み。新規12モジュール、集約・監査・本計画の専有15パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
