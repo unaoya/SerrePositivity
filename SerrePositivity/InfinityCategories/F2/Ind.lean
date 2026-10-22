@@ -137,3 +137,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldEqui
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionReconstruction
 public import SerrePositivity.InfinityCategories.F2.Ind.SpanLeftFibrationComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionClassification
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftFibrationSections
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionWeightedEvaluation
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedLeftSectionRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftClassificationSections

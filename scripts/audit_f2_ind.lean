@@ -236,3 +236,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionClassificationIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramWeightedJointIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramWeightedClassificationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftFibrationSectionDiagram_map
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftFibrationWeightedProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftSectionEvaluation_over_product
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftSectionRestriction_comp
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedLeftSectionEvaluation_restriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftClassificationSectionIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftFibrationSectionDiagram_coherent

@@ -31,8 +31,10 @@
   `underSectionReconstruction` は同じ inner anodyne 置換からの底上の同値 span。元の両 scaffold への制限も保持。
   `underSectionClassificationIso` はこの span を積上の一つの大域分類同型に移す。
   `presheafDiagramWeightedClassificationIso` は weighted nerve の共同分類を curry した図式と元の F の FunctorIso。
-  その weighted 分類と strict right fibration 図式の実際の分類像の比較、逆方向と単一 κ-filtered 表示は未証明。
-- 独立集約 6702 jobs、公理監査 1282 宣言、標準三公理のみ。
+  `strictLeftClassificationSectionIso` は strict left 分類像を底の全単体の同じ相対切断の系へ戻す大域同型。
+  `weightedLeftSectionEvaluation` は全切断の同じ共同 weighted nerve への評価で、底の任意の制限とも厳密に可換。
+  weighted 分類側とこの全切断の系との比較、right 反転との整合性、逆方向と単一 κ-filtered 表示は未証明。
+- 独立集約 6707 jobs、公理監査 1315 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -55,6 +57,7 @@
 - `underSectionScaffold_over_product`、`underSectionScaffoldValueMap_eq`、`underSectionWeightedProjection`
 - `underSectionScaffold_isPrecompositionEquivalence`、`underSectionReconstruction`
 - `presheafDiagramWeightedClassificationIso`、`underSectionClassificationIso`
+- `strictLeftClassificationSectionIso`、`weightedLeftSectionEvaluation_restriction`
 - `IndInfinity`、`indInclusionPresheaf_isFullyFaithful`、`indYoneda_isFullyFaithful`、`ind_isColimit_iff_inclusion`
 
 ### 依存と提供
@@ -83,7 +86,11 @@
 この span の積上の分類同型と、共同分類を curry した図式と元の F の一つの FunctorIso まで証明済み。
 次は `presheafDiagramWeightedClassification F` と、`strictCoherentDiagram (presheafDiagramRightStrict F)` を
 `rightStraighteningInfinityMap C` で分類した実際の図式との大域比較を構成する。
-共同 weighted nerve の分類と、固定底上の strict 図式の全高次の分類を揃える。元の F との比較は既存の同型を使う。
+strict left 分類像を底の全単体上の相対切断へ戻す大域同型と、共同 weighted 評価の全制限との可換性まで証明済み。
+次は添字 (s,i) ∈ TransportSimplexCategory B × I の相対切断の Kan 図式 H を作り、その replacement から
+元の共同 weighted 全空間へ評価する。始点の切断を、底の射列の初頂点座標で評価し、I の元の射で運ぶ。
+既存の left scaffold 判定と同じ元の fiber 評価で同値性を示し、全単体上の同じ分類図式へ移す。
+left/right 二重反転の自然な底上の比較も保持して、元の F との既存の同型に接続する。
 span の元の両 scaffold への制限を保持し、各値の同値だけで大域比較や元の余錐の比較を代用しない。
 同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。HTT 5.3.5.3、5.3.1.18。
 `isIndVertex_minimal` で逆方向を得て、同じ密度表示により単一 κ-filtered 表示と右 fibration 定義との一致を結論する。
