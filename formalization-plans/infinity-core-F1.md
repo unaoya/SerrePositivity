@@ -13,7 +13,7 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7392 jobs、公理監査 3041 宣言、標準三公理のみ。
+- 現区切り：独立集約 7395 jobs、公理監査 3047 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -31,7 +31,9 @@
   `leftFibrationConeRestriction_baseChange_iff` と全制限自然性で、同じ全錐の像の全係数の coslice 切断制限へ戻した。
   `indYoneda_finiteOppositeCone_isLimit` は元の指定有限余極限の反転全錐の、正規化した反転 Yoneda による像の極限性。
   全係数の `coneSectionRestriction` 判定から証明し、普遍性を仮定していない。交換入力は依然明示する。
-  通常形の native な Yoneda 有限余極限保存へは、ULift と反転の順の全射の一致が残る。Ind の有限余極限の存在や安定性は未証明。
+  `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
+  `indYoneda_finiteColimit_isColimit` は同じ指定元余錐の native な Yoneda 像の余極限性まで帰還。
+  Ind の任意の有限図式の余極限存在や安定性は未証明。
 - **(c) 未着手**：N の `Compact.indYoneda_isKappaCompact`、`idemToCompactInd_isQCatEquivalence_of_retracts` は利用候補。
   後者は元の compact Ind 対象の Yoneda retract 回収を入力として要求する。回収を証明済みとは扱わない。
 
@@ -55,7 +57,8 @@
 - `oppositeYonedaSliceProjection`、`oppositeElementsYonedaSliceComparison_projection`、`oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence`
 - `indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence`、`oppositeIndLeftKanProjection`、`ind_finiteColimit_commaSections_isQCatEquivalence`
 - `indCommaCoslicePullbackIso`、`indCommaCoslicePullbackIso_projection`、`leftFibrationConeRestriction_baseChange_iff`
-- `ind_finiteColimit_cosliceSections_isQCatEquivalence`、`indYoneda_finiteOppositeCone_isLimit`、`joinReverseIso_inv_app`
+- `ind_finiteColimit_cosliceSections_isQCatEquivalence`、`indYoneda_finiteOppositeCone_isLimit`
+- `joinUniverseReverse_hom`、`joinUniverseReverse_inv`、`uliftCoconeReverse_val`、`indYoneda_finiteColimit_isColimit`
 
 ### 依存と提供
 
@@ -69,7 +72,7 @@
 
 ### 未コミット
 
-- なし。反転全錐の普遍性まで対象ビルドと公理監査を通し、保存する区切り。
+- なし。指定元有限余錐の native な Yoneda 保存まで対象ビルドと公理監査を通した区切り。
 
 ### 既知の問題
 
@@ -80,18 +83,13 @@
 
 ### 次の一手
 
-`indYoneda_finiteOppositeCone_isLimit` は元の反転全錐の正規化した反転 Yoneda 像の極限性まで証明済み。
-次は `uliftCoconeReverse_val` に相当する全射の等式を証明し、通常の native な像余錐へ戻す。
-必要な式は mapJoinCone(uliftOppositeIso X).hom(JoinCone.ulift(kanCoconeReverseCone c)) の全射と、
-kanCoconeReverseCone(JoinCocone.ulift c) を (uliftOppositeIso K).hom で制限した全射との一致。
-`joinReverseIso_inv_app` は実反転同型の逆射を明示的な切断反転同値の逆へ戻す。失敗中の試行は `/tmp/f1-ind-ulift-cocone-reverse-draft.lean` に保存し、集約外。
-`augmentedReversePairUp` で切断表示の順反転と ULift の可換性まで証明済み。次数の cast・op 比較も `AugmentedUniverseReverse` に保存。
-次はこれを join の全順射と `uliftJoinIso` の可換性へ束ね、同型の順射で消去して逆射の式を得る。
-この式を後合成し、`isLimitCone_restrict_iff_of_isIso` と `F2.isLimitCone_reverse_postcomp_iff` で同じ元の有限余極限余錐の保存へ戻す。
-交換入力の証拠は未提供のまま。頂点だけの同型で全射の式を代用しない。
-続いて有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による filtered 表示を構成する。
+`indYoneda_finiteColimit_isColimit` により、明示交換入力のもとで同じ元の有限余極限余錐を Ind Yoneda が保存することまで完了。
+次は有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による単一 filtered 表示を構成する。
+まず Fun(K,C) → Fun(ULift K,Indκ C) の全射を定め、指定図式への全 coherent 変換を持つ表示添字を扱う。
 各頂点を別々に表示するだけではなく、元の全単体・辺・境界を保持する一つの図式表示を得る。
-C の `IsStable` から有限余極限を得る公開 API を確認し、不足分を証明する。その有限余極限と表示で元の Ind 図式の native 余極限を構成する。
+κ-filtered 性と元の指定図式を頂点とする全余錐の普遍性は証明すべき結論であり、入力にしない。
+C の `IsStable` から有限余極限を得る公開 API は検索で未確認。`Stable/Definition` は有限存在から安定性への十分条件のみ。
+不足分を所有内で証明し、その有限余極限と図式表示で元の Ind 図式の native 余極限を構成する。
 有限極限と安定性では `IndFiniteLimitExchangeInput` を明示引数にし、交換の証拠を内製しない。
 compact 部分の回収は N の既存の全比較と retract API を再利用する。
 

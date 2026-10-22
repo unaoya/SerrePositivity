@@ -615,3 +615,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.augmentedUniverseUp_op
 #check @SerrePositivity.InfinityCategories.F2.Ind.augmentedReversePairUp
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.augmentedReversePairUp
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinUniverseReverse_hom
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinUniverseReverse_inv
+#check @SerrePositivity.InfinityCategories.F2.Ind.uliftCoconeReverse_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteColimit_isColimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYoneda_finiteColimit_isColimit
