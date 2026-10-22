@@ -2622,3 +2622,10 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorDoubleConeSimplex` は元の実 cone と augmentation 自身への代入。
 先端 X・元の frame 列・終端 X を持ち、前面は同じ元の cone 単体。
 二重 cone の全作用素への自然性、大域二次 prism と全三角形、元の屋根との比較は未完了。
+
+`doubleConeOrderHom` は既存の始点・終点固定延長による両端付き作用素。
+`normalizedTensorDoubleConeData_pullback_map` と `normalizedTensorDoubleConeSimplex_pullback_map` は
+元の実二重 cone の全作用素への厳密な自然性。退化で潰れる終端辺と高次成分も検証している。
+`normalizedTensorDoubleConeOverSimplex` は同じ終端 X 上の slice の実単体。
+`_naturality` は元の始点付き全作用素との整合、`_projection` は同じ元の cone 単体への厳密な射影。
+slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次 prism と全三角形は未完了。

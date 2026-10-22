@@ -9257,6 +9257,26 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_front,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_last]
 
+@[noinline] private def e2RequiredBatch185 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexSimplexData_hom_heq_of_front_eq,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeOrderHom,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeOrderHom_castSucc,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeOrderHom_last,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeOrderHom_eq_last_iff,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeOrderHom_predAbove,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_obj_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_pullback_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeData_pullback_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_pullback_map,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverSimplex_naturality,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverSimplex_projection,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_last_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_pullback_hom_terminal_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSimplex_pullback_hom_terminal_not_inj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeAugmentationClosed_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTerminalValue_reindex]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9290,7 +9310,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -23651,4 +23671,147 @@ example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) 
     Simplex A (Complex A) (n + 2) := normalizedTensorDoubleConeSimplex A X Y c
 
 end e2RightConeFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2DoubleMapU
+section e2DoubleMapFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open scoped Simplicial
+variable (A : Type e2DoubleMapU) [CommRing A] (X Y : Complex A)
+
+example {m : ℕ} (s t : SimplexData A (Complex A) (m + 1))
+    (hfront : s.pullback Fin.castSuccOrderEmb.toOrderHom =
+      t.pullback Fin.castSuccOrderEmb.toOrderHom)
+    (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b ≠ Fin.last (m + 1)) :
+    HEq (s.hom I a b k hI ha hb hk) (t.hom I a b k hI ha hb hk) :=
+  complexSimplexData_hom_heq_of_front_eq A s t hfront I a b k hI ha hb hk hbl
+
+example {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 2)) :
+    doubleConeOrderHom θ i.castSucc = (prependOrderHom θ.toOrderHom i).castSucc :=
+  doubleConeOrderHom_castSucc θ i
+
+example {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    doubleConeOrderHom θ (Fin.last (m + 2)) = Fin.last (n + 2) :=
+  doubleConeOrderHom_last θ
+
+example {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 3)) :
+    doubleConeOrderHom θ i = Fin.last (n + 2) ↔ i = Fin.last (m + 2) :=
+  doubleConeOrderHom_eq_last_iff θ i
+
+example {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 3)) (hi : i ≠ Fin.last (m + 2)) :
+    (Fin.last (n + 1)).predAboveOrderHom (doubleConeOrderHom θ i) =
+      prependOrderHom θ.toOrderHom ((Fin.last (m + 1)).predAboveOrderHom i) :=
+  doubleConeOrderHom_predAbove θ i hi
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 3)) :
+    (normalizedTensorDoubleConeSimplex A X Y c).obj (doubleConeOrderHom θ i) =
+      (normalizedTensorDoubleConeSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj i :=
+  normalizedTensorDoubleConeSimplex_obj_reindex A X Y c θ i
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    ((normalizedTensorDoubleConeSimplex A X Y c).pullback (doubleConeOrderHom θ)).pullback
+      Fin.castSuccOrderEmb.toOrderHom =
+      (normalizedTensorDoubleConeSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).pullback
+        Fin.castSuccOrderEmb.toOrderHom :=
+  normalizedTensorDoubleConeSimplex_pullback_front A X Y c θ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (normalizedTensorDoubleConeSimplex A X Y c).toSimplexData.pullback (doubleConeOrderHom θ) =
+      (normalizedTensorDoubleConeSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).toSimplexData :=
+  normalizedTensorDoubleConeData_pullback_map A X Y c θ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    (normalizedTensorDoubleConeSimplex A X Y c).pullback (doubleConeOrderHom θ) =
+      normalizedTensorDoubleConeSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) :=
+  normalizedTensorDoubleConeSimplex_pullback_map A X Y c θ
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    normalizedTensorDoubleConeOverSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) =
+      (sliceOver (normalizedTensorConePoint A X)).map
+        (SimplexCategory.mkHom (prependOrderHom θ.toOrderHom)).op
+        (normalizedTensorDoubleConeOverSimplex A X Y c) :=
+  normalizedTensorDoubleConeOverSimplex_naturality A X Y c θ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (sliceOverProjection (normalizedTensorConePoint A X)).app (Opposite.op ⦋n + 1⦌)
+      (normalizedTensorDoubleConeOverSimplex A X Y c) = normalizedTensorConeSimplex A X Y c :=
+  normalizedTensorDoubleConeOverSimplex_projection A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (dgNerve A (Complex A)).map
+      (SimplexCategory.const ⦋0⦌ ⦋n + 2⦌ (Fin.last (n + 2))).op
+      (normalizedTensorDoubleConeSimplex A X Y c) =
+      (dgNerve.vertexEquiv A (Complex A)).symm X :=
+  normalizedTensorDoubleConeSimplex_last_vertex A X Y c
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 3))) (a b : Fin (m + 3)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (m + 2))
+    (hi : Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))) :
+    HEq (((normalizedTensorDoubleConeSimplex A X Y c).toSimplexData.pullback
+      (doubleConeOrderHom θ)).hom I a b k hI ha hb hk)
+      ((normalizedTensorDoubleConeSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk) :=
+  normalizedTensorDoubleConeSimplex_pullback_hom_terminal_injOn A X Y c θ I a b k hI ha hb hk hbl hi
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (I : Finset (Fin (m + 3))) (a b : Fin (m + 3)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (m + 2))
+    (hn : ¬Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))) :
+    HEq (((normalizedTensorDoubleConeSimplex A X Y c).toSimplexData.pullback
+      (doubleConeOrderHom θ)).hom I a b k hI ha hb hk)
+      ((normalizedTensorDoubleConeSimplex A X Y
+        ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk) :=
+  normalizedTensorDoubleConeSimplex_pullback_hom_terminal_not_inj A X Y c θ I a b k hI ha hb hk hbl hn
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 2)) (k : ℤ) :
+    HEq (closedNerveHom ((complexToClosed A).map
+      (normalizedTensorConeAugmentationAt A X Y c (prependOrderHom θ.toOrderHom i))) k)
+      (closedNerveHom ((complexToClosed A).map
+        (normalizedTensorConeAugmentationAt A X Y
+          ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) i)) k) :=
+  normalizedTensorConeAugmentationClosed_reindex A X Y c θ i k
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (i : Fin (m + 3)) (k : ℤ) (hi : i ≠ Fin.last (m + 2)) :
+    HEq (closedNerveHom ((complexToClosed A).map
+      (normalizedTensorConeAugmentationAt A X Y c
+        ((Fin.last (n + 1)).predAboveOrderHom (doubleConeOrderHom θ i)))) k)
+      (closedNerveHom ((complexToClosed A).map
+        (normalizedTensorConeAugmentationAt A X Y
+          ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
+          ((Fin.last (m + 1)).predAboveOrderHom i))) k) :=
+  normalizedTensorDoubleConeTerminalValue_reindex A X Y c θ i k hi
+
+example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (sliceOver (normalizedTensorConePoint A X)) _⦋n + 1⦌ :=
+  normalizedTensorDoubleConeOverSimplex A X Y c
+
+end e2DoubleMapFixtures
 end
