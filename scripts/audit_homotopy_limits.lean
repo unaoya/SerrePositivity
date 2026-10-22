@@ -14539,3 +14539,105 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaLeftKanHom_isRightKanExtension
 #print axioms sigmaLeftKanHom_isRightKanExtension
+
+#check @leftClassificationUniverseComparison
+#print axioms leftClassificationUniverseComparison
+
+#check @leftClassificationUniverseComparison_projection
+#print axioms leftClassificationUniverseComparison_projection
+
+#check @leftClassificationUniverseComparison_isPrecompositionEquivalence
+#print axioms leftClassificationUniverseComparison_isPrecompositionEquivalence
+
+#check @leftStraighteningInfinityDiagram_uliftIso
+#print axioms leftStraighteningInfinityDiagram_uliftIso
+
+#check @uliftOppositeStdSimplexIso
+#print axioms uliftOppositeStdSimplexIso
+
+#check @uliftOppositeStdSimplexIso_hom_map
+#print axioms uliftOppositeStdSimplexIso_hom_map
+
+#check @edgewiseWeightUniverseIso
+#print axioms edgewiseWeightUniverseIso
+
+#check @edgewiseWeightUniverseIso_hom_map
+#print axioms edgewiseWeightUniverseIso_hom_map
+
+#check @edgewiseWeightUniverseIso_inv_map
+#print axioms edgewiseWeightUniverseIso_inv_map
+
+#check @uliftTwistedArrowSimplexEquiv
+#print axioms uliftTwistedArrowSimplexEquiv
+
+#check @uliftTwistedArrowIso
+#print axioms uliftTwistedArrowIso
+
+#check @uliftTwistedArrowIso_hom_app
+#print axioms uliftTwistedArrowIso_hom_app
+
+#check @edgewiseWeightUniverseIso_inr
+#print axioms edgewiseWeightUniverseIso_inr
+
+#check @edgewiseWeightUniverseIso_inv_inr
+#print axioms edgewiseWeightUniverseIso_inv_inr
+
+#check @edgewiseWeightUniverseIso_inl
+#print axioms edgewiseWeightUniverseIso_inl
+
+#check @uliftOppositeStdSimplexIso_opInv
+#print axioms uliftOppositeStdSimplexIso_opInv
+
+#check @edgewiseWeightUniverseIso_leftEndpoint
+#print axioms edgewiseWeightUniverseIso_leftEndpoint
+
+#check @edgewiseWeightUniverseIso_inv_leftEndpoint
+#print axioms edgewiseWeightUniverseIso_inv_leftEndpoint
+
+#check @uliftTwistedArrowBaseIso
+#print axioms uliftTwistedArrowBaseIso
+
+#check @uliftTwistedArrowIso_projection
+#print axioms uliftTwistedArrowIso_projection
+
+#check @twistedArrowHomUniverseIso
+#print axioms twistedArrowHomUniverseIso
+
+#check @homInfinityUniverseBaseMap
+#print axioms homInfinityUniverseBaseMap
+
+#check @homInfinityJointUniverseIso
+#print axioms homInfinityJointUniverseIso
+
+#check @homInfinityUniverseBaseMap_equation
+#print axioms homInfinityUniverseBaseMap_equation
+
+#check @yonedaInfinityMap_universe_uncurry
+#print axioms yonedaInfinityMap_universe_uncurry
+
+#check @yonedaInfinityMap_universeIso
+#print axioms yonedaInfinityMap_universeIso
+
+#check @sigmaUniverseInclusion
+#print axioms sigmaUniverseInclusion
+
+#check @sigmaUniverseYonedaIso
+#print axioms sigmaUniverseYonedaIso
+
+#check @sigmaVertexDensity_inclusion_isColimit
+#print axioms sigmaVertexDensity_inclusion_isColimit
+
+#check @sigmaUniverseInclusion_density_isColimit
+#print axioms sigmaUniverseInclusion_density_isColimit
+
+#check @sigmaHomWeightJointEvaluation
+#print axioms sigmaHomWeightJointEvaluation
+
+#check @sigmaHomWeightFamily
+#print axioms sigmaHomWeightFamily
+
+#check @sigmaHomWeightFamily_uncurry
+#print axioms sigmaHomWeightFamily_uncurry
+
+#check @sigmaHomWeightFamily_evaluation
+#print axioms sigmaHomWeightFamily_evaluation
