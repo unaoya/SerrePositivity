@@ -35,6 +35,11 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeBiproduct
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeSquareRestriction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeSplit
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeBlocks
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeSquareSigns
+public import SerrePositivity.InfinityCategories.Derived.Gluing.RepresentableEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeLeftAugmentation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeRightAction
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeLeftModule
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso

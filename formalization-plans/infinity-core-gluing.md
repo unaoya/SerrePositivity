@@ -36,7 +36,9 @@
   `dgGluingHomConeExplicitIso` は元の双加群作用・第三成分を明示した係数への、実 Hom 後合成の標準 cone の鎖同型。
 - 直和写像の cone の実鎖同型と実包含を構成し、`dgGluingHomConeSplitIso` で左右 Hom cone を分離。
   分解後の係数は左右の制限の和。左の差写像・第三成分は負の左作用・負の同じ第三成分、右は右作用・第三成分零。
-  代表対象の augmentation への接続、試験対象に関する dg 自然性、シフトは未完。
+- 左の評価 cone を同じ加群 cone の全 Hom と同定し、左係数を `dgGluingConeMorphism` の実後合成の負と同定。
+  右係数は、同じ右作用の厳密正方形の標準 cone 写像そのものと証明。D の Yoneda cone 加群からの全 Hom 同型も構成。
+  右側の相対 tensor 表示・両代表比較の接続、試験対象に関する dg 自然性、シフトは未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -55,6 +57,8 @@
 - `dgGluingCommaPost_bottom`・`dgGluingHomRepresentableIso_inr`・`dgGluingHomConeBottom_action`
 - `dgGluingHomConeHomotopy_action`・`dgGluingHomConeExplicitCoefficient`・`dgGluingHomConeExplicitIso`
 - `dgGluingConeBiproductIso`・`dgGluingHomConeSplitIso`・`dgGluingHomConeSplitCoefficient_eq`
+- `dgGluingHomConeLeftCoefficient_module`・`dgGluingHomConeLeftModuleIso`・`dgGluingHomConeRightCoefficient_map`
+- `dgGluingYonedaConeIso`・`dgGluingHomConeRightModuleIso`
 - `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
 - `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
 - `dgGluingKernelConeIso`・`dgGluingKernelConeIso_inr`・`dgGluingCommaKernelConeIso`
@@ -81,18 +85,18 @@
 ### 次の一手
 - `dgGluingConeObject` と元の閉射の標準 cone の全 Yoneda Hom を比較する。
   両成分の代表比較と `dgGluingConeObject_augmentation_transport`・`dgGluingConeAugmentationCore_hom`
-  で同じ比較射の図式を接続する。`dgGluingHomConeSplitCoefficient_eq` で左右の係数へ分離済み。
-  左は `dgGluingDifference_inl`・`dgGluingHomConeThird_inl` の負号を保ち、`moduleHomConeIso` と Yoneda で
-  同じ加群 cone 係数への比較を作る。右は `dgGluingHomConeThird_inr` の零性と双加群作用を使う。
+  で同じ比較射の図式を接続する。左は `dgGluingHomConeLeftCoefficient_module` で同じ cone 比較加群射の後合成に接続済み。
+  右は `dgGluingHomConeRightModuleIso` の表示から、`Morita.kernelTensor.map` と試験対象の augmentation で
+  係数を表示する。`dgGluingCommaKernelConeIso` で同じ右像の cone と比較する。
   左右の代表比較を合わせ、代表対象の augmentation の mapping cocone Hom への同型を全 dg 自然性ごと証明する。
   代表対象としての cone のホモトピー表現可能性を証明した後、シフトを構成し、
   `dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）へ接続する。
   候補対象・成分の K の同型・augmentation のホモトピーだけでは、cone の表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 44モジュール・集約のビルド成功（4958 jobs）、公理監査842宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要8署名も検査済み。
-  今回の新規4モジュール、集約・監査・本計画を専有7パスだけで保存する。他レーンの差分は含めない。
+- 49モジュール・集約のビルド成功（4963 jobs）、公理監査1003宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要10署名も検査済み。
+  今回の新規5モジュール、集約・監査・本計画を専有8パスだけで保存する。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
