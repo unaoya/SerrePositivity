@@ -28695,3 +28695,141 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_augmentation
 #print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionCommaFunctor_augmentation
+
+#check @SerrePositivity.KST.SConstruction.dgRestrictedYonedaParam
+#print axioms SerrePositivity.KST.SConstruction.dgRestrictedYonedaParam
+
+#check @SerrePositivity.KST.SConstruction.dgRestrictedYoneda
+#print axioms SerrePositivity.KST.SConstruction.dgRestrictedYoneda
+
+#check @SerrePositivity.KST.SConstruction.dgRestrictedYoneda_value
+#print axioms SerrePositivity.KST.SConstruction.dgRestrictedYoneda_value
+
+#check @SerrePositivity.KST.SConstruction.dgRestrictedYoneda_map_π
+#print axioms SerrePositivity.KST.SConstruction.dgRestrictedYoneda_map_π
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingBimodule
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingBimodule
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingBimodule_value
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingBimodule_value
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingBimodule_rightAction
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingBimodule_rightAction
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingBimodule_leftAt_map
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingBimodule_leftAt_map
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingBimodule_leftAction
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingBimodule_leftAction
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingLeftAction_apply
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingLeftAction_apply
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingRightAction_apply
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingRightAction_apply
+
+#check @SerrePositivity.KST.SConstruction.dgClosedComparison_forward
+#print axioms SerrePositivity.KST.SConstruction.dgClosedComparison_forward
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparisonCycle
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparisonCycle
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparisonObject
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparisonObject
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparisonRightMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparisonRightMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparisonLeftMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparisonLeftMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparison_actions
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparison_actions
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingFunctor_left
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingFunctor_left
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingFunctor_right
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingFunctor_right
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingFunctor_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingFunctor_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorEqClosedComponent
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorEqClosedComponent
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorEq_closed_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorEq_closed_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareClosedComparison
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareClosedComparison
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal_left
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal_left
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal_right
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareDiagonal_right
+
+#check @SerrePositivity.KST.SConstruction.dgClosedComparison_comp
+#print axioms SerrePositivity.KST.SConstruction.dgClosedComparison_comp
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionInputIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionInputIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionSquareViaInputAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionSquareViaInputAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionSquareViaInputAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionSquareViaInputAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionSquareAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionSquareAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionSquareAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionSquareAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionFactorizationAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionFactorizationAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionFactorizationAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionFactorizationAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonal
+#print axioms SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonal
+
+#check @SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalLeftAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalLeftAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalRightAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalRightAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalLeftAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalLeftAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalRightAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGStrictSquareDiagonalRightAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientInput
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientInput
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEnd
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEnd
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEnd_hom
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotientEnd_hom
+
+#check @SerrePositivity.KST.SConstruction.dgStrictSquareQuotient_diagonal_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgStrictSquareQuotient_diagonal_isZero
