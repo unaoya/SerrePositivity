@@ -39,7 +39,10 @@
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
   族と各部分集合の nerve の filtered 性は、元の全 coherent な試験図式について成立。
   部分集合の nerve は全非退化単体を数える `IsKappaSmall μ` も満たす。圏の濃度変更自身は未証明。
-- 独立集約ビルド成功（7609 jobs）、公理監査 134 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 元の任意の μ-small coherent nerve 図式を、小さい κ-filtered 部分 poset へ厳密に因子化。
+  全単体での回収、包含による遷移との整合性、部分 nerve の厳密な図式と通常の SSet 余極限を証明。
+  宇宙 u+1 の元の標的図式への合成も厳密に回収し、各 filtered 部分図式の native な余極限の存在へ接続。
+- 独立集約ビルド成功（7612 jobs）、公理監査 171 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -76,6 +79,8 @@
 - `IsCardinalChangeBound`、`exists_regular_cardinalChangeBound_family`
 - `SmallFilteredPieces`、`exists_smallFilteredPiece_containing`、`smallFilteredPieces_cover`
 - `smallFilteredPieces_nerve_isKappaFiltered`、`smallFilteredPiece_nerve_properties`
+- `exists_smallFilteredPiece_factorization`、`nerveSubsetLift_transition`
+- `smallFilteredNerveCocone_isColimit`、`exists_smallFiltered_partialColimit`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -85,10 +90,10 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。元の μ-small coherent 部分図式を、同じ κ-filtered μ-small 部分 poset の nerve へ厳密に因子化する。
-  部分余極限を元の全図式へ接続し、小さい κ-compact 生成圏から適切な μ-compact 生成圏を構成する。
+- 工程 (1) の濃度変更。部分余極限の coherent な族を組み立て、元の全表示の頂点を μ-filtered 余極限として回収する。
+  部分添字の全空間から元の添字への cofinal 性と、部分余極限の μ-compact 性を証明する。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
-  濃度条件の集合論と部分 poset の filtered 性・小ささは完了。全表示の組立てと μ-compact 性は未証明。
+  部分 nerve の通常の SSet 余極限と各部分の native な余極限の存在は完了。全表示の組立てと μ-compact 性は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約

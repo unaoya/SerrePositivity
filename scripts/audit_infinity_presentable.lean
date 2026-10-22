@@ -60,3 +60,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_nerve_isKappaFiltered
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_cover
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPiece_nerve_properties
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveSubsetLift_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveSubsetLift_transition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFilteredPiece_factorization
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPartialDiagram_hasColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFiltered_partialColimit
