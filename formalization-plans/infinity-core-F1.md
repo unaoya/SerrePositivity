@@ -13,7 +13,7 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7376 jobs、公理監査 2998 宣言、標準三公理のみ。
+- 現区切り：独立集約 7386 jobs、公理監査 3018 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -21,6 +21,12 @@
   `conePresheafRestriction_isPointwiseColimit` は同じ全錐上の制限族が元の前層余極限を全単体で点ごとの余極限へ送ること。
   表現可能前層での極限保存から、全錐上の同型と κ-filtered 閉包で元の Ind 頂点まで拡張した。
   `indObject_finiteColimit_isLimit` は明示交換入力のもとで、C の指定有限余極限の反転全錐の同じ前層による像の極限性。
+  `indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence` は同じ全余錐の反転境界に沿う、元の小さい全空間上の切断制限自身の同値。
+  同じ right unstraightening の反転全空間の同型と native 全錐の宇宙持ち上げで、底を保持したまま大きい切断制限へ移した。
+  `oppositeElementsYonedaSliceComparison` は元の密度比較そのものの反転で、元の底射影を厳密に保つ前合成同値。
+  `indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence` は、この同じ全比較で元の Yoneda slice の切断制限自身へ同値性を移す。
+  `ind_finiteColimit_commaSections_isQCatEquivalence` は厳密な `indLeftKanCommaIso` の反転で、任意の元の Ind 頂点の実際の comma 上の同じ切断制限へ帰還する。
+  `oppositeIndLeftKanCommaIso_inv_projection` はこの反転同型でも元の底射影を厳密に保持する。
   対象ごとの同型で全錐比較を代用しない。Ind 内の有限余極限の存在や安定性はまだ結論していない。
 - **(c) 未着手**：N の `Compact.indYoneda_isKappaCompact`、`idemToCompactInd_isQCatEquivalence_of_retracts` は利用候補。
   後者は元の compact Ind 対象の Yoneda retract 回収を入力として要求する。回収を証明済みとは扱わない。
@@ -41,6 +47,9 @@
 - `indYoneda_isZero_of_zero`、`ind_hasZeroVertex`、`ind_hasZeroVertex_of_stable`
 - `conePresheafRestriction`、`conePresheafRestriction_isPointwiseColimit`、`indVertex_cone_isLimit_of_exchange`
 - `indPresheaf_finiteCone_isLimit`、`indPresheaf_finiteColimit_isLimit`、`indObject_finiteColimit_isLimit`
+- `oppositeCoconeBoundary`、`indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence`、`leftFibrationConeRestriction_isQCatEquivalence_ulift`
+- `oppositeYonedaSliceProjection`、`oppositeElementsYonedaSliceComparison_projection`、`oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence`
+- `indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence`、`oppositeIndLeftKanProjection`、`ind_finiteColimit_commaSections_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -54,7 +63,7 @@
 
 ### 未コミット
 
-- なし。条件付き全錐保存の通る区切りを集約ビルド・公理監査とともに保存する。
+- なし。同じ Ind comma 切断制限の通る区切りを集約ビルド・公理監査とともに保存する。
 
 ### 既知の問題
 
@@ -65,9 +74,12 @@
 
 ### 次の一手
 
-まず `indObject_finiteColimit_isLimit` を、元の Yoneda が C の指定有限余極限を Ind 内で保存する主張へ接続する。
-元の前層の元の圏と Yoneda slice の全比較 `presheafElementsYonedaSliceComparison_isQCatEquivalence` を再利用し、
-同じ全余錐の普遍性を全係数で反映する。交換入力を明示したまま進める。
+`ind_finiteColimit_commaSections_isQCatEquivalence` は任意の元の Ind 頂点の実際の Yoneda comma の反転上の切断制限同値。
+次は既存の `F1B.kanLeftKanShapeOpIso` と `_projection` で、この comma を同じ頂点の coslice の、元の Yoneda 反転に沿う厳密な底変換へ同定する。
+`relativeFunctorBaseChangeForward_overPre` と元の全制限自然性を使い、同じ全余錐の像の反転錐について
+全係数の `coneSectionRestriction` 同値へ移す。ULift と反転・join の正規化を同じ実際の射で照合する。
+この全係数判定から native な余極限性へ戻し、Yoneda が C の指定有限余極限を Ind 内で保存する主張を得る。
+交換入力を明示したまま進め、slice の底変換と反転・宇宙移送の端点の正規化を省略しない。
 続いて有限 coherent 図式 K → Indκ(C) 全体の、元の Yoneda による filtered 表示を構成する。
 各頂点を別々に表示するだけではなく、元の全単体・辺・境界を保持する一つの図式表示を得る。
 C の `IsStable` から有限余極限を得る公開 API を確認し、不足分を証明する。その有限余極限と表示で元の Ind 図式の native 余極限を構成する。

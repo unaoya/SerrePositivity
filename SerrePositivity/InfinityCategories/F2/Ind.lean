@@ -362,3 +362,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.YonedaZero
 public import SerrePositivity.InfinityCategories.F2.Ind.ConePresheafRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteConeExactness
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitExactness
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteCoconeSections
+public import SerrePositivity.InfinityCategories.F2.Ind.LiftedConeSectionRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.OppositeUnstraighteningSections
+public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceOppositeComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaSliceSections
+public import SerrePositivity.InfinityCategories.F2.Ind.FiniteIndCommaSections
