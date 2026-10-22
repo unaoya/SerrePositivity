@@ -98,3 +98,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsCardinalFilteredIso_ι
 #check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanWeight_poset_isKappaSmall
 #check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanHolimFunctor_poset_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_ι_π
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence
