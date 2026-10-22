@@ -8928,3 +8928,99 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentDiagramSectionsCone
 
 #check @SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_vertex
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_zero
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_one
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationCurry
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_curry
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_precomp
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationPrism_injective
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationCurry_prism
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderEmbedding
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderEmbedding_zero
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderEmbedding_one
+
+#check @SerrePositivity.InfinityCategories.coneCylinderMap
+
+#check @SerrePositivity.InfinityCategories.coneCylinderMap_zero
+
+#check @SerrePositivity.InfinityCategories.coneCylinderMap_one
+
+#check @SerrePositivity.InfinityCategories.coneParameterPrism
+
+#check @SerrePositivity.InfinityCategories.coneParameterPrism_zero
+
+#check @SerrePositivity.InfinityCategories.coneParameterPrism_one
+
+#check @SerrePositivity.InfinityCategories.coneParameterPrism_precomp
+
+#check @SerrePositivity.InfinityCategories.coneTransformationMap
+
+#check @SerrePositivity.InfinityCategories.coneTransformationMap_prism
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderIso
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderMap
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderMap_zero
+
+#check @SerrePositivity.InfinityCategories.fatConeCylinderMap_one
+
+#check @SerrePositivity.InfinityCategories.fixedFatConeFamilyEvaluation
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism_zero
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism_one
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism_precomp
+
+#check @SerrePositivity.InfinityCategories.sourceConstantFatDiagram
+
+#check @SerrePositivity.InfinityCategories.sourceConstantFatDiagram_inl
+
+#check @SerrePositivity.InfinityCategories.sourceConstantFatDiagram_inr
+
+#check @SerrePositivity.InfinityCategories.sourceConstantFatDiagram_cylinder
+
+#check @SerrePositivity.InfinityCategories.sourceConstantFatDiagram_prism
+
+#check @SerrePositivity.InfinityCategories.fixedFatConeFamilyCurry
+
+#check @SerrePositivity.InfinityCategories.fixedFatConeFamilyCurry_uncurry
+
+#check @SerrePositivity.InfinityCategories.fixedFatConeFamilyCurry_prism
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorRight_hom_ext
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism_cylinder
+
+#check @SerrePositivity.InfinityCategories.fatConeParameterPrism_injective
+
+#check @SerrePositivity.InfinityCategories.fatConeTransformationMap
+
+#check @SerrePositivity.InfinityCategories.fatConeTransformationMap_prism
+
+#check @SerrePositivity.InfinityCategories.fatConeTransformationInverse
+
+#check @SerrePositivity.InfinityCategories.fatConeTransformationInverse_prism
+
+#check @SerrePositivity.InfinityCategories.fatConeTransformationIso
+
+#check @SerrePositivity.InfinityCategories.fixedApexFatConeComparison_evaluation
+
+#check @SerrePositivity.InfinityCategories.coneTransformationMap_factor
+
+#check @SerrePositivity.InfinityCategories.coneTransformationMap_isQCatEquivalence

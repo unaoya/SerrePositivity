@@ -3155,3 +3155,29 @@ public import SerrePositivity.InfinityCategories.F1.HomotopyFatCone
 public import SerrePositivity.InfinityCategories.F1.HomotopyConeRealization
 
 public import SerrePositivity.InfinityCategories.F1.CoherentDiagramSectionsCone
+
+public import SerrePositivity.InfinityCategories.F1.SourceConstantTransformationPrism
+
+public import SerrePositivity.InfinityCategories.F1.SourceConstantTransformationNaturality
+
+public import SerrePositivity.InfinityCategories.F1.ConeCylinderMap
+
+public import SerrePositivity.InfinityCategories.F1.ConeParameterPrism
+
+public import SerrePositivity.InfinityCategories.F1.ConeTransformationMap
+
+public import SerrePositivity.InfinityCategories.F1.FatConeCylinderIso
+
+public import SerrePositivity.InfinityCategories.F1.FatConeParameterPrism
+
+public import SerrePositivity.InfinityCategories.F1.SourceConstantFatDiagram
+
+public import SerrePositivity.InfinityCategories.F1.FatConeFamilyCurry
+
+public import SerrePositivity.InfinityCategories.F1.FatJoinTensorExt
+
+public import SerrePositivity.InfinityCategories.F1.FatConePrismInjective
+
+public import SerrePositivity.InfinityCategories.F1.FatConeTransformationIso
+
+public import SerrePositivity.InfinityCategories.F1.ConeTransformationEquivalence
