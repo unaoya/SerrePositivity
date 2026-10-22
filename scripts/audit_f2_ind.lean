@@ -434,3 +434,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_allFibers_hasColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensity_allFibers_image_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityRelativeFamily_image_colimits
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasCocartesianHornLifting_ulift
+#check @SerrePositivity.InfinityCategories.F2.Ind.cocartesianFibration_ulift
+#check @SerrePositivity.InfinityCategories.F2.Ind.uliftWeightedRightFibrationProjection_cocartesian
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily_with_KanImage
