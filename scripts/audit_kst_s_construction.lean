@@ -29136,3 +29136,132 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle_map
 #print axioms SerrePositivity.KST.SConstruction.dgGluingAxesShortComplexFunctor_middle_map
+
+#check @SerrePositivity.KST.SConstruction.cochainPostIso_injective
+#print axioms SerrePositivity.KST.SConstruction.cochainPostIso_injective
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_fst
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_fst
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCoconeInclusion_square
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCoconeInclusion_square
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_postcompose_hom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisLeftProjection_postcompose_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_projection
+#print axioms SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_projection
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesCoconeProjection_square
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesCoconeProjection_square
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesHom_comp_zero
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesHom_comp_zero
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplex
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplex
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplexIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplexIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplex_shortExact
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesHomShortComplex_shortExact
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesHomConeComparison_quasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesHomConeComparison_quasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplex
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplex
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplexIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplexIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplex_shortExact
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaEvaluationShortComplex_shortExact
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_isIso_homotopy
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_isIso_homotopy
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso_inr
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeHomotopyIso_inr
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_eval_quasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_eval_quasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_moduleQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaConeComparison_moduleQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_distinguished
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_distinguished
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_mor₁
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_mor₁
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_mor₂
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_mor₂
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_obj₃
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxesYonedaTriangle_obj₃
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_comma_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_comma_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_comma_image
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_comma_image
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_left
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_left
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_right
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_right
+
+#check @SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_primitive
+#print axioms SerrePositivity.KST.SConstruction.dgGluingAxisRightInclusion_post_primitive
+
+#check @SerrePositivity.KST.SConstruction.dgGluingDifference_eq_desc
+#print axioms SerrePositivity.KST.SConstruction.dgGluingDifference_eq_desc
+
+#check @SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_fst
+#print axioms SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_fst
+
+#check @SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_snd
+#print axioms SerrePositivity.KST.SConstruction.dgGluingHomBiprodCoconeIso_snd
+
+#check @SerrePositivity.KST.SConstruction.dgGluingRightAxisDifference_square
+#print axioms SerrePositivity.KST.SConstruction.dgGluingRightAxisDifference_square
+
+#check @SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso
+#print axioms SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso
+
+#check @SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso_fst
+#print axioms SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso_fst
+
+#check @SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso_snd
+#print axioms SerrePositivity.KST.SConstruction.dgGluingRightAxisHomCoconeIso_snd
+
+#check @SerrePositivity.KST.SConstruction.biprodZeroLeftIso
+#print axioms SerrePositivity.KST.SConstruction.biprodZeroLeftIso
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeZeroLeft_square
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeZeroLeft_square
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_fst
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_fst
+
+#check @SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_snd
+#print axioms SerrePositivity.KST.SConstruction.mappingCoconeZeroLeftIso_snd

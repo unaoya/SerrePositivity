@@ -6,7 +6,8 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
 /-! # 元の二軸短複体の Yoneda 円錐比較
 概要：元の右軸射の代表加群円錐から、同じ左軸の代表加群への比較射を作る。
 方針：同じ二射と合成零を Yoneda で送り、元の moduleConeDesc を使う。
-規約：比較射の準同型性は未証明。使われ方：元の二軸列の cofiber 性の判定。
+規約：同じ比較射を保持。準同型性は DGGluingAxesYonedaQuasiIso で証明する。
+使われ方：元の二軸列の cofiber 性の判定。
 -/
 @[expose] public section
 noncomputable section
