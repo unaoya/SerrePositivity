@@ -394,3 +394,11 @@ public import SerrePositivity.KST.Fibration.FirstVertexUnderBaseChange
 public import SerrePositivity.KST.Fibration.FirstVertexRestrictionChart
 public import SerrePositivity.KST.Fibration.FirstVertexStrictSection
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramComponent
+public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecompositionVertices
+public import SerrePositivity.KST.Fibration.FirstVertexEdgewiseRestriction
+public import SerrePositivity.KST.Fibration.FirstVertexOppositeVertices
+public import SerrePositivity.KST.Fibration.FirstVertexOppositeChart
+public import SerrePositivity.KST.Fibration.FirstVertexTransportDiagramComponent
+public import SerrePositivity.KST.Fibration.ScaffoldNerveRepresentationPoint
+public import SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison
+public import SerrePositivity.KST.Fibration.ScaffoldPointedReconstruction
