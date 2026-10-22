@@ -26,3 +26,6 @@ public import SerrePositivity.KST.Fibration.WeakStringsSimplicial
 public import SerrePositivity.KST.Fibration.WeakArrowClosedPredicate
 public import SerrePositivity.KST.Fibration.WeakStringsStability
 public import SerrePositivity.KST.Fibration.WeakStringsExact
+public import SerrePositivity.KST.Fibration.WeakStringEdges
+public import SerrePositivity.KST.Fibration.WeakStringCofibers
+public import SerrePositivity.KST.Fibration.WeakStringCofiberVertices

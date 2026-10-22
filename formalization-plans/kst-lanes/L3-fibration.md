@@ -10,8 +10,7 @@
 - 工程 (a) 完了。`IsVerdierSequence` の核条件から包含の本質像が安定閉包と一致すると証明。
   cofiber による W 所属と商の実辺の可逆性を同定し、実二単体の二対三性、実押し出し・
   引き戻しでの保存と反映、実 cofiber 列間のホモトピーに対する拡大安定性を証明済み。
-- この工程は thick 性より弱い安定な本質像で成立する。商の冪等完備化や連結 K の
-  fiber 性はまだ主張しない。拡大安定性の三角形の射は実ホモトピーから構成する。
+- 工程 (a) は thick 性より弱い安定な本質像で成立。冪等完備化・fiber 性は未主張。
 - 工程 (b) の一般構成：`relativeDiagram` の全単体・W 辺判定・内ホーン充填・
   厳密な再添字・core 包含と商の選択独立性を証明済み。全評価が核に入ると条件は自動。
   `relativeSimplicialDiagram` を具体的 S• に接続済み。相対図式は商の関手圏の core の
@@ -30,12 +29,14 @@
   全有限 W 列を全高次自然変換込みの全部分図式圏で構成し、全合成辺で W 判定を証明。
   一辺の段との一致・全面退化・任意の列図式圏の安定性・制限の完全性を証明済み。
   `StableModel` 値の単体的対象と段ごとの反復 core S 実現へ束ねた。
+  全合成辺の完全な抽出と、全列に共通の相対 cofiber 切断を構成済み。
+  補完・核値 cofiber は全再添字と厳密に可換。実底辺の回収・核所属・零性判定も証明。
   列全体の加法性比較の自然性・実現後の fiber 比較は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 6160 jobs・専用監査 27 モジュール 202 宣言が成功。
+- 現在の対象ビルド 6163 jobs・専用監査 30 モジュール 223 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 2528 モジュールは EInfinity を含まない。全体 23771 jobs で成功。
+  所有 import 閉包 2531 モジュールは EInfinity を含まない。全体 23779 jobs で成功。
 
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
@@ -51,12 +52,10 @@
   mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - relativeDiagram、relativeDiagram_mem_edge_iff、relativeDiagram_mem_iff、
-  relativeDiagramMap、relativeDiagramCoreInclusion、relativeDiagram_eq_of_verdier、
-  relativeSimplicialDiagram、relativeSimplicialDiagramCoreInclusion。
+  relativeDiagramMap、relativeDiagram_eq_of_verdier、relativeSimplicialDiagram。
 - functorCore_mem_iff、relativeDiagram_eq_functorCore_preimage、
-  relativeDiagramFunctorCoreMap、relativeDiagram_eq_fullFunctorCore_preimage、
-  relativeDiagramFullFunctorCoreMap、relativeDiagramFullFunctorCoreMap_core、
-  relativeDiagramFullFunctorCoreMap_ambient、relativeDiagram_kernel_isWeaklyContractible、
+  relativeDiagram_eq_fullFunctorCore_preimage、relativeDiagramFullFunctorCoreMap、
+  relativeDiagram_kernel_isWeaklyContractible、
   fiberProjection_surjective_iff_boundary_trivial、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialSConstructionCoreInclusion、relativeSQuotientMap、relativeSQuotientMap_core、
@@ -67,12 +66,13 @@
   weakCofiber_predicate_iff_weakEquivalence、fullPredicateMap_trivialKanFibration、
   weakArrowCategory、weakCofiberProjection、weakCofiberProjection_ι、
   weakCofiberProjection_trivialKanFibration、weakArrowCofiberEquivalence、
-  weakArrowCofiberEquivalence_hom、weakArrowMultiAdditivityMap、
-  weakArrowMultiAdditivityMap_localized_isIso、weakArrowMultiAdditivityMap_fst、
-  weakArrowMultiAdditivityMap_snd、weakArrowClosedPredicate_iff。
+  weakArrowMultiAdditivityMap_localized_isIso、weakArrowClosedPredicate_iff。
 - weakStringCategory、weakStringPredicate_iff_allEdges、weakStringCategory_one、
   weakStringClosedPredicate、weakStringCategory_isStable、weakStringMap_preservesCofiberData、
   weakStringExactMap、weakStringStableSimplicial、weakStringMultiRealization。
+- weakStringEdgeExact、weakStringCofiberExact_projection、weakStringCofiberExact_reindex、
+  weakStringKernelCofiber、weakStringCofiberVertex_bottom、weakStringCofiberVertex_kernel、
+  weakStringCofiberVertex_reindex、weakStringCofiberVertex_zero_iff。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
@@ -90,7 +90,7 @@
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 
 ### 未コミット
-- なし（今回の W 列・安定閉性・完全性の5モジュール・集約・監査・本計画を含める）。
+- なし（今回の全合成辺の共通 cofiber 補完の3モジュール・集約・監査・本計画を含める）。
 
 ### 既知の問題
 - 所有 import 閉包の破損なし。全体の共有ルートの一時的な olean 欠落は再試行で解消。
@@ -98,8 +98,8 @@
 
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  構成した W 列の単体的安定圏へ、一つの W 辺の cofiber 比較・加法性を拡張する。
-  同じ cofiber の選択の coherent な比較を保ち、K-2 の単体積版 Quillen A に接続する。
+  三辺の cofiber を結ぶ八面体の族を構成し、共通補完から列全体の加法性比較へ進む。
+  再添字の厳密な比較を保持して K-2 の単体積版 Quillen A に接続する。
   商比較の全写像空間を含む局所化・cofinality 条件も別に証明する。
 
 ## 規約

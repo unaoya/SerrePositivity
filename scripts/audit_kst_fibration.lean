@@ -32,7 +32,10 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakStringsSimplicial,
     `SerrePositivity.KST.Fibration.WeakArrowClosedPredicate,
     `SerrePositivity.KST.Fibration.WeakStringsStability,
-    `SerrePositivity.KST.Fibration.WeakStringsExact]
+    `SerrePositivity.KST.Fibration.WeakStringsExact,
+    `SerrePositivity.KST.Fibration.WeakStringEdges,
+    `SerrePositivity.KST.Fibration.WeakStringCofibers,
+    `SerrePositivity.KST.Fibration.WeakStringCofiberVertices]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
