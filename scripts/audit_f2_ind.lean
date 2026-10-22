@@ -400,3 +400,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_canonicalLeftKanExtension_with_recovery
 #check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_density_image_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.preservesSmallKappaFilteredColimits_of_poset
+#check @SerrePositivity.InfinityCategories.F2.Ind.mapJoinCocone_isColimit_of_functorIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictClassifiedIndDiagram_total_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictClassifiedIndCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictClassifiedIndCocone_inclusion_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_preservesSmallKappaFilteredColimits_iff_strictClassified
