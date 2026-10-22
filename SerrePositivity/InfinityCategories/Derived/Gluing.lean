@@ -48,3 +48,8 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelCone
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeRepresentative
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeObject
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeObjectTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelColumnHom
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomAction
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomComposition
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomCochain
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomCone
