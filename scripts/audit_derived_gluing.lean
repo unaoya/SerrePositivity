@@ -485,7 +485,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedDiagonalStrictForget,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputStrictForget,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathComparison]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputHomotopies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputTriangleEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FamilyAlongHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomTriangleHomotopyFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomTriangleHomotopyBoundaries,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomDiagonalDeformations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomDiagonalComparisonBoundary]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
