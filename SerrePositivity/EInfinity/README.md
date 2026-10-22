@@ -2227,7 +2227,15 @@ Hom を上げた反対要素圏の nerve との厳密な同型で、元の二つ
 `roofQuillenDegreeCorner_isPullback` は実 slice 全体の厳密な引き戻し表示。
 `cofibrantSourceRoofProductCornerMap` は同じ積単体から実 corner への比較射。
 この射の弱同値性から実 slice の弱可縮性と屋根比較の left cofinal 性が従うことは証明済み。
-その弱同値性自体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`roofCornerNormalizationMap` は元の corner を同じ Over n の nerve 上へ厳密に正規化し、
+`roofCornerTerminalFiberIso` は恒等射上の fiber を元の屋根の指定次数 fiber に戻す。
+`roofTargetFiberPinchedIso` はその fiber と同じ qD_n→qY の pinched Hom の厳密な同型。
+`terminalFiberEvaluation_weak` は実全体評価のホモトピーと同じ fiber 包含の cofinal 性を使う。
+`cofibrantSourceRoofCornerEvaluation` は任意可換環の元の corner から、この写像空間への実弱同値。
+`cofibrantSourceRoofProductHomMap` は元の積単体からこの同じ写像空間への具体的な射。
+その弱同値性は ProductCornerMap の弱同値性と同値であり、得られれば実 slice の弱可縮性と
+屋根比較の left cofinal 性が従う。その射自身と既存 Kan Hom 高次比較との全単体の照合、
+left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。

@@ -7974,6 +7974,33 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.FrameHom.pointSliceCornerMap_fibration,
     `SerrePositivity.EInfinity.FrameHom.pointSliceRoofTriangleMap_fibration]
 
+@[noinline] private def e2RequiredBatch136 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofDegreeAlgebra,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofCornerEvaluation,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofCornerEvaluation_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductHomMap,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductCorner_weak_iff_hom,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofSlice_weaklyContractible_of_productHom_weak,
+    `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal_of_productHom_weak,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalEvaluation,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_weak,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerEvaluation_weak_iff,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalized,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizedProjection,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_isIso,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_source,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizationMap_over,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerNormalizedProjection_leftFibration,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminal,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminal_isTerminal,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalFiberIso,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofCornerTerminalFiberIso_source,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFrameVertex,
+    `SerrePositivity.EInfinity.FrameHom.FrameArrows.roofTargetFiberPinchedIso,
+    `SerrePositivity.EInfinity.FrameHom.terminalFiberEvaluation_weak]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8007,7 +8034,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -19119,3 +19146,40 @@ example {E B : SSet.{e2RoofFiberUniverse}} (r : E ⟶ B) [LeftFibration r]
     (p : (Δ[0] : SSet.{e2RoofFiberUniverse}) ⟶ E) :
     Fibration (sliceOverCornerMap p r) := FrameHom.pointSliceCornerMap_fibration p r
 end e2NativeRoofFiberFibrationFixtures
+
+section e2NativeRoofCornerEvaluationFixtures
+universe e2RoofEvaluationUniverse
+open CategoryTheory Limits Opposite SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (A : Type e2RoofEvaluationUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
+variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
+example : sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) ⟶
+    pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+      (cofibrantHammockVertex A Y) := cofibrantSourceRoofCornerEvaluation A X Y b
+example : IsWeakHomotopyEquivalence (cofibrantSourceRoofCornerEvaluation A X Y b) :=
+  cofibrantSourceRoofCornerEvaluation_weak A X Y b
+example : nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
+    pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+      (cofibrantHammockVertex A Y) := cofibrantSourceRoofProductHomMap A X Y b
+example : IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b) ↔
+    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
+  cofibrantSourceRoofProductCorner_weak_iff_hom A X Y b
+example (h : IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
+    IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) :=
+  cofibrantSourceRoofSlice_weaklyContractible_of_productHom_weak A X Y b h
+example (h : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
+    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
+    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+  cofibrantSourceRoofMap_isLeftCofinal_of_productHom_weak A X Y h
+example {E B : SSet.{e2RoofEvaluationUniverse}} [SSet.Quasicategory B]
+    (p : E ⟶ B) [LeftFibration p] (t : B _⦋0⦌) (ht : IsTerminalVertex t)
+    (R : RoofTerminalEvaluation p t) : IsWeakHomotopyEquivalence R.evaluation :=
+  FrameHom.terminalFiberEvaluation_weak p t ht R
+example {I C : Type e2RoofEvaluationUniverse}
+    [Category.{e2RoofEvaluationUniverse} I] [Category.{e2RoofEvaluationUniverse} C]
+    (F : I ⥤ C) (Y : C) {E : SSet.{e2RoofEvaluationUniverse}} (q : nerve C ⟶ E) (n : I) :
+    vertexFiber (FrameHom.FrameArrows.roofTargetProjection F Y q) (nerveVertex n) ≅
+      pinchedHom (q.app (op ⦋0⦌) (nerveVertex (F.obj n)))
+        (q.app (op ⦋0⦌) (nerveVertex Y)) := FrameHom.FrameArrows.roofTargetFiberPinchedIso F Y q n
+end e2NativeRoofCornerEvaluationFixtures

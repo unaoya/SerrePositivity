@@ -1913,3 +1913,9 @@ public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofSliceFi
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceWeakContractibility
 public import SerrePositivity.EInfinity.FrameHom.PointSliceCornerFibration
+
+public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofCornerEvaluation
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluation
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerNormalization
+public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinched
+public import SerrePositivity.EInfinity.FrameHom.TerminalFiberEvaluationWeak
