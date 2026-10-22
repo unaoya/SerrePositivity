@@ -888,6 +888,27 @@ public import
 public import
   SerrePositivity.InfinityCategories.F2.SpaceEdgeCanonicalVertices
 
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawBoundaryNaturality
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawEdgeValues
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawTriangleBoundary
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawTriangleCandidate
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawVertices
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawSpaceEdgeValue
+public import
+  SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompNormalizedReindex
+public import
+  SerrePositivity.InfinityCategories.F2.FunctorIsoTriangleValueBoundary
+public import
+  SerrePositivity.InfinityCategories.F2.PointedSpaceMorphismEdgeValueIso
+
+public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedAugmentation
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -2055,3 +2076,33 @@ public import
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_vertex
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_to_object
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_to_object
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryAt_precomp
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawFirstValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawLastValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawLongValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexTriangleLiftIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryAt
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate_value
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_zero_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_one_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_two_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_interval
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdgeValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_first
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_last
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_long
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_reindex_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoTriangleValueBoundary
+#check @SerrePositivity.InfinityCategories.F2.functorIsoTriangleValueBoundary_long_cancel
+#check @SerrePositivity.InfinityCategories.F2.pointedSpaceMorphismEdgeValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_apex
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_tail
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_projection

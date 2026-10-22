@@ -4434,3 +4434,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_vertex
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_source_to_object
 #check @SerrePositivity.InfinityCategories.F2.spaceEdge_target_to_object
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryAt_precomp
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawFirstValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawLastValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawLongValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexTriangleLiftIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryAt
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate_value
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_zero_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_one_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApex_raw_two_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_interval
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdgeValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_first
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_last
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawSpaceEdge_long
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_reindex_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoTriangleValueBoundary
+#check @SerrePositivity.InfinityCategories.F2.functorIsoTriangleValueBoundary_long_cancel
+#check @SerrePositivity.InfinityCategories.F2.pointedSpaceMorphismEdgeValueIso
+
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_apex
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedAugmentation_tail
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift
+#check @SerrePositivity.InfinityCategories.F2.spaceSimplexPointedLift_projection
