@@ -36,3 +36,13 @@ public import SerrePositivity.InfinityCategories.F2.Compact.FullCoslicePullback
 public import SerrePositivity.InfinityCategories.F2.Compact.FullCovariantRepresentable
 public import SerrePositivity.InfinityCategories.F2.Compact.FullCompactReflection
 public import SerrePositivity.InfinityCategories.F2.Compact.IndCompact
+public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableDiagramLimits
+public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableCone
+public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableRestriction
+public import SerrePositivity.InfinityCategories.F2.Compact.IdemPresheafCompact
+public import SerrePositivity.InfinityCategories.F2.Compact.IdemFiltered
+public import SerrePositivity.InfinityCategories.F2.Compact.IndComplete
+public import SerrePositivity.InfinityCategories.F2.Compact.IdemToInd
+public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndComparison
+public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndComparisonCriterion

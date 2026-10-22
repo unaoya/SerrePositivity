@@ -418,3 +418,120 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @indYoneda_isKappaCompact
 #print axioms indYoneda_isKappaCompact
+
+#check @homInfinityCovariant_sourceIso
+#print axioms homInfinityCovariant_sourceIso
+
+#check @homInfinityCovariant_covariantIso
+#print axioms homInfinityCovariant_covariantIso
+
+#check @covariantRepresentableDiagram_evaluation
+#print axioms covariantRepresentableDiagram_evaluation
+
+#check @covariantRepresentableDiagram_isPointwiseLimit
+#print axioms covariantRepresentableDiagram_isPointwiseLimit
+
+#check @covariantRepresentableDiagram_isLimit
+#print axioms covariantRepresentableDiagram_isLimit
+
+#check @colimitRepresentableCone
+#print axioms colimitRepresentableCone
+
+#check @colimitRepresentableCone_vertex
+#print axioms colimitRepresentableCone_vertex
+
+#check @colimitRepresentableCone_isPointwiseLimit
+#print axioms colimitRepresentableCone_isPointwiseLimit
+
+#check @colimitRepresentableCone_isLimit
+#print axioms colimitRepresentableCone_isLimit
+
+#check @colimitRepresentableRestriction
+#print axioms colimitRepresentableRestriction
+
+#check @colimitRepresentableRestriction_vertex
+#print axioms colimitRepresentableRestriction_vertex
+
+#check @colimitRepresentableRestriction_isPointwiseLimit
+#print axioms colimitRepresentableRestriction_isPointwiseLimit
+
+#check @colimitRepresentableRestriction_isLimit
+#print axioms colimitRepresentableRestriction_isLimit
+
+#check @idemPresheaf_isKappaCompact
+#print axioms idemPresheaf_isKappaCompact
+
+#check @compactPresheafYoneda
+#print axioms compactPresheafYoneda
+
+#check @compactPresheafYoneda_inclusion
+#print axioms compactPresheafYoneda_inclusion
+
+#check @idemToCompactPresheaves
+#print axioms idemToCompactPresheaves
+
+#check @idemToCompactPresheaves_inclusion
+#print axioms idemToCompactPresheaves_inclusion
+
+#check @idemToCompactPresheaves_isFullyFaithful
+#print axioms idemToCompactPresheaves_isFullyFaithful
+
+#check @idemShapeCocone
+#print axioms idemShapeCocone
+
+#check @idemShape_isKappaFiltered
+#print axioms idemShape_isKappaFiltered
+
+#check @indIdempotent_hasColimit
+#print axioms indIdempotent_hasColimit
+
+#check @ind_isIdempotentComplete
+#print axioms ind_isIdempotentComplete
+
+#check @compactInd_isIdempotentComplete
+#print axioms compactInd_isIdempotentComplete
+
+#check @idemPresheaf_isIndVertex
+#print axioms idemPresheaf_isIndVertex
+
+#check @idemToInd
+#print axioms idemToInd
+
+#check @idemToInd_inclusion
+#print axioms idemToInd_inclusion
+
+#check @idemToInd_isFullyFaithful
+#print axioms idemToInd_isFullyFaithful
+
+#check @idemToInd_isKappaCompact
+#print axioms idemToInd_isKappaCompact
+
+#check @compactIndYoneda
+#print axioms compactIndYoneda
+
+#check @compactIndYoneda_inclusion
+#print axioms compactIndYoneda_inclusion
+
+#check @idemToCompactInd
+#print axioms idemToCompactInd
+
+#check @idemToCompactInd_inclusion
+#print axioms idemToCompactInd_inclusion
+
+#check @idemToCompactInd_isFullyFaithful
+#print axioms idemToCompactInd_isFullyFaithful
+
+#check @idemYoneda_toInd
+#print axioms idemYoneda_toInd
+
+#check @idemYoneda_toCompactInd
+#print axioms idemYoneda_toCompactInd
+
+#check @idemToCompactInd_retract_yoneda
+#print axioms idemToCompactInd_retract_yoneda
+
+#check @idemToCompactInd_isEssentiallySurjective_iff_retracts
+#print axioms idemToCompactInd_isEssentiallySurjective_iff_retracts
+
+#check @idemToCompactInd_isQCatEquivalence_of_retracts
+#print axioms idemToCompactInd_isQCatEquivalence_of_retracts
