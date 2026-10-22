@@ -168,3 +168,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsClosure
 public import SerrePositivity.InfinityCategories.F2.Ind.SingleFilteredPresentation
+public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
+public import SerrePositivity.InfinityCategories.F2.Ind.ContinuousFunctorRestriction

@@ -21,8 +21,9 @@
   `presheafDiagramRightStrictClassificationIso` は元の F と実際の strict right 分類像の一つの大域同型。
   元の積上の scaffold・全単体切断の同じ実現・初頂点局所化・自然な底上の二重反転を保持している。
   同じ strict 分類余極限の元の全空間と脚の κ-filtered 性を使い、同じ頂点を保つ native 余錐で保存を結論。
-- **(d) 未証明**：実際の制限関手 Fun^κ(Indκ(C),D) → Fun(C,D) の充満忠実性と本質的全射性。
-- 独立集約 6746 jobs、公理監査 1454 宣言、標準三公理のみ。
+- **(d) 進行中**：`KappaContinuousFunctorInfinity` と元の Yoneda による実際の `indKappaContinuousRestriction` を構成。
+  全部分関手圏の quasicategory 性、同じ小さい κ-filtered 余極限と包含の保存性を証明。同値性は未証明。
+- 独立集約 6748 jobs、公理監査 1465 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -53,7 +54,7 @@
 
 ### 未コミット
 
-- `NativeFilteredPreservation.lean`：同じ宇宙の保存性と (d) の制限射の入口を編集中。集約外。
+- なし。通る区切りを独立集約と公理監査とともに保存する。
 
 ### 既知の問題
 
@@ -63,9 +64,11 @@
 
 ### 次の一手
 
-(d)：κ-filtered 余極限を保つ関手の全部分 ∞ 圏と、`indYoneda κ C` による実際の制限射を構成する。
+(d)：元の `indKappaContinuousRestriction` の充満忠実性と本質的全射性を証明する。
 Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保存性は元の native 余錐への作用で定義する。
-F1b の `Compact/Definition.lean` の保存性は始域をさらに持ち上げるため、その型を照合する。
+`PreservesSmallKappaFilteredColimits` は同じ宇宙の元の余錐の像で保存性を定義。F2 の filtered 定義を再利用。
+次は元の小さい元の圏と Yoneda comma の既存の `presheafElementsYonedaSliceComparison` の同値性を調べる。
+比較は底上の大域射と同じ密度余錐の回収まで証明済みで、同値性はまだ宣言されていない。
 (c) の単一表示を使い、任意の C → D を元の元の圏上の κ-filtered 余極限で延長する。
 元の Yoneda 上の回収と、全対象・全写像空間の自然な比較を作り、同じ制限射の同値を証明する。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。

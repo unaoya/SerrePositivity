@@ -298,3 +298,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.HasSingleFilteredRepresentablePresentation
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_iff_singleFilteredPresentation
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.PreservesSmallKappaFilteredColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasSmallKappaFilteredColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.KappaContinuousFunctorInfinity
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction
