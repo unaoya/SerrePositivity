@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridIndex
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareIndex
+import SerrePositivity.InfinityCategories.Stable.PosetProductNerveIso
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareShape
+import SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridZeroValues
 import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve
 import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion
 import SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension
@@ -7501,6 +7508,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridIndex,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareIndex,
+    `SerrePositivity.InfinityCategories.Stable.PosetProductNerveIso,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareShape,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridZeroValues,
+
     `SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve,
     `SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion,
     `SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension,

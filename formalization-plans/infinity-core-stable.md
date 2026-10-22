@@ -2,7 +2,7 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
-## 引き継ぎ（2026-10-22）
+## 引き継ぎ（2026-10-23）
 
 ### 現在地
 
@@ -87,18 +87,18 @@
 
 ### 未コミット
 
-- 元の普遍 loop 錐は `abc4df29e`、実 ΣΩ 随伴は `89d77276b`、反対圏の有限余極限と比較長方形は `afbb4783a`、有限左 Kan 添字は `f86a7fcd9` に保存済み。今回の保存対象は順序部分型 nerve の厳密同型・包含と厳密左 Kan 拡張・指定終対象延長の4モジュール・10公開宣言、Stable 集約・両監査・本計画の計8パス。他レーンの変更は保持する。
+- 実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`、有限左 Kan 添字は `f86a7fcd9`、順序部分型の厳密延長は `d01f08587` に保存済み。今回の保存対象は元の任意四角形を保つ比較格子と局所余極限の7モジュール・50公開署名（構造の生成子・全 field を含む）、Stable 集約・両監査・本計画の計11パス。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（11046 jobs）。公理監査は Derived 20885 宣言／2332 モジュール、Stable 22000／2602。許容三公理のみ。今回までの保存対象1263新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（11053 jobs）。公理監査は Derived 20995 宣言／2339 モジュール、Stable 22110／2609。許容三公理のみ。今回までの保存対象1270新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- D7・β3・β5 は完了。元の loop の押し出し性・二つの零角の判定・全図式の厳密同型・実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`、有限左 Kan 添字は `f86a7fcd9`。今回 `PosetSubtypeNerve`・`PosetSubtypeNerveInclusion`・`PosetTerminalExtension`・`PosetSubtypeExtensions` の4モジュール・10宣言を統合した。部分型 nerve と全部分複体の厳密同型、実包含の単射・inner・充満忠実性、部分型包含に沿う厳密左 Kan 拡張と下方閉部分の外を指定終対象へ送る延長を構成する。対象・両集約（11046 jobs）・10明示署名・両全体監査が終端0（Derived 20885宣言／2332モジュール、Stable 22000／2602、許容三公理のみ）、追加ソースに警告なし。ログは `/tmp/d-loop-poset-inclusion-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`、正確な8パスは同 `-owned-paths.txt`。
-- 次は原典 [HA Lemma 1.4.2.15、Prop. 1.4.2.13](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=144) の一般比較格子。`/tmp/d-loop-excision-grid.lean` は Fin4×Fin4 の二角を除いた14頂点、3×3部分、6頂点入力、二つの零終点を加えた中間部分を順序部分型として構成する試作。三段階の厳密延長と二つの native 左 Kan 局所余極限、元の任意四角形を厳密に保つ全格子、四角形の向きを保つ頂点式は検証済み。零終点の回収式を追加した最新試作はハンドル31006と同 `.log` を確認する。明示署名・全公理検査は未実施。本体未統合。分割案は `ExcisionGridIndex`・`ExcisionGridExtension`・`ExcisionGridSquareIndex`・`PosetProductNerveIso`・`ExcisionGridSquareShape`・`ExcisionSquareGrid`・`ExcisionGridZeroValues`。順序積の圏と圏の直積は異なる型なので、`posetProductSwapNerveIso` は `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。構造の関数引数付き field（core_colimit・full_colimit・zero_middle・zero_seed）も明示署名検査へ入れる。各面の押し出し性はまだ未証明。次は部分型包含の左 comma を下方部分順序集合の nerve と厳密同定し、既存の `pastingCornerJoinIso` と native 局所余極限から右面・中央面の押し出し性を回収する。実 θ の二合成、一般 fiber/cofiber・cofiber 存在・X の有限余極限・IsStable は未証明。β4 は D2 所有。新しい分数・局所化 API は作らない。Sp の正確な要求は「依存と提供」に保持する。
+- D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`、有限左 Kan 添字は `f86a7fcd9`、順序部分型包含の厳密延長は `d01f08587`。今回 `ExcisionGridIndex`・`ExcisionGridExtension`・`ExcisionGridSquareIndex`・`PosetProductNerveIso`・`ExcisionGridSquareShape`・`ExcisionSquareGrid`・`ExcisionGridZeroValues` の7モジュールを統合した。14頂点の格子を3×3部分・6頂点入力・二つの零終点を加えた中間部分に分け、二段階の native 左 Kan 局所余極限と全ての厳密制限を持つ `ExcisionSquareGrid` を任意の元の四角形から構成する。元の四角形への厳密な制限、入力四角形の向きの頂点式、元の指定零頂点を回収した。各面の押し出し性はまだ結論していない。対象・両集約（11053 jobs）・50明示署名（生成子・関数引数付き field を含む）・両全体監査が終端0（Derived 20995宣言／2339モジュール、Stable 22110／2609、許容三公理のみ）、追加ソースに警告なし。ログは `/tmp/d-loop-excision-grid-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`、正確な11パスは同 `-owned-paths.txt`。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
+- 次は [HA Lemma 1.4.2.15、Prop. 1.4.2.13](https://www.math.ias.edu/~lurie/papers/HA.pdf#page=144) の各面の押し出し性。`/tmp/d-loop-poset-lower-kan.lean` の13宣言は試作・13明示署名・三公理検査が終端0、警告なし。同 `-signatures.lean` と同 `.log` が検査記録。本体未統合。予定は `Stable/PosetSubtypeLowerComma.lean`（4）・`PosetSubtypeLowerKanShape.lean`（3）・`ThinNerveVertexExt.lean`（2）・`PosetSubtypeLowerCocone.lean`（4）。部分型の左 comma を `PosetSubtypeLowerIndex T c := {p // T p ∧ p ≤ c}` の nerve と厳密同定し、native 左 Kan 射影と同じ具体的射影を照合した。thin な nerve への射は頂点値で決まり、同じ基底と頂点を持つ余錐の実値は等しい。同じ native 標準余錐の形状同型に沿う制限を保ち、任意の実 F への後合成と局所余極限性を具体的な下方余錐へ厳密に移す。新規パスと全宣言の衝突を再確認して分割統合・監査する。`CostructuredArrow.mk` の依存推論が止まる箇所は left・right・hom のレコードを明示する。Δ0 の頂点一意性は `stdSimplex.obj₀Equiv.injective (by apply Fin.ext; omega)` と Yoneda の恒等零単体を使う。次に格子の (2,1)・(1,2) の下方添字を既存 `pastingCorner` と同定し、`pastingCornerJoinIso` と `pastingCocone_isColimitCone_iff_right` で右面・上面の押し出し性を回収する。中央 (2,2) の下方添字は座標を1以上へ上げる収縮で三点 span へ戻す。実 θ の二合成、一般 fiber/cofiber・cofiber 存在・X の有限余極限・IsStable は未証明。β4 は D2 所有。新しい分数・局所化 API は作らない。Sp の正確な要求は「依存と提供」に保持する。
 - K-S• の追加要求：`D0 := dgAlgebraCategory R B`、`C := SmallPerfectDGModuleOver R D0 Set.univ` に対し、自由 representable に対応する実小代表 `b : C` と `modulePerfectOver R C {b} = modulePerfect R C` を供給する。既存 SmallEnhancement の実代表と Perf 比較同型の3宣言は `/tmp/d-small-perfect-generator.lean` で試作・明示署名・三公理検査が終端0（`/tmp/d-small-perfect-generator-signatures.log`）。本体未統合。結論の生成性を仮定する API では代用しない。未提供。
 
 ## 目標と原典

@@ -1,4 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.ExcisionGridIndex
+public import SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension
+public import SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareIndex
+public import SerrePositivity.InfinityCategories.Stable.PosetProductNerveIso
+public import SerrePositivity.InfinityCategories.Stable.ExcisionGridSquareShape
+public import SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid
+public import SerrePositivity.InfinityCategories.Stable.ExcisionGridZeroValues
 public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve
 public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion
 public import SerrePositivity.InfinityCategories.Stable.PosetTerminalExtension
