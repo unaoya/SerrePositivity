@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 零次数比較は `9e10be2b8` に保存済み。今回の弱同値判定4新規モジュール・集約・両監査・本計画の8パスを保存する。他レーンの変更は保持する。
+- 零次数比較は `9e10be2b8`、β5(g) の検証済み8パスは `6e01c9019` に保存済み。今回の計画更新だけを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 - g の今回の4モジュールは `ModuleTranslation`（8宣言）・`ModuleTranslationPi`（2）・`ModuleNormalizedWeakEquivalence`（3）・`DGSimplicialRingWeakEquivalence`（5）。実加法 translation の全単体同型と自然性、全基点の誘導写像の可換式により零基点の準同型判定を全基点へ移した。既存 Whitehead の実逆と F1B の全 Kan 標的の前合成検査を接続し、任意の非可換単体環の台の実弱同値と同じ dg 代数射の準同型性の同値を証明した。同じ射に沿う D・Perf の実相対 tensor の ∞ 圏同値も供給。対象・両集約（10953 jobs）・18明示署名は成功。両全体監査も終端0（Derived 20443宣言／2245モジュール、Stable 21556／2515）。ログは `/tmp/d-beta5-weak-normalization-{target,aggregate,signatures,derived-audit,stable-audit}.log`。g と β5 全体は完了。d の旧比較との追加照合は依頼のとおり後段のまま。
-- 次は Sp からの一般安定性判定要求を進める。`/tmp/d-loop-section.lean` は、指定 s と厳密な終点式だけから終点評価の自明 Kan fibration 性、s の同値性、Ω の同値性から始点評価の同値性、任意の同終点 loop 図式族の全関手比較の4宣言が明示署名・公理検査に成功。安定性も有限余極限も追加仮定なし。公開 source は `/tmp/d-loop-section-source.lean`（152行）、予定名 `Stable/LoopSectionEvaluation.lean`。まず不存在・未追跡を確認して本体へ統合し、Stable 集約・両監査を登録する。その後、始点評価の同値性から実 loop 四角形の押し出し普遍性を証明し、一般 fiber/cofiber と有限余極限を構成する。準備4宣言だけを安定性判定の完成と数えない。β4 は D2 所有で、D は実 Verdier 列と導来 tensor・Hom の供給を続ける。Sp の未提供要求は「依存と提供」の正確な型を保持する。
+- 次は Sp からの一般安定性判定要求を進める。`/tmp/d-loop-section.lean` は、指定 s と厳密な終点式だけから終点評価の自明 Kan fibration 性、s の同値性、Ω の同値性から始点評価の同値性、任意の同終点 loop 図式族の全関手比較の4宣言が明示署名・公理検査に成功。安定性も有限余極限も追加仮定なし。公開形式の4明示署名・公理検査も `/tmp/d-loop-section-ready.lean` で終端0、警告なし。公開 source は `/tmp/d-loop-section-source.lean`（152行）、予定名 `Stable/LoopSectionEvaluation.lean`。まず不存在・未追跡を確認して本体へ統合し、Stable 集約・両監査を登録する。その後、始点評価の同値性から実 loop 四角形の押し出し普遍性を証明し、一般 fiber/cofiber と有限余極限を構成する。準備4宣言だけを安定性判定の完成と数えない。β4 は D2 所有で、D は実 Verdier 列と導来 tensor・Hom の供給を続ける。Sp の未提供要求は「依存と提供」の正確な型を保持する。
 
 ## 目標と原典
 
