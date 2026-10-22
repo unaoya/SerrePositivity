@@ -1136,4 +1136,13 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassD
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassProReflection
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneDerivedPro
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveQuasiIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassConnective
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCospanConnectiveProComparison
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassConnectiveProReflection
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassConnectivePro
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneConnectivePro
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneValuePro
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
