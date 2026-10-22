@@ -2373,3 +2373,4 @@ public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeDerivedFamilyInverse
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeDerivedInverse
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeDerivedRoof
+public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorSelectedEvaluation

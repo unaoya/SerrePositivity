@@ -2656,3 +2656,9 @@ slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次
 `normalizedTensorConeDerivedEvaluation_arrow` と `_family_arrow` は元の評価との合成を、
 元の DerivedRoof および定値端点へ戻した同じ DerivedRoofFamily に照合する。
 大域 pinched 族との評価三角形、その後の標準単位誘導射の弱同値性・同じ U の∞極限保存・G1′は未完了。
+
+`normalizedTensorElementUniversalLinear_evaluation` は元の全単体の普遍線形表示の評価像を、
+同じ大域 pinched 写像の線形表示に同定する。
+`normalizedTensorElementSelectedCochainAtMax_evaluation_pinched` と `_evaluation_compose` は
+任意非空部分集合の最大点付き選択 cochain と符号付き終端合成を同じ元の成分へ戻す。
+大域評価三角形の混合 cochain・全 HA・全作用素自然性は未完了。
