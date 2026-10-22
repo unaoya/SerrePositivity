@@ -413,3 +413,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.DiagramInitialConeFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationPrismCorner
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrism
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrismPoint
+public import SerrePositivity.InfinityCategories.F2.Ind.IntervalSliceConeLift
+public import SerrePositivity.InfinityCategories.F2.Ind.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.F2.Ind.IntervalSliceConeBoundary
+public import SerrePositivity.InfinityCategories.F2.Ind.LiftedIntervalEndpoints
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramConePointUncurry
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSourceSliceLift
+public import SerrePositivity.InfinityCategories.F2.Ind.IntervalTerminalSliceSection
+public import SerrePositivity.InfinityCategories.F2.Ind.IntervalSlicePrismLift

@@ -11,7 +11,7 @@
   (d) 元の制限射 `indKappaContinuousRestriction` 自体の全 ∞ 圏同値と、元の順射を保持する同値データまで。
 - **F2N-5(a) 零対象を証明**：`indYoneda_isZero_of_zero` は ℵ₀ ≤ κ のもとで、元の零対象の同じ Yoneda 像が Indκ の零対象であること。
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
-- 現区切り：独立集約 7692 jobs、公理監査 3249 宣言、標準三公理のみ。
+- 現区切り：独立集約 7700 jobs、公理監査 3283 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -38,7 +38,7 @@
   `diagramCommaEvaluation` と `smallDiagramCommaEvaluation` は各指定値の実 Ind comma への全評価。
   両 `_projection` は元の C の図式評価、両 `_coconeMap` は同じ標準全余錐の評価を厳密に回収。cofinal 性は未証明。
   `arrowInterpolationCorner A` は (A⊗Δ¹) と (A⋆Δ⁰) を元の始点族 A で貼った実 pushout。全円柱への比較は単射、正則 κ で κ-small。
-  `arrowInterpolationCoconeIso` と `exists_indComma_arrowInterpolation_extension` は厳密な全円柱同型と両境界延長。`exists_arrowDiagram_initialCone_family` は元の任意の試験族から全錐 comma 内の始点余錐を構成し、元の始点変換・C 側を保持。終点 comma の F と元の図式 comma の余錐への帰還は未完。
+  `exists_arrowDiagram_initialCone_family` は元の任意の試験族から始点余錐を構成。`indArrowSourceSliceLift_projection_of_initial` はその終点 slice 持ち上げが元の標準全余錐を被覆する等式。`exists_intervalSlice_prism_lift` は始点全錐・標準終端側面を保つ円柱の持ち上げ。元の全円柱への適用・終点 comma の F・元の図式 comma への帰還は未完。
 
 ### 残り（依存順）
 
@@ -60,7 +60,7 @@
 - `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
 - `nonempty_indComma_cocone`、`nonempty_indConeComma_cocone_of_initial`、`nonempty_indConeComma_coslice_cocone`
 - `smallDiagramCommaEvaluation_coconeMap`、`arrowInterpolationCornerInclusion_mono`、`arrowInterpolationCorner_isKappaSmall`
-- `arrowInterpolationCoconeIso`、`exists_indComma_arrowInterpolation_extension`、`exists_arrowDiagram_initialCone_family`、`diagramCommaPrism_point`
+- `exists_arrowDiagram_initialCone_family`、`indArrowSourceSliceLift_projection_of_initial`、`exists_intervalSlice_prism_lift`、`exists_indComma_arrowInterpolation_extension`
 
 ### 依存と提供
 
@@ -74,7 +74,7 @@
 
 ### 未コミット
 
-- なし。全円柱同型・実 scalar comma 延長、元の試験族からの始点余錐と元の全円柱の点制限の一致まで検証済み。
+- なし。元の始点全錐の終点 slice 持ち上げ・元の全余錐との一致、指定始点・標準終端側面を保つ円柱持ち上げまで検証済み。
 
 ### 既知の問題
 
@@ -94,8 +94,8 @@
 `diagramConePointRestriction` は元の指定値への点制限を正規化し、射影を保持。`diagramShapeFirstPoint_leftAnodyne` で標準単体の始点包含を実証済み。
 `exists_arrowDiagram_initialCone_family` は元の任意の κ-small 試験族 q から全錐 comma 内の始点余錐 G を構成。始点制限は同じ q の評価、C 射影も同じ元の全図式。形状の追加仮定なし。
 `diagramCommaPrism` は q の元の全変換を全円柱 W として回収。`_old` は元の C 全図式の Yoneda 像、`_tip` は元の D、`_point` は同じ評価 comma の標準全余錐。
-次は全錐 comma の G を join の結合・標準区間同型で組み替え、W の始点上の sliceOver(D₁) への持ち上げとする。`exists_rightFibration_prism_corner_lift` は指定始点・側面・底を保つ全円柱持ち上げ。`conePoint_rightAnodyne` で必要な側面の性質は実証済み。
-この持ち上げと元の C 全図式から終点 comma の F を構成し、G の終点制限と厳密に一致させる。`exists_indComma_arrowInterpolation_extension` による延長は済み。その後、元の射図式 comma の同じ q の余錐へ戻す。F の構成・帰還は未完。
+`indArrowSourceSliceLift` は元の全錐族を終点 slice 内の余錐へ組み替える。`_projection_of_initial` は元の q の標準全余錐との厳密な一致、`_precomp` は G の制限との自然性。`liftedIntervalToSmall_first`・`_last` で両端点を保持。
+次は W の区間を `liftedIntervalToSmall` で正規化し、因子を交換して `exists_intervalSlice_prism_lift` に渡す。始点は上の全等式、側面は `diagramCommaPrism_tip` で照合。得た持ち上げと元の C 全図式を引き戻して F を作り、G の終点制限との一致を示す。延長は `exists_indComma_arrowInterpolation_extension`。F・元の射図式 comma の同じ q の余錐への帰還は未完。
 有限 P の境界は (N(P≤a)×B)∪(N(P<a)×{∞})。B は一般の κ-small 試験形状として扱い、poset nerve だけの試験で済ませない。
 次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
 HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。

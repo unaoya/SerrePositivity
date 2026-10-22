@@ -774,3 +774,30 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_rightFibration_prism_corner_lift
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_old
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaPrism_point
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeReassociation
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeReassociation_fixed
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinAssociator_rightPair
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeReassociation_precomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_precomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.liftedIntervalToSmall_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.liftedIntervalToSmall_last
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaTransport_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_projection_of_initial
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_precomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalJoin_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalTerminalSliceSection_first
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_intervalSlice_prism_lift
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.intervalSliceConeLift_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramConePointRestriction_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrowSourceSliceLift_projection_of_initial
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_intervalSlice_prism_lift
