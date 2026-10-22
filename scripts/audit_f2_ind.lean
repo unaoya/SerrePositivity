@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_iff_of_iso
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_range_of_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_small_codiscreteConeRange
+
 /-!
 概要：F2N-2 の独立集約に属する全宣言の公理依存を監査する。
 方針：所有モジュールの接頭辞で生成宣言も抽出し、再帰的に公理を確認する。

@@ -35,10 +35,11 @@
   `hasKappaFilteredElements_of_strictClassified_colimit` は正則 κ で同じ strict 分類図式の任意の native 余極限への保存。
   小さい部分複体の和、拡大可能な小さい部分族の κ-filtered 被覆・包含余極限、未使用頂点ラベルは証明済み。
   ラベル付き積の元の射影は cofinal。小さい単射な図式を未使用頂点の同じ積内の単射な錐へ拡大できる。
-  錐の終頂点・像の小ささによる終頂点付き部分複体への拡大と、poset からの cofinal map は未証明。
+  `exists_small_codiscreteConeRange` は元の部分複体を含む小さい錐の像。同じ単射な錐から構成。
+  錐の終頂点による終頂点付き部分複体への拡大と、poset からの cofinal map は未証明。
   一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6541 jobs、公理監査 923 宣言、標準三公理のみ。
+- 独立集約 6548 jobs、公理監査 926 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -66,7 +67,7 @@
 - `strictRightStraighteningColimitFiberCoconeIso`、`strictRightStraighteningCocone_isColimit`
 - `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
 - `hasKappaFilteredElements_of_strictClassified_colimit`
-- `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`
+- `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
 - `codiscreteProductProjection_isRightCofinal`、`exists_mono_fresh_codiscreteProductCocone`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -94,14 +95,13 @@
 ### 次の一手
 
 (c)：strict 分類図式の余極限で元の κ-filtered 条件を保つところまで証明済み。cofinal poset の構成を進める。
-次は同じ右錐の右頂点の終対象性と、単射な錐写像の像の κ-small 性を示す。新頂点の単射な錐の拡大は証明済み。
+次は同じ右錐の右頂点の終対象性を示す。新頂点の単射な錐の拡大とその像の κ-small 性は証明済み。
 終頂点を持つ小さい部分複体の拡大を証明し、構成済みの同じ部分族の κ-filtered 被覆へ適用する。
 その後、実際の cofinal map と元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
 その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。
-報告後は承認を待たず (c) を続行する。
 
 ## F1 の完了済み範囲と第 II 段の再開点
 
