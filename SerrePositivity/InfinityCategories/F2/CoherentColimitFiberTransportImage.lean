@@ -3,6 +3,9 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitFiberTransportRecovery
 public import SerrePositivity.InfinityCategories.F2.FullyFaithfulVertexIsoImage
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerVertexMap
+public import SerrePositivity.InfinityCategories.F2.CoherentCoconeIntervalTransportAction
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitActionConjugacy
 
 /-!
 概要：a6 の元の指定 fiber 輸送比較を、構成時の同じ全空間比較の像へ戻す。
@@ -63,5 +66,25 @@ lemma coherentColimitFiberTransportIso_unique
   apply hv.isFullyFaithful.toHoFullyFaithful.map_injective
   simpa only [functorIso_postcomp_eq_mapIso, Functor.mapIso_hom, hoFunctor_map,
     Functor.toCatHom_toFunctor] using congrArg Iso.hom he'
+
+/-- 元の指定 fiber 比較の共通の全作用の像は、同じ元の上下作用比較に値まで戻る。 -/
+lemma coherentColimitFiberTransportIso_action_heq :
+    HEq (VertexIso.map (coherentColimitFiberTransportIso B H)
+      (coherentCoconeFiberValueAction F (coherentDiagramTotalCocone F)
+        (coherentDiagramTotalVertex G)))
+      ((coherentColimitLowerActionIso B H).symm ≪≫ coherentColimitUpperActionIso B H) := by
+  exact (functorIso_whisker_vertexMap_heq (coherentColimitFiberTransportIso B H) f v).trans
+    (coherentColimitFiberTransportIso_value_precomp_heq_actions B H)
+
+/-- 元の指定比較の共通の全作用の像は、同じ三角形比較の指定共役に一致する。 -/
+lemma coherentColimitFiberTransportIso_action_heq_conjugate :
+    HEq (VertexIso.map (coherentColimitFiberTransportIso B H)
+      (coherentCoconeFiberValueAction F (coherentDiagramTotalCocone F)
+        (coherentDiagramTotalVertex G)))
+      ((coherentColimitLowerTransportFactorIso B H).symm ≪≫
+        coherentColimitNativeTriangleActionComparison B H ≪≫
+          coherentColimitUpperTransportFactorIso B H) := by
+  exact (coherentColimitFiberTransportIso_action_heq B H).trans
+    (heq_of_eq (coherentColimitActionComparison_eq_conjugate B H))
 
 end SerrePositivity.InfinityCategories.F2
