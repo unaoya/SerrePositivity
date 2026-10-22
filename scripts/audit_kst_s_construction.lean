@@ -30456,3 +30456,78 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotTargetRightEndMap_right
 #print axioms SerrePositivity.KST.SConstruction.dgOdotTargetRightEndMap_right
+
+#check @SerrePositivity.KST.SConstruction.dgEndIsoHom_of_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgEndIsoHom_of_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgExtensionRepresentableEnd_conjugate
+#print axioms SerrePositivity.KST.SConstruction.dgExtensionRepresentableEnd_conjugate
+
+#check @SerrePositivity.KST.SConstruction.dgExtensionRepresentableEnd_inverseYoneda
+#print axioms SerrePositivity.KST.SConstruction.dgExtensionRepresentableEnd_inverseYoneda
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoHom
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoHom
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectImageEndIsoFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentableIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentableIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom_recovery
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom_recovery
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd_right
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerEnd_right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap_right
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetCornerEndMap_right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetMap_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetMap_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetMap_right
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetMap_right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotCornerInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotCornerInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotUpperInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotUpperInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetInputMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetInputMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetInputTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetInputTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetNuTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetNuTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetKTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetKTriangle

@@ -2511,4 +2511,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetRightEnd
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRightRecovery
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRightBase
 
+public import SerrePositivity.KST.SConstruction.DGEndIsoNaturality
+public import SerrePositivity.KST.SConstruction.DGExtensionRepresentableEnd
+public import SerrePositivity.KST.SConstruction.DGPerfectImageEndComparison
+public import SerrePositivity.KST.SConstruction.DGOdotTargetCornerEnd
+public import SerrePositivity.KST.SConstruction.DGOdotTargetCornerRecovery
+public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebra
+public import SerrePositivity.KST.SConstruction.DGOdotTargetInputTriangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/
