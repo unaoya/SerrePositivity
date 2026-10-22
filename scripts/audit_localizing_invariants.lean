@@ -1049,7 +1049,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofZeroLeft,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroInverseRoofComparison,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofZeroRefinement,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroBase]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroBase,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleComposition,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionIdentity,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionOver,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimodulePostnikovTransition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerInverseRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroInverse,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerZeroRestrictionIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerFromZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCoefficientFromZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonLayerInverse]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

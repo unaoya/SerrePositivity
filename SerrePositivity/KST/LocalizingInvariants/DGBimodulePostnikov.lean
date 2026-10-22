@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) [A.X.IsStrictlyLE 0]
   (M : Bimod A A) (k : ℤ) [M.X.IsStrictlyLE k] [M.X.IsStrictlyGE k] (n : ℤ) (hn : 0 ≤ n)
 
-def postnikovBimodule : Bimod (postnikov R A n) (postnikov R A n) := by
+def postnikovBimoduleConstruction : Bimod (postnikov R A n) (postnikov R A n) := by
   let q := postnikovQuotient R A n
   have : Epi q.hom := TruncationDesc.projection_epi A.X (-n)
   have : Epi (q.hom ⊗ₘ q.hom) := TruncationDesc.tensor_epi _ _
@@ -35,6 +35,16 @@ def postnikovBimodule : Bimod (postnikov R A n) (postnikov R A n) := by
     (ActionDesc.right k (-n) (by omega) M.actRight)
     (ActionDesc.projection_left k (-n) (by omega) M.actLeft)
     (ActionDesc.projection_right k (-n) (by omega) M.actRight)
+
+def postnikovBimodule : Bimod (postnikov R A n) (postnikov R A n) where
+  X := M.X
+  actLeft := ActionDesc.left k (-n) (by omega) M.actLeft
+  actRight := ActionDesc.right k (-n) (by omega) M.actRight
+  one_actLeft := (postnikovBimoduleConstruction R A M k n hn).one_actLeft
+  actRight_one := (postnikovBimoduleConstruction R A M k n hn).actRight_one
+  left_assoc := (postnikovBimoduleConstruction R A M k n hn).left_assoc
+  right_assoc := (postnikovBimoduleConstruction R A M k n hn).right_assoc
+  middle_assoc := (postnikovBimoduleConstruction R A M k n hn).middle_assoc
 
 lemma postnikovBimodule_left_projection :
     ((postnikovQuotient R A n).hom ▷ M.X) ≫
