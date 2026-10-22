@@ -2689,3 +2689,8 @@ prependOrderHom・extendOrderHom を使う二つの可換式を与える。
 `normalizedTensorTriangleData_linearBoundary_pinched` は零→二の混合部分の全線形境界の一致。
 全 HA の残りは三相を含む部分集合の二次境界（切断合成和）の比較。
 全作用素自然性・大域評価三角形・標準単位の弱同値性・同じ U の∞極限保存は未完了。
+
+`normalizedTensorTriangleData_term_zero/two` は零→二の混合項で内部点が零相／二相なら、
+元の pinched 項全体との一致を与える。`ConeHeadIndex.second` と
+`left_card_two_iff_second` は左切断が二点のとき唯一残る最初から二番目の点。
+中央相の切断合成和・混合 HA 全体・大域評価三角形は未完了。
