@@ -38,8 +38,9 @@
   同じ射の fiber 作用を元の初頂点評価と係数 fiber 同型へ同定し、前合成同値性まで証明済み。
   `sectionProductClassificationIso` は元の共同分類の初頂点制限と H の weighted 分類の一つの大域同型。
   `strictLeftWeightedClassificationIso` は共同分類を curry した図式と実際の strict left 分類像の一つの大域同型。
-  H の同じ積上の実現を全次数で同定し、初頂点局所化の充満忠実性で降下した。right 反転と逆方向は残る。
-- 独立集約 6726 jobs、公理監査 1427 宣言、標準三公理のみ。
+  `presheafDiagramRightStrictClassificationIso` は自然な二重反転も合成し、元の F と実際の strict right 分類像を大域的に結ぶ。
+  `hasKappaFilteredElements_of_ordinary_colimit` は通常の κ-filtered 添字の任意の coherent 前層余極限で条件を保存する。
+- 独立集約 6737 jobs、公理監査 1439 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -76,7 +77,7 @@
 
 ### 未コミット
 
-- `LeftRightRoundTripDiagram.lean`：二重反転の同じ底上の自然比較を編集中。集約外。
+- なし。通る区切りを独立集約と公理監査とともに保存する。
 
 ### 既知の問題
 
@@ -87,17 +88,13 @@
 ### 次の一手
 
 (c)：小さい通常の κ-filtered poset の nerve 上の一般 coherent 前層図式を strict 化する。
-元の共同 left fibration と under weighted nerve の底上の同値 span、積上の分類同型、curry 後の元の F との同型まで証明済み。
-次は `presheafDiagramWeightedClassification F` と、`strictCoherentDiagram (presheafDiagramRightStrict F)` を
-`rightStraighteningInfinityMap C` で分類した実際の図式との大域比較を構成する。
-strict left 分類像を底の全単体上の相対切断へ戻す大域同型と、共同 weighted 評価の全制限との可換性まで証明済み。
-添字 (i,s) ∈ I × TransportSimplexCategory B の Kan 図式 H と、初頂点座標で評価する大域射まで構成済み。
-`sectionProductScaffold` の同じ係数作用は元の初頂点評価と fiber 同型の合成で、前合成同値まで証明済み。
-同じ scaffold と taut scaffold の共通置換により、元の共同分類の初頂点制限と H の weighted 分類は大域同型。
-weighted 単位で H 自体の実現へ移し、Kan 図式値の実現との全次数の同定と初頂点局所化で strict left 分類像へ降下済み。
-次は left/right 二重反転の自然な底上の比較を保持し、元の F との既存の同型に接続する。
-span の元の両 scaffold への制限を保持し、各値の同値だけで大域比較や元の余錐の比較を代用しない。
-同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。HTT 5.3.5.3、5.3.1.18。
+元の共同分類と strict left 分類像は全単体切断の同じ積上の実現と初頂点局所化で大域同型。
+自然な底上の二重反転も構成し、`presheafDiagramRightStrictClassificationIso` で元の F 自体へ接続済み。
+`hasKappaFilteredElements_of_ordinary_colimit` は同じ元の頂点を保つ native 余錐を strict 分類へ輸送し、
+通常の κ-filtered 添字上の任意の coherent 図式の余極限で元の圏の κ-filtered 性が保存される。
+次は `exists_cofinal_kappaFiltered_poset` の cofinal map による元の余錐の制限を余極限として移す。
+小さい添字の cofinal 性を宇宙 u+1 の前層標的へ使う移送と、同じ制限余錐の余極限性が要る。
+各値の同値や余極限の存在だけで、元の図式・頂点・余錐の比較を代用しない。HTT 5.3.5.3、5.3.1.18。
 `isIndVertex_minimal` で逆方向を得て、同じ密度表示により単一 κ-filtered 表示と右 fibration 定義との一致を結論する。
 その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。
 

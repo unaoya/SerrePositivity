@@ -161,3 +161,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductJointReali
 public import SerrePositivity.InfinityCategories.F2.Ind.NerveProductSwapIso
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCurry
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftWeightedClassification
+public import SerrePositivity.InfinityCategories.F2.Ind.LeftRightRoundTripDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramStrictification
+public import SerrePositivity.InfinityCategories.F2.Ind.OrdinaryFilteredElementsClosure

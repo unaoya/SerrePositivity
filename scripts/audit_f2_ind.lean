@@ -276,3 +276,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductJointRealization_curry
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictLeftWeightedClassificationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftRightRoundTripDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.leftRightOppositeDiagramIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightStrictClassificationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_of_ordinary_colimit
