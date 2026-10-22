@@ -202,7 +202,18 @@ run_cmd do
     `SerrePositivity.KST.Fibration.RelativeSKernelBasepoint,
     `SerrePositivity.KST.Fibration.RelativeSFibrationFiber,
     `SerrePositivity.KST.Fibration.RelativeSQuotientRealization,
-    `SerrePositivity.KST.Fibration.RelativeQuotientFiberComparison]
+    `SerrePositivity.KST.Fibration.RelativeQuotientFiberComparison,
+    `SerrePositivity.KST.Fibration.WeakUniversalOre,
+    `SerrePositivity.KST.Fibration.WeakOreDiagrams,
+    `SerrePositivity.KST.Fibration.WeakOreSquare,
+    `SerrePositivity.KST.Fibration.WeakOreFamilies,
+    `SerrePositivity.KST.Fibration.WeakSpanBaseChangeLift,
+    `SerrePositivity.KST.Fibration.WeakOreSpanLift,
+    `SerrePositivity.KST.Fibration.WeakOreCartesianSpanLift,
+    `SerrePositivity.KST.Fibration.WeakMarkedSpanCartesianLift,
+    `SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange,
+    `SerrePositivity.KST.Fibration.WeakSpanTransportGroupoidCompletion,
+    `SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

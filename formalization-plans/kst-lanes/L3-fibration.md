@@ -30,15 +30,13 @@
 - 元の S_n(W 列_m) の頂点と wS_n(B) の実 m 単体を、内部 Hom の交換で厳密に同定。
   全零対角・実押し出し・W 条件と全面・全退化を保つ二重単体・対角の厳密同型と K-1 object/core 比較で、
   相対 S の対角 → W 列の core S 実現の対角の実際の比較射が局所化同型と証明。
-  同じ F₁ の対角へ自然な同型で接続。完全関手の W 列後合成は実単体・二重単体・対角の交換と可換。
-  相対 S の核側の写像を同じ W 列の core/単回反復実現へ運ぶ可換四角形を証明。
+  同じ F₁ へ自然に接続し、完全関手の後合成は交換と可換で、核側の写像を同じ W 列へ運ぶ。
   零長同型の逆と元の退化で全定数 W 列を構成。全単体作用素・完全関手と厳密に可換で全頂点を回収。
   gapped 交換と object/core の前合成の厳密な四角形で、元の core 包含と同じ定数包含を保持。
 - 元の Verdier 包含を実核部分圏へ制限し、元の写像空間の充満忠実性と核条件から完全な同値を構成。
   包含を通る合成の核は元の包含側の圏と厳密同型。核への後合成は全正有限反復で局所化同型。
   全 cofiber の後合成の自然同型から、全長・全正反復の有限積比較の後合成等式を局所化で証明。
-  核係数の有限積同型から、後合成した cofiber 座標と元の初期評価の射対が局所化同型。
-  この実射対の厳密な比較立方体で、元の W 列の初期評価四角形の homotopy pullback 性を証明。
+  核係数の有限積同型と元の初期評価の実射対の厳密な立方体で、元の初期評価四角形は homotopy pullback。
   右消去から先頭を保つ全再添字、第零面は正の段の連結性と退縮検出で証明。
   全面・全退化を合成し、K-2 Segal 実現で全行と対角の元の四角形も homotopy pullback。
   零行同型で定数包含へ移し、object/core の厳密比較で元の相対 S 核四角形の実現も同じ性質。
@@ -47,11 +45,15 @@
   元の S₀ の零対象で基点を指定し、相対 core 包含の実 homotopy fiber と core S(D) の局所化同型を構成。
   同じ fiber 射影との合成は元の Verdier 包含の実現射を回収。商の core S との実 fiber 比較も構成。
   商実現射影の局所化同型性を明示的に入力すれば商 fiber 同型と同じ射影式を得る。この入力は未証明。
+- 元の W cospan に普遍 Ore pullback を構成し、全図式射影は trivial Kan fibration。
+  任意の部分族を固定した全境界の相対延長と、全パラメータの選択空間の contractible Kan 性を証明。
+  元の固定終点 span への W 分母の cartesian lift を構成し、全辺が W である底図式上で両側 fibration。
+  元の各 W 辺上で指定した実 span 輸送は、亜群化後に単体的ホモトピー同値。商への写像空間比較は未完。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7629 jobs・専用監査 197 モジュール 1058 宣言 が成功。
+- 現在の対象ビルド 8136 jobs・専用監査 208 モジュール 1092 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3892 モジュールは EInfinity を含まない。全体 24341 jobs で成功。
+  所有 import 閉包 4397 モジュールは EInfinity を含まない。全体 24351 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -66,15 +68,14 @@
 - relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
-- weakCofiberProjection_trivialKanFibration、weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringFiniteComparison_localized_isIso（零長を含む全長・全正有限反復）。
-- tailRelativePullback、weakStringTailMultiStep_localized_isIso（元の全長・全正有限反復の射対）。
 - weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、
   relativeSWeakStringCoreComparison_localized_isIso（元の実比較射）。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSKernelDiagonal_toPoint_localized_isIso、weakStringKernelDiagonal_toPoint_localized_isIso。
-- relativeSFibrationFiberIso、relativeSFibrationFiberIso_hom_projection、relativeToQuotientSFiberMap、
-  quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力する条件付き）。
+- relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
+- exists_relative_weakOreFamily、weakOreFamilySpace_isContractibleKan、exists_weakMarkedSpanCartesianLift、
+  weakSpanDenominatorBaseChange_cartesianFibration、weakDenominatorSpanTransport_groupoidCompletion_isEquivalence。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
@@ -86,11 +87,10 @@
 - 工程 (a) の直接入力は K-5 の `VerdierSequence` と Stable の実 cofiber・八面体・
   基底変更・前三角構造。SConstruction と Spectra の直接 import はない。
 - 工程 (b) は F1 の `CoreKan` と、K-S• の `StructureMapCofibers` を直接 import する。
-  固定界面は L1 §6 の `Gapped`・全 Ar 評価・`sMap_gapped_evaluate`・`sPostcomp_gapped_evaluate`。
-  依頼先は `01a151d3-f75d-7ef2-9d1f-908c85eb1be1`。
+  固定界面は L1 §6。依頼先は `01a151d3-f75d-7ef2-9d1f-908c85eb1be1`。
   ClosedStablePredicate 版加法性を任意 W 辺版とせず、W の保存と比較を証明。K-3 以降は未依存。
-  追加固定界面は L1 §6 の `cofiberDiagrams`・`cofiberProjection`・
-  `cofiberProjection_trivialKanFibration`。W 条件への制限と全境界持ち上げは K-F が証明した。
+  追加固定界面は `cofiberDiagrams`・`cofiberProjection`・`cofiberProjection_trivialKanFibration`。
+  W 制限と全境界持ち上げは K-F が証明した。
   追加固定界面（L1 §6）：MultiRealizationFunctorIso の
   multiRealization_map_positive_localized_eq_of_functorIso（正の全反復、ModelCategory 引数なし）。
   RelativeCofiberLeftFiber と RelativeFiberEquivalence の相対左 fiber・quotient 局所化同型も
@@ -98,12 +98,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の指定基点・実 fiber 比較・元の包含射の回収・商 fiber への実比較の6モジュール等を含める）。
+- なし（今回の一般 Verdier 列の全高次 Ore 補完・cartesian lift・分母輸送の11モジュール等を含める）。
 ### 既知の問題
 - 商の ∞ 写像空間比較・cofinality 十分条件・Sp 値の K-6 は未完。K-5 の fraction 比較も同値性未証明。
 ### 次の一手
-- 相対 S の商射影を商の core S の実現と比較する。実 ∞ 局所化の分数・cofinality の証明が必要。
-  指定 fiber・元の包含・商 fiber 比較は構成済み。商実現比較の可逆性、cofinality 十分条件、Sp 値が未完。
+- 亜群化した span の分母輸送同値を全関手 ∞ 圏の商普遍性へ降下し、商の実写像空間と比較する。
+  相対 S 商実現比較の可逆性、cofinality 十分条件、Sp 値への接続は未完。指定 fiber 比較は構成済み。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

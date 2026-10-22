@@ -196,3 +196,14 @@ public import SerrePositivity.KST.Fibration.RelativeSKernelBasepoint
 public import SerrePositivity.KST.Fibration.RelativeSFibrationFiber
 public import SerrePositivity.KST.Fibration.RelativeSQuotientRealization
 public import SerrePositivity.KST.Fibration.RelativeQuotientFiberComparison
+public import SerrePositivity.KST.Fibration.WeakUniversalOre
+public import SerrePositivity.KST.Fibration.WeakOreDiagrams
+public import SerrePositivity.KST.Fibration.WeakOreSquare
+public import SerrePositivity.KST.Fibration.WeakOreFamilies
+public import SerrePositivity.KST.Fibration.WeakSpanBaseChangeLift
+public import SerrePositivity.KST.Fibration.WeakOreSpanLift
+public import SerrePositivity.KST.Fibration.WeakOreCartesianSpanLift
+public import SerrePositivity.KST.Fibration.WeakMarkedSpanCartesianLift
+public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
+public import SerrePositivity.KST.Fibration.WeakSpanTransportGroupoidCompletion
+public import SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport
