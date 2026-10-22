@@ -14,6 +14,11 @@
   `presheafYonedaSliceFiberValueEquivalence` は同じ射影の各 fiber を元の F(x) と比較する。
   小さい元の圏からの一つの底上の比較写像は未構成。各点の同値の存在で代用しない。
   `presheafElementsCoconeOfComparison` は、その指定比較を入力すると小さい同じ図式へ全余錐を戻す。
+- **(a) の大域評価**：right fibration の相対 twisted arrow 右端比較の全境界充填を証明。
+  `twistedArrowRightSection` は底の全 twisted arrow と指定終点を厳密に保つ一つの切断。
+  `presheafTwistedElementsEvaluation` は同じ小さい元の圏を終点とする全族から元の F への pointed 評価。
+  その底の厳密な等式まで。共同 Hom 図式の自然変換への移送と密度余錐の余極限性は未証明。
+  独立集約 6099 jobs、公理監査 100 宣言、標準三公理のみ。
 - **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
@@ -35,6 +40,8 @@
 - `presheafElementsColimitCocone`、`presheafElementsColimitCocone_isColimit`
 - `presheafYonedaSliceProjection`、`presheafYonedaSliceCocone`、`presheafYonedaSliceCocone_vertex`
 - `presheafYonedaSliceFiberValueEquivalence`、`presheafElementsCoconeOfComparison`
+- `relativeEdgewiseRightComparison_trivialKanFibration`、`twistedArrowSourceLift_projection`
+- `presheafTwistedElementsEvaluation`、`presheafTwistedElementsEvaluation_projection`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -62,8 +69,10 @@
 
 ### 次の一手
 
-(a)：小さい元の圏の持ち上げから `presheafYonedaSlice F` への一つの底上の比較 k を構成する。
-元の Yoneda の恒等点評価の自然性と right fibration の全族の比較を使い、各 fiber の比較を全単体へ束ねる。
+(a)：`E := smallRightUnstraightening F` とし、`presheafTwistedElementsEvaluation F` を使う。
+同じ C.op × E 上で、Tw(C) の底変換の分類図式を元の共同 Hom 図式と比較し、
+pointed 評価を c1 の写像空間比較により共同 Hom 図式から F への一つの自然変換へ移す。
+curry して、E の持ち上げから `presheafYonedaSlice F` への底上の比較 k を回収する。
 `presheafElementsCoconeOfComparison F k hk` で元の F を頂点とする小さい全余錐を回収し、その余極限性を証明する。
 同じ全余錐を (c) の指定表示へ使い、別の余極限の存在や各点だけの同値で密度を主張しない。
 報告後は承認を待たず (a) を続行する。

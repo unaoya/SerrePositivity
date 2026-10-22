@@ -58,3 +58,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_colimitCone
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_isColimit_iff_inclusion
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.edgewiseRightExtensionDomain_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Ind.edgewiseRightWeightDomain_relative_lift
+#check @SerrePositivity.InfinityCategories.F2.Ind.relativeEdgewiseRightComparison_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedArrowRightSection_comparison
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedArrowSourceLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafTwistedElementsEvaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafTwistedElementsEvaluation_projection
