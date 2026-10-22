@@ -50,7 +50,10 @@ run_cmd do
     `SerrePositivity.KST.Fibration.KernelRelativeMiddle,
     `SerrePositivity.KST.Fibration.KernelMultiAddition,
     `SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle,
-    `SerrePositivity.KST.Fibration.LocalizedPairEquality]
+    `SerrePositivity.KST.Fibration.LocalizedPairEquality,
+    `SerrePositivity.KST.Fibration.WeakStringCofiberRealization,
+    `SerrePositivity.KST.Fibration.WeakStringCofiberDegeneracy,
+    `SerrePositivity.KST.Fibration.WeakStringTriangleAdditivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

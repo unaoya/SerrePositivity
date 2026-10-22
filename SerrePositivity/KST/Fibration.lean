@@ -44,3 +44,6 @@ public import SerrePositivity.KST.Fibration.KernelRelativeMiddle
 public import SerrePositivity.KST.Fibration.KernelMultiAddition
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle
 public import SerrePositivity.KST.Fibration.LocalizedPairEquality
+public import SerrePositivity.KST.Fibration.WeakStringCofiberRealization
+public import SerrePositivity.KST.Fibration.WeakStringCofiberDegeneracy
+public import SerrePositivity.KST.Fibration.WeakStringTriangleAdditivity
