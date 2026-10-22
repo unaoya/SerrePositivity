@@ -1573,3 +1573,60 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @bicartesianZeroBottomProjection
 #print axioms bicartesianZeroBottomProjection
+
+#check @bicartesianZeroLeftArrow
+#print axioms bicartesianZeroLeftArrow
+
+#check @bicartesianZeroLeftArrow_inclusion
+#print axioms bicartesianZeroLeftArrow_inclusion
+
+#check @bicartesianZeroLeftArrow_source
+#print axioms bicartesianZeroLeftArrow_source
+
+#check @bicartesianZeroCoconeMap
+#print axioms bicartesianZeroCoconeMap
+
+#check @bicartesianZeroCoconeMap_inclusion
+#print axioms bicartesianZeroCoconeMap_inclusion
+
+#check @bicartesianZeroCoconeMap_projection
+#print axioms bicartesianZeroCoconeMap_projection
+
+#check @bicartesianZeroBottomProjection_hasLiftingProperty_boundary
+#print axioms bicartesianZeroBottomProjection_hasLiftingProperty_boundary
+
+#check @bicartesianZeroBottomProjection_isFullyFaithful
+#print axioms bicartesianZeroBottomProjection_isFullyFaithful
+
+#check @bicartesianZeroBottomProjection_kanEquivalenceLifting
+#print axioms bicartesianZeroBottomProjection_kanEquivalenceLifting
+
+#check @exists_strict_vertex_preimage_of_targetLifting
+#print axioms exists_strict_vertex_preimage_of_targetLifting
+
+#check @IsIdempotentCompletion.bicartesian_cofiber_exists
+#print axioms IsIdempotentCompletion.bicartesian_cofiber_exists
+
+#check @cofiberOpToFiber
+#print axioms cofiberOpToFiber
+
+#check @cofiberOpToFiber_isPushout
+#print axioms cofiberOpToFiber_isPushout
+
+#check @IsIdempotentCompletion.bicartesian_fiber_exists
+#print axioms IsIdempotentCompletion.bicartesian_fiber_exists
+
+#check @fiberSquareULift
+#print axioms fiberSquareULift
+
+#check @cofiberSquareULift
+#print axioms cofiberSquareULift
+
+#check @isStable_ulift
+#print axioms isStable_ulift
+
+#check @IsIdempotentCompletion.isStable
+#print axioms IsIdempotentCompletion.isStable
+
+#check @idem_isStable
+#print axioms idem_isStable

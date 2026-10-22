@@ -161,3 +161,11 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.DiagramOppositeRe
 public import SerrePositivity.InfinityCategories.F2.Idempotent.LimitRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PullbackRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroSquares
+public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroFamilies
+public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroBoundary
+public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroIsoLifting
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrictImageRecovery
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionCofibers
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionFibers
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionStability
