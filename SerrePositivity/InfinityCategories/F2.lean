@@ -1,5 +1,16 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportRightPrism
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningMappingIdentityData
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningFamilyEndpointBase
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionCurryEndpointEquality
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningSourceActualWitnessComparison
+public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointDataEquality
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramWitnessEndpointComparison
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramWitnessCurryComparison
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramSourceComparison
+public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTriangleComparisonFiber
+
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeNativeCommutativity
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeSpecifiedComparison
 public import SerrePositivity.InfinityCategories.F2.CatTetrahedronIsoSquare
@@ -918,3 +929,31 @@ public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValu
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_postcomp_heq_map
 
 #check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_constant_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_rightPrism
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_rightBase
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramMappingFamilyWitness_prism
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingFamilyWitness_identity_prism
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingFamilyWitness_identity_action
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingFamilyWitness_initial_base
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingFamilyWitness_final_base
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionEndpoint_curryIso_heq_of_sourceEq
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningSourceComparisonIso_heq_actualWitness
+
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_heq_of_dataEq
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramWitnessEndpointComparison_heq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramWitnessCurryComparison_heq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramSourceComparison_heq_transport
+
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTriangleComparison_heq_fiber
