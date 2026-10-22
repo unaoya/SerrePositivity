@@ -9208,3 +9208,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.simplicialSectionsRelativeIso_inv_evaluation
 
 #check @SerrePositivity.InfinityCategories.uliftFunctorSpaceIso_hom_vertex
+
+#check @SerrePositivity.InfinityCategories.coherentSectionsConeHomComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit
+
+#check @SerrePositivity.InfinityCategories.hasLimit_coherentSpaceDiagram
+
+#check @SerrePositivity.InfinityCategories.conePointHomRelativeComposite_post
+
+#check @SerrePositivity.InfinityCategories.coneSectionsNativeComparisonIso
+
+#check @SerrePositivity.InfinityCategories.coneUnstraighteningArrow
+
+#check @SerrePositivity.InfinityCategories.coneUnstraighteningArrow_vertex
+
+#check @SerrePositivity.InfinityCategories.coneSectionsMap_eq_sectionMap
+
+#check @SerrePositivity.InfinityCategories.coneUnstraighteningArrow_const_evaluation
+
+#check @SerrePositivity.InfinityCategories.constantDiagramSectionTransportIso
+
+#check @SerrePositivity.InfinityCategories.constantSourceOverIso_inv_fiber
+
+#check @SerrePositivity.InfinityCategories.constantSourceCoordinates
+
+#check @SerrePositivity.InfinityCategories.constantSourceSectionMap_action
+
+#check @SerrePositivity.InfinityCategories.constantSourceSectionMap
+
+#check @SerrePositivity.InfinityCategories.constantSourceSectionMap_evaluation
+
+#check @SerrePositivity.InfinityCategories.constantSourceSectionMap_vertex
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_exists_limitCone
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_hasLimit
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_evaluation_small_isLimit
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_small_isLimit_iff_evaluation
+
+#check @SerrePositivity.InfinityCategories.representablePresheafInfinity_isLimit

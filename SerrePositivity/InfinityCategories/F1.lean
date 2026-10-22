@@ -3239,3 +3239,21 @@ public import SerrePositivity.InfinityCategories.F1.ConstantSourceRelativeEvalua
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExponentialEvaluation
 
 public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpaceVertex
+
+public import SerrePositivity.InfinityCategories.F1.CoherentSpaceSmallLimits
+
+public import SerrePositivity.InfinityCategories.F1.ConeSectionsNativeComparison
+
+public import SerrePositivity.InfinityCategories.F1.ConeUnstraighteningMap
+
+public import SerrePositivity.InfinityCategories.F1.ConstantDiagramSectionTransport
+
+public import SerrePositivity.InfinityCategories.F1.ConstantSourceCoordinates
+
+public import SerrePositivity.InfinityCategories.F1.ConstantSourceSectionAction
+
+public import SerrePositivity.InfinityCategories.F1.ConstantSourceSectionMap
+
+public import SerrePositivity.InfinityCategories.F1.PresheafAllSmallLimits
+
+public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafAllSmallLimits

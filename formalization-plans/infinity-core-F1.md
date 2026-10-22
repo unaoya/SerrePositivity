@@ -8,95 +8,72 @@
 
 - 空間値 straightening は一般の小さい quasicategory 上で完了。単位・余単位・三角恒等式の明示構成は任意。
 - F1-2 は完了：前層 ∞ 圏・制限・評価・定値前層、right fibration 分類、Yoneda の構成・充満忠実性。
-- Cat∞ 値分類の第 I 段の区切りは、全有限単体底での同じ分類主写像の同値。
+- Cat∞ 値分類の第 I 段の区切りは全有限単体底での同じ分類主写像の同値
   `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`（06:21）。一般底の分類は未完了。
-- 一般底に向けた検証済み作業は `dc768ab4b` まで保存。二次元標準境界の coherent 比較は同値で、
-  元の大域作用との指定同型まで構成した。集約ビルド 7277 jobs、公理監査 15838 宣言、標準三公理のみ。
-- **F1-4 進行中**：小さい前層図式の余極限の存在・元の評価による保存・検出を証明。
-  極限は各点の存在を明示した構成・保存・検出まで。形状ごとの F2 の空間値極限条件との接続も証明。
-- 表現可能前層は、像の極限の存在のもとで任意の形状の元の極限全錐を保存する。
-  有限性・離散性は使わない。一般の小さい空間値極限の存在は未解決。
-- 一般形状の全切断を小さい Kan 対象に束ね、元の底を保つ普遍的評価を構成した。
-  `coherentConstantSourceMap_isQCatEquivalence` は、定値図式からの元の全変換を
-  pointed fiber から全切断への内部 Hom と比較する同値。任意の底・全高次パラメータで成立。
-- `coherentSmallConstantSourceMap_isQCatEquivalence` は同じ比較を元の小さい空間の値へ正規化。
-  全切断の恒等射を表す変換と比較同型を選び、`coherentDiagramSectionsCone` へ実現した。
-  元の図式・全切断の頂点・全円柱の両端固定比較を保持。極限性の証明は残る。
-- `coneTransformationMap_isQCatEquivalence` は native な頂点固定の全錐から、
-  同じ定値始域の変換への実際の標準比較の同値性。全円柱の厳密な因子分解で証明。
-  fat 錐側は `fatConeTransformationIso` で厳密に同型。任意の形状・全パラメータを保持。
-- 元の錐の全 Hom 作用を同じ三角形で表し、三辺と両端固定の最小値変形を照合。
-  `conePointHomNativeCompositionIso` で、元の標準比較の像を同じ二変換の実際の相対合成へ戻した。
-- 実現した錐の標準変換を元の指定変換へ戻し、その全切断写像自体の同値性を証明。
-  `coherentSectionsConeMap_isQCatEquivalence` と全右 Hom の輸送から、
-  `coherentSectionsConeHomAction_isQCatEquivalence` が全試験空間で成立。元の比較との照合は残る。
+- 一般底の検証済み区切りは `dc768ab4b`。二次元標準境界の coherent 比較の同値と元の大域作用への指定同型まで保存。
+- **F1-4 完了**：前層の任意の小さい極限・余極限の存在を各点で構成し、元の全評価による保存・検出を証明。
+  `presheafInfinity_hasLimit`、`presheafInfinity_hasColimit`。底・形状の quasicategory 性や有限性は不要。
+- 任意の小さい空間値図式の native な極限錐を元の小さい全切断で構成。
+  `coherentDiagramSectionsCone_isLimit`、`hasLimit_coherentSpaceDiagram`。追加の存在条件は解消した。
+- 元の錐の全 Hom 比較を、同じ三角形の相対合成と全切断の同じ恒等射の指定比較へ移して証明。
+  `coneSectionsNativeComparisonIso` は全高次パラメータで元の比較射を保持する。
+- `representablePresheafInfinity_isLimit`：表現可能前層は任意の小さい形状の元の極限全錐を保存。
+  像の極限の存在の追加仮定も解消。HTT 5.1.3.2。
+- 次は F1-5。一般底の Cat∞ 分類には戻らない。
 
 ### 残り（依存順）
 
-1. **F1-4**：P(C) の小さい極限・余極限を各点から構成、評価による保存・検出。
-   HTT 5.1.2.2–5.1.2.4。F2・N の𝒮の界面を読み取り専用で使用。8〜24時間（暫定）。
-2. **F1-4**：表現可能前層と極限の交換。HTT 5.1.3.2。4〜12時間（暫定）。
-3. **F1-5**：表現可能関手による極限の特徴づけ。HTT 5.1.3.2。8〜24時間（暫定）。
-4. **F1-3b**：Hom : Cᵒᵖ × C → 𝒮 の二変数関手化。Kerodon 8、HTT 5.1.3。8〜24時間（暫定）。
-5. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
+1. **F1-5**：表現可能関手による極限の特徴づけ。HTT 5.1.3.2。8〜24時間（暫定）。
+2. **F1-3b**：Hom : Cᵒᵖ × C → 𝒮 の二変数関手化。Kerodon 8、HTT 5.1.3。8〜24時間（暫定）。
+3. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
 
 ### 主要宣言（名前のみ）
 
 - `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
-- `HasEssentiallySmallFibers`、`exists_essentiallySmall_leftTransportRepresentation_extension`
 - `RightFibrationInfinity`、`rightStraighteningInfinityEquivalence`、`rightUnstraighteningInfinityMap`
 - `PresheafInfinity`、`presheafInfinityEvaluation`、`presheafInfinityRestriction`
 - `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafValueEquivalence`
 - `yonedaInfinityMap_isFullyFaithful`、`yonedaPresheafEvaluation_isQCatEquivalence`
 - `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`
-- `cocartesianTwoBoundaryCoherentHomComparison_isQCatEquivalence`
 - `cocartesianTwoBoundaryCoherentHomComparison_originalIso`
 - `presheafInfinity_hasColimit`、`presheafInfinity_isColimit_iff_evaluation`
-- `presheafInfinity_hasLimit_of_evaluation`、`presheafInfinity_isLimit_iff_evaluation`
-- `presheafInfinity_hasLimit_of_spaceLimitsOfShape`
-- `representablePresheafInfinity_isLimit_of_hasLimit`
-- `coherentSpaceSectionsObject`、`coherentSpaceSectionsEvaluation`
-- `relativeFunctorExponentialIso`、`coherentConstantSourceMap_isQCatEquivalence`
-- `coherentSmallConstantSourceMap_isQCatEquivalence`、`coherentSectionsIdentityRepresentation`
-- `coherentDiagramSectionsCone`、`coherentDiagramSectionsCone_vertex`
-- `coneTransformationMap_isQCatEquivalence`、`fatConeTransformationIso`
-- `conePointHomNativeCompositionIso`
+- `presheafInfinity_exists_limitCone`、`presheafInfinity_hasLimit`
+- `presheafInfinity_evaluation_small_isLimit`、`presheafInfinity_small_isLimit_iff_evaluation`
+- `representablePresheafInfinity_isLimit`
+- `coherentSpaceSectionsObject`、`coherentDiagramSectionsCone`、`coherentDiagramSectionsCone_vertex`
+- `coherentDiagramSectionsCone_isLimit`、`hasLimit_coherentSpaceDiagram`
+- `coherentSectionsConeHomComparison_isQCatEquivalence`、`coneSectionsNativeComparisonIso`
 
 ### 依存と提供
+
 - F0・Coherent・Stable・F1B・F2・HomotopyLimits は読み取り専用。
 - F1-4・F1-5 は F1b の F2N-2（Ind）・F2N-3 へ提供。Cat∞ 値一般分類は第 I 段の利用者なし。
 - 所有は F1/、F1.lean、audit_infinity_f1.lean、本計画のみ。他レーン不変。
 - 新規 sorry・公理・未証明引用なし。主経路に同値性や ModelCategory の追加 instance 仮定なし。
 
 ### 未コミット
+
 - なし。通る所有ファイルを集約・監査とともに `git commit --only` で早めに保存する。
 
 ### 既知の問題
-- 有限単体の分類同値から、一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
+
+- 有限単体の分類同値から一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
 - 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
-- 全局所 Hom の比較と元の大域作用の比較を区別し、指定同型の共有境界像を保持する。
-- F1-4 の未解決点は `∀ {B : SSet.{u}} (F : ulift B ⟶ SpaceInfinity.{u}), HasLimit F`。
-  F2・N の検索では小余極限の一般存在、空・単体・積・引き戻し・塔の極限まで確認した。
-  `F2.HasSpaceLimitsOfShape B` は条件の定義であり、任意 B での証明ではない。
-  この条件を新しい公理や instance 仮定として主経路に置かず、native な極限錐への接続を残す。
+- F1-5 では全表現可能関手の作用を元の全錐に適用した判定を証明する。極限保存だけでは検出を主張しない。
 
 ### 再開点（第 II 段、3行）
+
 1. `dc768ab4b`：有限二単体の coherent 境界比較の同値と、元の大域作用への `cocartesianTwoBoundaryCoherentHomComparison_originalIso` まで保存済み。
 2. 次は同じ比較を任意の底の二次元セルへ移し、局所比較の自然性と指定境界値の fiber 比較を揃える。
 3. その後は高次境界・有限セル・骨格降下で一般充満忠実性を閉じ、本質的全射性・一般底・宇宙へ進む。
 
 ### 次の一手
 
-`coherentDiagramSectionsCone F` の全試験空間での Hom 比較に
-`coneTransformationMap F z` と `coherentSmallConstantSourceMap F z` を合成する。
-同じ錐の標準変換と定値図式の全 Hom 作用との相対合成への比較は構成済み。
-実現した錐の標準変換と指定恒等射の比較は `coherentSectionsConeIdentityIso` で構成済み。
-全切断写像自体と、全右 Hom の輸送後の同じ写像への後合成は同値と証明済み。
-次は `constantUnstraighteningSourceRelativeIso_evaluation` と定値図式の輸送比較を使い、
-同じ相対合成の像を `coneSectionsHomAction` へ比較して元の Hom 比較の同値性を結論する。
-錐の実現が保持する全円柱・両端固定比較を使い、元の比較射の同値性から native な極限性を結論する。
-F2 の `CoconeFiberColimitCriterion`・全空間の指定単位の追跡は読み取り専用の双対設計の参考。
-その後、各点存在を解消して F1-4 を閉じ、F1-5・F1-3b へ進む。
+F1-5：元の全錐が極限であることと、全表現可能関手での同じ像の極限性を比較する。
+既存の表現可能前層の極限保存、Yoneda の充満忠実性、各点極限の検出を接続する。
+`representablePresheafInfinity y` の始域は Cᵒᵖ なので、共変 Hom の判定とは反転を明示して区別する。
+必要なら native な右写像空間の錐比較に直接戻し、保存のみで検出を推論しない。
+F1-5 の後は既存の `twistedArrowHomInfinity`・`homInfinityJointEvaluation` の二変数性と値の比較を監査する。
 
 ## 0. 目標と範囲
 
