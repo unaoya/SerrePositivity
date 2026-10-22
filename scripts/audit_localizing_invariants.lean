@@ -820,7 +820,24 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageTargetLayer,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerInclusion,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionLayerNaturality,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionMap]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroExtensionMap,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionSquareMap,
+    `SerrePositivity.KST.LocalizingInvariants.CochainBiprodMapComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageHomologySquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerImageSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerImageSquareLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayerSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageArrowConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageArrowFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageClassSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageExtensionSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageExtensionSquareLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageFactorSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageHomologySquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageLayerFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSourceImageSquareZeroLaws,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageMapLaws]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
