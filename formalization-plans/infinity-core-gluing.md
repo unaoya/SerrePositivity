@@ -26,8 +26,9 @@
   第一射は同じ D 随伴余単位の Yoneda 像。元の H⁰ に未導入の三角構造や ∞ 随伴を結論していない。
 - C 因子上の制限 Hom 加群値 dg 関手と、両射影で制限した係数 M[-1] の dg 関手を構成。
   標準 bottom 包含は全因子対で擬同型。両 Hom 射影は零、第三成分は恒等。比較元零の仮定なし。
-- comma 合成の第三成分を左右の全次数作用と Koszul 符号で記述し、bottom の左右作用の場合も供給。
-  係数比較を全 dg 自然な加群射・関手間比較へ束ねる段階が未完。(b) 継続中、(c)〜(f) は未着手。
+- comma の標準 bottom 包含は全次数の前後合成を保存し、native 係数包含と全 Yoneda 同型を通して一致。
+  native 前合成を元の反変 M 作用と同定し、各 D 因子対象について C 因子上の全 dg 自然な係数加群射を構成。
+  評価は同じ包含、その加群射は擬同型。D 変数の全次数自然性・関手間比較は未完。(b) 継続中、(c)〜(f) 未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -70,10 +71,11 @@
 - `dgGluingDecompositionArrow`・`dgGluingDecompositionCFactor`・`dgGluingDecompositionCSectionIso`
 - `dgGluingDecompositionTriangle`・`dgGluingDecompositionTriangle_distinguished`・`dgGluingDecompositionTriangle_mor₁`
 - `dgGluingCrossHomFunctor`・`dgGluingCrossCoefficientFunctor`・`dgGluingCrossHomCoefficientMap_quasiIso`
-- `dgGluingCrossHomCoefficientMap_primitive`・`dgGluingCommaForward_primitive`
+- `dgGluingCrossHomCoefficientMap_primitive`・`dgGluingCommaForward_primitive`・`dgGluingComma_forward_bottom`
+- `dgGluingCrossHomCoefficientMap_pre`・`dgGluingCrossHomCoefficientModuleMap`・`dgGluingCrossHomCoefficientModuleMap_quasiIso`
 
 ### 残り（依存順）
-1. (b) 残り：gluing 関手の全次数係数 M[-1] と自然性の同定。充満因子・半直交性・両 H⁰ 随伴・K の分解三角形は構成済み。KL §4.2。見積り 1 日。
+1. (b) 残り：係数 M[-1] の D 変数の全次数自然性、同じ dg 関手間比較。C 変数の dg 加群射・擬同型、充満因子・半直交性・両 H⁰ 随伴・K 分解三角形は構成済み。KL §4.2。見積り 1 日。
 2. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
 3. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
 4. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
@@ -88,13 +90,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- `dgGluingCommaForward_primitive` と bottom の二射影零・第三成分恒等を使い、係数包含の左右の全次数自然性を証明する。
-  native/comma Hom 同型と全 Yoneda Hom を通して元の M の作用へ戻し、−1 シフトの Koszul 符号を照合する。
-  同じ比較を全 dg 自然な加群射・dg 関手間比較へ束ね、構成済みの各評価の擬同型性を供給する。
+- `dgGluingCommaBottom_forward`・`dgGluingCrossHomCoefficientMap_comma_apply`・`dgGluingYonedaCoefficient_post` で、
+  native 後合成と元の共変 M 作用を同定。`moduleShiftHom_π_v (-1)` の符号と照合し、構成済みの係数加群射の
+  D 変数の全次数自然性を示す。同じ射を dg 関手間比較へ束ねる。C 変数の全 dg 自然性・加群擬同型は構成済み。
 
 ### 未コミット・既知の問題
-- 217モジュール・集約ビルド成功（5138 jobs）、公理監査3662宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開22署名を検査済み。新規7モジュール、集約・監査・本計画の専有10パスだけを保存。他レーンの差分は含めない。
+- 224モジュール・集約ビルド成功（5145 jobs）、公理監査3710宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開21署名を検査済み。新規7モジュール、集約・監査・本計画の専有10パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

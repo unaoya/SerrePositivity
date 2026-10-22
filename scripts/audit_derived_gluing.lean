@@ -221,7 +221,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeBottomComponents,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomFunctors,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientComponents,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrimitiveActions]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrimitiveActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaBottomInclusion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaBottomActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconeBottomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.YonedaCoefficientActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientPreAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientModuleMap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
