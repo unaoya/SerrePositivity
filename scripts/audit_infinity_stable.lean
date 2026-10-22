@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionCornerSpan
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanRetraction
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanShape
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSquare
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanProjection
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightCocone
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridRightPushout
 import SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone
 import SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction
 import SerrePositivity.InfinityCategories.Stable.PosetNestedBoundCocone
@@ -7541,6 +7548,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCornerSpan,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanRetraction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanShape,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSquare,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightSpanProjection,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightCocone,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridRightPushout,
+
     `SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone,
     `SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction,
     `SerrePositivity.InfinityCategories.Stable.PosetNestedBoundCocone,
