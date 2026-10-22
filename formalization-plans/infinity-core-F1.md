@@ -25,13 +25,12 @@
   全部分関手圏の quasicategory 性、同じ小さい κ-filtered 余極限と包含の保存性を証明。
   `indVertexDensityCocone` は元の指定 Indκ 頂点を厳密に持つ同じ小さい κ-filtered 密度余錐。保存関手の像も余極限。
   `indKappaContinuousRestriction_reflects_isInvertibleEdge` は実際の制限射による指定辺の可逆性の反映。
-  Yoneda comma への元の比較の fiber 作用を、同じ密度 slice 射として固定。uncurry 後は元の密度余錐の同じ制限に厳密に一致。
-  `presheafElementsYonedaSliceValue` はその同じ fiber 作用の Yoneda 評価。全値写像が同値なら元の比較も同値と証明。
-  `presheafDensityIdentityValue_isQCatEquivalence` は元の大域評価を恒等点上の同じ fiber に制限した指定値写像の同値性。
-  `presheafDensityNativeIdentityValueIso` は元の評価余錐の値写像を恒等点評価へ結び、その同値性も証明。
-  `presheafDensityFiberIntervalIso` は同じ comma の区間作用と元の大域変換の作用を全 fiber 上で比較。
-  大域変換の区間作用の Yoneda 評価と恒等点値写像の比較、comma 比較の同値性、制限関手の同値は未証明。
-- 独立集約 6782 jobs、公理監査 1596 宣言、標準三公理のみ。
+  `presheafElementsYonedaSliceComparison_isQCatEquivalence` は元の小さい元の圏の持ち上げから Yoneda comma への元の比較自体の同値性。
+  元の密度余錐の区間作用を同じ大域密度変換へ全 fiber 上で比較し、同じ Tw 全体からの恒等点で評価した。
+  `presheafDensityIdentityReconstruction_pointed` は元の恒等点復元射の始値が canonical な恒等点に厳密に定値と証明。
+  元の c1 の持ち上げの始値・底・終値を全 fiber 上で揃え、同じ普遍輸送の終値と比較して値写像の同値性を結論。
+  制限関手の全写像空間の同値、κ-filtered 余極限を保つ延長の構成と本質的全射性は未証明。
+- 独立集約 6798 jobs、公理監査 1740 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -55,6 +54,8 @@
 - `presheafElementsYonedaSliceMapping_uncurry`、`presheafElementsYonedaSliceValue`
 - `presheafDensityIdentityValue_isQCatEquivalence`
 - `presheafDensityNativeIdentityValueIso`、`presheafDensityFiberIntervalIso`
+- `presheafDensityIdentityReconstruction_pointed`、`presheafDensityIdentityLiftPrism_projection`
+- `presheafElementsYonedaSliceValue_isQCatEquivalence`、`presheafElementsYonedaSliceComparison_isQCatEquivalence`
 
 ### 依存と提供
 
@@ -81,15 +82,11 @@
 Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保存性は元の native 余錐への作用で定義する。
 `PreservesSmallKappaFilteredColimits` は同じ宇宙の元の余錐の像で保存性を定義。F2 の filtered 定義を再利用。
 元の Indκ 頂点を持つ `indVertexDensityCocone` と保存関手による同じ余極限の像まで証明済み。
-次は `presheafElementsYonedaSliceValue F x` 自体の同値性を証明する。元の比較の fiber 作用を元の Yoneda 評価へ合成した指定射。
-`presheafElementsYonedaSliceMapping_uncurry` により、元の密度余錐を元の fiber に制限した全余錐との厳密な一致まで証明済み。
-元の大域評価を同じ恒等点上へ制限した `presheafDensityIdentityValue F x` は同値まで証明済み。
-`presheafDensityNativeIdentityValueIso` で同じ恒等点復元射上の native 値写像と恒等点評価を比較済み。
-`presheafDensityFiberIntervalIso` で comma の区間作用と大域変換の区間作用を全 fiber 上で比較済み。
-次は後者を interval Yoneda 評価へ合成し、大域変換の作用を同じ恒等点復元射上の native 値写像へ結ぶ。
-これにより `presheafElementsYonedaSliceValue F x` と `presheafDensityIdentityValue F x` の関手同型を得る。
-`presheafElementsYonedaSliceComparison_isQCatEquivalence_of_values` は全値写像の同値性を入力する条件付き定理のみ。
-元の全比較の同値を結論してから、小さい comma 模型による局所 Kan 延長へ接続する。
+`presheafElementsYonedaSliceValue_isQCatEquivalence` と元の全比較の同値性を追加の同値性仮定なしに証明済み。
+次はこの同じ比較を `indYoneda` の左 Kan 局所添字へ移し、Indκ 頂点の小さい κ-filtered comma 模型を作る。
+元の小さい元の圏の κ-filtered 性は (c)、元の比較の射影の可換性は `presheafElementsYonedaSliceComparison_projection` を使う。
+任意の C → D の同じ局所図式の余極限の存在を、小さい模型に制限して証明する。
+F1b の `exists_kanLeftExtension_of_local_colimits` で coherent な延長へ組み立てる。
 (c) の単一表示を使い、任意の C → D を元の元の圏上の κ-filtered 余極限で延長する。
 元の Yoneda 上の回収と、全対象・全写像空間の自然な比較を作り、同じ制限射の同値を証明する。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。

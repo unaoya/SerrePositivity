@@ -340,3 +340,23 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.densityFiberTransformationRestriction_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.densityFiberTransformationFamily_native
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityFiberIntervalIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.intervalYonedaEvaluation_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityFiberYonedaValueIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.constantIntervalTranspose_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityOriginalFiberInterval_prism
+#check @SerrePositivity.InfinityCategories.F2.Ind.canonicalIntervalYonedaEvaluation_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCanonicalFiberTransportIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceValue_iff_canonicalTransport
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedElementsReconstruction_pointed
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityReconstruction_pointed
+#check @SerrePositivity.InfinityCategories.F2.Ind.mappingVertexLiftPrism_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityLiftPrism_start
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityLiftEndpoint_value_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityLiftPrism_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.pointPrismTransportIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityLiftEndpointAtValue_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityIdentityLiftEndpointTransportIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCanonicalTransportValue_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceValue_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_isQCatEquivalence
