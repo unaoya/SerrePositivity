@@ -50,7 +50,7 @@
   元の νf・gμ を実加群 Hom の前後合成・AW 合成族へ厳密に照合。対象圏の小ささなしの閉前合成成分式を供給し、元の augmentation の全合成 prism・両端・射影を回収。β5 の実導来 Hom 作用で移した合成方程式と、同じ実三辺を持つ導来合成三角形も供給。
   同じ二三角形を実二単体族へ評価し、全三辺を保持して共通宇宙へ移送。canonical 係数比較への対角の一致を証明し、元の gluing Hom で制限した両対角を実係数 path の両端へ厳密に照合。同じ全区間族から対角間の実ホモトピーを構成。
   対角ホモトピーは主比較の両端を全時刻で固定。二三角形の固定辺は元の導来 augmentation と一致し、可変辺を同じ端点表示へ正規化。始辺固定・終辺固定の合成対応へ持ち上げ、同じ入力・二三角形・対角を回収。対角間 path の引き戻しへの実比較を構成し、元の全区間ホモトピーを評価で回収。
-  左右の元 Hom 複体を入力とする導来二作用と、全 Hom 上の元の左右射影による因子分解を証明。合成対応の入力 fiber の射影は trivial Kan fibration、元の二三角形からの具体的切断は同値。入力付き path 比較は元の両鎖射影と以前の全 path 比較を回収。厳密な入力付き対角引き戻しからの定値 path 比較も構成。
+  左右の元 Hom 複体を入力とする導来二作用と、全 Hom 上の元の左右射影による因子分解を証明。合成対応の入力 fiber の射影は trivial Kan fibration、元の二三角形からの具体的切断は同値。入力付き path 比較は元の両鎖射影と以前の全 path 比較を回収。厳密な入力付き対角引き戻しからの定値 path 比較も構成。全境界制限の厳密 pullback 表示から、第一辺・対角辺の同時評価と元の左 Hom 入力付き対角の Kan fibration を証明。同じ定値全 path 比較のホモトピー同値性を F2 の実区間置換比較で証明。
   全写像空間の比較同値性・全試験関手の普遍性は未完。(e)・(f) 未着手。
 
 ### 主要宣言
@@ -77,7 +77,7 @@
 - `dgGluingUniverseFunctorHomAction`・`dgGluingUniverseFunctorHomModelComparison_eq`・`dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq`
 - `dgGluingArrowHomTriangleEquiv`・`dgGluingArrowCompositionIso`・`dgGluingArrowHomCompositionCone_isLimit`・`dgGluingLaxHomArrowCompositionComparison`
 - `dgGluingHomDerivedCoefficientDiagonalHomotopy_source`・`dgGluingHomDerivedCoefficientDiagonalHomotopy_target`・`dgGluingHomDerivedFirstComposition_triangle`・`dgGluingHomDerivedCompositionDiagonalHomotopy_evaluate`・`dgGluingHomDerivedCompositionPathComparison`
-- `dgGluingDerivedFirstCompositionInputSection_equivalence`・`dgGluingDerivedLastCompositionInputSection_equivalence`・`dgGluingHomDerivedCompositionInputPathComparison_raw`・`dgGluingHomDerivedCompositionInputPathComparison_forget`・`dgGluingDerivedCompositionInputStrictPathComparison`
+- `dgGluingDerivedFirstCompositionInputSection_equivalence`・`dgGluingDerivedLastCompositionInputSection_equivalence`・`dgGluingHomDerivedCompositionInputPathComparison_raw`・`dgGluingHomDerivedCompositionInputPathComparison_forget`・`dgGluingDerivedCompositionInputStrictPathComparison_equivalence`・`dgGluingDerivedLastCompositionInputDiagonal_fibration`
 
 ### 残り（依存順）
 1. (d) 実 Hom 複体模型からの写像空間比較を同値と証明し、比較の充満忠実性と全試験関手の ∞ 普遍性を供給。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -95,13 +95,12 @@
 ### 次の一手
 - `dgGluingLaxHomPullbackComparison` を正本とし、両輸送済み射影を保って同じ実ホモトピー逆を構成する。
   入力側の二脚は `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq` で元の左右鎖射影へ照合済み。
-  次は合成三角形の全境界制限の pullback 表示から入力付き対角の fibration を得て、`dgGluingDerivedCompositionInputStrictPathComparison` の同値性を F2 の Kan path／end 比較から証明する。
+  入力付き対角の fibration と厳密→path 比較の同値性を供給済み。次は入力切断の同値と canonical 係数 Hom の同値から入力付き path 比較全体の同値性を移す。
   元の両 Hom 入力・augmentation prism・二三角形を保持して正本の実 lax Hom 比較と `dgGluingHomDerivedCompositionInputPathComparison` を照合する。係数 path 比較の同値性を全引き戻し比較へ移し、充満忠実性の判定へ適用する。
 
 ### 未コミット・既知の問題
-- 436モジュール・集約ビルド成功（8386 jobs）、公理監査4935宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開66署名を検査済み。新規11モジュール、集約・監査・本計画の専有14パスだけを保存。他レーンの差分は含めない。
-  前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
+- 450モジュール・集約ビルド成功（8444 jobs）、公理監査5018宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開49署名を検査済み。新規14モジュール、集約・監査・本計画の専有17パスだけを保存。他レーンの差分は含めない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
 

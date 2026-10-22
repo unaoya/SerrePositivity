@@ -440,7 +440,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionInputPathPullback,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputPathForget,
     `SerrePositivity.InfinityCategories.Derived.Gluing.StrictPathPullbackMap,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictComparison]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleBoundaryFamilyCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleBoundaryFamily,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleBoundaryFamilyExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputBoundaryNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputBoundarySquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputBoundaryLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputDiagonalFibration,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedInputDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedLastInputDiagonalFibration,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StrictIntervalPullbackComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StrictPathPullbackEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCompositionInputStrictEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
