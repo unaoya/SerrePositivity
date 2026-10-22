@@ -53,3 +53,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallSubcomplexUnio
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexCofinalFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallVerticesFreshLabel
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeLabels
+public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteProductCofinal
+public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteFreshCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeCut
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeSimplexPrefix
+public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteFreshCoconeMono

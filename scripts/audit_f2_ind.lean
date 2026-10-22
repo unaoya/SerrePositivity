@@ -89,6 +89,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.iSup_smallSubcomplexFamily
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_fresh_vertex_label
 #check @SerrePositivity.InfinityCategories.F2.Ind.smallSubcomplexFamilyCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.codiscreteProductProjection_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_codiscreteProduct_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.codiscreteConeLabelMap_inl
+#check @SerrePositivity.InfinityCategories.F2.Ind.codiscreteConeLabelMap_inr
+#check @SerrePositivity.InfinityCategories.F2.Ind.codiscreteProductCocone_mono
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_mono_fresh_codiscreteProductCocone
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
