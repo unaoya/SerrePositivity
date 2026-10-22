@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Stable.LoopConeChoiceModel
+import SerrePositivity.InfinityCategories.Stable.ConeInputSourceFiber
+import SerrePositivity.InfinityCategories.Stable.ZeroOuterConeSourceInitial
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourceInitial
+import SerrePositivity.InfinityCategories.Stable.ConeInputFullSubcomplex
+import SerrePositivity.InfinityCategories.Stable.ZeroOuterCospans
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareConeModel
+import SerrePositivity.InfinityCategories.Stable.LoopDiagramUniversalConeModel
 import SerrePositivity.InfinityCategories.Stable.UniversalConeChoiceProjection
 import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber
 import SerrePositivity.InfinityCategories.Stable.LoopConeClassifierInterval
@@ -7440,6 +7448,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.LoopConeChoiceModel,
+    `SerrePositivity.InfinityCategories.Stable.ConeInputSourceFiber,
+    `SerrePositivity.InfinityCategories.Stable.ZeroOuterConeSourceInitial,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourceInitial,
+
+    `SerrePositivity.InfinityCategories.Stable.ConeInputFullSubcomplex,
+    `SerrePositivity.InfinityCategories.Stable.ZeroOuterCospans,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareConeModel,
+    `SerrePositivity.InfinityCategories.Stable.LoopDiagramUniversalConeModel,
+
     `SerrePositivity.InfinityCategories.Stable.UniversalConeChoiceProjection,
 
     `SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexDiagramFiber,
