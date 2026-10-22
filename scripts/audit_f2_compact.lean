@@ -400,3 +400,21 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @yonedaInfinityMap_isKappaCompact
 #print axioms yonedaInfinityMap_isKappaCompact
+
+#check @fullSliceUnder_lift
+#print axioms fullSliceUnder_lift
+
+#check @fullSliceUnder_isPullback
+#print axioms fullSliceUnder_isPullback
+
+#check @fullSubcomplexCovariantIso
+#print axioms fullSubcomplexCovariantIso
+
+#check @isKappaCompact_fullSubcomplex_of_image
+#print axioms isKappaCompact_fullSubcomplex_of_image
+
+#check @ind_isKappaCompact_of_presheaf
+#print axioms ind_isKappaCompact_of_presheaf
+
+#check @indYoneda_isKappaCompact
+#print axioms indYoneda_isKappaCompact

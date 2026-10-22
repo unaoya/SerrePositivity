@@ -32,3 +32,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseFiberC
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact
+public import SerrePositivity.InfinityCategories.F2.Compact.FullCoslicePullback
+public import SerrePositivity.InfinityCategories.F2.Compact.FullCovariantRepresentable
+public import SerrePositivity.InfinityCategories.F2.Compact.FullCompactReflection
+public import SerrePositivity.InfinityCategories.F2.Compact.IndCompact

@@ -6,7 +6,7 @@
 
 ### N（γ1.5・γ3）
 
-- **現在地**：**F2N-3（κ-compact）を F1b から移管。(a) と (c) の retract 閉性を完了。(b) の前層 Yoneda 像の compact 性を完了。Ind 内への移送・有限余極限閉性・(d) は未完。**
+- **現在地**：**F2N-3（κ-compact）を F1b から移管。(a)・(b) と (c) の retract 閉性を完了。有限余極限閉性・(d) は未完。**
   **F2N-4(a)・(b)・(c)・(d) 完了、(e) は Ind と compact 界面待ちで保留。** 冪等完備化は 10-22 10:10 ユーザー承認で F1b から移管。
   **N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
   任意 coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram`・`F2.coherentDiagramTotalCocone_isColimit` を読み取り専用で使用。N の部分余極限経路は打ち切り。
@@ -51,11 +51,12 @@
   **同じ fiber 写像の全 prism を構成。** 元の全余錐の全空間内で、始点は図式部分の包含、終点は元の `coconeFiberMap` と指定頂点の包含の合成。
   同じ一つの宇宙変更表現で prism 全体を送り、両端と元の join 円柱の底を厳密に回収。同じ終点を指定頂点の fiber へ分解する実比較 `coconeUniverseVertexMap` と、その包含式・同値性を完了。同じ始点・同じ join 円柱の二つの実 prism の終点一意性で、`coconeUniverseFiberIso` に全自然比較を構成。
   **F2N-3(b) の前層内を完了。** `spaceUniverseDiagram_map_isColimit` は元の任意の小さい coherent 図式の指定余極限余錐の保存。標準全空間余錐の元の弱同値を同じ余錐像へ移し、任意の余錐へ普遍性で移送。
-  `yonedaInfinityMap_isKappaCompact`・`representablePresheafInfinity_isKappaCompact` は元の全共変 Hom による κ-compact 性。評価の全自然比較と指定余錐像の厳密な後合成式を使用。Ind 内への移送は未完。
+  `yonedaInfinityMap_isKappaCompact`・`representablePresheafInfinity_isKappaCompact` は元の全共変 Hom による κ-compact 性。評価の全自然比較と指定余錐像の厳密な後合成式を使用。Ind 内の元の Yoneda 像の κ-compact 性も下記で完了。
+  **F2N-3(b) 完了。** 全部分包含の元の coslice 正方形を厳密な引き戻しとし、`fullSubcomplexCovariantIso` は包含後の元の全 Hom と元の部分圏の全 Hom の全自然比較。
+  `indYoneda_isKappaCompact` は元の Ind-Yoneda 像の κ-compact 性。元の包含による指定 κ-filtered 余極限保存と前層の compact 性を合成。F1 の単一 filtered 表示・compact 生成は仮定しない。
 - **残り**（依存順、粗い見積もり）：
-  1. F2N-3(b)：Ind 内の compact 性。空間の宇宙変更の小余極限保存・前層の元の Yoneda 像の κ-compact 性は完成。HTT 5.3.5.5・11、4〜12時間。
-  2. F2N-3(c) の有限余極限閉性：元の全 Hom の極限表示と filtered 余極限・有限極限の交換を照合。HTT 5.3.4、12〜30時間。F1b の交換定理を読み取り専用で使用。
-  3. F2N-3(d)・F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1 の F2N-2 と N の F2N-3(b)・(c) の後。HTT 5.3.4.17・5.3.5、15〜40時間。
+  1. F2N-3(c) の有限余極限閉性：元の全 Hom の極限表示と filtered 余極限・有限極限の交換を照合。HTT 5.3.4、12〜30時間。F1b の交換定理を読み取り専用で使用。
+  2. F2N-3(d)・F2N-4(e)：`Ind(C)^ω ≃ Idem(C)`。F1 の F2N-2 と N の F2N-3(c) の後。HTT 5.3.4.17・5.3.5、15〜40時間。
   N-4 の局所化・P_Σ の残り e・f・g、E2b の DK/∞ 局所化の普遍性への γ4 の接続、Sp の残る安定性との整合は第 II 段。
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`、型は Lean が正本）：
   `IdemShape`、`SplitShape`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、`IsIdempotentCompletion`、
@@ -77,17 +78,18 @@
   `covariantRepresentableInfinity_cosliceIso`、`yonedaEvaluationCosliceMap`、`yonedaEvaluationCosliceMap_isPrecompositionEquivalence`、
   `yonedaEvaluation_classificationIso`、`spaceUniverseDiagram`、`yonedaInfinityMap_evaluationIso`、
   `weakHomotopyEquivalence_ulift`、`coherentTotalCoconeFiber_isWeakHomotopyEquivalence`、`spaceUniverseTransportRepresentation`、
-  `spaceUniverseCoconeSourceRepresentation`、`spaceUniverseCoconeVertexRepresentation`。
+  `spaceUniverseCoconeSourceRepresentation`、`spaceUniverseCoconeVertexRepresentation`、`spaceUniverseDiagram_map_isColimit`、
+  `yonedaInfinityMap_isKappaCompact`、`fullSubcomplexCovariantIso`、`ind_isKappaCompact_of_presheaf`、`indYoneda_isKappaCompact`。
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。所有は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
   F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind（F2N-2）、F1b が filtered の交換・Ind 安定性（F2N-1・5）、N が compact・冪等完備化（F2N-3・4）。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の compact 11モジュール37宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：compact 独立集約6646 jobs・全133宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
+- **未コミット**：なし（今回の compact Ind 移送4モジュール6宣言・独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：compact 独立集約6677 jobs・全139宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
   N-1〜4 の既存保存は今回も7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
   固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-3(b) の Ind 内への移送。元の全部分包含の coslice 正方形を厳密な引き戻しと示し、元の全共変 Hom と包含後の全 Hom の全自然比較を構成。
-  `indInclusionPresheaf_preservesSmallKappaFilteredColimits` と元の前層 Yoneda 像の κ-compact 性を合成し、Ind の元の指定余錐・全 Hom の定義へ接続。F1・Ind のコードは読み取り専用。
+- **次の一手**：F2N-3(c) の有限余極限閉性。元の余極限余錐から全共変 Hom の有限極限表示を構成し、元の κ-filtered 図式へ適用。F1b の一般 coherent filtered 余極限・有限極限交換との全錐比較を照合する。
+  F1b の F2N-1 a7 の交換本体は未完。既存の通常 filtered 図式の交換だけで一般 coherent 図式の閉性を完了扱いしない。定義・retract 閉性と (b) は独立集約・全監査の元の宣言を再利用。F1・F1B・Ind は読み取り専用。
   F2N-4(e) は保留。F1 の Ind(c) の単一 filtered 表示は未完。提供後、compact な Ind 対象の恒等射を一つの表現可能な項へ因子化して retract を回収し、元の Yoneda retract 閉包との全 ∞ 圏同値を構成する。未提供の compact 性や単一 filtered 表示を入力に置いて完成とは扱わない。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（いずれも本文照合済み）。
