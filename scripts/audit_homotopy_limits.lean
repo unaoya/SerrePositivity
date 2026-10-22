@@ -14051,3 +14051,49 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms yonedaRepresentableNativeEdge_evaluated
 #check @yonedaRepresentableNativeEdge_evaluationIso
 #print axioms yonedaRepresentableNativeEdge_evaluationIso
+#check @pointEvaluationFunctor
+#print axioms pointEvaluationFunctor
+#check @pointEvaluationFunctor_vertex
+#print axioms pointEvaluationFunctor_vertex
+#check @evaluateFunctorAt_vertexIso
+#print axioms evaluateFunctorAt_vertexIso
+#check @functorComposition_evaluate_const
+#print axioms functorComposition_evaluate_const
+#check @yonedaRepresentableNativeEdge_evaluationActionIso
+#print axioms yonedaRepresentableNativeEdge_evaluationActionIso
+#check @fiberTransportFamilyTriangleComposite
+#print axioms fiberTransportFamilyTriangleComposite
+#check @fiberTransportFamilyTriangleComposite_map
+#print axioms fiberTransportFamilyTriangleComposite_map
+#check @fiberTransportFamilyTriangle_mapIso
+#print axioms fiberTransportFamilyTriangle_mapIso
+#check @coherentTransformationFamilyDiagram_evaluate
+#print axioms coherentTransformationFamilyDiagram_evaluate
+#check @coherentTriangleEvaluate
+#print axioms coherentTriangleEvaluate
+#check @coherentTriangleEvaluate_edge
+#print axioms coherentTriangleEvaluate_edge
+#check @coherentTriangleFiberTransportFamily
+#print axioms coherentTriangleFiberTransportFamily
+#check @coherentTriangleFiberTransportFamily_map
+#print axioms coherentTriangleFiberTransportFamily_map
+#check @unstraighteningFiberHom_triangleIso
+#print axioms unstraighteningFiberHom_triangleIso
+#check @unstraighteningFiberHom_compositionFamily_exists
+#print axioms unstraighteningFiberHom_compositionFamily_exists
+#check @intervalFamilyHomotopy_prism
+#print axioms intervalFamilyHomotopy_prism
+#check @intervalFamilyHom_triangle_exists
+#print axioms intervalFamilyHom_triangle_exists
+#check @intervalPrecompose_triangleFamily_exists
+#print axioms intervalPrecompose_triangleFamily_exists
+#check @coherentFunctorTriangleDiagram
+#print axioms coherentFunctorTriangleDiagram
+#check @coherentFunctorTriangleDiagram_edge
+#print axioms coherentFunctorTriangleDiagram_edge
+#check @unstraighteningFiberHom_precomposeIso
+#print axioms unstraighteningFiberHom_precomposeIso
+#check @unstraighteningFiberHom_precompose_evaluateIso
+#print axioms unstraighteningFiberHom_precompose_evaluateIso
+#check @canonicalYonedaFiberEvaluation_precomposeIso
+#print axioms canonicalYonedaFiberEvaluation_precomposeIso
