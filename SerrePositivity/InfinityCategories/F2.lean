@@ -507,6 +507,18 @@ public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleLarg
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitFiberTransportRecovery
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitFiberTransportConjugacy
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTargetFactorValue
+public import SerrePositivity.InfinityCategories.F2.FunctorSquareConstantTargetTransport
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueAction
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionCoherence
+public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F2.FunctorHomotopyPostOverPreSquare
+public import SerrePositivity.InfinityCategories.F2.FunctorSquarePostOverPreEvaluation
+public import SerrePositivity.InfinityCategories.F2.VertexIsoTriangleRelationMap
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionOverPre
+public import SerrePositivity.InfinityCategories.F2.FunctorSquareTotalComponentMap
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionTotal
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitValueActionFirstEdge
+public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningValuePost
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -681,3 +693,33 @@ public import SerrePositivity.InfinityCategories.F2.FunctorIsoTargetFactorValue
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperCompositeAction
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_eq_conjugate
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_value_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_coherence
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_overPre
+
+#check @SerrePositivity.InfinityCategories.F2.functorHomotopyRelativePost_overPre_square
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_five_factor_relation_map
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_triangle_relation_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_overPre_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_total_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_precomp_firstEdge
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_post

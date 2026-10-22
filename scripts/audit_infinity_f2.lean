@@ -3441,3 +3441,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperCompositeAction
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_eq_conjugate
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_value_heq_target
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_coherence
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_overPre
+
+#check @SerrePositivity.InfinityCategories.F2.functorHomotopyRelativePost_overPre_square
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_five_factor_relation_map
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_triangle_relation_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_overPre_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_map_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_total_heq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_precomp_firstEdge
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_post
