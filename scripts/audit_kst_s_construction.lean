@@ -28527,3 +28527,105 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal_isZero
 #print axioms SerrePositivity.KST.SConstruction.DGLaxQuotientEndInput.diagonal_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoLiftTarget
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoLiftTarget
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_obj
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_obj
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_map
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_map
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_factor
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_factor
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_map_unique
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLift_map_unique
+
+#check @SerrePositivity.KST.SConstruction.dgClosedIsoConjugation_eqToHom
+#print axioms SerrePositivity.KST.SConstruction.dgClosedIsoConjugation_eqToHom
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedConjugate_eq_of_obj_eq
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedConjugate_eq_of_obj_eq
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLiftOfEq
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLiftOfEq
+
+#check @SerrePositivity.KST.SConstruction.dgHomIsoFunctorLiftOfEq_factor
+#print axioms SerrePositivity.KST.SConstruction.dgHomIsoFunctorLiftOfEq_factor
+
+#check @SerrePositivity.KST.SConstruction.dgGluingLiftCommaTarget
+#print axioms SerrePositivity.KST.SConstruction.dgGluingLiftCommaTarget
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_obj
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_obj
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_map
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_map
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_toComma
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_toComma
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_right_obj
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_right_obj
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_leftModule_obj
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_leftModule_obj
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLift_map_unique
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLift_map_unique
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLiftOfEq
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLiftOfEq
+
+#check @SerrePositivity.KST.SConstruction.dgGluingFunctorLiftOfEq_toComma
+#print axioms SerrePositivity.KST.SConstruction.dgGluingFunctorLiftOfEq_toComma
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.source
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.source
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.replacement
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.replacement
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.augmentation
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.augmentation
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.naturality
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.naturality
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.obj
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.obj
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.difference_zero
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.difference_zero
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.boundary
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.boundary
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_source
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_source
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_replacement
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_replacement
+
+#check @SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_comparison
+#print axioms SerrePositivity.KST.SConstruction.DGStrictCommaFamily.homMap_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgStrictCommaTensorRight_zero
+#print axioms SerrePositivity.KST.SConstruction.dgStrictCommaTensorRight_zero
+
+#check @SerrePositivity.KST.SConstruction.dgStrictCommaTensorLeft_zero
+#print axioms SerrePositivity.KST.SConstruction.dgStrictCommaTensorLeft_zero

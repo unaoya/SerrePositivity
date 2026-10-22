@@ -2310,4 +2310,10 @@ public import SerrePositivity.KST.SConstruction.DGPointedQuotientEndExtension
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEndZero
 public import SerrePositivity.KST.SConstruction.DGLaxQuotientEnd
 
+public import SerrePositivity.KST.SConstruction.DGHomIsoFunctorLift
+public import SerrePositivity.KST.SConstruction.DGHomIsoFunctorLiftOfEq
+public import SerrePositivity.KST.SConstruction.DGGluingFunctorLift
+public import SerrePositivity.KST.SConstruction.DGStrictCommaFamily
+public import SerrePositivity.KST.SConstruction.DGStrictCommaTensorZero
+
 /-! # ∞-S• 構成と連結 K 理論 -/
