@@ -29,8 +29,10 @@
   元の密度余錐の区間作用を同じ大域密度変換へ全 fiber 上で比較し、同じ Tw 全体からの恒等点で評価した。
   `presheafDensityIdentityReconstruction_pointed` は元の恒等点復元射の始値が canonical な恒等点に厳密に定値と証明。
   元の c1 の持ち上げの始値・底・終値を全 fiber 上で揃え、同じ普遍輸送の終値と比較して値写像の同値性を結論。
-  制限関手の全写像空間の同値、κ-filtered 余極限を保つ延長の構成と本質的全射性は未証明。
-- 独立集約 6798 jobs、公理監査 1740 宣言、標準三公理のみ。
+  `indElementsLeftKanComparison` は元の小さい元の圏から Indκ 内の局所 Kan 添字への同じ射影を保つ比較同値。
+  `indLeftKanDiagram_hasColimit` と `ind_exists_leftKanExtension` は、小さい κ-filtered 余極限を持つ D への指定単位付き左 Kan 延長の存在。
+  延長の κ-filtered 余極限保存、Yoneda 上の回収、実際の制限関手の全写像空間の同値と本質的全射性は未証明。
+- 独立集約 6966 jobs、公理監査 1801 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -56,6 +58,8 @@
 - `presheafDensityNativeIdentityValueIso`、`presheafDensityFiberIntervalIso`
 - `presheafDensityIdentityReconstruction_pointed`、`presheafDensityIdentityLiftPrism_projection`
 - `presheafElementsYonedaSliceValue_isQCatEquivalence`、`presheafElementsYonedaSliceComparison_isQCatEquivalence`
+- `indElementsLeftKanComparison_isQCatEquivalence`、`indElementsLeftKanComparison_diagram`
+- `indLeftKanDiagram_hasColimit`、`ind_exists_leftKanExtension`
 
 ### 依存と提供
 
@@ -75,6 +79,7 @@
 - (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
 - `Compact.PreservesKappaFilteredColimits` はさらに持ち上げた始域の関手を扱う。Indκ と D の宇宙を照合して使う。
 - 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使う。
+- F1b の既存の左 Kan 単位可逆性定理は `InnerFibration δ` を要する。`indYoneda` のこの性質は未証明なので仮定として追加しない。
 
 ### 次の一手
 
@@ -83,11 +88,10 @@ Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保�
 `PreservesSmallKappaFilteredColimits` は同じ宇宙の元の余錐の像で保存性を定義。F2 の filtered 定義を再利用。
 元の Indκ 頂点を持つ `indVertexDensityCocone` と保存関手による同じ余極限の像まで証明済み。
 `presheafElementsYonedaSliceValue_isQCatEquivalence` と元の全比較の同値性を追加の同値性仮定なしに証明済み。
-次はこの同じ比較を `indYoneda` の左 Kan 局所添字へ移し、Indκ 頂点の小さい κ-filtered comma 模型を作る。
-元の小さい元の圏の κ-filtered 性は (c)、元の比較の射影の可換性は `presheafElementsYonedaSliceComparison_projection` を使う。
-任意の C → D の同じ局所図式の余極限の存在を、小さい模型に制限して証明する。
-F1b の `exists_kanLeftExtension_of_local_colimits` で coherent な延長へ組み立てる。
-(c) の単一表示を使い、任意の C → D を元の元の圏上の κ-filtered 余極限で延長する。
+`indElementsLeftKanComparison` は元の局所 Kan 添字へ同じ射影を保つ同値。任意の制限図式も厳密に回収する。
+`ind_exists_leftKanExtension` は正則 κ と小さい κ-filtered 余極限を持つ D に対し、元の C → D の左 Kan 延長を構成済み。
+次は同じ局所比較で制限した標準 Kan 余錐を、元の `indVertexDensityCocone` に同定する。
+保存関手の像の余極限性を局所 Kan 条件へ戻し、κ-filtered 保存性と左 Kan 条件の関係を証明する。
 元の Yoneda 上の回収と、全対象・全写像空間の自然な比較を作り、同じ制限射の同値を証明する。
 HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 

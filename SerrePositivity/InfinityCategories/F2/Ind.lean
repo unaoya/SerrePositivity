@@ -201,3 +201,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PointPrismTransportCompa
 public import SerrePositivity.InfinityCategories.F2.Ind.DensityIdentityEndpointEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.DensityCanonicalTransportEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceEquivalence
+public import SerrePositivity.InfinityCategories.F2.Ind.FullSliceLift
+public import SerrePositivity.InfinityCategories.F2.Ind.FullSlicePullback
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanShapeAmbient
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanCommaIso
+public import SerrePositivity.InfinityCategories.F2.Ind.IndElementsLeftKanModel
+public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLocalKanColimits
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanExtension

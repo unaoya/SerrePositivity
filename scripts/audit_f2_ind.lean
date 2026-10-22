@@ -360,3 +360,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCanonicalTransportValue_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceValue_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.fullSliceLift_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Ind.fullSlicePullbackIso_hom_fst
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanShapeAmbientIso_hom_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanCommaIso_hom_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indElementsLeftKanComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.indElementsLeftKanComparison_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indElementsLeftKanComparison_diagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasColimit_of_equivalentRestriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.indLeftKanDiagram_hasColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension
