@@ -17,3 +17,9 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedSquareHomo
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeSquare
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelCone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelCone
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeRepresentative
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeObject
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeObjectTransport

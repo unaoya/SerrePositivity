@@ -22,7 +22,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ClosedSquareHomotopy,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeSquare,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.KernelCone,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaKernelCone,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeRepresentative,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeObject,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ConeObjectTransport]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
