@@ -1062,4 +1062,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBounded
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCounitHomNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.DGStrictAdjointComparison
+public import SerrePositivity.KST.LocalizingInvariants.DGStrictCompositeCounit
+public import SerrePositivity.KST.LocalizingInvariants.DGRestrictionCompositionStrict
+public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionStrict
+public import SerrePositivity.KST.LocalizingInvariants.DGStrictAdjointComparisonComponent
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
