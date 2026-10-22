@@ -700,7 +700,22 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivationTests,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivationMixed,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeDerivation,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedExtension]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedExtension,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeCoordinates,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeGradedIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeComplexIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbationMapTo,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeQuotient,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMapOver,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeClassMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationOfMapOver,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellDerivation,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedClassComparison,
+    `SerrePositivity.KST.LocalizingInvariants.ProSpectrumEventualConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.InvariantEventualConnectivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
