@@ -29,3 +29,8 @@ public import SerrePositivity.KST.Fibration.WeakStringsExact
 public import SerrePositivity.KST.Fibration.WeakStringEdges
 public import SerrePositivity.KST.Fibration.WeakStringCofibers
 public import SerrePositivity.KST.Fibration.WeakStringCofiberVertices
+public import SerrePositivity.KST.Fibration.CofiberFamilyTranspose
+public import SerrePositivity.KST.Fibration.WeakStringCofiberFamilies
+public import SerrePositivity.KST.Fibration.CofiberFamilyComparison
+public import SerrePositivity.KST.Fibration.WeakStringOctahedronFamilies
+public import SerrePositivity.KST.Fibration.WeakStringOctahedronKernel
