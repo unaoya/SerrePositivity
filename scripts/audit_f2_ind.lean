@@ -47,6 +47,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityPresentation
 #check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_of_kappaFiltered_elements
+#check @SerrePositivity.InfinityCategories.F2.Ind.HasKappaFilteredElements
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_isoClosed
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_yoneda
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

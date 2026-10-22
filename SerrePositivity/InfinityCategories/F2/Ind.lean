@@ -25,3 +25,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluatio
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationValueComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsMembership
+public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableFilteredElements
