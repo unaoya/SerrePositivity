@@ -1351,7 +1351,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAZeroComposition,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardComposite,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardNaturalitySquare,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeEndpointTransfer]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeEndpointTransfer,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareAppend,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardContour,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassGlueStandardBottom,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassGlueViaBMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightZeroSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeFollowingTransfer,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightComposite,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightBottom,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightZeroSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightNaturalityPath]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
