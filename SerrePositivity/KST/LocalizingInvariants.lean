@@ -1478,4 +1478,11 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellComparisonFi
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathNonpositiveFixed
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedBasePath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightAffineFixedGlue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedClassGlue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedTransition
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedClassMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRight
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedCandidateRoof
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
