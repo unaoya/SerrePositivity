@@ -1039,7 +1039,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerProInverse,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroSeparatedHom,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroSeparatedHomBimodule,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerComponents]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerComponents,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerComponentComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerInverseComponents,
+    `SerrePositivity.KST.LocalizingInvariants.ProInverseEventualUniqueness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraZeroDescIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofZeroBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovDescComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofZeroLeft,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroInverseRoofComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofZeroRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroBase]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
