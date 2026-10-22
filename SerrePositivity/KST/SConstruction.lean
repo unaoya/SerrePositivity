@@ -2335,4 +2335,15 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFactorization
 public import SerrePositivity.KST.SConstruction.PerfectDGStrictSquareDiagonal
 public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientEnd
 
+public import SerrePositivity.KST.SConstruction.DGClosedZeroHom
+public import SerrePositivity.KST.SConstruction.DGGluingRightAxis
+public import SerrePositivity.KST.SConstruction.DGCochainZeroTarget
+public import SerrePositivity.KST.SConstruction.DGCommaZeroSourceProjection
+public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
+public import SerrePositivity.KST.SConstruction.DGGluingRightAxisNerve
+public import SerrePositivity.KST.SConstruction.DGGluingRightAxisEnd
+public import SerrePositivity.KST.SConstruction.PerfectDGFullyFaithful
+public import SerrePositivity.KST.SConstruction.DGUniverseQuasiFullyFaithful
+public import SerrePositivity.KST.SConstruction.PerfectDGGluingRightAxis
+
 /-! # ∞-S• 構成と連結 K 理論 -/
