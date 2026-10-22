@@ -384,3 +384,8 @@ public import SerrePositivity.KST.Fibration.DoubleEvaluationCurry
 public import SerrePositivity.KST.Fibration.RelativeSectionDomainPoint
 public import SerrePositivity.KST.Fibration.RelativeSectionDomainEvaluation
 public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
+public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecomposition
+public import SerrePositivity.KST.Fibration.StraighteningSectionChart
+public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
+public import SerrePositivity.KST.Fibration.StraighteningUnderSectionChart
+public import SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart

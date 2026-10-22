@@ -7,6 +7,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.DoubleEvaluationPrecomposition,
+    `SerrePositivity.KST.Fibration.StraighteningSectionChart,
+    `SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents,
+    `SerrePositivity.KST.Fibration.StraighteningUnderSectionChart,
+    `SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart,
+
     `SerrePositivity.KST.Fibration.FunctorIsoValueInverse,
     `SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction,
     `SerrePositivity.KST.Fibration.PointedReconstructionRestriction,
