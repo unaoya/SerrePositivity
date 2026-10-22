@@ -2270,7 +2270,15 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 `cofibrantSourceRoofProductActual_triangle` は実射側の全三角形 hA を追加入力なしに証明する。
 `cofibrantSourceRoofProductActualIntervalCell_eq_comparison` は実区間族が元の逆左脚と右脚の合成。
 `cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle` は実屋根 cofinality を残る hR だけへ還元。
-基準射側の全三角形 hR、
+`LeftRoof.Precompose.SameUniverse` は同じ宇宙の任意添字の nerve から元の graph への入口。
+元の四列図式の sourceComparison を保持し、実 comma 圏へ Hom 0 の仮定なしに適用する。
+`cofibrantSourceRoofProductCommaAugmentationRoofMap_image` は元の source frame 比較への厳密な像。
+`cofibrantSourceRoofProductCommaEvaluationRoofMap_image_Q` は同じ指定次数の前合成との全図式の一致。
+`cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q` は同じ Ex∞ 単位と元の包含の逆を通す。
+`AnodyneFamilyHomotopy` は全写像の局所化等式から、同じ全パラメータの実ホモトピーを回収する。
+`cofibrantSourceRoofProductCommaNativeIntervalCell_eq_reference` は全区間族の射の厳密な一致。
+native pinched 族も弱同値。hR は元の native roof 区間族の全合成三角形へ還元される。
+その native roof の全三角形と hR 本体、
 left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
