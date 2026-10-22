@@ -445,3 +445,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightWeightedClassification_isIndVertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndClassificationIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndClassificationIso_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightTwistedComparison
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightTwistedComparison_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightTwistedLeftEvaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedRightTwistedEvaluation_projection

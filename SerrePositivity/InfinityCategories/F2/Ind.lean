@@ -261,3 +261,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityGlobalFam
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityGlobalUniversal
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightWeightedClassification
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassification
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightTwistedDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightTwistedEvaluation
