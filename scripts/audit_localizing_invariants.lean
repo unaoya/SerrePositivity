@@ -1323,7 +1323,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaBZeroComposition,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourTargetLeft,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourBottomPath,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueViaBComparison]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueViaBComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassZeroRebaseIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenCompositeZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightSourceOriginalPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenFirstPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightSourceFirstComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourRightPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourRightComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourSourceRight,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroTransportCompositeHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
