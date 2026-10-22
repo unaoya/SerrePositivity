@@ -20,9 +20,7 @@
   全余錐の同値による保存・反映、小さい κ-filtered 余極限の存在、compact 性、同じ小さい生成圏の全表示を輸送。
   表示の頂点は同値類だけでなく指定対象そのものへ厳密に戻す。
 - accessible 関手の全自然同型不変性、両側の同値による共役不変性を証明。同じ κ の保存性と存在量化版の両方。
-- 元の全共変 Hom・coslice 比較を構成し、その自然性・評価式・`pinchedHomMap` との同値判定を提供。
-- 関手圏の元の全比較の可逆成分条件を、両側が保存する同じ余極限・極限の頂点へ延長。
-  共変 Hom の余極限・極限保存と元の余錐の反転式から、Ind の両変数の単一表示を通じて上記の全充満忠実性を得た。
+- 元の全共変 Hom・coslice 比較、自然性・評価式、単一表示の両変数での可逆性延長から、Ind 比較の全充満忠実性を得た。
 - 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
   任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
@@ -54,8 +52,9 @@
 - **小さい poset の極限と、一般の μ-filtered ∞ 添字の coherent 全錐族の指定点ごとの余極限の交換を証明。**
   cofinal μ-filtered poset への元の全余錐の制限で一般添字へ拡張。元の図式・全錐・指定余錐を量化し、交換を仮定に入れない。
 - 正則濃度・κ-small 性・κ-filtered 性の宇宙移送、μ-filtered 全錐反映を証明し、小さい poset 余極限の μ-compact 閉性を証明。
-- κ-accessible 圏の各指定対象を、μ-compact な項の小さい μ-filtered 全表示で回収。指定頂点は厳密な等式。
-- 独立集約ビルド成功（7694 jobs）、公理監査 521 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 元の小さい生成圏の μ-small poset 図式を宇宙 u の一つの符号型へ移し、共通の小さい μ-compact 余極限族を選択。
+  各指定対象の厳密な全表示の全項はこの族の一項と頂点同型を持つ。Ind 内の小さい頂点族上の全部分複体は全次数で小さい。
+- 独立集約ビルド成功（7705 jobs）、公理監査 564 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -88,7 +87,8 @@
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
 - `coherentCardinalFilteredLimitExchange_poset`、`isKappaFiltered_ulift`、`isMuCompact_smallPosetColimit`
-- `exists_compactPartialPresentation`、`IsKappaAccessible.exists_muCompactPresentation`
+- `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
+- `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
 
 ### 未コミット
 - なし。工程 (1) の検証済み区切りを所有ファイルのみ保存。
@@ -98,9 +98,9 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (1) の濃度変更。小さい元の生成圏の μ-small な図式を、対象に依存しない小さい族にまとめる。
-  実証済みの μ-compact な部分余極限をその族へ輸送し、小さい全部分生成圏を構成する。
-  各指定対象の μ-compact な μ-filtered 全表示は完了。共通の小さい生成圏と圏自身の μ-accessibility は未証明。
+- 工程 (1) の濃度変更。Ind 内の共通の小さい μ-compact 頂点族の全部分圏を、宇宙 u の模型へ縮小する。
+  その本質像との同値を通じて全表示の項の頂点同型を一つの coherent な表示へ移し、小さい全部分生成圏を構成する。
+  共通の小さい頂点族と各指定対象の全表示は完了。小さい生成圏・圏自身の μ-accessibility は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。
 
 ## 規約

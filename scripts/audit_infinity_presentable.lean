@@ -139,3 +139,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isMuCompact_smallPosetColimit_of_kappaCompact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactPartialPresentation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_muCompactPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetDiagramCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPosetDiagramCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetDiagramCode.vertex_isMuCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPosetColimitGeneratorIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.small_fullSubcomplexOnRange
+#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_small_fullSubcomplexOnRange
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.exists_smallFamilyPresentation

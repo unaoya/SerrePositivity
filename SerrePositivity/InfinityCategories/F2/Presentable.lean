@@ -29,3 +29,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentPosetLim
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentFilteredPosetExchange
 public import SerrePositivity.InfinityCategories.F2.Presentable.KappaFilteredUniverse
 public import SerrePositivity.InfinityCategories.F2.Presentable.CompactPartialPresentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFullSubcomplex
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPresentation
