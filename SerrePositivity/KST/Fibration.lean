@@ -267,3 +267,8 @@ public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
 public import SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom
 public import SerrePositivity.KST.Fibration.WeakQuotientMappingComparison
 public import SerrePositivity.KST.Fibration.SpaceLocalizationUniversality
+public import SerrePositivity.KST.Fibration.IdentityFractionTriangle
+public import SerrePositivity.KST.Fibration.IdentityFractionEvaluation
+public import SerrePositivity.KST.Fibration.IdentityCosliceEvaluation
+public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
+public import SerrePositivity.KST.Fibration.FractionKanCosliceClassification

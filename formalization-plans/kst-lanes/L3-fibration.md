@@ -47,12 +47,14 @@
   二つの任意の空間値図式を共通の小さい全充満標的へ制限し、Space∞ 値の前合成の全写像空間の充満忠実性を証明。
   宇宙を揃えた全反転関手 ∞ 圏への前合成は実際の同値。同じ比較二胞体を元の商へ降下。
   coslice 側の W 反転も証明し、商上の比較の制限・実同型での正規化・実ホモトピー代表の回収式を保持。
-  恒等 span の元の固定分数点・strict section 点・Kan 点を構成し、同じ評価の厳密な回収式を証明。
+  恒等 span の元の固定分数点・strict section 点・Kan 点と同じ評価の厳密な回収式を保持。
+  定値三角形と選択済み三角形を同じ可縮 fiber で比較し、実写像空間内の一本の辺で恒等点へ正規化。
+  元の coslice fiber・亜群化後の同じ比較でも恒等点を回収。商上の coslice 図式を同じ射影の実分類図式と自然同型で同定。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8543 jobs・専用監査 268 モジュール 1420 宣言 が成功。
+- 現在の対象ビルド 8553 jobs・専用監査 273 モジュール 1489 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4803 モジュールは EInfinity を含まない。全体 24643 jobs で成功。
+  所有 import 閉包 4813 モジュールは EInfinity を含まない。全体 24658 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -67,7 +69,6 @@
 - relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
-- weakStringFiniteComparison_localized_isIso（零長を含む全長・全正有限反復）。
 - weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、relativeSWeakStringCoreComparison_localized_isIso。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSKernelDiagonal_toPoint_localized_isIso、weakStringKernelDiagonal_toPoint_localized_isIso。
@@ -76,11 +77,12 @@
   weakSpanDenominatorBaseChange_cartesianFibration、weakDenominatorSpanTransport_groupoidCompletion_isEquivalence。
 - spaceLocalizationPre_fullyFaithful、spaceLocalizationPrecomposition_isQCatEquivalence。
 - weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
+- identityFixedFractionEvaluationEdge、identityFractionCosliceGroupoidComparisonIso、
+  fractionKanQuotientDiagram_classificationIso。
 - verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
   weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
 - weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
   weakStringInitialPostSquare_homotopyPullback（元の W 列）。
-- weakStringMultiPostcomp_homotopyPullback、weakStringMultiPostcomp_realization_homotopyPullback。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -90,19 +92,17 @@
   固定界面は L1 §6。依頼先は `01a151d3-f75d-7ef2-9d1f-908c85eb1be1`。
   ClosedStablePredicate 版加法性を任意 W 辺版とせず、W の保存と比較を証明。K-3 以降は未依存。
   追加固定界面は `cofiberDiagrams`・`cofiberProjection`・`cofiberProjection_trivialKanFibration`。
-  W 制限と全境界持ち上げは K-F が証明した。
-  追加固定界面（L1 §6）：MultiRealizationFunctorIso の
-  multiRealization_map_positive_localized_eq_of_functorIso（正の全反復、ModelCategory 引数なし）。
+  追加固定界面（L1 §6）：multiRealization_map_positive_localized_eq_of_functorIso（正反復）。
   RelativeCofiberLeftFiber・RelativeFiberEquivalence は L1 §6 の固定界面。K-F の基底変更と Quillen A へ接続。
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の共通の小さい全充満標的・Space∞ 値普遍性・比較二胞体の商降下の7モジュール等を含める）。
+- なし（恒等点正規化・coslice 分類照合の5モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
-- 恒等点の商側の評価・普遍性・分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
+- 商上の span 図式の恒等点の普遍性と分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- 恒等 span の商側での評価を恒等射へ正規化し、商上の coslice 図式を表現可能な写像空間図式と照合する。
-  同じ恒等点の普遍性で元の分数比較の同値性を証明。cofinality 十分条件・Sp 値も未完。
+- 恒等点の実写像空間内での正規化と coslice 実分類図式の同定を、商上の比較二胞体へ接続する。
+  商上の span 図式の同じ恒等点の普遍性を証明し、元の分数比較の同値性を導く。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

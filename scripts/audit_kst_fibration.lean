@@ -273,7 +273,12 @@ run_cmd do
     `SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful,
     `SerrePositivity.KST.Fibration.SpaceLocalizationFactorizationHom,
     `SerrePositivity.KST.Fibration.WeakQuotientMappingComparison,
-    `SerrePositivity.KST.Fibration.SpaceLocalizationUniversality]
+    `SerrePositivity.KST.Fibration.SpaceLocalizationUniversality,
+    `SerrePositivity.KST.Fibration.IdentityFractionTriangle,
+    `SerrePositivity.KST.Fibration.IdentityFractionEvaluation,
+    `SerrePositivity.KST.Fibration.IdentityCosliceEvaluation,
+    `SerrePositivity.KST.Fibration.LeftCocartesianKanComparison,
+    `SerrePositivity.KST.Fibration.FractionKanCosliceClassification]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
