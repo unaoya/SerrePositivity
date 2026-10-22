@@ -116,3 +116,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictification_stage_isLimit_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictColimitCocone_pointwise
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictColimitCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.thinConeIndex_comparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.withInitialKanCone_coherentMap
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictRealization_stage_map
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStage_isLimit_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictModelColimit_isLimit
