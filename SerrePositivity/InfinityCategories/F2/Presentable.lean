@@ -16,3 +16,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleEquiva
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctorEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPartialColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredPartialPresentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallInternalHomContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallStrictLimitExchange

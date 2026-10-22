@@ -85,3 +85,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitPresentation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallFilteredPartialColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_filteredPartialPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_allSimplices_of_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_simplexCategory_arrow
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallShape_isCardinalPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallShape_relative_factorization
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_tensor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallInternalHom_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSSetLimitColimitIso
