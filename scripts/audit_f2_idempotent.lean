@@ -1504,3 +1504,72 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @IsIdempotentCompletion.arrow_strongSplitting
 #print axioms IsIdempotentCompletion.arrow_strongSplitting
+
+#check @isQCatEquivalence_of_retractSquares
+#print axioms isQCatEquivalence_of_retractSquares
+
+#check @intervalFunctorMap_precomposeHoIso
+#print axioms intervalFunctorMap_precomposeHoIso
+
+#check @pinchedHomMap_equivalence_iff_intervalFunctorMap
+#print axioms pinchedHomMap_equivalence_iff_intervalFunctorMap
+
+#check @VertexRetraction.intervalPrecompose_retractIso
+#print axioms VertexRetraction.intervalPrecompose_retractIso
+
+#check @relativeInitial_of_vertexRetraction
+#print axioms relativeInitial_of_vertexRetraction
+
+#check @initialBoundaryLifting_of_vertexRetraction
+#print axioms initialBoundaryLifting_of_vertexRetraction
+
+#check @relativeInitialVertices_isIdempotentComplete
+#print axioms relativeInitialVertices_isIdempotentComplete
+
+#check @colimitCocones_isIdempotentComplete
+#print axioms colimitCocones_isIdempotentComplete
+
+#check @hasColimit_of_diagram_retract
+#print axioms hasColimit_of_diagram_retract
+
+#check @isTerminalVertex_of_vertexRetraction
+#print axioms isTerminalVertex_of_vertexRetraction
+
+#check @isInitialVertex_of_vertexRetraction
+#print axioms isInitialVertex_of_vertexRetraction
+
+#check @isZeroVertex_of_vertexRetraction
+#print axioms isZeroVertex_of_vertexRetraction
+
+#check @isPushoutSquare_of_diagram_retract
+#print axioms isPushoutSquare_of_diagram_retract
+
+#check @diagram_retract_op
+#print axioms diagram_retract_op
+
+#check @hasLimit_of_diagram_retract
+#print axioms hasLimit_of_diagram_retract
+
+#check @isPullbackSquare_of_diagram_retract
+#print axioms isPullbackSquare_of_diagram_retract
+
+#check @IsBicartesianZeroVertex
+#print axioms IsBicartesianZeroVertex
+
+#check @isBicartesianZeroVertex_functorVertex
+#print axioms isBicartesianZeroVertex_functorVertex
+
+#check @isBicartesianZeroVertex_of_retract
+#print axioms isBicartesianZeroVertex_of_retract
+
+#check @bicartesianZeroSquares
+#print axioms bicartesianZeroSquares
+
+#check @bicartesianZeroSquares_quasicategory
+#print axioms bicartesianZeroSquares_quasicategory
+
+#check @bicartesianZeroSquares_isIdempotentComplete
+#print axioms bicartesianZeroSquares_isIdempotentComplete
+
+#check @bicartesianZeroBottomProjection
+#print axioms bicartesianZeroBottomProjection

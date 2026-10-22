@@ -150,3 +150,14 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionArrow
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStrongSplitting
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionArrowSplitting
+public import SerrePositivity.InfinityCategories.F2.Idempotent.EquivalenceRetractSquares
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractionNaturality
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialComplete
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ColimitRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.ZeroRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PushoutRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.DiagramOppositeRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.LimitRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PullbackRetracts
+public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroSquares
