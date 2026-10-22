@@ -40,21 +40,24 @@
   strict section の元の評価 prism で初頂点辺を反転し、同じ coherent 図式を元の底へ降下。
   両側区間 prism により W の全逆像を反転し、全辺の厳密被覆と制限同型で底上の W 反転も証明。
   元の全充満像を小さい宇宙へ縮小して商の全関手 ∞ 圏の普遍性を適用し、同じ図式を商へ降下。
-  底・全単体圏への制限の自然同型と、初頂点の元の strict Kan 分数値を回収。表現可能性は未証明。
+  底・全単体圏への制限同型で元の strict Kan 分数値を回収。span 側の表現可能性は未証明。
 - 元の全 span 族から商の coslice への実評価を構成し、元の可変終点を全単体で厳密に被覆。
   固定 fiber では既存の分数評価と実ホモトピーで一致し、亜群化後の元の fraction 比較も自然同型で回収。
-  全 strict section 図式の自然変換と coherent な実辺を構成。元の fiber 評価との厳密可換性も証明。
+  全 strict section 図式の自然変換と coherent な実辺を構成。全値で元の固定分数 coslice 評価と厳密に可換。
+  strict Kan 写像と亜群化後の同じ評価の同値性を同定。各比較成分の同値性は既存の分数比較そのもので判定。
   二つの任意の空間値図式を共通の小さい全充満標的へ制限し、Space∞ 値の前合成の全写像空間の充満忠実性を証明。
   宇宙を揃えた全反転関手 ∞ 圏への前合成は実際の同値。同じ比較二胞体を元の商へ降下。
   coslice 側の W 反転も証明し、商上の比較の制限・実同型での正規化・実ホモトピー代表の回収式を保持。
   恒等 span の元の固定分数点・strict section 点・Kan 点と同じ評価の厳密な回収式を保持。
   定値三角形と選択済み三角形を同じ可縮 fiber で比較し、実写像空間内の一本の辺で恒等点へ正規化。
-  元の coslice fiber・亜群化後の同じ比較でも恒等点を回収。商上の coslice 図式を同じ射影の実分類図式と自然同型で同定。
+  元の coslice fiber・亜群化後でも恒等点を回収。商上の coslice 図式は同じ射影の実分類図式と自然同型。
+  同じ strict Kan 自然変換の恒等点の像も、元の実 coslice fiber の Kan 模型内で恒等点へ正規化。
+  同じ点を商上の span 図式の実 unstraightening fiber へ移し、coslice からの実比較と厳密な底・恒等錐の回収式を構成。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 8553 jobs・専用監査 273 モジュール 1489 宣言 が成功。
+- 現在の対象ビルド 8565 jobs・専用監査 284 モジュール 1552 宣言 が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 4813 モジュールは EInfinity を含まない。全体 24658 jobs で成功。
+  所有 import 閉包 4825 モジュールは EInfinity を含まない。全体 24678 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -69,7 +72,6 @@
 - relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
-- weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、relativeSWeakStringCoreComparison_localized_isIso。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
 - relativeSKernelDiagonal_toPoint_localized_isIso、weakStringKernelDiagonal_toPoint_localized_isIso。
 - relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
@@ -79,10 +81,8 @@
 - weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
 - identityFixedFractionEvaluationEdge、identityFractionCosliceGroupoidComparisonIso、
   fractionKanQuotientDiagram_classificationIso。
-- verdierKernelEquivalence、kernelPostExact_verdier_multiRealization_localized_isIso、
-  weakStringKernelCofiber_postcomp、weakStringCofiberMultiMap_postcomp。
-- weakStringFiniteComparison_postcomp、weakStringFiniteKernelPostMap_verdier_localized_isIso、
-  weakStringInitialPostSquare_homotopyPullback（元の W 列）。
+- weakSpanKanMappingComparison_value、weakSpanKanMappingComparison_value_equivalence_iff、
+  weakIdentityKanMappingComparisonUnitIso、weakQuotientCosliceUnit、weakQuotientCosliceUnit_identity。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -97,12 +97,12 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（恒等点正規化・coslice 分類照合の5モジュール、集約・監査・本計画を含める）。
+- なし（全値比較・恒等点の商移送・coslice 比較の11モジュール、集約・監査・本計画を含める）。
 ### 既知の問題
 - 商上の span 図式の恒等点の普遍性と分数比較の同値性は未完。cofinality 十分条件・Sp 値の K-6 も未完。
 ### 次の一手
-- 恒等点の実写像空間内での正規化と coslice 実分類図式の同定を、商上の比較二胞体へ接続する。
-  商上の span 図式の同じ恒等点の普遍性を証明し、元の分数比較の同値性を導く。
+- 構成した coslice → 商上の span unstraightening の実写像を、元の商上の比較二胞体と照合する。
+  同じ恒等点の普遍性と合成の逆条件を証明し、元の分数比較の同値性を導く。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。

@@ -272,3 +272,14 @@ public import SerrePositivity.KST.Fibration.IdentityFractionEvaluation
 public import SerrePositivity.KST.Fibration.IdentityCosliceEvaluation
 public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
 public import SerrePositivity.KST.Fibration.FractionKanCosliceClassification
+public import SerrePositivity.KST.Fibration.FractionCosliceFiberComparison
+public import SerrePositivity.KST.Fibration.StrictKanPostEvaluation
+public import SerrePositivity.KST.Fibration.WeakSpanKanFiberComparison
+public import SerrePositivity.KST.Fibration.StrictKanEvaluationComparison
+public import SerrePositivity.KST.Fibration.WeakSpanKanValueCriterion
+public import SerrePositivity.KST.Fibration.WeakQuotientComparisonCriterion
+public import SerrePositivity.KST.Fibration.FixedFractionCosliceTransport
+public import SerrePositivity.KST.Fibration.WeakIdentityKanValue
+public import SerrePositivity.KST.Fibration.PointedSpaceHomPoint
+public import SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint
+public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
