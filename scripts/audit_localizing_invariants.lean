@@ -1107,7 +1107,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence,
     `SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback,
     `SerrePositivity.KST.LocalizingInvariants.RelativeTammeRectangle,
-    `SerrePositivity.KST.LocalizingInvariants.RelativeTammePullback]
+    `SerrePositivity.KST.LocalizingInvariants.RelativeTammePullback,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassGlue,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficientHomotopy]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

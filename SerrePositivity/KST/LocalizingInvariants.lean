@@ -1342,4 +1342,8 @@ public import SerrePositivity.KST.LocalizingInvariants.RelativeTammeRectangle
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTammePullback
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassGlue
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientHomotopy
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCoefficientHomotopy
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
