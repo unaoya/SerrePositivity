@@ -61,3 +61,10 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConeSimplexPrefix
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteFreshCoconeMono
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallRange
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallCodiscreteConeRange
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeSimplexExtension
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeLastFaceRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalFaceIdentities
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalLastFaceCriterion
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeApexTerminal
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexEnlargement
+public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexCover

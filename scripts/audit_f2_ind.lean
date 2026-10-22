@@ -4,6 +4,14 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_iff_of_iso
 #check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_range_of_mono
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_small_codiscreteConeRange
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneSimplexAppend_lastFace
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneLastFace_injective
+#check @SerrePositivity.InfinityCategories.F2.Ind.isTerminalVertex_of_unique_lastFace
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneApex_isTerminalVertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_small_terminalSubcomplex
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.iSup_terminalSubcomplexFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit
 
 /-!
 概要：F2N-2 の独立集約に属する全宣言の公理依存を監査する。

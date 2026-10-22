@@ -35,11 +35,11 @@
   `hasKappaFilteredElements_of_strictClassified_colimit` は正則 κ で同じ strict 分類図式の任意の native 余極限への保存。
   小さい部分複体の和、拡大可能な小さい部分族の κ-filtered 被覆・包含余極限、未使用頂点ラベルは証明済み。
   ラベル付き積の元の射影は cofinal。小さい単射な図式を未使用頂点の同じ積内の単射な錐へ拡大できる。
-  `exists_small_codiscreteConeRange` は元の部分複体を含む小さい錐の像。同じ単射な錐から構成。
-  錐の終頂点による終頂点付き部分複体への拡大と、poset からの cofinal map は未証明。
+  `coneApex_isTerminalVertex` は任意の左因子の右錐の終頂点。左因子にも錐にも QC 仮定なし。
+  元の部分複体を小さい終頂点付き部分複体へ拡大し、同じ部分族の κ-filtered 被覆と包含余極限まで証明。
   一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6548 jobs、公理監査 926 宣言、標準三公理のみ。
+- 独立集約 6555 jobs、公理監査 960 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -68,7 +68,7 @@
 - `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
 - `hasKappaFilteredElements_of_strictClassified_colimit`
 - `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
-- `codiscreteProductProjection_isRightCofinal`、`exists_mono_fresh_codiscreteProductCocone`
+- `exists_small_terminalSubcomplex`、`terminalSubcomplexFamilyCocone_isColimit`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -94,10 +94,10 @@
 
 ### 次の一手
 
-(c)：strict 分類図式の余極限で元の κ-filtered 条件を保つところまで証明済み。cofinal poset の構成を進める。
-次は同じ右錐の右頂点の終対象性を示す。新頂点の単射な錐の拡大とその像の κ-small 性は証明済み。
-終頂点を持つ小さい部分複体の拡大を証明し、構成済みの同じ部分族の κ-filtered 被覆へ適用する。
-その後、実際の cofinal map と元の coherent 図式から strict right fibration 図式への比較を構成する。
+(c)：小さい終頂点付き部分複体の同じ族が κ-filtered で元のラベル付き積を被覆するところまで証明済み。
+次はこの包含順の nerve から元の積への実際の cofinal map を構成する。被覆だけからは結論しない。
+各部分複体の終頂点を選び、包含の有限鎖に沿う境界を終頂点条件で充填する。元の底への射影と合成する。
+その cofinal 性を示し、元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
