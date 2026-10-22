@@ -2541,7 +2541,7 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_equation_without_zero` は始点を含まない全成分の HA 方程式。
 `normalizedTensorConeData_equation_pair` は全ての二点成分の HA 方程式。
 `normalizedTensorConeEdgeSimplex` は各元の単体要素への実 cone 辺を与える。
-始点を含む三点以上の混合 HA 方程式と全作用素への自然性は未証明。
+始点を含む全混合 HA 方程式は下記に完成。全作用素への自然性は未証明。
 したがって全次数の実 cone/prism と元の大域 pinched 族との比較、U の∞極限保存・G1′は未完了。
 
 `normalizedTensorElementSelectedCochainAtMax_image` は最大点へ輸送した元の選択 cochain の
@@ -2570,5 +2570,15 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_linearBoundary_mixed_last` は元の実線形境界の全項を同じ普遍削除和へ、
 `normalizedTensorConeData_rhs_mixed_last` は元の全 HA 右辺を同じ符号付き線形右辺へ同定する。
 `normalizedTensorConeData_equation_of_last_mem` は元の終端を含む全有限集合で HA 方程式を証明。
-任意終端への制限の整合性、全混合 HA・全自然性・大域 cone/prism は未証明。
+任意終端への単射制限と全混合 HA は下記に完成。退化を含む全自然性・大域 cone/prism は未証明。
 同じ U の coherent ∞ 極限保存・G1′も未完了。
+
+`normalizedTensorElementSelectionOfCard_image` は明示次数の像の選択列の厳密な合成式。
+`normalizedTensorElementSelectedCochainAtMax_image_reindex` と `_smul` は元の選択 cochain と
+その符号付き成分の単射再添字の一致。元の frame 後合成の単射性を仮定しない。
+`normalizedTensorConeData_pullback_injective` は元の実 cone データ全体の単射 pullback の一致。
+`normalizedTensorConeData_equation` は元の任意の有限集合・全次数の HA 方程式。
+選択列の全頂点集合の終端方程式を、同じ元の集合へ厳密に移送する。
+`normalizedTensorConeSimplex` は元の実生データを保持する全次数の実 cone 単体。
+`normalizedTensorConeSimplex_pullback_injective` と `_tail` は全単射制限と同じ通常末尾面の一致。
+退化を含む全作用素への自然性・大域 cone/prism と同じ屋根との比較、U の∞極限保存・G1′は未完了。
