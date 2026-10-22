@@ -494,3 +494,8 @@ public import SerrePositivity.KST.Fibration.KanCommSqCone
 public import SerrePositivity.KST.Fibration.KanCommSqLimit
 public import SerrePositivity.KST.Fibration.HomotopyPullbackInfinitySquare
 public import SerrePositivity.KST.Fibration.QuotientSKernelInfinitySquare
+public import SerrePositivity.KST.Fibration.KanCommSqEdges
+public import SerrePositivity.KST.Fibration.ExInfinityCommSqEdges
+public import SerrePositivity.KST.Fibration.QuotientSKernelEdges
+public import SerrePositivity.KST.Fibration.KanTerminalComparison
+public import SerrePositivity.KST.Fibration.QuotientSKernelTerminalCorner
