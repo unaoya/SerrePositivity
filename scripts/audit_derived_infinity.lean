@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.ModuleSphereNaturality
+import SerrePositivity.InfinityCategories.Derived.MooreCyclesNaturality
+import SerrePositivity.InfinityCategories.Derived.MooreHomologyNaturality
+import SerrePositivity.InfinityCategories.Derived.ModulePiMooreNaturality
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingPiMoore
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraNaturality
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraFunctor
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDerivedInfinity
@@ -4219,6 +4224,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ModuleSphereNaturality,
+    `SerrePositivity.InfinityCategories.Derived.MooreCyclesNaturality,
+    `SerrePositivity.InfinityCategories.Derived.MooreHomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.ModulePiMooreNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingPiMoore,
+
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDGAlgebraFunctor,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingDerivedInfinity,

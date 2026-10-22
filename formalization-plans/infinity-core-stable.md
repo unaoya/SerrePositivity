@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- 前回の実 Mon 包装は `d5f1dd249` に保存済み。今回の関手・D/Perf の3新規モジュール・集約・両監査・本計画の7パスを保存する。他レーンの変更は保持する。
+- 関手・D/Perf は `78413300c` に保存済み。今回の正次数 π の自然性の5新規モジュール・集約・両監査・本計画の9パスを保存する。他レーンの変更は保持する。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10933 jobs）。公理監査は Derived 20330 宣言／2232 モジュール、Stable 21443／2502。許容三公理のみ。今回までの保存対象1163新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10945 jobs）。公理監査は Derived 20377 宣言／2237 モジュール、Stable 21490／2507。許容三公理のみ。今回までの保存対象1168新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
-- g の実 Mon 包装は `d5f1dd249` に保存済み。今回の3モジュールは `DGSimplicialRingDGAlgebraNaturality`（6宣言）・`DGSimplicialRingDGAlgebraFunctor`（4）・`DGSimplicialRingDerivedInfinity`（6）。実 Moore 乗法から全 cochain tensor 乗法の自然性を証明し、元1と同じ単位鎖写像の保存を接続した。同じ正規化鎖写像で Mon の射を作り、恒等・合成を保つ `simplicialRingNormalizedDGAlgebraFunctor` を構成した。元の Moore 射の準同型性と同じ dg 代数射の準同型性は同値。その条件から、D と Perf の実相対 tensor が ∞ 圏同値になる。対象・両集約（10933 jobs）・16明示署名は成功。両全体監査も終端0（Derived 20330宣言／2232モジュール、Stable 21443／2502）。ログは `/tmp/d-beta5-simplicial-algebra-functor-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
-- 次は単体の弱同値と Moore 準同型の比較を閉じる。`MappingHomotopyGroups.modulePiMooreGroupEquiv` は一般単体的加群の正次数 π と同じ正規化 Moore ホモロジーの群同型を既に与える。`/tmp/d-beta5-simplicial-ring-pi-moore.lean` は KST の実 `ringSpace_kanComplex` による Kan 性と単体環への群同型の適用が終端0。`/tmp/d-beta5-module-sphere-naturality.lean` は実球面単体・正次数 Moore 核・境界商の線形写像、境界への可換式、pointed 代表・π の球面境界商表示の自然性の10宣言が終端0。次はその自然性を `mooreHomologySphereIso` と実ホモロジー射へ接続し、零次数と全基点を補って弱同値の同値判定にする。両試作は本体未統合。g 全体は未完。d・f は完了、β4 は D2 所有。原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
+- g の実 Mon 包装は `d5f1dd249`、正規化関手と D/Perf の実 tensor 不変性は `78413300c` に保存済み。今回の5モジュールは `ModuleSphereNaturality`（10宣言）・`MooreCyclesNaturality`（6）・`MooreHomologyNaturality`（4）・`ModulePiMooreNaturality`（3）・`DGSimplicialRingPiMoore`（2）。球面単体・正次数 Moore 核・境界商の実線形射から、元の抽象的 cycles と実ホモロジー射まで可換式を照合した。`modulePiMooreGroupEquiv_naturality` は既存の正次数 π と同じ Moore ホモロジーの群同型の自然性、`modulePiMap_bijective_iff_homologyMap` は零基点での正次数 π の全単射性と同じホモロジー射の全単射性の同値を与える。実単体環の台 Kan 複体へ群同型を適用した。対象・両集約（10945 jobs）・25明示署名は成功。両全体監査も終端0（Derived 20377宣言／2237モジュール、Stable 21490／2507）。ログは `/tmp/d-beta5-moore-natural-{target,aggregate,signatures,derived-audit,stable-audit}.log`。
+- 次は零次数・全基点を補って単体の弱同値と Moore 準同型の同値判定を閉じる。`/tmp/d-beta5-module-pizero.lean` は実辺の差から正規化一次境界を作る両方向、π₀ と零次単体の境界商の全単射と自然性、同じ商と実 Moore H₀ の同型と自然性、`modulePiZeroMooreEquiv` とその自然性・全単射性の比較まで終端0。最後に `moduleNormalizedMap_quasiIso_iff_zeroBasepointPi`（π₀ と零基点の全正次数 π による準同型判定）を追加して検証中。本体未統合。全基点への移送は加法による実 simplicial translation の同型を使う。KST の `KanPiIsomorphism` は全基点・零次数込み、`PointedKanWhitehead.exists_pointedHomotopyInverse` はその条件から実逆と両区間ホモトピーを作る（追加入力の HT-KQ なし）。F1B の弱同値は全 Kan 標的への π₀ 前合成検査なので、この実逆と接続する。g 全体は未完。d・f は完了、β4 は D2 所有。原 Hom の平坦性・対象宇宙の縮小・検証制限の引き上げは追加しない。
 
 ## 目標と原典
 
