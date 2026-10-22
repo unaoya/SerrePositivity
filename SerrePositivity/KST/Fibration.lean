@@ -402,3 +402,10 @@ public import SerrePositivity.KST.Fibration.FirstVertexTransportDiagramComponent
 public import SerrePositivity.KST.Fibration.ScaffoldNerveRepresentationPoint
 public import SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison
 public import SerrePositivity.KST.Fibration.ScaffoldPointedReconstruction
+public import SerrePositivity.KST.Fibration.FunctorIsoValueComposition
+public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
+public import SerrePositivity.KST.Fibration.ScaffoldRestrictionChart
+public import SerrePositivity.KST.Fibration.ScaffoldStraighteningValue
+public import SerrePositivity.KST.Fibration.FirstVertexSectionFiber
+public import SerrePositivity.KST.Fibration.ScaffoldGlobalCoefficientPoint
+public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
