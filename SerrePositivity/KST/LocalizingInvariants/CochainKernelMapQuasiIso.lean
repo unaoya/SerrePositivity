@@ -49,4 +49,10 @@ lemma moduleIsoSpan_comp {X Y Z W : ModuleCat R} (f : X ⟶ Z) (g : Y ⟶ Z)
   rw [← ht, Category.assoc, IsIso.inv_hom_id_assoc]
   exact hs
 
+lemma moduleIsoSpan_reverse {X Y Z W : ModuleCat R} (f : X ⟶ Z) (g : Y ⟶ Z)
+    [IsIso f] [IsIso g] (s : X ⟶ W) (t : Y ⟶ W)
+    (h : (f ≫ inv g) ≫ t = s) : g ≫ (inv f ≫ s) = t := by
+  rw [← h]
+  simp only [Category.assoc, IsIso.inv_hom_id_assoc, IsIso.hom_inv_id_assoc]
+
 end SerrePositivity.KST.LocalizingInvariants

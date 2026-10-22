@@ -1014,7 +1014,12 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathBaseChangeKernels,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathBaseChangeKernelHomology,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPathKernelHomology,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofCommonKernels]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofCommonKernels,
+    `SerrePositivity.KST.LocalizingInvariants.ProInverseAfter,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomologyInverseAfter,
+    `SerrePositivity.KST.LocalizingInvariants.ModuleCoefficientInverse,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofCommonCoefficients,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRoofCoefficientInverse]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
