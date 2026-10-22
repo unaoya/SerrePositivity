@@ -164,3 +164,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftWeightedClassi
 public import SerrePositivity.InfinityCategories.F2.Ind.LeftRightRoundTripDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramStrictification
 public import SerrePositivity.InfinityCategories.F2.Ind.OrdinaryFilteredElementsClosure
+public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
+public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsClosure
+public import SerrePositivity.InfinityCategories.F2.Ind.SingleFilteredPresentation

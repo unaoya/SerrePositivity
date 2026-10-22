@@ -284,3 +284,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramRightStrictClassificationIso
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_of_ordinary_colimit
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isRightCofinal_ulift
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_kappaColimitClosed
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_iff_hasKappaFilteredElements
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_functorVertex_iff
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.HasSingleFilteredRepresentablePresentation
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.isIndVertex_iff_singleFilteredPresentation

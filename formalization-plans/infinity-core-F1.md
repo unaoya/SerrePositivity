@@ -1,6 +1,6 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。F2N-2（Indκ）の (a) 密度と (b) 最小閉包の構成を完了し、(c) を進める。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。F2N-2（Indκ）の (a) 密度・(b) 最小閉包・(c) 単一 κ-filtered 表示を完了し、(d) を進める。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ：F2N-2（2026-10-22）
 
@@ -12,59 +12,35 @@
   元の twisted-arrow 評価を一つの全変換に実現し、同じ値写像の全体比較・因子分解・余錐との一致も証明済み。
 - **(b) 完了**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   前層への包含と Yoneda の厳密な因子化の充満忠実性、内在する κ-filtered 余極限と包含の保存・検出まで。
-- **(c) 進行中**：元の right unstraightening の元の圏が κ-filtered なら、同じ密度余錐で最小閉包に属する。
-  `HasKappaFilteredElements` は同じ頂点条件。同型閉性と元の Yoneda 像も証明済み（任意の κ）。
-  κ-small な形状の通常の κ-presentability と境界・ホモトピーの相対因子分解も証明済み。
-  元の脚と底射影を持つ `strictRightFibrationColimit`、全空間の κ-filtered 性の保存、同じ fiber 比較を構成。
-  `strictRightStraighteningCocone_isColimit` は同じ strict 余極限の分類余錐の native な余極限性。
-  元の全空間の脚・全評価 join 射・全高次を保持し、別の余錐の存在で代用しない。
-  `rightStraighteningSmallRecovery` は元の全空間から同じ分類値の元の right 復元への底上の同値。
-  分類値の条件と全空間の条件の一致、および正則 κ で同じ strict 分類図式の任意の native 余極限への保存まで。
-  `exists_cofinal_kappaFiltered_poset` は任意の小さい κ-filtered ∞ 圏への小さい poset の cofinal map。
-  通常の κ-filtered 性と nerve の全 κ-small 図式の κ-filtered 性を両方証明。HTT 5.3.1.18。
-- **strict 化の現在地**：任意の coherent 前層図式の共同 unstraightening を、底を保つ under 切断図式へ写した。
-  `presheafDiagramRightStrict` と、元の指定値の小さい right 復元への同じ底上の評価同値を構成済み。
-  `underSectionScaffold` は全添字を同時に評価する大域射で、元の積の両射影を厳密に保つ。
-  同じ大域射の各値の制限は、既存の trivial Kan 評価に厳密に一致する。
-  `underSectionWeightedProjection` は同じ切断図式の weighted nerve の、元の積上の left fibration。
-  元の大域評価と taut scaffold は同じ積上の射で、両方とも前合成同値まで証明済み。
-  `underSectionReconstruction` は同じ inner anodyne 置換からの底上の同値 span。元の両 scaffold への制限も保持。
-  `underSectionClassificationIso` はこの span を積上の一つの大域分類同型に移す。
-  `presheafDiagramWeightedClassificationIso` は weighted nerve の共同分類を curry した図式と元の F の FunctorIso。
-  `strictLeftClassificationSectionIso` は strict left 分類像を底の全単体の同じ相対切断の系へ戻す大域同型。
-  `weightedLeftSectionEvaluation` は全切断の同じ共同 weighted nerve への評価で、底の任意の制限とも厳密に可換。
-  `strictLeftTransportSectionDiagram` は全単体と元の添字を同時に動かす Kan 値図式 H。
-  `sectionProductScaffold` は H の replacement から共同 weighted 射影の初頂点引き戻しへの大域射で、両射影を保持。
-  同じ射の fiber 作用を元の初頂点評価と係数 fiber 同型へ同定し、前合成同値性まで証明済み。
-  `sectionProductClassificationIso` は元の共同分類の初頂点制限と H の weighted 分類の一つの大域同型。
-  `strictLeftWeightedClassificationIso` は共同分類を curry した図式と実際の strict left 分類像の一つの大域同型。
-  `presheafDiagramRightStrictClassificationIso` は自然な二重反転も合成し、元の F と実際の strict right 分類像を大域的に結ぶ。
-  `hasKappaFilteredElements_of_ordinary_colimit` は通常の κ-filtered 添字の任意の coherent 前層余極限で条件を保存する。
-- 独立集約 6737 jobs、公理監査 1439 宣言、標準三公理のみ。
+- **(c) 完了（正則 κ）**：最小閉包への所属は、元の right unstraightening の元の圏の κ-filtered 性と同値。
+  `isIndVertex_iff_hasKappaFilteredElements` と、元の関手による `isIndVertex_functorVertex_iff`。
+  `isIndVertex_iff_singleFilteredPresentation` は単一の小さい κ-filtered 表現可能図式による生成表示との同値。
+  順方向は元の right unstraightening 上の同じ密度余錐を使い、元の前層頂点を厳密に保つ。HTT 5.3.5.4。
+  逆方向の閉性は任意の小さい κ-filtered 添字・任意の coherent 前層図式・指定 native 余錐について証明した。
+  小さい cofinal poset と、同じ写像の宇宙移送による同じ制限余錐の余極限性を使う。
+  `presheafDiagramRightStrictClassificationIso` は元の F と実際の strict right 分類像の一つの大域同型。
+  元の積上の scaffold・全単体切断の同じ実現・初頂点局所化・自然な底上の二重反転を保持している。
+  同じ strict 分類余極限の元の全空間と脚の κ-filtered 性を使い、同じ頂点を保つ native 余錐で保存を結論。
+- **(d) 未証明**：実際の制限関手 Fun^κ(Indκ(C),D) → Fun(C,D) の充満忠実性と本質的全射性。
+- 独立集約 6746 jobs、公理監査 1454 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
 
 1. **(a)** 完了。元の F 自体の小さい表現可能図式による密度。HTT 5.1.5.3。
 2. **(b)** 完了。最小閉包・Yoneda の因子化・小さい κ-filtered 余極限の保存と検出。
-3. **(c)** 単一 κ-filtered 表示と右 fibration 定義との一致。逆方向が残る。HTT 5.3.5.4。16〜40時間（暫定）。
+3. **(c)** 完了（正則 κ）。単一 κ-filtered 表示と元の right fibration 定義との一致。HTT 5.3.5.4。
 4. **(d)** κ-filtered 余極限を保つ延長の実際の制限関手の同値。HTT 5.3.5.10、Kerodon 9。32〜80時間（暫定）。
 
 ### 主要宣言（名前のみ）
 
 - `presheafDensityCocone_isColimit`、`presheafDensityPresentation`、`presheafElementsYonedaSliceComparison`
-- `presheafDensityEvaluationValueComparisonIso`、`presheafDensityRestrictedGlobalValueMap_factorization`
-- `IsIndVertex`、`isIndVertex_minimal`、`isIndVertex_of_kappaFiltered_elements`、`HasKappaFilteredElements`
-- `hasKappaFilteredElements_isoClosed`、`hasKappaFilteredElements_yoneda`、`rightStraighteningSmallRecovery`
-- `strictRightFibrationColimit`、`strictRightFibrationColimit_isKappaFiltered`、`strictRightFibrationColimitFiberIso`
-- `strictRightStraighteningCocone_isColimit`、`hasKappaFilteredElements_of_strictClassified_colimit`
-- `terminalSubcomplexBaseMap_isRightCofinal`、`exists_cofinal_kappaFiltered_poset`
-- `presheafDiagramRightStrict`、`presheafDiagramRightValueRecovery_isQCatEquivalence`
-- `underSectionScaffold_over_product`、`underSectionScaffoldValueMap_eq`、`underSectionWeightedProjection`
-- `underSectionScaffold_isPrecompositionEquivalence`、`underSectionReconstruction`
-- `presheafDiagramWeightedClassificationIso`、`underSectionClassificationIso`
-- `strictLeftClassificationSectionIso`、`weightedLeftSectionEvaluation_restriction`、`sectionProductScaffold`
-- `IndInfinity`、`indInclusionPresheaf_isFullyFaithful`、`indYoneda_isFullyFaithful`、`ind_isColimit_iff_inclusion`
+- `IndInfinity`、`indYoneda`、`indInclusionPresheaf`、`ind_isColimit_iff_inclusion`
+- `presheafDiagramRightStrictClassificationIso`、`hasKappaFilteredElements_of_ordinary_colimit`
+- `exists_cofinal_kappaFiltered_poset`、`isRightCofinal_ulift`、`isColimitCone_iff_restrict_rightCofinal`
+- `hasKappaFilteredElements_kappaColimitClosed`、`isIndVertex_iff_hasKappaFilteredElements`
+- `isIndVertex_functorVertex_iff`、`HasSingleFilteredRepresentablePresentation`
+- `isIndVertex_iff_singleFilteredPresentation`
 
 ### 依存と提供
 
@@ -77,26 +53,22 @@
 
 ### 未コミット
 
-- なし。通る区切りを独立集約と公理監査とともに保存する。
+- `NativeFilteredPreservation.lean`：同じ宇宙の保存性と (d) の制限射の入口を編集中。集約外。
 
 ### 既知の問題
 
-- 最小閉包だけでは (c) の単一表示も右 fibration 定義との一致も結論しない。
 - (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
+- `Compact.PreservesKappaFilteredColimits` はさらに持ち上げた始域の関手を扱う。Indκ と D の宇宙を照合して使う。
 - 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使う。
 
 ### 次の一手
 
-(c)：小さい通常の κ-filtered poset の nerve 上の一般 coherent 前層図式を strict 化する。
-元の共同分類と strict left 分類像は全単体切断の同じ積上の実現と初頂点局所化で大域同型。
-自然な底上の二重反転も構成し、`presheafDiagramRightStrictClassificationIso` で元の F 自体へ接続済み。
-`hasKappaFilteredElements_of_ordinary_colimit` は同じ元の頂点を保つ native 余錐を strict 分類へ輸送し、
-通常の κ-filtered 添字上の任意の coherent 図式の余極限で元の圏の κ-filtered 性が保存される。
-次は `exists_cofinal_kappaFiltered_poset` の cofinal map による元の余錐の制限を余極限として移す。
-小さい添字の cofinal 性を宇宙 u+1 の前層標的へ使う移送と、同じ制限余錐の余極限性が要る。
-各値の同値や余極限の存在だけで、元の図式・頂点・余錐の比較を代用しない。HTT 5.3.5.3、5.3.1.18。
-`isIndVertex_minimal` で逆方向を得て、同じ密度表示により単一 κ-filtered 表示と右 fibration 定義との一致を結論する。
-その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。
+(d)：κ-filtered 余極限を保つ関手の全部分 ∞ 圏と、`indYoneda κ C` による実際の制限射を構成する。
+Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保存性は元の native 余錐への作用で定義する。
+F1b の `Compact/Definition.lean` の保存性は始域をさらに持ち上げるため、その型を照合する。
+(c) の単一表示を使い、任意の C → D を元の元の圏上の κ-filtered 余極限で延長する。
+元の Yoneda 上の回収と、全対象・全写像空間の自然な比較を作り、同じ制限射の同値を証明する。
+HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点
 
