@@ -435,3 +435,6 @@ public import SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle
 public import SerrePositivity.KST.Fibration.RelativeComparisonRightSection
 public import SerrePositivity.KST.Fibration.WeakCosliceComparisonSection
 public import SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection
+public import SerrePositivity.KST.Fibration.VerdierKZeroSurjectivity
+public import SerrePositivity.KST.Fibration.DGNuKZeroCofinality
+public import SerrePositivity.KST.Fibration.KZeroCofinalityObstruction
