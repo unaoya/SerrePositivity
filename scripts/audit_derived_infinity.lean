@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Stable.Grid22Pasting
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreOuterPushout
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridOuterDiagram
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridOuterPushout
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSuspension
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridSharedEdges
 import SerrePositivity.InfinityCategories.Stable.PosetOrderIsoLowerCocone
 import SerrePositivity.InfinityCategories.Stable.PosetOrderIsoCanonicalColimit
@@ -4377,6 +4384,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.Grid22Pasting,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreOuterPushout,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridOuterDiagram,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridOuterPushout,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSuspension,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionGridSharedEdges,
 
     `SerrePositivity.InfinityCategories.Stable.PosetOrderIsoLowerCocone,
