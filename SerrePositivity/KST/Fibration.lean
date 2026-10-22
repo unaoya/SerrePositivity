@@ -359,3 +359,4 @@ public import SerrePositivity.KST.Fibration.PointedLeftResolutionVertices
 public import SerrePositivity.KST.Fibration.ScaffoldCandidateNativeComparison
 public import SerrePositivity.KST.Fibration.ScaffoldCandidateClassification
 public import SerrePositivity.KST.Fibration.ConnectiveFiberCriterion
+public import SerrePositivity.KST.Fibration.FiberCofinalityObstruction

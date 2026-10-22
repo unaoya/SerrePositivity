@@ -10,8 +10,7 @@
   cofiber の W 条件と商の可逆性、実二対三・押し出し・引き戻し・ホモトピーに対する拡大安定性を証明。
 - 工程 (b)：相対図式の全単体・W 判定・内ホーン充填・再添字・core 包含を構成し、
   商の core の逆像と同定し、wS•C・商への自然変換・核の四角形へ接続。核側の全相対 S_n は弱可縮。
-- W 辺と E(C,C,ker q) の元の射影は trivial Kan。K-1 で正の全有限反復の加法性を証明。
-  全ての面・退化は完全で、StableModel 値の単体的対象と各段の反復実現を構成済み。
+- W 辺と E(C,C,ker q) の元の射影は trivial Kan。K-1 で正の全有限反復の加法性を証明。全面・全退化は完全で、StableModel 値の単体的対象と各段の反復実現を構成済み。
 - 初期頂点と全連続辺の cofiber から、空列を含む有限 W 列の実現と積との比較を構成済み。
   零長は厳密同型、全長・全正反復は局所化同型。全単体的な有限積比較の自然同値は未主張。
 - 二辺の内ホーン制限は trivial Kan。元の両短辺の厳密引き戻しと Quillen A で全 S_n・全多重対角へ接続。
@@ -61,9 +60,10 @@
   pointed 復元射の底・同値性・native 恒等点との分類逆成分による点の式を証明。
   元の scaffold の埋め込みと universal・taut 両脚の厳密な制限も保持し、同じ相対三角を持つ表現を構成。
   同じ三角を係数値と指定点へ制限し、weighted の実係数作用を左解像比較と厳密に同定。豊穣実現同型の二段階評価・元の oppositeRealizationIso・既存 strict transport 反転比較の指定成分は、元の点を反転側の同じ点へ送る。左解像の実頂点も標準の同じ反転点として回収。候補→native→実分類の同じ指定成分が、元の係数点を同じ恒等射評価の pointed 復元像へ送ると証明。一般の分類比較を scaffold 対応を保持する構成へ置換し、既存の分類・分数側の利用箇所も再検証。
-- 工程 (c)：K-5 の元の実長完全列から、中央・右項の π が整数 k 未満で消えるなら、左 fiber の同じ消滅と πₖ 射影の全射性が同値と証明。k=0 で連結性の必要十分形を得る。具体的 K 関手・冪等完備化の cofinality への適用は未接続。
-- 対象 8695 jobs・専用監査 360 モジュール 2063 宣言・全体 25066 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4955 モジュールは EInfinity を含まない。
+- 工程 (c)：K-5 の実長完全列で、中央・右項の π が k 未満で消えるなら、左 fiber の同じ消滅 ⇔ πₖ 射影全射を証明。中央の πⱼ が消えると右の πⱼ₊₁／射影の像と左 fiber の πⱼ の群同型を構成し、各代表元で元の接続射を回収。k=0・j=-1 で連結性と零次余核の障害を明示。具体的 K との比較は未接続。
+- 工程 (e)：N の冪等完備化の全関手 ∞ 圏の普遍性・安定性・完全性と BGT §9 の入力表を本文に整理。K-7 の構成・局所化性は未証明。
+- 対象 8696 jobs・専用監査 361 モジュール 2073 宣言・全体 25085 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4956 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -77,7 +77,7 @@
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - relativeSConstruction、relativeSimplicialSConstruction、relativeSimplicialQuotientMap、relativeSimplicialKernelSquare。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
-- relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）、fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective。
+- relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）、fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、fiberCofinalityObstructionEquiv、piZeroCofinalityObstructionEquiv_mk。
 - spaceLocalizationPre_fullyFaithful、spaceLocalizationPrecomposition_isQCatEquivalence。
 - weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
 - fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、
@@ -96,15 +96,29 @@
   追加固定界面（L1 §6）：multiRealization_map_positive_localized_eq_of_functorIso（正反復）。
   RelativeCofiberLeftFiber・RelativeFiberEquivalence は L1 §6 の固定界面。K-F の基底変更と Quillen A へ接続。
 - 工程 (c) の下界・連結 fiber 判定は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
-  Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
+  Sp の IsStable は使わない。一般 StableCategory 上の具体的 K・連結性・π₀ 比較の固定最小界面を K-S• へ依頼済み（未固定の K-3 以降は入力しない）。
 - 商・分数・局所化は Sp 正本（10-22 19:50）。新規補題は Sp に依頼。既存構成は保持し、tamme* の lax 専用仮定を一般 Verdier W に流用しない。
 ### 未コミット
-- なし（今回の連結 fiber 判定・集約・監査・本計画を含むチェックポイント。指定分類比較は f1ac8b414）。
+- なし（今回の零次余核・接続射の計算、K-7 入力表、集約・監査・本計画を含むチェックポイント）。
 ### 既知の問題
 - 一般分類比較の係数点と native 実像・pointed 復元点の接続は検証済み。span 側の普遍性・一般分数比較の同値性・具体的 K の cofinality 条件・Sp 値 K-6 は未完。一般商・分数・局所化の追加補題は Sp に依頼し、K-F では新設しない。
 ### 次の一手
-- Sp の一般分数比較同値の提供を確認する（依頼受付済み・未提供）。新しい下界判定を具体的 K の零次 cofinality に接続する際の界面を確認し、既存の実 fiber 比較と指定分類成分の点の回収式を接続する。
+- Sp の分数比較同値と K-S• の一般連結 K の固定界面の返答を確認。独立に leftCocartesianKanComparisonIso の指定成分を Kan 置換単位上で計算し、元の section の包含・恒等射評価と今回の一般分類比較の点作用を接続する（分数・局所化の新設はしない）。
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
 - foundations.md §8 と k-theory-kst-route.md §13（決定 15・16）。H⁰ の Verdier 普遍性で写像空間の比較を代用しない。Sp の IsStable は使わない。
 - 原典：Waldhausen 1985 §1.6、BGT 2013 §7〜9、Barwick 2016。
+
+## 冪等完備化・K-7 への入力境界（工程 e）
+
+原典：[BGT §9.1、定義 9.1・9.6](https://arxiv.org/pdf/1001.2282#page=57)。
+FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-filtered 余極限の保存を使い、
+非連結 K は colimₙ ΩⁿK(ΣκⁿA) で構成する。これらの構成・消滅・余極限の証明は K-7 側。
+
+| 入力 | 検証した正本と K-F の境界 |
+| --- | --- |
+| 完備化前の商 | Sp の IsVerdierSequence・VerdierSequence。K-F の quotientSFibrationFiberIsoOfComparison は商実現比較の可逆性が未証明の条件付き界面。 |
+| 完備化 | N の IsIdempotentCompletion は充満忠実性と retract 条件を保持。IsIdempotentCompletion.pre_isQCatEquivalence は全関手 ∞ 圏の普遍性。H⁰ では代用しない。 |
+| 安定・完全性 | N の IsIdempotentCompletion.isStable・isExactFunctor、idem_isStable・idemYoneda_isExactFunctor を使う。元の Idem C は宇宙 u+1、idemYoneda の始域は ulift C。 |
+| 零次 cofinality | 完備化という条件だけでは π₀ 全射性を入力せず、実 K 比較で検査する。K-F の piZeroCofinalityObstructionEquiv は中央 π₋₁=0 の下で、元の射影の余核を左 fiber の π₋₁ と同定する。 |
+| K-7 への提供 | 指定射影と点を保つ条件付き相対 S fiber 比較、零次障害・連結性判定。各 suspension 段階の実比較と構造写像の整合性が必要。非連結 K 自体とその局所化性は未構成。 |
