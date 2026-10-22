@@ -848,6 +848,31 @@ public import SerrePositivity.InfinityCategories.F2.FunctorIsoPostPairTransport
 
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoInversePrePostValue
 
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitModelFiberActionImage
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitModelFirstUnitComparison
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitModelFirstUnitTransport
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitModelFirstUnitValue
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitNativeFiberUnitCancellation
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportModelIso
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportModelPreimage
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportModelUnit
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportModelUnitRecovery
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentTotalNativeFiberComparisonImage
+public import
+  SerrePositivity.InfinityCategories.F2.CoherentTotalSourceValueTo
+public import
+  SerrePositivity.InfinityCategories.F2.FunctorIsoPrecompEndpointTransport
+
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -1973,3 +1998,31 @@ public import SerrePositivity.InfinityCategories.F2.FunctorIsoInversePrePostValu
 
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_inverse_pre_post_value_heq
 #check @SerrePositivity.InfinityCategories.F2.functorIso_postcomp_trans_twice
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFiberActionIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFiberActionIso_eq_actions
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFiberActionIso_cancel_native
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitComparison_value
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitComparison_eq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitTransportValue
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitTransportValue_eq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_model_first_transport
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelUnitComparison_cancel_upper
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitValueIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitModelFirstUnitValueIso_eq_raw
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeFiberModelUnitIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeFiberModelUnitIso_eq_factors
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeFiberModelUnitIso_cancel
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelIso_heq_native
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelIso_precomp_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelUnit_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelUnitFactor
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelUnitComparison
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportModelUnitComparison_eq_model
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeFiberTransportIso_precomp_heq
+#check @SerrePositivity.InfinityCategories.F2.pointedFiberValueTo_eq_cast
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberValueMapAt_eq_valueTo
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalSourceValueMap_eq_valueTo
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_precomp_heq
