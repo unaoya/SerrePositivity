@@ -231,3 +231,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionTautScaffold_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_underSectionReconstruction
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionReconstruction
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_leftFibrationComparison_of_span
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionClassificationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramWeightedJointIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDiagramWeightedClassificationIso

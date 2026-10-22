@@ -135,3 +135,5 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ProductGraphFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldHorizontal
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionReconstruction
+public import SerrePositivity.InfinityCategories.F2.Ind.SpanLeftFibrationComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionClassification

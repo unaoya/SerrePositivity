@@ -29,8 +29,10 @@
   `underSectionWeightedProjection` は同じ切断図式の weighted nerve の、元の積上の left fibration。
   元の大域評価と taut scaffold は同じ積上の射で、両方とも前合成同値まで証明済み。
   `underSectionReconstruction` は同じ inner anodyne 置換からの底上の同値 span。元の両 scaffold への制限も保持。
-  この span の分類への移送、元の前層図式との大域 FunctorIso、逆方向と単一 κ-filtered 表示は未証明。
-- 独立集約 6700 jobs、公理監査 1265 宣言、標準三公理のみ。
+  `underSectionClassificationIso` はこの span を積上の一つの大域分類同型に移す。
+  `presheafDiagramWeightedClassificationIso` は weighted nerve の共同分類を curry した図式と元の F の FunctorIso。
+  その weighted 分類と strict right fibration 図式の実際の分類像の比較、逆方向と単一 κ-filtered 表示は未証明。
+- 独立集約 6702 jobs、公理監査 1282 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -52,6 +54,7 @@
 - `presheafDiagramRightStrict`、`presheafDiagramRightValueRecovery_isQCatEquivalence`
 - `underSectionScaffold_over_product`、`underSectionScaffoldValueMap_eq`、`underSectionWeightedProjection`
 - `underSectionScaffold_isPrecompositionEquivalence`、`underSectionReconstruction`
+- `presheafDiagramWeightedClassificationIso`、`underSectionClassificationIso`
 - `IndInfinity`、`indInclusionPresheaf_isFullyFaithful`、`indYoneda_isFullyFaithful`、`ind_isColimit_iff_inclusion`
 
 ### 依存と提供
@@ -77,8 +80,10 @@
 
 (c)：小さい通常の κ-filtered poset の nerve 上の一般 coherent 前層図式を strict 化する。
 元の共同 left fibration と、元の under 切断の weighted nerve の間の底上の前合成同値 span まで証明済み。
-次はこの span を分類へ移し、weighted nerve の分類と `presheafDiagramRightStrict` の同じ大域分類図式を比較する。
-元の前層変数を含む積上の比較を使い、元の coherent 前層図式との一つの FunctorIso を実現する。
+この span の積上の分類同型と、共同分類を curry した図式と元の F の一つの FunctorIso まで証明済み。
+次は `presheafDiagramWeightedClassification F` と、`strictCoherentDiagram (presheafDiagramRightStrict F)` を
+`rightStraighteningInfinityMap C` で分類した実際の図式との大域比較を構成する。
+共同 weighted nerve の分類と、固定底上の strict 図式の全高次の分類を揃える。元の F との比較は既存の同型を使う。
 span の元の両 scaffold への制限を保持し、各値の同値だけで大域比較や元の余錐の比較を代用しない。
 同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。HTT 5.3.5.3、5.3.1.18。
 `isIndVertex_minimal` で逆方向を得て、同じ密度表示により単一 κ-filtered 表示と右 fibration 定義との一致を結論する。
