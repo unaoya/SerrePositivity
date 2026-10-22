@@ -670,3 +670,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_coslice_cocone
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_cocone
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indComma_coslice_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaRestriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaRestriction_fst
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaRestriction_snd
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaRestriction_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneCommaRestriction_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_cocone_lift_of_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointRestriction
+#check @SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointRestriction_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_cocone_of_initial
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_coslice_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeCommaPointRestriction_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeComma_coslice_cocone

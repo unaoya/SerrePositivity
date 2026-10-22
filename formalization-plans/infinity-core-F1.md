@@ -13,14 +13,12 @@
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
   始対象側は全表現可能値の可縮性と同型・κ-filtered native 余極限の閉性、終対象側は全評価と全部分包含で証明。
   `indVertex_evaluation_isTerminal_of_initial` は任意の Indκ 前層の元の始対象での評価が空間の終対象であること。
-- 現区切り：独立集約 7666 jobs、公理監査 3101 宣言、標準三公理のみ。
+- 現区切り：独立集約 7669 jobs、公理監査 3123 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
   `indVertex_cone_isLimit_of_exchange` は交換が成り立つ形状の元の極限全錐を、すべての Ind 前層が保存する条件付き定理。
-  表現可能前層での極限保存から、全錐上の同型と κ-filtered 閉包で元の Ind 頂点まで拡張した。
   `indObject_finiteColimit_isLimit` は明示交換入力のもとで、C の指定有限余極限の反転全錐の同じ前層による像の極限性。
-  `leftFibrationConeRestriction_baseChange_iff` と全制限自然性で、同じ全錐の像の全係数の coslice 切断制限へ戻した。
   `indYoneda_finiteOppositeCone_isLimit` は元の指定有限余極限の反転全錐の、正規化した反転 Yoneda による像の極限性。
   `uliftCoconeReverse_val` は ULift と反転の順の全射の一致。順逆の join 比較と Δ⁰ の形状自然性から証明。
   `indYoneda_finiteColimit_isColimit` は同じ指定元余錐の native な Yoneda 像の余極限性まで帰還。
@@ -37,7 +35,10 @@
   `smallDiagramCommaIso` は ULift した小さい実模型との同型、`_projection` は元の全図式への射影の厳密な一致。
   小さい射影の right fibration 性・全空間の quasicategory 性・同じ図式を頂点とする標準全余錐は証明済み。κ-filtered 性・余極限性は未証明。
   `commaFamilyLift` は全射回収・往復・制限自然性を保持。
-  `nonempty_indComma_cocone` と `_coslice_cocone` は元の Ind 頂点への実 comma 上で、κ-small 試験図式と指定図式下の余錐の存在。
+  `nonempty_indComma_cocone` と `_coslice_cocone` は実 comma と指定図式下の κ-small 試験余錐。
+  `coneCommaRestriction_isPullback` と `_trivialKanFibration` は left anodyne な形状制限の実比較。
+  `indConeCommaPointRestriction_projection` は始点図式を保つ。`_trivialKanFibration` は全境界の持ち上げ。
+  `nonempty_indConeComma_cocone` と `_coslice_cocone` は始対象形状の全錐 comma と指定図式下の κ-small 試験余錐。
 
 ### 残り（依存順）
 
@@ -56,7 +57,6 @@
 - `conePresheafRestriction`、`conePresheafRestriction_isPointwiseColimit`、`indVertex_cone_isLimit_of_exchange`
 - `indPresheaf_finiteCone_isLimit`、`indPresheaf_finiteColimit_isLimit`、`indObject_finiteColimit_isLimit`
 - `oppositeYonedaSliceProjection`、`oppositeElementsYonedaSliceComparison_projection`、`oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence`
-- `indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence`、`oppositeIndLeftKanProjection`、`ind_finiteColimit_commaSections_isQCatEquivalence`
 - `indCommaCoslicePullbackIso`、`indCommaCoslicePullbackIso_projection`、`leftFibrationConeRestriction_baseChange_iff`
 - `ind_finiteColimit_cosliceSections_isQCatEquivalence`、`indYoneda_finiteOppositeCone_isLimit`
 - `joinUniverseReverse_hom`、`joinUniverseReverse_inv`、`uliftCoconeReverse_val`、`indYoneda_finiteColimit_isColimit`
@@ -64,7 +64,7 @@
 - `compactYoneda_isQCatEquivalence`、`compactGenerationEquivalence`、`compactGenerationEquivalence_hom`
 - `indVertex_has_filteredYonedaPresentation`、`diagramYoneda`、`diagramYoneda_isFullyFaithful`
 - `diagramComma_obj_small`、`smallDiagramComma`、`smallDiagramCommaIso_projection`、`smallDiagramCommaCocone_vertex`
-- `nonempty_indComma_cocone`、`nonempty_indComma_coslice_cocone`
+- `nonempty_indComma_cocone`、`nonempty_indConeComma_cocone_of_initial`、`nonempty_indConeComma_coslice_cocone`
 
 ### 依存と提供
 
@@ -78,7 +78,7 @@
 
 ### 未コミット
 
-- なし。元の実 comma と指定図式下の κ-small 試験余錐まで検証済み。
+- なし。始対象形状の全錐 comma の点制限と指定図式下の κ-small 試験余錐まで検証済み。
 
 ### 既知の問題
 
@@ -94,9 +94,9 @@
 まず有限半順序集合 P の nerve 上の図式の単一 filtered 表示を構成する（HTT 5.3.5.15）。任意の有限 K への誤った一般化を追わない。
 `smallDiagramComma` の小ささ・実比較・全図式射影は済み。次は P の頂点を下から追加する補間で κ-filtered 性を証明。
 局所入力 `nonempty_indComma_cocone` と `_coslice_cocone` は証明済み。κ-small 試験族・指定全境界を保つ。
-各新頂点 a の上方区間の始対象 a への制限を比較し、局所 comma の指定図式下の余錐へ帰着する。
-`nervePoint_leftAnodyne` と既存の `parametrizedSectionsPointRestriction_trivialKanFibration` / `underSectionEvaluate` が利用候補。
-その局所比較を有限半順序 P の元の補間領域へ貼り合わせ、全 comma の余錐を得る。主張はまだ未証明。
+上方区間の始対象への点制限は `indConeCommaPointRestriction` で実現済み。射影を厳密に保ち、全比較が自明 Kan。
+次は頂点追加の実補間領域と境界 M=(P≤a×B)∪(P<a×{∞}) を構成し、局所余錐を貼り合わせる。
+まず P=[1]。全図式 comma の各頂点評価を実 scalar comma への射として作り、元の始点と変換の評価を厳密に揃える。
 次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
 HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。
 cofiber は余極限の合成、fiber は明示交換入力による前層の点ごとの引き戻し交換で示し、零角の一致から安定性へ戻す。
