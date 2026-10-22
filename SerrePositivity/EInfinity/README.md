@@ -2326,10 +2326,19 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 同じ NativeIntervalCell の合成が元の RightCell となる全関手圏の三角形 hN。
 `cofibrantSourceRoofProductReference_triangle` は追加入力なしの hR 本体。
 `cofibrantSourceRoofMap_isLeftCofinal` は元の実屋根写像自身の left cofinal 性。
-標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`cofibrantSourceFrameRightKanMap_isLeftCofinal` は元の次数比較自身の left cofinal 性。
+`cofibrantSourceRightKanDiagram_hasLimit_all` は任意反転関手の全頂点での実局所極限。
+`cofibrantSourceRightKanCanonicalCone_isLimit_all` は同じ全 coslice prism による標準錐の極限性。
+`cofibrantSourceRightKanUnit_isInvertible` は任意の実右 Kan 単位の同じ全成分の可逆性。
+同じ二つの極限錐の脚を使い、次数零から元の augmentation に沿って戻す。
+`cofibrantHammockLocalization_isLocalization` は実 hammock 側の ∞ 局所化普遍性。
+`cAlgLocalizationSource_isLocalization` と
+`cAlgLocalizationPrecomposition_isQCatEquivalence` は既存 CAlg_R への元の局所化写像について、
+任意 quasicategory 標的の全反転関手 ∞ 圏への前合成が同値であることを証明する。
+γ2 e は完成。既存 D(R) への U・離散対象・∞ 極限・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
-元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
+元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。

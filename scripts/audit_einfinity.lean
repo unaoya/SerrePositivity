@@ -8387,6 +8387,32 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofProductReference_triangle,
       `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRoofMap_isLeftCofinal]
 
+@[noinline] private def e2RequiredBatch151 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRawRoofMap_isLeftCofinal,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap_isLeftCofinal,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockObject,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockVertex_object,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanDiagram_hasLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanDiagram_hasLimit_all,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantInvertingFunctor_rightKanExtension_exists,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.frameRightKanCanonicalCone_isLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanCanonicalCone_isLimit,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanCanonicalCone_isLimit_all,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanExtension_refl,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockLocalizationPrecomposition_isFullyFaithful,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationLimitConeFunctorIso,
+      `SerrePositivity.EInfinity.FrameHom.FrameArrows.augmentationLimitCone_leg_isInvertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameAugmentation_image_invertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanLimitCone_leg_isInvertible,
+      `SerrePositivity.EInfinity.FrameHom.homotopyComponent_target_isInvertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceFrameRightKanMap_frame_projection,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanUnit_frame_isInvertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanUnit_vertex_isInvertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantSourceRightKanUnit_isInvertible,
+      `SerrePositivity.EInfinity.BarrattEccles.cofibrantHammockLocalization_isLocalization,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationSource_isLocalization,
+      `SerrePositivity.EInfinity.BarrattEccles.cAlgLocalizationPrecomposition_isQCatEquivalence]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8420,7 +8446,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20211,3 +20237,40 @@ example : (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
 example : IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal A X Y
 end e2NativeTriangleFixtures
+
+section e2LocalizationUniversalFixtures
+universe e2LocalizationUniversalUniverse
+open CategoryTheory MonoidalClosed SSet
+open SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+variable (A : Type e2LocalizationUniversalUniverse) [CommRing A] (X : CofibrantAlgebra A)
+variable (E : SSet.{e2LocalizationUniversalUniverse + 1}) [Quasicategory E]
+variable (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
+variable (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+variable (G : kanHammockNerve (cofibrantAlgebraRelativeCategory A) ⟶ E)
+example : IsLeftCofinal (cofibrantSourceFrameRightKanMap A X) :=
+  cofibrantSourceFrameRightKanMap_isLeftCofinal A X
+example (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
+    HasLimit (rightKanDiagram
+      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F z) :=
+  cofibrantSourceRightKanDiagram_hasLimit_all A F hF z
+example (z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋0⦌) :
+    IsLimitCone (rightKanCanonicalCone
+      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) G z) :=
+  cofibrantSourceRightKanCanonicalCone_isLimit_all A G z
+example (α : SSet.Homotopy
+      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) ≫ G) F)
+    (hα : IsRightKanExtension
+      (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F G α)
+    (z : (nerve (cofibrantAlgebraRelativeCategory A).category) _⦋0⦌) :
+    IsInvertibleEdge (simplicialHomotopyVertexEdge α z).toTruncated :=
+  cofibrantSourceRightKanUnit_isInvertible A F hF G α hα z
+example : IsLocalization (cAlgLocalizationSource A)
+    (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
+  cAlgLocalizationSource_isLocalization A
+example : IsQCatEquivalence (localizationPrecomposition (cAlgLocalizationSource A)
+    (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
+    (cAlgLocalizationSource_inverts A) E) :=
+  cAlgLocalizationPrecomposition_isQCatEquivalence A E
+end e2LocalizationUniversalFixtures
