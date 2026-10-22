@@ -439,3 +439,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.uliftWeightedRightFibrationProjection_cocartesian
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily_with_KanImage
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensity_globalFamily_homUniversal
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_weightedDensity_globalFamily_with_universal_KanImage
