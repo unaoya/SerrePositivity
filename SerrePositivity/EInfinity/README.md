@@ -2244,7 +2244,15 @@ D_n→X の元の augmentation による前合成を接続した、指定次数�
 その逆と比較を使う `cofibrantHammockPinchedReferenceMap` は弱同値で、包含との全関手同型を保持。
 `cofibrantSourceRoofProductPinchedReferenceMap_weak` は実 ProductHomMap と同じ始終域を持つ
 具体的な基準射の弱同値性。両射の全ホモトピーが得られれば実屋根比較の cofinal 性が従う。
-そのホモトピー本体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
+`cofibrantSourceRoofProductCommaIso` は元の積単体の comma 表示と両射影を保持する。
+`cofibrantSourceRoofProductCommaEvaluation` と `RightLeg` は元の D_m→D_n と D_m→Y の全自然変換。
+元の augmentation の厳密な三角形と全左脚の弱同値性も証明済み。
+`cofibrantSourceRoofProductCommaComparisonCell` は全関手圏内の逆左脚と同じ右脚の合成で、
+左脚との合成で右脚を回収する一意な射。実円柱も同じ射の類を回収する。
+`PinchedFamilyWeakDetection` は全パラメータの区間族の射の一致から元の pinched 族へ弱同値性を反映。
+`cofibrantSourceRoofMap_isLeftCofinal_of_interval_triangles` は実射と基準射の全区間族が
+それぞれ同じ左脚との合成で元の右脚を回収することから、実屋根の cofinal 性を導く。
+その二つの全三角形本体・left cofinal 性本体・標準右 Kan 条件・単位可逆性と普遍性本体は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性は後続。
