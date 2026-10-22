@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentityMap
+import SerrePositivity.InfinityCategories.Derived.IsoRawFactorSquare
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompNaturalitySquare
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightNaturality
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoWhiskerHomTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionSemifreeHomTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskeredSquareTransport
+import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionSemifreeRightNaturality
 import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawPrecompAction
 import SerrePositivity.InfinityCategories.Derived.FunctorHomEndpointTransport
 import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompRetractionSquare
@@ -4663,6 +4671,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompIdentityMap,
+
+    `SerrePositivity.InfinityCategories.Derived.IsoRawFactorSquare,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompNaturalitySquare,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveRightNaturality,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoWhiskerHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionSemifreeHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskeredSquareTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelCompositionSemifreeRightNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawPrecompAction,
 
     `SerrePositivity.InfinityCategories.Derived.FunctorHomEndpointTransport,
