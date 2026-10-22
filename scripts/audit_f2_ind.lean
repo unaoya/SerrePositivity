@@ -222,3 +222,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffold_value
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffoldValueMap_eq
 #check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffoldValueMap_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedNerveParameterProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionWeightedProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionTautScaffold_over_product
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffold_isCocartesianScaffold
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionScaffold_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionTautScaffold_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_underSectionReconstruction
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionReconstruction
