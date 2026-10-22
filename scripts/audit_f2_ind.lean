@@ -252,3 +252,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_total
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedParameterGraphIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductCoefficientFiberIso_total
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductValueEvaluation_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_fiber
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.sectionProductScaffold_isPrecompositionEquivalence

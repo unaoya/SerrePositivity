@@ -148,3 +148,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductReplacemen
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductReplacementMap
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductWeightedBase
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffold
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldValue
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedParameterGraphIso
+public import SerrePositivity.InfinityCategories.F2.Ind.VertexFiberIsoProjection
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCoefficientFiberIso
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductValueEquivalence
+public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldEquivalence
