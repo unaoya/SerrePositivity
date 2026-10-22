@@ -26,7 +26,11 @@
 - 同じ制限射影を順関手とする両 H⁰ 同値と、その逆による C・D 切断関手を構成。切断後の射影は実余単位で恒等と自然同型。
   元の Hom 射影の全単射から、左射影 ⊣ C 切断、D 切断 ⊣ 右射影の実 H⁰ 随伴を構成。
   C 随伴の余単位と D 随伴の単位は同じ切断同型の順射・逆射で可逆。両切断の完全忠実性も供給。
-- (b) の分解三角形・gluing 関手の同定は未完。(c)〜(f) は未着手。
+- D 随伴の同じ余単位を実閉 gluing 射へ持ち上げ、その右成分が H⁰ で同型と証明。実円錐は C 因子に属する。
+  左零成分を持つ始域の円錐の左成分を標的の左成分と H⁰ で同定し、C 因子同値で円錐を同じ C 切断へ同定。
+- `dgGluingDecompositionTriangle` は各実対象 X について、D 切断→X→C 切断の代表加群を三対象に持つ K(Gluing) の distinguished 三角形。
+  第一射は同じ D 随伴余単位の Yoneda 像。元の H⁰ に未導入の三角構造や ∞ 随伴を結論していない。
+- (b) の gluing 関手の同定が残る。(c)〜(f) は未着手。
 
 ### 主要宣言
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingHomPrimitive_boundary`
@@ -66,9 +70,11 @@
 - `dgGluingCFactorProjection_quasiEquivalence`・`dgGluingLeftHomMap_quasiIso_of_target_right_zero`・`dgGluingFactors_semiorthogonal`
 - `dgGluingDFactorProjection_quasiEquivalence`・`dgGluingCFactorHomotopyEquivalence`・`dgGluingDFactorHomotopyEquivalence`
 - `dgGluingCProjectionAdjunction`・`dgGluingDProjectionAdjunction`・`dgGluingCSectionHomotopyFullyFaithful`・`dgGluingDSectionHomotopyFullyFaithful`
+- `dgGluingDecompositionArrow`・`dgGluingDecompositionCFactor`・`dgGluingDecompositionCSectionIso`
+- `dgGluingDecompositionTriangle`・`dgGluingDecompositionTriangle_distinguished`・`dgGluingDecompositionTriangle_mor₁`
 
 ### 残り（依存順）
-1. (b) 半直交分解 ⟨D, C⟩（K-8b の Map(left,right)=0）：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
+1. (b) 残り：gluing 関手の全次数係数 M[-1] と自然性の同定。充満因子・半直交性・両 H⁰ 随伴・K の分解三角形は構成済み。KL §4.2。見積り 1 日。
 2. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
 3. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
 4. (e) 安定性・完全射影と F2・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
@@ -83,13 +89,13 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- D 随伴の余単位を元の閉 gluing 射へ持ち上げ、工程 (a) の円錐代表を作る。右射影の像が同型であることから円錐が C 因子に属すと示す。
-  C 因子の H⁰ 同値で円錐を C 切断へ同定し、各対象の D→gluing→C 分解三角形を構成する。
-  KL §4.2 と K-8b の順序 ⟨D,C⟩ に沿い、逆向きの全 Hom の双加群係数 M[-1] と gluing 関手を同定する。
+- C 因子から D 因子への全 Hom に、mapping cocone の標準 bottom 包含 M[-1]→Hom を構成する。
+  二つの対角 Hom 成分は acyclic なので、この実包含を擬同型と示す。比較元が零という追加仮定は置かない。
+  左右の全次数合成に対する自然性を証明し、制限 Hom 双加群と同じ係数 M[-1] の gluing 関手を同定する。
 
 ### 未コミット・既知の問題
-- 201モジュール・集約ビルド成功（5122 jobs）、公理監査3452宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
-  公開31署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
+- 210モジュール・集約ビルド成功（5131 jobs）、公理監査3599宣言成功。許容三公理のみ。所有警告・新規 sorry・axiom・主経路 `ModelCategory` 仮定なし。
+  公開28署名を検査済み。新規9モジュール、集約・監査・本計画の専有12パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。

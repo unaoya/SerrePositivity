@@ -200,3 +200,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorHomotopySe
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CProjectionAdjunction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DProjectionAdjunction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ProjectionAdjunctionUnits
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionArrow
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCFactor
+public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleThirdTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.RepresentableConeTriangle
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionFactors
+public import SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomotopyIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeLeftProjectionIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionCFactorIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionTriangle
