@@ -320,7 +320,13 @@ run_cmd do
     `SerrePositivity.KST.Fibration.CoslicePointHomNaturality,
     `SerrePositivity.KST.Fibration.PointedFamilyPointHom,
     `SerrePositivity.KST.Fibration.PointedCosliceNativePoint,
-    `SerrePositivity.KST.Fibration.TransportWitnessPointEvaluation]
+    `SerrePositivity.KST.Fibration.TransportWitnessPointEvaluation,
+    `SerrePositivity.KST.Fibration.TransportWitnessDiagramComponent,
+    `SerrePositivity.KST.Fibration.PointedVertexPointHom,
+    `SerrePositivity.KST.Fibration.TransportRepresentationPointHom,
+    `SerrePositivity.KST.Fibration.ChosenRepresentationPointHom,
+    `SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom,
+    `SerrePositivity.KST.Fibration.NativeRepresentationComparisonPoint]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

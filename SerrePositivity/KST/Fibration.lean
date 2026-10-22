@@ -314,3 +314,9 @@ public import SerrePositivity.KST.Fibration.CoslicePointHomNaturality
 public import SerrePositivity.KST.Fibration.PointedFamilyPointHom
 public import SerrePositivity.KST.Fibration.PointedCosliceNativePoint
 public import SerrePositivity.KST.Fibration.TransportWitnessPointEvaluation
+public import SerrePositivity.KST.Fibration.TransportWitnessDiagramComponent
+public import SerrePositivity.KST.Fibration.PointedVertexPointHom
+public import SerrePositivity.KST.Fibration.TransportRepresentationPointHom
+public import SerrePositivity.KST.Fibration.ChosenRepresentationPointHom
+public import SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom
+public import SerrePositivity.KST.Fibration.NativeRepresentationComparisonPoint
