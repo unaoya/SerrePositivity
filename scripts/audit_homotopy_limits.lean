@@ -14434,3 +14434,48 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @presheafUniverseDiagram_map_isColimit
 #print axioms presheafUniverseDiagram_map_isColimit
+
+#check @presheafHomWeightDiagram
+#print axioms presheafHomWeightDiagram
+
+#check @presheafHomWeightDiagram_uncurry
+#print axioms presheafHomWeightDiagram_uncurry
+
+#check @presheafHomWeightDiagram_transpose
+#print axioms presheafHomWeightDiagram_transpose
+
+#check @presheafHomWeightDiagram_evaluation
+#print axioms presheafHomWeightDiagram_evaluation
+
+#check @presheafHomWeightDiagram_evaluationIso
+#print axioms presheafHomWeightDiagram_evaluationIso
+
+#check @presheafHomWeightDiagram_vertex
+#print axioms presheafHomWeightDiagram_vertex
+
+#check @presheafHomWeightDiagram_precomp
+#print axioms presheafHomWeightDiagram_precomp
+
+#check @presheafHomWeightDiagram_isPointwiseLimit
+#print axioms presheafHomWeightDiagram_isPointwiseLimit
+
+#check @presheafHomWeightDiagram_map_isLimit
+#print axioms presheafHomWeightDiagram_map_isLimit
+
+#check @presheafHomWeightDiagram_iso
+#print axioms presheafHomWeightDiagram_iso
+
+#check @sigmaLeftKanHomWeightRestrictionIso
+#print axioms sigmaLeftKanHomWeightRestrictionIso
+
+#check @coyonedaInfinityMap_evaluation
+#print axioms coyonedaInfinityMap_evaluation
+
+#check @coyonedaInfinityMap_isPointwiseLimit
+#print axioms coyonedaInfinityMap_isPointwiseLimit
+
+#check @coyonedaInfinityMap_map_isLimit
+#print axioms coyonedaInfinityMap_map_isLimit
+
+#check @sigmaLeftKanHomCanonicalCone_isLimit
+#print axioms sigmaLeftKanHomCanonicalCone_isLimit
