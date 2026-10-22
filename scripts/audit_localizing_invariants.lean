@@ -1262,7 +1262,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingZeroSquare,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingContour,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseChange,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseContour]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseContour,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassZeroNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingEdges,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessMapOver,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueTransition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCentralTransition,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquarePrepend,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeGlueContour,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareCongr,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRectangleTopGlue,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeBaseChangeComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightBaseGlue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueContour]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
