@@ -27,8 +27,12 @@
   `HasKappaFilteredElements` は同じ条件を前層の頂点条件として定義。
   `hasKappaFilteredElements_isoClosed` は前層内の同型閉性、`hasKappaFilteredElements_yoneda` は元の Yoneda 像。
   表現可能前層の元の right unstraightening の標準恒等点が終対象なので、任意の κ で条件を満たす。
+  `isCardinalPresentable_of_isKappaSmall` は元の κ-small な形状の通常の κ-presentability。
+  同じ境界・ホモトピーの後続段への因子分解、κ-small な直積の小ささを証明。
+  `isKappaFiltered_of_strict_isColimit` と `rightFibration_of_filtered_isColimit` は通常の strict 模型の閉性。
+  coherent な前層余極限との比較はまだ未証明。通常の strict 余極限をそのまま ∞ 余極限とは主張しない。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6192 jobs、公理監査 693 宣言、標準三公理のみ。
+- 独立集約 6204 jobs、公理監査 719 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -48,6 +52,8 @@
 - `presheafDensityEvaluationReconstruction_isPrecompositionEquivalence`、`presheafElementsYonedaSliceComparison`
 - `isIndVertex_of_kappaFiltered_elements`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `HasKappaFilteredElements`、`hasKappaFilteredElements_isoClosed`、`hasKappaFilteredElements_yoneda`
+- `isCardinalPresentable_of_isKappaSmall`、`kappaSmall_relative_factorization_of_isColimit`
+- `isKappaFiltered_of_strict_isColimit`、`rightFibration_of_filtered_isColimit`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -70,12 +76,14 @@
 - 最小閉包の定義だけでは (c) の単一 κ-filtered 表示も、HTT の右 fibration 定義との一致も結論しない。
 - (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
 - 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使った。
-- κ-filtered 余極限閉性には κ-small 形状を扱う比較が必要。既存の有限因子分解だけでは一般の正則 κ を結論しない。
+- κ-small な相対因子分解は通常の κ-filtered 図式で証明済み。coherent な前層余極限との比較が残る。
 
 ### 次の一手
 
 (c)：`HasKappaFilteredElements` の同型閉性と Yoneda 像は証明済み。
-正則 κ の下で小さい κ-filtered 余極限閉性を示す。κ-small な図式の因子分解・極限交換の入力を揃える。
+正則 κ の下で小さい κ-filtered 余極限閉性を示す。strict 模型の閉性と相対因子分解は証明済み。
+κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
+原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
 その後は (d) の実際の制限関手を構成し、対象・全写像空間の同値を証明する。

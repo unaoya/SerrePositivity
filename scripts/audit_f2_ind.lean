@@ -50,6 +50,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.HasKappaFilteredElements
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_isoClosed
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_yoneda
+#check @SerrePositivity.InfinityCategories.F2.Ind.finiteGeneratorCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.isCardinalPresentable_of_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Ind.kappaSmall_relative_factorization_of_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_homotopy_at_stage_of_kappaFiltered_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightFibration_of_filtered_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

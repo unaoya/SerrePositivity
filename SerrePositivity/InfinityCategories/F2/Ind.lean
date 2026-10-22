@@ -26,3 +26,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluatio
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsMembership
 public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableFilteredElements
+public import SerrePositivity.InfinityCategories.F2.Ind.KappaHomotopyFactorization
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictKappaFilteredColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationColimit
