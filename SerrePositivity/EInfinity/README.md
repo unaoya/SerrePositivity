@@ -2428,4 +2428,9 @@ latching 余極限保存との接続と、cofibrant X のテンソルへの拡�
 `normalizedProbeHomFromStandard_homotopyEquivalence` と
 `normalizedProbeHomFromTensor_homotopyEquivalence` は、同じ probe の標準・正規化 frame から共通 Hom への全自然な実ホモトピー同値。
 `normalizedProbeHomDoldKanIso` は同じ正規化 Hom と実 Dold–Kan Hom の同型。
-元の始域置換を戻す接続と、標準単位誘導射への同定・弱同値性は未証明。
+元の始域置換を戻す接続も完成。標準単位誘導射への同定・弱同値性は未証明。
+
+`ComplexLimits.normalizedOriginalHomComparison_homotopyEquivalence` は元の始域の標準 Hom を同じ共通 Hom へ送る全自然な実ホモトピー同値。
+三つの probe Hom と元の標準 Hom の Kan 性も、単体集合のモデルを仮定せず証明した。
+`normalizedOriginalHomComparison_augmentation` は元の任意の複体射の二つの augmentation 表示が全単体次数で同じ共通像を持つ厳密な等式。
+既存 D(R) の同じ頂点の Hom への接続と、標準単位比較そのものの弱同値性は未証明。

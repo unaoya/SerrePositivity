@@ -2125,3 +2125,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomFrames
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeTensorFrame
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorFamily
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorReedy
+
+public import SerrePositivity.EInfinity.ComplexLimits.NormalizedOriginalHomAugmentation
+public import SerrePositivity.EInfinity.ComplexLimits.NormalizedOriginalHomComparison
+public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
