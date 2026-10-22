@@ -99,3 +99,9 @@ public import SerrePositivity.KST.Fibration.StandardTailAttachment
 public import SerrePositivity.KST.Fibration.StandardTailVertices
 public import SerrePositivity.KST.Fibration.TailWeakModel
 public import SerrePositivity.KST.Fibration.TailWeakPullback
+public import SerrePositivity.KST.Fibration.CoreFactorization
+public import SerrePositivity.KST.Fibration.CoreFactorPushout
+public import SerrePositivity.KST.Fibration.InnerAnodyneCoreReflection
+public import SerrePositivity.KST.Fibration.TailWeakReflection
+public import SerrePositivity.KST.Fibration.WeakStringTailEquivalence
+public import SerrePositivity.KST.Fibration.WeakStringTailComponents
