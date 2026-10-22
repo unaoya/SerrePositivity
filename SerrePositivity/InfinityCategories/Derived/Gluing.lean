@@ -71,3 +71,7 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyBiproduc
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostCocone
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostHomotopyCriterion
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelRepresentativeHomotopy
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomProjections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomIdentity
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeNativeRepresentation

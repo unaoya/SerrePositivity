@@ -43,7 +43,9 @@
   augmentation の同じ全 dg 自然な境界から標準円錐→選んだ対象の実閉 comma 射を構成し、両成分の K の代表同型を回収。
   任意の加群 comma 試験対象からの同じ実後合成はホモトピー同値であり、その順射の厳密な一致も証明。
   `dgGluingHomConeKernelRepresentativeEquiv` で元の Hom 円錐を選んだ対象の kernel 表示への Hom にホモトピー同値で移す。
-  native Hom との比較、試験対象に関する dg 自然性、シフトは未完。
+  native/kernel Hom の実鎖同型を構成し、両射影・第三 cochain・閉単位を厳密に回収した。
+  `dgGluingHomConeNativeEquiv` は元の両圏の前三角性から、同じ円錐対象への native Hom との点ごとの実ホモトピー同値を供給。
+  全次数合成との整合性、試験対象に関する全 dg 自然性、零・シフトの閉性は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -60,7 +62,6 @@
 - `dgGluingHomConeHomotopy_action`・`dgGluingHomConeExplicitCoefficient`・`dgGluingHomConeExplicitIso`
 - `dgGluingConeBiproductIso`・`dgGluingHomConeSplitIso`・`dgGluingHomConeSplitCoefficient_eq`
 - `dgGluingHomConeLeftCoefficient_module`・`dgGluingHomConeLeftModuleIso`・`dgGluingHomConeRightCoefficient_map`
-- `dgGluingYonedaConeIso`・`dgGluingHomConeRightModuleIso`
 - `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
 - `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
 - `dgGluingKernelConeIso`・`dgGluingKernelConeIso_inr`・`dgGluingCommaKernelConeIso`
@@ -71,9 +72,10 @@
 - `dgGluingConeObject_augmentation_transport`・`dgGluingConeRightHomotopyIso`・`dgGluingConeAugmentationCore_hom`
 - `dgGluingHomConeKernelIso`・`dgGluingKernelConeRepresentativeMap`・`dgGluingKernelConeRepresentativeMap_source_homotopy`
 - `dgGluingCoconeExtract_isIso`・`dgGluingCommaPostHomotopy_isIso`・`dgGluingHomConeKernelRepresentativeEquiv`
+- `dgGluingKernelHomIso`・`dgGluingKernelHomIso_identity`・`dgGluingHomConeNativeEquiv`
 
 ### 残り（依存順）
-1. (a) 残り：シフト・cone の表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
+1. (a) 残り：零・シフト・cone の全 dg 自然な表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
 2. (b) 半直交分解 ⟨C, D⟩：充満 dg 部分圏、射影、随伴、gluing 関手の回収。KL §4.2。見積り 1〜2 日。
 3. (c) dg nerve の二射影と構造変換、F2 の laxPullback への比較写像。Tamme Definition 5。見積り 1〜2 日。
 4. (d) 比較の充満忠実性・本質的全射性と全試験関手の ∞ 普遍性。Tamme Remark 6、F0 判定。見積り 2〜3 日。
@@ -89,16 +91,15 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- native Hom と kernel 表示の対象間の Hom を、同じ tensor–Yoneda 列比較の全次数自然性で同定する。
-  `dgGluingHomConeKernelRepresentativeEquiv` と合わせ、選んだ gluing 対象への native Hom との比較を回収する。
-  順射の試験対象に関する全 dg 自然性を証明し、Yoneda 加群円錐のホモトピー表現可能性へ接続する。
-  その後シフトを構成し、`dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）を証明する。
+- `dgGluingKernelHomIso` の全次数合成との整合性を証明し、同じ kernel 表示への実 dg 関手を得る。
+  `dgGluingHomConeNativeEquiv` の順射について、試験対象に関する全 dg 自然性を揃え、
+  Yoneda 加群円錐の K の同型へ接続する。零・整数シフトも構成し、`dgRepresentableHomotopyProperty` の三角的閉性へ進む。
   点ごとの Hom 複体のホモトピー同値だけでは、全 dg 自然な加群としての円錐表現可能性完了とは数えない。
 
 ### 未コミット・既知の問題
-- 72モジュール・集約のビルド成功（4988 jobs）、公理監査1436宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要22署名も検査済み。
-  新規6モジュール、集約・監査・本計画の専有9パスだけを保存。他レーンの差分は含めない。
+- 76モジュール・集約のビルド成功（4992 jobs）、公理監査1517宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。今回の主要15署名も検査済み。
+  新規4モジュール、集約・監査・本計画の専有7パスだけを保存。他レーンの差分は含めない。
   前三角性は元の両圏について明示入力に取り、gluing の前三角性・安定性を仮定に追加していない。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
