@@ -3087,3 +3087,17 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryTarget
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHomComparison
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHomProjections
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryLocalOriginal
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianOneBoundaryFaceInducedOriginal
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornFaceCoherence
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornCoherentCorrection
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornFaceTriangle
+
+public import SerrePositivity.InfinityCategories.F1.IsoRightTransport
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoHornCoherentGlobalProjection

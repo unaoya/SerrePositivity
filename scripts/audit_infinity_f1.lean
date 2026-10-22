@@ -8718,3 +8718,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_face
 
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryHomComparison_horn
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryLocalCorrectedHom_originalIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFaceInducedOriginal_source
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFaceInducedOriginal_target
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFaceInducedOriginalIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianOneBoundaryFaceInducedOriginalIso_heq
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornFaceInducedOriginalIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornFaceCoherenceReverseIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornFaceCoherenceIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornFaceCoherenceReverseIso_original
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentHomCorrection
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparison
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparison_comm
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparisonIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparisonIso_boundary
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentComparison_originalIso
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornFaceCoherenceIso_triangle
+
+#check @SerrePositivity.InfinityCategories.iso_trans_eqToIso_heq
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentGlobalIso_shared_source
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentGlobalIso_shared_heq_transport
+
+#check @SerrePositivity.InfinityCategories.cocartesianTwoHornCoherentGlobalIso_shared_heq
