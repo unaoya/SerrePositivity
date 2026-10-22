@@ -68,4 +68,12 @@ lemma proIso_of_square {X' Y' : Tower C} (g : LevelHom X' Y') (a : LevelHom X X'
   rw [hs] at hc
   exact proIso_of_comp_left_levelwiseIso a g hc
 
+omit [∀ n, IsIso (f.app n)] in
+lemma proIso_of_square_reverse {X' Y' : Tower C} (g : LevelHom X' Y') (a : LevelHom X X')
+    (b : LevelHom Y Y') [∀ n, IsIso (a.app n)] [∀ n, IsIso (b.app n)]
+    (hs : f.comp b = a.comp g) (hg : IsProIso g) : IsProIso f := by
+  have hc := (isProIso_of_levelwiseIso a).comp hg
+  rw [← hs] at hc
+  exact proIso_of_comp_right_levelwiseIso b f hc
+
 end SerrePositivity.KST.LocalizingInvariants.TowerDiagram

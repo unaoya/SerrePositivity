@@ -914,7 +914,20 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroSourcePro,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroBaseHomology,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroSourceEquivalence,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroMapIso]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroMapIso,
+    `SerrePositivity.KST.LocalizingInvariants.ConcentratedComplexHomology,
+    `SerrePositivity.KST.LocalizingInvariants.ProConcentratedComplexReflection,
+    `SerrePositivity.KST.LocalizingInvariants.ProFunctorIsoTransport,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerProInverse,
+    `SerrePositivity.KST.LocalizingInvariants.ProFunctorProduct,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraDerivationTargetProInverse,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassPro,
+    `SerrePositivity.KST.LocalizingInvariants.ProFiniteDiagramReflection,
+    `SerrePositivity.KST.LocalizingInvariants.ProCospanSourceFactor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCospanProComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassDerivedPro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassProReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneDerivedPro]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
