@@ -30090,3 +30090,72 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotInputKEdge_isInvertible
 #print axioms SerrePositivity.KST.SConstruction.dgOdotInputKEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingModuleConeZeroSourceIso
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingModuleConeZeroSourceIso
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingRightConeIso
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingRightConeIso
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingModuleConeIsoIdentity
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingModuleConeIsoIdentity
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetConeIsoIdentity
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetConeIsoIdentity
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetCone_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetCone_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetMap_comparisonObject
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetMap_comparisonObject
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetModuleMap
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetModuleMap
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetCone
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetCone
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetCone_value
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetCone_value
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetConeHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetConeHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetConeContractingElement
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetConeContractingElement
+
+#check @SerrePositivity.KST.SConstruction.dgHomGluingTargetConeContractingElement_d
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingTargetConeContractingElement_d
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCorner
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCorner
+
+#check @SerrePositivity.KST.SConstruction.DGOdotGluing
+#print axioms SerrePositivity.KST.SConstruction.DGOdotGluing
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetCone
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetCone
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalContractingElement
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalContractingElement
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalContractingElement_d
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalContractingElement_d
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalCone_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetDiagonalCone_isZero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inv
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inv
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inr
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetRightConeIso_inr

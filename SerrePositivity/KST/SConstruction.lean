@@ -2464,4 +2464,11 @@ public import SerrePositivity.KST.SConstruction.DGAlgebraEnvelopeGenerator
 public import SerrePositivity.KST.SConstruction.DGOdotGenerators
 public import SerrePositivity.KST.SConstruction.DGOdotMorita
 
+public import SerrePositivity.KST.SConstruction.DGHomGluingRightCone
+public import SerrePositivity.KST.SConstruction.DGHomGluingTargetComparison
+public import SerrePositivity.KST.SConstruction.DGHomGluingTargetCone
+public import SerrePositivity.KST.SConstruction.DGHomGluingTargetContraction
+public import SerrePositivity.KST.SConstruction.DGOdotTargetCone
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRightCone
+
 /-! # ∞-S• 構成と連結 K 理論 -/
