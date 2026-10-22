@@ -61,9 +61,9 @@
   pointed 復元射の底・同値性・native 恒等点との分類逆成分による点の式を証明。
   元の scaffold の埋め込みと universal・taut 両脚の厳密な制限も保持し、同じ相対三角を持つ表現を構成。
   同じ三角を係数値と指定点へ制限し、weighted の実係数作用を左解像比較と厳密に同定。豊穣実現同型の二段階評価・元の oppositeRealizationIso・既存 strict transport 反転比較の指定成分は、元の点を反転側の同じ点へ送る。左解像の実頂点も標準の同じ反転点として回収。候補→native→実分類の同じ指定成分が、元の係数点を同じ恒等射評価の pointed 復元像へ送ると証明。一般の分類比較を scaffold 対応を保持する構成へ置換し、既存の分類・分数側の利用箇所も再検証。
-- 工程 (c) の必要条件：K-5 の実 Sp 長完全列で右射影の全射性と接続射の自明性を同定。左項が連結なら零次射影は全射。十分条件は未証明。
-- 対象 8694 jobs・専用監査 359 モジュール 2057 宣言・全体 25050 jobs が成功。
-  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4954 モジュールは EInfinity を含まない。
+- 工程 (c)：K-5 の元の実長完全列から、中央・右項の π が整数 k 未満で消えるなら、左 fiber の同じ消滅と πₖ 射影の全射性が同値と証明。k=0 で連結性の必要十分形を得る。具体的 K 関手・冪等完備化の cofinality への適用は未接続。
+- 対象 8695 jobs・専用監査 360 モジュール 2063 宣言・全体 25066 jobs が成功。
+  標準三公理のみ、宣言型の ModelCategory・ソース・diff 検査も成功。所有 import 閉包 4955 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -77,7 +77,7 @@
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - relativeSConstruction、relativeSimplicialSConstruction、relativeSimplicialQuotientMap、relativeSimplicialKernelSquare。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback。
-- relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）。
+- relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison（商実現比較の可逆性を入力）、fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective。
 - spaceLocalizationPre_fullyFaithful、spaceLocalizationPrecomposition_isQCatEquivalence。
 - weakQuotientMappingComparison、weakQuotientMappingComparison_pre_normalized、weakQuotientMappingComparisonHomotopy_hom。
 - fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、
@@ -95,15 +95,15 @@
   ClosedStablePredicate 版加法性を任意 W 辺版とせず、W の保存と比較を証明。K-3 以降は未依存。
   追加固定界面（L1 §6）：multiRealization_map_positive_localized_eq_of_functorIso（正反復）。
   RelativeCofiberLeftFiber・RelativeFiberEquivalence は L1 §6 の固定界面。K-F の基底変更と Quillen A へ接続。
-- 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
+- 工程 (c) の下界・連結 fiber 判定は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 - 商・分数・局所化は Sp 正本（10-22 19:50）。新規補題は Sp に依頼。既存構成は保持し、tamme* の lax 専用仮定を一般 Verdier W に流用しない。
 ### 未コミット
-- なし（今回の10モジュール・一般分類比較の置換・集約・監査・本計画を含むチェックポイント）。
+- なし（今回の連結 fiber 判定・集約・監査・本計画を含むチェックポイント。指定分類比較は f1ac8b414）。
 ### 既知の問題
-- 一般分類比較の係数点と native 実像・pointed 復元点の接続は検証済み。span 側の普遍性・一般分数比較の同値性・cofinality の十分条件・Sp 値 K-6 は未完。一般商・分数・局所化の追加補題は Sp に依頼し、K-F では新設しない。
+- 一般分類比較の係数点と native 実像・pointed 復元点の接続は検証済み。span 側の普遍性・一般分数比較の同値性・具体的 K の cofinality 条件・Sp 値 K-6 は未完。一般商・分数・局所化の追加補題は Sp に依頼し、K-F では新設しない。
 ### 次の一手
-- Sp の L9 受付欄の一般分数比較同値の提供を確認する（未提供・依頼受付済み）。独立に、K-5 の実長完全列から連結 fiber の cofinality 条件の必要十分形を整理し、今回の指定分類成分と既存の実 fiber 比較を接続する。
+- Sp の一般分数比較同値の提供を確認する（依頼受付済み・未提供）。新しい下界判定を具体的 K の零次 cofinality に接続する際の界面を確認し、既存の実 fiber 比較と指定分類成分の点の回収式を接続する。
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
 - foundations.md §8 と k-theory-kst-route.md §13（決定 15・16）。H⁰ の Verdier 普遍性で写像空間の比較を代用しない。Sp の IsStable は使わない。

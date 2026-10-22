@@ -17,6 +17,7 @@ run_cmd do
     `SerrePositivity.KST.Fibration.FullFunctorCore,
     `SerrePositivity.KST.Fibration.KernelWeakContractibility,
     `SerrePositivity.KST.Fibration.ConnectiveFiberObstruction,
+    `SerrePositivity.KST.Fibration.ConnectiveFiberCriterion,
     `SerrePositivity.KST.Fibration.RelativeSConstruction,
     `SerrePositivity.KST.Fibration.RelativeSQuotient,
     `SerrePositivity.KST.Fibration.RelativeSKernel,
