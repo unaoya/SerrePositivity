@@ -132,3 +132,8 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExtensi
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExtensionImage
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniversalProperty
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionUniqueness
+public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractContractibility
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOppositeGeneral
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionPointed
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemPointed
+public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionTerminal

@@ -1372,3 +1372,33 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @IsIdempotentCompletion.equivalence_unique
 #print axioms IsIdempotentCompletion.equivalence_unique
+
+#check @VertexRetraction.pinchedHom_source_isContractibleKan
+#print axioms VertexRetraction.pinchedHom_source_isContractibleKan
+
+#check @VertexRetraction.pinchedHom_target_isContractibleKan
+#print axioms VertexRetraction.pinchedHom_target_isContractibleKan
+
+#check @IsIdempotentCompletion.map_isTerminalVertex
+#print axioms IsIdempotentCompletion.map_isTerminalVertex
+
+#check @isFullyFaithful_op_of_fullyFaithful
+#print axioms isFullyFaithful_op_of_fullyFaithful
+
+#check @IsIdempotentCompletion.op_general
+#print axioms IsIdempotentCompletion.op_general
+
+#check @IsIdempotentCompletion.map_isInitialVertex
+#print axioms IsIdempotentCompletion.map_isInitialVertex
+
+#check @IsIdempotentCompletion.map_isZeroVertex
+#print axioms IsIdempotentCompletion.map_isZeroVertex
+
+#check @IsIdempotentCompletion.hasZeroVertex
+#print axioms IsIdempotentCompletion.hasZeroVertex
+
+#check @idemYoneda_isZeroVertex
+#print axioms idemYoneda_isZeroVertex
+
+#check @idem_hasZeroVertex
+#print axioms idem_hasZeroVertex
