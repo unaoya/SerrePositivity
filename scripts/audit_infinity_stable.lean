@@ -1,3 +1,17 @@
+import SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence
+import SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInclusion
+import SerrePositivity.InfinityCategories.Stable.SquareFixedSpanPoint
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourcePointInitial
+import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourcePointPushout
+import SerrePositivity.InfinityCategories.Stable.LoopSquarePushoutOfEquivalence
+import SerrePositivity.InfinityCategories.Stable.LoopToSuspensionDiagrams
+import SerrePositivity.InfinityCategories.Stable.LoopToSuspensionEquivalence
+import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramPullback
+import SerrePositivity.InfinityCategories.Stable.LoopSuspensionDiagramsOfEquivalence
+import SerrePositivity.InfinityCategories.Stable.SuspensionEquivalenceOfLoopEquivalence
+import SerrePositivity.InfinityCategories.Stable.SuspensionLoopSectionOfEquivalence
+import SerrePositivity.InfinityCategories.Stable.SuspensionLoopInverseOfEquivalence
 import SerrePositivity.InfinityCategories.Stable.LoopConeUniversalSelfComparison
 import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexSourceLift
 import SerrePositivity.InfinityCategories.Stable.LoopConeUniversalSourceInitial
@@ -7472,6 +7486,23 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence,
+
+    `SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence,
+
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInclusion,
+    `SerrePositivity.InfinityCategories.Stable.SquareFixedSpanPoint,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourcePointInitial,
+    `SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourcePointPushout,
+    `SerrePositivity.InfinityCategories.Stable.LoopSquarePushoutOfEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.LoopToSuspensionDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.LoopToSuspensionEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionDiagramPullback,
+    `SerrePositivity.InfinityCategories.Stable.LoopSuspensionDiagramsOfEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionEquivalenceOfLoopEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionLoopSectionOfEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionLoopInverseOfEquivalence,
+
     `SerrePositivity.InfinityCategories.Stable.LoopConeUniversalSelfComparison,
     `SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexSourceLift,
     `SerrePositivity.InfinityCategories.Stable.LoopConeUniversalSourceInitial,
