@@ -24,6 +24,10 @@ run_cmd do
   logInfo m!"F2 Ind audit passed: {count} declarations, standard three axioms only."
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensitySourceInclusion_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensitySourceInclusion_target
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityDiagramHomotopy_evaluation
+#check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluatedTransformationVertex_restriction
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

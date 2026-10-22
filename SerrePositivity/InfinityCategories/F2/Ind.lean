@@ -18,3 +18,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsE
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsWeakEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberMap
+public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedTransformation

@@ -28,7 +28,9 @@
   `F2.coconeFiberValueMapAt` を `presheafDensityEvaluatedFiberMap` へ比較する関手同型。
   後者は元の大域密度変換を評価し、元の unstraightening 写像空間比較で写したもの。
   始点固定の全族の弱同値との接続が残る。余錐の余極限性はまだ主張しない。
-  独立集約 6127 jobs、公理監査 337 宣言、標準三公理のみ。
+  `presheafDensityEvaluatedTransformationVertex_restriction` で、評価した同じ大域密度変換を
+  共同 Hom の同じ全変換の始点固定と、変換空間の指定頂点として厳密に照合。
+  独立集約 6130 jobs、公理監査 359 宣言、標準三公理のみ。
 - **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
@@ -55,6 +57,7 @@
 - `presheafElementsYonedaSliceComparison`、`presheafElementsYonedaSliceComparison_cocone`
 - `twistedSourceElementsEvaluation_identity`、`twistedSourceElementsEvaluation_isWeakHomotopyEquivalence`
 - `presheafDensityEvaluationCoconeTransformationIso`、`presheafDensityEvaluationFiberIso`
+- `presheafDensityEvaluatedTransformationVertex_restriction`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -84,7 +87,8 @@
 
 (a)：`presheafDensityEvaluationFiberIso` の標的 `presheafDensityEvaluatedFiberMap F x` を、
 `twistedSourceElementsEvaluation (smallRightUnstraighteningProjection F) x` へ比較する。
-`leftUnstraighteningMappingSpaceMap_baseChangeIso` で共同 Hom の変換を始点固定に制限し、
+評価変換は同じ共同 Hom の全変換の始点固定と照合済み。
+`leftUnstraighteningMappingSpaceMap_baseChangeIso` で同じ制限変換の unstraightening の像を比較し、
 `PresheafDensityTransformation.evaluationIso` と c1 の `imageIso` を写す。各点で別の射を選び直さない。
 同じ `presheafDensityCocone F` の各評価の余極限性を示し、前層の評価による検出で密度を結論する。
 評価後の同じ `F2.coconeFiberMap` の弱同値性を示せば、`F2.isColimitCone_of_coconeFiberMap_weakEquivalence` が使える。

@@ -51,11 +51,18 @@ lemma presheafDensity_target_curry :
 
 /-- 同じ元の Yoneda 図式から同じ F の定値図式への、全高次に整合する自然変換。 -/
 def presheafDensityDiagramHomotopy :
-    SSet.Homotopy (presheafElementsYonedaDiagram F) (SSet.const (functorVertex F)) := by
-  have h := curryJointHomotopy
+    SSet.Homotopy (presheafElementsYonedaDiagram F) (SSet.const (functorVertex F)) :=
+  let h := curryJointHomotopy
     (functorHomotopyPrecomp (presheafDensityJointHomotopy F)
       (HomotopyLimits.uliftTensorIso.{u, u + 1} C.op E).inv)
-  rw [presheafDensity_source_curry, presheafDensity_target_curry] at h
-  exact h
+  { h := h.h
+    h₀ := h.h₀.trans (presheafDensity_source_curry F)
+    h₁ := h.h₁.trans (presheafDensity_target_curry F)
+    rel := by
+      apply SSet.hom_ext
+      intro n
+      apply ConcreteCategory.hom_ext
+      intro z
+      exact False.elim z.1.property }
 
 end SerrePositivity.InfinityCategories.F2.Ind
