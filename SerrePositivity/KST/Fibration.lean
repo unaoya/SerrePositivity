@@ -409,3 +409,9 @@ public import SerrePositivity.KST.Fibration.ScaffoldStraighteningValue
 public import SerrePositivity.KST.Fibration.FirstVertexSectionFiber
 public import SerrePositivity.KST.Fibration.ScaffoldGlobalCoefficientPoint
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
+public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRightEndpoints
+public import SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints
+public import SerrePositivity.KST.Fibration.PointedSpaceEqualityTransport
+public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint
+public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint
+public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality
