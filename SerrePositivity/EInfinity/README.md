@@ -2640,3 +2640,12 @@ slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次
 `normalizedTensorDoubleConeSliceEvaluation_triangle` は元の全 cone 族と構成した slice 評価族の
 合成が全パラメータ関手圏で恒等となること。元の通常 augmentation の円柱との一致は未証明。
 その同定後に元の augmentation の逆との比較・評価三角形・元の全屋根比較へ進む。
+
+`FrameHom.MixedNerve.coconePrism_eq_homotopy` は混合宇宙の同じ余錐 join prism と元の自然変換円柱の一致。
+`normalizedTensorElementAugmentedColumn` は元の augmentation 自身の終端付き列。
+`normalizedTensorDoubleConeTail_eq_closed` は二重 cone の末尾単体と同じ通常閉余錐単体の全 cochain の一致。
+`normalizedTensorDoubleConeOverDiagram_uncurry` は大域 slice 図式の同じ余錐 join との厳密一致。
+`normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard` は元の通常 augmentation の全円柱との一致。
+`normalizedTensorDoubleConeSliceEvaluation_derived_arrow` は同じ既存 D(R) へ送った全評価族と、
+元の DerivedAugmentationIso.hom の、両端表示を含む全関手圏の Arrow 全体の一致。
+元の cone と同じ augmentation の逆との端点輸送付き比較、評価三角形・屋根比較、同じ U の∞極限保存・G1′は未完了。

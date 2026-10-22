@@ -9313,6 +9313,39 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorIdentityOverPoint_projection,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeUnderOverSimplex]
 
+@[noinline] private def e2RequiredBatch187 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_castSucc,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_last,
+      `SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_predAbove,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverDiagram_uncurry,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluation_derived_arrow,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverDiagram_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_eq_closed,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_closed_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_hom_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_inr,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_restrict_simplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_prism,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationCocone,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementLiftedAugmentationCocone,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_obj_castSucc,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_obj_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_join,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_cast,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_hom_last,
+      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin_inr,
+      `SerrePositivity.EInfinity.FrameHom.MixedNerve.liftedCocone,
+      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin,
+      `SerrePositivity.EInfinity.FrameHom.MixedNerve.coconePrism_eq_homotopy]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9346,7 +9379,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -24014,4 +24047,183 @@ example : (Δ[1] : SSet.{e2DoubleJoinU + 1}) ⊗ nerve (normalizedTensorElementI
     sliceOver (normalizedTensorConePoint A X) := normalizedTensorDoubleConeSlicePrism A X Y
 
 end e2DoubleJoinFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2AugStandardU
+section e2AugStandardFixtures
+open CategoryTheory CategoryTheory.Limits SSet MonoidalCategory CartesianMonoidalCategory
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.FrameHom.MixedNerve
+open scoped Simplicial
+variable (A : Type e2AugStandardU) [CommRing A] (X Y : Complex A)
+variable {I C : Type (e2AugStandardU + 1)} [Category.{e2AugStandardU} I]
+  [Category.{e2AugStandardU} C] {F : I ⥤ C}
+
+example (n : ℕ) (i : Fin (n + 1)) :
+    doubleConeTailOrderHom n i.castSucc = i.succ.castSucc :=
+  SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_castSucc n i
+
+example (n : ℕ) :
+    doubleConeTailOrderHom n (Fin.last (n + 1)) = Fin.last (n + 2) :=
+  SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_last n
+
+example (n : ℕ) (i : Fin (n + 2))
+    (hi : i ≠ Fin.last (n + 1)) :
+    (Fin.last (n + 1)).predAboveOrderHom (doubleConeTailOrderHom n i) =
+      ((Fin.last n).predAboveOrderHom i).succ :=
+  SerrePositivity.EInfinity.ComplexLimits.doubleConeTailOrderHom_predAbove n i hi
+
+example :
+    sliceOverUncurry (normalizedTensorDoubleConeOverDiagram A X Y) =
+      normalizedTensorElementAugmentationJoin A X Y :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverDiagram_uncurry A X Y
+
+example :
+    (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h =
+      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+        nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluationHomotopy_h_standard A X Y
+
+example :
+    Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+        (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y)
+        (complexSemifreeResolutionInfinity A)))) =
+      Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).hom :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeSliceEvaluation_derived_arrow A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    ((normalizedTensorDoubleConeOverDiagram A X Y).app (Opposite.op ⦋n⦌) c).val =
+      (joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+        (closedNerveSimplex
+          (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A)) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeOverDiagram_app A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    normalizedTensorDoubleConeTail A X Y c =
+      closedNerveSimplex (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_eq_closed A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    Fin.castSuccOrderEmb.toOrderHom.monotone.functor ⋙
+      normalizedTensorElementAugmentedColumn A X Y c =
+      c ⋙ normalizedTensorElementDiagram A X Y :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_front A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (closedNerveSimplex
+      (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A)).pullback
+      Fin.castSuccOrderEmb.toOrderHom =
+      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_closed_front A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorDoubleConeTail A X Y c).pullback Fin.castSuccOrderEmb.toOrderHom =
+      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_front A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((normalizedTensorDoubleConeTail A X Y c).hom I a b k hI ha hb hk)
+      (closedNerveHom ((complexToClosed A).map ((normalizedTensorElementAugmentation A X Y).app
+        (c.obj ((Fin.last n).predAboveOrderHom a)))) k) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorDoubleConeTail_hom_last A X Y c I a b k hI ha hb hk hbl
+
+example :
+    joinInr (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{e2AugStandardU + 1}) ≫
+      normalizedTensorElementAugmentationJoin A X Y = normalizedTensorConePoint A X :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_inr A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{e2AugStandardU + 1})) ≫
+      normalizedTensorElementAugmentationJoin A X Y =
+      (joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+        (closedNerveSimplex
+          (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A)) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_restrict_simplex A X Y c
+
+example :
+    (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{e2AugStandardU + 1})).hom ≫
+      rightMappingSpacePrism _ ≫ normalizedTensorElementAugmentationJoin A X Y =
+      (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫
+        nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentationJoin_prism A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (i : Fin (n + 1)) :
+    (normalizedTensorElementAugmentedColumn A X Y c).obj i.castSucc =
+      (normalizedTensorElementDiagram A X Y).obj (c.obj i) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_obj_castSucc A X Y c i
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorElementAugmentedColumn A X Y c).obj (Fin.last (n + 1)) = X :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_obj_last A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := nerve (Complex A))).symm
+      (normalizedTensorElementAugmentedColumn A X Y c) =
+      joinMap (SSet.yonedaEquiv.symm c) (𝟙 (Δ[0] : SSet.{e2AugStandardU + 1})) ≫
+        FrameHom.MixedNerve.coconeJoin (normalizedTensorElementAugmentationCocone A X Y) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_join A X Y c
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (i j : Fin (n + 1)) (hij : i ≤ j) :
+    HEq ((normalizedTensorElementAugmentedColumn A X Y c).map
+      (homOfLE (Fin.castSucc_le_castSucc_iff.mpr hij)))
+      ((normalizedTensorElementDiagram A X Y).map (c.map (homOfLE hij))) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_cast A X Y c i j hij
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (i : Fin (n + 1)) :
+    HEq ((normalizedTensorElementAugmentedColumn A X Y c).map
+      (homOfLE (Fin.le_last i.castSucc)))
+      ((normalizedTensorElementAugmentation A X Y).app (c.obj i)) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_map_cast_last A X Y c i
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
+    HEq ((closedNerveSimplex (normalizedTensorElementAugmentedColumn A X Y c ⋙
+      complexToClosed A)).hom I a b k hI ha hb hk)
+      (closedNerveHom ((complexToClosed A).map ((normalizedTensorElementAugmentation A X Y).app
+        (c.obj ((Fin.last n).predAboveOrderHom a)))) k) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementAugmentedColumn_hom_last A X Y c I a b k hI ha hb hk hbl
+
+example (c : Cocone F) :
+    joinInr (nerve I) (Δ[0] : SSet.{e2AugStandardU + 1}) ≫ coconeJoin c = nervePoint c.pt :=
+  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin_inr c
+
+example (c : Cocone F) :
+    (β_ (nerve I) (Δ[1] : SSet.{e2AugStandardU + 1})).hom ≫ rightMappingSpacePrism (nerve I) ≫
+      coconeJoin c = (homotopy c.ι).h :=
+  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconePrism_eq_homotopy c
+
+example (c : Cocone F) : join (nerve I) (Δ[0] : SSet.{e2AugStandardU + 1}) ⟶ nerve C :=
+  SerrePositivity.EInfinity.FrameHom.MixedNerve.coconeJoin c
+
+example {n : ℕ} (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    ComposableArrows (Complex A) (n + 1) := normalizedTensorElementAugmentedColumn A X Y c
+
+example : join (nerve (normalizedTensorElementIndex A X Y)) (Δ[0] : SSet.{e2AugStandardU + 1}) ⟶
+    dgNerve A (Complex A) := normalizedTensorElementAugmentationJoin A X Y
+
+end e2AugStandardFixtures
 end
