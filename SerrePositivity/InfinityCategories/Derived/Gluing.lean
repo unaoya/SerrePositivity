@@ -209,3 +209,10 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.YonedaHomotopyIs
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeLeftProjectionIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionCFactorIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DecompositionTriangle
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeBottomInclusion
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomZeroComponents
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficient
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeBottomComponents
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomFunctors
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficientComponents
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrimitiveActions
