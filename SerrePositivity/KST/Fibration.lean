@@ -479,3 +479,6 @@ public import SerrePositivity.KST.Fibration.FiberSquareKanEvaluation
 public import SerrePositivity.KST.Fibration.PointedKanInvertiblePi
 public import SerrePositivity.KST.Fibration.PositiveKanEvaluationDetection
 public import SerrePositivity.KST.Fibration.DGRelativePositiveDetection
+public import SerrePositivity.KST.Fibration.KanClosedEvaluation
+public import SerrePositivity.KST.Fibration.StableBoundaryQuotientTransformation
+public import SerrePositivity.KST.Fibration.StableBoundaryKanComparison

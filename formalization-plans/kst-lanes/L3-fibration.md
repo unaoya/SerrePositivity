@@ -49,10 +49,10 @@
 - 工程 (d) はユーザー指定の相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、K:S→Sp。
   元の零角・右辺を保持した canonical fiber と K(D) からの実比較辺、全脚の合成三角形を構成。元の四角形の引き戻し性 ⇔ 同じ比較辺の可逆性を証明。
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
-  固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定した元の VerdierDiagram の S• 境界商四角形と固定 K の各正段四角形を全高次単体で同定。両者の引き戻し性は同値。任意の Sp fiber 四角形の全 coherent 段評価は引き戻しであり、全正段評価は元の実比較辺の可逆性を整数 π で検出する。元の相対 K 四角形が引き戻し ⇔ ν 像の全正 S• 境界商四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
+  固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定した元の VerdierDiagram の S• 境界商四角形と固定 K の各正段四角形を全高次単体で同定。両者の引き戻し性は同値。任意の Sp fiber 四角形の全 coherent 段評価は引き戻しであり、全正段評価は元の実比較辺の可逆性を整数 π で検出する。元の相対 K 四角形が引き戻し ⇔ ν 像の全正 S• 境界商四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。元の正反復実現から境界商への商射を全 Hom に自然な比較として構成し、同じ Ex∞ 後の実商射を成分とする自然同型を証明。指定 Verdier 四角形の基点忘却後の境界商は元の正反復実現四角形と同型で、引き戻し性は同値。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10690 jobs・監査 480 モジュール 2727 宣言・全体 25564 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6895 モジュールは EInfinity を含まない。
+- 対象 10694 jobs・監査 483 モジュール 2762 宣言・全体 25572 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6899 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -63,7 +63,7 @@
 - verdierSStageKernelEquivalence_inclusion、verdierSPostcomp_fullyFaithful、verdierSPostcomp_kernel、relativeSConstruction_mem_edge_iff_cofiber_image。
 - weakStringConstantPostSquare_homotopyPullback、relativeSKernelRealizationSquare_homotopyPullback、relativeSFibrationFiberIso、quotientSFibrationFiberIsoOfComparison、fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、weakQuotientCosliceUnit_identity。
 - weakSpanKanMappingComparison_value_equivalence_iff、weakIdentityKanMappingComparisonUnitIso、leftStraighteningCandidate_classificationIso_pointHom、leftCocartesianKanClassificationIso_pointHom。
-- dgKPiComparison、dgKPiComparison_naturality、dgKPiMap_surjective_iff、dgKNativeSBoundaryPiEquiv_naturality、dgKNativePiMap_bijective_iff_sBoundary、dgRelativeVerdierSBoundaryFixedKSquareIso、dgRelativeKPositiveSquare_isPullback_iff、spectrumFiberSquare_evaluation_isPullback、spectrumEdge_isInvertible_of_positive_evaluation、dgRelativeK_isPullback_iff_sBoundary。
+- dgKPiComparison、dgKPiComparison_naturality、dgKPiMap_surjective_iff、dgKNativeSBoundaryPiEquiv_naturality、dgKNativePiMap_bijective_iff_sBoundary、dgRelativeVerdierSBoundaryFixedKSquareIso、dgRelativeKPositiveSquare_isPullback_iff、spectrumFiberSquare_evaluation_isPullback、spectrumEdge_isInvertible_of_positive_evaluation、dgRelativeK_isPullback_iff_sBoundary、stableBoundaryQuotientKanIso、verdierMultiBoundaryForget_isPullback_iff。
 - dgKInputK_preservesRelativeZero、dgRelativeK_zero_corner、dgRelativeKZeroTriangle、dgRelativeFiberVertexComparison、dgRelativeK_isPullback_of_fiberComparison_pi_nonnegative。
 - scaffoldNerveRepresentationIso_pointHom、scaffoldStraighteningRepresentationIso_pre、
   scaffoldPointedReconstruction、scaffoldPointedReconstruction_pointHom。
@@ -95,12 +95,12 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（段評価・元の fiber 錐・四角形・正段による同値検出・相対 K への反映の7モジュール、集約・監査・本計画）。
+- なし（閉 Hom の Kan 評価・境界商射の全自然変換・同じ Ex∞ 商射による全図式同型の3モジュール、集約・監査・本計画）。
 ### 既知の問題
-- 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
+- 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、基点忘却からの引き戻し性の反映、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- 元の ν 像の S• 境界商四角形の引き戻し性を、(b) の商実現比較から証明する。相対 Sp への反映は証明済み。Sp の三件の不足 API の公開と、商実現比較への接続も確認する。
+- 基点忘却後の正段で、元の Sp 比較辺の可逆性検出と canonical fiber 錐の極限性を証明する。これで相対 K の引き戻し性を元の ν 像の正反復実現四角形へ還元し、(b) の商実現比較へ接続する。Sp の三件の不足 API の公開も確認する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
