@@ -251,3 +251,12 @@ public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
 public import SerrePositivity.KST.Fibration.FractionSimplexKanComparison
 public import SerrePositivity.KST.Fibration.WeakSpanKanMappingComparison
 public import SerrePositivity.KST.Fibration.FixedFractionCosliceGroupoid
+public import SerrePositivity.KST.Fibration.LocalizationFactorizationHom
+public import SerrePositivity.KST.Fibration.FractionKanInitialInversion
+public import SerrePositivity.KST.Fibration.FractionKanDescent
+public import SerrePositivity.KST.Fibration.WeakSpanSpaceMappingComparison
+public import SerrePositivity.KST.Fibration.IdentityMarkedSpan
+public import SerrePositivity.KST.Fibration.WeakIdentitySpanPoint
+public import SerrePositivity.KST.Fibration.LeftFibrationInvertedBaseChange
+public import SerrePositivity.KST.Fibration.FractionKanWeakInversion
+public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
