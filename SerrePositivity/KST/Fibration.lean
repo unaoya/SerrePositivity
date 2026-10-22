@@ -93,3 +93,9 @@ public import SerrePositivity.KST.Fibration.RelativePullbackMulti
 public import SerrePositivity.KST.Fibration.CompletedTwoMultiEquivalence
 public import SerrePositivity.KST.Fibration.ComposableWeakMultiStepEquivalence
 public import SerrePositivity.KST.Fibration.WeakStringTwoMultiAdditivity
+public import SerrePositivity.KST.Fibration.InitialHornPoint
+public import SerrePositivity.KST.Fibration.TailAttachment
+public import SerrePositivity.KST.Fibration.StandardTailAttachment
+public import SerrePositivity.KST.Fibration.StandardTailVertices
+public import SerrePositivity.KST.Fibration.TailWeakModel
+public import SerrePositivity.KST.Fibration.TailWeakPullback

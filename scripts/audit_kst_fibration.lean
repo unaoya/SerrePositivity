@@ -99,7 +99,13 @@ run_cmd do
     `SerrePositivity.KST.Fibration.RelativePullbackMulti,
     `SerrePositivity.KST.Fibration.CompletedTwoMultiEquivalence,
     `SerrePositivity.KST.Fibration.ComposableWeakMultiStepEquivalence,
-    `SerrePositivity.KST.Fibration.WeakStringTwoMultiAdditivity]
+    `SerrePositivity.KST.Fibration.WeakStringTwoMultiAdditivity,
+    `SerrePositivity.KST.Fibration.InitialHornPoint,
+    `SerrePositivity.KST.Fibration.TailAttachment,
+    `SerrePositivity.KST.Fibration.StandardTailAttachment,
+    `SerrePositivity.KST.Fibration.StandardTailVertices,
+    `SerrePositivity.KST.Fibration.TailWeakModel,
+    `SerrePositivity.KST.Fibration.TailWeakPullback]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -35,11 +35,14 @@
   Fin 2 積の元の両射影を保つ同型で weakStringFiniteComparison q 2 1 の局所化同型も証明。
   両射影の共同反映を全 S_n へ移し、相対 cofiber 交換と厳密に照合。全行・全多重対角の
   自然な元の射対で帰納し、同じ有限積比較を全正有限反復へ拡張した。
+- 全有限列の帰納の入力：先行 Δ[n+1] と最後の Δ[1] の元の零単体上の押し出しを構成。
+  長い Δ[n+2] への包含は inner anodyne、全図式圏への制限は trivial Kan fibration。
+  共有端点を先行単体の最終頂点と同定し、先行 W 列・最後の W 辺の安定な厳密引き戻しも構成。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7193 jobs・専用監査 94 モジュール 604 宣言が成功。
+- 現在の対象ビルド 7199 jobs・専用監査 100 モジュール 645 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3476 モジュールは EInfinity を含まない。全体 23965 jobs で成功。
+  所有 import 閉包 3482 モジュールは EInfinity を含まない。全体 23982 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -51,29 +54,25 @@
 ### 主要宣言（共通接頭辞 `SerrePositivity.KST.Fibration`）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、
   weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
-- relativeDiagram、relativeSimplicialDiagram、relativeDiagram_kernel_isWeaklyContractible。
-- connectiveFiber_projection_piZero_surjective。
+- relativeDiagram_kernel_isWeaklyContractible、connectiveFiber_projection_piZero_surjective。
 - relativeSConstruction、relativeSConstruction_mem_edge_iff、relativeSimplicialSConstruction、
   relativeSimplicialQuotientMap、relativeSKernel_isWeaklyContractible、relativeSimplicialKernelSquare。
-- kernelClosedPredicate、weakCofiberProjection_trivialKanFibration、weakArrowCofiberEquivalence、
-  weakArrowMultiAdditivityMap_localized_isIso。
+- weakCofiberProjection_trivialKanFibration、weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringCategory、weakStringStableSimplicial、weakStringCofiberExact_reindex。
-- cofiberFamily_isCofiber、weakStringCofiberFamily_reindex、weakStringOctahedronFamily。
 - weakStringOctahedronRelativeExact、weakStringTriangleMultiAddition_reindex。
 - weakStringVertexExact_reindex、weakStringFiniteComparison、
   weakStringFiniteComparison_reindex_cofiber、weakStringFiniteComparison_one_localized_isIso。
-- composableWeakArrow_isPullback、weakStringTwoHornEquivalence、
-  weakStringTwoHorn_multiRealization_localized_isIso、weakStringFiniteComparison_two_factor、
+- weakStringTwoHornEquivalence、weakStringFiniteComparison_two_factor、
   weakStringFiniteComparison_two_localized_isIso_iff。
 - simplexFiberBaseChangeIso、simplexFiberQuotient_baseChange、productQuillenA_baseChange。
-- composableWeakArrow_isGapped_iff、composableWeakArrow_sConstruction_isPullback、
-  composableWeakArrow_objectS_isPullback（全零単体・単体作用素を含む厳密引き戻し）。
+- composableWeakArrow_sConstruction_isPullback、composableWeakArrow_objectS_isPullback。
 - relativeCofiberBaseChange_localized_isIso、completedTwo_objectS_isPullback、
-  completedTwoSection_objectS_localized_isIso、composableWeakObjectStep_localized_isIso、
-  composableWeakMultiStep_one_localized_isIso（元の第一辺と第二 cofiber の射対）。
+  composableWeakObjectStep_localized_isIso、composableWeakMultiStep_one_localized_isIso。
 - composableWeakTwoComparison_factor、weakStringFiniteComparison_two_one_localized_isIso。
 - RelativePullback.multiPair_localized_isIso、composableWeakMultiStep_localized_isIso、
   weakStringFiniteComparison_two_localized_isIso（全正有限反復、元の全成分を回収）。
+- standardTail_isPushout、standardTailInclusion_innerAnodyne、standardTailEndpoint_eq_yoneda、
+  tailWeak_isPullback、tailWeakPrefixExact、tailWeakEdgeExact。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -93,14 +92,15 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の共同反映・相対引き戻しの S 行と全反復・二辺の全反復の12モジュール等を含める）。
+- なし（今回の先行単体と最後の辺の貼合せ・inner anodyne 性・W 引き戻しの6モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
   全有限列を「先行列と最後の W 辺」の共有端点上の引き戻しで比較する。
-  Δ[n] と最後の Δ[1] の貼合せから Δ[n+1] への制限の同値性と、W 条件の反映を示す。
+  構成した貼合せへの制限で W 条件を反映する。両成分の core 値図式を貼り、inner anodyne
+  包含に沿って延長し、元の全図式との自然同型で比較する。W 制限後の同値性はまだ未証明。
   その具体的な補完模型に RelativePullback の全反復定理を適用し、有限積の帰納へ接続する。
   続いて再添字整合性・商の写像空間・cofinality・実現後の fiber 比較へ進む。
 
