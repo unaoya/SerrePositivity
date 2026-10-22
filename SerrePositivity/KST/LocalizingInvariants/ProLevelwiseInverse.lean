@@ -42,6 +42,23 @@ lemma proIso_of_comp_left_levelwiseIso (g : LevelHom Y Z) (h : IsProIso (f.comp 
   rw [inverse_comp] at hc
   exact hc
 
+lemma comp_inverse {W : Tower C} (a : LevelHom W X) :
+    (a.comp f).comp (levelInverse f) = a := by
+  apply ProSpectrum.levelHom_ext
+  intro n
+  change (a.app n ≫ f.app n) ≫ inv (f.app n) = a.app n
+  rw [Category.assoc, IsIso.hom_inv_id, Category.comp_id]
+
+lemma proIso_of_comp_right_levelwiseIso {W : Tower C} (a : LevelHom W X)
+    (h : IsProIso (a.comp f)) : IsProIso a := by
+  have : ∀ n, IsIso ((levelInverse f).app n) := fun n => by
+    change IsIso (inv (f.app n))
+    infer_instance
+  have hi : IsProIso (levelInverse f) := isProIso_of_levelwiseIso _
+  have hc := h.comp hi
+  rw [comp_inverse] at hc
+  exact hc
+
 omit [∀ n, IsIso (f.app n)] in
 lemma proIso_of_square {X' Y' : Tower C} (g : LevelHom X' Y') (a : LevelHom X X')
     (b : LevelHom Y Y') [∀ n, IsIso (a.app n)] [∀ n, IsIso (b.app n)]

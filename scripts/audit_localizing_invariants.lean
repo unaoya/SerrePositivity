@@ -907,7 +907,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroComparison,
     `SerrePositivity.KST.LocalizingInvariants.ProFullSubcategoryLift,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroClass,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroClassFactor]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroClassFactor,
+    `SerrePositivity.KST.LocalizingInvariants.CochainPullbackHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMapProGroups,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroSourcePro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroBaseHomology,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovStrictZeroSourceEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroMapIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
