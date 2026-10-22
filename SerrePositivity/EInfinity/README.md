@@ -2591,4 +2591,15 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_pullback_map` は退化・非退化・通常成分を含む元の全データの一致。
 `normalizedTensorConeSimplex_pullback_map` は実 cone 単体の全作用素への自然性。
 通常成分の潰れた辺も同じ通常末尾面と元の nerve 自然性で保持する。
-大域 coslice 写像・cone/prism と元の屋根の全比較、同じ U の∞極限保存・G1′は未完了。
+大域 coslice 写像・cone/prism は下記に完成。元の屋根の全比較、同じ U の∞極限保存・G1′は未完了。
+
+`normalizedTensorConeUnderMap` は元の全反対要素圏の nerve から同じ X 下への大域 coslice 写像。
+`normalizedTensorConeUnderMap_projection` は同じ元の通常 frame 図式の閉 nerve を厳密に回収。
+`normalizedTensorConeJoin` は同じ先端と全図式を持つ join からの実 cone。
+`_inl`・`_inr`・`_restrict_simplex` は元の先端・通常図式・全単体の実成分を保持する。
+`normalizedTensorConePrism` は同じ cone の全区間族、`_zero`・`_one` は両端の厳密な式。
+`normalizedTensorConeHomotopy` と `normalizedTensorConeFamilyHom` は同じ全族とその関手辺の類。
+`normalizedTensorConeMappedFamilyHom` は同じ全族の任意の関手による像。
+`normalizedTensorConeDerivedFamilyHom` は既存の同じ半自由分解関手を代入した実大域射。
+`normalizedTensorElementNerveDiagram_derived` は元の大域屋根と同じ通常導来図式への厳密一致。
+同じ augmentation・評価との全三角形、元の屋根の全比較、同じ U の∞極限保存・G1′は未完了。

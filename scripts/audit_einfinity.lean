@@ -9179,6 +9179,31 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.simplexSurjective_last,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementUniversalLinear_top_surjective_noninjective]
 
+@[noinline] private def e2RequiredBatch182 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeHomotopy,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeFamilyHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeJoin,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeJoin_inl,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeJoin_inr,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeJoin_restrict_simplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeMappedHomotopy,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeMappedFamilyHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementNerveDiagram_derived,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeDerivedFamilyHom,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConePrism,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConePrism_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConePrism_one,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementNerveDiagram,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementNerveDiagram_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeUnderMap_projection,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeUnderMap,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeUnderMap_app,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConePoint,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConePoint_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeSimplex_vertex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeUnderSimplex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeSimplex_naturality]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9212,7 +9237,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -23115,4 +23140,116 @@ example {m n : ℕ}
   normalizedTensorElementUniversalLinear_top_surjective_noninjective A X Y c θ hs hn k hk
 
 end e2ConeMapFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2GlobalConeU
+section e2GlobalConeFixtures
+open CategoryTheory MonoidalCategory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open scoped Simplicial
+variable (A : Type e2GlobalConeU) [CommRing A] (X Y : Complex A)
+
+example :
+    joinInl (Δ[0] : SSet.{e2GlobalConeU + 1}) (nerve (normalizedTensorElementIndex A X Y)) ≫
+      normalizedTensorConeJoin A X Y = normalizedTensorConePoint A X :=
+  normalizedTensorConeJoin_inl A X Y
+
+example :
+    joinInr (Δ[0] : SSet.{e2GlobalConeU + 1}) (nerve (normalizedTensorElementIndex A X Y)) ≫
+      normalizedTensorConeJoin A X Y = normalizedTensorElementNerveDiagram A X Y :=
+  normalizedTensorConeJoin_inr A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    joinMap (𝟙 (Δ[0] : SSet.{e2GlobalConeU + 1})) (SSet.yonedaEquiv.symm c) ≫
+      normalizedTensorConeJoin A X Y =
+      (pointJoinStdSimplexIso n).hom ≫
+        (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+          (normalizedTensorConeSimplex A X Y c) :=
+  normalizedTensorConeJoin_restrict_simplex A X Y c
+
+example :
+    normalizedTensorElementNerveDiagram A X Y ≫ complexSemifreeResolutionInfinity A =
+      nerveMap (normalizedTensorElementDiagram A X Y) ≫ complexOrdinaryDerivedSource A :=
+  normalizedTensorElementNerveDiagram_derived A X Y
+
+example :
+    prismEndpoint 0 (nerve (normalizedTensorElementIndex A X Y)) ≫
+      normalizedTensorConePrism A X Y =
+      SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X) :=
+  normalizedTensorConePrism_zero A X Y
+
+example :
+    prismEndpoint 1 (nerve (normalizedTensorElementIndex A X Y)) ≫
+      normalizedTensorConePrism A X Y = normalizedTensorElementNerveDiagram A X Y :=
+  normalizedTensorConePrism_one A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorElementNerveDiagram A X Y).app (Opposite.op ⦋n⦌) c =
+      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) :=
+  normalizedTensorElementNerveDiagram_app A X Y c
+
+example :
+    normalizedTensorConeUnderMap A X Y ≫ sliceUnderProjection (normalizedTensorConePoint A X) =
+      normalizedTensorElementNerveDiagram A X Y :=
+  normalizedTensorConeUnderMap_projection A X Y
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (normalizedTensorConeUnderMap A X Y).app (Opposite.op ⦋n⦌) c =
+      normalizedTensorConeUnderSimplex A X Y c :=
+  normalizedTensorConeUnderMap_app A X Y c
+
+example :
+    (normalizedTensorConePoint A X).app (Opposite.op ⦋0⦌)
+      (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
+      (dgNerve.vertexEquiv A (Complex A)).symm X :=
+  normalizedTensorConePoint_vertex A X
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
+    (dgNerve A (Complex A)).map
+      (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (normalizedTensorConeSimplex A X Y c) =
+      (dgNerve.vertexEquiv A (Complex A)).symm X :=
+  normalizedTensorConeSimplex_vertex A X Y c
+
+example {n m : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
+    normalizedTensorConeSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) =
+      (dgNerve A (Complex A)).map (SimplexCategory.mkHom
+        (prependOrderHom θ.toOrderHom)).op (normalizedTensorConeSimplex A X Y c) :=
+  normalizedTensorConeSimplex_naturality A X Y c θ
+
+example : nerve (normalizedTensorElementIndex A X Y) ⟶
+    sliceUnder (normalizedTensorConePoint A X) := normalizedTensorConeUnderMap A X Y
+
+example : join (Δ[0] : SSet.{e2GlobalConeU + 1})
+    (nerve (normalizedTensorElementIndex A X Y)) ⟶ dgNerve A (Complex A) :=
+  normalizedTensorConeJoin A X Y
+
+example : (Δ[1] : SSet.{e2GlobalConeU + 1}) ⊗
+    nerve (normalizedTensorElementIndex A X Y) ⟶ dgNerve A (Complex A) :=
+  normalizedTensorConePrism A X Y
+
+example : FunctorHom (SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X))
+    (normalizedTensorElementNerveDiagram A X Y) := normalizedTensorConeFamilyHom A X Y
+
+example {C : SSet.{e2GlobalConeU + 1}} (F : dgNerve A (Complex A) ⟶ C) :
+    FunctorHom
+      (SSet.const (F.app (Opposite.op ⦋0⦌) ((dgNerve.vertexEquiv A (Complex A)).symm X)))
+      (normalizedTensorElementNerveDiagram A X Y ≫ F) :=
+  normalizedTensorConeMappedFamilyHom A X Y F
+
+example : FunctorHom
+    (SSet.const ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
+      ((dgNerve.vertexEquiv A (Complex A)).symm X)))
+    (nerveMap (normalizedTensorElementDiagram A X Y) ≫ complexOrdinaryDerivedSource A) :=
+  normalizedTensorConeDerivedFamilyHom A X Y
+
+end e2GlobalConeFixtures
 end
