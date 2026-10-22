@@ -27510,3 +27510,75 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.isLocalizing
 #print axioms SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant.isLocalizing
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_mono
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInfinityInclusion_mono
+
+#check @SerrePositivity.KST.SConstruction.perfectStableArrow
+#print axioms SerrePositivity.KST.SConstruction.perfectStableArrow
+
+#check @SerrePositivity.KST.SConstruction.perfectStableArrow_inclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectStableArrow_inclusion
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_isFiber
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_isFiber
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_left
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_left
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_middle
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_middle
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_right
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_right
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_bottom
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_bottom
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_projection
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.sequenceFiberTriangle_projection
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierSquare_vertices
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierSquare_vertices
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_sequence
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_sequence
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_bottom
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_bottom
+
+#check @SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_right
+#print axioms SerrePositivity.KST.SConstruction.PerfectVerdierSequence.presentation_right
+
+#check @SerrePositivity.KST.SConstruction.perfectZeroCategory_isIdempotentComplete
+#print axioms SerrePositivity.KST.SConstruction.perfectZeroCategory_isIdempotentComplete
+
+#check @SerrePositivity.KST.SConstruction.exists_perfectVerdierRawSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_perfectVerdierRawSquare
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierRawSquare
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierRawSquare
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_vertices
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_vertices
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_corner_complete
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_corner_complete
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_vertex_complete
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierRawSquare_vertex_complete
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierSquare
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierSquare
+
+#check @SerrePositivity.KST.SConstruction.perfectVerdierSquare_inclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectVerdierSquare_inclusion
