@@ -2258,4 +2258,10 @@ public import SerrePositivity.KST.SConstruction.PerfectVerdierInvariantFiber
 public import SerrePositivity.KST.SConstruction.PerfectVerdierPresentation
 public import SerrePositivity.KST.SConstruction.PerfectVerdierRawSquare
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSquareLift
+public import SerrePositivity.KST.SConstruction.PerfectInvariantFiberComparison
+public import SerrePositivity.KST.SConstruction.PerfectInvariantHoArrow
+public import SerrePositivity.KST.SConstruction.PerfectInvariantProductDecomposition
+public import SerrePositivity.KST.SConstruction.PerfectSemiorthogonalInvariant
+public import SerrePositivity.KST.SConstruction.PerfectSemiorthogonalSplitInfinity
+public import SerrePositivity.KST.SConstruction.PerfectStableHoArrow
 /-! # ∞-S• 構成と連結 K 理論 -/

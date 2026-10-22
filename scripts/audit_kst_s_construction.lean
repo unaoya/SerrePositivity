@@ -27582,3 +27582,126 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.perfectVerdierSquare_inclusion
 #print axioms SerrePositivity.KST.SConstruction.perfectVerdierSquare_inclusion
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberLeftIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberLeftIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberMiddleIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberMiddleIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberRightIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberRightIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiber_bottom_naturality
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiber_bottom_naturality
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiber_right_naturality
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiber_right_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoObject
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoObject
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoArrow
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoArrow
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_edge
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_edge
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_eq_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_eq_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_id
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_id
+
+#check @SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_comp
+#print axioms SerrePositivity.KST.SConstruction.perfectInvariantHoArrow_comp
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonal_value_section
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonal_value_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberSection
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberSection
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberSection_section
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectFiberSection_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitLeftFactorIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitLeftFactorIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitRightFactorIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitRightFactorIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_inclusion
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_inclusion
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_section
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_projection
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSplitEquivalence_projection
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalValueSection
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalValueSection
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalValueSection_section
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalValueSection_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_inclusion
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_inclusion
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_section
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_projection
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEquivalence_projection
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalSplit_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalSplit_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_hom
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_hom
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_vertex
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_vertex
+
+#check @SerrePositivity.KST.SConstruction.perfectStableInclusionHo_faithful
+#print axioms SerrePositivity.KST.SConstruction.perfectStableInclusionHo_faithful
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_inclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_inclusion
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_eq_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_eq_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_id
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_id
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_comp
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_comp
+
+#check @SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence_vertices
+#print axioms SerrePositivity.KST.SConstruction.perfectSemiorthogonalVerdierSequence_vertices
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_target
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_target
