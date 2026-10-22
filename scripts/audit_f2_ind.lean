@@ -716,3 +716,24 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_mono
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCorner_isKappaSmall
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_arrowInterpolation_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_inl
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_inl
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_old
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.coneSimplex_inl_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_range_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_cut
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_inr
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_inr
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_vertex_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.joinSimplex_prefix
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_prefix
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_app_injective
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_inl
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_inr
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_range_iff
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCocone_mono

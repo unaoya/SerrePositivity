@@ -397,3 +397,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramCommaEvaluat
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallPushout
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCorner
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCocone
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCornerImage
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeCoordinates
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCutRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePrefix
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeMono
