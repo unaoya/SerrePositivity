@@ -6,7 +6,9 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.KST.Fibration.WeakEquivalences,
+  let expected := #[`SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex,
+    `SerrePositivity.KST.Fibration.DGKPiComparison,
+    `SerrePositivity.KST.Fibration.WeakEquivalences,
     `SerrePositivity.KST.Fibration.Extension,
     `SerrePositivity.KST.Fibration.RelativeDiagram,
     `SerrePositivity.KST.Fibration.RelativeDiagramMap,

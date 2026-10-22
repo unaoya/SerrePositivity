@@ -370,3 +370,5 @@ public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangePoint
 public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangeJointPoint
 public import SerrePositivity.KST.Fibration.TransportSectionBaseChangePoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRestriction
+public import SerrePositivity.KST.Fibration.DGKPiComparison
+public import SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex

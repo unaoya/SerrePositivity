@@ -28,18 +28,20 @@
   左解像の実頂点を同じ反転点に同定。候補→native→実分類の同じ指定成分で pointed 復元像を回収。
 - cocartesian section→全 section の指定成分は Kan 置換単位上で元の包含の点を回収。
   実分類まで合成すると同じ恒等射評価点の pointed 復元像を回収し、包含後の評価も元の実評価と厳密一致。
-- 今回：切断の底変換実現・転置した共同図式・全単体上の同じ指定同型の二重評価を同定。
+- 切断の底変換実現・転置した共同図式・全単体上の同じ指定同型の二重評価を同定。
   元の pullback 切断の指定点は第一射影による同じ像へ移る。大域 straightening の底変換同型を制限すると
   元の全単体上の指定比較を回収。ここには Sp の localizationPre_fullyFaithful と既存の map_preimage を使用。
-  大域底変換と pointed 復元射の点作用の最終接続は未証明。
+  任意の実底頂点では、その同じ零単体上の指定制限成分を HEq で回収。大域底変換と pointed 復元射の最終接続は未証明。
 - 工程 (c)：中央・右項の π が k 未満で消えると、左 fiber の同じ消滅 ⇔ πₖ 射影全射を K-5 の実長完全列で証明。
   中央 πⱼ=0 なら右 πⱼ₊₁／射影の像 ≃ 左 fiber の πⱼ。代表元では元の接続射。零次余核の障害を明示。
+- 固定 dg K の実頂点・実辺の整数 π 作用を、同じ BF スペクトル射の作用と可換に比較。
+  実 K 辺の πⱼ 全射性 ⇔ 同じ S• BF 射の πⱼ 全射性を証明。零次にも適用でき、K の局所化性は仮定しない。
 - 工程 (d) はユーザーのコーディネータ回答に従う相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、K:S→Sp。
   ν の像が K-5 VerdierDiagram となる D β3 の dg Verdier 列に (b)(c) を適用し、固定 S• 比較で K へ戻す。
   K-S• へ依頼した固定入力は ν、K、頂点・辺での S• スペクトル同定の三点。一般 StableCategory 上の K は依頼しない。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 8706 jobs・監査 371 モジュール 2110 宣言・全体 25111 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 4966 モジュールは EInfinity を含まない。
+- 対象 10434 jobs・監査 373 モジュール 2125 宣言・全体 25126 jobs が成功。標準三公理のみ。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6641 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 必要な cofinality 条件を厳密 dg 上の固定 K と比較する（BGT §7–8、16–32時間）。
@@ -54,8 +56,9 @@
 - fractionKanQuotientDiagram_classificationIso、weakQuotientCosliceComparison、weakQuotientCosliceUnit_identity。
 - weakSpanKanMappingComparison_value_equivalence_iff、weakIdentityKanMappingComparisonUnitIso。
 - leftStraighteningCandidate_classificationIso_pointHom、leftCocartesianKanClassificationIso_pointHom。
+- dgKPiComparison、dgKPiComparison_naturality、dgKPiMap_surjective_iff。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
-  leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_value。
+  leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
 - fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、
   fiberCofinalityObstructionEquiv、piZeroCofinalityObstructionEquiv_mk。
 ### 依存と提供
@@ -63,17 +66,17 @@
 - K-S• の固定 K-1/K-2 は L1 §6：加法性、MultiRealizationFunctorIso の正反復、RelativeCofiberLeftFiber、
   RelativeFiberEquivalence と Quillen A。任意 W への制限・底変換・元の射影の照合は K-F が証明する。
 - 相対 (d) の追加固定入力三点を K-S•（01a151d3-f75d-7ef2-9d1f-908c85eb1be1）へ依頼済み。
-  作成中の DGKFixedInterface・DGKFixedSConstruction は閲覧済みだが、公開・検証の返答前なのでまだ入力していない。
+  DGKFixedInterface・DGKFixedSConstruction は読み取り専用で対象ビルドを確認。固定 ν・K と頂点・辺の同定を入力する。
 - 商・分数・局所化は Sp 正本。一般 fractionMappingComparison の同値性を Sp に依頼し、L9 受付に登録済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（今回の底変換の指定成分に関する5モジュール、集約・監査・本計画を含むチェックポイント）。
+- なし（固定 dg K の π 比較・底変換の零単体成分、集約・監査・本計画を含むチェックポイント）。
 ### 既知の問題
-- 一般分数比較の同値性、span 側の普遍性、商実現比較、cofinality の固定 dg K への接続、相対 Sp 値 K-6 は未完。
+- 一般分数比較の同値性、span 側の普遍性、商実現比較、具体的商射の π₀ 全射性、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- K-S• の相対固定界面三点と Sp の一般分数比較同値の公開を確認する。
-  独立に、大域底変換の制限回収式を零単体へ適用し、元の pullback 点・pointed 復元射の指定成分を接続する。
+- Sp の一般分数比較同値の公開を確認する。固定 dg K の実 π 比較は構成済みだが、具体的商射の π₀ 全射性は未証明。
+  独立に、回収した零単体成分へ元の pullback 点の作用を移し、pointed 復元射の指定成分へ接続する。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
