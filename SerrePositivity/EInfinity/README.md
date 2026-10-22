@@ -2543,3 +2543,17 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeEdgeSimplex` は各元の単体要素への実 cone 辺を与える。
 始点を含む三点以上の混合 HA 方程式と全作用素への自然性は未証明。
 したがって全次数の実 cone/prism と元の大域 pinched 族との比較、U の∞極限保存・G1′は未完了。
+
+`normalizedTensorElementSelectedCochainAtMax_image` は最大点へ輸送した元の選択 cochain の
+同じ終端尾による後合成の像を元の普遍成分へ回収する。
+`normalizedTensorElementSelectedCochainAtMax_terminal` と `_terminal_smul` は終端を含む
+選択成分そのものの一致を与える。`normalizedTensorConeData_d_mixed_last` は始点と終端を
+含む混合成分の微分を、同じ符号付き線形削除右辺に同定する。
+`normalizedTensorConeData_hom_ordinary_zero` は通常側の正次成分の消滅。
+`normalizedTensorConeData_cutCompose_of_ne_penultimate` は最後から二番目以外の合成項の消滅。
+`normalizedTensorConeData_quadratic_single` は元の非線形有限和を一つの実切断に還元する。
+`normalizedTensorConeData_rhs_reduced` は元の HA 右辺全体が削除和と最後の切断合成の和であること。
+`normalizedTensorConeData_ordinary_compose` は同じ通常辺と cochain の合成を元の frame 後合成へ戻す。
+`normalizedTensorElementSelectedCochainAtMax_compose` は選択 cochain と元の終端尾の閉射の実合成式。
+残る切断の実際の値・削除和と線形右辺の照合、および終端以外の混合成分の移送は未完了。
+全混合 HA 方程式・全自然性・大域比較・U の∞極限保存・G1′はまだ未証明。

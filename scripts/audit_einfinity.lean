@@ -9083,6 +9083,34 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochain_closed,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_closed]
 
+@[noinline] private def e2RequiredBatch177 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.complexPostcompose_graded,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.erase_max_nonempty,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.penultimate_mem,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.penultimate_lt_max,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.right_filter_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.right_card_two_iff_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.min_lt_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.left_filter_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.filter_above_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.sign_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.withoutFirst_erase_succ,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_cutCompose_of_nonedge,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_cutCompose_of_ne_penultimate,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_hom_mixed_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_d_mixed_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_term_of_nonedge_cut,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_hom_ordinary_closed,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_ordinary_compose,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_hom_ordinary_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_quadratic_single,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_rhs_reduced,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_image,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_compose,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_terminal,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementSelectedCochainAtMax_terminal_smul]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9116,7 +9144,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -22410,4 +22438,122 @@ example (X Y : Complex A) (i : normalizedTensorElementIndex A X Y) :
     (normalizedTensorConeEdgeSimplex A X Y i).obj 0 = X := rfl
 
 end e2ConeFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2RhsU
+section e2RhsFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
+open scoped Simplicial
+variable (A : Type e2RhsU) [CommRing A]
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
+      (c.map (homOfLE (Fin.le_last (J.max' hJ)))))).f k
+      (normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk) =
+    (normalizedTensorElementUniversalLinear A X Y c).val.component J k hJ hk :=
+  normalizedTensorElementSelectedCochainAtMax_image A X Y c J k hJ hk
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hm : J.max' hJ = Fin.last n) (r : ℤˣ) :
+    HEq (r • normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk)
+      (r • (normalizedTensorElementUniversalLinear A X Y c).val.component J k hJ hk) :=
+  normalizedTensorElementSelectedCochainAtMax_terminal_smul A X Y c J k hJ hk hm r
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I) :
+    HEq (differential A ((normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk))
+      (k.negOnePow • (normalizedTensorElementUniversalLinear A X Y c).val.rhs
+        (withoutFirst I) k (by have := card_withoutFirst I h0; omega)) :=
+  normalizedTensorConeData_d_mixed_last A X Y c I a b k hI ha hb hk ha0 hbl h0
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (r : ℤˣ) :
+    compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
+      ((normalizedTensorElementDiagram A X Y).map
+        (c.map (homOfLE (Fin.le_last (J.max' hJ))))))).val
+      (r • normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk) (add_zero k) =
+    r • (normalizedTensorElementUniversalLinear A X Y c).val.component J k hJ hk :=
+  normalizedTensorElementSelectedCochainAtMax_compose A X Y c J k hJ hk r
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hab : a ≤ b)
+    (R : Complex A) (p : ℤ)
+    (v : GradedHom A R ((normalizedTensorConeData A X Y c).obj a) p)
+    (w : GradedHom A R
+      ((normalizedTensorElementDiagram A X Y).obj (c.obj (coneTailOrderHom n a))) p)
+    (hv : HEq v w) :
+    HEq (compose A ((normalizedTensorConeData A X Y c).hom I a b 0 hI ha hb hk) v (add_zero p))
+      ((homPostcompose R ((normalizedTensorElementDiagram A X Y).map
+        (c.map (homOfLE ((coneTailOrderHom n).monotone hab))))).f p w) :=
+  normalizedTensorConeData_ordinary_compose A X Y c I a b hI ha hb hk ha0 hab R p v w hv
+
+example {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
+    (j : Fin (n + 1)) (hj : j ∈ I) (hjm : j < I.max' (Index.nonempty hI)) :
+    (I.filter (j ≤ ·)).card = 2 ↔ j = penultimate I hI :=
+  right_card_two_iff_penultimate I hI j hj hjm
+
+example {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
+    Index.sign I (penultimate I hI) = -1 :=
+  sign_penultimate I hI
+
+example {n : ℕ} (I : Finset (Fin (n + 2))) (j : Fin (n + 1)) :
+    withoutFirst (I.erase j.succ) = (withoutFirst I).erase j :=
+  withoutFirst_erase_succ I j
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 2)) (hj : j ∈ I)
+    (haj : a < j) (hjb : j < b) (hne : j ≠ penultimate I hI) :
+    (normalizedTensorConeData A X Y c).cutCompose I a b k j = 0 :=
+  normalizedTensorConeData_cutCompose_of_ne_penultimate A X Y c I a b k hI ha hb hk j hj haj hjb hne
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) :
+    (normalizedTensorConeData A X Y c).quadraticBoundary I a b k =
+    Index.sign I (penultimate I hI) •
+      (normalizedTensorConeData A X Y c).cutCompose I a b k (penultimate I hI) :=
+  normalizedTensorConeData_quadratic_single A X Y c I a b k hI ha hb hk hc
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) :
+    (normalizedTensorConeData A X Y c).rhs I a b k hI ha hb hk =
+    (normalizedTensorConeData A X Y c).linearBoundary I a b k +
+      (normalizedTensorConeData A X Y c).cutCompose I a b k (penultimate I hI) :=
+  normalizedTensorConeData_rhs_reduced A X Y c I a b k hI ha hb hk hc
+
+example (X Y : Complex A) {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hc : I.card ≠ 2) :
+    (normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk = 0 :=
+  normalizedTensorConeData_hom_ordinary_zero A X Y c I a b k hI ha hb hk ha0 hc
+
+end e2RhsFixtures
 end
