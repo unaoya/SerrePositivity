@@ -26922,3 +26922,72 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_zero_structure
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_zero_structure
+
+#check @SerrePositivity.KST.SConstruction.pointedComponentAdjointSquare
+#print axioms SerrePositivity.KST.SConstruction.pointedComponentAdjointSquare
+
+#check @SerrePositivity.KST.SConstruction.pointedComponentAssemblyTransfer
+#print axioms SerrePositivity.KST.SConstruction.pointedComponentAssemblyTransfer
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAInverseComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv_apply
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFDGKGroupEquiv_apply
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSourceSOAComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSourceSOAComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAAssemblyAdjoint_component
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAAssemblyAdjoint_component
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_positive_adjoint
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_positive_adjoint
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASequenceComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASequenceComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_component
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_component
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_levelwise
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_levelwise
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_zero
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOASpectrumComparison_zero
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_positive_structure
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_positive_structure
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_structure
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFRawSOAComparison_structure
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAComparison_structure
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFSOAComparison_structure
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepAdjoint_component
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepAdjoint_component
+
+#check @SerrePositivity.KST.SConstruction.soaExInfinityAdjointLoop_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.soaExInfinityAdjointLoop_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.soaExInfinityAdjoint_component
+#print axioms SerrePositivity.KST.SConstruction.soaExInfinityAdjoint_component

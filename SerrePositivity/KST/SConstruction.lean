@@ -2201,4 +2201,13 @@ public import SerrePositivity.KST.SConstruction.PointedSOAExInfinityComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEvaluationComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAZeroStructure
+public import SerrePositivity.KST.SConstruction.PointedComponentAdjointSquare
+public import SerrePositivity.KST.SConstruction.PointedComponentAssemblyTransfer
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFDGKComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAAssembly
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAPositiveAdjoint
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOASpectrumComparison
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOAStructure
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStepAdjointComponent
+public import SerrePositivity.KST.SConstruction.SOAExInfinityAdjointComparison
 /-! # ∞-S• 構成と連結 K 理論 -/
