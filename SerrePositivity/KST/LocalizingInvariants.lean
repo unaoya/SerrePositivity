@@ -1495,4 +1495,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellPat
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellPathNaturalitySquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingSquare
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathCochainExt
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionCochain
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionBoundary
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathConnectionHom
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
