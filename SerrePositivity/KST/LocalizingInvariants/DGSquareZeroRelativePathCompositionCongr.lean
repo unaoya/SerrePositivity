@@ -47,4 +47,9 @@ lemma precomp_comp_hom (v : RelativeWitness q N a b) (w : RelativeWitness q N b 
   simp only [comp_add, comp_sub, ← Mon.comp_hom', Category.assoc]
   rfl
 
+lemma replaceHom_comp_hom (v : RelativeWitness q N a b) (w : RelativeWitness q N b c)
+    (k : W ⟶ DGAlgebra.Path.algebra R (algebra B N)) (hk : v.hom = k) :
+    ((v.replaceHom k hk).comp w).hom = (v.comp w).hom :=
+  comp_congr_hom_of_paths hk.symm rfl
+
 end SerrePositivity.KST.LocalizingInvariants.SquareZero.RelativeWitness

@@ -1341,7 +1341,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedZeroPaths,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedZeroComposition,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareSolveLeft,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueSolved]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueSolved,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAImagePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAImageMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardOriginalZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAFirstZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardFirstComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaASecondZero,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAZeroComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardComposite,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardNaturalitySquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeEndpointTransfer]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

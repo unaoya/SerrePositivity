@@ -1638,4 +1638,27 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueSolved
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAImagePath
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAImageMap
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardOriginalZero
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAFirstZero
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardFirstComparison
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaASecondZero
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAZeroComposition
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardComposite
+
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardNaturalitySquare
+
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeEndpointTransfer
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
