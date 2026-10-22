@@ -934,7 +934,18 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovClassConnectiveProReflection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassConnectivePro,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneConnectivePro,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneValuePro]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneValuePro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofConnectiveValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseConnectiveRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofInvariantValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraProInverseRoofFactor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraProRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeProRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCospanProRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassInverseRoof]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -1145,4 +1145,16 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassC
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneConnectivePro
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneValuePro
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofValue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofConnectiveValue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseConnectiveRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSurjectiveRoofInvariantValue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraProInverseRoofFactor
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraProRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeProRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCospanProRoof
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNormalizedClassInverseRoof
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
