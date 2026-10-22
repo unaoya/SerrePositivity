@@ -84,6 +84,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.rightStraighteningSmallRecovery_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_rightStraightening_iff
 #check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_of_strictClassified_colimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.isKappaSmall_iSup_subcomplex
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallSubcomplexFamily_isCardinalFiltered
+#check @SerrePositivity.InfinityCategories.F2.Ind.iSup_smallSubcomplexFamily
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_fresh_vertex_label
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallSubcomplexFamilyCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

@@ -49,3 +49,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraightening
 public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningLeftRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningSmallRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.ClassifiedFilteredElements
+public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallSubcomplexUnion
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexCofinalFamily
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallVerticesFreshLabel
+public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit

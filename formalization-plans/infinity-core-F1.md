@@ -35,9 +35,11 @@
   `rightStraighteningSmallRecovery` は元の全空間から同じ分類値の元の right unstraightening への底上の同値。
   `hasKappaFilteredElements_rightStraightening_iff` は同じ分類値の条件と元の全空間の条件の一致。任意の κ。
   `hasKappaFilteredElements_of_strictClassified_colimit` は正則 κ で同じ strict 分類図式の任意の native 余極限への保存。
+  小さい部分複体の和、拡大可能な小さい部分族の κ-filtered 被覆・包含余極限、未使用頂点ラベルは証明済み。
+  終頂点を持つ部分複体への拡大と、実際の cofinal map は未証明。
   一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6531 jobs、公理監査 866 宣言、標準三公理のみ。
+- 独立集約 6535 jobs、公理監査 890 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -65,6 +67,7 @@
 - `strictRightStraighteningColimitFiberCoconeIso`、`strictRightStraighteningCocone_isColimit`
 - `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
 - `hasKappaFilteredElements_of_strictClassified_colimit`
+- `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -90,10 +93,10 @@
 
 ### 次の一手
 
-(c)：`HasKappaFilteredElements` の同型閉性と Yoneda 像は証明済み。
-正則 κ の下で同じ strict 分類図式の任意の native 余極限への保存までは証明済み。
-元の right unstraightening と元の全空間の底上の復元同値も証明済み。
-次は κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
+(c)：strict 分類図式の余極限で元の κ-filtered 条件を保つところまで証明済み。cofinal poset の構成を進める。
+次は κ ≤ #X の Codiscrete X の nerve を掛け、未使用頂点ラベルで小さい錐の拡大を単射にする。
+終頂点を持つ小さい部分複体の拡大を証明し、構成済みの同じ部分族の κ-filtered 被覆へ適用する。
+その後、実際の cofinal map と元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。
