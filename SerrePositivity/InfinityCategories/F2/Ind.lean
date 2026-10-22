@@ -46,3 +46,6 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppo
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningFiberCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictOppositeFiberColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningLeftRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningSmallRecovery
+public import SerrePositivity.InfinityCategories.F2.Ind.ClassifiedFilteredElements

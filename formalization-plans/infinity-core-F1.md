@@ -26,21 +26,18 @@
   κ-filtered なら、同じ密度余錐によって最小閉包に属する方向。任意の κ で成立。
   `HasKappaFilteredElements` は同じ条件を前層の頂点条件として定義。
   `hasKappaFilteredElements_isoClosed` は前層内の同型閉性、`hasKappaFilteredElements_yoneda` は元の Yoneda 像。
-  表現可能前層の元の right unstraightening の標準恒等点が終対象なので、任意の κ で条件を満たす。
-  `isCardinalPresentable_of_isKappaSmall` は元の κ-small な形状の通常の κ-presentability。
-  同じ境界・ホモトピーの後続段への因子分解、κ-small な直積の小ささを証明。
-  `isKappaFiltered_of_strict_isColimit` と `rightFibration_of_filtered_isColimit` は通常の strict 模型の閉性。
-  `strictRightFibrationColimit` は固定底上の同じ全空間の余極限射影を束ねた対象。
-  元の脚と射影の等式、および `strictRightFibrationColimit_isKappaFiltered` まで証明済み。
-  `strictRightFibrationColimitFiberIso` は同じ余極限の fiber と元の各 fiber の余極限との同型。
-  元の全空間の脚が誘導する fiber 写像との一致、同じ通常の余錐の余極限性まで証明済み。
-  `strictRightFibrationFiberNativeCocone_isColimit` はその同じ余錐の SpaceInfinity 内の余極限性。
+  κ-small な形状の通常の κ-presentability、境界・ホモトピーの相対因子分解、直積の小ささを証明。
+  `strictRightFibrationColimit` は元の脚と射影を持つ同じ固定底上の対象で、κ-filtered 性の保存も証明済み。
+  `strictRightFibrationColimitFiberIso` は同じ fiber 余極限の比較。元の全空間の脚が誘導する写像に一致する。
   `strictRightStraighteningColimitFiberCoconeIso` は同じ前層余錐の全評価 join 射と実際の反転 fiber 余錐の関手同型。
   `strictRightStraighteningCocone_isColimit` は同じ strict filtered 余極限の分類余錐の native な余極限性。
   元の全空間の余極限の脚と全高次の整合性を保持し、別の余錐の存在で代用しない。
+  `rightStraighteningSmallRecovery` は元の全空間から同じ分類値の元の right unstraightening への底上の同値。
+  `hasKappaFilteredElements_rightStraightening_iff` は同じ分類値の条件と元の全空間の条件の一致。任意の κ。
+  `hasKappaFilteredElements_of_strictClassified_colimit` は正則 κ で同じ strict 分類図式の任意の native 余極限への保存。
   一般の coherent な前層図式をこの strict 模型へ移す比較は未証明。
   逆方向と任意の Indκ 対象の単一 κ-filtered 表示、および右 fibration 定義との一致は未証明。
-- 独立集約 6528 jobs、公理監査 850 宣言、標準三公理のみ。
+- 独立集約 6531 jobs、公理監査 866 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 - 定義の構成は任意の κ、(c)・(d) の主定理では κ の正則性を明示する。
 
@@ -66,6 +63,8 @@
 - `strictRightFibrationColimit_isKappaFiltered`
 - `strictRightFibrationColimitFiberIso`、`strictRightFibrationFiberNativeCocone_isColimit`
 - `strictRightStraighteningColimitFiberCoconeIso`、`strictRightStraighteningCocone_isColimit`
+- `rightStraighteningSmallRecovery`、`hasKappaFilteredElements_rightStraightening_iff`
+- `hasKappaFilteredElements_of_strictClassified_colimit`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -92,10 +91,9 @@
 ### 次の一手
 
 (c)：`HasKappaFilteredElements` の同型閉性と Yoneda 像は証明済み。
-正則 κ の下で小さい κ-filtered 余極限閉性を示す。strict 模型の閉性と相対因子分解は証明済み。
-同じ `strictRightStraighteningCocone` 全体の評価比較と、前層 ∞ 圏内の余極限性は証明済み。
-次はその頂点の元の right unstraightening と strict な全空間を比較し、元の κ-filtered 条件へ接続する。
-κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
+正則 κ の下で同じ strict 分類図式の任意の native 余極限への保存までは証明済み。
+元の right unstraightening と元の全空間の底上の復元同値も証明済み。
+次は κ-filtered な添字の cofinal 比較と、元の coherent 図式から strict right fibration 図式への比較を構成する。
 原典は HTT 5.3.5.3 とその添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。
 κ-filtered な表示と右 fibration 定義の一致を結論する。既存の filtered・cofinality を再実装しない。

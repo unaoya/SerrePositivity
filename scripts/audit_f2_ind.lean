@@ -79,6 +79,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningColimitFiberCoconeIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictOppositeFiberNativeCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightStraighteningSmallRecovery
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightStraighteningSmallRecovery_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightStraighteningSmallRecovery_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_rightStraightening_iff
+#check @SerrePositivity.InfinityCategories.F2.Ind.hasKappaFilteredElements_of_strictClassified_colimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
