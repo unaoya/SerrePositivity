@@ -22,6 +22,11 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeCompar
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeExtraction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedCompositionCochain
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostcomposition
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostBottom
+public import SerrePositivity.InfinityCategories.Derived.Gluing.InclusionTransport
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeBottomAction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModule
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso
