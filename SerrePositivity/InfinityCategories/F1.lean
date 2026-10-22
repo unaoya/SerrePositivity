@@ -3071,3 +3071,9 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryShared
 public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryFaceComparison
 
 public import SerrePositivity.InfinityCategories.F1.KanSpanPullbackComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianRestrictionDiagramMaps
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryHornComparison
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryPullbackComparison
