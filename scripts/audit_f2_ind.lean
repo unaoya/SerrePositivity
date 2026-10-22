@@ -465,3 +465,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedDensityDiagramHomotopy
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityHomotopy
 #check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityHomotopy_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientHomotopy
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedIndDensityCoefficientHomotopy_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedCoefficient_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedCoefficientLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedSourceLift_coefficientIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedCoefficientLift_evaluationIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedArrowSourceLift_restrictIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.weightedTwistedCoefficientLift_canonicalIso
