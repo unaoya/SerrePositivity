@@ -27705,3 +27705,81 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_target
 #print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_target
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxCategory_isIdempotentComplete
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxCategory_isIdempotentComplete
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxVertex
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxVertex
+
+#check @SerrePositivity.KST.SConstruction.perfectStableObject_laxVertex
+#print axioms SerrePositivity.KST.SConstruction.perfectStableObject_laxVertex
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_inclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_inclusion
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_rightInclusion
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_rightInclusion
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_projection
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxSemiorthogonal_projection
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxIdempotent_hasColimit
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxIdempotent_hasColimit
+
+#check @SerrePositivity.KST.SConstruction.perfectLaxPullback_isIdempotentComplete
+#print axioms SerrePositivity.KST.SConstruction.perfectLaxPullback_isIdempotentComplete
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectSequence
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectSequence
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectSequence_vertices
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectSequence_vertices
+
+#check @SerrePositivity.KST.SConstruction.tammePerfectSequence_projection
+#print axioms SerrePositivity.KST.SConstruction.tammePerfectSequence_projection
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeLeftFactorIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeLeftFactorIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeRightFactorIso
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeRightFactorIso
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_inclusion
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_inclusion
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_section
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_section
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_projection
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEquivalence_projection
+
+#check @SerrePositivity.KST.SConstruction.tammeSplit_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.tammeSplit_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_hom
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_hom
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_target
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeSplitEdge_target
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone_vertex
+#print axioms SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant.tammeProductCone_vertex

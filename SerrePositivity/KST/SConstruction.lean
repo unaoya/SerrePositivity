@@ -2264,4 +2264,9 @@ public import SerrePositivity.KST.SConstruction.PerfectInvariantProductDecomposi
 public import SerrePositivity.KST.SConstruction.PerfectSemiorthogonalInvariant
 public import SerrePositivity.KST.SConstruction.PerfectSemiorthogonalSplitInfinity
 public import SerrePositivity.KST.SConstruction.PerfectStableHoArrow
+public import SerrePositivity.KST.SConstruction.PerfectLaxCategory
+public import SerrePositivity.KST.SConstruction.PerfectLaxIdempotent
+public import SerrePositivity.KST.SConstruction.TammePerfectSequence
+public import SerrePositivity.KST.SConstruction.TammePerfectSplit
+public import SerrePositivity.KST.SConstruction.TammePerfectSplitInfinity
 /-! # ∞-S• 構成と連結 K 理論 -/
