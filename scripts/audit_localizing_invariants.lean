@@ -728,7 +728,21 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPerturbedInclusion,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovUnderlyingPullback,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeInclusion,
-    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackConeLimit]
+    `SerrePositivity.KST.LocalizingInvariants.MonoidPullbackConeLimit,
+    `SerrePositivity.KST.LocalizingInvariants.BimoduleSubobject,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackFunctor,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageActions,
+    `SerrePositivity.KST.LocalizingInvariants.DGBimoduleImageSupport,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationFactorization,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationImageExtension,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationImageRestriction,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapPrimitive,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapCocone,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapQuasiIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGDerivationImageExtensionQuasiIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
