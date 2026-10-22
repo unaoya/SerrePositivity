@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 元の augmentation の二射影・指定切断後の自然性と実双加群射の raw 前合成作用を接続する6新規モジュール、Derived 集約、両監査、本計画の10パスを保存予定。対象・集約ビルド、12公開署名の型・公理・ソース検査と両全体監査は成功。通常 tensor 比較の右変数自然性2宣言は `/tmp/` で検証済み・未集約。他レーンの変更は変更しない。
+- 元の augmentation の二射影・指定切断後の自然性と実双加群射の raw 前合成作用を接続する6新規モジュール、Derived 集約、両監査、本計画の10パスを `1ae325bb6` に保存済み。対象・集約ビルド、12公開署名の型・公理・ソース検査と両全体監査は成功。通常 tensor 比較の右変数自然性2宣言は `/tmp/` で検証済み・未集約。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 同じ端点輸送・任意 dg 入力前合成・二段前合成を保ち、元の augmentation の二射影上と指定切断後の自然性を統合・監査済み。実後続双加群射 g の raw 作用を同じ前合成作用へ、元の導来作用を同じ module raw factor の共役式へ同定した。後続 kernel の平坦性・射の可逆性は不要。次は `/tmp/d-beta5-kernel-composition-right-raw.lean` の通常 tensor 比較の右変数自然性を半自由入力・共通出力分解へ移す。実 κ の raw 計算式と augmentation の自然性に接続し、第一 kernel だけを平坦とする右変数自然性を証明する。同試作2宣言は警告なし・許容三公理で検証済み、未集約。入力側の `dgKernelDerivedInfinity_sourceRestrictionIso` の自然性は未提供。現存の κ 自然性の四端の右相対 K-flat 仮定をそのまま使うと原 kernel に平坦性を要求するため、この拡張が必要。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。実行中の監査はない。
+- 同じ端点輸送・任意 dg 入力前合成・二段前合成を保ち、元の augmentation の二射影上と指定切断後の自然性を統合・監査済み。実後続双加群射 g の raw 作用を同じ前合成作用へ、元の導来作用を同じ module raw factor の共役式へ同定した。後続 kernel の平坦性・射の可逆性は不要。次は `/tmp/d-beta5-kernel-composition-right-raw.lean` の通常 tensor 比較の右変数自然性を半自由入力・共通出力分解へ移す。実 κ の raw 計算式と augmentation の自然性に接続し、第一 kernel だけを平坦とする右変数自然性を証明する。同試作2宣言は警告なし・許容三公理で検証済み、未集約。半自由制限と出力分解後の同じ射の回収は `/tmp/d-beta5-kernel-composition-right-semi.lean` で検証中。先行試行は明示 import 不足、次の試行は同じ射の回収で kernel timeout となり終了済み。端点の等式と指定同型の射の回収、前合成作用との同定を別の不透明補題へ分けた retry2 が session 5973 で実行中、ログは同名 `-retry2.log`。上限は変更していない。まず同プロセスの終了を確認し、観測待ちだけで再起動しない。入力側の `dgKernelDerivedInfinity_sourceRestrictionIso` の自然性は未提供。現存の κ 自然性の四端の右相対 K-flat 仮定をそのまま使うと原 kernel に平坦性を要求するため、この拡張が必要。一般 cell 模型の全 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。実行中の監査はない。
 
 ## 目標と原典
 
