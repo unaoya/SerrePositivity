@@ -14,6 +14,12 @@
   全整数次数の作用を同定し、比較差の可換正方形から native Hom との鎖同型を構成。
 - native Hom に単位・合成・結合律を移し、実 dg gluing 圏を構成した。
   元の Hom 射影による左右 dg 射影と、元の単位・合成の両成分との厳密な一致も完成。
+- 元の第三 cochain と代表加群表示の第三 cochain の比較、および単位の第三成分が零であることを証明。
+- 閉じた gluing 射の同じ第三成分から、全対象での比較ホモトピーと実 cone 係数を構成。
+  cone の包含・次数別行列式・比較ホモトピー零の場合の既存 cone 写像との一致を検証した。
+- 三項行列を全 Hom end 内に構成し、各対象での評価が実 cone 係数であることから閉性を証明。
+  全 dg 自然な実加群射 `dgGluingConeMorphism` と、右包含との厳密な可換性まで完成。
+  元の両圏の代表 cone への移送と gluing の Hom の標準 cone 比較は未完。
   前三角性は未完であり、工程 (a) 全体の完了とは数えない。工程 (b)〜(f) は未着手。
 
 ### 主要宣言
@@ -25,6 +31,10 @@
 - `dgGluingDGCategory`・`dgGluingToComma`・`dgGluingLeft`・`dgGluingRight`
 - `dgGluingLeft_comp_yoneda`・`dgGluingIdentity`・`dgGluingComposition`
 - `dgGluingComposition_left`・`dgGluingComposition_right`
+- `dgGluingHomComparison_yoneda`・`dgGluingIdentity_comparison`
+- `dgGluingConeSquareMap`・`dgGluingConeSquareMatrix_eq`
+- `dgGluingCommaClosedSquareHomotopy_equation`・`dgGluingConeCoefficient`
+- `dgGluingCommaConeElement_closed`・`dgGluingCommaConeMorphism_eval`・`dgGluingConeMorphism`
 
 ### 残り（依存順）
 1. (a) 残り：シフト・cone の表現可能性から `IsDGPretriangulated` を証明。KL §4.1 Lemma 4.3。見積り 1〜2 日。
@@ -43,14 +53,18 @@
   `dgKernelDerivedInfinity`（半自由入力・実出力分解を保つ導来 tensor）。
 
 ### 次の一手
-- シフト・cone の表現可能性（KL Lemma 4.3）を構成し、
-  `dgRepresentableHomotopyProperty` の三角的閉性として前三角性へ接続する。
-  元の両 dg 圏の前三角性から導き、gluing の前三角性・安定性を仮定入力にはしない。
+- 閉射に対する `dgGluingConeMorphism` は、左代表加群の cone から右成分の双加群像の cone への実射。
+  次は元の両圏の前三角性から代表 cone を選び、この実射を gluing 対象の閉元へ移す。
+  β5 の通常 `Morita.kernelTensor`、`BimoduleTensor.rightUnitIso` と cone 保存を使い、
+  右成分の cone と双加群像の cone の比較を構成する。導来圏の同型だけで K(D) の同型を代用しない。
+  続いて gluing の Yoneda Hom と標準 cone の比較・シフトを構成し、
+  `dgRepresentableHomotopyProperty` の三角的閉性（KL Lemma 4.3）へ接続する。
 
 ### 未コミット・既知の問題
-- 13モジュール・集約のビルド成功（4494 jobs）、公理監査162宣言成功。所有モジュールに警告なし。
-  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。
-  初期 Hom 構成は `844a5fde8`、native dg 構造と両射影は続く専有11パスのコミットへ保存。
+- 18モジュール・集約のビルド成功（4500 jobs）、公理監査257宣言成功。所有モジュールに警告なし。
+  許容三公理のみ。新規 sorry・axiom と主経路の `ModelCategory` 仮定なし。主要6署名も検査済み。
+  今回の5モジュール・集約・監査・本計画を専有8パスだけで保存する。他レーンの差分は含めない。
+  三項行列の計算は複体上の一般補題と加群評価へ分離し、既定の heartbeat 上限を保って検証した。
 - β5 の `Bimodule` は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`。
   KL の (D₂ᵒᵖ ⊗ D₁)-dgm は右 dg 加群の規約。比較差は `gμ − νf` を保持する。
 
