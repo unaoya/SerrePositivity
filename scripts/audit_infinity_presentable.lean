@@ -40,3 +40,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomComparison_colimit_vertex
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_of_compact_colimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_yoneda_pinchedHomMap_isEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomComparison_limit_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_iff_op
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_of_source_colimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparisonEquivalence_hom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indRepresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indEquivalence
