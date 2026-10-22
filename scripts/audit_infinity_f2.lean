@@ -3343,3 +3343,29 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison_total_heq
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_total_heq_nativeRelative
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_component
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso_app_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFiberHomIso_app_heq_factors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_factors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso_eq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation.largeIso_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison_heq_raw
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_largeIso_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_value_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison_heq_family_app
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_heq_of_family_eq
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_iso_roundtrip

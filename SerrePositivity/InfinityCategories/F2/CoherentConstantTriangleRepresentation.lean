@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitRepresentation
+public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleLargeComparison
 
 /-!
 概要：定値標的への指定表現を保ち、元の合成三角形の長辺を全空間射の表現にする。
@@ -27,18 +27,7 @@ variable {B : SSet.{u}}
 /-- 指定表現を第二辺に持つ元の三角形の長辺は、元の全空間射の合成を表す。 -/
 def coherentConstantTriangleRepresentation : CoherentConstantRepresentation F z
     (coherentTransformationTotalMap F G t ≫ a) := by
-  have e := (unstraighteningTriangleVertexIso F G (SSet.const z) t R.1 T.diagonal
-    T.diagram T.first T.second T.long).postcomp
-      (constantUnstraighteningFiberProjection _ z ≫ (pointedSpaceFiberValueEquivalence z).hom)
-  have er := (CoherentConstantRepresentation.largeIso G z a R).precomp
-    (leftUnstraighteningMappingVertexMap F G t).val
-  have hlift : (leftUnstraighteningMappingVertexMap F G t).val ≫
-      ((smallLeftUnstraighteningIso G).inv ≫ (SSet.uliftFunctor.{u + 1, u}).map a) =
-      (smallLeftUnstraighteningIso F).inv ≫ (SSet.uliftFunctor.{u + 1, u}).map
-        (coherentTransformationTotalMap F G t ≫ a) := by
-    rw [Functor.map_comp, ← Category.assoc, ← Category.assoc,
-      coherentTransformationTotalMap_lift]
-  have et := functorIsoOfEq (e ≪≫ er) rfl hlift
+  let et := coherentConstantTriangleLargeComparison F G z a R t T
   have es := VertexIso.map et (smallUnstraighteningHomIso F (spaceInfinityObject z).obj).hom
   rw [smallUnstraighteningHomIso_hom_vertex] at es
   have hl := congrArg (fun v : ((ihom (leftUnstraightening F)).obj

@@ -27,15 +27,15 @@
   二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
   三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
   coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  coherentColimitUnitValueComparison_heq_native は同じ二面の比較合成を a6 の標的表示へ値まで回収。
-  coherentColimitUnitValueComparison_total_heq_nativeRelative は二面の比較合成を相対比較へ値まで回収。
+  coherentColimitUpperActionIso_eq_triangle は既存の上面作用比較を同じ全上面の比較へ値まで同定。
+  coherentColimitLowerCompositeIso_app_heq_triangle は下面の区間族比較を同じ全下面の相対比較へ同定。
+  coherentColimitLowerActionIso_heq_factors は既存の下面作用比較の三角形・指定区間輸送の二因子を保持。
   未完：a6 の指定作用比較との照合、元の二三角形・指定 path を保つ全錐比較、引き戻し保存、
   部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
   その後 Ind・compact・冪等完備化・安定性・compact 生成、presentable・随伴関手定理。
   各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド9506 jobs、公理監査11933宣言・F1/F1B 同時 import 成功、標準三公理のみ。
-  共通全空間への反映・内部面の消去・native 標的輸送を含む追加35明示宣言を型検査。
-  追加 ModelCategory 仮定・F1/F1B と F2 のソースの名前衝突なし。
+  検証：三集約同時ビルド9524 jobs、公理監査11961宣言・F1/F1B 同時 import 成功、標準三公理のみ。
+  既存の上下作用の指定値の回収・表現の縮小と復元を含む追加13明示宣言を型検査。
 
 ### 残り（依存順、実作業時間の概算）
 
@@ -83,9 +83,10 @@
 - F2N-1 a7：元の二面の比較合成を a6 の指定作用比較へ値まで照合する。
   同じ全空間上の三関係と内部面の消去は coherentColimitUnitTriangleValue_coherence で完了。
   coherentColimitUnitValueComparison_total_heq_nativeRelative で元の二面の相対比較合成を回収済み。
-  constantUnstraighteningFiberProjection と pointedSpaceFiberValueEquivalence.hom で指定値を写す。
-  その値を coherentColimitLowerActionIso.symm≪≫coherentColimitUpperActionIso へ照合する。
-  上面の native 単位表現・下面の coconeIntervalFiberHomIso の指定共役因子も保持して消去する。
+  上面の指定表現の縮小・復元は coherentConstantTriangleRepresentation_largeIso_eq で元の値へ回収済み。
+  上面作用は coherentColimitUpperActionIso_eq_triangle、下面作用は LowerActionIso_heq_factors で分解済み。
+  下面の族の成分を LowerCompositeIso_app_heq_triangle で同じ相対比較へ戻し、同じ q≫m で写す。
+  constantUnstraighteningRelativeIso と fiber 射影の作用を揃え、上下の指定単位・区間輸送の共役因子を消去する。
   a6 の native 合成比較と coherentColimitApexTriangle_isoSquare へ接続し、二三角形・指定 path の全錐比較を束ねる。
   その極限性から引き戻し保存へ接続。native 整合式・辺ごとの同型だけでは全錐比較の完了としない。
   続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。

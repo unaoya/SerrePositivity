@@ -479,6 +479,17 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitNativeUnitVal
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTotalComponent
 public import SerrePositivity.InfinityCategories.F2.FunctorSquareTotalComponent
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTotalComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerActionValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerCompositeValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerFiberValue
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitUpperActionValue
+public import SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentationLargeValue
+public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleLargeComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleLargeRecovery
+public import SerrePositivity.InfinityCategories.F2.CoherentConstantTriangleRepresentationValue
+public import SerrePositivity.InfinityCategories.F2.FunctorTriangleRelativeFamilyValue
+public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleFamilyValueTransport
+public import SerrePositivity.InfinityCategories.F2.VertexIsoIsoRoundtrip
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
 方針：F1 の既存 coherent nerve 模型を使い、比較 API を F2 名前空間で追加する。
@@ -555,3 +566,29 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitTotalComp
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison_total_heq
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_total_heq_nativeRelative
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_component
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso_app_heq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerFiberHomIso_app_heq_factors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_factors
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso_eq_triangle
+
+#check @SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation.largeIso_heq_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison_heq_raw
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_largeIso_eq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_value_heq
+
+#check @SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison_heq_family_app
+
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_heq_of_family_eq
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_iso_roundtrip
