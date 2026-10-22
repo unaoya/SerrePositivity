@@ -28,12 +28,8 @@
   `isFullyFaithful_iff_cosliceComparisonOver` は全始点での前合成同値性による全充満忠実性の判定。
   分類評価の全自然性と、実 fiber 評価が同じ `vertexFiberMap` の coherent 辺を回収する一単体の等式も証明。
   同じ Ind 比較の二つの生成対象で、元の実 coslice fiber 比較自身が同値であることまで接続。
-- 全自然な関手圏の元の射について、両側が保存する同じ余極限の各項での可逆成分条件を、同じ頂点へ延長。
-  元の射を表す一つの辺と全余錐を使用。両側の compact 性と厳密な宇宙持ち上げ・後合成式で小さい κ-filtered 版へ接続。
-  `pinchedHomMap_equivalence_of_compact_colimit` を元の Ind の単一表示へ適用し、上記の生成対象から任意対象への実比較を得た。
-- 極限側でも相対終対象の元の射影の充満忠実性から、同じ全比較の可逆成分条件を元の全錐の頂点へ延長。
-  共変 Hom の極限保存、指定二対象の実比較の反転前後の同値性、元の余錐像の厳密な反転式を合成。
-  `pinchedHomMap_equivalence_of_source_colimit` を Ind の始域の単一表示へ適用し、上記の全充満忠実性を得た。
+- 関手圏の元の全比較の可逆成分条件を、両側が保存する同じ余極限・極限の頂点へ延長。
+  共変 Hom の余極限・極限保存と元の余錐の反転式から、Ind の両変数の単一表示を通じて上記の全充満忠実性を得た。
 - 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
   任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
@@ -42,7 +38,11 @@
 - 元の任意の μ-small coherent nerve 図式を、小さい κ-filtered 部分 poset へ厳密に因子化。
   全単体での回収、包含による遷移との整合性、部分 nerve の厳密な図式と通常の SSet 余極限を証明。
   宇宙 u+1 の元の標的図式への合成も厳密に回収し、各 filtered 部分図式の native な余極限の存在へ接続。
-- 独立集約ビルド成功（7612 jobs）、公理監査 171 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 部分添字とその対象の全空間を構成。値射影の各上方 comma の κ-filtered 性を証明し、
+  F1B の comma 比較・Quillen A から同じ値射影の right cofinal 性を証明。
+  宇宙 u+1 の元の全余錐の全空間への制限は余極限性を保存・反映する。
+  全空間の同じ図式を指定 fiber へ制限すると、元の部分図式そのものを厳密に回収する。
+- 独立集約ビルド成功（7616 jobs）、公理監査 225 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 残り（依存順）
 1. accessible ∞ 圏：濃度変更・必要な基本性質（HTT 5.4.2〜5.4.4）。定義・Ind による iff・同値不変性は完了。16〜40 時間（暫定）。
@@ -81,6 +81,8 @@
 - `smallFilteredPieces_nerve_isKappaFiltered`、`smallFilteredPiece_nerve_properties`
 - `exists_smallFilteredPiece_factorization`、`nerveSubsetLift_transition`
 - `smallFilteredNerveCocone_isColimit`、`exists_smallFiltered_partialColimit`
+- `SmallFilteredTotal`、`smallFilteredTotalValue_isRightCofinal`
+- `smallFilteredTotal_restrict_isColimit_iff`、`smallFilteredTotalDiagram_restrict_fiber`
 
 ### 未コミット
 - なし。工程 (1) の最初の検証済み区切りを所有ファイルのみ保存。
@@ -91,7 +93,7 @@
 
 ### 次の一手
 - 工程 (1) の濃度変更。部分余極限の coherent な族を組み立て、元の全表示の頂点を μ-filtered 余極限として回収する。
-  部分添字の全空間から元の添字への cofinal 性と、部分余極限の μ-compact 性を証明する。
+  部分添字への射影に沿う左 Kan 拡張を、元の各 fiber の部分余極限として実現する。値射影の cofinal 性は完了。
   単に各生成対象が μ-compact であることだけでは μ-filtered 表示を与えない。元の全図式・表示の小ささを保持する。
   部分 nerve の通常の SSet 余極限と各部分の native な余極限の存在は完了。全表示の組立てと μ-compact 性は未証明。
   その後、工程 (2) の presentable の定義と前層の presentable 性へ進む。

@@ -66,3 +66,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPartialDiagram_hasColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFiltered_partialColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalAbove_isCardinalFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredAboveCommaEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalValue_coslice_isWeaklyContractible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalValue_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotal_restrict_isColimit_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalDiagram_restrict_fiber
