@@ -2717,3 +2717,9 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 同じ中央部分集合の符号付き選択 cochain／線形成分へ回収する。
 `principal_cut_sign` は元の両切断の重みと cone cochain の符号を比較する。
 元の実評価辺・単位との合成、混合 HA・全自然性・大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_principal_composite` と Pinched 版は元の主切断の合成を、
+同じ中央線形成分へ戻す。二つの `_cutCompose_principal` は元の実切断へ次数を合わせる。
+`normalizedTensorTriangle_principal_weighted_cut` は符号付きの主切断の全比較。
+`normalizedTensorTriangle_middle_sum_heq` は元の中央相の全符号付き切断和の一致。
+全二次境界と混合 HA・全自然性・大域評価三角形は未完了。
