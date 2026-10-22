@@ -14479,3 +14479,63 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaLeftKanHomCanonicalCone_isLimit
 #print axioms sigmaLeftKanHomCanonicalCone_isLimit
+
+#check @universeCoconeShapeIso_inr
+#print axioms universeCoconeShapeIso_inr
+
+#check @universeCoconeShapeIso_inv_inr
+#print axioms universeCoconeShapeIso_inv_inr
+
+#check @uliftSliceUnderIso_projection
+#print axioms uliftSliceUnderIso_projection
+
+#check @sliceUnderRestrict_projection
+#print axioms sliceUnderRestrict_projection
+
+#check @cosliceEqIso_projection
+#print axioms cosliceEqIso_projection
+
+#check @pointCosliceUniverseIso
+#print axioms pointCosliceUniverseIso
+
+#check @pointCosliceUniverseIso_projection
+#print axioms pointCosliceUniverseIso_projection
+
+#check @rightKanShapeUniverseIso
+#print axioms rightKanShapeUniverseIso
+
+#check @rightKanShapeUniverseIso_projection
+#print axioms rightKanShapeUniverseIso_projection
+
+#check @rightKanShapeUniverseIso_slice
+#print axioms rightKanShapeUniverseIso_slice
+
+#check @uliftJoinIso_inv_yoneda
+#print axioms uliftJoinIso_inv_yoneda
+
+#check @sliceUnderUncurry_ulift
+#print axioms sliceUnderUncurry_ulift
+
+#check @sliceUnderUncurry_eqIso
+#print axioms sliceUnderUncurry_eqIso
+
+#check @pointCosliceUniverseIso_uncurry
+#print axioms pointCosliceUniverseIso_uncurry
+
+#check @rightKanCanonicalCone_universe_val
+#print axioms rightKanCanonicalCone_universe_val
+
+#check @rightKanCanonicalCone_isLimit_iff_ulift
+#print axioms rightKanCanonicalCone_isLimit_iff_ulift
+
+#check @rightKanCanonicalCone_post_ulift_isLimit
+#print axioms rightKanCanonicalCone_post_ulift_isLimit
+
+#check @rightKanExtension_refl_post_ulift_of_canonicalLimits
+#print axioms rightKanExtension_refl_post_ulift_of_canonicalLimits
+
+#check @rightKanCanonicalCone_op_isLimit
+#print axioms rightKanCanonicalCone_op_isLimit
+
+#check @sigmaLeftKanHom_isRightKanExtension
+#print axioms sigmaLeftKanHom_isRightKanExtension
