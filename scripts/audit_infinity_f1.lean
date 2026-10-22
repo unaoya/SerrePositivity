@@ -8828,3 +8828,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryGlobalPullbackComparisonIso
 
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryCoherentHomComparison_originalIso
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_exists_colimitCone
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_hasColimit
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_evaluation_isColimit
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_isColimit_of_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_isColimit_iff_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_hasPointwiseLimits
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_exists_limitCone_of_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_hasLimit_of_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_isLimit_of_evaluation
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_evaluation_isLimit
+
+#check @SerrePositivity.InfinityCategories.presheafInfinity_isLimit_iff_evaluation

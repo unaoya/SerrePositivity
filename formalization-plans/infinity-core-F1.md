@@ -1,106 +1,71 @@
 # F1：fibration・straightening・Yoneda（レーン α2）
 
-> **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1。straightening → Yoneda・前層。twisted arrow・Hom 関手は α2b と分担。
+> **v2 の位置づけ（2026-10-22 10:10 変更）**：foundations.md §6 の F1。第 I 段は F1-4 → F1-5 → F1-3b。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ（2026-10-22）
 
 ### 現在地
 
-- F1a〜F1c の基盤は提供済み。F1d の Cat∞ 値 cocartesian 分類は未完了。
-- `CocartesianFibrationInfinity B` の Hom は元の cocartesian な相対関手 ∞ 圏の core。
-- 通常圏の nerve 上の実際の全 fibration の分類写像 `cocartesianStraighteningCoherentMap` を構成済み。
-  元の全相対 Hom の作用を section へ制限し、core の混合作用・対角評価で全対象と全高次を束ねた。
-  同じ写像の p での値は、F1B の cocartesian strict transport の既存の図式全体と厳密に一致する。
-  各値は元の fiber と恒等射評価で同値。strict transport の同じ全相対 Hom 作用も同値と証明済み。
-  core 上の同じ作用を豊穣化し、strict transport の像への coherent な比較は同値。
-  全ての有限次元単体上で元の分類主写像の充満忠実性・分類同値と、元の全 Hom の core の区間作用の同値を追加仮定なしに証明済み。
-  一次元の strict 変換空間は、元の二成分評価による内部 Hom の厳密な pullback と証明済み。
-  薄い底上の元の輸送遷移の同値持ち上げ性と、後合成の core の Kan fibration 性も証明済み。
-  一次元の元の Hom の core も、同じ二成分評価による core の厳密な pullback と証明済み。
-  元の Hom 作用の成分評価を標準 Hom 同値と厳密に結び、一次元の同じ全 Hom 作用の同値性を
-  実際の固定成分の全 fiber 比較へ還元し、同じ比較自体の同値性を追加仮定なしに証明した。
-  両側の一成分評価の Kan 性、source の固定成分 fiber と後合成 fiber の厳密な同型も証明済み。
-  分類先の実際の固定成分 fiber は、同じ第二三角形の外ホーン延長を表す厳密な pullback と証明済み。
-  第一三角形への制限は Kan fibration。指定外ホーン fiber から元の fiber への同値と、元の比較の同じ外ホーン fiber への制限を構成済み。
-  元の Hom の core の区間作用を構成し、底の制限・豊穣前合成の自然性と主写像への接続を証明済み。
-  元の cocartesian Hom の core と分類先の両端固定の区間 Hom は、底を覆う余極限に沿う厳密な極限。
-  底変換の辺の保存・反映、辺の被覆と全空間の余極限、元の Hom と分類先の単射制限の Kan 性も証明済み。
-  同じ底変換比較の Hom から実際の輸送を作り、零次元の局所 Hom 比較と元の大域作用の関手同型も構成済み。
-- 空間値版では、各 Kan fiber が小さい Kan 模型と同値であれば、任意の底・境界固定の相対表現と
-  全パラメーターでの延長空間の可縮性を証明済み。元の次数 fiber の小ささは不要。
-- **F1-1c2 の空間値版は完了**：一般の小さい quasicategory B 上の構成済みの同じ S は
-  `leftStraighteningInfinityMap_isFullyFaithful` により充満忠実。既存の本質的全射性と F0 を合わせ、
-  `leftStraighteningInfinityMap_isQCatEquivalence` で分類同値を閉じた。単位・余単位と三角恒等式は任意。
-- **F1-2 は完了**：前層 ∞ 圏、制限・評価・定値前層、Yoneda の構成・充満忠実性を証明済み。
-  元の全相対 Hom を Hom とする `RightFibrationInfinity B` と `PresheafInfinity B` の実際の分類同値
-  `rightStraighteningInfinityEquivalence` を、小さい quasicategory B 上で構成した。逆の ∞ 関手も同値で、
-  その F での値は既存の `smallRightUnstraighteningProjection F` と頂点の同型で一致する。
-- 前層 ∞ 圏内の実際の pinched Hom に対する Map(rep(y),F) ≃ F(y) と、rep(z)(y) ≃ Map_C(y,z)
-  を証明済み。宇宙・端点を正規化した、同じ Yoneda 写像の実際の Hom 作用も構成済み。
-- `yonedaInfinityMap_isFullyFaithful` により、構成済みの同じ Yoneda 写像の充満忠実性を証明済み。
-  空間値の essentially small Kan fiber への相対延長も閉じた。Cat∞ 値版が残り、F1 全体は未完了。
+- 空間値 straightening は一般の小さい quasicategory 上で完了。単位・余単位・三角恒等式の明示構成は任意。
+- F1-2 は完了：前層 ∞ 圏・制限・評価・定値前層、right fibration 分類、Yoneda の構成・充満忠実性。
+- Cat∞ 値分類の第 I 段の区切りは、全有限単体底での同じ分類主写像の同値。
+  `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`（06:21）。一般底の分類は未完了。
+- 一般底に向けた検証済み作業は `dc768ab4b` まで保存。二次元標準境界の coherent 比較は同値で、
+  元の大域作用との指定同型まで構成した。集約ビルド 7277 jobs、公理監査 15838 宣言、標準三公理のみ。
+- **F1-4 進行中**：小さい前層図式の余極限の存在・元の評価による保存・検出を証明。
+  極限は各点の存在を明示した構成・保存・検出まで。𝒮 の一般 coherent 小極限の存在の接続は残る。
 
 ### 残り（依存順）
 
-1. F1-1c2 の小さい quasicategory 上の空間値版は完了。Kerodon Cor 5.6.0.6、§5.6.5。
-   明示的な単位・余単位と三角恒等式は任意。任意の単体集合への拡張は別件。
-2. essentially small Kan fiber の空間値相対延長は完了。非 Kan の ∞ 圏的 fiber は次項に残る。
-   Thm 5.6.5.12、Cor 5.6.5.15 の一般の cocartesian 版と区別する。
-3. cocartesian・Cat∞ 値の分類と必要な宇宙の一般化。Thm 5.6.0.2、§5.5。80〜240時間以上。
-4. F1-2：Yoneda・前層と right fibration 分類は完了。Kerodon §§8.1〜8.3。
-   twisted arrow・Hom 関手と前層の極限・余極限の後続項目は、本項目と区別する。
-5. 通常圏の nerve 上で Grothendieck 構成と Yoneda を回収する。§§5.6、8.3。8〜32時間。
+1. **F1-4**：P(C) の小さい極限・余極限を各点から構成、評価による保存・検出。
+   HTT 5.1.2.2–5.1.2.4。F2・N の𝒮の界面を読み取り専用で使用。8〜24時間（暫定）。
+2. **F1-4**：表現可能前層と極限の交換。HTT 5.1.3.2。4〜12時間（暫定）。
+3. **F1-5**：表現可能関手による極限の特徴づけ。HTT 5.1.3.2。8〜24時間（暫定）。
+4. **F1-3b**：Hom : Cᵒᵖ × C → 𝒮 の二変数関手化。Kerodon 8、HTT 5.1.3。8〜24時間（暫定）。
+5. **第 II 段**：Cat∞ 値分類の一般底・宇宙への拡張。Kerodon 5.6。一般充満忠実性まで36〜80時間（暫定）、本質的全射性等は別途。
 
 ### 主要宣言（名前のみ）
 
-- `leftStraighteningInfinityMap`、`leftStraighteningInfinityMap_isEssentiallySurjective`
-- `HasEssentiallySmallFibers`、`hasEssentiallySmallFibers_iff_transportRepresentation`
-- `exists_essentiallySmall_leftTransportRepresentation_extension`
-- `essentiallySmallTransportWitnessRestriction_trivialKanFibration`
 - `leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityEquivalence`
+- `HasEssentiallySmallFibers`、`exists_essentiallySmall_leftTransportRepresentation_extension`
 - `RightFibrationInfinity`、`rightStraighteningInfinityEquivalence`、`rightUnstraighteningInfinityMap`
-- `rightStraighteningInfinityCounitVertex`、`rightUnstraighteningInfinityVertexIso`
-- `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafInfinity_sliceIso`
-- `representableRightUnstraighteningComparison_isQCatEquivalence`
-- `yonedaPresheafEvaluation_isQCatEquivalence`、`representablePresheafValueEquivalence`
-- `yonedaInfinityMap_isFullyFaithful`、`yonedaInfinityMap_pinchedHomMap_isQCatEquivalence`
-- `CocartesianFibrationInfinity`、`cocartesianFibrationInfinityMappingEquivalence`
-- `cocartesianStraighteningCoherentMap`、`cocartesianStraighteningCoherentMap_vertex`
-- `cocartesianStraighteningHomInterval_finite_isQCatEquivalence`、`cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`、`cocartesianLocalHomComparison_finite_isQCatEquivalence`
+- `PresheafInfinity`、`presheafInfinityEvaluation`、`presheafInfinityRestriction`
+- `yonedaInfinityMap`、`representablePresheafInfinity`、`representablePresheafValueEquivalence`
+- `yonedaInfinityMap_isFullyFaithful`、`yonedaPresheafEvaluation_isQCatEquivalence`
+- `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence`
+- `cocartesianTwoBoundaryCoherentHomComparison_isQCatEquivalence`
+- `cocartesianTwoBoundaryCoherentHomComparison_originalIso`
+- `presheafInfinity_hasColimit`、`presheafInfinity_isColimit_iff_evaluation`
+- `presheafInfinity_hasLimit_of_evaluation`、`presheafInfinity_isLimit_iff_evaluation`
 
 ### 依存と提供
 
-- F0・Coherent・Stable・F1B・HomotopyLimits と F2 の core の充填性の一般論は読み取り専用。
-- 一般道具 KanTestDetection・DiagonalAdjunction・DiagonalLocalizedEquivalence は読み取り専用。
-- F1/、F1.lean、audit_infinity_f1.lean、本計画だけを所有する。他レーンは変更しない。
-- 新規 sorry・公理・未証明引用なし。公開主経路に ModelCategory SSet 等の追加 instance 仮定なし。
-  KanComplex と TrivialKanFibration は、Mathlib のホーン・境界に対する持ち上げ性を使う。
+- F0・Coherent・Stable・F1B・F2・HomotopyLimits は読み取り専用。
+- F1-4・F1-5 は F1b の F2N-2（Ind）・F2N-3 へ提供。Cat∞ 値一般分類は第 I 段の利用者なし。
+- 所有は F1/、F1.lean、audit_infinity_f1.lean、本計画のみ。他レーン不変。
+- 新規 sorry・公理・未証明引用なし。主経路に同値性や ModelCategory の追加 instance 仮定なし。
 
 ### 未コミット
 
-- なし。検証済みの F1 所有ファイルを、集約・監査・本計画と同一の保存単位でコミットする。
-- 他レーンの編集・ステージは保存対象外。実施記録は各コミットメッセージに置く。
+- なし。通る所有ファイルを集約・監査とともに `git commit --only` で早めに保存する。
 
 ### 既知の問題
 
-- λ は局所化であり、圏同値として消去しない。実際の初頂点引き戻しの Hom 作用を証明した。
-- Yoneda の充満忠実性は元の Hom 作用そのものの同値性で証明した。独立な c1 の同値だけでは
-  一般の S の充満忠実性にならないため、同じ作用との厳密な比較を経由した。三角恒等式は任意。
-- 一般の strict QCat 図式の Hom の quasicategory 性は仮定しない。strict transport が標的なら証明済み。
-- 元の cocartesian Hom の scaffold 制限と strict transport の写像空間比較は同値。
-  元の Hom の同じ区間作用と全固定成分比較は同値と証明済み。有限セル・骨格の降下、大域充満忠実性・一般の本質的全射性は残り、分類は未完了。
+- 有限単体の分類同値から、一般底の分類同値は結論しない。標準境界は一般に nerve ではない。
+- 前層は宇宙 u+1、底と小さい形状は宇宙 u。𝒮 の大きい任意形状の極限・余極限は主張しない。
+- 全局所 Hom の比較と元の大域作用の比較を区別し、指定同型の共有境界像を保持する。
+
+### 再開点（第 II 段、3行）
+
+1. `dc768ab4b`：有限二単体の coherent 境界比較の同値と、元の大域作用への `cocartesianTwoBoundaryCoherentHomComparison_originalIso` まで保存済み。
+2. 次は同じ比較を任意の底の二次元セルへ移し、局所比較の自然性と指定境界値の fiber 比較を揃える。
+3. その後は高次境界・有限セル・骨格降下で一般充満忠実性を閉じ、本質的全射性・一般底・宇宙へ進む。
 
 ### 次の一手
 
-全有限単体の同じ元の分類・全 Hom 作用の帰納は閉じた。`cocartesianStraighteningHomInterval_finite_isQCatEquivalence n` は元の全相対 Hom の core の同じ作用を使い、`cocartesianStraighteningCoherentMap_finite_isFullyFaithful` と F0・既存の本質的全射性で `cocartesianStraighteningCoherentMap_finite_isQCatEquivalence` を結論した。`cocartesianFiniteSimplexStraighteningEquivalence n` は同じ分類主写像を保つ分類同値。`cocartesianLocalHomComparison_finite_isQCatEquivalence` は任意の底の全有限次元セルの同じ局所比較。単位・余単位の明示構成は主経路へ戻さない。
-`cocartesianScaffoldSourceRestrictionMap_id_trivialKanFibration`・`cocartesianScaffoldTargetRestrictionMap_id_trivialKanFibration` は、全次元で元の最初の辺と尾部への両制限自身の自明 Kan 性。小さい・大きい表示の同型と両脚の厳密な自然性により、標準 Segal 射の自明 Kan 性を元の cospan に移した。source は欠損辺を同じ三角形で分解し、元の関手の辺保存を反映する。
-`cocartesianScaffoldSegalComparisonIso` は元の source 制限・同じ厳密比較と、元の分類 Hom 作用・target 制限を結ぶ。元の全 Hom 上の二射を実際の pullback 内で結び、共有頂点への指定像は両側とも同じ直接の大域自然性。尾部の局所同値を明示的な帰納仮定として最初の辺と貼り、全単体の同じ作用の同値へ戻した。
-`cocartesianCellAttachment_nativeLift_isPullback`・`_interval_isPullback` は任意のセル貼付けに対する、両側の元の Hom の同じ宇宙の厳密な pullback。境界からセルへの包含だけを単射とし、既存部分への貼付け写像には単射性を要求しない。既存部分への両制限は Kan fibration で、`cocartesianCellAttachment_sourceExtensionFiberIso`・`_targetExtensionFiberIso` は指定値の延長空間を同じ局所の境界固定 fiber と同定し、セルへの射影を保つ。両延長空間の Kan 性も証明済み。`SimplexAttachmentOver` で実際の標準単体の任意の境界貼付けを底上の pushout として構成した。
-`cocartesianBaseChangeSimplicialHomPath` は既存の同じ底変換 path を任意の単体写像へ制限し、同じ Hom span の両射影の自明 Kan 性と Hom 輸送の同値を保つ。`cocartesianBaseChangeSimplicialOriginalHomIso` は指定された既存の大域自然性をこの制限へ戻す。単射な境界への正方形を同じ指定 path で補正し、`cocartesianBaseChangeSimplicialBoundaryFiberTransport_isQCatEquivalence` で構成した同じ境界固定の分類先 Hom 輸送自体の同値を証明した。`cocartesianSimplexBoundaryFiberTransport_isQCatEquivalence` は全有限次元の実際の標準境界への適用で、境界の quasicategory 性・nerve 表示の仮定はない。
-任意の部分底上の同じ scaffold 前合成について、全相対 Hom と core の同値を、実際の cocartesian 辺の逆像を指定した辺保存 Hom と core へ制限した。水平 lift と元の比較三角形で辺保存を反映し、部分底の quasicategory 性は要求しない。同じ制限との厳密な自然性・単射制限の Kan 性と、`cocartesianScaffoldPullbackBoundaryFiberPre_isQCatEquivalence` により任意の単射な部分底・指定境界値の同じ fiber 比較を証明した。両射影を引き戻した元の native core へ同じ比較を接続し、`cocartesianScaffoldPullbackNativeBoundaryPre_isQCatEquivalence` と大きい宇宙の `cocartesianScaffoldNativeLiftBoundaryPre_isQCatEquivalence` で指定境界値の同じ比較を証明した。`cocartesianCellAttachment_scaffoldExtensionPre` は元の既存部分の指定 Hom の延長空間から同じセルの scaffold 境界固定 Hom へ写し、元のセル制限を保つ前合成同値。有限単体上の全辺を覆う inner anodyne 部分底では、同じ native 制限の逆と元の分類作用から実際の target 区間 Hom への比較を構成し、同値性と元の作用との指定同型を証明した。`innerAnodyneExtensions_ulift_map` で分類先側の宇宙移送も閉じた。`cocartesianHigherHornNativeTargetComparison_isQCatEquivalence`・`cocartesianHigherHornScaffoldTargetComparison_isQCatEquivalence` は三次元以上の実際の内ホーンへの適用で、元の有限単体の全 Hom 作用を指定同型で回収する。境界全体への適用ではない。次は内ホーンと残りの一面の共有境界で比較を揃え、実際の target の境界固定 Hom へ貼り合わせる。二次元内ホーンは、欠ける長辺の保存を三角形で反映した同じ自明 Kan 制限を使い、`cocartesianTwoHornNativeTargetComparison_isQCatEquivalence`・`cocartesianTwoHornScaffoldTargetComparison_isQCatEquivalence` と元の作用との指定同型まで証明済み。全辺被覆は仮定しない。`hornBoundaryAttachment_isPushout`・`HornBoundaryOver.isPushout` は、任意の標準境界を同じホーンと欠けた面の境界貼合せとして表示する。`hornMissingFaceBoundaryIso` は共有部分を一つ低い実際の標準境界へ戻し、包含を保持する。`cocartesianHornBoundary_native_isPullback`・`_interval_isPullback` と両側の `_ExtensionFiberIso` により、ホーン上の指定 Hom の境界延長空間を同じ欠けた面の境界固定 fiber と同定し、元の面制限を保持した。両側の制限の Kan 性と延長空間の Kan 性も証明済み。空の部分底上の元の全相対 Hom・辺保存 Hom・native core と宇宙持ち上げ、および実際の分類先区間 Hom の終対象性を証明した。`cocartesianZeroBoundaryHomComparisonIso` は実際の零単体の空境界上の厳密な同型で、`cocartesianZeroBoundaryHomComparison_original` は元の全 Hom 作用との厳密な可換式。任意の標準単体上の同じ native Hom と分類先 Hom の `cocartesianStandardSimplexHomComparison_isQCatEquivalence`、元の全作用との `_originalIso` を構成した。一次元境界は両側の元の Hom の同じ二端点への直積分解を作り、両端の零次元比較から `cocartesianOneBoundaryHomComparison_isQCatEquivalence` を証明した。`cocartesianOneBoundaryHomComparison_originalIso` は同じ比較と元の大域作用の指定同型で、両端の既存の指定同型を対にして回収する。`cocartesianPullbackNativeLiftRestriction_fibration` で元の大域 native Hom の単射な部分底への制限の Kan 性を証明した。`cocartesianOneBoundaryHomCorrection` は元の指定同型の path を保つ厳密な正方形で、`cocartesianOneBoundaryCorrectedHomIso_boundary` は補正同型の境界像が元の指定同型そのものであることを保証する。`cocartesianOneBoundaryFiberComparison` は同じ指定境界値の実際の fiber の射で、全空間への射影を保持する。`cocartesianIntervalBoundaryFiberComparison_isQCatEquivalence` により、元の有限区間の両端固定 Hom の同じ比較自体の同値性を追加仮定なしに証明した。`simplexNerveBaseFunctor_comp` と `simplexNerveRestrictionOverIso_comm` で任意の標準単体写像を同じ有限鎖の可換正方形へ移した。`cocartesianStandardSimplexHomComparison_naturalityIso` は元の全局所 Hom 比較と両側の直接制限を指定同型で結び、大域から制限された像に限定しない。`cocartesianOneBoundaryHomComparison_localNaturalityIso` で両端の同じ指定自然性を対にし、標準一単体の元の全局所 Hom 比較から同じ境界比較への指定同型を構成した。`cocartesianOneBoundaryLocalHomCorrection` はその指定 path を保つ厳密な正方形で、補正同型の境界像は元の指定同型そのもの。`cocartesianOneBoundaryLocalFiberComparison_isQCatEquivalence` は任意の一単体 σ の指定両端値の実際の全局所 Hom の同じ比較自体の同値性。底への σ の単射性も、大域から制限された像への限定もない。全空間への射影も保持する。`cocartesianTwoHornSharedComparisonNaturalityIso` で二次内ホーンの全 native Hom 比較を同じ共有境界比較へ制限した。`cocartesianTwoHornSharedComparisonReverseIso_original` は元の大域 Hom への前合成で既存の指定三角形そのものを回収する。`cocartesianTwoHornSharedHomCorrection` はその指定 path を保つ厳密な正方形で、補正比較は同値、補正同型の共有境界像も元の指定自然性そのもの。`cocartesianTwoBoundaryFaceComparison_comm`・`_isQCatEquivalence` は欠けた一次元面側の同じ厳密な補正比較。`kanSpanPullbackMap_isPrecompositionEquivalence` は三成分が同値な Kan cospan の厳密 pullback 比較を扱う。`cocartesianTwoBoundaryHornComparison_comm` で同じ標準境界表示のホーン側の厳密可換式を閉じた。`cocartesianTwoBoundaryPullbackComparison_isQCatEquivalence` は共有境界・面・ホーンの同じ三成分の厳密 pullback 比較自体の同値。両射影を保持し、元の二つの pullback の Kan 性も証明した。SSet の既存の全極限から局所的に HasPullback を供給し、追加仮定はない。`cocartesianTwoBoundaryNativePresentationIso`・`cocartesianTwoBoundaryTargetPresentationIso` で、有限二単体の実際の標準境界の両 Hom を同じ pullback へ戻し、両射影を保持した。`cocartesianTwoBoundaryHomComparison_isQCatEquivalence` はその実際の二次元境界上の同じ比較自体の同値。`_face`・`_horn` は元の直接制限と同じ補正比較の厳密な一致。任意の底上の二次元セルへの移送、高次境界・有限セル・骨格の降下はまだ未完了。`cocartesianOneBoundaryLocalCorrectedHom_originalIso` は任意の一単体の同じ補正比較を元の大域作用へ戻す。`cocartesianOneBoundaryFaceInducedOriginalIso` は、その面側同型の制限で同じ共有境界比較の大域同型を指定し、元の二回の制限を直接制限へ揃える。`cocartesianTwoHornFaceCoherenceIso` は同じ指定像を全ホーン Hom へ反映し、大域制限で指定三角形を回収する。`cocartesianTwoHornCoherentComparison` はその同じ path を保つ厳密な補正同値で、元の大域作用への指定同型も構成した。`cocartesianTwoHornCoherentGlobalIso_shared_heq` はホーン側の大域同型の共有境界像が面側の指定像そのものであることを保証する。`cocartesianTwoBoundaryCoherentHomComparison_isQCatEquivalence` で coherent 版の実際の二次元境界比較を構成し、両射影まで証明済み。大域の補正比較・元の分類作用を同じ target pullback へ写す二射と、双方の面・ホーン射影も構成済み。`cocartesianOneBoundaryDiagramOriginalIso` は面側の大域同型と共有境界像を同じ図式表示へ正規化した。`cocartesianTwoBoundaryGlobalPullbackFaceComponentIso`・`cocartesianTwoBoundaryGlobalPullbackHornComponentIso` の共有境界像が同じ面側の指定像であることから、`pullbackFunctorIsoOfCommonNormalizedIsos` で `cocartesianTwoBoundaryGlobalPullbackComparisonIso` を貼り合わせた。`cocartesianTwoBoundaryCoherentHomComparison_originalIso` は実際の二次元標準境界の同じ coherent 比較を元の大域作用へ戻す指定同型。次はこの有限二単体上の境界比較を任意の底の二次元セルへ移し、同じ局所比較の自然性を揃える。その後、高次境界・有限セル・骨格降下へ進む。性能上は同じ始域の native 反変図式の値と展開済み core の表示を両方で先に簡約し、表示変更で残る id も除く。 target の表示を変える同値と、source からの分類比較を区別する。単体の境界は一般に通常圏の nerve ではないため、全有限単体の同値を境界の source 比較にそのまま適用しない。`CocartesianPullbackNativeCoreDescent`・`IntervalDiagramColimitDescent` の厳密な極限表示と制限の Kan 性で骨格を貼る。一般の通常圏の nerve 上の大域 Hom 同値はまだ未完了。
-二次元境界の大域作用への接続は 8〜24 時間、高次境界・有限セル・骨格降下は 24〜48 時間、一般の充満忠実性の結論と監査は 4〜8 時間（暫定）。一般の本質的全射性・一般の底と宇宙への帰着も残り、Cat∞ 値分類は未完了。既存の小さい quasicategory 上の空間値・right fibration・Yoneda の完了と混同しない。
-性能上、巨大な同型は中間作用と端点を不透明な等式で揃えてから合成する。`iso_pasting_heq_of_endpoint_eq`・`IsoTriangleCommutes` とホモトピー圏の対象の等式を使い、source cospan は二脚を明示する。上限・追跡設定は増やさない。
-正本は [foundations.md](foundations.md)、F0 は [infinity-core.md](infinity-core.md)。
+𝒮 の一般 coherent 小極限の存在を F2・N の模型・native 錐の界面へ接続する。
+現在の `presheafInfinity_hasLimit_of_evaluation` の各点存在を解消し、余極限側と同じ無条件の小極限を提供する。
+続いて表現可能前層と極限の交換、F1-5、F1-3b へ進む。
 
 ## 0. 目標と範囲
 
