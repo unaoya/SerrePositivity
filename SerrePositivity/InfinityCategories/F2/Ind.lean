@@ -348,3 +348,9 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
 public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeNativeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinRightNativeRestriction
+public import SerrePositivity.InfinityCategories.F2.Ind.NativeKanColimitTransfer
+public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassificationImage
+public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation
+public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionEquivalence

@@ -1,8 +1,8 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。F2N-2（Indκ）の (a) 密度・(b) 最小閉包・(c) 単一 κ-filtered 表示を完了し、(d) を進める。Cat∞ 値の一般底分類は第 II 段。
+> **v2 の位置づけ（2026-10-22 移管）**：F1-4 → F1-5 → F1-3b は完了。F2N-2（Indκ）の (a) 密度・(b) 最小閉包・(c) 単一 κ-filtered 表示・(d) 保存関手の延長普遍性まで完了。Cat∞ 値の一般底分類は第 II 段。
 
-## 引き継ぎ：F2N-2（2026-10-22）
+## 引き継ぎ：F2N-2（2026-10-23 完了）
 
 ### 現在地
 
@@ -21,21 +21,22 @@
   `presheafDiagramRightStrictClassificationIso` は元の F と実際の strict right 分類像の一つの大域同型。
   元の積上の scaffold・全単体切断の同じ実現・初頂点局所化・自然な底上の二重反転を保持している。
   同じ strict 分類余極限の元の全空間と脚の κ-filtered 性を使い、同じ頂点を保つ native 余錐で保存を結論。
-- **(d) 進行中**：`KappaContinuousFunctorInfinity` と元の Yoneda による実際の `indKappaContinuousRestriction` を構成。
-  全部分関手圏の quasicategory 性、同じ小さい κ-filtered 余極限と包含の保存性を証明。
-  `indVertexDensityCocone` は元の指定 Indκ 頂点を厳密に持つ同じ小さい κ-filtered 密度余錐。保存関手の像も余極限。
-  `indKappaContinuousRestriction_isFullyFaithful` は実際の制限射自体の全写像空間での充満忠実性（正則 κ）。
-  `presheafElementsYonedaSliceComparison_isQCatEquivalence` は元の小さい元の圏の持ち上げから Yoneda comma への元の比較自体の同値性。
-  同じ元の密度変換の全 fiber 作用を、同じ Tw 恒等点からの c1 の普遍輸送で評価して元の比較同値を結論。
-  `indElementsLeftKanComparison` は元の小さい元の圏から Indκ 内の局所 Kan 添字への同じ射影を保つ比較同値。
-  `indLeftKanDiagram_hasColimit` と `ind_exists_leftKanExtension` は、小さい κ-filtered 余極限を持つ D への指定単位付き左 Kan 延長の存在。
-  `indLeftKanCanonicalCocone_restrict_val` は元の局所比較で制限した標準 Kan 全余錐が密度余錐の同じ像に厳密に一致。
-  `indContinuous_canonicalColimits` により保存関手は標準左 Kan 条件を満たし、元の制限射の充満忠実性を結論。
-  `leftKanExtension_unit_isIso_of_fullyFaithful` は任意の充満忠実な関手に沿う指定単位の可逆性。inner 性を要求しない。
-  `indLeftKanExtensionRecoveryIso` は構成済み延長を元の Yoneda 上で回収する同じ指定単位の逆。
-  `indLeftKanExtension_density_image_isColimit` は元の全密度余錐の同じ像の余極限性。全標準局所 Kan 条件も証明。
-  全保存性を strict 分類標準余錐へ帰着済み。元の weighted 全空間比較の right cofinal 性、同じ全密度余錐と左 Kan 像の余極限性を証明。元の twisted-arrow 全評価を c1 で一つの全変換に実現し、共同 weighted 分類と元の strict right 分類の全添字上の同型とともに Indκ 内へ持ち上げた。指定 native 係数余錐そのものと左 Kan 像の余極限性は、同じ実際の評価 fiber 値写像の全比較・pointed 因子分解・前合成同値により証明。`weightedIndDensityRelativeDiagram` は元の全変換を相対 join に実現し、元の表現可能図式と共同分類を両端に厳密に持ち、指定単位の h Fun の類を保持する。`weightedIndRelativeFiberCoefficientTransformationVertex_eq` は実際の fiber 余錐の標準変換を元の全単位の同じ係数制限へ厳密に同定。`weightedIndDensityRelativeDiagram_allFibers_isColimit`・`_allFibers_image_isColimit` は同じ全図式と左 Kan 像の実際の全 fiber 余極限性。`exists_weightedDensity_classifiedFamily_with_universal_KanImage` は元の weighted 密度と共同分類を両端に厳密に持つ同じ一つの大域 Hom 普遍族と左 Kan 像を与える。`weightedIndDensityRelativeDiagram_nativeRestriction_isQCatEquivalence` と像版は、同じ大域分類族の native 全余錐空間の左制限同値を証明。右制限との比較を含む Kan 合成、strict 分類標準余錐の像の余極限性、一般保存性・本質的全射性は未証明。
-- 独立集約 7239 jobs、公理監査 2955 宣言、標準三公理のみ。
+- **(d) 完了（正則 κ）**：`indKappaContinuousRestriction_isQCatEquivalence` は、元の Yoneda による実際の
+  制限射 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値性。D は同じ小さい κ-filtered 余極限を持つ。HTT 5.3.5.10。
+  κ・C・試験添字は宇宙 u、Indκ・D・関手空間は宇宙 u+1。追加の同値性・inner fibration・ModelCategory 仮定なし。
+  `indKappaContinuousRestriction_isFullyFaithful` は同じ制限射の全写像空間の同値を証明済み。
+  `ind_exists_leftKanExtension` は任意の元の C → D の指定単位付き左 Kan 延長を構成し、
+  `indLeftKanExtensionRecoveryIso` は同じ指定単位の逆で元の Yoneda 上の図式を回収する。
+  `weightedIndDensityRelativeDiagram` は元の weighted 密度と共同分類を両端に厳密に持つ同じ大域相対 join 族。
+  同じ全図式と左 Kan 像の実際の全 fiber 余錐の余極限性から、native 全余錐の左制限同値を証明した。
+  `relativeJoinInr_nativeRestriction_isQCatEquivalence` は単射性なしの円柱比較と右端の right anodyne 性から右制限同値を与える。
+  `mapJoinCocone_isColimit_of_nativeRestrictions` は全余錐の同型を保持して両端の間で保存性を移す。
+  `weightedIndClassification_image_isColimit` と `strictClassifiedIndCocone_image_isColimit` により、同じ全分類同型で指定標準余錐へ帰還。
+  `indLeftKanExtension_preservesSmallKappaFilteredColimits` は任意の小さい κ-filtered 図式の指定 native 余錐の保存。
+  係数全空間の κ-filtered 性は正則 κ と元の hF から回収。対象ごとの頂点同型で全余錐比較を代用しない。
+  これで同じ制限射の本質的全射性を証明し、F0 の FF/ES 判定で閉じた。
+  `indKappaContinuousRestrictionEquivalence` は同値データ、`_hom` は順射が元の制限写像である厳密な等式。
+- 独立集約 7245 jobs、公理監査 2974 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` を使用。再実装しない。
 
 ### 残り（依存順）
@@ -43,7 +44,7 @@
 1. **(a)** 完了。元の F 自体の小さい表現可能図式による密度。HTT 5.1.5.3。
 2. **(b)** 完了。最小閉包・Yoneda の因子化・小さい κ-filtered 余極限の保存と検出。
 3. **(c)** 完了（正則 κ）。単一 κ-filtered 表示と元の right fibration 定義との一致。HTT 5.3.5.4。
-4. **(d)** κ-filtered 余極限を保つ延長の実際の制限関手の同値。HTT 5.3.5.10、Kerodon 9。32〜80時間（暫定）。
+4. **(d)** 完了（正則 κ）。実際の制限射の同値と、元の制限写像を順射に持つ同値データ。HTT 5.3.5.10、Kerodon 9。残工程なし。
 
 ### 主要宣言（名前のみ）
 
@@ -66,6 +67,7 @@
 - `indLeftKanCanonicalCocone_restrict_val`、`indContinuous_canonicalColimits`、`indKappaContinuousRestriction_isFullyFaithful`
 - `indLeftKanExtensionRecoveryIso`、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified`、`kanCanonical_isColimitCone_iff_restrict`、`strictRightFibrationTotalAssembly_isRightCofinal`、`weightedIndDensity_image_isColimit`、`weightedIndDensityCocone_vertex_eq_standard`、`cocartesianFibration_ulift`、`exists_weightedDensity_globalFamily_with_KanImage`、`exists_weightedDensity_globalFamily_with_universal_KanImage`、`weightedIndClassificationIso`、`strictRightTwistedComparison`、`weightedRightTwistedEvaluation_projection`、`weightedMap_trivialKanFibration`、`weightedTwistedSourceLift`、`weightedTwistedPullbackIso`、`weightedIndDensityHomotopy`、`weightedIndDensityCoefficientCocone`、`weightedTwistedCoefficientLift_canonicalIso`、`weightedLeftCoefficientRecovery_isPrecompositionEquivalence`、`weightedCoefficientJointEvaluation_factorization`
 - `weightedCoefficientNativeValueComparisonIso`、`weightedIndDensityCoefficientCocone_isColimit`、`weightedIndDensityCoefficientCocone_image_isColimit`、`weightedIndDensityRelativeDiagram`、`weightedIndRelativeCoefficientCocone_isColimit`、`relativeJoinFiberEmbedding_prism`、`weightedIndDensityRelativeDiagram_allFibers_isColimit`、`exists_weightedDensity_classifiedFamily_with_universal_KanImage`
+- `sliceUnderRestrict_isQCatEquivalence_of_precompositionEquivalence`、`relativeJoinInr_nativeRestriction_isQCatEquivalence`、`mapJoinCocone_isColimit_of_nativeRestrictions`、`weightedIndClassification_image_isColimit`、`strictClassifiedIndCocone_image_isColimit`、`indLeftKanExtension_preservesSmallKappaFilteredColimits`、`indKappaContinuousRestriction_isEssentiallySurjective`、`indKappaContinuousRestriction_isQCatEquivalence`、`indKappaContinuousRestrictionEquivalence`、`indKappaContinuousRestrictionEquivalence_hom`
 
 ### 依存と提供
 
@@ -82,25 +84,17 @@
 
 ### 既知の問題
 
-- (d) は対象の延長の存在だけでなく、元の制限写像 Fun^κ(Indκ(C),D) → Fun(C,D) 自体の同値を要する。
-- `Compact.PreservesKappaFilteredColimits` はさらに持ち上げた始域の関手を扱う。Indκ と D の宇宙を照合して使う。
-- 任意の大きい Kan 標的への弱同値の持ち上げは使わず、小さい標的の持ち上げへの前合成同値を使う。
-- 指定単位の回収と cocartesian 性の宇宙移送は解決済み。後者は明示的な証明済み補題を使う。大域相対 join 図式の右制限が元の strict 分類図式である全比較を、各頂点の同型だけで代用しない。
+- F2N-2(a)〜(d) に未証明の主工程なし。(c)・(d) は正則 κ に対する定理。
+- `Compact.PreservesKappaFilteredColimits` はさらに持ち上げた始域の関手を扱う。Ind の小さい添字版とは宇宙を照合して使う。
+- Cat∞ 値の一般底分類は第 II 段の別工程。下記再開点を維持し、F2N-2 の完了と混同しない。
 
 ### 次の一手
 
-(d)：元の制限射の充満忠実性と、左 Kan 延長の存在・元の Yoneda 上の回収は証明済み。任意の κ-filtered 保存性が残る。
-Indκ と D は宇宙 u+1、κ・C・κ-filtered 添字は宇宙 u とし、保存性は元の native 余錐への作用で定義する。
-`PreservesSmallKappaFilteredColimits` は同じ宇宙の元の余錐の像で保存性を定義。F2 の filtered 定義を再利用。
-元の Indκ 頂点を持つ `indVertexDensityCocone` と保存関手による同じ余極限の像まで証明済み。
-`presheafElementsYonedaSliceValue_isQCatEquivalence` と元の全比較の同値性を追加の同値性仮定なしに証明済み。
-`indElementsLeftKanComparison` は元の局所 Kan 添字へ同じ射影を保つ同値。任意の制限図式も厳密に回収する。
-`ind_exists_leftKanExtension` は正則 κ と小さい κ-filtered 余極限を持つ D に対し、元の C → D の左 Kan 延長を構成済み。
-`indContinuous_canonicalColimits` と F1b の標準 Kan 写像空間定理で、同じ制限射の全写像空間の同値まで証明済み。
-`indLeftKanExtensionRecoveryIso` で指定単位の逆を保持し、`indLeftKanExtension_density_image_isColimit` で全密度余錐の像を回収済み。
-次は strict 分類標準余錐 `strictClassifiedIndCocone` の左 Kan 延長による像の余極限性を証明する。元の全空間は各段と余極限とも κ-filtered。
-`weightedIndDensityRelativeDiagram` の実際の全 fiber 余錐と左 Kan 像の余極限性は証明済み。左制限は元の `weightedIndDensityDiagram`、右制限は元の `weightedIndClassification` に厳密に一致する。`exists_weightedDensity_classifiedFamily_with_universal_KanImage` はこの同じ族と左 Kan 像の大域 Hom 普遍性を与える。次は native 余錐を保持した Kan 合成を証明して、元の weighted 密度余錐の像の余極限性を右の共同分類図式の余錐へ移す。全 fiber の証明から `F1B.kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers` と `kanRelativeJoinFunctor_pinchedHomMap_equivalence` を同じ図式と左 Kan 像へ適用できる。`coconeTransformationMap_restrict` の添字制限との厳密な自然性を再利用。`sliceUnderRestrict_isQCatEquivalence_of_initialBoundary` と同じ分類族への適用で、左制限の native 全余錐同値と指定余錐の余極限性の検出まで証明。次は右制限の native 全余錐比較を組み立て、同じ図式の余錐へ結ぶ（Hom の全単射だけで native 余極限性を結論しない）。`weightedIndClassificationIso` で元の strict 分類標準余錐へ保存性を移し、`ind_preservesSmallKappaFilteredColimits_iff_strictClassified` から一般保存性へ戻る。像の fiber 条件に使う各元の全空間の κ-filtered 性は、正則 κ と元の hF から元の復元同値で回収する。最後に実際の制限射の本質的全射性と F0 の FF/ES 判定を適用する。対象ごとの頂点同型だけで全余錐比較を代用しない。
-HTT 5.3.5.10、Kerodon 9。対象の延長の存在や頂点ごとの同型のみで結論しない。
+F2N-2(a)〜(d) は完了。次の割り当てへ進む。
+提供する主界面は `IndInfinity`、`indYoneda`、`isIndVertex_iff_singleFilteredPresentation`、
+`indLeftKanExtension_preservesSmallKappaFilteredColimits`、`indKappaContinuousRestrictionEquivalence`。
+`indKappaContinuousRestrictionEquivalence_hom` により、同値の順射は元の Yoneda 制限写像そのもの。
+F2N-3（compact）は F1b、F2/Idempotent は N の所有。既存 F2.lean とルート集約は変更しない。
 
 ## F1 の完了済み範囲と第 II 段の再開点
 
