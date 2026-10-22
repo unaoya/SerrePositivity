@@ -2683,3 +2683,9 @@ prependOrderHom・extendOrderHom を使う二つの可換式を与える。
 `normalizedTensorTriangleFront_Back_hom` は中央相の二表示の全 cochain の一致。
 `simplexData_equation_of_agreementOn` は同じ部分集合の全 cochain の比較による方程式の移送。
 零→二の混合 HA・全作用素自然性・大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_equation_pinched` は中央相を含まない任意部分集合の全 HA。
+零相と二相の定値 cochain を元の pinched 単体へ同定し、元の全方程式を戻す。
+`normalizedTensorTriangleData_linearBoundary_pinched` は零→二の混合部分の全線形境界の一致。
+全 HA の残りは三相を含む部分集合の二次境界（切断合成和）の比較。
+全作用素自然性・大域評価三角形・標準単位の弱同値性・同じ U の∞極限保存は未完了。
