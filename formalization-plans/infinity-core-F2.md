@@ -75,7 +75,6 @@ N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照�
 - D・K へ第 1 部と compact・安定性を提供。Ind は F1 の公開宣言を使い、必要時に未提供なら F1 に依頼して待つ。
 
 ### 未コミット
-
 - 今回の所有変更は保存済み。F1 の Ind と N の Idempotent の集約・サブディレクトリは所有・保存対象外。
 
 ### 既知の問題
