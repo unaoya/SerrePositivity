@@ -518,3 +518,8 @@ public import SerrePositivity.KST.Fibration.StableHomCompositionVertices
 public import SerrePositivity.KST.Fibration.CoherentTrianglePaths
 public import SerrePositivity.KST.Fibration.StableTriangleZeroHom
 public import SerrePositivity.KST.Fibration.VerdierTriangleZeroHom
+public import SerrePositivity.KST.Fibration.CoherentTriangleDiagonal
+public import SerrePositivity.KST.Fibration.StableTriangleDiagonalZero
+public import SerrePositivity.KST.Fibration.VerdierLowerTriangleZeroHom
+public import SerrePositivity.KST.Fibration.StableTriangleHomOverDiagonal
+public import SerrePositivity.KST.Fibration.VerdierNullHomFamilies
