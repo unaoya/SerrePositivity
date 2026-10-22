@@ -1402,5 +1402,13 @@ public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitne
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeClassPath
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativePathSurjectiveSource
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeMappingPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeMappingPathQuasiIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeMappingPathSurjective
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPullbackMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPullbackMapQuasiIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeHomotopyPullback
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeExtension
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeModels
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
