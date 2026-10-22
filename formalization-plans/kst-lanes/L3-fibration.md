@@ -41,11 +41,14 @@
   全零対角・実押し出し・W 条件を保ち、両方向の全面・全退化で可換。object S(W 列) と
   相対 S の交換した二重単体集合・対角の厳密同型を構成。K-1 の各行の object/core 比較から、
   相対 S の対角 → W 列の core S 実現の対角の実際の比較射が局所化同型と証明。
+  同じ単回反復実現 F₁ の対角へ自然な座標同型で接続。包含側の任意の完全関手による
+  W 列の後合成は安定な入力の単体的自然変換で、実単体・二重単体・対角の交換と厳密に可換。
+  相対 S の核側の写像を同じ W 列の core/単回反復実現へ運ぶ可換四角形を証明。
 - 工程 (c) の必要条件：K-5 の実 Sp 長完全列により、右射影の全射性と接続射の
   自明性を同定。左項が連結なら元の零次射影は全射。cofinality の十分条件は未証明。
-- 現在の対象ビルド 7238 jobs・専用監査 138 モジュール 848 宣言が成功。
+- 現在の対象ビルド 7247 jobs・専用監査 146 モジュール 875 宣言が成功。
   標準三公理のみ、宣言型の ModelCategory 検査と diff --check も成功。
-  所有 import 閉包 3521 モジュールは EInfinity を含まない。全体 24032 jobs で成功。
+  所有 import 閉包 3530 モジュールは EInfinity を含まない。全体 24060 jobs で成功。
 ### 残り（依存順）
 1. 構成した wS•C と加法性からの連結版 fibration 定理
    （Waldhausen 1985 1.6.4、BGT §7、暫定 40–80 時間）。
@@ -63,19 +66,16 @@
 - weakCofiberProjection_trivialKanFibration、weakArrowMultiAdditivityMap_localized_isIso。
 - weakStringFiniteComparison_localized_isIso（零長を含む全長・全正有限反復）。
 - weakStringFiniteComparison_innerFace_addition、weakStringKernelCofiber_degeneracy_inserted_zero。
-- RelativePullback.multiPair_localized_isIso、composableWeakMultiStep_localized_isIso、
-  weakStringFiniteComparison_two_localized_isIso（全正有限反復、元の全成分を回収）。
 - standardTail_isPushout、standardTailInclusion_innerAnodyne、standardTailEndpoint_eq_yoneda、
   tailWeak_isPullback、tailWeakPrefixExact、tailWeakEdgeExact。
 - weakStringPredicate_iff_tail、weakStringTailEquivalence、
   weakStringTail_multiRealization_localized_isIso、weakStringTail_prefix_ambient。
 - tailWeak_jointReflection、weakCofiberCompletionEquivalence、tailPrefixEndpointTop_eq、
   tailRelativePullback、weakStringTailMultiStep_localized_isIso（全長・全正有限反復）。
-- weakStringTailMultiStep_canonical、weakStringFiniteComparison_factor、
-  weakStringFiniteComparison_positive_localized_isIso（全正有限長・全正有限反復）。
 - weakRelativeMultiAction、weakStringVertexMultiAction、weakStringFiniteComparison_face_zero_action。
 - weakStringObjectRelativeIso、weakStringObjectRelativeDiagonalIso、
   relativeSWeakStringCoreComparison_localized_isIso（元の実比較射）。
+- relativeSWeakStringMultiComparison_square、relativeSWeakStringCoreComparison_square。
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-1・K-2）、`KST/LocalizingInvariants/`（K-5）、`KST/Spectra/`、`InfinityCategories/Derived/`（β3 の Verdier 列）。
 - 提供先：K-7（非連結 K）、K-基盤 2（K が局所化不変量であること）。
@@ -95,14 +95,14 @@
 - 工程 (c) の必要条件は K-5 の `NativeFiberSequence` の整数長完全列を入力にする。
   Sp の IsStable は使わない。K-3 の具体的 K 関手・π₀ 比較は未接続。
 ### 未コミット
-- なし（今回の零長・全長比較、実相対 S と W 列の二重単体・対角比較の10モジュール等を含める）。
+- なし（今回の W 列の後合成・比較の完全関手自然性・元の核側の可換四角形の8モジュール等を含める）。
 ### 既知の問題
 - 所有 import 閉包の破損なし。前回の共有ルートの intervalMinimum 同名衝突は他レーンで解消済み。
   K-6 全体・有限 W 列全体の加法性比較の自然性・連結版の cofinality 条件は未完。
 ### 次の一手
 - `relativeSimplicialKernelSquare` の実現後の homotopy pullback 性へ進む。
-  relativeSWeakStringCoreComparison と全長の加法性比較を接続し、元の包含・核の四角形を保つ
-  homotopy fiber 比較へ進む。有限積の自然性・商の写像空間・cofinality も未完。
+  元の core 包含に対応する定数 W 列を構成し、相対 S と F₁ の比較がこの包含を保つことを照合。
+  全長の加法性から homotopy fiber 比較へ進む。有限積の自然性・商の写像空間・cofinality も未完。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
