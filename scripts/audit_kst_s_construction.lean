@@ -25305,3 +25305,174 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.suspensionFamily_evaluation_post
 #print axioms SerrePositivity.KST.SConstruction.suspensionFamily_evaluation_post
+
+#check @SerrePositivity.KST.SConstruction.exInfinitySuspensionAssembly_unit
+#print axioms SerrePositivity.KST.SConstruction.exInfinitySuspensionAssembly_unit
+
+#check @SerrePositivity.KST.SConstruction.exInfinityThenSuspensionMap
+#print axioms SerrePositivity.KST.SConstruction.exInfinityThenSuspensionMap
+
+#check @SerrePositivity.KST.SConstruction.exInfinityThenSuspensionFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.exInfinityThenSuspensionFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedSpanValue
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedSpanValue
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedSpanComponentMap
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedSpanComponentMap
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedSpanHom
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedSpanHom
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedSpanHom_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedSpanHom_projection
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedSpanFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedSpanFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedFamily_whisker_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedFamily_whisker_naturality
+
+#check @SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedSSetSuspensionEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.PointedSpanDiagram
+#print axioms SerrePositivity.KST.SConstruction.PointedSpanDiagram
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanDiagram_category
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanDiagram_category
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanDiagram_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanDiagram_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanProjection
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanProjection
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanProjection_naturality
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanProjection_naturality
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySourceFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySourceFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyMiddleFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyMiddleFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityTransformation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityTransformation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyExInfinityTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor_kan
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyTargetFunctor_kan
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyObject
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyObject
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyObjectMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyObjectMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily_based
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily_based
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyFamily_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblySourceFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblySourceFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyTransformation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyTransformation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGAssemblyTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTransformation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTransformation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap_eq
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftMap_eq
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySigmaMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySigmaMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightTransformation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightTransformation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySigmaMap_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySigmaMap_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap_right
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap_right
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeft_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeft_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRight_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRight_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor_projection
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySpanEnrichedFunctor_projection
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySourceUnit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblySourceUnit
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap_unit
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyRightMap_unit
+
+#check @SerrePositivity.KST.SConstruction.simplicialComposition_assoc_app
+#print axioms SerrePositivity.KST.SConstruction.simplicialComposition_assoc_app
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp_hom
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformationComp_hom
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialTransformationReassociateSource
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformationReassociateSource
+
+#check @SerrePositivity.KST.SConstruction.strictSimplicialTransformation_whisker
+#print axioms SerrePositivity.KST.SConstruction.strictSimplicialTransformation_whisker
+
+#check @SerrePositivity.KST.SConstruction.PointedSpanDiagram.mk
+#print axioms SerrePositivity.KST.SConstruction.PointedSpanDiagram.mk
+
+#check @SerrePositivity.KST.SConstruction.PointedSpanDiagram.diagram
+#print axioms SerrePositivity.KST.SConstruction.PointedSpanDiagram.diagram
