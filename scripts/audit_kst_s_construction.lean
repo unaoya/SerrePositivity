@@ -25659,3 +25659,159 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorInvTransformation
 #print axioms SerrePositivity.KST.SConstruction.pointedTensorLeftUnitorInvTransformation
+
+#check @SerrePositivity.KST.SConstruction.closedPushoutHom_condition
+#print axioms SerrePositivity.KST.SConstruction.closedPushoutHom_condition
+
+#check @SerrePositivity.KST.SConstruction.closedPushoutHomDesc
+#print axioms SerrePositivity.KST.SConstruction.closedPushoutHomDesc
+
+#check @SerrePositivity.KST.SConstruction.closedPushoutHomDesc_inl
+#print axioms SerrePositivity.KST.SConstruction.closedPushoutHomDesc_inl
+
+#check @SerrePositivity.KST.SConstruction.closedPushoutHomDesc_inr
+#print axioms SerrePositivity.KST.SConstruction.closedPushoutHomDesc_inr
+
+#check @SerrePositivity.KST.SConstruction.closedPushoutHom_ext
+#print axioms SerrePositivity.KST.SConstruction.closedPushoutHom_ext
+
+#check @SerrePositivity.KST.SConstruction.enriched_cocone_family
+#print axioms SerrePositivity.KST.SConstruction.enriched_cocone_family
+
+#check @SerrePositivity.KST.SConstruction.simplicialIdentity_whisker
+#print axioms SerrePositivity.KST.SConstruction.simplicialIdentity_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderEnd_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderEnd_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderSpan
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderSpan
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedMappingCylinderFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily_recover
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily_recover
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily_inverse
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily_inverse
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily_injective
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily_injective
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily_post
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily_post
+
+#check @SerrePositivity.KST.SConstruction.pointedFreeFamily_closedPre
+#print axioms SerrePositivity.KST.SConstruction.pointedFreeFamily_closedPre
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamily_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamily_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_free
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_free
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_inl
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_inl
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_inr
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamilyDesc_inr
+
+#check @SerrePositivity.KST.SConstruction.pointedPushoutFamily_ext
+#print axioms SerrePositivity.KST.SConstruction.pointedPushoutFamily_ext
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanEvaluationFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanEvaluationFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanProjection_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanProjection_hom
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutLeftMap
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutLeftMap
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutRightMap
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutRightMap
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushout
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushout
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutInl
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutInl
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutInr
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutInr
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushout_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushout_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_id
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_id
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_comp
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_comp
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutLeftFamily
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutLeftFamily
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutRightFamily
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutRightFamily
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutFamily_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutFamily_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_inl
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_inl
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_inr
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_inr
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_ext
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutHom_ext
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutMap_condition
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutMap_condition
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutMap
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutMap
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutInl_map
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutInl_map
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutInr_map
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutInr_map
+
+#check @SerrePositivity.KST.SConstruction.pointedSpanPushoutEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.pointedSpanPushoutEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftCylinderFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftCylinderFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftCylinderFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGKanAssemblyLeftCylinderFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.simplicialCocone_map_id
+#print axioms SerrePositivity.KST.SConstruction.simplicialCocone_map_id
+
+#check @SerrePositivity.KST.SConstruction.simplicialCocone_map_comp
+#print axioms SerrePositivity.KST.SConstruction.simplicialCocone_map_comp
+
+#check @SerrePositivity.KST.SConstruction.simplicialHom_post
+#print axioms SerrePositivity.KST.SConstruction.simplicialHom_post
+
+#check @SerrePositivity.KST.SConstruction.simplicialHom_pre
+#print axioms SerrePositivity.KST.SConstruction.simplicialHom_pre
