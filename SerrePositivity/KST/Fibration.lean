@@ -377,3 +377,10 @@ public import SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeCompon
 public import SerrePositivity.KST.Fibration.RelativeSectionJointVertices
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts
 public import SerrePositivity.KST.Fibration.StraighteningGlobalBaseChangeValue
+public import SerrePositivity.KST.Fibration.FunctorIsoValueInverse
+public import SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction
+public import SerrePositivity.KST.Fibration.PointedReconstructionRestriction
+public import SerrePositivity.KST.Fibration.DoubleEvaluationCurry
+public import SerrePositivity.KST.Fibration.RelativeSectionDomainPoint
+public import SerrePositivity.KST.Fibration.RelativeSectionDomainEvaluation
+public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
