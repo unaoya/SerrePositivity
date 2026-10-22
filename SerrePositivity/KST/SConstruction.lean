@@ -2164,4 +2164,9 @@ public import SerrePositivity.KST.SConstruction.PointedStandardLoopEvaluation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFFirstProperties
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFFirstStage
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFZeroStage
+public import SerrePositivity.KST.SConstruction.MultiRealizationFunctorIso
+public import SerrePositivity.KST.SConstruction.StableMultiRealizationEnrichedFunctor
+public import SerrePositivity.KST.SConstruction.StableMultiRealizationHomotopy
+public import SerrePositivity.KST.SConstruction.StableMultiSCoreDiagram
+public import SerrePositivity.KST.SConstruction.StableMultiSCoreObjectFunctor
 /-! # ∞-S• 構成と連結 K 理論 -/

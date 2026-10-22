@@ -26427,3 +26427,69 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFBase_kanComplex
 #print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFBase_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.multiRealizationHomotopyOfFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationHomotopyOfFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.multiRealizationFunctor_map_localized_eq_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationFunctor_map_localized_eq_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.multiRealization_map_positive_localized_eq_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.multiRealization_map_positive_localized_eq_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_vertex
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationEnrichedFunctor_vertex
+
+#check @SerrePositivity.KST.SConstruction.nonempty_stableExactFunctorIsoEdge
+#print axioms SerrePositivity.KST.SConstruction.nonempty_stableExactFunctorIsoEdge
+
+#check @SerrePositivity.KST.SConstruction.stableMultiRealizationHomotopyOfFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.stableMultiRealizationHomotopyOfFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSEnrichedDiagram
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSEnrichedDiagram
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram_obj
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram_obj
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSEnrichedDiagram_hom
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSEnrichedDiagram_hom
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram_hom
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreEnrichedDiagram_hom
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreDiagonalDiagram
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreDiagonalDiagram
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_projection
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_projection
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_realization
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectEnrichedFunctor_realization
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap_realization
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap_realization
