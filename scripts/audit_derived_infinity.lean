@@ -1,3 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleDegeneracy
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalizedDegreeProduct
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalizedDegreeLaws
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalization
 import SerrePositivity.InfinityCategories.Derived.DGNormalizedRingShuffleCoherence
 import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProduct
@@ -4193,6 +4198,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleDegeneracy,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalizedDegreeProduct,
+    `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalizedDegreeLaws,
+
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNormalization,
     `SerrePositivity.InfinityCategories.Derived.DGNormalizedRingShuffleCoherence,
     `SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProduct,

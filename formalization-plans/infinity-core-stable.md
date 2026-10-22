@@ -89,18 +89,18 @@
 
 ### 未コミット
 
-- g の実正規化乗法・準同型自然性、shuffle の座標・符号比較、実 shuffle 積の結合・両単位・自然性、元の鎖写像の二重次数成分との一致の4新規モジュール（28公開宣言）、Derived 集約、両監査、本計画の8パス。対象・両集約（10906 jobs）・28公開署名・ソース検査は成功、新規ソースに警告なし。両全体監査も成功。検証済み8パスを `573c55819` に保存済み。前回保存は `5cdbdd9a5`（計画 `bef5e61ea`）。他レーンの変更は変更しない。
+- g の実退化因子・射影整合性・実 Moore 乗法の結合・両単位・次数移送の5新規モジュール（32公開宣言）、Derived 集約、両監査、本計画の9パス。対象・両集約（10912 jobs）・32公開署名・ソース検査は成功、新規ソースに警告なし。両全体監査も成功。検証済み9パスを保存する。前回保存は `573c55819`（計画 `a29d49fab`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
-- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10906 jobs）。公理監査は Derived 19837 宣言／2206 モジュール、Stable 20950／2476。許容三公理のみ。今回までの保存対象1137新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
+- D7・β3 の零化・平坦模型の対象・集約ビルド成功（10912 jobs）。公理監査は Derived 19905 宣言／2211 モジュール、Stable 21018／2481。許容三公理のみ。今回までの保存対象1142新規モジュールは警告なし。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - Stable のシフトは実 suspension に由来する。D3 の二切断の誘導シフトとの混同を避け、通常の h の比較同値で三角同値を公開した。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。
 
 ### 次の一手
 
-- d・f は完了、β4 は D2 所有。g の `DGSimplicialRingNormalization`（9宣言）・`DGNormalizedRingShuffleCoherence`（9）・`DGSimplicialRingShuffleProduct`（9）・`DGSimplicialRingShuffleNative`（1）を統合した。対象・両集約（10906 jobs）・28公開署名・ソース検査は成功、新規ソースに警告なし。実正規化乗法と自然性、元の非可換な環の積を保つ実 shuffle 積の結合・両単位・自然性、元の shuffle 鎖写像の二重次数成分の値との一致を保持する。両全体監査は終端0（Derived 19837宣言／2206モジュール、Stable 20950／2476）。検証済み8パスを `573c55819` に保存済み。ログは `/tmp/d-beta5-normalized-ring-shuffle-{derived,stable}-audit.log`。次工程：各 shuffle 項の入力退化に対して共通の実退化写像を構成し、Mathlib の PInfty による退化零化へ接続した4宣言は `/tmp/d-beta5-ring-shuffle-degeneracy.lean` で検証済み。双線形性と全和の退化零化、PInfty の補射影を使う両入力の正規化射影への不変性まで計15宣言も `/tmp/d-beta5-ring-shuffle-projection.lean` で終端0（許容三公理のみ）。射影後の結合・両単位と次数移送まで計20宣言は `/tmp/d-beta5-ring-shuffle-projected-laws.lean` で終端0。公開形式の ready も20明示署名・公理監査・警告なしで終端0。将来の3モジュールの source は `/tmp/d-beta5-ring-shuffle-{degeneracy,projection,projected-laws}-source.lean` に整理済み（後二つの import は予定名 `DGSimplicialRingShuffleDegeneracy`・`DGSimplicialRingShuffleProjection`）。次はこの20宣言を公開モジュールとして検証・統合する。実 Moore 複体の次数別乗法・同じ射影公式・出力包含・単位元・右単位則の9宣言も `/tmp/d-beta5-ring-normalized-degree-product-source.lean` に整理し、同名 ready の9明示署名・公理監査・警告なしで終端0。次の予定モジュール名は `DGSimplicialRingNormalizedDegreeProduct`。実 Moore 乗法の次数移送と左単位・結合則の3宣言も `/tmp/d-beta5-ring-normalized-degree-laws-source.lean` に整理済み。同名 ready は今回までの計32宣言の明示署名・公理監査・警告なしで終端0。次は5モジュールへ統合する：`DGSimplicialRingShuffleDegeneracy`（4宣言）、`DGSimplicialRingShuffleProjection`（11）、`DGSimplicialRingProjectedLaws`（5）、`DGSimplicialRingNormalizedDegreeProduct`（9）、`DGSimplicialRingNormalizedDegreeLaws`（3）。各 source の import はこの予定名を使う。元の実 Moore 部分複体の次数別乗法まで結合・両単位・射影公式を回収した。残りはこれらの統合と全 tensor 図式の乗法則、標準 cochain dg 代数への移送、導来 ∞ 圏と準同型不変性への接続。g 全体は未完。
+- d・f は完了、β4 は D2 所有。g の `DGSimplicialRingShuffleDegeneracy`（4宣言）・`DGSimplicialRingShuffleProjection`（11）・`DGSimplicialRingProjectedLaws`（5）・`DGSimplicialRingNormalizedDegreeProduct`（9）・`DGSimplicialRingNormalizedDegreeLaws`（3）を統合した。元の実 Moore 乗法の次数別成分を保持し、共通の実退化因子、PInfty の退化零化、両入力の射影への不変性から結合・左右単位則を回収した。次数移送は元の複体の eqToHom、包含の単射性で同じ対象へ戻す。対象・両集約（10912 jobs）・32公開署名・ソース検査は成功、新規ソースに警告なし。両全体監査は終端0（Derived 19905宣言／2211モジュール、Stable 21018／2481）。検証済み9パスを保存する。ログは `/tmp/d-beta5-normalized-ring-moore-laws-{derived,stable}-audit.log`。次工程：`embeddingDownNat` に沿う零延長で Moore 次数 n を cochain 次数 −n へ移す関手、実各次数の同型・微分・準同型の成分と正次数零化、準同型性の保存・反映まで10宣言は `/tmp/d-beta5-simplicial-ring-cochain.lean` で終端0。公開形式の同名 ready も10明示署名・公理監査・警告なしで終端0。同宇宙の整数係数 `ULift ℤ` への実加群圏同値による移送も `/tmp/d-beta5-simplicial-ring-cochain-coefficient.lean` で終端0、正次数零化と準同型性の保存・反映を保持する。公開形式の同名 ready で計20宣言を検証中。将来の公開 source は `/tmp/d-beta5-simplicial-ring-{cochain,cochain-coefficient}-source.lean`、予定名は `DGSimplicialRingCochainNormalization`（10宣言）・`DGSimplicialRingCoefficientComplex`（10）。さらに元の全 tensor 図式の乗法則、標準 cochain dg 代数と D(A) への接続、準同型不変性を証明する。係数と加群を同宇宙に置く既存 Complex の規約を守り、単体環の対象宇宙を縮めない。g 全体は未完。
 
 ## 目標と原典
 
