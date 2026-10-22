@@ -4044,3 +4044,62 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueActionTo_precomp_firstEdge
 
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueActionTo_firstEdge_heq_native
+
+
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_fiberMap_post
+
+#check @SerrePositivity.InfinityCategories.F2.functorSquareComparison_map_constantPost_fiberMap
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawLowerCompositeAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUpperCompositeAction
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawUnitActionComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstEdgePost_valueTo_heq_raw
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantPointValueToIso
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_pointValueTo_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_valueTo_source_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_valueTo_target_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_valueTo_eq_raw
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_valueTo_transport_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.functorIso_unit_precomp_transport_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitConstantPointValueTo_upper_heq_lower
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitPointValueTo_upper_source_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitPointValueTo_upper_target_map
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitPointValueTo_upper_eq_lower
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUnitComparison_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelUnitComparison_precomp_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLastValueTo_source_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitLastValueTo_eq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPostNativeValueToComparison
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFirstPost_lower_exchange
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRightTail_valueTo_eq_native
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRightTailTransportValueTo
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRightTail_valueTo_unit_cancel
+
+#check @SerrePositivity.InfinityCategories.F2.vertexIsoOfEq_change_middle
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModelTransportRemainder
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitIntervalModel_outer_cancel
