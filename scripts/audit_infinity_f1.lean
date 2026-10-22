@@ -9024,3 +9024,137 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coneTransformationMap_factor
 
 #check @SerrePositivity.InfinityCategories.coneTransformationMap_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalParameters
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalDeformationParameters
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalDeformationParameters_zero
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalDeformationParameters_one
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalDeformationParameters_left
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalDeformationParameters_right
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrism
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrism_zero
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrism_one
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrism_triangle
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrismHomotopy
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrismHomotopy_left
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalPrismHomotopy_right
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalTransformation
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalTransformation_prism
+
+#check @SerrePositivity.InfinityCategories.coneDiagonalTransformationHomotopy
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_diagonal_transformation
+
+#check @SerrePositivity.InfinityCategories.conePointHomRelativeComposite
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangleComparisonIso
+
+#check @SerrePositivity.InfinityCategories.conePointHomNativeCompositionIso
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare_zero
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare_one
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare_source
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare_target
+
+#check @SerrePositivity.InfinityCategories.conePointHomSquare_zero_standard
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_first
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_second
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_diagonal
+
+#check @SerrePositivity.InfinityCategories.coneMappingPoint
+
+#check @SerrePositivity.InfinityCategories.coneTransformationVertex
+
+#check @SerrePositivity.InfinityCategories.coneTransformationHomotopy
+
+#check @SerrePositivity.InfinityCategories.coneTransformationVertex_const_prism
+
+#check @SerrePositivity.InfinityCategories.coneTransformationVertex_prism
+
+#check @SerrePositivity.InfinityCategories.conePointHomFirstTransformation
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_first_transformation
+
+#check @SerrePositivity.InfinityCategories.conePointHomTriangle_second_transformation
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism_zero
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism_one
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism_precomp
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism_uncurry
+
+#check @SerrePositivity.InfinityCategories.coneVariablePrism_fixed
+
+#check @SerrePositivity.InfinityCategories.intervalMinimumOrder
+
+#check @SerrePositivity.InfinityCategories.intervalMinimum
+
+#check @SerrePositivity.InfinityCategories.intervalMinimum_first_zero
+
+#check @SerrePositivity.InfinityCategories.intervalMinimum_first_one
+
+#check @SerrePositivity.InfinityCategories.intervalMinimum_second_zero
+
+#check @SerrePositivity.InfinityCategories.intervalMinimum_second_one
+
+#check @SerrePositivity.InfinityCategories.pointSliceFamilyHomotopy
+
+#check @SerrePositivity.InfinityCategories.pointSliceFamilyHomotopy_postcomp
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportSliceFamily
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportSliceFamily_evaluation
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportCylinder
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportSliceFamily_baseProjection
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportSliceFamily_base
+
+#check @SerrePositivity.InfinityCategories.sliceFiberUncurry_transport
+
+#check @SerrePositivity.InfinityCategories.rightPointHomTransportCylinder_base
+
+#check @SerrePositivity.InfinityCategories.sliceConeFamilyUncurry_inl
+
+#check @SerrePositivity.InfinityCategories.sourceConstantTransformationHomotopyOfPrisms
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong_zero
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong_one
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong_precomp
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong_const_zero
+
+#check @SerrePositivity.InfinityCategories.timeMinimumAlong_const_one
