@@ -9121,6 +9121,16 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_erased_succ_mixed_last,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_terminal_cut_component]
 
+@[noinline] private def e2RequiredBatch179 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.signed_coefficient_commute,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.sum_restore_terminal,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.sum_interior_zero_last,
+      `SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex.sum_restore_terminal_linear,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_linearBoundary_reindex,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_linearBoundary_mixed_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_rhs_mixed_last,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorConeData_equation_of_last_mem]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9154,7 +9164,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -22667,4 +22677,90 @@ example {n : ℕ}
   normalizedTensorConeData_terminal_cut_component A X Y c I a b k hI ha hb hk hc ha0 hbl h0 hJ hkJ
 
 end e2TerminalCutFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2LastEquationU
+section e2LastEquationFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
+variable (A : Type e2LastEquationU) [CommRing A] (X Y : Complex A)
+
+example {M : Type*} [AddCommGroup M] (k g : ℤ) (v : M) :
+    g.negOnePow • ((k + 1).negOnePow • v) =
+      k.negOnePow • ((g + 1).negOnePow • v) :=
+  signed_coefficient_commute k g v
+
+example {n : ℕ} {M : Type*} [AddCommGroup M]
+    (J : Finset (Fin (n + 1))) (hm : Fin.last n ∈ J)
+    (f : J → M) (r : ℤˣ) :
+    (∑ j : J, if j.val < Fin.last n then Index.sign J j.val • (r • f j) else 0) +
+      r • f ⟨Fin.last n, hm⟩ = ∑ j : J, Index.sign J j.val • (r • f j) :=
+  sum_restore_terminal J hm f r
+
+example {n : ℕ} {M : Type*} [AddCommMonoid M]
+    (I : Finset (Fin (n + 2))) (f : Fin (n + 2) → M) :
+    (∑ j ∈ Index.interior I 0 (Fin.last (n + 1)), f j) =
+      ∑ j : ConeHeadIndex.withoutFirst I,
+        if j.val < Fin.last n then f j.val.succ else 0 :=
+  sum_interior_zero_last I f
+
+example {n : ℕ} {M : Type*} [AddCommGroup M]
+    (J : Finset (Fin (n + 1))) (hm : Fin.last n ∈ J) (f : J → M) (k : ℤ) :
+    (∑ j : J, if j.val < Fin.last n then
+      Index.sign J j.val • ((k + 1).negOnePow • f j) else 0) +
+      (k + 1).negOnePow • f ⟨Fin.last n, hm⟩ =
+        k.negOnePow • ∑ j : J,
+          (((J.filter (j.val < ·)).card : ℤ) + 1).negOnePow • f j :=
+  sum_restore_terminal_linear J hm f k
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ)
+    (ha0 : a = 0) (hbl : b = Fin.last (n + 1)) :
+    (normalizedTensorConeData A X Y c).linearBoundary I a b k =
+      ∑ j : withoutFirst I, if j.val < Fin.last n then
+        Index.sign (withoutFirst I) j.val •
+          (normalizedTensorConeData A X Y c).homOrZero (I.erase j.val.succ) a b (k + 1)
+        else 0 :=
+  normalizedTensorConeData_linearBoundary_reindex A X Y c I a b k ha0 hbl
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (hbl : b = Fin.last (n + 1))
+    (h0 : 0 ∈ I) (hJ : 2 ≤ (withoutFirst I).card)
+    (hkJ : k = 1 - ((withoutFirst I).card : ℤ)) :
+    HEq ((normalizedTensorConeData A X Y c).linearBoundary I a b k)
+      (∑ j : withoutFirst I, if j.val < Fin.last n then
+        Index.sign (withoutFirst I) j.val • ((k + 1).negOnePow •
+          (normalizedTensorElementUniversalLinear A X Y c).val.component
+            ((withoutFirst I).erase j.val) (k + 1)
+            (PinchedHom.LinearData.erase_nonempty hJ _ j.property)
+            (by have := Finset.card_erase_add_one j.property; omega)) else 0) :=
+  normalizedTensorConeData_linearBoundary_mixed_last A X Y c I a b k hI ha hb hk ha0 hbl h0 hJ hkJ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) (ha0 : a = 0)
+    (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I) :
+    HEq ((normalizedTensorConeData A X Y c).rhs I a b k hI ha hb hk)
+      (k.negOnePow • (normalizedTensorElementUniversalLinear A X Y c).val.rhs
+        (withoutFirst I) k (by have := card_withoutFirst I h0; omega)) :=
+  normalizedTensorConeData_rhs_mixed_last A X Y c I a b k hI ha hb hk hc ha0 hbl h0
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (I : Finset (Fin (n + 2))) (hlast : Fin.last (n + 1) ∈ I) :
+    (normalizedTensorConeData A X Y c).Equation I :=
+  normalizedTensorConeData_equation_of_last_mem A X Y c I hlast
+
+end e2LastEquationFixtures
 end

@@ -2555,7 +2555,7 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_rhs_reduced` は元の HA 右辺全体が削除和と最後の切断合成の和であること。
 `normalizedTensorConeData_ordinary_compose` は同じ通常辺と cochain の合成を元の frame 後合成へ戻す。
 `normalizedTensorElementSelectedCochainAtMax_compose` は選択 cochain と元の終端尾の閉射の実合成式。
-残る切断の実際の値は下記に完成。削除和全体と線形右辺の照合、および終端以外の混合成分の移送は未完了。
+残る切断の実際の値は下記に完成。終端を含む削除和全体と線形右辺の照合は下記に完成。終端以外の混合成分の移送は未完了。
 全混合 HA 方程式・全自然性・大域比較・U の∞極限保存・G1′はまだ未証明。
 
 `normalizedTensorConeData_terminal_compose_mixed` は実混合成分と元の通常終端辺の合成式。
@@ -2564,4 +2564,11 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_terminal_cut_component` はその添字を元の集合の終端削除へ戻す。
 `normalizedTensorConeData_erased_succ_mixed_last` は各内部削除成分を同じ普遍削除成分へ同定。
 `ConeHeadIndex.sign_succ` と `interior_zero_last` は削除符号・全内部点の添字の厳密な一致。
-これらの全有限和の等式、全混合 HA 方程式・全自然性・大域 cone/prism は未証明。
+終端を含む全有限和の等式は下記に完成。全混合 HA 方程式・全自然性・大域 cone/prism は未証明。
+
+`ConeHeadIndex.sum_restore_terminal_linear` は最後の一項を戻す全符号付き有限和の式。
+`normalizedTensorConeData_linearBoundary_mixed_last` は元の実線形境界の全項を同じ普遍削除和へ、
+`normalizedTensorConeData_rhs_mixed_last` は元の全 HA 右辺を同じ符号付き線形右辺へ同定する。
+`normalizedTensorConeData_equation_of_last_mem` は元の終端を含む全有限集合で HA 方程式を証明。
+任意終端への制限の整合性、全混合 HA・全自然性・大域 cone/prism は未証明。
+同じ U の coherent ∞ 極限保存・G1′も未完了。
