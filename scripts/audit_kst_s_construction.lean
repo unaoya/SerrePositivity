@@ -26493,3 +26493,195 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap_realization
 #print axioms SerrePositivity.KST.SConstruction.stableMultiSCoreObjectMap_realization
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionKanFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletion_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletion_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit_anodyne
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionUnit_anodyne
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionLeft_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderCompletionRight_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutSpan
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutSpan
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutFunctor
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutFunctor
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutInl_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutInl_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft_whisker
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutLeft_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushoutRight_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushout_localized_square
+#print axioms SerrePositivity.KST.SConstruction.pointedEnrichedCylinderPushout_localized_square
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorComparisonTransformation
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorComparisonTransformation
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorComparisonTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorComparisonTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.pointedTensorComparison_whisker
+#print axioms SerrePositivity.KST.SConstruction.pointedTensorComparison_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFLevelFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFLevelFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFLevel_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFLevel_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureMap_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureTransformation
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureTransformation
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStructureTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence_zero
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFKanSequence_zero
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFInitialStage
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFInitialStage
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFNextStage
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFNextStage
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFPositiveStage
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFPositiveStage
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.mk
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.mk
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.functor
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.functor
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.comparison
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.comparison
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.naturality
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.naturality
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.kan
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.kan
+
+#check @SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.weak
+#print axioms SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStage.weak
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFBoundaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFBoundaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeft_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeft_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStep_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStep_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap_mono
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap_mono
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_whisker
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_whisker
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepKanFunctor
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepStructureMap
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepSuspensionComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepLeftMap_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGBFStepComparison_localized_isIso
