@@ -271,7 +271,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackPreservation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedPullback,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpace,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceContraction]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceContraction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HornDeletionEquation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HornPrescribedTopData,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HornPrescribedTopSimplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HornSimplexExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeHornFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeHornLinearLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedChainMapFibration,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceFibration,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimitProjections]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
