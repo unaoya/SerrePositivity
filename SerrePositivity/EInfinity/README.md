@@ -2649,3 +2649,10 @@ slice 内の最初の頂点の恒等錐との同定、大域二重 join・二次
 `normalizedTensorDoubleConeSliceEvaluation_derived_arrow` は同じ既存 D(R) へ送った全評価族と、
 元の DerivedAugmentationIso.hom の、両端表示を含む全関手圏の Arrow 全体の一致。
 元の cone と同じ augmentation の逆との端点輸送付き比較、評価三角形・屋根比較、同じ U の∞極限保存・G1′は未完了。
+
+`normalizedTensorConeDerivedFamilyHom_inverse_arrow` は既存の元の cone 族自身を、
+同じ元の DerivedAugmentationIso.inv へ、両端表示を保つ全 Arrow 等式として同定する。
+`_isIso` は同じ全関手圏での可逆性。
+`normalizedTensorConeDerivedEvaluation_arrow` と `_family_arrow` は元の評価との合成を、
+元の DerivedRoof および定値端点へ戻した同じ DerivedRoofFamily に照合する。
+大域 pinched 族との評価三角形、その後の標準単位誘導射の弱同値性・同じ U の∞極限保存・G1′は未完了。
