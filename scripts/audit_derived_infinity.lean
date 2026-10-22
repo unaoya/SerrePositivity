@@ -1,3 +1,11 @@
+import SerrePositivity.InfinityCategories.Stable.NormalizedConeRestrictionVertex
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterConeRestriction
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceLimitEdges
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeComposite
+import SerrePositivity.InfinityCategories.Stable.TruncatedEdgeTransport
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonEdgeCoordinates
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonFirstComposite
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeTriangle
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterCospan
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanDiagram
 import SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitExtension
@@ -4419,6 +4427,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.NormalizedConeRestrictionVertex,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterConeRestriction,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceLimitEdges,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeComposite,
+    `SerrePositivity.InfinityCategories.Stable.TruncatedEdgeTransport,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonEdgeCoordinates,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonFirstComposite,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeTriangle,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreOuterCospan,
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanDiagram,
     `SerrePositivity.InfinityCategories.Stable.ExcisionCorePuncturedLimitExtension,
