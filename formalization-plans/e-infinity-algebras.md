@@ -29,6 +29,9 @@
   **元の交互列の全単体と像の増大列を構成。** `alternatingCell m` は偶数位置 Y・奇数位置 X を持つ元の Δ²ᵐ→SplitShape。長さ零の恒等と正の長さの元の吸収射で全射・恒等・合成を構成し、元の包含・射影・非恒等冪等元を回収。
   `alternatingCell_prefix` は元の先頭部分への制限の全 nerve 単体での厳密な一致。`alternatingCell_one` は保存済みの元の分裂三角形そのもの。
   `retractionStage m` はこの元の全セルの像。元の部分複体としての単調性・全セルの制限と構造射の厳密な可換性を証明。第一段階は `weakRetractionImage` そのもの、`weakShapeStageOneIso_ι` は元の商からの同型後の包含が同じ `weakComparison` であること。全被覆性・逆像境界・各段階の pushout は未証明。
+  **奇数頂点を避ける各面の元の因子化と境界の前段階への制限を完了。** `oddFaceCollapse` は隣接する二つの Y を潰す元の順序射。偶奇保存と潰れる二位置を計算し、元の全射・恒等・合成を持つ `oddFaceChain` を証明。
+  `alternatingCell_oddFace` は元の奇数頂点の余面を、同じ元の短い交互セルへ厳密に因子化。`alternatingCellBoundary_le_preimage` は元の境界全体が元の前段階の逆像に入る向き。
+  `alternatingCellBoundaryLift` は元の全境界から元の前段階への実際の写像。元の包含後に同じ全セルの制限を回収し、`alternatingCellBoundaryLift_square` は元のセルと元の段階包含の正方形の厳密な可換性。逆像の逆包含・セルの核・pushout 性・全被覆性は未証明。
   同じホモトピー圏の冪等射を分裂する二つの retract の標準同型と、包含と可換する射の一意性を証明。coherent 分裂空間全体の可縮性の代用にはしない。
   **F2N-4(b)・(c) の対象構成。** 元の前層圏内の Yoneda 像の retract 閉包 `Idem C` を全部分 quasicategory として構成。元の包含と元の Yoneda 因子化は充満忠実、包含後に元の全 Yoneda を厳密に回収。
   元の各頂点は前層圏内で元の指定 Yoneda 対象の retract。閉包の合成・同型不変性・冪等性を証明。`Idem C` の冪等完備性・普遍性はまだ証明していない。
@@ -41,6 +44,7 @@
 - **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`）：
   `WalkingIdem`、`WalkingSplit`、`IdemShape`、`SplitShape`、`idemInclusion`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、
   `WeakShape`、`WeakRetractionDiagram`、`weakDiagramEquiv`、`weakComparison`、`RetractionTriangle`、`VertexRetraction.triangle_exists`、`RetractionTriangle.weakDiagram`、
+  `oddFaceCollapse`、`oddFaceChain`、`alternatingCell_oddFace`、`alternatingCellBoundary_le_preimage`、`alternatingCellBoundaryLift`、`alternatingCellBoundaryLift_square`、
   `alternatingCell`、`alternatingCell_prefix`、`alternatingCell_one`、`retractionStage`、`retractionStage_mono`、`retractionStage_one`、`weakShapeStageOneIso_ι`、`retractionStageCell_prefix`、
   `missingFaceStage_inf_face`、`puncturedFace_coordinate_preimage`、`puncturedFace_innerAnodyne`、`missingFaceStage_innerAnodyne`、`missingFaceComplex_innerAnodyne`、`alternatingCellBoundary_innerAnodyne`、
   `walkingRetractionTriangle_kernel`、`weakComparison_mono`、`weakComparison_range`、`weakShapeImageIso`、`weakShapeImageIso_ι`、
@@ -49,11 +53,11 @@
   N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean` を参照。
 - **依存と提供**：F2・F1B・F1 は読み取り専用。新規所有範囲は `InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`。
   F1b の F2 集約を変更しない。`infinity-core-F2.md` の表は旧担当表記のまま読み取り専用。移管の正本は上記ユーザー承認。規約は `foundations.md` §8。
-- **未コミット**：なし。4モジュール34宣言・独立集約・全監査を aa39ceb18 に保存し、本 N 節は他レーンのステージ済み差分の解消後に別保存。他レーンの差分は対象外。
-- **既知の問題**：F2N-4 の集約ビルド4134 jobs・全168宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
+- **未コミット**：なし（今回の3モジュール19宣言、独立集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
+- **既知の問題**：F2N-4 の集約ビルド4137 jobs・全187宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。N-4 の既存保存は7604 jobs・全5288宣言監査が終了コード0、標準三公理のみ。
   `Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。固定 SM7・豊穣随伴の合成互換を、通常の Quillen 随伴だけから得たとは扱わない。
   同じ射の類の冪等性だけを coherent 冪等図式と扱わず、ホモトピー圏の分裂の一意性だけを全分裂空間の可縮性と扱わない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：F2N-4(a)：m≥2 について `(retractionStage (m−1)).preimage (alternatingCell m) = alternatingCellBoundary m` を元の全単体で証明。奇数頂点一つを避ける面は、その両側の Y を同じ位置へ潰して元の短い交互列へ厳密に因子化する。逆向きは全奇数頂点を通る単体の X→X の元の非恒等射を保存し、短い列には同じ数の異なる奇数位置が無いことを使う。元のセルの核を境界内の同一視に分類して各段階の実際の pushout を証明し、全被覆性・無限合成へ進む。交互列の全射と先頭制限、4.4.5.8、奇数頂点境界の inner anodyne 性、Ret(1) の同型を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
+- **次の一手**：F2N-4(a)：元の前段階の逆像が境界に入る逆包含を証明し、m≥2 の `(retractionStage (m−1)).preimage (alternatingCell m) = alternatingCellBoundary m` を閉じる。全奇数頂点を通る単体の元の X→X 非恒等射を保持し、短い列の奇数位置には同じ数の異なる位置を選べないことを使う。必要な射の値・非恒等性は元の二元モノイド `walkingScalar` で比較。セルの核も境界内の同一視に分類して実際の pushout を証明し、全被覆性・無限合成へ進む。奇数頂点の余面の元の因子化・全境界から前段階への写像と可換正方形・4.4.5.8・Ret(1) の同型を再実装しない。その後同じ Idem 図式の余極限性との同値と分裂空間の可縮性。
   **N-4 の再開点（第 II 段）**：元の有限離散余極限余錐を反対圏の有限積錐へ移し、`sigmaPresheafVertexFunctor_preservesFiniteProducts` を適用。各脚の Hom 前合成を `sigmaYonedaFiberEvaluation_naturalityIso` で同じ値図式の輸送へ照合し、元の全余錐像の余極限性を写像空間で判定。空添字も含む。その後 sifted 生成・普遍性。HTT 5.5.8.10・11・14・15。
   原典：[HTT §4.4.5・§5.1.4](https://www.math.ias.edu/~lurie/papers/HTT.pdf)（本文照合済み）、HA 1.1.3.7 は安定性着手時に本文照合する。
 

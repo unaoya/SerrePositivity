@@ -23,3 +23,6 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingAbsorption
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingSimplex
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AlternatingRestriction
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStages
+public import SerrePositivity.InfinityCategories.F2.Idempotent.OddDeletionOrder
+public import SerrePositivity.InfinityCategories.F2.Idempotent.OddDeletion
+public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageBoundary

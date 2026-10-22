@@ -338,3 +338,41 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 #print axioms retractionStageCell_ι
 #check @retractionStageCell_prefix
 #print axioms retractionStageCell_prefix
+#check @oddVertex_bounds
+#print axioms oddVertex_bounds
+#check @oddFaceCollapse
+#print axioms oddFaceCollapse
+#check @oddFaceInsert_val
+#print axioms oddFaceInsert_val
+#check @oddFaceCollapse_parity
+#print axioms oddFaceCollapse_parity
+#check @oddFaceCollapse_fiber
+#print axioms oddFaceCollapse_fiber
+#check @oddFaceCollapse_fiber_image
+#print axioms oddFaceCollapse_fiber_image
+#check @walkingAbsorbingHom_transport
+#print axioms walkingAbsorbingHom_transport
+#check @walkingAbsorbingHom_self_of_image
+#print axioms walkingAbsorbingHom_self_of_image
+#check @alternatingChainMap_absorbing_of_image
+#print axioms alternatingChainMap_absorbing_of_image
+#check @oddFaceCollapseMap
+#print axioms oddFaceCollapseMap
+#check @alternatingObject_oddFace
+#print axioms alternatingObject_oddFace
+#check @oddFaceChain
+#print axioms oddFaceChain
+#check @alternatingCell_oddFace
+#print axioms alternatingCell_oddFace
+#check @alternatingCell_oddFace_image_le
+#print axioms alternatingCell_oddFace_image_le
+#check @alternatingCellBoundary_image_le
+#print axioms alternatingCellBoundary_image_le
+#check @alternatingCellBoundary_le_preimage
+#print axioms alternatingCellBoundary_le_preimage
+#check @alternatingCellBoundaryLift
+#print axioms alternatingCellBoundaryLift
+#check @alternatingCellBoundaryLift_ι
+#print axioms alternatingCellBoundaryLift_ι
+#check @alternatingCellBoundaryLift_square
+#print axioms alternatingCellBoundaryLift_square
