@@ -2418,4 +2418,12 @@ public import SerrePositivity.KST.SConstruction.DGEndInclusionPerfectGeneration
 public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientEndInclusion
 public import SerrePositivity.KST.SConstruction.DGStrictSquareRightEndComparison
 
+public import SerrePositivity.KST.SConstruction.DGGeneratorImagePerfect
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeEquivalence
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeExtension
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeFreeComparison
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeGeneration
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeZero
+
 /-! # ∞-S• 構成と連結 K 理論 -/

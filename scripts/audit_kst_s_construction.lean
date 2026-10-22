@@ -29568,3 +29568,96 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectClosedIso
 #print axioms SerrePositivity.KST.SConstruction.dgStrictSquareRightEndPerfectClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgRepresentableDerivedIsoOfHomotopyIso
+#print axioms SerrePositivity.KST.SConstruction.dgRepresentableDerivedIsoOfHomotopyIso
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectOver_singleton_eq_of_generator_iso
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectOver_singleton_eq_of_generator_iso
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectOver_image_eq_of_generator_iso
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectOver_image_eq_of_generator_iso
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeObjects
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeObjects
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeEnrichment
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeEnrichment
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmall
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmall
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeOfSmall
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeOfSmall
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeOfFamily
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeOfFamily
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeRepresentable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeRepresentable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_essSurj
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_essSurj
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeInclusion_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_essSurj
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_essSurj
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeSmallInclusion_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeNerveEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeNerveEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeNerve_isStable
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeNerve_isStable
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionFamily
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionFamily
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeExtensionTarget
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeExtensionTarget
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionTargetSmall
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionTargetSmall
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionRepresentableIso
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtensionRepresentableIso
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension_perfectOver_image_eq
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeExtension_perfectOver_image_eq
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_perfectOver_smallPoint_eq
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_perfectOver_smallPoint_eq
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_perfectOver_representable_eq
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_perfectOver_representable_eq
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero_isZero
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelopeZero_isZero
