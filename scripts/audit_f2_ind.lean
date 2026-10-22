@@ -75,3 +75,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_projection
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_cocone
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.edgewiseVertexFiberLift_map
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedIdentityFiberEvaluation_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsIdentityInclusion_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsComparison_identity
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsEvaluation_identity
+#check @SerrePositivity.InfinityCategories.F2.Ind.twistedSourceElementsEvaluation_isWeakHomotopyEquivalence

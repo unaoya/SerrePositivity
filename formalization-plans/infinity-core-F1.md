@@ -21,6 +21,11 @@
   `presheafDensityCoconeRealization` は、同じ自然変換を native 全余錐へ戻す頂点固定の全円柱も保持。
   元の大域評価との相対写像空間内の同型も保存。比較の fiber 同値性と同じ密度余錐の余極限性が残る。
   独立集約 6109 jobs、公理監査 257 宣言、標準三公理のみ。
+- **(a) の全空間側の弱同値**：`twistedIdentityFiberEvaluation_isQCatEquivalence` は同じ大域切断の恒等点上の作用を判定。
+  `twistedSourceElementsComparison_identity` で、始対象上の標準 fiber 包含と同じ恒等点包含を厳密に照合。
+  `twistedSourceElementsEvaluation_isWeakHomotopyEquivalence` は始点固定の全族の同じ評価の弱同値性。
+  まだ native 密度余錐の `F2.coconeFiberMap` と同定していないので、密度定理は未完。
+  独立集約 6120 jobs、公理監査 309 宣言、標準三公理のみ。
 - **(b)**：Yoneda 像の同型と小さい κ-filtered 余極限による最小閉包を全部分 ∞ 圏にした。
   `IndInfinity`、前層への包含の充満忠実性、元の全 Yoneda の厳密な因子化と充満忠実性まで。
   `ind_exists_colimitCone` と `ind_isColimit_iff_inclusion` で、内在する小さい κ-filtered 余極限と包含による保存・検出を証明。
@@ -46,6 +51,7 @@
 - `presheafTwistedElementsEvaluation`、`presheafTwistedElementsEvaluation_projection`
 - `presheafDensityJointHomotopy`、`presheafDensityCocone`、`presheafDensityCocone_vertex`
 - `presheafElementsYonedaSliceComparison`、`presheafElementsYonedaSliceComparison_cocone`
+- `twistedSourceElementsEvaluation_identity`、`twistedSourceElementsEvaluation_isWeakHomotopyEquivalence`
 - `IsKappaColimitClosed`、`IsIndVertex`、`isIndVertex_kappaColimitClosed`、`isIndVertex_minimal`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
@@ -73,11 +79,15 @@
 
 ### 次の一手
 
-(a)：構成済みの `presheafElementsYonedaSliceComparison F` の各 fiber を、元の Yoneda 評価と比較する。
+(a)：同じ `presheafDensityCocone F` の各評価の `F2.coconeFiberMap` を、構成済みの
+`twistedSourceElementsEvaluation (smallRightUnstraighteningProjection F) x` へ比較する。
 `PresheafDensityTransformation.evaluationIso`・c1 の `imageIso`・native 実現の全円柱を使い、
-元の twisted arrow の切断からの評価を同じ比較の fiber 作用へ移す。各点で別の射を選び直さない。
+元の twisted arrow の切断からの評価を同じ余錐の作用へ移す。各点で別の射を選び直さない。
+`F2.HomotopyCoconeRealization` と `F2.coconeRealizationTransformationHomotopy` は、
+fat join の両端固定比較から元の変換を回収する既存界面。現在の prism 実現との比較、または同じ変換の実現の精密化に使う。
 同じ `presheafDensityCocone F` の各評価の余極限性を示し、前層の評価による検出で密度を結論する。
 評価後の同じ `F2.coconeFiberMap` の弱同値性を示せば、`F2.isColimitCone_of_coconeFiberMap_weakEquivalence` が使える。
+宇宙を上げる際は、小さい Kan 標的への前合成同値と `F2.ulift_pre_homotopyEquivalence` の利用を優先する。
 同じ全余錐を (c) の指定表示へ使い、別の余極限の存在や各点だけの同値で密度を主張しない。
 報告後は承認を待たず (a) を続行する。
 

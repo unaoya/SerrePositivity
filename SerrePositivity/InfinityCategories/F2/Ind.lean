@@ -16,3 +16,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.FullCoconeLift
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsWeakEquivalence
