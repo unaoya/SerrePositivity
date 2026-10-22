@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- 一般 sandwich 両単位、diagonal の実増大・共通半自由分解・span 比較・左右単位子の一致、graph の二単位正方形、canonical cell 単位比較の11新規モジュール、Derived 集約、両監査、本計画の15パス。対象・両集約（10566 jobs）・29公開署名・ソース検査・両全体監査は成功、新規ソースの警告なし。検証済み15パスを保存する。前回保存は `7faeb5caa`（計画 `7120229a7`）。他レーンの変更は変更しない。
+- 一般 sandwich 両単位、diagonal の実増大・共通半自由分解・span 比較・左右単位子の一致、graph の二単位正方形、canonical cell 単位比較の11新規モジュール、Derived 集約、両監査、本計画の15パス。対象・両集約（10566 jobs）・29公開署名・ソース検査・両全体監査は成功、新規ソースの警告なし。検証済み15パスを `f999a4067` に保存済み。前回保存は `7faeb5caa`（計画 `7120229a7`）。他レーンの変更は変更しない。
 
 ### 既知の問題
 
@@ -100,7 +100,7 @@
 
 ### 次の一手
 
-- 元の一般 cell 合成子の五角式、指定 invHomIso と coherentHomInvIso の両三角式、旧比較の補正・合成子の変更式は保存済み。今回、恒等模型での一般 sandwich 両単位式と、cell diagonal の実増大・共通半自由分解・canonical 模型への厳密射・全 Hom 準同型性を統合した。同じ実 span の導来作用が既存の模型比較の差を回収する。全次数の実 tensor 作用から対角の左右単位子を同定し、graph の始域側比較と出力増大を通常単位子へ、導来化後の二正方形を元の指定導来単位へ接続した。`dgKernelCellDiagonalUnitIso_value` は canonical diagonal cell 模型の同じ実 span に由来する単位を元の `cellModelIso`・指定導来単位・指定余単位の逆へ接続する。対象・両集約（10566 jobs）・29公開署名・ソース検査・両全体監査は成功。ログは `/tmp/d-beta5-cell-diagonal-unit-{derived,stable}-audit.log`。coherent な中間比較を使う cell 合成子・旧合成子との補正式・五角式の3宣言は `/tmp/d-beta5-cell-coherent-composition-ready.lean` と同名ログで警告なく検証済み、未集約。次はこの3宣言を統合する。その後、diagonal span の tensor 像・元の κ の全射自然性・今回の単位正方形を使って cell 合成子自体の左右単位三角式を証明する。旧 homInvIso と coherent な比較の一致は未証明。全高次 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。今回の結果は h Fun 値で、新しい kernel nerve 入力の ∞ 関手とは主張しない。
+- 元の一般 cell 合成子の五角式、指定 invHomIso と coherentHomInvIso の両三角式、旧比較の補正・合成子の変更式は保存済み。今回、恒等模型での一般 sandwich 両単位式と、cell diagonal の実増大・共通半自由分解・canonical 模型への厳密射・全 Hom 準同型性を統合した。同じ実 span の導来作用が既存の模型比較の差を回収する。全次数の実 tensor 作用から対角の左右単位子を同定し、graph の始域側比較と出力増大を通常単位子へ、導来化後の二正方形を元の指定導来単位へ接続した。`dgKernelCellDiagonalUnitIso_value` は canonical diagonal cell 模型の同じ実 span に由来する単位を元の `cellModelIso`・指定導来単位・指定余単位の逆へ接続する。対象・両集約（10566 jobs）・29公開署名・ソース検査・両全体監査は成功。ログは `/tmp/d-beta5-cell-diagonal-unit-{derived,stable}-audit.log`。coherent な中間比較を使う cell 合成子・旧合成子との補正式・五角式の3宣言は `/tmp/d-beta5-cell-coherent-composition-ready.lean` と同名ログで警告なく検証済み、未集約。任意の後続比較を持つ恒等模型での coherent 左単位の1宣言も `/tmp/d-beta5-sandwich-unit-comparison-ready.lean` と同名ログで警告なく検証済み、未集約。次はこの4宣言を統合する。その後、diagonal span の tensor 像・元の κ の全射自然性・今回の単位正方形を使って cell 合成子自体の左右単位三角式を証明する。旧 homInvIso と coherent な比較の一致は未証明。全高次 coherence・Perf 冪等完備性・単体環の Dold–Kan 接続確認・β4 は未完。今回の結果は h Fun 値で、新しい kernel nerve 入力の ∞ 関手とは主張しない。
 
 ## 目標と原典
 
