@@ -14197,3 +14197,75 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @exists_classifiedConeLift
 #print axioms exists_classifiedConeLift
+
+#check @leftFibration_cocartesianHornStructure
+#print axioms leftFibration_cocartesianHornStructure
+
+#check @isTerminalVertex_of_terminalBoundary_image
+#print axioms isTerminalVertex_of_terminalBoundary_image
+
+#check @leftFibration_isTerminalVertex_of_contractibleFiber
+#print axioms leftFibration_isTerminalVertex_of_contractibleFiber
+
+#check @terminalBoundaryLifting_pre_of_relativeHom
+#print axioms terminalBoundaryLifting_pre_of_relativeHom
+
+#check @isLimitCone_of_leftFibration_extension
+#print axioms isLimitCone_of_leftFibration_extension
+
+#check @classifiedCone_isLimit
+#print axioms classifiedCone_isLimit
+
+#check @exists_classifiedLimitCone
+#print axioms exists_classifiedLimitCone
+
+#check @hasLimit_smallLeftUnstraightening_of_finiteProducts
+#print axioms hasLimit_smallLeftUnstraightening_of_finiteProducts
+
+#check @discreteNerveOppositeIso
+#print axioms discreteNerveOppositeIso
+
+#check @discreteNerveSimplex_eq_const
+#print axioms discreteNerveSimplex_eq_const
+
+#check @binaryDiscreteLeft
+#print axioms binaryDiscreteLeft
+
+#check @binaryDiscreteRight
+#print axioms binaryDiscreteRight
+
+#check @binaryDiscreteToCoproduct
+#print axioms binaryDiscreteToCoproduct
+
+#check @coproductToBinaryDiscrete
+#print axioms coproductToBinaryDiscrete
+
+#check @binaryDiscreteToCoproduct_left
+#print axioms binaryDiscreteToCoproduct_left
+
+#check @binaryDiscreteToCoproduct_right
+#print axioms binaryDiscreteToCoproduct_right
+
+#check @binaryDiscreteNerveIso
+#print axioms binaryDiscreteNerveIso
+
+#check @hasLimit_of_iso_reindex
+#print axioms hasLimit_of_iso_reindex
+
+#check @emptyDiscreteDiagram
+#print axioms emptyDiscreteDiagram
+
+#check @isSiftedInfinity_op_of_hasFiniteProducts
+#print axioms isSiftedInfinity_op_of_hasFiniteProducts
+
+#check @sigmaDensityCocone_vertex
+#print axioms sigmaDensityCocone_vertex
+
+#check @sigmaPresheafElements_isSifted
+#print axioms sigmaPresheafElements_isSifted
+
+#check @sigmaPresheaf_siftedPresentation
+#print axioms sigmaPresheaf_siftedPresentation
+
+#check @sigmaPresheaf_sifted_induction
+#print axioms sigmaPresheaf_sifted_induction
