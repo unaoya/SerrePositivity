@@ -2300,4 +2300,9 @@ public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductMap
 public import SerrePositivity.KST.SConstruction.PerfectIdentityLaxValueDiagonal
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductEdgeClasses
 
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientValueCospan
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductNormalization
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductBoundary
+public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientValuePullback
+
 /-! # ∞-S• 構成と連結 K 理論 -/
