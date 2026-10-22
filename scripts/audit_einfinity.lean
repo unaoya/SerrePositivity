@@ -8475,6 +8475,25 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgEmbedding_underlyingDerivedIso
   ]
 
+@[noinline] private def e2RequiredBatch154 : Array Lean.Name :=
+  #[
+    `SerrePositivity.EInfinity.ComplexLimits.complexSemifreeResolutionRetractIso,
+    `SerrePositivity.EInfinity.ComplexLimits.semifreeClosedToComplex_comp_toClosed,
+    `SerrePositivity.EInfinity.ComplexLimits.semifreeClosedDerivedSource_eq,
+    `SerrePositivity.EInfinity.ComplexLimits.semifreeClosedDerivedSourceIso,
+    `SerrePositivity.EInfinity.ComplexLimits.moduleResolutionDerivedSource_eq,
+    `SerrePositivity.EInfinity.ComplexLimits.moduleSingleOrdinaryDerivedIso,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgUnderEmbedding,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgUnderForgetNerve_eq,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteModuleResolutionNerve_eq,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteUnderlyingDerivedSourceIso,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgUnderEmbedding_forgetIso,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteDerivedEmbedding_vertex,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteDerivedEmbedding_disc,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgUnderlyingDisc,
+    `SerrePositivity.EInfinity.BarrattEccles.discreteCAlgUnderEmbedding_underlyingDisc
+  ]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -8508,7 +8527,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -20403,3 +20422,37 @@ example {I : Type (e2DiscreteSourceUniverse + 1)} [Category.{e2DiscreteSourceUni
         (complexOrdinaryDerivedSource A)).edge :=
   complexOrdinaryDerivedNatTransHomotopy_component A η i
 end e2DiscreteSourceFixtures
+
+section e2ExistingDiscreteComparisonFixtures
+universe e2ExistingDiscreteComparisonUniverse
+open SerrePositivity.InfinityCategories
+open CategoryTheory SerrePositivity.DifferentialGraded SSet
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.ComplexLimits
+open scoped Simplicial
+variable (A : Type e2ExistingDiscreteComparisonUniverse) [CommRing A]
+example : FunctorIso
+    (dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) ≫
+      complexSemifreeResolutionInfinity A) (𝟙 (derivedInfinityCategory A)) :=
+  complexSemifreeResolutionRetractIso A
+example : FunctorIso
+    (nerveMap (semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A)
+      (closedNerveInclusion A (Semifree A)) :=
+  semifreeClosedDerivedSourceIso A
+example : FunctorIso
+    (nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0) ≫
+      complexOrdinaryDerivedSource A)
+      (nerveMap (moduleSemifreeResolutionFunctor A) ≫ closedNerveInclusion A (Semifree A)) :=
+  moduleSingleOrdinaryDerivedIso A
+example : FunctorIso (discreteCAlgUnderEmbedding A ≫ cAlgForgetDerived A) (discreteEmbedding A) :=
+  discreteCAlgUnderEmbedding_forgetIso A
+example (B : Under (CommRingCat.of A)) :
+    (discreteEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B) =
+      moduleHeartVertex A ((discreteAlgebraModule A).obj B) :=
+  discreteDerivedEmbedding_vertex A B
+local instance : HasDerivedCategory.{e2ExistingDiscreteComparisonUniverse + 1}
+    (ModuleCat.{e2ExistingDiscreteComparisonUniverse} A) :=
+  HasDerivedCategory.standard (ModuleCat.{e2ExistingDiscreteComparisonUniverse} A)
+example (B : Under (CommRingCat.of A)) : cAlgUnderlyingDisc A
+    ((discreteCAlgUnderEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B)) :=
+  discreteCAlgUnderEmbedding_underlyingDisc A B
+end e2ExistingDiscreteComparisonFixtures

@@ -2351,14 +2351,22 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 `complexOrdinaryDerivedNatTransIso` は全成分の擬同型を D(R) の全関手同型へ送る。
 `algebraCAlgSource_underlyingDerivedIso` は同じ U と元の非置換通常忘却の全比較。
 `discreteCAlgEmbedding_underlyingDerivedIso` は同じ全比較の離散入力への制限。
-既存 discreteEmbedding との全比較・離散性・同じ U の ∞ 極限保存・G1′ は後続。
+`complexSemifreeResolutionRetractIso` は元の半自由包含への解像の制限と恒等の全比較。
+`semifreeClosedDerivedSourceIso` は同じ通常導来源と元の閉 nerve 包含の全比較。
+`moduleSingleOrdinaryDerivedIso` は元の加群 augmentation を反転した既存解像との全比較。
+`discreteCAlgUnderEmbedding` は既存 D(R) 入力と同じ環の Under 圏からの実離散入力。
+`discreteCAlgUnderEmbedding_forgetIso` は同じ U との合成と既存 discreteEmbedding の全関手同型。
+`discreteCAlgUnderEmbedding_underlyingDisc` は同じ成分から全非零次数のホモロジー消滅を移す。
+`cAlgUnderlyingDisc` は既存 derivedInfinityDisc による同じ U 像の条件。
+離散対象の本質像の逆包含・同じ U の ∞ 極限保存・G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
 添字圏・graph は [Dwyer–Kan 1980b §4–5](https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/dwyer-kan-2.pdf)
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
-既存 D(R) の discreteEmbedding との全比較・離散性・極限保存・G1′ は未完成。
+既存 discreteEmbedding との全比較と離散入力の像の消滅は完成。
+離散対象の本質像の逆包含・同じ U の ∞ 極限保存・G1′ は未完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
