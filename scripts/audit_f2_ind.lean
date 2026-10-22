@@ -66,6 +66,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictNativeCocone_isColimit_of_filtered_forget
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberNativeCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationFiberNativeCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Ind.edgewiseOrdinaryLift_rightFibrationOpposite
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationOppositeDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningFiberDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightFibrationOppositeFiberDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningOriginalFiberDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightStraighteningCocone_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation

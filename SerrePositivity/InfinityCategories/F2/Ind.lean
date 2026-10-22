@@ -35,3 +35,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationColi
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationFiberCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationFiberNative
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOpposite
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningFiberDiagram
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeFiber
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningCocone
