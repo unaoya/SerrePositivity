@@ -971,7 +971,16 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellNativeRoofReflection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneCellNativeInverseRoof,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellNativeRoofValue,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneCellNativeValue]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneCellNativeValue,
+    `SerrePositivity.KST.LocalizingInvariants.CochainConnectiveCoverElements,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverSurjective,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveNativeInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveRoofValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneNonpositiveInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositivePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofPath]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
