@@ -36,8 +36,10 @@
   元の coslice 引き戻しの有限余錐を構成し、同じ実現空間の値写像と同じ射影の切断に Quillen A を適用。
   `exists_cofinal_kappaFiltered_poset` は任意の小さい κ-filtered ∞ 圏への小さい poset の cofinal map。
   添字の通常の κ-filtered 性と、その nerve の全 κ-small 図式に対する κ-filtered 性を両方証明。HTT 5.3.1.18。
-  一般 coherent 図式の strict 化、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
-- 独立集約 6630 jobs、公理監査 1072 宣言、標準三公理のみ。
+  `underSectionStrictDiagram` は積 B × nerve I 上の left fibration を、B を保つ under 切断の strict 図式へ束ねる。
+  `underSectionEvaluate` は同じ添字での元の引き戻しへの底上の評価で、trivial Kan fibration と同値性を証明。
+  一般 coherent 前層図式の大域分類比較、逆方向と単一 κ-filtered 表示、右 fibration 定義との一致は未証明。
+- 独立集約 6642 jobs、公理監査 1136 宣言、標準三公理のみ。
 - `IsKappaFiltered` は F2N-1 の `F2/FilteredInfinity.lean` をそのまま使用。再実装しない。
 
 ### 残り（依存順）
@@ -66,6 +68,7 @@
 - `hasKappaFilteredElements_of_strictClassified_colimit`
 - `smallSubcomplexFamilyCocone_isColimit`、`exists_fresh_vertex_label`、`exists_small_codiscreteConeRange`
 - `terminalSubcomplexBaseMap_isRightCofinal`、`exists_cofinal_kappaFiltered_poset`
+- `underSectionStrictDiagram`、`underSectionEvaluate`、`underSectionEvaluate_isQCatEquivalence`
 - `IndInfinity`、`indInclusionPresheaf`、`indInclusionPresheaf_isFullyFaithful`
 - `indYoneda`、`indYoneda_inclusion`、`indYoneda_isFullyFaithful`
 - `ind_exists_colimitCone`、`ind_hasColimit`、`ind_isColimit_iff_inclusion`
@@ -93,7 +96,9 @@
 
 (c)：任意の小さい κ-filtered ∞ 圏への、小さい通常の κ-filtered poset からの cofinal map まで証明済み。
 次はその nerve 上の一般 coherent 前層図式を strict right fibration 図式へ移す、同じ大域分類値の比較を構成する。
-まず通常の under 圏上の相対切断を制限で束ねる strict 化を検討。F1 の `relativeFunctorPre_trivialKanFibration` を再利用する。
+通常の under 圏上のパラメータ付き相対切断の strict 図式と、同じ各値への底上の評価の同値性まで証明済み。
+次は反対化で strict right fibration 図式へ移し、元の coherent 前層図式の共同 left fibration から大域比較を構成する。
+各値の同値だけで大域の比較や元の余錐の比較を代用しない。
 元の図式との全変換を実現し、同じ余錐を cofinal 性・点ごとの検出で既存の strict 分類余極限へ移す。
 原典は HTT 5.3.5.3 と添字の比較 5.3.1.18。モデル圏の仮定を追加せず、元の余錐の余極限性を比較する。
 `isIndVertex_minimal` に入れて Indκ 所属から元の圏の κ-filtered 性を得て、同じ密度表示を使う。

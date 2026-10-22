@@ -202,3 +202,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationCoconeTransformationIso
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluatedFiberMap_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafDensityEvaluationFiberIso
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.parametrizedSectionsPre_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionStrictDiagram
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_projection
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_map
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Ind.underSectionEvaluate_isQCatEquivalence
