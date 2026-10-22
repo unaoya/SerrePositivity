@@ -2438,4 +2438,14 @@ public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareLegs
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareQuotientEnd
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareRightEnd
 
+public import SerrePositivity.KST.SConstruction.DGAlgebraRightEndOrientation
+public import SerrePositivity.KST.SConstruction.DGKFixedInterface
+public import SerrePositivity.KST.SConstruction.DGKFixedSConstruction
+public import SerrePositivity.KST.SConstruction.DGKRelativeInvariant
+public import SerrePositivity.KST.SConstruction.DGOdotAlgebra
+public import SerrePositivity.KST.SConstruction.DGOdotAlgebraRealization
+public import SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
+public import SerrePositivity.KST.SConstruction.DGOdotInput
+public import SerrePositivity.KST.SConstruction.DGOdotQuotient
+
 /-! # ∞-S• 構成と連結 K 理論 -/

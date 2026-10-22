@@ -29775,3 +29775,174 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap_inclusion
 #print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectSquareRightEndMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraRightEndIso
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraRightEndIso
+
+#check @SerrePositivity.KST.SConstruction.dgKInputInfinity
+#print axioms SerrePositivity.KST.SConstruction.dgKInputInfinity
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNu
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNu
+
+#check @SerrePositivity.KST.SConstruction.dgKInputK
+#print axioms SerrePositivity.KST.SConstruction.dgKInputK
+
+#check @SerrePositivity.KST.SConstruction.dgKInputStableValue
+#print axioms SerrePositivity.KST.SConstruction.dgKInputStableValue
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNu_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNu_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNuMap
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNuMap
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNuMap_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNuMap_eq
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNu_edge
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNu_edge
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSpectrum
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSpectrum
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSpectrumMap
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSpectrumMap
+
+#check @SerrePositivity.KST.SConstruction.dgKInputK_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgKInputK_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgKInputK_edge
+#print axioms SerrePositivity.KST.SConstruction.dgKInputK_edge
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSBoundaryKanComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSBoundaryKanComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSBoundaryComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSpectrum_zero
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSpectrum_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSpectrumMap_zero
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSpectrumMap_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSOAComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSOAComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKInputSOAComparison_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgKInputSOAComparison_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.DGKRelativeLocalizingInvariant
+#print axioms SerrePositivity.KST.SConstruction.DGKRelativeLocalizingInvariant
+
+#check @SerrePositivity.KST.SConstruction.IsDGKRelativeLocalizingInvariant
+#print axioms SerrePositivity.KST.SConstruction.IsDGKRelativeLocalizingInvariant
+
+#check @SerrePositivity.KST.SConstruction.DGKRelativeVerdierDiagram
+#print axioms SerrePositivity.KST.SConstruction.DGKRelativeVerdierDiagram
+
+#check @SerrePositivity.KST.SConstruction.dgKRelativeTammeComparison_isPullback
+#print axioms SerrePositivity.KST.SConstruction.dgKRelativeTammeComparison_isPullback
+
+#check @SerrePositivity.KST.SConstruction.dgKRelativeTammeComparison_image
+#print axioms SerrePositivity.KST.SConstruction.dgKRelativeTammeComparison_image
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebra
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebra
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightMap_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightMap_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebra_one
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebra_one
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebra_mul
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebra_mul
+
+#check @SerrePositivity.KST.SConstruction.dgOdotEndAlgebraOppositeInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotEndAlgebraOppositeInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraToEnd_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraEndNerveEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraEndNerveEquivalence
+
+#check @SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
+#print axioms SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
+
+#check @SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions.left
+#print axioms SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions.left
+
+#check @SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions.right
+#print axioms SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions.right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotEndInclusion_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotEndInclusion_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotEndInclusion_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotEndInclusion_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.source
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.source
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.left
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.left
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.right
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.right
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.corner
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.corner
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.top
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.top
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.side
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.side
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.lower
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.lower
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.upper
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.upper
+
+#check @SerrePositivity.KST.SConstruction.DGOdotInput.commutes
+#print axioms SerrePositivity.KST.SConstruction.DGOdotInput.commutes
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInput_dg_commutes
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInput_dg_commutes
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputRightPoint
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputRightPoint
+
+#check @SerrePositivity.KST.SConstruction.dgOdotInputSourcePoint
+#print axioms SerrePositivity.KST.SConstruction.dgOdotInputSourcePoint
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotQuotientEnd
+#print axioms SerrePositivity.KST.SConstruction.DGOdotQuotientEnd
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightEndMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightEndMap
