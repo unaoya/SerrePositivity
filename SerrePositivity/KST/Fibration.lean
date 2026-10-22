@@ -425,3 +425,10 @@ public import SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.CoslicePointFamilyAt
 public import SerrePositivity.KST.Fibration.ScaffoldCosliceExtension
+public import SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange
+public import SerrePositivity.KST.Fibration.VertexFiberBaseChangeHom
+public import SerrePositivity.KST.Fibration.WeakIdentityScaffoldImage
+public import SerrePositivity.KST.Fibration.WeakIdentityScaffoldFiber
+public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport
+public import SerrePositivity.KST.Fibration.WeakIdentityScaffoldClassification
+public import SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle
