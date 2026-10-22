@@ -29,3 +29,4 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableFilteredEle
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaHomotopyFactorization
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictKappaFilteredColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationColimit
+public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationDiagramColimit

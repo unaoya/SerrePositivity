@@ -56,6 +56,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Ind.exists_homotopy_at_stage_of_kappaFiltered_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.rightFibration_of_filtered_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimitProjection_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimit
+#check @SerrePositivity.InfinityCategories.F2.Ind.strictRightFibrationColimit_isKappaFiltered
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Ind.presheafElementsColimitCocone_evaluation
