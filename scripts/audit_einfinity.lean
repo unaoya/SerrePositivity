@@ -9385,6 +9385,24 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationJoin_restrict_simplex,
       `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationJoin_prism]
 
+@[noinline] private def e2RequiredBatch192 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleObj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleFront,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleBack,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleFront_obj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleBack_obj,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched_obj_zero,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched_obj_two,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_front,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_back,
+      `SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_pinched,
+      `SerrePositivity.EInfinity.ComplexLimits.coneTriangleFrontIndex_injOn_iff,
+      `SerrePositivity.EInfinity.ComplexLimits.coneTriangleBackIndex_injOn_iff,
+      `SerrePositivity.EInfinity.ComplexLimits.coneTriangleFrontIndex_not_injOn,
+      `SerrePositivity.EInfinity.ComplexLimits.coneTriangleBackIndex_not_injOn]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9418,7 +9436,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -24507,4 +24525,125 @@ example :
   SerrePositivity.EInfinity.ComplexLimits.normalizedTensorElementEvaluationJoin_prism A X Y
 
 end e2EvaluationJoinFixtures
+end
+
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe e2TriangleDataU
+section e2TriangleDataFixtures
+open CategoryTheory SSet
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
+open scoped Simplicial
+variable (A : Type e2TriangleDataU) [CommRing A] (X Y : Complex A)
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) : Complex A :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleObj A X Y c τ i
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleFront A X Y c τ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleBack A X Y c τ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched A X Y c τ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i ≠ 2) :
+    (normalizedTensorTriangleFront A X Y c τ).obj i =
+      normalizedTensorTriangleObj A X Y c τ i :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleFront_obj A X Y c τ i hi
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i ≠ 0) :
+    (normalizedTensorTriangleBack A X Y c τ).obj i =
+      normalizedTensorTriangleObj A X Y c τ i :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleBack_obj A X Y c τ i hi
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i = 0) :
+    (normalizedTensorTrianglePinched A X Y c τ).obj i =
+      normalizedTensorTriangleObj A X Y c τ i :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched_obj_zero A X Y c τ i hi
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) (i : Fin (n + 1)) (hi : τ i = 2) :
+    (normalizedTensorTrianglePinched A X Y c τ).obj i =
+      normalizedTensorTriangleObj A X Y c τ i :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTrianglePinched_obj_two A X Y c τ i hi
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3) : SimplexData A (Complex A) n :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData A X Y c τ
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b ≠ 2) :
+    HEq ((normalizedTensorTriangleData A X Y c τ).hom I a b k hI ha hb hk)
+      ((normalizedTensorTriangleFront A X Y c τ).hom I a b k hI ha hb hk) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_front A X Y c τ I a b k hI ha hb hk hbt
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b = 2) (haz : τ a ≠ 0) :
+    HEq ((normalizedTensorTriangleData A X Y c τ).hom I a b k hI ha hb hk)
+      ((normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_back A X Y c τ I a b k hI ha hb hk hbt haz
+
+example {n : ℕ}
+    (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
+    (τ : Fin (n + 1) →o Fin 3)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hbt : τ b = 2) (haz : τ a = 0) :
+    HEq ((normalizedTensorTriangleData A X Y c τ).hom I a b k hI ha hb hk)
+      ((normalizedTensorTrianglePinched A X Y c τ).hom I a b k hI ha hb hk) :=
+  SerrePositivity.EInfinity.ComplexLimits.normalizedTensorTriangleData_hom_pinched A X Y c τ I a b k hI ha hb hk hbt haz
+
+example {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
+    (I : Set (Fin (n + 1))) :
+    Set.InjOn (coneTriangleFrontIndex τ) I ↔
+      ∀ i ∈ I, ∀ j ∈ I, τ i = 0 → τ j = 0 → i = j :=
+  SerrePositivity.EInfinity.ComplexLimits.coneTriangleFrontIndex_injOn_iff τ I
+
+example {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
+    (I : Set (Fin (n + 1))) :
+    Set.InjOn (coneTriangleBackIndex τ) I ↔
+      ∀ i ∈ I, ∀ j ∈ I, τ i = 2 → τ j = 2 → i = j :=
+  SerrePositivity.EInfinity.ComplexLimits.coneTriangleBackIndex_injOn_iff τ I
+
+example {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
+    (I : Set (Fin (n + 1))) (i j : Fin (n + 1)) (hi : i ∈ I) (hj : j ∈ I)
+    (hne : i ≠ j) (hti : τ i = 0) (htj : τ j = 0) :
+    ¬ Set.InjOn (coneTriangleFrontIndex τ) I :=
+  SerrePositivity.EInfinity.ComplexLimits.coneTriangleFrontIndex_not_injOn τ I i j hi hj hne hti htj
+
+example {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
+    (I : Set (Fin (n + 1))) (i j : Fin (n + 1)) (hi : i ∈ I) (hj : j ∈ I)
+    (hne : i ≠ j) (hti : τ i = 2) (htj : τ j = 2) :
+    ¬ Set.InjOn (coneTriangleBackIndex τ) I :=
+  SerrePositivity.EInfinity.ComplexLimits.coneTriangleBackIndex_not_injOn τ I i j hi hj hne hti htj
+
+end e2TriangleDataFixtures
 end

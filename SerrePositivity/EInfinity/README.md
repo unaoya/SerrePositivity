@@ -2672,3 +2672,8 @@ prependOrderHom・extendOrderHom を使う二つの可換式を与える。
 `_restrict_simplex` は同じ終端付き実列の閉 nerve 単体、`_prism` は元の全自然変換円柱を
 厳密に回収する。`normalizedTensorElementEvaluatedColumn` は全対象・全前面射・終端射を保持。
 大域 Δ² 三角形の混合 cochain と HA は未完了。
+
+`normalizedTensorTriangleData` は元の cone・評価余錐・pinched 単体から三相の実 cochain を
+貼り合わせる。`normalizedTensorTriangleData_hom_front/back/pinched` は全分岐の成分式。
+`coneTriangleFrontIndex_injOn_iff` と Back 版は零相・二相の一意性による単射性の判定。
+同じデータの全 HA・全作用素自然性と大域評価三角形は未完了。
