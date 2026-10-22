@@ -1620,4 +1620,11 @@ public import
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroTransportCompositeHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueNaturality
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedGlueZeroMap
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionRefinement
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionZeroProjection
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

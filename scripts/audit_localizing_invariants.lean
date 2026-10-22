@@ -1333,7 +1333,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourRightComparison,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourSourceRight,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroTransportCompositeHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueNaturality]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedGlueZeroMap,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionZeroProjection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
