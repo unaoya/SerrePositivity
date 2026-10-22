@@ -1,3 +1,9 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawPrecompAction
+import SerrePositivity.InfinityCategories.Derived.FunctorHomEndpointTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompRetractionSquare
+import SerrePositivity.InfinityCategories.Derived.DGModuleRawOutputPrecompHom
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCoreHomNaturality
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomNaturality
 import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyPostcompHom
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedHomNaturality
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawHomNaturality
@@ -4657,6 +4663,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelDerivedRawPrecompAction,
+
+    `SerrePositivity.InfinityCategories.Derived.FunctorHomEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompRetractionSquare,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleRawOutputPrecompHom,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCoreHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomNaturality,
+
     `SerrePositivity.InfinityCategories.Derived.FunctorHomotopyPostcompHom,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedHomNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationRawHomNaturality,
