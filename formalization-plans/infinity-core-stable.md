@@ -89,7 +89,7 @@
 
 ### 未コミット
 
-- `DGKernelCellLiftComparison`・`DGKernelCellLiftComparisonCoherence` の2新規モジュール、Derived 集約、両監査、本計画の6パスが未コミット。実変更比較とその値、恒等性・選択独立性・cocycle の5公開宣言。対象・両集約（10507 jobs）・5公開署名・ソース検査・両全体監査は成功。他レーンの変更は変更しない。
+- `DGKernelCellLiftComparison`・`DGKernelCellLiftComparisonCoherence` の2新規モジュール、Derived 集約、両監査、本計画の6パスを `dda5f270c` に保存済み。実変更比較とその値、恒等性・選択独立性・cocycle の5公開宣言。対象・両集約（10507 jobs）・5公開署名・ソース検査・両全体監査は成功。他レーンの変更は変更しない。
 
 ### 既知の問題
 
