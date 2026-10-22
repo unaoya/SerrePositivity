@@ -847,3 +847,78 @@ open SerrePositivity.InfinityCategories.F2.Idempotent
 
 #check @StrongSplitting.postcomposeCone_isLimit
 #print axioms StrongSplitting.postcomposeCone_isLimit
+
+#check @sourceChain
+#print axioms sourceChain
+
+#check @sourceChain_inclusion
+#print axioms sourceChain_inclusion
+
+#check @IsSourceVertex
+#print axioms IsSourceVertex
+
+#check @sourceSubcomplex
+#print axioms sourceSubcomplex
+
+#check @idemInclusion_source_vertex
+#print axioms idemInclusion_source_vertex
+
+#check @idemSourceLift
+#print axioms idemSourceLift
+
+#check @idemSourceLift_inclusion
+#print axioms idemSourceLift_inclusion
+
+#check @sourceSubcomplex_chain_vertex
+#print axioms sourceSubcomplex_chain_vertex
+
+#check @idemSourceLift_app_bijective
+#print axioms idemSourceLift_app_bijective
+
+#check @idemSourceLift_isIso
+#print axioms idemSourceLift_isIso
+
+#check @idemSourceIso
+#print axioms idemSourceIso
+
+#check @idemSourceIso_inclusion
+#print axioms idemSourceIso_inclusion
+
+#check @idemInclusion_innerFibration
+#print axioms idemInclusion_innerFibration
+
+#check @idemInclusion_isFullyFaithful
+#print axioms idemInclusion_isFullyFaithful
+
+#check @pointDiagram_hasColimit
+#print axioms pointDiagram_hasColimit
+
+#check @hasColimit_of_terminal_vertex
+#print axioms hasColimit_of_terminal_vertex
+
+#check @idemImageKanShapeIso
+#print axioms idemImageKanShapeIso
+
+#check @idemImageKanShapeIso_projection
+#print axioms idemImageKanShapeIso_projection
+
+#check @idemImageKanProjection_isIso
+#print axioms idemImageKanProjection_isIso
+
+#check @idemImageKanDiagram_hasColimit
+#print axioms idemImageKanDiagram_hasColimit
+
+#check @idemSourceKanDiagram_hasColimit
+#print axioms idemSourceKanDiagram_hasColimit
+
+#check @idemLocalDiagrams_hasColimit
+#print axioms idemLocalDiagrams_hasColimit
+
+#check @strongSplitting_exists_of_hasColimit
+#print axioms strongSplitting_exists_of_hasColimit
+
+#check @nonemptyStrongSplitting_iff_hasColimit
+#print axioms nonemptyStrongSplitting_iff_hasColimit
+
+#check @isIdempotentComplete_iff_hasColimits
+#print axioms isIdempotentComplete_iff_hasColimits

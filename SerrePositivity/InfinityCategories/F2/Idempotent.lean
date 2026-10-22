@@ -66,3 +66,11 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullConePo
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PointConeLimit
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimit
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SourceChains
+public import SerrePositivity.InfinityCategories.F2.Idempotent.SourceSubcomplex
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemSourceIso
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemInclusionFull
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PointColimitExistence
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemImageKanShape
+public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLocalColimits
+public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
