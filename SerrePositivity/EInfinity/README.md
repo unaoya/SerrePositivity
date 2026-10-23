@@ -2751,3 +2751,8 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `normalizedTensorEvaluationHomotopy` は元の通常評価円柱を同じ dg nerve で表す。
 `normalizedTensorTriangleFamily_comp` は全 K の h Fun 内で元の cone 族と通常評価族の
 合成を元の pinched 全族に同定する。点ごとの比較に縮めず全三角形を使用する。
+
+`normalizedTensorPinchedFamilyPostDerived_arrow` は同じ半自由分解関手の全族像を
+元の導来 roof 自身に Arrow として同定する。`normalizedTensorDerivedPinchedFamily_arrow` は
+元の derived pinched 写像の全区間族を同じ roof へ接続し、全 K と端点輸送を保持する。
+`normalizedTensorDerivedPinchedFamily_eq_roof` は明示的な端点輸送込みの同じ全族の等式。
