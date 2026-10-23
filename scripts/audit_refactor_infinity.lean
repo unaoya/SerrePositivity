@@ -327,3 +327,51 @@ run_cmd do
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "R: unexpected axioms in {name}: {axioms}"
   logInfo m!"R direct-reference audit passed: {names.size} declarations, standard three axioms only."
+
+/-!
+移動前の F1・Stable の一括監査は宣言元モジュールで対象を選ぶため、
+Core へ移した全宣言（生成宣言を含む）はここで同じ三公理条件を検査する。
+各移動先から少なくとも一つの宣言を実際に検査したことも確認する。
+-/
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let movedModules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Core.ConeDiagramReverse,
+    `SerrePositivity.InfinityCategories.Core.JoinAssociator,
+    `SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary,
+    `SerrePositivity.InfinityCategories.Core.JoinAssociatorFactors,
+    `SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle,
+    `SerrePositivity.InfinityCategories.Core.JoinAugmented,
+    `SerrePositivity.InfinityCategories.Core.JoinCutCalculus,
+    `SerrePositivity.InfinityCategories.Core.JoinReassociation,
+    `SerrePositivity.InfinityCategories.Core.JoinReassociationNaturality,
+    `SerrePositivity.InfinityCategories.Core.JoinReverse,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseBoundary,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseCuts,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseEquiv,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseFactors,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseIntervals,
+    `SerrePositivity.InfinityCategories.Core.JoinReverseNaturality,
+    `SerrePositivity.InfinityCategories.Core.SliceOpposite,
+    `SerrePositivity.InfinityCategories.Core.VertexFiberPullback,
+    `SerrePositivity.InfinityCategories.Core.LeftFiberKan,
+    `SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex,
+    `SerrePositivity.InfinityCategories.Core.NerveUnderMap,
+    `SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback]
+  let mut checkedModules : Array Name := #[]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless movedModules.contains mod do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "R moved Core module: unexpected axioms in {name}: {axioms}"
+    unless checkedModules.contains mod do
+      checkedModules := checkedModules.push mod
+    count := count + 1
+  for mod in movedModules do
+    unless checkedModules.contains mod do
+      throwError "R moved Core module was not audited: {mod}"
+  logInfo m!"R moved-module origin audit passed: {count} declarations from {checkedModules.size} modules, standard three axioms only."
