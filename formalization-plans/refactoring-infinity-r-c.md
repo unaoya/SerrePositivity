@@ -2,13 +2,13 @@
 
 ## 引き継ぎ
 
-- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c、3-1 完全一致部 0252eb8a6 完了。R16 も90モジュールの移動・全本文保存・旧 import 0と、4集約ビルド・指定4監査の成功を確認済み。
+- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c、3-1 完全一致部 0252eb8a6 完了。R16 87c6a2711 も90モジュールの移動・全本文保存・旧 import 0と、4集約ビルド・指定4監査の成功を確認済み。
 - 残り：R15 は R-A 取り込み・合図後の rebase を待つ。準重複はユーザー回答に基づき現存6組の全調査として確定。追加の267転送入口削除は R-A の move_module.py 到着後に実施する。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- コミット対象：R16 の90モジュール移動・import置換・集約更新・監査import・検証記録、および追加指示に基づく調査記録。
+- 未コミット：なし（R16・追加指示の調査記録まで 87c6a2711）。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：R16 の検証 session 42013と `/tmp/r-c-r16-aggregate-build.log`、`/tmp/r-c-r16-audit_*.log` を確認。成功後コミット。R15 は合図まで実施しない。
+- 次の一手：R-A の scripts/move_module.py 到着後に267転送入口を削除。R15 は R-A 取り込みとコーディネータの合図後に rebase・.lake再クローンを行ってから実施。R16 session 42013 は終了コード0で完了。
 
 ## 方針
 

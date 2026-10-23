@@ -129,9 +129,17 @@
 
 ## 5. 移動した宣言の所在
 
-| 旧所在（シム） | 新所在 | 段 | コミット |
+| 旧所在 | 新所在 | 段 | コミット |
 |---|---|---|---|
-| | | | |
+| `F2/` 最上位 Cat*・Lax* とその依存290本 | `F2/CatInfinity/`（[全対応表](archive/refactor-r-c-r19-moves.json)） | 4-2 / R19 | 2c1fa3384 |
+| `F2/` 最上位の残る1,921本 | `F2/FilteredExchange/`（同対応表） | 4-2 / R19 | 2c1fa3384 |
+| `HomotopyLimits/{Local*,Sigma*,Sifted*}` 90本 | `F2/Presentable/`（[全対応表](archive/refactor-r-c-r16-moves.json)、宣言名・名前空間は保存） | 2-8 / R16 | 87c6a2711 |
+| `EInfinity/BarrattEccles/WeightedCotensor.lean`・`EInfinity/ComplexLimits/WeightedCotensor.lean` の `doubleOpWeights` | `EInfinity/HomotopyWeight/DoubleOpposite.doubleOpWeights` | 3-1 / R8 完全一致部 | 0252eb8a6 |
+| `EInfinity/BarrattEccles/FramedLimit.lean`・`EInfinity/ComplexLimits/FramedLimit.lean` の `framedLimitWeight` | `EInfinity/HomotopyWeight/DoubleOpposite.framedLimitWeight` | 3-1 / R8 完全一致部 | 0252eb8a6 |
+| `EInfinity/BarrattEccles/FramedLimitCones.lean`・`EInfinity/ComplexLimits/FramedLimit.lean` の `framedLimitWeight_cofibrant` | `EInfinity/HomotopyWeight/DoubleOpposite.framedLimitWeight_cofibrant` | 3-1 / R8 完全一致部 | 0252eb8a6 |
+| `HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/{OrdinaryBarFirstAction,ResolutionBarFirstAction}.output` | 同ディレクトリ `BarOutput.output` | 3-1 / R8 完全一致部 | 0252eb8a6 |
+
+R-C は旧入口を残さず直接 import・参照を置換した。型の異なる準重複は変更せず、[両ファイル族の全調査](archive/refactor-near-duplicates-einfinity-2026-10-23.md)に型の差・一般化案を記録した。HomotopicalAlgebra はユーザー確認により現存6組を全調査とする。`HomotopyLimits/UniverseSSetMaps` の移動は R-B の担当であり、上記90本には含まない。
 
 ## 6. 仮定入力の一覧（完成後に外す）
 
