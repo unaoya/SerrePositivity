@@ -664,7 +664,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCubeBoundary,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCubeFamilies,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedNormalizationCubes,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationSharedFace]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationSharedFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomActionPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeArrowComparisonPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeHomModelCancellation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeIdentityAugmentationPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationF2Triangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationOriginalFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorPinchedValue,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePinchedIntervalEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareComposition]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
