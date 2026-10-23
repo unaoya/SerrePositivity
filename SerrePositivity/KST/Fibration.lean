@@ -529,3 +529,10 @@ public import SerrePositivity.KST.Fibration.ZeroStableHomRelativeComparison
 public import SerrePositivity.KST.Fibration.VerdierNullHomRelativeComparison
 public import SerrePositivity.KST.Fibration.FixedRestrictionFunctorPrism
 public import SerrePositivity.KST.Fibration.VerdierNullHomComparisonPrism
+public import SerrePositivity.KST.Fibration.CoherentTriangleShortFaces
+public import SerrePositivity.KST.Fibration.StableHomVertexRecovery
+public import SerrePositivity.KST.Fibration.StableTriangleCompositeMap
+public import SerrePositivity.KST.Fibration.VerdierLowerCompositeMap
+public import SerrePositivity.KST.Fibration.ExactMapCoordinates
+public import SerrePositivity.KST.Fibration.VerdierNullCompositeVertices
+public import SerrePositivity.KST.Fibration.VerdierNullCompositeComparison
