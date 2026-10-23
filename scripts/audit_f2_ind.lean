@@ -1,6 +1,18 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.rightTensorCurryMap_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.fixedArrowPrismBoundaryCurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.fixedArrowPrismBoundaryCurry_ι
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismCurriedBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismCurriedOriginalVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism_curry_original
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowNormalizedPrism_curry_tip
+#check @SerrePositivity.InfinityCategories.F2.Ind.fixedCoconeBoundaryPost_vertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismNativeBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismNativeReconstructedVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismNativeOriginalVertex_val
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_old
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_vertex
 #check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_reconstructed

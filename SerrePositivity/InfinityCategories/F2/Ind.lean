@@ -512,3 +512,15 @@ public import SerrePositivity.InfinityCategories.F2.Ind.FixedArrowPrismBoundary
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismBoundaryMap
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RightTensorCurryMap
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedArrowPrismBoundaryCurry
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismCurryComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowNormalizedPrismCurry
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundaryPost
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismNativeCoconeComparison
