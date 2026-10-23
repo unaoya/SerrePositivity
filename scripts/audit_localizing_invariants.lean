@@ -1410,7 +1410,13 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDenRestore,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedClass,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCompletedOriginalModel,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDenCoefficientRestore]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDenCoefficientRestore,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSourceSlide,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSourceSlideFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroSourceModelHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCellProjection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectSourcePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectClassRestore]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
