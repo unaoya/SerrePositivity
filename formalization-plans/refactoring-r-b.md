@@ -69,11 +69,11 @@
 
 - `/tmp/r-b-r2-initial-preview.py` が Cocone、ZeroHomotopy の一般論、InitialTransport の一般論をまとめた preview を生成。Core/Mathlib import のみ・autoImplicit false で Lean 成功（同名 `.lean`・`.log`）。ZeroHomotopy の IsZeroVertex.isZeroHo と hasZeroObject_ho、InitialTransport の IsZeroVertex.of_vertexIso は Stable に残す。
 - UniverseLimits の閉包には HomotopyLimits/UniverseSSetMaps が必要。元の WeightedConeSectionEquivalence import は不要で、Core.Join と Mathlib の Types.Basic・Whiskering・SimplicialSet.Monoidal・NatIso だけで本文そのまま Lean 成功（`/tmp/r-b-universe-sset-maps-preview.lean`、同 `.log`、session 44668 exit 0）。
-- UniverseSSetMaps 1本の Core 直接移動・削除・機械的参照置換・集約更新は追加所有許可を非同期で質問中。許可前には変更しない。R-C 側にも現在同じ所在が残る。実施は R-A 取り込み・rebase 後。追加検証は Core・HomotopyLimits 集約と両監査。
+- UniverseSSetMaps → Core/UniverseSSetMaps の本文保持・直接移動はユーザー追加許可済み。WeightedConeSectionEquivalence import を外し、旧ファイル削除・importer 10本（HomotopyLimits 4・F2 4・Stable 1・Derived/Gluing 1）の機械的 import/参照置換・両集約更新を含む。実施は R-A・R-C 取り込み後の rebase 後。R19 後の所在を使う。検証は Core・HomotopyLimits・F2・Stable 集約と audit_infinity_core・audit_homotopy_limits。§5 に新所在を記録する。
 - main は引き続き c6692be81。R-A 取り込みの合図は未受領。
 
 ## 宇宙比較・局所化の閉包検証（未適用）
 
 - `/tmp/r-b-universe-closure-preview.py` は UniverseSSetMaps、Stable の UniverseJoinAugmentation・UniverseJoin・UniverseJoinNaturality・UniverseJoinSimplexShapes・UniverseBoundary・UniverseBoundaryHom・UniverseBoundaryFilling・UniverseJoinSimplexNaturality・UniverseConeHom・UniverseSlices と UniverseZeroObjects の先頭2補題を、本文を保持して結合する。Core/Mathlib import のみ・autoImplicit false で Lean 成功（同名 `.lean`・`.log`、session 96840 exit 0）。UniverseLimits 本体・反転依存はこの検証には含めない。
 - R23 の局所化側は Derived の RightKanPrecompositionFaithful・LocalizationFunctorExtension・LocalizationRightKanCriterion・LocalizationPrecompositionCriterion・DeformationLocalization の5本で閉じる。本文を保持した `/tmp/r-b-localization-closure-preview.lean` は Core/F1B import のみ・autoImplicit false で Lean 成功（同 `.log`、session 90302 exit 0）。最初の2本も新規 F1B ファイルへ直接移せば F1B→Derived を残さない。全て元の所有範囲内。
-- 上記は一時ファイルの検証のみ。移動実装は R-A 取り込みの合図・rebase 後。追加所有許可の未回答項目は ZeroBoundaryExtension と UniverseSSetMaps の2本。
+- 上記は一時ファイルの検証のみ。移動実装は R-A 取り込みの合図・rebase 後。追加所有許可の未回答項目は ZeroBoundaryExtension の1本。UniverseSSetMaps は許可済みだが、R-A・R-C 取り込み後の rebase まで未実施。
