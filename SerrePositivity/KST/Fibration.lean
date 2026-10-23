@@ -523,3 +523,9 @@ public import SerrePositivity.KST.Fibration.StableTriangleDiagonalZero
 public import SerrePositivity.KST.Fibration.VerdierLowerTriangleZeroHom
 public import SerrePositivity.KST.Fibration.StableTriangleHomOverDiagonal
 public import SerrePositivity.KST.Fibration.VerdierNullHomFamilies
+public import SerrePositivity.KST.Fibration.ContractibleTargetRestriction
+public import SerrePositivity.KST.Fibration.ContractibleRestrictionComparison
+public import SerrePositivity.KST.Fibration.ZeroStableHomRelativeComparison
+public import SerrePositivity.KST.Fibration.VerdierNullHomRelativeComparison
+public import SerrePositivity.KST.Fibration.FixedRestrictionFunctorPrism
+public import SerrePositivity.KST.Fibration.VerdierNullHomComparisonPrism
