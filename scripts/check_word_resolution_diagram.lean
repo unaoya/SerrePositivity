@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordResolution
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordResolution
 
 universe u v w u' v' w'
 noncomputable section
@@ -53,7 +53,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationCat,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSection,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordResolution]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordResolution]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

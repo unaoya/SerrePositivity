@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison
 import Lean.Util.CollectAxioms
 
 universe u v
@@ -72,12 +72,12 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanPostDetection,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

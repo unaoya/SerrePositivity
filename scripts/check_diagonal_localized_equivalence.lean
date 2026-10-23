@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence
 import Lean.Util.CollectAxioms
 
 universe u v
@@ -47,7 +47,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

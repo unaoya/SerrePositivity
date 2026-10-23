@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison
 import Lean.Util.CollectAxioms
 
 universe u v w u' v' w'
@@ -48,7 +48,7 @@ run_cmd do
     `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,
     `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,
     `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -41,14 +41,20 @@ if manifest.get("phase", 1) >= 2:
     assert not shared_closure & b
     assert not any(m.startswith(dedicated + ".") for m in shared_closure)
     for old, new in manifest["relocations"].items():
-        assert old in imports and new in imports, (old, new)
-        assert imports[old] == [new], f"Invalid compatibility import: {old}"
-        wrapper = Path(old.replace(".", "/") + ".lean").read_text()
-        wrapper_tokens = re.sub(r"/-.*?-/", "", wrapper, flags=re.S).split()
-        assert wrapper_tokens == ["module", "public", "import", new], old
+        assert new in imports, new
+        direct = manifest.get("direct_relocations", {})
+        if old in direct:
+            assert direct[old] == new
+            assert old not in imports, f"Obsolete forwarding module remains: {old}"
+        else:
+            assert old in imports, old
+            assert imports[old] == [new], f"Invalid compatibility import: {old}"
+            wrapper = Path(old.replace(".", "/") + ".lean").read_text()
+            wrapper_tokens = re.sub(r"/-.*?-/", "", wrapper, flags=re.S).split()
+            assert wrapper_tokens == ["module", "public", "import", new], old
         assert not set(imports[new]) & b, f"Canonical module imports legacy B: {new}"
     optional_closure = closure(dedicated + ".Foundations")
     assert set(manifest["relocations"].values()) <= optional_closure
     assert a <= optional_closure
     print(f"Shared Foundations: {len(shared_closure)} project modules, B/Rectification zero.")
-    print(f"Rectification: {len(manifest['relocations'])} canonical modules and compatible old imports; closure {len(optional_closure)}.")
+    print(f"Rectification: {len(manifest['relocations'])} canonical modules, {len(manifest.get('direct_relocations', {}))} direct relocations; closure {len(optional_closure)}.")

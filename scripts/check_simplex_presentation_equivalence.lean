@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathSimplicialResolution
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreePathSimplicialResolution
 
 universe v u
 noncomputable section
@@ -80,7 +80,7 @@ run_cmd do
     `SerrePositivity.CategoryTheory.Simplex.PresentationFaces,
     `SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathSimplicialResolution]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreePathSimplicialResolution]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

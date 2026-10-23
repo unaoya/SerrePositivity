@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace
 
 universe w v u
 noncomputable section
@@ -74,7 +74,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFiber,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamily,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamilyLifting,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1,5 +1,5 @@
 import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordActionOperators
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordActionOperators
 
 universe u v u' v' w w' uD vD
 noncomputable section

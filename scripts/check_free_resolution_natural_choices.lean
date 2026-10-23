@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionNaturalChoice
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeResolutionNaturalChoice
 
 universe v u vD uD
 noncomputable section
@@ -64,7 +64,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.CategoryTheory.Simplex.Naturality,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarParameterChoiceCategory,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarParameterChoiceCategory,
     Name.str `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex
       "OrdinaryBarFreeResolutionNaturalChoice"]
   let mut count : Nat := 0

@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
 
 universe v u vD uD
 noncomputable section
@@ -72,7 +72,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorFaces,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionBoundary,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeResolutionBoundary,
     Name.str `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex
       "OrdinaryBarFreeResolutionDegeneracyValues"]
   let mut count : Nat := 0

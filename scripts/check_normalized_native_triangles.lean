@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle
 import Lean.Util.CollectAxioms
 
 universe v u
@@ -79,7 +79,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

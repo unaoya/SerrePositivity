@@ -1,5 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallReference
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSmallReference
 
 universe w v u
 noncomputable section

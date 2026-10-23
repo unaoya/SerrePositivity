@@ -1,5 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordPresentation
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordPresentation
 
 universe u v w u' v' w' uD vD
 noncomputable section
@@ -75,7 +75,7 @@ run_cmd do
     `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordPresentation]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordPresentation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

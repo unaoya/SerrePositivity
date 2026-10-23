@@ -1,0 +1,297 @@
+{
+  "removed_forwarders": 267,
+  "all_project_immediate_dependency_sets_preserved_after_redirect_normalization": true,
+  "client_closures": [
+    {
+      "module": "scripts.check_actual_free_resolution_choices",
+      "closure_nodes": 611,
+      "sha256": "a245c23f78ed7f0f94248b3427708944f6b4ecaf0a6022e77261b669eb9f59e6"
+    },
+    {
+      "module": "scripts.check_ambient_word_comparison",
+      "closure_nodes": 663,
+      "sha256": "d6e9c3f0d891ebebf64957ba1e80328107f457dc81e43ae7e93f5cb000670b36"
+    },
+    {
+      "module": "scripts.check_choice_mapping_space",
+      "closure_nodes": 574,
+      "sha256": "53beb412fb3247544f3f953b7b56d46c6d42135dfb898767f88204579d0d07fb"
+    },
+    {
+      "module": "scripts.check_comparison_coherence_restriction",
+      "closure_nodes": 760,
+      "sha256": "a135ad39be823dffda1995e9d03bd6fa2521d0fc2e2a4e212857968761f46983"
+    },
+    {
+      "module": "scripts.check_composition_choices",
+      "closure_nodes": 752,
+      "sha256": "c73a5080310301ce63660c852bd8ab7d4837d1e5180555d612d356dcda653f02"
+    },
+    {
+      "module": "scripts.check_composition_parameter_diagram",
+      "closure_nodes": 758,
+      "sha256": "30a760ddf2b9b703df27320423acbe67bdb5549cc94f0a9cca5c5784423b0301"
+    },
+    {
+      "module": "scripts.check_composition_reindex",
+      "closure_nodes": 755,
+      "sha256": "a2d2d4d0b4f6b33840b1875b8cbb0e188133e639d22f8df7188f1b77d4d3d120"
+    },
+    {
+      "module": "scripts.check_diagonal_closed_action",
+      "closure_nodes": 664,
+      "sha256": "c8a8855a66bd67f022a4259a6c5a0e7eda6581563896e0f0c02d7f7ca1647b28"
+    },
+    {
+      "module": "scripts.check_diagonal_closed_compatibility",
+      "closure_nodes": 667,
+      "sha256": "6e3b196e706015b33bce06d5c56f5b32b89a024fb3e37bd867ac322e02a441dc"
+    },
+    {
+      "module": "scripts.check_diagonal_hom_augmentation",
+      "closure_nodes": 654,
+      "sha256": "a276a04786029dbc64d0852eaceb4257cc10a36211585b95c55fbe4a259f0354"
+    },
+    {
+      "module": "scripts.check_diagonal_localized_equivalence",
+      "closure_nodes": 702,
+      "sha256": "80eb06ef4c002d486d88c303776eb3960bf12a774165d1f82c15342d125de6ef"
+    },
+    {
+      "module": "scripts.check_diagonal_word_evaluation",
+      "closure_nodes": 661,
+      "sha256": "2a7c3c2be8aefdb05deba141e100b73f24cfb9f6b1a8595b4225963535d668dd"
+    },
+    {
+      "module": "scripts.check_finite_chain_cube",
+      "closure_nodes": 571,
+      "sha256": "2097d8d921345ec52b70bcf20524f8ed5b4baf4b4285db444b05e8710e43285f"
+    },
+    {
+      "module": "scripts.check_free_chain_transfer",
+      "closure_nodes": 636,
+      "sha256": "5affe3d781c24c632d66f765a3bff13b6c2f3650f3c6f7c5516b0b66614797b5"
+    },
+    {
+      "module": "scripts.check_free_chain_units",
+      "closure_nodes": 638,
+      "sha256": "7297f57022931645f411c81d8c8b8d682db445d6bdef6b22666c6945439ad1a7"
+    },
+    {
+      "module": "scripts.check_free_latching_extension",
+      "closure_nodes": 593,
+      "sha256": "8fa16b1d079c6c6e775ba49c74706307ba647cb98a1419bb7a6bc37a1e37acd7"
+    },
+    {
+      "module": "scripts.check_free_path_comonad",
+      "closure_nodes": 575,
+      "sha256": "7586750573be6a673ec9a1cc9cd22353b5dda5c7a214ffadf053e387e2295b46"
+    },
+    {
+      "module": "scripts.check_free_resolution_action",
+      "closure_nodes": 627,
+      "sha256": "db56cb061250c8779f480bd9e83e389ed087c69d17455694564dd884a453cf6b"
+    },
+    {
+      "module": "scripts.check_free_resolution_boundary_data",
+      "closure_nodes": 598,
+      "sha256": "0f37ee0a27ad96cfb44c911e751490ea11f7c041bfb10979a3d1c3b14b839114"
+    },
+    {
+      "module": "scripts.check_free_resolution_natural_choices",
+      "closure_nodes": 624,
+      "sha256": "178f38989f92f9c1c2c1d03eba0d28acda7524f17e46c2a71bc71aef5291cd31"
+    },
+    {
+      "module": "scripts.check_free_resolution_step",
+      "closure_nodes": 606,
+      "sha256": "b5dd645a089fbccdba4429756ee614c65fee3990319dc82f6044478f6f99ab31"
+    },
+    {
+      "module": "scripts.check_free_triangle_boundary",
+      "closure_nodes": 580,
+      "sha256": "bd132ffa8df6f30092e6195c86fa3c08aa5e6cd64fb600f1684ce63003b0315b"
+    },
+    {
+      "module": "scripts.check_free_triangle_gluing",
+      "closure_nodes": 583,
+      "sha256": "ba1a6cbda567030f2cf6ad56844536456b08bce9deda67441c4c827f751acfac"
+    },
+    {
+      "module": "scripts.check_free_word_hom",
+      "closure_nodes": 643,
+      "sha256": "6ff52ff0f36aca1397acbf30b66f57e590055d21c18671d7bfe9f62c4089f812"
+    },
+    {
+      "module": "scripts.check_hom_parameter_descent",
+      "closure_nodes": 738,
+      "sha256": "e102d8852b2d55d5d069b1288a4a74cfddb2cf40d15ba6edb112c4cf4c5f5930"
+    },
+    {
+      "module": "scripts.check_horn_family_lifting",
+      "closure_nodes": 762,
+      "sha256": "470b3fa39e1e96ac7bfd56292cf0beca449c3a8b4c03e42678e2fa504a2c4b9d"
+    },
+    {
+      "module": "scripts.check_moving_choice_chain_transfer",
+      "closure_nodes": 577,
+      "sha256": "173ee3a32ebd4f971e42aa8946e750955e78d2f1e8c6c3eb381179341aa20c52"
+    },
+    {
+      "module": "scripts.check_native_associativity_coherence",
+      "closure_nodes": 755,
+      "sha256": "e07bac60597f2e660efa11176fccceedc66453b4c9aa8057315303f12e6eef1d"
+    },
+    {
+      "module": "scripts.check_native_unit_coherence",
+      "closure_nodes": 758,
+      "sha256": "f3981cc12ad3f01823b210b3fdf26fbf6ce688ec833b73ddc296cce51111c59d"
+    },
+    {
+      "module": "scripts.check_normalized_comparison_coherence",
+      "closure_nodes": 780,
+      "sha256": "c08ce79e4e32e4fa2aeae8f62046a0bf28bc5b2c903cf1cb399ab8750ce87ccd"
+    },
+    {
+      "module": "scripts.check_normalized_native_triangles",
+      "closure_nodes": 768,
+      "sha256": "517609a15f3014b95a13f0cee90ac285d794917009e8f2be47ca2610e90c6575"
+    },
+    {
+      "module": "scripts.check_ordinary_bar_homotopy_descent",
+      "closure_nodes": 546,
+      "sha256": "e770622cd06439ca3046b6e0b7ee3ea03305415ebeb92babfa8d286d9a84ad81"
+    },
+    {
+      "module": "scripts.check_ordinary_bar_label_surjectivity",
+      "closure_nodes": 388,
+      "sha256": "f0bdd491bc345bf5fe6c9340208c651b6d33df97ac24f935c89f94ae2b302103"
+    },
+    {
+      "module": "scripts.check_ordinary_bar_pi_zero",
+      "closure_nodes": 542,
+      "sha256": "36be81663d24b249cdaaa6fdbe346ecfc35c779ca32b765cffe4dfffe90ee9ac"
+    },
+    {
+      "module": "scripts.check_ordinary_bar_retract_system",
+      "closure_nodes": 563,
+      "sha256": "18abf6b3d23d0af7f463fbe54bc8b4abc2c333313f79d598a46e521859d38f7e"
+    },
+    {
+      "module": "scripts.check_ordinary_kan_bar_mapping_classes",
+      "closure_nodes": 546,
+      "sha256": "456a12f7aaad0ce23b120d1edf802fdd9bf45222e06a2c15ebfd730b078055ed"
+    },
+    {
+      "module": "scripts.check_ordinary_kan_bar_quotient",
+      "closure_nodes": 549,
+      "sha256": "1c92b2c9dd6d85dbb8d74943ced9d5e2735319c16179b558f4390b1e991bfddc"
+    },
+    {
+      "module": "scripts.check_ordinary_quotient_pi_zero",
+      "closure_nodes": 544,
+      "sha256": "f81ad19bdc241378fc9f4d9cdb7e3d85004fb4ad93607fc0b0388a5af6955919"
+    },
+    {
+      "module": "scripts.check_parameter_choice_category",
+      "closure_nodes": 570,
+      "sha256": "56b954b3f794daf70186eec834589a785c1e7c7dd1079305e7704fa7eb9f4131"
+    },
+    {
+      "module": "scripts.check_parameterized_horn_choices",
+      "closure_nodes": 761,
+      "sha256": "bccc67e7ac6733727801ccb3440acac87043b904b08927b58463760c34d3064b"
+    },
+    {
+      "module": "scripts.check_presentation_kernel_quotient",
+      "closure_nodes": 537,
+      "sha256": "6d9492710b67e2ec49e7df1b4a01d1e6cc2ee7605a3eb8a2ee9e87ee641d8ced"
+    },
+    {
+      "module": "scripts.check_relative_choice_composition",
+      "closure_nodes": 566,
+      "sha256": "341385ad61c8fd46e7df28777aed96553500cd1b45266637ef6111e102728f94"
+    },
+    {
+      "module": "scripts.check_relative_composition",
+      "closure_nodes": 749,
+      "sha256": "ab157a5961bfe5ce75122103c0d13a02d0ad14e0fe6670c2c71475fa752f83ea"
+    },
+    {
+      "module": "scripts.check_relative_free_diagram_extension",
+      "closure_nodes": 571,
+      "sha256": "07a4a9c0cc93b37faa854da2fe42e729f8dc23ab966bdd973eca35659868a2b3"
+    },
+    {
+      "module": "scripts.check_relative_free_resolution_comparison",
+      "closure_nodes": 578,
+      "sha256": "e24fe6ed5bdfb9e842d478bdb4db2a7b330456a84a5bafe2dc2f4b202300dc8f"
+    },
+    {
+      "module": "scripts.check_relative_free_triangle_filler",
+      "closure_nodes": 588,
+      "sha256": "29871fa17992ab1411a84e30eb896210a75a129bcdf14fee004626493867daf3"
+    },
+    {
+      "module": "scripts.check_relative_hom_descent",
+      "closure_nodes": 744,
+      "sha256": "d12df8bb78bbc5404eda4f6387c4fb6becc4c87a73151db1d57110eb9d7445b0"
+    },
+    {
+      "module": "scripts.check_retract_word_presentation",
+      "closure_nodes": 643,
+      "sha256": "33e2a46c4b1b2986c918e18c9ece9488b5f0ab48b91c1c1d35e1dc76ee4c631c"
+    },
+    {
+      "module": "scripts.check_simplex_presentation_equivalence",
+      "closure_nodes": 21,
+      "sha256": "603a821f505820d371c92d0d2e4f7aa2e90a52b95f6d1301dac0b9fcdc126236"
+    },
+    {
+      "module": "scripts.check_source_contraction",
+      "closure_nodes": 714,
+      "sha256": "a3d0ca0024ffff081bf66edb298c61e9956dff6984c5334d0a52705c2ff57f96"
+    },
+    {
+      "module": "scripts.check_strong_retract_transfer",
+      "closure_nodes": 564,
+      "sha256": "c01666b5dcf4414f61ddf038e95b4bad3020a314833091799c0cccc2b98bd409"
+    },
+    {
+      "module": "scripts.check_universe_lift_parameter_hom",
+      "closure_nodes": 536,
+      "sha256": "4afca2a9892b176f105668a6161375b2c06231fc197d9b2e95e8fb77dcc40178"
+    },
+    {
+      "module": "scripts.check_word_chain_transfer",
+      "closure_nodes": 645,
+      "sha256": "75458d0eb5c434c9ce0193e50cc4809b430c8387f0e9550f3d95d4bd6b582b15"
+    },
+    {
+      "module": "scripts.check_word_presentation_action",
+      "closure_nodes": 646,
+      "sha256": "d15f2bad3ec71457ee5685e5cb38af7f2d72f9dfef0a78e6c803780761d7b570"
+    },
+    {
+      "module": "scripts.check_word_resolution_diagram",
+      "closure_nodes": 644,
+      "sha256": "d2ad93a0acf00b2780df10cbf827bb41ecae89f9474788bc6d1433645c88b570"
+    },
+    {
+      "module": "scripts.check_word_retraction_action",
+      "closure_nodes": 574,
+      "sha256": "24155b02f4d483e079a13886f3a52f7ac48c741643378dfa76f61c525c92f53e"
+    },
+    {
+      "module": "scripts.check_word_rows_diagonal",
+      "closure_nodes": 678,
+      "sha256": "d338d92c8bd4d7a2343a1400169af88a7a17b2bc6e062a81a58efca076ce72b1"
+    },
+    {
+      "module": "scripts.check_word_source_operators",
+      "closure_nodes": 653,
+      "sha256": "18448290af8b5dd258b950c38c5b84f11321d5983c2b1022973ee476929d5ad0"
+    }
+  ],
+  "declarations_in_forwarders": 0
+}

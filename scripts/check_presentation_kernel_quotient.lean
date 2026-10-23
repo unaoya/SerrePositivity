@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationKernelQuotient
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.PresentationKernelQuotient
 
 universe v w uB vB u uD vD
 noncomputable section
@@ -81,7 +81,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationKernelQuotient]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.PresentationKernelQuotient]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

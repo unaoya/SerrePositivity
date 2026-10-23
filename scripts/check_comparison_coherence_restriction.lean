@@ -1,5 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAssociativityCoherence
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAssociativityCoherence
 import Lean.Util.CollectAxioms
 
 universe v u

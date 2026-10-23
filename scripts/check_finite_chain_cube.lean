@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChainFamily
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChainFamily
 
 universe w v u uI
 noncomputable section
@@ -103,7 +103,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChainFamily]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChainFamily]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

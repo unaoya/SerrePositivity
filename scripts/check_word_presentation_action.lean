@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordAction
 
 universe u v w
 noncomputable section
@@ -70,7 +70,7 @@ run_cmd do
   let expected := #[`SerrePositivity.CategoryTheory.Quiver.PathNatTrans,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarWordAction]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

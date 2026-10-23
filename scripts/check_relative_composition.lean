@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle
+import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle
 import Lean.Util.CollectAxioms
 
 universe u v
@@ -57,8 +57,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyBinarySquare,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedHomotopyComposition,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeComposition,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeComposition,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
