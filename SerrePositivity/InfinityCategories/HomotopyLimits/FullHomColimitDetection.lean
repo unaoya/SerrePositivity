@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableCone
 public import SerrePositivity.InfinityCategories.F1.CoherentSpaceSmallLimits
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedColimitPreservation
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPreservation
 
 /-!
 概要：元の全共変 Hom の錐によって、指定された全余錐の余極限性を双方向に判定する。

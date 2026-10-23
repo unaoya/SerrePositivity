@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalObjects
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
 public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalObjects
 
 /-!

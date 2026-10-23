@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedFiniteFiberProduct
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteFiberProduct
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteSSetProductUniversal
 
 /-!

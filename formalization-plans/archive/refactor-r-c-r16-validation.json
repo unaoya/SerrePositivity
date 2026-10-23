@@ -1,0 +1,33 @@
+{
+  "state": "passed",
+  "exit_codes": {
+    "aggregate-build": 0,
+    "audit_infinity_f2": 0,
+    "audit_infinity_presentable": 0,
+    "audit_homotopy_limits": 0,
+    "audit_einfinity": 0
+  },
+  "logs": [
+    {
+      "path": "/tmp/r-c-r16-aggregate-build.log",
+      "sha256": "d1439b373b0840d11929525ba16a6c0fbbb244ac250248e2fa06c9720ff8bc69"
+    },
+    {
+      "path": "/tmp/r-c-r16-audit_infinity_f2.log",
+      "sha256": "5df5783e4c38200a0e6a5a377e95279f084b4fb954497168dfe0451c757986f4"
+    },
+    {
+      "path": "/tmp/r-c-r16-audit_infinity_presentable.log",
+      "sha256": "bafa6e7d412cfad1ceae804613eded474e25490cc784c8d39d7f438403ed4e2a"
+    },
+    {
+      "path": "/tmp/r-c-r16-audit_homotopy_limits.log",
+      "sha256": "47d9391cdf5a10e6cd449ccf80c638f8c657ff0b733f619e4b3ad7a4524115b9"
+    },
+    {
+      "path": "/tmp/r-c-r16-audit_einfinity.log",
+      "sha256": "49e6cd07ee4c83d8785d3470d7cd55ccae9b0c19ed897df190081027b8a5ed16"
+    }
+  ],
+  "preserved_unmoved": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSSetMaps.lean"
+}

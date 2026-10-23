@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaElementsConeRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaElementsConeRestriction
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison

@@ -1,0 +1,501 @@
+{
+  "state": "analysis_only_waiting_for_r_a_merge_and_coordinator_signal",
+  "root": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity",
+  "ind_dependency_closure": [
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoconeOfHomotopyConstant",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism",
+        "SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPost",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint",
+        "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealization",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.SmallCoherentMappingEquivalence",
+        "SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationBaseChange",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationLarge",
+        "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationLarge",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealization",
+        "SerrePositivity.InfinityCategories.Stable.UniverseVertexIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationNormalizedRestriction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationBaseChange",
+        "SerrePositivity.InfinityCategories.F1.ParametrizedPointTransportSquare"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.CurryJointHomotopy",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseRelativeBoundaryExtension",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseWeightRelativeLift",
+        "SerrePositivity.InfinityCategories.F2.Ind.RangeCoverGluingOver",
+        "SerrePositivity.InfinityCategories.F1.EdgewiseCoverDomain",
+        "SerrePositivity.InfinityCategories.F1.EdgewiseOneBoundary"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseRightAnodyne",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.UniqueFaceRightIndex",
+        "SerrePositivity.InfinityCategories.F1.EdgewisePairingRegular",
+        "SerrePositivity.InfinityCategories.Core.PairingHorns"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseVertexFiberLift",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseWeightRelativeLift",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseRightAnodyne",
+        "SerrePositivity.InfinityCategories.F1.EdgewiseKanExtension"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.ElementsDiagram",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.PresheafUnstraightening",
+        "SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction",
+        "SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationRestriction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationVertex",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices",
+        "SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationVertex",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationColimit",
+        "SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCocone",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityDiagramHomotopy",
+        "SerrePositivity.InfinityCategories.F2.Ind.CoconeOfHomotopyConstant",
+        "SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationVertex",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyCoconeRealization"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCoconeTransformation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCocone",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeRealizationTransformation",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityDiagramHomotopy",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CurryJointHomotopy",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityTransformation",
+        "SerrePositivity.InfinityCategories.F2.Ind.ElementsDiagram",
+        "SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCoconeTransformation",
+        "SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationColimit",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberPre",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberColimitCriterion",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.PrecompositionTargetComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationConstantComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedGlobalMap"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberMap",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberValueMap"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberPre",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValuePre"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFixedTarget",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationGlobalComparison",
+        "SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationGlobalComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRestrictionBase",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityLiftedEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationReconstruction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChange",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensitySourceRestriction",
+        "SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationReconstructionNaturality",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationReconstruction",
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationLarge"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRelativeImage",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationNormalizedRestriction",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityJointRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRestrictionBase",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationReconstructionNaturality",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationRelativeImage"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationValueComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationConstantComparison",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberMap",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTargetVertex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityJointRestriction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedTransformation",
+        "SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityLiftedEvaluation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityTransformation",
+        "SerrePositivity.InfinityCategories.F2.Ind.SmallRelativeTargetLift",
+        "SerrePositivity.InfinityCategories.Stable.UniverseVertexIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedGlobalMap",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFixedTarget"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedHomotopy",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensitySourceRestriction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedTransformation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedHomotopy",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValueFactorization",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberPointedIso",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationValueComparison",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsWeakEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValuePre",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValueFactorization",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberValue",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensitySourceRestriction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation",
+        "SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityTransformation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealization",
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsMap",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsReconstruction",
+        "SerrePositivity.InfinityCategories.F1.RelativeFunctorEssentialExtension"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberPointedIso",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite",
+        "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap",
+        "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport",
+        "SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberValue",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberPointedIso",
+        "SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsEvaluation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedArrowSourceLift",
+        "SerrePositivity.InfinityCategories.F1.PresheafUnstraightening"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsMap",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsEvaluation",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange",
+        "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningLift"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.RangeCoverGluingOver",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.RangeCoverGluing"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.RelativeEdgewiseRightComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.EdgewiseRightBoundaryCompatibility",
+        "SerrePositivity.InfinityCategories.F1.TriangleLongEdge",
+        "SerrePositivity.InfinityCategories.F1.EdgewiseWeightCoordinates"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.RelativeEdgewiseRightFibration",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.RelativeEdgewiseRightComparison",
+        "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseRelativeBoundaryExtension"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.SmallRelativeTargetLift",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace",
+        "SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedArrowSourceLift",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.RelativeEdgewiseRightFibration",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.TwistedArrowLeftFibration",
+        "SerrePositivity.InfinityCategories.F1.BaseChange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsReconstruction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange",
+        "SerrePositivity.InfinityCategories.F1.TwistedArrowTargetReconstruction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiber",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.EdgewiseVertexFiberLift",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedArrowSourceLift"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiberEquivalence",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiber",
+        "SerrePositivity.InfinityCategories.F1.EdgewiseLeftFilling",
+        "SerrePositivity.InfinityCategories.F1B.WeakHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElements",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial",
+        "SerrePositivity.InfinityCategories.F1.PullbackFiber",
+        "SerrePositivity.InfinityCategories.F1.PullbackTransport",
+        "SerrePositivity.InfinityCategories.F1B.RightFibrationInitialFiber"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChange",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChangeMaps"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChangeMaps",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsComparison",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElements",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiber"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsEvaluation",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsComparison",
+        "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsWeakEquivalence",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsEvaluation",
+        "SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiberEquivalence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.UniqueFaceRightIndex",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.StandardSimplexInnerFaceIndex"
+      ]
+    }
+  ],
+  "boundary": [
+    "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+    "SerrePositivity.InfinityCategories.Core.PairingHorns",
+    "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+    "SerrePositivity.InfinityCategories.Core.VertexFiber",
+    "SerrePositivity.InfinityCategories.F1.BaseChange",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseCoverDomain",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseKanExtension",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseLeftFilling",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseOneBoundary",
+    "SerrePositivity.InfinityCategories.F1.EdgewisePairingRegular",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseRightBoundaryCompatibility",
+    "SerrePositivity.InfinityCategories.F1.EdgewiseWeightCoordinates",
+    "SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence",
+    "SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange",
+    "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport",
+    "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingNaturality",
+    "SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices",
+    "SerrePositivity.InfinityCategories.F1.ParametrizedPointTransportSquare",
+    "SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation",
+    "SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits",
+    "SerrePositivity.InfinityCategories.F1.PresheafUnstraightening",
+    "SerrePositivity.InfinityCategories.F1.PullbackFiber",
+    "SerrePositivity.InfinityCategories.F1.PullbackTransport",
+    "SerrePositivity.InfinityCategories.F1.RangeCoverGluing",
+    "SerrePositivity.InfinityCategories.F1.RelativeFunctorEssentialExtension",
+    "SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso",
+    "SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws",
+    "SerrePositivity.InfinityCategories.F1.SmallCoherentMappingEquivalence",
+    "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningLift",
+    "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace",
+    "SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap",
+    "SerrePositivity.InfinityCategories.F1.StandardSimplexInnerFaceIndex",
+    "SerrePositivity.InfinityCategories.F1.TriangleLongEdge",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrowLeftFibration",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrowTargetReconstruction",
+    "SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent",
+    "SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction",
+    "SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering",
+    "SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso",
+    "SerrePositivity.InfinityCategories.F1B.RightFibrationInitialFiber",
+    "SerrePositivity.InfinityCategories.F1B.WeakHomotopy",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberColimitCriterion",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberValueMap",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeRealizationTransformation",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPost",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTargetVertex",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyCoconeRealization",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PrecompositionTargetComparison",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex",
+    "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism",
+    "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone",
+    "SerrePositivity.InfinityCategories.Stable.UniverseVertexIso",
+    "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite"
+  ]
+}

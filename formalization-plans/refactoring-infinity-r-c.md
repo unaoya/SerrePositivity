@@ -2,13 +2,13 @@
 
 ## 引き継ぎ
 
-- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c 完了。3-1 の完全一致4宣言族の共有化を検証済み：ビルド・指定4監査・Rectification監査・bar評価2チェックが全て終了コード0。型の異なる準重複は保存して一覧化。
-- 残り：R16。R15 は R-A 取り込み・合図後の rebase を待つ。準重複の原8組の残2組については質問を提示済み（現存する両ファイル族の全調査で継続中）。
+- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c、3-1 完全一致部 0252eb8a6 完了。R16 も90モジュールの移動・全本文保存・旧 import 0と、4集約ビルド・指定4監査の成功を確認済み。
+- 残り：R15 は R-A 取り込み・合図後の rebase を待つ。準重複はユーザー回答に基づき現存6組の全調査として確定。追加の267転送入口削除は R-A の move_module.py 到着後に実施する。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：なし（完全一致共有化の本コミットに含む）。
+- コミット対象：R16 の90モジュール移動・import置換・集約更新・監査import・検証記録、および追加指示に基づく調査記録。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：R16 を `/tmp/r-c-r16.py` で適用（R-A の move_module.py は未着、手動対応表を保存）。本文照合後 `/tmp/r-c-check-item.sh r16` で4集約ビルド・指定4監査。
+- 次の一手：R16 の検証 session 42013と `/tmp/r-c-r16-aggregate-build.log`、`/tmp/r-c-r16-audit_*.log` を確認。成功後コミット。R15 は合図まで実施しない。
 
 ## 方針
 
@@ -24,7 +24,7 @@ R17 は既存の条件付き宣言の引数・証明を保存し、条件を任�
 
 R19：Cat*・Lax* とその F2 最上位への依存閉包 290 本を CatInfinity、残る 1,921 本を FilteredExchange へ。既存の4サブディレクトリ集約は位置を保つ。`archive/refactor-r-c-r19-moves.json` に移動・import 変更を保存。複数行 import を含め全移動元のコミット済み本文と照合し、差は import のモジュール名だけ。旧モジュールへの import は0。F2 の既存説明・#check は保存し、新しい2入口を追加。EInfinity にも import 変更があるためビルド対象に含める。
 
-R20：5入力の定義・供給元・一致行／ファイルを現 worktree から再採取し §6 と archive を更新。準重複一覧は同名 EInfinity 33 組と HomotopicalAlgebra 6 組。R8 の8組の元一覧は未保存で、残る2組との対応は未確定（低類似度の別構成を数合わせで追加しない）。再調査 `/tmp/r-c-ha-match.py` は6組だけを再同定した。
+R20：5入力の定義・供給元・一致行／ファイルを現 worktree から再採取し §6 と archive を更新。準重複一覧は同名 EInfinity 33 組と HomotopicalAlgebra 6 組。R8 の元8組の一覧は未保存。ユーザー回答とコーディネータ再計算で現存6組が全てと確定し、全調査の記録として整理した。再調査 `/tmp/r-c-ha-match.py` も6組だけを再同定した。
 
 3-1 の追加検証：`OrdinaryBarFirstAction.output` と `ResolutionBarFirstAction.output` は同じ型・同じ本文。両既存宣言との等式を `rfl` で確認（`/tmp/r-c-ha-output-probe.lean`、終了コード0）、最小 import の probe も通過（`/tmp/r-c-ha-output-minimal-probe.lean`）。局所 Reedy instance・変数を保存して `BarOutput.output` 一箇所に移す準備済み。共有化後は指定四監査に加え `audit_homotopical_rectification` と既存の ordinary/resolution bar 評価チェックも実行する。
 
@@ -39,3 +39,15 @@ R20 完了：§6 の5入力の定義位置・供給元・使用数を更新し�
 3-1 実装：EInfinity の `doubleOpWeights`・`framedLimitWeight`・`framedLimitWeight_cofibrant` と HomotopicalAlgebra の `output` を各共有モジュールへ接続し、元の宣言を削除。旧名の参照は0。`archive/refactor-r-c-shared-source-verification.json` に HEAD aa124065c との機械的変更の照合・55ファイルのハッシュを保存。共有宣言の型・本文は保存。
 
 3-1 完全一致部の最終検証：全変更モジュール・4集約・Rectification.Foundations のビルド成功（16,795 jobs）。指定4監査・Rectification監査・bar評価2チェックの7コマンドは全て終了コード0。EInfinity 25,777宣言（重複3宣言分減）、Rectification 14,894宣言・1,040モジュール、標準公理のみ。実行結果・対象一覧・新規モジュールハッシュを `archive/refactor-r-c-shared-validation.json` に保存。
+
+R16：90モジュールの名前空間・宣言型・証明は保存。全移動元の HEAD 0252eb8a6 の本文を git cat-file で読み、import モジュール名の置換以外の差が0であることを照合。旧 import は0。`archive/refactor-r-c-r16-moves.json` に対応を保存。Presentable集約が所有し、従来のHomotopyLimits集約からは当該importを除いた。既存のHL監査の全型チェックを維持するため監査にPresentable importを追加した。
+
+追加項目（2026-10-23 ユーザー指示）：HomotopicalAlgebra/HomotopyFunctionComplex/ のうち Rectification へ単一 import する転送専用267本を、R-A の scripts/move_module.py 到着後に直接参照へ置換して削除する。実体のある同ディレクトリのモジュールは対象外。削除前後で転送専用ノードを除いた各利用元の推移的 import 閉包が一致することを検証し、HomotopicalAlgebra 集約・該当監査と既定の4集約・4監査を通す。到着前は候補一覧と仮想置換後の閉包照合のみ準備する。
+
+所有境界（2026-10-23 追加指示）：HomotopyLimits/UniverseSSetMaps.lean は R-B が Core へ移動するため、R-C は現在位置に残し、R16・その他の移動対象から除外する。
+
+267転送入口の事前調査：単一 Rectification import のみの267本は既存 manifest の同ディレクトリの267移動と完全一致。現 branch の SerrePositivity/ 内からの import は0、scripts/ 内の import は60行・58ファイル（連絡の261本とは現状値が異なる）。58利用元全てで仮想置換後の正規化推移閉包が一致。scripts/ には別途614箇所の旧モジュール名参照（主に監査の required 配列）があるため、削除時は import と区別してモジュール存在チェックも更新する。audit_homotopical_layout.py は旧入口の存在を明示要求するため、削除対象267本だけ直接配置の検査に切り替え、残る146入口の検査を保つ。準備記録は archive/refactor-r-c-forwarders-preflight.json。ソース変更・削除はまだ行っていない。
+
+R15 事前依存調査：PresheafDensity の Ind 内依存閉包は59本。定理本体だけでなくこの前層密度の構成層を移動候補とする。境界には F2/FilteredExchange の一般余錐補助12本と Stable の補助4本があるため、R-A/R-B 取り込み後の配置を再評価する。archive/refactor-r-c-density-preflight.json は現配置の解析のみで、移動は未実施。
+
+R16 最終検証：4集約のビルド16,055 jobsと指定4監査は全て終了コード0。F2 19,486宣言、Presentable 1,479宣言、EInfinity 25,777宣言。標準三公理のみで新規 sorry・公理なし。移動元90本文は import 置換以外の差分0。UniverseSSetMaps は移動・編集していない。ログは /tmp/r-c-r16-*。

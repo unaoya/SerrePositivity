@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalCoconeInitial
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial
 public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
 
 /-!
