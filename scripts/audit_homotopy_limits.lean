@@ -14809,3 +14809,66 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @yonedaEvaluationJointTwistedSeed_projection
 #print axioms yonedaEvaluationJointTwistedSeed_projection
+
+#check @twistedHomFunctorMap
+#print axioms twistedHomFunctorMap
+
+#check @twistedHomFunctorMap_app_val
+#print axioms twistedHomFunctorMap_app_val
+
+#check @cosliceFiberUncurry_yoneda
+#print axioms cosliceFiberUncurry_yoneda
+
+#check @pointCosliceFiberMap_app_val
+#print axioms pointCosliceFiberMap_app_val
+
+#check @cosliceTwistedHomMap_functor
+#print axioms cosliceTwistedHomMap_functor
+
+#check @twistedHomFunctorMap_isQCatEquivalence
+#print axioms twistedHomFunctorMap_isQCatEquivalence
+
+#check @twistedArrowFunctorComparison
+#print axioms twistedArrowFunctorComparison
+
+#check @twistedArrowFunctorComparison_projection
+#print axioms twistedArrowFunctorComparison_projection
+
+#check @twistedArrowFunctorComparison_fiber
+#print axioms twistedArrowFunctorComparison_fiber
+
+#check @twistedArrowFunctorComparison_isPrecompositionEquivalence
+#print axioms twistedArrowFunctorComparison_isPrecompositionEquivalence
+
+#check @twistedArrowHomInfinity_fullyFaithfulIso
+#print axioms twistedArrowHomInfinity_fullyFaithfulIso
+
+#check @jointHomBaseMap_naturality
+#print axioms jointHomBaseMap_naturality
+
+#check @homInfinityJoint_fullyFaithfulIso
+#print axioms homInfinityJoint_fullyFaithfulIso
+
+#check @yonedaInfinityMap_fullyFaithfulRestrictionIso
+#print axioms yonedaInfinityMap_fullyFaithfulRestrictionIso
+
+#check @leftKanReflRestriction_bijective
+#print axioms leftKanReflRestriction_bijective
+
+#check @leftKanReflRestrictionIso
+#print axioms leftKanReflRestrictionIso
+
+#check @rightKanReflRestriction_bijective
+#print axioms rightKanReflRestriction_bijective
+
+#check @rightKanReflRestrictionIso
+#print axioms rightKanReflRestrictionIso
+
+#check @isColimitCone_iff_restrict_mono_precomposition
+#print axioms isColimitCone_iff_restrict_mono_precomposition
+
+#check @exists_coconeExtension_of_mono_precomposition
+#print axioms exists_coconeExtension_of_mono_precomposition
+
+#check @mapUliftCocone_isColimit_of_quasicategoryShapes
+#print axioms mapUliftCocone_isColimit_of_quasicategoryShapes

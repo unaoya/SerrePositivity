@@ -6,100 +6,59 @@
 
 ### N（γ1.5・γ3）
 
-- **現在地**：**P-1 g の sifted 生成を完了。元の sifted 保存関手からの Yoneda 制限射自身の全充満忠実性も完了。** 元の指定頂点・全密度余錐と元の左 Kan 添字の厳密な比較を保持。小さい sifted 余極限を持つ標的へ任意の C 上の図式の全左 Kan 延長を構成し、同じ指定単位の可逆性と全関手同型による回収を証明。元の延長による全密度余錐像の余極限性と、全 Hom 錐による元の余極限の双方向判定も証明。前層の宇宙変更を全関手として構成し、評価・底の制限との厳密な可換性と小 coherent 余極限保存も証明。元の Hom 係数前層の全族と二変数評価・元の単位からの制限同型を構成。局所添字・全標準錐の宇宙比較を証明し、延長の共同 Hom 全族自身が持ち上げた元の Yoneda の右 Kan 延長となることまで証明。指定前層宇宙変更が元の全 Yoneda を保つ全自然同型と、大きい前層値関手の全密度余錐保存を証明。比較相手の全自然変換空間族と、標的全体を持ち上げた元の延長の全 Hom 族が、同じ宇宙・同じ元の Yoneda に沿う実際の右 Kan 延長となることまで証明。元の Yoneda 宇宙比較と指定単位により両族の制限を明示し、係数評価の全族と持ち上げた元の Hom 族の全自然同型も証明。共同 Yoneda Hom・共同評価を同じ底上の実 left fibration で固定し、元の全 twisted arrow から両全空間への二射を構成。係数への共同制限は元の両族の全写像と一致。全空間間の大域比較射と同値性、両族の同型は未完了。延長の sifted 保存性・制限の本質的全射性、HTT 5.5.8.14 の simplicial Ind 表示と 5.5.8.15 の filtered/geometric 版は未完了。F2N-3 は a7 の実証拠差し替えだけ残す（提供後1コミット）。
-  **F2N-4(a)〜(e) 完了。(e) は F1 の密度余錐と元の恒等点の実因子化を使用し、ℵ₀ の比較も構成。** 冪等完備化は 10-22 10:10 ユーザー承認で F1b から移管。
-  **N-1 完了（F1b の定理を使用、10-20 16:31）。** γ1.5・γ3b と通常の小圏上の γ3c は N 側で完了。
-  任意 coherent 空間値図式の余極限は `F2.hasColimit_coherentSpaceDiagram`・`F2.coherentDiagramTotalCocone_isColimit` を読み取り専用で使用。N の部分余極限経路は打ち切り。
-  **N-2（γ4）完了。** 固定 SM7・豊穣随伴の元の Hom 同型と合成互換を明示した simplicial Quillen 随伴について証明。
-  元の cf 対応圏の coherent nerve、両側 fibration、左右の導来関手・標準単位余単位・両三角恒等式、通常の cf 置換との比較を構成。
-  `quillenCfDerivedAdjunctionWithComparisons_exists` は同じ単位の ∞ 随伴・両側 fibration・両通常置換との比較・任意 coherent 図式の指定極限保存を集約。添字の quasicategory 性は不要。
-  **N-3 の指定された Tot・hG・fiber への適用は Sp の既存定理で達成。** 元の BF 対象・指定辺を保持して照合。Sp の一般 coherent 極限・全有限極限・安定性の完成とは扱わない。
-  **N-4 の局所化の存在は P へ移管。P_Σ の生成・普遍性は N の現工程。** 局所同値の強飽和性・任意 coherent 極限での局所対象の閉性、局所置換が与えられた場合の反射を証明済み。presentable 性からの局所置換の存在は未証明。
-  P_Σ の全部分 quasicategory・元の Yoneda の充満忠実な因子化・sifted 余極限閉性を完了。
-  **有限余積保存の区切り：P_Σ の元の全区間 Hom の評価自然性まで保存済み（b0ccafbc8）。** `sigmaYonedaFiberEvaluation_naturalityIso` は元の Yoneda 辺への前合成後の全評価と、元の標的前層の同じ反変辺の標準輸送を比較。有限余積保存そのものは未完了。sifted 生成は今回完了し、全普遍性・保存性判定を継続。
-  **F2N-4(a)：coherent 分裂の存在・一意性を完了。** `IdemShape` は二元の一対象圏の nerve、`SplitShape` は二つの形式的像の圏の nerve。通常の Karoubi は添字模型だけに使用。
-  `CoherentIdempotent` は元の全 Idem 上の写像。`StrongSplitting` は元の包含への制限で同じ全図式を厳密に回収。
-  元の弱い retract の商・実際の分裂三角形・交互セルの核と pushout・全被覆性から `weakComparison_innerAnodyne` を証明。
-  元の包含の左右 cofinal・anodyne 性と、元の強い分裂の指定錐・余錐の絶対普遍性を証明。同じ全 Idem 図式の分裂・余極限・極限の存在は同値。
-  全分裂空間の零単体は元の厳密な強い分裂と全単射。正次の全境界も同じ全図式を固定して充填。元の fiber は分裂があれば可縮 Kan。
-  元の前合成を有効な元の全図式の全部分圏へ因子化した制限そのものが自明 Kan fibration。弱い図式やホモトピー圏の一意性だけで代用しない。
-  **F2N-4(b)：前層の retract 閉包と冪等完備性を完了。** 小さい前層余極限と元の全 Idem の宇宙同型で前層圏の coherent 冪等完備性を証明。
-  元の全分裂を retract に閉じた全部分圏へ厳密に反映。元の Yoneda 像の retract 閉包 `Idem C` は冪等完備な全部分 quasicategory。
-  元の包含・Yoneda 因子化は充満忠実。各対象は Idem(C) 自身の内部で元の Yoneda 像の retract。HTT 5.1.4.1〜2 の存在を完了。
-  **F2N-4(c)：元の全関手 ∞ 圏の普遍性・一意性を完了。** 左右 fibration に沿う強い分裂の持ち上げと slice・coslice の冪等完備性を証明。
-  元の弱い全 retract 図式を分裂点を固定して右 fibration に持ち上げ、slice 上でも冪等完備化を構成。元の全終対象収縮を関手空間で合成して底の弱可縮性を得て、Quillen A と反転で左右 cofinal 性を証明。
-  全関手の元の全標準左 Kan 余錐を、元の全 slice の標準余錐への制限と照合。元の冪等完備化への制限は全写像空間で充満忠実。
-  coherent 完備性の ULift・∞ 圏同値不変性、充満忠実な像の retract 閉性と Yoneda retract の表現可能性を証明。全本質像への因子化で、全前層図式を元の標的の全図式へ回収。
-  元の左 Kan 添字の ULift と持ち上げた元の射・点の添字を、両射影を保つ厳密な同型で照合。元の小さい前層余極限から全局所余極限を実際に構成。
-  厳密な左 Kan 存在で元の Yoneda 後合成を延長し、全値が元の Yoneda retract 閉包にあることを元の retract から証明。元の標的の図式へ回収し、元の制限の全自然同型も回収。
-  頂点像への因子化で単射性・inner 性を仮定しない元の任意の冪等完備化への延長存在へ拡張。
-  `IsIdempotentCompletion.pre_isQCatEquivalence`・`idemYonedaUniversalEquivalence` は元の制限そのものを順方向とする全関手 ∞ 圏の同値。局所余極限・延長・各値の表現可能性を未証明の入力に置かない。
-  `IsIdempotentCompletion.equivalence_unique` は同じ元の圏の二つの完備化を、元の両包含への全自然同型を保つ同値で比較。HTT 5.1.4.2〜9 を完了。
-  **F2N-4(d) の零対象条件を完了。** 元の retract と前後合成の全自然同型から全 pinched Hom の可縮性を移送。任意の冪等完備化は元の指定始対象・終対象・零対象の同じ像を保存し、`HasZeroVertex (Idem C)` を構成。新しい対象・射の fiber/cofiber と安定性も下記で完了。
-  **既存の全極限・余極限の保存を完了。** 全部分圏の slice を元の右 fibration の厳密な底変換と照合し、元の頂点像への同値で任意の冪等完備化へ拡張。任意の添字の指定された元の全錐・余錐の像を保持する。普遍四角形・fiber/cofiber 列も保存し、`idemYoneda_isExactFunctor` を構成。標的の安定性・新しい図式の極限存在は仮定しない。
-  **全辺の関手圏の冪等完備化を完了。** 両端の元の retract を、終点固定の slice と始点固定の coslice で順に持ち上げ、元の全辺の関手 ∞ 圏内の retract を構成。元の任意の辺は元の始域の辺の像の retract。任意の関手 ∞ 圏の coherent 完備性を証明し、元の後合成 `Fun(Δ¹,C) → Fun(Δ¹,D)` 自身を冪等完備化と判定。同じ両辺を固定する全 Idem・全 Split 図式も回収。新しい辺の fiber/cofiber の存在へ下記で接続。
-  **全普遍図式の retract 閉性を完了。** 元の関手の写像空間比較を、前合成の全自然同型を持つ retract 正方形で比較し、相対始対象性と始点境界充填の閉性を証明。全普遍余錐の ∞ 圏は冪等完備。任意の全図式の極限・余極限の存在、元の押し出し・引き戻し四角形、零対象は全関手圏内の retract で閉じる。`bicartesianZeroSquares` の全部分 ∞ 圏と coherent 冪等完備性を構成。下辺への射影と新しい辺への回収も下記で完了。
-  **F2N-4(d)：安定性を完了（HA 1.1.3.7）。** 零角の双普遍四角形の下辺射影の正次元全境界充填・充満忠実性と Kan 同値持ち上げを証明。元の辺の retract から像の閉性で双普遍四角形を回収し、指定辺を厳密に保持する実 cofiber を構成。反転で実 fiber も構成し、零角の双方向判定へ接続。
-  `IsIdempotentCompletion.isStable` は任意の冪等完備化の安定性。宇宙持ち上げの安定性も証明し、`idem_isStable` は元の `Idem C` 自身の安定性。標的の安定性・新しい普遍図式の存在を入力に仮定しない。
-  **F2N-3 の定義・判定と retract 閉性を完了。** `IsKappaCompact` は κ の宇宙の一般の小さい κ-filtered ∞ 圏と、元の全共変 Hom 関手による指定余極限余錐の保存。添字と標的の宇宙を分け、Ind 用の小さい添字を保持。`IsCompact` は同じ宇宙の ℵ₀ 版。濃度の単調性・filtered 判定・一つの余極限余錐での判定も証明。
-  全共変表現可能関手を一つの反変な単体的関手に束ね、元の対象の retract を全自然 retract へ写す。相対始点境界充填の閉性で全余錐・保存関手の retract 閉性を証明。元の対象の κ-compact 性の retract 閉性・同型不変性を導く。
-  `kappaCompactObjects` は元の全部分 quasicategory、包含は充満忠実。元の圏が coherent 冪等完備なら compact 部分も冪等完備。Yoneda 像の compact 性や Ind の単一 filtered 表示は未証明の入力にしていない。
-  **F2N-3(b) の全 Hom と評価の自然比較を完了。** 定義に用いた元の共変 Hom を元の coslice 射影の分類図式へ全自然同型で比較。元の Yoneda 恒等点から評価の全空間への一つの大域射を構成し、同じ元の射の全 fiber 作用を既存の全 Yoneda 評価へ同定。底上の前合成同値性を証明。
-  `yonedaInfinityMap_evaluationIso` は元の Yoneda 埋め込みの指定頂点からの全 Hom 関手と、元の前層評価・指定した `spaceUniverseDiagram` の合成との全自然同型。値ごとの同値だけで代用しない。宇宙変更の小さい余極限保存と前層内の compact 性本体は下記で完了。
-  **宇宙変更の全空間比較を構成。** 元の任意の弱ホモトピー同値を、同じ写像の任意の宇宙持ち上げで保存する。元の全空間余錐の指定 fiber 写像は、小さい検査標的だけでなく一段大きい全 Kan 標的で弱同値。
-  `spaceUniverseTransportRepresentation` は指定した同じ宇宙変更が元の全空間の持ち上げを実際に表現するデータ。元の一つの余錐全体から図式部分と指定頂点へ cartesian 制限し、両図式と元の pointed 写像を厳密に回収。元の fiber 写像と宇宙変更後の同じ余錐の fiber 写像の可換性・小余極限保存は下記で完了。
-  **同じ fiber 写像の全 prism を構成。** 元の全余錐の全空間内で、始点は図式部分の包含、終点は元の `coconeFiberMap` と指定頂点の包含の合成。
-  同じ一つの宇宙変更表現で prism 全体を送り、両端と元の join 円柱の底を厳密に回収。同じ終点を指定頂点の fiber へ分解する実比較 `coconeUniverseVertexMap` と、その包含式・同値性を完了。同じ始点・同じ join 円柱の二つの実 prism の終点一意性で、`coconeUniverseFiberIso` に全自然比較を構成。
-  **F2N-3(b) の前層内を完了。** `spaceUniverseDiagram_map_isColimit` は元の任意の小さい coherent 図式の指定余極限余錐の保存。標準全空間余錐の元の弱同値を同じ余錐像へ移し、任意の余錐へ普遍性で移送。
-  `yonedaInfinityMap_isKappaCompact`・`representablePresheafInfinity_isKappaCompact` は元の全共変 Hom による κ-compact 性。評価の全自然比較と指定余錐像の厳密な後合成式を使用。Ind 内の元の Yoneda 像の κ-compact 性も下記で完了。
-  **F2N-3(b) 完了。** 全部分包含の元の coslice 正方形を厳密な引き戻しとし、`fullSubcomplexCovariantIso` は包含後の元の全 Hom と元の部分圏の全 Hom の全自然比較。
-  `indYoneda_isKappaCompact` は元の Ind-Yoneda 像の κ-compact 性。元の包含による指定 κ-filtered 余極限保存と前層の compact 性を合成。F1 の単一 filtered 表示・compact 生成は仮定しない。
-  **(c) の全 Hom 極限表示を完了。** `colimitRepresentableCone` は元の余極限余錐を、同じ余極限頂点からの全共変 Hom を頂点とする全極限錐へ写す。任意の全パラメーター図式へ制限しても、同じ各点極限・関手圏の極限を保持。有限形状や通常の図式だけに制限しない。
-  **(d) の実比較を完成（正則 κ）。** 元の恒等図式の余錐から Idem 形状の任意 κ での κ-filtered 性を証明。同じ全 Idem 図式の小さい余極限により `ind_isIdempotentComplete` と `compactInd_isIdempotentComplete` を構成。
-  `idemToCompactInd` は元の包含を保持する充満忠実な全比較。両 Yoneda の全因子化も厳密に一致。本質全射性と「全 compact Ind 対象が元の Yoneda 像の retract」の同値を証明。下記の実回収を代入し、同じ比較自身の全 ∞ 圏同値まで完成。
-  **元の値からの点の回収を証明。** 離散 Kan 標的の全ラベルで成分を分離し、`weakHomotopyEquivalence_mapPiZero_surjective` を元の始域の Kan 性なしに証明。
-  `coherentTotalKan_point_representative` は元の全空間 Kan 模型の任意の点を、元の一つの値から同じ比較射で成分まで回収。底の filtered 性も不要。元の脚の全一単体との一致・fiber 制限の実輸送・Kan 値への全自然比較も構成。`coherentTotalCoconeLeg_point_representative` は標準余錐の点を元の同じ脚の作用で回収。余錐同型と元の全合成三角形で任意の指定余極限余錐へ移送し、`colimitCoconeLeg_point_representative` を構成。元の全 Hom と coslice 表現の全比較・元の輸送と Kan 値の自然比較を通し、恒等点への実際の coslice 辺を回収。`IsKappaCompact.retract_of_colimit` は任意の元の κ-filtered 余極限表示の一項への retract。
-- **残り**（依存順、粗い見積もり）：
-  1. F2N-3(c) の非空有限余極限閉性：空形状は始対象の compact 性で完了。全 Hom 錐族の指定余錐について点ごとの補完との全比較を構成し、明示交換入力からの閉性を完了。残りは F1b の全有限交換の実証拠を渡す工程。HTT 5.3.4、提供後1コミット。
-  **(d)・F2N-4(e) 完了**：`indCompact_retract_yoneda` は指定 Ind 頂点を保つ密度余錐への適用。`compactIndEquivalence` の順方向は元の `idemToCompactInd` そのもの。元の `compactIndYoneda` 自身が冪等完備化で、`compactIndOmegaEquivalence` は ℵ₀ の実比較。
-  2. P-1 g：sifted 密度表示・sifted 保存関手からの制限の全充満忠実性・左 Kan 延長存在は完了。残りは延長の sifted 保存性と制限の本質的全射性、simplicial Ind 表示、filtered/geometric 版の普遍性、有限余積と全余極限保存の判定。HTT 5.5.8.14〜15、30〜80時間（暫定）。局所化の存在は P の担当。
-- **主要宣言**（namespace `SerrePositivity.InfinityCategories.F2.Idempotent`、型は Lean が正本）：
-  `IdemShape`、`SplitShape`、`CoherentIdempotent`、`StrongSplitting`、`IsIdempotentComplete`、`IsIdempotentCompletion`、
-  `strongSplitting_exists_of_hasColimit`、`strongSplitting_exists_of_hasLimit`、`strongSplittingSpace_isContractibleKan`、`effectiveSplittingRestriction_trivialKanFibration`、
-  `Idem`、`idemYoneda`、`idemYoneda_isIdempotentCompletion`、`isIdempotentComplete_iff_ulift`、`isIdempotentComplete_iff_of_equivalence`、
-  `IsIdempotentCompletion.isLeftCofinal`、`IsIdempotentCompletion.isRightCofinal`、`IsIdempotentCompletion.pre_isFullyFaithful_general`、
-  `leftKanShapeUniverseIso`、`leftKanShapeUniverseIso_projection`、`leftKanShapeUniverseIso_slice`、`exists_presheafKan_strict_extension`、
-  `exists_presheafCompletion_extension`、`exists_diagram_of_retract_presheaves`、`IsIdempotentCompletion.exists_extension`、
-  `IsIdempotentCompletion.pre_isQCatEquivalence`、`idempotentCompletionUniversalEquivalence`、`idemYonedaUniversalEquivalence`、`IsIdempotentCompletion.equivalence_unique`、
-  `IsIdempotentCompletion.map_isZeroVertex`、`IsIdempotentCompletion.hasZeroVertex`、`idemYoneda_isZeroVertex`、`idem_hasZeroVertex`、
-  `IsIdempotentCompletion.mapJoinCone_isLimit`、`IsIdempotentCompletion.mapJoinCocone_isColimit`、`IsIdempotentCompletion.isExactFunctor`、`idemYoneda_isExactFunctor`、
-  `arrow_retract_lift`、`functor_isIdempotentComplete`、`IsIdempotentCompletion.arrow`、`IsIdempotentCompletion.arrow_strongSplitting`、
-  `hasColimit_of_diagram_retract`、`hasLimit_of_diagram_retract`、`bicartesianZeroSquares_isIdempotentComplete`、`bicartesianZeroBottomProjection`、
-  `bicartesianZeroBottomProjection_isFullyFaithful`、`bicartesianZeroBottomProjection_kanEquivalenceLifting`、
-  `IsIdempotentCompletion.bicartesian_cofiber_exists`、`IsIdempotentCompletion.bicartesian_fiber_exists`、`IsIdempotentCompletion.isStable`、`isStable_ulift`、`idem_isStable`。
-  compact 側（namespace `SerrePositivity.InfinityCategories.F2.Compact`）：`IsKappaCompact`、`IsCompact`、`PreservesKappaFilteredColimits`、`isKappaCompact_of_exists`、
-  `covariantRepresentableDiagram`、`covariantRepresentable_retract`、`IsKappaCompact.of_retract`、`isKappaCompact_iff_of_iso`、
-  `kappaCompactObjects`、`kappaCompactInclusion_isFullyFaithful`、`kappaCompactObjects_isIdempotentComplete`、
-  `covariantRepresentableInfinity_cosliceIso`、`yonedaEvaluationCosliceMap`、`yonedaEvaluationCosliceMap_isPrecompositionEquivalence`、
-  `yonedaEvaluation_classificationIso`、`spaceUniverseDiagram`、`yonedaInfinityMap_evaluationIso`、
-  `weakHomotopyEquivalence_ulift`、`coherentTotalCoconeFiber_isWeakHomotopyEquivalence`、`spaceUniverseTransportRepresentation`、
-  `spaceUniverseCoconeSourceRepresentation`、`spaceUniverseCoconeVertexRepresentation`、`spaceUniverseDiagram_map_isColimit`、
-  `yonedaInfinityMap_isKappaCompact`、`fullSubcomplexCovariantIso`、`ind_isKappaCompact_of_presheaf`、`indYoneda_isKappaCompact`、`colimitRepresentableCone_isLimit`、`colimitRepresentableRestriction_isLimit`、
-  `ind_isIdempotentComplete`、`idemToCompactInd`、`idemToCompactInd_isFullyFaithful`、`idemToCompactInd_isEssentiallySurjective_iff_retracts`、
-  `weakHomotopyEquivalence_mapPiZero_surjective`、`colimitCoconeLeg_point_representative`、`representationValueTransportIso`、`IsKappaCompact.retract_of_colimit`、
-  `indCompact_retract_yoneda`、`idemToCompactInd_isQCatEquivalence`、`compactIndEquivalence`、`compactIndYoneda_isIdempotentCompletion`、`compactIndOmegaEquivalence`、`isFilteredInfinity_ulift`、`isKappaCompact_of_isInitialVertex`、`isCompact_of_isInitialVertex`、`isKappaCompact_colimit_of_exchange`、`isKappaCompact_finiteColimit_of_exchange`、`hasFiniteColimits_kappaCompactObjects_of_exchange`。
-  P-1 g：`isSiftedInfinity_of_hasBinaryCoproducts`、`sigmaElementsYonedaDiagram`、`sigmaDensityCocone`、`sigmaDensityCocone_isColimit`、`smallLeftConeRestriction_isQCatEquivalence_of_finiteProducts`、`classifiedConeExtension_isContractibleKan`、`exists_classifiedConeLift`、`exists_classifiedLimitCone`、`sigmaPresheafElements_isSifted`、`sigmaPresheaf_siftedPresentation`、`sigmaPresheaf_sifted_induction`、`HasSmallSiftedColimits`、`PreservesSmallSiftedColimits`、`sigmaElementsLeftKanComparison`、`sigma_exists_leftKanExtension_with_recovery`、`sigmaSiftedContinuous_isLeftKanExtension`、`sigmaSiftedContinuousRestriction_isFullyFaithful`、`sigma_exists_densityLeftKanExtension_with_recovery`、`isColimitCone_iff_fullHomCone`、`presheafUniverseDiagram`、`presheafUniverseDiagram_map_isColimit`、`presheafHomWeightDiagram`、`presheafHomWeightDiagram_transpose`、`sigmaLeftKanHomWeightRestrictionIso`、`sigmaLeftKanHomCanonicalCone_isLimit`、`rightKanShapeUniverseIso`、`sliceUnderUncurry_ulift`、`rightKanCanonicalCone_universe_val`、`rightKanExtension_refl_post_ulift_of_canonicalLimits`、`sigmaLeftKanHom_isRightKanExtension`、`leftStraighteningInfinityDiagram_uliftIso`、`uliftTwistedArrowIso_projection`、`yonedaInfinityMap_universeIso`、`sigmaUniverseYonedaIso`、`sigmaUniverseInclusion_density_isColimit`、`sigmaHomWeightFamily`、`leftKanCanonicalCocone_universe_val`、`sigmaUniverseInclusion_isLeftKanExtension`、`sigmaHomWeightFamily_isRightKanExtension`、`sigmaLiftedHomFamily_isRightKanExtension`、`sigmaHomWeightFamily_restrictionIso`、`sigmaLiftedHomFamily_restrictionIso`、`presheafHomWeightDiagram_universeIso`、`homWeightEvaluationFamily_liftedIso`、`yonedaHomJointProjection`、`yonedaEvaluationJointProjection`、`yonedaEvaluationJoint_sourceIso`、`yonedaHomWeightFamily_joint`、`homWeightEvaluationFamily_joint`、`yonedaHomJointTwistedSeed`、`yonedaEvaluationJointTwistedSeed`。N-1〜4 の保存済み公開名・型は `HomotopyLimits.lean` と `scripts/audit_homotopy_limits.lean`、F2N-4 は独立集約と独立監査を参照。
-- **依存と提供**：F2・F1B・F1 は読み取り専用。P（`F2/Presentable/`）も読み取り専用。所有は `HomotopyLimits/`・既存 N 集約・監査、`InfinityCategories/F2/Idempotent/`・独立集約 `F2/Idempotent.lean`・独立監査 `scripts/audit_f2_idempotent.lean`、新設 `F2/Compact/`・`F2/Compact.lean`・`scripts/audit_f2_compact.lean`、本 N 節だけ。
-  F2 集約を変更しない。`infinity-core-F2.md` の表は読み取り専用。現在の分担は F1 が Ind・Ind 安定性、F1b が a7、P が accessible・presentable・局所化の存在、N が P-1 g と a7 差し替え。規約は `foundations.md` §8。
-- **未コミット**：なし（今回の共同 Yoneda 評価・実全空間・同じ twisted arrow からの二射6モジュール31宣言・既存 N 集約・全監査、本 N 節を保存。他レーンの差分は対象外）。
-- **既知の問題**：compact 独立集約7354 jobs・全273宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
-  F2N-4 の集約ビルド6793 jobs・全609宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理・資源上限の引き上げなし。
-  N 集約は今回8627 jobs・全5508宣言監査が終了コード0、標準三公理のみ。指定された N-2 の上面制限・前半全境界の後合成可換性は保存済み（adbdbd14c・963d9e3cf）。`Inputs/Homotopy/KanQuillen.lean` は import せず、主経路に `ModelCategory SSet` を仮定しない。
-  固定 SM7・豊穣随伴の合成互換を通常の Quillen 随伴だけから得たとは扱わない。coherent 冪等図式を射の類だけで代用しない。存在・普遍性を未証明の入力フィールドに置いて完成とは扱わない。
-- **次の一手**：構成した元の左 Kan 延長の sifted 余極限保存を証明し、保存関手の元の Yoneda 制限の本質的全射性と同値へ接続する。任意の元の sifted 図式とその指定全余錐の像を保持し、保存性を未証明の入力に置かない。
-  次は同じ底 `YonedaEvaluationJointBase C` 上で、`yonedaHomJointTotal C` から `yonedaEvaluationJointTotal C` への大域比較射と同値性を構成する。元の全 twisted arrow からの二射は同じ底を保つところまで保存済み（その二射の延長可能性・cofinality は未証明）。C の対象を固定した制限の同型は `yonedaEvaluationJoint_sourceIso` に照合済み。全 C の比較を固定対象の同型だけで代用しない。`yonedaHomWeightFamily_joint` と `homWeightEvaluationFamily_joint` が、全共同比較から元の両族への厳密な制限を与える。その後、両右 Kan 族の全自然比較・sifted 保存へ接続。前層宇宙変更の小余極限保存は添字の quasicategory 性を要求する。simplicial Ind・filtered/geometric 版と Yoneda の有限余積保存、HTT 5.5.8.15(2)(3) は残る。P は読み取り専用、局所化の存在は P の担当。
-  F2N-3 は F1b の a7 提供後、`IndFiniteLimitExchangeInput.exchange` への実証拠受け渡しだけを1コミットで保存。N-2 の再監査は不要。
-  原典：[HTT §4.4.5・§5.1.4・5.5.8.14〜15](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（いずれも本文照合済み）。
+- **現在地**：2026-10-23 コーディネータ停止指示による保存区切り。P-1 g は未完了。
+  P_Σ の全部分 quasicategory・充満忠実な Yoneda 因子化・sifted 余極限閉性・sifted 密度生成は完了。
+  sifted 保存関手からの元の Yoneda 制限そのものの全充満忠実性も完了。
+  小さい sifted 余極限を持つ標的への左 Kan 延長存在、元の指定単位の可逆性・全関手同型による回収、全密度余錐像の余極限性まで保存済み。
+  前層宇宙変更の全関手・評価／制限との厳密な可換性・小 coherent 余極限保存、全 Hom 錐による余極限判定を保存済み。
+  全自然変換空間族と持ち上げた延長の全 Hom 族が、同じ元の Yoneda に沿う実際の右 Kan 延長であることも保存済み。
+  前回保存 28b67dcb7 は共同 Yoneda Hom・共同評価の実 left fibration と元の全 twisted arrow からの二射まで。二射の延長・cofinality は未証明。
+  **今回の区切り**：充満忠実な元の関手による twisted arrow・共同 Hom・全 Yoneda 制限の自然同型、左右 Kan 制限同型の持ち上げ、全余錐の形状置換の7モジュール21宣言。
+  `mapUliftCocone_isColimit_of_quasicategoryShapes` は、小さい quasicategory 添字での保存を任意の小さい添字へ戻す。元の全余錐を厳密な制限で保持する。
+  大域 Yoneda 評価・両右 Kan 族の比較本体は未検証で、下記7ファイルを集約・監査から外した。
+  N-1 完了（F1b の任意 coherent 余極限定理を使用）。N の部分余極限経路は打ち切り。
+  N-2（γ4）は adbdbd14c・963d9e3cf で完了、再監査不要。固定 SM7・豊穣随伴の元の Hom 同型・合成互換を明示した simplicial Quillen 随伴が対象。
+  N-3 の指定 Tot・hG・fiber 適用は Sp の既存定理で達成。Sp 全体の安定性の完成とは扱わない。
+  F2N-3 は F1b の a7 実証拠の受け渡しだけ残す。F2N-4(a)〜(e)（冪等完備化の普遍性・安定性・compact Ind 比較）は完了。
+  N-4 の Bousfield 局所化の存在は P 所有。局所置換が与えられた場合の反射までが N の保存済み範囲。
+- **残り**（依存順）：
+  1. F1b の a7 公開後、`IndFiniteLimitExchangeInput.exchange` へ実証拠を渡す差し替えを1コミットで保存。HTT 5.3.4、提供後の一工程。
+  2. 下記7ファイルを検証・修正し、大域 Yoneda 評価と両右 Kan 族の全自然比較を閉じる。HTT 5.5.8.14〜15、数時間〜（再ビルド時間を除く暫定）。
+  3. 元の左 Kan 延長の任意小 sifted 余極限保存、元の制限の本質的全射性・全関手 ∞ 圏の同値。
+  4. simplicial Ind 表示、filtered／geometric realization 版、Yoneda の有限余積保存と全余極限保存判定。HTT 5.5.8.14〜15(2)(3)、2〜4 合計30〜80時間（暫定）。
+- **主要宣言**（型・全一覧は Lean と各集約・監査が正本）：
+  N：`quillenCfDerivedAdjunctionWithComparisons_exists`、`sigmaPresheaf_siftedPresentation`、`sigmaPresheaf_sifted_induction`、
+  `sigma_exists_densityLeftKanExtension_with_recovery`、`sigmaSiftedContinuousRestriction_isFullyFaithful`、`isColimitCone_iff_fullHomCone`、
+  `presheafUniverseDiagram`、`presheafHomWeightDiagram`、`sigmaUniverseInclusion_isLeftKanExtension`、
+  `sigmaHomWeightFamily_isRightKanExtension`、`sigmaLiftedHomFamily_isRightKanExtension`、`sigmaHomWeightFamily_restrictionIso`、
+  `sigmaLiftedHomFamily_restrictionIso`、`homWeightEvaluationFamily_liftedIso`。
+  今回：`twistedHomFunctorMap`、`twistedArrowFunctorComparison_isPrecompositionEquivalence`、`homInfinityJoint_fullyFaithfulIso`、
+  `yonedaInfinityMap_fullyFaithfulRestrictionIso`、`leftKanReflRestrictionIso`、`rightKanReflRestrictionIso`、
+  `isColimitCone_iff_restrict_mono_precomposition`、`exists_coconeExtension_of_mono_precomposition`、`mapUliftCocone_isColimit_of_quasicategoryShapes`。
+  F2.Compact：`indYoneda_isKappaCompact`、`IsKappaCompact.retract_of_colimit`、`compactIndEquivalence`、`compactIndOmegaEquivalence`。
+  F2.Idempotent：`IsIdempotentCompletion.pre_isQCatEquivalence`、`IsIdempotentCompletion.isStable`、`idem_isStable`。
+- **依存と提供**：F1・F1B・F2/Ind・F2 集約・P（`F2/Presentable/`）は読み取り専用。`infinity-core-F2.md` も変更しない。
+  accessible／presentable 定義は P の公開宣言を待つか入力にする。局所化の存在は P の担当。
+  N 所有は `HomotopyLimits/`・既存 N 集約／監査、F2/Compact・F2/Idempotent と各独立集約／監査、本 N 節だけ。README は規約だけ。
+- **未コミット**：以下はすべて `SerrePositivity/InfinityCategories/HomotopyLimits/` の `.lean`。未検証の作業中ファイルとして保持し、集約・監査には接続しない。
+  `YonedaHomWeightColimits`：元の Yoneda Hom 係数関手の小 coherent 余極限保存、未検証。
+  `PresheafElementsLeftKan`：小さい元の圏と全前層の左 Kan 添字・密度全余錐の比較、未検証。
+  `PresheafDensityLeftKan`：全前層密度から左 Kan 条件を導く証明、未検証。最後に局所証拠 hcan を明示する形へ整理。
+  `YonedaWeightLeftKan`：両関手の左 Kan 条件・制限同型・`yonedaHomWeightDiagram_universeIso`、未検証。
+  `YonedaWeightFamilyComparison`：全係数への制限・転置による `yonedaHomWeightFamily_evaluationIso`、未検証。
+  `SigmaHomWeightComparison`：両右 Kan 族の制限比較と `sigmaHomWeightFamily_liftedIso`、未検証。
+  `PresheafUniverseArbitraryColimits`：検証済みの形状還元を前層宇宙変更へ適用、未検証。
+- **既知の問題**：R の F1/PullbackFiber 一時変更は取消済み。所有 import 閉包に他レーン未保存変更がないことを確認して保存する。
+  旧未検証対象 session93517 は停止準備で終了コード143にして終了。重複実行しない。新しいチャットで未検証対象を改めてビルドする。
+  停止区切りの7対象4272 jobs、N 集約8634 jobs、全5529宣言監査は終了コード0、標準三公理のみ。新規警告・sorry・追加公理なし。監査時の所有 import 閉包4990ファイルの SHA は不変。
+  compact 独立集約7354 jobs・273宣言、冪等完備化独立集約6793 jobs・609宣言の既存監査は終了コード0、標準三公理のみ。
+  `Inputs/Homotopy/KanQuillen.lean` は禁止 import。主経路に `ModelCategory SSet` を仮定しない。新しい sorry・公理・資源上限引き上げ・警告抑制は禁止。
+  元の全図式・指定単位・全パラメータ自然性を保持し、点ごとの同値・未証明の存在入力で完成扱いしない。規約は `foundations.md` §8。
+- **次の一手**：新しいチャットでは foundations.md §8 と本節を読む。N-2 を再監査せず、P-1 g を再開する。
+  最初に `lake build SerrePositivity.InfinityCategories.HomotopyLimits.SigmaHomWeightComparison SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseArbitraryColimits` を実行し、上記7ファイルを検証・修正。
+  両対象が通ってから集約・監査へ接続し、N 集約ビルド→全公理監査→所有分だけ保存。未検証のまま `/tmp/n-faithful-density-prepare.py` を実行して再接続しない。
+  その後、元の任意小 sifted 図式の指定余錐像の保存へ進む。元の P_Σ 包含の余極限保存と前層宇宙変更の形状還元を使い、全 Hom 比較で延長の保存性を判定する。
+  原典：[HTT §5.1.4・§5.3・5.5.8.14〜15](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（既に本文照合済み）。
 
 ### E2a（既存の引き継ぎ）
 
