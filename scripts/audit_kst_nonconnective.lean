@@ -16,14 +16,18 @@ run_cmd do
     `SerrePositivity.KST.NonConnective.DGCountableSum,
     `SerrePositivity.KST.NonConnective.DGCountableSwindle,
     `SerrePositivity.KST.NonConnective.DGKappaConeInput,
+    `SerrePositivity.KST.NonConnective.DGKappaFullPerfAction,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfClosedEdges,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectInput,
     `SerrePositivity.KST.NonConnective.DGKappaSplitInclusions,
     `SerrePositivity.KST.NonConnective.DGKappaSplitProjections,
     `SerrePositivity.KST.NonConnective.DGKappaSplitRelations,
+    `SerrePositivity.KST.NonConnective.DGKappaSplitNativeSquare,
     `SerrePositivity.KST.NonConnective.DGKappaSuspension,
     `SerrePositivity.KST.NonConnective.DGKappaSwindle,
     `SerrePositivity.KST.NonConnective.DGKappaSwindleInfinity,
     `SerrePositivity.KST.NonConnective.DGKappaZeroFunctor,
+    `SerrePositivity.KST.NonConnective.DGKappaZeroPerfAction,
     `SerrePositivity.KST.NonConnective.DGSumFamily,
     `SerrePositivity.KST.NonConnective.DGSumFamilyInclusion,
     `SerrePositivity.KST.NonConnective.DGSumPairProjection,
@@ -167,3 +171,7 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaSplit_decomposition
 #check SerrePositivity.KST.NonConnective.DGKappaZeroInput
 #check SerrePositivity.KST.NonConnective.dgKappaZeroFunctor_isZero
+#check SerrePositivity.KST.NonConnective.dgKappaZeroPerfAction_isZeroVertex
+#check SerrePositivity.KST.NonConnective.dgKappaFullPerfFamilyMap_vertex
+#check SerrePositivity.KST.NonConnective.dgKappaPerfClosedHomotopy
+#check SerrePositivity.KST.NonConnective.dgKappaSplitPerfFamilySquare

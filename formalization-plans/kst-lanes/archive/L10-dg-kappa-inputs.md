@@ -13,6 +13,23 @@ P : DGKappaPerfectInput R D I
 
 正確な依存型・宇宙・名前は `KST/NonConnective/DGKappaConeInput.lean` と `DGKappaPerfectInput.lean` が正本。以下では `Q := I.objects`、`C := DGFullSubcategory (ModuleCategory R D) Q`、`V M := dgConeModuleDerivedVertex R D M`、`φ := dgKappaConeDerivedComparison R D I` と略記する。V の値域は β5 の実半自由模型 `dgModuleDerivedInfinityCategory R D`。
 
+## D の供給状況（09:57までの成果との照合、停止引き継ぎ）
+
+候補 `Q := dgKappaClosedProjectiveObjects R D κ` に対する個別宣言。K-7 の I・P の実値への接続は未実施。D 所有ファイルは読み取り専用で確認した。
+
+| I / P のフィールド | D の供給宣言・状態 |
+|---|---|
+| `uncountable`・`regular` | κ に対する明示条件 `Cardinal.aleph0 < κ`・`κ.IsRegular` |
+| `objects`・`small`・`projective` | `DGKappaClosedProjectiveFamily.lean` の `dgKappaClosedProjectiveObjects`・`…_small`・`…_projective` |
+| `derivedFullyFaithful` | `DGKappaClosedProjectiveComparison.lean` の `dgKappaClosedProjectiveObjects_derivedFullyFaithful` |
+| `countableClosed`・`binaryClosed` | `DGKappaClosedProjectiveOperations.lean` の `dgKappaClosedProjectiveObjects_countableClosed`・`…_binaryClosed` |
+| `perfectCovers` | `DGKappaClosedPerfectCover.lean` の `dgKappaClosedProjectiveObjects_perfectCovers`（ordinary 導来圏での被覆） |
+| `kappaCompact`・`covers` | 未供給。F2 の全共変 Hom による κ-compact 性と全頂点被覆が必要 |
+| `pretriangulated` | 未供給。本体未統合の D 試作 `dgKappaClosedProjectiveObjects_isDGPretriangulated` は完成供給に数えない |
+| P の `comparison`・`isEquivalence`・`inclusion` | すべて未供給。ordinary `perfectCovers` からは推論しない |
+
+同じ候補に対する `dgKappaClosedProjectiveObjects_zero`・`…_shift`・`…_cone` も D の Operations にあり、実零加群所属 Z の供給材料となる。任意の明示入力 I に Z が自動で付くとは結論しない。D の現行引き継ぎも前三角性を未統合、κ-compact 性・被覆を未証明と記載している。
+
 ## `DGKappaConeInput` のフィールド名と型
 
 | 名前 | 型 |
