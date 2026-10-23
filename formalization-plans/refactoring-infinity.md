@@ -34,11 +34,15 @@
 
 ### 未コミット
 
-- なし。
+- `F2/JoinRightRelativeRetraction.lean`・`scripts/audit_refactor_shims.lean`：0-3 の集約検証待ち。
+- 1-1 の汎用部は `/tmp/r-lane-stage1/` に試作し両ファイルの Lean 検証済み。リポジトリの F1 原本は未変更。
+- 実行中の F2 ビルド：exec session `40443`、ログ `/tmp/r-lane-0-3-build.log`。
+  R 専用監査成功ログ `/tmp/r-lane-shim-audit.log`。F2 監査の再試行ログ `/tmp/r-lane-0-3-f2-audit-retry.log`。
 
 ### 既知の問題
 
-- なし。
+- F2 集約の後続を再ビルド中。最初の F2 監査は再生成中の `CoherentTotalCoconePre.olean` を読めず未完了。
+- 1-2 の直接 importer は調査後に増加。48 時間未満・未追跡のファイルは変更不可。対象と保守的 import の追加先を §3 で再選別する。
 
 ### 次の一手
 

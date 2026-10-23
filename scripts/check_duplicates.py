@@ -62,9 +62,13 @@ def strip_comments(source):
 
 def normalize(source):
     source = strip_comments(source)
-    lines = [line for line in source.splitlines() if not re.match(
-        r"^\s*(?:(?:public\s+)?import\b|namespace\b|end(?:\s+[\w.]+)?\s*$)", line)]
-    source = "\n".join(lines)
+    # Match strings first so structural-looking lines inside multiline strings
+    # remain data. Only complete command lines outside strings are discarded.
+    source = re.sub(
+        r'"(?:\\.|[^"\\])*"|^[ \t]*(?:(?:public[ \t]+)?import\b[^\n]*|'
+        r'namespace\b[^\n]*|end(?:[ \t]+[\w.]+)?[ \t]*)$',
+        lambda match: match[0] if match[0].startswith('"') else "",
+        source, flags=re.M)
     # Preserve token boundaries and whitespace inside strings; ignore formatting.
     tokens = re.findall(r'"(?:\\.|[^"\\])*"|[\w\'.]+|[^\s]', source)
     tokens = [t if t.startswith('"') else t.replace("KanSection.", "") for t in tokens]
