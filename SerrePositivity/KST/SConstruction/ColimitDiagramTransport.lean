@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 

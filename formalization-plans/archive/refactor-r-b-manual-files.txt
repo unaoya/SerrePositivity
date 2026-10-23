@@ -8,3 +8,13 @@ SerrePositivity/InfinityCategories/Derived/PullbackPresentation.lean
 SerrePositivity/InfinityCategories/Derived/SupportZero.lean
 scripts/audit_dg_nerve.lean (explicit import for existing Semifree checks)
 scripts/audit_derived_infinity.lean (import and recursive axiom coverage at new module location)
+
+3-1 Stable/KST manual migration (tool unavailable):
+SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean
+SerrePositivity/KST/SConstruction/RelativeUniversalityComposition.lean
+SerrePositivity/KST/SConstruction/LimitBaseTransport.lean
+scripts/audit_kst_s_construction.lean
+DELETE SerrePositivity/KST/SConstruction/RelativeInitialCosliceComparison.lean
+DELETE SerrePositivity/KST/SConstruction/RelativeInitialEndpoint.lean
+DELETE SerrePositivity/KST/SConstruction/InitialBoundaryTransport.lean
+DELETE SerrePositivity/KST/SConstruction/TerminalBoundaryTransport.lean

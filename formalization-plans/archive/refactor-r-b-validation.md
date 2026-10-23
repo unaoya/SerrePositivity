@@ -13,3 +13,14 @@
 - DGNerve の全ソース・集約から Derived への直接 import はゼロ。
 - main への唯一のファイル変更：個別許可された未追跡 `Derived/DGKernelDerivedMapInvertible.lean` を削除。既存 `DGKernelDerivedQuasiIsoMapInvertible.lean` と非コメントトークンが一致することを確認した（docstring のみ異なる）。
 - 詳細ログ：`/tmp/r-b-r24-build.log`、`/tmp/r-b-r24-audit-{stable,derived,gluing,dgnerve}.log`。
+
+## 3-1：Stable/KST 4 組
+
+- ユーザーの追加許可に従い、Stable 正本を維持し KST の4本を直接削除。互換シム・別名は追加しない。
+- 11 宣言の型は変更前に Lean の `isDefEq` ですべて定義的に同一と確認（`/tmp/r-b-kst-typecheck.lean`、同 `.log`）。
+- Stable 正本4本は HEAD とバイト一致。直接 importer 3 本は import を除いた本文が HEAD とバイト一致。
+- `lake build SerrePositivity.InfinityCategories.Stable SerrePositivity.KST.SConstruction`：成功。
+- `lake env lean scripts/audit_infinity_stable.lean`：Stable axiom audit passed: 23219 declarations in 2792 modules.
+- `lake env lean scripts/audit_kst_s_construction.lean`：全 #check・#print axioms が成功、検出された公理は標準3公理のみ。
+- モジュール4組・宣言11個の対応表は refactoring-infinity.md §5 と refactor-r-b-kst-name-map.json に保存。
+- 詳細ログ：`/tmp/r-b-kst-{build,audit-stable,audit-sconstruction}.log`。

@@ -116,7 +116,7 @@
 | 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | |
 | 2-3 | `Derived/LimitDiagramIso`・`CofinalLimitExistence` を Core へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
 | 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST 側シム。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | |
-| 2-5 | `DGNerve/SemifreeLimits` を Derived（または DifferentialGraded）へ、DGNerve 側シム | R24 | D | D の区切り | |
+| 2-5 | `DGNerve/SemifreeLimits` を Derived へ直接移動（互換シムなし） | R24 | D | D の区切り | 2026-10-23（R-B、aa2236b66） |
 | 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | |
 | 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | |
 | 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | |
@@ -131,7 +131,28 @@
 
 | 旧所在 | 新所在 | 段 | コミット |
 |---|---|---|---|
-| `DGNerve/SemifreeLimits` | `Derived/SemifreeLimits` | 2-5 R-B | R24（本コミット） |
+| `SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison` | 3-1 R-B | 3-1 KST（本コミット） |
+| `SerrePositivity.KST.SConstruction.RelativeInitialEndpoint` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint` | 3-1 R-B | 3-1 KST（本コミット） |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport` | 3-1 R-B | 3-1 KST（本コミット） |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport` | 3-1 R-B | 3-1 KST（本コミット） |
+| `DGNerve/SemifreeLimits` | `Derived/SemifreeLimits` | 2-5 R-B | aa2236b66 |
+
+
+### R-B 3-1：KST 宣言名の直接置換（互換シムなし）
+
+| 旧名 | 新名 |
+|---|---|
+| `SerrePositivity.KST.SConstruction.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting` | `SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting` |
+| `SerrePositivity.KST.SConstruction.sliceUnder_empty_hom_ext` | `SerrePositivity.InfinityCategories.sliceUnder_empty_hom_ext` |
+| `SerrePositivity.KST.SConstruction.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` | `SerrePositivity.InfinityCategories.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` |
+| `SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift` | `SerrePositivity.InfinityCategories.exists_relativeInitialCosliceLift` |
+| `SerrePositivity.KST.SConstruction.stdSimplex_firstVertex_leftAnodyne` | `SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne` |
+| `SerrePositivity.KST.SConstruction.pointCosliceVertexOfEdge_projection` | `SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge_projection` |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_invertibleEdge` | `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_invertibleEdge` |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_vertexIso` | `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_vertexIso` |
+| `SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op` | `SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_initialBoundaryLifting_op` |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.op_initial` |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.of_vertexIso` |
 
 ## 6. 仮定入力の一覧（完成後に外す）
 
