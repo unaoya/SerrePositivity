@@ -14,7 +14,7 @@
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
 - 元の核包含を実核への完全同値へ制限し、K-2 Segal 実現で元の核四角形を homotopy pullback と証明。
   relativeSFibrationFiberIso は実 fiber と core S(D) の局所化同型で、同じ射影は元の包含の実現射。
-  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。相対 S 核の全単体的な実収縮円柱・商後合成との照合・全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
+  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。一つの零自己関手→恒等の実自然変換を全 S_n の全 Hom 作用へ送り、全ての面・退化に自然な実円柱を構成。核上の包含そのものを順射とする全単体的同型で相対核へ戻し、同じパラメータの対角円柱と一点への具体的収縮ホモトピーを構成。商後合成との照合・全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
 - Ore・分母輸送・固定分数・可変終点 coslice の既存構成は保持し、新設は Sp 正本へ依頼する。
   全 span 族の評価・全単体被覆・W 反転・降下・同じ分数比較の回収を構成。一般比較同値・span 普遍性は未証明。
   tamme* の lax 専用仮定を一般 Verdier 商へ流用しない。H⁰ の普遍性で全写像空間を代用しない。
@@ -82,6 +82,7 @@
   dgKInputFiberSquare、dgRelativePiZeroMap_surjective、dgRelativeFiberSquare_negative_subsingleton。
 - weakCosliceComparisonFiber_isEssentiallySurjective、weakSpanKanMappingComparison_value_isEssentiallySurjective、
   weakQuotientMappingComparison_isIso_of_fraction_fullyFaithful。
+- relativeSKernelContractionCylinder、relativeSKernelDiagonalContraction、stableZeroSDiagonalContraction。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
   leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
 - fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、
@@ -90,17 +91,16 @@
 - 読み取り専用：KST/SConstruction、KST/LocalizingInvariants、KST/Spectra、InfinityCategories/Derived。
 - K-S• の固定 K-1/K-2 は L1 §6：加法性、MultiRealizationFunctorIso の正反復、RelativeCofiberLeftFiber、
   RelativeFiberEquivalence と Quillen A。任意 W への制限・底変換・元の射影の照合は K-F が証明する。
-- 相対 (d) の追加固定入力三点を K-S•（01a151d3-f75d-7ef2-9d1f-908c85eb1be1）へ依頼済み。
-  DGKFixedInterface・DGKFixedSConstruction は読み取り専用。固定 ν・K の頂点・辺と既存の厳密 dg の K₀ 自然比較・負次数消滅を使う。
+- 相対 (d) の固定三点は K-S• の DGKFixedInterface・DGKFixedSConstruction を読み取り専用で使う。固定 ν・K の頂点・辺、厳密 dg の K₀ 自然比較・負次数消滅は提供済み。
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（元の二短辺・包含商の実合成・同じ比較円柱からの零合成の全自然同値と合成 path 評価の7モジュール、集約・監査・本計画）。
+- なし（全単体で自然な零自己関手円柱・核の包含同型・同じ対角上の具体的収縮の8モジュール、集約・監査・本計画）。
 ### 既知の問題
 - 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- relativeSKernelTopIso で核上の各段を元の S_n(D) に戻し、零関手→恒等の同じ実自然変換を相対 S• の全単体的収縮へ持ち上げる。現状の relativeSKernelDiagonal_toPoint_localized_isIso は一点射の可逆性のみ。収縮の商後合成を verdierNullCompositeEdge・元の共有対角固定円柱と照合し、全四角形比較へ進む。Sp の三件の不足 API と商実現比較への接続も確認する。
+- relativeSKernelContractionCylinder・relativeSKernelDiagonalContraction の商後合成を verdierNullCompositeEdge・元の共有対角固定円柱と照合し、全四角形比較へ進む。具体的収縮は全単体で自然な同じ零自己関手円柱から構成済み。Sp の三件の不足 API と商実現比較への接続も確認する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
