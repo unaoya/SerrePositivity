@@ -2723,3 +2723,9 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `normalizedTensorTriangle_principal_weighted_cut` は符号付きの主切断の全比較。
 `normalizedTensorTriangle_middle_sum_heq` は元の中央相の全符号付き切断和の一致。
 全二次境界と混合 HA・全自然性・大域評価三角形は未完了。
+
+`normalizedTensorTriangleData_equation` は元の三相データの任意有限部分集合の全 HA。
+`normalizedTensorTriangleData_quadraticBoundary_pinched` は元の全符号付き切断和の一致。
+`normalizedTensorTriangleSimplex` は同じデータ・全 HA を持つ実 dg nerve 単体。
+元の任意単体列 c と任意三相時刻 τ を保ち、HA を追加の入力には置かない。
+面・退化自然性、全 Δ²×K の接合と大域評価三角形は未完了。
