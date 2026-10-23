@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
 
 /-!
 概要：反転で定義した左 pinched 写像空間の作用と coslice fiber の比較の自然性。

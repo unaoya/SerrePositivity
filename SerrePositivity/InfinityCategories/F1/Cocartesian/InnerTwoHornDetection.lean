@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FactorizationTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Composition
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornEdges
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornEdges
 
 /-!
 概要：二次内ホーン上で cocartesian 辺を保つ元の関手は、欠ける長辺も保つ。

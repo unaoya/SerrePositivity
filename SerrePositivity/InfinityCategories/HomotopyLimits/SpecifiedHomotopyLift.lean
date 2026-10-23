@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PrismEndpointPairPullback
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointPairPullback
 public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfCollageInclusions
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorMap
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitExactness
-public import SerrePositivity.InfinityCategories.F1.NativePointedRestrictionReflection
-public import SerrePositivity.InfinityCategories.F1.CoherentPointedRestrictionReflection
+public import SerrePositivity.InfinityCategories.F1.Transport.NativePointedRestrictionReflection
+public import SerrePositivity.InfinityCategories.F1.Coherent.PointedRestrictionReflection
 
 /-!
 概要：有限余極限の同じ全余錐に対する Ind 前層の保存性を、実際の小さい切断制限へ戻す。

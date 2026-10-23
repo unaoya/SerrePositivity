@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStandardEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-! # 厳密 dg 関手の標準 DK coherent nerve 上の作用
 概要：標準 DK の厳密豊穣関手へ γ1 を適用し、元の dg 関手の ∞ 関手を得る。

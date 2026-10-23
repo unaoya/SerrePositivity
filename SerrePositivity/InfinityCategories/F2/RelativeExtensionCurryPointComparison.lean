@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoFiberRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionCurryComparison
-public import SerrePositivity.InfinityCategories.F1.PullbackTransport
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionCurryComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
 
 /-!
 概要：既存の持ち上げの終点の指定比較を curry して評価しても元の同じ制限となる。

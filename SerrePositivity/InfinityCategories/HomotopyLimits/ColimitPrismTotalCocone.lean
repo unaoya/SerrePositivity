@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismTotalShape
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.F1.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
 
 /-!
 概要：終点余錐の余極限性から、元の prism の全図式の余錐の余極限性を導く。

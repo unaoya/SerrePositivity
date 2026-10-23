@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentQCatInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.QCatInvertible
 
 /-!
 概要：元の分類主写像の底変換比較を、底全体・全 fibration の関手同型にする。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceCommaEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalReplacementUniversal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialRestrictionBaseEvaluation
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrismPoint
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 
 /-!
 概要：元の局所置換を区間型 comma の指定した始対象へ移す。

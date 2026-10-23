@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.JoinParameterComparison
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
 
 /-! 点との join による辺族は、既存の pinched Hom 用区間 prism と同じ全単体を持つ。 -/

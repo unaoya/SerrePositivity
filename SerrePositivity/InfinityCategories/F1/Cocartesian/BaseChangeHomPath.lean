@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.InvertibleFunctorEdgePath
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleFunctorEdgePath
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningHomInterval
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：元の底変換比較の同じ可逆辺の Hom を、分類 Hom 比較の共通の空間にする。

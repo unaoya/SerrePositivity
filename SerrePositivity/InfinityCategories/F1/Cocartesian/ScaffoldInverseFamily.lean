@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldMapping
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramScaffoldInverse
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldInverse
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
 
 /-!

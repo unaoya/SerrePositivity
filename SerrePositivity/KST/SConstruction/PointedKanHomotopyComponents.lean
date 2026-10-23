@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramEquivalences
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-! # 点つき coherent な図式の変換から実際の成分を回収する
 概要：入力図式全体の円柱の各対象で、元の Kan 模型間の実際の点つき射を取り出す。

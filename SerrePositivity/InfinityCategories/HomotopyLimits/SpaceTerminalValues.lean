@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
-public import SerrePositivity.InfinityCategories.F1.PointedSpaceMappingSpaces
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.F1B.WeakContractibleKan
 public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
 

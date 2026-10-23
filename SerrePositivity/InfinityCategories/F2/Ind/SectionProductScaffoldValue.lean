@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffold
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldFiber
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldFiber
 
 /-!
 概要：全単体の切断の大域評価の指定値は、元の単体の初頂点での同じ相対切断評価。

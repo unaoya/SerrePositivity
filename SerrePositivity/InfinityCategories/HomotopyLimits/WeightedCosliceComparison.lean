@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSimplex
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates
 
 /-!
 概要：反転した表現可能な weighted nerve から coherent な錐の全空間への実際の射。

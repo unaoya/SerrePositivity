@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
 public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomSquare
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：図式の全族を、関手圏内の一つの図式へ転置する。

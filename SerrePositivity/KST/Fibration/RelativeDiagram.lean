@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakEquivalences
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 
 /-! # 図式成分ごとの Verdier 弱同値
 

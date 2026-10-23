@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanFinalFiberRetraction
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomLifting
-public import SerrePositivity.InfinityCategories.F1.BaseChange
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 
 /-!
 概要：相対指数の射影では、標準単体の最後の頂点を指定した持ち上げが存在する。

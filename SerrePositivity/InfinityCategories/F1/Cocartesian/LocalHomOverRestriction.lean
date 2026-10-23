@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalHomNativeRestrictionIso
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramOverRestriction
+public import SerrePositivity.InfinityCategories.F1.Universe.RelativeOverPre
 
 /-!
 概要：局所比較の標的制限を、同じ底上の射による元の厳密な制限へ正規化する。

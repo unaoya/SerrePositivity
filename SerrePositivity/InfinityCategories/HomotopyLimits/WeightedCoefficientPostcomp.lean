@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedTransportUnitEquivalence
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCoefficientFormula
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCoefficientFormula
 
 /-!
 概要：weighted nerve の最後の係数評価は係数図式の自然変換と可換である。

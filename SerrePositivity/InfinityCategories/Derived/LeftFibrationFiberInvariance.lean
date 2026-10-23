@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 public import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 /-!
 概要：同じ left fibration の fiber 射と相対前合成の同値性を、可逆な底の辺へ沿って移す。

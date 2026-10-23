@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.YonedaPresheafEvaluation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaPresheafEvaluation
 
 /-!
 概要：元の Yoneda 評価を区間写像空間上で保持する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedCoreComparison
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedFunctorCategory
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedFunctorCategory
 
 /-! # 全高次比較を保つ実対象 core の関手
 概要：局所 Kan な入力上の実 Quasi 値図式を、同じ対象 core の図式へ移す。

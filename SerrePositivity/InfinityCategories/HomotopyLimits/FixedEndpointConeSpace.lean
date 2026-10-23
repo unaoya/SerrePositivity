@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeFamilyApex
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
-public import SerrePositivity.InfinityCategories.F1.FixedDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.Diagrams.FixedDiagramRestriction
 
 /-!
 概要：固定頂点の内部 Hom の錐を、join の両端固定の関手空間で表示する。

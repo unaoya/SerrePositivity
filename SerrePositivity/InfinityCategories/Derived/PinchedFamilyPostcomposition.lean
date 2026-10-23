@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
 /-!
 概要：実 pinched Hom 族の後合成を、同じ関手圏の後合成へ端点の同型ごと移す。

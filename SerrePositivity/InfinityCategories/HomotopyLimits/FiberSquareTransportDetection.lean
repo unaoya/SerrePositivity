@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportSquare
-public import SerrePositivity.InfinityCategories.F1.PullbackTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportSquare
+public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
 
 /-!
 概要：底も動く left fibration の正方形で、輸送の同値性を検出する。

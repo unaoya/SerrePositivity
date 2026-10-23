@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：既存の具体的終点比較を元の二延長の同じ指定同型の像として表示する。

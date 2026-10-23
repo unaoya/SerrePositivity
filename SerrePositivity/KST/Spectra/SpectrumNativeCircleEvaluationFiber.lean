@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumNativeCotensorFiber
 public import SerrePositivity.KST.Spectra.SpectrumCircleEvaluationHom
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleEvaluationSquare
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：元の Sp の各頂点での円評価四角形と、三角形の BF 写像空間による厳密な表示。

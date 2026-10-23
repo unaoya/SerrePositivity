@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramEvaluation
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingNaturality
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramMappingNaturality
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomComponentPullback
 

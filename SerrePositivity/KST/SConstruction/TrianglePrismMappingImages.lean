@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TrianglePrismStaircase
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 public import SerrePositivity.KST.Spectra.CoherentSimplexCompositionFaces
 
 /-! # 同じ合成 prism の三つの coherent 三単体

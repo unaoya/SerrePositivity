@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate
-public import SerrePositivity.InfinityCategories.F1.InvertingFunctorIsoInvariance
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
 
 /-!
 概要：一般商候補が反転する元の辺を厳密に同定し、核の像を零対象の像と比較する。

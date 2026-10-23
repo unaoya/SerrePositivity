@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredPullbackKan
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：各段の一脚が fibration の strict Kan 図式で、filtered 余極限と引き戻しを native に比較する。

@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
 public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertex
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-! # 元の全 W 分数 span の単体圏上の厳密 Kan 図式と両端固定の値の比較 -/

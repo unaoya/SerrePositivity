@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
 public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyPrism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyPrism
 
 /-!
 概要：選択済みの元の区間 Hom 前合成を、同じ三辺を持つ三角形の全族で表示する。

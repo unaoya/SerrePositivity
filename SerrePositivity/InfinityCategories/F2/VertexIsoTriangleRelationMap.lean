@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 
 /-!
 概要：二つの実作用を含む元の三角形関係を、同じ射で全体として写す。

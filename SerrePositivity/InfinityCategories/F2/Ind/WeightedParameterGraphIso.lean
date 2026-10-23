@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ProductGraphFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedNerveParameter
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTransport
 
 /-!
 概要：同じ weighted 共同射影を添字のグラフへ戻すと、元の係数値そのものと底上で同型。

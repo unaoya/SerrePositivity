@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.OverPullbackColimits
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackColimits
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 

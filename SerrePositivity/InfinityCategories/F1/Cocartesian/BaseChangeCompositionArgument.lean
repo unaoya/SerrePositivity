@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleTerminalAction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransportComposition
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
 
 /-!
 概要：元の大域三角形と局所結合比較で輸送結合同型を引き戻す二つの引数は一致する。

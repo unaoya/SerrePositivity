@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeCosliceSpecifiedHomotopy
 public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightRootBaseComparison
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 
 /-!
 概要：円柱の右端面を元の右四面体の全 Hom 族へ、終端を固定して接続する。

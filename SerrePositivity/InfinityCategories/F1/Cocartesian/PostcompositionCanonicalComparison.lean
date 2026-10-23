@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionFiberComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.QCatPostcompositionFiberComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PostcompositionDiagonalComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseLeftFibration
 

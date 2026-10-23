@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinQuasicategory
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-!
 概要：inner fibration の join が inner fibration になることを示す。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTrans
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
-public import SerrePositivity.InfinityCategories.F1.FunctorNaturalityTriangles
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorNaturalityTriangles
 
 /-!
 概要：通常の自然変換の一つの射への全制限を、元の二つの厳密合成三角形へ同定する。

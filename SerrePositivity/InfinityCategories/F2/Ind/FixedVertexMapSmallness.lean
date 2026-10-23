@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSmallness
 
 /-!
 概要：頂点を固定した全写像の小ささを、空間から関手圏と部分圏へ伝える。

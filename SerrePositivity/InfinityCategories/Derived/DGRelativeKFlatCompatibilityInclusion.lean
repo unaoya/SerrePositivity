@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationInclusion
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 /-!
 概要：K-flat の変形円柱と通常 tensor の指定比較を、元の実包含上で回収する。
 方針：全円柱の持ち上げの射影式と、完全充満包含の指定逆像の回収式を使う。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientMapping
-public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 
 /-! pinched Hom の端点輸送は、同じ区間族の評価を変更しない。 -/
 @[expose] public section

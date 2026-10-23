@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
 public import SerrePositivity.InfinityCategories.F1B.PointJoinPrism
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 

@@ -1,6 +1,6 @@
 module
 public import Mathlib.CategoryTheory.Enriched.FunctorCategory
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedDiagramPrecomposition
 
 /-! # 単体的図式全体の標準豊穣 Hom

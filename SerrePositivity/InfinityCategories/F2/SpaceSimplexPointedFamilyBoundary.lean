@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedFamilyInitial
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 
 /-!
 概要：全 pointed 族の同じ始点を、相対延長空間の境界の形に正規化する。

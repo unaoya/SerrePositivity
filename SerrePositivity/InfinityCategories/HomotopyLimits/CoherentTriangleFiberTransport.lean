@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiberTransportTriangleFamily
-public import SerrePositivity.InfinityCategories.F1.CoherentTransformationFamilyTriangle
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningParametrizedTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyTriangle
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningParametrizedTransport
 
 /-!
 概要：元の coherent な三角形の全族を、同じ評価点での輸送族へ制限する。

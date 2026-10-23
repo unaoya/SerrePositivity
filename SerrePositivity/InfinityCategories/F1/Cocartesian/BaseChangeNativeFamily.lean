@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeDiagramEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityFamily
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportFamily
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrowPrecompose
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramArrowPrecompose
 
 /-!
 概要：全局所比較の族は、元の全 fibration の二重底変換上で既存の大域結合比較の族を回収。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalHomTriangles
-public import SerrePositivity.InfinityCategories.F1.LocalIntervalDiagramEdges
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalIntervalDiagramEdges
 public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
 
 /-!

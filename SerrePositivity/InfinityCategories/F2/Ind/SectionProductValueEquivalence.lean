@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldValue
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInitialEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 
 /-!
 概要：元の単体の初頂点での同じ切断評価は、全境界を持ち上げる。

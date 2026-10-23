@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientSourcePullback
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationComparisonBaseChange
 
 /-!
 概要：元の全 twisted-arrow 復元射を係数・始点へ底変換し、同じ評価図式を復元する。

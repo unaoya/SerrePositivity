@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.SpanLeftFibrationComparison
-public import SerrePositivity.InfinityCategories.F1.OverComparisonResolution
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningBaseChange
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverComparisonResolution
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
 
 /-!
 概要：元の共同 weighted 分類の初頂点制限と、全単体切断の weighted 分類の大域同型。

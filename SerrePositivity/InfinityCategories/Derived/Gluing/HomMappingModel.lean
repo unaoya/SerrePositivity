@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Category
 public import SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison
-public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
+public import SerrePositivity.InfinityCategories.F1.Universe.PinchedHom
 
 /-! gluing の実写像空間を、同じ全 mapping cocone Hom 複体の空間模型へ移す。 -/
 @[expose] public section

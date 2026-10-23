@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportMapping
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingEvaluation
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingVertices
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramMappingEvaluation
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramMappingVertices
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
 
 /-!

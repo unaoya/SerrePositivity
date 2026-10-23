@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.UliftHomotopyIsoDown
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 
 /-!

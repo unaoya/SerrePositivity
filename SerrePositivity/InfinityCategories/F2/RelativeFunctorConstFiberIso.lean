@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorConstFiber
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChange
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorConstFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChange
 
 /-!
 概要：定値の底を持つ相対関手空間は、その fiber への内部 Hom と同型。

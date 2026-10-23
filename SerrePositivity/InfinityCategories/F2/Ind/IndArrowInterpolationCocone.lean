@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCorner
 public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaKappaCocone
-public import SerrePositivity.InfinityCategories.F1.UniversePushouts
+public import SerrePositivity.InfinityCategories.F1.Universe.Pushouts
 
 /-!
 概要：元の円柱族と新しい始点余錐を同じ実 Ind comma 内で同時に上から抑える。

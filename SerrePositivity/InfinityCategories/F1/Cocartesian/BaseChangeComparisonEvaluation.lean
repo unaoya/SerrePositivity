@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeComparisonRealization
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramConstantParameter
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramEdges
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramConstantParameter
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramEdges
 
 /-!
 概要：底変換比較の実際の coherent な辺の各成分は、構成済みの同じ比較成分。

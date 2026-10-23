@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CutHomEndpoint
-public import SerrePositivity.InfinityCategories.F1.CoherentHomConstantTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomConstantTransport
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MixedHomVertices
 
 /-!

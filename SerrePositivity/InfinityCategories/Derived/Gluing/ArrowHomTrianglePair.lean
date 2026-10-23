@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrismCurry
-public import SerrePositivity.InfinityCategories.F1.ParameterizedSquare
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFunctorHomPrismCurry
+public import SerrePositivity.InfinityCategories.F1.Diagrams.ParameterizedSquare
 public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
 
 /-! 矢印圏の実区間 Hom を、共通対角を持つ二つの全パラメーター三角形へ分ける。 -/

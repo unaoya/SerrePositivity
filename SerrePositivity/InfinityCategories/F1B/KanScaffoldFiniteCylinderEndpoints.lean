@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCylinder
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteCylinder
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldBaseChange
 
 /-!

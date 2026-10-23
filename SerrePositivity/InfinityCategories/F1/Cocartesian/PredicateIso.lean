@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FunctorIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldMapping
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
 
 /-!
 概要：相対関手の cocartesian 条件と scaffold の水平辺条件の同型不変性。

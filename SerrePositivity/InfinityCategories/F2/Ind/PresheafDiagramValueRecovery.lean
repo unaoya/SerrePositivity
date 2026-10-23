@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointValue
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFunctorIso
 
 /-!
 概要：strict 化の同じ評価射を、元の前層値の元の小さい unstraightening へ戻す。

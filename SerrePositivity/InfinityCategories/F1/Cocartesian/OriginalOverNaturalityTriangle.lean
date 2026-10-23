@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalityNormalized
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulTriangleReflection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulTriangleReflection
 
 /-!
 概要：元の over 自然性自身は、元の大域自然性との三角等式を満たす。

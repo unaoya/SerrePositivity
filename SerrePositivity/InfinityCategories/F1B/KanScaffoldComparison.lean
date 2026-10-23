@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PrecompositionNerveLocality
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PrecompositionNerveLocality
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackComparison
 
 /-!

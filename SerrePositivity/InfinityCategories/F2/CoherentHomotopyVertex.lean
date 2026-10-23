@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorUnitFamilyDiagram
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-!

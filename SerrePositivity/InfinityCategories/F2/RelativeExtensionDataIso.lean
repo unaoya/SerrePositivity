@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
 
 /-!
 概要：底と初期値の等式で、同じ実延長を保つ同型を構成する。

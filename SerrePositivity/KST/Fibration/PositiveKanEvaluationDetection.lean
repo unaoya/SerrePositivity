@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.SpectrumKanEvaluationOrdinary
 public import SerrePositivity.KST.Fibration.PointedKanInvertiblePi
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumEdgePi
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-! # 同じ全正段での coherent 可逆性は、元の Sp 辺の可逆性を検出する -/
 

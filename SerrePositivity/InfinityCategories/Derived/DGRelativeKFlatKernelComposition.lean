@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelTensorComposition
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：K-flat 入力上の通常 kernel tensor の合成を、同じ通常合成 kernel の作用へ比較する。
 方針：元の実 tensor 合成比較を包含へ制限し、全部分圏の完全充満性で持ち上げる。

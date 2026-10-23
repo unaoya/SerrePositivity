@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomComparison
-public import SerrePositivity.InfinityCategories.F1.IntervalHomPathSpan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomPathSpan
 
 /-!
 概要：元の結合比較 Hom の両評価は、二回と直接の底変換対象の分類 Hom を結ぶ。

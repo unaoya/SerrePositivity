@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.MaximumCubeEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentHomNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomNaturality
 
 /-!
 # 標準 Hom から coherent pinched Hom への射

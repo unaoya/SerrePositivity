@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!

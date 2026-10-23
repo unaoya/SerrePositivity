@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealization
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsMap
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsReconstruction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEssentialExtension
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEssentialExtension
 
 /-!
 概要：密度の大域評価を、元の共同 Hom 図式から元の F への一つの自然変換へ移す。

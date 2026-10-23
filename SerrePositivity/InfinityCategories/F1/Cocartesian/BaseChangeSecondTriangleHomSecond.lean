@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomFirst
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomComparison
-public import SerrePositivity.InfinityCategories.F1.IntervalHomFamilyProjection
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomFamilyProjection
 
 /-!
 概要：同じ分解三角形の Hom の次の面は、元の同じ結合比較 Hom。

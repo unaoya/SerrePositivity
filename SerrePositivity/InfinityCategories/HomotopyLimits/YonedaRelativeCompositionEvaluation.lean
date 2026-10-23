@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorActionEvaluation
 
 /-!
 概要：Yoneda の元の恒等点評価と、相対 Hom 全体の第一変数での合成を照合する。

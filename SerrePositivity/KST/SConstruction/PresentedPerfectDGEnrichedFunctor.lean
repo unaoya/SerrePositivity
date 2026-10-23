@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfDGInputSimplicial
 public import SerrePositivity.KST.SConstruction.KanSourceCoreMap
-public import SerrePositivity.InfinityCategories.F1.QCatSimplicial
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 
 /-! # 元の全 native 関手族を保つ実 Perf の厳密単体的豊穣関手
 概要：出力宇宙の厳密 dg 入力から、ラベル付き Perf の native nerve を QCat 値に構成する。

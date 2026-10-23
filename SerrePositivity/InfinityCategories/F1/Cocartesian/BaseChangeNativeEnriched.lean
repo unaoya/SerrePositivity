@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportInfinity
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedComposition
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedComposition
 
 /-!
 概要：元の二重底変換の全相対 Hom 作用を、同じ指定結合同型の豊穣圏へ束ねる。

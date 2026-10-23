@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrefixOverWeight
-public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 
 /-!
 概要：共通 edgewise 切断の初区間の始点は、元の図式の射による始点係数の像である。

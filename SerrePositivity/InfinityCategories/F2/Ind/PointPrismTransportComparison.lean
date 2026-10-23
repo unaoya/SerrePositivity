@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamilySourceComparison
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilySourceComparison
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：指定始点からの全パラメータ付き持ち上げの終値を、同じ点からの普遍輸送と比較する。

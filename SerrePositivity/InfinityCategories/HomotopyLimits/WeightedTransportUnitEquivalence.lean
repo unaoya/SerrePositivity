@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedTransportUnit
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：weighted nerve の strict transport への自然な単位比較は Kan 値で成分ごとに同値。

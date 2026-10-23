@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の指定二頂点の retract の存在は、宇宙持ち上げで保たれる。

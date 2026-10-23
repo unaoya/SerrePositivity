@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
 
 /-!

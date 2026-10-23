@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ContinuousLeftFibrationAnodyne
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecompositionComparison
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoherentEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecompositionComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoherentEvaluation
 
 /-!
 概要：連続 left fibration 置換は、元の底上の相対 Hom の全 coherent な関手を保つ。

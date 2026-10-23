@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionAugmentation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedPrecomposition
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 # 同じ複体解像の半自由部分圏での全 retract

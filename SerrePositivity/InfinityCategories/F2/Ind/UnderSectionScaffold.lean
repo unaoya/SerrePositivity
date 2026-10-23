@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionTotalDiagram
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFunctor
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffold
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFunctor
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffold
 
 /-!
 概要：元の全空間への under 切断図式の大域評価を、全高次を保つ一つの射として作る。

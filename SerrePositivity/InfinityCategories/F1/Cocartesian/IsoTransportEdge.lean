@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportFamily
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonInvertible
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparisonInvertible
 
 /-!
 概要：全局所 Hom の同型比較を、元の分類主写像の間の同じ可逆辺にする。

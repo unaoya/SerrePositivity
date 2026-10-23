@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionFamilyProductBase
 public import SerrePositivity.InfinityCategories.F2.Ind.ParametrizedPointRestriction
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：積上の切断の族の一点制限の底は、元のパラメータと元の頂点のグラフ。

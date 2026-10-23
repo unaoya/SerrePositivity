@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafTwistedElementsEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningLift
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningLift
 
 /-!
 概要：大域 pointed 評価を、同じ二変数の底上の実際の unstraightening 間の射へ戻す。

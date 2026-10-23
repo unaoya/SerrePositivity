@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.EdgewiseRightAnodyne
-public import SerrePositivity.InfinityCategories.F1.EdgewiseKanExtension
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseKanExtension
 
 /-!
 概要：edgewise の右半分と全境界面を保ち、指定した底の重みの図式上へ延長する。

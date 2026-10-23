@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!

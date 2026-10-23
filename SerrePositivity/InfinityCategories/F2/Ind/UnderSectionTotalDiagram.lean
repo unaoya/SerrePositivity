@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionStrictDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.ParametrizedSectionsForget
-public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportWeightedNerve
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportWeightedNerve
 
 /-!
 概要：パラメータ付き under 切断の全空間は、元の添字上の strict transport へ自然に写る。

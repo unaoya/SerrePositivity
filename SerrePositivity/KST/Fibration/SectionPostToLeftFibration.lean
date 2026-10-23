@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInitialEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
 
 /-! # 同じ底上の左 fibration への後合成による、元の全 section の自然な比較 -/

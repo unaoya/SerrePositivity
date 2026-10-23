@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomLifting
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 概要：相対指数の辺の cartesian 性を最後の外ホーンの逆像上の図式の延長で判定する。

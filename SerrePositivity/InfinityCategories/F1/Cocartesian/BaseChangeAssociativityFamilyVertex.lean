@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityFamily
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagram
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramRealizationVertices
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramRealizationVertices
 
 /-!
 概要：既存の結合比較の全 fibration の族を一対象で固定すると、同じ積上の結合図式になる。

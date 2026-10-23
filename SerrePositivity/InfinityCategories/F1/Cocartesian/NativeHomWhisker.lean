@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationInfinity
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorActionEvaluation
 
 /-!
 概要：元の cocartesian な底上の射に対応する豊穣 Hom を、全次数で評価する。

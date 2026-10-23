@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornFaceAgreement
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCoefficientRestriction
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveHornFaceAgreement
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCoefficientRestriction
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
 /-!

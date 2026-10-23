@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialHomEdgeComparison
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality
-public import SerrePositivity.InfinityCategories.F1.PointCoslicePostIso
+public import SerrePositivity.InfinityCategories.F1.Transport.PointCoslicePostIso
 
 /-!
 概要：底上の関手と実際の比較辺から、Hom 比較の自然性に入力する余錐の全パラメータ族を作る。

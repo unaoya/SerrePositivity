@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningCoordinates
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorComposition
 
 /-!
 概要：定値 unstraightening を経由する元の相対合成を fiber の座標で計算する。

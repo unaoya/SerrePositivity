@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionFamilyPointBase
-public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportEvaluation
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 
 /-!

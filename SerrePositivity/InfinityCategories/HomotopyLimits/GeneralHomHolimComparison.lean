@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionsFiberwiseEquivalence
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedHomHolimComparison
 
 /-!

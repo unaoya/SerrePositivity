@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGSEnrichedFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactInfinityFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-! # 全高次入力を保つ S_n の安定 ∞ 圏値関手
 概要：厳密豊穣 S_n と厳密 dg 入力との合成に γ1 を適用する。

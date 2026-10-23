@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKan
-public import SerrePositivity.InfinityCategories.F1.WeightedNerve
+public import SerrePositivity.InfinityCategories.F1.Weighted.Nerve
 
 /-!
 概要：射列の各初区間を終点の over 圏へ持ち上げ、Bousfield–Kan 重みの単体を作る。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-! # Slice の四角形表示と始点評価
 

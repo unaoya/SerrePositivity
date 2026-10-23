@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationMap
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.Stable.Cocone
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-!
 概要：任意の native な余錐を定値頂点への実際の変換として読み、その円柱を計算する。

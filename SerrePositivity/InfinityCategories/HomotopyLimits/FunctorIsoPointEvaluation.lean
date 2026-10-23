@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoVertexEvaluation
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoVertexEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
 
 /-!

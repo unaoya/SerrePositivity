@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionReconstruction
 public import SerrePositivity.InfinityCategories.F2.Ind.SpanLeftFibrationComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointFibration
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningEssentialSurjectivity
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!
 概要：同じ積上の under 復元 span を、一つの大域分類同型へ移す。

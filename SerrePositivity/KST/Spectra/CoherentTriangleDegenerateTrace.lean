@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CoherentSimplexTraces
 public import SerrePositivity.KST.Spectra.CoherentPathCompositionFaces
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
 /-!
 概要：始点を重ねた退化二単体の Hom 経路は、元の辺の定値経路である。

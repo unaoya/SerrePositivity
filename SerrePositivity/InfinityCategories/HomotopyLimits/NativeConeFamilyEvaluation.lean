@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeComparisonTransport
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：元の slice の錐の族を全関手の族へ写したときの底制限と頂点評価。

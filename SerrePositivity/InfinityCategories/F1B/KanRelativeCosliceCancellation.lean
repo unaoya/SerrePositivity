@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanSquareComparisonVertical
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTrivialComparison
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
-public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 
 /-!
 概要：合成射と後半の射の相対 coslice の充填性から前半の充填性を導く。

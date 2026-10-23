@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentEdgeStructure
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentHomOrdinary
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEnrichedNaturality
 
 /-!
 概要：Cat_∞ の写像空間と関手 ∞ 圏の core の比較同値。

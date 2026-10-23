@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleConstantTargetValue
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 
 /-!
 概要：元の二面の相対比較合成を、同じ二面の全空間作用の比較合成へ移す。

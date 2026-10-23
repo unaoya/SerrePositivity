@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentSmallConstantTarget
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-!
 概要：小さい全空間の Kan 置換への単位を、元の図式から定値図式への変換として表す。

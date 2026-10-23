@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexFamilies
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
 /-! 全 prism 間の同じ実ホモトピーを、標準区間の同型を保って共通宇宙へ移す。 -/

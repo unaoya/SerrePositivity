@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StableCategories
-public import SerrePositivity.InfinityCategories.F1.QCatSimplicial
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 
 /-!
 概要：安定 ∞ 圏と完全関手の単体的な合成。

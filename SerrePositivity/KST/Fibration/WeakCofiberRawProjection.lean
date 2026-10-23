@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakCofiberPostcomposition
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-! # 全相対 cofiber 図式の元の実底辺への充満忠実な射影 -/
 

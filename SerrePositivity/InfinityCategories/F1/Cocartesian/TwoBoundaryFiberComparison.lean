@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryCorrection
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteSimplexEquivalence
 
 /-!

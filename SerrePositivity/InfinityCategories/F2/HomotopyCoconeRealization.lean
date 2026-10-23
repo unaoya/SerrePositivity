@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.HomotopyFatCocone
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
 public import SerrePositivity.InfinityCategories.Stable.Cocone
 
 /-!

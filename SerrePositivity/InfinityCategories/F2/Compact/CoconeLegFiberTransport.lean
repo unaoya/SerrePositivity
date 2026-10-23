@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPrism
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 
 /-!
 概要：元の余錐の fiber 写像を指定値に制限すると、同じ元の余錐脚に沿う輸送になる。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakStringsStability
-public import SerrePositivity.InfinityCategories.F1.CoreFaces
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreFaces
 
 /-! # 二辺の W 列の元の短辺による判定
 

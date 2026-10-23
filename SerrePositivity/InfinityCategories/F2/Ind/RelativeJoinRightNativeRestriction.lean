@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderEquivalence
-public import SerrePositivity.InfinityCategories.F1.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderEquivalence
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
 public import Mathlib.CategoryTheory.Adhesive.Basic
 
 /-!

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
-public import SerrePositivity.InfinityCategories.F1.PresheafRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightStraighteningInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafRestrictionEquivalence
 
 /-!
 概要：元の right straightening の値の小さい left 復元を、元の反転全空間と比較する。

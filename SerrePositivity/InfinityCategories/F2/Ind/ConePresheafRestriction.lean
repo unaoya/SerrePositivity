@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafAllSmallLimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafAllSmallLimits
 public import SerrePositivity.InfinityCategories.F2.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.F2.FunctorVertexConeReindex
 public import SerrePositivity.InfinityCategories.F2.LimitConeFamilyReadback

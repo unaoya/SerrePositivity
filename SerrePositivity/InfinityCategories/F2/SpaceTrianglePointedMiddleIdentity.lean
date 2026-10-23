@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedFamilyEndpointWitness
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberWitnessRestriction
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberWitnessIdentity
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：同じ実初辺を持つ全三角形比較の指定中間像は恒等同型になる。

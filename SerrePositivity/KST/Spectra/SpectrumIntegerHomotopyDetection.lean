@@ -5,7 +5,7 @@ public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences
 public import SerrePositivity.KST.Spectra.HomotopyComponents
 public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
 public import SerrePositivity.KST.Spectra.LoopMapBasedDetection
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
 /-!
 概要：整数次数のホモトピー群の同型性を任意段の検出へ移す。

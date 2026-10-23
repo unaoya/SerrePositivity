@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceFiberProjection
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceComparison
-public import SerrePositivity.InfinityCategories.F1.UniverseFiber
+public import SerrePositivity.InfinityCategories.F1.Universe.Fiber
 
 /-!
 概要：構成済みの元の大域比較そのものの fiber 作用を、元の前層写像空間への射として固定する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictOppositeFiberColimit
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 
 /-!

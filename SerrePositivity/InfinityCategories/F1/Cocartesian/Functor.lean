@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 
 /-!

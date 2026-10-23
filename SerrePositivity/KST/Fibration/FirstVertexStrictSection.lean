@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FirstVertexRestrictionChart
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorActionEvaluation
 
 /-! # 元の単体切断を under に制限して、同じ厳密な pullback strict 切断へ持ち上げる -/
 

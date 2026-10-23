@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IteratedLocalNativeGlobalCoherence
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointPrecomposition
 
 /-!
 概要：既存の局所結合比較を元の全 Hom に戻した両端は、導出した同じ第一因子の両端。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoHornSharedNaturality
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 
 /-!
 概要：二次内ホーンの比較を、同じ共有境界比較と指定 path を保って厳密に可換にする。

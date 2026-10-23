@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsCondition
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalFiltered
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaUnstraighteningIdentity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity
 
 /-!
 概要：元の Yoneda 像の right unstraightening の元の圏は、任意の κ に対して κ-filtered。

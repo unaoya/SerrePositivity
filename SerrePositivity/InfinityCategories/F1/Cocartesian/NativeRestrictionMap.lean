@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseKan
+public import SerrePositivity.InfinityCategories.F1.Universe.Kan
 
 /-!
 概要：元の native 制限を反変図式の同じ射として計算する。

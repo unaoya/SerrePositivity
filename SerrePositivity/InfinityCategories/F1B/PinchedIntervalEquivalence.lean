@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalSection
-public import SerrePositivity.InfinityCategories.F1.JoinDiagramRelativeExtension
-public import SerrePositivity.InfinityCategories.F1.EquivalenceRetraction
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagramRelativeExtension
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceRetraction
 
 /-!
 概要：右 pinched 模型と区間模型の同値。

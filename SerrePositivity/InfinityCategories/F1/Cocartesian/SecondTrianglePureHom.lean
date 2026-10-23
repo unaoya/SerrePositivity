@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SecondTriangleObjects
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionNestedPureHom
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionNestedPureHom
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CutPureHomEndpoint
-public import SerrePositivity.InfinityCategories.F1.SimplicialHomConstantIdentity
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplicialHomConstantIdentity
 
 /-!
 概要：元の第二三角形の三つの同ラベル Hom を、元の対象の恒等に正規化する。

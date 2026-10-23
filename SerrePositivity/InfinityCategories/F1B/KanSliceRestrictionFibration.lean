@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinSliceRestriction
 public import SerrePositivity.InfinityCategories.Core.PullbackRightComposition
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
-public import SerrePositivity.InfinityCategories.F1.CosliceRightRestriction
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction
 
 /-!
 概要：Kan 拡張の変動する局所形の制限射を、slice の制限の基底変換として扱う。

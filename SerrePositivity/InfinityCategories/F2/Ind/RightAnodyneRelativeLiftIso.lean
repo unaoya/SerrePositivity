@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RightFibrationYoneda
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationYoneda
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：right anodyne な指定領域で一致する、同じ底上の二つの実持ち上げの同型。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointTransportComparisonEndpoint
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 
 /-!
 概要：同じ根辺に合成する二つの元の二単体の標準長辺を、同じ延長空間で比較する。

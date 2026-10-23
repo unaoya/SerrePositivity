@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianTransportDiagramReindex
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramRealization
+public import SerrePositivity.InfinityCategories.F1.Diagrams.DiagonalCocartesianTransportDiagramReindex
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramRealization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningCoherent
 
 /-!

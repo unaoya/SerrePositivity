@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeCoherentEdge
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagram
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalPrism
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramNaturalPrism
 
 /-!
 概要：元の全空間の結合同型の分類像は、既存の結合自然変換の prism の辺そのもの。

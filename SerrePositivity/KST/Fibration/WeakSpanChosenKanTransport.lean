@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanMaps
 public import SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport
-public import SerrePositivity.InfinityCategories.F1.TransportHo
+public import SerrePositivity.InfinityCategories.F1.Transport.Ho
 
 /-! # 元の各 W 辺の選択した span 輸送の厳密 Kan 模型での同値性 -/
 

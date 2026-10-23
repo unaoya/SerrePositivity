@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafLocalKanColimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseFullyFaithful
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
 
 /-!

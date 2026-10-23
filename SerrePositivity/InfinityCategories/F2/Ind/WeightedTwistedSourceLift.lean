@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedSourceBase
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEssentialExtension
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEssentialExtension
 
 /-!
 概要：元の全 twisted-arrow 評価を、全添字上で同じ共同 left fibration へ降ろす。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOpposite
-public import SerrePositivity.InfinityCategories.F1.PresheafRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafRestrictionEquivalence
 
 /-!
 概要：パラメータ付き under 切断を反転し、元の底上の strict right fibration 図式にする。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.PinchedHomClosedComposition
 public import SerrePositivity.InfinityCategories.DoldKanComparison.SimplicialCategory
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
 /-!
 概要：DK の豊穣後合成を、同じ dg 閉零射による実 pinched 後合成に厳密に照合する。
 方針：同じ閉零元の AW 定数作用と実 pinched 同型の合成計算を使う。

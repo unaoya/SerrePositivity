@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondHomSpan
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalHomFamilyProjection
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomFamilyProjection
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalNaturality
 
 /-!
 概要：元の比較三角形の Hom を、元の同じ第二面の Hom へ射影する。

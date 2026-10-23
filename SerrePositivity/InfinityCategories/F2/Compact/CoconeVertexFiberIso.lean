@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeTotalPrism
-public import SerrePositivity.InfinityCategories.F1.VertexFiberPointIso
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberPointIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 
 /-!
 概要：元の指定頂点の包含を、同じ全余錐の頂点 fiber の同型として回収する。

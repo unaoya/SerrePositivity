@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientFixedEdges
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostIso
 
 /-! 元の Hom 上の実導来二入力を、主比較と同じ端点表示の区間 Hom へ正規化する。 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentPrefixConeSimplex
-public import SerrePositivity.InfinityCategories.F1.CoherentConstantOrderDiagram
+public import SerrePositivity.InfinityCategories.F1.Coherent.ConstantOrderDiagram
 
 /-!
 概要：定値 cone に対する prefix 変形は同じ定値 cone。

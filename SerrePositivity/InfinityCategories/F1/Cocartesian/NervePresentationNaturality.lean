@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NervePresentationComparison
-public import SerrePositivity.InfinityCategories.F1.UniverseOverFunctor
-public import SerrePositivity.InfinityCategories.F1.ContravariantComparisonIso
+public import SerrePositivity.InfinityCategories.F1.Universe.OverFunctor
+public import SerrePositivity.InfinityCategories.F1.Yoneda.ContravariantComparisonIso
 
 /-!
 概要：表示同型で移した元の全局所 Hom 比較の、同じ底上の射に沿う自然性。

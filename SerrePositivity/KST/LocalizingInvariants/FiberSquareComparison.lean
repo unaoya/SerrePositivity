@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
 public import SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero
-public import SerrePositivity.InfinityCategories.F1.OppositeFunctorIso
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
 
 /-!
 概要：同じ辺の二つの fiber 四角形の全図式の比較同型。

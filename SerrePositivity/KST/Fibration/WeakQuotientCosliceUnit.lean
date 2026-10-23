@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoslicePointFamily
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointFamily
 
 /-! # 同じ商上の恒等点から、分数図式の実 unstraightening への coslice 比較を構成する -/
 

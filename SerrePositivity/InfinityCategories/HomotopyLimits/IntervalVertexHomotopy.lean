@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StronglySaturatedHom
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 public import SerrePositivity.InfinityCategories.Core.OuterHornConverse
 
 /-!

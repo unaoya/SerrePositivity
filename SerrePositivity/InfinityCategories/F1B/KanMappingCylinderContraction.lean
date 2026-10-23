@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCylinderMaximumAction
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
 
 /-!

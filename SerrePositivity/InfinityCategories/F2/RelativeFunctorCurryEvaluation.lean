@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryRestriction
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：相対 curry の豊穣作用の一点評価は、元の族の同じ一点への制限である。

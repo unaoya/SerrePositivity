@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackAnodyneRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
 
 /-!
 概要：全辺を覆う inner anodyne 部分底への、元の native Hom 制限の同値を選ぶ。

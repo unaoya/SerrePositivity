@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeSectionTarget
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportDiagramComparison
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonTransportExt
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparisonTransportExt
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramTriangleFaces
 
 /-!
 概要：全局所比較の両端図式を元の二重底変換で制限すると、元の二重・直接の分類図式。

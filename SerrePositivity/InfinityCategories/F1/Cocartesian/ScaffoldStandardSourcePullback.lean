@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldStandardSourceComponents
-public import SerrePositivity.InfinityCategories.F1.SpanPullbackIsomorphism
-public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.Joins.SpanPullbackIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldBridgeHomPullbacks
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePullbacks
 
 /-!

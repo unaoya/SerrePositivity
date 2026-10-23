@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
 
 /-!
 概要：零面の最初の頂点は元の単体の第二頂点。

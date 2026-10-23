@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCellCospan
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeFunctor
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitCone
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramColimitCone
 
 /-!
 概要：同じ二辺・共有頂点で、元の局所 Hom と分類先の cospan の比較を作る。

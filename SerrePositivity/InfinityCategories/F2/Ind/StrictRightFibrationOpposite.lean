@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseOrdinaryKanImage
-public import SerrePositivity.InfinityCategories.F1.RightFibrationOppositeComparison
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseOrdinaryKanImage
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationOppositeComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentUnderlyingHo
 
 /-!

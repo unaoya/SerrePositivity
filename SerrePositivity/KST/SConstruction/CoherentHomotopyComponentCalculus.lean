@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomotopyComposition
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-! # Coherent な円柱と実三角形の成分の計算
 概要：後合成と合成三角形を、同じ円柱から取り出した元の一単体へ厳密に戻す。

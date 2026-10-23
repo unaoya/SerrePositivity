@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquiva
 public import SerrePositivity.InfinityCategories.F2.Compact.PointRepresentativesComposition
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegPointRepresentatives
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：任意の指定余極限余錐の点を、元の同じ図式の値から同じ脚で成分まで回収する。

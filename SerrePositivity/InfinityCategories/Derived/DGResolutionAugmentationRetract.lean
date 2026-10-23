@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGResolvedProjectiveVertex
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 /-!
 概要：同じ分解 augmentation の半自由入力制限から、元の円柱を保持した戻り同型を回収する。
 方針：各半自由入力の射影性と、実半自由包含の完全充満性を使う。

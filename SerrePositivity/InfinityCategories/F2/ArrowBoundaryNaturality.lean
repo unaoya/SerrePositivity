@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagram
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：二点の関手空間の評価同型は後合成と定値図式を保つ。

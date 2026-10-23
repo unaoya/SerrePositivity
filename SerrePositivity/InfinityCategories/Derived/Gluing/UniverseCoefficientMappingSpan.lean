@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedCoefficientMappingSpan
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedUniverseNaturality
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedStructure
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
-public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.PinchedHom
 
 /-! 元の一般宇宙の導来比較の実端点間 Hom と元の係数の実 augmentation span。 -/
 @[expose] public section

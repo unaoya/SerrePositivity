@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedMapTrivialKan
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightTwistedEvaluation
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowLeftFibration
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveInnerFibration
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveInnerFibration
 
 /-!
 概要：元の自然な twisted-arrow 相対比較は、weighted 全空間でも前合成同値。

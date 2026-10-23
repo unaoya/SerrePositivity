@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalOuterHornPullback
-public import SerrePositivity.InfinityCategories.F1.VertexFiberIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberIsPullbackIso
 public import SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber
 
 /-!

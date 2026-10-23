@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeBFBoundaryFaces
 public import SerrePositivity.KST.SConstruction.PointFamilyHomotopyEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 public import SerrePositivity.KST.Spectra.CoherentNerve
 
 /-! # 既存 BF 境界を表す実スペクトル射と元の合成比較辺

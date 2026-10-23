@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TransportRepresentationCompositionFamily
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitnessRestriction
+public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationCompositionFamily
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitnessRestriction
 
 /-!
 概要：指定した coherent な三角形に沿う unstraightening の族の合成の証拠。

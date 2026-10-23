@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 
 /-!
 概要：元の Yoneda coslice と元の前層評価の全空間の大域比較は、底上の同値。

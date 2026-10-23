@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianHomotopyExtension
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 
 /-!
 概要：標準単体上の cartesian fibration を最初の fiber へ厳密に退縮する。

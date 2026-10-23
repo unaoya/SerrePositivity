@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryCoherentHornOriginal
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryPullbackComparison
-public import SerrePositivity.InfinityCategories.F1.KanSpanPullbackComparison
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanSpanPullbackComparison
 
 /-!
 概要：面側の大域指定像と整合する同じ厳密 cospan 比較は、pullback 上でも同値。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
 
 /-!
 概要：内部 Hom の宇宙移送と同じ元の射の後合成は全係数で可換。

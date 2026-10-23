@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldCellCospan
-public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeOverPushout
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldBridgeOverPushout
 
 /-!
 概要：最初の辺と尾部の同じ比較を、分類先と同じ宇宙の元の底へ写す。

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationSpanStrictification
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEssentialExtension
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationSpanStrictification
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEssentialExtension
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 
 /-! # 元の指定 span との相対三角比較をデータとして保持する、底上の実比較 -/
 

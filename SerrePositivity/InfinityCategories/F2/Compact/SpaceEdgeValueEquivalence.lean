@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceEdgeValue
-public import SerrePositivity.InfinityCategories.F1.UniversalTransportReflection
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.UniversalTransportReflection
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 
 /-!
 概要：元の可逆な空間辺の同じ Kan 値の射は同値。

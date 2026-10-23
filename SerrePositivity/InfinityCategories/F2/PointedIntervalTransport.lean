@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamilyNaturality
-public import SerrePositivity.InfinityCategories.F1.PointedSpaces
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilyNaturality
+public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
 
 /-!
 概要：𝒮 内の区間の全族の普遍 pointed-space 輸送と、任意の同じ輸送の比較。

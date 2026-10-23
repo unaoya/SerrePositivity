@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
+public import SerrePositivity.InfinityCategories.F1.Simplicial.BoundaryFactorization
 public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
 
 /-!

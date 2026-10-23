@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleMap
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismEvaluation
 /-! 概要：大域三角形の各面を元の円柱と区間族へ同定する。
 方針：既存の左右 prism 評価式で全単体を同じ切断へ戻す。
 規約：全 K を保持。使われ方：元の評価三角形の全関手圏での合成。 -/

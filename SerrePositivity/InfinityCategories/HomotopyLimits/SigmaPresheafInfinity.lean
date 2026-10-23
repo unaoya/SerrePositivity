@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductPreservation
-public import SerrePositivity.InfinityCategories.F1.PresheafInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeUncurry
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecomposition
 
 /-!
 概要：相対 slice 関手の普遍全余錐は、元の底形状の制限と全次数で可換。

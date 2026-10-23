@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationLarge
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingNaturality
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingNaturality
 
 /-!
 概要：元の c1 の実現同型を、同じ変換の底変換後の実際の像へ比較する。

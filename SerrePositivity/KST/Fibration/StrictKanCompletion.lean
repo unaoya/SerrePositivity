@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.KanAnodyneLocalization
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
 
 /-! # 分数図式の亜群化に使う厳密な Kan 値の関手的模型 -/
 

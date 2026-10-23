@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.KanPointComponentComposition
 public import SerrePositivity.KST.Fibration.PointedSpaceHomPoint
 public import SerrePositivity.KST.Fibration.PointedLeftResolutionVertices
 public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
-public import SerrePositivity.InfinityCategories.F1.PointedReverseCompositionTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseCompositionTransport
 public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
 

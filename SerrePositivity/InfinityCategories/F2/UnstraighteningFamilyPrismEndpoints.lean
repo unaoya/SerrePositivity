@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitness
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitness
 
 /-!
 概要：元の unstraightening の全証拠の左結合表示から、元の両端の実作用を回収する。

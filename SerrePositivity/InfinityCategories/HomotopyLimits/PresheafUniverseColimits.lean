@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseDiagram
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 
 /-!
 概要：指定された前層の宇宙変更関手は、小さい coherent 余極限全余錐を保存する。

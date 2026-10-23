@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedNerveParameter
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornCoefficientFaces
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveHornCoefficientFaces
 
 /-!
 概要：元の相対ホーンの最後の係数評価は、元の固定底のパラメータを保つ。

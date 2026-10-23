@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberEmbedding
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
 
 /-!
 概要：元の相対 join の fiber 余錐の全円柱は、元の相対 join prism の同じ fiber 制限。

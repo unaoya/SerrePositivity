@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionRestriction
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：始点固定の全三角形の延長空間を、同じ長辺の prism 延長空間へ制限する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseYonedaJoint
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseDiagram
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!
 概要：指定された前層の宇宙変更は、元の全 Yoneda 関手を全自然同型として保つ。

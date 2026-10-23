@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates
 /-!
 概要：実 coslice の全単体を、最初の頂点を固定した元の一つ上の単体へ移す。
 方針：左の点との join 同型で座標化し、全添字変更と射影を照合する。

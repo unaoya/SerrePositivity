@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.FractionKanQuotientDescent
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningBaseChange
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
 
 /-! # 同じ商上の coslice 図式を、元の射影の実分類図式と同定する -/
 

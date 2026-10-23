@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedFatConeCurry
-public import SerrePositivity.InfinityCategories.F1.JoinDiagramRelativeExtension
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagramRelativeExtension
 
 /-!
 概要：slice の頂点 fiber から両端固定の fat join の錐への比較と厳密な左逆。

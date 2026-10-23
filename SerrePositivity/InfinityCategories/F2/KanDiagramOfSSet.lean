@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 
 /-!
 概要：成分ごとに Kan な単体集合値図式を Kan 対象値の通常の図式として束ねる。

@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
-public import SerrePositivity.InfinityCategories.F1.PinchedHomIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PinchedHomIso
 public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
-public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
 /-!
 概要：左 pinched Hom を dg 反対模型の右 pinched Hom へ移し、全 Hom 鎖写像を作用させる。
 方針：同じ符号付き反対 nerve 同型と端点の厳密等式を使い、右模型の準同型不変性を移す。

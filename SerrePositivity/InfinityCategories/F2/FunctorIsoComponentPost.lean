@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentTransport
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoPresentation
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 
 /-!
 概要：元の関手同型の各点成分と後合成は、指定同型の値まで整合する。

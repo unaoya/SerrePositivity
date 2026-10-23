@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.UniverseSlices
-public import SerrePositivity.InfinityCategories.F1.CosliceRestrictionIso
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestrictionIso
 
 /-!
 概要：元の coslice の宇宙比較と固定図式の制限は、元の射影と厳密に可換。

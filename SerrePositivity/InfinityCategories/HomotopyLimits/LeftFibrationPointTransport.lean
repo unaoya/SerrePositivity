@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 
 /-!

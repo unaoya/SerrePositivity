@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceRetractionSectionComparison
 public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRootVerticalInitialBase
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 
 /-!
 概要：根辺円柱の始点側の全族を、時間零・一の同じ初期 Hom 係数の間で比較する。

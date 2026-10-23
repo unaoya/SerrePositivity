@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexStandardSourceFactorization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.InnerTwoHornImageCoreRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseTrivialKanFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.TrivialKanFibration
 
 /-!
 概要：恒等二単体の元の source 制限自身は自明 Kan fibration。

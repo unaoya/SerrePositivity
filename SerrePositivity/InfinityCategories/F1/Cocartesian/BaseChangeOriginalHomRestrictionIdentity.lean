@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictionSquareIdentity
-public import SerrePositivity.InfinityCategories.F1.HomTransportSquarePrecomposition
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquarePrecomposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNaturalitySectionCoherence
-public import SerrePositivity.InfinityCategories.F1.HomTransportSquareIdentity
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquareIdentity
 
 /-!
 概要：元の底制限の輸送正方形は、同じ比較 Hom 上で指定境界の等式を満たす。

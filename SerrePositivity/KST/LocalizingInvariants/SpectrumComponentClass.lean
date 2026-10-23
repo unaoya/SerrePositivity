@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyClass
-public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 
 /-!
 概要：元の BF 写像空間の成分の等式を h Sp の射の等式へ移す。

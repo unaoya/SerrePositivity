@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofRightFibrationKan
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting
 

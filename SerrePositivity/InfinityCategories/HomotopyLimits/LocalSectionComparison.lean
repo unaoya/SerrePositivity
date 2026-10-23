@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalCoslicePrecomposition
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostEquivalence
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
 public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationFiberComparison
 
 /-!

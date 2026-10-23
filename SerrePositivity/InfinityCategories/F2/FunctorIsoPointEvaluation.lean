@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerUnit
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorRestrictedEndpoint
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorAnodyneRestriction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 
 /-!

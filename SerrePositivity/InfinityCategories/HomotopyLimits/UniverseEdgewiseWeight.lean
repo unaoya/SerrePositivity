@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseSubdivision
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSubdivision
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
 public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
 

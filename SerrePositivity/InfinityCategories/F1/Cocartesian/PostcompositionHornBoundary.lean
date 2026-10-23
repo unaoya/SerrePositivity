@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PostcompositionDiagonalVertex
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalSourceComposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalOuterHorn
-public import SerrePositivity.InfinityCategories.F1.CospanHomHorn
+public import SerrePositivity.InfinityCategories.F1.Joins.CospanHomHorn
 
 /-!
 概要：元の後合成の指定対角から作る外ホーンを、元の比較の指定外ホーンと同定する。

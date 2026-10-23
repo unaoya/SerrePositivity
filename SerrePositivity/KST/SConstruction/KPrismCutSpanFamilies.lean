@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentCutSpanFamilies
 public import SerrePositivity.KST.SConstruction.KPrismPathDecoding
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 
 /-! # 元の K prism の Kan な終点での二切断族の相対合成
 概要：元の prism の終点が上段にある場合、二切断円柱の相対合成を追加の Kan 仮定なしで作る。

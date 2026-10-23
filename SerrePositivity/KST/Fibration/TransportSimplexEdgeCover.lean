@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertexNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertexNaturality
 
 /-! # 初頂点写像による元の全辺の厳密な被覆 -/
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexStandardTargetFactorization
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramAnodyneRestriction
 
 /-!
 概要：恒等二単体の元の target 制限は、同じ元の射として自明 Kan fibration。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedBousfieldKanColimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralHomHolimComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
 
 /-!

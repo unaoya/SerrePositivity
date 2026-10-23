@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanFinalFiberRetraction
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
 public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 
 /-!
 概要：最終 fiber への cocartesian な輸送は cocartesian 辺を可逆辺へ送る。

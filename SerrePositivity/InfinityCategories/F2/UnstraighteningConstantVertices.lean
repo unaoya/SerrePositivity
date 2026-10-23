@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCompositionVertex
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingInvertible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingInvertible
 
 /-!
 概要：定値パラメータの実際の比較頂点と合成を元の底上の射で表示する。

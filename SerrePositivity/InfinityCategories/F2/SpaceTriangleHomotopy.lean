@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTriangleEdge
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 
 /-!
 概要：𝒮 の二単体から元の Kan 射間の指定ホモトピーを読み戻す。

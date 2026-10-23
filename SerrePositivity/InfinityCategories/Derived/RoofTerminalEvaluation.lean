@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.RoofLeftPrismLift
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
-public import SerrePositivity.InfinityCategories.F1.SlicePrismSquare
+public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
 
 /-! # 左ファイブレーションの終対象 fiber への全体評価
 

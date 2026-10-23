@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-! # 余錐の制限射に対する cartesian な辺
 

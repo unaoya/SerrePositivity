@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RangeCoverGluing
+public import SerrePositivity.InfinityCategories.F1.Simplicial.RangeCoverGluing
 
 /-!
 概要：被覆上の図式を、同じ底の図式を保ったまま像の和上へ接合する。

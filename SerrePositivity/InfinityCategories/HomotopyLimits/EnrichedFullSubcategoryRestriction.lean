@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：豊穣関手を全充満部分圏へ制限し、元の関手と対象の条件の組との同値を構成。

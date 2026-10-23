@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonEndpoints
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowCurry
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramArrowCurry
 
 /-!
 概要：元の二つの分類主写像の間の、底全体・全 fibration に関する実際の比較の辺。

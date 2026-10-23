@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
 /-!

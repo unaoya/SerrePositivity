@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakShape
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 
 /-!
 概要：元の弱い retract の分裂点を固定して、元の全図式を右 fibration に持ち上げる。

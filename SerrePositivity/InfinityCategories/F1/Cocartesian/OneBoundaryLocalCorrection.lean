@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryLocalRestrictions
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 
 /-!
 概要：任意の一単体の全局所 Hom 比較を、同じ境界比較と厳密に可換にする。

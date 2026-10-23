@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseCocartesianEdges
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseInnerFibration
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCocartesianFibration
 
 /-!
 概要：cocartesian fibration の相対 join の底への射影も cocartesian fibration。

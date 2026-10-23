@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles
 public import SerrePositivity.KST.LocalizingInvariants.TriangleThirdEdgeBoundary
-public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 
 /-!
 概要：記憶した実三角形の第三辺を直接評価し、元の分数写像空間比較との整合を保つ。

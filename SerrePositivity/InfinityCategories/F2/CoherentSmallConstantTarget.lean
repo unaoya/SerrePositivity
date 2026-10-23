@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentConstantTargetComparison
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraightening
-public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
 
 /-!
 概要：coherent な定値標的への変換を小さい unstraightening の全空間からの写像と比較する。

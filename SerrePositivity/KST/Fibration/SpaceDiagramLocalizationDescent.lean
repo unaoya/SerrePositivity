@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SmallSpaceDiagram
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-! # 小さい商局所化の普遍性による、元の空間値図式の宇宙を合わせた降下 -/
 

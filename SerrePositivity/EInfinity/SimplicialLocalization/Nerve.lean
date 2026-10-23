@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichment
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 
 /-!
 # Kan 化した単体的局所化の coherent nerve

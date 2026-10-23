@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.PointSourceFatDiagram
-public import SerrePositivity.InfinityCategories.F1.LeftIntervalFatHomotopy
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalFatHomotopy
 
 /-! # 始点固定の同じ可変終点矢印族を部分族へ制限する厳密な円柱式 -/
 

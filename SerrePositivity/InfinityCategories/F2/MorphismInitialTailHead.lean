@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.MorphismInitialTailHom
-public import SerrePositivity.InfinityCategories.F1.SimplicialHomConstantIdentity
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplicialHomConstantIdentity
 
 /-!
 概要：元の初点固定 tail の初点 Hom を、元の恒等射と元の射へ正規化する。

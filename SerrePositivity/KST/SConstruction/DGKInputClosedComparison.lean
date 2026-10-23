@@ -1,11 +1,11 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 public import SerrePositivity.KST.SConstruction.DGFunctorClosedNativeEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.IntervalFatDiagram
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFatDiagram
 
 /-! # 固定 dg 入力 S の同じ二辺を元の Hom end の閉同型から比較する
 概要：指定された閉 dg 関手同型の辺を、同じ固定 S の豊穣 Hom に持ち上げる。

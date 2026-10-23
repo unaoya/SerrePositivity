@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldInverseFamily
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramScaffoldIdentities
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldIdentities
 
 /-!
 概要：水平辺を保つ scaffold Hom から strict transport 間の変換空間への逆射を構成する。

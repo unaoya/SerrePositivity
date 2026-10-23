@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportHomPath
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportFamilyEdge
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomPath
-public import SerrePositivity.InfinityCategories.F1.IntervalFamilyVertexEdge
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFamilyVertexEdge
 
 /-!
 概要：全局所 Hom の比較 path は、元の fibration では既存の結合 path そのもの。

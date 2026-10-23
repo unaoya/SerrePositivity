@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence
-public import SerrePositivity.InfinityCategories.F1.CosliceRestrictionIso
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestrictionIso
 
 /-!
 概要：同値な単射上の相対 coslice 制限は isofibration の上で自明 Kan。

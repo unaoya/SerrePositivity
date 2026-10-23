@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedConePointedRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaPresheafInfinity
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful
 
 /-!
 概要：元の Yoneda ∞ 関手を P_Σ(C) へ因子化する。

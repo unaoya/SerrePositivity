@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorHomotopyPrismSection
 public import SerrePositivity.InfinityCategories.F2.RelativeRestrictedEndpointUncurry
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostUncurry
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostUncurry
 
 /-!
 概要：元の普遍 prism の全始点評価は恒等射、全終点評価は元の選択済み作用。

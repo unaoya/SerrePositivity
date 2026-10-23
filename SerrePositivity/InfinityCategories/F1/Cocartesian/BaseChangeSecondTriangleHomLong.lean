@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomFirst
-public import SerrePositivity.InfinityCategories.F1.IntervalHomFamilyProjection
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomFamilyProjection
 
 /-!
 概要：同じ分解三角形の Hom の長辺は、元の大域比較三角形の第二面の Hom。

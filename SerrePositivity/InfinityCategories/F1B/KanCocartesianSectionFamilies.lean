@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSections
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 
 /-!
 概要：任意のパラメータを持つ cocartesian section の族を実際の直積上の図式と対応させる。

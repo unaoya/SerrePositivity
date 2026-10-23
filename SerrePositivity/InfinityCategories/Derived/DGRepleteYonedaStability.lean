@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRepleteYonedaEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 

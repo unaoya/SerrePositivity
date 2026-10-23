@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryLocalTarget
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneHornLocalNaturality
-public import SerrePositivity.InfinityCategories.F1.PairedKanFunctorIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PairedKanFunctorIso
 
 /-!
 概要：標準一単体の全局所 Hom 比較を、元の一次元境界比較へ指定同型で制限する。

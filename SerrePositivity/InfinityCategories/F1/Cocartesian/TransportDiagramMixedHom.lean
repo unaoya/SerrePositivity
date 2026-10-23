@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramInfinity
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramMixedHom
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramMixedHom
 
 /-!
 概要：strict transport 図式の混合評価を QCat の core Hom に移す。

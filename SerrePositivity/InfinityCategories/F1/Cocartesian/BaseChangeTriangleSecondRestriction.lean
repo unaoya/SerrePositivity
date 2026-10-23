@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleSecondEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleSecondNaturality
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalSecondFactors
 
 /-!

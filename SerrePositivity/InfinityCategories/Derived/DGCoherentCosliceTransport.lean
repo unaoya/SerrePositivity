@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
 public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
 /-!
 概要：同じ豊穣後合成が同値なら、coherent nerve の実 coslice 輸送も同値。

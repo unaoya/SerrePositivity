@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PredicateIso
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecompositionEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPredicateReflection
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldIso

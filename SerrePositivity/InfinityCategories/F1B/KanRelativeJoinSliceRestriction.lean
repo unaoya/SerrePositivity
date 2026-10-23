@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinLocalCone
-public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
 /-!
 概要：変動する固定図式の制限と、Kan 拡張の相対 join 上の局所表示の両立。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
 
 /-!
 概要：豊穣随伴の Hom 同型に関する右変数の合成と、元の通常随伴との零単体の互換データ。

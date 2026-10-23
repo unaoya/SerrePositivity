@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ObjectSTrivialFibration
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryCore
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 
 /-! # 全ての辺を同値に送る図式の圏
 概要：Fiore–Pieper の D(m,w) に対応する全同値図式の充満部分単体集合を定義する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleInvertible
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFamily
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFamily
 
 /-!
 概要：元の底変換比較三角形の全パラメーターを可逆三角形の空間へ持ち上げる。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.HammockSourceFunctor
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonNerves
 public import SerrePositivity.EInfinity.Hammock.ExInfinityEnrichedUnit
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 # 元の通常圏から実 Kan hammock nerve への関手

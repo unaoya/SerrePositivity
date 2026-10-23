@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanTerminalRelativeHom
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 
 /-!
 概要：空間の元の単体的圏を、終対象上の left fibrations の単体的圏へ充満忠実に埋め込む。

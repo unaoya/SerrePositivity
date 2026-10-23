@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionLifting
 
 /-!
 概要：相対内部 Hom の終点境界充填と、底での終点境界充填を合成する。

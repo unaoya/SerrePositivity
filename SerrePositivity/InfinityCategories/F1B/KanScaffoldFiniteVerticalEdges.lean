@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteCocartesianEdge
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteFiberComparison
 public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 

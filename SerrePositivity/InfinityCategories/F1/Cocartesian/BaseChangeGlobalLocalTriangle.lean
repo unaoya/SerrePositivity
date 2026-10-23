@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalTransportTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeFirstGlobalFactorDecomposition
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoLocalTriangleIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoLocalTriangleIdentity
 
 /-!
 概要：元の全 Hom 上で、指定局所比較の三辺の貼り合わせは直接の指定大域自然性に一致。

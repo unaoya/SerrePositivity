@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.AnodyneNativeHomEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteSimplexEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramAnodyneRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerAnodyne
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
 
 /-!
 概要：全辺を覆う inner anodyne 部分底上で、元の native Hom を実際の分類先の区間 Hom へ写す。

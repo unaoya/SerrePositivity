@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtensionHom
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderExtension
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderExtension
 
 /-!
 概要：指定自然変換を相対 join 上の図式で表示するための一般の比較。

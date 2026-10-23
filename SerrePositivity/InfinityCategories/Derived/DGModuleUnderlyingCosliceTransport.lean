@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpacePointed
-public import SerrePositivity.InfinityCategories.F1.UniverseTransport
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.Universe.Transport
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 /-!
 概要：基礎空間関手の実辺の可逆性を、元の同じ coslice 輸送の同値性で判定する。
 方針：宇宙持ち上げの実輸送比較と coslice から始点固定 Tw への全 fiber 同値を使う。

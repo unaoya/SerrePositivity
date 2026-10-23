@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldSourceLifting
-public import SerrePositivity.InfinityCategories.F1.ReplacementSpanComparison
+public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementSpanComparison
 
 /-!
 概要：元の局所 cospan の path を保った厳密比較が、実際の pullback 上に誘導する射。

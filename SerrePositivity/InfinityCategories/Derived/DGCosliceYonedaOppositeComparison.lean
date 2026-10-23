@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetSpaceComparison
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafSliceComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafSliceComparison
 /-!
 概要：反対圏の coslice の Yoneda 評価を、元の F1 表現可能前層に比較する。
 方針：元の coslice の表現を実分類関手へ送り、右 slice の反転同型を使う。

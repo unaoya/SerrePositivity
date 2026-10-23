@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation
-public import SerrePositivity.InfinityCategories.F1.RightIntervalHomotopySection
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalHomotopySection
 
 /-!
 概要：両端固定の分数評価を元の右 pinched 写像空間へ移す。

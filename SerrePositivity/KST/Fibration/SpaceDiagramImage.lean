@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SmallEnrichedNerve
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 
 /-! # 元の小さい底の空間値図式を含む、小さい全充満像の coherent nerve -/
 

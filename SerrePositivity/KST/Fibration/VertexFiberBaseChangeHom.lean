@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 
 /-! # 同じ第一射影を保つ既存の二つの実底変換 fiber 同型の順方向射を照合する -/
 

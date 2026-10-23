@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentStringPathFlags
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 public import SerrePositivity.InfinityCategories.Coherent.FunctorReindex
 
 /-! # 元の coherent 図式の合成列を共通対象の豊穣単体へ写す

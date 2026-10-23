@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-! # S• の単体的 Kan core と対角

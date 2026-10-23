@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 

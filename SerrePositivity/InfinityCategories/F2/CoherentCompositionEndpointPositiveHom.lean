@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCompositionEndpointHom
-public import SerrePositivity.InfinityCategories.F1.CoherentFlagEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.FlagEquiv
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantFiber
 
 /-!

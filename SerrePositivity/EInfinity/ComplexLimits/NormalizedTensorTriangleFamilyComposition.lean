@@ -3,7 +3,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleFr
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleRightMaps
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorEvaluationHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyTriangleClasses
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 /-! 概要：元の大域評価三角形は全関手圏内で同じ全族の合成を与える。
 方針：元の全三辺を持つ二単体族を curry する。
 規約：全 K と元の円柱を保持。使われ方：同じ導来 roof との大域比較。 -/

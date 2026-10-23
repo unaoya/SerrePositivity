@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 
 /-!
 概要：混合評価の恒等変換と、固定成分の前合成を元の通常の射で読む。

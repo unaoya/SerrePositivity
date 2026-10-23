@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityTransformation
 public import SerrePositivity.InfinityCategories.F2.Ind.CurryJointHomotopy
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 
 /-!
 概要：元の weighted 表現可能図式から、元の全添字の共同分類への一つの自然変換。

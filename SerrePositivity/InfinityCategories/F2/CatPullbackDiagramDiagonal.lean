@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConeDiagramDiagonalEdge
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeComparisonEdges
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：引き戻し図式の指定円柱の対角関手。

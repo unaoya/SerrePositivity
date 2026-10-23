@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleSpace
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace
 public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
 
 /-!

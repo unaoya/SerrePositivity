@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingVertexRecovery
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingVertexRecovery
 
 /-!
 概要：c1 の指定変換頂点の実際の作用に、全パラメータ上の pointed 持ち上げを付ける。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHom
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFaceEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFaceEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
 
 /-!
 概要：元の比較三角形の Hom から、元の直接の比較 path の Hom への射影は同値。

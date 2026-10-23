@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomMapEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomTransport
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomTransportSquareCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquareCoherence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialRestrictionMaps
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconePointHomTriangle
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationVertex
-public import SerrePositivity.InfinityCategories.F1.CoherentTransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
 
 /-!
 概要：元の全 Hom の三角形の第一辺を、元の指定余錐の標準変換の族と同定する。

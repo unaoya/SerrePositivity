@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparisonLimit
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparisonComponent
-public import SerrePositivity.InfinityCategories.F1.RepresentableLimitCharacterization
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
 
 /-!
 概要：元の関手が保存する指定極限について、写像空間比較の同値性を頂点へ延長。

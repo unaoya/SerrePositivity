@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentVertices
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 概要：通常の順序圏上の図式を simplicial thickening 上の豊穣関手へ送る。

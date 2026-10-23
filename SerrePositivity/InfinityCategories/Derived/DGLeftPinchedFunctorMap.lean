@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedLinearCoordinates
 public import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinched
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentLeftHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.LeftHomEnrichedNaturality
 /-!
 概要：実 dg 関手の左 Hom への作用を、同じ全 Hom 鎖写像の作用へ同定する。
 方針：全単体の関手像と反対 dg 模型の自然性を照合し、同じ二端点へ正規化する。

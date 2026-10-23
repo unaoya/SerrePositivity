@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportFibration
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramMixedHom
-public import SerrePositivity.InfinityCategories.F1.StrictIntervalMappingPullback
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.StrictIntervalMappingPullback
 
 /-!
 概要：一次元の元の輸送図式の後合成は、全内部 Hom で同値を持ち上げる。

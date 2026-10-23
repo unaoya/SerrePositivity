@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldHorizontal
 public import SerrePositivity.InfinityCategories.F2.Ind.ProductGraphFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionWeightedNerve
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianScaffold
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianScaffold
 
 /-!
 概要：元の under scaffold の大域評価と同じ taut scaffold は、両方とも前合成同値。

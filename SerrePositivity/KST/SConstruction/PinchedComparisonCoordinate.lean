@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.EnrichedCompositionReplacement
 public import SerrePositivity.KST.SConstruction.CoherentSimplexCompositionEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentMaximumFlag
+public import SerrePositivity.InfinityCategories.F1.Coherent.MaximumFlag
 
 /-! # 元の pinched 比較面の合成比較座標
 概要：長辺から二辺の合成への Path 包含を、元の比較区間の恒等座標として読む。

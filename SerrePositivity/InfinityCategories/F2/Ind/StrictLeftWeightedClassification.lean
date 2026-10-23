@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCurry
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：任意の通常の left fibration 図式の実際の分類像を、同じ共同 weighted 分類と比較する。

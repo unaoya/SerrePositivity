@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonVertexImage
-public import SerrePositivity.InfinityCategories.F1.IntervalFamilyVertexEdge
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFamilyVertexEdge
 
 /-! 元の構造矢印族の頂点を、同じ閉 augmentation の導来像の実区間図式に同定する。 -/
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.F1B.InnerProductProjection
 

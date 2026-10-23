@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingInvertible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingInvertible
 
 /-!
 概要：元の coherent 変換の全空間作用を元の小さい宇宙へ移す。

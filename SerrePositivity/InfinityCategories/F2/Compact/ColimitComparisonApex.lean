@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
-public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 
 /-!
 概要：元の指定余錐間の比較辺は、両像が余極限なら像の頂点で可逆。

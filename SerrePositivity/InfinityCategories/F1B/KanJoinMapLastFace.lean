@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinInitialVertexDetection
-public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaces
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinInitialVertexDetection
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinExtremeFaces
 
 /-!
 概要：右因子を保つ joinMap の持ち上げと最後の面による検出。

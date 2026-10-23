@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryDiagramComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.IsoTransportQuasicategoryDiagramComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportSectionComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedDiagram
 

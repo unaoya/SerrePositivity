@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRealization
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
 public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
 
 /-!

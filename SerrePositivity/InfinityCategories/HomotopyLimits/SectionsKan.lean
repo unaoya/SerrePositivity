@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanSectionsIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveLeftFibration
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveLeftFibration
 
 /-!
 概要：切断空間と相対関手空間の同型、および Kan 値図式の Bousfield–Kan end の Kan 性。

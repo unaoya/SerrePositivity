@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.KanConeDiagramEdges
 public import SerrePositivity.InfinityCategories.F2.ConeDiagramUpperTriangle
 public import SerrePositivity.InfinityCategories.F2.KanConeTetrahedronSides
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：Kan 図式の上側の比較三角形と三辺。

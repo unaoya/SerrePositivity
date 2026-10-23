@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalComparison
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointComparison
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointComparison
 
 /-!
 概要：区間模型の族の右 fat join への展開。

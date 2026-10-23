@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteComparison
-public import SerrePositivity.InfinityCategories.F1.OverPullbackMorphism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackMorphism
 
 /-!
 概要：有限鎖への引き戻しでの cocartesian scaffold の比較。

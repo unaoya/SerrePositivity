@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-!

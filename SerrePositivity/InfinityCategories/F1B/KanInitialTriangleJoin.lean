@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.InitialHornJoin
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InitialHornJoin
 
 /-!
 概要：三角形の最初のホーンと境界の pushout-join を高次元の最初のホーンとして表示する。

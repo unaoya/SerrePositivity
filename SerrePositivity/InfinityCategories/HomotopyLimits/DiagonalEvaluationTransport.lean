@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UnstraighteningNaturalitySquare
-public import SerrePositivity.InfinityCategories.F1.TransportIntervalSquareComposition
+public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquareComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantIntervalFiberTransport
 
 /-!

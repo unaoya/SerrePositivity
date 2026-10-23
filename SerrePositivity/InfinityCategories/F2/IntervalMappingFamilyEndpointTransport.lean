@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
 
 /-!
 概要：同じ実辺の区間写像族を、終点の等式による表示変更に沿って保持する。

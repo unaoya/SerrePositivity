@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportFamily
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonArrowValue
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparisonArrowValue
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagram
 
 /-!

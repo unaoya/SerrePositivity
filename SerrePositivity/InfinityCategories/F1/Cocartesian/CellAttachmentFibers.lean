@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellAttachmentPullbacks
-public import SerrePositivity.InfinityCategories.F1.VertexFiberIsPullbackIso
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitCone
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramColimitCone
 
 /-!
 概要：既存部分の Hom を固定したセル付加の延長空間を、同じ局所の境界固定 fiber に同定する。

@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberUniverse
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetCosliceFiberEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetPointedDisplay
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
 /-!
 概要：同じ Hom 単位から作る実 pointed 表示は、全ての実 fiber で同値。
 方針：元の実 coslice 比較を持ち上げ、同じ Tw 比較と pointed 比較の全 fiber 同値を合成する。

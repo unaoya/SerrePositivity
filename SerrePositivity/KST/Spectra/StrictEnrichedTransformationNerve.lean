@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEndpoints
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
 /-!
 概要：厳密な単体的自然変換を coherent nerve の実際の区間族へ移す。

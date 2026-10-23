@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.InitialFixedContraction
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
 /-!

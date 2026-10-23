@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceWrapped
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionWitnessDataEquality
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceFamilyComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningSourceFamilyComparison
 
 /-!
 概要：同じ実始域を持つ元の prism 証拠を、F1 の既存の指定始域比較へそのまま渡す。

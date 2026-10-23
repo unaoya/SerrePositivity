@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTopChain
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportPrism
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantNaturality
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTransportPrism
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantNaturality
 
 /-!
 概要：最大添字を持つ weighted 全空間を、その添字での評価へ輸送する全円柱。

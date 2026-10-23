@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 
 /-!
 概要：元の前層 ∞ 圏の同じ Yoneda 像は κ-compact。

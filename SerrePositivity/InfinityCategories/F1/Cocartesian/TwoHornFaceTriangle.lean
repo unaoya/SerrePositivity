@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoHornCoherentCorrection
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareGlobalTriangle
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquareGlobalTriangle
 
 /-!
 概要：面側から指定した自然性の逆向き三角形を、補正同型の合成向きへ移す。

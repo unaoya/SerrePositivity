@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveAugmentationHom
 public import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityInfinity
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 /-!
 概要：元の指定導来対角単位の実包含後の射を回収する。
 方針：指定逆像の回収式と射影的出力比較の同じ augmentation を使う。

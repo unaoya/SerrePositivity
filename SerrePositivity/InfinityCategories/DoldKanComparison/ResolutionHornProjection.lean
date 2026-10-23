@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.StandardHornFaceEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceProjection
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionFaceProjection
 
 /-!
 # 正の欠落面のホーンの射影の Kan 標的の同値性

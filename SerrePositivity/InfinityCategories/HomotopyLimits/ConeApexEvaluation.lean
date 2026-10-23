@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeSectionRestrictionCriterion
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInitialEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInitialEvaluation
 public import SerrePositivity.InfinityCategories.Core.FatJoinInitialComparison
 
 /-!

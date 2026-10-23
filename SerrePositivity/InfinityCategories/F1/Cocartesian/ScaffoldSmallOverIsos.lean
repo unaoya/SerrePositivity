@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldCellCospan
-public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeOverPushout
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldBridgeOverPushout
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexSmallStandardOverIsos
 
 /-!

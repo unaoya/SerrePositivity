@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.KanEnrichedDoubleEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeSectionBaseChangeComparison
+public import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionBaseChangeComparison
 
 /-! # 同じ切断の底変換実現同型は、元の pullback 切断の指定点を保つ -/
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIso
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 /-!
 概要：双加群同型の通常 kernel 作用を K-flat の実完全充満包含で回収する。
 方針：元の指定値と端点等式を保つ。

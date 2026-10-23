@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductCoefficientFiberIso
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductValueEquivalence
-public import SerrePositivity.InfinityCategories.F1.LeftScaffoldComparison
+public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldComparison
 
 /-!
 概要：全単体の切断から同じ初頂点引き戻しへの大域評価自体は前合成同値。

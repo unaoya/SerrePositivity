@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.SpaceCompositionTetrahedronZeroCylinder
 public import SerrePositivity.InfinityCategories.F2.CoherentCompositionPrefixInitial
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourceIdentity
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 
 /-!
 概要：零面の元の実 coslice 円柱は同じ始点の恒等 coslice 点を固定する。

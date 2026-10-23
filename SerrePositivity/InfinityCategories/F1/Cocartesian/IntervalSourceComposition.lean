@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleVertices
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalCompositionTriangle
 
 /-!

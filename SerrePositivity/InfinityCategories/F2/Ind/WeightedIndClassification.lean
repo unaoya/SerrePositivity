@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightWeightedClassification
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackEdgeReflection
-public import SerrePositivity.InfinityCategories.F1.OverPullbackColimits
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackColimits
 
 /-!
 概要：底上の図式の自然な pullback 関手は、各底変換の元の cocartesian 辺を保つ。

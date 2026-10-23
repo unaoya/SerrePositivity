@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFullModel
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexRestrictionEquivalence
 
 /-!
 概要：小さい頂点族上の全部分圏と、その同型飽和上の全部分圏との全同値を構成する。

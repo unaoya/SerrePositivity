@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseEdgewiseWeight
-public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 
 /-!
 概要：元の edgewise 重みの宇宙同型は、始点と終点を記録する元の両包含を保つ。

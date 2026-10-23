@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecomposition
 
 /-!
 概要：底と初期値を固定した相対延長の始域制限は元の初期値を保つ。

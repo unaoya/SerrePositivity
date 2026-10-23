@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawTriangleFace
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportPointPrism
-public import SerrePositivity.InfinityCategories.F1.TrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
 
 /-!
 概要：元の余極限二単体上で、元の二つの raw 普遍輸送を辺に持つ全三角形を充填する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldBridgeHomPullbacks
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldBridgeCoreRestriction
 
 /-!

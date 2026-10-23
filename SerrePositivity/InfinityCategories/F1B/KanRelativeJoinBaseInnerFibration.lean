@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinMapInnerFibration
 public import SerrePositivity.InfinityCategories.F1B.InnerProductProjection
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
 
 /-!
 概要：inner fibration の相対 join の底への射影は inner fibration。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedPathCoordinates
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveFiber
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber
 
 /-!
 概要：構成済みの weighted nerve の比較を一定の底の上で終点固定の fiber へ持ち上げる。

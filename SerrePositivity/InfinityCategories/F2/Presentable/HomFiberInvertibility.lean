@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomFiberEvaluationEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 
 /-!
 概要：分類比較の実 fiber 評価の可逆性を、同じ元の fiber 射の同値性で判定する。

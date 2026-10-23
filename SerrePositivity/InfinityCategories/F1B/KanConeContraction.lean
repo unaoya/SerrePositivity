@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanConeCollapse
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 
 /-!
 概要：錐を頂点へ縮める円柱と、底・頂点・時間両端の厳密な計算。

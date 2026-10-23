@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionCoreLift
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorActionEvaluation
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Transport
 
 /-! # 元の section の全族を指定した辺で評価する厳密な prism -/

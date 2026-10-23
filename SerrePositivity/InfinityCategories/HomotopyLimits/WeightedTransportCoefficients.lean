@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TransportSectionsComparison
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveBaseChange
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveBaseChange
 
 /-!
 概要：係数の値を under 圏の全対象へ輸送し、weighted nerve の係数の族を作る。

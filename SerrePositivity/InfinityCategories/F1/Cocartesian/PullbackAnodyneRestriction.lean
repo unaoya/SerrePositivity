@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackMarkCover
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeRestriction
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorEquivalenceRestriction
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorEquivalenceRestriction
 
 /-!
 概要：全辺を含む inner anodyne な底への、元の cocartesian Hom の自明 Kan 制限。

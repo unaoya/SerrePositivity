@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrism
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFunctorHomPrism
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationVertex
 
 /-!

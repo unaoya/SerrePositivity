@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeFunctor
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorRestrictionLifting
 
 /-!
 概要：底の単射による、元の各底変換の cocartesian Hom の core の制限は Kan fibration。

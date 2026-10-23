@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StrictKanPointedComparison
-public import SerrePositivity.InfinityCategories.F1.PointedReverseFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberCoordinates
 
 /-! # 左解像の既存比較と、同じ apex 移送による pointed 射影の整合性 -/
 

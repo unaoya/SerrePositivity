@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalArrowCospanFamily
 public import SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 概要：矢印圏の辺の実正方形が pullback なら、終点評価に対して cartesian。

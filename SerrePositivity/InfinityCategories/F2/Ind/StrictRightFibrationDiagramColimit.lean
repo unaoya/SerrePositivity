@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictKappaFilteredColimit
-public import SerrePositivity.InfinityCategories.F1.RightFibrationInfinity
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationInfinity
 public import Mathlib.CategoryTheory.Limits.Connected
 public import Mathlib.CategoryTheory.Filtered.Connected
 

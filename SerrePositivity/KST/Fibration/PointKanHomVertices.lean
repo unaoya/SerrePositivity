@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 
 /-! # 一点からの標準 Hom 同型の零単体は、元の Yoneda 点をそのまま回収する -/
 

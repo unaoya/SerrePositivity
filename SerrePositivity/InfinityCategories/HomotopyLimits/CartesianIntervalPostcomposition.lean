@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
+
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalMappingOppositeComposition
 
 /-!

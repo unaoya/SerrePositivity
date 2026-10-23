@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedCoherentProductComparison
 public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：coherent 積図式の元の余極限比較を、同じ辺を保つ頂点円柱にする。

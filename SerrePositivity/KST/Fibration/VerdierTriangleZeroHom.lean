@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StableTriangleZeroHom
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 
 /-! # 指定 Verdier 四角形の上側二胞体の、元の全零値 Hom への読み出し -/
 

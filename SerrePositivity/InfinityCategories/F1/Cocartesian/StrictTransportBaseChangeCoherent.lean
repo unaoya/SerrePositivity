@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportBaseChangeEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningVertices
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramNaturalTransformation
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomCartesianEdges
 
 /-!

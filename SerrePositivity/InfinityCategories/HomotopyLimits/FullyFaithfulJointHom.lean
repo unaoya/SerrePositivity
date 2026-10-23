@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowFunctorComparison
 public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
 
 /-!

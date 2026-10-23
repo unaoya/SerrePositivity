@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorFiberHom
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：指定点に定値な底上の相対射を、その点の fiber に値を持つ族へ移す。

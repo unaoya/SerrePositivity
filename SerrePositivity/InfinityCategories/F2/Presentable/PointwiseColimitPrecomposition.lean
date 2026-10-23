@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
 public import SerrePositivity.InfinityCategories.F2.FunctorCoconeEvaluation
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 
 /-!

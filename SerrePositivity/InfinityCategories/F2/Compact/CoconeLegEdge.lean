@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoconeUnitCylinder
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorPrismFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
 public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
 
 /-!

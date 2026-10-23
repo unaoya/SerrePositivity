@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.KST.Fibration.SpaceDiagramImage
 public import SerrePositivity.KST.Fibration.QuasicategoryUniverseReflection
-public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
+public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.F1.LocalizationSourceIso
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso
 
 /-! # 元の空間値図式を、同じ指定辺の反転を保って小さい全充満標的へ移す -/
 

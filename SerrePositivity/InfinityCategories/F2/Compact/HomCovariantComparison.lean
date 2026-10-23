@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
-public import SerrePositivity.InfinityCategories.F1.HomInfinityBifunctor
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
 
 /-!
 概要：元の共同 Hom の共変制限を、定義に用いた元の全共変表現可能関手へ比較する。

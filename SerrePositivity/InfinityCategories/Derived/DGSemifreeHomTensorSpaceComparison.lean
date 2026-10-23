@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTensorComparison
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetSpaceComparison
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomSourceSpaceComparison
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 /-!
 概要：同じ二入力導来 Hom の基礎空間を、固定入力で元の F1 Hom∞ へ比較する。
 方針：D(R) 値の全関手比較を同じ基礎空間へ送り、既存の両側の分類比較へ接続する。

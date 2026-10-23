@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 public import SerrePositivity.InfinityCategories.Core.CocartesianHomotopyExtension
 public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
 

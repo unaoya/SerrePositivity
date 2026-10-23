@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOpposite
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverIsomorphism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOpposite
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverIsomorphism
 
 /-!
 概要：相対切断の制限の同値性を反転と底上の全空間同型に沿って移す。

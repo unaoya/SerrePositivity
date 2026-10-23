@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FractionFamilyCoslice
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-! # 同じ全分数評価を底と任意の底図式を厳密に保った coslice 比較へ移す -/
 

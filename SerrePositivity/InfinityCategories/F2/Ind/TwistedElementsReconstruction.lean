@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowTargetReconstruction
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.TargetReconstruction
 
 /-!
 概要：元の twisted arrow の復元を、全空間の終点パラメータ全体へ制限する。

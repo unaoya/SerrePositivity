@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyComponents
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-! # 図式全体の合成三角形を元の点つき成分へ戻す
 概要：全入力単体で指定した三つの変換の合成を、元の Kan 模型の成分で回収する。

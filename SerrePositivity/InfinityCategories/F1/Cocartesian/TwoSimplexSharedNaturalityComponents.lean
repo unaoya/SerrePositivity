@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexSharedNaturalityTriangle
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoTriangleEvaluation
 
 /-!
 概要：二辺から共有頂点への元の指定合成は、各元の相対関手で同じ成分を持つ。

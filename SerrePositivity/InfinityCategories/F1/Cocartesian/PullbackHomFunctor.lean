@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomRestriction
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecompositionLaws
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryCore
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecompositionLaws
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 
 /-!
 概要：各底変換上の元の標的へ写す Hom とその core を、実際の制限図式に束ねる。

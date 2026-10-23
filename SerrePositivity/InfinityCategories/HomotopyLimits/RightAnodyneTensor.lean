@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
 public import SerrePositivity.InfinityCategories.F1B.CofinalOppositeFibration
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
 

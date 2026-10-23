@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofReplacementTransport
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFunctor
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFunctor
 
 /-! # 局所頂点持ち上げから replacement の連結成分上の全射性
 

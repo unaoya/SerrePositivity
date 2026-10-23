@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGStandardClosedComparison
 public import SerrePositivity.KST.SConstruction.DGStandardCoherentMap
 public import SerrePositivity.KST.Spectra.StrictEnrichedTransformationNerve
-public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 
 /-! # 全 Hom 閉零同型の標準 coherent nerve への移送
 概要：標準 DK へ移した閉零比較は、元の成分を持つ実関手同型を与える。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DerivedCoefficientMapping
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientEvaluationSection
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-! 元の係数から実導来端点間 Hom への選択された比較と、元の augmentation の厳密な回収。 -/
 @[expose] public section

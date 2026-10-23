@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleFunctors
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseEdgewiseWeight
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowProjection
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.Projection
 
 /-!
 概要：元の twisted arrow 単体集合の宇宙持ち上げと、持ち上げた元の圏のものを同定する。

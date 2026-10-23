@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteCoconeSections
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedConeSectionRestriction
-public import SerrePositivity.InfinityCategories.F1.PresheafUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafUnstraightening
 
 /-!
 概要：同じ有限全余錐の切断制限を、元の right unstraightening の反転へ移す。

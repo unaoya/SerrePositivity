@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.IdentityFractionEvaluation
 public import SerrePositivity.KST.Fibration.FixedFractionCosliceGroupoid
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 
 /-! # 元の coslice 評価の恒等点を、同じ coslice fiber 内で正規化する -/
 

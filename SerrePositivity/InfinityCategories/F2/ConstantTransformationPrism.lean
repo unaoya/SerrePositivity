@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalFatDiagram
-public import SerrePositivity.InfinityCategories.F1.FunctorParameterizedPrism
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFatDiagram
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorParameterizedPrism
 
 /-!
 概要：定値図式への変換の空間を、図式を固定した円柱の族で表示する。

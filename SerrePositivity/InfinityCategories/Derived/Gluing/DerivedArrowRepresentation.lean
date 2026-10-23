@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalHomMapCriterion
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalDerivedHomMap
 public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 public import SerrePositivity.InfinityCategories.Derived.Gluing.EdgeRepresentation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedArrowOfEdge
 

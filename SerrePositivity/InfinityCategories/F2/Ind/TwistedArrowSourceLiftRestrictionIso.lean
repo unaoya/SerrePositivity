@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedArrowSourceLift
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeEvaluationIsoTransport
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSquarePost
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSquarePost
 
 /-!
 概要：元の right fibration の全 twisted-arrow 持ち上げを制限すると、元の左端評価と相対同型。

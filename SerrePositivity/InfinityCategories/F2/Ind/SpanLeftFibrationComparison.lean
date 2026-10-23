@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverEquivalence
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinityEquivalence
 
 /-!
 概要：同じ底上の同値 span を、元の右脚との相対比較を保つ left fibration 間の同値射へ移す。

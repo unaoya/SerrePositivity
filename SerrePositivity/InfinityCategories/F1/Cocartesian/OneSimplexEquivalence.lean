@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalHomEquiv
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramHomCriterion
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalHomCriterion
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
 /-!

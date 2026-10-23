@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberValue
-public import SerrePositivity.InfinityCategories.F1.PointedRightIntervalIdentity
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedRightIntervalIdentity
 
 /-!
 概要：既存の pointed fiber の値比較の逆を、同じ右 Hom の恒等点輸送で表示する。

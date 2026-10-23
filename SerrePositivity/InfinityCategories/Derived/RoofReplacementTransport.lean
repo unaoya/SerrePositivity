@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiber
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
 
 /-! # 屋根 replacement の係数頂点と細分輸送の実辺

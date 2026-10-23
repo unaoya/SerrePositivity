@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPullbackMarked
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorRestrictionLifting
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexRestrictionEquivalence
 
 /-!
 概要：任意の部分底で、元の辺保存 Hom の同じ scaffold 前合成は同値。

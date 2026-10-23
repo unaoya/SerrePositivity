@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeEnrichmentLaws
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationInfinity
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomCartesianEdges
 
 /-!

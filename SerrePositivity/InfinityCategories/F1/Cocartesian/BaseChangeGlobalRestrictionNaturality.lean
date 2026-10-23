@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalLocalTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IteratedLocalRestrictionCoherence
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoSymmetricWhisker
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSymmetricWhisker
 
 /-!
 概要：既存の局所制限自然性の第一因子を、元の全 Hom 上の二回目の大域自然性へ戻す。

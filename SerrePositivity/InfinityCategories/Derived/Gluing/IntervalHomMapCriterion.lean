@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIntervalMapping
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIntervalMapping
 
 /-! 一つの端点対での実 pinched Hom の同値性を、同じ区間 Hom の後合成へ移す。 -/
 @[expose] public section

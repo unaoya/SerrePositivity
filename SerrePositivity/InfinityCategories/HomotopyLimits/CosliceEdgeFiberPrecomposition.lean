@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeFamilies
-public import SerrePositivity.InfinityCategories.F1.PointCoslicePostIso
+public import SerrePositivity.InfinityCategories.F1.Transport.PointCoslicePostIso
 
 /-!
 概要：実際の辺による coslice の前合成を、両始点の表示を揃えて固定終点の fiber に制限する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CompositionReplacementTetrahedron
-public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 
 /-! # 元の豊穣比較辺を面に保持する coherent 合成三角形
 概要：長辺から二辺の合成への元の豊穣辺を、同じ比較面を持つ coherent 四面体へ移す。

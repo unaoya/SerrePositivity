@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFunctorCoprodPair
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFibration
 
 /-!
 概要：互いに交わらない二部分の同時制限を、余積形状への制限で構成する。

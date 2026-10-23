@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentRightIntervalCutSimplex
+public import SerrePositivity.InfinityCategories.F1.Coherent.RightIntervalCutSimplex
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramHomInterval
-public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrism
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFunctorHomPrism
 
 /-!
 概要：元の全 Hom 作用の prism の値を、切断後の同じ対角評価へ移す。

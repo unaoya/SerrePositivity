@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerAnodyne
-public import SerrePositivity.InfinityCategories.F1.UniverseTrivialKanFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
+public import SerrePositivity.InfinityCategories.F1.Universe.TrivialKanFibration
 public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
 public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationCofinality
 

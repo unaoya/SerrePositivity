@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionSimplex
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSimplex
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 
 /-!
 概要：二つの定値豊穣射の合成二単体を、元の通常の合成三角形と同定する。

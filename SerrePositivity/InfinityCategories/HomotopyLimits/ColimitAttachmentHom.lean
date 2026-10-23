@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentComparison
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：部分余極限の coherent な比較から、元の単体的圏の実際の頂点間の射を取り出す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoHornSharedRestrictions
-public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleIdentity
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleIdentity
 
 /-!
 概要：二次内ホーンと共有境界の比較を、元の大域 Hom 上の同じ指定三角形で結ぶ。

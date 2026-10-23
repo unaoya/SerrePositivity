@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetConstants
 public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：全パラメータの定値関手間の Hom 比較から、元の区間写像空間の同値を得る。

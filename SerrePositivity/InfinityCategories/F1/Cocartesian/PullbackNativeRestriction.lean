@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomIsoEvaluation
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorFamilyLaws
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorFamilyLaws
 
 /-!
 概要：元の cocartesian Hom を、両射影を底変換した同じ cocartesian Hom へ制限する。

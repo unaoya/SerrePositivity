@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomFixedComponentPresentation
-public import SerrePositivity.InfinityCategories.F1.ParameterizedSquare
-public import SerrePositivity.InfinityCategories.F1.LocalKanDiagramStrictification
+public import SerrePositivity.InfinityCategories.F1.Diagrams.ParameterizedSquare
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalKanDiagramStrictification
 
 /-!
 概要：一次元の実際の固定成分 fiber の族を、同じ正方形の二つの三角形に分ける。

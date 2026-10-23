@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom
 public import SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningOppositeComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningOppositeComparison
 
 /-! # 元の strict transport の反転比較を、同じ大域比較の二重評価に戻す -/
 

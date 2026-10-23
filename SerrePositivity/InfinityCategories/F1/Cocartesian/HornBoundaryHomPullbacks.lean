@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.HornBoundaryOver
+public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryOver
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellAttachmentPullbacks
 
 /-!

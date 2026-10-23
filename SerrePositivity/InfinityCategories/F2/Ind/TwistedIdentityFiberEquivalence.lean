@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiber
-public import SerrePositivity.InfinityCategories.F1.EdgewiseLeftFilling
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseLeftFilling
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
 
 /-!

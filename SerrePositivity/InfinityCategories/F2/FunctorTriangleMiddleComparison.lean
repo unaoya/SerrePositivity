@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleMiddleEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoPresentation
 
 /-!

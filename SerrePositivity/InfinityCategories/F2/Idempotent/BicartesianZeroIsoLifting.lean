@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroBoundary
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLiftingInvertible
 
 /-!

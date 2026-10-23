@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdge
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
 /-!
 概要：パラメータ辺を通常の射の coherent な辺と同定し、両端を固定する。

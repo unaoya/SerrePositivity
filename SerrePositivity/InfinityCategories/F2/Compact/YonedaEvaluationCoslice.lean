@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
-public import SerrePositivity.InfinityCategories.F1.CosliceUniversalPrismLift
-public import SerrePositivity.InfinityCategories.F1.PresheafInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceUniversalPrismLift
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 
 /-!
 概要：元の Yoneda 対象の coslice から、元の前層評価の unstraightening への一つの大域射。

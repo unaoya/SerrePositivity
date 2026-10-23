@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomCoefficientPath
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientMapping
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-! canonical な導来 Hom 比較で、同じ実 gluing Hom の係数 path を移す。 -/
 @[expose] public section

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmallPointedFiberNaturality
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingFiberTransport
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 
 /-!
 概要：可逆な coherent 変換の指定された小さい全空間作用は前合成同値。

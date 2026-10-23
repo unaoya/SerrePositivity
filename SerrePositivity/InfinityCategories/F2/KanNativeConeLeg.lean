@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
-public import SerrePositivity.InfinityCategories.F1.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 
 /-!
 概要：𝒮 の native な錐の脚を、指定した Kan 対象間の実際の射へ読み戻す。

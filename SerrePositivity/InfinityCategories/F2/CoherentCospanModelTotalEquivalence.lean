@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanModelFiberEquivalence
 public import SerrePositivity.InfinityCategories.F2.FiberwiseIntervalPullbackLifting
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
-public import SerrePositivity.InfinityCategories.F1.PointedReverseFiberVertices
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberVertices
 
 /-! # 同じ Kan 点の矢印と coherent な比較成分の合成を、元の点の実像として読む -/
 

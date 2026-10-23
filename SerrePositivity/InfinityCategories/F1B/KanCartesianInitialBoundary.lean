@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornComparison
-public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 
 /-!

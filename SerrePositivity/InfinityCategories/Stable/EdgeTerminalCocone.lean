@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 
 /-! # 区間図式の終点余錐

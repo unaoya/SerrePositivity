@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondFirstNaturality
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 
 /-!
 概要：第二面の二回目の輸送因子を、元の底変換自然性の同じ両端へ正規化する。

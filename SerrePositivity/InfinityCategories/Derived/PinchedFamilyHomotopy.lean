@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 

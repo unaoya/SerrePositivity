@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedCoreFunctor
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonComposition
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedComparisonComposition
 
 /-! # 全高次比較の実 core への自然な持ち上げ
 概要：元の全 Hom に自然な比較を、同じ実 core 値の全パラメータ比較に移す。

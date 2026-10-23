@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 
 /-! # 二つの空間値図式を同時に含む、小さいパラメータ単体集合 -/
 

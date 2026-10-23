@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.PointedFamilyPointHom
-public import SerrePositivity.InfinityCategories.F1.TransportWitnessDiagram
-public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.WitnessDiagram
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
 
 /-! # 同じ表現空間の二つの射影を、元の指定点で同時に評価する -/

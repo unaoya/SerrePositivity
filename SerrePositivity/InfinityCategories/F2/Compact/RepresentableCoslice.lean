@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
-public import SerrePositivity.InfinityCategories.F1.CovariantRepresentableInfinity
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafSliceComparison
-public import SerrePositivity.InfinityCategories.F1.PointCoslicePostIso
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafSliceComparison
+public import SerrePositivity.InfinityCategories.F1.Transport.PointCoslicePostIso
 
 /-!
 概要：定義に用いた元の全共変 Hom 関手を、元の対象の coslice 射影の分類図式と比較。

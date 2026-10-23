@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentPathImageEndpoints
 public import SerrePositivity.KST.SConstruction.CoherentStringDiagramCells
-public import SerrePositivity.InfinityCategories.F1.CoherentHomMono
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomMono
 
 /-! # 元の合成列の端点を固定する native Hom の評価
 概要：各合成列の元の Path の全作用を、元の射の両端を持つ同じ写像空間へ写す。

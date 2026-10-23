@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 
 /-!
 概要：元の相対評価の指定同型を、底と実際の評価写像の等式で厳密に移送する。

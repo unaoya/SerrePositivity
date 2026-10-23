@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 public import SerrePositivity.InfinityCategories.F1B.CofinalFunctorVertices
 /-!
 概要：指定初期図式と指定全底を持つ実屋根評価 prism の全高次空間を構成する。

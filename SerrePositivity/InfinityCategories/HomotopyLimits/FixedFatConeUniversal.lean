@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedEndpointFatComparison
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 
 /-!
 概要：両端固定の fat join の錐の空間の任意パラメータでの普遍性。

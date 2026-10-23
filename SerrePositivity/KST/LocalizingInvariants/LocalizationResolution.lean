@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal
-public import SerrePositivity.InfinityCategories.F1.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
 
 /-!
 概要：任意の辺集合の局所化を、実際の quasicategory と元の射として構成する。

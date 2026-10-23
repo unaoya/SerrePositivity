@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.NativePointedConeLift
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeSectionRestrictionCriterion
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedStrictConeFamily
 

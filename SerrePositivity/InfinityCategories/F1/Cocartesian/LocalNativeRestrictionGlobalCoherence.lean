@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalNativeRestrictionGlobalPasting
-public import SerrePositivity.InfinityCategories.F1.IsoPastingEndpointTransport
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.IsoPastingEndpointTransport
 
 /-!
 概要：既存の nativeRestrictionIso を元の全 Hom に戻すと、同じ指定二因子の合成になる。

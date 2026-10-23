@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChangeNaturality
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
 
 /-!

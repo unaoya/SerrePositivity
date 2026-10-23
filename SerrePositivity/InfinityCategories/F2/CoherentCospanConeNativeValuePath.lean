@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanConeValuePath
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeComposite
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：元の cospan 錐の指定可換性と四つの native 余極限写像の値比較を同時に結ぶ。

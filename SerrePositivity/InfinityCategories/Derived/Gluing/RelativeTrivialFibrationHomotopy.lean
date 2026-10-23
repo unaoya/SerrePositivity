@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TrivialFibrationHomotopy
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
 
 /-! 同じ基底と指定部分を持つ持ち上げを、両条件を全時間で固定して比較する。 -/

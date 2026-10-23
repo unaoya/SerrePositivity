@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPullbackLifts
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackLiftPreservation
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomRestriction
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
 
 /-!
 概要：部分底上の元の cocartesian Hom を、同じ比較の像の辺を保つ scaffold Hom へ制限する。

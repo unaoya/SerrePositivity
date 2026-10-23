@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalHomOverNaturality
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulNormalizedIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalRestrictionNaturality
 
 /-!

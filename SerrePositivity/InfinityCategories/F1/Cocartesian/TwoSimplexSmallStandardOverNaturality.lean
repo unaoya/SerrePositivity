@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexSmallStandardOverIsos
-public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
+public import SerrePositivity.InfinityCategories.F1.Universe.RelativeOverPre
 
 /-!
 概要：元の共有頂点の表示同型は、標準二辺への同じ二包含に整合する。

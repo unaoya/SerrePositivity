@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentHomReindex
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomReindex
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 
 /-!

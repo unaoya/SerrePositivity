@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseDiagram
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 
 /-!
 概要：全 C・全前層にまたがる元の Yoneda Hom と元の評価を、同じ底上の図式に固定する。

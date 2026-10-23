@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPullbackNativeLift
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 
 /-!
 概要：セル貼合せと同じ宇宙で、元の native 境界固定 Hom を同じ scaffold と比較する。

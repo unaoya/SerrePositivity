@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointEvaluation
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 
 /-!
 概要：指定 fiber 終点の係数の前合成は、元の全延長評価の同じ前合成になる。

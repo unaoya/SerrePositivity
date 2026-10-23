@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
 
 /-!
 概要：元の通常の Kan 図式と自然変換を、同じ KanDiagramObject の通常の図式に束縛する。

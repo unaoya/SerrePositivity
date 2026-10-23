@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsAction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationInfinity
-public import SerrePositivity.InfinityCategories.F1.QCatSimplicial
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：元の cocartesian section への全相対作用を、QCat 値の豊穣評価へ束ねる。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomFirst
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport
 
 /-!
 概要：元の分解三角形の最初の面での二回目の底変換の指定輸送比較。

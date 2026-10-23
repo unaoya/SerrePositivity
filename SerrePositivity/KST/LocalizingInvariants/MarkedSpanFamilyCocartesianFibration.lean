@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 
 /-!
 概要：第一終点を固定した分母付き span の第二終点射影は cocartesian fibration。

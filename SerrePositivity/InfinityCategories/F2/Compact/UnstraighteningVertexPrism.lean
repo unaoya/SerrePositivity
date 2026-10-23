@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingVertexRecovery
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingVertexRecovery
 
 /-!
 概要：元の写像空間の指定頂点に対応する、選択済みの実際の unstraightening prism。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionShapeColimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionShapeFibration
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderSkeletonColimit
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderSkeletonColimit
 
 /-!
 概要：任意の coherent な図式の切断空間を、全ての相対骨格の切断空間の塔の極限で表す。

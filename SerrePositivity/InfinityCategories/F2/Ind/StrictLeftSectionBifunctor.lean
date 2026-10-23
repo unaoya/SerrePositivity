@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftClassificationSections
-public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeConstant
+public import SerrePositivity.InfinityCategories.F1.Diagrams.DiagonalRelativeConstant
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!

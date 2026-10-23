@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakPointLifting
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 
 /-!
 概要：元の弱い全 retract 図式を、分裂点を固定して cartesian fibration へ持ち上げる。

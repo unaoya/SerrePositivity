@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanMappingCylinderHom
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderEquivalence
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderEquivalence
 public import Mathlib.CategoryTheory.HomCongr
 
 /-!

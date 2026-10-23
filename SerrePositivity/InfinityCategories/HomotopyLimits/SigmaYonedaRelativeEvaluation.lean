@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaYonedaEvaluation
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
 
 /-!
 概要：P_Σ 内の元の区間 Hom 評価を、小さい元の相対 Hom の評価へ厳密に移す。

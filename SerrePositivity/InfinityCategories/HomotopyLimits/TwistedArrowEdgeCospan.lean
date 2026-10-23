@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowEdgeCoordinates
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowProjection
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.Projection
 
 /-!
 概要：元の辺に付随する Tw 内の id_x → f ← id_y の同じ二辺を構成する。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.HigherHornEdgeCover
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteNerveUniverse
+public import SerrePositivity.InfinityCategories.F1.Simplicial.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteNerveUniverse
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
 
 /-!

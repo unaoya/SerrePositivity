@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomSpan
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport
 
 /-!
 概要：元の結合比較 Hom の同じ一射影の切断による、元の Hom の輸送。

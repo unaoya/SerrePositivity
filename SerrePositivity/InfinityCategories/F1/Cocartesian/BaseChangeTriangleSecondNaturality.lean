@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTransp
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondCompositeFactors
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondAssociativityNormalization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondFirstNormalization
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPastingTransport
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPastingTransport
 
 /-!
 概要：元の輸送三角形の第二辺は、既存の局所結合輸送と二回目の大域自然性の合成。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexStandardTargetComponents
-public import SerrePositivity.InfinityCategories.F1.SpanPullbackIsomorphism
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.Joins.SpanPullbackIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornHomPullbacks
 
 /-!
 概要：元の target pullback と同じ標準内ホーンの target pullback を同型で結ぶ。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
+public import SerrePositivity.InfinityCategories.F1.Simplicial.BoundaryFactorization
 
 /-!
 概要：任意の比較同値による元の全余錐圏の制限は同値で、指定余錐の余極限性を保存・反映する。

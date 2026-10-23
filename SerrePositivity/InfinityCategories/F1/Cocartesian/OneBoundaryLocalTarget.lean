@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryLocalSource
-public import SerrePositivity.InfinityCategories.F1.UniverseOverFunctor
+public import SerrePositivity.InfinityCategories.F1.Universe.OverFunctor
 
 /-!
 概要：一単体の全局所比較を境界へ制限した積表示は、同じ両端への直接制限の対。

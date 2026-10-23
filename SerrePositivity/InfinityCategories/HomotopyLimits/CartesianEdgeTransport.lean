@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianPrismOpposite
-public import SerrePositivity.InfinityCategories.F1.EdgeTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport
 public import SerrePositivity.InfinityCategories.F1B.KanCartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornFibrationComparison
 public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite

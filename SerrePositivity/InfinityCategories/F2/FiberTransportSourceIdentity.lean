@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamilyNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilyNaturality
 public import SerrePositivity.InfinityCategories.F2.FiberTransportFamilyPrismIdentity
 
 /-!

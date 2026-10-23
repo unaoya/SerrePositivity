@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.StandardSimplexInnerFaceIndex
+public import SerrePositivity.InfinityCategories.F1.Simplicial.StandardSimplexInnerFaceIndex
 
 /-!
 概要：挿入する頂点より前の頂点が残る面の番号は零ではない。

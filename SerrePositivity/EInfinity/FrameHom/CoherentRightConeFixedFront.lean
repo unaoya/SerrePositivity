@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.CoherentRightConeTransport
-public import SerrePositivity.InfinityCategories.F1.CoherentHomReindex
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomReindex
 
 /-!
 # 定値前面の元の coherent 錐と Hom 比較単体

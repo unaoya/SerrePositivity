@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldBase
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionEvaluation
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldFiber
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldFiber
 
 /-!
 概要：大域 under scaffold の指定値での制限は、構成済みの同じ底上の評価射に一致する。

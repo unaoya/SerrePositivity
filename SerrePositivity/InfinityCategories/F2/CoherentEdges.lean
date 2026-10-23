@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentOrderDiagram
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：単体的圏の射を coherent nerve の辺へ送り、指定射と両端点を回収する。

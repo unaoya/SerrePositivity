@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SquareComparison
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SquareComparison
 
 /-!
 概要：縦に貼り合わせた可換四角形の比較射を pullback で分解する。

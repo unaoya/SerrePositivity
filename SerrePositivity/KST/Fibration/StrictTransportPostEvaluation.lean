@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration
-public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 
 /-! # 同じ全 strict transport 比較の、元の恒等射評価との厳密な可換性 -/
 

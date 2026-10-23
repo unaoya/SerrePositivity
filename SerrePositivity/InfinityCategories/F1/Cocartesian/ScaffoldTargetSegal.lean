@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldLargeOverIsos
-public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeHomPullbacks
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldBridgeHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramAnodyneRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningHomInterval
 
 /-!

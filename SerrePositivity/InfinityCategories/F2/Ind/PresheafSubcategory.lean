@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful
 public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
 
 /-!

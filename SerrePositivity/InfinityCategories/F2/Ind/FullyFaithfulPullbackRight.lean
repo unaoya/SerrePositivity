@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PinchedHomPullbackSquare
 public import SerrePositivity.InfinityCategories.F2.PinchedHomEndpointTransport
-public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifting
-public import SerrePositivity.InfinityCategories.F1.EquivalenceLiftingPullback
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLiftingPullback
 
 /-!
 概要：右側の射が inner fibration のとき、充満忠実性を厳密な引き戻しへ移す。

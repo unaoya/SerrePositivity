@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoslicePointFamily
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointFamily
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 
 /-! # 同じ coslice からの底上の全写像空間の比較を、元の恒等錐での評価へ戻す -/
 

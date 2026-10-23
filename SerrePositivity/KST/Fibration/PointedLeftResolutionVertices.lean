@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.PointKanHomVertices
-public import SerrePositivity.InfinityCategories.F1.PointedReverseFiberVertices
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberVertices
 
 /-! # 元の左解像比較の零単体を、反転した空間の同じ元の点として回収する -/
 

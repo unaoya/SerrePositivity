@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedEndpointConeIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionConeUniversal
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 
 /-!
 概要：両端固定の錐と coslice の切断を、図式の射に沿って制限する。

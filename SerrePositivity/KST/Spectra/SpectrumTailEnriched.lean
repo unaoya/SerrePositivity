@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumTail
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：一段の添字移動を Sp の全単体上の関手にする。

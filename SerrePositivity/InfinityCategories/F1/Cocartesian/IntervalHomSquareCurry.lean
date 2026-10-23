@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalHomSquareFaces
-public import SerrePositivity.InfinityCategories.F1.LocalIntervalSquareReindex
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalIntervalSquareReindex
 
 /-!
 概要：同じ三辺を固定した標準正方形を、元の固定成分 Hom fiber の族へ戻す。

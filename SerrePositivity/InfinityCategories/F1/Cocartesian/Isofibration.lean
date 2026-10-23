@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CompStructLifting
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianCancellation
 public import SerrePositivity.InfinityCategories.F1B.KanIsofibrationCriterion
 

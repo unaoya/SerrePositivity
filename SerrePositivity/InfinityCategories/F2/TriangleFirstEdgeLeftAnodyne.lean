@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.ConeAnodyne
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
 
 /-!
 概要：最初の辺を固定した全三角形の延長空間を扱うための left anodyne な包含。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberEmbedding
-public import SerrePositivity.InfinityCategories.F1.JoinIntervalEndpointPullbacks
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalEndpointPullbacks
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFiberCocone
 
 /-!

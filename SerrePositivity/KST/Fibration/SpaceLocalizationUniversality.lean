@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
 public import SerrePositivity.KST.Fibration.SpaceDiagramLocalizationDescent
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-! # 元の小さい商局所化の、宇宙を揃えた空間値関手 ∞ 圏での普遍性 -/
 

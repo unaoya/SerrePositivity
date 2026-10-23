@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningEssentialSurjectivity
-public import SerrePositivity.InfinityCategories.F1.NerveTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningOppositeComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1.Transport.NerveTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningOppositeComparison
 
 /-!
 概要：任意の通常の小圏上の coherent な空間値図式を、同じ添字の strict Kan 図式へ移す。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportWitness
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningEvaluation
 public import SerrePositivity.InfinityCategories.F2.PointedIntervalTransport
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitnessRestriction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitnessRestriction
 
 /-!
 概要：定値図式間の実際の unstraightening 比較の fiber 評価を普遍 pointed-space 輸送と比較する。

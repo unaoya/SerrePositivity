@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationPrism
 public import SerrePositivity.InfinityCategories.F2.CoconeSquareParameters
-public import SerrePositivity.InfinityCategories.F1.CoherentTransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
 
 /-!
 概要：元の圏内の区間の族を、定値図式の間の変換の族へ厳密に移す。

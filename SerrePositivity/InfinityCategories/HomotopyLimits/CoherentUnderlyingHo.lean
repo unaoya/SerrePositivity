@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 
 /-!

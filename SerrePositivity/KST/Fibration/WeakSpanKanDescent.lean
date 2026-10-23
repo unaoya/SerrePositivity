@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakSpanKanInitialInversion
-public import SerrePositivity.InfinityCategories.F1.TransportLocalizationUlift
+public import SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 
 /-! # 全 span の coherent Kan 図式の、元の底への全関手 ∞ 圏による降下 -/

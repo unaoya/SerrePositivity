@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramComparison
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedDiagram
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeEnrichedComparison
 

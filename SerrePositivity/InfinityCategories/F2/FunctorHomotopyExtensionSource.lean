@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FunctorHomotopyPrismVertices
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionUniversalInitial
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMappingLaws
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMappingLaws
 
 /-!
 概要：元の初期値固定の全延長空間の比較は、動く始点評価では同じ指定始点の恒等となる。

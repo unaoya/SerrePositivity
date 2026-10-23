@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
-public import SerrePositivity.InfinityCategories.F1.OverPullbackMorphism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackMorphism
 
 /-!
 概要：底を保つ比較射の引き戻しと、その fiber の自然性。

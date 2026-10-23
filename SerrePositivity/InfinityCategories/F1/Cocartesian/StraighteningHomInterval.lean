@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedHomIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedHomIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedRealization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeDiagramComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportDiagram

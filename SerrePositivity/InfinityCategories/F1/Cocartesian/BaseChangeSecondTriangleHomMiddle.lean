@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomSecond
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomSpan
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomSpan
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFaceEvaluation
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFaceEvaluation
 
 /-!
 概要：元の二回目の比較 Hom と元の結合比較 Hom は、同じ中間の分類 Hom を厳密に共有する。

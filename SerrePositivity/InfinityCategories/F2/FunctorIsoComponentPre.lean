@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentPost
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：元の関手同型の前合成の成分を、同じ元の同型の元の点での評価へ戻す。

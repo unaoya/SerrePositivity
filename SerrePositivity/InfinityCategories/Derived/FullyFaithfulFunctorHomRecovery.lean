@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange
 /-!
 概要：完全充満な後合成から、任意の全関手射を回収する。

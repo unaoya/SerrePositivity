@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityCocone
-public import SerrePositivity.InfinityCategories.F1.UniverseWeightedTransport
+public import SerrePositivity.InfinityCategories.F1.Universe.WeightedTransport
 
 /-!
 概要：weighted 密度図式の同じ添字 fiber は、元の各 right fibration 全空間の密度図式。

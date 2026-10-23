@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CoherentCompositionConstantSimplex
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFixedTriangle
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionSquareEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionFixedTriangle
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSquareEvaluation
 
 /-!
 概要：豊穣合成三角形の通常の射での制限は、元の通常の合成二単体そのものである。

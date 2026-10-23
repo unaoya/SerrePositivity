@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalHomotopy
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：右 pinched 比較による任意の区間族のホモトピーまでの回収。

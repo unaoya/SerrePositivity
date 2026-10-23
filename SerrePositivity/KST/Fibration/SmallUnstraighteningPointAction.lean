@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
-public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberFamily
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberFamily
 
 /-! # 指定した小さい fiber 点での同じ全変換空間の作用を、元の pointed-space 作用と結ぶ -/
 

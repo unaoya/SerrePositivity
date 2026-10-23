@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityInfinity
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 /-!
 概要：通常 K-flat kernel 作用の対角単位を、元の実 co-Yoneda 単位から回収する。
 方針：元の生の nerve の指定単位を、完全充満な実包含を通じて持ち上げる。

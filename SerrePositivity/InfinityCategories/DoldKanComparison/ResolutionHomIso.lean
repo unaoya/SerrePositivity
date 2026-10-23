@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomEquiv
-public import SerrePositivity.InfinityCategories.F1.CoherentFlagIso
+public import SerrePositivity.InfinityCategories.F1.Coherent.FlagIso
 
 /-!
 # coherent pinched Hom と解像の右随伴の同型

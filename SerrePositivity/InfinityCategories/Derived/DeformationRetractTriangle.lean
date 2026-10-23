@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DeformationHomNaturality
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：同じ変形円柱からの戻り同型と、局所化前合成の三角式を証明する。
 方針：同じ指定値と円柱の前後合成を全関手射の等式で照合する。

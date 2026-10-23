@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CosliceFiberVertexFactor
-public import SerrePositivity.InfinityCategories.F1.PointedReverseFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberCoordinates
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
 
 /-!

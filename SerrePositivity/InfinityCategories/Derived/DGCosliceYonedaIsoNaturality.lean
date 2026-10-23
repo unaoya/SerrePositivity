@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetSpaceComparison
-public import SerrePositivity.InfinityCategories.F1.PointCoslicePostIso
-public import SerrePositivity.InfinityCategories.F1.TransportRepresentationCartesianRestriction
+public import SerrePositivity.InfinityCategories.F1.Transport.PointCoslicePostIso
+public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationCartesianRestriction
 /-!
 概要：coslice の Yoneda 評価を、底の同型による元の全関手の前合成へ比較する。
 方針：同じ coslice 同型の引戻し四角形に沿って transport 表現を制限する。

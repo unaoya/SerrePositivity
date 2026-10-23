@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 
 /-! # 実 coslice 辺が指定する、元の矢印と底の辺の実合成三角形 -/
 

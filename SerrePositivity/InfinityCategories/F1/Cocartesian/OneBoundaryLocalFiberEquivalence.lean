@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryLocalCorrection
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 
 /-!
 概要：任意の一単体の両端を固定した、元の全局所 Hom の同じ分類比較の同値性。

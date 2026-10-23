@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftSectionBifunctor
-public import SerrePositivity.InfinityCategories.F1.KanDiagramRealization
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramRealization
 
 /-!
 概要：元の通常の添字と全相対定義域の同時評価を、同じ積図式の coherent 表示へ同定する。

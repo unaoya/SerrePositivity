@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangle
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramComparisonExt
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramComparisonExt
 
 /-!
 概要：元の豊穣三角形の合成比較は、既存の元の直接の底変換比較そのもの。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.KanDiagramComponentPointHom
 public import SerrePositivity.KST.Fibration.FunctorIsoValue
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramJointComparison
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDiagramJointComparison
 
 /-! # 豊穣図式の同じ共同比較の指定成分で、元の係数点を追跡する -/
 

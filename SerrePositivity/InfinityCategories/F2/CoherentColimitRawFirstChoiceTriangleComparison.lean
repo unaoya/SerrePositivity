@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawConstantEd
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentNaturality
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMappingLaws
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMappingLaws
 
 /-!
 概要：元の余極限二単体上で、元の二つの raw 普遍輸送を辺に持つ全三角形を充填する。

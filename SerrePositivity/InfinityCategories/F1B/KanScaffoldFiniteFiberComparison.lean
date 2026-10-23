@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteCylinderEndpoints
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 

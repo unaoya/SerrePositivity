@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaYonedaInfinity
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
 
 /-!
 概要：P_Σ 内の元の Yoneda 対象から任意の対象への写像空間を評価する。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafValues
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafValues
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
 
 /-!

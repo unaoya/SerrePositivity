@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedFiniteFibe
 public import SerrePositivity.InfinityCategories.F2.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanObjects
 public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：元の有限共通 fiber 積の全空間 Kan 模型を頂点とする、native な全有限積錐。

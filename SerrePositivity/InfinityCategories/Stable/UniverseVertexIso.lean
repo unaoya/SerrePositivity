@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
 
 /-! # 実頂点同型の宇宙持ち上げと降下

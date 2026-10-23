@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningRelativeProjection
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：定値標的への実作用の相対後合成を、同じ実作用の値への後合成へ厳密に移す。

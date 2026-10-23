@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableCone
-public import SerrePositivity.InfinityCategories.F1.CoherentSpaceSmallLimits
+public import SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedColimitPreservation
 
 /-!

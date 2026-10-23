@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeComposition
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorFamilies
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorFamilies
 
 /-!
 概要：局所 Hom の厳密な同型の全パラメーターでの実際の作用を計算する。

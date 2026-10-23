@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionParameter
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSections
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 概要：BK end の元の点の全切断を、各初区間の元の係数で計算する。

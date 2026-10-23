@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedSliceFatComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedFatConeHomotopy
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
-public import SerrePositivity.InfinityCategories.F1.EquivalenceRetraction
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceRetraction
 
 /-!
 概要：slice の頂点 fiber と内部 Hom の固定頂点の錐の模型の標準比較の同値性。

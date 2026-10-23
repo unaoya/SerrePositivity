@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleCurry
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleTranspose
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityYoneda
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexSectionBaseChange
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
 
 /-!
 概要：元の第二比較の分解を、全 fibration の関手空間内の同じ大域二単体にする。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EnrichedFullSubcategoryRestriction
-public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.PinchedHom.Edges
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Functor
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorUnitHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct

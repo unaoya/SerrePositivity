@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportNativeHomEndpoints
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalUncurryNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalUncurryNaturality
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningHomInterval
 
 /-!

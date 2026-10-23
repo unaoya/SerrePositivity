@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacement
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
 
 /-!
 概要：射列をその始点の undercategory に持ち上げる標準図式。

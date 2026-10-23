@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TriangleImageDetection
-public import SerrePositivity.InfinityCategories.F1.ScaffoldNerveBridgeTriangles
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldNerveBridgeTriangles
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackAnodyneRestriction
 
 /-!

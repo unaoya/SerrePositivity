@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryGlobalPullbackComponents
-public import SerrePositivity.InfinityCategories.F1.PullbackCommonNormalizedIso
+public import SerrePositivity.InfinityCategories.F1.Pullbacks.PullbackCommonNormalizedIso
 
 /-!
 概要：coherent な二次元境界比較と元の大域作用を、同じ pullback 上の関手同型で結ぶ。

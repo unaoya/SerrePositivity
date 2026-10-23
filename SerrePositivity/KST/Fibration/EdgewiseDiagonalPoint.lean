@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 
 /-! # 元の点を両端で保持する edgewise の同じ退化辺 -/
 

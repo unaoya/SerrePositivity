@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityYoneda
-public import SerrePositivity.InfinityCategories.F1.InvertibleFunctorEdgePathEdgeFamily
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleFunctorEdgePathEdgeFamily
 
 /-!
 概要：既存の元の結合比較辺を、同じ全高次の可逆 path の族にする。

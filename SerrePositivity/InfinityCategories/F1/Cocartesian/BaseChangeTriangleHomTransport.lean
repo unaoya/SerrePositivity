@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport
 
 /-!
 概要：同じ元の比較三角形の共通 Hom は、既存の直接の Hom 輸送と整合する。

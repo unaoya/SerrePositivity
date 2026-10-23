@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport
 public import SerrePositivity.InfinityCategories.Core.CocartesianFibration
-public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 
 /-! # 余錐の制限の反転による輸送
 

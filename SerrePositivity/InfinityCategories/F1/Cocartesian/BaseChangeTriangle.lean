@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramTriangle
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramComparisonLaws
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramTriangle
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramComparisonLaws
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagramComparison
 
 /-!

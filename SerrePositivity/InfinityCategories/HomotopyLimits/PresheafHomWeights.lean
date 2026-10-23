@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
 public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
 
 /-!

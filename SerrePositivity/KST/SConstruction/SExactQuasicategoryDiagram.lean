@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SExactEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
 
 /-! # 全高次比較を持つ元の豊穣 S• 図式
 概要：元の各 S_n と面退化を、全高次 Hom に自然な比較の圏で単体的図式に束ねる。

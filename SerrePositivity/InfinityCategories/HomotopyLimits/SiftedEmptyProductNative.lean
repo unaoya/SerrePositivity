@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedTerminalComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanObjects
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：sifted 添字の全空間 Kan 模型を、空間の ∞ 圏の native な空積にする。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondHomPath
-public import SerrePositivity.InfinityCategories.F1.IntervalHomPathSpan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomPathSpan
 
 /-!
 概要：元の比較三角形の第二面の同じ Hom span。

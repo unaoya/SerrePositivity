@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberPointedIso
-public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
+public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 
 /-!
 概要：元の right unstraightening の反転 fiber と元の前層の指定値を同じ宇宙で比較する。

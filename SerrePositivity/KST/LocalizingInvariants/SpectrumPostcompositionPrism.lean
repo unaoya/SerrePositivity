@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalPath
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonal
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionDiagonal
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 概要：BF 区間と後合成を、同じ合成三角形の全区間族で結ぶ。

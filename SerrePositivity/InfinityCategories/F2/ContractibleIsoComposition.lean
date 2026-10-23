@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 
 /-!
 概要：可縮な延長空間の選択済み比較を、合成と頂点の厳密な表示変更に整合させる。

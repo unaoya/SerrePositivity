@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.PointSourceCosliceFixedHomotopy
-public import SerrePositivity.InfinityCategories.F1.LeftIntervalFatNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalFatNaturality
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 
 /-! # 同じ全 coslice 比較の指定終点 fiber への制限と元の区間評価との照合 -/

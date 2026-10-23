@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceRightRestriction
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction
 
 /-!
 概要：始点の標準零単体への相対 coslice 制限による cocartesian 辺の判定。

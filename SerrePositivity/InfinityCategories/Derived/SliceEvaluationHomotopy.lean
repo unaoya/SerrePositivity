@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal
 public import SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
-public import SerrePositivity.InfinityCategories.F1.SlicePrismSquare
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
 
 /-!
 概要：実 slice の普遍錐を全パラメータの実評価ホモトピーとして表示する。

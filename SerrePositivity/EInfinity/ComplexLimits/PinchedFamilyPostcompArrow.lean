@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.EInfinity.ComplexLimits.IntervalFamilyFunctorPrecomposition
 /-! 概要：元の全 pinched 族を同じ導来 roof に同定する。
 方針：全関手圏内の評価三角形と元の augmentation 逆を同じ関手で送る。

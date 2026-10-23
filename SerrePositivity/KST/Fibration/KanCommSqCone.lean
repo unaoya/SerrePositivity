@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.Fibration.StrictConeTransformation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
-public import SerrePositivity.InfinityCategories.F1.KanAnodyneLocalization
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.KST.Comparison.AlternativeFiberCriterion
 
 /-! # 元の Kan 四角形を、同じ四頂点と全脚を持つ coherent 錐にする -/

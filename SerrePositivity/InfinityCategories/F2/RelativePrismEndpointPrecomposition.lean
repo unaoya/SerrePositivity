@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativePrismEvaluation
 public import SerrePositivity.InfinityCategories.F2.RelativeConstFiberEvaluation
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 
 /-!
 概要：全相対関手の実端点評価は、元の相対前合成と同じ定値 fiber 評価の合成。

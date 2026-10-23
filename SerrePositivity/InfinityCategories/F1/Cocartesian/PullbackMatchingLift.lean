@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-!
 概要：底変換上の任意の辺と同じ始点・底を持ち、元の全空間でも cocartesian な lift を選ぶ。

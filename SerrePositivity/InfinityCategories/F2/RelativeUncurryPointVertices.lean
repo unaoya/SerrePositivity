@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningConstantVertices
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
 
 /-!
 概要：元の定値変換の族とその合成を一点で評価して実際の底上の射へ戻す。

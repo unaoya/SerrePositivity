@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyOriginalSuspension
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-! # 元の点つき射と suspension の coherent な図式
 概要：Kan 包含と suspension の豊穣作用を、元の通常の対象・射・図式と照合する。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseImagePrism
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseVertex
-public import SerrePositivity.InfinityCategories.F1.RelativeExtensionFiberEndpoint
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：元の余錐の fiber 写像と、宇宙変更後の同じ余錐の fiber 写像を全自然同型で比較。

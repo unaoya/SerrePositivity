@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.PointedZeroMapping
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTerminal
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
 
 /-!

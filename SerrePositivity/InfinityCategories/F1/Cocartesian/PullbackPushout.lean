@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.OverPullbackColimits
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackColimits
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackDomainMarks
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 

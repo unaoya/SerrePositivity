@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanNativeKanObjects
 public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：元の native 比較の coherent な辺を、元の余極限頂点からの可逆頂点円柱にする。

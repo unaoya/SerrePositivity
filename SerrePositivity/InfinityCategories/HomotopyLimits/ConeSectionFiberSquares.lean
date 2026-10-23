@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiberSquareTransportDetection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationConeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeApexEvaluation
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInternalHom
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 
 /-!
 概要：全錐の底制限・頂点評価の正方形の fiber 射を、元の切断作用と照合する。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceEdgeTransportValue
-public import SerrePositivity.InfinityCategories.F1.PullbackTransport
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberValue
+public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue
 
 /-!
 概要：元の unstraightening の輸送と、同じ図式の辺の Kan 値の作用を全自然比較する。

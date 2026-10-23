@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
-public import SerrePositivity.InfinityCategories.F1.LeftKanFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftKanFibration
 
 /-! # 終点固定の余錐の空間の制限の充填性
 

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 
 /-!
 概要：元の coslice 比較の各 fiber を、同じ関手の元の写像空間比較へ戻す。

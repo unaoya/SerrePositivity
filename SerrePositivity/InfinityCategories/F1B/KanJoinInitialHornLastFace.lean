@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinMapLastFace
-public import SerrePositivity.InfinityCategories.F1.JoinHornFaceGeometry
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinHornFaceGeometry
 
 /-!
 概要：混合した最初の外ホーンの射を最後の面と joinMap の像で検出する。

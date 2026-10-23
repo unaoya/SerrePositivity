@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 
 /-!
 概要：通常の余錐の図式への制限を F1 の cartesian fibration の型に接続する。

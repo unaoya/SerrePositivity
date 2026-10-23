@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictionSquareIdentity
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionRestrictionCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionRestrictionCoherence
 
 /-!
 概要：第一辺の制限因子を元の全 Hom 上で同じ制限正方形の両端へ正規化する。

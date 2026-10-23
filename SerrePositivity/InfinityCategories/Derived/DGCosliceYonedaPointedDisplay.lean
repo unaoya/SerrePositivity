@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPointedTransportRepresentation
 public import SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberUniverse
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourcePointedFiber
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourcePointedFiber
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
 /-!
 概要：元の実 coslice の Yoneda 指定点評価を、同じ全空間の実 pointed 表示で表す。
 方針：始点固定 Tw の同じ比較を前合成し、同じ実 fiber 射の合成で全 fiber 同値を証明する。

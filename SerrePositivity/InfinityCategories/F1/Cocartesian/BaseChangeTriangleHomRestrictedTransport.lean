@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomFirst
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictedHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport
 
 /-!
 概要：元の比較三角形の Hom 上で、最初の面の同じ制限した Hom 輸送を回収する。

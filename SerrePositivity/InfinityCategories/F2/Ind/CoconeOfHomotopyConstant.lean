@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 
 /-!
 概要：定値図式への指定自然変換から、同じ図式と指定頂点を持つ native な全余錐を得る。

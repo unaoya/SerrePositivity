@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSectionMixedEvaluation
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertex
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacement
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
 
 /-!
 概要：全単体の切断の replacement の始点係数を、元の strict 図式の同じ係数へ評価する。

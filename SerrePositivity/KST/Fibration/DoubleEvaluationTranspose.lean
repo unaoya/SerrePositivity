@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.FunctorIsoDoubleEvaluation
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexSectionBaseChange
-public import SerrePositivity.InfinityCategories.F1.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 
 /-! # 同じ指定同型の二重評価は、二変数の転置でも値を保つ -/
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedEdgeTransportPointIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TransportedCoconeGluing
 public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
 

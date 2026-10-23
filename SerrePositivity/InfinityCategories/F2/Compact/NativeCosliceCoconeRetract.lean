@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.NativeCosliceRepresentation
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentationEdgeFactorization
 public import SerrePositivity.InfinityCategories.F2.Compact.CosliceIdentityRetraction
-public import SerrePositivity.InfinityCategories.F1.UniverseFiber
+public import SerrePositivity.InfinityCategories.F1.Universe.Fiber
 
 /-!
 概要：元の coslice 表現が指定余錐を余極限へ写すなら、元の頂点は一つの元の項の retract。

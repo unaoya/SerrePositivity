@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-! # Coherent 単体の二頂点を結ぶ元の通常の射
 概要：各二頂点の端点だけの Path で豊穣作用を評価し、通常の射を回収する。

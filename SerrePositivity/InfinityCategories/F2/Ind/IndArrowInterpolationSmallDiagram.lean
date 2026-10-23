@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCoherentCocone
-public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
+public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 
 /-!
 概要：補間した全 C 図式を、元の小さい区間と小さい C の関手族へ降ろす。

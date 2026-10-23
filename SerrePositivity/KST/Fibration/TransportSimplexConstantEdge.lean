@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StrictTransportUnderEdge
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexLocalizationData
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexLocalizationData
 
 /-! # 初頂点を保つ射の元の底での定値区間と両端 -/
 

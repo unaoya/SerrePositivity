@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
-public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
-public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberKan
 
 /-! # 始対象を持つ left fibration の表現可能な比較 span
 

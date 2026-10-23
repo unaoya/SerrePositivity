@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.WeightedConeTriangleTrace
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedPathCoordinates
-public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 
 /-!
 概要：weighted cone の三角形の経路を、元の係数単体と edgewise 解像の左辺で計算する。

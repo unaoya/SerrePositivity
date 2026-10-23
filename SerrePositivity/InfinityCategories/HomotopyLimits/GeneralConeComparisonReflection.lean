@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanHomotopyInvariance
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeComparisonReflection
-public import SerrePositivity.InfinityCategories.F1.KanEdgewiseFunctor
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEdgewiseFunctor
 
 /-!
 概要：任意の小圏上の Kan な錐の Bousfield–Kan 比較の同値性は係数の反転で変わらない。

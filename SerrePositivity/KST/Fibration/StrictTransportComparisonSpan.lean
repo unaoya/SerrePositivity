@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftCoherentTransportReconstruction
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftCoherentTransportReconstruction
 
 /-! # strict transport の元の二脚と weighted 比較への因子分解を保持する復元 span -/
 

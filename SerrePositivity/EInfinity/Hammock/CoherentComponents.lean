@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentHomOrdinary
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization

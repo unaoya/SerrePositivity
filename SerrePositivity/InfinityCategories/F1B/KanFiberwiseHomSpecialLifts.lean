@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanFinalFiberTransport
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomLifting
-public import SerrePositivity.InfinityCategories.F1.BaseChange
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 
 /-!
 概要：終点の逆像の図式を cocartesian 辺を可逆にする全逆像上の図式へ延長する。

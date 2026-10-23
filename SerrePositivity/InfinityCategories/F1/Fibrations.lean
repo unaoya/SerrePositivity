@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Fibrations
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 public import SerrePositivity.InfinityCategories.Core.CocartesianCoslice
 public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceFiber
 public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting

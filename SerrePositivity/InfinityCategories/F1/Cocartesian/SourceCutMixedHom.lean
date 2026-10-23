@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SourceCoherentMixedHom
-public import SerrePositivity.InfinityCategories.F1.CoherentRightIntervalCutHom
+public import SerrePositivity.InfinityCategories.F1.Coherent.RightIntervalCutHom
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportHomCutSimplex
 
 /-!

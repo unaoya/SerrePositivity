@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
 public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
 public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange

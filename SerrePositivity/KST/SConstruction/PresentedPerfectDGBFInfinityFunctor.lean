@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEnrichedFunctor
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-! # 厳密 dg BF K の γ1 による Sp 値 ∞ 関手
 概要：全高次 Hom を保持する実 BF 豊穣関手の coherent nerve を取る。

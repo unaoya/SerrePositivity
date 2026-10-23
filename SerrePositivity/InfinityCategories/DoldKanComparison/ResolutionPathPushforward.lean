@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomNaturality
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionPushforward
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionPushforward
 
 /-!
 # 解像の旗の押し出しと native Path の像

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.StrictCospanHorn
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：任意の coherent cospan を通常の cospan の coherent nerve の表示として復元する。

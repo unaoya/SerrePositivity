@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldGlobalPullbackEndpoints
-public import SerrePositivity.InfinityCategories.F1.PullbackCommonNormalizedIso
+public import SerrePositivity.InfinityCategories.F1.Pullbacks.PullbackCommonNormalizedIso
 public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
 
 /-!

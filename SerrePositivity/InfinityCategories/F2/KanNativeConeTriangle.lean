@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.KanNativeConeLeg
 public import SerrePositivity.InfinityCategories.F2.NativeConeTriangle
 public import SerrePositivity.InfinityCategories.F2.SpaceTriangleFaces
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：通常の Kan 図式上の native 錐の指定三角形を元の射のホモトピーへ戻す。

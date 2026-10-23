@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCoefficientFormula
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCoefficientNaturality
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCoefficientFormula
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCoefficientNaturality
 
 /-!
 概要：weighted nerve の最後の係数評価は、元の係数自然変換と可換。

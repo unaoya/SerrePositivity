@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
-public import SerrePositivity.InfinityCategories.F1.PointedFiberTransportCoordinates
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedFiberTransportCoordinates
 
 /-!
 概要：元の Kan 複体の coherent 頂点上で、反転した一点 Hom と普遍 fiber を比較する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DensityHomotopyDetection
 public import SerrePositivity.InfinityCategories.F2.Ind.ContinuousFunctorRestriction
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：元の Yoneda による実際の制限射は、κ-filtered 保存関手間の同値を反映する。

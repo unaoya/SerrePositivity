@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrowPrecompose
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramArrowPrecompose
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleCurry
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityEdge
 

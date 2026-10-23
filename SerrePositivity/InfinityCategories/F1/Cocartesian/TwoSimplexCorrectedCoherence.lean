@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCorrectedSquares
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareExactIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquareExactIso
 
 /-!
 概要：局所 cospan の補正成分の同型は、元の両脚の自然性と同じ coherence を持つ。

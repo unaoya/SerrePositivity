@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionCoordinates
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionCoordinates
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 # 通常の前面と指定した最後の Hom を持つ coherent 錐の全 Hom

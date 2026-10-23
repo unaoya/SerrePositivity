@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverEquivalence
 
 /-!
 概要：cocartesian 標的への全相対 Hom の制限は、任意の底上の前合成同値に対して同値。

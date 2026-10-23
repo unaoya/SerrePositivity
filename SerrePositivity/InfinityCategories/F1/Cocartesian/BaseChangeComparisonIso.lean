@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeComparisonEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentQCatInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.QCatInvertible
 
 /-!
 概要：元の全 fibration にわたる底変換比較の実際の辺は可逆。

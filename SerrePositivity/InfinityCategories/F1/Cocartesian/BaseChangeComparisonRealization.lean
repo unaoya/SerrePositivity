@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeComparisonFamily
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramRealizationEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionComparisonEdge
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramRealizationEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionComparisonEdge
 
 /-!
 概要：全 fibration の底変換比較を、Cat∞ 値の二点図式の族と実際の比較の辺へ実現する。

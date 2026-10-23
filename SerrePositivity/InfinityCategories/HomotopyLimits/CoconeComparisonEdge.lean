@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentComparison
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
 
 /-!

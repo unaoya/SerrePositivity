@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportInfinity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedRealization
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrowEndpoints
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramReindexRealization
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramPrecomposeRealization
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramArrowEndpoints
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramReindexRealization
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramPrecomposeRealization
 
 /-!
 概要：全局所 Hom に自然な同型比較を、底全体と指定同型の ∞ 圏にわたる coherent な族へ実現する。

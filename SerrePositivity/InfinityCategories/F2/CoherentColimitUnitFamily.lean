@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitSquare
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!
 概要：全 coherent 図式上で、選択済み余錐の単位の自然性を一つの全族に束ねる。

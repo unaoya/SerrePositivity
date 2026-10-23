@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeComposition
 
 /-!

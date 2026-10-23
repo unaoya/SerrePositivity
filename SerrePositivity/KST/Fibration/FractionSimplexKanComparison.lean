@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.FractionCosliceBaseChange
 public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertex
 
 /-! # 元の全分数評価による、全単体圏上の coherent な写像空間比較 -/
 

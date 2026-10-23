@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationDiagramColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredFixedBasePullback
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 
 /-!
 概要：固定底上の strict filtered 余極限の fiber は、元の各 fiber の余極限。

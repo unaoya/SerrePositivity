@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanPullbackOverFiber
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeCosliceCancellation
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-!
 概要：共通の底上の引き戻しで、両成分の cartesian な辺から全体の cartesian 性を得る。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
 
 /-!

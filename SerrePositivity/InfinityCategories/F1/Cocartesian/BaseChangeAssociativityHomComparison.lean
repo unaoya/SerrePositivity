@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomVertices
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalNaturality
 
 /-!
 概要：元の結合比較 path の全 Hom と、元の全相対 Hom の作用。

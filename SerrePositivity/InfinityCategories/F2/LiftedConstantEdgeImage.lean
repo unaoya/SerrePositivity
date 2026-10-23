@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantSimplexEdge
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の定値引き戻しの宇宙持ち上げ後の像も同じ端点像の退化辺。

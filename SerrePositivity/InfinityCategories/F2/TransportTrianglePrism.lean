@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TransportRepresentationCompositionFamily
+public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationCompositionFamily
 
 /-!
 概要：元の coherent 三角形上の pointed な全持ち上げを保持する。

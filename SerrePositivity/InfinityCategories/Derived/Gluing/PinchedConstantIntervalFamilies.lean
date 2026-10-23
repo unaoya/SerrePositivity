@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFaces
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 
 /-! 閉辺の定値 pinched 族は、元の辺そのものの全区間図式である。 -/
 @[expose] public section

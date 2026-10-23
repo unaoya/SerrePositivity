@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGPointCosliceTransport
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentCosliceTransport
 public import SerrePositivity.InfinityCategories.Derived.DGStandardClosedPostcomposition
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ComparisonEquivalence
-public import SerrePositivity.InfinityCategories.F1.UniversalTransportReflection
+public import SerrePositivity.InfinityCategories.F1.Transport.UniversalTransportReflection
 /-!
 概要：全 Hom の閉後合成の準同型性から、元の dg nerve の実 coslice 輸送の同値性を得る。
 方針：同じ DK 後合成を coherent 輸送へ送り、充満忠実な同じ比較射と実辺の一致で戻す。

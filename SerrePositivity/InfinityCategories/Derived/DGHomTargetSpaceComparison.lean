@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaPointedDisplay
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.SmallStraighteningCounit
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallStraighteningCounit
 /-!
 概要：同じ Hom 単位による空間値全関手を、元の F1 Yoneda 指定点評価と比較する。
 方針：同じ実 coslice を表す二つの transport 表現を同じ可縮空間内で比較する。

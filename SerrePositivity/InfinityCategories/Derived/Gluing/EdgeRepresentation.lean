@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalHomMapCriterion
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-! 一端点対の写像空間同値から、実辺の端点固定の表現を取り出す。 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
 public import SerrePositivity.InfinityCategories.Stable.Definition
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-! # 安定性の宇宙降下
 

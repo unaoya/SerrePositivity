@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDiagramJointFibration
 public import SerrePositivity.InfinityCategories.F2.Ind.UncurryGraphVertex
-public import SerrePositivity.InfinityCategories.F1.PresheafUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafUnstraightening
 
 /-!
 概要：共同評価の添字での制限は、元の coherent 前層図式の指定値そのもの。

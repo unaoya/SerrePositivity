@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeEquivalenceTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomPath
-public import SerrePositivity.InfinityCategories.F1.InvertibleFunctorEdgePathEdgeFamily
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleFunctorEdgePathEdgeFamily
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathMap
 
 /-!

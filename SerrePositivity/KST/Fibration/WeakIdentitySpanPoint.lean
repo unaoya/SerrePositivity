@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.IdentityMarkedSpan
 public import SerrePositivity.KST.Fibration.WeakSpanKanDiagram
 public import SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertexNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertexNaturality
 
 /-! # 元の恒等 span を、同じ strict section と Kan 分数図式の実際の点へ移す -/
 

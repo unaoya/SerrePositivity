@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 
 /-!
 概要：可縮な選択空間の指定同型は任意の制限先の可縮な空間で同じ指定同型となる。

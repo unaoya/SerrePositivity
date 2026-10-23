@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
 

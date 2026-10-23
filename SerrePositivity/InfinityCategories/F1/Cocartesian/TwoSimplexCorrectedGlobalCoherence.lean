@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCorrectedGlobalEndpoints
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquareGlobalTriangle
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquareGlobalTriangle
 
 /-!
 概要：元の二つの補正成分の指定像は、共有頂点で同じ直接自然性を回収する。

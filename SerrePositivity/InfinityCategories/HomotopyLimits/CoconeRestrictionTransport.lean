@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberMapTransport
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
-public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
 /-!
 概要：部分図式への余錐の制限を正規化し、頂点に沿う輸送後の制限の Hom を計算する。

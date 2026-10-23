@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
-public import SerrePositivity.InfinityCategories.F1.TransportSquareRepresentation
+public import SerrePositivity.InfinityCategories.F1.Transport.SquareRepresentation
 /-!
 概要：同じ実 pointed 表示と全 fiber 同値から、同じ全空間を分類する実 transport 表現を作る。
 方針：F1 の実四角形の fiber 射を元の直接 fiber 射へ同定し、同じ二つの射を保持する。

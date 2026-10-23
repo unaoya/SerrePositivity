@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomotopyComposition
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 
 /-!
 概要：部分図式を固定したホモトピーを、その条件を保って合成する。

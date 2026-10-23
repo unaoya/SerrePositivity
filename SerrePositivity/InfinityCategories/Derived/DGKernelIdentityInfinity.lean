@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
 public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：同じ対角双加群の実導来作用を、元の導来 ∞ 圏の恒等関手へ比較する。
 方針：全 Hom 自然な実単位子を nerve に移し、同じ出力分解の包含比較から回収する。

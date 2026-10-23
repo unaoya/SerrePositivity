@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ExactEnrichment
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 
 /-!
 概要：安定 ∞ 圏と完全関手の ∞ 圏。

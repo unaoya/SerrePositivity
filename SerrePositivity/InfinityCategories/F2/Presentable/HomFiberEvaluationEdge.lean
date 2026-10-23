@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomClassificationEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-!
 概要：実 fiber 評価が元の底上の比較辺を、元の fiber 射の coherent な辺へ送ること。

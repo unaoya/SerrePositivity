@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationConeRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverIsomorphism
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorActionEvaluation
-public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverIsomorphism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorActionEvaluation
+public import SerrePositivity.InfinityCategories.F1.Universe.RelativeOverPre
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedStrictConeFamily
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteSubcomplexRetracts
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：冪等完備な元の ∞ 圏の充満忠実な像は、同型を除いて retract に閉じる。

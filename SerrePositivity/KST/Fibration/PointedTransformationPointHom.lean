@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingFiberTransport
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberFamily
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberFamily
 
 /-! # 全変換空間の実 pointed-fiber 作用を、同じ二胞体の成分との合成として読む -/
 

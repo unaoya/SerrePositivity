@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FiberwiseRestrictionPullback
-public import SerrePositivity.InfinityCategories.F1.LeftAnodynePushoutProduct
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct
 
 /-!
 概要：底を固定した形状制限の相対持ち上げ性。

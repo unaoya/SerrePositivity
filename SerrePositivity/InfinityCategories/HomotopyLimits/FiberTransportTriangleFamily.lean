@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamily
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningCompositionLift
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningCompositionLift
 
 /-!
 概要：元の三角形の全パラメータ族に沿う fiber 輸送の合成。

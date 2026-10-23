@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitPointedUniversalLift
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitUnitPointedFaceRestriction
-public import SerrePositivity.InfinityCategories.F1.PointedTransportPrismFamily
-public import SerrePositivity.InfinityCategories.F1.TransportWitnessPushoutContractible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedTransportPrismFamily
+public import SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible
 
 /-!
 概要：元の単位三単体の第零面を、元の全選択で初期値が動く pointed 延長族にする。

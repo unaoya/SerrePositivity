@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedOppositeHomFixedAction
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 
 /-!
 概要：全反転 Hom の作用族の固定射での頂点は元の後合成関手の頂点。

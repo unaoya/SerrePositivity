@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldBridgeRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseTrivialKanFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.TrivialKanFibration
 
 /-!
 概要：最初の辺と尾部への元の Hom の core の制限は、全次元・宇宙持ち上げ後も自明 Kan。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedIntervalTransport
-public import SerrePositivity.InfinityCategories.F1.PointedSpaceParametrizedEquivalence
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamilySourceComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceParametrizedEquivalence
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilySourceComparison
 
 /-!
 概要：任意の指定区間族の選択済み輸送を、同じ普遍輸送射の制限へ比較する。

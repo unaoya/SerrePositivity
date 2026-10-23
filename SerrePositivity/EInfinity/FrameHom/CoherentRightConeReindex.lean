@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.CoherentRightConeFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentHomNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomNaturality
 
 /-!
 # 元の coherent 錐の全 Hom の添字変換

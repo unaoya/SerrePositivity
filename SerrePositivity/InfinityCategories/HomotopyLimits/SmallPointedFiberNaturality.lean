@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTotalMap
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 
 /-!
 概要：小さい unstraightening の fiber を普遍 pointed fiber に移し、元の変換作用を保持する。

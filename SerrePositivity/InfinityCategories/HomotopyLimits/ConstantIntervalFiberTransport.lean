@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransport
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 
 /-!

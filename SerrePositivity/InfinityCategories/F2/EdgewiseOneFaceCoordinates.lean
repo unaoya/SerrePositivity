@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightReindexCoordinates
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightReindexCoordinates
 
 /-!
 概要：共通解像の一次元の両面を標準三単体の二頂点の包含として計算する。

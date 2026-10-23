@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ZeroOuterSpans
 public import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSourceInitial
-public import SerrePositivity.InfinityCategories.F1.FullSubcomplexEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
 
 /-!
 概要：零終点 span の可縮性と、固定した実 span 上の零隅四角形の始対象。

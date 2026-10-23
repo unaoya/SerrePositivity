@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionRightDiagram
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraightening
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
 
 /-!

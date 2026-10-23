@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinDiagonalOpposite
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 
 /-!
 概要：写像空間の左右の円柱比較は反転で交換される。

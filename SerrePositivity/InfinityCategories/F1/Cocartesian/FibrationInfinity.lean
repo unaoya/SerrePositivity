@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeUnitHom
-public import SerrePositivity.InfinityCategories.F1.CoreProduct
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 
 /-!

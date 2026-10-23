@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgeTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TensorHomotopyEquivalence
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeLeftFibration
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffold
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffold
 
 /-!
 概要：strict transport の互換な族を元の射影上の切断の族へ組み立てる。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftFibrationSections
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningUnderComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningUnderComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
 

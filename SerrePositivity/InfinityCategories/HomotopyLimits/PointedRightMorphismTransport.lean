@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantIntervalFiberTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedValueRightInverse
-public import SerrePositivity.InfinityCategories.F1.CoherentKanRightCompositionTransport
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedTensorCoefficient
 
 /-!

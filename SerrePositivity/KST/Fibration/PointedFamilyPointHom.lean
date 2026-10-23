@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CoslicePointHomNaturality
-public import SerrePositivity.InfinityCategories.F1.PointedSpaceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceFiberVertices
 
 /-! # pointed space の同じ全パラメーター族は、元の点の射の自然性を全射で保つ -/
 

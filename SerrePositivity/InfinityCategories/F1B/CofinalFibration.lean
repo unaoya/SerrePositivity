@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.CofinalFiberContraction
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
-public import SerrePositivity.InfinityCategories.F1.LeftPrism
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftPrism
 
 /-!
 概要：cofinal な左右 fibration は trivial Kan fibration。

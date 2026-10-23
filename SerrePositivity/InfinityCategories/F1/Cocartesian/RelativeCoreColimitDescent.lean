@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecomposition
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreColimitDescent
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorCoreColimitDescent
 
 /-!
 概要：元の全 cocartesian 相対 Hom の core の族を、cocartesian 辺を覆う余極限へ降下させる。

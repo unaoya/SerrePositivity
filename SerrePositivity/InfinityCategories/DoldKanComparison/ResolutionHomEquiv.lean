@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHomReindex
-public import SerrePositivity.InfinityCategories.F1.CoherentFlagEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.FlagEquiv
 
 /-!
 # pinched 単体と解像からの Hom 射の同値

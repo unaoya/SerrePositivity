@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.NativePointedTriangleFaceSections
 public import SerrePositivity.InfinityCategories.F2.SmallFiberTriangleMiddle
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：図式側の辺の切断族の始点評価を、元の小さい fiber の第一作用へ同定する。

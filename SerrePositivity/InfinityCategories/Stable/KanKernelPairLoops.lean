@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 
 /-! # 可縮な全空間の kernel pair と基点付きループ模型

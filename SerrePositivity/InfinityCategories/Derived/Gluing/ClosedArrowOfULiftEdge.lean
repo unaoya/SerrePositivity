@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedArrowOfEdge
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-! 持ち上げた dg nerve の実辺も、元の同じ閉射の持ち上げへ厳密に戻る。 -/
 @[expose] public section

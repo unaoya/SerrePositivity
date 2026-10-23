@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleFamily
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramTriangleFaces
 
 /-!
 概要：元の共同実現の二単体の三面は、元の底変換比較の同じ三辺。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SmallCoherentMappingEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.SmallCoherentMappingEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-!
 概要：小さい unstraightening 間の実際の射を、同じ二図式間の coherent 変換で実現する。

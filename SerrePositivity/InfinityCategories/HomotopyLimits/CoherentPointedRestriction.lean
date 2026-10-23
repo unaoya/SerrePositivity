@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRestrictionComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaYonedaConeSections
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
 
 /-!
 概要：小さい coherent 全空間の切断制限を、元の pointed space の持ち上げ制限へ移す。

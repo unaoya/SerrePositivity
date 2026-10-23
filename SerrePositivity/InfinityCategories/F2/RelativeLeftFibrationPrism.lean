@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftPath
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath
 
 /-!
 概要：left fibration の prism を部分パラメータ上の指定を保って持ち上げる。

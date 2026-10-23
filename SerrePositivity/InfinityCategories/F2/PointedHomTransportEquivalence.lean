@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedIntervalTransport
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftEquivalence
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 
 /-!
 概要：元の全左 Hom をパラメータとする pointed-space 輸送の写像空間上の作用は同値。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ComparisonTriangle
-public import SerrePositivity.InfinityCategories.F1.CartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 
 /-!
 概要：cocartesian 辺を、指定した底の三角形の二本の cocartesian 辺へ分解する。

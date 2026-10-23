@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.OppositeInternalHomEvaluation
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeInternalHomEvaluation
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyOppositeLaws
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRightHom
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceLeft

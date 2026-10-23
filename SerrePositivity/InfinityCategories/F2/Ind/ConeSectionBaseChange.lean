@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRestrictionComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
 
 /-!
 概要：同じ全錐の切断制限の同値性を、厳密な底変換から元の全空間へ戻す。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
 
 /-!
 概要：直積の第二射影に関する cocartesian 辺と prism の両端の輸送。

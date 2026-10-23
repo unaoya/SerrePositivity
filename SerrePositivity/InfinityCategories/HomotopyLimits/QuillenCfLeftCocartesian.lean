@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialHornFiller
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfInitialHornBase
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfLeftLift
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 # 元の左 Quillen 候補辺の coCartesian 性

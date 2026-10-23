@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeSectionPostHom
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedRealization
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramNaturalHom
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramNaturalHom
 
 /-!
 概要：元の全空間の結合同型の図式値豊穣像は、底全体の既存の同じ結合比較。

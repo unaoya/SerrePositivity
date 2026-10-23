@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantPullbackCoordinates
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransformation
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitness
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitness
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
 
 /-!
 概要：定値図式間の変換の pointed な証拠を、元の区間の族の fiber 輸送として表示する。

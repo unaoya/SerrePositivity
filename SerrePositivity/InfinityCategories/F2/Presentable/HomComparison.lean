@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationMappingSpaces
-public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationMappingSpaces
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 
 /-!
 概要：任意の関手による全共変 Hom の比較を、同じ coslice の底上の射から構成する。

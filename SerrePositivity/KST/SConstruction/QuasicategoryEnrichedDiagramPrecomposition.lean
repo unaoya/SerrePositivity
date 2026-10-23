@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramOrdinaryFunctor
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRestriction
 
 /-! # 全高次比較の圏での豊穣前合成と評価
 概要：全 Hom に自然な比較の圏に、同じ豊穣関手での前合成と各対象での評価を与える。

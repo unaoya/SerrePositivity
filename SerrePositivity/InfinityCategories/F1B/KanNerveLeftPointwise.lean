@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftCoconeTransport
 public import SerrePositivity.InfinityCategories.F1B.KanNerveColimit
 public import SerrePositivity.InfinityCategories.F1B.KanExtensionHom
 public import SerrePositivity.InfinityCategories.F1B.KanColimitConstantFamily
-public import SerrePositivity.InfinityCategories.F1.CosliceRestrictionIso
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestrictionIso
 
 /-!
 概要：指定単位を伴う左 Kan 条件を通常の pointwise 条件と比較する。

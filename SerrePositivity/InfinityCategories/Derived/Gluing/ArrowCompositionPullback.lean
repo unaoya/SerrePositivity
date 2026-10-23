@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FirstFixedCompositionLift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LastFixedCompositionLift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ArrowHomTriangleCurry
-public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonalPullback
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceDiagonalPullback
 
 /-! 始辺固定と終辺固定の合成対応を、同じ対角 Hom の上で厳密に引き戻す。 -/
 @[expose] public section

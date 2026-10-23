@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.KanEnrichedJointPointHom
 public import SerrePositivity.KST.Fibration.FunctorIsoValueCurry
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedDiagramOppositeComparison
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDiagramOppositeComparison
 
 /-! # 同じ共同比較の curry による実現同型を、元の対象へ制限する -/
 

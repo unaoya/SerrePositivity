@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
 /-!
 概要：区間写像空間の端点輸送と、同じ実辺による標準後合成を比較する。

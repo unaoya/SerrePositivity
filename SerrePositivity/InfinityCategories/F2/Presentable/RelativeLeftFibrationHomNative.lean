@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteRelativeOverHom
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoherentEvaluation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoherentEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
 public import SerrePositivity.InfinityCategories.F2.CoconeValEquality

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaElementsConeRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTrivialComparison
 
 /-!
 概要：像が極限となる錐上で、指定した小さい全空間の底図式を厳密に延長する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PrismExtensionCurryWitnessRestriction
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceFamilyComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningSourceFamilyComparison
 
 /-!
 概要：F1 の始域付き unstraightening 比較から終点表示の正規化を外す。

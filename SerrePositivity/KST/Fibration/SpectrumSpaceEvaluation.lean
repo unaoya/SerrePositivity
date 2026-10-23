@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.KanForgetDetection
 public import SerrePositivity.KST.Fibration.PositiveKanEvaluationDetection
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 
 /-! # 同じ元のスペクトル段評価の基点忘却と、全正段による可逆性検出 -/
 

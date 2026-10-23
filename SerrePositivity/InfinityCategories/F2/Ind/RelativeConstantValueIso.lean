@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorConstFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorConstFiber
 
 /-!
 概要：同じ定値の底上の相対同型を、指定 fiber への関手同型へ移す。

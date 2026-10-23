@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
 /-!

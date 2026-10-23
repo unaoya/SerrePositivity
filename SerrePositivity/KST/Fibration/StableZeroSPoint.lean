@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.StableZeroSContraction
 public import SerrePositivity.KST.Fibration.RelativeSQuotient
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 
 /-! # 同じ零自己関手の S• 像の、全単体で自然な零図式の一点への因子化 -/
 

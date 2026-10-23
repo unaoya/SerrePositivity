@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentNervePost
-public import SerrePositivity.InfinityCategories.F1.SimplicialEnrichedOpposite
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplicialEnrichedOpposite
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
 
 /-!
 概要：反対の coherent nerve からの標準帰還と、同じ豊穣関手による後合成の可換性。

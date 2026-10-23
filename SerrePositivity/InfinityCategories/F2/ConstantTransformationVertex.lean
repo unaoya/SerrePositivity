@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationFatDiagram
 public import SerrePositivity.InfinityCategories.F2.HomotopyFatCocone
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-!
 概要：変換空間の指定頂点の円柱・fat join 表示と、そこから回収したホモトピーを同定する。

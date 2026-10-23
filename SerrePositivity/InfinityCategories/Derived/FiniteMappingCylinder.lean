@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 

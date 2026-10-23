@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationTerminalLift
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeHomTerminalBoundary
-public import SerrePositivity.InfinityCategories.F1.RelativeHomBoundaryFiber
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomBoundaryFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 
 /-!

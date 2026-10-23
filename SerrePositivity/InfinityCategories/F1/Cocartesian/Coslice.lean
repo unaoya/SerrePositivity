@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.InitialHornJoin
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InitialHornJoin
 public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
 
 /-!

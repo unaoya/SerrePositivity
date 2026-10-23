@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHom
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFaceEquivalence
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFaceEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomPath
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
 
 /-!
 概要：同じ分解三角形の Hom の最初の面は、元の底変換対象の既存の比較 Hom。

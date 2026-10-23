@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomMapEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomTransport
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomTransportSquareCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquareCoherence
 
 /-!
 概要：元の底変換 Hom 輸送の両端に作用する同じ底制限の射を明示する。

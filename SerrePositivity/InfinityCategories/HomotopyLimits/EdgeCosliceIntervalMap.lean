@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
 
 /-!
 概要：固定辺に付く錐の族を、始点・終点側の区間写像空間へ移す。

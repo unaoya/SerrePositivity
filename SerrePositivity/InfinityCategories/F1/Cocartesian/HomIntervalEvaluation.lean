@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorEvaluationLifting
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEvaluationLifting
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramHomInterval
 
 /-!

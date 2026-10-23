@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismTransportCylinder
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
 
 /-!
 概要：底上の射に関する標準輸送の自然性を、底・初期値固定の実際の円柱として保持する。

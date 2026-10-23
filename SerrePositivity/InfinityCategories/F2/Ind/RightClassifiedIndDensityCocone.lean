@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.ClassifiedFilteredElements
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：元の κ-filtered right fibration 全空間を添字とする、同じ分類値の Indκ 内の密度余錐。

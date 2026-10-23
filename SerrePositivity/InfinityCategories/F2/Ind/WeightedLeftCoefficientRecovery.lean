@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientGraph
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationComparisonBaseChange
 
 /-!
 概要：共同 weighted 分類の元の復元射を各添字グラフへ戻し、元の係数全空間を復元する。

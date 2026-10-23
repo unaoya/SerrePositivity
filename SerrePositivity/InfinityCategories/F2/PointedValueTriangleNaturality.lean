@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.PointedValueHomAction
 public import SerrePositivity.InfinityCategories.F2.SpaceTriangleIso
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningSectionNaturality
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSectionNaturality
 
 /-!
 概要：元の coherent 三角形の指定精密化辺に対する値比較の自然性。

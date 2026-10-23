@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoHornFaceCoherence
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 
 /-!
 概要：面側が指定する共有境界像を保って、二次内ホーンの比較を厳密に可換にする。

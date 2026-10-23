@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
 

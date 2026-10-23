@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
 
 /-!

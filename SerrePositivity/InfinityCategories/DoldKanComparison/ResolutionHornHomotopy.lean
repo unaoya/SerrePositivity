@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionInsertHomotopy
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSupport
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionSupport
 
 /-!
 # ホーンの解像上の一頂点の追加によるホモトピー

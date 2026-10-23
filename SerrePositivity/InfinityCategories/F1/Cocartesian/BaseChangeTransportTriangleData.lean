@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriang
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomRestrictedTransport
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondHomCompositeTransport
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleIdentity
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleIdentity
 
 /-!
 概要：元の直接の底変換 Hom 輸送は、元の二回の比較と結合比較の輸送の合成と同型。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.EdgewiseRefinementEndpoints
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の精密化の二つの共通解像を、同じ共通終点を持つ実際の辺にする。

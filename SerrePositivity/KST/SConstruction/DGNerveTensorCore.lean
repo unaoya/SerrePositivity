@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGNerveTensorAssociativity
-public import SerrePositivity.InfinityCategories.F1.CoreProduct
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
 
 /-! # native dg nerve の core の直積から実 tensor source への比較
 概要：二つの native core の直積を、実 tensor dg 圏の native core へ送る。

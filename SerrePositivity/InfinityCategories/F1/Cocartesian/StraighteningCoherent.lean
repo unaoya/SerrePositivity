@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsReindex
-public import SerrePositivity.InfinityCategories.F1.StrictTransportDiagonalSimplex
+public import SerrePositivity.InfinityCategories.F1.Diagrams.DiagonalCocartesianSectionsReindex
+public import SerrePositivity.InfinityCategories.F1.Transport.StrictTransportDiagonalSimplex
 
 /-!
 概要：通常圏の nerve 上の全 cocartesian fibrations を、実際の Cat∞ 値分類写像に束ねる。

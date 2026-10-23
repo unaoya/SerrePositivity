@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMorita
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFInfinityFunctor
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-! # 同じ実 BF Sp 値関手の Morita 辺の可逆性
 概要：厳密豊穣 BF 関手の同じ元の Morita 辺の像は Sp で可逆。

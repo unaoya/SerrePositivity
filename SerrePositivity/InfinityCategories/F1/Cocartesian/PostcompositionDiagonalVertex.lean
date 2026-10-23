@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PostcompositionFiber
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MixedHomVertices
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
 
 /-!
 概要：元の後合成 fiber の指定頂点を、標準 Hom 比較による同じ対角頂点として読む。

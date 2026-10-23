@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleTranspose
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityIso
-public import SerrePositivity.InfinityCategories.F1.InvertibleTriangleComposition
-public import SerrePositivity.InfinityCategories.F1.InvertibleMappedSimplex
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleTriangleComposition
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleMappedSimplex
 
 /-!
 概要：元の第二比較の分解大域二単体の三辺は全て可逆。

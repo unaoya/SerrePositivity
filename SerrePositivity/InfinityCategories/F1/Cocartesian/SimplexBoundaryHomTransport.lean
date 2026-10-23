@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialOriginalHom
-public import SerrePositivity.InfinityCategories.F1.LocalKanDiagramStrictification
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalKanDiagramStrictification
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialBoundaryFiberEquivalence
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 

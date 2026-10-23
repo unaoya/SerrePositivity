@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionNerveIso
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionInfinity
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：D の元の実 Perf 延長の合成を、関手 ∞ 圏の実同型で比較する。

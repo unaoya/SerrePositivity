@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValuePre
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiberEquivalence
-public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
+public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 
 /-!
 概要：元の大域密度評価を恒等点の同じ fiber へ制限した指定値写像は同値。

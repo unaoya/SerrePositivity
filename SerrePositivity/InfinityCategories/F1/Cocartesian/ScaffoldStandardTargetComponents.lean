@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldLargeOverIsos
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldLocalComparison
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverIsomorphism
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramOverIsomorphism
 
 /-!
 概要：元の target cospan の三成分を、同じ標準セルへの制限同型で移す。

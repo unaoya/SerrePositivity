@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductPreservation
-public import SerrePositivity.InfinityCategories.F1.CoherentPointedRestrictionReflection
-public import SerrePositivity.InfinityCategories.F1.NativePointedRestrictionReflection
+public import SerrePositivity.InfinityCategories.F1.Coherent.PointedRestrictionReflection
+public import SerrePositivity.InfinityCategories.F1.Transport.NativePointedRestrictionReflection
 
 /-!
 概要：前層が元の錐を極限へ送れば、小さい元の全空間の同じ切断制限は同値。

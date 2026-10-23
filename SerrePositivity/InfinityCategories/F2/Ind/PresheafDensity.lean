@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationColimit
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 
 /-!
 概要：任意の前層を、元の小さい元の圏上の表現可能前層の余極限として実現する。

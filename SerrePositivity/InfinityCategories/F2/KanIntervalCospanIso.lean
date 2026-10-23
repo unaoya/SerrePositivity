@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.KanIntervalCospan
 public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTransComponent
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 
 /-!

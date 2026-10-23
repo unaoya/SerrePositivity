@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.MappingParameters
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 public import SerrePositivity.InfinityCategories.Core.PinchedUniversal
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonEpi
 

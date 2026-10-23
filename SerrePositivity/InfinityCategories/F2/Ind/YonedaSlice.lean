@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.Stable.Cocone
 
 /-!

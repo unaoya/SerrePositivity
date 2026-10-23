@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness
-public import SerrePositivity.InfinityCategories.F1.SmallFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.SmallFibration
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 
 /-!

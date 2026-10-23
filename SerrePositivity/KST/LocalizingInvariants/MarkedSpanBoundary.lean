@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FractionTriangleEvaluation
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingSpace
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingSpace
 
 /-!
 概要：分母付き span の二つの終点を区間の境界図式にまとめ、分数評価が境界を保つと示す。

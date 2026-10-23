@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinDiagonalSplit
 public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinBaseProjection
-public import SerrePositivity.InfinityCategories.F1.JoinIntervalEndpointPullbacks
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinBaseProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalEndpointPullbacks
 
 /-!
 概要：slice の普遍余錐を相対 join 上に表示する。

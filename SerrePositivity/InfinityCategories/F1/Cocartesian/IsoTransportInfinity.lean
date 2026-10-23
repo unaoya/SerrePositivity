@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportDiagramComparison
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
 
 /-!
 概要：指定同型の始域の元の全 Hom の core から、比較の源の実際の ∞ 圏を作る。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.InitialFixedContraction
 public import SerrePositivity.InfinityCategories.F1B.KanFinalFiberRetraction
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 
 /-!
 概要：始対象上の任意の図式を、cocartesian section の族へ厳密に延長する。

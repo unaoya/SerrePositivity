@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningSimplexLifts
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningSimplexLifts
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!
 概要：関手空間の元の単体の固定始点を、同じ全底上の pointed 持ち上げの初期式へ移す。

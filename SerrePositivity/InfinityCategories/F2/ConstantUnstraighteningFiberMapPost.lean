@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningFiberMapOverPre
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：定値標的への相対後合成を、任意の同じ fiber 射への実後合成として計算する。

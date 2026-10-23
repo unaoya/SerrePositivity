@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedPrismFamilyComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：全パラメータ固定の pointed 三角形の選択空間を、元の三辺の相対関手空間へ制限。

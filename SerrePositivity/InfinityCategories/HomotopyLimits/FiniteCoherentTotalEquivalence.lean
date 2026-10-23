@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductSmallFiber
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCommonFiberProductVertexIso
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
 
 /-!

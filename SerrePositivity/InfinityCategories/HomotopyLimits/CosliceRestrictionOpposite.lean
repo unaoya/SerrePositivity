@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SliceEndpointConeComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift
 public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
-public import SerrePositivity.InfinityCategories.F1.VertexFiberTotalIso
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitConstantTriangleBaseFaces
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitRawTransportPointPrism
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportCoordinates
-public import SerrePositivity.InfinityCategories.F1.TrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
 
 /-!
 概要：元の全定値三角形上で、最初辺を固定し最後辺を元の raw 普遍輸送にする。

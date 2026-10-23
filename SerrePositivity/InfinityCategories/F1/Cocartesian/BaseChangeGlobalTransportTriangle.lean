@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalTriangleEndpoints
-public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleReindex
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleReindex
 
 /-!
 概要：元の大域輸送の三角形は、同じ指定された局所自然性因子の共通端点で可換。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredNullHomotopy
-public import SerrePositivity.InfinityCategories.F1.LeftPath
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 

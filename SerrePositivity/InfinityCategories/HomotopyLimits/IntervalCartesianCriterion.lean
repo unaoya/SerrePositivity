@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalCocartesianCriterion
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCocartesianCriterion
 /-!
 概要：区間上の inner fibration の Cartesian 性を、非退化辺の持ち上げで判定する。
 方針：区間の辺を恒等射と定値辺に分類し、定値辺には終点の恒等辺を使う。

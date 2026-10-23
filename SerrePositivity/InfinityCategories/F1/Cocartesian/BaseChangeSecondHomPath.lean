@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTrianglePathFaces
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictedHomPath
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFaceEvaluation
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFaceEvaluation
 
 /-!
 概要：元の比較三角形の第二面の path と、その元の二つの分類図式への端点評価。

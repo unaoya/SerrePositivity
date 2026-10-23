@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictionNaturalityTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalFactorNaturality
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionRestrictionRebase
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionRestrictionRebase
 
 /-!
 概要：第一辺の制限自然性と指定因子の合成は、元の大域自然性の制限を回収する。

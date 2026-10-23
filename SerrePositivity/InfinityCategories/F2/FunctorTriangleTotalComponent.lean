@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleRelativeComparison
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleSequentialPostComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecomposition
 
 /-!
 概要：元の全空間の恒等初期値で、全族の三角形比較の元の値を回収する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalHomSquareFaces
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFaces
 
 /-!
 概要：分類先の実際の固定成分 fiber から、同じ二辺の可縮な合成三角形空間へ写す。

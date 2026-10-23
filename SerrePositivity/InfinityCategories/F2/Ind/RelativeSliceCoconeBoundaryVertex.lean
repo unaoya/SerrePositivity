@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeSliceCoconeBoundaryMap
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 
 /-!
 概要：固定境界への普遍 uncurry の頂点は、元の指定全余錐そのもの。

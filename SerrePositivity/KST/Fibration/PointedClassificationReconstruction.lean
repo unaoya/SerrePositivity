@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningIsoHom
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointHom
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
 
 /-! # 同じ指定分類成分による実点の作用を保持した、小さい left fibration の復元 -/
 

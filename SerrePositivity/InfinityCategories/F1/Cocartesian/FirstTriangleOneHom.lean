@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FirstTriangleObjects
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderHomNormalization
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderHomNormalization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CutPureHomEndpoint
 
 /-!

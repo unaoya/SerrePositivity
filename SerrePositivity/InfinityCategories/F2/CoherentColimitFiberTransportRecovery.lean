@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitFiberTransportComparison
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulFunctorIsoCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
 
 /-!

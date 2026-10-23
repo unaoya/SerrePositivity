@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleFamily
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleComparison
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramTriangleCurry
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramTriangleCurry
 
 /-!
 概要：元の底変換三角形を関手空間内の同じ二単体族へ移す。

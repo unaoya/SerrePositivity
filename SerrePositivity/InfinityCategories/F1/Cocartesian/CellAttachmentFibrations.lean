@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellAttachmentPullbacks
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackCoreFibration
-public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifting
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestrictionFibration
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftLifting
 
 /-!

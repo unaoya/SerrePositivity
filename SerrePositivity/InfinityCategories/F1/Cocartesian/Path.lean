@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftPath
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BoundaryPrism
 
 /-!

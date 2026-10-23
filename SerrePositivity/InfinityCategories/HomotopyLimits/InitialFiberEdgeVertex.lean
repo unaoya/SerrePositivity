@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 
 /-!
 概要：始点を固定した実際の辺を、left fibration の fiber と Hom の比較 span の点へ移す。

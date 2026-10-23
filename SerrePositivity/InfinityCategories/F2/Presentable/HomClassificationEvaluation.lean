@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningAllBasesEvaluation
 
 /-!
 概要：元の底上の射について、straightening の評価と実 fiber 評価の自然性を保持する。

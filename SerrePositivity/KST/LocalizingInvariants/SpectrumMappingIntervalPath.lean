@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingFaceEndpoints
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingFaceEndpoints
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 
 /-!

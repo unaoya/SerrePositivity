@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Functor
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension

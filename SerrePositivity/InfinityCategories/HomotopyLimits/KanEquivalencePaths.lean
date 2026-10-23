@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFibrationHomComparison
 public import SerrePositivity.InfinityCategories.Core.RelativeEquivalencePathAt
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpoints
 
 /-!

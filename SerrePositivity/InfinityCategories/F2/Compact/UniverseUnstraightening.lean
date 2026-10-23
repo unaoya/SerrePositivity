@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
 
 /-!
 概要：指定した空間の宇宙変更の unstraightening と、元の全空間の底上の比較。

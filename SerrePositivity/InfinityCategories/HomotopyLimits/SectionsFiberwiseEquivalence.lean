@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionsFunctor
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
 
 /-!
 概要：任意の quasicategory 上の left fibrations の fiber 同値は切断空間の同値を誘導する。

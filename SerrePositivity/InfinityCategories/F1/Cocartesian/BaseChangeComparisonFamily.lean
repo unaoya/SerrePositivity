@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeEnrichedComparison
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparisonArrow
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparisonArrow
 
 /-!
 概要：底変換比較の二点図式を、全 fibration の coherent な族へ束ねる。

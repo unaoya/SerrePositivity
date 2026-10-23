@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NervePresentationNaturality
-public import SerrePositivity.InfinityCategories.F1.SimplexNerveRestrictionOver
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexNerveRestrictionOver
 
 /-!
 概要：元の標準単体上の全 native Hom 比較の、全ての単体写像に沿う指定自然性。

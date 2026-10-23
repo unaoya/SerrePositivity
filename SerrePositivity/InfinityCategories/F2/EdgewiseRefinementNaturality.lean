@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.EdgewiseRefinementEdges
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningSectionNaturality
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSectionNaturality
 
 /-!
 概要：同じ元の精密化の二つの共通解像に対する指定比較の二自然性正方形。

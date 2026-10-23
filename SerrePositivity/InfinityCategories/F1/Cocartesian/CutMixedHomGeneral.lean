@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SourceCutMixedHom
-public import SerrePositivity.InfinityCategories.F1.CoherentPathCutRightEndpoint
+public import SerrePositivity.InfinityCategories.F1.Coherent.PathCutRightEndpoint
 
 /-!
 概要：元の分類作用の混合 Hom を、固定成分の仮定なしに元の可変単体で表示する。

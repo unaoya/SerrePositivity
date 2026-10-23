@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransformationPoint
-public import SerrePositivity.InfinityCategories.F1.FunctorPrismTriangles
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismTriangles
 
 /-!
 概要：元の関手空間の合成二単体を、同じ三辺の coherent 変換の全三角形にする。

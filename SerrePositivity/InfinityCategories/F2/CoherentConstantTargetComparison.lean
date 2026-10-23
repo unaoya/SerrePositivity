@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorConstFiberIso
-public import SerrePositivity.InfinityCategories.F1.CoherentUnstraighteningMappingEquivalence
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberValue
+public import SerrePositivity.InfinityCategories.F1.Coherent.UnstraighteningMappingEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 
 /-!

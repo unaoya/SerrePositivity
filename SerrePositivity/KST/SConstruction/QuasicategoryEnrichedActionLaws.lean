@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ClosedRightActionComposition
-public import SerrePositivity.InfinityCategories.F1.QCatSimplicial
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 
 /-! # 元の Quasi 値豊穣関手の実右作用の法則
 概要：元の豊穣単位・合成等式は、uncurry した実全パラメータ作用の法則になる。

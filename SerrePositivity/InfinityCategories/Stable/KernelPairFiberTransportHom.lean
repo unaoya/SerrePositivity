@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.InitialVertexHomEdge
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationTransportHom
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 
 /-! # 自己引き戻しの第二射影の輸送と第一成分の Hom 表示
 

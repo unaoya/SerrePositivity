@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientRoofRefinementVertices
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementEquivalence
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementEquivalence
 
 /-! # 実屋根図式の simplicial replacement 比較
 

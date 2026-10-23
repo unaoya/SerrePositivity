@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitness
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceFamilyComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitness
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningSourceFamilyComparison
 
 /-!
 概要：任意の全パラメータの実 pointed prism から、同じ始点・終点の実現証拠を回収する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalHomComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransportRestriction
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：既存の局所制限自然性を作る元の二因子と、その両端の正規化。

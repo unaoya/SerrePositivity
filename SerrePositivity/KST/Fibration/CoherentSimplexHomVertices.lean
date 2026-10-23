@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CoherentArrowData
+public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 public import SerrePositivity.InfinityCategories.Coherent.Path
 
 /-! # 元の coherent 二単体の全長 Hom と、同じ実 path の合成値 -/

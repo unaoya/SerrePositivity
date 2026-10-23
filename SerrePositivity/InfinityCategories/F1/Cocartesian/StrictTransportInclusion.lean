@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportMapping
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramPostcomposition
 
 /-!
 概要：cocartesian strict transport を元の全 section の strict transport に含める。

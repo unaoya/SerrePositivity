@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TensorFamilyCurrying
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFibrationLocalFamily
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 
 /-!
 概要：相対 Hom の頂点 fiber の可縮性から、元の積図式の切断制限の全境界充填を得る。

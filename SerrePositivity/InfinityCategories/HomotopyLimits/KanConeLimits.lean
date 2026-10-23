@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictHomotopyLimits
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
-public import SerrePositivity.InfinityCategories.F1.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionLifting
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
 
 /-!
 概要：cocartesian 標的の相対関手空間の単射による制限は同値を右に持ち上げる。

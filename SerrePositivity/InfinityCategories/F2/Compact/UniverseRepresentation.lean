@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 
 /-!
 概要：同じ空間の宇宙変更は、元の全空間の宇宙持ち上げを実際に表現する。

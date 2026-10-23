@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.StrictKanUnstraighteningComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.StrictKanUnstraighteningComparison
 
 /-! # strict Kan 比較の pointed 射影を、同じ coherent 錐の第一射影で計算する -/
 

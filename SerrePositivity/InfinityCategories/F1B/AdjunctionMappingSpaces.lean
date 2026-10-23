@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.ConstantAdjunct
 public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：随伴から区間模型の写像空間のホモトピー同値を構成する。

@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
 public import SerrePositivity.KST.Fibration.FractionKanCosliceClassification
 public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
 public import SerrePositivity.KST.Fibration.WeakQuotientMappingComparison
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
 
 /-! # 元の商上の比較二胞体を、同じ coslice 分類図式の小さい全空間への射として保持する -/
 

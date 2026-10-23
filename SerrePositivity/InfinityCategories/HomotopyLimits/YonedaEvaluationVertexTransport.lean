@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
 
 /-!
 概要：元の Yoneda 評価の実際の頂点を、同じ変換の値に沿う標準輸送へ比較する。

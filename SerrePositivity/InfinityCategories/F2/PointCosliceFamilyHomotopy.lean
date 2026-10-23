@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 
 /-!
 概要：一点下の coslice の任意の族を、その指定始点からの実際の円柱として表示する。

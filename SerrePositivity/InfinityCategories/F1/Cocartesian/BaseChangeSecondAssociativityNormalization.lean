@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondAssociativityEndpoints
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
 
 /-!
 概要：元の第二面の結合因子を、二重底変換と既存の局所輸送の同じ端点へ正規化する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.SlicePrismSquare
+public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
 
 /-! 同じ実 slice 合成 prism に沿う変換の三次元族を作り、三方向の境界を全パラメータで回収。 -/
 @[expose] public section

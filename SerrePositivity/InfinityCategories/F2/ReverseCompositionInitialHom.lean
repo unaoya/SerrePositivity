@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.InitialReverseThickeningCoordinates
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionReindex
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionReindex
 
 /-!
 概要：実反転合成単体の初点 Hom を、同じ反転 path 上の元の Hom に揃える。

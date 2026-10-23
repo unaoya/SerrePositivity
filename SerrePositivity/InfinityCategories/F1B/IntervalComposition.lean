@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
 public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：ホモトピー圏の射による区間写像空間への前後合成作用。

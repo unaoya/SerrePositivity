@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentKanLeftHomInterval
 public import SerrePositivity.InfinityCategories.F2.SpaceTriangleHomotopy
-public import SerrePositivity.InfinityCategories.F1.CoherentCosliceComparisonVertices
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.CosliceComparisonVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportMixedHomNaturality
-public import SerrePositivity.InfinityCategories.F1.CoherentHomReindex
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomReindex
 
 /-!
 概要：実際の source の成分 fiber における coherent 比較の混合 Hom を計算する。

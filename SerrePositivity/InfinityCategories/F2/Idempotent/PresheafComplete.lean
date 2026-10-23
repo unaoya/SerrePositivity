@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.PointSourceCosliceData
 public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.F1.LeftIntervalFatHomotopy
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalFatHomotopy
 
 /-! # 元の可変終点 coslice 比較の、全時間での両端固定 -/
 

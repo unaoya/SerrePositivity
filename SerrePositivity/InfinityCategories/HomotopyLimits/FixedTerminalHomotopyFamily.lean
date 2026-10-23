@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRetractCosliceFamily
-public import SerrePositivity.InfinityCategories.F1.PrismEndpointRightAnodyne
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 
 /-!
 概要：終点を固定した同じ根辺円柱へ、元の全余錐族を延長する。

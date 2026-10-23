@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorHomotopyPrismEvaluation
 public import SerrePositivity.InfinityCategories.F2.RelativeRestrictedEndpointFibration
-public import SerrePositivity.InfinityCategories.F1.TrivialKanFunctorIsoProjection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
 public import SerrePositivity.InfinityCategories.F2.FunctorEqIso
 
 /-!

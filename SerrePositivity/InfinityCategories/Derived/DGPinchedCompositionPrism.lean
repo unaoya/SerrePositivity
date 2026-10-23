@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison
 public import SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionPrism
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionPrism
 
 /-! # 実 dg pinched Hom の全合成 prism
 

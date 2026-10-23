@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 
 /-!
 概要：元の BF 射を Sp のホモトピー圏の射として扱う界面。

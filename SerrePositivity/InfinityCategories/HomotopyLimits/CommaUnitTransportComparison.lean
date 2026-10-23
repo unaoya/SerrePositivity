@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaUnitTransportEndpoint
-public import SerrePositivity.InfinityCategories.F1.InitialParametrizedPointTransport
-public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.InitialParametrizedPointTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransport
 
 /-!
 概要：標準単位比較を、同じ comma 頂点からの普遍輸送と関手同型で照合する。

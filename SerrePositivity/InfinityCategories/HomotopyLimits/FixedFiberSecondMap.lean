@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFibration
 
 /-!
 概要：二成分への同時写像の初期値 fiber で、第二成分の充填性を回収する。

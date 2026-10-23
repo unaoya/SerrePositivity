@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedFamilyComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeExtensionFiberEndpoint
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
 public import SerrePositivity.InfinityCategories.F2.VertexIsoEndpointTransport
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedCoefficientEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorIsPullbackIso
 
 /-!
 概要：元の weighted 係数包含は、同じ添字のグラフ上の厳密な引き戻し。

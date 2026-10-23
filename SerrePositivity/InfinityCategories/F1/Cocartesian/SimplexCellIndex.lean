@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCoefficientFormula
-public import SerrePositivity.InfinityCategories.F1.LocalKanDiagramStrictification
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCoefficientFormula
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalKanDiagramStrictification
 
 /-!
 概要：同じ標準単体の面を、元の分類に使う持ち上げた有限順序の関手へ移す。

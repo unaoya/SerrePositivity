@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.PointedSpaceFiberVertices
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFiber
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 
 /-! # 指定した空間値の点の射を、同じ小さい unstraightening の実 fiber 点にする -/
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberWitnessRestriction
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamily
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：元の全輸送の始点を実 prism の頂点で固定し、既存 endpointIso の指定値を回収する。

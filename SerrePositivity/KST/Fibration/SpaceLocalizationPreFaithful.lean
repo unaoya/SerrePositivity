@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SpaceDiagramPair
 public import SerrePositivity.KST.Fibration.UliftLocalizationPreFaithful
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-! # 小さい商局所化の前合成は、元の空間値関手 ∞ 圏全体でも充満忠実 -/
 

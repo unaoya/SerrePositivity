@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentTrianglePathMaximum
-public import SerrePositivity.InfinityCategories.F1.CoherentHomComparison
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparison
 
 /-!
 概要：coherent nerve の二単体から Hom の経路を、三単体から Hom の正方形を取り出す。

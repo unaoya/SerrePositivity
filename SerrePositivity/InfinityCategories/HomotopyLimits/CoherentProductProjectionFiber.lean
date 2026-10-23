@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProductTotalMap
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProductFiberTransport
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
 
 /-!
 概要：点ごとの coherent 積の指定変換を一点で評価し、元の二射影辺を回収する。

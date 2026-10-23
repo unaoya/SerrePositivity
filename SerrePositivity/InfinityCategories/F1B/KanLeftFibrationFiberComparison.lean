@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationNerveComparison
 public import SerrePositivity.InfinityCategories.F1B.KanFiberComparisonBaseChange
-public import SerrePositivity.InfinityCategories.F1.PrecompositionSimplexLocality
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderSourceIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PrecompositionSimplexLocality
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderSourceIso
 
 /-!
 概要：任意の底上の left fibrations の射を fiber ごとに比較する判定。

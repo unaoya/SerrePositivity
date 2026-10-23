@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentThinNerveMap
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfCollageInclusions
-public import SerrePositivity.InfinityCategories.F1.ThinNerveInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration
 
 /-!
 概要：元の cf 単体的対応圏の区間への射影と両側の包含との厳密な両立。

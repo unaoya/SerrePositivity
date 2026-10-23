@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleCurry
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrowReindex
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramSimplexCurryReindex
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramArrowReindex
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramSimplexCurryReindex
 
 /-!
 概要：同じ三角形の最初の面を、既存の元の底変換比較の同じ底制限へ戻す。

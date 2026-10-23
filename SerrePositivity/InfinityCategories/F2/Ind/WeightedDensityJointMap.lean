@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedNativeLift
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
 
 /-!
 概要：元の weighted 密度の全評価を、同じ共同分類図式の小さい unstraightening へ移す。

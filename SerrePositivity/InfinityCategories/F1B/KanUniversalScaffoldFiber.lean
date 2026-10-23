@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanUniversalScaffold
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiber
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
 
 /-!
 概要：cocartesian universal scaffold の fiber 比較を恒等射評価と同定する。

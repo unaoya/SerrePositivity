@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：同じ入力を表す二つの分解の実比較から、実出力関手の全関手同型を得る。
 方針：同値な入力射影への後合成で同型を回収し、同じ出力射影へ後合成する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeLeftFibrationHomNative
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningAllBasesEvaluation
 
 /-!
 概要：一点始域の相対 Hom の全評価関手と、元の left fibration の頂点 fiber 評価を比較する。

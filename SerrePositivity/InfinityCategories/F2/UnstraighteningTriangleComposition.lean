@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningMappingTrianglePrism
 public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleWitness
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningSourceFamilyComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningSourceFamilyComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorComposition
 
 /-!
 概要：指定三角形の長辺の unstraightening 比較は、二辺の実際の相対合成と同型。

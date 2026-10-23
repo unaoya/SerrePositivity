@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningFiberDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationFiberNative
-public import SerrePositivity.InfinityCategories.F1.KanOppositeCoefficients
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanOppositeCoefficients
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
 
 /-!
 概要：right straightening で評価される反転 fiber 図式は、元の fiber 図式の反転と自然同型。

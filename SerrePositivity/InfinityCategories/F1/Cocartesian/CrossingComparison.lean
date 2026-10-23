@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.F1.IntervalFullyFaithfulCriterion
-public import SerrePositivity.InfinityCategories.F1.FiberwiseEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFullyFaithfulCriterion
+public import SerrePositivity.InfinityCategories.F1.Fibrations.FiberwiseEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 
 /-!

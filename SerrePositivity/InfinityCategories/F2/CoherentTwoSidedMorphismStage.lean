@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTwoSidedConstantStage
 public import SerrePositivity.InfinityCategories.F2.EdgewiseRefinementConstantVertex
-public import SerrePositivity.InfinityCategories.F1.CoherentTwoSidedHomIntervals
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Coherent.TwoSidedHomIntervals
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 
 /-!
 概要：固定 Kan 射の定値共通係数では、同じ全二側区間族は補間段階に依存しない。

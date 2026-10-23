@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryEvaluation
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningRelativeProjection
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!
 概要：相対 curry と定値標的の fiber 表示は全係数で厳密に可換する。

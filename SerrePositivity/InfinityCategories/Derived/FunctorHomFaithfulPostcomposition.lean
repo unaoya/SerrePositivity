@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerHom
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：充満忠実な実包含への後合成は、任意の全関手射の等式を反映する。
 方針：全関手圏への後合成の充満忠実性をホモトピー圏で使う。

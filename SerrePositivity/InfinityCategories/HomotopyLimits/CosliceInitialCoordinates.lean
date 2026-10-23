@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeInitialFixed
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 
 /-!
 概要：coherent nerve の coslice の単体を、初点の対象を固定した simplex として読む。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedUnderlyingIso
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：同じ実出力分解による関手を、既存の射影的模型による実導来関手と比較する。
 方針：同じ生の包含先で二つの全関手同型を合成し、完全充満包含で回収する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RepresentableUnstraighteningComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningComparison
 public import SerrePositivity.InfinityCategories.F1B.QuillenASliceOpposite
 
 /-!

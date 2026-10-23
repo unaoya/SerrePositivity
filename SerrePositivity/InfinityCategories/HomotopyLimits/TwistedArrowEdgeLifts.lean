@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowEdgeProjections
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSource
-public import SerrePositivity.InfinityCategories.F1.YonedaTargetBaseChange
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.Source
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaTargetBaseChange
 
 /-!
 概要：元の二つの Tw 辺を、始点固定と終点固定の実際の全空間へ持ち上げる。

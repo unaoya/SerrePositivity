@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictionSquareIdentity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomRestrictedTransport
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionBoundaryCoherence
 
 /-!
 概要：比較三角形の最初の面は、元の大域比較 Hom の底制限上の指定因子比較を回収する。

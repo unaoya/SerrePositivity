@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffold
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementConstant
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementConstant
 
 /-!
 概要：under 切断の大域 scaffold 評価は、元の積の両方の射影を厳密に保つ。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeExtensionEndpointClasses
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeExtensionHomotopy
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 
 /-!
 概要：既存の prism 輸送比較同型を、同じ底と始点を保つ実際の円柱として実現する。

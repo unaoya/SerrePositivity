@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorHomReflect
 public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
 public import SerrePositivity.InfinityCategories.F1B.WeakReverseHomotopy
-public import SerrePositivity.InfinityCategories.F1.FunctorEdgeFromPrism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEdgeFromPrism
 
 /-!
 概要：終対象を持つ冪等完備化の元の底は弱可縮。

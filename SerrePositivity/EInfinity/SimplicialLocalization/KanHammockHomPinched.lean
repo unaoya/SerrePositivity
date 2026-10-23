@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
 
 /-!

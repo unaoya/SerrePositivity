@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：異なる入力を持つ二つの実分解比較から、同じ指定逆による出力比較を得る。
 方針：同じ全 Hom・実二射影・比較 cochain の等式を保持して構成する。

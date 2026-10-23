@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 
 /-!
 概要：元の表現の比較を、同じ pointed space の指定 fiber への実際の射として回収する。

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomAccessible
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：小さい Kan 空間の compact 性を、N の元の大きい全共変 Hom の定義で証明する。

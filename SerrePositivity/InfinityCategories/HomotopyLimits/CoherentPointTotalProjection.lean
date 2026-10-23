@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFiber
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedEmptyProductNative
 

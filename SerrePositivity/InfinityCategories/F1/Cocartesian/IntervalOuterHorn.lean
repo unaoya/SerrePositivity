@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalTriangleNaturality
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleCospan
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleCospan
 
 /-!
 概要：元の第一三角形の対角と標的図式の辺を、第二三角形の同じ外ホーンとして束ねる。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftAnodynePushoutProduct
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence

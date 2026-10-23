@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
 public import SerrePositivity.InfinityCategories.F2.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：Sp の錐の脚を、元の端点を持つ BF 射として回収する。

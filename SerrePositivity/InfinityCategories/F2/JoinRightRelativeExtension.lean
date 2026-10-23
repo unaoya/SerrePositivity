@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinDiagramRightRelativeRetraction
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagramRightRelativeRetraction
 
 /-!
 概要：部分族が既に通常の join 図式である fat join 図式の相対的な回収。

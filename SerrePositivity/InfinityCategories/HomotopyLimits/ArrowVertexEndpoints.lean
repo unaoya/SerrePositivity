@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 
 /-!
 概要：元の辺を表す矢印関手頂点の両端評価を、元の同じ端点へ厳密に同定する。

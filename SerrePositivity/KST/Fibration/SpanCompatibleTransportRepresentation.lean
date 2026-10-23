@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.StrictTransportComparisonSpan
 public import SerrePositivity.KST.Fibration.SpanCompatibleComparison
-public import SerrePositivity.InfinityCategories.F1.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 
 /-! # 指定した復元 span の相対三角を保持する coherent transport 表現 -/
 

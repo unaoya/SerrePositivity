@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Functor
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
-public import SerrePositivity.InfinityCategories.F1.CoreFaces
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreFaces
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianCancellation
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 

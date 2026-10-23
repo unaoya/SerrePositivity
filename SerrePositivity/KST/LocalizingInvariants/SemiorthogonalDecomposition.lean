@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.AdjointVerdier
 public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 
 /-!
 概要：二項の半直交分解を、完全包含・実随伴・零化・核の生成で定義する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoconeDiagonalPrismHomotopy
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationHomotopy
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationMap
-public import SerrePositivity.InfinityCategories.F1.CoherentTransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
 
 /-!
 概要：元の三角形の対角を変換空間へ戻し、元の余錐の全 Hom の標準変換と比較する。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorCurryHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorCurryHom
 public import SerrePositivity.InfinityCategories.F2.IsoEndpointNormalization
 
 /-!

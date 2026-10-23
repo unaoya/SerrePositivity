@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeGlobalComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorIsPullbackIso
 
 /-!
 概要：元の始点固定族上の共同標的への相対 Hom を、同じ native 評価の定値標的へ戻す。

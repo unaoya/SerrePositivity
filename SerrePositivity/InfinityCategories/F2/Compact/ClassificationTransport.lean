@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningBaseChange
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinityEquivalence
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ComparisonTriangleProjection
-public import SerrePositivity.InfinityCategories.F1.PullbackComparisonTriangle
+public import SerrePositivity.InfinityCategories.F1.Pullbacks.PullbackComparisonTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OverPullbackEdges
 
 /-!

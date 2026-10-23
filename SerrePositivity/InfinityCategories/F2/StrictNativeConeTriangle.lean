@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.StrictNativeConeLeg
 public import SerrePositivity.InfinityCategories.F2.NativeConeTriangle
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：strict coherent 錐の三角形の三つの境界射の回収。

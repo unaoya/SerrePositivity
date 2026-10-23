@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.LeftIntervalFatNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalFatNaturality
 
 /-! # 始点を固定し終点を動かす元の矢印族の fat join 展開 -/
 

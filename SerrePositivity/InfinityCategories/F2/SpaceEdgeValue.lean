@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceLeftHomValue
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：任意の指定空間辺を、その元の両頂点の Kan 値の間の射へ厳密に読み戻す。

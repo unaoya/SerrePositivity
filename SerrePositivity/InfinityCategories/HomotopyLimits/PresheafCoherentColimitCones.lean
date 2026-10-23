@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PresheafInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F2.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalColimit
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：元の coherent nerve と標準単体の積を、順序付き円柱の nerve へ組み合わせる。

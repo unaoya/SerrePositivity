@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.OppositeHomPrecomposition
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 
 /-!
 概要：元の固定射による全反転 Hom の作用を、元の豊穣後合成そのものへ戻す。

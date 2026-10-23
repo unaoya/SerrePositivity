@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryGlobalPullbackTarget
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryDiagramOriginal
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryCoherentHornOriginal
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 
 /-!
 概要：同じ境界 pullback への二射を、面・ホーンの元の指定同型で成分ごとに結ぶ。

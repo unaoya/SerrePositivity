@@ -2,7 +2,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 public import Mathlib.CategoryTheory.Monoidal.Closed.Types
 public import Mathlib.CategoryTheory.Monoidal.Limits.Preserves
-public import SerrePositivity.InfinityCategories.F1.LeftAnodynePushoutProduct
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct
 
 /-! # 同じ始端を持つ二つの prism の外ホーンへの貼り合わせ
 

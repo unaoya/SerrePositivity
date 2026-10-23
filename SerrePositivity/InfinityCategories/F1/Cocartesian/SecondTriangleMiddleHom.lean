@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SecondTriangleObjects
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MixedHomPostcomposition
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderHomNormalization
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderHomNormalization
 
 /-!
 概要：元の第二三角形の最初の混合 Hom は、同じ標準合成三角形の Hom と一致する。

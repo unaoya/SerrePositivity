@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaTransport
 public import SerrePositivity.InfinityCategories.Core.CocartesianFibration
-public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 
 /-! # comma の始域射影の反転による輸送
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingVertexRecovery
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingVertexRecovery
 
 /-! # 同じ全写像空間の実比較は、可逆な指定二胞体を小さい底上の同値へ送る -/
 

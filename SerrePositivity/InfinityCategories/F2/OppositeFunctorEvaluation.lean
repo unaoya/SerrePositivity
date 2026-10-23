@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.OppositeInternalHomEvaluation
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeInternalHomEvaluation
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
 
 /-!

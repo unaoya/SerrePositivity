@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Isofibration
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFiber
 public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutProduct
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 

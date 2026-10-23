@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeDiagramHom
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-!
 概要：元の全空間の結合同型の分類像の辺は、底全体の既存の結合比較を実現した辺。

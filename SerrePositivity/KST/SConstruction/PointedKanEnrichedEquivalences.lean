@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects
 public import SerrePositivity.KST.Spectra.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
 
 /-! # 点つき全基点 π 同型の coherent な可逆性

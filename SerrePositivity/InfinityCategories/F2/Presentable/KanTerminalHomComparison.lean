@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanTerminalEnriched
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomContinuity
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEnrichedEvaluation
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoherentEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEnrichedEvaluation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoherentEvaluation
 
 /-!
 概要：終対象上の相対 Hom の全豊穣評価を、元の Kan 内部 Hom の全豊穣評価へ戻す。

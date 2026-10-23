@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
-public import SerrePositivity.InfinityCategories.F1.SimplicialPairNerve
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonIso
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplicialPairNerve
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedComparisonIso
 
 /-!
 概要：Kan 複体の二項積の、両変数に関する単体的 Hom 作用。

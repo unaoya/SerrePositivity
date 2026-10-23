@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionRestriction
 public import SerrePositivity.InfinityCategories.F2.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：元の pointed な prism の延長空間と指定比較を任意の始域の族へ制限する。

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedExtensionCo
 public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeRightPrefixTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportTriangleVertex
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedExtensionHomotopyEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeExtensionHomotopy
 

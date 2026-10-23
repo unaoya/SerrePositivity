@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChange
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensitySourceRestriction
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationComparisonBaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationComparisonBaseChange
 
 /-!
 概要：共同 Hom の元の復元射を始点固定に底変換し、同じ密度評価図式へ戻す。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionDataIso
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：底と初期値の明示移送は、同じ引き戻しを標的とする実際の終点評価と交換する。

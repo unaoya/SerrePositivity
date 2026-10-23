@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CoreSingleKanCoordinates
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-! # 元の core S 実現の射を、同じ全 Hom・同じ coherent 辺から回収する -/
 

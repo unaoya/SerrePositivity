@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomPathVertices
-public import SerrePositivity.InfinityCategories.F1.IntervalHomPathSpan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomPathSpan
 
 /-!
 概要：同じ底変換比較 path の Hom の二射影は、元の二つの分類 Hom の同値。

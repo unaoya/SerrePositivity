@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ScaffoldTransportRestriction
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldFiber
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldFiber
 
 /-! # strict transport の元の係数値での、同じ scaffold 三角の制限 -/
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeGlobalCompositionNative
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoWhiskeredPasting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoWhiskeredPasting
 
 /-!
 概要：元の全 Hom 上の指定結合輸送の因子は、既存の局所結合比較の第二因子を回収する。

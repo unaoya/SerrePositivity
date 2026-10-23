@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomNaturality
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 
 /-! # 左写像空間の連結成分の頂点での計算
 

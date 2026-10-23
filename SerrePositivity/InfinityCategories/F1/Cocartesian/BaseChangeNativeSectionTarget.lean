@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeEnriched
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityEnriched
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRestriction
 
 /-!
 概要：指定結合同型の全局所比較を元の全 fibration へ制限した終域は、直接底変換の作用。

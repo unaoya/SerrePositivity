@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.ComposableHomHorn
+public import SerrePositivity.InfinityCategories.F1.Diagrams.ComposableHomHorn
 
 /-! 指定した第一辺と、第二辺の全 Hom 空間の族を同じ内ホーンへ貼る。 -/
 @[expose] public section

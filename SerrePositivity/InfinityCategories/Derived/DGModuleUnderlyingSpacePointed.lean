@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourcePointedFiber
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourcePointedFiber
 public import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 /-!
 概要：同じ基礎空間関手を普遍 pointed-space 射影へ表示し、元の実輸送で辺作用を判定する。
 方針：同じ Yoneda 評価の始点固定 Tw 表示と両 fiber の実同値を用いる。

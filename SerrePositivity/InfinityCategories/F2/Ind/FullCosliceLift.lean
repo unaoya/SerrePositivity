@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FullJoinVertices
-public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 
 /-!
 概要：全部分圏内の図式上の余錐の全族を、周囲の同じ余錐の全族から持ち上げる。

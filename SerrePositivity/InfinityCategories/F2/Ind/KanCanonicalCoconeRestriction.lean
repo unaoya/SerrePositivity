@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostHomCriterion
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 
 /-!
 概要：標準左 Kan 条件を満たす図式の全余錐の制限は同値。

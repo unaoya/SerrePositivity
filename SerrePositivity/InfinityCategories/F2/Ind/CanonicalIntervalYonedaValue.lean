@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DensityOriginalFiberPrism
-public import SerrePositivity.InfinityCategories.F1.CanonicalYonedaFiberTransport
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaFiberTransport
 
 /-!
 概要：Tw 全体から取る同じ恒等点で、大域密度変換の全 fiber 作用を評価する。

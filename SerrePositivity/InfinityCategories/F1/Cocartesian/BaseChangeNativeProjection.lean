@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeAssociativity
-public import SerrePositivity.InfinityCategories.F1.OverPullbackColimits
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackColimits
 
 /-!
 概要：二重引き戻しの同型と射影の合成は、元の底上の射による直接の誘導射。

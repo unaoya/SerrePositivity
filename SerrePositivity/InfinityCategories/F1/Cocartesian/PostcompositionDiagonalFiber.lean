@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PostcompositionHornBoundary
-public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceFiber
-public import SerrePositivity.InfinityCategories.F1.VertexFiberPointIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceFiber
+public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberPointIso
 
 /-!
 概要：元の指定外ホーン fiber を、同じ合成三角形全体の対角 fiber と同定する。

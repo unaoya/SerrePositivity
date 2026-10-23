@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornHomPullbacks
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.InnerTwoHornRestriction
 
 /-!

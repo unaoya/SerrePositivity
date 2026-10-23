@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeOriginalHomTriangleIdentity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleSecondRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeFirstGlobalNaturalityFactor
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：元の全 Hom 上の輸送三角形の四つの指定同型を名前で束ねる。

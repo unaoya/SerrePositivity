@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FractionKanInitialInversion
-public import SerrePositivity.InfinityCategories.F1.TransportLocalizationUlift
+public import SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 
 /-! # 元の coslice 写像空間図式の、同じ底への全関手 ∞ 圏による降下 -/

@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SimplexNerveOver
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexNerveOver
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteSimplexEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramOverIsomorphism
-public import SerrePositivity.InfinityCategories.F1.UniverseOverIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramOverIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Universe.OverIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NativeHomPresentation
 
 /-!

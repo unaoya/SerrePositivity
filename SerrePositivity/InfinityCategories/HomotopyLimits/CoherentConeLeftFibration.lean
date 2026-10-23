@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PullbackSections
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 
 /-!
 概要：coherent な錐の切断模型を図式上の left fibration とその写像空間の fiber で表示する。

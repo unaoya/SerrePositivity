@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInternalHom
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorAnodyneRestriction
 public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
 
 /-!

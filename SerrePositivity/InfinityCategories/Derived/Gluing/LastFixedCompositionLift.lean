@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonal
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceDiagonal
 
 /-! 可変第一辺と指定した終辺を持つ実三角形族を、同じ合成対応へ戻す。 -/
 @[expose] public section

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFunctorPairRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedFiberSecondMap
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInitialEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInitialEvaluation
 
 /-!
 概要：初期値を固定する延長の終点制限は、二部分の同時制限の初期値 fiber である。

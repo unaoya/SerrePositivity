@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 
 /-!
 概要：積上の族と内部 Hom の族を指数則で相互に移し、元の制限と後合成を保つ。

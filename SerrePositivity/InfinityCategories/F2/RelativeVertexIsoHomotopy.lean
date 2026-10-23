@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 
 /-!

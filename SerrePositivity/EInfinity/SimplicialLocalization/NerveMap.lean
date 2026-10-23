@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichedMap
 public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 # 相対関手が誘導する局所化の coherent nerve の射

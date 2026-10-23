@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPullbackNativeCore
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
-public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
 
 /-!
 概要：元の native core と同じ scaffold 比較の宇宙を、セル貼合せの宇宙へ揃える。

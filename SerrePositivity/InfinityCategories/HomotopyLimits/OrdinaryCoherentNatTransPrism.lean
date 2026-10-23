@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OrdinaryNatTransPrism
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentUnderlyingHo
-public import SerrePositivity.InfinityCategories.F1.ThinNerveInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration
 
 /-!
 概要：元の通常の自然変換の prism を、成分を変更せず coherent nerve へ写す。

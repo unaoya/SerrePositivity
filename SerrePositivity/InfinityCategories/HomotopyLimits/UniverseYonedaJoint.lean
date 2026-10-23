@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseLeftClassification
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseTwistedArrowProjection
-public import SerrePositivity.InfinityCategories.F1.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 
 /-!
 概要：元の共同 Hom 全図式の宇宙変更を、持ち上げた元の圏の共同 Hom と比較する。

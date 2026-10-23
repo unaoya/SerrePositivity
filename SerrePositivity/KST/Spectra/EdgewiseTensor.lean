@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.KanEdgewiseFunctor
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEdgewiseFunctor
 
 /-!
 概要：edgewise 共通解像のテンソル比較と左右射影の整合性。

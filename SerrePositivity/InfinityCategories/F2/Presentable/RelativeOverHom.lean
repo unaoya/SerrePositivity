@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostUncurry
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostUncurry
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteOverPresentable
 
 /-!

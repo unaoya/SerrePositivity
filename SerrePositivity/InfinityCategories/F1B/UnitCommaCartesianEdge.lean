@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFamilies
 public import SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 概要：comma の標的で可逆な辺は始域射影に対して cartesian。

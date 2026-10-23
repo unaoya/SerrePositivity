@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationTotalAssembly
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTransportPrism
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTransportPrism
 
 /-!
 概要：元の二段間の weighted 輸送円柱は、元の全空間余極限での値を厳密に保つ。

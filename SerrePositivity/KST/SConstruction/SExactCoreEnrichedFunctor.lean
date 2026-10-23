@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SExactEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
 
 /-! # 自然同値の全 core を保つ厳密豊穣 S_n
 概要：実 S_n の豊穣自己関手を、安定 ∞ 圏と完全関手の局所 Kan な単体的圏へ移す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldEquivalence
-public import SerrePositivity.InfinityCategories.F1.OverComparisonResolution
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverComparisonResolution
 
 /-!
 概要：元の共同 left fibration と strict weighted nerve を、元の積上の同値の span で結ぶ。

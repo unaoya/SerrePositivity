@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.HomInfinityBifunctor
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafAllSmallLimits
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafAllSmallLimits
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorHomotopySourceComparison
 public import SerrePositivity.InfinityCategories.F2.VertexIsoEndpointTransport
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：元の実 prism の指定始域比較を、元の相対後合成の頂点そのものの始点で保持する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportCutPureHom
-public import SerrePositivity.InfinityCategories.F1.CoherentHomConstantTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomConstantTransport
 
 /-!
 概要：薄い底の上の同時刻 Hom を、指定された同じ底対象へ正規化する。

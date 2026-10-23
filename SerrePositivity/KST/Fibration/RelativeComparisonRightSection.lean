@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInverse
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInverse
 
 /-! # 底上の合成と同値との相対三角形から、同じ比較の底上の右逆を回収する -/
 

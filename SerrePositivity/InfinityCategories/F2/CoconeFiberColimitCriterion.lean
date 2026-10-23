@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeFiberHomComparison
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentUnstraighteningMappingEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.UnstraighteningMappingEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomInitiality
 
 /-!

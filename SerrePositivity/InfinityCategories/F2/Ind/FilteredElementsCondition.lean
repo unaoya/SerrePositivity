@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsMembership
 public import SerrePositivity.InfinityCategories.F2.FilteredEquivalence
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.F1.PresheafRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafRestrictionEquivalence
 
 /-!
 概要：元の前層の元の圏が κ-filtered であるという頂点条件を定め、前層内の同型閉性を示す。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
 public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：元の left fibration の全分類図式は、指定された空間の宇宙変更と全自然同型。

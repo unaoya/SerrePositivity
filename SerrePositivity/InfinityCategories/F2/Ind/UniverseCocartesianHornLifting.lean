@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UniverseHornDiagramDown
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の指定 cocartesian 辺の外側ホーン充填条件は宇宙持ち上げで保存される。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSectionDomainEvaluation
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexUnderRealization
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexUnderRealization
 
 /-! # 元の under 切断比較の指定成分は、同じ切断の実制限像を保持する -/
 

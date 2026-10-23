@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedRecovery
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-! # 元の全高次厳密 dg 入力からの Cat∞ 値 Perf 関手
 概要：実単体的豊穣 Perf 関手に γ1 の coherent nerve の関手性を適用する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanSectionsIso
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveFiber
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber
 
 /-!
 概要：strict な錐の標準比較を weighted nerve の切断の族として全次数で評価する。

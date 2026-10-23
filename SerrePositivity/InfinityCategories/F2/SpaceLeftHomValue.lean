@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 
 /-!
 概要：𝒮 内の任意の二頂点の左 Hom を元の値の内部 Hom と比較する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryCore
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 public import SerrePositivity.InfinityCategories.Core.OuterHornConverse
 
 /-! # Kan 始域からの射の実 core 制限

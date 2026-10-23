@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PathLifting
-public import SerrePositivity.InfinityCategories.F1.LeftTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransport
 
 /-!
 概要：cocartesian fibration の整合的な prism と fiber 間の transport の存在。

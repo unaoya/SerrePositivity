@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
 
 /-!

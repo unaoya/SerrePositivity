@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SecondTriangleCoordinates
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FirstTriangleCoordinates
-public import SerrePositivity.InfinityCategories.F1.CoherentNestedCutFixedTarget
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NestedCutFixedTarget
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramMappingNaturality
 
 /-!
 概要：元の零成分と終域輸送から、第二三角形の同じ標準合成図式を定める。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatPullbackDiagramDiagonal
 public import SerrePositivity.InfinityCategories.F2.ConeDiagramUpperTriangle
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeTetrahedronUpperSides
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：引き戻し図式の上側の比較三角形と三辺。

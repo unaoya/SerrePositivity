@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ReverseCompositionPrismCoordinates
-public import SerrePositivity.InfinityCategories.F1.PointedReverseFiberCoordinates
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberCoordinates
 
 /-!
 概要：F1 の同じ全 pointed 反転合成 prism を、元の Space の全拡張単体で読む。

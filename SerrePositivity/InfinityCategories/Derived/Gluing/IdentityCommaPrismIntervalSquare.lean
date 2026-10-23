@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismIntervalCut
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaAugmentationEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismEvaluation
 
 /-! 元恒等 comma の augmentation 四角形と pinched prism の全区間評価の厳密な等式。 -/
 @[expose] public section

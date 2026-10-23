@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedProductComparison
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanObjects
 public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：元の全空間積比較を、その同じ coherent な辺の頂点円柱にする。

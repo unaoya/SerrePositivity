@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeExtensionHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantBaseEndpointHomotopy
-public import SerrePositivity.InfinityCategories.F1.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
 
 /-!
 概要：元の三角形 prism の長辺と標準長辺輸送を、底と初期値を固定する実際の円柱で比較する。

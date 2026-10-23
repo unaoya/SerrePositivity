@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomFiberInvertibility
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningSimplexRestriction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSimplexRestriction
 
 /-!
 概要：元の分類比較の評価成分の可逆性を、同じ元の fiber 射の同値性で検出する。

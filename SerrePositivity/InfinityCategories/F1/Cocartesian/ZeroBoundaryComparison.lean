@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EmptyCocartesianHomComparison
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.EmptyCocartesianHomComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningHomInterval
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.SimplexAttachmentOver
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexAttachmentOver
 
 /-!
 概要：実際の零単体の空境界で、native Hom と元の分類先 Hom の比較を閉じる。

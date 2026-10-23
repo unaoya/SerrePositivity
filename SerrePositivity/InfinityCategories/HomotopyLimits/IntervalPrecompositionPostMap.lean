@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostIso
 
 /-!
 概要：元の区間 Hom 前合成は、単体的関手の元の Hom 作用と全パラメータで両立する。

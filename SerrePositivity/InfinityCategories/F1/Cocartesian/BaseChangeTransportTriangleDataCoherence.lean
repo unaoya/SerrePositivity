@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTransportTriangleData
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
 
 /-!

@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedActionLaws
 public import SerrePositivity.KST.SConstruction.KanSourceCoreMap
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparison
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.PointedPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparison
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedPrismEvaluation
 
 /-! # 実 core 値への元の全 Kan パラメータ作用
 概要：局所 Kan な入力からの実作用を、値の実 core へ全単体のまま持ち上げる。

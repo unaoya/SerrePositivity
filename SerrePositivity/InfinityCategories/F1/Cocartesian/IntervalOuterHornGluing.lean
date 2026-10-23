@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalOuterHornSquare
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFamilyFaces
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFamilyFaces
 
 /-!
 概要：外ホーン上で一致する元の二三角形を、同じ三辺固定の標準正方形へ貼る。

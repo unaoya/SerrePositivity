@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedTerminalHomotopyStart
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeCosliceFamilyHomotopy
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 
 /-!
 概要：根辺円柱へ延長した族の時間零の端面を、元の全族と相対的に結ぶ。

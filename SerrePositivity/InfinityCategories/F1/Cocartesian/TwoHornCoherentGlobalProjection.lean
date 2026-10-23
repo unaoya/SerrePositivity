@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoHornFaceTriangle
-public import SerrePositivity.InfinityCategories.F1.IsoRightTransport
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.IsoRightTransport
 
 /-!
 概要：補正ホーン比較の大域同型の共有境界像は、面側が指定した像そのもの。

@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.Fibration.KanClosedEvaluation
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.InfinityCategories.F1.InvertibleLeftTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
 
 /-! # 基点を忘れた同じ coherent 辺の可逆性は、元の点つき辺へ反映される -/
 

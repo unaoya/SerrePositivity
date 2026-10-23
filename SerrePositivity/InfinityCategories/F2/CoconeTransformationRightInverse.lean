@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationFatComparison
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationFatHomotopy
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
 
 /-!
 概要：native な余錐から定値変換空間への標準比較はホモトピー右逆を持つ。

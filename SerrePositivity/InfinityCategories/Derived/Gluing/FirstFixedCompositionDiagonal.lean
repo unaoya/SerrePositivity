@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FirstFixedCompositionSpace
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexFaceCurry
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexFaceCurry
 
 /-! 第一辺固定の全合成三角形の三辺と、同じ共通始終点を持つ対角評価。 -/
 @[expose] public section

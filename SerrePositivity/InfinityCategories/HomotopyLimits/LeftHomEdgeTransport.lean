@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedIntervalTransport
-public import SerrePositivity.InfinityCategories.F1.ParametrizedFiberTransportNaturality
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedFiberTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 
 /-!
 概要：元の辺を左 Hom の指定頂点にし、全左 Hom の普遍輸送で元の辺輸送を回収する。

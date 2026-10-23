@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentLowComparison
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 /-!
 概要：coherent nerve の同じ閉射の比較像を、元の dg nerve の同じ閉射へ同定する。
 方針：唯一の二点 path を標準 path に揃え、閉零元と標準零単体の同じ同値を評価する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedNerveParameterCoefficient
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornLift
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveHornLift
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 
 /-!

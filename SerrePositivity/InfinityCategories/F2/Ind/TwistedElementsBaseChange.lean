@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowLeftFibration
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-!
 概要：終点だけで引き戻した twisted arrow の族を、共同 Hom の底変換として表示する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberExactNaturality
 public import SerrePositivity.KST.LocalizingInvariants.TammeArrowDenominators
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexMarkedCover
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexMarkedCover
 
 /-!
 概要：元の cofiber 関手は矢印圏上の点ごとの分母を、元の商で可逆となる辺へ写す。

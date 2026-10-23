@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FirstFixedCompositionHorn
-public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondence
 
 /-! 第一辺固定の全合成三角形の空間と、元の第二辺への自明 Kan 射影。 -/
 @[expose] public section

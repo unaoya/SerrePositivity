@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityEnriched
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagram
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeDiagramComparison
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianCoherentUnit
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianCoherentUnit
 
 /-!
 概要：同じ底変換結合同型を、底全体と元の全高次 Hom に同時に自然な図式比較にする。

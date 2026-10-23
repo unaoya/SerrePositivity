@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeUniversalR
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalSpanRestriction
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
 public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
-public import SerrePositivity.InfinityCategories.F1.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
 
 /-!
 概要：元の pushout の余錐制限と span の局所的な余錐制限を照合する。

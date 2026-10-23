@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakCosliceComparisonSection
 public import SerrePositivity.KST.Fibration.FunctorIsoValue
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorFiberHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
 
 /-! # 同じ商上の実右逆と余単位を、全ての元の fiber に制限する -/
 

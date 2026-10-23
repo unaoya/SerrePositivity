@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramInfinity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportMappingEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
-public import SerrePositivity.InfinityCategories.F1.CoreEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 
 /-!
 概要：元の cocartesian strict transport を全相対 Hom の core に作用する豊穣関手へ束ねる。

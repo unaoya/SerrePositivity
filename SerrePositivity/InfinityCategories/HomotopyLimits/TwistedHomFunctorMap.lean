@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceTwistedHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 

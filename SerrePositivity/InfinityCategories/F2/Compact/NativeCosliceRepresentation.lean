@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningInfinityReconstruction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
 
 /-!
 概要：元の共変 Hom 関手を、同じ coslice の実際の全空間表現へ全自然同型で比較する。

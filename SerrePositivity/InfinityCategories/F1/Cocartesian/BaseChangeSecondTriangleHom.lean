@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondEquivalenceTriangle
-public import SerrePositivity.InfinityCategories.F1.CoherentHomIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalNaturality
 
 /-!
 概要：元の第二比較を分解する三角形の Hom と、元の全相対 Hom の同じ作用。

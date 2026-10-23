@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrism
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramConePointRestriction
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：元の全図式 comma の円柱の点制限を、同じ評価 comma の全余錐と同定する。

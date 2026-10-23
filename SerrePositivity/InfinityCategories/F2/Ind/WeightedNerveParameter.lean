@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantProduct
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFunctor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantProduct
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFunctor
 
 /-!
 概要：固定底への係数射影を、weighted nerve 全体の同じ底への射に束ねる。

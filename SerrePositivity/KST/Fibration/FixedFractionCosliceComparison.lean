@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.FractionFamilyCoslice
 public import SerrePositivity.KST.Fibration.PointSourceFatRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison
-public import SerrePositivity.InfinityCategories.F1.LeftIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalEquivalence
 
 /-! # 同じ全族の coslice 制限と、既存の両端固定分数評価の実ホモトピー -/
 

@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInclusion
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCandidate
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInitialEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningCandidate
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
 
 /-! # left fibration の同じ strict Kan 図式と分類候補の比較 -/
 

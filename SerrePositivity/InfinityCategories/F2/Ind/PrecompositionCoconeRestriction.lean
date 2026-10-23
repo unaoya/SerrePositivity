@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostHomCriterion
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentPrefixPathEnriched
-public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformation
+public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexDeformation
 
 /-!
 概要：最大 path 表示を後合成すると、prefix 変形の時刻に依存しない。

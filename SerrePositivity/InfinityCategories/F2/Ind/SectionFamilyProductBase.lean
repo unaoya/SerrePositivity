@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ParametrizedSectionRestriction
-public import SerrePositivity.InfinityCategories.F1.LeftStrictTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransport
 
 /-!
 概要：一つの底をパラメータとし、もう一方の図式だけを変化させる切断の族の底。

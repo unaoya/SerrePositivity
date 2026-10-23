@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsCoreRestriction
-public import SerrePositivity.InfinityCategories.F1.KanPointHomNaturality
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 
 /-!
 概要：底上の図式に対する cocartesian section の core を反変な Kan 値関手へ束ねる。

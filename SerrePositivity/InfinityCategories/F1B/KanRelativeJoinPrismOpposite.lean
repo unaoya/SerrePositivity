@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRightShiftPrism
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinder
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinder
 
 /-!
 概要：左右の relative join の標準指定変換の反転による交換。

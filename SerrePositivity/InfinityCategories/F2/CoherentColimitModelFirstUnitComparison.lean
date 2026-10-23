@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitModelFirstUnitValue
 public import SerrePositivity.InfinityCategories.F2.PointedFiberValueToReflection
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulFunctorIsoCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence
 
 /-!
 概要：元の模型第一辺比較を同じ raw fiber に戻し、元の第一辺合成比較と値まで同定する。

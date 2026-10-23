@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.OverPullbackMorphism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackMorphism
 public import SerrePositivity.InfinityCategories.F1B.KanPrecompositionSquareExtension
 
 /-!

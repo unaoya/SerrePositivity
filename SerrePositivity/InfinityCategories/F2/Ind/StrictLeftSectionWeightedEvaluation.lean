@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftFibrationSections
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedNerveParameterFibration
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTensor
 
 /-!
 概要：strict 図式の相対切断を、その共同 weighted nerve へ全パラメータで同時に評価する。

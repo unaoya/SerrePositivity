@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSimplex
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveFunctor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTensor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor
 
 /-!
 概要：weighted cone の初点を豊穣 Hom 全体の前合成で動かす。

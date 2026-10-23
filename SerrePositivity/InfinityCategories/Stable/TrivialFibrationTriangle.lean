@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionCoherence
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 /-!
 概要：trivial Kan fibration の指定二比較の三角整合性を、元の全関手上で示す。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.NonConnective.SequentialCandidateLegs
 public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentHomOrdinary
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.F2.CatFunctorCoreIso
 
 /-!

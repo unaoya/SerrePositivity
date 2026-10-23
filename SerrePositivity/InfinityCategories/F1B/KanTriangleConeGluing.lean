@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceConeExtension
-public import SerrePositivity.InfinityCategories.F1.JoinLeftGluing
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceConeExtension
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftGluing
 public import SerrePositivity.InfinityCategories.Core.JoinPushout
 
 /-!

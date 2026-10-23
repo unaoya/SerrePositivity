@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianLift
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 
 /-!
 概要：全辺が Tamme 分母へ写る任意の底図式上では、span の射影は両側 fibration。

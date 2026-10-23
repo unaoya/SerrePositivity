@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 
 /-! # 点つき写像の元の成分と coherent nerve の射の忠実な比較
 概要：点つき Kan 模型間の元のホモトピー成分を、coherent nerve のホモトピー圏から反映する。

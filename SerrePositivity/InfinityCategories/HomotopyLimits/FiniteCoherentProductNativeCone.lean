@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentPr
 public import SerrePositivity.InfinityCategories.F2.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanObjects
 public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：元の有限 coherent 積図式の余極限 Kan 模型を頂点とする、native な全有限積錐。

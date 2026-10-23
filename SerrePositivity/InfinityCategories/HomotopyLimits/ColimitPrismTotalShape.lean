@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeCoordinates
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinConeCoordinates
 
 /-!
 概要：余錐間の元の prism から全図式の余錐への形状の射を構成する。

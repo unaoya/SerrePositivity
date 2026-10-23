@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-!

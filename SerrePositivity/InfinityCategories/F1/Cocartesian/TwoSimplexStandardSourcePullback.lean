@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexStandardSourceComponents
-public import SerrePositivity.InfinityCategories.F1.SpanPullbackIsomorphism
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornHomPullbacks
+public import SerrePositivity.InfinityCategories.F1.Joins.SpanPullbackIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornHomPullbacks
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePullbacks
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.InnerTwoHornDetection
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornImageEdges
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornImageEdges
 
 /-!
 概要：同型で表示した内ホーンの像上で辺を保つ元の関手は全ての cocartesian 辺を保つ。

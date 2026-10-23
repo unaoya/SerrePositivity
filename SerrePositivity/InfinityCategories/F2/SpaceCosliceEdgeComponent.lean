@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentCosliceComparisonVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.CosliceComparisonVertices
 public import SerrePositivity.InfinityCategories.F2.SpaceSimplexSourceCone
 public import SerrePositivity.InfinityCategories.F2.CoherentEdges
 

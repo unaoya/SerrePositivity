@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsReconstruction
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedIdentity
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.PointedIdentity
 
 /-!
 概要：元の共同 Hom の復元射の pointed 成分を、同じ Tw 全体の復元へ戻す。

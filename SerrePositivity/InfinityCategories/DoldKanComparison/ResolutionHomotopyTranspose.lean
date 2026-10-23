@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHornProjection
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionMonomorphisms
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionMonomorphisms
 
 /-!
 # 解像の随伴による単体的ホモトピーの転置

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTransformationVertexTriangle
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
-public import SerrePositivity.InfinityCategories.F1.FunctorPrismFiber
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
 
 /-!
 概要：元の coherent 変換の一点パラメーターの図式を、元の指定辺の一点評価へ移す。

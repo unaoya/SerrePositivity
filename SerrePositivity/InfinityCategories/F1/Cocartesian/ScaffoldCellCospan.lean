@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellOverNaturality
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SimplexCellIndex
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteNerveUniverse
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteNerveUniverse
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Cospan
 
 /-!

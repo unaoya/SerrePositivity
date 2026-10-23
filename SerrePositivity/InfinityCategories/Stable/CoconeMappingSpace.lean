@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberKan
 
 /-! # 終点を固定した余錐の空間
 

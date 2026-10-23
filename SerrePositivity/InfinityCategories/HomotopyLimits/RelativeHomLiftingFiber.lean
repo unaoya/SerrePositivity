@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFiber
 
 /-!
 概要：固定図式上の切断制限の全境界充填性から、元の相対 Hom の fiber の可縮性を証明する。

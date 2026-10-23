@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.SectionPostToLeftFibration
 public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
 public import SerrePositivity.KST.Fibration.StrictTransportEvaluationPrism
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 
 /-! # 左 fibration への同じ評価関手による strict transport 図式全体の自然変換 -/

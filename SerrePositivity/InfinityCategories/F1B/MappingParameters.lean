@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingSpace
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingSpace
 
 /-!
 概要：写像空間のパラメータ族を、定値関手間の辺として表示する。

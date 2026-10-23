@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.NormalizedHomComposition
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSimplex
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionSimplex
 
 /-!
 # 解像の旗での Hom 評価の単体的自然性

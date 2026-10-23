@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentLeftHomComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseHomotopyReflection
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1.PointedSpaceMappingSpaces
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces
 
 /-!
 概要：Kan 複体とその単体集合の反転の実際の同値。

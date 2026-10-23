@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyRecovery
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1B.MappingParameters
 
 /-! # Coherent nerve の固定端点の族の相対回収

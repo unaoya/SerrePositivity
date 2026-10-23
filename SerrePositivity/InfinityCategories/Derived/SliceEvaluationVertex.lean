@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
 public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrismPoint
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 /-!
 概要：実 slice 評価の成分が、元の同じ実 over 辺であることを全時刻の点表示から証明する。
 方針：右 join prism の点公式と Yoneda の評価を使う。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionConeEquivalence
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
 public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport

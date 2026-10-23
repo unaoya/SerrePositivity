@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.OppositeHomPrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourceWeighted
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：coslice 全体の始点前合成を、元の二つの全反転 Hom の豊穣合成へ厳密に戻す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
-public import SerrePositivity.InfinityCategories.F1.RepresentableLimitCharacterization
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 

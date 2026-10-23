@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleFirstRestriction
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonIndexTriangle
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedComparisonIndexTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeComparisonYoneda
 
 /-!

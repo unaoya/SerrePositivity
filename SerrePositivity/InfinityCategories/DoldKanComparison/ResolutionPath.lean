@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentStandardFullyFaithful
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFlags
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionFlags
 
 /-!
 # 補助解像の旗から native Path への写像

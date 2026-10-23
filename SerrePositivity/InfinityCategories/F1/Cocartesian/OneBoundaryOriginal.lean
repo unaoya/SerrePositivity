@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryOriginalTarget
-public import SerrePositivity.InfinityCategories.F1.PairedKanFunctorIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PairedKanFunctorIso
 
 /-!
 概要：実際の一次元境界全体の比較を、元の大域の全 Hom 作用へ指定同型で戻す。

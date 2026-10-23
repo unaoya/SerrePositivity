@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 
 /-!
 概要：coherent な関手の族を指定頂点のグラフで制限すると、同じ頂点の関手を得る。

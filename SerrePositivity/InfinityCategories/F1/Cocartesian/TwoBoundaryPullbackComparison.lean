@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoBoundaryHornComparison
-public import SerrePositivity.InfinityCategories.F1.KanSpanPullbackComparison
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanSpanPullbackComparison
 
 /-!
 概要：二次境界のホーンと欠けた面の同じ厳密 cospan 比較は、pullback 上でも同値。

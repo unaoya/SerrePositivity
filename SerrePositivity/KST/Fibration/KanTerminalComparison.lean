@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.KanClosedEvaluation
-public import SerrePositivity.InfinityCategories.F1.KanAnodyneLocalization
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.KST.Comparison.ExInfinityLocalization
 
 /-! # 元の一点射の可逆性から、同じ Ex∞ 値の空間の ∞ 圏での終対象性へ接続する -/

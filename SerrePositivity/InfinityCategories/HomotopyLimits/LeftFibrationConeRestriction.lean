@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalObjectLimits
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
 
 /-!
 概要：任意の left fibration の全錐上の切断から底図式上の切断への制限。

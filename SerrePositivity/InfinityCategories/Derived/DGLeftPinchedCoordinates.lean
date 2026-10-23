@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGLeftPinchedChainMap
-public import SerrePositivity.InfinityCategories.F1.CoherentLeftHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.LeftHomEnrichedNaturality
 /-!
 概要：左 pinched Hom の反対模型同型と coslice fiber 同型の、実全単体の座標を計算する。
 方針：端点輸送を消去し、同じ反対 dg 単体と同じ join 単体を回収する。

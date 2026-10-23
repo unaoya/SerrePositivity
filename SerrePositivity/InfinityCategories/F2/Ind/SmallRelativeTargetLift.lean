@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：任意の小さい始域から小さい unstraightening への相対射を元の全空間へ移す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryCorrection
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 
 /-!
 概要：同じ一次元境界値を固定した元の native Hom と分類先 Hom の比較。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.TransportRepresentationPointHom
-public import SerrePositivity.InfinityCategories.F1.SmallFiberStraighteningCounit
-public import SerrePositivity.InfinityCategories.F1.NerveStraighteningRepresentation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallFiberStraighteningCounit
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.NerveStraighteningRepresentation
 
 /-! # 可縮な表現空間で選んだ同じ分類比較が、元の pointedMap の指定点を保つ -/
 

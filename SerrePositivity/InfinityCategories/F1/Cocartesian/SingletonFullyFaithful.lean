@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramSingletonEvaluation
-public import SerrePositivity.InfinityCategories.F1.SubsingletonFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramSingletonEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.SubsingletonFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramRealizationEvaluation
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInfinityEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramRealizationComparison

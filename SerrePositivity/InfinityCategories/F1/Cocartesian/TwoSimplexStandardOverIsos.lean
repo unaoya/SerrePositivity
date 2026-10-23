@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCellCospan
-public import SerrePositivity.InfinityCategories.F1.InnerTwoHornOverPushout
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornOverPushout
 
 /-!
 概要：同じ二辺を標準単体で表示し、元の nerve セルと底上の同型で結ぶ。

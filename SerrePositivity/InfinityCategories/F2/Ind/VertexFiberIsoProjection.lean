@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 
 /-!
 概要：底の同型・頂点の等式・引き戻しによる fiber 同型の、元の全空間への射影を照合する。

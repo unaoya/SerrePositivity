@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomTransportRestriction
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedFunctorSquare
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostLifting
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedFunctorSquare
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 
 /-!
 概要：任意の単射な境界への指定自然性を保持して、元の Hom 輸送を厳密に可換にする。

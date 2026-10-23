@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
-public import SerrePositivity.InfinityCategories.F1.CartesianOpposite
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 
 /-!
 概要：反対圏の coCartesian な輸送 prism を元の Cartesian な prism へ戻す。

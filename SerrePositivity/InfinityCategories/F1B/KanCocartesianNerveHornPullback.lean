@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ReplacementInnerHorn
+public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHorn
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldArbitraryBaseChange
 
 /-!

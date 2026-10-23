@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomFiberNaturality
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinPullbackIso
-public import SerrePositivity.InfinityCategories.F1.RelativeJoinPoint
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPullbackIso
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPoint
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 
 /-!
 概要：相対 join の底の頂点上の fiber を、元の fiber の通常の余錐と同定する。

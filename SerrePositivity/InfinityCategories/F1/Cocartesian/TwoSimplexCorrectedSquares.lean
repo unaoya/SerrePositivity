@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexLocalPathLifting
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedFunctorSquare
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedFunctorSquare
 
 /-!
 概要：元の局所 cospan の二つの自然性を、指定 path を保って厳密可換にする。

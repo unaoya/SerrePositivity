@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeHomRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportNativeHomFactor
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomTransport
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionFactorCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFactorCoherence
 
 /-!
 概要：第二面の結合因子と全局所 Hom の結合因子は、元の全 Hom 上で同じ span 比較になる。

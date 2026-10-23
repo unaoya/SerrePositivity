@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionsParameters
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionParameter
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveTensor
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveFunctor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTensor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor
 
 /-!
 概要：係数図式のパラメータ付き射と weighted nerve の普遍評価を照合する。

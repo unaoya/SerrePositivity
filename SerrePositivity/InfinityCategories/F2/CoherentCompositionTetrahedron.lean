@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentTriangleDeformationTime
-public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformation
+public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexDeformation
 
 /-!
 概要：元の三角形と最大 path による合成を同じ三単体の面に置く。

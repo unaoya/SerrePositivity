@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeHomTransportIso
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 
 /-!
 概要：元の全局所 Hom の輸送比較は、同じ指定 span の因子比較そのもの。

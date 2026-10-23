@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IntervalMinimum
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMinimum
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
 /-!

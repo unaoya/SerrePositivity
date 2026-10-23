@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.OrdinalSimplexEdges
 public import SerrePositivity.KST.Spectra.WeightedConeTriangleEdgewise
-public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightCoordinates
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightCoordinates
 
 /-!
 概要：edgewise 解像の一単体の左右の辺を、元の標準三単体の (0,1)・(2,3) 辺へ同定する。

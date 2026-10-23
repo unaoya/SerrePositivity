@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.KanPointComponentComposition
 public import SerrePositivity.KST.Fibration.PointedTransformationPointHom
 public import SerrePositivity.KST.Fibration.FunctorIsoComponent
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
 
 /-! # 元の Kan 変換の同じ指定成分は、その元の係数点の射を保つ -/
 

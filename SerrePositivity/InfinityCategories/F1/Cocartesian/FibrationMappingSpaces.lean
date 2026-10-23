@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationInfinity
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 
 /-!
 概要：元の cocartesian fibration の頂点・辺と、可逆な相対変換による実際の写像空間の比較。

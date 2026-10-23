@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.IsoTransportQuasicategoryComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.IsoTransportQuasicategoryComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeSectionPostHom
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 public import SerrePositivity.KST.Fibration.TransportSectionBaseChangePoint
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningBaseChange
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
 
 /-! # 同じ straightening 底変換同型を全単体へ戻すと、元の指定比較を回収する -/

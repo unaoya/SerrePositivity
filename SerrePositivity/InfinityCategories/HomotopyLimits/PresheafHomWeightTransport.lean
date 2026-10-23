@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaLeftKanExtension
-public import SerrePositivity.InfinityCategories.F1.OppositeFunctorIso
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 
 /-!

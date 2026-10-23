@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnrichedDiagram
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRealization
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRealization
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningCoherent
 
 /-!

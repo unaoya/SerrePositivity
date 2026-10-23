@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeCommaInitial
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluation
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
 
 /-!

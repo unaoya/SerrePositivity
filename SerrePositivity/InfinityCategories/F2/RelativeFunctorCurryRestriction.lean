@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorCurryHom
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSquarePost
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorCurryHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSquarePost
 public import SerrePositivity.InfinityCategories.F2.VertexIsoTerminalEquality
 
 /-!

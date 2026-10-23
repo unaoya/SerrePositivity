@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseRightBoundaryCompatibility
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
-public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightCoordinates
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightBoundaryCompatibility
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightCoordinates
 
 /-!
 概要：元の射に対する twisted arrow と指定終点の相対右端比較を固定する。

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.IdentityMarkedSpan
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertices
-public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
+public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 
 /-! # 恒等 span の定値な三角補完を、元の選択空間に保持する -/
 

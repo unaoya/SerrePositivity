@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.F2.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
-public import SerrePositivity.InfinityCategories.F1.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 
 /-!
 概要：任意の形状について、一般 coherent filtered 余極限と極限の交換を定式化する。

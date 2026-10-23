@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakStringsStability
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 
 /-! # 元の単体図式の core 値因子分解と内 anodyne 延長 -/
 

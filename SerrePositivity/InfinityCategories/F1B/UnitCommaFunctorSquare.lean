@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquares
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomSquare
-public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 
 /-!
 概要：comma の正方形を関手単体集合の正方形として読み、合成関係を得る。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryIsoPointComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyVertices
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：既存の指定 curry 同型の一点成分を元の始域の fiber へ制限する。

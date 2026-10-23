@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGTransportSquareFiberComposition
-public import SerrePositivity.InfinityCategories.F1.UniverseTransport
-public import SerrePositivity.InfinityCategories.F1.UniverseReflection
+public import SerrePositivity.InfinityCategories.F1.Universe.Transport
+public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
 /-!
 概要：同じ実四角形の fiber 射を、対象宇宙持ち上げ後の同じ実 fiber 射へ比較する。
 方針：元の fiber 同型で全単体を照合し、同じ射の同値性を移す。

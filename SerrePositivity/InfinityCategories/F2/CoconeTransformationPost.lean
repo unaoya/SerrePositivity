@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationMap
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationPost
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberPostcomposition
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition
 
 /-!
 概要：native な余錐から変換空間への比較は標的関手の後合成に厳密に自然。

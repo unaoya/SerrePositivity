@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsNaturality
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentPathDeformation
+public import SerrePositivity.InfinityCategories.F1.Coherent.PathDeformation
 
 /-!
 概要：始点を固定する coslice の比較に使う、prefix を埋める path 変形。

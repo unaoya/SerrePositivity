@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantProduct
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantEvaluation
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantProduct
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantEvaluation
 
 /-!
 概要：定値係数の weighted nerve は底の nerve と係数の直積である。

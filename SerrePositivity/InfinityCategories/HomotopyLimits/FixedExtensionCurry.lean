@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeExtensionFiberEndpoint
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
 
 /-!
 概要：底と初期値を固定する実際の族を、相対延長空間への族へ戻す。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalMappingFiber
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomComponentPullback
-public import SerrePositivity.InfinityCategories.F1.UniverseFiber
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
+public import SerrePositivity.InfinityCategories.F1.Universe.Fiber
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberKan
 
 /-!
 概要：元の後合成 fiber を、実際の source の固定成分 fiber と同じ宇宙で同定する。

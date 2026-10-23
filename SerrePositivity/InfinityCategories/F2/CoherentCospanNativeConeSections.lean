@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.NativePointedConeSections
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanPointedConeLift
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.F1.RelativePointFunctorIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativePointFunctorIso
 
 /-!
 概要：元の小さい fiber の全点を native な cospan 錐の切断族として表示する。

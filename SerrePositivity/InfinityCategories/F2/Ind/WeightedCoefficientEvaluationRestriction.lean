@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientSourceComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityDiagramHomotopy
-public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!
 概要：元の共同密度変換の底を係数・始点へ制限し、元の評価図式と定値標的を回収する。

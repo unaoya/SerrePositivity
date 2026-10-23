@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeVertexFiberLifting
-public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
 public import SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint
 
 /-!

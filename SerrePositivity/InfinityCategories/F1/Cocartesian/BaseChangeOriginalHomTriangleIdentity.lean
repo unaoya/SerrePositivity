@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTransportTriangleIdentity
-public import SerrePositivity.InfinityCategories.F1.HomTransportTrianglePrecomposition
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTrianglePrecomposition
 
 /-!
 概要：既存の輸送結合同型の三角形は、元の全相対 Hom の同じ大域作用上で整合する。

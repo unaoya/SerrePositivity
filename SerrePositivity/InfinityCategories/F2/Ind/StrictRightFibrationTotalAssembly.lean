@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationDiagramColimit
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantEvaluation
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantNaturality
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFibration
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantEvaluation
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantNaturality
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFibration
 
 /-!
 概要：strict right fibration 図式の weighted 全空間を、元の全空間の通常の余極限へ送る。

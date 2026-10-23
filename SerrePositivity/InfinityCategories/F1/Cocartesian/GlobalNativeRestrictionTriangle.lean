@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalNativeRestrictionGlobalCoherence
-public import SerrePositivity.InfinityCategories.F1.IsoTriangleIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.IsoTriangleIdentity
 
 /-!
 概要：元の全 Hom 上で回収した既存の局所自然性は、元の大域自然性の三角等式を満たす。

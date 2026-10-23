@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundaryPost
 public import SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso
 public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulPullbackRight
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：両境界固定の余錐の同型を、同じ元の slice 関手の同型として読む。

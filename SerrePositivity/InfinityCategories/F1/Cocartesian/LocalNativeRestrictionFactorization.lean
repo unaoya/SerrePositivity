@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IteratedLocalHomNativeIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeRestriction
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：既存の局所自然性を作る結合比較・制限自然性の指定合成と、始点の回収。

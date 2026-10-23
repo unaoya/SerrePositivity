@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNaturalityFactorCoherence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeFirstRestrictionFactor
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 
 /-!
 概要：元の制限正方形の源の指定因子比較を、元の大域自然性と同じ端点へ移す。

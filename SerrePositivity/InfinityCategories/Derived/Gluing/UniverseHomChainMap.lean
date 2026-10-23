@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedLinearChainMap
-public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
+public import SerrePositivity.InfinityCategories.F1.Universe.PinchedHom
 
 /-! 対象宇宙の異なる二つの実 Hom 空間に、同じ Hom 鎖写像を作用させる。 -/
 @[expose] public section

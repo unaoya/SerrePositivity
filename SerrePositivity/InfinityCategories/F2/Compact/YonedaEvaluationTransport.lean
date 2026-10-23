@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationCoslice
-public import SerrePositivity.InfinityCategories.F1.CosliceUniversalPrismTransport
-public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransportSquareVertices
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceUniversalPrismTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransportSquareVertices
 
 /-!
 概要：元の Yoneda 評価の大域比較の fiber 作用を、指定恒等点からの全区間輸送へ同定。

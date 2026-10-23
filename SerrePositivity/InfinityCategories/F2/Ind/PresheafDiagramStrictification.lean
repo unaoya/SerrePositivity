@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftWeightedClassification
 public import SerrePositivity.InfinityCategories.F2.Ind.LeftRightRoundTripDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionClassification
-public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightStraighteningInfinityEquivalence
 
 /-!
 概要：任意の coherent 前層図式を、元の strict right fibration 図式の実際の分類像へ移す。

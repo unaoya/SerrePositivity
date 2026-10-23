@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.FractionSimplexKanComparison
 public import SerrePositivity.KST.Fibration.PullbackStrictConstantEdge
 public import SerrePositivity.KST.Fibration.TransportSimplexConstantEdge
-public import SerrePositivity.InfinityCategories.F1.KanDiagramEdges
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramEdges
 
 /-! # 商の coslice の同じ strict Kan 図式による初頂点辺の反転 -/
 

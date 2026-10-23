@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful

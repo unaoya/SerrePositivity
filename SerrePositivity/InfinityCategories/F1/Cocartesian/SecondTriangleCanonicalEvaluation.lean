@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SecondTriangleSimplex
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionFixedTriangle
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionSquareEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionFixedTriangle
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSquareEvaluation
 
 /-!
 概要：第二三角形の標準切断図式は、同じ coherent 合成三角形の族の評価そのもの。

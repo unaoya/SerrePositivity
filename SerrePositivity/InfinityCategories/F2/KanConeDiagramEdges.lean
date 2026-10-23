@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.KanConeTetrahedra
 public import SerrePositivity.InfinityCategories.F2.ConeDiagramDiagonalEdge
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：Kan 錐の全円柱の図式成分と対角を元の Kan 射へ戻す。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeNaturalPrism
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityFamilyVertex
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityEdgeSimplex
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowFamilyEdge
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramArrowFamilyEdge
 
 /-!
 概要：元の全空間の結合同型の分類像は、既存の結合区間族の同じ辺そのもの。

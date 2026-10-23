@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionFamilyProductBase
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 
 /-!
 概要：元の積上の切断族を、添字の底だけを固定した相対切断へ写す。

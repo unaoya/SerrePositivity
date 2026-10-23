@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ResolutionOutputPrecomposition
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
 /-!
 概要：二つの指定入力分解の前合成比較を、元の同じ基底比較とその忠実な回収へ分離する。

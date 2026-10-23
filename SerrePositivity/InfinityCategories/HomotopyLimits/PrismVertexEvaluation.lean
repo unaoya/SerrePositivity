@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
 
 /-!
 概要：prism の指定した係数頂点での評価を、形状・係数・底の射に同時に自然に計算する。

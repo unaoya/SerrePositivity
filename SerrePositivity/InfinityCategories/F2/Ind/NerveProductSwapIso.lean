@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGKappaFullPerfAction
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：同じ dg 関手 Hom end 内の実閉射を、元の Perf の実自然変換へ送る。

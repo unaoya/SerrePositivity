@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductWeightedBase
-public import SerrePositivity.InfinityCategories.F1.LeftScaffold
+public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffold
 
 /-!
 概要：全単体の切断の大域評価を、元の共同 weighted fibration の同じ初頂点引き戻しへ写す。

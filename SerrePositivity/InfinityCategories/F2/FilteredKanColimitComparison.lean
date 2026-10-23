@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ReflectedFilteredAugmentation
 public import SerrePositivity.InfinityCategories.F2.FilteredKanColimits
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：N の Kan 置換した反転 coend と通常の filtered Kan colimit の比較。

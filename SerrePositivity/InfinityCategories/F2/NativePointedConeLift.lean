@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.PointedSpaces
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 public import SerrePositivity.InfinityCategories.Core.Limit
 
 /-!

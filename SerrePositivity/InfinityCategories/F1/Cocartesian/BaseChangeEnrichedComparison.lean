@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedComparison
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationBaseChange
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportBaseChangeAction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportBaseChangeEquivalence

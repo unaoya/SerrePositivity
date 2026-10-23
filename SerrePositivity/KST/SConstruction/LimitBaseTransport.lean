@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 
 /-! # 可逆な図式の辺に沿う極限の存在
 概要：極限錐は可逆な図式の辺に沿って輸送できる。

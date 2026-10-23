@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FinalHornFilledRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfFinalHornUnknownHom
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 # 元の右 Quillen 候補辺の Cartesian 性

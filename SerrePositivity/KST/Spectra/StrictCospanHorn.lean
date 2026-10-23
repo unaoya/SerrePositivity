@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CospanNerveHornIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedShapeNerveIso
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
 
 /-!

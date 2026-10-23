@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeHomTransportIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomTransportComposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IteratedLocalHomComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：既存の指定局所結合比較を作る元の二因子と、その両端の正規化。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPullbackMarkedCore
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 
 /-!
 概要：同じ境界値を固定した元の辺保存 Hom と scaffold Hom の core の比較同値。

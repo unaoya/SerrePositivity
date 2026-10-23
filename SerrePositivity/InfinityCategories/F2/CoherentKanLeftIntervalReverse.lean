@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentKanLeftHomInterval
-public import SerrePositivity.InfinityCategories.F1.PointedLeftIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedLeftIntervalComparison
 
 /-!
 概要：標準頂点上の元の左区間族を F1 の元の反転 Kan 合成輸送の区間へ戻す。

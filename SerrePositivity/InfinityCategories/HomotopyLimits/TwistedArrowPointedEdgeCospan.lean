@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowEdgeCospan
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedIdentity
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.PointedIdentity
 
 /-!
 概要：元の Tw の二辺を、同じ Yoneda 恒等点から同じ pointed 終点への二辺へ送る。

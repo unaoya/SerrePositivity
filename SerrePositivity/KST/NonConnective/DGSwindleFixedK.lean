@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleInputIso
 public import SerrePositivity.KST.NonConnective.DGFixedKAction
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-!

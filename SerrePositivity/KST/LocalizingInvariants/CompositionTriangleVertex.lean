@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionCorrespondence
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionCorrespondence
 
 /-!
 概要：指定した二辺を持つ元の二単体を、同じ合成三角形空間の頂点にする。

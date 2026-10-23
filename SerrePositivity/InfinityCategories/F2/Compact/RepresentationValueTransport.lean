@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UnstraighteningValueTransport
-public import SerrePositivity.InfinityCategories.F1.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
 
 /-!
 概要：元の left transport 表現の同じ fiber 比較は、元の輸送と Kan 値の作用に自然。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanPointedConeLift
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 
 /-!
 概要：元の小さい fiber の pointed 始点族を、同じ値の pointed fiber への厳密な同型に表示する。

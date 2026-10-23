@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningEvaluation
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportWitness
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningMappingInvertible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingInvertible
 
 /-!
 概要：定値標的比較の指定頂点を実際の全空間射と fiber の射影で表示する。

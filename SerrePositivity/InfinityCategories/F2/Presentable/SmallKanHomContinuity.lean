@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallInternalHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
-public import SerrePositivity.InfinityCategories.F1.KanPointHomEnriched
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomEnriched
 
 /-!
 概要：μ-small な Kan 対象からの全内部 Hom と、μ-filtered Kan 図式の余極限の保存。

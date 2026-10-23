@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedHomMap
 public import SerrePositivity.InfinityCategories.Derived.Gluing.EdgeRepresentation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedArrowOfULiftEdge
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-! gluing の共通宇宙の任意の導来矢印を、元の閉加群射で端点固定に表す。 -/
 @[expose] public section

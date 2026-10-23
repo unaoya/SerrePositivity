@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorRestrictedEndpoint
 public import SerrePositivity.InfinityCategories.F2.RelativeConstFiberEvaluation
-public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
 
 /-!
 概要：底の表示変更と引き戻しを含む相対端点評価の展開を、元の実制限へ同定する。

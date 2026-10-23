@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinityEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedNerveParameter
 
 /-!

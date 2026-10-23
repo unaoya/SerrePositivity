@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
 public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport
-public import SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 /-!
 概要：同じ充満忠実関手に沿う coslice の後合成は、実辺輸送の同値性を保存・反映する。
 方針：同じ全 fiber 射を元の pinched Hom の作用へ同定し、実輸送の正方形比較を使う。

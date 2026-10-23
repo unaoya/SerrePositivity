@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentPathDeformationEnriched
+public import SerrePositivity.InfinityCategories.F1.Coherent.PathDeformationEnriched
 
 /-!
 概要：三角形の始点だけを時刻零に残す path 変形。

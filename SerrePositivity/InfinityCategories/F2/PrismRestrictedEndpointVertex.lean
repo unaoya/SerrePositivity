@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PrismExtensionPullbackRestriction
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 
 /-!
 概要：元の実 prism を制限した後の終点の実頂点を同じ制限射で計算する。

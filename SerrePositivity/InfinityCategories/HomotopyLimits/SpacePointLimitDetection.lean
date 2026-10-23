@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NativeConeFamilyEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFibrationInvertibleReflection
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 
 /-!

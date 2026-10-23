@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowEdgeCospan
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowIdentityCoordinates
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.IdentityCoordinates
 
 /-!
 概要：同じ二つの Tw 辺の底への射影を、元の辺と恒等辺へ厳密に照合する。

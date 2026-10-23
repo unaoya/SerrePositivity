@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F2.IntervalDiagram
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInternalHom
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
 
 /-!
 概要：底の図式を各パラメータで定値に固定した、fiber ごとの関手の全空間。

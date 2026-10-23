@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityEdge
-public import SerrePositivity.InfinityCategories.F1.FunctorEdgeEvaluationSimplex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEdgeEvaluationSimplex
 
 /-!
 概要：元の結合比較辺の一単体を、端点の正規化から独立した同じ区間族の評価に戻す。

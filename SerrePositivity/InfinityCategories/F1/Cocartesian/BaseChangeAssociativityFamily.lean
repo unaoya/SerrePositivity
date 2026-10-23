@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityDiagramComparison
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedComposition
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedComposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonEndpoints
 
 /-!

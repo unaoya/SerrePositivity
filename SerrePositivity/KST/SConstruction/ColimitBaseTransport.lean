@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.ColimitDiagramTransport
 public import SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 
 /-! # 可逆な図式の辺に沿う余極限の存在
 概要：余極限余錐は可逆な図式の辺に沿って輸送できる。

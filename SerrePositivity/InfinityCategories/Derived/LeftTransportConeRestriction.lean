@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRestrictionComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorBaseChangeNaturality
-public import SerrePositivity.InfinityCategories.F1.LeftTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
 /-!
 概要：同じ全錐の切断制限を、底変換およびその分類図式の pointed-space 射影へ移す。
 方針：元の底変換同型の制限自然性と、実表現の底上の比較を使う。

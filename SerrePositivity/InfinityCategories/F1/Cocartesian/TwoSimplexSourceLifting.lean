@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexStrictComparison
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackCoreFibration
-public import SerrePositivity.InfinityCategories.F1.KanFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
 
 /-!
 概要：同じ共有頂点への源 cospan の最初の制限は、元の全局所 Hom 上で Kan fibration。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementPoint
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementPoint
 
 /-!
 概要：一点の薄い圏を底とする cocartesian scaffold の全空間の比較。

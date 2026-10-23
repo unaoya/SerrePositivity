@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomRestriction
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreColimitDescent
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorCoreColimitDescent
 
 /-!
 概要：底を覆う任意の小さい余極限について、元の cocartesian Hom の core の族を回収する。

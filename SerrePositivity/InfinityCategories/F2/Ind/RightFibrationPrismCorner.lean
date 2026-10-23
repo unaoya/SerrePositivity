@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeApexTerminal
 

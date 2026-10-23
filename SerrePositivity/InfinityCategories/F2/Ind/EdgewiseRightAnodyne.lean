@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UniqueFaceRightIndex
-public import SerrePositivity.InfinityCategories.F1.EdgewisePairingRegular
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewisePairingRegular
 public import SerrePositivity.InfinityCategories.Core.PairingHorns
 
 /-!

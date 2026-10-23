@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondHomCompositeTransport
-public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleIdentity
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoPrecompositionProjection
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleIdentity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
 
 /-!
 概要：第二面の元の輸送同型を分解三角形へ戻すと、元の指定合成同型を回収する。

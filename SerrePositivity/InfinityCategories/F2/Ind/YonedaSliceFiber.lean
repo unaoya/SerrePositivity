@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSlice
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
-public import SerrePositivity.InfinityCategories.F1.YonedaPresheafEvaluation
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaPresheafEvaluation
 
 /-!
 概要：元の Yoneda slice の指定 fiber を、元の前層 F の指定値と比較する。

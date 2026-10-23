@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinIntervalProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalProjection
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientJointEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluation
-public import SerrePositivity.InfinityCategories.F1.TwistedArrowPointedIdentity
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.PointedIdentity
 
 /-!
 概要：元の全評価の係数制限の pointed 成分は、同じ係数評価の pointed 成分そのもの。

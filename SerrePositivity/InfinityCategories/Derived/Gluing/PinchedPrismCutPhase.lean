@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedPrismPhase
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismCutCoordinates
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismCutCoordinates
 
 /-! pinched prism の区間評価では、終端相一延長は二つの時間の上限となる。 -/
 @[expose] public section

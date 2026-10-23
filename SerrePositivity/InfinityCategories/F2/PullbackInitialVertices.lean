@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PinchedHomPullbackLimit
-public import SerrePositivity.InfinityCategories.F1.TransportWitnessPushoutContractible
+public import SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
 
 /-!

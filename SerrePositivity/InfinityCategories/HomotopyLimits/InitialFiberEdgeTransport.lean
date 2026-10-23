@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberPostcomposition
-public import SerrePositivity.InfinityCategories.F1.EdgeTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport
 
 /-!
 概要：始対象を持つ left fibration の fiber の Hom 表示は、端点を指定した実際の transport に自然。

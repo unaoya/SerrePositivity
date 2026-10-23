@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
 public import SerrePositivity.InfinityCategories.F2.RelativeExtensionFiberEndpointComposition
 
 /-!

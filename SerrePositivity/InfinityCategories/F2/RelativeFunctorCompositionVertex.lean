@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorUnitHom
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 
 /-!
 概要：相対関手空間の指定頂点での合成を実際の底上の射の合成として計算する。

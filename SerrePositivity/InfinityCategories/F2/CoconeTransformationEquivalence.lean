@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationRetraction
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationRightInverse
-public import SerrePositivity.InfinityCategories.F1.EquivalenceRetraction
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceRetraction
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：native な終点固定余錐空間と定値図式への変換空間の標準比較は同値。

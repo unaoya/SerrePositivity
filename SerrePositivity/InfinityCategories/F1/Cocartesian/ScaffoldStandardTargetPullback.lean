@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldStandardTargetComponents
-public import SerrePositivity.InfinityCategories.F1.SpanPullbackIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Joins.SpanPullbackIsomorphism
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldTargetSegal
 
 /-!

@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanNerveOverCanonicalCocone
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyComponent
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrismPoint
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 
 /-!
 # 通常の余錐の全 prism と同じ自然変換の円柱

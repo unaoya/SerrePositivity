@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorPinchedValue
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexFamilies
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismEvaluation
 
 /-! 一般宇宙の実 Hom 鎖作用の区間評価を、元 nerve の全関手像へ各切断・全時間で照合する。 -/
 @[expose] public section

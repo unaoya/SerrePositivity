@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IteratedLocalRestrictionGlobalCoherence
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointPrecomposition
 
 /-!
 概要：既存の局所制限自然性を元の全 Hom に戻した両端は、同じ指定第二因子の両端。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningParametrizedTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningParametrizedTransport
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorComposition
 
 /-!
 概要：相対 Hom の全評価は、底の辺に沿う両端の輸送と可換になる。

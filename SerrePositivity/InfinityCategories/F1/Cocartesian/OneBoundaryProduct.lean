@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PullbackTerminalProductIso
+public import SerrePositivity.InfinityCategories.F1.Pullbacks.PullbackTerminalProductIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HornBoundaryHomPullbacks
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ZeroBoundaryComparison
 

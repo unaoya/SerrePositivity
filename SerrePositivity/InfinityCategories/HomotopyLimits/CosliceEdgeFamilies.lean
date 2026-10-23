@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 
 /-!

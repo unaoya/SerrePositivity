@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CoherentNativeUnitValue
 public import SerrePositivity.InfinityCategories.F2.FunctorTriangleTotalAction
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-!
 概要：元の native 単位の指定値の比較を、同じ全三角形比較と交換する。

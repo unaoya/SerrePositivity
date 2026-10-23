@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumTailMappingEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumLoopTailComparison
-public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
 /-!

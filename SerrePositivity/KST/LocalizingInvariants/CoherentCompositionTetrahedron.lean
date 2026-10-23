@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 
 /-!
 概要：三つの通常射の coherent 三単体の四面を、元の標準合成三角形と同定する。

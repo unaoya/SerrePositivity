@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseFiber
-public import SerrePositivity.InfinityCategories.F1.JoinIntervalProjection
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalProjection
 
 /-!
 概要：元の相対 join の同じ頂点 fiber の余錐包含の、元の通常 join と底への射影を計算する。

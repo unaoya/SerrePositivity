@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestriction
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction
 
 /-!
 概要：native 余錐と定値図式への変換の比較は添字の制限に厳密に自然。

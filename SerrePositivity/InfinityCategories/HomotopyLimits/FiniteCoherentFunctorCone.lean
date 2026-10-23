@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteConeFromEdges
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProjection
 public import SerrePositivity.InfinityCategories.Core.FunctorLimits
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-!
 概要：元の反復 coherent 積と元の全射影を、関手圏内の一つの native 全錐にまとめる。

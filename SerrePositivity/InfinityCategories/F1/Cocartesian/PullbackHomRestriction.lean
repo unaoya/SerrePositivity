@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackDomainMarks
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
 
 /-!
 概要：底の各対象への引き戻しに、元の cocartesian Hom を制限する。

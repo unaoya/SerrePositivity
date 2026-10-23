@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.Fibration.WeakSpanKanDescent
 public import SerrePositivity.KST.Fibration.WeakSpanKanWeakInversion
 public import SerrePositivity.KST.Fibration.TransportSimplexEdgeCover
-public import SerrePositivity.InfinityCategories.F1.InvertingFunctorIsoInvariance
-public import SerrePositivity.InfinityCategories.F1.LocalizationSourceIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso
 
 /-! # 元の底へ降下した同じ空間値分数図式による W の反転 -/
 

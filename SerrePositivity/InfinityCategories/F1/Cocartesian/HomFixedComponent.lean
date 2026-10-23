@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomComponentPullback
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 
 /-!

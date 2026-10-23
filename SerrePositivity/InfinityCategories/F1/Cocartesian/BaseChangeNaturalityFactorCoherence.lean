@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNaturalitySectionCoherence
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionBoundaryCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionBoundaryCoherence
 
 /-!
 概要：元の大域分類 Hom の自然性は、既存の span 輸送の因子比較そのもの。

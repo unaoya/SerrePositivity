@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UnstraighteningBaseTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.YonedaEvaluationPrecomposition
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の Yoneda 脚の前合成と、標的前層の元の反変辺による輸送の自然性。

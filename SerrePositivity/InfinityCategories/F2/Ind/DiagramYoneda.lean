@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
-public import SerrePositivity.InfinityCategories.F1.UniverseFunctorSpaceVertex
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpaceVertex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：元の小さい coherent 図式全体への Ind Yoneda の作用。

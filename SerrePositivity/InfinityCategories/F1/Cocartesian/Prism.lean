@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 public import SerrePositivity.InfinityCategories.Core.PrismFilling
 
 /-!

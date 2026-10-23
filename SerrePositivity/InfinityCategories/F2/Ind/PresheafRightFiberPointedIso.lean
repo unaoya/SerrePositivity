@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation
 public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningOverMap
-public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
 
 /-!

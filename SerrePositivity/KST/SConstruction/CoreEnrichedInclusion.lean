@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.CoreEnrichedFunctor
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
 
 /-! # 全 Hom の core から元の豊穣圏への実包含
 概要：Hom の実 core を取った豊穣圏から、元の豊穣圏へ同じ対象と全単体を包含する。

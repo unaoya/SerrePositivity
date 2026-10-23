@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationBaseChange
-public import SerrePositivity.InfinityCategories.F1.ParametrizedPointTransportSquare
+public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedPointTransportSquare
 
 /-!
 概要：元の c1 の底変換比較を、制限後の指定された二図式の表示で保持する。

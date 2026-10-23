@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
-public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.PinchedHom
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus
 
 /-!

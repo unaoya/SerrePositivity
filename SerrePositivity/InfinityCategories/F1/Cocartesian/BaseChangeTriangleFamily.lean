@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangle
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryDiagramRealizationVertices
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryDiagramRealizationVertices
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonEvaluation
 
 /-!

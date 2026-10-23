@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquare
-public import SerrePositivity.InfinityCategories.F1.SlicePrismSquare
+public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
 
 /-!
 概要：二重 prism をパラメータ関手圏の実正方形へ移す。

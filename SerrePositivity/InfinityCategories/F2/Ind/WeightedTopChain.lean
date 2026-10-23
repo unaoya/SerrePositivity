@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantEvaluation
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantEvaluation
 
 /-!
 概要：最大添字への weighted 図式の輸送に使う、元の射列とその係数の同時収縮。

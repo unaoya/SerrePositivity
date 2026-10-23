@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingCylinderGeneralComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderGeneralComparison
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteVerticalEdges
 
 /-!

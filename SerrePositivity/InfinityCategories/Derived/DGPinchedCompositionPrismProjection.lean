@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismEvaluation
 
 /-! # 実合成 prism の第一射への射影
 

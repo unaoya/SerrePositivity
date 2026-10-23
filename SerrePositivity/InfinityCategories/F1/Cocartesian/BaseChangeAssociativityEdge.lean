@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityFamily
-public import SerrePositivity.InfinityCategories.F1.QCatDiagramArrowCurry
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramArrowCurry
 
 /-!
 概要：元の二回の底変換と直接の底変換の分類像の間の、同じ結合比較の実際の辺。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentSimplexCompositionEdge
 public import SerrePositivity.InfinityCategories.Coherent.CompositionFace
-public import SerrePositivity.InfinityCategories.F1.OrdinaryComparisonPrism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 
 /-! # Coherent な Path の族への切断点の挿入
 概要：全 Path の族を切断点を通る族へ動かし、既に通る部分を全時刻で固定する。

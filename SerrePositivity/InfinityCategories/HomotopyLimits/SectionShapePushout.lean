@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PullbackSections
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSquarePost
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSquarePost
 
 /-!
 概要：図式の形状の押し出しに沿って、底を保つ切断の族を厳密に貼り合わせる。

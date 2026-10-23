@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEdgeOrdinary
-public import SerrePositivity.InfinityCategories.F1.CoherentHomOrdinary
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.PinchedHom.Paths
 
 /-!

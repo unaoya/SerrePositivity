@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointMaps
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
 /-! # ホモトピー円柱の指定両端の単射

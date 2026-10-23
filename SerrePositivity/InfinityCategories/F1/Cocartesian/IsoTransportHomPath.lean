@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportEdge
-public import SerrePositivity.InfinityCategories.F1.InvertibleFunctorEdgePathEdgeFamily
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleFunctorEdgePathEdgeFamily
 
 /-!
 概要：全局所 Hom の同じ可逆比較辺を、元の全区間族を保持する path の族へ持ち上げる。

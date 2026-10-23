@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStandardCoherentMap
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
-public import SerrePositivity.InfinityCategories.F1.CoreKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 
 /-! # 厳密 dg 関手圏の非離散な core 写像空間
 概要：全次数 dg 関手圏の標準 DK coherent nerve の core を、Kan 写像空間として作る。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeActionSimplex
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
-public import SerrePositivity.InfinityCategories.F1.UniverseKan
+public import SerrePositivity.InfinityCategories.F1.Universe.Kan
 
 /-! # 全 native 関手族による Perf の実単体的右作用
 概要：元のラベル付き Perf と全関手族に、実 dg tensor 右作用を全単体的に適用する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackCone
 public import SerrePositivity.InfinityCategories.F2.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：Cat_∞ の引き戻し錐の各脚を実際の関手へ読み戻す。

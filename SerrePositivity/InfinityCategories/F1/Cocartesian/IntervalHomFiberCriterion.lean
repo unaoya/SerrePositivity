@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomFixedComponent
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalMappingCorePullback
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseLeftFibration
 
 /-!

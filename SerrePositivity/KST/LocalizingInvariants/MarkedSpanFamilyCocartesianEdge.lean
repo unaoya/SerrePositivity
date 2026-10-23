@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration
-public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!
 概要：第一終点固定の span 族で、共通始点の成分が可逆な射は cocartesian。

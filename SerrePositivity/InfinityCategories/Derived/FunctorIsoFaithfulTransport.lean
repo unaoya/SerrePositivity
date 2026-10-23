@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
 /-!
 概要：指定全関手同型の合成輸送と、完全充満な後合成による等式反映。

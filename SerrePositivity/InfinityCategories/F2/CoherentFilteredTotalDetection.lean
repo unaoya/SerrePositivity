@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredLeftFibrationDetection
-public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFiber
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 
 /-!
 概要：一般 coherent な filtered 空間値図式の全空間模型を元の値から有限検出する。

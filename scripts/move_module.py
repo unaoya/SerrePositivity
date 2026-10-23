@@ -28,7 +28,7 @@ import subprocess
 
 NAME = re.compile(r"[A-Za-z_\u0080-\uffff][\w']*(?:\.[A-Za-z_\u0080-\uffff][\w']*)*\Z")
 TOKEN = re.compile(r"[\w']+(?:\.[\w']+)*")
-IMPORT = re.compile(r"^(\s*(?:public\s+)?import\s+)([\w.']+)(.*)$")
+IMPORT = re.compile(r"^([ \t]*(?:public[ \t\r\n]+)?import[ \t\r\n]+)([\w.']+)([^\n]*)$", re.M)
 
 
 def code_mask(source):
@@ -79,31 +79,32 @@ def rewrite(source, modules, symbols):
     if not modules and not symbols: return source
     edits = []
     mask = code_mask(source)
-    offset = 0
-    for line in mask.splitlines(keepends=True):
-        is_import = IMPORT.match(line) is not None
-        for m in TOKEN.finditer(line):
-            token = m[0]
-            # Moving A.lean does not move its independently named A.Child
-            # module, or change any declaration namespace. Symbols are an
-            # explicit separate map; their projections follow the new name.
-            replacement = modules.get(token) if is_import else renamed(token, symbols)
-            if replacement is not None and replacement != token:
-                edits.append((offset + m.start(), offset + m.end(), replacement))
-        offset += len(line)
+    imports = list(IMPORT.finditer(mask))
+    index = 0
+    for m in TOKEN.finditer(mask):
+        while index < len(imports) and imports[index].end() <= m.start(): index += 1
+        is_import = index < len(imports) and imports[index].start() <= m.start()
+        token = m[0]
+        # Moving A.lean does not move its independently named A.Child
+        # module, or change any declaration namespace. Symbols are an
+        # explicit separate map; their projections follow the new name.
+        replacement = modules.get(token) if is_import else renamed(token, symbols)
+        if replacement is not None and replacement != token:
+            edits.append((m.start(), m.end(), replacement))
     if not edits: return source
     for a, b, replacement in reversed(edits): source = source[:a] + replacement + source[b:]
     # Imports converging on the same canonical module are deduplicated only
-    # when the complete line is identical, so public/private intent is retained.
-    seen = set(); lines = []; canonical_modules = set(modules.values())
-    mask_lines = code_mask(source).splitlines(keepends=True)
-    for line, masked in zip(source.splitlines(keepends=True), mask_lines):
-        imported = IMPORT.match(masked)
-        if imported and imported[2] in canonical_modules:
-            if line in seen: continue
-            seen.add(line)
-        lines.append(line)
-    return ''.join(lines)
+    # when the complete command is identical, preserving visibility and layout.
+    seen = set(); removals = []; canonical_modules = set(modules.values())
+    for imported in IMPORT.finditer(code_mask(source)):
+        command = source[imported.start():imported.end()]
+        if imported[2] in canonical_modules:
+            if command in seen:
+                end = imported.end() + (source[imported.end():imported.end()+1] == '\n')
+                removals.append((imported.start(), end))
+            seen.add(command)
+    for a, b in reversed(removals): source = source[:a] + source[b:]
+    return source
 
 
 def module_path(root, name):
@@ -194,13 +195,14 @@ def prepare(root, spec):
                 raise ValueError(f'added import does not exist: {mod}')
         dst = moved.get(src, src)
         source = updates.get(dst, rewrite(src.read_text(), modules, symbols | file_symbols.get(rel, {})))
-        kept, present = [], set()
-        for line, masked in zip(source.splitlines(keepends=True), code_mask(source).splitlines(keepends=True)):
-            imported = IMPORT.match(masked)
-            if imported:
-                if imported[2] in removals: continue
-                present.add(imported[2])
-            kept.append(line)
+        present = set(); deleted = []
+        for imported in IMPORT.finditer(code_mask(source)):
+            if imported[2] in removals:
+                end = imported.end() + (source[imported.end():imported.end()+1] == '\n')
+                deleted.append((imported.start(), end))
+            else: present.add(imported[2])
+        for a, b in reversed(deleted): source = source[:a] + source[b:]
+        kept = source.splitlines(keepends=True)
         kept_mask = code_mask(''.join(kept)).splitlines(keepends=True)
         module_index = next((i + 1 for i, line in enumerate(kept_mask) if line.strip() == 'module'), 0)
         import_prefix = 'public import ' if module_index else 'import '

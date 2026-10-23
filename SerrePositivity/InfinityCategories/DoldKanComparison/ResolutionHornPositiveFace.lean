@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHornHomotopy
-public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaces
+public import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionFaces
 
 /-!
 # 正の欠落面のホーンの変形は零頂点を除く面を通る

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningRelativeProjection
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
 
 /-!
 概要：定値相対 Hom の値への作用は、元の底上の射による前合成と厳密に可換する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.PointSourceFatDiagram
-public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
 
 /-! # 可変終点の同じ矢印族を、両端を固定した coslice 図式へ移す -/
 

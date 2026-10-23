@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FunctorSpaceDownFaithful
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-!

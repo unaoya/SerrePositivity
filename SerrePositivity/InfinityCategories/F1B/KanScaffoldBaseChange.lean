@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
-public import SerrePositivity.InfinityCategories.F1.BaseChange
+public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementBaseChange
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementBaseChange
 
 /-!
 概要：通常の圏の関手による cocartesian scaffold の底変換。

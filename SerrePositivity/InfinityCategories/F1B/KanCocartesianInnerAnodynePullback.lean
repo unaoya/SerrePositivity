@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianInnerHornPullback
-public import SerrePositivity.InfinityCategories.F1.InnerAnodyneAdjointComparison
+public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneAdjointComparison
 public import SerrePositivity.InfinityCategories.F1B.SSetPullbackAdjoint
 
 /-!

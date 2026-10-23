@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
 

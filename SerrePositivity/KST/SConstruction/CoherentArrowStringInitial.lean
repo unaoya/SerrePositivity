@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentArrowStrings
-public import SerrePositivity.InfinityCategories.F1.OrdinaryComparisonPrism
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 
 /-! # 元の射から始まる合成列パラメータの収縮

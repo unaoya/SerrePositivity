@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeDiagram
-public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningAllBasesEvaluation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightStraighteningInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningAllBasesEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 
 /-!

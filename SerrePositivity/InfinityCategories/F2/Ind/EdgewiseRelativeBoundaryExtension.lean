@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.EdgewiseWeightRelativeLift
 public import SerrePositivity.InfinityCategories.F2.Ind.RangeCoverGluingOver
-public import SerrePositivity.InfinityCategories.F1.EdgewiseCoverDomain
-public import SerrePositivity.InfinityCategories.F1.EdgewiseOneBoundary
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseCoverDomain
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseOneBoundary
 
 /-!
 概要：right fibration の edgewise の全境界と右端を、元の底の全図式上で延長する。

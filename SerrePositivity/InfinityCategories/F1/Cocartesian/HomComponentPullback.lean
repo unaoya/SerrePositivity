@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomIntervalEvaluation
-public import SerrePositivity.InfinityCategories.F1.EquivalenceLiftingPullback
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLiftingPullback
 
 /-!
 概要：実際の分類先の Hom を標準の成分 Hom 比較に沿って引き戻す。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentHomotopyVertex
 public import SerrePositivity.InfinityCategories.F2.FunctorSimplexPointedStart
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFaces
 
 /-!
 概要：元のホモトピーの指定頂点への定値族を、任意の全パラメータの prism へ展開する。

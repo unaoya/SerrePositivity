@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
 
 /-!
 概要：三角形の prism の各頂点での cocartesian 合成性。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SingletonFullyFaithful
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalHomCriterion
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
 /-!

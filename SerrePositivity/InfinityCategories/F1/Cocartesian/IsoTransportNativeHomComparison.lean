@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IsoTransportNativePath
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeAssociativityHomComparison
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostcompositionVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostcompositionVertices
 
 /-!
 概要：元の二重引き戻し間の全 Hom の core を、既存の結合比較の同じ Hom 空間へ写す。

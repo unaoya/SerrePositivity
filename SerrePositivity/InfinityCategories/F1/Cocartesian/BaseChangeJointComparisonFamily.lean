@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeDiagramComparison
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramArrow
-public import SerrePositivity.InfinityCategories.F1.QuasicategoryEnrichedDiagramRealization
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramArrow
+public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRealization
 
 /-!
 概要：元の全 fibration の底変換比較を、二点と底全体の Cat∞ 値図式の族へ実現する。

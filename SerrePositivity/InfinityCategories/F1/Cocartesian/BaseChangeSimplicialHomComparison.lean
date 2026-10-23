@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomPath
-public import SerrePositivity.InfinityCategories.F1.IntervalHomPathMapNaturality
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomPathMapNaturality
 
 /-!
 概要：元の比較 path の同じ Hom を、底で制限した同じ比較 path の Hom へ写す。

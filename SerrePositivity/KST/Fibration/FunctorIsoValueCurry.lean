@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.FunctorIsoValue
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoCurryPointComparison
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-! # 同じ指定同型の curry と制限の頂点評価を、再選択せずに比較する -/
 

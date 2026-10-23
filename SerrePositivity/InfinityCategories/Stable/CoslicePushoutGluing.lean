@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.JoinPushout
-public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
 /-! # 図式の pushout に沿う可変終点の coslice 族の貼り合わせ
 

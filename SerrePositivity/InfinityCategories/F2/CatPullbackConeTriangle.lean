@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatPullbackConeLeg
 public import SerrePositivity.InfinityCategories.F2.NativeConeTriangle
-public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
+public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 
 /-!
 概要：Cat_∞ の引き戻し錐の実際の三角形と三辺の同定。

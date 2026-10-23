@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
-public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
 public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
 
 /-!

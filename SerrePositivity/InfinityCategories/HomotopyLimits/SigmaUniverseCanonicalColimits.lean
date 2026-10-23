@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaUniverseDen
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseLeftKanCanonical
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaSiftedContinuousLeftKan
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!
 概要：元の P_Σ の大きい前層値関手自身は、持ち上げた元の Yoneda の左 Kan 延長。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.ConstantDiagramWitnessEndpointComparison
 public import SerrePositivity.InfinityCategories.F2.RelativeFunctorCurryPostValue
 public import SerrePositivity.InfinityCategories.F2.ConstantTargetVertex
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionCurryComparison
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionCurryComparison
 
 /-!
 概要：元の二実証拠の相対 curry 比較を、同じ二実輸送の指定比較の curry へ移す。

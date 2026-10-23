@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NativeRestrictionMap
-public import SerrePositivity.InfinityCategories.F1.UniverseOverFunctor
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramColimitCone
+public import SerrePositivity.InfinityCategories.F1.Universe.OverFunctor
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramColimitCone
 
 /-!
 概要：元の native 制限と分類先の制限は、同じ反変図式の射そのもの。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.TransportTrianglePrismWitness
-public import SerrePositivity.InfinityCategories.F1.UnstraighteningFamilyWitnessRestriction
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.UnstraighteningFamilyWitnessRestriction
 
 /-!
 概要：標準 unstraightening の二辺の全三角形から長辺の証拠を直接得る。

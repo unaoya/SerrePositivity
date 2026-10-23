@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedCoefficientCanonicalIso
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedLeftCoefficientEquivalence
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：指定係数評価と同じ共同復元の合成を、元の twisted-arrow 評価の像へ相対比較する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentPinchedStandard
-public import SerrePositivity.InfinityCategories.F1.CoherentPathMaximum
+public import SerrePositivity.InfinityCategories.F1.Coherent.PathMaximum
 
 /-!
 # Path の立方体の旗の最大頂点

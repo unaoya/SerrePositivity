@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightReindexCoordinates
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightReindexCoordinates
 
 /-!
 概要：元の辺に付随する twisted arrow の二つの恒等点からの辺の座標。

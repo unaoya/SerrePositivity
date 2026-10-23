@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionFamilyProductBase
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinity
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinity
 
 /-!
 概要：通常の under 圏上の切断を、元のもう一方の底の上の族として構成する。

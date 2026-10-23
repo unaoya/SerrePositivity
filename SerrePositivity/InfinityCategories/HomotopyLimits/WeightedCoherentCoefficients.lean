@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPathMinimum
-public import SerrePositivity.InfinityCategories.F1.WeightedNerve
+public import SerrePositivity.InfinityCategories.F1.Weighted.Nerve
 
 /-!
 概要：反転した係数の weighted nerve のデータを左 cone の Hom の射へ評価する。

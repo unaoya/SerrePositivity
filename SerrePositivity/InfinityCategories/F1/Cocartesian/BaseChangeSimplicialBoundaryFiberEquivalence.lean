@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSimplicialHomCorrection
-public import SerrePositivity.InfinityCategories.F1.KanSquareFiberEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestrictionFibration
 
 /-!
 概要：任意の単射な境界で指定値を固定した、元の Hom 輸送の補正射は fiber ごとに同値。

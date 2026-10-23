@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsNaturality
-public import SerrePositivity.InfinityCategories.F1.StrictDiagramComposition
+public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramComposition
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
 
 /-!

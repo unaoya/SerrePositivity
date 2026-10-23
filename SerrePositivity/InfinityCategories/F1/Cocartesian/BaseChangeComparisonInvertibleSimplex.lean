@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.InvertibleTriangleCancellation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleTriangleCancellation
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeJointComparisonIso
 
 /-!

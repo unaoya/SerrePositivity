@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoherentKanRightCompositionTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionTransport
 public import SerrePositivity.InfinityCategories.F2.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
 

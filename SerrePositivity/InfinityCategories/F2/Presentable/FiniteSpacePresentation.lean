@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.GeneratorEquival
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!
 概要：元の小さい Kan 空間を、有限部分複体の Kan 置換の filtered 全余極限として表示する。

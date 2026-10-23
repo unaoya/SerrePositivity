@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 
 /-!
 概要：矢印関手の元の族を、その両端評価を結ぶ円柱へ移す。

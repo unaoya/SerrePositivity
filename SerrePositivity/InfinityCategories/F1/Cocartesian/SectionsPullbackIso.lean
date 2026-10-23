@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorIsPullbackIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackEdgeReflection
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSections
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso

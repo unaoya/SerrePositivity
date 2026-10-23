@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TransportComposition
+public import SerrePositivity.InfinityCategories.F1.Transport.Composition
 
 /-!
 概要：元の二単体と二つの輸送 prism を保持する、輸送の合成の実際の三角形データ。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomFixedComponent
-public import SerrePositivity.InfinityCategories.F1.IntervalFunctorHomPrismCurry
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFunctorHomPrismCurry
 
 /-!
 概要：分類先の実際の固定成分 fiber の族を、三辺を固定した prism に展開する。

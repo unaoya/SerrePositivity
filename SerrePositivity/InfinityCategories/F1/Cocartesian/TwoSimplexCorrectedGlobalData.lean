@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexSharedNaturalityTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCorrectedCoherence
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellOverHomRestrictionMap
 
 /-!

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 
 /-! # 同じ相対関手の頂点評価は、元の全空間の指定点を回収する -/
 

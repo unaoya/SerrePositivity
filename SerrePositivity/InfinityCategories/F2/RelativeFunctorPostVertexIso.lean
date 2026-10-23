@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.VertexIsoEndpointTransport
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
 
 /-!
 概要：底を固定する元の射の指定比較を、全相対関手空間での後合成の関手同型へ移す。

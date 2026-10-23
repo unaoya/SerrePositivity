@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairFunctor
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：元の coherent nerve と二対象の円柱の nerve の積から、一般の円柱の nerve への写像。

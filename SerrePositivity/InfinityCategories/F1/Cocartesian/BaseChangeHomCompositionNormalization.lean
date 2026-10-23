@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomSpan
-public import SerrePositivity.InfinityCategories.F1.PointedRightFiberComparison
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedRightFiberComparison
 
 /-!
 概要：合成した底の射と二回の制限の元の分類 Hom の端点表示を揃える。

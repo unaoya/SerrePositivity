@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.TransportWitness
+public import SerrePositivity.InfinityCategories.F1.Transport.Witness
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyPrism
 
 /-!

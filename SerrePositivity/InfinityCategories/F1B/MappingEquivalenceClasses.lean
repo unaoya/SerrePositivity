@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyClasses
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1.PreFiberKan
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：写像空間の同値をパラメータ付きの定値関手間 Hom の全単射に移す。

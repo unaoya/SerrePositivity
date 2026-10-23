@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationInfinity
-public import SerrePositivity.InfinityCategories.F1.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorCompositionLaws
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorCompositionLaws
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 

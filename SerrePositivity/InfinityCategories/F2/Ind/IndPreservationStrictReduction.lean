@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictClassifiedIndCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReduction
-public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
 概要：Indκ からの元の関手の κ-filtered 余極限保存性を strict 分類標準余錐で判定する。

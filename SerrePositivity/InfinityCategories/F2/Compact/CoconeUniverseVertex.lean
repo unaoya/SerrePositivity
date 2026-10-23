@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniversePrism
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeVertexFiberIso
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentationPointedFiber
-public import SerrePositivity.InfinityCategories.F1.UniverseFiber
+public import SerrePositivity.InfinityCategories.F1.Universe.Fiber
 
 /-!
 概要：宇宙変更後の元の prism の終点を、同じ指定頂点の fiber の同値に分解する。

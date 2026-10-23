@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeExtensionHomotopy
-public import SerrePositivity.InfinityCategories.F1.TrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrism
 
 /-!
 概要：同じ底と二辺を持つ三角形 prism を、その両方を保つ一つの円柱で比較する。

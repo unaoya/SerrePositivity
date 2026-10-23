@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.TransportSection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanSingleFibrationComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TowerComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteComparison
-public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportThinRestriction
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportThinRestriction
 
 /-!
 概要：cospan・塔・離散圏上の left fibration の切断空間と strict transport の homotopy 極限の比較。

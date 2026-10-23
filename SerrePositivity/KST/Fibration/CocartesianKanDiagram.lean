@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.StrictKanCompletion
-public import SerrePositivity.InfinityCategories.F1.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
 
 /-! # cocartesian section の厳密な輸送の空間値図式と同じ fiber の比較 -/

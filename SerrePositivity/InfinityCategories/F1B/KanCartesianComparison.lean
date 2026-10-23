@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCartesianCancellation
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianProductProjection
-public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!

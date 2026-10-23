@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.KanHomotopyRectification
 public import SerrePositivity.InfinityCategories.F2.IntervalReplacementPath
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
 
 /-!
 概要：元の小さい interval 置換の全 path を持ち上げ、大きい Kan cospan の左脚へ移す。

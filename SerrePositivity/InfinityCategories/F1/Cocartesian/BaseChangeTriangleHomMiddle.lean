@@ -4,8 +4,8 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriang
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomFirst
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeRestrictedHomSpan
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomSpan
-public import SerrePositivity.InfinityCategories.F1.IntervalHomPostcompositionEquality
-public import SerrePositivity.InfinityCategories.F1.EquivalenceTriangleFaceEvaluation
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalHomPostcompositionEquality
+public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleFaceEvaluation
 
 /-!
 概要：元の比較三角形の共有頂点における Hom 射影の厳密な一致。

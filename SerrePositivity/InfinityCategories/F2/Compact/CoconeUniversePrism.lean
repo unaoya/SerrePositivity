@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeTotalPrism
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconeRepresentations
-public import SerrePositivity.InfinityCategories.F1.UniversePrism
+public import SerrePositivity.InfinityCategories.F1.Universe.Prism
 
 /-!
 概要：元の指定 fiber 写像の全空間 prism を、同じ余錐の一つの宇宙変更表現で送る。

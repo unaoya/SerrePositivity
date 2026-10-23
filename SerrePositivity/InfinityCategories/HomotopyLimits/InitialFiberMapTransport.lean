@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberEdgeTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTransportNaturality
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTransportNaturality
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
 

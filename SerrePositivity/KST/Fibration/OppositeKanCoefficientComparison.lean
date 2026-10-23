@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.OppositeKanUnstraightening
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveConstantNaturality
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeKanUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantNaturality
 
 /-! # 元の係数の定値包含と、反転 Kan 図式の同じ unstraightening 比較の作用 -/
 

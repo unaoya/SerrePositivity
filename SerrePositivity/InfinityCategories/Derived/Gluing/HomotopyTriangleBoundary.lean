@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
-public import SerrePositivity.InfinityCategories.F1.CompositionTriangleSpace
+public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-! 三つの指定ホモトピーの全区間族を、関手単体集合の同じ三角形境界へ貼る。 -/

@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeCorePushout
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
-public import SerrePositivity.InfinityCategories.F1.IntervalDiagramPushout
-public import SerrePositivity.InfinityCategories.F1.UniversePushouts
-public import SerrePositivity.InfinityCategories.F1.UniverseRelativeOverPre
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramPushout
+public import SerrePositivity.InfinityCategories.F1.Universe.Pushouts
+public import SerrePositivity.InfinityCategories.F1.Universe.RelativeOverPre
 
 /-!
 概要：任意のセル貼合せで、同じ source と分類先の Hom は厳密な pullback をなす。

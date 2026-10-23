@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerActionVa
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitLowerCompositeValue
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoComponentPost
 public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleEvaluation
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoTriangleEvaluation
 public import SerrePositivity.InfinityCategories.F2.VertexIsoCompositionTransport
 
 /-!

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryAnodyne
-public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne
+public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexFaces
 
 /-!

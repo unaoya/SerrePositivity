@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
-public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementAssembly
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementAssembly
 
 /-!
 概要：定値係数からの組み立て射の水平辺を計算する。

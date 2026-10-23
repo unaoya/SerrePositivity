@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
-public import SerrePositivity.InfinityCategories.F1.CovariantRepresentableValues
+public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableValues
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 
 /-!

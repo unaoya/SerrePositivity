@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexCellMono
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexLocalNaturality
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostLifting
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftLifting
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.PointedMorphismPrismObjects
-public import SerrePositivity.InfinityCategories.F1.CoherentHomConstantTransport
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomConstantTransport
 
 /-!
 概要：固定射 prism の元の初点固定 tail を、同じ通常射の順序図式で読む。

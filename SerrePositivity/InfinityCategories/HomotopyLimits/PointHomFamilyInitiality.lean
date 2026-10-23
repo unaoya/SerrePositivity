@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationPointHomFamily
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTrivialComparison
 
 /-!
 概要：任意の点の全 Hom の族の同値性から、その点の始対象性を反映する。

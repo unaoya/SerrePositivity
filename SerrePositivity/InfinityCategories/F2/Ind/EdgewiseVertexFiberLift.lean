@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 
 /-!

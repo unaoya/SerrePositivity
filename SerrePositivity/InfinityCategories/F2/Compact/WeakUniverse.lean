@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
-public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F2.WeakHomotopyPrecomposition
 
 /-!

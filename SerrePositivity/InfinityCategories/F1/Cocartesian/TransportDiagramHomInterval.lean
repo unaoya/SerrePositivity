@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramRealizationVertices
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramRealizationEvaluation
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
-public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostHomCriterion
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 
 /-!
 概要：元の strict transport の全変換の core を、実現した図式間の区間模型へ写す。

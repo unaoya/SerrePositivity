@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismCompatibility
-public import SerrePositivity.InfinityCategories.F1.CoherentCompositionPrism
+public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionPrism
 
 /-!
 # native roof の元の混合 coherent 単体

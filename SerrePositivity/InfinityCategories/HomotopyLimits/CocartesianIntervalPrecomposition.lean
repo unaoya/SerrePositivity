@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeCosliceFamilySquare
-public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
 public import SerrePositivity.InfinityCategories.F1B.SquareComposition

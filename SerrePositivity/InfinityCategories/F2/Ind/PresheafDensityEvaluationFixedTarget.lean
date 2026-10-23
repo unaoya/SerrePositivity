@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationGlobalComparison
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorIsPullbackIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorIsPullbackIso
 
 /-!
 概要：同じ始点固定の全族上で、元の大域標的への相対 Hom を同じ定値標的へ戻す。

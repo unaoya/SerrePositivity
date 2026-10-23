@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DerivedAugmentationArrowDiagram
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomArrowTransport
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 
 /-! F2 の矢印側の実 Hom 比較を、元の augmentation 図式間の区間 Hom に移す。 -/
 @[expose] public section

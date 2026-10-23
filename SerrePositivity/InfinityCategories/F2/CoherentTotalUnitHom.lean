@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.SpaceLeftHomValue
 public import SerrePositivity.InfinityCategories.F2.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
 
 /-!
 概要：全空間の実際の単位による前合成を、𝒮 内の全左 Hom からの比較として表示する。

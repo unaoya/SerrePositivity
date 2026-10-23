@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionShapePushout
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFibration
 
 /-!
 概要：底上の単射による切断空間の制限は Kan fibration になる。

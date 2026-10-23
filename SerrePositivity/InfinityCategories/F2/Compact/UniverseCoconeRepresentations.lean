@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentationRestriction
-public import SerrePositivity.InfinityCategories.F1.JoinQuasicategory
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 
 /-!

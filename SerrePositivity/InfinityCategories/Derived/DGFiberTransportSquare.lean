@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.FiberTransportSquare
-public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportSquare
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 /-!
 概要：底も変わる実 left fibration の正方形は、同じ辺の輸送を比較する。
 方針：元の実輸送 prism を全空間の射で後合成し、標的の実輸送 prism と比較する。

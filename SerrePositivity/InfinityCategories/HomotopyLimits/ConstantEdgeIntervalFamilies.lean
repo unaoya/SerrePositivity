@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
-public import SerrePositivity.InfinityCategories.F1.LeftTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransport
 
 /-!
 概要：元の一本の辺の定値パラメータ族と、二端点の積への制限を厳密に計算する。

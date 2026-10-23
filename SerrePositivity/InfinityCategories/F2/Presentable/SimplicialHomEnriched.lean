@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.KanPointHomEnriched
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomEnriched
 
 /-!
 概要：任意の小さい単体集合を始点とする内部 Hom の全豊穣関手。

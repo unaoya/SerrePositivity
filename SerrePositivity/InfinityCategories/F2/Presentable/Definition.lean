@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
-public import SerrePositivity.InfinityCategories.F1.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F1.PresheafAllSmallLimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafAllSmallLimits
 
 /-!
 概要：元の全図式の小余極限の存在と accessibility によって presentable ∞ 圏を定義する。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveStraighteningUnit
-public import SerrePositivity.InfinityCategories.F1.LeftStraighteningRepresentation
-public import SerrePositivity.InfinityCategories.F1.NerveTransportRepresentation
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveStraighteningUnit
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningRepresentation
+public import SerrePositivity.InfinityCategories.F1.Transport.NerveTransportRepresentation
 
 /-!
 概要：Kan 値の通常の図式の weighted 分類を、元の全 coherent 図式へ戻す。

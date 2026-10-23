@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRetractions
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessOpposite
-public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
+public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 
 /-!
 概要：元の対象の retract は、元の全共変表現可能関手の自然 retract を与える。

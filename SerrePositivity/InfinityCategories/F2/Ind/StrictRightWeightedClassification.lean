@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictLeftWeightedClassification
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeDiagram
-public import SerrePositivity.InfinityCategories.F1.RightStraighteningInfinityEquivalence
+public import SerrePositivity.InfinityCategories.F1.Fibrations.RightStraighteningInfinityEquivalence
 
 /-!
 概要：元の strict right fibration 図式を、共同 weighted left 分類と全添字上で比較する。

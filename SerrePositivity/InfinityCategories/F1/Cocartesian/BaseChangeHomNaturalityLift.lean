@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomSection
-public import SerrePositivity.InfinityCategories.F1.TrivialKanFunctorIsoProjection
+public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
 
 /-!
 概要：既存の大域 Hom 自然性に使う同じ持ち上げを明示し、その射影の指定値を回収する。

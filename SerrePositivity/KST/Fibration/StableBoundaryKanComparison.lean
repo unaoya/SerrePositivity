@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Fibration.CoreEnrichedPrecompose
 public import SerrePositivity.KST.SConstruction.ReducedMultiRealization
 public import SerrePositivity.KST.Comparison.ExInfinityLocalization
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
-public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonIso
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedComparisonIso
 
 /-! # 元の反復実現と境界商の Ex∞ 比較を、同じ全 coherent 図式へ適用する -/
 

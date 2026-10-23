@@ -4,8 +4,8 @@ public import SerrePositivity.KST.Fibration.PullbackStrictBilateralEdge
 public import SerrePositivity.KST.Fibration.WeakSpanKanWeakInversion
 public import SerrePositivity.KST.Fibration.FractionKanDescent
 public import SerrePositivity.KST.Fibration.TransportSimplexEdgeCover
-public import SerrePositivity.InfinityCategories.F1.InvertingFunctorIsoInvariance
-public import SerrePositivity.InfinityCategories.F1.LocalizationSourceIso
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
+public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso
 
 /-! # 商の元の coslice 空間値図式による、同じ W 分母の反転 -/
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopyBoundary
 
 /-! 両側辺を固定する同じ実円柱を、区間 Hom 族のホモトピーへ戻す。 -/

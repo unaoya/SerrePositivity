@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.RelativeFixedExtensionCurry
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
-public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 
 /-!
 概要：底と部分族を固定する元の実ホモトピーを同じ相対延長空間の実辺にする。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackPushout
-public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCorePushout
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorCorePushout
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackHomFunctor
 
 /-!

@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionHomLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PostcompLimitTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
-public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
-public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!
 概要：strict な錐の通常の関手による像を coherent nerve の後合成と厳密に照合する。

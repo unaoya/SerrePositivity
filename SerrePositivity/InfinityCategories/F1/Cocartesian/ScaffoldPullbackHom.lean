@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecompositionEquivalence
-public import SerrePositivity.InfinityCategories.F1.CoreEquivalence
+public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldArbitraryBaseChange
 
 /-!

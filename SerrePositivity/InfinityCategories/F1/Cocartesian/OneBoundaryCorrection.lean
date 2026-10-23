@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryOriginal
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NativeRestrictionFibration
-public import SerrePositivity.InfinityCategories.F1.PathCorrectedSquarePrecompositionCoherence
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedSquarePrecompositionCoherence
 
 /-!
 概要：一次元境界の指定比較同型を保つ、元の全 Hom 作用の補正。

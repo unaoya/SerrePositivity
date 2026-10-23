@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeHomLiftCoherence
-public import SerrePositivity.InfinityCategories.F1.HomSpanSectionFiberCoherence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFiberCoherence
 
 /-!
 概要：元の大域分類 Hom 自然性は、同じ比較 Hom の切断の単位を引き戻したもの。

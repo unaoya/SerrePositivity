@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondHomDecompositionEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondTriangleHomTransport
-public import SerrePositivity.InfinityCategories.F1.FunctorIsoEndpointProjection
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 
 /-!
 概要：元の第二面の輸送を降ろす前の同じ指定同型を、元の長辺射影で型付けする。

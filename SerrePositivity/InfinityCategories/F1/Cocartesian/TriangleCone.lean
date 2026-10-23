@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CosliceConeExtension
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceConeExtension
 
 /-!
 概要：cocartesian な後半の辺を持つ三角形の錐の延長。

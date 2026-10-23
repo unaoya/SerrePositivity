@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedVertexMapSmallness
-public import SerrePositivity.InfinityCategories.F1.JoinSmallness
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinSmallness
 
 /-!
 概要：join の両側への制限を固定した全写像の型は小さい。

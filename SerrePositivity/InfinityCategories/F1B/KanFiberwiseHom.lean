@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseFunctorEquiv
 public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseFunctorPrecomposition
-public import SerrePositivity.InfinityCategories.F1.OverPullbackMorphism
+public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackMorphism
 
 /-!
 概要：fiber ごとの関手の全空間 Fun(K/C,D) と、その底上のパラメータ付き普遍性。

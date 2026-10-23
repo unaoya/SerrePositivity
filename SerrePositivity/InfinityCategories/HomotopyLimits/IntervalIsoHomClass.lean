@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalVertexHomotopy
-public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 
 /-!
 概要：区間写像空間内の元の頂点同型から、回収した同じ辺の Hom 類の等式を反映する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentation
-public import SerrePositivity.InfinityCategories.F1.TransportRepresentationCartesianRestriction
+public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationCartesianRestriction
 public import SerrePositivity.InfinityCategories.F2.UniverseKanPullback
 
 /-!

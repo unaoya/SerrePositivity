@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentPrefixConeSimplex
-public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformation
+public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexDeformation
 
 /-!
 概要：固定始点の prefix 円柱の時刻零は元の cone の最大 path 表示。

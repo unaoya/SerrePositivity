@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.Fibration.WeakSpanKanDiagram
 public import SerrePositivity.KST.Fibration.PullbackStrictConstantEdge
 public import SerrePositivity.KST.Fibration.TransportSimplexConstantEdge
-public import SerrePositivity.InfinityCategories.F1.KanDiagramEdges
-public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramEdges
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-! # 全 span の同じ coherent Kan 図式による初頂点辺の反転 -/
 

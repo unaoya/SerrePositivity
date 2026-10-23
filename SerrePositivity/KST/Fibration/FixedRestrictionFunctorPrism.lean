@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.ContractibleRestrictionComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorPrismEdgeLifting
-public import SerrePositivity.InfinityCategories.F1.FunctorPrismTriangles
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismEdgeLifting
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismTriangles
 
 /-! # 指定部分上で恒等の元の比較辺を、同じ固定部分を持つ全円柱へ評価する -/
 

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexFamilies
-public import SerrePositivity.InfinityCategories.F1.UniversePinchedHom
-public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
-public import SerrePositivity.InfinityCategories.F1.CoherentPrismEvaluation
+public import SerrePositivity.InfinityCategories.F1.Universe.PinchedHom
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
+public import SerrePositivity.InfinityCategories.F1.Coherent.PrismEvaluation
 
 /-! 実 pinched Hom 族の区間評価は、元の族と端点を保つ宇宙移送と可換。 -/
 @[expose] public section

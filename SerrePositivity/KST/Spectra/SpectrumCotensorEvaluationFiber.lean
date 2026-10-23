@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderFiber
 public import SerrePositivity.KST.Spectra.SpectrumCotensorEvaluationNerveFamily
-public import SerrePositivity.InfinityCategories.F1.CoherentHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomEnrichedNaturality
 
 /-!
 概要：cotensor の評価の族を元の BF 対象へ制限し、全 Hom の普遍評価と照合する。

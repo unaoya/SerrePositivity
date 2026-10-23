@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.CodiscreteNerve
 public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTotalFibers
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanRelativePathLifting
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero
 

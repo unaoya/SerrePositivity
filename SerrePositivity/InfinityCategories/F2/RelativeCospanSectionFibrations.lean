@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.RelativeCospanSections
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorRestrictionFibration
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorAnodyneRestriction
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
 
 /-!
 概要：二辺上の切断を共通終点で貼る表示の、終点制限の Kan fibration 性。

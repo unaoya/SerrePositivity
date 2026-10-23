@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFatConeNaturality
-public import SerrePositivity.InfinityCategories.F1.JoinDiagramRightRelativeExtension
+public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagramRightRelativeExtension
 public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
 
 /-!

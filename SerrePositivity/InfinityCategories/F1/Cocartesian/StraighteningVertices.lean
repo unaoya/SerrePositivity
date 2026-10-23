@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsConstant
+public import SerrePositivity.InfinityCategories.F1.Diagrams.DiagonalCocartesianSectionsConstant
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningCoherent
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportDiagram
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationMappingSpaces

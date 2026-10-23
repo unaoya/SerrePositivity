@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.SmallSimplicialSet
+public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentFullSubcategoryRestriction
 
 /-! # 小さい対象集合を持つ、元の豊穣圏の coherent nerve の小ささ -/

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomBasePrism
-public import SerrePositivity.InfinityCategories.F1.FiberTransportFamily
-public import SerrePositivity.InfinityCategories.F1.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
 
 /-!
 概要：始点 fiber 全体と全左 Hom に同時に依存する、left fibration の実際の輸送作用。

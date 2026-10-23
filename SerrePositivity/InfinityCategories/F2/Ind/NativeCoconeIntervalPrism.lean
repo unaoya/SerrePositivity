@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.ConstantTransformationVertex
 public import SerrePositivity.InfinityCategories.F2.CoconeTransformationPoint
-public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 
 /-!
 概要：native な指定余錐の標準変換の区間表示は、同じ余錐の円筒制限そのもの。

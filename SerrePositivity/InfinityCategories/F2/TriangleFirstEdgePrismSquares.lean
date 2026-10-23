@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.TriangleFirstEdgeLeftAnodyne
-public import SerrePositivity.InfinityCategories.F1.TransportPrismLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
 
 /-!
 概要：最初の辺を固定した全三角形の長辺と最後辺の実初期値・実終点の可換正方形。

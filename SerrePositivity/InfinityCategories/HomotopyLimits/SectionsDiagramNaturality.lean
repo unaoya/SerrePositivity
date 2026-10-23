@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionsFunctor
-public import SerrePositivity.InfinityCategories.F1.WeightedNerveFunctor
+public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor
 
 /-!
 概要：Bousfield–Kan end と weighted nerve の切断空間の同型の係数図式に関する自然性。

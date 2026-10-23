@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
 public import SerrePositivity.InfinityCategories.F1B.CofinalFixedPrism
 /-!
 概要：部分 prism の全時刻と初期図式を固定する実評価の全高次選択空間を構成する。

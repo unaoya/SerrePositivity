@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinDiagonalOpposite
-public import SerrePositivity.InfinityCategories.F1.RelativeJoin
+public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoin
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
 
 /-!

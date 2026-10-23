@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
-public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!
 概要：実際の coherent 四角形として提示した抽象 Verdier 列。

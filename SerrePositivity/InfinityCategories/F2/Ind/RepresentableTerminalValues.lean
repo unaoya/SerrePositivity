@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafValues
-public import SerrePositivity.InfinityCategories.F1.PresheafInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafValues
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomWeightUniverseComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaLiftedHomRestriction
-public import SerrePositivity.InfinityCategories.F1.TransportSimplexSectionBaseChange
+public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
 
 /-!
 概要：元の Hom 係数の全評価族と、持ち上げた標的の全 Hom 制限族を自然同型で比較。
