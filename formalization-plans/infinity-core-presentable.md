@@ -39,8 +39,7 @@
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。Space の poset 形状の全 coherent 交換へ接続。
 - Kan 値 strict 錐の native 極限性の比較射による iff と保存性を証明。F1 の分類で全錐族を同時 strict 化し、元の全脚を読み戻す。
-- 同時 strict 化した全錐族の指定点ごとの余極限を輸送。thin な錐添字の一致から元の strictCoherentConeMap を回収し、全脚と native な極限性を比較。
-- WithInitial の元の錐の比較を二つの連続関手間の自然変換にし、同じ strict 余極限錐自身の native な極限性を証明。
+- 同時 strict 化した全錐族の余極限と元の strictCoherentConeMap を全脚で比較。WithInitial の元の錐の比較の全自然性から同じ strict 余極限錐の native 極限性を証明。
 - **小さい poset の極限と、一般の μ-filtered ∞ 添字の coherent 全錐族の指定点ごとの余極限の交換を証明。**
   cofinal μ-filtered poset への元の全余錐の制限で一般添字へ拡張。元の図式・全錐・指定余錐を量化し、交換を仮定に入れない。
 - 正則濃度・κ-small 性・κ-filtered 性の宇宙移送、μ-filtered 全錐反映を証明し、小さい poset 余極限の μ-compact 閉性を証明。
@@ -52,8 +51,9 @@
   全同値による presentable 性の保存・反映と、小余極限を持つ Ind 模型による特徴づけを証明。
 - 非可算正則 μ と μ-small Kan 始点について、全高次射に作用する内部 Hom 関手の μ-filtered 余極限保存を証明。
   終対象上の相対 Hom と N の大きい全共変 Hom の全自然比較から、同じ μ-small Kan 空間の μ-compact 性を実証。
-- 任意の小さい空間族が、指定上限を超える同じ正則濃度で全て compact になることを証明。空間自身の accessibility は未証明。
-- 独立集約ビルド成功（7723 jobs）、公理監査 665 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 任意の小さい空間族の共通 compact 濃度を証明。有限単体集合始点の全 Hom の filtered 保存と Kan 置換との全自然同型から、有限模型の Kan 置換の compact 性も実証。
+- 各指定 Kan 空間を、有限部分複体の Kan 置換の filtered 全余極限として回収。全項は compact、元の指定頂点は厳密な等式。
+- 独立集約ビルド成功（7729 jobs）、公理監査 705 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
@@ -89,7 +89,7 @@
 - `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
 - `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
 - `IsKappaAccessible.of_cardinalChangeBound`、`IsAccessible.exists_larger`、`exists_common_accessibilityCardinal`
-- `IsPresentable`、`kanHom_covariantModelIso`、`smallKanObject_isKappaCompact`、`exists_spaceCompactCardinal_family`
+- `IsPresentable`、`smallKanObject_isKappaCompact`、`finiteKanReplacement_isCompact`、`exists_finiteSpacePresentation`
 
 ### 未コミット
 - なし。工程 (2) の検証済み区切りを所有ファイルのみ保存。
@@ -99,8 +99,8 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (2)。任意の単体集合始点への Hom の豊穣作用と有限始点の filtered 保存を構成し、Kan 置換との全自然比較を得る。
-  有限模型の Kan 置換の compact 性と filtered 表示から空間の小さい生成圏を構成し、前層へ進む。両者の accessibility は未証明。
+- 工程 (2)。有限単体集合を `FintypeCat.Skeleton` 値の単体的図式で符号化し、宇宙 u の共通の有限模型族を構成する。
+  実証済みの全表示の各有限部分をこの族へ同型で移し、`smallFullModel` と同型飽和の同値から空間の小さい生成圏を得る。空間・前層の accessibility は未証明。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約

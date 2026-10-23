@@ -171,3 +171,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.kanHom_covariantModelIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_spaceCompactCardinal_family
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplicialInternalHomEnriched
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSimplicialHomInfinity_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousReplacementHomIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteKanReplacement_isCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpacePieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceReplacementDiagram_compact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSpacePresentation
