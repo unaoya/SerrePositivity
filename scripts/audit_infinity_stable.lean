@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFullyFaithful
+import SerrePositivity.InfinityCategories.Derived.DGKappaProjectiveComparison
+import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeFamily
+import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeCover
 import SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback
 import SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanShape
 import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCospan
@@ -7676,6 +7680,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaProjectiveComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeCover,
+
     `SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback,
     `SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanShape,
     `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCospan,
