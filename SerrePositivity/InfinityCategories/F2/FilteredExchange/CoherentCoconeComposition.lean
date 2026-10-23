@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconePointHomComposition
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCoconeTotalComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconePointHomComposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentCoconeTotalComparison
 
 /-!
 概要：元の余錐の全 Hom 比較を、小さい全空間の内部 Hom 内で実際の相対合成と比較する。

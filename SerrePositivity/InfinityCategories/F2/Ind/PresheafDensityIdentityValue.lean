@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValuePre
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityRestrictedValuePre
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedIdentityFiberEquivalence
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 
 /-!

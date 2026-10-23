@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.ConePresheafRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitExchangeInput
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.VertexConeIsoTransport
 
 /-!

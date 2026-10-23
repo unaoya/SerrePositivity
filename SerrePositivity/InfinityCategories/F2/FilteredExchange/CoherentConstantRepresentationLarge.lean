@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTargetVertex
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantTargetVertex
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LargeTotalCoconeUnit
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackFiberIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseIntervalPullbackLifting
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberKan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberValueMap
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberValueMap
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalCoconeUnit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UliftPrecomposition
 
 /-!
 概要：元の小さい単位の比較を大きい全空間の実際の写像へ戻す。

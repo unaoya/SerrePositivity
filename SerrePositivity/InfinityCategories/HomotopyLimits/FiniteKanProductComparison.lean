@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanProductUnit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
 
 /-!

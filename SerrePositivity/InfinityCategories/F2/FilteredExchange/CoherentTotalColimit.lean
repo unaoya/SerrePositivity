@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalCoconePre
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberColimitCriterion
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberColimitCriterion
 
 /-!
 概要：小さい底上の任意の coherent 空間値図式の全空間 Kan 模型が元の余錐の native な余極限。

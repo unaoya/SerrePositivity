@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeReconstruction
-public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationLarge
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoherentMapRealizationLarge
 
 /-!
 概要：同じ native 評価復元の大きい全空間への像と、元の共同実現射との合成を計算する。

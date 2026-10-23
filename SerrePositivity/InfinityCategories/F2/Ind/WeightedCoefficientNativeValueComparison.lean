@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeConstantComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberValueMap
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTargetVertex
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberValueMap
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantTargetVertex
 
 /-!
 概要：元の native 評価余錐の実際の fiber 値写像を、元の制限全評価の値写像へ比較する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalTransport
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.PointedIntervalTransport
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceParametrizedEquivalence
 public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilySourceComparison
 

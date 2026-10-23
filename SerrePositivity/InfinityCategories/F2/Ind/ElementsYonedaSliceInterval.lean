@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceValue
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconeIntervalPrism
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCoconeTransformation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityCoconeTransformation
 
 /-!
 概要：元の Yoneda comma の pinched fiber 作用の区間表示を、元の native 密度変換へ厳密に同定する。

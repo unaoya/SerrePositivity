@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentTotalEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
 
 /-!

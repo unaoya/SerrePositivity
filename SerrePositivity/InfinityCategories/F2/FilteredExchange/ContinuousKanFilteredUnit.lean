@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 

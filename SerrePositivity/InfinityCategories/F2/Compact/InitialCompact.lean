@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.TerminalApexColimit
 public import SerrePositivity.InfinityCategories.F2.Compact.FilteredUniverse
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
 

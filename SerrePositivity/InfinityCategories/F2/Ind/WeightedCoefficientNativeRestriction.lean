@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeHomotopy
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluationImage
-public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.HomotopyTransformationRestriction
 
 /-!
 概要：共同密度変換の同じ係数・始点制限は、元の native 評価変換の指定頂点に一致する。

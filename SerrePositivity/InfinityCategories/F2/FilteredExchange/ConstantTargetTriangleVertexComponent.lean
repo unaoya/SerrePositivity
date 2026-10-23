@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeTriangleVertexPresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningRelativeProjection
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningRelativeProjection
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoComponentPost
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UnstraighteningTriangleVertex
 

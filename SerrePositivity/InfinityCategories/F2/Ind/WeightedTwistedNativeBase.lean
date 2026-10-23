@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedPullbackIso
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedElementsBaseChange
 
 /-!
 概要：同じ weighted 引き戻しの同型は、共同 Hom の元の始点・終点・添字を保つ。

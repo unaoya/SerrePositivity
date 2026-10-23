@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：元の余錐脚の全一単体は、元の全余錐の後合成と厳密に可換。

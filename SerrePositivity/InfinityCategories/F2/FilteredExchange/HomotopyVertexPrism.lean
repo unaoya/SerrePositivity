@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentHomotopyVertex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantTransformationVertex
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 
 /-!

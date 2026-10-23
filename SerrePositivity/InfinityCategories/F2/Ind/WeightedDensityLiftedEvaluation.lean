@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityTransformation
-public import SerrePositivity.InfinityCategories.F2.Ind.SmallRelativeTargetLift
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.SmallRelativeTargetLift
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
 
 /-!

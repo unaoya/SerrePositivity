@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
 
 /-!
 概要：指定円柱の同型の前後合成と、弱同値による前合成の忠実性。

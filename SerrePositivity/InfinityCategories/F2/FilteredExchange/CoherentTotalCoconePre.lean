@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LargeTotalCoconeUnit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PrecompositionTargetComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.PrecompositionTargetComparison
 
 /-!
 概要：構成済み全空間余錐の fiber 写像の全 fiber 標的への前合成同値。

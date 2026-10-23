@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityTransformation
-public import SerrePositivity.InfinityCategories.F2.Ind.CurryJointHomotopy
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CurryJointHomotopy
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportCoordinates
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningEvaluation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningEvaluation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportComparison
 
 /-!
 概要：元の実輸送の全関手族の両端を、元の実相対射の定値 fiber 表示に同定する。

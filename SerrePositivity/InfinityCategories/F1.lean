@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity
+
 public import SerrePositivity.InfinityCategories.F1.Fibrations
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorMixedHom

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeFibration

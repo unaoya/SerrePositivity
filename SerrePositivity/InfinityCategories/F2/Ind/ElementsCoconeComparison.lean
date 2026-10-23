@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.ElementsDiagram
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.ElementsDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSlice
 
 /-!

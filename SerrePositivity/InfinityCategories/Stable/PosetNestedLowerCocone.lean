@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerCocone
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：入れ子の順序部分型の下方添字と同じ実余錐の比較。

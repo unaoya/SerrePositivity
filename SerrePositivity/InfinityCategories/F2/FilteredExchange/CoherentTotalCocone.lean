@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalUnitRepresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyCoconeRealization
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyCoconeRealization
 
 /-!
 概要：小さい全空間の Kan 模型を頂点とする一般 coherent 図式の native な余錐。

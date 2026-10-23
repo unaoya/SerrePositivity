@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningLeftRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationDiagramColimit
-public import SerrePositivity.InfinityCategories.F2.Ind.ElementsDiagram
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.ElementsDiagram
 
 /-!
 概要：元の right fibration の全空間と、同じ分類値の元の小さい right unstraightening の比較。

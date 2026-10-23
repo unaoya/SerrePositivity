@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaInfinity
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexCoconeLift
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexColimitReflection
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
 
 /-!

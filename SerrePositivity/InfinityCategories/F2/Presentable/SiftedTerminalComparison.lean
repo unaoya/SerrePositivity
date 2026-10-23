@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedContractibility
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakEquivalence
 
 /-!
 概要：sifted 添字上の一点図式の全空間 Kan 模型は、終対象と同値。

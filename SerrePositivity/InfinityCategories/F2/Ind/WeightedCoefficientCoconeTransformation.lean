@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientDiagramVertex
 public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyCoconeTransformationIso
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：同じ指定係数余錐とその評価の標準変換を、元の全変換の同じ係数制限へ比較する。

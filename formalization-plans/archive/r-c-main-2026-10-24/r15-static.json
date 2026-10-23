@@ -1,0 +1,11 @@
+{
+  "item": "r15",
+  "moves": 140,
+  "updated_lean_files": 292,
+  "tracked_lean_updates": 291,
+  "verified_import_only_sources": 290,
+  "untracked_import_updates_not_staged": [
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightLeftKan.lean"
+  ],
+  "base": "a6a10c52b3ae58b8b5973cdbefbbce714de516af"
+}

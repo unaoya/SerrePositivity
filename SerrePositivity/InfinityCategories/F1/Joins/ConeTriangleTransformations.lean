@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.ConePointHomTriangle
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeTransformationVertex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransformation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransformation
 
 /-!
 概要：元の錐の全 Hom 三角形の二つの短辺を、同じ定値始域の変換の全族と照合する。

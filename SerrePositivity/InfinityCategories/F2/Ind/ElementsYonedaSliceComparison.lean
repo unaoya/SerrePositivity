@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCocone
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsCoconeComparison
 
 /-!

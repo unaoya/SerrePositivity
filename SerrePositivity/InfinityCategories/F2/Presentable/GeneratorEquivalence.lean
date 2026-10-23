@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.CompactEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitVertexTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：同じ小さい κ-compact 生成圏と各対象の単一表示を、元の同値で輸送する。

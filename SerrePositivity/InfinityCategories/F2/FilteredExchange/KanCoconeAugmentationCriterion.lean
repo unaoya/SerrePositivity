@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCoconeAugmentationComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
 
 /-!
 概要：反転 augmentation の弱同値性から通常の Kan 余錐自体の ∞ 余極限性を得る。

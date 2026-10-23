@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.HomConeFamily
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：元の指定余錐を、同じ余極限からの全 Hom 錐族で写した全余錐として保持する。

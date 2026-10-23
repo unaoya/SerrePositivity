@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTotalDetection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
 
 /-!
 概要：coherent 図式の小さい全空間の Kan 模型と、その実際の頂点・単位を整える。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluation
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsEvaluation
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedIdentityFiberEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedSourceElementsEvaluation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedIdentityFiberEquivalence
 
 /-!
 概要：共同分類の同じ係数復元を、元の始点固定 twisted-arrow 評価と合成する。

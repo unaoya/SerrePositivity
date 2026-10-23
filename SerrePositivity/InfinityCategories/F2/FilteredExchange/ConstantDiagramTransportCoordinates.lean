@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportWitness
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportWitness
 
 /-!
 概要：元の定値図式の pointed 輸送証拠の終点を、元の作用と同じ fiber 射影で読む。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningValueOverPre
 
 /-!
 概要：定値相対 Hom の任意の fiber 値への作用と底上の前合成の可換性。

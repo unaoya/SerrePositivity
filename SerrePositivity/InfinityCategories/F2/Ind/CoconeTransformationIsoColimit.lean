@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationEquivalence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationPoint
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-!

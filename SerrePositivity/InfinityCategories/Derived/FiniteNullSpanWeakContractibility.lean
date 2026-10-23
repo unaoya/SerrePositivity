@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakEquivalence
 public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering

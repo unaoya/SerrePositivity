@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientSourceComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UliftPrecomposition
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
 
 /-!
 概要：元の係数評価の始点固定値写像は、必要な小さい Kan 標的への前合成で同値。

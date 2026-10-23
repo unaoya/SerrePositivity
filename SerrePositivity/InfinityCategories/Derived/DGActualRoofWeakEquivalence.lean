@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGActualRoofFinitePairs
 public import SerrePositivity.InfinityCategories.Derived.FiniteRelativeCofinality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 
 /-! # 実屋根の商比較の弱ホモトピー同値性
 

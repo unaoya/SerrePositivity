@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportCoordinates
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportFamilyRightPrism
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportFamilyRightComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportComparison
 
 /-!
 概要：定値図式の実輸送の右結合表示から、元の指定 prism を厳密に回収する。

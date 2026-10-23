@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleSourceComponentMap
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleConstantTargetValue
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningValueOverPre
 
 /-!
 概要：定値標的の指定三角形の任意の始点成分を、同じ実射の前合成として値へ写す。

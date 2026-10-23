@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeIntervalComposite
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportWitness
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportWitness
 
 /-!
 概要：元の余錐単位の二座標を、全区間輸送の比較の同じ始点射として保持する。

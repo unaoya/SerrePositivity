@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：小さい始点の全 Hom 関手が、strict 模型の同じ native 余極限余錐を保存する。

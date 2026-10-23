@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchorCylinderCoordinates
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanPrismExtension
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
 
 /-!
 概要：有限因子分解の新しい単射な境界への補正を Kan 模型の円柱で実現する。

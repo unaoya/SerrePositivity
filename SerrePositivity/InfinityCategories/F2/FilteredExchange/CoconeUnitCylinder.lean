@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationVertex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationVertex
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantTransformationVertex
 
 /-!
 概要：native な余錐の単位の実円柱を、元の join の円柱として表示する。

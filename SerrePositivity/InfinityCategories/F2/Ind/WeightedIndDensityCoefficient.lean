@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedConstantNaturality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyCoconeRealization
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyCoconeRealization
 
 /-!
 概要：同じ全 weighted 密度変換を、元の各段の全空間上の同じ native 余錐へ実現する。

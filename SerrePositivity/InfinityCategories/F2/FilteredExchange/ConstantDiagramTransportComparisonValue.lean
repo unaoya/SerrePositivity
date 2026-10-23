@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalComparisonComposition
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PrismFiberOutputLift
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallRelativeFiberHomPointed
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeConstFiberEvaluation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.RelativeConstFiberEvaluation
 
 /-!
 概要：旧 prism 出力の単体的表示を、元の全相対族の pointed 成分へ厳密に同定する。

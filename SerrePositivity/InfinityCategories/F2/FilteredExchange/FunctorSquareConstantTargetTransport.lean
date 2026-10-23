@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorSquareTargetTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningRelativeProjection
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningRelativeProjection
 
 /-!
 概要：元の二面比較の値への像を、定値標的の頂点の等式に沿って輸送する。

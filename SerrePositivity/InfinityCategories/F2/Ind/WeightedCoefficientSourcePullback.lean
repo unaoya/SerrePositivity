@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedTwistedCoefficientPullback
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluationRestriction
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedSourceElementsBaseChange
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedSourceElementsBaseChange
 
 /-!
 概要：元の係数の始点固定族は、元の全 weighted 共同射影の同じ係数・始点での引き戻し。

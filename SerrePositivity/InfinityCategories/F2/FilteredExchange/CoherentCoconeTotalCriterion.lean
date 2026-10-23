@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCoconeTotalComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentCoconeTotalComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomInitiality
 
 /-!

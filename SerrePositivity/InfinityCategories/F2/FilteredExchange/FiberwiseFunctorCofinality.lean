@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseFu
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredDiagonalCofinality
 public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
 public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 
 /-!
 概要：有限形状では、fiber ごとの関手から全関手空間への射は right cofinal。

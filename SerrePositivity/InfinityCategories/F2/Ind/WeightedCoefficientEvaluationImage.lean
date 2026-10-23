@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientEvaluationRestriction
-public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealizationNormalizedRestriction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoherentMapRealizationNormalizedRestriction
 
 /-!
 概要：元の共同密度変換を係数・始点に制限した実際の unstraightening の像を比較する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeEvaluation
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedTransformation
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityRestrictedTransformation
 
 /-!
 概要：元の native 係数余錐の評価変換は、元の共同密度変換の同じ係数・始点制限。

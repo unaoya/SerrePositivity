@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationPoint
 
 /-!
 概要：指定頂点で正規化した元の余錐の標準変換の全円柱を、元の余錐の円柱で計算する。

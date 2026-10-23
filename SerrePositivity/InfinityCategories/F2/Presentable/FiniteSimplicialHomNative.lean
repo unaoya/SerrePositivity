@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SimplicialHomEnr
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteInternalHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!

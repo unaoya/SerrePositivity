@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityIdentityValue
-public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationValueComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityEvaluationValueComparison
 
 /-!
 概要：元の恒等点の全 fiber パラメータを、元の評価密度余錐の unstraightening へ持ち上げる。

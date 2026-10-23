@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SimplicialHomEnriched
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomContinuity
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanAnodyne
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanAnodyne
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
 
 /-!

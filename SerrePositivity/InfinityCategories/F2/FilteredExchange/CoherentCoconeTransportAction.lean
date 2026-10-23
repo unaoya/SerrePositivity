@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCoconeComposition
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberHomComparison
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberHomComparison
 
 /-!
 概要：元の native 余錐の全 Hom 比較を元の pointed-space 輸送の作用へ移す。

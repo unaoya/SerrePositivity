@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityJointMap
-public import SerrePositivity.InfinityCategories.F2.Ind.CoherentMapRealization
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsReconstruction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoherentMapRealization
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedElementsReconstruction
 
 /-!
 概要：元の weighted 密度の全評価を、共同 Hom から共同分類への一つの coherent 変換へ移す。

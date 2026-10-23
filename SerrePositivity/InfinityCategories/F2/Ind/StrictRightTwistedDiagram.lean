@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationDiagramColimit
-public import SerrePositivity.InfinityCategories.F2.Ind.RelativeEdgewiseRightFibration
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.RelativeEdgewiseRightFibration
 
 /-!
 概要：元の right fibration 図式の twisted arrow と相対右端比較を全添字で自然に組む。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.TwistedElementsBaseChange
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedElementsBaseChange
 
 /-!
 概要：元の twisted-arrow 終点族の共同射影を、元の Hom 射影の引き戻しとして保持する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitValueAction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningValueOverPre
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorSquarePostOverPreEvaluation
 
 /-!

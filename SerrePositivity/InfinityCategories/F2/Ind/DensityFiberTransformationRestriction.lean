@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceInterval
-public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.HomotopyTransformationRestriction
 
 /-!
 概要：元の密度変換空間を、同じ元の fiber 上の定値図式間の変換空間へ制限する。

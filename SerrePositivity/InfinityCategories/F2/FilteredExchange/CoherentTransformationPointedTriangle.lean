@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedTriangleFiberRestriction
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationVertexTriangle
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UnstraighteningMappingTrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.UnstraighteningMappingTrianglePrism
 
 /-!
 概要：元の coherent 合成三角形の実際の pointed な全持ち上げを各 fiber へ制限する。

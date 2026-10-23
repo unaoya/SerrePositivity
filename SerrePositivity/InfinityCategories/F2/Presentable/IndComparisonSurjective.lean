@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanDiagramColimitTransport
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!
 概要：小さい生成圏を回収する κ-連続な Ind 比較は、本質的全射である。
