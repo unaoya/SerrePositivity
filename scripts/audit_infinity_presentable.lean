@@ -205,3 +205,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_of_filtered_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.relativeFunctorEnrichedEvaluation_underlying
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeHom_preserves_strictCocone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPointEvaluationIso

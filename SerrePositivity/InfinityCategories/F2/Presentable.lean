@@ -44,3 +44,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ContinuousLeftFi
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteOverPresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredLeftFibrationColimit
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeLeftFibrationHomNative
+public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationPointEvaluation
