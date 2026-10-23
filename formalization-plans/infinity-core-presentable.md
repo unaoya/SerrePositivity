@@ -25,17 +25,12 @@
   任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
   族と各部分集合の nerve の filtered 性は、元の全 coherent な試験図式について成立。
-  部分集合の nerve は全非退化単体を数える `IsKappaSmall μ` も満たす。圏の濃度変更自身は未証明。
+  部分集合の nerve は全非退化単体を数える `IsKappaSmall μ` も満たす。
 - 元の任意の μ-small coherent nerve 図式を、小さい κ-filtered 部分 poset へ厳密に因子化。
   全単体での回収、包含による遷移との整合性、部分 nerve の厳密な図式と通常の SSet 余極限を証明。
   宇宙 u+1 の元の標的図式への合成も厳密に回収し、各 filtered 部分図式の native な余極限の存在へ接続。
-- 部分添字とその対象の全空間を構成。値射影の各上方 comma の κ-filtered 性を証明し、
-  F1B の comma 比較・Quillen A から同じ値射影の right cofinal 性を証明。
-  宇宙 u+1 の元の全余錐の全空間への制限は余極限性を保存・反映する。
-  全空間の同じ図式を指定 fiber へ制限すると、元の部分図式そのものを厳密に回収する。
-- 部分添字射影の各左 Kan 局所添字の κ-filtered 性を証明。N の宇宙同型と F1B の局所存在定理から、
-  一つの全単位変換を持つ coherent な左 Kan 拡張を構成。fiber の局所比較の right cofinal 性も証明。
-  `exists_smallPartialColimitFamily` は元の全図式の各部分余極限を、延長の指定値そのものを頂点として回収する。
+- 部分添字と対象の全空間の値射影の right cofinal 性を証明し、元の全余錐の制限の余極限性を保存・反映。
+  部分射影への coherent な左 Kan 拡張と全単位変換を構成し、元の各部分余極限を同じ指定値そのものとして回収。
 - 同じ部分余極限族の μ-filtered 余極限から、元の全表示の指定頂点そのものを回収。
   既存の二つの余極限を一点への Kan として比較し、指定単位の Hom 普遍性の合成で頂点同型を構成した。
   `exists_filteredPartialPresentation` は任意の小さい κ-filtered ∞ 添字を扱い、全項を元の図式の
@@ -54,11 +49,15 @@
   各指定対象の厳密な全表示の全項はこの族の一項と頂点同型を持つ。Ind 内の小さい頂点族上の全部分複体は全次数で小さい。
 - 小さい全部分模型と同型飽和の全同値を構成し、全表示を小さい生成圏へ移送。元の指定頂点を厳密に保持。
   `IsKappaAccessible.of_cardinalChangeBound` により圏自身の μ-accessibility を証明。任意の上限超えと小さい族の共通濃度も実証。
-- 独立集約ビルド成功（7710 jobs）、公理監査 589 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 工程 (2) の `IsPresentable` を accessibility と全小余極限で定義。前層・空間の全小余極限と全小極限を提供。
+  全同値による presentable 性の保存・反映と、小余極限を持つ Ind 模型による特徴づけを証明。
+- 非可算正則 μ と μ-small Kan 始点について、全高次射に作用する内部 Hom 関手の μ-filtered 余極限保存を証明。
+  元の一般 coherent 図式の指定全余錐像を保持。N の大きい共変 Hom との宇宙比較・compact 性への接続は未完。
+- 独立集約ビルド成功（7717 jobs）、公理監査 626 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
-2. presentable の定義、前層 ∞ 圏・Ind_κ(C) の presentable 性（5.5.1.1、5.5.1.8）、局所小ささ。
+2. presentable の定義・同値不変性を実証。前層 ∞ 圏・条件を明示した Indκ(C) の presentable 性と局所小ささは未完。
 3. presentable の小さい極限・余極限（5.5.2.4、5.5.3.13）。
 4. 随伴関手定理：余極限を保つ関手は左随伴、accessible かつ極限を保つ関手は右随伴（5.5.2.9）。
 5. Pr^L と Pr^R の双対性（5.5.3.4）。
@@ -90,6 +89,7 @@
 - `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
 - `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
 - `IsKappaAccessible.of_cardinalChangeBound`、`IsAccessible.exists_larger`、`exists_common_accessibilityCardinal`
+- `IsPresentable`、`isPresentable_iff_equivalence`、`smallKanHomInfinity_isKappaAccessibleFunctor`
 
 ### 未コミット
 - なし。工程 (1) の検証済み区切りを所有ファイルのみ保存。
@@ -99,8 +99,8 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (2)。元の全図式の native な小余極限の存在と accessibility によって presentable を定義する。
-  F1 の前層の小余極限と N の compact 界面を確認し、前層の小さい compact 生成圏を構成する。
+- 工程 (2)。小さい空間の全 Hom の filtered 保存を N の compact 定義の宇宙へ比較し、compact 性へ接続する（N `UniverseColimits`、F1 `RelativeHomCosliceEquivalence` を確認）。
+  空間・前層の小さい compact 生成圏と各指定対象の全表示を構成する。前層自身の accessibility は未証明。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約

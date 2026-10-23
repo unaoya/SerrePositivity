@@ -32,3 +32,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CompactPartialPr
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFullSubcomplex
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomAccessible

@@ -155,3 +155,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_cocompleteIndEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanInternalHomEnriched
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHom_mapCocone_native
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_preserves_strictCocone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_isKappaAccessibleFunctor
