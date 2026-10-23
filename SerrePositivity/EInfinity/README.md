@@ -2729,3 +2729,7 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `normalizedTensorTriangleSimplex` は同じデータ・全 HA を持つ実 dg nerve 単体。
 元の任意単体列 c と任意三相時刻 τ を保ち、HA を追加の入力には置かない。
 面・退化自然性、全 Δ²×K の接合と大域評価三角形は未完了。
+
+`normalizedTensorTriangleFront_pullback_map`・Back 版・Pinched 版は三つの元の部分単体の
+全作用素自然性。通常評価列の閉単体も元の大域余錐 join から全再添字を回収する。
+同じ三相データ全体の自然性と全 Δ²×K への接合は未完了。
