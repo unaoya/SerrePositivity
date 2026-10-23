@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedHomFunctorMap
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 
 /-!
 概要：元の関手の twisted arrow 写像を、同じ元の両変数の底上の実比較にする。
