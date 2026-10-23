@@ -1,5 +1,11 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitApexPointedLastPrism
+
+public import SerrePositivity.InfinityCategories.F2.RelativePrismConstantNativeAction
+public import SerrePositivity.InfinityCategories.F2.RelativePrismInitialEndpoint
+public import SerrePositivity.InfinityCategories.F2.RelativePrismEndpointImageRestriction
+
 public import SerrePositivity.InfinityCategories.F2.RelativePrismEvaluation
 public import SerrePositivity.InfinityCategories.F2.RelativePrismDiagonalComparison
 public import SerrePositivity.InfinityCategories.F2.RelativePrismEvaluationVertex
@@ -3256,3 +3262,17 @@ public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedAugmentat
 #check @SerrePositivity.InfinityCategories.F2.relativePrismEvaluationEndpoint_curry_eq_pre
 #check @SerrePositivity.InfinityCategories.F2.relativePrismEvaluationEndpoint_restrict_eq_pre
 #check @SerrePositivity.InfinityCategories.F2.relativePrismActualEndpointIso_restrict_heq
+
+#check @SerrePositivity.InfinityCategories.F2.relativePrismEvaluation_curve
+#check @SerrePositivity.InfinityCategories.F2.relativePrismNative_curry_constant
+#check @SerrePositivity.InfinityCategories.F2.relativePrismNativeEndpointIso_constant_heq
+#check @SerrePositivity.InfinityCategories.F2.relativePrismInitialEndpointIso
+#check @SerrePositivity.InfinityCategories.F2.relativePrismNativeEndpointIso_heq_initial_postcomp
+#check @SerrePositivity.InfinityCategories.F2.relativePrismEndpointImage_restrict_heq
+#check @SerrePositivity.InfinityCategories.F2.relativePrismInitialEndpointIso_restrict_heq
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_start
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_finish
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_projection_constant
