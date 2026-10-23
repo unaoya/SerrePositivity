@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanJoinShiftCoefficient
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
 
 /-!

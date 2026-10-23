@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.CatInfinity
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -17,40 +19,6 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：底の射から undercategory の nerve の反変な射を作る。
-方針：Under.map の nerve を取る。
-規約：f:c→d に対し nerve(d/C) から nerve(c/C) へ写す。
-使われ方：Kerodon §5.3.1、strict transport の共変な射の前合成の始域。 -/
-def nerveUnderMap {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
-    nerve (Under d) ⟶ nerve (Under c) := nerveMap (Under.map f)
-
-/-- 概要：undercategory の nerve の射は底 C の nerve への射影を保つ。
-方針：under の射の標的を忘れる関手の定義を計算する。
-規約：底の図式の整合性は厳密な等式。
-使われ方：Kerodon §5.3.1、strict transport の相対関手空間の制限。 -/
-lemma nerveUnderMap_projection {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
-    nerveUnderMap f ≫ nerveMap (Under.forget c) = nerveMap (Under.forget d) := rfl
-
-/-- 概要：undercategory の nerve の反変な射は恒等射を保つ。
-方針：Under.map の恒等則を nerve に写す。
-規約：自然同型ではなく射の等式を使う。
-使われ方：Kerodon §5.3.1、strict transport の単位則。 -/
-lemma nerveUnderMap_id {C : Type u} [Category.{u} C] (c : C) :
-    nerveUnderMap (𝟙 c) = 𝟙 (nerve (Under c)) := by
-  unfold nerveUnderMap
-  rw [Under.mapId_eq]
-  rfl
-
-/-- 概要：undercategory の nerve の射は合成を逆順に保つ。
-方針：Under.map の合成の等式を nerve に写す。
-規約：f の後に g を合成する。
-使われ方：Kerodon §5.3.1、strict transport の合成則。 -/
-lemma nerveUnderMap_comp {C : Type u} [Category.{u} C] {c d e : C}
-    (f : c ⟶ d) (g : d ⟶ e) : nerveUnderMap (f ≫ g) = nerveUnderMap g ≫ nerveUnderMap f := by
-  unfold nerveUnderMap
-  rw [Under.mapComp_eq]
-  rfl
 
 /-- 概要：底の対象 c における left fibration の strict transport の単体集合。
 方針：c/C の nerve から全空間への、底を固定した関手単体集合を取る。

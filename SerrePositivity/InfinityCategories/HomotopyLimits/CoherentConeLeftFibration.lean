@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PullbackSections
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.MappingSpaceModelEquivalence
 public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
 

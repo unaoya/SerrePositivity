@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdge
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteFiberComparison
-public import SerrePositivity.InfinityCategories.F1B.KanSectionPrismVertical
+public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 
 /-!
 概要：有限鎖上の scaffold の最初の係数の prism とその垂直辺。
@@ -68,10 +68,10 @@ lemma kanScaffoldFiniteScaffoldPrism_vertical_isCocartesian (n : ℕ) {E : SSet.
       IsCocartesianEdge p (l.app (Opposite.op ⦋1⦌) (kanScaffoldHorizontalEdge F f x)))
     (x : (F.obj (ULift.up 0)) _⦋0⦌) :
     IsCocartesianEdge (p ≫ scaffoldFiniteCollapse n)
-      (KanSection.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) := by
+      (SerrePositivity.InfinityCategories.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) := by
   let f : (ULift.up (0 : Fin (n + 2)) : ULift.{u} _) ⟶ ULift.up 1 :=
     homOfLE (Fin.zero_le _)
-  have hv : KanSection.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x =
+  have hv : SerrePositivity.InfinityCategories.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x =
       l.app (Opposite.op ⦋1⦌) (kanScaffoldHorizontalEdge F f x) := by
     change ((pushout.inl (prismEndpoint 1 (F.obj (ULift.up 0)))
       (scaffoldFiniteCylinderAttachingMap n F) ≫ scaffoldFiniteCylinderComparison n F) ≫ l).app _
@@ -95,7 +95,7 @@ lemma kanScaffoldFiniteScaffoldPrism_vertical_isCocartesian (n : ℕ) {E : SSet.
     rw [hc]
     rfl
   have hp : IsCocartesianEdge p
-      (KanSection.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) := by
+      (SerrePositivity.InfinityCategories.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) := by
     rw [hv]
     exact horiz f x
   apply hp.comp
@@ -103,7 +103,7 @@ lemma kanScaffoldFiniteScaffoldPrism_vertical_isCocartesian (n : ℕ) {E : SSet.
       (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), PinchedHom.constant x 1))
     (kanScaffoldFiniteScaffoldPrism_projection n p F l h)
   change p.app (Opposite.op ⦋1⦌)
-    (KanSection.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) =
+    (SerrePositivity.InfinityCategories.prismVerticalSimplex (kanScaffoldFiniteScaffoldPrism n F l) x) =
       SSet.yonedaEquiv ((stdSimplex.isoNerve 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)) at he
   rw [scaffoldFiniteInitialEdge_yoneda] at he
   rw [he]

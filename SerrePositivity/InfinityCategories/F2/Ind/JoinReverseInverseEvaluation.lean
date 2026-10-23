@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.JoinReverse
+public import SerrePositivity.InfinityCategories.Core.JoinReverse
 
 /-!
 概要：join の反転形状の逆射を元の明示的な切断反転の逆で計算する。

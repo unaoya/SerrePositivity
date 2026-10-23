@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 public import SerrePositivity.InfinityCategories.F1.CoherentEdges
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 

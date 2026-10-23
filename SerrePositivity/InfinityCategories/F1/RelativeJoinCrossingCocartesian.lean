@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinInitialHornLifti
 public import SerrePositivity.InfinityCategories.F1.IntervalInitialEdgeCut
 public import SerrePositivity.InfinityCategories.F1.CartesianEdge
 public import SerrePositivity.InfinityCategories.Core.OuterHornDuality
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteVerticalEdges
+public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
 
 /-!

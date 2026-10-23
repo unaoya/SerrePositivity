@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.WeakContractibleOpposite
-public import SerrePositivity.InfinityCategories.Stable.SliceOpposite
+public import SerrePositivity.InfinityCategories.Core.SliceOpposite
 public import SerrePositivity.InfinityCategories.F1.CosliceRestrictionIso
 public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks

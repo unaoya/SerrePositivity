@@ -295,8 +295,8 @@ public import SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparis
 public import SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso
 public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
 public import SerrePositivity.InfinityCategories.Stable.PastingOuterCocone
-public import SerrePositivity.InfinityCategories.Stable.JoinCutCalculus
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinCutCalculus
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction
 public import SerrePositivity.InfinityCategories.Stable.Pasting
 public import SerrePositivity.InfinityCategories.Stable.ConeOpposite

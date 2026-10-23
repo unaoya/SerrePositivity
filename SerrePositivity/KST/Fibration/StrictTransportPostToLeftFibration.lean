@@ -24,7 +24,7 @@ def strictTransportPostToLeftFibration :
   app c := sectionPostToLeftFibration p q f hf (nerveMap (Under.forget c))
   naturality {c d} a := by
     let j : Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)) :=
-      Over.homMk (kanCocartesianUnderMap a) (kanCocartesianUnderMap_projection a)
+      Over.homMk (nerveUnderMap a) (nerveUnderMap_projection a)
     change kanCocartesianSectionsPre p j ≫
         sectionPostToLeftFibration p q f hf (nerveMap (Under.forget d)) =
       sectionPostToLeftFibration p q f hf (nerveMap (Under.forget c)) ≫

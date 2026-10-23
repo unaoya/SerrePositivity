@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSlice
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.YonedaPresheafEvaluation
 
 /-!

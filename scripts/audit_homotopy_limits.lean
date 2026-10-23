@@ -10262,8 +10262,8 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @quillenCfEndpointFiberIso_hom_ι
 #print axioms quillenCfEndpointFiberIso_hom_ι
 
-#check @quillenCfBottomEndpoint_wrong
-#print axioms quillenCfBottomEndpoint_wrong
+#check @quillenCfCollageTop_not_bottomEndpoint
+#print axioms quillenCfCollageTop_not_bottomEndpoint
 
 #check @quillenCfBottomToEndpoint
 #print axioms quillenCfBottomToEndpoint

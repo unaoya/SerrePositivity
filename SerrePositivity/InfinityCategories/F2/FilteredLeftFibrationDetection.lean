@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredLeftFibrationTranspo
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanHomotopy
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanFiniteFactorization
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 
 /-!
 概要：filtered な底の left fibration の Kan 置換への有限射を一つの fiber で検出する。

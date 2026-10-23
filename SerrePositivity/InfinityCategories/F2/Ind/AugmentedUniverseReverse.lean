@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseCuts
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseEquiv
+public import SerrePositivity.InfinityCategories.Core.JoinReverseCuts
+public import SerrePositivity.InfinityCategories.Core.JoinReverseEquiv
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportBaseChangeNaturality
 public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreLift
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
 
 /-!

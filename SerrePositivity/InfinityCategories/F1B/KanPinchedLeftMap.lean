@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
 
 /-!
 概要：反転で定義した左 pinched 写像空間の作用と coslice fiber の比較の自然性。
@@ -35,7 +35,7 @@ def kanPinchedHomLeftMap {X Y : SSet.{u}} (f : X ⟶ Y) (x y : X _⦋0⦌) :
 lemma kanCosliceFiberDiagramIso_app_val {K Y : SSet.{u}} {a b : K ⟶ Y}
     (h : a = b) (y : Y _⦋0⦌) (n : SimplexCategoryᵒᵖ)
     (s : (vertexFiber (sliceUnderProjection a) y).obj n) :
-    ((KanSection.cosliceFiberDiagramIso h y).hom.app n s).val.val = s.val.val := by
+    ((SerrePositivity.InfinityCategories.cosliceFiberDiagramIso h y).hom.app n s).val.val = s.val.val := by
   cases h
   rfl
 
@@ -45,10 +45,10 @@ lemma kanCosliceFiberDiagramIso_app_val {K Y : SSet.{u}} {a b : K ⟶ Y}
 使われ方：左右の指定 pinched 作用の同値条件を比較する。 -/
 lemma kanCosliceFiberPinchedLeftIso_naturality {X Y : SSet.{u}}
     (f : X ⟶ Y) (x y : X _⦋0⦌) :
-    KanSection.pointCosliceFiberMap f x y ≫
-      (KanSection.cosliceFiberPinchedLeftIso
+    SerrePositivity.InfinityCategories.pointCosliceFiberMap f x y ≫
+      (SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso
         (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)).hom =
-    (KanSection.cosliceFiberPinchedLeftIso x y).hom ≫ kanPinchedHomLeftMap f x y := by
+    (SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso x y).hom ≫ kanPinchedHomLeftMap f x y := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -56,13 +56,13 @@ lemma kanCosliceFiberPinchedLeftIso_naturality {X Y : SSet.{u}}
   apply SSet.opObjEquiv.injective
   apply PinchedHom.Simplex.ext
   apply SSet.opObjEquiv.injective
-  change KanSection.cosliceFiberSimplex n
-      ((KanSection.pointCosliceFiberMap f x y).app _ s) =
-    f.app (Opposite.op ⦋n + 1⦌) (KanSection.cosliceFiberSimplex n s)
-  rw [KanSection.pointCosliceFiberMap_eq_postcomp]
-  dsimp only [KanSection.cosliceFiberSimplex]
+  change SerrePositivity.InfinityCategories.cosliceFiberSimplex n
+      ((SerrePositivity.InfinityCategories.pointCosliceFiberMap f x y).app _ s) =
+    f.app (Opposite.op ⦋n + 1⦌) (SerrePositivity.InfinityCategories.cosliceFiberSimplex n s)
+  rw [SerrePositivity.InfinityCategories.pointCosliceFiberMap_eq_postcomp]
+  dsimp only [SerrePositivity.InfinityCategories.cosliceFiberSimplex]
   simp only [NatTrans.comp_app_apply, kanCosliceFiberDiagramIso_app_val]
-  change SSet.yonedaEquiv ((KanSection.leftPointStdSimplexIso n).inv ≫
+  change SSet.yonedaEquiv ((SerrePositivity.InfinityCategories.leftPointStdSimplexIso n).inv ≫
     (s.val.val ≫ f)) = _
   rw [← Category.assoc, SSet.yonedaEquiv_comp]
 

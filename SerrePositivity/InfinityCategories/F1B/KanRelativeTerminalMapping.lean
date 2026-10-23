@@ -20,7 +20,7 @@ open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F1B
 
-attribute [local instance] KanSection.vertexFiber_kanComplex_of_leftFibration
+attribute [local instance] SerrePositivity.InfinityCategories.vertexFiber_kanComplex_of_leftFibration
 
 /-- 概要：指定左 pinched 作用が同値なら同じ両端の右 pinched 作用も同値。
 方針：coslice fiber の同型の自然性で移し、区間模型を介する右模型の判定を使う。
@@ -30,14 +30,14 @@ lemma kanPinchedHomMap_equivalence_of_leftMap {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (x y : X _⦋0⦌)
     (h : IsQCatEquivalence (kanPinchedHomLeftMap f x y)) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap f x y) := by
-  apply (KanSection.pointCosliceFiberMap_equivalence_iff_pinchedHomMap f x y).1
-  apply (qCatEquivalenceOfIso (KanSection.cosliceFiberPinchedLeftIso
+  apply (SerrePositivity.InfinityCategories.pointCosliceFiberMap_equivalence_iff_pinchedHomMap f x y).1
+  apply (qCatEquivalenceOfIso (SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso
     (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y))).isQCatEquivalence.cancel_right
-  change IsQCatEquivalence (KanSection.pointCosliceFiberMap f x y ≫
-    (KanSection.cosliceFiberPinchedLeftIso
+  change IsQCatEquivalence (SerrePositivity.InfinityCategories.pointCosliceFiberMap f x y ≫
+    (SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso
       (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)).hom)
   rw [kanCosliceFiberPinchedLeftIso_naturality]
-  exact (qCatEquivalenceOfIso (KanSection.cosliceFiberPinchedLeftIso x y)).isQCatEquivalence.comp h
+  exact (qCatEquivalenceOfIso (SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso x y)).isQCatEquivalence.comp h
 
 /-- 概要：相対終対象へ入る全ての右 pinched 写像空間の作用はホモトピー同値。
 方針：相対終対象の定義を反転した左模型の同値へ移し、自然な模型比較で戻す。

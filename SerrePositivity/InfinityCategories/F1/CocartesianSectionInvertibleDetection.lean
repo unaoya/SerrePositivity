@@ -45,14 +45,14 @@ lemma isInvertibleEdge_cocartesianSection_iff_evaluate {A E B : SSet.{u}}
     IsInvertibleEdge e ↔ ∀ x : A _⦋0⦌,
       IsInvertibleEdge (e.map ((truncation 2).map (cocartesianSectionEvaluate p a x))) := by
   let : Quasicategory E := quasicategory_of_innerFibration p
-  let : Quasicategory (KanSection.relativeFunctorSpace p a) :=
+  let : Quasicategory (SerrePositivity.InfinityCategories.relativeFunctorSpace p a) :=
     inferInstanceAs (Quasicategory (relativeFunctorSpace p a))
   constructor
   · intro he x
     exact he.map _
   · intro he
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι
-      (KanSection.relativeFunctorSpace p a) (KanIsCocartesianSection p
+      (SerrePositivity.InfinityCategories.relativeFunctorSpace p a) (KanIsCocartesianSection p
         a)).reflects_isInvertibleEdge e
     apply (isInvertibleEdge_vertexFiber_iff ((ihom A).map p) (functorVertex a) _).mpr
     apply (isInvertibleEdge_internalHom_iff_evaluate _).mpr

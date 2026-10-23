@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 
 /-!

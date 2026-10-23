@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-23",
+  "branch": "refactor/r-lane",
+  "validation_status": "Static checks passed; final Lean build and all audits pending.",
+  "module_map": {
+    "SerrePositivity.InfinityCategories.F1.PullbackNerveFiber": "SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback",
+    "SerrePositivity.InfinityCategories.F1.ScaffoldUnderChain": "SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain",
+    "SerrePositivity.InfinityCategories.F1.PullbackFiber": "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso",
+    "SerrePositivity.InfinityCategories.F1.LeftFiberKan": "SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCocartesianCrossingComparison": "SerrePositivity.InfinityCategories.F1.CocartesianCrossingComparison",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberCoordinates": "SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberDiagramChange": "SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberPostcomposition": "SerrePositivity.InfinityCategories.F1.CosliceFiberPostcomposition",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberUniversal": "SerrePositivity.InfinityCategories.F1.CosliceFiberUniversal",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCosliceIntervalNaturality": "SerrePositivity.InfinityCategories.F1.CosliceIntervalNaturality",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionCoslicePinchedIso": "SerrePositivity.InfinityCategories.F1.CoslicePinchedIso",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionInnerAnodynePrismExtension": "SerrePositivity.InfinityCategories.F1.InnerAnodynePrismExtension",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionIntervalComparisonMono": "SerrePositivity.InfinityCategories.F1.IntervalComparisonMono",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionIntervalPrismHomotopy": "SerrePositivity.InfinityCategories.F1.IntervalPrismHomotopy",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftFiberKan": "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalEquivalence": "SerrePositivity.InfinityCategories.F1.LeftIntervalEquivalence",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalFatDiagram": "SerrePositivity.InfinityCategories.F1.LeftIntervalFatDiagram",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalFatHomotopy": "SerrePositivity.InfinityCategories.F1.LeftIntervalFatHomotopy",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalFatNaturality": "SerrePositivity.InfinityCategories.F1.LeftIntervalFatNaturality",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalHomotopySection": "SerrePositivity.InfinityCategories.F1.LeftIntervalHomotopySection",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionMappingCylinderGeneralComparison": "SerrePositivity.InfinityCategories.F1.MappingCylinderGeneralComparison",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionMappingCylinderIntervalEquivalence": "SerrePositivity.InfinityCategories.F1.MappingCylinderIntervalEquivalence",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionMappingCylinderQuasicategoryComparison": "SerrePositivity.InfinityCategories.F1.MappingCylinderQuasicategoryComparison",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionMappingSpaceIntervalComparison": "SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionPrismVertical": "SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativeEvaluation": "SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativeFunctor": "SerrePositivity.InfinityCategories.F1.RelativeFunctorSpace",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativeJoinCocartesianFibration": "SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativeJoinCrossingCocartesian": "SerrePositivity.InfinityCategories.F1.RelativeJoinCrossingCocartesian",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativeJoinExtensionEquivalence": "SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEquivalence",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionRelativePrecomposition": "SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices",
+    "SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber": "SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback",
+    "SerrePositivity.InfinityCategories.F1B.KanScaffoldUnderChain": "SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain",
+    "SerrePositivity.InfinityCategories.F1B.KanSectionMappingSpaceModelEquivalence": "SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence",
+    "SerrePositivity.InfinityCategories.F2.JoinRightRelativeRetraction": "SerrePositivity.InfinityCategories.F1.JoinDiagramRightRelativeRetraction",
+    "SerrePositivity.InfinityCategories.Stable.ConeDiagramReverse": "SerrePositivity.InfinityCategories.Core.ConeDiagramReverse",
+    "SerrePositivity.InfinityCategories.Stable.JoinAssociator": "SerrePositivity.InfinityCategories.Core.JoinAssociator",
+    "SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary": "SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary",
+    "SerrePositivity.InfinityCategories.Stable.JoinAssociatorFactors": "SerrePositivity.InfinityCategories.Core.JoinAssociatorFactors",
+    "SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle": "SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle",
+    "SerrePositivity.InfinityCategories.Stable.JoinAugmented": "SerrePositivity.InfinityCategories.Core.JoinAugmented",
+    "SerrePositivity.InfinityCategories.Stable.JoinCutCalculus": "SerrePositivity.InfinityCategories.Core.JoinCutCalculus",
+    "SerrePositivity.InfinityCategories.Stable.JoinReassociation": "SerrePositivity.InfinityCategories.Core.JoinReassociation",
+    "SerrePositivity.InfinityCategories.Stable.JoinReassociationNaturality": "SerrePositivity.InfinityCategories.Core.JoinReassociationNaturality",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverse": "SerrePositivity.InfinityCategories.Core.JoinReverse",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary": "SerrePositivity.InfinityCategories.Core.JoinReverseBoundary",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseCuts": "SerrePositivity.InfinityCategories.Core.JoinReverseCuts",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseEquiv": "SerrePositivity.InfinityCategories.Core.JoinReverseEquiv",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseFactors": "SerrePositivity.InfinityCategories.Core.JoinReverseFactors",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseIntervals": "SerrePositivity.InfinityCategories.Core.JoinReverseIntervals",
+    "SerrePositivity.InfinityCategories.Stable.JoinReverseNaturality": "SerrePositivity.InfinityCategories.Core.JoinReverseNaturality",
+    "SerrePositivity.InfinityCategories.Stable.SliceOpposite": "SerrePositivity.InfinityCategories.Core.SliceOpposite"
+  },
+  "symbol_map": {
+    "SerrePositivity.InfinityCategories.F2.exists_pre_fatJoinComparison_right_relative_retraction": "SerrePositivity.InfinityCategories.exists_pre_fatJoinComparison_right_relative_retraction",
+    "kanCocartesianUnderMap": "nerveUnderMap",
+    "kanCocartesianUnderMap_projection": "nerveUnderMap_projection",
+    "kanCocartesianUnderMap_id": "nerveUnderMap_id",
+    "kanCocartesianUnderMap_comp": "nerveUnderMap_comp",
+    "quillenCfBottomEndpoint_wrong": "quillenCfCollageTop_not_bottomEndpoint"
+  },
+  "extractions": [
+    {
+      "kind": "extract",
+      "source": "SerrePositivity/InfinityCategories/F1/LeftStrictTransport.lean",
+      "target": "SerrePositivity/InfinityCategories/Core/NerveUnderMap.lean",
+      "declarations": [
+        "nerveUnderMap",
+        "nerveUnderMap_projection",
+        "nerveUnderMap_id",
+        "nerveUnderMap_comp"
+      ],
+      "body_hash": "3461ac23a3a4d9711173a6636ec67b22304c30e5a0d8f243a794045ed77f44c6"
+    }
+  ],
+  "static_import_audit": {
+    "missing_imports": [],
+    "stale_namespace_references": [],
+    "stable_core_verbatim_modules": [
+      "SerrePositivity/InfinityCategories/Core/ConeDiagramReverse.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinAssociator.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinAssociatorBoundary.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinAssociatorFactors.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinAssociatorMiddle.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinAugmented.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinCutCalculus.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReassociation.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReassociationNaturality.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverse.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseBoundary.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseCuts.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseEquiv.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseFactors.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseIntervals.lean",
+      "SerrePositivity/InfinityCategories/Core/JoinReverseNaturality.lean",
+      "SerrePositivity/InfinityCategories/Core/SliceOpposite.lean"
+    ]
+  },
+  "closure_audit": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Core",
+      "dependencies": 365,
+      "forbidden": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B",
+      "dependencies": 1543,
+      "forbidden": []
+    }
+  ]
+}

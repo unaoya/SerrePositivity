@@ -42,15 +42,15 @@ lemma kanRightKanShapeToUnitCommaFiber_fiber {X Y : SSet.{u}}
       (kanRightKanShapeToUnitCommaFiber_projection G x) y ≫
         (kanUnitCommaFiberIntervalIso G x y).hom =
       (cofinalVertexFiberBaseChangeIso (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G y).hom ≫
-        KanSection.cosliceFiberToIntervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := by
+        SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := by
   apply intervalMappingUncurry_injective
   change intervalMappingUncurry (_ ≫ kanUnitCommaFiberToInterval G x y) = _
   rw [intervalMappingUncurry_precomp, kanUnitCommaFiberToInterval_uncurry,
     ← unitCommaUncurry_precomp]
   rw [← Category.assoc, vertexFiberMap_ι, Category.assoc,
     kanRightKanShapeToUnitCommaFiber_uncurry]
-  rw [KanSection.cosliceFiberToIntervalMappingSpace_uncurry]
-  unfold KanSection.cosliceFiberUncurry
+  rw [SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace_uncurry]
+  unfold SerrePositivity.InfinityCategories.cosliceFiberUncurry
   rw [cofinalVertexFiberBaseChangeIso_hom_ι]
 
 /-- 概要：局所添字の比較の各 fiber は quasicategory の同値。
@@ -67,7 +67,7 @@ lemma kanRightKanShapeToUnitCommaFiber_fiber_isQCatEquivalence
   rw [kanRightKanShapeToUnitCommaFiber_fiber]
   exact (qCatEquivalenceOfIso (cofinalVertexFiberBaseChangeIso
     (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G y)).isQCatEquivalence.comp
-      (KanSection.cosliceFiberToIntervalMappingSpace_isQCatEquivalence x _)
+      (SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace_isQCatEquivalence x _)
 
 /-- 概要：coslice による局所添字から固定始域の comma への比較は前合成同値。
 方針：両側の標的射影を left fibration とし、写像空間比較の同値性を各 fiber に適用する。

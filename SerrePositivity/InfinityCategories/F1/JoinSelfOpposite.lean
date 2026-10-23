@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
 
 /-!
 概要：反転した単体集合と元の単体集合の join の自己反転同型。

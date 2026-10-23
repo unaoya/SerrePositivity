@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.RightFibrationYoneda
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFunctorPostcomposition
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 

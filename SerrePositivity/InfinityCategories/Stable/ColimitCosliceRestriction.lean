@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.NestedCosliceIso
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
 
 /-! # 余極限余錐の下の coslice の制限
 

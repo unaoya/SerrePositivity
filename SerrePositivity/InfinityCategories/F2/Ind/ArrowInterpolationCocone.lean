@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCorner
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation
 
 /-!

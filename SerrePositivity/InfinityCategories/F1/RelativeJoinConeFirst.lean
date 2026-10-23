@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinConeCoordinates
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 
 /-!
 概要：relative join の右錐から、大きい終域の通常の join への射。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowSourceInitial
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.PullbackTransport
 public import SerrePositivity.InfinityCategories.F1B.RightFibrationInitialFiber
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.LeftScaffold
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementBaseChange
 
 /-!

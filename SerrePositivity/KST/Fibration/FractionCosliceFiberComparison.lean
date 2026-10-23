@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.FractionCosliceBaseChange
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 public import SerrePositivity.InfinityCategories.F1.PullbackTransport
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-! # 元の底上の全分数比較と、同じ固定分数評価との厳密な fiber 比較 -/
 
@@ -22,7 +22,7 @@ variable {X Q T : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌
 def fractionSourceFiberIso :
     fixedMarkedSpans X W x (k.app (Opposite.op ⦋0⦌) b) ≅
       vertexFiber (pullback.snd (markedSpanFamilyProjection X W x) k) b :=
-  markedSpanFamilyFiberIso _ _ _ _ ≪≫ (KanSection.vertexFiberPullbackIso _ _ _).symm
+  markedSpanFamilyFiberIso _ _ _ _ ≪≫ (SerrePositivity.InfinityCategories.vertexFiberPullbackIso _ _ _).symm
 
 /-- 同じ全分数比較が各 fiber に誘導する元の実写像。 -/
 def fractionCosliceFiberMap :
@@ -39,8 +39,8 @@ theorem fractionSourceFiberIso_ambient : (fractionSourceFiberIso W x k b).hom �
       pullback.fst (markedSpanFamilyProjection X W x) k =
         fixedMarkedSpanToFamily X W x (k.app (Opposite.op ⦋0⦌) b) := by
   rw [fractionSourceFiberIso, Iso.trans_hom, Iso.symm_hom, Category.assoc,
-    ← KanSection.vertexFiberPullbackIso_hom_ι,
-    ← Category.assoc (KanSection.vertexFiberPullbackIso _ _ _).inv,
+    ← SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι,
+    ← Category.assoc (SerrePositivity.InfinityCategories.vertexFiberPullbackIso _ _ _).inv,
     Iso.inv_hom_id, Category.id_comp]
   rfl
 

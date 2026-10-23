@@ -78,7 +78,7 @@ def weightedNerveCocartesianTransportUnit {C : Type u} [Category.{u} C]
     rw [Category.assoc, weightedNerveCocartesianUnitComponent_ι]
     let i : Over.mk (nerveMap (Under.forget d)) ⟶
         Over.mk (nerveMap (Under.forget c)) :=
-      Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f)
+      Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
     have hpre := kanCocartesianSectionsPre_ι (weightedNerveProjection F) i
     change kanCocartesianSectionsPre (weightedNerveProjection F) i ≫
         kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d)) =

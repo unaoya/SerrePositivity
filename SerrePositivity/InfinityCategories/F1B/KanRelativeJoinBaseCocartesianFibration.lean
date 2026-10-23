@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseCocartesianEdges
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseInnerFibration
-public import SerrePositivity.InfinityCategories.F1B.KanSectionRelativeJoinCocartesianFibration
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration
 
 /-!
 概要：cocartesian fibration の相対 join の底への射影も cocartesian fibration。
@@ -71,7 +71,7 @@ instance kanRelativeJoinBaseProjection_cocartesianFibration {K C : SSet.{u}}
         apply stdSimplex.obj₀Equiv.injective
         simpa only [Equiv.apply_symm_apply] using h
     rcases ht with ht | ht
-    · obtain ⟨y, hy⟩ := KanSection.relativeJoin_vertex_inl_of_projection_zero p (𝟙 C) x ht
+    · obtain ⟨y, hy⟩ := SerrePositivity.InfinityCategories.relativeJoin_vertex_inl_of_projection_zero p (𝟙 C) x ht
       have hv : (relativeJoinBaseProjection p (𝟙 C)).app (Opposite.op ⦋0⦌) x =
           p.app (Opposite.op ⦋0⦌) y := by
         rw [← hy]

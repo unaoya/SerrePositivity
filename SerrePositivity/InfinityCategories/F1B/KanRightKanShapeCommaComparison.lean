@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
 public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
-public import SerrePositivity.InfinityCategories.F1B.KanSectionLeftIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1.LeftIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
 
 /-!

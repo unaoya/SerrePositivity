@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Stable.Cocone
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 

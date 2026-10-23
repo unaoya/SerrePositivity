@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CoherentPrismCutCoordinates
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseCuts
+public import SerrePositivity.InfinityCategories.Core.JoinReverseCuts
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
 
 /-!

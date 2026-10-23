@@ -27,7 +27,7 @@ lemma kanEquivalenceLifting_kanCocartesianStrictTransportMap_of_thin
     F1B.KanEquivalenceLifting (kanCocartesianStrictTransportMap p f) := by
   let i : Over.mk (nerveMap (Under.forget d)) ⟶
       Over.mk (nerveMap (Under.forget c)) :=
-    Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f)
+    Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
   haveI : Mono i.left := kanCocartesianUnderMap_mono_of_thin f
   intro A B j hj he
   exact kanEquivalenceLifting_kanCocartesianSectionsPre p i j hj he

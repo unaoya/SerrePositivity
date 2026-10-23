@@ -24,7 +24,7 @@ theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.
       cocartesianSectionEvaluate p a v :=
     (Category.assoc _ _ _).trans
       (congrArg (fun m => kanCocartesianSectionsι p a ≫ m)
-        (KanSection.relativeFunctorEvaluate_ι p a v))
+        (SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι p a v))
   exact he.trans (congrArg (cocartesianSectionEvaluate p a) hv)
 
 
@@ -55,13 +55,13 @@ theorem strictTransportEvaluationPrism_one {I : Type u} [Category.{u} I] {E : SS
     (strictTransportUnderEdge f) 1
   rw [strictTransportUnderEdge_one] at he
   have ht := cocartesianSectionEvaluate_overPre p
-    (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+    (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
       Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)))
     (nerveVertex (Under.mk (𝟙 d)))
   change kanCocartesianStrictTransportMap p f ≫
       cocartesianSectionEvaluate p (nerveMap (Under.forget d)) (nerveVertex (Under.mk (𝟙 d))) =
     cocartesianSectionEvaluate p (nerveMap (Under.forget c))
-      ((kanCocartesianUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d)))) at ht
+      ((nerveUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d)))) at ht
   rw [kanCocartesianUnderMap_identity_vertex] at ht
   exact he.trans (ht.symm.trans (congrArg
     (fun m => kanCocartesianStrictTransportMap p f ≫ m)

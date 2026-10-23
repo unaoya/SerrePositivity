@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanJoinDiagonalSplit
 public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
 public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
 public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
 
 /-!

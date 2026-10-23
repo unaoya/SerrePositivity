@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.QCatPostcompositionPullback
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 
 /-!
 概要：元の後合成の fiber を、同じ coherent 比較で指定された対角 fiber と比較する。

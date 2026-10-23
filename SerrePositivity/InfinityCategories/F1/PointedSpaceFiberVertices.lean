@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.F1.CoherentEdgeEquiv
 

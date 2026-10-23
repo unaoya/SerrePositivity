@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CompositionCorrespondenceDiagonalPullback
 public import SerrePositivity.InfinityCategories.F1.VertexFiberIsPullbackIso
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 
 /-!
 概要：合成三角形の同じ対角 fiber を、指定外ホーンの延長 fiber と同定する。

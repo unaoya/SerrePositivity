@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitApexRawVertices
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：元の余極限三角形の初点 fiber に、元の全反転 Hom 係数を同値に写す。

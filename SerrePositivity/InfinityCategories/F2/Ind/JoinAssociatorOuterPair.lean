@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeCoordinates
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
 
 /-!
 概要：二重余錐の折り畳みは、最初と最後の因子を保持する。

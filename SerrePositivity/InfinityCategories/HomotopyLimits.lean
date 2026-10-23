@@ -1,5 +1,12 @@
 module
 
+/-!
+概要：coherent nerve によるホモトピー極限と Quillen 随伴の比較の入口。
+方針：weighted sections・写像空間・モデル圏の比較を既存モジュールの import でまとめる。
+規約：モデル圏の仮定は古典的な対象を ∞ 圏化する γ 層で用いる。
+使われ方：空間・スペクトラム・導来対象の極限と随伴を ∞ 圏へ接続する。
+-/
+
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Detection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ComparisonFiber
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSections

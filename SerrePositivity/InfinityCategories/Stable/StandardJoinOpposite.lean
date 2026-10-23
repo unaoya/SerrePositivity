@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 
 /-! # 辺と点の join の標準表示と反転

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PointSlicePostcomp
 public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationFiberCriterion
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 
 /-!
 概要：元の指定頂点の slice から、像の頂点の slice を元の始域へ引き戻した圏への比較。

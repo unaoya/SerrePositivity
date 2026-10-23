@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeVertexFiberLifting
-public import SerrePositivity.InfinityCategories.F1B.KanSectionCosliceFiberDiagramChange
+public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
 public import SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint
 
 /-!
@@ -27,7 +27,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 lemma kanCoslicePostcompFiberMap_trivialKanFibration_of_initialBoundary {E B : SSet.{u}}
     (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B)
     (ha : InitialBoundaryLifting p (SSet.yonedaEquiv a)) (y : E _⦋0⦌) :
-    TrivialKanFibration (KanSection.coslicePostcompFiberMap a p y) := by
+    TrivialKanFibration (SerrePositivity.InfinityCategories.coslicePostcompFiberMap a p y) := by
   have ht : TrivialKanFibration (cosliceEndpointMap a p) :=
     cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting a p ha
   have : TrivialKanFibration (pullback.lift (f := p) (g := sliceUnderProjection (a ≫ p))
@@ -43,10 +43,10 @@ lemma kanPinchedHomMap_equivalence_of_initialBoundary {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) (x y : E _⦋0⦌)
     (hx : InitialBoundaryLifting p x) : IsSimplicialHomotopyEquivalence (pinchedHomMap p x y) := by
   have ht : TrivialKanFibration
-      (KanSection.coslicePostcompFiberMap (SSet.yonedaEquiv.symm x) p y) :=
+      (SerrePositivity.InfinityCategories.coslicePostcompFiberMap (SSet.yonedaEquiv.symm x) p y) :=
     kanCoslicePostcompFiberMap_trivialKanFibration_of_initialBoundary _ p
       (by rw [Equiv.apply_symm_apply]; exact hx) y
-  have h := (KanSection.coslicePostcompFiberMap_equivalence_iff_pinchedHomMap
+  have h := (SerrePositivity.InfinityCategories.coslicePostcompFiberMap_equivalence_iff_pinchedHomMap
     (SSet.yonedaEquiv.symm x) p y).1 (isQCatEquivalence_of_trivialKanFibration _)
   have hx' : SSet.yonedaEquiv (SSet.yonedaEquiv.symm x) = x := SSet.yonedaEquiv.apply_symm_apply x
   rw [hx'] at h

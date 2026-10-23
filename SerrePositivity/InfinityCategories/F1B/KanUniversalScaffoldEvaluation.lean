@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldUnderChain
+public import SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
 
 /-!
@@ -18,7 +18,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：section の前合成の族の展開は始域での前合成に等しい。
 方針：相対前合成の包含後の式と uncurry の自然性を使う。
@@ -87,7 +87,7 @@ lemma kanUniversalScaffoldSimplex_naturality {C : Type u} [Category.{u} C] {E : 
       (scaffoldUnderChain ((SimplexCategory.toCat.map α).toFunctor ⋙ σ))) (𝟙 _) ≫
         kanCocartesianSectionsUncurry ((stdSimplex.map α ≫ τ) ≫
           kanCocartesianSectionsPre p (Over.homMk
-            (kanCocartesianUnderMap (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0))))) _ :
+            (nerveUnderMap (σ.map (homOfLE (Fin.zero_le (α.toOrderHom 0))))) _ :
               Over.mk (nerveMap (Under.forget (σ.obj (α.toOrderHom 0)))) ⟶
                 Over.mk (nerveMap (Under.forget (σ.obj 0))))) =
     stdSimplex.map α ≫ (lift (SSet.yonedaEquiv.symm (scaffoldUnderChain σ)) (𝟙 _) ≫

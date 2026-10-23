@@ -45,7 +45,7 @@ lemma cocartesianSectionEvaluate_overPre {E B : SSet.{u}} (p : E ⟶ B)
       cocartesianSectionEvaluate p b.hom (i.left.app (Opposite.op ⦋0⦌) x) := by
   unfold cocartesianSectionEvaluate
   rw [← Category.assoc, kanCocartesianSectionsPre_ι, Category.assoc,
-    ← Category.assoc (KanSection.relativeFunctorOverPre p i),
-    KanSection.relativeFunctorOverPre_ι, Category.assoc, evaluateFunctorAt_pre]
+    ← Category.assoc (SerrePositivity.InfinityCategories.relativeFunctorOverPre p i),
+    SerrePositivity.InfinityCategories.relativeFunctorOverPre_ι, Category.assoc, evaluateFunctorAt_pre]
 
 end SerrePositivity.InfinityCategories

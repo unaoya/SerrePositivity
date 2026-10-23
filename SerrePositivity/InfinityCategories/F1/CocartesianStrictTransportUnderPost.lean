@@ -34,12 +34,12 @@ lemma cocartesianStrictTransportUnderPost_square
     {C D : Type u} [Category.{u} C] [Category.{u} D]
     (k : D ⥤ C) {d e : D} (f : d ⟶ e) :
     cocartesianStrictTransportUnderPost k e ≫
-      (Over.homMk (kanCocartesianUnderMap (k.map f))
-        (kanCocartesianUnderMap_projection (k.map f)) :
+      (Over.homMk (nerveUnderMap (k.map f))
+        (nerveUnderMap_projection (k.map f)) :
         Over.mk (nerveMap (Under.forget (k.obj e))) ⟶
           Over.mk (nerveMap (Under.forget (k.obj d)))) =
     (Over.map (nerveMap k)).map
-      (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+      (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
         Over.mk (nerveMap (Under.forget e)) ⟶ Over.mk (nerveMap (Under.forget d))) ≫
         cocartesianStrictTransportUnderPost k d := by
   apply Over.OverMorphism.ext

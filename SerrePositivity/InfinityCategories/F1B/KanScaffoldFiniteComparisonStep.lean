@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanSectionMappingCylinderGeneralComparison
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderGeneralComparison
 public import SerrePositivity.InfinityCategories.F1B.KanScaffoldFiniteVerticalEdges
 
 /-!
@@ -51,7 +51,7 @@ lemma KanCocartesianScaffold.finiteComparison_step (n : ℕ) {E : SSet.{u}}
     rw [← hz1, Category.assoc, vertexFiberι_comp, SSet.comp_const]
   have h0 := hs.finiteZeroFiber_isPrecompositionEquivalence n h
   have h1 := (kanScaffoldFiniteOneFiberComparison_isPrecompositionEquivalence_iff n p F l h).mpr ht
-  have hu := KanSection.mappingCylinder_isPrecompositionEquivalence f q H g w hH hg
+  have hu := SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence f q H g w hH hg
     (kanScaffoldFiniteZeroFiberComparison n p F l h) hz0
     (kanScaffoldFiniteOneFiberComparison n p F l h) hz1 h0 h1
     (kanScaffoldFiniteScaffoldPrism_vertical_isCocartesian n p F l h hs.horizontal)

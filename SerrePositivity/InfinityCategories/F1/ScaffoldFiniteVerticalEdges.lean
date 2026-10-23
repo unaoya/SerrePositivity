@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdge
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteFiberComparison
 
@@ -55,14 +56,6 @@ lemma scaffoldFiniteScaffoldPrism_interval_projection (n : ℕ) {E : SSet.{u}}
   rw [← Category.assoc, scaffoldFiniteScaffoldPrism_projection n p F l h]
   simp only [Category.assoc, scaffoldFiniteCollapse_firstEdge, Category.comp_id]
 
-/-- 概要：prism の指定係数頂点を固定した垂直一単体。
-方針：標準区間の恒等一単体と係数頂点の定値一単体を組にして評価する。
-規約：辺の向きは時刻零から一。
-使われ方：Kerodon Theorem 5.2.4.1、各係数頂点に対する cocartesian 条件。 -/
-def prismVerticalSimplex {K E : SSet.{u}} (H : (Δ[1] : SSet.{u}) ⊗ K ⟶ E)
-    (x : K _⦋0⦌) : E _⦋1⦌ :=
-  H.app (Opposite.op ⦋1⦌)
-    (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), PinchedHom.constant x 1)
 
 /-- 概要：scaffold の最初の係数の prism の各垂直辺は区間への射に関して cocartesian。
 方針：垂直辺の底への像を最初の辺と同定し、left fibration と合成の定理を使う。

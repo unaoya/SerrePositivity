@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Core.NerveCone
 
 /-!
 概要：coslice 射影の fiber の全次数を端点と面の固定された単体として表示する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalOuterHornLift
 public import SerrePositivity.InfinityCategories.F1.KanEquivalenceLiftingFibration
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 public import Mathlib.CategoryTheory.LiftingProperties.Limits
 
 /-!

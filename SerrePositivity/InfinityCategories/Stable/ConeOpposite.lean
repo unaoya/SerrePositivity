@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SliceOpposite
+public import SerrePositivity.InfinityCategories.Core.SliceOpposite
 public import SerrePositivity.InfinityCategories.Stable.InitialOpposite
 public import SerrePositivity.InfinityCategories.Stable.Cocone
 public import SerrePositivity.InfinityCategories.Core.Limit

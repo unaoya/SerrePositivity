@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanSectionRelativePrecomposition
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
 public import SerrePositivity.InfinityCategories.F1.CartesianFibration
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 
@@ -19,7 +19,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：相対関手の頂点から実際の底上の関手を回収する。
 方針：内部 Hom の頂点と射の全単射の逆写像。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrowHomSpace
 public import SerrePositivity.InfinityCategories.F1.YonedaTargetBaseChange
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：第二変数を固定した twisted arrow 射影の fiber を、元の両端固定の写像空間と同定する。

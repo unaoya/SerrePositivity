@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CocartesianIntervalMappingCorePullback
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 
 /-!
 概要：一成分を固定した元の一次元 Hom の core を、同じ後合成の fiber と同定する。

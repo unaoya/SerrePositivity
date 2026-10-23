@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：指定 fiber の全ての点を同時に、coslice 全体上の底を保つ族へ延長する。

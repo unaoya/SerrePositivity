@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：区間の引き戻し全体への元の両端 fiber の包含と、亜群化後の同値性。
@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def intervalPullbackFiberInclusion {E B : SSet.{u}} (p : E ⟶ B)
     (b : (Δ[1] : SSet.{u}) ⟶ B) (i : Fin 2) :
     vertexFiber p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) ⟶ pullback p b :=
-  (KanSection.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm i)).inv ≫
+  (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm i)).inv ≫
     vertexFiberι (pullback.snd p b) (stdSimplex.obj₀Equiv.symm i)
 
 lemma intervalPullbackFiberInclusion_fst {E B : SSet.{u}} (p : E ⟶ B)
@@ -31,7 +31,7 @@ lemma intervalPullbackFiberInclusion_fst {E B : SSet.{u}} (p : E ⟶ B)
     intervalPullbackFiberInclusion p b i ≫ pullback.fst p b =
       vertexFiberι p (b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm i)) := by
   dsimp only [intervalPullbackFiberInclusion]
-  rw [Category.assoc, ← KanSection.vertexFiberPullbackIso_hom_ι, Iso.inv_hom_id_assoc]
+  rw [Category.assoc, ← SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι, Iso.inv_hom_id_assoc]
 
 lemma intervalPullbackFiberInclusion_snd {E B : SSet.{u}} (p : E ⟶ B)
     (b : (Δ[1] : SSet.{u}) ⟶ B) (i : Fin 2) :
@@ -45,7 +45,7 @@ lemma intervalPullbackFiberInclusion_zero_groupoidCompletion_isEquivalence
     [CartesianFibration (pullback.snd p b)] :
     IsQCatEquivalence (groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 0)) := by
   let e := groupoidCompletionEquivalenceOfIso
-    (KanSection.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm
+    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (initialFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
   exact h.ofFunctorIso (groupoidCompletionMapOf_compIso _ _)
@@ -55,7 +55,7 @@ lemma intervalPullbackFiberInclusion_one_groupoidCompletion_isEquivalence
     [CocartesianFibration (pullback.snd p b)] :
     IsQCatEquivalence (groupoidCompletionMapOf (intervalPullbackFiberInclusion p b 1)) := by
   let e := groupoidCompletionEquivalenceOfIso
-    (KanSection.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).symm
+    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso p b (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).symm
   have h := e.isQCatEquivalence.comp
     (finalFiberGroupoidCompletionEquivalence 1 (pullback.snd p b)).isQCatEquivalence
   exact h.ofFunctorIso (groupoidCompletionMapOf_compIso _ _)

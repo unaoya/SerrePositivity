@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 

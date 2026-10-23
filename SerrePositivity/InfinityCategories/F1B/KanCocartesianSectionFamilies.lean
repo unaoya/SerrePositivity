@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSections
-public import SerrePositivity.InfinityCategories.F1B.KanSectionRelativeEvaluation
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
 
 /-!
 概要：任意のパラメータを持つ cocartesian section の族を実際の直積上の図式と対応させる。
@@ -18,7 +18,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：関手の族をパラメータの一頂点に制限すると、その頂点の関手を得る。
 方針：単位からの射の閉構造の同値と uncurry の自然性を使う。

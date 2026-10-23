@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
 
 /-!
 概要：join の結合同型は右の二因子全体の包含を厳密に保つ。

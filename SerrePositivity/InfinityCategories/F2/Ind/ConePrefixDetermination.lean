@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ConePrefix
-public import SerrePositivity.InfinityCategories.Stable.JoinAugmented
+public import SerrePositivity.InfinityCategories.Core.JoinAugmented
 
 /-!
 概要：余錐の単体は、その切断を含む先頭区間への制限で決まる。

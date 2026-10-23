@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.KanSquarePullbackEquivalence
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 
 /-!
 概要：底も異なる二つの Kan fibration の同値な正方形を、同じ指定値の fiber の同値へ移す。

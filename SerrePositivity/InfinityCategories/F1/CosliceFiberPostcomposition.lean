@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.IntervalCosliceSource
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 

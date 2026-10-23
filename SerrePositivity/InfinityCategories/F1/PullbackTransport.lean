@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.EdgeTransport
 public import SerrePositivity.InfinityCategories.F1.LeftTransport
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!

@@ -17,7 +17,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：相対関手の頂点からの回収は底上の前合成と可換。
 方針：頂点を実際の射で表し、前合成の頂点の計算則を使う。

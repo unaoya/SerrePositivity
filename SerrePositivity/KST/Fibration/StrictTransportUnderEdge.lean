@@ -49,9 +49,9 @@ theorem strictTransportUnderEdge_projection {I : Type u} [Category.{u} I]
 /-- strict transport の前合成は、元の終点の恒等射を入力射へ送る。 -/
 theorem kanCocartesianUnderMap_identity_vertex {I : Type u} [Category.{u} I]
     {c d : I} (f : c ⟶ d) :
-    (kanCocartesianUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d))) =
+    (nerveUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d))) =
       nerveVertex (Under.mk f) := by
-  rw [kanCocartesianUnderMap, nerveVertex, nerveMap_app_mk₀]
+  rw [nerveUnderMap, nerveVertex, nerveMap_app_mk₀]
   change nerveVertex (Under.mk (f ≫ 𝟙 d)) = _
   rw [Category.comp_id]
 

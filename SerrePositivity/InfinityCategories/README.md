@@ -39,7 +39,7 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 微分は cochain 次数 +1、合成は通常順。HA と Kerodon の符号を比べる際はこの規約を参照する。
 
 [リファクタリング計画](../../formalization-plans/refactoring-infinity.md) に従い、
-移動した旧モジュールは互換シムとして残す。必要な補題が禁止 import 閉包にある場合は、
+移動した旧モジュールを削除し、下流の import と公開名を直接置換する。必要な補題が禁止 import 閉包にある場合は、
 コピーせずコーディネータ経由で上流の分割を依頼する。
 重複候補は `python3 scripts/check_duplicates.py --baseline
 formalization-plans/archive/refactor-duplicates-2026-10-23.md` で比較できる。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackFiberIso
 public import SerrePositivity.InfinityCategories.F2.FiberwiseIntervalPullbackLifting
 public import SerrePositivity.InfinityCategories.F2.ContinuousKanFilling
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 
 /-!

@@ -38,7 +38,7 @@ lemma cocartesianBaseChangeAssociativityComponent_naturality {a b : A} (f : a �
       kanCocartesianStrictTransportMap (pullback.fst (nerveMap (l ⋙ k)) p) f := by
   let u : Over.mk (nerveMap (Under.forget b)) ⟶
       Over.mk (nerveMap (Under.forget a)) :=
-    Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f)
+    Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
   have h₁ := cocartesianSectionsPullbackIso_pre
     (cocartesianBaseChangeComposite_isPullback p l k) u
   have h₂ := cocartesianSectionsPullbackIso_pre

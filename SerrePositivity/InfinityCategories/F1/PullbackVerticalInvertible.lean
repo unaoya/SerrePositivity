@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
 /-!

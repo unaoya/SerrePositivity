@@ -45,15 +45,15 @@ theorem sectionPostToLeftFibration_overPre {a b : Over B} (i : a ⟶ b) :
     sectionPostToLeftFibration p q f hf b.hom ≫ kanCocartesianSectionsPre q i =
       kanCocartesianSectionsPre p i ≫ sectionPostToLeftFibration p q f hf a.hom := by
   apply (cancel_mono (kanCocartesianSectionsι q a.hom)).mp
-  have he : relativeFunctorPost p q f hf b.hom ≫ KanSection.relativeFunctorOverPre q i =
-      KanSection.relativeFunctorOverPre p i ≫ relativeFunctorPost p q f hf a.hom :=
+  have he : relativeFunctorPost p q f hf b.hom ≫ SerrePositivity.InfinityCategories.relativeFunctorOverPre q i =
+      SerrePositivity.InfinityCategories.relativeFunctorOverPre p i ≫ relativeFunctorPost p q f hf a.hom :=
     relativeFunctorPost_overPre p q f hf i
   rw [Category.assoc, kanCocartesianSectionsPre_ι, ← Category.assoc,
     sectionPostToLeftFibration_ι, Category.assoc]
   have hr : (kanCocartesianSectionsPre p i ≫ sectionPostToLeftFibration p q f hf a.hom) ≫
       kanCocartesianSectionsι q a.hom =
       kanCocartesianSectionsι p b.hom ≫
-        (KanSection.relativeFunctorOverPre p i ≫ relativeFunctorPost p q f hf a.hom) :=
+        (SerrePositivity.InfinityCategories.relativeFunctorOverPre p i ≫ relativeFunctorPost p q f hf a.hom) :=
     (Category.assoc _ _ _).trans
       ((congrArg (fun m => kanCocartesianSectionsPre p i ≫ m)
         (sectionPostToLeftFibration_ι p q f hf a.hom)).trans

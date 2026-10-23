@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorFiberHom
 public import SerrePositivity.InfinityCategories.F1.CoherentHomEnrichedNaturality
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
 
 /-!
 概要：固定した底の頂点での fiber の評価を、豊穣関手と 𝒮 値の coherent な関手にする。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningSelectedLift
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFunctorEdge
 public import SerrePositivity.InfinityCategories.F1.FunctorPrismFiber
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.EdgeTransport
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 

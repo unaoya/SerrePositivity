@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.AugmentedUniverseReverse
 public import SerrePositivity.InfinityCategories.Stable.UniverseJoin
-public import SerrePositivity.InfinityCategories.Stable.JoinReverse
+public import SerrePositivity.InfinityCategories.Core.JoinReverse
 
 /-!
 概要：join の反転と宇宙持ち上げの比較を全単体の射へ束ねる。

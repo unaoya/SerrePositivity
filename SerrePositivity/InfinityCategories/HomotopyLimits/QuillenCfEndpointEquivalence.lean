@@ -20,7 +20,7 @@ variable {D : Type v} [Category.{u} D] [SimplicialCategory D]
   [HomotopicalAlgebra.ModelCategory C] [HomotopicalAlgebra.ModelCategory D]
   (R : EnrichedFunctor SSet.{u} D C)
 /-- 反対の段の元の対象は指定端点の部分圏に属さない。 -/
-lemma quillenCfBottomEndpoint_wrong (X : D)
+lemma quillenCfCollageTop_not_bottomEndpoint (X : D)
     (hX : HomotopicalAlgebra.IsCofibrant X ∧ HomotopicalAlgebra.IsFibrant X) :
     ¬ quillenCfEndpointObjects R 0 ⟨.inr X, hX⟩ := by
   intro h
@@ -42,20 +42,20 @@ def quillenCfBottomFromEndpoint :
     rcases X with ⟨⟨X, hX⟩, hS⟩
     rcases X with X | X
     · exact ⟨X, hX⟩
-    · exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
+    · exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
   map X Y := by
     rcases X with ⟨⟨X, hX⟩, hS⟩
     rcases Y with ⟨⟨Y, hY⟩, hT⟩
     rcases X with X | X <;> rcases Y with Y | Y
     all_goals first
-      | exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
-      | exact False.elim (quillenCfBottomEndpoint_wrong R Y hY hT)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R Y hY hT)
       | exact 𝟙 _
   map_id X := by
     rcases X with ⟨⟨X, hX⟩, hS⟩
     rcases X with X | X
     all_goals first
-      | exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
       | exact Category.comp_id _
   map_comp X Y Z := by
     rcases X with ⟨⟨X, hX⟩, hS⟩
@@ -63,9 +63,9 @@ def quillenCfBottomFromEndpoint :
     rcases Z with ⟨⟨Z, hZ⟩, hU⟩
     rcases X with X | X <;> rcases Y with Y | Y <;> rcases Z with Z | Z
     all_goals first
-      | exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
-      | exact False.elim (quillenCfBottomEndpoint_wrong R Y hY hT)
-      | exact False.elim (quillenCfBottomEndpoint_wrong R Z hZ hU)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R Y hY hT)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R Z hZ hU)
       | (simp only [Category.comp_id, tensorHom_id, id_whiskerRight, Category.id_comp]; rfl)
 
 /-- 元の cf 対象圏から端点部分圏への往復は恒等豊穣関手。 -/
@@ -86,14 +86,14 @@ lemma quillenCfBottomFromToEndpoint :
     rintro ⟨⟨X, hX⟩, hS⟩
     rcases X with X | X
     all_goals first
-      | exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
       | rfl
   case h_map =>
     rintro ⟨⟨X, hX⟩, hS⟩ ⟨⟨Y, hY⟩, hT⟩
     rcases X with X | X <;> rcases Y with Y | Y
     all_goals first
-      | exact False.elim (quillenCfBottomEndpoint_wrong R X hX hS)
-      | exact False.elim (quillenCfBottomEndpoint_wrong R Y hY hT)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R X hX hS)
+      | exact False.elim (quillenCfCollageTop_not_bottomEndpoint R Y hY hT)
       | (simp [quillenCfBottomToEndpoint, quillenCfBottomFromEndpoint,
         EnrichedFunctor.comp, quillenCfCollageBottom]; rfl)
 

@@ -32,7 +32,7 @@ def cocartesianStrictTransportEnrichedDiagram (C : Type u) [Category.{u} C] :
         kanCocartesianStrictTransportMap q.val.hom f
     rw [cocartesianSectionsPostHom, uncurry_curry, cocartesianSectionsPostHom, uncurry_curry]
     exact (cocartesianSectionsAction_overPre
-      (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+      (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
         Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)))
       p.val q.val).symm
   map_id c p := kanCocartesianStrictTransportMap_id p.val.hom c

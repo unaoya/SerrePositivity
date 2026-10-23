@@ -25,7 +25,7 @@ theorem leftCocartesianStrictTransportEvaluation_eq (i : I) :
     (leftStrictTransportEvaluate_ι p i)
   have hr := congrArg
     (fun m => kanCocartesianSectionsι p (nerveMap (Under.forget i)) ≫ m)
-    (KanSection.relativeFunctorEvaluate_ι p (nerveMap (Under.forget i))
+    (SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι p (nerveMap (Under.forget i))
       ((nerveEquiv (C := Under i)).symm (Under.mk (𝟙 i))))
   rw [Category.assoc]
   exact hl.trans hr.symm

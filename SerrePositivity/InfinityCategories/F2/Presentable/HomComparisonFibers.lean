@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberReflection
 
 /-!

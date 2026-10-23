@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
 
 /-! # Join の結合同型と後二因子の包含
 

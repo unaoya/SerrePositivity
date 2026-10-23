@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
-public import SerrePositivity.InfinityCategories.F1B.KanSectionMappingSpaceModelEquivalence
+public import SerrePositivity.InfinityCategories.F1.RightIntervalEquivalence
 
 /-!
 # 全パラメータの区間族の射の一致による元の pinched 族の弱同値性

@@ -29,7 +29,7 @@ instance kanRightKanShapeToUnitCommaFiber_mono {X Y : SSet.{u}}
   intro A f g h
   apply pullback.hom_ext
   · apply sliceUnderUncurry_injective
-    apply KanSection.leftMappingSpacePrism_hom_ext
+    apply SerrePositivity.InfinityCategories.leftMappingSpacePrism_hom_ext
     · have hh := congrArg (fun z ↦ unitCommaUncurry (z ≫ vertexFiberι (unitCommaSource G) x)) h
       simp only [Category.assoc] at hh
       rw [kanRightKanShapeToUnitCommaFiber_uncurry,

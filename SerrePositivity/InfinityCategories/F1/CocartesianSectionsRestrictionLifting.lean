@@ -37,7 +37,7 @@ lemma kanEquivalenceLifting_kanCocartesianSectionsPre
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     {a b : Over B} (i : a ⟶ b) [Mono i.left] :
     F1B.KanEquivalenceLifting (kanCocartesianSectionsPre p i) := by
-  let : Quasicategory (KanSection.relativeFunctorSpace p b.hom) :=
+  let : Quasicategory (SerrePositivity.InfinityCategories.relativeFunctorSpace p b.hom) :=
     inferInstanceAs (Quasicategory (relativeFunctorSpace p b.hom))
   intro K L j hj he
   exact kanEquivalenceLifting_fullRestriction

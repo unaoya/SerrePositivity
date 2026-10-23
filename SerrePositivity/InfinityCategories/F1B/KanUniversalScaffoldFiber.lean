@@ -19,7 +19,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：定値射列の under への標準持ち上げは恒等射に定値。
 方針：定値関手の全ての射が恒等射であることを計算する。

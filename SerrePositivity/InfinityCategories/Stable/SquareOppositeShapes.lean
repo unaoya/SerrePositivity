@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite
 public import SerrePositivity.InfinityCategories.Stable.GridOpposite
-public import SerrePositivity.InfinityCategories.Stable.ConeDiagramReverse
+public import SerrePositivity.InfinityCategories.Core.ConeDiagramReverse
 
 /-! # 反転した四角形の span と cospan
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
 public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 # 実屋根 corner の元の Over 次数による正規化
@@ -65,12 +65,12 @@ lemma roofCornerTerminal_isTerminal : IsTerminalVertex (roofCornerTerminal A Y q
 def roofCornerTerminalFiberIso :
     vertexFiber (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≅
       vertexFiber (roofTargetProjection A Y q) (nerveVertex (roofTargetDegree A Y q b)) :=
-  KanSection.vertexFiberNervePullbackIso (roofTargetProjection A Y q)
+  SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso (roofTargetProjection A Y q)
     (Over.forget (roofTargetDegree A Y q b)) (Over.mk (𝟙 (roofTargetDegree A Y q b)))
 
 lemma roofCornerTerminalFiberIso_source : (roofCornerTerminalFiberIso A Y q b).hom ≫
     vertexFiberι (roofTargetProjection A Y q) (nerveVertex (roofTargetDegree A Y q b)) =
       vertexFiberι (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≫
-        pullback.fst _ _ := KanSection.vertexFiberNervePullbackIso_hom_ι _ _ _
+        pullback.fst _ _ := SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso_hom_ι _ _ _
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

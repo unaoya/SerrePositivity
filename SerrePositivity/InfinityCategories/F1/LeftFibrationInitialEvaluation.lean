@@ -20,7 +20,7 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- left fibration 上では、cocartesian 切断の包含は相対 Hom 空間全体との同型。 -/
 lemma kanCocartesianSectionsι_isIso_of_leftFibration {A E B : SSet.{u}}

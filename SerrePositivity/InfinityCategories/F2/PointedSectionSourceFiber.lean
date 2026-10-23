@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CoherentFiberPointedSourceIso
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F2.RelativeCospanSectionFibrations
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
 public import SerrePositivity.InfinityCategories.F1.BaseChange
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementBaseChange
 
 /-!
@@ -18,7 +18,7 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
+open SerrePositivity.InfinityCategories
 
 /-- 概要：係数値の定値包含は通常の関手による底変換と可換。
 方針：定値射列の後合成が像の対象の定値射列になることを関手の恒等則で示す。

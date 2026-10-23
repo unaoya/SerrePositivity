@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.NativePointedConeSections
 public import SerrePositivity.InfinityCategories.F2.CoherentCospanPointedConeLift
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberTransport
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1.RelativePointFunctorIso
 
 /-!

@@ -431,3 +431,27 @@ public import SerrePositivity.InfinityCategories.Core.TerminalVertexLifting
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
+public import SerrePositivity.InfinityCategories.Core.ConeDiagramReverse
+public import SerrePositivity.InfinityCategories.Core.Fibrations
+public import SerrePositivity.InfinityCategories.Core.JoinAssociator
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorFactors
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
+public import SerrePositivity.InfinityCategories.Core.JoinAugmented
+public import SerrePositivity.InfinityCategories.Core.JoinCutCalculus
+public import SerrePositivity.InfinityCategories.Core.JoinReassociation
+public import SerrePositivity.InfinityCategories.Core.JoinReassociationNaturality
+public import SerrePositivity.InfinityCategories.Core.JoinReverse
+public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinReverseCuts
+public import SerrePositivity.InfinityCategories.Core.JoinReverseEquiv
+public import SerrePositivity.InfinityCategories.Core.JoinReverseFactors
+public import SerrePositivity.InfinityCategories.Core.JoinReverseIntervals
+public import SerrePositivity.InfinityCategories.Core.JoinReverseNaturality
+public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
+public import SerrePositivity.InfinityCategories.Core.MappingSpace
+public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
+public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
+public import SerrePositivity.InfinityCategories.Core.SliceOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
+public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback

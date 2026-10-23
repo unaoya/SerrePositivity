@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TransportComposition
 public import SerrePositivity.InfinityCategories.F1.TransportIdentity
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 
 /-!
 概要：可逆な底の辺に沿う left fibration の transport は同値。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransportSquare
 public import SerrePositivity.InfinityCategories.F1.IntervalMappingPostcompositionVertices
-public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：底の頂点表示を変更しても、同じ可換正方形の対角輸送の自然性を保つ。

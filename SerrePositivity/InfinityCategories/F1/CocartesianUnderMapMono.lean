@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 薄い底の元の undercategory の反変な nerve 射は、全次数で単射。 -/
 lemma kanCocartesianUnderMap_mono_of_thin
     {C : Type u} [Category.{u} C] [Quiver.IsThin C] {c d : C} (f : c ⟶ d) :
-    Mono (kanCocartesianUnderMap f) := by
+    Mono (nerveUnderMap f) := by
   rw [NatTrans.mono_iff_mono_app]
   intro n
   rw [mono_iff_injective]

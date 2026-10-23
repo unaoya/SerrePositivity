@@ -26,7 +26,7 @@ def cocartesianStrictTransportInclusion {C : Type u} [Category.{u} C]
   app c := kanCocartesianSectionsι q (nerveMap (Under.forget c))
   naturality c d f := by
     let i : Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)) :=
-      Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f)
+      Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
     exact kanCocartesianSectionsPre_ι q i
 
 /-- 包含を strict な変換空間で後合成すると、同じ成分の内部 Hom の包含となる。 -/

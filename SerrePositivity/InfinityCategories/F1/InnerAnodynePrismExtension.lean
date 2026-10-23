@@ -1,8 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.CartesianEdge
+
 public import SerrePositivity.InfinityCategories.F1.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.InnerAnodyneVertices
-public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteVerticalEdges
+public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
 

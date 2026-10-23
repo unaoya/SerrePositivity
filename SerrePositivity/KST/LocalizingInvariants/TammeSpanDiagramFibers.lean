@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseChange
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
 概要：任意の底図式上の span 族の実 fiber を元の両端固定 span と同定する。
@@ -26,7 +26,7 @@ def tammeSpanDiagramFiberIso (x : (laxCategory p q).obj _⦋0⦌)
         (f.app (Opposite.op ⦋0⦌) b) ≅
       vertexFiber (pullback.snd
         (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x) f) b :=
-  markedSpanFamilyFiberIso _ _ _ _ ≪≫ (KanSection.vertexFiberPullbackIso _ _ _).symm
+  markedSpanFamilyFiberIso _ _ _ _ ≪≫ (SerrePositivity.InfinityCategories.vertexFiberPullbackIso _ _ _).symm
 
 lemma tammeSpanDiagramFiberIso_hom_inclusion (x : (laxCategory p q).obj _⦋0⦌)
     {B : SSet.{u}} (f : B ⟶ (laxCategory p q).obj) (b : B _⦋0⦌) :
@@ -41,7 +41,7 @@ lemma tammeSpanDiagramFiberIso_hom_inclusion (x : (laxCategory p q).obj _⦋0⦌
           (markedSpanFamilyProjection (laxCategory p q).obj (tammeLocalizingEdges p q) x)
           (f.app (Opposite.op ⦋0⦌) b) := by
   dsimp only [tammeSpanDiagramFiberIso, Iso.trans_hom, Iso.symm_hom]
-  rw [← KanSection.vertexFiberPullbackIso_hom_ι]
+  rw [← SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι]
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
 
 end SerrePositivity.KST.LocalizingInvariants

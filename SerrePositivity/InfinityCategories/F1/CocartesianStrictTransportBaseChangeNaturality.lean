@@ -31,10 +31,10 @@ lemma cocartesianStrictTransportBaseChangeComponent_naturality {d e : D} (f : d 
     (nerveMap (Under.forget d) ≫ nerveMap k) rfl
   have h : kanCocartesianStrictTransportMap (pullback.fst (nerveMap k) p) f ≫ (I e).hom =
       (I d).hom ≫ kanCocartesianSectionsPre p ((Over.map (nerveMap k)).map
-        (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+        (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
           Over.mk (nerveMap (Under.forget e)) ⟶ Over.mk (nerveMap (Under.forget d)))) :=
     cocartesianSectionsPullbackIso_pre (IsPullback.of_hasPullback (nerveMap k) p).flip
-      (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+      (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
         Over.mk (nerveMap (Under.forget e)) ⟶ Over.mk (nerveMap (Under.forget d)))
   apply (cancel_mono (I e).hom).mp
   rw [Category.assoc, cocartesianStrictTransportBaseChangeComponent_iso,

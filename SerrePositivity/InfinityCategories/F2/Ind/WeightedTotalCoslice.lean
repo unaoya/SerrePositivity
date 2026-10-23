@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationTotalAssembly
 public import SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration
-public import SerrePositivity.InfinityCategories.F1.LeftFiberKan
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberKan
 
 /-!
 概要：元の全空間比較の、元の指定頂点の下の coslice 引き戻し。

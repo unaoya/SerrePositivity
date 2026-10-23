@@ -45,10 +45,10 @@ lemma roofTargetFiberPinchedIso_slice (n : I) :
   dsimp only [roofTargetFiberPinchedIso, Iso.trans_hom, Iso.symm_hom, pinchedFamilySlice]
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
   rw [roofSliceFiberPointTransport_ι (roofTargetPoint q (nerveVertex Y))]
-  have h₂ := KanSection.vertexFiberTransport_ι
+  have h₂ := SerrePositivity.InfinityCategories.vertexFiberTransport_ι
     (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
     (roofTargetFrameVertex A q n)
-  have h₁ := KanSection.vertexFiberPullbackIso_hom_ι
+  have h₁ := SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι
     (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
     (nerveMap A ≫ q) (nerveVertex n)
   simp only [eqToIso.hom]

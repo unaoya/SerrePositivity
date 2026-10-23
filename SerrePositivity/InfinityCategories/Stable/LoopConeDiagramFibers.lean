@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
 public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberLeftFibration
 public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberComparison
 /-!
 概要：実 loop 錐の comma 比較を図式固定 fiber へ制限する。

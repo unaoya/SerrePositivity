@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
 public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 public import SerrePositivity.InfinityCategories.F1.TransportSimplexFirstVertex
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-! # 元の全 W 分数 span の単体圏上の厳密 Kan 図式と両端固定の値の比較 -/
 
@@ -45,7 +45,7 @@ def weakSpanSimplexFiberIso (c : TransportSimplexCategory B.obj) :
         ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c)) ≅
       vertexFiber (weakSpanSimplexProjection i x) (nerveVertex c) :=
   markedSpanFamilyFiberIso _ _ _ _ ≪≫
-    (KanSection.vertexFiberPullbackIso _ _ _).symm
+    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso _ _ _).symm
 
 /-- 同じ恒等射評価と fiber 同型で、各図式値を元の固定分数の厳密 Kan 模型へ送る。 -/
 def weakSpanKanValueComparison (c : TransportSimplexCategory B.obj) :

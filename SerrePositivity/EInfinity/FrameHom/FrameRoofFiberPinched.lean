@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofTarget
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
 
 /-!
@@ -33,7 +33,7 @@ def roofTargetFiberPinchedIso (n : I) :
     vertexFiber (roofTargetProjection A Y q) (nerveVertex n) ≅
       pinchedHom (q.app (op ⦋0⦌) (nerveVertex (A.obj n)))
         (q.app (op ⦋0⦌) (nerveVertex Y)) :=
-  KanSection.vertexFiberPullbackIso
+  SerrePositivity.InfinityCategories.vertexFiberPullbackIso
     (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
     (nerveMap A ≫ q) (nerveVertex n) ≪≫
   eqToIso (congrArg (vertexFiber (sliceOverProjection

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.StrictTransportEvaluationPrism
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldPullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
 
 /-! # 引き戻した strict section の元の同じ fiber への評価 -/
@@ -22,7 +22,7 @@ def pullbackStrictEvaluationAt {I : Type u} [Category.{u} I] {F B : SSet.{u}}
     (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b) :
     kanCocartesianStrictTransport (pullback.snd q k) c ⟶ vertexFiber q b :=
   kanCocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
-    (KanSection.vertexFiberPullbackIso q k (nerveVertex c)).hom ≫
+    (SerrePositivity.InfinityCategories.vertexFiberPullbackIso q k (nerveVertex c)).hom ≫
       eqToHom (congrArg (vertexFiber q) hc)
 
 /-- 元の fiber へ含めると、同じ評価の後の元の第一射影そのもの。 -/
@@ -33,8 +33,8 @@ theorem pullbackStrictEvaluationAt_ι {I : Type u} [Category.{u} I] {F B : SSet.
       kanCocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
         vertexFiberι (pullback.snd q k) (nerveVertex c) ≫ pullback.fst q k := by
   unfold pullbackStrictEvaluationAt
-  rw [Category.assoc, Category.assoc, KanSection.vertexFiberTransport_ι q hc,
-    KanSection.vertexFiberPullbackIso_hom_ι]
+  rw [Category.assoc, Category.assoc, SerrePositivity.InfinityCategories.vertexFiberTransport_ι q hc,
+    SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι]
 
 /-- 引き戻し射影が cocartesian のとき、元の同じ fiber への評価自体は局所化同型。 -/
 theorem pullbackStrictEvaluationAt_localized_isIso

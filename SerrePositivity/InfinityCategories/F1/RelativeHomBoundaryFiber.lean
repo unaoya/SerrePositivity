@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.RelativeBoundaryFamilySpace
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1.PullbackFiber
+public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 
 /-!
 概要：相対内部 Hom の fiber を底と境界を固定した相対関手空間に同定する。

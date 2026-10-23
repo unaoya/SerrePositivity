@@ -1,7 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
+
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
-public import SerrePositivity.InfinityCategories.F1B.KanSectionRelativeEvaluation
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEvaluation
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
 /-!
@@ -19,42 +21,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-open KanSection
-
-/-- 概要：底の射から undercategory の nerve の反変な射を作る。
-方針：Under.map の nerve を取る。
-規約：f:c→d に対し nerve(d/C) から nerve(c/C) へ写す。
-使われ方：Kerodon §5.3.1、strict transport の共変な射の前合成の始域。 -/
-def kanCocartesianUnderMap {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
-    nerve (Under d) ⟶ nerve (Under c) := nerveMap (Under.map f)
-
-/-- 概要：undercategory の nerve の射は底 C の nerve への射影を保つ。
-方針：under の射の標的を忘れる関手の定義を計算する。
-規約：底の図式の整合性は厳密な等式。
-使われ方：Kerodon §5.3.1、strict transport の相対関手空間の制限。 -/
-lemma kanCocartesianUnderMap_projection {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
-    kanCocartesianUnderMap f ≫ nerveMap (Under.forget c) = nerveMap (Under.forget d) := rfl
-
-/-- 概要：undercategory の nerve の反変な射は恒等射を保つ。
-方針：Under.map の恒等則を nerve に写す。
-規約：自然同型ではなく射の等式を使う。
-使われ方：Kerodon §5.3.1、strict transport の単位則。 -/
-lemma kanCocartesianUnderMap_id {C : Type u} [Category.{u} C] (c : C) :
-    kanCocartesianUnderMap (𝟙 c) = 𝟙 (nerve (Under c)) := by
-  unfold kanCocartesianUnderMap
-  rw [Under.mapId_eq]
-  rfl
-
-/-- 概要：undercategory の nerve の射は合成を逆順に保つ。
-方針：Under.map の合成の等式を nerve に写す。
-規約：f の後に g を合成する。
-使われ方：Kerodon §5.3.1、strict transport の合成則。 -/
-lemma kanCocartesianUnderMap_comp {C : Type u} [Category.{u} C] {c d e : C}
-    (f : c ⟶ d) (g : d ⟶ e) :
-    kanCocartesianUnderMap (f ≫ g) = kanCocartesianUnderMap g ≫ kanCocartesianUnderMap f := by
-  unfold kanCocartesianUnderMap
-  rw [Under.mapComp_eq]
-  rfl
+open SerrePositivity.InfinityCategories
 
 /-- 概要：strict transport の対象 c での値は c/C 上の cocartesian section の ∞ 圏。
 方針：under の忘却関手の nerve 上の全部分相対関手空間を取る。
@@ -72,7 +39,7 @@ def kanCocartesianStrictTransportMap {C : Type u} [Category.{u} C] {E : SSet.{u}
     (p : E ⟶ nerve C) {c d : C} (f : c ⟶ d) :
     kanCocartesianStrictTransport p c ⟶ kanCocartesianStrictTransport p d :=
   kanCocartesianSectionsPre p
-    (Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f) :
+    (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
       Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)))
 
 /-- 概要：strict transport の射は恒等射を保つ。
@@ -81,11 +48,11 @@ def kanCocartesianStrictTransportMap {C : Type u} [Category.{u} C] {E : SSet.{u}
 使われ方：通常の関手への束縛。 -/
 lemma kanCocartesianStrictTransportMap_id {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) (c : C) : kanCocartesianStrictTransportMap p (𝟙 c) = 𝟙 _ := by
-  have hi : (Over.homMk (kanCocartesianUnderMap (𝟙 c))
-      (kanCocartesianUnderMap_projection (𝟙 c)) :
+  have hi : (Over.homMk (nerveUnderMap (𝟙 c))
+      (nerveUnderMap_projection (𝟙 c)) :
       Over.mk (nerveMap (Under.forget c)) ⟶ Over.mk (nerveMap (Under.forget c))) = 𝟙 _ := by
     apply Over.OverMorphism.ext
-    exact kanCocartesianUnderMap_id c
+    exact nerveUnderMap_id c
   unfold kanCocartesianStrictTransportMap
   rw [hi, kanCocartesianSectionsPre_id]
   rfl
@@ -99,14 +66,14 @@ lemma kanCocartesianStrictTransportMap_comp {C : Type u} [Category.{u} C] {E : S
     kanCocartesianStrictTransportMap p (f ≫ g) =
       kanCocartesianStrictTransportMap p f ≫ kanCocartesianStrictTransportMap p g := by
   let i : Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)) :=
-    Over.homMk (kanCocartesianUnderMap f) (kanCocartesianUnderMap_projection f)
+    Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
   let j : Over.mk (nerveMap (Under.forget e)) ⟶ Over.mk (nerveMap (Under.forget d)) :=
-    Over.homMk (kanCocartesianUnderMap g) (kanCocartesianUnderMap_projection g)
-  have hi : (Over.homMk (kanCocartesianUnderMap (f ≫ g))
-      (kanCocartesianUnderMap_projection (f ≫ g)) :
+    Over.homMk (nerveUnderMap g) (nerveUnderMap_projection g)
+  have hi : (Over.homMk (nerveUnderMap (f ≫ g))
+      (nerveUnderMap_projection (f ≫ g)) :
       Over.mk (nerveMap (Under.forget e)) ⟶ Over.mk (nerveMap (Under.forget c))) = j ≫ i := by
     apply Over.OverMorphism.ext
-    exact kanCocartesianUnderMap_comp f g
+    exact nerveUnderMap_comp f g
   change kanCocartesianSectionsPre p _ = kanCocartesianSectionsPre p i ≫
     kanCocartesianSectionsPre p j
   rw [hi, kanCocartesianSectionsPre_comp]
