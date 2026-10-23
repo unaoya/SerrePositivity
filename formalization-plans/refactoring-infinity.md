@@ -12,6 +12,9 @@
   モジュールを別モジュールから `public import` すると、`KanSection.relativeFunctorEvaluate` が解決される（試作ファイルは削除済み）。
 - 0-1 完了：追跡済み 11,632 ファイルを走査し、実体の重複 18 群（KanSection 17 組と JoinRightRelativeRetraction 1 組）を保存。
   正規化のコメント・文字列・トークン境界と基準比較を検証。基準からの増加は 0 組。
+- 0-3 検証中：F2/JoinRightRelativeRetraction を原本の export シムに変更。単体・直接下流・R 監査は通過。
+  F2 集約ビルドは実行中。既存 F2 監査は CoherentTotalCoconePre.olean 未生成のため、ビルド後に再実行する。
+- 0-4 完了：§6 に 5 入力の所在・供給元・使用数を固定し、grep の全一致行を archive に保存。
 - 0-2 完了：dg nerve の規約を DGNerve/README.md に保存し、全体 README を層・入口・監査の地図に変更。
   文面の保存（リンク以外）と全ローカルリンクを検証。
 
@@ -39,7 +42,7 @@
 
 ### 次の一手
 
-- 0-3：F2/JoinRightRelativeRetraction の §3 条件を確認し、F1 原本へのシムにする。
+- F2 集約ビルド完了後に既存 F2 監査を再実行し、0-3 をコミットする。その後 1-1 の分割。
 
 ## 1. 目的と範囲
 
@@ -75,7 +78,7 @@
 | 0-1 | 正規化ハッシュによる重複検査 `scripts/check_duplicates.py`。現状の一覧を `archive/` に保存 | R8 再発防止 | なし | 即時 | 2026-10-23 09:35 JST |
 | 0-2 | `InfinityCategories/README.md`（dg nerve の規約）を `DGNerve/README.md` へ移し、最上位 README を全体地図（層・入口・監査スクリプト）に | R25 | なし | 即時 | 2026-10-23 09:37 JST |
 | 0-3 | `F2/JoinRightRelativeRetraction` を F1 原本へのシムに | R8 段階 0 | F1b（10-20 以降未変更） | §3 | |
-| 0-4 | 仮定入力の一覧（§6）を grep で作り本計画に固定 | R17・R20 | なし | 即時 | |
+| 0-4 | 仮定入力の一覧（§6）を grep で作り本計画に固定 | R17・R20 | なし | 即時 | 2026-10-23 09:40 JST |
 | 1-1 | `F1/PullbackFiber`・`F1/LeftFiberKan` を汎用部（新 `Core/VertexFiberPullback`・`Core/LeftFiberKan`）と straightening 部（旧名、Core を import）に分割 | R8 段階 1 | F1（10-18 以降未変更） | §3 | |
 | 1-2 | 汎用部だけで足りる直接 importer（6 本）を Core 側へ向け直す。閉包が縮む外部ファイルには旧 import を保守的に残す | R8 段階 2 | F1・F1B・HomotopyLimits・F2 | 1-1 の後、§3 | |
 | 1-3 | F1B の `KanSection*` 31 本のうち本体同一の分（126 宣言、1,660 行）をシム化。`KanSectionPrism` と中継 1 本は残す | R8 段階 3 | F1b（10-19 以降未変更） | 1-2 の後（F1B 監査が原本の閉包を通すため） | |
@@ -104,14 +107,18 @@
 
 ## 6. 仮定入力の一覧（完成後に外す）
 
-0-4 で作る。列：構造体／述語名、所在、供給元（レーン・小項目）、使用箇所の数。
+2026-10-23、`rg -n '\b(IndFiniteLimitExchangeInput|CoherentFilteredLimitExchangeShape|HasSpaceLimitsOfShape|DGKappaConeInput|DGKappaPerfectInput)\b' SerrePositivity --glob '*.lean'` で採取。
+使用は定義行・import 行を除く一致行数（同じ行の複数出現は 1、証拠を供給する定理も含む）。
+作業ツリーの未追跡ファイルも走査した。定義と使用の行一覧は
+[保存一覧](archive/refactor-assumptions-2026-10-23.md) を参照。
 
-| 名前 | 所在 | 供給元 | 使用 |
+| 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
-| `IndFiniteLimitExchangeInput` | F2/Ind | F1b a7 | |
-| `CoherentFilteredLimitExchangeShape` | F2 | F1b a7 | |
-| `HasSpaceLimitsOfShape` | F2/SpaceLimitShapes | 無条件化済み（R17） | 3 |
-| `DGKappaConeInput`・`DGKappaPerfectInput` | KST/NonConnective | D（K-7 供給） | |
+| `IndFiniteLimitExchangeInput` | InfinityCategories/F2/Ind/FiniteLimitExchangeInput.lean:18 | F1b a7（全有限形の交換） | 11／9 |
+| `CoherentFilteredLimitExchangeShape` | InfinityCategories/F2/CoherentFilteredLimitExchange.lean:24 | F1b a7（空・単体の形は証明済み） | 9／7 |
+| `HasSpaceLimitsOfShape` | InfinityCategories/F2/SpaceLimitShapes.lean:24 | γ3 の無条件版へ R17 で差し替え予定 | 6／3 |
+| `DGKappaConeInput` | KST/NonConnective/DGKappaConeInput.lean:47 | D（K-7 へ非可算 κ-compact dg 小模型を供給） | 7／7 |
+| `DGKappaPerfectInput` | KST/NonConnective/DGKappaPerfectInput.lean:36 | D（K-7 へ実 Perf との ∞ 圏比較を供給） | 3／2 |
 
 ## 7. 再発防止（foundations.md §8 に追加済み、ユーザー承認 10-23 09:33）
 
