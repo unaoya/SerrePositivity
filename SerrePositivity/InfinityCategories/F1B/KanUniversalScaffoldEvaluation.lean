@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
+public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
 
 /-!
 概要：cocartesian strict transport の simplicial replacement を対角評価する。
