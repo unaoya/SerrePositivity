@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.PinchedLeftCoordinates
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningFiberIso
 
 /-!
 概要：既存の左 pinched 写像空間と coslice 射影の fiber の同型。
