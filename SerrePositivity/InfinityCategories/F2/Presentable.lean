@@ -37,3 +37,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomAcces
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpacePresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
+public import SerrePositivity.InfinityCategories.F2.Presentable.ContinuousLeftFibrationAnodyne
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteOverCodes

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpacePresentation
+public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 public import Mathlib.CategoryTheory.FintypeCat
 public import Mathlib.CategoryTheory.Whiskering
 

@@ -8,8 +8,7 @@
 ### 現在地
 - 工程 (1) の定義・Ind iff・関手・濃度変更の主経路を実証。κ-accessible を「正則 κ・小さい κ-filtered 余極限・小さい κ-compact 全部分生成圏」で定義。
   生成は各対象を厳密な頂点とする単一の全余錐表示。Ind との同値・比較の充満忠実性は定義に入れていない。
-- 正則 κ の `IndInfinity κ A` の κ-accessibility を証明。F1 の単一 filtered 表示の同じ全余錐を Ind 内へ持ち上げ、N の Yoneda compact 性と合成。
-- κ-accessible 関手は Ind の native な小さい κ-filtered 余極限保存を再利用。恒等・合成・濃度の単調性・全関手同型不変性を証明。
+- 正則 κ の `IndInfinity κ A` の κ-accessibility、κ-accessible 関手の恒等・合成・濃度の単調性・全関手同型不変性を証明。
 - 全 κ-compact 対象が生成対象の retract であることと、その逆を証明。元の生成族・対象を保持。
 - 定義の小さい生成圏から κ-連続な Ind 比較を構成し、生成関手の全自然同型による回収・本質的全射性を証明。
   **元の任意の二対象間の `pinchedHomMap` の同値性・比較自身の全充満忠実性・全 ∞ 圏同値を証明。**
@@ -20,8 +19,7 @@
   全余錐の同値による保存・反映、小さい κ-filtered 余極限の存在、compact 性、同じ小さい生成圏の全表示を輸送。
   表示の頂点は同値類だけでなく指定対象そのものへ厳密に戻す。
 - accessible 関手の全自然同型不変性、両側の同値による共役不変性を証明。同じ κ の保存性と存在量化版の両方。
-- 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
-  任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
+- 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を定義し、任意の上限を超える正則 μ と小さい濃度族に共通の μ を実証。
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
   族と各部分集合の nerve の filtered 性は、元の全 coherent な試験図式について成立。
   部分集合の nerve は全非退化単体を数える `IsKappaSmall μ` も満たす。
@@ -53,7 +51,9 @@
 - 各指定 Kan 空間を、有限部分複体の Kan 置換の filtered 全余極限として回収。全項は compact、元の指定頂点は厳密な等式。
 - 有限模型を `FintypeCat.Skeleton` 値の図式で宇宙 u の共通族へ符号化し、小さい compact 全部分生成圏を構成。
   `space_isKappaAccessible_aleph0` と `space_isPresentable` を実証。一般の前層の accessibility は未証明。
-- 独立集約ビルド成功（7732 jobs）、公理監査 731 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 任意の小さい底上で、有限全空間の有限表示性・共通の符号と左ホーン付加の可算反復関手を構成。
+  filtered 余極限保存・実際の left fibration 性・元の単位の左アノダイン性を実証。compact 生成への接続は未証明。
+- 新規界面の独立監査 73 宣言は標準三公理のみ。全体の再検証は共有 F1 更新中の olean 欠落で未完（前回の集約成功・731 宣言監査済み）。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
@@ -100,7 +100,7 @@
 
 ### 次の一手
 - 工程 (2)。F1 の `LeftFibrationInfinity` と N の相対 Hom の全共変比較を使い、一般の小さい底上の前層へ進む。
-  有限な底上の単体模型の共通族・left fibration 置換・filtered 全表示・compact 性を構成して、小さい生成圏を得る。前層の accessibility は未証明。
+  連続 left fibration 置換を用い、有限底上模型の filtered 全表示・相対 Hom の全自然比較・compact 性へ進む。前層の accessibility は未証明。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約

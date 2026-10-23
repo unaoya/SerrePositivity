@@ -184,3 +184,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.spaceCompactGeneratorInclusion_isCompactGenerating
 #check @SerrePositivity.InfinityCategories.F2.Presentable.space_isKappaAccessible_aleph0
 #check @SerrePositivity.InfinityCategories.F2.Presentable.space_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOver_isFinitelyPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.overCellCopiesFunctor_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftHornCellStep_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftHornCellStep_extension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.FiniteOverCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteOverCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftHornCellStepUnit_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacementUnit_leftAnodyne

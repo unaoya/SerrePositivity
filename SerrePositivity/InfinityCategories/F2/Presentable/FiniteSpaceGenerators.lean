@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSimplicialCodes
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpacePresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFamilyGeneratorTransport
 
 /-!
