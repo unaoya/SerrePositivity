@@ -15,8 +15,12 @@ replace the corresponding global `symbols` entries in that file. For example,
 use an unqualified new name at its definition, and qualified names in callers.
 Use --apply after reviewing the printed file list. Files unrelated to the plan
 are left alone. This tool never commits or builds.
+`redirect_hashes` may record reviewed SHA-256 source hashes for redirects.
+A matching hash permits removal after earlier batch edits; without a hash,
+removing a module with uncommitted edits is refused.
 """
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -121,12 +125,17 @@ def source_path(root, rel):
 
 
 def prepare(root, spec):
-    if not isinstance(spec, dict) or set(spec) - {'moves', 'redirects', 'symbols', 'imports', 'file_symbols'}:
-        raise ValueError('plan must contain only moves, redirects, symbols, imports, file_symbols maps')
+    if not isinstance(spec, dict) or set(spec) - {'moves', 'redirects', 'symbols', 'imports', 'file_symbols', 'redirect_hashes'}:
+        raise ValueError('unknown plan field; expected moves, redirects, symbols, imports, file_symbols, redirect_hashes')
     moves, redirects, symbols = (spec.get(k, {}) for k in ['moves', 'redirects', 'symbols'])
     if not all(isinstance(m, dict) for m in (moves, redirects, symbols)):
         raise ValueError('each plan field must be an object')
     if set(moves) & set(redirects): raise ValueError('a module cannot be moved and redirected')
+    hashes = spec.get('redirect_hashes', {})
+    if not isinstance(hashes, dict) or set(hashes) - set(redirects):
+        raise ValueError('redirect_hashes keys must name redirects')
+    if any(not isinstance(h, str) or not re.fullmatch('[0-9a-f]{64}', h) for h in hashes.values()):
+        raise ValueError('redirect_hashes values must be lowercase SHA-256 hashes')
     modules = {**moves, **redirects}
     if set(modules) & set(modules.values()): raise ValueError('chained/cyclic module mappings are unsupported')
     if len(set(moves.values())) != len(moves): raise ValueError('move destinations must be distinct')
@@ -136,7 +145,9 @@ def prepare(root, spec):
         if not src.is_file() or str(src.relative_to(root)) not in tracked:
             raise ValueError(f'source must exist and be tracked: {old}')
         if old in moves and dst.exists(): raise ValueError(f'destination exists: {new}')
-        if old in redirects and subprocess.run(['git', 'diff', '--quiet', 'HEAD', '--', str(src.relative_to(root))], cwd=root).returncode:
+        if old in hashes and hashlib.sha256(src.read_bytes()).hexdigest() != hashes[old]:
+            raise ValueError(f'reviewed redirect source hash changed: {old}')
+        if old in redirects and old not in hashes and subprocess.run(['git', 'diff', '--quiet', 'HEAD', '--', str(src.relative_to(root))], cwd=root).returncode:
             raise ValueError(f'cannot remove a module with uncommitted edits: {old}')
         if old in redirects and not dst.is_file() and new not in moves.values():
             raise ValueError(f'canonical target does not exist: {new}')
@@ -219,7 +230,7 @@ def main():
         moves, redirects, updates = prepare(root, spec)
     except (ValueError, OSError, subprocess.CalledProcessError) as exc:
         parser.error(str(exc))
-    report = {'moves':moves, 'redirects':redirects, 'file_symbol_edits':sorted(spec.get('file_symbols', {})),
+    report = {'moves':moves, 'redirects':redirects, 'file_symbol_edits':sorted(spec.get('file_symbols', {})), 'redirect_hashes':spec.get('redirect_hashes', {}),
               'updated_files':[str(p.relative_to(root)) for p in sorted(updates)], 'applied':args.apply}
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if not args.apply: return
@@ -231,7 +242,10 @@ def main():
         dst.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(['git','mv','--',str(src.relative_to(root)),str(dst.relative_to(root))],cwd=root,check=True)
     for old in redirects:
-        subprocess.run(['git','rm','--',str(module_path(root,old).relative_to(root))],cwd=root,check=True)
+        expected = spec.get('redirect_hashes', {}).get(old)
+        if expected is not None and hashlib.sha256(module_path(root, old).read_bytes()).hexdigest() != expected:
+            raise SystemExit(f'reviewed redirect source changed during apply: {old}')
+        subprocess.run(['git','rm',*(['-f'] if old in spec.get('redirect_hashes', {}) else []),'--',str(module_path(root,old).relative_to(root))],cwd=root,check=True)
     for path, source in updates.items(): path.write_text(source)
 
 
