@@ -2747,3 +2747,7 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `normalizedTensorTriangleMap_face01`・`_face12`・`_face02` は全 Δ²×K の三辺を
 元の cone prism・通常評価円柱・元の pinched 区間族と写像として同定する。
 左右 prism の既存評価式を再利用し、全 K・全次数・元の cochain を保持する。
+
+`normalizedTensorEvaluationHomotopy` は元の通常評価円柱を同じ dg nerve で表す。
+`normalizedTensorTriangleFamily_comp` は全 K の h Fun 内で元の cone 族と通常評価族の
+合成を元の pinched 全族に同定する。点ごとの比較に縮めず全三角形を使用する。
