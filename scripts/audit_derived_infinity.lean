@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback
+import SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanShape
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCospan
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawParameterRestriction
+import SerrePositivity.InfinityCategories.Stable.FunctorEdgeBottomReadback
+import SerrePositivity.InfinityCategories.Stable.ExcisionComparisonCospanEquivalence
+import SerrePositivity.InfinityCategories.Stable.ExcisionThetaInvertibleComposite
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCriterion
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionCorners
+import SerrePositivity.InfinityCategories.Stable.ExcisionFunctorCriterion
 import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionEvaluation
 import SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonConeAt
 import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeReadback
@@ -4484,6 +4494,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanShape,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCospan,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawParameterRestriction,
+    `SerrePositivity.InfinityCategories.Stable.FunctorEdgeBottomReadback,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionComparisonCospanEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionThetaInvertibleComposite,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionCriterion,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionCorners,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionFunctorCriterion,
+
     `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionEvaluation,
     `SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonConeAt,
     `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeReadback,
