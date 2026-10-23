@@ -698,3 +698,5 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSqu
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseLinear
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseNaturality
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainUniverseComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseInverse
+public import SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquareTarget

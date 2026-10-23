@@ -703,7 +703,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquare,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseLinear,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseNaturality,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainUniverseComparison]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainUniverseComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquareTarget]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
