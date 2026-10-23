@@ -77,3 +77,10 @@
 - `/tmp/r-b-universe-closure-preview.py` は UniverseSSetMaps、Stable の UniverseJoinAugmentation・UniverseJoin・UniverseJoinNaturality・UniverseJoinSimplexShapes・UniverseBoundary・UniverseBoundaryHom・UniverseBoundaryFilling・UniverseJoinSimplexNaturality・UniverseConeHom・UniverseSlices と UniverseZeroObjects の先頭2補題を、本文を保持して結合する。Core/Mathlib import のみ・autoImplicit false で Lean 成功（同名 `.lean`・`.log`、session 96840 exit 0）。UniverseLimits 本体・反転依存はこの検証には含めない。
 - R23 の局所化側は Derived の RightKanPrecompositionFaithful・LocalizationFunctorExtension・LocalizationRightKanCriterion・LocalizationPrecompositionCriterion・DeformationLocalization の5本で閉じる。本文を保持した `/tmp/r-b-localization-closure-preview.lean` は Core/F1B import のみ・autoImplicit false で Lean 成功（同 `.log`、session 90302 exit 0）。最初の2本も新規 F1B ファイルへ直接移せば F1B→Derived を残さない。全て元の所有範囲内。
 - 上記は一時ファイルの検証のみ。移動実装は R-A 取り込みの合図・rebase 後。追加所有許可の未回答項目は ZeroBoundaryExtension の1本。UniverseSSetMaps は許可済みだが、R-A・R-C 取り込み後の rebase まで未実施。
+
+## 余極限図式比較の最小閉包（未適用）
+
+- `/tmp/r-b-r2-full-preview.py` は60個の Stable source section と UniverseSSetMaps を結合し、型・本文保持で Lean 成功（同 `.lean`・`.log`、session 50124 exit 0）。ただし F1.CosliceRightRestriction import を含むため、これだけでは Core 閉包の証明にならない。
+- 閉包を縮小した `/tmp/r-b-colimit-diagram-core-preview.py` は Cocone・一般 InitialHomotopy/InitialTransport、QCatEquivalence の始対象不変性2補題、JoinCocone.restrict、ColimitExistenceTransfer の先頭4補題、CosliceRestrictionEquivalence・ColimitDiagramIso をまとめ、Core import のみで Lean 成功（同 `.lean`・`.log`、session 13923 exit 0）。
+- 上記には F1/CosliceRestriction の sliceUnderRestrict_comp と F1/CosliceRestrictionIso の sliceUnderRestrict_isIso の本文をそのまま含む。この2宣言の Core 直接移動を追加許可質問中。既存名は保持し、元F1ファイルは固有内容を残すためシムにはならない。未許可では適用しない。実施は R-A・R-C 取り込み・rebase 後。
+- この閉包なら right-anodyne/colimit-attachment 専用部を Stable に保持でき、F1 一般論全体の移動は不要。実際の分割後は import を除く全宣言の型・証明一致を再確認する。
