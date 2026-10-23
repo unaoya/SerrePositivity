@@ -14716,3 +14716,96 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @homWeightEvaluationFamily_liftedIso
 #print axioms homWeightEvaluationFamily_liftedIso
+
+#check @YonedaEvaluationJointBase
+#print axioms YonedaEvaluationJointBase
+
+#check @yonedaHomJointBaseMap
+#print axioms yonedaHomJointBaseMap
+
+#check @yonedaHomJointDiagram
+#print axioms yonedaHomJointDiagram
+
+#check @yonedaEvaluationJointNative
+#print axioms yonedaEvaluationJointNative
+
+#check @yonedaEvaluationJointDiagram
+#print axioms yonedaEvaluationJointDiagram
+
+#check @yonedaEvaluationJointBase_quasicategory
+#print axioms yonedaEvaluationJointBase_quasicategory
+
+#check @yonedaHomJointTotal
+#print axioms yonedaHomJointTotal
+
+#check @yonedaHomJointProjection
+#print axioms yonedaHomJointProjection
+
+#check @yonedaHomJointProjection_leftFibration
+#print axioms yonedaHomJointProjection_leftFibration
+
+#check @yonedaHomJoint_classificationIso
+#print axioms yonedaHomJoint_classificationIso
+
+#check @yonedaEvaluationJointTotal
+#print axioms yonedaEvaluationJointTotal
+
+#check @yonedaEvaluationJointProjection
+#print axioms yonedaEvaluationJointProjection
+
+#check @yonedaEvaluationJointProjection_leftFibration
+#print axioms yonedaEvaluationJointProjection_leftFibration
+
+#check @yonedaEvaluationJoint_classificationIso
+#print axioms yonedaEvaluationJoint_classificationIso
+
+#check @yonedaEvaluationJointSource
+#print axioms yonedaEvaluationJointSource
+
+#check @yonedaHomJointBaseMap_source
+#print axioms yonedaHomJointBaseMap_source
+
+#check @yonedaEvaluationJointNative_source
+#print axioms yonedaEvaluationJointNative_source
+
+#check @yonedaHomJointDiagram_source
+#print axioms yonedaHomJointDiagram_source
+
+#check @yonedaEvaluationJointDiagram_source
+#print axioms yonedaEvaluationJointDiagram_source
+
+#check @yonedaEvaluationJoint_sourceIso
+#print axioms yonedaEvaluationJoint_sourceIso
+
+#check @presheafUniverseDiagram_family_uncurry
+#print axioms presheafUniverseDiagram_family_uncurry
+
+#check @yonedaWeightJointRestriction
+#print axioms yonedaWeightJointRestriction
+
+#check @yonedaHomWeightFamily_joint
+#print axioms yonedaHomWeightFamily_joint
+
+#check @homWeightEvaluationFamily_joint
+#print axioms homWeightEvaluationFamily_joint
+
+#check @yonedaJointYonedaBaseMap
+#print axioms yonedaJointYonedaBaseMap
+
+#check @yonedaJointYonedaBaseMap_evaluation
+#print axioms yonedaJointYonedaBaseMap_evaluation
+
+#check @yonedaJointTwistedBase
+#print axioms yonedaJointTwistedBase
+
+#check @yonedaHomJointTwistedSeed
+#print axioms yonedaHomJointTwistedSeed
+
+#check @yonedaHomJointTwistedSeed_projection
+#print axioms yonedaHomJointTwistedSeed_projection
+
+#check @yonedaEvaluationJointTwistedSeed
+#print axioms yonedaEvaluationJointTwistedSeed
+
+#check @yonedaEvaluationJointTwistedSeed_projection
+#print axioms yonedaEvaluationJointTwistedSeed_projection
