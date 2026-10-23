@@ -2743,3 +2743,7 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 各相を欠く三角形単体全体を元の三部分単体へ同定する。
 全 cochain の HEq から SimplexData の等式へ戻す界面も提供する。
 元の大域円柱との全辺比較は次工程。
+
+`normalizedTensorTriangleMap_face01`・`_face12`・`_face02` は全 Δ²×K の三辺を
+元の cone prism・通常評価円柱・元の pinched 区間族と写像として同定する。
+左右 prism の既存評価式を再利用し、全 K・全次数・元の cochain を保持する。
