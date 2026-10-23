@@ -12,6 +12,8 @@
   モジュールを別モジュールから `public import` すると、`KanSection.relativeFunctorEvaluate` が解決される（試作ファイルは削除済み）。
 - 0-1 完了：追跡済み 11,632 ファイルを走査し、実体の重複 18 群（KanSection 17 組と JoinRightRelativeRetraction 1 組）を保存。
   正規化のコメント・文字列・トークン境界と基準比較を検証。基準からの増加は 0 組。
+- 0-2 完了：dg nerve の規約を DGNerve/README.md に保存し、全体 README を層・入口・監査の地図に変更。
+  文面の保存（リンク以外）と全ローカルリンクを検証。
 
 ### 残り（依存順）
 
@@ -37,7 +39,7 @@
 
 ### 次の一手
 
-- 0-2：dg nerve の規約 README を移し、最上位 README を全体地図にする。
+- 0-3：F2/JoinRightRelativeRetraction の §3 条件を確認し、F1 原本へのシムにする。
 
 ## 1. 目的と範囲
 
@@ -71,7 +73,7 @@
 | 段 | 内容 | 候補 | 触るレーン | 条件 | 完了 |
 |---|---|---|---|---|---|
 | 0-1 | 正規化ハッシュによる重複検査 `scripts/check_duplicates.py`。現状の一覧を `archive/` に保存 | R8 再発防止 | なし | 即時 | 2026-10-23 09:35 JST |
-| 0-2 | `InfinityCategories/README.md`（dg nerve の規約）を `DGNerve/README.md` へ移し、最上位 README を全体地図（層・入口・監査スクリプト）に | R25 | なし | 即時 | |
+| 0-2 | `InfinityCategories/README.md`（dg nerve の規約）を `DGNerve/README.md` へ移し、最上位 README を全体地図（層・入口・監査スクリプト）に | R25 | なし | 即時 | 2026-10-23 09:37 JST |
 | 0-3 | `F2/JoinRightRelativeRetraction` を F1 原本へのシムに | R8 段階 0 | F1b（10-20 以降未変更） | §3 | |
 | 0-4 | 仮定入力の一覧（§6）を grep で作り本計画に固定 | R17・R20 | なし | 即時 | |
 | 1-1 | `F1/PullbackFiber`・`F1/LeftFiberKan` を汎用部（新 `Core/VertexFiberPullback`・`Core/LeftFiberKan`）と straightening 部（旧名、Core を import）に分割 | R8 段階 1 | F1（10-18 以降未変更） | §3 | |
