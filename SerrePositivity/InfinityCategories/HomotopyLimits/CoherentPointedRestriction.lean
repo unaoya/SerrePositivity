@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRestrictionComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaYonedaConeSections
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaConeSections
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
 

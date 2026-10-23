@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalObjectLimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjectLimits
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
 
 /-!

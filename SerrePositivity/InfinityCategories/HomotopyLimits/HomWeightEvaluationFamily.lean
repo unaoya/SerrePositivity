@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomWeightUniverseComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaLiftedHomRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
 
 /-!

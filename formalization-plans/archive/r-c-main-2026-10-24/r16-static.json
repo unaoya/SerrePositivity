@@ -1,0 +1,11 @@
+{
+  "item": "r16",
+  "moves": 90,
+  "updated_lean_files": 113,
+  "tracked_lean_updates": 112,
+  "verified_import_only_sources": 109,
+  "untracked_import_updates_not_staged": [
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightFamilyComparison.lean"
+  ],
+  "base": "65c0881c8283c0a608b6564985e32ca24bdde045"
+}

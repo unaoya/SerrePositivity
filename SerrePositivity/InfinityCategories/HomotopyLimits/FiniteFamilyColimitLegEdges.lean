@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaPresheafColimitFiniteCone
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafColimitFiniteCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanNativeHomAction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaPresheafOriginalLegComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafOriginalLegComparison
 
 /-!
 概要：元の有限添字へ戻した余極限全錐の各辺を、元の評価脚の Kan 像へ厳密に照合する。

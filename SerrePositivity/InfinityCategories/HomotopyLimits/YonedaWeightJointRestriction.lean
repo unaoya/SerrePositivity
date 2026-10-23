@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.YonedaEvaluationJoint
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaHomWeightRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomWeightEvaluationFamily
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseFamilyEvaluation
 

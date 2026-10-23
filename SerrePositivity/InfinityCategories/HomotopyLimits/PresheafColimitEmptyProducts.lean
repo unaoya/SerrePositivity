@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafCoconeVertexEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedTerminalDiagramColimit
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedTerminalDiagramColimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EmptyShapeLimitCriterion
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SigmaPresheafEvaluationCones
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafEvaluationCones
 
 /-!
 概要：P_Σ の元の族の指定前層余極限頂点は、元の空添字の有限極限全錐を保存する。
