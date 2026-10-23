@@ -89,17 +89,17 @@
 
 ### 未コミット
 
-- 最初の4モジュール・11宣言は `52fe91f1b` で保存済み。現在は実小閉包・射影性・shift/cone/実二項・可算直和閉性・同じ導来比較・perfectCovers の11新規モジュール43宣言と集約・両監査・本計画が未コミット。対象（8722 jobs）・43明示署名は終端0。集約の最初の実行は共有 F1 の .olean 再生成との競合で失敗し、同じソースでの再実行でも F1 の PullbackFiber・CosliceFiberVertices の .olean 読込失敗が再発。全体監査・本体コミットは未実施。他レーンのソースは変更しない。
+- 最初の4モジュール・11宣言は `52fe91f1b` で保存済み。現在は実小閉包・射影性・shift/cone/実二項・可算直和閉性・同じ導来比較・perfectCovers の11新規モジュール43宣言と集約・両監査・本計画が未コミット。対象（8722 jobs）・43明示署名は終端0。集約の最初の実行は共有 F1 の .olean 再生成との競合で失敗し、同じソースでの再実行にも .olean 読込失敗が発生し、現在は生成物復旧後の集約を継続中。全体監査・本体コミットは未実施。他レーンのソースは変更しない。
 
 ### 既知の問題
 
 - D7・β3 の零化・平坦模型の対象・集約ビルド成功（11347 jobs）。公理監査は Derived 22036 宣言／2511 モジュール、Stable 23151／2781。許容三公理のみ。今回までの保存対象1442新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
-- import 閉包が壊れたら他レーンを変更して迂回せず停止して報告する。今回、集約の初回と再実行で共有 F1 の .olean 読込失敗が再発した（再実行ログは `/tmp/d-kappa-closure-production-aggregate-retry.log`）。対象・43署名は成功だが、両集約・両全体監査の成功とは数えない。再実行 session 18213 も終端1。依存状態が落ち着くまで追加再起動しない。
+- import 閉包が壊れたら他レーンを変更して迂回せず報告する。共有 F1・Derived の .olean 読込失敗は初回・再実行で発生し、生成物が復旧した後の `/tmp/d-kappa-closure-production-aggregate-finalretry.log` は session 61101 が継続中。対象・43署名の成功を両集約・両全体監査の成功とは数えない。生存確認は同じ handle で行い、観測の無出力・timeout では再起動しない。
 
 ### 次の一手
 - D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`。実 `ExcisionSquareGrid` は任意の元の四角形への厳密制限と二段階の native 左 Kan 局所余極限を持つ。比較格子の全六面の押し出し性、全単体の共有辺四式、元の指定零頂点二式は `187b42df0` までに統合・両全体監査済み。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
-- K-7：最初の全比較・自由 sphere 代表族は `52fe91f1b`。実小閉包は perfect 小代表も出発族へ含め、同じ集合の零・shift・cone・実二項・可算直和閉性と perfectCovers を証明。11モジュール43宣言の対象・明示署名は成功、集約は共有 .olean 読込失敗で未通過。集約の再実行も終端1（`/tmp/d-kappa-closure-production-aggregate-retry.log`）。まず共有依存状態を確認し、失敗を解消した後に集約・両全体監査を行う。15パスは同 `-owned-paths.txt`。前三角性への補助：零表現可能性3宣言は `/tmp/d-kappa-representable-zero-signatures.log` で三公理検査済み、加群値 dg 関手の実シフト同型4宣言も `/tmp/d-module-valued-shift-signatures.log` で三公理検査済み（本体未統合）。任意小 dg 関手に沿う大きい標的の制限 Yoneda 3宣言は `/tmp/d-functor-restricted-yoneda.log` 終端0、明示署名は未検査。実代表の全整数シフトへの適用試作 `/tmp/d-module-subcategory-shift-representable.lean` も LeftFiberKan.olean 欠損で終端1。数学的本体の検査前に import で停止した。詳細は `/tmp/d-kappa-cone-supply-route.txt`。全 κ-compact 性・被覆・前三角性、Sp の loop 同値性からの IsStable と有限余極限も未証明。β4 は D2 所有、K-7 は読み取り専用。
+- K-7：最初の全比較・自由 sphere 代表族は `52fe91f1b`。実小閉包の11モジュール43宣言は対象・署名成功、両全体監査は未実行。集約は共有生成物の読込失敗後、同じ source closure で `/tmp/d-kappa-closure-production-aggregate-finalretry.log`（session 61101）を継続中。終端を確認するまで再起動・本体変更をしない。15パスは `/tmp/d-kappa-closure-production-owned-paths.txt`。前三角性への補助：零表現可能性3宣言、加群値シフト4宣言、加群値 cone5宣言、制限 Yoneda と実小部分圏の全整数シフト同型11宣言、native cone5宣言、零・シフト・cone の表現可能性からの一般前三角判定1宣言は `/tmp` 試作・明示署名・三公理検査済み。本体未統合。最後の representable cone 同型は `/tmp/d-module-subcategory-yoneda-cone-iso.lean`（session 57221、`/tmp/d-module-subcategory-yoneda-cone-iso-split-lemmas.log`）で、評価式を独立補題へ分割して検証中。大域 simp・局所 have 一括版は既定200000 heartbeats で whnf timeout、上限は変更しない。成功後に `/tmp/d-kappa-closed-pretriangulated-prepare.py` で同名 .lean を更新し、同じ代表集合の IsDGPretriangulated を閉じる。詳細は `/tmp/d-kappa-cone-supply-route.txt`。全 κ-compact 性・全被覆、Sp の loop 同値性からの IsStable・有限余極限は未証明。β4 は D2 所有、K-7 は読み取り専用。
 - K-S• の実生成元を`0a4d1f7d8` で供給した。`dgAlgebraSmallPerfectGenerator` は非可換 dg 代数の自由 representable に対応する実小代表、`dgAlgebraSmallPerfectGenerator_generates` はその singleton が全完全加群を生成する等式、`dgAlgebraSmallPerfectGenerator_homotopyComparison` は元の自由代表への H⁰ 比較。評価双加群の実 Morita 同値から生成性を戻し、結論の生成性を仮定しない。7モジュール・22公開宣言を統合し、対象・両集約（11060 jobs）・22明示署名が終端0、追加ソースに警告なし。既存 `dgSmallPerfectEnvelope_perfectOver_representable_eq` への三宣言の直接適用も `/tmp/d-small-perfect-evaluation-kst.lean` で終端0。両全体監査は終端0（Derived 21092宣言／2346モジュール、Stable 22207／2616、許容三公理のみ）。ログは `/tmp/d-small-perfect-evaluation-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`、正確な11パスは同 `-owned-paths.txt`。
 
 ## 目標と原典
