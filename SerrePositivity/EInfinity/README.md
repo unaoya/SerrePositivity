@@ -2733,3 +2733,8 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 `normalizedTensorTriangleFront_pullback_map`・Back 版・Pinched 版は三つの元の部分単体の
 全作用素自然性。通常評価列の閉単体も元の大域余錐 join から全再添字を回収する。
 同じ三相データ全体の自然性と全 Δ²×K への接合は未完了。
+
+`normalizedTensorTriangleData_pullback_map` と Simplex 版は三相データの全自然性。
+非単射な作用素は同じ潰れた辺の単位と高次零を比較する。
+`normalizedTensorTriangleMap` は全 Δ²×K 上の大域評価三角形で、全辺に元の K を保持する。
+三辺を元の cone prism・通常評価円柱・pinched 区間族と同定する工程は残る。
