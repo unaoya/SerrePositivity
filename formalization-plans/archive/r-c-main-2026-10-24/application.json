@@ -1,0 +1,31 @@
+{
+  "base": "312b8669093c92ad91ed339b589081463c043bba",
+  "state": "source_applied_global_verification_pending",
+  "commits": {
+    "R19": "65c0881c8",
+    "R16": "ba39c0897",
+    "R17": "bdf8d1c6a",
+    "R20": "446304032",
+    "shared": "a6a10c52b",
+    "R15": "d5cd974e2",
+    "redirect267": "d2385ea7e"
+  },
+  "moves": {
+    "R19": 2210,
+    "R16": 90,
+    "R15": 140
+  },
+  "updated_lean_files": {
+    "R19": 2577,
+    "R16": 113,
+    "R15": 292,
+    "redirect267": 60
+  },
+  "deleted_forwarders": 267,
+  "new_lean_entrances": 3,
+  "preexisting_untracked_import_updates_not_committed": [
+    "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationStrictColimit.lean",
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightFamilyComparison.lean",
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightLeftKan.lean"
+  ]
+}
