@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitApexLastConstantComparison
+public import SerrePositivity.InfinityCategories.F2.CoherentColimitApexLastSpecifiedSquare
+
 public import SerrePositivity.InfinityCategories.F2.CoherentColimitApexPointedLastPrism
 
 public import SerrePositivity.InfinityCategories.F2.RelativePrismConstantNativeAction
@@ -3276,3 +3279,10 @@ public import SerrePositivity.InfinityCategories.F2.SpaceSimplexPointedAugmentat
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_finish
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_projection
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastPrism_projection_constant
+
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitRawTransportPointPrism_projection_constant
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastConstantBase
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastConstantIso
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexPointedLastConstantIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexLastSpecified_naturality
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexLastNative_heq_initial_postcomp
