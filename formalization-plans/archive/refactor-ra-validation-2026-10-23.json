@@ -1,0 +1,81 @@
+{
+  "scope": "R-A stage 0-1 and stage 5, pre-integration worktree",
+  "source_branch": "refactor/r-lane",
+  "core_build": {
+    "target": "SerrePositivity.InfinityCategories.Core",
+    "exit_code": 0,
+    "seconds": 6.62
+  },
+  "first_f1_f1b_attempt": [
+    {
+      "check": "f1-f1b-build",
+      "exit_code": 1,
+      "seconds": 1128.01
+    }
+  ],
+  "second_f1_f1b_attempt": [
+    {
+      "check": "f1-f1b-build-retry",
+      "exit_code": 1,
+      "seconds": 13.01
+    }
+  ],
+  "current_validation": "running: /tmp/r-a-target-validation-retry2.json (written as checks complete)",
+  "original_declaration_preservation": [
+    {
+      "name": "vertexFiberPullbackIso",
+      "from": "F1/PullbackFiber",
+      "to": "Core/VertexFiberPullback",
+      "sha256": "a5ca7db353a2a5d027c37ffe27d4959c0a0ae6fcbaec781b02cd51a74fccf356"
+    },
+    {
+      "name": "vertexFiberPullbackIso_hom_ι",
+      "from": "F1/PullbackFiber",
+      "to": "Core/VertexFiberPullback",
+      "sha256": "ce8c9ae5a11148ef14030963aba9ed1b2f4915bf7d7b78591e14fc3f72c63969"
+    },
+    {
+      "name": "kanComplex_of_leftHornFillers",
+      "from": "F1/LeftFiberKan",
+      "to": "Core/LeftFiberKan",
+      "sha256": "0f0c2e17f8a844785a7406ea6cc90fdfe51e6559fab1a8478e96594a923f8f19"
+    },
+    {
+      "name": "vertexFiber_kanComplex_of_leftFibration",
+      "from": "F1/LeftFiberKan",
+      "to": "Core/LeftFiberKan",
+      "sha256": "bb70935d067e6f0e3b3d812903f8a8c3b16af3e3e6a9d91ed315875e20217d45"
+    },
+    {
+      "name": "prismVerticalSimplex",
+      "from": "F1/ScaffoldFiniteVerticalEdges",
+      "to": "Core/PrismVerticalSimplex",
+      "sha256": "e6300a4860bd14f04295082e6c290539d033a5d79422eb7d12a826fbb8491cd9"
+    },
+    {
+      "name": "nerveUnderMap",
+      "from": "F1/LeftStrictTransport",
+      "to": "Core/NerveUnderMap",
+      "sha256": "77db86cf46baad0e8405da568666a1dc537d32941dbe3822774c47c532f0b49e"
+    },
+    {
+      "name": "nerveUnderMap_projection",
+      "from": "F1/LeftStrictTransport",
+      "to": "Core/NerveUnderMap",
+      "sha256": "5e7d92a2b6a5a2a0714070c0eb98371b52a44c5de1010e18bdf4b5bc50410146"
+    },
+    {
+      "name": "nerveUnderMap_id",
+      "from": "F1/LeftStrictTransport",
+      "to": "Core/NerveUnderMap",
+      "sha256": "f956bdc367bd89b6b3a86531cfa961513e33ce2273ef33ba04a50c24a8eab095"
+    },
+    {
+      "name": "nerveUnderMap_comp",
+      "from": "F1/LeftStrictTransport",
+      "to": "Core/NerveUnderMap",
+      "sha256": "18886c20f011701615e1e72263c29dd4d6996bfdb23b6552379fa8687b91c357"
+    }
+  ],
+  "full_build_and_tags": "coordinator responsibility; not performed by R-A"
+}
