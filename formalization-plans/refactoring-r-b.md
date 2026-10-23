@@ -82,5 +82,7 @@
 
 - `/tmp/r-b-r2-full-preview.py` は60個の Stable source section と UniverseSSetMaps を結合し、型・本文保持で Lean 成功（同 `.lean`・`.log`、session 50124 exit 0）。ただし F1.CosliceRightRestriction import を含むため、これだけでは Core 閉包の証明にならない。
 - 閉包を縮小した `/tmp/r-b-colimit-diagram-core-preview.py` は Cocone・一般 InitialHomotopy/InitialTransport、QCatEquivalence の始対象不変性2補題、JoinCocone.restrict、ColimitExistenceTransfer の先頭4補題、CosliceRestrictionEquivalence・ColimitDiagramIso をまとめ、Core import のみで Lean 成功（同 `.lean`・`.log`、session 13923 exit 0）。
-- 上記には F1/CosliceRestriction の sliceUnderRestrict_comp と F1/CosliceRestrictionIso の sliceUnderRestrict_isIso の本文をそのまま含む。この2宣言の Core 直接移動を追加許可質問中。既存名は保持し、元F1ファイルは固有内容を残すためシムにはならない。未許可では適用しない。実施は R-A・R-C 取り込み・rebase 後。
+- 上記には F1/CosliceRestriction の sliceUnderRestrict_comp と F1/CosliceRestrictionIso の sliceUnderRestrict_isIso の本文をそのまま含む。この2宣言の新規 Core ファイル（候補 Core/SliceUnderRestriction）への直接移動はユーザー追加許可済み。本文・型・名前空間を保持し、元の2宣言を削除。元F1の2ファイルは固有内容を保持して新Coreモジュールを public import する。instance は Core で宣言し、元F1ファイル経由の下流可視性もビルド確認。実施は R-A・R-C 取り込み・rebase 後。
 - この閉包なら right-anodyne/colimit-attachment 専用部を Stable に保持でき、F1 一般論全体の移動は不要。実際の分割後は import を除く全宣言の型・証明一致を再確認する。
+
+- F1 の2宣言移動の指定検証：Core・F1・Stable・Derived 集約、audit_infinity_core・audit_infinity_f1・audit_infinity_f1b（禁止閉包）・audit_infinity_stable・audit_derived_infinity。§5 に新所在を記録。実装コミット本文には「F1 の 2 宣言を Core へ移した」と明記し、R-A が確認できるようにする。元の指定に従い audit_derived_gluing も維持する。
