@@ -2,13 +2,13 @@
 
 ## 引き継ぎ
 
-- 現在地：R17 完了（a45c92306）。R19 完了（本コミット）：2,211 モジュール移動、本文保存・旧 import 消滅を確認し、4集約ビルド・指定4監査がすべて通過。R20 も同じソース状態の4監査で検証済み。
-- 残り：R20 の文書コミット、3-1 の完全一致 EInfinity 3 宣言・HomotopicalAlgebra output の共有化、R16。R15 は R-A 取り込み・合図後の rebase を待つ。
+- 現在地：R17 完了（a45c92306）。R19 完了（2c1fa3384）：2,211 モジュール移動、本文保存・旧 import 消滅を確認し、4集約ビルド・指定4監査がすべて通過。R20 も同じソース状態の4監査で検証済み。
+- 残り：3-1 の完全一致 EInfinity 3 宣言・HomotopicalAlgebra output の共有化、R16。R15 は R-A 取り込み・合図後の rebase を待つ。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：R20 の §6 と更新一覧、準重複一覧、まだ接続していない共有モジュール DoubleOpposite・BarOutput。
+- 未コミット：準重複一覧、まだ接続していない共有モジュール DoubleOpposite・BarOutput。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：R20 の文書をコミット。続いて `/tmp/r-c-e-shared.py` と `/tmp/r-c-ha-output.py` で接続・重複削除・参照置換し、4集約・4監査と Rectification の追加検証を実行。その後 R16。
+- 次の一手：`/tmp/r-c-e-shared.py` と `/tmp/r-c-ha-output.py` で接続・重複削除・参照置換し、4集約・4監査と Rectification の追加検証を実行。その後 R16。
 
 ## 方針
 
@@ -33,3 +33,5 @@ R20：5入力の定義・供給元・一致行／ファイルを現 worktree か
 R19 検証進捗：主ビルドは15,713 jobsで終了コード0、F2監査も終了コード0（19,486宣言、標準三公理）。Presentable監査は旧 `F2.CoconeParameterPrism` の cached olean と新配置の混在で停止したため、`F2.Presentable` を追加ビルド中。ソースの旧 import は存在せず、互換シムで回避しない。以後の項目ゲート `/tmp/r-c-check-item.sh` は監査が使う4集約すべてを明示ビルドするよう修正済み。
 
 R19/R20 最終検証：主集約（F2・HomotopyLimits・EInfinity）15,713 jobs、追加 Presentable 集約7,750 jobsが成功。`audit_infinity_f2`（19,486宣言）・`audit_infinity_presentable`（852宣言）・`audit_homotopy_limits`・`audit_einfinity`（25,780宣言）は全て終了コード0。公理は標準三公理のみ。最終ログは `/tmp/r-c-r19-audit_{infinity_f2,infinity_presentable,homotopy_limits,einfinity}.log`。最初の Presentable cached olean 失敗は `/tmp/r-c-r19-presentable-stale-cache.log` に分離して保存。
+
+R20 完了：§6 の5入力の定義位置・供給元・使用数を更新し、全一致行を archive に保存。R17・R19 の完了行も正本に反映。R19 と同じ検証済みソース状態で指定4監査が通過し、文書変更はその後のみ。

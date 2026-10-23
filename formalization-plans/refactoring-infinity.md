@@ -118,12 +118,12 @@
 | 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST 側シム。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | |
 | 2-5 | `DGNerve/SemifreeLimits` を Derived（または DifferentialGraded）へ、DGNerve 側シム | R24 | D | D の区切り | |
 | 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | |
-| 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | |
+| 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | 2026-10-23（R-C、a45c92306） |
 | 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | |
 | 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | |
 | 3-2 | `PinchedInterval` 6 本・`KanScaffold`／`KanCocartesian` 15 本の精査 | R8 段階 4 | F1b | F1b-5 a7 完了後 | |
 | 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | F1 の区切り（集約の一行は F1 に依頼） | |
-| 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | |
+| 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | 2026-10-23（R-C、2c1fa3384） |
 | 4-3 | F1 のサブディレクトリ化、F1B の `Kan*` 接頭辞の整理、ディレクトリ名の層への対応 | R12・R13・R1・R6 | F1・F1b | 第 I 段終了時 | |
 | 5 | シムの一括削除と `KanSection.foo` → `foo` の置換（約 60 箇所）、`HomotopyLimits.lean` の docstring と `quillenCfBottomEndpoint_wrong` 等の改名 | R18 ほか | 全レーン | 第 I 段終了時 | |
 
@@ -138,14 +138,14 @@
 2026-10-23、`rg -n '\b(IndFiniteLimitExchangeInput|CoherentFilteredLimitExchangeShape|HasSpaceLimitsOfShape|DGKappaConeInput|DGKappaPerfectInput)\b' SerrePositivity --glob '*.lean'` で採取。
 使用は定義行・import 行を除く一致行数（同じ行の複数出現は 1、証拠を供給する定理も含む）。
 作業ツリーの未追跡ファイルも走査した。定義と使用の行一覧は
-[保存一覧](archive/refactor-assumptions-2026-10-23.md) を参照。
+[更新一覧](archive/refactor-assumptions-r-c-2026-10-23.md)（[初期一覧](archive/refactor-assumptions-2026-10-23.md)） を参照。
 
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
 | `IndFiniteLimitExchangeInput` | InfinityCategories/F2/Ind/FiniteLimitExchangeInput.lean:18 | F1b a7（全有限形の交換） | 11／9 |
-| `CoherentFilteredLimitExchangeShape` | InfinityCategories/F2/CoherentFilteredLimitExchange.lean:24 | F1b a7（空・単体の形は証明済み） | 9／7 |
-| `HasSpaceLimitsOfShape` | InfinityCategories/F2/SpaceLimitShapes.lean:24 | γ3 の無条件版へ R17 で差し替え予定 | 6／3 |
-| `DGKappaConeInput` | KST/NonConnective/DGKappaConeInput.lean:47 | D（K-7 へ非可算 κ-compact dg 小模型を供給） | 7／7 |
+| `CoherentFilteredLimitExchangeShape` | InfinityCategories/F2/FilteredExchange/CoherentFilteredLimitExchange.lean:24 | F1b a7（空・単体の形は証明済み） | 9／7 |
+| `HasSpaceLimitsOfShape` | InfinityCategories/F2/FilteredExchange/SpaceLimitShapes.lean:25 | `F2.hasSpaceLimitsOfShape`（`hasLimit_coherentSpaceDiagram` の系、追加仮定なし） | 7／3 |
+| `DGKappaConeInput` | KST/NonConnective/DGKappaConeInput.lean:47 | D（K-7 へ非可算 κ-compact dg 小模型を供給） | 15／15 |
 | `DGKappaPerfectInput` | KST/NonConnective/DGKappaPerfectInput.lean:36 | D（K-7 へ実 Perf との ∞ 圏比較を供給） | 3／2 |
 
 ## 7. 再発防止（foundations.md §8 に追加済み、ユーザー承認 10-23 09:33）
