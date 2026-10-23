@@ -1,0 +1,53 @@
+{
+  "state": "prepared_not_applied_waiting_for_main_free_signal",
+  "main_head": "571e451cc78316c899ce8f6f47ac25f6d73abf25",
+  "snapshot_root": "/private/tmp/r-c-main-preflight-sxnjailh",
+  "main_lean_snapshot_sha256": "39124537622c4b253744063bf55c102fc33a91ed096c8a3ae4104e11bf656a3a",
+  "tool_sha256": "1c0cffe9428cf4588431c82a3594472c0f3fbb89717aefe6bb8bb56d57c8547a",
+  "r19_moves": 2210,
+  "r16_moves": 90,
+  "total_moves": 2300,
+  "cat_infinity_moves": 290,
+  "filtered_exchange_moves": 1920,
+  "updated_lean_files_including_move_destinations": 2669,
+  "updated_existing_lean_files_excluding_moves": 369,
+  "new_bundle_files": [
+    "SerrePositivity/InfinityCategories/F2/CatInfinity.lean",
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange.lean",
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange/README.md",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/README.md"
+  ],
+  "total_distinct_updated_or_added_files": 2673,
+  "verified_import_only_module_updates": 2665,
+  "multiline_imports_handled_with_file_symbols": 53,
+  "retained_multiline_direct_imports_in_f2_entrance": 36,
+  "skipped_already_integrated": [
+    "SerrePositivity.InfinityCategories.F2.JoinRightRelativeRetraction"
+  ],
+  "excluded_owner_r_b": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSSetMaps.lean",
+  "source_changes_during_preflight": [],
+  "cherry_picks": [
+    {
+      "item": "R17",
+      "commit": "a45c923061b52c53b5a2ec76b0c136778e1182ba"
+    },
+    {
+      "item": "R20",
+      "commit": "aa124065c222af778162478a12a8accbb5a5e227"
+    },
+    {
+      "item": "R8 identical declaration sharing",
+      "commit": "0252eb8a6ce6425766971891e187e79cf4c9fbe7"
+    }
+  ],
+  "source_hash_coverage": "All original Lean files modified or moved by this plan; whole-snapshot digest remains in main_lean_snapshot_sha256.",
+  "source_hash_count": 2669,
+  "entrance_import_sets_equal": true,
+  "entrance_original_direct_import_count": 1099,
+  "bundle_sha256": {
+    "SerrePositivity/InfinityCategories/F2/CatInfinity.lean": "85188ab2486026e855e42d521cb2577dcb37db74d176693f60b36a1643405c53",
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange.lean": "56170d4859ba9baea551fd2ca887192be003f73eb576934d09071a69fb527600",
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange/README.md": "8e9e5222a4214c3352e92585fef2937b8b91c942e350eae4e74a6c5076f9338f",
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/README.md": "52f5ea1281cb27fad0f9fa5a7c9caa3ddd7e46d522cf8254c91e17d38af5863f"
+  }
+}

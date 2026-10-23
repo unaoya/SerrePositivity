@@ -3,16 +3,16 @@
 ## 引き継ぎ
 
 - 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c、3-1 完全一致部 0252eb8a6 完了。R16 87c6a2711 も90モジュールの移動・全本文保存・旧 import 0と、4集約ビルド・指定4監査の成功を確認済み。
-- 残り：R15 は R-A 取り込み・合図後の rebase を待つ。準重複はユーザー回答に基づき現存6組の全調査として確定。追加の267転送入口削除は R-A の move_module.py 到着後に実施する。
+- 残り：取り込み方式を変更。R-A の F1 再編後の main に順次再適用する。R19/R16 の2,300移動 JSON と cherry-pick 3件を準備済み。「main 空き」の合図待ち。R15・267転送入口削除も同じ専有期間に実施可。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：なし（R16・追加指示の調査記録まで 87c6a2711）。
+- 未コミット：再適用計画・ペイロード・dry-run証拠・手順。既存の実装コミットは保存。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：R-A の scripts/move_module.py 到着後に267転送入口を削除。R15 は R-A 取り込みとコーディネータの合図後に rebase・.lake再クローンを行ってから実施。R16 session 42013 は終了コード0で完了。
+- 次の一手：「main 空き」の合図後、新 main で再 dry-run → JSON --apply → R17/R20/共有化の cherry-pick → R15/267入口削除 → scripts/refactor/verify.sh。rebase と .lake 再クローンは廃止。
 
 ## 方針
 
-指定の所有範囲で直接移動・参照置換する。互換シムなし。数学的内容・既存の宣言型・証明は保存し、sorry・公理を追加しない。各項目末に F2・HomotopyLimits の集約ビルドと audit_infinity_f2・audit_infinity_presentable・audit_homotopy_limits・audit_einfinity を実行する。R-A 取り込み後はコーディネータの合図で rebase と .lake の再クローンを行う。
+指定の所有範囲で直接移動・参照置換する。互換シムなし。数学的内容・既存の宣言型・証明は保存し、sorry・公理を追加しない。各項目末に F2・HomotopyLimits の集約ビルドと audit_infinity_f2・audit_infinity_presentable・audit_homotopy_limits・audit_einfinity を実行する。取り込み方式の新指示に従い、rebase は行わず「main 空き」の合図後 main に再適用する。
 
 ## 検証
 
@@ -51,3 +51,5 @@ R16：90モジュールの名前空間・宣言型・証明は保存。全移動
 R15 事前依存調査：PresheafDensity の Ind 内依存閉包は59本。定理本体だけでなくこの前層密度の構成層を移動候補とする。境界には F2/FilteredExchange の一般余錐補助12本と Stable の補助4本があるため、R-A/R-B 取り込み後の配置を再評価する。archive/refactor-r-c-density-preflight.json は現配置の解析のみで、移動は未実施。
 
 R16 最終検証：4集約のビルド16,055 jobsと指定4監査は全て終了コード0。F2 19,486宣言、Presentable 1,479宣言、EInfinity 25,777宣言。標準三公理のみで新規 sorry・公理なし。移動元90本文は import 置換以外の差分0。UniverseSSetMaps は移動・編集していない。ログは /tmp/r-c-r16-*。
+
+取り込み方式変更：formalization-plans/archive/r-c-reapply-2026-10-23/README.md に新手順を固定。本文中の古い rebase 待ち・ツール未到着の記述は当時の実施記録であり、現在の着手条件は冒頭に記した「main 空き」の合図。
