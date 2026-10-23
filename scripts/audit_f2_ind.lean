@@ -1,6 +1,17 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerMap
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso_inv_naturality
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationGlue_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationSquare_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationLiftedCoconeMap_restrict
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowInterpolationOldFamily_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indArrowInterpolationOldFamily_iso
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_indArrowDiagramComma_cocone
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallArrowDiagramComma_isKappaFiltered
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.pinchedHomPullback_isPullback
 #check @SerrePositivity.InfinityCategories.F2.Ind.fullyFaithful_pullback_snd_of_innerFibration_right
 #check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaSliceProjection_isFullyFaithful

@@ -532,3 +532,19 @@ public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulPullbackRig
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundarySliceReflection
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSliceFullyFaithful
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCornerMap
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationCornerRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSquareRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundaryTipReflection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldFamilyIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowDiagramFiltered

@@ -11,7 +11,7 @@
   (d) 元の制限射 `indKappaContinuousRestriction` 自体の全 ∞ 圏同値と、元の順射を保持する同値データまで。
 - **F2N-5(a) 零対象を証明**：`indYoneda_isZero_of_zero` は ℵ₀ ≤ κ のもとで、元の零対象の同じ Yoneda 像が Indκ の零対象であること。
   `ind_hasZeroVertex_of_stable` は正則 κ と小さい安定 C に対する零対象の存在。一般有限極限交換への依存なし。
-- 現区切り：独立集約 7768 jobs、公理監査 3810 宣言、標準三公理のみ。
+- 現区切り：独立集約 7776 jobs、公理監査 3839 宣言、標準三公理のみ。
 - **(b) 交換入力と条件付きの有限錐保存**：`IndFiniteLimitExchangeInput.exchange` は全有限形状 K の
   `F2.CoherentFilteredLimitExchangeShape K`。一般 coherent filtered 図式・指定点ごとの native 余極限と全錐を量化する。
   この構造体の存在証拠は未提供。有限単体だけの既存結果から一般有限形状の交換を完成扱いにしない。
@@ -29,7 +29,7 @@
   `diagramComma` と `diagramCommaCocone` は指定元図式への大きい表示添字と、頂点を厳密に保つ標準全余錐。
   `diagramComma_obj_small` は全次数の実単体の小ささ。固定頂点写像の符号化を Space∞ → 前層 → Ind → 全図式と伝えて証明。
   `smallDiagramCommaIso` は ULift した小さい実模型との同型、`_projection` は元の全図式への射影の厳密な一致。
-  小さい射影の right fibration 性・全空間の quasicategory 性・同じ図式を頂点とする標準全余錐は証明済み。κ-filtered 性・余極限性は未証明。
+  小さい射影の right fibration 性・全空間の quasicategory 性・同じ図式を頂点とする標準全余錐は証明済み。`smallArrowDiagramComma_isKappaFiltered` は射形状 Δ¹ の κ-filtered 性を証明。一般有限半順序形状の κ-filtered 性と余極限性は未証明。
   `commaFamilyLift` は全射回収・往復・制限自然性を保持。
   `nonempty_indComma_cocone` と `_coslice_cocone` は実 comma と指定図式下の κ-small 試験余錐。
   `coneCommaRestriction_isPullback` と `_trivialKanFibration` は left anodyne な形状制限の実比較。
@@ -38,7 +38,7 @@
   `diagramCommaEvaluation` と `smallDiagramCommaEvaluation` は各指定値の実 Ind comma への全評価。
   両 `_projection` は元の C の図式評価、両 `_coconeMap` は同じ標準全余錐の評価を厳密に回収。cofinal 性は未証明。
   `arrowInterpolationCorner A` は (A⊗Δ¹) と (A⋆Δ⁰) を元の始点族 A で貼った実 pushout。全円柱への比較は単射、正則 κ で κ-small。
-  `indArrowPrismNativeBoundaryIso` は再構成円柱と元の円柱の比較を、C 全図式と全 D を共に固定した、元の宇宙の全図式余錐の実 fiber へ移した同型。`_NativeOriginalVertex_val` は同じ元の q の指定全余錐を厳密に回収し、`indArrowNormalizedPrism_curry_tip` は固定終点を同じ元の D へ戻す。`diagramCommaSliceProjection_isFullyFaithful` は実 slice の充填性から証明済み。`nonempty_commaFunctorIso_of_fixedCoconeBoundaryIso` で両全余錐の比較を元の comma の全族へ反映できる。補間族の制限との照合・filtered 性は未証明。
+  `indArrowPrismNativeBoundaryIso` は再構成円柱と元の円柱の比較を、C 全図式と全 D を共に固定した、元の宇宙の全図式余錐の実 fiber へ移した同型。`_NativeOriginalVertex_val` は同じ元の q の指定全余錐を厳密に回収し、`indArrowNormalizedPrism_curry_tip` は固定終点を同じ元の D へ戻す。`diagramCommaSliceProjection_isFullyFaithful` は実 slice の充填性から証明済み。`nonempty_commaFunctorIso_of_fixedCoconeBoundaryIso` で両全余錐の比較を元の comma の全族へ反映できる。`nonempty_indArrowInterpolationOldFamily_iso` は同じ補間族の制限と元の q の実 comma 内の同型。`nonempty_indArrowDiagramComma_cocone` と `smallArrowDiagramComma_isKappaFiltered` で射形状の全 κ-small 試験族の余錐と、小さい実添字の κ-filtered 性まで証明。余極限性は未証明。
 
 ### 残り（依存順）
 
@@ -74,14 +74,14 @@
 
 ### 未コミット
 
-- なし。元の全図式余錐の両固定境界 fiber の同型・同じ q の全余錐の回収に加え、実 comma の第二射影の充満忠実性と全族の同型の反映まで検証済み。
+- なし。射形状の任意の元の κ-small 試験族 q の全余錐と、小さい実 diagram comma の κ-filtered 性まで検証済み。
 
 ### 既知の問題
 
 - F2N-5(a)(b) の有限余極限・有限極限・安定性は未証明。零対象だけで (a) 完了とはしない。(c) は完了。
 - `IndFiniteLimitExchangeInput` の構成子は一般有限極限交換の証拠を要求する。現在は供給する定理が未提供。
 - **経路修正**：[HTT 5.3.5.15・Warning 5.3.5.16](https://people.math.harvard.edu/~lurie/papers/HTT.pdf) は有限半順序集合の nerve を要求。任意の有限単体集合への filtered 図式表示の拡張は偽。
-- 全形状で証明した充満忠実性・comma の小ささは有効。filtered 性・標準余錐の余極限性は有限半順序形状で証明する。
+- 全形状で証明した充満忠実性・comma の小ささは有効。射形状の κ-filtered 性は済み。一般有限半順序形状の filtered 性と標準余錐の余極限性は残る。
 - `IsStable` から有限全形状の存在への公開 API は未確認。追加仮定で回避しない。
 
 ### 次の一手
@@ -96,8 +96,8 @@
 `diagramCommaPrism` は q の元の全変換を全円柱 W として回収。`_old` は元の C 全図式の Yoneda 像、`_tip` は元の D、`_point` は同じ評価 comma の標準全余錐。
 `indArrowSourceSliceLift` は元の全錐族を終点 slice 内の余錐へ組み替える。`_projection_of_initial` は元の q の標準全余錐との厳密な一致、`_precomp` は G の制限との自然性。`liftedIntervalToSmall_first`・`_last` で両端点を保持。
 `indArrowNormalizedPrism` は元の全円柱の正規化、`indArrowSlicePrism_nonempty` はその実 slice 持ち上げ。`indArrowEndpointFamily` は元の C 全図式を保つ実 F、`_zero` は始点全錐から作る同じ族との厳密な一致。`indArrowInterpolationData_nonempty` はこれらと実全円柱延長 E を束ね、正則 κ・任意の元の κ-small 試験族 q に対して実証済み。
-`indArrowPrismNativeBoundaryIso` は、区間の curry・宇宙比較を通じ、両全境界を固定した同じ元の全図式余錐の fiber 内で比較済み。`indArrowPrismNativeOriginalVertex_val` は元の q の全余錐そのもの、`_ReconstructedVertex_val` は再構成円柱の同じ curry。`nonempty_commaFunctorIso_of_fixedCoconeBoundaryIso` で同じ元の comma の全族へ反映する界面は証明済み。`diagramCommaSliceProjection_isFullyFaithful` は右側の実 slice の inner fibration 性を使い、Yoneda 自身の充填性は仮定しない。次は `arrowInterpolationCornerMap f` と cocone 同型の自然性を実装し、f=ULift(joinInl A Δ⁰) による `indArrowInterpolationSquare` の制限が再構成円柱 r と厳密に一致することを証明。slice 円柱側は `_SliceCylinder_old`、始点余錐側は `indArrowSourceSliceLift_precomp` と W.start で pushout の両脚を揃える。curry の形状自然性と `_CommaFamily_uncurry` から、同じ補間族の制限の全余錐を再構成端点に結び、反映定理と余錐の同型輸送を適用する。全変換の回収・filtered 性は未証明。有限 P の境界は (N(P≤a)×B)∪(N(P<a)×{∞})、B は一般 κ-small 試験形状。
-次に各頂点評価の cofinal 性で `smallDiagramCommaCocone` の native 余極限性を証明。まず P=[1]（射）を実現する。
+`smallArrowDiagramComma_isKappaFiltered` により、射形状 Δ¹ の小さい実 comma の κ-filtered 性は追加仮定なしに完了。`nonempty_indArrowInterpolationOldFamily_iso` は補間族の制限と同じ元の q の実 comma 内の同型を回収し、実全余錐を同じ q へ輸送して結論。有限半順序全体の表示や標準余錐の余極限性は未証明。
+次は両端点 k に対する `smallDiagramCommaEvaluation κ D k` の cofinal 性を証明し、既存の単一頂点表示の native 余極限から `smallDiagramCommaCocone` の余極限性を回収する。各評価の `_projection`・`_coconeMap` は元の全図式と指定余錐を厳密に保持する。指定評価対象の下での表示添字の全試験余錐を、同じ二段補間と頂点 comma の coslice の κ-filtered 性から作る。一般有限 P への帰納はその後で、境界は (N(P≤a)×B)∪(N(P<a)×{∞})、B は一般 κ-small 試験形状。
 HA 1.1.3.6 に沿って、元の射の filtered 表示から元の C の fiber/cofiber 全四角形の filtered 表示を構成する。
 cofiber は余極限の合成、fiber は明示交換入力による前層の点ごとの引き戻し交換で示し、零角の一致から安定性へ戻す。
 有限全形状の存在は一般安定性の存在定理を所有内で補い結論する。元の C の有限全存在を追加仮定にしない。

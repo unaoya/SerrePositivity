@@ -51,4 +51,12 @@ lemma rightTensorCurryMap_source {A B K X : SSet.{u}} (f : A ⟶ B) :
   exact congrArg (fun b ↦ (s.app k (α ≫ β)) (b, t))
     (ConcreteCategory.congr_hom (f.naturality β) a)
 
+/-- 同じ右因子の curry は、元の形状制限に対して全射の等式として自然。 -/
+lemma rightTensorCurry_precomp {A B K X : SSet.{u}} (f : A ⟶ B) (c : B ⊗ K ⟶ X) :
+    f ≫ curry ((β_ K B).hom ≫ c) =
+      curry ((β_ K A).hom ≫ (f ▷ K) ≫ c) := by
+  apply uncurry_injective
+  rw [uncurry_natural_left, uncurry_curry, uncurry_curry]
+  rfl
+
 end SerrePositivity.InfinityCategories.F2.Ind
