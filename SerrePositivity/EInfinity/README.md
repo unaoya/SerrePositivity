@@ -2756,3 +2756,8 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 元の導来 roof 自身に Arrow として同定する。`normalizedTensorDerivedPinchedFamily_arrow` は
 元の derived pinched 写像の全区間族を同じ roof へ接続し、全 K と端点輸送を保持する。
 `normalizedTensorDerivedPinchedFamily_eq_roof` は明示的な端点輸送込みの同じ全族の等式。
+
+`BarrattEccles.freeProbeElementColumn` は同じ正規化 Hom の要素圏上の自由 E∞ frame の列。
+元の augmentation と随伴による評価は全列で自然で、同じ単位による忘却後の三角形を保つ。
+全 augmentation・全列射の弱同値性と各列対象の cofibrancy も提供する。
+標準単位比較への全 pinched 族としての接続は次工程。
