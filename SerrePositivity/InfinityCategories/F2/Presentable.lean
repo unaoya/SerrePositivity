@@ -34,3 +34,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPr
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomAccessible
+public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals

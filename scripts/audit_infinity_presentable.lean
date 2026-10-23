@@ -164,3 +164,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHom_mapCocone_native
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_preserves_strictCocone
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeHom_covariantModelIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalRelativeHomIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanTerminalInfinity_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanTerminalHomInfinityComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kanHom_covariantModelIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_spaceCompactCardinal_family

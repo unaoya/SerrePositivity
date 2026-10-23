@@ -38,7 +38,6 @@
 - 非可算正則 μ について、μ-small 形状の全単体と単体圏の全射の個数を同じ μ で評価。
   通常の SSet の μ-presentability、境界を保つ strict 因子化、積の μ-small 性と内部 Hom の μ-filtered 保存を証明。
   Type と SSet の通常の μ-small 極限と μ-filtered 余極限の交換を証明。Space の poset 形状の全 coherent 交換へ接続。
-- weighted sections・Bousfield–Kan 模型の strict 連続性、元の比較の弱同値保存、内部 Hom との全自然な交換を証明。元の全脚を保持。
 - Kan 値 strict 錐の native 極限性の比較射による iff と保存性を証明。F1 の分類で全錐族を同時 strict 化し、元の全脚を読み戻す。
 - 同時 strict 化した全錐族の指定点ごとの余極限を輸送。thin な錐添字の一致から元の strictCoherentConeMap を回収し、全脚と native な極限性を比較。
 - WithInitial の元の錐の比較を二つの連続関手間の自然変換にし、同じ strict 余極限錐自身の native な極限性を証明。
@@ -52,8 +51,9 @@
 - 工程 (2) の `IsPresentable` を accessibility と全小余極限で定義。前層・空間の全小余極限と全小極限を提供。
   全同値による presentable 性の保存・反映と、小余極限を持つ Ind 模型による特徴づけを証明。
 - 非可算正則 μ と μ-small Kan 始点について、全高次射に作用する内部 Hom 関手の μ-filtered 余極限保存を証明。
-  元の一般 coherent 図式の指定全余錐像を保持。N の大きい共変 Hom との宇宙比較・compact 性への接続は未完。
-- 独立集約ビルド成功（7717 jobs）、公理監査 626 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+  終対象上の相対 Hom と N の大きい全共変 Hom の全自然比較から、同じ μ-small Kan 空間の μ-compact 性を実証。
+- 任意の小さい空間族が、指定上限を超える同じ正則濃度で全て compact になることを証明。空間自身の accessibility は未証明。
+- 独立集約ビルド成功（7723 jobs）、公理監査 665 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
@@ -89,18 +89,18 @@
 - `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
 - `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
 - `IsKappaAccessible.of_cardinalChangeBound`、`IsAccessible.exists_larger`、`exists_common_accessibilityCardinal`
-- `IsPresentable`、`isPresentable_iff_equivalence`、`smallKanHomInfinity_isKappaAccessibleFunctor`
+- `IsPresentable`、`kanHom_covariantModelIso`、`smallKanObject_isKappaCompact`、`exists_spaceCompactCardinal_family`
 
 ### 未コミット
-- なし。工程 (1) の検証済み区切りを所有ファイルのみ保存。
+- なし。工程 (2) の検証済み区切りを所有ファイルのみ保存。
 
 ### 既知の問題
 - 濃度変更は `IsCardinalChangeBound κ μ` と μ の正則性の下で実証。κ ≤ μ だけによる単調性は主張しない。
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (2)。小さい空間の全 Hom の filtered 保存を N の compact 定義の宇宙へ比較し、compact 性へ接続する（N `UniverseColimits`、F1 `RelativeHomCosliceEquivalence` を確認）。
-  空間・前層の小さい compact 生成圏と各指定対象の全表示を構成する。前層自身の accessibility は未証明。
+- 工程 (2)。任意の単体集合始点への Hom の豊穣作用と有限始点の filtered 保存を構成し、Kan 置換との全自然比較を得る。
+  有限模型の Kan 置換の compact 性と filtered 表示から空間の小さい生成圏を構成し、前層へ進む。両者の accessibility は未証明。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約
