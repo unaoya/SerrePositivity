@@ -195,3 +195,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteOverCode
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftHornCellStepUnit_leftAnodyne
 #check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacementUnit_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeOverHomTensorEquiv
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeOverHomEvaluationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeOverHom_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationHomIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverPieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverReplacementCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverReplacementDiagram_in_family
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_of_filtered_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeFunctorEnrichedEvaluation_underlying
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeHom_preserves_strictCocone

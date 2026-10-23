@@ -52,8 +52,10 @@
 - 有限模型を `FintypeCat.Skeleton` 値の図式で宇宙 u の共通族へ符号化し、小さい compact 全部分生成圏を構成。
   `space_isKappaAccessible_aleph0` と `space_isPresentable` を実証。一般の前層の accessibility は未証明。
 - 任意の小さい底上で、有限全空間の有限表示性・共通の符号と左ホーン付加の可算反復関手を構成。
-  filtered 余極限保存・実際の left fibration 性・元の単位の左アノダイン性を実証。compact 生成への接続は未証明。
-- 新規界面の独立監査 73 宣言は標準三公理のみ。全体の再検証は共有 F1 更新中の olean 欠落で未完（前回の集約成功・731 宣言監査済み）。
+  filtered 余極限保存・left fibration 性・元の単位の左アノダイン性・相対 Hom の全関手同型を実証。
+  有限始域の相対 Hom の通常の filtered 保存と、strict 全余錐の像の native な空間余極限性を実証。
+  有限底上模型の通常の filtered 全表示・同じ符号族との同型・left fibration の filtered 余極限閉性を実証。compact 性は未証明。
+- 今回の独立監査 128 宣言は標準三公理のみ。全体集約は共有 `F2/CoherentTotalCoconePre` の長時間実行中で未完、修正後の再ビルドも必要（前回全体 731 宣言監査済み）。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
@@ -73,15 +75,13 @@
 - `IsKappaAccessibleFunctor`、`IsAccessibleFunctor`、`indYoneda_isKappaCompactGenerating`、`indInfinity_isKappaAccessible`
 - `IsKappaCompactGenerating.compact_iff_retract`、`IsKappaAccessible.exists_indComparison`
 - `pinchedHomMap_equivalence_of_source_colimit`、`indComparison_isFullyFaithful`、`indComparisonEquivalence`
-- `IsKappaAccessible.exists_indRepresentation`、`IsKappaAccessible.exists_indEquivalence`
-- `isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
+- `IsKappaAccessible.exists_indRepresentation`、`IsKappaAccessible.exists_indEquivalence`、`isKappaAccessible_iff_indEquivalence`、`isAccessible_iff_indEquivalence`
 - `isKappaAccessibleFunctor_iff_equivalence_conjugate`、`isAccessibleFunctor_iff_equivalence_conjugate`
 - `IsCardinalChangeBound`、`exists_regular_cardinalChangeBound_family`
 - `SmallFilteredPieces`、`exists_smallFilteredPiece_containing`、`smallFilteredPieces_cover`
 - `smallFilteredPieces_nerve_isKappaFiltered`、`smallFilteredPiece_nerve_properties`
 - `exists_smallFilteredPiece_factorization`、`nerveSubsetLift_transition`
-- `SmallFilteredTotal`、`smallFilteredTotalValue_isRightCofinal`
-- `smallFilteredTotal_restrict_isColimit_iff`、`smallFilteredTotalDiagram_restrict_fiber`
+- `SmallFilteredTotal`、`smallFilteredTotalValue_isRightCofinal`、`smallFilteredTotal_restrict_isColimit_iff`、`smallFilteredTotalDiagram_restrict_fiber`
 - `smallPiece_leftKanShape_isKappaFiltered`、`smallPiece_exists_leftKanExtension`
 - `smallPieceFiberKanComparison_isRightCofinal`、`exists_smallPartialColimitFamily`
 - `leftKan_colimitVertexIso`、`exists_smallPartialColimitPresentation`、`exists_filteredPartialPresentation`
@@ -100,7 +100,7 @@
 
 ### 次の一手
 - 工程 (2)。F1 の `LeftFibrationInfinity` と N の相対 Hom の全共変比較を使い、一般の小さい底上の前層へ進む。
-  連続 left fibration 置換を用い、有限底上模型の filtered 全表示・相対 Hom の全自然比較・compact 性へ進む。前層の accessibility は未証明。
+  集約を再確認し、分類の各頂点評価で底上の strict filtered 全余錐の native 性を証明する。一般 coherent 添字の相対 Hom 保存・compact 性は未完。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約
