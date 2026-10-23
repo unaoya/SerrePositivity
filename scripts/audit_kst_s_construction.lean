@@ -30987,3 +30987,87 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKEdge_isInvertible
 #print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso_whiskerLeft
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso_whiskerLeft
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso_whiskerRight
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftClosedIso_whiskerRight
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso_hom_eval
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso_hom_eval
+
+#check @SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso_inv_eval
+#print axioms SerrePositivity.KST.SConstruction.dgUniverseLiftFunctorClosedIso_inv_eval
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedIsoEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedIsoEdge_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedIsoNativeEdge
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedIsoNativeEdge
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedIsoNativeEdge_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedIsoNativeEdge_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgKInputHom_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgKInputHom_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoHomEdge
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoHomEdge
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIso_homMk_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIso_homMk_eq
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoIntervalEdge
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoIntervalEdge
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_one
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_one
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoKTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoKTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeAlgebraSmallInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeAlgebraSmallInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputHomEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputHomEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKComparison

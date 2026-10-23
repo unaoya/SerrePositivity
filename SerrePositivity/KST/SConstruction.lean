@@ -2547,4 +2547,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallMorita
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInput
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputMorita
 
+public import SerrePositivity.KST.SConstruction.DGKUniverseLiftSmall
+public import SerrePositivity.KST.SConstruction.DGUniverseLiftClosedFamily
+public import SerrePositivity.KST.SConstruction.DGFunctorClosedNativeEdge
+public import SerrePositivity.KST.SConstruction.DGKInputClosedComparison
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
