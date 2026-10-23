@@ -554,3 +554,5 @@ public import SerrePositivity.KST.Fibration.VerdierNullContractionComparison
 public import SerrePositivity.KST.Fibration.VerdierNullContractionCoordinates
 public import SerrePositivity.KST.Fibration.StableSingleSCoreFamily
 public import SerrePositivity.KST.Fibration.QuotientSKernelNullCoreAction
+public import SerrePositivity.KST.Fibration.CoreFamilyDiagonalCylinder
+public import SerrePositivity.KST.Fibration.CoreSingleFamilyCylinder

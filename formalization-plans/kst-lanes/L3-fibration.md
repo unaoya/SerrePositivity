@@ -14,7 +14,7 @@
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
 - 元の核包含を実核への完全同値へ制限し、K-2 Segal 実現で元の核四角形を homotopy pullback と証明。
   relativeSFibrationFiberIso は実 fiber と core S(D) の局所化同型で、同じ射影は元の包含の実現射。
-  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。一つの零自己関手→恒等の実自然変換を全 S_n の全 Hom 作用へ送り、全ての面・退化に自然な実円柱を構成。核上の包含そのものを順射とする全単体的同型で相対核へ戻し、同じパラメータの対角円柱と一点への具体的収縮ホモトピーを構成。元の商比較へ全単体的円柱を送り、元の core S 包含・商の実合成に対する具体的零化ホモトピーを構成。零値後合成の全族を元の Kan Hom へ読み戻し、その全 S_n 作用が同じ商核円柱の包含後の像と厳密一致。指定下側二胞体の直接 path→合成 path 族と、実合成端を全時刻で固定した全比較辺・円柱を構成し、全正反復 S の全 Hom 作用後も固定。元の指定両端への対象座標の輸送後も同じ全収縮族を異種等号で照合。元の core 包含で制限した全単体的零化円柱の各段は、K-S• の同じ全 Kan Hom 族による core S_n 作用と厳密一致し、対角は元の零化円柱を回収。core 制限・対角・Ex∞ を通る指定二胞体比較と全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
+  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。一つの零自己関手→恒等の実自然変換を全 S_n の全 Hom 作用へ送り、全ての面・退化に自然な実円柱を構成。核上の包含そのものを順射とする全単体的同型で相対核へ戻し、同じパラメータの対角円柱と一点への具体的収縮ホモトピーを構成。元の商比較へ全単体的円柱を送り、元の core S 包含・商の実合成に対する具体的零化ホモトピーを構成。零値後合成の全族を元の Kan Hom へ読み戻し、その全 S_n 作用が同じ商核円柱の包含後の像と厳密一致。指定下側二胞体の直接 path→合成 path 族と、実合成端を全時刻で固定した全比較辺・円柱を構成し、全正反復 S の全 Hom 作用後も固定。元の指定両端への対象座標の輸送後も同じ全収縮族を異種等号で照合。元の core 包含で制限した全単体的零化円柱の各段は、K-S• の同じ全 Kan Hom 族による core S_n 作用と厳密一致し、対角は元の零化円柱を回収。全図式 Hom の射影を用いて全入力族を全単体的円柱へ送り、対角が元の豊穣対角作用と厳密一致すると証明。全有限反復 core S• へ接続し、一回の native 図式と元の core S• の恒等成分の同型を介して、元の商核零化円柱が同じ実合成の全豊穣実現族の評価と厳密一致。core 制限・対角・Ex∞ を通る指定二胞体比較と全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
 - Ore・分母輸送・固定分数・可変終点 coslice の既存構成は保持し、新設は Sp 正本へ依頼する。
   全 span 族の評価・全単体被覆・W 反転・降下・同じ分数比較の回収を構成。一般比較同値・span 普遍性は未証明。
   tamme* の lax 専用仮定を一般 Verdier 商へ流用しない。H⁰ の普遍性で全写像空間を代用しない。
@@ -82,7 +82,7 @@
   dgKInputFiberSquare、dgRelativePiZeroMap_surjective、dgRelativeFiberSquare_negative_subsingleton。
 - weakCosliceComparisonFiber_isEssentiallySurjective、weakSpanKanMappingComparison_value_isEssentiallySurjective、
   weakQuotientMappingComparison_isIso_of_fraction_fullyFaithful。
-- relativeSKernelContractionCylinder、relativeSKernelDiagonalContraction、quotientSKernelNullHomotopy、quotientSKernelContractionImage_fullS、quotientSKernelNullNatTrans_app、quotientSKernelNullNatTrans_diagonal、verdierNullContractionComparison、verdierNullContractionFamily_original_heq。
+- relativeSKernelContractionCylinder、relativeSKernelDiagonalContraction、quotientSKernelNullHomotopy、quotientSKernelContractionImage_fullS、quotientSKernelNullNatTrans_app、quotientSKernelNullNatTrans_diagonal、stableMultiCoreFamilyCylinder_diagonal、quotientSKernelNullCylinder_native、verdierNullContractionComparison、verdierNullContractionFamily_original_heq。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
   leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
 - fiberGroup_lowerBound_iff_projection_surjective、connectiveFiber_iff_projection_piZero_surjective、
@@ -95,12 +95,12 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（商像の零化・全 S_n と core 作用・指定二胞体の実合成端固定比較・対象座標照合の10モジュール、集約・監査・本計画）。対象ビルド10771 jobs・公理監査555モジュール3270宣言は成功。全体ビルド（exec session 99583、/tmp/kst-fibration-root-build.log）は継続中で、成功とは扱わない。対角作用の追加証明は /tmp/KSTDiagramFamilyCylinder.lean で独立検証中（session 20706）。
+- なし（CoreFamilyDiagonalCylinder・CoreSingleFamilyCylinder、集約・監査・本計画）。集約10773 jobs・監査557モジュール3282宣言成功。前の所有13ファイルは 51fe1d56b に保存済み。全体ビルド（exec session 99583、/tmp/kst-fibration-root-build.log）は継続中で、成功とは扱わない。
 ### 既知の問題
 - 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- 同じ exec session 99583 の全体ビルドの終了を確認する。観測 timeout で再起動しない。独立検証中の /tmp/KSTDiagramFamilyCylinder.lean の全族と対角作用の一致を検証し、所有モジュールへ取り込む。続いて、quotientSKernelNullNatTrans_app・quotientSKernelNullNatTrans_diagonal の同じ core S• 全族を、simplicialSSetDiagramProjection と simplicialSSetDiagramDiagonalAction の全パラメータ評価を介して対角実現・Ex∞ の全 Hom 作用へ送り、verdierNullContractionComparison と元の共有対角固定円柱から指定二胞体を保つ全四角形比較へ進む。元の対象座標は verdierNullContractionFamily_original_heq で照合済み。Sp の三件の不足 API と商実現比較への接続も確認する。
+- 全体ビルドは同じ exec session 99583 の終了を確認し、観測 timeout で再起動しない。独立検証済み /tmp/KSTRawFamilyCoordinates.lean（relabelInternalFamily_uncurry）を使って、元の core S 実現対象への全 Hom の座標読み替えを構成する。次に coreSingleSimplicialIso の対角が coreSingleRealizationIso の逆射と等しいことを回収し、quotientSKernelNullCylinder_native の全族を元の core S 実現対象へ座標読み替えする。Ex∞ の全 Hom 作用へ送り、verdierNullContractionComparison と共有対角固定円柱から指定二胞体を保つ全四角形比較へ進む。Sp の三件の不足 API と商実現比較への接続も確認する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
