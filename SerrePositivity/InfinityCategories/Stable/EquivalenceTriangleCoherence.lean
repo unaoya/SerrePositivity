@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F1B.KanAdjunctionHomTriangles
 public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
 /-!

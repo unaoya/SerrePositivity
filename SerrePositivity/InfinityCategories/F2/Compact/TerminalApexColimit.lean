@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentFilteredTerminal
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTerminal
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 

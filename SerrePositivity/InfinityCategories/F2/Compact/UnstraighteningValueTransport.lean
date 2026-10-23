@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeTransportValue
 public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue
 

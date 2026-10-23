@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.InitialPrismTwoEndpoints
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
 public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
 
 /-!

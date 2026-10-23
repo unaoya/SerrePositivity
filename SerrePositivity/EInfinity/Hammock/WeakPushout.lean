@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
 public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedHomotopy
-public import SerrePositivity.InfinityCategories.F2.ConstantTransformationVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex
 
 /-!
 概要：評価された元の密度変換を、始点固定の共同 Hom の変換の頂点へ厳密に同定する。

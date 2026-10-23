@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputBoundaryLift
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceDiagonalPullback
-public import SerrePositivity.InfinityCategories.F2.KanTensorComplex
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
 
 /-! 第一辺と対角辺の同時評価は全境界制限の pullback であり、Kan fibration。 -/
 @[expose] public section

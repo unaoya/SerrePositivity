@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism
-public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeTriangleLowerFaces
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeTriangleLowerFaces
 
 /-!
 概要：任意の fiber 図式比較の右辺の正方形を、元の二三角形と対角辺として保持する。

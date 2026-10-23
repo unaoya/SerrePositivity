@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomMappingComparison
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackMapping
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackMapping
 
 /-! 同じ実 Hom 比較を、F2 の指定された厳密な写像空間引き戻しへ運ぶ。 -/
 @[expose] public section

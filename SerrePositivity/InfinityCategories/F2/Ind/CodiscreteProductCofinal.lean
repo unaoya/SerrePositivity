@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeLabels
-public import SerrePositivity.InfinityCategories.F2.FilteredEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
 public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationCofinality
 
 /-!

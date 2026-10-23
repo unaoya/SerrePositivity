@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.ConstantSourceComparison
-public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportWitness
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportWitness
 
 /-!
 概要：定値始域の二種類の直積座標を、全評価の合成で厳密に照合する。

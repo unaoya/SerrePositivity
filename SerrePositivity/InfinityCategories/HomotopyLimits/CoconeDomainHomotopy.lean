@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafCoconeFlip
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationVertex
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 
 /-!

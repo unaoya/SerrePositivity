@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.PointedIntervalTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalTransport
 public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedFiberTransportNaturality
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 

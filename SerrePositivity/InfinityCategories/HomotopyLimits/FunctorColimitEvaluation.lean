@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-!

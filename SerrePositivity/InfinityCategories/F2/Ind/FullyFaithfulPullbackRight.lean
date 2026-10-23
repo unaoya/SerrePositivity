@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PinchedHomPullbackSquare
-public import SerrePositivity.InfinityCategories.F2.PinchedHomEndpointTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomEndpointTransport
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLiftingPullback
 

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalVertexHomotopy
-public import SerrePositivity.InfinityCategories.F2.CoconeRealizationTransformation
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationEquivalence
-public import SerrePositivity.InfinityCategories.F2.YonedaHomotopyVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeRealizationTransformation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex
 
 /-!
 概要：指定変換の実現余錐と、同じ変換を表す元の余錐を全余錐空間内で比較する。

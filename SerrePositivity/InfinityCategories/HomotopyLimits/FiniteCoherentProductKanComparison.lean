@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentTotalEquivalence
-public import SerrePositivity.InfinityCategories.F2.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
 
 /-!

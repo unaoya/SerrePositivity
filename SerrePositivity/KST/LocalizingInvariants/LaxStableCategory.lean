@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StableCategories
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackStable
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackStable
 
 /-!
 概要：F2 の元の lax pullback と完全射影を K-5 の安定圏の界面へ束ねる。

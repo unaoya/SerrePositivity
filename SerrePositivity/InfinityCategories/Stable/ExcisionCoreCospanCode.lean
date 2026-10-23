@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCorePunctured
-public import SerrePositivity.InfinityCategories.F2.LimitConeExtension
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram

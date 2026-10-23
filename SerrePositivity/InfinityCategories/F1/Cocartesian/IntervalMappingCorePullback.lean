@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalMappingFibration
-public import SerrePositivity.InfinityCategories.F2.CorePullbackIso
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
 
 /-!
 概要：一次元の元の輸送図式の Hom の core は、同じ二成分の core の pullback。

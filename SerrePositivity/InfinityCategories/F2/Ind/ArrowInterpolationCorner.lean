@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallPushout
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallProducts
-public import SerrePositivity.InfinityCategories.F2.SmallJoin
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallJoin
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.Core.IntervalEndpointPullback
 public import Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplexOne

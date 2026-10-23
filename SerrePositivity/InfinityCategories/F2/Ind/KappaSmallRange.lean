@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.SmallSimplicialShapes
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes
 public import Mathlib.CategoryTheory.Subfunctor.Image
 
 /-!

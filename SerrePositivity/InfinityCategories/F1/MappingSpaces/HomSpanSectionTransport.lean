@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 
 /-!
 概要：同じ Hom 比較 span の指定された切断による輸送と共通の始域との整合性。

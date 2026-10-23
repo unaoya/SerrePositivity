@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentation
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationCartesianRestriction
-public import SerrePositivity.InfinityCategories.F2.UniverseKanPullback
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseKanPullback
 
 /-!
 概要：元の大域的な宇宙変更表現を、元の図式制限の全空間へ同時に制限する。

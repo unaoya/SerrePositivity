@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiber
-public import SerrePositivity.InfinityCategories.F2.QCatTensorAndArrowObjects
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatTensorAndArrowObjects
 
 /-!
 概要：実 product fiber 四角形の中項と右項は指定 BF 対象で、左項は元の E(A) と同値。

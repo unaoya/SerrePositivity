@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionComparisonProjection
 public import SerrePositivity.InfinityCategories.Stable.FunctorIsoArrowTransport
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionIso
 /-!
 概要：元の入力切断の同じ比較同型の底への像を、端点輸送も含めて回収する。

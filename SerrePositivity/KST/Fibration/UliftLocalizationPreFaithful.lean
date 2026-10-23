@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
-public import SerrePositivity.InfinityCategories.F2.UliftPrecomposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseFullyFaithful
 
 /-! # 小さい局所化標的への前合成の全写像空間の充満忠実性の宇宙移送 -/

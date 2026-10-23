@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallShapePresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallShapeTensor
-public import SerrePositivity.InfinityCategories.F2.FiniteInternalHomContinuity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteInternalHomContinuity
 
 /-!
 概要：μ-small な形状からの内部 Hom は、μ-filtered な通常の余極限を保つ。

@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTransComponent
-public import SerrePositivity.InfinityCategories.F2.SpecifiedConeTransportRestrictions
-public import SerrePositivity.InfinityCategories.F2.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedConeTransportRestrictions
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
 
 /-!
 概要：通常の自然変換の元の円柱を保持する、coherent 極限錐の輸送。

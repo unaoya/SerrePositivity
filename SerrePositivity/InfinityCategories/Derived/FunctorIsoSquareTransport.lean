@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoChainTransport
 /-!
 概要：指定された全関手同型の可換四角形を、同じ端点と異種等式で輸送する。
 方針：端点の等式と同型の指定値を同時に消去する。

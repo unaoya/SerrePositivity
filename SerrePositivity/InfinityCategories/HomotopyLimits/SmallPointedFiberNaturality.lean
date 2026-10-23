@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTotalMap
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationTotalMap
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 
 /-!

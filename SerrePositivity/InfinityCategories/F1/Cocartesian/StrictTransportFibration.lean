@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.UnderMapMono
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsRestrictionLifting
-public import SerrePositivity.InfinityCategories.F2.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
 
 /-!
 概要：薄い底上の元の strict transport の遷移は、同値の相対持ち上げを持つ。

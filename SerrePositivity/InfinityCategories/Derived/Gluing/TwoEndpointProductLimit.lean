@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointProductPullback
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimit
-public import SerrePositivity.InfinityCategories.F2.KanTensorComplex
-public import SerrePositivity.InfinityCategories.F2.SpaceSquareProjections
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareProjections
 
 /-! 同じ左右 Hom と係数 Hom の実直積を使う、元の差の cocone 空間の ∞ 極限錐。 -/
 @[expose] public section

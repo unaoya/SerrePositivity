@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Diagrams.ConstantSourceSectionAction
-public import SerrePositivity.InfinityCategories.F2.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramTransportComparison
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 
 /-!

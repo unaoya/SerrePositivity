@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RepresentableTerminalVal
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F2.CoherentFilteredTerminal
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTerminal
 
 /-!
 概要：Indκ に属する前層は、元の小さい圏の始対象を空間の終対象へ送る。

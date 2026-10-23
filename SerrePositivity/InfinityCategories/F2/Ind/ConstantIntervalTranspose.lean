@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFunctorHomPrism
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
-public import SerrePositivity.InfinityCategories.F2.ConstantTransformationVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTransformationVertex
 
 /-!
 概要：定値図式間の全変換空間を、元の二頂点間の区間写像のパラメータ族へ転置する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointSliceUncurry
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder

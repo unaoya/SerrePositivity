@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedProductComparison
-public import SerrePositivity.InfinityCategories.F2.FiberwisePullbackKanObjects
-public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanObjects
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!

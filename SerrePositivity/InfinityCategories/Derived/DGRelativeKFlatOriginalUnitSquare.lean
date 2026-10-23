@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAu
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：元の導来対角単位を、K-flat 圏内の同じ augmentation と通常単位の経路へ同定する。
 方針：実包含後の元の単位の式を回収し、全関手射の充満忠実性で反映する。

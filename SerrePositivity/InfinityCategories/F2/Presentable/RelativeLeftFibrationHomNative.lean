@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteRelativeOv
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoherentEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-!

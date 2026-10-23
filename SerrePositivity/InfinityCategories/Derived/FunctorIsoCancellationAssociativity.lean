@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：二つの中間同値を消去する順序の交換。
 方針：指定済みの実射と比較同型の値を保持して照合する。

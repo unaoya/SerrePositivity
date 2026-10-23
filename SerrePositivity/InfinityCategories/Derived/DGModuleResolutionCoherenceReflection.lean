@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 /-!
 概要：指定半自由分解による前合成は、全関手の変換と同型の等式を反映する。
 方針：局所化の全写像空間充満忠実性を h Fun へ移し、指定前合成と照合する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeOverAnodyneRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullRestrictionPullback
-public import SerrePositivity.InfinityCategories.F2.CoreTrivialFibration
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreTrivialFibration
 
 /-!
 概要：指定辺を覆う単射な同値による、元の指定辺保存 Hom の自明 Kan 制限。

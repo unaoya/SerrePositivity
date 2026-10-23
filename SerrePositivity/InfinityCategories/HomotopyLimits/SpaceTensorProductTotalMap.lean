@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTensorProductProjection
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTotalMap
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationTotalMap
 
 /-!
 概要：点ごとの coherent 積図式の小さい全空間を、元の二つの全空間の引き戻しへ写す。

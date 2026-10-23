@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalKanComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductNativeLegs
-public import SerrePositivity.InfinityCategories.F2.KanApexConeTransportLeg
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanApexConeTransportLeg
 
 /-!
 概要：元の評価錐頂点の余極限を頂点に持つ全積錐を、同じ slice 比較辺で構成する。

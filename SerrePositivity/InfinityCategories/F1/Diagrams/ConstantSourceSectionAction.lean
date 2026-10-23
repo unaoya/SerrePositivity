@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Diagrams.ConstantSourceSectionMap
 public import SerrePositivity.InfinityCategories.F1.Diagrams.ConstantSourceCoordinates
-public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningCoordinates
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningCoordinates
 
 /-!
 概要：定値 fiber 間の全写像の族の底上の後合成を、全切断への同じ後合成へ移す。

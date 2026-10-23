@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedInfinity
-public import SerrePositivity.InfinityCategories.F2.FilteredBinaryDiagonal
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredBinaryDiagonal
 public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
 
 /-!

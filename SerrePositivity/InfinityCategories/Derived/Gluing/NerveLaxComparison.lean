@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NerveStructure
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
 /-! native 加群 dg nerve を共通標的とする F2 の実 lax pullback への比較写像。 -/

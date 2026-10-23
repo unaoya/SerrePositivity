@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafAllSmallLimits
-public import SerrePositivity.InfinityCategories.F2.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.F2.FunctorVertexConeReindex
-public import SerrePositivity.InfinityCategories.F2.LimitConeFamilyReadback
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LimitConeFamilyReadback
 
 /-!
 概要：元の小さい全錐に前層を制限し、同じ全錐の空間値族を作る。

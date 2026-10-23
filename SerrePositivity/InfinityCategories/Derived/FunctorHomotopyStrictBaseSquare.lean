@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：基底上で恒等となる入力比較と全単体ホモトピーの交換則を簡約する。
 方針：指定同型の後続像を同じ恒等射に同定し、非可逆な全関手射の右単位を相殺する。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
 public import SerrePositivity.KST.LocalizingInvariants.ExactTransformationStableLocus
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackVertexData
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackEquivalenceSubcomplex
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexData
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceSubcomplex
 
 /-!
 概要：lax pullback の指定矢印の全族を両完全射影の間の実自然変換と同定する。

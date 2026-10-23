@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeSecondCompositeProjection
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleHomSecond
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の大域 Hom 作用上で、第二面の比較を同じ分解三角形の指定合成比較へ戻す。

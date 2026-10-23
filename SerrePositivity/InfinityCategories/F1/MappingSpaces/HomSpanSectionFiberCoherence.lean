@@ -4,8 +4,8 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIso
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionUnitCoherence
 public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionCoherence
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransportAlgebra
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
 
 /-!
 概要：元の fiber 内比較は、同じ指定切断の単位比較を前合成したもの。

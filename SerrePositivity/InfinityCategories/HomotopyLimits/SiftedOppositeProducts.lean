@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BinaryDiscreteShape
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedCoproductCriterion
-public import SerrePositivity.InfinityCategories.F2.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
 
 /-!
 概要：元の全有限積の存在から、反対 ∞ 圏の sifted 性を得る。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimit
-public import SerrePositivity.InfinityCategories.F2.SpaceSquareProjections
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareProjections
 
 /-! 空間の ∞ 極限錐の二つの脚は、元の path 写像と cocone 射影の厳密な辺。 -/
 @[expose] public section

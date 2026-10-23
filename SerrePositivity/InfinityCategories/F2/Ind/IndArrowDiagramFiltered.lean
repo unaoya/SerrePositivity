@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldFamilyIso
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExistence
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramComma
-public import SerrePositivity.InfinityCategories.F2.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
 
 /-!

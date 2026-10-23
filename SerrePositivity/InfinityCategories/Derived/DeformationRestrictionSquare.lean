@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskerExchange
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：制限比較と変形降下を通る四角形を、元の augmentation の後続像へ同定する。
 方針：指定同型の交換則と、同じ変形円柱の前後合成の一致を使う。

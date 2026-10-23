@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionPullback
-public import SerrePositivity.InfinityCategories.F2.SpaceSquareLimits
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareLimits
 
 /-! 同じ二合成対応の対角引き戻しを頂点とする、空間の実 ∞ 極限錐。 -/
 @[expose] public section

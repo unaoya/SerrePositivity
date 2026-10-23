@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowCoconePrism
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorColimitEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismLocalApex
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!
 概要：元の矢印圏内の任意の指定余極限余錐について、局所同値な辺集合の閉性を証明する。

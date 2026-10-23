@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFatDiagram
 
 /-! 固定した二入力の間の全区間 Hom を、同じ矢印族の lax pullback の部分族へ送る。 -/

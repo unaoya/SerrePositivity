@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
 
 /-!
 概要：Kan 複体間で同値を右に持ち上げる射は、全ホーンを持ち上げる。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluation
-public import SerrePositivity.InfinityCategories.F2.CoconeFiberValueMap
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberValueMap
 
 /-!
 概要：同じ評価余錐の実際の fiber 写像を、元の大域変換の unstraightening の像へ比較する。

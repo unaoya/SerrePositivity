@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceFibration
-public import SerrePositivity.InfinityCategories.F2.SpaceSquareLimits
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareLimits
 
 /-! 同じ mapping cocone の空間模型を頂点に持つ、空間の ∞ 圏での実極限錐。 -/
 @[expose] public section

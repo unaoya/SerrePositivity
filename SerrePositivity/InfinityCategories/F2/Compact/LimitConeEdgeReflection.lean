@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.TerminalBoundaryReflection
-public import SerrePositivity.InfinityCategories.F2.FunctorVertexCone
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 
 /-!

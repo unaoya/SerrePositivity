@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
-public import SerrePositivity.InfinityCategories.F2.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
 
 /-!

@@ -1,11 +1,11 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.Derived.DGResolutionAugmentationRetract
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatibilityInclusion
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerHEq
-public import SerrePositivity.InfinityCategories.F2.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
 /-!
 概要：同じ augmentation の戻り同型を K-flat の分解と元の変形円柱へ接続する。
 方針：同じ指定値と円柱の前後合成を全関手射の等式で照合する。

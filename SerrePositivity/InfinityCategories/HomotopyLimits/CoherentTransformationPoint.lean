@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationVertexTriangle
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationVertexTriangle
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DeformationHomNaturality
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：指定合成子・単位・比較の正方形から、右単位三角式を同じ実作用へ移す。
 方針：全関手同型の実交換則と同じ指定値の等式を使う。

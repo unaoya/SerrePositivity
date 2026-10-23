@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.CofinalFactorizationCriterion
-public import SerrePositivity.InfinityCategories.F2.LimitConeExtension
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 /-!
 概要：left cofinal な任意の実写像による制限から、元の図式の極限の存在を回収する。

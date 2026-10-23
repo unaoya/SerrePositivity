@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafCoherentColimitCones
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorColimitEvaluation
-public import SerrePositivity.InfinityCategories.F2.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorPointwiseColimitCriterion
 
 /-!
 概要：前層 ∞ 圏の小さい余極限と、元の評価による保存・検出。

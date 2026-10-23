@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputFamily
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackVertexEquiv
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexEquiv
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
 
 /-! 端点固定の区間 Hom の頂点同型を、同じ二入力を持つ lax pullback の頂点同型へ送る。 -/

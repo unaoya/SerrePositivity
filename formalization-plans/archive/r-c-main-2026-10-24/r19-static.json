@@ -1,0 +1,11 @@
+{
+  "item": "r19",
+  "moves": 2210,
+  "updated_lean_files": 2577,
+  "tracked_lean_updates": 2576,
+  "verified_import_only_sources": 2575,
+  "untracked_import_updates_not_staged": [
+    "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationStrictColimit.lean"
+  ],
+  "base": "312b8669093c92ad91ed339b589081463c043bba"
+}

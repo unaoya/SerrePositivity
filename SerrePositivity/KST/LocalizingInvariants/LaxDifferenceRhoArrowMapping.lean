@@ -3,8 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRhoTargetMapping
 public import SerrePositivity.KST.LocalizingInvariants.TensorHomotopyEquivalence
 public import SerrePositivity.KST.LocalizingInvariants.KanFibrationEquivalenceBaseChange
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackMappingProductSquare
-public import SerrePositivity.InfinityCategories.F2.KanTensorComplex
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackMappingProductSquare
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
 
 /-!
 概要：ρ(y) への写像空間の元の lax 矢印関手による比較は同値。

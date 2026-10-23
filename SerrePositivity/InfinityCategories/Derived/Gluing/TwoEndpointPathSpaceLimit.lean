@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathSpace
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconePathSpaceLimit
-public import SerrePositivity.InfinityCategories.F2.SpaceSquareProjections
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareProjections
 
 /-! 二合成を端点とする同じ cocone 空間を頂点に持つ、実空間の ∞ 極限錐。 -/
 @[expose] public section

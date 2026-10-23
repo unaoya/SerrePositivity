@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CorePullbackIso
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
 
 /-!
 概要：元の pullback の二射影を保持して core の pullback を回収する。

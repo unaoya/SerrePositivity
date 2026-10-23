@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
-public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 
 /-!
 概要：前層内の Yoneda 像の、同型と小さい κ-filtered 余極限による最小閉包を構成する。

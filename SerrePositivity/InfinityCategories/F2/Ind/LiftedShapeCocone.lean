@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoconeExistenceTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.Stable.UniverseLimits

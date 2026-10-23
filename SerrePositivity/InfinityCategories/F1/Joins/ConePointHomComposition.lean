@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeDiagonalTransformation
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeTriangleTransformations
-public import SerrePositivity.InfinityCategories.F2.UnstraighteningTriangleComposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UnstraighteningTriangleComposition
 
 /-!
 概要：元の錐の全 Hom の標準比較を、実際の unstraightening の相対合成と比較する。
