@@ -31071,3 +31071,15 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallKComparison
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_point
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_point
+
+#check @SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_point_braided
+#print axioms SerrePositivity.KST.SConstruction.comonoidFunctorPair_left_point_braided
+
+#check @SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_point_left
+#print axioms SerrePositivity.KST.SConstruction.cubicalLambdaFunctorPair_point_left
+
+#check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_left
+#print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_left

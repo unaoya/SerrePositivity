@@ -2553,4 +2553,6 @@ public import SerrePositivity.KST.SConstruction.DGFunctorClosedNativeEdge
 public import SerrePositivity.KST.SConstruction.DGKInputClosedComparison
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputComparison
 
+public import SerrePositivity.KST.SConstruction.DGNativePointLeft
+
 /-! # ∞-S• 構成と連結 K 理論 -/
