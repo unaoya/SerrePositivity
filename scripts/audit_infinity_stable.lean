@@ -1,3 +1,14 @@
+import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveModuleFamily
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureStage
+import SerrePositivity.InfinityCategories.Derived.KappaOrdinalCountableBound
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureFamily
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveFamily
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveOperations
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureProperty
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveProperty
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveComparison
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFullyFaithful
 import SerrePositivity.InfinityCategories.Derived.DGKappaProjectiveComparison
 import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeFamily
@@ -7680,6 +7691,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover,
+
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveModuleFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureStage,
+    `SerrePositivity.InfinityCategories.Derived.KappaOrdinalCountableBound,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveOperations,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureProperty,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveProperty,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveComparison,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedFullyFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGKappaProjectiveComparison,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeFamily,
