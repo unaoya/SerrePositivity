@@ -1416,7 +1416,28 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroSourceModelHomotopy,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCellProjection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectSourcePath,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectClassRestore]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectClassRestore,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeImageWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoSourceModelProjections,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectNativeInput,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectSourceWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectRelativeInput,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectSourceModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectInitialComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroClassModelPathImage,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectFinalProjections,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectFinalPathComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectFinalComparison,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceOuterFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceInnerFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceModelHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovNativeZeroCoefficientIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraDoublePathIsoFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeFaces,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedMappedSource,
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeModelHomotopy]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
