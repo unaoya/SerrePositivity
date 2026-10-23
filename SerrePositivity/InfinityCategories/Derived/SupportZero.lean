@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SupportClosure
-public import SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits
+public import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 
 /-! # 台つき部分 ∞ 圏の零対象
 

@@ -1,0 +1,10 @@
+R24: manual import migration before scripts/move_module.py is available.
+Body, declarations, namespaces and proofs byte-identical.
+MOVE SerrePositivity/InfinityCategories/DGNerve/SemifreeLimits.lean -> SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean
+SerrePositivity/InfinityCategories/DGNerve.lean
+SerrePositivity/InfinityCategories/Derived.lean
+SerrePositivity/InfinityCategories/Derived/PerfectZero.lean
+SerrePositivity/InfinityCategories/Derived/PullbackPresentation.lean
+SerrePositivity/InfinityCategories/Derived/SupportZero.lean
+scripts/audit_dg_nerve.lean (explicit import for existing Semifree checks)
+scripts/audit_derived_infinity.lean (import and recursive axiom coverage at new module location)
