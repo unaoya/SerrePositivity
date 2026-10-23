@@ -2542,4 +2542,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallRepresentation
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallExtension
 public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebraSmallExtension
 
+public import SerrePositivity.KST.SConstruction.DGAlgebraEnvelopeYonedaMorita
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallMorita
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInput
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputMorita
+
 /-! # ∞-S• 構成と連結 K 理論 -/

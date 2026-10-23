@@ -30924,3 +30924,66 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectClosedIso
 #print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_map
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_map
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYonedaEnd_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYoneda_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYoneda_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYoneda_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgAlgebraEnvelopeYoneda_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPerfect_perfectOver_representable_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPerfect_perfectOver_representable_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda_perfectDG_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda_perfectDG_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaPerfectNerveEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaPerfectNerveEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputMap_comp
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallNuTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallNuTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallKTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallKTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaInputMap_isMorita
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYonedaInputMap_isMorita
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputNuMap_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputNuMap_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKEdge_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInputKEdge_isInvertible
