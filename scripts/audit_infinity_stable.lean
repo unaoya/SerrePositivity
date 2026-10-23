@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionEvaluation
+import SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonConeAt
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeReadback
+import SerrePositivity.InfinityCategories.Stable.ExcisionReplacedSourceCone
+import SerrePositivity.InfinityCategories.Stable.ConeEdgeRebase
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonArrowReadback
+import SerrePositivity.InfinityCategories.Stable.ExcisionComparisonTheta
+import SerrePositivity.InfinityCategories.Stable.FunctorEdgeArrowReadback
+import SerrePositivity.InfinityCategories.Stable.PullbackComparisonDiagonalInvertible
+import SerrePositivity.InfinityCategories.Stable.ArrowIsoPostcompTransport
+import SerrePositivity.InfinityCategories.Stable.PullbackComparisonReflection
+import SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputCriterion
 import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
 import SerrePositivity.InfinityCategories.Stable.SquareDiagonalEquivalence
 import SerrePositivity.InfinityCategories.Stable.FunctorEdgeSquareReadback
@@ -7654,6 +7666,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonConeAt,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonConeReadback,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionReplacedSourceCone,
+    `SerrePositivity.InfinityCategories.Stable.ConeEdgeRebase,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonArrowReadback,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionComparisonTheta,
+    `SerrePositivity.InfinityCategories.Stable.FunctorEdgeArrowReadback,
+    `SerrePositivity.InfinityCategories.Stable.PullbackComparisonDiagonalInvertible,
+    `SerrePositivity.InfinityCategories.Stable.ArrowIsoPostcompTransport,
+    `SerrePositivity.InfinityCategories.Stable.PullbackComparisonReflection,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionCoreInputCriterion,
+
     `SerrePositivity.InfinityCategories.Stable.SquareDiagonal,
     `SerrePositivity.InfinityCategories.Stable.SquareDiagonalEquivalence,
     `SerrePositivity.InfinityCategories.Stable.FunctorEdgeSquareReadback,
