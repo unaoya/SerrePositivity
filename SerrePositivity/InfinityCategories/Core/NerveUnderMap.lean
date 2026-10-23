@@ -14,7 +14,7 @@ public import Mathlib.CategoryTheory.Comma.Over.Basic
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-open CategoryTheory MonoidalClosed SSet
+open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories
 
 /-- 概要：底の射から undercategory の nerve の反変な射を作る。
