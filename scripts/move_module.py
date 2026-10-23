@@ -8,7 +8,7 @@ an obsolete tracked module and points its imports to an existing canonical one.
 comments/string literals.
 Example: python3 scripts/move_module.py /tmp/moves.json --apply
 An imports edit is {"SerrePositivity/F1.lean": {"add": ["SerrePositivity.B"],
-"remove": ["SerrePositivity.A"]}}. Additions are public imports. Moving a module
+"remove": ["SerrePositivity.A"]}}. Additions are public imports in module files, ordinary imports otherwise. Moving a module
 does not automatically rename its declarations or its child modules.
 `file_symbols` maps source-file paths (before moving) to symbol maps which
 replace the corresponding global `symbols` entries in that file. For example,
@@ -190,12 +190,14 @@ def prepare(root, spec):
                 if imported[2] in removals: continue
                 present.add(imported[2])
             kept.append(line)
-        insert = ''.join('public import ' + mod + '\n' for mod in dict.fromkeys(additions) if mod not in present)
+        kept_mask = code_mask(''.join(kept)).splitlines(keepends=True)
+        module_index = next((i + 1 for i, line in enumerate(kept_mask) if line.strip() == 'module'), 0)
+        import_prefix = 'public import ' if module_index else 'import '
+        insert = ''.join(import_prefix + mod + '\n' for mod in dict.fromkeys(additions) if mod not in present)
         if insert:
             # Keep the module command first, inserting new public imports beside
             # the existing imports. Existing proof/doc blocks are never moved.
-            kept_mask = code_mask(''.join(kept)).splitlines(keepends=True)
-            index = next((i + 1 for i, line in enumerate(kept_mask) if line.strip() == 'module'), 0)
+            index = module_index
             if index:
                 if not kept[index - 1].endswith('\n'): kept[index - 1] += '\n'
                 insert = '\n' + insert
