@@ -40,9 +40,9 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
     (W : K ⥤ SSet.{u}) {Y : (operad A).Algebra}
     (f : Y ⟶ (weightedCotensor A K F).obj (op W))
     (k : Kᵒᵖᵒᵖ) (n : SimplexCategoryᵒᵖ)
-    (x : (((doubleOpWeights K).obj W).obj k).obj n) :
+    (x : (((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W).obj k).obj n) :
     ((((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-      ((doubleOpWeights K).obj W) (op Y.carrier)
+      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier)
         (f.hom ≫ (weightedCotensorCarrierIso A K F W).hom).op).app k).app n) x =
       (Operad.Algebra.forget (operad A)).op.map
         ((((weightedCotensorHomEquiv A K F W Y f).app k).app n) x) := by
@@ -50,16 +50,16 @@ lemma weightedCotensorCarrierHomEquiv_app (F : K ⥤ (operad A).Algebra)
   have : U.IsRightAdjoint := (operad A).freeAlgebraAdjunction.isRightAdjoint
   let S := FrameWeightRealization.source Kᵒᵖ (rightFrameDiagram A K F)
   let V := (FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj
-    ((doubleOpWeights K).obj W)
+    ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W)
   let i := U.op.leftKanExtensionCompIsoOfPreserves S uliftYoneda.{u,u,u}
   let rx : uliftYoneda.{u,u,u}.obj (k.unop, n.unop) ⟶ V := uliftYonedaEquiv.symm x
   have hn := i.inv.naturality rx
   have hu := U.op.leftKanExtensionCompIsoOfPreserves_inv_fac_app S
     uliftYoneda.{u,u,u} (k.unop, n.unop)
   change ((((FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-    ((doubleOpWeights K).obj W) (op Y.carrier) (_ ≫ U.op.map f.op)).app k).app n) x =
+    ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y.carrier) (_ ≫ U.op.map f.op)).app k).app n) x =
     U.op.map (((((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
-      ((doubleOpWeights K).obj W) (op Y) f.op).app k).app n) x)
+      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y) f.op).app k).app n) x)
   rw [HomotopyWeight.realizationHomEquiv_app, HomotopyWeight.realizationHomEquiv_app]
   simp only [Functor.map_comp]
   change (uliftYoneda.leftKanExtensionUnit (S ⋙ U.op)).app (k.unop, n.unop) ≫
@@ -83,7 +83,7 @@ lemma carrierConeToFramedLimit_forget (F : K ⥤ (operad A).Algebra) (c : Cone F
   let f := coneToFramedLimit A K F c
   let i := framedLimitCarrierIso A K F
   let e := (FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)).homEquiv
-    (framedLimitWeight K) (op c.pt.carrier)
+    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op c.pt.carrier)
   let s := carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) d
   have hc : weightedCotensorHomEquiv A K F (HomotopyWeight.weight K) c.pt f =
       strictConeWeightedFamily A K F (HomotopyWeight.weight K) c :=

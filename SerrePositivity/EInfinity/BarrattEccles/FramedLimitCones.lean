@@ -53,23 +53,8 @@ def framedLimitConeSpace (Y : (operad A).Algebra) :
   let := modelCategory A
   exact (rightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ ⋙
     (CategoryTheory.evaluation (operad A).Algebraᵒᵖ (Kᵒᵖᵒᵖ ⥤ SSet.{u})).obj
-      (op (framedLimitProbe A Y)) ⋙ WeightedCones.coneSpace Kᵒᵖᵒᵖ (framedLimitWeight K)
+      (op (framedLimitProbe A Y)) ⋙ WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
 
-/-- 概要：計算対象の二重反対化した一点重みは射影 cofibrant（Hovey §5.4）。
-方針：添字の同値による保存と初期図式の同型を使う。
-規約：元の自由境界の左類を保持する。
-使われ方：一般 homotopy 極限の実現と写像空間の不変性。 -/
-lemma framedLimitWeight_cofibrant :
-    (HomotopyWeight.boundaries Kᵒᵖᵒᵖ).rlp.llp (initial.to (framedLimitWeight K)) := by
-  have h := HomotopyWeight.reindex_cofibration (opOpEquivalence K)
-    (initial.to (HomotopyWeight.weight K)) (HomotopyWeight.weight_cofibrant K)
-  let hi := initialIsInitial.isInitialObj (doubleOpWeights K) (⊥_ K ⥤ SSet.{u})
-  let e : (doubleOpWeights K).obj (⊥_ K ⥤ SSet.{u}) ≅ (⊥_ Kᵒᵖᵒᵖ ⥤ SSet.{u}) :=
-    hi.uniqueUpToIso initialIsInitial
-  let a : Arrow.mk ((doubleOpWeights K).map (initial.to (HomotopyWeight.weight K))) ≅
-      Arrow.mk (initial.to (framedLimitWeight K)) :=
-    Arrow.isoMk e (Iso.refl _) (hi.hom_ext _ _)
-  exact ((HomotopyWeight.boundaries Kᵒᵖᵒᵖ).rlp.llp.arrow_mk_iso_iff a).mp h
 
 /-- 概要：選んだ右 frame への重み付き錐空間は Kan 複体（Hovey §5）。
 方針：具体的な試験始域の置換と各右 frame の Kan Hom を使う。
@@ -79,8 +64,8 @@ lemma framedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra)
     (Y : (operad A).Algebra) : SSet.KanComplex ((framedLimitConeSpace A K Y).obj F) := by
   let := modelCategory A
   have := framedLimitProbe_fibrant_op A Y
-  exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (framedLimitWeight K)
-    (framedLimitWeight_cofibrant K) (rightFrameDiagram A K F)
+  exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameDiagram A K F)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => rightFrame_homotopicallyConstant A (F.obj k.unop) f)
     (op (framedLimitProbe A Y))
@@ -97,7 +82,7 @@ lemma framedLimitConeSpace_map_isIso {F G : K ⥤ (operad A).Algebra} (f : F ⟶
   let := modelCategory A
   have := framedLimitProbe_fibrant_op A Y
   exact HomotopyWeight.frameCone_source_weakEquivalence_isIso Kᵒᵖ
-    (framedLimitWeight K) (framedLimitWeight_cofibrant K) L hL (rightFrameFactorization A)
+    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) L hL (rightFrameFactorization A)
     ((rightFrameDiagramFamily A K).map f.op)
     (fun k => rightFrame_cofibrant A (G.obj k.unop))
     (fun k => rightFrame_cofibrant A (F.obj k.unop))

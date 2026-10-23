@@ -26,11 +26,6 @@ open SerrePositivity.DifferentialGraded SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
-/-- 概要：選んだ一点重みを右 frame の反対添字へ移す（Hovey §5.4）。
-方針：二重反対圏の同値に沿う前合成を使う。
-規約：実際の射影 cofibrant な一点重みそのものを使う。
-使われ方：重み付き end を図式全体の関手として評価する。 -/
-abbrev framedLimitWeight := (doubleOpWeights K).obj (HomotopyWeight.weight K)
 
 /-- 概要：元の小図式を反対圏の右 frame の図式へ関手的に移す（Hovey §5.2）。
 方針：図式圏の反対化と関手的右 frame の後合成を使う。
@@ -48,7 +43,7 @@ def rightFrameDiagramFamily :
 使われ方：元の E 代数圏に値を取る計算関手の構成。 -/
 def framedLimitOpFunctor : (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ (operad A).Algebraᵒᵖ := by
   exact rightFrameDiagramFamily A K ⋙ FrameWeightRealization.family Kᵒᵖ ⋙
-    (CategoryTheory.evaluation _ (operad A).Algebraᵒᵖ).obj (framedLimitWeight K)
+    (CategoryTheory.evaluation _ (operad A).Algebraᵒᵖ).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
 
 /-- 概要：小図式の射影 cofibrant な一点重みの右 frame の end の関手（Hovey §5.4）。
 方針：反対圏で構成した関手を unop する。

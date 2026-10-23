@@ -36,7 +36,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def carrierFramedLimitConeClass (F : K ⥤ (operad A).Algebra) (c : Cone ((Diagram.forget A K).obj
   F)) :
     SSet.π₀ ((carrierFramedLimitConeSpace A K c.pt).obj F) :=
-  HomotopyWeight.coneClass Kᵒᵖᵒᵖ (framedLimitWeight K)
+  HomotopyWeight.coneClass Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
     (carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c ≫
       (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).map
         ((carrierFramedLimitProbeComparison A).app c.pt).op)
@@ -50,7 +50,7 @@ lemma carrierFramedLimitConeClass_eq_mapClass (F : K ⥤ (operad A).Algebra)
     carrierFramedLimitConeClass A K F c =
       carrierFramedLimitMapClass A K F (carrierConeToFramedLimit A K F c) := by
   let adj := FrameWeightRealization.adjunction Kᵒᵖ (carrierRightFrameDiagram A K F)
-  let W := framedLimitWeight K
+  let W := SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K
   let s := carrierStrictConeWeightedFamily A K F (HomotopyWeight.weight K) c
   let h := (adj.homEquiv W (op c.pt)).symm s
   let p := (carrierFramedLimitProbeComparison A).app c.pt

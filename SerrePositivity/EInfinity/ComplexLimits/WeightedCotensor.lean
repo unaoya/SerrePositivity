@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.EInfinity.HomotopyWeight.DoubleOpposite
 public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CotensorCarrier
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightRealization
@@ -36,12 +37,6 @@ def rightFrameDiagram (F : K ⥤ (Complex A)) :
   let := projectiveModelCategory A
   exact F.op ⋙ (rightFrameFamily A).obj
 
-/-- 概要：重みを添字圏の二重反対圏へ移す（Hovey §5.4）。
-方針：標準的な二重反対圏同値に沿う前合成を使う。
-規約：各単体集合とその作用を変更しない。
-使われ方：反対圏の実現と元の重みの添字を合わせる。 -/
-abbrev doubleOpWeights : (K ⥤ SSet.{u}) ⥤ (Kᵒᵖᵒᵖ ⥤ SSet.{u}) :=
-  (Functor.whiskeringLeft Kᵒᵖᵒᵖ K SSet.{u}).obj (opOpEquivalence K).functor
 
 /-- 概要：小さい 複体図式の重み付き右 frame の end（Hovey §5.4）。
 方針：元の重みを二重反対化し、反対圏の重み付き実現を反転する。
@@ -49,7 +44,7 @@ abbrev doubleOpWeights : (K ⥤ SSet.{u}) ⥤ (Kᵒᵖᵒᵖ ⥤ SSet.{u}) :=
 使われ方：一般 homotopy 極限の具体的な計算対象を供給する。 -/
 def weightedCotensor (F : K ⥤ (Complex A)) :
     (K ⥤ SSet.{u})ᵒᵖ ⥤ (Complex A) :=
-  (doubleOpWeights K ⋙
+  (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K ⋙
     FrameWeightRealization.functor Kᵒᵖ (rightFrameDiagram A K F)).leftOp
 
 /-- 概要：重み付き end への射は右 frame への重み付き錐に一致する（Hovey §5.4）。
@@ -59,16 +54,16 @@ def weightedCotensor (F : K ⥤ (Complex A)) :
 def weightedCotensorHomEquiv (F : K ⥤ (Complex A))
     (W : K ⥤ SSet.{u}) (Y : (Complex A)) :
     (Y ⟶ (weightedCotensor A K F).obj (op W)) ≃
-      ((doubleOpWeights K).obj W ⟶
+      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W ⟶
         (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj (op Y)) :=
   (show (Y ⟶ (weightedCotensor A K F).obj (op W)) ≃
       ((FrameWeightRealization.functor Kᵒᵖ (rightFrameDiagram A K F)).obj
-        ((doubleOpWeights K).obj W) ⟶ op Y) from
+        ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) ⟶ op Y) from
     { toFun := fun f => f.op
       invFun := fun f => f.unop
       left_inv := fun _ => rfl
       right_inv := fun _ => rfl }).trans
     ((FrameWeightRealization.adjunction Kᵒᵖ (rightFrameDiagram A K F)).homEquiv
-      ((doubleOpWeights K).obj W) (op Y))
+      ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W) (op Y))
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -1,0 +1,21 @@
+{
+  "shared_module": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/BarOutput.lean",
+  "sources": [
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFirstAction.lean"
+  ],
+  "moved_declaration": "output",
+  "reference_rewrites": [
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluatedEndpoint.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarReference.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAugmentationEquivalences.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRows.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReference.lean",
+    "scripts/check_ordinary_bar_evaluation.lean",
+    "scripts/check_resolution_bar_evaluation.lean"
+  ],
+  "type_equality_probe": "/tmp/r-c-ha-output-probe.lean"
+}

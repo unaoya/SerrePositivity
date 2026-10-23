@@ -17,7 +17,7 @@ example : OrdinaryBarEvaluation.bar R = (OrdinaryResolutionBar.functor (C := C))
 
 -- Evaluation is an actual map in the auxiliary universe; no model there is an input.
 example : OrdinaryBarEvaluation.bar R ⟶
-    UniverseLift.obj.{u} (OrdinaryBarFirstAction.output R) :=
+    UniverseLift.obj.{u} (BarOutput.output R) :=
   OrdinaryBarEvaluation.evaluation R a b
 
 example : OrdinaryBarReference.sectionMap R ≫ OrdinaryBarEvaluation.evaluation R a b =

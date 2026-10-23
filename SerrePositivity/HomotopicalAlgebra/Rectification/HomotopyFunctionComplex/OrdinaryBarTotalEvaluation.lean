@@ -46,24 +46,24 @@ namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarTotalEvaluation
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (R : RightResolutionMapping.Index C)
 
-abbrev rowBase : (OrdinaryBarFirstAction.output R).Elements ⥤
+abbrev rowBase : (BarOutput.output R).Elements ⥤
     OrdinaryBarCenters.Comma R × SimplexCategoryᵒᵖ :=
-  ((Functor.Elements.π (OrdinaryBarFirstAction.output R)) ⋙
+  ((Functor.Elements.π (BarOutput.output R)) ⋙
     OrdinaryResolutionRows.commaRows R).prod'
-      (Functor.Elements.π (OrdinaryBarFirstAction.output R))
+      (Functor.Elements.π (BarOutput.output R))
 
-lemma rowLabel_naturality {s t : (OrdinaryBarFirstAction.output R).Elements} (f : s ⟶ t) :
+lemma rowLabel_naturality {s t : (BarOutput.output R).Elements} (f : s ⟶ t) :
     ((rowBase R) ⋙ OrdinaryBarTotalCone.values R).map f s.val = t.val := by
   have h := (ResolutionRowMixedMapping.componentIso R).hom.naturality f.hom
   have hx := congrArg (fun k => k s.val) h
   exact hx.trans f.map_val
 
-def rowLabels : (OrdinaryBarFirstAction.output R).Elements ⥤
+def rowLabels : (BarOutput.output R).Elements ⥤
     ((rowBase R) ⋙ OrdinaryBarTotalCone.values R).Elements where
   obj s := ((rowBase R) ⋙ OrdinaryBarTotalCone.values R).elementsMk s s.val
   map f := Functor.Elements.homMk f (rowLabel_naturality R f)
 
-abbrev rowElements : (OrdinaryBarFirstAction.output R).Elements ⥤
+abbrev rowElements : (BarOutput.output R).Elements ⥤
     OrdinaryBarTotalCone.Total R :=
   rowLabels R ⋙ Functor.Elements.precomp (rowBase R) (OrdinaryBarTotalCone.values R)
 
@@ -71,9 +71,9 @@ variable (a : NerveFirstChoice.System (OrdinaryBarCenters.leftChoices R))
   (b : NerveFirstChoice.System (OrdinaryBarCenters.rightChoices R))
 
 abbrev evaluationElements : OrdinaryBarTotalCone.Index R ⥤
-    (OrdinaryBarFirstAction.output R).Elements :=
+    (BarOutput.output R).Elements :=
   (OrdinaryBarEvaluation.evaluation R a b).mapElements ⋙
-    UniverseLift.downElements (OrdinaryBarFirstAction.output R)
+    UniverseLift.downElements (BarOutput.output R)
 
 def rowFactorization : OrdinaryBarTotalCone.rows R a b ≅
     evaluationElements R a b ⋙ rowElements R :=

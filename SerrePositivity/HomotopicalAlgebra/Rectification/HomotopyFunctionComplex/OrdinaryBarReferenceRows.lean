@@ -47,7 +47,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 
 abbrev raw : SSet.{v} :=
   OrdinaryResolutionPairs.raw.obj (OrdinaryResolutionPairs.forgetFrames.obj R)
-abbrev augmentation : raw R ⟶ OrdinaryBarFirstAction.output R :=
+abbrev augmentation : raw R ⟶ BarOutput.output R :=
   MixedResolutionComparison.comparison.app R
 
 def referenceBase : (raw R).Elements ⥤ OrdinaryBarCenters.Comma R × SimplexCategoryᵒᵖ :=

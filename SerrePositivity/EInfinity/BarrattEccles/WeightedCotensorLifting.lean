@@ -37,6 +37,6 @@ lemma weightedCotensor_map_fibration (F : K ⥤ (operad A).Algebra)
   let := modelCategory A
   have h := HomotopyWeight.reindex_cofibration (opOpEquivalence K) i hi
   exact ⟨HomotopyWeight.realization_map_cofibration Kᵒᵖ (rightFrameDiagram A K F)
-    (fun k => rightFrame_cofibrant A (F.obj k.unop)) ((doubleOpWeights K).map i) h⟩
+    (fun k => rightFrame_cofibrant A (F.obj k.unop)) ((SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).map i) h⟩
 
 end SerrePositivity.EInfinity.BarrattEccles

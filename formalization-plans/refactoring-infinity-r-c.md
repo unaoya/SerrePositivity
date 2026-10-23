@@ -2,13 +2,13 @@
 
 ## 引き継ぎ
 
-- 現在地：R17 完了（a45c92306）。R19 完了（2c1fa3384）：2,211 モジュール移動、本文保存・旧 import 消滅を確認し、4集約ビルド・指定4監査がすべて通過。R20 も同じソース状態の4監査で検証済み。
-- 残り：3-1 の完全一致 EInfinity 3 宣言・HomotopicalAlgebra output の共有化、R16。R15 は R-A 取り込み・合図後の rebase を待つ。
+- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c 完了。3-1 の完全一致4宣言族の共有化を検証済み：ビルド・指定4監査・Rectification監査・bar評価2チェックが全て終了コード0。型の異なる準重複は保存して一覧化。
+- 残り：R16。R15 は R-A 取り込み・合図後の rebase を待つ。準重複の原8組の残2組については質問を提示済み（現存する両ファイル族の全調査で継続中）。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：準重複一覧、まだ接続していない共有モジュール DoubleOpposite・BarOutput。
+- 未コミット：なし（完全一致共有化の本コミットに含む）。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：`/tmp/r-c-e-shared.py` と `/tmp/r-c-ha-output.py` で接続・重複削除・参照置換し、4集約・4監査と Rectification の追加検証を実行。その後 R16。
+- 次の一手：R16 を `/tmp/r-c-r16.py` で適用（R-A の move_module.py は未着、手動対応表を保存）。本文照合後 `/tmp/r-c-check-item.sh r16` で4集約ビルド・指定4監査。
 
 ## 方針
 
@@ -35,3 +35,7 @@ R19 検証進捗：主ビルドは15,713 jobsで終了コード0、F2監査も�
 R19/R20 最終検証：主集約（F2・HomotopyLimits・EInfinity）15,713 jobs、追加 Presentable 集約7,750 jobsが成功。`audit_infinity_f2`（19,486宣言）・`audit_infinity_presentable`（852宣言）・`audit_homotopy_limits`・`audit_einfinity`（25,780宣言）は全て終了コード0。公理は標準三公理のみ。最終ログは `/tmp/r-c-r19-audit_{infinity_f2,infinity_presentable,homotopy_limits,einfinity}.log`。最初の Presentable cached olean 失敗は `/tmp/r-c-r19-presentable-stale-cache.log` に分離して保存。
 
 R20 完了：§6 の5入力の定義位置・供給元・使用数を更新し、全一致行を archive に保存。R17・R19 の完了行も正本に反映。R19 と同じ検証済みソース状態で指定4監査が通過し、文書変更はその後のみ。
+
+3-1 実装：EInfinity の `doubleOpWeights`・`framedLimitWeight`・`framedLimitWeight_cofibrant` と HomotopicalAlgebra の `output` を各共有モジュールへ接続し、元の宣言を削除。旧名の参照は0。`archive/refactor-r-c-shared-source-verification.json` に HEAD aa124065c との機械的変更の照合・55ファイルのハッシュを保存。共有宣言の型・本文は保存。
+
+3-1 完全一致部の最終検証：全変更モジュール・4集約・Rectification.Foundations のビルド成功（16,795 jobs）。指定4監査・Rectification監査・bar評価2チェックの7コマンドは全て終了コード0。EInfinity 25,777宣言（重複3宣言分減）、Rectification 14,894宣言・1,040モジュール、標準公理のみ。実行結果・対象一覧・新規モジュールハッシュを `archive/refactor-r-c-shared-validation.json` に保存。

@@ -65,7 +65,7 @@ abbrev carrierRightFrameHomDiagramFamily (Y : Complex A) :
 使われ方：二重反対圏表示の同じ錐関手を回収する。 -/
 def carrierRightSimplicialHomDiagramIso (Y : Complex A)
     (F : K ⥤ (operad A).Algebra) :
-    (doubleOpWeights K).obj (carrierRightSimplicialHomDiagram A K Y F) ≅
+    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj (carrierRightSimplicialHomDiagram A K Y F) ≅
       (FrameWeightRealization.hom Kᵒᵖ (carrierRightFrameDiagram A K F)).obj
         (op (carrierFramedLimitProbe A Y)) :=
   NatIso.ofComponents (fun k =>
@@ -80,7 +80,7 @@ def carrierRightSimplicialHomDiagramIso (Y : Complex A)
 規約：元の図式の任意の射を保持する。
 使われ方：具体的な錐の同型の自然性。 -/
 def carrierRightSimplicialHomComparisonIso (Y : Complex A) :
-    carrierRightSimplicialHomFamily A K Y ⋙ doubleOpWeights K ≅
+    carrierRightSimplicialHomFamily A K Y ⋙ SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K ≅
       carrierRightFrameHomDiagramFamily A K Y :=
   NatIso.ofComponents (carrierRightSimplicialHomDiagramIso A K Y) (by
     intro F G f
@@ -98,7 +98,7 @@ def carrierRightSimplicialConeComparisonIso (Y : Complex A) :
       (HomotopyWeight.coneSpaceReindexIso (opOpEquivalence K) (HomotopyWeight.weight K)).symm ≪≫
     (Functor.associator _ _ _).symm ≪≫
     Functor.isoWhiskerRight (carrierRightSimplicialHomComparisonIso A K Y)
-      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (framedLimitWeight K))
+      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
 
 /-- 概要：元の添字上の右 Hom の錐は実際の右 frame 錐空間（Hovey §5.4）。
 方針：自然な錐関手の同型を元の図式で評価する。

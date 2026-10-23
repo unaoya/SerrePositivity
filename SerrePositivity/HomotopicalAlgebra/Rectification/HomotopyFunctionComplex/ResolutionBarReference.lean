@@ -63,7 +63,7 @@ variable (a : NerveFirstChoice.System (ResolutionBarCenters.leftChoices R))
   (b : NerveFirstChoice.System (ResolutionBarCenters.rightChoices R))
 
 abbrev smallAction : ((ResolutionBarEvaluation.raw (C := C)).obj R) ⟶
-    ResolutionBarFirstAction.output R :=
+    BarOutput.output R :=
   MixedResolutionCenters.action C (ResolutionBarCenters.center R (reference R))
     (SSet.stdSimplex.isTerminalObj₀.from _ ≫ a.app (ofChain (ComposableArrows.mk₀ (reference R))))
     (SSet.stdSimplex.isTerminalObj₀.from _ ≫ b.app (ofChain (ComposableArrows.mk₀ (reference R))))

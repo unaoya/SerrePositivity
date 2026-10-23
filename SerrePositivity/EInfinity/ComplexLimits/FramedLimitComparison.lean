@@ -45,7 +45,7 @@ variable (K : Type u) [SmallCategory K]
 使われ方：実際の重み付き end への普遍射を構成する。 -/
 def strictConeWeightedFamily (F : K ⥤ (Complex A)) (W : K ⥤ SSet.{u})
     (c : Cone F) :
-    (doubleOpWeights K).obj W ⟶
+    (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights K).obj W ⟶
       (FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).obj (op c.pt) where
   app k :=
     { app n := ↾fun _ =>

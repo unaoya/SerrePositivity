@@ -34,7 +34,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 使われ方：底の計算同型の図式自然性。 -/
 def carrierFramedLimitOpFunctor : (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ (Complex A)ᵒᵖ :=
   carrierRightFrameDiagramFamily A K ⋙ FrameWeightRealization.family Kᵒᵖ ⋙
-    (CategoryTheory.evaluation _ (Complex A)ᵒᵖ).obj (framedLimitWeight K)
+    (CategoryTheory.evaluation _ (Complex A)ᵒᵖ).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
 /-- 概要：同じ底の右 frame の重み付き end の計算関手（Hovey §5.4）。
 方針：反対圏で構成した関手を unop する。
 規約：元の代数図式とその射の忘却を保持する。
@@ -59,14 +59,14 @@ lemma framedLimitCarrierIso_naturality {F G : K ⥤ (operad A).Algebra} (f : F �
     (rightFrameDiagramFamily A K).map f.op
   have h := congr_app ((U.op.lanCompIsoOfPreserves uliftYoneda.{u,u,u}).inv.naturality
     (Functor.uncurry.map a))
-      ((FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj (framedLimitWeight K))
+      ((FrameWeightRealization.weightsEquivalence Kᵒᵖ).functor.obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
   have h' := congrArg (fun h => h.unop) h
-  change U.map (((FrameWeightRealization.map Kᵒᵖ a).app (framedLimitWeight K)).unop) ≫
+  change U.map (((FrameWeightRealization.map Kᵒᵖ a).app (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).unop) ≫
     (framedLimitCarrierIso A K G).hom =
     (framedLimitCarrierIso A K F).hom ≫
       ((FrameWeightRealization.map Kᵒᵖ (Functor.whiskerRight a
         ((Functor.whiskeringRight SimplexCategory _ _).obj U.op))).app
-          (framedLimitWeight K)).unop
+          (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).unop
   rw [HomotopyWeight.realizationMap_eq_lan, HomotopyWeight.realizationMap_eq_lan]
   exact h'.symm
 

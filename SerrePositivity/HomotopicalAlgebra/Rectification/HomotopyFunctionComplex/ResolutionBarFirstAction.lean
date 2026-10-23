@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.BarOutput
+
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarCenters
 
 /-!
@@ -46,13 +48,12 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 local instance : ModelCategory (SimplexCategory ⥤ C) := Reedy.simplexModelCategory C
 local instance : ModelCategory (SimplexCategory ⥤ Cᵒᵖ) := Reedy.simplexModelCategory Cᵒᵖ
 
-abbrev output : SSet.{v} := MixedResolutionLiftAction.output R.1.unop.inner R.2.unop.inner
 abbrev input (d : ResolutionBarCenters.Comma R) : SSet.{v} :=
   MixedBiresolutionComparison.functor.obj d.left
 
 lemma output_map {d e : (ResolutionBarCenters.Comma R)ᵒᵖ} (f : d ⟶ e) :
     (MixedResolutionCenters.output C).map ((ResolutionBarCenters.centers R).map f) =
-      𝟙 (output R) := by
+      𝟙 (BarOutput.output R) := by
   change MixedDiagonalHom.map (FramedResolution.diagonal.map (𝟙 R.1.unop))
     (FramedResolution.diagonal.map (𝟙 R.2.unop)) = _
   rw [CategoryTheory.Functor.map_id, CategoryTheory.Functor.map_id]
@@ -63,7 +64,7 @@ variable (a : NerveFirstChoice.System (ResolutionBarCenters.leftChoices R))
 
 def action {n : ℕ} (c : ComposableArrows (ResolutionBarCenters.Comma R) n)
     (t : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ input R (c.obj 0)) :
-    SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ output R :=
+    SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ BarOutput.output R :=
   MixedResolutionCenters.action C (ResolutionBarCenters.center R (c.obj 0))
     (a.app (ofChain c)) (b.app (ofChain c)) t
 
@@ -89,7 +90,7 @@ lemma operator {n m : ℕ} (c : ComposableArrows (ResolutionBarCenters.Comma R) 
     MixedResolutionCenters.action_transport, output_map]
   change action R a b ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)
       ((SSet.stdSimplex.map θ ≫ t) ≫ MixedBiresolutionComparison.functor.map
-        (c.map (homOfLE (Fin.zero_le (θ.toOrderHom 0)))).left) ≫ 𝟙 (output R) = _
+        (c.map (homOfLE (Fin.zero_le (θ.toOrderHom 0)))).left) ≫ 𝟙 (BarOutput.output R) = _
   exact Category.comp_id _
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionBarFirstAction

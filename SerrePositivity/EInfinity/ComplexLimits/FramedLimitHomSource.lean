@@ -52,21 +52,21 @@ lemma framedLimitHomPiZeroEquiv_source {Y Z : (Complex A)} (f : Y ⟶ Z)
   have hpf (X : (Complex A)) : IsFibrant (op (P.obj X)) :=
     FrameHom.MixedFrame.fibrantOp_of_cofibrant _
   let e (X : (Complex A)) :=
-    HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (framedLimitWeight K)
-      (rightFrameDiagram A K F) (framedLimitWeight_cofibrant K)
+    HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+      (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
       (fun k => rightFrame_cofibrant A (F.obj k.unop))
       (fun k _ _ g => rightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op (op (P.obj X))
   have hn : e Y (SSet.mapπ₀ ((framedLimitConeSourceMap A K f).app F) z) =
       e Z z ≫ Q.op.map (P.map f).op :=
     HomotopyWeight.frameConePiZeroLocalizationEquiv_target Kᵒᵖ
-      (C := (Complex A)ᵒᵖ) (framedLimitWeight K) (rightFrameDiagram A K F)
-      (framedLimitWeight_cofibrant K) (fun k => rightFrame_cofibrant A (F.obj k.unop))
+      (C := (Complex A)ᵒᵖ) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (rightFrameDiagram A K F)
+      (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (fun k => rightFrame_cofibrant A (F.obj k.unop))
       (fun k _ _ g => rightFrame_homotopicallyConstant A (F.obj k.unop) g) Q.op (P.map f).op z
   have hu : (e Y (SSet.mapπ₀ ((framedLimitConeSourceMap A K f).app F) z)).unop =
       Q.map (P.map f) ≫ (e Z z).unop := by
     simpa only [unop_comp, Functor.op_map, Quiver.Hom.unop_op] using
       congrArg (fun h : Q.op.obj ((FrameWeightRealization.functor Kᵒᵖ
-          (rightFrameDiagram A K F)).obj (framedLimitWeight K)) ⟶ Q.op.obj (op (P.obj Y)) =>
+          (rightFrameDiagram A K F)).obj (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ⟶ Q.op.obj (op (P.obj Y)) =>
         h.unop) hn
   let p := framedLimitProbeLocalizedIso A
   have hpn : Q.map f ≫ (p.app Z).inv = (p.app Y).inv ≫ Q.map (P.map f) :=

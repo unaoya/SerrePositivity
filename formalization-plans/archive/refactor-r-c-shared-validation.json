@@ -1,0 +1,111 @@
+{
+  "state": "passed",
+  "completed": [
+    {
+      "phase": "build",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-build.log"
+    },
+    {
+      "phase": "audit_infinity_f2",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-audit_infinity_f2.log"
+    },
+    {
+      "phase": "audit_infinity_presentable",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-audit_infinity_presentable.log"
+    },
+    {
+      "phase": "audit_homotopy_limits",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-audit_homotopy_limits.log"
+    },
+    {
+      "phase": "audit_einfinity",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-audit_einfinity.log"
+    },
+    {
+      "phase": "audit_homotopical_rectification",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-audit_homotopical_rectification.log"
+    },
+    {
+      "phase": "check_ordinary_bar_evaluation",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-check_ordinary_bar_evaluation.log"
+    },
+    {
+      "phase": "check_resolution_bar_evaluation",
+      "exit_code": 0,
+      "log": "/tmp/r-c-3-1-check_resolution_bar_evaluation.log"
+    }
+  ],
+  "build_targets": [
+    "SerrePositivity.InfinityCategories.F2",
+    "SerrePositivity.InfinityCategories.F2.Presentable",
+    "SerrePositivity.InfinityCategories.HomotopyLimits",
+    "SerrePositivity.EInfinity",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Foundations",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitClasses",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitComparison",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitConeClasses",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitConeNormalization",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitConeSource",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitForgetComparison",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHom",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHomNaturality",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitHomSource",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitNaturality",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialConeSource",
+    "SerrePositivity.EInfinity.BarrattEccles.CarrierRightSimplicialCones",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimit",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitComparison",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeClasses",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeNormalization",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeSource",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomNaturality",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomPiZero",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomSource",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitInvariance",
+    "SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality",
+    "SerrePositivity.EInfinity.BarrattEccles.RightSimplicialConeSource",
+    "SerrePositivity.EInfinity.BarrattEccles.RightSimplicialCones",
+    "SerrePositivity.EInfinity.BarrattEccles.WeightedCotensor",
+    "SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorCarrier",
+    "SerrePositivity.EInfinity.BarrattEccles.WeightedCotensorLifting",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimit",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitComparison",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitConeClasses",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitConeNormalization",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitConeSource",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitCones",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomNaturality",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomPiZero",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitHomSource",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitInvariance",
+    "SerrePositivity.EInfinity.ComplexLimits.FramedLimitNaturality",
+    "SerrePositivity.EInfinity.ComplexLimits.RightSimplicialConeSource",
+    "SerrePositivity.EInfinity.ComplexLimits.RightSimplicialCones",
+    "SerrePositivity.EInfinity.ComplexLimits.WeightedCotensor",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAugmentationEquivalences",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluation",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFirstAction",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReference",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReferenceRows",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalEvaluation",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarEvaluation",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarFirstAction",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarReference",
+    "SerrePositivity.EInfinity.HomotopyWeight.DoubleOpposite",
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.BarOutput"
+  ],
+  "base_head": "aa124065c222af778162478a12a8accbb5a5e227",
+  "new_module_hashes": {
+    "SerrePositivity/EInfinity/HomotopyWeight/DoubleOpposite.lean": "e4bb996c02850c6e5519d292147ae83b98ba8eb3dfe827201962d30eb2675f89",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/BarOutput.lean": "44773a8134f5b60d6ad0daef5daba03e7ba706f0d299e2edc10a543471fabfaa"
+  }
+}

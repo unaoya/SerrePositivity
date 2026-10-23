@@ -68,16 +68,16 @@ lemma large_localized_isIso :
 
 lemma small_eq : OrdinaryBarEvaluatedEndpoint.smallAugmentation R =
     SSet.uliftFunctor.{max u v, v}.map
-      (SimplexNerve.augmentation.app (OrdinaryBarFirstAction.output R)) ≫
-        (UniverseLift.paddingIso.{v, u}.app (OrdinaryBarFirstAction.output R)).inv := rfl
+      (SimplexNerve.augmentation.app (BarOutput.output R)) ≫
+        (UniverseLift.paddingIso.{v, u}.app (BarOutput.output R)).inv := rfl
 
 lemma small_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (OrdinaryBarEvaluatedEndpoint.smallAugmentation R)) := by
   have := UniverseLift.anodyneQ_map_isIso_of_small.{max u v, v}
-    (SimplexNerve.augmentation.app (OrdinaryBarFirstAction.output R))
+    (SimplexNerve.augmentation.app (BarOutput.output R))
     (SimplexNerve.augmentation_localized_isIso _)
   have : IsIso (AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{max u v, v}.map
-      (SimplexNerve.augmentation.app (OrdinaryBarFirstAction.output R)))) := this
+      (SimplexNerve.augmentation.app (BarOutput.output R)))) := this
   rw [small_eq, CategoryTheory.Functor.map_comp]
   infer_instance
 

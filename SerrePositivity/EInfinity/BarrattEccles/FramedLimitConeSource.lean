@@ -39,7 +39,7 @@ def framedLimitConeBifunctor :
   (framedLimitProbeFunctor A).op ⋙
     ((rightFrameDiagramFamily A K).rightOp ⋙ FrameWeightRealization.homFamily Kᵒᵖ).flip ⋙
       (Functor.whiskeringRight (K ⥤ (operad A).Algebra) (Kᵒᵖᵒᵖ ⥤ SSet.{u}) SSet.{u}).obj
-        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (framedLimitWeight K))
+        (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K))
 
 /-- 概要：二変数の関手は既存の同じ右錐を回収する（Hovey §5）。
 方針：反転した Hom 族の評価を展開する。
@@ -63,7 +63,7 @@ abbrev framedLimitConeSourceMap {Y Z : (operad A).Algebra} (f : Y ⟶ Z) :
 lemma framedLimitConeSourceMap_app {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
     (framedLimitConeSourceMap A K f).app F =
-      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (framedLimitWeight K)).map
+      (WeightedCones.coneSpace Kᵒᵖᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).map
         ((FrameWeightRealization.hom Kᵒᵖ (rightFrameDiagram A K F)).map
           ((framedLimitProbeFunctor A).map f).op) := rfl
 

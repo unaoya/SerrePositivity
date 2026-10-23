@@ -1,0 +1,62 @@
+{
+  "shared": "SerrePositivity/EInfinity/HomotopyWeight/DoubleOpposite.lean",
+  "moved_declarations": {
+    "doubleOpWeights": [
+      "BarrattEccles/WeightedCotensor.lean",
+      "ComplexLimits/WeightedCotensor.lean"
+    ],
+    "framedLimitWeight": [
+      "BarrattEccles/FramedLimit.lean",
+      "ComplexLimits/FramedLimit.lean"
+    ],
+    "framedLimitWeight_cofibrant": [
+      "BarrattEccles/FramedLimitCones.lean",
+      "ComplexLimits/FramedLimit.lean"
+    ]
+  },
+  "reference_rewrites": [
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomNaturality.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomNaturality.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeNormalization.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitInvariance.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitComparison.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensor.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialConeSource.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeSource.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeNormalization.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorCarrier.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialCones.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialConeSource.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimit.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeSource.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomSource.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHom.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitClasses.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialCones.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitNaturality.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomPiZero.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCones.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeClasses.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeClasses.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitComparison.lean",
+    "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomNaturality.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeNormalization.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitInvariance.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitComparison.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/WeightedCotensor.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeSource.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialCones.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialConeSource.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimit.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitNaturality.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomPiZero.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitCones.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeClasses.lean",
+    "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomSource.lean",
+    "scripts/audit_einfinity.lean"
+  ]
+}
