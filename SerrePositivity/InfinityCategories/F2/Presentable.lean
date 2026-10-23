@@ -36,3 +36,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEquiv
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomAccessible
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpacePresentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable

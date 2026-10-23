@@ -20,7 +20,6 @@
   全余錐の同値による保存・反映、小さい κ-filtered 余極限の存在、compact 性、同じ小さい生成圏の全表示を輸送。
   表示の頂点は同値類だけでなく指定対象そのものへ厳密に戻す。
 - accessible 関手の全自然同型不変性、両側の同値による共役不変性を証明。同じ κ の保存性と存在量化版の両方。
-- 元の全共変 Hom・coslice 比較、自然性・評価式、単一表示の両変数での可逆性延長から、Ind 比較の全充満忠実性を得た。
 - 濃度変更の十分条件 `IsCardinalChangeBound κ μ` を κ < μ と全冪の評価で定義。
   任意の指定上限を超える正則 μ の存在、小さい濃度族に共通の μ の存在を証明。
 - κ-filtered poset を、μ-small な κ-filtered 部分集合の μ-filtered な族で被覆。
@@ -49,15 +48,16 @@
   `IsKappaAccessible.of_cardinalChangeBound` により圏自身の μ-accessibility を証明。任意の上限超えと小さい族の共通濃度も実証。
 - 工程 (2) の `IsPresentable` を accessibility と全小余極限で定義。前層・空間の全小余極限と全小極限を提供。
   全同値による presentable 性の保存・反映と、小余極限を持つ Ind 模型による特徴づけを証明。
-- 非可算正則 μ と μ-small Kan 始点について、全高次射に作用する内部 Hom 関手の μ-filtered 余極限保存を証明。
-  終対象上の相対 Hom と N の大きい全共変 Hom の全自然比較から、同じ μ-small Kan 空間の μ-compact 性を実証。
+- 非可算正則 μ と μ-small Kan 始点の全 Hom の μ-filtered 保存を証明。終対象上の相対 Hom と N の大きい共変 Hom の全自然比較から μ-compact 性を実証。
 - 任意の小さい空間族の共通 compact 濃度を証明。有限単体集合始点の全 Hom の filtered 保存と Kan 置換との全自然同型から、有限模型の Kan 置換の compact 性も実証。
 - 各指定 Kan 空間を、有限部分複体の Kan 置換の filtered 全余極限として回収。全項は compact、元の指定頂点は厳密な等式。
-- 独立集約ビルド成功（7729 jobs）、公理監査 705 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
+- 有限模型を `FintypeCat.Skeleton` 値の図式で宇宙 u の共通族へ符号化し、小さい compact 全部分生成圏を構成。
+  `space_isKappaAccessible_aleph0` と `space_isPresentable` を実証。一般の前層の accessibility は未証明。
+- 独立集約ビルド成功（7732 jobs）、公理監査 731 宣言で標準三公理のみ。主経路の ModelCategory・追加の同値性 instance なし。
 
 ### 工程（依存順）
 1. accessible ∞ 圏：定義・Ind による iff・accessible 関手・同値不変性・正則濃度変更を証明。工程 (2) へ進む。
-2. presentable の定義・同値不変性を実証。前層 ∞ 圏・条件を明示した Indκ(C) の presentable 性と局所小ささは未完。
+2. 定義・同値不変性・空間の presentable 性を実証。一般の前層・条件を明示した Indκ(C) の presentable 性と局所小ささは未完。
 3. presentable の小さい極限・余極限（5.5.2.4、5.5.3.13）。
 4. 随伴関手定理：余極限を保つ関手は左随伴、accessible かつ極限を保つ関手は右随伴（5.5.2.9）。
 5. Pr^L と Pr^R の双対性（5.5.3.4）。
@@ -89,7 +89,7 @@
 - `IsKappaAccessible.exists_muCompactPresentation`、`IsKappaCompactGenerating.exists_smallFamilyPresentation`
 - `SmallPosetDiagramCode`、`exists_smallPosetColimitGeneratorIso`、`small_fullSubcomplexOnRange`
 - `IsKappaAccessible.of_cardinalChangeBound`、`IsAccessible.exists_larger`、`exists_common_accessibilityCardinal`
-- `IsPresentable`、`smallKanObject_isKappaCompact`、`finiteKanReplacement_isCompact`、`exists_finiteSpacePresentation`
+- `IsPresentable`、`smallKanObject_isKappaCompact`、`finiteKanReplacement_isCompact`、`space_isPresentable`
 
 ### 未コミット
 - なし。工程 (2) の検証済み区切りを所有ファイルのみ保存。
@@ -99,8 +99,8 @@
 - 工程 (2) の「Ind の presentable 性」は任意の小さい A に対しては成立しない。適切な小余極限の条件を明示して定理化する。
 
 ### 次の一手
-- 工程 (2)。有限単体集合を `FintypeCat.Skeleton` 値の単体的図式で符号化し、宇宙 u の共通の有限模型族を構成する。
-  実証済みの全表示の各有限部分をこの族へ同型で移し、`smallFullModel` と同型飽和の同値から空間の小さい生成圏を得る。空間・前層の accessibility は未証明。
+- 工程 (2)。F1 の `LeftFibrationInfinity` と N の相対 Hom の全共変比較を使い、一般の小さい底上の前層へ進む。
+  有限な底上の単体模型の共通族・left fibration 置換・filtered 全表示・compact 性を構成して、小さい生成圏を得る。前層の accessibility は未証明。
   任意の小さい A の Indκ(A) を presentable とせず、小余極限の必要な条件を明示する。
 
 ## 規約

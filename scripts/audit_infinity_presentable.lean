@@ -178,3 +178,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpacePieces_nerve_isKappaFiltered
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceReplacementDiagram_compact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSpacePresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.FiniteSimplicialCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSimplicialCode
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceGeneratorVertex_isCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceCompactGeneratorInclusion_isCompactGenerating
+#check @SerrePositivity.InfinityCategories.F2.Presentable.space_isKappaAccessible_aleph0
+#check @SerrePositivity.InfinityCategories.F2.Presentable.space_isPresentable
