@@ -48,7 +48,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (b : NerveFirstChoice.System (OrdinaryBarCenters.rightChoices R))
 
 abbrev SmallNerve := SSet.uliftFunctor.{max u v, v}.obj
-  (nerve (OrdinaryBarFirstAction.output R).Elements)
+  (nerve (BarOutput.output R).Elements)
 
 def evaluationNerveMap : SSet.uliftFunctor.{max u v, max u v}.obj
     (nerve (OrdinaryBarTotalCone.Index R)) ⟶ SmallNerve R where
@@ -65,15 +65,15 @@ def rowNerveMap : SmallNerve R ⟶ OrdinaryBarEvaluation.bar R where
       ((OrdinaryBarNerveBridge.rawBridge R).naturality θ)
 
 /-- Both source and target wrappers are explicit, including the original output wrapper. -/
-def smallAugmentation : SmallNerve R ⟶ UniverseLift.obj.{u} (OrdinaryBarFirstAction.output R) where
+def smallAugmentation : SmallNerve R ⟶ UniverseLift.obj.{u} (BarOutput.output R) where
   app n := ↾fun c => ULift.up ((SimplexNerveAugmentation.augmentation
-    (OrdinaryBarFirstAction.output R)).app n c.down)
+    (BarOutput.output R)).app n c.down)
   naturality {n m} θ := by
     apply ConcreteCategory.hom_ext
     intro c
     apply ULift.ext
     exact congrArg (fun f => f c.down)
-      ((SimplexNerveAugmentation.augmentation (OrdinaryBarFirstAction.output R)).naturality θ)
+      ((SimplexNerveAugmentation.augmentation (BarOutput.output R)).naturality θ)
 
 lemma evaluatedComposite_eq : OrdinaryBarNerveBridge.evaluatedComposite R a b =
     evaluationNerveMap R a b ≫ rowNerveMap R := rfl

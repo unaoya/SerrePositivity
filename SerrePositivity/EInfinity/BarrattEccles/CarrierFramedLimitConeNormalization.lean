@@ -50,7 +50,7 @@ lemma carrierRightSimplicialConeIso_coneClass (F : K ⥤ (operad A).Algebra) (c 
     change SSet.mapπ₀ i.hom _ = _ at h
     rw [← h, ← SSet.mapπ₀_comp_apply, Iso.hom_inv_id, SSet.mapπ₀_id_apply]
   change SSet.mapπ₀ (i.inv ≫ (WeightedCones.coneSpace Kᵒᵖᵒᵖ
-    (framedLimitWeight K)).map j.hom) _ = _
+    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)).map j.hom) _ = _
   rw [SSet.mapπ₀_comp_apply, hi]
   have hm := HomotopyWeight.coneClass_map Kᵒᵖᵒᵖ (e.functor ⋙ W)
     (Functor.whiskerLeft e.functor s) j.hom

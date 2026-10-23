@@ -1,0 +1,226 @@
+{
+  "head": "aa124065c222af778162478a12a8accbb5a5e227",
+  "modified_lean_files": [
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitClasses.lean",
+      "sha256": "58bf1306a5ca0badab1bac70c2e508d6e76abb0c82086f1591ee983c6ac1c535"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitComparison.lean",
+      "sha256": "1ce2f39f58c1cf3b21d41c06040e4e6bb72de29dcaa2a960df179b45161ff9d6"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeClasses.lean",
+      "sha256": "1523a48bf4e69b39121493b84b907c22d2623466da76b10327717d8c19b3d104"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeNormalization.lean",
+      "sha256": "03ffd62ed8e951a418d57c4547309ce1a8d590bafc68c2cdfb5d293ce5529ffa"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitConeSource.lean",
+      "sha256": "089df14b0f87bb3b2dc5e970249518d9d4d9ed810a921c49a1d87129394ab18c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+      "sha256": "9406098e0aeccffb3a3d634d86f3fed0469a18b4842e07c7b116f67195ae689a"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHom.lean",
+      "sha256": "08b83e232e626f266cc6a7e09784079f69d260a877ed18243d67eef03d1431fb"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomNaturality.lean",
+      "sha256": "652f5f1d9304a2d3e8017925e82634b111f56e40d956fc247fe7006ad10b8b8f"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitHomSource.lean",
+      "sha256": "8ba09210ecbdfab227d38722a4e82cfc68b21b234f3ad073de08a27ac477456b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+      "sha256": "5e85d9206eca1ce995945f71f9718cce48bc3851e2938ed6fc52fabad738f640"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialConeSource.lean",
+      "sha256": "acaac27bf20e5534971cbe0d1801268cf0464c273de0db3c457c009d7ea1e5e4"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/CarrierRightSimplicialCones.lean",
+      "sha256": "65cce0d671f7d47ca8dc0575e0abd8d06bbfdc8610d636a3900653a90371d3ed"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimit.lean",
+      "sha256": "2d42baf4492f0995fa7b683d590dc0f858cff8f824ef9ebd9b13f10246d8c857"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitComparison.lean",
+      "sha256": "3ef4fcd6ba4302bf15ab1b9993e9c563bc431db28357fdec51f2344f14e1abae"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeClasses.lean",
+      "sha256": "b4a70e58a7cc3747b2b17c379ff526284e6889d37f5a768662f7da97262b1237"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeNormalization.lean",
+      "sha256": "becb7fceebf3eba5a787375de9372d62c9cab563dc9c76dc156c6b09dda3f41b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitConeSource.lean",
+      "sha256": "80b7da06ebb7753e56c05d42b643b1fa51f3e3a041cbc7d3eccf28f7725ae50b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitCones.lean",
+      "sha256": "4aa0bb5e63ca32b00781e2a4552dc12f771884c1a5b79f81495a79dc6e42f3da"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomNaturality.lean",
+      "sha256": "8ae62254ec62c2352f60d98ec3df783a615a17a53f9ea23b9bed10b764272155"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomPiZero.lean",
+      "sha256": "0454d9ac5bdbb423479b35964bba2b76e9e9900c6a4f22f01c06f1d0880b7f70"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitHomSource.lean",
+      "sha256": "c58a56015602c9eb56a5e0affebc89995e4574527350267b8b00ee8440a2e071"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitInvariance.lean",
+      "sha256": "9fbcc883a1513dc41d333e7ab4529931c5decacf03ae1db7345df385c21ceb2c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/FramedLimitNaturality.lean",
+      "sha256": "e67bbd2db270d78a16c2ac5655ab64946ca08bc18ee59c0ff93ba728462df7d7"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialConeSource.lean",
+      "sha256": "467214068045539f543a55d7c2570fb6dffe687a27adce7b0624b5032a3f874b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/RightSimplicialCones.lean",
+      "sha256": "5e5b9bf7bf60295a3b500f039ec0fb623e53b348638fa9199dc242b220620134"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensor.lean",
+      "sha256": "b721665d2fcd7d242fa1c33143b28a734cc94a7b2ac0d1e47409debe082eab34"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorCarrier.lean",
+      "sha256": "7c6b23048a8e95c19adfb008faabc692f69d28ba3d1aff09c053bddc83796d0e"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+      "sha256": "d120e25e68934f82443afe3ed845fb1e381ab9c0a2caa60fec60946c46e2cc76"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimit.lean",
+      "sha256": "82ab662a89375b346a1a4bbfc20fc72a855030e2914554751e860d6465ced3a5"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitComparison.lean",
+      "sha256": "568284dd5204151b671a3892b0ff2dad96cb9ac924b5e8b10d74df74ec5edf2f"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeClasses.lean",
+      "sha256": "b1f916a1f04812958a2ba9f76058f90445f545afd9d26677529582f5d6146201"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeNormalization.lean",
+      "sha256": "8bbded787ed50aabee8a8521227ee622050aa4796f423aaaf37fb7b6811be607"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitConeSource.lean",
+      "sha256": "80d57ac2e45ee0a96084f51df743126cf8126f0e36deef4c12cfe85e0ee7bc87"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitCones.lean",
+      "sha256": "a69a87da7559b8390f6e1c8931716452bb99a08fc362fb92e684c536e06e43eb"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomNaturality.lean",
+      "sha256": "6a5e804a3698a65b00b88ff7b86a7b9ed683a4ac994de5c35c96acf82b90a4e2"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomPiZero.lean",
+      "sha256": "2b12e6f6586ef17ea81c435afcc7fa4ef126c113908a4625908b345f0098d0aa"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitHomSource.lean",
+      "sha256": "3b686e14e14bbaf05ae08843ec3e253623f9e3d65ffbb991115f0646b3f22401"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitInvariance.lean",
+      "sha256": "bdd2118abf671c94e65fc5b7dfee1590e30ba90bb19ab20b2a1c7c0c2d05dd36"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/FramedLimitNaturality.lean",
+      "sha256": "0a5f4986ce31ab7787ff26b412a90480f24e320224cd811822be6a870f54f81c"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialConeSource.lean",
+      "sha256": "7eb3c723e936d188f867610d5e56453d3111963724299f510de5ed27ec42446b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/RightSimplicialCones.lean",
+      "sha256": "46ae73674a7be8bc500668f49ed70877690d71fdaadea42f778593ec3148026b"
+    },
+    {
+      "path": "SerrePositivity/EInfinity/ComplexLimits/WeightedCotensor.lean",
+      "sha256": "46621625278271d9cc0729f1b1ef2376cd19772c17bf7acd77d3c461507f57e9"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAugmentationEquivalences.lean",
+      "sha256": "05797c0ff5cea4220338b020da59601942f3511408f237d14631c26897e86a74"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluatedEndpoint.lean",
+      "sha256": "62f424dc539c74391894ab07dbd23573ec9d40d6aee06d8aa9b8fd0beb9600a1"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluation.lean",
+      "sha256": "748a6b2ef0c3e7159330cb71abd30ef62855e12e6143b06a9385f606dd39f7be"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstAction.lean",
+      "sha256": "4fa092b1600b5fc6ca218ec6d0f4c2816d5de2d0b64d820d40768017c17b8077"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReference.lean",
+      "sha256": "f260219595932ac80722d30b75620d50ef4b2aab17b23200b463f6169e3e7c03"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRows.lean",
+      "sha256": "fecc5c94ff893eda36df04331fbf68890f98dd75e050d10db6f5c5e0c44d011d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalEvaluation.lean",
+      "sha256": "ea5410812a50a93c329b88f741d2d8fcbee5e2d5defdbd283e5d67de388f11d0"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarEvaluation.lean",
+      "sha256": "1cbf82167691b81a5af3548ac428d957b7fb5ddbc6eac545f9ab6bab3a990bd8"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFirstAction.lean",
+      "sha256": "98021c513352593291dd0589b6fe628c01ab9207598ac543d246dcd021acdbf3"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarReference.lean",
+      "sha256": "0672ba0478405de6f4db79e07eda3a86aa5239758503f3e3c0fad3df302a1550"
+    },
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "sha256": "f4b0a037e6aabe17f6b54e4017fed51910e101f1d69e284b1c96c4dddbb519de"
+    },
+    {
+      "path": "scripts/check_ordinary_bar_evaluation.lean",
+      "sha256": "7ab5df7edf85574237148e097ab9fdb28cfb6e75c8e5745d14d89b68ee8c2f2f"
+    },
+    {
+      "path": "scripts/check_resolution_bar_evaluation.lean",
+      "sha256": "b9b6a69a30206666570a320f011cd140caca73cb4e0d3d1325fd6087ccf4d787"
+    }
+  ],
+  "invariant": "Only removal of the four duplicate declarations, new imports, and direct references to their shared definitions differ from HEAD; shared declaration bodies are preserved."
+}

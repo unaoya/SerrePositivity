@@ -2041,7 +2041,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso,
       `SerrePositivity.EInfinity.BarrattEccles.cotensorCarrierIso_naturality,
       `SerrePositivity.EInfinity.BarrattEccles.rightFrameDiagram,
-      `SerrePositivity.EInfinity.BarrattEccles.doubleOpWeights,
+      `SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensorHomEquiv,
       `SerrePositivity.EInfinity.BarrattEccles.carrierRightFrameDiagram,
@@ -2123,7 +2123,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.HomotopyWeight.valueSection_comparison,
       `SerrePositivity.EInfinity.HomotopyWeight.valueContraction,
       `SerrePositivity.EInfinity.BarrattEccles.weightedCotensor_map_fibration,
-      `SerrePositivity.EInfinity.BarrattEccles.framedLimitWeight,
+      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitOpFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_obj,
@@ -2140,7 +2140,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.BarrattEccles.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitProbe,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitConeSpace,
-      `SerrePositivity.EInfinity.BarrattEccles.framedLimitWeight_cofibrant,
+      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant,
       `SerrePositivity.EInfinity.BarrattEccles.framedLimitFunctor_map_quasiIso,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramReplacement,
       `SerrePositivity.EInfinity.BarrattEccles.constantDiagramComparison,
@@ -2493,7 +2493,7 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.ComplexLimits.rightFrame_cofibrant,
       `SerrePositivity.EInfinity.ComplexLimits.weightedCotensorHomEquiv,
       `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor,
-      `SerrePositivity.EInfinity.ComplexLimits.framedLimitWeight_cofibrant,
+      `SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant,
       `SerrePositivity.EInfinity.ComplexLimits.coneToFramedLimit,
       `SerrePositivity.EInfinity.ComplexLimits.limitComparisonNatTrans,
       `SerrePositivity.EInfinity.ComplexLimits.framedLimitFunctor_map_quasiIso,
@@ -12466,7 +12466,7 @@ open CategoryTheory.Limits SerrePositivity.EInfinity.BarrattEccles in
 example (F : PEmpty ⥤ (BarrattEccles.operad ℤ).Algebra) :
     IsTerminal ((framedLimitFunctor ℤ PEmpty).obj F) := by
   let a (Y : (BarrattEccles.operad ℤ).Algebra) :
-      (doubleOpWeights PEmpty).obj (HomotopyWeight.weight PEmpty) ⟶
+      (SerrePositivity.EInfinity.HomotopyWeight.doubleOpWeights PEmpty).obj (HomotopyWeight.weight PEmpty) ⟶
         (SerrePositivity.DiagramModel.FrameWeightRealization.hom PEmptyᵒᵖ
           (rightFrameDiagram ℤ PEmpty F)).obj (Opposite.op Y) :=
     { app k := PEmpty.elim k.unop.unop

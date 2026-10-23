@@ -48,7 +48,7 @@ example (d : ResolutionBarCenters.Comma R) :
   ResolutionBarCenters.leftSystem_point R hcof d
 
 example : ResolutionBarEvaluation.bar R ⟶
-    UniverseLift.obj.{u} (ResolutionBarFirstAction.output R) :=
+    UniverseLift.obj.{u} (BarOutput.output R) :=
   ResolutionBarEvaluation.evaluation R (ResolutionBarCenters.leftSystem R hcof)
     (ResolutionBarCenters.rightSystem R hcof)
 

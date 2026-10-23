@@ -47,8 +47,8 @@ def framedLimitHomPiZeroEquiv (Y : (Complex A)) (F : K ⥤ (Complex A)) :
   have := framedLimitProbe_cofibrant A Y
   have : IsFibrant (op (framedLimitProbe A Y)) :=
     FrameHom.MixedFrame.fibrantOp_of_cofibrant _
-  let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (framedLimitWeight K)
-    (rightFrameDiagram A K F) (framedLimitWeight_cofibrant K)
+  let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+    (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))
     (fun k _ _ f => rightFrame_homotopicallyConstant A (F.obj k.unop) f) Q.op
     (op (framedLimitProbe A Y))
@@ -57,7 +57,7 @@ def framedLimitHomPiZeroEquiv (Y : (Complex A)) (F : K ⥤ (Complex A)) :
       (framedLimitProbeComparison_quasiIso A Y)
   exact e.trans ((show
       (Q.op.obj ((FrameWeightRealization.functor Kᵒᵖ (rightFrameDiagram A K F)).obj
-        (framedLimitWeight K)) ⟶ Q.op.obj (op (framedLimitProbe A Y))) ≃
+        (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)) ⟶ Q.op.obj (op (framedLimitProbe A Y))) ≃
       (Q.obj (framedLimitProbe A Y) ⟶ Q.obj ((framedLimitFunctor A K).obj F)) from
     { toFun := fun f => f.unop
       invFun := fun f => f.op

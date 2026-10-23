@@ -32,8 +32,8 @@ lemma framedLimitFunctor_map_quasiIso {F G : K ⥤ (operad A).Algebra} (f : F �
     (hf : ∀ k, QuasiIso (f.app k).hom) :
     QuasiIso (((framedLimitFunctor A K).map f).hom) := by
   let := modelCategory A
-  exact HomotopyWeight.realization_map_frame_weakEquivalence Kᵒᵖ (framedLimitWeight K)
-    (framedLimitWeight_cofibrant K) (rightFrameFactorization A)
+  exact HomotopyWeight.realization_map_frame_weakEquivalence Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
+    (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (rightFrameFactorization A)
     ((rightFrameDiagramFamily A K).map f.op)
     (fun k => rightFrame_cofibrant A (G.obj k.unop))
     (fun k => rightFrame_cofibrant A (F.obj k.unop))

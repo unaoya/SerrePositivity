@@ -42,7 +42,7 @@ lemma framedLimitHomEquiv_map {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G)
         ((FrameWeightRealization.homFamily Kᵒᵖ).map
           ((rightFrameDiagramFamily A K).map f.op).op).app (op Y) := by
   exact FrameWeightRealization.homEquiv_frame_naturality Kᵒᵖ
-    ((rightFrameDiagramFamily A K).map f.op) (framedLimitWeight K) (op Y) h.op
+    ((rightFrameDiagramFamily A K).map f.op) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K) (op Y) h.op
 
 /-- 概要：通常の極限から計算対象への比較はすべての図式射に自然（Hovey §5.4）。
 方針：重み付き Hom で全単体へ移し、frame の比較と極限の射影の自然性を使う。

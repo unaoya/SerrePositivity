@@ -74,7 +74,7 @@ variable (a : NerveFirstChoice.System (OrdinaryBarCenters.leftChoices R))
   (b : NerveFirstChoice.System (OrdinaryBarCenters.rightChoices R))
 
 abbrev simplex (n : SimplexCategoryᵒᵖ) (c : (bar R).obj n) :
-    SSet.stdSimplex.{v}.obj n.unop ⟶ OrdinaryBarFirstAction.output R :=
+    SSet.stdSimplex.{v}.obj n.unop ⟶ BarOutput.output R :=
   OrdinaryBarFirstAction.action R a b (chain R n c) (inputSimplex R n c)
 
 lemma input_operator {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (c : (bar R).obj n) :
@@ -101,14 +101,14 @@ lemma simplex_operator {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (c : (bar R)
   congr 1
 
 /-- A genuine map from the whole large bar to the lift of the same small reference output. -/
-def evaluation : bar R ⟶ UniverseLift.obj.{u} (OrdinaryBarFirstAction.output R) where
+def evaluation : bar R ⟶ UniverseLift.obj.{u} (BarOutput.output R) where
   app n := ↾fun c => ULift.up (SSet.yonedaEquiv (simplex R a b n c))
   naturality {n m} θ := by
     apply ConcreteCategory.hom_ext
     intro c
     apply ULift.ext
     change SSet.yonedaEquiv (simplex R a b m ((bar R).map θ c)) =
-      (OrdinaryBarFirstAction.output R).map θ (SSet.yonedaEquiv (simplex R a b n c))
+      (BarOutput.output R).map θ (SSet.yonedaEquiv (simplex R a b n c))
     exact (congrArg SSet.yonedaEquiv (simplex_operator R a b θ c)).symm.trans
       (SSet.yonedaEquiv_naturality θ.unop (simplex R a b n c)).symm
 
