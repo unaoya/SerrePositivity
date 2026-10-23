@@ -653,7 +653,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationCubes,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaNormalizationPrisms,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationCubeIntervalFaces,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismSliceCube]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismSliceCube,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeIdentityComma,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationCubeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationHomInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationRawCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationRawFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCubeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCubeFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedNormalizationCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationSharedFace]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
