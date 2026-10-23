@@ -1,6 +1,17 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_initialCone_family_under
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_indArrowInterpolationData_with_sourceCone
+#check @SerrePositivity.InfinityCategories.F2.Ind.exists_indArrowInterpolationData_under_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismFamily_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowTerminalPrismCurry_source
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismSourceFixedIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismSourceOriginalVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismAllBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismAllBoundaryReconstructedVertex_val
+#check @SerrePositivity.InfinityCategories.F2.Ind.indArrowPrismAllBoundaryOriginalVertex_val
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerMap
 #check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCornerInclusion_naturality
 #check @SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationCoconeIso_inv_naturality

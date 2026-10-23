@@ -548,3 +548,15 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOld
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldFamilyIso
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowDiagramFiltered
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramInitialConeUnder
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationWithSource
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationUnderSource
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismSource
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismSourceIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismAllBoundaryComparison
