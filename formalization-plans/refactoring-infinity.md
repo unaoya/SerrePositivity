@@ -21,7 +21,8 @@
 - 重複検査は 11,702 ファイル、実体の重複 0 群、新規重複対 0（11.11 秒）。
   [検証記録](archive/refactor-ra-validation-2026-10-23.json)・[重複一覧](archive/refactor-duplicates-ra-2026-10-23.md)。完了：2026-10-23 17:45 JST。
 - F2・Stable・HomotopyLimits の各集約と全体ビルドは本バッチの対象検証に含めない。R-B/R-C・コーディネータが担当する。
-- main は未変更。worktree のバッチは rebase・対象検証済みで、コーディネータによる ff-merge を待つ。
+- main は `6e3cbbcba` を ff-merge 済み。コーディネータの全体ビルドは 18 秒で成功し、ビルド済み olean も反映済み。以後 R-A は main で直接作業し、旧 worktree は使用しない。
+- 移動ツールを main に配置・コミット済み。R6・R7・R9 の入口を整え、対象ビルド 6.82 秒、5 監査 82.68 秒、重複検査 10.48 秒で成功。
 
 ### 残り（依存順）
 
@@ -40,8 +41,8 @@
 
 ### 次の一手
 
-- 対象検証の完了と最新 HEAD を報告し、コーディネータによる ff-merge を待つ。自分では merge しない。
-- 取り込み後は main を正とし、最初に `scripts/move_module.py` を配置する。試作 `/tmp/r-a-move_module.py` は一時リポジトリで移動・参照・集約更新を検証済み。以後の担当は §8 の R-A に限定する。
+- main で R11 の 600 モジュールを分離し、独立入口と F1 主入口の対象ビルド・監査・重複検査を通す。
+- `scripts/move_module.py` は main に配置済み。一時リポジトリで移動・参照・集約更新を検証済み。以後の担当は §8 の R-A に限定する。
 - R6 入口案、R11 の 600 本の移動案（636 ファイル更新、490 本が F1 閉包から外れる）、R12・R13 の分類資料も `/tmp/r-a-*` に準備。全て未適用。
 - 各段階の対象ビルド・該当監査・重複検査の結果と実測時間を報告する。全体ビルドとタグはコーディネータ。
 
@@ -90,7 +91,7 @@
 | 1-1 | `F1/PullbackFiber`・`F1/LeftFiberKan` を汎用部（新 `Core/VertexFiberPullback`・`Core/LeftFiberKan`）と straightening 部（`LeftUnstraighteningFiberIso`・`LeftUnstraighteningFiberKan`、Core を import）に分割 | R8 段階 1 | F1（10-18 以降未変更） | §3 | 2026-10-23 17:45 JST（R-A） |
 | 1-2 | 汎用部だけで足りる直接 importer（6 本）を Core 側へ向け直す。下流の import と名前を原本へ直接更新する（旧依存を保つための import は加えない） | R8 段階 2 | F1・F1B・HomotopyLimits・F2 | 1-1 の後、§3 | 2026-10-23 17:45 JST（R-A） |
 | 1-3 | F1B の `KanSection*` 重複を削除し原本へ直接置換。現状の宣言数と差分を再検証し、独自内容だけを残す | R8 段階 3 | F1b（10-19 以降未変更） | 1-2 の後（F1B 監査が原本の閉包を通すため） | 2026-10-23 17:45 JST（R-A） |
-| 1-4 | `Core/Fibrations.lean`・`Core/MappingSpace.lean` の入口（定義は動かさず import と docstring で目次化） | R7・R9 | なし | 即時 | |
+| 1-4 | `Core/Fibrations.lean`・`Core/MappingSpace.lean` の入口（定義は動かさず import と docstring で目次化）、R6 は `F1/Fibrations.lean` | R6・R7・R9 | なし | 即時 | 2026-10-23 22:05 JST |
 | 1-5 | `Stable/SliceOpposite` の `sliceOverOpIso` を `Core/SliceOpposite` へ移し、旧ファイルを削除・参照を直接更新 | R5 の前半 | D（10-18 以降未変更） | §3 | 2026-10-23 17:45 JST（Core・R-A 対象。Stable 集約は R-B） |
 | 2-1 | `Stable/Cocone`・`UniverseLimits`・`ColimitDiagramIso`・`Definition` の `HasFiniteLimits` を `Core/Colimit*` へ（旧ファイルを削除して直接置換） | R2・R22 | D | D-7 d 完了直後 | |
 | 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | |

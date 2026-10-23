@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibrati
 概要：pinched 写像空間の定義・Kan 性・π₀・関手性を読むための入口。
 方針：既存の公開モジュールを public import し、主要宣言の所在を示す。
 規約：右 pinched 模型を共通の写像空間として保ち、定義・証明は移さない。
-使われ方：写像空間の基礎の目次。既存の Core 集約は変更しない。
+使われ方：写像空間の基礎の目次。Core 集約からも利用できる。
 
 ## 定義と読み順
 

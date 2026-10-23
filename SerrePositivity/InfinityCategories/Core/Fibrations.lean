@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 概要：anodyne・fibration と頂点 fiber の基礎を読むための入口。
 方針：定義を移さず、既存モジュールを public import して所在を示す。
 規約：ホーンの向き・型クラス・宣言名は原本のまま保つ。
-使われ方：Core の基礎を読む際の目次。既存の Core 集約は変更しない。
+使われ方：Core の基礎を読む際の目次。Core 集約からも利用できる。
 
 ## 定義と読み順
 

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Fibrations
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorMixedHom
 public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeEvaluation
 public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeReindex

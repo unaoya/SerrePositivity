@@ -15,7 +15,7 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | --- | --- | --- | --- |
 | PinchedHom | 右 pinched 写像空間 | [PinchedHom/Basic.lean](PinchedHom/Basic.lean) | audit_infinity_core.lean |
 | Core | join・slice、終対象、極限、同値、写像空間、fibration の基礎 | [Core.lean](Core.lean) | audit_infinity_core.lean |
-| F1 | cocartesian fibration、straightening、Yoneda・前層 | [F1.lean](F1.lean) | audit_infinity_f1.lean |
+| F1 | cocartesian fibration、straightening、Yoneda・前層 | [F1.lean](F1.lean)、[fibration の基本](F1/Fibrations.lean) | audit_infinity_f1.lean |
 | F1B | Kan 拡張、随伴、cofinality、局所化 | [F1B.lean](F1B.lean) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
 | Coherent | coherent nerve の quasicategory 性（γ1） | [Coherent.lean](Coherent.lean) | audit_coherent_nerve.lean |
 | DoldKanComparison | coherent nerve と dg nerve の比較（γ1.5） | [DoldKanComparison.lean](DoldKanComparison.lean) | audit_dold_kan_comparison.lean |
@@ -30,6 +30,10 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 `lake build SerrePositivity.InfinityCategories.<入口名>` で行う。
 主経路では `ModelCategory SSet` の instance 仮定を置かない。
 公理監査は標準の `propext`・`Classical.choice`・`Quot.sound` のみを許す。
+
+Core の基本入口は [Fibrations.lean](Core/Fibrations.lean) と
+[MappingSpace.lean](Core/MappingSpace.lean)。辺の cocartesian 性と相対外側ホーンは
+[F1/Fibrations.lean](F1/Fibrations.lean) にまとめる。
 
 ## 読み順と規約
 
