@@ -9,7 +9,7 @@
 - 残り：R3 と 2-1〜2-3。R-A 取り込みの合図後に rebase・.lake 再クローンを行い、Core/F1B への移動に着手。合図は未受領。
 - Core/F1/F1B は取り込みまで読み取り専用。move_module.py 未着につき手変更は archive/refactor-r-b-manual-files.txt に記録。
 - main の未追跡 DGKernelDerivedMapInvertible は個別許可により削除済み。既存 QuasiIso 版と全非コメントトークン一致を確認。
-- 次の一手：Derived 共有化をコミット。session 12212 は exit 0、移行スクリプトと検証パイプラインを再実行しない。
+- 次の一手：R-A 取り込みの合図を待って rebase・.lake 再クローン。Derived 共有化は `e0ce9b2c8` に保存済み。session 12212 は exit 0、再実行しない。
 
 ## 方針
 
@@ -60,3 +60,7 @@
 - CofinalLimitExistence は型に F1B の IsLeftCofinal を含み、F1B の因子分解を使う。移動先を新規 F1B/CofinalLimitExistence とする調整はユーザー承認済み。型・証明を保持した preview も Lean 成功。
 
 - R23 検証は Core・F2・Derived の集約と audit_infinity_core・audit_infinity_f2・audit_derived_infinity に加え audit_infinity_f1b（straightening を閉包に含まない）を実行。旧名→新名を §5 に記録する。
+
+## R14 の下準備（未適用）
+
+- PointConstantHomEquivalence と AdjunctionHomotopyCategory の本文を保った結合 preview は、Core・F1・F1B の import のみで Lean 成功。`/tmp/r-b-r14-f1b-preview.lean`、同 `.log`。実移動時は両方を新規 F1B ファイルへ置き、後者から前者を import する。
