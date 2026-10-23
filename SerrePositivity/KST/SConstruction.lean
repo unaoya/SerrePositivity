@@ -2534,4 +2534,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetConeRepresentationNa
 public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebraRepresentation
 public import SerrePositivity.KST.SConstruction.DGOdotTargetConePerfect
 
+public import SerrePositivity.KST.SConstruction.DGFullClosedIsoLift
+public import SerrePositivity.KST.SConstruction.DGFunctorClosedFamilyIso
+public import SerrePositivity.KST.SConstruction.PerfectDGExtensionClosedFamily
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallPerfect
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallRepresentation
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallExtension
+public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebraSmallExtension
+
 /-! # ∞-S• 構成と連結 K 理論 -/

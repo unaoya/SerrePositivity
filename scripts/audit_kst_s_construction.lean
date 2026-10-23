@@ -30753,3 +30753,174 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_inv
 #print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_inv
+
+#check @SerrePositivity.KST.SConstruction.dgFullClosedIsoLift
+#print axioms SerrePositivity.KST.SConstruction.dgFullClosedIsoLift
+
+#check @SerrePositivity.KST.SConstruction.dgFullClosedIsoLift_whiskerLeft
+#print axioms SerrePositivity.KST.SConstruction.dgFullClosedIsoLift_whiskerLeft
+
+#check @SerrePositivity.KST.SConstruction.dgFullClosedIsoLift_whiskerRight
+#print axioms SerrePositivity.KST.SConstruction.dgFullClosedIsoLift_whiskerRight
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_whiskerLeft
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_whiskerLeft
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_whiskerRight
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_whiskerRight
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedHomFromFamily
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedHomFromFamily
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedHomFromFamily_eval
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedHomFromFamily_eval
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedHom_ext
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedHom_ext
+
+#check @SerrePositivity.KST.SConstruction.dgFunctorClosedIsoFromFamily
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorClosedIsoFromFamily
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionInputFunctorAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionInputFunctorAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionInputHom_factorization
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionInputHom_factorization
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_hom
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_hom
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_inv
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_inv
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamilyAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamily
+#print axioms SerrePositivity.KST.SConstruction.perfectDGExtensionClosedIsoFromFamily
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetConeFamily
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetConeFamily
+
+#check @SerrePositivity.KST.SConstruction.DGOdotTargetSmallPerfect
+#print axioms SerrePositivity.KST.SConstruction.DGOdotTargetSmallPerfect
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPerfect_small
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPerfect_small
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallConePoint
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallConePoint
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentablePoint
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentablePoint
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallYoneda
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeSmallRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_whiskerLeft
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_whiskerLeft
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_whiskerRight
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_whiskerRight
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetSmallPointIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeRepresentationClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso_hom_eval
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso_hom_eval
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso_inv_eval
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConeInputIso_inv_eval
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_inv
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_inv
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotSmallConePerfectClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeAlgebraSmallFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeAlgebraSmallFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor_factor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor_factor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallFunctor_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPointIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPointIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPerfectAt
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPerfectAt
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPerfectAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallPerfectAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectAt
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectAt
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectAt_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectAt_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraSmallPerfectClosedIso
