@@ -524,3 +524,11 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowNormalizedPrismC
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundaryPost
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismNativeCoconeComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.PinchedHomPullbackSquare
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulPullbackRight
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundarySliceReflection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSliceFullyFaithful

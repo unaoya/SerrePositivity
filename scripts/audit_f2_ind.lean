@@ -1,6 +1,13 @@
 import SerrePositivity.InfinityCategories.F2.Ind
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.Ind.pinchedHomPullback_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Ind.fullyFaithful_pullback_snd_of_innerFibration_right
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaSliceProjection_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Ind.diagramCommaFunctorIsoOfSliceIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_sliceFunctorIso_of_fixedCoconeBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.nonempty_commaFunctorIso_of_fixedCoconeBoundaryIso
+
 #check @SerrePositivity.InfinityCategories.F2.Ind.rightTensorCurryMap_source
 #check @SerrePositivity.InfinityCategories.F2.Ind.fixedArrowPrismBoundaryCurry
 #check @SerrePositivity.InfinityCategories.F2.Ind.fixedArrowPrismBoundaryCurry_ι
