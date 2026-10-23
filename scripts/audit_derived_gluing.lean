@@ -673,7 +673,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationOriginalFace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseFunctorPinchedValue,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniversePinchedIntervalEvaluation,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareComposition]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainAugmentationIsoTarget,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeModuleCochainInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeModuleCochainPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeModuleNormalizedPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationCochainInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationCochainSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedCochainLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedCoefficientPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedHomActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareReindex]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
