@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.CoherentVertices
 public import SerrePositivity.InfinityCategories.F1.CoherentTwoSidedHomNaturality
 public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
 
