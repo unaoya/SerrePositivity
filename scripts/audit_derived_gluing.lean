@@ -683,7 +683,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedCochainLift,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedCoefficientPrism,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizedHomActions,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareReindex]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSquareReindex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaCollapsedPhase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaCollapsedPrimitive,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaPrismPhaseCongruence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommaTerminalCut,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaAugmentationEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaCollapsedCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaCollapsedUnit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismIntervalCut,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaPrismIntervalSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaTerminalMain,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaTerminalPhase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPrismCutPhase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainPrismIntervalSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
