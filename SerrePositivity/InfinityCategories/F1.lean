@@ -3277,3 +3277,7 @@ public import SerrePositivity.InfinityCategories.F1.RepresentableLimitCharacteri
 public import SerrePositivity.InfinityCategories.F1.RepresentablePresheafLimitDetection
 
 public import SerrePositivity.InfinityCategories.F1.SSetProductEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianTwoBoundaryLocalFace
+
+public import SerrePositivity.InfinityCategories.F1.CocartesianSimplexLocalBoundaryRestrictions
