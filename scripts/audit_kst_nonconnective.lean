@@ -7,16 +7,35 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.AdditivityGroupDecomposition,
+    `SerrePositivity.KST.NonConnective.BoundaryAdditivity,
+    `SerrePositivity.KST.NonConnective.CofiberAxes,
+    `SerrePositivity.KST.NonConnective.ConnectedKMiddleAdditivity,
+    `SerrePositivity.KST.NonConnective.DGClosedHomLinearity,
+    `SerrePositivity.KST.NonConnective.DGFixedKAction,
     `SerrePositivity.KST.NonConnective.DGCountableSum,
     `SerrePositivity.KST.NonConnective.DGCountableSwindle,
     `SerrePositivity.KST.NonConnective.DGKappaConeInput,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectInput,
+    `SerrePositivity.KST.NonConnective.DGKappaSplitInclusions,
+    `SerrePositivity.KST.NonConnective.DGKappaSplitProjections,
+    `SerrePositivity.KST.NonConnective.DGKappaSplitRelations,
     `SerrePositivity.KST.NonConnective.DGKappaSuspension,
     `SerrePositivity.KST.NonConnective.DGKappaSwindle,
     `SerrePositivity.KST.NonConnective.DGKappaSwindleInfinity,
+    `SerrePositivity.KST.NonConnective.DGKappaZeroFunctor,
     `SerrePositivity.KST.NonConnective.DGSumFamily,
+    `SerrePositivity.KST.NonConnective.DGSumFamilyInclusion,
+    `SerrePositivity.KST.NonConnective.DGSumPairProjection,
+    `SerrePositivity.KST.NonConnective.DGSumPairSplit,
+    `SerrePositivity.KST.NonConnective.DGSuspensionIteration,
     `SerrePositivity.KST.NonConnective.DGSwindleEnriched,
+    `SerrePositivity.KST.NonConnective.DGSwindleFixedK,
+    `SerrePositivity.KST.NonConnective.DGSwindleInputIso,
     `SerrePositivity.KST.NonConnective.DGSwindleStrict,
+    `SerrePositivity.KST.NonConnective.FixedSpectrumAction,
+    `SerrePositivity.KST.NonConnective.KanReplacementZero,
+    `SerrePositivity.KST.NonConnective.NonnegativeBoundaryComparison,
     `SerrePositivity.KST.NonConnective.SequentialBFArrowFactorization,
     `SerrePositivity.KST.NonConnective.SequentialBFArrowStage,
     `SerrePositivity.KST.NonConnective.SequentialCandidateColimit,
@@ -51,7 +70,10 @@ run_cmd do
     `SerrePositivity.KST.NonConnective.SequentialRelativeHomNext,
     `SerrePositivity.KST.NonConnective.SequentialResizedDiagramIso,
     `SerrePositivity.KST.NonConnective.SequentialSpectrum,
-    `SerrePositivity.KST.NonConnective.SequentialTowerIndex]
+    `SerrePositivity.KST.NonConnective.SequentialTowerIndex,
+    `SerrePositivity.KST.NonConnective.SingleBoundaryMiddle,
+    `SerrePositivity.KST.NonConnective.SingleRealizationZero,
+    `SerrePositivity.KST.NonConnective.SwindleGroupCancellation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -132,3 +154,16 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaSuspension_isStableVerdierSequence
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionKInput
 #check SerrePositivity.KST.NonConnective.dgKappaSuspension_kills_perfect
+
+#check SerrePositivity.KST.NonConnective.DGSuspensionStageProvider
+#check SerrePositivity.KST.NonConnective.dgSuspensionIteration
+#check SerrePositivity.KST.NonConnective.dgSuspensionIterationStage
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleClosedFunctorIso
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleNativeInputEdge
+#check SerrePositivity.KST.NonConnective.dgKappaSwindleFixedK_pi
+#check SerrePositivity.KST.NonConnective.boundaryKanAdditivityMap_piIsomorphism
+#check SerrePositivity.KST.NonConnective.nonnegativeBoundaryEquiv_naturality
+#check SerrePositivity.KST.NonConnective.connectedKMiddle_additivity
+#check SerrePositivity.KST.NonConnective.dgKappaSplit_decomposition
+#check SerrePositivity.KST.NonConnective.DGKappaZeroInput
+#check SerrePositivity.KST.NonConnective.dgKappaZeroFunctor_isZero

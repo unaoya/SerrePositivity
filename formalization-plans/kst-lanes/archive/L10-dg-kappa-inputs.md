@@ -55,3 +55,24 @@ P : DGKappaPerfectInput R D I
 - P を入力した元の Perf の全頂点の零化。
 
 入力 I・P の存在、F1 の Ind 安定性、K-6、K の加法性による消滅、懸垂の全入力射に対する反復作用は、この工程の出力から証明済みと扱わない。
+
+## 工程 c：同じ κ の反復供給（未構成）
+
+```lean
+-- A : PerfDGInput.{u, max (u + 1) v} R
+s : DGSuspensionStageProvider.{u, v} R κ
+-- 定義上は (A : PerfDGInput.{u, max (u + 1) v} R) → DGSuspensionStageInput R κ A
+-- s A のフィールド cone : DGKappaConeInput R A κ
+-- s A のフィールド perfect : DGKappaPerfectInput R A (s A).cone
+```
+
+正本は `KST/NonConnective/DGSuspensionIteration.lean`。`dgSuspensionIteration R s A n` は各段で同じ `s` と κ を用い、`dgSuspensionIterationStage` はその段で使った I・P の対そのものを保持する。供給の存在を証明したとは扱わず、入力射への作用・全高次整合性もこの対象別反復だけからは推論しない。追加の必要型の記録であり、D・F1 へ直接の依頼は送っていない。
+
+## 工程 c：同じ代表系内の実零加群（未供給）
+
+```lean
+Z : DGKappaZeroInput R D I
+-- 定義上は I.objects (moduleZero R D)
+```
+
+正本は `KST/NonConnective/DGKappaZeroFunctor.lean`。I の存在やフィールドを変更せず、同じ I に関する追加の所属証拠として保持する。前三角性は零対象をホモトピー同値の範囲で与えるが、実零加群そのものが選んだ非 replete な代表系に入るとは結論しない。全 Hom を零へ送る厳密な零 dg 自己関手を同じ cone 内で作る際に使う。K の加法性・消滅・K-6 を入力するものではない。存在は未証明であり、D へ直接依頼していない。

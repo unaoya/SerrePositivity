@@ -1,0 +1,70 @@
+module
+
+public import SerrePositivity.KST.NonConnective.DGKappaSwindleInfinity
+public import SerrePositivity.KST.SConstruction.DGFunctorClosedFamilyIso
+public import SerrePositivity.KST.SConstruction.DGKFixedInterface
+public import SerrePositivity.InfinityCategories.F2.CatFunctorCoreIso
+
+/-!
+概要：同じ厳密 dg swindle を、固定 K の元の入力 native Hom の実辺へ写す。
+方針：全 Hom 自然な閉同型を dg 関手 Hom end の同型にし、同じ native core に含める。
+規約：dg nerve 上の関手同型だけから、厳密 dg 入力の同型を結論しない。
+使われ方：BGT Lem. 9.4 の固定連結 K への swindle の作用。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u v
+open CategoryTheory MonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open DGNerve.HomotopyComparison
+namespace SerrePositivity.KST.NonConnective
+variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+  {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
+
+/-- 同じ dg cone 自体を、固定 K の厳密 dg 入力に束ねる。 -/
+def dgKappaConeKInput : SConstruction.PerfDGInput R :=
+  SConstruction.perfDGInputOf R (DGKappaCone R D I)
+
+/-- 同じ実 swindle の両側逆を、元の dg 関手圏の全 Hom end に保持する。 -/
+def dgKappaSwindleClosedFunctorIso :
+    ForgetEnrichment.of (Complex R) (dgKappaSwindleSource R D I) ≅
+      ForgetEnrichment.of (Complex R) (dgKappaConeCountableSum R D I) :=
+  SConstruction.dgFunctorClosedIsoFromFamily R (DGKappaCone R D I) (DGKappaCone R D I)
+    (dgKappaSwindleSource R D I) (dgKappaConeCountableSum R D I)
+    (dgKappaSwindleComponentIso R D I) (by
+      intro X Y
+      exact dgSwindleHom_enriched_naturality R D X.val Y.val)
+
+/-- 同じ閉 dg 関手同型の native 辺は、元の dg 関手圏の nerve で可逆。 -/
+lemma dgKappaSwindleFunctorEdge_isInvertible :
+    IsInvertibleEdge (X := dgNerve R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)))
+      (dgClosedEdge R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))
+        (dgKappaSwindleClosedFunctorIso R D I).hom) := by
+  let C := DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)
+  let e := dgClosedEdge R C (dgKappaSwindleClosedFunctorIso R D I).hom
+  have h : IsIso ((toH0 R C).map (Truncated.HomotopyCategory₂.homMk e)) := by
+    rw [toH0_homMk, dgClosedEdge_closed]
+    infer_instance
+  have : IsIso (Truncated.HomotopyCategory₂.homMk e) := isIso_of_reflects_iso _ (toH0 R C)
+  exact (edgeToPathHomotopyCategory _).map_isIso (Truncated.HomotopyCategory₂.homMk e)
+
+/-- 固定 dg 入力の同じ native Kan Hom 内の、元の swindle 同型の実辺。 -/
+def dgKappaSwindleNativeInputEdge :
+    (SConstruction.dgFunctorNativeMappingSpace R (DGKappaCone R D I) (DGKappaCone R D I)).Edge
+      (SConstruction.dgFunctorNativeMappingVertex R _ _ (dgKappaSwindleSource R D I))
+      (SConstruction.dgFunctorNativeMappingVertex R _ _ (dgKappaConeCountableSum R D I)) where
+  edge := ⟨(dgClosedEdge R _ (dgKappaSwindleClosedFunctorIso R D I).hom).edge,
+    (quasicategoryCore_mem_edge_iff _).mpr
+      ((isInvertibleEdge_congr (by rfl)).mp (dgKappaSwindleFunctorEdge_isInvertible R D I))⟩
+  src_eq := by
+    apply Subtype.ext
+    exact (dgClosedEdge R _ (dgKappaSwindleClosedFunctorIso R D I).hom).src_eq
+  tgt_eq := by
+    apply Subtype.ext
+    exact (dgClosedEdge R _ (dgKappaSwindleClosedFunctorIso R D I).hom).tgt_eq
+
+end SerrePositivity.KST.NonConnective
