@@ -6,8 +6,8 @@
 
 ## 引き継ぎ（2026-10-23）
 ### 現在地
-- 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、
-  二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
+- 2026-10-23 コーディネータ指示で本チャットを停止。直近の実装は e310c490e、直前は 51fe1d56b。以下の未完部分は新チャットで再開する。
+- 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
 - 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
   同じ実 cofiber による相対辺判定と、全 n の二対三・pushout・pullback・拡大安定性を証明。元の S_n(D) 包含は全写像空間で充満忠実で実核像に一致し、同じ cofiber の像条件を回収。W 辺・相対 cofiber 射影は trivial Kan、全正反復の加法性へ接続済み。
 - 有限 W 列の初期頂点・連続 cofiber 比較は、零長で厳密同型、全長・全正反復で局所化同型。
@@ -51,8 +51,8 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- 対象 10753 jobs・監査 537 モジュール 3143 宣言・全体 25715 jobs が成功。標準三公理のみ。
-  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6958 モジュールは EInfinity を含まない。
+- 対象 10773 jobs・監査 557 モジュール 3282 宣言が成功。標準三公理のみ。最新の全体ビルドは終了結果未確認（旧 session 99583 は失効、再利用不可）。
+  宣言型の ModelCategory・禁止ソース・diff 検査も成功。所有 import 閉包 6978 モジュールは EInfinity を含まない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -95,12 +95,12 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- なし（CoreFamilyDiagonalCylinder・CoreSingleFamilyCylinder、集約・監査・本計画）。集約10773 jobs・監査557モジュール3282宣言成功。前の所有13ファイルは 51fe1d56b に保存済み。全体ビルド（exec session 99583、/tmp/kst-fibration-root-build.log）は継続中で、成功とは扱わない。
+- 所有ファイルはなし（本引き継ぎも停止コミットに保存）。CoreFamilyDiagonalCylinder・CoreSingleFamilyCylinder と集約・監査は e310c490e、前の所有13ファイルは 51fe1d56b。未接続の作業中 Lean ファイルなし。/tmp の試作・ログは再開の前提にしない。
 ### 既知の問題
 - 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- 全体ビルドは同じ exec session 99583 の終了を確認し、観測 timeout で再起動しない。独立検証済み /tmp/KSTRawFamilyCoordinates.lean（relabelInternalFamily_uncurry）を使って、元の core S 実現対象への全 Hom の座標読み替えを構成する。次に coreSingleSimplicialIso の対角が coreSingleRealizationIso の逆射と等しいことを回収し、quotientSKernelNullCylinder_native の全族を元の core S 実現対象へ座標読み替えする。Ex∞ の全 Hom 作用へ送り、verdierNullContractionComparison と共有対角固定円柱から指定二胞体を保つ全四角形比較へ進む。Sp の三件の不足 API と商実現比較への接続も確認する。
+- EnrichedObjectRelabelling.lean の relabelEnrichedObjects による全 Hom の座標読み替えを構成する。対象等式 h:F.obj=obj の下で uncurry(H≫relabel.map) は、uncurry(H≫F.map) を始域の eqToHom(h.symm)▷P と終域の eqToHom(h) で挟んだ射に等しい（cases h; simp only [relabelEnrichedObjects, eqToHom_refl, Category.comp_id, id_whiskerRight, Category.id_comp]; rfl で試作検証済み）。coreSingleSimplicialIso の対角＝coreSingleRealizationIso の逆射を照合し、quotientSKernelNullCylinder_native の全族を元の core S 実現対象へ移す。Ex∞ の全 Hom 作用へ送り、verdierNullContractionComparison と共有対角固定円柱から指定二胞体を保つ全四角形比較へ進む。Sp の不足三件も確認する。
   元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
   span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
 
