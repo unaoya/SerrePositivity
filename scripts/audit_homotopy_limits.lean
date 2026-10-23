@@ -14695,3 +14695,24 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaLiftedHomFamily_isRightKanExtension
 #print axioms sigmaLiftedHomFamily_isRightKanExtension
+
+#check @yonedaHomWeightFamily
+#print axioms yonedaHomWeightFamily
+
+#check @sigmaHomWeightFamily_restrictionIso
+#print axioms sigmaHomWeightFamily_restrictionIso
+
+#check @liftedHomWeightFamily
+#print axioms liftedHomWeightFamily
+
+#check @sigmaLiftedHomFamily_restrictionIso
+#print axioms sigmaLiftedHomFamily_restrictionIso
+
+#check @presheafHomWeightDiagram_universeIso
+#print axioms presheafHomWeightDiagram_universeIso
+
+#check @homWeightEvaluationFamily
+#print axioms homWeightEvaluationFamily
+
+#check @homWeightEvaluationFamily_liftedIso
+#print axioms homWeightEvaluationFamily_liftedIso
