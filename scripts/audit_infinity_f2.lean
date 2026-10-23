@@ -5273,3 +5273,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.relativePrismNative_curry_eq_initial_action
 #check @SerrePositivity.InfinityCategories.F2.relativePrismNativeEndpointIso_heq_initial_action
 #check @SerrePositivity.InfinityCategories.F2.relativePrismNativeEndpointIso_eq_refl_of_initial
+
+-- R17: the shape input is supplied unconditionally; existing declaration types remain unchanged.
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape
+
+open CategoryTheory SSet SerrePositivity.InfinityCategories in
+example (K : SSet.{u}) : F2.HasSpaceLimitsOfShape K := F2.hasSpaceLimitsOfShape K

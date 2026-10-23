@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.CoherentSpaceSmallLimits
 public import SerrePositivity.InfinityCategories.F2.InitialShapeLimitExistence
 public import SerrePositivity.InfinityCategories.F2.CoherentFilteredSimplexExchange
 public import SerrePositivity.InfinityCategories.F2.EmptyShapeConeCriterion
@@ -23,6 +24,10 @@ namespace SerrePositivity.InfinityCategories.F2
 /-- 元の小さい形状の全ての coherent な空間値図式が極限を持つ条件。 -/
 def HasSpaceLimitsOfShape (K : SSet.{u}) : Prop :=
   ∀ p : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ SpaceInfinity.{u}, HasLimit p
+
+/-- 任意の小さい形状の空間値極限は、全切断による無条件の存在定理から得られる。 -/
+lemma hasSpaceLimitsOfShape (K : SSet.{u}) : HasSpaceLimitsOfShape K :=
+  fun p ↦ hasLimit_coherentSpaceDiagram p
 
 /-- 元の形状の同型は空間値の極限の存在を移す。 -/
 lemma hasSpaceLimitsOfShape_of_iso {K L : SSet.{u}} (e : K ≅ L)
