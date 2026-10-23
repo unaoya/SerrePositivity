@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianCellAttachmentFibrations
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.CellAttachmentFibrations
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
 /-!

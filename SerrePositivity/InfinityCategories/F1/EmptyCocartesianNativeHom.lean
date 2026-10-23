@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.EmptyRelativeFunctorHom
 public import SerrePositivity.InfinityCategories.F1.TerminalSimplicialCore
-public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeFunctor
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeFunctor
 
 /-!
 概要：空の部分底上の元の native Hom、その core と宇宙持ち上げは終対象。

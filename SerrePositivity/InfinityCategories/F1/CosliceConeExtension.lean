@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianSourceRestriction
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SourceRestriction
 
 /-!
 概要：相対 coslice 制限の充填性を錐の厳密な延長として使う。

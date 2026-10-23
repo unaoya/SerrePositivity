@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.Composition
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 
 /-!

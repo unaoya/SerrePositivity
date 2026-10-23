@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.InnerTwoHornOverPushout
-public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCorePushout
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeCorePushout
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramPushout
 
 /-!

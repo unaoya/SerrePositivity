@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
-public import SerrePositivity.InfinityCategories.F1.CocartesianPredicateIso
-public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeRestrictionLifting
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PredicateIso
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestrictionLifting
 public import SerrePositivity.InfinityCategories.F2.CoreIsofibration
 
 /-!

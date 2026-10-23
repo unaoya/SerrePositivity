@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianLiftPreservation
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.LiftPreservation
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFibration
 
 /-!

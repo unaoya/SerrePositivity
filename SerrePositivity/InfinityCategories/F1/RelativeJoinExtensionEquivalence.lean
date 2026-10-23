@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianCrossingComparison
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.CrossingComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCocartesianFibration
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionFibers
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianTransportDiagramMixedHom
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.TransportDiagramMixedHom
 
 /-!
 概要：底の射列と coherent な strict transport 図式の対角評価。

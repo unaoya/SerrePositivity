@@ -2,7 +2,7 @@ import SerrePositivity.InfinityCategories.Core
 import SerrePositivity.InfinityCategories.Core.LeftFiberKan
 import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-import SerrePositivity.InfinityCategories.F1.CocartesianCrossingComparison
+import SerrePositivity.InfinityCategories.F1.Cocartesian.CrossingComparison
 import SerrePositivity.InfinityCategories.F1.CosliceFiberCoordinates
 import SerrePositivity.InfinityCategories.F1.CosliceFiberDiagramChange
 import SerrePositivity.InfinityCategories.F1.CosliceFiberPostcomposition

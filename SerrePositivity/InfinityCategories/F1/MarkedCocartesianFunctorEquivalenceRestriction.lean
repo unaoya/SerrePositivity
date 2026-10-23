@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeOverAnodyneRestriction
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeOverAnodyneRestriction
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.FullRestrictionPullback
 public import SerrePositivity.InfinityCategories.F2.CoreTrivialFibration

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CoherentCompositionDiagonal
-public import SerrePositivity.InfinityCategories.F1.CocartesianMixedHomVertices
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.MixedHomVertices
 
 /-!
 概要：QCat の同じ豊穣合成を、元の内部 Hom の後合成作用と同定する。

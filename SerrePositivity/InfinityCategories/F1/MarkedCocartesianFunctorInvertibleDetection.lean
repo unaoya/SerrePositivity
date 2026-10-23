@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorPrecomposition
-public import SerrePositivity.InfinityCategories.F1.CocartesianSectionInvertibleDetection
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionInvertibleDetection
 public import SerrePositivity.InfinityCategories.F1.PreFiberKan
 
 /-!

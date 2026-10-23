@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianCosliceConverse
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse
 
 /-!
 概要：右 anodyne な部分図式への相対 coslice 制限の充填。

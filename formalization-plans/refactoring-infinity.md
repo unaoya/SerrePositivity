@@ -8,7 +8,7 @@
 ### 現在地
 
 - 全レーン停止を 2026-10-23 11:03 に受領。コーディネータの main 基準タグ `stage1-checkpoint-2026-10-23`（`f8df7f77b`）を受領。§8（`c6692be81`）を分担の正本とする。
-- `../SerrePositivity-R`、`refactor/r-lane` のバッチをコミット後、main に rebase。ff-merge はコーディネータが行う。取り込み前は main を変更・ビルドしない。
+- `../SerrePositivity-R`、`refactor/r-lane` のバッチはコミット・rebase 後、コーディネータが `6e3cbbcba` を main へ ff-merge 済み。旧 worktree は以後使用しない。
 - 0-1・0-2・0-4 はコミット済み。共有ツリーの指定 3 モジュールも復旧・再ビルド済み（1933 jobs、終了コード 0）。
 - 0-3、第 1 段、第 5 段の直接置換を実装。互換シムを残さず、重複側を削除して下流 import・名前を更新。
 - Core への汎用宣言抽出、F1B 重複除去、Stable の汎用補助 17 モジュールの Core 移動を同じバッチにした。
@@ -41,9 +41,13 @@
 
 ### 次の一手
 
-- main で R11 の 600 モジュールを分離し、独立入口と F1 主入口の対象ビルド・監査・重複検査を通す。
+- main で R12・R13 の移動案を確定し、他レーンの更新一覧を事前報告して適用する。PinchedInterval・scaffold の原本共用では汎用補題の所在を整理し、不要な閉包を追加しない。
 - `scripts/move_module.py` は main に配置済み。一時リポジトリで移動・参照・集約更新を検証済み。以後の担当は §8 の R-A に限定する。
-- R6 入口案、R11 の 600 本の移動案（636 ファイル更新、490 本が F1 閉包から外れる）、R12・R13 の分類資料も `/tmp/r-a-*` に準備。全て未適用。
+- R11 の 600 本を `F1/Cocartesian/` へ移動し、独立入口を作成。主入口から 490 本が外れ、110 本は主経路から推移的に必要。
+  型・証明を含む本文は import 置換を除き全 600 本で一致。不在 import と F1B の禁止閉包は 0。
+  対象ビルド 1859.90 秒、4 監査 85.63 秒、重複検査 13.24 秒で全て成功。
+  [検証記録](archive/refactor-ra-r11-validation-2026-10-23.json)。完了：2026-10-23 22:41 JST。
+- R12（1714 本）・R13（765 本）の分類資料と、PinchedInterval 26 宣言・scaffold 19 宣言の定義的一致検証を `/tmp/r-a-*` に準備。R12・R13 と重複除去は未適用。
 - 各段階の対象ビルド・該当監査・重複検査の結果と実測時間を報告する。全体ビルドとタグはコーディネータ。
 
 ## 1. 目的と範囲
@@ -63,16 +67,17 @@
    公理監査は標準三公理だけ。既存監査の検査対象や検査条件を弱めない。
 4. 各段階の終わりに対象ビルド、該当監査、`scripts/check_duplicates.py` を実行し、結果と所要時間を記録・報告する。
    全体ビルド・全監査・タグはコーディネータが行う（§8 と最新の R-A 指示）。
-5. 全レーン停止と基準タグは受領済み。バッチを専用 worktree でコミットして main に rebase し、結果を報告する。
-   ff-merge はコーディネータが行う。取り込み後は main を正として直接作業する。
+5. 全レーン停止と基準タグは受領済み。初回バッチは main に取り込み済み。以後 R-A だけが main で直接作業する。
+   R-B・R-C は専用 worktree を維持し、main への取り込みはコーディネータが行う。
 6. 所有範囲と他レーンへの書き込み条件は §8 を正本とする。今後の他レーン変更は (a)(b) に限定する。
 
 ## 3. 停止・main への移行・再開（2026-10-23 R-A 分担へ更新）
 
 - 基準：`stage1-checkpoint-2026-10-23`（`f8df7f77b`）。分担の正本：`c6692be81` の §8。
-- worktree の R 所有の変更だけを `set -o pipefail` のうえ `git commit --only` で保存し、`git rebase main` 後に報告する。
-  コーディネータが ff-merge するまで main を変更しない。他レーンの未コミット作業を巻き込んでコミット・破棄しない。
-- 取り込み後は main で直接作業し、互換シムは残さない。最初に `scripts/move_module.py` を作り、以後の機械的置換に使う。
+- R-A は main の自分の変更だけを `set -o pipefail` のうえ `git commit --only` で保存する。
+  R-B・R-C の worktree は取り込み前に `git rebase main` し、ff-merge はコーディネータが行う。
+  他レーンの未コミット作業を巻き込んでコミット・破棄しない。
+- R-A は main で直接作業し、互換シムは残さない。`scripts/move_module.py` を配置・コミット済みで、以後の機械的置換に使う。
 - R-A の順序：第 0〜1 段＋第 5 段の F1/F1B 重複除去 → R5 前半・R6・R7・R9 の入口 → 第 4 段の R11・R12・R13。
   他レーンの範囲は §8 の (a) 新規ファイル追加、(b) ツールによる import・参照・集約の機械的更新だけ。
 - 変更前のレーン名・ファイル名・種類の報告は継続する。各段の対象ビルド・該当監査・重複検査と所要時間を報告する。
@@ -103,7 +108,7 @@
 | 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | |
 | 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | |
 | 3-2 | `PinchedInterval` 6 本・`KanScaffold`／`KanCocartesian` 15 本の精査 | R8 段階 4 | F1b | F1b-5 a7 完了後 | |
-| 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | R-A、直接置換・入口の検証後 | |
+| 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | R-A、直接置換・入口の検証後 | 2026-10-23 22:41 JST |
 | 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | |
 | 4-3 | F1 のサブディレクトリ化、F1B の `Kan*` 接頭辞の整理、ディレクトリ名の層への対応 | R12・R13・R1・R6 | F1・F1b | R-A、R11 の後 | |
 | 5 | 旧重複モジュールの削除と `KanSection.foo` → `foo` の直接置換（約 60 箇所）、`HomotopyLimits.lean` の docstring と `quillenCfBottomEndpoint_wrong` 等の改名 | R18 ほか | 全レーン | 第 0〜1 段と同時（全停止後） | 2026-10-23 17:45 JST（F1/F1B 部分。HomotopyLimits は R-C） |
@@ -143,6 +148,7 @@
 
 全作業レーンは停止済み（基準タグ `stage1-checkpoint-2026-10-23`）。R を三つのチャットに分け、各自の worktree（`../SerrePositivity-<名前>`、
 ブランチ `refactor/<名前>`、`.lake` は main から `cp -Rc` でクローン）で作業する。互換シムは使わず、移動・改名・参照の置換を直接行う。
+**初回取り込み後の運用（ユーザー指示）**：R-A だけは main で直接作業し、旧 worktree は使用しない。R-B・R-C は worktree 運用のまま。
 
 | レーン | 所有（変更してよい範囲） | 項目 | 取り込み順 |
 |---|---|---|---|

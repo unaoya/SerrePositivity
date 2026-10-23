@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianFunctor
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveEnriched
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramMappingVertices
-public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeComposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeComposition
 
 /-!
 概要：weighted nerve の全パラメーターの作用を cocartesian 相対関手空間へ制限する。

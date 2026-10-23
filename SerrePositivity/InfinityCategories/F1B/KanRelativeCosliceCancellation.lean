@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanSquareComparisonVertical
-public import SerrePositivity.InfinityCategories.F1.CocartesianCosliceConverse
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.F1.CartesianOpposite

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
-public import SerrePositivity.InfinityCategories.F1.CocartesianStrictTransportInclusion
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInclusion
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialEvaluation
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningCandidate
 public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation

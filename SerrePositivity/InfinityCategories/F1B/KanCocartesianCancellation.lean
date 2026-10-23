@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanCocartesianTriangleMiddleRestriction
-public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.Composition
 
 /-!
 概要：三角形の最初の辺と長辺が cocartesian なら後半の辺も cocartesian。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorColimitDescent
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorCoreVertexDescent
-public import SerrePositivity.InfinityCategories.F1.CocartesianSectionCoreColimitLift
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionCoreColimitLift
 
 /-!
 概要：指定辺を保つ元の Hom の core の族を、指定辺を覆う余極限へ貼る。

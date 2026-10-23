@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianTrianglePrism
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.TrianglePrism
 
 /-!
 概要：底の三角形に沿う covariant transport 関手の合成。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
-public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeUnitHom
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeUnitHom
 public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
 
 /-! # 小さい冪等完備安定 ∞ 圏の Cat^perf

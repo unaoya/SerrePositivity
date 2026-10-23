@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.LocalIntervalDiagramEdges
-public import SerrePositivity.InfinityCategories.F1.CocartesianHomFixedComponentPrism
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.HomFixedComponentPrism
 
 /-!
 概要：標準正方形を元の底の prism に戻し、同じ三辺の固定条件を保持する。

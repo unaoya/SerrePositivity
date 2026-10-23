@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianRelativeFunctor
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor
 
 /-!
 概要：始域で指定した辺を cocartesian に送る、元の相対関手の全部分複体。

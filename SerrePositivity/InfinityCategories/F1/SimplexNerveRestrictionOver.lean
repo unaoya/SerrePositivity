@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.SimplexNerveNaturality
-public import SerrePositivity.InfinityCategories.F1.CocartesianBaseChangeNativeProjection
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeNativeProjection
 
 /-!
 概要：標準単体の制限と有限鎖の関手の合成を、同じ底上の正方形で結ぶ。

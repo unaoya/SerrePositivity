@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsMixedCoreHom
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsMixedCoreHom
 
 /-!
 概要：通常の反変な底上の図式と coherent な cocartesian fibration の図式の対角評価。

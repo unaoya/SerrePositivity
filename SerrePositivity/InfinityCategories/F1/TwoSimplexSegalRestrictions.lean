@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianTwoSimplexSegal
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.TwoSimplexSegal
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramTwoSimplexSegal
-public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackRestrictionNaturality
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackRestrictionNaturality
 
 /-!
 概要：二次元 Segal 比較の両射影は、元の二つの区間への直接の制限。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CocartesianLiftSpace
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.LiftSpace
 
 /-!
 概要：fiber に値を持つ関手と内部 Hom の fiber の比較。

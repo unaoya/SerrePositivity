@@ -1,0 +1,105 @@
+{
+  "completed_at": "2026-10-23 22:41 JST",
+  "base": "dd515459b",
+  "coordinator_commit_during_validation": "4757c5373 (integration scripts only)",
+  "checks": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.InfinityCategories.F1",
+        "SerrePositivity.InfinityCategories.F1.Cocartesian",
+        "SerrePositivity.InfinityCategories.F1B"
+      ],
+      "exit_code": 0,
+      "seconds": 1859.9,
+      "log": "/tmp/r-a-r11-0.log"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 48.86,
+      "log": "/tmp/r-a-r11-1.log"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1b.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 12.59,
+      "log": "/tmp/r-a-r11-2.log"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1_f1b.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 17.15,
+      "log": "/tmp/r-a-r11-3.log"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_refactor_infinity.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 7.03,
+      "log": "/tmp/r-a-r11-4.log"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_duplicates.py",
+        "--baseline",
+        "formalization-plans/archive/refactor-duplicates-2026-10-23.md",
+        "--output",
+        "/tmp/r-a-r11-duplicates.md"
+      ],
+      "exit_code": 0,
+      "seconds": 13.24,
+      "log": "/tmp/r-a-r11-5.log"
+    }
+  ],
+  "static": {
+    "moved_modules": 600,
+    "exactly_preserved_after_import_mapping": 600,
+    "missing_imports": [],
+    "F1_repository_modules": 3524,
+    "F1B_repository_modules": 1438,
+    "F1B_forbidden": [],
+    "cocartesian_still_required": 110,
+    "cocartesian_detached": 490,
+    "seconds": 145.63
+  },
+  "integration_note": "Coordinator must refresh scripts/refactor/audit_targets.txt after relocation. Full build and complete integration audits are coordinator-owned.",
+  "audit_import_coverage": {
+    "before_module_count": 4020,
+    "after_module_count": 4021,
+    "lost_modules": [],
+    "added_modules": [
+      "SerrePositivity.InfinityCategories.F1.Cocartesian"
+    ]
+  },
+  "audit_counts": {
+    "F1": 16294,
+    "F1B": 4974,
+    "combined_F1": 16294,
+    "combined_F1B": 4969,
+    "R_direct": 139,
+    "R_moved_Core": 196
+  },
+  "audit_coverage_note": "All 4020 previously reachable repository modules remain in the combined main/independent audit import closure; only the declaration-free independent entry is added. Existing audit logic and explicit name checks are unchanged."
+}

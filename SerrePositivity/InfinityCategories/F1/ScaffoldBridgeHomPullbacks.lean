@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.ScaffoldBridgeOverPushout
-public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeCorePushout
-public import SerrePositivity.InfinityCategories.F1.CocartesianPullbackNativeLiftRestriction
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeCorePushout
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeLiftRestriction
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramPushout
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePullbacks
 

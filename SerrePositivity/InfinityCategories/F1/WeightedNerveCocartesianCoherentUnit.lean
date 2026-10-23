@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.QCatDiagramNaturalTransformation
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveCocartesianUnit
-public import SerrePositivity.InfinityCategories.F1.CocartesianStraighteningVertices
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.StraighteningVertices
 
 /-!
 概要：元の Cat∞ 値図式と weighted nerve の同じ分類写像での値を coherent な同型で結ぶ。

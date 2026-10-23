@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MarkedCocartesianFunctorFamilyLaws
-public import SerrePositivity.InfinityCategories.F1.CocartesianSectionColimitFamily
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionColimitFamily
 
 /-!
 概要：指定辺を保つ相対関手の整合する族を、余極限上の元の射へ貼る。

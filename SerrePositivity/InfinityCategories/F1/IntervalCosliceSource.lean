@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.IntervalCosliceRigidity
-public import SerrePositivity.InfinityCategories.F1.CocartesianSourceRestriction
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SourceRestriction
 
 /-!
 概要：区間上の cocartesian な辺を固定した三角形の始点側の比較。

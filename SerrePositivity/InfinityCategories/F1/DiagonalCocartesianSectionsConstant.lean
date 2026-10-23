@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.DiagonalCocartesianSectionsEvaluation
-public import SerrePositivity.InfinityCategories.F1.CocartesianSectionsMixedUnit
+public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsMixedUnit
 public import SerrePositivity.InfinityCategories.F1.CoherentConstantOrderDiagram
 public import SerrePositivity.InfinityCategories.F1.CoherentOrderDiagrams
 
