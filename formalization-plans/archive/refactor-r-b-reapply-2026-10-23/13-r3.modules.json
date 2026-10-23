@@ -1,0 +1,24 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.Stable.InitialExtension": "SerrePositivity.InfinityCategories.Core.InitialExtension",
+    "SerrePositivity.InfinityCategories.Stable.LimitConeFamilies": "SerrePositivity.InfinityCategories.Core.LimitConeFamilies",
+    "SerrePositivity.KST.SConstruction.VertexPrescribedExtension": "SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension",
+    "SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence": "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialExtension",
+        "SerrePositivity.InfinityCategories.Core.LimitConeFamilies",
+        "SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension",
+        "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence"
+      ]
+    }
+  },
+  "symbols": {
+    "SerrePositivity.InfinityCategories.Stable.InitialExtension": "SerrePositivity.InfinityCategories.Core.InitialExtension",
+    "SerrePositivity.InfinityCategories.Stable.LimitConeFamilies": "SerrePositivity.InfinityCategories.Core.LimitConeFamilies",
+    "SerrePositivity.KST.SConstruction.VertexPrescribedExtension": "SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension",
+    "SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence": "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "symbols": {
+    "SerrePositivity.InfinityCategories.F2.restrictJoinCone": "SerrePositivity.InfinityCategories.restrictJoinCone",
+    "F2.restrictJoinCone": "restrictJoinCone",
+    "SerrePositivity.InfinityCategories.F2.restrictJoinCone_vertex": "SerrePositivity.InfinityCategories.restrictJoinCone_vertex",
+    "F2.restrictJoinCone_vertex": "restrictJoinCone_vertex",
+    "SerrePositivity.InfinityCategories.F2.exists_cone_extension_of_trivialRestriction": "SerrePositivity.InfinityCategories.exists_cone_extension_of_trivialRestriction",
+    "F2.exists_cone_extension_of_trivialRestriction": "exists_cone_extension_of_trivialRestriction",
+    "SerrePositivity.InfinityCategories.F2.exists_limitCone_extension_of_trivialRestriction": "SerrePositivity.InfinityCategories.exists_limitCone_extension_of_trivialRestriction",
+    "F2.exists_limitCone_extension_of_trivialRestriction": "exists_limitCone_extension_of_trivialRestriction",
+    "SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex": "SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex",
+    "F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex": "sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex",
+    "SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence": "SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence",
+    "F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence": "sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence",
+    "SerrePositivity.InfinityCategories.F2.isPrecompositionEquivalence_joinUnion_right": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_joinUnion_right",
+    "F2.isPrecompositionEquivalence_joinUnion_right": "isPrecompositionEquivalence_joinUnion_right",
+    "SerrePositivity.InfinityCategories.F2.sliceOverRestrict_lift_of_precompositionEquivalence": "SerrePositivity.InfinityCategories.sliceOverRestrict_lift_of_precompositionEquivalence",
+    "F2.sliceOverRestrict_lift_of_precompositionEquivalence": "sliceOverRestrict_lift_of_precompositionEquivalence"
+  },
+  "file_symbols": {
+    "SerrePositivity/InfinityCategories/Core/LimitConeExtension.lean": {
+      "SerrePositivity.InfinityCategories.F2": "SerrePositivity.InfinityCategories"
+    },
+    "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.F2": "SerrePositivity.InfinityCategories"
+    },
+    "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalenceLifting.lean": {
+      "SerrePositivity.InfinityCategories.F2": "SerrePositivity.InfinityCategories"
+    }
+  }
+}

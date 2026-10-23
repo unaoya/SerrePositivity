@@ -1,0 +1,608 @@
+{
+  "fixture": "/var/folders/6w/x0bg4xd53252p34tyr5g_hgh0000gn/T/r-b-plan-fixture-h21sv11l",
+  "main_was_not_modified": true,
+  "main_commit": "571e451cc78316c899ce8f6f47ac25f6d73abf25",
+  "fixture_apply_results": [
+    {
+      "plan": "00-r24.modules.json",
+      "fixture_updated_files": 8,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "01-stable-kst.modules.json",
+      "fixture_updated_files": 4,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "02-derived-sharing.modules.json",
+      "fixture_updated_files": 26,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "10-r2-r22.modules.json",
+      "fixture_updated_files": 108,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "10-r2-r22.post-imports.json",
+      "fixture_updated_files": 17,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "11-r14.modules.json",
+      "fixture_updated_files": 7,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "12-r23.modules.json",
+      "fixture_updated_files": 41,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "12-r23.namespace-symbols.json",
+      "fixture_updated_files": 12,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "13-r3-zero-boundary.CONDITIONAL.modules.json",
+      "fixture_updated_files": 6,
+      "status": "passed",
+      "conditional_simulation_only": true
+    },
+    {
+      "plan": "13-r3-zero-boundary.CONDITIONAL.namespace-symbols.json",
+      "fixture_updated_files": 2,
+      "status": "passed",
+      "conditional_simulation_only": true
+    },
+    {
+      "plan": "13-r3.modules.json",
+      "fixture_updated_files": 19,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "13-r3.namespace-symbols.json",
+      "fixture_updated_files": 5,
+      "status": "passed",
+      "conditional_simulation_only": false
+    },
+    {
+      "plan": "13-r3.post-imports.json",
+      "fixture_updated_files": 1,
+      "status": "passed",
+      "conditional_simulation_only": false
+    }
+  ],
+  "source_snapshot_changed_since_capture": [],
+  "closure_checks": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+      "project_module_count": 69,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Cocone",
+      "project_module_count": 16,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+      "project_module_count": 17,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ColimitDiagramIso",
+      "project_module_count": 192,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer",
+      "project_module_count": 70,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+      "project_module_count": 95,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence",
+      "project_module_count": 181,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+      "project_module_count": 17,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+      "project_module_count": 63,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InitialExtension",
+      "project_module_count": 114,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
+      "project_module_count": 52,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+      "project_module_count": 70,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InitialTransport",
+      "project_module_count": 57,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.LimitConeExtension",
+      "project_module_count": 182,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.LimitConeFamilies",
+      "project_module_count": 263,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.LimitDiagramIso",
+      "project_module_count": 186,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence",
+      "project_module_count": 264,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence",
+      "project_module_count": 181,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting",
+      "project_module_count": 180,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+      "project_module_count": 5,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseBoundary",
+      "project_module_count": 21,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling",
+      "project_module_count": 23,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom",
+      "project_module_count": 22,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseConeHom",
+      "project_module_count": 22,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal",
+      "project_module_count": 29,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+      "project_module_count": 3,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation",
+      "project_module_count": 2,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality",
+      "project_module_count": 4,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality",
+      "project_module_count": 21,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
+      "project_module_count": 20,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseLimits",
+      "project_module_count": 108,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+      "project_module_count": 2,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.UniverseSlices",
+      "project_module_count": 23,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension",
+      "project_module_count": 118,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension",
+      "project_module_count": 116,
+      "missing": [],
+      "forbidden": [],
+      "other_foundational_dependencies": [
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory",
+      "project_module_count": 137,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+      "project_module_count": 223,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.DeformationLocalization",
+      "project_module_count": 305,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+      "project_module_count": 100,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+      "project_module_count": 101,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+      "project_module_count": 999,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.OppositeInternalHom",
+        "SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+        "SerrePositivity.InfinityCategories.Stable.CoconeLastVertex",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransport",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitReindex",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRestriction",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderExtension",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderFixedDiagram",
+        "SerrePositivity.InfinityCategories.Stable.CosliceFixedDiagramIso",
+        "SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction",
+        "SerrePositivity.InfinityCategories.Stable.Definition",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornProductBoundary",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+        "SerrePositivity.InfinityCategories.Stable.GridOpposite",
+        "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Stable.InitialTransport",
+        "SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair",
+        "SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal",
+        "SerrePositivity.InfinityCategories.Stable.PastingCofinality",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerCocone",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightCocone",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap",
+        "SerrePositivity.InfinityCategories.Stable.PastingShapes",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PrismRetraction",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices",
+        "SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct",
+        "SerrePositivity.InfinityCategories.Stable.SquareDuality",
+        "SerrePositivity.InfinityCategories.Stable.SquareOpposite",
+        "SerrePositivity.InfinityCategories.Stable.SquareOppositeShapes",
+        "SerrePositivity.InfinityCategories.Stable.SquareTranspose",
+        "SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite",
+        "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport",
+        "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite",
+        "SerrePositivity.InfinityCategories.Stable.ZeroHomotopy"
+      ],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+      "project_module_count": 134,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+      "project_module_count": 989,
+      "missing": [],
+      "forbidden": [],
+      "inherited_higher_layer_diagnostics": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.OppositeInternalHom",
+        "SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+        "SerrePositivity.InfinityCategories.Stable.CoconeLastVertex",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransport",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitReindex",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRestriction",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderExtension",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderFixedDiagram",
+        "SerrePositivity.InfinityCategories.Stable.CosliceFixedDiagramIso",
+        "SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction",
+        "SerrePositivity.InfinityCategories.Stable.Definition",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornProductBoundary",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+        "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Stable.InitialTransport",
+        "SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair",
+        "SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal",
+        "SerrePositivity.InfinityCategories.Stable.PastingCofinality",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerCocone",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightCocone",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap",
+        "SerrePositivity.InfinityCategories.Stable.PastingShapes",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PrismRetraction",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices",
+        "SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct",
+        "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport",
+        "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite",
+        "SerrePositivity.InfinityCategories.Stable.ZeroHomotopy"
+      ],
+      "higher_diagnostics_absent_from_current_F1B_aggregate": []
+    }
+  ],
+  "limitations": [
+    "isolated structural/tool execution check; no full Lean build or runtime audits",
+    "fixture includes conditional ZeroBoundaryExtension only to validate its proposed dependency closure; this is not permission to apply it on main",
+    "exact four Prop proof patches still require preserving current-main edits during actual replay",
+    "full main dry-run reports cover actual importers; fixture contains only relevant copied files"
+  ],
+  "tool_sha256": "1c0cffe9428cf4588431c82a3594472c0f3fbb89717aefe6bb8bb56d57c8547a",
+  "closure_policy": {
+    "Core": "reject F1/F1B/F2/Stable/Derived/DGNerve/HomotopyLimits/KST/Spectra; PinchedHom.Basic/Index are already foundational dependencies",
+    "F1B": "match audit_infinity_f1b: reject every straightening module; additionally report inherited higher-layer dependencies without treating baseline dependencies as newly introduced",
+    "baseline_F1B_project_module_count": 1438
+  },
+  "DGNerve_direct_Derived_edges": [],
+  "final_plan_sha256": {
+    "00-r24.modules.json": "9d135882af051aa9482b1020b721eff9618afaca755ebd89ae29b0630e0b0486",
+    "01-stable-kst.modules.json": "d7511774864d624d064ee11f3db16119be2aab3e807b77cdff087f8dd02473ac",
+    "02-derived-sharing.materialization.json": "2dfc01cb717a6bcb5cfc434257b1b603952969b6a60726a06c48f6e1d32946cf",
+    "02-derived-sharing.modules.json": "87fddcead1e4dc1862be69f71bee05dbd59bcecfeff7e44eebc00b13d35f77e2",
+    "10-r2-r22.extractions.json": "93104ff7f03322ca410965025b12355083430cfe1c3c4a2a94773997dd81f8ff",
+    "10-r2-r22.materialization.json": "dc79ffbe74e30bf00767307a8ad5a78037de1d3193f3c97a767f21e0b58eff54",
+    "10-r2-r22.modules.json": "2a96a750bc8dded777715a8a7b8332aa174f6e8d858b712da4b8960e05aa6ce8",
+    "10-r2-r22.post-imports.json": "1ebf62e6d626105d63fec70566615be1b561b8775ed606c4117247adc9b71b43",
+    "11-r14.modules.json": "882980333149b07115807064f5c89337c3475068dce35f0fdea18403e0f2dd9a",
+    "12-r23.modules.json": "d0bc56b52d6c23583be457502d255ce56e98e9ce4ff6f91c03ffc43a13bda2b3",
+    "12-r23.namespace-symbols.json": "8648a0caf83667b93dab4f88c73ce40dc9e99d42a842df1275d561432a4e745f",
+    "13-r3-zero-boundary.CONDITIONAL.modules.json": "eed4e81a18edf65d92eef279242736f88cb09544e9fb36f7eca328281f693ac2",
+    "13-r3-zero-boundary.CONDITIONAL.namespace-symbols.json": "5bcd9265e06406dc458902140b24831e98581d3abe29451da7dbd6b03bd80098",
+    "13-r3.modules.json": "46cbcb63d6ddaab4e526dfd5f8ecdaa98bc6e3eb81d40006873a8785ba067e53",
+    "13-r3.namespace-symbols.json": "5f0a0caf41d2fd262cabce5c584e382febffbe06819919baa1a0e178e29edf05",
+    "13-r3.post-imports.json": "5215dfdf06af27449f2f27ca4ddf3a6d44bc5e529730b6d2ba1312223cc937eb",
+    "audit-updates.json": "64c745d370cd450819a29b4278345c3a62628cd693a526652416427ba606a64a",
+    "cherry-pick-commits.json": "a7b0f798bcfee5689ca8bdcd8c21b9e9afdbc68b13bf1897f395edbba822471c",
+    "main-dry-run-reports.json": "149949fa86e8fb6f0d4f7cb34721ff77f2d12a47f65a68644e64140226af1711",
+    "main-source-snapshot.json": "9b7ae33ae883e8703fb47d76c63c9598a7aaf395cf69b6054f315f28e766a440",
+    "manifest.json": "bedcbb25c06304ba906f2e1035ea76e7fb00fa83537a192682d238d189c9b184"
+  }
+}

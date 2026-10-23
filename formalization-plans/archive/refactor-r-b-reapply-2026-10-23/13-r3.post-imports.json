@@ -1,0 +1,12 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core/InitialExtension.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite"
+      ],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite"
+      ]
+    }
+  }
+}

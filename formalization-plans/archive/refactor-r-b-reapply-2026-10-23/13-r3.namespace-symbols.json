@@ -1,0 +1,18 @@
+{
+  "symbols": {
+    "SerrePositivity.KST.SConstruction.exists_extension_with_vertices": "SerrePositivity.InfinityCategories.exists_extension_with_vertices",
+    "SerrePositivity.KST.LocalizingInvariants.limitConeProjection_surjective": "SerrePositivity.InfinityCategories.limitConeProjection_surjective",
+    "SerrePositivity.KST.LocalizingInvariants.limitConeProjection_trivialKanFibration": "SerrePositivity.InfinityCategories.limitConeProjection_trivialKanFibration",
+    "SConstruction.exists_extension_with_vertices": "exists_extension_with_vertices",
+    "LocalizingInvariants.limitConeProjection_surjective": "limitConeProjection_surjective",
+    "LocalizingInvariants.limitConeProjection_trivialKanFibration": "limitConeProjection_trivialKanFibration"
+  },
+  "file_symbols": {
+    "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean": {
+      "SerrePositivity.KST.SConstruction": "SerrePositivity.InfinityCategories"
+    },
+    "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories"
+    }
+  }
+}

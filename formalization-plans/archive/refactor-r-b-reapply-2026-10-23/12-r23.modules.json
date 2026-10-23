@@ -1,0 +1,53 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.F2.LimitConeExtension": "SerrePositivity.InfinityCategories.Core.LimitConeExtension",
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalence": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence",
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalenceLifting": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting",
+    "SerrePositivity.InfinityCategories.Derived.LimitDiagramIso": "SerrePositivity.InfinityCategories.Core.LimitDiagramIso",
+    "SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence": "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+    "SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful": "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension": "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion": "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion": "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+    "SerrePositivity.InfinityCategories.Derived.DeformationLocalization": "SerrePositivity.InfinityCategories.F1B.DeformationLocalization"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.LimitConeExtension",
+        "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence",
+        "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting",
+        "SerrePositivity.InfinityCategories.Core.LimitDiagramIso"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1B.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+        "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+        "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+        "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+        "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+        "SerrePositivity.InfinityCategories.F1B.DeformationLocalization"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F2.lean": {
+      "remove": [
+        "SerrePositivity.InfinityCategories.F2.LimitConeExtension",
+        "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalence",
+        "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalenceLifting"
+      ]
+    }
+  },
+  "symbols": {
+    "SerrePositivity.InfinityCategories.F2.LimitConeExtension": "SerrePositivity.InfinityCategories.Core.LimitConeExtension",
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalence": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence",
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalenceLifting": "SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting",
+    "SerrePositivity.InfinityCategories.Derived.LimitDiagramIso": "SerrePositivity.InfinityCategories.Core.LimitDiagramIso",
+    "SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence": "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+    "SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful": "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension": "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion": "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+    "SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion": "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+    "SerrePositivity.InfinityCategories.Derived.DeformationLocalization": "SerrePositivity.InfinityCategories.F1B.DeformationLocalization"
+  }
+}

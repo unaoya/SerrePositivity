@@ -1,0 +1,11 @@
+{
+  "symbols": {
+    "SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints": "SerrePositivity.InfinityCategories.exists_extension_of_initial_or_terminal_endpoints",
+    "SConstruction.exists_extension_of_initial_or_terminal_endpoints": "exists_extension_of_initial_or_terminal_endpoints"
+  },
+  "file_symbols": {
+    "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean": {
+      "SerrePositivity.KST.SConstruction": "SerrePositivity.InfinityCategories"
+    }
+  }
+}

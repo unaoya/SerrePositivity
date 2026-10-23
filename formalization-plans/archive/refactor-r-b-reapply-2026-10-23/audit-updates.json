@@ -1,0 +1,36 @@
+{
+  "schema": "r-b-audit-maintenance/v1",
+  "rules": [
+    "preserve existing check/axiom coverage across moves",
+    "every new Core module must be included in recursive R moved-Core coverage of audit_refactor_infinity",
+    "mechanically replace expected-module names using moves as symbols",
+    "for partial extraction retain source expected module and add new destination module",
+    "do not weaken forbidden closure checks or allowed axiom lists",
+    "add Core #check/#print axioms for all 29 extracted declarations; F1 instance visibility check via original Joins modules",
+    "after R-C regenerate scripts/refactor/audit_targets.txt if current generator/contract requires it; do not overwrite it with B baseline"
+  ],
+  "new_extraction_modules": [
+    "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+    "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer",
+    "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+    "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+    "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
+    "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+    "SerrePositivity.InfinityCategories.Core.InitialTransport",
+    "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+    "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal"
+  ],
+  "specified_audits": [
+    "audit_infinity_core",
+    "audit_infinity_f1",
+    "audit_infinity_f1b",
+    "audit_infinity_f2",
+    "audit_homotopy_limits",
+    "audit_infinity_stable",
+    "audit_derived_infinity",
+    "audit_derived_gluing",
+    "audit_dg_nerve",
+    "audit_kst_s_construction",
+    "audit_refactor_infinity"
+  ]
+}

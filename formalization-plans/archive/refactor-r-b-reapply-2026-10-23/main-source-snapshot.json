@@ -1,0 +1,493 @@
+{
+  "main_commit": "571e451cc78316c899ce8f6f47ac25f6d73abf25",
+  "snapshot_kind": "current main checkout including other lanes uncommitted edits; read-only capture",
+  "must_revalidate_after_R_C": true,
+  "sources": {
+    "SerrePositivity/InfinityCategories/Stable/Cocone.lean": {
+      "sha256": "7e4d4d947afa9b32500e1ad7215c0b5d597b6fb6232ee47dc45b3106e8a7b55c",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/Cocone.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/BoundaryOpposite.lean": {
+      "sha256": "4147e149ca6449ed2358ac5fc3304614c06b66d1d465d8b8b452b308910be57d",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/BoundaryOpposite.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ConeOpposite.lean": {
+      "sha256": "cb5e208e49a0ed91ca73f83f738192cd8e0e58964ed97d67b1adeef1299a4f65",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/ConeOpposite.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/CosliceRestrictionEquivalence.lean": {
+      "sha256": "84431787c6939102d77f2bea27f301a62a4a1e4911e0a16a048dde99a58454ae",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/CosliceRestrictionEquivalence.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitDiagramIso.lean": {
+      "sha256": "2a90b28fe3d3410b70efb9e8c0180671c6f53ba591b50fd4c78a727daa47a642",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/ColimitDiagramIso.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseJoinAugmentation.lean": {
+      "sha256": "324127106d86ba1144725cf2bb58b0b8c03a973030dae9e488a7935b9b659c9e",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinAugmentation.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseJoin.lean": {
+      "sha256": "6d74da0a0d0b0a693bf1b74fe9c64142f68cbc6a7d91ece4acf26bbb8a86ddd6",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseJoin.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseJoinNaturality.lean": {
+      "sha256": "14264cfc7c9d46abe8aaf611c8e53877a66a8fdfd854799789541f603798d122",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinNaturality.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexShapes.lean": {
+      "sha256": "88a714bd8387ba918de3d4e43ab0226efcbe47a7a56d2657b2f729609921d17a",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinSimplexShapes.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseBoundary.lean": {
+      "sha256": "a107daacf20862239ab65e421f57672eb99edd226adb31ee3d3917b8f21ec4bb",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundary.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryHom.lean": {
+      "sha256": "c32bd62247ce1adce40f3cdf00af2178195366414270dd08f9dd7989c07d2216",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundaryHom.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryFilling.lean": {
+      "sha256": "ac7aa8ddf816adf33e4bfc6fd6f695ecd3b97812a7460456b52656d744ba0cba",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundaryFilling.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexNaturality.lean": {
+      "sha256": "00d386ba2fad042947835118b990043083658216a3680d00580c4d467259a2e2",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinSimplexNaturality.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseConeHom.lean": {
+      "sha256": "3aa44d73580f7babead176acb93cf77b95c4531ab24d3abfd71384eef326c66e",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseConeHom.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseSlices.lean": {
+      "sha256": "e20a841bc3a530a1dd96bd4e9fdafb2f7a4a855f20b871f1ecac6d426986bd6b",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseSlices.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseLimits.lean": {
+      "sha256": "6f81272a47eac0ca6e6afe3ff5211012d10e28d96f3a2a5a0669bfaf0bb182d0",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseLimits.lean"
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSSetMaps.lean": {
+      "sha256": "0bc65bc05ac1f6c2eb73d6c6ba1b20e1ab5ef0b516965395fcce05f26a4f8607",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/UniverseSSetMaps.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/PointConstantHomEquivalence.lean": {
+      "sha256": "ec259c23c093385accf76573da43a50c3a09c99d4631aaf831fc2c101c19a2e4",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/PointConstantHomEquivalence.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/AdjunctionHomotopyCategory.lean": {
+      "sha256": "d29068611bbd6c954367c6956c92810e32da000db0e74a24864ca447aefa3df9",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/AdjunctionHomotopyCategory.lean"
+    },
+    "SerrePositivity/InfinityCategories/F2/LimitConeExtension.lean": {
+      "sha256": "1a972bfab0f817cd3a427ea330709d1e7493fe472e50ec6c57cffd97750d9e7d",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/LimitConeExtension.lean"
+    },
+    "SerrePositivity/InfinityCategories/F2/SliceRestrictionEquivalence.lean": {
+      "sha256": "3c8e3e3afd095558559b8f4c722ce6008b26b4a51a26e2fe67d1df67e8af9489",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalence.lean"
+    },
+    "SerrePositivity/InfinityCategories/F2/SliceRestrictionEquivalenceLifting.lean": {
+      "sha256": "3d882317d6f0b11dd7eaad7b5a16b9ede3fe149c195072ebba8e779650dcf19e",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalenceLifting.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/LimitDiagramIso.lean": {
+      "sha256": "76fc36659db3e38e44d8a2350b159f347b3ad1beca8c0ccfe53d326129a641ca",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/LimitDiagramIso.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/CofinalLimitExistence.lean": {
+      "sha256": "79eb156bb14aa4f5c8f2bb75b8c43ee56644016e72949e92d9436f4df54cc046",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/CofinalLimitExistence.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/RightKanPrecompositionFaithful.lean": {
+      "sha256": "550b505425663c648038ef8ba889722847c7279ed777ae6fa92bc84e1d3bf2e1",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/RightKanPrecompositionFaithful.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/LocalizationFunctorExtension.lean": {
+      "sha256": "7c6005346e71ce0c4d62a02c67e5414c1e8aaa92056298e5ab658bfdc0d23424",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/LocalizationFunctorExtension.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/LocalizationRightKanCriterion.lean": {
+      "sha256": "f2a30ba498475bbbbf235adaa65ee6938237e981c55b391ba7a28e283e1a6c93",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/LocalizationRightKanCriterion.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/LocalizationPrecompositionCriterion.lean": {
+      "sha256": "37564805ec269730da2539b65eaedcecd03b56a5c4059e369e49669ad8355687",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/LocalizationPrecompositionCriterion.lean"
+    },
+    "SerrePositivity/InfinityCategories/Derived/DeformationLocalization.lean": {
+      "sha256": "91333cc54e2236a2267866109fed3f78606fd40dc78d7379adfe97900bc94256",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/F1B/DeformationLocalization.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/InitialExtension.lean": {
+      "sha256": "80e6a0e39f9506a75a30dba287644a1c598822395ecd8d498058b35d1c85a0af",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/InitialExtension.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/LimitConeFamilies.lean": {
+      "sha256": "8fa36109e1fa09b546c9de4c3a8f961167c8ad52c9aa744699ccfd2e03de405f",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/LimitConeFamilies.lean"
+    },
+    "SerrePositivity/KST/SConstruction/VertexPrescribedExtension.lean": {
+      "sha256": "5f5e58b59abca5d839b9030f148c81186cde79b19b3aa6fdac036db6c2e3bff2",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LimitProjectionExistence.lean": {
+      "sha256": "0d82881f9b02bd757c64410cb6777a90b3e6148b1daf8052c751764e43c23ad4",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean"
+    },
+    "SerrePositivity/KST/SConstruction/ZeroBoundaryExtension.lean": {
+      "sha256": "94df05781a036d2b55969c951ac59252a09719a5801f10e54c7689563ea18eb9",
+      "tracked": true,
+      "planned_destination": "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean"
+    },
+    "SerrePositivity/InfinityCategories/Stable/Definition.lean": {
+      "sha256": "e583874fa4368136d781704c98b9de68a1afabc2b5f29a22640aa6447163e713",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean": {
+      "sha256": "32e17eab754bbb69e4d27fce0939c553e183ffcc217c934c712c032568d8fa1c",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean": {
+      "sha256": "0e08547c68fea52549b03553db58b237a6c72e276d852095eb1a41f38748a101",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean": {
+      "sha256": "739b985c5ac67f7a362f7e6ff716dfe50f0849129805931d9c5dd9b3609e8c00",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/InitialTransport.lean": {
+      "sha256": "e8a754dcce0a5e8121f1fc4eeba48e552b7279186f602586e382669cc2ea319d",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitCoconeFamily.lean": {
+      "sha256": "36d1c9e99bcffaa0dc4ab7866be657683766d8790b0af855a482e6592221d301",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitRestriction.lean": {
+      "sha256": "df6bb4dd897004f2f5095b69e53210c390b7cfb8b847a876a05f3959c3e39f9b",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean": {
+      "sha256": "2395a1076eadb9713d557554687ed854fe52df3ea3aa70cfb2b35330707671c9",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean": {
+      "sha256": "b438bf60fda7f15e0c46ec2a43d7de1157ce130d6dfc1ff0ca7356b7c88bf2f7",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    },
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean": {
+      "sha256": "59c466ddedd388aa2f97d740839bd031cb299ba89504e3946020405fe7a5353f",
+      "tracked": true,
+      "planned_destination": "partial extraction; source remains"
+    }
+  },
+  "direct_importers": {
+    "SerrePositivity.InfinityCategories.Stable.Cocone": [
+      "SerrePositivity/InfinityCategories/Derived/CosliceBoundaryFromJoinFaces.lean",
+      "SerrePositivity/InfinityCategories/Derived/FullColimitReflection.lean",
+      "SerrePositivity/InfinityCategories/Derived/RebaseCocone.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanExtensionShapes.lean",
+      "SerrePositivity/InfinityCategories/F2/CoconeExistenceTransport.lean",
+      "SerrePositivity/InfinityCategories/F2/CoconeTransformationVertex.lean",
+      "SerrePositivity/InfinityCategories/F2/CoconeValEquality.lean",
+      "SerrePositivity/InfinityCategories/F2/ColimitVertexTransport.lean",
+      "SerrePositivity/InfinityCategories/F2/FilteredInfinity.lean",
+      "SerrePositivity/InfinityCategories/F2/HomotopyCoconeRealization.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/ClassifiedFilteredElements.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/CoconeTrivialLift.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/CodiscreteFreshCocone.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/ConeSimplexCases.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/YonedaSlice.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeUniversalRestriction.lean",
+      "SerrePositivity/InfinityCategories/Stable/ConeOpposite.lean",
+      "SerrePositivity/InfinityCategories/Stable/CosliceRestriction.lean",
+      "SerrePositivity/InfinityCategories/Stable/IdentityCocone.lean",
+      "SerrePositivity/InfinityCategories/Stable/NestedCoslice.lean",
+      "SerrePositivity/InfinityCategories/Stable/Pointed.lean",
+      "SerrePositivity/InfinityCategories/Stable/PushoutShape.lean",
+      "SerrePositivity/KST/LocalizingInvariants/FullSubcomplexReflection.lean",
+      "SerrePositivity/KST/SConstruction/IdentityCocones.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.BoundaryOpposite": [
+      "SerrePositivity/InfinityCategories/F1B/IntervalMappingOpposite.lean",
+      "SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.ConeOpposite": [
+      "SerrePositivity/InfinityCategories/Derived/FiniteConeOpposite.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanCosliceOpposite.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanLimitColimitOpposite.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanRelativeLimit.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/ColimitReindex.lean",
+      "SerrePositivity/InfinityCategories/Stable/LoopConeChoiceModel.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseLimits.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence": [
+      "SerrePositivity/InfinityCategories/F1B/KanRelativeCosliceEquivalence.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeShapePrecomposition.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/ColimitDiagramIso.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso": [
+      "SerrePositivity/InfinityCategories/F1B/KanCommaLocalColimits.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanLeftCommaCoconeColimit.lean",
+      "SerrePositivity/InfinityCategories/F1B/KanRelativeColimitReindex.lean",
+      "SerrePositivity/InfinityCategories/F2/Idempotent/ColimitRetracts.lean",
+      "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessEquivalence.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/CofinalCoconeRestriction.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/EquivalentRestrictionColimit.lean",
+      "SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceColimits.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/KanDiagramColimitTransport.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/SpecifiedCofiberSpan.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation": [
+      "SerrePositivity/InfinityCategories/F2/Ind/AugmentedUniverseReverse.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseJoin.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoin": [
+      "SerrePositivity/InfinityCategories/F2/Ind/JoinUniverseReverse.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseJoinNaturality.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexShapes.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes": [
+      "SerrePositivity/InfinityCategories/F2/Ind/ArrowInterpolationExtension.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/DiagramInitialConeFamily.lean",
+      "SerrePositivity/InfinityCategories/F2/Presentable/ConeFamilyStrictification.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseEdgewiseWeight.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseBoundary.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexNaturality.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundary": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryHom.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseHorns.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryFilling.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseConeHom.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseConeHom": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseSlices.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseSlices": [
+      "SerrePositivity/InfinityCategories/F2/Idempotent/UniverseSliceProjection.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseCosliceProjection.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseLimits.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.UniverseLimits": [
+      "SerrePositivity/InfinityCategories/Derived/ConeHomTestUniverse.lean",
+      "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+      "SerrePositivity/InfinityCategories/F2/Compact/FilteredUniverse.lean",
+      "SerrePositivity/InfinityCategories/F2/Compact/UniverseCoconePostcomposition.lean",
+      "SerrePositivity/InfinityCategories/F2/Compact/UniverseCoconeRepresentations.lean",
+      "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessUniverse.lean",
+      "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionPointed.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/IndArrowDiagramFiltered.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/LiftedShapeCocone.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteProductPreservation.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/LiftedConePointedRestriction.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/PresheafCoconeImageCones.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseCoconeRestriction.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseLeftKanCanonical.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseRightKanCanonical.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/ReindexSliceOver.lean",
+      "SerrePositivity/InfinityCategories/Stable/ReindexSliceUnder.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps": [
+      "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseSimplexFamilies.lean",
+      "SerrePositivity/InfinityCategories/F1/Diagrams/LocalKanDiagramStrictification.lean",
+      "SerrePositivity/InfinityCategories/F1/StraighteningLeft/SmallLeftUnstraighteningBaseChange.lean",
+      "SerrePositivity/InfinityCategories/F1/Universe/SmallPointWitnessNonempty.lean",
+      "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+      "SerrePositivity/InfinityCategories/F2/CoherentFilteredSimplexExchange.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/DiagramConePointRestriction.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/NerveProductSwapIso.lean",
+      "SerrePositivity/InfinityCategories/F2/Ind/PresheafDiagramJointFibration.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/StrictCoconeIndices.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseHomotopyReflection.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseInternalHom.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniversePullbacks.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSections.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits/WeightedCoslicePrecomposition.lean",
+      "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexShapes.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence": [
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/Stable/AdjunctionHomotopyCategory.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory": [
+      "SerrePositivity/InfinityCategories/Derived/DGKernelRightAdjointClassicalComparison.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.F2.LimitConeExtension": [
+      "SerrePositivity/InfinityCategories/Derived/CofinalLimitExistence.lean",
+      "SerrePositivity/InfinityCategories/Derived/ConeLegRestriction.lean",
+      "SerrePositivity/InfinityCategories/Derived/LimitDiagramIso.lean",
+      "SerrePositivity/InfinityCategories/F2/FunctorVertexConeReindex.lean",
+      "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean",
+      "SerrePositivity/InfinityCategories/F2/LimitDiagramIso.lean",
+      "SerrePositivity/InfinityCategories/F2/SimplexConeRestriction.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanBoundary.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanCode.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanEdges.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanFromHorn.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanHornIso.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCoreCospanToHorn.lean",
+      "SerrePositivity/InfinityCategories/Stable/ExcisionCorePunctured.lean",
+      "SerrePositivity/InfinityCategories/Stable/FixedInitialHomotopy.lean",
+      "SerrePositivity/InfinityCategories/Stable/LeftAnodyneLimitRestriction.lean",
+      "SerrePositivity/InfinityCategories/Stable/PosetInteriorPrism.lean"
+    ],
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalence": [
+      "SerrePositivity/InfinityCategories/F2/LimitConeExtension.lean"
+    ],
+    "SerrePositivity.InfinityCategories.F2.SliceRestrictionEquivalenceLifting": [
+      "SerrePositivity/InfinityCategories/F2/SliceRestrictionEquivalence.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.LimitDiagramIso": [
+      "SerrePositivity/EInfinity/FrameHom/FrameArrowAugmentationLimits.lean",
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/DGVerdierOverLimit.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence": [
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/CofinalConeRestriction.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful": [
+      "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanCanonical.lean",
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanCanonical.lean",
+      "SerrePositivity/InfinityCategories/Derived/LocalizationRightKanCriterion.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension": [
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/LocalizationPrecompositionCriterion.lean",
+      "SerrePositivity/InfinityCategories/Derived/LocalizationRightKanCriterion.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion": [
+      "SerrePositivity/EInfinity/BarrattEccles/CAlgLocalizationUniversal.lean",
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/DGQuotientLocalization.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion": [
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/ResolvedDGQuotientLocalization.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DeformationLocalization": [
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/Derived/DGModuleResolutionLocalization.lean",
+      "SerrePositivity/InfinityCategories/Derived/DeformationFunctorDescent.lean",
+      "SerrePositivity/InfinityCategories/Derived/FullSubcomplexHomotopyLift.lean",
+      "scripts/audit_derived_infinity.lean",
+      "scripts/audit_infinity_stable.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.InitialExtension": [
+      "SerrePositivity/InfinityCategories/Stable/InitialPrismBoundary.lean",
+      "SerrePositivity/KST/SConstruction/RelativeInitialExtension.lean",
+      "SerrePositivity/KST/SConstruction/ZeroBoundaryExtension.lean"
+    ],
+    "SerrePositivity.InfinityCategories.Stable.LimitConeFamilies": [
+      "SerrePositivity/InfinityCategories/F2/Presentable/LimitComparisonReflection.lean",
+      "SerrePositivity/InfinityCategories/Stable/LoopDiagramArrows.lean",
+      "SerrePositivity/KST/LocalizingInvariants/FiberConeFullyFaithful.lean",
+      "SerrePositivity/KST/LocalizingInvariants/LimitProjectionExistence.lean"
+    ],
+    "SerrePositivity.KST.SConstruction.VertexPrescribedExtension": [
+      "SerrePositivity/InfinityCategories/Stable/PosetTerminalExtension.lean",
+      "SerrePositivity/KST/SConstruction/ArTwoMiddleSquare.lean",
+      "SerrePositivity/KST/SConstruction/ZeroFrame.lean"
+    ],
+    "SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence": [
+      "SerrePositivity/InfinityCategories/Stable/UniversalConeChoiceProjection.lean",
+      "SerrePositivity/KST/LocalizingInvariants.lean",
+      "SerrePositivity/KST/LocalizingInvariants/PullbackDiagramFamilies.lean"
+    ],
+    "SerrePositivity.KST.SConstruction.ZeroBoundaryExtension": [
+      "SerrePositivity/KST/SConstruction/FirstRow.lean",
+      "SerrePositivity/KST/SConstruction/FrameBoundaryExtension.lean",
+      "SerrePositivity/KST/SConstruction/VertexPrescribedExtension.lean",
+      "SerrePositivity/KST/SConstruction/ZeroNaturalTransformations.lean"
+    ]
+  }
+}

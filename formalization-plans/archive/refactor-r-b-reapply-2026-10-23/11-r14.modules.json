@@ -1,0 +1,18 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence": "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+    "SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory": "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/F1B.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+        "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory"
+      ]
+    }
+  },
+  "symbols": {
+    "SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence": "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+    "SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory": "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory"
+  }
+}

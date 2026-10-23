@@ -1,0 +1,30 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits": "SerrePositivity.InfinityCategories.Derived.SemifreeLimits"
+  },
+  "symbols": {
+    "SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits": "SerrePositivity.InfinityCategories.Derived.SemifreeLimits"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/DGNerve.lean": {
+      "remove": [
+        "SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.SemifreeLimits"
+      ]
+    },
+    "scripts/audit_dg_nerve.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.SemifreeLimits"
+      ]
+    },
+    "scripts/audit_derived_infinity.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.SemifreeLimits"
+      ]
+    }
+  }
+}
