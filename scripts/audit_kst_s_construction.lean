@@ -30642,3 +30642,114 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePointIso_hom
 #print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePointIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgClosedComparison_from_parameter
+#print axioms SerrePositivity.KST.SConstruction.dgClosedComparison_from_parameter
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_hom
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_hom
+
+#check @SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_inv
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectClosedIsoLift_inv
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawTargetRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawTargetRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageToCornerHom_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawTargetRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawTargetRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedRightRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedRightRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightEvaluationIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightEvaluationIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightEvaluationIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightEvaluationIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRightImageRepresentation_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedRightPointIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedRightPointIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawRightRepresentationClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConeToRight_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConeToRight_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePointIso_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePointIso_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationClosedIso_hom_app
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRawConeRepresentationClosedIso_hom_app
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotConeAlgebraRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotConeAlgebraRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentation_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentation_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationInverseComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationInverseComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationClosedIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTargetAlgebraRepresentationClosedIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePoint_perfect
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePoint_perfect
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPoint
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPoint
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation_map
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation_map
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectRepresentation_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_inv
+#print axioms SerrePositivity.KST.SConstruction.dgOdotRealizedConePerfectPointIso_inv

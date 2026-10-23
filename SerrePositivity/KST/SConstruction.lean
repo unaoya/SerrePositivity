@@ -2526,4 +2526,12 @@ public import SerrePositivity.KST.SConstruction.DGPerfectRealization
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRealizedRepresentation
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRepresentablePoint
 
+public import SerrePositivity.KST.SConstruction.DGClosedComparisonFromParameter
+public import SerrePositivity.KST.SConstruction.DGPerfectClosedIsoLift
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRawRepresentationMaps
+public import SerrePositivity.KST.SConstruction.DGOdotTargetRawRepresentation
+public import SerrePositivity.KST.SConstruction.DGOdotTargetConeRepresentationNaturality
+public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebraRepresentation
+public import SerrePositivity.KST.SConstruction.DGOdotTargetConePerfect
+
 /-! # ∞-S• 構成と連結 K 理論 -/
