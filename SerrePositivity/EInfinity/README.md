@@ -2738,3 +2738,8 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 非単射な作用素は同じ潰れた辺の単位と高次零を比較する。
 `normalizedTensorTriangleMap` は全 Δ²×K 上の大域評価三角形で、全辺に元の K を保持する。
 三辺を元の cone prism・通常評価円柱・pinched 区間族と同定する工程は残る。
+
+`normalizedTensorTriangleSimplex_eq_front`・`_eq_back`・`_eq_pinched` は、
+各相を欠く三角形単体全体を元の三部分単体へ同定する。
+全 cochain の HEq から SimplexData の等式へ戻す界面も提供する。
+元の大域円柱との全辺比較は次工程。
