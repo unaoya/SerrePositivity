@@ -134,14 +134,14 @@
 2026-10-23、`rg -n '\b(IndFiniteLimitExchangeInput|CoherentFilteredLimitExchangeShape|HasSpaceLimitsOfShape|DGKappaConeInput|DGKappaPerfectInput)\b' SerrePositivity --glob '*.lean'` で採取。
 使用は定義行・import 行を除く一致行数（同じ行の複数出現は 1、証拠を供給する定理も含む）。
 作業ツリーの未追跡ファイルも走査した。定義と使用の行一覧は
-[保存一覧](archive/refactor-assumptions-2026-10-23.md) を参照。
+[更新一覧](archive/refactor-assumptions-r-c-2026-10-23.md)（[初期一覧](archive/refactor-assumptions-2026-10-23.md)） を参照。
 
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
 | `IndFiniteLimitExchangeInput` | InfinityCategories/F2/Ind/FiniteLimitExchangeInput.lean:18 | F1b a7（全有限形の交換） | 11／9 |
-| `CoherentFilteredLimitExchangeShape` | InfinityCategories/F2/CoherentFilteredLimitExchange.lean:24 | F1b a7（空・単体の形は証明済み） | 9／7 |
-| `HasSpaceLimitsOfShape` | InfinityCategories/F2/SpaceLimitShapes.lean:24 | γ3 の無条件版へ R17 で差し替え予定 | 6／3 |
-| `DGKappaConeInput` | KST/NonConnective/DGKappaConeInput.lean:47 | D（K-7 へ非可算 κ-compact dg 小模型を供給） | 7／7 |
+| `CoherentFilteredLimitExchangeShape` | InfinityCategories/F2/FilteredExchange/CoherentFilteredLimitExchange.lean:24 | F1b a7（空・単体の形は証明済み） | 9／7 |
+| `HasSpaceLimitsOfShape` | InfinityCategories/F2/FilteredExchange/SpaceLimitShapes.lean:25 | `F2.hasSpaceLimitsOfShape`（`hasLimit_coherentSpaceDiagram` の系、追加仮定なし） | 7／3 |
+| `DGKappaConeInput` | KST/NonConnective/DGKappaConeInput.lean:47 | D（K-7 へ非可算 κ-compact dg 小模型を供給） | 15／15 |
 | `DGKappaPerfectInput` | KST/NonConnective/DGKappaPerfectInput.lean:36 | D（K-7 へ実 Perf との ∞ 圏比較を供給） | 3／2 |
 
 ## 7. 再発防止（foundations.md §8 に追加済み、ユーザー承認 10-23 09:33）
