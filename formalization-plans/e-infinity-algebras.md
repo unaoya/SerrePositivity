@@ -60,108 +60,52 @@
   その後、元の任意小 sifted 図式の指定余錐像の保存へ進む。元の P_Σ 包含の余極限保存と前層宇宙変更の形状還元を使い、全 Hom 比較で延長の保存性を判定する。
   原典：[HTT §5.1.4・§5.3・5.5.8.14〜15](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（既に本文照合済み）。
 
-### E2a（既存の引き継ぎ）
+### E2a（E2 レーン停止時引き継ぎ、2026-10-23）
 
-- **現在地**：E2a-0（Ch(A) の射影モデル構造）、E2a-1（オペラッド・自由代数随伴）、
-  E2a-2（Barratt–Eccles オペラッド・augmentation）まで完了。
-  E2a-3 は承認済みの Hopf オペラッド＋区間＋path object 経路で、工程 (1) が完了。
-  一般の小さい単体集合の正規化 AW 対角の鎖写像・自然性・余結合性・左右余単位と、
-  一般 shuffle 鎖写像の AW 余代数射性を検証し、整数模型へ移送済み。
-  `partialComposition_diagonal_tensorμ` が既存 BE 部分合成の余積適合性を与える。
-  arity ごとのテンソルオペラッド `Operad.hadamard` を、両単位則・内外等変性・
-  入れ子と独立な代入の結合則を含めて構成。頂点の群状元公式から単位保存を証明し、
-  `hopfDiagonal` を実際の E → E ⊗ E のオペラッド射に束ねた。
-  `BarrattEccles.hopf` はこの対角、既存の E → Com、余結合性・左右余単位則を持つ。
-  Σ_n 同変性は対称列の自然性に含まれ、余可換性は要求しない。
-  工程 (2) は P-coalgebra・射の圏・忘却関手・オペラッド射に沿う制限を構成済み。
-  `CoalgebraInterval` は実際の余代数・二端点・収縮・余演算の保存図式と、
-  底の境界 cofibration・収縮の擬同型からなる。区間の制限も構成済み。
-  convolution の反復評価とその両変数自然性、各 arity の演算 chain map は構成済み。
-  底の Hom(H,B) の `prepathComplex`、定数射と両端点評価の自然性も検証済み。
-  単位則・全置換の等変性・代数射の後合成による全演算の保存を検証済み。
-  `convolutionAction_comp` で全位置の部分合成則を閉じ、`convolutionAlgebra` を構成。
-  前合成・後合成を代数射と `convolutionFunctor`・`convolutionPreNat` へ束ねた。
-  `unitCoalgebra ε` は任意の augmentation の単位余代数。`convolutionUnitNatIso` は
-  Hom(単位,B) ≅ B を自然な P 代数同型にする。区間の端点・収縮も余代数射に束ねた。
-  `prepathAlgebra` は全代数の自己関手と自然な定数・両端点評価を持ち、底の既存の射と厳密に一致。
-  `evaluationPair_projectiveFibration` は底の二端点評価の対が射影 fibration であることを示す。
-  `constant_quasiIso` と `evaluation_quasiIso` は任意の値域で定数射・両評価の底の擬同型性を示す。
-  単位の cofibrancy、端点の鎖ホモトピー逆、符号付き Hom 前合成の移送から導出済み。
-  `Algebra.binaryProductIsLimit`・`terminalAlgebraIsTerminal` で積・終対象を底の複体に構成。
-  `pathAlgebra` は全代数の good path object。忘却の逆像の弱同値・fibration は局所選択。
-  `fibrations_llp_quasiIso` は retraction と逆合成の path から底の擬同型性を示す。
-  自由像の `freeGeneratingTrivialCofibrations_cell_acyclicity` は任意の始域で成立。
-  一般の極限余極限・自由像の小対象性・転送定理の適用は未完成。
-  E2a-3 の工程 (2) の転送と工程 (3)・(4)、E2a-4・5、E2b・G1′ は未完成。
-  現在地のコードと検証は本節と同じコミットに保存。E2a-2 完了は `60541ccb`。
-- **残り**（依存順。時間は再開後の粗い実装見積もり）：
-  1. 代数の積と終対象を底で構成し、忘却関手との比較から good functorial path object を完成。
-     続いてこの path object から底のホモトピー同値性を示し、
-     小対象性・一般の極限余極限と転送の適用を閉じる。J-cell acyclicity は構成済み。
-     Berger–Moerdijk（BM）2003 命題 4.1・§4.6.3、BF §3.1、24〜60 時間。
-  2. TR : E → χ のオペラッド射性を一般に証明し、χ の区間切断作用を Δ¹ に適用する。
-     BF §1.3・§3.1 と McClure–Smith の区間切断作用、80〜200 時間。
-     着手前にファイル数・主要補題の見積もりを計画に一段落で記す指示が未実施。
-     Δ¹ の作用は必要次数 r ≤ n に特殊化してよい。TR 自体は一般に証明する。
-  3. 具体区間を抽象界面へ代入して E2a-3 を完成。BM 命題 4.1、BF §3.1、8〜24 時間。
-  4. E2a-4：右 Quillen、全対象 fibrant、底での homotopy 引き戻し、H⁰ の可換環構造、
-     離散可換代数の E 代数化。BM 命題 4.1、BF §3.1、16〜40 時間。
-  5. E2a-5：homotopy function complex と π₀ の Hom 比較。
-     Hovey §5・Dwyer–Kan、既存 HomotopyFunctionComplex の具体的適用、12〜24 時間。
-  6. E2b：CAlg_R := N^hc と U : CAlg_R → D(R)、離散対象と極限。
-     HTT §1.1.5・§5.2.4、γ2・γ4 の適用、16〜40 時間。その後 G1′（界面の述べ直し）。
-- **主要宣言**（名前のみ）：
-  `SerrePositivity.EInfinity.projectiveModelCategory`、
-  `SerrePositivity.EInfinity.Operad.freeAlgebraAdjunction`、
-  `SerrePositivity.EInfinity.Operad.Hopf`、
-  `SerrePositivity.EInfinity.BarrattEccles.operad`、
-  `SerrePositivity.EInfinity.BarrattEccles.augmentation`、
-  `SerrePositivity.EInfinity.BarrattEccles.hopf`、
-  `SerrePositivity.EInfinity.Operad.Coalgebra`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraHom`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.restrict`、
-  `SerrePositivity.EInfinity.Operad.convolutionAlgebra`、
-  `SerrePositivity.EInfinity.Operad.convolutionFunctor`、
-  `SerrePositivity.EInfinity.Operad.convolutionPreNat`、
-  `SerrePositivity.EInfinity.Operad.convolutionUnitNatIso`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraEvaluationNat`、
-  `SerrePositivity.EInfinity.projectiveTrivialCofibration_homotopyEquiv`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.constant_quasiIso`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.algebraConstantNat_quasiIso`、
-  `SerrePositivity.EInfinity.projectiveCofibration_degreewise_isSplitMono`、
-  `SerrePositivity.EInfinity.homPrecompose_projectiveFibration`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.evaluationPair_projectiveFibration`、
-  `SerrePositivity.EInfinity.Operad.Algebra.binaryProductIsLimit`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.pathAlgebra`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.fibrations_llp_quasiIso`、
-  `SerrePositivity.EInfinity.Operad.CoalgebraInterval.freeGeneratingTrivialCofibrations_cell_acyclicity`。
-- **依存と提供**：HomotopicalAlgebra の Transfer/Recognition・Transfer/Right・
-  HomotopyFunctionComplex、Spectra/SymmetricSequence、DifferentialGraded の
-  Cells・複体のテンソル・HomComplex を読み取り専用で使う。
-  提供済みは局所選択する Ch(A) のモデル構造、自由代数随伴、実際の E と E → Com、
-  E の Hopf 構造、余代数区間の界面、全代数の good path object と J-cell acyclicity。
-  Alg_E のモデル構造・右 Quillen U・CAlg は未提供。
-- **未コミット**：本レーンのコード・監査・README・この節は全て同じコミットに保存。
-  他レーンの root・DG・HA・InfinityCategories 等の変更は温存し、コミットしない。
-- **既知の問題**：対象ビルド成功（2778 jobs）、公理監査成功（5600 宣言、標準 3 公理のみ）。
-  新規 sorry・追加公理・名前衝突はなく、572 モジュールの import 閉包に他レーンの未コミット依存はない。
-  今回の宣言に `ModelCategory`・`IsRightQuillen` 仮定はない。
-  Ch(A) のモデル構造は局所的に選び、global instance を追加しない。
-  一般の正規化 AW API は SSet.{0} と ModuleCat.{u} A を使う。
-  正規化モデルは商表示ではなく Moore 部分複体であり、降下補題を使う。
-  始域の cofibrancy は追加せず、完全なモデル構造を維持する。
-  Hinich 4.1.1 は使わない（正標数で E は Σ-split でない）。
-  全体 root ビルドは今回の検証範囲外。他レーンの import 閉包が壊れたら回避せず停止する。
-- **次の一手**：工程 (2) の一般の極限余極限と自由像の小対象性を構成する。
-  極限は `Algebra.ofJointlyMonicActions` と底の極限錐を使い、忘却が極限を作ることを示す。
-  余極限は自由・忘却随伴の代数的表示、filtered 余極限とテンソル冪・coinvariant の保存を使う。
-  自由像の I・J の小対象性を得て、`Transfer.Right.rightTransfer` へ
-  `freeGeneratingTrivialCofibrations_cell_acyclicity` を渡す。TR・具体区間には未着手。
+- **現在地**：E2a-0〜5 は完了。任意可換環上の実 E・augmentation・AW Hopf、TR と区間切断による N_*(Δ¹) の E 余代数区間、任意始域の acyclicity を含む転送モデル構造・右 Quillen U・全対象 fibrant を提供。
+  通常の導来極限・底の比較、関手的 Kan Map^h・局所化 Hom 比較も完了。E2b の実 DK 豊穣圏と既存 CAlg_R の quasicategory 性は完成。
+  γ2 d は26e1450c5：DK 1980b Prop.2.2・2.3 の全自由積分解を実 hammock へ移送し、左右比較射自身の弱同値性、既存 Map^h との全高次比較・相対自然性・合成・π₀整合まで完成。再実装しない。
+  γ2 e はd0f4d40f0：元の実屋根・次数比較の cofinal 性、全 coslice prism と右 Kan 単位を使い、実 hammock の局所化普遍性と既存 CAlg_R の全関手圏の前合成同値まで完成。再実装しない。
+  実 U : CAlg_R A → derivedInfinityCategory A はbcb7c31ac。元の通常忘却との全源比較、各値の擬同型比較を保持。元の代数・底の複体に cofibrancy を要求しない。
+  離散入力の全源比較163ea2ef1、既存 D(R) の離散埋め込みとの全比較a7bb3e49c、零次 E 模型・Com 降下bba3bdd16、標準 H⁰ 同型0d5863b91、離散対象の両包含4014b618bは完成。
+  自由忘却の実弱 Hom span は0e5b0d5d1。実導来単位・comma 候補はdcdcfc5da。正規化鎖の実 Reedy cofibrancy、tensor/K-projective と既存 D(R) への実弱 Hom span はe60467f07まで完成。
+  元の要素圏上の二重 cone・全 slice prism・通常 augmentation 比較、全 HA と実 Δ²⊗K 三角形は完成。全作用素自然性7b84c975e、全三辺1b32cd7a8、全 h Fun の評価三角形2eaf97fe4、元の derived pinched と roof の全族比較ee6e3d6db。
+  **今回の保存単位 fee845d09**：BarrattEccles/FreeProbeElementColumn.lean と FreeProbeElementColumnProperties.lean の9公開宣言。元の正規化 Hom の同じ要素圏上の自由 E∞ frame の列、augmentation・評価自然変換、元の随伴単位による両比較公式、全 augmentation・全列射の弱同値性、各対象の cofibrancy。標準単位誘導射自身の弱同値性は未証明。
+- **残り**（依存順、再開後の粗い見積もり）：
+  1. 同じ列を cofibrant 相対圏へ持ち上げ、元の LeftRoof/SameUniverse で CAlg_R の全 pinched 族へ送る。既存の全族比較と接続して標準単位比較自身の弱同値性を証明。HTT §5.2.4 の写像空間判定への入力、6〜16時間。
+  2. 同じ単位 comma 候補の実始対象性から全 ∞ 随伴を構成し、同じ U の任意 coherent ∞ 極限保存へ接続。HTT §5.2.4、6〜14時間。点ごとの Hom 同値だけでは完成扱いしない。
+  3. G1′：BS の界面を既存 CAlg_R で述べ直し、上の実 U・離散比較・極限保存を代入。4〜12時間。
+- **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
+  `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
+  `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。
+  `BarrattEccles.localizedFramedLimit_isRightDerivedFunctor`、`ComplexLimits.localizedFramedLimit_isRightDerivedFunctor`、`BarrattEccles.carrierFramedLimitComparisonNatIso`。
+  `BarrattEccles.CAlg_R`、`BarrattEccles.cAlgLocalizationSource_isLocalization`、`BarrattEccles.cAlgLocalizationPrecomposition_isQCatEquivalence`。
+  `BarrattEccles.cAlgForgetDerived`、`BarrattEccles.cAlgForgetDerived_sourceIso`、`BarrattEccles.cAlgForgetDerived_valueVertexIso`、`BarrattEccles.cAlgUnderlyingDisc_iff_discreteUnder`。
+  `BarrattEccles.discreteCAlgEmbedding`、`BarrattEccles.discreteCAlgUnderEmbedding_forgetIso`、`BarrattEccles.algebraCAlgSource_underlyingDerivedIso`。
+  `BarrattEccles.freeProbeDerivedUnit`、`BarrattEccles.derivedFreeProbeUnitEdge`、`BarrattEccles.derivedFreeProbeUnitCommaVertex`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_family`。
+  `BarrattEccles.freeDerivedHomToUnderlying_homotopyEquivalence`、`BarrattEccles.freeProbeDerivedUnitNormalizedHom_family`。
+  `ComplexLimits.normalizedOrdinaryDerivedHomMap_homotopyEquivalence`、`ComplexLimits.normalizedOrdinaryDerivedHomMap_family`。
+  `ComplexLimits.normalizedTensorTriangleFamily_comp`、`ComplexLimits.normalizedTensorDerivedPinchedFamily_eq_roof`、`ComplexLimits.normalizedTensorDerivedPinchedFamily_arrow`、`ComplexLimits.pinchedFamilyPostcomp_arrow`。
+  `BarrattEccles.freeProbeElementIndex`、`BarrattEccles.freeProbeElementColumn`、`BarrattEccles.freeProbeElementColumnAugmentation`、`BarrattEccles.freeProbeElementColumnEvaluation`。
+  `BarrattEccles.freeProbeElementColumnEvaluation_unit`、`BarrattEccles.freeProbeElementColumnAugmentation_unit`、`BarrattEccles.freeProbeElementColumnAugmentation_weak`、`BarrattEccles.freeProbeElementColumn_map_weak`、`BarrattEccles.freeProbeElementColumn_cofibrant`。
+- **依存と提供**：HomotopicalAlgebra の転送・Reedy・HomotopyFunctionComplex、DifferentialGraded、Spectra/SymmetricSequence、CategoryTheory/Simplex を読み取り専用で使用。
+  ComonadResolutionOperators・Presentation・SimplicialResolution、Rectification/HomotopyFunctionComplex/LiftSpace、KST の ExInfinityMonoidal・NerveOppositeIso を再利用。
+  N の Coherent/Quasicategory・F1/CoherentVertices・CoherentNervePostcomposition・KanSourceReplacement、F1b の KanNerveLeftKanShapeIso・QuillenALeft・CofinalWeakEquivalence、F2 の filtered 弱同値保存を使用。
+  E2a のモデル・通常右導来極限・Kan Map^h、実 CAlg_R と既存 D(R) への忘却射・離散比較を提供。所有は EInfinity/**・EInfinity.lean・scripts/audit_einfinity.lean。本節以外の共有計画を巻き込まない。
+- **未コミット**：E2 所有のリポジトリ内コードは今回の保存単位までコミット済み。共有計画の他レーンの変更は保持し本節のみコミット。/tmp の試作は集約・監査に未接続。
+  /tmp/e2-free-probe-cofibrant-column.lean は CofibrantAlgebra への4定義の試作、終了コード0。/tmp/e2-free-probe-relative-column.lean は Hom 宇宙 ULift も含む拡張の試作。v2 の完了状態は未確認なので成果扱いしない。再開時は正本の9宣言から必要分を再構成する。
+- **既知の問題**：fee845d09 は対象ビルド6594 jobs・EInfinity 集約11055 jobs・全公理監査25780宣言・独立例9件が終了コード0、標準3公理のみ。必須9101項目は209個の noinline 配列、各128以下。7187モジュールの import 閉包に他レーンの未コミット依存0件、監査前後の全ソース digest一致。新規モジュールの警告・sorry・追加公理なし。対象ビルド・監査・独立例はすべて終了済み。資源上限変更なし。既存208必須配列の式・順序・run_cmd登録は保持。主経路に ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定なし。
+  モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
+  LeftRoof.Precompose の旧入口は I : Type v・Category.{0} I。同じ宇宙の実圏には LeftRoof.Precompose.SameUniverse を使う。元の要素圏は Type(u+1)・Category.{u} なので、cofibrant 代数の Category.{u+1} と合わせるには ULiftHom.{u+1} を使い、objUp/objDown の宇宙 .{u+1,u+1} を明示する。対象だけの ULift は不要。
+  集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
+  Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
+  既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
+- **次の一手**：foundations.md §8、本節、上の2新規モジュールを読む。元の要素圏上の列を CofibrantAlgebraRelativeInput の cofibrant 相対圏へ持ち上げる小モジュールを作る。各対象の証明は freeProbeElementColumn_cofibrant、全弱射は freeProbeElementColumn_map_weak、左脚は freeProbeElementColumnAugmentation_weak を使う。
+  同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続し、標準単位比較自身の弱同値性を示す。
+  N の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
+  全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
+  今回はコーディネータの停止指示による区切り。このチャットでは続行せず、新チャットで上記から再開する。
 
-作成日：2026-10-18。状態：計画。ε の経路として E2（モデル圏）を採用（2026-10-18 決定）。
-全体の正本は [infinity-categories.md](infinity-categories.md) §0・§5。
 
 ## 0. 位置づけ
 
