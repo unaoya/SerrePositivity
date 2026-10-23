@@ -114,7 +114,7 @@
 | 1-5 | `Stable/SliceOpposite` の `sliceOverOpIso` を `Core/SliceOpposite` へ（Stable 側シム） | R5 の前半 | D（10-18 以降未変更） | §3 | |
 | 2-1 | `Stable/Cocone`・`UniverseLimits`・`ColimitDiagramIso`・`Definition` の `HasFiniteLimits` を `Core/Colimit*` へ（Stable 側シム） | R2・R22 | D | D-7 d 完了直後 | |
 | 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | |
-| 2-3 | `Derived/LimitDiagramIso`・`CofinalLimitExistence` を Core へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
+| 2-3 | `Derived/LimitDiagramIso` を Core、`CofinalLimitExistence` を F1B へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
 | 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST 側シム。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | |
 | 2-5 | `DGNerve/SemifreeLimits` を Derived へ直接移動（互換シムなし） | R24 | D | D の区切り | 2026-10-23（R-B、aa2236b66） |
 | 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | |
@@ -131,10 +131,10 @@
 
 | 旧所在 | 新所在 | 段 | コミット |
 |---|---|---|---|
-| `SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison` | 3-1 R-B | 3-1 KST（本コミット） |
-| `SerrePositivity.KST.SConstruction.RelativeInitialEndpoint` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint` | 3-1 R-B | 3-1 KST（本コミット） |
-| `SerrePositivity.KST.SConstruction.InitialBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport` | 3-1 R-B | 3-1 KST（本コミット） |
-| `SerrePositivity.KST.SConstruction.TerminalBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport` | 3-1 R-B | 3-1 KST（本コミット） |
+| `SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison` | 3-1 R-B | `20f3cc257` |
+| `SerrePositivity.KST.SConstruction.RelativeInitialEndpoint` | `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint` | 3-1 R-B | `20f3cc257` |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport` | 3-1 R-B | `20f3cc257` |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryTransport` | `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport` | 3-1 R-B | `20f3cc257` |
 | `DGNerve/SemifreeLimits` | `Derived/SemifreeLimits` | 2-5 R-B | aa2236b66 |
 
 
@@ -153,6 +153,34 @@
 | `SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op` | `SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_initialBoundaryLifting_op` |
 | `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.op_initial` |
 | `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.of_vertexIso` |
+
+
+### R-B：共通の augmentation 証明補題
+
+| 宣言 | 所在 | 利用 |
+|---|---|---|
+| `augmentation_proof_of_endpoint_phases` | `Derived/AugmentationProofCases` | comma・加群の Prop 定理、型は保持 |
+| `augmentation_proof_of_reindex_cases` | `Derived/AugmentationProofCases` | comma・加群の Prop 定理、型は保持 |
+
+
+### R-B：augmentation の一般宣言の直接共有化
+
+| 旧 comma 名 | 正本名（InfinityCategories 名前空間） | 旧正本ファイル（Derived/） | 新所在 |
+|---|---|---|---|
+| `dgCommaAugmentationCutPoints` | `dgModuleAugmentationCutPoints` | `DGModuleAugmentationCorrection` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationCutPoints_erase` | `dgModuleAugmentationCutPoints_erase` | `DGModuleAugmentationCorrection` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationPhase_double_cut_cancel` | `dgModuleAugmentationPhase_double_cut_cancel` | `DGModuleAugmentationPhaseDoubleCut` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationImage_double_cut_cancel` | `dgModuleAugmentationImage_double_cut_cancel` | `DGModuleAugmentationImageCutSigns` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationImage_phase_double_cut_cancel` | `dgModuleAugmentationImage_phase_double_cut_cancel` | `DGModuleAugmentationImageCutSigns` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationCutPoints_eq_filter_interior` | `dgModuleAugmentationCutPoints_eq_filter_interior` | `DGModuleAugmentationLinearCancellation` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationCutPoints_image` | `dgModuleAugmentationCutPoints_image` | `DGModuleAugmentationReindexIndex` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationLeftCut_image_card` | `dgModuleAugmentationLeftCut_image_card` | `DGModuleAugmentationReindexIndex` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationRightCut_image_card` | `dgModuleAugmentationRightCut_image_card` | `DGModuleAugmentationReindexIndex` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentationCut_injective_glue` | `dgModuleAugmentationCut_injective_glue` | `DGModuleAugmentationReindexIndex` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaSimplexHomOrZero_pullback_of_inj` | `dgSimplexHomOrZero_pullback_of_inj` | `DGModuleAugmentationReindexCoefficient` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaAugmentation_sum_mixed_cancel_filter` | `dgModuleAugmentation_sum_mixed_cancel_filter` | `DGModuleAugmentationCutErasure` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaDifferential_compose_of_indices` | `dgDifferential_compose_of_indices` | `DGModuleAugmentationCutBoundary` | `DGNerve/AugmentationCombinatorics` |
+| `dgCommaNerve_vertex_identity_simplex` | `dgNerve_vertex_identity_simplex` | `DGModuleAugmentationActualComponent` | `DGNerve/VertexIdentity` |
 
 ## 6. 仮定入力の一覧（完成後に外す）
 

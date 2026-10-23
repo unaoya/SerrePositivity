@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
+public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation
 /-!
 概要：実候補の左補正の後合成を、中央比較三重合成の同じ有限和へ接続する。
 方針：同じ左右区間の切断和に展開し、実三重合成の順序同定と相付き符号を使う。

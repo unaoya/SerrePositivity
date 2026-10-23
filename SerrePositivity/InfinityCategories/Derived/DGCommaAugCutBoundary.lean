@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugSimplexHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugCutDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyNaturality
@@ -15,18 +16,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve
-/-- 全微分次数を指定した、同じ通常順合成の Leibniz 則。 -/
-lemma dgCommaDifferential_compose_of_indices (R : Type u) [CommRing R]
-    {D : Type v} [DGCategory R D] {X Y Z : D} (p q n p' q' n' : ℤ)
-    (hpq : p + q = n) (hp : p + 1 = p') (hq : q + 1 = q') (hn : n + 1 = n')
-    (g : GradedHom R Y Z q) (f : GradedHom R X Y p) :
-    (homObject R D X Z).d n n' (compose R g f hpq) =
-    compose R (n := n') ((homObject R D Y Z).d q q' g) f (by omega) +
-      q.negOnePow • compose R (n := n') g ((homObject R D X Y).d p p' f) (by omega) := by
-  subst p'
-  subst q'
-  subst n'
-  exact differential_compose R g f hpq
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] (F : DGFunctor R C E)
 /-- 指定出力次数で、同じ比較成分の微分を元の微分と比較差で解く。 -/
@@ -68,7 +57,7 @@ lemma dgCommaAugmentationHomotopyCut_differential_normalized
       (by dsimp [p, q] at *; omega) := by
   dsimp only
   rw [dgCommaAugmentationHomotopyCut, dite_eq_left hsum]
-  have hd := dgCommaDifferential_compose_of_indices R _ _ k
+  have hd := dgDifferential_compose_of_indices R _ _ k
     (2 - ((I.filter (· ≤ j)).card : ℤ) + 1) (2 - ((I.filter (j ≤ ·)).card : ℤ))
     (k + 1) hsum rfl
     (by omega) rfl

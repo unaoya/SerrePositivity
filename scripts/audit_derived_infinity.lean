@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.DGNerve.VertexIdentity
+import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative
 import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover
@@ -796,7 +798,8 @@ import SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyData
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyNaturality
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyTensor
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCorrection
-import SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns
+import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
+import SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugInjectiveReindex
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugLinearCancellation
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugMixedCuts
@@ -807,17 +810,13 @@ import SerrePositivity.InfinityCategories.Derived.DGCommaAugNervePrism
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedHomotopyCut
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedImageCut
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedPhaseCancellation
-import SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismBoundary
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismData
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismPhaseCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismReindex
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex
-import SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCorrectionIdentity
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCutExpansion
-import SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient
-import SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseEquation
 import SerrePositivity.InfinityCategories.Derived.DGCommaAugSimplexHomotopy
@@ -1113,8 +1112,7 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpacePointed
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismComponent
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionReindex
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationInjectiveReindex
@@ -1130,24 +1128,21 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedQuadr
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationMixedEquation
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseEquation
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCorrectionIdentity
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismPhaseCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseComparisonCut
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseBoundary
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut
+import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedHomotopyCut
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedImageCut
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCutExpansion
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedPhaseCancellation
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutErasure
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationLinearCancellation
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutDifferentialExpansion
-import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationTriangleCoefficient
 import SerrePositivity.InfinityCategories.Derived.DGClosedPostcomposeTriangle
@@ -4291,8 +4286,8 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyAt_linearBoundary
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyAt_quadraticBoundary
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_hom_pullback_of_collapsed_pair
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_erase
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_erase
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismCorrection
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismMixedHom_eq_base_add_correction
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismMixedHom_differential_decomposition
@@ -4300,7 +4295,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismMixedHom_differential_reduction
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismCorrection_pullback_of_inj
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismMixedHom_pullback_of_inj
-#check SerrePositivity.InfinityCategories.dgCommaDifferential_compose_of_indices
+#check SerrePositivity.InfinityCategories.dgDifferential_compose_of_indices
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyAt_differential_eq
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_differential_normalized
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_differential_boundary
@@ -4312,7 +4307,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_differential_expansion
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_erase_right
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_erase_left
-#check SerrePositivity.InfinityCategories.dgCommaAugmentation_sum_mixed_cancel_filter
+#check SerrePositivity.InfinityCategories.dgModuleAugmentation_sum_mixed_cancel_filter
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_linear_right
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationHomotopyCut_linear_left
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationImageCut
@@ -4348,12 +4343,12 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationImageCorrection
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationImageCorrection_expansion
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationImageCorrection_sum_cancel
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationImage_double_cut_cancel
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationImage_phase_double_cut_cancel
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationImage_double_cut_cancel
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationImage_phase_double_cut_cancel
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismPhaseHom_pullback_of_inj
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_hom_pullback_of_inj
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismSimplex_pullback_of_injective
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_eq_filter_interior
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_eq_filter_interior
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationCutLinearBoundary
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationCutLinearBoundary_eq_erasedCuts
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismCorrection_linear_cancel
@@ -4378,7 +4373,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNestedImageLeft
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNestedImageRight_eq_left
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNestedHomotopy_phase_cancel
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationPhase_double_cut_cancel
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationPhase_double_cut_cancel
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_zero
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_one
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismMixedHom_two
@@ -4410,11 +4405,11 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationQuadraticCut_right
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationQuadraticCut_left
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationCutQuadraticBoundary_expansion
-#check SerrePositivity.InfinityCategories.dgCommaSimplexHomOrZero_pullback_of_inj
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_image
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationLeftCut_image_card
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationRightCut_image_card
-#check SerrePositivity.InfinityCategories.dgCommaAugmentationCut_injective_glue
+#check SerrePositivity.InfinityCategories.dgSimplexHomOrZero_pullback_of_inj
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_image
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationLeftCut_image_card
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationRightCut_image_card
+#check SerrePositivity.InfinityCategories.dgModuleAugmentationCut_injective_glue
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPhaseFunctor
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_obj_phase
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismData_hom_phase
@@ -4431,7 +4426,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationSuffixCorrection_sum_cancel
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationPrismSimplex_unitEdge
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNervePrism_unitEdge
-#check SerrePositivity.InfinityCategories.dgCommaNerve_vertex_identity_simplex
+#check SerrePositivity.InfinityCategories.dgNerve_vertex_identity_simplex
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNerveHomotopy_vertex_edgeHom
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNerveHomotopy_vertex_cycle
 #check SerrePositivity.InfinityCategories.dgCommaAugmentationNerveHomotopy_vertex_edge
@@ -4510,6 +4505,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.DGNerve.VertexIdentity,
+    `SerrePositivity.InfinityCategories.Derived.AugmentationProofCases,
     `SerrePositivity.InfinityCategories.Derived.SemifreeLimits,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative,
     `SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover,
@@ -5485,7 +5482,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugHomotopyTensor,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCorrection,
-    `SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns,
+    `SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugInjectiveReindex,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugLinearCancellation,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugMixedCuts,
@@ -5496,7 +5493,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedHomotopyCut,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedImageCut,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugNestedPhaseCancellation,
-    `SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismData,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismPhaseCoefficients,
@@ -5505,8 +5501,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCorrectionIdentity,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCutExpansion,
-    `SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient,
-    `SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseCoefficients,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseEquation,
     `SerrePositivity.InfinityCategories.Derived.DGCommaAugSimplexHomotopy,
@@ -5827,8 +5821,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity,
 
-    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex,
-    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutReindex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionReindex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationInjectiveReindex,
@@ -5847,7 +5839,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseEquation,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex,
 
-    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCorrection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSuffixCorrection,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCorrectionIdentity,
@@ -5855,7 +5846,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseComparisonCut,
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationBaseBoundary,
-    `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedHomotopyCut,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedImageCut,
     `SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCutExpansion,

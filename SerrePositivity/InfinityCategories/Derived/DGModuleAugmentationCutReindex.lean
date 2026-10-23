@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
+public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex
 /-!
 概要：実 augmentation の全域切断補正を、単射な添字変更の同じ像へ照合する。
 方針：左右の集合・次数を先にそろえ、正しい全域係数の引き戻しを使う。

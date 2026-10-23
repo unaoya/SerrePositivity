@@ -20,9 +20,9 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
 lemma dgCommaAugmentationCutQuadraticBoundary_sum_reduction
     (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (k : ℤ) (hk : k = 2 - (I.card : ℤ)) :
-    (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+    (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
       dgCommaAugmentationCutQuadraticBoundary R C E F s I a b k j) =
-    (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+    (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
       ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
         ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
           dgCommaAugmentationNestedImageRight R C E F s I a b k j l)) +
@@ -31,19 +31,19 @@ lemma dgCommaAugmentationCutQuadraticBoundary_sum_reduction
       ∑ j ∈ (Index.interior I a b).filter (· < l), Index.sign (I.filter (· ≤ l)) j •
         (if β l = 1 ∧ ¬ β j = 1 then
           dgCommaAugmentationNestedHomotopyLeft R C E F s I a b k j l else 0))) := by
-  let U := ∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+  let U := ∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
     ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
       ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
         dgCommaAugmentationNestedImageRight R C E F s I a b k j l)
-  let V := ∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+  let V := ∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
     ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
       dgCommaAugmentationNestedHomotopyRight R C E F s I a b k j l
-  let W := ∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+  let W := ∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
     ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
     ∑ j ∈ (Index.interior I a b).filter (· < l), Index.sign (I.filter (· ≤ l)) j •
       dgCommaAugmentationNestedHomotopyLeft R C E F s I a b k j l)
   have hd :
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         dgCommaAugmentationCutQuadraticBoundary R C E F s I a b k j) = U + V + W := by
     dsimp only [U, V, W]
     rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
@@ -60,7 +60,7 @@ lemma dgCommaAugmentationCutQuadraticBoundary_sum_reduction
           (if β l = 1 ∧ ¬ β j = 1 then
             dgCommaAugmentationNestedHomotopyLeft R C E F s I a b k j l else 0)) := by
     dsimp only [V, W]
-    simpa only [dgCommaAugmentationCutPoints_eq_filter_interior, Finset.sum_filter,
+    simpa only [dgModuleAugmentationCutPoints_eq_filter_interior, Finset.sum_filter,
       smul_ite, smul_zero, Finset.sum_ite_irrel, Finset.sum_const_zero] using
       dgCommaAugmentationNestedHomotopy_phase_cancel R C E F s β I a b k hk
   rw [hd, add_assoc, hc]

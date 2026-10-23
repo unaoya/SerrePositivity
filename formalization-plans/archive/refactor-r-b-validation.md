@@ -24,3 +24,14 @@
 - `lake env lean scripts/audit_kst_s_construction.lean`：全 #check・#print axioms が成功、検出された公理は標準3公理のみ。
 - モジュール4組・宣言11個の対応表は refactoring-infinity.md §5 と refactor-r-b-kst-name-map.json に保存。
 - 詳細ログ：`/tmp/r-b-kst-{build,audit-stable,audit-sconstruction}.log`。
+
+## 3-1：Derived augmentation の共有化
+
+- 型・証明が一致する一般宣言14組を DGNerve/AugmentationCombinatorics と DGNerve/VertexIdentity へ直接共有化し、重複モジュール8本を削除。
+- Derived/AugmentationProofCases の新しい Prop 補題2個を使い、既存4定理の型を保持して証明のみ共有化。
+- 元の canonical 14宣言の型・証明トークンは一致。既存4定理のヘッダーはバイト一致。データ86宣言の本体は許可された名前置換を除き不変。
+- Stable・Derived・DGNerve 集約ビルド成功（11,353 jobs）。
+- audit_infinity_stable：23193 declarations / 2785 modules、audit_derived_infinity：22089 / 2518、audit_derived_gluing：6513 / 701。すべて成功。
+- audit_derived_infinity は `-DmaxRecDepth=20000` を使用。audit_dg_nerve の全チェックと最終例も成功。新規 sorry・公理なし、DGNerve→Derived import なし。
+- 型依存データ19組は指定の差分表に記録し、D レーン再開後の判断へ保留。53組の候補全体は隣接 JSON に記録。型依存の全証明を統合したとの主張はしない。
+- ログ：`/tmp/r-b-derived-sharing-{build,audit-stable,audit-derived,audit-gluing,audit-dgnerve}.log`。全工程の session 12212 は exit 0 で終了。

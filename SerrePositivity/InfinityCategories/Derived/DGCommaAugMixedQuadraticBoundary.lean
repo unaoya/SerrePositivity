@@ -53,14 +53,14 @@ lemma dgCommaAugmentationMixedTransport_quadraticBoundary
         ((dgCommaAugmentationPrismData R C E F s β).quadraticBoundary I a b k) =
       (dgCommaAugmentationBaseHomMap R C E F (s.obj a) (s.obj b)).f (k + 1)
         (s.quadraticBoundary I a b k) +
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         dgCommaAugmentationCutComparisonBoundary R C E F s I a b k j) +
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         dgCommaAugmentationImageCorrection R C E F s β I a b k j) +
       (∑ j ∈ (Index.interior I a b).filter (β · ≠ 1), Index.sign I j •
         dgCommaAugmentationSuffixCorrection R C E F s β I a b k j) := by
   simp only [SimplexData.quadraticBoundary, Units.smul_def, map_sum, map_zsmul,
-    dgCommaAugmentationCutPoints_eq_filter_interior, Finset.sum_filter]
+    dgModuleAugmentationCutPoints_eq_filter_interior, Finset.sum_filter]
   rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro j hj

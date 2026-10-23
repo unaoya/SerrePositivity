@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseEquation
 /-!
 概要：元の実 augmentation 切断補正和が全 HA 方程式を満たす単体を構成する。
@@ -24,23 +25,11 @@ lemma dgCommaAugmentationPrismData_equation
     differential R ((dgCommaAugmentationPrismData R C E F s.toSimplexData β).hom
         I a b k hI ha hb hk) =
       (dgCommaAugmentationPrismData R C E F s.toSimplexData β).rhs I a b k hI ha hb hk := by
-  have hp : ∀ p : Fin 2, p = 0 ∨ p = 1 := by decide
-  rcases hp (β a) with ha0 | ha1
-  · rcases hp (β b) with hb0 | hb1
-    · exact dgCommaAugmentationPrismData_equation_same R C E F s β 0 I a b k
-        hI ha hb hk ha0 hb0
-    · exact dgCommaAugmentationPrismData_equation_mixed R C E F s β I a b k
-        hI ha hb hk ha0 hb1
-  · rcases hp (β b) with hb0 | hb1
-    · have hab : a ≤ b := by
-        rw [ha, hb]
-        exact (I.isLeast_min' _).2 (I.max'_mem _)
-      have hh := β.monotone hab
-      rw [ha1, hb0] at hh
-      change (1 : ℕ) ≤ 0 at hh
-      omega
-    · exact dgCommaAugmentationPrismData_equation_same R C E F s β 1 I a b k
-        hI ha hb hk ha1 hb1
+  exact augmentation_proof_of_endpoint_phases β I a b hI ha hb
+    (fun p haP hbP ↦ dgCommaAugmentationPrismData_equation_same R C E F s β p I a b k
+      hI ha hb hk haP hbP)
+    (fun ha0 hb1 ↦ dgCommaAugmentationPrismData_equation_mixed R C E F s β I a b k
+      hI ha hb hk ha0 hb1)
 /-- 同じ実切断補正和と実対象から得られる、全 HA 方程式を持つ単体。 -/
 def dgCommaAugmentationPrismSimplex (β : Fin (n + 1) →o Fin 2) :
     Simplex R E n where

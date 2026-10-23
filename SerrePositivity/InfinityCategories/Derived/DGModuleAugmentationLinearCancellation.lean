@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCutErasure
 /-!
 概要：同じ混合候補の全削除補正と、実切断の左右線形境界の符号和を相殺する。
@@ -13,13 +14,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve
-/-- 相一の切断点は、元の内部点集合を同じ相で制限したもの。 -/
-lemma dgModuleAugmentationCutPoints_eq_filter_interior {n : ℕ}
-    (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) :
-    dgModuleAugmentationCutPoints β I a b = (Index.interior I a b).filter (β · = 1) := by
-  ext j
-  simp only [dgModuleAugmentationCutPoints, Index.interior, Finset.mem_filter]
-  tauto
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] [Small.{u} E] (F : DGFunctor R C (RightModule R E))
   {n : ℕ} (s : SimplexData R (DGModuleFunctorResolutionObject R C E F) n)

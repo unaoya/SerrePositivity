@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
+public import SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex
 /-!
 概要：実 augmentation の全域切断補正を、単射な添字変更の同じ像へ照合する。
 方針：左右の集合・次数を先にそろえ、正しい全域係数の引き戻しを使う。
@@ -43,9 +44,9 @@ lemma dgCommaAugmentationHomotopyCut_pullback_of_inj
   rw [dgCommaAugmentationHomotopyCut, dgCommaAugmentationHomotopyCut,
     ← hLeft, ← hRight, Finset.card_image_of_injOn hiL, Finset.card_image_of_injOn hiR]
   simp only [dite_eq_left hsum]
-  rw [dgCommaSimplexHomOrZero_pullback_of_inj s α (I.filter (j ≤ ·)) j b _ hIR
+  rw [dgSimplexHomOrZero_pullback_of_inj s α (I.filter (j ≤ ·)) j b _ hIR
     (Index.right_min hj _) (Index.right_max hbmax hjb.le _) rfl hiR,
-    dgCommaSimplexHomOrZero_pullback_of_inj s α (I.filter (· ≤ j)) a j _ hIL
+    dgSimplexHomOrZero_pullback_of_inj s α (I.filter (· ≤ j)) a j _ hIL
     (Index.left_min hamin haj.le _) (Index.left_max hj _) rfl hiL]
   rfl
 end SerrePositivity.InfinityCategories

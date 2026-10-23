@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugExtendedCut
 /-!
 概要：全実混合係数を、augmentation の実後合成と同じ全域切断補正和に分解する。
@@ -12,16 +13,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve
-/-- 相一の実内部切断点の有限集合。 -/
-def dgCommaAugmentationCutPoints {n : ℕ} (β : Fin (n + 1) →o Fin 2)
-    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) : Finset (Fin (n + 1)) :=
-  I.filter (fun j ↦ a < j ∧ j < b ∧ β j = 1)
-/-- 実相切断点の形成は、元の有限集合の点の削除と可換。 -/
-lemma dgCommaAugmentationCutPoints_erase {n : ℕ} (β : Fin (n + 1) →o Fin 2)
-    (I : Finset (Fin (n + 1))) (a b j : Fin (n + 1)) :
-    dgCommaAugmentationCutPoints β (I.erase j) a b =
-      (dgCommaAugmentationCutPoints β I a b).erase j :=
-  Finset.filter_erase _ _ _
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] (F : DGFunctor R C E)
   {n : ℕ} (s : SimplexData R (DGFunctorCommaObject R C E F) n)
@@ -29,7 +20,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
 def dgCommaAugmentationPrismCorrection (β : Fin (n + 1) →o Fin 2)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) :
     GradedHom R (s.obj a).replacement (F.obj (s.obj b).source) k :=
-  ∑ j ∈ dgCommaAugmentationCutPoints β I a b,
+  ∑ j ∈ dgModuleAugmentationCutPoints β I a b,
     Index.sign I j • dgCommaAugmentationHomotopyCut R C E F s I a b k j
 /-- 全実混合係数は、元の同じ augmentation 合成と全域切断補正和の和。 -/
 lemma dgCommaAugmentationPrismMixedHom_eq_base_add_correction
@@ -44,7 +35,7 @@ lemma dgCommaAugmentationPrismMixedHom_eq_base_add_correction
           (s.hom I a b k hI ha hb hk)) (add_zero k) +
       dgCommaAugmentationPrismCorrection R C E F s β I a b k := by
   unfold dgCommaAugmentationPrismMixedHom dgCommaAugmentationPrismCorrection
-    dgCommaAugmentationCutPoints
+    dgModuleAugmentationCutPoints
   congr 1
   rw [Finset.sum_filter, ← Finset.sum_coe_sort I]
   apply Finset.sum_congr rfl
@@ -67,7 +58,7 @@ lemma dgCommaAugmentationPrismMixedHom_differential_decomposition
         (z := F.obj (s.obj b).source) (dgCommaAugmentationComponent R C E F (s.obj b)).val
         (((dgCommaAugmentationSource R C E F).map (s.obj a) (s.obj b)).f k
           (s.hom I a b k hI ha hb hk)) (add_zero k)) +
-    ∑ j ∈ dgCommaAugmentationCutPoints β I a b,
+    ∑ j ∈ dgModuleAugmentationCutPoints β I a b,
       Index.sign I j • (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d
         k (k + 1) (dgCommaAugmentationHomotopyCut R C E F s I a b k j) := by
   rw [dgCommaAugmentationPrismMixedHom_eq_base_add_correction]

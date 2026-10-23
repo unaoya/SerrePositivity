@@ -3,17 +3,13 @@
 ## 引き継ぎ
 
 - 現在地：`refactor/r-b`、`../SerrePositivity-B`。基点 main `c6692be81` は checkpoint から計画文書だけが増えている。指定の .lake クローン完了。
-  R24 は `aa2236b66` に保存。Stable・Derived・DGNerve 集約（11,358 jobs）、指定3監査、dg nerve 監査が成功。Derived は `-DmaxRecDepth=20000` を使用。
-  Stable/KST 4 組を直接統合済みで、Stable・KST/SConstruction 集約ビルド成功（12,851 jobs）。両監査を実行中（session `74573`）。SemifreeLimits の本文はバイト一致、旧ファイルは削除。
-- 残り（依存順）：Derived 準重複の直接統合、R3。
-  R-A 取り込みの合図後に rebase・.lake 再クローンを行い、2-1〜2-3（Core/F1B への移動）。各項目の所要時間はビルド時間確認後に見積もる。
-- 主要宣言：既存名を維持。`isTerminalVertex_semifree_zero`、`isInitialVertex_semifree_zero`、`semifreeFiberSquare`、
-  `semifreeFiberSquare_isPullback`、`semifreeFiberSquare_inclusion` の所在は Derived/SemifreeLimits（名前空間 DGNerve を保持）。
-- 依存と提供：Core/F1/F1B は R-A 取り込みまで読み取り専用。移動ツール未着につき、手変更を archive/refactor-r-b-manual-files.txt に記録。
-- 未コミット：Derived データの差分表（Markdown・JSON）は次の Derived 項目でコミット予定。KST 統合一式は本コミットに保存する。
-- 既知の問題：未追跡 DGKernelDerivedMapInvertible はユーザーの個別許可により main 作業ツリーから削除済み。
-  DGKernelDerivedQuasiIsoMapInvertible と全非コメントトークンが一致することを削除直前に確認した。
-- 次の一手：KST の項目別コミットを保存後、R-A のツール到着を確認し、一般宣言14組と Prop 共通化を適用する。適用後にデータ86宣言の本体不変性を検証。
+- R24 は `aa2236b66`、Stable/KST 4組は `20f3cc257` に保存。集約ビルド・指定監査はすべて成功。
+- Derived 共有化：一般宣言14組の直接共有化、旧モジュール8本削除、新規 Prop 補題2個・既存4定理の証明共有を実施。Stable・Derived・DGNerve 集約（11,353 jobs）と4監査成功。検証記録は archive/refactor-r-b-validation.md。
+- データ86宣言の本体不変を確認。型依存データ19組は指定の差分表に保存し、D レーン再開後の判断へ保留。候補53組すべての統合完了とは扱わない。
+- 残り：R3 と 2-1〜2-3。R-A 取り込みの合図後に rebase・.lake 再クローンを行い、Core/F1B への移動に着手。合図は未受領。
+- Core/F1/F1B は取り込みまで読み取り専用。move_module.py 未着につき手変更は archive/refactor-r-b-manual-files.txt に記録。
+- main の未追跡 DGKernelDerivedMapInvertible は個別許可により削除済み。既存 QuasiIso 版と全非コメントトークン一致を確認。
+- 次の一手：Derived 共有化をコミット。session 12212 は exit 0、移行スクリプトと検証パイプラインを再実行しない。
 
 ## 方針
 
@@ -30,16 +26,16 @@
   `/tmp/r-b-kst-dedup.py` は適用済み。§5 にモジュール4組・宣言11個の対応表を記入。
 - Derived の一般宣言14組はソースの型・証明トークンが名前置換後一致し、Lean で型の定義的同一性も確認済み。
   検証 `/tmp/r-b-derived-generic.py`、型チェック `/tmp/r-b-derived-typecheck.lean`（成功ログ同名 `.log`）。
-  `python3 /tmp/r-b-derived-generic.py --apply` は canonical の宣言を DGNerve の新2ファイルへ直接移す予定。
+  `python3 /tmp/r-b-derived-generic.py --apply` は適用済み。canonical 宣言を DGNerve の新2ファイルへ直接移動した。
 - Prop の証明共有は型維持を条件にユーザー許可済み。新しい2補題の preview は Lean 単体検証成功。
-  `/tmp/r-b-proof-cases.py --apply` は4定理の証明だけを共有化し、§5 に新補題の所在を記録する。
+  `/tmp/r-b-proof-cases.py --apply` は適用済み。4定理の証明だけ共有化し、§5 に新補題の所在を記録した。
 - データ構成は本体維持、D レーン再開後判断。指定の archive/refactor-near-duplicates-derived-2026-10-23.md に19組の差分表を保存済み。
 - R-A からの move_module.py はまだ存在しない。rebase・再クローンはコーディネータの合図を待つ。
 
 ## 補足検証と許可待ち
 
 - 14 宣言の共通移動先の preview は `/tmp/r-b-derived-combinatorics-preview.lean` と `/tmp/r-b-derived-vertex-preview.lean`。両方とも Lean 成功。
-- データ本体の不変性は86宣言を `/tmp/r-b-data-golden.json` に保存済み。適用後に `python3 /tmp/r-b-data-invariant.py` を実行する。
+- データ本体の不変性は86宣言を `/tmp/r-b-data-golden.json` に保存済み。適用後にも `python3 /tmp/r-b-data-invariant.py` が成功（86本体不変）。
 - KST の統合は後続のユーザー指示に従い Stable・KST/SConstruction 集約、audit_infinity_stable・audit_kst_s_construction を検証する。
 - R3 の VertexPrescribedExtension は KST/ZeroBoundaryExtension に依存する。その1本も Core へ直接移す追加許可を非同期で質問中。許可前には触らない。
 - R3 の BoundaryOpposite は ColimitCoconeFamily への不要な import を除いても単体 Lean が通る（`/tmp/r-b-boundary-opposite-core-preview.lean`）。Core 移動の閉包を縮小できる。
@@ -54,6 +50,13 @@
 ## 次の一手の補足
 
 - KST の実行 session `74573` は終了（exit 0）。ビルド・両監査は成功済みで、再起動しない。
-- 移動ツールが未着なら `/tmp/r-b-derived-generic.py --apply` → `/tmp/r-b-proof-cases.py --apply` → `/tmp/r-b-data-invariant.py`。適用後、Stable・Derived・DGNerve 集約と指定3監査を実行する。
-- R23 の Core 移動には F2 の LimitConeExtension・SliceRestrictionEquivalence・SliceRestrictionEquivalenceLifting が必要。Core→F2 を残さないため、この3本の直接移動の追加許可を非同期で質問中（未許可では変更しない）。
+- Derived の二つの移行スクリプトは適用済み。現在のデータ本体86個が不変で、残した14宣言の型・証明トークンも HEAD と一致し、書き換えた4定理のヘッダーも HEAD とバイト一致することを確認済み。
+- R23 の F2 一般論3本（LimitConeExtension・SliceRestrictionEquivalence・SliceRestrictionEquivalenceLifting）の Core 直接移動・旧ファイル削除・機械的参照置換・集約更新は追加許可済み。実施は R-A 取り込み後の rebase 後。R-C/R19 後の所在から移す。
 - R23 preview：`/tmp/r-b-r23-preview.py` が Core だけの極限比較と、追加で F1B を使う cofinal 比較を生成する。検証ログは `/tmp/r-b-r23-{core,cofinal}-preview.log`。
+
+## R23 の承認済み移動先
+
+- F2 の一般論3本と LimitDiagramIso は、Core だけの import で preview Lean が成功した。
+- CofinalLimitExistence は型に F1B の IsLeftCofinal を含み、F1B の因子分解を使う。移動先を新規 F1B/CofinalLimitExistence とする調整はユーザー承認済み。型・証明を保持した preview も Lean 成功。
+
+- R23 検証は Core・F2・Derived の集約と audit_infinity_core・audit_infinity_f2・audit_derived_infinity に加え audit_infinity_f1b（straightening を閉包に含まない）を実行。旧名→新名を §5 に記録する。

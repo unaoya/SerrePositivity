@@ -18,13 +18,13 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
 lemma dgCommaAugmentationCutQuadraticBoundary_corrections_cancel
     (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (k : ℤ) (hk : k = 2 - (I.card : ℤ)) :
-    (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+    (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
       dgCommaAugmentationCutQuadraticBoundary R C E F s I a b k j) +
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationImageCorrection R C E F s β I a b k l) +
     (∑ j ∈ (Index.interior I a b).filter (β · ≠ 1), Index.sign I j •
       dgCommaAugmentationSuffixCorrection R C E F s β I a b k j) = 0 := by
-  let U := ∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+  let U := ∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
     ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
       ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
         dgCommaAugmentationNestedImageRight R C E F s I a b k j l)
@@ -33,12 +33,12 @@ lemma dgCommaAugmentationCutQuadraticBoundary_corrections_cancel
     ∑ j ∈ (Index.interior I a b).filter (· < l), Index.sign (I.filter (· ≤ l)) j •
       (if β l = 1 ∧ ¬ β j = 1 then
         dgCommaAugmentationNestedHomotopyLeft R C E F s I a b k j l else 0))
-  let L := ∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+  let L := ∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
     dgCommaAugmentationImageCorrection R C E F s β I a b k l
   let T := ∑ j ∈ (Index.interior I a b).filter (β · ≠ 1), Index.sign I j •
     dgCommaAugmentationSuffixCorrection R C E F s β I a b k j
   have hq :
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         dgCommaAugmentationCutQuadraticBoundary R C E F s I a b k j) = U + V :=
     dgCommaAugmentationCutQuadraticBoundary_sum_reduction R C E F s β I a b k hk
   have hl : U + L = 0 := dgCommaAugmentationImageCorrection_sum_cancel R C E F s β I a b k hk
@@ -65,17 +65,17 @@ lemma dgCommaAugmentationPrismMixedHom_differential_corrections
     (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d k (k + 1) base +
     (∑ j ∈ Index.interior I a b, Index.sign I j •
       dgCommaAugmentationPrismCorrection R C E F s.toSimplexData β (I.erase j) a b (k + 1)) -
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationImageCorrection R C E F s.toSimplexData β I a b k l) -
     (∑ j ∈ (Index.interior I a b).filter (β · ≠ 1), Index.sign I j •
       dgCommaAugmentationSuffixCorrection R C E F s.toSimplexData β I a b k j) -
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutComparisonBoundary R C E F s.toSimplexData I a b k l) := by
   dsimp only
   have hc :
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         dgCommaAugmentationCutQuadraticBoundary R C E F s.toSimplexData I a b k j) =
-      -((∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      -((∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         dgCommaAugmentationImageCorrection R C E F s.toSimplexData β I a b k l) +
         (∑ j ∈ (Index.interior I a b).filter (β · ≠ 1), Index.sign I j •
           dgCommaAugmentationSuffixCorrection R C E F s.toSimplexData β I a b k j)) := by

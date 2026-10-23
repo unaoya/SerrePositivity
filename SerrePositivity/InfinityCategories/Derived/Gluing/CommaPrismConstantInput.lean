@@ -18,7 +18,7 @@ lemma dgGluingSimplex_constant_one_unit (R : Type u) [CommRing R]
     InfinityCategories.PinchedHom.constant (X := dgNerve R E) (Simplex.vertex x) 1 =
       Simplex.ofEdge (fun _ : Fin 2 => x) (unitElement R x) :=
   (pinchedConstant_one (X := dgNerve R E) (Simplex.vertex x)).trans
-    (dgCommaNerve_vertex_identity_simplex R E x)
+    (dgNerve_vertex_identity_simplex R E x)
 
 lemma dgGluingSimplex_unit_pullback (R : Type u) [CommRing R]
     (E : Type v) [DGCategory R E] (x : E) {n : ℕ} (β : Fin (n + 1) →o Fin 2) :

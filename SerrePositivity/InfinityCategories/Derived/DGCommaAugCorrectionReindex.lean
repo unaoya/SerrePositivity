@@ -26,16 +26,16 @@ lemma dgCommaAugmentationPrismCorrection_pullback_of_inj
   have haI : a ∈ I := by rw [ha]; exact I.min'_mem _
   have hbI : b ∈ I := by rw [hb]; exact I.max'_mem _
   unfold dgCommaAugmentationPrismCorrection
-  rw [← dgCommaAugmentationCutPoints_image α β I a b haI hbI hi]
+  rw [← dgModuleAugmentationCutPoints_image α β I a b haI hbI hi]
   let f : Fin (n + 1) →
       GradedHom R ((s.pullback α).obj a).replacement
         (F.obj ((s.pullback α).obj b).source) k := fun j ↦
     Index.sign (I.image α) j •
       dgCommaAugmentationHomotopyCut R C E F s (I.image α) (α a) (α b) k j
   have hK : Set.InjOn α
-      ((dgCommaAugmentationCutPoints (β.comp α) I a b) : Set (Fin (m + 1))) :=
+      ((dgModuleAugmentationCutPoints (β.comp α) I a b) : Set (Fin (m + 1))) :=
     hi.mono (Finset.filter_subset _ _)
-  change _ = ∑ j ∈ (dgCommaAugmentationCutPoints (β.comp α) I a b).image α, f j
+  change _ = ∑ j ∈ (dgModuleAugmentationCutPoints (β.comp α) I a b).image α, f j
   rw [Finset.sum_image hK]
   dsimp only [f]
   apply Finset.sum_congr rfl

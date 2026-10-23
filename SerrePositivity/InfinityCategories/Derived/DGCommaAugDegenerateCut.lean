@@ -44,7 +44,7 @@ lemma dgCommaAugmentationHomotopyCut_pullback_zero_of_not_inj
   by_cases hiR : Set.InjOn α ((I.filter (j ≤ ·)) : Set (Fin (m + 1)))
   · have hiL : ¬ Set.InjOn α ((I.filter (· ≤ j)) : Set (Fin (m + 1))) := by
       intro h
-      exact hi (dgCommaAugmentationCut_injective_glue α I j hj h hiR)
+      exact hi (dgModuleAugmentationCut_injective_glue α I j hj h hiR)
     have hcL : (I.filter (· ≤ j)).card ≠ 2 := by
       intro hc
       have hmin : IsLeast ((I.filter (· ≤ j)) : Set (Fin (m + 1))) a :=
