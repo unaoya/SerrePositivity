@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompIdentity
 public import SerrePositivity.InfinityCategories.Derived.ResolutionProjectionComparison
 public import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonNormalization
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
 /-!
 概要：元の指定分解変更比較を、同じ実二経路の前合成比較と入力変換へ同定する。
 方針：恒等入力と二段前合成則を保ち、元の指定射の共役式を回収する。

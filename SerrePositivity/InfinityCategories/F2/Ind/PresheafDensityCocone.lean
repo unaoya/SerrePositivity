@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityDiagramHomotopy
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeOfHomotopyConstant
 public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationVertex
-public import SerrePositivity.InfinityCategories.F2.HomotopyCoconeRealization
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyCoconeRealization
 
 /-!
 概要：元の F を頂点とする、元の小さい Yoneda 図式の native な全余錐を構成する。

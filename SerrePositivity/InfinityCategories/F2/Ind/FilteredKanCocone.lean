@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredKanColimitCanonical
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredKanColimitCanonical
 
 /-!
 概要：通常の filtered Kan 図式の任意の指定余極限余錐の native な余極限性。

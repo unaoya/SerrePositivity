@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Accessible
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!
 概要：κ-accessible 関手を、元の小さい κ-filtered 全余錐の保存として定義する。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.PresheafInfinity
-public import SerrePositivity.InfinityCategories.F2.FunctorColimitConeExistence
-public import SerrePositivity.InfinityCategories.F2.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
 
 /-!
 概要：小さい底上の元の前層値 coherent 図式に、全評価が余極限となる実際の全余錐を供給。

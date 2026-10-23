@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberPre
-public import SerrePositivity.InfinityCategories.F2.CoconeFiberColimitCriterion
-public import SerrePositivity.InfinityCategories.F2.PrecompositionTargetComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberColimitCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PrecompositionTargetComparison
 
 /-!
 概要：元の F を頂点とする同じ密度余錐の各評価は、元の評価図式の余極限。

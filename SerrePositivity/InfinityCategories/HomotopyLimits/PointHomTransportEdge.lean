@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.PointHomTransportBase
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointHomTransportBase
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftHomEdgeTransport
 
 /-!

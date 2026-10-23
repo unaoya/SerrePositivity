@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluation
 
 /-! # 指定した関手同型の成分の値を、元の同じ二胞体の頂点評価として保持する -/

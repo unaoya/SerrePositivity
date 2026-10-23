@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegFiberTransport
-public import SerrePositivity.InfinityCategories.F2.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeTransportValue
 
 /-!
 概要：元の余錐の指定値への fiber 写像は、同じ余錐脚の Kan 値の作用と全自然同型。

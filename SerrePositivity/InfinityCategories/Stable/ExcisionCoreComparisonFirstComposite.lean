@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreComparisonEdgeCoordinates
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceComparisons
-public import SerrePositivity.InfinityCategories.F2.ConeRestrictionTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConeRestrictionTransport
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
 
 /-!

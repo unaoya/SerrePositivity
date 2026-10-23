@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ProductHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F2.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.IntervalDiagram
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanEquivalencePaths
 

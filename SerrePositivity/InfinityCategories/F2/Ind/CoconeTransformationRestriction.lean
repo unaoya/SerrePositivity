@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationEquivalence
 public import SerrePositivity.InfinityCategories.F1.IntervalDiagramRestriction
 
 /-!

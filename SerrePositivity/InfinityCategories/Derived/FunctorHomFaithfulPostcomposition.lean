@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
 public import SerrePositivity.InfinityCategories.F1.FullyFaithfulPostcomposition

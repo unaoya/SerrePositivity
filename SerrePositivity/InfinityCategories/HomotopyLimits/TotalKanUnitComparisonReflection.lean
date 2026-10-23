@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 

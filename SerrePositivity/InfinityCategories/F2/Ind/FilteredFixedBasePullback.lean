@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredFiniteLimits
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredFiniteLimits
 public import Mathlib.CategoryTheory.Limits.Connected
 public import Mathlib.CategoryTheory.Filtered.Connected
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic

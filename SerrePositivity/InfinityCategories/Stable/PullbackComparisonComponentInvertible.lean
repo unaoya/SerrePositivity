@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FunctorPullbackComparisonEvaluation
-public import SerrePositivity.InfinityCategories.F2.SquareConePostcomp
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
 
 /-!
 概要：全パラメーターに整合する実錐比較を、矢印圏の四角形へ移す。

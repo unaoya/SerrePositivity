@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallRange
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteFreshCoconeMono
-public import SerrePositivity.InfinityCategories.F2.SmallJoin
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallJoin
 
 /-!
 概要：ラベル付き積の小さい部分複体を、同じ積内の小さい錐の像へ拡大する。

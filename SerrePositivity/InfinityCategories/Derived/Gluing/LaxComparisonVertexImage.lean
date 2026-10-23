@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DerivedModuleArrow
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxFixedInputVertices
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedCompatibility
-public import SerrePositivity.InfinityCategories.F2.HomotopySimplexFaces
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopySimplexFaces
 
 /-! 元の lax 比較の各頂点は、同じ二入力と元の augmentation の導来像を持つ三つ組。 -/
 @[expose] public section

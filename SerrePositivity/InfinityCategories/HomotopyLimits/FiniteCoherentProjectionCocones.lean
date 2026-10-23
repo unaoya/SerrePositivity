@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProjection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductNativeLegs
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanNativeCoconeComparison
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitCocone
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationUnitCocone
 
 /-!
 概要：元の有限 native 積の各脚の全余錐作用を、元の反復射影変換と単位へ比較する。

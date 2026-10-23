@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoTriangleCancellation
 public import SerrePositivity.InfinityCategories.F1.FunctorIsoSquareIdentity
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：指定輸送三角形と制限正方形を貼り、局所比較の三辺の等式を回収する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ThinConeIndexComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
-public import SerrePositivity.InfinityCategories.F2.LimitConeFamilyReadback
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LimitConeFamilyReadback
 
 /-!
 概要：WithInitial 上の Kan 図式の元の錐と、錐形状による同じ図式の実現を照合する。

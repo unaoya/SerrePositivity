@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservati
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!
 概要：小さい κ-filtered 余極限の保存性を通常の κ-filtered poset 上の余錐へ帰着する。

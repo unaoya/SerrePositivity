@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteKanReplace
 public import SerrePositivity.InfinityCategories.F2.Presentable.GeneratorEquivalence
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakEquivalence
 public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
 
 /-!

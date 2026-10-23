@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackColimitConeExistence
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
 
 /-! # 元の lax pullback の coherent 冪等完備性

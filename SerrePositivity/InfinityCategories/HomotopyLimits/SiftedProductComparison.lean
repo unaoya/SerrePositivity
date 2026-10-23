@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedInfinity
-public import SerrePositivity.InfinityCategories.F2.TotalKanProductEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.TotalKanProductEquivalence
 
 /-!
 概要：sifted な底上の二つの空間値 coherent 図式の、元の全空間 Kan 模型の積比較は同値。

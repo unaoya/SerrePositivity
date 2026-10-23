@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 /-!
 概要：生の全関手同型を同じ実出力分解へ送る操作は、恒等と合成を保つ。
 方針：指定因数分解同型の共役表示と、同じ前後合成の代数則を使う。

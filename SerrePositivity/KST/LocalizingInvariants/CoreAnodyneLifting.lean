@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
 
 /-!
 概要：core に入る指定図式は、anodyne 射に沿って底を固定したまま延長できる。

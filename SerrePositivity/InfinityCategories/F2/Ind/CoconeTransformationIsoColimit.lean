@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationEquivalence
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationPoint
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-!

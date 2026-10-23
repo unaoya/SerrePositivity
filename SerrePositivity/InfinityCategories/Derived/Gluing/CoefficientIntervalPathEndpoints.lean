@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientIntervalPathComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TwoEndpointPathProduct
-public import SerrePositivity.InfinityCategories.F2.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
 
 /-! 係数の実区間族への同じ同値は、元の端点対の上の厳密な比較である。 -/
 @[expose] public section

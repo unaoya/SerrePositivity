@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedStructure
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
 /-! 任意の対象宇宙の元の gluing 圏から、導来加群 ∞ 圏上の実 lax pullback への比較。 -/

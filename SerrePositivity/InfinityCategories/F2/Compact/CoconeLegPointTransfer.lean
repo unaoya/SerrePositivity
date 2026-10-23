@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegComposition
 public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.PointRepresentativesComposition
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegPointRepresentatives
-public import SerrePositivity.InfinityCategories.F2.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
 public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
 
 /-!

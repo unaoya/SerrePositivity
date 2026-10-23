@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.SmallSubcomplexCovers
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSubcomplexCovers
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 
 /-!

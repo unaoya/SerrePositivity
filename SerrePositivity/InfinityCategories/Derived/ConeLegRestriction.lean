@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F2.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.LimitConeExtension
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
 /-!
 概要：実錐の形状制限は、同じ頂点での同じ実脚を厳密に保つ。

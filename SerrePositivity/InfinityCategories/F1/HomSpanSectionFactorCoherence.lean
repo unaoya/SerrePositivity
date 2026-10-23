@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.HomSpanSectionTransport
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：既存の span 輸送比較は同じ切断の単位の前後合成そのもの。

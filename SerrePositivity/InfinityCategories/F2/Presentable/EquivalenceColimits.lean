@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
-public import SerrePositivity.InfinityCategories.F2.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.ConeRealizationTransformation
 public import SerrePositivity.InfinityCategories.F1.CoherentDiagramSectionsCone
-public import SerrePositivity.InfinityCategories.F2.YonedaHomotopyVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex
 
 /-!
 概要：全切断の錐の標準変換の像を、同じ全切断の恒等射と比較する。

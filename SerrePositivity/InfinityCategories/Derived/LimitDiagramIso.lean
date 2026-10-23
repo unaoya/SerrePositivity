@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.LimitConeExtension
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso
 /-!
 概要：関手同型で結ばれた実図式の極限の存在を輸送する。

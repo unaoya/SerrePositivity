@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelRestrictionNerve
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
-public import SerrePositivity.InfinityCategories.F2.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
 /-!
 概要：端点を揃えた K-flat kernel 制限比較の射を、元の raw factor の射へ回収する。
 方針：一般 kernel 変数の下で同じ指定同型と端点等式を先に射へ移す。

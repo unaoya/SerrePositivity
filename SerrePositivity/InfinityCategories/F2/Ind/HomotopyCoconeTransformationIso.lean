@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.HomotopyTransformationVertex
-public import SerrePositivity.InfinityCategories.F2.CoconeRealizationTransformation
-public import SerrePositivity.InfinityCategories.F2.YonedaHomotopyVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeRealizationTransformation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex
 
 /-!
 概要：任意の指定円柱の native 余錐実現の標準変換を、その同じ指定変換へ比較する。

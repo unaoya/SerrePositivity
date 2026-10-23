@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ResolutionComparisonPrecompIdentity
 public import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonNormalization
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：元の指定出力比較を、同じ出力関手による後合成と厳密に照合する。
 方針：指定入力比較を保ち、後合成の合成則と出力射影の等式だけを移送する。

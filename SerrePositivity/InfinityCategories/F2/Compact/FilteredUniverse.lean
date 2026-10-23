@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.FiniteUniverse
-public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.F1.UniverseEquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration

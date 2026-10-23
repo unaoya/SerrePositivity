@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceBinaryTensorProduct
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedProductComparisonEdge
-public import SerrePositivity.InfinityCategories.F2.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexConeRestrictions
 
 /-!
 概要：sifted な底上の元の積の全空間 Kan 模型を、native な積錐の頂点にする。

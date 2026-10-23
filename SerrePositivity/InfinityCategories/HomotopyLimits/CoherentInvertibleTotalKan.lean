@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentInvertibleTotalMap
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanNativeCoconeComparison
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.ColimitHomotopyPointwise
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitHomotopyPointwise
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-!

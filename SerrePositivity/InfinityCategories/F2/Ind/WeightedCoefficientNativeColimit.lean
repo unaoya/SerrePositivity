@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeFiberPre
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits
-public import SerrePositivity.InfinityCategories.F2.CoconeFiberColimitCriterion
-public import SerrePositivity.InfinityCategories.F2.PrecompositionTargetComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeFiberColimitCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PrecompositionTargetComparison
 
 /-!
 概要：元の全 weighted 密度変換の同じ係数制限を実現した指定 native 余錐は余極限。

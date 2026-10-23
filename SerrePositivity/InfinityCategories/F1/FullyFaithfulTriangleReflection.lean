@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FullyFaithfulFunctorIsoCoherence
 public import SerrePositivity.InfinityCategories.F1.IsoTriangleIdentity
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：充満忠実な後合成で指定三角等式を元の三辺へ反映する。

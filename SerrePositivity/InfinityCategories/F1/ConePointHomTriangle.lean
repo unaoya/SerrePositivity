@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.ConePointHomSquare
-public import SerrePositivity.InfinityCategories.F2.CoconeSquareParameters
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeSquareParameters
 
 /-!
 概要：元の錐の right Hom 正方形の三角形と、その三辺の厳密な式を構成する。

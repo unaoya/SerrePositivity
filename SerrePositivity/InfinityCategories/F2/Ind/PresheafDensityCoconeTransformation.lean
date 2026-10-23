@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityCocone
-public import SerrePositivity.InfinityCategories.F2.CoconeRealizationTransformation
-public import SerrePositivity.InfinityCategories.F2.YonedaHomotopyVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeRealizationTransformation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.YonedaHomotopyVertex
 
 /-!
 概要：同じ native 密度余錐の標準変換を、元の大域密度変換へ比較する。

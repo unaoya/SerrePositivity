@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.HomTransportTriangleCoherence
 public import SerrePositivity.InfinityCategories.F1.FullyFaithfulFunctorIsoCoherence
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：既存の輸送三角形の同型を共通 Hom へ戻すと、指定された三辺の合成を回収する。

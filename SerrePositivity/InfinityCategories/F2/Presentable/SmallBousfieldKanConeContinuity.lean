@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanContinuity
-public import SerrePositivity.InfinityCategories.F2.FilteredPointwiseWeakEquivalences
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredPointwiseWeakEquivalences
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeComparisonReflection
 
 /-!

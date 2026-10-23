@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
-public import SerrePositivity.InfinityCategories.F2.SpecifiedLimitConeTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedLimitConeTransport
 /-!
 概要：弱可縮な全添字の可逆評価から、同じ頂点を持つ追跡可能な実極限錐を構成する。
 方針：指定された全ホモトピーを左区間 prism として極限錐輸送に入力する。

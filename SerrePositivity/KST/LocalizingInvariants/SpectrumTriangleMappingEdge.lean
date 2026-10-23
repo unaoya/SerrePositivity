@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentNerve
-public import SerrePositivity.InfinityCategories.F2.CoherentTriangleEdge
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleEdge
 
 /-!
 概要：Sp の指定した三辺を持つ二単体から、元の全 BF 写像空間の辺を読む。

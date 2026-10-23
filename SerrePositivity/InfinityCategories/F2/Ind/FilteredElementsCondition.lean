@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsMembership
-public import SerrePositivity.InfinityCategories.F2.FilteredEquivalence
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
 public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningFunctorIso
 public import SerrePositivity.InfinityCategories.F1.PresheafRestrictionEquivalence
 

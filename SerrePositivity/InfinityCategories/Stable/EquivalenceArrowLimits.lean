@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitComparisonHomotopy
-public import SerrePositivity.InfinityCategories.F2.IntervalFamilyHomotopy
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalFamilyHomotopy
 
 /-!
 概要：全パラメーターに整合する実錐比較を、矢印圏の四角形へ移す。

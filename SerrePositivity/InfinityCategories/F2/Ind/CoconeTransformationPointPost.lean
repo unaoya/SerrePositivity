@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationPost
-public import SerrePositivity.InfinityCategories.F2.CoconeTransformationPoint
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPost
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeTransformationPoint
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-!

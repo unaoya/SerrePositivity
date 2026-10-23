@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareComparison
-public import SerrePositivity.InfinityCategories.F2.SpecifiedFunctorEdgeLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedFunctorEdgeLift
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Core.SimplexVertexDetection
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare

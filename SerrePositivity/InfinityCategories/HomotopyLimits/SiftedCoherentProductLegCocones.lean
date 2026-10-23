@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedCoherentProductNativeLegs
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanMapCocone
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitCocone
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationUnitCocone
 
 /-!
 概要：native 積の両 Kan 脚の単位表現を、元の射影変換と単位の合成余錐へ比較する。

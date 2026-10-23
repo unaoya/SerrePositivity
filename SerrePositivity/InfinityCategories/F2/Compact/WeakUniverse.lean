@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
 public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence
-public import SerrePositivity.InfinityCategories.F2.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.WeakHomotopyPrecomposition
 
 /-!
 概要：任意の弱ホモトピー同値は、同じ実際の写像の任意の宇宙持ち上げでも弱同値。

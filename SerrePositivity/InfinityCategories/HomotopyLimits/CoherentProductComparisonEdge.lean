@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedCoherentProductComparison
-public import SerrePositivity.InfinityCategories.F2.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
 
 /-!

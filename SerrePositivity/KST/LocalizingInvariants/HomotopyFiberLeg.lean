@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberLeg
-public import SerrePositivity.InfinityCategories.F2.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
 
 /-!
 概要：任意射の元の cospan 上の錐の脚と、元の homotopyFiberInclusion の類の一致。

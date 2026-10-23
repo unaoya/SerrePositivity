@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.CoherentConstantSourceCompar
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorExponentialEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSquarePost
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostUncurry
-public import SerrePositivity.InfinityCategories.F2.RelativeConstFiberEvaluation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeConstFiberEvaluation
 
 /-!
 概要：定値始域の相対比較を、元の底を保つ全評価と厳密に結ぶ。

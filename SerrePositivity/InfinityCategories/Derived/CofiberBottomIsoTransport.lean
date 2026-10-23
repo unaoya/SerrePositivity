@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.SpecifiedHomotopyLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedHomotopyLift
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationStability
 /-!

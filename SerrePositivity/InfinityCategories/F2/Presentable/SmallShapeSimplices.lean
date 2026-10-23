@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.CardinalChangeBound
-public import SerrePositivity.InfinityCategories.F2.SmallSimplicialShapes
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes
 public import Mathlib.SetTheory.Cardinal.HasCardinalLT
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 

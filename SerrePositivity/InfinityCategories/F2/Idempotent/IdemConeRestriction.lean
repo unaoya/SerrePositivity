@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLeftCofinality
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction
-public import SerrePositivity.InfinityCategories.F2.LimitConeExtension
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
 
 /-!
 概要：元の冪等包含への錐制限は自明 Kan で、同じ錐の極限性を保ち反映する。

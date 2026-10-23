@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTrans
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTrans
 public import SerrePositivity.InfinityCategories.F1.CoherentEdges
 public import SerrePositivity.InfinityCategories.F1.FunctorNaturalityTriangles
 

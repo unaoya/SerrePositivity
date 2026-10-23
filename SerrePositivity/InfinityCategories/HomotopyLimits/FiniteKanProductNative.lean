@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteSSetProductUniversal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
-public import SerrePositivity.InfinityCategories.F2.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanNativeConeLeg
 
 /-!
 概要：元の有限非空 Kan 族の反復積を頂点とする native な積錐。

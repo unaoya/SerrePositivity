@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.F2.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 
 /-! # 有限図式の錐条件の反転

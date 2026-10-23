@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TensorHomotopy
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanProductUnit
-public import SerrePositivity.InfinityCategories.F2.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanProductUnit
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
 
 /-!

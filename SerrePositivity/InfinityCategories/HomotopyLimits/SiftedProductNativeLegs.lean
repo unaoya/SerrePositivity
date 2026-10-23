@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SiftedProductNativeCone
-public import SerrePositivity.InfinityCategories.F2.KanConeHomotopyTriangles
-public import SerrePositivity.InfinityCategories.F2.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
 
 /-!
 概要：sifted な積の native な二脚を、元の全空間の二射影へ照合する。

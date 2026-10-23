@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
 /-!

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationTriangleRelative
-public import SerrePositivity.InfinityCategories.F2.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationTriangleRelative
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：元の恒等変換と合成三角形の小さい全空間作用を、指定単位の後で比較する。

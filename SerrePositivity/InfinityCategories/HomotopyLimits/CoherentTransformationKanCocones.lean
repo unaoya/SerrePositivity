@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentInvertibleTotalKan
-public import SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitCocone
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationUnitCocone
 
 /-!
 概要：元の coherent 変換の Kan 像による全余錐作用を、指定単位三角形へ照合する。

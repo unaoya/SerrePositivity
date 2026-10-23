@@ -4,8 +4,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.KanDiagramBundle
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
-public import SerrePositivity.InfinityCategories.F2.FunctorCoconeEvaluation
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!
 概要：元の strict な Kan 図式値余錐を、関手空間の点ごとの native な余極限余錐へ実現する。

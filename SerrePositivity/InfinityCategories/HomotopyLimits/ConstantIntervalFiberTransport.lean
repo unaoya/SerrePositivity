@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.DiagonalFiberTransport
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 
 /-!
 概要：固定した元の辺の区間頂点に沿う、動く始点の普遍輸送を比較する。

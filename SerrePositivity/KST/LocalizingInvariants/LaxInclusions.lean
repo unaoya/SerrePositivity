@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.F2.LaxPullbackLift
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
 
 /-!
 概要：元の lax pullback に、両因子からの実際の全単体上の包含関手を構成する。

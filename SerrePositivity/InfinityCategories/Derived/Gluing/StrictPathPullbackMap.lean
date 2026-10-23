@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
 /-! 厳密な同じ対角の引き戻しを、定値対角 path による引き戻し比較へ送る。 -/

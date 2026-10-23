@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StrictIntervalPullbackComparison
-public import SerrePositivity.InfinityCategories.F2.KanTensorComplex
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
 
 /-! 前に構成した定値全 path 比較そのものは、一脚が Kan fibration なら同値。 -/
 @[expose] public section

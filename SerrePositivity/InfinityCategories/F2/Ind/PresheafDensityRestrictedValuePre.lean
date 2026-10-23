@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityRestrictedValueFactorization
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafRightFiberValue
-public import SerrePositivity.InfinityCategories.F2.UliftPrecomposition
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UliftPrecomposition
 
 /-!
 概要：元の制限大域評価の値写像は、小さい Kan 標的の持ち上げへの前合成同値を与える。

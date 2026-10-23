@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGHomConeLimitCriterion
 public import SerrePositivity.InfinityCategories.Derived.ConeHomTestUniverse
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedHomTargetComparison
-public import SerrePositivity.InfinityCategories.F2.SquareConePostcomp
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
 /-!
 概要：生の dg 入力像の実極限錐を、同じ実半自由出力分解の極限錐へ移す。
 方針：元の表現可能 Hom の全関手同型を、同じ全錐の切断制限の判定へ接続する。

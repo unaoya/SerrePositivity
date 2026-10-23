@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedIso
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionEquivalence
 /-!
 概要：同じ全 augmentation ホモトピーで、二段の出力分解を一段の実合成へ比較する。

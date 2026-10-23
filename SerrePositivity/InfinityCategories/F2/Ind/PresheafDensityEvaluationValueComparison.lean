@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationConstantComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafDensityEvaluationFiberMap
-public import SerrePositivity.InfinityCategories.F2.ConstantUnstraighteningValueOverPre
-public import SerrePositivity.InfinityCategories.F2.ConstantTargetVertex
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValueOverPre
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantTargetVertex
 
 /-!
 概要：同じ密度評価の実際の fiber 値写像を、元の制限大域評価の値写像へ比較する。

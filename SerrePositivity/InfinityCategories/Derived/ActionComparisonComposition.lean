@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：指定比較の水平合成とその結合律を、同じ全関手同型として構成する。
 方針：元の前後合成の恒等式と同型の通常合成則を使う。

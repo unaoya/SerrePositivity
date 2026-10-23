@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.HomotopyEdgeNaturality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeNaturality
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 /-!
 概要：定値関手と全関手圏で同型な実図式は、全ての実辺を可逆に送る。

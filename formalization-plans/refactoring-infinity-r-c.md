@@ -2,13 +2,13 @@
 
 ## 引き継ぎ
 
-- 現在地：指定資料を確認。`refactor/r-c` を main `c6692be81`（基準タグの後の運用記録を含む）から作成。R17 完了：無条件供給補題を追加し、F2・HomotopyLimits 集約ビルドと指定4監査が通過。
-- 残り：R19、EInfinity 19 組・HomotopicalAlgebra 8 組、R16、R20。R15 は R-A 取り込み・合図後の rebase を待つ。
+- 現在地：R17 完了（a45c92306）。R19 完了（本コミット）：2,211 モジュール移動、本文保存・旧 import 消滅を確認し、4集約ビルド・指定4監査がすべて通過。R20 も同じソース状態の4監査で検証済み。
+- 残り：R20 の文書コミット、3-1 の完全一致 EInfinity 3 宣言・HomotopicalAlgebra output の共有化、R16。R15 は R-A 取り込み・合図後の rebase を待つ。
 - 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
 - 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：なし（R17 のコミットに本引き継ぎを含む）。
+- 未コミット：R20 の §6 と更新一覧、準重複一覧、まだ接続していない共有モジュール DoubleOpposite・BarOutput。
 - 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：R19 のモジュール移動（対応表 `/tmp/r-c-r19-map.json`、適用 `/tmp/r-c-r19.py`）。
+- 次の一手：R20 の文書をコミット。続いて `/tmp/r-c-e-shared.py` と `/tmp/r-c-ha-output.py` で接続・重複削除・参照置換し、4集約・4監査と Rectification の追加検証を実行。その後 R16。
 
 ## 方針
 
@@ -21,3 +21,15 @@ R17：`lake build SerrePositivity.InfinityCategories.F2 SerrePositivity.Infinity
 R17 は既存の条件付き宣言の引数・証明を保存し、条件を任意の形について供給する `hasSpaceLimitsOfShape` を無条件の極限存在定理の系として追加した。F1 の既存2ファイルを変更せず利用できる。
 
 準重複に関する追加指示（2026-10-23）：型の異なる組は変更しない。完全一致する宣言のみを共有化し、差分のある組は `archive/refactor-near-duplicates-einfinity-2026-10-23.md` に両ファイル・類似度・型の差・一般化案を記録する。実施は所有レーンの再開後の判断。
+
+R19：Cat*・Lax* とその F2 最上位への依存閉包 290 本を CatInfinity、残る 1,921 本を FilteredExchange へ。既存の4サブディレクトリ集約は位置を保つ。`archive/refactor-r-c-r19-moves.json` に移動・import 変更を保存。複数行 import を含め全移動元のコミット済み本文と照合し、差は import のモジュール名だけ。旧モジュールへの import は0。F2 の既存説明・#check は保存し、新しい2入口を追加。EInfinity にも import 変更があるためビルド対象に含める。
+
+R20：5入力の定義・供給元・一致行／ファイルを現 worktree から再採取し §6 と archive を更新。準重複一覧は同名 EInfinity 33 組と HomotopicalAlgebra 6 組。R8 の8組の元一覧は未保存で、残る2組との対応は未確定（低類似度の別構成を数合わせで追加しない）。再調査 `/tmp/r-c-ha-match.py` は6組だけを再同定した。
+
+3-1 の追加検証：`OrdinaryBarFirstAction.output` と `ResolutionBarFirstAction.output` は同じ型・同じ本文。両既存宣言との等式を `rfl` で確認（`/tmp/r-c-ha-output-probe.lean`、終了コード0）、最小 import の probe も通過（`/tmp/r-c-ha-output-minimal-probe.lean`）。局所 Reedy instance・変数を保存して `BarOutput.output` 一箇所に移す準備済み。共有化後は指定四監査に加え `audit_homotopical_rectification` と既存の ordinary/resolution bar 評価チェックも実行する。
+
+3-1 準備：`EInfinity/HomotopyWeight/DoubleOpposite.lean` と `HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/BarOutput.lean` を、通過済みの独立 probe から新規追加。既存モジュールはまだ import しておらず、R19 の依存グラフは変わらない。R19 の四監査後、既存宣言の削除・参照置換を適用する。
+
+R19 検証進捗：主ビルドは15,713 jobsで終了コード0、F2監査も終了コード0（19,486宣言、標準三公理）。Presentable監査は旧 `F2.CoconeParameterPrism` の cached olean と新配置の混在で停止したため、`F2.Presentable` を追加ビルド中。ソースの旧 import は存在せず、互換シムで回避しない。以後の項目ゲート `/tmp/r-c-check-item.sh` は監査が使う4集約すべてを明示ビルドするよう修正済み。
+
+R19/R20 最終検証：主集約（F2・HomotopyLimits・EInfinity）15,713 jobs、追加 Presentable 集約7,750 jobsが成功。`audit_infinity_f2`（19,486宣言）・`audit_infinity_presentable`（852宣言）・`audit_homotopy_limits`・`audit_einfinity`（25,780宣言）は全て終了コード0。公理は標準三公理のみ。最終ログは `/tmp/r-c-r19-audit_{infinity_f2,infinity_presentable,homotopy_limits,einfinity}.log`。最初の Presentable cached olean 失敗は `/tmp/r-c-r19-presentable-stale-cache.log` に分離して保存。

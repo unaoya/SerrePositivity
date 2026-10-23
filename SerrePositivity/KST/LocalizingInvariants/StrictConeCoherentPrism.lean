@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConeMap
-public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTrans
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTrans
 
 /-!
 概要：Hom より大きい添字圏の自然変換を、同じサイズの coherent prism にする。

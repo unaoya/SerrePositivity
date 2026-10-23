@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
-public import SerrePositivity.InfinityCategories.F2.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-! # 大きい通常の錐添字の、元の成分を保つ coherent な自然変換 -/

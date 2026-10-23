@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 
 /-!
 概要：反変図式間の指定比較同型を、表示同型で移した正方形へ運ぶ。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.F1.InnerAnodyneReplacement
-public import SerrePositivity.InfinityCategories.F2.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafCoconeImageCones
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeWholeEdgeSquare
-public import SerrePositivity.InfinityCategories.F2.NativeConeLeg
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 
 /-!
 概要：指定前層余錐の元の全評価余錐間の変換として、元の全錐の実際の脚を回収する。
