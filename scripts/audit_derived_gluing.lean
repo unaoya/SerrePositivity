@@ -696,7 +696,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaTerminalMain,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaTerminalPhase,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPrismCutPhase,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainPrismIntervalSquare]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainPrismIntervalSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainPinchedInputComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CochainPrismUniverseComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationIntervalFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseLinear,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPrismUniverseNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainUniverseComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

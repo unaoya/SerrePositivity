@@ -7,11 +7,12 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexScalarHEq
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u v
+universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve DGNerve.PinchedHom
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (E T : Type v) [DGCategory R E] [DGCategory R T]
+variable (R : Type u) [CommRing R] (E : Type v) (T : Type w)
+  [DGCategory R E] [DGCategory R T]
   {x y : E} {x' y' : T} {n : ℕ}
   (s : (DGNerve.pinchedHom R (DGFunctorCommaObject R E E (DGFunctor.id E))
     (dgGluingIdentityCommaObject R E x) (dgGluingIdentityCommaObject R E y)) _⦋n⦌)
