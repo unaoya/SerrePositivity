@@ -14641,3 +14641,57 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @sigmaHomWeightFamily_evaluation
 #print axioms sigmaHomWeightFamily_evaluation
+
+#check @uliftJoinIso_inv_left_yoneda
+#print axioms uliftJoinIso_inv_left_yoneda
+
+#check @sliceOverUncurry_ulift
+#print axioms sliceOverUncurry_ulift
+
+#check @sliceOverUncurry_eqIso
+#print axioms sliceOverUncurry_eqIso
+
+#check @pointSliceUniverseIso_uncurry
+#print axioms pointSliceUniverseIso_uncurry
+
+#check @leftKanCanonicalCocone_universe_val
+#print axioms leftKanCanonicalCocone_universe_val
+
+#check @leftKanCanonicalCocone_isColimit_iff_ulift
+#print axioms leftKanCanonicalCocone_isColimit_iff_ulift
+
+#check @leftKanCanonicalCocone_post_ulift_isColimit
+#print axioms leftKanCanonicalCocone_post_ulift_isColimit
+
+#check @leftKanExtension_refl_post_ulift_of_canonicalColimits
+#print axioms leftKanExtension_refl_post_ulift_of_canonicalColimits
+
+#check @uliftCoconeShapeIso_inv_leftMap
+#print axioms uliftCoconeShapeIso_inv_leftMap
+
+#check @ulift_restrictJoinCocone_val
+#print axioms ulift_restrictJoinCocone_val
+
+#check @sigmaUniverseCanonical_image_isColimit
+#print axioms sigmaUniverseCanonical_image_isColimit
+
+#check @sigmaUniverseInclusion_canonicalColimits
+#print axioms sigmaUniverseInclusion_canonicalColimits
+
+#check @sigmaUniverseInclusion_isLeftKanExtension
+#print axioms sigmaUniverseInclusion_isLeftKanExtension
+
+#check @homCanonical_isRightKanExtension
+#print axioms homCanonical_isRightKanExtension
+
+#check @sigmaHomWeightFamily_isRightKanExtension
+#print axioms sigmaHomWeightFamily_isRightKanExtension
+
+#check @sigmaLiftedHomFamily
+#print axioms sigmaLiftedHomFamily
+
+#check @sigmaLeftKan_ulift_canonicalColimits
+#print axioms sigmaLeftKan_ulift_canonicalColimits
+
+#check @sigmaLiftedHomFamily_isRightKanExtension
+#print axioms sigmaLiftedHomFamily_isRightKanExtension
