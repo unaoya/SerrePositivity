@@ -13,7 +13,12 @@
 - 0-1 完了：追跡済み 11,632 ファイルを走査し、実体の重複 18 群（KanSection 17 組と JoinRightRelativeRetraction 1 組）を保存。
   正規化のコメント・文字列・トークン境界と基準比較を検証。基準からの増加は 0 組。
 - 0-3 検証中：F2/JoinRightRelativeRetraction を原本の export シムに変更。単体・直接下流・R 監査は通過。
-  F2 集約ビルドは実行中。既存 F2 監査は CoherentTotalCoconePre.olean 未生成のため、ビルド後に再実行する。
+  正本モジュールへの参照以外に依存追加はない。集約の検証は下記の再実行待ち。
+- 10-23 09:46：1-1 を共有ツリーに直接適用したところ、F1/PullbackFiber の変更が下流全体の再ビルド連鎖を起こし、N が
+  olean 欠落で停止。共有ツリーの変更は取り消し、以後は worktree 方式（§3）に切り替える。1-1 の内容自体は worktree で再適用する。
+- 1-1 実装・対象検証済み（共有ツリーでは取り消し、worktree で再適用）：汎用 4 宣言を Core/VertexFiberPullback・Core/LeftFiberKan へ本文そのまま移動。
+  旧 F1 二本は元の import と専用宣言を保持し Core を public import。4 モジュールのビルドと R の 8 宣言監査が通過。
+  Core 二本は straightening を含まず、旧 F1 二本の閉包に加わるのは新 Core モジュールへの参照だけ。
 - 0-4 完了：§6 に 5 入力の所在・供給元・使用数を固定し、grep の全一致行を archive に保存。
 - 0-2 完了：dg nerve の規約を DGNerve/README.md に保存し、全体 README を層・入口・監査の地図に変更。
   文面の保存（リンク以外）と全ローカルリンクを検証。
@@ -34,19 +39,23 @@
 
 ### 未コミット
 
-- `F2/JoinRightRelativeRetraction.lean`・`scripts/audit_refactor_shims.lean`：0-3 の集約検証待ち。
-- 1-1 の汎用部は `/tmp/r-lane-stage1/` に試作し両ファイルの Lean 検証済み。リポジトリの F1 原本は未変更。
-- 実行中の F2 ビルド：exec session `40443`、ログ `/tmp/r-lane-0-3-build.log`。
-  R 専用監査成功ログ `/tmp/r-lane-shim-audit.log`。F2 監査の再試行ログ `/tmp/r-lane-0-3-f2-audit-retry.log`。
+- 0-3：`F2/JoinRightRelativeRetraction.lean`・`scripts/audit_refactor_shims.lean`。
+- 1-1：`F1/PullbackFiber.lean`・`F1/LeftFiberKan.lean`・新設 `Core/VertexFiberPullback.lean`・`Core/LeftFiberKan.lean`。
+  宣言ブロック・専用部が元と文字列一致することを確認。集約検証完了後にコミットする。
+- 実行中：F2 ビルド session `40443`（`/tmp/r-lane-0-3-build.log`）、
+  F1 ビルド session `9607`（`/tmp/r-lane-1-1-f1-build.log`）。両方が終端になってから単一の F1・F2 ビルドを再実行する。
+- R 監査成功ログ：`/tmp/r-lane-1-1-shim-audit.log`。対象ビルド成功ログ：`/tmp/r-lane-1-1-build.log`。
 
 ### 既知の問題
 
-- F2 集約の後続を再ビルド中。最初の F2 監査は再生成中の `CoherentTotalCoconePre.olean` を読めず未完了。
+- R が集約ビルドを並行起動したため、再生成中の `.olean` を読む競合が発生した。数学・型のエラーとは判定していない。
+  追加の並行集約ビルドは起動せず、実行中の二本が終わってから F1・F2 を単一コマンドで再検証する。
 - 1-2 の直接 importer は調査後に増加。48 時間未満・未追跡のファイルは変更不可。対象と保守的 import の追加先を §3 で再選別する。
 
 ### 次の一手
 
-- F2 集約ビルド完了後に既存 F2 監査を再実行し、0-3 をコミットする。その後 1-1 の分割。
+- 二つの集約ビルドの終端を確認してから単一コマンドで F1・F2 をビルドし、関係監査後に 0-3・1-1 をコミット。
+  1-2 は `/tmp/r-lane-simulate-1-2.py` の閉包シミュレーション（session `10090`）と §3 の再選別から。
 
 ## 1. 目的と範囲
 
@@ -62,10 +71,25 @@
 2. 旧モジュールの import 閉包を縮めるだけで、広げない。分割の場合、旧モジュールは分割後の全モジュールを `public import` する。
 3. 各レーンの監査スクリプトの `#check` が全て通る。F1B の「straightening を閉包に含まない」監査（`audit_infinity_f1b.lean`）も通る。
 4. `sorry`・`axiom`・`ModelCategory SSet` 等の instance 仮定を増やさない。公理監査は標準三公理のみ。
-5. 稼働中レーンの集約ファイル（`F1.lean`・`F1B.lean`・`F2.lean`・`Stable.lean`・`Derived.lean`・`HomotopyLimits.lean`・`KST/*.lean`）と
+5. 稼働中レーンのファイルを、共有の作業ツリー（main のチェックアウト）で直接変更しない。R は専用の git worktree
+   `../SerrePositivity-R`（ブランチ `refactor/r-lane`、`.lake` は APFS クローン）で作業し、main への取り込みは §3 の手順で
+   コーディネータが行う。理由：上流モジュールを共有ツリーで変えると、全レーンで下流の再ビルド連鎖と olean の競合が起きる
+   （10-23 09:46、1-1 の適用で N が停止した）。
+6. 稼働中レーンの集約ファイル（`F1.lean`・`F1B.lean`・`F2.lean`・`Stable.lean`・`Derived.lean`・`HomotopyLimits.lean`・`KST/*.lean`）と
    監査スクリプトは R が編集しない。必要な一行は、コーディネータ経由でそのレーンに依頼する。
 
-## 3. 他レーンのファイルに触る条件と手順
+## 3. 作業場所と取り込みの手順（10-23 09:55 改訂）
+
+- 作業場所：`git worktree add -b refactor/r-lane ../SerrePositivity-R main` で作った worktree。`cp -Rc .lake ../SerrePositivity-R/.lake`
+  （APFS のクローン、数十秒）でビルド済み olean を持ち込む。以後 R のビルド・監査・コミットはすべて worktree 内で行う。
+  共有ツリー（main のチェックアウト）には R のファイルを置かない。
+- 取り込み（1 バッチ = 0-3・1-1・1-2・1-3・1-5 のように上流変更をまとめたもの）：R がバッチ完了を報告 → コーディネータが
+  取り込み時刻を提案しユーザーが決める（レーンが止まっている時間帯）→ R は worktree で `git rebase main`、`.lake` を main から
+  再クローン、全体ビルド（`lake build SerrePositivity`）と全監査を通す → コーディネータが main で `git merge --ff-only refactor/r-lane`
+  → worktree の `.lake/build` を main の `.lake/build` へクローンで上書きし、レーンの再ビルド連鎖を起こさない → レーン再開。
+- 下記の「他レーンのファイルに触る条件」は、取り込むファイルの選定条件としてそのまま残す。
+
+## 3′. 他レーンのファイルに触る条件（選定条件）
 
 - 条件：(i) そのファイルの最終コミットが 48 時間以上前、(ii) `git status` に出ていない、(iii) 変更が純粋な移動・分割・シム化で宣言の型が同一。
   三つとも満たすときだけ R が変更する。満たさないものは §4 の「レーンの区切り待ち」に入れる。

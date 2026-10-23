@@ -26,6 +26,10 @@
 | [K理論：KST 経路と現代的な K](k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
 | [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
 | [Stage 4 の依存監査](stage4-dependency-audit.md) | 指定分解版に限った段階4の依存の監査 | 2026-10-17 監査 |
+| [P 計画：presentable ∞ 圏](infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
+| [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
+| [新設指示 10-23](restart-2026-10-23.md) | P・K-7 の指示文と転用の予告 | 2026-10-23 |
+| [R 計画：∞ 圏基盤のリファクタリング](refactoring-infinity.md) | 解説の候補 R1〜R25 を互換シム方式で段階実施。重複除去、層の整理、逆向き依存の解消。10-23 新設 | 2026-10-23 |
 | [D2 計画：β4 gluing](infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |
 | [再開・新設指示 10-22](restart-2026-10-22.md) | F1・N の方針変更と D2・K-F の新設の指示文 | 2026-10-22 |

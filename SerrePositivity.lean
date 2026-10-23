@@ -1,7 +1,13 @@
 module
 public import SerrePositivity.KST.SConstruction
 public import SerrePositivity.KST.Descent
+public import SerrePositivity.KST.DerivedGeometry
+public import SerrePositivity.KST.DerivedBlowup
+public import SerrePositivity.KST.SchemeLemmas
+public import SerrePositivity.KST.ProExcision
+public import SerrePositivity.KST.Spectra
 public import SerrePositivity.KST.Comparison
+public import SerrePositivity.EInfinity
 public import SerrePositivity.InfinityCategories.DGNerve
 public import SerrePositivity.InfinityCategories.Derived
 public import SerrePositivity.InfinityCategories.Stable
@@ -14,6 +20,7 @@ public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
 public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonPathFlatness
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonExtension
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonTriangulated
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonRestriction

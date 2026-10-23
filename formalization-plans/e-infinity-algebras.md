@@ -133,8 +133,8 @@ E2b ≃ E1 の比較（HA 4.5.4.7 型の rectification）を任意項目とし�
 - `DifferentialGraded/Complexes/Cells.lean`：`complexSphere`・`complexDisk`（射影モデル構造の生成 cofibration）。
 - `InfinityCategories/Derived/`：semifree の閉性（cone・fiber・直和・テンソル・底変更）。
 - Mathlib：`SmallObject`、`CategoryWithCofibrations/Fibrations/WeakEquivalences`、`ModelCategory`。
-- 未整備：Ch(A) の非有界射影モデル構造（Mathlib は `CochainComplex.Plus` の injective のみ）、
-  オペラッド、対称群作用つき複体。
+- E2 側で提供済み：Ch(A) の非有界射影モデル構造、対称オペラッド・自由代数随伴、
+  実際の E と Hopf 構造、具体区間による Alg_E の完全な転送モデル構造と右 Quillen U。∞ 圏化は未完成。
 
 ## 2. E2a の工程
 
@@ -143,9 +143,20 @@ E2b ≃ E1 の比較（HA 4.5.4.7 型の rectification）を任意項目とし�
 | E2a-0 | Ch(A) の非有界射影モデル構造：弱同値 = 擬同型、fibration = 各次数全射、生成 cofibration `complexSphere (n+1) → complexDisk n`、生成 trivial cofibration `0 → complexDisk n`。`Transfer/Recognition.lean` で構成 | Hovey, Model Categories 2.3.11 |
 | E2a-1 | Ch(A) 上の対称オペラッド：各 arity n の複体 P(n) と Σ_n 右作用、合成、単位。代数、代数の射、自由代数 Sym_P（⊕ (P(n) ⊗ A^{⊗n})_{Σ_n}）、自由 ⊣ 忘却 | Loday–Vallette、Berger–Moerdijk 2003 §1 |
 | E2a-2 | Barratt–Eccles オペラッド E：EΣ_n（Σ_n の translation 亜群の nerve）の正規化鎖。各 arity が可縮、Σ-cofibrant（各 E(n) が Σ_n 上自由な次数ごとの基底を持つ）、E → Com | Barratt–Eccles 1974、Berger–Fresse 2004 §1 |
-| E2a-3 | Alg_E の完全な転送モデル構造：弱同値・fibration は忘却で作る。AW 対角による E の Hopf 構造と E-coalgebra 区間の抽象界面から全代数の functorial path object を構成し、fibrations.llp ⊆ 弱同値、J-cell acyclicity、`Transfer.Right.rightTransfer` の適用を先に証明。TR : E → χ と区間切断作用で N_*(Δ¹) を界面に代入する。始域の cofibrancy は追加しない | Berger–Moerdijk 2003 命題 4.1・§4.6.3、Berger–Fresse 2004 §3.1（TR は §1.3）。Hinich 4.1.1 は使用しない（正標数で E は Σ-split でない） |
-| E2a-4 | U : Alg_E → Ch(A) は右 Quillen、全対象 fibrant、homotopy 引き戻し・homotopy 極限は底で計算。E 代数の H⁰ が可換環であること、離散可換代数は E 代数（E → Com 経由） | 同上 |
-| E2a-5 | homotopy function complex Map^h(A, B)（`HomotopyFunctionComplex/` の frame を Alg_E に適用）、π₀ Map^h = Ho(Alg_E) の Hom | Hovey §5、Dwyer–Kan |
+| E2a-3 | **完了**。Alg_E の完全な転送モデル構造：弱同値・fibration は忘却で作る。AW 対角による E の Hopf 構造と E-coalgebra 区間の抽象界面から全代数の functorial path object を構成し、fibrations.llp ⊆ 弱同値、J-cell acyclicity、`Transfer.Right.rightTransfer` の適用を先に証明。TR : E → χ と区間切断作用で N_*(Δ¹) を界面に代入する。始域の cofibrancy は追加しない | Berger–Moerdijk 2003 命題 4.1・§4.6.3、Berger–Fresse 2004 §3.1（TR は §1.3）。Hinich 4.1.1 は使用しない（正標数で E は Σ-split でない） |
+| E2a-4 | 右 Quillen U・全対象 fibrant・実際の homotopy 引き戻しと底の導来比較・離散可換代数の E 代数化・元の H⁰ の可換 A 代数構造は完了。小図式の射影モデル・右導来忘却・任意の小さい右導来積、一般図式の右 frame の end の計算関手・頂点ごとの擬同型保存・同じ底の計算同型も構成済み。一般極限の元の比較による右導来普遍性と底の自然な導来比較まで完了 | 同上 |
+| E2a-5 | **完了**。具体的な関手的分解による Kan Map^h、両変数の擬同型の anodyne 反転・frame 選択の自然比較、π₀ と Ho(Alg_E) の Hom の自然な同値、元の代数射の零単体の類の計算 | Hovey §5、Dwyer–Kan |
+
+
+**工程 (3) 着手前の見積もり（2026-10-19）**：既存の BE 基底・正規化・部分合成と AW を再利用する。
+初期見積もりは新規 31〜47 ファイル、主要補題 100〜160 件。全射語・一般の TR 鎖写像・χ の次数部分合成・非退化基底・成分経路・符号一致・全段階の合成行と一行の成功規則・元の所属行と成分区間・全成分抽出・垂直と全水平転送・任意位置の共有行融合・全連結表と全共有行融合表の成功・成分語と実際の合成語の全体一致・全融合表の合成語抽出・正しい行数と実際の Schedule・元の置換区間表示・実際の全経路の成分座標列・全融合行列の格子評価・実際の経路成功・符号付き項・両語・全分割成分の復元と単射性・成功 Schedule の一意性・垂直行末・次行先頭の内側性・非自明な垂直成分全体の内側射影成功・任意の内外状態と外側可用行・外側行長と除外更新・全外側抽出成功・重複行圧縮・縮約出力の全体一致・全圧縮外側語の非退化性・実際の出力一致・実際の shuffle 経路から元の外側次数の BasisWord・一意な成功 Schedule の復元・全水平区間の内側融合・実際の分割・垂直接続・元の全内側行列と行数・行末再出現と総和・元の内側次数の BasisWord と一意な成功 Schedule の復元・長さ飽和からの全共有端点と既存分割の一意な全 segment 再構成・一般の splitParts の代入一致と両復元語長による一意な実際の分割と合成語一致・全選択行列と経路の一意性・経路と Schedule を全て戻す入力データの一意な逆構成・固定元列の成功項有限全単射・失敗と退化を零とした全符号付き onSequence 和と元の成功二表＋分割の和の一致・元の成功基底語和と部分合成への展開・正の内側 arity と nullary 正次数の全正規化 TR 合成保存・空語代入と実際の逆行の削除表示・全早期除外抽出との可換性・実際の nullary 成功表から一行延長・元の Schedule・一出現成功基底語の逆構成と項の値の保存・再出現による射影の保持条件・順方向成功 Schedule・有限な順方向全射と項の値の保存・射影選択行列から元の語の一意性・有限全単射と全有限和・出力 arity 零を含む全正規化 TR の部分合成保存・χ の微分と全成分公理・非有界整数複体・対称列・整数 TR と対称列 TR 自然変換・整数双線形合成保存と全整数全射性・部分合成と単位の複体射・TR の複体射の合成保存・テンソル全射消去・複体射の全公理・χ の Operad と一般 TR オペラッド射と零次 augmentation の比較まで 413 ファイルを構成済み（初期見積を超過）。
+`Surjection/` は全射語・非退化条件・符号付き削除微分・d²=0・単位と部分合成の公理で 10〜14 ファイル、30〜50 件。
+`TableReduction/` は行長と許容表・語の生成・Σ 同変・鎖写像・一般の部分合成保存・正規化移送で 10〜16 ファイル、35〜55 件。
+`IntervalCuts/` は切断の符号・Δ¹ の次数制限・余演算の公理で 8〜12 ファイル、25〜40 件の初期見積もり。
+`IntervalCuts/` は 205 ファイル。実際の N_*(Δ¹) の全整数微分・単位・等変性・nullary を含む合成則、
+元の両端点・AW 収縮、具体的な鎖ホモトピー同値・境界 cofibration・端点と収縮の余作用保存を証明。
+具体的な `coalgebraInterval` と `BarrattEccles.modelCategory` への代入まで完了。初期ファイル見積もりを超過。
+TR は一般に証明し、切断作用だけを Δ¹ と r ≤ n に特殊化する。原典は BF §1.3・§3.1。
 
 ## 3. E2b（γ）の工程
 
@@ -155,7 +166,7 @@ E2b ≃ E1 の比較（HA 4.5.4.7 型の rectification）を任意項目とし�
 | γ2 | Alg_E の cofibrant 対象の単体的豊穣化（Hopf オペラッド E による B ⊗ N^*(Δ^•) 型、または Dwyer–Kan 単体的局所化）と CAlg_R := N^hc | Berger–Moerdijk 2006、Hinich、Dwyer–Kan |
 | γ3 | homotopy 極限 = ∞ 極限、右 Quillen ⇒ ∞ 極限保存、Quillen 随伴 ⇒ ∞ 随伴 | HTT 4.2.4.1、5.2.4.6 |
 
-γ2 の単体的豊穣化が E2b の最大のリスクである。E2a の完了時点で方式を決める。
+γ2 は Dwyer–Kan 型の単体的局所化を採用する。cofibrant E 代数の相対圏から厳密な合成を持つ豊穣化を構成し、既存の Kan Map^h と比較する。
 
 ## 4. 受入基準と記録
 
