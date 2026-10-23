@@ -20,7 +20,6 @@
       "seconds": 13.01
     }
   ],
-  "current_validation": "running: /tmp/r-a-target-validation-retry2.json (written as checks complete)",
   "original_declaration_preservation": [
     {
       "name": "vertexFiberPullbackIso",
@@ -77,5 +76,107 @@
       "sha256": "18886c20f011701615e1e72263c29dd4d6996bfdb23b6552379fa8687b91c357"
     }
   ],
-  "full_build_and_tags": "coordinator responsibility; not performed by R-A"
+  "full_build_and_tags": "coordinator responsibility; not performed by R-A",
+  "validated_source_commit": "ff54bae2f993cd5c5d91211e358e1f2cee9d9423",
+  "completed_at": "2026-10-23 17:45 JST",
+  "target_validation": [
+    {
+      "check": "f1-f1b-build",
+      "command": [
+        "lake",
+        "build",
+        "SerrePositivity.InfinityCategories.F1",
+        "SerrePositivity.InfinityCategories.F1B"
+      ],
+      "exit_code": 0,
+      "seconds": 3587.87
+    },
+    {
+      "check": "core-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_core.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 12.68
+    },
+    {
+      "check": "f1-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 40.33
+    },
+    {
+      "check": "f1b-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1b.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 11.84
+    },
+    {
+      "check": "f1-f1b-collision-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_infinity_f1_f1b.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 15.27
+    },
+    {
+      "check": "refactor-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/audit_refactor_infinity.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.77
+    },
+    {
+      "check": "duplicates",
+      "command": [
+        "python3",
+        "scripts/check_duplicates.py",
+        "--baseline",
+        "formalization-plans/archive/refactor-duplicates-2026-10-23.md",
+        "--output",
+        "/tmp/r-a-duplicates-retry2.md"
+      ],
+      "exit_code": 0,
+      "seconds": 11.11
+    }
+  ],
+  "moved_core_origin_audit": {
+    "check": "moved-core-origin-audit",
+    "exit_code": 0,
+    "seconds": 21.47
+  },
+  "observed_counts": {
+    "f1_axiom_audit_declarations": 16299,
+    "f1b_axiom_audit_declarations": 4974,
+    "f1b_repository_modules": 1438,
+    "f1b_straightening_dependencies": 0,
+    "direct_reference_declarations": 139,
+    "moved_core_modules": 22,
+    "moved_core_origin_declarations": 196,
+    "duplicate_files_scanned": 11702,
+    "substantive_duplicate_groups": 0,
+    "new_duplicate_pairs": 0
+  },
+  "scope_limit": "Core, F1, F1B and R audit validated. F2, Stable, HomotopyLimits aggregates and whole-project validation belong to R-B/R-C/coordinator.",
+  "next_action": "Coordinator ff-merges refactor/r-lane; R-A then installs move_module.py and continues on main."
 }

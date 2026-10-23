@@ -14,14 +14,18 @@
 - Core への汎用宣言抽出、F1B 重複除去、Stable の汎用補助 17 モジュールの Core 移動を同じバッチにした。
 - 静的検査：参照先不在 import 0、旧 KanSection 名前空間参照 0、Core/F1B の禁止閉包 0、差分空白検査合格。
 - Core の対象ビルドは成功（6.62 秒）。抽出 9 宣言の型・証明を含む本文文字列が原本と一致。
-- F1/F1B の最初の対象ビルド（1128.01 秒）と再実行（13.01 秒）で判明した暗黙の import 不足を修正。
-  現在は修正版を単一コマンドで再ビルド中。成功後に Core・F1・F1B・同時 import・R の監査と重複検査を順次実行する。
-  ログ：`/tmp/r-a-f1-f1b-build-retry2.log`。記録：[R-A 検証記録](archive/refactor-ra-validation-2026-10-23.json)。
-- 段階検証は未完了。§4 の未検証項目は完了扱いにしない。
+- F1/F1B の対象ビルドが成功（3587.87 秒、8187 jobs）。最初の失敗 1128.01 秒と再実行 13.01 秒で判明した import 不足は修正済み。
+- Core・F1・F1B・F1/F1B 同時 import・R の 5 監査が全て成功（合計 86.89 秒）。
+  F1 16,299 宣言、F1B 4,974 宣言、R の直接参照 139 宣言と移動先 22 モジュールの 196 宣言で標準三公理だけを確認。
+  F1B は 1,438 リポジトリ内モジュールを読み、straightening 依存なし。
+- 重複検査は 11,702 ファイル、実体の重複 0 群、新規重複対 0（11.11 秒）。
+  [検証記録](archive/refactor-ra-validation-2026-10-23.json)・[重複一覧](archive/refactor-duplicates-ra-2026-10-23.md)。完了：2026-10-23 17:45 JST。
+- F2・Stable・HomotopyLimits の各集約と全体ビルドは本バッチの対象検証に含めない。R-B/R-C・コーディネータが担当する。
+- main は未変更。worktree のバッチは rebase・対象検証済みで、コーディネータによる ff-merge を待つ。
 
 ### 残り（依存順）
 
-§4 の段階表。第 0〜1 段・第 5 段の検証後、第 2〜3 段、第 4 段へ進む。
+§4・§8 を参照。R-A は main 取り込み後、移動ツール → R5 前半・R6・R7・R9 の入口 → 第 4 段の R11・R12・R13。第 2〜3 段は R-B/R-C の分担。
 
 ### 主要宣言・依存と提供
 
@@ -31,13 +35,14 @@
 
 ### 既知の問題
 
-- `.lake` クローン時に生成中だった 12 ファイルのコピーが失敗。最終ビルドで生成・検証する。
+- `.lake` クローン時に生成中だった 12 ファイルのコピーが失敗したが、Core・F1・F1B の対象ビルドは成功。未使用キャッシュを含む全体検証はコーディネータが行う。
 - 重複側と原本の証明項が一致しない例は、原本を無変更で残し重複側を削除。証明の同一性を主張しない。
 
 ### 次の一手
 
-- バッチのコミット・rebase 結果は報告済み。取り込み前の worktree で対象検証を継続し、コーディネータによる ff-merge を待つ。
-- 取り込み後は main を正とし、最初に `scripts/move_module.py` を作る。以後の担当は §8 の R-A に限定する。
+- 対象検証の完了と最新 HEAD を報告し、コーディネータによる ff-merge を待つ。自分では merge しない。
+- 取り込み後は main を正とし、最初に `scripts/move_module.py` を配置する。試作 `/tmp/r-a-move_module.py` は一時リポジトリで移動・参照・集約更新を検証済み。以後の担当は §8 の R-A に限定する。
+- R6 入口案、R11 の 600 本の移動案（636 ファイル更新、490 本が F1 閉包から外れる）、R12・R13 の分類資料も `/tmp/r-a-*` に準備。全て未適用。
 - 各段階の対象ビルド・該当監査・重複検査の結果と実測時間を報告する。全体ビルドとタグはコーディネータ。
 
 ## 1. 目的と範囲
@@ -74,17 +79,19 @@
 
 ## 4. 段階
 
+分担・実施条件は §8 を優先する。完了欄の「R-A」は Core・F1・F1B・R 監査の対象検証を指し、他レーンの集約や全体ビルドの完了を意味しない。
+
 | 段 | 内容 | 候補 | 触るレーン | 条件 | 完了 |
 |---|---|---|---|---|---|
 | 0-1 | 正規化ハッシュによる重複検査 `scripts/check_duplicates.py`。現状の一覧を `archive/` に保存 | R8 再発防止 | なし | 即時 | 2026-10-23 09:35 JST |
 | 0-2 | `InfinityCategories/README.md`（dg nerve の規約）を `DGNerve/README.md` へ移し、最上位 README を全体地図（層・入口・監査スクリプト）に | R25 | なし | 即時 | 2026-10-23 09:37 JST |
 | 0-3 | `F2/JoinRightRelativeRetraction` を削除し、import と F2 公開名を F1 原本へ直接置換 | R8 段階 0 | F1b（10-20 以降未変更） | §3 | |
 | 0-4 | 仮定入力の一覧（§6）を grep で作り本計画に固定 | R17・R20 | なし | 即時 | 2026-10-23 09:40 JST |
-| 1-1 | `F1/PullbackFiber`・`F1/LeftFiberKan` を汎用部（新 `Core/VertexFiberPullback`・`Core/LeftFiberKan`）と straightening 部（`LeftUnstraighteningFiberIso`・`LeftUnstraighteningFiberKan`、Core を import）に分割 | R8 段階 1 | F1（10-18 以降未変更） | §3 | |
-| 1-2 | 汎用部だけで足りる直接 importer（6 本）を Core 側へ向け直す。下流の import と名前を原本へ直接更新する（旧依存を保つための import は加えない） | R8 段階 2 | F1・F1B・HomotopyLimits・F2 | 1-1 の後、§3 | |
-| 1-3 | F1B の `KanSection*` 重複を削除し原本へ直接置換。現状の宣言数と差分を再検証し、独自内容だけを残す | R8 段階 3 | F1b（10-19 以降未変更） | 1-2 の後（F1B 監査が原本の閉包を通すため） | |
+| 1-1 | `F1/PullbackFiber`・`F1/LeftFiberKan` を汎用部（新 `Core/VertexFiberPullback`・`Core/LeftFiberKan`）と straightening 部（`LeftUnstraighteningFiberIso`・`LeftUnstraighteningFiberKan`、Core を import）に分割 | R8 段階 1 | F1（10-18 以降未変更） | §3 | 2026-10-23 17:45 JST（R-A） |
+| 1-2 | 汎用部だけで足りる直接 importer（6 本）を Core 側へ向け直す。下流の import と名前を原本へ直接更新する（旧依存を保つための import は加えない） | R8 段階 2 | F1・F1B・HomotopyLimits・F2 | 1-1 の後、§3 | 2026-10-23 17:45 JST（R-A） |
+| 1-3 | F1B の `KanSection*` 重複を削除し原本へ直接置換。現状の宣言数と差分を再検証し、独自内容だけを残す | R8 段階 3 | F1b（10-19 以降未変更） | 1-2 の後（F1B 監査が原本の閉包を通すため） | 2026-10-23 17:45 JST（R-A） |
 | 1-4 | `Core/Fibrations.lean`・`Core/MappingSpace.lean` の入口（定義は動かさず import と docstring で目次化） | R7・R9 | なし | 即時 | |
-| 1-5 | `Stable/SliceOpposite` の `sliceOverOpIso` を `Core/SliceOpposite` へ移し、旧ファイルを削除・参照を直接更新 | R5 の前半 | D（10-18 以降未変更） | §3 | |
+| 1-5 | `Stable/SliceOpposite` の `sliceOverOpIso` を `Core/SliceOpposite` へ移し、旧ファイルを削除・参照を直接更新 | R5 の前半 | D（10-18 以降未変更） | §3 | 2026-10-23 17:45 JST（Core・R-A 対象。Stable 集約は R-B） |
 | 2-1 | `Stable/Cocone`・`UniverseLimits`・`ColimitDiagramIso`・`Definition` の `HasFiniteLimits` を `Core/Colimit*` へ（旧ファイルを削除して直接置換） | R2・R22 | D | D-7 d 完了直後 | |
 | 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | |
 | 2-3 | `Derived/LimitDiagramIso`・`CofinalLimitExistence` を Core へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
@@ -95,16 +102,16 @@
 | 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | |
 | 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | |
 | 3-2 | `PinchedInterval` 6 本・`KanScaffold`／`KanCocartesian` 15 本の精査 | R8 段階 4 | F1b | F1b-5 a7 完了後 | |
-| 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | F1 の区切り（集約の一行は F1 に依頼） | |
+| 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | R-A、直接置換・入口の検証後 | |
 | 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | |
-| 4-3 | F1 のサブディレクトリ化、F1B の `Kan*` 接頭辞の整理、ディレクトリ名の層への対応 | R12・R13・R1・R6 | F1・F1b | 第 I 段終了時 | |
-| 5 | 旧重複モジュールの削除と `KanSection.foo` → `foo` の直接置換（約 60 箇所）、`HomotopyLimits.lean` の docstring と `quillenCfBottomEndpoint_wrong` 等の改名 | R18 ほか | 全レーン | 第 0〜1 段と同時（全停止後） | |
+| 4-3 | F1 のサブディレクトリ化、F1B の `Kan*` 接頭辞の整理、ディレクトリ名の層への対応 | R12・R13・R1・R6 | F1・F1b | R-A、R11 の後 | |
+| 5 | 旧重複モジュールの削除と `KanSection.foo` → `foo` の直接置換（約 60 箇所）、`HomotopyLimits.lean` の docstring と `quillenCfBottomEndpoint_wrong` 等の改名 | R18 ほか | 全レーン | 第 0〜1 段と同時（全停止後） | 2026-10-23 17:45 JST（F1/F1B 部分。HomotopyLimits は R-C） |
 
 ## 5. 移動した宣言の所在
 
 | 旧所在（削除・改名） | 新所在 | 段 | コミット |
 |---|---|---|---|
-| F1/PullbackFiber・LeftFiberKan の汎用部 | Core/VertexFiberPullback・LeftFiberKan | 1-1 | 本バッチ、段階検証待ち |
+| F1/PullbackFiber・LeftFiberKan の汎用部 | Core/VertexFiberPullback・LeftFiberKan | 1-1 | 本バッチ（R-A 対象検証済み、2026-10-23 17:45 JST） |
 | F1/ScaffoldFiniteVerticalEdges の prism・LeftStrictTransport の under map | Core/PrismVerticalSimplex・NerveUnderMap | 1-3 | 同上 |
 | F1/PullbackNerveFiber・ScaffoldUnderChain | Core/VertexFiberNervePullback・F1B/ScaffoldUnderChain | 1-3 | 同上 |
 | F1B/KanSection 重複群・F2/JoinRightRelativeRetraction | F1 原本または新 Core（[全対応一覧](archive/refactor-direct-batch-2026-10-23.json)） | 0-3・1-3・5 | 同上 |
