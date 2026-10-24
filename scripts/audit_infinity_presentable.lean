@@ -378,3 +378,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_evaluation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_bijective
 #check @SerrePositivity.InfinityCategories.F2.Presentable.flipFunctorHomEquiv
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeFunctorUnitPrism_swap
+#check @SerrePositivity.InfinityCategories.F2.Presentable.flip_postcompose_constant_hom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnit_swap
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHomMap_flip
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHom_bijective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitAdjunction
