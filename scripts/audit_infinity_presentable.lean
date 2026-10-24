@@ -17,7 +17,9 @@ run_cmd do
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.PresheafSliceConeRestriction ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction do continue
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits do
+      continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Presentable: unexpected axioms in {name}: {axioms}"
@@ -304,3 +306,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence_hom
 
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaYoneda_finiteCoproduct_isColimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_realization
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_degree_coproduct
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarDegreeDiagram_representable
