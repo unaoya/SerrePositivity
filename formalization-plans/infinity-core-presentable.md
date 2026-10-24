@@ -60,7 +60,9 @@
 - `presheaf_isRepresentable_of_sendsSmallColimitsToLimits`（自由前層圏。一般 presentable への移送は未完）
 
 - `IsCorepresentableSmallSpaceFunctor`、`accessible_preservesLimits_isCorepresentable`（d3、存在入力なし）。
-- `IsAccessible.exists_smallCovariantHom`、`exists_leftAdjoint_iff_covariantHom_representable`
+- `IsAccessible.exists_smallCovariantHom`、`IsAccessible.exists_smallContravariantHom`
+- `exists_leftAdjoint_iff_covariantHom_representable`
+- `exists_rightAdjoint_of_contravariantHom_representable`（全自然な反変 Hom 表現から構成）。
 - `exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful`（反映界面を明示、d5 は未完）。
 
 ### 依存と提供
@@ -87,8 +89,8 @@
 - d2 の一般反映移送には、元の表現可能前層の反対辺への作用と Hom 前合成の可逆性判定が必要。
   F1 公開界面をコーディネータ経由で依頼。P 側の指定反映単位の反転条件と局所対象の下降は提供する。
 
-- d5 の無条件化には `Compact.spaceUniverseDiagram` の充満忠実性（または小極限・小余極限の反映）が必要。
-  Compact の公開界面をコーディネータ経由で依頼。反映界面を明示した判定の接続は提供する。
+- d4・d5 の無条件化には `Compact.spaceUniverseDiagram` の充満忠実性（または小極限・小余極限の反映）が必要。
+  Compact に依頼済み。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。
 
 ### 未コミット
 - 所有ファイルは保存済み。共同作業中の他レーンの差分は変更しない。
