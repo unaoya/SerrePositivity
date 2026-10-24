@@ -150,3 +150,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorLe
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSimplicialIndDiagram
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectedBarRealization
+public import SerrePositivity.InfinityCategories.F2.Presentable.IndExtensionHomWeightComparison

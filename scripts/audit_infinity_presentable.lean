@@ -332,3 +332,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.mapJoinCocone_isColimit_of_adjunction_of_quasicategoryShape
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_barDegree_isInd
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_bar_realization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indExtensionHomWeight_liftedIso
