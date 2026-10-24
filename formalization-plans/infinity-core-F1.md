@@ -4,7 +4,18 @@
 
 > **v2 の位置づけ（2026-10-23 移管）**：F1-4・F1-5・F1-3b、F2N-2(a)〜(d) は完了。次は F2N-5(a)(b)（Ind の有限存在と安定性、F1b から移管）。(c) compact 生成は完了。Cat∞ 値の一般底分類は第 II 段。
 
-## 引き継ぎ：F2N-5（2026-10-23 停止・新チャット再開用）
+## 引き継ぎ v3：Ind（2026-10-24）
+
+- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、同じ実終点像と指定対角比較の合成式まで対象ビルド済み。Ncomp は未証明。
+- 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。期限で未完なら I-1 c として明示入力の継続を確定する。
+- 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ] ← 今回、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [ ]。
+- 主要宣言：`spaceCompositionZeroLastInitialEndpointIso_eq_middle`、`spaceCompositionZeroLastNativeEndpointIso_eq_refl`、`spaceCompositionZeroLastSpecified_endpoint_square`。
+- 残り：I-1 a の Ncomp と値の消去、b の全錐比較と有限形状帰納（HTT 5.3.3.3、8 時間枠内）。続いて I-2 a〜e（下記 F2N-5 の未完部分）。
+- 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論は P・K-B、I-2 e は K-B へ公開する。
+- 既知の問題：一般交換と安定性は未証明。ModelCategory 仮定を加えない。
+- 次の一手：同じ零面の最後辺の実終点像を `pointedOppositeTriangleFunctorIso` へ戻し、最大化側の指定比較を二辺評価に同定する。元の raw 二辺値比較と中間比較を保持して Ncomp を結論する。
+
+## 参照用引き継ぎ：F2N-5（2026-10-23）
 
 ### 現在地
 - 今回保存：指定始点評価図式下の始点余錐を保持する補間と、C 全図式・D・始点全余錐を固定する比較を証明。相対 cofinal 性自体は未証明。

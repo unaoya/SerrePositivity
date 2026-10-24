@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastInitialEndpointIso_eq_middle
+#check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastNativeEndpointIso_eq_refl
+#check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastSpecified_endpoint_square
+
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionComparison_restrict
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionRestriction_long
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtension_initial

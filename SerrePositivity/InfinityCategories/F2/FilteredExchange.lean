@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroLastSpecifiedSquare
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroFirstCoslice
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCompositionMaximalizationFirstEdge
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTrianglePointedFirstEdgeEquality
