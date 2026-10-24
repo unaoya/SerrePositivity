@@ -25,6 +25,8 @@ public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
 public import SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
+public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
 
 /-!
 概要：一般 Verdier 分数の全族に対して、分母 roof からの二つの実変形を保持する。
@@ -2209,5 +2211,77 @@ private lemma verdierFractionComparison_of_wholeFamilyUnit {A B C : StableCatego
     exact (verdierFixedIntervalBaseEquivalence h x y).symm.isQCatEquivalence.comp huc
   have hβ : IsQCatEquivalence β := isQCatEquivalence_of_composites hfg hβc
   exact (hβ.cancel_right hfg).isFullyFaithful
+
+private def verdierWeakFiberGroupoidEquivalence {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) :
+    QCatEquivalence
+      (vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+        (q.hom.app _ y))
+      (groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y)) := by
+  let c := transportSimplexIndex (n := ⦋0⦌) y
+  let K := (weakSpanKanDiagram i x).obj c
+  let F := weakSpanKanQuotientDiagram h x
+  letI := vertexFiber_kanComplex_of_leftFibration (smallLeftUnstraighteningProjection F)
+    (q.hom.app _ y)
+  have hv : VertexIso (F.app (Opposite.op ⦋0⦌) (ULift.up (q.hom.app _ y)))
+      (spaceInfinityVertex K) := by
+    have hi := weakSpanKanQuotientDiagram_initialVertexIso h x c
+    simpa only [c, transportSimplexFirstVertexMap_zeroIndex] using hi
+  let a := (homotopyCategory_homMk_surjective _ _ hv.hom).choose
+  have ha : Truncated.HomotopyCategory.homMk a = hv.hom :=
+    (homotopyCategory_homMk_surjective _ _ hv.hom).choose_spec
+  haveI : IsIso (Truncated.HomotopyCategory.homMk a) := by
+    rw [ha]
+    infer_instance
+  have he : IsInvertibleEdge (SSet.Edge.ofTruncated a) := by
+    change IsIso (Truncated.HomotopyCategory.homMk a)
+    infer_instance
+  let e := (F2.Compact.spaceInfinityEdgeValue_isQCatEquivalence
+    (SSet.Edge.ofTruncated a) he).choose
+  let eK := qCatEquivalenceOfIso (eqToIso
+    (congrArg KanObject.obj (spaceInfinityVertexEquiv.left_inv K)))
+  let eg := weakSpanKanValueGroupoidEquivalence i x c
+  let ey := qCatEquivalenceOfIso (eqToIso
+    (congrArg (fun z => groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x z))
+      (transportSimplexFirstVertexMap_zeroIndex y)))
+  exact ((smallLeftUnstraighteningFiberValueEquivalence F (q.hom.app _ y)).trans e).trans
+    (eK.trans (eg.trans ey))
+
+private lemma verdierFractionComparison_of_wholeFamilyRecovery {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌)
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (e : VertexIso
+      (verdierLiftedIdentityFiberPoint h x
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
+      (weakIdentityQuotientFiberPoint h x))
+    (hrecovery : FunctorIso
+      (verdierFixedLiftedFamily h x y
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU ≫
+          (verdierWeakFiberGroupoidEquivalence h x y).hom)
+      (groupoidCompletionMap (fixedMarkedSpans B.obj (weakEquivalences i) x y))) :
+    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
+  have he : FunctorIso
+      (verdierFixedLiftedCompletion h x y p U hU ≫
+        (verdierWeakFiberGroupoidEquivalence h x y).hom)
+      (𝟙 (groupoidCompletion (fixedMarkedSpans B.obj (weakEquivalences i) x y))) := by
+    apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization _)
+    have ht := FunctorIso.postcomp
+      (groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU))
+      (verdierWeakFiberGroupoidEquivalence h x y).hom ≪≫ hrecovery
+    simpa only [verdierFixedLiftedCompletion, Category.assoc, Category.comp_id] using ht
+  have hc : IsQCatEquivalence
+      (verdierFixedLiftedCompletion h x y p U hU ≫
+        (verdierWeakFiberGroupoidEquivalence h x y).hom) :=
+    (QCatEquivalence.refl _).isQCatEquivalence.ofFunctorIso he.symm
+  have hu : IsQCatEquivalence (verdierFixedLiftedCompletion h x y p U hU) :=
+    (verdierWeakFiberGroupoidEquivalence h x y).isQCatEquivalence.cancel_right hc
+  exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e hu
 
 end SerrePositivity.KST.LocalizingInvariants
