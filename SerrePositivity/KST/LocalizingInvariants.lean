@@ -1866,4 +1866,13 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightImageNullPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeNullComposition
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightRestoreZero
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWSource
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWInitialPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWZeroFollowing
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedZero
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWModelHomotopy
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
