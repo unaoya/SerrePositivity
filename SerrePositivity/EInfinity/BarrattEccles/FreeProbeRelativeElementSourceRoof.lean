@@ -90,4 +90,51 @@ lemma freeProbeRelativeElementPinched_forget_column_roof_arrow :
     ((kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom ≫
       cAlgForgetDerived A)
 
+/-- 概要：実 U の全局所化源の屋根は元の忘却屋根の同じ全共役。
+方針：元の全源自然性の右端同型を反転する。
+規約：全端点同型と元の左右脚を保持。使われ方：元の単位三角形の輸送。 -/
+lemma freeProbeRelativeElementSourceRoof_eq_underlying :
+    let V := freeProbeRelativeElementColumn A X B
+    let p := freeProbeRelativeElementAugmentation A X B
+    let σ := freeProbeRelativeElementEvaluation A X B
+    let K := freeProbeRelativeElementIndex A X B
+    let F := cAlgLocalizationSource A ≫ cAlgForgetDerived A
+    let G := cofibrantAlgebraUnderlyingDerivedSource A
+    (NerveColumn.augmentationIso F V p
+      (freeProbeRelativeElementAugmentation_forget_invertible A X B)).inv ≫
+      NerveColumn.hom F σ =
+    ((cAlgForgetDerived_sourceIso A).precomp
+      (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
+      (NerveColumn.augmentationIso G V p
+        (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
+      NerveColumn.hom G σ ≫
+      ((cAlgForgetDerived_sourceIso A).precomp
+        (nerveMap ((Functor.const K).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).inv := by
+  have h := freeProbeRelativeElementRoof_source_naturality A X B
+  have h' := congrArg (fun z => z ≫ ((cAlgForgetDerived_sourceIso A).precomp
+    (nerveMap ((Functor.const (freeProbeRelativeElementIndex A X B)).obj
+      (ULiftHom.objUp.{u + 1, u + 1} B)))).inv) h.symm
+  simpa only [Category.assoc, Iso.hom_inv_id, Category.comp_id] using h'
+
+/-- 概要：元の実 pinched 全族の U 像は同じ忘却屋根の全端点輸送。
+方針：元の全 slice 三角形を同じ全源自然性へ接続する。
+規約：実 U・全 K・元の端点同型を保持。使われ方：元の単位の全族三角形。 -/
+lemma freeProbeRelativeElementPinched_forget_underlying_arrow :
+    let V := freeProbeRelativeElementColumn A X B
+    let p := freeProbeRelativeElementAugmentation A X B
+    let σ := freeProbeRelativeElementEvaluation A X B
+    let K := freeProbeRelativeElementIndex A X B
+    let G := cofibrantAlgebraUnderlyingDerivedSource A
+    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+      pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (((cAlgForgetDerived_sourceIso A).precomp
+      (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
+      (NerveColumn.augmentationIso G V p
+        (freeProbeRelativeElementAugmentation_underlying_invertible A X B)).inv ≫
+      NerveColumn.hom G σ ≫
+      ((cAlgForgetDerived_sourceIso A).precomp
+        (nerveMap ((Functor.const K).obj (ULiftHom.objUp.{u + 1, u + 1} B)))).inv) :=
+  (freeProbeRelativeElementPinched_forget_column_roof_arrow A X B).trans
+    (congrArg Arrow.mk (freeProbeRelativeElementSourceRoof_eq_underlying A X B))
+
 end SerrePositivity.EInfinity.BarrattEccles

@@ -1,9 +1,11 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
-public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.EnrichedPostcomposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.EnrichedPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransWhiskering
 /-! 概要：同じ通常列の全屋根は、反転関手の全自然同型に自然である。
-方針：元の自然変換の二つの交換正方形から全屋根の交換式を導く。
+方針：既存 QCat 双圏の交換則と関手の合成保存から通常列の全交換式を導く。
 規約：元の全図式・augmentation・評価と同じ反転射を保持する。
 使われ方：実 U の局所化源比較を元の複体屋根へ接続する。 -/
 @[expose] public section
@@ -23,7 +25,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
 規約：元の円柱を保持。使われ方：全屋根の二本の脚。 -/
 def hom (F : nerve C ⟶ E) {V W : I ⥤ C} (a : V ⟶ W) :
     FunctorHom (nerveMap V ≫ F) (nerveMap W ≫ F) :=
-  functorHomPostcomp (nerveMap V) (nerveMap W) F (F1B.nerveNatTransHom a)
+  (hoFunctor.map ((ihom (nerve I)).map F)).toFunctor.map (F1B.nerveNatTransHom a)
 
 omit [Quasicategory E] in
 /-- 概要：元の全通常変換の像は同じ通常後合成で回収される。
@@ -34,7 +36,16 @@ lemma hom_whiskerRight {D : Type u} [Category.{u} D] (H : C ⥤ D)
     hom (nerveMap H ≫ F) a = hom F (Functor.whiskerRight a H) := by
   unfold hom
   rw [← F1B.nerveNatTransHom_whiskerRight a H]
-  exact (functorHomPostcomp_postcomp _ _ (nerveMap H) F (F1B.nerveNatTransHom a)).symm
+  have h₁ := Functor.map_comp (ihom (nerve I)) (nerveMap H) F
+  have h₂ := Functor.map_comp hoFunctor ((ihom (nerve I)).map (nerveMap H))
+    ((ihom (nerve I)).map F)
+  have h : (hoFunctor.map ((ihom (nerve I)).map (nerveMap H ≫ F))).toFunctor =
+      (hoFunctor.map ((ihom (nerve I)).map (nerveMap H))).toFunctor ⋙
+        (hoFunctor.map ((ihom (nerve I)).map F)).toFunctor := by
+    rw [h₁]
+    exact congrArg Cat.Hom.toFunctor h₂
+  simpa only [Functor.comp_map, eqToHom_refl, Category.id_comp, Category.comp_id] using
+    Functor.congr_hom h (F1B.nerveNatTransHom a)
 
 /-- 概要：元の弱 augmentation の全像は同じ全関手同型。
 方針：元の全円柱の成分反転を使う。
@@ -75,8 +86,23 @@ lemma augmentationIso_hom (F : nerve C ⟶ E) (V : I ⥤ C) {X : C}
 lemma hom_naturality {F G : nerve C ⟶ E} (e : FunctorIso F G)
     {V W : I ⥤ C} (a : V ⟶ W) :
     hom F a ≫ (e.precomp (nerveMap W)).hom =
-      (e.precomp (nerveMap V)).hom ≫ hom G a :=
-  functorHom_whisker_exchange_typed (F1B.nerveNatTransHom a) e.hom
+      (e.precomp (nerveMap V)).hom ≫ hom G a := by
+  let α := (qcatCellEquiv (nerveMap V) (nerveMap W)).symm (F1B.nerveNatTransHom a)
+  let β := (qcatCellEquiv F G).symm e.hom
+  have h := congrArg (qcatCellEquiv (nerveMap V ≫ F) (nerveMap W ≫ G))
+    (Bicategory.whisker_exchange α β).symm
+  change qcatCellEquiv _ _ (Bicategory.whiskerRight α (qcatMap F)) ≫
+      qcatCellEquiv _ _ (Bicategory.whiskerLeft (qcatMap (nerveMap W)) β) =
+    qcatCellEquiv _ _ (Bicategory.whiskerLeft (qcatMap (nerveMap V)) β) ≫
+      qcatCellEquiv _ _ (Bicategory.whiskerRight α (qcatMap G)) at h
+  rw [qcatCell_whiskerRight, qcatCell_whiskerLeft,
+    qcatCell_whiskerLeft, qcatCell_whiskerRight] at h
+  have heV : (e.precomp (nerveMap V)).hom =
+      (hoFunctor.map ((pre (nerveMap V)).app E)).toFunctor.map e.hom := rfl
+  have heW : (e.precomp (nerveMap W)).hom =
+      (hoFunctor.map ((pre (nerveMap W)).app E)).toFunctor.map e.hom := rfl
+  rw [heV, heW]
+  simpa only [α, β, Equiv.apply_symm_apply, hom] using h
 
 /-- 概要：元の全屋根は同じ後続自然同型と可換。
 方針：元の左右脚の全交換式から左脚を反転する。
