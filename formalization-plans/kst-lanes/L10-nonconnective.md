@@ -20,7 +20,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（76 モジュール・809 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
+- NonConnective 集約・専用監査は成功（78 モジュール・854 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明した S• 境界商の加法性と実 swindle を同じ Perf の実 cofiber 族で結び、同じ cone の連結 K の消滅を証明し、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -61,10 +61,12 @@
 ### 次の一手
 - `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。実分裂四角形の二胞体・四辺・零角、全単体での点ごとのラベル評価、各ラベルの閉分裂関係は接続済み。同じ点ごとの全四角形は、元の閉分裂四角形を同じ閉ラベル関手と閉 nerve 包含へ送った像に厳密一致する（`dgKappaSplitPerfPointwiseSquare_closed`）。同じ四角形の cofiber 性は、実 Perf 評価と全右 dg 加群への充満包含の後で反映できる（`dgKappaSplitPerfPointwiseSquare_isPushout_of_module`）。元の閉注入の標準 cone から右射影を延長し、元の右注入での厳密な右逆も構成した。次は同じ点ごとの零三角形の cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
 
-### 設計変更提案（コーディネータ確認）
-- c2 の汎用 dg 加群の分裂 cofiber 判定を D 正本へ分離し、K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する案。K-B 内に一般 dg 加群の cofiber API を重ねない。
+### D-12 供給境界（採用済み）
+- c2 の汎用 dg 加群の分裂 cofiber 判定は D 正本（D-12）。K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する。K-B 内に一般 dg 加群の cofiber API を重ねない。
 - D への依頼型：小 dg 圏上の右加群の閉射 a:M→N、r:N→M、b:P→N、p:N→P が a≫r=1、b≫p=1、a≫p=0、b≫r=0、r≫a+p≫b=1 を満たすとき、零角 Z（native 零頂点）、左辺・上辺・対角が零、上下の次数 −1 成分がともに零の同じ `DGModuleSquareData` の実四角形が `IsPushoutSquare`。
-- 元の cone 射影の右逆は K-B で構成済みだが、逆順の全 dg 自然ホモトピーと同じ二胞体を持つ全四角形の余極限性は未証明。通常 H⁰ の分裂で代用しない。提案の採否と D への仲介はユーザー経由で確認する。
+- 元の cone 射影の右逆は K-B で構成済みだが、逆順の全 dg 自然ホモトピーと同じ二胞体を持つ全四角形の余極限性は未証明。通常 H⁰ の分裂で代用しない。D への依頼はコーディネータ経由で受付済み。
+
+- `DGKappaSplitModuleSquareData` は同じ四辺・零対角・零の両原始元を持ち、上下の実二胞体と全四角形を元のラベル作用像へ厳密照合済み。実加群像で五つの分裂関係と零角を検証した。`DGKappaSplitCofiberInput` だけを明示入力とし、同じ Perf 四角形への反映と全単体的 `dgKappaSplitCofiberFamily` を構成する。D-12 供給後はこの入力の構成で差し替える。
 
 ### K-7 c の三段目（v3）
 - [x] c1 `dgKappaZeroPerfAction_values` の修正・集約・監査への接続。

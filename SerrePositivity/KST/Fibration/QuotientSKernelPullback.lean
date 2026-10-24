@@ -64,4 +64,12 @@ theorem quotientSKernelRealizationSquare_exInfinity_homotopyPullback
   (isHomotopyPullback_exInfinity_iff _).mpr
     (quotientSKernelRealizationSquare_homotopyPullback i q h hq)
 
+/-- 元の段ごとの商比較を入力すれば、元の商核四角形は同じ射のまま引き戻しとなる。 -/
+theorem quotientSKernelRealizationSquare_homotopyPullback_of_stages
+    (h : IsVerdierSequence i q)
+    (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q n))) :
+    IsHomotopyPullback (quotientSKernelRealizationSquare i q) :=
+  quotientSKernelRealizationSquare_homotopyPullback i q h
+    (relativeSQuotientRealization_localized_isIso_of_stages q hq)
+
 end SerrePositivity.KST.Fibration

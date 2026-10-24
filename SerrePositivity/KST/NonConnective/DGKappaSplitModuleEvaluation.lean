@@ -20,6 +20,19 @@ open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
+
+private lemma closedLabelNerve_comp {R : Type u} [CommRing R]
+    {A B C E : Type v} [DGCategory R A] [DGCategory R B]
+    [DGCategory R C] [DGCategory R E]
+    (F : DGFunctor R A B) (G : DGFunctor R B C) (H : DGFunctor R C E) :
+    nerveMap F.onClosed ≫ nerveMap G.onClosed ≫ nerveMap H.onClosed =
+      nerveMap (F.comp (G.comp H)).onClosed := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro s
+  rfl
+
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
   (X : PresentedPerfectDGObject R (DGKappaCone R D I))
@@ -30,6 +43,29 @@ def dgKappaModuleLabelAction :=
     ((presentedPerfectDGEvaluation R (DGKappaCone R D I)).comp
       (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ))
 
+/-- 元の点ごとの全四角形を、そのまま実右 dg 加群へ送る。 -/
+def dgKappaSplitModuleSquare (Z : DGKappaZeroInput R D I) :=
+  (dgKappaSplitPerfPointwiseSquare R D I X Z ≫
+    dgNerve.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) ≫
+      dgNerve.map (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
+
+/-- 上下二胞体を含む実加群四角形は、同じ元の閉分裂四角形のラベル作用像に等しい。 -/
+theorem dgKappaSplitModuleSquare_closed (Z : DGKappaZeroInput R D I) :
+    dgKappaSplitModuleSquare R D I X Z =
+      dgKappaSplitClosedSquare R D I Z ≫
+        nerveMap (dgKappaModuleLabelAction R D I X).onClosed ≫
+          closedNerveInclusion R (RightModule R (DGKappaCone R D I)) := by
+  dsimp only [dgKappaSplitModuleSquare]
+  rw [dgKappaSplitPerfPointwiseSquare_closed]
+  simp only [Category.assoc, closedNerveInclusion_dgFunctor]
+  have hc := closedLabelNerve_comp
+    (presentedPerfectDGLabelAction R (DGKappaCone R D I) (DGKappaCone R D I) X)
+    (presentedPerfectDGEvaluation R (DGKappaCone R D I))
+    (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
+  simpa only [Category.assoc, dgKappaPerfLabelFunctor, dgKappaModuleLabelAction] using
+    congrArg (fun m => dgKappaSplitClosedSquare R D I Z ≫ m ≫
+      closedNerveInclusion R (RightModule R (DGKappaCone R D I))) hc
+
 /-- 同じ閉注入と右射影の実加群での零合成。 -/
 theorem dgKappaSplitModule_head_tail :
     (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitHead R D I) ≫
@@ -37,6 +73,40 @@ theorem dgKappaSplitModule_head_tail :
           (dgKappaSplitTailProjection R D I) = 0 := by
   simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_zero] using
     congrArg (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplit_head_tail R D I)
+
+/-- 実加群の同じ左注入と左射影は厳密に分裂する。 -/
+theorem dgKappaSplitModule_head_head :
+    (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitHead R D I) ≫
+        (dgKappaModuleLabelAction R D I X).onClosed.map
+          (dgKappaSplitHeadProjection R D I) = 𝟙 _ := by
+  simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using
+    congrArg (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplit_head_head R D I)
+
+/-- 実加群の同じ右注入と左射影の交差合成は零。 -/
+theorem dgKappaSplitModule_tail_head :
+    (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitTail R D I) ≫
+        (dgKappaModuleLabelAction R D I X).onClosed.map
+          (dgKappaSplitHeadProjection R D I) = 0 := by
+  simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_zero] using
+    congrArg (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplit_tail_head R D I)
+
+/-- 実加群の同じ右注入と右射影は厳密に分裂する。 -/
+theorem dgKappaSplitModule_tail_tail :
+    (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitTail R D I) ≫
+        (dgKappaModuleLabelAction R D I X).onClosed.map
+          (dgKappaSplitTailProjection R D I) = 𝟙 _ := by
+  simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using
+    congrArg (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplit_tail_tail R D I)
+
+/-- 元の恒等分解は、同じ実加群作用の全 Hom 上で保持される。 -/
+theorem dgKappaSplitModule_decomposition :
+    (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitHeadProjection R D I) ≫
+        (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitHead R D I) +
+      (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitTailProjection R D I) ≫
+        (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplitTail R D I) = 𝟙 _ := by
+  simpa only [CategoryTheory.Functor.map_add, CategoryTheory.Functor.map_comp,
+    CategoryTheory.Functor.map_id] using
+      congrArg (dgKappaModuleLabelAction R D I X).onClosed.map (dgKappaSplit_decomposition R D I)
 
 /-- 元の閉注入の標準 cone から、同じ元の右射影を延長した実加群射。 -/
 def dgKappaSplitModuleConeProjection :=
