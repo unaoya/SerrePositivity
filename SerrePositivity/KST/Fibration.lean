@@ -592,3 +592,5 @@ public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanTriangle
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanComposite
 
 public import SerrePositivity.KST.Fibration.ZeroMiddleVerdierCoordinates
+
+public import SerrePositivity.KST.Fibration.QuotientSKernelPositiveStages

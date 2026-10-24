@@ -1,0 +1,42 @@
+module
+public import SerrePositivity.KST.Fibration.RelativeSQuotientZeroStage
+public import SerrePositivity.KST.Fibration.QuotientSKernelInfinitySquare
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
+
+/-!
+概要：正の各段の商比較から、元の全実現商射と実 coherent 核四角形へ接続する。
+方針：零段を既証明の無条件比較で埋め、同じ Ex∞ 射の可逆性と元の引き戻し性を得る。
+規約：Sp 正本が供給する正段比較に条件付き。全四角形の比較や局所化性を主張しない。
+使われ方：K-6 c5 の残入力を正の段だけに揃えた、元の商核四角形の利用側。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory MonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
+open SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
+namespace SerrePositivity.KST.Fibration
+variable {A B C : StableCategory.{u}} (i : ExactMap A B) (q : ExactMap B C)
+
+/-- 正の各段の元の商比較に条件付きで、同じ全実現商射の Ex∞ 像は全写像空間の同値。 -/
+theorem relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages
+    (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
+    IsQCatEquivalence (exInfinity.map
+      (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q))) := by
+  apply isQCatEquivalence_of_anodyneQ_isIso
+  exact (exInfinity_map_localized_isIso_iff _).mpr
+    (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
+
+/-- 正の各段の元の商比較に条件付きで、同じ全 Ex∞ coherent 核四角形が引き戻し。 -/
+theorem quotientSKernelInfinitySquare_isPullback_of_positive_stages (h : IsVerdierSequence i q)
+    (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
+    IsPullbackSquare (quotientSKernelInfinitySquare i q) :=
+  quotientSKernelInfinitySquare_isPullback i q h
+    (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
+
+end SerrePositivity.KST.Fibration
