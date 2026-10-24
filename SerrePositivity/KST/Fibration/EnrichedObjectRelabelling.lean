@@ -1,12 +1,18 @@
 module
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
+public import SerrePositivity.KST.SConstruction.SSetInternalObject
 
-/-! # 対象の座標の等号に沿い、元の全 Hom を保つ豊穣関手の読み替え -/
+/-!
+概要：対象の座標の等号に沿い、元の全 Hom を保つ豊穣関手の読み替え。
+方針：対象関数の等号を消去し、元の Hom 作用と評価射を回収する。
+規約：全パラメータ単体を保ち、対象の表示だけを輸送する。
+使われ方：core S 実現の零化円柱を元の対象座標へ戻す。
+-/
 
 @[expose] public section
 noncomputable section
 universe u v w
-open CategoryTheory MonoidalCategory SSet
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
 namespace SerrePositivity.KST.Fibration
 section Enriched
 variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C]
@@ -54,4 +60,24 @@ theorem relabelEnrichedObjects_hom
   simpa only [relabelEnrichedObjects, eqToHom_refl, Category.comp_id, Category.id_comp] using hg
 
 end Ordinary
+
+section Evaluation
+open SerrePositivity.KST.SConstruction
+variable {C : Type v} [EnrichedCategory SSet.{u} C]
+
+/-- 全パラメータの評価は、始域と終域を同じ対象等号で輸送した元の評価射。 -/
+theorem relabelEnrichedObjects_uncurry
+    (F : EnrichedFunctor SSet.{u} C SSetInternalObject.{u})
+    (obj : C → SSetInternalObject.{u}) (h : F.obj = obj)
+    {X Y : C} {P : SSet.{u}} (H : P ⟶ (X ⟶[SSet.{u}] Y)) :
+    uncurry (H ≫ (relabelEnrichedObjects F obj h).map X Y) =
+      (eqToHom (congrArg (fun k : C → SSetInternalObject.{u} => (k X).obj) h).symm ▷ P) ≫
+        uncurry (H ≫ F.map X Y) ≫
+          eqToHom (congrArg (fun k : C → SSetInternalObject.{u} => (k Y).obj) h) := by
+  cases h
+  simp only [relabelEnrichedObjects, eqToHom_refl, Category.comp_id,
+    id_whiskerRight, Category.id_comp]
+  rfl
+
+end Evaluation
 end SerrePositivity.KST.Fibration

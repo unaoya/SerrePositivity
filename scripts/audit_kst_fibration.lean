@@ -9,6 +9,8 @@ run_cmd do
   let expected := #[
     `SerrePositivity.KST.Fibration.CoreFamilyDiagonalCylinder,
     `SerrePositivity.KST.Fibration.CoreSingleFamilyCylinder,
+    `SerrePositivity.KST.Fibration.CoreSingleRealizationFamily,
+    `SerrePositivity.KST.Fibration.CoreSingleKanFamily,
     `SerrePositivity.KST.Fibration.StableSingleSCoreFamily,
     `SerrePositivity.KST.Fibration.QuotientSKernelNullCoreAction,
     `SerrePositivity.KST.Fibration.VerdierNullContractionCoordinates,

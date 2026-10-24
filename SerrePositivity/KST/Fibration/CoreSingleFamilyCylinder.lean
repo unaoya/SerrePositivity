@@ -1,8 +1,14 @@
 module
 public import SerrePositivity.KST.Fibration.CoreFamilyDiagonalCylinder
 public import SerrePositivity.KST.Fibration.QuotientSKernelNullCoreAction
+public import SerrePositivity.KST.Fibration.CoreSingleCoordinates
 
-/-! # 元の商核円柱を、一回の全豊穣実現族の同じ対角評価として回収する -/
+/-!
+概要：元の商核円柱を、一回の全豊穣実現族の同じ対角評価として回収する。
+方針：恒等成分の図式同型の対角を元の実現同型と照合し、全評価を輸送する。
+規約：円柱の全パラメータと元の包含・商の実合成を保持する。
+使われ方：商実現四角形と指定 Verdier 二胞体との比較。
+-/
 
 @[expose] public section
 noncomputable section
@@ -20,6 +26,22 @@ def coreSingleSimplicialIso (A : StableQCat.{u}) :
     ((stableMultiSCoreObjectEnrichedFunctor 1).obj A).diagram ≅
       simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by intros; rfl)
+
+/-- 同じ図式座標同型の対角は、元の単回実現座標同型の逆射そのもの。 -/
+theorem coreSingleSimplicialIso_diagonal_hom (A : StableQCat.{u}) :
+    simplicialDiagonalFunctor.map (coreSingleSimplicialIso A).hom =
+      (coreSingleRealizationIso (stableCategoryModel A)).inv := by
+  apply NatTrans.ext
+  funext n
+  rfl
+
+/-- 逆向きの図式座標の対角も、元の単回実現座標同型の順射と一致する。 -/
+theorem coreSingleSimplicialIso_diagonal_inv (A : StableQCat.{u}) :
+    simplicialDiagonalFunctor.map (coreSingleSimplicialIso A).inv =
+      (coreSingleRealizationIso (stableCategoryModel A)).hom := by
+  apply NatTrans.ext
+  funext n
+  rfl
 
 /-- 同じ全入力族の各段を回収する元の円柱は、同じ native 全図式円柱に等しい。 -/
 theorem singleCoreFamilyCylinder_coordinates {A C : StableQCat.{u}} {P : SSet.{u}}
@@ -69,5 +91,23 @@ theorem quotientSKernelNullCylinder_native
     (quotientSKernelNullNatTrans_app h)
   rw [quotientSKernelNullNatTrans_diagonal] at he
   exact he
+
+/-- 元の core S 対象で読んだ商核円柱は、同じ全 Hom 評価の座標輸送である。 -/
+theorem quotientSKernelNullCylinder_realization
+    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+    (h : IsVerdierSequence i q) :
+    quotientSKernelNullCylinder h =
+      ((coreSingleRealizationIso (stableCategoryModel (show StableQCat from A))).hom ▷
+          (Δ[1] : SSet.{u})) ≫
+        uncurry (zeroEndPostcompFamily
+          (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
+            (verdierSequenceComposite_zero h) ≫
+              (stableMultiRealizationEnrichedFunctor 1).map
+                (show StableQCat from A) (show StableQCat from C)) ≫
+          (coreSingleRealizationIso (stableCategoryModel (show StableQCat from C))).inv := by
+  have he := quotientSKernelNullCylinder_native h
+  rw [coreSingleSimplicialIso_diagonal_hom, coreSingleSimplicialIso_diagonal_hom] at he
+  rw [← he, ← Category.assoc, ← comp_whiskerRight, Iso.hom_inv_id,
+    id_whiskerRight, Category.id_comp]
 
 end SerrePositivity.KST.Fibration

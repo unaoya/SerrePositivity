@@ -84,6 +84,7 @@
   dgKInputFiberSquare、dgRelativePiZeroMap_surjective、dgRelativeFiberSquare_negative_subsingleton。
 - weakCosliceComparisonFiber_isEssentiallySurjective、weakSpanKanMappingComparison_value_isEssentiallySurjective、
   weakQuotientMappingComparison_isIso_of_fraction_fullyFaithful。
+- relabelEnrichedObjects_uncurry、coreSingleSimplicialIso_diagonal_hom、coreSingleRealizationFamily_coordinates、quotientSKernelNullCylinder_coreRealization、stableCoreSingleKanFamily_coordinates、quotientSKernelNullCylinder_exInfinity。
 - relativeSKernelContractionCylinder、relativeSKernelDiagonalContraction、quotientSKernelNullHomotopy、quotientSKernelContractionImage_fullS、quotientSKernelNullNatTrans_app、quotientSKernelNullNatTrans_diagonal、stableMultiCoreFamilyCylinder_diagonal、quotientSKernelNullCylinder_native、verdierNullContractionComparison、verdierNullContractionFamily_original_heq。
 - relativeSectionBaseChangeComponentIso_pointHom、relativeSectionBaseChangeComponentIso_heq_transportMap、
   leftStraighteningSectionJointDiagram_baseChangeIso_pre、leftStraighteningSectionJointDiagram_baseChangeIso_vertex。
@@ -97,14 +98,20 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### 未コミット
-- 所有ファイルはなし（本引き継ぎも停止コミットに保存）。CoreFamilyDiagonalCylinder・CoreSingleFamilyCylinder と集約・監査は e310c490e、前の所有13ファイルは 51fe1d56b。未接続の作業中 Lean ファイルなし。/tmp の試作・ログは再開の前提にしない。
+- 所有の検証済み変更は工程ごとに保存する。未接続ファイル・ログを再開の前提にしない。
 ### 既知の問題
 - 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 ### 次の一手
-- EnrichedObjectRelabelling.lean の relabelEnrichedObjects による全 Hom の座標読み替えを構成する。対象等式 h:F.obj=obj の下で uncurry(H≫relabel.map) は、uncurry(H≫F.map) を始域の eqToHom(h.symm)▷P と終域の eqToHom(h) で挟んだ射に等しい（cases h; simp only [relabelEnrichedObjects, eqToHom_refl, Category.comp_id, id_whiskerRight, Category.id_comp]; rfl で試作検証済み）。coreSingleSimplicialIso の対角＝coreSingleRealizationIso の逆射を照合し、quotientSKernelNullCylinder_native の全族を元の core S 実現対象へ移す。Ex∞ の全 Hom 作用へ送り、verdierNullContractionComparison と共有対角固定円柱から指定二胞体を保つ全四角形比較へ進む。Sp の不足三件も確認する。
-  元の比較の実右逆・相対余単位・strict Kan 実成分の本質的全射性は構成済み。正本の充満忠実性だけで元の比較の可逆性へ接続できる。
-  span 側の逆順三角形と正本の充満忠実性が残る。新しい一般分数補題は Sp へ依頼する。
+- 全 Hom の対象座標読み替え、図式同型の対角と実現同型の逆射の一致、元の core S 対象上の商核円柱の全評価は接続済み。Ex∞ の全 Hom 作用と strength による同じ円柱像も構成済み。次は `verdierNullContractionComparison` と共有対角固定円柱から、指定二胞体を保つ全四角形比較へ進む。
+- Sp 正本の分数比較の充満忠実性・β3 の実核接続・有限線型図式の局所化は L9 の受付で未供給。元の比較の右逆と相対余単位は構成済みで、充満忠実性の供給後に接続する。同種 API は新設しない。
+
+### K-6 c の三段目（v3）
+- [x] c1 `relabelEnrichedObjects` の全 Hom 座標読み替え。
+- [x] c2 `coreSingleSimplicialIso` の対角と実現同型の逆射の照合。
+- [x] c3 商核零化円柱の元の core S 実現対象への輸送。
+- [ ] c4 Ex∞ 上で指定二胞体を保つ全四角形比較。
+- [ ] c5 商実現比較と無条件の連結版への接続。
 
 ## 規約
 - 配置 `SerrePositivity/KST/Fibration/`、集約 `KST/Fibration.lean`、監査 `scripts/audit_kst_fibration.lean`。
