@@ -58,6 +58,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsRepresentableSmallSpaceFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isRepresentable_of_sendsSmallColimitsToLimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.SendsSmallColimitsToLimits.precomp_op
+#check @SerrePositivity.InfinityCategories.F2.Presentable.fullyFaithfulRepresentableRestrictionIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isRepresentable_iff_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sendsSmallColimitsToLimits_iff_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.reflective_isRepresentable_of_local_representation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.representedRestriction_inverts_op_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveUnit_map_isIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.representedReflectiveUnit_inverts_op_edge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
