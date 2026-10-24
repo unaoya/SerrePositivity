@@ -20,7 +20,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（87 モジュール・933 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
+- NonConnective 集約・専用監査は成功（89 モジュール・985 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -55,12 +55,21 @@
 ### 既知の問題
 - D は上記の個別フィールドを供給したが、I・P の完成した実値は未提供。両構造の存在、選択独立性・全入力射での反復の整合性は証明済みと扱わない。未供給型一覧はコーディネータの仲介用であり、K-7 からの直接メッセージ送信はしていない。
 - b の Verdier 列の左項は選んだ perfect 対象の実安定閉包。元の β5 の Perf と同一視する際は P の全写像空間の同値と包含の全関手比較を必ず使う。ordinary 導来圏での `perfectCovers` だけからは推論しない。
-- K-6・F2N-5・K の消滅・非連結 K 本体は未接続。必要時は対応する主張を明示入力に隔離し、提供後に差し替える。一般の安定 ∞ 圏上の K は作らない。
+- 同じ cone の K の消滅は接続済み。K-6 の canonical fiber 比較から固定 native loop への実構造比較は、下記の未供給の相対屋根入力に対して構成した。F2N-5・非連結 K 本体は未接続。一般の安定 ∞ 圏上の K は作らない。
 - a の以前の end 持ち上げ余錐は保持するが、完成界面は `sequentialCandidateColimitCocone`。通常の Hom 極限性だけでは ∞ 余極限性の代用にならない。
 
 ### 次の一手
 - c1〜c3 完了。元の全四角形を cofiber 図式の全部分圏へ全単体で持ち上げ、四評価を同じ dg 作用に回収して完全関手に束ねた。`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` は同じ SOA 群比較を介して接続し、実 Sp の零頂点性を得た。I・P・Z の存在は明示入力のまま。
 - c4：同じ平坦分解の増大と商包含を固定 dg K の厳密二脚として保持し、増大の K 像の可逆性・平坦 cone の K の零性を証明した。`DGKappaSuspensionMapData` から同じ懸垂入力射と K 屋根の両可換四角形を得る。D 正本の `comparisonFunctor` により、perfect を保つ cone 射を同じ増大可換な平坦射へ持ち上げる。同じ明示 `DGKappaSuspensionMapData` に対する懸垂入力射の恒等・合成・元の ε の保存は、D 正本の指定収縮付き商普遍性を特殊化して証明した（`DGKappaSuspensionInputLaws`）。同じ固定 K の実 spectrum 射にも厳密な恒等・合成を接続した（`DGKappaSuspensionKMapLaws`）。一般の商関手則を K-B 内に新設していない。canonical `comparisonFunctor` の恒等・合成、元の dg 入力射からの cone 作用と全整合性は未供給で、単独の増大可換四角形で代用しない。
+
+
+- c5：`DGKappaSuspensionLoopComparison` は、同じ平坦 cone・実懸垂を頂点とする元の相対四角形から、K-6 の同じ canonical fiber を loop として構成する。`DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap` は元の比較辺と実合成二胞体を保持して固定 native loop への厳密 BF 射を回収する。辺の可逆性は元の K 四角形の引き戻し性と同値で、局所化性の証明を入力に隠していない。実相対屋根入力の存在・元の Perf との照合・反復の構造射列は未証明。
+
+### c5 の設計変更案（未採用）
+- I は cone の dg 小模型、P は元の Perf とその perfect 安定閉包の全関手比較を供給するが、固定 `dgKInputInfinity` 内の実相対 Verdier 四角形まではフィールドに含まない。同じ商は平坦分解を介する屋根であり、未供給の厳密 Cone→Σ 射を仮定しない。
+- 提案：I・P の型を変えず、`DGKappaSuspensionRelativeRoofInput` を別の明示供給境界とする。実小 dg 核、同じ平坦 cone・同じ Σ を頂点とする固定 ν の `RelativeVerdierDiagram`、右辺が元の `dgKappaResolvedSuspensionInputMap` の全一単体である厳密一致を要求する。この型の存在は主張しない。
+- 追加で、実核の Perf と元の β5 の Perf の全関手同値が P の包含比較に一致する照合が必要。D の小 dg 核・平坦屋根と Sp の相対 Verdier 接続を、コーディネータ経由で所有元へ割り当てる案。K-B はその供給後に元の K 入力と各反復段へ接続する。一般商・局所化 API は新設しない。
+- 提案の利用側は実装・検証済み。相対屋根入力だけから同じ核 K→固定 native loop K(Σ) の実 BF 射・元の全比較辺・実合成二胞体を得る。元の K 四角形の引き戻し性、入力の存在、P との照合、全入力射に自然な反復整合性、`K^{nc}` の完成は含めない。
 
 ### D-12 供給境界（採用済み）
 - c2 の汎用 dg 加群の分裂 cofiber 判定は D 正本（D-12）。K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する。K-B 内に一般 dg 加群の cofiber API を重ねない。
