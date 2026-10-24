@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGStandardSimplexMap
+import SerrePositivity.InfinityCategories.Derived.DGStandardEnrichedFunctor
+import SerrePositivity.InfinityCategories.Derived.DGCoherentComparisonNaturality
+import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionNaturality
+import SerrePositivity.InfinityCategories.Derived.DGStandardPinchedNaturality
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyGeneral
+import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionClosedFamilyNaturality
 import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionDirect
 import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinchedGeneral
 import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecompositionDirect
@@ -7118,6 +7125,13 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
   `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGStandardSimplexMap,
+  `SerrePositivity.InfinityCategories.Derived.DGStandardEnrichedFunctor,
+  `SerrePositivity.InfinityCategories.Derived.DGCoherentComparisonNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGStandardPinchedNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionClosedFamilyNaturality,
   `SerrePositivity.InfinityCategories.Stable.InitialEdgeIso]
 
 open Lean in
