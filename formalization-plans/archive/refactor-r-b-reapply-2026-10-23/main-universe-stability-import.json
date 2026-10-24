@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/Stable/UniverseStabilityDescent.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects"
+      ]
+    }
+  }
+}

@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
 public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
 public import SerrePositivity.InfinityCategories.Stable.Definition
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
