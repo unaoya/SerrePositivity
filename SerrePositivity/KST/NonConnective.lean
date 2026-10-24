@@ -51,6 +51,9 @@ public import SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput
 
 public import SerrePositivity.KST.NonConnective.DGSuspensionEnrichedAction
 public import SerrePositivity.KST.NonConnective.DGSuspensionConnectedComparison
+public import SerrePositivity.KST.NonConnective.DGSuspensionStageEquivalence
+public import SerrePositivity.KST.NonConnective.DGSuspensionRoofStabilization
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedRelativeRoof
 
 /-!
 概要：厳密 dg 入力の非連結 K に向けた K-7 所有界面。
