@@ -1,20 +1,19 @@
 # R-C：∞ 圏基盤のリファクタリング
 
-## 引き継ぎ
+## 引き継ぎ（完了・停止、2026-10-24）
 
-- 現在地：R17 a45c92306、R19 2c1fa3384、R20 aa124065c、3-1 完全一致部 0252eb8a6 完了。R16 87c6a2711 も90モジュールの移動・全本文保存・旧 import 0と、4集約ビルド・指定4監査の成功を確認済み。
-- 残り：取り込み方式を変更。R-A の F1 再編後の main に順次再適用する。R19/R16 の2,300移動 JSON と cherry-pick 3件を準備済み。「main 空き」の合図待ち。R15・267転送入口削除も同じ専有期間に実施可。
-- 主要宣言：`SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape`。既存の宣言型・証明は保存。
-- 依存と提供：F1 の `hasLimit_coherentSpaceDiagram` を使用。R-A の `scripts/move_module.py` 到着までは機械的変更の対応表を archive に残す。
-- 未コミット：再適用計画・ペイロード・dry-run証拠・手順。既存の実装コミットは保存。
-- 既知の問題：なし。main の未追跡作業ファイルは取り込まない。
-- 次の一手：「main 空き」の合図後、新 main で再 dry-run → JSON --apply → R17/R20/共有化の cherry-pick → R15/267入口削除 → scripts/refactor/verify.sh。rebase と .lake 再クローンは廃止。
+- R-C の全担当項目は main への再適用・検証まで完了。コーディネータが完了を確認し、`ad0422789f7f3e3edc02323401b3340a184bbe0f` にタグ `refactor-stage2-2026-10-24` を付与した。
+- 以後 main には書き込まない。再適用・rebase・.lake 再クローン・追加ビルドは不要。この worktree は旧実装と再適用準備時点 `8bfde1959` を保持し、最後の文書整理のみ追加して停止する。
+- main の実施記録：R19 `65c0881c8`、R16 `ba39c0897`、R17 `bdf8d1c6a`、R20 `446304032`、完全一致部共有化 `a6a10c52b`、R15 `d5cd974e2`、互換入口267本の削除 `d2385ea7e`。検証記録は main の `formalization-plans/archive/r-c-main-2026-10-24/`。
+- 最終検証：`scripts/refactor/verify.sh` の2集約ビルド・24監査が全緑。main_statement の直接 sorry 閉包は空。HomotopicalAlgebra 関連の追加5チェックも終了コード0。数学的内容・既存宣言の型・証明を保存し、新規 sorry・公理なし。
+- EInfinity の準重複33組は両ファイル名・類似度・型の差・一般化案を再確認。型の異なる組は変更せず、一般化の実施判断は所有レーン E2 の再開後へ引き継ぐ。HomotopicalAlgebra は現存する同名6組と全ファイル族の記録を残す。
+- 残作業：なし。下記の準備中・待機中という記述は、main 再適用前の実施履歴であり、今後の作業指示ではない。
 
-## 方針
+## 当時の方針（履歴）
 
 指定の所有範囲で直接移動・参照置換する。互換シムなし。数学的内容・既存の宣言型・証明は保存し、sorry・公理を追加しない。各項目末に F2・HomotopyLimits の集約ビルドと audit_infinity_f2・audit_infinity_presentable・audit_homotopy_limits・audit_einfinity を実行する。取り込み方式の新指示に従い、rebase は行わず「main 空き」の合図後 main に再適用する。
 
-## 検証
+## worktree での検証・準備（履歴）
 
 R17：`lake build SerrePositivity.InfinityCategories.F2 SerrePositivity.InfinityCategories.HomotopyLimits` および `lake env lean scripts/{audit_infinity_f2,audit_infinity_presentable,audit_homotopy_limits,audit_einfinity}.lean` を各実行し終了コード0。F2 19,485 宣言、Presentable 852 宣言、EInfinity 25,780 宣言が標準三公理のみ。ログは `/tmp/r-c-r17-*`。
 
@@ -52,4 +51,4 @@ R15 事前依存調査：PresheafDensity の Ind 内依存閉包は59本。定�
 
 R16 最終検証：4集約のビルド16,055 jobsと指定4監査は全て終了コード0。F2 19,486宣言、Presentable 1,479宣言、EInfinity 25,777宣言。標準三公理のみで新規 sorry・公理なし。移動元90本文は import 置換以外の差分0。UniverseSSetMaps は移動・編集していない。ログは /tmp/r-c-r16-*。
 
-取り込み方式変更：formalization-plans/archive/r-c-reapply-2026-10-23/README.md に新手順を固定。本文中の古い rebase 待ち・ツール未到着の記述は当時の実施記録であり、現在の着手条件は冒頭に記した「main 空き」の合図。
+取り込み方式変更：formalization-plans/archive/r-c-reapply-2026-10-23/README.md に新手順を固定。本文中の古い rebase 待ち・ツール未到着の記述は当時の実施記録であり、当時の着手条件は「main 空き」の合図だった。再適用と検証は完了し、現在は停止している。

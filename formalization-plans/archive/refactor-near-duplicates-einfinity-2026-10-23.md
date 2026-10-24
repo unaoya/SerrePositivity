@@ -62,3 +62,15 @@ Ordinary 側は resolution object の通常の射、Resolution 側は resolution
 
 
 共有可能な HomotopicalAlgebra 宣言：`OrdinaryBarFirstAction.output` ↔ `ResolutionBarFirstAction.output`。`MixedResolutionLiftAction.output R.1.unop.inner R.2.unop.inner` が本文で、変数・局所 Reedy instance も一致する。既存両宣言との `rfl` 比較と最小 import の独立コンパイルを確認した。
+
+## 全ファイル族の対象一覧（main 再適用時）
+
+2026-10-24 の共有化後の対象は OrdinaryBar* 116本・ResolutionBar* 11本。同名対応6組に加え、同名対応のない Ordinary 側110本・Resolution 側5本も [全対象インベントリ](r-c-main-2026-10-24/bar-family-inventory.json) にファイル名・SHA-256付きで記録した。上表の類似度は元の比較時点の値で、ここでは再計算していない。
+
+コーディネータの再計算で0.33を超える相手がなかった Resolution 側5本（一般化・実装は所有レーン再開後の判断）：
+
+- `SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarConeDiagram.lean`。
+- `SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFrameSquares.lean`。
+- `SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowHomotopy.lean`。
+- `SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowOperators.lean`。
+- `SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowPresentations.lean`。

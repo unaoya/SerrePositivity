@@ -1,0 +1,663 @@
+{
+  "inventory_date": "2026-10-24",
+  "inventory_head": "e0ca9ecdb578aaa492d91eda3447d4d0b9f75d3d",
+  "ordinary": [
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAmbientWordComparison.lean",
+      "sha256": "5f9b61448dfad54ceb83db6a264c7b8addeeea306d8691c4de62775524e164ab"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAssociativityCoherence.lean",
+      "sha256": "5986262db3eccd3863b01c8d60baafcabed5f3987d947bb9953d14b1b0188678"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAugmentationEquivalences.lean",
+      "sha256": "05797c0ff5cea4220338b020da59601942f3511408f237d14631c26897e86a74"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarBaseInvariance.lean",
+      "sha256": "36c9c6372b140f90bfa6c0d73649239452c3d0aaf527faa87defbb7f1af8a235"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCenters.lean",
+      "sha256": "e3a33cb6b2c87aeef2f725fd54593a19c215a7804d6f92ea6bc63cfff474b19e"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChainFamily.lean",
+      "sha256": "5186985e1b5b1fd9c6bca057c390e800c2f0c26e86459dbfb3d3457859bea1fd"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceBoundaryExt.lean",
+      "sha256": "441c5833557d3c5620c925e0b0438659476907975226a819a041ba4f28de676b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceBoundaryGluing.lean",
+      "sha256": "3e050d7f24c40b8ecc92a547922d35eff2d749bad9d830634b09a28f823d093c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceCategory.lean",
+      "sha256": "1a2f8d531843f81ce5d587160a63eb7bcc1fd4c395119731bf765eab85ba175f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceChainTransfer.lean",
+      "sha256": "ba8f906d97389359e69ffcebd0c93d1a99537df2617cc0a7ff8115410d2709d5"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceComposition.lean",
+      "sha256": "da3329e2746914b9b17dfca506a7310e87a75a96ff1dd2030e7c7dddbe49d1af"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceMappingSpace.lean",
+      "sha256": "839cc97a4d78e09043a0e8bdf81401c7d0f7e7c6e36f3ab2b26daed107509a4f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceSimplicialCategory.lean",
+      "sha256": "385305c797a5875b49dfbf4ce9394b738928e0035f60c12c09954b1426160353"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceTriangleGluing.lean",
+      "sha256": "46aaca51ff4f7ceefce737c58e51329c14e16dc8bf55f700acd2efc9b5e9d35b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarClosedHomDescent.lean",
+      "sha256": "93389ee48c9463e878e76cb836c7bc9eb0825f386c5508fbfc027ec60ee0c7b4"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarClosedHomDescentLaws.lean",
+      "sha256": "0e7f8d0ea49916a3f34e4ecfa205c253a8966474a23f51d0e2ff4f9e24eccb1b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCommaCone.lean",
+      "sha256": "b09e5643b9e0f8686b03810f24bcdf30c1dd3d222955ff527455f061bd334ce3"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionChoices.lean",
+      "sha256": "85e9339c67a5c9c34a7a7c5b394de9ec49198c770f9d3e732cca57fdf58b1e1a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionParameterDiagram.lean",
+      "sha256": "2a6f6af509a72f6d5f3aa926acfc9fb80418867981798df4ebe91e1c7abb732c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionReindex.lean",
+      "sha256": "e4527aeaf17b6ed5b4fc0ab68ac63479b020cb31f5dc5e74b13501065d78d9b2"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionReindexLaws.lean",
+      "sha256": "d2ce07a8028e7358441bc76b202e3e49d81764758635d8b68d0a128b451ebd33"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalAction.lean",
+      "sha256": "90bb5b5faa5aa22a3154c787ae6c782aeafb9232f2bd7293cc7c893ca4204f54"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalAmbientHom.lean",
+      "sha256": "e37812e459cfed0d912a09a3a0a4acdfaf363c1a49a2fb90f388129381d54c68"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalClosedAction.lean",
+      "sha256": "79c34ff28e492ac582bf1db1927b4293ca02b4194cfb70b5efa4624cc35d7f1c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalClosedCompatibility.lean",
+      "sha256": "e877b6437bcff45b7aec4744ea857e53212bf3235973c1bb7e9a24f15ea2e28a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalEvaluation.lean",
+      "sha256": "b8d0d683e51a077f203e55d9908693c890432f293094b8dff4ef8f04841624cd"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalHomAugmentation.lean",
+      "sha256": "5b3c4dafe513d061cb9ca18ceeebf151353feb8482c2da83b0760c31936f3b83"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalHomRetraction.lean",
+      "sha256": "999b44fd969386c14ef540d437ddfe7f48483275a0cff52b3dc4de7498c62ba6"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluatedEndpoint.lean",
+      "sha256": "62f424dc539c74391894ab07dbd23573ec9d40d6aee06d8aa9b8fd0beb9600a1"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluation.lean",
+      "sha256": "748a6b2ef0c3e7159330cb71abd30ef62855e12e6143b06a9385f606dd39f7be"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluationEquivalence.lean",
+      "sha256": "41256cff492cc18fcab7e40a5ee996180dac3aa947c893f138517e169fdd46ab"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstAction.lean",
+      "sha256": "4fa092b1600b5fc6ca218ec6d0f4c2816d5de2d0b64d820d40768017c17b8077"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstEndpoint.lean",
+      "sha256": "8b387752561d4c7e3feb7eb2377f3cc84ae658fcb4b227397ff594859ac3ab10"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedAugmentation.lean",
+      "sha256": "a90e335a3ffe8cb1417cbd7e35f748974dc058219c795e2276985ba714c91021"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedChoices.lean",
+      "sha256": "8ec1b53992fa6906e6a30fed701f78350f11e54ef79a8deae5ad2bef59fba3ae"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedRowWordHom.lean",
+      "sha256": "0458c3a8b55aec9c3b629eff60ffb0d3b712ceb937742118adeb44dbde979d1b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedSource.lean",
+      "sha256": "5197d030ea72ad3b5c4a60bd5a03c3d5bda87aecbe0e6091a9702108b0bd22dc"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedWordEvaluation.lean",
+      "sha256": "19d2a19c1ca56f5cbbfdfb4689cff943ba776bec5297ed7f5fb52797968d57ae"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedWordResolution.lean",
+      "sha256": "83e383902bc45d632307373e0fdea228be4440a8476d50848927b1f9c295a09f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeAmbientFamilies.lean",
+      "sha256": "99bca52aadc527bc9cd0fa04887e2d63509139b36c3a6953a574c142df2b3738"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeBoundaryGluing.lean",
+      "sha256": "4623cdf293dbf122e577ff26555ed6a990b7e0e503dab2a7b9e48603a1a4b4ae"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeChainTransfer.lean",
+      "sha256": "9f26bfa6bef5bcf0ee22155b1a66577e0ef24167b8c057144df1c192db9ab76d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeChainUnits.lean",
+      "sha256": "e47a78c788f7464f85188dfc951644c5ce93b1e680935834f151b7bdcccfbcea"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDegeneracyExtension.lean",
+      "sha256": "4a37bab6dcebc7f8dc901b5b9579d174421f372389f125b3744de27e9e6ec4c3"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDiagramExtension.lean",
+      "sha256": "89de4c3997c89aa0e74c99218f91c96fc7bda979e5e8576d8985f5a74fca38e9"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDiagramHomotopy.lean",
+      "sha256": "27cdda3b0614ea55ade5a1311a6785d4ea7677c3fa0a19ae7bd017506782cae8"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionAction.lean",
+      "sha256": "0edc947683eb8d90d05b5949d81362a3f47c3b77b5b7294665b17d2579e6c8c1"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionBoundary.lean",
+      "sha256": "5d35010692fb638c043ab204dd75e70ce295b3a6c9ed1682a8f8f54423453704"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionChoices.lean",
+      "sha256": "98b048b0a08d63993e97991478eb9877ddbee35af074664141c2fbeca176ba1d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionComparison.lean",
+      "sha256": "448e094e6b3559698e536ca5a64a3597b922e4d7c08e1c2ad7cb9194ca80c409"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionDegeneracyValues.lean",
+      "sha256": "7ef893fccd202ed45e85f17511f326acf4cd09841b74d8c66fd7f251244137a3"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionDegenerateBoundary.lean",
+      "sha256": "f57c2336494ad633a94f29e2b91e9fe4c8798f28c37f2c5385a3a8e4af118d50"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionFaces.lean",
+      "sha256": "732aa3b99a079dc0c6a7284be4b45c16ac0f6a045ce1a221bb2c18bca426cfc7"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionMixedFaces.lean",
+      "sha256": "4389d6aec11a36b13f3bb7d963b096d5cfbbf9b59cb8c44c7422a85a2d30c4cb"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionNaturalChoice.lean",
+      "sha256": "3c749b801889ec13168b20461c2b03001982094573172a4708a70822b58c2198"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionSeed.lean",
+      "sha256": "094c16a434d0d4139bb6e366514f806559a2f3dd0d78db27ce3b5cc52d21db91"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionStep.lean",
+      "sha256": "4eeccb72b90a2da96e70f910c242b304d83567038e430f455055bb5fc4bc035e"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionTower.lean",
+      "sha256": "b779d0b81bb75f310ec94967480de4bc7cb1a3ba551708016113ec722351478b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTransferredFamilies.lean",
+      "sha256": "7debb0cb4552cf0c83ba5df66384e66a7b1b54804d8b52667cb1ca6657367d4a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleBoundary.lean",
+      "sha256": "c32ae8b5764a9226942123715257ec95c4342c4fc37293586e5b9a5bbf11c6ff"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleDegeneracy.lean",
+      "sha256": "0eb1871794903c530c52003af8b6af3ee73ec6d65ae96a31744e89bdfaadc13e"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleFiller.lean",
+      "sha256": "f5bbab064df63c7471942280211d0d58576c37a5fc0f1d81e5089822ae219f5d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleGluing.lean",
+      "sha256": "1854f06f245c508f598902bed69bf5c129102f8514d5cc0efc689cf6f548c0ad"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeWordChainTransfer.lean",
+      "sha256": "28f18ca4ed9e92c202b3bc5bdc33a0a2e544d8bd9d2ea97da6d63f34a489c7f9"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarHomSections.lean",
+      "sha256": "102baf83164fd3e0312d85e7815fb1041ac5e56701c24666a0799b966c7db1b2"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarHomotopyDescent.lean",
+      "sha256": "48775b3b05c96ac20330d3afa2c942e19642d56f5e0d526f87dde65ae09ff534"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarLabelSurjectivity.lean",
+      "sha256": "94c12deb008ab560fbdb493da7ed95b1dedf1c74ba80ed222b2b88342224ca24"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingClasses.lean",
+      "sha256": "ab3c805310ff8f047a6aa982df71a72c564ad8b1c6608cb933869f94ee35089a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingComparison.lean",
+      "sha256": "5ebd88061d21cfe3f9970d67541e0ed5e6dbaa38a1403ee5c4bed9ff190d4770"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarNerveBridge.lean",
+      "sha256": "8769918ba477699c319212ef00480d687ea12e3208e4206da104a6f8433f5556"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarNormalizedCompositionTriangle.lean",
+      "sha256": "3fff553d059ed54e80f3cabe9ecb62cf023d35ed35c43c37e2e695da06e8b150"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarParameterChoiceCategory.lean",
+      "sha256": "87f5134588fae0903549fd18830bfd1de9d685c437cf1cfd43cfade39717a204"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarPiZero.lean",
+      "sha256": "03e905ca46e79033db2d1d18cb9398d1314e92c9875f28a6856148167908327f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReference.lean",
+      "sha256": "f260219595932ac80722d30b75620d50ef4b2aab17b23200b463f6169e3e7c03"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRowHomotopy.lean",
+      "sha256": "d9b2fc791ed249e3f534e4d9532dfbc139d8ce6610f0bf60189f6d5e35c15d7f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRows.lean",
+      "sha256": "fecc5c94ff893eda36df04331fbf68890f98dd75e050d10db6f5c5e0c44d011d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeComposition.lean",
+      "sha256": "4bd5dd6fb9592d82cddc1860e66fce70ca031e447435d35a8d9f97d1c7d89556"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeCompositionTriangle.lean",
+      "sha256": "90604345d1a864258949c7af57cc982f1a0280d10657bdce72080db31ef03cfc"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeFreeDiagramExtension.lean",
+      "sha256": "6fcaf9d2a1849e7fcda0087989c1414a22120acb5cfad31ef2d48305359a5209"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeHomDescent.lean",
+      "sha256": "c55dc6ec36462a362b8b6361869d919858fde4f4bbf574334512b60213c2a57b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeNativeComparison.lean",
+      "sha256": "fb5ce929b623ce4b69cce3611645767ef36aae5908eb0fdb002cced444f04898"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReplacementComparison.lean",
+      "sha256": "44507ee1477cbd97fd9b3f5c51b3e2e2f353d9df340689bc03df605d19124459"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRetractSystem.lean",
+      "sha256": "ae8b0653a1bc928317bb40849ed61b687c9d49c36265812843a977a5d228fd90"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRetractTransfer.lean",
+      "sha256": "c7b859bfdf37eca0a8cae08569ff4fca258734661167e6dc493b4c91d2fbaa83"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRightEvaluation.lean",
+      "sha256": "a5b9289915c520e5af49d5e3ebd9abe91cebd629aec1719d21b72133343086b6"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRowDiagram.lean",
+      "sha256": "b184217cd8485b3e88d6cb9769c1fb06c1f80b827b4ab8584260ce75ff639ea0"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSimplexCone.lean",
+      "sha256": "601dcf2a9dc26316a45d66ee86071fce42789634a316f2df62811fb3f95d1bbf"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallAction.lean",
+      "sha256": "af3577736b5c6f22937956e32ac4ce05b05046c57283416b7480ece05892f989"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallFreeChainTransfer.lean",
+      "sha256": "f3b8bed0ffbf1b8fcd8b590c08b9da3855265b05d299fde54d85331e1b1cc0fc"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallFreeWordChainTransfer.lean",
+      "sha256": "b3763fd440c99a81038962de2884bb305ec2958a8e07c421668c873b1c95657e"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallReference.lean",
+      "sha256": "8d5a98d7c0c30ee62b63bf67d8aa63daf9ff9ea5ac3ee71aacfc675168d7cd7a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallSubcomplex.lean",
+      "sha256": "9ccebafc5cb614544d8492d20a3ae78b9b758920775cb25feb769017033cec34"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceContraction.lean",
+      "sha256": "d05bf9d1d0862e0beb9674e7ab9e16cffcd3eda8a27c614113bef33a5c0c5f1f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceExtraDegeneracy.lean",
+      "sha256": "d303dc53f118a03954746dd4c8847eb50a4e5e050fe044013310f37e7565f782"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceExtraOperators.lean",
+      "sha256": "e2bff43c8d07d4fbf08694419037aad83ec5107153e57c624892b4b377780dec"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceHom.lean",
+      "sha256": "edf286d1edc067257c522a473c675c2f143c845ec3cfb100359343e46caa419a"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceOperators.lean",
+      "sha256": "a3c1a1749a872c45512728f99a70375695c39ca5bb7c8449aefca5421c83997d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceSection.lean",
+      "sha256": "c6802279081a424c63d3eee45b899bf67076f99cb9f3fce11d3f1e35d4eac666"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceWordEmbedding.lean",
+      "sha256": "6bd4a934cf0b1a238386d5070e4f7f4ad38af079c82eca9cc98ce8aaf9c9b3dc"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalCone.lean",
+      "sha256": "dc1ec9ce30f660ba5e81a49c810769d7607173f826c6fa3acdf7af200ec8b839"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalEvaluation.lean",
+      "sha256": "ea5410812a50a93c329b88f741d2d8fcbee5e2d5defdbd283e5d67de388f11d0"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalHomotopy.lean",
+      "sha256": "358f3f9c0f31e15b6cf14c171be9bdb49270c81945fd0a15cff8c299ee76f5b4"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTripleComparison.lean",
+      "sha256": "2feda158a43f70d56c98d22133e3808d8ae3ae250d29d47806a09416be2d5f3e"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarUnitCoherence.lean",
+      "sha256": "9415d4a10a2b896b355528b069386e8b141484850ab4c1d853696c8cc20e4be2"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarUnitTriangles.lean",
+      "sha256": "d8b20dd58e5907aa786606b25753322c2e99ec88396952d313c64695abc84a5f"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordAction.lean",
+      "sha256": "59c0b155c20ba492ab27a4200a2578b1dbd8954b3085712e3cee20d100343654"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordActionOperators.lean",
+      "sha256": "6e2245f69f277772c70371c47d4ab417158ac8ecd01c33cb327bfb79e8603ae4"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordChainFamily.lean",
+      "sha256": "66d4cefe02549eec9f22a16dd482636d739fe834e3f044776b7b1b1c45684c4d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordContraction.lean",
+      "sha256": "5296f0719d86a69451c11df9cdcb5746354532cfa6ad6d2e4a634306afb16c96"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordDiagonalEquivalence.lean",
+      "sha256": "de69032a36e80c2ec8c219fbe4c6632d41323ec8c1f6dc6570627c9406ee5f0c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordEvaluationOperators.lean",
+      "sha256": "00c927de6241b0fdbd578e9fa3063209561345da944d0a0708aa59be1602e840"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordPresentation.lean",
+      "sha256": "cbc436293d2106b08bf9be59dbec2e48627f60d77e5b4014a56eeec920e2b498"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordResolution.lean",
+      "sha256": "749e9d9ec1a462855ab3c522c9c671ae8ef73799b4a47cd0a88d61a806d4133d"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRowMaps.lean",
+      "sha256": "fb17af978daec44ab2445c4709aa307367a4d96bfa3c6da171df5c37d4a4dc70"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRows.lean",
+      "sha256": "f2513c80716646f3b5ca611e56525a3c1cf94e370493d990caa66522b6e9b016"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRowsDiagonal.lean",
+      "sha256": "ada876c61e4641a06a76a0d8e5a7a0bb5f994a154f2aa54053f5584cec1130cd"
+    }
+  ],
+  "resolution": [
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarCenters.lean",
+      "sha256": "7756d2adaeb69deda2e3059311c1dfa40260bda3b93c8ecc1c1e488ef69ae7fc"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarConeDiagram.lean",
+      "sha256": "b77f23fcc96bca938ae9ca7b79c265417157f049e19f9a2d399c65f26abddfc1"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarEvaluation.lean",
+      "sha256": "1cbf82167691b81a5af3548ac428d957b7fb5ddbc6eac545f9ab6bab3a990bd8"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFirstAction.lean",
+      "sha256": "98021c513352593291dd0589b6fe628c01ab9207598ac543d246dcd021acdbf3"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFrameSquares.lean",
+      "sha256": "79ab85965ab4449a9cb294dbd5df308d121b4cbc7e82e262f3eb4ac6c55e3ffb"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarReference.lean",
+      "sha256": "0672ba0478405de6f4db79e07eda3a86aa5239758503f3e3c0fad3df302a1550"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowDiagram.lean",
+      "sha256": "e10c60f3abca5919193dbb5d0351b021631aa6be4c222327f67c003978625e6b"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowHomotopy.lean",
+      "sha256": "15725cee034deeabe6a289734c1bf81331817703dcb0dd16d5dffc86a1a0520c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowOperators.lean",
+      "sha256": "f0ef46048b1f85a3ae523be0a6079ce1747b095c9cc4884f89a014d0f7bf92f1"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowPresentations.lean",
+      "sha256": "eede3187bd393d5ccc8c47944ade78bff37c98462751c4e773d82911191ca96c"
+    },
+    {
+      "path": "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarSimplexCone.lean",
+      "sha256": "d67a880b42435b83ebe062aeac28c497cf8f8598c1b0fbc48d6e4c8f4ce862c8"
+    }
+  ],
+  "same_stem_pairs": [
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCenters.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarCenters.lean"
+    ],
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluation.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarEvaluation.lean"
+    ],
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstAction.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFirstAction.lean"
+    ],
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReference.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarReference.lean"
+    ],
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRowDiagram.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowDiagram.lean"
+    ],
+    [
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSimplexCone.lean",
+      "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarSimplexCone.lean"
+    ]
+  ],
+  "no_same_stem_ordinary": [
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAmbientWordComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAssociativityCoherence.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarAugmentationEquivalences.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarBaseInvariance.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChainFamily.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceBoundaryExt.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceBoundaryGluing.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceCategory.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceChainTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceComposition.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceMappingSpace.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceSimplicialCategory.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarChoiceTriangleGluing.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarClosedHomDescent.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarClosedHomDescentLaws.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCommaCone.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionChoices.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionParameterDiagram.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionReindex.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarCompositionReindexLaws.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalAmbientHom.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalClosedAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalClosedCompatibility.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalHomAugmentation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarDiagonalHomRetraction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluatedEndpoint.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarEvaluationEquivalence.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFirstEndpoint.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedAugmentation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedChoices.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedRowWordHom.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedSource.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedWordEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFixedWordResolution.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeAmbientFamilies.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeBoundaryGluing.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeChainTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeChainUnits.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDegeneracyExtension.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDiagramExtension.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeDiagramHomotopy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionBoundary.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionChoices.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionDegeneracyValues.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionDegenerateBoundary.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionFaces.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionMixedFaces.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionNaturalChoice.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionSeed.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionStep.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeResolutionTower.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTransferredFamilies.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleBoundary.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleDegeneracy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleFiller.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeTriangleGluing.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarFreeWordChainTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarHomSections.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarHomotopyDescent.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarLabelSurjectivity.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingClasses.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarNerveBridge.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarNormalizedCompositionTriangle.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarParameterChoiceCategory.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarPiZero.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRowHomotopy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReferenceRows.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeComposition.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeCompositionTriangle.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeFreeDiagramExtension.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeHomDescent.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRelativeNativeComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarReplacementComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRetractSystem.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRetractTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarRightEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallFreeChainTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallFreeWordChainTransfer.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallReference.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSmallSubcomplex.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceContraction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceExtraDegeneracy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceExtraOperators.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceHom.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceOperators.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceSection.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarSourceWordEmbedding.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalCone.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalEvaluation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTotalHomotopy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarTripleComparison.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarUnitCoherence.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarUnitTriangles.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordAction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordActionOperators.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordChainFamily.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordContraction.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordDiagonalEquivalence.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordEvaluationOperators.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordPresentation.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordResolution.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRowMaps.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRows.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarWordRowsDiagonal.lean"
+  ],
+  "no_same_stem_resolution": [
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarConeDiagram.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarFrameSquares.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowHomotopy.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowOperators.lean",
+    "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionBarRowPresentations.lean"
+  ],
+  "coordinator_report_provenance": "User reply 2026-10-23: six same-stem pairs with reported similarity 0.49–1.00; no partner above 0.33 for the other five ResolutionBar files. Reported values use a different comparison setup from the normalized Markdown table.",
+  "scope_note": "This inventory enumerates all current members after identical-declaration sharing; it does not recompute the earlier similarity values or authorize type-changing generalization."
+}
