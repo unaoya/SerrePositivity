@@ -822,7 +822,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.TerminalUnitConeGeometry,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapUnitLoopDomains,
     `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorEdgeHomotopyRecovery,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitSixTriangleLoops]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitSixTriangleLoops,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitLoopEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitLoopRawEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitConeFamilyReindex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitLoopTetrahedronFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TerminalUnitLoopClass,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronLoopDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationSourceTetrahedron,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexPrismEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationProjectionFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceTetrahedronFaceAgreement,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitProjectionNullity]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
