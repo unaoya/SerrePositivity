@@ -1,5 +1,10 @@
 # Bhatt–Scholze 形式化のリファクタリング計画
 
+> **既知の問題（2026-10-24 17:45、コーディネータ記録）**：`scripts/audit_bhatt_scholze_refactoring.lean:838` の `example` が
+> `Ideal.Quotient.mk` の環 instance の型不一致（`AddMonoidAlgebra.ring` 経由と `Ideal.Quotient.ring` 経由の semiring 構造の不一致）で失敗する。
+> 閉包は BhattScholze 配下のみで、10-23〜24 の ∞ 圏基盤リファクタとは無関係（BS のソースは基準タグ以降不変）。第 II 段の BS 再開時に修正する。
+
+
 作成日：2026-10-16。改稿：2026-10-18（§1〜§12 の調査・実施記録と §13.6 は [archive/bhatt-scholze-refactoring-log.md](archive/bhatt-scholze-refactoring-log.md) へ移した）。
 BS の証明済み構成を保ち、既存 API の再利用、一般補題の配置修正、重複証明の統合を行う。
 原典の証明経路の正本は [BS 主計画](bhatt-scholze.md)。この計画は証明経路や引用範囲を変更しない。
