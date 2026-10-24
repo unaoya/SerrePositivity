@@ -347,3 +347,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaComparison_isIso_of_filtered_geometric
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallSiftedColimits_iff_filtered_geometric
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaFilteredGeometricRestriction_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitPreservation_of_restrictionEquivalences
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitPreservation_of_localLeftKan
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_geometricRealizations
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_iff_finiteCoproducts_sifted
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_finiteCoproducts_sifted
