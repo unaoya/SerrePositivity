@@ -6,14 +6,14 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、指定実終点像＝元の反転精密化の作用、同じ零面値による指定対角比較の正方形を証明。同じ零面側の指定対角比較の値を、共有する実最後辺と実両端を保って元の Apex 側へ戻した。元の raw 二辺因子を束ね、任意の全初期値で四因子境界式の長辺値消去を証明。最大化側の最後辺と元の最後辺を同定し、同じ全係数の head を第一射の係数作用に続く最後射へ正規化。最大化側の実最後 prism＝第一射の全係数作用後の元の最後射の実 prism を、同じ対象・head・tail・全 Hom の一致から証明。指定対角比較の値照合と Ncomp は未証明。
+- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、指定実終点像＝元の反転精密化の作用、同じ零面値による指定対角比較の正方形を証明。同じ零面側の指定対角比較の値を、共有する実最後辺と実両端を保って元の Apex 側へ戻した。元の raw 二辺因子を束ね、任意の全初期値で四因子境界式の長辺値消去を証明。最大化側の最後辺と元の最後辺を同定し、同じ全係数の head を第一射の係数作用に続く最後射へ正規化。最大化側の実最後 prism＝第一射の全係数作用後の元の最後射の実 prism を、同じ対象・head・tail・全 Hom の一致から証明。最大化側の指定対角比較の値＝第一射の同じ係数作用で制限した固定最後射の指定対角比較の値まで証明。元の最後射の値比較と raw 因子への接続、Ncomp は未証明。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。期限で未完なら I-1 c として明示入力の継続を確定する。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ] ← 今回、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [ ]。
 - 主要宣言：`spaceCompositionZeroLastInitialEndpointIso_eq_middle`、`spaceCompositionZeroLastNativeEndpointIso_eq_refl`、`spaceCompositionZeroLastActualEndpointIso_eq_zero`、`spaceCompositionZeroLastSpecified_zero_square`、`spaceCompositionZeroFamily_last_base`。
 - 残り：I-1 a の Ncomp と値の消去、b の全錐比較と有限形状帰納（HTT 5.3.3.3、8 時間枠内）。続いて I-2 a〜e（下記 F2N-5 の未完部分）。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論は P・K-B、I-2 e は K-B へ公開する。
 - 既知の問題：一般交換と安定性は未証明。ModelCategory 仮定を加えない。
-- 次の一手：`spaceTrianglePointedFamily_maximal_last_prism` を `diagonalTransportIso_postcomp_heq_of_boundary` と対角比較の係数制限則に渡し、`spaceCompositionZeroLastSpecified_zero_square` の最大化側の指定比較の値を、第一射の全係数作用後の元の最後射の値比較へ揃える。零面側の同じ値は `coherentColimitApexZeroLastDiagonal_post_value_heq_original` で元の Apex 側へ戻る。Apex の最後辺の正方形と native 中間像の式を接続する。元の raw 二辺因子を保持する `coherentColimitApexCompositeValueComposite` に同じ零面値を続けた式を元の二射合成の評価比較へ同定し、Ncomp を結論する。`coherentColimitApexRawTriangleBoundaryAt_long_cancel` は任意の全初期値の四因子式への帰還用で、未証明の値照合の代用にはしない。
+- 次の一手：`spaceCompositionStandardLastValue_heq_fixed_precomp` の固定対角値を、`pointedHomMorphismValueComparison_heq_fixed_diagonal` の元の値比較へ戻す。同じ両端の頂点表示を照合して `VertexIso.map` による全係数の制限へ渡す（元の値比較は `VertexIso` なので `.precomp` を直接使わない）。零面側の同じ値は `coherentColimitApexZeroLastDiagonal_post_value_heq_original` で元の Apex 側へ戻る。Apex の最後辺の正方形と native 中間像の式を接続する。元の raw 二辺因子を保持する `coherentColimitApexCompositeValueComposite` に同じ零面値を続けた式を元の二射合成の評価比較へ同定し、Ncomp を結論する。`coherentColimitApexRawTriangleBoundaryAt_long_cancel` は任意の全初期値の四因子式への帰還用で、未証明の値照合の代用にはしない。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

@@ -1,6 +1,8 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.spaceCompositionStandardLastValue_heq_fixed_precomp
+
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSourceSimplex
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastCompositeSimplex
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_obj
