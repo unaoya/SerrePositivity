@@ -34,14 +34,16 @@ local notation "a" => coherentNerveVertex
 local notation "g" => spaceCompositionZeroMiddleMap s
 local notation "e" => spaceCompositionTetrahedronZeroRestrictionIso s r
 
-/-- 元の最後辺の始点包含は同じ全三角形の中間頂点包含。 -/
+/-- 概要：元の最後辺の始点包含は同じ全三角形の中間頂点包含。方針：実包含と指定端点評価を照合。
+規約：元の全初点係数を保持。使われ方：最後辺の始点同定。 -/
 lemma spaceCompositionZeroLast_start :
     prismEndpoint 0 A ≫ r = simplexPrismVertex 2 1 A := by
   apply SSet.hom_ext
   intro n
   rfl
 
-/-- 元の零面の同じ最後辺制限比較の始点像は、指定中間点比較そのもの。 -/
+/-- 概要：元の零面の同じ最後辺制限比較の始点像は、指定中間点比較そのもの。方針：実包含と指定端点評価を照合。
+規約：元の全初点係数を保持。使われ方：最後辺の始点同定。 -/
 lemma spaceCompositionZeroLastInitialEndpointIso_eq_middle :
     relativePrismInitialEndpointIso p (r ≫ β) a
       ((Category.assoc _ _ _).symm.trans

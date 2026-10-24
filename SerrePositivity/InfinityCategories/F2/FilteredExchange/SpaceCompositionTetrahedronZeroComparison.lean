@@ -46,6 +46,14 @@ def spaceCompositionTetrahedronZeroComparison :
     (spaceCompositionTetrahedronZeroFamily_projection s)
     (spaceCompositionTetrahedronZeroFamily_initial s)
 
+/-- 概要：零面の指定比較の全族表示を回収。方針：定義の同じ比較を明示する。
+規約：選択を変えない。使われ方：巨大な比較の定義的照合を等式で分離する。 -/
+lemma spaceCompositionTetrahedronZeroComparison_eq_family :
+    spaceCompositionTetrahedronZeroComparison s =
+      spaceSimplexPointedFamilyComparisonIso M L
+        (spaceCompositionTetrahedronZeroFamily_projection s)
+        (spaceCompositionTetrahedronZeroFamily_initial s) := rfl
+
 /-- 零面の部分図式への比較も同じ全比較の指定像として定義する。 -/
 def spaceCompositionTetrahedronZeroRestrictionIso
     {C : SSet.{u + 1}} (r : C ⟶ (Δ[2] : SSet.{u + 1}) ⊗ A) :=

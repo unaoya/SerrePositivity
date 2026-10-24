@@ -6,14 +6,14 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、同じ実終点像と指定対角比較の合成式まで対象ビルド済み。Ncomp は未証明。
+- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、指定実終点像＝元の反転精密化の作用、同じ零面値による指定対角比較の正方形を証明。同じ零面側の指定対角比較の値を、共有する実最後辺と実両端を保って元の Apex 側へ戻した。Ncomp は未証明。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。期限で未完なら I-1 c として明示入力の継続を確定する。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ] ← 今回、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [ ]。
-- 主要宣言：`spaceCompositionZeroLastInitialEndpointIso_eq_middle`、`spaceCompositionZeroLastNativeEndpointIso_eq_refl`、`spaceCompositionZeroLastSpecified_endpoint_square`。
+- 主要宣言：`spaceCompositionZeroLastInitialEndpointIso_eq_middle`、`spaceCompositionZeroLastNativeEndpointIso_eq_refl`、`spaceCompositionZeroLastActualEndpointIso_eq_zero`、`spaceCompositionZeroLastSpecified_zero_square`、`spaceCompositionZeroFamily_last_base`。
 - 残り：I-1 a の Ncomp と値の消去、b の全錐比較と有限形状帰納（HTT 5.3.3.3、8 時間枠内）。続いて I-2 a〜e（下記 F2N-5 の未完部分）。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論は P・K-B、I-2 e は K-B へ公開する。
 - 既知の問題：一般交換と安定性は未証明。ModelCategory 仮定を加えない。
-- 次の一手：同じ零面の最後辺の実終点像を `pointedOppositeTriangleFunctorIso` へ戻し、最大化側の指定比較を二辺評価に同定する。元の raw 二辺値比較と中間比較を保持して Ncomp を結論する。
+- 次の一手：`spaceCompositionZeroLastSpecified_zero_square` の最大化側の指定比較を二辺評価に同定する。零面側の同じ値は `coherentColimitApexZeroLastDiagonal_post_value_heq_original` で元の Apex 側へ戻る。Apex の `coherentColimitApexLastSpecified_endpoint_square` と `_LastNative_heq_middle_postcomp` を接続し、元の raw 二辺値比較と中間比較を保持して Ncomp を結論する。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

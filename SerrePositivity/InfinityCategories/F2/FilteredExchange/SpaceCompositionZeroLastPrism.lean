@@ -32,6 +32,17 @@ lemma spaceCompositionZeroFamily_last_eq_original :
   rw [spaceCompositionTetrahedronZeroFamily, ← Category.assoc, ← comp_whiskerRight,
     h, comp_whiskerRight, Category.assoc, spaceCompositionTetrahedron_pointed_face_one]
 
+/-- 概要：最大化側と元の最後辺の底は一致する。方針：同じ実共有辺を射影する。
+規約：全初点係数を保持。使われ方：同じ最後辺の二つの底の表示を揃える。 -/
+lemma spaceCompositionZeroFamily_last_base :
+    (stdSimplex.δ (0 : Fin 3) ▷ A) ≫
+        (fst Δ[2] A ≫ SSet.yonedaEquiv.symm (coherentSimplexMaximalization s)) =
+      (stdSimplex.δ (0 : Fin 3) ▷ A) ≫ (fst Δ[2] A ≫ SSet.yonedaEquiv.symm s) := by
+  have h := congrArg (fun t => t ≫ pointedSpaceProjection)
+    (spaceCompositionZeroFamily_last_eq_original s)
+  simpa only [Category.assoc, spaceCompositionTetrahedronZeroFamily_projection,
+    spaceSimplexPointedFamily_projection] using h
+
 /-- 零面の中間作用は、元の同じ全三角形の中間作用そのもの。 -/
 lemma spaceCompositionZeroFamily_middle_eq_original :
     simplexPrismVertex 2 1 A ≫ spaceCompositionTetrahedronZeroFamily s =

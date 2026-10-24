@@ -41,28 +41,33 @@ local notation "h₁" => Eq.trans (Eq.symm (Category.assoc _ _ _))
   (Eq.trans (congrArg (fun t => t ≫ (fst Δ[2] A ≫ SSet.yonedaEquiv.symm M))
     (spaceCompositionZeroLast_end s)) (spaceCompositionZeroEndpoint_base s))
 
-/-- 同じ零面の最後辺の底は、元の最大化図式の同じ制限。 -/
+/-- 概要：同じ零面の最後辺の底は、元の最大化図式の同じ制限。方針：実境界式と指定比較の自然性を使用。
+規約：元の全係数と比較を保持。使われ方：零面の最後辺の照合。 -/
 lemma spaceCompositionZeroLast_standard_projection : W ≫ p = β := by
   rw [Category.assoc, spaceSimplexPointedFamily_projection]
   rfl
 
-/-- 元の零面の最後辺も同じ制限図式を被覆する。 -/
+/-- 概要：元の零面の最後辺も同じ制限図式を被覆する。方針：実境界式と指定比較の自然性を使用。
+規約：元の全係数と比較を保持。使われ方：零面の最後辺の照合。 -/
 lemma spaceCompositionZeroLast_zero_projection : W' ≫ p = β := by
   rw [Category.assoc, spaceCompositionTetrahedronZeroFamily_projection]
 
-/-- 標準族の実最後辺は、元の中間射から始まる。 -/
+/-- 概要：標準族の実最後辺は、元の中間射から始まる。方針：実境界式と指定比較の自然性を使用。
+規約：元の全係数と比較を保持。使われ方：零面の最後辺の照合。 -/
 lemma spaceCompositionZeroLast_standard_start :
     prismEndpoint 0 A ≫ W = f ≫ vertexFiberι p a := by
   rw [← Category.assoc, spaceCompositionZeroLast_start]
   exact spaceCompositionZeroMiddleMap_standard s
 
-/-- 零面の実最後辺も同じ元の中間射から始まる。 -/
+/-- 概要：零面の実最後辺も同じ元の中間射から始まる。方針：実境界式と指定比較の自然性を使用。
+規約：元の全係数と比較を保持。使われ方：零面の最後辺の照合。 -/
 lemma spaceCompositionZeroLast_zero_start :
     prismEndpoint 0 A ≫ W' = f ≫ vertexFiberι p a := by
   rw [← Category.assoc, spaceCompositionZeroLast_start]
   exact spaceCompositionZeroMiddleMap_zero s
 
-/-- 零面の同じ実終点像と指定対角比較の合成は、標準族の指定対角比較そのもの。 -/
+/-- 概要：零面の同じ実終点像と指定対角比較の合成は、標準族の指定対角比較そのもの。方針：実境界式と指定比較の自然性を使用。
+規約：元の全係数と比較を保持。使われ方：零面の最後辺の照合。 -/
 lemma spaceCompositionZeroLastSpecified_endpoint_square
     (g g' : A ⟶ vertexFiber p b)
     (hg : prismEndpoint 1 A ≫ W = g ≫ vertexFiberι p b)
