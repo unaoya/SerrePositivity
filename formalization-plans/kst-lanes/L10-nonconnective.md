@@ -37,7 +37,7 @@
 - `DGSuspensionStageProvider`、`dgSuspensionIteration`、`dgSuspensionIterationStage`、`dgKappaSwindleClosedFunctorIso`、`dgKappaSwindleNativeInputEdge`、`dgKappaSwindleFixedK_pi`。
 - `boundaryKanAdditivityMap_piIsomorphism`、`boundaryKanAdditivityGroup_injective`、`singleBoundary_constantZero`、`singleBoundaryMiddle_additivity`、`nonnegativeBoundaryEquiv_naturality`、`connectedKMiddle_additivity`。
 - `dgKappaSplitHead`、`dgKappaSplitTail`、`dgKappaSplitHeadProjection`、`dgKappaSplitTailProjection`、`dgKappaSplit_decomposition`、`DGKappaZeroInput`、`dgKappaZeroFunctor_isZero`。
-- `dgKappaZeroPerfAction_isZeroVertex`、`dgKappaFullPerfFamilyMap_vertex`、`dgKappaPerfClosedHomotopy`、`dgKappaSplitPerfFamilySquare`。
+- `dgKappaZeroPerfAction_isZeroVertex`、`dgKappaFullPerfFamilyMap_vertex`、`dgKappaPerfClosedHomotopy`、`dgKappaSplitPerfFamilySquare`、`dgKappaZeroPerfAction_values`、`dgKappaZeroPerfFunctorVertex_isZero`、`dgKappaFullPerfZeroVertex_isZero`。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-3・K-4、固定界面 ν・K）、`KST/LocalizingInvariants/`（K-5 相対版、K-8）、`KST/Spectra/`、`KST/Fibration/`（K-6）、`InfinityCategories/Derived/`（β3・β5）、`F2/Ind/`。
@@ -46,8 +46,7 @@
 - D の未供給：I の `kappaCompact`・`covers`・`pretriangulated`。前三角性は D の未統合試作にとどまり、本体供給として数えない。P の `comparison`・`isEquivalence`・`inclusion` も未供給。対象別反復供給 `DGSuspensionStageProvider` の存在・入力射作用と整合性は未証明。[宣言名と対応表](archive/L10-dg-kappa-inputs.md)。
 
 ### 未コミット
-- `SerrePositivity/KST/NonConnective/DGKappaPerfZeroFamily.lean` を未追跡の作業ファイルとして残す。集約・専用監査から未接続。`dgKappaZeroPerfAction_values` の末尾で、`dgNerve.map` による頂点の像と `Simplex.vertex` の同一視が型不一致（旧ログ `/tmp/k7-c-native-split2.log`）。後続 `dgKappaZeroPerfFunctorVertex_isZero`・`dgKappaFullPerfZeroVertex_isZero` もファイル全体として未検証。`sorry` に置き換えない。
-- 他の K-7 所有変更は停止コミットで保存する。共有作業木・共有 index の他レーンの変更は対象外。
+- なし。`DGKappaPerfZeroFamily.lean` は頂点同一視を修正し、集約・専用監査へ接続済み。
 
 ### 既知の問題
 - D は上記の個別フィールドを供給したが、I・P の完成した実値は未提供。両構造の存在、選択独立性・全入力射での反復の整合性は証明済みと扱わない。未供給型一覧はコーディネータの仲介用であり、K-7 からの直接メッセージ送信はしていない。
@@ -56,7 +55,14 @@
 - a の以前の end 持ち上げ余錐は保持するが、完成界面は `sequentialCandidateColimitCocone`。通常の Hom 極限性だけでは ∞ 余極限性の代用にならない。
 
 ### 次の一手
-- 新チャットが最初に証明する宣言は、未接続 `DGKappaPerfZeroFamily.lean` の `dgKappaZeroPerfAction_values`：同じ実零自己関手による `dgNerve.map (presentedPerfectDGAction …)` が元の Perf の全0単体を `IsZeroVertex` へ送ること。`dgNerve.vertexEquiv.symm` と `Simplex.vertex` の照合、および dg nerve 写像の頂点公式を明示して型不一致を解消する。その後、同ファイル全体を対象検査し、成功後にだけ集約・監査へ接続する。次に実分裂四角形の辺・零角・点ごとの cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・F2N-5・I・P の存在は完成扱いしない。工程 c→d→e→f は各工程の完了報告後も承認を待たず、停止せず続行する。このチャットはコーディネータの停止指示に従い再開しない。
+- `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。次は実分裂四角形の辺・零角・点ごとの cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
+
+### K-7 c の三段目（v3）
+- [x] c1 `dgKappaZeroPerfAction_values` の修正・集約・監査への接続。
+- [ ] c2 実分裂四角形の辺・零角・点ごとの cofiber 性。
+- [ ] c3 加法性と swindle による同じ cone の連結 K の消滅。
+- [ ] c4 反復懸垂の入力射作用と整合性。
+- [ ] c5 構造射と逐次余極限による `K^{nc}` の構成。
 
 ## 原典との照合・受入条件
 - [BGT 2013 §9.1、Def. 9.1・Lem. 9.4・Prop. 9.5・Def. 9.6・Lem. 9.7](https://msp.org/gt/2013/17-2/gt-v17-n2-p03-s.pdf) を基準とする。一般安定 ∞ 圏での構成は参照先の主張であり、本レーンでは厳密 dg 供給に限定する。

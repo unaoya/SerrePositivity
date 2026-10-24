@@ -18,6 +18,7 @@ run_cmd do
     `SerrePositivity.KST.NonConnective.DGKappaConeInput,
     `SerrePositivity.KST.NonConnective.DGKappaFullPerfAction,
     `SerrePositivity.KST.NonConnective.DGKappaPerfClosedEdges,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfZeroFamily,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectInput,
     `SerrePositivity.KST.NonConnective.DGKappaSplitInclusions,
     `SerrePositivity.KST.NonConnective.DGKappaSplitProjections,
