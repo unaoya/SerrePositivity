@@ -1534,3 +1534,135 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointCommaIso_projection
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointCommaIso_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_boundary
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_boundary
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape_boundary
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorLowerUniverseShape_boundary
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_native_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_native_extension
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indConeEndpointRaw_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indConeEndpointRaw_extension
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_coneTensor_threeBoundary_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_coneTensor_threeBoundary_extension
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneSlicePrism_apex_isTerminal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneSlicePrism_apex_isTerminal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indConeSlice_reconstruction
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indConeSlice_reconstruction
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry_yoneda
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry_yoneda
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_tip
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_originalFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_originalFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_prism
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismFamily_prism
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry_original
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightFamilyCurry_original
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_original
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramRightPrismCurry_original
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramComma_rightFamily_ext
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramComma_rightFamily_ext
+
+#check SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedSliceData
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedSliceData
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedSliceData_nonempty
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedSliceData_nonempty
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedSlice_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedSlice_tip
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_source
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_source
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_tip
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_originalFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_originalFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_prism
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_prism
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaCocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaCocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeDiagramComma_cocone_of_lower_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeDiagramComma_cocone_of_lower_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeDiagramComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeDiagramComma_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallConeDiagramComma_isKappaFiltered_of_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallConeDiagramComma_isKappaFiltered_of_lower

@@ -685,3 +685,35 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRaw
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawBoundary
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointCommaIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorUniverseShapes
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorUniverseBoundaries
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorNativeExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorThreeBoundaryExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeSlicePrismApex
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeSliceReconstruction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramRightPrismCurry
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramRightPrismFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramRightPrismRecovery
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedSliceData
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedPrisms
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedPrismBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedPrismOld
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedCommaFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeDiagramFiltered

@@ -23,11 +23,12 @@
 - I-2 a④ の実拡張：`exists_indComma_coneTensor_extension` は、元の二つの全図式と共通境界を保つ、同じ scalar Ind comma 内の全余錐積への拡張。任意の κ-small な下方形状と試験族を保持し、モデル圏仮定を要しない。
 - I-2 a④ の形状制限：`diagramCommaRestriction` は元の全図式 comma の形状制限。`_projection`・`_uncurry`・`_coconeMap`・`_evaluate` で元の C 全図式・全錐・指定値を回収し、`_comp`・`_id` は全射の厳密な合成則と恒等則。
 - I-2 a④ の一般 slice 円柱：`coneTerminalSliceSection_projection` は元の右余錐図式 D の全切断。`exists_coneSlice_cone_lift` と `exists_coneSlice_prism_lift` は元の全底図式・下方全境界・同じ D 側面を保持する実持ち上げ。
-- I-2 a④ の旧族固定：`exists_coneTensor_extension_fixing_original` は終点が終対象である元の全円柱 W と、補間領域の元の全図式を同時に固定する実再構成。`coneTerminalSliceSection_tip_isTerminal` は同じ標準 D 切断の終点の終対象性。元の Ind comma 族への適用は未了。
+- I-2 a④ の旧族固定：`exists_coneTensor_extension_fixing_original` は終点が終対象である元の全円柱 W と、補間領域の元の全図式を同時に固定する実再構成。`coneTerminalSliceSection_tip_isTerminal` は同じ標準 D 切断の終点の終対象性。`indConeExtendedCommaFamily_old` は元の同じ diagram comma で元の q 自身を厳密に回収する。
 - I-2 a④ の全円柱の制限：`diagramCommaPrism_precomp` と `_restrict` は試験族と形状の両制限で元の全変換を保つ。補間領域の写像は単射を保ち、`coneTensorCoconeIso_inv_naturality` は同じ逆比較の全自然性。
+- I-2 a④ の余錐図式：`exists_indConeEndpointRaw_extension` は同じ実終点 comma で両全族を延長。`indConeExtendedSliceData_nonempty` は旧族の全円柱と下方全余錐を保持する再構成データ。`nonempty_indConeDiagramComma_cocone_of_lower_cocone` は元の q 自身の実余錐。`smallConeDiagramComma_isKappaFiltered_of_lower` は下方 comma の κ-filtered 性から同じ余錐図式の κ-filtered 性を与える。各点評価の共終性は未証明。
 - 供給依頼：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`posetSubtypeNerveIso_hom_ι` は現在の所有 import 閉包外。下方部分と全部分複体の比較に必要なため、コピーせずコーディネータ経由の供給依頼を報告済み。順序下方部分の圏と終点余錐の厳密な比較は独立に保存済み。
 - I-2 a④ の元の族への適用：`indConeSliceInterpolationData_nonempty` は元の q と指定下方余錐 G の二段持ち上げ。`indConeEndpointRaw`・`indConeLowerEndpointRaw` は同じ実終点 comma 内の両全族、`indConeEndpointRaw_boundary` はその全共有境界の厳密な一致。元の C 全図式と全 slice 円柱を保持する。
-- 次の一手：I-2 a④。同じ実終点 comma の互換な二つの全族を、小さい積・余錐形状の表示へ移す。余錐積への実拡張と旧族を固定する相対再構成を組み合わせ、同じ元の diagram comma 族へ戻す。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
+- 次の一手：I-2 a④。構成した実余錐の下方制限が指定した G 自身であることを、元の C 全族と全円柱で厳密に回収する。次に指定頂点評価下の余錐と新しい極大点での全比較を構成する。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 
