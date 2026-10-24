@@ -98,9 +98,9 @@
 - 停止用検証は全て終端0：`/tmp/d-stop-target.log`（8722 jobs）、`/tmp/d-stop-aggregate.log`（11358 jobs）、`/tmp/d-stop-signatures.log`（43明示署名、ModelCategory 仮定なし）、`/tmp/d-stop-derived-audit-final.log`（22104宣言／2522モジュール）、`/tmp/d-stop-stable-audit-final.log`（23219宣言／2792モジュール）。許容三公理のみ、追加11ソースに警告なし。初回監査はビルド中の共有 Completion.olean 不在で失敗したが、集約完了後の再監査が成功。旧61101・61368は handle 不在、停止用実行も全終了。共有生成物不在を避けるため次チャットでも集約の終端を確認してから全体監査を開始する。他レーンは変更しない。
 
 ### 次の一手
-- 第2チャットの D-12・D-8 b は完了・保存・両全体監査済み。区切り後の追加依頼をユーザーが明示：先に D2 の coherent dgPinchedCompositionFamilyPrism の左右閉恒等入力に対する全パラメーター・端点輸送付き単位退化表示、D-9 の K-B c5 向け実小 dg 核・同じ平坦 cone と Σ の屋根側は `61516c824` で供給済み（`Derived.ResolvedDGQuotientFlatKernel` の `resolvedDGQuotientFlatKernel`／`resolvedDGQuotientFlatKernelInclusion`／`resolvedDGQuotientFlatKernel_isStableVerdierSequence`／`resolvedDGQuotientProjection_eq_nerve`／`resolvedDGQuotientFlatKernel_roof`、Small・Hom K-flat・安定性も公開）。K-B の元の束・右辺への直接適用と両全体監査（Derived 22,368／2,570、Stable 23,430／2,839）成功。固定 ν の接続は Sp、元の Perf・P 照合は K-B 所有。既存宣言は不変、新名の dg 最小入口へ置く。D-8 c・d・e は未着手。
+- 第2チャットの D-12・D-8 b は完了・保存・両全体監査済み。D-13 は `fefab5a7c`、[x] 1（標準単位と全 coherent 図式）・[x] 2（元の prism の全パラメーター・端点輸送付き退化表示）・[x] 3（最小入口・24署名・集約11,073 jobs・保存）・[x] 4（両全体監査・保存報告：Derived 22,406宣言／2,574モジュール、Stable 23,468／2,843、許容三公理のみ）。入口 `Derived.DGPinchedCompositionUnitLaws` の `dgPinchedCompositionFamilyPrism_first_unit`／`dgPinchedCompositionFamilyPrism_second_unit_val`、全図式は `dgCoherentCompositionSimplex_first_unit`／`dgCoherentCompositionSimplex_second_unit_eq_map`。Small 不要。D-9 の K-B c5 向け実小 dg 核・同じ平坦 cone と Σ の屋根側は `61516c824` で供給済み（`Derived.ResolvedDGQuotientFlatKernel` の `resolvedDGQuotientFlatKernel`／`resolvedDGQuotientFlatKernelInclusion`／`resolvedDGQuotientFlatKernel_isStableVerdierSequence`／`resolvedDGQuotientProjection_eq_nerve`／`resolvedDGQuotientFlatKernel_roof`、Small・Hom K-flat・安定性も公開）。K-B の元の束・右辺への直接適用と両全体監査（Derived 22,368／2,570、Stable 23,430／2,839）成功。固定 ν の接続は Sp、元の Perf・P 照合は K-B 所有。既存宣言は不変、新名の dg 最小入口へ置く。D-8 c・d・e は未着手。
 - D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`。実 `ExcisionSquareGrid` は任意の元の四角形への厳密制限と二段階の native 左 Kan 局所余極限を持つ。比較格子の全六面の押し出し性、全単体の共有辺四式、元の指定零頂点二式は `187b42df0` までに統合・両全体監査済み。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
-- D-8 b は31宣言の試作を再現し7モジュールへ分割、同じ代表系の `dgKappaClosedProjectiveObjects_isDGPretriangulated` まで本体統合・集約・両全体監査・保存完了。次の通常工程 c は全 Hom κ-compact 性を `dgKappaClosedProjectiveObjects_property` の零・shift・二項直和・cone・可算直和・sphere-free 基底・perfect 代表の七入力へ供給する。d の κ未満 cell／retract 代表化による全被覆と併せ DGKappaConeInput を構成する。ordinary compact/perfect で代用しない。現在は区切り後の追加供給2件を先行する。K-7 ファイルは読み取り専用。
+- D-8 b は31宣言の試作を再現し7モジュールへ分割、同じ代表系の `dgKappaClosedProjectiveObjects_isDGPretriangulated` まで本体統合・集約・両全体監査・保存完了。次の通常工程 c は全 Hom κ-compact 性を `dgKappaClosedProjectiveObjects_property` の零・shift・二項直和・cone・可算直和・sphere-free 基底・perfect 代表の七入力へ供給する。d の κ未満 cell／retract 代表化による全被覆と併せ DGKappaConeInput を構成する。ordinary compact/perfect で代用しない。D-13 と D-9 の K-B 分を先行し、c の前の模型評価は本計画「D-8 c 前の厳密関手性評価」を参照。模型の変更と c 着手はコーディネータ判断後。K-7 ファイルは読み取り専用。
 - K-S• の実生成元を`0a4d1f7d8` で供給した。`dgAlgebraSmallPerfectGenerator` は非可換 dg 代数の自由 representable に対応する実小代表、`dgAlgebraSmallPerfectGenerator_generates` はその singleton が全完全加群を生成する等式、`dgAlgebraSmallPerfectGenerator_homotopyComparison` は元の自由代表への H⁰ 比較。評価双加群の実 Morita 同値から生成性を戻し、結論の生成性を仮定しない。7モジュール・22公開宣言を統合し、対象・両集約（11060 jobs）・22明示署名が終端0、追加ソースに警告なし。既存 `dgSmallPerfectEnvelope_perfectOver_representable_eq` への三宣言の直接適用も `/tmp/d-small-perfect-evaluation-kst.lean` で終端0。両全体監査は終端0（Derived 21092宣言／2346モジュール、Stable 22207／2616、許容三公理のみ）。ログは `/tmp/d-small-perfect-evaluation-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`、正確な11パスは同 `-owned-paths.txt`。
 
 ## 目標と原典
@@ -144,6 +144,18 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 集約 `InfinityCategories/Stable.lean` を作り、共有ルートへの追記はその public import 一行だけ。
   他チャットの変更・既存の未保存差分をコミットに含めない。
 
+
+### D-8 c 前の厳密関手性評価（2026-10-25、模型変更は未採用）
+- 依頼は読み取り専用の `KST/NonConnective/DGSuspensionNativeActionInput`。必要なのは同じ固定入力 S の全単体への作用と、選んだ cone・平坦商の元の頂点・辺との一致。対象別 I・P と通常射だけの恒等・合成からは従わない。
+- 現模型を保った標準的供給は現 API では不可。`DGKappaClosedProjectiveFamily` の objects は実加群の選択族の range、基底には Shrink D と SmallModel の perfect 代表が入る。`dgModuleExtension` は固定した dg 関手に対する全加群上の dg 関手だが、`dgModuleExtensionRepresentableIso` は同型、`dgKappaPerfectRepresentative_covers` は導来同型であり、延長像が選択集合に入る等号や、再選択の厳密恒等・合成は供給しない。これは全ての厳密化が不可能という定理ではない。
+- 反変の制限で代用しない。方向が異なり、一般の dg 関手で perfect 条件を保つとも限らない。既存の導来作用の単位・合成比較も `DGModuleDerivedFunctorComposition` の全関手同型であり、固定 S の厳密豊穣自己関手ではない。
+- 必要な区別：固定 F に対する Hom 鎖写像とその dg nerve 作用、F 自身が全次数 dg 関手圏を動くときの dg tensor 作用、その native core への制限、豊穣合成・単位との厳密一致。現 cone には後三者がない。
+- 推奨する変更候補は、κ 未満の形式的 sphere/cell 表示と twisting・retract の証拠を保持し、係数へ F を適用する小さい表示模型。有限 twisted complex だけでは可算直和・全 κ-compact 被覆を満たさない。κ-small cell と必要な homotopy retract の扱いを含め、各 Hom の評価比較と実 Hom の自然な全次数作用を証明する必要がある。今は実装しない。
+- K-S 所有 `PresentedPerfectDGModel`／`PresentedPerfectDGNativeAction` は、出発圏・seed・延長ラベルを保ち、共役と dg tensor から全 native 関手族へ作用させる先例。ただし対象宇宙を max(u+1,v) とし Small.{u} を主張しないため、そのまま cone の小模型には使えない。必要な共通補題はコピーせず、採用後にコーディネータ経由で所有レーンへ入口を依頼する。
+- 平坦分解にも独立の確認が必要。`DGCategoryCellResolution.comparisonFunctor` は実段階の比較と増大の厳密可換性を供給する。そこから関手引数の厳密恒等・合成、全 dg 自然変換への作用が自動的に得られるわけではない。cone だけの厳密化で Σ の豊穣自己関手を完成扱いにしない。
+- D-8 b の既証明は撤回不要。7 本中の6本は汎用補題として残り、特に `isDGPretriangulated_of_representable_operations` を新表示の零・shift・cone へ適用できる。加群の充満部分圏として実現できれば `dgModuleSubcategory_isDGPretriangulated` も使える。旧模型から準同値で移す場合は `isDGPretriangulated_of_quasiEquivalence` が使えるが、新旧比較の全 Hom・本質的全射性は別に証明する。旧 b を新模型へ無条件には移さない。
+- 見積り（未試作の概算）：まず厳密恒等・合成と dg 関手 Hom への作用を検証する小試作が8〜16稼働時間・5〜10モジュール程度。κ-small 表示の全演算・retract・小ささ・平坦商の全高次作用まで追加40〜100時間・20〜40モジュール程度。D-8 c の κ-compact 性と d の全被覆はこの外。平坦分解の豊穣作用が成立しない場合は再見積りする。
+- 判断待ち：現行 b を比較用に保持し、c の前に厳密表示の試作を採用するかをコーディネータが決める。現模型の書換え・移動・削除や D-8 c への着手はしていない。
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
