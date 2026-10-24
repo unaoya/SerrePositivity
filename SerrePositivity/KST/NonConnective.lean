@@ -23,6 +23,7 @@ public import SerrePositivity.KST.NonConnective.DGKappaPerfZeroFamily
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfSquareCoordinates
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfEvaluation
+public import SerrePositivity.KST.NonConnective.DGKappaSplitModuleEvaluation
 
 /-!
 概要：厳密 dg 入力の非連結 K に向けた K-7 所有界面。

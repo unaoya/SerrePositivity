@@ -3,6 +3,8 @@ public import SerrePositivity.KST.Fibration.ZeroTargetCornerEquivalence
 public import SerrePositivity.KST.Fibration.ExactMapCoordinates
 public import SerrePositivity.KST.Fibration.StableHomVertexRecovery
 public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
+public import SerrePositivity.KST.Fibration.ExInfinityCommSqEdges
+public import SerrePositivity.KST.Fibration.KanTerminalComparison
 
 /-!
 概要：指定 Verdier 四角形の実左辺を用いた、元の相対 S 核の零角比較。
@@ -21,6 +23,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
+open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 指定した同じ coherent 左辺から回収した、同じ零角への完全関手。 -/
@@ -58,5 +61,27 @@ theorem verdierRelativeSZeroCornerMap_localized_isIso (d : VerdierDiagram.{u}) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (verdierRelativeSZeroCornerMap d))) :=
   relativeSZeroTargetCornerMap_localized_isIso d.isVerdier _ d.zero_corner
+
+/-- 元の零角比較の Ex∞ 像を、同じ実 Kan 複体間の射として保持する。 -/
+def verdierRelativeSZeroCornerKanMap (d : VerdierDiagram.{u}) :=
+  exInfinityKanMap (simplicialDiagonalFunctor.map (verdierRelativeSZeroCornerMap d))
+
+/-- 同じ元の零角比較の coherent 辺そのものが可逆。 -/
+theorem verdierRelativeSZeroCornerKanMap_isInvertible (d : VerdierDiagram.{u}) :
+    IsInvertibleEdge (coherentNerveEdge (verdierRelativeSZeroCornerKanMap d)) := by
+  apply coherentKanEdge_isInvertible_of_isQCatEquivalence
+  apply isQCatEquivalence_of_anodyneQ_isIso
+  exact (exInfinity_map_localized_isIso_iff _).mpr
+    (verdierRelativeSZeroCornerMap_localized_isIso d)
+
+/-- Kan 化後も、元の核包含と指定 Verdier 左辺との厳密可換性を保持する。 -/
+theorem verdierRelativeSZeroCornerKanMap_left (d : VerdierDiagram.{u}) :
+    exInfinityKanMap (simplicialDiagonalFunctor.map
+        (relativeSimplicialSConstructionCoreInclusion
+          (d.inclusion.hom ≫ d.projection.hom))) ≫
+        verdierRelativeSZeroCornerKanMap d =
+      exInfinityKanMap (simplicialDiagonalFunctor.map (coreSExactMap (verdierLeftExactMap d))) := by
+  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+  rw [← Functor.map_comp, ← Functor.map_comp, verdierRelativeSZeroCornerMap_left]
 
 end SerrePositivity.KST.Fibration

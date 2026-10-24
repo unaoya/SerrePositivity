@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 public import SerrePositivity.InfinityCategories.Derived.ClosedNerveFunctorNaturality
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEvaluationExact
 
 /-!
 概要：元の全 native 分裂四角形の各 Perf ラベルでの評価を同じ dg 作用へ戻す。
@@ -103,5 +104,27 @@ def dgKappaSplitPerfPointwiseZeroTriangle (Z : DGKappaZeroInput R D I) :
     rw [squareVertex_post, dgKappaSplitPerfFamilySquare_corner,
       dgKappaFullPerfFamilyMap_vertex, evaluateFunctorAt_functorVertex]
     exact dgKappaZeroPerfAction_values R D I Z (Simplex.vertex X)
+
+/-- 同じ点ごとの四角形の cofiber 普遍性は、元の実 Perf 評価の後で判定できる。 -/
+theorem dgKappaSplitPerfPointwiseSquare_isPushout_iff_evaluation (Z : DGKappaZeroInput R D I) :
+    IsPushoutSquare (dgKappaSplitPerfPointwiseSquare R D I X Z) ↔
+      IsPushoutSquare (dgKappaSplitPerfPointwiseSquare R D I X Z ≫
+        dgNerve.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) := by
+  let C := DGKappaCone R D I
+  let L := dgKappaSplitPerfPointwiseSquare R D I X Z
+  let e := presentedPerfectDGNerveEquivalence R C
+  let := presentedPerfectDGNerve_isStable R C
+  let : IsStable (dgNerve R (PerfectDGModule R C)) :=
+    (perfectDGStableModel R C Set.univ).stable
+  let := presentedPerfectDGEvaluationNerve_isExactFunctor R C
+  constructor
+  · exact IsExactFunctor.preservesPushoutSquare _ L
+  · intro h
+    have hp := IsStable.pullback_of_pushout_square _ h
+    have hl : IsPullbackSquare L := by
+      apply (e.isLimitCone_iff (pullbackCone L)).mpr
+      simpa only [IsPullbackSquare, pullbackCone, pullbackCospan, mapJoinCone,
+        Category.assoc, e, L, C, presentedPerfectDGNerveEquivalence_hom] using hp
+    exact IsStable.pushout_of_pullback_square L hl
 
 end SerrePositivity.KST.NonConnective

@@ -7,6 +7,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaSplitModuleEvaluation,
     `SerrePositivity.KST.NonConnective.AdditivityGroupDecomposition,
     `SerrePositivity.KST.NonConnective.BoundaryAdditivity,
     `SerrePositivity.KST.NonConnective.CofiberAxes,
