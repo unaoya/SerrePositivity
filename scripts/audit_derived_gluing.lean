@@ -856,7 +856,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionFirstUnitTriangle,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationSourceUnitFace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceUnitFace,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceUnitNullity]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceUnitNullity,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismSquareSection,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SecondUnitSquareGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionSecondUnitDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionSecondUnitSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionSecondUnitTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationTargetUnitFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelTargetUnitFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TerminalUnitLoopEdgeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitFacesAndBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

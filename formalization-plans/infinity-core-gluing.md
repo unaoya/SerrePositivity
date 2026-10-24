@@ -40,18 +40,18 @@
   同じ Hom 模型同型の逆で主経路のパラメーターへ移し、元端は正本第一・第二入力 lift、補正端は単位補正との共通端へ厳密に同定済み。
   標準係数端も同じ coherent 三角形全体と元入力の一致で正本係数 lift へ同定済み。終側標準面は同じ四面体の第零面を使う。
   実四補正道と選択済み二変形の三辺を保持する相対充填・合成三角形・対角後合成を供給済み。二次元全域で元左右鎖射影を固定する。
-  主経路上の六片は五頂点・六実合成構造・全共有辺・二補正辺・係数辺・橋を保持する。二つの実単位閉路の零性だけを入力として指定境界を充填する④の入口まで接続済み。**D-13 の第一単位則を始側の全射影面へ接続し、左単位閉路の零性は無仮定で証明済み。第二単位則の全三角形化が残り、③・④の無仮定での完了は未達。**
+  主経路上の六片は五頂点・六実合成構造・全共有辺・二補正辺・係数辺・橋を保持する。二つの実単位閉路の零性だけを入力として指定境界を充填する④の入口まで接続済み。D-13 の両単位則を全三角形の σ₀・σ₁ 退化へ移し、同じ射影四面体の二単位面へ接続済み。左閉路は Λ³₂ の相対比較、右閉路は全正方形の厳密退化で零性を証明し、指定三辺の境界充填を無仮定で供給済み。
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
 - [x] ② 正規化 prism を canonical 導来係数の実区間面へ照合。
-- [ ] ③ cube の入力固定変形と既存の選択変形を、二次元相対比較で接続（着手中）。
-- [ ] ④ `dgGluingLaxHomDiagonalComparisonBoundary` の指定境界を保持して充填。
+- [x] ③ cube の入力固定変形と既存の選択変形を、二次元相対比較で接続。
+- [x] ④ `dgGluingLaxHomDiagonalComparisonBoundary` の指定境界を保持して充填。
 - [ ] ⑤ 正本 `dgGluingLaxHomPullbackComparison` の実ホモトピー逆と往復則を構成。
 - [ ] ⑥ 充満忠実性・既存の本質的全射性から比較同値と全試験関手の ∞ 普遍性を供給。
 
 ### 残り（依存順）
-1. (d) 上の③〜⑥。Tamme Remark 6、F0 の判定。見積り 2〜3 日。
+1. (d) 上の⑤〜⑥。Tamme Remark 6、F0 の判定。見積り 2〜3 日。
 2. (e) 安定性・完全射影と F2 の `laxPullback_isStable`・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
 3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、K-8 d8 の `IsVerdierSequence` の供給。D-9 と共同。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。完了時に D 向けの引き継ぎを整えて停止する。
@@ -84,7 +84,7 @@
 - D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
   入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
-  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D-13 で供給済み。第一単位は主経路へ接続済み、第二単位は全三角形化中。F1B の公開 `RelativeDiagramHomotopy` を直接利用し、Λ³₂ を固定した相対四面体比較の存在は実例化済み。
+  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D-13 で供給済み。両単位は主経路へ接続済み。F1B の公開 `RelativeDiagramHomotopy` を直接利用し、Λ³₂ を固定した相対四面体比較の存在は実例化済み。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
@@ -99,9 +99,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8877 jobs、公理監査 852 モジュール・8111 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-first-unit-connected-aggregate-build.log`・`/tmp/d2-v3-first-unit-connected-audit.log`。指定充填から入力付き path・同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
-- 検証済み部分をコミットし、D-13 の第二単位面の三角形化を優先し、元 pinched Hom と区間 Hom の比較を保つ主標的への輸送も構成中。数学的未完は③〜⑥・e・f。
+- 検証済み：集約ビルド 8894 jobs、公理監査 862 モジュール・8164 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-unit-faces-boundary-filling-aggregate-build.log`・`/tmp/d2-v3-unit-faces-boundary-filling-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
+- 検証済み部分をコミットし、元 pinched Hom と区間 Hom の比較を保つ主標的への輸送を構成中。数学的未完は⑤〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約
