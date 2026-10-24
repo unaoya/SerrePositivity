@@ -87,6 +87,7 @@
   `BarrattEccles.discreteCAlgEmbedding`、`BarrattEccles.discreteCAlgUnderEmbedding_forgetIso`、`BarrattEccles.algebraCAlgSource_underlyingDerivedIso`。
   `BarrattEccles.freeProbeDerivedUnit`、`BarrattEccles.derivedFreeProbeUnitEdge`、`BarrattEccles.derivedFreeProbeUnitCommaVertex`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_family`。
   `BarrattEccles.freeProbeRelativeChosenSourceIso_unit_triangle`、`BarrattEccles.freeProbeUnitStandard_triangle`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_weak`。
+  `BarrattEccles.derivedFreeProbeUnitCommaTargetFiberVertex`、`BarrattEccles.derivedFreeProbeUnitCommaTransportMap`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso`。
   `BarrattEccles.derivedFreeProbeUnitIntervalMap_isSimplicialHomotopyEquivalence`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_isQCatEquivalence`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_homotopy_h`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_hom`。
   `BarrattEccles.freeDerivedHomToUnderlying_homotopyEquivalence`、`BarrattEccles.freeProbeDerivedUnitNormalizedHom_family`。
   `ComplexLimits.normalizedOrdinaryDerivedHomMap_homotopyEquivalence`、`ComplexLimits.normalizedOrdinaryDerivedHomMap_family`。
@@ -104,23 +105,23 @@
   **端点比較の入口**：閉包内の `NerveColumn.hom_naturality` を定値列で評価し、実 U と同じ cofibrant 射の通常忘却像の成分正方形へ接続した。元の置換 augmentation に特殊化し、全代数源・全自由源の忘却比較を同じ通常成分辺へ回収する。閉包外の評価自然性の公開依頼は必須ではなくなり、コピー・新規 import はしていない。`FreeProbeDerivedUnitEndpointRecovery` は既存の標準単位成分を元の通常単位の導来像へ、同じ両端同型で回収する。
   `unitComparisonTransport_weak` は同じ単位三角形と二つの弱な全 pinched 族を指定端点同型で輸送し、輸送後の単位誘導射自身の弱同値性を返す。`freeProbeRelativeUnit_forget_family_triangle` は元の局所化源単位の全族等式を実 U 像の前合成式で供給する。具体的な標準端点の整合も同じ同型の等式を先に固定して証明し、元の標準比較自身へ代入済み。
   閉包外の `Derived/FunctorHomTypedWhiskerAlgebra` 等は使用しない。`NerveColumn` の通常列への特殊化は閉包内の `Bicategory.whisker_exchange`・`qcatCell_whiskerLeft/Right`・関手合成保存を直接使用し、閉包外補題をコピーしない。
-  P 所有の `HomotopyLimits/CommaInitialAdjunction` とその import 先は350301807の公開入口として直接 import 可との回答を受領。読み取り専用で再利用する。全 F を先に入力にしない、固定 G・x・y・単位射からの局所 comma 始対象判定は未提供のため P へ供給を依頼中。`HomotopyLimits/AdjunctionLimits.mapJoinCone_isLimit_of_adjunction` の直接 import 確認も追加依頼した。
+  P 所有の `HomotopyLimits/CommaInitialAdjunction` とその import 先、`PointHomFamilyInitiality`、`CommaUnitTransportComparison` は公開・直接 import 可。`AdjunctionLimits.mapJoinCone_isLimit_of_adjunction` も ca8bca3e0 の公開入口として直接 import 可との回答を受領。読み取り専用で再利用する。局所始対象判定そのものは isInitialVertex_of_pointHomFamily_equivalence により供給済みであり、新規供給依頼は不要。
   必須宣言は各128項目以下の noinline 配列へ追加し、既存配列の式・順序・run_cmd 登録を保持する。主経路へ ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定を追加しない。検証の実施記録はコミットメッセージへ残す。
   モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
   LeftRoof.Precompose の旧入口は I : Type v・Category.{0} I。同じ宇宙の実圏には LeftRoof.Precompose.SameUniverse を使う。元の要素圏は Type(u+1)・Category.{u} なので、cofibrant 代数の Category.{u+1} と合わせるには ULiftHom.{u+1} を使い、objUp/objDown の宇宙 .{u+1,u+1} を明示する。対象だけの ULift は不要。
   集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
-- **既知の問題・設計提案**：g2-2 に必要な局所始対象判定は、既存の全 F・大域単位を入力に取る判定では供給できない。構成予定の F を先に仮定すると循環する。P 側で固定 G・x・y・単位射 η に判定を分離し、標的が y で同じ η の定値 Hom 類を持つ comma 頂点 v に対し、全標的の標準区間比較の弱同値性から IsInitialVertex v を返す入口を提案・依頼する。E2 側の代入入口は derivedFreeProbeUnitCommaVertex_target・derivedFreeProbeUnitCommaVertex_hom・derivedFreeProbeUnitIntervalMap_weak。設計変更の提案として運用 v3 に従い停止する。
-- **未コミット**：なし。g2-1 の4公開宣言・集約・監査・本節を所有ファイルだけで保存。
-- **次の一手**：P の局所判定が公開されたら、同じ候補を代入して g2-2 の実始対象性へ進む。`FreeProbeUnitCommaRecovery` は同じ候補の零単体円柱と元の単位の定値 Hom 類を回収し、g1 の標準比較自身の弱同値性を実ホモトピー同値へ変換する。P の局所判定へ同じ候補・単位を代入してから、全随伴と同じ U の任意 coherent ∞ 極限保存へ進む。
+- **既知の問題・設計提案**：局所始対象判定への還元は実装済み。未証明なのは同じ標準単位比較と同じ候補の普遍輸送との局所的な全族同定のみ。必要な型は `∀ x y, Nonempty (FunctorIso (derivedFreeProbeUnitIntervalMap A x y) (derivedFreeProbeUnitCommaTransportMap A x y))` の一つ。P の unitIntervalMap_commaTransportIso とその下の円柱構成は全 F・大域単位を要求するため直接適用できない。コーディネータ経由で P にこの同定の局所入口を確認依頼し、コピーしない。元の候補・標的・単位の入力は g2-1 の公開名で供給済み。局所的な全族同定の供給という設計提案として停止する。
+- **未コミット**：なし。g2-2 の還元3公開宣言・集約・監査・本節を所有ファイルだけで保存。
+- **次の一手**：上の一つの同定に公開入口が得られたら、derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso に代入して g2-2 を完了する。FreeProbeUnitPointInitiality は元の候補を同じ標的 fiber の点として保持し、区間 fiber 同型の消去、点 Hom の全族と区間普遍輸送との公開比較、PointHomFamilyInitiality の局所判定まで接続済み。全 F を仮定せず、比較同型だけを未充足の入力として明示している。続いて全随伴を構成し、同じ U の任意 coherent ∞ 極限保存へ進む。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
   `FreeProbeUnderlyingReplacementComponent` は閉包内の全列自然性から元の置換 augmentation の忘却正方形を回収し、標準単位成分と局所化源単位の等式へ接続する。同型の等式を先に固定し、同じ射へ写すことで大きな関手の不要な定義展開を避ける。資源上限を上げない。
   同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続済みであり、標準単位比較自身の弱同値性を保持する。
   P の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/Adjunction/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
   全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
-  g1-1〜g1-5 は完了。g2 の三段目は g2-1 候補・標準単位の照合、g2-2 同じ候補の実始対象性、g2-3 全 ∞ 随伴、g2-4 任意 coherent ∞ 極限保存、g2-5 検証・保存。g2-1 は完了。g2-2〜5・G1′は未完了。集約・全公理監査と標準比較自身の逆射・両合成ホモトピーの独立例を検証済み。
+  g1-1〜g1-5 は完了。g2 の三段目は g2-1 候補・標準単位の照合、g2-2 同じ候補の実始対象性、g2-3 全 ∞ 随伴、g2-4 任意 coherent ∞ 極限保存、g2-5 検証・保存。g2-1 は完了。g2-2 は局所始対象判定への還元まで完成し、上の比較同型は未証明。g2-2〜5・G1′は未完了。集約・全公理監査と標準比較自身の逆射・両合成ホモトピーの独立例を検証済み。
 
 
 ## 0. 位置づけ
