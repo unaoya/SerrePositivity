@@ -1896,4 +1896,8 @@ public import SerrePositivity.KST.LocalizingInvariants.ProRetractionInverse
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackDiagonalPro
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalPro
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLowerBound
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverLiftNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveDiagonal
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

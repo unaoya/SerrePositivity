@@ -112,7 +112,7 @@
 - **新チャットの次の一工程（β6 g）**：g4 の左三角形。g1〜g3 は完成。元の四模型経路を三重 cell 源で比較し、源準同型比較の逆 roof・上下段比較・非正次数正規化を経て、元の τ₂(f) の実右経路 nonpositiveFixedRightRoofPath を構成済み。fixedLeftCellLift は分母への厳密 lift、fixedLeftDefectAfterF は左の二射を fⱼ の先で結ぶ経路であり、左三角形の完成ではない。元の fixed 候補との値の一致も保持する。NonpositiveInverseRoof.reflectCellPath は既存の低段逆で二重 cell 後に経路を反映し、cellRoofPath_map は指定した全分母経路を保存する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
   - [x] g4a. 実 cocone 比較で、元の π₀〜π₂ pro 同型から Δ の同じ三次数の pro 同型を導く。
-  - [ ] g4b. 対角模型を非正次数化し、下界 −2 と元の二脚・対角の整合を証明する。
+  - [x] g4b. 対角模型を非正次数化し、下界 −2 と元の二脚・対角の整合を証明する。
   - [ ] g4c. Δ の右逆を元の左欠損へ適用し、実経路を厳密左三角形へ反映する。
 - g4a〜g4c をこの順で証明し、未証明の比較を追加入力にして g4 を完成扱いしない。g5〜g7・f・h・K-8 e は後続。d7・evaluationPost・旧 Ω 同値経路は再開しない。
 - **相対版の公開界面**：RelativeVerdierDiagram（S 四角形・絶対 Verdier 提示・ν 像の等式）、IsRelativeLocalizingInvariant（ν 零頂点の E 零性・全相対 Verdier 四角形の E pullback 性）、RelativeSplitVerdierDiagram（S の h 圏の切断と切断式）、RelativeVerdierRectangle（S 長方形・右面／外周の転置 Verdier 提示）。IsRelativeLocalizingInvariant.fiberTriangle_isFiber・connecting・exact_left/middle/right・splitComparison・tammeSplitComparisonと包含／切断／射影の式、RelativeVerdierRectangle.comparisonSquare_isPullback・comparisonCone_isLimit、LaxUniversalDifference.relativeRectangle・relative_comparison_isPullback を使用。最後は S 長方形 F と F ≫ ν = 元の Tamme 長方形を入力する。元の四辺と頂点を保つ d8 の出力は RelativeProductPullbackPresentation.normalizedSquare_isPullback・normalizedCone_isLimit・normalizedCone_vertex。入力は同じ比較四角形の積表示への実 FunctorIso、map(f,g)・対角・lift(a,b) の三辺の式と a≫f=b≫g の h Sp の式であり、fiber 性は入力しない。ofSourceIso は S 内の全図式同型を E で写す版。isRelativeLocalizingInvariant_id_iff・relative_id_comparison が絶対版との特殊化を保持。具体的 dg 持ち上げと K の相対条件の証明は K-S•・D が供給し、その存在を本レーンで仮定済み成果と混同しない。

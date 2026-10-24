@@ -1470,7 +1470,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackConnectingNaturality,
     `SerrePositivity.KST.LocalizingInvariants.ProRetractionInverse,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackDiagonalPro,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalPro]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalPro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLowerBound,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverLiftNaturality,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveDiagonal]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
