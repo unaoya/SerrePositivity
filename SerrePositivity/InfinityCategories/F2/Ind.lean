@@ -783,3 +783,13 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceNormalizat
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceOld
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulFunctorIsoHEq
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointAlignedSliceIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawFaceOld
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawFaceIsoNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality

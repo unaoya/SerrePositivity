@@ -51,7 +51,7 @@ lemma indConeEndpointEvaluation_eq_reconstructed :
 使われ方：新しい極大点での指定変換下の余錐と共終性。 -/
 def indConeEndpointEvaluationIso :
     FunctorIso (indConeEndpointRawFace V ≫ (indConeEndpointCommaIso κ D).hom)
-      (indConeExtendedCommaFamily V ≫ diagramCommaEvaluation κ D (coneApex L)) := by
-  rw [indConeEndpointEvaluation_eq_reconstructed]
-  exact indConeEndpointFaceIso V
+      (indConeExtendedCommaFamily V ≫ diagramCommaEvaluation κ D (coneApex L)) :=
+  F2.functorIsoOfEq (indConeEndpointFaceIso V) rfl
+    (indConeEndpointEvaluation_eq_reconstructed V).symm
 end SerrePositivity.InfinityCategories.F2.Ind

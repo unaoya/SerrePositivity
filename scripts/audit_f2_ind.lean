@@ -1894,3 +1894,42 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceFunctorIso_old_heq
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceFunctorIso_old_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.fullyFaithful_reflects_functorIso_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.fullyFaithful_reflects_functorIso_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointAlignedSliceIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointAlignedSliceIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointAlignedSliceIso_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointAlignedSliceIso_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace_old_eq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace_old_eq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_old_eq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_old_eq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_slice_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_slice_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_precomp_slice_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_precomp_slice_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_old_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso_old_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_precomp_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_precomp_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointFaceIso_old_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointFaceIso_old_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_old_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_old_heq

@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointReconstru
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulPullbackRight
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointCommaIso
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointAlignedSliceIso
 
 /-!
 概要：元の実終点族と再構成された終点族を、同じ実 comma 内で比較する。
@@ -38,9 +39,8 @@ lemma indConeEndpointRawSlice_isFullyFaithful :
 使われ方：新しい極大点での指定評価下の余錐を構成する。 -/
 def indConeEndpointRawFaceIso :
     FunctorIso (indConeEndpointRawFace V) (indConeEndpointReconstructedRawFace V) :=
-  (indConeEndpointRawSlice_isFullyFaithful (D := D)).preimageFunctorIso (by
-    rw [indConeEndpointReconstructedRawFace_slice, ← indConeEndpointSliceCone_source]
-    exact indConeEndpointSliceFunctorIso V)
+  (indConeEndpointRawSlice_isFullyFaithful (D := D)).preimageFunctorIso
+    (indConeEndpointAlignedSliceIso V)
 /-- 概要：同じ元の指定評価頂点の標準 comma へも元の比較を移せる。
 方針：元の点表示の同型で後合成。規約：元の両全族を保持。使われ方：極大点の共終性。 -/
 def indConeEndpointFaceIso :
