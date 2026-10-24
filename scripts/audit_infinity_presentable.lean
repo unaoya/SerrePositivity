@@ -505,3 +505,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_preservesSmallColimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_snd_preservesSmallColimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_preservesSmallColimits_iff_components
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_cosliceCone_lift_of_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_unstraighteningCone_lift_of_map_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionDiagram
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallSolutionCone

@@ -241,3 +241,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Representability
 public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveRepresentabilityDescent
 public import SerrePositivity.InfinityCategories.F2.Presentable.RepresentedRestrictionInversion
 public import SerrePositivity.InfinityCategories.F2.Presentable.RepresentedReflectiveUnit
+public import SerrePositivity.InfinityCategories.F2.Presentable.CosliceLimitConeLift
+public import SerrePositivity.InfinityCategories.F2.Presentable.UnstraighteningLimitConeLift
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallSolutionCone
