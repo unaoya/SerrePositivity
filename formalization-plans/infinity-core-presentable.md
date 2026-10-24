@@ -45,6 +45,8 @@
 - `IsLocallySmall`、`indInfinity_isLocallySmall`、`IsAccessible.isLocallySmall`、`IsPresentable.isLocallySmall`
 - `sigmaFiniteFamilyComparison_isIso`、`sigma_preservesFiniteCoproducts_iff_yoneda`
 - `sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted`、`sigmaLeftKanExtension_preservesSmallColimits_iff`
+- `unitIntervalMapAt`、`unitIntervalMapAt_commaTransportIso`、`unitIntervalMapAt_unitCommaSectionTargetFiberVertex`
+- `unitIntervalMapAt_commaTransportIso_unit`（`HomotopyLimits/CommaLocalUnitTransportComparison`）。
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -75,7 +77,7 @@
 - 前提として、小余積と幾何学的実現から小余極限を構成する一般補題を P 側に追加する。
   既存の sifted 余極限と有限余積保存を使って P_Σ の反映を構成する。
 - ユーザーが反映・bar の経路を採用。公開界面を保ち、g4・g5 を提供する。
-1. P-6：comma fiber の任意の点による局所区間比較と輸送の関手同型を構成し、既存の単位版との特殊化を照合する。
+1. P-6：局所区間比較・輸送同型・既存の単位比較への厳密な特殊化を提供する。
 2. P-1 c は未着手。
 - **採用済みの設計追加**：有限余積の全関手と定値図式との随伴を P 側で構成する。
   普遍余錐族の切断・全単位の円柱・関手圏内の普遍性・右頂点 Hom 制限を準備した。
@@ -104,6 +106,12 @@
   - [x] bar 表示の接続：反映を適用して simplicial Ind 表示へ接続する。
 - [x] g6. Yoneda の有限余積保存と全余極限保存判定。
 - [x] g7. 集約ビルド・公理監査・引き継ぎ更新。
+
+## P-6 三段目
+
+- [x] 局所区間比較と元の comma 点を始端とする円柱。
+- [x] 終点の回収と普遍輸送との関手同型、既存比較への特殊化。
+- [x] 集約ビルド・両公理監査・公開名の引き継ぎ。
 
 ## 規約
 

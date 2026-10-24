@@ -14873,3 +14873,34 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @mapUliftCocone_isColimit_of_quasicategoryShapes
 #print axioms mapUliftCocone_isColimit_of_quasicategoryShapes
+
+#check @unitIntervalMapAt
+#print axioms unitIntervalMapAt
+#check @unitIntervalMapAt_unitCommaSectionTargetFiberVertex
+#print axioms unitIntervalMapAt_unitCommaSectionTargetFiberVertex
+#check @commaTargetFiber_constant_homotopy
+#print axioms commaTargetFiber_constant_homotopy
+#check @unitIntervalCompositionTriangleAt
+#print axioms unitIntervalCompositionTriangleAt
+#check @unitCommaCompositionCoherenceAt
+#print axioms unitCommaCompositionCoherenceAt
+#check @unitCommaCompositionPrismAt
+#print axioms unitCommaCompositionPrismAt
+#check @unitCommaCompositionPrismAt_projection
+#print axioms unitCommaCompositionPrismAt_projection
+#check @unitCommaCompositionPrismAt_zero
+#print axioms unitCommaCompositionPrismAt_zero
+#check @unitCommaCompositionEndpointAt
+#print axioms unitCommaCompositionEndpointAt
+#check @unitCommaCompositionEndpointAt_ι
+#print axioms unitCommaCompositionEndpointAt_ι
+#check @unitCommaCompositionEndpointAt_homotopy
+#print axioms unitCommaCompositionEndpointAt_homotopy
+#check @unitCommaCompositionEndpointAt_interval
+#print axioms unitCommaCompositionEndpointAt_interval
+#check @unitCommaCompositionEndpointAt_transportIso
+#print axioms unitCommaCompositionEndpointAt_transportIso
+#check @unitIntervalMapAt_commaTransportIso
+#print axioms unitIntervalMapAt_commaTransportIso
+#check @unitIntervalMapAt_commaTransportIso_unit
+#print axioms unitIntervalMapAt_commaTransportIso_unit

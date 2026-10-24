@@ -1071,6 +1071,11 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.RightKanRestrict
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseColimitShapeReduction
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTransportPrism
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTransportEndpoint
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTransportComparison
+
 /-!
 概要：coherent nerve によるホモトピー極限と Quillen 随伴の比較の入口。
 方針：weighted sections・写像空間・モデル圏の比較を既存モジュールの import でまとめる。
