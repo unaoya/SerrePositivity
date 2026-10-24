@@ -32,6 +32,14 @@ local notation "j" => joinInl (arrowInterpolationCorner T) Δ[0]
 abbrev indArrowTerminalLiftFamily : SSet.{u + 1} :=
   relativeLiftFixedBoundary (sliceOverProjection p) b i f (indArrowSlicePrismCone_projection W)
 
+/-- 概要：元の全底と全終端辺を固定した持ち上げ空間は可縮 Kan。
+方針：元の終端辺包含の right anodyne 性を使う。
+規約：同じ実 fiber を保持。使われ方：指定比較の実可逆円柱への表示。 -/
+lemma indArrowTerminalLiftFamily_isContractibleKan :
+    IsContractibleKan (indArrowTerminalLiftFamily W) :=
+  rightAnodyne_relativeLiftFixedBoundary_isContractibleKan (sliceOverProjection p) b i
+    (arrowInterpolationTerminalEdge_rightAnodyne T) f (indArrowSlicePrismCone_projection W)
+
 /-- 同じ固定 fiber の全持ち上げを、元の領域上の全相対 slice 関手へ制限する。 -/
 def indArrowTerminalSliceFamily : indArrowTerminalLiftFamily W ⟶
     relativeFunctorSpace (sliceOverProjection p) (j ≫ b) :=
