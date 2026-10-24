@@ -783,7 +783,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarIntervalTriangle,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCollarTriangle,
     `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorTriangleTwoFaces,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarCompositionTriangle]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarCompositionTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapDiagonalPastingGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PrismParameterReindex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapDiagonalPastingFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCapDiagonalEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCapPastingTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCapPastingEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCapIntervalTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleDiagramParameterTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCapTriangleDiagrams,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapPastingCoefficientFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCapCoefficientFace]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
