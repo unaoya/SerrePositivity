@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
 public import SerrePositivity.InfinityCategories.Stable.InitialOpposite
 public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp

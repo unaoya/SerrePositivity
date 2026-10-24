@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeCommaInitial
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluation
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex

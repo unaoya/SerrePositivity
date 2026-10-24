@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningRepresentation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity

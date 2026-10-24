@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Stable.Pointed
 public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
 
 /-! # 四角形の全写像と辺の宇宙比較

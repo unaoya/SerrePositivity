@@ -1,0 +1,99 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/HomotopyLimits.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/WeightedCoslicePrecomposition.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseHomotopyReflection.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/UniversePullbacks.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSections.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/StrictCoconeIndices.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseInternalHom.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/Diagrams/LocalKanDiagramStrictification.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/StraighteningLeft/SmallLeftUnstraighteningBaseChange.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/Universe/SmallPointWitnessNonempty.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/PresheafDiagramJointFibration.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/DiagramConePointRestriction.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/NerveProductSwapIso.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentFilteredSimplexExchange.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/Gluing/UniverseSimplexFamilies.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/RelativeInitialBoundary.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseSquareHom.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
+    }
+  }
+}

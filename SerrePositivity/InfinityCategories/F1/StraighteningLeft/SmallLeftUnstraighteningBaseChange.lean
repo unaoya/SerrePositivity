@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialMap
 public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps

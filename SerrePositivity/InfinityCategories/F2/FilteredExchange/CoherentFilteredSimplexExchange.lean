@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.InitialShapeLimitExchange
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredLimitExchange
 public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps

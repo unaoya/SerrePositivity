@@ -1,0 +1,11 @@
+{
+  "consumer_body_changes": 0,
+  "import_rules": 19,
+  "repair_build": "/tmp/r-b-main-consumer-repair-build.log",
+  "repair_build_passed": true,
+  "core_project_closure": 342,
+  "F1B_project_closure": 1458,
+  "Core_forbidden": [],
+  "F1B_straightening": [],
+  "reason": "Explicitly preserve prior non-Core public import closures after removing upper dependencies from Core general theory; no proof or type changes."
+}

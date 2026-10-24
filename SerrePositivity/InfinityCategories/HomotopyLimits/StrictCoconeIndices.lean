@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
 public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps

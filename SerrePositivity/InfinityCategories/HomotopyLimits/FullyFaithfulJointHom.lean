@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
+
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowFunctorComparison
 public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
