@@ -110,6 +110,8 @@
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。停止用対象ビルド9525 jobsは終了コード0（/tmp/sp-stop-target.log）、監査1430モジュール18288宣言も終了コード0・標準三公理のみ（/tmp/sp-stop-audit.log）。旧全体ビルドは成果物欠落による失敗後に依存を修復したが、最後の全体再試行24573と監査14713は割込み後にハンドルが消失し、対応プロセスも残っていない。旧ログの進捗を終了コード0の代用にしない。停止指示の対象ビルド・監査で区切り、新チャットで全体ビルドを改めて行う。D・F1/F1B・F2・EInfinity・K-S• は読み取り専用。
 ### 次の一手
 - **次の一工程（β6 g）**：g5 の高次有限 Postnikov 段と切断間遷移。g1〜g4 は完成。postnikovTwoMap_exists_nonpositiveInverseRoof は元の三次数の pro 同型から元の τ₂(f) の実両逆を供給する。先に対角の実右逆の段を選び、その段の元の右逆の左欠損を postnikovTwoDiagonalLeftReflection で反映し、nonpositiveOfLeftPath が mapping-path・二重 cell・cover で厳密左三角形と実右経路へ戻す。源の準同型比較の逆 roof と非正次数正規化を保ち、左 class 経路の別構成は使わない。
+- **g5 の現在の界面**：PostnikovRoofLayerInverseData は任意の n≥0 と元の τₙ(f) の非正次数実逆から、π₀・πₙ₊₁ の原仮定で共通零底・層双加群逆を構成する。PostnikovRoofZeroSpan の元の零底逆・厳密左三角形、細分との両脚正方形、共通零底の eventual 一致、係数の underlying 射と両 cochain 三角形を保持する。次はこの任意 n のデータ上で標準 class・指定全右経路を整合させ、τₙ₊₁(f) の実右逆を構成する。高次有限段の帰納と切断間の遷移の整合は未完。
+- **g5 の設計変更提案（未採用）**：class・W の正本を切断次数 n≥0 の共通核へ一般化し、現行の n=1 宣言名・型とモジュール所在は特殊化界面として維持する。下段 roof から n を推論し、単位 shift 1 と切断次数 n を区別する。τ₁ に固定された Common 系132ファイルと、その模型比較を使う Two 系が対象。実装済みの任意 n の共通零底・層逆を共通核の入力とし、係数の両三角形・class 全経路・動く底・元の準同型比較と値の三角形を保持する。class・W 部分の変更は未着手。各保存単位で旧 n=1 の集約・監査も通し、モジュール移動・改名・削除は行わない。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
   - [x] g4a. 実 cocone 比較で、元の π₀〜π₂ pro 同型から Δ の同じ三次数の pro 同型を導く。
   - [x] g4b. 対角模型を非正次数化し、下界 −2 と元の二脚・対角の整合を証明する。

@@ -1483,7 +1483,14 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofLeftPathStrictification,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofStrictSource,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofOfLeftPath,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveInverseRoof]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoValuePro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLeg,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofZeroSpan,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofZeroRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofCommonZeroBase,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofLayerCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofLayerInverseData]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
