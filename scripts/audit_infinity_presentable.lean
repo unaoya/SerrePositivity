@@ -13,7 +13,9 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless `SerrePositivity.InfinityCategories.F2.Presentable |>.isPrefixOf mod do continue
+    unless (`SerrePositivity.InfinityCategories.F2.Presentable |>.isPrefixOf mod) ||
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection ||
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Presentable: unexpected axioms in {name}: {axioms}"
@@ -280,3 +282,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso
 
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafUniverseDiagram_map_isColimit_arbitraryShape
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.coyonedaInfinityMap_reflects_isLimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.coyonedaInfinityMap_restricted_isLimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaUniverseInclusion_map_isColimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_map_isLimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaLeftKanExtension_preservesSmallSiftedColimits
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isEssentiallySurjective
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence_hom

@@ -10,7 +10,7 @@
 ### 現在地
 - P-1 a は完了。正則 κ、小さい κ-filtered 余極限、小さい κ-compact 全部分生成圏による accessibility、
   元の Ind 比較の全同値、accessible 関手、同値不変性、正則濃度変更を提供する。
-- P-1 b は完了。P-1 g の7ファイルの修正・接続・集約・両公理監査を検証済み。現在は左 Kan 延長の sifted 余極限保存と普遍性を進める。
+- P-1 b は完了。P-1 g の7ファイルの修正・接続・集約・両公理監査を検証済み。元の左 Kan 延長の sifted 保存と制限の本質的全射性を検証済み。filtered／幾何学的実現による普遍性を進める。
 - 任意の小さい quasicategory C 上の前層について、有限底上符号族の連続 left fibration 置換から、
   宇宙 u の小さい compact 全部分生成圏を構成した。各指定前層を厳密な頂点とする filtered 全表示を持つ。
 - 通常の strict filtered 全余錐の native 性、元の left fibration への頂点回収、
@@ -25,8 +25,8 @@
 - P-1 g は未完了。N の検証済み範囲は e-infinity-algebras.md の N 節を正本とする。
 
 ### 残り（依存順）
-1. P-1 g：元の左 Kan 延長の任意小 sifted 余極限保存、Yoneda 制限の本質的全射性・全関手 ∞ 圏の同値。
-   未接続7ファイルの検証から再開。HTT 5.5.8.14〜15、30〜80時間（暫定）。
+1. P-1 g：simplicial Ind 表示と filtered／幾何学的実現による普遍性、全余極限保存判定。
+   sifted 保存関手の制限同値は検証済み。HTT 5.5.8.14〜15。
 2. P-1 c：presentable の小さい極限・余極限。HTT 5.5.2.4・5.5.3.13。
 3. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
 4. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
@@ -54,25 +54,23 @@
 - 一般の前層の compact 生成・accessibility・presentable 性と、accessible 圏の局所小ささを提供する。
   Ind 側の a7 はこの完成範囲の新しい入力ではなく、既存の明示入力を勝手に無条件化しない。
 
-### 未コミット
-- 引き継いだ次の7本は修正・接続・検証済みで、P-1 g1 の保存対象。所在は `F2/Presentable/`。
-- `PresheafDensityLeftKan.lean`、`PresheafElementsLeftKan.lean`、`PresheafUniverseArbitraryColimits.lean`、
-  `SigmaHomWeightComparison.lean`、`YonedaHomWeightColimits.lean`、`YonedaWeightFamilyComparison.lean`、`YonedaWeightLeftKan.lean`。
-- g2 の全 co-Yoneda による極限反映・係数制限、全 Hom 錐、sifted 保存、普遍性の作業中モジュールは、検証・集約接続後に保存する。他レーンは変更しない。
+### 作業中
+- g6：元の Yoneda の有限余積保存を、同じ反転 comma と coslice の全切断で比較する。
+- g5：任意前層の elements 図式の bar 構成を P 所有の新規モジュールで構成する。
+  F1 の密度・各点余極限・小余積の公開 API を利用し、他レーンへの供給依頼にはしない。
 
 ### 既知の問題
 - 任意の小さい A の Indκ(A) は無条件には presentable でない。
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
-- 未接続7ファイルの証明本体と R13 による宣言名の変化は、P-1 g 着手時に改めて検証する。
-- 最終検証ログ：`/tmp/p-v3-final-build.log`、`/tmp/p-v3-final-presentable-audit.log`、`/tmp/p-v3-final-homotopy-audit.log`。
+- sifted 余極限を持つ標的についての制限同値だけでは、filtered 余極限と幾何学的実現のみを仮定する最終版は完了しない。
+- 最終検証ログ：`/tmp/p-g4-aggregate.log`、`/tmp/p-g4-presentable-audit.log`、`/tmp/p-g4-homotopy-audit.log`。
 
 ### 次の一手
-1. P-1 b の完了後は新チャットで P-1 g を再開する。e-infinity-algebras.md の N 節を併読する。
-2. 新所在の `Presentable.SigmaHomWeightComparison` と `Presentable.PresheafUniverseArbitraryColimits` を対象ビルドし、
-   未接続7ファイルを依存順に修正・検証する。元の指定単位と全係数の自然性を保持する。
-3. 両対象の成功後にだけ集約・監査へ接続し、所有の集約ビルドと全公理監査を行う。
-4. 元の左 Kan 延長の sifted 余極限保存へ進む。全 Hom 比較で元の指定余錐像の普遍性を判定する。
+1. g6 の反転全錐の保存を元の有限余積へ戻す。
+2. g5 の elements bar 構成の幾何学的実現を元の密度余極限と比較する。
+3. simplicial Ind 表示から filtered／幾何学的実現保存版の制限同値と sifted 保存を導く。
+4. 全余極限保存判定を完成し、集約・公理監査を再実行する。
 
 ## P-1 b 三段目（v3）
 
@@ -86,8 +84,8 @@
 ## P-1 g 三段目（v3）
 
 - [x] g1. 未接続7ファイルの修正・検証と全 Hom 族の自然比較。
-- [ ] g2. 元の左 Kan 延長の任意小 sifted 余極限保存。
-- [ ] g3. Yoneda 制限の本質的全射性。
+- [x] g2. 元の左 Kan 延長の任意小 sifted 余極限保存。
+- [x] g3. Yoneda 制限の本質的全射性。
 - [ ] g4. 保存関手 ∞ 圏の全同値による普遍性。
 - [ ] g5. simplicial Ind 表示と filtered／geometric realization による生成。
 - [ ] g6. Yoneda の有限余積保存と全余極限保存判定。
