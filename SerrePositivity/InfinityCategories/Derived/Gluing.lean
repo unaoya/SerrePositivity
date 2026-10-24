@@ -719,3 +719,4 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAug
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DiagonalInputChoiceComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationStaircase
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTrianglePrismLift
