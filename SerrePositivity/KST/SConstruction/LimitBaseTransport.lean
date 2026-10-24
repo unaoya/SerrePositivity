@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
