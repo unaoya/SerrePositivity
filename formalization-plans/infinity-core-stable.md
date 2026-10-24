@@ -168,7 +168,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 ### D-14：D2 G-1 e の完全関手入口
 
 - 全加群の実半自由分解：`Derived/DGModuleAllResolvedExact` の `dgModuleResolutionInfinity_isExactFunctor`。仮定は CommRing R・DGCategory R C・Small.{u} C のみ。一般の全加群間 dg 関手版は `dgModuleAllResolvedFunctor_isExactFunctor`。
-- 共通宇宙 Yoneda：既存 `Derived/DGPretriangulatedYonedaExact` の `dgPretriangulatedYoneda_isExactFunctor`。上記に IsDGPretriangulated R C を加える。型は dgUniverseLiftDown と dgYoneda の合成の dgNerve.map、終域は全加群圏。全加群圏の Small 仮定は両入口とも不要。既存宣言は不変。
+- 任意の全加群値 dg 関手：`Derived/DGPretriangulatedModuleValuedExact` の `dgPretriangulatedModuleValuedFunctor_isExactFunctor R D C F`。CommRing R・DGCategory R D/C・Small.{u} D/C・IsDGPretriangulated R D のみ。型は dgUniverseLiftDown と F の合成の dgNerve.map（共通宇宙）。F に M.toFunctor を直接渡せる。`DGKernelTensorYonedaNerveIso` の同名 CompositeIso は実 tensor・Yoneda 比較。Yoneda 特殊化は既存 `dgPretriangulatedYoneda_isExactFunctor` も使用可。終域の全加群圏の Small 仮定は不要。既存宣言は不変。
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
