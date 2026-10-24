@@ -2144,4 +2144,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteN
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteNonpositiveInverseInduction
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroNonpositiveInverseRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.ProInverseSquareNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteMapValuePro
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteInverseTransitions
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
