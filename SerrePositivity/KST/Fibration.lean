@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.CoreSingleRealizationFamily
 public import SerrePositivity.KST.Fibration.CoreSingleKanFamily
+public import SerrePositivity.KST.Fibration.VerdierNullCoreKanComparison
 public import SerrePositivity.KST.Fibration.WeakEquivalences
 public import SerrePositivity.KST.Fibration.Extension
 public import SerrePositivity.KST.Fibration.RelativeDiagram

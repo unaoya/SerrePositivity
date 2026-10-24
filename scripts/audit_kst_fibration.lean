@@ -11,6 +11,7 @@ run_cmd do
     `SerrePositivity.KST.Fibration.CoreSingleFamilyCylinder,
     `SerrePositivity.KST.Fibration.CoreSingleRealizationFamily,
     `SerrePositivity.KST.Fibration.CoreSingleKanFamily,
+    `SerrePositivity.KST.Fibration.VerdierNullCoreKanComparison,
     `SerrePositivity.KST.Fibration.StableSingleSCoreFamily,
     `SerrePositivity.KST.Fibration.QuotientSKernelNullCoreAction,
     `SerrePositivity.KST.Fibration.VerdierNullContractionCoordinates,

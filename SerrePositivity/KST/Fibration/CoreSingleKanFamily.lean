@@ -58,6 +58,28 @@ theorem coreSingleRealizationKanEnrichedFunctor_eq :
   rw [relabelEnrichedObjects_eq]
   rfl
 
+/-- 同じ元の core S 座標で、全 Hom の Ex∞ 作用を厳密に回収する。 -/
+theorem coreSingleRealizationKan_map (A C : StableQCat.{u}) :
+    coreSingleRealizationEnrichedFunctor.map A C ≫
+        exInfinityClosedKanEnrichedFunctor.map _ _ =
+      stableCoreSingleKanEnrichedFunctor.map A C := by
+  have hm : ∀ (F G : EnrichedFunctor SSet.{u} StableQCat.{u} KanObject.{u}),
+      F = G → HEq (F.map A C) (G.map A C) := by
+    intro F G h
+    cases h
+    rfl
+  exact eq_of_heq (hm _ _ coreSingleRealizationKanEnrichedFunctor_eq)
+
+/-- 全入力族の評価は、同じ元の core S 評価を Ex∞ に送ったものと一致する。 -/
+theorem stableCoreSingleKanFamily_action {A C : StableQCat.{u}} {P : SSet.{u}}
+    (H : P ⟶ (A ⟶[SSet.{u}] C)) :
+    uncurry (H ≫ stableCoreSingleKanEnrichedFunctor.map A C) =
+      coaugmentedTensorRightStrength exInfinity exInfinityUnit
+          (coreSingleRealizationObject A).obj P ≫
+        exInfinity.map (uncurry (H ≫ coreSingleRealizationEnrichedFunctor.map A C)) := by
+  rw [← coreSingleRealizationKan_map, ← Category.assoc]
+  exact coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit _
+
 /-- 元の商核円柱を Ex∞ に送った全族は、同じ零化族の全閉 Hom 作用である。 -/
 theorem quotientSKernelNullCylinder_exInfinity
     {A B C : StableCategory.{u}}
@@ -74,5 +96,19 @@ theorem quotientSKernelNullCylinder_exInfinity
       exInfinityClosedKanEnrichedFunctor.map _ _) := by
   rw [quotientSKernelNullCylinder_coreRealization]
   exact (coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit _).symm
+
+/-- 同じ零化円柱の Ex∞ 像を、元の core S の全 Kan Hom 評価として回収する。 -/
+theorem quotientSKernelNullCylinder_coreKan
+    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+    (h : IsVerdierSequence i q) :
+    coaugmentedTensorRightStrength exInfinity exInfinityUnit
+        (coreSingleRealizationObject (show StableQCat from A)).obj (Δ[1] : SSet.{u}) ≫
+      exInfinity.map (quotientSKernelNullCylinder h) =
+    uncurry (zeroEndPostcompFamily
+      (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
+        (verdierSequenceComposite_zero h) ≫
+          stableCoreSingleKanEnrichedFunctor.map
+            (show StableQCat from A) (show StableQCat from C)) := by
+  rw [stableCoreSingleKanFamily_action, quotientSKernelNullCylinder_coreRealization]
 
 end SerrePositivity.KST.Fibration
