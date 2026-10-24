@@ -2163,4 +2163,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnect
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnectedLevelConnectivity
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectedLevelRepresentation
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovQuotientSuccessorValue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantPiProEquivalence
+public import SerrePositivity.KST.LocalizingInvariants.ProGroupConnectedComposition
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantProConnectivity
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantEventualProConnectivity
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

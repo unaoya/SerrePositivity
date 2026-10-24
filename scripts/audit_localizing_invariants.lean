@@ -9,6 +9,12 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovQuotientSuccessorValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantPiProEquivalence,
+    `SerrePositivity.KST.LocalizingInvariants.ProGroupConnectedComposition,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantProConnectivity,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantEventualProConnectivity,
+
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackProjectionAt,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPullbackQuotientAt,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovConnectedLevel,
