@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCore
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerFromZero
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroLayerAtCutoff
+
 /-!
 概要：共通核の任意の切断次数で、零底の実係数射を元の roof 底へ移す。
 方針：元の両脚の零降下に一般の層制限比較を適用する。
@@ -26,12 +28,10 @@ variable (R : Type u) [CommRing R] {n : ℤ} (hn : 0 ≤ n)
 local instance fromZero_apex_nonpositive : c.roof.apex.X.IsStrictlyLE 0 := c.roof_nonpositive
 
 abbrev zeroDenominatorLayer :=
-  bimoduleRestrict (PostnikovRoofZeroSpan.denominator R n hn f c)
-    (postnikovLayerZeroBimodule R (B.obj m).obj n)
+  zeroDenominatorLayerAt R hn n f c
 
 abbrev zeroNumeratorLayer :=
-  bimoduleRestrict (PostnikovRoofZeroSpan.numerator R n hn f c)
-    (postnikovLayerZeroBimodule R (A.obj i).obj n)
+  zeroNumeratorLayerAt R hn n f c
 
 variable (u : zeroDenominatorLayer R hn f c ⟶ zeroNumeratorLayer R hn f c)
 

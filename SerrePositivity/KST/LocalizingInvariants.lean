@@ -2058,4 +2058,6 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonC
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightZeroNormalize
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightZeroPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroLayerAtCutoff
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

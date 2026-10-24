@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroBase
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerInverseRefinement
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroLayerAtCutoff
+
 /-!
 概要：元の roof と一致する共通零底上に、元の層遷移と係数逆を合成した実射を構成。
 方針：底を変える実双加群射を、証明済みの底の厳密な三角形に沿って制限する。
@@ -23,13 +25,11 @@ variable (R : Type u) [CommRing R] (n : ℤ) {A B : Tower (NonpositiveAlgebra R)
 
 def postnikovCommonZeroDenominatorLayer :
     Bimod (postnikovOneRoofZeroBase R f c) (postnikovOneRoofZeroBase R f c) :=
-  bimoduleRestrict (postnikovOneRoofZeroDenominator R f c)
-    (postnikovLayerZeroBimodule R (B.obj m).obj n)
+  PostnikovCommonCore.zeroDenominatorLayerAt R (by decide) n f c
 
 def postnikovCommonZeroNumeratorLayer :
     Bimod (postnikovOneRoofZeroBase R f c) (postnikovOneRoofZeroBase R f c) :=
-  bimoduleRestrict (postnikovOneRoofZeroNumerator R f c)
-    (postnikovLayerZeroBimodule R (A.obj i).obj n)
+  PostnikovCommonCore.zeroNumeratorLayerAt R (by decide) n f c
 
 variable {l : ℕ} {hj : i ≤ l} (e : PostnikovZeroLayerInverse R n f i l hj)
   {k : ℕ} (hm : m ≤ k) (hl : l ≤ k)
@@ -40,36 +40,27 @@ variable {l : ℕ} {hj : i ≤ l} (e : PostnikovZeroLayerInverse R n f i l hj)
 def postnikovCommonZeroCoefficientMap :
     postnikovCommonZeroDenominatorLayer R n f (postnikovOneRoofRefine R f c hm) ⟶
       postnikovCommonZeroNumeratorLayer R n f (postnikovOneRoofRefine R f c hm) :=
-  bimoduleRestrictOver
-    (postnikovOneRoofZeroDenominator R f (postnikovOneRoofRefine R f c hm))
-    (postnikovOneRoofZeroNumerator R f (postnikovOneRoofRefine R f c hm))
-    (postnikovMap R (B.transition hl).hom 0 ≫ e.base) hb.symm
-    (PostnikovZeroLayerInverse.refinedCoefficient R e hl)
+  PostnikovCommonCore.zeroCoefficientAt R (by decide) n f c e hm hl hb
 
 lemma postnikovCommonZeroCoefficientMap_refined_hom :
     (postnikovCommonZeroCoefficientMap R n f c e hm hl hb).hom =
       (PostnikovZeroLayerInverse.refinedCoefficient R e hl).hom :=
-  bimoduleRestrictOver_hom _ _ _ _ _
+  PostnikovCommonCore.zeroCoefficientAt_refined_hom R (by decide) n f c e hm hl hb
 
 lemma postnikovCommonZeroCoefficientMap_hom :
     (postnikovCommonZeroCoefficientMap R n f c e hm hl hb).hom =
       postnikovLayerMap R (B.transition hl).hom n ≫ e.coefficient.hom :=
-  (postnikovCommonZeroCoefficientMap_refined_hom R n f c e hm hl hb).trans
-    (PostnikovZeroLayerInverse.refinedCoefficient_hom R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_hom R (by decide) n f c e hm hl hb
 
 lemma postnikovCommonZeroCoefficientMap_left : postnikovLayerMap R (f.app k).hom n ≫
     (postnikovCommonZeroCoefficientMap R n f c e hm hl hb).hom =
       postnikovLayerMap R (A.transition (hj.trans hl)).hom n :=
-  (congrArg (fun t => postnikovLayerMap R (f.app k).hom n ≫ t)
-    (postnikovCommonZeroCoefficientMap_refined_hom R n f c e hm hl hb)).trans
-      (PostnikovZeroLayerInverse.refinedCoefficient_left R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_left R (by decide) n f c e hm hl hb
 
 lemma postnikovCommonZeroCoefficientMap_right :
     (postnikovCommonZeroCoefficientMap R n f c e hm hl hb).hom ≫
       postnikovLayerMap R (f.app i).hom n =
         postnikovLayerMap R (B.transition (hj.trans hl)).hom n :=
-  (congrArg (fun t => t ≫ postnikovLayerMap R (f.app i).hom n)
-    (postnikovCommonZeroCoefficientMap_refined_hom R n f c e hm hl hb)).trans
-      (PostnikovZeroLayerInverse.refinedCoefficient_right R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_right R (by decide) n f c e hm hl hb
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

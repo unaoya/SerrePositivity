@@ -4,6 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofCom
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroLayerInverseRefinement
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerFromZero
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroLayerAtCutoff
+
 /-!
 概要：任意の有限段の細分 roof 上に、元の層逆を左右作用と両 cochain 三角形付きで戻す。
 方針：共通零底の厳密式で制限した係数を、元の層の零制限同型で共通底へ移す。
@@ -36,32 +38,25 @@ def zeroCoefficient :
       (postnikovLayerZeroBimodule R (B.obj k).obj n) ⟶
     bimoduleRestrict (numerator R n hn f (c.refine R hm))
       (postnikovLayerZeroBimodule R (A.obj i).obj n) :=
-  bimoduleRestrictOver (denominator R n hn f (c.refine R hm))
-    (numerator R n hn f (c.refine R hm)) (postnikovMap R (B.transition hl).hom 0 ≫ e.base)
-    hb.symm (PostnikovZeroLayerInverse.refinedCoefficient R e hl)
+  PostnikovCommonCore.zeroCoefficientAt R hn n f c e hm hl hb
 
 lemma zeroCoefficient_refined_hom : (zeroCoefficient R n hn f c e hm hl hb).hom =
     (PostnikovZeroLayerInverse.refinedCoefficient R e hl).hom :=
-  bimoduleRestrictOver_hom _ _ _ _ _
+  PostnikovCommonCore.zeroCoefficientAt_refined_hom R hn n f c e hm hl hb
 
 lemma zeroCoefficient_hom : (zeroCoefficient R n hn f c e hm hl hb).hom =
     postnikovLayerMap R (B.transition hl).hom n ≫ e.coefficient.hom :=
-  (zeroCoefficient_refined_hom R n hn f c e hm hl hb).trans
-    (PostnikovZeroLayerInverse.refinedCoefficient_hom R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_hom R hn n f c e hm hl hb
 
 lemma zeroCoefficient_left : postnikovLayerMap R (f.app k).hom n ≫
     (zeroCoefficient R n hn f c e hm hl hb).hom =
       postnikovLayerMap R (A.transition (hj.trans hl)).hom n :=
-  (congrArg (fun t => postnikovLayerMap R (f.app k).hom n ≫ t)
-    (zeroCoefficient_refined_hom R n hn f c e hm hl hb)).trans
-      (PostnikovZeroLayerInverse.refinedCoefficient_left R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_left R hn n f c e hm hl hb
 
 lemma zeroCoefficient_right : (zeroCoefficient R n hn f c e hm hl hb).hom ≫
     postnikovLayerMap R (f.app i).hom n =
       postnikovLayerMap R (B.transition (hj.trans hl)).hom n :=
-  (congrArg (fun t => t ≫ postnikovLayerMap R (f.app i).hom n)
-    (zeroCoefficient_refined_hom R n hn f c e hm hl hb)).trans
-      (PostnikovZeroLayerInverse.refinedCoefficient_right R e hl)
+  PostnikovCommonCore.zeroCoefficientAt_right R hn n f c e hm hl hb
 
 def coefficient :
     bimoduleRestrict (c.refine R hm).roof.denominator
@@ -76,7 +71,7 @@ lemma coefficient_refined_hom : (coefficient R n hn f c e hm hl hb).hom =
     (PostnikovZeroLayerInverse.refinedCoefficient R e hl).hom :=
   (postnikovLayerFromZero_hom R (B.obj k).obj (A.obj i).obj (c.refine R hm).roof.apex
     n hn (c.refine R hm).roof.denominator (c.refine R hm).roof.numerator _).trans
-      (bimoduleRestrictOver_hom _ _ _ _ _)
+      (zeroCoefficient_refined_hom R n hn f c e hm hl hb)
 
 lemma coefficient_hom : (coefficient R n hn f c e hm hl hb).hom =
     postnikovLayerMap R (B.transition hl).hom n ≫ e.coefficient.hom :=
