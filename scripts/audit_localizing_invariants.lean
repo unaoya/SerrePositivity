@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
 import SerrePositivity.KST.LocalizingInvariants
 import Lean.Util.CollectAxioms
 
@@ -1443,7 +1444,8 @@ run_cmd do
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod do continue
+    unless (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod ||
+        mod == `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence do continue
     if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
       throwError "K-5: ModelCategory assumption in type of {name}"
     let axioms ← collectAxioms name

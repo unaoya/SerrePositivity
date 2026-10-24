@@ -1,0 +1,40 @@
+=== verify 2026-10-24 12:31:23 HEAD 24be15bb3
+--- remove orphan oleans (modules without source)
+removed orphan modules: 0
+--- lake build SerrePositivity
+Build completed successfully (25315 jobs).
+--- lake build <audit targets> (2793 modules, derived from scripts/audit_*.lean)
+Build completed successfully (32945 jobs).
+--- audits
+audit_infinity_core rc=0 14s
+audit_infinity_f1 rc=0 42s
+audit_infinity_f1b rc=0 13s
+audit_infinity_f1_f1b rc=0 16s
+audit_infinity_f2 rc=0 34s
+audit_f2_ind rc=0 21s
+audit_f2_compact rc=0 14s
+audit_f2_idempotent rc=0 14s
+audit_infinity_presentable rc=0 17s
+audit_homotopy_limits rc=0 36s
+audit_infinity_stable rc=0 333s
+audit_derived_infinity rc=0 308s
+audit_derived_gluing rc=0 26s
+audit_dg_nerve rc=0 13s
+audit_coherent_nerve rc=0 16s
+audit_dold_kan_comparison rc=0 40s
+audit_einfinity rc=0 98s
+audit_kst_fibration rc=0 31s
+audit_kst_s_construction rc=0 77s
+audit_localizing_invariants rc=1 30s
+scripts/audit_localizing_invariants.lean:8:0: error: K-5: required module missing: SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
+audit_kst_nonconnective rc=0 24s
+audit_kst_spectra rc=0 20s
+audit_spectra rc=0 9s
+audit_refactor_infinity rc=0 7s
+--- sorry closure of main_statement
+declarations with a direct sorry in the closure of main_statement: []
+SerrePositivity.Inputs.Homotopy.kanQuillen_model_exists in environment: false, in closure: false
+SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3 in environment: true, in closure: true
+SerrePositivity.theorem_3_1_K0 in environment: true, in closure: true
+SerrePositivity.Section4.supportedRankK0_descent in environment: true, in closure: true
+=== end 2026-10-24 12:55:09

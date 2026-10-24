@@ -1,0 +1,8 @@
+{
+  "import_plan": "main-localizing-audit-import.json",
+  "additional_origin_filter_module": "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence",
+  "check_strength": "unchanged ModelCategory rejection and standard-axioms-only checks; moved module is included alongside original KST namespace",
+  "targeted_audit_rc": 0,
+  "audited_declarations": 18288,
+  "audited_modules": 1430
+}
