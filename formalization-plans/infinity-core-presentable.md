@@ -59,6 +59,10 @@
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
 - `presheaf_isRepresentable_of_sendsSmallColimitsToLimits`（自由前層圏。一般 presentable への移送は未完）
 
+- `IsCorepresentableSmallSpaceFunctor`、`accessible_preservesLimits_isCorepresentable`（d3、存在入力なし）。
+- `IsAccessible.exists_smallCovariantHom`、`exists_leftAdjoint_iff_covariantHom_representable`
+- `exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful`（反映界面を明示、d5 は未完）。
+
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
 - 主な分類界面：`leftStraighteningInfinityEquivalence`、`leftStraighteningInfinityMap_evaluateIso`、

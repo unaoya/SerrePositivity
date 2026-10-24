@@ -276,3 +276,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.IndYonedaHomEval
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndHomContinuityDetection
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightAdjointAccessibility
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightAdjointFunctorCriterion
+public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveContinuousRepresentation

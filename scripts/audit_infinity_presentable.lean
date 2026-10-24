@@ -566,3 +566,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_of_indHomTests
 #check @SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible_of_spaceUniverseFullyFaithful
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveContinuous_exists_representation_inverting_units
