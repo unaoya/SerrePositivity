@@ -2384,14 +2384,17 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 同じ probe 比較と忘却比較で挟むと元の自由忘却単位の二胞体そのものを回収する。
 `derivedFreeProbeUnitEdge` は任意の既存 D(R) 頂点の実自由 probe への単位辺で、元の射の類を保持する。
 `derivedFreeProbeUnitCommaVertex` は同じ U の各固定始域 comma fiber の実候補頂点。
-候補の標的は同じ自由 probe 頂点。始対象性と全 coherent ∞ 随伴との接続は未完成。
+候補の標的は同じ自由 probe 頂点で、`derivedFreeProbeUnitCommaVertex_isInitial` が候補自身の実始対象性を与える。
+`cAlgFreeDerived` と `cAlgFreeForgetDerivedAdjunction` は実 U を右随伴とする全 ∞ 随伴。
+`derivedFreeProbeUnitCommaAdjunctionIso` は元の候補と随伴単位の頂点を同じ comma 内で比較する。
 `derivedFreeProbeUnitIntervalMap` は同じ U と同じ実単位による標準区間写像空間比較。
 任意のパラメータ族について、その作用を元の単位の前合成と U の後合成へ厳密に回収する。
 `normalizedSimplexTensorHomIso` は同じ X⊗N(Δⁿ) の Hom と同じ dg Hom の実 Dold–Kan Hom の単体集合同型。
 `normalizedSimplexDerivedHomIso` は半自由 X・Y で既存 D(R) の右 pinched Hom への同型。
 元の normalizedFunctor・線形化・smart truncation と全ての単体作用素を保持する。
-テンソル族の frame 性・標準解消との弱比較・標準単位比較の弱同値性は未証明。
-同じ U の ∞ 極限保存・G1′ は後続。
+テンソル族の frame 性・標準解消との弱比較は完成し、`derivedFreeProbeUnitIntervalMap_weak` が元の標準比較自身の弱同値性を与える。
+`cAlgForgetDerived_mapJoinCone_isLimit` は任意形状 K の元の指定 coherent 極限錐の U 像を保存する。
+`cAlgForgetDerived_hasLimit_postcomp` は極限の存在の保存。局所輸送同定は証明済みで、これらに追加入力はない。G1′ は後続。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
@@ -2571,7 +2574,7 @@ F を元の半自由分解関手、射を元の自由単位に取れる。資源
 `normalizedTensorConeData_rhs_mixed_last` は元の全 HA 右辺を同じ符号付き線形右辺へ同定する。
 `normalizedTensorConeData_equation_of_last_mem` は元の終端を含む全有限集合で HA 方程式を証明。
 任意終端への単射制限と全混合 HA は下記に完成。退化を含む全自然性・大域 cone/prism は未証明。
-同じ U の coherent ∞ 極限保存・G1′も未完了。
+同じ U の coherent ∞ 極限保存は `cAlgForgetDerived_mapJoinCone_isLimit` で完成。G1′ は未完了。
 
 `normalizedTensorElementSelectionOfCard_image` は明示次数の像の選択列の厳密な合成式。
 `normalizedTensorElementSelectedCochainAtMax_image_reindex` と `_smul` は元の選択 cochain と

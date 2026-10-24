@@ -73,10 +73,10 @@
   自由忘却の実弱 Hom span は0e5b0d5d1。実導来単位・comma 候補はdcdcfc5da。正規化鎖の実 Reedy cofibrancy、tensor/K-projective と既存 D(R) への実弱 Hom span はe60467f07まで完成。
   元の要素圏上の二重 cone・全 slice prism・通常 augmentation 比較、全 HA と実 Δ²⊗K 三角形は完成。全作用素自然性7b84c975e、全三辺1b32cd7a8、全 h Fun の評価三角形2eaf97fe4、元の derived pinched と roof の全族比較ee6e3d6db。
   **元の列の基準 fee845d09**：BarrattEccles/FreeProbeElementColumn.lean と FreeProbeElementColumnProperties.lean の9公開宣言。元の正規化 Hom の同じ要素圏上の自由 E∞ frame の列、augmentation・評価自然変換、元の随伴単位による両比較公式、全 augmentation・全列射の弱同値性、各対象の cofibrancy。元の列を保持した標準単位比較の結論は `derivedFreeProbeUnitIntervalMap_weak`。
-  元の自由列・augmentation・評価を cofibrant 相対圏へ持ち上げ、包含で元の全成分を厳密に回収する。SameUniverse の全 roof と既存 CAlg_R の全 pinched 族まで構成済み。元の全 slice prism の評価三角形から同じ augmentation の逆・評価への全 Arrow 比較を構成し、実 U による全 pinched 族の像へ接続した。元の単位の全自然変換正方形と、忘却後の複体屋根の全導来単位三角形まで完成。同じ U の全源同型による全屋根の共役と、同じ Hom 宇宙回収による元の複体屋根への全 Arrow 比較まで完成。同じ cofibrant 置換 augmentation による標準単位との端点整合と、標準単位比較自身の弱同値性まで証明済み。全 ∞ 随伴・同じ U の任意 coherent ∞ 極限保存・G1′は未完了。
+  元の自由列・augmentation・評価を cofibrant 相対圏へ持ち上げ、包含で元の全成分を厳密に回収する。SameUniverse の全 roof と既存 CAlg_R の全 pinched 族まで構成済み。元の全 slice prism の評価三角形から同じ augmentation の逆・評価への全 Arrow 比較を構成し、実 U による全 pinched 族の像へ接続した。元の単位の全自然変換正方形と、忘却後の複体屋根の全導来単位三角形まで完成。同じ U の全源同型による全屋根の共役と、同じ Hom 宇宙回収による元の複体屋根への全 Arrow 比較まで完成。同じ cofibrant 置換 augmentation による標準単位との端点整合と、標準単位比較自身の弱同値性まで証明済み。同じ単位 comma 候補自身の実始対象性、全 ∞ 随伴、同じ U の任意 coherent ∞ 極限保存まで完了。E2-8 G1′は未完了。
 - **工程**（依存順、残りの粗い見積もり）：
   1. **g1 完了**：同じ全 pinched 族と全族比較から、既存の標準単位比較自身の弱同値性を証明。HTT §5.2.4 の写像空間判定への入力。
-  2. 同じ単位 comma 候補の実始対象性から全 ∞ 随伴を構成し、同じ U の任意 coherent ∞ 極限保存へ接続。HTT §5.2.4、6〜14時間。点ごとの Hom 同値だけでは完成扱いしない。
+  2. **g2 完了**：同じ単位 comma 候補の実始対象性から全 ∞ 随伴を構成し、同じ U の任意 coherent ∞ 極限保存へ接続。HTT §5.2.4。
   3. G1′：BS の界面を既存 CAlg_R で述べ直し、上の実 U・離散比較・極限保存を代入。4〜12時間。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
@@ -87,8 +87,9 @@
   `BarrattEccles.discreteCAlgEmbedding`、`BarrattEccles.discreteCAlgUnderEmbedding_forgetIso`、`BarrattEccles.algebraCAlgSource_underlyingDerivedIso`。
   `BarrattEccles.freeProbeDerivedUnit`、`BarrattEccles.derivedFreeProbeUnitEdge`、`BarrattEccles.derivedFreeProbeUnitCommaVertex`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_family`。
   `BarrattEccles.freeProbeRelativeChosenSourceIso_unit_triangle`、`BarrattEccles.freeProbeUnitStandard_triangle`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_weak`。
-  `BarrattEccles.FreeProbeUnitTransportCondition`、`BarrattEccles.cAlgForgetDerived_rightAdjoint_exists_of_transport`、`BarrattEccles.cAlgFreeDerivedOfTransport`、`BarrattEccles.cAlgFreeForgetDerivedAdjunctionOfTransport`。
-  `BarrattEccles.derivedFreeProbeUnitCommaAdjunctionIsoOfTransport`、`BarrattEccles.cAlgForgetDerived_mapJoinCone_isLimit_of_transport`、`BarrattEccles.cAlgForgetDerived_hasLimit_postcomp_of_transport`。
+  `BarrattEccles.derivedFreeProbeUnitCommaVertex_isInitial`、`BarrattEccles.cAlgForgetDerived_rightAdjoint_exists`、`BarrattEccles.cAlgFreeDerived`、`BarrattEccles.cAlgFreeForgetDerivedAdjunction`。
+  `BarrattEccles.derivedFreeProbeUnitCommaAdjunctionIso`、`BarrattEccles.cAlgForgetDerived_mapJoinCone_isLimit`、`BarrattEccles.cAlgForgetDerived_hasLimit_postcomp`。
+  `BarrattEccles.derivedFreeProbeUnitCommaTargetFiberArrow_hom`、`BarrattEccles.unitIntervalMapAt_derivedFreeProbeUnitCommaTargetFiberVertex`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_transportIso`、`BarrattEccles.freeProbeUnitTransportCondition`。
   `BarrattEccles.derivedFreeProbeUnitCommaTargetFiberVertex`、`BarrattEccles.derivedFreeProbeUnitCommaTransportMap`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso`。
   `BarrattEccles.derivedFreeProbeUnitIntervalMap_isSimplicialHomotopyEquivalence`、`BarrattEccles.derivedFreeProbeUnitIntervalMap_isQCatEquivalence`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_homotopy_h`、`BarrattEccles.derivedFreeProbeUnitCommaVertex_hom`。
   `BarrattEccles.freeDerivedHomToUnderlying_homotopyEquivalence`、`BarrattEccles.freeProbeDerivedUnitNormalizedHom_family`。
@@ -114,16 +115,16 @@
   集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
-- **既知の問題・P-6**：局所輸送同定はコーディネータが P-6 として依頼済み。必要な型は `FreeProbeUnitTransportCondition A`、すなわち `∀ x y, Nonempty (FunctorIso (derivedFreeProbeUnitIntervalMap A x y) (derivedFreeProbeUnitCommaTransportMap A x y))`。ユーザー指示によりこの同定を明示入力として g2-2〜4 を条件付きで構成する。P の unitIntervalMapAt と局所輸送同型の公開名・コミットを確認後に代入し、条件を外す。他レーンの構成はコピーしない。 P-6 の候補名 unitIntervalMapAt_commaTransportIso・commaTargetFiber_constant_homotopy は新規ファイルに現れたが、未追跡のため import を保留し、保存・公開を待つ。
-- **未コミット**：なし。還元3公開宣言は57a670372で保存済み。条件付き g2-3〜4 の2モジュール・集約・監査・本節も所有ファイルだけで保存。
-- **次の一手**：P-6 の公開入口を確認したら FreeProbeUnitTransportCondition を証明し、構成済みの全経路へ代入する。FreeProbeDerivedAdjunction は同じ候補の実始対象性から実 U を右随伴とする QCatAdjunction を構成し、元の候補と構成した随伴単位の頂点同型を同じ comma 内で保持する。FreeProbeDerivedLimits はその同じ随伴を mapJoinCone_isLimit_of_adjunction に渡し、任意 K の元の指定極限錐自身の U 像の保存を与える。全 F・大域単位・余単位は入力にせず出力する。
+- **既知の問題・依存**：P-6 は4a6a7dd91で公開済み。CommaLocalUnitComparison・CommaLocalUnitTransportComparison を読み取り専用で import する。commaTargetFiber_constant_homotopy と g2-1 の同じ候補の定値 Hom 類から、回収辺の類を元の derivedFreeProbeUnitHom へ同定した。unitIntervalMapAt_commaTransportIso を元の候補へ代入し、FreeProbeUnitTransportCondition を追加仮定なしで証明済み。条件付きの構成は補助入口として保持し、主経路は FreeProbeDerivedFreeForget の条件なし宣言を使う。P への未解決依頼はない。
+- **未コミット**：なし。還元3宣言は57a670372、条件付き経路はb4a0bbc2d、条件除去後の2モジュール・集約・監査・README・本節も所有ファイルだけで保存。
+- **次の一手**：g2-5 まで完了したため、二段目 g2 の完了により停止する。次チャットで E2-8 G1′へ進む。BS の界面を既存 CAlg_R で述べ直し、実 U・完成済みの離散比較・cAlgForgetDerived_mapJoinCone_isLimit を代入し、D(R) 版を系として導く。BS-7 の animated 環は第 II 段。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
   `FreeProbeUnderlyingReplacementComponent` は閉包内の全列自然性から元の置換 augmentation の忘却正方形を回収し、標準単位成分と局所化源単位の等式へ接続する。同型の等式を先に固定し、同じ射へ写すことで大きな関手の不要な定義展開を避ける。資源上限を上げない。
   同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続済みであり、標準単位比較自身の弱同値性を保持する。
   P の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/Adjunction/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
   全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
-  g1-1〜g1-5 は完了。g2 の三段目は g2-1 候補・標準単位の照合、g2-2 同じ候補の実始対象性、g2-3 全 ∞ 随伴、g2-4 任意 coherent ∞ 極限保存、g2-5 検証・保存。g2-1 は完了。g2-2〜4 は同じ局所輸送同定を明示入力とする条件付き構成が完成し、対象・集約ビルド、全監査と独立例を通過。P-6 の代入・条件除去、g2-5・G1′は未完了。集約・全公理監査と標準比較自身の逆射・両合成ホモトピーの独立例を検証済み。
+  g1-1〜g1-5 は完了。g2 の三段目は g2-1 候補・標準単位の照合、g2-2 同じ候補の実始対象性、g2-3 全 ∞ 随伴、g2-4 任意 coherent ∞ 極限保存、g2-5 検証・保存。g2-1〜5 は完了。主経路は局所同定を仮定せず、対象・集約ビルド、全監査と追加入力なしの独立例を通過。G1′は未完了。集約・全公理監査と標準比較自身の逆射・両合成ホモトピーの独立例を検証済み。
 
 
 ## 0. 位置づけ
