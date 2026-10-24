@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveModuleFamily

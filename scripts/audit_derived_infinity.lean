@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative
 import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover
 import SerrePositivity.InfinityCategories.Derived.DGProjectiveModuleFamily
@@ -4509,6 +4510,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SemifreeLimits,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative,
     `SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectCover,
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
-public import SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits
+public import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 public import SerrePositivity.InfinityCategories.DGNerve.PullbackFiberComparison
 
 /-! # Semifree 四角形の標準 fiber 表示

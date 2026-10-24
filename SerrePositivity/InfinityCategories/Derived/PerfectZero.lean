@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PerfectBasic
-public import SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits
+public import SerrePositivity.InfinityCategories.Derived.SemifreeLimits
 
 /-! # Perf の零対象
 

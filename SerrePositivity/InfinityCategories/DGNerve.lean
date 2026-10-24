@@ -46,7 +46,6 @@ public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundarySimplices
 
 public import SerrePositivity.InfinityCategories.DGNerve.FiberPullback
 
-public import SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits
 
 public import SerrePositivity.InfinityCategories.DGNerve.PullbackFiberComparison
 
