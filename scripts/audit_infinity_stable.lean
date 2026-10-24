@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionDirect
+import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinchedGeneral
+import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecompositionDirect
+import SerrePositivity.InfinityCategories.Derived.DGWalkingHomRefinementDirectNaturality
+import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismDirectNaturality
+import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismDirectNaturality
+import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGeneral
+import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral
+import SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison
+import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
 import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
 import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision
@@ -6629,8 +6639,6 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomEvaluationWhisker,
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomRefinementNaturality,
   `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransComponentExt,
-  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismNaturality,
-  `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismNaturality,
   `SerrePositivity.InfinityCategories.Derived.DGRoofPrismComparison,
   `SerrePositivity.InfinityCategories.Derived.DGRoofFillerTransportCompatibility,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofFillers,
@@ -7649,6 +7657,16 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality]
 
 @[noinline] private def stableAuditExpectedChunk39 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionDirect,
+  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinchedGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecompositionDirect,
+  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomRefinementDirectNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismDirectNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismDirectNaturality,
+  `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison,
+  `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison,
   `SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison,
   `SerrePositivity.InfinityCategories.Derived.CofiberConnectingDerivedImage,
