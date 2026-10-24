@@ -1215,6 +1215,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RelativeInvariant,
     `SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation,
     `SerrePositivity.KST.LocalizingInvariants.DGQuotientNullCorner,
+    `SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare,
+    `SerrePositivity.KST.LocalizingInvariants.DGOdotFixedNullSquare,
     `SerrePositivity.KST.LocalizingInvariants.RelativeSplitting,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence,
     `SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback,

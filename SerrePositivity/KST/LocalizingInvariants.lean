@@ -1337,6 +1337,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroUnderlyingMap
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation
 public import SerrePositivity.KST.LocalizingInvariants.DGQuotientNullCorner
+public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGOdotFixedNullSquare
 public import SerrePositivity.KST.LocalizingInvariants.RelativeSplitting
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback

@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealiza
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u
+universe u v
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
@@ -74,6 +74,27 @@ lemma exists_square_of_source_comm [Quasicategory S]
       squareLeftEdge ≫ F = SSet.yonedaEquiv.symm l.edge ∧
       squareTopEdge ≫ F = SSet.yonedaEquiv.symm r.edge := by
   obtain ⟨F, hb, ht, hl, hr⟩ := exists_stableSquare_of_homMk_comm i r l q h
+  exact ⟨F, hb, hr, hl, ht⟩
+
+/-- 厳密に可換な四辺を、元の四一単体を保つ coherent 四角形にする。 -/
+lemma exists_coherentSquare_of_comm {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    [Quasicategory (SimplicialNerve C)] {a b z c : C}
+    (i : a ⟶ b) (q : b ⟶ c) (l : a ⟶ z) (r : z ⟶ c) (h : i ≫ q = l ≫ r) :
+    ∃ F : (Δ[1] ⊗ Δ[1] : SSet.{max u v}) ⟶ SimplicialNerve C,
+      squareBottomEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge i).edge ∧
+      squareRightEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge q).edge ∧
+      squareLeftEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge l).edge ∧
+      squareTopEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge r).edge := by
+  have hc : Truncated.HomotopyCategory.homMk (coherentNerveEdge i).toTruncated ≫
+      Truncated.HomotopyCategory.homMk (coherentNerveEdge q).toTruncated =
+      Truncated.HomotopyCategory.homMk (coherentNerveEdge l).toTruncated ≫
+        Truncated.HomotopyCategory.homMk (coherentNerveEdge r).toTruncated := by
+    rw [Truncated.HomotopyCategory.homMk_comp_homMk
+      (coherentNerveCompStruct i q).toTruncated,
+      Truncated.HomotopyCategory.homMk_comp_homMk (coherentNerveCompStruct l r).toTruncated, h]
+  obtain ⟨F, hb, ht, hl, hr⟩ := exists_stableSquare_of_homMk_comm
+    (coherentNerveEdge i).toTruncated (coherentNerveEdge r).toTruncated
+    (coherentNerveEdge l).toTruncated (coherentNerveEdge q).toTruncated hc
   exact ⟨F, hb, hr, hl, ht⟩
 
 /-- 源内の零化と ν の元の二射を、同じ四辺の相対 Verdier 提示へ接続する。 -/
