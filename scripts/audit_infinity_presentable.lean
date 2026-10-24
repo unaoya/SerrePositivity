@@ -250,3 +250,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.isLocallySmall
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isPresentable_of_compactGenerating
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison_coconeMap
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafDensity_image_canonicalColimits
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafDensity_image_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_map_isColimit
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafUniverseDiagram_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaWeightLeftKan_restrictionIso
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_universeIso
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightFamily_transpose
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightFamily_evaluationIso
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedRestrictionIso
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafUniverseDiagram_map_isColimit_arbitraryShape

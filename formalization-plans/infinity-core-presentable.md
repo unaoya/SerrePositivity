@@ -10,7 +10,7 @@
 ### 現在地
 - P-1 a は完了。正則 κ、小さい κ-filtered 余極限、小さい κ-compact 全部分生成圏による accessibility、
   元の Ind 比較の全同値、accessible 関手、同値不変性、正則濃度変更を提供する。
-- P-1 b は完了。所有集約ビルドと両公理監査を検証済み。二段目の完了によりこのチャットを停止し、次は新チャットで P-1 g を再開する。
+- P-1 b は完了。P-1 g の7ファイルの修正・接続・集約・両公理監査を検証済み。現在は左 Kan 延長の sifted 余極限保存と普遍性を進める。
 - 任意の小さい quasicategory C 上の前層について、有限底上符号族の連続 left fibration 置換から、
   宇宙 u の小さい compact 全部分生成圏を構成した。各指定前層を厳密な頂点とする filtered 全表示を持つ。
 - 通常の strict filtered 全余錐の native 性、元の left fibration への頂点回収、
@@ -55,11 +55,10 @@
   Ind 側の a7 はこの完成範囲の新しい入力ではなく、既存の明示入力を勝手に無条件化しない。
 
 ### 未コミット
-- 以下の7本は未検証の作業中ファイル。再開指示に従い `HomotopyLimits/` から `F2/Presentable/` へ置き直し、
-  import を現所在へ合わせた。集約・監査には未接続であり、P-1 b の成果には数えない。
+- 引き継いだ次の7本は修正・接続・検証済みで、P-1 g1 の保存対象。所在は `F2/Presentable/`。
 - `PresheafDensityLeftKan.lean`、`PresheafElementsLeftKan.lean`、`PresheafUniverseArbitraryColimits.lean`、
   `SigmaHomWeightComparison.lean`、`YonedaHomWeightColimits.lean`、`YonedaWeightFamilyComparison.lean`、`YonedaWeightLeftKan.lean`。
-- 上記7本だけが P 所有の未追跡作業中ファイル。検証済みの P-1 b の実装・所有集約・公理監査・この計画を保存する。他レーンは変更しない。
+- g2 の全 co-Yoneda による極限反映・係数制限、全 Hom 錐、sifted 保存、普遍性の作業中モジュールは、検証・集約接続後に保存する。他レーンは変更しない。
 
 ### 既知の問題
 - 任意の小さい A の Indκ(A) は無条件には presentable でない。
@@ -83,6 +82,16 @@
 - [x] b4. 一般の小さい底上の前層の小さい compact 生成圏と accessibility。
 - [x] b5. 前層の presentable 性、条件を明示した Indκ(C) の presentable 性。
 - [x] b6. 局所小ささの公開界面、集約ビルド・公理監査・引き継ぎ更新。
+
+## P-1 g 三段目（v3）
+
+- [x] g1. 未接続7ファイルの修正・検証と全 Hom 族の自然比較。
+- [ ] g2. 元の左 Kan 延長の任意小 sifted 余極限保存。
+- [ ] g3. Yoneda 制限の本質的全射性。
+- [ ] g4. 保存関手 ∞ 圏の全同値による普遍性。
+- [ ] g5. simplicial Ind 表示と filtered／geometric realization による生成。
+- [ ] g6. Yoneda の有限余積保存と全余極限保存判定。
+- [ ] g7. 集約ビルド・公理監査・引き継ぎ更新。
 
 ## 規約
 
