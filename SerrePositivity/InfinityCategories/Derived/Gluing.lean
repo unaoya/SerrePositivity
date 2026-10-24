@@ -702,3 +702,5 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUni
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquareTarget
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientYonedaInverseChainMap
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalCoefficientPrism
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalFace
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalNormalization

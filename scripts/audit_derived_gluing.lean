@@ -707,7 +707,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseInverse,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquareTarget,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientYonedaInverseChainMap,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalCoefficientPrism]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalCoefficientPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalNormalization]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
