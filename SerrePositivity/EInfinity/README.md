@@ -2394,7 +2394,7 @@ native pinched 族も弱同値。hR は元の native roof 区間族の全合成�
 元の normalizedFunctor・線形化・smart truncation と全ての単体作用素を保持する。
 テンソル族の frame 性・標準解消との弱比較は完成し、`derivedFreeProbeUnitIntervalMap_weak` が元の標準比較自身の弱同値性を与える。
 `cAlgForgetDerived_mapJoinCone_isLimit` は任意形状 K の元の指定 coherent 極限錐の U 像を保存する。
-`cAlgForgetDerived_hasLimit_postcomp` は極限の存在の保存。局所輸送同定は証明済みで、これらに追加入力はない。G1′ は後続。
+`cAlgForgetDerived_hasLimit_postcomp` は極限の存在の保存。局所輸送同定は証明済みで、これらに追加入力はない。G1′ の CAlg_R 界面と D(R) への系は下記を参照。
 Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 同じ共通始域からの全単体比較と元の cofibrant 包含を通す点ごとの高次比較は完成。
 元の代数射による前後合成の自然性・既存 π₀ 同値と同じ射の類への整合まで完成。∞ 局所化の普遍性も完成。
@@ -2402,7 +2402,7 @@ Dwyer–Kan 命題2.2の元の両比較射自身の弱同値性は完成。
 を参照。Π は一般に filtered ではなく、その性質を余極限の証明に仮定しない。
 比較の構成は [Low, §3.2〜3.7](https://arxiv.org/pdf/1409.8062)（Dwyer–Kan §7 の整理）を参照。
 既存 discreteEmbedding との全比較と離散入力の像の消滅は完成。
-離散対象の本質像の両包含は完成。同じ U の ∞ 極限保存・G1′ は未完成。
+離散対象の本質像の両包含・同じ U の任意 coherent ∞ 極限保存・G1′ の界面の述べ直しは完成。
 
 原典：
 [Berger–Moerdijk 2003](https://arxiv.org/pdf/math/0206094)、
@@ -2764,3 +2764,29 @@ pinched 単体の同じ全切断和を最初から二番目の一項へ戻す。
 元の augmentation と随伴による評価は全列で自然で、同じ単位による忘却後の三角形を保つ。
 全 augmentation・全列射の弱同値性と各列対象の cofibrancy も提供する。
 標準単位比較への全 pinched 族としての接続は次工程。
+
+
+## G1′：BS 界面の CAlg_R 版と D(R) 版の系
+
+`Perfectoidization/Interface.lean` の `PerfectoidizationInterfaceCAlg` は既存の
+`BarrattEccles.CAlg_R R` 上で G1 の結論を述べる。単位は同じ通常代数の Under 圏からの
+`algebraEmbedding` を始域とする全関手射で、底は実 `cAlgForgetDerived R` との合成。
+`underlyingUnit` は完成済みの `discreteCAlgUnderEmbedding_forgetIso` の逆と単位の U 像を
+合成した実ホモトピーである。`underlyingUnit_hom` が元の二胞体を回収する。
+`IsDiscrete` は通常の R 代数の本質像であり、`disc_forget_iff` が既存 G1 の
+全非零整数次数の消滅条件との同値を与える。
+
+`BSLimitConeDataCAlg` は同じ `PerfUnder_u` の CAlg_R 指定錐、元の単位からの辺、
+H⁰ の環・単位・全射影の乗法整合性を保持する。後者には既存 `BSLimitConeData` の
+非普遍的データを再利用し、その錐の極限性は入力しない。
+全錐の `FunctorIso` の境界は完成済みの離散比較自身、頂点は同じ P(S) の恒等比較である。
+`limit_isLimit` と、通常の商を使う `excision` は CAlg_R の普遍性を要求する。
+非完備の通常代数を含む始域・整性・完備性・arc 条件は既存 G1 と同じ。
+
+`Perfectoidization/DerivedCorollary.lean` の `PerfectoidizationInterfaceCAlg.toE3` が
+旧 `BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3` を構成する。
+指定錐は実 U の任意 coherent 極限保存と全錐比較、excision は同じ正方形の U 像から導く。
+`nonempty_e3_of_cAlg` は存在の還元であり、CAlg_R 版の存在を証明・引用する宣言ではない。
+既存 `BhattScholze/Inputs/PerfectoidizationInterface.lean` の一件の文献入力は所有外にあり、
+この三モジュールから import しない。引用をこの型で述べ直す際に、D(R) 側の下流へは
+この系を供給できる。具体的 prismatic 構成や animated 環（BS-7）は第 II 段である。

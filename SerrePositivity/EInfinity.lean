@@ -2495,3 +2495,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedAdjunction
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedLimits
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitLocalTransport
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
+
+public import SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary
