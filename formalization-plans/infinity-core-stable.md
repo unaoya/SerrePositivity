@@ -174,7 +174,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 全加群の実半自由分解：`Derived/DGModuleAllResolvedExact` の `dgModuleResolutionInfinity_isExactFunctor`。仮定は CommRing R・DGCategory R C・Small.{u} C のみ。一般の全加群間 dg 関手版は `dgModuleAllResolvedFunctor_isExactFunctor`。
 - 任意の全加群値 dg 関手：`Derived/DGPretriangulatedModuleValuedExact` の `dgPretriangulatedModuleValuedFunctor_isExactFunctor R D C F`。CommRing R・DGCategory R D/C・Small.{u} D/C・IsDGPretriangulated R D のみ。型は dgUniverseLiftDown と F の合成の dgNerve.map（共通宇宙）。F に M.toFunctor を直接渡せる。`DGKernelTensorYonedaNerveIso` の同名 CompositeIso は実 tensor・Yoneda 比較。Yoneda 特殊化は既存 `dgPretriangulatedYoneda_isExactFunctor` も使用可。終域の全加群圏の Small 仮定は不要。既存宣言は不変。
 
-- D-14 の実分解入口を含む両全体監査は Derived 22,934宣言／2,620モジュール、Stable 23,996／2,889で成功。任意の加群値関手への補足一般化は対象5,710 jobs、M.toFunctor と Yoneda の二適用型、4公開署名の三公理検査、集約11,128 jobsで検証し、両全体監査へ接続済み（補足後の全体再監査は次の集約区切り）。
+- D-14 の (1)〜(4) は集約と両全体監査へ接続済み。最新集約11,457 jobs、Derived 23,022宣言／2,634モジュール・Stable 24,083／2,903の全体監査成功（許容三公理のみ）。M.toFunctor と Yoneda 特殊化、C : Type v・D : Type w の混在宇宙での要求型も検査済み。c′ の出発提示の葉モジュールは別検査の区切りに従う。
 
 - 補足2 (3)：`Stable/UniverseExactFunctorLift` の `isExactFunctor_ulift F h` と `isExactFunctor_iff_ulift F`。安定性仮定なし、対象2,576 jobs・要求型と2宣言の三公理検査成功。(4) は `Derived/DGPretriangulatedModuleValuedCommonExact` の `dgPretriangulatedModuleValuedFunctorCommon_isExactFunctor`（dgNerveCommonMap）と `dgPretriangulatedModuleValuedFunctorLifted_isExactFunctor`（dgUniverseLiftFunctor F の native nerve）。D : Type v・C : Type w を独立にし、Small は D/C のみ。任意の追加宇宙 t と共通宇宙 max (u+1) v w t に対応する。F := M.toFunctor を C : Type v・D : Type w の向きで型検査済み。対象5,751 jobs、補助を含む新11モジュール64宣言の葉監査は許容三公理のみ。既存宣言は不変。
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
 public import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
 public import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision

@@ -1,3 +1,15 @@
+import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransClosedIso
+import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMap
+import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMapSimplex
+import SerrePositivity.InfinityCategories.Derived.DGModuleSquareCommonMap
+import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMapZero
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCommonExact
+import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransCommonIso
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaCommonIso
+import SerrePositivity.InfinityCategories.Derived.DGNerveCommonLiftIso
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedYonedaCommonExact
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedCommonExact
 import SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaNerveIso
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact
@@ -7814,6 +7826,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransClosedIso,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCommonMap,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCommonMapSimplex,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleSquareCommonMap,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCommonMapZero,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCommonExact,
+    `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransCommonIso,
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaCommonIso,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveCommonLiftIso,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedYonedaCommonExact,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedCommonExact,
+
     `SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaNerveIso,
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedExact,
 
