@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.SpectrumLoopSquares
 /-!
 概要：同じ dg 懸垂の実相対四角形から、固定 K の元の頂点を実 loop 頂点へ送る。
 方針：K-6 の同じ canonical fiber を使い、同じ cone の固定 K 零性で loop 四角形とする。
-規約：元の相対四角形は明示入力。元の右辺を保持し、K の局所化性を仮定しない。
+規約：全利用側の定理は元の相対四角形を明示入力とする条件付きの主張。元の右辺を保持し、K の局所化性を仮定しない。
 使われ方：反復懸垂の構造射。実相対四角形の供給後に元の各段へ特殊化する。
 -/
 
@@ -40,7 +40,7 @@ private lemma canonicalFiber_right :
   exact SSet.yonedaEquiv.symm_apply_apply _
 
 include Z hMiddle in
-/-- 元の同じ K 四角形の右辺の始点は、同じ平坦 cone の固定 K 零頂点である。 -/
+/-- 明示相対屋根に条件付きで、元の同じ K 四角形の右辺の始点は、同じ平坦 cone の固定 K 零頂点である。 -/
 theorem dgKappaSuspensionRelative_middle_isZero :
     IsZeroVertex (squareVertex (d.square ≫ dgKInputK R) 1 0) := by
   have he := congrArg ((dgKInputK R).app (Opposite.op ⦋0⦌)) hMiddle
@@ -80,12 +80,12 @@ def dgKappaSuspensionLoopComparison :
     rw [dgKInputK_vertex] at he
     exact he) rfl
 
-/-- 頂点座標を戻しても、元の比較辺の全一単体そのものを保持する。 -/
+/-- 明示相対屋根に条件付きで、頂点座標を戻しても、元の比較辺の全一単体そのものを保持する。 -/
 theorem dgKappaSuspensionLoopComparison_edge :
     (dgKappaSuspensionLoopComparison R D I Z d hMiddle hRight A hLeft).edge =
       (dgRelativeFiberVertexComparison R d).edge := rfl
 
-/-- 同じ実 loop 比較が可逆であることは、元の相対 K 四角形の引き戻し性と同値。 -/
+/-- 明示相対屋根に条件付きで、同じ実 loop 比較が可逆であることは、元の相対 K 四角形の引き戻し性と同値。 -/
 theorem dgKappaSuspensionLoopComparison_isInvertible_iff :
     IsInvertibleEdge (dgKappaSuspensionLoopComparison R D I Z d hMiddle hRight A hLeft) ↔
       IsPullbackSquare (d.square ≫ dgKInputK R) := by

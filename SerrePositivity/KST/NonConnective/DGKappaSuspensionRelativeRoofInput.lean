@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 /-!
 概要：同じ平坦 dg 懸垂の実相対四角形を明示入力に隔離し、元の固定 K の構造比較を作る。
 方針：同じ商射を保つ四角形の実 fiber を、固定 native loop の値へ比較する。
-規約：この入力の存在と元の Perf・P への照合は未供給。I・P の型は変更しない。
-使われ方：K-7 c5 の供給境界案。実供給済みの非連結 K 構成とは数えない。
+規約：全利用側の定理はこの入力に条件付き。この入力の存在と元の Perf・P への照合は未供給。I・P の型は変更しない。
+使われ方：K-7 c5 の採用済み明示供給境界。実供給済みの非連結 K 構成とは数えない。
 -/
 
 @[expose] public section
@@ -30,12 +30,18 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v)) [DGCategory R D] [
 
 /-- 元の平坦 cone と実商射を保持する相対 dg 四角形の、未供給の実入力。 -/
 structure DGKappaSuspensionRelativeRoofInput where
+  /-- D-9：同じ平坦商の実小 dg 核。 -/
   kernel : PerfDGInput.{u, max (u + 1) v} R
+  /-- Sp-6：固定 ν の実相対 Verdier 四角形。平坦屋根の供給は D-9。 -/
   diagram : RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
+  /-- D-9・Sp-6：同じ実核への始点照合。元の Perf・P との照合は別途 K-B。 -/
   left_eq : squareVertex diagram.square 0 0 = coherentNerveVertex kernel
+  /-- D-9・Sp-6：同じ平坦 cone の指定入力頂点への照合。 -/
   middle_eq : squareVertex diagram.square 1 0 =
     coherentNerveVertex (dgKappaResolvedConeKInput R D I)
+  /-- D-9・Sp-6：同じ平坦商の指定懸垂頂点への照合。 -/
   right_eq : squareVertex diagram.square 1 1 = coherentNerveVertex (dgKappaSuspensionKInput R D I)
+  /-- D-9・Sp-6：元の平坦商射の全一単体との厳密一致。 -/
   quotient : squareRightEdge ≫ diagram.square =
     SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge
 
@@ -60,13 +66,13 @@ def DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge :
   Classical.choose (homotopyCategory_homMk_surjective _ _
     (OmegaSpectrum.nativeLoopVertexIso (ρ.loopSquare R D I Z)).inv)
 
-/-- 選んだ実辺は、同じ固定 native loop 比較の逆同型そのものを表す。 -/
+/-- 明示相対屋根に条件付きで、選んだ実辺は、同じ固定 native loop 比較の逆同型そのものを表す。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge_hom :
     Truncated.HomotopyCategory.homMk (ρ.nativeLoopInverseEdge R D I Z) =
       (OmegaSpectrum.nativeLoopVertexIso (ρ.loopSquare R D I Z)).inv :=
   Classical.choose_spec (homotopyCategory_homMk_surjective _ _ _)
 
-/-- 同じ固定 native loop への比較辺は可逆。 -/
+/-- 明示相対屋根に条件付きで、同じ固定 native loop への比較辺は可逆。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge_isInvertible :
     IsInvertibleEdge (ρ.nativeLoopInverseEdge R D I Z) := by
   change IsIso (Truncated.HomotopyCategory.homMk (ρ.nativeLoopInverseEdge R D I Z))
@@ -88,7 +94,7 @@ def DGKappaSuspensionRelativeRoofInput.nativeStructureTriangle :
   SSet.Edge.CompStruct.ofTruncated
     ((ρ.loopComparison R D I Z).toTruncated.compStruct (ρ.nativeLoopInverseEdge R D I Z))
 
-/-- 固定 native loop 比較の可逆性は、同じ元の相対 K 四角形の引き戻し性と同値。 -/
+/-- 明示相対屋根に条件付きで、固定 native loop 比較の可逆性は、同じ元の相対 K 四角形の引き戻し性と同値。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeStructureEdge_isInvertible_iff :
     IsInvertibleEdge (ρ.nativeStructureEdge R D I Z) ↔
       IsPullbackSquare (ρ.diagram.square ≫ dgKInputK R) := by
@@ -113,7 +119,7 @@ def DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap :
   coherentNerveEdgeToHom ((ρ.nativeStructureEdge R D I Z).ofEq rfl
     (coherentNerveVertex_object _).symm)
 
-/-- 回収した厳密 BF 射の辺は、同じ元の構造比較の全一単体そのもの。 -/
+/-- 明示相対屋根に条件付きで、回収した厳密 BF 射の辺は、同じ元の構造比較の全一単体そのもの。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap_edge :
     (coherentNerveEdge (ρ.nativeStructureBFMap R D I Z)).edge =
       (ρ.nativeStructureEdge R D I Z).edge := by

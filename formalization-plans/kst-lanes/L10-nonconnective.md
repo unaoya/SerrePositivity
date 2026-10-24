@@ -65,11 +65,28 @@
 
 - c5：`DGKappaSuspensionLoopComparison` は、同じ平坦 cone・実懸垂を頂点とする元の相対四角形から、K-6 の同じ canonical fiber を loop として構成する。`DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap` は元の比較辺と実合成二胞体を保持して固定 native loop への厳密 BF 射を回収する。辺の可逆性は元の K 四角形の引き戻し性と同値で、局所化性の証明を入力に隠していない。実相対屋根入力の存在・元の Perf との照合・反復の構造射列は未証明。
 
-### c5 の設計変更案（未採用）
+### c5 の供給境界（採用済み、2026-10-25）
 - I は cone の dg 小模型、P は元の Perf とその perfect 安定閉包の全関手比較を供給するが、固定 `dgKInputInfinity` 内の実相対 Verdier 四角形まではフィールドに含まない。同じ商は平坦分解を介する屋根であり、未供給の厳密 Cone→Σ 射を仮定しない。
-- 提案：I・P の型を変えず、`DGKappaSuspensionRelativeRoofInput` を別の明示供給境界とする。実小 dg 核、同じ平坦 cone・同じ Σ を頂点とする固定 ν の `RelativeVerdierDiagram`、右辺が元の `dgKappaResolvedSuspensionInputMap` の全一単体である厳密一致を要求する。この型の存在は主張しない。
-- 追加で、実核の Perf と元の β5 の Perf の全関手同値が P の包含比較に一致する照合が必要。D の小 dg 核・平坦屋根と Sp の相対 Verdier 接続を、コーディネータ経由で所有元へ割り当てる案。K-B はその供給後に元の K 入力と各反復段へ接続する。一般商・局所化 API は新設しない。
-- 提案の利用側は実装・検証済み。相対屋根入力だけから同じ核 K→固定 native loop K(Σ) の実 BF 射・元の全比較辺・実合成二胞体を得る。元の K 四角形の引き戻し性、入力の存在、P との照合、全入力射に自然な反復整合性、`K^{nc}` の完成は含めない。
+- 採用：I・P の型を変えず、`DGKappaSuspensionRelativeRoofInput` を別の明示供給境界とする。実小 dg 核、同じ平坦 cone・同じ Σ を頂点とする固定 ν の `RelativeVerdierDiagram`、右辺が元の `dgKappaResolvedSuspensionInputMap` の全一単体である厳密一致を要求する。この型の存在は主張しない。
+- 追加で、実核の Perf と元の β5 の Perf の全関手同値が P の包含比較に一致する照合が必要。D の小 dg 核・平坦屋根と Sp の相対 Verdier 接続を、コーディネータ経由で D-9・Sp-6 へ依頼済み。P との照合は K-B 自身が担当する。K-B はその供給後に元の K 入力と各反復段へ接続する。一般商・局所化 API は新設しない。
+- 条件付きの利用側は実装・検証済み。相対屋根入力だけから同じ核 K→固定 native loop K(Σ) の実 BF 射・元の全比較辺・実合成二胞体を得る。元の K 四角形の引き戻し性、入力の存在、P との照合、全入力射に自然な反復整合性、`K^{nc}` の完成は含めない。
+
+
+### 仮定入力の一覧（refactoring-infinity.md §6 と同形式）
+
+定義行・import 行を除く一致行数。存在は主張しない。I・P とは別の明示供給境界。
+
+| 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
+|---|---|---|---|
+| `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 11／1 |
+
+| フィールド／照合 | 供給元 |
+|---|---|
+| `kernel` | D-9：同じ平坦商の実小 dg 核 |
+| `diagram` | D-9：平坦屋根。Sp-6：固定 ν の `RelativeVerdierDiagram` と相対 Verdier 接続 |
+| `left_eq`・`middle_eq`・`right_eq` | D-9・Sp-6：同じ実核・平坦 cone・懸垂の指定入力頂点への照合 |
+| `quotient` | D-9・Sp-6：同じ元の平坦商射の全一単体との厳密一致 |
+| 元の Perf・P との全関手照合（構造のフィールドには未追加） | K-B：供給された実核を P の包含比較へ照合する。存在を仮定しない |
 
 ### D-12 供給境界（採用済み）
 - c2 の汎用 dg 加群の分裂 cofiber 判定は D 正本（D-12）。K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する。K-B 内に一般 dg 加群の cofiber API を重ねない。
