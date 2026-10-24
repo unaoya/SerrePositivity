@@ -2,6 +2,8 @@ import SerrePositivity.InfinityCategories.F1.Cocartesian
 import SerrePositivity.InfinityCategories.F1
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.relativeExtensionFiberEndpoint_eq_const_of_boundary
+
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryLocalFaceComparison_comm
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryLocalFaceComparison_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.cocartesianTwoBoundaryLocalFaceComparison_originalIso
