@@ -12,7 +12,9 @@
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
-- 次の一手：I-2 a。`indArrowPrismAllBoundaryIso` の三境界固定比較を区間の curry・宇宙比較へ移し、指定下側変換に整合する全族の同型へ相対反映する。両端点の `smallDiagramCommaEvaluation` の cofinal 性、射形状の標準余錐の余極限性、有限半順序形状の帰納と単一 filtered 表示へ進む。通常の comma の関手同型の存在だけで指定境界の整合を完了扱いにしない。
+- I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [ ] ← 今回、a③ 射形状の標準余錐の余極限性 [ ]、a④ 有限半順序形状の帰納と単一 filtered 表示 [ ]。
+- I-2 a の界面：`indArrowPrismCurriedAllBoundaryIso`・`indArrowPrismNativeAllBoundaryIso` は元の全 C 図式・D・始点全余錐を同時に固定した実 fiber 内の比較。両 `ReconstructedVertex_val`・`OriginalVertex_val` は元の全余錐を厳密に回収する。`fixedCoconeBoundaryUnder` が指定評価下の固定条件、`_UnderPost` がその条件を保つ後合成。評価下の相対反映と cofinal 性自体は未証明。
+- 次の一手：I-2 a②。`indArrowPrismNativeAllBoundaryIso` を、指定下側変換に整合する元の comma の全族の同型へ相対反映する。通常の comma の関手同型の存在だけで指定境界の整合を完了扱いにしない。続いて両端点の `smallDiagramCommaEvaluation` の cofinal 性、射形状の標準余錐の余極限性、有限半順序形状の帰納と単一 filtered 表示へ進む。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

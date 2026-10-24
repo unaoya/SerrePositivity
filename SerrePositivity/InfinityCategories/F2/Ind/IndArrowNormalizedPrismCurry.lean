@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowNormalizedPrism
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：区間の curry と宇宙比較を戻すと、元の q の指定全余錐を厳密に回収する。
@@ -22,6 +23,15 @@ def arrowDiagramUniverseRestriction (X : SSet.{u + 1}) :
     (ihom (Δ[1] : SSet.{u + 1})).obj X ⟶
       (ihom ((SSet.uliftFunctor.{u + 1, u}).obj (Δ[1] : SSet.{u}))).obj X :=
   (pre (HomotopyLimits.uliftStdSimplexIso.{u, u + 1} 1).hom).app X
+
+/-- 概要：区間の宇宙比較は、元の指定始点での全評価を厳密に保つ。
+方針：前合成と評価の自然性を使う。規約：元の頂点を保持。使われ方：三境界固定比較。 -/
+lemma arrowDiagramUniverseRestriction_evaluate_zero (X : SSet.{u + 1}) :
+    arrowDiagramUniverseRestriction X ≫
+      evaluateFunctorAt (Y := X) (ULift.up (stdSimplex.obj₀Equiv.{u}.symm (0 : Fin 2))) =
+      evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.{u+1}.symm (0 : Fin 2)) := by
+  rw [arrowDiagramUniverseRestriction, evaluateFunctorAt_pre]
+  rfl
 
 /-- 区間の宇宙同型と二因子の交換を戻すと、元の全形状上で恒等になる。 -/
 lemma liftedIntervalFlip_roundtrip (T : SSet.{u + 1}) :
