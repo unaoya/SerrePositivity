@@ -87,7 +87,8 @@
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
 - d2 の一般反映移送には、元の表現可能前層の反対辺への作用と Hom 前合成の可逆性判定が必要。
-  F1 公開界面をコーディネータ経由で依頼。P 側の指定反映単位の反転条件と局所対象の下降は提供する。
+  F1 に依頼済み。必要な一方向は `RepresentableInversionDetectsLocality (PresheafInfinity A)`。
+  この比較から一般 presentable への下降と d4 の全判定への接続は提供する。存在入力の除去は未完。
 
 - d4・d5 の無条件化には `Compact.spaceUniverseDiagram` の充満忠実性（または小極限・小余極限の反映）が必要。
   Compact に依頼済み。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。

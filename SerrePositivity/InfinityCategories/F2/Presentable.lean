@@ -282,3 +282,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleSmallC
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallContravariantHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightAdjointFromContravariantModels
+public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveContinuousDescent
+public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointFunctorCriterion
