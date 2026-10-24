@@ -324,3 +324,7 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflectorAdjunction
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_reflector
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaYoneda_smallCoproduct_isInd
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaPresheaf_simplicialIndPresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaPresheaf_simplicialIndDiagram

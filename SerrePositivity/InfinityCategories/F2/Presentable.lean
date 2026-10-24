@@ -148,3 +148,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CoproductRealiza
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftKanColimitExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorLeftKan
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSimplicialIndDiagram
