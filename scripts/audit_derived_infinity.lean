@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact
 import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel
 import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison
@@ -7229,6 +7230,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,
