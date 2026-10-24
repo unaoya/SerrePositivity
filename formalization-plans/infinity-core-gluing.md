@@ -40,7 +40,7 @@
   同じ Hom 模型同型の逆で主経路のパラメーターへ移し、元端は正本第一・第二入力 lift、補正端は単位補正との共通端へ厳密に同定済み。
   標準係数端も同じ coherent 三角形全体と元入力の一致で正本係数 lift へ同定済み。終側標準面は同じ四面体の第零面を使う。
   実四補正道と選択済み二変形の三辺を保持する相対充填・合成三角形・対角後合成を供給済み。二次元全域で元左右鎖射影を固定する。
-  左右実補正対角の合成三角形と、係数側六片を同じ native 四面体から主経路上に構成済み。全共有辺・実単位補正対角・係数対角の明示 prism 表示を保持する。**単位面を消去した高次合成等式と指定係数辺への相対移送は未完。**
+  主経路上の六片は全共有辺・実単位補正対角・係数対角を保持する。指定係数辺への両端固定移送と、実六角形関係から指定境界への消去入口も構成済み。**六片の単位面を消去した六角形関係本体は未完。**
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -84,7 +84,7 @@
 - D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
   入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
-  `dgGluingDGCompositionTriangleFamily_naturality` は任意二入力と dg 関手で使える。標準面の恒等入力射影・前後終側の replacement 全三角形の一致を照合済み。厳密両単位則は D へ追加依頼中。
+  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D、閉包外の `RelativeDiagramHomotopy.exists_homotopy_relative_innerAnodyne` は F1B へコーディネータ経由で依頼中。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
@@ -99,8 +99,8 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8806 jobs、公理監査 790 モジュール・7685 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-six-pasting-triangles-aggregate-build.log`・`/tmp/d2-v3-six-pasting-triangles-audit.log`。主経路上の六片・係数対角の明示 prism 同定までの新規モジュールは集約・監査へ接続済み。
+- 検証済み：集約ビルド 8813 jobs、公理監査 797 モジュール・7740 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-coefficient-relative-hexagon-aggregate-build.log`・`/tmp/d2-v3-coefficient-relative-hexagon-audit.log`。実係数辺の相対移送と六角形から指定境界への消去入口までの新規モジュールは集約・監査へ接続済み。
 - 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 

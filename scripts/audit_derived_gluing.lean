@@ -794,7 +794,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleDiagramParameterTransport,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCapTriangleDiagrams,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapPastingCoefficientFace,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCapCoefficientFace]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCapCoefficientFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeHomotopyEdgeClass,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativePrismEdgeClass,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionPrismRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientRelativePrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapCoefficientChoiceComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanAlignedDiagonalTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanHexagonReduction]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
