@@ -718,3 +718,4 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.InputHomotopyCla
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationCoherence
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DiagonalInputChoiceComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationStaircase
