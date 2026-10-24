@@ -1,4 +1,11 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionConnectiveLoop
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionConnectiveStructure
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveSquare
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveMap
+public import SerrePositivity.KST.NonConnective.DGSuspensionConnectiveSequence
+public import SerrePositivity.KST.NonConnective.DGSuspensionLoopStagePi
+public import SerrePositivity.KST.NonConnective.DGSuspensionShiftedTransition
 
 public import SerrePositivity.KST.NonConnective.SequentialComparison
 public import SerrePositivity.KST.NonConnective.SequentialCoherentCocone

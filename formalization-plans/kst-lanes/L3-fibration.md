@@ -3,12 +3,12 @@
 > **v3（2026-10-24）**：K-F と K-7 は **K-B レーン**に統合。本ファイルが K-B の正本（K-6）、K-7 の引き継ぎは L10-nonconnective.md を併読。所有：KST/Fibration/、KST/NonConnective/。
 
 > **v2 の位置づけ（2026-10-22 新設）**：foundations.md §6 の K-F。K-S• の L1（∞-S•、加法性、homotopy fiber）と Sp の K-5
-> （抽象 Verdier 列、Sp 値局所化不変量）を読み取り専用で使う。(d) は 10-22 コーディネータ回答により、厳密 dg 入力 S 上の ν:S→StableInfinity と K:S→Sp を固定し、ν の像が K-5 VerdierDiagram となる dg Verdier 列を K が fiber 四角形へ送る相対形で述べる。
+> （抽象 Verdier 列、Sp 値局所化不変量）を読み取り専用で使う。**2026-10-25 採用の修正**：(d) は固定の厳密 dg 入力 S・ν:S→StableInfinity・連結 K:S→Sp に対し、K(D)→fib_Sp(K(C)→K(C/D)) が非負次数で π 同型となる連結版（連結スペクトラムでの引き戻し）とする。10-22 の「実 Sp fiber 四角形へ送る」は撤回。固定連結 K の Sp 引き戻し性は主張しない。既存の条件付き Sp fiber 定理は条件付きで保持する。
 > 非連結化（K-7、BGT §9）は F1b・N の Ind・冪等完備化の後に別途。
 
 ## 引き継ぎ（2026-10-24）
 ### 現在地
-- 設計確認で停止：全段の懸垂屋根・Perf 同値・固定連結 K の Sp fiber 性を併用すると、反復候補の全負整数 π が消えることを検証した。K-6 d の適用範囲と K-7 の一般経路の設計案は L10「設計確認」に記載。c4・c5 は未完のまま保持する。
+- 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
 - 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
@@ -49,16 +49,16 @@
   任意の相対 Verdier 四角形の元の右辺を同じ dg 射として回収し、ν 像の商辺と照合。元の K 右辺の実 π₀ 全射性を証明。
   同じ相対 K 右辺を持つ実 Sp fiber 四角形を構成し、元の BF fiber との群同型で全負整数群の消滅を証明。K(D) との同定は未証明。
   ν(P) が零なら全反復 S・境界商の一点射が局所化可逆で、正段の整数 π 検出により固定 K(P) は零。任意の元の相対 K 四角形の零角を保持する。
-- 工程 (d) はユーザー指定の相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、K:S→Sp。
+- 工程 (d) は採用済みの連結相対形：同じ厳密 dg 入力 S 上の ν:S→StableInfinity、連結 K:S→Sp。元の実 fiber 比較の非負次数 π 同型を証明する。以下の Sp 引き戻し検出は追加仮定に条件付きの既存成果として保持する。
   元の零角・右辺を保持した canonical fiber と K(D) からの実比較辺、全脚の合成三角形を構成。元の四角形の引き戻し性 ⇔ 同じ比較辺の可逆性を証明。
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（593 モジュール・3610 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（595 モジュール・3634 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
-3. 証明済みの固定 K の相対零保存と元の四角形を保持し、dg Verdier 列を実 Sp fiber 四角形へ送る相対定理へ接続する（BGT §7–8、16–32時間）。
+3. 証明済みの固定 K の相対零保存と元の四角形を保持し、K(D)→fib_Sp(K(C)→K(C/D)) の非負次数 π 同型へ接続する（BGT §7–8、16–32時間）。
 4. 固定 dg 界面との接続後に、完備化と BGT §9 の非連結化への実入力を確定する（8–16時間、K-7 本体は別）。
 ### 主要宣言（共通接頭辞 SerrePositivity.KST.Fibration）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
@@ -100,11 +100,11 @@
 ### 未コミット
 - 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。
 ### 既知の問題
-- 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の実核接続、相対 Sp 値 K-6 は未完。
+- 一般分数比較の同値性、有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の Perf 核照合、相対連結版 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 - D-9 の実小核と Sp-6 の固定零化構成子は K-B に接続済み。固定 ν 上の Verdier 証拠・Perf 零角・P 照合は別の条件。native Verdier 列だけから連結 K の Sp fiber 性を結論しない。
 ### 次の一手
-- 全 Hom の対象座標読み替え、図式同型の対角と実現同型の逆射の一致、元の core S 対象上の商核円柱の全評価は接続済み。Ex∞ の全 Hom 作用と strength による同じ円柱像も接続済み。`verdierNullContractionCoreKanEvaluation` は、元の円柱像から指定下側二胞体の全 path 評価への二重パラメータ比較で、実合成端を全時刻固定する。始点は `verdierNullContractionCoreKanEvaluation_original_heq` で元の指定包含・商の円柱へ照合済み。内部 uncurry 後の全円柱の同じ可逆辺と実合成端上の恒等制限、上下二胞体の全評価の共有対角上の恒等制限も接続した。指定 Verdier 左辺から回収した同じ完全射で、相対 S 核から元の零角の core S• への実比較を構成し、左辺との厳密可換性・実現後と Ex∞ 後の厳密可換性・同じ比較の局所化可逆性・その実 coherent 辺の可逆性を接続した（`VerdierZeroCornerMap`）。元の零値関手の全族を全 S_n から core S_n へ持ち上げ、全ての面・退化に自然な図式 Hom の族へ束ねた。指定関手の実点では元の全 S• 射を厳密に回収し、零圏への指定射は既存の零角比較と一致する。元の商核上辺は同じ全 S• 零値作用で、元の全核円柱も同じ図式 Hom 族の全パラメータ評価と厳密一致する（`QuotientSKernelZeroFunctorMap`）。指定上側合成は元の左辺・上辺の実合成と厳密に一致し、元の零角比較を上辺へ送った全 S• 射も同じ合成の零値作用を厳密に回収する。全 S• の始域を保つ Ex∞ Hom の全作用を構成し、元の上下二胞体の共有対角上恒等の比較と核円柱の実合成端上恒等の比較を、全円柱の実可逆辺・全関手同型へ接続した。次はこれらの相対比較を、元の商核四角形と指定 Verdier 四角形の全関手同型へ束ねる。全零値族の全 S• 延長は、core 包含後に元の K-S• の全段・全実現・全 Ex∞ Hom 作用へ厳密に戻る。元の相対核円柱の全 Ex∞ 像も、同じ核包含同型を通る全 S• 作用と厳密一致する。全 S• の実 Kan 頂点の終対象性と、指定左辺から作った零角比較自体の可逆性・元の左辺と上辺への厳密な因子分解を証明した（`VerdierFullSZeroCornerKanMap`）。元の native 正反復 Kan 座標へ戻した後も、同じ零角比較の可逆性・指定左辺と上辺の厳密な因子分解を保持する。全 S• の全零値族を native 座標へ送り、元の実 core 包含で同じ全 native Hom 作用を厳密回収した。上下二胞体の全長 Hom の同じ延長は、元の指定二胞体の native 像へ対象座標の異種等号で照合し、共有対角と合成 path の元の実点を保持する。実比較辺の native 像と全円柱の固定部分・全関手同型、指定両端へ戻した同じ合成点と元の商核上辺も接続済み（`VerdierFullSNativeLongHom`、`VerdierFullSNativeComparison`、`VerdierFullSNativeCompositeCoordinates`）。`ZeroMiddleFullSKanTriangle` と `ZeroMiddleFullSKanComposite` は元の零中間二胞体に対し、実 core 包含 f、元の第一短辺の全 S• 比較 e（可逆）、元の第二短辺 r、第一短辺=f≫e、合成端=e≫r、元の native 二胞体の全長 Hom へ厳密に戻る全 S• 族を供給する。指定上側 Verdier 二胞体への適用は `ZeroMiddleVerdierCoordinates` で元の零角比較・指定合成端・同じ native 長 Hom へ照合済み。公開 `horn₃₂` の貼合せと `triangleMiddlePrism` に特殊化し、元の全二胞体を終端で厳密回収し対角を全時刻固定する実三角柱を構成した（`ZeroMiddleFullSKanHorn`・`ZeroMiddleFullSKanPrism`）。始端の第一短辺は同じ core 包含で、二つの側面は同じ厳密合成二胞体へ厳密に戻る。両端の縦辺は恒等、中間は同じ可逆比較 e の全一単体と一致し、元の三角柱の辺そのものの可逆性・全関手同型まで接続した（`ZeroMiddleFullSKanPrismIso`）。`VerdierFullSUpperPrism` は終端を元の指定四角形の native 上側全二胞体へ厳密照合する。一般中間対象輸送 API は新設していない。`VerdierFullSSquarePrism` はこの上側三角柱を元の下側二胞体を全時刻固定して貼り合わせ、指定した始端四角形から元の全 native Verdier 四角形への実四角柱を与える。上下二胞体の全制限は厳密に戻り、四頂点の縦辺の可逆性から指定全四角柱の辺そのものの可逆性・全関手同型・引き戻し性の両方向移送を得た（`VerdierFullSSquarePrismIso`）。始端四角形と元の商核四角形の指定上下二胞体・核円柱との全比較は未完。元の商射影の零段は無条件で局所化可逆と証明し、正の各段の同じ比較だけから実現比較を得る `relativeSQuotientRealization_localized_isIso_of_positive_stages` へ接続した。`QuotientSKernelPositiveStages` は正の各段の比較だけから、元の全 Ex∞ 商射の全写像空間の同値性と同じ coherent 核四角形の引き戻し性を得る条件付き利用側。正の段の入力は Sp 正本の供給待ちで、無条件の商実現比較は未証明。
+- 全 Hom の対象座標読み替え、図式同型の対角と実現同型の逆射の一致、元の core S 対象上の商核円柱の全評価は接続済み。Ex∞ の全 Hom 作用と strength による同じ円柱像も接続済み。`verdierNullContractionCoreKanEvaluation` は、元の円柱像から指定下側二胞体の全 path 評価への二重パラメータ比較で、実合成端を全時刻固定する。始点は `verdierNullContractionCoreKanEvaluation_original_heq` で元の指定包含・商の円柱へ照合済み。内部 uncurry 後の全円柱の同じ可逆辺と実合成端上の恒等制限、上下二胞体の全評価の共有対角上の恒等制限も接続した。指定 Verdier 左辺から回収した同じ完全射で、相対 S 核から元の零角の core S• への実比較を構成し、左辺との厳密可換性・実現後と Ex∞ 後の厳密可換性・同じ比較の局所化可逆性・その実 coherent 辺の可逆性を接続した（`VerdierZeroCornerMap`）。元の零値関手の全族を全 S_n から core S_n へ持ち上げ、全ての面・退化に自然な図式 Hom の族へ束ねた。指定関手の実点では元の全 S• 射を厳密に回収し、零圏への指定射は既存の零角比較と一致する。元の商核上辺は同じ全 S• 零値作用で、元の全核円柱も同じ図式 Hom 族の全パラメータ評価と厳密一致する（`QuotientSKernelZeroFunctorMap`）。指定上側合成は元の左辺・上辺の実合成と厳密に一致し、元の零角比較を上辺へ送った全 S• 射も同じ合成の零値作用を厳密に回収する。全 S• の始域を保つ Ex∞ Hom の全作用を構成し、元の上下二胞体の共有対角上恒等の比較と核円柱の実合成端上恒等の比較を、全円柱の実可逆辺・全関手同型へ接続した。次はこれらの相対比較を、元の商核四角形と指定 Verdier 四角形の全関手同型へ束ねる。全零値族の全 S• 延長は、core 包含後に元の K-S• の全段・全実現・全 Ex∞ Hom 作用へ厳密に戻る。元の相対核円柱の全 Ex∞ 像も、同じ核包含同型を通る全 S• 作用と厳密一致する。全 S• の実 Kan 頂点の終対象性と、指定左辺から作った零角比較自体の可逆性・元の左辺と上辺への厳密な因子分解を証明した（`VerdierFullSZeroCornerKanMap`）。元の native 正反復 Kan 座標へ戻した後も、同じ零角比較の可逆性・指定左辺と上辺の厳密な因子分解を保持する。全 S• の全零値族を native 座標へ送り、元の実 core 包含で同じ全 native Hom 作用を厳密回収した。上下二胞体の全長 Hom の同じ延長は、元の指定二胞体の native 像へ対象座標の異種等号で照合し、共有対角と合成 path の元の実点を保持する。実比較辺の native 像と全円柱の固定部分・全関手同型、指定両端へ戻した同じ合成点と元の商核上辺も接続済み（`VerdierFullSNativeLongHom`、`VerdierFullSNativeComparison`、`VerdierFullSNativeCompositeCoordinates`）。`ZeroMiddleFullSKanTriangle` と `ZeroMiddleFullSKanComposite` は元の零中間二胞体に対し、実 core 包含 f、元の第一短辺の全 S• 比較 e（可逆）、元の第二短辺 r、第一短辺=f≫e、合成端=e≫r、元の native 二胞体の全長 Hom へ厳密に戻る全 S• 族を供給する。指定上側 Verdier 二胞体への適用は `ZeroMiddleVerdierCoordinates` で元の零角比較・指定合成端・同じ native 長 Hom へ照合済み。公開 `horn₃₂` の貼合せと `triangleMiddlePrism` に特殊化し、元の全二胞体を終端で厳密回収し対角を全時刻固定する実三角柱を構成した（`ZeroMiddleFullSKanHorn`・`ZeroMiddleFullSKanPrism`）。始端の第一短辺は同じ core 包含で、二つの側面は同じ厳密合成二胞体へ厳密に戻る。両端の縦辺は恒等、中間は同じ可逆比較 e の全一単体と一致し、元の三角柱の辺そのものの可逆性・全関手同型まで接続した（`ZeroMiddleFullSKanPrismIso`）。`VerdierFullSUpperPrism` は終端を元の指定四角形の native 上側全二胞体へ厳密照合する。一般中間対象輸送 API は新設していない。`VerdierFullSSquarePrism` はこの上側三角柱を元の下側二胞体を全時刻固定して貼り合わせ、指定した始端四角形から元の全 native Verdier 四角形への実四角柱を与える。上下二胞体の全制限は厳密に戻り、四頂点の縦辺の可逆性から指定全四角柱の辺そのものの可逆性・全関手同型・引き戻し性の両方向移送を得た（`VerdierFullSSquarePrismIso`）。`VerdierFullSTransportedKernelBoundary` は始端四角形の包含・商の全一単体と左下頂点を元の商核へ厳密照合する。指定上下二胞体・共有対角・核円柱との全比較は未完で、境界の一致だけでは代用しない。元の商射影の零段は無条件で局所化可逆と証明し、正の各段の同じ比較だけから実現比較を得る `relativeSQuotientRealization_localized_isIso_of_positive_stages` へ接続した。`QuotientSKernelPositiveStages` は正の各段の比較だけから、元の全 Ex∞ 商射の全写像空間の同値性と同じ coherent 核四角形の引き戻し性を得る条件付き利用側。正の段の入力は Sp 正本の供給待ちで、無条件の商実現比較は未証明。
 - Sp 正本の分数比較の充満忠実性・β3 の実核接続・有限線型図式の局所化は L9 の受付で未供給。元の比較の右逆と相対余単位は構成済みで、充満忠実性の供給後に接続する。同種 API は新設しない。
 
 ### K-6 c の三段目（v3）

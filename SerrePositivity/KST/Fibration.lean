@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.DGConnectiveFiberComparison
+public import SerrePositivity.KST.Fibration.VerdierFullSTransportedKernelBoundary
 public import SerrePositivity.KST.Fibration.CoreSingleRealizationFamily
 public import SerrePositivity.KST.Fibration.CoreSingleKanFamily
 public import SerrePositivity.KST.Fibration.VerdierNullCoreKanComparison
