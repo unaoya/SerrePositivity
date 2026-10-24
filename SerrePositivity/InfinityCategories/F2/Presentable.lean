@@ -142,3 +142,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.LocallySmall
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafUniverseArbitraryColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaFiniteCoproducts

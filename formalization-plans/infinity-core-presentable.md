@@ -55,7 +55,7 @@
   Ind 側の a7 はこの完成範囲の新しい入力ではなく、既存の明示入力を勝手に無条件化しない。
 
 ### 作業中
-- g6：元の Yoneda の有限余積保存を、同じ反転 comma と coslice の全切断で比較する。
+- g6：元の Yoneda の有限余積保存を検証済み。全余極限保存判定は g5 の生成表示の後に進める。
 - g5：任意前層の elements 図式の bar 構成を P 所有の新規モジュールで構成する。
   F1 の密度・各点余極限・小余積の公開 API を利用し、他レーンへの供給依頼にはしない。
 
@@ -64,10 +64,10 @@
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
 - sifted 余極限を持つ標的についての制限同値だけでは、filtered 余極限と幾何学的実現のみを仮定する最終版は完了しない。
-- 最終検証ログ：`/tmp/p-g4-aggregate.log`、`/tmp/p-g4-presentable-audit.log`、`/tmp/p-g4-homotopy-audit.log`。
+- 最終検証ログ：`/tmp/p-g6-aggregate.log`、`/tmp/p-g6-presentable-audit.log`、`/tmp/p-g6-homotopy-audit.log`。
 
 ### 次の一手
-1. g6 の反転全錐の保存を元の有限余積へ戻す。
+1. g5 の元の elements 単体圏と次数ファイバーの比較を構成する。
 2. g5 の elements bar 構成の幾何学的実現を元の密度余極限と比較する。
 3. simplicial Ind 表示から filtered／幾何学的実現保存版の制限同値と sifted 保存を導く。
 4. 全余極限保存判定を完成し、集約・公理監査を再実行する。

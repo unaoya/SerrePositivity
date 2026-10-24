@@ -15,7 +15,9 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.InfinityCategories.F2.Presentable |>.isPrefixOf mod) ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits do continue
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits ||
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.PresheafSliceConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Presentable: unexpected axioms in {name}: {axioms}"
@@ -300,3 +302,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence
 
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence_hom
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaYoneda_finiteCoproduct_isColimit
