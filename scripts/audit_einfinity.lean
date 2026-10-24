@@ -9764,6 +9764,15 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.BarrattEccles.derivedFreeProbeUnitCommaTransportMap,
     `SerrePositivity.EInfinity.BarrattEccles.derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso]
 
+@[noinline] private def e2RequiredBatch222 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitTransportCondition,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived_rightAdjoint_exists_of_transport,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgFreeDerivedOfTransport,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgFreeForgetDerivedAdjunctionOfTransport,
+    `SerrePositivity.EInfinity.BarrattEccles.derivedFreeProbeUnitCommaAdjunctionIsoOfTransport,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived_mapJoinCone_isLimit_of_transport,
+    `SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived_hasLimit_postcomp_of_transport]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9797,7 +9806,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -26307,3 +26316,48 @@ example (x : (derivedInfinityCategory A) _⦋0⦌)
     IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) :=
   derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso A x h
 end e2Fixtures221
+
+
+noncomputable section e2Fixtures222
+open CategoryTheory SSet SerrePositivity.InfinityCategories
+open SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.EInfinity.BarrattEccles
+open scoped Simplicial
+universe e2F222U
+variable (A : Type e2F222U) [CommRing A]
+variable (h : FreeProbeUnitTransportCondition A)
+
+example (x : (derivedInfinityCategory A) _⦋0⦌) :
+    IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) :=
+  derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso A x (h x)
+
+example : CategoryTheory.Bicategory.Adjunction
+    (qcatMap (cAlgFreeDerivedOfTransport A h)) (qcatMap (cAlgForgetDerived A)) :=
+  cAlgFreeForgetDerivedAdjunctionOfTransport A h
+
+example : FunctorHom (cAlgForgetDerived A ≫ cAlgFreeDerivedOfTransport A h) (𝟙 (CAlg_R A)) :=
+  (cAlgFreeForgetDerivedAdjunctionOfTransport A h).counitHom
+
+example {T : SSet.{e2F222U + 1}} [Quasicategory T]
+    (V : T ⟶ derivedInfinityCategory A) (W : T ⟶ CAlg_R A) :
+    FunctorHom (V ≫ cAlgFreeDerivedOfTransport A h) W ≃
+      FunctorHom V (W ≫ cAlgForgetDerived A) :=
+  (cAlgFreeForgetDerivedAdjunctionOfTransport A h).homEquiv V W
+
+example (x : (derivedInfinityCategory A) _⦋0⦌) :
+    VertexIso (X := unitCommaFiber (cAlgForgetDerived A) x)
+      (derivedFreeProbeUnitCommaVertex A x)
+      (unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunctionOfTransport A h).unitHom x) :=
+  derivedFreeProbeUnitCommaAdjunctionIsoOfTransport A h x
+
+example {K : SSet.{e2F222U + 1}} {p : K ⟶ CAlg_R A}
+    (c : JoinCone p) (hc : IsLimitCone c) :
+    ∃ d : JoinCone (p ≫ cAlgForgetDerived A),
+      d.val = c.val ≫ cAlgForgetDerived A ∧ IsLimitCone d :=
+  ⟨mapJoinCone (cAlgForgetDerived A) c, rfl,
+    cAlgForgetDerived_mapJoinCone_isLimit_of_transport A h c hc⟩
+
+example {K : SSet.{e2F222U + 1}} (p : K ⟶ CAlg_R A) (hp : HasLimit p) :
+    HasLimit (p ≫ cAlgForgetDerived A) :=
+  cAlgForgetDerived_hasLimit_postcomp_of_transport A h p hp
+end e2Fixtures222

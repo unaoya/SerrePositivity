@@ -2491,3 +2491,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitStandardData
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitStandardFamily
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitCommaRecovery
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitPointInitiality
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedAdjunction
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedLimits
