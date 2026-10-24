@@ -359,3 +359,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasSmallColimits
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_finiteCoproducts_sifted
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneApex_homRestriction_bijective
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.constantPointFunctorIso
