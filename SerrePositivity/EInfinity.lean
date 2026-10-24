@@ -2476,3 +2476,4 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeElementFo
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeUnitReference
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeUnitWeak
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeSourceComparison
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitEndpointRecovery
