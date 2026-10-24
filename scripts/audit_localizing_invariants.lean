@@ -1438,7 +1438,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraDoublePathIsoFaces,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeFaces,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedMappedSource,
-    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeModelHomotopy]
+    `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeModelHomotopy,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaSource]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

@@ -1851,4 +1851,7 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeModelHomotopy
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaSource
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
