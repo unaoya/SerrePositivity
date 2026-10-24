@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedNullPerf
+public import SerrePositivity.KST.NonConnective.DGSuspensionResolvedConnectiveSequence
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelAugmentation
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedPerfectComparison
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionConnectiveLoop
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionConnectiveStructure
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveSquare
