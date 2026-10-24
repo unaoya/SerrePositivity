@@ -4,9 +4,10 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
-## 引き継ぎ（2026-10-23）
+## 引き継ぎ（2026-10-24）
 
 ### 現在地
+- v3 D-7 d：三段目 d1 は実 loop 同値から全引き戻しの押し出し性を追加の有限余極限仮定なしで対象検証済み。格子の宇宙比較・全表現可能前層の極限検出を通じ、反対圏の四懸垂面から切除を反映する。集約11,335 jobs・10公開署名・両全体監査成功（Stable 23,163宣言／2,790モジュール、Derived 22,103／2,521、許容三公理のみ）。d2（任意零角の逆方向）以降は未完。
 - S1〜S7（D7）完了。実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性、任意四角形の双カルテジアン判定、全 fiber/cofiber と有限極限余極限、D(S) の実安定性を証明した。実 suspension・複体シフト・接続射の符号を照合。D3 の標準 cone 三角形との比較、全 distinguished triangle の保存・反映、逆関手・単位・余単位の全整数シフト整合性を持つ三角同値を公開済み。
 - β3 完了。実 Verdier over の反転の filtered 性、有限対の全境界・全時刻を保つ実 roof 比較の cofinality と弱ホモトピー同値、任意反転標的への coherent な降下を証明した。
 - `dgQuotientNerveProjection_isLocalization` は任意 quasicategory 標的に対する全前合成の充満忠実性・本質的全射性を与える。局所 K-flat 性を元の Hom に仮定しない平坦分解後の商についても `resolvedDGQuotientFunctor_isLocalization` を証明した。
@@ -91,15 +92,17 @@
 
 ### 未コミット
 
-- 今回のコミット対象：Derived/ の DGProjectiveModuleFamily・DGProjectiveClosureStage・KappaOrdinalCountableBound・DGProjectiveClosureFamily・DGKappaClosedProjectiveFamily・DGKappaClosedProjectiveOperations・DGProjectiveClosureProperty・DGKappaClosedProjectiveProperty・DGKappaClosedProjectiveComparison・DGKappaPerfectRepresentative・DGKappaClosedPerfectCover（全て .lean）、Derived.lean、両監査、本計画の15パス。検証成功後に15パスだけを git commit --only で保存し、D 所有の未コミット本体は残さない。未統合試作 `/tmp/d-kappa-closed-pretriangulated.lean`（438行・31公開宣言）は対象終端0、統合31署名検査は中断。本体集約・監査に接続していない。生成スクリプトは同名 `-prepare.py`、構成部品は次の一手に記録。既存未追跡 Derived/DGKernelDerivedMapInvertible.lean と他レーンの差分は変更・コミット対象外。
+- 今回は Stable/ExcisionGridUniverse・ExcisionRepresentableLimits・LoopEquivalenceExcision、Stable.lean、両監査、本計画の7パスを検証して保存する。未追跡草稿5本を保持記録・正確な外部 import の不存在を照合して削除した。Morita/ScalarExtensionKernelOutputComponents.lean は dg-theory-m5-status.md の保持記録に従い残す。D-8 の未統合 /tmp 試作と部品の再開点は次の一手に保持する。d2 の未コミット草稿は Stable/LoopEquivalenceCofiberRotation・LoopEquivalenceCofiberExists・LoopEquivalenceZeroCofiber・FunctorLoopSquareCriterion・FunctorLoopFamily（各 .lean）。前4本は対象ビルド成功、最後は評価式の検査中。本体集約・監査には未接続。保持して継続する。
 
 ### 既知の問題
+- d1 追加時の Derived 監査は期待配列のコード生成再帰上限に達したため、同じ2,521モジュール名と順序を保つ37個の非インライン定数へ分割した。再帰上限・許容公理・監査条件は変更せず、再監査終端0。
 
 - D7・β3 の零化・平坦模型の対象・集約ビルド成功（11347 jobs）。公理監査は Derived 22036 宣言／2511 モジュール、Stable 23151／2781。許容三公理のみ。今回までの保存対象1442新規モジュールは警告なし。Stable 監査の巨大配列によるコード生成の再帰上限は、同じ2527モジュール名と順序を保持する40個の非インライン定数への分割で解消した。再帰上限・監査条件は変更していない。Hom 降下・実合成・全選択空間の評価比較の主経路に `ModelCategory SSet` の追加 instance 仮定なし。
 - β3 は H⁰ の Verdier 商の同値や dg 関手の延長だけでは完成しない。実零化・平坦模型との比較、前三角性の cell 分解への反映、平坦分解後の商の実安定性と商関手の完全性は完成。局所 K-flat 商の全 ∞ 関手圏の局所化普遍性は完成。零化完全関手圏の普遍性・実安定閉包の Verdier 列まで完成。平坦分解後の元の Hom の平坦性を仮定しない局所化・全零化完全関手 ∞ 圏の同値・Verdier 列も統合・監査完了。
 - 停止用検証は全て終端0：`/tmp/d-stop-target.log`（8722 jobs）、`/tmp/d-stop-aggregate.log`（11358 jobs）、`/tmp/d-stop-signatures.log`（43明示署名、ModelCategory 仮定なし）、`/tmp/d-stop-derived-audit-final.log`（22104宣言／2522モジュール）、`/tmp/d-stop-stable-audit-final.log`（23219宣言／2792モジュール）。許容三公理のみ、追加11ソースに警告なし。初回監査はビルド中の共有 Completion.olean 不在で失敗したが、集約完了後の再監査が成功。旧61101・61368は handle 不在、停止用実行も全終了。共有生成物不在を避けるため次チャットでも集約の終端を確認してから全体監査を開始する。他レーンは変更しない。
 
 ### 次の一手
+- v3 の優先順は D-7 d → D-8 → D-9。現在は d2：任意 ZeroTriangle の fiber/cofiber 同値。全引き戻しの押し出し性から残る逆方向と全 cofiber の存在へ進み、有限余極限を追加仮定にせず IsStable を結論する。Sp は読み取り専用で nativeLoop との接続を照合する。下記の κ 模型の統合は D-7 d 完了後。
 - D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`。実 `ExcisionSquareGrid` は任意の元の四角形への厳密制限と二段階の native 左 Kan 局所余極限を持つ。比較格子の全六面の押し出し性、全単体の共有辺四式、元の指定零頂点二式は `187b42df0` までに統合・両全体監査済み。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
 - 次チャットは本計画と foundations.md §8 を読み、停止済みのこのチャットを再起動せず新規に再開する。最初は未統合 `/tmp/d-kappa-closed-pretriangulated.lean` の31明示署名・三公理検査を完了し、一般の制限 Yoneda／加群部分圏 shift／cone 同型／表現可能性による前三角判定へ分割して D 所有本体へ統合する。実結論 `dgKappaClosedProjectiveObjects_isDGPretriangulated` は対象検査済みで、κ-compact 性は追加仮定・結論に含めていない。cone の依存型書換えは `complexConeDesc_isIso_of_eq` と3評価等式に分離して既定 heartbeat 内で成功した。部品 `/tmp/d-module-subcategory-shift-iso.lean`（11宣言）・`/tmp/d-module-subcategory-yoneda-cone-iso.lean`（15宣言、成功ログは `-transport.log`）・`/tmp/d-pretriangulated-representable-operations.lean`（1宣言）・`/tmp/d-kappa-representable-zero.lean`（3宣言）は各対象・署名・三公理検査成功。統合31署名の旧61368は中断なので再実行が必要。次に全 Hom κ-compact 性を generic 閉包帰納 `dgKappaClosedProjectiveObjects_property` へ供給し、κ未満 cell／retract 代表化による全被覆と併せ DGKappaConeInput を構成する。ordinary compact/perfect で代用しない。補助の任意加群値 cone 比較 `/tmp/d-module-valued-cone-comparison.lean` 5宣言も対象・署名検査済みだが未統合。Sp の一般 loop 同値性からの IsStable は別の未完工程、β4 は D2、K-7 ファイルは読み取り専用。
 - K-S• の実生成元を`0a4d1f7d8` で供給した。`dgAlgebraSmallPerfectGenerator` は非可換 dg 代数の自由 representable に対応する実小代表、`dgAlgebraSmallPerfectGenerator_generates` はその singleton が全完全加群を生成する等式、`dgAlgebraSmallPerfectGenerator_homotopyComparison` は元の自由代表への H⁰ 比較。評価双加群の実 Morita 同値から生成性を戻し、結論の生成性を仮定しない。7モジュール・22公開宣言を統合し、対象・両集約（11060 jobs）・22明示署名が終端0、追加ソースに警告なし。既存 `dgSmallPerfectEnvelope_perfectOver_representable_eq` への三宣言の直接適用も `/tmp/d-small-perfect-evaluation-kst.lean` で終端0。両全体監査は終端0（Derived 21092宣言／2346モジュール、Stable 22207／2616、許容三公理のみ）。ログは `/tmp/d-small-perfect-evaluation-production-{target,aggregate,signatures,derived-audit,stable-audit}.log`、正確な11パスは同 `-owned-paths.txt`。

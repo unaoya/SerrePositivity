@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
+import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
+import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision
 import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 import SerrePositivity.InfinityCategories.DGNerve.VertexIdentity
 import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectRepresentative
@@ -5076,6 +5079,9 @@ open Lean Elab Command in
 #check SerrePositivity.InfinityCategories.dgKernelRightAdjoint_homotopyIso_counit
 
 @[noinline] private def stableAuditExpectedChunk0 : Array Lean.Name := #[
+    `SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse,
+    `SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits,
+    `SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision,
   `SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber,
   `SerrePositivity.InfinityCategories.Stable.JoinEndpointPairMono,
   `SerrePositivity.InfinityCategories.Stable.PointedConeInitialHorn,
