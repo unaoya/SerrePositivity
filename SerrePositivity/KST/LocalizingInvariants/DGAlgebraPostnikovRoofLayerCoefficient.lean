@@ -40,6 +40,29 @@ def zeroCoefficient :
     (numerator R n hn f (c.refine R hm)) (postnikovMap R (B.transition hl).hom 0 ≫ e.base)
     hb.symm (PostnikovZeroLayerInverse.refinedCoefficient R e hl)
 
+lemma zeroCoefficient_refined_hom : (zeroCoefficient R n hn f c e hm hl hb).hom =
+    (PostnikovZeroLayerInverse.refinedCoefficient R e hl).hom :=
+  bimoduleRestrictOver_hom _ _ _ _ _
+
+lemma zeroCoefficient_hom : (zeroCoefficient R n hn f c e hm hl hb).hom =
+    postnikovLayerMap R (B.transition hl).hom n ≫ e.coefficient.hom :=
+  (zeroCoefficient_refined_hom R n hn f c e hm hl hb).trans
+    (PostnikovZeroLayerInverse.refinedCoefficient_hom R e hl)
+
+lemma zeroCoefficient_left : postnikovLayerMap R (f.app k).hom n ≫
+    (zeroCoefficient R n hn f c e hm hl hb).hom =
+      postnikovLayerMap R (A.transition (hj.trans hl)).hom n :=
+  (congrArg (fun t => postnikovLayerMap R (f.app k).hom n ≫ t)
+    (zeroCoefficient_refined_hom R n hn f c e hm hl hb)).trans
+      (PostnikovZeroLayerInverse.refinedCoefficient_left R e hl)
+
+lemma zeroCoefficient_right : (zeroCoefficient R n hn f c e hm hl hb).hom ≫
+    postnikovLayerMap R (f.app i).hom n =
+      postnikovLayerMap R (B.transition (hj.trans hl)).hom n :=
+  (congrArg (fun t => t ≫ postnikovLayerMap R (f.app i).hom n)
+    (zeroCoefficient_refined_hom R n hn f c e hm hl hb)).trans
+      (PostnikovZeroLayerInverse.refinedCoefficient_right R e hl)
+
 def coefficient :
     bimoduleRestrict (c.refine R hm).roof.denominator
       (postnikovLayerBaseBimodule R (B.obj k).obj n hn) ⟶

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonLayerInverse
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreShifted
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayer
 public import SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftRestrictedMap
 
@@ -23,10 +24,10 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
 
 def postnikovOneRoofShiftedDenominatorLayer (s : ℤ) : Bimod c.roof.apex c.roof.apex :=
-  bimoduleRestrict c.roof.denominator (postnikovShiftedLayerBimodule R (B.obj m).obj 1 (by omega) s)
+  PostnikovCommonCore.shiftedDenominatorLayer R (by omega) f c s
 
 def postnikovOneRoofShiftedNumeratorLayer (s : ℤ) : Bimod c.roof.apex c.roof.apex :=
-  bimoduleRestrict c.roof.numerator (postnikovShiftedLayerBimodule R (A.obj i).obj 1 (by omega) s)
+  PostnikovCommonCore.shiftedNumeratorLayer R (by omega) f c s
 
 variable (d : PostnikovCommonLayerInverse R f c) (s : ℤ)
 
@@ -34,11 +35,13 @@ def postnikovCommonShiftedCoefficientMap :
     postnikovOneRoofShiftedDenominatorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) s ⟶
       postnikovOneRoofShiftedNumeratorLayer R f
         (postnikovOneRoofRefine R f c d.zero.source_le) s :=
-  DGBimoduleShift.restrictedMap _ _ _ _ s d.coefficient
+  PostnikovCommonCore.shiftedCoefficientMap R (by omega) f
+    (postnikovOneRoofRefine R f c d.zero.source_le) d.coefficient s
 
 lemma postnikovCommonShiftedCoefficientMap_hom :
     (postnikovCommonShiftedCoefficientMap R f c d s).hom = d.coefficient.hom⟦s⟧' :=
-  DGBimoduleShift.restrictedMap_hom _ _ _ _ s d.coefficient
+  PostnikovCommonCore.shiftedCoefficientMap_hom R (by omega) f
+    (postnikovOneRoofRefine R f c d.zero.source_le) d.coefficient s
 
 lemma postnikovCommonShiftedCoefficientMap_left :
     (postnikovLayerMap R (f.app d.zero.stage).hom 1)⟦s⟧' ≫

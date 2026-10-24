@@ -24,7 +24,8 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 def sourceCoefficientHomologyIso :
     (d.denominatorLayer R).X.homology (-3) ≅
       (B.obj d.layerInverse.zero.stage).obj.X.homology (-2) := by
-  dsimp only [denominatorLayer, postnikovOneRoofShiftedDenominatorLayer, bimoduleRestrict]
+  dsimp only [denominatorLayer, postnikovOneRoofShiftedDenominatorLayer,
+    PostnikovCommonCore.shiftedDenominatorLayer, bimoduleRestrict]
   exact postnikovShiftedLayerHomologyIso R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) 1
 
 def targetCoefficientHomologyIso :

@@ -55,6 +55,7 @@ lemma postnikovCommonClassStandardGlueLeft_eq :
     postnikovCommonClassSource, postnikovCommonClassCoefficientMap,
     postnikovCommonClassTransitionMap, postnikovCommonClassCompatibilityToCell,
     postnikovCommonClassCompatibilityCoefficient, Category.assoc, SquareZero.coefficientMap_comp]
+  rfl
 
 lemma postnikovCommonClassStandardGlueRight_eq :
     postnikovCommonClassStandardGlueRight R f c d (hj := hj) =

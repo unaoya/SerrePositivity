@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreFromZero
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerFromZero
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroCoefficient
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRoofCoefficientBimodules
@@ -28,11 +29,9 @@ local instance coefficientFromZero_apex_nonpositive : c.roof.apex.X.IsStrictlyLE
 
 def postnikovCoefficientFromZero : postnikovOneRoofDenominatorLayer R f c ⟶
     postnikovOneRoofNumeratorLayer R f c :=
-  postnikovLayerFromZero R (B.obj m).obj (A.obj i).obj c.roof.apex 1 (by omega)
-    c.roof.denominator c.roof.numerator u
+  PostnikovCommonCore.coefficientFromZero R (by omega) f c u
 
 lemma postnikovCoefficientFromZero_hom : (postnikovCoefficientFromZero R f c u).hom = u.hom :=
-  postnikovLayerFromZero_hom R (B.obj m).obj (A.obj i).obj c.roof.apex 1 (by omega)
-    c.roof.denominator c.roof.numerator u
+  PostnikovCommonCore.coefficientFromZero_hom R (by omega) f c u
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

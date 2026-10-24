@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCore
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneRoofRefinement
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerBaseNaturality
 public import SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionSquareMap
@@ -24,10 +25,10 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
 
 def postnikovOneRoofNumeratorLayer : Bimod c.roof.apex c.roof.apex :=
-  bimoduleRestrict c.roof.numerator (postnikovLayerBaseBimodule R (A.obj i).obj 1 (by omega))
+  PostnikovCommonCore.numeratorLayer R (by omega) f c
 
 def postnikovOneRoofDenominatorLayer : Bimod c.roof.apex c.roof.apex :=
-  bimoduleRestrict c.roof.denominator (postnikovLayerBaseBimodule R (B.obj m).obj 1 (by omega))
+  PostnikovCommonCore.denominatorLayer R (by omega) f c
 
 variable {k : ℕ} (hm : m ≤ k)
 
@@ -35,8 +36,7 @@ def postnikovOneRoofRefineNumeratorLayerIso :
     postnikovOneRoofNumeratorLayer R f (postnikovOneRoofRefine R f c hm) ≅
       bimoduleRestrict (postnikovOneRoofRefineProjection R f c hm)
         (postnikovOneRoofNumeratorLayer R f c) :=
-  bimoduleRestrictionCompIso (postnikovOneRoofRefineProjection R f c hm) c.roof.numerator
-    (postnikovLayerBaseBimodule R (A.obj i).obj 1 (by omega))
+  PostnikovCommonCore.refineNumeratorLayerIso R (by omega) f c hm
 
 lemma postnikovOneRoofRefineNumeratorLayerIso_hom :
     (postnikovOneRoofRefineNumeratorLayerIso R f c hm).hom.hom =
@@ -46,11 +46,7 @@ def postnikovOneRoofRefineDenominatorLayerMap :
     postnikovOneRoofDenominatorLayer R f (postnikovOneRoofRefine R f c hm) ⟶
       bimoduleRestrict (postnikovOneRoofRefineProjection R f c hm)
         (postnikovOneRoofDenominatorLayer R f c) :=
-  bimoduleRestrictSquareMap (postnikovOneRoofRefine R f c hm).roof.denominator
-    c.roof.denominator (postnikovOneRoofRefineProjection R f c hm)
-    (postnikovMap R (B.transition hm).hom 1)
-    (postnikovOneRoofRefineProjection_denominator R f c hm).symm
-    (postnikovLayerBaseMap R (B.transition hm).hom 1 (by omega))
+  PostnikovCommonCore.refineDenominatorLayerMap R (by omega) f c hm
 
 lemma postnikovOneRoofRefineDenominatorLayerMap_hom :
     (postnikovOneRoofRefineDenominatorLayerMap R f c hm).hom =
@@ -58,18 +54,18 @@ lemma postnikovOneRoofRefineDenominatorLayerMap_hom :
 
 lemma postnikovOneRoofNumeratorLayer_lowerBound :
     (postnikovOneRoofNumeratorLayer R f c).X.IsStrictlyGE (-2) :=
-  postnikovLayer_lowerBound R (A.obj i).obj 1
+  PostnikovCommonCore.numeratorLayer_lowerBound R (by omega) f c
 
 lemma postnikovOneRoofNumeratorLayer_upperBound :
     (postnikovOneRoofNumeratorLayer R f c).X.IsStrictlyLE (-2) :=
-  postnikovLayer_upperBound R (A.obj i).obj 1
+  PostnikovCommonCore.numeratorLayer_upperBound R (by omega) f c
 
 lemma postnikovOneRoofDenominatorLayer_lowerBound :
     (postnikovOneRoofDenominatorLayer R f c).X.IsStrictlyGE (-2) :=
-  postnikovLayer_lowerBound R (B.obj m).obj 1
+  PostnikovCommonCore.denominatorLayer_lowerBound R (by omega) f c
 
 lemma postnikovOneRoofDenominatorLayer_upperBound :
     (postnikovOneRoofDenominatorLayer R f c).X.IsStrictlyLE (-2) :=
-  postnikovLayer_upperBound R (B.obj m).obj 1
+  PostnikovCommonCore.denominatorLayer_upperBound R (by omega) f c
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
