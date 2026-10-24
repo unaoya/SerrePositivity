@@ -22,15 +22,13 @@
   presentable 圏を κ-compact 生成する小さい A に対しては、Ind 自身の余完備性を入力にせず回収する。
 - 局所小ささは、元の各 pinched Hom と宇宙 u の Kan 空間の持ち上げとの全同値で定義した。
   固定頂点写像の小ささから二対象の小さい全部分模型を作り、Ind・accessible・presentable 圏へ供給する。
-- P-1 g は未完了。N の検証済み範囲は e-infinity-algebras.md の N 節を正本とする。
+- P-1 g は g1〜g7 を完了。元の Yoneda 制限上の有限余積条件と全小余極限保存を同値にした。
 
 ### 残り（依存順）
-1. P-1 g：Yoneda 制限上の有限余積保存による全余極限保存判定。
-   simplicial Ind 表示と filtered／幾何学的実現保存関手の制限同値を提供する。HTT 5.5.8.14〜15。
-2. P-1 c：presentable の小さい極限・余極限。HTT 5.5.2.4・5.5.3.13。
-3. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
-4. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
-5. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
+1. P-1 c：presentable の小さい極限・余極限。HTT 5.5.2.4・5.5.3.13。
+2. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
+3. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
+4. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
    HTT 5.5.4.15。c〜f の個別見積もりは各着手時に精査する。
 
 ### 主要宣言
@@ -45,6 +43,8 @@
 - `presheaf_exists_compactGeneratorIndEquivalence`、`indInfinity_isPresentable_iff_hasSmallColimits`
 - `indInfinity_isPresentable_of_compactGenerating`、`presheafCompactGeneratorInd_isPresentable`
 - `IsLocallySmall`、`indInfinity_isLocallySmall`、`IsAccessible.isLocallySmall`、`IsPresentable.isLocallySmall`
+- `sigmaFiniteFamilyComparison_isIso`、`sigma_preservesFiniteCoproducts_iff_yoneda`
+- `sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted`、`sigmaLeftKanExtension_preservesSmallColimits_iff`
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -54,11 +54,11 @@
 - 一般の前層の compact 生成・accessibility・presentable 性と、accessible 圏の局所小ささを提供する。
   Ind 側の a7 はこの完成範囲の新しい入力ではなく、既存の明示入力を勝手に無条件化しない。
 
-### 作業中
+### P-1 g の到達点
 - g4：filtered 余極限と幾何学的実現のみを仮定する標的への、同じ二種類を保存する全関手 ∞ 圏の制限同値を提供する。
 - g6：元の Yoneda の有限余積保存と、P_Σ 全体の有限余積・sifted 保存による全小余極限保存判定を提供する。
   指定した全余極限比較の可逆性と元の形状の全余極限保存の同値を提供する。
-  未完了なのは、この比較の可逆性を Yoneda 制限上の有限余積条件から導く工程。
+  元の Yoneda 制限上の有限余積条件へ縮約し、全小余極限保存判定まで提供する。
 - g5：小余積と幾何学的実現からの小余極限、専用反映、
   元の前層 bar の反映による simplicial Ind 表示を提供する。
   F1 の密度・各点余極限・小余積の公開 API を利用し、他レーンへの供給依頼にはしない。
@@ -75,8 +75,8 @@
 - 前提として、小余積と幾何学的実現から小余極限を構成する一般補題を P 側に追加する。
   既存の sifted 余極限と有限余積保存を使って P_Σ の反映を構成する。
 - ユーザーが反映・bar の経路を採用。公開界面を保ち、g4・g5 を提供する。
-1. g6 の有限余積条件を元の Yoneda 制限上へ縮約する。
-2. 最終判定を完成し、集約・公理監査と引き継ぎを閉じる。
+1. P-6：comma fiber の任意の点による局所区間比較と輸送の関手同型を構成し、既存の単位版との特殊化を照合する。
+2. P-1 c は未着手。
 - **採用済みの設計追加**：有限余積の全関手と定値図式との随伴を P 側で構成する。
   普遍余錐族の切断・全単位の円柱・関手圏内の普遍性・右頂点 Hom 制限を準備した。
   普遍余錐の指定単位による全 Hom 全単射と、選んだ余極限全関手と定値図式の実際の随伴を提供する。
@@ -102,8 +102,8 @@
   - [x] 一般補題：小余積と幾何学的実現から小余極限を構成する。
   - [x] 反映 L の構成：既存の sifted 保存と有限余積保存から P_Σ 専用反映を構成する。
   - [x] bar 表示の接続：反映を適用して simplicial Ind 表示へ接続する。
-- [ ] g6. Yoneda の有限余積保存と全余極限保存判定。
-- [ ] g7. 集約ビルド・公理監査・引き継ぎ更新。
+- [x] g6. Yoneda の有限余積保存と全余極限保存判定。
+- [x] g7. 集約ビルド・公理監査・引き継ぎ更新。
 
 ## 規約
 
