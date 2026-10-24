@@ -18,7 +18,11 @@ open CategoryTheory DifferentialGraded SerrePositivity.KST.SConstruction
 variable (R : Type u) [CommRing R] (D E : Type u)
   [DGCategory R D] [DGCategory R E] (κ : Cardinal.{u}) (F : DGFunctor R D E)
 
-def dgKappaPresentedSourceActionIso (X : DGKappaPresentedSourceObject R D κ) :=
+def dgKappaPresentedSourceActionIso (X : DGKappaPresentedSourceObject R D κ) :
+    ForgetEnrichment.of (Complex R)
+        ((dgModuleExtension R D E F).obj (dgKappaPresentedSourceValue R D κ X)) ≅
+      ForgetEnrichment.of (Complex R) (dgKappaPresentedSourceValue R E κ
+        (dgKappaPresentedSourceObjectMap R D κ E F X)) :=
   dgModuleExtensionCompositionAt R (X.code.Objects R κ) D E X.arrow F
     (ForgetEnrichment.to (Complex R) (dgKappaPresentedSourceSeed R D κ X))
 
