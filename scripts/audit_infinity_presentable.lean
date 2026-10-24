@@ -371,3 +371,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.coneApex_homRestriction_bijective
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.constantPointFunctorIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.precompositionHomotopy_constant_naturality
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneApex_homEvaluation_bijective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.constantEndpointUnitHom_evaluation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_evaluation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_bijective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.flipFunctorHomEquiv

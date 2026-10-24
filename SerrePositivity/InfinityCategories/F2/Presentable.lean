@@ -157,3 +157,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaColimitPres
 public import SerrePositivity.InfinityCategories.F2.Presentable.ChosenColimitParameterCocone
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeApexHomRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConstantPointFunctorIso
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeUnitHomNaturality
+public import SerrePositivity.InfinityCategories.F2.Presentable.ConeApexHomEvaluation
+public import SerrePositivity.InfinityCategories.F2.Presentable.ConstantEvaluationHomTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeUnitHomMap
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeUnitHomUniversal
+public import SerrePositivity.InfinityCategories.F2.Presentable.FlipFunctorHom
