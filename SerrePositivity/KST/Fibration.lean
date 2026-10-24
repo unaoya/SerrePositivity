@@ -577,3 +577,12 @@ public import SerrePositivity.KST.Fibration.VerdierUpperFullSMap
 public import SerrePositivity.KST.Fibration.ZeroFunctorFullSCoreRestriction
 public import SerrePositivity.KST.Fibration.QuotientSKernelFullSKanAction
 public import SerrePositivity.KST.Fibration.VerdierFullSZeroCornerKanMap
+
+public import SerrePositivity.KST.Fibration.VerdierFullSZeroCornerNativeCoordinates
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSNativeKanFamily
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSNativeKanVertices
+public import SerrePositivity.KST.Fibration.VerdierFullSNativeLongHom
+
+public import SerrePositivity.KST.Fibration.VerdierFullSNativeComparison
+
+public import SerrePositivity.KST.Fibration.VerdierFullSNativeCompositeCoordinates
