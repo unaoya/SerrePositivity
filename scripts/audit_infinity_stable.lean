@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel
 import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
 import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift
@@ -7696,6 +7697,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality]
 
 @[noinline] private def stableAuditExpectedChunk39 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel,
   `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionDirect,
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinchedGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecompositionDirect,

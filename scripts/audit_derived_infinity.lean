@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel
 import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
 import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift
@@ -7144,6 +7145,7 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram]
 
 @[noinline] private def derivedAuditExpectedChunk36 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel,
   `SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionDirect,
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinchedGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrecompositionDirect,
