@@ -12,10 +12,11 @@
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
-- I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [ ] ← 今回、a③ 射形状の標準余錐の余極限性 [ ]、a④ 有限半順序形状の帰納と単一 filtered 表示 [ ]。
-- I-2 a の界面：`indArrowPrismCurriedAllBoundaryIso`・`indArrowPrismNativeAllBoundaryIso` は元の全 C 図式・D・始点全余錐を同時に固定した実 fiber 内の比較。両 `ReconstructedVertex_val`・`OriginalVertex_val` は元の全余錐を厳密に回収する。`fixedCoconeBoundaryUnder` が指定評価下の固定条件、`_UnderPost` がその条件を保つ後合成。評価下の相対反映と cofinal 性自体は未証明。
-- I-2 a② の現状：`nonempty_indArrowInterpolationOldFamily_under_iso` は同じ指定下側変換を保つ実 under comma 内の比較。`indArrowInterpolationUnderFamily` とその旧部分の実余錐から、元の試験族の余錐 `nonempty_indArrowSourceEvaluationComma_cocone` を回収する。`indArrowSourceEvaluationComma_isFiltered` は任意の κ-small 指定始点図式の実引き戻しの filtered 性。`diagramCommaEvaluation_source_isRightCofinal` と `smallDiagramCommaEvaluation_source_isRightCofinal` は元の大きい実 comma と小さい表示添字の始点評価の cofinal 性。終点評価の cofinal 性と射形状の余極限性は未証明。
-- 次の一手：I-2 a② の終点評価。`exists_indComma_arrowInterpolation_cocone` の元の補間領域に、元の終点評価下の指定変換を旧族に沿って貼り、その全図式への κ-small 余錐を取る。終点評価の全族と指定変換を厳密に回収し、同じ比較を実 under comma 内へ戻して cofinal 性を得る。続いて射形状の標準余錐の余極限性、有限半順序形状の単一 filtered 表示へ進む。
+- I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [x]、a③ 射形状の標準余錐の余極限性 [x]、a④ 有限半順序形状の帰納と単一 filtered 表示 [ ] ← 今回。
+- I-2 a の界面：元の三条件固定比較と始点評価下の実 under comma の比較は保存済み。`exists_relativeCommaFamily_iso_of_functorIso` は任意の元の同型に沿う指定変換の輸送。`indArrowInterpolationOldFamily_withCornerCocone` は同じ slice 円柱を保つ終点拡張の選び直しで元の旧族が変わらないことを厳密に回収する。
+- I-2 a② 完了：`nonempty_indArrowTargetUnder_cocone` は指定終点変換を含む元の試験族への実余錐。両評価の引き戻しは filtered。`diagramCommaEvaluation_interval_isRightCofinal` と `smallDiagramCommaEvaluation_interval_isRightCofinal` は、元の射図式の任意の頂点での評価そのものの cofinal 性。
+- I-2 a③ 完了：`indYonedaCanonicalCocone_isColimit` は元の scalar 標準密度余錐の余極限性。`smallDiagramCommaCocone_evaluate_isColimit` で各点を回収し、`smallArrowDiagramCommaCocone_isColimit` は同じ射図式 D を頂点とする元の標準全余錐の余極限性。添字の κ-filtered 性は `smallArrowDiagramComma_isKappaFiltered`。
+- 次の一手：I-2 a④。有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

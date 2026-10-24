@@ -2686,3 +2686,6 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCha
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.SSetProductEvaluation
+
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1.Universe.CoconeShapeNaturality

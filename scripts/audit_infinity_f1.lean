@@ -9310,3 +9310,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.ssetLift_apply
 
 #check @SerrePositivity.InfinityCategories.ssetConst_zero_apply
+
+#check SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting
+#print axioms SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting
+#check SerrePositivity.InfinityCategories.leftFibration_equivalenceLifting
+#print axioms SerrePositivity.InfinityCategories.leftFibration_equivalenceLifting
+#check SerrePositivity.InfinityCategories.uliftCoconeShapeIso_hom_naturality
+#print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso_hom_naturality
+#check SerrePositivity.InfinityCategories.pullbackFunctorIsoOfCommonNormalizedIsos
+#print axioms SerrePositivity.InfinityCategories.pullbackFunctorIsoOfCommonNormalizedIsos

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Pullbacks.PullbackCompatible
 /-!
 概要：共有端点の同じ表示で指定像が一致する二成分を pullback の関手同型へ束ねる。
 方針：共通の端点正規化を二成分の直接比較へ移し、両端固定の代表辺を貼り合わせる。
-規約：全パラメーターと元の二つの成分同型を保持する。
+規約：全パラメーターと元の二つの成分同型を保持し、pullback の Kan 性を要求しない。
 使われ方：補正成分の同じ共有頂点での整合を実際の pullback 比較へ渡す。
 -/
 
@@ -31,7 +31,7 @@ lemma functorIsoOfEq_eq_of_common_normalization {A Y : SSet.{u}}
 /-- 共通端点での指定像の一致から、同じ二射の間の pullback の関手同型を作る。 -/
 def pullbackFunctorIsoOfCommonNormalizedIsos {A X Y Z : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] [Quasicategory Z]
-    (f : X ⟶ Z) (g : Y ⟶ Z) [LeftFibration f] [KanComplex (pullback f g)]
+    (f : X ⟶ Z) (g : Y ⟶ Z) [LeftFibration f]
     (a b : A ⟶ pullback f g)
     (L : FunctorIso (a ≫ pullback.fst f g) (b ≫ pullback.fst f g))
     (R : FunctorIso (a ≫ pullback.snd f g) (b ≫ pullback.snd f g))
