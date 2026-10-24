@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSourceSimplex
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastCompositeSimplex
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_obj
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_head
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTailOrder_succ_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTailOrder_succ_one
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_tail_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_tail_one
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_tail_mixed
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_tail_of_le
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_tail
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSimplex_eq
+#check @SerrePositivity.InfinityCategories.F2.spaceTrianglePointedFamily_maximal_last_prism
+
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath01
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath12
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath02
