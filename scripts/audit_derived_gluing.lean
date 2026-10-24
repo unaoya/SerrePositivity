@@ -866,7 +866,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelTargetUnitFace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.TerminalUnitLoopEdgeRecovery,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitFacesAndBoundaryFilling,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionEndpointPair,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowIntervalEndpointPair,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.EndpointTransportComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalMappingProductIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalArrowCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalCoordinatesIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalCoordinatesTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPinchedIntervalTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedIntervalPullbackTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PullbackReindexIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomModelRoundTrip]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
