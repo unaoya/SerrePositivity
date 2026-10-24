@@ -900,3 +900,9 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseExactPro
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonStability
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StableObjects
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StableFactorKernels
+public import SerrePositivity.InfinityCategories.Derived.Gluing.StableLaxStructure
+public import SerrePositivity.InfinityCategories.Derived.Gluing.StableTammeComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeSemiorthogonal
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso

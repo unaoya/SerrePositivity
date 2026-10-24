@@ -905,7 +905,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseExactProjections,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonStability,
     `SerrePositivity.InfinityCategories.Derived.Gluing.StableObjects,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.StableFactorKernels]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StableFactorKernels,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StableLaxStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StableTammeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeSemiorthogonal,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
