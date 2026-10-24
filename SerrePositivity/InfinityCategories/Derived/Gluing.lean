@@ -722,3 +722,4 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAug
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTrianglePrismLift
 public import SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismTrianglePostcomp
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionNaturality
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationDiagonals

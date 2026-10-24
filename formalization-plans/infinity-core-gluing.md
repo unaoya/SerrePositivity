@@ -32,6 +32,7 @@
   augmentation 全四面体を四つの四単体族へ制限し、隣接片の共有三面と両端の二射影四面体を厳密に回収する。
   固定二辺を全時間で保つ補正済み三角形族から合成対応内の実ホモトピーを作り、元入力付き引き戻しへ持ち上げる入口も供給済み。
   六つの側面射影等式は coherent prism の自然性から Small 仮定なしで実例化済み。
+  標準正規化閉射の augmentation 対角は元 augmentation の実一単体に一致し、閉零元での augmentation primitive の零性も回収済み。
   **元の固定辺へ戻す側面補正と、選択済み二変形へ相対比較を移す工程は未完。**
 
 ### G-1 d の三段目（固定）
@@ -91,8 +92,8 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8739 jobs、公理監査 723 モジュール・6787 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-projection-supply-aggregate-build.log`・`/tmp/d2-v3-projection-supply-audit.log`。新規モジュールは集約・監査へ接続済み。
+- 検証済み：集約ビルド 8740 jobs、公理監査 724 モジュール・6803 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-diagonals-aggregate-build.log`・`/tmp/d2-v3-diagonals-audit.log`。新規モジュールは集約・監査へ接続済み。
 - 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 

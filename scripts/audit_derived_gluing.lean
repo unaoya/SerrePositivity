@@ -727,7 +727,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationStaircase,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTrianglePrismLift,
     `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismTrianglePostcomp,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionNaturality]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationDiagonals]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
