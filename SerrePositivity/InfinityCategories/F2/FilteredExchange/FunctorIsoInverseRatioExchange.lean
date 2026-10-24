@@ -42,5 +42,27 @@ lemma functorIso_postcomp_heq_native_value {X A B Z : SSet.{u}} {f g : X ⟶ A}
   cases hk
   have h := functorIso_postcomp_heq_of_heq (e.postcomp n) N hf hg hN V
   exact h.trans (heq_of_eq (functorIso_postcomp_postcomp e n V))
+/-- 概要：同じ中間交換に元の前後因子を続けても指定値を保持する。
+方針：元の二端点を揃えて同じ交換正方形を合成する。
+規約：元の四因子を保持。使われ方：raw 二辺値全体の中間での貼り合わせ。 -/
+lemma functorIso_inverse_ratio_exchange_paste_heq {X A Z : SSet.{u}}
+    [Quasicategory A] [Quasicategory Z] {f₀ f₁ : X ⟶ A} {g₀ g₁ : A ⟶ Z}
+    (e : FunctorIso f₀ f₁) (R : FunctorIso g₀ g₁)
+    {h₀ h₁ w z : X ⟶ Z} (L : FunctorIso w h₀) (N : FunctorIso h₀ h₁)
+    (S : FunctorIso (f₁ ≫ g₀) h₁) (F : FunctorIso (f₁ ≫ g₀) z)
+    (h₀e : h₀ = f₀ ≫ g₁) (h₁e : h₁ = f₁ ≫ g₁)
+    (hN : HEq N (e.postcomp g₁)) (hS : HEq S (R.precomp f₁)) :
+    HEq (L ≪≫ N ≪≫ S.symm ≪≫ F)
+      (functorIsoOfEq L rfl h₀e ≪≫ (R.precomp f₀).symm ≪≫ (e.postcomp g₀ ≪≫ F)) := by
+  subst h₀ h₁
+  cases eq_of_heq hN
+  cases eq_of_heq hS
+  have h := functorIso_whisker_exchange e R.symm
+  rw [functorIso_precomp_symm, functorIso_precomp_symm] at h
+  have hh : L ≪≫ e.postcomp g₁ ≪≫ (R.precomp f₁).symm ≪≫ F =
+      L ≪≫ (R.precomp f₀).symm ≪≫ (e.postcomp g₀ ≪≫ F) := by
+    simpa only [Iso.trans_assoc] using congrArg (fun k => L ≪≫ k ≪≫ F) h
+  convert heq_of_eq hh using 1
+  rfl
 end
 end SerrePositivity.InfinityCategories.F2
