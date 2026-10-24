@@ -20,7 +20,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（75 モジュール・789 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
+- NonConnective 集約・専用監査は成功（75 モジュール・791 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明した S• 境界商の加法性と実 swindle を同じ Perf の実 cofiber 族で結び、同じ cone の連結 K の消滅を証明し、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -59,7 +59,7 @@
 - a の以前の end 持ち上げ余錐は保持するが、完成界面は `sequentialCandidateColimitCocone`。通常の Hom 極限性だけでは ∞ 余極限性の代用にならない。
 
 ### 次の一手
-- `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。実分裂四角形の二胞体・四辺・零角、全単体での点ごとのラベル評価、各ラベルの閉分裂関係は接続済み。次は同じ点ごとの零三角形の cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
+- `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。実分裂四角形の二胞体・四辺・零角、全単体での点ごとのラベル評価、各ラベルの閉分裂関係は接続済み。同じ点ごとの全四角形は、元の閉分裂四角形を同じ閉ラベル関手と閉 nerve 包含へ送った像に厳密一致する（`dgKappaSplitPerfPointwiseSquare_closed`）。次は同じ点ごとの零三角形の cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
 
 ### K-7 c の三段目（v3）
 - [x] c1 `dgKappaZeroPerfAction_values` の修正・集約・監査への接続。

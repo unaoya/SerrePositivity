@@ -559,3 +559,6 @@ public import SerrePositivity.KST.Fibration.StableSingleSCoreFamily
 public import SerrePositivity.KST.Fibration.QuotientSKernelNullCoreAction
 public import SerrePositivity.KST.Fibration.CoreFamilyDiagonalCylinder
 public import SerrePositivity.KST.Fibration.CoreSingleFamilyCylinder
+public import SerrePositivity.KST.Fibration.ZeroTargetFullSMap
+public import SerrePositivity.KST.Fibration.ZeroTargetCornerEquivalence
+public import SerrePositivity.KST.Fibration.VerdierZeroCornerMap

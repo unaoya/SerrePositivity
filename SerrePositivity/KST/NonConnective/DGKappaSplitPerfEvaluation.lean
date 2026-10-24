@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
+public import SerrePositivity.InfinityCategories.Derived.ClosedNerveFunctorNaturality
 
 /-!
 概要：元の全 native 分裂四角形の各 Perf ラベルでの評価を同じ dg 作用へ戻す。
@@ -57,9 +58,33 @@ theorem dgKappaFullPerfFamilyMap_label_app {n : ℕ}
     presentedPerfectDGNativeAction_app]
   exact presentedPerfectDGNativeActionSimplex_label R _ _ X s
 
+/-- 元の閉関手族の全評価は、同じ閉ラベル関手の通常 nerve の実像に等しい。 -/
+theorem dgKappaClosedPerfFamily_label :
+    (dgKappaClosedFunctorNativeMap R D I ≫ dgKappaFullPerfFamilyMap R D I) ≫
+        evaluateFunctorAt (Simplex.vertex X) =
+      nerveMap (dgKappaPerfLabelFunctor R D I X) ≫
+        closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro s
+  exact (dgKappaFullPerfFamilyMap_label_app R D I X (closedNerveSimplex s)).trans
+    (dgFunctor_closedNerveSimplex R _ _
+      (presentedPerfectDGLabelAction R (DGKappaCone R D I) (DGKappaCone R D I) X) s)
+
 /-- 元の二胞体を持つ同じ全分裂四角形を、同じ Perf ラベルで点ごとに評価する。 -/
 def dgKappaSplitPerfPointwiseSquare (Z : DGKappaZeroInput R D I) :=
   dgKappaSplitPerfFamilySquare R D I Z ≫ evaluateFunctorAt (Simplex.vertex X)
+
+/-- 同じ点ごとの全四角形は、元の閉分裂四角形の同じラベル関手像である。 -/
+theorem dgKappaSplitPerfPointwiseSquare_closed (Z : DGKappaZeroInput R D I) :
+    dgKappaSplitPerfPointwiseSquare R D I X Z =
+      dgKappaSplitClosedSquare R D I Z ≫ nerveMap (dgKappaPerfLabelFunctor R D I X) ≫
+        closedNerveInclusion R (PresentedPerfectDGObject R (DGKappaCone R D I)) := by
+  change ((dgKappaSplitClosedSquare R D I Z ≫ dgKappaClosedFunctorNativeMap R D I) ≫
+    dgKappaFullPerfFamilyMap R D I) ≫ evaluateFunctorAt (Simplex.vertex X) = _
+  rw [Category.assoc, Category.assoc, ← Category.assoc (dgKappaClosedFunctorNativeMap R D I),
+    dgKappaClosedPerfFamily_label]
 
 /-- 同じ点ごとの四角形の全単体は、元の閉関手四角形の dg ラベル作用そのもの。 -/
 theorem dgKappaSplitPerfPointwiseSquare_app (Z : DGKappaZeroInput R D I) {n : ℕ}
