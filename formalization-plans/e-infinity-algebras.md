@@ -72,7 +72,7 @@
   離散入力の全源比較163ea2ef1、既存 D(R) の離散埋め込みとの全比較a7bb3e49c、零次 E 模型・Com 降下bba3bdd16、標準 H⁰ 同型0d5863b91、離散対象の両包含4014b618bは完成。
   自由忘却の実弱 Hom span は0e5b0d5d1。実導来単位・comma 候補はdcdcfc5da。正規化鎖の実 Reedy cofibrancy、tensor/K-projective と既存 D(R) への実弱 Hom span はe60467f07まで完成。
   元の要素圏上の二重 cone・全 slice prism・通常 augmentation 比較、全 HA と実 Δ²⊗K 三角形は完成。全作用素自然性7b84c975e、全三辺1b32cd7a8、全 h Fun の評価三角形2eaf97fe4、元の derived pinched と roof の全族比較ee6e3d6db。
-  **今回の保存単位 fee845d09**：BarrattEccles/FreeProbeElementColumn.lean と FreeProbeElementColumnProperties.lean の9公開宣言。元の正規化 Hom の同じ要素圏上の自由 E∞ frame の列、augmentation・評価自然変換、元の随伴単位による両比較公式、全 augmentation・全列射の弱同値性、各対象の cofibrancy。標準単位誘導射自身の弱同値性は未証明。
+  **元の列の基準 fee845d09**：BarrattEccles/FreeProbeElementColumn.lean と FreeProbeElementColumnProperties.lean の9公開宣言。元の正規化 Hom の同じ要素圏上の自由 E∞ frame の列、augmentation・評価自然変換、元の随伴単位による両比較公式、全 augmentation・全列射の弱同値性、各対象の cofibrancy。標準単位誘導射自身の弱同値性は未証明。
   元の自由列・augmentation・評価を cofibrant 相対圏へ持ち上げ、包含で元の全成分を厳密に回収する。SameUniverse の全 roof と既存 CAlg_R の全 pinched 族まで構成済み。元の全 slice prism の評価三角形から同じ augmentation の逆・評価への全 Arrow 比較を構成し、実 U による全 pinched 族の像へ接続した。元の単位の全自然変換正方形と、忘却後の複体屋根の全導来単位三角形まで完成。同じ U の全源同型による全屋根の共役と、同じ Hom 宇宙回収による元の複体屋根への全 Arrow 比較まで完成。標準単位との端点同型の整合・標準単位比較の弱同値性は未完了。
 - **残り**（依存順、再開後の粗い見積もり）：
   1. 構成済みの同じ全 pinched 族を既存の全族比較と接続して標準単位比較自身の弱同値性を証明。HTT §5.2.4 の写像空間判定への入力、6〜16時間。
@@ -95,24 +95,26 @@
   ComonadResolutionOperators・Presentation・SimplicialResolution、Rectification/HomotopyFunctionComplex/LiftSpace、KST の ExInfinityMonoidal・NerveOppositeIso を再利用。
   N の Coherent/Quasicategory・F1/CoherentVertices・CoherentNervePostcomposition・KanSourceReplacement、F1b の KanNerveLeftKanShapeIso・QuillenALeft・CofinalWeakEquivalence、F2 の filtered 弱同値保存を使用。
   E2a のモデル・通常右導来極限・Kan Map^h、実 CAlg_R と既存 D(R) への忘却射・離散比較を提供。所有は EInfinity/**・EInfinity.lean・scripts/audit_einfinity.lean。本節以外の共有計画を巻き込まない。
-- **保存済みの接続**：元の標準・正規化自由 Hom span の全四列比較、同じ相対全要素写像と全 zigzag 包含像を接続し、`freeNormalizedTensorReducedRoof_weak`・`freeProbeRelativeElementRoofMap_weak`・`freeProbeRelativeElementPinchedMap_weak` を証明した。元の CAlg_R 全 pinched 族自身が弱同値。標準単位の定値二胞体・端点輸送との一致は未完了。
+- **全族と単位の接続**：元の標準・正規化自由 Hom span の全四列比較、同じ相対全要素写像と全 zigzag 包含像を接続し、`freeNormalizedTensorReducedRoof_weak`・`freeProbeRelativeElementRoofMap_weak`・`freeProbeRelativeElementPinchedMap_weak` を証明した。元の CAlg_R 全 pinched 族自身が弱同値。
+  元の定値自然変換の全円柱、同じ実 U の全源比較の定値制限、元の複体屋根の定値族と単位三角形まで接続した。`freeProbeRelativeUnitIntervalMap_family` は同じ全要素族上の全射の一致、`freeProbeRelativeUnitIntervalMap_weak` は局所化源頂点での元の単位誘導射自身の弱同値性。標準の選択済み頂点への輸送は未完了であり、g1-4 は未完了。
 - **依存状況**：D の保存完了の合図を受けて再開。公開入口は `Derived/SliceOverEqualityTransport` と dg 非依存の `Derived/FunctorHomGeneral`。所有閉包の他レーン未保存依存0件を確認してからビルド・監査する。依頼・報告はユーザー経由で進捗確認チャットへ届ける。
-  `FrameHom/UnitComparisonWeakDetection.lean` は同じ全パラメータの区間族の一致、弱な probe、弱な pinched 基準射から検査対象の射自身の弱同値性を反映する。集約・全監査に接続済み。実単位への代入は未完了であり、g1-4 の完了には数えない。
+  `FrameHom/UnitComparisonWeakDetection.lean` に、同じ弱な CAlg_R 全族・弱な複体屋根族・元の単位の全族等式を代入した。`FreeProbeRelativeSourceComparison` は選択済み自由頂点との同型を元の置換 augmentation で与え、順射を同じ局所化像へ回収する。
+  **所有レーンへの依頼**：閉包外の `F1B/Localization/ReflectiveLocalObjects.lean` の `functorHomEvaluate_naturality` を、既存の `F1B/FunctorCategories/FunctorHomEvaluationNaturality` 側の入口で公開するようコーディネータ経由で依頼中。E2 へはコピーしない。標準単位との端点整合に使う。既存の評価成分との一致は閉包内で `functorIsoEvaluate_eq_app` に接続済み。
   閉包外の `Derived/FunctorHomTypedWhiskerAlgebra` 等は使用しない。`NerveColumn` の通常列への特殊化は閉包内の `Bicategory.whisker_exchange`・`qcatCell_whiskerLeft/Right`・関手合成保存を直接使用し、閉包外補題をコピーしない。
-  fee845d09 は対象ビルド6594 jobs・EInfinity 集約11055 jobs・全公理監査25780宣言・独立例9件が終了コード0、標準3公理のみ。必須9101項目は209個の noinline 配列、各128以下。7187モジュールの import 閉包に他レーンの未コミット依存0件、監査前後の全ソース digest一致。新規モジュールの警告・sorry・追加公理なし。対象ビルド・監査・独立例はすべて終了済み。資源上限変更なし。既存208必須配列の式・順序・run_cmd登録は保持。主経路に ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定なし。
+  必須宣言は各128項目以下の noinline 配列へ追加し、既存配列の式・順序・run_cmd 登録を保持する。主経路へ ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定を追加しない。検証の実施記録はコミットメッセージへ残す。
   モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
   LeftRoof.Precompose の旧入口は I : Type v・Category.{0} I。同じ宇宙の実圏には LeftRoof.Precompose.SameUniverse を使う。元の要素圏は Type(u+1)・Category.{u} なので、cofibrant 代数の Category.{u+1} と合わせるには ULiftHom.{u+1} を使い、objUp/objDown の宇宙 .{u+1,u+1} を明示する。対象だけの ULift は不要。
   集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
-- **次の一手**：元の全単位自然変換の定値図式上の二胞体と標準単位の定値族を、同じ端点同型まで含めて照合する。既存の全屋根比較と単位三角形を接続し、準備済みの弱同値判定へ実射を代入する。
+- **次の一手**：評価自然性の上流公開を確認後、同じ cofibrant 置換 augmentation の辺に実 U の全源比較の自然性を適用する。`freeProbeRelativeFullSourceIso_hom` と `freeProbeDerivedUnit_recovery` を使い、局所化源での元の単位と `derivedFreeProbeUnitHom` の端点輸送の整合を証明する。その後、`derivedFreeProbeUnitIntervalMap` 自身の弱同値性を任意頂点へ移す。
   g1-5 は実単位射を結論とする検査、集約と全公理監査、端点・全パラメータの独立例を通過して初めて完了とする。検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認する。
   g1-4 の代入条件は、同じ要素 nerve K から標準単位比較の始域への弱な probe、元の標準単位比較自身、標的の既存 pinched Hom への弱な屋根族、および同じ両端を持つ全 h Fun の射の一致。端点同型の共役を含め実単位公式でこの一致を証明し、`unitComparison_weak_of_probe_family` に代入する。点ごとの Hom 同値で代用しない。
-  `FreeProbeRelativeElementFamilyComparison` の実 U の全 Arrow 比較と `FreeProbeElementDerivedUnitTriangle` の元の単位三角形を、`cAlgForgetDerived_sourceIso` の全屋根自然性と元の Hom 宇宙回収で接続する。`NerveColumnRoofNaturality`・`MixedNerveHomRecovery`（FrameHom）、`RoofPrefixColumnRoof`（SimplicialLocalization）、`CofibrantColumnUnderlyingHom`・`FreeProbeRelativeElementSourceRoof`・`FreeProbeRelativeElementUnderlyingRoof`（BarrattEccles）は同じ全源比較と元の複体屋根の回収を提供する。標準単位との端点同型の整合、既存の標準自由 Hom span への比較、標準単位比較自身の弱同値性は未証明。
+  `FreeProbeRelativeElementForgetFamily` は元の実 U 像と同じ複体屋根の定値族を、全端点比較の二射まで保持して照合する。`FreeProbeRelativeUnitReference` の元の複体屋根基準族は弱同値。標準単位との端点同型の整合と標準単位比較自身の弱同値性は未証明。
   同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続し、標準単位比較自身の弱同値性を示す。
   N の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
   全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
-  v3 の g1 は D の保存確認後に再開し、元の全 pinched 族自身の弱同値性まで完成。三段目は持ち上げ、全 pinched 族、全族比較との接続、標準単位の弱同値性、検証・保存の5項目。
+  v3 の g1 は局所化源頂点での元の単位比較自身の弱同値性まで完成。三段目は持ち上げ、全 pinched 族、全族比較との接続、標準単位の弱同値性、検証・保存の5項目。g1-3 は完了、g1-4 は標準頂点への輸送待ち。
 
 
 ## 0. 位置づけ
