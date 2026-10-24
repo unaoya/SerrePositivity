@@ -1452,7 +1452,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedPath,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedZero,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWModelHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageValue]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellComparePathPairs,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseRoofRightPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCellPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightRoofPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseRoofPrecomposePath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedUpperRightRoofPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedLeftLift,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightRoofValue,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofPathReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofDiagonalCancellation]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
