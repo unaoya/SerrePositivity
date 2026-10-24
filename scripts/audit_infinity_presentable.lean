@@ -310,3 +310,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_realization
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_degree_coproduct
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarDegreeDiagram_representable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasSmallColimits_of_coproducts_geometricRealizations
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasSmallColimits_iff_coproducts_geometricRealizations
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_localLeftKan_colimits
