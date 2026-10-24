@@ -6,14 +6,14 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、指定実終点像＝元の反転精密化の作用、同じ零面値による指定対角比較の正方形を証明。同じ零面側の指定対角比較の値を、共有する実最後辺と実両端を保って元の Apex 側へ戻した。元の raw 二辺因子を束ね、任意の全初期値で四因子境界式の長辺値消去を証明。最大化側の最後辺と元の最後辺を同定し、同じ全係数の head を第一射の係数作用に続く最後射へ正規化。最大化側の実最後 prism＝第一射の全係数作用後の元の最後射の実 prism を、同じ対象・head・tail・全 Hom の一致から証明。最大化側の指定対角比較の値＝第一射の同じ係数作用で制限した固定最後射の指定対角比較の値まで証明。元の最後射の VertexIso 値比較の第一射の同じ全係数作用像まで、構成時の表示変更を保持して接続。raw 最後辺の指定対角値＝指定一点普遍比較、最後辺値の比の消去と、同じ raw 二辺値全体の実最後辺正方形・第一辺値への分解まで証明。raw 比の作用比較への同定・native 中間像との貼り合わせと Ncomp は未証明。
+- 現在地：I-1 a。零面の最後辺の指定始点像＝元の中間点比較、native 終点像の恒等性、指定実終点像＝元の反転精密化の作用、同じ零面値による指定対角比較の正方形を証明。同じ零面側の指定対角比較の値を、共有する実最後辺と実両端を保って元の Apex 側へ戻した。元の raw 二辺因子を束ね、任意の全初期値で四因子境界式の長辺値消去を証明。最大化側の最後辺と元の最後辺を同定し、同じ全係数の head を第一射の係数作用に続く最後射へ正規化。最大化側の実最後 prism＝第一射の全係数作用後の元の最後射の実 prism を、同じ対象・head・tail・全 Hom の一致から証明。最大化側の指定対角比較の値＝第一射の同じ係数作用で制限した固定最後射の指定対角比較の値まで証明。元の最後射の VertexIso 値比較の第一射の同じ全係数作用像まで、構成時の表示変更を保持して接続。raw 最後辺の指定対角値＝指定一点普遍比較、最後辺値の比の消去と、同じ raw 二辺値全体の実最後辺正方形・第一辺値への分解まで証明。raw 最後辺の比を、同じ最後射の元の作用比較と全 Hom 上の評価値へ同定した。native 中間像との貼り合わせと Ncomp は未証明。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。期限で未完なら I-1 c として明示入力の継続を確定する。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ] ← 今回、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [ ]。
 - 主要宣言：`spaceCompositionZeroLastInitialEndpointIso_eq_middle`、`spaceCompositionZeroLastNativeEndpointIso_eq_refl`、`spaceCompositionZeroLastActualEndpointIso_eq_zero`、`spaceCompositionZeroLastSpecified_zero_square`、`spaceCompositionZeroFamily_last_base`。
 - 残り：I-1 a の Ncomp と値の消去、b の全錐比較と有限形状帰納（HTT 5.3.3.3、8 時間枠内）。続いて I-2 a〜e（下記 F2N-5 の未完部分）。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論は P・K-B、I-2 e は K-B へ公開する。
 - 既知の問題：一般交換と安定性は未証明。ModelCategory 仮定を加えない。
-- 次の一手：`coherentColimitApexCompositeValueComposite_eq_last_square_factors` の同じ raw 比を `coherentColimitRawUniversalIso_precomp_postcomp_heq_point_diagonal`・`coherentColimitRawPointDiagonal_native` と元の raw 辺の比の factory で作用比較へ同定する。元の native 中間像の式と第一辺値を貼り合わせ、`spaceCompositionStandardLastValue_heq_morphism_pre_action` へ接続する。元の VertexIso の前作用は `pointedHomMorphismValueComparison_map_pre_heq_prism` を使い、大きい型への `eq_of_heq` を避ける。零面側の同じ値は `coherentColimitApexZeroLastDiagonal_post_value_heq_original` で元の Apex 側へ戻る。Apex の最後辺の正方形と native 中間像の式を接続する。元の raw 二辺因子を保持する `coherentColimitApexCompositeValueComposite` に同じ零面値を続けた式を元の二射合成の評価比較へ同定し、Ncomp を結論する。`coherentColimitApexRawTriangleBoundaryAt_long_cancel` は任意の全初期値の四因子式への帰還用で、未証明の値照合の代用にはしない。
+- 次の一手：`coherentColimitApexLastSquareRawValueRatio_heq_action`・`_heq_evaluation` を同じ native 中間像の式に接続する。`coherentColimitApexCompositeValueComposite_eq_last_square_factors` の元の比の逆を、中間比較に沿う `functorIso_whisker_exchange` で移し、元の第一辺値と貼り合わせる。最大化側の値は `spaceCompositionStandardLastValue_heq_morphism_pre_action`、零面側の同じ値は `coherentColimitApexZeroLastDiagonal_post_value_heq_original` で元の Apex 側へ戻る。一般区間での比は `pointedIntervalPointDiagonalValueRatio`、raw 比との照合は `coherentColimitRawPointDiagonal_ratio_heq_pointed`。比から作用比較への接続は一般の実辺で先に合成し、大きい raw 型での異種等式の直接合成を避ける。元の raw 二辺因子を保持する `coherentColimitApexCompositeValueComposite` に同じ零面値を続けた式を元の二射合成の評価比較へ同定し、Ncomp を結論する。`coherentColimitApexRawTriangleBoundaryAt_long_cancel` は四因子式への帰還用で、未証明の値照合の代用にはしない。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 
