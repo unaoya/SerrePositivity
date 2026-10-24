@@ -843,7 +843,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathHomotopyOfFilling,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyInverseTransport,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputPathKanComplex,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathInverseOfFilling]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathInverseOfFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedDiagonalInputPair,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedDiagonalInputLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedDiagonalInputPullback,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputCoordinatesIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputCoordinateComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputStrictKanComplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictEquivalenceOfFilling]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
