@@ -334,3 +334,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_bar_realization
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indExtensionHomWeight_liftedIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_fullyFaithful_image_colimit_iso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasLimit_of_fullyFaithful_image_limit_iso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coyonedaInfinityMap_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_coyoneda_limit_representable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.fullPresheafHomWeightFamily_map_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_indPresentation_realization
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_leftKanExtension_of_filtered_geometric
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaSiftedContinuousRestriction_isQCatEquivalence_of_filtered_geometric
