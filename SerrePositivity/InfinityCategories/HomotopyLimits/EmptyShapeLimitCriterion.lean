@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.TerminalExtension
+
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EmptyCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions
 
