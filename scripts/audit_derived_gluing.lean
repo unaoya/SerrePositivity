@@ -883,7 +883,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputActions,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalCoordinatesComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseComposition]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowIntervalCompositionEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseReverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedRawInputEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalEndpointUncurry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPostEndpointNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonUniversalProperty,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomCoordinateTargetIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalBaseCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalInputBaseEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomIntervalInputCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPullbackEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPullbackKanComplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputInverseUncurry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleRawFunctorEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedInputCoordinateUncurry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackInputEvaluation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

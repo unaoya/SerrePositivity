@@ -4,7 +4,7 @@
 > foundations.md §2 の β4・§6 の D2。dg 側は D の β5・β3、lax pullback は `F2/CatInfinity/` を読み取り専用で使う。
 > 用途は K の Tamme・Land–Tamme の対象供給と、⊙ の Verdier 商の dg 側の同定。
 
-## 引き継ぎ（2026-10-24）
+## 引き継ぎ（2026-10-25）
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
@@ -13,8 +13,8 @@
 - 因子 dg 準同値・順序 ⟨D,C⟩ の半直交性、H⁰ の実随伴・完全忠実な切断、K(Gluing) の実分解三角形を供給済み。
   元 H⁰ の未導入の三角構造や ∞ 随伴を結論していない。
 - 一般対象宇宙の比較は対象・Hom を変えず、nerve の単体だけを共通宇宙へ ULift。二射影と augmentation の全 prism を保持する。
-- (d) の本質的全射性は証明済み。充満忠実性は正本 `dgGluingLaxHomPullbackComparison` の実ホモトピー同値性に帰着済み。
-  入力側の二脚は元の左右 Hom 鎖射影に一致。係数側の入力付き path 比較は同値。正本との全 path 比較は未完。
+- (d) 完了。正本 `dgGluingLaxHomPullbackComparison` の実逆射・両往復ホモトピーを構成し、充満忠実性と既存の本質的全射性から比較同値を供給済み。
+  元左右 Hom 鎖射影と augmentation 全族を保持し、任意の試験単体集合の関手 core から F2 の Kan 引き戻しへの実ホモトピー同値を供給済み。
 - 二端点 path 複体の厳密引き戻し・Kan 射影・極限錐、通常区間族への同値、β5 の実半自由分解による canonical 係数比較を構成済み。
 - 正本の矢印 Hom を同じ共通対角を持つ二合成対応へ移送済み。元 augmentation・全二三角形・元 Hom 入力を回収する。
 - native 前後 cube・共有面・元 augmentation 面と F2 の実二三角形・正規化 cochain 面を全パラメーターで照合済み。
@@ -47,11 +47,11 @@
 - [x] ② 正規化 prism を canonical 導来係数の実区間面へ照合。
 - [x] ③ cube の入力固定変形と既存の選択変形を、二次元相対比較で接続。
 - [x] ④ `dgGluingLaxHomDiagonalComparisonBoundary` の指定境界を保持して充填。
-- [ ] ⑤ 正本 `dgGluingLaxHomPullbackComparison` の実ホモトピー逆と往復則を構成。
-- [ ] ⑥ 充満忠実性・既存の本質的全射性から比較同値と全試験関手の ∞ 普遍性を供給。
+- [x] ⑤ 正本 `dgGluingLaxHomPullbackComparison` の実ホモトピー逆と往復則を構成。
+- [x] ⑥ 充満忠実性・既存の本質的全射性から比較同値と全試験関手の ∞ 普遍性を供給。
 
 ### 残り（依存順）
-1. (d) 上の⑤〜⑥。Tamme Remark 6、F0 の判定。見積り 2〜3 日。
+1. (d) ①〜⑥完了。Tamme Remark 6 に対応する正本比較同値と全試験関手の普遍性を供給済み。
 2. (e) 安定性・完全射影と F2 の `laxPullback_isStable`・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
 3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、K-8 d8 の `IsVerdierSequence` の供給。D-9 と共同。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。完了時に D 向けの引き継ぎを整えて停止する。
@@ -60,8 +60,8 @@
 - `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingDGCategory`・`dgGluingToComma`
 - `dgGluing_isDGPretriangulated`・`dgGluingFactors_semiorthogonal`・`dgGluingDecompositionTriangle_distinguished`
 - `dgGluingUniverseDerivedNerveLaxComparison`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
-- `dgGluingUniverseDerivedNerveLaxComparison_fullyFaithful_iff`・`dgGluingLaxHomPullbackComparison`
-- `dgGluingLaxHomLeftModelComparison_eq`・`dgGluingLaxHomRightModelComparison_eq`
+- `dgGluingUniverseDerivedNerveLaxComparison_isFullyFaithful`・`dgGluingLaxHomPullbackComparison_equivalence`・`dgGluingLaxHomPullbackComparisonInverse` と `_unit`／`_counit`
+- `dgGluingUniverseDerivedNerveLaxEquivalence`・`dgGluingLaxFunctorEquivalence`・`dgGluingLaxFunctorCoreComparison_equivalence` と `_arrow`／`_inputs`
 - `dgGluingHomDerivedCompositionInputPathComparison_equivalence`・`dgGluingLaxHomInputStrictComparison`
 - `dgGluingNativeDerivedPreNormalizeCube`・`dgGluingNativeDerivedPostNormalizeCube`・`dgGluingNativeDerivedNormalizationCube_shared_face`
 - `dgGluingNativeNormalizationFirstTriangle_eq`・`dgGluingNativeNormalizationLastTriangle_eq`
@@ -93,15 +93,15 @@
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
   隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **再開（2026-10-24、コーディネータ指示）**：D の追加供給を接続済み。元固定辺を保つ側面補正と、実入力二変形・その合成三角形の構成を続ける。
+- **次工程 (e)**：元 C・D の前三角性から安定性と実完全射影を接続し、F2 の `laxPullback_isStable` と K-8b の半直交分解を照合する。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8926 jobs、公理監査 879 モジュール・8244 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-raw-input-coordinates-aggregate-build.log`・`/tmp/d2-v3-raw-input-coordinates-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
-- 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用を照合中。数学的未完は⑤〜⑥・e・f。
+- 検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
+- 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約
