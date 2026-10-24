@@ -717,3 +717,15 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedPrismOld
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedCommaFamily
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeDiagramFiltered
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedPrismLower
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedCommaLower
+
+public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeCosliceCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeLifts
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeRestrictionUnderCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeRestrictionCofinality

@@ -1666,3 +1666,42 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.smallConeDiagramComma_isKappaFiltered_of_lower
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.smallConeDiagramComma_isKappaFiltered_of_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedFamily_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedPrism_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaFamily_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaCocone_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeExtendedCommaCocone_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indConeDiagramComma_cocone_fixing_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indConeDiagramComma_cocone_fixing_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_coslice_cocone_liftedShape_of_cocones
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_coslice_cocone_liftedShape_of_cocones
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeComma_cocone_of_cocone_lifts
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeComma_cocone_of_cocone_lifts
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeRestrictionUnder_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeRestrictionUnder_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeRestrictionComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeRestrictionComma_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeRestrictionComma_isFiltered
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeRestrictionComma_isFiltered
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_cone_inl_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_cone_inl_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_inl_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_inl_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_inl_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_inl_isRightCofinal
