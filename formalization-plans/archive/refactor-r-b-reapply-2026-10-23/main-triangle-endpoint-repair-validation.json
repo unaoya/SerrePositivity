@@ -1,0 +1,12 @@
+{
+  "consumer": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentTriangleDiagramEndpoints.lean",
+  "body_type_and_proof_changes": 0,
+  "restored_import": "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+  "required_existing_declarations": [
+    "edgeSimplex_source",
+    "edgeSimplex_target"
+  ],
+  "build_passed": true,
+  "build_jobs": 3022,
+  "log": "/tmp/r-b-main-triangle-repair-build.log"
+}

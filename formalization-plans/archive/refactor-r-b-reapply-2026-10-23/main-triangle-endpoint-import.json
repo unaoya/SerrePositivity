@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentTriangleDiagramEndpoints.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ]
+    }
+  }
+}
