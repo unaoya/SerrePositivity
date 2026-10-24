@@ -151,11 +151,13 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 反変の制限で代用しない。方向が異なり、一般の dg 関手で perfect 条件を保つとも限らない。既存の導来作用の単位・合成比較も `DGModuleDerivedFunctorComposition` の全関手同型であり、固定 S の厳密豊穣自己関手ではない。
 - 必要な区別：固定 F に対する Hom 鎖写像とその dg nerve 作用、F 自身が全次数 dg 関手圏を動くときの dg tensor 作用、その native core への制限、豊穣合成・単位との厳密一致。現 cone には後三者がない。
 - 推奨する変更候補は、κ 未満の形式的 sphere/cell 表示と twisting・retract の証拠を保持し、係数へ F を適用する小さい表示模型。有限 twisted complex だけでは可算直和・全 κ-compact 被覆を満たさない。κ-small cell と必要な homotopy retract の扱いを含め、各 Hom の評価比較と実 Hom の自然な全次数作用を証明する必要がある。採用された16時間試作の範囲のみ実装する。
-- K-S 所有 `PresentedPerfectDGModel`／`PresentedPerfectDGNativeAction` は、出発圏・seed・延長ラベルを保ち、共役と dg tensor から全 native 関手族へ作用させる先例。ただし対象宇宙を max(u+1,v) とし Small.{u} を主張しないため、そのまま cone の小模型には使えない。必要な共通補題はコピーせず、採用後にコーディネータ経由で所有レーンへ入口を依頼する。
+- K-S 所有 `PresentedPerfectDGModel`／`PresentedPerfectDGNativeAction` は、出発圏・seed・延長ラベルを保ち、共役と dg tensor から全 native 関手族へ作用させる先例。ただし対象宇宙を max(u+1,v) とし Small.{u} を主張しないため、そのまま cone の小模型には使えない。共役の一般入口はコーディネータ指定の DGClosedIsoConjugation・DGClosedComparisonIso と閉包の DGFunctorClosedNaturality・DGFunctorClosedComparison の4本を読み取り専用で直接 import する。暫定の逆方向依存は第 I 段終了時に R が移す。追加の族一般論は D 所有の DifferentialGraded/ に書き、公開名を報告する。
 - 平坦分解にも独立の確認が必要。`DGCategoryCellResolution.comparisonFunctor` は実段階の比較と増大の厳密可換性を供給する。そこから関手引数の厳密恒等・合成、全 dg 自然変換への作用が自動的に得られるわけではない。cone だけの厳密化で Σ の豊穣自己関手を完成扱いにしない。
 - D-8 b の既証明は撤回不要。7 本中の6本は汎用補題として残り、特に `isDGPretriangulated_of_representable_operations` を新表示の零・shift・cone へ適用できる。加群の充満部分圏として実現できれば `dgModuleSubcategory_isDGPretriangulated` も使える。旧模型から準同値で移す場合は `isDGPretriangulated_of_quasiEquivalence` が使えるが、新旧比較の全 Hom・本質的全射性は別に証明する。旧 b を新模型へ無条件には移さない。
 - 見積り（未試作の概算）：まず厳密恒等・合成と dg 関手 Hom への作用を検証する小試作が8〜16稼働時間・5〜10モジュール程度。κ-small 表示の全演算・retract・小ささ・平坦商の全高次作用まで追加40〜100時間・20〜40モジュール程度。D-8 c の κ-compact 性と d の全被覆はこの外。平坦分解の豊穣作用が成立しない場合は再見積りする。
 - 採用：ラベル保持の κ-small 提示模型の試作を2026-10-25 04:11:16 JST（2026-10-24 19:11:16 UTC）に開始、上限は同日20:11:16 JSTの16時間。判定項目は Small.{u}・厳密恒等／合成・dg 関手 nerve の豊穣作用・零／shift／cone／可算直和を備えた模型への接続。成功なら D-8 c・d は新模型と b の一般判定を使う。上限内に立たなければ c・d は現模型、DGSuspensionNativeActionInput は第 I 段中は明示入力のまま（差し替えは第 I 段終了時）。全作用40〜100時間は試作報告後の別判断。既存模型の移動・削除は行わない。
+
+- 試作の三段目：[x] 1（Small.{u} の sphere-free ラベルと対象の厳密恒等・合成）・[x] 2（自由表示の実評価・shift と固定 dg 関手の全 Hom 作用）・[ ] 3（零・直和・cone の閉演算）・[ ] 4（関手変数の厳密恒等・合成と豊穣作用）・[ ] 5（b の一般判定への接続と試作判定）。1・2 は DGKappaSphereFreeLabelAction／DGKappaPresentedFreeModel／DGModuleExtensionSphereComparison／DGKappaPresentedFreeLabelOperations／DGKappaPresentedFreeExtension の5本、対象ビルドと25宣言の公理検査成功。模型全体の成功・D-8 c 着手とは扱わない。
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
