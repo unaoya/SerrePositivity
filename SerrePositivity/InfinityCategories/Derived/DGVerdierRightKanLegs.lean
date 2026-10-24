@@ -34,8 +34,8 @@ lemma dgVerdierRightKanLimitCone_leg_isInvertible (P : Set D)
         dgVerdierOverSource A D P x ≫ F := by
     rw [rightKanDiagram, ← Category.assoc, dgVerdierRightKanMap_projection]
   let d : JoinCone (dgVerdierOverSource A D P x ≫ F) :=
-    ⟨(F2.restrictJoinCone c u).val, (F2.restrictJoinCone c u).property.trans he⟩
-  have hd : IsLimitCone d := (F1B.kanIsLimitCone_congr he (F2.restrictJoinCone c u) d rfl).mp
+    ⟨(restrictJoinCone c u).val, (restrictJoinCone c u).property.trans he⟩
+  have hd : IsLimitCone d := (F1B.kanIsLimitCone_congr he (restrictJoinCone c u) d rfl).mp
     ((isLimitCone_iff_restrict_of_leftCofinal u hu _ c).mp hc)
   have h := dgVerdierOverLimitCone_leg_isInvertible A D P x F hF d hd i
   have he' : (F2.nativeConeLeg d i).edge =

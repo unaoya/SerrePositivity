@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableValues
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：κ-compact 対象を、元の全共変 Hom 関手による小さい κ-filtered 余極限保存で定義。

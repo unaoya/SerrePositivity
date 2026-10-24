@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SpanZeroBranchIso
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
 
 /-! # 指定した零枝を持つ span の余極限

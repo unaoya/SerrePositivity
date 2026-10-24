@@ -58,8 +58,8 @@ lemma cofibrantSourceRightKanLimitCone_leg_isInvertible
   have hu := cofibrantSourceFrameRightKanMap_isLeftCofinal A X
   have he := cofibrantSourceFrameRightKanMap_diagram A X F
   let d : JoinCone (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
-    ⟨(F2.restrictJoinCone c u).val, (F2.restrictJoinCone c u).property.trans he⟩
-  have hd : IsLimitCone d := (F1B.kanIsLimitCone_congr he (F2.restrictJoinCone c u) d rfl).mp
+    ⟨(restrictJoinCone c u).val, (restrictJoinCone c u).property.trans he⟩
+  have hd : IsLimitCone d := (F1B.kanIsLimitCone_congr he (restrictJoinCone c u) d rfl).mp
     ((isLimitCone_iff_restrict_of_leftCofinal u hu _ c).mp hc)
   have h := FrameHom.FrameArrows.augmentationLimitCone_leg_isInvertible
     (cofibrantDKSourceFrame A X) (cofibrantDKSourceFrameAugmentation A X) F

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：任意の right cofinal な形状写像で、指定した native 余錐の余極限性を保存・反映する。

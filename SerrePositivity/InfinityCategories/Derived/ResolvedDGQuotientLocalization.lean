@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctorEquivalence
-public import SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion
+public import SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion
 public import SerrePositivity.InfinityCategories.Derived.SourceEquivalencePrecomposition
 /-!
 概要：平坦分解後の dg 商は、元の dg nerve の Verdier 辺に関する実局所化。

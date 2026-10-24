@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConePrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedCosliceComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：weighted な係数と反転した豊穣 Hom の全パラメータから、実際の coslice の族を作る。

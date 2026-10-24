@@ -22,7 +22,7 @@ lemma excisionRawSuspensionComparison_source_theta {X : SSet.{u}} [Quasicategory
       (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)) 2 2)))
     (hi : IsLimitCone i)
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F))
-    (hr : (F2.restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
+    (hr : (restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
       (excisionCorePuncturedLimitCone
         (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)
         i hi).val)

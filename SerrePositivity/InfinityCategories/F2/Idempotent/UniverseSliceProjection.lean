@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.UniverseSlices
+public import SerrePositivity.InfinityCategories.Core.UniverseSlices
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 
 /-!

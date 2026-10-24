@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCoconeSurjective
-public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 public import SerrePositivity.InfinityCategories.Core.Slice
 
 /-!

@@ -53,7 +53,7 @@ lemma excisionReplaceInitial_squareCone_val {X : SSet.{u}}
       cospanSquareBoundary ≫ Q)
     (hQ : squareVertex Q 0 0 = nerveVertex excisionGridInitialPoint) :
     (pullbackCone (Q ≫ excisionReplaceInitial c)).val =
-      (F2.restrictJoinCone c b).val := by
+      (restrictJoinCone c b).val := by
   have h := congrArg (fun q ↦ q ≫ excisionFullJoinIso.{u}.inv)
     (excisionFullJoinIso_squareCone Q b hb hQ)
   simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id] at h
@@ -70,7 +70,7 @@ lemma excisionReplaceInitial_isPullback_iff {X : SSet.{u}}
       cospanSquareBoundary ≫ Q)
     (hQ : squareVertex Q 0 0 = nerveVertex excisionGridInitialPoint) :
     IsPullbackSquare (Q ≫ excisionReplaceInitial c) ↔
-      IsLimitCone (F2.restrictJoinCone c b) :=
+      IsLimitCone (restrictJoinCone c b) :=
   F2.isLimitCone_iff_of_cone_val_eq _ _
     (excisionReplaceInitial_squareCone_val c Q b hb hQ)
 

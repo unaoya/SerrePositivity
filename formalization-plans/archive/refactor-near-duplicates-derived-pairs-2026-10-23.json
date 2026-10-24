@@ -1,0 +1,319 @@
+[
+  {
+    "comma": "DGCommaAugActualComponent.lean",
+    "module": "DGModuleAugmentationActualComponent.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugBaseBoundary.lean",
+    "module": "DGModuleAugmentationBaseBoundary.lean",
+    "data": [
+      "dgCommaAugmentationBaseHomMap"
+    ]
+  },
+  {
+    "comma": "DGCommaAugBaseComparisonCut.lean",
+    "module": "DGModuleAugmentationBaseComparisonCut.lean",
+    "data": [
+      "dgCommaAugmentationImageBaseCut"
+    ]
+  },
+  {
+    "comma": "DGCommaAugBoundaryHomotopy.lean",
+    "module": "DGModuleAugmentationBoundaryHomotopy.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugClosedEdge.lean",
+    "module": "DGModuleAugmentationClosedEdge.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCollapsedPair.lean",
+    "module": "DGModuleAugmentationCollapsedPair.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCorrection.lean",
+    "module": "DGModuleAugmentationCorrection.lean",
+    "data": [
+      "dgCommaAugmentationCutPoints",
+      "dgCommaAugmentationPrismCorrection"
+    ]
+  },
+  {
+    "comma": "DGCommaAugCorrectionDifferential.lean",
+    "module": "DGModuleAugmentationCorrectionDifferential.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCorrectionReindex.lean",
+    "module": "DGModuleAugmentationCorrectionReindex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCutBoundary.lean",
+    "module": "DGModuleAugmentationCutBoundary.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCutDifferential.lean",
+    "module": "DGModuleAugmentationCutDifferential.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCutDifferentialExpansion.lean",
+    "module": "DGModuleAugmentationCutDifferentialExpansion.lean",
+    "data": [
+      "dgCommaAugmentationCutQuadraticBoundary",
+      "dgCommaAugmentationCutComparisonBoundary"
+    ]
+  },
+  {
+    "comma": "DGCommaAugCutErasure.lean",
+    "module": "DGModuleAugmentationCutErasure.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugCutHomotopy.lean",
+    "module": "DGModuleAugmentationCutHomotopy.lean",
+    "data": [
+      "dgCommaAugmentationImageCut"
+    ]
+  },
+  {
+    "comma": "DGCommaAugCutReindex.lean",
+    "module": "DGModuleAugmentationCutReindex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugDegenerateCoefficient.lean",
+    "module": "DGModuleAugmentationDegenerateCoefficient.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugDegenerateCut.lean",
+    "module": "DGModuleAugmentationDegenerateCut.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugDegenerateReindex.lean",
+    "module": "DGModuleAugmentationDegenerateReindex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugExtendedCut.lean",
+    "module": "DGModuleAugmentationExtendedCut.lean",
+    "data": [
+      "dgCommaAugmentationHomotopyCut"
+    ]
+  },
+  {
+    "comma": "DGCommaAugHomotopyAt.lean",
+    "module": "DGModuleAugmentationHomotopyAt.lean",
+    "data": [
+      "dgCommaAugmentationHomotopyAt"
+    ]
+  },
+  {
+    "comma": "DGCommaAugHomotopyComposition.lean",
+    "module": "DGModuleAugmentationHomotopyComposition.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugHomotopyData.lean",
+    "module": "DGModuleAugmentationHomotopyData.lean",
+    "data": [
+      "dgCommaAugmentationHomotopyComponent"
+    ]
+  },
+  {
+    "comma": "DGCommaAugHomotopyNaturality.lean",
+    "module": "DGModuleAugmentationHomotopyNaturality.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugHomotopyTensor.lean",
+    "module": "DGModuleAugmentationHomotopyTensor.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugImageCorrection.lean",
+    "module": "DGModuleAugmentationImageCorrection.lean",
+    "data": [
+      "dgCommaAugmentationImageCorrection"
+    ]
+  },
+  {
+    "comma": "DGCommaAugImageCutSigns.lean",
+    "module": "DGModuleAugmentationImageCutSigns.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugInjectiveReindex.lean",
+    "module": "DGModuleAugmentationInjectiveReindex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugLinearCancellation.lean",
+    "module": "DGModuleAugmentationLinearCancellation.lean",
+    "data": [
+      "dgCommaAugmentationCutLinearBoundary"
+    ]
+  },
+  {
+    "comma": "DGCommaAugMixedCuts.lean",
+    "module": "DGModuleAugmentationMixedCuts.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugMixedEquation.lean",
+    "module": "DGModuleAugmentationMixedEquation.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugMixedLinearBoundary.lean",
+    "module": "DGModuleAugmentationMixedLinearBoundary.lean",
+    "data": [
+      "dgCommaAugmentationMixedTransport"
+    ]
+  },
+  {
+    "comma": "DGCommaAugMixedQuadraticBoundary.lean",
+    "module": "DGModuleAugmentationMixedQuadraticBoundary.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugNervePrism.lean",
+    "module": "DGModuleAugmentationNervePrism.lean",
+    "data": [
+      "dgCommaAugmentationSourceLift",
+      "dgCommaAugmentationTargetLift",
+      "dgCommaAugmentationNervePrism",
+      "dgCommaAugmentationNerveHomotopy"
+    ]
+  },
+  {
+    "comma": "DGCommaAugNestedHomotopyCut.lean",
+    "module": "DGModuleAugmentationNestedHomotopyCut.lean",
+    "data": [
+      "dgCommaAugmentationNestedHomotopyRight",
+      "dgCommaAugmentationNestedHomotopyLeft"
+    ]
+  },
+  {
+    "comma": "DGCommaAugNestedImageCut.lean",
+    "module": "DGModuleAugmentationNestedImageCut.lean",
+    "data": [
+      "dgCommaAugmentationNestedImageRight",
+      "dgCommaAugmentationNestedImageLeft"
+    ]
+  },
+  {
+    "comma": "DGCommaAugNestedPhaseCancellation.lean",
+    "module": "DGModuleAugmentationNestedPhaseCancellation.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPhaseDoubleCut.lean",
+    "module": "DGModuleAugmentationPhaseDoubleCut.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPrismBoundary.lean",
+    "module": "DGModuleAugmentationPrismBoundary.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPrismComponent.lean",
+    "module": "DGModuleAugmentationPrismComponent.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPrismData.lean",
+    "module": "DGModuleAugmentationPrismData.lean",
+    "data": [
+      "dgCommaAugmentationSource",
+      "dgCommaAugmentationTarget",
+      "dgCommaAugmentationComponent",
+      "dgCommaAugmentationPrismCut",
+      "dgCommaAugmentationPrismMixedHom",
+      "dgCommaAugmentationPrismPhaseHom",
+      "dgCommaAugmentationPrismData"
+    ]
+  },
+  {
+    "comma": "DGCommaAugPrismPhaseCoefficients.lean",
+    "module": "DGModuleAugmentationPrismPhaseCoefficients.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPrismReindex.lean",
+    "module": "DGModuleAugmentationPrismReindex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugPrismSimplex.lean",
+    "module": "DGModuleAugmentationPrismSimplex.lean",
+    "data": [
+      "dgCommaAugmentationPrismSimplex"
+    ]
+  },
+  {
+    "comma": "DGCommaAugQuadraticCancellation.lean",
+    "module": "DGModuleAugmentationQuadraticCancellation.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugQuadraticCorrectionIdentity.lean",
+    "module": "DGModuleAugmentationQuadraticCorrectionIdentity.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugQuadraticCutExpansion.lean",
+    "module": "DGModuleAugmentationQuadraticCutExpansion.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugReindexCoefficient.lean",
+    "module": "DGModuleAugmentationReindexCoefficient.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugReindexIndex.lean",
+    "module": "DGModuleAugmentationReindexIndex.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugSamePhaseCoefficients.lean",
+    "module": "DGModuleAugmentationSamePhaseCoefficients.lean",
+    "data": [
+      "dgCommaAugmentationPhaseFunctor",
+      "dgCommaAugmentationSameTransport"
+    ]
+  },
+  {
+    "comma": "DGCommaAugSamePhaseEquation.lean",
+    "module": "DGModuleAugmentationSamePhaseEquation.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugSimplexHomotopy.lean",
+    "module": "DGModuleAugmentationSimplexHomotopy.lean",
+    "data": []
+  },
+  {
+    "comma": "DGCommaAugSuffixCorrection.lean",
+    "module": "DGModuleAugmentationSuffixCorrection.lean",
+    "data": [
+      "dgCommaAugmentationSuffixCorrection"
+    ]
+  },
+  {
+    "comma": "DGCommaAugUnlifted.lean",
+    "module": "DGModuleAugmentationUnlifted.lean",
+    "data": [
+      "dgCommaAugmentationUnliftedHomotopy"
+    ]
+  }
+]

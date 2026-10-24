@@ -1,0 +1,221 @@
+{
+  "base": "ad0422789f7f3e3edc02323401b3340a184bbe0f",
+  "whole_module_moves": [
+    {
+      "source": "SerrePositivity/InfinityCategories/DGNerve/SemifreeLimits.lean",
+      "destination": "SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/Cocone.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/BoundaryOpposite.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/BoundaryOpposite.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/ConeOpposite.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/ConeOpposite.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/CosliceRestrictionEquivalence.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/CosliceRestrictionEquivalence.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/ColimitDiagramIso.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/ColimitDiagramIso.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseJoinAugmentation.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinAugmentation.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseJoin.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseJoin.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseJoinNaturality.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinNaturality.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexShapes.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinSimplexShapes.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseBoundary.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundary.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryHom.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundaryHom.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseBoundaryFilling.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseBoundaryFilling.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseJoinSimplexNaturality.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseJoinSimplexNaturality.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseConeHom.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseConeHom.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseSlices.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseSlices.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/UniverseLimits.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseLimits.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseSSetMaps.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/UniverseSSetMaps.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/PointConstantHomEquivalence.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/PointConstantHomEquivalence.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/AdjunctionHomotopyCategory.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/AdjunctionHomotopyCategory.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LimitConeExtension.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/LimitConeExtension.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/SliceRestrictionEquivalence.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalence.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/SliceRestrictionEquivalenceLifting.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/SliceRestrictionEquivalenceLifting.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/LimitDiagramIso.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/LimitDiagramIso.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/CofinalLimitExistence.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/CofinalLimitExistence.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/RightKanPrecompositionFaithful.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/RightKanPrecompositionFaithful.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/LocalizationFunctorExtension.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/LocalizationFunctorExtension.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/LocalizationRightKanCriterion.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/LocalizationRightKanCriterion.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/LocalizationPrecompositionCriterion.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/LocalizationPrecompositionCriterion.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DeformationLocalization.lean",
+      "destination": "SerrePositivity/InfinityCategories/F1B/DeformationLocalization.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/KST/SConstruction/ZeroBoundaryExtension.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/InitialExtension.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/InitialExtension.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Stable/LimitConeFamilies.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/LimitConeFamilies.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/KST/SConstruction/VertexPrescribedExtension.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    },
+    {
+      "source": "SerrePositivity/KST/LocalizingInvariants/LimitProjectionExistence.lean",
+      "destination": "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean",
+      "type_and_proof_tokens_preserved": true,
+      "source_removed": true
+    }
+  ],
+  "whole_module_count": 35,
+  "exact_partial_declarations": 29,
+  "partial_source_files_remain_non_shim": true,
+  "Prop_cherry_source": "1a412f887a63d14b73fed3fd0f2af52207a6f25e",
+  "duplicate_modules_removed": 12,
+  "verification_status": "static source preservation passed; Lean build and all audits pending"
+}

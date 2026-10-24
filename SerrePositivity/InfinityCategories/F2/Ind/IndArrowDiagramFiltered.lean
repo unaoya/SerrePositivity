@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOld
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExistence
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramComma
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：元の任意の射図式の実 diagram comma の小さい模型は κ-filtered。

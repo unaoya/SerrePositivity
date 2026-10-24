@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram
@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 
 lemma isLimitCone_iff_restrict_of_leftAnodyne {K L X : SSet.{u}} [Quasicategory X]
     {p : K ⟶ X} (c : JoinCone p) (i : L ⟶ K) [Mono i] (hi : leftAnodyneExtensions i) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c i) := by
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c i) := by
   have := sliceOverRestrict_trivialKanFibration p i hi
   exact (qCatEquivalenceOfTrivialKanFibration (sliceOverRestrict p i)).isTerminalVertex_iff c
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence
+public import SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence
 public import SerrePositivity.InfinityCategories.Derived.RoofSliceTransport
 /-!
 概要：left cofinal な任意の実写像による錐圏の制限が ∞ 圏の同値であることを証明する。
@@ -26,7 +26,7 @@ lemma sliceOverRestrict_isQCatEquivalence_of_trivialKanFibration {Z B X : SSet.{
     exact (qCatEquivalenceOfIso (Iso.refl B)).isQCatEquivalence
   have hs' := hp.cancel_right hsp
   have : TrivialKanFibration (sliceOverRestrict (p ≫ F) s) :=
-    F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence
+    sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence
       (p ≫ F) s hs'.isPrecompositionEquivalence
   have hF : s ≫ (p ≫ F) = F :=
     (Category.assoc _ _ _).symm.trans ((congrArg (fun q => q ≫ F) hs).trans (Category.id_comp _))

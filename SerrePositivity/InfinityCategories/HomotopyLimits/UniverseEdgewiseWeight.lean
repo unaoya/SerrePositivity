@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSubdivision
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 
 /-!
 概要：元の edgewise 重みの宇宙変更を、同じ大きい宇宙の重みへ厳密に比較する。

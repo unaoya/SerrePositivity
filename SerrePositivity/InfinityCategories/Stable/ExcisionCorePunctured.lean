@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftAnodyneLimitRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram
@@ -74,7 +74,7 @@ lemma excisionCoreCospan_leftAnodyne : leftAnodyneExtensions
 
 lemma excisionCoreCospan_limit_iff {X : SSet.{u}} [Quasicategory X]
     {F : nerve ExcisionCorePuncturedIndex.{u} ⟶ X} (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c
       (fullSubcomplexOnVertices (nerve ExcisionCorePuncturedIndex.{u})
         (fun v ↦ IsExcisionCoreCospan (nerveEquiv v))).ι) :=
   isLimitCone_iff_restrict_of_leftAnodyne c _ excisionCoreCospan_leftAnodyne

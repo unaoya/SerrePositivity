@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
 /-!
 概要：実錐の形状制限は、同じ頂点での同じ実脚を厳密に保つ。
@@ -24,7 +24,7 @@ lemma coneLegInclusion_naturality {L K : SSet.{u}} (u : L ⟶ K) (i : L _⦋0⦌
 /-- 形状を制限した実錐の同じ脚は、元の像の頂点での実脚そのもの。 -/
 lemma nativeConeLeg_restrict_edge {L K X : SSet.{u}} {p : K ⟶ X}
     (c : JoinCone p) (u : L ⟶ K) (i : L _⦋0⦌) :
-    (F2.nativeConeLeg (F2.restrictJoinCone c u) i).edge =
+    (F2.nativeConeLeg (restrictJoinCone c u) i).edge =
       (F2.nativeConeLeg c (u.app (Opposite.op ⦋0⦌) i)).edge := by
   change c.val.app (Opposite.op ⦋1⦌)
     ((joinMap (𝟙 (Δ[0] : SSet.{u})) u).app (Opposite.op ⦋1⦌)

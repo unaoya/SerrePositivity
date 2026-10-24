@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestrictionIso
 
 /-!

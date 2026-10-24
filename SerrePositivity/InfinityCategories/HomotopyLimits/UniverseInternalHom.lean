@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：単体集合の内部 Hom と宇宙の持ち上げを交換する標準同型。

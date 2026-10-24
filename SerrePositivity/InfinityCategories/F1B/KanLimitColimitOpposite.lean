@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanLeftKanShapeCommaProjection
-public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
 public import SerrePositivity.InfinityCategories.Stable.SquareDuality

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPointedRestriction
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：元の全錐の持ち上げの切断制限を、像の実際の native 全錐の制限へ照合する。

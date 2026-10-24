@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialComparison
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：単射な前合成同値に沿う標準 U 余極限の添字変更。

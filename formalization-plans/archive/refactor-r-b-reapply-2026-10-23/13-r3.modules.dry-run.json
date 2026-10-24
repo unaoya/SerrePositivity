@@ -1,0 +1,33 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.Stable.InitialExtension": "SerrePositivity.InfinityCategories.Core.InitialExtension",
+    "SerrePositivity.InfinityCategories.Stable.LimitConeFamilies": "SerrePositivity.InfinityCategories.Core.LimitConeFamilies",
+    "SerrePositivity.KST.SConstruction.VertexPrescribedExtension": "SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension",
+    "SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence": "SerrePositivity.InfinityCategories.Core.LimitProjectionExistence"
+  },
+  "redirects": {},
+  "file_symbol_edits": [],
+  "redirect_hashes": {},
+  "updated_files": [
+    "SerrePositivity/InfinityCategories/Core/InitialExtension.lean",
+    "SerrePositivity/InfinityCategories/Core/LimitConeFamilies.lean",
+    "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean",
+    "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean",
+    "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean",
+    "SerrePositivity/InfinityCategories/Core.lean",
+    "SerrePositivity/InfinityCategories/F2/Presentable/LimitComparisonReflection.lean",
+    "SerrePositivity/InfinityCategories/Stable/InitialPrismBoundary.lean",
+    "SerrePositivity/InfinityCategories/Stable/LoopDiagramArrows.lean",
+    "SerrePositivity/InfinityCategories/Stable/PosetTerminalExtension.lean",
+    "SerrePositivity/InfinityCategories/Stable/UniversalConeChoiceProjection.lean",
+    "SerrePositivity/KST/LocalizingInvariants/FiberConeFullyFaithful.lean",
+    "SerrePositivity/KST/LocalizingInvariants/PullbackDiagramFamilies.lean",
+    "SerrePositivity/KST/LocalizingInvariants.lean",
+    "SerrePositivity/KST/SConstruction/ArTwoMiddleSquare.lean",
+    "SerrePositivity/KST/SConstruction/RelativeInitialExtension.lean",
+    "SerrePositivity/KST/SConstruction/ZeroFrame.lean",
+    "scripts/audit_infinity_stable.lean",
+    "scripts/audit_localizing_invariants.lean"
+  ],
+  "applied": false
+}

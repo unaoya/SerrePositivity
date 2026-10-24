@@ -1,0 +1,15 @@
+{
+  "moves": {
+    "SerrePositivity.KST.SConstruction.ZeroBoundaryExtension": "SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension"
+      ]
+    }
+  },
+  "symbols": {
+    "SerrePositivity.KST.SConstruction.ZeroBoundaryExtension": "SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension"
+  }
+}

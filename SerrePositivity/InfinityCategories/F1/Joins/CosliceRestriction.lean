@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SliceUnderRestriction
+
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SquareComparison
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightAnodyne
 
@@ -16,23 +18,6 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：coslice の二段階の制限は合成した図式の射による制限。
-方針：錐の前合成を joinMap の合成則で比較する。
-規約：f の後で g に制限する。
-使われ方：Kerodon Proposition 5.2.5.1、相対制限の四角形の合成。 -/
-lemma sliceUnderRestrict_comp {K L M X : SSet.{u}} (p : K ⟶ X)
-    (f : L ⟶ K) (g : M ⟶ L) :
-    sliceUnderRestrict p f ≫ sliceUnderRestrict (f ≫ p) g =
-      sliceUnderRestrict p (g ≫ f) := by
-  apply SSet.hom_ext
-  intro n
-  apply ConcreteCategory.hom_ext
-  intro σ
-  apply Subtype.ext
-  change joinMap g (𝟙 _) ≫ (joinMap f (𝟙 _) ≫ σ.val) =
-    joinMap (g ≫ f) (𝟙 _) ≫ σ.val
-  rw [← Category.assoc, ← joinMap_comp, Category.comp_id]
 
 /-- 概要：図式の制限と標的への後合成の可換四角形。
 方針：coslice の前合成と後合成の可換性を使う。

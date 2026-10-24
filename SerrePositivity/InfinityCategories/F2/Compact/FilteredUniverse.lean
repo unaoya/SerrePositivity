@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInf
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 
 /-!

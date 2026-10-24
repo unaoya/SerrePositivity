@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IteratedSliceUnderRestriction
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：余極限余錐全体から元の底図式への coslice 制限の自明 Kan 性。

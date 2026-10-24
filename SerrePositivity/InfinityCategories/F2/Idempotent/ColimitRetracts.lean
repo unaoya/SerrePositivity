@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialComplete
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteImageRetracts
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：冪等完備な元の ∞ 圏では、全関手 ∞ 圏内の元の図式の retract も余極限を持つ。

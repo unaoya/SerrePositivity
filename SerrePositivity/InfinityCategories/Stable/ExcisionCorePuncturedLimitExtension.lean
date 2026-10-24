@@ -22,13 +22,13 @@ lemma excisionCorePunctured_limitCone_extension {X : SSet.{u}} [Quasicategory X]
     (d : JoinCone (pullbackCospan (grid22Face (excisionGridCoreDiagram ≫ F) 2 2)))
     (hd : IsLimitCone d) :
     ∃ c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F),
-      IsLimitCone c ∧ (F2.restrictJoinCone c excisionCoreCospanBoundary).val = d.val ∧
+      IsLimitCone c ∧ (restrictJoinCone c excisionCoreCospanBoundary).val = d.val ∧
         c.vertex = d.vertex := by
   let := excisionCoreCospanBoundary_mono.{u}
   have := sliceOverRestrict_trivialKanFibration
     (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F)
     excisionCoreCospanBoundary excisionCoreCospanBoundary_leftAnodyne
-  obtain ⟨c, hc, he, hv⟩ := F2.exists_limitCone_extension_of_trivialRestriction _ _
+  obtain ⟨c, hc, he, hv⟩ := exists_limitCone_extension_of_trivialRestriction _ _
     (d.cast (excisionCoreCospanBoundary_diagram F).symm)
     (hd.cast (excisionCoreCospanBoundary_diagram F).symm)
   exact ⟨c, hc, congrArg Subtype.val he, hv⟩

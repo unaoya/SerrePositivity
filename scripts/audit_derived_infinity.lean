@@ -706,7 +706,7 @@ import SerrePositivity.InfinityCategories.Derived.DGClosedEdgePostcomposition
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelToDerived
 import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison
-import SerrePositivity.InfinityCategories.Derived.DeformationLocalization
+import SerrePositivity.InfinityCategories.F1B.DeformationLocalization
 import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract
@@ -758,8 +758,8 @@ import SerrePositivity.InfinityCategories.Derived.DGKernelAdjunctionCounit
 import SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit
 import SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery
 import SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit
-import SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence
-import SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory
+import SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence
+import SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory
 import SerrePositivity.InfinityCategories.Derived.DGKernelRightAdjointClassicalComparison
 import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
 import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
@@ -1251,7 +1251,7 @@ import SerrePositivity.InfinityCategories.Derived.DGProjectiveModules
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeModules
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEquivalence
 import SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges
-import SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion
+import SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactFunctorEquivalence
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientLocalization
@@ -1304,7 +1304,7 @@ import SerrePositivity.InfinityCategories.Derived.SlicePullbackFamilies
 import SerrePositivity.InfinityCategories.Derived.SlicePullbackIso
 import SerrePositivity.InfinityCategories.Derived.SliceRoofCorner
 import SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction
-import SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence
+import SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence
 import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
 import SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization
 import SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation
@@ -1312,10 +1312,10 @@ import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimit
 import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanDiagram
 import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
-import SerrePositivity.InfinityCategories.Derived.LimitDiagramIso
-import SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension
-import SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion
-import SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful
+import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
+import SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension
+import SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion
+import SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful
 import SerrePositivity.InfinityCategories.Derived.RightKanSliceRoof
 import SerrePositivity.InfinityCategories.Derived.RoofRelativePrismLiftSpace
 import SerrePositivity.InfinityCategories.Derived.SliceEvaluationVertex
@@ -1657,7 +1657,7 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleMiddleHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
-import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+import SerrePositivity.InfinityCategories.Core.UniverseLimits
 import SerrePositivity.InfinityCategories.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
@@ -5384,7 +5384,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent,
     `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison,
 
-    `SerrePositivity.InfinityCategories.Derived.DeformationLocalization,
+    `SerrePositivity.InfinityCategories.F1B.DeformationLocalization,
     `SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract,
@@ -5442,8 +5442,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.AdjunctionOppositeCounit,
     `SerrePositivity.InfinityCategories.Stable.CounitMappingAdjunctionRecovery,
     `SerrePositivity.InfinityCategories.Derived.DGUniversalRightAdjunctionCounit,
-    `SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence,
-    `SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory,
+    `SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence,
+    `SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory,
     `SerrePositivity.InfinityCategories.Derived.DGKernelRightAdjointClassicalComparison,
     `SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation,
     `SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite,
@@ -5978,7 +5978,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeModules,
     `SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEquivalence,
     `SerrePositivity.InfinityCategories.Derived.CellDGResolutionVerdierEdges,
-    `SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion,
+    `SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion,
     `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent,
     `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactFunctorEquivalence,
     `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientLocalization,
@@ -6110,7 +6110,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SlicePullbackIso,
     `SerrePositivity.InfinityCategories.Derived.SliceRoofCorner,
     `SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction,
-    `SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence,
+    `SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence,
     `SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer,
     `SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation,
@@ -6118,10 +6118,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone,
     `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanDiagram,
     `SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone,
-    `SerrePositivity.InfinityCategories.Derived.LimitDiagramIso,
-    `SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension,
-    `SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion,
-    `SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful,
+    `SerrePositivity.InfinityCategories.Core.LimitDiagramIso,
+    `SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension,
+    `SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion,
+    `SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful,
     `SerrePositivity.InfinityCategories.Derived.RightKanSliceRoof,
     `SerrePositivity.InfinityCategories.Derived.RoofRelativePrismLiftSpace,
     `SerrePositivity.InfinityCategories.Derived.SliceEvaluationVertex,
@@ -6801,18 +6801,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.UniverseSquareHom,
     `SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent,
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability,
-    `SerrePositivity.InfinityCategories.Stable.UniverseBoundary,
-    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom,
-    `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Core.UniverseBoundary,
+    `SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom,
+    `SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling,
     `SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects,
-    `SerrePositivity.InfinityCategories.Stable.UniverseLimits,
-    `SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation,
-    `SerrePositivity.InfinityCategories.Stable.UniverseJoin,
-    `SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality,
-    `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes,
-    `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality,
-    `SerrePositivity.InfinityCategories.Stable.UniverseConeHom,
-    `SerrePositivity.InfinityCategories.Stable.UniverseSlices,
+    `SerrePositivity.InfinityCategories.Core.UniverseLimits,
+    `SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation,
+    `SerrePositivity.InfinityCategories.Core.UniverseJoin,
+    `SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality,
+    `SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes,
+    `SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality,
+    `SerrePositivity.InfinityCategories.Core.UniverseConeHom,
+    `SerrePositivity.InfinityCategories.Core.UniverseSlices,
 
     `SerrePositivity.InfinityCategories.Derived.DGRepleteYoneda,
     `SerrePositivity.InfinityCategories.Derived.DGVertexIsoOfH0,

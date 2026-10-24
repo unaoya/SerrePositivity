@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyFatCocone
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointLifting
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointMaps
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：定値図式へのホモトピーを、同じ図式・頂点の native な余錐として実現する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 
 /-!

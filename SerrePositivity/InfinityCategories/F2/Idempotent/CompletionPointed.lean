@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionTerminal
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOppositeGeneral
 public import SerrePositivity.InfinityCategories.Stable.Pointed
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：元の任意の冪等完備化の関手は、元の指定始対象と零対象を保存する。

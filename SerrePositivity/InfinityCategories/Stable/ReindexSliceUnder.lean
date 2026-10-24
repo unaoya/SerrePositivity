@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-! # Under slice の図式同型による再添字付け
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StableCospanPullbacks
-public import SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence
+public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.AugmentedUniverseReverse
-public import SerrePositivity.InfinityCategories.Stable.UniverseJoin
+public import SerrePositivity.InfinityCategories.Core.UniverseJoin
 public import SerrePositivity.InfinityCategories.Core.JoinReverse
 
 /-!

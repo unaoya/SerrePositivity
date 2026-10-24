@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：成分ごとに同値な Kan 値図式の間で、頂点を保持した実際の余極限余錐を輸送する。

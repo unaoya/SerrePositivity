@@ -1,0 +1,17 @@
+{
+  "moves": {
+    "SerrePositivity.KST.SConstruction.ZeroBoundaryExtension": "SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension"
+  },
+  "redirects": {},
+  "file_symbol_edits": [],
+  "redirect_hashes": {},
+  "updated_files": [
+    "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean",
+    "SerrePositivity/InfinityCategories/Core.lean",
+    "SerrePositivity/KST/SConstruction/FirstRow.lean",
+    "SerrePositivity/KST/SConstruction/FrameBoundaryExtension.lean",
+    "SerrePositivity/KST/SConstruction/VertexPrescribedExtension.lean",
+    "SerrePositivity/KST/SConstruction/ZeroNaturalTransformations.lean"
+  ],
+  "applied": false
+}

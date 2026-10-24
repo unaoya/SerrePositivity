@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.FrameHom.FrameArrowLimits
 public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyComponent
 public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
 public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
-public import SerrePositivity.InfinityCategories.Derived.LimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing

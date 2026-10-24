@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.LimitConeFamilies
+public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
 public import SerrePositivity.InfinityCategories.Stable.MappingSpacePositiveBoundary
 public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
 

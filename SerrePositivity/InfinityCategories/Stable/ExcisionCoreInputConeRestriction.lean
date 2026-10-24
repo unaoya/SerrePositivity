@@ -27,7 +27,7 @@ lemma excisionCoreInputConeRestriction_cone {X : SSet.{u}}
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X)
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F)) :
     (excisionCoreInputConeRestriction F).app (Opposite.op ⦋0⦌) c =
-      (F2.restrictJoinCone c excisionCoreCospanBoundary).cast
+      (restrictJoinCone c excisionCoreCospanBoundary).cast
         (excisionCoreCospanBoundary_diagram F) :=
   normalizedConeRestriction_cone _ _ _ _
 

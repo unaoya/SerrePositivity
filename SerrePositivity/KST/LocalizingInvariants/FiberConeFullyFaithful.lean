@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
-public import SerrePositivity.InfinityCategories.Stable.LimitConeFamilies
+public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
 
 /-!
 概要：普遍錐の射の類は、元の図式へ制限した射の類で決まる。

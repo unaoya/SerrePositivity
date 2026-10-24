@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeLastFaceRecovery
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：右錐の単体は元の左単体か、最後の頂点が右頂点となる単体に分かれる。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.Core.PointHornJoin
 public import SerrePositivity.InfinityCategories.Core.OuterHornDuality

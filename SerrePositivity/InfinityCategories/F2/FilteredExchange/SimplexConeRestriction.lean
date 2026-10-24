@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
 
 /-!

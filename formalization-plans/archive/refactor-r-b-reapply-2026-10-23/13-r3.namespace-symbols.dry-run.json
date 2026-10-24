@@ -1,0 +1,17 @@
+{
+  "moves": {},
+  "redirects": {},
+  "file_symbol_edits": [
+    "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean",
+    "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean"
+  ],
+  "redirect_hashes": {},
+  "updated_files": [
+    "SerrePositivity/InfinityCategories/Core/LimitProjectionExistence.lean",
+    "SerrePositivity/InfinityCategories/Core/VertexPrescribedExtension.lean",
+    "SerrePositivity/InfinityCategories/Stable/PosetTerminalExtension.lean",
+    "SerrePositivity/InfinityCategories/Stable/UniversalConeChoiceProjection.lean",
+    "scripts/audit_kst_s_construction.lean"
+  ],
+  "applied": false
+}

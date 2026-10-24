@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
 
 /-!

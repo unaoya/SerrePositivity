@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：余極限余錐の頂点を指定した可逆辺に沿って移す。

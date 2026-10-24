@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DeformationLocalization
+public import SerrePositivity.InfinityCategories.F1B.DeformationLocalization
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso

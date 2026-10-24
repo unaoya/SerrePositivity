@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestrictionIso
 
 /-! # 同型な図式による余極限性の判定

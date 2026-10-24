@@ -25,7 +25,7 @@ lemma hasLimit_of_iso_reindex {A K X : SSet.{u}} (e : A ≅ K) (d : K ⟶ X)
     (h : HasLimit (e.hom ≫ d)) : HasLimit d := by
   obtain ⟨c, hc⟩ := h
   have h' : HasLimit (e.inv ≫ (e.hom ≫ d)) :=
-    ⟨F2.restrictJoinCone c e.inv, (F2.isLimitCone_restrict_iff_of_isIso c e.inv).mpr hc⟩
+    ⟨restrictJoinCone c e.inv, (F2.isLimitCone_restrict_iff_of_isIso c e.inv).mpr hc⟩
   simpa only [Iso.inv_hom_id_assoc] using h'
 
 /-- 空の離散 nerve から元の単体集合への、同じ空図式。 -/

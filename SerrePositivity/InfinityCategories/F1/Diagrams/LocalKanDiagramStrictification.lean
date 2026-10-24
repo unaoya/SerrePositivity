@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.SimplexStrictification
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 
 /-!

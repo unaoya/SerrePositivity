@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：通常の余錐の添字と反対の錐の反転した添字の標準同型。

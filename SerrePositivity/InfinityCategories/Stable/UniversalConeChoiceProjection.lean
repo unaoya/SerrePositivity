@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence
+public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
 public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
 public import SerrePositivity.InfinityCategories.Core.PullbackRightComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
@@ -46,7 +46,7 @@ lemma coneChoiceForget_diagram {A K X : SSet.{u}} (p : A ⟶ (ihom K).obj X) :
 lemma coneChoiceForget_trivialKanFibration {A K X : SSet.{u}} [Quasicategory X]
     (p : A ⟶ (ihom K).obj X) (h : ∀ d : K ⟶ X, HasLimit d) :
     TrivialKanFibration (coneChoiceForget p) := by
-  have := SerrePositivity.KST.LocalizingInvariants.limitConeProjection_trivialKanFibration h
+  have := SerrePositivity.InfinityCategories.limitConeProjection_trivialKanFibration h
   have : TrivialKanFibration (universalConesOverProjection p) := inferInstance
   exact trivialKanFibration_pullbackMapRightOfComp _ _ _ _ rfl
 

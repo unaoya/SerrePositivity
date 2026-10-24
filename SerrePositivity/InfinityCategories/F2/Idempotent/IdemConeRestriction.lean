@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLeftCofinality
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 
 /-!
 概要：元の冪等包含への錐制限は自明 Kan で、同じ錐の極限性を保ち反映する。
@@ -31,7 +31,7 @@ lemma idemConeRestriction_trivialKanFibration {X : SSet.{u}} [Quasicategory X]
 /-- 元の全強分裂図式の指定錐の極限性は、元の Idem への制限で判定できる。 -/
 lemma idemCone_isLimit_iff_restrict {X : SSet.{u}} [Quasicategory X]
     {F : SplitShape ⟶ X} (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c idemInclusion) := by
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c idemInclusion) := by
   have := idemConeRestriction_trivialKanFibration F
   exact (qCatEquivalenceOfTrivialKanFibration
     (sliceOverRestrict F idemInclusion)).isTerminalVertex_iff c

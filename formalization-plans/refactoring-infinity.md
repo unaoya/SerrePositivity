@@ -142,6 +142,124 @@ R-C の main 再適用（2026-10-24、verify.sh・関係監査通過）：
 
 型の異なる準重複の実施は所有レーン再開後の判断。HomotopicalAlgebra は現存6組の全調査として確定。[一覧](archive/refactor-near-duplicates-einfinity-2026-10-23.md)を参照。UniverseSSetMaps と Stable 補助6本の移動は R-B に残した。
 
+
+### R-B main 再適用（2026-10-24）
+
+宣言の型・本文を保持し、互換シムは残さない。部分抽出29宣言は元の固有内容を残す。F1 の2宣言は namespace を保持し、元ファイルの public import から instance も公開する。
+
+| 旧モジュール | 新モジュール | 項目 |
+|---|---|---|
+| `SerrePositivity.InfinityCategories.DGNerve.SemifreeLimits` | `SerrePositivity.InfinityCategories.Derived.SemifreeLimits` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.Cocone` | `SerrePositivity.InfinityCategories.Core.Cocone` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.BoundaryOpposite` | `SerrePositivity.InfinityCategories.Core.BoundaryOpposite` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.ConeOpposite` | `SerrePositivity.InfinityCategories.Core.ConeOpposite` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence` | `SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso` | `SerrePositivity.InfinityCategories.Core.ColimitDiagramIso` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation` | `SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseJoin` | `SerrePositivity.InfinityCategories.Core.UniverseJoin` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality` | `SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes` | `SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseBoundary` | `SerrePositivity.InfinityCategories.Core.UniverseBoundary` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom` | `SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling` | `SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality` | `SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseConeHom` | `SerrePositivity.InfinityCategories.Core.UniverseConeHom` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseSlices` | `SerrePositivity.InfinityCategories.Core.UniverseSlices` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.UniverseLimits` | `SerrePositivity.InfinityCategories.Core.UniverseLimits` | R-B |
+| `SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps` | `SerrePositivity.InfinityCategories.Core.UniverseSSetMaps` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.PointConstantHomEquivalence` | `SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.AdjunctionHomotopyCategory` | `SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory` | R-B |
+| `SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension` | `SerrePositivity.InfinityCategories.Core.LimitConeExtension` | R-B |
+| `SerrePositivity.InfinityCategories.F2.CatInfinity.SliceRestrictionEquivalence` | `SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence` | R-B |
+| `SerrePositivity.InfinityCategories.F2.CatInfinity.SliceRestrictionEquivalenceLifting` | `SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.LimitDiagramIso` | `SerrePositivity.InfinityCategories.Core.LimitDiagramIso` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.CofinalLimitExistence` | `SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful` | `SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.LocalizationFunctorExtension` | `SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion` | `SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.LocalizationPrecompositionCriterion` | `SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion` | R-B |
+| `SerrePositivity.InfinityCategories.Derived.DeformationLocalization` | `SerrePositivity.InfinityCategories.F1B.DeformationLocalization` | R-B |
+| `SerrePositivity.KST.SConstruction.ZeroBoundaryExtension` | `SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.InitialExtension` | `SerrePositivity.InfinityCategories.Core.InitialExtension` | R-B |
+| `SerrePositivity.InfinityCategories.Stable.LimitConeFamilies` | `SerrePositivity.InfinityCategories.Core.LimitConeFamilies` | R-B |
+| `SerrePositivity.KST.SConstruction.VertexPrescribedExtension` | `SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension` | R-B |
+| `SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence` | `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence` | R-B |
+| `SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison`（重複削除） | `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison`（正本保持） | 3-1 |
+| `SerrePositivity.KST.SConstruction.RelativeInitialEndpoint`（重複削除） | `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint`（正本保持） | 3-1 |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryTransport`（重複削除） | `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport`（正本保持） | 3-1 |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryTransport`（重複削除） | `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport`（正本保持） | 3-1 |
+
+部分抽出の所在（名前空間は `SerrePositivity.InfinityCategories` を保持）：
+
+| 宣言 | 旧ファイル | 新ファイル |
+|---|---|---|
+| `HasFiniteLimits` | `SerrePositivity/InfinityCategories/Stable/Definition.lean` | `SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean` |
+| `HasFiniteColimits` | `SerrePositivity/InfinityCategories/Stable/Definition.lean` | `SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean` |
+| `isTerminalVertex_iff_ulift` | `SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean` | `SerrePositivity/InfinityCategories/Core/UniverseInitialTerminal.lean` |
+| `isInitialVertex_iff_ulift` | `SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean` | `SerrePositivity/InfinityCategories/Core/UniverseInitialTerminal.lean` |
+| `reverseSimplex_vertex` | `SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean` | `SerrePositivity/InfinityCategories/Core/InitialOpposite.lean` |
+| `isInitialVertex_of_isTerminalVertex_op` | `SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean` | `SerrePositivity/InfinityCategories/Core/InitialOpposite.lean` |
+| `IsInitialVertex.op_isTerminalVertex` | `SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean` | `SerrePositivity/InfinityCategories/Core/InitialOpposite.lean` |
+| `isInitialVertex_iff_isTerminalVertex_op` | `SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean` | `SerrePositivity/InfinityCategories/Core/InitialOpposite.lean` |
+| `IsTerminalVertex.op_isInitialVertex` | `SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean` | `SerrePositivity/InfinityCategories/Core/InitialOpposite.lean` |
+| `edgeCosliceVertex` | `SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean` | `SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean` |
+| `edgeCosliceVertex_projection` | `SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean` | `SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean` |
+| `IsInitialVertex.homMk_eq` | `SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean` | `SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean` |
+| `IsInitialVertex.isInitialHo₂` | `SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean` | `SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean` |
+| `IsInitialVertex.isInitialHo` | `SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean` | `SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean` |
+| `IsInitialVertex.exists_stableCosliceLift` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `isInitialVertex_of_isInitialHo` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `IsInitialVertex.of_vertexIso` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `isInitialVertex_iff_of_vertexIso` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `IsColimitCone.of_vertexIso` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `isColimitCone_iff_of_vertexIso` | `SerrePositivity/InfinityCategories/Stable/InitialTransport.lean` | `SerrePositivity/InfinityCategories/Core/InitialTransport.lean` |
+| `QCatEquivalence.map_isInitialVertex` | `SerrePositivity/InfinityCategories/Stable/ColimitCoconeFamily.lean` | `SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean` |
+| `QCatEquivalence.isInitialVertex_iff` | `SerrePositivity/InfinityCategories/Stable/ColimitCoconeFamily.lean` | `SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean` |
+| `JoinCocone.restrict` | `SerrePositivity/InfinityCategories/Stable/ColimitRestriction.lean` | `SerrePositivity/InfinityCategories/Core/ColimitCoconeRestriction.lean` |
+| `JoinCocone.vertex_restrict` | `SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean` | `SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean` |
+| `exists_cocone_extension_of_trivialRestriction` | `SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean` | `SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean` |
+| `exists_colimitCocone_extension_of_trivialRestriction` | `SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean` | `SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean` |
+| `hasColimit_iff_of_trivialRestriction` | `SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean` | `SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean` |
+| `sliceUnderRestrict_comp` | `SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean` | `SerrePositivity/InfinityCategories/Core/SliceUnderRestriction.lean` |
+| `sliceUnderRestrict_isIso` | `SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean` | `SerrePositivity/InfinityCategories/Core/SliceUnderRestriction.lean` |
+
+F2/KST からの機械的宣言名変更：
+
+| 旧名 | 新名 |
+|---|---|
+| `SerrePositivity.KST.SConstruction.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting` | `SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting` |
+| `SerrePositivity.KST.SConstruction.sliceUnder_empty_hom_ext` | `SerrePositivity.InfinityCategories.sliceUnder_empty_hom_ext` |
+| `SerrePositivity.KST.SConstruction.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` | `SerrePositivity.InfinityCategories.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting` |
+| `SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift` | `SerrePositivity.InfinityCategories.exists_relativeInitialCosliceLift` |
+| `SerrePositivity.KST.SConstruction.stdSimplex_firstVertex_leftAnodyne` | `SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne` |
+| `SerrePositivity.KST.SConstruction.pointCosliceVertexOfEdge_projection` | `SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge_projection` |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_invertibleEdge` | `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_invertibleEdge` |
+| `SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_vertexIso` | `SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_vertexIso` |
+| `SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op` | `SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_initialBoundaryLifting_op` |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.op_initial` |
+| `SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso` | `SerrePositivity.InfinityCategories.TerminalBoundaryLifting.of_vertexIso` |
+| `SerrePositivity.InfinityCategories.F2.restrictJoinCone` | `SerrePositivity.InfinityCategories.restrictJoinCone` |
+| `SerrePositivity.InfinityCategories.F2.restrictJoinCone_vertex` | `SerrePositivity.InfinityCategories.restrictJoinCone_vertex` |
+| `SerrePositivity.InfinityCategories.F2.exists_cone_extension_of_trivialRestriction` | `SerrePositivity.InfinityCategories.exists_cone_extension_of_trivialRestriction` |
+| `SerrePositivity.InfinityCategories.F2.exists_limitCone_extension_of_trivialRestriction` | `SerrePositivity.InfinityCategories.exists_limitCone_extension_of_trivialRestriction` |
+| `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex` | `SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence_subcomplex` |
+| `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence` | `SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence` |
+| `SerrePositivity.InfinityCategories.F2.isPrecompositionEquivalence_joinUnion_right` | `SerrePositivity.InfinityCategories.isPrecompositionEquivalence_joinUnion_right` |
+| `SerrePositivity.InfinityCategories.F2.sliceOverRestrict_lift_of_precompositionEquivalence` | `SerrePositivity.InfinityCategories.sliceOverRestrict_lift_of_precompositionEquivalence` |
+| `SerrePositivity.KST.SConstruction.ZeroBoundaryExtension` | `SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension` |
+| `SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints` | `SerrePositivity.InfinityCategories.exists_extension_of_initial_or_terminal_endpoints` |
+| `SerrePositivity.KST.SConstruction.VertexPrescribedExtension` | `SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension` |
+| `SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence` | `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence` |
+| `SerrePositivity.KST.SConstruction.exists_extension_with_vertices` | `SerrePositivity.InfinityCategories.exists_extension_with_vertices` |
+| `SerrePositivity.KST.LocalizingInvariants.limitConeProjection_surjective` | `SerrePositivity.InfinityCategories.limitConeProjection_surjective` |
+| `SerrePositivity.KST.LocalizingInvariants.limitConeProjection_trivialKanFibration` | `SerrePositivity.InfinityCategories.limitConeProjection_trivialKanFibration` |
+
+Derived の一般宣言14組の旧名→正本名は [対応表](archive/refactor-r-b-derived-name-map.json)。所在は `DGNerve/AugmentationCombinatorics`（13宣言）と `DGNerve/VertexIdentity`（1宣言）。8重複モジュールを削除。
+
+新規共通 Prop 補題 `augmentation_proof_of_endpoint_phases`・`augmentation_proof_of_reindex_cases` は `Derived/AugmentationProofCases`。既存4定理の型を保持し、証明だけを source commit `1a412f887a63d14b73fed3fd0f2af52207a6f25e` の cherry-pick で共有した。データ86宣言の本体は名前置換以外を保持。型依存データ19組は [差分表](archive/refactor-near-duplicates-derived-2026-10-23.md) に保存し、Dレーン再開後の判断へ保留する。
+
+全 JSON と適用ログは [再適用計画](archive/refactor-r-b-reapply-2026-10-23/manifest.json)。R23 の CofinalLimitExistence は型の閉包に従い F1B に配置。ZeroBoundaryExtension は InitialExtension・一般 InitialOpposite と同時に Core へ移し、Core→Stable と Stable→KST を残さない。
+
 ## 6. 仮定入力の一覧（完成後に外す）
 
 2026-10-24、`rg -n '\b(IndFiniteLimitExchangeInput|CoherentFilteredLimitExchangeShape|HasSpaceLimitsOfShape|DGKappaConeInput|DGKappaPerfectInput)\b' SerrePositivity --glob '*.lean'` で採取。

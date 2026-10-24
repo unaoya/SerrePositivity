@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseRightKanShape
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointCosliceUncurry
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
 public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
 

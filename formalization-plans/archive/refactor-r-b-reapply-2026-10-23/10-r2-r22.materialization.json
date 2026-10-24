@@ -1,0 +1,58 @@
+{
+  "schema": "r-b-materialization/v1",
+  "new_module_imports": {
+    "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean": [
+      "SerrePositivity.InfinityCategories.Core.Limit",
+      "SerrePositivity.InfinityCategories.Core.Cocone",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Finite"
+    ],
+    "SerrePositivity/InfinityCategories/Core/UniverseInitialTerminal.lean": [
+      "SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling",
+      "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+      "SerrePositivity.InfinityCategories.Core.TerminalUniqueness"
+    ],
+    "SerrePositivity/InfinityCategories/Core/InitialOpposite.lean": [
+      "SerrePositivity.InfinityCategories.Core.BoundaryOpposite"
+    ],
+    "SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean": [
+      "SerrePositivity.InfinityCategories.Core.TerminalMappingSpace",
+      "Mathlib.CategoryTheory.Adjunction.Limits",
+      "Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal",
+      "Mathlib.CategoryTheory.Limits.Shapes.ZeroObjects"
+    ],
+    "SerrePositivity/InfinityCategories/Core/InitialTransport.lean": [
+      "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
+      "SerrePositivity.InfinityCategories.Core.TerminalTransport",
+      "SerrePositivity.InfinityCategories.Core.PointHornJoin",
+      "SerrePositivity.InfinityCategories.Core.OuterHornDuality"
+    ],
+    "SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean": [
+      "SerrePositivity.InfinityCategories.Core.InitialTransport",
+      "SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension"
+    ],
+    "SerrePositivity/InfinityCategories/Core/ColimitCoconeRestriction.lean": [
+      "SerrePositivity.InfinityCategories.Core.Cocone",
+      "SerrePositivity.InfinityCategories.Core.SliceMap"
+    ],
+    "SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean": [
+      "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+      "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+      "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence"
+    ],
+    "SerrePositivity/InfinityCategories/Core/SliceUnderRestriction.lean": [
+      "SerrePositivity.InfinityCategories.Core.SliceMap"
+    ]
+  },
+  "required_options": [
+    "noncomputable section",
+    "set_option backward.isDefEq.respectTransparency false"
+  ],
+  "preserve_source_universes_and_open_commands": true,
+  "UniverseSSetMaps_imports": [
+    "SerrePositivity.InfinityCategories.Core.Join",
+    "Mathlib.CategoryTheory.Types.Basic",
+    "Mathlib.CategoryTheory.Whiskering",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal",
+    "Mathlib.CategoryTheory.NatIso"
+  ]
+}

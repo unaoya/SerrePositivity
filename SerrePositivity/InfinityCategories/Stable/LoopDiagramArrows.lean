@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
-public import SerrePositivity.InfinityCategories.Stable.LimitConeFamilies
+public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
 
 /-! # Loop 図式の入力の二辺

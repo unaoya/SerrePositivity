@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialComparison
-public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 
 /-!
 概要：相対終対象と標準相対極限錐を定義し、反転した相対余極限と同定する。

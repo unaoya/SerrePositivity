@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories
 
 lemma excisionCorePuncturedSourceCone_inner_val {X : SSet.{u}}
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X) :
-    (F2.restrictJoinCone (excisionCorePuncturedSourceCone F)
+    (restrictJoinCone (excisionCorePuncturedSourceCone F)
       excisionCoreCospanBoundary).val =
         (pullbackCone (grid22Face (excisionGridCoreDiagram ≫ F) 2 2)).val := by
   apply excisionCorePuncturedSourceCone_boundary_postcomp_val F _ _
@@ -37,7 +37,7 @@ lemma excisionCorePuncturedSourceCone_outer_val {X : SSet.{u}}
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X) :
     (excisionCorePuncturedOuterCone (excisionCorePuncturedSourceCone F)).val =
       (pullbackCone (grid22Face (excisionGridCoreDiagram ≫ F) 1 1)).val := by
-  change (F2.restrictJoinCone (excisionCorePuncturedSourceCone F)
+  change (restrictJoinCone (excisionCorePuncturedSourceCone F)
     excisionCoreOuterCospanBoundary).val = _
   apply excisionCorePuncturedSourceCone_boundary_postcomp_val F _ _
     excisionCoreOuterCospanBoundary_projection

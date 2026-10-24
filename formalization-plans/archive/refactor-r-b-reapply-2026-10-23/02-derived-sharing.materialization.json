@@ -1,0 +1,398 @@
+{
+  "schema": "r-b-completed-source-delta/v1",
+  "authoritative_commit": "e0ce9b2c8",
+  "new_files": [
+    {
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "git_source": "e0ce9b2c8:SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "sha256": "977c4f06f5604560dba299d932002f67df2f0328300308ed37e05887490b05f8"
+    },
+    {
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/VertexIdentity.lean",
+      "git_source": "e0ce9b2c8:SerrePositivity/InfinityCategories/DGNerve/VertexIdentity.lean",
+      "sha256": "1ffa758ffff27842671c6f4b5d3f9d92cdfbdb2e469065ddb61600b856c44cae"
+    },
+    {
+      "destination": "SerrePositivity/InfinityCategories/Derived/AugmentationProofCases.lean",
+      "git_source": "e0ce9b2c8:SerrePositivity/InfinityCategories/Derived/AugmentationProofCases.lean",
+      "sha256": "85abb486e36e756010ab388dc3ff80f3f2b5091593ef0cac816c2fac3e8baae3"
+    }
+  ],
+  "generic_declaration_map": {
+    "dgCommaAugmentationCutPoints": "dgModuleAugmentationCutPoints",
+    "dgCommaAugmentationCutPoints_erase": "dgModuleAugmentationCutPoints_erase",
+    "dgCommaAugmentationPhase_double_cut_cancel": "dgModuleAugmentationPhase_double_cut_cancel",
+    "dgCommaAugmentationImage_double_cut_cancel": "dgModuleAugmentationImage_double_cut_cancel",
+    "dgCommaAugmentationImage_phase_double_cut_cancel": "dgModuleAugmentationImage_phase_double_cut_cancel",
+    "dgCommaAugmentationCutPoints_eq_filter_interior": "dgModuleAugmentationCutPoints_eq_filter_interior",
+    "dgCommaAugmentationCutPoints_image": "dgModuleAugmentationCutPoints_image",
+    "dgCommaAugmentationLeftCut_image_card": "dgModuleAugmentationLeftCut_image_card",
+    "dgCommaAugmentationRightCut_image_card": "dgModuleAugmentationRightCut_image_card",
+    "dgCommaAugmentationCut_injective_glue": "dgModuleAugmentationCut_injective_glue",
+    "dgCommaSimplexHomOrZero_pullback_of_inj": "dgSimplexHomOrZero_pullback_of_inj",
+    "dgCommaAugmentation_sum_mixed_cancel_filter": "dgModuleAugmentation_sum_mixed_cancel_filter",
+    "dgCommaDifferential_compose_of_indices": "dgDifferential_compose_of_indices",
+    "dgCommaNerve_vertex_identity_simplex": "dgNerve_vertex_identity_simplex"
+  },
+  "proof_replacements": {
+    "source_suffixes": [
+      "PrismSimplex",
+      "PrismReindex"
+    ],
+    "families": [
+      "DGCommaAug",
+      "DGModuleAugmentation"
+    ],
+    "count": 4,
+    "types_preserved": true,
+    "reference": "git diff e0ce9b2c8^ e0ce9b2c8 -- SerrePositivity/InfinityCategories/Derived/*PrismSimplex.lean SerrePositivity/InfinityCategories/Derived/*PrismReindex.lean"
+  },
+  "mechanical_plan": "02-derived-sharing.modules.json",
+  "preconditions": [
+    "materialize all three new files from commit",
+    "remove original canonical and duplicate declaration blocks exactly as source commit",
+    "preserve all 86 data bodies modulo the approved generic name substitution",
+    "after source extraction run mechanical JSON; retain other preexisting imports formerly carried by deleted pure modules",
+    "refresh reviewed redirect hashes after R-C and any preceding source edits; inspect exact hashes before overwrite"
+  ],
+  "audit_metadata": "rewrite old expected-module names and deduplicate shared module entries; add shared proof and vertex modules without dropping other audit coverage",
+  "data_deferral": "../refactor-near-duplicates-derived-2026-10-23.md",
+  "exact_original_blocks": [
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugCorrection.lean",
+      "declaration": "dgCommaAugmentationCutPoints",
+      "canonical_name": "dgModuleAugmentationCutPoints",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "58f1086ff750852545f2fe7319c2e9f761dbc057304e232521ceef8a377d8074",
+      "block_sha256": "4533220725f87529a807c4ea57174a25db5ef5b6deb31d8a7f3db6bbf0231210",
+      "body": "/-- 相一の実内部切断点の有限集合。 -/\ndef dgCommaAugmentationCutPoints {n : ℕ} (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) : Finset (Fin (n + 1)) :=\n  I.filter (fun j ↦ a < j ∧ j < b ∧ β j = 1)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCorrection.lean",
+      "declaration": "dgModuleAugmentationCutPoints",
+      "canonical_name": "dgModuleAugmentationCutPoints",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "50b771a13ec39ddbe16c96685c7ae495e0ffd4c220a313d1396df5cefe31dc60",
+      "block_sha256": "ff3af584b61a14264d0e891d1646f6645774a3e4ff74e0dbd4010e50fa4e88d0",
+      "body": "/-- 相一の実内部切断点の有限集合。 -/\ndef dgModuleAugmentationCutPoints {n : ℕ} (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) : Finset (Fin (n + 1)) :=\n  I.filter (fun j ↦ a < j ∧ j < b ∧ β j = 1)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugCorrection.lean",
+      "declaration": "dgCommaAugmentationCutPoints_erase",
+      "canonical_name": "dgModuleAugmentationCutPoints_erase",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "58f1086ff750852545f2fe7319c2e9f761dbc057304e232521ceef8a377d8074",
+      "block_sha256": "b79787edc29811e0f91eb7e6676fb183eaaf8db7dc25b04a7733c229a71a6478",
+      "body": "/-- 実相切断点の形成は、元の有限集合の点の削除と可換。 -/\nlemma dgCommaAugmentationCutPoints_erase {n : ℕ} (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (n + 1))) (a b j : Fin (n + 1)) :\n    dgCommaAugmentationCutPoints β (I.erase j) a b =\n      (dgCommaAugmentationCutPoints β I a b).erase j :=\n  Finset.filter_erase _ _ _\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCorrection.lean",
+      "declaration": "dgModuleAugmentationCutPoints_erase",
+      "canonical_name": "dgModuleAugmentationCutPoints_erase",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "50b771a13ec39ddbe16c96685c7ae495e0ffd4c220a313d1396df5cefe31dc60",
+      "block_sha256": "df812a3b2aeb93c9da0453bbd77541d9f241edebc6d043c2f82b9b40101b8ec4",
+      "body": "/-- 実相切断点の形成は、元の有限集合の点の削除と可換。 -/\nlemma dgModuleAugmentationCutPoints_erase {n : ℕ} (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (n + 1))) (a b j : Fin (n + 1)) :\n    dgModuleAugmentationCutPoints β (I.erase j) a b =\n      (dgModuleAugmentationCutPoints β I a b).erase j :=\n  Finset.filter_erase _ _ _\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugPhaseDoubleCut.lean",
+      "declaration": "dgCommaAugmentationPhase_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationPhase_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "a7128bf82e746ab1b2d4026266e207356e42d4275bcbc8d74e1e435ebb114b66",
+      "block_sha256": "55e5ef5bc431fe883265d9552620329d6e09621d5e02a2948983656fc082c171",
+      "body": "/-- 単調な支持の二重切断和は、支持外から支持内への切断対の寄与に等しい。 -/\nlemma dgCommaAugmentationPhase_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I K : Finset α) (hKI : K ⊆ I)\n    (p : α → Prop) [DecidablePred p]\n    (hmono : ∀ j ∈ K, ∀ k ∈ K, j < k → p j → p k) (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ k ∈ K.filter (j < ·),\n      Index.sign (I.filter (j ≤ ·)) k • (if p j then f j k else 0)) +\n    (∑ k ∈ K, Index.sign I k •\n      ((2 - ((I.filter (k ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < k), Index.sign (I.filter (· ≤ k)) j •\n        (if p k then f j k else 0))) =\n    ∑ k ∈ K, Index.sign I k •\n      ((2 - ((I.filter (k ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < k), Index.sign (I.filter (· ≤ k)) j •\n        (if p k ∧ ¬ p j then f j k else 0)) := by\n  simp only [Finset.sum_filter, Finset.smul_sum, smul_ite, smul_zero]\n  rw [Finset.sum_comm, ← Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro k hk\n  rw [← Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro j hj\n  by_cases hjk : j < k\n  · simp only [ite_eq_left hjk]\n    by_cases hpj : p j\n    · have hpk := hmono j hj k hk hjk hpj\n      have hn : ¬ (p k ∧ ¬ p j) := by\n        simp only [hpj, not_true_eq_false, and_false, not_false_eq_true]\n      simp only [ite_eq_left hpj, ite_eq_left hpk, ite_eq_right hn,\n        smul_smul, ← mul_assoc]\n      rw [Index.sign_double_cut I (hKI hk) hjk]\n      simp [Units.smul_def]\n    · by_cases hpk : p k <;> simp [hpj, hpk]\n  · simp only [ite_eq_right hjk, add_zero]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPhaseDoubleCut.lean",
+      "declaration": "dgModuleAugmentationPhase_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationPhase_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "1ed582991650d8c1b5f4563d482626f4166d7ce48de461058402a8aa1599a1de",
+      "block_sha256": "c7b0b57223855836114e220a3fee79f13bc74b37ba30595545eb9b0b3adab078",
+      "body": "/-- 単調な支持の二重切断和は、支持外から支持内への切断対の寄与に等しい。 -/\nlemma dgModuleAugmentationPhase_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I K : Finset α) (hKI : K ⊆ I)\n    (p : α → Prop) [DecidablePred p]\n    (hmono : ∀ j ∈ K, ∀ k ∈ K, j < k → p j → p k) (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ k ∈ K.filter (j < ·),\n      Index.sign (I.filter (j ≤ ·)) k • (if p j then f j k else 0)) +\n    (∑ k ∈ K, Index.sign I k •\n      ((2 - ((I.filter (k ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < k), Index.sign (I.filter (· ≤ k)) j •\n        (if p k then f j k else 0))) =\n    ∑ k ∈ K, Index.sign I k •\n      ((2 - ((I.filter (k ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < k), Index.sign (I.filter (· ≤ k)) j •\n        (if p k ∧ ¬ p j then f j k else 0)) := by\n  simp only [Finset.sum_filter, Finset.smul_sum, smul_ite, smul_zero]\n  rw [Finset.sum_comm, ← Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro k hk\n  rw [← Finset.sum_add_distrib]\n  apply Finset.sum_congr rfl\n  intro j hj\n  by_cases hjk : j < k\n  · simp only [ite_eq_left hjk]\n    by_cases hpj : p j\n    · have hpk := hmono j hj k hk hjk hpj\n      have hn : ¬ (p k ∧ ¬ p j) := by\n        simp only [hpj, not_true_eq_false, and_false, not_false_eq_true]\n      simp only [ite_eq_left hpj, ite_eq_left hpk, ite_eq_right hn,\n        smul_smul, ← mul_assoc]\n      rw [Index.sign_double_cut I (hKI hk) hjk]\n      simp [Units.smul_def]\n    · by_cases hpk : p k <;> simp [hpj, hpk]\n  · simp only [ite_eq_right hjk, add_zero]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugImageCutSigns.lean",
+      "declaration": "dgCommaAugmentationImage_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationImage_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "b5803a09d8373fe0a4fe1ab8af76a53ce2e22ac43520f3622860a5e28bfb5ea7",
+      "block_sha256": "5a6f365d0c65172f177799003a8d9a7d8c7e7ab83ef97c53fd0d11ddc244803d",
+      "body": "/-- 中央比較三重合成の二つの切断係数は、追加の右次数符号も含めて相殺する。 -/\nlemma dgCommaAugmentationImage_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I : Finset α)\n    {j l : α} (hl : l ∈ I) (hjl : j < l) (z : M) :\n    Index.sign I j • (Index.sign (I.filter (j ≤ ·)) l •\n      ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow • z)) +\n      Index.sign I l • (Index.sign (I.filter (· ≤ l)) j • z) = 0 := by\n  let q := 2 - ((I.filter (l ≤ ·)).card : ℤ)\n  have hsq : q.negOnePow * q.negOnePow = 1 := by\n    rw [← Int.negOnePow_add, show q + q = 2 * q by omega, Int.negOnePow_two_mul]\n  have hc : Index.sign I j * Index.sign (I.filter (j ≤ ·)) l * q.negOnePow =\n      -(Index.sign I l * Index.sign (I.filter (· ≤ l)) j) := by\n    rw [Index.sign_double_cut I hl hjl]\n    calc\n      -(Index.sign I l * q.negOnePow * Index.sign (I.filter (· ≤ l)) j) * q.negOnePow =\n          -(Index.sign I l * Index.sign (I.filter (· ≤ l)) j *\n            (q.negOnePow * q.negOnePow)) := by\n        rw [neg_mul]\n        congr 1\n        ac_rfl\n      _ = _ := by rw [hsq, mul_one]\n  change Index.sign I j • (Index.sign (I.filter (j ≤ ·)) l • (q.negOnePow • z)) + _ = 0\n  simp only [smul_smul]\n  rw [← mul_assoc, hc]\n  simp [Units.smul_def]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationImageCutSigns.lean",
+      "declaration": "dgModuleAugmentationImage_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationImage_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "f9506aab7cdacade50fe97b3e0085b91e21f247b5334b97505776d4e77f62f2b",
+      "block_sha256": "8288a4a6eff89e32fa5e3b64b1dbcac2aa23b685a361169f7a21ace3ed494f2c",
+      "body": "/-- 中央比較三重合成の二つの切断係数は、追加の右次数符号も含めて相殺する。 -/\nlemma dgModuleAugmentationImage_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I : Finset α)\n    {j l : α} (hl : l ∈ I) (hjl : j < l) (z : M) :\n    Index.sign I j • (Index.sign (I.filter (j ≤ ·)) l •\n      ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow • z)) +\n      Index.sign I l • (Index.sign (I.filter (· ≤ l)) j • z) = 0 := by\n  let q := 2 - ((I.filter (l ≤ ·)).card : ℤ)\n  have hsq : q.negOnePow * q.negOnePow = 1 := by\n    rw [← Int.negOnePow_add, show q + q = 2 * q by omega, Int.negOnePow_two_mul]\n  have hc : Index.sign I j * Index.sign (I.filter (j ≤ ·)) l * q.negOnePow =\n      -(Index.sign I l * Index.sign (I.filter (· ≤ l)) j) := by\n    rw [Index.sign_double_cut I hl hjl]\n    calc\n      -(Index.sign I l * q.negOnePow * Index.sign (I.filter (· ≤ l)) j) * q.negOnePow =\n          -(Index.sign I l * Index.sign (I.filter (· ≤ l)) j *\n            (q.negOnePow * q.negOnePow)) := by\n        rw [neg_mul]\n        congr 1\n        ac_rfl\n      _ = _ := by rw [hsq, mul_one]\n  change Index.sign I j • (Index.sign (I.filter (j ≤ ·)) l • (q.negOnePow • z)) + _ = 0\n  simp only [smul_smul]\n  rw [← mul_assoc, hc]\n  simp [Units.smul_def]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugImageCutSigns.lean",
+      "declaration": "dgCommaAugmentationImage_phase_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationImage_phase_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "b5803a09d8373fe0a4fe1ab8af76a53ce2e22ac43520f3622860a5e28bfb5ea7",
+      "block_sha256": "5f8e18da57b174891de530dbb2c5a252353984bbaf1724b73a67227db2a25233",
+      "body": "/-- 単調な切断支持における、中央比較三重合成の全符号和の相殺。 -/\nlemma dgCommaAugmentationImage_phase_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I K : Finset α) (hKI : K ⊆ I)\n    (p : α → Prop) [DecidablePred p]\n    (hmono : ∀ j ∈ K, ∀ l ∈ K, j < l → p j → p l) (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ l ∈ K.filter (j < ·),\n      Index.sign (I.filter (j ≤ ·)) l •\n        ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •\n        (if p j then f j l else 0))) +\n    (∑ l ∈ K, Index.sign I l • ∑ j ∈ K.filter (· < l),\n      Index.sign (I.filter (· ≤ l)) j • (if p l ∧ p j then f j l else 0)) = 0 := by\n  simp only [Finset.sum_filter, Finset.smul_sum, smul_ite, smul_zero]\n  rw [Finset.sum_comm, ← Finset.sum_add_distrib]\n  apply Finset.sum_eq_zero\n  intro l hl\n  rw [← Finset.sum_add_distrib]\n  apply Finset.sum_eq_zero\n  intro j hj\n  by_cases hjl : j < l\n  · simp only [ite_eq_left hjl]\n    by_cases hpj : p j\n    · have hpl := hmono j hj l hl hjl hpj\n      simpa only [ite_eq_left hpj, ite_eq_left (show p l ∧ p j from ⟨hpl, hpj⟩)] using\n        dgCommaAugmentationImage_double_cut_cancel I (hKI hl) hjl (f j l)\n    · simp [hpj]\n  · simp only [ite_eq_right hjl, add_zero]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationImageCutSigns.lean",
+      "declaration": "dgModuleAugmentationImage_phase_double_cut_cancel",
+      "canonical_name": "dgModuleAugmentationImage_phase_double_cut_cancel",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "f9506aab7cdacade50fe97b3e0085b91e21f247b5334b97505776d4e77f62f2b",
+      "block_sha256": "cbb843c613cd87541cc60d39ab999cfcf82dea8d2670a62b41852abf60bac2d7",
+      "body": "/-- 単調な切断支持における、中央比較三重合成の全符号和の相殺。 -/\nlemma dgModuleAugmentationImage_phase_double_cut_cancel {α : Type*} [LinearOrder α]\n    {M : Type*} [AddCommGroup M] (I K : Finset α) (hKI : K ⊆ I)\n    (p : α → Prop) [DecidablePred p]\n    (hmono : ∀ j ∈ K, ∀ l ∈ K, j < l → p j → p l) (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ l ∈ K.filter (j < ·),\n      Index.sign (I.filter (j ≤ ·)) l •\n        ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •\n        (if p j then f j l else 0))) +\n    (∑ l ∈ K, Index.sign I l • ∑ j ∈ K.filter (· < l),\n      Index.sign (I.filter (· ≤ l)) j • (if p l ∧ p j then f j l else 0)) = 0 := by\n  simp only [Finset.sum_filter, Finset.smul_sum, smul_ite, smul_zero]\n  rw [Finset.sum_comm, ← Finset.sum_add_distrib]\n  apply Finset.sum_eq_zero\n  intro l hl\n  rw [← Finset.sum_add_distrib]\n  apply Finset.sum_eq_zero\n  intro j hj\n  by_cases hjl : j < l\n  · simp only [ite_eq_left hjl]\n    by_cases hpj : p j\n    · have hpl := hmono j hj l hl hjl hpj\n      simpa only [ite_eq_left hpj, ite_eq_left (show p l ∧ p j from ⟨hpl, hpj⟩)] using\n        dgModuleAugmentationImage_double_cut_cancel I (hKI hl) hjl (f j l)\n    · simp [hpj]\n  · simp only [ite_eq_right hjl, add_zero]\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugLinearCancellation.lean",
+      "declaration": "dgCommaAugmentationCutPoints_eq_filter_interior",
+      "canonical_name": "dgModuleAugmentationCutPoints_eq_filter_interior",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "390b10726e3a928adf9d10f3580457d2105e92f4b0abbf81fec0e6a7e48dfa38",
+      "block_sha256": "5bc199414cec07d5968f05e8562405d5357fea2ef8ff57239caaf094c1182cb0",
+      "body": "/-- 相一の切断点は、元の内部点集合を同じ相で制限したもの。 -/\nlemma dgCommaAugmentationCutPoints_eq_filter_interior {n : ℕ}\n    (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) :\n    dgCommaAugmentationCutPoints β I a b = (Index.interior I a b).filter (β · = 1) := by\n  ext j\n  simp only [dgCommaAugmentationCutPoints, Index.interior, Finset.mem_filter]\n  tauto\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationLinearCancellation.lean",
+      "declaration": "dgModuleAugmentationCutPoints_eq_filter_interior",
+      "canonical_name": "dgModuleAugmentationCutPoints_eq_filter_interior",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "f530537dc3c68b7e2584108b044876105a2405616f44b0236492a09ae956511a",
+      "block_sha256": "41d373e9221b264b4015383ca0ae8af14256dd3b66d78030b138105f59f083aa",
+      "body": "/-- 相一の切断点は、元の内部点集合を同じ相で制限したもの。 -/\nlemma dgModuleAugmentationCutPoints_eq_filter_interior {n : ℕ}\n    (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) :\n    dgModuleAugmentationCutPoints β I a b = (Index.interior I a b).filter (β · = 1) := by\n  ext j\n  simp only [dgModuleAugmentationCutPoints, Index.interior, Finset.mem_filter]\n  tauto\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugReindexIndex.lean",
+      "declaration": "dgCommaAugmentationCutPoints_image",
+      "canonical_name": "dgModuleAugmentationCutPoints_image",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "bac8f15095e93a6f7663105d257f0d2d5889dc39727a1e696c63df903d25875a",
+      "block_sha256": "13baaf713875da011c13954af2314f4fce385c89fbbff9330635250a21be463a",
+      "body": "/-- 相一の切断点集合の像を同じ相の切断点集合と同定する。 -/\nlemma dgCommaAugmentationCutPoints_image {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (m + 1))) (a b : Fin (m + 1)) (ha : a ∈ I) (hb : b ∈ I)\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) :\n    (dgCommaAugmentationCutPoints (β.comp α) I a b).image α =\n      dgCommaAugmentationCutPoints β (I.image α) (α a) (α b) := by\n  ext y\n  constructor\n  · intro hy\n    rcases Finset.mem_image.mp hy with ⟨j, hj, rfl⟩\n    have hm := Finset.mem_filter.mp hj\n    exact Finset.mem_filter.mpr ⟨Finset.mem_image.mpr ⟨j, hm.1, rfl⟩,\n      (Index.image_lt_iff α.monotone hi ha hm.1).mpr hm.2.1,\n      (Index.image_lt_iff α.monotone hi hm.1 hb).mpr hm.2.2.1, hm.2.2.2⟩\n  · intro hy\n    have hm := Finset.mem_filter.mp hy\n    rcases Finset.mem_image.mp hm.1 with ⟨j, hj, rfl⟩\n    exact Finset.mem_image.mpr ⟨j, Finset.mem_filter.mpr ⟨hj,\n      (Index.image_lt_iff α.monotone hi ha hj).mp hm.2.1,\n      (Index.image_lt_iff α.monotone hi hj hb).mp hm.2.2.1, hm.2.2.2⟩, rfl⟩\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationReindexIndex.lean",
+      "declaration": "dgModuleAugmentationCutPoints_image",
+      "canonical_name": "dgModuleAugmentationCutPoints_image",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "c9e59e987c02d88dbfc45f10ad55942c81f6b3806b6951ede23ec6285067fb8d",
+      "block_sha256": "2354efb3afd73eb1fc3941ba4d0a9b17369c61a5396e9e3e58de6989da8ae34c",
+      "body": "/-- 相一の切断点集合の像を同じ相の切断点集合と同定する。 -/\nlemma dgModuleAugmentationCutPoints_image {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (n + 1) →o Fin 2)\n    (I : Finset (Fin (m + 1))) (a b : Fin (m + 1)) (ha : a ∈ I) (hb : b ∈ I)\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) :\n    (dgModuleAugmentationCutPoints (β.comp α) I a b).image α =\n      dgModuleAugmentationCutPoints β (I.image α) (α a) (α b) := by\n  ext y\n  constructor\n  · intro hy\n    rcases Finset.mem_image.mp hy with ⟨j, hj, rfl⟩\n    have hm := Finset.mem_filter.mp hj\n    exact Finset.mem_filter.mpr ⟨Finset.mem_image.mpr ⟨j, hm.1, rfl⟩,\n      (Index.image_lt_iff α.monotone hi ha hm.1).mpr hm.2.1,\n      (Index.image_lt_iff α.monotone hi hm.1 hb).mpr hm.2.2.1, hm.2.2.2⟩\n  · intro hy\n    have hm := Finset.mem_filter.mp hy\n    rcases Finset.mem_image.mp hm.1 with ⟨j, hj, rfl⟩\n    exact Finset.mem_image.mpr ⟨j, Finset.mem_filter.mpr ⟨hj,\n      (Index.image_lt_iff α.monotone hi ha hj).mp hm.2.1,\n      (Index.image_lt_iff α.monotone hi hj hb).mp hm.2.2.1, hm.2.2.2⟩, rfl⟩\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugReindexIndex.lean",
+      "declaration": "dgCommaAugmentationLeftCut_image_card",
+      "canonical_name": "dgModuleAugmentationLeftCut_image_card",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "bac8f15095e93a6f7663105d257f0d2d5889dc39727a1e696c63df903d25875a",
+      "block_sha256": "d2da0694460904f5008331c523a15bc3f6056e007f4cd1aa947ff744ecade94a",
+      "body": "/-- 左切断の像の濃度は元の同じ左切断の濃度。 -/\nlemma dgCommaAugmentationLeftCut_image_card {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) (j : Fin (m + 1)) (hj : j ∈ I) :\n    ((I.image α).filter (· ≤ α j)).card = (I.filter (· ≤ j)).card := by\n  rw [← Index.image_left α.monotone hi hj]\n  exact Finset.card_image_of_injOn (hi.mono (Finset.filter_subset _ _))\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationReindexIndex.lean",
+      "declaration": "dgModuleAugmentationLeftCut_image_card",
+      "canonical_name": "dgModuleAugmentationLeftCut_image_card",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "c9e59e987c02d88dbfc45f10ad55942c81f6b3806b6951ede23ec6285067fb8d",
+      "block_sha256": "e17fd4140525baaa061c3bc3c46ce17209677edc5be0c412558599ee57625b31",
+      "body": "/-- 左切断の像の濃度は元の同じ左切断の濃度。 -/\nlemma dgModuleAugmentationLeftCut_image_card {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) (j : Fin (m + 1)) (hj : j ∈ I) :\n    ((I.image α).filter (· ≤ α j)).card = (I.filter (· ≤ j)).card := by\n  rw [← Index.image_left α.monotone hi hj]\n  exact Finset.card_image_of_injOn (hi.mono (Finset.filter_subset _ _))\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugReindexIndex.lean",
+      "declaration": "dgCommaAugmentationRightCut_image_card",
+      "canonical_name": "dgModuleAugmentationRightCut_image_card",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "bac8f15095e93a6f7663105d257f0d2d5889dc39727a1e696c63df903d25875a",
+      "block_sha256": "69465edccfba6b2336942f1c5bf11ee7e0489c05e41fbfaea8c4af19842dbfe3",
+      "body": "/-- 右切断の像の濃度は元の同じ右切断の濃度。 -/\nlemma dgCommaAugmentationRightCut_image_card {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) (j : Fin (m + 1)) (hj : j ∈ I) :\n    ((I.image α).filter (α j ≤ ·)).card = (I.filter (j ≤ ·)).card := by\n  rw [← Index.image_right α.monotone hi hj]\n  exact Finset.card_image_of_injOn (hi.mono (Finset.filter_subset _ _))\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationReindexIndex.lean",
+      "declaration": "dgModuleAugmentationRightCut_image_card",
+      "canonical_name": "dgModuleAugmentationRightCut_image_card",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "c9e59e987c02d88dbfc45f10ad55942c81f6b3806b6951ede23ec6285067fb8d",
+      "block_sha256": "ba4eabd7df9c2e0475c680617739827e9e5c2b7596c1f5b12b4c1a115f74cf7d",
+      "body": "/-- 右切断の像の濃度は元の同じ右切断の濃度。 -/\nlemma dgModuleAugmentationRightCut_image_card {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (hi : Set.InjOn α (I : Set (Fin (m + 1)))) (j : Fin (m + 1)) (hj : j ∈ I) :\n    ((I.image α).filter (α j ≤ ·)).card = (I.filter (j ≤ ·)).card := by\n  rw [← Index.image_right α.monotone hi hj]\n  exact Finset.card_image_of_injOn (hi.mono (Finset.filter_subset _ _))\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugReindexIndex.lean",
+      "declaration": "dgCommaAugmentationCut_injective_glue",
+      "canonical_name": "dgModuleAugmentationCut_injective_glue",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "bac8f15095e93a6f7663105d257f0d2d5889dc39727a1e696c63df903d25875a",
+      "block_sha256": "7f714b560b2f8a07165e1d292e16a028bb71d718f735ceccab2439e5815372a0",
+      "body": "/-- 共有切断点を持つ左右で単射なら、元の添字集合全体で単射。 -/\nlemma dgCommaAugmentationCut_injective_glue {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (j : Fin (m + 1)) (hj : j ∈ I)\n    (hL : Set.InjOn α ((I.filter (· ≤ j)) : Set (Fin (m + 1))))\n    (hR : Set.InjOn α ((I.filter (j ≤ ·)) : Set (Fin (m + 1)))) :\n    Set.InjOn α (I : Set (Fin (m + 1))) := by\n  have hcross : ∀ x ∈ I, ∀ y ∈ I, x ≤ j → j ≤ y → α x = α y → x = y := by\n    intro x hx y hy hxj hjy he\n    have hxj' : α x = α j := le_antisymm (α.monotone hxj)\n      (by rw [he]; exact α.monotone hjy)\n    have hxj'' : x = j := hL (Finset.mem_filter.mpr ⟨hx, hxj⟩)\n      (Finset.mem_filter.mpr ⟨hj, le_refl j⟩) hxj'\n    have hjy' : α j = α y := by rw [← hxj'']; exact he\n    have hjy'' : j = y := hR (Finset.mem_filter.mpr ⟨hj, le_refl j⟩)\n      (Finset.mem_filter.mpr ⟨hy, hjy⟩) hjy'\n    exact hxj''.trans hjy''\n  intro x hx y hy he\n  by_cases hxj : x ≤ j\n  · by_cases hyj : y ≤ j\n    · exact hL (Finset.mem_filter.mpr ⟨hx, hxj⟩) (Finset.mem_filter.mpr ⟨hy, hyj⟩) he\n    · exact hcross x hx y hy hxj (le_of_lt (lt_of_not_ge hyj)) he\n  · by_cases hyj : y ≤ j\n    · exact (hcross y hy x hx hyj (le_of_lt (lt_of_not_ge hxj)) he.symm).symm\n    · exact hR (Finset.mem_filter.mpr ⟨hx, le_of_lt (lt_of_not_ge hxj)⟩)\n        (Finset.mem_filter.mpr ⟨hy, le_of_lt (lt_of_not_ge hyj)⟩) he\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationReindexIndex.lean",
+      "declaration": "dgModuleAugmentationCut_injective_glue",
+      "canonical_name": "dgModuleAugmentationCut_injective_glue",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "c9e59e987c02d88dbfc45f10ad55942c81f6b3806b6951ede23ec6285067fb8d",
+      "block_sha256": "dc8c306d7777a14684dcc34b4c82e2976b765bf04232a6d747da12e2fe7e9a05",
+      "body": "/-- 共有切断点を持つ左右で単射なら、元の添字集合全体で単射。 -/\nlemma dgModuleAugmentationCut_injective_glue {m n : ℕ}\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (j : Fin (m + 1)) (hj : j ∈ I)\n    (hL : Set.InjOn α ((I.filter (· ≤ j)) : Set (Fin (m + 1))))\n    (hR : Set.InjOn α ((I.filter (j ≤ ·)) : Set (Fin (m + 1)))) :\n    Set.InjOn α (I : Set (Fin (m + 1))) := by\n  have hcross : ∀ x ∈ I, ∀ y ∈ I, x ≤ j → j ≤ y → α x = α y → x = y := by\n    intro x hx y hy hxj hjy he\n    have hxj' : α x = α j := le_antisymm (α.monotone hxj)\n      (by rw [he]; exact α.monotone hjy)\n    have hxj'' : x = j := hL (Finset.mem_filter.mpr ⟨hx, hxj⟩)\n      (Finset.mem_filter.mpr ⟨hj, le_refl j⟩) hxj'\n    have hjy' : α j = α y := by rw [← hxj'']; exact he\n    have hjy'' : j = y := hR (Finset.mem_filter.mpr ⟨hj, le_refl j⟩)\n      (Finset.mem_filter.mpr ⟨hy, hjy⟩) hjy'\n    exact hxj''.trans hjy''\n  intro x hx y hy he\n  by_cases hxj : x ≤ j\n  · by_cases hyj : y ≤ j\n    · exact hL (Finset.mem_filter.mpr ⟨hx, hxj⟩) (Finset.mem_filter.mpr ⟨hy, hyj⟩) he\n    · exact hcross x hx y hy hxj (le_of_lt (lt_of_not_ge hyj)) he\n  · by_cases hyj : y ≤ j\n    · exact (hcross y hy x hx hyj (le_of_lt (lt_of_not_ge hxj)) he.symm).symm\n    · exact hR (Finset.mem_filter.mpr ⟨hx, le_of_lt (lt_of_not_ge hxj)⟩)\n        (Finset.mem_filter.mpr ⟨hy, le_of_lt (lt_of_not_ge hyj)⟩) he\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugReindexCoefficient.lean",
+      "declaration": "dgCommaSimplexHomOrZero_pullback_of_inj",
+      "canonical_name": "dgSimplexHomOrZero_pullback_of_inj",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "f64beb058935cb694910c1e37cca998871920a0d6273ec57bc3bbb925e036193",
+      "block_sha256": "945993414c9ecf76c855ddd58a0241e050cf35398428d96d4aae7dd0cc31fb46",
+      "body": "/-- 正しい全域係数の単射引き戻しは、同じ像の全域係数。 -/\nlemma dgCommaSimplexHomOrZero_pullback_of_inj {R : Type u} [CommRing R]\n    {D : Type v} [DGCategory R D] {m n : ℕ} (s : SimplexData R D n)\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (a b : Fin (m + 1)) (k : ℤ) (hI : 2 ≤ I.card)\n    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))\n    (hk : k = 2 - (I.card : ℤ)) (hi : Set.InjOn α (I : Set (Fin (m + 1)))) :\n    (s.pullback α).homOrZero I a b k = s.homOrZero (I.image α) (α a) (α b) k := by\n  rw [SimplexData.homOrZero_eq (s.pullback α) I a b k hI ha hb hk,\n    SimplexData.pullback_hom_of_inj s α I a b k hI ha hb hk hi]\n  symm\n  exact SimplexData.homOrZero_eq s (I.image α) (α a) (α b) k (Index.image_two hi hI)\n    (Index.image_min α.monotone (by rw [ha]; exact I.isLeast_min' _) _)\n    (Index.image_max α.monotone (by rw [hb]; exact I.isGreatest_max' _) _)\n    (by rw [Finset.card_image_of_injOn hi]; exact hk)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationReindexCoefficient.lean",
+      "declaration": "dgSimplexHomOrZero_pullback_of_inj",
+      "canonical_name": "dgSimplexHomOrZero_pullback_of_inj",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "943dbc46c78c8bcf28f0c0b499960c3a5487973838b270f9d1abb80bb3a53df7",
+      "block_sha256": "6eae14230618fe6e6b75a762247c0ec7c90d9d0ea6ebd3d77ff201c5ba5e3d39",
+      "body": "/-- 正しい全域係数の単射引き戻しは、同じ像の全域係数。 -/\nlemma dgSimplexHomOrZero_pullback_of_inj {R : Type u} [CommRing R]\n    {D : Type v} [DGCategory R D] {m n : ℕ} (s : SimplexData R D n)\n    (α : Fin (m + 1) →o Fin (n + 1)) (I : Finset (Fin (m + 1)))\n    (a b : Fin (m + 1)) (k : ℤ) (hI : 2 ≤ I.card)\n    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))\n    (hk : k = 2 - (I.card : ℤ)) (hi : Set.InjOn α (I : Set (Fin (m + 1)))) :\n    (s.pullback α).homOrZero I a b k = s.homOrZero (I.image α) (α a) (α b) k := by\n  rw [SimplexData.homOrZero_eq (s.pullback α) I a b k hI ha hb hk,\n    SimplexData.pullback_hom_of_inj s α I a b k hI ha hb hk hi]\n  symm\n  exact SimplexData.homOrZero_eq s (I.image α) (α a) (α b) k (Index.image_two hi hI)\n    (Index.image_min α.monotone (by rw [ha]; exact I.isLeast_min' _) _)\n    (Index.image_max α.monotone (by rw [hb]; exact I.isGreatest_max' _) _)\n    (by rw [Finset.card_image_of_injOn hi]; exact hk)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugCutErasure.lean",
+      "declaration": "dgCommaAugmentation_sum_mixed_cancel_filter",
+      "canonical_name": "dgModuleAugmentation_sum_mixed_cancel_filter",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "7319592fc8cd654a10520a179c1c8d4895c74a17b6ba3cae61aec54272e5b5b6",
+      "block_sha256": "9a0fca41898cc14d12287eb74cd99734df9e6e3fabc5ffc95e32ac6604f06d14",
+      "body": "/-- 切断点の支持を制限しても、同じ削除・切断混合符号和は相殺する。 -/\nlemma dgCommaAugmentation_sum_mixed_cancel_filter\n    {α : Type*} [LinearOrder α] {M : Type*} [AddCommGroup M]\n    (I K : Finset α) (hKI : K ⊆ I) (p : α → Prop) [DecidablePred p]\n    (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ l ∈ (K.erase j).filter p,\n      Index.sign (I.erase j) l • f j l) +\n    (∑ l ∈ K.filter p, Index.sign I l • ∑ j ∈ K.filter (l < ·),\n      Index.sign (I.filter (l ≤ ·)) j • f j l) +\n    (∑ l ∈ K.filter p, Index.sign I l •\n      ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < l), Index.sign (I.filter (· ≤ l)) j • f j l)) = 0 := by\n  classical\n  simpa only [Finset.sum_filter, smul_ite, smul_zero, Finset.sum_ite_irrel,\n    Finset.sum_const_zero] using\n    Index.sum_mixed_cancel I K hKI (fun j l ↦ if p l then f j l else 0)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutErasure.lean",
+      "declaration": "dgModuleAugmentation_sum_mixed_cancel_filter",
+      "canonical_name": "dgModuleAugmentation_sum_mixed_cancel_filter",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "2ab398dd22d9d964b723c432673f4ac92cef2039697f12f95c6e700ddfabbc3e",
+      "block_sha256": "20d02b614d4d220614257851e5a8bd1671d9d516b2b5216bd3bdbca6815d4b5d",
+      "body": "/-- 切断点の支持を制限しても、同じ削除・切断混合符号和は相殺する。 -/\nlemma dgModuleAugmentation_sum_mixed_cancel_filter\n    {α : Type*} [LinearOrder α] {M : Type*} [AddCommGroup M]\n    (I K : Finset α) (hKI : K ⊆ I) (p : α → Prop) [DecidablePred p]\n    (f : α → α → M) :\n    (∑ j ∈ K, Index.sign I j • ∑ l ∈ (K.erase j).filter p,\n      Index.sign (I.erase j) l • f j l) +\n    (∑ l ∈ K.filter p, Index.sign I l • ∑ j ∈ K.filter (l < ·),\n      Index.sign (I.filter (l ≤ ·)) j • f j l) +\n    (∑ l ∈ K.filter p, Index.sign I l •\n      ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •\n      ∑ j ∈ K.filter (· < l), Index.sign (I.filter (· ≤ l)) j • f j l)) = 0 := by\n  classical\n  simpa only [Finset.sum_filter, smul_ite, smul_zero, Finset.sum_ite_irrel,\n    Finset.sum_const_zero] using\n    Index.sum_mixed_cancel I K hKI (fun j l ↦ if p l then f j l else 0)\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugCutBoundary.lean",
+      "declaration": "dgCommaDifferential_compose_of_indices",
+      "canonical_name": "dgDifferential_compose_of_indices",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "b31576c122d9f62e05592bb7e59d8e9956331f80b808e04caac1da33f2e77f88",
+      "block_sha256": "1f2d96f54057fee87f5e4e795acafec18d3d36183c4da55f73bd8e305988f548",
+      "body": "/-- 全微分次数を指定した、同じ通常順合成の Leibniz 則。 -/\nlemma dgCommaDifferential_compose_of_indices (R : Type u) [CommRing R]\n    {D : Type v} [DGCategory R D] {X Y Z : D} (p q n p' q' n' : ℤ)\n    (hpq : p + q = n) (hp : p + 1 = p') (hq : q + 1 = q') (hn : n + 1 = n')\n    (g : GradedHom R Y Z q) (f : GradedHom R X Y p) :\n    (homObject R D X Z).d n n' (compose R g f hpq) =\n    compose R (n := n') ((homObject R D Y Z).d q q' g) f (by omega) +\n      q.negOnePow • compose R (n := n') g ((homObject R D X Y).d p p' f) (by omega) := by\n  subst p'\n  subst q'\n  subst n'\n  exact differential_compose R g f hpq\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutBoundary.lean",
+      "declaration": "dgDifferential_compose_of_indices",
+      "canonical_name": "dgDifferential_compose_of_indices",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/AugmentationCombinatorics.lean",
+      "source_sha256": "db9c27ad148af75ad756355b55c201994358124c6e032d4b100a4b2689a415fa",
+      "block_sha256": "7280ce000959ed79065630bfd5c56b0675b15e11c6f4ef65828f5c1a8f770e43",
+      "body": "/-- 全微分次数を指定した、同じ通常順合成の Leibniz 則。 -/\nlemma dgDifferential_compose_of_indices (R : Type u) [CommRing R]\n    {D : Type v} [DGCategory R D] {X Y Z : D} (p q n p' q' n' : ℤ)\n    (hpq : p + q = n) (hp : p + 1 = p') (hq : q + 1 = q') (hn : n + 1 = n')\n    (g : GradedHom R Y Z q) (f : GradedHom R X Y p) :\n    (homObject R D X Z).d n n' (compose R g f hpq) =\n    compose R (n := n') ((homObject R D Y Z).d q q' g) f (by omega) +\n      q.negOnePow • compose R (n := n') g ((homObject R D X Y).d p p' f) (by omega) := by\n  subst p'\n  subst q'\n  subst n'\n  exact differential_compose R g f hpq\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGCommaAugActualComponent.lean",
+      "declaration": "dgCommaNerve_vertex_identity_simplex",
+      "canonical_name": "dgNerve_vertex_identity_simplex",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/VertexIdentity.lean",
+      "source_sha256": "1c9d35faaac75430a7562d2d98d5f1a5c515e1d9a399f857c4adc3ca5ab8efca",
+      "block_sha256": "4aa9a61928b5fc22daa77a2fb973fbf3fde7691a9b688c3324c4e61d517bc51a",
+      "body": "/-- 実 dg 頂点の恒等辺は、同じ実単位から構成した一単体。 -/\nlemma dgCommaNerve_vertex_identity_simplex (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]\n    (X : C) :\n    (SSet.Truncated.Edge.id (X := (truncation 2).obj (dgNerve R C))\n      (Simplex.vertex X)).edge = Simplex.ofEdge (fun _ : Fin 2 ↦ X) (unitElement R X) := by\n  have he := edgeOfCycle_edgeCycle\n    (SSet.Truncated.Edge.id (X := (truncation 2).obj (dgNerve R C)) (Simplex.vertex X))\n  rw [edgeCycle_id] at he\n  have hh := congrArg (fun e ↦ e.edge) he\n  have hobj : pairObj X X = (fun _ : Fin 2 ↦ X) := by\n    funext i\n    fin_cases i <;> rfl\n  change Simplex.ofEdge (pairObj X X) (unitElement R X) = _ at hh\n  have ho : Simplex.ofEdge (pairObj X X) (unitElement R X) =\n      Simplex.ofEdge (fun _ : Fin 2 ↦ X) (unitElement R X) := by\n    apply Simplex.edgeEquiv.injective\n    exact Sigma.ext hobj (heq_of_eq rfl)\n  exact hh.symm.trans ho\n",
+      "remove_source_block": true
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationActualComponent.lean",
+      "declaration": "dgNerve_vertex_identity_simplex",
+      "canonical_name": "dgNerve_vertex_identity_simplex",
+      "destination": "SerrePositivity/InfinityCategories/DGNerve/VertexIdentity.lean",
+      "source_sha256": "53b48c0c09c3d71555c6412bc142775afed59b84c1b936637e38d07993709e66",
+      "block_sha256": "547f88991ae0e1d881244506b029333240a28af85f3259522ba9a1d85ba1bacd",
+      "body": "/-- 実 dg 頂点の恒等辺は、同じ実単位から構成した一単体。 -/\nlemma dgNerve_vertex_identity_simplex (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]\n    (X : C) :\n    (SSet.Truncated.Edge.id (X := (truncation 2).obj (dgNerve R C))\n      (Simplex.vertex X)).edge = Simplex.ofEdge (fun _ : Fin 2 ↦ X) (unitElement R X) := by\n  have he := edgeOfCycle_edgeCycle\n    (SSet.Truncated.Edge.id (X := (truncation 2).obj (dgNerve R C)) (Simplex.vertex X))\n  rw [edgeCycle_id] at he\n  have hh := congrArg (fun e ↦ e.edge) he\n  have hobj : pairObj X X = (fun _ : Fin 2 ↦ X) := by\n    funext i\n    fin_cases i <;> rfl\n  change Simplex.ofEdge (pairObj X X) (unitElement R X) = _ at hh\n  have ho : Simplex.ofEdge (pairObj X X) (unitElement R X) =\n      Simplex.ofEdge (fun _ : Fin 2 ↦ X) (unitElement R X) := by\n    apply Simplex.edgeEquiv.injective\n    exact Sigma.ext hobj (heq_of_eq rfl)\n  exact hh.symm.trans ho\n",
+      "remove_source_block": true
+    }
+  ],
+  "preserved_pure_module_dependencies": {
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut": [
+      "SerrePositivity.InfinityCategories.Derived.DGCommaAugCorrectionDifferential"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns": [
+      "SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex": [
+      "SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient": [
+      "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut": [
+      "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns": [
+      "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex": [
+      "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient": [
+      "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex"
+    ]
+  },
+  "proof_source_deltas": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean",
+      "before_git_blob": "e0ce9b2c8^:SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean",
+      "after_git_blob": "e0ce9b2c8:SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean",
+      "patch": "diff --git a/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean b/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean\nindex 2e15cc517..1812bd02a 100644\n--- a/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean\n+++ b/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean\n@@ -1,4 +1,5 @@\n module\n+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases\n public import SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseEquation\n /-!\n 概要：元の実 augmentation 切断補正和が全 HA 方程式を満たす単体を構成する。\n@@ -24,23 +25,11 @@ lemma dgCommaAugmentationPrismData_equation\n     differential R ((dgCommaAugmentationPrismData R C E F s.toSimplexData β).hom\n         I a b k hI ha hb hk) =\n       (dgCommaAugmentationPrismData R C E F s.toSimplexData β).rhs I a b k hI ha hb hk := by\n-  have hp : ∀ p : Fin 2, p = 0 ∨ p = 1 := by decide\n-  rcases hp (β a) with ha0 | ha1\n-  · rcases hp (β b) with hb0 | hb1\n-    · exact dgCommaAugmentationPrismData_equation_same R C E F s β 0 I a b k\n-        hI ha hb hk ha0 hb0\n-    · exact dgCommaAugmentationPrismData_equation_mixed R C E F s β I a b k\n-        hI ha hb hk ha0 hb1\n-  · rcases hp (β b) with hb0 | hb1\n-    · have hab : a ≤ b := by\n-        rw [ha, hb]\n-        exact (I.isLeast_min' _).2 (I.max'_mem _)\n-      have hh := β.monotone hab\n-      rw [ha1, hb0] at hh\n-      change (1 : ℕ) ≤ 0 at hh\n-      omega\n-    · exact dgCommaAugmentationPrismData_equation_same R C E F s β 1 I a b k\n-        hI ha hb hk ha1 hb1\n+  exact augmentation_proof_of_endpoint_phases β I a b hI ha hb\n+    (fun p haP hbP ↦ dgCommaAugmentationPrismData_equation_same R C E F s β p I a b k\n+      hI ha hb hk haP hbP)\n+    (fun ha0 hb1 ↦ dgCommaAugmentationPrismData_equation_mixed R C E F s β I a b k\n+      hI ha hb hk ha0 hb1)\n /-- 同じ実切断補正和と実対象から得られる、全 HA 方程式を持つ単体。 -/\n def dgCommaAugmentationPrismSimplex (β : Fin (n + 1) →o Fin 2) :\n     Simplex R E n where\n",
+      "mathematical_scope": "Prop proof only; declaration type and all data constructions preserved"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean",
+      "before_git_blob": "e0ce9b2c8^:SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean",
+      "after_git_blob": "e0ce9b2c8:SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean",
+      "patch": "diff --git a/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean b/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean\nindex 19fb0d24b..8227a1b30 100644\n--- a/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean\n+++ b/SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean\n@@ -1,4 +1,5 @@\n module\n+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases\n public import SerrePositivity.InfinityCategories.Derived.DGCommaAugCollapsedPair\n /-!\n 概要：同じ実 augmentation 候補と実単体の族が、全単調添字変更と厳密に可換と示す。\n@@ -24,14 +25,13 @@ lemma dgCommaAugmentationPrismData_hom_pullback\n     (dgCommaAugmentationPrismData R C E F (s.pullback α) (β.comp α)).hom\n         I a b k hI ha hb hk =\n       ((dgCommaAugmentationPrismData R C E F s β).pullback α).hom I a b k hI ha hb hk := by\n-  by_cases hi : Set.InjOn α (I : Set (Fin (m + 1)))\n-  · exact dgCommaAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k\n-      hI ha hb hk hi\n-  · by_cases hc : I.card = 2\n-    · exact dgCommaAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β\n-        I a b k hI ha hb hk hi hc\n-    · exact dgCommaAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k\n-        hI ha hb hk hi hc\n+  exact augmentation_proof_of_reindex_cases α I\n+    (fun hi ↦ dgCommaAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k\n+      hI ha hb hk hi)\n+    (fun hi hc ↦ dgCommaAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β\n+      I a b k hI ha hb hk hi hc)\n+    (fun hi hc ↦ dgCommaAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k\n+      hI ha hb hk hi hc)\n /-- 元の同じ実 augmentation データは、任意の単調添字変更と厳密に可換。 -/\n lemma dgCommaAugmentationPrismData_pullback\n     (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (n + 1) →o Fin 2) :\n",
+      "mathematical_scope": "Prop proof only; declaration type and all data constructions preserved"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean",
+      "before_git_blob": "e0ce9b2c8^:SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean",
+      "after_git_blob": "e0ce9b2c8:SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean",
+      "patch": "diff --git a/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean b/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean\nindex 1e85cadfe..b9bb462db 100644\n--- a/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean\n+++ b/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean\n@@ -1,4 +1,5 @@\n module\n+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases\n public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationSamePhaseEquation\n /-!\n 概要：元の実 augmentation 切断補正和が全 HA 方程式を満たす単体を構成する。\n@@ -24,23 +25,11 @@ lemma dgModuleAugmentationPrismData_equation\n     differential R ((dgModuleAugmentationPrismData R C E F s.toSimplexData β).hom\n         I a b k hI ha hb hk) =\n       (dgModuleAugmentationPrismData R C E F s.toSimplexData β).rhs I a b k hI ha hb hk := by\n-  have hp : ∀ p : Fin 2, p = 0 ∨ p = 1 := by decide\n-  rcases hp (β a) with ha0 | ha1\n-  · rcases hp (β b) with hb0 | hb1\n-    · exact dgModuleAugmentationPrismData_equation_same R C E F s β 0 I a b k\n-        hI ha hb hk ha0 hb0\n-    · exact dgModuleAugmentationPrismData_equation_mixed R C E F s β I a b k\n-        hI ha hb hk ha0 hb1\n-  · rcases hp (β b) with hb0 | hb1\n-    · have hab : a ≤ b := by\n-        rw [ha, hb]\n-        exact (I.isLeast_min' _).2 (I.max'_mem _)\n-      have hh := β.monotone hab\n-      rw [ha1, hb0] at hh\n-      change (1 : ℕ) ≤ 0 at hh\n-      omega\n-    · exact dgModuleAugmentationPrismData_equation_same R C E F s β 1 I a b k\n-        hI ha hb hk ha1 hb1\n+  exact augmentation_proof_of_endpoint_phases β I a b hI ha hb\n+    (fun p haP hbP ↦ dgModuleAugmentationPrismData_equation_same R C E F s β p I a b k\n+      hI ha hb hk haP hbP)\n+    (fun ha0 hb1 ↦ dgModuleAugmentationPrismData_equation_mixed R C E F s β I a b k\n+      hI ha hb hk ha0 hb1)\n /-- 同じ実切断補正和と実対象から得られる、全 HA 方程式を持つ単体。 -/\n def dgModuleAugmentationPrismSimplex (β : Fin (n + 1) →o Fin 2) :\n     Simplex R (RightModule R E) n where\n",
+      "mathematical_scope": "Prop proof only; declaration type and all data constructions preserved"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean",
+      "before_git_blob": "e0ce9b2c8^:SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean",
+      "after_git_blob": "e0ce9b2c8:SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean",
+      "patch": "diff --git a/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean b/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean\nindex b1329a184..4ff1d910c 100644\n--- a/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean\n+++ b/SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean\n@@ -1,4 +1,5 @@\n module\n+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases\n public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCollapsedPair\n /-!\n 概要：同じ実 augmentation 候補と実単体の族が、全単調添字変更と厳密に可換と示す。\n@@ -24,14 +25,13 @@ lemma dgModuleAugmentationPrismData_hom_pullback\n     (dgModuleAugmentationPrismData R C E F (s.pullback α) (β.comp α)).hom\n         I a b k hI ha hb hk =\n       ((dgModuleAugmentationPrismData R C E F s β).pullback α).hom I a b k hI ha hb hk := by\n-  by_cases hi : Set.InjOn α (I : Set (Fin (m + 1)))\n-  · exact dgModuleAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k\n-      hI ha hb hk hi\n-  · by_cases hc : I.card = 2\n-    · exact dgModuleAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β\n-        I a b k hI ha hb hk hi hc\n-    · exact dgModuleAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k\n-        hI ha hb hk hi hc\n+  exact augmentation_proof_of_reindex_cases α I\n+    (fun hi ↦ dgModuleAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k\n+      hI ha hb hk hi)\n+    (fun hi hc ↦ dgModuleAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β\n+      I a b k hI ha hb hk hi hc)\n+    (fun hi hc ↦ dgModuleAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k\n+      hI ha hb hk hi hc)\n /-- 元の同じ実 augmentation データは、任意の単調添字変更と厳密に可換。 -/\n lemma dgModuleAugmentationPrismData_pullback\n     (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (n + 1) →o Fin 2) :\n",
+      "mathematical_scope": "Prop proof only; declaration type and all data constructions preserved"
+    }
+  ]
+}

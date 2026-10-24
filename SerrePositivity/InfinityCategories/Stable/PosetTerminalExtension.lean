@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension
 
 /-!
 概要：順序部分型の図式を元の順序集合へ厳密に延長する。
@@ -32,7 +32,7 @@ lemma exists_poset_downward_terminal_extension {P : Type u} [PartialOrder P]
       simpa only [hf, op_id, CategoryTheory.Functor.map_id_apply] using hv⟩
   let x (v : (nerve P) _⦋0⦌) : X _⦋0⦌ :=
     if hv : T (nerveEquiv v) then G.app (Opposite.op ⦋0⦌) (w v hv) else z
-  obtain ⟨F, hF, hv⟩ := SerrePositivity.KST.SConstruction.exists_extension_with_vertices A G x
+  obtain ⟨F, hF, hv⟩ := SerrePositivity.InfinityCategories.exists_extension_with_vertices A G x
     (by
       intro v
       dsimp only [x]

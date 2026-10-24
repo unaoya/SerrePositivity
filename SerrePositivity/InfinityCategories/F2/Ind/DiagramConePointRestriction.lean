@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeCommaInitial
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluation
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：元の Ind 図式の全錐 comma の点制限を、同じ元の評価頂点へ正規化する。

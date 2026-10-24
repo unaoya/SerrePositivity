@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFuncto
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：同値による元の指定余錐の保存・反映と、小さい κ-filtered 余極限の輸送。

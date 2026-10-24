@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanLocalRelativeJoinConeEnd
 public import SerrePositivity.InfinityCategories.F1B.KanJoinPrismFixed
 public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：comma fiber の普遍余錐から候補の局所余錐の余極限性を導く。

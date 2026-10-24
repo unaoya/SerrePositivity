@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialMap
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：小さい coherent unstraightening の底の射に沿う比較と底変換。

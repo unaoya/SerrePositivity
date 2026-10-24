@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：元の全余錐の形状制限と宇宙変更は、同じ全写像として可換。

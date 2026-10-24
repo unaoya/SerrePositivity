@@ -3474,3 +3474,87 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits
 #print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits
+
+#check @SerrePositivity.InfinityCategories.HasFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.HasFiniteLimits
+
+#check @SerrePositivity.InfinityCategories.HasFiniteColimits
+#print axioms SerrePositivity.InfinityCategories.HasFiniteColimits
+
+#check @SerrePositivity.InfinityCategories.isTerminalVertex_iff_ulift
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_iff_ulift
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_iff_ulift
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_ulift
+
+#check @SerrePositivity.InfinityCategories.reverseSimplex_vertex
+#print axioms SerrePositivity.InfinityCategories.reverseSimplex_vertex
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_of_isTerminalVertex_op
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_of_isTerminalVertex_op
+
+#check @SerrePositivity.InfinityCategories.IsInitialVertex.op_isTerminalVertex
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.op_isTerminalVertex
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_iff_isTerminalVertex_op
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_isTerminalVertex_op
+
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.op_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.op_isInitialVertex
+
+#check @SerrePositivity.InfinityCategories.edgeCosliceVertex
+#print axioms SerrePositivity.InfinityCategories.edgeCosliceVertex
+
+#check @SerrePositivity.InfinityCategories.edgeCosliceVertex_projection
+#print axioms SerrePositivity.InfinityCategories.edgeCosliceVertex_projection
+
+#check @SerrePositivity.InfinityCategories.IsInitialVertex.homMk_eq
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.homMk_eq
+
+#check @SerrePositivity.InfinityCategories.IsInitialVertex.isInitialHo₂
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.isInitialHo₂
+
+#check @SerrePositivity.InfinityCategories.IsInitialVertex.exists_stableCosliceLift
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.exists_stableCosliceLift
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_of_isInitialHo
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_of_isInitialHo
+
+#check @SerrePositivity.InfinityCategories.IsInitialVertex.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.of_vertexIso
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_of_vertexIso
+
+#check @SerrePositivity.InfinityCategories.IsColimitCone.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.of_vertexIso
+
+#check @SerrePositivity.InfinityCategories.isColimitCone_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_of_vertexIso
+
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.map_isInitialVertex
+
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.isInitialVertex_iff
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isInitialVertex_iff
+
+#check @SerrePositivity.InfinityCategories.JoinCocone.restrict
+#print axioms SerrePositivity.InfinityCategories.JoinCocone.restrict
+
+#check @SerrePositivity.InfinityCategories.JoinCocone.vertex_restrict
+#print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_restrict
+
+#check @SerrePositivity.InfinityCategories.exists_cocone_extension_of_trivialRestriction
+#print axioms SerrePositivity.InfinityCategories.exists_cocone_extension_of_trivialRestriction
+
+#check @SerrePositivity.InfinityCategories.exists_colimitCocone_extension_of_trivialRestriction
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_extension_of_trivialRestriction
+
+#check @SerrePositivity.InfinityCategories.hasColimit_iff_of_trivialRestriction
+#print axioms SerrePositivity.InfinityCategories.hasColimit_iff_of_trivialRestriction
+
+#check @SerrePositivity.InfinityCategories.sliceUnderRestrict_comp
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_comp
+
+#check @SerrePositivity.InfinityCategories.sliceUnderRestrict_isIso
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_isIso

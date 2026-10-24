@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeLabels
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallVerticesFreshLabel
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：ラベル付き積の小さい図式に、元の頂点に現れない頂点を持つ同じ積内の余錐を作る。

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SliceUnderRestriction
+
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRestriction
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftGluing
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
@@ -17,32 +19,6 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：図式の同型に沿う coslice 制限は同型。
-方針：逆射による錐の前合成が各次数で逆写像になることを示す。
-規約：f の IsIso インスタンスを使う。
-使われ方：Kerodon §4.3.6、Proposition 5.2.5.1 の標準単体による表示。 -/
-instance sliceUnderRestrict_isIso {K L X : SSet.{u}} (p : K ⟶ X)
-    (f : L ⟶ K) [IsIso f] : IsIso (sliceUnderRestrict p f) := by
-  apply (NatTrans.isIso_iff_isIso_app _).2
-  intro n
-  apply (isIso_iff_bijective _).2
-  constructor
-  · intro σ τ h
-    apply Subtype.ext
-    have hh := congrArg (fun z ↦ joinMap (inv f) (𝟙 _) ≫ z.val) h
-    change joinMap (inv f) (𝟙 _) ≫ (joinMap f (𝟙 _) ≫ σ.val) =
-      joinMap (inv f) (𝟙 _) ≫ (joinMap f (𝟙 _) ≫ τ.val) at hh
-    simpa only [← Category.assoc, ← joinMap_comp, IsIso.inv_hom_id,
-      Category.comp_id, joinMap_id, Category.id_comp] using hh
-  · intro τ
-    refine ⟨⟨joinMap (inv f) (𝟙 _) ≫ τ.val, ?_⟩, ?_⟩
-    · rw [← Category.assoc, joinInl_joinMap, Category.assoc, τ.property]
-      simp only [← Category.assoc, IsIso.inv_hom_id, Category.id_comp]
-    · apply Subtype.ext
-      change joinMap f (𝟙 _) ≫ (joinMap (inv f) (𝟙 _) ≫ τ.val) = τ.val
-      simp only [← Category.assoc, ← joinMap_comp, IsIso.hom_inv_id,
-        Category.comp_id, joinMap_id, Category.id_comp]
 
 /-- 概要：横の二射が同型である可換四角形の相対比較写像は同型。
 方針：四角形を pullback とし、その標準 pullback との比較同型を使う。

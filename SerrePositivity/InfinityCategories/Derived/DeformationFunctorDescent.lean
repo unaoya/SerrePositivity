@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DeformationLocalization
+public import SerrePositivity.InfinityCategories.F1B.DeformationLocalization
 /-!
 概要：指定変形比較を反転する関手について、同じ包含上の制限からの実降下比較を得る。
 方針：元の全単体ホモトピーを後合成し、各実成分辺の反転から全関手同型を作る。

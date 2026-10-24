@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.LeftFibrationConeInvariance
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 /-!
 概要：像の実錐の持ち上げを、持ち上げた元の錐の像へ同定して切断制限を比較する。
 方針：同じ join の宇宙同型と、錐の値の厳密な後合成公式を使う。

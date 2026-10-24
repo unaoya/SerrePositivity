@@ -208,7 +208,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.StableCospanPullbacks,
     `SerrePositivity.KST.LocalizingInvariants.TammeUniversalOre,
     `SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps,
-    `SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence,
+    `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence,
     `SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies,
     `SerrePositivity.KST.LocalizingInvariants.TammeRelativeOre,
     `SerrePositivity.KST.LocalizingInvariants.EquivalenceSpanTriangles,

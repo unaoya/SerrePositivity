@@ -24,7 +24,7 @@ lemma excisionCoreSourceOuter_to_input_vertex {X : SSet.{u}}
   rw [excisionCorePuncturedOuterCone_vertex]
   have h := congrArg JoinCone.vertex (excisionCoreInputConeRestriction_source F)
   rw [excisionCoreInputConeRestriction_cone, JoinCone.vertex_cast,
-    F2.restrictJoinCone_vertex] at h
+    restrictJoinCone_vertex] at h
   exact h
 
 lemma excisionCoreComparisonEdge_input_composite {X : SSet.{u}} [Quasicategory X]

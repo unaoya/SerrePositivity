@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-! 同じ標準単体族を、単体の番号とパラメーターを保って共通宇宙へ移す。 -/
 @[expose] public section

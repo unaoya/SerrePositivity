@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.Limit
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：左右 Kan 拡張の点ごとの添字と、その上の標準の錐・余錐。

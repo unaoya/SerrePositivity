@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopDiagramUniversalConeModel
 public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceInitial
-public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapIso
 
 /-!

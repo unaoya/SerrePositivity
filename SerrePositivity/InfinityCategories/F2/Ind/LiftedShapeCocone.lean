@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExist
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-!

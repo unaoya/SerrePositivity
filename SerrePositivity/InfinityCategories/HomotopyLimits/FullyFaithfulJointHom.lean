@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowFunc
 public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：充満忠実な元の関手は、元の共同 Hom・全 Yoneda 図式を全自然同型で保つ。

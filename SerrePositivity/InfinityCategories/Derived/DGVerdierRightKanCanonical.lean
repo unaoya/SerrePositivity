@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits
 public import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
-public import SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful
+public import SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful
 public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
 /-!
 概要：商上の任意関手は、商関手での制限からの実右 Kan 拡張である。
@@ -26,7 +26,7 @@ lemma dgVerdierRightKanCanonicalCone_isLimit (P : Set D) (hP : DGQuotient.localK
   obtain ⟨R⟩ := dgVerdierRightKanDiagram_nonempty A D P hP x
   apply (isLimitCone_iff_restrict_of_leftCofinal (dgVerdierRightKanMap A D P hP x R)
     (dgVerdierRightKanMap_isLeftCofinal A D P hP x R) _ _).mpr
-  let c := F2.restrictJoinCone (rightKanCanonicalCone (dgQuotientNerveProjection A D P) G
+  let c := restrictJoinCone (rightKanCanonicalCone (dgQuotientNerveProjection A D P) G
     (Simplex.vertex ((DGQuotient.inclusion A D P).obj x))) (dgVerdierRightKanMap A D P hP x R)
   have hd : IsLimitCone (R.postcompCone G) := by
     apply CosliceHomotopyRealization.postcompCone_isLimit R _

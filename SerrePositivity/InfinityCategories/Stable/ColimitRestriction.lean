@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
 public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
@@ -17,15 +19,6 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：余錐を部分図式へ制限する。
-方針：join の左因子で前合成する。
-規約：頂点を表す右の零単体は変えない。
-使われ方：貼り合わせの有限部分図式への余錐の制限。 -/
-def JoinCocone.restrict {K₀ K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) (f : K₀ ⟶ K) :
-    JoinCocone (f ≫ p) :=
-  ⟨joinMap f (𝟙 (Δ[0] : SSet.{u})) ≫ c.val, by
-    rw [← Category.assoc, joinInl_joinMap, Category.assoc, c.property]⟩
 
 /-- 概要：right anodyne な単射による余錐の制限は余極限性を保ち反映する。
 方針：余錐の coslice の制限が同値であることから始対象性を移す。

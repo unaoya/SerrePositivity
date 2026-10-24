@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation
 public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
-public import SerrePositivity.InfinityCategories.Derived.LimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverTerminal
 public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
 /-!

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanSh
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointSliceUncurry
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestrictionHom
 

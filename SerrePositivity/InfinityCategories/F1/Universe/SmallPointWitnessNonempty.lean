@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.PointWitnessContractibilityCriterion
 public import SerrePositivity.InfinityCategories.F1.Transport.NerveTransportRepresentation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：小さい Kan 複体の宇宙持ち上げの点上の表現空間は非空。

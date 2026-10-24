@@ -23,12 +23,12 @@ lemma excisionCorePuncturedSourceCone_boundary_val
     (hb : b ≫ nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) =
       cospanSquareBoundary ≫ Q)
     (hQ : squareVertex Q 0 0 = nerveVertex (excisionGridCorePoint 0 0)) :
-    (F2.restrictJoinCone (excisionCorePuncturedSourceCone
+    (restrictJoinCone (excisionCorePuncturedSourceCone
       (𝟙 (nerve ExcisionGridCoreIndex.{u}))) b).val = (pullbackCone Q).val := by
   apply thinNerveCone_val_eq_of_vertex
   · rw [Category.comp_id]
     exact hb
-  · rw [F2.restrictJoinCone_vertex, excisionCorePuncturedSourceCone_vertex,
+  · rw [restrictJoinCone_vertex, excisionCorePuncturedSourceCone_vertex,
       pullbackCone_vertex, hQ]
     rfl
 
@@ -39,7 +39,7 @@ lemma excisionCorePuncturedSourceCone_boundary_postcomp_val {X : SSet.{u}}
     (hb : b ≫ nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) =
       cospanSquareBoundary ≫ Q)
     (hQ : squareVertex Q 0 0 = nerveVertex (excisionGridCorePoint 0 0)) :
-    (F2.restrictJoinCone (excisionCorePuncturedSourceCone F) b).val =
+    (restrictJoinCone (excisionCorePuncturedSourceCone F) b).val =
       (pullbackCone (Q ≫ F)).val := by
   have h := congrArg (fun q ↦ q ≫ F)
     (excisionCorePuncturedSourceCone_boundary_val b Q hb hQ)

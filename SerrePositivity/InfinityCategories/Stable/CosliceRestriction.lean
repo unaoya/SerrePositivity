@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-! # 任意の right anodyne な単射による coslice の制限
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanUnit
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgLocalizationSource
-public import SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion
+public import SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion
 
 /-!
 # 既存 CAlg_R の元の ∞ 局所化普遍性

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 
 /-! # 余錐の下の二重 coslice の比較

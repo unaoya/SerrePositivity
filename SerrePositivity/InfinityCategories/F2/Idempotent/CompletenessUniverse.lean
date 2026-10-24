@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-!

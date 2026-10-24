@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramConePointRestriction
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
-public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 
 /-!
 概要：元の全図式 comma の試験族から、始点余錐を元の全錐 comma 内で構成する。

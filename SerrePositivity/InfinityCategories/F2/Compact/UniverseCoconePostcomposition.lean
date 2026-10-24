@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-!

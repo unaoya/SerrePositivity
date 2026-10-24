@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：元の前層 F への Yoneda slice と、F 自体を頂点に持つ同じ標準全余錐を構成する。

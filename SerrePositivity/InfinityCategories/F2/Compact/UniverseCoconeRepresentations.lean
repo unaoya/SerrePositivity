@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentationRestriction
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
-public import SerrePositivity.InfinityCategories.Stable.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!
 概要：元の一つの全余錐の宇宙変更表現を、図式部分と頂点へ同時に制限する。

@@ -1,0 +1,63 @@
+{
+  "moves": {
+    "SerrePositivity.InfinityCategories.Stable.Cocone": "SerrePositivity.InfinityCategories.Core.Cocone",
+    "SerrePositivity.InfinityCategories.Stable.BoundaryOpposite": "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+    "SerrePositivity.InfinityCategories.Stable.ConeOpposite": "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+    "SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence": "SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence",
+    "SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso": "SerrePositivity.InfinityCategories.Core.ColimitDiagramIso",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation": "SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoin": "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality": "SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundary": "SerrePositivity.InfinityCategories.Core.UniverseBoundary",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality",
+    "SerrePositivity.InfinityCategories.Stable.UniverseConeHom": "SerrePositivity.InfinityCategories.Core.UniverseConeHom",
+    "SerrePositivity.InfinityCategories.Stable.UniverseSlices": "SerrePositivity.InfinityCategories.Core.UniverseSlices",
+    "SerrePositivity.InfinityCategories.Stable.UniverseLimits": "SerrePositivity.InfinityCategories.Core.UniverseLimits",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps": "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+        "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+        "SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence",
+        "SerrePositivity.InfinityCategories.Core.ColimitDiagramIso",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
+        "SerrePositivity.InfinityCategories.Core.UniverseBoundary",
+        "SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom",
+        "SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality",
+        "SerrePositivity.InfinityCategories.Core.UniverseConeHom",
+        "SerrePositivity.InfinityCategories.Core.UniverseSlices",
+        "SerrePositivity.InfinityCategories.Core.UniverseLimits",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+      ]
+    }
+  },
+  "symbols": {
+    "SerrePositivity.InfinityCategories.Stable.Cocone": "SerrePositivity.InfinityCategories.Core.Cocone",
+    "SerrePositivity.InfinityCategories.Stable.BoundaryOpposite": "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+    "SerrePositivity.InfinityCategories.Stable.ConeOpposite": "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+    "SerrePositivity.InfinityCategories.Stable.CosliceRestrictionEquivalence": "SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence",
+    "SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso": "SerrePositivity.InfinityCategories.Core.ColimitDiagramIso",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinAugmentation": "SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoin": "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinNaturality": "SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundary": "SerrePositivity.InfinityCategories.Core.UniverseBoundary",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryHom": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom",
+    "SerrePositivity.InfinityCategories.Stable.UniverseBoundaryFilling": "SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling",
+    "SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexNaturality": "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality",
+    "SerrePositivity.InfinityCategories.Stable.UniverseConeHom": "SerrePositivity.InfinityCategories.Core.UniverseConeHom",
+    "SerrePositivity.InfinityCategories.Stable.UniverseSlices": "SerrePositivity.InfinityCategories.Core.UniverseSlices",
+    "SerrePositivity.InfinityCategories.Stable.UniverseLimits": "SerrePositivity.InfinityCategories.Core.UniverseLimits",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps": "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+  }
+}

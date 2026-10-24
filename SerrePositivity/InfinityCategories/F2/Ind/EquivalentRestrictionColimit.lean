@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.BoundaryFactorization
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：任意の同値な形状への制限が余極限を持てば、元の図式も余極限を持つ。

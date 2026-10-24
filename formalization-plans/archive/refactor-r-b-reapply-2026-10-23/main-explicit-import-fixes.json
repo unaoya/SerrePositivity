@@ -1,0 +1,19 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core/InitialTransport.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ]
+    },
+    "scripts/audit_infinity_stable.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful"
+      ]
+    }
+  }
+}

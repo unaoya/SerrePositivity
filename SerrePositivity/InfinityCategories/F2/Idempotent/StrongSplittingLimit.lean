@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 元の全図式の錐を元の冪等包含へ制限すると、指定した同じ全 Idem 錐を回収する。 -/
 lemma StrongSplitting.cone_restrict {X : SSet.{u}} {d : CoherentIdempotent X}
     (s : StrongSplitting d) :
-    (F2.restrictJoinCone (splittingDiagramCone s.val) idemInclusion).val = s.cone.val := by
+    (restrictJoinCone (splittingDiagramCone s.val) idemInclusion).val = s.cone.val := by
   change joinMap (𝟙 _) idemInclusion ≫ (walkingFullJoinCone.val ≫ s.val) =
     walkingJoinCone.val ≫ s.val
   rw [← Category.assoc, walkingFullJoinCone_restrict]
@@ -33,7 +33,7 @@ lemma StrongSplitting.cone_isLimit {X : SSet.{u}} [Quasicategory X]
   let s : StrongSplitting (idemInclusion ≫ F) := ⟨F, rfl⟩
   have h := (idemCone_isLimit_iff_restrict (splittingDiagramCone F)).mp
     (splittingDiagramCone_isLimit F)
-  have he : F2.restrictJoinCone (splittingDiagramCone F) idemInclusion = s.cone :=
+  have he : restrictJoinCone (splittingDiagramCone F) idemInclusion = s.cone :=
     Subtype.ext s.cone_restrict
   rw [he] at h
   exact h

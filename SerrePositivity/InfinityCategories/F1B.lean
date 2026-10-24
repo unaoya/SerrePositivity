@@ -1,5 +1,15 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence
+public import SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful
+public import SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension
+public import SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion
+public import SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion
+public import SerrePositivity.InfinityCategories.F1B.DeformationLocalization
+
+public import SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence
+public import SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory
+
 public import SerrePositivity.InfinityCategories.F1B.InitialQuillenRecovery
 
 public import SerrePositivity.InfinityCategories.F1B.QuillenA

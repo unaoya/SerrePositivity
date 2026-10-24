@@ -1,5 +1,45 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.InitialExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
+public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
+
+public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
+
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting
+public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
+
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
+public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
+public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
+public import SerrePositivity.InfinityCategories.Core.InitialHomotopy
+public import SerrePositivity.InfinityCategories.Core.InitialOpposite
+public import SerrePositivity.InfinityCategories.Core.InitialTransport
+public import SerrePositivity.InfinityCategories.Core.SliceUnderRestriction
+public import SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal
+
+public import SerrePositivity.InfinityCategories.Core.Cocone
+public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation
+public import SerrePositivity.InfinityCategories.Core.UniverseJoin
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Core.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom
+public import SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexNaturality
+public import SerrePositivity.InfinityCategories.Core.UniverseConeHom
+public import SerrePositivity.InfinityCategories.Core.UniverseSlices
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
+
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans

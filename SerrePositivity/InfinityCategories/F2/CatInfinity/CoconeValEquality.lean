@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：全余錐の射が等しい二つの指定余錐の余極限性の比較。

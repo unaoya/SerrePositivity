@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionRightDiagram
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：元の coherent 前層図式の共同評価から、同じ積上の小さい left fibration を作る。

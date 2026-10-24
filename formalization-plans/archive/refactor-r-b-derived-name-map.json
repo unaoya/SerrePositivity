@@ -1,0 +1,16 @@
+{
+  "dgCommaAugmentationCutPoints": "dgModuleAugmentationCutPoints",
+  "dgCommaAugmentationCutPoints_erase": "dgModuleAugmentationCutPoints_erase",
+  "dgCommaAugmentationPhase_double_cut_cancel": "dgModuleAugmentationPhase_double_cut_cancel",
+  "dgCommaAugmentationImage_double_cut_cancel": "dgModuleAugmentationImage_double_cut_cancel",
+  "dgCommaAugmentationImage_phase_double_cut_cancel": "dgModuleAugmentationImage_phase_double_cut_cancel",
+  "dgCommaAugmentationCutPoints_eq_filter_interior": "dgModuleAugmentationCutPoints_eq_filter_interior",
+  "dgCommaAugmentationCutPoints_image": "dgModuleAugmentationCutPoints_image",
+  "dgCommaAugmentationLeftCut_image_card": "dgModuleAugmentationLeftCut_image_card",
+  "dgCommaAugmentationRightCut_image_card": "dgModuleAugmentationRightCut_image_card",
+  "dgCommaAugmentationCut_injective_glue": "dgModuleAugmentationCut_injective_glue",
+  "dgCommaSimplexHomOrZero_pullback_of_inj": "dgSimplexHomOrZero_pullback_of_inj",
+  "dgCommaAugmentation_sum_mixed_cancel_filter": "dgModuleAugmentation_sum_mixed_cancel_filter",
+  "dgCommaDifferential_compose_of_indices": "dgDifferential_compose_of_indices",
+  "dgCommaNerve_vertex_identity_simplex": "dgNerve_vertex_identity_simplex"
+}

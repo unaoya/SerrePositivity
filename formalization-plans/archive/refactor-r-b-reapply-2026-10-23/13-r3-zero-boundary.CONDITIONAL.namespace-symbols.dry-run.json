@@ -1,0 +1,13 @@
+{
+  "moves": {},
+  "redirects": {},
+  "file_symbol_edits": [
+    "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean"
+  ],
+  "redirect_hashes": {},
+  "updated_files": [
+    "SerrePositivity/InfinityCategories/Core/ZeroBoundaryExtension.lean",
+    "scripts/audit_kst_s_construction.lean"
+  ],
+  "applied": false
+}

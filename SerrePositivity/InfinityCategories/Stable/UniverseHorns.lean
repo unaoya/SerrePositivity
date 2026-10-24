@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.UniverseBoundary
+public import SerrePositivity.InfinityCategories.Core.UniverseBoundary
 
 /-! # 標準ホーンの宇宙比較
 

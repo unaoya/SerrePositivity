@@ -15,7 +15,7 @@ open CategoryTheory SSet
 lemma isLimitCone_iff_restrict_of_leftCofinal {A B X : SSet.{u}}
     [Quasicategory B] [Quasicategory X] (u : A ⟶ B) (hu : IsLeftCofinal u)
     (F : B ⟶ X) (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c u) :=
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c u) :=
   (sliceOverRestrict_isQCatEquivalence_of_leftCofinal u hu F).choose.isTerminalVertex_iff c
 /-- 任意 left cofinal な形状写像への制限は、極限の存在を保存し反映する。 -/
 lemma hasLimit_iff_restrict_of_leftCofinal {A B X : SSet.{u}}
@@ -23,6 +23,6 @@ lemma hasLimit_iff_restrict_of_leftCofinal {A B X : SSet.{u}}
     HasLimit F ↔ HasLimit (u ≫ F) := by
   constructor
   · rintro ⟨c, hc⟩
-    exact ⟨F2.restrictJoinCone c u, (isLimitCone_iff_restrict_of_leftCofinal u hu F c).mp hc⟩
+    exact ⟨restrictJoinCone c u, (isLimitCone_iff_restrict_of_leftCofinal u hu F c).mp hc⟩
   · exact hasLimit_of_leftCofinal u hu F
 end SerrePositivity.InfinityCategories

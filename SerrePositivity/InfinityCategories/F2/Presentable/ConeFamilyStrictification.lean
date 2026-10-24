@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceFamilyStrictification
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinFaces
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseJoinSimplexShapes
+public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 
 /-!
 概要：元の coherent な錐族を、同じ添字と WithInitial の積上の一つの strict Kan 図式へ移す。

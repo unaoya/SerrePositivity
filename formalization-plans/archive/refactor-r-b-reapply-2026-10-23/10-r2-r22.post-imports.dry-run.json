@@ -1,0 +1,26 @@
+{
+  "moves": {},
+  "redirects": {},
+  "file_symbol_edits": [],
+  "redirect_hashes": {},
+  "updated_files": [
+    "SerrePositivity/InfinityCategories/Core/BoundaryOpposite.lean",
+    "SerrePositivity/InfinityCategories/Core/ColimitDiagramIso.lean",
+    "SerrePositivity/InfinityCategories/Core/ConeOpposite.lean",
+    "SerrePositivity/InfinityCategories/Core/CosliceRestrictionEquivalence.lean",
+    "SerrePositivity/InfinityCategories/Core/UniverseLimits.lean",
+    "SerrePositivity/InfinityCategories/Core/UniverseSSetMaps.lean",
+    "SerrePositivity/InfinityCategories/Core.lean",
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean",
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean",
+    "SerrePositivity/InfinityCategories/Stable/ColimitCoconeFamily.lean",
+    "SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean",
+    "SerrePositivity/InfinityCategories/Stable/ColimitRestriction.lean",
+    "SerrePositivity/InfinityCategories/Stable/Definition.lean",
+    "SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean",
+    "SerrePositivity/InfinityCategories/Stable/InitialTransport.lean",
+    "SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean",
+    "SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean"
+  ],
+  "applied": false
+}

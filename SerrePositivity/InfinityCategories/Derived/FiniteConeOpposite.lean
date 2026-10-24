@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ConeOpposite
+public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite

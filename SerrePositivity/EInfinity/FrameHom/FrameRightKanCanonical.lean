@@ -39,7 +39,7 @@ lemma frameRightKanCanonicalCone_isLimit
     exact simplicialHomotopyOfFunctorEdge_vertex_isInvertible
       (FunctorIso.edge (augmentationFunctorIso A p q hp).symm)
       (FunctorIso.edge_isInvertible (augmentationFunctorIso A p q hp).symm) a
-  have he : (F2.restrictJoinCone
+  have he : (restrictJoinCone
       (rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (nerveVertex X)))
       (frameRightKanMap A p q hp)).val = (R.postcompCone G).val := by
     change joinMap (𝟙 (Δ[0] : SSet.{u})) (frameRightKanMap A p q hp) ≫

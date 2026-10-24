@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.RightStraighteningSmallRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredElementsCondition
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightStraighteningColimit
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!
 概要：元の分類値の元の圏の κ-filtered 性は、元の right fibration の全空間の同じ条件。

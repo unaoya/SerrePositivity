@@ -34,7 +34,7 @@ lemma excisionCorePuncturedLimitCone_restrict {X : SSet.{u}} [Quasicategory X]
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X)
     (d : JoinCone (pullbackCospan (grid22Face (excisionGridCoreDiagram ≫ F) 2 2)))
     (hd : IsLimitCone d) :
-    (F2.restrictJoinCone (excisionCorePuncturedLimitCone F d hd)
+    (restrictJoinCone (excisionCorePuncturedLimitCone F d hd)
       excisionCoreCospanBoundary).val = d.val :=
   (excisionCorePunctured_limitCone_extension F d hd).choose_spec.2.1
 

@@ -1,0 +1,86 @@
+{
+  "schema": "r-b-main-reapplication/v1",
+  "prepared_against_main": "571e451cc78316c899ce8f6f47ac25f6d73abf25",
+  "worktree_branch": "refactor/r-b",
+  "no_rebase": true,
+  "main_write_gate": "coordinator explicitly says main 空き; R-C completed; only R-B writes main during apply",
+  "completed_stage_order": [
+    "00-r24",
+    "01-stable-kst",
+    "02-derived-sharing"
+  ],
+  "future_stage_order": [
+    "10-r2-r22: materialize extraction blocks/new modules -> modules.json -> post-imports.json -> audit metadata",
+    "11-r14: modules.json -> audit metadata",
+    "12-r23: modules.json -> namespace-symbols.json -> audit metadata",
+    "13-r3: approved ZeroBoundaryExtension conditional moves/namespace first; then modules.json -> namespace-symbols.json -> post-imports.json -> audit metadata"
+  ],
+  "materialize_before_tool": [
+    "02-derived-sharing: canonical shared files and shared proof helper; exact e0ce9b2c8 source/proof edits",
+    "10-r2-r22: extraction sidecar; remove originals; retain real Stable/F1-specific declarations"
+  ],
+  "conditional_not_authorized_yet": [],
+  "conditional_reason": "Approved 2026-10-24: ZeroBoundaryExtension may move to Core if InitialExtension/InitialOpposite are moved together with a Core-only closure; this plan does so.",
+  "path_refresh_required": [
+    "F2 R19 may relocate 3 sources to F2/CatInfinity",
+    "F1 sources currently in F1/Joins",
+    "recompute all reviewed redirect hashes after R-C"
+  ],
+  "verification": {
+    "entrypoint": "scripts/refactor/verify.sh",
+    "inspect_each_audit_rc_not_only_shell_exit": true,
+    "derived_maxRecDepth": "if default recursion limit fails in code generator, rerun audit_derived_infinity with -DmaxRecDepth=20000; preserve audit logic",
+    "extra_gates": [
+      "original per-item Stable/Derived builds and three audits",
+      "Core/F1/F1B forbidden closure checks",
+      "R23 Core/F2/Derived builds + core/f2/derived/f1b audits",
+      "UniverseSSetMaps Core/HomotopyLimits/F2/Stable builds + core/homotopy audits",
+      "F1 two declarations: Core/F1/Stable/Derived builds + core/f1/f1b/stable/derived audits; instance visible via original F1 imports"
+    ],
+    "commit_body_required": "F1 の 2 宣言を Core へ移した"
+  },
+  "mapping_document": "formalization-plans/refactoring-infinity.md §5; preserve approved CofinalLimitExistence -> F1B target",
+  "deferred_data": "formalization-plans/archive/refactor-near-duplicates-derived-2026-10-23.md; 19 data pairs remain D-lane decision, no data body changes",
+  "completed_source_commits": [
+    "aa2236b66a2a294ed40b7bf5f7cfc5d4231540db",
+    "20f3cc257c4cd80ccd3ad6aadf95d22353fd4070",
+    "e0ce9b2c80ca93dce9ff5e53a31fb8db815bbd16"
+  ],
+  "execution_notes": [
+    "Do not cherry-pick documentation-only commits listed as excluded.",
+    "Use only completed semantic commits OR their module plans plus source/materialization deltas, never both.",
+    "Apply all future plans only after R-C and coordinator main 空き. No worktree rebase or .lake reclone.",
+    "Plans with file_symbols/import keys for new modules are second-phase plans; those files must be materialized/moved first.",
+    "Treat current main working-tree snapshot hashes as preconditions; refresh against post-R-C checkout before applying.",
+    "move_module.py default dry run is read-only. Apply requires --apply; tool stages explicit moves/removals only.",
+    "verify.sh currently does not propagate every individual audit failure through its final shell exit; inspect every audit rc and build result in verify.log. Do not report success only from shell rc.",
+    "No new sorry/axiom; preserve every declaration type/proof except previously approved four Prop proof replacements."
+  ],
+  "current_universe_sset_maps_importer_count": 18,
+  "source_path_warning": "main checkout contains R-A uncommitted edits and not-yet-applied R-C changes; no source paths/hashes may be treated as post-R-C facts.",
+  "tool_sha256": "1c0cffe9428cf4588431c82a3594472c0f3fbb89717aefe6bb8bb56d57c8547a",
+  "verify_script_sha256": "cf843dc8f6557ddb7ae9e211c1aa4a779119c3edeb06fcff5784e0a901752fb2",
+  "preparation_status": "complete: JSON plans and three source commit candidates prepared; main application not started",
+  "validation_summary": {
+    "main_read_only_dry_runs": 7,
+    "isolated_fixture_phases": 13,
+    "source_snapshots": 44,
+    "partial_extraction_declarations": 29,
+    "Core_and_F1B_forbidden_closure_errors": 0,
+    "missing_project_modules": 0,
+    "new_higher_layer_diagnostics_beyond_current_F1B_aggregate": 0,
+    "DGNerve_direct_Derived_edges": 0,
+    "conditional_R3_requires_explicit_permission": true
+  },
+  "method_change": "User superseded worktree rebase workflow: keep refactor/r-b unchanged; reapply on main after R-C and explicit main 空き signal.",
+  "application": {
+    "base": "ad0422789",
+    "status": "all source moves applied; Core build passed, aggregate builds and verify.sh pending",
+    "whole_module_moves": 35,
+    "duplicate_modules_deleted": 12,
+    "declaration_extractions": 29,
+    "shared_data_invariant": "86 unchanged modulo approved generic-name replacements",
+    "Prop_types_invariant": "four headers identical to ad0422789",
+    "main_write_exclusivity": "R-B only, user authorization 2026-10-24"
+  }
+}

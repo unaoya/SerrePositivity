@@ -1,0 +1,27 @@
+{
+  "redirects": {
+    "SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison": "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison",
+    "SerrePositivity.KST.SConstruction.RelativeInitialEndpoint": "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint",
+    "SerrePositivity.KST.SConstruction.InitialBoundaryTransport": "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
+    "SerrePositivity.KST.SConstruction.TerminalBoundaryTransport": "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport"
+  },
+  "symbols": {
+    "SerrePositivity.KST.SConstruction.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting": "SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting",
+    "SerrePositivity.KST.SConstruction.sliceUnder_empty_hom_ext": "SerrePositivity.InfinityCategories.sliceUnder_empty_hom_ext",
+    "SerrePositivity.KST.SConstruction.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting": "SerrePositivity.InfinityCategories.cosliceEndpointMap_trivialKanFibration_of_initialBoundaryLifting",
+    "SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift": "SerrePositivity.InfinityCategories.exists_relativeInitialCosliceLift",
+    "SerrePositivity.KST.SConstruction.stdSimplex_firstVertex_leftAnodyne": "SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne",
+    "SerrePositivity.KST.SConstruction.pointCosliceVertexOfEdge_projection": "SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge_projection",
+    "SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_invertibleEdge": "SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_invertibleEdge",
+    "SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_vertexIso": "SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_vertexIso",
+    "SerrePositivity.KST.SConstruction.terminalBoundaryLifting_of_initialBoundaryLifting_op": "SerrePositivity.InfinityCategories.terminalBoundaryLifting_of_initialBoundaryLifting_op",
+    "SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.op_initial": "SerrePositivity.InfinityCategories.TerminalBoundaryLifting.op_initial",
+    "SerrePositivity.KST.SConstruction.TerminalBoundaryLifting.of_vertexIso": "SerrePositivity.InfinityCategories.TerminalBoundaryLifting.of_vertexIso"
+  },
+  "redirect_hashes": {
+    "SerrePositivity.KST.SConstruction.RelativeInitialCosliceComparison": "a2004d675993304d503a4627bb063f231b1b3aec1235dc266ece57f2eb369c50",
+    "SerrePositivity.KST.SConstruction.RelativeInitialEndpoint": "7e5c46e23e004c1578ad9ed8dffa6c41014861ec7e7c7c7d729070092ac4fb1d",
+    "SerrePositivity.KST.SConstruction.InitialBoundaryTransport": "bdafc4c30b2628178848ac32857a4ec6d0cfe90c8732c99829d1d55e2905ce27",
+    "SerrePositivity.KST.SConstruction.TerminalBoundaryTransport": "16e46bc1675b4e5ed7b558b47a469193ddb2fc5a8d1fc0dfce567dfab961789e"
+  }
+}

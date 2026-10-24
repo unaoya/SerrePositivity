@@ -28,30 +28,30 @@ lemma excisionFullPunctured_cone_extension {X : SSet.{u}} [Quasicategory X]
     (F : nerve ExcisionFullPuncturedIndex.{u} ⟶ X)
     (c : JoinCone (nerveMap excisionCorePuncturedToFull.toFunctor ≫ F)) :
     ∃ d : JoinCone F,
-      F2.restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor) = c ∧
+      restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor) = c ∧
         d.vertex = c.vertex := by
   have := excisionCorePuncturedToFull_nerve_mono.{u}
   have := sliceOverRestrict_trivialKanFibration F
     (nerveMap excisionCorePuncturedToFull.toFunctor)
       excisionCorePuncturedToFull_leftAnodyne
-  exact F2.exists_cone_extension_of_trivialRestriction _ _ c
+  exact exists_cone_extension_of_trivialRestriction _ _ c
 
 lemma excisionFullPunctured_limitCone_extension {X : SSet.{u}} [Quasicategory X]
     (F : nerve ExcisionFullPuncturedIndex.{u} ⟶ X)
     (c : JoinCone (nerveMap excisionCorePuncturedToFull.toFunctor ≫ F))
     (hc : IsLimitCone c) :
     ∃ d : JoinCone F, IsLimitCone d ∧
-      F2.restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor) = c ∧
+      restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor) = c ∧
         d.vertex = c.vertex := by
   have := excisionCorePuncturedToFull_nerve_mono.{u}
   have := sliceOverRestrict_trivialKanFibration F
     (nerveMap excisionCorePuncturedToFull.toFunctor)
       excisionCorePuncturedToFull_leftAnodyne
-  exact F2.exists_limitCone_extension_of_trivialRestriction _ _ c hc
+  exact exists_limitCone_extension_of_trivialRestriction _ _ c hc
 
 lemma excisionFullPunctured_limit_iff {X : SSet.{u}} [Quasicategory X]
     {F : nerve ExcisionFullPuncturedIndex.{u} ⟶ X} (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c
       (nerveMap excisionCorePuncturedToFull.toFunctor)) := by
   have := excisionCorePuncturedToFull_nerve_mono.{u}
   exact isLimitCone_iff_restrict_of_leftAnodyne c _ excisionCorePuncturedToFull_leftAnodyne

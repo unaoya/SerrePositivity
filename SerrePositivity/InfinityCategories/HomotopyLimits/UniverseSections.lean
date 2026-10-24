@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：切断空間の ULift と持ち上げた射影の切断空間を厳密に比較する。

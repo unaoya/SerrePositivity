@@ -39,16 +39,16 @@ lemma excisionGridCoreIdentityCone_vertex :
 def excisionCorePuncturedSourceCone {X : SSet.{u}}
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X) :
     JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F) :=
-  (F2.restrictJoinCone excisionGridCoreIdentityCone.{u}
+  (restrictJoinCone excisionGridCoreIdentityCone.{u}
     (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured))).postcomp F
 
 lemma excisionCorePuncturedSourceCone_vertex {X : SSet.{u}}
     (F : nerve ExcisionGridCoreIndex.{u} ⟶ X) :
     (excisionCorePuncturedSourceCone F).vertex =
       F.app (Opposite.op ⦋0⦌) (nerveVertex (excisionGridCorePoint 0 0)) := by
-  change ((F2.restrictJoinCone excisionGridCoreIdentityCone.{u}
+  change ((restrictJoinCone excisionGridCoreIdentityCone.{u}
     (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured))).postcomp F).vertex = _
-  rw [JoinCone.vertex_postcomp, F2.restrictJoinCone_vertex,
+  rw [JoinCone.vertex_postcomp, restrictJoinCone_vertex,
     excisionGridCoreIdentityCone_vertex]
 
 end SerrePositivity.InfinityCategories

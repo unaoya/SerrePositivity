@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 lemma normalizedConeRestriction_cone {K L X : SSet.{u}} (p : K ⟶ X) (i : L ⟶ K)
     {q : L ⟶ X} (hi : i ≫ p = q) (c : JoinCone p) :
     (F2.normalizedConeRestriction p i hi).app (Opposite.op ⦋0⦌) c =
-      (F2.restrictJoinCone c i).cast hi := by
+      (restrictJoinCone c i).cast hi := by
   cases hi
   rfl
 

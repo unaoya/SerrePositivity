@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-! # 恒等射の余錐の普遍性
 概要：可逆な射は点の coslice の始対象となり、恒等射は一点図式の余極限を与える。

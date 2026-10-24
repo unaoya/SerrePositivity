@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
 public import SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary
 public import SerrePositivity.InfinityCategories.Stable.Pointed

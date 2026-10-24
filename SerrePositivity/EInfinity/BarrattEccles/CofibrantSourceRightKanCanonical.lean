@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanLimits
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKanCanonical
 public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
-public import SerrePositivity.InfinityCategories.Derived.RightKanPrecompositionFaithful
+public import SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful
 
 /-!
 # 元の Kan hammock 上の標準右 Kan 条件

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.ZeroBoundaryExtension
+public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
 
 /-! # 枠の図式の族の相対境界延長

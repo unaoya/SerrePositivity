@@ -26,7 +26,7 @@ lemma excisionComparison_theta_invertible_postcomp {X : SSet.{u}} [Quasicategory
     (hi : IsLimitCone i)
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F))
     (hc : IsLimitCone c)
-    (hr : (F2.restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
+    (hr : (restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
       (excisionCorePuncturedLimitCone
         (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)
         i hi).val)

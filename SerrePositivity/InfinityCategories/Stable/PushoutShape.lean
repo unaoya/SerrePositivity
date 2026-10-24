@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.Pullback
 public import SerrePositivity.InfinityCategories.Core.JoinLeftColimits
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-! # span の余錐と正方形
 

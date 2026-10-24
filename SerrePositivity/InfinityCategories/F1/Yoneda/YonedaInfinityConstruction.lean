@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningRepresentation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.Coherent.UniversalCoherentReconstructionComponents
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：twisted arrow の実際の分類図式から、空間値 Hom 関手と Yoneda 写像を構成する。

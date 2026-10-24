@@ -21,13 +21,13 @@ def excisionCorePuncturedOuterCone {X : SSet.{u}}
     {F : nerve ExcisionGridCoreIndex.{u} ⟶ X}
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F)) :
     JoinCone (pullbackCospan (grid22Face (excisionGridCoreDiagram ≫ F) 1 1)) :=
-  (F2.restrictJoinCone c excisionCoreOuterCospanBoundary).cast
+  (restrictJoinCone c excisionCoreOuterCospanBoundary).cast
     (excisionCoreOuterCospanBoundary_diagram F)
 
 lemma excisionCorePuncturedOuterCone_vertex {X : SSet.{u}}
     {F : nerve ExcisionGridCoreIndex.{u} ⟶ X}
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫ F)) :
     (excisionCorePuncturedOuterCone c).vertex = c.vertex :=
-  F2.restrictJoinCone_vertex c _
+  restrictJoinCone_vertex c _
 
 end SerrePositivity.InfinityCategories

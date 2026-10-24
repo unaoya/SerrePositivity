@@ -1,0 +1,211 @@
+{
+  "redirects": {
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+  },
+  "symbols": {
+    "dgCommaAugmentationCutPoints": "dgModuleAugmentationCutPoints",
+    "dgCommaAugmentationCutPoints_erase": "dgModuleAugmentationCutPoints_erase",
+    "dgCommaAugmentationPhase_double_cut_cancel": "dgModuleAugmentationPhase_double_cut_cancel",
+    "dgCommaAugmentationImage_double_cut_cancel": "dgModuleAugmentationImage_double_cut_cancel",
+    "dgCommaAugmentationImage_phase_double_cut_cancel": "dgModuleAugmentationImage_phase_double_cut_cancel",
+    "dgCommaAugmentationCutPoints_eq_filter_interior": "dgModuleAugmentationCutPoints_eq_filter_interior",
+    "dgCommaAugmentationCutPoints_image": "dgModuleAugmentationCutPoints_image",
+    "dgCommaAugmentationLeftCut_image_card": "dgModuleAugmentationLeftCut_image_card",
+    "dgCommaAugmentationRightCut_image_card": "dgModuleAugmentationRightCut_image_card",
+    "dgCommaAugmentationCut_injective_glue": "dgModuleAugmentationCut_injective_glue",
+    "dgCommaSimplexHomOrZero_pullback_of_inj": "dgSimplexHomOrZero_pullback_of_inj",
+    "dgCommaAugmentation_sum_mixed_cancel_filter": "dgModuleAugmentation_sum_mixed_cancel_filter",
+    "dgCommaDifferential_compose_of_indices": "dgDifferential_compose_of_indices",
+    "dgCommaNerve_vertex_identity_simplex": "dgNerve_vertex_identity_simplex",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints": "SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_erase": "SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_erase",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationPhase_double_cut_cancel": "SerrePositivity.InfinityCategories.dgModuleAugmentationPhase_double_cut_cancel",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationImage_double_cut_cancel": "SerrePositivity.InfinityCategories.dgModuleAugmentationImage_double_cut_cancel",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationImage_phase_double_cut_cancel": "SerrePositivity.InfinityCategories.dgModuleAugmentationImage_phase_double_cut_cancel",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_eq_filter_interior": "SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_eq_filter_interior",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationCutPoints_image": "SerrePositivity.InfinityCategories.dgModuleAugmentationCutPoints_image",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationLeftCut_image_card": "SerrePositivity.InfinityCategories.dgModuleAugmentationLeftCut_image_card",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationRightCut_image_card": "SerrePositivity.InfinityCategories.dgModuleAugmentationRightCut_image_card",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentationCut_injective_glue": "SerrePositivity.InfinityCategories.dgModuleAugmentationCut_injective_glue",
+    "SerrePositivity.InfinityCategories.dgCommaSimplexHomOrZero_pullback_of_inj": "SerrePositivity.InfinityCategories.dgSimplexHomOrZero_pullback_of_inj",
+    "SerrePositivity.InfinityCategories.dgCommaAugmentation_sum_mixed_cancel_filter": "SerrePositivity.InfinityCategories.dgModuleAugmentation_sum_mixed_cancel_filter",
+    "SerrePositivity.InfinityCategories.dgCommaDifferential_compose_of_indices": "SerrePositivity.InfinityCategories.dgDifferential_compose_of_indices",
+    "SerrePositivity.InfinityCategories.dgCommaNerve_vertex_identity_simplex": "SerrePositivity.InfinityCategories.dgNerve_vertex_identity_simplex",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient": "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+  },
+  "imports": {
+    "SerrePositivity/InfinityCategories/DGNerve.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.DGNerve.VertexIdentity"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases",
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex"
+      ]
+    },
+    "scripts/audit_derived_infinity.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.DGNerve.VertexIdentity",
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex"
+      ]
+    },
+    "scripts/audit_infinity_stable.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.DGNerve.VertexIdentity",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugCutReindex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugPrismSimplex"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugImageCorrection.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugQuadraticCutExpansion.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGCommaAugCorrectionDifferential"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutReindex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPrismSimplex"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationImageCorrection.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationQuadraticCancellation"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationQuadraticCutExpansion.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics",
+        "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugCorrection.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCorrection.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugLinearCancellation.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationLinearCancellation.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugCutErasure.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutErasure.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugCutBoundary.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutBoundary.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugActualComponent.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.VertexIdentity"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationActualComponent.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.DGNerve.VertexIdentity"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismSimplex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGCommaAugPrismReindex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismSimplex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationPrismReindex.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Derived.AugmentationProofCases"
+      ]
+    }
+  },
+  "redirect_hashes": {
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugPhaseDoubleCut": "d3ed4ae129d3dbfa8dfa30dfd105b57ec08959f941312094b7da6836215f1c4a",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns": "03c124d132998d2d2f0c686e92bfd2f522c6259ac2fa602fe362526126597c85",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexIndex": "a338fcfcf172ef37184207fca239280cf450a2e6155ab6366fbd0e3ddabb6802",
+    "SerrePositivity.InfinityCategories.Derived.DGCommaAugReindexCoefficient": "6269c0589e89c63191eb410609165548d8a45881308c38a64c1e5a930a1b6b7d",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut": "a9760faf696234c11c22384529fd8549e55f40fb56b48c6ca7e54c9387fd5d22",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationImageCutSigns": "8b5dd40e074164ce663e1fbfd5d3dae6133abfa0aa1cac40e83db71a60203110",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexIndex": "b34628aa1442aaf84072a19745934ba120e1d9110401f27a41a964ddda6ede73",
+    "SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationReindexCoefficient": "a1f29ec7ce053a423033a7c40090939c60b9d71fed2f6f727b00f3739f05d95e"
+  }
+}

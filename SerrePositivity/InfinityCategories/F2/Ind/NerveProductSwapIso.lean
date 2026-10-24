@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：積の通常の添字の nerve を、順序を入れ替えた二つの nerve の積へ同定する。

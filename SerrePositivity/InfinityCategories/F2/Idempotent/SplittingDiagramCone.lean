@@ -27,7 +27,7 @@ def splittingDiagramCone {X : SSet.{u}} (F : SplitShape ⟶ X) : JoinCone F :=
 
 /-- 元の始対象の一点への制限は、元の分裂頂点への定値な全錐。 -/
 lemma splittingDiagramCone_point {X : SSet.{u}} (F : SplitShape ⟶ X) :
-    (F2.restrictJoinCone (splittingDiagramCone F) (nervePoint walkingImage)).val =
+    (restrictJoinCone (splittingDiagramCone F) (nervePoint walkingImage)).val =
       SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex walkingImage)) := by
   change joinMap (𝟙 (Δ[0] : SSet.{u})) (nervePoint walkingImage) ≫
     (walkingFullJoinCone.val ≫ F) = _

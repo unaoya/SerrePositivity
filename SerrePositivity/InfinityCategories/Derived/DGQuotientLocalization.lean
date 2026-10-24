@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanUnit
-public import SerrePositivity.InfinityCategories.Derived.LocalizationRightKanCriterion
+public import SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion
 /-!
 概要：平坦な Drinfeld 商の dg nerve は、実 Verdier 辺に関する ∞ 圏的局所化。
 方針：全標的での実右 Kan 延長・単位可逆性・標準右 Kan 条件を全関手圏の普遍性へ渡す。

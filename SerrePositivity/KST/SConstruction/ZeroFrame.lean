@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FirstRow
 public import SerrePositivity.KST.SConstruction.FrameBoundaryExtension
-public import SerrePositivity.KST.SConstruction.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension
 
 /-! # 第一行と零対角の枠
 概要：第一行に全ての対角を追加した順序部分を扱う。

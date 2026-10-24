@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-! # 等しい図式の上での余錐の読み替え
 

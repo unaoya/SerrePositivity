@@ -208,7 +208,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.catPullbackDiagram
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementNatTrans_isEquivalence
 #check @SerrePositivity.InfinityCategories.F2.catPullbackReplacementDiagramIso
-#check @SerrePositivity.InfinityCategories.F2.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_precompositionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.exists_limitCone_extension_of_precompositionEquivalence
 #check @SerrePositivity.InfinityCategories.F2.exists_limitCone_of_functorIso
 #check @SerrePositivity.InfinityCategories.F2.catPullbackCone_isLimit

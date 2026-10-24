@@ -1,0 +1,114 @@
+{
+  "imports": {
+    "SerrePositivity/InfinityCategories/Core.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer",
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Core.InitialTransport",
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal"
+      ],
+      "remove": []
+    },
+    "SerrePositivity/InfinityCategories/Core/BoundaryOpposite.lean": {
+      "add": [],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/ConeOpposite.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite"
+      ],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/UniverseLimits.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal"
+      ],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/UniverseSSetMaps.lean": {
+      "add": [],
+      "remove": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/CosliceRestrictionEquivalence.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+        "SerrePositivity.InfinityCategories.Core.SliceMap"
+      ],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Core/ColimitDiagramIso.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer"
+      ],
+      "remove": [
+        "SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitCoconeFamily.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitExistenceTransfer.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/ColimitRestriction.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/Definition.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/InitialOpposite.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/InitialTransport.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialTransport"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/UniverseZeroObjects.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal"
+      ]
+    },
+    "SerrePositivity/InfinityCategories/Stable/ZeroHomotopy.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Core.InitialHomotopy"
+      ]
+    }
+  }
+}

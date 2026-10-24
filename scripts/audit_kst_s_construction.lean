@@ -303,10 +303,10 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
 #check @SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
 #print axioms SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
-#check @SerrePositivity.KST.SConstruction.exists_extension_with_vertices
-#print axioms SerrePositivity.KST.SConstruction.exists_extension_with_vertices
-#check @SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
-#print axioms SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
+#check @SerrePositivity.InfinityCategories.exists_extension_with_vertices
+#print axioms SerrePositivity.InfinityCategories.exists_extension_with_vertices
+#check @SerrePositivity.InfinityCategories.exists_extension_of_initial_or_terminal_endpoints
+#print axioms SerrePositivity.InfinityCategories.exists_extension_of_initial_or_terminal_endpoints
 #check @SerrePositivity.KST.SConstruction.zeroChoices
 #print axioms SerrePositivity.KST.SConstruction.zeroChoices
 #check @SerrePositivity.KST.SConstruction.zeroChoices_isContractibleKan

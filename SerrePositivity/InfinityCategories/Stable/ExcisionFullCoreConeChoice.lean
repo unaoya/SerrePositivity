@@ -33,7 +33,7 @@ lemma exists_excisionFullLimitCone_of_core {X : SSet.{u}} [Quasicategory X]
     (hc : IsLimitCone c) :
     ∃ d : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F),
       IsLimitCone d ∧
-      (F2.restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor)).val = c.val ∧
+      (restrictJoinCone d (nerveMap excisionCorePuncturedToFull.toFunctor)).val = c.val ∧
       d.vertex = c.vertex := by
   let c' : JoinCone (nerveMap excisionCorePuncturedToFull.toFunctor ≫
       (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F)) :=
@@ -50,7 +50,7 @@ lemma exists_excisionFullLimitCone_of_input {X : SSet.{u}} [Quasicategory X]
     (hd : IsLimitCone d) :
     ∃ c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F),
       IsLimitCone c ∧
-      (F2.restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
+      (restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
         (excisionCorePuncturedLimitCone
           (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)
           d hd).val ∧ c.vertex = d.vertex := by
@@ -64,7 +64,7 @@ lemma excisionReplaceInitial_coreOuterCone_val {X : SSet.{u}}
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F))
     (d : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫
       (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)))
-    (hr : (F2.restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
+    (hr : (restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
       d.val) :
     (pullbackCone (excisionGridSuspensionAt 0 0 ≫ excisionReplaceInitial c)).val =
       (excisionCorePuncturedOuterCone d).val := by

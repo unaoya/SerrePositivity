@@ -151,7 +151,7 @@ public import SerrePositivity.KST.LocalizingInvariants.TammeUniversalOre
 
 public import SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps
 
-public import SerrePositivity.KST.LocalizingInvariants.LimitProjectionExistence
+public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
 
 public import SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies
 

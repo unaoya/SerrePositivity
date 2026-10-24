@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Cocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.DGNerve.FullInclusionExtension
 public import SerrePositivity.InfinityCategories.Derived.CosliceBoundaryFromJoinFaces
 

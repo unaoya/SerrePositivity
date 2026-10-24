@@ -20,7 +20,7 @@ lemma excisionRawSuspensionSquare_replaced_sourceConeAt_core_val {X : SSet.{u}}
     (c : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionFullPunctured) ≫ F))
     (d : JoinCone (nerveMap (posetSubtypeInclusion IsExcisionCorePunctured) ≫
       (nerveMap excisionGridCoreInclusion ≫ nerveMap excisionGridMiddleInclusion ≫ F)))
-    (hr : (F2.restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
+    (hr : (restrictJoinCone c (nerveMap excisionCorePuncturedToFull.toFunctor)).val =
       d.val) :
     (mapJoinCone (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2),
       stdSimplex.obj₀Equiv.symm (0 : Fin 2)))

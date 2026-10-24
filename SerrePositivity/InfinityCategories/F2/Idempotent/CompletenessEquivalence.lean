@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
-public import SerrePositivity.InfinityCategories.Stable.ColimitDiagramIso
+public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
 概要：元の coherent 冪等完備性は ∞ 圏の同値で保たれる。

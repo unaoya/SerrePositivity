@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.InitialShapeLimitExchange
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredLimitExchange
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
+public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-!
 概要：全ての標準単体について、元の coherent filtered 余極限は極限錐を保つ。

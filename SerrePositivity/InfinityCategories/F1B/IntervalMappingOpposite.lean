@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.MappingParameters
-public import SerrePositivity.InfinityCategories.Stable.BoundaryOpposite
+public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite
 
 /-!
 概要：両端固定の区間写像空間の族を反転し、反転前後の境界充填を比較する。

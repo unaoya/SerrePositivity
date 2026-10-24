@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanHornIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreDiagram
@@ -64,7 +64,7 @@ lemma excisionCoreCospanBoundary_projection :
 
 lemma excisionCoreCospanBoundary_limit_iff {X : SSet.{u}} [Quasicategory X]
     {F : nerve ExcisionCorePuncturedIndex.{u} ⟶ X} (c : JoinCone F) :
-    IsLimitCone c ↔ IsLimitCone (F2.restrictJoinCone c excisionCoreCospanBoundary) := by
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c excisionCoreCospanBoundary) := by
   let := excisionCoreCospanBoundary_mono.{u}
   exact isLimitCone_iff_restrict_of_leftAnodyne c _
     excisionCoreCospanBoundary_leftAnodyne
