@@ -900,7 +900,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputInverseUncurry,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModuleRawFunctorEvaluation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedInputCoordinateUncurry,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackInputEvaluation]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackInputEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeStability,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseExactProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonStability,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StableObjects,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.StableFactorKernels]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

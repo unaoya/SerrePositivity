@@ -895,3 +895,8 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomRawInputIn
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleRawFunctorEvaluation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedInputCoordinateUncurry
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PinchedPullbackInputEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeStability
+public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseExactProjections
+public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonStability
+public import SerrePositivity.InfinityCategories.Derived.Gluing.StableObjects
+public import SerrePositivity.InfinityCategories.Derived.Gluing.StableFactorKernels
