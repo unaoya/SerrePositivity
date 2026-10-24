@@ -31,4 +31,17 @@ lemma coherentCompositionMaximalization_first_edge (s : SpaceInfinity.{u} _⦋2�
   exact hz.symm.trans (hfaces.symm.trans
     ((congrArg (fun t => SpaceInfinity.δ 0 t)
       (coherentCompositionTetrahedron_face_three s)).trans hdeg))
+
+/-- 概要：最大化後の最後辺は元の同じ辺。方針：零面と第一面の共有辺を使う。
+規約：全実辺を保持。使われ方：最大化側の最後辺の全係数作用の照合。 -/
+lemma coherentCompositionMaximalization_last_edge (s : SpaceInfinity.{u} _⦋2⦌) :
+    SpaceInfinity.δ 0 (coherentSimplexMaximalization s) = SpaceInfinity.δ 0 s := by
+  have h := ConcreteCategory.congr_hom
+    (SimplicialObject.δ_comp_δ SpaceInfinity (i := (0 : Fin 3)) (j := 0) (by decide))
+    (coherentCompositionTetrahedron s)
+  change SpaceInfinity.δ 0 (SpaceInfinity.δ 1 (coherentCompositionTetrahedron s)) =
+    SpaceInfinity.δ 0 (SpaceInfinity.δ 0 (coherentCompositionTetrahedron s)) at h
+  have hz := congrArg (fun t => SpaceInfinity.δ 0 t) (coherentCompositionTetrahedron_face_zero s)
+  have ho := congrArg (fun t => SpaceInfinity.δ 0 t) (coherentCompositionTetrahedron_face_one s)
+  exact hz.symm.trans (h.symm.trans ho)
 end SerrePositivity.InfinityCategories.F2

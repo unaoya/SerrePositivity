@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTriangleLastInitialHead
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentMaximalizationHomValues
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexZeroLastValue
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexRawBoundaryTwoEdge
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroFirstCoslice

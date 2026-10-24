@@ -1,6 +1,28 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath01
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath12
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleMaximalPath02
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexStrictDiagram_first_arrow
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexStrictDiagram_last_arrow
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexStrictDiagram_composite_arrow
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexMaximalization_map_constant
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_eq_order
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTailOrder
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_map_labels
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_obj_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_obj_one
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_head_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastTail_head_one
+#check @SerrePositivity.InfinityCategories.F2.reflectedSimplexMap_post_app
+#check @SerrePositivity.InfinityCategories.F2.simplicialHom_postcomp_head
+#check @SerrePositivity.InfinityCategories.F2.simplicialHom_head_postcomp
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastInitialHead_zero
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastInitialHead_one
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionMaximalization_last_edge
+
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastInitialEndpointIso_eq_middle
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastNativeEndpointIso_eq_refl
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastSpecified_endpoint_square
