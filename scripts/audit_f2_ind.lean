@@ -1705,3 +1705,96 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_inl_isRightCofinal
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_inl_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_naturality
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_naturality
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_snd
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_snd
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_whiskerLeft
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_whiskerLeft
+
+#check SerrePositivity.InfinityCategories.F2.Ind.pointSliceIdentity_point_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.pointSliceIdentity_point_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFace
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_source
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_source
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_tip
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_tip_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceCone_tip_uncurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone_tip
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone_tip
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone_source
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointBaseCone_source
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceRelativeIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceRelativeIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceFunctorIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointSliceFunctorIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_slice
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedRawFace_slice
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawSlice_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawSlice_isFullyFaithful
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointRawFaceIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointFaceIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointFaceIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRightPrism_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRightPrism_point
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramFunctorSpace_evaluate
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramFunctorSpace_evaluate
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaOriginalFamily_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaOriginalFamily_point
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneApex_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneApex_point
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeShape_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeShape_point
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_uncurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedFace_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointReconstructedFace_uncurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_eq_reconstructed
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluation_eq_reconstructed
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso

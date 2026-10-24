@@ -729,3 +729,27 @@ public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeLifts
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeRestrictionUnderCocone
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeRestrictionCofinality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.TensorRightPoint
+
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceIdentityProjection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceCone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceConeTip
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointReconstructedFace
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointFaceComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramRightPrismPoint
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramRightFamilyPoint
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeShapePoint
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationPrism
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationComparison
