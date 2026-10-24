@@ -754,7 +754,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseUnitCapFamilies,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeExitUnitCollarTriangles,
     `SerrePositivity.InfinityCategories.Derived.Gluing.InputHomotopyTriangleComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleTimeTransport]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleTimeTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationUnitCaps,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleTimeConstantFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTriangleParameterNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCompositionPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCompositionInputPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputModelPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputTriangleExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeOriginalHomProjections]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
