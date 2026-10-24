@@ -40,6 +40,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_hom_preservesKappaFilteredColimits_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_exists_common_hom_preservationCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafOpposite_functorHom_isIso_of_yoneda
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_densityImages_isLeftKanExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafDensityIsoOfYoneda
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isLimitCone_iff_restrict_equivalentShape
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafElementsRightKanComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRightKanCanonicalCone_restrict_val
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_oppositeDensityImages_canonicalLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafOppositeDensityIsoOfYoneda
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
