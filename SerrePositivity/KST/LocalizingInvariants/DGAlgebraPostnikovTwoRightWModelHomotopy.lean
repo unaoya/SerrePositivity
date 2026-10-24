@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedZero
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorRightWModelHomotopy
+
 /-!
 概要：元の相対模型上で W の動く source を native 模型へ実適用する。
 方針：全 class 経路と両端の零経路を実入力し、両脚と全 path で元の模型射へ戻す。
@@ -34,43 +36,28 @@ local notation "r" => d.rightWBasePath R
 local notation "q₀" => β ≫ postnikovCommonRightClassifyingBase R f
   d.baseInverse d.layerInverse d.target_le
 
-def rightWNativeModelHomotopy := SquareZeroExtension.movingSourceNativeModelHomotopy q N₀ e C
-  (d.rightWSourcePath R) r q₀ (d.rightWBasePath_zero R)
-  (d.rightWInitialNativePath R).toWitness (d.rightWCompletedNativePath R)
-  (d.rightWZeroSourcePath R) (d.rightWInitialZeroPath R)
-  (d.rightWClass_projection R) (d.rightWSource_nativeClass R)
-  (d.rightWInitialNativePath R).projection_eq (d.rightWInitial_nativeClass R)
-  (d.rightWCompletedNativePath_projection R) (d.rightWCompletedNativePath_nativeClass R)
+def rightWNativeModelHomotopy :=
+  PostnikovSuccessorClassInverseData.rightWNativeModelHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightWInitialModel_eq : HomotopyPullbackModel.lift R C (SquareZero.zeroSection V N)
     _ (r ≫ Path.source R V) (d.rightWInitialNativePath R).toWitness =
-      d.rightImageToGammaModel R := by
-  apply HomotopyPullbackModel.hom_ext R C (SquareZero.zeroSection V N)
-  · change HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _ =
-      HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _
-    simp only [HomotopyPullbackModel.lift_left]
-  · change HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _ =
-      HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _
-    simp only [HomotopyPullbackModel.lift_right]
-    exact d.rightWBasePath_source R
-  · change HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _ =
-      HomotopyPullbackModel.lift R _ _ _ _ _ ≫ _
-    simp only [HomotopyPullbackModel.lift_path]
-    rfl
+      d.rightImageToGammaModel R :=
+  PostnikovSuccessorClassInverseData.rightWInitialModel_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightWCompletedModel_eq : HomotopyPullbackModel.lift R C (SquareZero.zeroSection V N)
-    _ (r ≫ Path.target R V) (d.rightWCompletedNativePath R) = d.rightWCompletedModel R := by
-  apply HomotopyPullbackModel.hom_ext R C (SquareZero.zeroSection V N)
-  · rw [HomotopyPullbackModel.lift_left, d.rightWCompletedModel_left R]
-  · rw [HomotopyPullbackModel.lift_right, d.rightWCompletedModel_right R,
-      d.rightWBasePath_target R]
-  · rw [HomotopyPullbackModel.lift_path]
-    rfl
+    _ (r ≫ Path.target R V) (d.rightWCompletedNativePath R) = d.rightWCompletedModel R :=
+  PostnikovSuccessorClassInverseData.rightWCompletedModel_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightWModelHomotopy : Path.Witness R (d.rightImageToGammaModel R)
-    (d.rightWCompletedModel R) where
-  hom := (d.rightWNativeModelHomotopy R).hom
-  source_eq := (d.rightWNativeModelHomotopy R).source_eq.trans (d.rightWInitialModel_eq R)
-  target_eq := (d.rightWNativeModelHomotopy R).target_eq.trans (d.rightWCompletedModel_eq R)
+    (d.rightWCompletedModel R) :=
+  PostnikovSuccessorClassInverseData.rightWModelHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

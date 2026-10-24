@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedClassMap
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedCandidateRoof
+
 /-!
 概要：指定右経路の新 class 互換性を、元の二切断代数間の実非正次数 roof 候補へ移す。
 方針：元の源比較を相対模型へ戻し、新 Γ 射と元の標的比較を実 roof で合成する。
@@ -23,26 +25,35 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 def classModelFixedCandidateRoof :
     SurjectiveRoof R (d.sourceModel R) (originalTargetModel (A := A) (j := j) R) :=
-  (SurjectiveRoof.ofQuasiIsoInverse R (d.sourceRelativeComparison R)
-    (d.sourceRelativeComparison_quasiIso R)).postcompose R
-    (d.sourceToTargetFixedRelative R ≫ d.targetRelativeComparison R ≫ d.targetToOriginalModel R)
+  PostnikovSuccessorClassInverseData.classModelFixedCandidateRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rawFixedCandidateRoof : SurjectiveRoof R
     (postnikov R (B.obj d.layerInverse.zero.stage).obj 2) (postnikov R (A.obj j).obj 2) :=
-  ((d.sourceUpperRoof R).comp R (d.classModelFixedCandidateRoof R)).comp R
-    (targetUpperRoof (A := A) (j := j) R)
+  PostnikovSuccessorClassInverseData.rawFixedCandidateRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedCandidateRoof : SurjectiveRoof R
     (postnikov R (B.obj d.layerInverse.zero.stage).obj 2) (postnikov R (A.obj j).obj 2) :=
-  (d.rawFixedCandidateRoof R).nonpositiveNormalization R
+  PostnikovSuccessorClassInverseData.fixedCandidateRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedCandidateRoof_nonpositive : (d.fixedCandidateRoof R).apex.X.IsStrictlyLE 0 :=
-  (d.rawFixedCandidateRoof R).nonpositiveNormalization_apex R
+  PostnikovSuccessorClassInverseData.fixedCandidateRoof_nonpositive
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedCandidateRoof_denominator_quasiIso : QuasiIso (d.fixedCandidateRoof R).denominator.hom :=
-  (d.fixedCandidateRoof R).denominator_quasiIso
+  PostnikovSuccessorClassInverseData.fixedCandidateRoof_denominator_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedCandidateRoof_denominator_epi : Epi (d.fixedCandidateRoof R).denominator.hom :=
-  (d.fixedCandidateRoof R).denominator_epi
+  PostnikovSuccessorClassInverseData.fixedCandidateRoof_denominator_epi
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

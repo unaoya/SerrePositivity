@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassSourceModel
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorSourceModelProjections
+
 /-!
 概要：元の源 class の底変更式と、元の source 模型比較の左脚・全経路を公開する。
 方針：元の cell class の底変更と、同じ cell 模型射の成分式を合成する。
@@ -24,23 +26,25 @@ lemma sourceClass_baseChange : d.sourceClass R ≫
     SquareZero.baseChangeMap (d.lowerBaseInverse R).roof.denominator
       (postnikovShiftedLayerBimodule R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) 1) =
     d.sourceCellMap R ≫
-      postnikovCellClass R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) := by
-  rw [sourceClass, Category.assoc, postnikovCellClassOver_map]
-  exact (Category.assoc _ _ _).symm
+      postnikovCellClass R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) :=
+  PostnikovSuccessorClassInverseData.sourceClass_baseChange
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToOriginalModel_left : d.sourceToOriginalModel R ≫
     HomotopyPullbackModel.left R _ _ = HomotopyPullbackModel.left R _ _ ≫ d.sourceCellMap R ≫
-      postnikovCellLift R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) := by
-  rw [sourceToOriginalModel, Category.assoc, postnikovCellHomotopyPullbackComparison_left,
-    ← Category.assoc]
-  rw [sourceToCellModel, HomotopyPullbackModel.map_left, Category.assoc]
+      postnikovCellLift R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) :=
+  PostnikovSuccessorClassInverseData.sourceToOriginalModel_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToOriginalModel_path : d.sourceToOriginalModel R ≫
     HomotopyPullbackModel.path R _ _ = HomotopyPullbackModel.path R _ _ ≫ Path.map R
       (SquareZero.baseChangeMap (d.lowerBaseInverse R).roof.denominator
         (postnikovShiftedLayerBimodule R (B.obj d.layerInverse.zero.stage).obj
-          1 (by omega) 1)) := by
-  rw [sourceToOriginalModel, Category.assoc, postnikovCellHomotopyPullbackComparison_path]
-  exact HomotopyPullbackModel.map_path R _ _ _ _ _ _ _ _ _
+          1 (by omega) 1)) :=
+  PostnikovSuccessorClassInverseData.sourceToOriginalModel_path
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

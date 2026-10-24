@@ -4,6 +4,8 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectInitialComparison
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroClassModelPathImage
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightDirectFinalProjections
+
 /-!
 概要：source 模型経路の終点の二脚と全 class 経路を、元の fixed class 証人へ揃える。
 方針：source 経路の class 像と、保存済みの直接 class 復元式を合成する。
@@ -22,53 +24,58 @@ open ProExcision
 variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : LevelHom A B}
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
-def directSourceClassWitness := SquareZeroExtension.sourceModelClassWitness
-  (directNativeLayer (B := B) (j := j) R)
-  (postnikovPerturbedClass R (B.obj j).obj 1 (by omega)) (d.directRelativeBase R)
-  (d.directRelativeSourcePath R) (d.directRelativeSourcePath_class_relative R)
+def directSourceClassWitness :=
+  PostnikovSuccessorClassInverseData.directSourceClassWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma directSourceFinalModelMap_left : d.directSourceFinalModelMap R ≫
     HomotopyPullbackModel.left R _ _ =
     SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R) ≫
-      d.fixedRightCompletedNativeSource R := HomotopyPullbackModel.lift_left R _ _ _ _ _
+      d.fixedRightCompletedNativeSource R :=
+  PostnikovSuccessorClassInverseData.directSourceFinalModelMap_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma directSourceFinalModelMap_right : d.directSourceFinalModelMap R ≫
     HomotopyPullbackModel.right R _ _ = d.directRelativeBase R :=
-  HomotopyPullbackModel.lift_right R _ _ _ _ _
+  PostnikovSuccessorClassInverseData.directSourceFinalModelMap_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma directSourceFinalModelMap_path : d.directSourceFinalModelMap R ≫
     HomotopyPullbackModel.path R _ _ =
       ((d.directSourceClassWitness R).reverse.comp (d.directInitialNativeWitness R)).hom :=
-  HomotopyPullbackModel.lift_path R _ _ _ _ _
+  PostnikovSuccessorClassInverseData.directSourceFinalModelMap_path
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightDirectModelMap_left : d.fixedRightDirectModelMap R ≫
     SquareZeroExtension.relativeLeft (d.rightClassifyingLayer R) (d.fixedRightCompletedClass R) =
     SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_left _ _ _ _
+  PostnikovSuccessorClassInverseData.fixedRightDirectModelMap_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightDirectModelMap_right : d.fixedRightDirectModelMap R ≫
     SquareZeroExtension.relativeRight (d.rightClassifyingLayer R) (d.fixedRightCompletedClass R) =
     SquareZeroExtension.relativeRight (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_right _ _ _ _
+  PostnikovSuccessorClassInverseData.fixedRightDirectModelMap_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightCompletedClass_native : d.fixedRightCompletedClass R ≫
     d.rightDenominatorClassRestore R =
-    d.fixedRightCompletedNativeSource R ≫ postnikovPerturbedClass R (B.obj j).obj 1 (by omega) := by
-  simpa only [fixedRightCompletedNativeSource, postnikovCellClass, Category.assoc] using
-    d.fixedRightCompletedClass_restore R
+    d.fixedRightCompletedNativeSource R ≫ postnikovPerturbedClass R (B.obj j).obj 1 (by omega) :=
+  PostnikovSuccessorClassInverseData.fixedRightCompletedClass_native
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma directSourceClassWitness_restore : (d.directSourceClassWitness R).hom =
     SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R) ≫
-      (d.fixedRightDirectWitness R).hom ≫ Path.map R (d.rightDenominatorClassRestore R) := by
-  let L := SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R)
-  let f' := postnikovPerturbedClass R (B.obj j).obj 1 (by omega)
-  let h₀ := SquareZeroExtension.sourceModelClassWitness_hom
-    (directNativeLayer (B := B) (j := j) R) f' (d.directRelativeBase R)
-    (d.directRelativeSourcePath R) (d.directRelativeSourcePath_class_relative R)
-  let h₁ := Category.assoc L (d.fixedRightDirectSourceWitness R).hom (Path.map R f')
-  let h₂ := congrArg (fun t => L ≫ t ≫ Path.map R f')
-    (d.fixedRightDirectSourceWitness_hom R)
-  let h₃ := congrArg (fun t => L ≫ t) (d.fixedRightDirectWitness_restore R).symm
-  exact ((h₀.trans h₁).trans h₂).trans h₃
+      (d.fixedRightDirectWitness R).hom ≫ Path.map R (d.rightDenominatorClassRestore R) :=
+  PostnikovSuccessorClassInverseData.directSourceClassWitness_restore
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

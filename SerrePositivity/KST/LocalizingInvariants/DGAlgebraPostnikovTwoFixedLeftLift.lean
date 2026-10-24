@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedUpperRightRoofPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedLeftLift
+
 /-!
 概要：二切断の右逆 roof に元の源の cell 分解を持ち上げ、左三角形の残る経路を明示する。
 方針：分母の全射準同型性で実 lift を作り、右経路と元の塔の自然性を前合成する。
@@ -31,30 +33,27 @@ local notation "fⱼ" => postnikovMap R (f.app j).hom 2
 local notation "a" => postnikovMap R (A.transition hkj).hom 2
 
 lemma nonpositiveFixedRightRoof_denominator_surjective (n : ℤ) :
-    Function.Surjective ((r).denominator.hom.f n) := by
-  have := (r).denominator_epi
-  exact (ModuleCat.epi_iff_surjective _).1 inferInstance
+    Function.Surjective ((r).denominator.hom.f n) :=
+  PostnikovSuccessorClassInverseData.nonpositiveFixedRightRoof_denominator_surjective
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R) (degree := n)
 
 def fixedLeftCellLift : cellResolution R Aₖ ⟶ (r).apex :=
-  cellResolutionMapLift R fₖ (r).denominator
-    (d.nonpositiveFixedRightRoof_denominator_surjective R) (r).denominator_quasiIso
+  PostnikovSuccessorClassInverseData.fixedLeftCellLift
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedLeftCellLift_denominator : d.fixedLeftCellLift R ≫ (r).denominator =
-    cellAugmentation R Aₖ ≫ fₖ := cellResolutionMapLift_projection R _ _ _ _
+    cellAugmentation R Aₖ ≫ fₖ :=
+  PostnikovSuccessorClassInverseData.fixedLeftCellLift_denominator
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedLeftDefectAfterF : Path.Witness R
     ((d.fixedLeftCellLift R ≫ (r).numerator) ≫ fⱼ)
-    ((cellAugmentation R Aₖ ≫ a) ≫ fⱼ) := by
-  let w := (d.nonpositiveFixedRightRoofPath R).precomp (d.fixedLeftCellLift R)
-  refine ⟨w.hom, w.source_eq.trans (Category.assoc _ _ _).symm, ?_⟩
-  refine w.target_eq.trans ?_
-  rw [← Category.assoc, d.fixedLeftCellLift_denominator R]
-  have hn := (f.map (postnikovFunctor R 2)).naturality hkj
-  change (cellAugmentation R Aₖ ≫ (postnikovFunctor R 2).map (f.app k)) ≫
-      (postnikovFunctor R 2).map (B.transition hkj) =
-    (cellAugmentation R Aₖ ≫ (postnikovFunctor R 2).map (A.transition hkj)) ≫
-      (postnikovFunctor R 2).map (f.app j)
-  simp only [Category.assoc]
-  exact congrArg (fun t => cellAugmentation R Aₖ ≫ t) hn.symm
+    ((cellAugmentation R Aₖ ≫ a) ≫ fⱼ) :=
+  PostnikovSuccessorClassInverseData.fixedLeftDefectAfterF
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

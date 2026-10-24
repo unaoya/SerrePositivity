@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedUpperRightRoofPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightRoofValue
+
 /-!
 概要：実右三角形のために細分した roof と、元の fixed 候補の値を比較する。
 方針：実 cell 細分・準同型逆・元の上下段比較を全て保持して合成の評価則を適用する。
@@ -23,13 +25,9 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 lemma nonpositiveFixedRightRoof_value_eq_fixedCandidate :
     SurjectiveRoof.value R L hL (d.nonpositiveFixedRightRoof R) =
-    SurjectiveRoof.value R L hL (d.fixedCandidateRoof R) := by
-  simp only [nonpositiveFixedRightRoof, fixedCandidateRoof,
-    SurjectiveRoof.nonpositiveNormalization_value, upperFixedRightRoof,
-    SurjectiveRoof.cellRefinement_value, upperFixedRightRawRoof,
-    RoofConjugation.roof, RoofConjugation.firstRoof, RoofConjugation.inverseRoof,
-    rightSourceClassRoof, classModelFixedRightRoof, rawFixedCandidateRoof,
-    sourceUpperRoof, targetUpperRoof, SurjectiveRoof.comp_value,
-    SurjectiveRoof.ofHom_value, Category.assoc]
+    SurjectiveRoof.value R L hL (d.fixedCandidateRoof R) :=
+  PostnikovSuccessorClassInverseData.nonpositiveFixedRightRoof_value_eq_fixedCandidate
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R) (D := D) (L := L) (hL := hL)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

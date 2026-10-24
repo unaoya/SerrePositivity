@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffine
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRelativeClassMap
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorAffineClassPath
+
 /-!
 概要：元の二切断 class データに、同じ源・端点・底を持つ直接 affine 貼合せを供給する。
 方針：既存の遷移比較・標準比較を同じ共通源へ移し、元の Γ の class 像へ同定する。
@@ -23,33 +25,23 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 def classAffineRelativeWitness : SquareZero.RelativeWitness
     (d.classProjection R) (d.numeratorLayer R)
-    (d.imageClass R) (d.targetClass R) where
-  hom := (postnikovCommonClassAffineGlueRelative R f d.baseInverse d.layerInverse
-      d.inverse).hom
-  source_eq :=
-    (postnikovCommonClassAffineGlueRelative R f d.baseInverse d.layerInverse
-      d.inverse).source_eq.trans
-      (d.sourceClass_coefficient R).symm
-  target_eq :=
-    (postnikovCommonClassAffineGlueRelative R f d.baseInverse d.layerInverse
-      d.inverse).target_eq
-  projection_eq :=
-    (postnikovCommonClassAffineGlueRelative R f d.baseInverse d.layerInverse
-      d.inverse).projection_eq
+    (d.imageClass R) (d.targetClass R) :=
+  PostnikovSuccessorClassInverseData.classAffineRelativeWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 /-- 元の経路と直接貼合せの差を、標準 class 上の元の相対ループとして保持する。 -/
 def classAffineDefect : SquareZero.RelativeWitness (d.classProjection R) (d.numeratorLayer R)
     (d.targetClass R) (d.targetClass R) :=
-  (d.classRelativeWitness R).reverse.comp (d.classAffineRelativeWitness R)
+  PostnikovSuccessorClassInverseData.classAffineDefect
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classAffineDefect_correction :
     ((d.classRelativeWitness R).comp (d.classAffineDefect R)).hom =
-      (d.classAffineRelativeWitness R).hom := by
-  apply Mon.Hom.ext
-  change ((d.classRelativeWitness R).comp
-    ((d.classRelativeWitness R).reverse.comp (d.classAffineRelativeWitness R))).hom.hom = _
-  rw [SquareZero.RelativeWitness.comp_hom_linear, SquareZero.RelativeWitness.comp_hom_linear,
-    SquareZero.RelativeWitness.reverse_hom_linear]
-  abel
+      (d.classAffineRelativeWitness R).hom :=
+  PostnikovSuccessorClassInverseData.classAffineDefect_correction
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

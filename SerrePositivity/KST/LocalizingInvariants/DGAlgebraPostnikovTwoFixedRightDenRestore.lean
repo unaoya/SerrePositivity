@@ -3,6 +3,8 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightOriginalRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightDenRestore
+
 /-!
 概要：直接分母遷移の元の係数表示を classifying 表示へ同型化し、元の標的へ戻す。
 方針：元の二段分母の表示同型を双加群上で合成し、同じ平方零同型を回収する。
@@ -25,42 +27,29 @@ def rightDenominatorCoefficientIso : bimoduleRestrict
     (postnikovCommonClassRightDenominatorBase R f d.baseInverse d.layerInverse d.target_le)
     (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≅
       d.rightClassifyingLayer R :=
-  bimoduleRestrictBaseEqIso (postnikovCellFactorizationImage_base R
-    (B.obj d.layerInverse.zero.stage).obj (B.obj j).obj (d.classBase R) 1
-    (d.lowerBaseInverse R).roof.denominator
-    (postnikovCommonRightDenDirectMap R f d.baseInverse d.layerInverse d.target_le)
-    (B.obj d.inverseStage).obj
-    (B.transition (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le)).hom
-    (B.transition d.target_le).hom
-    (postnikovCommonRightDenDirect_factorization R f d.baseInverse d.layerInverse d.target_le))
-    (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≪≫
-  postnikovClassBaseZeroCoefficientIso R (B.obj j).obj (d.classBase R) 1 (by omega) 1
-    (postnikovCommonRightDenCompositeBase R f d.baseInverse d.layerInverse d.target_le) ≪≫
-  bimoduleRestrictBaseEqIso
-    (postnikovCommonRightDenComposite_zero_base R f d.baseInverse d.layerInverse d.target_le)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
+  PostnikovSuccessorClassInverseData.rightDenominatorCoefficientIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightDenominatorCoefficientIso_map :
     (SquareZero.coefficientIso (d.classBase R) (d.rightDenominatorCoefficientIso R)).hom =
-      postnikovCommonRightDenDirectToZero R f d.baseInverse d.layerInverse d.target_le := by
-  simp only [rightDenominatorCoefficientIso, Iso.trans_hom, SquareZero.coefficientIso_hom,
-    postnikovCommonRightDenDirectToZero, postnikovCommonRightDenDirectImageIso,
-    postnikovCellFactorizationImageIso, postnikovCommonRightDenCompositeZeroIso,
-    postnikovClassZeroRebaseIso, postnikovClassBaseZeroIso, SquareZero.restrictionEqualityIso,
-    Iso.trans_hom, SquareZero.coefficientIso_hom, ← SquareZero.coefficientMap_comp]
-  rfl
+      postnikovCommonRightDenDirectToZero R f d.baseInverse d.layerInverse d.target_le :=
+  PostnikovSuccessorClassInverseData.rightDenominatorCoefficientIso_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-def rightDenominatorClassRestore := SquareZero.coefficientRestore
-  (postnikovCommonClassRightDenominatorBase R f d.baseInverse d.layerInverse d.target_le)
-  (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)
-  (d.rightDenominatorCoefficientIso R)
+def rightDenominatorClassRestore :=
+  PostnikovSuccessorClassInverseData.rightDenominatorClassRestore
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightDenominatorClassRestore_triangle :
     postnikovCommonRightDenDirectToZero R f d.baseInverse d.layerInverse d.target_le ≫
       d.rightDenominatorClassRestore R = SquareZero.baseChangeMap
         (postnikovCommonClassRightDenominatorBase R f d.baseInverse d.layerInverse d.target_le)
-        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) := by
-  rw [← d.rightDenominatorCoefficientIso_map R]
-  exact SquareZero.coefficientRestore_triangle _ _ _
+        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovSuccessorClassInverseData.rightDenominatorClassRestore_triangle
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

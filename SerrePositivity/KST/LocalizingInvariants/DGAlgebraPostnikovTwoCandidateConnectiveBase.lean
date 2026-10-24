@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateBaseValue
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofCoverValueTransport
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorCandidateConnectiveBase
+
 /-!
 概要：元の実二切断候補の底の式を、connective 準同型だけを反転する関手へ移す。
 方針：同じ cover 前合成で全準同型反転版を評価し、元の counit で実 roof の値へ戻す。
@@ -31,13 +33,8 @@ lemma candidateRoof_connectiveValue_base :
       SurjectiveRoof.connectiveValue R L hL
         (postnikov_isConnective R (B.obj d.layerInverse.zero.stage).obj 1)
           (d.lowerBaseInverse R).roof :=
-  SurjectiveRoof.connectiveValue_square_of_cover R L hL
-    (postnikov_isConnective R (B.obj d.layerInverse.zero.stage).obj 2)
-    (postnikov_isConnective R (B.obj d.layerInverse.zero.stage).obj 1)
-    (d.candidateRoof R) (d.lowerBaseInverse R).roof
-    (postnikovTransition R (B.obj d.layerInverse.zero.stage).obj 2 1 (by omega))
-    (postnikovTransition R (A.obj j).obj 2 1 (by omega))
-    (d.candidateRoof_value_base R (connectiveCoverFunctor R ⋙ L)
-      (invertsQuasiIsos_coverFunctor R L hL))
+  PostnikovSuccessorClassInverseData.candidateRoof_connectiveValue_base
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R) (D := D) (L := L) (hL := hL)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

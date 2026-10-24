@@ -4,6 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonC
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoAffineClassCorrection
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessSourceChange
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedClassMap
+
 /-!
 概要：指定右経路を使う class 互換性から、元の Γ の実相対模型射を組み直す。
 方針：同じ係数と両 class に新経路を渡し、旧模型射との差を実補正同型で保持する。
@@ -24,56 +26,59 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 def classFixedRelativeWitness : SquareZero.RelativeWitness
     (d.classProjection R) (d.numeratorLayer R) (d.imageClass R) (d.targetClass R) :=
-  (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
-    d.inverse).changeSource
-    (d.sourceClass_coefficient R).symm
+  PostnikovSuccessorClassInverseData.classFixedRelativeWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classFixedRelativeWitness_hom :
     (d.classFixedRelativeWitness R).hom =
     (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse
-      d.inverse).hom := by
-  let h := SquareZero.RelativeWitness.changeSource_hom
-    (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse d.inverse)
-    (d.sourceClass_coefficient R).symm
-  exact h
+      d.inverse).hom :=
+  PostnikovSuccessorClassInverseData.classFixedRelativeWitness_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def classFixedDefect : SquareZero.RelativeWitness (d.classProjection R) (d.numeratorLayer R)
     (d.targetClass R) (d.targetClass R) :=
-  (d.classRelativeWitness R).reverse.comp (d.classFixedRelativeWitness R)
+  PostnikovSuccessorClassInverseData.classFixedDefect
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classFixedDefect_correction :
     ((d.classRelativeWitness R).comp (d.classFixedDefect R)).hom =
-      (d.classFixedRelativeWitness R).hom := by
-  apply Mon.Hom.ext
-  change ((d.classRelativeWitness R).comp
-    ((d.classRelativeWitness R).reverse.comp (d.classFixedRelativeWitness R))).hom.hom = _
-  rw [SquareZero.RelativeWitness.comp_hom_linear, SquareZero.RelativeWitness.comp_hom_linear,
-    SquareZero.RelativeWitness.reverse_hom_linear]
-  abel
+      (d.classFixedRelativeWitness R).hom :=
+  PostnikovSuccessorClassInverseData.classFixedDefect_correction
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def classFixedTargetCorrection : d.targetRelativeModel R ≅ d.targetRelativeModel R :=
-  SquareZeroExtension.transportIso (d.numeratorLayer R) (d.classFixedDefect R)
+  PostnikovSuccessorClassInverseData.classFixedTargetCorrection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def sourceToTargetFixedRelative : d.sourceRelativeModel R ⟶ d.targetRelativeModel R :=
-  SquareZeroExtension.classModelMap (d.classCoefficient R) (d.sourceClass R) (d.targetClass R)
-    (d.classFixedRelativeWitness R)
+  PostnikovSuccessorClassInverseData.sourceToTargetFixedRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetFixedRelative_correction : d.sourceToTargetRelative R ≫
-    (d.classFixedTargetCorrection R).hom = d.sourceToTargetFixedRelative R := by
-  change SquareZeroExtension.classModelMap (d.classCoefficient R) (d.sourceClass R)
-      (d.targetClass R) (d.classRelativeWitness R) ≫
-      SquareZeroExtension.transport (d.numeratorLayer R) (d.classFixedDefect R) = _
-  rw [SquareZeroExtension.classModelMap_postTransport]
-  exact SquareZeroExtension.classModelMap_congr _ _ _ _ (d.classFixedDefect_correction R)
+    (d.classFixedTargetCorrection R).hom = d.sourceToTargetFixedRelative R :=
+  PostnikovSuccessorClassInverseData.sourceToTargetFixedRelative_correction
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetFixedRelative_left : d.sourceToTargetFixedRelative R ≫
     SquareZeroExtension.relativeLeft (d.numeratorLayer R) (d.targetClass R) =
       SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_left _ _ _ _
+  PostnikovSuccessorClassInverseData.sourceToTargetFixedRelative_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetFixedRelative_right : d.sourceToTargetFixedRelative R ≫
     SquareZeroExtension.relativeRight (d.numeratorLayer R) (d.targetClass R) =
       SquareZeroExtension.relativeRight (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_right _ _ _ _
+  PostnikovSuccessorClassInverseData.sourceToTargetFixedRelative_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

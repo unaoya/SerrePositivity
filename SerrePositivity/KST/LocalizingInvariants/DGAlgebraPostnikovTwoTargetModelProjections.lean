@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassTargetModel
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorTargetModelProjections
+
 /-!
 概要：元の二切断候補の標的比較が保持する左脚と全経路を公開する。
 方針：元の cell 模型射と摂動比較の二成分の式を合成する。
@@ -22,22 +24,24 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 lemma targetToOriginalModel_left : d.targetToOriginalModel R ≫
     HomotopyPullbackModel.left R _ _ = HomotopyPullbackModel.left R _ _ ≫
-      d.targetCellMap R ≫ postnikovCellLift R (A.obj j).obj 1 (by omega) := by
-  rw [targetToOriginalModel, Category.assoc, postnikovCellHomotopyPullbackComparison_left,
-    ← Category.assoc]
-  rw [targetToCellModel, HomotopyPullbackModel.map_left, Category.assoc]
+      d.targetCellMap R ≫ postnikovCellLift R (A.obj j).obj 1 (by omega) :=
+  PostnikovSuccessorClassInverseData.targetToOriginalModel_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToOriginalModel_path : d.targetToOriginalModel R ≫
     HomotopyPullbackModel.path R _ _ = HomotopyPullbackModel.path R _ _ ≫ Path.map R
       (SquareZero.baseChangeMap (d.targetBase R)
-        (postnikovShiftedLayerBimodule R (A.obj j).obj 1 (by omega) 1)) := by
-  rw [targetToOriginalModel, Category.assoc, postnikovCellHomotopyPullbackComparison_path]
-  exact HomotopyPullbackModel.map_path R _ _ _ _ _ _ _ _ _
+        (postnikovShiftedLayerBimodule R (A.obj j).obj 1 (by omega) 1)) :=
+  PostnikovSuccessorClassInverseData.targetToOriginalModel_path
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToOriginalModel_base : d.targetToOriginalModel R ≫
     HomotopyPullbackModel.right R _ _ = HomotopyPullbackModel.right R _ _ ≫
-      d.targetBase R := by
-  rw [targetToOriginalModel, Category.assoc, postnikovCellHomotopyPullbackComparison_right]
-  exact HomotopyPullbackModel.map_right R _ _ _ _ _ _ _ _ _
+      d.targetBase R :=
+  PostnikovSuccessorClassInverseData.targetToOriginalModel_base
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

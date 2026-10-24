@@ -3,6 +3,8 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightDirectFinalPathComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightDirectFinalComparison
+
 /-!
 概要：source 模型経路の終点を、元の直接 class 模型射の元の Bⱼ 模型への合成へ同定する。
 方針：二射影と全経路を保つ実模型の一意性を使う。
@@ -22,36 +24,15 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 lemma directSourceFinalModelMap_eq_fixed : d.directSourceFinalModelMap R =
-    d.fixedRightDirectModelMap R ≫ d.fixedRightCompletedRelativeToOriginalModel R := by
-  let N := d.rightClassifyingLayer R
-  let b := d.fixedRightCompletedClass R
-  let cL := SquareZeroExtension.relativeComparison_left N b
-  let cR := SquareZeroExtension.relativeComparison_right N b
-  let cP := SquareZeroExtension.relativeComparison_path N b
-  let mL := d.fixedRightDirectModelMap_left R
-  let mR := d.fixedRightDirectModelMap_right R
-  apply HomotopyPullbackModel.hom_ext R (postnikovPerturbedClass R (B.obj j).obj 1 (by omega))
-    (SquareZero.zeroSection (postnikov R (B.obj j).obj 1)
-      (directNativeLayer (B := B) (j := j) R))
-  · rw [d.directSourceFinalModelMap_left R]
-    simp only [fixedRightCompletedRelativeToOriginalModel,
-      Category.assoc, d.fixedRightCompletedToOriginalModel_left R]
-    rw [reassoc_of% cL, reassoc_of% mL]
-  · rw [d.directSourceFinalModelMap_right R]
-    simp only [fixedRightCompletedRelativeToOriginalModel,
-      Category.assoc, d.fixedRightCompletedToOriginalModel_right R]
-    rw [reassoc_of% cR, reassoc_of% mR]
-    rfl
-  · rw [d.directSourceFinalModelMap_path_fixed R]
-    simp only [fixedRightCompletedRelativeToOriginalModel, Category.assoc,
-      d.fixedRightCompletedToOriginalModel_path R]
-    rw [reassoc_of% cP]
+    d.fixedRightDirectModelMap R ≫ d.fixedRightCompletedRelativeToOriginalModel R :=
+  PostnikovSuccessorClassInverseData.directSourceFinalModelMap_eq_fixed
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def directOriginalToFixedModelHomotopy : Path.Witness R (d.directOriginalModelMap R)
-    (d.fixedRightDirectModelMap R ≫ d.fixedRightCompletedRelativeToOriginalModel R) where
-  hom := (d.directOriginalSourceModelHomotopy R).hom
-  source_eq := (d.directOriginalSourceModelHomotopy R).source_eq
-  target_eq := (d.directOriginalSourceModelHomotopy R).target_eq.trans
-    (d.directSourceFinalModelMap_eq_fixed R)
+    (d.fixedRightDirectModelMap R ≫ d.fixedRightCompletedRelativeToOriginalModel R) :=
+  PostnikovSuccessorClassInverseData.directOriginalToFixedModelHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

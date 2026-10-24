@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateRoof
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseRoofNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorClassModelValue
+
 /-!
 概要：実二切断候補の class 模型での評価が、元の共通底への右脚を保つことを示す。
 方針：四つの実模型射の右脚の式と、準同型逆 roof の脚の自然性を使う。
@@ -26,22 +28,9 @@ lemma classModelCandidateRoof_value_right :
     SurjectiveRoof.value R L hL (d.classModelCandidateRoof R) ≫
       L.map (HomotopyPullbackModel.right R
         (postnikovPerturbedClass R (A.obj j).obj 1 (by omega)) _) =
-    L.map (HomotopyPullbackModel.right R (d.sourceClass R) _) ≫ L.map (d.targetBase R) := by
-  let p₀ : d.sourceModel R ⟶ d.classBase R := HomotopyPullbackModel.right R _ _
-  let p₂ : d.pathModel R ⟶ d.classBase R := HomotopyPullbackModel.right R _ _
-  let p₃ : d.targetComposedModel R ⟶ d.classBase R := HomotopyPullbackModel.right R _ _
-  let r : originalTargetModel (A := A) (j := j) R ⟶ postnikov R (A.obj j).obj 1 :=
-    HomotopyPullbackModel.right R _ _
-  have hT : (d.targetToStandard R ≫ d.targetToOriginalModel R) ≫ r = p₃ ≫ d.targetBase R := by
-    rw [Category.assoc, d.targetToOriginalModel_right, ← Category.assoc, d.targetToStandard_right]
-    rfl
-  have hI : (d.sourceToImage R ≫ d.imageToPath R) ≫ p₂ = p₀ := by
-    rw [Category.assoc, d.imageToPath_right, d.sourceToImage_right]
-  have hN := SurjectiveRoof.inverse_value_naturality R (d.targetToPath R) L
-    (d.targetToPath_quasiIso R) p₃ p₂ (d.targetToPath_right R) hL
-  rw [classModelCandidateRoof, SurjectiveRoof.postcompose_value, SurjectiveRoof.comp_value,
-    SurjectiveRoof.ofHom_value, Category.assoc, Category.assoc, ← L.map_comp, hT,
-    L.map_comp p₃ (d.targetBase R), ← Category.assoc _ (L.map p₃), hN,
-    ← Category.assoc, ← L.map_comp, hI]
+    L.map (HomotopyPullbackModel.right R (d.sourceClass R) _) ≫ L.map (d.targetBase R) :=
+  PostnikovSuccessorClassInverseData.classModelCandidateRoof_value_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R) (D := D) (L := L) (hL := hL)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

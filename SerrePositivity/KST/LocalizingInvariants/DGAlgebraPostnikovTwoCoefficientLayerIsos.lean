@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassLayerIsos
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovShiftedLayerHomology
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorCoefficientLayerIsos
+
 /-!
 概要：二切断候補の底変更後の両係数を、元の代数の H⁻² に同定する。
 方針：底制限の underlying 複体を明示して、元の shift 層同型を使う。
@@ -23,15 +25,15 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 def sourceCoefficientHomologyIso :
     (d.denominatorLayer R).X.homology (-3) ≅
-      (B.obj d.layerInverse.zero.stage).obj.X.homology (-2) := by
-  dsimp only [denominatorLayer, postnikovOneRoofShiftedDenominatorLayer,
-    PostnikovCommonCore.shiftedDenominatorLayer, bimoduleRestrict]
-  exact postnikovShiftedLayerHomologyIso R (B.obj d.layerInverse.zero.stage).obj 1 (by omega) 1
+      (B.obj d.layerInverse.zero.stage).obj.X.homology (-2) :=
+  PostnikovSuccessorClassInverseData.sourceCoefficientHomologyIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def targetCoefficientHomologyIso :
-    (d.numeratorLayer R).X.homology (-3) ≅ (A.obj j).obj.X.homology (-2) := by
-  dsimp only [numeratorLayer, postnikovCommonClassTransitionLayer,
-    PostnikovCommonCore.postnikovCommonClassTransitionLayer, bimoduleRestrict]
-  exact postnikovShiftedLayerHomologyIso R (A.obj j).obj 1 (by omega) 1
+    (d.numeratorLayer R).X.homology (-3) ≅ (A.obj j).obj.X.homology (-2) :=
+  PostnikovSuccessorClassInverseData.targetCoefficientHomologyIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

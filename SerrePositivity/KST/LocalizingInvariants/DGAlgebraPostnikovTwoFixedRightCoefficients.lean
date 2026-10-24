@@ -4,6 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixe
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientZeroMap
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightCoefficients
+
 /-!
 概要：元の二切断 fixed roof の係数射を、元の fⱼ と直接 B 遷移の同じ値域へ固定する。
 方針：構成済みの実双加群射と厳密な右三角形を、元の class 逆データへ適用する。
@@ -21,36 +23,42 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 abbrev rightClassifyingLayer :=
-  postnikovCommonRightClassifyingLayer R f d.baseInverse d.layerInverse d.target_le
+  PostnikovSuccessorClassInverseData.rightClassifyingLayer
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightTargetCoefficient : d.numeratorLayer R ⟶ d.rightClassifyingLayer R :=
-  postnikovCommonClassRightTargetCoefficient R f d.baseInverse d.layerInverse d.target_le
+  PostnikovSuccessorClassInverseData.rightTargetCoefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightDenominatorCoefficient : d.denominatorLayer R ⟶ d.rightClassifyingLayer R :=
-  postnikovCommonClassRightDenominatorCoefficient R f d.baseInverse d.layerInverse d.target_le
+  PostnikovSuccessorClassInverseData.rightDenominatorCoefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classCoefficient_right_triangle :
-    d.classCoefficient R ≫ d.rightTargetCoefficient R = d.rightDenominatorCoefficient R := by
-  let h := postnikovCommonClassRightCoefficient_triangle R f
-    d.baseInverse d.layerInverse d.target_le
-  exact h
+    d.classCoefficient R ≫ d.rightTargetCoefficient R = d.rightDenominatorCoefficient R :=
+  PostnikovSuccessorClassInverseData.classCoefficient_right_triangle
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classCoefficient_right_triangle_map :
     SquareZero.coefficientMap (d.classBase R) (d.classCoefficient R) ≫
       SquareZero.coefficientMap (d.classBase R) (d.rightTargetCoefficient R) =
-    SquareZero.coefficientMap (d.classBase R) (d.rightDenominatorCoefficient R) := by
-  let h := SquareZero.coefficientMap_comp (d.classCoefficient R) (d.rightTargetCoefficient R)
-  exact h.trans
-    (congrArg (SquareZero.coefficientMap (d.classBase R)) (d.classCoefficient_right_triangle R))
+    SquareZero.coefficientMap (d.classBase R) (d.rightDenominatorCoefficient R) :=
+  PostnikovSuccessorClassInverseData.classCoefficient_right_triangle_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightTargetCoefficient_zero_map :
     SquareZero.coefficientMap (d.classBase R) (d.rightTargetCoefficient R) ≫
       SquareZero.baseChangeMap
         (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) =
-    postnikovCommonClassFixedZeroMap R f d.baseInverse d.layerInverse d.target_le := by
-  let h := postnikovCommonClassRightTargetCoefficient_zero_map R f
-    d.baseInverse d.layerInverse d.target_le
-  exact h
+    postnikovCommonClassFixedZeroMap R f d.baseInverse d.layerInverse d.target_le :=
+  PostnikovSuccessorClassInverseData.rightTargetCoefficient_zero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

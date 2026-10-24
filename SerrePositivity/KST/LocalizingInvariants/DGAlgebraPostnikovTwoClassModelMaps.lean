@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassModels
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorClassModelMaps
+
 /-!
 概要：二切断 class 逆の係数模型射と、標準 class 模型へ向かう実準同型 zigzag を構成。
 方針：元の係数射は厳密 cospan 射、class の経路は mapping-path の厳密化に渡す。
@@ -21,51 +23,68 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 def sourceToImage : d.sourceModel R ⟶ d.imageModel R :=
-  HomotopyPullbackModel.map R (d.sourceClass R) _ (d.imageClass R) _ (𝟙 (d.classSource R))
-    (SquareZero.coefficientMap (d.classBase R) (d.classCoefficient R)) (𝟙 (d.classBase R))
-    (Category.id_comp _) (by
-      apply Mon.Hom.ext
-      change (𝟙 (d.classBase R).X) ≫ biprod.inl =
-        biprod.inl ≫ biprod.map (𝟙 (d.classBase R).X) (d.classCoefficient R).hom
-      rw [biprod.inl_map, Category.id_comp])
+  PostnikovSuccessorClassInverseData.sourceToImage
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def imageToPath : d.imageModel R ⟶ d.pathModel R :=
-  PathCospanComparison.originalToPath R
-    (SquareZero.zeroSection (d.classBase R) (d.numeratorLayer R)) (d.imageClass R)
+  PostnikovSuccessorClassInverseData.imageToPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def targetToPath : d.targetComposedModel R ⟶ d.pathModel R :=
-  PathCospanComparison.composedToPath R (d.targetClass R)
-    (SquareZero.zeroSection (d.classBase R) (d.numeratorLayer R)) (d.imageClass R)
-    (𝟙 (d.classSource R)) (d.comparisonPath R)
+  PostnikovSuccessorClassInverseData.targetToPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def targetToStandard : d.targetComposedModel R ⟶ d.targetModel R :=
-  PathCospanComparison.composedToOriginal R (d.targetClass R)
-    (SquareZero.zeroSection (d.classBase R) (d.numeratorLayer R)) (𝟙 (d.classSource R))
+  PostnikovSuccessorClassInverseData.targetToStandard
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma imageToPath_quasiIso : QuasiIso (d.imageToPath R).hom :=
-  PathCospanComparison.originalToPath_quasiIso R _ _
+  PostnikovSuccessorClassInverseData.imageToPath_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToPath_quasiIso : QuasiIso (d.targetToPath R).hom :=
-  PathCospanComparison.composedToPath_quasiIso R _ _ _ _ _
+  PostnikovSuccessorClassInverseData.targetToPath_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToStandard_quasiIso : QuasiIso (d.targetToStandard R).hom :=
-  PathCospanComparison.composedToOriginal_quasiIso R _ _ _ (quasiIso_of_isIso _)
+  PostnikovSuccessorClassInverseData.targetToStandard_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToImage_right : d.sourceToImage R ≫ HomotopyPullbackModel.right R _ _ =
     HomotopyPullbackModel.right R _ _ :=
-  (HomotopyPullbackModel.map_right R _ _ _ _ _ _ _ _ _).trans (Category.comp_id _)
+  PostnikovSuccessorClassInverseData.sourceToImage_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToImage_left : d.sourceToImage R ≫ HomotopyPullbackModel.left R _ _ =
     HomotopyPullbackModel.left R _ _ :=
-  (HomotopyPullbackModel.map_left R _ _ _ _ _ _ _ _ _).trans (Category.comp_id _)
+  PostnikovSuccessorClassInverseData.sourceToImage_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma imageToPath_right : d.imageToPath R ≫ HomotopyPullbackModel.right R _ _ =
-    HomotopyPullbackModel.right R _ _ := PathCospanComparison.originalToPath_right R _ _
+    HomotopyPullbackModel.right R _ _ :=
+  PostnikovSuccessorClassInverseData.imageToPath_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToPath_right : d.targetToPath R ≫ HomotopyPullbackModel.right R _ _ =
-    HomotopyPullbackModel.right R _ _ := PathCospanComparison.composedToPath_right R _ _ _ _ _
+    HomotopyPullbackModel.right R _ _ :=
+  PostnikovSuccessorClassInverseData.targetToPath_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma targetToStandard_right : d.targetToStandard R ≫ HomotopyPullbackModel.right R _ _ =
-    HomotopyPullbackModel.right R _ _ := PathCospanComparison.composedToOriginal_right R _ _ _
+    HomotopyPullbackModel.right R _ _ :=
+  PostnikovSuccessorClassInverseData.targetToStandard_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

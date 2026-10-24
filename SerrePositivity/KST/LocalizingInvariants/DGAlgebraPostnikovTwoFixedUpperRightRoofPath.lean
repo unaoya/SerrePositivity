@@ -5,6 +5,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInverseR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofConjugationPath
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedUpperRightRoofPath
+
 /-!
 概要：fixed class roof の実右三角形を、元の二切断代数と非正次数 roof へ戻す。
 方針：源の準同型逆・元の上下段比較・cell 経路反映・connective cover を順に使う。
@@ -38,52 +40,54 @@ local notation "t₂" => postnikovMap R t 2
 local notation "tₘ" => postnikovClassModelMap R 1 (by omega) t
 
 abbrev rightSourceClassRoof :=
-  ((SurjectiveRoof.ofQuasiIsoInverse R (d.sourceToOriginalModel R)
-    (d.sourceToOriginalModel_quasiIso R)).comp R (d.classModelFixedRightRoof R)).cellRefinement R 1
+  PostnikovSuccessorClassInverseData.rightSourceClassRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightSourceClassRoofPath : Path.Witness R
     ((d.rightSourceClassRoof R).numerator ≫ fₘ)
     ((d.rightSourceClassRoof R).denominator ≫ tₘ) :=
-  SurjectiveRoof.inversePrecomposeRightPath R (d.sourceToOriginalModel R)
-    (d.sourceToOriginalModel_quasiIso R) (d.classModelFixedRightRoof R) fₘ tₘ
-    (d.classModelFixedRightRoofPath R)
+  PostnikovSuccessorClassInverseData.rightSourceClassRoofPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-abbrev upperFixedRightRawRoof := RoofConjugation.roof R (d.rightSourceClassRoof R) b a ha
+abbrev upperFixedRightRawRoof :=
+  PostnikovSuccessorClassInverseData.upperFixedRightRawRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-def upperFixedRightAfterComparison := RoofConjugation.rightPathAfterComparison R
-  (d.rightSourceClassRoof R) b a ha f₂ fₘ c t₂ tₘ
-  (postnikovHomotopyPullbackComparison_square R 1 (by omega) (f.app j).hom)
-  (postnikovHomotopyPullbackComparison_square R 1 (by omega) t).symm
-  (d.rightSourceClassRoofPath R)
+def upperFixedRightAfterComparison :=
+  PostnikovSuccessorClassInverseData.upperFixedRightAfterComparison
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 abbrev upperFixedRightRoof :=
-  ((d.upperFixedRightRawRoof R).cellRefinement R 1).cellRefinement R 4
+  PostnikovSuccessorClassInverseData.upperFixedRightRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def upperFixedRightRoofPath : Path.Witness R
     ((d.upperFixedRightRoof R).numerator ≫ f₂)
-    ((d.upperFixedRightRoof R).denominator ≫ t₂) := by
-  let h := d.upperFixedRightAfterComparison R
-  let h' : Path.Witness R
-      ((((d.upperFixedRightRawRoof R).cellRefinement R 1).numerator ≫ f₂) ≫ c)
-      ((((d.upperFixedRightRawRoof R).cellRefinement R 1).denominator ≫ t₂) ≫ c) :=
-    { hom := h.hom
-      source_eq := h.source_eq.trans (Category.assoc _ _ _).symm
-      target_eq := h.target_eq.trans (Category.assoc _ _ _).symm }
-  exact SurjectiveRoof.cellReflectEquation R ((d.upperFixedRightRawRoof R).cellRefinement R 1)
-    f₂ t₂ c hc h'
+    ((d.upperFixedRightRoof R).denominator ≫ t₂) :=
+  PostnikovSuccessorClassInverseData.upperFixedRightRoofPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-abbrev nonpositiveFixedRightRoof := (d.upperFixedRightRoof R).nonpositiveNormalization R
+abbrev nonpositiveFixedRightRoof :=
+  PostnikovSuccessorClassInverseData.nonpositiveFixedRightRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma nonpositiveFixedRightRoof_nonpositive : (d.nonpositiveFixedRightRoof R).apex.X.IsStrictlyLE 0 :=
-  SurjectiveRoof.nonpositiveNormalization_apex R _
+  PostnikovSuccessorClassInverseData.nonpositiveFixedRightRoof_nonpositive
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def nonpositiveFixedRightRoofPath : Path.Witness R
     ((d.nonpositiveFixedRightRoof R).numerator ≫ f₂)
-    ((d.nonpositiveFixedRightRoof R).denominator ≫ t₂) := by
-  let h := (d.upperFixedRightRoofPath R).precomp
-    (connectiveCoverInclusion R (d.upperFixedRightRoof R).apex)
-  exact { hom := h.hom
-          source_eq := h.source_eq.trans (Category.assoc _ _ _).symm
-          target_eq := h.target_eq.trans (Category.assoc _ _ _).symm }
+    ((d.nonpositiveFixedRightRoof R).denominator ≫ t₂) :=
+  PostnikovSuccessorClassInverseData.nonpositiveFixedRightRoofPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

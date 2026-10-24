@@ -3,6 +3,8 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightImageNullPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorRightRestoreZero
+
 /-!
 概要：元の右像と完成した分母の native 係数復元を、同じ零 class 標的へ照合する。
 方針：元の係数同型の可逆性と全底変更三角形を使い、復元後の全経路像を固定する。
@@ -29,39 +31,28 @@ lemma rightImageCoefficientIso_zero_map :
     SquareZero.baseChangeMap
       (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
       (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≫
-        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 := by
-  have hi : (SquareZero.coefficientIso (d.classBase R) (d.rightImageCoefficientIso R)).hom =
-      (postnikovClassZeroRebaseIso R (B.obj j).obj (d.classBase R) 1 (by omega) 1
-        (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
-        (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
-        (postnikovCommonClassRightImageBase_zero R f d.baseInverse d.layerInverse d.target_le)).hom := by
-    simp only [rightImageCoefficientIso, postnikovClassZeroRebaseIso,
-      postnikovClassBaseZeroIso, SquareZero.restrictionEqualityIso, Iso.trans_hom,
-      SquareZero.coefficientIso_hom, ← SquareZero.coefficientMap_comp]
-  rw [hi]
-  exact postnikovClassZeroRebaseIso_map R (B.obj j).obj (d.classBase R) 1 (by omega) 1 _ _ _
+        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 :=
+  PostnikovSuccessorClassInverseData.rightImageCoefficientIso_zero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightImageClassRestore_zero : d.rightImageClassRestore R ≫
     postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 =
     SquareZero.baseChangeMap
       (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) := by
-  apply (cancel_epi (SquareZero.coefficientIso (d.classBase R)
-    (d.rightImageCoefficientIso R)).hom).1
-  rw [← Category.assoc, rightImageClassRestore, SquareZero.coefficientRestore_triangle]
-  exact (d.rightImageCoefficientIso_zero_map R).symm
+      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) :=
+  PostnikovSuccessorClassInverseData.rightImageClassRestore_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightDenominatorClassRestore_zero : d.rightDenominatorClassRestore R ≫
     postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 =
     SquareZero.baseChangeMap
       (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) := by
-  apply (cancel_epi (SquareZero.coefficientIso (d.classBase R)
-    (d.rightDenominatorCoefficientIso R)).hom).1
-  rw [← Category.assoc, d.rightDenominatorCoefficientIso_map R,
-    d.rightDenominatorClassRestore_triangle R]
-  exact (postnikovCommonRightDenDirectToZero_map R f d.baseInverse d.layerInverse
-    d.target_le).symm
+      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) :=
+  PostnikovSuccessorClassInverseData.rightDenominatorClassRestore_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightFollowingWitness_zero_map :
     (d.fixedRightFollowingWitness R).hom ≫ Path.map R
@@ -69,6 +60,8 @@ lemma fixedRightFollowingWitness_zero_map :
         (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
     (d.fixedRightNativeFollowing R).hom :=
-  SquareZero.baseChangeFollowingWitness_map _ _ _ _ _ _ _
+  PostnikovSuccessorClassInverseData.fixedRightFollowingWitness_zero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

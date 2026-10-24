@@ -4,6 +4,8 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightCoefficientModel
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeHomProjections
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightCoefficientPath
+
 /-!
 概要：fixed の元の模型合成が使う class 経路の零 class 像を、元の native 経路へ同定。
 方針：係数後合成の全経路式と、fⱼ 係数射の元の零 class 射への厳密な式を使う。
@@ -26,22 +28,9 @@ lemma fixedRightCoefficientWitness_zero_map :
         (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
     (postnikovCommonClassFixedCompatibilityMappedRelative R f d.baseInverse d.layerInverse
-      d.target_le d.inverse).hom := by
-  let q := postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le
-  let N := DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1
-  let h := SquareZeroExtension.postCoefficientClassWitness_post (d.classCoefficient R)
-    (d.rightTargetCoefficient R) (d.sourceClass R) (d.targetClass R)
-    (d.classFixedRelativeWitness R) (SquareZero.baseChangeMap q N)
-  let k := congrArg (fun t => (d.classFixedRelativeWitness R).hom ≫ Path.map R t)
-    (d.rightTargetCoefficient_zero_map R)
-  let g := congrArg (fun t => t ≫ Path.map R
-    (postnikovCommonClassFixedZeroMap R f d.baseInverse d.layerInverse d.target_le))
-    (d.classFixedRelativeWitness_hom R)
-  let t := SquareZero.RelativeWitness.mapOver_hom
-    (postnikovCommonClassFixedGlueCompatibility R f d.baseInverse d.layerInverse d.inverse)
-    (postnikovCommonClassFixedZeroBase R f d.baseInverse d.layerInverse d.target_le)
-    (postnikovCommonClassFixedZeroMap R f d.baseInverse d.layerInverse d.target_le)
-    (postnikovCommonClassFixedZeroMap_projection R f d.baseInverse d.layerInverse d.target_le)
-  exact ((h.trans k).trans g).trans t.symm
+      d.target_le d.inverse).hom :=
+  PostnikovSuccessorClassInverseData.fixedRightCoefficientWitness_zero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

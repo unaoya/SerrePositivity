@@ -5,6 +5,11 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovOneNonpositiveInverseRoof
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorClassInverseData
+
 /-!
 概要：元の π₀・π₁・π₂ pro 同型から、二切断逆に使う底 roof・係数逆・class 整合を選ぶ。
 方針：先に零層逆の源段を選び、その段を対象とする τ₁ roof と共通係数逆を構成する。
@@ -45,6 +50,16 @@ lemma exists_postnikovTwoClassInverseData_after
 
 namespace PostnikovTwoClassInverseData
 variable {f} {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
+
+/-- 元の全段・底 roof・係数逆を保つ n=1 共通模型データ。 -/
+abbrev toSuccessor : PostnikovSuccessorClassInverseData R (n := 1) (by decide) f j where
+  inverseStage := d.inverseStage
+  target_le := d.target_le
+  inverse := d.inverse
+  sourceStage := d.sourceStage
+  inverse_le := d.inverse_le
+  baseInverse := d.baseInverse
+  layerInverse := d.layerInverse.toCore R f d.baseInverse
 
 abbrev classSource :=
   postnikovCommonClassStandardGlueSource R f d.baseInverse d.layerInverse

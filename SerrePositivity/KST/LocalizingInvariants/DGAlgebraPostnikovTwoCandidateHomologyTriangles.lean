@@ -4,6 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCoef
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoCandidateLayerValue
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovImageFactorisationLayers
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorCandidateHomologyTriangles
+
 /-!
 概要：元の τ₂ 代数射と実候補 roof の H⁻² 作用が、両順序で元の遷移と一致する。
 方針：同じ係数 Γ の両三角形を、元の上段層同型の自然性を介して移す。
@@ -26,35 +28,26 @@ lemma candidateRoof_homology_action :
     (d.candidateRoof R).homologyValue R (-2) ≫
       (postnikovUpperClassLayerHomologyIso R (A.obj j).obj 1 (by omega)).hom =
     (postnikovUpperClassLayerHomologyIso R
-      (B.obj d.layerInverse.zero.stage).obj 1 (by omega)).hom ≫ d.coefficientHomologyAction R := by
-  simpa only [coefficientHomologyAction, Category.assoc] using d.candidateRoof_homology_layer R
+      (B.obj d.layerInverse.zero.stage).obj 1 (by omega)).hom ≫ d.coefficientHomologyAction R :=
+  PostnikovSuccessorClassInverseData.candidateRoof_homology_action
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma candidateRoof_homology_left :
     homologyMap (postnikovMap R (f.app d.layerInverse.zero.stage).hom 2).hom (-2) ≫
       (d.candidateRoof R).homologyValue R (-2) = homologyMap (postnikovMap R
       (A.transition (d.target_le.trans
-        (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le))).hom 2).hom (-2) := by
-  let h := d.target_le.trans (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le)
-  have hf := postnikovUpperClassLayerHomologyIso_naturality R
-    (f.app d.layerInverse.zero.stage).hom 1 (by omega)
-  have ht := postnikovUpperClassLayerHomologyIso_naturality R (A.transition h).hom 1 (by omega)
-  simp only [Int.reduceAdd, Int.reduceNeg] at hf ht
-  apply (cancel_mono (postnikovUpperClassLayerHomologyIso R (A.obj j).obj 1 (by omega)).hom).1
-  rw [Category.assoc, d.candidateRoof_homology_action R, ← Category.assoc, hf, Category.assoc,
-    d.coefficientHomologyAction_left R]
-  exact ht.symm
+        (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le))).hom 2).hom (-2) :=
+  PostnikovSuccessorClassInverseData.candidateRoof_homology_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma candidateRoof_homology_right : (d.candidateRoof R).homologyValue R (-2) ≫
     homologyMap (postnikovMap R (f.app j).hom 2).hom (-2) = homologyMap (postnikovMap R
       (B.transition (d.target_le.trans
-        (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le))).hom 2).hom (-2) := by
-  let h := d.target_le.trans (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le)
-  have hf := postnikovUpperClassLayerHomologyIso_naturality R (f.app j).hom 1 (by omega)
-  have ht := postnikovUpperClassLayerHomologyIso_naturality R (B.transition h).hom 1 (by omega)
-  simp only [Int.reduceAdd, Int.reduceNeg] at hf ht
-  apply (cancel_mono (postnikovUpperClassLayerHomologyIso R (B.obj j).obj 1 (by omega)).hom).1
-  rw [Category.assoc, hf, ← Category.assoc, d.candidateRoof_homology_action R, Category.assoc,
-    d.coefficientHomologyAction_right R]
-  exact ht.symm
+        (d.layerInverse.zero.inverse_le.trans d.layerInverse.zero.stage_le))).hom 2).hom (-2) :=
+  PostnikovSuccessorClassInverseData.candidateRoof_homology_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

@@ -5,6 +5,8 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightRestored
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightNativeFollowing
+
 /-!
 概要：fixed 模型射の後続に使う元の fⱼ 自然性と W を、同じ零底上で束ねる。
 方針：全経路を保つ底表示の変更と、元の affine 合成の結合則を使う。
@@ -22,35 +24,29 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 def fixedRightNativeCompatibility :=
-  (postnikovCommonClassFixedCompatibilityMappedRelative R f d.baseInverse d.layerInverse
-    d.target_le d.inverse).rebase
-      (postnikovCommonClassFixedZeroBase_projection R f d.baseInverse d.layerInverse d.target_le)
+  PostnikovSuccessorClassInverseData.fixedRightNativeCompatibility
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedRightNativeFollowing :=
-  ((postnikovCommonClassFixedRightNaturality R f d.baseInverse d.layerInverse d.target_le).comp
-    (postnikovCommonClassFixedRightBottom R f d.baseInverse d.layerInverse d.target_le
-      d.inverse)).rebase
-        (postnikovCommonClassFixedZeroBase_projection R f d.baseInverse d.layerInverse d.target_le)
+  PostnikovSuccessorClassInverseData.fixedRightNativeFollowing
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightNativeCompatibility_hom : (d.fixedRightNativeCompatibility R).hom =
     (postnikovCommonClassFixedCompatibilityMappedRelative R f d.baseInverse d.layerInverse
-      d.target_le d.inverse).hom := SquareZero.RelativeWitness.rebase_hom _ _
+      d.target_le d.inverse).hom :=
+  PostnikovSuccessorClassInverseData.fixedRightNativeCompatibility_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightNativeFollowing_comp_hom :
     ((d.fixedRightNativeCompatibility R).comp (d.fixedRightNativeFollowing R)).hom =
     (postnikovCommonClassFixedRightCompletedPath R f d.baseInverse d.layerInverse
-      d.target_le d.inverse).hom := by
-  let v := postnikovCommonClassFixedCompatibilityMappedRelative R f d.baseInverse
-    d.layerInverse d.target_le d.inverse
-  let w := postnikovCommonClassFixedRightNaturality R f d.baseInverse d.layerInverse d.target_le
-  let z := postnikovCommonClassFixedRightBottom R f d.baseInverse d.layerInverse d.target_le
-    d.inverse
-  let h := SquareZero.RelativeWitness.comp_congr_hom_of_paths
-    (v := d.fixedRightNativeCompatibility R) (w := d.fixedRightNativeFollowing R)
-    (v' := v) (w' := w.comp z) (d.fixedRightNativeCompatibility_hom R)
-    (SquareZero.RelativeWitness.rebase_hom (w.comp z)
-      (postnikovCommonClassFixedZeroBase_projection R f d.baseInverse d.layerInverse d.target_le))
-  exact h.trans (SquareZero.RelativeWitness.comp_assoc_hom v w z).symm
+      d.target_le d.inverse).hom :=
+  PostnikovSuccessorClassInverseData.fixedRightNativeFollowing_comp_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightDirectCoefficientWitness_native_map :
     (d.fixedRightDirectCoefficientWitness R).hom ≫ Path.map R
@@ -58,7 +54,8 @@ lemma fixedRightDirectCoefficientWitness_native_map :
         (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
     (d.fixedRightNativeCompatibility R).hom :=
-  (d.fixedRightDirectCoefficientWitness_zero_map R).trans
-    (d.fixedRightNativeCompatibility_hom R).symm
+  PostnikovSuccessorClassInverseData.fixedRightDirectCoefficientWitness_native_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

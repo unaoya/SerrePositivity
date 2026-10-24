@@ -5,6 +5,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClas
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeClassComposition
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeCoefficientComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorRelativeClassMap
+
 /-!
 概要：元の Γ と同じ class 経路から、二切断候補の相対 class 模型間の実射を構成する。
 方針：係数射の実模型射と構成済みの class 輸送同型を合成する。
@@ -24,31 +26,39 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
 def sourceToImageRelative : d.sourceRelativeModel R ⟶ d.imageRelativeModel R :=
-  SquareZeroExtension.coefficientModelMap (d.classCoefficient R)
-    (d.sourceClass R) (d.imageClass R) rfl
+  PostnikovSuccessorClassInverseData.sourceToImageRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def sourceToTargetRelative : d.sourceRelativeModel R ⟶ d.targetRelativeModel R :=
-  SquareZeroExtension.classModelMap (d.classCoefficient R) (d.sourceClass R) (d.targetClass R)
-    (d.classRelativeWitness R)
+  PostnikovSuccessorClassInverseData.sourceToTargetRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetRelative_eq : d.sourceToTargetRelative R =
-    d.sourceToImageRelative R ≫ (d.classRelativeTransportIso R).hom := rfl
+    d.sourceToImageRelative R ≫ (d.classRelativeTransportIso R).hom :=
+  PostnikovSuccessorClassInverseData.sourceToTargetRelative_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToImageRelative_comparison : d.sourceToImageRelative R ≫ d.imageRelativeComparison R =
-    d.sourceRelativeComparison R ≫ d.sourceToImage R := by
-  simpa only [sourceToImageRelative, imageRelativeComparison, sourceRelativeComparison,
-    sourceToImage, SquareZeroExtension.coefficientAbsoluteMap] using
-    SquareZeroExtension.coefficientModelMap_comparison
-      (d.classCoefficient R) (d.sourceClass R) (d.imageClass R) rfl
+    d.sourceRelativeComparison R ≫ d.sourceToImage R :=
+  PostnikovSuccessorClassInverseData.sourceToImageRelative_comparison
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetRelative_left : d.sourceToTargetRelative R ≫
     SquareZeroExtension.relativeLeft (d.numeratorLayer R) (d.targetClass R) =
       SquareZeroExtension.relativeLeft (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_left _ _ _ _
+  PostnikovSuccessorClassInverseData.sourceToTargetRelative_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma sourceToTargetRelative_right : d.sourceToTargetRelative R ≫
     SquareZeroExtension.relativeRight (d.numeratorLayer R) (d.targetClass R) =
       SquareZeroExtension.relativeRight (d.denominatorLayer R) (d.sourceClass R) :=
-  SquareZeroExtension.classModelMap_right _ _ _ _
+  PostnikovSuccessorClassInverseData.sourceToTargetRelative_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

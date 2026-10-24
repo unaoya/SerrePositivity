@@ -4,6 +4,8 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightOriginalTriangle
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedCandidateRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightOriginalRoof
+
 /-!
 概要：元の fixed class roof の fⱼ 後合成を、元の係数像模型を通る同じ roof に表示する。
 方針：構成済み実模型三角形を、元の源比較の準同型逆 roof の分子へ前合成する。
@@ -24,15 +26,15 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 
 def classModelRightImageRoof : SurjectiveRoof R (d.sourceModel R)
     (postnikovClassModel R (B.obj j).obj 1 (by omega)) :=
-  (SurjectiveRoof.ofQuasiIsoInverse R (d.sourceRelativeComparison R)
-    (d.sourceRelativeComparison_quasiIso R)).postcompose R
-      (d.sourceToRightCoefficientModel R ≫ d.rightImageRelativeToOriginalModel R)
+  PostnikovSuccessorClassInverseData.classModelRightImageRoof
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma classModelFixedCandidateRoof_post_f :
     (d.classModelFixedCandidateRoof R).postcompose R
-      (postnikovClassModelMap R 1 (by omega) (f.app j).hom) = d.classModelRightImageRoof R := by
-  simp only [classModelFixedCandidateRoof, classModelRightImageRoof,
-    SurjectiveRoof.postcompose, Category.assoc]
-  rw [← d.sourceToRightCoefficientModel_original R]
+      (postnikovClassModelMap R 1 (by omega) (f.app j).hom) = d.classModelRightImageRoof R :=
+  PostnikovSuccessorClassInverseData.classModelFixedCandidateRoof_post_f
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

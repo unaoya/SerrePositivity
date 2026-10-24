@@ -4,6 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixe
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectRestored
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightCompletedSquare
+
 /-!
 概要：元の fixed 模型の接合 class 経路を、元の直接分母遷移と実二重経路で比較する。
 方針：底と零 class の全射影の一意性で復元経路を回収し、全二重経路を移送する。
@@ -23,41 +25,32 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : Lev
 lemma fixedRightCompletedWitness_restored_hom :
     (d.fixedRightCompletedWitness R).hom =
       (postnikovCommonClassFixedRightRestoredPath R f d.baseInverse d.layerInverse
-        d.target_le d.inverse).hom := by
-  apply SquareZero.baseChangePath_hom_ext
-    (postnikovCommonRightClassifyingBase R f d.baseInverse d.layerInverse d.target_le)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  · exact (d.fixedRightCompletedWitness R).projection_eq.trans
-      (postnikovCommonClassFixedRightRestoredPath R f d.baseInverse d.layerInverse
-        d.target_le d.inverse).projection_eq.symm
-  · exact (d.fixedRightCompletedWitness_zero_map R).trans
-      (postnikovCommonClassFixedRightRestoredPath_map R f d.baseInverse d.layerInverse
-        d.target_le d.inverse).symm
+        d.target_le d.inverse).hom :=
+  PostnikovSuccessorClassInverseData.fixedRightCompletedWitness_restored_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-def fixedRightDirectWitness := SquareZero.RelativeWitness.transferEndpoints
-  (postnikovCommonClassFixedRightRestoredPath R f d.baseInverse d.layerInverse
-    d.target_le d.inverse) (d.fixedRightCompletedWitness R)
-  (d.fixedRightCompletedWitness_restored_hom R).symm
-  (postnikovCommonRightDenDirectContourPath R f d.baseInverse d.layerInverse d.target_le)
+def fixedRightDirectWitness :=
+  PostnikovSuccessorClassInverseData.fixedRightDirectWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma fixedRightDirectWitness_hom : (d.fixedRightDirectWitness R).hom =
     (postnikovCommonRightDenDirectContourPath R f d.baseInverse d.layerInverse
-      d.target_le).hom := by
-  let h := SquareZero.RelativeWitness.transferEndpoints_hom
-    (postnikovCommonClassFixedRightRestoredPath R f d.baseInverse d.layerInverse
-      d.target_le d.inverse) (d.fixedRightCompletedWitness R)
-    (d.fixedRightCompletedWitness_restored_hom R).symm
-    (postnikovCommonRightDenDirectContourPath R f d.baseInverse d.layerInverse d.target_le)
-  exact h
+      d.target_le).hom :=
+  PostnikovSuccessorClassInverseData.fixedRightDirectWitness_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedRightCompletedSquare : SquareZero.RelativeWitnessSquare
     (d.fixedRightDirectWitness R) (d.fixedRightCompletedWitness R) :=
-  (postnikovCommonRightDenDirectRestoredSquare R f d.baseInverse d.layerInverse
-    d.target_le d.inverse).reindex _ _ (d.fixedRightDirectWitness_hom R).symm
-      (d.fixedRightCompletedWitness_restored_hom R).symm
+  PostnikovSuccessorClassInverseData.fixedRightCompletedSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedRightCompletedTransportHomotopy :=
-  SquareZeroExtension.transportHomotopy (d.rightClassifyingLayer R)
-    (d.fixedRightCompletedSquare R)
+  PostnikovSuccessorClassInverseData.fixedRightCompletedTransportHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

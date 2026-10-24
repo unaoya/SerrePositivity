@@ -5,6 +5,8 @@ public import
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoClassTargetModel
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientRestore
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightImageRestore
+
 /-!
 概要：fixed の fⱼ 係数像の零底表示を、元の Bⱼ の class 標的へ戻す。
 方針：元の底射の等式と係数同型を使い、元の fⱼ の係数三角形を保つ。
@@ -28,41 +30,30 @@ def rightImageCoefficientIso :
       (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
       (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≅
     d.rightClassifyingLayer R :=
-  postnikovClassBaseZeroCoefficientIso R (B.obj j).obj (d.classBase R) 1 (by omega) 1
-    (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le) ≪≫
-  bimoduleRestrictBaseEqIso
-    (postnikovCommonClassRightImageBase_zero R f d.baseInverse d.layerInverse d.target_le)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
+  PostnikovSuccessorClassInverseData.rightImageCoefficientIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightTargetCoefficient_factor : d.rightTargetCoefficient R =
     postnikovCellClassOverCoefficient R (A.obj j).obj (B.obj j).obj (d.classBase R)
-      1 (by omega) (d.targetBase R) (f.app j).hom ≫ (d.rightImageCoefficientIso R).hom := by
-  apply Bimod.Hom.ext
-  rw [rightTargetCoefficient, postnikovCommonClassRightTargetCoefficient_hom,
-    Bimod.comp_hom', postnikovCellClassOverCoefficient_hom]
-  simp only [rightImageCoefficientIso, Iso.trans_hom, Bimod.comp_hom',
-    bimoduleRestrictBaseEqIso_hom]
-  change _ = (postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧' ≫
-    (𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧) ≫ 𝟙 _)
-  rw [Category.id_comp, Category.comp_id]
+      1 (by omega) (d.targetBase R) (f.app j).hom ≫ (d.rightImageCoefficientIso R).hom :=
+  PostnikovSuccessorClassInverseData.rightTargetCoefficient_factor
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-def rightImageClassRestore := SquareZero.coefficientRestore
-  (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
-  (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) (d.rightImageCoefficientIso R)
+def rightImageClassRestore :=
+  PostnikovSuccessorClassInverseData.rightImageClassRestore
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightTargetCoefficient_restore :
     SquareZero.coefficientMap (d.classBase R) (d.rightTargetCoefficient R) ≫
       d.rightImageClassRestore R =
     SquareZero.baseChangeMap (d.targetBase R)
       (postnikovShiftedLayerBimodule R (A.obj j).obj 1 (by omega) 1) ≫
-      postnikovDerivationTargetMap R (f.app j).hom 1 (by omega) := by
-  rw [d.rightTargetCoefficient_factor R]
-  let h := SquareZero.coefficientRestore_coefficient
-    (postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
-    (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)
-    (d.rightImageCoefficientIso R)
-    (postnikovCellClassOverCoefficient R (A.obj j).obj (B.obj j).obj (d.classBase R)
-      1 (by omega) (d.targetBase R) (f.app j).hom)
-  exact h.trans (SquareZero.restrictionCoefficient_baseChange _ _ _ _ _)
+      postnikovDerivationTargetMap R (f.app j).hom 1 (by omega) :=
+  PostnikovSuccessorClassInverseData.rightTargetCoefficient_restore
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

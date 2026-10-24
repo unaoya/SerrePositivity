@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageValue
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellComparePathPairs
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorFixedRightCellPath
+
 /-!
 概要：元の fixed 模型射の fⱼ 後合成と直接遷移を、三重 cell 源上の実経路で結ぶ。
 方針：右像からの二経路と直接側の二経路を、指定した同じ完成射で接続する。
@@ -21,32 +23,24 @@ open ProExcision
 variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} {f : LevelHom A B}
   {j : ℕ} (d : PostnikovTwoClassInverseData R f j)
 
-def fixedTargetModelMap := d.sourceToTargetFixedRelative R ≫ d.targetRelativeComparison R ≫
-  d.targetToOriginalModel R
+def fixedTargetModelMap :=
+  PostnikovSuccessorClassInverseData.fixedTargetModelMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedRightImageToCompletedModelHomotopy : Path.Witness R
     (d.sourceToRightCoefficientModel R ≫ d.rightImageToGammaModel R)
-    (d.sourceToRightCompletedModel R ≫ d.fixedRightCompletedRelativeToOriginalModel R) where
-  hom := d.sourceToRightCoefficientModel R ≫ (d.rightWModelHomotopy R).hom
-  source_eq := (Category.assoc _ _ _).trans (congrArg
-    (fun t => d.sourceToRightCoefficientModel R ≫ t) (d.rightWModelHomotopy R).source_eq)
-  target_eq := ((Category.assoc _ _ _).trans (congrArg
-    (fun t => d.sourceToRightCoefficientModel R ≫ t) (d.rightWModelHomotopy R).target_eq)).trans
-      (d.sourceToRightCompletedModel_original R).symm
+    (d.sourceToRightCompletedModel R ≫ d.fixedRightCompletedRelativeToOriginalModel R) :=
+  PostnikovSuccessorClassInverseData.fixedRightImageToCompletedModelHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def fixedRightClassModelPath : Path.Witness R
     (iteratedCellAugmentation R (d.sourceRelativeModel R) 3 ≫
       (d.fixedTargetModelMap R ≫ postnikovClassModelMap R 1 (by omega) (f.app j).hom))
-    (iteratedCellAugmentation R (d.sourceRelativeModel R) 3 ≫ d.directOriginalModelMap R) := by
-  let v := (d.rightImageOriginalSourceModelHomotopy R).precomp (d.sourceToRightCoefficientModel R)
-  let h := Path.Witness.cellComparePairs R v (d.fixedRightImageToCompletedModelHomotopy R)
-    (d.directOriginalToFixedModelHomotopy R) (d.fixedRightCompletedOriginalModelHomotopy R)
-  refine ⟨h.hom, ?_, h.target_eq⟩
-  have he : d.sourceToRightCoefficientModel R ≫ d.rightImageRelativeToOriginalModel R =
-      d.fixedTargetModelMap R ≫ postnikovClassModelMap R 1 (by omega) (f.app j).hom := by
-    exact (d.sourceToRightCoefficientModel_original R).trans (by
-      simp only [fixedTargetModelMap, Category.assoc])
-  exact h.source_eq.trans (congrArg (fun t =>
-    iteratedCellAugmentation R (d.sourceRelativeModel R) 3 ≫ t) he)
+    (iteratedCellAugmentation R (d.sourceRelativeModel R) 3 ≫ d.directOriginalModelMap R) :=
+  PostnikovSuccessorClassInverseData.fixedRightClassModelPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

@@ -3,6 +3,8 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWSource
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeNullComposition
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorRightWInitialPath
+
 /-!
 概要：fⱼ 自然性の終点の零経路と、W の全 class 経路を同じ零底に揃える。
 方針：元の native 零経路を affine 輸送し、動く底の始点と零切断の式で照合する。
@@ -42,57 +44,45 @@ local notation "l₀" => α ≫ ((postnikovCommonRightGammaSourceWitness R f
 local notation "l₁" => α ≫ d.fixedRightCompletedNativeSource R
 
 def rightGammaNativeNullPath :=
-  (SquareZeroExtension.sourceModelClassWitness N C
-    (β ≫ postnikovCommonClassRightImageBase R f d.baseInverse d.layerInverse d.target_le)
-    (d.rightImageModelSourcePath R) (d.rightImageModelSourcePath_relative R)).reverse.comp
-      (d.rightImageNativeNullPath R)
+  PostnikovSuccessorClassInverseData.rightGammaNativeNullPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightWInitialNativePath : SquareZero.RelativeWitness (r ≫ Path.source R V) N
-    (l₀ ≫ C) ((r ≫ Path.source R V) ≫ SquareZero.zeroSection V N) where
-  hom := (d.rightGammaNativeNullPath R).hom
-  source_eq := (d.rightGammaNativeNullPath R).source_eq
-  target_eq := (d.rightGammaNativeNullPath R).target_eq.trans
-    (congrArg (fun t => t ≫ SquareZero.zeroSection V N) (d.rightWBasePath_source R).symm)
-  projection_eq := (d.rightGammaNativeNullPath R).projection_eq.trans
-    (congrArg (fun t => t ≫ Path.diagonal R V) (d.rightWBasePath_source R).symm)
+    (l₀ ≫ C) ((r ≫ Path.source R V) ≫ SquareZero.zeroSection V N) :=
+  PostnikovSuccessorClassInverseData.rightWInitialNativePath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
-lemma rightWZeroBase_source : (r ≫ Path.source R V) ≫ q = q₀ := by
-  rw [d.rightWBasePath_source R, Category.assoc, postnikovCommonClassRightImageBase_zero]
+lemma rightWZeroBase_source : (r ≫ Path.source R V) ≫ q = q₀ :=
+  PostnikovSuccessorClassInverseData.rightWZeroBase_source
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightWZeroSourcePath : SquareZero.RelativeWitness q₀ N₀
-    ((l₀ ≫ C) ≫ z) ((l₁ ≫ C) ≫ z) where
-  toWitness := ((d.rightWSourcePath R).postcomp C).postcomp z
-  projection_eq := by
-    change (((d.rightWSourcePath R).hom ≫ Path.map R C) ≫ Path.map R z) ≫ _ = _
-    rw [Category.assoc, ← Path.map_comp, postnikovClassToZeroBase_projection,
-      Path.map_comp, ← Category.assoc, d.rightWClass_projection R, d.rightWBasePath_zero R]
+    ((l₀ ≫ C) ≫ z) ((l₁ ≫ C) ≫ z) :=
+  PostnikovSuccessorClassInverseData.rightWZeroSourcePath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 def rightWInitialZeroPath : SquareZero.RelativeWitness q₀ N₀
-    ((l₀ ≫ C) ≫ z) (q₀ ≫ SquareZero.zeroSection V₀ N₀) where
-  hom := (d.rightWInitialNativePath R).hom ≫ Path.map R z
-  source_eq := ((d.rightWInitialNativePath R).toWitness.postcomp z).source_eq
-  target_eq := by
-    refine ((d.rightWInitialNativePath R).toWitness.postcomp z).target_eq.trans ?_
-    rw [Category.assoc]
-    change (r ≫ Path.source R V) ≫
-      (SquareZero.zeroSection V N ≫ SquareZero.mapOver q N N₀
-        (postnikovShiftedLayerToZeroBase R (B.obj j).obj 1 (by omega) 1)) = _
-    rw [SquareZero.zeroSection_mapOver, ← Category.assoc, d.rightWZeroBase_source R]
-  projection_eq := by
-    have h := ((d.rightWInitialNativePath R).mapOver q z
-      (postnikovClassToZeroBase_projection R (B.obj j).obj 1 (by omega) 1)).projection_eq
-    exact h.trans (congrArg (fun t => t ≫ Path.diagonal R V₀) (d.rightWZeroBase_source R))
+    ((l₀ ≫ C) ≫ z) (q₀ ≫ SquareZero.zeroSection V₀ N₀) :=
+  PostnikovSuccessorClassInverseData.rightWInitialZeroPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightWSource_nativeClass : ((d.rightWSourcePath R).hom ≫ Path.map R C) ≫
     Path.map R ((postnikovNativeZeroIso R (B.obj j).obj 1 (by omega) 1).hom ≫
-      SquareZero.baseChangeMap q N₀) = (d.rightWZeroSourcePath R).hom := by
-  rw [postnikovNativeZeroIso_map]
-  rfl
+      SquareZero.baseChangeMap q N₀) = (d.rightWZeroSourcePath R).hom :=
+  PostnikovSuccessorClassInverseData.rightWSource_nativeClass
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 lemma rightWInitial_nativeClass : (d.rightWInitialNativePath R).hom ≫
     Path.map R ((postnikovNativeZeroIso R (B.obj j).obj 1 (by omega) 1).hom ≫
-      SquareZero.baseChangeMap q N₀) = (d.rightWInitialZeroPath R).hom := by
-  rw [postnikovNativeZeroIso_map]
-  rfl
+      SquareZero.baseChangeMap q N₀) = (d.rightWInitialZeroPath R).hom :=
+  PostnikovSuccessorClassInverseData.rightWInitial_nativeClass
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (j := j)
+    (d := d.toSuccessor R)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData
