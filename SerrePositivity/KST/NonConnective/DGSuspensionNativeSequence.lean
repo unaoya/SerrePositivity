@@ -22,8 +22,8 @@ open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
-local instance : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory
-local instance (X Y : OmegaSpectrum.{w}) : KanComplex (SimplicialCategory.sHom X Y) :=
+local instance nativeSequenceSimplicialCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory
+local instance nativeSequenceHomKan (X Y : OmegaSpectrum.{w}) : KanComplex (SimplicialCategory.sHom X Y) :=
   OmegaSpectrum.mappingSpace_kanComplex X Y
 
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}

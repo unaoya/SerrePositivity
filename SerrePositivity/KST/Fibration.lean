@@ -594,3 +594,9 @@ public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanComposite
 public import SerrePositivity.KST.Fibration.ZeroMiddleVerdierCoordinates
 
 public import SerrePositivity.KST.Fibration.QuotientSKernelPositiveStages
+
+public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanHorn
+public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrism
+public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrismFaces
+public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrismIso
+public import SerrePositivity.KST.Fibration.VerdierFullSUpperPrism

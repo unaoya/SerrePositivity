@@ -43,6 +43,12 @@ public import SerrePositivity.KST.NonConnective.DGKappaSuspensionRelativeRoofInp
 public import SerrePositivity.KST.NonConnective.DGSuspensionIterationMaps
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeSequence
 
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKernelKComparison
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionOriginalStructure
+public import SerrePositivity.KST.NonConnective.DGSuspensionRelativeRoofSequence
+
+public import SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput
+
 /-!
 概要：厳密 dg 入力の非連結 K に向けた K-7 所有界面。
 規約：実逐次 Sp 余極限、明示の κ-compact dg 模型に対する実 swindle と平坦懸垂。
