@@ -1,0 +1,19 @@
+{
+  "source_head": "303d6a6ef1226ed6f3bba85f6eafca3268f2e966",
+  "started_jst": "2026-10-24T10:44:01.781052+09:00",
+  "stages": {
+    "orphan-cache-cleanup": {
+      "status": "passed",
+      "log": "/tmp/r-b-main-orphan-clean.log",
+      "rc": 0,
+      "elapsed_seconds": 2.13
+    },
+    "specified-aggregate-builds": {
+      "status": "failed",
+      "log": "/tmp/r-b-main-aggregates-build.log",
+      "rc": -2,
+      "elapsed_seconds": 241.44
+    }
+  },
+  "active_stage": "specified-aggregate-builds"
+}
