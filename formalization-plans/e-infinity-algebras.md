@@ -100,7 +100,9 @@
 - **依存状況**：D の保存完了の合図を受けて再開。公開入口は `Derived/SliceOverEqualityTransport` と dg 非依存の `Derived/FunctorHomGeneral`。所有閉包の他レーン未保存依存0件を確認してからビルド・監査する。依頼・報告はユーザー経由で進捗確認チャットへ届ける。
   `FrameHom/UnitComparisonWeakDetection.lean` に、同じ弱な CAlg_R 全族・弱な複体屋根族・元の単位の全族等式を代入した。`FreeProbeRelativeSourceComparison` は選択済み自由頂点との同型を元の置換 augmentation で与え、順射を同じ局所化像へ回収する。
   **端点比較の入口**：閉包内の `NerveColumn.hom_naturality` を定値列で評価し、実 U と同じ cofibrant 射の通常忘却像の成分正方形へ接続した。元の置換 augmentation に特殊化し、全代数源・全自由源の忘却比較を同じ通常成分辺へ回収する。閉包外の評価自然性の公開依頼は必須ではなくなり、コピー・新規 import はしていない。`FreeProbeDerivedUnitEndpointRecovery` は既存の標準単位成分を元の通常単位の導来像へ、同じ両端同型で回収する。
+  `unitComparisonTransport_weak` は同じ単位三角形と二つの弱な全 pinched 族を指定端点同型で輸送し、輸送後の単位誘導射自身の弱同値性を返す。`freeProbeRelativeUnit_forget_family_triangle` は元の局所化源単位の全族等式を実 U 像の前合成式で供給する。具体的な標準端点の整合は検証中。
   閉包外の `Derived/FunctorHomTypedWhiskerAlgebra` 等は使用しない。`NerveColumn` の通常列への特殊化は閉包内の `Bicategory.whisker_exchange`・`qcatCell_whiskerLeft/Right`・関手合成保存を直接使用し、閉包外補題をコピーしない。
+  g2 用の `HomotopyLimits/CommaInitialAdjunction` は現在の閉包外。コピーせず、同じ comma 候補の始対象性から全随伴へ接続する公開入口をコーディネータ経由で所有レーンへ確認依頼済み。g1 の検証は続行する。
   必須宣言は各128項目以下の noinline 配列へ追加し、既存配列の式・順序・run_cmd 登録を保持する。主経路へ ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定を追加しない。検証の実施記録はコミットメッセージへ残す。
   モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
   LeftRoof.Precompose の旧入口は I : Type v・Category.{0} I。同じ宇宙の実圏には LeftRoof.Precompose.SameUniverse を使う。元の要素圏は Type(u+1)・Category.{u} なので、cofibrant 代数の Category.{u+1} と合わせるには ULiftHom.{u+1} を使い、objUp/objDown の宇宙 .{u+1,u+1} を明示する。対象だけの ULift は不要。

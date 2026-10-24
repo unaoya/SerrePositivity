@@ -2484,3 +2484,5 @@ public import SerrePositivity.EInfinity.FrameHom.FunctorIsoEvaluationArrow
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponentArrow
 public import SerrePositivity.EInfinity.BarrattEccles.AlgebraReplacementUnderlyingComponent
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedTransportFamily
+public import SerrePositivity.EInfinity.FrameHom.UnitComparisonTransport
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeUnitTriangle
