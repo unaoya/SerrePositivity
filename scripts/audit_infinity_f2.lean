@@ -1,6 +1,12 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.functorIso_curry_app_map_pre_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_curry_app_map_pre_heq
+#check @SerrePositivity.InfinityCategories.F2.pointedHomMorphismValueComparison_map_pre_heq_left_diagonal
+#check @SerrePositivity.InfinityCategories.F2.pointedHomMorphismValueComparison_map_pre_heq_prism
+#check @SerrePositivity.InfinityCategories.F2.spaceCompositionStandardLastValue_heq_morphism_pre_action
+
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionStandardLastValue_heq_fixed_precomp
 
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleLastSourceSimplex

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionStandardLastMorphismValue
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionStandardLastValue
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTrianglePointedMaximalLastPrism
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTriangleLastInitialHead
