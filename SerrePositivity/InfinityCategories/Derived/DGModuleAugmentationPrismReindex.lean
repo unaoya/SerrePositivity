@@ -26,14 +26,13 @@ lemma dgModuleAugmentationPrismData_hom_pullback
     (dgModuleAugmentationPrismData R C E F (s.pullback α) (β.comp α)).hom
         I a b k hI ha hb hk =
       ((dgModuleAugmentationPrismData R C E F s β).pullback α).hom I a b k hI ha hb hk := by
-  by_cases hi : Set.InjOn α (I : Set (Fin (m + 1)))
-  · exact dgModuleAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k
-      hI ha hb hk hi
-  · by_cases hc : I.card = 2
-    · exact dgModuleAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β
-        I a b k hI ha hb hk hi hc
-    · exact dgModuleAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k
-        hI ha hb hk hi hc
+  exact augmentation_proof_of_reindex_cases α I
+    (fun hi ↦ dgModuleAugmentationPrismData_hom_pullback_of_inj R C E F s α β I a b k
+      hI ha hb hk hi)
+    (fun hi hc ↦ dgModuleAugmentationPrismData_hom_pullback_of_collapsed_pair R C E F s α β
+      I a b k hI ha hb hk hi hc)
+    (fun hi hc ↦ dgModuleAugmentationPrismData_hom_pullback_of_not_inj R C E F s α β I a b k
+      hI ha hb hk hi hc)
 /-- 元の同じ実 augmentation データは、任意の単調添字変更と厳密に可換。 -/
 lemma dgModuleAugmentationPrismData_pullback
     (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (n + 1) →o Fin 2) :
