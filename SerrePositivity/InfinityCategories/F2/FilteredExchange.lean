@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyComposition
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalNativeValueBoundary
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroLastValueFactor
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexZeroValueAt

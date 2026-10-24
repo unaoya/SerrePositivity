@@ -6,14 +6,13 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 a③。`coherentColimitApexZeroCompositeValue_heq_two_evaluation` により、元の零面値と raw 二辺値全体を、元の二射の指定評価比較の合成まで無条件に戻した。元の実初点・中間・終点、全初期係数、第一・最後の raw 辺値と指定比較を保持している。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite` で証明済み。残りは `pointedHomTwoMorphismEvaluationComparison f g` と `pointedHomCompositeMorphismEvaluationComparison f g` の同じ指定値の合成則。この合成則・Ncomp・元の普遍三角形の一致・一般交換は未証明。
-- 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。期限で未完なら I-1 c として明示入力の継続を確定する。
-- 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ] ← 今回、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [ ]。
-- 主要宣言：`coherentColimitApexZeroCompositeValue_heq_two_evaluation`、`coherentColimitApexZeroValueAt_heq_zero_value`、`coherentColimitApexLastEvaluationComparison_heq_pre_action`、`coherentColimitApexFirstValueComposite_heq_evaluation`、`pointedHomTwoMorphismEvaluationComparison`。
-- 残り：I-1 a の Ncomp と値の消去、b の全錐比較と有限形状帰納（HTT 5.3.3.3、8 時間枠内）。続いて I-2 a〜e（下記 F2N-5 の未完部分）。
-- 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論は P・K-B、I-2 e は K-B へ公開する。
-- 既知の問題：一般交換と安定性は未証明。ModelCategory 仮定を加えない。
-- 次の一手：元の二評価 `pointedHomTwoMorphismEvaluationComparison f g` を、合成射の指定評価 `pointedHomCompositeMorphismEvaluationComparison f g` へ一致させる。`coherentCompositionIntervalSquare`、`pointedValueFamilyTransportIso_at_right` と同じ指定単位・余単位三角式を使い、元の二評価の合成則を証明する。終点の等式だけや未証明の普遍三角形の反映判定では指定値の合成則を代用しない。これを `coherentColimitApexZeroCompositeValue_heq_two_evaluation` と `coherentColimitApexZeroValueAt_heq_zero_value` へ代入して Ncomp を得る。Nlong/Ncomp と `spaceCompositionZero_morphism_coherence` から、同じ零面値を消去し、原本の右辺の長辺値式へ戻す。`coherentColimitApexRawTriangleBoundaryAt_long_cancel` は四因子式への帰還用。続いて I-1 b の全錐比較・保存・有限形状帰納と公開。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a へ移行する。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
+- 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
+- I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
+- I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
+- 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
+- 次の一手：I-2 a。`indArrowPrismAllBoundaryIso` の三境界固定比較を区間の curry・宇宙比較へ移し、指定下側変換に整合する全族の同型へ相対反映する。両端点の `smallDiagramCommaEvaluation` の cofinal 性、射形状の標準余錐の余極限性、有限半順序形状の帰納と単一 filtered 表示へ進む。通常の comma の関手同型の存在だけで指定境界の整合を完了扱いにしない。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

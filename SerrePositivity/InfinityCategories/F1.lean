@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionMoving
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberBoundary
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity

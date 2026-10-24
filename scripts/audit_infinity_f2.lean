@@ -1,6 +1,8 @@
 import SerrePositivity.InfinityCategories.F2
 import Lean.Util.CollectAxioms
 
+#check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyEvaluation_comp
+
 #check @SerrePositivity.InfinityCategories.F2.diagonalFiberTransport_value_eq_of_prism_boundary
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastValue_heq_morphism_pre_action
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastValue_heq_morphism_pre_action_of_heq
