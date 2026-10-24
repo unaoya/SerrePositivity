@@ -815,3 +815,19 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCornerTarget
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorRelativeExtension
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedSliceRelative
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaLowerIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FunctorIsoInverseHEq
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTargetUnderCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTargetEvaluationFiltered
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTargetEvaluationCofinality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeVertexCases
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeDiagramPresentation

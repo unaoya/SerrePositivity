@@ -1990,3 +1990,45 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_fst
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_fst
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeCommaFamily_iso_of_lowerIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeCommaFamily_iso_of_lowerIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.isFunctorEqIso_trans_of_inverse_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.isFunctorEqIso_trans_of_inverse_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.isFunctorEqIso_trans_of_inverse_pair_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.isFunctorEqIso_trans_of_inverse_pair_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeCommaFamily_cocone_of_comparison
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_relativeCommaFamily_cocone_of_comparison
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetUnder_cocone_of_lower_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetUnder_cocone_of_lower_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetUnder_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetUnder_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetEvaluationComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_indConeTargetEvaluationComma_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indConeTargetEvaluationComma_isFiltered
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeTargetEvaluationComma_isFiltered
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_apex_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_apex_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_apex_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_apex_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneVertex_cases
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneVertex_cases
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_cone_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indCone_has_singleFilteredDiagramPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indCone_has_singleFilteredDiagramPresentation
