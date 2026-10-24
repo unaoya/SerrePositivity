@@ -623,3 +623,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowStandardCoconeCo
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramStandardCoconeColimit
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramFilteredPresentation
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCorner
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCocone

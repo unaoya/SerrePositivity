@@ -1261,3 +1261,30 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indArrow_has_singleFilteredDiagramPresentation
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indArrow_has_singleFilteredDiagramPresentation
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_mono
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner_isKappaSmall
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner_isKappaSmall
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inl
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inl
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inr
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inr

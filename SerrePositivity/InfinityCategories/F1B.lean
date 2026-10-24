@@ -747,3 +747,7 @@ public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftPointwi
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.WithTerminalOppositeNerveIso
 
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.TerminalJoinNerveIso
+
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.PosetLowerTerminalFunctor
+
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.PosetLowerJoinIso

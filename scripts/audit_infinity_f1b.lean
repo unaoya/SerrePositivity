@@ -3007,3 +3007,21 @@ end
 
 #check SerrePositivity.InfinityCategories.F1B.joinInr_terminalJoinNerveIso
 #print axioms SerrePositivity.InfinityCategories.F1B.joinInr_terminalJoinNerveIso
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerTerminalFunctor
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerTerminalFunctor
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerTerminalFunctor_isIso
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerTerminalFunctor_isIso
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerTerminalNerveIso
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerTerminalNerveIso
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inl
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inl
+
+#check SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inr
+#print axioms SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inr
