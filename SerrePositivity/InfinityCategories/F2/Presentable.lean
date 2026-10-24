@@ -147,3 +147,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafBarReali
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoproductRealizationColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftKanColimitExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorLeftKan
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction

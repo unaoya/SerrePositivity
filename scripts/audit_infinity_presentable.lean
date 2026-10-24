@@ -321,3 +321,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_discrete_of_finiteRestrictions
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaYoneda_smallDiagram_hasColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_reflectorLeftKan
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflectorAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_reflector
