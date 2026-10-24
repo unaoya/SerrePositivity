@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomPrecompAlgebra
 /-!
 概要：任意の全関手射の二段後合成と前後合成の一致を証明する。
@@ -10,15 +11,6 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet MonoidalClosed
 noncomputable section
-lemma functorHom_postcomp_postcomp {X Y Z W : SSet.{u}} {f g : X ⟶ Y}
-    (e : FunctorHom f g) (p : Y ⟶ Z) (q : Z ⟶ W) :
-    (SSet.mapHomotopyCategory ((ihom X).map q)).map
-      ((SSet.mapHomotopyCategory ((ihom X).map p)).map e) =
-    (SSet.mapHomotopyCategory ((ihom X).map (p ≫ q))).map e := by
-  have hn := CategoryTheory.Functor.map_comp (ihom X) p q
-  have hh := congrArg (fun k => SSet.mapHomotopyCategory k) hn
-  rw [F2.mapHomotopyCategory_comp_eq] at hh
-  exact (eq_of_heq (functorMapHom_heq_of_functor_eq hh e)).symm
 lemma functorHom_precomp_postcomp {A X Y Z : SSet.{u}} {f g : X ⟶ Y}
     (e : FunctorHom f g) (p : A ⟶ X) (q : Y ⟶ Z) :
     (SSet.mapHomotopyCategory ((ihom A).map q)).map

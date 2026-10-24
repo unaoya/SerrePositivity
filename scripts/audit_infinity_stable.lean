@@ -8,6 +8,7 @@ import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGeneral
 import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral
 import SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison
 import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
 import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
 import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision
@@ -7667,6 +7668,8 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison,
   `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
+  `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
+  `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
   `SerrePositivity.InfinityCategories.Derived.SuspensionShiftObjectComparison,
   `SerrePositivity.InfinityCategories.Derived.StableHomotopyShiftComparison,
   `SerrePositivity.InfinityCategories.Derived.CofiberConnectingDerivedImage,

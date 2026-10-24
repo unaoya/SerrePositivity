@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 public import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
@@ -14,11 +15,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet MonoidalClosed
-/-- 等しい通常関手による同じ射の像は型付きで一致する。 -/
-lemma functorMapHom_heq_of_functor_eq {C D : Type*} [Category C] [Category D]
-    {F G : C ⥤ D} (h : F = G) {a b : C} (e : a ⟶ b) : HEq (F.map e) (G.map e) := by
-  cases h
-  rfl
 /-- 恒等前合成は元の指定関手同型の順方向射を保つ。 -/
 lemma functorIso_precomp_id_hom {X Y : SSet.{u}} {f g : X ⟶ Y} (e : FunctorIso f g) :
     (e.precomp (𝟙 X)).hom = e.hom := by

@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGenera
 public import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral
 public import SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison
 public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+public import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 
 public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 
