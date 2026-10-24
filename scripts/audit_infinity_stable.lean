@@ -1,3 +1,10 @@
+import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
+import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
+import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift
+import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaCone
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedRepresentableOperations
+import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryPretriangulated
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectivePretriangulated
 import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBoundary
 import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose
@@ -7701,6 +7708,13 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
   `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaCone,
+  `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedRepresentableOperations,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryPretriangulated,
+  `SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectivePretriangulated,
   `SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBoundary,
   `SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy,
   `SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose,

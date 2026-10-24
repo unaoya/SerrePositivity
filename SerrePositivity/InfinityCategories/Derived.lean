@@ -2261,6 +2261,13 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBounda
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitCofiber
+public import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
+public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaCone
+public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedRepresentableOperations
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryPretriangulated
+public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectivePretriangulated
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
