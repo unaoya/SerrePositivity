@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
 public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
 
 /-! # 実 over slice の固定図式輸送の台
@@ -14,13 +15,6 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 open scoped Simplicial
-
-/-- 固定図式の等式による over slice の輸送は、台の join 射を変えない。 -/
-lemma roofSliceTransport_val {K X : SSet.{u}} {p q : K ⟶ X} (h : p = q)
-    {d : SimplexCategoryᵒᵖ} (s : (sliceOver p).obj d) :
-    ((eqToIso (congrArg sliceOver h)).hom.app d s).val = s.val := by
-  subst h
-  rfl
 
 /-- 固定図式の輸送は、零単体から回収した実辺の一次単体を変えない。 -/
 lemma roofSliceTransport_edge {X : SSet.{u}} {p q : Δ[0] ⟶ X} (h : p = q)

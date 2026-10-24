@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
 
 public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 
