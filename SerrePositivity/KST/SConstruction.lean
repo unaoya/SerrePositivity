@@ -2566,5 +2566,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotVerdierRectangle
 
 public import SerrePositivity.KST.SConstruction.DGOdotCatPerfInput
 public import SerrePositivity.KST.SConstruction.DGOdotLandTamme
+public import SerrePositivity.KST.SConstruction.DGKInputIdempotentComplete
+public import SerrePositivity.KST.SConstruction.DGKInputPerfectNu
+public import SerrePositivity.KST.SConstruction.DGOdotLandTammeComplete
 
 /-! # ∞-S• 構成と連結 K 理論 -/

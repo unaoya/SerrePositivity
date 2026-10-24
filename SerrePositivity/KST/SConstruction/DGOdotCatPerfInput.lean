@@ -1,12 +1,13 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotLaxVerdierConnection
 public import SerrePositivity.KST.SConstruction.DGOdotMorita
+public import SerrePositivity.KST.SConstruction.DGKInputIdempotentComplete
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotient
 
 /-!
 概要：d の具体的二射を、実 ⊙ を終点とする Cat^perf の商入力へ接続する。
-方針：c の同じ Morita 辺の逆を完全な完備化射とし、冪等完備性だけを分離する。
-規約：未供給の d 入力と coherent 冪等完備性を証明済みと数えない。
+方針：c の同じ Morita 辺の逆を完全な完備化射とし、D の完備性を接続する。
+規約：未供給の d 入力を証明済みと数えない。
 使われ方：Tamme 分裂と Verdier 列から LT の Cat^perf 版を導く形式的接続。
 -/
 @[expose] public section
@@ -74,6 +75,15 @@ structure DGOdotCatPerfInput : Prop where
   left_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotLeftInput R d)).obj
   right_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotRightInput R d)).obj
   odot_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj
+
+/-- 概要：元の四対象の完備性証人を追加仮定なしに供給する。
+方針：D の実 Perf 完備性を同じ固定 ν 値へ移す。
+規約：D2・β3・S 内長方形はここで構成しない。使われ方：LT の標準入力。 -/
+theorem dgOdotCatPerfInput : DGOdotCatPerfInput R d where
+  source_complete := dgKInputStableValue_isIdempotentComplete R _
+  left_complete := dgKInputStableValue_isIdempotentComplete R _
+  right_complete := dgKInputStableValue_isIdempotentComplete R _
+  odot_complete := dgKInputStableValue_isIdempotentComplete R _
 
 namespace DGOdotCatPerfInput
 variable {R d} (c : DGOdotCatPerfInput R d) (h : DGOdotLaxVerdierInput R d)

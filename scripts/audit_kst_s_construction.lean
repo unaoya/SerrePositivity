@@ -31342,3 +31342,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_snd
 #print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_snd
+
+#check @SerrePositivity.KST.SConstruction.dgKInputStableValue_isIdempotentComplete
+#print axioms SerrePositivity.KST.SConstruction.dgKInputStableValue_isIdempotentComplete
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNu_vertex_complete
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNu_vertex_complete
+
+#check @SerrePositivity.KST.SConstruction.dgKInputPerfectNu
+#print axioms SerrePositivity.KST.SConstruction.dgKInputPerfectNu
+
+#check @SerrePositivity.KST.SConstruction.dgKInputPerfectNu_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgKInputPerfectNu_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgKInputPerfectNu_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgKInputPerfectNu_vertex
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.perfectQuotient
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.perfectQuotient
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeSquare
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeSquare
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTamme_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTamme_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCospan
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCospan
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone_source
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.landTammeCone_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotCatPerfInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotCatPerfInput

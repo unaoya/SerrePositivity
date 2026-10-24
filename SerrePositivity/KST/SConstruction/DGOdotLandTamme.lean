@@ -5,7 +5,7 @@ public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientValuePullback
 /-!
 概要：d の実商列と c の同じ ⊙ から LT の Cat^perf 版の形式的結論を導く。
 方針：Tamme の元の両射影を保つ分裂と既存の Verdier 列消去を特殊化する。
-規約：d・冪等完備性の供給は明示入力。K の局所化性や具体的環の定理は主張しない。
+規約：d は明示入力。四完備性の標準証人は D から供給する。K の局所化性は主張しない。
 使われ方：供給後も同じ四辺・実 cospan・極限錐を保持する LT 接続。
 -/
 @[expose] public section
