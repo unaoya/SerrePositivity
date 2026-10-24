@@ -39,6 +39,45 @@ def dgGluingNativeNormalizationAugmentationTetrahedron :=
   dgGluingNativeNormalizationSimplexPrism R C D M X Y 3
     (dgGluingNativeNormalizationRawTetrahedron R C D M X Y)
 
+/-- 概要：元 Hom と終閉射の標準側面上の全 augmentation。
+方針：四面体の指定第零面を元加群へ戻す。
+規約：元入力と標準合成面を保持する。使われ方：終側面の導来整合性。 -/
+def dgGluingNativeNormalizationExitRawTriangle :=
+  (Δ[1] ◁ dgGluingNormalizationExitTriangle R E IX IY (𝟙 _)) ≫
+    dgGluingCommaAugmentationPrism R E E (DGFunctor.id E) ≫
+      dgNerve.map (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R E)
+
+/-- 概要：残る始側面上の全 augmentation。
+方針：同じ四面体の第二面を元加群へ戻す。
+規約：新しい面を選ばない。使われ方：始側面の導来整合性。 -/
+def dgGluingNativeNormalizationEntranceRawTriangle :=
+  (Δ[1] ◁ dgGluingNormalizationEntranceTriangle R E IX IY (𝟙 _)) ≫
+    dgGluingCommaAugmentationPrism R E E (DGFunctor.id E) ≫
+      dgNerve.map (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R E)
+
+def dgGluingNativeNormalizationExitAugmentationTriangle :=
+  dgGluingNativeNormalizationSimplexPrism R C D M X Y 2
+    (dgGluingNativeNormalizationExitRawTriangle R C D M X Y)
+
+def dgGluingNativeNormalizationEntranceAugmentationTriangle :=
+  dgGluingNativeNormalizationSimplexPrism R C D M X Y 2
+    (dgGluingNativeNormalizationEntranceRawTriangle R C D M X Y)
+
+lemma dgGluingNativeNormalizationRawTetrahedron_zero :
+    (Δ[1] ◁ (stdSimplex.δ (0 : Fin 4) ▷ _)) ≫
+        dgGluingNativeNormalizationRawTetrahedron R C D M X Y =
+      dgGluingNativeNormalizationExitRawTriangle R C D M X Y := by
+  rw [dgGluingNativeNormalizationRawTetrahedron, ← Category.assoc, ← whiskerLeft_comp,
+    dgGluingNormalizationCompositionTetrahedron_zero]
+  rfl
+
+lemma dgGluingNativeNormalizationRawTetrahedron_two :
+    (Δ[1] ◁ (stdSimplex.δ (2 : Fin 4) ▷ _)) ≫
+        dgGluingNativeNormalizationRawTetrahedron R C D M X Y =
+      dgGluingNativeNormalizationEntranceRawTriangle R C D M X Y := by
+  rw [dgGluingNativeNormalizationRawTetrahedron, ← Category.assoc, ← whiskerLeft_comp]
+  rfl
+
 lemma dgGluingNativeNormalizationRawTetrahedron_one :
     (Δ[1] ◁ (stdSimplex.δ (1 : Fin 4) ▷ _)) ≫
         dgGluingNativeNormalizationRawTetrahedron R C D M X Y =
@@ -71,6 +110,24 @@ lemma dgGluingNativeNormalizationAugmentationTetrahedron_three :
   rw [dgGluingNativeNormalizationAugmentationTetrahedron,
     dgGluingNativeNormalizationSimplexPrism_face,
     dgGluingNativeNormalizationRawTetrahedron_three]
+  rfl
+
+lemma dgGluingNativeNormalizationAugmentationTetrahedron_zero :
+    (Δ[1] ◁ (stdSimplex.δ (0 : Fin 4) ▷ P)) ≫
+        dgGluingNativeNormalizationAugmentationTetrahedron R C D M X Y =
+      dgGluingNativeNormalizationExitAugmentationTriangle R C D M X Y := by
+  rw [dgGluingNativeNormalizationAugmentationTetrahedron,
+    dgGluingNativeNormalizationSimplexPrism_face,
+    dgGluingNativeNormalizationRawTetrahedron_zero]
+  rfl
+
+lemma dgGluingNativeNormalizationAugmentationTetrahedron_two :
+    (Δ[1] ◁ (stdSimplex.δ (2 : Fin 4) ▷ P)) ≫
+        dgGluingNativeNormalizationAugmentationTetrahedron R C D M X Y =
+      dgGluingNativeNormalizationEntranceAugmentationTriangle R C D M X Y := by
+  rw [dgGluingNativeNormalizationAugmentationTetrahedron,
+    dgGluingNativeNormalizationSimplexPrism_face,
+    dgGluingNativeNormalizationRawTetrahedron_two]
   rfl
 
 end SerrePositivity.InfinityCategories

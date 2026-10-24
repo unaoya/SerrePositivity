@@ -26,8 +26,9 @@
 - 共有面に沿う実 cube の pushout 貼り合わせ、標準合成三角形上の全 augmentation prism と三面を構成済み。
   前後の標準合成三角形と元 Hom の終側合成を、全入力の四面体の三つの指定面として保持する。
   同じ実導来 augmentation 四面体の二面は native 前後 prism に厳密一致する。
-  四面体全体の二射影間の実ホモトピーと四面すべての制限を保持する。
+  四面体全体の二射影間の実ホモトピーと四面すべての制限を保持する。native 実導来 augmentation でも四面を回収する。
   入力固定二変形の関手圏の類の一致、および類の合成等式から指定三辺の境界充填への移送を供給済み。
+  実入力二変形の三角形と全時間の射影一致があれば、選択済み対角三辺の指定境界へ移す接続も供給済み。
   **側面の射影自然性を実例化し、選択済み二変形へ相対比較を移す工程は未完。**
 
 ### G-1 d の三段目（固定）
@@ -62,6 +63,7 @@
 - `dgGluingNormalizationCompositionTetrahedron`・`dgGluingNativeNormalizationAugmentationTetrahedron`
 - `dgGluingNormalizationAugmentationTetrahedronHomotopy`・`dgGluingInputHomotopy_post_homMk_eq`
 - `dgGluingHomotopyTriangleFilling_iff`・`dgGluingHomotopyTriangleFilling_transfer`
+- `dgGluingLaxHomDiagonalComparisonBoundary_filling_of_input_triangle`
 - `dgGluingLaxHomDiagonalComparisonBoundary`・`dgGluingLaxHomFirstInputHomotopy_over`・`dgGluingLaxHomLastInputHomotopy_over`
 
 ### 依存と提供
@@ -84,8 +86,8 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8726 jobs、公理監査 718 モジュール・6727 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-coherence-aggregate-build.log`・`/tmp/d2-v3-coherence-audit.log`。新規モジュールは集約・監査へ接続済み。
+- 検証済み：集約ビルド 8727 jobs、公理監査 719 モジュール・6743 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-choice-transfer-aggregate-build.log`・`/tmp/d2-v3-choice-transfer-audit.log`。新規モジュールは集約・監査へ接続済み。
 - 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 

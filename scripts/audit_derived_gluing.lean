@@ -722,7 +722,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationAugmentationTetrahedron,
     `SerrePositivity.InfinityCategories.Derived.Gluing.InputHomotopyClassComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationCoherence,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DiagonalInputChoiceComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

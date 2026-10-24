@@ -717,3 +717,4 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizat
 public import SerrePositivity.InfinityCategories.Derived.Gluing.InputHomotopyClassComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationCoherence
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion
+public import SerrePositivity.InfinityCategories.Derived.Gluing.DiagonalInputChoiceComparison
