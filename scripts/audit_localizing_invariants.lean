@@ -1220,6 +1220,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagramComparison,
     `SerrePositivity.KST.LocalizingInvariants.DGOdotVerdierRectangleTransport,
     `SerrePositivity.KST.LocalizingInvariants.DGKappaRelativeRoofTransport,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison,
     `SerrePositivity.KST.LocalizingInvariants.RelativeSplitting,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence,
     `SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback,
