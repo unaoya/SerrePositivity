@@ -84,7 +84,7 @@
 - D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
   入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
-  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D、閉包外の `RelativeDiagramHomotopy.exists_homotopy_relative_innerAnodyne` は F1B へコーディネータ経由で依頼中。
+  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D、閉包外の `exists_homotopy_relative_innerAnodyne（`F1B/FunctorCategories/RelativeDiagramHomotopy`）` は F1B へコーディネータ経由で依頼中。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
@@ -99,9 +99,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8813 jobs、公理監査 797 モジュール・7740 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-coefficient-relative-hexagon-aggregate-build.log`・`/tmp/d2-v3-coefficient-relative-hexagon-audit.log`。実係数辺の相対移送と六角形から指定境界への消去入口までの新規モジュールは集約・監査へ接続済み。
-- 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
+- 検証済み：集約ビルド 8823 jobs、公理監査 807 モジュール・7795 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-relative-unit-loop-aggregate-build.log`・`/tmp/d2-v3-relative-unit-loop-audit.log`。相対四面体の欠面比較から左単位閉路を消去する入口と、六片の合成関係の消去補題を集約・監査へ接続済み。
+- 検証済み部分をコミットし、実六片の五頂点・各辺の型付けを構成中。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約

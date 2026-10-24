@@ -801,7 +801,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalCoefficientRelativePrism,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapCoefficientChoiceComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanAlignedDiagonalTriangles,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanHexagonReduction]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanHexagonReduction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronHorn,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTriangleConeGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTriangleConeFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RelativeHomotopyRestriction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryInverseRelative,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTriangleRelativeLoopComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTriangleRelativeLoopClass,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronRelativeFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronLoopClass,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleCancellation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
