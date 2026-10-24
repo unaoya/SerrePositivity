@@ -627,3 +627,23 @@ public import SerrePositivity.InfinityCategories.F2.Ind.DiagramFilteredPresentat
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCorner
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCornerImage
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCoconeCut
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCoconeMono
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCut
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCoconeIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaRestrictionLaws

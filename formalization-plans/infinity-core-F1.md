@@ -19,9 +19,11 @@
 - I-2 a④ の入口：`posetNerve_maximal_isPushout` と `_product_isPushout` は、極大点の除去部分と下方部分を貼る元の包含の実 pushout。任意の試験族との積も保持する。`smallDiagramCommaCocone_isColimit_of_evaluation_cofinal` は各点の共終性を明示して同じ標準全余錐の普遍性を回収。`indArrow_has_singleFilteredDiagramPresentation` は射図式の単一表示を公開する。有限半順序形状の共終性と filtered 性は未証明。
 - I-2 a④ の余錐形状：`terminalJoinNerveMap_isIso` と `terminalJoinNerveIso_hom` は、既存の終点付加余錐写像そのものの可逆性と順射回収。`joinInl_terminalJoinNerveIso`・`joinInr_terminalJoinNerveIso` は元の圏の包含と新しい終点を全射で保持。
 - I-2 a④ の下方比較：`posetLowerTerminalFunctor_isIso` は厳密下方集合に終点を付加した圏と弱下方集合との厳密な同型。`posetLowerJoinIso` と `_inl`・`_inr` は同じ弱下方 nerve を、元の下方包含と指定点を保つ実余錐形状として表示する。
-- I-2 a④ の一般補間領域：`coneTensorCornerInclusion_mono` と `coneTensorCorner_isKappaSmall` は、任意の κ-small な下方形状と試験族から元の余錐の積へ入る実領域を与える。`coneTensorCocone_inl`・`_inr` は同じ全領域と新しい二つの余錐点を回収。比較の可逆性と一般有限半順序形状の帰納は未証明。
+- I-2 a④ の一般補間領域：`coneTensorCornerInclusion_mono` と `coneTensorCorner_isKappaSmall` は、任意の κ-small な下方形状と試験族から元の余錐の積へ入る実領域を与える。`coneTensorCocone_inl`・`_inr` は同じ全領域と新しい二つの余錐点を回収。`coneTensorCoconeIso` は同じ比較写像自身の可逆性、`coneTensorExtend_inclusion` は元の全領域への厳密な制限回収。一般有限半順序形状の帰納は未証明。
+- I-2 a④ の実拡張：`exists_indComma_coneTensor_extension` は、元の二つの全図式と共通境界を保つ、同じ scalar Ind comma 内の全余錐積への拡張。任意の κ-small な下方形状と試験族を保持し、モデル圏仮定を要しない。
+- I-2 a④ の形状制限：`diagramCommaRestriction` は元の全図式 comma の形状制限。`_projection`・`_uncurry`・`_coconeMap`・`_evaluate` で元の C 全図式・全錐・指定値を回収し、`_comp`・`_id` は全射の厳密な合成則と恒等則。
 - 供給依頼：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`posetSubtypeNerveIso_hom_ι` は現在の所有 import 閉包外。下方部分と全部分複体の比較に必要なため、コピーせずコーディネータ経由の供給依頼を報告済み。順序下方部分の圏と終点余錐の厳密な比較は独立に保存済み。
-- 次の一手：I-2 a④。`coneTensorCocone` の可逆性を証明し、点追加の補間領域への余錐を元の余錐の積への全拡張に戻す。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
+- 次の一手：I-2 a④。一般の下方形状に対する二段補間を、元の D・C 全図式・指定下側変換を保つ実 slice 円柱として構成する。保存済みの余錐積への実拡張と形状制限の厳密な合成則を使って、同じ旧族と全境界を回収する。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

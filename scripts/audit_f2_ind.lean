@@ -1288,3 +1288,81 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inr
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_inr
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_range_iff
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_range_iff
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_max_cut
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCornerInclusion_max_cut
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorAugX
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorAugX
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorAugY
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorAugY
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorAug_max_cut
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorAug_max_cut
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_cut_max
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_cut_max
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_prefix
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_prefix
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_app_injective
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_app_injective
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_mono
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCut
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCut
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCut_le
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCut_le
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_coneTensor_prefix_lift
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_coneTensor_prefix_lift
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_app_surjective
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_app_surjective
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCoconeIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCoconeIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend_inclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend_inclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_extension
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_projection
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_projection
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_uncurry
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_uncurry
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_coconeMap
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_coconeMap
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_evaluate
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_evaluate
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_comp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_comp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_id
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_id
