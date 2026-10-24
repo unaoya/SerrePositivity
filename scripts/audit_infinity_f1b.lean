@@ -2989,3 +2989,21 @@ end
 #check @SerrePositivity.InfinityCategories.F1B.nerveLeftCoconeTransport_cocone
 #check @SerrePositivity.InfinityCategories.F1B.nerveLeftCoconeTransport_isColimit_iff
 #check @SerrePositivity.InfinityCategories.F1B.nerve_isLeftKanExtensionHom_iff_pointwise
+
+#check SerrePositivity.InfinityCategories.F1B.withTerminalOppositeNerveIso
+#print axioms SerrePositivity.InfinityCategories.F1B.withTerminalOppositeNerveIso
+
+#check SerrePositivity.InfinityCategories.F1B.terminalJoinNerveMap_isIso
+#print axioms SerrePositivity.InfinityCategories.F1B.terminalJoinNerveMap_isIso
+
+#check SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso
+#print axioms SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso
+
+#check SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso_hom
+#print axioms SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso_hom
+
+#check SerrePositivity.InfinityCategories.F1B.joinInl_terminalJoinNerveIso
+#print axioms SerrePositivity.InfinityCategories.F1B.joinInl_terminalJoinNerveIso
+
+#check SerrePositivity.InfinityCategories.F1B.joinInr_terminalJoinNerveIso
+#print axioms SerrePositivity.InfinityCategories.F1B.joinInr_terminalJoinNerveIso

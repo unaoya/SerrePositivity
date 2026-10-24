@@ -743,3 +743,7 @@ public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconePreco
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftCanonicalCocone
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftCoconeTransport
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftPointwise
+
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.WithTerminalOppositeNerveIso
+
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.TerminalJoinNerveIso

@@ -17,6 +17,8 @@
 - I-2 a② 完了：`nonempty_indArrowTargetUnder_cocone` は指定終点変換を含む元の試験族への実余錐。両評価の引き戻しは filtered。`diagramCommaEvaluation_interval_isRightCofinal` と `smallDiagramCommaEvaluation_interval_isRightCofinal` は、元の射図式の任意の頂点での評価そのものの cofinal 性。
 - I-2 a③ 完了：`indYonedaCanonicalCocone_isColimit` は元の scalar 標準密度余錐の余極限性。`smallDiagramCommaCocone_evaluate_isColimit` で各点を回収し、`smallArrowDiagramCommaCocone_isColimit` は同じ射図式 D を頂点とする元の標準全余錐の余極限性。添字の κ-filtered 性は `smallArrowDiagramComma_isKappaFiltered`。
 - I-2 a④ の入口：`posetNerve_maximal_isPushout` と `_product_isPushout` は、極大点の除去部分と下方部分を貼る元の包含の実 pushout。任意の試験族との積も保持する。`smallDiagramCommaCocone_isColimit_of_evaluation_cofinal` は各点の共終性を明示して同じ標準全余錐の普遍性を回収。`indArrow_has_singleFilteredDiagramPresentation` は射図式の単一表示を公開する。有限半順序形状の共終性と filtered 性は未証明。
+- I-2 a④ の余錐形状：`terminalJoinNerveMap_isIso` と `terminalJoinNerveIso_hom` は、既存の終点付加余錐写像そのものの可逆性と順射回収。`joinInl_terminalJoinNerveIso`・`joinInr_terminalJoinNerveIso` は元の圏の包含と新しい終点を全射で保持。
+- 供給依頼：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`posetSubtypeNerveIso_hom_ι` は現在の所有 import 閉包外。下方部分と全部分複体の比較に必要なため、コピーせずコーディネータ経由の供給依頼を報告済み。終点付加と順序下方部分の圏の厳密な比較は独立して進める。
 - 次の一手：I-2 a④。極大点 a の下方部分を、厳密下方部分への実余錐形状として元の包含を保って同定する。その後、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
