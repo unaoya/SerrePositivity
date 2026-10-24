@@ -2257,6 +2257,10 @@ public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFam
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionClosedFamilyNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGIdempotentCompleteGeneral
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBoundary
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose
+public import SerrePositivity.InfinityCategories.Derived.DGModuleSplitCofiber
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。

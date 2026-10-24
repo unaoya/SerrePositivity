@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBoundary
+import SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy
+import SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose
+import SerrePositivity.InfinityCategories.Derived.DGModuleSplitCofiber
 import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberRotation
 import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberExists
 import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceZeroCofiber
@@ -7697,6 +7701,10 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
   `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeBoundary,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSplitConeHomotopy,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSquareHomotopyPostcompose,
+  `SerrePositivity.InfinityCategories.Derived.DGModuleSplitCofiber,
   `SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberRotation,
   `SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberExists,
   `SerrePositivity.InfinityCategories.Stable.LoopEquivalenceZeroCofiber,
