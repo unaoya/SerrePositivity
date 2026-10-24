@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 同じ fiber 内の指定同型の像は、端点を同じ定値頂点へ揃える等号の同型。 -/
 lemma VertexIso.map_vertexFiber_projection {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
-    [Quasicategory (vertexFiber p b)] {x y : (vertexFiber p b) _⦋0⦌} (e : VertexIso x y) :
+    {x y : (vertexFiber p b) _⦋0⦌} (e : VertexIso x y) :
     VertexIso.map (VertexIso.map e (vertexFiberι p b)) p =
       eqToIso (congrArg SSet.HomotopyCategory.mk
         (congrArg (fun t : vertexFiber p b ⟶ B ↦ t.app (Opposite.op ⦋0⦌) x)

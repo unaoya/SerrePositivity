@@ -584,3 +584,14 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismSou
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTerminalPrismSourceIso
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismAllBoundaryComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSourceValues
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSourceFamily
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeFunctorVertexIsoProjection
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationSliceIsoProjection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaEvaluationSliceSquare
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulSquareRelativeIsoReflection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldFamilySourceIso

@@ -14,8 +14,8 @@
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [ ] ← 今回、a③ 射形状の標準余錐の余極限性 [ ]、a④ 有限半順序形状の帰納と単一 filtered 表示 [ ]。
 - I-2 a の界面：`indArrowPrismCurriedAllBoundaryIso`・`indArrowPrismNativeAllBoundaryIso` は元の全 C 図式・D・始点全余錐を同時に固定した実 fiber 内の比較。両 `ReconstructedVertex_val`・`OriginalVertex_val` は元の全余錐を厳密に回収する。`fixedCoconeBoundaryUnder` が指定評価下の固定条件、`_UnderPost` がその条件を保つ後合成。評価下の相対反映と cofinal 性自体は未証明。
-- I-2 a② の現状：`exists_indArrowSourceFixedJoinCylinder` は原の両余錐を両端に持ち、元の始点評価を厳密に保つ join 円柱。`exists_indArrowInterpolationOldFamily_relative_slice_iso` は元の補間族の制限と元の q の slice 像を、同じ指定始点評価の相対関手空間内で同型にする。`fixedCoconeBoundaryUnder_vertex_evaluation` と元の両 `NativeAllBoundary*_source` は同じ指定評価の厳密な一致を回収する。実 comma の相対反映と評価の cofinal 性は未証明。
-- 次の一手：I-2 a②。`exists_indArrowInterpolationOldFamily_relative_slice_iso` の同じ相対同型を、元の実 comma の全族と指定下側変換を保つ同型へ反映する。元の補間全族の始点評価を `V.sourceCone` の同じ評価へ厳密に回収し、旧族の評価を元の q の評価へ戻す。slice 射影の充満忠実性で同型を戻しただけでは、指定下側変換との整合を完成扱いにしない。続いて両端点の評価の cofinal 性、射形状の余極限性、有限半順序形状の単一 filtered 表示へ進む。
+- I-2 a② の現状：`indArrowInterpolationCommaFamily_source` は元の補間全族の始点評価を `V.sourceCone` の同じ点制限へ厳密に戻し、`indArrowInterpolationOldFamily_source` は旧族の評価を元の q の評価へ戻す。`exists_indArrowInterpolationOldFamily_slice_iso_projection` は元の相対 slice 同型の像を、評価後に元の端点等号の同型となる条件付きで回収する。`VertexIso.map_vertexFiber_projection` は fiber の充填性なしに使える。`diagramCommaEvaluation_slice_square` は評価と終点を揃えた scalar slice 射影の可換式で、同じ射影の充満忠実性も公開。`exists_indArrowInterpolationOldFamily_iso_source` は同じ slice 比較を実 comma の同型へ戻し、始点評価後に元の等号同型となることまで公開。指定下側変換を保つ実 under comma 内の同型と評価の cofinal 性は未証明。
+- 次の一手：I-2 a②。`exists_indArrowInterpolationOldFamily_iso_source` の同じ比較と指定下側変換の恒等同型を、実 under comma の pullback 内の同型へ束ねる。左ファイブレーションの可逆性反映により、pullback の Kan 性を追加仮定にせず同型を構成する。通常の comma 同型とその評価だけでは、指定変換下の相対比較を完成扱いにしない。続いて両端点評価の cofinal 性、射形状の余極限性、有限半順序形状の単一 filtered 表示へ進む。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 
