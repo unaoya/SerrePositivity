@@ -23,9 +23,12 @@
 - 局所小ささは、元の各 pinched Hom と宇宙 u の Kan 空間の持ち上げとの全同値で定義した。
   固定頂点写像の小ささから二対象の小さい全部分模型を作り、Ind・accessible・presentable 圏へ供給する。
 - P-1 g は g1〜g7 を完了。元の Yoneda 制限上の有限余積条件と全小余極限保存を同値にした。
+- P-1 c：個々の presentable 圏の全小極限・反映による小余極限構成を提供する。
+  Pr^L 自身の小極限（HTT 5.5.3.13）は未着手。c 全体は未完了。
 
 ### 残り（依存順）
-1. P-1 c：presentable の小さい極限・余極限。HTT 5.5.2.4・5.5.3.13。
+1. P-1 c：Pr^L 自身の小極限と Cat∞ への包含の保存（HTT 5.5.3.13）。
+   個々の presentable 圏の完備性（5.5.2.4）は提供済み。三段目への配置をユーザーに照会中。
 2. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
 3. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
 4. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
@@ -47,6 +50,10 @@
 - `sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted`、`sigmaLeftKanExtension_preservesSmallColimits_iff`
 - `unitIntervalMapAt`、`unitIntervalMapAt_commaTransportIso`、`unitIntervalMapAt_unitCommaSectionTargetFiberVertex`
 - `unitIntervalMapAt_commaTransportIso_unit`（`HomotopyLimits/CommaLocalUnitTransportComparison`）。
+- `mapJoinCocone_isColimit_of_adjunction`、`adjunction_preservesSmallColimits`、`hasColimit_of_reflection`
+- `IsPresentable.exists_reflectiveIndModel`、`IsPresentable.exists_presheafReflection`、`reflectiveIndModel_hasSmallColimits`
+- `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
+- `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -70,20 +77,14 @@
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
 
-### 採用済みの経路と次の一手
-- bar の各項は P(C) 内の表現可能の小余積であり、P_Σ や Ind(C) に属するとは限らない。
-- P_Σ 専用の反映 L : P(C) → P_Σ(C) を先に構成し、bar 図式に適用する。
-  一般 Bousfield 局所化や他レーンの新規供給を入力にしない。
-- 前提として、小余積と幾何学的実現から小余極限を構成する一般補題を P 側に追加する。
-  既存の sifted 余極限と有限余積保存を使って P_Σ の反映を構成する。
-- ユーザーが反映・bar の経路を採用。公開界面を保ち、g4・g5 を提供する。
-1. P-6：局所区間比較・輸送同型・既存の単位比較への厳密な特殊化を提供する。
-2. P-1 c は未着手。
-- **採用済みの設計追加**：有限余積の全関手と定値図式との随伴を P 側で構成する。
-  普遍余錐族の切断・全単位の円柱・関手圏内の普遍性・右頂点 Hom 制限を準備した。
-  普遍余錐の指定単位による全 Hom 全単射と、選んだ余極限全関手と定値図式の実際の随伴を提供する。
-  指定比較を Yoneda 像上の有限余積保存で可逆とし、生成表示で全対象へ広げる。
-  一般 Bousfield 局所化や他レーンの新規供給は入力にせず、既存公開界面は保つ。
+### 未コミット
+- 所有ファイルは検証後に保存。共同作業中の他レーンの差分は変更しない。
+
+### 次の一手
+- 初期の c1〜c6 は個々の圏内の構成まで。HTT 5.5.3.13 の Pr^L 小極限は含まれていなかった。
+- 三段目に c7 を追加して続行するか、5.5.3.13 を e と接続するか、ユーザーに配置を照会中。
+- c 全体の完了は宣言せず、d は未着手。
+- E2・K-B から供給依頼が来たら工程の区切りで優先する。
 
 ## P-1 b 三段目（v3）
 
@@ -106,6 +107,15 @@
   - [x] bar 表示の接続：反映を適用して simplicial Ind 表示へ接続する。
 - [x] g6. Yoneda の有限余積保存と全余極限保存判定。
 - [x] g7. 集約ビルド・公理監査・引き継ぎ更新。
+
+## P-1 c 三段目（v3）
+
+- [x] c1. 前層の反映による native な小余極限の構成と保存。
+- [x] c2. 小さい compact 生成圏に沿う制限 Yoneda と前層反映。
+- [x] c3. presentable 圏の小余極限を反映模型・Ind 同値へ接続。
+- [x] c4. 反映された全部分圏の小極限構成。
+- [x] c5. 表現可能関手による検出と、presentable 圏の全小極限の存在。
+- [x] c6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-6 三段目
 

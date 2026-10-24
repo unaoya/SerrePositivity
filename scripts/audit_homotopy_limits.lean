@@ -14904,3 +14904,12 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms unitIntervalMapAt_commaTransportIso
 #check @unitIntervalMapAt_commaTransportIso_unit
 #print axioms unitIntervalMapAt_commaTransportIso_unit
+
+#check @fullSubcomplexCone_vertices
+#print axioms fullSubcomplexCone_vertices
+#check @fullSubcomplexConeLift
+#print axioms fullSubcomplexConeLift
+#check @fullSubcomplexConeLift_inclusion
+#print axioms fullSubcomplexConeLift_inclusion
+#check @isLimitCone_of_fullSubcomplex
+#print axioms isLimitCone_of_fullSubcomplex

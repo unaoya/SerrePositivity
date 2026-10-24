@@ -1076,6 +1076,9 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTr
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTransportEndpoint
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaLocalUnitTransportComparison
 
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexConeLift
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexLimitReflection
+
 /-!
 概要：coherent nerve によるホモトピー極限と Quillen 随伴の比較の入口。
 方針：weighted sections・写像空間・モデル圏の比較を既存モジュールの import でまとめる。
