@@ -549,3 +549,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsCorepresentableSmallSpaceFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isCorepresentable_of_equivalence_restriction
 #check @SerrePositivity.InfinityCategories.F2.Presentable.accessible_preservesLimits_isCorepresentable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallCovariantHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_exists_initial_of_covariantRepresentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_of_covariantHom_representable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable

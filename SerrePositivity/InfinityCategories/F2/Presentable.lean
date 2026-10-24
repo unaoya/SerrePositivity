@@ -266,3 +266,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CovariantReprese
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCorepresentability
 public import SerrePositivity.InfinityCategories.F2.Presentable.CorepresentabilityEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleCorepresentability
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleSmallCovariantHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionFromHomRepresentation
