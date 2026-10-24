@@ -772,7 +772,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputCoefficientEndpoints,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanRelativeComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanTriangles,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationStaircase]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationStaircase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationStandardUnitFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionFaceAgreement,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarDiagonalTriangleGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarDiagonalTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarDiagonalTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarDiagonalEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarIntervalTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarIntervalTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitCollarTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorTriangleTwoFaces,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCollarCompositionTriangle]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

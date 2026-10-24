@@ -40,7 +40,7 @@
   同じ Hom 模型同型の逆で主経路のパラメーターへ移し、元端は正本第一・第二入力 lift、補正端は単位補正との共通端へ厳密に同定済み。
   標準係数端も同じ coherent 三角形全体と元入力の一致で正本係数 lift へ同定済み。終側標準面は同じ四面体の第零面を使う。
   実四補正道と選択済み二変形の三辺を保持する相対充填・合成三角形・対角後合成を供給済み。二次元全域で元左右鎖射影を固定する。
-  native 四面体の四つの四単体片も共有三面と両端を保持する。**残る恒等合成面の退化照合・高次貼り合わせからの全対角三辺の合成等式は未完。**
+  native 四面体の四単体分割に加え、左右実補正対角の合成三角形と同じ二単体の第三辺を主経路上に構成済み。**係数側の高次貼り合わせから全対角三辺の合成等式を得る部分は未完。**
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -84,7 +84,7 @@
 - D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
   入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
-  `dgGluingDGCompositionTriangleFamily_naturality` は任意二入力と dg 関手で使える。coherent prism の Small 不要な厳密両単位則をコーディネータ経由で D へ追加依頼中。
+  `dgGluingDGCompositionTriangleFamily_naturality` は任意二入力と dg 関手で使える。標準面の恒等入力射影・前後終側の replacement 全三角形の一致を照合済み。厳密両単位則は D へ追加依頼中。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
@@ -99,9 +99,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8784 jobs、公理監査 768 モジュール・7469 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-unit-span-native-staircase-aggregate-build.log`・`/tmp/d2-v3-unit-span-native-staircase-audit.log`。native 実三変形の相対充填・合成三角形と四面体の四単体分割までの新規モジュールは集約・監査へ接続済み。
-- 本更新の所有パスをコミット後、恒等入力を含む標準面の入口を作業中。数学的未完は③〜⑥・e・f。
+- 検証済み：集約ビルド 8795 jobs、公理監査 779 モジュール・7553 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-collar-composition-triangle-aggregate-build.log`・`/tmp/d2-v3-collar-composition-triangle-audit.log`。主経路上の実補正対角合成三角形までの新規モジュールは集約・監査へ接続済み。
+- 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約
