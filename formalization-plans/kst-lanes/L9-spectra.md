@@ -8,7 +8,7 @@
 - [x] g1. W source を Γ へ前合成し、class 全経路・動く底の射影式を回収する。
 - [x] g2. movingSourceNativeModelHomotopy を適用し、始点・終点を既存の模型射に同定する。
 - [x] g3. 直接側と fixed 接合側の値を比較し、元の roof の fⱼ 後合成へ戻す。
-- [ ] g4. 準同型比較・非正次数正規化を保ち、τ₂(f) の実 roof の両逆を証明する。
+- [x] g4. 準同型比較・非正次数正規化を保ち、τ₂(f) の実 roof の両逆を証明する。
 - [ ] g5. 高次有限 Postnikov 段へ拡張し、切断間の遷移との整合を証明する。
 - [ ] g6. bounded-below 条件下の切断 pro 判定と、LT Lemma 2.30 の連結なレベル表示を構成する。
 - [ ] g7. Cor. 2.31 を元の不変量値の塔へ適用し、次数別 eventual 連結度から π-pro 同値へ接続する。
@@ -106,18 +106,18 @@
 - 旧 LaxQuotientSquare.square と cone は四辺固定の可換実現であり、h Sp の可換式から選び直した候補。特定のこの錐が極限であるとは未証明で、四辺や整数 π の可換性だけからは従わない。今回、元の積・対角の実 pullback の全図式を保持して構成した LaxQuotientPullback.cone に置き換えた。この新しい錐の極限性を使用する。
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
 - **逆関手案の再評価（2026-10-21、今回の評価を1時間以内に記録）**：残る正確な旧経路の十分補題は、任意の BF 対象 X,Y に対し `A := sourceMap CirclePower.space X Y`、`e := tracedOriginalLoopModelMap X` と置いたときの `H : SSet.Homotopy (A ≫ signedEvaluationAt X Y e).right (kanAdjointTracedUnitFamily X Y A).right` の構成。これを evaluationPost_circle_piIsomorphism_of_raw_traced_homotopy に渡す。旧経路の残りは直下の6工程、従前の暫定見積もり24–48時間以上（上限保証なし）。代替の残りは①全有限形状・宇宙を含む HasFiniteLimits Sp の包装、②BF 置換後の厳密な豊穣 Ω と構造随伴の全 Hom 自然性、③両合成の FunctorIso と nativeLoop との比較から元の Ω の QCatEquivalence を組立、④一般安定性判定を Spectra 配下で自前証明、の4工程。①・③も未実装、②・④の上限は未見積もりで、総計は少なくとも複数日という暫定評価。②の入力を既存の対象ごとの同型で代用できない：ordinaryStructureAdjoint_comm_iff は二重随伴 b の `b ≫ swap = b` を要求し、ordinaryStructureAdjoint_comm_forces_swap_piZero はその等式と Ω 条件から円交換の π₀ 作用が恒等となることを証明する。Ω 条件が与える b の全基点 π 同型性だけでは、その交換不変性は得られない。また段ごとの内部 Hom 列には BF の構造射の単射性を回復する置換が入り、cotensorPost は選んだ持ち上げであって厳密な恒等・合成則を備えた豊穣関手として未提供。nativeLoop は loop 図式評価の切断から得た ∞ 関手で、厳密な BF 豊穣関手そのものではない。originalLoopModelMap_natural_component は各段の点つき写像空間の π₀ の自然性まで。随伴が直接与える候補の向きは id ⇒ Ω∘tail（交換・移送ができれば tail∘Ω にも同じ向き）で、要求の tail∘Ω ⇒ id は可逆化後に作る。移送には既存の StrictEnrichedTransformation.functorIso と homotopy_component が使えるため N への追加 API 要求はない。④の正確な目標は `[Quasicategory X] [HasZeroVertex X] [HasFiniteLimits X]`、`s : X ⟶ loopDiagrams X`、`hs : s ≫ loopDiagramEvaluation X 1 1 = 𝟙 X`、`hΩ : IsQCatEquivalence (s ≫ loopDiagramEvaluation X 0 0)` から `IsStable X`。F3 の既存判定は有限余極限と双カルテジアン判定も入力するため使えない。[HA Cor. 1.4.2.27](https://www.math.ias.edu/~lurie/papers/HA.pdf) の原証明は Prop. 1.4.2.24 の spectrum-object 塔と Cor. 1.4.2.17 の安定性を経由し、これらの一般構成は既存 BF の tail 同値では代用できない。有限余極限・cofiber の存在と任意 ZeroTriangle の fiber/cofiber 同値を実際に導出する必要がある。Stable/ は編集せず、D 計画の既存要求は後の取り込み先として保持する。結論：提示された厳密自然変換の前提が未構成で、旧経路より短いとは判定できないため切り替えない。今回 evaluationPost の計算も再開しない。根拠となる OrdinaryLoopAdjointStructureCriterion・StrictEnrichedTransformationNerve の対象ビルドは2008 jobs・終了コード0、diff --check も成功。今回は計画のみの変更で Lean 宣言の追加はない。
-- d3 の保留位置：①全族正方形の uncurry・評価への移送、②元の自然性・逆三角形との境界照合、③主構造正方形（左 kanAdjointTracedStructureInterval、右 tracedSourceUnitStructureInterval）、④SpecifiedCodifference、⑤標的単位との貼合せ、⑥自由 cotensor・相対 StrictInterval による raw 全 Hom H を evaluationPost_circle_piIsomorphism_of_raw_traced_homotopy に渡す。旧実入力 kanAdjointSignedReverseParametricSquare と全境界は保存済み。
+- d3 の本経路：D の Stable/LoopEquivalenceStability.isStable_of_loopEquivalence を適用する。入力は Quasicategory・HasZeroVertex・HasFiniteLimits と loop 図式切断・その同値性であり、有限余極限を追加仮定しない。Sp の有限極限と nativeLoop 同値を代入する。旧 evaluationPost・uncurry の工程は再開しない。
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。公理監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。停止用対象ビルド9525 jobsは終了コード0（/tmp/sp-stop-target.log）、監査1430モジュール18288宣言も終了コード0・標準三公理のみ（/tmp/sp-stop-audit.log）。旧全体ビルドは成果物欠落による失敗後に依存を修復したが、最後の全体再試行24573と監査14713は割込み後にハンドルが消失し、対応プロセスも残っていない。旧ログの進捗を終了コード0の代用にしない。停止指示の対象ビルド・監査で区切り、新チャットで全体ビルドを改めて行う。D・F1/F1B・F2・EInfinity・K-S• は読み取り専用。
 ### 次の一手
-- **新チャットの次の一工程（β6 g）**：g4 の左三角形。g1〜g3 は完成。元の四模型経路を三重 cell 源で比較し、源準同型比較の逆 roof・上下段比較・非正次数正規化を経て、元の τ₂(f) の実右経路 nonpositiveFixedRightRoofPath を構成済み。fixedLeftCellLift は分母への厳密 lift、fixedLeftDefectAfterF は左の二射を fⱼ の先で結ぶ経路であり、左三角形の完成ではない。元の fixed 候補との値の一致も保持する。NonpositiveInverseRoof.reflectCellPath は既存の低段逆で二重 cell 後に経路を反映し、cellRoofPath_map は指定した全分母経路を保存する。
+- **次の一工程（β6 g）**：g5 の高次有限 Postnikov 段と切断間遷移。g1〜g4 は完成。postnikovTwoMap_exists_nonpositiveInverseRoof は元の三次数の pro 同型から元の τ₂(f) の実両逆を供給する。先に対角の実右逆の段を選び、その段の元の右逆の左欠損を postnikovTwoDiagonalLeftReflection で反映し、nonpositiveOfLeftPath が mapping-path・二重 cell・cover で厳密左三角形と実右経路へ戻す。源の準同型比較の逆 roof と非正次数正規化を保ち、左 class 経路の別構成は使わない。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
   - [x] g4a. 実 cocone 比較で、元の π₀〜π₂ pro 同型から Δ の同じ三次数の pro 同型を導く。
   - [x] g4b. 対角模型を非正次数化し、下界 −2 と元の二脚・対角の整合を証明する。
-  - [ ] g4c. Δ の右逆を元の左欠損へ適用し、実経路を厳密左三角形へ反映する。
+  - [x] g4c. Δ の右逆を元の左欠損へ適用し、実経路を厳密左三角形へ反映する。
 - g4a〜g4c をこの順で証明し、未証明の比較を追加入力にして g4 を完成扱いしない。g5〜g7・f・h・K-8 e は後続。d7・evaluationPost・旧 Ω 同値経路は再開しない。
 - **相対版の公開界面**：RelativeVerdierDiagram（S 四角形・絶対 Verdier 提示・ν 像の等式）、IsRelativeLocalizingInvariant（ν 零頂点の E 零性・全相対 Verdier 四角形の E pullback 性）、RelativeSplitVerdierDiagram（S の h 圏の切断と切断式）、RelativeVerdierRectangle（S 長方形・右面／外周の転置 Verdier 提示）。IsRelativeLocalizingInvariant.fiberTriangle_isFiber・connecting・exact_left/middle/right・splitComparison・tammeSplitComparisonと包含／切断／射影の式、RelativeVerdierRectangle.comparisonSquare_isPullback・comparisonCone_isLimit、LaxUniversalDifference.relativeRectangle・relative_comparison_isPullback を使用。最後は S 長方形 F と F ≫ ν = 元の Tamme 長方形を入力する。元の四辺と頂点を保つ d8 の出力は RelativeProductPullbackPresentation.normalizedSquare_isPullback・normalizedCone_isLimit・normalizedCone_vertex。入力は同じ比較四角形の積表示への実 FunctorIso、map(f,g)・対角・lift(a,b) の三辺の式と a≫f=b≫g の h Sp の式であり、fiber 性は入力しない。ofSourceIso は S 内の全図式同型を E で写す版。isRelativeLocalizingInvariant_id_iff・relative_id_comparison が絶対版との特殊化を保持。具体的 dg 持ち上げと K の相対条件の証明は K-S•・D が供給し、その存在を本レーンで仮定済み成果と混同しない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
-- d3 の再開条件は未成立：foundations.md では I-b の F1b-7・N-2・K-5〜K-8 等が未完。I-b 末尾までは evaluationPost circle・逆関手案・IsStable の実装へ戻らない。
+- d3 の順序：β6 g → f → h → K-8 e の後。D の一般定理を再実装せず、Sp 固有の入力の適用だけを行う。
 ## K-5：K-基盤 1 の抽象部分（2026-10-20）
 
 - **分担**：本レーンは `KST/LocalizingInvariants/` と専用集約・監査を所有する。K-S• は SConstruction の構成・具体的 K 関手との接続を担当し、本レーンでは読み取り専用。F3 の IsStable・IsExactFunctor と D の β3 を変更しない。

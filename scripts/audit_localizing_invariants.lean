@@ -1473,7 +1473,17 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalPro,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackLowerBound,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraConnectiveCoverLiftNaturality,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveDiagonal]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveDiagonal,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraBoundedRightInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightRoofSource,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightRoofRetarget,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalDefect,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoDiagonalLeftReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRoofLeftPathStrictification,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofStrictSource,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNonpositiveInverseRoofOfLeftPath,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoNonpositiveInverseRoof]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
