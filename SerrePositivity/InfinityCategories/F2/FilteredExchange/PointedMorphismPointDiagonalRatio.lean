@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedMorphismEdgeValueRatio
+public import
+  SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedMorphismEdgeValueRatioFactory
 public import
   SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalPointDiagonalRatio
 /-!
@@ -54,5 +55,25 @@ lemma pointedMorphismPointDiagonalRatio_heq_action_of_heq {K L : KanObject.{u}}
     (pointedFiberValueTo hx) (pointedFiberValueTo hy) (SSet.uliftFunctor.map f)
     (pointedSpaceMorphismEdgeValueIso f e hx hy he) R hR
   exact pointedMorphismEdgeValueRatio_heq_action_of_heq f e hx hy he q R h
+/-- 概要：同じ指定対角値の比は fiber 全体の元の辺値の比の制限。
+方針：比の前合成を元の二因子へ展開。規約：指定値を保持。
+使われ方：元の中間比較に沿う交換則への代入。 -/
+lemma pointedMorphismPointDiagonalRatio_heq_raw_ratio_of_heq {K L : KanObject.{u}}
+    (f : K ⟶ L) {C : SSet.{u + 1}} {x y : SpaceInfinity.{u} _⦋0⦌} (e : SSet.Edge x y)
+    (hx : x = spaceInfinityVertex K) (hy : y = spaceInfinityVertex L)
+    (he : e.edge = (pointedRightMorphismEdge f).edge)
+    (q : C ⟶ vertexFiber pointedSpaceProjection x) {W : Sort _} (R : W)
+    (hR : HEq R (pointedIntervalPointDiagonalValueRatio
+      (SSet.yonedaEquiv.symm (intervalMappingVertexOfEdge e))
+      (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) q
+      (pointedFiberValueTo hx) (pointedFiberValueTo hy) (SSet.uliftFunctor.map f)
+      (pointedSpaceMorphismEdgeValueIso f e hx hy he))) :
+    HEq R ((pointedMorphismEdgeValueRatio f e hx hy he).precomp q) := by
+  rw [pointedMorphismEdgeValueRatio_precomp_eq_factors]
+  exact pointedIntervalPointDiagonal_ratio_heq_factors_of_heq
+    (SSet.yonedaEquiv.symm (intervalMappingVertexOfEdge e))
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) q
+    (pointedFiberValueTo hx) (pointedFiberValueTo hy) (SSet.uliftFunctor.map f)
+    (pointedSpaceMorphismEdgeValueIso f e hx hy he) R hR
 end
 end SerrePositivity.InfinityCategories.F2
