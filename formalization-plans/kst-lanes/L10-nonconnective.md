@@ -79,7 +79,7 @@
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
 | `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 14／4 |
-| `DGSuspensionNativeActionInput`（未採用案） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | K-B：固定 S の全高次作用と照合。D：同じ選択 cone と平坦分解の native 射族（D-8 と要調整） | 8／1 |
+| `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | K-B：固定 S の全高次作用と照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D の範囲は選択 cone の厳密関手性の評価後に確定 | 8／1 |
 
 | フィールド／照合 | 供給元 |
 |---|---|
@@ -90,11 +90,11 @@
 | 元の Perf・P との全関手照合（構造のフィールドには未追加） | K-B：供給された実核を P の包含比較へ照合する。存在を仮定しない |
 
 
-### c4 の全高次作用の追加境界案（未採用）
+### c4 の全高次作用の供給境界（採用（03:55））
 - I・P と `DGSuspensionStageProvider` は対象別の供給であり、選んだ同じ cone に対する全 native Hom の作用を含まない。`DGSuspensionIterationMaps` の通常射に対する条件付き恒等・合成則だけを、固定 S 上の ∞ 関手の供給とは数えない。
-- 案：`DGSuspensionNativeActionInput` を別の明示境界とする。固定 `dgKInputInfinity` 上の全単体的自己射 `map`、同じ平坦懸垂との `vertex` 照合、元の各 dg 射の増大可換データ `data`、同じ実商射の全一単体との `edge` 照合を要求する。存在は主張せず、固定 S・ν・K や I・P の型を変えない。
+- 採用：`DGSuspensionNativeActionInput` を別の明示境界とする。固定 `dgKInputInfinity` 上の全単体的自己射 `map`、同じ平坦懸垂との `vertex` 照合、元の各 dg 射の増大可換データ `data`、同じ実商射の全一単体との `edge` 照合を要求する。存在は主張せず、固定 S・ν・K や I・P の型を変えない。
 - 利用側は検証済み：同じ作用の全高次反復を作り、各頂点を既存の `dgSuspensionIteration`、元の各厳密 dg 辺を既存の `dgSuspensionIterationMap` と厳密照合する。通常射の厳密合成則を追加で仮定せず、`map` 自体が全高次整合性を保持する。
-- 供給分担案：K-B が全単体的作用と頂点・辺の照合を組み立てる。D 側には選んだ同じ κ-compact 小模型の全 native 射族・増大可換な平坦分解の族の供給範囲を、D-8 と調整して依頼する。対象別の `covers` による代表選択から厳密・高次の自然性を推論しない。採用判断前にこの境界を主経路の供給済み入力とは扱わない。
+- 供給分担：K-B が全単体的作用と頂点・辺の照合を組み立てる。供給路は **PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap**。D 側の供給範囲は、D が選んだ cone 模型の厳密関手性を評価してから確定する（コーディネータが依頼済み）。対象別の `covers` による代表選択から厳密・高次の自然性を推論しない。この境界は I・P・実相対屋根とは別であり、存在・実供給は主張しない。評価待ちで停止せず K-6 c4・c5 と K-7 d を進める。
 
 ### D-12 供給境界（採用済み）
 - c2 の汎用 dg 加群の分裂 cofiber 判定は D 正本（D-12）。K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する。K-B 内に一般 dg 加群の cofiber API を重ねない。
@@ -109,6 +109,15 @@
 - [x] c3 加法性と swindle による同じ cone の連結 K の消滅。
 - [ ] c4 反復懸垂の入力射作用と整合性。
 - [ ] c5 構造射と逐次余極限による `K^{nc}` の構成。
+
+
+### K-7 d の三段目（2026-10-25、c の供給待ちと並行）
+- [ ] d1 元の連結固定 K から、同じ実 Sp 余極限余錐の零段の脚による実比較射。
+- [ ] d2 元の native loop 反復と整数 π の次数移動を、同じ隣接遷移射へ照合。
+- [ ] d3 非負次数の隣接安定化を証明し、同じ実比較射の非負整数 π 同型へ接続。
+- [ ] d4 Ind I-2 e の公開結果との照合、選択比較と全入力の自然性。
+
+- `DGSuspensionConnectedComparison` は明示された同じ構造辺の下で、零段を元の K(D) と厳密一致させ、元の実 Sp 余錐の脚を実 BF 比較射として使う。隣接遷移が指定次数で全単射なら同じ実脚も全単射であり、全非負次数の安定化を仮定すれば元の実比較射を順写像とする非負整数群同型を得る。隣接安定化そのもの・native loop の π 次数移動・I-2 e との照合は未証明。
 
 ## 原典との照合・受入条件
 - [BGT 2013 §9.1、Def. 9.1・Lem. 9.4・Prop. 9.5・Def. 9.6・Lem. 9.7](https://msp.org/gt/2013/17-2/gt-v17-n2-p03-s.pdf) を基準とする。一般安定 ∞ 圏での構成は参照先の主張であり、本レーンでは厳密 dg 供給に限定する。

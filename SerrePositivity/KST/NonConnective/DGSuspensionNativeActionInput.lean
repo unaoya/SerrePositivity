@@ -2,9 +2,9 @@ module
 public import SerrePositivity.KST.NonConnective.DGSuspensionIterationMaps
 
 /-!
-概要：選んだ同じ cone による懸垂を、固定 dg 提示源の全単体へ作用させる追加境界案。
-方針：固定 S 内の作用と、頂点・元の厳密 dg 射での実懸垂との照合を明示する。
-規約：未採用の設計案。I・P の対象別供給や通常射の恒等・合成から存在を推論しない。
+概要：選んだ同じ cone による懸垂を、固定 dg 提示源の全単体へ作用させる明示供給境界。
+方針：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap を供給路とし、元の頂点・辺を照合する。
+規約：採用（03:55）の独立した明示入力。I・P の対象別供給や通常射の恒等・合成から存在を推論しない。
 使われ方：K-7 c4。供給された場合の全高次反復と元の段別入力の条件付き照合。
 -/
 
@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ)
 
-/-- 未採用：同じ対象別供給を保つ、固定 S 上の全高次懸垂作用の明示入力。 -/
+/-- 採用（03:55）：同じ対象別供給を保つ、固定 S 上の全高次懸垂作用の明示入力。 -/
 structure DGSuspensionNativeActionInput where
   /-- K-B の全高次作用。D-8 の対象別 I・P だけでは供給済みと数えない。 -/
   map : dgKInputInfinity.{u, max (u + 1) v} R ⟶ dgKInputInfinity.{u, max (u + 1) v} R
@@ -39,7 +39,7 @@ structure DGSuspensionNativeActionInput where
 
 variable (a : DGSuspensionNativeActionInput R s)
 
-/-- 明示された未採用の全高次作用に条件付きの、同じ固定 S 上の反復作用。 -/
+/-- 明示された全高次作用に条件付きの、同じ固定 S 上の反復作用。 -/
 def DGSuspensionNativeActionInput.iteration (n : ℕ) :
     dgKInputInfinity.{u, max (u + 1) v} R ⟶ dgKInputInfinity.{u, max (u + 1) v} R :=
   Nat.rec (𝟙 _) (fun _ f => f ≫ a.map) n
