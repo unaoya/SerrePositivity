@@ -764,7 +764,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputModelPaths,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputTriangleExt,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputEndpoints,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeOriginalHomProjections]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeOriginalHomProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseHomInputFactor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCompositionTriangleInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeStandardCoefficientInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalUnitCapEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitInputCoefficientEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanRelativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSpanTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationStaircase]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
