@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp
 public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison
 
 public import SerrePositivity.InfinityCategories.Core.InitialExtension

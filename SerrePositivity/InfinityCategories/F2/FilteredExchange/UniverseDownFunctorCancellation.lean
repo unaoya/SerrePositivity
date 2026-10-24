@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDownNaturality
 
 /-!
@@ -15,14 +16,6 @@ noncomputable section
 universe u v w z
 open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2
-
-/-- 単体的写像の合成が誘導するホモトピー圏の関手の合成則。 -/
-lemma mapHomotopyCategory_comp_eq {X Y Z : SSet.{u}} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    SSet.mapHomotopyCategory (f ≫ g) =
-      SSet.mapHomotopyCategory f ⋙ SSet.mapHomotopyCategory g := by
-  change (hoFunctor.map (f ≫ g)).toFunctor = _
-  rw [Functor.map_comp]
-  rfl
 
 /-- 下降前後の後合成は同じ一つの通常の関手を与える。 -/
 lemma universeHomotopyDown_post_functor {R T : SSet.{u}} {X : SSet.{max u v}}
