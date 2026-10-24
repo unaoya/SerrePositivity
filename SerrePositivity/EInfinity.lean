@@ -2489,3 +2489,4 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeRelativeUnitTrian
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnderlyingReplacementComponent
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitStandardData
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitStandardFamily
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitCommaRecovery
