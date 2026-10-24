@@ -1,9 +1,13 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroLastActualEndpoint
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexLastEndpointSquare
+public import
+SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroLastActualEndpoint
+public import
+SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexLastEndpointSquare
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismBoundaryValue
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedFiberValueToDisplay
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalNativeValueBoundary
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：零面の実最後辺の指定対角比較の値を、元の Apex の同じ最後辺へ戻す。
@@ -53,4 +57,23 @@ lemma coherentColimitApexZeroLastDiagonal_post_value_heq_original :
   · exact (pointedFiberValueTo_heq_value (spaceInfinityVertex_eq_coherent K₂).symm).trans
       (pointedFiberValueTo_heq_value (coherentColimitApex_raw_two_vertex B T)).symm
 
+/-- 概要：同じ零面と元の Apex の native 輸送の値射は等しい。
+方針：同じ実 prism の底と初期値から値射を照合する。
+規約：指定比較の HEq から端点を抽出しない。使われ方：元の中間終点の値照合。 -/
+lemma coherentColimitApexZeroLastNative_value_eq_original :
+    FunctorIso.targetMap (spaceCompositionZeroLastDiagonal s) ≫ Vcoh =
+      diagonalFiberTransport p f (intervalMappingCurryOfEndpoints β
+        (intervalMappingUncurry_zero _) (intervalMappingUncurry_one _)) ≫ V₂ := by
+  dsimp only [spaceCompositionZeroLastDiagonal, FunctorIso.targetMap]
+  apply diagonalFiberTransport_value_eq_of_prism_boundary
+    (H := (stdSimplex.δ (0 : Fin 3) ▷ A) ≫ spaceCompositionTetrahedronZeroFamily s)
+    (H' := W) (hs := spaceCompositionZeroLast_zero_start s)
+    (hs' := coherentColimitApexPointedLastPrism_start B T)
+    (hp := spaceCompositionZeroLast_zero_projection s)
+    (hp' := coherentColimitApexPointedLastPrism_projection_constant B T)
+  · exact (coherentColimitApexMiddleCoefficient_vertex B T).symm
+  · exact (coherentColimitApexTargetCoefficient_vertex B T).symm
+  · exact spaceCompositionZeroFamily_last_eq_original s
+  · exact (pointedFiberValueTo_heq_value (spaceInfinityVertex_eq_coherent K₂).symm).trans
+      (pointedFiberValueTo_heq_value (coherentColimitApex_raw_two_vertex B T)).symm
 end SerrePositivity.InfinityCategories.F2

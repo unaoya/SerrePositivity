@@ -1,7 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueMorphismUniversalAction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceSimplexPointedRestrictionNaturality
+public import
+SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueMorphismUniversalAction
+public import
+SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceSimplexPointedRestrictionNaturality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
 
 /-!
@@ -31,4 +33,23 @@ lemma pointedValueMorphismUniversalActionIso_precomp_heq_evaluation
   exact vertexIsoOfEq_map_heq (pointedValueHomActionAt f) rfl
     (pointedValueHomTransport_morphism_vertex f) ((pre q).app _)
 
+/-- 概要：元の作用比較の合成係数による制限は同じ二段の前作用の値。
+方針：前合成の合成則と同じ指定比較の像を使う。
+規約：元の係数と指定値を保持。使われ方：中間係数での最後射の評価。 -/
+lemma pointedValueMorphismUniversalActionIso_precomp_comp_heq_evaluation
+    {K L : KanObject.{u}} (f : K ⟶ L) {C D : SSet.{u + 1}}
+    (q : C ⟶ vertexFiber pointedSpaceProjection (spaceInfinityVertex K)) (r : D ⟶ C) :
+    HEq ((pointedValueMorphismUniversalActionIso f).precomp (r ≫ q))
+      (VertexIso.map (VertexIso.map (pointedValueHomActionAt f)
+        ((pre q).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj)))
+        ((pre r).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj))) := by
+  have h := pointedValueMorphismUniversalActionIso_precomp_heq_evaluation f (r ≫ q)
+  have hp : (pre (r ≫ q)).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj) =
+      (pre q).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj) ≫
+        (pre r).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj) := by
+    rw [pre_map, NatTrans.comp_app]
+  exact h.trans ((vertexIso_map_heq (pointedValueHomActionAt f) hp).trans
+    (heq_of_eq (vertexIso_map_comp (pointedValueHomActionAt f)
+      ((pre q).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj))
+      ((pre r).app ((SSet.uliftFunctor.{u + 1, u}).obj L.obj)))).symm)
 end SerrePositivity.InfinityCategories.F2

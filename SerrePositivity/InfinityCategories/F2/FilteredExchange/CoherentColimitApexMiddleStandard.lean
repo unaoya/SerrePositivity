@@ -3,6 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexLastRawRatio
 public import
   SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexCoefficientValues
+public import
+  SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedMorphismUniversalActionPrecomp
 /-!
 概要：元の中間係数を標準 fiber へ戻し、同じ最後辺の比を元の作用比較で読む。
 方針：実 fiber の包含で全係数射を照合し、同じ比の全初期値による制限へ代入する。
@@ -11,7 +13,7 @@ public import
 -/
 
 @[expose] public section
-open CategoryTheory SSet
+open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 open HomotopyLimits
@@ -59,5 +61,17 @@ lemma coherentColimitApexLastRawValueRatio_middle_heq_standard :
     (coherentColimitApexMiddleCoefficientMap B T)
   exact h.trans (functorIso_precomp_heq_of_map_eq (pointedValueMorphismUniversalActionIso g)
     (coherentColimitApexMiddleCoefficientMap_standard B T))
+local notation "K₂" => EnrichedFunctor.obj s (SimplicialThickening.mk (ULift.up 2))
+local notation "Y" => CategoryTheory.Functor.obj SSet.uliftFunctor (KanObject.obj K₂)
+/-- 概要：中間係数での同じ raw 比は、元の最後射の作用比較の同じ二段前作用。
+方針：標準 fiber 表示と元の第一射の係数作用を合成する。
+規約：全係数と指定値を保持。使われ方：最後射の元の評価比較の回収。 -/
+lemma coherentColimitApexLastRawValueRatio_middle_heq_pre_action :
+    HEq ((coherentColimitApexLastRawValueRatio B T).precomp
+        (coherentColimitApexMiddleCoefficientMap B T))
+      (VertexIso.map (VertexIso.map (pointedValueHomActionAt g) ((pre C).app Y))
+        ((pre P).app Y)) :=
+  (coherentColimitApexLastRawValueRatio_middle_heq_standard B T).trans
+    (pointedValueMorphismUniversalActionIso_precomp_comp_heq_evaluation g C P)
 end
 end SerrePositivity.InfinityCategories.F2
