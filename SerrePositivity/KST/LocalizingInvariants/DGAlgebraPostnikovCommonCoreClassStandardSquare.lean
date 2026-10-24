@@ -1,0 +1,63 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellOverClassSquareOriginal
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassStandard
+
+/-!
+概要：共通底での二重比較の基準経路を、Γ 構成の元の標準 class 経路へ接続する。
+方針：元の非正次数共通源から二重 cell 源への射を持ち上げ、augmentation 自然性を使う。
+規約：基準経路を選び直さず、全経路の厳密一致を保つ。使われ方：Γ の実三角形。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory
+open SerrePositivity.DifferentialGraded
+namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore
+open ProExcision
+variable (R : Type u) [CommRing R] {n : ℤ} (hn : 0 ≤ n)
+  {A B : Tower (NonpositiveAlgebra R)} (f : LevelHom A B)
+  {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (lowerFunctor R n hn)) i m hi)
+  (d : PostnikovCommonLayerInverse R hn f c) {j : ℕ} (hj : j ≤ i)
+
+attribute [local instance] PostnikovRoofZeroSpan.refined_source_nonpositive
+  PostnikovRoofZeroSpan.refined_target_nonpositive
+
+def postnikovCommonStandardToDoubleCell : postnikovCommonRightZeroGlueSource R hn f c d ⟶
+    cellResolution R (cellResolution R (postnikovCommonClassBase R hn f c d)) :=
+  cellPathNonpositiveProjection R (postnikovCommonRightCellSource R hn f c d) ≫
+    cellPathNonpositiveToDoubleCell R (postnikovCommonClassBase R hn f c d)
+
+def postnikovCommonStandardToTripleCell :
+    cellResolution R (postnikovCommonRightZeroGlueSource R hn f c d) ⟶
+      cellResolution R (cellResolution R (cellResolution R (postnikovCommonClassBase R hn f c d))) :=
+  cellResolutionMap R (postnikovCommonStandardToDoubleCell R hn f c d)
+
+lemma postnikovCommonStandardToTripleCell_augmentation :
+    postnikovCommonStandardToTripleCell R hn f c d ≫
+      cellAugmentation R (cellResolution R (cellResolution R (postnikovCommonClassBase R hn f c d))) =
+    cellAugmentation R (postnikovCommonRightZeroGlueSource R hn f c d) ≫
+      postnikovCommonStandardToDoubleCell R hn f c d := cellResolutionMap_augmentation R _
+
+lemma postnikovCommonClassStandardSquare_original :
+    postnikovCommonStandardToTripleCell R hn f c d ≫
+      (postnikovCellOverCommonComparison R (A.obj i).obj (A.obj j).obj
+        (postnikovCommonClassBase R hn f c d) n hn
+        (roofRefine R hn f c d.zero.source_le).roof.numerator (A.transition hj).hom
+        (postnikovCellLiftOverNaturalityWitness R (A.obj i).obj (A.obj j).obj
+          (postnikovCommonClassBase R hn f c d) n hn
+          (roofRefine R hn f c d.zero.source_le).roof.numerator (A.transition hj).hom)
+        (postnikovCellOverNaturality_relative R (A.obj i).obj (A.obj j).obj
+          (postnikovCommonClassBase R hn f c d) n hn
+          (roofRefine R hn f c d.zero.source_le).roof.numerator
+          (A.transition hj).hom)).hom =
+    cellAugmentation R (postnikovCommonRightZeroGlueSource R hn f c d) ≫
+      (postnikovCommonClassStandardWitness R hn f c d hj).hom := by
+  rw [postnikovCellOverCommonNaturality_hom, ← Category.assoc,
+    postnikovCommonStandardToTripleCell_augmentation]
+  rfl
+
+end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore

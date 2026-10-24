@@ -1,0 +1,97 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellFixedNonpositiveNaturality
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightFixedBasePath
+
+/-!
+概要：元の指定右経路の cell 反映と B の遷移を、元の class 上の二重経路で比較する。
+方針：非正次数源上の自然性正方形を実 class 射で後合成する。
+規約：左右の cell 合成比較と全底経路を保持。使われ方：新 Γ の右三角形。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory
+open SerrePositivity.DifferentialGraded
+namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore
+open ProExcision
+variable (R : Type u) [CommRing R] {n : ℤ} (hn : 0 ≤ n)
+  {A B : Tower (NonpositiveAlgebra R)} (f : LevelHom A B)
+  {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (lowerFunctor R n hn)) i m hi)
+  (d : PostnikovCommonLayerInverse R hn f c) {j : ℕ} (hj : j ≤ i)
+
+attribute [local instance] PostnikovRoofZeroSpan.refined_source_nonpositive
+  PostnikovRoofZeroSpan.refined_target_nonpositive
+
+def postnikovCommonRightFixedPostClassWitness : Path.Witness R
+    ((cellPathNonpositiveComparison R (postnikovCommonRightBase R hn f c d) ≫
+      cellResolutionMap R (postnikovMap R (B.transition hj).hom n)) ≫
+      postnikovCellClass R (B.obj j).obj n hn)
+    ((cellPathNonpositiveComparison R (postnikovCommonRightDenBase R hn f c d) ≫
+      cellResolutionMap R (postnikovMap R (B.transition hj).hom n)) ≫
+      postnikovCellClass R (B.obj j).obj n hn) :=
+  ((cellPathNonpositiveFixedWitness R (postnikovCommonRightBasePath R hn f c d)).postcomp
+    (cellResolutionMap R (postnikovMap R (B.transition hj).hom n))).postcomp
+      (postnikovCellClass R (B.obj j).obj n hn)
+
+def postnikovCommonRightFixedMappedClassWitness : Path.Witness R
+    (cellPathNonpositiveComparison R (postnikovCommonRightBase R hn f c d ≫
+      postnikovMap R (B.transition hj).hom n) ≫ postnikovCellClass R (B.obj j).obj n hn)
+    (cellPathNonpositiveComparison R (postnikovCommonRightDenBase R hn f c d ≫
+      postnikovMap R (B.transition hj).hom n) ≫ postnikovCellClass R (B.obj j).obj n hn) :=
+  (cellPathNonpositiveFixedWitness R ((postnikovCommonRightBasePath R hn f c d).postcomp
+    (postnikovMap R (B.transition hj).hom n))).postcomp
+      (postnikovCellClass R (B.obj j).obj n hn)
+
+def postnikovCommonRightFixedClassNaturalitySquare : Path.Witness R
+    (postnikovCommonRightFixedPostClassWitness R hn f c d hj).hom
+    (postnikovCommonRightFixedMappedClassWitness R hn f c d hj).hom :=
+  (cellFixedNonpositiveNaturalitySquare R (postnikovCommonRightBasePath R hn f c d)
+    (postnikovMap R (B.transition hj).hom n)).postcomp
+      (Path.map R (postnikovCellClass R (B.obj j).obj n hn))
+
+lemma postnikovCommonRightFixedClassNaturalitySquare_source_trace :
+    (postnikovCommonRightFixedClassNaturalitySquare R hn f c d hj).hom ≫
+      Path.map R (Path.source R (postnikovDerivationTarget R (B.obj j).obj n hn)) =
+    (cellFixedNonpositiveToDoubleCell R (postnikovCommonClassBase R hn f c d) ≫
+      (cellResolutionMapCompositionWitness R (postnikovCommonRightBase R hn f c d)
+        (postnikovMap R (B.transition hj).hom n)).hom) ≫
+      Path.map R (postnikovCellClass R (B.obj j).obj n hn) := by
+  change ((cellFixedNonpositiveNaturalitySquare R (postnikovCommonRightBasePath R hn f c d)
+    (postnikovMap R (B.transition hj).hom n)).hom ≫
+    Path.map R (Path.map R (postnikovCellClass R (B.obj j).obj n hn))) ≫ _ = _
+  rw [Category.assoc, ← Path.map_comp, Path.map_source, Path.map_comp, ← Category.assoc,
+    cellFixedNonpositiveNaturalitySquare_source_trace]
+
+lemma postnikovCommonRightFixedClassNaturalitySquare_target_trace :
+    (postnikovCommonRightFixedClassNaturalitySquare R hn f c d hj).hom ≫
+      Path.map R (Path.target R (postnikovDerivationTarget R (B.obj j).obj n hn)) =
+    (cellFixedNonpositiveToDoubleCell R (postnikovCommonClassBase R hn f c d) ≫
+      (cellResolutionMapCompositionWitness R (postnikovCommonRightDenBase R hn f c d)
+        (postnikovMap R (B.transition hj).hom n)).hom) ≫
+      Path.map R (postnikovCellClass R (B.obj j).obj n hn) := by
+  change ((cellFixedNonpositiveNaturalitySquare R (postnikovCommonRightBasePath R hn f c d)
+    (postnikovMap R (B.transition hj).hom n)).hom ≫
+    Path.map R (Path.map R (postnikovCellClass R (B.obj j).obj n hn))) ≫ _ = _
+  rw [Category.assoc, ← Path.map_comp, Path.map_target, Path.map_comp, ← Category.assoc,
+    cellFixedNonpositiveNaturalitySquare_target_trace]
+
+lemma postnikovCommonRightFixedClassNaturalitySquare_base_trace :
+    (postnikovCommonRightFixedClassNaturalitySquare R hn f c d hj).hom ≫
+      Path.map R (Path.map R (SquareZero.projection (postnikov R (B.obj j).obj n)
+        (postnikovShiftedLayerBimodule R (B.obj j).obj n hn 1))) =
+    (postnikovCommonRightCellProjection R hn f c d ≫
+      ((postnikovCommonRightBasePath R hn f c d).postcomp
+        (postnikovMap R (B.transition hj).hom n)).hom) ≫
+      Path.diagonal R (Path.algebra R (postnikov R (B.obj j).obj n)) := by
+  change ((cellFixedNonpositiveNaturalitySquare R (postnikovCommonRightBasePath R hn f c d)
+    (postnikovMap R (B.transition hj).hom n)).hom ≫
+    Path.map R (Path.map R (postnikovCellClass R (B.obj j).obj n hn))) ≫ _ = _
+  rw [Category.assoc, ← Path.map_comp, ← Path.map_comp, postnikovCellClass_projection,
+    cellFixedNonpositiveNaturalitySquare_base_trace]
+  rfl
+
+end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore
