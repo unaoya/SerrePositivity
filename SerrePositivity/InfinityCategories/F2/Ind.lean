@@ -619,3 +619,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTargetEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEvaluationCofinality
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowStandardCoconeColimit
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramStandardCoconeColimit
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramFilteredPresentation

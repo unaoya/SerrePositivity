@@ -9319,3 +9319,18 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.uliftCoconeShapeIso_hom_naturality
 #check SerrePositivity.InfinityCategories.pullbackFunctorIsoOfCommonNormalizedIsos
 #print axioms SerrePositivity.InfinityCategories.pullbackFunctorIsoOfCommonNormalizedIsos
+
+#check SerrePositivity.InfinityCategories.posetNerve_maximal_cover
+#print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_cover
+
+#check SerrePositivity.InfinityCategories.posetNerve_maximal_intersection
+#print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_intersection
+
+#check SerrePositivity.InfinityCategories.posetNerve_maximal_bicartSq
+#print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_bicartSq
+
+#check SerrePositivity.InfinityCategories.posetNerve_maximal_isPushout
+#print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_isPushout
+
+#check SerrePositivity.InfinityCategories.posetNerve_maximal_product_isPushout
+#print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_product_isPushout

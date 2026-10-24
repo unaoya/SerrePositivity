@@ -2689,3 +2689,5 @@ public import SerrePositivity.InfinityCategories.F1.Simplicial.SSetProductEvalua
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1.Universe.CoconeShapeNaturality
+
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetMaximalCover
