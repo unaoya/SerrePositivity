@@ -8,7 +8,7 @@
 - [x] s1. 固定 S・ν と商合成を照合し、源内の零化と ν 像の認証を分離する。
 - [ ] s2. S 内の実零化 2-cell を構成し、指定商合成と ν 像を回収する。
 - [ ] s3. 二つの三角形を保つ具体的長方形と、K-B の DGKappaSuspensionRelativeRoofInput 用の固定 ν 上の相対 Verdier 接続を供給する。
-- [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を証明する（実評価の π₀ 単射性・全 roof 族の二変形・固定終点の実 coslice fiber 評価と元の分数評価の全関手同型は私有補題まで。指定 unstraightening の単位への接続は未証明）。
+- [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を証明する（元の比較の充満忠実性は、指定 unstraightening への全 roof 族の実単位・fiber の元の Kan 置換単位・恒等点照合の供給に条件付きの私有証明まで。これらの実供給は未完）。
 - [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
 ### β6 g の三段目（v3、固定）
@@ -133,6 +133,7 @@
 - DGOdotVerdierRectangleComparisonInput：実 S 長方形の二つの相対 Verdier 認証、上記境界付き全 ν 比較、元の始域頂点。
 - DGOdotVerdierRectangleStrictTransport：旧 image_eq を満たす実 S 代表、指定境界付きの S 内全比較、その ν 像と指定比較の一致、元の始域頂点の保持。ν 像の FunctorIso だけからは供給しない。
 - DGKappaRelativeRoofComparisonInput：実相対屋根、指定三境界を保つ全 ν 比較、元の三頂点・商一単体。exists_dgKappaRelativeRoof_of_fixedNull の実核・収縮・Verdier・Perf 零性は D の供給境界で、I・P は変更しない。
+- s4：元の markedSpanFamily から指定 weakSpanKanQuotientDiagram の小さい unstraightening への全族写像、底 q の厳密保存、各 fiber の元の Kan 置換単位の全族回収と降下の同値性、恒等 span の像と指定恒等点の fiber 内同型。私有証明はこれらに条件付きで、実供給は未完。
 
 ### 次の一手
 - **次の一工程（Sp-6 s4）**：元の一般 Verdier 分数比較の充満忠実性を証明する。一般局所化・商 API は追加せず、既存比較と K-B の元の図式を使う。s2・s3 の具体的供給は D の Perf 零性・実核等の到着後に接続する。始域の全対象商 A/A を零角に用いる厳密延長は実装済み。dgNullCorner_composite は元の二射との厳密等号、dgNullCorner_vertex_isZero は同じ dg nerve の零性。固定 S 内の具体的四角形は exists_dgOdotFixedNullSquare。残りは D の Perf 零性の接続と s3 の全長方形・比較。対象別 ε の dg 自然性は仮定しない。

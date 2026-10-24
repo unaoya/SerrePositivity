@@ -18,6 +18,13 @@ public import SerrePositivity.KST.Fibration.PointSourceFatRestriction
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
 public import SerrePositivity.InfinityCategories.F1.Joins.CoslicePostCoordinates
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointUniqueness
+public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
+public import SerrePositivity.KST.Fibration.CoslicePointFamilyAt
+public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
+public import SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle
+public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
+public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
 
 /-!
 概要：一般 Verdier 分数の全族に対して、分母 roof からの二つの実変形を保持する。
@@ -1865,5 +1872,342 @@ private def verdierFixedLiftedCompletionTriangle {A B C : StableCategory.{u}}
     verdierFixedLiftedIntervalTriangle h x y p U hU ≪≫
       (groupoidCompletionEvaluationIso (verdierFixedLiftedFamily h x y p U hU)).symm
   simpa only [verdierFixedLiftedCompletion, Category.assoc] using he
+
+private lemma verdierLiftedCosliceProjection_identity {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (verdierLiftedCosliceProjection h x p U hU).app _
+      (cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x))) =
+      cosliceIdentityCone (q.hom.app _ x) := by
+  apply Subtype.ext
+  change ((eqToHom (congrArg sliceUnder (verdierLiftedIdentityPointMap_eq h x p U hU))).app
+    (Opposite.op ⦋0⦌) _).val = _
+  rw [sliceUnder_eqToHom_app_val (verdierLiftedIdentityPointMap_eq h x p U hU)]
+  change SSet.const (U.app _ (verdierIdentitySpanFamily h x)) ≫ p = SSet.const (q.hom.app _ x)
+  rw [SSet.const_comp, verdierLiftedIdentity_vertex_image h x p U hU]
+
+private lemma exists_verdierLiftedCosliceSection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    ∃ s : sliceUnder (SSet.yonedaEquiv.symm (q.hom.app _ x)) ⟶
+        sliceUnder (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x))),
+      s ≫ verdierLiftedCosliceProjection h x p U hU = 𝟙 _ ∧
+      s.app _ (cosliceIdentityCone (q.hom.app _ x)) =
+        cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x)) := by
+  let a := SSet.yonedaEquiv.symm
+    (cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x)))
+  let b := SSet.yonedaEquiv.symm (cosliceIdentityCone (q.hom.app _ x))
+  haveI : Mono b := by
+    rw [NatTrans.mono_iff_mono_app]
+    rintro ⟨⟨n⟩⟩
+    rw [mono_iff_injective]
+    intro v w _
+    apply SSet.stdSimplex.ext
+    intro j
+    apply Fin.ext
+    omega
+  have := (verdierLiftedCosliceProjection_trivialKan h x p U hU).mem b inferInstance
+  let sq : CommSq a b (verdierLiftedCosliceProjection h x p U hU) (𝟙 _) := by
+    constructor
+    change a ≫ verdierLiftedCosliceProjection h x p U hU = b ≫ 𝟙 _
+    rw [Category.comp_id, SSet.yonedaEquiv_symm_comp,
+      verdierLiftedCosliceProjection_identity h x p U hU]
+  refine ⟨sq.lift, sq.fac_right, ?_⟩
+  have hs := congrArg SSet.yonedaEquiv sq.fac_left
+  simpa only [a, b, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] using hs
+
+private def verdierLiftedCosliceSection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :=
+  (exists_verdierLiftedCosliceSection h x p U hU).choose
+
+private lemma verdierLiftedCosliceSection_projection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    verdierLiftedCosliceSection h x p U hU ≫ verdierLiftedCosliceProjection h x p U hU = 𝟙 _ :=
+  (exists_verdierLiftedCosliceSection h x p U hU).choose_spec.1
+
+private lemma verdierLiftedCosliceSection_identity {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (verdierLiftedCosliceSection h x p U hU).app _ (cosliceIdentityCone (q.hom.app _ x)) =
+      cosliceIdentityCone (U.app _ (verdierIdentitySpanFamily h x)) :=
+  (exists_verdierLiftedCosliceSection h x p U hU).choose_spec.2
+
+private def verdierLiftedCosliceSectionEvaluation {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    sliceUnder (SSet.yonedaEquiv.symm (q.hom.app _ x)) ⟶ E :=
+  verdierLiftedCosliceSection h x p U hU ≫
+    sliceUnderProjection (SSet.yonedaEquiv.symm (U.app _ (verdierIdentitySpanFamily h x)))
+
+private lemma verdierLiftedCosliceSectionEvaluation_projection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    verdierLiftedCosliceSectionEvaluation h x p U hU ≫ p =
+      sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)) := by
+  rw [verdierLiftedCosliceSectionEvaluation, Category.assoc,
+    ← verdierLiftedCosliceProjection_projection h x p U hU,
+    ← Category.assoc, verdierLiftedCosliceSection_projection, Category.id_comp]
+
+private lemma verdierLiftedCosliceSectionEvaluation_identity {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (verdierLiftedCosliceSectionEvaluation h x p U hU).app _
+      (cosliceIdentityCone (q.hom.app _ x)) = U.app _ (verdierIdentitySpanFamily h x) := by
+  change (sliceUnderProjection _).app _
+    ((verdierLiftedCosliceSection h x p U hU).app _ (cosliceIdentityCone (q.hom.app _ x))) = _
+  rw [verdierLiftedCosliceSection_identity, cosliceIdentityCone_projection]
+
+private def verdierLiftedIdentityFiberPoint {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (vertexFiber p (q.hom.app _ x)) _⦋0⦌ :=
+  ⟨U.app _ (verdierIdentitySpanFamily h x), by
+    rw [pinchedConstant_zero]
+    exact verdierLiftedIdentity_vertex_image h x p U hU⟩
+
+private def verdierLiftedCosliceSectionEvaluation_relativeIso {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    VertexIso
+      (relativeFunctorVertex p (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
+        (verdierLiftedCosliceSectionEvaluation h x p U hU)
+        (verdierLiftedCosliceSectionEvaluation_projection h x p U hU))
+      (relativeFunctorVertex p (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
+        (coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
+        (coslicePointFamilyAt_projection p (q.hom.app _ x) _)) := by
+  apply coslicePointEvaluation_relativeIso p (q.hom.app _ x)
+    (verdierLiftedCosliceSectionEvaluation_projection h x p U hU)
+    (coslicePointFamilyAt_projection p (q.hom.app _ x) _)
+  apply eqToIso
+  apply congrArg HomotopyCategory.mk
+  apply Subtype.ext
+  rw [coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    coslicePointEvaluation_vertex_val p (q.hom.app _ x),
+    verdierLiftedCosliceSectionEvaluation_identity, coslicePointFamilyAt_identity]
+  rfl
+
+private def verdierFixedLiftedCosliceSection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
+      (q.hom.app _ y) ⟶
+    leftFibrationInitialTotal p (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y) :=
+  vertexFiberMap _ _ (verdierLiftedCosliceSection h x p U hU)
+    (by simpa only [verdierLiftedCosliceSectionEvaluation, Category.assoc] using
+      verdierLiftedCosliceSectionEvaluation_projection h x p U hU) (q.hom.app _ y)
+
+private lemma verdierFixedLiftedCosliceSection_projection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    verdierFixedLiftedCosliceSection h x y p U hU ≫
+      verdierFixedLiftedConeProjection h x y p U hU = 𝟙 _ := by
+  apply vertexFiber_hom_ext _ _
+  rw [Category.assoc, verdierFixedLiftedConeProjection, vertexFiberMap_ι,
+    ← Category.assoc, verdierFixedLiftedCosliceSection, vertexFiberMap_ι,
+    Category.assoc, verdierLiftedCosliceSection_projection,
+    Category.comp_id, Category.id_comp]
+
+private lemma verdierFixedLiftedCosliceSection_evaluation {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    verdierFixedLiftedCosliceSection h x y p U hU ≫
+      leftFibrationInitialEvaluation p (U.app _ (verdierIdentitySpanFamily h x))
+        (q.hom.app _ y) =
+    vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
+      (verdierLiftedCosliceSectionEvaluation h x p U hU)
+      (verdierLiftedCosliceSectionEvaluation_projection h x p U hU) (q.hom.app _ y) := by
+  rw [verdierFixedLiftedCosliceSection, leftFibrationInitialEvaluation, vertexFiberMap_comp]
+  rfl
+
+private def verdierFixedLiftedNativePointIso {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    FunctorIso (verdierFixedLiftedNativeComparison h x y p U hU)
+      (vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
+        (coslicePointFamilyAt p (q.hom.app _ x) (verdierLiftedIdentityFiberPoint h x p U hU))
+        (coslicePointFamilyAt_projection p (q.hom.app _ x) _) (q.hom.app _ y)) := by
+  let e := verdierFixedLiftedBaseEquivalence h x y p U hU
+  let s := verdierFixedLiftedCosliceSection h x y p U hU
+  let ev := leftFibrationInitialEvaluation p
+    (U.app _ (verdierIdentitySpanFamily h x)) (q.hom.app _ y)
+  have he := FunctorIso.precomp e.homInvIso s
+  change FunctorIso (s ≫ (verdierFixedLiftedConeProjection h x y p U hU ≫ e.inv))
+    (s ≫ 𝟙 _) at he
+  rw [← Category.assoc, verdierFixedLiftedCosliceSection_projection,
+    Category.id_comp, Category.comp_id] at he
+  have ht := FunctorIso.postcomp he ev
+  rw [verdierFixedLiftedCosliceSection_evaluation] at ht
+  have hr := VertexIso.map (verdierLiftedCosliceSectionEvaluation_relativeIso h x p U hU)
+    (relativeFunctorFiberHom
+      (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p (q.hom.app _ y))
+  rw [relativeFunctorFiberHom_vertex, relativeFunctorFiberHom_vertex] at hr
+  exact ht ≪≫ hr
+
+private def verdierFixedLiftedNativeSpecifiedPointIso {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (w : (vertexFiber p (q.hom.app _ x)) _⦋0⦌)
+    (e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU) w) :
+    FunctorIso (verdierFixedLiftedNativeComparison h x y p U hU)
+      (vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
+        (coslicePointFamilyAt p (q.hom.app _ x) w)
+        (coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)) := by
+  let v := verdierLiftedIdentityFiberPoint h x p U hU
+  have hv : (leftFibrationCoslicePointEvaluate p (q.hom.app _ x)).app _
+      (relativeFunctorVertex p _ (coslicePointFamilyAt p (q.hom.app _ x) v)
+        (coslicePointFamilyAt_projection p (q.hom.app _ x) v)) = v := by
+    apply Subtype.ext
+    exact (coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
+      (coslicePointFamilyAt_identity p (q.hom.app _ x) v)
+  have hw : (leftFibrationCoslicePointEvaluate p (q.hom.app _ x)).app _
+      (relativeFunctorVertex p _ (coslicePointFamilyAt p (q.hom.app _ x) w)
+        (coslicePointFamilyAt_projection p (q.hom.app _ x) w)) = w := by
+    apply Subtype.ext
+    exact (coslicePointEvaluation_vertex_val p (q.hom.app _ x) _).trans
+      (coslicePointFamilyAt_identity p (q.hom.app _ x) w)
+  have hr := coslicePointEvaluation_relativeIso p (q.hom.app _ x)
+    (coslicePointFamilyAt_projection p (q.hom.app _ x) v)
+    (coslicePointFamilyAt_projection p (q.hom.app _ x) w)
+    (eqToIso (congrArg HomotopyCategory.mk hv) ≪≫ e ≪≫
+      eqToIso (congrArg HomotopyCategory.mk hw.symm))
+  have hf := VertexIso.map hr (relativeFunctorFiberHom
+    (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p (q.hom.app _ y))
+  rw [relativeFunctorFiberHom_vertex, relativeFunctorFiberHom_vertex] at hf
+  exact verdierFixedLiftedNativePointIso h x y p U hU ≪≫ hf
+
+private def verdierFixedLiftedSpecifiedPointTriangle {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (w : (vertexFiber p (q.hom.app _ x)) _⦋0⦌)
+    (e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU) w) :
+    FunctorIso
+      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫
+        ((verdierFixedIntervalBaseEquivalence h x y).inv ≫
+          vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))) p
+            (coslicePointFamilyAt p (q.hom.app _ x) w)
+            (coslicePointFamilyAt_projection p (q.hom.app _ x) w) (q.hom.app _ y)))
+      (verdierFixedLiftedCompletion h x y p U hU) := by
+  have he := FunctorIso.precomp
+    (FunctorIso.precomp (verdierFixedLiftedNativeSpecifiedPointIso h x y p U hU w e)
+      (verdierFixedIntervalBaseEquivalence h x y).inv)
+    (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y)
+  exact he.symm ≪≫ verdierFixedLiftedCompletionTriangle h x y p U hU
+
+private def verdierWeakQuotientUnitTriangle {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌)
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (e : VertexIso
+      (verdierLiftedIdentityFiberPoint h x
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
+      (weakIdentityQuotientFiberPoint h x)) :
+    FunctorIso
+      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫
+        ((verdierFixedIntervalBaseEquivalence h x y).inv ≫
+          vertexFiberMap (sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x)))
+            (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+            (weakQuotientCosliceUnit h x) (weakQuotientCosliceUnit_projection h x)
+            (q.hom.app _ y)))
+      (verdierFixedLiftedCompletion h x y
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU) := by
+  simpa only [coslicePointFamilyAt, weakQuotientCosliceUnit] using
+    verdierFixedLiftedSpecifiedPointTriangle h x y
+      (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU
+      (weakIdentityQuotientFiberPoint h x) e
+
+private lemma verdierFractionComparison_of_wholeFamilyUnit {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌)
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (e : VertexIso
+      (verdierLiftedIdentityFiberPoint h x
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
+      (weakIdentityQuotientFiberPoint h x))
+    (hunit : IsQCatEquivalence (verdierFixedLiftedCompletion h x y
+      (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)) :
+    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
+  let a := sliceUnderProjection (SSet.yonedaEquiv.symm (q.hom.app _ x))
+  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  let r := smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram a)
+  let u := weakQuotientCosliceUnit h x
+  let c := weakQuotientCosliceComparison h x
+  let b := q.hom.app (Opposite.op ⦋0⦌) y
+  let uf := vertexFiberMap a p u (weakQuotientCosliceUnit_projection h x) b
+  let cf := vertexFiberMap p r c (weakQuotientCosliceComparison_projection h x) b
+  let β := (verdierFixedIntervalBaseEquivalence h x y).inv ≫ uf
+  letI := vertexFiber_kanComplex_of_leftFibration a b
+  letI := vertexFiber_kanComplex_of_leftFibration p b
+  letI := vertexFiber_kanComplex_of_leftFibration r b
+  have hfg : IsQCatEquivalence
+      (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y ≫ β) :=
+    hunit.ofFunctorIso (verdierWeakQuotientUnitTriangle h x y U hU e).symm
+  have huc : IsQCatEquivalence (uf ≫ cf) := by
+    rw [vertexFiberMap_comp]
+    exact vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence a r
+      (weakQuotientCosliceComposite h x) (weakQuotientCosliceComposite_projection h x)
+      (weakCosliceComposite_isPrecompositionEquivalence h x) b
+  have hβc : IsQCatEquivalence (β ≫ cf) := by
+    change IsQCatEquivalence
+      (((verdierFixedIntervalBaseEquivalence h x y).inv ≫ uf) ≫ cf)
+    rw [Category.assoc]
+    exact (verdierFixedIntervalBaseEquivalence h x y).symm.isQCatEquivalence.comp huc
+  have hβ : IsQCatEquivalence β := isQCatEquivalence_of_composites hfg hβc
+  exact (hβ.cancel_right hfg).isFullyFaithful
 
 end SerrePositivity.KST.LocalizingInvariants
