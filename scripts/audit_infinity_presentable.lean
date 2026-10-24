@@ -539,3 +539,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_isPullback
 #check @SerrePositivity.InfinityCategories.F2.Presentable.solutionHom_isRetract
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleGeneratorHomRetract
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.comp_universe
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.spaceUniverse
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftCanonicalRestrictionRetraction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indLiftedContinuous_canonicalColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantRepresentable_retract_corepresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_corepresentable_of_continuous_preservesLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsCorepresentableSmallSpaceFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isCorepresentable_of_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.accessible_preservesLimits_isCorepresentable
