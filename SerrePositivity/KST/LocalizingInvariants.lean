@@ -1874,5 +1874,6 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRigh
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedPath
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWCompletedZero
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightWModelHomotopy
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoFixedRightImageValue
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
