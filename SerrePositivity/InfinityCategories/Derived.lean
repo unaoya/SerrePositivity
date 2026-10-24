@@ -2269,6 +2269,10 @@ public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedRepres
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryPretriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectivePretriangulated
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientFlatKernel
+public import SerrePositivity.InfinityCategories.Derived.DGCompositionUnitCollapse
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionUnitLaws
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionRightUnit
+public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionUnitLaws
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
