@@ -1,0 +1,14 @@
+{
+  "move_operations": 2440,
+  "distinct_original_moved_modules": 2359,
+  "deleted_forwarders": 267,
+  "expected_orphan_oleans_removed": 2626,
+  "distinct_final_updated_lean_files_including_moves_and_new_files": 2872,
+  "of_those_tracked": 2869,
+  "untracked_import_updates": [
+    "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationStrictColimit.lean",
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightFamilyComparison.lean",
+    "SerrePositivity/InfinityCategories/HomotopyLimits/YonedaWeightLeftKan.lean"
+  ],
+  "tracked_count_confirmed_by_commit_tree_diff": true
+}

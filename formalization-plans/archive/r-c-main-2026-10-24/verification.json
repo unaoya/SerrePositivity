@@ -1,0 +1,78 @@
+{
+  "state": "passed",
+  "head": "e0ca9ecdb578aaa492d91eda3447d4d0b9f75d3d",
+  "other_lake_builds": [],
+  "started_at": "2026-10-24T07:50:17.559320+09:00",
+  "phases": [
+    {
+      "phase": "verify.sh",
+      "exit_code": 0,
+      "seconds": 5169,
+      "audit_results": {
+        "audit_infinity_core": 0,
+        "audit_infinity_f1": 0,
+        "audit_infinity_f1b": 0,
+        "audit_infinity_f1_f1b": 0,
+        "audit_infinity_f2": 0,
+        "audit_f2_ind": 0,
+        "audit_f2_compact": 0,
+        "audit_f2_idempotent": 0,
+        "audit_infinity_presentable": 0,
+        "audit_homotopy_limits": 0,
+        "audit_infinity_stable": 0,
+        "audit_derived_infinity": 0,
+        "audit_derived_gluing": 0,
+        "audit_dg_nerve": 0,
+        "audit_coherent_nerve": 0,
+        "audit_dold_kan_comparison": 0,
+        "audit_einfinity": 0,
+        "audit_kst_fibration": 0,
+        "audit_kst_s_construction": 0,
+        "audit_localizing_invariants": 0,
+        "audit_kst_nonconnective": 0,
+        "audit_kst_spectra": 0,
+        "audit_spectra": 0,
+        "audit_refactor_infinity": 0
+      },
+      "validation_errors": []
+    },
+    {
+      "phase": "audit_homotopical_foundations",
+      "exit_code": 0,
+      "seconds": 10
+    },
+    {
+      "phase": "audit_homotopical_general_tools",
+      "exit_code": 0,
+      "seconds": 8
+    },
+    {
+      "phase": "audit_homotopical_rectification",
+      "exit_code": 0,
+      "seconds": 11
+    },
+    {
+      "phase": "check_ordinary_bar_evaluation",
+      "exit_code": 0,
+      "seconds": 9
+    },
+    {
+      "phase": "check_resolution_bar_evaluation",
+      "exit_code": 0,
+      "seconds": 10
+    }
+  ],
+  "verify_log_start_offset": 9010,
+  "finished_at": "2026-10-24T09:17:14.272115+09:00",
+  "log_hashes": {
+    "verify-block.log": "b169b214c4771b94f152a7e5469789793fb29555fd3329bdef2b3c7f186fb73e",
+    "audit_homotopical_foundations.log": "1a3511009d443a12e9d6df8650a4a7ad50f668c857418c314007662ae8c48815",
+    "audit_homotopical_general_tools.log": "47f4f7b673ea9fb3727efcbd079d57d1973bac53f90517e92ba92d1764e21173",
+    "audit_homotopical_rectification.log": "9b17de5953afe7bc779172f7b2754a3408dbe3ee3ac4ea1b74f0bcc3a7bf8159",
+    "check_ordinary_bar_evaluation.log": "cbb25e28c29261ff1f9528fcbc34650f9b5b7bbb69df7087b1055f4ffa12a7be",
+    "check_resolution_bar_evaluation.log": "393068d229df240f1e7ee87630413a904e2cc9e8179a6818e9104cda855c44a5"
+  },
+  "tracked_lean_changes_since_verified_head": [],
+  "static_layout_audit": "passed: GeneralTools and Foundations independent; all 413 canonical modules, 267 direct relocations",
+  "dependency_graph": "all immediate edges and 58 normalized client closures preserved"
+}

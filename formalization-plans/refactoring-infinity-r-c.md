@@ -11,5 +11,7 @@
 - 数学的内容・既存宣言の型・証明は保存。新規 sorry・公理なし。共有化は完全一致した4宣言だけ。型差のある組は一覧に残し所有レーンへ返す。
 - main にあった文書差分・未追跡ファイルは保持。未追跡の3ファイルの import 更新は必要な機械的変更だけ行い、元の数学的内容をコミットに混入しない。
 - 証拠：archive/r-c-main-2026-10-24/ の計画・静的照合・閉包記録。全29,786 Lean の import 欠落・循環は0。
-- 検証：scripts/refactor/verify.sh と HomotopicalAlgebra 関係の追加監査をこれから実行。結果を確認するまで完了扱いにしない。
-- 次の一手：他の lake build がないことを確認 → verify.sh → HA の3監査・bar 評価2チェック → 全結果記録・最終コミット・HEAD と verify.log 末尾を報告。
+- 検証完了：verify.sh の2ビルド・24監査が全て成功。main_statement の直接 sorry 閉包は空。HomotopicalAlgebra の3監査・bar評価2件も終了コード0。検証 HEAD は e0ca9ecdb578aaa492d91eda3447d4d0b9f75d3d。
+- 完了：main の対象実装と検証記録をコミットし、HEAD・件数・verify.log末尾を報告。R-B は次の占有調整をコーディネータへ依頼できる。
+
+最終件数：延べ2,440移動（元モジュール2,359本）、267入口削除。最終配置で更新・新規の tracked Lean は2,869本。既存未追跡3本の import 更新は別枠で、数学的内容をコミットに取り込んでいない。削除 orphan olean は2,626で移動元＋削除数と一致。

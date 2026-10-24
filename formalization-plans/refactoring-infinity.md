@@ -109,13 +109,13 @@
 | 2-3 | `Derived/LimitDiagramIso`・`CofinalLimitExistence` を Core へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
 | 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST の旧ファイルを削除して直接置換。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | |
 | 2-5 | `DGNerve/SemifreeLimits` を Derived（または DifferentialGraded）へ、DGNerve の旧ファイルを削除して直接置換 | R24 | D | D の区切り | |
-| 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | R-C：d5cd974e2、密度59本・補助81本適用、統合検証待ち |
-| 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | R-C：bdf8d1c6a 適用、統合検証待ち |
-| 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | R-C：ba39c0897、90本適用、統合検証待ち |
+| 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | R-C：d5cd974e2、密度59本・補助81本適用、verify.sh・関係監査通過 |
+| 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | R-C：bdf8d1c6a 適用、verify.sh・関係監査通過 |
+| 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | R-C：ba39c0897、90本適用、verify.sh・関係監査通過 |
 | 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | |
 | 3-2 | `PinchedInterval` 6 本・`KanScaffold`／`KanCocartesian` 15 本の精査 | R8 段階 4 | F1b | F1b-5 a7 完了後 | |
 | 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | R-A、直接置換・入口の検証後 | 2026-10-23 22:41 JST |
-| 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | R-C：65c0881c8、2,210本適用、統合検証待ち |
+| 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | R-C：65c0881c8、2,210本適用、verify.sh・関係監査通過 |
 | 4-3 | F1 のサブディレクトリ化、F1B の `Kan*` 接頭辞の整理、ディレクトリ名の層への対応 | R12・R13・R1・R6 | F1・F1b | R-A、R11 の後 | R12：2026-10-24 06:49 JST。R13 は R-C・R-B 完了後 |
 | 5 | 旧重複モジュールの削除と `KanSection.foo` → `foo` の直接置換（約 60 箇所）、`HomotopyLimits.lean` の docstring と `quillenCfBottomEndpoint_wrong` 等の改名 | R18 ほか | 全レーン | 第 0〜1 段と同時（全停止後） | 2026-10-23 17:45 JST（F1/F1B 部分。HomotopyLimits は R-C） |
 
@@ -130,7 +130,7 @@
 | Stable/SliceOpposite と join/reverse 汎用補助 16 本 | Core の同名モジュール | 1-5 | 同上 |
 
 
-R-C の main 再適用（2026-10-24、統合検証待ち）：
+R-C の main 再適用（2026-10-24、verify.sh・関係監査通過）：
 
 | 旧所在 | 新所在 | 項目 | コミット |
 |---|---|---|---|
