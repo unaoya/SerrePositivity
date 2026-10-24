@@ -174,7 +174,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 - D-14 の実分解入口を含む両全体監査は Derived 22,934宣言／2,620モジュール、Stable 23,996／2,889で成功。任意の加群値関手への補足一般化は対象5,710 jobs、M.toFunctor と Yoneda の二適用型、4公開署名の三公理検査、集約11,128 jobsで検証し、両全体監査へ接続済み（補足後の全体再監査は次の集約区切り）。
 
-- 補足2 (3)：`Stable/UniverseExactFunctorLift` の `isExactFunctor_ulift F h` と `isExactFunctor_iff_ulift F`。安定性仮定なし、対象2,576 jobs・要求型と2宣言の三公理検査成功。(4) 混在宇宙版は実装中。既存宣言は不変。
+- 補足2 (3)：`Stable/UniverseExactFunctorLift` の `isExactFunctor_ulift F h` と `isExactFunctor_iff_ulift F`。安定性仮定なし、対象2,576 jobs・要求型と2宣言の三公理検査成功。(4) は `Derived/DGPretriangulatedModuleValuedCommonExact` の `dgPretriangulatedModuleValuedFunctorCommon_isExactFunctor`（dgNerveCommonMap）と `dgPretriangulatedModuleValuedFunctorLifted_isExactFunctor`（dgUniverseLiftFunctor F の native nerve）。D : Type v・C : Type w を独立にし、Small は D/C のみ。任意の追加宇宙 t と共通宇宙 max (u+1) v w t に対応する。F := M.toFunctor を C : Type v・D : Type w の向きで型検査済み。対象5,751 jobs、補助を含む新11モジュール64宣言の葉監査は許容三公理のみ。既存宣言は不変。
 
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
