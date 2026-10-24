@@ -31,9 +31,10 @@
 - I-2 a④ の指定比較の制限：`rightAnodyneRelativeLiftIso_precomp` は同じ等号同型の充満忠実な逆像の自然性。`coneTerminalSliceRelativeIso_precomp` と `coneTerminalSliceBoundaryFunctorIso_precomp` は、頂点表示した同じ終点の全余錐と始域境界の比較を、旧族で元の指定比較へ戻す（型の等号移送までの HEq）。指定変換下の実余錐への接続は未了。
 - I-2 a④ の元の点での比較の制限：`conePointSliceBoundaryFunctorIso_precomp` は任意の元の点写像で指定比較の旧族制限を保持。元の `conePointSliceBoundaryRelativeIso` は公開名・型を保ち、同じ元の点の指定逆像で直接構成する。`conePointSliceBoundaryRelativeIso_yoneda` は従来の頂点表示の指定比較との定義的な一致。`indConeEndpointSliceFunctorIso_old_heq` は同じ初期全円柱を保持する再構成で、元の終点 slice 比較の旧族制限が変わらないことを保証する。指定変換下の実余錐への移送は未了。
 - I-2 a④ の実評価の比較の制限：`indConeEndpointRawFace_old_eq` と `indConeEndpointReconstructedRawFace_old_eq` は同じ初期全円柱を保持する再構成で旧族の両端の一致。`indConeEndpointRawFaceIso_old_heq` は同じ実終点 comma の指定比較の旧族での不変性。`indConeEndpointEvaluationIso_old_heq` は元の極大点評価への指定比較の旧族での不変性。指定変換下の実余錐と極大点評価の共終性は未証明。
+- I-2 a④ の指定終点面の相対拡張：`coneTensorTargetInclusion` は元の試験族から補間領域への単射。`coneTensorNativeExtend_target` は同じ全終点面の厳密な回収。`exists_indComma_coneTensor_relative_extension` は元の両全境界と指定変換を同時に保持する全拡張。`exists_indConeExtendedSliceData_relative` は同じ初期全円柱を保持したまま実終点族を指定変換下で選び直す。元の評価下の実余錐と極大点評価の共終性は未証明。
 - 供給依頼：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`posetSubtypeNerveIso_hom_ι` は現在の所有 import 閉包外。下方部分と全部分複体の比較に必要なため、コピーせずコーディネータ経由の供給依頼を報告済み。順序下方部分の圏と終点余錐の厳密な比較は独立に保存済み。
 - I-2 a④ の元の族への適用：`indConeSliceInterpolationData_nonempty` は元の q と指定下方余錐 G の二段持ち上げ。`indConeEndpointRaw`・`indConeLowerEndpointRaw` は同じ実終点 comma 内の両全族、`indConeEndpointRaw_boundary` はその全共有境界の厳密な一致。元の C 全図式と全 slice 円柱を保持する。
-- 次の一手：I-2 a④。余錐積の補間領域に、下方形状の元の余錐点での試験族包含を構成する。単射性と同じ余錐積比較の点面の等号を証明し、scalar comma の指定変換下の相対余錐を同じ全拡張へ戻す。元の終点族に与えられた指定変換を、余錐積の実拡張と同じ比較で保持し、元の極大点評価下の実余錐を構成する。比較の存在だけで指定変換の保持や共終性を主張しない。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で、元の一般 κ-small 試験族を保持する点追加の相対補間を構成する。射形状の旧族不変性・指定変換の輸送・共同余錐と厳密な境界回収を拡張し、元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得る。各点密度から同じ標準全余錐の余極限性を回収し、単一 filtered 表示をまとめる。
+- 次の一手：I-2 a④。実終点族への指定変換を同じ初期全円柱を保つ相対拡張へ渡し、`indConeEndpointEvaluationIso_old_heq` で旧族上の比較を回収する。下側の left fibration の指定同型持ち上げを全余錐で適用し、旧族上の比較の逆合成が恒等同型へ戻ることから、元の指定評価下の実余錐を構成する。比較の存在だけで指定変換の保持や共終性を主張しない。供給後に部分型 nerve の界面で極大点 a の下方包含を実 pushout に接続し、有限半順序集合 P の nerve 上で点追加の相対補間を構成する。元の小さい diagram comma の κ-filtered 性と各頂点評価の cofinal 性を得て、同じ標準全余錐の余極限性と単一 filtered 表示をまとめる。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

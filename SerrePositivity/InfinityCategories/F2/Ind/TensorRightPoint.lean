@@ -22,6 +22,16 @@ namespace SerrePositivity.InfinityCategories.F2.Ind
 方針：元の二射を直積へ束ねる。規約：全係数を保持。使われ方：同じ終端面の制限。 -/
 def tensorRightPoint (A : SSet.{u}) {B : SSet.{u}} (p : (Δ[0] : SSet.{u}) ⟶ B) :
     A ⟶ A ⊗ B := lift (𝟙 A) (SSet.const (SSet.yonedaEquiv p))
+/-- 概要：元の指定点で右因子を固定する全射は単射。
+方針：元の左射影で恒等射を回収。規約：元の全射。使われ方：指定変換を付加する包含。 -/
+instance tensorRightPoint_mono (A : SSet.{u}) {B : SSet.{u}}
+    (p : (Δ[0] : SSet.{u}) ⟶ B) : Mono (tensorRightPoint A p) := by
+  dsimp only [tensorRightPoint]
+  infer_instance
+/-- 概要：元の左因子の全族は同じ指定点での固定後も厳密に保持される。
+方針：元の第一射影。規約：全射の等号。使われ方：補間領域の終点面の回収。 -/
+lemma tensorRightPoint_fst (A : SSet.{u}) {B : SSet.{u}}
+    (p : (Δ[0] : SSet.{u}) ⟶ B) : tensorRightPoint A p ≫ fst A B = 𝟙 A := lift_fst _ _
 /-- 概要：元の試験族の制限を同じ点で厳密に保持する。
 方針：直積の自然性。規約：全射の等号。使われ方：終端面の旧族と新頂点。 -/
 lemma tensorRightPoint_naturality {A A' B : SSet.{u}} (f : A ⟶ A')

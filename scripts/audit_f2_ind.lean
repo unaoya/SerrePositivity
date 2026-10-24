@@ -1933,3 +1933,60 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_old_heq
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso_old_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_apex_constant
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.arrowInterpolationConeFold_apex_constant
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion_comp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion_comp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorTargetInclusion_mono
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCocone_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCoconeIso_inv_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCoconeIso_inv_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorExtend_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.uliftTensorIso_hom_tensorRightPoint
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.uliftTensorIso_hom_tensorRightPoint
+
+#check SerrePositivity.InfinityCategories.F2.Ind.uliftCoconeShapeIso_tip_point
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.uliftCoconeShapeIso_tip_point
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorOldUniverseShape_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorUniverseShape_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_old
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_old
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_lower
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorNativeExtend_lower
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner_target
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTensorCorner_target
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_relative_extension
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indComma_coneTensor_relative_extension
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indConeExtendedSliceData_relative
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indConeExtendedSliceData_relative
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_mono
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_mono
+
+#check SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_fst
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.tensorRightPoint_fst

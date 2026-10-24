@@ -793,3 +793,25 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawFaceOl
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawFaceIsoNaturality
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeFoldApexConstant
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorTargetInclusion
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorTargetCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorExtendTarget
+
+public import SerrePositivity.InfinityCategories.F2.Ind.TensorRightPointUniverse
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorTargetUniverse
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorNativeExtendTarget
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorNativeExtendBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCornerTarget
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorRelativeExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeExtendedSliceRelative
