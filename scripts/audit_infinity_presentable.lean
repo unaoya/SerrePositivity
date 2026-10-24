@@ -386,3 +386,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHomMap_flip
 #check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHom_bijective
 #check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitAdjunction
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nativeCoconeHomApex_isIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isColimitCone_of_nativeCoconeHomApex_isIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitFamilyComparison_evaluate_isIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_isPointwiseColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitComparison_isIso_iff_preservation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pointProjection_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.constantJoinCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.constant_preservesSmallSiftedColimits
