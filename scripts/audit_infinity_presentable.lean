@@ -525,3 +525,17 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits.isIdempotentComplete
 #check @SerrePositivity.InfinityCategories.F2.Presentable.unstraightening_isIdempotentComplete_of_smallLimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_id
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_eq_of_relativeVertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationRetraction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeFunctorIso_of_initial_evaluation_eq
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coslicePointTransport_identity
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coslicePostcomp_identity
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceVertexTransportComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneTransportRelativeComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.conePullbackClassificationRetraction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Presentable.solutionHom_isRetract
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleGeneratorHomRetract
