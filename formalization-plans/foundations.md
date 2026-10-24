@@ -93,22 +93,19 @@ E2a-3〜5 ─ E2b ─ G1′
 
 ## 6. レーン（基盤に集中、2026-10-19）
 
-| レーン | 旧チャット | 範囲（I-a → I-b） | 最初の工程 |
-| --- | --- | --- | --- |
-| F1 | α2 | straightening（空間値は完了。Cat_∞ 値は有限単体底の同値 10-22 06:21 で区切り第 II 段へ）→ **F1-4 前層の極限・余極限 → F1-5 表現可能関手と極限 → F1-3b Hom 関手**（10-22 10:10 変更）→ **F2N-2 Ind_κ（12:35 に F1b から移管）** | F2N-2 |
-| F1b → F2 | α2b | B4・B5 → Cat_∞・lax pullback（第 1 部、10-20 07:42 完了）→ **F2-lite 第 2 部（F2N-1 filtered 余極限と有限極限の交換 → F2N-3 compact → F2N-5 Ind の安定性。F2N-2 は 10-22 に F1 へ、F2N-4 は N へ移管）** → F2 後半（presentable、随伴関手定理） | F2N-1 |
-| N | N | γ3c → γ4 → Sp への応用（完了）→ N-4 Bousfield 局所化・P_Σ（10-22 に g の区切りで休止）→ **F2N-4 冪等完備化（10-22 10:10 に F1b から移管）** | F2N-4 |
-| D | α-S | D7 → β3（Drinfeld 商 = Verdier 商）→ β5（D(A) と ⊗_A）→ β4（gluing = lax pullback） | D7 の完了 |
-| E2 | E2a | E2a-3〜5 → E2b（CAlg_R）→ G1′（界面の述べ直し） | E2a-3 (1) |
-| Sp | K-L9 | L9e → Sp の ∞ 極限 → 局所化不変量の値域 Sp → K-5・K-8 の抽象部分（10-21）→ K-8 pro 版と **β6（dg 代数のホモトピー論、10-22 追加）** | L9e の収束 |
-| D2 | 新設（10-22） | **β4**：双加群に沿う dg gluing の dg 圏、半直交分解、dg nerve と F1b の lax pullback の比較、安定性と完全射影。配置 `InfinityCategories/Derived/Gluing/`。D の β5 は読み取り専用 | gluing dg 圏の構成 |
-| K-F | 新設（10-22） | **K-6 fibration 定理**：Verdier 列 D → C → C/D に対する連結 K の fiber 列（Waldhausen 1.6.4、BGT §7〜9）。配置 `KST/Fibration/`。Sp の K-5 と K-S• の S• は読み取り専用 | W の安定性と相対 S• |
-| P | 新設（10-23） | **presentable ∞ 圏**：accessible・presentable、随伴関手定理、Pr^L／Pr^R、Bousfield 局所化の存在、P_Σ の普遍性。配置 `InfinityCategories/F2/Presentable/`。F2/Ind・Idempotent・Compact は読み取り専用。N・F1b が空いたら合流 | accessible の定義と Ind との同値 |
-| K-7 | 新設（10-23） | **非連結 K（dg 形）**：Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9 の非連結化、連結 K との比較。配置 `KST/NonConnective/`。SConstruction・LocalizingInvariants・Derived・Fibration は読み取り専用 | Sp の逐次余極限 |
-| R | 新設（10-23） | **リファクタリング**：解説（exposition/ja/infinity）の候補 R1〜R25 を、互換シム方式で稼働中レーンを壊さずに実施。重複除去、一般論の Core・F1B への移動、逆向き依存の解消、入口と README。正本 [refactoring-infinity.md](refactoring-infinity.md) | 重複検査スクリプトと README の移動 |
-| K-基盤 | K-L1 | L1c〜f（∞-S•、加法性、スペクトル）→ L3（fibration 定理、非連結 K = BGT (a)、局所化不変量）→ Tamme・Land–Tamme | L1c の完了 |
-| 休止（第 II 段） | K-L4、K-L8、K-L5、K-L7 | 導来幾何（Perf(X)）、降下、導来 blowup、スキーム補題。引き継ぎ節を保持 | — |
-| 凍結 | K-L2、K-L6 | Auxiliary として保持。再開しない | — |
+| レーン | 旧レーン | 所有（新構造、2026-10-24） | 残り（依存順） | 最初の工程 |
+| --- | --- | --- | --- | --- |
+| Ind | F1、F1b | `InfinityCategories/F1/`（Cocartesian/ は休止・Auxiliary）、`F1B/`、`F2/Ind/`・`F2/FilteredExchange/`・`F2/Compact/`・`F2/Idempotent/` | I-1 a7 交換定理（8 時間上限）→ I-2 Ind の安定性・compact 生成 | a7 の `ApexRawTriangleCandidate_eq_universal_iff` 右辺 |
+| P | N、P | `F2/Presentable/`、`HomotopyLimits/` | P-1 b 前層の presentable 性 → g P_Σ → c → d 随伴関手定理 → e → f | b の一般の小さい底上の前層 |
+| D | D | `Stable/`、`Derived/`（Gluing/ 以外）、`DGNerve/`、`DoldKanComparison/`、`DifferentialGraded/` | D-7 d IsStable の結論 → D-8 K-7 供給 DGKappaConeInput → D-9 β4 共同分、D2 吸収 | D-7 d の loop 同値からの安定性定理 |
+| D2 | D2 | `Derived/Gluing/` | G-1 β4 d 実ホモトピー逆 → e → f（⊙ の同定、IsVerdierSequence 供給） | 未接続 CoefficientYonedaInverseChainMap の修正 |
+| E2 | E2 | `EInfinity/` | E2-7 g1・g2 → E2-8 G1′ → 停止（BS-7 は第 II 段） | g1 の列の cofibrant 相対圏への持ち上げ |
+| Sp | Sp | `KST/Spectra/`、`KST/LocalizingInvariants/`（局所化・分数・Verdier 商 API の正本） | K-9 β6 g → f → h → K-8 e pro 版 → 依頼対応 | β6 g の W source の Γ への前合成 |
+| K-S• | K-S• | `KST/SConstruction/`（S• 界面の正本） | K-10 c 商 End → d IsVerdierSequence → e LT 主定理 Cat^perf 版 | c の角から小模型への Yoneda の Morita |
+| K-B | K-F、K-7 | `KST/Fibration/`、`KST/NonConnective/` | K-6 c → b → d → e、K-7 c → d → e → f | K-6 c の relabelEnrichedObjects と K-7 c の dgKappaZeroPerfAction_values（独立、初日は並行） |
+| R | R-A・R-B・R-C | 常設しない。第 I 段終了時の停止窓で `Core/`・`Coherent/`・`PinchedHom/` を含む移動を行う | KST/Spectra の基盤部分の降格、型の異なる準重複、R21・R4・R5・R10 | — |
+| 休止（第 II 段） | K-L4、K-L8、K-L5、K-L7 | 導来幾何（Perf(X)）、降下、導来 blowup、スキーム補題。引き継ぎは各計画の冒頭 | — | — |
+| 凍結 | K-L2、K-L6 | Auxiliary として保持。再開しない | — | — |
 
 並列数は 7。L4 が持っていた dg 圏の一般論（半自由分解、Drinfeld 商、§26）は D レーンの β3・β5 が読み取り専用で使い、
 必要な一般化は D レーンが `DifferentialGraded/` ではなく `InfinityCategories/Derived/` 側に置く。
@@ -141,6 +138,10 @@ F1b は a7 の後に P へ合流、N は F2N-3 の後に P へ合流。レーン
 
 規模の目安：I-a の残り 12〜20 万行、I-b 8〜15 万行、第 II 段 15〜25 万行。
 
+**変更記録（2026-10-24 13:50、ユーザー承認）**：全レーン停止中にリファクタ R1〜R25 の大半を完了（タグ refactor-stage1〜3-2026-10-24、R13 は進行中）。
+レーンをゼロベースで再設計し 8 本に統合（F1＋F1b → Ind、N＋P → P、K-F＋K-7 → K-B。§6 の表）。進捗チェックリストは v3（foundations-progress.md）。
+再開文は restart-2026-10-24.md。一・二段目はコーディネータが固定、三段目はレーンが着手時に提示。
+
 ## 8. 運用
 
 - 各レーンは自分の計画ファイル（本文 300 行以内）を持ち、冒頭に「引き継ぎ」節（§8.1 の書式、100 行以内）を置く。
@@ -167,6 +168,14 @@ Sp の `KST/LocalizingInvariants/`（L9-spectra.md「主要宣言：一般局所
 コーディネータ経由で所有レーンに依頼する。(2) モジュールの移動・改名は旧モジュール名を互換シム（新所在の `public import` と `export` 別名）として残し、
 下流の import と宣言名を壊さない。削除・改名の一括整理は第 I 段終了時。(3) R レーンは専用 worktree（`../SerrePositivity-R`、ブランチ `refactor/r-lane`）で作業し、main への取り込みはコーディネータがレーンの停止時間帯に行う（09:55 改訂）。他レーンのファイルは、最終コミットが 48 時間以上前・
 未変更・純粋な移動のときだけ変更し、事前にコーディネータへ報告する。稼働中レーンの集約ファイルと監査スクリプトは R が編集しない。
+
+**運用 v3（2026-10-24 13:50、ユーザー承認）**：
+(1) チャットは二段目の項目の完了時、または稼働 24 時間ごとに新チャットへ引き継ぐ（引き継ぎ節を更新してコミットし、停止）。
+(2) 他レーンのファイルは読むだけ。必要な補題が自レーンの import 閉包の外にある場合はコピーせず、コーディネータ経由で所有レーンに供給または上流ファイルの分割を依頼する。
+(3) モジュールの移動・改名・削除はレーンでは行わず、第 I 段終了時などの停止窓で R が `scripts/move_module.py` と `scripts/refactor/verify.sh` で行う。レーンは監査スクリプトの import を自分の変更に合わせて更新する。
+(4) API の正本：局所化・分数・Verdier 商は Sp、dg 側の対象供給は D、S• 界面は K-S•。同種の補題を他レーンに新設しない。
+(5) 各レーンの検証は自分の集約ビルドと監査。統合検証は停止窓で verify.sh（ルート全体ビルド、監査対象の全ビルド、全監査、sorry 閉包監査）。main でのビルドの競合を避けるため、停止窓では main に書き込むレーンを一つに限定する。
+(6) 停止時に残した未追跡の作業中ファイルは、再開時に引き継ぎ節の記録に従って新しい所在へ置き直すか削除する。記録のないものは削除する。
 
 ## 9. 進捗チェックリスト
 

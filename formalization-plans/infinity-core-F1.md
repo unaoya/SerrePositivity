@@ -1,5 +1,7 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
+> **v3（2026-10-24）**：F1 と F1b は **Ind レーン**に統合。本ファイルが Ind の正本で、a7 の引き継ぎは infinity-core-F1b.md を併読。所有：F1/（Cocartesian/ は休止）、F1B/、F2/Ind・FilteredExchange・Compact・Idempotent。配置は R12・R19 で変更済み（F1 は役割別サブディレクトリ、F2 の作業中部分は F2/FilteredExchange/）。
+
 > **v2 の位置づけ（2026-10-23 移管）**：F1-4・F1-5・F1-3b、F2N-2(a)〜(d) は完了。次は F2N-5(a)(b)（Ind の有限存在と安定性、F1b から移管）。(c) compact 生成は完了。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ：F2N-5（2026-10-23 停止・新チャット再開用）

@@ -29,6 +29,7 @@
 | [P 計画：presentable ∞ 圏](infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
 | [新設指示 10-23](restart-2026-10-23.md) | P・K-7 の指示文と転用の予告 | 2026-10-23 |
+| [再開指示 10-24（v3、8 レーン）](restart-2026-10-24.md) | リファクタ後の仕切り直し。Ind・P・D・D2・E2・Sp・K-S•・K-B の再開文と共通規約 | 2026-10-24 |
 | [R 計画：∞ 圏基盤のリファクタリング](refactoring-infinity.md) | 解説の候補 R1〜R25 を互換シム方式で段階実施。重複除去、層の整理、逆向き依存の解消。10-23 新設 | 2026-10-23 |
 | [D2 計画：β4 gluing](infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |

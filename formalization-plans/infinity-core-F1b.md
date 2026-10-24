@@ -1,5 +1,7 @@
 # F1b（旧 α2b）：随伴・局所化・Kan 拡張 → F2-lite
 
+> **v3（2026-10-24）**：F1b は **Ind レーン**に統合（正本は infinity-core-F1.md）。本ファイルは a7 の引き継ぎとしてのみ使う。a7 には着手から 8 時間の上限がある。F2 最上位の作業中モジュールは F2/FilteredExchange/ に移動済み。
+
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1b → F2-lite。B4・B5 の後、Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限、lax pullback。
 
 ## 引き継ぎ（2026-10-23、停止準備、第 2 部）

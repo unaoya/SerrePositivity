@@ -1,5 +1,7 @@
 # D2 レーン：β4 dg gluing = 安定 ∞ 圏の lax pullback
 
+> **v3（2026-10-24）**：D2 レーンの正本。所有：Derived/Gluing/。完了後は D に吸収。
+
 > **v2 の位置づけ（2026-10-22 新設）**：foundations.md §2 の β4、§6 の D2。D レーンの β5（D(A)、双加群、相対 tensor・Hom）と
 > F1b の F2L-2〜4（Cat_∞ の lax pullback、安定性）を読み取り専用で使い、dg gluing の dg nerve が lax pullback であることを証明する。
 > 用途は K-基盤 2（Tamme・Land–Tamme）の対象供給と、⊙ の Verdier 商の dg 側の同定。

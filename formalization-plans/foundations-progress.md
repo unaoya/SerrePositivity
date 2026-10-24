@@ -1,389 +1,106 @@
-# 進捗チェックリスト（foundations.md §9 の本体、レーン別、2026-10-19 作成、10-21 07:50 に分離）
+# 進捗チェックリスト v3（foundations.md §9 の本体、8 レーン、2026-10-24 13:50 改訂）
 
-進捗確認ではこの項目の完了（[x] と日時）を報告し、作業中の小項目に「← 今回」、前回の確認時に作業中だった小項目に「← 前回」を付ける（作業中の行は [ ] のまま）。運用（ユーザー決定 10-21 09:40）：1 段目は固定済み。2 段目・3 段目は各項目・小項目の着手時にレーンの計画から固定し、以後は増減せずチェックだけを動かす（細かく分けてよい）。項目の追加・分割はコーディネータが行う。
+進捗確認では項目の完了（[x] と日時）を報告し、作業中の小項目に「← 今回」、前回の確認時に作業中だった小項目に「← 前回」を付ける（作業中の行は [ ] のまま）。
+一段目・二段目はコーディネータが固定（本改訂）。三段目（必要なら四段目）は各レーンが二段目の項目に着手するときに 3〜8 個で提示し、コーディネータがここに固定する。以後は印だけが動く。
+v2（10-19〜10-24 13:30）の完了項目は末尾「確定済み」に圧縮して残す。旧チェックリストの全文は git 履歴（4466c8c87 以前）。
 
-**F1（α2）**（10-23 04:47 から F2N-5 に着手）
-- [ ] F1-1 straightening 同値の完成（coherent 比較と §5.6.5 の主経路、Kerodon 5.6）
-  - [x] a. 底と図式の族を同時に動かす標準単位を関手同型へ束ねる（Kerodon 5.3.3、Cor 5.6.0.6）（10-19 10:46）
-  - [x] b. 任意の coherent 図式の境界固定延長と高次の貼り合わせ（Thm 5.6.5.12、Cor 5.6.5.15）（10-21 05:11）
-    - [x] b1. 小さい全空間：表現空間の可縮性、coherent な分類図式と全空間比較、小さい底上の相対延長（10-19 16:00）
-    - [x] b2. 任意の底（小さい単体 fiber）への表現の延長（10-19 17:51）
-    - [x] b3. essentially small な Kan fiber への相対普遍性（10-21 05:11。非 Kan の ∞ 圏的 fiber は d へ）
-  - [x] c. unstraightening の写像空間上の比較の同値性（10-21 04:51。明示的な単位・余単位と三角恒等式は任意として省略）
-    - [x] c1. 小さい底上の coherent unstraightening の写像同値（10-19 17:33）
-    - [x] c2. 通常の圏の nerve 上での coherent straightening 同値（充満忠実 01:55、同値の結論 02:05）
-    - [x] c3. 一般の底への帰着（第一頂点 Hom 引き戻しの同値 04:41、相対引き戻しの自然性 04:46、quasicategory 上の空間値 straightening 同値の結論 04:51）
-      - [x] 余単位の自然性と普遍再構成との両立、単位 = 余単位の逆、単位の自然性（10-19 18:17〜18:42）
-      - [x] 一般の transport 表現の写像同値・恒等族・合成則、固定面つき高次 transport 図式の延長（10-19 18:52〜19:19）
-      - [x] 全対象の coherent な関手への束ね、全対象での自然性（10-21 04:51。三角恒等式は任意）
-  - [ ] d. 宇宙の一般化と cocartesian 版（Cat_∞ 値、Thm 5.6.0.2）（10-21 05:22 着手。**10-22 10:10：全有限単体底の同値（06:21）で区切り、第 II 段へ送る**。d4 以降の一般底は再開時に継続）
-    - [x] d1. 通常圏の nerve 上の全 cocartesian fibration の Cat_∞ 値分類写像 cocartesianStraighteningCoherentMap の構成（05:34）
-    - [x] d2. 分類写像の値と F1B の strict transport の図式の一致、各値と元の fiber の同値、区間 Hom 作用の構成（06:16〜07:00）
-    - [x] d3. 底変換比較を全 fibration・全底上の関手同型として実現（二つの分類主写像を両端に持つ）（09:09）
-    - [ ] d4. 区間 Hom 作用の同値性から主写像の充満忠実性（全有限単体底で同値まで完成 06:21。一般底は 10-22 10:10 に休止）
-    - [ ] d5. 本質的全射性（通常圏の nerve の底）
-    - [ ] d6. 一般の小さい quasicategory 底への帰着（空間値版 c3 と同じ経路）
-    - [ ] d7. Thm 5.6.0.2 の同値の結論、unstraightening の ∞ 関手、宇宙の一般化
-- [x] F1-2 Yoneda 埋め込みと前層 ∞ 圏（Kerodon 8）（10-21 05:02）
-  - [x] a. PresheafInfinity C = Fun(ULift Cᵒᵖ, 𝒮) の quasicategory 性、制限・評価・定値前層、底の同値による制限同値、各前層の小さい right unstraightening（10-21 02:00 頃）
-  - [x] b. Yoneda 埋め込みと右 fibration の分類（10-21 05:02）
-    - [x] Yoneda ∞ 写像の構成（10-21 02:40）
-    - [x] Yoneda ∞ 写像の充満忠実性（元の Hom 作用との厳密比較経由、04:31）、前層による右 fibration の分類（05:02）
-- [x] F1-3 twisted arrow ∞ 圏と Hom 関手 Cᵒᵖ × C → 𝒮（12:24）
-  - [x] a. twisted arrow の射影と内部支持対、weight 延長の inner anodyne 性、ホーン weight 被覆と面の両立、twisted arrow 射影が left fibration（10-21 02:18〜02:40）
-  - [ ] b. Hom 関手 Cᵒᵖ × C → 𝒮 の構成と straightening との比較
-    - [x] 実 coslice twisted Hom 比較の同値、twisted arrow 恒等射の始対象性と全 Hom transport の同値（03:25〜03:54）
-    - [ ] 二変数 Hom 関手としての組み立て
-- [x] F1-4 Yoneda の充満忠実性と前層 ∞ 圏の極限・余極限（10-22 12:02）
-  - [x] a. Yoneda の充満忠実性（10-21 04:31、F1-2b で達成）
-  - [x] b. 前層 ∞ 圏 Fun(Cᵒᵖ, 𝒮) の小さい極限・余極限の存在（各点の極限・余極限からの構成、HTT 5.1.2.2〜5.1.2.4。𝒮 の極限・余極限は F2・N の提供を使う） （余極限 10:26〜11:08、極限 12:02）
-  - [x] c. 評価関手による極限・余極限の保存と検出（点ごとの判定） （11:35〜12:02）
-  - [x] d. 表現可能前層の Yoneda 像と極限の交換（HTT 5.1.3.2） （表現可能極限錐の保存 10:34、12:02 に完成）
-- [x] F1-5 表現可能関手による極限の特徴づけ（Ind・presentable の前提）（10-22 12:24）
-  - [x] a. 極限錐の判定：全表現可能関手で写した像の極限性との同値（isLimitCone_iff_representablePresheafInfinity、共変版の二重反転つき特徴づけ）（12:24）
-  - [x] b. Yoneda 埋め込みによる極限の保存と反映（representablePresheafInfinity_isLimit、12:02〜12:24）
-  - [ ] c. 表現可能前層の余極限による任意の前層の生成（HTT 5.1.5.3）は F2N-2（Ind）の一部へ移す（10-22 12:30）
-- [x] F1-3b Hom 関手 Cᵒᵖ × C → 𝒮 の二変数関手としての組み立て（twistedArrowHomInfinity と共同評価の値比較、12:24。F1-3 全体完了）
-- [x] F1-6 F2N-2 Ind_κ(C) の構成と普遍性（10-22 12:35 に F1b から移管。HTT 5.3.5.1〜5.3.5.10、Kerodon 9。二段目固定）（10-23 02:30 完了。提供界面 IndInfinity・indYoneda・isIndVertex_iff_singleFilteredPresentation・indLeftKanExtension_preservesSmallKappaFilteredColimits・indKappaContinuousRestrictionEquivalence）
-  - [x] a. 表現可能前層の余極限による任意の前層の生成（HTT 5.1.5.3） （native 前層の密度と filtered 元の所属 14:37）
-  - [x] b. 前層内の κ-filtered 余極限で閉じた全部分 ∞ 圏としての Ind_κ(C) と Yoneda の因子化 （IndInfinity、包含の充満忠実性、Yoneda の因子化、内在する κ-filtered 余極限の存在と包含による保存・検出 12:34〜12:52）
-  - [x] c. 対象が表現可能前層の κ-filtered 余極限で生成されること（HTT 5.3.5.4） （正則 κ：最小閉包への所属 ⇔ right unstraightening の元の圏の κ-filtered 性、filtered 生成と right fibration 判定 19:55）
-  - [x] d. κ-filtered 余極限を保つ関手の延長の普遍性 Fun^κ(Ind_κ(C), D) ≃ Fun(C, D)（HTT 5.3.5.10） （Yoneda 制限の充満忠実性 21:31、κ-連続関手の普遍同値 indKappaContinuousRestrictionEquivalence 02:30）
-- [ ] F1-7 F2N-5 Ind(C) の安定性と compact 生成（10-23 04:47 に F1b から移管。HTT 5.3.5.15、HA 1.1.3.6。二段目固定）
-  - [ ] a. 小さい安定 C に対する Ind_κ(C) の零対象・有限余極限・有限極限の存在（filtered 余極限と有限極限の交換は F1b の a7 を明示の仮定入力に取る）
-  - [ ] b. Ind_κ(C) の安定性（fiber = cofiber）と包含 C → Ind_κ(C) の完全性 ← 前回・今回（単一 filtered 表示（HTT 5.3.5.15）：comma 族と小模型 05:36〜実矢印図式表示 comma の κ-filtered 性 09:32 まで。09:32 以降コミットなし（再ビルド連鎖の回復中、作業中 6 ファイル 10:05）。残りは補間の組立てと表示の結論）
-  - [x] c. 冪等完備な C に対する compact 生成 Ind_κ(C)^κ ≃ C（N の F2N-4(e) と接続） （冪等完備圏の compact 生成元の同定 05:31）
-  - [ ] d. 交換定理の仮定入力を F1b の a7 で差し替え
+**Ind（旧 F1＋F1b。所有：F1/（Cocartesian は休止）、F1B/、F2/Ind・FilteredExchange・Compact・Idempotent）**
+- [ ] I-1 F2N-1 a7：一般の coherent filtered 図式に対する filtered 余極限と有限極限の交換の結論（HTT 5.3.3.3。**着手から 8 時間の上限**）
+  - [ ] a. ApexRawTriangleCandidate_eq_universal_iff の右辺（元の普遍比較の値＝同じ四因子境界式）
+  - [ ] b. 交換の結論の公開：CoherentFilteredLimitExchangeShape・IndFiniteLimitExchangeInput を仮定から定理へ
+  - [ ] c. 上限を超えた場合の確定：明示入力のまま第 I 段を進め、差し替え（I-2 d・N-6 c）は第 I 段終了時へ
+- [ ] I-2 F2N-5 Ind(C) の安定性と compact 生成（HTT 5.3.5.15、HA 1.1.3.6）
+  - [ ] a. 有限 poset の nerve 上の図式の単一 filtered 表示の結論（κ-filtered 性は 10-23 09:32 に証明済み）
+  - [ ] b. 小さい安定 C に対する Ind_κ(C) の有限余極限・有限極限の存在（零対象は済み）
+  - [ ] c. Ind_κ(C) の安定性（fiber = cofiber）と包含 C → Ind_κ(C) の完全性
+  - [ ] d. 交換入力の実証拠への差し替えと、compact 対象の有限余極限閉性（旧 N-6 c）の無条件化（I-1 の後）
+  - [ ] e. 冪等完備な C の compact 生成 Ind_κ(C)^κ ≃ C の仕上げと公開界面（K-B の K-7 d へ提供）
 
-**F1b（α2b）**
-- [x] F1b-1 B4 Kan 拡張（各点の存在、関手全体への組み立て、一意性）（10-19 22:44）
-  - [x] a. 右の厳密化を局所極限判定へ合成（10-19 10:44）
-  - [ ] b. 全部分 ∞ 圏からの相対 Kan 拡張の写像空間の制限定理
-    - [x] b1. inner な U について：局所余錐の充填と相対普遍性、標準 U 余極限との同値（10-19 17:38〜19:20）
-    - [x] b2. 一般の isofibration U：native な相対左 Kan 制限定理（10-19 22:10）
-    - [x] b3. 右の厳密な双対（右制限の充満忠実性、局所極限からの厳密相対右 Kan 拡張、相対右 Kan 写像同値）（10-19 22:44）（Prop 7.3.6.7、Cor 7.3.6.9）
-  - [ ] c. 点ごとの Kan 条件から大域的 Hom の全単射、h Fun の一意性（Prop 7.3.6.1、Rem 7.3.6.6）
-    - [x] c1. 構成した左 Kan 拡張の大域的 Hom 普遍性（10-19 18:12）
-    - [x] c2. 右の双対（指定右 Kan 拡張の Hom 普遍性）（10-19 18:56）
-  - [x] d. 各点の極限の存在から Kan 拡張の存在と全関手への組み立て（10-19 15:55）
-    - [x] d1. 左 Kan 拡張：点ごとの余極限から関手全体への組み立て（10-19 15:37）
-    - [x] d2. 右 Kan 拡張を左の存在定理と反転の双対性から構成（10-19 15:55）（Prop 7.3.5.1）
-- [x] F1b-2 B5 古典 nerve への回収と監査（古典随伴・Kan 拡張の nerve 比較、点ごとの Kan 拡張の古典 nerve 比較）（10-20 01:51）
-- [x] F1b-3 Cat_∞ を ∞ 圏として構成（Kerodon 5.5）、同値と関手 ∞ 圏の Hom（F2L-1）（10-20 05:00 頃）
-- [x] F1b-4 Cat_∞ の極限（引き戻し・積）と Fun(Δ¹, −) による lax pullback（F2-lite 第 1 部完了）（10-20 07:42）
-  - [x] a. 引き戻し錐の比較と自然性（F2L-2）（10-20 05:09〜06:00）
-  - [x] b. lax pullback の構成と native な極限錐、頂点と右写像空間の記述（10-20 06:13、06:22）
-  - [x] c. Tamme の lax pullback の写像空間正方形、同値矢印の充満部分圏との同定、零対象と射影の保存（10-20 06:38〜06:53）
-  - [x] d. F2L-4：安定性・有限極限余極限の成分ごとの判定と保存、exact な射影と全 cofiber の構成、安定な lax pullback（10-20 07:42）
-- [ ] F1b-5 filtered 余極限と Ind、compact 対象（HTT 5.3、Kerodon 9。10-20 に N から移管）
-  - [ ] a. F2N-1 filtered ∞ 圏と 𝒮 の filtered 余極限と有限極限の交換（HTT §5.3.1–3）（三段目は 09:30 に固定）
-    - [x] a1. filtered・κ-filtered の定義と cofinality、coslice の弱可縮性（10-20）
-    - [x] a2. 指定 filtered 余錐の native 普遍性、全空間模型の native 余極限性、小さい底上の coherent 図式の HasColimit（10-20）
-    - [x] a3. 各 fiber と三値の path 引き戻しの同型、相対有限検出と有限持ち上げ、元の比較の弱同値性とホモトピー逆（10-20〜10-21 02:16）
-    - [x] a4. 引き戻し全空間を native 極限錐の頂点に構成、全錐の可逆比較、二射影・全 path の整合（02:52〜03:52）
-    - [x] a5. 終点比較の制限、相対 curry の制限と一点評価、三角形比較の fiber 制限、宇宙降下での保存（05:05〜09:00）
-    - [x] a6. 各点の native 錐の普遍性から元の fiber 比較の同値性、native 比較候補の弱同値性 （native coherent 引き戻し比較の弱同値性 17:11）
-    - [ ] a7. 一般の coherent filtered 図式に対する有限極限との交換の結論（HTT 5.3.3.3） ← 前回・今回（coherence の回収 05:19〜実最終 prism 端点像と元の全三角形比較の同定 09:37 まで。09:5x 停止（olean 欠落）→ 再開、作業中 26 ファイル 10:22。残りは ApexRawTriangleCandidate の普遍比較との同値の右辺）
-  - [ ] b. F2N-2 Ind_κ(C)（10-22 12:35 に F1 へ移管。F1-6 を参照）
-  - [ ] c. F2N-3 κ-compact 対象（10-22 19:40 に N へ移管。N-6 を参照）
-- [ ] F1b-6 F2N-5 Ind(C) の安定性と compact 生成（HTT 5.3.5.15、HA 1.1.3。F2N-4 冪等完備化は 10-22 10:10 に N へ移管）
-- [ ] F1b-7 F2 後半：presentable ∞ 圏と随伴関手定理
-
-**N**（10-23 06:10：F2N-3 を a7 依存の差し替えだけ残して完了。P-1 g（P_Σ の普遍性）を N へ移管して着手指示）
-- [x] N-1 γ3c 余極限側の完了（homotopy 余極限 = ∞ 余極限、𝒮 の余極限）（10-20 16:31。一般の coherent 図式の余極限は F1b が F2 側で証明）
-  - [x] a. 有限形状の 𝒮 の余極限（Kan span の押し出し、逐次余極限、小余積）（10-19 09:34）
-  - [x] b. 随伴 Hom 同型を通した極限保存の一般補題（10-19 09:59）
-  - [x] c. simplicial Quillen 随伴の一例で cf 置換を含む Hom 同型の入力（frame の比較）（10-19 10:52）
-  - [x] d. 通常の小圏上の Kan 値図式の Bousfield–Kan 余錐が native な ∞ 余極限（HasColimit 公開）（10-19 13:04）
-  - [x] e. 任意の小さい単体集合上の coherent 図式への接続（F1b の `HasColimit`（小さい底上の任意の coherent 空間値図式）で達成。N の部分余極限経路は打ち切り）（10-20 16:31）
-- [x] N-2 γ4 Quillen 随伴 = ∞ 随伴、右 Quillen 関手の ∞ 極限保存（HTT 5.2.4.6）（10-21 08:31。固定 SM7・豊穣随伴の Hom 同型と合成互換を明示した simplicial Quillen 随伴について）
-  - [x] 通常の小圏上の strict 表示の native 極限保存、frame Hom の照合、pushout–product からの Hom の Kan 性（10-20）
-  - [x] cf 対応圏の coherent nerve と Δ¹ 上の inner fibration、左右の候補辺、最終ホーンの未知 Hom の構成（10-20〜10-21 02:30）
-  - [x] cocartesian 前合成・cartesian 後合成が写像空間の同値（02:56、03:10）
-  - [x] 元の cf nerve 上の導来随伴（両 cf 包含の充満忠実性、右 transport の自然性）（05:00）
-  - [x] 全頂点での指定 cf 置換辺の延長と導来 transport の比較（07:47）
-  - [x] 元の通常の左右 cf 置換関手の構成と自然性、混合射の合成の回収（08:09）
-  - [x] 元の通常の右置換と導来関手の比較（08:18）
-  - [x] 左側：coCartesian prism の終点を可縮な持ち上げ空間で比較、QCatAdjunction（標準単位・余単位・三角恒等式）の結論（08:31）
-  - [x] 右随伴の後合成の Hom 同型と RightKanHom 普遍性から任意 coherent 図式の指定極限保存（08:31）
-- [x] N-3 Sp への適用：Tot・hG・fiber 列が Sp の ∞ 極限（Sp-5 の既存定理で達成、N が公開界面を読み取り専用で照合、10-21 08:31）
-- [ ] N-4 F2 後半：Bousfield 局所化、P_Σ（旧 N-6。10-21 08:41 着手。**10-22 10:10：g の Yoneda 有限余積保存の区切りで休止し、N-5 へ**。e・f・g の残りは第 II 段）
-  - [x] a. 局所対象 IsLocalObject と局所対象の全部分 quasicategory、反射的単位の特徴づけ（08:41）
-  - [x] b. S-同値の定義、包含・単調性・冪等性・局所対象の不変性、二単体の 2-out-of-3（08:50）
-  - [x] c. 強飽和性 (1)：任意の coherent pushout での閉性（09:02〜09:16）
-  - [x] d. 強飽和性 (2)：矢印圏内の任意小余極限での閉性（HTT 5.5.4.5(2)・5.5.4.11）（10:16。局所対象の coherent 極限での閉性も 10:27）
-  - [ ] e. 小集合 S が生成する強飽和類と S-局所対象への反射の存在（HTT 5.5.4.15。presentable は F1b-7 なので必要な仮定を明示）（代表変更での始 comma 単位の保存 11:39、始 comma fiber からの随伴の構成 12:02 まで。局所置換の存在は残り、g の入口（sifted 性と有限積の交換）にも着手）（始 comma fiber からの随伴 12:02 まで。局所置換の存在は g と並行して残り）
-  - [ ] f. Bousfield 局所化の普遍性（S-反転関手との同値）
-  - [ ] g. P_Σ：sifted 余極限と自由 sifted 完備化（HTT 5.5.8）（sifted 閉性・Yoneda の P_Σ 因子化まで完成。Yoneda の有限余積保存の区切りで休止）
-
-- [x] N-5 F2N-4 冪等完備化（10-22 10:10 に F1b から移管。HTT §5.1.4、5.3.4.17。二段目固定）（10-23 05:05 完了）
-  - [x] a. coherent な冪等図式（Idem の nerve からの図式）と分裂の存在・一意性（HTT 4.4.5）（交互 cell の kernel と段の押し出し 11:57、元の弱 retract 比較の inner anodyne 性 12:10 まで。次は強い分裂と Idem 図式の余極限・極限との同値（HTT 4.4.5.12〜16）） （強分裂余錐の絶対余極限性 12:36、錐の絶対極限性 12:45、元の余極限・極限からの強 coherent 分裂 12:56〜13:05、全強分裂空間の可縮性 13:19）
-  - [x] b. 前層 ∞ 圏内の retract 閉包と、冪等完備な ∞ 圏の定義・判定 （Idem C の全部分 quasicategory と充満忠実性、前層と Idem の冪等完備性 13:29）
-  - [x] c. 冪等完備化 Idem(C) の構成と普遍性（HTT 5.1.4.2〜5.1.4.9） （左右 fibration に沿う強分裂の持ち上げ、slice・coslice の冪等完備性、全関手 ∞ 圏の普遍性・一意性 14:31）
-  - [x] d. 安定 ∞ 圏の冪等完備化の安定性（HA 1.1.3.7、Cat^perf への接続） （零対象の保存、双普遍四角形の回収と実 cofiber・fiber の構成 15:51）
-  - [x] e. compact 対象との同定 Ind(C)^ω ≃ Idem(C)（compact 恒等射の因子化と compact Ind と Idem の同定 04:54、添字宇宙をまたぐ始対象の compact 性 05:05。F2N-4 全体完了）
-
-- [ ] N-6 F2N-3 κ-compact 対象（10-22 19:40 に F1b から移管。HTT §5.3.4、5.3.5.5・11。配置 F2/Compact/。二段目固定）
-  - [x] a. κ-compact の定義（元の共変 Hom が小さい κ-filtered 余極限錐を保存）と判定、濃度の単調性（19:40）
-  - [x] b. Yoneda 像の compact 性（前層・Ind 内での表現可能前層の κ-compact 性） （前層内 20:45、Ind 内の元の Yoneda 頂点の κ-compact 性 20:50）
-  - [x] c. compact 対象の retract 閉性（19:40 済）と有限余極限閉性 （coherent 交換入力からの compact 余極限閉性 06:04。無条件化は F1b の a7 待ち）
-  - [x] d. F1 の Ind_κ(C) の compact 対象との比較（N-5 e と同時に 04:54）
-
-**P（presentable ∞ 圏、10-23 新設）**
-- [ ] P-1 presentable ∞ 圏（HTT 5.4〜5.5。二段目固定）
-  - [x] a. accessible ∞ 圏の定義と Ind_κ(C₀) との同値、accessible 関手（HTT 5.4.2）（10-23 08:48。κ-accessible の定義、IndInfinity κ A の accessibility、accessible 関手の合成・単調性、κ-compact 対象 = 生成対象の retract、小 Ind 同値による特徴づけ、濃度変更（小 filtered 片 06:19〜μ-compact filtered 表示 08:32、小共通 compact 生成族 08:41、小全生成系による accessible 濃度変更 08:48））
-  - [ ] b. presentable の定義、前層 ∞ 圏と Ind_κ(C) の presentable 性（5.5.1.1、5.5.1.8） ← 前回・今回（08:48 着手。presentable の定義と小 Kan Hom の連続性 09:02〜𝒮 の presentable 性 09:31、小さい底上の連続 left fibration 置換 09:58 まで。残りは有限底上模型の filtered 全表示・compact 性と前層の accessibility）
-  - [ ] c. presentable の小さい極限・余極限の存在（5.5.2.4、5.5.3.13）
+**P（旧 N＋P。所有：F2/Presentable、HomotopyLimits）**
+- [ ] P-1 presentable ∞ 圏（HTT 5.4〜5.5）
+  - [x] a. accessible ∞ 圏と Ind_κ(C₀) との同値、accessible 関手、濃度変更（10-23 08:48）
+  - [ ] b. presentable の定義と前層の presentable 性（小さい compact 生成圏、accessibility、Ind_κ(C) の presentable 性、局所小ささ。5.5.1.1、5.5.1.8）
+  - [ ] g. P_Σ の普遍性と sifted 余極限による生成（5.5.8.14〜15。N の未接続 7 ファイルを F2/Presentable の新所在へ置き直してから）
+  - [ ] c. presentable の小さい極限・余極限（5.5.2.4、5.5.3.13）
   - [ ] d. 随伴関手定理（5.5.2.9）
   - [ ] e. Pr^L と Pr^R の双対性（5.5.3.4）
-  - [ ] f. Bousfield 局所化の存在：小さい辺集合に対する局所置換の存在と反射（5.5.4.15。N-4 e・f を引き取り、N の局所対象・強飽和性・条件付き反射を再利用）
-  - [ ] g. P_Σ の普遍性と sifted 余極限による生成（5.5.8.14〜15。N-4 g を引き取り、N の SigmaPresheafInfinity・sifted 閉性を再利用） ← 前回・今回（06:10 に N へ移管。Σ 前層への持ち上げ 06:30〜大域 Yoneda 評価 fibration と twisted arrow seed 写像の固定 09:27 まで。09:48 停止（R の 1-1 共有ツリー適用による F1 PullbackFiber.olean 欠落）→ 復旧後に再開、作業中 14 ファイル 10:20。残りは全空間比較と seed データの延長・同値、sifted 余極限保存、Yoneda 制限の本質的全射性）
+  - [ ] f. Bousfield 局所化の存在（5.5.4.15。N の局所対象・強飽和性・条件付き反射を再利用）
 
-**D（α-S）**
-- [x] D-1 D7a cofiber の普遍性（coslice 初期性）（10-19 11:11）
-  - [x] a. cofiber 境界の二未知 cochain Q・A の方程式を解く（10-19 10:46）
-  - [x] b. 未知成分を SimplexData に組み込み、全方程式・共通面（10-19 11:11）
-  - [x] c. coslice 境界を貼り、標準余錐の始対象性と標準 cofiber 正方形の押し出し性（10-19 11:11）
-- [x] D-2 D7b D(S) の安定性（fiber 四角形 = cofiber 四角形）（10-19 12:47）
-  - [x] a. 全辺の cofiber の存在と任意の四角形の押し出し比較判定（10-19 11:21）
-  - [x] b. 源と二つの cofiber 包含の fiber の同値（符号補正 biproduct 錐、shifted mapping cone の回転）（10-19 11:21）
-  - [x] c. 標準 cofiber 四角形が ∞ 引き戻し（安定性を仮定しない直接証明）（10-19 12:09）
-  - [x] d. 双対：標準 fiber 四角形が押し出し（10-19 12:47）
-  - [x] e. 任意の零三角形への移送と D(S) の IsStable の構成（10-19 12:47）
-- [x] D-3 D7c D3 の三角同値への昇格（Σ ↔ [1]、cofiber 列 ↔ 錐）（10-19 14:58）
-  - [x] a. 標準 suspension 対象と複体シフト X[1] の比較 derivedSuspensionObjectIso（10-19 12:58）
-  - [x] b. h D(S) の suspension 関手への自然性と導来整数シフトとの比較（10-19 14:09）
-  - [ ] c. cofiber の接続射の同定と三角同値の昇格
-    - [x] c1. 標準 cofiber の実接続射を符号つき mapping cone の接続射と同定（D3 の像）（10-19 14:39）
-    - [x] c2. mapTriangle の第三射（CommShift）との照合、三角形全体の同型、全 distinguished triangle の保存（10-19 14:58）
-- [x] D-4 β3 Drinfeld 商の dg nerve = ∞ 圏的 Verdier 商（局所化の普遍性、Verdier 列）（10-21 03:28）
-  - [x] a. dg 商の nerve における収縮元、商の写像空間の可縮化、商の零対象と coherent な零化（10-19 15:38）
-  - [x] b. 局所化の普遍性（任意の quasicategory 標的に対する関手 ∞ 圏全体の IsLocalization）（10-21 03:01）
-    - [x] dg 加群 nerve の安定性、共通宇宙への埋め込み、homotopy 表現可能模型の安定性（10-19 18:26〜18:51）
-    - [x] 宇宙をまたぐ普遍錐・零頂点・四角形の降下、元の宇宙での pretriangulated dg nerve の安定性（10-19 19:24）
-    - [x] 任意の有限対の実 roof 正方形の充填、実 roof 比較が left cofinal で弱同値（10-20 15:55、16:23）
-    - [x] IsLocalization（dgQuotientNerveProjection、dgVerdierEdges）の普遍性本体（分母の右 Kan cofinality と局所極限 02:47、全 ∞ 圏的 Drinfeld 商局所化 03:01）
-  - [x] c. 安定性、完全商関手、Verdier 列（10-21 03:28）
-    - [x] c1. 分解した dg 商の pretriangulation と安定性（10-19 19:31）
-    - [x] c2. 商 ∞ 関手の完全性（native dg 加群関手の完全性 20:06、pretriangulated dg nerve と商関手の完全性 20:21）
-    - [x] c3. 完全関手の普遍性と平坦 dg Verdier 列（03:23）、平坦分解後の商の局所化と安定 Verdier 列（03:28）
-- [x] D-5 β5 非可換 dg 代数の D(A)、⊗_A・Hom の ∞ 関手化、Morita 不変性（10-21 03:38 着手。二・三段目は 09:30 に固定）（10-22 18:50 完了）
-  - [x] a. D(A) := N_dg(Semifree(A)) と Perf(A) の構成、半自由／射影的模型の同値、安定性、Perf → D の完全充満包含（03:38〜04:04）
-  - [x] b. graph tensor の完全 ∞ 関手化、単位・合成の関手比較、Morita 不変性と quasi-isomorphism 不変性、coherent な Morita 随伴（03:44〜04:20）
-  - [ ] c. 二変数 Hom の ∞ 関手化 Hom : D(A)ᵒᵖ × D(A) → D(R)
-    - [x] c1. dg nerve の反対圏比較と反変 Hom、出力分解の Hom 複体と dg 圏、D(R) 値 Hom（04:26〜05:47）
-    - [x] c2. 固定入力ごとの共変・反変 Hom の augmentation prism と実基礎空間関手、全空間値 Hom 関手の augmentation 比較、coslice 族比較（06:14〜08:56）
-    - [x] c3. 左 pinched Hom の正式化、target coslice の pointed fiber の同値性（dg Yoneda の逆との照合）（09:35）
-    - [x] c4. 空間値 Hom との比較の両変数の自然性（F1 の二変数 Hom ∞ 関手の制限との全関手同型）（09:59）
-    - [x] c5. 二変数 ∞ 関手への統合 （15:37 にレーンが完了を宣言：全次元 HA・実直積写像・二変数 D(R) 値 Hom・両固定入力の既存全関手同型との照合）（15:37 にレーンが完了宣言、両固定入力制限の全比較を 15:38 にコミット）
-  - [x] d. 一般 tensor–Hom 随伴と全 coherence（随伴と三角式は 19:36〜20:23 に完成。任意二 kernel の作用の合成と指定平坦模型の通常合成の比較、双加群同型の nerve での恒等・合成・逆の保存まで（作業中ファイル 21:25）。次は双加群同型の作用比較） （随伴・三角式・五角式・単位・自然性の到達点で完了 14:37。旧 homInvIso との一致と追加パラメータの全高次 coherence は β4・K-8d8 に不要として後段へ）
-  - [x] e. 一般双加群の作用と Morita 不変性 （D と Perf 上の一般双加群 Morita 不変性 16:55）
-  - [x] f. Perf(A) の冪等完備性 （DGPerfectIdempotentComplete、充満忠実像の retract の回収 14:57〜15:21）
-  - [x] g. 単体環の Dold–Kan による dg 代数化の確認 （Moore 乗法の cochain tensor への移送 16:20〜16:50、正規化単体環の dg 代数 18:07、関手的正規化 18:15、π₀ と Moore ホモロジーの比較 18:41、弱同値不変の正規化で完成 18:50）
-- [ ] D-6 β4 dg の gluing = 安定 ∞ 圏の lax pullback（D2 へ移管。D は 18:50 から Sp 要求の安定性判定補題へ）
-- [ ] D-7 Sp への判定補題：HA Cor. 1.4.2.27 (3) ⇒ (1)（指定 loop 図式切断と Ω の同値性から有限余極限と IsStable。Sp-5 d3 の入力。10-22 18:50 着手、D の自発。二段目固定）
-  - [x] a. loop 図式切断と二評価の同値性、実始点表示（18:59〜19:10）
-  - [x] b. loop cospan 上の任意錐の pullback 構成と底固定の比較、loopConeClassifier（19:23 作業中） （実 loop 錐分類子の同値 20:55）
-  - [x] c. 有限余極限の存在の導出 （suspension 正方形と loop 同値からの厳密切断 21:47、loop 押し出しと ΣΩ 随伴 22:49、有限反対余極限と回転長方形 23:05）
-  - [ ] d. IsStable の結論と Sp の nativeLoop への適用 ← 前回・今回（excision 格子 05:25〜実懸垂四角形からの excision の導出 09:18 まで。D は K-7 供給（DGKappaConeInput の実例）に着手：射影閉包・直和閉性・perfect 被覆の 11 モジュール 43 宣言（09:57 記録）。集約検証は共有 F1 の olean 欠落で中断し再試行中。残りは loop 同値からの安定性定理の結論と、κ-compact 性・全対象被覆）
+**D（所有：Stable、Derived（Gluing 以外）、DGNerve、DoldKanComparison、DifferentialGraded）**
+- [ ] D-7 Sp への判定補題：HA Cor. 1.4.2.27 (3) ⇒ (1)（a〜c は 10-22 完了）
+  - [ ] d. IsStable の結論と Sp の nativeLoop への適用（残りは loop 同値からの安定性定理の結論。excision 格子・懸垂四角形・θ 辺の同定は 10-24 までに完了）
+- [ ] D-8 K-7 供給：正則非可算 κ に対する `DGKappaConeInput R D κ` の実例（HTT 5.3.4・5.4.2。D-7 d の後）
+  - [ ] a. 射影閉包・可算直和と二項直和の閉性・perfectCovers（43 宣言は 10-23 に構成済み。本体への統合）
+  - [ ] b. pretriangulated：選んだ代表系の全 Hom dg 模型の前三角性
+  - [ ] c. kappaCompact：各代表の F2.Compact.IsKappaCompact による κ-compact 性
+  - [ ] d. covers：全 κ-compact 頂点の代表による被覆
+  - [ ] e. DGKappaPerfectInput と dgKappaConeDerivedComparison_isFullyFaithful の供給、K-B への引き渡し
+- [ ] D-9 β4 の D 側共同分：平坦 Drinfeld 商と実 Verdier 列の供給（D2 の f と共同）。D2 完了後は Gluing を吸収
+- 第 I 段終了時：Derived の型依存の準重複 19 組（archive/refactor-near-duplicates-derived-2026-10-23.md）の統合判断
 
-**D2（β4、10-22 新設）**
-- [ ] D2-1 β4 dg gluing = 安定 ∞ 圏の lax pullback（Tamme 2018 §1、Kuznetsov–Lunts。二段目固定）
-  - [x] a. 双加群に沿う dg gluing 圏（対象・Hom 複体・合成・微分）と pretriangulated 性 （Hom 複体・合成・射影 10:23〜10:35、cone 対象と Yoneda 表現可能性 10:58〜17:32、零正シフトと cone 閉性 17:53、pretriangulated 性 18:49）
-  - [x] b. 半直交分解（二つの充満 dg 部分圏、射影と随伴、gluing 関手） （C 因子・D 因子の充満 dg 部分圏と包含・制限射影、半直交性・因子同値・両射影随伴・distinguished 三角形、dg・H⁰・K の界面 19:01〜20:16）
-  - [x] c. dg nerve の二射影と構造変換、F1b の lax pullback（Fun(Δ¹,−)）への比較写像 （一般対象宇宙での実比較、二射影と augmentation の全 prism の面・退化との可換性、native 加群 nerve と β5 の導来加群 ∞ 圏上の lax pullback 比較 20:16〜20:31）
-  - [ ] d. 比較の充満忠実性・本質的全射性（quasicategory 同値）と ∞ 圏的普遍性 ← 前回・今回（gluing 三角形の比較 05:22〜明示 cochain 族による native 正規化の同定 09:41 まで。作業中 13 ファイル 10:19。残りは正本との全 path 比較と実ホモトピー逆）
-  - [ ] e. 安定性・完全射影の供給と F2 の laxPullback_isStable・半直交分解（K-8b）との整合
-  - [ ] f. gluing 内の通常 pullback と Verdier 商 ⊙ の dg 側の同定（β3 の適用。D と共同、Sp の K-8d8 の仮定入力を満たす形）
+**D2（所有：Derived/Gluing）**
+- [ ] G-1 β4 dg gluing = 安定 ∞ 圏の lax pullback（Tamme 2018 §1。a〜c は 10-22 完了）
+  - [ ] d. 比較の充満忠実性・本質的全射性と ∞ 圏的普遍性（未接続 CoefficientYonedaInverseChainMap の修正 → 正本比較の実ホモトピー逆 → 同値）
+  - [ ] e. 安定性・完全射影の供給と F2 の laxPullback_isStable・K-8b の半直交分解との整合（Tamme Lemma 8）
+  - [ ] f. gluing 内の通常 pullback と Verdier 商 ⊙ の dg 側の同定、K-8 d8 への IsVerdierSequence の供給（D と共同）
 
-**E2（E2a）**
-- [x] E2-1 E2a-3 (1) AW 対角による E の Hopf 構造（10-19 13:04）（shuffle 写像が余代数射）
-  - [x] a. 正規化 AW 次数成分の構成、生成元公式、自然性、微分との両立（10-19 09:55）
-  - [x] b. 次数成分をテンソル複体への鎖写像へ束ねる（10-19 11:01）
-  - [x] b′. 余結合性・余単位・Σ_n 同変性を複体上へ移す（E(n) の complexDiagonal）（10-19 11:23）
-  - [x] c. shuffle 写像が AW 余代数の射（10-19 12:20）
-    - [x] c1. 一般の単体集合の正規化 shuffle 鎖写像 `Shuffle.chainMap`（Leibniz 則、自然性）（10-19 12:09）
-    - [x] c2. 複体レベルの AW 余代数との両立と負のテンソル braiding との両立（10-19 12:20）
-  - [ ] d. E → E ⊗ E のオペラッド射性・余結合性・余単位・Σ_n 同変性
-    - [x] d1. 整数 cochain への移送と BE の部分合成との両立 partialComposition_diagonal_tensorμ（10-19 12:31）
-    - [x] d2. arity ごとのテンソルオペラッドと Hopf オペラッド射の組み立て（10-19 13:04）
-- [x] E2-2 E2a-3 (2) E-coalgebra 区間の抽象界面から転送モデル構造（path object、acyclicity）（10-19 15:19）
-  - [x] a. P-coalgebra の圏と制限関手、CoalgebraInterval の定義と端点の擬同型、convolution と prepath 複体の構成（10-19 13:04）
-  - [x] b. convolution の単位・同変・部分合成則、convolutionAlgebra と関手性、定数・端点の代数射性（10-19 14:00）
-  - [ ] c. 評価の fibration・定数射の擬同型、fibrations.llp ⊆ 弱同値、J-cell acyclicity、転送定理の適用
-    - [x] c1. 自然な prepath 対象、端点評価が射影 fibration、定数射が擬同型（good path object）（10-19 14:36）
-    - [x] c2. fibrations.llp ⊆ 弱同値と J-cell acyclicity（任意の始域、cofibrancy 仮定なし）（10-19 14:52）
-    - [x] c3. 代数の一般の極限・余極限と自由像の小対象性、rightTransfer の適用（10-19 15:19）
-- [x] E2-3 E2a-3 (3) N_*(Δ¹) の E-coalgebra 構造（table reduction、区間切断）（10-20 10:04）
-  - [x] a. 全射語（surjection words）と同変削除写像の基盤（10-19 15:38）
-  - [x] b. table reduction TR : E → χ の定義と全射性（BF 1.3.4、1.4.1〜1.4.3、全 arity・全次数）（10-19 16:33）
-  - [x] c. TR のオペラッド射性（一般 TR と χ オペラッド）（10-20 05:00 頃）
-    - [x] c1. 微分の保存（BF 1.4.4、全 arity・全次数、任意の可換環）（10-19 19:21）
-    - [x] c2. 部分合成の保存と χ の公理（10-20 05:00 頃）
-      - [x] 符号つき全射部分合成の定義（次数・Koszul 指数・双線形性、空語の消滅）（10-19 19:35）
-      - [x] 合成 table の構成と融合、融合 table が実際の合成語を抽出すること（10-19 21:31〜21:54）
-      - [ ] 逆 table の一意性、χ の線形部分合成の公理
-      - [ ] BE の shuffle 部分合成と TR の許容表の有限和の対応から保存則
-  - [ ] d. χ の区間切断作用を Δ¹ に適用（次数 r ≤ n）、E-coalgebra 区間の構成
-    - [x] d1. 区間切断の coaction を整数複体の写像として組み立て、単位則、全置換同変性（10-20 05:02〜05:24）
-    - [x] d2. 合成則（入れ子の有限切断、co-insertion の Koszul 符号、全 arity と零 arity の合成）（10-20 08:18）
-    - [ ] d3. CoalgebraInterval としての組み立て
-      - [x] χ 余代数と TR に沿う E 余代数 barrattEcclesCoalgebra、両端点、AW 余単位の収縮、鎖ホモトピー同値と擬同型性（10-20 08:18）
-      - [x] 正規化した区間境界（二端点）の射影 cofibration 性（10-20 09:47）
-      - [x] 端点・収縮の余代数射性と具体区間の完成（10-20 10:04）
-- [x] E2-4 E2a-3 (4) Alg_E の完全なモデル構造（具体区間を抽象界面へ代入、E2a-3 完了）（10-20 10:04）
-- [x] E2-5 E2a-4 U が右 Quillen、homotopy 極限の底での計算（10-20 22:48）
-  - [x] a. 忘却関手の右 Quillen 性と全対象 fibrant（10-20 10:07）
-  - [x] b. 具体的な homotopy 引き戻しと右導来引き戻しの底での計算（10-20 10:16）
-  - [ ] c. 一般図式の homotopy 極限の忘却後の比較
-    - [x] 小さい図式の模型と導来積（右導来極限、homotopy 不変性、底の積）（10-20 13:47）
-    - [x] 右 frame と weighted cotensor end による一般の小図式の homotopy 極限と忘却後の比較（10-20 22:48）
-  - [x] d. H⁰ の可換環構造、離散可換代数の E 代数化（10-20 12:56、13:36）
-- [x] E2-6 E2a-5 Map^h（関手的な Kan Map^h、π₀ と局所化後の Hom の同値、両変数の自然性、Brown 分解による擬同型不変性）（10-20 14:40）
-- [ ] E2-7 E2b CAlg_R := N^hc、∞ 関手 U : CAlg_R → D(R)、離散対象（二・三段目は 09:30 に固定）
-  - [x] a. Thomason 比較と special hammock 比較の反転、hammock 豊穣圏の構成（DK §4–5）（02:50〜05:09）
-  - [x] b. hammock の合流的正規化と既約単体、長さ filtration による語余極限の回収と弱不変性（05:16〜07:33）
-  - [x] c. 分数計算による三列の標準射の弱同値性（DK §6.5 の両側版）（10:33）
-    - [x] c1. 三矢印余極限比較の回収と padding 写像の比較（07:50〜08:14）
-    - [x] c2. forward ブロックへの伝播、端点正規化、有界 zigzag の貼り合わせと関手化（08:28〜09:11）
-    - [x] c3. 固定語の zigzag 圏を添字とする Family の抽出と元の図式の再構成の同定（自明中央列の全部分圏への制限と insertBetween 埋め込み 09:48、任意の語文脈での局所置換の比較と厳密な回収 10:10）
-    - [x] c4. 元の包含へのホモトピーと三列標準射の弱同値性の結論（任意の語文脈での backward 挿入 10:18、三矢印 graph 包含の弱ホモトピー同値と実 E 代数の右射の弱同値 10:33）
-  - [x] d. γ2：実 DK Hom と Map^h の高次比較（右比較（対角）の弱同値性 10-21 23:08、自由分解 Hom augmentation の弱同値性 23:29、両側 Grothendieck 写像と両側 bar 10-22 00:07、両側 Thomason 比較の弱同値性 01:08〜02:05、forward・backward の Grothendieck 分解と空語の左比較の弱同値性 03:05〜04:58 まで。残りは +− 混合語の相対自然性の実ソースへの移送） （DK Prop. 2.2 の両射の弱同値性 05:30、Map^h との比較の自然性 06:54〜07:19、全成分での同定と正規化 07:37〜07:46、raw・Kan の π₀ 比較で完成 07:56）
-  - [x] e. N^hc の ∞ 局所化の普遍性（HTT 1.1.5） （屋根 cofinality 14:25、次数比較の left cofinal 性と frame 極限の各頂点への移送から既存 CAlg_R の ∞ 局所化普遍性 14:41）
-  - [x] f. CAlg_R := N^hc(Alg_E^cf) の構成と U : CAlg_R → D(R) の ∞ 関手化（N の γ4 を使用） （全複体の dg nerve から既存 derivedInfinityCategory への実写像（擬同型辺の反転）と U の構成 15:06）
-  - [ ] g. 離散対象の同定と極限保存 ← 前回・今回（錐の自然性 05:23〜元の大域評価三角形の全辺の回収 09:33、全 h Fun での元の評価三角形 09:42、元の導来 pinched 族と roof 族の同定 10:22 まで。残りは大域評価三角形の結論、U の ∞ 極限保存）
-- [ ] E2-8 G1′ 界面を CAlg_R で述べ直し、D(R) 版を系として導出
+**E2（所有：EInfinity）**
+- [ ] E2-7 CAlg_R := N^hc、U : CAlg_R → D(R)、離散対象（a〜f は 10-22 完了）
+  - [ ] g1. 離散対象：列の cofibrant 相対圏への持ち上げ、CAlg_R の全 pinched 族への送り、標準単位比較自身の弱同値性
+  - [ ] g2. 単位 comma 候補の実始対象性から全 ∞ 随伴、U の任意 coherent ∞ 極限保存（HTT §5.2.4）
+- [ ] E2-8 G1′：BS の界面を CAlg_R で述べ直し、実 U・離散比較・極限保存を代入。D(R) 版を系として導出
+- 完了後は停止。BS-7（animated 環、Construction 7.6）は第 II 段。EInfinity の型が異なる準重複（archive/refactor-near-duplicates-einfinity-2026-10-23.md）は第 I 段終了時
 
-**Sp（K-L9）**
-- [x] Sp-1 骨格の係数表示と微分の同定（10-19 14:08）
-  - [x] a. 関数複体の π₀ と座標ごとの π₀ の同値（Kan 充填）（10-19 10:50）
-  - [x] b. セルの fiber 表示へ合成し、骨格上の係数と写像空間の連結成分の係数を同一代表で比較（10-19 11:06）
-  - [x] c. 正次数群の既存表示・連結準同型・球面の向きとの整合（10-19 11:20）
-  - [x] d. coefficientDifferential と正規化交代微分の同定（像・符号まで、次数一を含む）（10-19 14:08）
-- [x] Sp-2 Tot 塔の収束（lim¹ の制御）と π_* の消滅（Milnor 界面と有理標準比較の fiber 群の消滅まで）（10-19 18:03）
-  - [ ] a. 塔の完備性と逐次充填
-  - [ ] b. lim¹ の制御
-    - [x] 塔の核と lim¹ の同定、Milnor 完全列（10-19 17:19）
-  - [ ] c. cohomology の消滅から写像空間の π の消滅へ
-- [x] Sp-3 有理 Shapiro の全射性（全整数次数）（10-19 15:26）
-- [x] Sp-4 通常の余単体 Tot と BF 置換 homotopy Tot の比較（10-19 17:03）
-  - [x] a. 通常の Tot から BK への自然な比較射（10-19 15:36）
-  - [x] b. 比較射が π_* 同型（Reedy 条件の下）（10-19 16:47）
-- [x] Sp-5 Sp の ∞ 極限と局所化不変量の値域としての Sp（IsStable を除く。d3 は後回し）（10-20 23:39）
-  - [x] a. 任意の小積の ∞ 極限錐（10-19 18:25）
-  - [x] b. 段ごとの BF 同値の検出、∞ 極限の任意の BF cospan への移送、coherent cospan の極限（10-19 18:33〜18:52）
-  - [x] c. native な零頂点と fiber 四角形（10-19 19:00）
-  - [x] d1. 全整数次数・全基点の π 同型からの Sp の同値検出（10-20 23:04）
-  - [x] d2. 局所化不変量の値域としての Sp の界面を宣言表として固定（L9-spectra.md「主要宣言：Sp 値域界面」）（10-20 23:39）
-  - [ ] d3. Sp の IsStable（10-20 22:37 に後回し決定：旧経路は残り 6 段階 24〜48 時間以上、逆関手経路は厳密な単位が追加条件で短縮を確認できず。K-基盤 1・2 は d2 の界面だけで進める）
-    - [x] BF cotensor Hom の比較、cotensor 交換、native な loop 対象と delooping 同値（10-19 19:07〜19:41）
-    - [x] native な loop・tail 関手の構成、tail が ∞ 圏の同値（10-19 19:49、19:56）
-    - [x] 全ての小さい通常スペクトル図式の native な ∞ 極限（10-19 21:50）
-    - [ ] 安定性の結論と π 同型からの同値検出
+**Sp（所有：KST/Spectra、KST/LocalizingInvariants。局所化・分数・Verdier 商の API の正本）**
+- [ ] K-9 β6 dg 代数のホモトピー論（a〜e は 10-22 完了）
+  - [ ] g. LT Lemma 2.30・Cor. 2.31：不変量の値の塔の次数ごとの eventual 連結度から π-pro 同値（残り：W source の Γ への前合成以降）
+  - [ ] f. homotopy pullback：平方零微分摂動による Postnikov 拡大の普遍性
+  - [ ] h. 提供界面の記録（L9-spectra.md「主要宣言」）
+- [ ] K-8 K-基盤 2 の抽象部分（a〜c・d1〜d6・d8・f′ は完了、d7 は停止）
+  - [ ] e. pro 版：τ≥−n への積の降下と Postnikov 代数切断、pro fiber の連結度判定、Tor の pro 消滅から pro 切除の抽象形（LT §2.4 Lemma 2.30・Cor. 2.31、§3）
+- [ ] Sp-6 他レーンからの依頼：K-B の分数比較の充満忠実性、K-S• の S 内零化 2-cell・具体的長方形
+- Sp-5 d3（Sp の IsStable）は D-7 d の判定補題で閉じる（Sp は適用のみ）
 
-**K-S•（K-L1）**
-- [x] K-1 L1c 加法性（ρ の性質、Quillen A、object/core 比較）（10-19 12:53）
-  - [x] a. raw ρ の cofiber・gapped 性と subobject・quotient の厳密な回収（Fiore–Pieper Lemma 4.24）（10-19 10:56）
-  - [x] b. ρ と第二の θ を左 fiber の実ホモトピーにし、切断との変形収縮を完成（10-19 12:03）
-  - [x] c. S_n と cofiber の交換、object 加法性（10-19 12:03）
-  - [x] d. object/core 比較による実現の加法性と有限反復への自然性（10-19 12:10）
-  - [x] e. 相対加法性（正の有限反復すべて、完全な入力に自然）（10-19 12:53）
-- [x] K-2 L1d 面の homotopy pullback 条件、S 実現と homotopy fiber の比較（10-19 15:49）
-  - [x] a. 切断 k の左右に支持を持つ S_n C の閉じた安定頂点条件、相対 E の切断同値と元の Segal 対の回収（10-19 13:31）
-  - [x] b. 経路境界の全面の homotopy pullback 条件と実現の引き戻し（10-19 13:56）
-  - [x] c. S 実現と既存の homotopy fiber の比較、構造射との照合（元の組み立ての Ω 条件）（10-19 15:49）
-- [x] K-3 L1e Ω 条件・delooping・BF 連結スペクトル関手 K(C)（10-22 14:37。受入条件：全正反復加法性、実 BF Ω スペクトル、π₀=K₀、厳密 dg 関手性と γ1、Morita）
-  - [x] a. 元の組み立ての Ω 条件と境界 BF スペクトル（10-19 15:49）
-  - [x] b. 連結 BF K スペクトル kOmegaSpectrum、零段比較、負次数消滅、整数 K 関手（10-19 16:02）
-  - [x] c. sOneComparison の切断と loop による K の次数の回収、組み立ての選択族（10-19 18:13）
-  - [ ] d. スペクトル値関手化（10-20 22:15 に経路変更：厳密 dg 入力に限定。dg 圏の単体的圏から BF スペクトルの単体的圏への厳密な単体的豊穣関手 K を構成し、γ1 の coherentNerveMap で Sp 値の ∞ 関手を得る。BF 模型上の手作業の整流は補助成果として凍結。三段目は 09:30 に固定）
-    - [x] d1. 組み立ての自然性の貼り合わせ、右単位則、dg graph 比較の結合性と pentagon（10-19 18:50〜10-21 03:47）
-    - [x] d2. 厳密 dg 入力作用：presented Perf dg 模型、パラメータ引き戻し整合、高次単位・合成の保存、tensor dg 作用の厳密 dg 関手等式（04:06〜06:36）
-    - [x] d3. 具体的な立方体圏 □c：関係式、生成語と具体的射の比較、削除・max・面の正規形（06:58〜08:22）
-    - [x] d4. Serre 鎖立方体：単種語（削除・面・connection）の表示非依存性、面と削除・connection と削除の混合語の正規化（08:32〜09:09）
-    - [x] d5. 面の後の connection の正規化と三段正規形の完成（09:27）
-    - [x] d6. 混合語と三段正規形の Serre 評価の一致、意味による語の商への降下（□c 上の関手性）（09:33）
-    - [x] d7. cubical rigidification と Λ の oplax tensor （Λ の oplax tensor の結合則と単位則 16:32）
-    - [x] d8. native dg nerve の直積から tensor source への比較（Rivera–Zeinalian Prop. 4.6）、既存 DK 比較との整合、dgFunctorMappingHorizontal の結合・単位 （Λ と native dg nerve の全単体的比較 03:20、直積から tensor への比較とその結合・単位 03:29〜03:36、DK 作用と native dg 作用の比較と core 合成 03:43）
-    - [x] d9. 単体的入力の合成と BF 置換の厳密性、厳密な単体的豊穣関手 K の構成（BGT Def. 7.1） （厳密豊穣な完全 Perf 関手 05:13）
-    - [x] d10. coherentNerveMap による Sp 値 ∞ 関手と元の実 K との比較 （整数 π 自然性 14:17、連結 dg K 界面の閉じと整数 K 群関手・Ab 値界面 14:37）
-- [x] K-4 L1f π₀K = K₀、dg 関手性・Morita 不変性（10-22 14:37）
-  - [x] a. 実 BF K の零群における対象類 objectKClass の定義（10-19 16:18）
-  - [x] b. cofiber 関係と生成・関係の表示、対象による生成と逆向き K₀ 準同型（10-19 17:26）
-  - [x] c. π₀K と TriangulatedK0(h C) の対象類を保つ自然同型（10-19 17:38）
-  - [x] d. dg 関手性・Morita 不変性（厳密 dg 入力の関手性は K-3d、豊穣 BF K 関手の Morita 不変性 13:41）
-- [x] K-5 L3 安定 ∞ 圏・Verdier 列・局所化不変量の抽象部分（Sp レーン、`KST/LocalizingInvariants/`）（10-21 01:55。Cat^perf は F1b-6 の後に K-7 と合わせて、半直交分解は K-8 へ）
-  - [x] a. 安定 ∞ 圏と完全関手の豊穣圏、その局所 Kan な core nerve（StableInfinity、quasicategory 性、対象・辺の対応）（10-21 00:03）
-  - [x] b. 抽象 Verdier 列（充満忠実包含・核の等式・局所化普遍性）、零化と cofiber 辺反転の同値（10-21 00:03）
-  - [x] c. Verdier 四角形に対する Sp 値局所化不変量の定義、像の実 fiber 性、整数 π による同値検出、長完全列の移送、coherent な fiber 列のスペクトル積分解（10-21 01:55）
-  - [x] d. Cat^perf（10-22 14:37 に K-S• が着手。coherent 提示 14:47、Tamme 分裂 15:20、両射影を保つ Tamme 積同値 15:54、perfect 商正方形の BF 積への移送と cospan pullback 16:05〜16:34。「Cat^perf 抽象切除は完了」19:20）
-- [ ] K-6 L3 fibration 定理（Verdier 列 ↦ fiber 列、β3 を使う）
-- [ ] K-7 L3 非連結 K（BGT、Ind を使う）
-- [ ] K-10 LT の ⊙ の dg 側構成と主定理界面（K-S•、10-22 17:53 着手。D2 の Gluing.Category を読み取り専用で使用。二段目固定）
-  - [x] a. 厳密 dg 四角形の標準対角と実 Perf 延長、両射影との全 Hom 自然比較（17:53〜18:31）
-  - [x] b. 指定閉零対象による実左右軸、二軸の短複体と混合 Hom の射影同型、全 Hom 自然性（18:49〜19:21）
-  - [ ] c. 対角像の商 End と元の右対象 End の比較（⊙ の環としての同定） ← 前回・今回（実標的錐 05:38〜小 Perf 模型を通した実 cone 比較の延長 09:24、元の小 Yoneda Morita 辺と固定 ν・K の接続 09:47、固定 native dg 入力での cone 比較の保存 10:22 まで。残りは元の native 四角形と一回通過 perfect 比較の照合、全源長方形と自然零 cell）
-  - [ ] d. β3 の Verdier 列による K-8 d8 の仮定入力（IsVerdierSequence）の充足
-  - [ ] e. Land–Tamme 主定理の Cat^perf 版の結論
-- [ ] K-8 K-基盤 2 Tamme の分裂定理、Land–Tamme の ⊙ と主定理、pro 版（抽象部分は Sp レーンが 10-21 02:00 から担当）
-  - [x] a. 安定 ∞ 圏の二項半直交分解と、誘導される切断つき Verdier 列（10-21 02:11）
-  - [x] b. F2 の lax pullback の半直交分解（10-21 03:00）
-    - [x] 全単体上の exact な lax pullback 包含、lax D 随伴と射影の核の同定（10-21 02:15、02:26）
-    - [x] 半直交分解の結論（10-21 03:00）
-  - [x] c. Tamme の分裂：局所化不変量 E について E(lax pullback) ≃ E(C) × E(D)（10-21 03:00）
-  - [ ] d. 引き戻し正方形に対する Tamme の主定理の抽象形（差の項の記述。⊙ の同定は D の β5・β4 の後。三段目は 09:30 に固定）
-    - [x] d1. 通常 pullback の安定性と完全包含（Lemma 8(iv)）（05:00）
-    - [x] d2. 差の実 ∞ 関手・核・零と cofiber の保存、cofiber 回転による完全性（05:00〜07:47）
-    - [x] d3. target 評価 ⊣ 恒等矢印関手、Cone ⊣ cofiberRightAdjoint、可逆余単位、全族比較（07:50〜08:31）
-    - [x] d4. ρ = fromD ∘ v の構成、切断同型、充満忠実性、単位候補の coherent 正方形と lax pullback への持ち上げ（08:45〜09:10）
-    - [x] d5. 単位の写像空間条件（写像空間の引き戻し・q ⊣ v の比較・cofiber 随伴の接続）（09:40）
-    - [x] d6. 差の関手 ⊣ ρ の実随伴と差の関手の局所化普遍性（Prop. 11、Cor. 12）（09:46）
-    - [ ] d7. 一般の場合の Verdier 商の実構成（13:34 に停止・補助成果として保存。B 案では ⊙ の商を D の β3・β4 で供給。任意辺集合の局所化は提供界面、K-7 で再開の可能性）
-    - [x] d8. 不変量の fiber 列と (c) の積同値による差の項への接続（Tamme Thm. 18、Land–Tamme §1–2） （普遍差の lift と値 pullback 17:30、native 積と対角錐への正規化 17:59、抽象 excision pullback の完成 18:49）
-  - [ ] e. pro 版の抽象部分：pro 系の局所化不変量の値と pro 零性・pro fiber 列の最小形式、Tor の pro 消滅から pro 切除の抽象形（範囲依存の pro fiber 連結度判定 05:37、非可換 dg 代数の connective cover と不変量の値 06:05（D の Perf(A) を読み取り専用で使用）まで。次は τ≥−n への積の降下と Postnikov 代数切断、LT §2.4 Lemma 2.30・Cor. 2.31）
-  - [x] f′. 提示つき相対版（ν : S ⟶ StableInfinity で径数化した RelativeVerdierDiagram・IsRelativeLocalizingInvariant・相対 Tamme 切除。10-22 21:26 のコーディネータ決定、22:01 完成。K-S• の dgKInputInfinity・dgKInputNu・dgKInputK と照合済み）
-- [ ] K-9 β6 dg 代数のホモトピー論（LT §2.4 の連結度条件の dg 模型。10-22 09:40 にユーザー承認で追加、二段目は Sp の 09:06 時点の残工程から固定）
-  - [x] a. 非正次数 connective cover と塔、有限 Postnikov 代数切断と遷移塔・連結度比較（10-22 06:05〜06:20）
-  - [x] b. 平方零拡大：標準層の平方零性と kernel、分裂平方零 dg 代数と derivation／切断の同値、係数移送（06:27〜06:38）
-  - [x] c. Postnikov 層の双加群・底への降下・任意整数 shift と coherence（06:50〜07:05）
-  - [x] d. dg 代数の cell 分解と augmentation、全段の持ち上げと余極限貼合せ、全射 quasi-isomorphism を通る持ち上げ（07:18〜07:31）
-  - [x] e. path 対象：実経路代数の関手性・自然変換・全射性、相対経路と cell augmentation 後の比較（07:43〜08:13）
-  - [ ] f. homotopy pullback：mapping path の因子分解、実 cospan 模型と差の cocone の同型、Postnikov 錐商と線形 pullback 模型、平方零微分摂動による Postnikov 拡大（08:33〜09:06 まで。拡大の普遍性が残り）
-  - [ ] g. LT Lemma 2.30・Cor. 2.31：不変量の値の塔の次数ごとの eventual 連結度から π-pro 同値 ← 前回・今回（β6 g：affine 因子化 path 05:31〜固定底源 path の類模型ホモトピーへの持ち上げ 09:10 まで。09:10 以降コミットなし（計画更新 10:22、作業継続中））
-  - [ ] h. 提供界面の記録：L9-spectra.md「主要宣言」に β6 の界面（connective cover・Postnikov 塔・平方零拡大・cell 分解・path 対象）を列挙し、D の β4 と K-7 が再利用できる形にする
+**K-S•（所有：KST/SConstruction。S• 界面の正本）**
+- [ ] K-10 Land–Tamme の ⊙ の dg 側構成と主定理界面（a・b は 10-22 完了）
+  - [ ] c. 対角像の商 End と元の右対象 End の比較（残り：角から小模型への Yoneda の Morita 不変性、商 End の同定）
+  - [ ] d. β3 の Verdier 列による K-8 d8 の仮定入力 IsVerdierSequence の充足（D2 の f と接続）
+  - [ ] e. Land–Tamme 主定理の Cat^perf 版の結論（Sp の K-8 d8 と接続）
+- pro 版の dg 側（Tor の環論は L7、第 II 段）
 
-**K-F（K-6 fibration 定理、10-22 新設）**
-- [ ] K-6 L3 fibration 定理：Verdier 列 D → C → C/D に対する連結 K の fiber 列（Waldhausen 1985 §1.6、BGT §7〜9。二段目固定）
-  - [x] a. 設定：C 安定、D ⊂ C thick、W = {f | cofib f ∈ D} の 2-out-of-3・pushout・extension 安定性（Sp の K-5 の抽象 Verdier 列を入力） （10:17。Fibration 対象 2830 jobs・13 宣言の監査）
-  - [ ] b. S• の相対構成 S•(C, W) と加法性からの連結版 fibration 定理（Waldhausen 1.6.4、BGT §7）
-  - [ ] c. 必要な cofinality 条件の明示と、K-S• の S• 界面（K-1・K-2 の加法性・homotopy fiber）との接続 ← 前回・今回（相対弱辺公理 06:13〜自然な相対 S 核収縮円柱の構成 09:32 まで。全体ビルド待ちの所有 13 ファイルをステージ済み（10:21）。次は収縮の商後合成の照合と quotientSKernel の全四角形比較）
-  - [ ] d. K(D) → K(C) → K(C/D) の fiber 列（連結版、Sp 値。K-5 の IsLocalizingInvariant の形に合わせる）
-  - [ ] e. 冪等完備化と BGT §9 の非連結化への入力の整理（非連結 K 自体は K-7）
+**K-B（旧 K-F＋K-7。所有：KST/Fibration、KST/NonConnective）**
+- [ ] K-6 fibration 定理（a は 10-22 完了）
+  - [ ] c. cofinality 条件と K-S• の S• 界面との接続（残り：relabelEnrichedObjects による座標読み替え → 商実現比較 → 無条件の連結版）
+  - [ ] b. S•(C, W) の相対構成と加法性からの連結版（c と独立。c の後に統合）
+  - [ ] d. K(D) → K(C) → K(C/D) の fiber 列（連結版、Sp 値。相対 Verdier 四角形を実 Sp fiber 四角形へ）
+  - [ ] e. 冪等完備化と BGT §9 の非連結化への入力の整理
+- [ ] K-7 非連結 K（a・b は 10-23 完了。b の I・P は D-8 の供給を待つ明示入力）
+  - [ ] c. 反復懸垂と K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A)（dgKappaZeroPerfAction_values → 同じ cone の連結 K の消滅 → 構造射）
+  - [ ] d. 連結 K との比較（非負次数の同型、負次数の記述。Ind 側の I-2 e と照合）
+  - [ ] e. Verdier 列を fiber 列へ（K-6 使用）、Morita 不変性、filtered 余極限との可換
+  - [ ] f. Sp の IsRelativeLocalizingInvariant への登録（固定 dgKInputInfinity・dgKInputNu・dgKInputK）
 
-**K-7（非連結 K の dg 形、10-23 新設）**
-- [ ] K-7 L3 非連結 K（BGT 2013 §9、Schlichting 2006。配置 KST/NonConnective/。二段目固定）
-  - [x] a. Sp の逐次余極限：BF 模型上の構成と ∞ 余極限性、π_* との交換（Sp レーンの値域界面を読み取り専用で拡張）（10-23 07:04。相対 latching 単射と段ごとの自明 Kan fibration への BF 射の実分解、相対 cofibrant 逐次置換、sequentialCandidateColimitCocone の IsColimitCone と頂点の厳密等号、各辺の filteredSpectrumInjection との一致と全整数 π の一致。NonConnective 5365 jobs、監査 310 宣言）
-  - [ ] b. dg 懸垂 Σ(Perf A) := D(A)^κ／Perf(A)（β5 の D(A)・β3 の Drinfeld 商）、Ind の安定性（F2N-5）との照合
-  - [ ] c. 反復懸垂と非連結 K スペクトル K^{nc}(A) := colim Ω^n K(Σ^n Perf A)（K-3 の連結 K を入力） ← 前回・今回（09:21 に再開。実直和の両射影と分裂公式、Perf の native 作用からの分裂 cofiber 族を作業中（22 ファイル 10:17、未コミット））
-  - [ ] d. 連結 K との比較（非負次数での同型、負次数の記述）
-  - [ ] e. Verdier 列を fiber 列に送ること（K-6 と β3）、Morita 不変性、filtered 余極限との可換
-  - [ ] f. Sp の相対版局所化不変量 IsRelativeLocalizingInvariant としての登録（K-S• の固定界面 ν・K を使用）
+**R（常設しない。第 I 段終了時の停止窓で実施）**
+- [ ] KST/Spectra の基盤部分（BF 模型など）を InfinityCategories へ降ろし、InfinityCategories → KST の import 31 本を解消
+- [ ] 型の異なる準重複の統合（D・E2 の差分表に従う）、R21 docstring、R4 粒度、R5 双対化、R10 計算規則
+- [ ] 全体の入口・README・監査スクリプトの再点検、解説（exposition/ja/infinity）の基準コミット更新
 
+**第 II 段（予告。第 I 段の K 側と BS 側が閉じてから起動）**
+- K の代数幾何：Perf(X) の dg 増強（L4）、導来 blowup（L5）、スキーム補題・可換環論（L7）、降下（L8）、合流（K0 界面）
+- BS-7：animated 環（P_Σ と E2c）、Construction 7.6、界面の文献どおりの述べ直し
 
+---
 
-**R（∞ 圏基盤のリファクタリング、10-23 新設。正本 refactoring-infinity.md。二段目は同ファイル §4 の段で固定）**
-- [ ] R-0 第 0 段：即時・影響なし（重複検査スクリプト、README の移動、F2/JoinRightRelativeRetraction のシム化、仮定入力の一覧）
-  - [x] 0-1. scripts/check_duplicates.py と重複一覧の保存（10-23 09:35。正規化ハッシュの検査スクリプトと重複一覧 archive/refactor-duplicates-2026-10-23.md）
-  - [x] 0-2. InfinityCategories/README.md → DGNerve/README.md、最上位 README を全体地図に（R25）（09:36。DGNerve/README.md に規約を保存、最上位 README を層・入口・監査の地図に）
-  - [ ] 0-3. F2/JoinRightRelativeRetraction を F1 原本へのシムに（R8 段階 0） ← 前回・今回（共有ツリーでは 09:5x に取り消し。専用 worktree SerrePositivity-R（refactor/r-lane）で 1-1・1-4 と共に再適用（10:00）、worktree での検証は未実施）
-  - [x] 0-4. 仮定入力の一覧（R17・R20）（09:41。§6 に 5 入力の所在・供給元・使用数を固定、grep 全一致行を archive/refactor-assumptions-2026-10-23.md に保存）
-- [ ] R-1 第 1 段：Core と静止ファイル（R8 段階 1〜3、R7・R9 の入口、R5 前半）
-  - [ ] 1-1. F1/PullbackFiber・LeftFiberKan の汎用部を Core へ分割 ← 前回・今回（09:46 に共有ツリーへ直接適用し N・F1b を停止させた。09:5x に取り消し、worktree で再適用（10:00）。worktree で F1 の 8 ファイルを変更中（1-2 の importer 付け替えに着手の模様））
-  - [ ] 1-2. 直接 importer 6 本を Core 側へ向け直す
-  - [ ] 1-3. F1B の KanSection* 本体同一分（126 宣言）のシム化
-  - [ ] 1-4. Core/Fibrations・Core/MappingSpace の入口
-  - [ ] 1-5. sliceOverOpIso を Core/SliceOpposite へ
-- [ ] R-2 第 2 段：レーンの区切り待ち（R2・R3・R14・R15・R16・R17・R22・R23・R24。各項目の条件は計画 §4）
-- [ ] R-3 第 3 段：その他の準重複と PinchedInterval・KanScaffold の精査
-- [ ] R-4 第 4 段：ディレクトリ再編（R1・R6・R11・R12・R13・R19）
-- [ ] R-5 第 5 段：シムの一括削除と名前の置換、入口 docstring（第 I 段終了時）
+## 確定済み（v2、2026-10-19〜10-24 13:30）
+
+- F1：F1-1 straightening（空間値、a〜c。d の Cat∞ 値は全有限単体底まで、一般底は第 II 段）、F1-2 Yoneda（10-21 05:02）、F1-3・F1-3b twisted arrow と Hom 関手（12:24）、F1-4 前層の極限・余極限（10-22 12:02）、F1-5 表現可能関手による特徴づけ（12:24）、F1-6 F2N-2 Ind_κ(C)（10-23 02:30）、F1-7 c compact 生成の同定（05:31）。
+- F1b：F1b-1 B4 Kan 拡張（10-19 22:44）、F1b-2 B5（10-20 01:51）、F1b-3 Cat∞（10-20 05:00）、F1b-4 Cat∞ の極限と lax pullback（10-20 07:42）、F2N-1 a1〜a6。
+- N：N-1 γ3c（10-20 16:31）、N-2 γ4（10-21 08:31）、N-3 Sp への適用、N-4 a〜d、N-5 F2N-4 冪等完備化（10-23 05:05）、N-6 F2N-3 κ-compact a〜d（c の無条件化は a7 待ち）。
+- P：P-1 a accessible（10-23 08:48）。
+- D：D-1〜D-3 D7（10-19）、D-4 β3（10-21 03:28）、D-5 β5（10-22 18:50）、D-7 a〜c（10-22）。K-7 供給の 43 宣言（10-23〜24）。
+- D2：G-1 a〜c（10-22）。
+- E2：E2-1〜E2-4 E2a-3（10-20 10:04）、E2-5（10-20 22:48）、E2-6（10-20 14:40）、E2-7 a〜f（10-22 15:06）。
+- Sp：Sp-1〜Sp-4（10-19）、Sp-5 a〜d2（10-20 23:39）、K-5 抽象部分（10-21 01:55）、K-8 a〜c（10-21 03:00）・d1〜d6・d8（10-22）・f′ 相対版（10-22 22:01）、K-9 a〜e（10-22 08:13）。
+- K-S•：K-1・K-2（10-19）、K-3・K-4（10-22 14:37）、K-5 d Cat^perf（10-22）、K-10 a・b（10-22 19:21）。
+- K-F：K-6 a（10-22 10:17）。K-7：a Sp の逐次余極限（10-23 07:04）、b dg 懸垂の明示入力版（08:40）。
+- R：第 0〜1・5 段、R5 前半、R6・R7・R9 入口、R11、R12（R-A、タグ refactor-stage1-2026-10-24）、R15・R16・R17・R19・R20・完全一致部・互換入口 267 本（R-C、タグ stage2）、R24・Stable↔KST・Derived 準重複・R2・R3・R14・R22・R23（R-B、タグ stage3）。R13 と PinchedInterval・scaffold の精査は R-A の最終ラウンド（進行中）。

@@ -1,5 +1,7 @@
 # E∞ 代数のモデル圏（レーン E2）
 
+> **v3（2026-10-24）**：E2 節は E2 レーンの正本（所有：EInfinity/。E2-7 g → E2-8 G1′ で停止）。N 節は **P レーン**の P-1 g の引き継ぎとして併読（正本は infinity-core-presentable.md）。
+
 > **v2 の位置づけ（2026-10-19）**：E2a は foundations.md §6 の E2（E2a-3〜5 → E2b → G1′）。N は γ3c → γ4 → F2-lite（Ind・compact・冪等完備化）。
 
 ## 引き継ぎ（2026-10-19）

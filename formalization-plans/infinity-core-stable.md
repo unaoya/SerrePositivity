@@ -1,5 +1,7 @@
 # D レーン：D7 → β3 → β5（β4 は D2 と接続）
 
+> **v3（2026-10-24）**：D レーンの正本。所有：Stable/、Derived/（Gluing/ 以外）、DGNerve/、DoldKanComparison/、DifferentialGraded/。順序は D-7 d → D-8（K-7 供給）→ D-9。Stable の一般論（Cocone・UniverseLimits・ColimitDiagramIso・join 計算・SliceOpposite 等）は R で Core/ へ移動済み。
+
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
 ## 引き継ぎ（2026-10-23）

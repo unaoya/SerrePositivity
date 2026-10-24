@@ -1,5 +1,7 @@
 # K-S• → K-基盤 1・2：∞-S• と局所化不変量
 
+> **v3（2026-10-24）**：K-S• レーンの正本。所有：KST/SConstruction/。残りは K-10 c → d → e。VertexPrescribedExtension・ZeroBoundaryExtension と Stable 由来の 4 本は R で Core/・Stable/ へ移動済み。
+
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-S• → K-基盤。L1c〜f の後、L3 は非連結 K を BGT (a) のみで（暫定 (b) は使わない）、続けて局所化不変量・Tamme・Land–Tamme（K-基盤 1・2）。
 
 ## 引き継ぎ（2026-10-23）

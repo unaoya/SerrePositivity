@@ -1,5 +1,7 @@
 # P レーン：presentable ∞ 圏（HTT 5.4〜5.5）
 
+> **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本で、P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読。所有：F2/Presentable/、HomotopyLimits/。N の局所化・sifted 系モジュールは R16 で F2/Presentable/ に移動済み。
+
 > 計画 v2 の P（foundations.md §2・§6）。第 II 段の animated 環・降下の基盤。
 > 配置は `SerrePositivity/InfinityCategories/F2/Presentable/`、集約は `F2/Presentable.lean`。
 

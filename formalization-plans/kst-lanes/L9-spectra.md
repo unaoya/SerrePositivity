@@ -1,5 +1,7 @@
 # K-L9（Sp・ホモトピー群）
 
+> **v3（2026-10-24）**：Sp レーンの正本。所有：KST/Spectra/、KST/LocalizingInvariants/。局所化・分数・Verdier 商 API の正本。順序は β6 g → f → h → K-8 e → 依頼対応。LimitProjectionExistence は R で Core/ へ移動済み。
+
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-Sp。L9e の後、γ3 を使って Sp の ∞ 極限と安定 ∞ 圏としての Sp（局所化不変量の値域）。
 
 ## 引き継ぎ（2026-10-23）
