@@ -1,3 +1,22 @@
+import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel
+import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeLabelOperations
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeExtension
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCoproduct
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCountable
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeZero
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCone
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeConeAction
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeParameter
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeInputHomLaws
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeFunctor
+import SerrePositivity.DifferentialGraded.Category.Induced
+import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
+import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
+import SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter
+import SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport
+import SerrePositivity.DifferentialGraded.Module.ConeTransportIso
 import SerrePositivity.InfinityCategories.Derived.DGCompositionUnitCollapse
 import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionUnitLaws
 import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionRightUnit
@@ -7209,7 +7228,54 @@ example : SSet.Quasicategory
 open Lean in
 run_cmd do
   let env ← getEnv
-  let expected :=
+  let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeLabelOperations,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCoproduct,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCountable,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeZero,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCone,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeConeAction,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeParameter,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeInputHomLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeFunctor,
+    `SerrePositivity.DifferentialGraded.Category.Induced,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone,
+    `SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate,
+    `SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport,
+    `SerrePositivity.DifferentialGraded.Module.ConeTransportIso,
+    `SerrePositivity.KST.SConstruction.DGClosedComparisonIso,
+    `SerrePositivity.KST.SConstruction.DGClosedIsoConjugation,
+    `SerrePositivity.KST.SConstruction.DGFunctorClosedComparison,
+    `SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality,
+    `SerrePositivity.KST.SConstruction.DGFunctorEnrichment,
+    `SerrePositivity.KST.SConstruction.DGFunctorGraphLeftHom,
+    `SerrePositivity.KST.SConstruction.DGFunctorGraphParameter,
+    `SerrePositivity.KST.SConstruction.DGFunctorHomEnd,
+    `SerrePositivity.KST.SConstruction.DGFunctorHomIdentity,
+    `SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition,
+    `SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition,
+    `SerrePositivity.KST.SConstruction.DGFunctorHomUniversal,
+    `SerrePositivity.KST.SConstruction.DGFunctorParamComposition,
+    `SerrePositivity.KST.SConstruction.DGFunctorParamNaturality,
+    `SerrePositivity.KST.SConstruction.DGFunctorWhiskering,
+    `SerrePositivity.KST.SConstruction.DGModuleExtensionInputHom,
+    `SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomComposition,
+    `SerrePositivity.KST.SConstruction.DGModuleExtensionParameter,
+    `SerrePositivity.KST.SConstruction.DGParameterConjugation,
+    `SerrePositivity.KST.SConstruction.DGParameterCrossNaturality,
+    `SerrePositivity.KST.SConstruction.DGParameterPullback,
+    `SerrePositivity.KST.SConstruction.LeftModuleHomComparison,
+    `SerrePositivity.KST.SConstruction.LeftModuleParameterRepresentation,
+    `SerrePositivity.KST.SConstruction.LeftTensorHomComposition,
+    `SerrePositivity.KST.SConstruction.LeftTensorParameterFactorization,
+    `SerrePositivity.KST.SConstruction.LeftTensorParameterPullback,
+  ] ++
+
     derivedAuditExpectedChunk0 ++
     derivedAuditExpectedChunk1 ++
     derivedAuditExpectedChunk2 ++
