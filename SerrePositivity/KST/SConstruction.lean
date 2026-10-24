@@ -2560,4 +2560,8 @@ public import SerrePositivity.KST.SConstruction.CoherentHomIntervalEdgeParameter
 public import SerrePositivity.KST.SConstruction.DGKInputClosedComparisonImage
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputImage
 
+public import SerrePositivity.KST.SConstruction.DGOdotVerdierInput
+public import SerrePositivity.KST.SConstruction.DGOdotLaxVerdierConnection
+public import SerrePositivity.KST.SConstruction.DGOdotVerdierRectangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/

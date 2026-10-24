@@ -1,4 +1,5 @@
 import SerrePositivity.KST.SConstruction
+import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 
 /-!
 概要：S• 構成の公開宣言の型と公理を監査する。
@@ -31149,3 +31150,93 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare_native
 #print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare_native
+
+#check @SerrePositivity.KST.SConstruction.dgOdotDiagonalSourceInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotDiagonalSourceInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotGluingInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotGluingInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotDiagonalInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotDiagonalInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotProjectionInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotProjectionInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotDiagonalExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotDiagonalExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotProjectionExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotProjectionExactMap
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierInput.isVerdier
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierInput.isVerdier
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierInput.sequence
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierInput.sequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotLeftInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotLeftInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotLowerInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotLowerInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotLowerExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotLowerExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotUpperExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotUpperExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotPerfLaxCategory
+#print axioms SerrePositivity.KST.SConstruction.dgOdotPerfLaxCategory
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.inclusion
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.inclusion
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.inclusion_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.inclusion_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.isVerdier
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.isVerdier
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.projection_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.projection_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.composite_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput.composite_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.relativeRectangle
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.relativeRectangle
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonSquare
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonSquare
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_image
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_image
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_source
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_source
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_bottom_image
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_bottom_image
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparison_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.right_isFiber
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.right_isFiber
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone
+
+#check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone_isLimit
