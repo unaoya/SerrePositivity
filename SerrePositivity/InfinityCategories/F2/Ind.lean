@@ -753,3 +753,17 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeShapePoint
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationPrism
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RightAnodyneRelativeLiftNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceLiftNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparisonNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeFunctorVertexIsoNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceFunctorIsoNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceBoundaryImage
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceBoundaryNaturality

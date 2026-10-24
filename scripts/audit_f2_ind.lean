@@ -1798,3 +1798,48 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indConeEndpointEvaluationIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftEndpointEq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftEndpointEq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_map
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_map
+
+#check SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.rightAnodyneRelativeLiftIso_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceLift_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.conePointSliceLift_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceRelativeIso_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceRelativeIso_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.relativeFunctorVertexIsoImage_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.relativeFunctorVertexIsoImage_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.relativeFunctorVertexIsoImage_heq
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.relativeFunctorVertexIsoImage_heq
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceFunctorIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceFunctorIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceFunctorIso_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceFunctorIso_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryRelativeIso_heq_map
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryRelativeIso_heq_map
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso_heq_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso_heq_precomp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso_precomp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.coneTerminalSliceBoundaryFunctorIso_precomp
