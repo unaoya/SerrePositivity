@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismCurriedAllBoundary
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowPrismNativeCoconeComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.FixedCoconeBoundaryUnderInclusion
 /-!
 概要：三境界固定比較を、指定始点の全余錐を保持して元の区間の宇宙へ戻す。
 方針：同じ全 curry の比較を、始点評価と可換する宇宙比較で写す。
@@ -63,4 +64,22 @@ lemma indArrowPrismNativeAllBoundaryOriginalVertex_val :
     functorVertex (joinMap q (𝟙 Δ[0]) ≫ (diagramCommaCocone κ D).val) := by
   change (indArrowPrismNativeOriginalVertex W).val = _
   exact indArrowPrismNativeOriginalVertex_val W
+include W
+
+/-- 概要：再構成全余錐の始点評価は元の全余錐に厳密に一致する。
+方針：三固定条件の頂点を評価する。規約：全射を保持。使われ方：相対反映。 -/
+lemma indArrowPrismNativeAllBoundaryReconstructed_source :
+    (curry ((β_ (Δ[1] : SSet.{u + 1}) (join T Δ[0])).hom ≫ r) ≫ h) ≫ e' = s :=
+  fixedCoconeBoundaryUnder_vertex_evaluation (p ≫ h) (b ≫ h) e' s
+    (indArrowPrismNativeAllBoundaryReconstructedVertex W) _
+    (indArrowPrismNativeAllBoundaryReconstructedVertex_val W)
+
+/-- 概要：元の全余錐の始点評価も同じ指定全余錐に厳密に一致する。
+方針：三固定条件の頂点を評価する。規約：元の q を保持。使われ方：相対反映。 -/
+lemma indArrowPrismNativeAllBoundaryOriginal_source :
+    (joinMap q (𝟙 Δ[0]) ≫ (diagramCommaCocone κ D).val) ≫ e' = s :=
+  fixedCoconeBoundaryUnder_vertex_evaluation (p ≫ h) (b ≫ h) e' s
+    (indArrowPrismNativeAllBoundaryOriginalVertex W) _
+    (indArrowPrismNativeAllBoundaryOriginalVertex_val W)
+
 end SerrePositivity.InfinityCategories.F2.Ind

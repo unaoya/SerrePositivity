@@ -14,8 +14,8 @@
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [ ] ← 今回、a③ 射形状の標準余錐の余極限性 [ ]、a④ 有限半順序形状の帰納と単一 filtered 表示 [ ]。
 - I-2 a の界面：`indArrowPrismCurriedAllBoundaryIso`・`indArrowPrismNativeAllBoundaryIso` は元の全 C 図式・D・始点全余錐を同時に固定した実 fiber 内の比較。両 `ReconstructedVertex_val`・`OriginalVertex_val` は元の全余錐を厳密に回収する。`fixedCoconeBoundaryUnder` が指定評価下の固定条件、`_UnderPost` がその条件を保つ後合成。評価下の相対反映と cofinal 性自体は未証明。
-- I-2 a② の現状：`exists_indArrowNativeAllBoundaryCylinder` は元の両全余錐を結ぶ実可逆円柱と、底・終点・指定評価の全時刻での厳密固定を提供する。元の `indArrowTerminalLiftFamily` の可縮 Kan 性を使い、固定 fiber の充填性を仮定しない。`exists_extension_of_equivalenceFamily_fixed_boundary` と `_tensor_boundary` は、可逆境界修正を別の全固定境界を保って単射へ延長する。相対反映と cofinal 性そのものは未証明。
-- 次の一手：I-2 a②。元の可逆円柱を共同評価し、可逆区間の変数を右に保ったまま `exists_extension_of_equivalenceFamily_tensor_boundary` の直積境界へ移す。join の二端を貼った境界を単射へ延長する際、元の区間の始点包含をもう一つの固定境界にし、評価下の join 円柱を得る。これを元の comma の全族へ相対反映する。通常の comma の関手同型だけで指定境界の整合を完了扱いにしない。続いて両端点の評価の cofinal 性、射形状の余極限性、有限半順序形状の単一 filtered 表示へ進む。
+- I-2 a② の現状：`exists_indArrowSourceFixedJoinCylinder` は原の両余錐を両端に持ち、元の始点評価を厳密に保つ join 円柱。`exists_indArrowInterpolationOldFamily_relative_slice_iso` は元の補間族の制限と元の q の slice 像を、同じ指定始点評価の相対関手空間内で同型にする。`fixedCoconeBoundaryUnder_vertex_evaluation` と元の両 `NativeAllBoundary*_source` は同じ指定評価の厳密な一致を回収する。実 comma の相対反映と評価の cofinal 性は未証明。
+- 次の一手：I-2 a②。`exists_indArrowInterpolationOldFamily_relative_slice_iso` の同じ相対同型を、元の実 comma の全族と指定下側変換を保つ同型へ反映する。元の補間全族の始点評価を `V.sourceCone` の同じ評価へ厳密に回収し、旧族の評価を元の q の評価へ戻す。slice 射影の充満忠実性で同型を戻しただけでは、指定下側変換との整合を完成扱いにしない。続いて両端点の評価の cofinal 性、射形状の余極限性、有限半順序形状の単一 filtered 表示へ進む。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

@@ -48,4 +48,18 @@ lemma fixedCoconeBoundaryUnderInclusion_evaluation :
       SSet.const (functorVertex s) := by
   rw [fixedCoconeBoundaryUnderInclusion, Category.assoc, vertexFiberι_comp]
 
+/-- 概要：三条件固定 fiber の同じ頂点の評価は、元の指定全余錐に厳密に一致する。
+方針：頂点の fiber 条件を読む。規約：元の全射を保持。使われ方：相対比較の端点照合。 -/
+lemma fixedCoconeBoundaryUnder_vertex_evaluation
+    {A X Z : SSet.{u}} (p : (Δ[0] : SSet.{u}) ⟶ X) (b : A ⟶ X)
+    (e : X ⟶ Z) (s : join A (Δ[0] : SSet.{u}) ⟶ Z)
+    (v : (fixedCoconeBoundaryUnder p b e s) _⦋0⦌)
+    (c : join A (Δ[0] : SSet.{u}) ⟶ X) (hv : v.val.val = functorVertex c) : c ≫ e = s := by
+  apply functorVertex_injective
+  have h := v.property
+  change ((ihom (join A Δ[0])).map e).app (Opposite.op ⦋0⦌) v.val.val =
+    PinchedHom.constant (functorVertex s) 0 at h
+  rw [hv] at h
+  change functorVertex (c ≫ e) = PinchedHom.constant (functorVertex s) 0 at h
+  simpa only [pinchedConstant_zero] using h
 end SerrePositivity.InfinityCategories.F2.Ind
