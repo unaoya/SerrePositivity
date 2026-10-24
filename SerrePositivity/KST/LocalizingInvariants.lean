@@ -1335,6 +1335,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroUnderlyingMaps
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
+public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation
+public import SerrePositivity.KST.LocalizingInvariants.DGQuotientNullCorner
 public import SerrePositivity.KST.LocalizingInvariants.RelativeSplitting
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
