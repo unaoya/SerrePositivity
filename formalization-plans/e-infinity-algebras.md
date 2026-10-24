@@ -95,19 +95,20 @@
   ComonadResolutionOperators・Presentation・SimplicialResolution、Rectification/HomotopyFunctionComplex/LiftSpace、KST の ExInfinityMonoidal・NerveOppositeIso を再利用。
   N の Coherent/Quasicategory・F1/CoherentVertices・CoherentNervePostcomposition・KanSourceReplacement、F1b の KanNerveLeftKanShapeIso・QuillenALeft・CofinalWeakEquivalence、F2 の filtered 弱同値保存を使用。
   E2a のモデル・通常右導来極限・Kan Map^h、実 CAlg_R と既存 D(R) への忘却射・離散比較を提供。所有は EInfinity/**・EInfinity.lean・scripts/audit_einfinity.lean。本節以外の共有計画を巻き込まない。
-- **未コミット**：保存済みの持ち上げと全族比較のモジュールはコミット済み。`FrameHom/NerveColumnRoofNaturality.lean` は全源比較用の作業中で、集約・監査には未接続。共有計画の他レーンの変更は保持し本節のみコミット。/tmp の試作は集約・監査に未接続。
+- **未コミット**：保存済みの持ち上げと全族比較のモジュールはコミット済み。全源比較の6モジュール（下記）は草稿として保存し、集約・監査には未接続。単独ビルドは通過したが、閉包外依存を検出したため成果に含めない。共有計画の他レーンの変更は保持し本節のみコミット。/tmp の試作は集約・監査に未接続。
   /tmp/e2-free-probe-cofibrant-column.lean は CofibrantAlgebra への4定義の試作、終了コード0。/tmp/e2-free-probe-relative-column.lean は Hom 宇宙 ULift も含む拡張の試作。v2 の完了状態は未確認なので成果扱いしない。再開時は正本の9宣言から必要分を再構成する。
-- **既知の問題**：fee845d09 は対象ビルド6594 jobs・EInfinity 集約11055 jobs・全公理監査25780宣言・独立例9件が終了コード0、標準3公理のみ。必須9101項目は209個の noinline 配列、各128以下。7187モジュールの import 閉包に他レーンの未コミット依存0件、監査前後の全ソース digest一致。新規モジュールの警告・sorry・追加公理なし。対象ビルド・監査・独立例はすべて終了済み。資源上限変更なし。既存208必須配列の式・順序・run_cmd登録は保持。主経路に ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定なし。
+- **既知の問題**：全源比較に必要な `Derived/FunctorHomTypedWhiskerAlgebra` と下層の `FunctorHomWhiskerExchange`・`FunctorHomPostcompAlgebra` は開始時の E2 import 閉包外。コーディネータ経由で D に、`functorHom_whisker_exchange` と `functorHom_postcomp_postcomp` の E2 が使える上流入口への分離を依頼する。自前コピー・他レーン編集・主経路への接続はしない。
+  fee845d09 は対象ビルド6594 jobs・EInfinity 集約11055 jobs・全公理監査25780宣言・独立例9件が終了コード0、標準3公理のみ。必須9101項目は209個の noinline 配列、各128以下。7187モジュールの import 閉包に他レーンの未コミット依存0件、監査前後の全ソース digest一致。新規モジュールの警告・sorry・追加公理なし。対象ビルド・監査・独立例はすべて終了済み。資源上限変更なし。既存208必須配列の式・順序・run_cmd登録は保持。主経路に ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定なし。
   モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
   LeftRoof.Precompose の旧入口は I : Type v・Category.{0} I。同じ宇宙の実圏には LeftRoof.Precompose.SameUniverse を使う。元の要素圏は Type(u+1)・Category.{u} なので、cofibrant 代数の Category.{u+1} と合わせるには ULiftHom.{u+1} を使い、objUp/objDown の宇宙 .{u+1,u+1} を明示する。対象だけの ULift は不要。
   集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
-- **次の一手**：`FreeProbeRelativeElementFamilyComparison` の実 U の全 Arrow 比較と `FreeProbeElementDerivedUnitTriangle` の元の単位三角形を、`cAlgForgetDerived_sourceIso` の全屋根自然性と元の Hom 宇宙回収で接続する。`NerveColumnRoofNaturality` はこの全源比較用の未集約・作業中モジュール。標準単位比較自身の弱同値性は未証明。
+- **次の一手**：`FreeProbeRelativeElementFamilyComparison` の実 U の全 Arrow 比較と `FreeProbeElementDerivedUnitTriangle` の元の単位三角形を、`cAlgForgetDerived_sourceIso` の全屋根自然性と元の Hom 宇宙回収で接続する。`NerveColumnRoofNaturality`・`MixedNerveHomRecovery`（FrameHom）、`RoofPrefixColumnRoof`（SimplicialLocalization）、`CofibrantColumnUnderlyingHom`・`FreeProbeRelativeElementSourceRoof`・`FreeProbeRelativeElementUnderlyingRoof`（BarrattEccles）は未集約の作業中。標準単位比較自身の弱同値性は未証明。
   同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続し、標準単位比較自身の弱同値性を示す。
   N の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
   全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
-  v3 の g1 を継続中。三段目は持ち上げ、全 pinched 族、全族比較との接続、標準単位の弱同値性、検証・保存の5項目。
+  v3 の g1 は上流 API の分離設計の依頼で区切り。三段目は持ち上げ、全 pinched 族、全族比較との接続、標準単位の弱同値性、検証・保存の5項目。
 
 
 ## 0. 位置づけ
