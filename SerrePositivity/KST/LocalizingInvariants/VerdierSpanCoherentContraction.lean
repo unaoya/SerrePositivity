@@ -7,6 +7,9 @@ public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 public import SerrePositivity.KST.Fibration.IdentityMarkedSpan
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionRestriction
+public import SerrePositivity.InfinityCategories.F1.Joins.HomotopyConeRealization
 
 /-!
 概要：一般 Verdier 分数の全族に対して、分母 roof からの二つの実変形を保持する。
@@ -877,31 +880,16 @@ private def verdierFixedSourceLeftQuotientHomotopy {A B C : StableCategory.{u}}
     (x : B.obj _⦋0⦌) :
     SSet.Homotopy (verdierFixedSourceDenominator i x ≫
       markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
-        (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)) where
-  h := (verdierFixedSourceLeftHomotopy h x).h ≫
-    markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
-  h₀ := by
-    change SSet.ι₀ ≫ (verdierFixedSourceLeftHomotopy h x).h ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom =
-      verdierFixedSourceDenominator i x ≫
-        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
-    rw [← Category.assoc, (verdierFixedSourceLeftHomotopy h x).h₀]
-  h₁ := by
-    change SSet.ι₁ ≫ (verdierFixedSourceLeftHomotopy h x).h ≫
-      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom =
-      SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
-    rw [← Category.assoc, (verdierFixedSourceLeftHomotopy h x).h₁,
-      SSet.const_comp]
-    change SSet.const (q.hom.app (Opposite.op ⦋0⦌)
-      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
-        (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = _
-    rw [verdierIdentitySpanFamily_projection]
-  rel := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro a
-    exact False.elim a.1.property
+        (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)) := by
+  let H := functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x)
+    (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+  refine { h := H.h, h₀ := H.h₀, h₁ := ?_, rel := H.rel }
+  change SSet.ι₁ ≫ H.h = SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
+  rw [H.h₁, SSet.const_comp]
+  change SSet.const (q.hom.app (Opposite.op ⦋0⦌)
+    ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
+      (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = _
+  rw [verdierIdentitySpanFamily_projection]
 
 /-- 選択済みの同じ実変形の底像を可逆化する。単なる頂点ごとの同型の選択ではない。 -/
 private def verdierFixedSourceDenominatorImageIso {A B C : StableCategory.{u}}
@@ -919,5 +907,402 @@ private def verdierFixedSourceDenominatorImageIso {A B C : StableCategory.{u}}
         ((truncation 2).map q.hom))
     rfl).mpr
     (verdierFixedSourceLeftHomotopy_quotient_invertible h x v)
+
+/-- 元の族を分類先へ送る実写像が与えられたとき、同じ分母変形をそこで可逆化する。
+実写像自体の供給をこの私有補題の仮定から取り除いたとは主張しない。 -/
+private def verdierLiftedDenominatorIso {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    FunctorIso (verdierFixedSourceDenominator i x ≫ U)
+      (SSet.const (verdierIdentitySpanFamily h x) ≫ U) := by
+  let H := functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U
+  apply functorIsoOfPointwiseInvertibleHomotopy H
+  intro v
+  apply leftFibration_reflects_invertibleEdge p
+    (simplicialHomotopyVertexEdge H v).toTruncated
+  have he := congrArg (fun F => F.app (Opposite.op ⦋1⦌)
+    (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge) hU
+  change p.app (Opposite.op ⦋1⦌) (U.app (Opposite.op ⦋1⦌)
+    (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge) =
+    q.hom.app (Opposite.op ⦋1⦌)
+      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app (Opposite.op ⦋1⦌)
+        (simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).edge) at he
+  exact (isInvertibleEdge_congr
+    (e := (simplicialHomotopyVertexEdge H v).toTruncated.map ((truncation 2).map p))
+    (f := (((simplicialHomotopyVertexEdge (verdierFixedSourceLeftHomotopy h x) v).map
+      (markedSpanFamilyProjection B.obj (weakEquivalences i) x)).toTruncated).map
+        ((truncation 2).map q.hom)) he).mpr
+      (verdierFixedSourceLeftHomotopy_quotient_invertible h x v)
+
+private def verdierLiftedRightHomotopy {A B : StableCategory.{u}}
+    (i : ExactMap A B) (x : B.obj _⦋0⦌) {E : SSet.{u}}
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E) :
+    SSet.Homotopy (verdierFixedSourceDenominator i x ≫ U) U := by
+  let J := functorHomotopyPostcomp (verdierFixedSourceRightHomotopy i x) U
+  refine { h := J.h, h₀ := J.h₀, h₁ := ?_, rel := J.rel }
+  change SSet.ι₁ ≫ J.h = U
+  rw [J.h₁, Category.id_comp]
+
+private def verdierLiftedIdentityCone {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    FunctorHom (SSet.const (verdierIdentitySpanFamily h x) ≫ U) U :=
+  (verdierLiftedDenominatorIso h x p U hU).inv ≫
+    Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (verdierLiftedRightHomotopy i x U))
+
+private lemma denominatorSpanRightExpansion_target :
+    (denominatorSpanRightExpansion : (Δ[1] : SSet.{u}) ⟶ _) ≫
+      evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
+        (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = horn₂₀.ι₀₂ := by
+  change denominatorSpanRightExpansion ≫
+    (pre horn₂₀.ι₀₂).app (horn 2 0 : SSet.{u}) ≫
+      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
+  rw [← Category.assoc, denominatorSpanRightExpansion, stable_spanFamilyOfArrows_right,
+    curry_evaluateFunctorAt_interval, ← Category.assoc,
+    intervalMinimum_first_one, Category.id_comp]
+
+private lemma verdierSpanRightExpansion_target (B : StableCategory.{u}) :
+    (verdierSpanRightExpansion B).h ≫
+      evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
+        (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+    (β_ ((ihom (horn 2 0 : SSet.{u})).obj B.obj) (Δ[1] : SSet.{u})).hom ≫
+      uncurry ((pre horn₂₀.ι₀₂).app B.obj) := by
+  let F := denominatorSpanRightExpansion ≫
+    functorPrecompositionMap (horn 2 0 : SSet.{u}) (horn 2 0 : SSet.{u}) B.obj
+  change uncurry (SSet.yonedaEquiv.symm (SSet.yonedaEquiv F)) ≫ _ = _
+  rw [Equiv.symm_apply_apply, ← uncurry_natural_right]
+  have he : F ≫ (ihom ((ihom (horn 2 0 : SSet.{u})).obj B.obj)).map
+      (evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
+        (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
+      horn₂₀.ι₀₂ ≫ verdierSpanSourceEvaluation B := by
+    dsimp only [F]
+    rw [Category.assoc, verdierSpanSourceRestriction_natural, ← Category.assoc,
+      denominatorSpanRightExpansion_target]
+  rw [he]
+  have hf := internalHomFlipHomEquiv_pre_app horn₂₀.ι₀₂
+    (𝟙 ((ihom (horn 2 0 : SSet.{u})).obj B.obj))
+  rw [Category.id_comp] at hf
+  change internalHomFlipHomEquiv _ _ _ ((pre horn₂₀.ι₀₂).app B.obj) =
+    horn₂₀.ι₀₂ ≫ verdierSpanSourceEvaluation B at hf
+  rw [← hf]
+  change uncurry (curry ((β_ _ _).hom ≫ uncurry ((pre horn₂₀.ι₀₂).app B.obj))) = _
+  rw [uncurry_curry]
+
+private lemma verdierFixedSourceRightHomotopy_projection {A B : StableCategory.{u}}
+    (i : ExactMap A B) (x : B.obj _⦋0⦌) :
+    (verdierFixedSourceRightHomotopy i x).h ≫
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x =
+    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj) := by
+  change (verdierFixedSourceRightExpansion i x ≫
+    vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x) ≫
+      markedSpanInclusion B.obj (weakEquivalences i) ≫
+        evaluateFunctorAt (horn₂₀.ι₀₂.app (Opposite.op ⦋0⦌)
+          (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
+  rw [verdierFixedSourceRightExpansion_inclusion, Category.assoc,
+    ← Category.assoc (verdierMarkedRightExpansion i),
+    verdierMarkedRightExpansion_inclusion]
+  dsimp only [verdierMarkedRightExpansionRaw]
+  simp only [Category.assoc]
+  rw [verdierSpanRightExpansion_target]
+  simp only [uncurry_natural_left]
+  rfl
+
+private def verdierFixedSourceRightQuotientHomotopy {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    SSet.Homotopy (verdierFixedSourceDenominator i x ≫
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+        (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) := by
+  let H := functorHomotopyPostcomp (verdierFixedSourceRightHomotopy i x)
+    (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+  refine { h := H.h, h₀ := H.h₀, h₁ := ?_, rel := H.rel }
+  change SSet.ι₁ ≫ H.h = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+  rw [H.h₁, Category.id_comp]
+
+private def verdierSpanQuotientEvaluationFamily {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    markedSpanFamily B.obj (weakEquivalences i) x ⟶ (ihom (Δ[1] : SSet.{u})).obj C.obj :=
+  vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+    fractionSpanEvaluation q.hom (weakEquivalences i) h.inverts
+
+private def verdierSpanQuotientEvaluationHomotopy {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    SSet.Homotopy (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x))
+      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) where
+  h := (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+    uncurry (verdierSpanQuotientEvaluationFamily h x)
+  h₀ := by
+    change prismEndpoint 0 (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+      uncurry (verdierSpanQuotientEvaluationFamily h x) =
+        SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
+    rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
+    dsimp only [verdierSpanQuotientEvaluationFamily]
+    rw [Category.assoc, fractionSpanEvaluation_source]
+    change (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+      markedSpanSource B.obj (weakEquivalences i)) ≫ q.hom = _
+    rw [vertexFiberι_comp, SSet.const_comp]
+  h₁ := by
+    change prismEndpoint 1 (markedSpanFamily B.obj (weakEquivalences i) x) ≫
+      uncurry (verdierSpanQuotientEvaluationFamily h x) =
+        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+    rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
+    dsimp only [verdierSpanQuotientEvaluationFamily]
+    rw [Category.assoc, fractionSpanEvaluation_target]
+    rfl
+  rel := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro a
+    exact False.elim a.1.property
+
+private def verdierSpanQuotientTriangleFamily {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    markedSpanFamily B.obj (weakEquivalences i) x ⟶ (ihom (Δ[2] : SSet.{u})).obj C.obj :=
+  vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+    fractionEvaluationTriangle q.hom (weakEquivalences i) h.inverts
+
+private lemma verdierSpanQuotientTriangle_leg {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) (k : (Δ[1] : SSet.{u}) ⟶ horn 2 0) (j : Fin 3)
+    (hk : k ≫ (horn 2 0).ι = stdSimplex.δ j) :
+    verdierSpanQuotientTriangleFamily h x ≫ (pre (stdSimplex.δ j)).app C.obj =
+    vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+      markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre k).app B.obj ≫
+        (ihom (Δ[1] : SSet.{u})).map q.hom := by
+  have hp : (pre (stdSimplex.δ j)).app C.obj =
+      (pre (horn 2 0).ι).app C.obj ≫ (pre k).app C.obj := by
+    rw [← NatTrans.comp_app, ← pre_map, hk]
+  dsimp only [verdierSpanQuotientTriangleFamily]
+  rw [hp, ← Category.assoc,
+    Category.assoc (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x),
+    fractionEvaluationTriangle_span]
+  simp only [Category.assoc]
+  rw [(pre k).naturality q.hom]
+
+private lemma verdierLeftQuotientHomotopy_leg {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    (verdierFixedSourceLeftQuotientHomotopy h x).h =
+    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₁).app B.obj ≫
+          (ihom (Δ[1] : SSet.{u})).map q.hom) := by
+  change (verdierFixedSourceLeftHomotopy h x).h ≫
+    markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
+  rw [← Category.assoc, verdierFixedSourceLeftHomotopy_projection, Category.assoc,
+    ← uncurry_natural_right]
+  rfl
+
+private lemma verdierRightQuotientHomotopy_leg {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    (verdierFixedSourceRightQuotientHomotopy h x).h =
+    (β_ (markedSpanFamily B.obj (weakEquivalences i) x) (Δ[1] : SSet.{u})).hom ≫
+      uncurry (vertexFiberι (markedSpanSource B.obj (weakEquivalences i)) x ≫
+        markedSpanInclusion B.obj (weakEquivalences i) ≫ (pre horn₂₀.ι₀₂).app B.obj ≫
+          (ihom (Δ[1] : SSet.{u})).map q.hom) := by
+  change (verdierFixedSourceRightHomotopy i x).h ≫
+    markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom = _
+  rw [← Category.assoc, verdierFixedSourceRightHomotopy_projection, Category.assoc,
+    ← uncurry_natural_right]
+  rfl
+
+/-- 全 roof 族の二変形と元の選択済み分数評価は、同じ実関手三角形の三辺。 -/
+private def verdierSpanQuotientCompositionTriangle {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    FunctorCompositionTriangle (verdierFixedSourceLeftQuotientHomotopy h x)
+      (verdierSpanQuotientEvaluationHomotopy h x)
+        (verdierFixedSourceRightQuotientHomotopy h x) where
+  diagram := internalHomFlipHomEquiv _ _ _ (verdierSpanQuotientTriangleFamily h x)
+  face_zero := by
+    rw [← internalHomFlipHomEquiv_pre_app]
+    rfl
+  face_one := by
+    rw [← internalHomFlipHomEquiv_pre_app,
+      verdierSpanQuotientTriangle_leg h x horn₂₀.ι₀₂ (1 : Fin 3) rfl,
+      verdierRightQuotientHomotopy_leg]
+    rfl
+  face_two := by
+    rw [← internalHomFlipHomEquiv_pre_app,
+      verdierSpanQuotientTriangle_leg h x horn₂₀.ι₀₁ (2 : Fin 3) rfl,
+      verdierLeftQuotientHomotopy_leg]
+    rfl
+
+private lemma verdierSpanQuotientEvaluation_hom {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) :
+    (verdierFixedSourceDenominatorImageIso h x).inv ≫
+      Truncated.HomotopyCategory.homMk
+        (functorEdgeOfSimplicialHomotopy (verdierFixedSourceRightQuotientHomotopy h x)) =
+    Truncated.HomotopyCategory.homMk
+      (functorEdgeOfSimplicialHomotopy (verdierSpanQuotientEvaluationHomotopy h x)) := by
+  apply (Iso.inv_comp_eq (verdierFixedSourceDenominatorImageIso h x)).mpr
+  exact (verdierSpanQuotientCompositionTriangle h x).hom_eq.symm
+
+private def verdierLiftedIdentityHomotopy {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    SSet.Homotopy
+      (SSet.const (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) U := by
+  let H := functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)
+  refine { h := H.h, h₀ := ?_, h₁ := H.h₁, rel := H.rel }
+  change SSet.ι₀ ≫ H.h =
+    SSet.const (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))
+  rw [H.h₀, SSet.const_comp]
+
+private def verdierLiftedIdentityConeRealization {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    HomotopyConeRealization (verdierLiftedIdentityHomotopy h x p U hU) :=
+  homotopyConeRealization _
+
+private def verdierLiftedIdentityCoslice {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      sliceUnder (SSet.yonedaEquiv.symm
+        (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) :=
+  sliceUnderCurry (verdierLiftedIdentityConeRealization h x p U hU).cone.val (by
+    apply SSet.yonedaEquiv.injective
+    rw [Equiv.apply_symm_apply]
+    change (verdierLiftedIdentityConeRealization h x p U hU).cone.vertex = _
+    exact (verdierLiftedIdentityConeRealization h x p U hU).vertex_eq)
+
+private lemma verdierLiftedIdentityCoslice_projection {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    verdierLiftedIdentityCoslice h x p U hU ≫
+      sliceUnderProjection (SSet.yonedaEquiv.symm
+        (U.app (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = U := by
+  rw [verdierLiftedIdentityCoslice, sliceUnderCurry_projection]
+  exact (verdierLiftedIdentityConeRealization h x p U hU).cone.property
+
+private lemma verdierLiftedIdentityCone_triangle {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    Nonempty (Truncated.Edge.CompStruct
+      (functorEdgeOfSimplicialHomotopy
+        (functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U))
+      (functorEdgeOfSimplicialHomotopy
+        (functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)))
+      (functorEdgeOfSimplicialHomotopy
+        (verdierLiftedRightHomotopy i x U))) := by
+  apply compStruct_nonempty_of_homMk_fac
+  rw [functorHomHomotopy_hom]
+  change (verdierLiftedDenominatorIso h x p U hU).hom ≫
+    ((verdierLiftedDenominatorIso h x p U hU).inv ≫ _) = _
+  rw [Iso.hom_inv_id_assoc]
+
+private def verdierLiftedIdentityConeImageHomotopy {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    SSet.Homotopy (SSet.const (q.hom.app (Opposite.op ⦋0⦌) x))
+      (markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) := by
+  let H := functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)
+  let J := functorHomotopyPostcomp H p
+  refine { h := J.h, h₀ := ?_, h₁ := ?_, rel := J.rel }
+  · change SSet.ι₀ ≫ J.h = SSet.const (q.hom.app (Opposite.op ⦋0⦌) x)
+    rw [J.h₀, Category.assoc, hU, SSet.const_comp]
+    change SSet.const (q.hom.app (Opposite.op ⦋0⦌)
+      ((markedSpanFamilyProjection B.obj (weakEquivalences i) x).app
+        (Opposite.op ⦋0⦌) (verdierIdentitySpanFamily h x))) = _
+    rw [verdierIdentitySpanFamily_projection]
+  · change SSet.ι₁ ≫ J.h = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom
+    rw [J.h₁, hU]
+
+private lemma verdierLiftedIdentityConeImage_triangle {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    Nonempty (Truncated.Edge.CompStruct
+      (functorEdgeOfSimplicialHomotopy (verdierFixedSourceLeftQuotientHomotopy h x))
+      (functorEdgeOfSimplicialHomotopy (verdierLiftedIdentityConeImageHomotopy h x p U hU))
+      (functorEdgeOfSimplicialHomotopy (verdierFixedSourceRightQuotientHomotopy h x))) := by
+  obtain ⟨τ⟩ := verdierLiftedIdentityCone_triangle h x p U hU
+  let P := (ihom (markedSpanFamily B.obj (weakEquivalences i) x)).map p
+  let τ' := τ.map ((truncation 2).map P)
+  have hl : (((functorEdgeOfSimplicialHomotopy
+      (functorHomotopyPostcomp (verdierFixedSourceLeftHomotopy h x) U)).map
+        ((truncation 2).map P))).edge =
+      (functorEdgeOfSimplicialHomotopy (verdierFixedSourceLeftQuotientHomotopy h x)).edge := by
+    change P.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv
+      (curry ((verdierFixedSourceLeftHomotopy h x).h ≫ U))) =
+      SSet.yonedaEquiv (curry ((verdierFixedSourceLeftHomotopy h x).h ≫
+        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom))
+    rw [← SSet.yonedaEquiv_comp]
+    dsimp only [P]
+    rw [← curry_natural_right, Category.assoc, hU]
+  have hr : (((functorEdgeOfSimplicialHomotopy
+      (verdierLiftedRightHomotopy i x U)).map ((truncation 2).map P))).edge =
+      (functorEdgeOfSimplicialHomotopy (verdierFixedSourceRightQuotientHomotopy h x)).edge := by
+    change P.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv
+      (curry ((verdierFixedSourceRightHomotopy i x).h ≫ U))) =
+      SSet.yonedaEquiv (curry ((verdierFixedSourceRightHomotopy i x).h ≫
+        markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom))
+    rw [← SSet.yonedaEquiv_comp]
+    dsimp only [P]
+    rw [← curry_natural_right, Category.assoc, hU]
+  have hc : (((functorEdgeOfSimplicialHomotopy
+      (functorHomHomotopy (verdierLiftedIdentityCone h x p U hU))).map
+        ((truncation 2).map P))).edge =
+      (functorEdgeOfSimplicialHomotopy
+        (verdierLiftedIdentityConeImageHomotopy h x p U hU)).edge := by
+    change P.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv
+      (curry (functorHomHomotopy (verdierLiftedIdentityCone h x p U hU)).h)) =
+      SSet.yonedaEquiv (curry ((functorHomHomotopy
+        (verdierLiftedIdentityCone h x p U hU)).h ≫ p))
+    rw [← SSet.yonedaEquiv_comp]
+    dsimp only [P]
+    rw [← curry_natural_right]
+  exact ⟨⟨τ'.simplex, τ'.d₂.trans hl, τ'.d₀.trans hc, τ'.d₁.trans hr⟩⟩
+
+private lemma verdierLiftedIdentityConeImage_evaluation {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x : B.obj _⦋0⦌) {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ C.obj) [LeftFibration p]
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶ E)
+    (hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (verdierLiftedIdentityConeImageHomotopy h x p U hU)) =
+    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (verdierSpanQuotientEvaluationHomotopy h x)) := by
+  obtain ⟨τ⟩ := verdierLiftedIdentityConeImage_triangle h x p U hU
+  apply (cancel_epi (verdierFixedSourceDenominatorImageIso h x).hom).mp
+  exact (Truncated.HomotopyCategory.homMk_comp_homMk τ).trans
+    (verdierSpanQuotientCompositionTriangle h x).hom_eq.symm
 
 end SerrePositivity.KST.LocalizingInvariants
