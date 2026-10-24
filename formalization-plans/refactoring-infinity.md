@@ -104,15 +104,15 @@
 | 1-3 | F1B の `KanSection*` 重複を削除し原本へ直接置換。現状の宣言数と差分を再検証し、独自内容だけを残す | R8 段階 3 | F1b（10-19 以降未変更） | 1-2 の後（F1B 監査が原本の閉包を通すため） | 2026-10-23 17:45 JST（R-A） |
 | 1-4 | `Core/Fibrations.lean`・`Core/MappingSpace.lean` の入口（定義は動かさず import と docstring で目次化）、R6 は `F1/Fibrations.lean` | R6・R7・R9 | なし | 即時 | 2026-10-23 22:05 JST |
 | 1-5 | `Stable/SliceOpposite` の `sliceOverOpIso` を `Core/SliceOpposite` へ移し、旧ファイルを削除・参照を直接更新 | R5 の前半 | D（10-18 以降未変更） | §3 | 2026-10-23 17:45 JST（Core・R-A 対象。Stable 集約は R-B） |
-| 2-1 | `Stable/Cocone`・`UniverseLimits`・`ColimitDiagramIso`・`Definition` の `HasFiniteLimits` を `Core/Colimit*` へ（旧ファイルを削除して直接置換） | R2・R22 | D | D-7 d 完了直後 | |
-| 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | |
-| 2-3 | `Derived/LimitDiagramIso`・`CofinalLimitExistence` を Core へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | |
-| 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST の旧ファイルを削除して直接置換。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | |
-| 2-5 | `DGNerve/SemifreeLimits` を Derived（または DifferentialGraded）へ、DGNerve の旧ファイルを削除して直接置換 | R24 | D | D の区切り | |
+| 2-1 | `Stable/Cocone`・`UniverseLimits`・`ColimitDiagramIso`・`Definition` の `HasFiniteLimits` を `Core/Colimit*` へ（旧ファイルを削除して直接置換） | R2・R22 | D | D-7 d 完了直後 | R-B：main 適用済み、指定9集約・verify.sh 全24監査・sorry閉包通過（検証ソース `eec26ad27`） |
+| 2-2 | `Stable/AdjunctionHomotopyCategory` を `F1B/AdjunctionHomotopyCategory` へ | R14 | D・F1b | 2-1 と同時 | R-B：main 適用済み、指定9集約・verify.sh 全24監査・sorry閉包通過（検証ソース `eec26ad27`） |
+| 2-3 | `Derived/LimitDiagramIso` を Core、`CofinalLimitExistence` を F1B へ、`Localization*Criterion`・`DeformationLocalization` を F1B へ | R23 | D・F1b | D の区切り | R-B：main 適用済み、指定9集約・verify.sh 全24監査・sorry閉包通過（検証ソース `eec26ad27`） |
+| 2-4 | `KST/SConstruction/VertexPrescribedExtension`・`KST/LocalizingInvariants/LimitProjectionExistence` の内容を Core へ移し KST の旧ファイルを削除して直接置換。Stable → KST の import を解消 | R3 | K-S•・Sp・D | 三レーンの区切り | R-B：main 適用済み、指定9集約・verify.sh 全24監査・sorry閉包通過（検証ソース `eec26ad27`） |
+| 2-5 | `DGNerve/SemifreeLimits` を Derived（または DifferentialGraded）へ、DGNerve の旧ファイルを削除して直接置換 | R24 | D | D の区切り | R-B：main 適用済み、指定9集約・verify.sh 全24監査・sorry閉包通過（検証ソース `eec26ad27`） |
 | 2-6 | `F2/Ind/ElementsDiagram` の密度定理を F1 の前層の層へ | R15 | F1 | F1-7 完了後 | R-C：d5cd974e2、密度59本・補助81本適用、verify.sh・関係監査通過 |
 | 2-7 | `F2/SpaceLimitShapes` の条件付き版を無条件定理の系に（3 ファイル） | R17 | F1b | a7 完了・差し替えと同時 | R-C：bdf8d1c6a 適用、verify.sh・関係監査通過 |
 | 2-8 | `HomotopyLimits/Local*`・`Sigma*`・`Sifted*` を `F2/Presentable/` へ | R16 | N・P | P-1 f・g 完了後 | R-C：ba39c0897、90本適用、verify.sh・関係監査通過 |
-| 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | |
+| 3-1 | その他の完全一致・準重複：`F2/JoinRight*`↔`F1/JoinDiagramRight*`、Stable↔KST 4 組、`Derived/DGCommaAug*`↔`DGModuleAugmentation*` 17 組、EInfinity 19 組、HomotopicalAlgebra 8 組 | R8 §3 | F1b・K-S•・D・E2 | 各レーンの区切り | R-B分：Stable/KST 4組・一般宣言14組・Prop証明4本を統合。データ19組は承認済み方針によりD再開後判断。全監査通過 |
 | 3-2 | `PinchedInterval` 6 本・`KanScaffold`／`KanCocartesian` 15 本の精査 | R8 段階 4 | F1b | F1b-5 a7 完了後 | |
 | 4-1 | 休止中の Cat∞ 値 straightening `F1/Cocartesian*`（3.7 万行）を `F1/Cocartesian/` へ移し集約から外す | R11 | F1 | R-A、直接置換・入口の検証後 | 2026-10-23 22:41 JST |
 | 4-2 | F2 最上位を `F2/CatInfinity/`（完成）と `F2/FilteredExchange/`（作業中）へ | R19 | F1b | a7 完了後 | R-C：65c0881c8、2,210本適用、verify.sh・関係監査通過 |
@@ -259,6 +259,8 @@ Derived の一般宣言14組の旧名→正本名は [対応表](archive/refacto
 新規共通 Prop 補題 `augmentation_proof_of_endpoint_phases`・`augmentation_proof_of_reindex_cases` は `Derived/AugmentationProofCases`。既存4定理の型を保持し、証明だけを source commit `1a412f887a63d14b73fed3fd0f2af52207a6f25e` の cherry-pick で共有した。データ86宣言の本体は名前置換以外を保持。型依存データ19組は [差分表](archive/refactor-near-duplicates-derived-2026-10-23.md) に保存し、Dレーン再開後の判断へ保留する。
 
 全 JSON と適用ログは [再適用計画](archive/refactor-r-b-reapply-2026-10-23/manifest.json)。R23 の CofinalLimitExistence は型の閉包に従い F1B に配置。ZeroBoundaryExtension は InitialExtension・一般 InitialOpposite と同時に Core へ移し、Core→Stable と Stable→KST を残さない。
+
+R-B main 適用検証（2026-10-24）：35モジュール移動、29宣言の本文保持抽出、重複12モジュール削除。検証ソース `eec26ad273f2d26b6eedc339a21f365bac323371`。Core・F1・F1B・F2・HomotopyLimits・Stable・Derived・DGNerve・KST/SConstruction の集約、元のF1 import経由のinstance可視性、`scripts/refactor/verify.sh` の全24監査と空のsorry閉包を確認した。実行記録は [検証結果](archive/refactor-r-b-reapply-2026-10-23/main-validation-state.json) と [本文・依存監査](archive/refactor-r-b-reapply-2026-10-23/main-completion-audit.json)。R-B は rebase せず R-C の後の main に JSON 計画を再適用した。
 
 ## 6. 仮定入力の一覧（完成後に外す）
 

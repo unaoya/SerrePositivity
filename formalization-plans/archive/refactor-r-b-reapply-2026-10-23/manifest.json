@@ -57,10 +57,10 @@
     "No new sorry/axiom; preserve every declaration type/proof except previously approved four Prop proof replacements."
   ],
   "current_universe_sset_maps_importer_count": 18,
-  "source_path_warning": "main checkout contains R-A uncommitted edits and not-yet-applied R-C changes; no source paths/hashes may be treated as post-R-C facts.",
+  "source_path_warning": "Historical preparation paths were refreshed against ad0422789 after R-C; current main application reports are authoritative.",
   "tool_sha256": "1c0cffe9428cf4588431c82a3594472c0f3fbb89717aefe6bb8bb56d57c8547a",
   "verify_script_sha256": "cf843dc8f6557ddb7ae9e211c1aa4a779119c3edeb06fcff5784e0a901752fb2",
-  "preparation_status": "complete: JSON plans and three source commit candidates prepared; main application not started",
+  "preparation_status": "complete; reapplied on main after R-C and fully verified",
   "validation_summary": {
     "main_read_only_dry_runs": 7,
     "isolated_fixture_phases": 13,
@@ -70,17 +70,20 @@
     "missing_project_modules": 0,
     "new_higher_layer_diagnostics_beyond_current_F1B_aggregate": 0,
     "DGNerve_direct_Derived_edges": 0,
-    "conditional_R3_requires_explicit_permission": true
+    "conditional_R3_requires_explicit_permission": false
   },
   "method_change": "User superseded worktree rebase workflow: keep refactor/r-b unchanged; reapply on main after R-C and explicit main 空き signal.",
   "application": {
     "base": "ad0422789",
-    "status": "all source moves applied; Core build passed, aggregate builds and verify.sh pending",
+    "status": "complete: specified aggregates, original F1 instance visibility, verify.sh and all 24 audits passed",
     "whole_module_moves": 35,
     "duplicate_modules_deleted": 12,
     "declaration_extractions": 29,
     "shared_data_invariant": "86 unchanged modulo approved generic-name replacements",
     "Prop_types_invariant": "four headers identical to ad0422789",
-    "main_write_exclusivity": "R-B only, user authorization 2026-10-24"
-  }
+    "main_write_exclusivity": "R-B only, user authorization 2026-10-24",
+    "source_head": "eec26ad273f2d26b6eedc339a21f365bac323371",
+    "finished_jst": "2026-10-24T13:25:11.113090+09:00"
+  },
+  "future_stage_order_completed": true
 }

@@ -217,5 +217,5 @@
   "partial_source_files_remain_non_shim": true,
   "Prop_cherry_source": "1a412f887a63d14b73fed3fd0f2af52207a6f25e",
   "duplicate_modules_removed": 12,
-  "verification_status": "static source preservation passed; Lean build and all audits pending"
+  "verification_status": "passed: nine aggregates, original F1 instance visibility, verify.sh all 24 audits, empty sorry closure, final structural/source audit"
 }

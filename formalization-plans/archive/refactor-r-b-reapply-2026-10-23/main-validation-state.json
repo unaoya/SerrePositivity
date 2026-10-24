@@ -1,0 +1,71 @@
+{
+  "source_head": "eec26ad273f2d26b6eedc339a21f365bac323371",
+  "started_jst": "2026-10-24T12:58:42.875907+09:00",
+  "stages": {
+    "orphan-cache-cleanup": {
+      "status": "passed",
+      "log": "/tmp/r-b-main-orphan-clean.log",
+      "rc": 0,
+      "elapsed_seconds": 2.07
+    },
+    "specified-aggregate-builds": {
+      "status": "passed",
+      "log": "/tmp/r-b-main-aggregates-build.log",
+      "rc": 0,
+      "elapsed_seconds": 2488.81,
+      "reused_from_source_head": "556dc9993e342eee8289593abf1e21b5eab9b0b0",
+      "reuse_reason": "Only two downstream Fibration consumers and the LocalizingInvariants audit changed, outside all nine aggregate closures; F1 imports and instance closure unchanged."
+    },
+    "F1-original-import-instance-visibility": {
+      "status": "passed",
+      "log": "/tmp/r-b-main-f1-instance-visible.log",
+      "rc": 0,
+      "elapsed_seconds": 10.64,
+      "reused_from_source_head": "556dc9993e342eee8289593abf1e21b5eab9b0b0",
+      "reuse_reason": "Only two downstream Fibration consumers and the LocalizingInvariants audit changed, outside all nine aggregate closures; F1 imports and instance closure unchanged."
+    },
+    "verify.sh": {
+      "status": "passed",
+      "log": "/tmp/r-b-main-verify-console.log",
+      "rc": 0,
+      "elapsed_seconds": 1585.29
+    }
+  },
+  "active_stage": "complete",
+  "retained_gate_closure_project_modules": 15235,
+  "verify_log_offset": 13324,
+  "audit_rc": {
+    "audit_infinity_core": 0,
+    "audit_infinity_f1": 0,
+    "audit_infinity_f1b": 0,
+    "audit_infinity_f1_f1b": 0,
+    "audit_infinity_f2": 0,
+    "audit_f2_ind": 0,
+    "audit_f2_compact": 0,
+    "audit_f2_idempotent": 0,
+    "audit_infinity_presentable": 0,
+    "audit_homotopy_limits": 0,
+    "audit_infinity_stable": 0,
+    "audit_derived_infinity": 0,
+    "audit_derived_gluing": 0,
+    "audit_dg_nerve": 0,
+    "audit_coherent_nerve": 0,
+    "audit_dold_kan_comparison": 0,
+    "audit_einfinity": 0,
+    "audit_kst_fibration": 0,
+    "audit_kst_s_construction": 0,
+    "audit_localizing_invariants": 0,
+    "audit_kst_nonconnective": 0,
+    "audit_kst_spectra": 0,
+    "audit_spectra": 0,
+    "audit_refactor_infinity": 0
+  },
+  "build_success_lines": [
+    "Build completed successfully (25315 jobs).",
+    "Build completed successfully (32945 jobs)."
+  ],
+  "sorry_closure_empty": true,
+  "log_failures": {},
+  "finished_jst": "2026-10-24T13:25:11.113090+09:00",
+  "all_passed": true
+}

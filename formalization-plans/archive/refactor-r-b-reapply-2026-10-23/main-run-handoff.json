@@ -1,0 +1,26 @@
+{
+  "source_head": "eec26ad273f2d26b6eedc339a21f365bac323371",
+  "live_exec_session": null,
+  "runner": "/tmp/r-b-run-main-validation-final.py",
+  "active_sequence": [
+    "verify.sh"
+  ],
+  "state_file": "formalization-plans/archive/refactor-r-b-reapply-2026-10-23/main-validation-state.json",
+  "aggregate_log": "/tmp/r-b-main-aggregates-build.log",
+  "verify_console": "/tmp/r-b-main-verify-console.log",
+  "instruction": "Poll the existing live session to terminal. Never launch a second lake build or restart solely because observation times out. Fix confirmed failures, then rerun required gates.",
+  "source_changes_complete": true,
+  "whole_module_moves": 35,
+  "declaration_extractions": 29,
+  "duplicate_modules_removed": 12,
+  "data_bodies_unchanged": 86,
+  "four_Prop_headers_unchanged": true,
+  "pending_ownership_permissions": [],
+  "main_exclusive_owner": "R-B",
+  "unrelated_user_changes_snapshot": "/tmp/r-b-main-entry-status.json",
+  "final_steps": [],
+  "retained_gates": "nine aggregates and F1 visibility passed at 556dc9993; only two downstream Fibration consumers and one audit changed, outside the full aggregate closure",
+  "status": "complete",
+  "tested_source_head": "eec26ad273f2d26b6eedc339a21f365bac323371",
+  "finished_jst": "2026-10-24T13:25:11.113090+09:00"
+}
