@@ -2555,4 +2555,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputComparison
 
 public import SerrePositivity.KST.SConstruction.DGNativePointLeft
 
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
+public import SerrePositivity.KST.SConstruction.CoherentHomIntervalEdgeParameter
+public import SerrePositivity.KST.SConstruction.DGKInputClosedComparisonImage
+public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallInputImage
+
 /-! # ∞-S• 構成と連結 K 理論 -/

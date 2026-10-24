@@ -31083,3 +31083,69 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_left
 #print axioms SerrePositivity.KST.SConstruction.dgNerveTensorSimplex_point_left
+
+#check @SerrePositivity.KST.SConstruction.nativeLabel_signedSwap_braiding
+#print axioms SerrePositivity.KST.SConstruction.nativeLabel_signedSwap_braiding
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_label
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGRightTensorAction_label
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_label
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeActionSimplex_label
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_label_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeAction_label_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_label_app
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_label_app
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_label_closed
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGNativeCoreAction_label_closed
+
+#check @SerrePositivity.KST.SConstruction.presentedPerfectDGLabelAction_closed_perfect
+#print axioms SerrePositivity.KST.SConstruction.presentedPerfectDGLabelAction_closed_perfect
+
+#check @SerrePositivity.KST.SConstruction.coherentHomIntervalEdgeParameter
+#print axioms SerrePositivity.KST.SConstruction.coherentHomIntervalEdgeParameter
+
+#check @SerrePositivity.KST.SConstruction.coherentHomIntervalEdgeFromParameter
+#print axioms SerrePositivity.KST.SConstruction.coherentHomIntervalEdgeFromParameter
+
+#check @SerrePositivity.KST.SConstruction.coherentHomIntervalEdge_parameter
+#print axioms SerrePositivity.KST.SConstruction.coherentHomIntervalEdge_parameter
+
+#check @SerrePositivity.KST.SConstruction.dgKInputNu_intervalFamily
+#print axioms SerrePositivity.KST.SConstruction.dgKInputNu_intervalFamily
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoParameter
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoParameter
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_parameter
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_parameter
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuParameter
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuParameter
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_nu
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoSquare_nu
+
+#check @SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuParameter_ambient
+#print axioms SerrePositivity.KST.SConstruction.dgKInputClosedIsoNuParameter_ambient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputPerfectIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputPerfectIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_native
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_native
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_inv
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallInputLabelIso_inv
+
+#check @SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare_native
+#print axioms SerrePositivity.KST.SConstruction.dgOdotAlgebraSmallNuSquare_native

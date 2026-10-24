@@ -1,13 +1,14 @@
 # K-S• → K-基盤 1・2：∞-S• と局所化不変量
 
-> **v3（2026-10-24）**：K-S• レーンの正本。所有：KST/SConstruction/。残りは K-10 c → d → e。VertexPrescribedExtension・ZeroBoundaryExtension と Stable 由来の 4 本は R で Core/・Stable/ へ移動済み。
+> **v3（2026-10-24）**：K-S• レーンの正本。所有：KST/SConstruction/。K-10 c は完了。残りは d → e。VertexPrescribedExtension・ZeroBoundaryExtension と Stable 由来の 4 本は R で Core/・Stable/ へ移動済み。
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-S• → K-基盤。L1c〜f の後、L3 は非連結 K を BGT (a) のみで（暫定 (b) は使わない）、続けて局所化不変量・Tamme・Land–Tamme（K-基盤 1・2）。
 
-## 引き継ぎ（2026-10-23）
+## 引き継ぎ（2026-10-24）
 
 ### 現在地
-- コーディネータの停止指示（2026-10-23）に従い、左定数 native tensor の単位挿入4宣言で区切る。L1a〜f は厳密 dg 入力の B 案で完了。後続の L3・K-基盤 1・2 と具体的 LT は未完。固定 S・ν・K の公開界面を維持し、一般の StableCategory 上の K は作らない。
+- 具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚の回収は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End から元の終域 End への比較射の同値性は主張しない。
+- K-10 c は完了。角→小模型の同じ Yoneda の Morita 比較、指定対角商 End の具体的模型と元の右脚、元の native 比較四角形の ν 像と一回 Perf 延長の順逆成分を保持する。厳密 dg 入力の固定 S・ν・K を維持し、K-10 d・e は未完。二段目 c の完了で引き継ぐ。
 - `DGNativePointLeft`：元の左増大と閉単位の挿入、dg 第二包含への厳密な回収、固定左対象に対する全次数・全作用素の native tensor 比較を供給。対象ビルド4574 jobs と4宣言の順序付き限定公理監査が成功（標準三公理のみ、ModelCategory 引数なし）。元の非対称 Serre 対角の対称性は仮定しない。
 - Ω から既存の path homotopy fiber への全基点 π_* 同型は証明済み。前段の Kan 実現と同じ fiber は共通 Kan 模型からの全基点 π_* 同型で比較済み。元の構造射の随伴と零行 loop 射の照合は証明済み。終点固定 path による fiber 内の実ホモトピーは証明済み。元の円の loop 包含との厳密な分解と、元の随伴の全基点 π_* 同型まで証明済み。境界商の BF Ω スペクトルに加え、元の K 空間を零段とする `kOmegaSpectrum` を構成し、全負整数次数の消滅まで証明済み。
 - raw ρ の cofiber・gapped 性と、同じ C 内の選択を保つ `mcCarthyRho` を構成済み。面・退化、時刻零、subobject・quotient の strict 回収を証明済み。
@@ -82,10 +83,10 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 未検証4ファイルを `SerrePositivity/KST/SConstruction/` に未追跡のまま保留し、集約・公式監査から切り離す。`CoherentHomIntervalEdgeParameter.lean`：`coherentHomIntervalEdge_parameter` が既定200000 heartbeat の whnf timeout。`DGKInputClosedComparisonImage.lean`：上記に依存し、四角形のパラメータ同定が未検証。`PresentedPerfectDGNativeLabel.lean`：右 tensor 作用のラベル固定証明で signedSwap と braiding の書き換えが失敗。`DGOdotTargetSmallInputImage.lean`：前二つへの特殊化、未コンパイル。未検証の `DGKInputClosedComparison` リファクタは保存済み2e7d9d688の定義へ戻した。検証済み `DGNativePointLeft` と集約・監査・本計画のみを停止コミットに含める。
+- なし（本引き継ぎと同時に所有ファイルだけを保存）。引き継いだ未追跡4ファイルは修復して集約・公式監査へ接続済み。`DGKInputClosedComparison` の保存済み定義は変更せず、同じ辺のパラメータ等式で接続する。
 
 ### 既知の問題
-- 停止時の対象ビルド：DGNativePointLeft 4574 jobs、集約 SConstruction 12176 jobs が終了コード0。新規4宣言と公式の全12241宣言の順序付き公理監査も終了コード0、標準三公理のみ・宣言型に ModelCategory 引数なし。担当 import 閉包8373モジュールは全て解決し、EInfinity と未検証4ファイルを含まない。旧復旧session 73778はハンドル消失・成功未確認だが、新しい停止検証で集約成功を確認済み。全体ビルドは再実行していない。
+- 現在の集約ビルドと公式監査は成功。接続した4ファイル22宣言を含め標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包8353モジュールは全て解決し、追加は今回の所有4ファイルだけ。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
 - 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
@@ -98,11 +99,19 @@
 
 ### 次の一手
 - **厳密 dg 入力に限定**（ユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
-- 新チャットの最初の工程：未接続の `PresentedPerfectDGNativeLabel.lean` の固定ラベル証明で、signedSwap と登録 braiding の等号を抽象 Hom の補題として明示し、既定上限のままコンパイル・公理監査する。検証済み `dgNerveTensorSimplex_point_left` を使って元の native 関手族の全ラベル成分を一回 Perf 延長へ照合する。その後、`CoherentHomIntervalEdgeParameter.lean` の Yoneda パラメータ計算を抽象辺で分離し、`DGKInputClosedComparisonImage.lean`、`DGOdotTargetSmallInputImage.lean` を依存順に修復・検証し、保存済み定義へ戻した `DGKInputClosedComparison` のリファクタも再検証してから公開接続する（暫定4〜8時間、上限保証なし）。固定 S・ν・K と元の閉同型・同じ native 辺を保持する。Perf(gluing) と Perf lax pullback は D2 β4、同じ実商の Verdier 列は D β3 を待つ。S 内の自然な零化・長方形全体と ν 像の等式は未供給で、対象別収縮から自然な零化を仮定しない。商・分数・局所化は Sp 正本と D β3 を読み取り専用で使う（LT §1.2、100〜200時間）。
+- **K-10 c 三段目（固定）**：
+  1. [x] 角→小模型 Yoneda の既存 Morita・一回 Perf 同値と固定 S の辺を確認。
+  2. [x] native ラベル評価を修復し、同じ一回 Perf 延長へ照合。
+  3. [x] 抽象 Hom 辺の Yoneda パラメータ計算を修復。
+  4. [x] 元の比較四角形の ν 像を、同じ全 Hom 作用へ照合。
+  5. [x] cone 比較の順逆成分・元の右脚を保持して小模型へ接続。
+  6. [x] Sp・D の正本 API を使い、対角像の商 End と元の右対象 End を同定。
+  7. [x] 集約ビルド・公理監査・instance 仮定検査を通し、引き継ぎを更新。
+- 次の二段目は K-10 d：D2 G-1 f の Perf(gluing) と Perf lax pullback の同定、D β3 の同じ実商の Verdier 列を固定 S・ν と Sp の `IsVerdierSequence` へ接続する。S 内の自然な零化・長方形全体は別途必要で、対象別 ε の収縮から仮定しない。商・分数・局所化は Sp 正本、dg 対象供給は D 正本を使う。c の具体的 End 同定を ∞ Verdier 列の完成とは数えない。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 停止検証ログ：`/tmp/kst-s-stop-point-left-target.log`、`/tmp/kst-s-stop-focused.log`、`/tmp/kst-s-stop-target.log`、`/tmp/kst-s-stop-audit.log`。未検証ファイルの診断は `/tmp/kst-coherent-hom-interval-parameter2.log`、`/tmp/kst-input-closed-comparison-image3.log`、`/tmp/kst-presented-native-label.log`。後二つのν照合系は全体として未検証。元の native 比較の ν 像と一回 Perf 比較の照合、Perf lax pullback、S 内零化・長方形全体、具体的 LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-v3-connected-build.log`、`/tmp/kst-s-v3-connected-audit.log`。次は K-10 d。Perf lax pullback、S 内零化・長方形全体、具体的 LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 
@@ -220,7 +229,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 ## 7. K-基盤 2（dg 増強流）
 
 - **Tamme**：一般の Cat^perf の半直交分解について、任意の局所化不変量の同じ実値の分裂、元の包含・切断・射影の回収、実 Sp 積錐の ∞ 極限性と同じ分裂の可逆辺まで証明済み。元の F2 lax pullback の coherent 冪等完備性を C・D の完備性だけから証明し、同じ三頂点・両包含・第一射影を保つ Cat^perf 上の Tamme 分裂へ接続済み（Tamme 2018 §1）。残りは dg gluing との具体的同定で、D2 β4 の型確定後に接続する。Cat_∞ の極限は α2b、dg gluing 比較は D2 の β4、Sp の抽象分裂は K-5 を読み取り専用で使う。
-- **Land–Tamme の ⊙**：元の非可換 dg 代数四角形から実延長像を保持する小模型・全 Hom 自然な比較対角と実 dg gluing を構成。指定対角商 End を右加群の向きで代数化し、元の右代数射を保持。D β3 の実商と D の生成 API により、元の ⊙→指定商の実一回 Perf 延長の Morita／準同値／native 同値を生成仮定なしで供給済み。固定 S の入力・実右三角形・ν/K 像と同値も供給済み。全 Hom・単位・全次数合成を保つ実 cone 関手、固定前像の既存収縮を持つ ContractedFunctor と既存商延長、元の関手・End・ε の回収、実 ⊙→元の終域代数の比較と元の右脚を構成。商 cone 作用の同じ tensor 評価と元の三段同型は、元の比較代数射の自由代表作用に全 Hom 自然で、同じ比較・逆比較・閉零自然同型を供給。評価した同じ cone 点を含む小さい実 Perf 模型を構成し、同じ二作用・元の三段同型・全 Hom 比較を保持済み。元の Hom end の入力閉同型と逆律、実一回 Perf 延長の指定同型・全 Hom 自然性と順逆成分回収、元の比較代数射の実延長と同じ小模型内の cone 一回延長との標準合成比較を保持する全次数比較・逆比較・閉零自然同型まで供給済み。元の終域から同じ小模型への厳密 Yoneda を、元の自由代表 End への準同値とその包含へ厳密に分解し、D の自由生成 API から Morita と同じ一回 dg Perf 延長の準同値／native 同値を追加仮定なしで供給済み。同じ固定 S 辺の Morita・ν の元の完全射の同値・K の全整数 π 同型と Sp 辺の可逆性、元の比較代数射との実三角形と同じ ν/K 像も供給済み。元の閉同型の宇宙持ち上げ・入力 Hom end の同じ閉同型と native core の実辺、固定 S の標準区間比較四角形と両対象端の固定・指定三辺の選択二単体、その同じ ν/K 像を供給済み。残りは元の native 比較四角形の ν 像と元の一回 Perf 比較の照合、D2 β4 による Perf(gluing) と元の Perf lax pullback の同定、同じ実商の D β3 Verdier 列・idempotent completion 後の実比較、S 内の自然な零化・長方形全体と ν 像の等式。対象別 ε の収縮を S 内の自然な零化と取り違えない。商・局所化 API は Sp 正本と D β3、生成 API は D から読み取り専用で使う（Land–Tamme 2019 §1.2 Lemma 1.11、100〜200時間）。E₁ 環スペクトル・HA §2–4 は構成しない。
+- **Land–Tamme の ⊙**：元の非可換 dg 代数四角形から実延長像を保持する小模型・全 Hom 自然な比較対角と実 dg gluing を構成。指定対角商 End を右加群の向きで代数化し、元の右代数射を保持。D β3 の実商と D の生成 API により、元の ⊙→指定商の実一回 Perf 延長の Morita／準同値／native 同値を生成仮定なしで供給済み。固定 S の入力・実右三角形・ν/K 像と同値も供給済み。全 Hom・単位・全次数合成を保つ実 cone 関手、固定前像の既存収縮を持つ ContractedFunctor と既存商延長、元の関手・End・ε の回収、実 ⊙→元の終域代数の比較と元の右脚を構成。商 cone 作用の同じ tensor 評価と元の三段同型は、元の比較代数射の自由代表作用に全 Hom 自然で、同じ比較・逆比較・閉零自然同型を供給。評価した同じ cone 点を含む小さい実 Perf 模型を構成し、同じ二作用・元の三段同型・全 Hom 比較を保持済み。元の Hom end の入力閉同型と逆律、実一回 Perf 延長の指定同型・全 Hom 自然性と順逆成分回収、元の比較代数射の実延長と同じ小模型内の cone 一回延長との標準合成比較を保持する全次数比較・逆比較・閉零自然同型まで供給済み。元の終域から同じ小模型への厳密 Yoneda を、元の自由代表 End への準同値とその包含へ厳密に分解し、D の自由生成 API から Morita と同じ一回 dg Perf 延長の準同値／native 同値を追加仮定なしで供給済み。同じ固定 S 辺の Morita・ν の元の完全射の同値・K の全整数 π 同型と Sp 辺の可逆性、元の比較代数射との実三角形と同じ ν/K 像も供給済み。元の閉同型の宇宙持ち上げ・入力 Hom end の同じ閉同型と native core の実辺、固定 S の標準区間比較四角形と両対象端の固定・指定三辺の選択二単体、その同じ ν/K 像を供給済み。元の native 比較四角形の ν 像と同じ一回 Perf 延長の順逆成分の照合も供給済み。残りは D2 β4 による Perf(gluing) と元の Perf lax pullback の同定、同じ実商の D β3 Verdier 列・idempotent completion 後の実比較、S 内の自然な零化・長方形全体と ν 像の等式。対象別 ε の収縮を S 内の自然な零化と取り違えない。商・局所化 API は Sp 正本と D β3、生成 API は D から読み取り専用で使う（Land–Tamme 2019 §1.2 Lemma 1.11、100〜200時間）。E₁ 環スペクトル・HA §2–4 は構成しない。
 - **主定理**：Tamme の分裂と上の Verdier 列から、B′ を ⊙ に置き換えた四角形を全ての局所化不変量が引き戻しに送ると証明する。dg の対象供給と ∞ 圏の形式的議論を接続する（Land–Tamme §2、60–120時間）。 Cat^perf 側には `PerfectLaxQuotient` の実商・完備化入力と二脚の比較を供給済み。完備化後の射は厳密 Verdier 商と仮定せず、包含の零化から普遍差への指定比較正方形を構成し、その全単体を Cat^perf へ持ち上げ済み。元の二つの Verdier 図式を含む全比較長方形と外周を Cat^perf に保持し、同じ Sp 値の比較正方形の引き戻し性を証明済み。元の C・D の値の BF 積に対する両射影を保つ Tamme 同値も証明済み。同じ全図式を元の C・D・完備化先の値の実 BF 積へ移し、四頂点・全関手同型・四成分・四辺の自然性・引き戻し性を保持済み。元の商の二脚と完備化後の商射の二脚も全比較済み。移送後の四辺は元の包含・両射影、対角、完備化後の元の二脚の実積射へ Arrow の等号で照合済み。元の実 BF 四辺に境界を固定し、元の左端の値を頂点・元の完備化後の二脚を脚とする実 Sp 極限錐まで供給済み。Cat^perf の実商・完備化を入力とする抽象切除は完了。dg gluing と ⊙ の具体的同定を追加仮定で代用せず、具体的主定理はその接続後に数える。 固定 dg 始域 S 上の現行 K-10 接続は `DGKRelativeInvariant`：E:S→Sp と `IsRelativeLocalizingInvariant (dgKInputNu A) E` を使い、S 内の長方形の ν 像が元の Tamme 長方形に一致する場合の同じ比較四角形の pullback 性と元の ν 像の回収を供給。一般 StableCategory 上の K は構成しない。
 - **pro 版**：Tor の pro 消滅から ⊙→B′ の比較を経て pro 切除へ。Sp の K-8 の抽象 pro 論と β6 の dg 連結度を読み取り専用で接続する。Tor の環論は L7 の入力を待つ（Land–Tamme §3、80–160時間）。第 II 段のスキーム応用は基盤 I-a・I-b が閉じるまで起動しない。
 
