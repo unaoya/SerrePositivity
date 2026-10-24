@@ -62,7 +62,7 @@
   その後、元の任意小 sifted 図式の指定余錐像の保存へ進む。元の P_Σ 包含の余極限保存と前層宇宙変更の形状還元を使い、全 Hom 比較で延長の保存性を判定する。
   原典：[HTT §5.1.4・§5.3・5.5.8.14〜15](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、[HA 1.1.3.7](https://www.math.ias.edu/~lurie/papers/HA.pdf)（既に本文照合済み）。
 
-### E2a（E2 レーン停止時引き継ぎ、2026-10-23）
+### E2a（E2 レーン引き継ぎ、2026-10-24）
 
 - **現在地**：E2a-0〜5 は完了。任意可換環上の実 E・augmentation・AW Hopf、TR と区間切断による N_*(Δ¹) の E 余代数区間、任意始域の acyclicity を含む転送モデル構造・右 Quillen U・全対象 fibrant を提供。
   通常の導来極限・底の比較、関手的 Kan Map^h・局所化 Hom 比較も完了。E2b の実 DK 豊穣圏と既存 CAlg_R の quasicategory 性は完成。
@@ -73,8 +73,9 @@
   自由忘却の実弱 Hom span は0e5b0d5d1。実導来単位・comma 候補はdcdcfc5da。正規化鎖の実 Reedy cofibrancy、tensor/K-projective と既存 D(R) への実弱 Hom span はe60467f07まで完成。
   元の要素圏上の二重 cone・全 slice prism・通常 augmentation 比較、全 HA と実 Δ²⊗K 三角形は完成。全作用素自然性7b84c975e、全三辺1b32cd7a8、全 h Fun の評価三角形2eaf97fe4、元の derived pinched と roof の全族比較ee6e3d6db。
   **今回の保存単位 fee845d09**：BarrattEccles/FreeProbeElementColumn.lean と FreeProbeElementColumnProperties.lean の9公開宣言。元の正規化 Hom の同じ要素圏上の自由 E∞ frame の列、augmentation・評価自然変換、元の随伴単位による両比較公式、全 augmentation・全列射の弱同値性、各対象の cofibrancy。標準単位誘導射自身の弱同値性は未証明。
+  元の自由列・augmentation・評価を cofibrant 相対圏へ持ち上げ、包含で元の全成分を厳密に回収する。SameUniverse の全 roof と既存 CAlg_R の全 pinched 族まで構成済み。標準単位との全族比較は未完了。
 - **残り**（依存順、再開後の粗い見積もり）：
-  1. 同じ列を cofibrant 相対圏へ持ち上げ、元の LeftRoof/SameUniverse で CAlg_R の全 pinched 族へ送る。既存の全族比較と接続して標準単位比較自身の弱同値性を証明。HTT §5.2.4 の写像空間判定への入力、6〜16時間。
+  1. 構成済みの同じ全 pinched 族を既存の全族比較と接続して標準単位比較自身の弱同値性を証明。HTT §5.2.4 の写像空間判定への入力、6〜16時間。
   2. 同じ単位 comma 候補の実始対象性から全 ∞ 随伴を構成し、同じ U の任意 coherent ∞ 極限保存へ接続。HTT §5.2.4、6〜14時間。点ごとの Hom 同値だけでは完成扱いしない。
   3. G1′：BS の界面を既存 CAlg_R で述べ直し、上の実 U・離散比較・極限保存を代入。4〜12時間。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
@@ -106,7 +107,7 @@
   同じ nerve の全パラメータ K を保持して Hom 宇宙を合わせ、LeftRoof/SameUniverse の元の四列円柱を適用する。評価の単位公式と ee6e3d6db の全 roof 比較を、freeDerivedHomToUnderlying_homotopyEquivalence・freeProbeDerivedUnitNormalizedHom_family・derivedFreeProbeUnitIntervalMap_family に接続し、標準単位比較自身の弱同値性を示す。
   N の HomotopyLimits/CommaInitialAdjunction.lean の exists_qcatAdjunction_of_commaFiberInitial は同じ U の各 unitCommaFiber の実始対象から全 ∞ 随伴を構成。F1B/UnitCommaFiberExtension.lean の unitCommaFiber_isInitialVertex_iff は実境界延長の判定。既存 UnitCommaInitialFromMapping は全 F と単位二胞体を入力に取るため点ごとの候補へ直適用しない。
   全複体 nerve→既存 D(R) の局所化普遍性を先に構成する必要はない。別経路ならその普遍性は未提供であり、dg 加群の dg nerve の局所化で代用しない。γ4 の quillenCfDerivedAdjunctionWithComparisons_exists は固定 SM7・豊穣随伴入力を要求するが実 E∞ DK 模型には未供給。未証明の SM7 を仮定しない。
-  今回はコーディネータの停止指示による区切り。このチャットでは続行せず、新チャットで上記から再開する。
+  v3 の g1 を継続中。三段目は持ち上げ、全 pinched 族、全族比較との接続、標準単位の弱同値性、検証・保存の5項目。
 
 
 ## 0. 位置づけ
