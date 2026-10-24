@@ -700,3 +700,5 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexCochainPr
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCochainUniverseComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CommonComplexUniverseInverse
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PrismIntervalSquareTarget
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientYonedaInverseChainMap
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalCoefficientPrism
