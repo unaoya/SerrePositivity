@@ -1854,4 +1854,13 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaSource
 
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaZeroClass
+
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightGammaEndpoints
+
+public import
+  SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightImageSourcePath
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

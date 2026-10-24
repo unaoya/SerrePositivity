@@ -1439,7 +1439,10 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeFaces,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedMappedSource,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroMovingSourceNativeModelHomotopy,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaSource]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaSource,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGammaZeroClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightGammaEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovTwoRightImageSourcePath]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
