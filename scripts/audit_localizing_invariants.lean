@@ -9,6 +9,16 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorNativeRightInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovBoundedRightInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteDiagonalPro,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteNonpositiveDiagonal,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteDiagonalDefect,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteDiagonalLeftReflection,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteNonpositiveInverseRoof,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFiniteNonpositiveInverseInduction,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroNonpositiveInverseRoof,
+
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorAffineClassCorrection,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorAffineClassPath,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorCandidateBaseTriangles,
