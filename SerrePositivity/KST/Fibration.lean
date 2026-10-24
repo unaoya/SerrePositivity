@@ -573,3 +573,7 @@ public import SerrePositivity.KST.Fibration.ZeroFunctorFullSKanFamily
 public import SerrePositivity.KST.Fibration.ZeroFunctorFullSRelativeComparison
 public import SerrePositivity.KST.Fibration.VerdierUpperCompositeMap
 public import SerrePositivity.KST.Fibration.VerdierUpperFullSMap
+
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSCoreRestriction
+public import SerrePositivity.KST.Fibration.QuotientSKernelFullSKanAction
+public import SerrePositivity.KST.Fibration.VerdierFullSZeroCornerKanMap
