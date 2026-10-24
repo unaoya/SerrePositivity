@@ -27,7 +27,7 @@
 ## 引き継ぎ（2026-10-25）
 
 ### 現在地
-- **Sp-6 s1 完了・s2 は具体的四角形まで**：元の K-S• の対角・実商・指定 ε から同じ固定 S の四辺を持つ四角形を構成する。零角は対角始域の全対象商 A/A。ν の Perf 値の零性は D への供給依頼で、相対提示はその証拠と元の二射の Verdier 証拠に条件付き。S 内の自然な収縮を追加仮定しない。s3 の接続口の設計変更案を提示して停止（未採用）。
+- **Sp-6 s1 完了・s2 は具体的四角形まで**：元の K-S• の対角・実商・指定 ε から同じ固定 S の四辺を持つ四角形を構成する。零角は対角始域の全対象商 A/A。ν の Perf 値の零性は D への供給依頼で、相対提示はその証拠と元の二射の Verdier 証拠に条件付き。S 内の自然な収縮を追加仮定しない。s3 の接続口の追加案は採用済み。旧 image_eq 版の名前・型を保ち、境界付き全図式比較と利用側への輸送を供給。具体的な入力の存在は未証明で、s3 全体は未完。次は s4。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
 - **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。その後 β6 f→h→K-8 e→Sp-5 d3。Sp-6 完了か稼働24時間で引き継ぐ。
 - **正本の入口**：PostnikovCommonCore、PostnikovSuccessorClassInverseData、postnikovFiniteMap_exists_nonpositiveInverseRoof_int、ConnectedLevelRepresentation／connectedLevelRepresentation、IsKConnective.invariantLevelMap_piProConnected、invariantLevelMap_piProEquivalence_of_piProEquivalence／of_eventual_groups／of_forall_proConnected。元の n=1 Common・Two の宣言名・型・所在は特殊化界面として維持する。
@@ -56,6 +56,7 @@
 
 ### 主要宣言：一般局所化・補助成果（共通接頭辞 KST.LocalizingInvariants）
 
+- Sp-6 の追加接続口：VerdierSquareDiagramIso、VerdierRectangleDiagramIso、RelativeVerdierRectangle.ofActualFaces、DGOdotVerdierRectangleComparisonInput.toStrict／toStrict_comparison_isPullback、DGKappaRelativeRoofComparisonInput.toStrict／toStrict_isPullback、exists_dgKappaRelativeRoof_of_fixedNull。
 - Sp-6：exists_dgOdotFixedNullSquare、exists_dgOdotRelativeNullDiagram、exists_dgFixedNullRelativeRoof（K-B 用の元の三頂点・商一単体を回収）。RelativeVerdierDiagram.ofSquare／exists_of_source_comm は元の Verdier 列と源の四辺を保持する。dgNullCorner_composite／dgNullCornerComparison_epsilon は全対象商を経由する元の dg 商合成と指定 ε の厳密回収。dgNullCorner_vertex_isZero は native dg nerve の零性であり、固定 ν の Perf 値の零性とは分ける。
 
 正本は `KST/LocalizingInvariants/`（10-22 19:50 承認）。K-F・K-S• は同種 API を増設せず不足を依頼する。型の正本は Lean。表の T は安定 ∞ 圏 C,D,E と完全関手 p:C→E、q:D→E、W は tammeLocalizingEdges p q。
@@ -118,14 +119,22 @@
 - **逆関手案の再評価（2026-10-21、今回の評価を1時間以内に記録）**：残る正確な旧経路の十分補題は、任意の BF 対象 X,Y に対し `A := sourceMap CirclePower.space X Y`、`e := tracedOriginalLoopModelMap X` と置いたときの `H : SSet.Homotopy (A ≫ signedEvaluationAt X Y e).right (kanAdjointTracedUnitFamily X Y A).right` の構成。これを evaluationPost_circle_piIsomorphism_of_raw_traced_homotopy に渡す。旧経路の残りは直下の6工程、従前の暫定見積もり24–48時間以上（上限保証なし）。代替の残りは①全有限形状・宇宙を含む HasFiniteLimits Sp の包装、②BF 置換後の厳密な豊穣 Ω と構造随伴の全 Hom 自然性、③両合成の FunctorIso と nativeLoop との比較から元の Ω の QCatEquivalence を組立、④一般安定性判定を Spectra 配下で自前証明、の4工程。①・③も未実装、②・④の上限は未見積もりで、総計は少なくとも複数日という暫定評価。②の入力を既存の対象ごとの同型で代用できない：ordinaryStructureAdjoint_comm_iff は二重随伴 b の `b ≫ swap = b` を要求し、ordinaryStructureAdjoint_comm_forces_swap_piZero はその等式と Ω 条件から円交換の π₀ 作用が恒等となることを証明する。Ω 条件が与える b の全基点 π 同型性だけでは、その交換不変性は得られない。また段ごとの内部 Hom 列には BF の構造射の単射性を回復する置換が入り、cotensorPost は選んだ持ち上げであって厳密な恒等・合成則を備えた豊穣関手として未提供。nativeLoop は loop 図式評価の切断から得た ∞ 関手で、厳密な BF 豊穣関手そのものではない。originalLoopModelMap_natural_component は各段の点つき写像空間の π₀ の自然性まで。随伴が直接与える候補の向きは id ⇒ Ω∘tail（交換・移送ができれば tail∘Ω にも同じ向き）で、要求の tail∘Ω ⇒ id は可逆化後に作る。移送には既存の StrictEnrichedTransformation.functorIso と homotopy_component が使えるため N への追加 API 要求はない。④の正確な目標は `[Quasicategory X] [HasZeroVertex X] [HasFiniteLimits X]`、`s : X ⟶ loopDiagrams X`、`hs : s ≫ loopDiagramEvaluation X 1 1 = 𝟙 X`、`hΩ : IsQCatEquivalence (s ≫ loopDiagramEvaluation X 0 0)` から `IsStable X`。F3 の既存判定は有限余極限と双カルテジアン判定も入力するため使えない。[HA Cor. 1.4.2.27](https://www.math.ias.edu/~lurie/papers/HA.pdf) の原証明は Prop. 1.4.2.24 の spectrum-object 塔と Cor. 1.4.2.17 の安定性を経由し、これらの一般構成は既存 BF の tail 同値では代用できない。有限余極限・cofiber の存在と任意 ZeroTriangle の fiber/cofiber 同値を実際に導出する必要がある。Stable/ は編集せず、D 計画の既存要求は後の取り込み先として保持する。結論：提示された厳密自然変換の前提が未構成で、旧経路より短いとは判定できないため切り替えない。今回 evaluationPost の計算も再開しない。根拠となる OrdinaryLoopAdjointStructureCriterion・StrictEnrichedTransformationNerve の対象ビルドは2008 jobs・終了コード0、diff --check も成功。今回は計画のみの変更で Lean 宣言の追加はない。
 - d3 の本経路：D の Stable/LoopEquivalenceStability.isStable_of_loopEquivalence を適用する。入力は Quasicategory・HasZeroVertex・HasFiniteLimits と loop 図式切断・その同値性であり、有限余極限を追加仮定しない。Sp の有限極限と nativeLoop 同値を代入する。旧 evaluationPost・uncurry の工程は再開しない。
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。専用監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。各保存単位は自分の集約ビルドと専用監査を通し、統合検証は R の停止窓に委ねる。D・Ind・F2・EInfinity・K-S•・K-B は読み取り専用。
-### Sp-6 s3 の設計変更案（未採用）
+### Sp-6 s3 の接続口（採用済み、具体的入力の存在は未供給）
 - 固定 S・ν・K を保ち、零角に A/A を使う。対象別 ε からの自然な収縮を構成せず、全対象商からの厳密延長を用いる。
-- 具体的 S 長方形 F の実際の ν 像を、右面・外周の Verdier 証拠で認証する。独立に選択した絶対 Tamme 長方形との厳密等号 image_eq に代えて、指定境界を保つ全図式 FunctorIso を接続口に追加する案。既存の厳密等号版は特殊化として保持する。
+- 具体的 S 長方形 F の実際の ν 像を、右面・外周の Verdier 証拠で認証する。独立に選択した絶対 Tamme 長方形との厳密等号 image_eq に代えて、指定境界を保つ全図式 FunctorIso を接続口に追加する。既存の厳密等号版は特殊化として保持する。
 - 元の包含・商・四辺・始域頂点と二つの合成三角形を明示して保持する。ν 像の関手同型だけから E の値を移送せず、RelativeVerdierRectangle の同じ源図式に相対不変量を適用する。長方形と全図式比較の存在は未証明。
 - K-B の DGKappaSuspensionRelativeRoofInput は現行の型で受けられる。I・P は変更せず、実核・指定収縮・Verdier 証拠・零角の Perf 値の零性の供給後に exists_dgFixedNullRelativeRoof を適用する。一般分数比較の充満忠実性は s4 に残る。
 
+### Sp-6 の仮定入力一覧（実在は未証明、完成扱いにしない）
+- D：元の実核と二射の Verdier 証拠、指定収縮、全対象商 A/A の Perf 値の零性。
+- VerdierSquareBoundaryIso／VerdierRectangleBoundaryIso：呼出側が指定する包含辺・商辺・零角の比較、および長方形の上下の合成二単体の比較。零角の比較を厳密等号とはしない。
+- VerdierSquareDiagramIso／VerdierRectangleDiagramIso：全図式 FunctorIso と、指定した各境界・二単体の比較への制限等式。
+- DGOdotVerdierRectangleComparisonInput：実 S 長方形の二つの相対 Verdier 認証、上記境界付き全 ν 比較、元の始域頂点。
+- DGOdotVerdierRectangleStrictTransport：旧 image_eq を満たす実 S 代表、指定境界付きの S 内全比較、その ν 像と指定比較の一致、元の始域頂点の保持。ν 像の FunctorIso だけからは供給しない。
+- DGKappaRelativeRoofComparisonInput：実相対屋根、指定三境界を保つ全 ν 比較、元の三頂点・商一単体。exists_dgKappaRelativeRoof_of_fixedNull の実核・収縮・Verdier・Perf 零性は D の供給境界で、I・P は変更しない。
+
 ### 次の一手
-- **次の一工程（Sp-6 s2・s3）**：上の設計変更案の採用後、D の Perf 零性を既存の評価同値で固定 ν へ移し、実際の ν 像の二つの Verdier 認証を持つ全長方形へ進む。始域の全対象商 A/A を零角に用いる厳密延長は実装済み。dgNullCorner_composite は元の二射との厳密等号、dgNullCorner_vertex_isZero は同じ dg nerve の零性。固定 S 内の具体的四角形は exists_dgOdotFixedNullSquare。残りは D の Perf 零性の接続と s3 の全長方形・比較。対象別 ε の dg 自然性は仮定しない。
+- **次の一工程（Sp-6 s4）**：元の一般 Verdier 分数比較の充満忠実性を証明する。一般局所化・商 API は追加せず、既存比較と K-B の元の図式を使う。s2・s3 の具体的供給は D の Perf 零性・実核等の到着後に接続する。始域の全対象商 A/A を零角に用いる厳密延長は実装済み。dgNullCorner_composite は元の二射との厳密等号、dgNullCorner_vertex_isZero は同じ dg nerve の零性。固定 S 内の具体的四角形は exists_dgOdotFixedNullSquare。残りは D の Perf 零性の接続と s3 の全長方形・比較。対象別 ε の dg 自然性は仮定しない。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
