@@ -711,7 +711,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalFace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCanonicalIntervalNormalization,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputRelativeComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationTriangleFamilies]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationPasting,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexPrismFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationAugmentationTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationTetrahedronFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationCompositionTetrahedron,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationAugmentationTetrahedron]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

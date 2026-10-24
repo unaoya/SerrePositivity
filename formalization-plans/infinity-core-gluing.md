@@ -23,7 +23,10 @@
 - 実後 cube の区間面を canonical 導来係数の同じ区間評価へ厳密照合し、主係数 path との両端固定ホモトピーを供給済み。
 - 左右入力 fiber 内の変形と選択済み変形の二端・基底固定の二次元比較を供給済み（実変形を入力とする補題）。
   cube の全時間三角形族は元端で正本の二三角形、共有端で後 cube、正規化端で canonical 係数面を回収する。
-  **cube から実入力固定変形を構成してこれらの比較へ代入する工程は未完。**
+- 共有面に沿う実 cube の pushout 貼り合わせ、標準合成三角形上の全 augmentation prism と三面を構成済み。
+  前後の標準合成三角形と元 Hom の終側合成を、全入力の四面体の三つの指定面として保持する。
+  同じ実導来 augmentation 四面体の二面は native 前後 prism に厳密一致する。
+  **側面の射影自然性を実例化し、選択済み二変形へ相対比較を移す工程は未完。**
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -53,6 +56,8 @@
 - `dgGluingNativeDerivedNormalizedIntervalPrism_normalization_exists`
 - `dgGluingLaxHomFirstInputHomotopy_relative_comparison`・`dgGluingLaxHomLastInputHomotopy_relative_comparison`
 - `dgGluingNativePreNormalizeTriangleFamily`・`dgGluingNativePostNormalizeTriangleFamily`
+- `dgGluingNativeNormalizationPasting`・`DGGluingNormalizationProjectionInput`
+- `dgGluingNormalizationCompositionTetrahedron`・`dgGluingNativeNormalizationAugmentationTetrahedron`
 - `dgGluingLaxHomDiagonalComparisonBoundary`・`dgGluingLaxHomFirstInputHomotopy_over`・`dgGluingLaxHomLastInputHomotopy_over`
 
 ### 依存と提供
@@ -65,15 +70,16 @@
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
   したがって、全時間の第一三角形族をそのまま元の始辺固定入力 fiber 内のホモトピーとは扱えない。
-- **提案（未採用）**：共有面と側面の標準合成三角形も含む貼り合わせを先に構成し、その相対二次元比較を選択済み二変形へ移す。
+- **採用（2026-10-24、コーディネータ指示）**：共有面と側面の標準合成三角形も含む貼り合わせを先に構成し、その相対二次元比較を選択済み二変形へ移す。
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
-  D の自然性供給後、片側の固定辺・可変辺を全時間で照合し、残る側面を含めた指定三角形境界の充填へ進める。
+  D の自然性供給までは当該射影自然性（前後・終側の三角形それぞれ二射影、計六等式）だけを明示入力に隔離して先へ進む。供給後に実例へ差し替える。
+  公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8714 jobs、公理監査 707 モジュール・6543 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-relative-aggregate-build.log`・`/tmp/d2-v3-relative-audit.log`。新規6モジュールは集約・監査へ接続済み。
+- 検証済み：集約ビルド 8723 jobs、公理監査 715 モジュール・6704 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-pasting-aggregate-build.log`・`/tmp/d2-v3-pasting-audit.log`。新規モジュールは集約・監査へ接続済み。
 - 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
