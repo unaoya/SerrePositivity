@@ -99,9 +99,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8846 jobs、公理監査 829 モジュール・7955 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-unit-projection-nullity-aggregate-build.log`・`/tmp/d2-v3-unit-projection-nullity-audit.log`。実閉路の全正方形を主四面体の二射影面へ接続し、二面の単位退化だけを入力とする指定境界充填まで接続済み。
-- 検証済み部分をコミットし、④の指定境界から入力付き path 引き戻し内の実比較への接続を構成中。数学的未完は③〜⑥・e・f。
+- 検証済み：集約ビルド 8860 jobs、公理監査 839 モジュール・8019 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-input-path-inverse-aggregate-build.log`・`/tmp/d2-v3-input-path-inverse-audit.log`。指定境界充填から入力付き正本 path 比較の実変形を接続し、既知の同じ逆射と両往復ホモトピーまで構成済み。
+- 検証済み部分をコミットし、入力付き模型から主比較の標的への厳密な座標輸送を構成中。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約

@@ -833,7 +833,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseSimplexPrismEndpoints,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeNormalizationProjectionFamilies,
     `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceTetrahedronFaceAgreement,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitProjectionNullity]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitProjectionNullity,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorSquareRawHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPathRefl,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPathValue,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathPoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathHomotopyOfFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyInverseTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputPathKanComplex,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputPathInverseOfFilling]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
