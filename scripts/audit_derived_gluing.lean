@@ -911,7 +911,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativeSemiorthogonal,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

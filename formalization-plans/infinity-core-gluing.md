@@ -82,9 +82,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- e の作業中：native gluing と導来 lax pullback の安定性、共通宇宙の元左右射影・正本比較・逆比較・F2 二射影の完全性を接続済み。元の二因子の対象条件は、実安定射影の零対象核に一致する。D-14 の実分解・同宇宙の加群値関手の完全性を確認済み。完全性の ULift 持ち上げと異なる対象宇宙の入口は D に追加依頼中。
-- `criterionPerfTensorYonedaHom_naturality` から任意対象宇宙の厳密比較・実共通宇宙 FunctorIso・導来係数比較まで接続済み。同宇宙の完全性は D-14（`867d0e27f`・`40b561b57`）を利用する。入口は `dgGluingUniverseDerivedCoefficientTensorCompositeIso`。K-8b の半直交分解・native 実随伴・元二射影の値を持つ Tamme 分裂も二脚完全性だけを隔離して構成済み。
-- e の接続済み部分の検証：集約ビルド 11593 jobs、公理監査 907 モジュール・8413 宣言。許容三公理のみ。ログ：`/tmp/d2-e-tensor-semiorthogonal-aggregate-build.log`・`/tmp/d2-e-tensor-semiorthogonal-audit.log`。三段目③〜⑤は未完。
+- e の作業中：native gluing と導来 lax pullback の安定性、共通宇宙の元左右射影・正本比較・逆比較・F2 二射影の完全性を接続済み。元の二因子の対象条件は、実安定射影の零対象核に一致する。D-14 の実分解・同宇宙の加群値関手の完全性を確認済み。完全性の ULift 持ち上げと異なる対象宇宙の入口は D に追加依頼中。C 因子の逆向きの本質像照合用 `LaxInclusion.snd_kernel` は Sp に依頼中。
+- `criterionPerfTensorYonedaHom_naturality` から任意対象宇宙の厳密比較・実共通宇宙 FunctorIso・導来係数比較まで接続済み。同宇宙の完全性は D-14（`867d0e27f`・`40b561b57`）を利用する。入口は `dgGluingUniverseDerivedCoefficientTensorCompositeIso`。K-8b の分解を `dgGluingNativeSemiorthogonal` として native nerve へ戻し、元二射影・実随伴・充満忠実性・D 因子の本質像・写像空間の可縮性・分裂 Verdier 列を接続済み。元二射影の値を持つ Tamme 分裂も構成済み。二脚完全性は隔離中。`TensorCoefficientExactTransfer` は同じ FunctorIso から raw／導来係数脚への完全性の移送を供給する。
+- e の接続済み部分の検証：集約ビルド 11594 jobs、公理監査 908 モジュール・8437 宣言。許容三公理のみ。ログ：`/tmp/d2-e-native-semiorthogonal-aggregate-build.log`・`/tmp/d2-e-native-semiorthogonal-audit.log`。三段目③〜⑤は未完。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
 - 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は e・f。

@@ -15,6 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve SSet KST.LocalizingInvariants
+open scoped Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (hC : IsDGPretriangulated R C) (hD : IsDGPretriangulated R D)
@@ -46,4 +47,123 @@ def dgGluingNativeLeftAdjunction :
     F2.laxPullbackSnd (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
       (dgGluingUniverseDerivedCoefficient R C D M)) at a
   rwa [dgGluingUniverseDerivedNerveLaxComparison_snd] at a
+lemma dgGluingNativeDInclusion_isFullyFaithful :
+    IsFullyFaithful (dgGluingNativeDInclusion R C D M hC hD hY hM).hom :=
+  (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion_fullyFaithful.comp
+    (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).symm.isQCatEquivalence.isFullyFaithful
+lemma dgGluingNativeCInclusion_isFullyFaithful :
+    IsFullyFaithful (dgGluingNativeCInclusion R C D M hC hD hY hM).hom :=
+  (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).rightInclusion_fullyFaithful.comp
+    (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).symm.isQCatEquivalence.isFullyFaithful
+
+def dgGluingNativeDInclusion_left_iso :
+    FunctorIso
+      ((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
+        dgGluingUniverseLeftNerve R C D M)
+      ((dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion.hom ≫
+        F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+          (dgGluingUniverseDerivedCoefficient R C D M)) := by
+  have hi := ((dgGluingUniverseDerivedNerveLaxEquivalence R C D M).invHomIso.precomp
+    (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).inclusion.hom).postcomp
+      (F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+        (dgGluingUniverseDerivedCoefficient R C D M))
+  simpa only [Category.assoc, dgGluingUniverseDerivedNerveLaxEquivalence_hom,
+    dgGluingUniverseDerivedNerveLaxComparison_fst, Category.id_comp, Category.comp_id,
+    dgGluingNativeDInclusion, dgGluingStableComparisonInverse, Category.assoc] using! hi
+
+lemma dgGluingNativeDInclusion_killed (d : (dgGluingStableInput.{u, w, v} R D hD).obj _⦋0⦌) :
+    IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
+      dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) d) :=
+  ((dgGluingLaxSemiorthogonal R C D M hC hD hY hM).kills_inclusion d).of_vertexIso
+    ((dgGluingNativeDInclusion_left_iso R C D M hC hD hY hM).app d).symm
+
+lemma dgGluingNativeDInclusion_generates_kernel
+    (x : (dgGluingStableObject R C D M hC hD).obj _⦋0⦌)
+    (hx : IsZeroVertex ((dgGluingUniverseLeftNerve R C D M).app (Opposite.op ⦋0⦌) x)) :
+    x ∈ essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
+  have hz : IsZeroVertex ((F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+      (dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌)
+        ((dgGluingUniverseDerivedNerveLaxComparison R C D M).app (Opposite.op ⦋0⦌) x)) := by
+    have he := ConcreteCategory.congr_hom (NatTrans.congr_app
+      (dgGluingUniverseDerivedNerveLaxComparison_fst R C D M) (Opposite.op ⦋0⦌)) x
+    exact he.symm ▸ hx
+  obtain ⟨d, ⟨hd⟩⟩ := (dgGluingLaxSemiorthogonal R C D M hC hD hY hM).generates_kernel _ hz
+  refine ⟨d, ⟨?_⟩⟩
+  exact (VertexIso.map hd (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).inv) ≪≫
+    (dgGluingUniverseDerivedNerveLaxEquivalence R C D M).homInvIso.app x
+
+def dgGluingNativeSemiorthogonal :
+    SemiorthogonalDecomposition (dgGluingStableInput.{u, w, v} R D hD)
+      (dgGluingStableInput.{u, v, w} R C hC) (dgGluingStableObject R C D M hC hD) := by
+  let s := dgGluingLaxSemiorthogonal R C D M hC hD hY hM
+  let e := dgGluingUniverseDerivedNerveLaxEquivalence R C D M
+  let : IsExactFunctor e.hom :=
+    dgGluingUniverseDerivedNerveLaxComparison_isExactFunctor R C D M
+  refine {
+    inclusion := dgGluingNativeDInclusion R C D M hC hD hY hM
+    rightInclusion := dgGluingNativeCInclusion R C D M hC hD hY hM
+    retraction := ⟨e.hom ≫ s.retraction.hom, inferInstance⟩
+    projection := ⟨e.hom ≫ s.projection.hom, inferInstance⟩
+    leftAdjunction := s.leftAdjunction.comp e.symm.toAdjunction
+    rightAdjunction := e.toAdjunction.comp s.rightAdjunction
+    inclusion_fullyFaithful := dgGluingNativeDInclusion_isFullyFaithful R C D M hC hD hY hM
+    rightInclusion_fullyFaithful := dgGluingNativeCInclusion_isFullyFaithful R C D M hC hD hY hM
+    counit_isIso := ?_
+    kills_inclusion := ?_
+    generates_kernel := ?_ }
+  · have : IsIso e.toAdjunction.counit := by
+      change IsIso e.adjointEquivalence.counit.hom
+      infer_instance
+    change IsIso (Bicategory.Adjunction.compCounit e.toAdjunction s.rightAdjunction)
+    let : IsIso s.rightAdjunction.counit := s.counit_isIso
+    dsimp only [Bicategory.Adjunction.compCounit, bicategoricalComp]
+    infer_instance
+  · intro d
+    change IsZeroVertex (((dgGluingNativeDInclusion R C D M hC hD hY hM).hom ≫
+      dgGluingUniverseDerivedNerveLaxComparison R C D M ≫
+        F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+          (dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌) d)
+    rw [dgGluingUniverseDerivedNerveLaxComparison_fst]
+    exact dgGluingNativeDInclusion_killed R C D M hC hD hY hM d
+  · intro x hx
+    change IsZeroVertex ((dgGluingUniverseDerivedNerveLaxComparison R C D M ≫
+      F2.laxPullbackFst (dgGluingUniverseDerivedYoneda.{u, v, w} R C)
+        (dgGluingUniverseDerivedCoefficient R C D M)).app (Opposite.op ⦋0⦌) x) at hx
+    rw [dgGluingUniverseDerivedNerveLaxComparison_fst] at hx
+    exact dgGluingNativeDInclusion_generates_kernel R C D M hC hD hY hM x hx
+
+lemma dgGluingNativeSemiorthogonal_projection :
+    (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).projection =
+      dgGluingStableLeftProjection R C D M hC hD :=
+  ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_fst R C D M)
+lemma dgGluingNativeSemiorthogonal_retraction :
+    (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).retraction =
+      dgGluingStableRightProjection R C D M hC hD :=
+  ExactMap.ext (dgGluingUniverseDerivedNerveLaxComparison_snd R C D M)
+
+lemma dgGluingNativeSemiorthogonal_isVerdier :
+    IsVerdierSequence (dgGluingNativeDInclusion R C D M hC hD hY hM)
+      (dgGluingStableLeftProjection R C D M hC hD) := by
+  have h := (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).isVerdier
+  rw [dgGluingNativeSemiorthogonal_projection] at h
+  exact h
+
+lemma dgGluingDFactor_iff_nativeSemiorthogonal_image (X : DGGluingObject R C D M) :
+    dgGluingFactorIsZero R C X.left ↔
+      ULift.up (Simplex.vertex X) ∈
+        essentialImage (dgGluingNativeDInclusion R C D M hC hD hY hM) := by
+  rw [dgGluingDFactor_iff_stableLeftKernel]
+  have h := (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).kernel
+    (ULift.up (Simplex.vertex X))
+  rw [dgGluingNativeSemiorthogonal_projection] at h
+  exact h
+
+lemma dgGluingNativeSemiorthogonal_mappingSpace
+    (d : (dgGluingStableInput.{u, w, v} R D hD).obj _⦋0⦌)
+    (c : (dgGluingStableInput.{u, v, w} R C hC).obj _⦋0⦌) :
+    IsContractibleKan (pinchedHom
+      ((dgGluingNativeDInclusion R C D M hC hD hY hM).hom.app (Opposite.op ⦋0⦌) d)
+      ((dgGluingNativeCInclusion R C D M hC hD hY hM).hom.app (Opposite.op ⦋0⦌) c)) :=
+  (dgGluingNativeSemiorthogonal R C D M hC hD hY hM).semiorthogonal d c
+
 end SerrePositivity.InfinityCategories

@@ -906,3 +906,4 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeSemiorthog
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso
+public import SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer
