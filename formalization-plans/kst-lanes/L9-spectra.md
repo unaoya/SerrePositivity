@@ -8,7 +8,7 @@
 - [x] s1. 固定 S・ν と商合成を照合し、源内の零化と ν 像の認証を分離する。
 - [ ] s2. S 内の実零化 2-cell を構成し、指定商合成と ν 像を回収する。
 - [ ] s3. 二つの三角形を保つ具体的長方形と、K-B の DGKappaSuspensionRelativeRoofInput 用の固定 ν 上の相対 Verdier 接続を供給する。
-- [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を証明する（実評価の π₀ 単射性は私有補題まで。高次は未証明）。
+- [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を証明する（実評価の π₀ 単射性・全 roof 族の二変形と分母射影は私有補題まで。高次の比較への接続は未証明）。
 - [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
 ### β6 g の三段目（v3、固定）
@@ -103,6 +103,7 @@
 追加公開（今回の区切り）：DGAlgebra.Path.pullbackDoubleIso と source／target／innerSource／innerTarget、SquareZero.movingSourceSquare と四辺、movingSourceNativeSquare と四辺、SquareZeroExtension.movingSourceModelHomotopy／movingSourceNativeModelHomotopy、DGAlgebra.postnikovNativeZeroCoefficientIso／postnikovNativeZeroIso_map、postnikovCommonRightFixedMappedSourceWitness_class／projection、PostnikovTwoClassInverseData.directOriginalToFixedModelHomotopy／directOriginal_completed_map_eq／of_connective。一般経路補題は可換 R・実 dg 双加群と明示した全射影式、native 版は制限係数への実同型を入力。Postnikov 版は元の非正次数塔と構成済み inverse data を入力し、二切断の両逆は出力しない。
 ### 依存と提供
 - Sp-6 の D 供給依頼（コーディネータ経由）：全対象に指定収縮を持つ小 dg 圏 C に対し、dgNerve R (PerfectDGModule R C) の全頂点の零性。A/A に適用し、既存の presentedPerfectDGQCatEvaluationEquivalence で固定 ν の零角条件へ移す。実核・元の二射の Verdier 証拠は D、元の Perf・P との照合は K-B。
+- s4 の K-B 依存照合（コーディネータ経由）：元の markedSpanFamily から weakSpanKanQuotientDiagram の小さい unstraightening への実写像、底 q の保存、各 fiber での元の Kan 置換単位の全族回収、恒等 span と指定恒等点の照合。Sp は同種の分類 API を複製せず、既存の正本の宣言を使う。
 - Mathlib・既存 Spectra/・HomotopicalAlgebra/Simplicial/・InfinityCategories/ は読み取り専用。F2N-1 は中止し、F2・F1B には書き込まない。削除指定の旧3ファイルに未コミットの残存はない（2つは不存在、RelativeFunctorCurryIsoPointComparison は 17afc3366 で保存済みのため保持）。型の正本は Lean、運用は foundations.md §8。
 - γ1 は coherent nerve の quasicategory 性、F0 は同値と極限の普遍性を供給。任意 coherent 図式の極限の次の入口は F1b/F2 の上記 HasColimit とする。
 - K-S• の K-5（局所化不変量の定義）・K-6（Verdier 列の fiber 性）・K-7（BGT 非連結化）・K-8（Tamme・Land–Tamme）は上表の界面だけを使う。BF の符号・厳密化・evaluationPost の内部へ依存しない。K-7 に必要な一般 coherent 極限は未提供行の移送の完成後に消費する。
