@@ -563,3 +563,8 @@ public import SerrePositivity.KST.Fibration.ZeroTargetFullSMap
 public import SerrePositivity.KST.Fibration.ZeroTargetCornerEquivalence
 public import SerrePositivity.KST.Fibration.VerdierZeroCornerMap
 public import SerrePositivity.KST.Fibration.RelativeSQuotientZeroStage
+
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSCoreFamily
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSMap
+public import SerrePositivity.KST.Fibration.ZeroFunctorFullSDiagramFamily
+public import SerrePositivity.KST.Fibration.QuotientSKernelZeroFunctorMap
