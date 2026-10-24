@@ -172,6 +172,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 全加群の実半自由分解：`Derived/DGModuleAllResolvedExact` の `dgModuleResolutionInfinity_isExactFunctor`。仮定は CommRing R・DGCategory R C・Small.{u} C のみ。一般の全加群間 dg 関手版は `dgModuleAllResolvedFunctor_isExactFunctor`。
 - 任意の全加群値 dg 関手：`Derived/DGPretriangulatedModuleValuedExact` の `dgPretriangulatedModuleValuedFunctor_isExactFunctor R D C F`。CommRing R・DGCategory R D/C・Small.{u} D/C・IsDGPretriangulated R D のみ。型は dgUniverseLiftDown と F の合成の dgNerve.map（共通宇宙）。F に M.toFunctor を直接渡せる。`DGKernelTensorYonedaNerveIso` の同名 CompositeIso は実 tensor・Yoneda 比較。Yoneda 特殊化は既存 `dgPretriangulatedYoneda_isExactFunctor` も使用可。終域の全加群圏の Small 仮定は不要。既存宣言は不変。
 
+- D-14 の実分解入口を含む両全体監査は Derived 22,934宣言／2,620モジュール、Stable 23,996／2,889で成功。任意の加群値関手への補足一般化は対象5,710 jobs、M.toFunctor と Yoneda の二適用型、4公開署名の三公理検査、集約11,128 jobsで検証し、両全体監査へ接続済み（補足後の全体再監査は次の集約区切り）。
+
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
 D7 の後に完了。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda 模型との同値、前三角 dg 圏と平坦分解後の商の実 dg nerve の安定性、商関手の完全性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。

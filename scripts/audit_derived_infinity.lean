@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaNerveIso
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedExact
 import SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact
 import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel
@@ -7230,6 +7232,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKernelTensorYonedaNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedExact,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
