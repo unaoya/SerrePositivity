@@ -152,3 +152,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSimplicialI
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectedBarRealization
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndExtensionHomWeightComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaFilteredGeometricRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaFilteredGeometricUniversality
