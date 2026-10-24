@@ -57,8 +57,7 @@
 - 供給先は第 II 段の animated 環・降下・K。一般の前層の presentable 性はまだ提供できない。
 
 ### 未コミット
-- `SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationStrictColimit.lean` を未検証の作業中ファイルとして残す。
-  直近の単体検証は `Presentable/Accessible.olean` 欠落で import に失敗。停止前の集約で依存は再構築済みだが、証明本体は未検証。集約・公理監査には一切接続していない。
+- N の未検証7ファイルは再開指示に従い `F2/Presentable/` へ置き直し、import を現所在へ更新。P-1 g で検証するまで集約・監査には接続しない。
 - 他レーンの変更には触れていない。停止コミットに含めるのは検証済みの一点評価・所有集約・監査・この計画だけ。
 
 ### 既知の問題
@@ -74,6 +73,15 @@
 3. 有限模型の置換の通常の全表示を LeftFibrationObject の strict 全余錐に持ち上げ、同じ余錐の native 性を示す。
    置換対象だけでなく元の指定 left fibration 自身への頂点同型で表示を厳密に戻す必要がある。
 4. 一般の coherent filtered 添字での相対 Hom 保存と compact 性、小さい生成圏を閉じ、分類で一般の前層の accessibility へ移す。
+
+## P-1 b 三段目（v3）
+
+- [x] b1. strict filtered 全余錐の left fibration ∞ 圏での余極限性。
+- [ ] b2. 有限底上模型による、元の指定 left fibration の小さい全表示。
+- [ ] b3. 一般 coherent filtered 添字での相対 Hom 保存と有限模型の compact 性。
+- [ ] b4. 一般の小さい底上の前層の小さい compact 生成圏と accessibility。
+- [ ] b5. 前層の presentable 性、条件を明示した Indκ(C) の presentable 性。
+- [ ] b6. 局所小ささの公開界面、集約ビルド・公理監査・引き継ぎ更新。
 
 ## 規約
 - foundations.md §8。所有ファイルだけ `set -o pipefail` のうえ `git commit --only`。新規 sorry・公理・引用なし、他レーン不変。
