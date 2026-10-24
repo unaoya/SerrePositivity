@@ -647,3 +647,25 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTensorExtension
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaRestriction
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaRestrictionLaws
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationTensorCorner
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceSection
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationConeLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeTerminalCocone
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCornerMap
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCoconeNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.RelativeConeTensorExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceIdentity
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceIdentity
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConeSlicePrismLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPrismNaturality
