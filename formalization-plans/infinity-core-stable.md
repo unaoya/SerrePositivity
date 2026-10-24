@@ -167,6 +167,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 - 出発提示の native 作用は DGKappaPresentedSourceNativeAction（同名と _id・_comp）。固定 F の全単体と関手変数の厳密恒等／合成まで対象3,952 jobs・3署名の三公理検査成功。DGKappaPresentedSourceParameter の dgKappaPresentedSourceParameter・dgKappaPresentedSourceInputHom は全パラメータ変換の一般共役入口を再利用し対象2,609 jobs成功。単位・合成を DGKappaPresentedSourceInputHomLaws で照合し、DGKappaPresentedSourceFunctor の同名 dg 関手へ束ねた。DGKappaPresentedSourceNativeFunctor の同名と dgKappaPresentedSourceNativeCoreFunctor は実 nerve・core 上の全高次作用。追加4本は対象4,199 jobs・15宣言の葉監査成功（許容三公理のみ）。一般入口 DifferentialGraded/Functor/ClosedConjugationTensorComposition の enrichedClosedIsoConjugation_preserves_tensor_composition を使い、kernel タイムアウトを式の展開削減で解消（心拍数増加なし）。次は同じ表示型の零／shift／cone／可算直和と b の一般判定への接続。
 
+- 閉演算の続き：DGKappaPresentedSourceShift／ShiftAction は seed だけで決まる整数 shift と厳密な後合成可換性、評価の実 shift 同型、全 Hom の dg 自己関手・native shift を供給（対象3,830 jobs・2モジュール33宣言の葉監査）。DGKappaPresentedSourceZero は空提示からの零ラベル・実評価の零性・後合成での厳密保存を供給し、標的の非空性を仮定しない（対象2,542 jobs・25宣言の葉監査）。いずれも許容三公理のみ。残り3は異なる code・arrow の二項／可算直和と任意閉射の cone を同じ表示型へ収容する同時精密化。全閉演算・前三角性・κ-compact 性・被覆の完了とは扱わない。
+
 ### D-14：D2 G-1 e の完全関手入口
 
 - 全加群の実半自由分解：`Derived/DGModuleAllResolvedExact` の `dgModuleResolutionInfinity_isExactFunctor`。仮定は CommRing R・DGCategory R C・Small.{u} C のみ。一般の全加群間 dg 関手版は `dgModuleAllResolvedFunctor_isExactFunctor`。
