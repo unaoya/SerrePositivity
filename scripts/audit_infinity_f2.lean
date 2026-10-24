@@ -11,6 +11,8 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastSpecified_zero_square
 #check @SerrePositivity.InfinityCategories.F2.spaceCompositionZeroLastDiagonal
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexZeroLastDiagonal_post_value_heq_original
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexCompositeValueComposite
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitApexRawTriangleBoundaryAt_long_cancel
 
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionComparison_restrict
 #check @SerrePositivity.InfinityCategories.F2.coherentTriangleExtensionRestriction_long
