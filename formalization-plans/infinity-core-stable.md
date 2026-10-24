@@ -174,6 +174,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 - D-14 の実分解入口を含む両全体監査は Derived 22,934宣言／2,620モジュール、Stable 23,996／2,889で成功。任意の加群値関手への補足一般化は対象5,710 jobs、M.toFunctor と Yoneda の二適用型、4公開署名の三公理検査、集約11,128 jobsで検証し、両全体監査へ接続済み（補足後の全体再監査は次の集約区切り）。
 
+- 補足2 (3)：`Stable/UniverseExactFunctorLift` の `isExactFunctor_ulift F h` と `isExactFunctor_iff_ulift F`。安定性仮定なし、対象2,576 jobs・要求型と2宣言の三公理検査成功。(4) 混在宇宙版は実装中。既存宣言は不変。
+
 ## β3：Drinfeld 商と ∞ 圏的 Verdier 商
 
 D7 の後に完了。実零化、平坦模型、Hom 準同型による充満忠実性、Yoneda 模型との同値、前三角 dg 圏と平坦分解後の商の実 dg nerve の安定性、商関手の完全性まで実装。原典は Drinfeld Thm 3.4・Lemma 13.5、HA §1.1.4、Kerodon §6.3。
