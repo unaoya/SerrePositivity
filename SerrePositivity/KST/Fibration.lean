@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.QuotientSKernelFullSquare
+public import SerrePositivity.KST.Fibration.QuotientSKernelFullSquareIso
 public import SerrePositivity.KST.Fibration.KanCommSqTriangles
 public import SerrePositivity.KST.Fibration.QuotientSKernelTriangles
 public import SerrePositivity.KST.Fibration.DGConnectiveFiberComparison
