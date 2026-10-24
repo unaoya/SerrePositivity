@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（117 モジュール・1258 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
+- NonConnective 集約・専用監査は成功（121 モジュール・1330 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -90,7 +90,7 @@
 | `diagram` | D-9：平坦屋根・native Verdier 列を実供給。Sp-6：固定 ν の構成子を実供給。`hz` は K-B の同じ実全対象商の Perf 零性で解消。残る `hV` は固定 ν の Verdier 証拠 |
 | `left_eq`・`middle_eq`・`right_eq` | D-9・Sp-6 の構成子から同じ指定三頂点を保持。実供給済み `hz` を代入でき、残る `hV` に条件付き |
 | `quotient` | 同じ元の平坦商射の全一単体を `dgKappaResolvedRelativeRoof_quotient` が保持。実供給済み `hz` を代入でき、残る `hV` に条件付き |
-| 元の Perf・P との全関手照合（構造のフィールドには未追加） | K-B：同じ分解増大を実核へ制限した準同値と native nerve 同値を構成。P の実比較を逆に通す `dgKappaPerfectResolvedComparison` は元の導来模型への全包含同型を保持する。実核の Perf 完備化との同値は未完 |
+| 元の Perf・P との全関手照合（構造のフィールドには未追加） | K-B：同じ分解増大を実核へ制限した準同値と native nerve 同値を構成。P の実比較を逆に通す `dgKappaPerfectResolvedComparison` は元の導来模型への全包含同型を保持する。I・P に条件付きで同じ実評価 Morita 核の ∞-Perf 同値と固定 ν 値間の完全な順逆同値を供給。native P と同じ厳密評価の合成は元の Perf の恒等に全関手同型。元の Perf 包含との照合・全入力自然性は未完 |
 
 
 ### c4 の全高次作用の供給境界（採用（03:55））
@@ -121,14 +121,19 @@
 - [ ] d4 Ind I-2 e の公開結果との照合、選択比較と全入力の自然性。
 
 - `DGSuspensionConnectedComparison` は元の連結固定 K から同じ実 Sp 余錐の零段の脚を実 BF 比較射として回収する。隣接遷移の非負次数安定化に条件付きで、元の比較射を順方向とする群同型を構成し、同じ SOA 比較からの実連結 K 比較も全単射となる。`DGSuspensionLoopStagePi` は同じ n 段の native loop 反復値の整数 π を元の n 回懸垂 K の j+n 次数へ同型で比較する。`DGSuspensionShiftedTransition` は同じ実隣接 BF 射をこの座標で読み、元の作用との厳密な可換性・全単射性の同値・同じ実余錐の連結比較への移送を保持する。元の構造辺そのものの π 作用との自然性、隣接安定化、I-2 e との照合は未証明。
-- D 正本への供給依頼（コーディネータ経由）：検証済みの実評価 Morita 三条件から実 ∞-Perf 比較への公開接続。現行 `dgPerfectKernelInfinity` が使う全主導来作用の同値へ、一般の compact 生成の実供給から接続する経路でもよい。新しい明示仮定境界は追加しない。
 - Sp 正本への供給依頼（コーディネータ経由）：native loop の整数 π 次数移動の自然性。必要な界面は各 j の `((hoFunctor.map OmegaSpectrum.nativeLoop).toFunctor ⋙ SpectrumHo.piFunctor j) ≅ SpectrumHo.piFunctor (j+1)` と、公開の実 loop／円 cotensor 比較との照合。対象別次数同型だけでは、同じ隣接構造辺への自然性を結論しない。K-B 内に一般 Sp loop API を重ねず、c4・c5 の独立部分を続ける。
 
+
+### 設計確認案（未採用）：全入力自然性への供給範囲
+- 現行 `DGSuspensionNativeActionInput` は Σ の全高次作用と元の各 dg 辺のデータを保持する。今回の実評価による固定 ν 比較・元の P との全包含比較は対象別であり、これらだけから構造辺 β の全入力自然性を結論しない。
+- 提案：D の厳密模型の評価対象を、`((Δ[1] ⊗ Δ[1]) ⊗ dgKInputInfinity R) ⟶ dgKInputInfinity R` で表す同じ実核・cone・零角・懸垂の全四角形族へ広げる。各元の入力 A への制限は同じ `dgKappaResolvedConnectiveSquare R A (s A).cone` 全体と厳密に照合する。
+- 併せて、今回の実評価 Morita 比較と元の P の包含を同じ全 native Hom に自然な比較として供給する。K-B はその像から固定 K の構造辺・実逐次図式の自然性を構成する。β の自然性や Sp 引き戻し性を追加入力にして完成扱いしない。
+- I・P・既採用境界の型は変えず、現段階では新しい入力構造も存在仮定も追加しない。上記の全四角形族と評価比較を別の供給境界として採用するか、D の厳密模型から K-B が組み立てる正本界面を確定する設計確認である。
 
 ### 採用済み設計：連結 K の fiber 条件の適用範囲
 - 検証済みの帰結：全段で同じ実屋根・元の Perf との指定同値・元の相対 K 四角形の Sp 引き戻し性を仮定すると、`dgSuspensionRoofTransition_piIsomorphism` は全整数の隣接 π 同型を与える。同じ実余錐の零段の脚が全整数 π 同型・実可逆辺となり、同じ候補の全負整数 π が消える。供給の存在や一般の負群消滅を主張する定理ではない。
 - 採用：既存の条件付き Sp fiber 定理は保持する。一般の K-7 の構造射・連結比較には、K(TA)≃0 と連結版 fibration による実 fiber との非負次数比較を使い、全段の Sp 引き戻し性は仮定しない。一般の Verdier 列の Sp fiber 性と相対局所化登録は K^{nc} について非連結化後に証明する。固定 S・ν・K、I・P と採用済み供給境界は変更しない。
-- `DGKappaSuspensionConnectivePi` は指定 Perf 同値・零所属に条件付きで、元の実 fiber 比較の π 全単射性を同じ元の K(B) 構造射へ移す。零角には同じ実 null 商の Perf 零性を使い、ν の Verdier 証拠や Sp 引き戻し性を要求しない。非負次数条件自体は連結版 K-6 からの未供給入力。`DGKappaResolvedEvaluationKernel` は同じ実核の評価双加群を元の核包含・増大・実加群包含で構成し、I の列の射影性と全 Hom 準同型を保持する。`DGKappaResolvedEvaluationPerfect` は P の元の全包含比較を実主導来比較へ移し、各列の perfect 性と元の全 perfect 加群の回収を証明する。`DGKappaResolvedEvaluationMorita` は同じ評価核の Morita 三条件と元の主 Perf 作用に一致する同値を構成する。`DGKappaResolvedKernelComplete` は P に条件付きの同じ native 核の coherent 冪等完備性を保持する。`DGKappaResolvedEvaluationQuasiEquivalence` は同じ実評価を元の全 perfect dg 加群へ制限し、同じ全 Hom と P による回収から厳密 dg 準同値と実 nerve 同値を構成する。元の固定 ν 値との全関手比較への接続は未完。
+- `DGKappaSuspensionConnectivePi` は指定 Perf 同値・零所属に条件付きで、元の実 fiber 比較の π 全単射性を同じ元の K(B) 構造射へ移す。零角には同じ実 null 商の Perf 零性を使い、ν の Verdier 証拠や Sp 引き戻し性を要求しない。非負次数条件自体は連結版 K-6 からの未供給入力。`DGKappaResolvedEvaluationKernel` は同じ実核の評価双加群を元の核包含・増大・実加群包含で構成し、I の列の射影性と全 Hom 準同型を保持する。`DGKappaResolvedEvaluationPerfect` は P の元の全包含比較を実主導来比較へ移し、各列の perfect 性と元の全 perfect 加群の回収を証明する。`DGKappaResolvedEvaluationMorita` は同じ評価核の Morita 三条件と元の主 Perf 作用に一致する同値を構成する。`DGKappaResolvedKernelComplete` は P に条件付きの同じ native 核の coherent 冪等完備性を保持する。`DGKappaResolvedEvaluationQuasiEquivalence` は同じ実評価を元の全 perfect dg 加群へ制限し、同じ全 Hom と P による回収から厳密 dg 準同値と実 nerve 同値を構成する。`DGKappaResolvedEvaluationInfinity` は D の小 Perf 代表・局所生成原始から両側 compact 生成を検証し、同じ実評価の全主導来同値と実 ∞-Perf 同値へ接続する。`DGKappaResolvedKernelPerfEquivalence` は同じ二つのラベル評価で固定 ν 値の完全な順逆同値を供給する。`DGSuspensionPerfectConnectiveSequence` は段別 I・P・Z に条件付きで追加 Perf 同値入力を除き、元の実列・Sp 余極限・連結 K からの実比較を保持する。`DGKappaResolvedEvaluationInclusion` は同じ厳密評価の元の実導来包含を回収し、native P と実評価の合成を恒等へ全関手同型で比較する。実 ∞-Perf Morita 作用と元の P・Perf 包含の照合、全入力自然性は未完。
 - K-6 d は K(D)→fib_Sp(K(C)→K(C/D)) の非負次数 π 同型へ修正済み。固定連結 K の Sp 引き戻し性は主張しない。K-6 c4 の元の全二胞体・核円柱比較、c5 の商実現比較、実核接続を保持し、c4・c5 と d を継続する。
 
 ## 原典との照合・受入条件

@@ -614,3 +614,7 @@ public import SerrePositivity.KST.Fibration.VerdierFullSLowerDeformation
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerShortFaces
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerRelativeDeformation
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerMaximalFaces
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerStrictArrows
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerCanonicalTriangle
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerCanonicalBoundary
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerKernelTriangle
