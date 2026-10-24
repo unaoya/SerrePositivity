@@ -811,7 +811,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTriangleRelativeLoopClass,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronRelativeFace,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronLoopClass,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleCancellation]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleCancellation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TriangleDiagramVertices,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleVertices,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitSixTriangleDiagramCancellation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitSixTriangleDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitSixTriangleBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitTetrahedronRelativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TerminalUnitConeGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UnitCapUnitLoopDomains,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorEdgeHomotopyRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelUnitSixTriangleLoops]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
