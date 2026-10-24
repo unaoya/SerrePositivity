@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
 
 /-!
 # 元の pinched 後合成が表す任意パラメータの全族
@@ -28,13 +28,13 @@ lemma pinchedPostcompose_family {K C : SSet.{u}} [Quasicategory C]
     (δ : (HomotopyCategory.mk y : hoFunctor.obj C) ⟶ HomotopyCategory.mk z)
     (f : K ⟶ pinchedHom x y) :
     intervalFamilyHom (f ≫ PinchedInterval.postcompose x δ ≫
-      PinchedInterval.comparison x z) =
-    intervalFamilyHom (f ≫ PinchedInterval.comparison x y) ≫ constantFunctorHomMap K δ := by
+      SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x z) =
+    intervalFamilyHom (f ≫ SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y) ≫ constantFunctorHomMap K δ := by
   have H := FunctorIso.simplicialHomotopy
     (PinchedInterval.liftMapComparisonIso (intervalPostcompose x δ))
   have h := intervalFamilyHom_eq_of_homotopy (functorHomotopyPrecomp H f)
   calc
-    _ = intervalFamilyHom (f ≫ (PinchedInterval.comparison x y ≫
+    _ = intervalFamilyHom (f ≫ (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y ≫
         intervalPostcompose x δ)) := by
       simpa only [PinchedInterval.postcompose, Category.assoc] using h
     _ = _ := by rw [← Category.assoc, intervalPostcompose_family]

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLocalKanColimits
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 
 /-!
 概要：小さい κ-filtered 余極限を持つ標的への、元の Yoneda に沿う左 Kan 拡張が存在する。

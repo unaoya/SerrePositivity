@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionFiber
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
-public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
@@ -53,7 +53,7 @@ lemma relativeFunctorEvaluate_terminal_trivialKanFibration {A E B : SSet.{u}}
     (p : E ⟶ B) [RightFibration p] (a : A ⟶ B) (v : A _⦋0⦌)
     (hv : IsTerminalVertex v) : TrivialKanFibration (relativeFunctorEvaluate p a v) := by
   have h := relativeFunctorEvaluate_trivialKanFibration_of_rightPointMap p a
-    (SSet.yonedaEquiv.symm v) (F1B.kanTerminalPoint_rightAnodyne hv)
+    (SSet.yonedaEquiv.symm v) (SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne hv)
   have hp : (stdSimplex.obj₀Equiv.symm 0 : (Δ[0] : SSet.{u}) _⦋0⦌) =
       SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by
     apply stdSimplex.ext
@@ -76,7 +76,7 @@ lemma rightFibrationSlicePointEvaluate_trivialKanFibration
     TrivialKanFibration (rightFibrationSlicePointEvaluate p b) := by
   have h := relativeFunctorEvaluate_terminal_trivialKanFibration p
     (sliceOverProjection (SSet.yonedaEquiv.symm b)) (sliceIdentityCone b)
-    (F1B.kanSliceIdentityCone_isTerminalVertex b)
+    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex b)
   exact ⟨trivialKanFibrations.comp_mem _ _ h.mem (MorphismProperty.rlp_of_isIso _ _)⟩
 
 /-- Yoneda 補題：表現可能な right fibration からの全相対射は、指定 fiber と同値。 -/

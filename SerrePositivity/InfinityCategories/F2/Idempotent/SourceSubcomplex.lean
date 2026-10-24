@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SourceChains
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：元の非分裂対象だけを頂点とする全部分複体を構成する。

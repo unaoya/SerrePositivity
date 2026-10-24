@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerHornPullback
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneAdjointComparison
-public import SerrePositivity.InfinityCategories.F1B.SSetPullbackAdjoint
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.SSetPullbackAdjoint
 
 /-!
 概要：left fibration に沿う任意の inner anodyne 射の pullback は前合成同値。

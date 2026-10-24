@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsNaturality
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport
 
 /-!
 概要：元の全 fibration の strict transport を、底全体の quasicategory 値豊穣図式へ束ねる。
@@ -24,18 +24,18 @@ def cocartesianStrictTransportEnrichedDiagram (C : Type u) [Category.{u} C] :
     QuasicategoryEnrichedDiagram (CocartesianFibrationObject (nerve C)) C where
   obj c := cocartesianSectionsEnrichedEvaluation (Over.mk (nerveMap (Under.forget c)))
   map {c d} f := by
-    refine ⟨fun p ↦ kanCocartesianStrictTransportMap p.val.hom f, ?_⟩
+    refine ⟨fun p ↦ SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p.val.hom f, ?_⟩
     intro p q
-    change (kanCocartesianStrictTransportMap p.val.hom f ▷ _) ≫
+    change (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p.val.hom f ▷ _) ≫
         uncurry (cocartesianSectionsPostHom (Over.mk (nerveMap (Under.forget d))) p.val q.val) =
       uncurry (cocartesianSectionsPostHom (Over.mk (nerveMap (Under.forget c))) p.val q.val) ≫
-        kanCocartesianStrictTransportMap q.val.hom f
+        SerrePositivity.InfinityCategories.cocartesianStrictTransportMap q.val.hom f
     rw [cocartesianSectionsPostHom, uncurry_curry, cocartesianSectionsPostHom, uncurry_curry]
     exact (cocartesianSectionsAction_overPre
       (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
         Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)))
       p.val q.val).symm
-  map_id c p := kanCocartesianStrictTransportMap_id p.val.hom c
-  map_comp f g p := kanCocartesianStrictTransportMap_comp p.val.hom f g
+  map_id c p := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_id p.val.hom c
+  map_comp f g p := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_comp p.val.hom f g
 
 end SerrePositivity.InfinityCategories

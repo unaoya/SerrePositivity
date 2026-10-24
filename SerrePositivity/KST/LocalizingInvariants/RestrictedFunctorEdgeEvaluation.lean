@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
 
 /-!

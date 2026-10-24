@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 
 /-!
 概要：持ち上げた元の射の全局所左 Kan 図式は、元の前層圏で余極限を持つ。

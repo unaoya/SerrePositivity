@@ -24,7 +24,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E)
 
 lemma frameRoofMap_over : frameRoofMap A Y q ≫ pullback.fst _ _ =
-    nerveMap (CostructuredArrow.toOver A Y) ≫ (F1B.kanNerveOverIso Y).hom ≫
+    nerveMap (CostructuredArrow.toOver A Y) ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom ≫
       sliceOverPostcomp (SSet.yonedaEquiv.symm (nerveVertex Y)) q := by
   rw [frameRoofMap, Category.assoc]
   change (roofSourceIso A Y).hom ≫ (pullback.lift _ _ _ ≫ pullback.fst _ _) = _
@@ -34,7 +34,7 @@ lemma frameRoofMap_over : frameRoofMap A Y q ≫ pullback.fst _ _ =
 
 def frameRoofRightSliceMap : nerve (CostructuredArrow A Y) ⟶
     sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) :=
-  nerveMap (CostructuredArrow.toOver A Y) ≫ (F1B.kanNerveOverIso Y).hom ≫
+  nerveMap (CostructuredArrow.toOver A Y) ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom ≫
     sliceOverPostcomp (SSet.yonedaEquiv.symm (nerveVertex Y)) q ≫
       (roofTargetSlicePointIso Y q).hom
 

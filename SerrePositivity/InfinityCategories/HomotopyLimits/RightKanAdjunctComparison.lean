@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ArbitraryParameterAdjunct
-public import SerrePositivity.InfinityCategories.F1B.KanUniversalProperty
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.UniversalProperty
 
 /-!
 概要：元の標準単位の Hom 対応と指定右 Kan 変換の大域的 Hom 比較を照合する。

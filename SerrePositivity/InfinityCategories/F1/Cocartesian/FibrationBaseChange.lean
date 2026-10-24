@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeEn
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.FibrationInfinity
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
 public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
-public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomCartesianEdges
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.FiberwiseHomCartesianEdges
 
 /-!
 概要：元の cocartesian fibrations の ∞ 圏の間の、実際の底変換関手。
@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 元の cocartesian fibration を、底を第一因子とする同じ pullback へ移す。 -/
 def cocartesianFibrationBaseChangeObject {B D : SSet.{u}}
     (k : D ⟶ B) (p : CocartesianFibrationObject B) : CocartesianFibrationObject D :=
-  ⟨Over.mk (pullback.fst k p.val.hom), kanCocartesianFibration_pullback_fst p.val.hom k⟩
+  ⟨Over.mk (pullback.fst k p.val.hom), SerrePositivity.InfinityCategories.cocartesianFibration_pullback_fst p.val.hom k⟩
 
 /-- 同じ全相対 Hom の底変換は、元の cocartesian fibrations の間の豊穣関手。 -/
 def cocartesianFibrationBaseChangeEnriched {B D : SSet.{u}} [Quasicategory B] (k : D ⟶ B) :

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrescribedCartesianTransport
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornFibrationComparison
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornFibrationComparison
 
 /-!
 概要：元の全頂点の辺を固定した cocartesian 輸送 prism を構成する。

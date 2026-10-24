@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanAdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles
 
 /-!
 概要：h Fun の指定された単位・余単位と三角恒等式から実随伴を構成する。

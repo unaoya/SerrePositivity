@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.PointedMapping
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 指定した境界と適合円柱を保持する族の厳密化
 概要：点つき写像族の源への制限を、境界を固定したまま指定した族へ厳密に一致させる。

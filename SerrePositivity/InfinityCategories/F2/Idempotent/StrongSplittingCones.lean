@@ -56,7 +56,7 @@ lemma StrongSplitting.cone_vertex {X : SSet.{u}} {d : CoherentIdempotent X}
 /-- 元の余錐の脚は、元の分裂図式の同じ射影辺。 -/
 lemma StrongSplitting.cocone_leg {X : SSet.{u}} {d : CoherentIdempotent X}
     (s : StrongSplitting d) : s.cocone.val.app (Opposite.op ⦋1⦌)
-      (F1B.kanJoinCoconeLegSimplex (nerveVertex walkingObject)) =
+      (SerrePositivity.InfinityCategories.F1B.joinCoconeLegSimplex (nerveVertex walkingObject)) =
         s.val.app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ walkingRetraction) := by
   change s.val.app _ (walkingJoinCocone.val.app _ _) = _
   rw [walkingJoinCocone_leg]
@@ -64,7 +64,7 @@ lemma StrongSplitting.cocone_leg {X : SSet.{u}} {d : CoherentIdempotent X}
 /-- 元の錐の脚は、元の分裂図式の同じ包含辺。 -/
 lemma StrongSplitting.cone_leg {X : SSet.{u}} {d : CoherentIdempotent X}
     (s : StrongSplitting d) : s.cone.val.app (Opposite.op ⦋1⦌)
-      (F1B.kanConeLegSimplex walkingObject) =
+      (SerrePositivity.InfinityCategories.F1B.coneLegSimplex walkingObject) =
         s.val.app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ walkingSection) := by
   change s.val.app _ (walkingJoinCone.val.app _ _) = _
   rw [walkingJoinCone_leg]

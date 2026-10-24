@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 弱同値に沿う Kan 標的への写像の降下
 

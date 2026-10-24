@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteEvaluationOuterProjections
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTrianglePointEvaluation
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の反復射影の全評価 Kan 脚を、元の反復 Kan 積の全射影とホモトピーで比較する。

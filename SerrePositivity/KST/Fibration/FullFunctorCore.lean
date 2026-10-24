@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FunctorCoreCriterion
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-! # 全部分図式圏への商比較
 

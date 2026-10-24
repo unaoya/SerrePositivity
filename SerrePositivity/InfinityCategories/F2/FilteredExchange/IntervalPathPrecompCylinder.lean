@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackPathHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の interval 引き戻しの指定 path 円柱を任意の始域射で制限する。

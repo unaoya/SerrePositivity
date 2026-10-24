@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.StrictTransportEvaluationPrism
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransportEquivalence
 
 /-! # 引き戻した strict section の元の同じ fiber への評価 -/
 
@@ -20,8 +20,8 @@ namespace SerrePositivity.KST.Fibration
 def pullbackStrictEvaluationAt {I : Type u} [Category.{u} I] {F B : SSet.{u}}
     (q : F ⟶ B) (k : nerve I ⟶ B) (c : I) (b : B _⦋0⦌)
     (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b) :
-    kanCocartesianStrictTransport (pullback.snd q k) c ⟶ vertexFiber q b :=
-  kanCocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
+    SerrePositivity.InfinityCategories.cocartesianStrictTransport (pullback.snd q k) c ⟶ vertexFiber q b :=
+  SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
     (SerrePositivity.InfinityCategories.vertexFiberPullbackIso q k (nerveVertex c)).hom ≫
       eqToHom (congrArg (vertexFiber q) hc)
 
@@ -30,7 +30,7 @@ theorem pullbackStrictEvaluationAt_ι {I : Type u} [Category.{u} I] {F B : SSet.
     (q : F ⟶ B) (k : nerve I ⟶ B) (c : I) (b : B _⦋0⦌)
     (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b) :
     pullbackStrictEvaluationAt q k c b hc ≫ vertexFiberι q b =
-      kanCocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (pullback.snd q k) c ≫
         vertexFiberι (pullback.snd q k) (nerveVertex c) ≫ pullback.fst q k := by
   unfold pullbackStrictEvaluationAt
   rw [Category.assoc, Category.assoc, SerrePositivity.InfinityCategories.vertexFiberTransport_ι q hc,
@@ -42,9 +42,9 @@ theorem pullbackStrictEvaluationAt_localized_isIso
     (q : F ⟶ B) (k : nerve I ⟶ B) [CocartesianFibration (pullback.snd q k)]
     (c : I) (b : B _⦋0⦌) (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b) :
     IsIso (AnodyneHomotopy.anodyneQ.map (pullbackStrictEvaluationAt q k c b hc)) := by
-  have he := kanCocartesianStrictTransportEvaluate_isQCatEquivalence (pullback.snd q k) c
+  have he := SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence (pullback.snd q k) c
   have : IsIso (AnodyneHomotopy.anodyneQ.map
-      (kanCocartesianStrictTransportEvaluate (pullback.snd q k) c)) :=
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (pullback.snd q k) c)) :=
     weakHomotopyEquivalence_anodyneQ_isIso _ he.isWeakHomotopyEquivalence
   unfold pullbackStrictEvaluationAt
   rw [Functor.map_comp, Functor.map_comp]

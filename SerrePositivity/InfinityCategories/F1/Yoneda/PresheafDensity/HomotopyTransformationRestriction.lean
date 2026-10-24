@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.HomotopyTransformationVertex
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の円柱からの指定変換頂点は、図式の制限と厳密に可換する。

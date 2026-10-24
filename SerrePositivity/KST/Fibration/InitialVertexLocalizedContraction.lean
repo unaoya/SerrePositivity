@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-! # 始対象の元の収縮による一点への射の局所化可逆性 -/

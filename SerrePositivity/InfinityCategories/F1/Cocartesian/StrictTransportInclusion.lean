@@ -22,12 +22,12 @@ namespace SerrePositivity.InfinityCategories
 /-- cocartesian section の包含は strict transport の図式全体で自然。 -/
 def cocartesianStrictTransportInclusion {C : Type u} [Category.{u} C]
     {D : SSet.{u}} (q : D ⟶ nerve C) :
-    kanCocartesianStrictTransportDiagram q ⟶ leftStrictTransportDiagram q where
-  app c := kanCocartesianSectionsι q (nerveMap (Under.forget c))
+    SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q ⟶ leftStrictTransportDiagram q where
+  app c := SerrePositivity.InfinityCategories.cocartesianSectionsι q (nerveMap (Under.forget c))
   naturality c d f := by
     let i : Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)) :=
       Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
-    exact kanCocartesianSectionsPre_ι q i
+    exact SerrePositivity.InfinityCategories.cocartesianSectionsPre_ι q i
 
 /-- 包含を strict な変換空間で後合成すると、同じ成分の内部 Hom の包含となる。 -/
 lemma strictDiagramMappingPost_cocartesianInclusion_component
@@ -35,8 +35,8 @@ lemma strictDiagramMappingPost_cocartesianInclusion_component
     (q : D ⟶ nerve C) (c : C) :
     strictDiagramMappingPost (cocartesianStrictTransportInclusion q) F ≫
       strictDiagramMappingComponent F (leftStrictTransportDiagram q) c =
-      strictDiagramMappingComponent F (kanCocartesianStrictTransportDiagram q) c ≫
-        (ihom (F.obj c)).map (kanCocartesianSectionsι q (nerveMap (Under.forget c))) := rfl
+      strictDiagramMappingComponent F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) c ≫
+        (ihom (F.obj c)).map (SerrePositivity.InfinityCategories.cocartesianSectionsι q (nerveMap (Under.forget c))) := rfl
 
 /-- cocartesian section の包含による strict な変換空間の射は単射。 -/
 instance strictDiagramMappingPost_cocartesianInclusion_mono
@@ -48,7 +48,7 @@ instance strictDiagramMappingPost_cocartesianInclusion_mono
     apply strictDiagramMappingHom_ext
     intro c
     apply (cancel_mono
-      ((ihom (F.obj c)).map (kanCocartesianSectionsι q (nerveMap (Under.forget c))))).1
+      ((ihom (F.obj c)).map (SerrePositivity.InfinityCategories.cocartesianSectionsι q (nerveMap (Under.forget c))))).1
     have hc := congrArg (fun H => H ≫
       strictDiagramMappingComponent F (leftStrictTransportDiagram q) c) h
     simpa only [Category.assoc,

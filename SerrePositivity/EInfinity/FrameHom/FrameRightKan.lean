@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
 public import SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!
 # 同じ frame augmentation の逆から実右 Kan 形状への比較

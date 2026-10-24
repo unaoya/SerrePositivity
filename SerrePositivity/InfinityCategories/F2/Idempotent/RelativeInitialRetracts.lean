@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EquivalenceRetractSquares
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractionNaturality
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 
 /-!
 概要：元の相対始対象性と相対始点境界充填は、元の全圏内の retract で閉じる。

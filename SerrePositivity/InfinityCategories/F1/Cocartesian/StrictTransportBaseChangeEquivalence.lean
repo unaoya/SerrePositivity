@@ -30,21 +30,21 @@ lemma cocartesianStrictTransportRestrictedEvaluate_isQCatEquivalence :
     vertexFiber_quasicategory_of_innerFibration p _
   letI : Quasicategory (vertexFiber p (nerveVertex (k.obj d))) :=
     vertexFiber_quasicategory_of_innerFibration p _
-  haveI : TrivialKanFibration (kanCocartesianSectionsEvaluate p a v) :=
-    kanCocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism p a v
+  haveI : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v) :=
+    SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism p a v
       (exists_kanNerveInitialPrism (Under.mkIdInitial (X := d)))
-  exact (isQCatEquivalence_of_trivialKanFibration (kanCocartesianSectionsEvaluate p a v)).comp
+  exact (isQCatEquivalence_of_trivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)).comp
     (qCatEquivalenceOfIso (eqToIso (congrArg (vertexFiber p)
       (cocartesianStrictTransportRestricted_vertex k d)))).isQCatEquivalence
 
 /-- 元の strict transport の under の関手による実際の制限は同値。 -/
 lemma cocartesianStrictTransportUnderPost_isQCatEquivalence :
-    IsQCatEquivalence (kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d)) := by
+    IsQCatEquivalence (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d)) := by
   letI : Quasicategory (vertexFiber p (nerveVertex (k.obj d))) :=
     vertexFiber_quasicategory_of_innerFibration p _
   apply (cocartesianStrictTransportRestrictedEvaluate_isQCatEquivalence p k d).cancel_right
   rw [cocartesianStrictTransportUnderPost_evaluate]
-  exact kanCocartesianStrictTransportEvaluate_isQCatEquivalence p (k.obj d)
+  exact SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence p (k.obj d)
 
 /-- 各底変換の元の strict transport への同じ比較成分は同値。 -/
 lemma cocartesianStrictTransportBaseChangeComponent_isQCatEquivalence :

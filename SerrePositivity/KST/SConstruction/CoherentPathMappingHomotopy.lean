@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentPathInsertion
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 元の豊穣 Path 作用の全パラメータの合成円柱
 概要：元の豊穣関手の全 Path 作用を、切断点での実合成に結ぶ円柱を復号する。

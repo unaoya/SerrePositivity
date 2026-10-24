@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.WeakMappingSpaces
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakMappingSpaces
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 

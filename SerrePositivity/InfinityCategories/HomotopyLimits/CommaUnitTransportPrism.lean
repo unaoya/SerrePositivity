@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.UnitCompositionTriangle
-public import SerrePositivity.InfinityCategories.F1B.CommaSquareUncurry
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.Diagrams.CommaSquareUncurry
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
 
 /-!
 概要：標準単位比較の合成三角形を、固定始域 comma 内の実際の輸送円柱にする。
@@ -64,7 +64,7 @@ def unitCommaCompositionPrism (η : FunctorHom (𝟙 X) (F ≫ G))
 /-- 円柱は元の Y 内の普遍区間辺全体を厳密に覆う。 -/
 lemma unitCommaCompositionPrism_projection (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
-    unitCommaCompositionPrism η x y ≫ F1B.kanUnitCommaFiberProjection G x =
+    unitCommaCompositionPrism η x y ≫ SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x =
       intervalMappingUncurry (𝟙 (intervalMappingSpace
         (F.app (Opposite.op ⦋0⦌) x) y)) :=
   unitCommaFiberCurry_target _ _ _ _

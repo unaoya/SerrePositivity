@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreRightFibration
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLiftingInvertible
-public import SerrePositivity.InfinityCategories.F1B.KanPathReplacementLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.PathReplacementLifting
 
 /-!
 概要：圏論的同値の右持ち上げ条件と可逆 path 置換の core の Kan fibration 性。
@@ -27,10 +27,10 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 規約：主張する充填性は元の指定関手の core 自体に対するもの。
 使われ方：path 置換で得られる全試験関手空間の一脚の充填性。 -/
 lemma coreMap_fibration_of_kanEquivalenceLifting (p : X ⟶ Y)
-    (hp : F1B.KanEquivalenceLifting p) : Fibration (quasicategoryCoreMap p) := by
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : Fibration (quasicategoryCoreMap p) := by
   have := hp.innerFibration
   have := coreMap_rightFibration_of_invertibleTargetLifting p
-    (F1B.KanEquivalenceLifting.invertibleTargetLifting hp)
+    (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.invertibleTargetLifting hp)
   infer_instance
 
 /-- 概要：任意の関手の可逆 path 置換の終点写像の core は Kan fibration。
@@ -49,7 +49,7 @@ instance corePathReplacementMap_fibration (p : X ⟶ Y) :
 instance corePathReplacementMap_internalHom_fibration (K : SSet.{u}) (p : X ⟶ Y) :
     Fibration (quasicategoryCoreMap ((ihom K).map (equivalencePathReplacementMap p))) :=
   coreMap_fibration_of_kanEquivalenceLifting _
-    (F1B.KanEquivalenceLifting.internalHom
+    (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.internalHom
       (F1B.kanEquivalenceLifting_equivalencePathReplacementMap p) K)
 
 end SerrePositivity.InfinityCategories.F2

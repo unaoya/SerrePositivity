@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaInitialAdjunction
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementComma
-public import SerrePositivity.InfinityCategories.F1B.Reflective
+public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
 
 /-!
 概要：各対象の局所置換から、局所対象の全部分 ∞ 圏への反射を構成する。

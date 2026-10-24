@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowStableExact
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 
 /-!
 概要：恒等二関手の lax pullback に恒等矢印の実対角を入れ、その差が全値を零化する。

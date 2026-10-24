@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanAnodyne
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
 
 /-!

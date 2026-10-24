@@ -24,25 +24,25 @@ namespace SerrePositivity.InfinityCategories
 /-- 同じ cocartesian section の作用を、相対 Hom から内部 Hom への作用に curry する。 -/
 def cocartesianSectionsPostHom {B : SSet.{u}} (a p q : Over B) :
     cocartesianRelativeFunctorSpace p.hom q.hom ⟶
-      (ihom (kanCocartesianSections p.hom a.hom)).obj (kanCocartesianSections q.hom a.hom) :=
+      (ihom (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)).obj (SerrePositivity.InfinityCategories.cocartesianSections q.hom a.hom) :=
   curry (cocartesianSectionsAction a p q)
 
 /-- 同じ section の豊穣後合成は、元の cocartesian 恒等射を内部 Hom の単位に写す。 -/
 lemma cocartesianSectionsPostHom_id {B : SSet.{u}} (a p : Over B) :
     cocartesianRelativeFunctorIdentity p ≫ cocartesianSectionsPostHom a p p =
-      MonoidalClosed.id (kanCocartesianSections p.hom a.hom) := by
+      MonoidalClosed.id (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom) := by
   apply uncurry_injective
   rw [cocartesianSectionsPostHom, uncurry_natural_left, uncurry_curry,
     MonoidalClosed.id_eq, uncurry_curry]
-  apply (cancel_epi (ρ_ (kanCocartesianSections p.hom a.hom)).inv).1
+  apply (cancel_epi (ρ_ (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)).inv).1
   rw [cocartesianSectionsAction_id, Iso.inv_hom_id]
 
 /-- 二段階の豊穣後合成を展開すると、同じ section の二段階の元の作用になる。 -/
 lemma cocartesianSectionsPostHom_comp_uncurry {B : SSet.{u}} (a p q r : Over B) :
     uncurry ((cocartesianSectionsPostHom a p q ⊗ₘ cocartesianSectionsPostHom a q r) ≫
-      MonoidalClosed.comp (kanCocartesianSections p.hom a.hom)
-        (kanCocartesianSections q.hom a.hom) (kanCocartesianSections r.hom a.hom)) =
-    (α_ (kanCocartesianSections p.hom a.hom)
+      MonoidalClosed.comp (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)
+        (SerrePositivity.InfinityCategories.cocartesianSections q.hom a.hom) (SerrePositivity.InfinityCategories.cocartesianSections r.hom a.hom)) =
+    (α_ (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)
       (cocartesianRelativeFunctorSpace p.hom q.hom)
       (cocartesianRelativeFunctorSpace q.hom r.hom)).inv ≫
       cocartesianSectionsAction a p q ▷ _ ≫ cocartesianSectionsAction a q r := by
@@ -62,8 +62,8 @@ lemma cocartesianSectionsPostHom_comp_uncurry {B : SSet.{u}} (a p q r : Over B) 
 lemma cocartesianSectionsPostHom_comp {B : SSet.{u}} (a p q r : Over B) :
     cocartesianRelativeFunctorComposition p q r ≫ cocartesianSectionsPostHom a p r =
     (cocartesianSectionsPostHom a p q ⊗ₘ cocartesianSectionsPostHom a q r) ≫
-      MonoidalClosed.comp (kanCocartesianSections p.hom a.hom)
-        (kanCocartesianSections q.hom a.hom) (kanCocartesianSections r.hom a.hom) := by
+      MonoidalClosed.comp (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)
+        (SerrePositivity.InfinityCategories.cocartesianSections q.hom a.hom) (SerrePositivity.InfinityCategories.cocartesianSections r.hom a.hom) := by
   apply uncurry_injective
   rw [cocartesianSectionsPostHom, uncurry_natural_left, uncurry_curry,
     cocartesianSectionsPostHom_comp_uncurry]
@@ -72,7 +72,7 @@ lemma cocartesianSectionsPostHom_comp {B : SSet.{u}} (a p q r : Over B) :
 /-- 元の section への作用を、core 移送前の quasicategory 値豊穣評価に束ねる。 -/
 def cocartesianSectionsEnrichedEvaluation {B : SSet.{u}} (a : Over B) :
     EnrichedFunctor SSet.{u} (CocartesianFibrationObject B) QuasicategoryObject.{u} where
-  obj p := ⟨kanCocartesianSections p.val.hom a.hom, inferInstance⟩
+  obj p := ⟨SerrePositivity.InfinityCategories.cocartesianSections p.val.hom a.hom, inferInstance⟩
   map p q := cocartesianSectionsPostHom a p.val q.val
   map_id p := cocartesianSectionsPostHom_id a p.val
   map_comp p q r := cocartesianSectionsPostHom_comp a p.val q.val r.val

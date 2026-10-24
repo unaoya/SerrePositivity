@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 # Kan 標的による元の弱同値の anodyne 局所化での可逆性

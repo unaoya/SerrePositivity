@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanLeftIdentityLeg
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftIdentityLeg
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 
 /-!
 概要：元の各点上の全 slice の標準余錐は、任意の関手の後でも余極限。
@@ -43,7 +43,7 @@ lemma sliceCanonicalCocone_isColimit {C D : SSet.{u}}
   have := cofinalPointInclusion_mono (sliceIdentityCone c)
   apply (isColimitCone_iff_restrict_of_rightAnodyne _
     (SSet.yonedaEquiv.symm (sliceIdentityCone c))
-    (F1B.kanTerminalPoint_rightAnodyne (F1B.kanSliceIdentityCone_isTerminalVertex c))).2
+    (SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex c))).2
   apply isColimitCone_of_point_constant _ (F.app (Opposite.op ⦋0⦌) c)
   exact sliceCanonicalCocone_identity_restrict F c
 

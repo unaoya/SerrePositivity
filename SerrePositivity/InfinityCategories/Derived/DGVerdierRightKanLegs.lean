@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCanonical
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitLegs
 public import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanRightConstantFamily
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightConstantFamily
 /-!
 概要：任意反転関手の商の右 Kan 局所極限錐は、実逆分母の各指定値で同じ脚が可逆。
 方針：cofinal な実分母制限を元の全図式へ厳密に戻し、実分母極限錐の脚を回収する。

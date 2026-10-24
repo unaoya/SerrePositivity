@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPathSpaceHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyEquivalencePath
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyEquivalencePath
 
 /-! 係数複体の同じ二端点 path を、係数空間内の元の区間族へ移す。 -/
 @[expose] public section

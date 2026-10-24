@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.PinchedPrecomposeEquivalence
-public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryMappingSpace
-public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：相対始点境界を充填する切断は、元の射影の左随伴になる。
@@ -32,7 +32,7 @@ lemma unitCondition_of_relativeInitial (η : FunctorHom (𝟙 X) (F ≫ G)) [IsI
   have : IsIso (qcatUnitComponent η x) := by
     change IsIso (functorHomEvaluate η x)
     infer_instance
-  exact ((F1B.kanPinchedHomMap_equivalence_of_initialBoundary G _ y (hF x)).isQCatEquivalence.comp
+  exact ((SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary G _ y (hF x)).isQCatEquivalence.comp
     (PinchedPrecompose.isQCatEquivalence (qcatUnitComponent η x) _)).isSimplicialHomotopyEquivalence
 
 /-- 切断の厳密な恒等から得る可逆な単位候補。 -/
@@ -58,7 +58,7 @@ lemma fullyFaithful_of_relativeInitialSection (h : F ≫ G = 𝟙 X)
     IsFullyFaithful F := by
   have hfg : IsFullyFaithful (F ≫ G) := h.symm ▸ isFullyFaithful_id X
   intro x y
-  have hg := F1B.kanPinchedHomMap_equivalence_of_initialBoundary G _
+  have hg := SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary G _
     (F.app (Opposite.op ⦋0⦌) y) (hF x)
   have hc := (hfg x y).isQCatEquivalence
   rw [pinchedHomMap_comp] at hc

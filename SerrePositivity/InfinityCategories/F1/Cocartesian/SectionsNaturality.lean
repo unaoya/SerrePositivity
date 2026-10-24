@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsEnrichedEvaluation
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionsPrecomposition
 
 /-!
 概要：section の定義域の制限と元の cocartesian 関手の高次作用との整合性。
@@ -21,8 +21,8 @@ namespace SerrePositivity.InfinityCategories
 /-- section の同じ全相対作用は、定義域を制限する前合成と厳密に可換。 -/
 lemma cocartesianSectionsAction_overPre {B : SSet.{u}} {a b : Over B}
     (f : a ⟶ b) (p q : Over B) :
-    cocartesianSectionsAction b p q ≫ kanCocartesianSectionsPre q.hom f =
-      kanCocartesianSectionsPre p.hom f ▷ _ ≫ cocartesianSectionsAction a p q := by
+    cocartesianSectionsAction b p q ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre q.hom f =
+      SerrePositivity.InfinityCategories.cocartesianSectionsPre p.hom f ▷ _ ≫ cocartesianSectionsAction a p q := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -39,9 +39,9 @@ lemma cocartesianSectionsAction_overPre {B : SSet.{u}} {a b : Over B}
 lemma cocartesianSectionsPostHom_overPre {B : SSet.{u}} {a b : Over B}
     (f : a ⟶ b) (p q : Over B) :
     cocartesianSectionsPostHom b p q ≫
-      (ihom (kanCocartesianSections p.hom b.hom)).map (kanCocartesianSectionsPre q.hom f) =
+      (ihom (SerrePositivity.InfinityCategories.cocartesianSections p.hom b.hom)).map (SerrePositivity.InfinityCategories.cocartesianSectionsPre q.hom f) =
     cocartesianSectionsPostHom a p q ≫
-      (pre (kanCocartesianSectionsPre p.hom f)).app (kanCocartesianSections q.hom a.hom) := by
+      (pre (SerrePositivity.InfinityCategories.cocartesianSectionsPre p.hom f)).app (SerrePositivity.InfinityCategories.cocartesianSections q.hom a.hom) := by
   apply uncurry_injective
   rw [uncurry_natural_right, cocartesianSectionsPostHom, uncurry_curry, uncurry_pre_app,
     cocartesianSectionsPostHom, uncurry_curry]
@@ -50,16 +50,16 @@ lemma cocartesianSectionsPostHom_overPre {B : SSet.{u}} {a b : Over B}
 /-- 定義域の制限と cocartesian 関手の元の相対作用を同時に作用させる。 -/
 def cocartesianSectionsMixedHom {B : SSet.{u}} {a b : Over B} (f : a ⟶ b) (p q : Over B) :
     cocartesianRelativeFunctorSpace p.hom q.hom ⟶
-      (ihom (kanCocartesianSections p.hom b.hom)).obj (kanCocartesianSections q.hom a.hom) :=
+      (ihom (SerrePositivity.InfinityCategories.cocartesianSections p.hom b.hom)).obj (SerrePositivity.InfinityCategories.cocartesianSections q.hom a.hom) :=
   cocartesianSectionsPostHom b p q ≫
-    (ihom (kanCocartesianSections p.hom b.hom)).map (kanCocartesianSectionsPre q.hom f)
+    (ihom (SerrePositivity.InfinityCategories.cocartesianSections p.hom b.hom)).map (SerrePositivity.InfinityCategories.cocartesianSectionsPre q.hom f)
 
 /-- 同じ混合作用は、両側の恒等射を内部 Hom の豊穣単位に写す。 -/
 lemma cocartesianSectionsMixedHom_id {B : SSet.{u}} (a p : Over B) :
     cocartesianRelativeFunctorIdentity p ≫ cocartesianSectionsMixedHom (𝟙 a) p p =
-      MonoidalClosed.id (kanCocartesianSections p.hom a.hom) := by
-  rw [cocartesianSectionsMixedHom, kanCocartesianSectionsPre_id,
-    (ihom (kanCocartesianSections p.hom a.hom)).map_id, Category.comp_id,
+      MonoidalClosed.id (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom) := by
+  rw [cocartesianSectionsMixedHom, SerrePositivity.InfinityCategories.cocartesianSectionsPre_id,
+    (ihom (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)).map_id, Category.comp_id,
     cocartesianSectionsPostHom_id]
 
 /-- 二つの元の cocartesian 関手と定義域の二つの制限の混合作用は、同じ豊穣合成を保つ。 -/
@@ -67,8 +67,8 @@ lemma cocartesianSectionsMixedHom_comp {B : SSet.{u}} {a b c : Over B}
     (f : b ⟶ a) (g : c ⟶ b) (p q r : Over B) :
     cocartesianRelativeFunctorComposition p q r ≫ cocartesianSectionsMixedHom (g ≫ f) p r =
       (cocartesianSectionsMixedHom f p q ⊗ₘ cocartesianSectionsMixedHom g q r) ≫
-        MonoidalClosed.comp (kanCocartesianSections p.hom a.hom)
-          (kanCocartesianSections q.hom b.hom) (kanCocartesianSections r.hom c.hom) := by
+        MonoidalClosed.comp (SerrePositivity.InfinityCategories.cocartesianSections p.hom a.hom)
+          (SerrePositivity.InfinityCategories.cocartesianSections q.hom b.hom) (SerrePositivity.InfinityCategories.cocartesianSections r.hom c.hom) := by
   apply uncurry_injective
   apply SSet.hom_ext
   intro n

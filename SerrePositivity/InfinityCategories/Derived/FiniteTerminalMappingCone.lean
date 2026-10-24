@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 
 /-! # 終対象への有限写像錐
 

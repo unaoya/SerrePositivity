@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 /-!
 概要：同じ実ホモトピーの頂点辺を回収し、全関手射の可逆性へ接続する。

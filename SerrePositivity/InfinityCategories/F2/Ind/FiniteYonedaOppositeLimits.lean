@@ -29,7 +29,7 @@ lemma ind_finiteColimit_cosliceSections_isQCatEquivalence (w : (IndInfinity κ C
     IsQCatEquivalence (leftFibrationConeRestriction
       (sliceUnderProjection (SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm w)))
       (mapJoinCone (oppositeIndYoneda κ)
-        (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c)))) := by
+        (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)))) := by
   let p := sliceUnderProjection (SSet.yonedaEquiv.symm (SSet.opObjEquiv.symm w))
   let y := oppositeIndYoneda (C := C) κ
   letI : LeftFibration (pullback.snd p y) :=
@@ -38,14 +38,14 @@ lemma ind_finiteColimit_cosliceSections_isQCatEquivalence (w : (IndInfinity κ C
     (oppositeIndLeftKanProjection κ w) (pullback.snd p y)
     (indCommaCoslicePullbackIso κ w).hom (indCommaCoslicePullbackIso_projection κ w)
     (isPrecompositionEquivalence_of_iso (indCommaCoslicePullbackIso κ w))
-    (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))).mp
+    (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))).mp
       (ind_finiteColimit_commaSections_isQCatEquivalence κ hκ hex c hc w)
   exact (leftFibrationConeRestriction_baseChange_iff p y _).mp hb
 
 /-- 明示交換入力のもとで、同じ元の有限余極限の反転全錐の Yoneda 像は極限。 -/
 lemma indYoneda_finiteOppositeCone_isLimit :
     IsLimitCone (mapJoinCone (oppositeIndYoneda κ)
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) := by
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) := by
   apply (isLimitCone_iff_coneSectionRestriction_homotopyEquivalence _).mpr
   intro x
   have h := ind_finiteColimit_cosliceSections_isQCatEquivalence κ hκ hex c hc (SSet.opObjEquiv x)

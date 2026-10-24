@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence
 public import SerrePositivity.InfinityCategories.Derived.RoofSliceTransport
 /-!
 概要：left cofinal な任意の実写像による錐圏の制限が ∞ 圏の同値であることを証明する。

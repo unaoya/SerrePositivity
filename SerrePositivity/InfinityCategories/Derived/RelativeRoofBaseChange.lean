@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SlicePullbackIso
 public import SerrePositivity.InfinityCategories.Derived.SliceRoofCorner
-public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 /-!
 概要：引き戻し圏への実図式に付随する、元の屋根・標的屋根・全三角形の比較正方形を作る。
 方針：同じ二つの射影を保持し、slice の固定図式の等式輸送を明示する。
@@ -51,7 +51,7 @@ def relativeRoofTriangleMap :
       sliceRoofTriangle (u ≫ pullback.fst r q) (b ≫ pullback.fst r q) :=
   pullback.lift (pullback.fst _ _)
     (pullback.snd _ _ ≫ sliceOverPostcomp b (pullback.fst r q)) (by
-      rw [Category.assoc, F1B.kanSliceOverPostcomp_projection, ← Category.assoc,
+      rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, ← Category.assoc,
         pullback.condition, Category.assoc])
 /-- 全三角形の元の添字への射影。 -/
 lemma relativeRoofTriangleMap_fst : relativeRoofTriangleMap r q u b ≫ pullback.fst _ _ =
@@ -63,7 +63,7 @@ lemma relativeRoofTriangleMap_snd : relativeRoofTriangleMap r q u b ≫ pullback
 def relativeRoofSourceMap : pullback u (sliceOverProjection b) ⟶ relativeRoofOriginal r q u b :=
   pullback.lift (pullback.snd _ _ ≫ sliceOverPostcomp b (pullback.snd r q))
     (pullback.fst _ _) (by
-      rw [Category.assoc, F1B.kanSliceOverPostcomp_projection, ← Category.assoc,
+      rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, ← Category.assoc,
         ← pullback.condition, Category.assoc])
 /-- 元の全 slice の屋根表示の分子。 -/
 lemma relativeRoofSourceMap_fst : relativeRoofSourceMap r q u b ≫ pullback.fst _ _ =

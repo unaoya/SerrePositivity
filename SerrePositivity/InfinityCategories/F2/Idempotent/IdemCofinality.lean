@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingCommaContractibility
-public import SerrePositivity.InfinityCategories.F1B.KanNerveRightKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.RightKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!
@@ -24,19 +24,19 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 def walkingCommaCosliceIso (P : WalkingSplit.{u}) :
     nerve (StructuredArrow P walkingInclusion) ≅
       pullback idemInclusion (sliceUnderProjection (nervePoint P)) :=
-  F1B.kanNerveRightKanShapeIso P walkingInclusion ≪≫ pullbackSymmetry _ _
+  SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso P walkingInclusion ≪≫ pullbackSymmetry _ _
 
 /-- 元の比較同型は、元の全 Idem への射影と厳密に可換。 -/
 lemma walkingCommaCosliceIso_projection (P : WalkingSplit.{u}) :
     (walkingCommaCosliceIso P).hom ≫ pullback.fst idemInclusion
       (sliceUnderProjection (nervePoint P)) =
         nerveMap (StructuredArrow.proj P walkingInclusion) := by
-  change (F1B.kanNerveRightKanShapeIso P walkingInclusion).hom ≫
+  change (SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso P walkingInclusion).hom ≫
     (pullbackSymmetry _ _).hom ≫ _ = _
   have h := pullbackSymmetry_hom_comp_fst
     (sliceUnderProjection (nervePoint P)) idemInclusion
-  exact (congrArg (fun f ↦ (F1B.kanNerveRightKanShapeIso P walkingInclusion).hom ≫ f) h).trans
-    (F1B.kanNerveRightKanShapeIso_hom_projection P walkingInclusion)
+  exact (congrArg (fun f ↦ (SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso P walkingInclusion).hom ≫ f) h).trans
+    (SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso_hom_projection P walkingInclusion)
 
 /-- 元の包含に沿った元の coslice の引き戻しは、各元の対象で弱可縮。 -/
 lemma idemInclusion_coslice_isWeaklyContractible (P : WalkingSplit.{u}) :

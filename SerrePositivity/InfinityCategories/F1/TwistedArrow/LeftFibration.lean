@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.HornCover
-public import SerrePositivity.InfinityCategories.F1B.InnerProductProjection
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.InnerProductProjection
 
 /-!
 概要：quasicategory の twisted arrow 射影は left fibration。

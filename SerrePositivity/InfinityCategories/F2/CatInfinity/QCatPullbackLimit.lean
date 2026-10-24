@@ -27,7 +27,7 @@ variable [InnerFibration (show E.obj ⟶ B.obj from p)]
 規約：任意の小さい quasicategory T を試験対象に取る。
 使われ方：coherent nerve の実際の極限判定の全 Hom 条件。 -/
 def qCatPullbackHomCone_isLimit (T : QCat.{u})
-    (hp : F1B.KanEquivalenceLifting (show E.obj ⟶ B.obj from p)) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (show E.obj ⟶ B.obj from p)) :
     IsLimit (((SimplicialCategory.sHomFunctor QCat.{u}).obj (Opposite.op T)).mapCone
       (qCatPullbackOrdinaryCone p q)) := by
   apply (PullbackCone.isLimitMapConeEquiv (qCatPullbackOrdinaryCone p q)
@@ -64,7 +64,7 @@ def qCatPullbackHomCone_isLimit (T : QCat.{u})
 規約：右脚に fibration 性を仮定しない。
 使われ方：可逆 path 置換を使った Cat_∞ の実際の引き戻し。 -/
 lemma qCatPullbackInfinityCone_isLimit
-    (hp : F1B.KanEquivalenceLifting (show E.obj ⟶ B.obj from p)) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (show E.obj ⟶ B.obj from p)) :
     IsLimitCone (HomotopyLimits.strictCoherentCone (qCatPullbackCone p q)) := by
   have : ∀ T : QCat.{u}, Fibration
       ((HomotopyLimits.simplicialHomDiagram (qCatPullbackDiagram p q) T).map
@@ -72,7 +72,7 @@ lemma qCatPullbackInfinityCone_isLimit
     change Fibration (((SimplicialCategory.sHomFunctor QCat.{u}).obj (Opposite.op T)).map p)
     rw [qCatHom_postcomp]
     exact coreMap_fibration_of_kanEquivalenceLifting _
-      (F1B.KanEquivalenceLifting.internalHom hp T.obj)
+      (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.internalHom hp T.obj)
   apply HomotopyLimits.strictCoherentCone_isLimit_of_cospan_homLimit (qCatPullbackCone p q)
   intro T
   exact (qCatPullbackHomCone_isLimit p q T hp).whiskerEquivalence

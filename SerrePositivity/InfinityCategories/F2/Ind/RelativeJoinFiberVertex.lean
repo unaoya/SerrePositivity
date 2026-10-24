@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinFiberEmbedding
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalEndpointPullbacks
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFiberCocone
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberCocone
 
 /-!
 概要：元の相対 join の fiber 余錐の頂点は、元の右制限の同じ指定頂点そのもの。

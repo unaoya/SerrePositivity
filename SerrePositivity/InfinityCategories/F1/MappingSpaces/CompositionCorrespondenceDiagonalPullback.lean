@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceDiagonalSquare
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLifting
 public import Mathlib.CategoryTheory.LiftingProperties.Limits
 
 /-!
@@ -38,10 +38,10 @@ lemma compositionCorrespondenceDiagonal_isPullback :
 
 /-- 同じ対角評価は、単射な前合成同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_compositionCorrespondenceDiagonal [Quasicategory X] :
-    F1B.KanEquivalenceLifting (compositionCorrespondenceDiagonal x g) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (compositionCorrespondenceDiagonal x g) := by
   intro A B i hi he
   letI : HasLiftingProperty i ((pre (horn 2 2).ι).app X) :=
-    F1B.kanEquivalenceLifting_pre (horn 2 2).ι i hi he
+    SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre (horn 2 2).ι i hi he
   exact (compositionCorrespondenceDiagonal_isPullback x g).hasLiftingProperty i
 
 /-- 同じ対角評価は、Kan 複体間の元の射として Kan fibration。 -/

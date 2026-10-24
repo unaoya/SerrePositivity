@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverRefinement
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 
 /-! # 実 Verdier over 圏の恒等分母は終対象
@@ -55,6 +55,6 @@ lemma dgVerdierOverIdentityVertex_isTerminal (P : Set D) (x : D) :
     IsTerminalVertex (dgVerdierOverIdentityVertex A D P x) := by
   apply (isFullyFaithful_fullSubcomplexOnVertices_ι _
     (IsDGVerdierOverVertex A D P x)).reflects_isTerminalVertex
-  exact F1B.kanSliceIdentityCone_isTerminalVertex (X := dgNerve A D) (Simplex.vertex x)
+  exact SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex (X := dgNerve A D) (Simplex.vertex x)
 
 end SerrePositivity.InfinityCategories

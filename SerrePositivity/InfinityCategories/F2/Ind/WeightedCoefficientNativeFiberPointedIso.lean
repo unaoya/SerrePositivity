@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCoefficientNativeEvaluation
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
-public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso
 
 /-!
 概要：同じ共同係数分類の小さい値 fiber を、元の native 評価頂点の pointed fiber へ移す。
@@ -44,7 +44,7 @@ lemma weightedCoefficientNativeFiberPointedIso_ι :
         (vertexFiberι (smallLeftUnstraighteningProjection Q) (SSet.opObjEquiv.symm x)) ≫
           (smallLeftUnstraighteningIso Q).hom ≫ pullback.fst pointedSpaceProjection Q := by
   simp only [weightedCoefficientNativeFiberPointedIso, Iso.trans_hom, Category.assoc]
-  rw [F1B.kanVertexFiberι_eqTransport pointedSpaceProjection
+  rw [SerrePositivity.InfinityCategories.F1B.vertexFiberι_eqTransport pointedSpaceProjection
     (weightedCoefficientNativeEvaluationVertex_eq κ F hF i x).symm]
   have hl := congrArg (fun f ↦
     (smallLeftUnstraighteningFiberIso Q (SSet.opObjEquiv.symm x)).hom ≫ f)

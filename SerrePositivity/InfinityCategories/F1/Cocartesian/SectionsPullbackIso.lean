@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorIsPullbackIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackEdgeReflection
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSections
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSections
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 
 /-!
@@ -27,7 +27,7 @@ variable {X P E A B : SSet.{u}} [Quasicategory B] {p : E ⟶ B} [CocartesianFibr
 
 /-- 同じ全相対 Hom の pullback 同型は、全ての辺を cocartesian に送る条件を反映する。 -/
 lemma cocartesianSectionsPullbackIso_predicate (v : (relativeFunctorSpace r a) _⦋0⦌) :
-    KanIsCocartesianSection r a v ↔ KanIsCocartesianSection p b
+    SerrePositivity.InfinityCategories.IsCocartesianSection r a v ↔ SerrePositivity.InfinityCategories.IsCocartesianSection p b
       ((relativeFunctorIsPullbackIso hs a b hab).hom.app (Opposite.op ⦋0⦌) v) := by
   obtain ⟨g, hg, rfl⟩ := exists_relativeFunctorVertex r a v
   rw [relativeFunctorIsPullbackIso_vertex]
@@ -37,32 +37,32 @@ lemma cocartesianSectionsPullbackIso_predicate (v : (relativeFunctorSpace r a) _
   exact forall_congr' (fun e ↦ isCocartesianEdge_isPullback_iff p hs (g.app _ e))
 
 /-- 元の各底変換の cocartesian section と、元の標的へ写す同じ section の厳密な同型。 -/
-def cocartesianSectionsPullbackIso : kanCocartesianSections r a ≅ kanCocartesianSections p b :=
+def cocartesianSectionsPullbackIso : SerrePositivity.InfinityCategories.cocartesianSections r a ≅ SerrePositivity.InfinityCategories.cocartesianSections p b :=
   fullSubcomplexIso (relativeFunctorIsPullbackIso hs a b hab)
-    (KanIsCocartesianSection r a) (KanIsCocartesianSection p b)
+    (SerrePositivity.InfinityCategories.IsCocartesianSection r a) (SerrePositivity.InfinityCategories.IsCocartesianSection p b)
     (cocartesianSectionsPullbackIso_predicate hs a b hab)
 
 /-- 同じ section 同型は、包含後に元の全相対 Hom の同型を回収する。 -/
 lemma cocartesianSectionsPullbackIso_hom_ι :
-    (cocartesianSectionsPullbackIso hs a b hab).hom ≫ kanCocartesianSectionsι p b =
-      kanCocartesianSectionsι r a ≫ (relativeFunctorIsPullbackIso hs a b hab).hom :=
+    (cocartesianSectionsPullbackIso hs a b hab).hom ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι p b =
+      SerrePositivity.InfinityCategories.cocartesianSectionsι r a ≫ (relativeFunctorIsPullbackIso hs a b hab).hom :=
   fullSubcomplexIso_hom_ι _ _ _ _
 
 /-- 全パラメーターでの同じ section 同型の展開は、元の全空間への実際の後合成。 -/
 lemma cocartesianSectionsPullbackIso_hom_uncurry {T : SSet.{u}}
-    (k : T ⟶ kanCocartesianSections r a) :
+    (k : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections r a) :
     relativeFunctorUncurry ((k ≫ (cocartesianSectionsPullbackIso hs a b hab).hom) ≫
-      kanCocartesianSectionsι p b) =
-    relativeFunctorUncurry (k ≫ kanCocartesianSectionsι r a) ≫ i := by
+      SerrePositivity.InfinityCategories.cocartesianSectionsι p b) =
+    relativeFunctorUncurry (k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι r a) ≫ i := by
   rw [Category.assoc, cocartesianSectionsPullbackIso_hom_ι, ← Category.assoc]
   exact relativeFunctorIsPullbackForward_uncurry hs a b hab _
 
 /-- 逆同型で持ち上げた同じ族を元の全空間へ射影すると、指定された section の族になる。 -/
 lemma cocartesianSectionsPullbackIso_inv_uncurry {T : SSet.{u}}
-    (k : T ⟶ kanCocartesianSections p b) :
+    (k : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p b) :
     relativeFunctorUncurry ((k ≫ (cocartesianSectionsPullbackIso hs a b hab).inv) ≫
-      kanCocartesianSectionsι r a) ≫ i =
-    relativeFunctorUncurry (k ≫ kanCocartesianSectionsι p b) := by
+      SerrePositivity.InfinityCategories.cocartesianSectionsι r a) ≫ i =
+    relativeFunctorUncurry (k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι p b) := by
   have h := cocartesianSectionsPullbackIso_hom_uncurry hs a b hab
     (k ≫ (cocartesianSectionsPullbackIso hs a b hab).inv)
   simp only [Category.assoc, Iso.inv_hom_id_assoc] at h

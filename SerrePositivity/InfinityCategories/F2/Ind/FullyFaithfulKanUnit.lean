@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PointSliceKanComparison
-public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitInvertible
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitInvertible
 
 /-!
 概要：任意の充満忠実な元の関手に沿う左 Kan 拡張の、指定単位自体が可逆。
@@ -25,7 +25,7 @@ lemma leftKanIdentity_isTerminal_of_fullyFaithful {K C : SSet.{u}}
     [Quasicategory K] [Quasicategory C] (δ : K ⟶ C) (hδ : IsFullyFaithful δ) (k : K _⦋0⦌) :
     IsTerminalVertex (kanLeftKanIdentityVertex δ k) := by
   have h := (pointSliceKanComparison_isQCatEquivalence δ k hδ).choose.map_isTerminalVertex
-    (kanSliceIdentityCone_isTerminalVertex k)
+    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex k)
   change IsTerminalVertex ((pointSliceKanComparison δ k).app (Opposite.op ⦋0⦌)
     (sliceIdentityCone k)) at h
   rw [pointSliceKanComparison_identity] at h
@@ -52,7 +52,7 @@ lemma leftKanTransport_unit_component_isIso_of_fullyFaithful {K C D : SSet.{u}}
     change IsIso (eqToHom _ ≫
       (hoFunctor.map (coconeApexEvaluation L D)).toFunctor.map α ≫ eqToHom _)
     infer_instance
-  have hs := kanCoconeHom_source_component_isIso t.cocone
+  have hs := SerrePositivity.InfinityCategories.F1B.coconeHom_source_component_isIso t.cocone
     (leftKanCanonicalCocone δ F (δ.app (Opposite.op ⦋0⦌) k)) α
     (SSet.yonedaEquiv.symm a) hc hd ha
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at hs

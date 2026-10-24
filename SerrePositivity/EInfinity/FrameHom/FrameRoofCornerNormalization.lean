@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
-public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!
@@ -60,7 +60,7 @@ def roofCornerTerminal : (nerve (Over (roofTargetDegree A Y q b))) _⦋0⦌ :=
   nerveVertex (Over.mk (𝟙 (roofTargetDegree A Y q b)))
 
 lemma roofCornerTerminal_isTerminal : IsTerminalVertex (roofCornerTerminal A Y q b) :=
-  F1B.kanNerveVertex_isTerminal Over.mkIdTerminal
+  SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal Over.mkIdTerminal
 
 def roofCornerTerminalFiberIso :
     vertexFiber (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≅

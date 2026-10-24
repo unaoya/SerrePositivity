@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 # anodyne 局所化の全族の等式から実ホモトピーと全区間族の射を回収する

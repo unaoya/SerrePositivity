@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：一点からの関手の実際の円柱を評価し、同じ辺の類を回収する。

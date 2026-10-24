@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.RelativeRoofPullback
 public import SerrePositivity.InfinityCategories.Derived.RightFibrationCofinalPullback
 public import SerrePositivity.InfinityCategories.Derived.InitialDiagramSlice
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 /-!
 概要：元の実屋根の left cofinal 比較から、引き戻し圏への実図式の left cofinality を導く。
 方針：各 Quillen A の全 slice を右ファイブレーションへの基底変換として計算する。

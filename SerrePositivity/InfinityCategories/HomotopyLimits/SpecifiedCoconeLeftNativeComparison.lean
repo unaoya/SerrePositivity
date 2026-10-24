@@ -4,7 +4,7 @@ public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeLeftRootNativeCylinder
 public import
   SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeLeftRestrictionCylinder
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：元の左 Hom 係数を、実際の左三角形と終点固定円柱を通して native な共通脚へ接続する。
@@ -47,7 +47,7 @@ def specifiedCoconeLeftNativeIso : FunctorIso
     (U ≫ coconeMappingSpaceHomComparison dB hB y ≫
       colimitAttachmentHomPrecomposition c hc f (i ≫ p) rfl dB y)
     (specifiedCoconeNativeRootHomPrecomposition hp p c hc dB dC y) :=
-  kanFunctorIsoTransport
+  SerrePositivity.InfinityCategories.functorIsoTransport
     (functorIsoOfSimplicialHomotopy
         (specifiedCoconeLeftRestrictionHomComparison hp p c hc dB hB dC y) ≪≫
       functorIsoOfSimplicialHomotopy (specifiedCoconeLeftRootNativeCylinder hp p c hc dB dC y))
@@ -65,7 +65,7 @@ lemma specifiedCoconeLeftNativeHomotopy_hom :
     SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (specifiedCoconeLeftNativeHomotopy hp p c hc dB hB dC y)) =
       (specifiedCoconeLeftNativeIso hp p c hc dB hB dC y).hom :=
-  kanFunctorIso_simplicialHomotopy_hom _
+  SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom _
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

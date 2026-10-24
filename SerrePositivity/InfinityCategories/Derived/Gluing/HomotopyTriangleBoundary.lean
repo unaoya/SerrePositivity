@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleBoundaryGluing
 public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 

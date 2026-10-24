@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalCospan
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：元と path 置換後の Kan cospan の coherent な図式は同型。

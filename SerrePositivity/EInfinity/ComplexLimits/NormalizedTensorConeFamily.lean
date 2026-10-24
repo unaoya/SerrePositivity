@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConePrism
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 
 /-!
 概要：元の全 cone prism を同じ定値先端から元の frame 図式への関手の射にする。

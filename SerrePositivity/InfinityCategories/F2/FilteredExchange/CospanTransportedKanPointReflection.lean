@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanTrans
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackValueKanPoint
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCospanPointHomotopy
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：共通値へ輸送した Kan 引き戻し射を、元の値の実際の比較像へ戻す。

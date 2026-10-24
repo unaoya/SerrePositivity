@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 
 /-!
 概要：元の単体的関手の区間 Hom 作用と前合成は、全自然同型で可換。
@@ -50,8 +50,8 @@ lemma pinchedHomMap_equivalence_iff_intervalFunctorMap {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) (x y : X _⦋0⦌) :
     IsQCatEquivalence (pinchedHomMap p x y) ↔
       IsQCatEquivalence (intervalFunctorMap p x y) := by
-  have hx := PinchedInterval.comparison_isQCatEquivalence x y
-  have hy := PinchedInterval.comparison_isQCatEquivalence
+  have hx := SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y
+  have hy := SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (p.app (Opposite.op ⦋0⦌) x) (p.app (Opposite.op ⦋0⦌) y)
   constructor
   · intro h

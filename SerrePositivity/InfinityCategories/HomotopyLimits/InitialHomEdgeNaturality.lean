@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeFamilies
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceShapePushout
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：始対象からの比較辺を含む合成三角形の族を、選ばれた Hom 比較と全単体で照合する。

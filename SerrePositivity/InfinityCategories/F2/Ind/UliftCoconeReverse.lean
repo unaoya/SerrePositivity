@@ -24,15 +24,15 @@ open HomotopyLimits
 /-- 同じ元の余錐の反転と持ち上げは形状同型による制限の後で全射が一致。 -/
 lemma uliftCoconeReverse_val {K X : SSet.{u}} {D : K ⟶ X} (c : JoinCocone D) :
     (mapJoinCone (uliftOppositeIso X).hom
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))).val =
-    (restrictJoinCone (F1B.kanCoconeReverseCone (JoinCocone.ulift.{u, u + 1} c))
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))).val =
+    (restrictJoinCone (SerrePositivity.InfinityCategories.F1B.coconeReverseCone (JoinCocone.ulift.{u, u + 1} c))
       (uliftOppositeIso K).hom).val := by
   change ((uliftConeShapeIso K.op 0).inv ≫
-    (SSet.uliftFunctor.{u + 1, u}).map (F1B.kanCoconeReverseCone c).val) ≫
+    (SSet.uliftFunctor.{u + 1, u}).map (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val) ≫
       (uliftOppositeIso X).hom =
     joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (uliftOppositeIso K).hom ≫
-      (F1B.kanCoconeReverseCone (JoinCocone.ulift.{u, u + 1} c)).val
-  rw [F1B.kanCoconeReverseCone_val, F1B.kanCoconeReverseCone_val]
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone (JoinCocone.ulift.{u, u + 1} c)).val
+  rw [SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val, SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val]
   have hval : (JoinCocone.ulift.{u, u + 1} c).val =
       (uliftCoconeShapeIso K 0).inv ≫ (SSet.uliftFunctor.{u + 1, u}).map c.val := rfl
   rw [hval]

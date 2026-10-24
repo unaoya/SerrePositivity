@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianProductProjection
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseInnerFibration
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianProductProjection
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinBaseInnerFibration
 
 /-!
 概要：固定した ∞ 圏パラメータを持つ積の添字射影は cocartesian fibration。
@@ -30,8 +30,8 @@ instance productIndex_cocartesianFibration (B D : SSet.{u}) [Quasicategory B] :
       · rw [Category.assoc, lift_fst, SSet.comp_const, SSet.yonedaEquiv_symm_comp]
         exact (SSet.yonedaEquiv_symm_zero x.1).symm
       · rw [Category.assoc, lift_snd, he, SSet.yonedaEquiv_symm_comp]
-    · apply F1B.kanIsCocartesianEdge_productSnd_of_invertible
+    · apply SerrePositivity.InfinityCategories.F1B.isCocartesianEdge_productSnd_of_invertible
       change IsInvertibleEdge (edgeOfSimplex (PinchedHom.constant x.1 1))
-      exact F1B.kanConstantEdge_isInvertible x.1
+      exact SerrePositivity.InfinityCategories.F1B.constantEdge_isInvertible x.1
 
 end SerrePositivity.InfinityCategories.F2.Ind

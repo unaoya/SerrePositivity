@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedOrdinaryDerivedHom
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
 
 /-!
 # 同じ元の始域比較を用いる実 D(R) Hom 比較の全区間族
@@ -33,10 +33,10 @@ lemma normalizedOrdinaryDerivedHomMap_family (X Y : Complex A) (T : SSet.{u + 1}
       (nerveVertex ((framedLimitProbeFunctor A).obj X))
     let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)
     intervalFamilyHom (f ≫ normalizedOrdinaryDerivedHomMap A X Y ≫
-      PinchedInterval.comparison x y) =
+      SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y) =
     constantFunctorHomMap T (complexProbeDerivedSourceVertexIso A X).inv ≫
       intervalFamilyHom (f ≫ normalizedProbeDerivedHomMap A X Y ≫
-        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ PinchedInterval.comparison qx y) := by
+        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace qx y) := by
   let x := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)
   let qx := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
     (nerveVertex ((framedLimitProbeFunctor A).obj X))
@@ -48,7 +48,7 @@ lemma normalizedOrdinaryDerivedHomMap_family (X Y : Complex A) (T : SSet.{u + 1}
   have h := intervalFamilyHom_eq_of_homotopy (functorHomotopyPrecomp H (f ≫ p))
   calc
     _ = intervalFamilyHom ((f ≫ p) ≫
-        (PinchedInterval.comparison qx y ≫ intervalPrecompose y e.inv)) := by
+        (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace qx y ≫ intervalPrecompose y e.inv)) := by
       simpa only [normalizedOrdinaryDerivedHomMap, PinchedInterval.precompose,
         p, e, x, qx, y, Category.assoc] using h
     _ = _ := by

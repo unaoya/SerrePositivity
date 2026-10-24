@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquareInverse
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilySquareInverse
 
 /-!
 概要：終対象比較を射影した実区間族と、その比較選択によらない全パラメータのホモトピー。

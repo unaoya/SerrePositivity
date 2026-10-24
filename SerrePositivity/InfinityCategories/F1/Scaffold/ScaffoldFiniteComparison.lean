@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldBaseChange
+
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteComparisonStep
 public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldPoint
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyPostcomp
-public import SerrePositivity.InfinityCategories.F1B.KanCoconeFamilyEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeFamilyEquivalenceLifting
 
 /-!
 概要：図式固定の錐の族の後合成の充填性。
@@ -39,15 +39,15 @@ instance coneFamilyPostcomp_innerFibration {J X Y : SSet.{u}}
 規約：添字と図式に単射性を要求しない。
 使われ方：錐族の写像空間での Kan fibration による普遍性。 -/
 lemma coneFamilyPostcomp_equivalenceLifting {J X Y : SSet.{u}}
-    (r : J ⟶ X) (f : X ⟶ Y) (hf : F1B.KanEquivalenceLifting f) :
-    F1B.KanEquivalenceLifting (coneFamilyPostcomp r f) := by
+    (r : J ⟶ X) (f : X ⟶ Y) (hf : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting f) :
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (coneFamilyPostcomp r f) := by
   let sq := Functor.PullbackObjObj.ofHasPullback internalHom
     (joinInr (Δ[0] : SSet.{u}) J) f
-  have hs : F1B.KanEquivalenceLifting sq.π :=
-    F1B.KanEquivalenceLifting.relativeInternalHom hf
+  have hs : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting sq.π :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.relativeInternalHom hf
     (joinInr (Δ[0] : SSet.{u}) J) sq
   intro A T i hm hi
-  exact F1B.kanRelativeVertexFiberMap_equivalenceLifting
+  exact SerrePositivity.InfinityCategories.F1B.relativeVertexFiberMap_equivalenceLifting
     (coneRestriction J X) (coneRestriction J Y)
     ((ihom (join (Δ[0] : SSet.{u}) J)).map f) ((ihom J).map f)
     ((pre (joinInr (Δ[0] : SSet.{u}) J)).naturality f).symm hs (functorVertex r) i hm hi

@@ -31,7 +31,7 @@ lemma core_relativeFunctorPre_fibration_of_cocartesian
 lemma core_kanCocartesianSectionsPre_fibration
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     {a b : Over B} (i : a ⟶ b) [Mono i.left] :
-    Fibration (quasicategoryCoreMap (kanCocartesianSectionsPre p i)) :=
+    Fibration (quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p i)) :=
   F2.coreMap_fibration_of_kanEquivalenceLifting _
     (kanEquivalenceLifting_kanCocartesianSectionsPre p i)
 

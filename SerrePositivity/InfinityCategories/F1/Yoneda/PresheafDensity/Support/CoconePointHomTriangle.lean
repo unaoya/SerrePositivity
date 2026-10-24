@@ -37,7 +37,7 @@ lemma coconePointHomTriangle_first (c : JoinCocone f) (z : X _⦋0⦌) :
         coconeVariablePrism (SSet.const c : pinchedHomLeft c.vertex z ⟶ sliceUnder f) := by
   have he : stdSimplex.δ (2 : Fin 3) ≫ squareTriangle.{u} 1 =
       (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) :=
-    kanSquareTriangle_outerFaces.2.2.1
+    SerrePositivity.InfinityCategories.squareTriangle_outerFaces.2.2.1
   rw [coconePointHomTriangle, ← Category.assoc, ← Category.assoc,
     ← comp_whiskerRight, he]
   change (coconeHorizontalParameters K (pinchedHomLeft c.vertex z) ≫
@@ -53,7 +53,7 @@ lemma coconePointHomTriangle_second (c : JoinCocone f) (z : X _⦋0⦌) :
         snd K (pinchedHomLeft c.vertex z ⊗ (Δ[1] : SSet.{u})) ≫
           (pointHomTransportCylinder (sliceUnderProjection f) c z).h ≫ sliceUnderProjection f := by
   rw [coconePointHomTriangle, ← Category.assoc, ← Category.assoc, ← comp_whiskerRight,
-    kanSquareTriangle_outerFaces.2.2.2]
+    SerrePositivity.InfinityCategories.squareTriangle_outerFaces.2.2.2]
   change (coconeVerticalParameters K (pinchedHomLeft c.vertex z) ≫
     (SSet.ι₁ ▷ (pinchedHomLeft c.vertex z ⊗ (Δ[1] : SSet.{u})))) ≫
       coconePointHomSquare c z = _

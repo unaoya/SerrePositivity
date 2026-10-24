@@ -22,12 +22,12 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def oppositeFunctorIso {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
     (e : FunctorIso F G) : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.map F) where
-  hom := kanFunctorOppositeHomEquiv F G e.hom
-  inv := kanFunctorOppositeHomEquiv G F e.inv
+  hom := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G e.hom
+  inv := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G F e.inv
   hom_inv_id := by
-    rw [← kanFunctorOppositeHomEquiv_comp, e.inv_hom_id, oppositeFunctorHom_id]
+    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.inv_hom_id, oppositeFunctorHom_id]
   inv_hom_id := by
-    rw [← kanFunctorOppositeHomEquiv_comp, e.hom_inv_id, oppositeFunctorHom_id]
+    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.hom_inv_id, oppositeFunctorHom_id]
 
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
@@ -57,12 +57,12 @@ lemma reflectiveOppositeUnit_condition (e : FunctorIso (G ≫ F) (𝟙 Y))
   apply unitCondition_of_iso_localMapping
   intro y x
   have hp := h (SSet.opObjEquiv x) (SSet.opObjEquiv y)
-  have hi := hp.isQCatEquivalence.comp (PinchedInterval.comparison_isQCatEquivalence
+  have hi := hp.isQCatEquivalence.comp (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv x))
     (F.app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) (SSet.opObjEquiv y))))
   rw [pinchedIntervalComparison_naturality] at hi
   have ho := HomotopyLimits.intervalFunctorMap_op_isQCatEquivalence F _ _
-    ((PinchedInterval.comparison_isQCatEquivalence _ _).cancel_left hi)
+    ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence _ _).cancel_left hi)
   exact HomotopyLimits.pinchedHomMap_equivalence_of_intervalFunctorMap _ _ _ ho
 
 /-- 元の局所比較と可逆余単位から、元の二関手の実随伴を構成する。 -/

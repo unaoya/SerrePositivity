@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeTrianglePrismHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：同じ native な二単体と標準二辺を持つ輸送三角形の選択を、境界を固定して比較する。

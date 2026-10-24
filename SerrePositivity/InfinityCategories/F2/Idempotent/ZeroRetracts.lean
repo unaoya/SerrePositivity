@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractContractibility
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 public import SerrePositivity.InfinityCategories.Stable.Pointed
 
 /-!

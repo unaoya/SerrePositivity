@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentTotalEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
 
 /-!
 概要：元の有限 coherent 積の余極限 Kan 模型から、各余極限模型の有限積への比較。

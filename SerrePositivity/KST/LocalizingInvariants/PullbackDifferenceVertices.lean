@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceIso
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexData
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Stable.IsomorphismCofiberZero
 

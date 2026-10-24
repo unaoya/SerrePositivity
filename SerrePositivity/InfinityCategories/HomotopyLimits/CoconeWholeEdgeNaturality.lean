@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeDomainHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanPrecompositionHomotopy
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
 
 /-!
@@ -40,9 +40,9 @@ lemma coconeWholeEdge_domain_naturality {K X : SSet.{u}} {p r : K ⟶ X}
       (functorHomotopyPostcomp (coconeDomainHomotopy K) q.val)) ≫
       homMk (e.map ((truncation 2).map
         ((pre (SSet.const (coconeRightApexVertex K) : K ⟶ join K Δ[0])).app X))) := by
-  have h := (F1B.kanPrecompositionNatTrans (coconeDomainHomotopy K) X).naturality (homMk e)
-  erw [F1B.kanPrecompositionNatTrans_app (coconeDomainHomotopy K) d.val,
-    F1B.kanPrecompositionNatTrans_app (coconeDomainHomotopy K) q.val] at h
+  have h := (SerrePositivity.InfinityCategories.F1B.precompositionNatTrans (coconeDomainHomotopy K) X).naturality (homMk e)
+  erw [SerrePositivity.InfinityCategories.F1B.precompositionNatTrans_app (coconeDomainHomotopy K) d.val,
+    SerrePositivity.InfinityCategories.F1B.precompositionNatTrans_app (coconeDomainHomotopy K) q.val] at h
   exact h
 
 end SerrePositivity.InfinityCategories.HomotopyLimits

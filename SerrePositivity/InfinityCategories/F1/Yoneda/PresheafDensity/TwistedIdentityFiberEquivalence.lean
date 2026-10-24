@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedIdentityFiber
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseLeftFilling
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 
 /-!
 概要：同じ大域評価の恒等射上の fiber 作用そのものは同値。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveExtOne
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ExtOne
 public import SerrePositivity.InfinityCategories.Core.Join
 
 /-!
@@ -23,7 +23,7 @@ open scoped Simplicial
 lemma thinNerve_hom_ext_zero {K : SSet.{u}} {C : Type u}
     [Category.{u} C] [Quiver.IsThin C] {f g : K ⟶ nerve C}
     (h : ∀ s : K _⦋0⦌, f.app _ s = g.app _ s) : f = g := by
-  apply F1B.kanNerve_hom_ext_one
+  apply SerrePositivity.InfinityCategories.F1B.nerve_hom_ext_one
   intro s
   have h₀ := congrArg (fun F : (nerve C) _⦋0⦌ => F.obj 0) (h (K.δ 1 s))
   have h₁ := congrArg (fun F : (nerve C) _⦋0⦌ => F.obj 0) (h (K.δ 0 s))

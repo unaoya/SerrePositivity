@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 任意の頂点評価は、単射な同値に対する右持ち上げ性を持つ。 -/
 lemma kanEquivalenceLifting_evaluateFunctorAt {B X : SSet.{u}} [Quasicategory X]
-    (b : B _⦋0⦌) : F1B.KanEquivalenceLifting (evaluateFunctorAt (Y := X) b) := by
+    (b : B _⦋0⦌) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (evaluateFunctorAt (Y := X) b) := by
   let j : (Δ[0] : SSet.{u}) ⟶ B := SSet.yonedaEquiv.symm b
   haveI : Mono j := by
     rw [NatTrans.mono_iff_mono_app]
@@ -46,7 +46,7 @@ lemma kanEquivalenceLifting_evaluateFunctorAt {B X : SSet.{u}} [Quasicategory X]
     rw [evaluateFunctorAt_pre, hj]
   rw [← he]
   intro A D i hi heq
-  have : HasLiftingProperty i ((pre j).app X) := F1B.kanEquivalenceLifting_pre j i hi heq
+  have : HasLiftingProperty i ((pre j).app X) := SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre j i hi heq
   infer_instance
 
 /-- 同じ頂点評価の両端固定の区間 Hom 上の作用は Kan fibration。 -/

@@ -28,10 +28,10 @@ lemma dgGluingCompositionInputDiagonal_isPullback :
       dgGluingCompositionInputBoundaryLift_inputs x g a b h⟩
 
 lemma dgGluingCompositionInputDiagonal_kanEquivalenceLifting [Quasicategory X] :
-    F1B.KanEquivalenceLifting (dgGluingCompositionInputDiagonal x g) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (dgGluingCompositionInputDiagonal x g) := by
   intro A B i hi he
   have : HasLiftingProperty i ((pre (boundary 2).ι).app X) :=
-    F1B.kanEquivalenceLifting_pre (boundary 2).ι i hi he
+    SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre (boundary 2).ι i hi he
   exact (dgGluingCompositionInputDiagonal_isPullback x g).hasLiftingProperty i
 
 lemma dgGluingCompositionInputDiagonal_fibration [Quasicategory X] :

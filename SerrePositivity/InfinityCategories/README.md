@@ -17,7 +17,7 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 | Core | join・slice、終対象、極限、同値、写像空間、fibration の基礎 | [Core.lean](Core.lean) | audit_infinity_core.lean |
 | F1 | cocartesian fibration、straightening、Yoneda・前層 | [F1.lean](F1.lean)、[fibration の基本](F1/Fibrations.lean) | audit_infinity_f1.lean |
 | F1/Cocartesian | 休止中の Cat∞ 値 straightening（独立入口） | [F1/Cocartesian.lean](F1/Cocartesian.lean) | audit_infinity_f1.lean、audit_infinity_f1_f1b.lean |
-| F1B | Kan 拡張、随伴、cofinality、局所化 | [F1B.lean](F1B.lean) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
+| F1B | Kan 拡張、随伴、cofinality、局所化 | [F1B.lean](F1B.lean)、[役割別の地図](F1B/README.md) | audit_infinity_f1b.lean、audit_infinity_f1_f1b.lean |
 | Coherent | coherent nerve の quasicategory 性（γ1） | [Coherent.lean](Coherent.lean) | audit_coherent_nerve.lean |
 | DoldKanComparison | coherent nerve と dg nerve の比較（γ1.5） | [DoldKanComparison.lean](DoldKanComparison.lean) | audit_dold_kan_comparison.lean |
 | HomotopyLimits | ホモトピー極限・Quillen 随伴の ∞ 圏比較（γ3・γ4） | [HomotopyLimits.lean](HomotopyLimits.lean) | audit_homotopy_limits.lean |

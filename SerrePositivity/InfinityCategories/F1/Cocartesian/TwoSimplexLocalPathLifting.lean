@@ -23,16 +23,16 @@ namespace SerrePositivity.InfinityCategories
 /-- 同じ単射な底上の射に沿う区間 Hom 制限は、可逆 path の相対持ち上げを持つ。 -/
 lemma kanEquivalenceLifting_intervalDiagramOverPre {B X : SSet.{u}} [Quasicategory X]
     (F G : B ⟶ X) {a b : Over B} (i : a ⟶ b) [Mono i.left] :
-    F1B.KanEquivalenceLifting (intervalDiagramOverPre F G i) :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (intervalDiagramOverPre F G i) :=
   kanEquivalenceLifting_intervalMappingPostOfEq ((pre i.left).app X)
-    (F1B.kanEquivalenceLifting_pre i.left) _ _ _ _
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre i.left) _ _ _ _
 
 variable {C : Type u} [Category.{u} C] (k : ULift.{u} (Fin 3) ⥤ C)
   (p q : CocartesianFibrationCategory (nerve C))
 
 /-- 元の標的 cospan の最初の脚は、指定された可逆 path を持ち上げる。 -/
 lemma cocartesianTwoSimplexLocalTarget_first_kanEquivalenceLifting :
-    F1B.KanEquivalenceLifting
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       ((cocartesianTwoSimplexLocalTarget k p q).map WalkingCospan.Hom.inl) := by
   have : Mono (uliftOverMorphism.{u, u + 1}
       (cocartesianTwoSimplexSharedToFirst k)).left := by
@@ -48,7 +48,7 @@ lemma cocartesianTwoSimplexLocalTarget_first_kanEquivalenceLifting :
 
 /-- 元の標的 cospan の次の脚も、同じ共有頂点で可逆 path を持ち上げる。 -/
 lemma cocartesianTwoSimplexLocalTarget_second_kanEquivalenceLifting :
-    F1B.KanEquivalenceLifting
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       ((cocartesianTwoSimplexLocalTarget k p q).map WalkingCospan.Hom.inr) := by
   have : Mono (uliftOverMorphism.{u, u + 1}
       (cocartesianTwoSimplexSharedToSecond k)).left := by

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FixedApexConeFiber
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexComparison
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
 
 /-!
 概要：固定頂点の錐と、元の図式固定の二段 fiber を同じ全空間の上で厳密に同定する。
@@ -56,7 +56,7 @@ lemma loopConeFixedApexDiagramFiberIso_diagram {X : SSet.{u}} [Quasicategory X]
   dsimp only [loopConeFixedApexDiagramFiberIso, Iso.trans_hom, Iso.symm_hom]
   simp only [Category.assoc]
   rw [loopConeSourceDiagramFiberIso_inv_diagram]
-  have hi := F1B.kanVertexFiberι_eqTransport
+  have hi := SerrePositivity.InfinityCategories.F1B.vertexFiberι_eqTransport
     (pointedConeProjection (horn 2 2 : SSet.{u}) X x)
     (loopDiagramConeFamily_base_vertex t).symm
   have hi' : (eqToIso (congrArg (vertexFiber (pointedConeProjection (horn 2 2 : SSet.{u}) X x))

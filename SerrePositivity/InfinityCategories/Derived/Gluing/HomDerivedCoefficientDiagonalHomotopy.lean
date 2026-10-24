@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCoefficientTriangles
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathHomotopy
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalUncurryHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 
 /-! 同じ実係数 path は、元の Hom 上の二三角形の全対角族を結ぶ実ホモトピーを与える。 -/

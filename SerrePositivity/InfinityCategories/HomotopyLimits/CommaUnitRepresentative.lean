@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaSectionFiber
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaUnitComponent
-public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaUnitComponent
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UniversalUnitComma
 
 /-!
 概要：選び直した単位の comma 頂点の元の辺と、その Hom 類を照合する。
@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories.HomotopyLimits
 /-- 指定単位の comma 頂点を、元の F(x) 上の二重 fiber の点として保持。 -/
 def unitCommaSectionTargetFiberVertex {X Y : SSet.{u}} [Quasicategory X]
     {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌) :
-    (vertexFiber (F1B.kanUnitCommaFiberProjection G x)
+    (vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
       (F.app (Opposite.op ⦋0⦌) x)) _⦋0⦌ :=
   ⟨unitCommaSectionVertex η x, by
     rw [pinchedConstant_zero]

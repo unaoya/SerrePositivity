@@ -24,7 +24,7 @@ variable {F : X ⟶ Y} {G : Y ⟶ X}
 def unitCommaCompositionEndpoint (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y ⟶
-      vertexFiber (F1B.kanUnitCommaFiberProjection G x) y :=
+      vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y :=
   vertexFiberLift _ _ (prismEndpoint 1 _ ≫ unitCommaCompositionPrism η x y) (by
     rw [Category.assoc, unitCommaCompositionPrism_projection, intervalFamily_one])
 
@@ -32,7 +32,7 @@ def unitCommaCompositionEndpoint (η : FunctorHom (𝟙 X) (F ≫ G))
 lemma unitCommaCompositionEndpoint_ι (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     unitCommaCompositionEndpoint η x y ≫
-      vertexFiberι (F1B.kanUnitCommaFiberProjection G x) y =
+      vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y =
         prismEndpoint 1 _ ≫ unitCommaCompositionPrism η x y :=
   vertexFiberLift_ι _ _ _ _
 
@@ -40,7 +40,7 @@ lemma unitCommaCompositionEndpoint_ι (η : FunctorHom (𝟙 X) (F ≫ G))
 lemma unitCommaCompositionEndpoint_homotopy (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     (unitCommaFiberHomotopy (unitCommaCompositionEndpoint η x y ≫
-      vertexFiberι (F1B.kanUnitCommaFiberProjection G x) y)).h =
+      vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y)).h =
         (intervalFamilyHomotopy (unitIntervalMap η x y)).h := by
   rw [unitCommaCompositionEndpoint_ι, unitCommaFiberHomotopy_precomp]
   dsimp only [unitCommaCompositionPrism]
@@ -51,10 +51,10 @@ lemma unitCommaCompositionEndpoint_homotopy (η : FunctorHom (𝟙 X) (F ≫ G))
 /-- 終点を元の区間模型へ写すと、標準単位比較に厳密に一致する。 -/
 lemma unitCommaCompositionEndpoint_interval (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
-    unitCommaCompositionEndpoint η x y ≫ F1B.kanUnitCommaFiberToInterval G x y =
+    unitCommaCompositionEndpoint η x y ≫ SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y =
       unitIntervalMap η x y := by
   apply intervalMappingUncurry_injective
-  rw [intervalMappingUncurry_precomp, F1B.kanUnitCommaFiberToInterval_uncurry,
+  rw [intervalMappingUncurry_precomp, SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval_uncurry,
     ← unitCommaUncurry_precomp]
   apply (cancel_epi (β_ _ (Δ[1] : SSet.{u})).hom).mp
   exact unitCommaCompositionEndpoint_homotopy η x y

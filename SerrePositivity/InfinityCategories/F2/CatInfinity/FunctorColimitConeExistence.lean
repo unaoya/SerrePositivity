@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeOppositeExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeOppositeExistence
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 
 /-!
@@ -45,7 +45,7 @@ lemma exists_colimitCone_functor_of_pointwise {J K C : SSet.{u}} [Quasicategory 
       rw [oppositeInternalHom_evaluate, CategoryTheory.Functor.map_comp]
     rw [he]
     obtain ⟨ck, hck⟩ := hp k
-    exact ⟨F1B.kanCoconeReverseCone ck, (F1B.kanIsColimitCone_iff_reverseCone ck).1 hck⟩
+    exact ⟨SerrePositivity.InfinityCategories.F1B.coconeReverseCone ck, (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone ck).1 hck⟩
   obtain ⟨d, hd⟩ := exists_pointwiseLimitCone r' hr
   have hback : r' ≫ e.inv = SSet.opFunctor.map r := by
     dsimp only [r']
@@ -55,15 +55,15 @@ lemma exists_colimitCone_functor_of_pointwise {J K C : SSet.{u}} [Quasicategory 
     (((qCatEquivalenceOfIso e.symm).isLimitCone_iff d).1
       (isLimitCone_of_pointwise d hd)).cast hback
   obtain ⟨c, hc⟩ := F1B.kanCoconeReverseCone_surjective r d'
-  have hval : (F1B.kanCoconeReverseCone c).val ≫ e.hom = d.val := by
+  have hval : (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ e.hom = d.val := by
     rw [hc]
     change (d.val ≫ e.inv) ≫ e.hom = d.val
     rw [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-  refine ⟨c, (F1B.kanIsColimitCone_iff_reverseCone c).2 (hc.symm ▸ hd'), ?_⟩
+  refine ⟨c, (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).2 (hc.symm ▸ hd'), ?_⟩
   intro k
   apply (isLimitCone_reverse_postcomp_iff c (evaluateFunctorAt k)).1
   apply (isLimitCone_iff_of_cone_val_eq _ _ ?_).2 (hd (SSet.opObjEquiv.symm k))
-  change (F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map (evaluateFunctorAt k) =
+  change (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map (evaluateFunctorAt k) =
     d.val ≫ evaluateFunctorAt (SSet.opObjEquiv.symm k)
   rw [← hval, Category.assoc]
   change _ = _ ≫ (HomotopyLimits.oppositeInternalHomIso K C).hom ≫

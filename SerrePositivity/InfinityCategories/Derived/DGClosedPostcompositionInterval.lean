@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
-public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition
 public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionEquivalence

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：実ホモトピーの入力制限は、同じ頂点の辺を厳密に回収する。
 方針：退化恒等辺の写像公式を、元の円柱上の実一次単体へ代入する。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：二つの trivial Kan fibration の共通源で、片方の厳密な切断から比較のホモトピー逆を作る。

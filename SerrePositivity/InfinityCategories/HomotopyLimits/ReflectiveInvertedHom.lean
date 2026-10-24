@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveLocality
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEquivalences
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：反射の局所対象と反転する元の辺を写像空間で特徴づける。

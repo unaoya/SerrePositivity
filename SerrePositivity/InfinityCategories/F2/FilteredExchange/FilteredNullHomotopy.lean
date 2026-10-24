@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
-public import SerrePositivity.InfinityCategories.F1B.KanPointSliceHomotopy
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.PointSliceHomotopy
 
 /-!
 概要：余錐は元の図式から定値図式への実際のホモトピーを与える。

@@ -41,7 +41,7 @@ lemma exists_cocartesianPullbackEdge_of_base_colimit
   have ht : (pullback.snd (D.obj j).hom p).app (Opposite.op ⦋1⦌) t = e := by
     rw [← SSet.yonedaEquiv_comp, pullback.lift_snd, Equiv.apply_symm_apply]
   refine ⟨j, t, ?_, ht⟩
-  apply kanIsCocartesianEdge_isPullback (IsPullback.of_hasPullback (D.obj j).hom p).flip
+  apply SerrePositivity.InfinityCategories.isCocartesianEdge_isPullback (IsPullback.of_hasPullback (D.obj j).hom p).flip
   rw [ht]
   exact he
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.SpanPullbackLifting
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyPathParameters
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyPathParameters
 
 /-!
 概要：三対象の span の可逆 path 置換と、指定した元の比較の回収。
@@ -92,7 +92,7 @@ lemma isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting
     (u₀ : A₀ ⟶ B₀) (u₁ : A₁ ⟶ B₁) (u₂ : A₂ ⟶ B₂)
     (h₁ : u₁ ≫ q₁ = p₁ ≫ u₀) (h₂ : u₂ ≫ q₂ = p₂ ≫ u₀)
     (hu₀ : IsQCatEquivalence u₀) (hu₁ : IsQCatEquivalence u₁) (hu₂ : IsQCatEquivalence u₂)
-    (hp₁ : F1B.KanEquivalenceLifting p₁) (hq₁ : F1B.KanEquivalenceLifting q₁)
+    (hp₁ : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p₁) (hq₁ : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q₁)
     [TrivialKanFibration (relativeEquivalencePathMapAt q₁ 0)] :
     IsPrecompositionEquivalence (spanPullbackMap p₁ p₂ q₁ q₂ u₀ u₁ u₂ h₁ h₂) := by
   let r₁ := replacementSquareMap u₁ u₀ p₁ q₁ h₁

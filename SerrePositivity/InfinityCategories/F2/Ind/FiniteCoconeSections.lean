@@ -23,8 +23,8 @@ open HomotopyLimits
 
 /-- 元の全余錐の反転錐の、元の図式を固定する右境界包含。 -/
 def oppositeCoconeBoundary {K C : SSet.{u}} {D : K ⟶ C} (c : JoinCocone D) :
-    Over.mk (SSet.opFunctor.map D) ⟶ Over.mk (F1B.kanCoconeReverseCone c).val :=
-  Over.homMk (joinInr (Δ[0] : SSet.{u}) K.op) (F1B.kanCoconeReverseCone c).property
+    Over.mk (SSet.opFunctor.map D) ⟶ Over.mk (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val :=
+  Over.homMk (joinInr (Δ[0] : SSet.{u}) K.op) (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).property
 
 /-- 明示交換入力のもとで、同じ元の反転余錐から底への小さい切断制限自身が同値。 -/
 lemma indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence
@@ -39,7 +39,7 @@ lemma indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence
   have hs := ((isLimitCone_iff_coneSectionRestriction_homotopyEquivalence _).mp ht
     pointSpaceVertex).isQCatEquivalence
   have hp := coherentPointedRestriction_of_nativeCone_isQCatEquivalence
-    (F1B.kanCoconeReverseCone c) F hs
+    (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c) F hs
   exact relativeRestriction_isQCatEquivalence_of_coherentPointed F (oppositeCoconeBoundary c) hp
 
 end SerrePositivity.InfinityCategories.F2.Ind

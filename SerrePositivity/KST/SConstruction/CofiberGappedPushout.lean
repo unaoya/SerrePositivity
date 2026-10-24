@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointwiseCofiberPushout
 public import SerrePositivity.KST.SConstruction.PointwiseGappedPushout
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-! # cofiber 値の点ごとの押し出しと gapped 性
 概要：cofiber 値に持ち上げた元の押し出しの族は、入力が gapped なら gapped。

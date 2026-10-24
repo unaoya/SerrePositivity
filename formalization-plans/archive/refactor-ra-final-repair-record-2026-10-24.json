@@ -1,0 +1,28 @@
+{
+  "first_root_build_failed_modules": [
+    "SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementBaseChange",
+    "SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison",
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConeMappingSpace",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.SliceRestrictionFibration"
+  ],
+  "repairs": {
+    "imports": {
+      "SimplicialReplacementBaseChange": "SimplicialReplacementFiber",
+      "FinitePrism": "ScaffoldFiniteCollapse",
+      "ScaffoldFiniteFiberComparison": "LeftScaffold",
+      "CocartesianScaffold/FiniteFiberComparison": "CocartesianScaffold.Definition",
+      "ScaffoldFiniteComparison": "LeftScaffoldBaseChange",
+      "CocartesianScaffold/FiniteComparison": "CocartesianScaffold.BaseChange"
+    },
+    "references": {
+      "PointwiseUnitComparison": "PinchedInterval comparison_isQCatEquivalence -> canonical full name",
+      "ConeMappingSpace and SliceRestrictionFibration": "retain Root kanSliceOverRestrict_projection rather than the separate F1B lemma",
+      "ConeRestrictionTransport and ConeMappingShapePushout": "Root.kanSliceOverRestrict_projection retained; original nonqualified lookup did not select the different F1B lemma"
+    }
+  },
+  "canonical_block_sha_checks": 14,
+  "types_proofs": "no body changes beyond mechanical constant references",
+  "corrected_source_hashes_checked": 1643,
+  "four_aggregate_build_passed": true,
+  "four_aggregate_seconds": 2112.23
+}

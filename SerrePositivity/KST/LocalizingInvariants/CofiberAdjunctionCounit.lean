@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointFaithful
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveIdempotence
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveIdempotence
 
 /-!
 概要：元の cofiber の実随伴の余単位は可逆である。

@@ -31,9 +31,9 @@ lemma cocartesianBaseChangeComposite_isPullback :
 
 /-- 二回底変換した同じ section を、元の全空間への section と同定する。 -/
 def cocartesianBaseChangeCompositeSectionsIso :
-    kanCocartesianStrictTransport
+    SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a ≅
-      kanCocartesianSections p (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) :=
+      SerrePositivity.InfinityCategories.cocartesianSections p (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) :=
   cocartesianSectionsPullbackIso (cocartesianBaseChangeComposite_isPullback p l k)
     (nerveMap (Under.forget a)) (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) rfl
 
@@ -45,20 +45,20 @@ lemma cocartesianStrictTransportBaseChangeComponent_comp_sections :
       cocartesianStrictTransportBaseChangeComponent p (l ⋙ k) a ≫
         (cocartesianSectionsPullbackIso (IsPullback.of_hasPullback (nerveMap (l ⋙ k)) p).flip
           (nerveMap (Under.forget a)) (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) rfl).hom := by
-  apply (cancel_mono (kanCocartesianSectionsι p
+  apply (cancel_mono (SerrePositivity.InfinityCategories.cocartesianSectionsι p
     (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)))).mp
   apply relativeFunctorUncurry_injective
   rw [cocartesianBaseChangeCompositeSectionsIso,
     cocartesianSectionsPullbackIso_hom_uncurry, cocartesianSectionsPullbackIso_hom_uncurry]
   simpa only [Category.id_comp, Category.assoc] using
     cocartesianStrictTransportBaseChangeComponent_comp_uncurry_snd p l k a
-      (𝟙 (kanCocartesianStrictTransport p (k.obj (l.obj a))))
+      (𝟙 (SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj (l.obj a))))
 
 /-- 二重底変換と直接の底変換の strict transport の、同じ section による同型。 -/
 def cocartesianBaseChangeAssociativityComponent :
-    kanCocartesianStrictTransport
+    SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a ≅
-      kanCocartesianStrictTransport (pullback.fst (nerveMap (l ⋙ k)) p) a :=
+      SerrePositivity.InfinityCategories.cocartesianStrictTransport (pullback.fst (nerveMap (l ⋙ k)) p) a :=
   cocartesianBaseChangeCompositeSectionsIso p l k a ≪≫
     (cocartesianSectionsPullbackIso (IsPullback.of_hasPullback (nerveMap (l ⋙ k)) p).flip
       (nerveMap (Under.forget a)) (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) rfl).symm

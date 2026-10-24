@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanFiniteKanSquare
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCospanPointHomotopy
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：有限二入力の指定 Kan path を共通値の path 模型へ、実際の引き戻し内で輸送する。

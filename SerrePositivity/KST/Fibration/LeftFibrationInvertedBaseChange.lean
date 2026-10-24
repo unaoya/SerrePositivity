@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-! # 全辺が可逆になる底図式上の、元の左 fibration の cartesian 性 -/
 

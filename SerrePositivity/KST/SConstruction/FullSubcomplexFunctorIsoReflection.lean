@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-! # 全部分複体の包含による関手同型の反映
 概要：包含後に coherent に同型な二つの関手は全部分複体の内部でも関手同型を持つ。

@@ -45,14 +45,14 @@ lemma specifiedCoconeLeftAttachment_original_homMk_comp_arrow :
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy B₁)) =
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy C₁) ≫
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy D₁)) := by
-  have hu := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₀ P)
+  have hu := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₀ P)
     (specifiedCoconeLeftUniversalHomotopy hp p c hc dB hB dC y)
     (specifiedCoconeLeftUniversalHomotopy_projection hp p c hc dB hB dC y).symm
   have hL := hu.trans (specifiedCoconeLeftUniversalHomotopy_hom_arrow hp p c hc dB hB dC y)
-  have hBranch := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₁ P) B₁
+  have hBranch := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₁ P) B₁
     ((specifiedCoconeLeftBranchToInitialHomotopy_projection hp p c hc dB hB dC y).trans
       (specifiedCoconeLeftBranchLegHomotopy_raw hp p c hc dB hB dC y).symm)
-  have hD := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₃ P) D₁
+  have hD := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₃ P) D₁
     (specifiedCoconeLeftAttachmentHomotopy_raw hp p c hc dB dC y).symm
   have ht := congrArg Arrow.mk
     (specifiedCoconeLeftAttachment_projection_homMk_comp hp p c hc dB hB dC y)
@@ -75,14 +75,14 @@ lemma specifiedCoconeRightAttachment_original_homMk_comp_arrow :
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy B₁)) =
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy C₁) ≫
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy D₁)) := by
-  have hu := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₀ P)
+  have hu := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₀ P)
     (specifiedCoconeRightUniversalHomotopy hp p c hc dB dC hC y)
     (specifiedCoconeRightUniversalHomotopy_projection hp p c hc dB dC hC y).symm
   have hL := hu.trans (specifiedCoconeRightUniversalHomotopy_hom_arrow hp p c hc dB dC hC y)
-  have hBranch := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₁ P) B₁
+  have hBranch := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₁ P) B₁
     ((specifiedCoconeRightBranchToInitialHomotopy_projection hp p c hc dB dC hC y).trans
       (specifiedCoconeRightBranchLegHomotopy_raw hp p c hc dB dC hC y).symm)
-  have hD := kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₃ P) D₁
+  have hD := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp H₃ P) D₁
     (specifiedCoconeRightAttachmentHomotopy_raw hp p c hc dB dC y).symm
   have ht := congrArg Arrow.mk
     (specifiedCoconeRightAttachment_projection_homMk_comp hp p c hc dB dC hC y)

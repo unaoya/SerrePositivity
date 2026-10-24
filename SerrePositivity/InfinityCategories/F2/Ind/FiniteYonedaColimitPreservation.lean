@@ -23,9 +23,9 @@ lemma indYoneda_finiteColimit_isColimit (κ : Cardinal.{u}) (hκ : Cardinal.alep
     [Quasicategory C] {D : K ⟶ C} (c : JoinCocone D) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone (indYoneda κ C) (JoinCocone.ulift.{u, u + 1} c)) := by
   let t := mapJoinCone (SSet.opFunctor.map (indYoneda κ C))
-    (F1B.kanCoconeReverseCone (JoinCocone.ulift.{u, u + 1} c))
+    (SerrePositivity.InfinityCategories.F1B.coconeReverseCone (JoinCocone.ulift.{u, u + 1} c))
   have hval : (mapJoinCone (oppositeIndYoneda κ)
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))).val =
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))).val =
       (restrictJoinCone t (uliftOppositeIso K).hom).val := by
     have h := congrArg (fun f => f ≫ SSet.opFunctor.map (indYoneda κ C))
       (uliftCoconeReverse_val c)

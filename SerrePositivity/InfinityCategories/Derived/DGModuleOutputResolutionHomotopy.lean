@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNervePrism
 public import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionInfinity
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：厳密切断を通じて、実出力分解の全 ∞ 関手と元の同じ関手を比較する。
 方針：対象だけの宇宙持ち上げと二射影の全関手等式から、実 prism を切断に沿って制限する。

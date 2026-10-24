@@ -30,7 +30,7 @@ import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCocartesianFibrat
 import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCrossingCocartesian
 import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinExtensionEquivalence
 import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
-import SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain
+import SerrePositivity.InfinityCategories.F1B.Diagrams.ScaffoldUnderChain
 import Lean.Util.CollectAxioms
 
 /-!

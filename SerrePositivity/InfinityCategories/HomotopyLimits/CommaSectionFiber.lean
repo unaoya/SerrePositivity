@@ -29,7 +29,7 @@ def commaSectionFiberVertex {X Y : SSet.{u}} (G : Y ⟶ X)
 /-- 元の切断の成分を、同じ標的 F(x) 上の二重 fiber の点として保持。 -/
 def commaSectionTargetFiberVertex {X Y : SSet.{u}} (G : Y ⟶ X)
     (s : X ⟶ unitComma G) (hs : s ≫ unitCommaSource G = 𝟙 X) (x : X _⦋0⦌) :
-    (vertexFiber (F1B.kanUnitCommaFiberProjection G x)
+    (vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
       ((s ≫ unitCommaTarget G).app (Opposite.op ⦋0⦌) x)) _⦋0⦌ :=
   ⟨commaSectionFiberVertex G s hs x, (pinchedConstant_zero _).symm⟩
 
@@ -41,16 +41,16 @@ lemma commaSectionTargetFiberArrow_eq {X Y : SSet.{u}} (G : Y ⟶ X)
       simplicialHomotopyVertexEdge (commaSectionUnitHomotopy G s hs) x := by
   apply SSet.Edge.ext
   let v := commaSectionTargetFiberVertex G s hs x
-  let k := F1B.kanUnitCommaFiberToInterval G x
+  let k := SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x
     ((s ≫ unitCommaTarget G).app (Opposite.op ⦋0⦌) x)
   have he := intervalMappingVertexOfEdge_uncurry (intervalMappingEdgeOfVertex (k.app _ v))
   rw [show intervalMappingVertexOfEdge (intervalMappingEdgeOfVertex (k.app _ v)) =
     k.app _ v from (intervalMappingEdgeVertexEquiv _ _).apply_symm_apply _] at he
   rw [← SSet.yonedaEquiv_symm_comp, intervalMappingUncurry_precomp,
-    F1B.kanUnitCommaFiberToInterval_uncurry] at he
+    SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval_uncurry] at he
   rw [← unitCommaUncurry_precomp] at he
   have hr : SSet.yonedaEquiv.symm v ≫
-      (vertexFiberι (F1B.kanUnitCommaFiberProjection G x)
+      (vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
         ((s ≫ unitCommaTarget G).app (Opposite.op ⦋0⦌) x) ≫
           vertexFiberι (unitCommaSource G) x) = SSet.yonedaEquiv.symm x ≫ s := by
     rw [SSet.yonedaEquiv_symm_comp, SSet.yonedaEquiv_symm_comp]

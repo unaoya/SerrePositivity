@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.BousfieldKanTerminalCylinderNaturality
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
 
 /-!
 概要：終対象を持つ添字の Bousfield–Kan coend は、終対象の値と実際にホモトピー同値。

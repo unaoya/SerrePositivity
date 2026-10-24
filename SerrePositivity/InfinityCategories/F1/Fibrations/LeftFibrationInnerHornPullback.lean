@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison
+
 public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHornPullback
 
 /-!
@@ -15,22 +17,6 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：部分複体による逆像と標準 pullback の包含は同じ前合成同値条件を持つ。
-方針：標準 pullback 同型を合成または消去する。
-規約：射 p の充填性は不要。
-使われ方：標準単体と nerve の表示の変更に対応する。 -/
-lemma isPrecompositionEquivalence_subcomplexInverseImage_iff
-    {E B : SSet.{u}} (p : E ⟶ B) (A : B.Subcomplex) :
-    IsPrecompositionEquivalence (A.preimage p).ι ↔
-      IsPrecompositionEquivalence (pullback.snd A.ι p) := by
-  refine ⟨isPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage p A, ?_⟩
-  intro h
-  let hp := subcomplexInverseImage_isPullback p A
-  have hh : hp.isoPullback.hom ≫ pullback.snd A.ι p = (A.preimage p).ι :=
-    hp.isoPullback_hom_snd
-  rw [← hh]
-  exact (isPrecompositionEquivalence_of_iso hp.isoPullback).comp h
 
 /-- 概要：標準単体上の left fibration の内ホーンの逆像部分複体の包含は前合成同値。
 方針：有限鎖の nerve 上の結果を、二つの逆像部分複体の等式で移す。

@@ -33,7 +33,7 @@ def quasicategoryCoreIsoOfKan (X : SSet.{u}) [KanComplex X] :
 /-- Kan 複体間の同じ射に対する同値の右持ち上げは、全ホーンの右持ち上げを与える。 -/
 lemma fibration_of_kanEquivalenceLifting_of_kanComplex {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (p : X ⟶ Y)
-    (hp : F1B.KanEquivalenceLifting p) : Fibration p := by
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : Fibration p := by
   have : Fibration (quasicategoryCoreMap p) :=
     F2.coreMap_fibration_of_kanEquivalenceLifting p hp
   have h : (quasicategoryCoreIsoOfKan X).inv ≫ quasicategoryCoreMap p ≫

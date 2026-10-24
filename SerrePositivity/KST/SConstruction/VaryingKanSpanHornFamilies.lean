@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KanSpanPastingChoices
 public import SerrePositivity.KST.SConstruction.RelativeAnodyneFamilyExtension
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 二脚自体が変化する全ホーン族の貼り合わせ
 概要：同じ始点族から出る二円柱を、一つの全パラメータの実ホーン族へ貼る。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointPairPullback
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-!
 概要：指定した底の全ホモトピーを、上の二つの端面を厳密に保って持ち上げる。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsNaturality
 public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramComposition
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport
 
 /-!
 概要：元の cocartesian 相対 Hom の全作用を strict transport 間の変換空間へ束ねる。
@@ -24,8 +24,8 @@ namespace SerrePositivity.InfinityCategories
 def cocartesianStrictTransportMappingSpaceMap {C : Type u} [Category.{u} C] {E D : SSet.{u}}
     (p : E ⟶ nerve C) (q : D ⟶ nerve C) :
     cocartesianRelativeFunctorSpace p q ⟶
-      strictDiagramMappingSpace (kanCocartesianStrictTransportDiagram p)
-        (kanCocartesianStrictTransportDiagram q) where
+      strictDiagramMappingSpace (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)
+        (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) where
   app n := ↾fun x ↦ ⟨fun c ↦ (cocartesianSectionsPostHom
     (Over.mk (nerveMap (Under.forget c))) (Over.mk p) (Over.mk q)).app n x, by
       intro c d f k α y
@@ -54,7 +54,7 @@ lemma cocartesianStrictTransportMappingSpaceMap_component
     {C : Type u} [Category.{u} C] {E D : SSet.{u}}
     (p : E ⟶ nerve C) (q : D ⟶ nerve C) (c : C) :
     cocartesianStrictTransportMappingSpaceMap p q ≫ strictDiagramMappingComponent
-      (kanCocartesianStrictTransportDiagram p) (kanCocartesianStrictTransportDiagram q) c =
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) c =
         cocartesianSectionsPostHom (Over.mk (nerveMap (Under.forget c)))
           (Over.mk p) (Over.mk q) := rfl
 
@@ -63,7 +63,7 @@ lemma cocartesianStrictTransportMappingSpaceMap_identity
     {C : Type u} [Category.{u} C] {E : SSet.{u}} (p : E ⟶ nerve C) :
     cocartesianRelativeFunctorIdentity (Over.mk p) ≫
       cocartesianStrictTransportMappingSpaceMap p p =
-        strictDiagramMappingIdentity (kanCocartesianStrictTransportDiagram p) := by
+        strictDiagramMappingIdentity (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) := by
   apply strictDiagramMappingHom_ext
   intro c
   rw [Category.assoc, cocartesianStrictTransportMappingSpaceMap_component,
@@ -78,8 +78,8 @@ lemma cocartesianStrictTransportMappingSpaceMap_composition
       cocartesianStrictTransportMappingSpaceMap p r =
       (cocartesianStrictTransportMappingSpaceMap p q ⊗ₘ
         cocartesianStrictTransportMappingSpaceMap q r) ≫
-        strictDiagramMappingComposition (kanCocartesianStrictTransportDiagram p)
-          (kanCocartesianStrictTransportDiagram q) (kanCocartesianStrictTransportDiagram r) := by
+        strictDiagramMappingComposition (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)
+          (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram r) := by
   apply strictDiagramMappingHom_ext
   intro c
   rw [Category.assoc, cocartesianStrictTransportMappingSpaceMap_component,

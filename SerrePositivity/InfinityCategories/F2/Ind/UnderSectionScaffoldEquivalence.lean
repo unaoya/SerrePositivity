@@ -26,7 +26,7 @@ local instance (i : I) : Quasicategory (vertexFiber (p ≫ snd B (nerve I)) (ner
 
 /-- 元の添字上の fiber 比較は、元の評価とグラフ fiber 同型の合成。 -/
 lemma underSectionScaffold_fiber (i : I) :
-    kanScaffoldFiberMap (p ≫ snd B (nerve I)) (underSectionTotalDiagram p)
+    SerrePositivity.InfinityCategories.leftScaffoldFiberMap (p ≫ snd B (nerve I)) (underSectionTotalDiagram p)
       (underSectionScaffold p) (underSectionScaffold_projection p) i =
         underSectionEvaluate p i ≫ (productGraphFiberIso p i).hom := by
   apply vertexFiber_hom_ext
@@ -36,7 +36,7 @@ lemma underSectionScaffold_fiber (i : I) :
 
 /-- 同じ元の大域評価は cocartesian scaffold の全条件を満たす。 -/
 lemma underSectionScaffold_isCocartesianScaffold :
-    KanCocartesianScaffold (p ≫ snd B (nerve I))
+    SerrePositivity.InfinityCategories.CocartesianScaffold (p ≫ snd B (nerve I))
       (underSectionTotalDiagram p) (underSectionScaffold p) where
   projection := underSectionScaffold_projection p
   horizontal := underSectionScaffold_horizontal p

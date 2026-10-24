@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinSliceRestriction
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinSliceRestriction
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 
 /-!
@@ -30,7 +30,7 @@ instance coneMappingSpace_kanComplex {K X : SSet.{u}} [Quasicategory X]
 /-- 部分形状への制限は元の錐の頂点を固定した fiber に誘導される。 -/
 def coneRestrictionFiberMap {K L X : SSet.{u}} (p : K ⟶ X) (i : L ⟶ K)
     (x : X _⦋0⦌) : coneMappingSpace p x ⟶ coneMappingSpace (i ≫ p) x :=
-  vertexFiberMap _ _ (sliceOverRestrict p i) (kanSliceOverRestrict_projection p i) x
+  vertexFiberMap _ _ (sliceOverRestrict p i) (SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection p i) x
 
 /-- 頂点固定の制限は包含後に元の slice の制限となる。 -/
 lemma coneMappingSpace_restrict_ι {K L X : SSet.{u}} (p : K ⟶ X) (i : L ⟶ K)

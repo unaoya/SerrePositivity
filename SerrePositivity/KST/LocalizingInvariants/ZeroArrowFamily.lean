@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorInitial
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorInitial
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison
 

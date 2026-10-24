@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeCAlgSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedComparison
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 # 元の全複体源における実自由 probe の導来単位

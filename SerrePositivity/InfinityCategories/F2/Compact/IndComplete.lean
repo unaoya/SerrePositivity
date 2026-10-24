@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.IndCompact
 public import SerrePositivity.InfinityCategories.F2.Compact.Subcategory
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
-public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 
 /-!
 概要：元の Indκ は、同じ全 coherent 冪等図式について冪等完備。

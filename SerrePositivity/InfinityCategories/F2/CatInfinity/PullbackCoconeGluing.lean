@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
 /-!

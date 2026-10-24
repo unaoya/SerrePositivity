@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionFamilies
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSquarePost
 
 /-!
@@ -32,7 +32,7 @@ def markedCocartesianFunctorCurry {A T E B : SSet.{u}} {q : E ⟶ B} {a : A ⟶ 
         ((relativeFunctorCurry F hF).app (Opposite.op ⦋0⦌) x)).val =
         lift (𝟙 A) (SSet.const x) ≫ F := by
       apply functorVertex_injective
-      have hk := kanFunctorVertex_parameter (curry F) x
+      have hk := SerrePositivity.InfinityCategories.functorVertex_parameter (curry F) x
       rw [uncurry_curry] at hk
       exact ((functorVertexEquiv A E).apply_symm_apply _).trans hk.symm
     intro e he

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 
 /-!

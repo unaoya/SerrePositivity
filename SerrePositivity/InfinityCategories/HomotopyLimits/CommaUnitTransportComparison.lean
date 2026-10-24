@@ -25,10 +25,10 @@ variable {F : X ⟶ Y} {G : Y ⟶ X}
 def unitCommaCompositionEndpoint_transportIso (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     FunctorIso (unitCommaCompositionEndpoint η x y)
-      (parametrizedFiberTransport (F1B.kanUnitCommaFiberProjection G x)
+      (parametrizedFiberTransport (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
         (F.app (Opposite.op ⦋0⦌) x) y ≫
           evaluateFunctorAt (unitCommaSectionTargetFiberVertex η x)) := by
-  let p := F1B.kanUnitCommaFiberProjection G x
+  let p := SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x
   let v := unitCommaSectionTargetFiberVertex η x
   let P := intervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) y
   have hc : intervalMappingCurryOfEndpoints (intervalMappingUncurry (𝟙 P))
@@ -58,12 +58,12 @@ def unitCommaCompositionEndpoint_transportIso (η : FunctorHom (𝟙 X) (F ≫ G
 def unitIntervalMap_commaTransportIso (η : FunctorHom (𝟙 X) (F ≫ G))
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     FunctorIso (unitIntervalMap η x y)
-      (parametrizedFiberTransport (F1B.kanUnitCommaFiberProjection G x)
+      (parametrizedFiberTransport (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
         (F.app (Opposite.op ⦋0⦌) x) y ≫
           evaluateFunctorAt (unitCommaSectionTargetFiberVertex η x) ≫
-            F1B.kanUnitCommaFiberToInterval G x y) := by
+            SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y) := by
   simpa only [unitCommaCompositionEndpoint_interval, Category.assoc] using
     (unitCommaCompositionEndpoint_transportIso η x y).postcomp
-      (F1B.kanUnitCommaFiberToInterval G x y)
+      (SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y)
 
 end SerrePositivity.InfinityCategories.HomotopyLimits

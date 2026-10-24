@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Spectra.PointedZeroMapping
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTerminal
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace
 
 /-!
 概要：一点スペクトルの豊穣な始・終対象性と実際の Sp の零頂点。

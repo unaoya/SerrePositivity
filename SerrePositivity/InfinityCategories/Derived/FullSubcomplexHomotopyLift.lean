@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.DeformationLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization
 /-!
 概要：頂点全部分圏に両端を持つ実ホモトピーを、元の円柱写像から持ち上げる。
 方針：円柱の各頂点の時刻を零または一に分け、両端の所属条件を使う。

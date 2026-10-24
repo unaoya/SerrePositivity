@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeTriangleComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeTransportPointLift
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：transport の像と同じ fiber 成分にある任意の点へ、底の指定辺を保って持ち上げる。

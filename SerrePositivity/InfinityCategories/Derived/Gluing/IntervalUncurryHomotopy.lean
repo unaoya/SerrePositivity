@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquare
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilySquare
 
 /-! 区間 Hom 族の同じ実ホモトピーを、全区間評価後も保持する。 -/
 @[expose] public section

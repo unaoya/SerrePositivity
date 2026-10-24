@@ -40,7 +40,7 @@ lemma kanEquivalenceLifting_markedCocartesianFunctorPre {E B : SSet.{u}}
     {a b : Over B} (i : a ⟶ b) [Mono i.left]
     (V : Set (a.left _⦋1⦌)) (W : Set (b.left _⦋1⦌))
     (hi : ∀ e ∈ V, i.left.app (Opposite.op ⦋1⦌) e ∈ W) :
-    F1B.KanEquivalenceLifting (markedCocartesianFunctorPre q i V W hi) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (markedCocartesianFunctorPre q i V W hi) := by
   intro K L j hj he
   exact kanEquivalenceLifting_fullRestriction (markedCocartesianFunctorPredicate q b.hom W)
     (fun h ↦ markedCocartesianFunctorPredicate_iff_of_vertexIso q b.hom W h)

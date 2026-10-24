@@ -25,8 +25,8 @@ lemma walkingSourceComma_isWeaklyContractible :
       walkingSourceCommaPoint ⟶ 𝟭 _ :=
     { app c := walkingSourceComma_isInitial.to c
       naturality _ _ _ := walkingSourceComma_isInitial.hom_ext _ _ }
-  have H := F1B.kanNerveNatTransHomotopy η
-  rw [F1B.kanNerveMap_const] at H
+  have H := SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy η
+  rw [SerrePositivity.InfinityCategories.F1B.nerveMap_const] at H
   let g : (⊤_ SSet.{u}) ⟶ nerve (StructuredArrow walkingSource walkingInclusion) :=
     SSet.const (nerveVertex walkingSourceCommaPoint)
   have he : IsSimplicialHomotopyEquivalence

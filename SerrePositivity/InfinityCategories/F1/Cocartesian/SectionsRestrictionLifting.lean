@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestrictionLifting
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PredicateIso
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionsPrecomposition
 
 /-!
 概要：cocartesian section の単射による制限は、単射な同値を右に持ち上げる。
@@ -24,11 +24,11 @@ namespace SerrePositivity.InfinityCategories
 lemma kanIsCocartesianSection_iff_of_vertexIso {A E B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B)
     {v w : (relativeFunctorSpace p a) _⦋0⦌} (h : VertexIso v w) :
-    KanIsCocartesianSection p a v ↔ KanIsCocartesianSection p a w := by
+    SerrePositivity.InfinityCategories.IsCocartesianSection p a v ↔ SerrePositivity.InfinityCategories.IsCocartesianSection p a w := by
   let : Quasicategory E := quasicategory_of_innerFibration p
   obtain ⟨f, hf, rfl⟩ := exists_relativeFunctorVertex p a v
   obtain ⟨g, hg, rfl⟩ := exists_relativeFunctorVertex p a w
-  simp only [KanIsCocartesianSection]
+  simp only [SerrePositivity.InfinityCategories.IsCocartesianSection]
   have hi := relativeFunctorVertex_functorIso p a hf hg h
   exact forall_congr' (fun e ↦ isCocartesianEdge_iff_of_functorIso p hi e)
 
@@ -36,23 +36,23 @@ lemma kanIsCocartesianSection_iff_of_vertexIso {A E B : SSet.{u}} [Quasicategory
 lemma kanEquivalenceLifting_kanCocartesianSectionsPre
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     {a b : Over B} (i : a ⟶ b) [Mono i.left] :
-    F1B.KanEquivalenceLifting (kanCocartesianSectionsPre p i) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (SerrePositivity.InfinityCategories.cocartesianSectionsPre p i) := by
   let : Quasicategory (SerrePositivity.InfinityCategories.relativeFunctorSpace p b.hom) :=
     inferInstanceAs (Quasicategory (relativeFunctorSpace p b.hom))
   intro K L j hj he
   exact kanEquivalenceLifting_fullRestriction
-    (KanIsCocartesianSection p b.hom)
+    (SerrePositivity.InfinityCategories.IsCocartesianSection p b.hom)
     (fun h ↦ kanIsCocartesianSection_iff_of_vertexIso p b.hom h)
-    (KanIsCocartesianSection p a.hom) (kanCocartesianSectionsPre p i)
-    (relativeFunctorOverPre p i) (kanCocartesianSectionsPre_ι p i)
+    (SerrePositivity.InfinityCategories.IsCocartesianSection p a.hom) (SerrePositivity.InfinityCategories.cocartesianSectionsPre p i)
+    (relativeFunctorOverPre p i) (SerrePositivity.InfinityCategories.cocartesianSectionsPre_ι p i)
     (kanEquivalenceLifting_relativeFunctorOverPre_of_cocartesian p i) j hj he
 
 /-- 元の section の単射による制限は inner fibration。 -/
 lemma innerFibration_kanCocartesianSectionsPre
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     {a b : Over B} (i : a ⟶ b) [Mono i.left] :
-    InnerFibration (kanCocartesianSectionsPre p i) :=
-  F1B.KanEquivalenceLifting.innerFibration
-    (U := kanCocartesianSectionsPre p i) (kanEquivalenceLifting_kanCocartesianSectionsPre p i)
+    InnerFibration (SerrePositivity.InfinityCategories.cocartesianSectionsPre p i) :=
+  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration
+    (U := SerrePositivity.InfinityCategories.cocartesianSectionsPre p i) (kanEquivalenceLifting_kanCocartesianSectionsPre p i)
 
 end SerrePositivity.InfinityCategories

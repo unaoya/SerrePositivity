@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting
-public import SerrePositivity.InfinityCategories.F1B.KanRelativePathBoundary
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativePathBoundary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpoints
 
 /-!
@@ -26,7 +26,7 @@ lemma kanFibration_inner {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] : InnerFib
   exact ⟨fun _ _ i hi => hp i (innerHornInclusions_le_J i hi)⟩
 
 lemma kanFibration_targetLifting {E B : SSet.{u}} [KanComplex E]
-    (p : E ⟶ B) [Fibration p] : F1B.KanInvertibleTargetLifting p := by
+    (p : E ⟶ B) [Fibration p] : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p := by
   intro x e _ ht
   have hp := (SSet.modelCategoryQuillen.fibration_iff p).1 inferInstance
   have : HasLiftingProperty (stdSimplex.δ (0 : Fin 2)) p :=

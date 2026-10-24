@@ -60,7 +60,7 @@ lemma laxDifferenceUnitSquare_comm :
   rw [hz, hl, zero_comp]
 
 /-- 四つの元の代表ホモトピーを境界として保持する関手正方形。 -/
-def laxDifferenceUnitSquare : KanFunctorHomSquare (laxArrowHomotopy p q)
+def laxDifferenceUnitSquare : SerrePositivity.InfinityCategories.FunctorHomSquare (laxArrowHomotopy p q)
     (laxDifferenceUnitTargetArrowHomotopy p q v)
     (functorHomotopyPostcomp (laxDifferenceUnitCHomotopy p q v) p.hom)
     (functorHomotopyPostcomp (laxDifferenceUnitDHomotopy p q v a) q.hom) :=

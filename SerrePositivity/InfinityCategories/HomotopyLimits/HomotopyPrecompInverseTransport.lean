@@ -40,13 +40,13 @@ lemma homotopyPrecompInverseTransport_raw :
 lemma homotopyPrecompInverseTransport_hom :
     SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (homotopyPrecompInverseTransport H i K hK)) = (functorIsoOfSimplicialHomotopy K).inv := by
-  have ha := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have ha := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (homotopyPrecompInverseTransport H i K hK) _ (homotopyPrecompInverseTransport_raw H i K hK)
   have hb := congrArg Arrow.mk (homotopyPrecompInverse_hom H i)
   have hc := arrowIsoInverse_congr
     (functorIsoOfSimplicialHomotopy (functorHomotopyPrecomp H i))
     (functorIsoOfSimplicialHomotopy K)
-    (kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPrecomp H i) K hK.symm)
+    (SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPrecomp H i) K hK.symm)
   have h := ha.trans (hb.trans hc)
   obtain ⟨_, _, h⟩ := (Arrow.mk_eq_mk_iff _ _).mp h
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using h

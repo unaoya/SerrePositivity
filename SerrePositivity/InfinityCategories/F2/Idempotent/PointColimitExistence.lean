@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
 public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
 
@@ -31,7 +31,7 @@ lemma hasColimit_of_terminal_vertex {K X : SSet.{u}} [Quasicategory X]
     (p : K ⟶ X) (t : K _⦋0⦌) (ht : IsTerminalVertex t) : HasColimit p := by
   have := cofinalPointInclusion_mono t
   have := sliceUnderRestrict_trivialKanFibration p
-    (SSet.yonedaEquiv.symm t) (F1B.kanTerminalPoint_rightAnodyne ht)
+    (SSet.yonedaEquiv.symm t) (SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne ht)
   exact (hasColimit_iff_of_trivialRestriction p (SSet.yonedaEquiv.symm t)).mpr
     (pointDiagram_hasColimit _)
 

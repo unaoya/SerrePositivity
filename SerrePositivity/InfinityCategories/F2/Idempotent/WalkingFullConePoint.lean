@@ -40,7 +40,7 @@ lemma walkingFullJoinCone_point_restrict :
   change f = g
   apply pointJoinNerve_hom_ext hl hr
   change walkingFullJoinCone.val.app (Opposite.op ⦋1⦌)
-    (F1B.kanConeLegSimplex walkingImage) = _
+    (SerrePositivity.InfinityCategories.F1B.coneLegSimplex walkingImage) = _
   rw [walkingFullJoinCone_image_leg]
   exact ComposableArrows.ext₁ rfl rfl rfl
 

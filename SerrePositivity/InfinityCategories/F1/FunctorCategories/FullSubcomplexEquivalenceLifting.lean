@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexPathLift
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLifting
 
 /-!
 概要：同型不変な全部分複体への所属と、単射な前合成同値の右持ち上げ。
@@ -46,7 +46,7 @@ lemma fullSubcomplex_condition_of_precompositionEquivalence {A B X : SSet.{u}}
 /-- 同型不変な全部分複体の包含は、単射な前合成同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_fullSubcomplexOnVertices_ι {X : SSet.{u}} [Quasicategory X]
     (P : X _⦋0⦌ → Prop) (hP : ∀ {x y}, VertexIso x y → (P x ↔ P y)) :
-    F1B.KanEquivalenceLifting (fullSubcomplexOnVertices X P).ι := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (fullSubcomplexOnVertices X P).ι := by
   intro A B i _ hi
   constructor
   intro a b sq
@@ -84,7 +84,7 @@ lemma kanEquivalenceLifting_fullRestriction {X Y : SSet.{u}} [Quasicategory X]
     (p : (fullSubcomplexOnVertices X P : SSet.{u}) ⟶ fullSubcomplexOnVertices Y Q)
     (q : X ⟶ Y)
     (h : p ≫ (fullSubcomplexOnVertices Y Q).ι = (fullSubcomplexOnVertices X P).ι ≫ q)
-    (hq : F1B.KanEquivalenceLifting q) : F1B.KanEquivalenceLifting p := by
+    (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p := by
   intro A B i hi hiE
   constructor
   intro a b sq
@@ -127,14 +127,14 @@ lemma isEquivalencePathVertex_iff_of_vertexIso {X : SSet.{u}}
 
 /-- 可逆 path の包含は、単射な前合成同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_equivalencePathι (X : SSet.{u}) [Quasicategory X] :
-    F1B.KanEquivalenceLifting (equivalencePathι X) :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (equivalencePathι X) :=
   kanEquivalenceLifting_fullSubcomplexOnVertices_ι IsEquivalencePathVertex
     (fun e ↦ isEquivalencePathVertex_iff_of_vertexIso e)
 
 /-- 単射への反転関手の制限は、前合成同値を指定部分ごと厳密に持ち上げる。 -/
 lemma kanEquivalenceLifting_transportSimplexInvertingRestriction {B D : SSet.{u}}
     (f : B ⟶ D) [Mono f] (E : SSet.{u}) [Quasicategory E] :
-    F1B.KanEquivalenceLifting (transportSimplexInvertingRestriction f E) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (transportSimplexInvertingRestriction f E) := by
   exact kanEquivalenceLifting_fullRestriction
     (IsInvertingFunctorVertex _ E (transportSimplexInitialEdges D))
     (fun e ↦ isInvertingFunctorVertex_iff_of_vertexIso _ e)
@@ -142,6 +142,6 @@ lemma kanEquivalenceLifting_transportSimplexInvertingRestriction {B D : SSet.{u}
     (transportSimplexInvertingRestriction f E)
     ((pre (nerveMap (transportSimplexFunctor f))).app E)
     (transportSimplexInvertingRestriction_ι f E)
-    (F1B.kanEquivalenceLifting_pre (nerveMap (transportSimplexFunctor f)))
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre (nerveMap (transportSimplexFunctor f)))
 
 end SerrePositivity.InfinityCategories

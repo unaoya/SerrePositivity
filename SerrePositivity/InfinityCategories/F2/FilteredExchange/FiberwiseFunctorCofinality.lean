@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseFunctorSpace
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredDiagonalCofinality
-public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 
 /-!

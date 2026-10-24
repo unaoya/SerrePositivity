@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
 
 /-!
 概要：可逆な h C の射による右写像空間の前合成は実際の同値。

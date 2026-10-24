@@ -29,8 +29,8 @@ lemma isFullyFaithful_op_of_fullyFaithful {X Y : SSet.{u}}
   have he : IsQCatEquivalence e := fullSubcomplexVertexImageLift_isQCatEquivalence f hf
   have hi : IsFullyFaithful i := isFullyFaithful_fullSubcomplexOnVertices_ι Y P
   have : InnerFibration i := inferInstanceAs (InnerFibration (fullSubcomplexOnVertices Y P).ι)
-  have h := (F1B.kanIsQCatEquivalence_op he).isFullyFaithful.comp
-    (F1B.kanIsFullyFaithful_op i hi)
+  have h := (SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op he).isFullyFaithful.comp
+    (SerrePositivity.InfinityCategories.F1B.isFullyFaithful_op i hi)
   have hfac : e ≫ i = f := fullSubcomplexLift_ι _ _ _
   have ho : SSet.opFunctor.map e ≫ SSet.opFunctor.map i = SSet.opFunctor.map f :=
     (SSet.opFunctor.map_comp e i).symm.trans (congrArg SSet.opFunctor.map hfac)

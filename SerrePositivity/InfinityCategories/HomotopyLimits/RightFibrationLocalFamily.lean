@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
 
 /-!

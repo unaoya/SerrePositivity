@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomPullbackLimit
 public import SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 
 /-!
 概要：写像空間に Kan fibration を持つ引き戻しの始対象の判定。

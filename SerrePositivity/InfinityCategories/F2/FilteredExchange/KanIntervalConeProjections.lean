@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeLeg
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackCoordinates
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：区間引き戻しの native 錐の二脚と元の具体的な射影を照合する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaSourceOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaSourceOppositeFibration
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
 

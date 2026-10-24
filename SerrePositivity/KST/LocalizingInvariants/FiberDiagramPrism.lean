@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramCategory
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumEdgePi
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：fiber 図式の任意の射を、元の射の類を保持する正方形の prism で表す。

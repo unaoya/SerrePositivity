@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowLimits
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyComponent
-public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
 public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
 public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
@@ -34,8 +34,8 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C]
 def augmentationHomotopy : SSet.Homotopy (nerveMap A ≫ F)
     (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X))) :=
   stableHomotopyRetarget
-    (HomotopyClasses.postHomotopy F (F1B.kanNerveNatTransHomotopy p)) rfl
-    (by rw [F1B.kanNerveMap_const, SSet.const_comp])
+    (HomotopyClasses.postHomotopy F (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy p)) rfl
+    (by rw [SerrePositivity.InfinityCategories.F1B.nerveMap_const, SSet.const_comp])
 
 def augmentationFunctorIso :
     FunctorIso (nerveMap A ≫ F) (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X))) := by
@@ -46,8 +46,8 @@ def augmentationFunctorIso :
   have he : (simplicialHomotopyVertexEdge H (nerveVertex i)).edge =
       ((nerve.edgeMk (p.app i)).map F).edge := by
     change F.app _ ((simplicialHomotopyVertexEdge
-      (F1B.kanNerveNatTransHomotopy p) (nerveVertex i)).edge) = _
-    exact congrArg (F.app _) (F1B.kanNerveNatTransHomotopy_component p i)
+      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy p) (nerveVertex i)).edge) = _
+    exact congrArg (F.app _) (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_component p i)
   exact (isInvertibleEdge_congr he).mpr (hp i)
 
 lemma augmentationFunctorIso_hom : (augmentationFunctorIso A p F hp).hom =

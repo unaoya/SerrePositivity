@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLeftKanDensityImage
-public import SerrePositivity.InfinityCategories.F1B.KanCosliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
 
 /-!
 概要：P_Σ の元の左 Kan 標準余錐は、元の共同 Hom の全反変族で極限錐となる。
@@ -29,8 +29,8 @@ lemma sigmaLeftKanHomCanonicalCone_isLimit {C : SSet.{u}} [Quasicategory C]
     (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β)
     (v : (SigmaPresheafInfinity C) _⦋0⦌) :
     IsLimitCone (mapJoinCone (coyonedaInfinityMap D) (JoinCone.ulift.{u + 1, u + 2}
-      (F1B.kanCoconeReverseCone (leftKanCanonicalCocone (sigmaYonedaInfinityMap C) G v)))) :=
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone (leftKanCanonicalCocone (sigmaYonedaInfinityMap C) G v)))) :=
   coyonedaInfinityMap_map_isLimit _
-    ((F1B.kanIsColimitCone_iff_reverseCone _).mp (sigmaLeftKanExtension_canonicalColimits β hβ v))
+    ((SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone _).mp (sigmaLeftKanExtension_canonicalColimits β hβ v))
 
 end SerrePositivity.InfinityCategories.HomotopyLimits

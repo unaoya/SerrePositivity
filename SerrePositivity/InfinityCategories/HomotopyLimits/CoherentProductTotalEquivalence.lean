@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentProductSmallFiber
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiberProductVertexIso
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 
 /-!
 概要：点ごとの coherent 積の小さい全空間から元の引き戻しへの指定比較は前合成同値。

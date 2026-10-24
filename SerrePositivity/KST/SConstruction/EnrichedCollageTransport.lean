@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.EnrichedCollageComparisonDiagram
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyComposition
 
 /-! # 全入力変換の有向 collage 内での合成
 概要：F→R G の全入力変換を、下段 F から上段 G への全入力変換に移す。

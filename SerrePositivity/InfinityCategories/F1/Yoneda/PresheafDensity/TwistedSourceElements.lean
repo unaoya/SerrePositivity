@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
-public import SerrePositivity.InfinityCategories.F1B.RightFibrationInitialFiber
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.RightFibrationInitialFiber
 
 /-!
 概要：始点を固定した全 twisted arrow と元の right fibration の元の圏を比較する。

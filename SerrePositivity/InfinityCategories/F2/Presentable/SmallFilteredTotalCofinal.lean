@@ -3,9 +3,9 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotal
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanNerveRightKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.KanNerveQCatEquivalence
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.RightKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
@@ -63,11 +63,11 @@ lemma smallFilteredTotalValue_coslice_isWeaklyContractible (i : I) :
   have : IsKappaFiltered κ
       (nerve (StructuredArrow i (smallFilteredTotalValue (κ := κ) (μ := μ)))) :=
     (isKappaFiltered_iff_of_equivalence
-      (F1B.kanNerveQCatEquivalence (smallFilteredAboveCommaEquivalence i))).mp inferInstance
+      (SerrePositivity.InfinityCategories.F1B.nerveQCatEquivalence (smallFilteredAboveCommaEquivalence i))).mp inferInstance
   have := isFilteredInfinity_of_isKappaFiltered
     (Cardinal.IsRegular.aleph0_le (Fact.out : κ.IsRegular))
     (nerve (StructuredArrow i (smallFilteredTotalValue (κ := κ) (μ := μ))))
-  let e := F1B.kanNerveRightKanShapeIso i
+  let e := SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso i
     (smallFilteredTotalValue (κ := κ) (μ := μ)) ≪≫ pullbackSymmetry _ _
   have : IsFilteredInfinity
       (pullback (nerveMap (smallFilteredTotalValue (κ := κ) (μ := μ)))

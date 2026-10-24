@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
 /-!
 概要：弱可縮な実添字上の定値図式に、同じ指定頂点を持つ実極限錐を与える。
@@ -59,7 +59,7 @@ lemma constantDiagramCone_isLimit (K X : SSet.{u}) [Quasicategory X]
       intro c hc
       have he : c = sliceIdentityCone x := Subtype.ext hc
       subst c
-      exact F1B.kanSliceIdentityCone_isTerminalVertex x
+      exact SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex x
     rw [SSet.yonedaEquiv_symm_zero] at h
     exact h (constantDiagramCone _ X x) rfl
   have h := (isLimitCone_iff_restrict_of_leftCofinal

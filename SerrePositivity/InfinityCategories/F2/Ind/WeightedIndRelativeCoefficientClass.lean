@@ -33,13 +33,13 @@ lemma weightedIndRelativeCoefficientHomotopy_hom_eq :
         (functorEdgeOfSimplicialHomotopy (weightedIndDensityCoefficientHomotopy κ F hF i)) := by
   let a := (SSet.uliftFunctor.{u + 1, u}).map
     (weightedNerveConstantLift (rightFibrationTotalDiagram F) i)
-  have hp := kanFunctorHomotopy_precomp_hom_arrow
+  have hp := SerrePositivity.InfinityCategories.functorHomotopy_precomp_hom_arrow
     (weightedIndDensityRelativeHomotopy κ F hF) (weightedIndDensityHomotopy κ F hF)
     (congrArg Arrow.mk (weightedIndDensityRelativeHomotopy_hom_eq κ F hF)) a
-  have h₁ := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have h₁ := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (weightedIndRelativeCoefficientHomotopy κ F hF i)
     (functorHomotopyPrecomp (weightedIndDensityRelativeHomotopy κ F hF) a) rfl
-  have h₂ := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have h₂ := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (weightedIndDensityCoefficientHomotopy κ F hF i)
     (functorHomotopyPrecomp (weightedIndDensityHomotopy κ F hF) a) rfl
   apply Arrow.mk_injective _ _

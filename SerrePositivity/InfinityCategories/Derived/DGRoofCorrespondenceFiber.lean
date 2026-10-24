@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondence
 public import SerrePositivity.InfinityCategories.Derived.DGOverVertexInverse
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
-public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 
 /-! # 実屋根の右ファイブレーションの全 fiber と実 pinched Hom
 

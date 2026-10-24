@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.HornPointJoin
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
-public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 
 /-!
 概要：Kan 複体では filtered 性と可縮 Kan 性が一致する。

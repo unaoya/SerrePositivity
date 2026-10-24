@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowIdentityComposition
 
 /-!
@@ -29,7 +29,7 @@ lemma homotopyPrecompInverse_hom {A B X : SSet.{u}} [KanComplex X]
   change _ ≫ SSet.Truncated.HomotopyCategory.homMk
     (functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H i)) = _
   rw [functorHomotopyPrecomp_hom, functorHomotopyPrecomp_hom,
-    kanFunctorIso_simplicialHomotopy_hom]
+    SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom]
   change F.map I.inv ≫ F.map I.hom = 𝟙 _
   rw [← F.map_comp, I.inv_hom_id, F.map_id]
 

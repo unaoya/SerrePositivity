@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetHom
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-!
 概要：反射の左関手による定値関手間の Hom の比較は、局所な終点で全単射。

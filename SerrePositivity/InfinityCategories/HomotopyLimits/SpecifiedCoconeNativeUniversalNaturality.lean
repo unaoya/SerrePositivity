@@ -89,7 +89,7 @@ lemma specifiedCoconeLeftNativeUniversalRootSection_hom_arrow :
         (cosliceEdgeFamilySectionHomotopy root y HR))) =
       Arrow.mk (𝟙 (HomotopyCategory.mk
         (functorVertex (Qraw ≫ cosliceEdgeSectionFiber root y)))) := by
-  have h := kanFunctorHomotopy_hom_arrow_of_h_eq (cosliceEdgeFamilySectionHomotopy root y HR)
+  have h := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (cosliceEdgeFamilySectionHomotopy root y HR)
     (functorHomotopyRefl (Qraw ≫ cosliceEdgeSectionFiber root y))
     (specifiedCoconeLeftNativeUniversalRootSection_raw hp p c hc dB dC y)
   rw [functorHomotopyRefl_hom] at h
@@ -155,7 +155,7 @@ lemma specifiedCoconeRightNativeUniversalRootSection_hom_arrow :
         (cosliceEdgeFamilySectionHomotopy root y HR))) =
       Arrow.mk (𝟙 (HomotopyCategory.mk
         (functorVertex (Qraw ≫ cosliceEdgeSectionFiber root y)))) := by
-  have h := kanFunctorHomotopy_hom_arrow_of_h_eq (cosliceEdgeFamilySectionHomotopy root y HR)
+  have h := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (cosliceEdgeFamilySectionHomotopy root y HR)
     (functorHomotopyRefl (Qraw ≫ cosliceEdgeSectionFiber root y))
     (specifiedCoconeRightNativeUniversalRootSection_raw hp p c hc dB dC y)
   rw [functorHomotopyRefl_hom] at h

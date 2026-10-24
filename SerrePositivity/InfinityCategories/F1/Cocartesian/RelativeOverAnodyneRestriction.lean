@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestriction
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianInnerAnodynePullback
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianInnerAnodynePullback
 
 /-!
 概要：元の底上の単射な同値と、inner anodyne な底変換による相対 Hom の自明 Kan 制限。
@@ -38,7 +38,7 @@ lemma cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne
     (i : A ⟶ B) (hi : innerAnodyneExtensions i) :
     IsPrecompositionEquivalence (pullback.snd i p) := by
   have h := (isPrecompositionEquivalence_of_iso (pullbackSymmetry i p)).comp
-    (kanCocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence p i hi)
+    (SerrePositivity.InfinityCategories.cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence p i hi)
   rwa [pullbackSymmetry_hom_comp_fst] at h
 
 /-- inner anodyne な底への逆像制限は、元の全相対 Hom の自明 Kan fibration。 -/

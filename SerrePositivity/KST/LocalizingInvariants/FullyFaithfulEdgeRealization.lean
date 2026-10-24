@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-!
 概要：充満忠実な ∞ 関手の像の指定射を、元の指定両端を持つ辺で実現する。

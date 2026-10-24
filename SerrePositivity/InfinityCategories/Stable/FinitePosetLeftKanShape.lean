@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftComma
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 
 /-!
 概要：有限順序添字の局所余極限から、元の図式に厳密に等しい左 Kan 拡張を得る。
@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories
 lemma finitePosetLeftKanShape_finite {P Q : Type u} [PartialOrder P]
     [PartialOrder Q] [Finite P] (L : P ⥤ Q) (q : Q) :
     (leftKanShape (nerveMap L) (nerveVertex q)).Finite :=
-  SSet.finite_of_iso (F1B.kanNerveLeftKanShapeIso L q)
+  SSet.finite_of_iso (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso L q)
 
 /-- 同じ有限順序添字の全単体と局所余極限を保持する。 -/
 lemma finitePosetLeftKanShape_finite_at {P Q : Type u} [PartialOrder P]

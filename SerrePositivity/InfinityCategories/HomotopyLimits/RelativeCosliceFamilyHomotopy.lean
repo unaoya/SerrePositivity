@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRightCosliceSection
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-!
 概要：同じ境界と底を持つ全余錐族を、両方を全時刻で保つ円柱で結ぶ。

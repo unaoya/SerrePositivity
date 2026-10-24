@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitCylinder
-public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
 
 /-!
 概要：元の変換と余極限の指定辺を結ぶ、native 余錐の単位の全正方形。

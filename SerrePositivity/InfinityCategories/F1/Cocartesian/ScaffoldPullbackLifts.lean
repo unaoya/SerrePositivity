@@ -25,7 +25,7 @@ lemma exists_cocartesianScaffoldPullbackMatchingLift
     {C : Type u} [Category.{u} C] {E : SSet.{u}} (p : E ⟶ nerve C)
     [CocartesianFibration p] (a : Over (nerve C)) (e : (pullback a.hom p) _⦋1⦌) :
     ∃ d : (pullback a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))) _⦋1⦌,
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))) _⦋1⦌,
       (pullback a.hom p).δ 1
         ((cocartesianScaffoldPullbackOverMap p a).left.app (Opposite.op ⦋1⦌) d) =
           (pullback a.hom p).δ 1 e ∧
@@ -34,13 +34,13 @@ lemma exists_cocartesianScaffoldPullbackMatchingLift
           (pullback.fst a.hom p).app (Opposite.op ⦋1⦌) e ∧
       IsCocartesianEdge (pullback.fst a.hom p)
         ((cocartesianScaffoldPullbackOverMap p a).left.app (Opposite.op ⦋1⦌) d) := by
-  let r := simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)
+  let r := simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)
   let l : pullback a.hom r ⟶ pullback a.hom p :=
     (cocartesianScaffoldPullbackOverMap p a).left
   let ε := (pullback.snd a.hom p).app (Opposite.op ⦋1⦌) e
   obtain ⟨s, hs⟩ := exists_kanUniversalScaffold_horizontal_with_source p ε
   let σ := p.app (Opposite.op ⦋1⦌) ε
-  let t := kanScaffoldHorizontalEdge (kanCocartesianStrictTransportDiagram p) σ.hom s
+  let t := SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) σ.hom s
   have ht : r.app (Opposite.op ⦋1⦌) t = σ := ComposableArrows.mk₁_hom σ
   let β := SSet.yonedaEquiv.symm e ≫ pullback.fst a.hom p
   have hβ : β ≫ a.hom = SSet.yonedaEquiv.symm σ := by
@@ -51,7 +51,7 @@ lemma exists_cocartesianScaffoldPullbackMatchingLift
   have hfst : d ≫ l ≫ pullback.fst a.hom p = β := by
     rw [cocartesianScaffoldPullbackOverMap_fst, pullback.lift_fst]
   have hsnd : d ≫ l ≫ pullback.snd a.hom p =
-      SSet.yonedaEquiv.symm t ≫ kanUniversalScaffold p := by
+      SSet.yonedaEquiv.symm t ≫ SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p := by
     rw [cocartesianScaffoldPullbackOverMap_snd, ← Category.assoc, pullback.lift_snd]
   have hsrc : stdSimplex.δ 1 ≫ (d ≫ l) =
       stdSimplex.δ 1 ≫ SSet.yonedaEquiv.symm e := by
@@ -76,6 +76,6 @@ lemma exists_cocartesianScaffoldPullbackMatchingLift
       ((pullback.snd a.hom p).app _ (l.app _ (SSet.yonedaEquiv d)))
     rw [him, ← SSet.yonedaEquiv_comp (d ≫ l) (pullback.snd a.hom p), Category.assoc, hsnd,
       SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
-    exact kanUniversalScaffold_horizontal p σ.hom s
+    exact SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_horizontal p σ.hom s
 
 end SerrePositivity.InfinityCategories

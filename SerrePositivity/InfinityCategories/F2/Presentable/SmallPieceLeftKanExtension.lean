@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPieceKanInd
 public import SerrePositivity.InfinityCategories.F2.Presentable.Accessible
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 
 /-!
 概要：元の全空間上の図式を、部分添字への射影に沿って coherent に左 Kan 延長する。

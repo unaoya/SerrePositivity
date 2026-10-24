@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps
+
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveLeftFibration
 public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldFiber
 
@@ -15,17 +17,6 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：底を保つ simplicial replacement の射が各係数値から誘導する fiber 比較。
-方針：定値の底への標準包含に比較射を合成して、射影の可換性により fiber へ持ち上げる。
-規約：底上の可換性 h は厳密な射の等式。
-使われ方：Kerodon Definition 5.3.4.2、scaffold の係数値ごとの条件。 -/
-def leftScaffoldFiberMap {C : Type u} [Category.{u} C] {E : SSet.{u}}
-    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
-    (h : l ≫ p = simplicialReplacementProjection F) (c : C) :
-    F.obj c ⟶ vertexFiber p (nerveVertex c) :=
-  vertexFiberLift _ _ (simplicialReplacementConstantLift F c ≫ l) (by
-    rw [Category.assoc, h, simplicialReplacementConstantLift_projection])
 
 /-- 概要：Kan 値図式から left fibration への射が scaffold であるという条件。
 方針：底上の可換性と、指定した全ての係数値の fiber 比較が同値であることを要求する。

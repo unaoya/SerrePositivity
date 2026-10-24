@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.UnitCommaSectionArrow
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberExtension
 
 /-!
 概要：指定 loop 単位と任意の実パラメータ族の comma 矢印の可逆性。

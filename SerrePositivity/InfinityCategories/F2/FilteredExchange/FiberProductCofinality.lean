@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredBinaryDiagonal
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LeftFibrationProduct
-public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
 
 /-!
 概要：filtered な底上の fiber ごとの積の全空間から、全空間の積への射は right cofinal。

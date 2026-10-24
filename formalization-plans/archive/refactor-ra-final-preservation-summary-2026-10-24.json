@@ -1,0 +1,24 @@
+{
+  "mathematics_types_proofs": "preserved; source rewrite uses explicit import/reference maps only, canonical extraction blocks have exact SHA-256",
+  "baseline_kernel_identity_checks": 45,
+  "retained_canonical_declarations_relocated_intact": 14,
+  "duplicate_declarations_redirected": 45,
+  "duplicate_modules_removed": 7,
+  "declaration_prefix_rename_rules": "797 explicit prefix rules, also applied to child declarations",
+  "all_explicit_fullname_rules": 842,
+  "source_namespace_errors": [],
+  "foreign_name_protections": [
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/KanRelativeJoinSliceRestriction.lean",
+      "name": "SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection",
+      "raw": "kanSliceOverRestrict_projection"
+    }
+  ],
+  "unsafe_declarations": [],
+  "accidental_local_binder_renames": [],
+  "new_duplicate_pairs": 0,
+  "duplicate_check_files": 11711,
+  "F1B_straightening_closure": [],
+  "new_sorry_axioms_citations": 0,
+  "source_paths_after_import_repairs": 1643
+}

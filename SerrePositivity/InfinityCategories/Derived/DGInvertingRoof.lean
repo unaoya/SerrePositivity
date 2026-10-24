@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverTerminal
 public import SerrePositivity.InfinityCategories.Derived.RoofLocallyConstantPullback
 public import SerrePositivity.InfinityCategories.Derived.RoofTerminalFiberCofinality
-public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 public import SerrePositivity.InfinityCategories.Derived.RoofFiberTransport
 

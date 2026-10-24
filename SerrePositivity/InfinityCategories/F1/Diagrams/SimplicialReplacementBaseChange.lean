@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
+
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveBaseChange
 public import SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold
@@ -91,5 +93,25 @@ lemma tautScaffold_baseMap_isPullback
     refine ⟨⟨σ, τ⟩, ?_, rfl⟩
     refine Sigma.ext (by rfl) ?_
     exact (Sigma.mk.inj h).2.symm
+
+/-- 概要：係数値の定値包含は通常の関手による底変換と可換。
+方針：定値射列の後合成が像の対象の定値射列になることを関手の恒等則で示す。
+規約：係数単体は同じ射を使う。
+使われ方：Kerodon Remark 5.3.2.3、底変換した scaffold の fiber 比較。 -/
+lemma simplicialReplacementConstantLift_baseMap
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ SSet.{u}) (d : D) :
+    simplicialReplacementConstantLift (H ⋙ F) d ≫ simplicialReplacementBaseMap H F =
+      simplicialReplacementConstantLift F (H.obj d) := by
+  apply SSet.hom_ext
+  intro k
+  apply ConcreteCategory.hom_ext
+  intro s
+  have hσ : (CategoryTheory.Functor.const (Fin (k.unop.len + 1))).obj d ⋙ H =
+      (CategoryTheory.Functor.const (Fin (k.unop.len + 1))).obj (H.obj d) := by
+    refine CategoryTheory.Functor.ext (fun _ ↦ rfl) ?_
+    intro i j f
+    simp
+  exact Sigma.ext hσ (HEq.rfl)
 
 end SerrePositivity.InfinityCategories

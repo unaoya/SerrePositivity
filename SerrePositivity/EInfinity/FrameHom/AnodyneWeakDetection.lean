@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Types.Limits

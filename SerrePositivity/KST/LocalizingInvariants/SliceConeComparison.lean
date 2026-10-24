@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NativeConeFamilyEvaluation
 

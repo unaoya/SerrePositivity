@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredNullHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：余錐を持つ射を連続 Kan 置換で送ると定値射と同じホモトピー類になる。

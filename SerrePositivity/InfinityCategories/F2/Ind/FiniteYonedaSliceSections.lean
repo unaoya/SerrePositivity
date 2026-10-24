@@ -27,14 +27,14 @@ lemma indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence
     (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
     (hF : IsIndVertex κ C (functorVertex F)) :
     IsQCatEquivalence (leftFibrationConeRestriction (oppositeYonedaSliceProjection F)
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) :=
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) :=
   (leftFibrationConeRestriction_isQCatEquivalence_iff_of_comparison
     ((SSet.uliftFunctor.{u + 1, u}).map
       (SSet.opFunctor.map (smallRightUnstraighteningProjection F)))
     (oppositeYonedaSliceProjection F) (oppositeElementsYonedaSliceComparison F)
     (oppositeElementsYonedaSliceComparison_projection F)
     (oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence F)
-    (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))).mp
+    (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))).mp
       (indPresheaf_finiteColimit_liftedOppositeRightSections_isQCatEquivalence κ hκ hex c hc F hF)
 
 end SerrePositivity.InfinityCategories.F2.Ind

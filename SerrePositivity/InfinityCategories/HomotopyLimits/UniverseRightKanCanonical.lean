@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseRightKan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointCosliceUncurry
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
-public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightCanonicalMapping
 
 /-!
 概要：右 Kan 標準全錐の宇宙変更は、元の局所添字の同型を介して厳密に一致する。

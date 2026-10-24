@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FunctorOppositeEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalFunctorOpposite
-public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
 /-!
 概要：実余単位の標準区間比較から反対側の指定単位条件を得る。
 方針：同じ実ホモトピーを反転し、任意パラメータ族の合成表示で比較する。
@@ -20,7 +20,7 @@ open scoped Simplicial
 def counitOppositeUnitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (H : SSet.Homotopy (G ≫ F) (𝟙 Y)) :
     FunctorHom (𝟙 Y.op) (opFunctor.map G ≫ opFunctor.map F) :=
-  F1B.kanFunctorOppositeHomEquiv (G ≫ F) (𝟙 Y)
+  SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y)
     (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))
 
 /-- 反転した指定単位の成分は、元の同じ余単位成分の反対。 -/
@@ -31,7 +31,7 @@ lemma counitOppositeUnitHom_component {X Y : SSet.{u}}
       SSet.Truncated.HomotopyCategory.homMk (edgeOp (simplicialHomotopyVertexEdge H y)) := by
   unfold qcatUnitComponent counitOppositeUnitHom
   rw [functorOppositeHomEquiv_evaluate, functorHomEvaluate_homotopy,
-    F1B.kanHomotopyCategoryOpHomEquiv_homMk]
+    SerrePositivity.InfinityCategories.F1B.homotopyCategoryOpHomEquiv_homMk]
   rfl
 
 /-- 元の余単位の標準区間比較の反転は、反対側の指定単位比較とホモトピック。 -/
@@ -76,7 +76,7 @@ lemma counitOppositeUnitHom_mappingSpaceCondition {X Y : SSet.{u}}
   let m := intervalFunctorMap F x' (G.app (Opposite.op ⦋0⦌) y') ≫
     intervalPostcompose (F.app (Opposite.op ⦋0⦌) x')
       (SSet.Truncated.HomotopyCategory.homMk (simplicialHomotopyVertexEdge H y').toTruncated)
-  have hm := F1B.kanIsQCatEquivalence_op (h x' y').isQCatEquivalence
+  have hm := SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op (h x' y').isQCatEquivalence
   have hi := (qCatEquivalenceOfIso (HomotopyLimits.intervalOppositeIso
     (F.app (Opposite.op ⦋0⦌) x') y')).isQCatEquivalence
   have hr := hm.comp hi

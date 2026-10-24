@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostIso
 
 /-!

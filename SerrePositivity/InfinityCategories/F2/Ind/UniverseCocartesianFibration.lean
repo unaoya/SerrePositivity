@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UniverseCocartesianHornLifting
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornFibrationComparison
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornFibrationComparison
 
 /-!
 概要：元の cocartesian fibration の宇宙持ち上げは、追加仮定なしに cocartesian fibration。
@@ -42,6 +42,6 @@ lemma cocartesianFibration_ulift {E B : SSet.{u}} (p : E ⟶ B) [CocartesianFibr
   have : CocartesianHornFibration p := CocartesianFibration.toCocartesianHornFibration p
   have : CocartesianHornFibration ((SSet.uliftFunctor.{v, u}).map p) :=
     cocartesianHornFibration_ulift p
-  exact F1B.kanCocartesianHornFibration_toCocartesianFibration _
+  exact SerrePositivity.InfinityCategories.F1B.cocartesianHornFibration_toCocartesianFibration _
 
 end SerrePositivity.InfinityCategories.F2.Ind

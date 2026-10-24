@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CosliceCoproduct
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!

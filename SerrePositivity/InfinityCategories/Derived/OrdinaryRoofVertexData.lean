@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofReverseVertexEdge
-public import SerrePositivity.InfinityCategories.F1B.KanNerveOverIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OverIso
 
 /-! # 通常の屋根の反対頂点と構造辺
 
@@ -20,7 +20,7 @@ variable {C : Type u} [Category.{u} C]
 
 /-- Over の零単体を反対 Under の指定零単体へ送る。 -/
 lemma ordinaryRoofOppositeVertex (c : C) (s : Over c) :
-    (F1B.kanNerveOverOppositeUnderIso c).hom.app (Opposite.op ⦋0⦌) (nerveVertex s) =
+    (SerrePositivity.InfinityCategories.F1B.nerveOverOppositeUnderIso c).hom.app (Opposite.op ⦋0⦌) (nerveVertex s) =
       SSet.opObjEquiv.symm (nerveVertex ((Under.opEquivOpOver c).inverse.obj (op s))) := by
   apply SSet.opObjEquiv.injective
   exact ComposableArrows.ext₀ rfl
@@ -28,15 +28,15 @@ lemma ordinaryRoofOppositeVertex (c : C) (s : Over c) :
 /-- Under の指定零単体の辺は、その指定構造射。 -/
 lemma ordinaryUnderVertexEdge (c : C) (s : Under c) :
     SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
-      (F1B.kanNerveUnderSimplex c (nerveVertex s)).val) = ComposableArrows.mk₁ s.hom := by
+      (SerrePositivity.InfinityCategories.F1B.nerveUnderSimplex c (nerveVertex s)).val) = ComposableArrows.mk₁ s.hom := by
   change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
     ((pointJoinStdSimplexIso 0).hom ≫ (SSet.yonedaEquiv (X := nerve C)).symm
-      (F1B.kanNerveUnderChain c (nerveVertex s)))) = _
+      (SerrePositivity.InfinityCategories.F1B.nerveUnderChain c (nerveVertex s)))) = _
   have hi : pointJoinStdSimplexIso.{u} 0 = joinStdSimplexIso 0 0 := by
     apply Iso.ext
     rfl
   rw [hi, Iso.inv_hom_id_assoc, Equiv.apply_symm_apply]
-  refine ComposableArrows.ext₁ (F := F1B.kanNerveUnderChain c (nerveVertex s))
+  refine ComposableArrows.ext₁ (F := SerrePositivity.InfinityCategories.F1B.nerveUnderChain c (nerveVertex s))
     (G := ComposableArrows.mk₁ s.hom) rfl rfl ?_
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   rfl

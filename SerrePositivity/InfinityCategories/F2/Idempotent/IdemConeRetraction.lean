@@ -29,17 +29,17 @@ def walkingIdemCocone : Cocone (𝟭 WalkingIdem.{u}) where
 
 /-- 元の右錐から元の全 Idem への retraction。 -/
 def idemConeRetraction : join IdemShape (Δ[0] : SSet.{u}) ⟶ IdemShape :=
-  (F1B.kanNerveCoconeEquiv walkingIdemCocone).val
+  (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv walkingIdemCocone).val
 
 /-- 元の全 Idem への制限は、元の恒等射そのもの。 -/
 lemma idemConeRetraction_inl :
     joinInl IdemShape (Δ[0] : SSet.{u}) ≫ idemConeRetraction = 𝟙 IdemShape :=
-  (F1B.kanNerveCoconeEquiv walkingIdemCocone).property
+  (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv walkingIdemCocone).property
 
 /-- 元の新しい頂点への制限は、元の一対象そのもの。 -/
 lemma idemConeRetraction_inr :
     joinInr IdemShape (Δ[0] : SSet.{u}) ≫ idemConeRetraction = nervePoint walkingObject :=
-  F1B.kanNerveCocone_point walkingIdemCocone
+  SerrePositivity.InfinityCategories.F1B.nerveCocone_point walkingIdemCocone
 
 /-- 元の恒等図式から元の定値図式への指定変換の成分は、元の非恒等冪等元。 -/
 lemma walkingIdemCocone_leg : walkingIdemCocone.{u}.ι.app walkingObject =

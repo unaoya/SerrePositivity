@@ -1,7 +1,8 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementBaseChange
+
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteCylinder
-public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldBaseChange
 
 /-!
 概要：有限鎖の写像円柱の比較の両端での計算。

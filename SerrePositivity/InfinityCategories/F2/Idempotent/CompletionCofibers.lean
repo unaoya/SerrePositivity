@@ -55,7 +55,7 @@ lemma IsIdempotentCompletion.bicartesian_cofiber_exists {C D : SSet.{u}}
     (bicartesianZeroBottomProjection_isFullyFaithful D) v (functorVertex A)
     (by rw [hqv]; exact r)
   obtain ⟨z, hz⟩ := exists_strict_vertex_preimage_of_targetLifting q
-    (F1B.KanEquivalenceLifting.invertibleTargetLifting
+    (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.invertibleTargetLifting
       (bicartesianZeroBottomProjection_kanEquivalenceLifting D))
     w (functorVertex A) e
   let H := (functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) D).symm z.val

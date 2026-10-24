@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanCoconeFamilyEquivalenceLifting
-public import SerrePositivity.InfinityCategories.F1B.KanVertexIsoLifting
+public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeFamilyEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexIsoLifting
 public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
 
 /-!
@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2
 使われ方：lax pullback の錐の存在を両入力を固定して証明する。 -/
 lemma exists_colimitCone_with_specified_image {J X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y)
-    (hf : F1B.KanEquivalenceLifting f) {r : J ⟶ X}
+    (hf : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting f) {r : J ⟶ X}
     (c₀ : JoinCocone r) (hc₀ : IsColimitCone c₀)
     (hc₀f : IsColimitCone (F1B.kanPostcomposeCocone f c₀))
     (d : JoinCocone (r ≫ f)) (hd : IsColimitCone d) :
@@ -40,7 +40,7 @@ lemma exists_colimitCone_with_specified_image {J X Y : SSet.{u}}
     rw [F1B.kanCoconeFamilyPostcomp_vertex]
     exact (isColimitCone_iff_isInitialVertex_coconeFamily _).1 hc₀f
   obtain ⟨z, hz, ⟨ez⟩⟩ := F1B.exists_kanVertexIso_lift_target
-    (F1B.kanCoconeFamilyPostcomp r f) (F1B.kanCoconeFamilyPostcomp_equivalenceLifting r f hf)
+    (F1B.kanCoconeFamilyPostcomp r f) (SerrePositivity.InfinityCategories.F1B.coconeFamilyPostcomp_equivalenceLifting r f hf)
     x y (initialVertexIso hy hfx)
   let c := (coconeFamilyVertexEquiv r).symm z
   have hcz : coconeFamilyVertexEquiv r c = z := (coconeFamilyVertexEquiv r).apply_symm_apply z

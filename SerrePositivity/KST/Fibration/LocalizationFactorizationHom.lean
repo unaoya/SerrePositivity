@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-! # 全関手 ∞ 圏の局所化普遍性による、同じ比較二胞体の実持ち上げ -/
 

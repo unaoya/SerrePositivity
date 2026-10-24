@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryHom
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHom
 public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
 
 /-!
@@ -27,15 +27,15 @@ lemma isInvertibleEdge_of_initialBoundaries {X Y : SSet.{u}}
   let F := (hoFunctor.map p).toFunctor
   let a := Truncated.HomotopyCategory.homMk e
   have ha : IsIso (F.map a) := he
-  obtain ⟨b, hb⟩ := (F1B.kanHoFunctorMap_bijective_of_initialBoundary p y x hy).surjective
+  obtain ⟨b, hb⟩ := (SerrePositivity.InfinityCategories.F1B.hoFunctorMap_bijective_of_initialBoundary p y x hy).surjective
     (inv (F.map a))
   change IsIso a
   refine ⟨⟨b, ?_, ?_⟩⟩
-  · apply (F1B.kanHoFunctorMap_bijective_of_initialBoundary p x x hx).injective
+  · apply (SerrePositivity.InfinityCategories.F1B.hoFunctorMap_bijective_of_initialBoundary p x x hx).injective
     change F.map (a ≫ b) = F.map (𝟙 _)
     rw [CategoryTheory.Functor.map_comp, hb, CategoryTheory.Functor.map_id]
     exact IsIso.hom_inv_id _
-  · apply (F1B.kanHoFunctorMap_bijective_of_initialBoundary p y y hy).injective
+  · apply (SerrePositivity.InfinityCategories.F1B.hoFunctorMap_bijective_of_initialBoundary p y y hy).injective
     change F.map (b ≫ a) = F.map (𝟙 _)
     rw [CategoryTheory.Functor.map_comp, hb, CategoryTheory.Functor.map_id]
     exact IsIso.inv_hom_id _

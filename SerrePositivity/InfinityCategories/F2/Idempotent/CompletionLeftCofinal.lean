@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionSlice
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionTerminalContraction
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 
 /-!
 概要：元の全部分圏の冪等完備化の包含は、極限を計算する向きに cofinal。
@@ -30,7 +30,7 @@ lemma IsIdempotentCompletion.slice_isWeaklyContractible {C D : SSet.{u}}
   have : Quasicategory (pullback f q) := quasicategory_of_innerFibration (pullback.snd f q)
   exact IsIdempotentCompletion.isWeaklyContractible_of_terminal (pullback.snd f q)
     (IsIdempotentCompletion.sliceOver f hf (SSet.yonedaEquiv.symm d)) (sliceIdentityCone d)
-    (F1B.kanSliceIdentityCone_isTerminalVertex d)
+    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex d)
 
 /-- 元の全部分圏の冪等完備化の包含は left cofinal。 -/
 lemma IsIdempotentCompletion.isLeftCofinal {C D : SSet.{u}}

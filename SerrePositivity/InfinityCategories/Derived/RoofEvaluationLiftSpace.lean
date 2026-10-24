@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
-public import SerrePositivity.InfinityCategories.F1B.CofinalFunctorVertices
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorVertices
 /-!
 概要：指定初期図式と指定全底を持つ実屋根評価 prism の全高次空間を構成する。
 方針：底上の関手空間の始端制限の fiber を取り、その trivial Kan fibration 性を使う。

@@ -26,16 +26,16 @@ variable {C : Type u} [Category.{u} C] {E F : SSet.{u}}
 /-- 部分底の射は、同じ scaffold 比較の像で定めた実際の指定辺を保つ。 -/
 lemma cocartesianScaffoldPullbackMark_map
     (e : (pullback a.hom
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))) _⦋1⦌)
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))) _⦋1⦌)
     (he : e ∈ cocartesianScaffoldPullbackMark p a) :
     ((overPullbackUnderlying
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f).app
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f).app
       (Opposite.op ⦋1⦌) e ∈ cocartesianScaffoldPullbackMark p b := by
   have hn := congrArg (fun k ↦ k.left.app (Opposite.op ⦋1⦌) e)
     (cocartesianScaffoldPullbackOverMap_naturality p f)
   change (cocartesianScaffoldPullbackOverMap p b).left.app _
       (((overPullbackUnderlying
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f).app _ e) =
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f).app _ e) =
     ((overPullbackUnderlying p).map f).app _
       ((cocartesianScaffoldPullbackOverMap p a).left.app _ e) at hn
   change IsCocartesianEdge (pullback.fst b.hom p) _
@@ -46,8 +46,8 @@ lemma cocartesianScaffoldPullbackMark_map
 def cocartesianScaffoldPullbackMarkedHomPre :
     cocartesianScaffoldPullbackMarkedHom p q b ⟶ cocartesianScaffoldPullbackMarkedHom p q a :=
   markedCocartesianFunctorPre q
-    ((Over.pullback (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ⋙
-      Over.map (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f)
+    ((Over.pullback (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ⋙
+      Over.map (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f)
     (cocartesianScaffoldPullbackMark p a) (cocartesianScaffoldPullbackMark p b)
     (cocartesianScaffoldPullbackMark_map p f)
 
@@ -57,8 +57,8 @@ lemma cocartesianScaffoldPullbackMarkedHomPre_ι :
       markedCocartesianFunctorInclusion q _ (cocartesianScaffoldPullbackMark p a) =
     markedCocartesianFunctorInclusion q _ (cocartesianScaffoldPullbackMark p b) ≫
       relativeFunctorOverPre q
-        ((Over.pullback (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ⋙
-          Over.map (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f) :=
+        ((Over.pullback (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ⋙
+          Over.map (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f) :=
   markedCocartesianFunctorPre_ι q _ _ _ _
 
 /-- 元の辺保存 Hom の同じ scaffold 前合成は、部分底の制限と厳密に可換。 -/

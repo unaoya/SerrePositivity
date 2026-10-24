@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightAnodyneTensor
-public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
-public import SerrePositivity.InfinityCategories.F1B.CofinalComposition
-public import SerrePositivity.InfinityCategories.F1B.CofinalOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
 
 /-!
 概要：right cofinal な元の射と任意の単体集合の直積。

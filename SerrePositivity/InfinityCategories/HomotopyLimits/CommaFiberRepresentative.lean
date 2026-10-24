@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalVertexHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-!
@@ -22,9 +22,9 @@ namespace SerrePositivity.InfinityCategories.HomotopyLimits
 
 /-- 同じ元の標的を固定した comma の点が表す、元の端点を持つ辺。 -/
 def commaTargetFiberArrow {X Y : SSet.{u}} (G : Y ⟶ X) (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (v : (vertexFiber (F1B.kanUnitCommaFiberProjection G x) y) _⦋0⦌) :
+    (v : (vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y) _⦋0⦌) :
     X.Edge x (G.app (Opposite.op ⦋0⦌) y) :=
-  intervalMappingEdgeOfVertex ((F1B.kanUnitCommaFiberToInterval G x y).app _ v)
+  intervalMappingEdgeOfVertex ((SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y).app _ v)
 
 /-- 単体集合の同型で写した頂点間の同型を、元の二頂点間へ戻す。 -/
 def vertexIsoOfSimplicialIsoImage {A B : SSet.{u}} (e : A ≅ B) (v w : A _⦋0⦌)
@@ -40,30 +40,30 @@ def vertexIsoOfSimplicialIsoImage {A B : SSet.{u}} (e : A ≅ B) (v w : A _⦋0�
 /-- 同じ標的上で同じ Hom 類を表す comma の二点は、元の始域 fiber 内で同型。 -/
 def unitCommaTargetFiberVertexIsoOfHomMkEq {X Y : SSet.{u}} [Quasicategory X]
     (G : Y ⟶ X) (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (v w : (vertexFiber (F1B.kanUnitCommaFiberProjection G x) y) _⦋0⦌)
+    (v w : (vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y) _⦋0⦌)
     (h : Truncated.HomotopyCategory.homMk
       (commaTargetFiberArrow G x y v).toTruncated =
       Truncated.HomotopyCategory.homMk
       (commaTargetFiberArrow G x y w).toTruncated) :
     VertexIso (X := unitCommaFiber G x) v.val w.val := by
-  let e := F1B.kanUnitCommaFiberIntervalIso G x y
+  let e := SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso G x y
   let i := intervalVertexIsoOfRecoveredHomMkEq
-    ((F1B.kanUnitCommaFiberToInterval G x y).app _ v)
-    ((F1B.kanUnitCommaFiberToInterval G x y).app _ w) h
+    ((SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y).app _ v)
+    ((SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y).app _ w) h
   exact (vertexIsoOfSimplicialIsoImage e v w i).map
-    (vertexFiberι (F1B.kanUnitCommaFiberProjection G x) y)
+    (vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y)
 
 /-- 元の標的と矢印の Hom 類を保つ代表の変更は、comma の始対象性を保持。 -/
 lemma unitCommaTargetFiber_isInitial_iff_of_homMk_eq {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (G : Y ⟶ X) (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (v w : (vertexFiber (F1B.kanUnitCommaFiberProjection G x) y) _⦋0⦌)
+    (v w : (vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) y) _⦋0⦌)
     (h : Truncated.HomotopyCategory.homMk
       (commaTargetFiberArrow G x y v).toTruncated =
       Truncated.HomotopyCategory.homMk
       (commaTargetFiberArrow G x y w).toTruncated) :
     IsInitialVertex v.val ↔ IsInitialVertex w.val := by
   have : Quasicategory (unitCommaFiber G x) :=
-    quasicategory_of_innerFibration (F1B.kanUnitCommaFiberProjection G x)
+    quasicategory_of_innerFibration (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
   exact isInitialVertex_iff_of_vertexIso (unitCommaTargetFiberVertexIsoOfHomMkEq G x y v w h)
 
 end SerrePositivity.InfinityCategories.HomotopyLimits

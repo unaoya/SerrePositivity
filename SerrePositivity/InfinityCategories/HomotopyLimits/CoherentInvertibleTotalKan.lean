@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentInvertibleTotalMap
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanNativeCoconeComparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
 
 /-!
 概要：元の可逆変換の全空間作用を、元の余極限 Kan 模型の指定同値辺へ移す。

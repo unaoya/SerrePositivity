@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
-public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-!

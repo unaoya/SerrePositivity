@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotalCofinal
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 
 /-!
 概要：部分添字への射影の左 Kan 局所添字は、元の κ に対して filtered。
@@ -71,8 +71,8 @@ lemma smallPiece_leftKanShape_isKappaFiltered (A : SmallFilteredPieces κ μ I) 
     Ind.isKappaFiltered_nerve_of_cardinalFiltered _
   have : IsKappaFiltered κ (nerve (CostructuredArrow smallFilteredTotalPiece A)) :=
     (isKappaFiltered_iff_of_equivalence
-      (F1B.kanNerveQCatEquivalence (smallFilteredBelowCommaEquivalence A))).mp inferInstance
+      (SerrePositivity.InfinityCategories.F1B.nerveQCatEquivalence (smallFilteredBelowCommaEquivalence A))).mp inferInstance
   exact (isKappaFiltered_iff_of_iso
-    (F1B.kanNerveLeftKanShapeIso smallFilteredTotalPiece A)).mp inferInstance
+    (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso smallFilteredTotalPiece A)).mp inferInstance
 
 end SerrePositivity.InfinityCategories.F2.Presentable

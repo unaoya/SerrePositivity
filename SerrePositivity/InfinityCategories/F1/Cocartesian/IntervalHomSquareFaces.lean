@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalHomTriangles
 public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalIntervalDiagramEdges
-public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
 
 /-!
 概要：実際の固定成分 Hom の標準正方形の、固定された三辺を全パラメーターで計算する。

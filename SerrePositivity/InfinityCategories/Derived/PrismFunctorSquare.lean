@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquare
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilySquare
 public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
 
 /-!

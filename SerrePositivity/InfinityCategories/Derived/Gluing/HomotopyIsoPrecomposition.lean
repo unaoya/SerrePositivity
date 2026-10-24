@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 単体集合同型による座標変更は、Kan 仮定を加えず同じ実ホモトピー逆を移す。 -/
 @[expose] public section

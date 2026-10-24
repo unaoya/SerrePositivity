@@ -27,14 +27,14 @@ namespace SerrePositivity.InfinityCategories.F2
 使われ方：lax pullback の入力の極限錐からの存在構成。 -/
 lemma exists_limitCone_pullback_with_snd {J E D B : SSet.{u}}
     [Quasicategory E] [Quasicategory D] [Quasicategory B]
-    (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.KanEquivalenceLifting p)
+    (p : E ⟶ B) (q : D ⟶ B) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
     (r : J ⟶ pullback p q) (ce₀ : JoinCone (r ≫ pullback.fst p q))
     (cd : JoinCone (r ≫ pullback.snd p q))
     (he₀ : IsLimitCone ce₀) (he₀p : IsLimitCone (mapJoinCone p ce₀))
     (hd : IsLimitCone cd) (hdq : IsLimitCone (mapJoinCone q cd)) :
     ∃ c : JoinCone r, IsLimitCone c ∧ IsLimitCone (mapJoinCone (pullback.fst p q) c) ∧
       mapJoinCone (pullback.snd p q) c = cd := by
-  have : InnerFibration p := F1B.KanEquivalenceLifting.innerFibration hp
+  have : InnerFibration p := SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration hp
   let db : JoinCone ((r ≫ pullback.fst p q) ≫ p) := ⟨cd.val ≫ q, by
     rw [← Category.assoc, cd.property, Category.assoc, Category.assoc, pullback.condition]⟩
   have hdb : IsLimitCone db :=

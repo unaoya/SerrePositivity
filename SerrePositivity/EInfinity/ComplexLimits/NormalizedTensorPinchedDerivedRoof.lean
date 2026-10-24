@@ -47,7 +47,7 @@ lemma normalizedTensorPinchedFamilyPostDerived_arrow :
   have he : Arrow.mk (T.map e) = Arrow.mk (normalizedTensorElementDerivedEvaluation A X Y) := by
     apply Eq.trans (congrArg Arrow.mk (functorHomotopyPostcomp_hom
       (normalizedTensorEvaluationHomotopy A X Y) F)).symm
-    apply kanFunctorHomotopy_hom_arrow_of_h_eq
+    apply SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
       (functorHomotopyPostcomp (normalizedTensorEvaluationHomotopy A X Y) F)
       (complexOrdinaryDerivedNatTransHomotopy A (normalizedTensorElementEvaluation A X Y))
     exact Category.assoc _ _ _

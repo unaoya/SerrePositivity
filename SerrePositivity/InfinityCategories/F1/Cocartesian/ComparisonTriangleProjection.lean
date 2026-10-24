@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Functor
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreFaces
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianCancellation
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!
@@ -69,7 +69,7 @@ lemma exists_cocartesianComparisonTriangle_over {E B : SSet.{u}}
     exact ha₁
   refine ⟨t, sq.fac_right, ht₂, ht₁, ?_⟩
   have hc : IsCocartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ 0 ≫ t)) := by
-    apply kanIsCocartesianEdge_triangle_second_of_first_long t p
+    apply SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long t p
     · rw [ht₂, Equiv.apply_symm_apply]; exact hh
     · rw [ht₁, Equiv.apply_symm_apply]; exact he
   apply isInvertibleEdge_of_isCocartesianEdge p _ hc

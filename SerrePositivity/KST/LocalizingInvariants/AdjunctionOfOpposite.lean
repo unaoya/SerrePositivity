@@ -24,33 +24,33 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   (a : QCatAdjunction (SSet.opFunctor.map G) (SSet.opFunctor.map F))
 
 def restoredUnit : FunctorHom (𝟙 X) (F ≫ G) :=
-  (kanFunctorOppositeHomEquiv (𝟙 X) (F ≫ G)).symm a.counitHom
+  (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (𝟙 X) (F ≫ G)).symm a.counitHom
 
 def restoredCounit : FunctorHom (G ≫ F) (𝟙 Y) :=
-  (kanFunctorOppositeHomEquiv (G ≫ F) (𝟙 Y)).symm a.unitHom
+  (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y)).symm a.unitHom
 
 lemma restored_leftTriangle : unitLeftZigzag (restoredUnit a) (restoredCounit a) =
     𝟙 (HomotopyCategory.mk (functorVertex F)) := by
-  apply (kanFunctorOppositeHomEquiv F F).injective
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F).injective
   unfold unitLeftZigzag
-  erw [kanFunctorOppositeHomEquiv_comp (F := F) (G := F ≫ G ≫ F) (H := F),
+  erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := F) (G := F ≫ G ≫ F) (H := F),
     oppositeFunctorHom_postcomp F (F := 𝟙 X) (G := F ≫ G) (restoredUnit a),
-    kanFunctorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) (restoredCounit a),
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) (restoredCounit a),
     oppositeFunctorHom_id]
   simp only [restoredUnit, restoredCounit, Equiv.apply_symm_apply]
-  exact kanAdjunction_rightTriangleHom a
+  exact SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a
 
 lemma restored_rightTriangle :
     (hoFunctor.map ((pre G).app X)).toFunctor.map (restoredUnit a) ≫
       (hoFunctor.map ((ihom Y).map G)).toFunctor.map (restoredCounit a) =
         𝟙 (HomotopyCategory.mk (functorVertex G)) := by
-  apply (kanFunctorOppositeHomEquiv G G).injective
-  erw [kanFunctorOppositeHomEquiv_comp (F := G) (G := G ≫ F ≫ G) (H := G),
-    kanFunctorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) (restoredUnit a),
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G).injective
+  erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := G) (G := G ≫ F ≫ G) (H := G),
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) (restoredUnit a),
     oppositeFunctorHom_postcomp G (F := G ≫ F) (G := 𝟙 Y) (restoredCounit a),
     oppositeFunctorHom_id]
   simp only [restoredUnit, restoredCounit, Equiv.apply_symm_apply]
-  exact kanAdjunction_leftTriangleHom a
+  exact SerrePositivity.InfinityCategories.F1B.adjunction_leftTriangleHom a
 
 def adjunctionOfOpposite : QCatAdjunction F G :=
   adjunctionOfFunctorHomTriangles (restoredUnit a) (restoredCounit a)

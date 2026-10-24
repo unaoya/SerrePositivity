@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityKanCoconeMap
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestrictionHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
 
 /-!
 概要：元の小さい κ-filtered 余極限を保つ関手は、元の Yoneda に沿う標準左 Kan 条件を満たす。

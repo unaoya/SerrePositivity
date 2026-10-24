@@ -28,8 +28,8 @@ lemma zeroCornerSquareSpan_source (X : SSet.{u}) :
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
 lemma vertexFiberMap_kanEquivalenceLifting {E E' B : SSet.{u}}
     (p : E ⟶ B) (q : E' ⟶ B) (f : E ⟶ E') (hf : f ≫ q = p)
-    (h : F1B.KanEquivalenceLifting f) (x : B _⦋0⦌) :
-    F1B.KanEquivalenceLifting (vertexFiberMap p q f hf x) := by
+    (h : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting f) (x : B _⦋0⦌) :
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (vertexFiberMap p q f hf x) := by
   intro A D i hi he
   have := h i hi he
   exact HomotopyLimits.vertexFiberMap_hasLiftingProperty p q f hf x i
@@ -43,7 +43,7 @@ def zeroCornerSquareSpanSourceFiberMap (X : SSet.{u}) (x : X _⦋0⦌) :
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
 lemma zeroCornerSquareSpanSourceFiberMap_kanEquivalenceLifting
     (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌) :
-    F1B.KanEquivalenceLifting (zeroCornerSquareSpanSourceFiberMap X x) :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (zeroCornerSquareSpanSourceFiberMap X x) :=
   vertexFiberMap_kanEquivalenceLifting _ _ _ _
     (zeroCornerSquareSpan_kanEquivalenceLifting X) x
 

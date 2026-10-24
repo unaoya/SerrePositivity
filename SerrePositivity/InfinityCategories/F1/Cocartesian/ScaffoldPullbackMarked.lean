@@ -26,7 +26,7 @@ variable {C : Type u} [Category.{u} C] {E F : SSet.{u}}
 /-- 同じ引き戻し比較の像が実際に cocartesian となる scaffold の指定辺。 -/
 def cocartesianScaffoldPullbackMark :
     Set ((pullback a.hom
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))) _⦋1⦌) :=
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))) _⦋1⦌) :=
   {d | IsCocartesianEdge (pullback.fst a.hom p)
     ((cocartesianScaffoldPullbackOverMap p a).left.app (Opposite.op ⦋1⦌) d)}
 
@@ -34,8 +34,8 @@ def cocartesianScaffoldPullbackMark :
 def cocartesianScaffoldPullbackMarkedHom : SSet.{u} :=
   markedCocartesianFunctorSpace q
     (pullback.snd a.hom
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-        simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+        simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))
     (cocartesianScaffoldPullbackMark p a)
 
 /-- 元の辺保存 Hom に作用する、同じ scaffold の前合成。 -/
@@ -51,8 +51,8 @@ lemma cocartesianScaffoldPullbackMarkedPredicate_reflect
     (v : (relativeFunctorSpace q (pullback.snd a.hom p ≫ p)) _⦋0⦌)
     (hv : markedCocartesianFunctorPredicate q
       (pullback.snd a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-          simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+          simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))
       (cocartesianScaffoldPullbackMark p a)
       ((cocartesianScaffoldPullbackRawHomPre p q a).app (Opposite.op ⦋0⦌) v)) :
     markedCocartesianFunctorPredicate q (pullback.snd a.hom p ≫ p)

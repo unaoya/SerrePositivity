@@ -50,7 +50,7 @@ def leftCocartesianKanComparisonIso {I : Type u} [Category.{u} I] {E : SSet.{u}}
       have := kanCocartesianSectionsι_isIso_of_leftFibration p (nerveMap (Under.forget c))
       apply strictKanCompletion_map_isQCatEquivalence
       change IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-        (kanCocartesianSectionsι p (nerveMap (Under.forget c))))
+        (SerrePositivity.InfinityCategories.cocartesianSectionsι p (nerveMap (Under.forget c))))
       infer_instance)
   exact e ≪≫ (kanDiagramCompletionIso (leftStrictTransportFunctor p)).symm
 

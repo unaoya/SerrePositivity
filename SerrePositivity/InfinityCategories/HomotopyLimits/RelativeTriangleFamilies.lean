@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceShapePushout
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeFamilies
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-!
 概要：底の三角形が長辺の退化なら、長辺上の余錐の全パラメータ族を二単体全体へ延長する。

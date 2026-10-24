@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyInvariance
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：全パラメータの実 pinched Hom 族を、定値関手間の射と実ホモトピーまで照合する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.UnitLeftTriangle
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitLeftTriangle
 /-!
 概要：合成随伴の余単位を、同じ二余単位の whiskering の式へ展開する。
 方針：双圏の結合子と単位子を明示し、同じ h Fun の射へ送る。

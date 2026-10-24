@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGStrictFunctorNerveComponents
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 /-!
 概要：元の厳密変換の指定ホモトピーの類は、実合成二単体により恒等・合成を保つ。
 方針：元の全閉零成分と全 Hom 自然性、実 nerve 写像と端点輸送を使う。

@@ -41,7 +41,7 @@ lemma cocartesianScaffoldPullbackMarkedCorePre_naturality :
 lemma cocartesianScaffoldPullbackMarkedCoreRestriction_fibration
     [CocartesianFibration q] [Mono f.left] :
     Fibration (cocartesianScaffoldPullbackMarkedCoreRestriction p q f) := by
-  let r := simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)
+  let r := simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)
   letI : Mono f := Over.mono_of_mono_left f
   letI : Mono ((Over.pullback r ⋙ Over.map r).map f).left :=
     inferInstanceAs (Mono ((overPullbackUnderlying r).map f))

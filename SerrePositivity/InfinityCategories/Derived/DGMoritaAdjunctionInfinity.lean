@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
-public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionCompatibility
 /-!
 概要：Morita tensor の実 ∞ 同値を、右随伴と全写像空間の随伴比較へ昇格する。

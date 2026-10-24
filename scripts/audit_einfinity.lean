@@ -20885,26 +20885,26 @@ open scoped Simplicial
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (c : Cocone F) :
     (β_ (nerve I) (Δ[1] : SSet.{e2RoofRightPrismUniverse})).hom ≫
-      rightMappingSpacePrism (nerve I) ≫ (F1B.kanNerveCoconeEquiv c).val =
-        (F1B.kanNerveNatTransHomotopy c.ι).h := nerveCoconePrism_eq_natTrans F c
+      rightMappingSpacePrism (nerve I) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val =
+        (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy c.ι).h := nerveCoconePrism_eq_natTrans F c
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (F : I ⥤ C) (Y : C)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
     frameRoofMap F Y q ≫ pullback.fst _ _ =
-      nerveMap (CostructuredArrow.toOver F Y) ≫ (F1B.kanNerveOverIso Y).hom ≫
+      nerveMap (CostructuredArrow.toOver F Y) ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom ≫
         sliceOverPostcomp (SSet.yonedaEquiv.symm (nerveVertex Y)) q := frameRoofMap_over F Y q
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
     sliceOverUncurry (nerveOverRightSliceMap Y T q) =
-      (F1B.kanNerveCoconeEquiv ((F1B.kanOverForgetCocone Y).whisker T)).val ≫ q :=
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv ((SerrePositivity.InfinityCategories.F1B.overForgetCocone Y).whisker T)).val ≫ q :=
   nerveOverRightSliceMap_uncurry Y T q
 example {I C : Type e2RoofRightPrismUniverse} [Category.{e2RoofRightPrismUniverse} I]
     [Category.{e2RoofRightPrismUniverse} C] (Y : C) (T : I ⥤ Over Y)
     {E : SSet.{e2RoofRightPrismUniverse}} (q : nerve C ⟶ E) :
     (functorHomotopyPrecomp (roofSliceEvaluationHomotopy
       (q.app (op ⦋0⦌) (nerveVertex Y))) (nerveOverRightSliceMap Y T q)).h =
-      (F1B.kanNerveNatTransHomotopy ((F1B.kanOverForgetCocone Y).whisker T).ι).h ≫ q :=
+      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy ((SerrePositivity.InfinityCategories.F1B.overForgetCocone Y).whisker T).ι).h ≫ q :=
   nerveOverRightSliceMap_evaluation_h Y T q
 variable (A : Type e2RoofRightPrismUniverse) [CommRing A] (X Y : CofibrantAlgebra A)
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
@@ -22037,10 +22037,10 @@ example (X Y : Complex A) (T : SSet.{e2KProjectiveDerivedSpanUniverse + 1})
       (nerveVertex ((framedLimitProbeFunctor A).obj X))
     let y := (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)
     intervalFamilyHom (f ≫ normalizedOrdinaryDerivedHomMap A X Y ≫
-      PinchedInterval.comparison x y) =
+      SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y) =
     constantFunctorHomMap T (complexProbeDerivedSourceVertexIso A X).inv ≫
       intervalFamilyHom (f ≫ normalizedProbeDerivedHomMap A X Y ≫
-        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ PinchedInterval.comparison qx y) :=
+        (normalizedProbeDerivedEndpointIso A X Y).hom ≫ SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace qx y) :=
   normalizedOrdinaryDerivedHomMap_family A X Y T f
 
 end e2KProjectiveDerivedSpanFixtures

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakExtension
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakEndpoints
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：冪等完備な元の全部分圏の対象の retract は、同型を除いて元の部分圏内に戻る。

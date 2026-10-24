@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctionHomTriangles
-public import SerrePositivity.InfinityCategories.F1B.KanPrecompositionHomotopy
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
 
 /-!
 概要：厳密な引き戻し恒等と両三角の定値ホモトピーから実随伴を構成する。
@@ -39,7 +39,7 @@ lemma retractionHomotopy_leftTriangle :
   rw [← functorHomotopyPostcomp_hom]
   have he : (𝟙 X) ≫ F = (F ≫ G) ≫ F := by
     rw [Category.id_comp, Category.assoc, h, Category.comp_id]
-  rw [F1B.kanHomotopyHom_eqToHom (functorHomotopyPostcomp H F) he (by
+  rw [SerrePositivity.InfinityCategories.F1B.homotopyHom_eqToHom (functorHomotopyPostcomp H F) he (by
     change H.h ≫ F = fst X (Δ[1] : SSet.{u}) ≫ ((𝟙 X) ≫ F)
     simpa only [Category.id_comp] using hF)]
   simp only [retractionCounit, eqToHom_map, eqToHom_trans, eqToHom_refl]
@@ -54,7 +54,7 @@ lemma retractionHomotopy_rightTriangle :
   rw [← functorHomotopyPrecomp_hom]
   have he : G ≫ (𝟙 X) = G ≫ (F ≫ G) := by
     rw [Category.comp_id, ← Category.assoc, h, Category.id_comp]
-  rw [F1B.kanHomotopyHom_eqToHom (functorHomotopyPrecomp H G) he (by
+  rw [SerrePositivity.InfinityCategories.F1B.homotopyHom_eqToHom (functorHomotopyPrecomp H G) he (by
     change (G ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst Y (Δ[1] : SSet.{u}) ≫ (G ≫ 𝟙 X)
     simpa only [Category.comp_id] using hG)]
   simp only [retractionCounit, eqToHom_map, eqToHom_trans, eqToHom_refl]

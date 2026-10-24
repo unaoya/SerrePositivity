@@ -32,7 +32,7 @@ structure PathCorrectedFunctorSquare {A E B : SSet.{u}}
 /-- 相対持ち上げにより、指定された同型の path を保つ厳密な正方形を選ぶ。 -/
 def pathCorrectedFunctorSquare {A E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B]
-    (q : E ⟶ B) (hq : F1B.KanEquivalenceLifting q)
+    (q : E ⟶ B) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q)
     (f : A ⟶ E) (g : A ⟶ B) (e : FunctorIso g (f ≫ q)) :
     PathCorrectedFunctorSquare q f g e := Classical.choice (by
   obtain ⟨f', L, hc, h0, h1, hP⟩ := exists_functorSquare_strictification q hq f g e

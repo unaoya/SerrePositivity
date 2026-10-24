@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.RestrictedPrecompositionIso
 public import SerrePositivity.KST.SConstruction.SimplexInitialContraction
 public import SerrePositivity.KST.SConstruction.FunctorVertexEvaluation
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLiftingInvertible
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
 
 /-!
 概要：終点指定の可逆辺の持ち上げにより、元の像と同型な頂点を厳密に回収する。
@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の像の頂点と同型な指定頂点は、終点指定持ち上げにより元の全体の頂点へ厳密に戻る。 -/
 lemma exists_strict_vertex_preimage_of_targetLifting {E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) (hp : F1B.KanInvertibleTargetLifting p) (x : E _⦋0⦌) (y : B _⦋0⦌)
+    (p : E ⟶ B) (hp : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p) (x : E _⦋0⦌) (y : B _⦋0⦌)
     (e : VertexIso y (p.app (Opposite.op ⦋0⦌) x)) :
     ∃ z : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) z = y := by
   obtain ⟨k, hk⟩ := homotopyCategory_homMk_surjective y (p.app (Opposite.op ⦋0⦌) x) e.hom

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の指定単位後の全空間射の同型を、元の Kan 置換射のホモトピーへ反映する。

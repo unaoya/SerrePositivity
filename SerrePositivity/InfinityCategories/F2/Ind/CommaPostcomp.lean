@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PointSlicePostcomp
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!
 概要：厳密に可換な二関手の正方形が誘導する、同じ指定頂点の comma の作用。

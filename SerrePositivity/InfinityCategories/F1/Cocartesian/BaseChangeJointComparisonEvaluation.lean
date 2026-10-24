@@ -54,9 +54,9 @@ lemma cocartesianBaseChangeJointComparisonEdge_at
       ((homOfLE (show (0 : Fin 2) ≤ 1 by decide), 𝟙 d) :
         ((0 : Fin 2), d) ⟶ (1, d)) = cocartesianBaseChangeComparisonComponent k d p := by
     change cocartesianStrictTransportBaseChangeComponent p.val.hom k d ≫
-      kanCocartesianStrictTransportMap
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportMap
         ((cocartesianFibrationBaseChangeCoreEnriched (nerveMap k)).obj p).val.hom (𝟙 d) = _
-    rw [kanCocartesianStrictTransportMap_id]
+    rw [SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_id]
     exact Category.comp_id (cocartesianStrictTransportBaseChangeComponent p.val.hom k d)
   exact congrArg (fun f ↦ (coherentNerveEdge f).edge) hm
 

@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 lemma kanEquivalenceLifting_relativeHom_of_cocartesian
     {A D E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     (i : D ⟶ A) [Mono i] (sq' : internalHom.PullbackObjObj i p) :
-    F1B.KanEquivalenceLifting sq'.π := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting sq'.π := by
   intro K L j hj he
   have : Mono j := hj
   let sq := CategoryTheory.Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) i j
@@ -35,9 +35,9 @@ lemma kanEquivalenceLifting_relativeHom_of_cocartesian
 lemma kanEquivalenceLifting_relativeFunctorPre_of_cocartesian
     {A D E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     (a : A ⟶ B) (i : D ⟶ A) [Mono i] :
-    F1B.KanEquivalenceLifting (relativeFunctorPre p a i) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (relativeFunctorPre p a i) := by
   let sq' := CategoryTheory.Functor.PullbackObjObj.ofHasPullback internalHom i p
-  have h : F1B.KanEquivalenceLifting sq'.π :=
+  have h : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting sq'.π :=
     kanEquivalenceLifting_relativeHom_of_cocartesian p i sq'
   intro K L j hj he
   have := h j hj he
@@ -47,9 +47,9 @@ lemma kanEquivalenceLifting_relativeFunctorPre_of_cocartesian
 lemma kanEquivalenceLifting_relativeFunctorOverPre_of_cocartesian
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p]
     {a b : Over B} (i : a ⟶ b) [Mono i.left] :
-    F1B.KanEquivalenceLifting (relativeFunctorOverPre p i) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (relativeFunctorOverPre p i) := by
   have h (d : a.left ⟶ B) (hd : i.left ≫ b.hom = d) :
-      F1B.KanEquivalenceLifting (relativeFunctorOverPre p
+      SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (relativeFunctorOverPre p
         (Over.homMk (U := Over.mk d) (V := b) i.left hd)) := by
     subst d
     exact kanEquivalenceLifting_relativeFunctorPre_of_cocartesian p b.hom i.left

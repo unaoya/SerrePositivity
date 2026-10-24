@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomTriangleHomotopyBoundaries
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 元の共通対角から係数模型の左右対角への同じ全変形と、二つの実 path。 -/
 @[expose] public section

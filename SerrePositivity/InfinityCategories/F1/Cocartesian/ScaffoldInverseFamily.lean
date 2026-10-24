@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldMapping
 public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldInverse
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionFamilies
 
 /-!
 概要：水平辺を保つ scaffold の相対関手から、under 上の cocartesian section の族を得る。
@@ -26,7 +26,7 @@ lemma simplicialReplacementUnderEvaluation_horizontal {C : Type u} [Category.{u}
     (e : (nerve (Under c)) _⦋1⦌) :
     (simplicialReplacementUnderEvaluation F c).app (Opposite.op ⦋1⦌)
       (e, PinchedHom.constant x 1) =
-      kanScaffoldHorizontalEdge F e.hom.right ((F.map (e.obj 0).hom).app _ x) := by
+      SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge F e.hom.right ((F.map (e.obj 0).hom).app _ x) := by
   obtain ⟨a, b, f, rfl⟩ := ComposableArrows.mk₁_surjective e
   change (⟨(ComposableArrows.mk₁ f) ⋙ Under.forget c,
     SSet.yonedaEquiv.symm (PinchedHom.constant x 1) ≫ F.map a.hom⟩ :
@@ -37,7 +37,7 @@ lemma simplicialReplacementUnderEvaluation_horizontal {C : Type u} [Category.{u}
     rfl
   rw [hx, SSet.const_comp]
   refine Sigma.ext (ComposableArrows.ext₁ rfl rfl ?_) ?_
-  · simp [kanScaffoldHorizontalEdge]
+  · simp [SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge]
   · apply heq_of_eq
     rfl
 
@@ -86,8 +86,8 @@ lemma cocartesianScaffoldInverseFamily_horizontal {C : Type u} [Category.{u} C]
 /-- 水平辺を保つ相対関手から、係数と相対関手をパラメーターとする section の族を得る。 -/
 def cocartesianScaffoldInverseSectionFamily {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) (c : C) :
-    F.obj c ⊗ CocartesianScaffoldFunctorSpace F q ⟶ kanCocartesianStrictTransport q c :=
-  kanCocartesianSectionsCurry (cocartesianScaffoldInverseFamily F q c)
+    F.obj c ⊗ CocartesianScaffoldFunctorSpace F q ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport q c :=
+  SerrePositivity.InfinityCategories.cocartesianSectionsCurry (cocartesianScaffoldInverseFamily F q c)
     (cocartesianScaffoldInverseFamily_projection F q c)
     (cocartesianScaffoldInverseFamily_horizontal F q c)
 
@@ -95,7 +95,7 @@ def cocartesianScaffoldInverseSectionFamily {C : Type u} [Category.{u} C]
 def cocartesianScaffoldInverseComponent {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) (c : C) :
     CocartesianScaffoldFunctorSpace F q ⟶
-      (ihom (F.obj c)).obj (kanCocartesianStrictTransport q c) :=
+      (ihom (F.obj c)).obj (SerrePositivity.InfinityCategories.cocartesianStrictTransport q c) :=
   curry (cocartesianScaffoldInverseSectionFamily F q c)
 
 end SerrePositivity.InfinityCategories

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 
 /-!
 # 全区間族の前合成方程式の同じ関手による像

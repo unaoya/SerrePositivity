@@ -1,0 +1,8 @@
+{
+  "accepted_at": "2026-10-24T17:53:45.981410",
+  "required_gate": "scripts/refactor/verify.sh: all 24 audits and builds and sorry closure pass",
+  "additional_audits": "35 合格、BS 1 本は範囲外の既存不具合",
+  "excluded_existing_issue": "scripts/audit_bhatt_scholze_refactoring.lean:838",
+  "owner_disposition": "コーディネータがBS計画に記録済み。第II段のBS再開時に修正。Rは監査を変更しない。",
+  "authorization": "User reply to request_user_input_async explicitly authorizes commit under these conditions."
+}

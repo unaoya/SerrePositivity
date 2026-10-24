@@ -24,7 +24,7 @@ def posetSubtypeLowerKanShapeIso {P : Type u} [PartialOrder P] (T : P → Prop) 
     nerve (PosetSubtypeLowerIndex T c) ≅
       leftKanShape (nerveMap (posetSubtypeInclusion T)) (nerveVertex c) :=
   (posetSubtypeCommaLowerNerveIso T c).symm ≪≫
-    F1B.kanNerveLeftKanShapeIso (posetSubtypeInclusion T) c
+    SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso (posetSubtypeInclusion T) c
 
 lemma posetSubtypeLowerKanShapeIso_projection {P : Type u} [PartialOrder P]
     (T : P → Prop) (c : P) :
@@ -32,7 +32,7 @@ lemma posetSubtypeLowerKanShapeIso_projection {P : Type u} [PartialOrder P]
       leftKanProjection (nerveMap (posetSubtypeInclusion T)) (nerveVertex c) =
         nerveMap (posetSubtypeLowerProjection T c) := by
   dsimp only [posetSubtypeLowerKanShapeIso, Iso.trans_hom, Iso.symm_hom]
-  rw [Category.assoc, F1B.kanNerveLeftKanShapeIso_hom_projection]
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection]
   rfl
 
 end SerrePositivity.InfinityCategories

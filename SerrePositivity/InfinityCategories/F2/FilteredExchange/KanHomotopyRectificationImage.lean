@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanHomotopyRectification
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyIsoWhiskering
-public import SerrePositivity.InfinityCategories.F1B.UnitComparisonFiberForwardData
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitComparisonFiberForwardData
 
 /-!
 概要：指定ホモトピーによる厳密化の全円柱と指定同型は、底で元の指定値へ厳密に写る。

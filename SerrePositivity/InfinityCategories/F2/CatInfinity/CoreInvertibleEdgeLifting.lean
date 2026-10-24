@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreTrivialFibration
-public import SerrePositivity.InfinityCategories.F1B.KanInvertibleTargetLiftingIso
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.InvertibleTargetLiftingIso
 
 /-!
 概要：可逆辺の終点指定の持ち上げを core の一次右ホーンの持ち上げにする。
@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.F2
 規約：始域・終域の quasicategory 性はこの段階には不要。
 使われ方：core の Kan fibration 性に必要な頂点指定の辺の持ち上げ。 -/
 lemma coreMap_liftHorn_one_last {X Y : SSet.{u}}
-    (p : X ⟶ Y) (hp : F1B.KanInvertibleTargetLifting p)
+    (p : X ⟶ Y) (hp : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p)
     (a : (horn 1 1 : SSet.{u}) ⟶ (quasicategoryCore X : SSet.{u}))
     (b : (Δ[1] : SSet.{u}) ⟶ (quasicategoryCore Y : SSet.{u}))
     (sq : CommSq a (horn 1 1).ι (quasicategoryCoreMap p) b) :

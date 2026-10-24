@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.UnitHomFormula
-public import SerrePositivity.InfinityCategories.F1B.KanPrecompositionHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitHomFormula
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
 
 /-!
 概要：任意の単体集合パラメータ上で、同じ指定単位による標準 Hom 写像と三つの自然性。
@@ -70,8 +70,8 @@ lemma parameterUnitHomMap_naturality_left {A X Y : SSet.{u}}
     (γ : FunctorHom U' U) (α : FunctorHom (U ≫ F) V) :
     parameterUnitHomMap η U' V ((hoFunctor.map ((ihom A).map F)).toFunctor.map γ ≫ α) =
       γ ≫ parameterUnitHomMap η U V α := by
-  have hn := (F1B.kanPrecompositionNatTrans (functorHomHomotopy γ) X).naturality η
-  rw [F1B.kanPrecompositionNatTrans_app, F1B.kanPrecompositionNatTrans_app,
+  have hn := (SerrePositivity.InfinityCategories.F1B.precompositionNatTrans (functorHomHomotopy γ) X).naturality η
+  rw [SerrePositivity.InfinityCategories.F1B.precompositionNatTrans_app, SerrePositivity.InfinityCategories.F1B.precompositionNatTrans_app,
     functorHomotopyPostcomp_hom, functorHomotopyPostcomp_hom,
     functorHomHomotopy_hom] at hn
   have hid : (hoFunctor.map ((ihom A).map (𝟙 X))).toFunctor.map γ = γ := by

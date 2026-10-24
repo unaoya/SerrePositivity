@@ -22,17 +22,17 @@ namespace SerrePositivity.InfinityCategories
 /-- 元の cocartesian section の core と全ての底上の制限を、反変な Kan 値関手へ束ねる。 -/
 def cocartesianSectionCoreFunctor {E B : SSet.{u}} (p : E ⟶ B) [InnerFibration p] :
     (Over B)ᵒᵖ ⥤ KanObject.{u} where
-  obj a := ⟨(quasicategoryCore (kanCocartesianSections p a.unop.hom) : SSet.{u}), inferInstance⟩
-  map i := quasicategoryCoreMap (kanCocartesianSectionsPre p i.unop)
+  obj a := ⟨(quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p a.unop.hom) : SSet.{u}), inferInstance⟩
+  map i := quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p i.unop)
   map_id a := by
-    change quasicategoryCoreMap (kanCocartesianSectionsPre p (𝟙 a.unop)) = 𝟙 _
-    rw [kanCocartesianSectionsPre_id]
+    change quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (𝟙 a.unop)) = 𝟙 _
+    rw [SerrePositivity.InfinityCategories.cocartesianSectionsPre_id]
     exact quasicategoryCoreFunctor.map_id _
   map_comp f g := by
-    change quasicategoryCoreMap (kanCocartesianSectionsPre p (g.unop ≫ f.unop)) =
-      quasicategoryCoreMap (kanCocartesianSectionsPre p f.unop) ≫
-        quasicategoryCoreMap (kanCocartesianSectionsPre p g.unop)
-    rw [← kanCocartesianSectionsPre_comp]
+    change quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (g.unop ≫ f.unop)) =
+      quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p f.unop) ≫
+        quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p g.unop)
+    rw [← SerrePositivity.InfinityCategories.cocartesianSectionsPre_comp]
     exact quasicategoryCoreFunctor.map_comp _ _
 
 /-- この同じ制限図式の遷移を単射に沿って取ると、実際の Kan fibration を得る。 -/

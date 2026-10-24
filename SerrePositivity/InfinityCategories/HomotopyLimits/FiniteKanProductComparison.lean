@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSS
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanProductUnit
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：元の有限非空積の Kan 置換から、元の各 Kan 置換の反復積への比較。

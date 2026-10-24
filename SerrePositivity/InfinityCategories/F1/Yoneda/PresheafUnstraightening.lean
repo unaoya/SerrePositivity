@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningBaseChange
-public import SerrePositivity.InfinityCategories.F1B.CofinalOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOppositeFibration
 
 /-!
 概要：一般の空間値前層から、同じ小さい底上の実際の right fibration を構成する。

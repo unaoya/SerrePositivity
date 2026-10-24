@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：Kan 標的の同じ円柱から作る同型の後合成を、元の円柱の像の類へ戻す。
@@ -38,7 +38,7 @@ lemma homotopyIso_postcomp_constant_arrow {T E B : SSet.{u}} [KanComplex E]
     Arrow.mk (FunctorIso.postcomp (functorIsoOfSimplicialHomotopy H) q).hom =
       Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex z))) := by
   rw [homotopyIso_postcomp_hom]
-  have h := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have h := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (functorHomotopyPostcomp H q) (functorHomotopyRefl z) hH
   rw [functorHomotopyRefl_hom] at h
   exact h

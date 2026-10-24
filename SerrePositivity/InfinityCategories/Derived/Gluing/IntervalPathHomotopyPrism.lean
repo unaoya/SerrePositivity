@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 区間族から読んだ同じホモトピーは、区間を第一因子へ戻すと元の全区間族を回収する。 -/
 @[expose] public section

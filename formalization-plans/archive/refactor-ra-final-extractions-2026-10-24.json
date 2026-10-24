@@ -1,0 +1,86 @@
+[
+  {
+    "name": "SerrePositivity.InfinityCategories.subcomplexInverseImage_isPullback",
+    "from": "SerrePositivity/InfinityCategories/F1/Simplicial/ReplacementInnerHornPullback.lean",
+    "to": "SerrePositivity/InfinityCategories/Core/SubcomplexInverseImageComparison.lean",
+    "body_sha256": "3755bb4d653583a353a3729f1b7f3d4a622bae4a8f9244fcc15ee1433bd6c660"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage",
+    "from": "SerrePositivity/InfinityCategories/F1/Simplicial/ReplacementInnerHornPullback.lean",
+    "to": "SerrePositivity/InfinityCategories/Core/SubcomplexInverseImageComparison.lean",
+    "body_sha256": "5ff44988e9b0480625f2911e502fe150fc2a508051200b947257ed3d1eb0c953"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_subcomplexInverseImage_iff",
+    "from": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInnerHornPullback.lean",
+    "to": "SerrePositivity/InfinityCategories/Core/SubcomplexInverseImageComparison.lean",
+    "body_sha256": "a3804b007a2224ca21ca6f51fbd3064ba9296ec5724f94d089afa60a569ac59e"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.leftScaffoldFiberMap",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffold.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Diagrams/ScaffoldFiberMaps.lean",
+    "body_sha256": "58d6ab29294ccc6f508f17ee60805ff66d98f4f3d2f1978c990326775cd8cccb"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.leftScaffoldBaseChange",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffoldBaseChange.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Diagrams/ScaffoldFiberMaps.lean",
+    "body_sha256": "62282e9c107f83d8287710f84b3f2d21586a79dbb97cc68a4f1092072f0458e4"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.simplicialReplacementConstantLift_baseMap",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffoldBaseChange.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementBaseChange.lean",
+    "body_sha256": "92a1a1495095f754c559387546ec772e36c03fd77da6b17c2168ca8766b99756"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.vertexFiberι_isIso_of_nervePoint",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffoldPoint.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Diagrams/SimplicialReplacementPoint.lean",
+    "body_sha256": "d915a30437adb11de426da557745f2eb2632998652a3db0ddf3896b856899e71"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteVerticalEdges.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FinitePrism.lean",
+    "body_sha256": "a8c0aa2eb69c21f793874751cb6f2ca63b82f2a3f1515b69e78e0ddb3a732af1"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_projection",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteVerticalEdges.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FinitePrism.lean",
+    "body_sha256": "594b2916c1de5609eca1a6d0f4e78df255888e18188498e3935bc5e512938af4"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_interval_projection",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteVerticalEdges.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FinitePrism.lean",
+    "body_sha256": "c79d1d7d04b249a6591b908fa0f3440da43e03e691648171a38c47d05d3a3623"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteFiberComparison.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "510f140e3e752701f21294e458ae965ac4220d6cdb465289969fba986168b4e7"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison_ι",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteFiberComparison.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "e362edfa649924f87ba025537960c6c942c1b7d19947b54fa58a72dbd20311b1"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteFiberComparison.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "f3233d439caa63089d9d3b01d0f3220c915eb99bc747684078348883c1044d19"
+  },
+  {
+    "name": "SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison_ι",
+    "from": "SerrePositivity/InfinityCategories/F1/Scaffold/ScaffoldFiniteFiberComparison.lean",
+    "to": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "47b3570fb7075b6775b2b7416e15539cd741e7c69d07d8615821d53dc49d4222"
+  }
+]

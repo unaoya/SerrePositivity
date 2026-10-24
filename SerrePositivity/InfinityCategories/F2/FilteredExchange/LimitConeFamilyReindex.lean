@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：錐族の形状の制限は底の図式の制限と可換で、比較円柱の固定条件も保つ。

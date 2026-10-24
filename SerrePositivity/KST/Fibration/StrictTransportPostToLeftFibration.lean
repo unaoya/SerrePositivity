@@ -20,15 +20,15 @@ variable {I : Type u} [Category.{u} I] {E T : SSet.{u}}
 
 /-- 元の同じ底上の評価関手は、全 undercategory 上の strict transport 図式を自然に結ぶ。 -/
 def strictTransportPostToLeftFibration :
-    kanCocartesianStrictTransportDiagram p ⟶ kanCocartesianStrictTransportDiagram q where
+    SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q where
   app c := sectionPostToLeftFibration p q f hf (nerveMap (Under.forget c))
   naturality {c d} a := by
     let j : Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)) :=
       Over.homMk (nerveUnderMap a) (nerveUnderMap_projection a)
-    change kanCocartesianSectionsPre p j ≫
+    change SerrePositivity.InfinityCategories.cocartesianSectionsPre p j ≫
         sectionPostToLeftFibration p q f hf (nerveMap (Under.forget d)) =
       sectionPostToLeftFibration p q f hf (nerveMap (Under.forget c)) ≫
-        kanCocartesianSectionsPre q j
+        SerrePositivity.InfinityCategories.cocartesianSectionsPre q j
     exact (sectionPostToLeftFibration_overPre p q f hf j).symm
 
 /-- 関手的な同じ Kan 置換は、元の図式全体の自然変換を保つ。 -/

@@ -53,8 +53,8 @@ lemma dgCoherentTargetSliceMap_projection (y : D) :
     dgCoherentTargetSliceMap A D y ≫ sliceOverProjection _ =
       sliceOverProjection _ ≫ coherentComparison (R := A) (D := D) := by
   dsimp only [dgCoherentTargetSliceMap]
-  rw [Category.assoc, F1B.kanSliceOverProjection_eqTransport,
-    F1B.kanSliceOverPostcomp_projection]
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport,
+    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
   exact dgCoherentTargetPoint A D y
 universe w
 /-- 区間族のパラメータで同じ同型と逆を適用すると、元の区間族を厳密に回収する。 -/

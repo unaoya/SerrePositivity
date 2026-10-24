@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFullSubcomplex
 public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：小さい頂点族上の全部分圏を宇宙 u の ∞ 圏で厳密に模型化する。

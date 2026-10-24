@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の全円柱が同じ二つの指定同型を端点の等式に沿って比較する。

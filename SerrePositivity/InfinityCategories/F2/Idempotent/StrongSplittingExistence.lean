@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLocalColimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
-public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftStrictExistence
 
 /-!
 概要：指定した元の全 Idem 図式が余極限を持てば、元の強い coherent 分裂が存在する。

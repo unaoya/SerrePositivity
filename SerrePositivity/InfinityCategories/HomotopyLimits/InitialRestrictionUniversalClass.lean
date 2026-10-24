@@ -56,11 +56,11 @@ lemma initialRestrictionUniversalHomCylinder_hom_arrow :
   have hC := homotopyIso_postcomp_constant_arrow C P ((D).lift ≫ P) hcbase
   rw [functorIso_postcomp_hom] at hC
   have ha := arrowRightIdentity_cancel _ _ _ hg hC
-  have hu := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have hu := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (initialRestrictionUniversalHomCylinder p q r hr d hd e y hc)
     (functorHomotopyPostcomp (U).homotopy P)
     (initialRestrictionUniversalHomCylinder_projection p q r hr d hd e y hc)
-  have ho := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have ho := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (initialRestrictionHomCylinder p q r hr d hd e y hc)
     (functorHomotopyPostcomp O P)
     (by

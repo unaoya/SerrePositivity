@@ -25,7 +25,7 @@ variable (n : ℕ) {C : Type u} [Category.{u} C] (k : ULift.{u} (Fin (n + 2)) �
 
 /-- 元の標的 cospan の最初の脚は、指定された可逆 path を持ち上げる。 -/
 lemma cocartesianScaffoldLocalTarget_first_kanEquivalenceLifting :
-    F1B.KanEquivalenceLifting
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       ((cocartesianScaffoldLocalTarget n k p q).map WalkingCospan.Hom.inl) := by
   have : Mono (uliftOverMorphism.{u, u + 1}
       (cocartesianScaffoldSharedToFirst n k)).left := by
@@ -41,7 +41,7 @@ lemma cocartesianScaffoldLocalTarget_first_kanEquivalenceLifting :
 
 /-- 元の標的 cospan の次の脚も、同じ共有頂点で可逆 path を持ち上げる。 -/
 lemma cocartesianScaffoldLocalTarget_second_kanEquivalenceLifting :
-    F1B.KanEquivalenceLifting
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       ((cocartesianScaffoldLocalTarget n k p q).map WalkingCospan.Hom.inr) := by
   have : Mono (uliftOverMorphism.{u, u + 1}
       (cocartesianScaffoldSharedToTail n k)).left := by

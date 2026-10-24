@@ -25,13 +25,13 @@ namespace SerrePositivity.InfinityCategories
 def cocartesianSectionsQCatDiagram {B : SSet.{u}} {J : Type u} [Category.{u} J]
     (A : Jᵒᵖ ⥤ Over B) (p : CocartesianFibrationCategory B) : J ⥤ QCat.{u} where
   obj i := cocartesianSectionsQCatObject (A.obj (Opposite.op i)) p
-  map f := kanCocartesianSectionsPre p.val.hom (A.map f.op)
+  map f := SerrePositivity.InfinityCategories.cocartesianSectionsPre p.val.hom (A.map f.op)
   map_id i := by
-    rw [show A.map (𝟙 i).op = 𝟙 _ from A.map_id _, kanCocartesianSectionsPre_id]
+    rw [show A.map (𝟙 i).op = 𝟙 _ from A.map_id _, SerrePositivity.InfinityCategories.cocartesianSectionsPre_id]
     rfl
   map_comp f g := by
-    change kanCocartesianSectionsPre p.val.hom (A.map (g.op ≫ f.op)) = _
-    rw [A.map_comp, ← kanCocartesianSectionsPre_comp]
+    change SerrePositivity.InfinityCategories.cocartesianSectionsPre p.val.hom (A.map (g.op ≫ f.op)) = _
+    rw [A.map_comp, ← SerrePositivity.InfinityCategories.cocartesianSectionsPre_comp]
     rfl
 
 /-- 概要：定値な fibration の図式による対角評価は相対 Hom の通常の関手の coherent 表示に一致する。
@@ -62,11 +62,11 @@ lemma diagonalCocartesianSectionsEvaluation_constant {B : SSet.{u}} {J : Type u}
         (cocartesianSectionsQCatObject (A.obj (Opposite.op j.as)) p)
         (show cocartesianSectionsQCatObject (A.obj (Opposite.op i.as)) p ⟶
           cocartesianSectionsQCatObject (A.obj (Opposite.op j.as)) p from
-            kanCocartesianSectionsPre p.val.hom (A.map (homOfLE hij).op))) d.unop.len
+            SerrePositivity.InfinityCategories.cocartesianSectionsPre p.val.hom (A.map (homOfLE hij).op))) d.unop.len
   erw [cocartesianSectionsMixedCoreHom_unit]
   exact unitHom_app_constant (eHomEquiv SSet
     (show cocartesianSectionsQCatObject (A.obj (Opposite.op i.as)) p ⟶
       cocartesianSectionsQCatObject (A.obj (Opposite.op j.as)) p from
-        kanCocartesianSectionsPre p.val.hom (A.map (homOfLE hij).op))) d.unop.len
+        SerrePositivity.InfinityCategories.cocartesianSectionsPre p.val.hom (A.map (homOfLE hij).op))) d.unop.len
 
 end SerrePositivity.InfinityCategories

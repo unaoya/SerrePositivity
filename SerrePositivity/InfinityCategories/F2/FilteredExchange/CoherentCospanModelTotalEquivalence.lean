@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanModelFiberEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseIntervalPullbackLifting
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 
 /-!
 概要：各点の native 錐の極限性から元の全空間模型比較の同値性を証明する。

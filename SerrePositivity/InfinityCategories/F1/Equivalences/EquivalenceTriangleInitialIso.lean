@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleEvaluation
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleInitialContractionInvertible
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
-public import SerrePositivity.InfinityCategories.F1B.RestrictedPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.RestrictedPrecomposition
 
 /-!
 概要：可逆三角形の初頂点評価から同じ元の三角形への全体の関手同型。

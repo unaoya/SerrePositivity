@@ -55,7 +55,7 @@ lemma invertibleInterval_allEdges {X : SSet.{u}} (e : (Δ[1] : SSet.{u}) ⟶ X)
 
 /-- 指定された底の全可逆区間を保ち、元の可逆辺を相対的に延長する。 -/
 lemma walkingEquivalence_relative_extension {X Y : SSet.{u}}
-    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) (hp : F1B.KanEquivalenceLifting p)
+    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
     (e : (Δ[1] : SSet.{u}) ⟶ X)
     (he : IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv e)))
     (g : walkingEquivalence.{u} ⟶ Y) (h : e ≫ p = walkingEquivalenceEdge ≫ g) :

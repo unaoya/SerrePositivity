@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareFixedSpanInitial
-public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 
 /-!
 概要：固定 span の余錐比較から suspension の普遍四角形と厳密切断を構成する。

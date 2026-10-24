@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F1B.EnrichedPrecomposition
-public import SerrePositivity.InfinityCategories.F1B.EnrichedPostcomposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.EnrichedPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.EnrichedPostcomposition
 
 /-!
 概要：h Fun の二つの自然変換の交換則。

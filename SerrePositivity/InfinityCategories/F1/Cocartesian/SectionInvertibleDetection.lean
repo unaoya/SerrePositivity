@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsRestrictionLifting
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 
@@ -33,15 +33,15 @@ lemma isInvertibleEdge_internalHom_iff_evaluate {A E : SSet.{u}} [Quasicategory 
 
 /-- section の元の関手を、指定した始域の頂点で評価する。 -/
 def cocartesianSectionEvaluate {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B)
-    (x : A _⦋0⦌) : kanCocartesianSections p a ⟶ E :=
-  kanCocartesianSectionsι p a ≫
+    (x : A _⦋0⦌) : SerrePositivity.InfinityCategories.cocartesianSections p a ⟶ E :=
+  SerrePositivity.InfinityCategories.cocartesianSectionsι p a ≫
     vertexFiberι ((ihom A).map p) (functorVertex a) ≫ evaluateFunctorAt x
 
 /-- section の辺は、全ての元の頂点で評価した成分が可逆のとき、かつそのときに限り可逆。 -/
 lemma isInvertibleEdge_cocartesianSection_iff_evaluate {A E B : SSet.{u}}
     [Quasicategory B] (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B)
-    {v w : (kanCocartesianSections p a) _⦋0⦌}
-    (e : Truncated.Edge (X := (truncation 2).obj (kanCocartesianSections p a)) v w) :
+    {v w : (SerrePositivity.InfinityCategories.cocartesianSections p a) _⦋0⦌}
+    (e : Truncated.Edge (X := (truncation 2).obj (SerrePositivity.InfinityCategories.cocartesianSections p a)) v w) :
     IsInvertibleEdge e ↔ ∀ x : A _⦋0⦌,
       IsInvertibleEdge (e.map ((truncation 2).map (cocartesianSectionEvaluate p a x))) := by
   let : Quasicategory E := quasicategory_of_innerFibration p
@@ -52,7 +52,7 @@ lemma isInvertibleEdge_cocartesianSection_iff_evaluate {A E B : SSet.{u}}
     exact he.map _
   · intro he
     apply (isFullyFaithful_fullSubcomplexOnVertices_ι
-      (SerrePositivity.InfinityCategories.relativeFunctorSpace p a) (KanIsCocartesianSection p
+      (SerrePositivity.InfinityCategories.relativeFunctorSpace p a) (SerrePositivity.InfinityCategories.IsCocartesianSection p
         a)).reflects_isInvertibleEdge e
     apply (isInvertibleEdge_vertexFiber_iff ((ihom A).map p) (functorVertex a) _).mpr
     apply (isInvertibleEdge_internalHom_iff_evaluate _).mpr

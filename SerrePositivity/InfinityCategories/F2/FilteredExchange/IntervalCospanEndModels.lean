@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackEndComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSection
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：任意の Kan cospan の end と interval 引き戻しを、左脚置換後の同じ end で比較する。

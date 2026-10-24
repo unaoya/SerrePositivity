@@ -56,7 +56,7 @@ lemma cosliceEdgeFamilyNaturality_homMk_comp :
   have h₃ := homotopyIso_postcomp_constant_arrow CG r (G ≫ r)
     (by simpa only [Category.assoc] using (cosliceEdgeFamilyCylinder e y G).target)
   rw [functorIso_postcomp_hom] at h₀ h₃
-  have hj := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have hj := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (functorHomotopyPostcomp J r) (functorHomotopyPostcomp H r) (by
       change J.h ≫ r = H.h ≫ r
       dsimp only [J]
@@ -74,7 +74,7 @@ lemma cosliceEdgeFamilyNaturality_homMk_comp :
 
 /-- 同じ二つの切断比較と元の族間円柱・終端の切断像を四辺に保つ実際の正方形。 -/
 def cosliceEdgeFamilyNaturalitySquare :
-    KanFunctorHomSquare CF CG H (cosliceEdgeFamilySectionHomotopy e y H) :=
+    SerrePositivity.InfinityCategories.FunctorHomSquare CF CG H (cosliceEdgeFamilySectionHomotopy e y H) :=
   (nonempty_functorHomSquare_of_homEq CF CG H (cosliceEdgeFamilySectionHomotopy e y H)
     (cosliceEdgeFamilyNaturality_homMk_comp e y H)).some
 

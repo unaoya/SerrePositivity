@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-! # 実 coslice 内の元の射の類は、同じ始点からの点の射の自然性を与える -/
 

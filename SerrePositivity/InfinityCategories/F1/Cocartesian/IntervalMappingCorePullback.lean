@@ -30,7 +30,7 @@ def cocartesianIntervalMappingCorePullbackIso :
           (G.val.obj (ULift.up 1)))) := by
   letI : InnerFibration ((ihom (F.val.obj (ULift.up 0))).map
       (G.val.map strictIntervalIndexArrow)) :=
-    F1B.KanEquivalenceLifting.innerFibration
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration
       (kanEquivalenceLifting_cocartesianIntervalPostHom G (F.val.obj (ULift.up 0)))
   exact quasicategoryCoreFunctor.mapIso (strictIntervalMappingPullbackIso F.val G.val) ≪≫
     F2.corePullbackIso _ _

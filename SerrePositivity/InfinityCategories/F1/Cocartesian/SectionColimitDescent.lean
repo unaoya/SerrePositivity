@@ -20,34 +20,34 @@ namespace SerrePositivity.InfinityCategories
 variable {J : Type v} [Category.{w} J] [Small.{u} J]
   {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
   (hc : IsColimit ((Over.forget B).mapCocone c))
-  (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-  (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f))
+  (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+  (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f))
 
 /-- 貼った section の族の展開は、元の直積上の貼り合わせの図式。 -/
 lemma cocartesianSectionFamilyColimitLift_uncurry :
-    kanCocartesianSectionsUncurry (cocartesianSectionFamilyColimitLift p c hc s hs) =
+    SerrePositivity.InfinityCategories.cocartesianSectionsUncurry (cocartesianSectionFamilyColimitLift p c hc s hs) =
       cocartesianSectionFamilyColimitUncurry p c hc s hs :=
-  kanCocartesianSectionsUncurry_curry _ _ _
+  SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_curry _ _ _
 
 /-- 貼った section の族は、各項上の指定された元の族を厳密に回収する。 -/
 lemma cocartesianSectionFamilyColimitLift_fac (j : J) :
     cocartesianSectionFamilyColimitLift p c hc s hs ≫
-      kanCocartesianSectionsPre p (c.ι.app j) = s j := by
-  apply kanCocartesianSectionsUncurry_injective p (D.obj j).hom
-  rw [kanCocartesianSectionsUncurry_overPre,
+      SerrePositivity.InfinityCategories.cocartesianSectionsPre p (c.ι.app j) = s j := by
+  apply SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_injective p (D.obj j).hom
+  rw [SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_overPre,
     cocartesianSectionFamilyColimitLift_uncurry, cocartesianSectionFamilyColimitUncurry_fac]
 
 /-- 同じ各項の族を厳密に回収する section の族は一意。 -/
-lemma cocartesianSectionFamilyColimitLift_unique (m : T ⟶ kanCocartesianSections p c.pt.hom)
-    (hm : ∀ j, m ≫ kanCocartesianSectionsPre p (c.ι.app j) = s j) :
+lemma cocartesianSectionFamilyColimitLift_unique (m : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p c.pt.hom)
+    (hm : ∀ j, m ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (c.ι.app j) = s j) :
     m = cocartesianSectionFamilyColimitLift p c hc s hs := by
-  apply kanCocartesianSectionsUncurry_injective p c.pt.hom
+  apply SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_injective p c.pt.hom
   rw [cocartesianSectionFamilyColimitLift_uncurry]
   apply (cocartesianSectionTensorCocone_isColimit c hc).hom_ext
   intro j
-  change ((c.ι.app j).left ▷ T) ≫ kanCocartesianSectionsUncurry m =
+  change ((c.ι.app j).left ▷ T) ≫ SerrePositivity.InfinityCategories.cocartesianSectionsUncurry m =
     ((c.ι.app j).left ▷ T) ≫ cocartesianSectionFamilyColimitUncurry p c hc s hs
-  rw [← kanCocartesianSectionsUncurry_overPre, hm j,
+  rw [← SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_overPre, hm j,
     cocartesianSectionFamilyColimitUncurry_fac]
 
 end SerrePositivity.InfinityCategories

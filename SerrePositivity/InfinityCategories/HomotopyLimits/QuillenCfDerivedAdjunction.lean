@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfFullyFa
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalUnitCollageComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianComparisonComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyMappingEquivalence
-public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
 
 /-!
 概要：元の Quillen cf 輸送の同じ単位を使う、cf nerve 間の ∞ 随伴。

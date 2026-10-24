@@ -20,7 +20,7 @@ variable {I C : Type (u + 1)} [Category.{u} I] [Category.{u} C] {F : I ⥤ C}
 lemma coconeJoin_inr (c : Cocone F) :
     joinInr (nerve I) (Δ[0] : SSet.{u + 1}) ≫ coconeJoin c = nervePoint c.pt := by
   rw [coconeJoin, ← Category.assoc, joinInr_joinMap, Category.id_comp, ← Category.assoc,
-    F1B.kanNerveCocone_point]
+    SerrePositivity.InfinityCategories.F1B.nerveCocone_point]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp]
   change (down C).app (Opposite.op ⦋0⦌) (nerveVertex (ULiftHom.objUp c.pt)) = nerveVertex c.pt

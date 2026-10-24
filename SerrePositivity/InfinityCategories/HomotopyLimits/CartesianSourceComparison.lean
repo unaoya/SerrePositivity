@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianPrismComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyPrism
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.F1B.KanCartesianComparison
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianComparison
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHomotopyEdges
 
 /-!
 概要：同じ終点の Cartesian 輸送の始点側を、底上で可逆な自然な比較により結ぶ。
@@ -30,11 +30,11 @@ lemma cartesianSquare_source {E B : SSet.{u}} [Quasicategory B]
     (hy : IsCartesianEdge p (SSet.yonedaEquiv
       (lift (𝟙 Δ[1]) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ F))) :
     IsCartesianEdge p (SSet.yonedaEquiv (prismEndpoint 0 Δ[1] ≫ F)) := by
-  obtain ⟨h00, h01, h10, h11⟩ := kanSquareTriangle_outerFaces.{u}
+  obtain ⟨h00, h01, h10, h11⟩ := SerrePositivity.InfinityCategories.squareTriangle_outerFaces.{u}
   have hd := isCartesianEdge_triangle_longEdge (squareTriangle 1 ≫ F) p
     (by simpa only [← Category.assoc, h10] using hx)
     (by simpa only [← Category.assoc, h11] using h₁)
-  have h := F1B.kanIsCartesianEdge_triangle_first_of_second_long (squareTriangle 0 ≫ F) p
+  have h := SerrePositivity.InfinityCategories.F1B.isCartesianEdge_triangle_first_of_second_long (squareTriangle 0 ≫ F) p
     (by simpa only [← Category.assoc, h01] using hy)
     (by simpa only [← Category.assoc, squareTriangle_diagonal] using hd)
   simpa only [← Category.assoc, h00] using h

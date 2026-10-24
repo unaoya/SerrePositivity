@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeNativeComparison
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-!
 概要：coherent な錐の豊穣 Hom の族の持ち上げを、頂点評価を固定して比較する。

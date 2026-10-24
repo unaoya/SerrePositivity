@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianScaffoldInverseComponent_ι {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) (c : C) :
     cocartesianScaffoldInverseComponent F q c ≫
-      (ihom (F.obj c)).map (kanCocartesianSectionsι q (nerveMap (Under.forget c))) =
+      (ihom (F.obj c)).map (SerrePositivity.InfinityCategories.cocartesianSectionsι q (nerveMap (Under.forget c))) =
       cocartesianScaffoldFunctorInclusion F q ≫ strictDiagramScaffoldInverseComponent F q c := by
   apply SSet.hom_ext
   intro n
@@ -55,7 +55,7 @@ lemma cocartesianScaffoldInverseComponent_app_ι {C : Type u} [Category.{u} C]
 def cocartesianDiagramScaffoldInverseSimplex {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C)
     {n : SimplexCategoryᵒᵖ} (v : (CocartesianScaffoldFunctorSpace F q).obj n) :
-    strictDiagramMappingSimplex F (kanCocartesianStrictTransportDiagram q) n :=
+    strictDiagramMappingSimplex F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) n :=
    ⟨fun c ↦ (cocartesianScaffoldInverseComponent F q c).app n v, by
     intro c d f k α x
     apply Subtype.ext
@@ -69,7 +69,7 @@ def cocartesianDiagramScaffoldInverseSimplex {C : Type u} [Category.{u} C]
 def cocartesianDiagramScaffoldMappingSpaceInverse {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) :
     CocartesianScaffoldFunctorSpace F q ⟶
-      strictDiagramMappingSpace F (kanCocartesianStrictTransportDiagram q) where
+      strictDiagramMappingSpace F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) where
   app _ := ↾cocartesianDiagramScaffoldInverseSimplex F q
   naturality {n m} α := by
     apply ConcreteCategory.hom_ext

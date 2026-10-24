@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeEquivalencePathExtension
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeEquivalencePathExtension
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleFunctorEdgePath
 
 /-!
@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 指定した標的 path と終点を厳密に保つ、全パラメーターの相対 path 持ち上げ。 -/
 lemma exists_functorSquarePathLift {A E B : SSet.{u}}
-    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : F1B.KanEquivalenceLifting q)
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q)
     (f : A ⟶ E) (P : A ⟶ equivalencePath B)
     (hP : P ≫ equivalencePathEndpoint B 1 = f ≫ q) :
     ∃ L : A ⟶ equivalencePath E,
@@ -39,7 +39,7 @@ lemma functorSquarePathLift_zero {A E B : SSet.{u}} (q : E ⟶ B)
 
 /-- 関手同型で可換な正方形を、元の成分と同型な成分で厳密に可換にできる。 -/
 lemma exists_functorSquare_strictification {A E B : SSet.{u}}
-    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : F1B.KanEquivalenceLifting q)
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q)
     (f : A ⟶ E) (g : A ⟶ B) (e : FunctorIso g (f ≫ q)) :
     ∃ (f' : A ⟶ E) (L : A ⟶ equivalencePath E),
       f' ≫ q = g ∧ L ≫ equivalencePathEndpoint E 0 = f' ∧

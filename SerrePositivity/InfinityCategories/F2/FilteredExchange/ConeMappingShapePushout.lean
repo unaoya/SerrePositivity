@@ -32,8 +32,8 @@ lemma coneMappingShapePushout_isPullback :
     (sliceOverProjection (j ≫ p)) (sliceOverProjection (f ≫ (i ≫ p)))
     (sliceOverRestrict p i) (sliceOverRestrict p j) (sliceOverRestrict (i ≫ p) f)
     (normalizedConeRestriction (j ≫ p) g (conePushoutBoundary_eq hp p))
-    (kanSliceOverRestrict_projection p i) (kanSliceOverRestrict_projection p j)
-    (kanSliceOverRestrict_projection (i ≫ p) f)
+    (SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection p i) (SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection p j)
+    (SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection (i ≫ p) f)
     (normalizedConeRestriction_projection (j ≫ p) g (conePushoutBoundary_eq hp p))
     (sliceShapePushout_isPullback hp p) x
 

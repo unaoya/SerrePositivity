@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanHomotopyRectificationImage
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：同型で可換な Kan cospan 比較を厳密化するための、底の指定同型を構成する。

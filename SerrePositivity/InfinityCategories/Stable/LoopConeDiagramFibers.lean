@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopConeSourceFiber
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberLeftFibration
-public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberLeftFibration
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 /-!
@@ -23,11 +23,11 @@ namespace SerrePositivity.InfinityCategories
 def loopConeClassifierDiagramFiberMap (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌)
     (d : (loopDiagrams X) _⦋0⦌) :
     vertexFiber (loopConeSourceFiberProjection X x) d ⟶
-      vertexFiber (F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d :=
+      vertexFiber (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d :=
   vertexFiberMap (loopConeSourceFiberProjection X x)
-    (F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x)
+    (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x)
     (loopConeClassifierSourceFiberMap X x) (by
-      simpa only [F1B.kanUnitCommaFiberProjection, Category.assoc,
+      simpa only [SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection, Category.assoc,
         loopConeSourceFiberProjection] using loopConeClassifierSourceFiberMap_target X x) d
 
 /-- 図式固定 fiber を、固定錐頂点からの対応する錐 fiber と同型にする。 -/
@@ -44,7 +44,7 @@ def loopConeSourceDiagramFiberIso (X : SSet.{u}) [Quasicategory X] (x : X _⦋0�
       e.hom ≫ pullback.snd q P := by
     simpa only [Iso.refl_hom, Category.comp_id] using
       (loopConeSourceFiber_isPullback X x).isoPullback_hom_snd.symm
-  exact F1B.kanVertexFiberSquareIso (loopConeSourceFiberProjection X x) (pullback.snd q P)
+  exact SerrePositivity.InfinityCategories.F1B.vertexFiberSquareIso (loopConeSourceFiberProjection X x) (pullback.snd q P)
     e (Iso.refl _) he d ≪≫ vertexFiberPullbackIso q P d
 /-- 図式固定 fiber 同型は元の実錐への包含と可換。 -/
 lemma loopConeSourceDiagramFiberIso_hom_ι (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌)
@@ -56,7 +56,7 @@ lemma loopConeSourceDiagramFiberIso_hom_ι (X : SSet.{u}) [Quasicategory X] (x :
       vertexFiberι (loopConeSourceFiberProjection X x) d ≫ loopConeSourceFiberDiagram X x := by
   dsimp only [loopConeSourceDiagramFiberIso, Iso.trans_hom]
   rw [Category.assoc, vertexFiberPullbackIso_hom_ι, ← Category.assoc]
-  simp only [F1B.kanVertexFiberSquareIso, F1B.kanVertexFiberSquareHom,
+  simp only [SerrePositivity.InfinityCategories.F1B.vertexFiberSquareIso, SerrePositivity.InfinityCategories.F1B.vertexFiberSquareHom,
     Iso.refl_hom, NatTrans.id_app, CategoryTheory.types_id_apply, Category.assoc]
   rw [← Category.assoc, vertexFiberLift_ι, Category.assoc, IsPullback.isoPullback_hom_fst]
 
@@ -64,7 +64,7 @@ lemma loopConeSourceDiagramFiberIso_hom_ι (X : SSet.{u}) [Quasicategory X] (x :
 lemma loopConeClassifierDiagramFiberMap_ι (X : SSet.{u}) [Quasicategory X] (x : X _⦋0⦌)
     (d : (loopDiagrams X) _⦋0⦌) :
     loopConeClassifierDiagramFiberMap X x d ≫
-      vertexFiberι (F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d =
+      vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d =
       vertexFiberι (loopConeSourceFiberProjection X x) d ≫ loopConeClassifierSourceFiberMap X x :=
   vertexFiberMap_ι _ _ _ _ _
 /-- 同じ実 fiber 比較が各図式上で同値なら、始点固定比較も同値。 -/
@@ -73,11 +73,11 @@ lemma loopConeClassifierSourceFiberMap_isQCatEquivalence_of_diagramFibers
     (h : ∀ d : (loopDiagrams X) _⦋0⦌,
       IsQCatEquivalence (loopConeClassifierDiagramFiberMap X x d)) :
     IsQCatEquivalence (loopConeClassifierSourceFiberMap X x) := by
-  let q := F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x
+  let q := SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x
   let : Quasicategory (unitCommaFiber (loopDiagramEvaluation X 0 0) x) :=
     quasicategory_of_innerFibration q
   have hf : loopConeClassifierSourceFiberMap X x ≫ q = loopConeSourceFiberProjection X x := by
-    simpa only [q, F1B.kanUnitCommaFiberProjection, Category.assoc,
+    simpa only [q, SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection, Category.assoc,
       loopConeSourceFiberProjection] using loopConeClassifierSourceFiberMap_target X x
   exact isQCatEquivalence_of_leftFibration_fibers (loopConeSourceFiberProjection X x) q
     (loopConeClassifierSourceFiberMap X x) hf h

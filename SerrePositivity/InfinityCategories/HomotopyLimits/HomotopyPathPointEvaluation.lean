@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomotopyEvaluation
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyPathReplacement
 
 /-!
 概要：一点からの同じ可逆 path を元のホモトピーの点評価の一単体へ戻す。

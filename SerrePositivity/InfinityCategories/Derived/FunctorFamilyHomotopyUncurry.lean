@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 /-!
 概要：関手空間への族ホモトピーを、二重パラメータ全体の実ホモトピーへ展開する。

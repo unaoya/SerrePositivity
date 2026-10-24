@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison
+
 public import SerrePositivity.InfinityCategories.Core.InitialExtension
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
 public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceCommaComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftFibrationFiberComparison
 
 /-!
 概要：元の coslice の底変換と始点固定 comma の標準比較の同値性。
@@ -24,14 +24,14 @@ namespace SerrePositivity.InfinityCategories.HomotopyLimits
 lemma cosliceCommaComparison_fiber {X Y : SSet.{u}} (G : Y ⟶ X)
     (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     vertexFiberMap (pullback.snd (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G)
-        (F1B.kanUnitCommaFiberProjection G x) (cosliceCommaComparison G x)
+        (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) (cosliceCommaComparison G x)
         (cosliceCommaComparison_projection G x) y ≫
-      (F1B.kanUnitCommaFiberIntervalIso G x y).hom =
+      (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso G x y).hom =
     (cofinalVertexFiberBaseChangeIso (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G y).hom ≫
       cosliceFiberToIntervalMappingSpace x (G.app (Opposite.op ⦋0⦌) y) := by
   apply intervalMappingUncurry_injective
-  change intervalMappingUncurry (_ ≫ F1B.kanUnitCommaFiberToInterval G x y) = _
-  rw [intervalMappingUncurry_precomp, F1B.kanUnitCommaFiberToInterval_uncurry,
+  change intervalMappingUncurry (_ ≫ SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval G x y) = _
+  rw [intervalMappingUncurry_precomp, SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval_uncurry,
     ← unitCommaUncurry_precomp, ← Category.assoc, vertexFiberMap_ι,
     cosliceCommaComparison_uncurry, cosliceFiberToIntervalMappingSpace_uncurry]
   unfold cosliceFiberUncurry
@@ -47,13 +47,13 @@ lemma cosliceCommaComparison_isQCatEquivalence {X Y : SSet.{u}}
   have : Quasicategory (pullback (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G) :=
     quasicategory_of_innerFibration (pullback.snd _ G)
   have : Quasicategory (unitCommaFiber G x) :=
-    quasicategory_of_innerFibration (F1B.kanUnitCommaFiberProjection G x)
+    quasicategory_of_innerFibration (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x)
   apply F1B.kanIsQCatEquivalence_of_leftFibration_fibers _ _ _
     (cosliceCommaComparison_projection G x)
   intro y
-  have hi := (qCatEquivalenceOfIso (F1B.kanUnitCommaFiberIntervalIso G x y)).isQCatEquivalence
+  have hi := (qCatEquivalenceOfIso (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso G x y)).isQCatEquivalence
   apply hi.cancel_right
-  change IsQCatEquivalence (_ ≫ (F1B.kanUnitCommaFiberIntervalIso G x y).hom)
+  change IsQCatEquivalence (_ ≫ (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso G x y).hom)
   rw [cosliceCommaComparison_fiber]
   exact (qCatEquivalenceOfIso (cofinalVertexFiberBaseChangeIso
     (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G y)).isQCatEquivalence.comp

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecompositionEquivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldArbitraryBaseChange
+public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.ArbitraryBaseChange
 
 /-!
 概要：任意の部分底上で、元の全相対 Hom を同じ universal scaffold の相対 Hom と比較する。
@@ -24,27 +24,27 @@ variable {C : Type u} [Category.{u} C] {E F : SSet.{u}}
 
 /-- 元の universal scaffold の同じ底上の射。 -/
 def cocartesianScaffoldOverMap :
-    Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ⟶
-      Over.mk p := Over.homMk (kanUniversalScaffold p) (kanUniversalScaffold_projection p)
+    Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ⟶
+      Over.mk p := Over.homMk (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p)
 
 /-- 部分底へ引き戻した同じ scaffold の、元の底上の射。 -/
 def cocartesianScaffoldPullbackOverMap (a : Over (nerve C)) :
     Over.mk (pullback.snd a.hom
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-        simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ⟶
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+        simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ⟶
     Over.mk (pullback.snd a.hom p ≫ p) :=
   Over.homMk
     (pullback.lift
       (pullback.fst a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
       (pullback.snd a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-          kanUniversalScaffold p) (by
-        rw [Category.assoc, kanUniversalScaffold_projection]
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+          SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (by
+        rw [Category.assoc, SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection]
         exact pullback.condition)) (by
       dsimp only [Over.mk_hom]
       rw [← Category.assoc, pullback.lift_snd, Category.assoc,
-        kanUniversalScaffold_projection])
+        SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection])
 
 /-- 任意の部分底上でも、同じ scaffold の実際の射は前合成同値。 -/
 lemma cocartesianScaffoldPullbackOverMap_isPrecompositionEquivalence
@@ -52,9 +52,9 @@ lemma cocartesianScaffoldPullbackOverMap_isPrecompositionEquivalence
     IsPrecompositionEquivalence (cocartesianScaffoldPullbackOverMap p a).left := by
   change IsPrecompositionEquivalence (overPullbackMap
     (Over.homMk (U := Over.mk (simplicialReplacementProjection
-      (kanCocartesianStrictTransportDiagram p))) (V := Over.mk p)
-      (kanUniversalScaffold p) (kanUniversalScaffold_projection p)) (Over.mk a.hom))
-  exact kanUniversalScaffold_overPullback_isPrecompositionEquivalence p a.hom
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))) (V := Over.mk p)
+      (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p)) (Over.mk a.hom))
+  exact SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence p a.hom
 
 /-- 元の全相対 Hom を、部分底へ引き戻した同じ scaffold へ前合成する。 -/
 def cocartesianScaffoldPullbackRawHomPre (a : Over (nerve C)) :=

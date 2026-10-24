@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 
 /-!

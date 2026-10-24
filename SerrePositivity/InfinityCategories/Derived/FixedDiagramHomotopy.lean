@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.RelativeFunctorHomotopyComposition
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.RelativeFunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 部分図式で定値なホモトピーの端点と合成
 

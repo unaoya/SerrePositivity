@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：𝒮 の平行な辺の類の一致から、元の Kan 射のホモトピーを回収する。

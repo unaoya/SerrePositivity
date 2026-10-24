@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.RelativeKanOuterSpanFamilies
 public import SerrePositivity.KST.SConstruction.CoherentHomotopyComponentCalculus
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 
 /-! # 元の一点の指定外側三角形を関手空間の境界へ戻す
 概要：元の二円柱の指定頂点の成分を保持し、元の比較辺と三角形を一点の境界データへ移す。

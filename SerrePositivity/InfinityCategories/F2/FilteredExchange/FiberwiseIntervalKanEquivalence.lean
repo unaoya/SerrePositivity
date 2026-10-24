@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseIn
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseIntervalEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanEquivalencePaths
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathLifting
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：両端を固定して選んだ定値底の Kan path 比較は実際のホモトピー同値。

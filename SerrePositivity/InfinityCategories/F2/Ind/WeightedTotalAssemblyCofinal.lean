@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCosliceStageCocone
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
 
 /-!

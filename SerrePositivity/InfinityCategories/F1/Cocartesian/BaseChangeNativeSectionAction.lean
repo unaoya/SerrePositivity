@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianBaseChangeNativeObjectIso_sectionAction
     {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C]
     (l : A ⥤ D) (k : D ⥤ C) (p : CocartesianFibrationCategory (nerve C)) (a : A) :
-    (ρ_ (kanCocartesianStrictTransport
+    (ρ_ (SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p.val.hom)) a)).inv ≫
       _ ◁ (eHomEquiv SSet.{u} (cocartesianBaseChangeNativeObjectIso l k p).hom ≫
         (quasicategoryCore (cocartesianRelativeFunctorSpace
@@ -34,11 +34,11 @@ lemma cocartesianBaseChangeNativeObjectIso_sectionAction
         (Over.mk (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p.val.hom)))
         (Over.mk (pullback.fst (nerveMap (l ⋙ k)) p.val.hom)) =
     (cocartesianBaseChangeAssociativityComponent p.val.hom l k a).hom := by
-  apply (cancel_mono (kanCocartesianSectionsι
+  apply (cancel_mono (SerrePositivity.InfinityCategories.cocartesianSectionsι
     (pullback.fst (nerveMap (l ⋙ k)) p.val.hom) (nerveMap (Under.forget a)))).mp
   apply relativeFunctorUncurry_injective
   have hc := cocartesianBaseChangeAssociativityComponent_native_uncurry p.val.hom l k a
-    (𝟙 (kanCocartesianStrictTransport
+    (𝟙 (SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p.val.hom)) a))
   simp only [Category.id_comp] at hc
   refine Eq.trans ?_ hc.symm

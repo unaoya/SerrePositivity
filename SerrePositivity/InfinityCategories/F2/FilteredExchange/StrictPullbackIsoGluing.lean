@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictPullbackHomotopyGluing
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-!
@@ -33,7 +33,7 @@ lemma functorIsoRepresentative_postcomp_hom
     (e.postcomp p).hom = SSet.Truncated.HomotopyCategory.homMk
       (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp e.simplicialHomotopy p)) := by
   rw [functorIso_postcomp_hom, functorHomotopyPostcomp_hom,
-    kanFunctorIso_simplicialHomotopy_hom]
+    SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom]
   rfl
 
 /-- 共通の底で同じ指定像を持つ二脚の同型は、全体の関手同型へ貼り合わせられる。 -/

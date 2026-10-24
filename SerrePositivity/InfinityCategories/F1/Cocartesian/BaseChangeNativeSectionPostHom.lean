@@ -33,9 +33,9 @@ lemma cocartesianBaseChangeNativeObjectIso_sectionPostHom
   apply uncurry_injective
   rw [uncurry_natural_left, cocartesianSectionsPostHom, uncurry_curry,
     curry', uncurry_curry]
-  apply (cancel_epi (ρ_ (kanCocartesianStrictTransport
+  apply (cancel_epi (ρ_ (SerrePositivity.InfinityCategories.cocartesianStrictTransport
     (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p.val.hom)) a)).inv).mp
-  simpa only [kanCocartesianStrictTransport, Over.mk_hom, Category.assoc,
+  simpa only [SerrePositivity.InfinityCategories.cocartesianStrictTransport, Over.mk_hom, Category.assoc,
     Iso.inv_hom_id_assoc] using
     cocartesianBaseChangeNativeObjectIso_sectionAction l k p a
 

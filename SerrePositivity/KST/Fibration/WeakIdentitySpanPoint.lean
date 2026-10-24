@@ -55,27 +55,27 @@ def weakIdentitySimplexFiberPoint :
 def weakIdentityStrictEvaluationSection :
     vertexFiber (weakSpanSimplexProjection i x)
         (nerveVertex (transportSimplexIndex (n := ⦋0⦌) x)) ⟶
-      kanCocartesianStrictTransport (weakSpanSimplexProjection i x)
+      SerrePositivity.InfinityCategories.cocartesianStrictTransport (weakSpanSimplexProjection i x)
         (transportSimplexIndex (n := ⦋0⦌) x) :=
   Classical.choose (trivialKanFibration_exists_section
-    (kanCocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
+    (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
       (transportSimplexIndex (n := ⦋0⦌) x)))
 
 /-- 元の恒等 span を厳密に評価値とする、全 cocartesian section の実際の点。 -/
 def weakIdentityStrictSectionPoint :
-    (kanCocartesianStrictTransport (weakSpanSimplexProjection i x)
+    (SerrePositivity.InfinityCategories.cocartesianStrictTransport (weakSpanSimplexProjection i x)
       (transportSimplexIndex (n := ⦋0⦌) x)) _⦋0⦌ :=
   (weakIdentityStrictEvaluationSection (i := i) x).app (Opposite.op ⦋0⦌)
     (weakIdentitySimplexFiberPoint h x)
 
 /-- 評価は、構成に用いた同じ恒等 span の fiber 点を厳密に回収する。 -/
 theorem weakIdentityStrictSectionPoint_evaluate :
-    (kanCocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
+    (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
       (transportSimplexIndex (n := ⦋0⦌) x)).app (Opposite.op ⦋0⦌)
         (weakIdentityStrictSectionPoint h x) = weakIdentitySimplexFiberPoint h x :=
   congrArg (fun m => m.app (Opposite.op ⦋0⦌) (weakIdentitySimplexFiberPoint h x))
     (Classical.choose_spec (trivialKanFibration_exists_section
-      (kanCocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
         (transportSimplexIndex (n := ⦋0⦌) x))))
 
 /-- 同じ strict Kan 分数図式の値における、元の恒等 span からの指定点。 -/
@@ -93,7 +93,7 @@ theorem weakIdentityKanPoint_evaluate :
         (weakIdentitySimplexFiberPoint h x) := by
   have hn := congrArg (fun m => m.app (Opposite.op ⦋0⦌) (weakIdentityStrictSectionPoint h x))
     (F2.continuousKanReplacementUnit.naturality
-      (kanCocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (weakSpanSimplexProjection i x)
         (transportSimplexIndex (n := ⦋0⦌) x)))
   exact hn.symm.trans (congrArg
     ((F2.continuousKanReplacementUnit.app _).app (Opposite.op ⦋0⦌))

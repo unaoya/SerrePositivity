@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowCategory
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 public import Mathlib.CategoryTheory.Adjunction.Comma
 
 /-!
@@ -32,10 +32,10 @@ lemma nerveMap_leftAdjoint_isLeftCofinal {I D : Type u}
   intro z
   obtain ⟨d, rfl⟩ := ComposableArrows.mk₀_surjective z
   have ht := mkTerminalOfRightAdjoint R a d
-  have hn := (F1B.kanNerveVertex_isTerminal ht).isWeaklyContractible
-  have he : IsWeakHomotopyEquivalence (F1B.kanNerveLeftKanShapeIso L d).hom :=
+  have hn := (SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal ht).isWeaklyContractible
+  have he : IsWeakHomotopyEquivalence (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso L d).hom :=
     IsPrecompositionEquivalence.isWeakHomotopyEquivalence
-      (isPrecompositionEquivalence_of_iso (F1B.kanNerveLeftKanShapeIso L d))
+      (isPrecompositionEquivalence_of_iso (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso L d))
   exact he.weaklyContractible_iff.mp hn
 
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C)

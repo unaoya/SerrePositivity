@@ -34,16 +34,16 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (Y : C) (T : I ⥤ Ove
 
 def nerveOverRightSliceMap : nerve I ⟶
     sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) :=
-  nerveMap T ≫ (F1B.kanNerveOverIso Y).hom ≫
+  nerveMap T ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom ≫
     sliceOverPostcomp (SSet.yonedaEquiv.symm (nerveVertex Y)) q ≫
       (roofTargetSlicePointIso Y q).hom
 
 lemma nerveOverRightSliceMap_uncurry : sliceOverUncurry (nerveOverRightSliceMap Y T q) =
-    (F1B.kanNerveCoconeEquiv ((F1B.kanOverForgetCocone Y).whisker T)).val ≫ q := by
+    (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv ((SerrePositivity.InfinityCategories.F1B.overForgetCocone Y).whisker T)).val ≫ q := by
   have hpost := sliceOverUncurry_postcomp
-    (nerveMap T ≫ (F1B.kanNerveOverIso Y).hom) q
-  have hpre := sliceOverUncurry_precomp (F1B.kanNerveOverIso Y).hom (nerveMap T)
-  rw [F1B.kanNerveOverIso_uncurry, F1B.kanNerveCocone_whisker] at hpre
+    (nerveMap T ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom) q
+  have hpre := sliceOverUncurry_precomp (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom (nerveMap T)
+  rw [SerrePositivity.InfinityCategories.F1B.nerveOverIso_uncurry, SerrePositivity.InfinityCategories.F1B.nerveCocone_whisker] at hpre
   simp only [nerveOverRightSliceMap, roofTargetSlicePointIso, ← Category.assoc]
   rw [sliceOverUncurry_pointTransport (roofTargetPoint q (nerveVertex Y))]
   exact hpost.trans (congrArg (fun g => g ≫ q) hpre)
@@ -51,10 +51,10 @@ lemma nerveOverRightSliceMap_uncurry : sliceOverUncurry (nerveOverRightSliceMap 
 lemma nerveOverRightSliceMap_evaluation_h :
     (functorHomotopyPrecomp (roofSliceEvaluationHomotopy
       (q.app (op ⦋0⦌) (nerveVertex Y))) (nerveOverRightSliceMap Y T q)).h =
-    (F1B.kanNerveNatTransHomotopy ((F1B.kanOverForgetCocone Y).whisker T).ι).h ≫ q := by
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy ((SerrePositivity.InfinityCategories.F1B.overForgetCocone Y).whisker T).ι).h ≫ q := by
   rw [roofSliceEvaluationHomotopy_precomp_h, nerveOverRightSliceMap_uncurry]
   simpa only [Category.assoc] using congrArg (fun g => g ≫ q)
     (nerveCoconePrism_eq_natTrans (T ⋙ Over.forget Y)
-      ((F1B.kanOverForgetCocone Y).whisker T))
+      ((SerrePositivity.InfinityCategories.F1B.overForgetCocone Y).whisker T))
 
 end SerrePositivity.EInfinity.FrameHom

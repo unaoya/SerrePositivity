@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.AdjointVerdier
-public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalMappingContractible
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 
 /-!

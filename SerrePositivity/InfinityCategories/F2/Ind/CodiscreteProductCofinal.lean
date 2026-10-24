@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeLabels
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationCofinality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TrivialFibrationCofinality
 
 /-!
 概要：非空の codiscrete ラベルを付ける積の射影は cofinal で、κ-filtered 性を保ち反映する。

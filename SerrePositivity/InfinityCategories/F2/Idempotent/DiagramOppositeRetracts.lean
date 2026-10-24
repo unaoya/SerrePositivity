@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessOpposite
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorOppositeHom
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorOppositeHom
 
 /-!
 概要：元の全図式の関手 ∞ 圏内の retract は、元の反転図式の全関手圏へ移る。
@@ -25,6 +25,6 @@ lemma diagram_retract_op {K X : SSet.{u}} [Quasicategory X] (a b : K ⟶ X)
     IsVertexRetractOf (functorVertex (SSet.opFunctor.map a))
       (functorVertex (SSet.opFunctor.map b)) := by
   have h := r.op.map (HomotopyLimits.oppositeInternalHomIso K X).hom
-  rwa [F1B.kanOppositeInternalHom_vertex, F1B.kanOppositeInternalHom_vertex] at h
+  rwa [SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex, SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex] at h
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

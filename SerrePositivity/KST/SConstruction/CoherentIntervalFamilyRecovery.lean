@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyRecovery
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
-public import SerrePositivity.InfinityCategories.F1B.MappingParameters
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParameters
 
 /-! # Coherent nerve の固定端点の族の相対回収
 概要：固定端点の全区間族を、指定境界を保持する元の豊穣 Hom の族へ戻す。

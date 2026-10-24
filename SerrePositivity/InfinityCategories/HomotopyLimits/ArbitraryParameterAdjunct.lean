@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ParameterUnitHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuasicategoryParameter
-public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
 
 /-!
 概要：任意の単体集合パラメータ上の標準単位 Hom 対応を全単射へ強める。

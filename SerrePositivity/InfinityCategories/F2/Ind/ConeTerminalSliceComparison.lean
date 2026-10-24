@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories.F2.Ind
 /-- 任意の右余錐の同じ頂点包含は right anodyne。 -/
 lemma coneTip_rightAnodyne (A : SSet.{u}) :
     rightAnodyneExtensions (joinInr A (Δ[0] : SSet.{u})) := by
-  have h := F1B.kanTerminalPoint_rightAnodyne (coneApex_isTerminalVertex A)
+  have h := SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne (coneApex_isTerminalVertex A)
   have he : SSet.yonedaEquiv.symm (coneApex A) = joinInr A (Δ[0] : SSet.{u}) := by
     apply SSet.yonedaEquiv.injective
     rw [Equiv.apply_symm_apply]

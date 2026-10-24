@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversalCommaSection
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
-public import SerrePositivity.InfinityCategories.F1B.ConstantUnitFormula
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantUnitFormula
 
 /-!
 概要：comma の coherent な切断から、標的関手と元の円柱による単位を構成する。

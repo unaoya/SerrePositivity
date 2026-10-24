@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 同値を右に持ち上げる同じ射は、両端固定の区間 Hom の Kan fibration を与える。 -/
 lemma intervalMappingPostOfEq_fibration {X Y : SSet.{u}}
-    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) (hp : F1B.KanEquivalenceLifting p)
+    [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
     (x y : X _⦋0⦌) {x' y' : Y _⦋0⦌} (hx : p.app _ x = x') (hy : p.app _ y = y') :
     Fibration (intervalMappingPostOfEq p x y hx hy) :=
   fibration_of_kanEquivalenceLifting_of_kanComplex _
@@ -34,14 +34,14 @@ lemma intervalMappingPostOfEq_fibration {X Y : SSet.{u}}
 lemma intervalDiagramRestriction_fibration {A B X : SSet.{u}} [Quasicategory X]
     (i : A ⟶ B) [Mono i] (F G : B ⟶ X) : Fibration (intervalDiagramRestriction i F G) :=
   intervalMappingPostOfEq_fibration ((pre i).app X)
-    (F1B.kanEquivalenceLifting_pre i) _ _ _ _
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre i) _ _ _ _
 
 /-- 底上の同じ単射に沿う、端点を正規化した区間 Hom の制限も Kan fibration。 -/
 lemma intervalDiagramOverPre_fibration {B X : SSet.{u}} [Quasicategory X]
     (F G : B ⟶ X) {a b : Over B} (i : a ⟶ b) [Mono i.left] :
     Fibration (intervalDiagramOverPre F G i) :=
   intervalMappingPostOfEq_fibration ((pre i.left).app X)
-    (F1B.kanEquivalenceLifting_pre i.left) _ _ _ _
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre i.left) _ _ _ _
 
 /-- 同じ区間 Hom の降下図式の、単射に沿う実際の遷移は Kan fibration。 -/
 lemma intervalDiagramOverFunctor_map_fibration {B X : SSet.{u}} [Quasicategory X]

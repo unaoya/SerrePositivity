@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ActualRoofComposition
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-! # 反転関手による実屋根の値と実合成三角形
 

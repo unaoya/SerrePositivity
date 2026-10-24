@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredHomotopyFactorization
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：Kan 値の filtered 図式における有限写像のホモトピー類の一致は後続段で検出できる。

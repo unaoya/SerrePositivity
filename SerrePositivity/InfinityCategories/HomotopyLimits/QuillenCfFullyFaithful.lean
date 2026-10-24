@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.QuillenCfCollageInclusions
 public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorMap
-public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorMap
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 
 /-!
 概要：元の cf 包含の写像空間上の充満忠実性。
@@ -25,8 +25,8 @@ lemma intervalFunctorMap_isSimplicialHomotopyEquivalence_of_fullyFaithful
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (f : X ⟶ Y) (hf : IsFullyFaithful f) (x y : X _⦋0⦌) :
     IsSimplicialHomotopyEquivalence (intervalFunctorMap f x y) := by
-  have hc := (PinchedInterval.comparison_isQCatEquivalence x y)
-  have hd := PinchedInterval.comparison_isQCatEquivalence
+  have hc := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y)
+  have hd := SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
   have h := (hf x y).isQCatEquivalence.comp hd
   rw [pinchedIntervalComparison_naturality] at h

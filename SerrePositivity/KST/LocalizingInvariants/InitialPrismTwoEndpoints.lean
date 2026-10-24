@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
-public import SerrePositivity.InfinityCategories.F1B.FunctorRelativeInitial
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 
 /-!

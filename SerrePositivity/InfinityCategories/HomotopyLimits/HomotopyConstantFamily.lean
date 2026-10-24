@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianIntervalPostcomposition
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：指定ホモトピーの各点の評価を、任意の定値パラメータ族で表す。

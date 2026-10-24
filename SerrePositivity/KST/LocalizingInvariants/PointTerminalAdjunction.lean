@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction
-public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces
 
 /-!
 概要：終対象は点からの実右随伴を与え、点からの実右随伴の値は終対象になる。

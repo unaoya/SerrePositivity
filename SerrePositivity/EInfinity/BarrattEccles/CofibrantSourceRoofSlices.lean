@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRoof
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 
 /-!
 # 元の cofibrant source 屋根の全 Quillen A slice と次数モデル

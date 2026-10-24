@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanCanonical
 public import SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs
 public import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanRightConstantFamily
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightConstantFamily
 
 /-!
 # 元の実右 Kan 極限錐の frame 上の全脚

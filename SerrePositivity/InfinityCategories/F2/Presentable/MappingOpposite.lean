@@ -22,9 +22,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma isQCatEquivalence_iff_op {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsQCatEquivalence (SSet.opFunctor.map f) := by
   constructor
-  · exact F1B.kanIsQCatEquivalence_op
+  · exact SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op
   · intro h
-    have h₂ := F1B.kanIsQCatEquivalence_op h
+    have h₂ := SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op h
     have : Quasicategory ((SSet.opFunctor ⋙ SSet.opFunctor).obj X) :=
       inferInstanceAs (Quasicategory X.op.op)
     have : Quasicategory ((SSet.opFunctor ⋙ SSet.opFunctor).obj Y) :=
@@ -51,9 +51,9 @@ lemma intervalFunctorMap_equivalence_iff_pinched {X Y : SSet.{u}}
   constructor
   · exact HomotopyLimits.pinchedHomMap_equivalence_of_intervalFunctorMap f x y
   · intro h
-    apply (PinchedInterval.comparison_isQCatEquivalence x y).cancel_left
+    apply (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).cancel_left
     rw [← pinchedIntervalComparison_naturality]
-    exact h.isQCatEquivalence.comp (PinchedInterval.comparison_isQCatEquivalence
+    exact h.isQCatEquivalence.comp (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
       (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y))
 
 /-- 指定二対象間の元の pinchedHomMap の同値性は、反転した同じ比較の同値性と同値。 -/

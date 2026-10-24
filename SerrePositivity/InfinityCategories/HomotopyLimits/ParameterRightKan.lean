@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeTerminal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightKanAdjunctComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorHomUncurry
 public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRightHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinRightHom
 
 /-!
 概要：任意の直積パラメータの標準右 Kan Hom 比較と端点の輸送を照合する。
@@ -105,7 +105,7 @@ lemma constantHom_precomp_bijective_of_parameterRightKan {K L X : SSet.{u}}
       (δ ▷ A) (𝟙 (HomotopyCategory.mk (functorVertex
         ((δ ▷ A) ≫ uncurry (SSet.const (functorVertex H) : A ⟶ (ihom L).obj X))))))
     (A : SSet.{u}) [Quasicategory A] (T : L ⟶ X) :
-    Function.Bijective (F1B.kanConstantHomPostcomp ((pre δ).app X) A
+    Function.Bijective (SerrePositivity.InfinityCategories.F1B.constantHomPostcomp ((pre δ).app X) A
       (functorVertex T) (functorVertex H)) := by
   let U : A ⟶ (ihom L).obj X := SSet.const (functorVertex T)
   let V : A ⟶ (ihom L).obj X := SSet.const (functorVertex H)

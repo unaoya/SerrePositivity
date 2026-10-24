@@ -59,7 +59,7 @@ lemma relativeRoofConeLift_projection :
       _ = (relativeRoofConeLift r q u b s ≫ sliceOverPostcomp b (pullback.fst r q)) ≫
           sliceOverProjection (b ≫ pullback.fst r q) := by
         rw [relativeRoofConeLift_fst, Category.assoc]
-      _ = _ := by rw [Category.assoc, F1B.kanSliceOverPostcomp_projection, Category.assoc]
+      _ = _ := by rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, Category.assoc]
   · calc
       _ = (s.fst ≫ pullback.fst _ _) ≫ (u ≫ pullback.snd r q) := Category.assoc _ _ _
       _ = (s.snd ≫ pullback.snd _ _) ≫ (u ≫ pullback.snd r q) :=
@@ -71,7 +71,7 @@ lemma relativeRoofConeLift_projection :
       _ = (relativeRoofConeLift r q u b s ≫ sliceOverPostcomp b (pullback.snd r q)) ≫
           sliceOverProjection (b ≫ pullback.snd r q) := by
         rw [relativeRoofConeLift_snd, Category.assoc]
-      _ = _ := by rw [Category.assoc, F1B.kanSliceOverPostcomp_projection, Category.assoc]
+      _ = _ := by rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, Category.assoc]
 /-- 比較正方形の二つの全図式を、元の同じ Quillen A の実 slice に持ち上げる。 -/
 def relativeRoofSquareLift : s.pt ⟶ pullback u (sliceOverProjection b) :=
   pullback.lift (s.fst ≫ pullback.fst _ _) (relativeRoofConeLift r q u b s)

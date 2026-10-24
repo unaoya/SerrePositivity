@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 public import SerrePositivity.InfinityCategories.Derived.RoofComparisonTransport
-public import SerrePositivity.InfinityCategories.F1B.CofinalOpposite
-public import SerrePositivity.InfinityCategories.F1B.CofinalComposition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition
 
 /-!
 # 元の frame の実屋根比較の始域を全固定終域の矢で表す
@@ -27,17 +27,17 @@ abbrev roofSource := pullback (sliceOverProjection (SSet.yonedaEquiv.symm (nerve
   (nerveMap A)
 
 def roofSourceIso : nerve (CostructuredArrow A Y) ≅ roofSource A Y :=
-  F1B.kanNerveLeftKanShapeIso A Y ≪≫ pullbackSymmetry _ _
+  SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso A Y ≪≫ pullbackSymmetry _ _
 
 lemma roofSourceIso_degree : (roofSourceIso A Y).hom ≫ pullback.snd _ _ =
     nerveMap (CostructuredArrow.proj A Y) := by
   rw [roofSourceIso, Iso.trans_hom, Category.assoc, pullbackSymmetry_hom_comp_snd]
-  exact F1B.kanNerveLeftKanShapeIso_hom_projection A Y
+  exact SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection A Y
 
 lemma roofSourceIso_over : (roofSourceIso A Y).hom ≫ pullback.fst _ _ =
-    nerveMap (CostructuredArrow.toOver A Y) ≫ (F1B.kanNerveOverIso Y).hom := by
+    nerveMap (CostructuredArrow.toOver A Y) ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso Y).hom := by
   rw [roofSourceIso, Iso.trans_hom, Category.assoc, pullbackSymmetry_hom_comp_fst]
-  exact F1B.kanNerveLeftKanShapeMap_over A Y
+  exact SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeMap_over A Y
 
 variable {E : SSet.{u}} (q : nerve C ⟶ E)
 

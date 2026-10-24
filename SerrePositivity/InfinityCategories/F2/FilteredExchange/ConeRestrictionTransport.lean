@@ -30,7 +30,7 @@ lemma normalizedConeRestriction_projection :
       eqToHom (congrArg sliceOver h) ≫ sliceOverProjection b = sliceOverProjection a := by
     cases h
     exact Category.id_comp _
-  rw [normalizedConeRestriction, Category.assoc, ht hi, kanSliceOverRestrict_projection]
+  rw [normalizedConeRestriction, Category.assoc, ht hi, SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection]
 
 /-- 正規化した制限も uncurry 後には元の形状の制限そのものである。 -/
 lemma normalizedConeRestriction_uncurry {T : SSet.{u}} (a : T ⟶ sliceOver F) :

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 public import SerrePositivity.InfinityCategories.Stable.SpecifiedCofiberSpan
 public import SerrePositivity.InfinityCategories.Stable.StableOpposite
 public import SerrePositivity.InfinityCategories.Stable.SquareTranspose

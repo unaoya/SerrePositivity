@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanLeftHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftHomUniversal
 
 /-!
 概要：指定された二つの左 Kan 単位の大域的 Hom 普遍性を合成する。

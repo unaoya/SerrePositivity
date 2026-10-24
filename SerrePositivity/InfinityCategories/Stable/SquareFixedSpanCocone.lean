@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ZeroCornerSquareSpanPullback
-public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso
 
 /-!
 概要：固定 span の余錐比較から suspension の普遍四角形と厳密切断を構成する。
@@ -38,7 +38,7 @@ lemma squareCoconeFunctorIso_restriction (X : SSet.{u}) :
 /-- 同じ固定 span の普遍性と suspension の全単体構成。 -/
 def squareFixedSpanCoconeIso {X : SSet.{u}} (p : (horn 2 0 : SSet.{u}) ⟶ X) :
     vertexFiber ((pre spanSquareBoundary).app X) (functorVertex p) ≅ coconeFamily p :=
-  F1B.kanVertexFiberSquareIso ((pre spanSquareBoundary).app X)
+  SerrePositivity.InfinityCategories.F1B.vertexFiberSquareIso ((pre spanSquareBoundary).app X)
     (coconeRestriction (horn 2 0 : SSet.{u}) X) (squareCoconeFunctorIso X) (Iso.refl _)
     (by simpa only [Iso.refl_hom, Category.comp_id] using
       (squareCoconeFunctorIso_restriction X).symm) (functorVertex p)

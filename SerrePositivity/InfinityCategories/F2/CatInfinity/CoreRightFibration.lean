@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories.F2
 lemma coreMap_rightFibration_of_invertibleTargetLifting
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (p : X ⟶ Y) [InnerFibration p]
-    (hp : F1B.KanInvertibleTargetLifting p) : RightFibration (quasicategoryCoreMap p) where
+    (hp : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p) : RightFibration (quasicategoryCoreMap p) where
   mem := by
     intro A B j hj
     cases hj with

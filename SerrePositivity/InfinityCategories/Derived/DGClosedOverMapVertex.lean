@@ -36,7 +36,7 @@ lemma dgClosedNerveOverMap_edge (x : D)
         (dgClosedEdge A D s.hom).edge := by
   let c := (AsSmall.up : ClosedCategory A D ⥤ DGCommonClosedCategory A D).obj
     (ForgetEnrichment.of (Complex A) x)
-  let t := (F1B.kanNerveOverIso c).hom.app (Opposite.op ⦋0⦌)
+  let t := (SerrePositivity.InfinityCategories.F1B.nerveOverIso c).hom.app (Opposite.op ⦋0⦌)
     (nerveVertex ((Over.post (AsSmall.up : ClosedCategory A D ⥤
       DGCommonClosedCategory A D)).obj s))
   change (roofPointSliceVertexEdge _

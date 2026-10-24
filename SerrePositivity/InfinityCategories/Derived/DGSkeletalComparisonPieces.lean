@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSkeletalSourceExtension
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 骨格一段更新の商比較の各部分
 

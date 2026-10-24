@@ -27,8 +27,8 @@ lemma trivialKanFibration_limMap_inverseSequence {F G : ℕᵒᵖ ⥤ SSet.{u}} 
 lemma isPrecompositionEquivalence_limMap_inverseSequence {F G : ℕᵒᵖ ⥤ SSet.{u}}
     [∀ j, Quasicategory (F.obj j)] [∀ j, Quasicategory (G.obj j)]
     (η : F ⟶ G) (hη : ∀ j, IsQCatEquivalence (η.app j))
-    (hF : ∀ n, F1B.KanEquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
-    (hG : ∀ n, F1B.KanEquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op))
+    (hF : ∀ n, SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
+    (hG : ∀ n, SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op))
     [∀ n, TrivialKanFibration
       (relativeEquivalencePathMapAt (G.map (homOfLE (Nat.le_succ n)).op) 0)] :
     IsPrecompositionEquivalence (limMap η) := by
@@ -48,9 +48,9 @@ lemma isPrecompositionEquivalence_limMap_inverseSequence {F G : ℕᵒᵖ ⥤ SS
     trivialKanFibration_inverseSequenceCorner_endpoint η n (hη _) (hη _) (hF n) (hG n)
   have hq : TrivialKanFibration (limMap q) := trivialKanFibration_limMap_inverseSequence q
   have : ∀ n, InnerFibration (F.map (homOfLE (Nat.le_succ n)).op) := fun n ↦
-    F1B.KanEquivalenceLifting.innerFibration (hF n)
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration (hF n)
   have : ∀ n, InnerFibration (G.map (homOfLE (Nat.le_succ n)).op) := fun n ↦
-    F1B.KanEquivalenceLifting.innerFibration (hG n)
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration (hG n)
   have : Quasicategory (limit F) := quasicategory_of_inverseSequence_limit F _ (limit.isLimit F)
   have : Quasicategory (limit G) := quasicategory_of_inverseSequence_limit G _ (limit.isLimit G)
   have : Quasicategory (limit R) := quasicategory_of_innerFibration (limMap p)
@@ -73,8 +73,8 @@ lemma isPrecompositionEquivalence_limMap_inverseSequence {F G : ℕᵒᵖ ⥤ SS
 lemma isPrecompositionEquivalence_inverseSequenceConeMap {F G : ℕᵒᵖ ⥤ SSet.{u}}
     [∀ j, Quasicategory (F.obj j)] [∀ j, Quasicategory (G.obj j)]
     (η : F ⟶ G) (hη : ∀ j, IsQCatEquivalence (η.app j))
-    (hF : ∀ n, F1B.KanEquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
-    (hG : ∀ n, F1B.KanEquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op))
+    (hF : ∀ n, SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
+    (hG : ∀ n, SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op))
     [∀ n, TrivialKanFibration
       (relativeEquivalencePathMapAt (G.map (homOfLE (Nat.le_succ n)).op) 0)]
     (c : Cone F) (d : Cone G) (hc : IsLimit c) (hd : IsLimit d) (φ : c.pt ⟶ d.pt)

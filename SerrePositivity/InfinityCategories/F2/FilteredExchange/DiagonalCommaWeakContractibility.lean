@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxCosliceDiagonalCommaIso
 public import SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence
-public import SerrePositivity.InfinityCategories.F1B.KanRightKanShapeCommaEquivalence
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!

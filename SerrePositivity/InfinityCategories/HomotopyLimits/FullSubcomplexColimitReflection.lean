@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexVertexExtension
 public import SerrePositivity.InfinityCategories.DGNerve.JoinVertexSurjectivity
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!
 概要：全部分複体の元の余錐が周囲で余極限なら、その同じ余錐は内部でも余極限。

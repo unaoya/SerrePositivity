@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanCoconeExtension
+public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeExtension
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 public import SerrePositivity.EInfinity.FrameHom.ThinNerveExt
 
@@ -100,26 +100,26 @@ lemma index_join (n : ℕ) :
     (joinStdSimplexIso n 0).hom ≫
       SSet.yonedaEquiv.symm (show (nerve _) _⦋n + 1⦌ from index n) =
     joinMap (stdSimplex.isoNerve n).hom (𝟙 (Δ[0] : SSet.{u})) ≫
-      F1B.kanTerminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
+      SerrePositivity.InfinityCategories.F1B.terminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
   have hL : joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom ≫
       SSet.yonedaEquiv.symm (show (nerve _) _⦋n + 1⦌ from index n) =
       joinInl _ _ ≫ joinMap (stdSimplex.isoNerve n).hom (𝟙 (Δ[0] : SSet.{u})) ≫
-        F1B.kanTerminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
+        SerrePositivity.InfinityCategories.F1B.terminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
     rw [← Category.assoc (joinInl _ _) (joinMap _ _), joinInl_joinMap,
       Category.assoc]
     change _ = (stdSimplex.isoNerve n).hom ≫ joinInl _ _ ≫
-      (F1B.kanNerveCoconeEquiv (F1B.kanWithTerminalCocone _)).val
-    rw [(F1B.kanNerveCoconeEquiv (F1B.kanWithTerminalCocone _)).property]
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (SerrePositivity.InfinityCategories.F1B.withTerminalCocone _)).val
+    rw [(SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (SerrePositivity.InfinityCategories.F1B.withTerminalCocone _)).property]
     exact index_join_front n
   have hR : joinInr (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom ≫
       SSet.yonedaEquiv.symm (show (nerve _) _⦋n + 1⦌ from index n) =
       joinInr _ _ ≫ joinMap (stdSimplex.isoNerve n).hom (𝟙 (Δ[0] : SSet.{u})) ≫
-        F1B.kanTerminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
+        SerrePositivity.InfinityCategories.F1B.terminalJoinNerveMap (ULift.{u} (Fin (n + 1))) := by
     rw [← Category.assoc (joinInr _ _) (joinMap _ _), joinInr_joinMap,
       Category.id_comp]
     change _ = joinInr _ _ ≫
-      (F1B.kanNerveCoconeEquiv (F1B.kanWithTerminalCocone _)).val
-    rw [F1B.kanNerveCocone_point]
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (SerrePositivity.InfinityCategories.F1B.withTerminalCocone _)).val
+    rw [SerrePositivity.InfinityCategories.F1B.nerveCocone_point]
     exact index_join_last n
   exact thinNerve_join_hom_ext hL hR
 

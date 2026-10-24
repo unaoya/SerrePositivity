@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpanCoconePointHomEnd
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyEndpointTransport
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の span の点 Hom end と辺全族 end の間で選択した同じ逆の二ホモトピーを保持する。

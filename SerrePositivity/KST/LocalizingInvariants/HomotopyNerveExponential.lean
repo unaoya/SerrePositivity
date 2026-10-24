@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveFunctorHomCategory
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorHomCategory
 
 /-!
 概要：任意単体集合から通常圏の nerve への関手圏を、h 圏上の通常関手圏と比較する。

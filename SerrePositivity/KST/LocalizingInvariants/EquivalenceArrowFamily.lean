@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
 
 /-!

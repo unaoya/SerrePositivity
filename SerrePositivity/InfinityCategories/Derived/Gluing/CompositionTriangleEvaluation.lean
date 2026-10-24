@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 
 /-! 同じ関手圏内三角形を、三辺を保って実二単体とパラメーターの族へ評価する。 -/
 @[expose] public section

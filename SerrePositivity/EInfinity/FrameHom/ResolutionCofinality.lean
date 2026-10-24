@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.ResolutionAsphericity
 public import SerrePositivity.EInfinity.FrameHom.SmallCommaContraction
 public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
-public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
 
 /-!
 # 同じ分解の自明 fibration の slice への nerve の余終性

@@ -31,11 +31,11 @@ lemma cocartesianBaseChangeAssociativityComponent_iso (a : A) :
 
 /-- 同じ底変換結合同型は、底の元の strict transport の射に対して自然。 -/
 lemma cocartesianBaseChangeAssociativityComponent_naturality {a b : A} (f : a ⟶ b) :
-    kanCocartesianStrictTransportMap
+    SerrePositivity.InfinityCategories.cocartesianStrictTransportMap
         (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) f ≫
       (cocartesianBaseChangeAssociativityComponent p l k b).hom =
     (cocartesianBaseChangeAssociativityComponent p l k a).hom ≫
-      kanCocartesianStrictTransportMap (pullback.fst (nerveMap (l ⋙ k)) p) f := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.fst (nerveMap (l ⋙ k)) p) f := by
   let u : Over.mk (nerveMap (Under.forget b)) ⟶
       Over.mk (nerveMap (Under.forget a)) :=
     Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
@@ -47,13 +47,13 @@ lemma cocartesianBaseChangeAssociativityComponent_naturality {a b : A} (f : a �
     (IsPullback.of_hasPullback (nerveMap (l ⋙ k)) p).flip
     (nerveMap (Under.forget b)) (nerveMap (Under.forget b) ≫ nerveMap (l ⋙ k)) rfl).hom).mp
   rw [Category.assoc, cocartesianBaseChangeAssociativityComponent_iso, Category.assoc]
-  change kanCocartesianSectionsPre _ u ≫
+  change SerrePositivity.InfinityCategories.cocartesianSectionsPre _ u ≫
       (cocartesianSectionsPullbackIso _ _ _ _).hom =
     (cocartesianBaseChangeAssociativityComponent p l k a).hom ≫
-      kanCocartesianSectionsPre _ u ≫ (cocartesianSectionsPullbackIso _ _ _ _).hom
+      SerrePositivity.InfinityCategories.cocartesianSectionsPre _ u ≫ (cocartesianSectionsPullbackIso _ _ _ _).hom
   refine h₁.trans ?_
   have he := congrArg
-    (fun z ↦ z ≫ kanCocartesianSectionsPre p ((Over.map (nerveMap (l ⋙ k))).map u))
+    (fun z ↦ z ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p ((Over.map (nerveMap (l ⋙ k))).map u))
     (cocartesianBaseChangeAssociativityComponent_iso p l k a).symm
   have hh := congrArg (fun z ↦
     (cocartesianBaseChangeAssociativityComponent p l k a).hom ≫ z) h₂.symm

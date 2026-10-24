@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.IntervalEndpointTransport
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionInterval
 public import SerrePositivity.InfinityCategories.Derived.DGUniversalCounitNative
-public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：同じ実普遍余単位の全 pinched Hom 同値を標準区間比較の同値へ移す。
 方針：同じ実辺の回収と標準比較の反転を、全パラメータの随伴判定へ渡す。
@@ -35,7 +35,7 @@ lemma DGUniversalCounit.nativeIntervalMap_isSimplicialHomotopyEquivalence
     (F.obj x) (F.obj e.source) y e.counit
   let K' := functorHomotopyPrecomp K m
   have hm := e.nativePinchedMap_isSimplicialHomotopyEquivalence x
-  have hi := (PinchedInterval.comparison_isQCatEquivalence
+  have hi := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (X := dgNerve R E) (Simplex.vertex (F.obj x)) (Simplex.vertex y))
   rw [pinchedInterval_comparison_eq] at hi
   have he := hm.isQCatEquivalence.comp hi
@@ -56,7 +56,7 @@ lemma DGUniversalCounit.nativeIntervalMap_isSimplicialHomotopyEquivalence
     (X := dgNerve R E) (Simplex.vertex (F.obj x)) (Simplex.vertex (F.obj e.source))) ≫ _) at ht
   rw [hn] at ht
   simp only [Category.assoc] at ht
-  have hs := PinchedInterval.comparison_isQCatEquivalence
+  have hs := SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (X := dgNerve R C) (Simplex.vertex x) (Simplex.vertex e.source)
   rw [pinchedInterval_comparison_eq] at hs
   exact (hs.cancel_left ht).isSimplicialHomotopyEquivalence

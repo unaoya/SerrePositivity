@@ -41,7 +41,7 @@ theorem pullbackStrictTransportMap_bilateralEdge_localized_isIso
     [CartesianFibration (pullback.snd q (yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k))]
     [CocartesianFibration (pullback.snd q (yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k))] :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (kanCocartesianStrictTransportMap (pullback.snd q k) f)) := by
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f)) := by
   let b := yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k
   have hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) =
       b.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :=
@@ -51,7 +51,7 @@ theorem pullbackStrictTransportMap_bilateralEdge_localized_isIso
     (congrArg (k.app (Opposite.op ⦋0⦌)) (nerveInterval_target_vertex f)).symm
   let u := pullbackStrictEvaluationAt q k c _ hc
   let v := pullbackStrictEvaluationAt q k d _ hd
-  let t := kanCocartesianStrictTransportMap (pullback.snd q k) f
+  let t := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f
   let H := strictTransportEvaluationPrism (pullback.snd q k) f ≫ pullback.fst q k
   have hp : H ≫ q = fst (Δ[1] : SSet.{u}) _ ≫ b := by
     dsimp only [H, b]

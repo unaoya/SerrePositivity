@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Derived.RoofLeftPrismLift
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 /-!

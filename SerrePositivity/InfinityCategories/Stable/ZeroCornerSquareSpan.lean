@@ -73,7 +73,7 @@ lemma isZeroCornerSquareVertex_iff_of_vertexIso {X : SSet.{u}} [Quasicategory X]
 
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
 lemma zeroCornerSquareSpan_kanEquivalenceLifting (X : SSet.{u}) [Quasicategory X] :
-    F1B.KanEquivalenceLifting (zeroCornerSquareSpan X) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (zeroCornerSquareSpan X) := by
   have : Mono spanSquareBoundary.{u} := by
     dsimp only [spanSquareBoundary]
     infer_instance
@@ -81,5 +81,5 @@ lemma zeroCornerSquareSpan_kanEquivalenceLifting (X : SSet.{u}) [Quasicategory X
   exact kanEquivalenceLifting_fullRestriction IsZeroCornerSquareVertex
     (fun e ↦ isZeroCornerSquareVertex_iff_of_vertexIso e) IsZeroOuterSpanVertex
     (zeroCornerSquareSpan X) ((pre spanSquareBoundary).app X) rfl
-    (F1B.kanEquivalenceLifting_pre spanSquareBoundary) i hi he
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre spanSquareBoundary) i hi he
 end SerrePositivity.InfinityCategories

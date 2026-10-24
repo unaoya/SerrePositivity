@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
-public import SerrePositivity.InfinityCategories.F1B.MappingParameterNaturality
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParameterNaturality
 /-!
 概要：任意パラメータ族の合成方程式を、任意のパラメータ制限に沿って保つ。
 方針：関手圏の前合成の合成保存と実区間族の自然性を使う。

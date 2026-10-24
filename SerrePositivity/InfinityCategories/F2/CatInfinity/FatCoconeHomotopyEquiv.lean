@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeFromHomotopy
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberFamilies
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberFamilies
 
 /-!
 概要：太い余錐と動く定値図式への指定自然変換の厳密な全単射。

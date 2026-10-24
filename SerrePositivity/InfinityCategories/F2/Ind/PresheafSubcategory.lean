@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：元の前層内の κ-filtered 余極限閉包を全部分 ∞ 圏とし、同じ Yoneda を因子化する。

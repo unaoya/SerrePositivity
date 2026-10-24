@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyComponents
 public import SerrePositivity.KST.SConstruction.PointedKanHomotopyCategoryComparison
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-! # 図式全体の合成三角形を元の点つき成分へ戻す

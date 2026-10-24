@@ -1,0 +1,135 @@
+[
+  {
+    "old": "SerrePositivity.InfinityCategories.kanIsPrecompositionEquivalence_subcomplexInverseImage_iff",
+    "new": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_subcomplexInverseImage_iff",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanCocartesianInnerHornPullback.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/LeftFibrationInnerHornPullback.lean",
+    "body_sha256": "48b08be63b5720b25fd032cbfdd80f5b19027ee5a7da5f4bb4ff9a2d53587a54"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanSubcomplexInverseImage_isPullback",
+    "new": "SerrePositivity.InfinityCategories.subcomplexInverseImage_isPullback",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanCocartesianNerveHornPullback.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ReplacementInnerHornPullback.lean",
+    "body_sha256": "ff73d9928f121fa3af95b263fc447d2558a6499cf425f203bd45ef1886be329a"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanIsPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage",
+    "new": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanCocartesianNerveHornPullback.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ReplacementInnerHornPullback.lean",
+    "body_sha256": "426cda6e46ad964167639801ceef12e0bf9d2d5a92177c2c6d9e7f8d5fd4b166"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanSimplicialReplacementConstantLift_baseMap",
+    "new": "SerrePositivity.InfinityCategories.simplicialReplacementConstantLift_baseMap",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldBaseChange.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/LeftScaffoldBaseChange.lean",
+    "body_sha256": "1c68c0806379d925fdd2af630d75efdf920291e0752d67bf7d3f081a9fcc319b"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanSimplicialReplacementAssembly_const",
+    "new": "SerrePositivity.InfinityCategories.simplicialReplacementAssembly_const",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteCylinderEndpoints.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteCylinderEndpoints.lean",
+    "body_sha256": "5f35a56c78e6ac46c7ed1d62bc5b54aee8b8e177fe1d28dbf49e6bc035cd7152"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteFirstEdge_prism_zero",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteFirstEdge_prism_zero",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteCylinderEndpoints.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteCylinderEndpoints.lean",
+    "body_sha256": "8332e63754b15a47c0df45426affd86868c872db003f09d6b3eccd220762c552"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderComparison_endpoint_zero",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_zero",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteCylinderEndpoints.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteCylinderEndpoints.lean",
+    "body_sha256": "d09a6b7f2c66fde24c93f266fb0244cd9c525f4ad774ef2598074f6433f224d6"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderAttachingMap_baseMap",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteCylinderAttachingMap_baseMap",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteCylinderEndpoints.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteCylinderEndpoints.lean",
+    "body_sha256": "fa041e2cdb837a24c34ef6efd3248e2e8e1c724abb2186543b7f601d2314b89c"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderComparison_endpoint_one",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_one",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteCylinderEndpoints.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteCylinderEndpoints.lean",
+    "body_sha256": "6ccdf82ce2c0b4d2d576751981a8662c7d598f76a74b232ce3a7f7f570580d43"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteZeroFiberComparison_ι",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison_ι",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteFiberComparison.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteFiberComparison.lean",
+    "body_sha256": "e0b6a4107b1bfbbc269fc1c2114e409c934df60ee6c25380d620e078ee51d455"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteVerticalEdges.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteVerticalEdges.lean",
+    "body_sha256": "fc0333c5adea0705da52d76e2880d7b817139a27d25665862dc1c3dd7211631f"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism_projection",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_projection",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteVerticalEdges.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteVerticalEdges.lean",
+    "body_sha256": "0ca1d3a9483aa49e67f9a39608ecbf2a5d9df25d5ba8b9135d5efd547dffded6"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism_interval_projection",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_interval_projection",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteVerticalEdges.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/ScaffoldFiniteVerticalEdges.lean",
+    "body_sha256": "af0d75b7609b10fc29ad6bc9f2706e51f6aa9208776d2e5ec8ef6b913cff8886"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanVertexFiberι_isIso_of_nervePoint",
+    "new": "SerrePositivity.InfinityCategories.vertexFiberι_isIso_of_nervePoint",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldPoint.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/LeftScaffoldPoint.lean",
+    "body_sha256": "2985ae7f55d1ed5972c82592385fa0fccb7930444732ab3beecbb29e9662c634"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteZeroFiberComparison",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteFiberComparison.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "77b83d60683c81f4989a4bd7103143fc14dc28b8f909b35d5f3c48d7a67c661f"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteOneFiberComparison",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteFiberComparison.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "0217ccf7065bc49af44d40b59092b6f3d0bf90d5b5a78137909e98d7dba9b8ff"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiniteOneFiberComparison_ι",
+    "new": "SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison_ι",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldFiniteFiberComparison.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/Scaffold/FiniteFiberGeometry.lean",
+    "body_sha256": "f77713101216316d299bb0615c9f71c2aace1317a329241a45687ac7ae5b6155"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldFiberMap",
+    "new": "SerrePositivity.InfinityCategories.leftScaffoldFiberMap",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanCocartesianScaffold.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/Diagrams/ScaffoldFiberMaps.lean",
+    "body_sha256": "af0f4d7c9d970e489f5d3676e813914566d1d45b573dc0c05e8c09a6392c1608"
+  },
+  {
+    "old": "SerrePositivity.InfinityCategories.kanScaffoldBaseChange",
+    "new": "SerrePositivity.InfinityCategories.leftScaffoldBaseChange",
+    "source": "SerrePositivity/InfinityCategories/F1B/KanScaffoldBaseChange.lean",
+    "target": "SerrePositivity/InfinityCategories/F1/Diagrams/ScaffoldFiberMaps.lean",
+    "body_sha256": "f74261582815a0733b8f07e7020ba626de1e13693be1224e2f543e8f2dd241df"
+  }
+]

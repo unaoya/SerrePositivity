@@ -43,7 +43,7 @@ lemma loopConeFixedApexDiagramFiberMap_interval {X : SSet.{u}} [Quasicategory X]
     {y : X _⦋0⦌} (t : LoopSquare y) (x : X _⦋0⦌) :
     (loopConeFixedApexDiagramFiberIso t x).hom ≫
       loopConeClassifierDiagramFiberMap X x t.diagramVertex ≫
-        (F1B.kanUnitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x t.diagramVertex).hom =
+        (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x t.diagramVertex).hom =
       loopConeFixedApexIntervalFamily t x := by
   apply intervalFamilyHomotopy_h_injective
   rw [intervalFamilyHomotopy_precomp_h, loopConeClassifierDiagramFiberMap_interval_h,
@@ -62,11 +62,11 @@ lemma loopConeClassifierDiagramFiberMap_isQCatEquivalence_of_loopSquare
     {X : SSet.{u}} [Quasicategory X] {y : X _⦋0⦌} (t : LoopSquare y) (x : X _⦋0⦌) :
     IsQCatEquivalence (loopConeClassifierDiagramFiberMap X x t.diagramVertex) := by
   have hW := (qCatEquivalenceOfIso (loopConeFixedApexDiagramFiberIso t x)).isQCatEquivalence
-  have hI := (qCatEquivalenceOfIso (F1B.kanUnitCommaFiberIntervalIso
+  have hI := (qCatEquivalenceOfIso (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso
     (loopDiagramEvaluation X 0 0) x t.diagramVertex)).isQCatEquivalence
   have h : IsQCatEquivalence ((loopConeFixedApexDiagramFiberIso t x).hom ≫
       loopConeClassifierDiagramFiberMap X x t.diagramVertex ≫
-        (F1B.kanUnitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x
+        (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x
           t.diagramVertex).hom) := by
     rw [loopConeFixedApexDiagramFiberMap_interval]
     exact loopConeFixedApexIntervalFamily_isQCatEquivalence t x

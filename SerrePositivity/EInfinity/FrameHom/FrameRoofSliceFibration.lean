@@ -29,20 +29,20 @@ def roofTargetDegreeSliceIso :
     sliceOver (SSet.yonedaEquiv.symm b ≫ roofTargetProjection A Y q) ≅
       nerve (Over (roofTargetDegree A Y q b)) :=
   eqToIso (congrArg sliceOver (roofTargetPoint_projection A Y q b)) ≪≫
-    (F1B.kanNerveOverIso (roofTargetDegree A Y q b)).symm
+    (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).symm
 
 lemma roofTargetDegreeSliceIso_projection : (roofTargetDegreeSliceIso A Y q b).hom ≫
     nerveMap (Over.forget (roofTargetDegree A Y q b)) =
       sliceOverProjection (SSet.yonedaEquiv.symm b ≫ roofTargetProjection A Y q) := by
-  have hi : (F1B.kanNerveOverIso (roofTargetDegree A Y q b)).inv ≫
+  have hi : (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
       nerveMap (Over.forget (roofTargetDegree A Y q b)) =
         sliceOverProjection (SSet.yonedaEquiv.symm
           (nerveVertex (roofTargetDegree A Y q b))) := by
     change _ = sliceOverProjection (nervePoint (roofTargetDegree A Y q b))
-    rw [← F1B.kanNerveOverIso_projection, Iso.inv_hom_id_assoc]
+    rw [← SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   exact (Category.assoc _ _ _).trans ((congrArg
     (fun f => (eqToIso (congrArg sliceOver (roofTargetPoint_projection A Y q b))).hom ≫ f)
-    hi).trans (F1B.kanSliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b)))
+    hi).trans (SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b)))
 
 variable {S : SSet.{u}} (f : S ⟶ roofTarget A Y q)
 

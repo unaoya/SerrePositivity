@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Presh
 public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
-public import SerrePositivity.InfinityCategories.F1B.KanVertexFiberSquareIso
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso
 
 /-!
 概要：元の right unstraightening の反転 fiber を、同じ前層の評価の pointed fiber と比較する。
@@ -60,7 +60,7 @@ lemma presheafRightFiberPointedIso_ι :
       (SSet.opFunctor.map (vertexFiberι p x) ≫ (smallRightUnstraighteningOppositeIso F).hom) ≫
         (smallLeftUnstraighteningIso F).hom ≫ pullback.fst pointedSpaceProjection F := by
   simp only [presheafRightFiberPointedIso, Iso.trans_hom, Functor.mapIso_hom, Category.assoc]
-  rw [F1B.kanVertexFiberι_eqTransport pointedSpaceProjection
+  rw [SerrePositivity.InfinityCategories.F1B.vertexFiberι_eqTransport pointedSpaceProjection
     (presheafDensityEvaluationVertex_value F x).symm, leftUnstraighteningFiberIso_hom_ι]
   have hs := congrArg (fun f =>
     (SSet.uliftFunctor.{u + 1, u}).map (presheafRightFiberLeftIso F x).hom ≫ f ≫

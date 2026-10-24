@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 
 /-! # 指定二辺を持つ実関手二単体の合成辺
 

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.AdjunctParameterNaturality
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctParameterNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 
 /-!
 概要：h Fun の逆 adjunct は左関手による後合成と余単位との合成である。

@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories
 lemma kanEquivalenceLifting_kanCocartesianStrictTransportMap_of_thin
     {C : Type u} [Category.{u} C] [Quiver.IsThin C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] {c d : C} (f : c ⟶ d) :
-    F1B.KanEquivalenceLifting (kanCocartesianStrictTransportMap p f) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f) := by
   let i : Over.mk (nerveMap (Under.forget d)) ⟶
       Over.mk (nerveMap (Under.forget c)) :=
     Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
@@ -36,22 +36,22 @@ lemma kanEquivalenceLifting_kanCocartesianStrictTransportMap_of_thin
 lemma kanEquivalenceLifting_kanCocartesianStrictTransportMap_finite
     (n : ℕ) {E : SSet.{u}} (p : E ⟶ nerve (ULift.{u} (Fin (n + 1))))
     [CocartesianFibration p] {c d : ULift.{u} (Fin (n + 1))} (f : c ⟶ d) :
-    F1B.KanEquivalenceLifting (kanCocartesianStrictTransportMap p f) :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f) :=
   kanEquivalenceLifting_kanCocartesianStrictTransportMap_of_thin p f
 
 /-- 同じ輸送遷移の後合成は、任意の始域を持つ全内部 Hom で同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_kanCocartesianStrictTransportPostHom
     {C : Type u} [Category.{u} C] [Quiver.IsThin C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] {c d : C} (f : c ⟶ d) (A : SSet.{u}) :
-    F1B.KanEquivalenceLifting ((ihom A).map (kanCocartesianStrictTransportMap p f)) :=
-  F1B.KanEquivalenceLifting.internalHom
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting ((ihom A).map (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f)) :=
+  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.internalHom
     (kanEquivalenceLifting_kanCocartesianStrictTransportMap_of_thin p f) A
 
 /-- 同じ後合成の core 上の実際の作用は Kan fibration。 -/
 lemma core_kanCocartesianStrictTransportPostHom_fibration
     {C : Type u} [Category.{u} C] [Quiver.IsThin C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] {c d : C} (f : c ⟶ d) (A : SSet.{u}) :
-    Fibration (quasicategoryCoreMap ((ihom A).map (kanCocartesianStrictTransportMap p f))) :=
+    Fibration (quasicategoryCoreMap ((ihom A).map (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f))) :=
   F2.coreMap_fibration_of_kanEquivalenceLifting _
     (kanEquivalenceLifting_kanCocartesianStrictTransportPostHom p f A)
 

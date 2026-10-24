@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
-public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 指定底三角形を保つ実ホモトピー合成
 

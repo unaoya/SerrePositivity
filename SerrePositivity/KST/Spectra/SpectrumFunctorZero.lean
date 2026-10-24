@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumZeroObject
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
-public import SerrePositivity.InfinityCategories.F1B.FunctorInitial
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorInitial
 public import SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison
 
 /-!

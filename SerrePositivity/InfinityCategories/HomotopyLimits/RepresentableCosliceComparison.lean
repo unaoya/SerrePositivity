@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningComparison
-public import SerrePositivity.InfinityCategories.F1B.QuillenASliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpposite
 
 /-!
 概要：元の反転 coslice から元の表現可能前層の小さい unstraightening への比較。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
-public import SerrePositivity.InfinityCategories.F1B.FunctorRelativeInitial
-public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryIso
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryIso
 public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
 
 /-!

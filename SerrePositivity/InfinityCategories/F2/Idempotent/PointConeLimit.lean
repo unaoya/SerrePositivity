@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 
 /-!
 概要：元の一点図式の錐が同じ頂点への定値写像なら、元の錐は極限錐である。
@@ -27,6 +27,6 @@ lemma pointCone_isLimit_of_constant {X : SSet.{u}} [Quasicategory X]
   subst p
   have he : c = sliceIdentityCone x := Subtype.ext hc
   rw [he]
-  exact F1B.kanSliceIdentityCone_isTerminalVertex x
+  exact SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex x
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

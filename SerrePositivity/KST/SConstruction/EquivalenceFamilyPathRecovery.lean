@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 同値の path 置換による境界固定の族の回収
 概要：同値の像にある族を、指定した境界を厳密に保つ元の族と実比較円柱へ戻す。

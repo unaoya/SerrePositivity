@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
 
 /-!
 概要：区間の path 置換の定値切断と、その弱ホモトピー同値性。

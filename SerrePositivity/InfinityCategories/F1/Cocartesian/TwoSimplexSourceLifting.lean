@@ -36,7 +36,7 @@ lemma cocartesianTwoSimplexLocalSource_first_fibration :
 
 /-- 同じ源 cospan の最初の脚は、元の Kan 複体間で同値を持ち上げる。 -/
 lemma cocartesianTwoSimplexLocalSource_first_kanEquivalenceLifting :
-    F1B.KanEquivalenceLifting
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       ((cocartesianTwoSimplexLocalSource k p q).map WalkingCospan.Hom.inl) := by
   have := cocartesianTwoSimplexLocalSource_first_fibration k p q
   intro T U j hj he

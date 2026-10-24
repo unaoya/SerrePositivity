@@ -38,7 +38,7 @@ lemma markedCocartesianFunctorUncurry_vertex {A T E B : SSet.{u}}
       lift (𝟙 A) (SSet.const x) ≫ markedCocartesianFunctorUncurry g := by
   apply functorVertex_injective
   exact ((functorVertexEquiv A E).apply_symm_apply _).trans
-    (kanFunctorVertex_parameter
+    (SerrePositivity.InfinityCategories.functorVertex_parameter
       (g ≫ markedCocartesianFunctorInclusion q a W ≫ vertexFiberι _ _) x).symm
 
 /-- 展開した同じ族は、各パラメーター頂点で始域の指定辺を cocartesian に送る。 -/

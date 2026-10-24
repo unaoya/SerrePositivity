@@ -72,7 +72,7 @@ set_option maxHeartbeats 800000 in
 lemma coconeBoundaryTransportPointIso_hom_arrow :
     Arrow.mk (coconeBoundaryTransportPointIso i F hi d e).hom =
       Arrow.mk (FunctorIso.precomp (leftFibrationMap_transportIso qF qA r hr e) V).hom :=
-  kanFunctorIsoTransport_hom_arrow
+  SerrePositivity.InfinityCategories.functorIsoTransport_hom_arrow
     (FunctorIso.precomp (leftFibrationMap_transportIso qF qA r hr e) V)
     (coconeBoundaryTransport_source i F hi d e)
     (coconeBoundaryTransport_target i F hi d e)
@@ -83,7 +83,7 @@ lemma coconeBoundaryTransportHomotopy_hom :
         (coconeBoundaryTransportHomotopy i F hi d e)) =
       (coconeBoundaryTransportPointIso i F hi d e).hom := by
   apply Arrow.mk_injective _ _
-  refine (kanFunctorHomotopy_hom_arrow_of_h_eq
+  refine (SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (coconeBoundaryTransportHomotopy i F hi d e)
     (functorHomotopyPrecomp (mapTransportEndpointHomotopy qF qA r hr e) V) rfl).trans ?_
   have h : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy

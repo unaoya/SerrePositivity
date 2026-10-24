@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RightFibrationRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessOpposite
-public import SerrePositivity.InfinityCategories.F1B.CofinalOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOppositeFibration
 
 /-!
 概要：指定した元の頂点の底の retract を、左 fibration の全体へ持ち上げる。

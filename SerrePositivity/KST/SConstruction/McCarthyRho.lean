@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.McCarthyRhoRaw
 public import SerrePositivity.KST.SConstruction.McCarthySpanGapped
 public import SerrePositivity.KST.SConstruction.PointwiseCofiberPushout
 public import SerrePositivity.KST.SConstruction.PointwiseGappedPushout
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-! # McCarthy の ρ の cofiber 値への持ち上げ
 概要：元の C 内で選んだ raw ρ の全頂点が cofiber であることを証明する。

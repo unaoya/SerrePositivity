@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLiftingInvertible
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
 
 /-!
 概要：指定された可逆な関手の辺を前合成に沿って持ち上げる。
@@ -31,7 +31,7 @@ lemma exists_precomposition_edge_lift {A B X : SSet.{u}} [Quasicategory X]
         (functorVertex w) (functorVertex g),
         ((pre i).app X).app (Opposite.op ⦋1⦌) l.edge = e.edge ∧ IsInvertibleEdge l := by
   let p := (pre i).app X
-  have hp : F1B.KanEquivalenceLifting p := F1B.kanEquivalenceLifting_pre (X := X) i
+  have hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p := SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre (X := X) i
   let a : ((ihom A).obj X) _⦋1⦌ := e.edge
   have ha : SSet.yonedaEquiv (SSet.yonedaEquiv.symm a) = a :=
     SSet.yonedaEquiv.apply_symm_apply a

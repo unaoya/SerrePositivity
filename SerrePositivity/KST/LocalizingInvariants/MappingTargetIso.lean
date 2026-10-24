@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetMapping
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 
 /-!
 概要：終点の同型は、元の関手が Hom に誘導する写像の全単射性を保つ。

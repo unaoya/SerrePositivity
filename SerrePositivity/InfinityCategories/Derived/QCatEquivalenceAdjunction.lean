@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.Adjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 /-!
 概要：実 ∞ 圏同値の両比較同型を、三角恒等式を満たす実 ∞ 随伴へ昇格する。
 方針：h Fun の同型を双圏の二同型へ戻し、余単位を adjointify する。

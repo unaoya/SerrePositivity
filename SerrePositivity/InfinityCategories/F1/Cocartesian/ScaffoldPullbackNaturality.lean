@@ -20,13 +20,13 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianScaffoldPullbackOverMap_naturality
     {C : Type u} [Category.{u} C] {E : SSet.{u}} (p : E ⟶ nerve C)
     {a b : Over (nerve C)} (f : a ⟶ b) :
-    (Over.pullback (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ⋙
-        Over.map (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f ≫
+    (Over.pullback (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ⋙
+        Over.map (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f ≫
       cocartesianScaffoldPullbackOverMap p b =
     cocartesianScaffoldPullbackOverMap p a ≫ (Over.pullback p ⋙ Over.map p).map f := by
   apply Over.OverMorphism.ext
   change (overPullbackUnderlying
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map f ≫
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map f ≫
         (cocartesianScaffoldPullbackOverMap p b).left =
     (cocartesianScaffoldPullbackOverMap p a).left ≫ (overPullbackUnderlying p).map f
   apply pullback.hom_ext

@@ -35,7 +35,7 @@ lemma intervalMappingPostOfEq_trivialKanFibration
     (p : X ⟶ Y) [TrivialKanFibration p] (x y : X _⦋0⦌) {x' y' : Y _⦋0⦌}
     (hx : p.app _ x = x') (hy : p.app _ y = y') :
     TrivialKanFibration (intervalMappingPostOfEq p x y hx hy) := by
-  have hp : F1B.KanEquivalenceLifting p := by
+  have hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p := by
     intro A B j hj _
     exact TrivialKanFibration.mem (p := p) j hj
   exact ((isFullyFaithful_of_trivialKanFibration p).intervalMappingPostOfEq_isQCatEquivalence

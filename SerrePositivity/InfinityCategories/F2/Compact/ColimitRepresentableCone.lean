@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableDiagramLimits
-public import SerrePositivity.InfinityCategories.F1B.KanNerveCoconeVertex
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconeVertex
 
 /-!
 概要：元の余極限余錐から、同じ頂点からの全共変 Hom を頂点とする極限錐を構成。
@@ -25,20 +25,20 @@ def colimitRepresentableCone (c : JoinCocone D) :
     JoinCone ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map D) ≫
       covariantRepresentableDiagram C) :=
   mapJoinCone (covariantRepresentableDiagram C)
-    (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))
+    (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))
 
 /-- 構成した全錐の頂点は、元の指定余錐の頂点からの同じ全共変 Hom。 -/
 lemma colimitRepresentableCone_vertex (c : JoinCocone D) :
     (colimitRepresentableCone c).vertex =
       functorVertex (covariantRepresentableInfinity c.vertex) := by
   rw [colimitRepresentableCone, mapJoinCone_vertex, JoinCone.ulift_vertex,
-    F1B.kanCoconeReverseCone_vertex, covariantRepresentableDiagram_vertex]
+    SerrePositivity.InfinityCategories.F1B.coconeReverseCone_vertex, covariantRepresentableDiagram_vertex]
 
 /-- 元の余極限余錐からの全 Hom の錐は、全係数で同じ各点極限錐になる。 -/
 lemma colimitRepresentableCone_isPointwiseLimit (c : JoinCocone D) (hc : IsColimitCone c) :
     IsPointwiseLimitCone (colimitRepresentableCone c) :=
-  covariantRepresentableDiagram_isPointwiseLimit (F1B.kanCoconeReverseCone c)
-    ((F1B.kanIsColimitCone_iff_reverseCone c).mp hc)
+  covariantRepresentableDiagram_isPointwiseLimit (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)
+    ((SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).mp hc)
 
 /-- 元の余極限余錐からの同じ全 Hom は、関手 ∞ 圏内の元の図式の極限。 -/
 lemma colimitRepresentableCone_isLimit (c : JoinCocone D) (hc : IsColimitCone c) :

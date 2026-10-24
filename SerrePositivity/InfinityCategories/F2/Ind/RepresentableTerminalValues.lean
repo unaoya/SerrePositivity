@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheaf
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 
 /-!
 概要：始対象での表現可能前層の値と、終対象を表す前層の終対象性。

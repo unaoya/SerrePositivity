@@ -26,11 +26,11 @@ variable [InnerFibration (show E.obj ⟶ B.obj from p)]
 方針：内部 Hom の引き戻し保存に core を適用し、core の交換同型を合成する。
 規約：第一の射の右持ち上げ条件により内部 Hom の inner 性を確保する。
 使われ方：全試験対象からの実際の豊穣 Hom の極限性。 -/
-def qCatPullbackHomIso (T : QCat.{u}) (hp : F1B.KanEquivalenceLifting (show E.obj ⟶ B.obj from p)) :
+def qCatPullbackHomIso (T : QCat.{u}) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (show E.obj ⟶ B.obj from p)) :
     SimplicialCategory.sHom T (qCatPullbackObject p q) ≅
       pullback (quasicategoryCoreMap ((ihom T.obj).map (show E.obj ⟶ B.obj from p)))
         (quasicategoryCoreMap ((ihom T.obj).map (show F.obj ⟶ B.obj from q))) := by
-  have := F1B.KanEquivalenceLifting.innerFibration (F1B.KanEquivalenceLifting.internalHom hp T.obj)
+  have := SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.internalHom hp T.obj)
   exact quasicategoryCoreFunctor.mapIso (PreservesPullback.iso (ihom T.obj)
     (show E.obj ⟶ B.obj from p) (show F.obj ⟶ B.obj from q)) ≪≫
       corePullbackIso ((ihom T.obj).map (show E.obj ⟶ B.obj from p))
@@ -40,7 +40,7 @@ def qCatPullbackHomIso (T : QCat.{u}) (hp : F1B.KanEquivalenceLifting (show E.ob
 規約：順方向の標準比較射の厳密な等式。
 使われ方：実際の錐の第一成分の照合。 -/
 lemma qCatPullbackHomIso_fst (T : QCat.{u})
-    (hp : F1B.KanEquivalenceLifting (show E.obj ⟶ B.obj from p)) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (show E.obj ⟶ B.obj from p)) :
     (qCatPullbackHomIso p q T hp).hom ≫
       pullback.fst (quasicategoryCoreMap ((ihom T.obj).map (show E.obj ⟶ B.obj from p)))
         (quasicategoryCoreMap ((ihom T.obj).map (show F.obj ⟶ B.obj from q))) =
@@ -61,7 +61,7 @@ lemma qCatPullbackHomIso_fst (T : QCat.{u})
 規約：順方向の標準比較射の厳密な等式。
 使われ方：実際の錐の第二成分の照合。 -/
 lemma qCatPullbackHomIso_snd (T : QCat.{u})
-    (hp : F1B.KanEquivalenceLifting (show E.obj ⟶ B.obj from p)) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (show E.obj ⟶ B.obj from p)) :
     (qCatPullbackHomIso p q T hp).hom ≫
       pullback.snd (quasicategoryCoreMap ((ihom T.obj).map (show E.obj ⟶ B.obj from p)))
         (quasicategoryCoreMap ((ihom T.obj).map (show F.obj ⟶ B.obj from q))) =

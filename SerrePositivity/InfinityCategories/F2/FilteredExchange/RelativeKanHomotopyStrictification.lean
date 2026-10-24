@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanBoundaryHomotopyFinalExtension
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeHomotopySharedFinal
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：境界も移動する相対持ち上げを、境界を厳密に固定した持ち上げへ補正する。

@@ -36,7 +36,7 @@ lemma simplex_front {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin
 
 lemma prism_projection : prism C U p hp σ hU ≫ sliceOverProjection
     (SSet.yonedaEquiv.symm (coherentNerveVertex ((kanHammockSourceFunctor C).obj Y))) =
-    (β_ (Δ[1] : SSet.{u}) (nerve I)).hom ≫ (F1B.kanNerveNatTransHomotopy p).h ≫
+    (β_ (Δ[1] : SSet.{u}) (nerve I)).hom ≫ (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy p).h ≫
       hammockLocalizationNerveMap C := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -50,7 +50,7 @@ lemma prism_projection : prism C U p hp σ hU ≫ sliceOverProjection
   change (nerveToCoherent (KanHammockCategory C)).app (Opposite.op ⦋n⦌)
     (frontDiagram C U p Γ (stdSimplex.objEquiv t).toOrderHom) =
     (nerveToCoherent (KanHammockCategory C)).app (Opposite.op ⦋n⦌)
-      (((F1B.kanNerveNatTransHomotopy p).h.app (Opposite.op ⦋n⦌) (Γ, t)) ⋙
+      (((SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy p).h.app (Opposite.op ⦋n⦌) (Γ, t)) ⋙
         kanHammockSourceFunctor C)
   rw [FrameHom.nerveNatTransHomotopy_app]
   rfl

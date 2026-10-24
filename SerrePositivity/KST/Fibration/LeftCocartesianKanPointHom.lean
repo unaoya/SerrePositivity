@@ -23,11 +23,11 @@ def leftCocartesianKanComparisonValueIso (i : I) :
 
 /-- 同じ指定成分は、元の置換単位上で、元の section 包含の点の像を回収する。 -/
 theorem leftCocartesianKanComparisonValueIso_pointHom (i : I)
-    (v : ((kanCocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
+    (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
     cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
         ((F2.continuousKanReplacementUnit.app
-          ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
+          ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
       (leftCocartesianKanComparisonValueIso p i).hom =
     cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((leftStrictTransportFunctor p).obj i)).symm
@@ -42,13 +42,13 @@ theorem leftCocartesianKanComparisonValueIso_pointHom (i : I)
     have := kanCocartesianSectionsι_isIso_of_leftFibration p (nerveMap (Under.forget c))
     apply strictKanCompletion_map_isQCatEquivalence
     change IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (kanCocartesianSectionsι p (nerveMap (Under.forget c))))
+      (SerrePositivity.InfinityCategories.cocartesianSectionsι p (nerveMap (Under.forget c))))
     infer_instance
   let e := kanDiagramFunctorIsoOfPointwise
     (F := ⟨A, trivial⟩) (G := ⟨G, trivial⟩) η hη
   let w := ((cocartesianStrictTransportInclusion p).app i).app (Opposite.op ⦋0⦌) v
   let v' := (F2.continuousKanReplacementUnit.app
-    ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v
+    ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v
   have he : leftCocartesianKanComparisonValueIso p i =
       kanDiagramValueIso e i ≪≫ (kanDiagramValueIso (kanDiagramCompletionIso B) i).symm := by
     change kanDiagramValueIso (e ≪≫ (kanDiagramCompletionIso B).symm) i = _
@@ -61,7 +61,7 @@ theorem leftCocartesianKanComparisonValueIso_pointHom (i : I)
     change (F2.continuousKanReplacement.map
       ((cocartesianStrictTransportInclusion p).app i)).app (Opposite.op ⦋0⦌)
         ((F2.continuousKanReplacementUnit.app
-          ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v) =
+          ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v) =
       (F2.continuousKanReplacementUnit.app ((leftStrictTransportDiagram p).obj i)).app
         (Opposite.op ⦋0⦌)
         (((cocartesianStrictTransportInclusion p).app i).app (Opposite.op ⦋0⦌) v)

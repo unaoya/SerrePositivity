@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleBoundaryGluing
 
 /-! パラメーター付き三角形境界の二枝は、同じ対角の両端で貼り合う。 -/
 @[expose] public section

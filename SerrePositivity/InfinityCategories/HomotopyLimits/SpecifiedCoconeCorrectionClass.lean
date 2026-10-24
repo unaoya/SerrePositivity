@@ -38,7 +38,7 @@ lemma specifiedCoconeCorrectionEndpoint_boundary_hom_arrow :
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk ((s).map F).toTruncated) =
       Arrow.mk (VertexIso.map I (pointFunctorEvaluationIso (vertexFiber q z)).hom).hom := by
   apply homotopyEquivalencePath_point_hom_arrow (I).simplicialHomotopy I
-    (kanFunctorIso_simplicialHomotopy_hom I) ((s).map F)
+    (SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom I) ((s).map F)
   exact specifiedCoconeRightCorrectionExtensionEdge_boundary_edge hp p c hc dB dC
 
 /-- 根辺の正準比較も、元の指定境界同型の同じ一点評価を保つ。 -/

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LiftedIntervalCospanRectification
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：持ち上げた interval cospan の厳密化後の左成分の同値性。

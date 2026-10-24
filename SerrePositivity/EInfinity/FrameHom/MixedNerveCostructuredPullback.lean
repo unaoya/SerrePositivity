@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 
 /-!
 # 対象宇宙の異なる次数関手と comma nerve の引き戻し
@@ -57,7 +57,7 @@ def projection : nerve (CostructuredArrow A c) ⟶ nerve I where
 
 lemma isPullback : IsPullback (nerveMap (CostructuredArrow.toOver A c))
     (projection A c) (nerveMap (Over.forget c)) (baseMap A) := by
-  exact (F1B.kanNerveCostructuredArrow_isPullback (lifted A) c).of_iso
+  exact (SerrePositivity.InfinityCategories.F1B.nerveCostructuredArrow_isPullback (lifted A) c).of_iso
     (commaNerveIso A c).symm (Iso.refl _) (sourceNerveIso (I := I)).symm (Iso.refl _)
     (by rfl) (by rfl) (by rfl) (by rfl)
 

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcom
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecompositionEquivalence
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPredicateReflection
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldIso
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldComparison
+public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison
 
 /-!
 概要：cocartesian strict transport の元の全相対 Hom 作用は写像空間の同値。
@@ -30,14 +30,14 @@ lemma cocartesianStrictTransportScaffoldRestriction_isQCatEquivalence
     [CocartesianFibration p] [CocartesianFibration q] :
     IsQCatEquivalence (cocartesianStrictTransportScaffoldRestriction p q) := by
   let R := relativeFunctorOverPre q (Over.homMk
-    (U := Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
-    (V := Over.mk p) (kanUniversalScaffold p) (kanUniversalScaffold_projection p))
+    (U := Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
+    (V := Over.mk p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p))
   have hR : IsQCatEquivalence R :=
     relativeFunctorOverPre_isQCatEquivalence_of_cocartesian q _
-      (kanUniversalScaffold_isPrecompositionEquivalence p)
+      (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_isPrecompositionEquivalence p)
   apply isQCatEquivalence_fullSubcomplexRestriction
     (cocartesianRelativeFunctorPredicate p q)
-    (CocartesianScaffoldFunctorPredicate (kanCocartesianStrictTransportDiagram p) q)
+    (CocartesianScaffoldFunctorPredicate (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q)
     (fun h => cocartesianScaffoldFunctorPredicate_iff_of_vertexIso _ q h) R hR
     (cocartesianStrictTransportScaffoldRestriction p q)
   · exact (cocartesianStrictTransportScaffoldRestriction_isPullback p q).w
@@ -51,7 +51,7 @@ lemma cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence
     [CocartesianFibration p] [CocartesianFibration q] :
     IsQCatEquivalence (cocartesianStrictTransportMappingSpaceMap p q) := by
   apply (cocartesianDiagramScaffoldMappingSpaceMap_isQCatEquivalence
-    (kanCocartesianStrictTransportDiagram p) q).cancel_right
+    (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q).cancel_right
   rw [cocartesianStrictTransportMappingSpaceMap_scaffold]
   exact cocartesianStrictTransportScaffoldRestriction_isQCatEquivalence p q
 

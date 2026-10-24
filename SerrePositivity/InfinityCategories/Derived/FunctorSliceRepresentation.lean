@@ -31,7 +31,7 @@ lemma roofFunctorSliceRepresentationMap_over (C : FunctorSliceRepresentation K z
     roofFunctorSliceRepresentationMap K z C ≫ sliceOverProjection _ =
       roofFunctorSliceProjection K z := by
   dsimp only [roofFunctorSliceRepresentationMap]
-  rw [Category.assoc, F1B.kanSliceOverProjection_eqTransport
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport
     (roofFunctorSliceIdentity_point K z)]
   exact roofTerminalRepresentationMap_over _ _ _ C.coneSection_projection
 /-- 全パラメータ関手圏の slice 表示は、quasicategory の同値。 -/

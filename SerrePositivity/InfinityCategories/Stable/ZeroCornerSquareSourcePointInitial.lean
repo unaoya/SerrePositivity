@@ -26,7 +26,7 @@ lemma zeroCornerSquareSourcePoint_fixedSpan_isInitial {X : SSet.{u}}
   let p := zeroCornerSquareSpanSourceFiberMap X x
   let b := p.app (Opposite.op ⦋0⦌) z
   let v : (vertexFiber p b) _⦋0⦌ := ⟨z, (pinchedConstant_zero _).symm⟩
-  have hp : F1B.KanEquivalenceLifting p :=
+  have hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p :=
     zeroCornerSquareSpanSourceFiberMap_kanEquivalenceLifting X x
   have := hp.innerFibration
   have : Quasicategory (vertexFiber p b) := innerFibration_vertexFiber_quasicategory p b

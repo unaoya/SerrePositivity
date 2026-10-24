@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductPreservation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：有限余積を積へ送る前層の ∞ 圏 P_Σ(C)。

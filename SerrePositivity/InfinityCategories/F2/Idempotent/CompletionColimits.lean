@@ -25,8 +25,8 @@ lemma IsIdempotentCompletion.mapJoinCocone_isColimit {K C D : SSet.{u}}
     {p : K ⟶ C} (c : JoinCocone p) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone f c) := by
   have h := IsIdempotentCompletion.mapJoinCone_isLimit (SSet.opFunctor.map f)
-    (IsIdempotentCompletion.op_general f hf) (F1B.kanCoconeReverseCone c)
-    ((F1B.kanIsColimitCone_iff_reverseCone c).mp hc)
+    (IsIdempotentCompletion.op_general f hf) (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)
+    ((SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).mp hc)
   exact (F2.isLimitCone_reverse_postcomp_iff c f).mp h
 
 /-- 元の任意の冪等完備化は、元の図式の余極限の存在をその同じ像へ移す。 -/

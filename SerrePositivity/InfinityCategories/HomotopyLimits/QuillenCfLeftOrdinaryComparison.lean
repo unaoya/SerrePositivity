@@ -134,7 +134,7 @@ lemma quillenCfLeftDerived_ordinaryComparison :
     exact hKc (T.app _ x)
   obtain ⟨hiso⟩ := cocartesianPrism_targetFunctorIso p H K' hk0.symm (hHp.trans hkp.symm)
     hHc hkc
-  let eiso : FunctorIso (P ≫ j) (G ≫ j) := kanFunctorIsoTransport hiso hH1 hk1
+  let eiso : FunctorIso (P ≫ j) (G ≫ j) := SerrePositivity.InfinityCategories.functorIsoTransport hiso hH1 hk1
   exact endpointFunctorIso_reflection p 1 j (quillenCfCollageTopNerve_isFullyFaithful R adj SC SD)
     (quillenCfTopFiberIso R) (quillenCfTopFiberIso_hom_ι R) eiso
 

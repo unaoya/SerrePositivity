@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.RelativePrismHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 元パラメーターへの制限は、全 prism 比較の両端固定条件を厳密に保存する。 -/
 @[expose] public section

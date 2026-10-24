@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 元の cocartesian fibration の strict transport として現れる図式。 -/
 def CocartesianTransportDiagramObject (C : Type u) [Category.{u} C] :=
   {F : C ⥤ SSet.{u} // ∃ p : CocartesianFibrationObject (nerve C),
-    kanCocartesianStrictTransportDiagram p.val.hom = F}
+    SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p.val.hom = F}
 
 /-- strict transport 図式の元の全変換空間を Hom とする豊穣構造。 -/
 instance cocartesianTransportDiagramObject_enrichedCategory (C : Type u) [Category.{u} C] :
@@ -59,6 +59,6 @@ instance cocartesianTransportDiagramObject_sHom_quasicategory
 /-- 指定した cocartesian fibration の元の strict transport を図式の対象にする。 -/
 def cocartesianTransportDiagramImage {C : Type u} [Category.{u} C]
     (p : CocartesianFibrationObject (nerve C)) : CocartesianTransportDiagramObject C :=
-  ⟨kanCocartesianStrictTransportDiagram p.val.hom, p, rfl⟩
+  ⟨SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p.val.hom, p, rfl⟩
 
 end SerrePositivity.InfinityCategories

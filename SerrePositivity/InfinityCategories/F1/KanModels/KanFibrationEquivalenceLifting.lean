@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanRelativePathLifting
-public import SerrePositivity.InfinityCategories.F1B.KanIsofibrationCriterion
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftLifting
 
 /-!
@@ -23,15 +23,15 @@ namespace SerrePositivity.InfinityCategories
 /-- Kan 複体間の Kan fibration は、同じ射で同値の相対持ち上げを持つ。 -/
 lemma kanEquivalenceLifting_of_kanFibration {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] (p : E ⟶ B) [Fibration p] :
-    F1B.KanEquivalenceLifting p := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p := by
   have hp := (SSet.modelCategoryQuillen.fibration_iff p).1 inferInstance
   have : InnerFibration p :=
     ⟨fun _ _ i hi ↦ hp i (innerHornInclusions_le_J i hi)⟩
   have : TrivialKanFibration (relativeEquivalencePathMapAt p 1) :=
     HomotopyLimits.relativeEquivalencePathMapAt_trivialKanFibration_of_fibration p 1
   intro T U j hj he
-  exact F1B.kanEquivalenceLifting_of_innerFibration_of_targetLifting p
-    (F1B.kanInvertibleTargetLifting_of_relativePath p) j hj he
+  exact SerrePositivity.InfinityCategories.F1B.equivalenceLifting_of_innerFibration_of_targetLifting p
+    (SerrePositivity.InfinityCategories.F1B.invertibleTargetLifting_of_relativePath p) j hj he
 
 /-- 同じ Kan fibration の宇宙持ち上げも、全ホーンを持ち上げる。 -/
 lemma fibration_uliftFunctor_map {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] :

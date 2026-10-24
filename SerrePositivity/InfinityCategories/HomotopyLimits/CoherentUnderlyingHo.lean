@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Coherent.OrderPostcomposition
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：元の通常の射と coherent nerve のホモトピー圏の関手を照合する。

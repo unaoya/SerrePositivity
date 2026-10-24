@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredTrivialKanFibrations
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiagramPathSpan
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
 
 /-!
 概要：Kan 値の filtered 図式の成分ごとの弱同値は、通常の余極限でも弱同値。

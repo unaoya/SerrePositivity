@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
 public import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedPiCriterion
 public import SerrePositivity.KST.Spectra.HomotopyComponents
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
 /-!
 概要：実正規化射の準同型性と台単体集合の弱同値の同値。

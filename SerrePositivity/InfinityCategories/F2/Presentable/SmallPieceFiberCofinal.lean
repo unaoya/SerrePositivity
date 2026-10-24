@@ -50,14 +50,14 @@ lemma smallPieceFiberToComma_isRightCofinal (A : SmallFilteredPieces κ μ I) :
 def smallPieceFiberKanComparison (A : SmallFilteredPieces κ μ I) :
     nerve A.val ⟶ leftKanShape (nerveMap smallFilteredTotalPiece) (nerveVertex A) :=
   nerveMap (smallPieceFiberToComma A) ≫
-    (F1B.kanNerveLeftKanShapeIso smallFilteredTotalPiece A).hom
+    (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso smallFilteredTotalPiece A).hom
 
 /-- 同じ native な局所比較は right cofinal。 -/
 lemma smallPieceFiberKanComparison_isRightCofinal (A : SmallFilteredPieces κ μ I) :
     IsRightCofinal (smallPieceFiberKanComparison A) :=
   (smallPieceFiberToComma_isRightCofinal A).comp
     (isRightCofinal_of_trivialKanFibration
-      (F1B.kanNerveLeftKanShapeIso smallFilteredTotalPiece A).hom)
+      (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso smallFilteredTotalPiece A).hom)
 
 /-- 同じ局所比較は、全空間の元の fiber 包含を厳密に回収する。 -/
 lemma smallPieceFiberKanComparison_projection (A : SmallFilteredPieces κ μ I) :
@@ -65,7 +65,7 @@ lemma smallPieceFiberKanComparison_projection (A : SmallFilteredPieces κ μ I) 
       (nerveMap smallFilteredTotalPiece) (nerveVertex A) =
         nerveMap (smallFilteredTotalFiber A) := by
   dsimp only [smallPieceFiberKanComparison]
-  rw [Category.assoc, F1B.kanNerveLeftKanShapeIso_hom_projection]
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection]
   rfl
 
 end SerrePositivity.InfinityCategories.F2.Presentable

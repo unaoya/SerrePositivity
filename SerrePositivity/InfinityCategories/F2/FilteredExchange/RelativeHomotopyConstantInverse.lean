@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ForkTriangleMissingHomotopy
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeHornTensorExtension
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：指定部分で定値なホモトピーを、その定値境界を保って逆向きにする。

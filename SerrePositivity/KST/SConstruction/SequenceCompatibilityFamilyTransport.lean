@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SequenceCompatibilityTransport
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 全パラメータの指定適合円柱を列の射で前合成する
 概要：元の構造射と段の射の二合成の間の全円柱を、指定した列の射で移す。

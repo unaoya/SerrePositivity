@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductSmallFiber
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCommonFiberProductVertexIso
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 
 /-!
 概要：元の有限 coherent 積の小さい全空間から元の共通 fiber 積への指定比較は同値。

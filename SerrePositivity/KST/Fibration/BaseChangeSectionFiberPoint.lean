@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.BaseChangeImageSectionValue
-public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 
 /-! # 同じ切断の初頂点 fiber 点は、元の底変換 fiber 同型で両立する -/
 

@@ -54,8 +54,8 @@ lemma covariantRepresentableDiagram_reflects_isLimit
 lemma isColimitCone_iff_fullHomCone {K C : SSet.{u}} [Quasicategory C] {D : K ⟶ C}
     (c : JoinCocone D) : IsColimitCone c ↔ IsLimitCone (colimitRepresentableCone c) :=
   ⟨colimitRepresentableCone_isLimit c, fun hc =>
-    (F1B.kanIsColimitCone_iff_reverseCone c).mpr
-      (covariantRepresentableDiagram_reflects_isLimit (F1B.kanCoconeReverseCone c) hc)⟩
+    (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).mpr
+      (covariantRepresentableDiagram_reflects_isLimit (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c) hc)⟩
 
 /-- 元の関手の sifted 保存性は、元の全余錐像の全 Hom 錐の極限性と同値。 -/
 lemma preservesSmallSiftedColimits_iff_fullHomCones

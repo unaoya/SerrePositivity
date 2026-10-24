@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：κ-compact 対象の全部分 ∞ 圏と、その coherent 冪等完備性を構成。

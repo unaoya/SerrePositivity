@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 /-!
 概要：実 pinched Hom 族の後合成を、同じ関手圏の後合成へ端点の同型ごと移す。
 方針：実区間比較の厳密な自然性と関手圏の後合成の計算を使う。

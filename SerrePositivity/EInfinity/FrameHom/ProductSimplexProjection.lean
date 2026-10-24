@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
-public import SerrePositivity.InfinityCategories.F1B.WeakReverseHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotopy
 
 /-!
 # 元の M×Δ[n] の第一射影の弱同値性

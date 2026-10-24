@@ -38,9 +38,9 @@ lemma reflectiveIsoTargetPinchedHomMap_equivalence (x z : X _⦋0⦌) (y : Y _�
     IsSimplicialHomotopyEquivalence (pinchedHomMap F x z) := by
   have hi := intervalFunctorMap_equivalence_of_constantHom_bijective F x z
     (fun A _ => reflectiveIsoTargetConstantMap_bijective a hG A x z y e)
-  have h := (PinchedInterval.comparison_isQCatEquivalence x z).comp hi.isQCatEquivalence
+  have h := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).comp hi.isQCatEquivalence
   rw [← pinchedIntervalComparison_naturality] at h
-  exact ((PinchedInterval.comparison_isQCatEquivalence
+  exact ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) z)).cancel_right h
   ).isSimplicialHomotopyEquivalence
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 /-!
 概要：指定ホモトピーの全成分を、前合成と全時刻固定に対して同じ実辺として計算する。

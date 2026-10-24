@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence
-public import SerrePositivity.InfinityCategories.F1B.Cofinality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
 /-!
 概要：元の実屋根比較の cofinality を、標的の厳密な点・添字表示の変更から独立にする。
 方針：標的の全図式を等式で輸送した比較を定義し、等式帰納法で同じ比較へ戻す。
@@ -21,8 +21,8 @@ def roofComparisonTransport {I X Y : SSet.{u}} (F : X ⟶ Y) (s : I ⟶ X)
     pullback (sliceOverProjection p) s ⟶ pullback (sliceOverProjection p') s' :=
   pullback.lift (pullback.fst _ _ ≫ sliceOverPostcomp p F ≫
       (eqToIso (congrArg sliceOver hp)).hom) (pullback.snd _ _) (by
-    rw [Category.assoc, Category.assoc, F1B.kanSliceOverProjection_eqTransport hp,
-      F1B.kanSliceOverPostcomp_projection, ← Category.assoc, pullback.condition,
+    rw [Category.assoc, Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport hp,
+      SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, ← Category.assoc, pullback.condition,
       Category.assoc, hs])
 /-- 点・添字を後合成のまま表示した、元の実屋根比較。 -/
 abbrev rawRoofFunctorMap {I X Y : SSet.{u}} (F : X ⟶ Y) (s : I ⟶ X)

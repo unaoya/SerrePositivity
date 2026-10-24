@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveCoconeExt
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconeExt
 
 /-!
 概要：二つの点の join から通常圏の nerve への全写像を、両端と混合辺で比較する。
@@ -23,10 +23,10 @@ lemma pointJoinNerve_hom_ext {C : Type u} [Category.{u} C]
     {f g : join (Δ[0] : SSet.{u}) Δ[0] ⟶ nerve C}
     (hl : joinInl (Δ[0] : SSet.{u}) Δ[0] ≫ f = joinInl _ _ ≫ g)
     (hr : joinInr (Δ[0] : SSet.{u}) Δ[0] ≫ f = joinInr _ _ ≫ g)
-    (he : f.app (Opposite.op ⦋1⦌) (F1B.kanJoinCoconeLegSimplex
-      (stdSimplex.objEquiv.symm (𝟙 ⦋0⦌))) = g.app _ (F1B.kanJoinCoconeLegSimplex
+    (he : f.app (Opposite.op ⦋1⦌) (SerrePositivity.InfinityCategories.F1B.joinCoconeLegSimplex
+      (stdSimplex.objEquiv.symm (𝟙 ⦋0⦌))) = g.app _ (SerrePositivity.InfinityCategories.F1B.joinCoconeLegSimplex
         (stdSimplex.objEquiv.symm (𝟙 ⦋0⦌)))) : f = g := by
-  apply F1B.kanNerve_hom_ext_one
+  apply SerrePositivity.InfinityCategories.F1B.nerve_hom_ext_one
   rintro ⟨l, a, b⟩
   fin_cases l
   · cases a

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.Localization
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorChoice
 /-!
 概要：完全関手と指定頂点を零化する完全関手の全 ∞ 部分圏を構成する。

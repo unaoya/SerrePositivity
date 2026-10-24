@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackCoordinates
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 概要：元の interval 引き戻しを、両脚を置換した同じ cospan の引き戻しへ比較する。

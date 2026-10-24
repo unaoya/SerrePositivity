@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianPrismOpposite
 public import SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport
-public import SerrePositivity.InfinityCategories.F1B.KanCartesianInitialBoundary
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHornFibrationComparison
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornFibrationComparison
 public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
 
 /-!
@@ -25,8 +25,8 @@ noncomputable section
 def cartesianEdgeTransport {E B : SSet.{u}} (p : E ⟶ B) [CartesianFibration p]
     {a b : B _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b) :
     vertexFiber p b ⟶ vertexFiber p a := by
-  have := F1B.kanCartesianFibration_op_toCocartesianHornFibration p
-  have := F1B.kanCocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
+  have := SerrePositivity.InfinityCategories.F1B.cartesianFibration_op_toCocartesianHornFibration p
+  have := SerrePositivity.InfinityCategories.F1B.cocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
   let T : (vertexFiber p b).op ⟶ (vertexFiber p a).op :=
     (vertexFiberOpIso p b).hom ≫
       edgeTransport (SSet.opFunctor.map p) (edgeOp e) ≫ (vertexFiberOpIso p a).inv
@@ -43,8 +43,8 @@ lemma cartesianEdgeTransport_witness {E B : SSet.{u}} (p : E ⟶ B) [CartesianFi
       ∀ v : (vertexFiber p b) _⦋0⦌, IsCartesianEdge p
         (H.app (Opposite.op ⦋1⦌)
           (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1)) := by
-  have := F1B.kanCartesianFibration_op_toCocartesianHornFibration p
-  have := F1B.kanCocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
+  have := SerrePositivity.InfinityCategories.F1B.cartesianFibration_op_toCocartesianHornFibration p
+  have := SerrePositivity.InfinityCategories.F1B.cocartesianHornFibration_toCocartesianFibration (SSet.opFunctor.map p)
   obtain ⟨H, h0, h1, hb, hc⟩ := edgeTransport_isTransport (SSet.opFunctor.map p) (edgeOp e)
   let K := ((Δ[1] : SSet.{u}) ◁ (vertexFiberOpIso p b).hom) ≫ H
   have hk0 : prismEndpoint 0 _ ≫ K = SSet.opFunctor.map (vertexFiberι p b) := by

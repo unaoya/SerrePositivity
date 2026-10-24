@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
-public import SerrePositivity.InfinityCategories.F1B.KanInitialBoundaryMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
@@ -29,7 +29,7 @@ lemma constantTransformationRestriction_isQCatEquivalence_of_initialBoundary
     {K L X : SSet.{u}} [Quasicategory X] (f : K ⟶ X) (i : L ⟶ K)
     (hf : InitialBoundaryLifting ((pre i).app X) (functorVertex f)) (z : X _⦋0⦌) :
     IsQCatEquivalence (constantTransformationRestriction i f z) := by
-  have hp := (F1B.kanPinchedHomMap_equivalence_of_initialBoundary
+  have hp := (SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary
     ((pre i).app X) (functorVertex f) (functorVertex (SSet.const z)) hf).isQCatEquivalence
   have he : ((pre i).app X).app _ (functorVertex (SSet.const z)) =
       functorVertex (SSet.const z) := by

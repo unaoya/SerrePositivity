@@ -40,7 +40,7 @@ local notation "cls(" K ")" => SSet.Truncated.HomotopyCategory.homMk
 
 /-- 左の元の逆円柱を下辺、同じ共通円柱を右辺、native 比較を左辺に保つ正方形。 -/
 def specifiedCoconeLeftInverseNativeHomSquare :
-    KanFunctorHomSquare LI (functorHomotopyRefl N) NL H :=
+    SerrePositivity.InfinityCategories.FunctorHomSquare LI (functorHomotopyRefl N) NL H :=
   Classical.choice (by
     apply nonempty_functorHomSquare_of_homEq
     rw [specifiedCoconeLeftEndInverseHomotopy_hom, specifiedCoconeCommonNativeHomotopy_hom,
@@ -51,7 +51,7 @@ def specifiedCoconeLeftInverseNativeHomSquare :
 
 /-- 右の元の逆円柱にも、同じ右辺の共通円柱と同じ native 定値上辺を使う。 -/
 def specifiedCoconeRightInverseNativeHomSquare :
-    KanFunctorHomSquare RI (functorHomotopyRefl N) NR H :=
+    SerrePositivity.InfinityCategories.FunctorHomSquare RI (functorHomotopyRefl N) NR H :=
   Classical.choice (by
     apply nonempty_functorHomSquare_of_homEq
     have hH : cls(H) = cls(R) ≫ (IR).hom :=

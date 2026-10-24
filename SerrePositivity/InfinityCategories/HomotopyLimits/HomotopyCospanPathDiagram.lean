@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanHomotopyInvariance
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyPathReplacement
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Cospan
 
 /-!

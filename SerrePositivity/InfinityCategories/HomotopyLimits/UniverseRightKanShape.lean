@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointCoslice
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePullbacks
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!
 概要：元の右 Kan 添字の持ち上げと、持ち上げた同じ射・点の右 Kan 添字の厳密な同型。

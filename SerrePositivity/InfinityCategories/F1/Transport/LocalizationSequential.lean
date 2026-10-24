@@ -70,11 +70,11 @@ lemma transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit
     intro j
     obtain ⟨_, hj⟩ := hF j.unop
     exact hj E
-  have hS (n : ℕ) : F1B.KanEquivalenceLifting (S.map (homOfLE (Nat.le_succ n)).op) := by
-    change F1B.KanEquivalenceLifting ((pre (F.map (homOfLE (Nat.le_succ n)))).app E)
-    exact F1B.kanEquivalenceLifting_pre _
-  have hT (n : ℕ) : F1B.KanEquivalenceLifting (T.map (homOfLE (Nat.le_succ n)).op) := by
-    change F1B.KanEquivalenceLifting
+  have hS (n : ℕ) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (S.map (homOfLE (Nat.le_succ n)).op) := by
+    change SerrePositivity.InfinityCategories.F1B.EquivalenceLifting ((pre (F.map (homOfLE (Nat.le_succ n)))).app E)
+    exact SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre _
+  have hT (n : ℕ) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (T.map (homOfLE (Nat.le_succ n)).op) := by
+    change SerrePositivity.InfinityCategories.F1B.EquivalenceLifting
       (transportSimplexInvertingRestriction (F.map (homOfLE (Nat.le_succ n))) E)
     exact kanEquivalenceLifting_transportSimplexInvertingRestriction _ E
   have : ∀ n, TrivialKanFibration

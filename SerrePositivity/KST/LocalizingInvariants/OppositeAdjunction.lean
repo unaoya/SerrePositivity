@@ -24,19 +24,19 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 
 def oppositeUnit : FunctorHom (𝟙 Y.op) (SSet.opFunctor.map G ≫ SSet.opFunctor.map F) :=
   by
-    have h := kanFunctorOppositeHomEquiv (G ≫ F) (𝟙 Y) a.counitHom
+    have h := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y) a.counitHom
     simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using h
 
 def oppositeCounit : FunctorHom (SSet.opFunctor.map F ≫ SSet.opFunctor.map G) (𝟙 X.op) :=
   by
-    have h := kanFunctorOppositeHomEquiv (𝟙 X) (F ≫ G) a.unitHom
+    have h := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (𝟙 X) (F ≫ G) a.unitHom
     simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using h
 
 lemma opposite_leftTriangle : unitLeftZigzag (oppositeUnit a) (oppositeCounit a) =
     𝟙 (HomotopyCategory.mk (functorVertex (SSet.opFunctor.map G))) := by
-  have h := congrArg (kanFunctorOppositeHomEquiv G G) (kanAdjunction_rightTriangleHom a)
-  erw [kanFunctorOppositeHomEquiv_comp (F := G) (G := G ≫ F ≫ G) (H := G),
-    kanFunctorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) a.unitHom,
+  have h := congrArg (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G) (SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a)
+  erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := G) (G := G ≫ F ≫ G) (H := G),
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp G (F := 𝟙 X) (G := F ≫ G) a.unitHom,
     oppositeFunctorHom_postcomp G (F := G ≫ F) (G := 𝟙 Y) a.counitHom,
     oppositeFunctorHom_id] at h
   exact h
@@ -45,11 +45,11 @@ lemma opposite_rightTriangle :
     (hoFunctor.map ((pre (SSet.opFunctor.map F)).app Y.op)).toFunctor.map (oppositeUnit a) ≫
       (hoFunctor.map ((ihom X.op).map (SSet.opFunctor.map F))).toFunctor.map
         (oppositeCounit a) = 𝟙 (HomotopyCategory.mk (functorVertex (SSet.opFunctor.map F))) := by
-  have h := congrArg (kanFunctorOppositeHomEquiv F F) (kanAdjunction_leftTriangleHom a)
+  have h := congrArg (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F) (SerrePositivity.InfinityCategories.F1B.adjunction_leftTriangleHom a)
   unfold unitLeftZigzag at h
-  erw [kanFunctorOppositeHomEquiv_comp (F := F) (G := F ≫ G ≫ F) (H := F),
+  erw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (F := F) (G := F ≫ G ≫ F) (H := F),
     oppositeFunctorHom_postcomp F (F := 𝟙 X) (G := F ≫ G) a.unitHom,
-    kanFunctorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) a.counitHom,
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp F (F := G ≫ F) (G := 𝟙 Y) a.counitHom,
     oppositeFunctorHom_id] at h
   exact h
 

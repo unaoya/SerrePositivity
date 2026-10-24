@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctInverseFormula
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveIdempotence
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveIdempotence
 
 /-!
 概要：反射の左関手は、右随伴の像を終点とする全関手圏の Hom を保つ。

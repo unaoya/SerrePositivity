@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CounitIntervalOpposite
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
-public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
 /-!
 概要：実余単位の各写像空間条件から同じ二関手の ∞ 随伴を構成する。
 方針：同じ実ホモトピーを反転し、任意パラメータ族の合成表示で比較する。

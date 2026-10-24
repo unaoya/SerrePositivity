@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationCospanCone
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalVertexPath
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：元の cospan 錐の二三角形の可換性を全円柱付きで余極限頂点の値へ移す。

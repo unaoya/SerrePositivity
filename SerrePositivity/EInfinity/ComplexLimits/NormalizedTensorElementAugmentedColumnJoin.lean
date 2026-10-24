@@ -40,7 +40,7 @@ lemma normalizedTensorElementAugmentedColumn_join {n : ℕ}
     rw [← joinMap_comp, hu, Category.id_comp]
   change _ = joinMap (SSet.yonedaEquiv.symm c) (𝟙 Δ[0]) ≫
     (joinMap (FrameHom.MixedNerve.up (normalizedTensorElementIndex A X Y)) (𝟙 Δ[0]) ≫
-      (F1B.kanNerveCoconeEquiv L).val ≫ FrameHom.MixedNerve.down (Complex A))
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv L).val ≫ FrameHom.MixedNerve.down (Complex A))
   rw [← Category.assoc, hm]
   exact hd
 

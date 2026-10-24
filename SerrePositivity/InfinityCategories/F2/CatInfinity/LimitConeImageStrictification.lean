@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyPostcompLifting
-public import SerrePositivity.InfinityCategories.F1B.KanVertexIsoLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexIsoLifting
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
 
 /-!
@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2
 使われ方：lax pullback の錐の存在を両入力を固定して証明する。 -/
 lemma exists_limitCone_with_specified_image {J X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y)
-    (hf : F1B.KanEquivalenceLifting f) {r : J ⟶ X}
+    (hf : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting f) {r : J ⟶ X}
     (c₀ : JoinCone r) (hc₀ : IsLimitCone c₀) (hc₀f : IsLimitCone (mapJoinCone f c₀))
     (d : JoinCone (r ≫ f)) (hd : IsLimitCone d) :
     ∃ c : JoinCone r, IsLimitCone c ∧ mapJoinCone f c = d := by

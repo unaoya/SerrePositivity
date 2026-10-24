@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SimplicialHomotopyOpposite
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeFunctor
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：実 dg nerve 関手の全ホモトピーを、反対 dg 圏の元の実関手へ戻す。
 方針：実区間の反転と dg nerve の反対比較の厳密自然性を合成する。
@@ -22,7 +22,7 @@ def dgNerveOppositeHomotopy (F G : DGFunctor R C E)
   let eC := dgNerveOppositeIso R C
   let eE := dgNerveOppositeIso R E
   let H' := functorHomotopyPrecomp
-    (functorHomotopyPostcomp (kanHomotopyOpposite H) eE.hom) eC.inv
+    (functorHomotopyPostcomp (SerrePositivity.InfinityCategories.homotopyOpposite H) eE.hom) eC.inv
   refine { h := H'.h, h₀ := H'.h₀.trans ?_, h₁ := H'.h₁.trans ?_, rel := H'.rel }
   · change (dgNerveOppositeIso R C).inv ≫ opFunctor.map (dgNerve.map G) ≫
       (dgNerveOppositeIso R E).hom = dgNerve.map G.op

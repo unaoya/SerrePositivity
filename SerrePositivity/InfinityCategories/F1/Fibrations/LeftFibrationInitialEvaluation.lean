@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanInitialSectionLifting
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionLifting
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.AllEdges
 public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
@@ -24,7 +24,7 @@ open SerrePositivity.InfinityCategories
 
 /-- left fibration 上では、cocartesian 切断の包含は相対 Hom 空間全体との同型。 -/
 lemma kanCocartesianSectionsι_isIso_of_leftFibration {A E B : SSet.{u}}
-    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) : IsIso (kanCocartesianSectionsι p a) := by
+    (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) : IsIso (SerrePositivity.InfinityCategories.cocartesianSectionsι p a) := by
   apply (NatTrans.isIso_iff_isIso_app _).mpr
   rintro ⟨⟨n⟩⟩
   apply (isIso_iff_bijective _).mpr
@@ -41,10 +41,10 @@ lemma relativeFunctorEvaluate_initial_trivialKanFibration {A E B : SSet.{u}} [Qu
     (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) :
     TrivialKanFibration (relativeFunctorEvaluate p a v) := by
   have := kanCocartesianSectionsι_isIso_of_leftFibration p a
-  have ht := kanCocartesianSectionsEvaluate_trivialKanFibration p a v hv
+  have ht := SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration p a v hv
   have he : relativeFunctorEvaluate p a v =
-      (asIso (kanCocartesianSectionsι p a)).inv ≫ kanCocartesianSectionsEvaluate p a v := by
-    exact ((asIso (kanCocartesianSectionsι p a)).inv_hom_id_assoc
+      (asIso (SerrePositivity.InfinityCategories.cocartesianSectionsι p a)).inv ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v := by
+    exact ((asIso (SerrePositivity.InfinityCategories.cocartesianSectionsι p a)).inv_hom_id_assoc
       (relativeFunctorEvaluate p a v)).symm
   rw [he]
   exact ⟨trivialKanFibrations.comp_mem _ _

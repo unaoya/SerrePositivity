@@ -35,7 +35,7 @@ def cocartesianBaseChangeSimplicialHomCorrection :
       (cocartesianBaseChangeHomTransport_simplicialRestrictionIso a k p q).symm :=
   pathCorrectedFunctorSquare R₀
     (kanEquivalenceLifting_intervalMappingPostOfEq ((pre a).app CatInfinity)
-      (F1B.kanEquivalenceLifting_pre a) _ _ rfl rfl) U (R₁ ≫ V)
+      (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre a) _ _ rfl rfl) U (R₁ ≫ V)
     (cocartesianBaseChangeHomTransport_simplicialRestrictionIso a k p q).symm
 
 /-- 補正した同じ全 Hom の輸送。 -/

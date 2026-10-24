@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyPrism
-public import SerrePositivity.InfinityCategories.F1B.SquareComposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.SquareComposition
 
 /-!
 概要：元の prism 正方形の四辺から、各点の Hom の合成式を回収。

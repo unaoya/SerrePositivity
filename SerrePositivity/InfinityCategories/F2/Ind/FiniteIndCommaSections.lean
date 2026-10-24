@@ -48,12 +48,12 @@ lemma ind_finiteColimit_commaSections_isQCatEquivalence
     {K C : SSet.{u}} [K.Finite] [Quasicategory C] {D : K ⟶ C}
     (c : JoinCocone D) (hc : IsColimitCone c) (w : (IndInfinity κ C) _⦋0⦌) :
     IsQCatEquivalence (leftFibrationConeRestriction (oppositeIndLeftKanProjection κ w)
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) := by
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) := by
   let e := SSet.opFunctor.mapIso (indLeftKanCommaIso κ w).symm
   exact (leftFibrationConeRestriction_isQCatEquivalence_iff_of_comparison
     (oppositeYonedaSliceProjection (indVertexPresheaf κ w)) (oppositeIndLeftKanProjection κ w)
     e.hom (oppositeIndLeftKanCommaIso_inv_projection κ w) (isPrecompositionEquivalence_of_iso e)
-    (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))).mp
+    (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))).mp
       (indPresheaf_finiteColimit_yonedaSliceSections_isQCatEquivalence κ hκ hex c hc
         (indVertexPresheaf κ w) (indVertexPresheaf_mem κ w))
 

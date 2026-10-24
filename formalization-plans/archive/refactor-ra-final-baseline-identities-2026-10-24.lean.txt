@@ -1,0 +1,95 @@
+import Lean
+import SerrePositivity.InfinityCategories.F1
+import SerrePositivity.InfinityCategories.F1.Cocartesian
+import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerHornPullback
+import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldBaseChange
+import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldPoint
+import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteCylinderEndpoints
+import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteFiberComparison
+import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteVerticalEdges
+import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHornPullback
+import SerrePositivity.InfinityCategories.F1B
+import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
+
+
+
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option synthInstance.maxHeartbeats 200000
+set_option maxHeartbeats 1000000
+example : @SerrePositivity.InfinityCategories.PinchedInterval.const_point_comp_yoneda = @SerrePositivity.InfinityCategories.const_point_comp_yoneda := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_uncurry = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_uncurry := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightMappingSpacePrism_hom_ext = @SerrePositivity.InfinityCategories.rightMappingSpacePrism_hom_ext := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_mono = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_mono := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderProjection = @SerrePositivity.InfinityCategories.rightIntervalCylinderProjection := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderSection = @SerrePositivity.InfinityCategories.rightIntervalCylinderSection := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderSection_projection = @SerrePositivity.InfinityCategories.rightIntervalCylinderSection_projection := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderProjection_section = @SerrePositivity.InfinityCategories.rightIntervalCylinderProjection_section := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderProjection_zero = @SerrePositivity.InfinityCategories.rightIntervalCylinderProjection_zero := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderProjection_one = @SerrePositivity.InfinityCategories.rightIntervalCylinderProjection_one := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_inl = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_inl := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_inr = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_inr := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_recover = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_recover := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_exists_retraction = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_exists_retraction := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_isQCatEquivalence = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.intervalMappingHomotopyOfSquare = @SerrePositivity.InfinityCategories.intervalMappingHomotopyOfSquare := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.intervalMappingHomotopyOfFatJoin = @SerrePositivity.InfinityCategories.intervalMappingHomotopyOfFatJoin := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_cylinder = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_cylinder := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalCylinderProjection_naturality = @SerrePositivity.InfinityCategories.rightIntervalCylinderProjection_naturality := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_precomp = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_precomp := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.rightIntervalFatDiagram_comparison = @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_comparison := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_exists_homotopy = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_exists_homotopy := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_postcomp_essentiallySurjective = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_postcomp_essentiallySurjective := rfl
+example : @SerrePositivity.InfinityCategories.PinchedInterval.comparison_exists_homotopy_section = @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_exists_homotopy_section := rfl
+
+
+
+
+
+
+
+
+
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option maxHeartbeats 1000000
+example : @SerrePositivity.InfinityCategories.kanIsPrecompositionEquivalence_subcomplexInverseImage_iff = @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_subcomplexInverseImage_iff := rfl
+example : @SerrePositivity.InfinityCategories.kanSubcomplexInverseImage_isPullback = @SerrePositivity.InfinityCategories.subcomplexInverseImage_isPullback := rfl
+example : @SerrePositivity.InfinityCategories.kanIsPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage = @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage := rfl
+example : @SerrePositivity.InfinityCategories.kanSimplicialReplacementConstantLift_baseMap = @SerrePositivity.InfinityCategories.simplicialReplacementConstantLift_baseMap := rfl
+example : @SerrePositivity.InfinityCategories.kanSimplicialReplacementAssembly_const = @SerrePositivity.InfinityCategories.simplicialReplacementAssembly_const := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteFirstEdge_prism_zero = @SerrePositivity.InfinityCategories.scaffoldFiniteFirstEdge_prism_zero := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderComparison_endpoint_zero = @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_zero := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderAttachingMap_baseMap = @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderAttachingMap_baseMap := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteCylinderComparison_endpoint_one = @SerrePositivity.InfinityCategories.scaffoldFiniteCylinderComparison_endpoint_one := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteZeroFiberComparison_ι = @SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison_ι := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism = @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism_projection = @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_projection := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteScaffoldPrism_interval_projection = @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_interval_projection := rfl
+example : @SerrePositivity.InfinityCategories.kanVertexFiberι_isIso_of_nervePoint = @SerrePositivity.InfinityCategories.vertexFiberι_isIso_of_nervePoint := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteZeroFiberComparison = @SerrePositivity.InfinityCategories.scaffoldFiniteZeroFiberComparison := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteOneFiberComparison = @SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiniteOneFiberComparison_ι = @SerrePositivity.InfinityCategories.scaffoldFiniteOneFiberComparison_ι := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldFiberMap = @SerrePositivity.InfinityCategories.leftScaffoldFiberMap := rfl
+example : @SerrePositivity.InfinityCategories.kanScaffoldBaseChange = @SerrePositivity.InfinityCategories.leftScaffoldBaseChange := rfl
+
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let mut rows : Array Json := #[]
+  let mut repoNames : Array Json := #[]
+  for (name, _) in env.constants.toList do
+    if `SerrePositivity |>.isPrefixOf name then
+      repoNames := repoNames.push (toJson name.toString)
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless `SerrePositivity.InfinityCategories.F1B |>.isPrefixOf mod do continue
+    rows := rows.push <| Json.mkObj [("name", toJson name.toString), ("module", toJson mod.toString)]
+  IO.FS.writeFile "/tmp/r-a-final-round/kernel-f1b-inventory.json" (Json.mkObj
+    [("declarations", Json.arr rows), ("repository_names", Json.arr repoNames)]).pretty
+  logInfo m!"Exported {rows.size} F1B declarations and {repoNames.size} repository names."

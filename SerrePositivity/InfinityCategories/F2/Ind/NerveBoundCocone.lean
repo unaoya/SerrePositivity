@@ -23,7 +23,7 @@ lemma exists_nerve_joinCocone_at_bound (a : K ⟶ nerve I) (i : I)
     (ha : ∀ v : K _⦋0⦌, (a.app _ v).obj 0 ≤ i) :
     ∃ c : JoinCocone a, c.vertex = nerveVertex i := by
   have ht : IsTerminalVertex (nerveVertex (⊤ : Set.Iic i)) :=
-    F1B.kanNerveVertex_isTerminal isTerminalTop
+    SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal isTerminalTop
   obtain ⟨c, hc⟩ := exists_joinCocone_at_terminal ht (nerveSublevelLift a i ha)
   let d : JoinCocone a := ⟨c.val ≫ nerveMap (sublevelInclusion i), by
     rw [← Category.assoc, c.property, nerveSublevelLift_inclusion]⟩

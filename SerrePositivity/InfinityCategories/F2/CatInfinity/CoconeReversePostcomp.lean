@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
-public import SerrePositivity.InfinityCategories.F1B.KanCosliceOpposite
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!
 概要：余錐の後合成と反転した錐の後合成の極限性の照合。
@@ -25,12 +25,12 @@ namespace SerrePositivity.InfinityCategories.F2
 使われ方：引き戻しの余極限性の三成分への双対化。 -/
 lemma isLimitCone_reverse_postcomp_iff {J X Y : SSet.{u}}
     {r : J ⟶ X} (c : JoinCocone r) (f : X ⟶ Y) :
-    IsLimitCone (mapJoinCone (SSet.opFunctor.map f) (F1B.kanCoconeReverseCone c)) ↔
+    IsLimitCone (mapJoinCone (SSet.opFunctor.map f) (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)) ↔
       IsColimitCone (F1B.kanPostcomposeCocone f c) := by
-  rw [F1B.kanIsColimitCone_iff_reverseCone]
+  rw [SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone]
   apply isLimitCone_iff_of_cone_val_eq
-  change (F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map f = _
-  rw [F1B.kanCoconeReverseCone_val, F1B.kanCoconeReverseCone_val]
+  change (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map f = _
+  rw [SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val, SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val]
   simp only [F1B.kanPostcomposeCocone, CategoryTheory.Functor.map_comp, Category.assoc]
 
 end SerrePositivity.InfinityCategories.F2

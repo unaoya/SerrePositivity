@@ -24,15 +24,15 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianSectionFamilyColimitUncurry_projection {J : Type v} [Category.{w} J]
     {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
     (hc : IsColimit ((Over.forget B).mapCocone c))
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f)) :
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) :
     cocartesianSectionFamilyColimitUncurry p c hc s hs ≫ p = fst c.pt.left T ≫ c.pt.hom := by
   apply (cocartesianSectionTensorCocone_isColimit c hc).hom_ext
   intro j
   change ((c.ι.app j).left ▷ T) ≫ (_ ≫ p) =
     ((c.ι.app j).left ▷ T) ≫ (fst c.pt.left T ≫ c.pt.hom)
   rw [← Category.assoc, cocartesianSectionFamilyColimitUncurry_fac,
-    kanCocartesianSectionsUncurry_projection, ← Category.assoc, whiskerRight_fst,
+    SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_projection, ← Category.assoc, whiskerRight_fst,
     Category.assoc]
   have hj : (c.ι.app j).left ≫ c.pt.hom = (D.obj j).hom := (c.ι.app j).w
   rw [hj]
@@ -42,8 +42,8 @@ lemma cocartesianSectionFamilyColimitUncurry_cocartesian
     {J : Type v} [Category.{w} J] [Small.{u} J]
     {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
     (hc : IsColimit ((Over.forget B).mapCocone c))
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f))
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f))
     (x : T _⦋0⦌) (e : c.pt.left _⦋1⦌) : IsCocartesianEdge p
       ((cocartesianSectionFamilyColimitUncurry p c hc s hs).app (Opposite.op ⦋1⦌)
         (e, PinchedHom.constant x 1)) := by
@@ -56,16 +56,16 @@ lemma cocartesianSectionFamilyColimitUncurry_cocartesian
     ((c.ι.app j).left.app (Opposite.op ⦋1⦌) t, PinchedHom.constant x 1) = _ at hf
   rw [ht] at hf
   rw [hf]
-  exact kanCocartesianSectionsUncurry_cocartesian (s j) x t
+  exact SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_cocartesian (s j) x t
 
 /-- 整合する元の section の族を、余極限上の同じ section の族へ貼り合わせる。 -/
 def cocartesianSectionFamilyColimitLift {J : Type v} [Category.{w} J] [Small.{u} J]
     {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
     (hc : IsColimit ((Over.forget B).mapCocone c))
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f)) :
-    T ⟶ kanCocartesianSections p c.pt.hom :=
-  kanCocartesianSectionsCurry (cocartesianSectionFamilyColimitUncurry p c hc s hs)
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) :
+    T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p c.pt.hom :=
+  SerrePositivity.InfinityCategories.cocartesianSectionsCurry (cocartesianSectionFamilyColimitUncurry p c hc s hs)
     (cocartesianSectionFamilyColimitUncurry_projection p c hc s hs)
     (cocartesianSectionFamilyColimitUncurry_cocartesian p c hc s hs)
 

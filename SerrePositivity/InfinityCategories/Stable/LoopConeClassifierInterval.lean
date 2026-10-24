@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFixedApexComparison
 public import SerrePositivity.InfinityCategories.Stable.FixedApexConeFiber
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaHomotopySquare
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaHomotopySquare
 
 /-!
 概要：元の comma fiber 比較の区間族を、同じ実 loop 比較の円柱へ同定する。
@@ -48,26 +48,26 @@ lemma loopConeFixedApexComparison_endpoint {X : SSet.{u}} [Quasicategory X]
 lemma loopConeClassifierDiagramFiberMap_interval_h (X : SSet.{u}) [Quasicategory X]
     (x : X _⦋0⦌) (d : (loopDiagrams X) _⦋0⦌) :
     (intervalFamilyHomotopy (loopConeClassifierDiagramFiberMap X x d ≫
-      (F1B.kanUnitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x d).hom)).h =
+      (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x d).hom)).h =
       ((vertexFiberι (loopConeSourceFiberProjection X x) d ≫
         vertexFiberι (loopConeObjectSource X) x) ▷ (Δ[1] : SSet.{u})) ≫
           (loopConeApexComparisonHomotopy X).h := by
   have hi : loopConeClassifierDiagramFiberMap X x d ≫
-      vertexFiberι (F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d ≫
+      vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d ≫
         vertexFiberι (unitCommaSource (loopDiagramEvaluation X 0 0)) x =
       (vertexFiberι (loopConeSourceFiberProjection X x) d ≫
         vertexFiberι (loopConeObjectSource X) x) ≫ loopConeClassifier X := by
     rw [← Category.assoc, loopConeClassifierDiagramFiberMap_ι, Category.assoc,
       loopConeClassifierSourceFiberMap_ι, ← Category.assoc]
   have hh : (intervalFamilyHomotopy (loopConeClassifierDiagramFiberMap X x d ≫
-        (F1B.kanUnitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x d).hom)).h =
+        (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso (loopDiagramEvaluation X 0 0) x d).hom)).h =
       (unitCommaHomotopy (loopConeClassifierDiagramFiberMap X x d ≫
-        vertexFiberι (F1B.kanUnitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d ≫
+        vertexFiberι (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection (loopDiagramEvaluation X 0 0) x) d ≫
           vertexFiberι (unitCommaSource (loopDiagramEvaluation X 0 0)) x)).h := by
     change (β_ _ (Δ[1] : SSet.{u})).hom ≫
       intervalMappingUncurry (loopConeClassifierDiagramFiberMap X x d ≫
-        F1B.kanUnitCommaFiberToInterval (loopDiagramEvaluation X 0 0) x d) = _
-    rw [intervalMappingUncurry_precomp, F1B.kanUnitCommaFiberToInterval_uncurry,
+        SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval (loopDiagramEvaluation X 0 0) x d) = _
+    rw [intervalMappingUncurry_precomp, SerrePositivity.InfinityCategories.F1B.unitCommaFiberToInterval_uncurry,
       ← unitCommaUncurry_precomp]
     rfl
   rw [hh, hi, unitCommaHomotopy_precomp, loopConeClassifier, unitCommaHomotopy_lift_h]

@@ -32,7 +32,7 @@ lemma simplex_zero_join {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
     (joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
       (simplex C U p hp σ hU Γ (OrderHom.const _ 0)) =
     joinMap (SSet.yonedaEquiv.symm (show (nerve I) _⦋n⦌ from Γ)) (𝟙 (Δ[0] : SSet.{u})) ≫
-      (F1B.kanNerveCoconeEquiv (rightCocone C U σ)).val ≫
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (rightCocone C U σ)).val ≫
         nerveToCoherent (KanHammockCategory C) := by
   rw [simplex_zero C U p hp σ hU Γ]
   have h := SSet.yonedaEquiv_symm_comp
@@ -51,9 +51,9 @@ lemma simplex_zero_join {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
 
 def rightSlice : nerve I ⟶ sliceOver (SSet.yonedaEquiv.symm
     (coherentNerveVertex ((kanHammockSourceFunctor C).obj Y))) :=
-  sliceOverCurry ((F1B.kanNerveCoconeEquiv (rightCocone C U σ)).val ≫
+  sliceOverCurry ((SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (rightCocone C U σ)).val ≫
     nerveToCoherent (KanHammockCategory C)) (by
-      rw [← Category.assoc, F1B.kanNerveCocone_point]
+      rw [← Category.assoc, SerrePositivity.InfinityCategories.F1B.nerveCocone_point]
       exact (SSet.yonedaEquiv_symm_comp
         (nerveVertex ((kanHammockSourceFunctor C).obj Y))
         (nerveToCoherent (KanHammockCategory C))).trans
@@ -70,19 +70,19 @@ lemma prism_zero : prismEndpoint 0 (nerve I) ≫ prism C U p hp σ hU = rightSli
 
 lemma prism_zero_uncurry :
     sliceOverUncurry (prismEndpoint 0 (nerve I) ≫ prism C U p hp σ hU) =
-      (F1B.kanNerveCoconeEquiv (Cocone.mk Y σ)).val ≫ hammockLocalizationNerveMap C := by
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (Cocone.mk Y σ)).val ≫ hammockLocalizationNerveMap C := by
   rw [prism_zero C U p hp σ hU]
   change sliceOverUncurry (sliceOverCurry _ _) = _
   rw [sliceOverUncurry_curry]
-  change (F1B.kanNerveCoconeEquiv
+  change (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv
     ((kanHammockSourceFunctor C).mapCocone (Cocone.mk Y σ))).val ≫ _ = _
-  rw [← F1B.kanNerveCocone_mapCocone, Category.assoc]
+  rw [← SerrePositivity.InfinityCategories.F1B.nerveCocone_mapCocone, Category.assoc]
   rfl
 
 lemma prism_zero_evaluation :
     (β_ (nerve I) (Δ[1] : SSet.{u})).hom ≫ rightMappingSpacePrism (nerve I) ≫
       sliceOverUncurry (prismEndpoint 0 (nerve I) ≫ prism C U p hp σ hU) =
-    (F1B.kanNerveNatTransHomotopy σ).h ≫ hammockLocalizationNerveMap C := by
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy σ).h ≫ hammockLocalizationNerveMap C := by
   rw [prism_zero_uncurry C U p hp σ hU]
   simpa only [Category.assoc] using congrArg (fun f => f ≫ hammockLocalizationNerveMap C)
     (FrameHom.nerveCoconePrism_eq_natTrans U (Cocone.mk Y σ))

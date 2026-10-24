@@ -36,7 +36,7 @@ lemma unitCommaFiber_isInitial_of_invertibleArrow {X Y : SSet.{u}}
         (unitCommaFiberArrowHom G x u ≫ m) = m := by simp
     exact hf ▸ (inferInstance : IsIso (inv (unitCommaFiberArrowHom G x u) ≫
       (unitCommaFiberArrowHom G x u ≫ m)))
-  let π := F1B.kanUnitCommaFiberProjection G x
+  let π := SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x
   have hmap : IsInvertibleEdge
       ((e.map ((truncation 2).map π)).map ((truncation 2).map G)) := by
     change IsIso m

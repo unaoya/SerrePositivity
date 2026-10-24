@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeCosliceIntervalMap
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
-public import SerrePositivity.InfinityCategories.F1B.MappingParameters
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParameters
 
 /-!
 概要：固定辺に付く錐の族から、関手単体集合内の実際の正方形を構成する。

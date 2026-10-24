@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismCylinderEndpoint
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：指定済みの prism 比較円柱を係数の射で制限し、底・初期値と終点の類を保つ。
@@ -122,7 +122,7 @@ lemma prismTransportIso_parameter_hom_arrow :
     (prismCylinderParameter p e f H D u) (u ≫ g) (prismParameterPrecomp_one p H u g hH₁)
   have hA := prismCylinderEndpointHomotopy_hom p e f H hH₀ hHp D g hH₁
   refine (congrArg Arrow.mk hC).symm.trans
-    ((kanFunctorHomotopy_hom_arrow_of_h_eq _ _
+    ((SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq _ _
       (prismCylinderEndpointHomotopy_parameter_raw p e f H D u g hH₁)).trans ?_)
   have h : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (functorHomotopyPrecomp (prismCylinderEndpointHomotopy p e f H D g hH₁) u)) =

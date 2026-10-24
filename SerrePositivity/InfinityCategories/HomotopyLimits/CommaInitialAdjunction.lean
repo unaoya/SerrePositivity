@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaUnitTransportComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaSectionInitialUnit
-public import SerrePositivity.InfinityCategories.F1B.UnitMappingAdjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
 
 /-!
 概要：各 comma の始対象から指定単位の写像空間の普遍性と ∞ 随伴を構成する。
@@ -28,9 +28,9 @@ lemma unitIntervalMap_isQCatEquivalence_of_commaInitial
     (x : X _⦋0⦌) (y : Y _⦋0⦌) : IsQCatEquivalence (unitIntervalMap η x y) := by
   have hi := (unitCommaInitialCondition_iff η).mp hη x
   have ht := parametrizedFiberTransport_evaluate_isQCatEquivalence_of_initialFiberPoint
-    (F1B.kanUnitCommaFiberProjection G x) (F.app (Opposite.op ⦋0⦌) x) y
+    (SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x) (F.app (Opposite.op ⦋0⦌) x) y
     (unitCommaSectionTargetFiberVertex η x) hi
-  have he := (qCatEquivalenceOfIso (F1B.kanUnitCommaFiberIntervalIso G x y)).isQCatEquivalence
+  have he := (qCatEquivalenceOfIso (SerrePositivity.InfinityCategories.F1B.unitCommaFiberIntervalIso G x y)).isQCatEquivalence
   exact (ht.comp he).ofFunctorIso (unitIntervalMap_commaTransportIso η x y).symm
 
 /-- comma の始対象条件は、指定単位の各点の標準写像空間条件を与える。 -/

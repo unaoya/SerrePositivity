@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.CompStructLifting
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianCancellation
-public import SerrePositivity.InfinityCategories.F1B.KanIsofibrationCriterion
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion
 
 /-!
 概要：quasicategory 上の cocartesian fibration は可逆辺を終点指定で持ち上げる。
@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 一般の cocartesian fibration は、可逆辺を元の像と指定した終点を保って持ち上げる。 -/
 lemma cocartesianFibration_kanInvertibleTargetLifting {E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [CocartesianFibration p] : F1B.KanInvertibleTargetLifting p := by
+    (p : E ⟶ B) [CocartesianFibration p] : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p := by
   letI : Quasicategory E := quasicategory_of_innerFibration p
   intro x e he ht
   have htarget : B.δ 0 (SSet.yonedaEquiv e) = p.app (Opposite.op ⦋0⦌) x := by
@@ -98,7 +98,7 @@ lemma cocartesianFibration_kanInvertibleTargetLifting {E B : SSet.{u}} [Quasicat
     rw [stdSimplex.yonedaEquiv_δ_comp, hT, hd₁]
     exact isCocartesianEdge_of_isInvertibleEdge p _ hid
   have hkc : IsCocartesianEdge p k'.edge := by
-    have h := kanIsCocartesianEdge_triangle_second_of_first_long T p hfirst hlong
+    have h := SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long T p hfirst hlong
     rw [stdSimplex.yonedaEquiv_δ_comp, hT, hd₀] at h
     exact h
   have hki : IsInvertibleEdge k' := isInvertibleEdge_of_isCocartesianEdge p k' hkc
@@ -113,10 +113,10 @@ lemma cocartesianFibration_kanInvertibleTargetLifting {E B : SSet.{u}} [Quasicat
 
 /-- cocartesian fibration は単射な前合成同値を右に持ち上げる。追加の isofibration 仮定は不要。 -/
 lemma cocartesianFibration_kanEquivalenceLifting {E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [CocartesianFibration p] : F1B.KanEquivalenceLifting p := by
+    (p : E ⟶ B) [CocartesianFibration p] : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p := by
   letI : Quasicategory E := quasicategory_of_innerFibration p
   intro A D i hm hi
-  exact F1B.kanEquivalenceLifting_of_innerFibration_of_targetLifting p
+  exact SerrePositivity.InfinityCategories.F1B.equivalenceLifting_of_innerFibration_of_targetLifting p
     (cocartesianFibration_kanInvertibleTargetLifting p) i hm hi
 
 end SerrePositivity.InfinityCategories

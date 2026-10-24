@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityCoefficient
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinTransformationClass
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinTransformationClass
 
 /-!
 概要：元の weighted 密度変換を、両端と指定単位の類を保持する一つの相対 join 図式へ実現。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSiftedContinuousLeftKan
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFunctorRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 
 /-!
 概要：sifted 保存関手からの元の P_Σ Yoneda 制限射自身が、全写像空間で充満忠実。

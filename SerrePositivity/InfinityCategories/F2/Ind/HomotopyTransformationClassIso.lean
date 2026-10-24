@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.HomotopyTransformationVertex
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：元の全変換の h Fun の類の一致を、同じ変換空間内の頂点同型へ戻す。

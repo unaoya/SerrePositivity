@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismTotalCocone
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalPrismRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!
 概要：矢印圏内の元の余錐を、同じ両端と頂点辺を持つ prism と照合する。

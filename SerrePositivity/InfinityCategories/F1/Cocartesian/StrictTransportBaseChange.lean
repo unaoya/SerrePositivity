@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsPullbackNaturality
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport
 
 /-!
 概要：通常圏の関手による strict transport の底変換比較の元の成分を構成する。
@@ -29,9 +29,9 @@ def cocartesianStrictTransportUnderPost {C D : Type u} [Category.{u} C] [Categor
 def cocartesianStrictTransportBaseChangeComponent
     {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] (k : D ⥤ C) (d : D) :
-    kanCocartesianStrictTransport p (k.obj d) ⟶
-      kanCocartesianStrictTransport (pullback.fst (nerveMap k) p) d :=
-  kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
+    SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj d) ⟶
+      SerrePositivity.InfinityCategories.cocartesianStrictTransport (pullback.fst (nerveMap k) p) d :=
+  SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
     (cocartesianSectionsPullbackIso (IsPullback.of_hasPullback (nerveMap k) p).flip
       (nerveMap (Under.forget d)) (nerveMap (Under.forget d) ≫ nerveMap k) rfl).inv
 
@@ -42,7 +42,7 @@ lemma cocartesianStrictTransportBaseChangeComponent_iso
     cocartesianStrictTransportBaseChangeComponent p k d ≫
       (cocartesianSectionsPullbackIso (IsPullback.of_hasPullback (nerveMap k) p).flip
         (nerveMap (Under.forget d)) (nerveMap (Under.forget d) ≫ nerveMap k) rfl).hom =
-      kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) := by
+      SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) := by
   simp only [cocartesianStrictTransportBaseChangeComponent, Category.assoc,
     Iso.inv_hom_id, Category.comp_id]
 
@@ -50,18 +50,18 @@ lemma cocartesianStrictTransportBaseChangeComponent_iso
 lemma cocartesianStrictTransportBaseChangeComponent_uncurry_snd
     {C D : Type u} [Category.{u} C] [Category.{u} D] {E T : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] (k : D ⥤ C) (d : D)
-    (s : T ⟶ kanCocartesianStrictTransport p (k.obj d)) :
+    (s : T ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj d)) :
     relativeFunctorUncurry ((s ≫ cocartesianStrictTransportBaseChangeComponent p k d) ≫
-      kanCocartesianSectionsι (pullback.fst (nerveMap k) p) (nerveMap (Under.forget d))) ≫
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap k) p) (nerveMap (Under.forget d))) ≫
       pullback.snd (nerveMap k) p =
     (nerveMap (Under.post k) ▷ T) ≫ relativeFunctorUncurry
-      (s ≫ kanCocartesianSectionsι p (nerveMap (Under.forget (k.obj d)))) := by
+      (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι p (nerveMap (Under.forget (k.obj d)))) := by
   unfold cocartesianStrictTransportBaseChangeComponent
   rw [← Category.assoc s]
   refine (cocartesianSectionsPullbackIso_inv_uncurry
     (IsPullback.of_hasPullback (nerveMap k) p).flip (nerveMap (Under.forget d))
     (nerveMap (Under.forget d) ≫ nerveMap k) rfl
-    (s ≫ kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d))).trans ?_
+    (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d))).trans ?_
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

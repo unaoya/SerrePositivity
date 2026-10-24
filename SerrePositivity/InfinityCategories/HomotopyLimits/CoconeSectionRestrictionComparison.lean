@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceRestrictionOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeSectionRestrictionOpposite
-public import SerrePositivity.InfinityCategories.F1B.QuillenASliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpposite
 public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationYoneda
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionLifting
-public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEdgeRestriction
 
 /-!

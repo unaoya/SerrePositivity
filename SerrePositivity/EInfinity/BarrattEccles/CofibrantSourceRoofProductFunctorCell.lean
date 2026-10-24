@@ -41,10 +41,10 @@ def cofibrantSourceRoofProductCommaRightHomotopy : SSet.Homotopy
       SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) := by
-  simpa only [F1B.kanNerveMap_const, SSet.const_comp, cofibrantHammockVertex] using
+  simpa only [SerrePositivity.InfinityCategories.F1B.nerveMap_const, SSet.const_comp, cofibrantHammockVertex] using
     HomotopyClasses.postHomotopy
       (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-      (F1B.kanNerveNatTransHomotopy (cofibrantSourceRoofProductCommaRightLeg A X Y b))
+      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaRightLeg A X Y b))
 
 def cofibrantSourceRoofProductCommaRightCell : FunctorHom
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRetraction
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
-public import SerrePositivity.InfinityCategories.F1B.WeakReverseHomotopy
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopy
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotopy
 
 /-!
 概要：元の全 Idem の単体集合は弱可縮。
@@ -23,8 +23,8 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 元の吸収元は、元の恒等図式から元の一点への実際の全ホモトピーを与える。 -/
 def idemShapeContraction :
     SSet.Homotopy (𝟙 IdemShape.{u}) (SSet.const (nerveVertex walkingObject)) := by
-  have h := F1B.kanNerveNatTransHomotopy walkingIdemCocone.{u}.ι
-  rw [F1B.kanNerveMap_const] at h
+  have h := SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy walkingIdemCocone.{u}.ι
+  rw [SerrePositivity.InfinityCategories.F1B.nerveMap_const] at h
   exact h
 
 /-- 元の全 Idem は、全 Kan 標的へのホモトピー類で検査した意味で弱可縮。 -/

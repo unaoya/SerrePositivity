@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.InitialVertexLocalizedContraction
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-! # Kan 標的による弱同値を同じ射の anodyne 局所化可逆性へ移す -/
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingLeftCommaContractibility
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!
@@ -24,14 +24,14 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 def walkingLeftCommaSliceIso (P : WalkingSplit.{u}) :
     nerve (CostructuredArrow walkingInclusion P) ≅
       pullback idemInclusion (sliceOverProjection (nervePoint P)) :=
-  F1B.kanNerveLeftKanShapeIso walkingInclusion P
+  SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso walkingInclusion P
 
 /-- 元の比較同型は、元の全 Idem への射影と厳密に可換。 -/
 lemma walkingLeftCommaSliceIso_projection (P : WalkingSplit.{u}) :
     (walkingLeftCommaSliceIso P).hom ≫ pullback.fst idemInclusion
       (sliceOverProjection (nervePoint P)) =
         nerveMap (CostructuredArrow.proj walkingInclusion P) :=
-  F1B.kanNerveLeftKanShapeIso_hom_projection walkingInclusion P
+  SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection walkingInclusion P
 
 /-- 元の包含に沿った元の slice の引き戻しは、各元の対象で弱可縮。 -/
 lemma idemInclusion_slice_isWeaklyContractible (P : WalkingSplit.{u}) :

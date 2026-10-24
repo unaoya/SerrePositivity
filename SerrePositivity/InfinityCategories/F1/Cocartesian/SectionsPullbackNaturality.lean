@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsPullbackIso
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionsPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionsPrecomposition
 
 /-!
 概要：底変換の section 同型は、元の始域の前合成と厳密に可換。
@@ -22,10 +22,10 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianSectionsPullbackIso_pre {P E A B : SSet.{u}} [Quasicategory B]
     {p : E ⟶ B} [CocartesianFibration p] {i : P ⟶ E} {r : P ⟶ A} {f : A ⟶ B}
     (hs : IsPullback i r p f) {a b : Over A} (j : a ⟶ b) :
-    kanCocartesianSectionsPre r j ≫
+    SerrePositivity.InfinityCategories.cocartesianSectionsPre r j ≫
       (cocartesianSectionsPullbackIso hs a.hom (a.hom ≫ f) rfl).hom =
     (cocartesianSectionsPullbackIso hs b.hom (b.hom ≫ f) rfl).hom ≫
-      kanCocartesianSectionsPre p ((Over.map f).map j) := by
+      SerrePositivity.InfinityCategories.cocartesianSectionsPre p ((Over.map f).map j) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext

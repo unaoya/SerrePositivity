@@ -21,30 +21,30 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 各パラメータ辺の全ての成分が可逆なら、元の section の族を core に持ち上げる。 -/
 def cocartesianSectionCoreLift {A T E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B) (g : T ⟶ kanCocartesianSections p a)
+    (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B) (g : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a)
     (hg : ∀ (e : T _⦋1⦌) (x : A _⦋0⦌), IsInvertibleEdge
       ((edgeOfSimplex (g.app (Opposite.op ⦋1⦌) e)).map
         ((truncation 2).map (cocartesianSectionEvaluate p a x)))) :
-    T ⟶ (quasicategoryCore (kanCocartesianSections p a) : SSet.{u}) :=
+    T ⟶ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p a) : SSet.{u}) :=
   quasicategoryCoreLift g (fun e ↦
     (isInvertibleEdge_cocartesianSection_iff_evaluate p a _).mpr (hg e))
 
 /-- core への持ち上げの包含後は、同じ元の section の族。 -/
 lemma cocartesianSectionCoreLift_ι {A T E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B) (g : T ⟶ kanCocartesianSections p a)
+    (p : E ⟶ B) [InnerFibration p] (a : A ⟶ B) (g : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a)
     (hg : ∀ (e : T _⦋1⦌) (x : A _⦋0⦌), IsInvertibleEdge
       ((edgeOfSimplex (g.app (Opposite.op ⦋1⦌) e)).map
         ((truncation 2).map (cocartesianSectionEvaluate p a x)))) :
-    cocartesianSectionCoreLift p a g hg ≫ (quasicategoryCore (kanCocartesianSections p a)).ι = g :=
+    cocartesianSectionCoreLift p a g hg ≫ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p a)).ι = g :=
   quasicategoryCoreLift_ι _ _
 
 /-- 元の section の制限を頂点で評価すると、元の関手をその像の頂点で評価したもの。 -/
 lemma cocartesianSectionEvaluate_overPre {E B : SSet.{u}} (p : E ⟶ B)
     {a b : Over B} (i : a ⟶ b) (x : a.left _⦋0⦌) :
-    kanCocartesianSectionsPre p i ≫ cocartesianSectionEvaluate p a.hom x =
+    SerrePositivity.InfinityCategories.cocartesianSectionsPre p i ≫ cocartesianSectionEvaluate p a.hom x =
       cocartesianSectionEvaluate p b.hom (i.left.app (Opposite.op ⦋0⦌) x) := by
   unfold cocartesianSectionEvaluate
-  rw [← Category.assoc, kanCocartesianSectionsPre_ι, Category.assoc,
+  rw [← Category.assoc, SerrePositivity.InfinityCategories.cocartesianSectionsPre_ι, Category.assoc,
     ← Category.assoc (SerrePositivity.InfinityCategories.relativeFunctorOverPre p i),
     SerrePositivity.InfinityCategories.relativeFunctorOverPre_ι, Category.assoc, evaluateFunctorAt_pre]
 

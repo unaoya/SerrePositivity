@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeVertexFiberLifting
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeVertexFiberLifting
 
 /-!
 概要：図式を固定した錐の族の後合成。

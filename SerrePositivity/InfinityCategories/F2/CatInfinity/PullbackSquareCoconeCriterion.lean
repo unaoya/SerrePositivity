@@ -31,16 +31,16 @@ lemma isColimitCone_of_isPullback_of_components {J W E D B : SSet.{u}}
     (hp : IsColimitCone (F1B.kanPostcomposeCocone p (F1B.kanPostcomposeCocone a c))) :
     IsColimitCone c := by
   have : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor
-  apply (F1B.kanIsColimitCone_iff_reverseCone c).2
+  apply (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).2
   apply isLimitCone_of_isPullback_of_components (s.map SSet.opFunctor)
-    (F1B.kanCoconeReverseCone c)
+    (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)
   · exact (isLimitCone_reverse_postcomp_iff c a).2 ha
   · exact (isLimitCone_reverse_postcomp_iff c b).2 hb
   · apply (isLimitCone_iff_of_cone_val_eq _ _ ?_).2
-      ((F1B.kanIsColimitCone_iff_reverseCone _).1 hp)
-    change ((F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map a) ≫
+      ((SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone _).1 hp)
+    change ((SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map a) ≫
       SSet.opFunctor.map p = _
-    rw [F1B.kanCoconeReverseCone_val, F1B.kanCoconeReverseCone_val]
+    rw [SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val, SerrePositivity.InfinityCategories.F1B.coconeReverseCone_val]
     simp only [F1B.kanPostcomposeCocone, CategoryTheory.Functor.map_comp, Category.assoc]
 
 end SerrePositivity.InfinityCategories.F2

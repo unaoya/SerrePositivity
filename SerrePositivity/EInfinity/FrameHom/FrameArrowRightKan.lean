@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
 public import SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!
 # 元の frame の全矢から実右 Kan 形状への比較
@@ -38,7 +38,7 @@ def rightKanComparisonCell :
     (fun s => hp s.left)).inv ≫
       SSet.Truncated.HomotopyCategory.homMk
         (functorEdgeOfSimplicialHomotopy (HomotopyClasses.postHomotopy q
-          (F1B.kanNerveNatTransHomotopy (rightLeg A))))
+          (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (rightLeg A))))
 
 def rightKanComparisonHomotopy :
     SSet.Homotopy (SSet.const (X := nerve (Total A))

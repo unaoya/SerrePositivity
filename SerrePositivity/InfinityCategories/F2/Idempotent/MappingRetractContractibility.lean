@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
-public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
-public import SerrePositivity.InfinityCategories.F1B.ContractibleHomotopyRetract
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.ContractibleHomotopyRetract
 
 /-!
 概要：元の指定 retract に沿って、全 pinched Hom の可縮性を移す。

@@ -65,7 +65,7 @@ lemma cofibrantSourceRoofProductCommaRightSlice :
         (SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A)) b =
     nerveMap (cofibrantSourceRoofProductCommaRightOver A X Y b) ≫
-      (F1B.kanNerveOverIso
+      (SerrePositivity.InfinityCategories.F1B.nerveOverIso
         (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       sliceOverPostcomp (SSet.yonedaEquiv.symm
         (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))
@@ -80,7 +80,7 @@ lemma cofibrantSourceRoofProductCommaRightSlice :
   dsimp only [frameRoofRightSliceMap]
   have h := cofibrantSourceRoofProductCommaRightOver_nerve A X Y b
   simpa only [Category.assoc] using congrArg
-    (fun g => g ≫ (F1B.kanNerveOverIso
+    (fun g => g ≫ (SerrePositivity.InfinityCategories.F1B.nerveOverIso
       (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       sliceOverPostcomp (SSet.yonedaEquiv.symm
         (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))

@@ -21,8 +21,8 @@ theorem strictKanTransportPostToLeftFibration_evaluate
       cocartesianKanDiagramFiberComparison p c ≫
         strictKanCompletion.map (vertexFiberMap p q f hf (nerveVertex c)) := by
   change strictKanCompletion.map ((strictTransportPostToLeftFibration p q f hf).app c) ≫
-      strictKanCompletion.map (kanCocartesianStrictTransportEvaluate q c) =
-    strictKanCompletion.map (kanCocartesianStrictTransportEvaluate p c) ≫
+      strictKanCompletion.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate q c) =
+    strictKanCompletion.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c) ≫
       strictKanCompletion.map (vertexFiberMap p q f hf (nerveVertex c))
   rw [← Functor.map_comp, ← Functor.map_comp,
     strictTransportPostToLeftFibration_evaluate]

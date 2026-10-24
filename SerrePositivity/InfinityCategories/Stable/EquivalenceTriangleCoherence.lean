@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F1B.KanAdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles
 public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
 /-!
 概要：指定同値の全関手比較と、両向きの随伴の単位・余単位を厳密に照合する。
@@ -76,7 +76,7 @@ lemma QCatEquivalence.comparison_symm
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y)
     (h : e.homInvIso.postcomp e.hom = e.invHomIso.precomp e.hom) :
     e.symm.homInvIso.postcomp e.inv = e.symm.invHomIso.precomp e.inv := by
-  have ht := F1B.kanAdjunction_rightTriangleHom e.toAdjunction
+  have ht := SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom e.toAdjunction
   rw [e.toAdjunction_unitHom, e.toAdjunction_counitHom_of_comparison h] at ht
   change (SSet.mapHomotopyCategory ((pre e.inv).app X)).map e.homInvIso.symm.hom ≫
     (SSet.mapHomotopyCategory ((ihom Y).map e.inv)).map e.invHomIso.hom = 𝟙 _ at ht

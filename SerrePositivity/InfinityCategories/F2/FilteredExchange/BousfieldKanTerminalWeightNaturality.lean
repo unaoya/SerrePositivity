@@ -25,7 +25,7 @@ open HomotopyLimits
 lemma nerveNatTransHomotopy_h_eq_of_initial {A B : Type u} [SmallCategory A] [SmallCategory B]
     {F F' G G' : A ⥤ B} (η : F ⟶ G) (η' : F' ⟶ G')
     (hF : F = F') (hG : G = G') (h : IsInitial F) :
-    (F1B.kanNerveNatTransHomotopy η).h = (F1B.kanNerveNatTransHomotopy η').h := by
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy η).h = (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy η').h := by
   subst F'
   subst G'
   have he := h.hom_ext η η'
@@ -52,9 +52,9 @@ lemma terminalWeightHomotopy_naturality (ht : IsTerminal t) {i j : I} (f : i ⟶
       (terminalWeightHomotopy ht i).h =
         (terminalWeightHomotopy ht j).h ≫ (bousfieldKanWeight Iᵒᵖ).map f.op := by
   change (nerveMap (Over.map f.op) ▷ (Δ[1] : SSet.{u})) ≫
-    (F1B.kanNerveNatTransHomotopy (terminalWeightNatTrans ht i)).h =
-      (F1B.kanNerveNatTransHomotopy (terminalWeightNatTrans ht j)).h ≫ nerveMap (Over.map f.op)
-  rw [F1B.kanNerveNatTransHomotopy_whiskerLeft, F1B.kanNerveNatTransHomotopy_whiskerRight]
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (terminalWeightNatTrans ht i)).h =
+      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (terminalWeightNatTrans ht j)).h ≫ nerveMap (Over.map f.op)
+  rw [SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_whiskerLeft, SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_whiskerRight]
   apply nerveNatTransHomotopy_h_eq_of_initial
   · refine CategoryTheory.Functor.ext (fun _ ↦ (terminalWeightPoint_map ht f).symm) ?_
     intro X Y a

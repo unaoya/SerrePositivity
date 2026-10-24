@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRightKanCofinality
 public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
-public import SerrePositivity.InfinityCategories.F1B.KanRightExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence
 
 /-!
 # 元の Kan hammock の実右 Kan 局所極限

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CompositionTriangleRelativePrism
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：元の相対三角形 prism を、同じ二つの図式間のホモトピーとして表示する。

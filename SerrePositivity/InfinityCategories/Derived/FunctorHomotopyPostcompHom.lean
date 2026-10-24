@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
 /-!
 概要：元の augmentation 比較の射は、後続作用間の任意の全関手射に自然である。

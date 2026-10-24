@@ -39,11 +39,11 @@ def scaffoldCocartesianBaseChangeClassificationIso :
 
 /-- 元の section 包含・恒等射評価・実 fiber 底変換の同じ点を保持する分類比較。 -/
 theorem scaffoldCocartesianBaseChangeClassificationIso_pointHom (c : I)
-    (v : ((kanCocartesianStrictTransportDiagram (pullback.snd p k)).obj c) _⦋0⦌) :
+    (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (pullback.snd p k)).obj c) _⦋0⦌) :
     cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv
       ((cocartesianKanDiagram (pullback.snd p k)).obj c)).symm
         ((F2.continuousKanReplacementUnit.app
-          ((kanCocartesianStrictTransportDiagram (pullback.snd p k)).obj c)).app
+          ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (pullback.snd p k)).obj c)).app
             (Opposite.op ⦋0⦌) v)) ≫
       (eqToIso (congrArg HomotopyCategory.mk
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram (pullback.snd p k)) c))).inv ≫

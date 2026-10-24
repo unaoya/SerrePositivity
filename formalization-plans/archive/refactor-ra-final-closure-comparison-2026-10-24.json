@@ -1,0 +1,20 @@
+{
+  "baseline_repository_modules": 1458,
+  "mapped_baseline_repository_modules": 1452,
+  "after_repository_modules": 1456,
+  "added_modules": [
+    "SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison",
+    "SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.FiniteFiberGeometry",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.FinitePrism"
+  ],
+  "removed_modules": [],
+  "new_shared_modules": [
+    "SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison",
+    "SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.FiniteFiberGeometry",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.FinitePrism"
+  ],
+  "unexpected_added_modules": [],
+  "straightening_after": []
+}

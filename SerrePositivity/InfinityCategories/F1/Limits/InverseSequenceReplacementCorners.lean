@@ -57,8 +57,8 @@ lemma trivialKanFibration_inverseSequenceCorner_projection {F G : ℕᵒᵖ ⥤ 
 lemma trivialKanFibration_inverseSequenceCorner_endpoint {F G : ℕᵒᵖ ⥤ SSet.{u}}
     [∀ j, Quasicategory (F.obj j)] [∀ j, Quasicategory (G.obj j)] (η : F ⟶ G) (n : ℕ)
     (h₀ : IsQCatEquivalence (η.app (op n))) (h₁ : IsQCatEquivalence (η.app (op (n + 1))))
-    (hp : F1B.KanEquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
-    (hq : F1B.KanEquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op)) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (F.map (homOfLE (Nat.le_succ n)).op))
+    (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (G.map (homOfLE (Nat.le_succ n)).op)) :
     TrivialKanFibration (inverseSequenceCorner (inverseSequencePathEndpoint η) n) := by
   rw [inverseSequenceCorner_diagramPathEndpoint]
   exact trivialKanFibration_replacementSquareEndCorner _ _ _ _ _ h₁ h₀ hp hq

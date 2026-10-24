@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentConstantCoconeComparison
 public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の全空間のホモトピックな二射が表す native 余錐全体を比較する。

@@ -89,7 +89,7 @@ lemma partialColimitSpanRightTransportHomFamily_fiberPoint :
 def partialColimitSpanTransportHomPathIso : FunctorIso
     (partialColimitSpanLeftTransportHomFamily c hc i F hi dB j G hj dC y)
     (partialColimitSpanRightTransportHomFamily c hc i F hi dB j G hj dC y) :=
-  kanFunctorIsoTransport
+  SerrePositivity.InfinityCategories.functorIsoTransport
     (fiberPointHomPathIso q z y (partialColimitSpanTransportCoconeEdge c hc i F hi dB j G hj dC))
     (partialColimitSpanLeftTransportHomFamily_fiberPoint c hc i F hi dB j G hj dC y)
     (partialColimitSpanRightTransportHomFamily_fiberPoint c hc i F hi dB j G hj dC y)
@@ -105,7 +105,7 @@ lemma partialColimitSpanTransportHomPathComparison_hom :
     SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (partialColimitSpanTransportHomPathComparison c hc i F hi dB j G hj dC y)) =
       (partialColimitSpanTransportHomPathIso c hc i F hi dB j G hj dC y).hom :=
-  kanFunctorIso_simplicialHomotopy_hom _
+  SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom _
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

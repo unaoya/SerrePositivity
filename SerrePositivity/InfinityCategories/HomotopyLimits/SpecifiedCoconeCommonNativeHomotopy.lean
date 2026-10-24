@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpecifiedCoconeNativeHomSquare
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 
 /-!
 概要：共通成分の一つの比較円柱を選び、元の左右の円柱との合成三角形を同時に固定する。
@@ -47,7 +47,7 @@ local notation "H" => specifiedCoconeCommonNativeHomotopy hp p c hc dB hB dC y
 lemma specifiedCoconeCommonNativeHomotopy_hom :
     SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
       (specifiedCoconeCommonNativeIso hp p c hc dB hB dC y).hom :=
-  kanFunctorIso_simplicialHomotopy_hom _
+  SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom _
 
 /-- 左の元の二円柱と同じ共通代表を三辺に持つ実際の合成三角形。 -/
 def specifiedCoconeLeftCommonNativeTriangle : FunctorCompositionTriangle L NL H :=

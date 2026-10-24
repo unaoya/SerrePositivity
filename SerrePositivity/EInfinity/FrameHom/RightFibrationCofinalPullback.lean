@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.CofinalOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
 
 /-!

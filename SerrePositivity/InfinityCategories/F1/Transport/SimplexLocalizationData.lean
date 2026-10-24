@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertexNaturality
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-!
 概要：初頂点写像と共同切断評価が反転する辺を同じ集合で指定する。

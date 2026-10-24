@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinBaseFiber
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinBaseFiber
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinIntervalProjection
 
 /-!

@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2
 lemma hasLimit_point {X : SSet.{u}} [Quasicategory X] (p : (Δ[0] : SSet.{u}) ⟶ X) :
     HasLimit p := by
   obtain ⟨x, rfl⟩ := SSet.yonedaEquiv.symm.surjective p
-  exact ⟨sliceIdentityCone x, F1B.kanSliceIdentityCone_isTerminalVertex x⟩
+  exact ⟨sliceIdentityCone x, SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex x⟩
 
 /-- 始点で極限を検出できる形状の任意の元の図式は極限を持つ。 -/
 lemma hasLimit_of_initialShape {K X : SSet.{u}} [Quasicategory X]

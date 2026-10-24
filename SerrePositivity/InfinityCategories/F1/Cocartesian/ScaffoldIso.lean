@@ -66,7 +66,7 @@ lemma cocartesianDiagramScaffoldMap_inverse {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) :
     cocartesianDiagramScaffoldMappingSpaceMap F q ≫
       cocartesianDiagramScaffoldMappingSpaceInverse F q =
-        𝟙 (strictDiagramMappingSpace F (kanCocartesianStrictTransportDiagram q)) := by
+        𝟙 (strictDiagramMappingSpace F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q)) := by
   apply (cancel_mono (strictDiagramMappingPost (cocartesianStrictTransportInclusion q) F)).1
   rw [Category.assoc, cocartesianDiagramScaffoldInverse_inclusion, ← Category.assoc]
   change cocartesianDiagramScaffoldRawMap F q ≫ strictDiagramMappingScaffoldInverse F q =
@@ -77,7 +77,7 @@ lemma cocartesianDiagramScaffoldMap_inverse {C : Type u} [Category.{u} C]
 /-- cocartesian section への全変換と水平辺を保つ scaffold Hom の元の評価による厳密な同型。 -/
 def cocartesianDiagramScaffoldMappingIso {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {D : SSet.{u}} (q : D ⟶ nerve C) :
-    strictDiagramMappingSpace F (kanCocartesianStrictTransportDiagram q) ≅
+    strictDiagramMappingSpace F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q) ≅
       CocartesianScaffoldFunctorSpace F q where
   hom := cocartesianDiagramScaffoldMappingSpaceMap F q
   inv := cocartesianDiagramScaffoldMappingSpaceInverse F q
@@ -88,7 +88,7 @@ def cocartesianDiagramScaffoldMappingIso {C : Type u} [Category.{u} C]
 instance strictDiagramMappingSpace_cocartesianStrictTransport_quasicategory
     {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {D : SSet.{u}}
     (q : D ⟶ nerve C) [InnerFibration q] :
-    Quasicategory (strictDiagramMappingSpace F (kanCocartesianStrictTransportDiagram q)) where
+    Quasicategory (strictDiagramMappingSpace F (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram q)) where
   hornFilling' _ _ σ h0 hn := by
     let e := cocartesianDiagramScaffoldMappingIso F q
     obtain ⟨H, hH⟩ := Quasicategory.hornFilling h0 hn (σ ≫ e.hom)

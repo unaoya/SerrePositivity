@@ -40,7 +40,7 @@ lemma core_markedCocartesianFunctorPre_isPullback_of_isPushout
       (quasicategoryCoreMap (markedCocartesianFunctorPre q g A W hg))
       (quasicategoryCoreMap (markedCocartesianFunctorPre q f A V hf)) := by
   letI : InnerFibration (markedCocartesianFunctorPre q g A W hg) :=
-    F1B.KanEquivalenceLifting.innerFibration
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.innerFibration
       (kanEquivalenceLifting_markedCocartesianFunctorPre q g A W hg)
   exact quasicategoryCoreMap_isPullback_of_isPullback
     (markedCocartesianFunctorPre_isPullback_of_isPushout q f g i j hp A V W U

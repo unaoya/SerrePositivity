@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.LoopConeFamilyComparison
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianEdge
-public import SerrePositivity.InfinityCategories.F1B.UnitComma
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitComma
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 /-!
 概要：全 loop cospan 上の任意錐から始点比較の comma への実関手。

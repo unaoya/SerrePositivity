@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
-public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
 public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyPrism
 

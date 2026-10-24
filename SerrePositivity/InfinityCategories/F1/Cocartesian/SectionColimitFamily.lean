@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanUniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.UniversalScaffoldEvaluation
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Limits.Comma
@@ -23,16 +23,16 @@ namespace SerrePositivity.InfinityCategories
 /-- 整合する section の族を展開し、元の全空間を頂点とする余錐を作る。 -/
 def cocartesianSectionFamilyTensorCocone {J : Type v} [Category.{w} J]
     {T E B : SSet.{u}} (p : E ⟶ B) (D : J ⥤ Over B)
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f)) :
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) :
     Cocone (D ⋙ Over.forget B ⋙ tensorRight T) where
   pt := E
   ι :=
-    { app j := kanCocartesianSectionsUncurry (s j)
+    { app j := SerrePositivity.InfinityCategories.cocartesianSectionsUncurry (s j)
       naturality {j k} f := by
-        change ((D.map f).left ▷ T) ≫ kanCocartesianSectionsUncurry (s k) =
-          kanCocartesianSectionsUncurry (s j)
-        rw [← kanCocartesianSectionsUncurry_overPre, ← hs f] }
+        change ((D.map f).left ▷ T) ≫ SerrePositivity.InfinityCategories.cocartesianSectionsUncurry (s k) =
+          SerrePositivity.InfinityCategories.cocartesianSectionsUncurry (s j)
+        rw [← SerrePositivity.InfinityCategories.cocartesianSectionsUncurry_overPre, ← hs f] }
 
 /-- 底上の余極限をパラメーターと右直積しても、余極限の普遍性を保持する。 -/
 def cocartesianSectionTensorCocone_isColimit {J : Type v} [Category.{w} J]
@@ -45,8 +45,8 @@ def cocartesianSectionTensorCocone_isColimit {J : Type v} [Category.{w} J]
 def cocartesianSectionFamilyColimitUncurry {J : Type v} [Category.{w} J]
     {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
     (hc : IsColimit ((Over.forget B).mapCocone c))
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f)) :
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) :
     c.pt.left ⊗ T ⟶ E :=
   (cocartesianSectionTensorCocone_isColimit c hc).desc
     (cocartesianSectionFamilyTensorCocone p D s hs)
@@ -55,10 +55,10 @@ def cocartesianSectionFamilyColimitUncurry {J : Type v} [Category.{w} J]
 lemma cocartesianSectionFamilyColimitUncurry_fac {J : Type v} [Category.{w} J]
     {T E B : SSet.{u}} (p : E ⟶ B) {D : J ⥤ Over B} (c : Cocone D)
     (hc : IsColimit ((Over.forget B).mapCocone c))
-    (s : ∀ j, T ⟶ kanCocartesianSections p (D.obj j).hom)
-    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ kanCocartesianSectionsPre p (D.map f)) (j : J) :
+    (s : ∀ j, T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)
+    (hs : ∀ {j k} (f : j ⟶ k), s j = s k ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) (j : J) :
     ((c.ι.app j).left ▷ T) ≫ cocartesianSectionFamilyColimitUncurry p c hc s hs =
-      kanCocartesianSectionsUncurry (s j) :=
+      SerrePositivity.InfinityCategories.cocartesianSectionsUncurry (s j) :=
   (cocartesianSectionTensorCocone_isColimit c hc).fac _ j
 
 end SerrePositivity.InfinityCategories

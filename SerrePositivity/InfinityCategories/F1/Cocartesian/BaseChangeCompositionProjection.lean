@@ -29,16 +29,16 @@ lemma cocartesianStrictTransportBaseChangeComponent_comp_uncurry_snd
     {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C]
     {E T : SSet.{u}} (p : E ⟶ nerve C) [CocartesianFibration p]
     (l : A ⥤ D) (k : D ⥤ C) (a : A)
-    (s : T ⟶ kanCocartesianStrictTransport p (k.obj (l.obj a))) :
+    (s : T ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj (l.obj a))) :
     relativeFunctorUncurry
       (((s ≫ cocartesianStrictTransportBaseChangeComponent p k (l.obj a)) ≫
         cocartesianStrictTransportBaseChangeComponent (pullback.fst (nerveMap k) p) l a) ≫
-        kanCocartesianSectionsι (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p))
+        SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p))
           (nerveMap (Under.forget a))) ≫
         pullback.snd (nerveMap l) (pullback.fst (nerveMap k) p) ≫ pullback.snd (nerveMap k) p =
       relativeFunctorUncurry ((s ≫
         cocartesianStrictTransportBaseChangeComponent p (l ⋙ k) a) ≫
-          kanCocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
+          SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
             (nerveMap (Under.forget a))) ≫ pullback.snd (nerveMap (l ⋙ k)) p := by
   rw [← Category.assoc,
     cocartesianStrictTransportBaseChangeComponent_uncurry_snd

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentFamilyEvaluation
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：実屋根表示の輸送を含めて、全降下選択空間上で指定評価族と比較する。
 方針：商屋根側の二つの実ホモトピーを Kan 値前合成の関手同型として貼る。

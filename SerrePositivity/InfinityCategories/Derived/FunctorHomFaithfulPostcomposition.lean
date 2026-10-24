@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：充満忠実な実包含への後合成は、任意の全関手射の等式を反映する。

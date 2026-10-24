@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityGlobalFamily
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinUniversalHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinUniversalHom
 
 /-!
 概要：weighted 密度の同じ大域図式とその左 Kan 像の、全添字上の Hom 普遍性。

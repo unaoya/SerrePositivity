@@ -23,28 +23,28 @@ variable {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C]
 
 /-- 既存の section の結合比較の展開は、全空間の同じ結合同型との実際の後合成。 -/
 lemma cocartesianBaseChangeAssociativityComponent_native_uncurry (a : A) {T : SSet.{u}}
-    (s : T ⟶ kanCocartesianStrictTransport
+    (s : T ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a) :
     relativeFunctorUncurry ((s ≫ (cocartesianBaseChangeAssociativityComponent p l k a).hom) ≫
-      kanCocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
         (nerveMap (Under.forget a))) =
-    relativeFunctorUncurry (s ≫ kanCocartesianSectionsι
+    relativeFunctorUncurry (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) (nerveMap (Under.forget a))) ≫
         (cocartesianBaseChangeNativeAssociativity p l k).hom := by
   let x := relativeFunctorUncurry
     ((s ≫ (cocartesianBaseChangeAssociativityComponent p l k a).hom) ≫
-      kanCocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
         (nerveMap (Under.forget a)))
-  let y := relativeFunctorUncurry (s ≫ kanCocartesianSectionsι
+  let y := relativeFunctorUncurry (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι
     (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) (nerveMap (Under.forget a)))
   let e := cocartesianBaseChangeNativeAssociativity p l k
   change x = y ≫ e.hom
   apply pullback.hom_ext
   · have hx := relativeFunctorUncurry_projection
       ((s ≫ (cocartesianBaseChangeAssociativityComponent p l k a).hom) ≫
-        kanCocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
+        SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
           (nerveMap (Under.forget a)))
-    have hy := relativeFunctorUncurry_projection (s ≫ kanCocartesianSectionsι
+    have hy := relativeFunctorUncurry_projection (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) (nerveMap (Under.forget a)))
     exact hx.trans (hy.symm.trans ((Category.assoc y e.hom _).trans
       (congrArg (fun f ↦ y ≫ f)

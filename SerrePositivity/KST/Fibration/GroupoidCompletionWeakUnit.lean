@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 
 /-! # 元の全辺局所化の単位と Kan 標的による全写像空間の検査 -/
 

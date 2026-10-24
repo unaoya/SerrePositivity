@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
-public import SerrePositivity.InfinityCategories.F1B.SquareComposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.SquareComposition
 
 /-! # 自然性 square の元の対角辺と二つの実三角形
 概要：四辺を指定した square から共通の通常の対角射と二つの指定三角形を回収する。

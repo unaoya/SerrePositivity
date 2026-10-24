@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-! 自明 Kan fibration の同じ基底上で、全時刻の基底を固定する実ホモトピーを選ぶ。 -/
 @[expose] public section

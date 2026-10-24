@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexLocalizationData
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：標準単体の初頂点切断の、辺を反転する関手での coherent な比較。

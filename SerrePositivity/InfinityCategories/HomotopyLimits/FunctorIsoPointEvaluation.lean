@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoVertexEvaluation
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：全族の関手同型の成分を、一点への係数制限と単体的評価の同じ像に照合する。

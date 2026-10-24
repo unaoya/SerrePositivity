@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeDerivedCoefficientComposition
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionFunctorTriangle
 
 /-! native 合成 prism から直接作り、導来比較の同じ実三辺を保持する合成三角形。 -/

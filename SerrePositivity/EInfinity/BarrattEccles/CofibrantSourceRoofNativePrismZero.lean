@@ -41,7 +41,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantSourceRoofProductCommaNativePrism_zero_uncurry :
     sliceOverUncurry (prismEndpoint 0 _ ≫ cofibrantSourceRoofProductCommaNativePrism A X Y b) =
-      (F1B.kanNerveCoconeEquiv (Cocone.mk
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (Cocone.mk
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
         (cofibrantSourceRoofProductCommaRightLeg A X Y b))).val ≫
       hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A) := by

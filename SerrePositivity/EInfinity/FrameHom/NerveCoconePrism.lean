@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveOverCanonicalCocone
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyComponent
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OverCanonicalCocone
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
-public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 
 /-!
@@ -27,15 +27,15 @@ open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C]
 
 lemma nerveNatTransHomotopy_mixed {F G : I ⥤ C} (η : F ⟶ G) (a : (nerve I) _⦋1⦌) :
-    (F1B.kanNerveNatTransHomotopy η).h.app (op ⦋1⦌)
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy η).h.app (op ⦋1⦌)
       (a, stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) =
         ComposableArrows.mk₁ (F.map a.hom ≫ η.app (a.obj 1)) := by
   let t : (nerve (I × (I ⥤ C))) _⦋1⦌ := a.prod' (ComposableArrows.mk₁ η)
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app
-    (F1B.kanNerveFunctorCategoryIso_uncurry I C) (op ⦋1⦌)) t
-  change (((F1B.kanNerveFunctorCategoryIso I C).hom.app (op ⦋1⦌)
+    (SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso_uncurry I C) (op ⦋1⦌)) t
+  change (((SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso I C).hom.app (op ⦋1⦌)
     (ComposableArrows.mk₁ η)).app (op ⦋1⦌) (𝟙 (op ⦋1⦌))) a = _ at h
-  change (((F1B.kanNerveFunctorCategoryIso I C).hom.app (op ⦋1⦌)
+  change (((SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso I C).hom.app (op ⦋1⦌)
     (ComposableArrows.mk₁ η)).app (op ⦋1⦌) (𝟙 (op ⦋1⦌))) a = _
   refine h.trans ?_
   refine ComposableArrows.ext₁ ?_ ?_ ?_
@@ -47,7 +47,7 @@ lemma nerveNatTransHomotopy_mixed {F G : I ⥤ C} (η : F ⟶ G) (a : (nerve I) 
 lemma rightMappingSpacePrism_mixed {K : SSet.{u}} (a : K _⦋1⦌) :
     (rightMappingSpacePrism K).app (op ⦋1⦌)
       (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), a) =
-        F1B.kanJoinCoconeLegSimplex (K.δ 1 a) := by
+        SerrePositivity.InfinityCategories.F1B.joinCoconeLegSimplex (K.δ 1 a) := by
   change (joinCylinderMap K Δ[0]).app (op ⦋1⦌)
     ((a, stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)),
       PinchedHom.constant (stdSimplex.obj₀Equiv.symm 0) 1) = _
@@ -65,23 +65,23 @@ lemma rightMappingSpacePrism_mixed {K : SSet.{u}} (a : K _⦋1⦌) :
 
 lemma nerveCoconePrism_eq_natTrans (F : I ⥤ C) (c : Cocone F) :
     (β_ (nerve I) (Δ[1] : SSet.{u})).hom ≫ rightMappingSpacePrism (nerve I) ≫
-      (F1B.kanNerveCoconeEquiv c).val = (F1B.kanNerveNatTransHomotopy c.ι).h := by
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val = (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy c.ι).h := by
   let L := (β_ (nerve I) (Δ[1] : SSet.{u})).hom ≫ rightMappingSpacePrism (nerve I) ≫
-    (F1B.kanNerveCoconeEquiv c).val
+    (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val
   have h₀ : SSet.ι₀ ≫ L = nerveMap F := by
     change prismEndpoint 0 (nerve I) ≫ rightMappingSpacePrism (nerve I) ≫
-      (F1B.kanNerveCoconeEquiv c).val = _
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val = _
     rw [← Category.assoc, rightMappingSpacePrism_zero]
-    exact (F1B.kanNerveCoconeEquiv c).property
+    exact (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).property
   have h₁ : SSet.ι₁ ≫ L = SSet.const (nerveVertex c.pt) := by
     change prismEndpoint 1 (nerve I) ≫ rightMappingSpacePrism (nerve I) ≫
-      (F1B.kanNerveCoconeEquiv c).val = _
+      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val = _
     rw [← Category.assoc, rightMappingSpacePrism_one, Category.assoc,
-      F1B.kanNerveCocone_point]
+      SerrePositivity.InfinityCategories.F1B.nerveCocone_point]
     change SSet.const (stdSimplex.obj₀Equiv.symm 0) ≫
       SSet.yonedaEquiv.symm (nerveVertex c.pt) = _
     exact const_point_comp_yoneda _
-  apply F1B.kanNerve_hom_ext_one
+  apply SerrePositivity.InfinityCategories.F1B.nerve_hom_ext_one
   rintro ⟨a, t⟩
   have ht : t = PinchedHom.constant (stdSimplex.obj₀Equiv.symm 0) 1 ∨
       t = stdSimplex.objEquiv.symm (𝟙 ⦋1⦌) ∨
@@ -122,20 +122,20 @@ lemma nerveCoconePrism_eq_natTrans (F : I ⥤ C) (c : Cocone F) :
   rcases ht with rfl | rfl | rfl
   · have h := ConcreteCategory.congr_hom (NatTrans.congr_app h₀ (op ⦋1⦌)) a
     have h' := ConcreteCategory.congr_hom
-      (NatTrans.congr_app (F1B.kanNerveNatTransHomotopy c.ι).h₀ (op ⦋1⦌)) a
+      (NatTrans.congr_app (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy c.ι).h₀ (op ⦋1⦌)) a
     exact h.trans h'.symm
-  · change (F1B.kanNerveCoconeEquiv c).val.app (op ⦋1⦌)
+  · change (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val.app (op ⦋1⦌)
       ((rightMappingSpacePrism (nerve I)).app (op ⦋1⦌)
         (stdSimplex.objEquiv.symm (𝟙 ⦋1⦌), a)) = _
     rw [rightMappingSpacePrism_mixed]
     have ha : (nerve I).δ 1 a = nerveVertex (a.obj 0) := ComposableArrows.ext₀ rfl
-    rw [ha, F1B.kanNerveCocone_leg, nerveNatTransHomotopy_mixed]
+    rw [ha, SerrePositivity.InfinityCategories.F1B.nerveCocone_leg, nerveNatTransHomotopy_mixed]
     apply congrArg ComposableArrows.mk₁
     exact ((c.ι.naturality a.hom).trans (Category.comp_id _)).symm
   · have h := ConcreteCategory.congr_hom (NatTrans.congr_app h₁ (op ⦋1⦌)) a
     have h' := ConcreteCategory.congr_hom
-      (NatTrans.congr_app (F1B.kanNerveNatTransHomotopy c.ι).h₁ (op ⦋1⦌)) a
-    simp only [F1B.kanNerveMap_const] at h'
+      (NatTrans.congr_app (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy c.ι).h₁ (op ⦋1⦌)) a
+    simp only [SerrePositivity.InfinityCategories.F1B.nerveMap_const] at h'
     have ht₁ : ((SSet.ι₁ (X := nerve I)).app (op ⦋1⦌) a).2 =
         PinchedHom.constant (stdSimplex.obj₀Equiv.symm 1) 1 := by
       apply stdSimplex.ext

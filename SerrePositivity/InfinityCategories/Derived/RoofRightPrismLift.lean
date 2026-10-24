@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.CofinalFixedRightPrism
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFixedRightPrism
 
 /-! # 右ファイブレーション上の終端固定 prism
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.Core.FatJoin
-public import SerrePositivity.InfinityCategories.F1B.TransformationFamilies
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.TransformationFamilies
 
 /-!
 概要：太い余錐から対角関手への自然変換を、任意のパラメータで取り出す。

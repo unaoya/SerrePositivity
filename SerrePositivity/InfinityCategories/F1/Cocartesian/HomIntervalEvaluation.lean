@@ -57,7 +57,7 @@ lemma cocartesianTransportDiagramHomInterval_evaluation
 /-- 元の分類先の成分評価は、単射な同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_cocartesianHomIntervalEvaluation
     {C : Type u} [Category.{u} C] (F G : CocartesianTransportDiagramCategory C) (c : C) :
-    F1B.KanEquivalenceLifting (cocartesianHomIntervalEvaluation F G c) :=
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (cocartesianHomIntervalEvaluation F G c) :=
   kanEquivalenceLifting_intervalMappingPostOfEq _
     (kanEquivalenceLifting_evaluateFunctorAt _) _ _ _ _
 

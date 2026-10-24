@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCofinality
 public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
-public import SerrePositivity.InfinityCategories.F1B.KanRightExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence
 /-!
 概要：任意の実分母反転関手について、商の全頂点で実右 Kan 局所極限を構成する。
 方針：実逆分母の left cofinal 比較に沿って、実分母図式の既存極限を移送する。

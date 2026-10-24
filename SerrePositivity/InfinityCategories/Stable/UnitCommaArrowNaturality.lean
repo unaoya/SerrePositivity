@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopSourceUniversalUnit
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaUnitComponent
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberLeftFibration
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaUnitComponent
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberLeftFibration
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaKanCoconeComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestrictionHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
 
 /-!
 概要：元の sifted 保存関手自身が、P_Σ Yoneda に沿う恒等単位付き全左 Kan 延長。

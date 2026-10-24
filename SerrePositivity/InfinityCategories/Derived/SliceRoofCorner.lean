@@ -21,7 +21,7 @@ def sliceRoofTarget : SSet.{u} := pullback (sliceOverProjection (p ≫ r)) (a �
 /-- 三角形から、同じ実分子と元の添字を持つ標的屋根への写像。 -/
 def sliceRoofTriangleMap : sliceRoofTriangle a p ⟶ sliceRoofTarget r a p :=
   pullback.lift (pullback.snd _ _ ≫ sliceOverPostcomp p r) (pullback.fst _ _) (by
-    rw [Category.assoc, F1B.kanSliceOverPostcomp_projection, ← Category.assoc,
+    rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection, ← Category.assoc,
       ← pullback.condition, Category.assoc])
 /-- 標的屋根の実分子と元の始域を、相対 slice corner へ写す。 -/
 def sliceRoofCornerBase : sliceRoofTarget r a p ⟶ sliceOverCorner p r :=

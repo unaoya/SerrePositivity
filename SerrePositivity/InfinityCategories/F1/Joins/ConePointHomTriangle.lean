@@ -35,7 +35,7 @@ lemma conePointHomTriangle_first (c : JoinCone f) (x : X _⦋0⦌) :
           (β_ (pinchedHom x c.vertex) (Δ[1] : SSet.{u})).hom ≫
             intervalMappingUncurry (pinchedHomToIntervalMappingSpace x c.vertex) := by
   rw [conePointHomTriangle, ← Category.assoc, ← Category.assoc, ← comp_whiskerRight,
-    kanSquareTriangle_outerFaces.1]
+    SerrePositivity.InfinityCategories.squareTriangle_outerFaces.1]
   change (F2.coconeVerticalParameters K (pinchedHom x c.vertex) ≫
     (SSet.ι₀ ▷ (pinchedHom x c.vertex ⊗ (Δ[1] : SSet.{u})))) ≫ conePointHomSquare c x = _
   rw [Category.assoc, conePointHomSquare_zero_standard]
@@ -46,7 +46,7 @@ lemma conePointHomTriangle_second (c : JoinCone f) (x : X _⦋0⦌) :
       F2.coconeHorizontalParameters K (pinchedHom x c.vertex) ≫
         coneVariablePrism (SSet.const c : pinchedHom x c.vertex ⟶ sliceOver f) := by
   rw [conePointHomTriangle, ← Category.assoc, ← Category.assoc, ← comp_whiskerRight,
-    kanSquareTriangle_outerFaces.2.1]
+    SerrePositivity.InfinityCategories.squareTriangle_outerFaces.2.1]
   change (F2.coconeHorizontalParameters K (pinchedHom x c.vertex) ≫
     ((K ⊗ (Δ[1] : SSet.{u})) ◁ SSet.ι₁)) ≫ conePointHomSquare c x = _
   rw [Category.assoc, conePointHomSquare_target]

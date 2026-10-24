@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 
 /-!
 概要：可逆な余単位を持つ実随伴の左関手の局所化普遍性。

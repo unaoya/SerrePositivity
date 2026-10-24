@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetConstants
-public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightHomotopySquare
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!

@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSliceFibration
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.KST.Comparison.ArbitraryBasePullback
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 
 /-!
 # 元の次数比較による実屋根 slice の弱可縮性の還元
@@ -61,6 +61,6 @@ lemma roofQuillenSlice_weaklyContractible_of_corner_weak [SSet.Quasicategory E]
     (roofQuillenDegreeCorner_isPullback A Y q b f)
   have hw := AnodyneWeakDetection.isWeakHomotopyEquivalence _ hj
   exact hw.weaklyContractible_iff.mpr
-    (F1B.kanSliceIdentityCone_isTerminalVertex b).isWeaklyContractible
+    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex b).isWeaklyContractible
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

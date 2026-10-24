@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemImageKanShape
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingJoinCones
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftCanonicalCocone
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftCanonicalCocone
 
 /-!
 概要：元の分裂対象での標準左 Kan 余錐を、保存済みの同じ Idem 余錐と照合する。
@@ -22,9 +22,9 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の分裂対象での通常の標準余錐は、元の Idem 余錐の同じ射影への制限。 -/
 lemma walkingImageCanonicalCocone_eq :
-    F1B.kanClassicalLeftKanCanonicalCocone walkingInclusion (𝟭 WalkingSplit.{u}) walkingImage =
+    SerrePositivity.InfinityCategories.F1B.classicalLeftKanCanonicalCocone walkingInclusion (𝟭 WalkingSplit.{u}) walkingImage =
       walkingCocone.whisker (CostructuredArrow.proj walkingInclusion walkingImage) := by
-  have h : (F1B.kanClassicalLeftKanCanonicalCocone
+  have h : (SerrePositivity.InfinityCategories.F1B.classicalLeftKanCanonicalCocone
       walkingInclusion (𝟭 WalkingSplit.{u}) walkingImage).ι =
         (walkingCocone.whisker (CostructuredArrow.proj walkingInclusion walkingImage)).ι := by
     apply NatTrans.ext
@@ -37,16 +37,16 @@ lemma idemImageCanonicalCocone_eq :
     (leftKanCanonicalCocone idemInclusion (𝟙 SplitShape.{u}) (nerveVertex walkingImage)).val =
       joinMap (leftKanProjection idemInclusion (nerveVertex walkingImage))
         (𝟙 (Δ[0] : SSet.{u})) ≫ walkingJoinCocone.val := by
-  let e := F1B.kanNerveLeftKanShapeIso walkingInclusion walkingImage.{u}
+  let e := SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso walkingInclusion walkingImage.{u}
   apply (cancel_epi (joinMap e.hom (𝟙 (Δ[0] : SSet.{u})))).mp
-  have hc := F1B.kanNerveLeftKanCanonicalCocone walkingInclusion
+  have hc := SerrePositivity.InfinityCategories.F1B.nerveLeftKanCanonicalCocone walkingInclusion
     (𝟭 WalkingSplit.{u}) walkingImage
-  have hw := congrArg (fun c ↦ (F1B.kanNerveCoconeEquiv c).val) walkingImageCanonicalCocone_eq
-  have hr := F1B.kanNerveCocone_whisker walkingCocone
+  have hw := congrArg (fun c ↦ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val) walkingImageCanonicalCocone_eq
+  have hr := SerrePositivity.InfinityCategories.F1B.nerveCocone_whisker walkingCocone
     (CostructuredArrow.proj walkingInclusion walkingImage)
   have hp : e.hom ≫ leftKanProjection idemInclusion (nerveVertex walkingImage) =
       nerveMap (CostructuredArrow.proj walkingInclusion walkingImage) :=
-    F1B.kanNerveLeftKanShapeIso_hom_projection walkingInclusion walkingImage
+    SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso_hom_projection walkingInclusion walkingImage
   have hj : joinMap e.hom (𝟙 (Δ[0] : SSet.{u})) ≫
       joinMap (leftKanProjection idemInclusion (nerveVertex walkingImage)) (𝟙 Δ[0]) =
         joinMap (nerveMap (CostructuredArrow.proj walkingInclusion walkingImage)) (𝟙 Δ[0]) :=

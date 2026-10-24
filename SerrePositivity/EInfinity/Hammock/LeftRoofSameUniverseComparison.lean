@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrecomposeHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopy
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopy
 
 /-!
 # 元の四列 roof 比較の同じ宇宙の任意添字への全単体入口
@@ -60,7 +60,7 @@ variable (A' A : I ⥤ C) (p' : A' ⟶ (Functor.const I).obj X') (hp' : ∀ i, W
 def diagramHomotopy : SSet.Homotopy
     (diagramGraphMap W (upperDiagram W A' A p' hp' α σ hA' hA))
     (diagramGraphMap W (lowerDiagram W A p hp f σ hA)) :=
-  SerrePositivity.InfinityCategories.F1B.kanNerveNatTransHomotopy
+  SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
     (diagramComponent W A p hp f σ hA A' p' hp' α h hA')
 
 include h in

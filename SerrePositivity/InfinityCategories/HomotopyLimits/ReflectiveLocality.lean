@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalObjects
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalObjects
 
 /-!
 概要：既存の反射の局所対象を、元の全単位成分に対する写像空間の局所性で特徴づける。

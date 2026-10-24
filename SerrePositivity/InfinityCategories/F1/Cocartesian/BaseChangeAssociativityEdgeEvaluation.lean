@@ -55,9 +55,9 @@ lemma cocartesianBaseChangeAssociativityEdge_at
       ((homOfLE (show (0 : Fin 2) ≤ 1 by decide), 𝟙 a) :
         ((0 : Fin 2), a) ⟶ (1, a)) = ((cocartesianBaseChangeAssociativityQCat p.val.hom l k).app a) := by
     change (cocartesianBaseChangeAssociativityComponent p.val.hom l k a).hom ≫
-      kanCocartesianStrictTransportMap
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportMap
         (pullback.fst (nerveMap (l ⋙ k)) p.val.hom) (𝟙 a) = _
-    rw [kanCocartesianStrictTransportMap_id]
+    rw [SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_id]
     exact Category.comp_id ((cocartesianBaseChangeAssociativityComponent p.val.hom l k a).hom)
   exact congrArg (fun f ↦ (coherentNerveEdge f).edge) hm
 

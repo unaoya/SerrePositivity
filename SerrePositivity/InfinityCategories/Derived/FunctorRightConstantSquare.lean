@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.DegenerateFunctorHomSquare
 
 /-!
 概要：右辺が恒等の実関手正方形から三辺の合成関係を得る。

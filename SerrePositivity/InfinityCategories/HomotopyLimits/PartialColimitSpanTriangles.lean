@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegTriangles
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PartialColimitSpanCocone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransportComparison
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-!

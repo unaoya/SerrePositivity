@@ -24,7 +24,7 @@ def cocartesianScaffoldPrecomposition {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {E D : SSet.{u}} (p : E ⟶ nerve C) (q : D ⟶ nerve C)
     (l : simplicialReplacement F ⟶ E) (hl : l ≫ p = simplicialReplacementProjection F)
     (hc : ∀ {c d : C} (f : c ⟶ d) (x : (F.obj c) _⦋0⦌),
-      IsCocartesianEdge p (l.app (Opposite.op ⦋1⦌) (kanScaffoldHorizontalEdge F f x))) :
+      IsCocartesianEdge p (l.app (Opposite.op ⦋1⦌) (SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge F f x))) :
     cocartesianRelativeFunctorSpace p q ⟶ CocartesianScaffoldFunctorSpace F q :=
   fullSubcomplexLift _ (cocartesianRelativeFunctorInclusion p q ≫
     relativeFunctorOverPre q (Over.homMk (U := Over.mk (simplicialReplacementProjection F))
@@ -53,19 +53,19 @@ def cocartesianScaffoldPrecomposition {C : Type u} [Category.{u} C]
 def cocartesianStrictTransportScaffoldRestriction {C : Type u} [Category.{u} C]
     {E D : SSet.{u}} (p : E ⟶ nerve C) (q : D ⟶ nerve C) :
     cocartesianRelativeFunctorSpace p q ⟶
-      CocartesianScaffoldFunctorSpace (kanCocartesianStrictTransportDiagram p) q :=
-  cocartesianScaffoldPrecomposition (kanCocartesianStrictTransportDiagram p) p q
-    (kanUniversalScaffold p) (kanUniversalScaffold_projection p) (kanUniversalScaffold_horizontal p)
+      CocartesianScaffoldFunctorSpace (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q :=
+  cocartesianScaffoldPrecomposition (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) p q
+    (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_horizontal p)
 
 /-- 同じ strict transport の全作用を scaffold で評価すると元の universal scaffold 制限となる。 -/
 lemma cocartesianStrictTransportMappingSpaceMap_scaffold
     {C : Type u} [Category.{u} C] {E D : SSet.{u}}
     (p : E ⟶ nerve C) (q : D ⟶ nerve C) :
     cocartesianStrictTransportMappingSpaceMap p q ≫
-      cocartesianDiagramScaffoldMappingSpaceMap (kanCocartesianStrictTransportDiagram p) q =
+      cocartesianDiagramScaffoldMappingSpaceMap (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q =
         cocartesianStrictTransportScaffoldRestriction p q := by
   apply (cancel_mono
-    (cocartesianScaffoldFunctorInclusion (kanCocartesianStrictTransportDiagram p) q)).1
+    (cocartesianScaffoldFunctorInclusion (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q)).1
   apply relativeFunctorUncurry_injective
   apply SSet.hom_ext
   intro n

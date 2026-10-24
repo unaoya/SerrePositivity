@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation
 public import SerrePositivity.InfinityCategories.Derived.WeaklyContractibleConstantLimit
 public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverTerminal
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 /-!
 概要：任意の実分母反転関手の実 Verdier 分母図式が極限を持つことを証明する。
 方針：実恒等分母の終対象性と全添字の評価同型を使う。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.ProductTestFibration
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.ProductTestFibration
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 
 /-!

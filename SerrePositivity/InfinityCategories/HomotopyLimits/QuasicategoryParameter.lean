@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 
 /-!
 概要：元のパラメータの二関手を保つ共通の quasicategory 延長と、制限の Hom 全単射。

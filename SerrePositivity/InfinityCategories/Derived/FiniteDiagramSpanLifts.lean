@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.FiniteHomotopyRelativeFillers
 public import SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 一般有限図式のホモトピー部分持ち上げ
 

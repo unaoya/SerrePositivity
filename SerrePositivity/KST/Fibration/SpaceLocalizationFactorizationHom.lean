@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-! # 元の空間値比較二胞体の、宇宙を揃えた商への実降下 -/
 

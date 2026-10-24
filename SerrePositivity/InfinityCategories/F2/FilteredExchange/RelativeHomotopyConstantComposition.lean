@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeHomotopyComposite
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DegenerateHomotopyTriangles
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：指定部分で片側が定値な円柱を合成し、他方の全円柱を保持する。

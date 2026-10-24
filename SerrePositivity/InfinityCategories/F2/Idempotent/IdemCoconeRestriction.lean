@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCofinality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
-public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
 public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 
 /-!

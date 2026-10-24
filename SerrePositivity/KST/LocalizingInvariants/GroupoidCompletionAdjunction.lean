@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F1B.Adjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 
 /-!
 概要：実随伴の両関手は、亜群化後に互いに逆の同値を与える。

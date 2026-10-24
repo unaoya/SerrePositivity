@@ -42,7 +42,7 @@ instance localTargetCoconeSpace_quasicategory (W : Set (X _⦋1⦌))
 def localTargetCoconeRestriction (W : Set (X _⦋1⦌)) {J K : SSet.{u}}
     (D : J ⟶ X) (d : K ⟶ X) (i : K ⟶ J) (hi : i ≫ D = d) :
     localTargetCoconeSpace W D ⟶ localTargetCoconeSpace W d :=
-  F1B.kanFiberComparisonBaseChange (sliceUnderProjection D) (sliceUnderProjection d)
+  SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange (sliceUnderProjection D) (sliceUnderProjection d)
     (normalizedCoconeRestriction D i hi) (normalizedCoconeRestriction_projection D i hi)
     (localObjectsSubcomplex W).ι
 
@@ -63,14 +63,14 @@ lemma localTargetCoconeRestriction_isQCatEquivalence (W : Set (X _⦋1⦌))
     IsQCatEquivalence (localTargetCoconeRestriction W D d i hi) := by
   apply F1B.kanIsQCatEquivalence_of_leftFibration_fibers
     (localTargetCoconeProjection W D) (localTargetCoconeProjection W d) _
-    (F1B.kanFiberComparisonBaseChange_projection _ _ _ _ _)
+    (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_projection _ _ _ _ _)
   intro z
   apply (qCatEquivalenceOfIso (cofinalVertexFiberBaseChangeIso (sliceUnderProjection d)
     (localObjectsSubcomplex W).ι z)).isQCatEquivalence.cancel_right
   change IsQCatEquivalence (_ ≫ (cofinalVertexFiberBaseChangeIso (sliceUnderProjection d)
     (localObjectsSubcomplex W).ι z).hom)
   dsimp only [localTargetCoconeProjection, localTargetCoconeSpace]
-  rw [F1B.kanFiberComparisonBaseChange_fiber]
+  rw [SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_fiber]
   exact (qCatEquivalenceOfIso (cofinalVertexFiberBaseChangeIso (sliceUnderProjection D)
     (localObjectsSubcomplex W).ι z)).isQCatEquivalence.comp
       (h z.val (fullSubcomplexOnVertices_vertex z))

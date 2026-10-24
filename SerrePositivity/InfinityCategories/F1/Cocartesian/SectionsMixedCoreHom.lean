@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 元の cocartesian section の quasicategory を QCat の対象に束ねる。 -/
 def cocartesianSectionsQCatObject {B : SSet.{u}} (a : Over B)
     (p : CocartesianFibrationCategory B) : QCat.{u} :=
-  ⟨kanCocartesianSections p.val.hom a.hom, inferInstance⟩
+  ⟨SerrePositivity.InfinityCategories.cocartesianSections p.val.hom a.hom, inferInstance⟩
 
 /-- 元の混合作用の core により、cocartesian 関手と定義域を同時に動かす。 -/
 def cocartesianSectionsMixedCoreHom {B : SSet.{u}} {a b : Over B}

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedAmbientVertices
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-!
 # 元の通常複体射と同じ閉 dg 辺の導来像

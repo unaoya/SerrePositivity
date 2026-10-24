@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.KanRightKanShapeCommaComparison
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaComparison
 public import SerrePositivity.InfinityCategories.Core.Limit
 
 /-! # 実 join 錐からの共通始点 prism

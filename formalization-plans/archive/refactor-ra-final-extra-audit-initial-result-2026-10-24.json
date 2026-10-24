@@ -1,0 +1,290 @@
+{
+  "status": "R13 applied and verify.sh passed; extra audit ownership decision pending",
+  "all_top_level_audits_passed": false,
+  "verify": {
+    "direct_sorry_audit": {
+      "exit_code": 0,
+      "seconds": 185.68,
+      "output": [
+        "visited 103999 constants",
+        "declarations with a direct sorry in the closure of main_statement: []",
+        "SerrePositivity.Inputs.Homotopy.kanQuillen_model_exists in environment: false, in closure: false",
+        "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3 in environment: true, in closure: true",
+        "SerrePositivity.theorem_3_1_K0 in environment: true, in closure: true",
+        "SerrePositivity.Section4.supportedRankK0_descent in environment: true, in closure: true"
+      ]
+    },
+    "seconds": 1669.26,
+    "exit_code": 0,
+    "all_gates_passed": true,
+    "completed_at": "2026-10-24T17:32:18.868799",
+    "stages": [
+      {
+        "stage": "--- remove orphan oleans (modules without source)",
+        "seconds": 2.07
+      },
+      {
+        "stage": "--- lake build SerrePositivity",
+        "seconds": 16.36
+      },
+      {
+        "stage": "--- lake build <audit targets> (2794 modules, derived from scripts/audit_*.lean)",
+        "seconds": 17.96
+      },
+      {
+        "stage": "--- audits",
+        "seconds": 1276.38
+      },
+      {
+        "stage": "--- sorry closure of main_statement",
+        "seconds": 170.78
+      }
+    ],
+    "verification_output": [
+      "=== verify 2026-10-24 17:04:29 HEAD b225f2ad3",
+      "--- remove orphan oleans (modules without source)",
+      "removed orphan modules: 0",
+      "--- lake build SerrePositivity",
+      "Build completed successfully (25312 jobs).",
+      "--- lake build <audit targets> (2794 modules, derived from scripts/audit_*.lean)",
+      "Build completed successfully (32942 jobs).",
+      "--- audits",
+      "audit_infinity_core rc=0 18s",
+      "audit_infinity_f1 rc=0 46s",
+      "audit_infinity_f1b rc=0 12s",
+      "audit_infinity_f1_f1b rc=0 17s",
+      "audit_infinity_f2 rc=0 35s",
+      "audit_f2_ind rc=0 18s",
+      "audit_f2_compact rc=0 15s",
+      "audit_f2_idempotent rc=0 14s",
+      "audit_infinity_presentable rc=0 18s",
+      "audit_homotopy_limits rc=0 37s",
+      "audit_infinity_stable rc=0 329s",
+      "audit_derived_infinity rc=0 320s",
+      "audit_derived_gluing rc=0 28s",
+      "audit_dg_nerve rc=0 13s",
+      "audit_coherent_nerve rc=0 16s",
+      "audit_dold_kan_comparison rc=0 39s",
+      "audit_einfinity rc=0 98s",
+      "audit_kst_fibration rc=0 32s",
+      "audit_kst_s_construction rc=0 73s",
+      "audit_localizing_invariants rc=0 31s",
+      "audit_kst_nonconnective rc=0 30s",
+      "audit_kst_spectra rc=0 20s",
+      "audit_spectra rc=0 10s",
+      "audit_refactor_infinity rc=0 7s",
+      "--- sorry closure of main_statement",
+      "declarations with a direct sorry in the closure of main_statement: []",
+      "SerrePositivity.Inputs.Homotopy.kanQuillen_model_exists in environment: false, in closure: false",
+      "SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3 in environment: true, in closure: true",
+      "SerrePositivity.theorem_3_1_K0 in environment: true, in closure: true",
+      "SerrePositivity.Section4.supportedRankK0_descent in environment: true, in closure: true",
+      "=== end 2026-10-24 17:29:13"
+    ]
+  },
+  "extra_audits_initial_run": {
+    "results": [
+      {
+        "name": "audit_adams_action_transport",
+        "exit_code": 0,
+        "seconds": 6.4
+      },
+      {
+        "name": "audit_andre_initial_coefficient",
+        "exit_code": 0,
+        "seconds": 11.16
+      },
+      {
+        "name": "audit_andre_unoriented",
+        "exit_code": 0,
+        "seconds": 11.76
+      },
+      {
+        "name": "audit_axioms",
+        "exit_code": 0,
+        "seconds": 173.77
+      },
+      {
+        "name": "audit_bhatt_scholze",
+        "exit_code": 0,
+        "seconds": 97.93
+      },
+      {
+        "name": "audit_bhatt_scholze_andre_conditional",
+        "exit_code": 0,
+        "seconds": 16.45
+      },
+      {
+        "name": "audit_bhatt_scholze_arc_excision",
+        "exit_code": 0,
+        "seconds": 19.36
+      },
+      {
+        "name": "audit_bhatt_scholze_b4",
+        "exit_code": 0,
+        "seconds": 15.29
+      },
+      {
+        "name": "audit_bhatt_scholze_b5",
+        "exit_code": 0,
+        "seconds": 10.68
+      },
+      {
+        "name": "audit_bhatt_scholze_prop813",
+        "exit_code": 0,
+        "seconds": 10.7
+      },
+      {
+        "name": "audit_bhatt_scholze_refactoring",
+        "exit_code": 1,
+        "seconds": 12.59
+      },
+      {
+        "name": "audit_clmst",
+        "exit_code": 0,
+        "seconds": 245.04
+      },
+      {
+        "name": "audit_clmst_b3",
+        "exit_code": 0,
+        "seconds": 18.5
+      },
+      {
+        "name": "audit_euler_betti_finite_support",
+        "exit_code": 0,
+        "seconds": 7.87
+      },
+      {
+        "name": "audit_euler_group_shared",
+        "exit_code": 0,
+        "seconds": 8.03
+      },
+      {
+        "name": "audit_exact_euler_finite_support",
+        "exit_code": 0,
+        "seconds": 7.13
+      },
+      {
+        "name": "audit_f4",
+        "exit_code": 0,
+        "seconds": 7.03
+      },
+      {
+        "name": "audit_f5",
+        "exit_code": 0,
+        "seconds": 7.37
+      },
+      {
+        "name": "audit_f6",
+        "exit_code": 0,
+        "seconds": 7.15
+      },
+      {
+        "name": "audit_f7",
+        "exit_code": 0,
+        "seconds": 7.03
+      },
+      {
+        "name": "audit_general_spectra",
+        "exit_code": 0,
+        "seconds": 7.02
+      },
+      {
+        "name": "audit_homotopical_foundations",
+        "exit_code": 0,
+        "seconds": 9.84
+      },
+      {
+        "name": "audit_homotopical_general_tools",
+        "exit_code": 0,
+        "seconds": 8.34
+      },
+      {
+        "name": "audit_homotopical_rectification",
+        "exit_code": 0,
+        "seconds": 10.85
+      },
+      {
+        "name": "audit_homotopy_cone_representative_shared",
+        "exit_code": 0,
+        "seconds": 7.33
+      },
+      {
+        "name": "audit_homotopy_property_shared",
+        "exit_code": 0,
+        "seconds": 6.05
+      },
+      {
+        "name": "audit_kst_comparison",
+        "exit_code": 0,
+        "seconds": 36.45
+      },
+      {
+        "name": "audit_kst_derived_blowup",
+        "exit_code": 0,
+        "seconds": 11.35
+      },
+      {
+        "name": "audit_kst_derived_geometry",
+        "exit_code": 0,
+        "seconds": 9.51
+      },
+      {
+        "name": "audit_kst_descent",
+        "exit_code": 0,
+        "seconds": 10.67
+      },
+      {
+        "name": "audit_kst_descent_main",
+        "exit_code": 0,
+        "seconds": 9.95
+      },
+      {
+        "name": "audit_kst_pro_excision",
+        "exit_code": 0,
+        "seconds": 55.19
+      },
+      {
+        "name": "audit_kst_scheme_lemmas",
+        "exit_code": 0,
+        "seconds": 8.98
+      },
+      {
+        "name": "audit_local_algebra",
+        "exit_code": 0,
+        "seconds": 9.34
+      },
+      {
+        "name": "audit_stage4_contract",
+        "exit_code": 0,
+        "seconds": 8.72
+      },
+      {
+        "name": "audit_triangulated_k0_shift_shared",
+        "exit_code": 0,
+        "seconds": 7.82
+      }
+    ],
+    "total": 36,
+    "seconds": 918.72,
+    "all_passed": false,
+    "completed_at": "2026-10-24T17:48:09.239086"
+  },
+  "pending_audit_diagnostic": {
+    "status": "awaiting ownership decision; shared audit source unchanged",
+    "file": "scripts/audit_bhatt_scholze_refactoring.lean",
+    "initial_exit_code": 1,
+    "initial_log": "/tmp/r-a-final-round/extra-audit-logs/audit_bhatt_scholze_refactoring.log",
+    "diagnosis": "RingHom.comp instance inference in audit-only local notation ψ; full expected ring-hom type annotation resolves elaboration",
+    "proposed_patch": "/tmp/r-a-final-round/bhatt-audit-type-annotation.patch",
+    "proposal_full_audit_exit_code": 0,
+    "proposal_full_audit_log": "/tmp/r-a-final-round/bhatt-audit-proposed.log",
+    "source_sha256": "642132901ad5e7f3c1f5bde92f3f5e60150e27ef1d6d323d9ce8a8db3322d639",
+    "proposal_sha256": "353d4e03a1da6444bc803623a4e4605f7a694a782e11f3057ee8aaf2314062ef",
+    "changes_mathematical_source": false,
+    "changes_test_expression_or_proof": false,
+    "recorded_at": "2026-10-24T17:49:07.897931"
+  },
+  "proposed_fix_is_applied_to_shared_source": false,
+  "proposal_patch": "refactor-ra-final-audit-type-annotation-proposal-2026-10-24.patch"
+}

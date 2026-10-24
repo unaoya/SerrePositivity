@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteConeExactness
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
-public import SerrePositivity.InfinityCategories.F1B.KanCosliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
 public import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
 
 /-!
@@ -25,9 +25,9 @@ lemma indPresheaf_finiteColimit_isLimit (κ : Cardinal.{u}) (hκ : Cardinal.alep
     [Quasicategory C] {D : K ⟶ C} (c : JoinCocone D) (hc : IsColimitCone c)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u})
     (hF : IsIndVertex κ C (functorVertex F)) :
-    IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) :=
-  indPresheaf_finiteCone_isLimit κ hκ hex (F1B.kanCoconeReverseCone c)
-    ((F1B.kanIsColimitCone_iff_reverseCone c).mp hc) F hF
+    IsLimitCone (mapJoinCone F (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) :=
+  indPresheaf_finiteCone_isLimit κ hκ hex (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)
+    ((SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).mp hc) F hF
 
 /-- 任意の元の Ind 頂点について、同じ前層による同じ有限全余錐の像の極限性。 -/
 lemma indObject_finiteColimit_isLimit (κ : Cardinal.{u}) (hκ : Cardinal.aleph0 ≤ κ)
@@ -35,7 +35,7 @@ lemma indObject_finiteColimit_isLimit (κ : Cardinal.{u}) (hκ : Cardinal.aleph0
     [Quasicategory C] {D : K ⟶ C} (c : JoinCocone D) (hc : IsColimitCone c)
     (w : (IndInfinity κ C).obj (Opposite.op (SimplexCategory.mk 0))) :
     IsLimitCone (mapJoinCone ((presheafInfinityObjectEquiv C).symm w.val)
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) := by
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) := by
   apply indPresheaf_finiteColimit_isLimit κ hκ hex c hc
   have hw : functorVertex ((presheafInfinityObjectEquiv C).symm w.val) = w.val :=
     (presheafInfinityObjectEquiv C).apply_symm_apply w.val

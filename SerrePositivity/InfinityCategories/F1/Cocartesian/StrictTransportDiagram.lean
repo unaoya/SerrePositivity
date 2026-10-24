@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.QCatDiagramCoherentNerve
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransportEquivalence
 
 /-!
 概要：通常の小圏の nerve 上の一般の cocartesian fibration に、Cat∞ 値の実際の図式を与える。
@@ -24,10 +24,10 @@ attribute [local instance] vertexFiber_quasicategory_of_innerFibration
 /-- cocartesian section による元の strict transport を、小さい quasicategory 値の関手に束ねる。 -/
 def cocartesianStrictTransportQCatFunctor {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [InnerFibration p] : C ⥤ QCat.{u} where
-  obj c := ⟨kanCocartesianStrictTransport p c, inferInstance⟩
-  map f := kanCocartesianStrictTransportMap p f
-  map_id c := kanCocartesianStrictTransportMap_id p c
-  map_comp f g := kanCocartesianStrictTransportMap_comp p f g
+  obj c := ⟨SerrePositivity.InfinityCategories.cocartesianStrictTransport p c, inferInstance⟩
+  map f := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f
+  map_id c := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_id p c
+  map_comp f g := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap_comp p f g
 
 /-- 一般の cocartesian fibration の strict transport の、元の Cat∞ への coherent な実現。 -/
 def cocartesianStrictTransportCoherentDiagram {C : Type u} [Category.{u} C] {E : SSet.{u}}
@@ -52,6 +52,6 @@ def cocartesianStrictTransportCoherentDiagramFiberEquivalence
       ((cocartesianStrictTransportCoherentDiagram p).app (Opposite.op ⦋0⦌)
         (ULift.up (nerveVertex c)))).obj (vertexFiber p (nerveVertex c)) := by
   rw [cocartesianStrictTransportCoherentDiagram_vertex, coherentNerveObject_vertex]
-  exact kanCocartesianStrictTransportFiberEquivalence p c
+  exact SerrePositivity.InfinityCategories.cocartesianStrictTransportFiberEquivalence p c
 
 end SerrePositivity.InfinityCategories

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberSplitRestriction
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
-public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 
 /-!
 概要：coslice の左の一点を任意の反転標準単体へ広げても、固定終点の写像空間は同値。
@@ -31,7 +31,7 @@ lemma exists_cosliceSimplexCollapse_rightAnodyne_section (n : ℕ) :
     ∃ v : (Δ[0] : SSet.{u}) ⟶ (Δ[n] : SSet.{u}).op,
       Mono v ∧ rightAnodyneExtensions v ∧ v ≫ cosliceSimplexCollapse ⦋n⦌ = 𝟙 _ := by
   let j := SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last n))
-  have hj := F1B.kanTerminalPoint_rightAnodyne (stdSimplex_last_isTerminalVertex.{u} n)
+  have hj := SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne (stdSimplex_last_isTerminalVertex.{u} n)
   have hm : Mono j := cofinalPointInclusion_mono _
   let v := j ≫ (stdSimplex.opIso.{u} ⦋n⦌).inv
   have : Mono v := by dsimp [v]; infer_instance

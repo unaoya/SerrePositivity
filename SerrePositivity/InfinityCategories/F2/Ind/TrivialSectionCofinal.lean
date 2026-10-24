@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionCosliceTrivial
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 
 /-!
 概要：trivial Kan 射影の任意の厳密な切断は right cofinal。

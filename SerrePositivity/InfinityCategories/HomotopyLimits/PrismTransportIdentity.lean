@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismCylinderEndpoint
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：標準 prism 自身を入力した輸送比較同型は、同じ終点族の恒等同型となる。
@@ -63,7 +63,7 @@ lemma prismTransportIso_standard_hom :
     (prismTransportStandard_one p e f)
   apply Arrow.mk_injective _ _
   refine (congrArg Arrow.mk h).symm.trans
-    ((kanFunctorHomotopy_hom_arrow_of_h_eq _ _ (prismTransportIdentityEndpoint_raw p e f)).trans ?_)
+    ((SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq _ _ (prismTransportIdentityEndpoint_raw p e f)).trans ?_)
   exact congrArg Arrow.mk (functorHomotopyRefl_hom (f ≫ edgeTransport p e))
 
 /-- 標準 prism 自身の比較は、同じ終点図式の恒等同型である。 -/

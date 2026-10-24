@@ -1,12 +1,12 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSpecifiedPathLift
-public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeEquivalencePathExtension
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyPathReplacement
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeEquivalencePathExtension
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：指定ホモトピーで可換な射を、同じ底の射へ厳密に写る射に補正する。

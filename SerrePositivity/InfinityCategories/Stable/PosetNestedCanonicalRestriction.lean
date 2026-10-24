@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 
 /-!
 概要：同じ左 Kan の局所余極限を部分図式へ移し native 余錐の制限を判定する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportBaseChangeNaturality
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionCoreLift
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransportEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransportEquivalence
 
 /-!
 概要：元の strict transport の under による制限を、同じ始点の fiber で評価する。
@@ -32,9 +32,9 @@ lemma cocartesianStrictTransportRestricted_vertex :
 
 /-- under の制限後の section を、元の始点の同じ fiber で評価する。 -/
 def cocartesianStrictTransportRestrictedEvaluate :
-    kanCocartesianSections p (nerveMap (Under.forget d) ≫ nerveMap k) ⟶
+    SerrePositivity.InfinityCategories.cocartesianSections p (nerveMap (Under.forget d) ≫ nerveMap k) ⟶
       vertexFiber p (nerveVertex (k.obj d)) :=
-  kanCocartesianSectionsEvaluate p (nerveMap (Under.forget d) ≫ nerveMap k)
+  SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p (nerveMap (Under.forget d) ≫ nerveMap k)
     (nerveVertex (Under.mk (𝟙 d))) ≫
       eqToHom (congrArg (vertexFiber p) (cocartesianStrictTransportRestricted_vertex k d))
 
@@ -59,12 +59,12 @@ lemma cocartesianStrictTransportUnderPost_vertex :
 
 /-- under に沿って制限した後の始点評価は、元の strict transport の同じ始点評価。 -/
 lemma cocartesianStrictTransportUnderPost_evaluate :
-    kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
+    SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
       cocartesianStrictTransportRestrictedEvaluate p k d =
-      kanCocartesianStrictTransportEvaluate p (k.obj d) := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p (k.obj d) := by
   apply vertexFiber_hom_ext p (nerveVertex (k.obj d))
   rw [Category.assoc, cocartesianStrictTransportRestrictedEvaluate_ι]
-  change kanCocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
+  change SerrePositivity.InfinityCategories.cocartesianSectionsPre p (cocartesianStrictTransportUnderPost k d) ≫
     cocartesianSectionEvaluate p (nerveMap (Under.forget d) ≫ nerveMap k)
       (nerveVertex (Under.mk (𝟙 d))) =
     cocartesianSectionEvaluate p (nerveMap (Under.forget (k.obj d)))

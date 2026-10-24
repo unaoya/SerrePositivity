@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanIntervalMaximum
+public import SerrePositivity.InfinityCategories.F1B.Diagrams.IntervalMaximum
 
 /-!
 概要：任意のパラメータの時刻と変形時刻の最大値を取り、両端と固定時刻を計算する。
@@ -21,7 +21,7 @@ variable {P Q : SSet.{u}}
 方針：二つの時刻を区間最大値へ写す。
 規約：第二時刻が変形時刻。使われ方：対角の変形の縦座標。 -/
 def timeMaximumAlong (s : P ⟶ (Δ[1] : SSet.{u})) : P ⊗ (Δ[1] : SSet.{u}) ⟶ Δ[1] :=
-  lift (fst P Δ[1] ≫ s) (snd P Δ[1]) ≫ F1B.kanIntervalMaximum
+  lift (fst P Δ[1] ≫ s) (snd P Δ[1]) ≫ SerrePositivity.InfinityCategories.F1B.intervalMaximum
 
 /-- 概要：変形の始点は指定時刻そのもの。
 方針：第二時刻零の最大値を使う。規約：全単体。使われ方：対角の回収。 -/
@@ -29,7 +29,7 @@ lemma timeMaximumAlong_zero (s : P ⟶ (Δ[1] : SSet.{u})) :
     SSet.ι₀ ≫ timeMaximumAlong s = s := by
   have h : SSet.ι₀ ≫ lift (fst P Δ[1] ≫ s) (snd P Δ[1]) = s ≫ SSet.ι₀ := rfl
   rw [timeMaximumAlong, ← Category.assoc, h, Category.assoc,
-    F1B.kanIntervalMaximum_second_zero, Category.comp_id]
+    SerrePositivity.InfinityCategories.F1B.intervalMaximum_second_zero, Category.comp_id]
 
 /-- 概要：変形の終点は時刻一に定値。
 方針：第二時刻一の最大値を使う。規約：全単体。使われ方：上辺への到達。 -/
@@ -37,7 +37,7 @@ lemma timeMaximumAlong_one (s : P ⟶ (Δ[1] : SSet.{u})) :
     SSet.ι₁ ≫ timeMaximumAlong s = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
   have h : SSet.ι₁ ≫ lift (fst P Δ[1] ≫ s) (snd P Δ[1]) = s ≫ SSet.ι₁ := rfl
   rw [timeMaximumAlong, ← Category.assoc, h, Category.assoc,
-    F1B.kanIntervalMaximum_second_one, SSet.comp_const]
+    SerrePositivity.InfinityCategories.F1B.intervalMaximum_second_one, SSet.comp_const]
 
 /-- 概要：時刻の族の前合成は最大値の変形と可換。
 方針：二射影で入力の直積射を比較する。規約：全時間。使われ方：横端点の固定。 -/
@@ -56,7 +56,7 @@ lemma timeMaximumAlong_const_zero :
     rw [SSet.comp_const]
     rfl
   rw [timeMaximumAlong, h, Category.assoc,
-    F1B.kanIntervalMaximum_first_zero, Category.comp_id]
+    SerrePositivity.InfinityCategories.F1B.intervalMaximum_first_zero, Category.comp_id]
 
 /-- 概要：指定時刻が一なら最大値は全時間で一。
 方針：第一時刻一の最大値を使う。規約：全時間。使われ方：固定終点の境界。 -/
@@ -68,6 +68,6 @@ lemma timeMaximumAlong_const_one :
     rw [SSet.comp_const]
     rfl
   rw [timeMaximumAlong, h, Category.assoc,
-    F1B.kanIntervalMaximum_first_one, SSet.comp_const]
+    SerrePositivity.InfinityCategories.F1B.intervalMaximum_first_one, SSet.comp_const]
 
 end SerrePositivity.InfinityCategories.F2

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFibration
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
-public import SerrePositivity.InfinityCategories.F1B.KanScaffoldComparison
+public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison
 
 /-!
 概要：quasicategory 値 weighted nerve の taut scaffold は cocartesian scaffold。
@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 /-- taut scaffold の係数から fiber への射は既存の標準 fiber 同型と一致する。 -/
 lemma tautScaffold_kanScaffoldFiberMap {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) (c : C) :
-    kanScaffoldFiberMap (weightedNerveProjection F) F (tautScaffold F)
+    SerrePositivity.InfinityCategories.leftScaffoldFiberMap (weightedNerveProjection F) F (tautScaffold F)
       (tautScaffold_projection F) c = weightedNerveFiberMap F c := by
   apply vertexFiber_hom_ext
   change simplicialReplacementConstantLift F c ≫ tautScaffold F = weightedNerveConstantLift F c
@@ -32,7 +32,7 @@ lemma tautScaffold_kanScaffoldFiberMap {C : Type u} [Category.{u} C]
 /-- quasicategory 値 weighted nerve の taut scaffold は cocartesian scaffold。 -/
 lemma tautScaffold_isCocartesianScaffold {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] :
-    KanCocartesianScaffold (weightedNerveProjection F) F (tautScaffold F) where
+    SerrePositivity.InfinityCategories.CocartesianScaffold (weightedNerveProjection F) F (tautScaffold F) where
   projection := tautScaffold_projection F
   horizontal f x := tautScaffold_horizontal_isCocartesianEdge F f x
   fiber c := by

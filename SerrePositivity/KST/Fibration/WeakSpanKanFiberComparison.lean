@@ -59,8 +59,8 @@ theorem weakSpanKanMappingComparison_value :
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c)) :=
     fractionCosliceFiberMap_unfixed q.hom (weakEquivalences i) hq x _ _
   change R.map ((strictTransportPostToLeftFibration p t f hft).app c) ≫
-      (R.map (kanCocartesianStrictTransportEvaluate t c) ≫ R.map v) =
-    (R.map (kanCocartesianStrictTransportEvaluate p c) ≫
+      (R.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate t c) ≫ R.map v) =
+    (R.map (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c) ≫
       R.map (weakSpanSimplexFiberIso i x c).inv) ≫
         R.map (fixedFractionCosliceEvaluation q.hom (weakEquivalences i) hq x
           ((transportSimplexFirstVertexMap B.obj).app (Opposite.op ⦋0⦌) (nerveVertex c)))

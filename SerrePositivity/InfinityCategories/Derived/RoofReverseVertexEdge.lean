@@ -19,12 +19,12 @@ open scoped Simplicial
 lemma roofReverseVertexEdge {X : SSet.{u}} (a : Δ[0] ⟶ X) (s : (sliceUnder a) _⦋0⦌) :
     SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
       joinMap (𝟙 Δ[0]) (stdSimplex.opIso ⦋0⦌).inv ≫
-      ((F1B.kanSliceUnderOpMap a).app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm s)).val) =
+      ((SerrePositivity.InfinityCategories.F1B.sliceUnderOpMap a).app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm s)).val) =
         SSet.opObjEquiv.symm (SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫ s.val)) := by
   change SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
     joinMap (𝟙 Δ[0]) (stdSimplex.opIso ⦋0⦌).inv ≫
-    (F1B.kanSliceUnderOpObjEquiv a ⦋0⦌ (SSet.opObjEquiv.symm s)).val) = _
-  rw [F1B.kanSliceUnderOpObjEquiv_val]
+    (SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv a ⦋0⦌ (SSet.opObjEquiv.symm s)).val) = _
+  rw [SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv_val]
   simp only [Equiv.apply_symm_apply]
   rw [← Category.assoc (joinMap (𝟙 Δ[0]) (stdSimplex.opIso ⦋0⦌).inv)
     (joinMap (stdSimplex.opIso ⦋0⦌).inv (𝟙 (Δ[0] : SSet.{u}).op)) _, ← joinMap_comp]

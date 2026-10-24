@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedUnitVertex
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaArrowFamilies
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaArrowFamilies
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
 
 /-!

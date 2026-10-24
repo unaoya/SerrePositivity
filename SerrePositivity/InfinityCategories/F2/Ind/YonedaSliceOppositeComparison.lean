@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanOppositeLifting
+public import SerrePositivity.InfinityCategories.F1B.Diagrams.OppositeLifting
 
 /-!
 概要：元の小さい元の圏から Yoneda slice への比較を、反転と宇宙持ち上げを揃えて使う。
@@ -61,7 +61,7 @@ lemma oppositeElementsYonedaSliceComparison_projection :
 lemma oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence :
     IsPrecompositionEquivalence (oppositeElementsYonedaSliceComparison F) :=
   (isPrecompositionEquivalence_of_iso (uliftOppositeIso (smallRightUnstraightening F))).comp
-    (F1B.kanIsPrecompositionEquivalence_op
+    (SerrePositivity.InfinityCategories.F1B.isPrecompositionEquivalence_op
       (presheafElementsYonedaSliceComparison_isQCatEquivalence F).isPrecompositionEquivalence)
 
 end SerrePositivity.InfinityCategories.F2.Ind

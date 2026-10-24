@@ -45,7 +45,7 @@ lemma sourceFrameIndex_weaklyContractible :
       (fun (n : AsSmall.{u + 1} SimplexCategory) =>
         ⟨SimplexCategory.isTerminalZero.from (ULift.down n)⟩)
       (fun _ _ => ULift.ext (Subsingleton.elim _ _))
-  exact (F1B.kanNerveVertex_isTerminal ht).isWeaklyContractible
+  exact (SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal ht).isWeaklyContractible
 
 lemma cofibrantSourceFrameTotal_hasLimit {E : SSet.{u + 1}} [SSet.Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)

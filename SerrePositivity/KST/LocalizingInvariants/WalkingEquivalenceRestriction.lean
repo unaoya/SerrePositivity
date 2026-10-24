@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence
-public import SerrePositivity.InfinityCategories.F1B.KanFinalHornFamily
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.FinalHornFamily
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 
 /-!
@@ -37,7 +37,7 @@ lemma walkingEquivalenceRestriction_ι (X : SSet.{u}) :
 lemma equivalencePath_flip_invertible {B X : SSet.{u}} [Quasicategory X]
     (f : B ⟶ equivalencePath X) : IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv
       (internalHomFlipHomEquiv B (Δ[1] : SSet.{u}) X (f ≫ equivalencePathι X)))) := by
-  apply kanFunctorSimplex_isInvertible_of_pointwise
+  apply SerrePositivity.InfinityCategories.functorSimplex_isInvertible_of_pointwise
   intro b
   have hb := fullSubcomplexOnVertices_vertex (f.app (Opposite.op ⦋0⦌) b)
   change IsEquivalencePathVertex (f.app (Opposite.op ⦋0⦌) b).val at hb

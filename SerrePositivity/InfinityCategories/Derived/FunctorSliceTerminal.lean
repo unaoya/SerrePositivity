@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
 
 /-!
@@ -39,7 +39,7 @@ lemma roofFunctorSliceIdentity_isTerminal [Quasicategory X] :
   intro k
   change IsTerminalVertex (PinchedHom.constant (sliceIdentityCone z) 0)
   rw [pinchedConstant_zero]
-  exact F1B.kanSliceIdentityCone_isTerminalVertex z
+  exact SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex z
 /-- 実 slice の全パラメータ始域射影は right fibration。 -/
 lemma roofFunctorSliceProjection_rightFibration [Quasicategory X] : RightFibration
   (roofFunctorSliceProjection K z) := by

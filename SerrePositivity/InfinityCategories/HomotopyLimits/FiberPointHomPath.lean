@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomActionComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomTransportPath
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：同じ底の fiber 内の指定辺に沿い、既存の点 Hom の全パラメータ族を比較する。
@@ -62,7 +62,7 @@ lemma fiberPointHomPathHomotopy_hom :
         (functorEdgeOfSimplicialHomotopy (fiberPointHomPathHomotopy p a b k)) =
       (fiberPointHomPathIso p a b k).hom := by
   let := vertexFiber_kanComplex_of_leftFibration p b
-  exact kanFunctorIso_simplicialHomotopy_hom _
+  exact SerrePositivity.InfinityCategories.functorIso_simplicialHomotopy_hom _
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

@@ -24,10 +24,10 @@ theorem pullbackStrictTransportMap_constantEdge_localized_isIso
     (hd : k.app (Opposite.op ⦋0⦌) (nerveVertex d) = b)
     (hf : yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k = SSet.const b) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (kanCocartesianStrictTransportMap (pullback.snd q k) f)) := by
+      (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f)) := by
   let u := pullbackStrictEvaluationAt q k c b hc
   let v := pullbackStrictEvaluationAt q k d b hd
-  let t := kanCocartesianStrictTransportMap (pullback.snd q k) f
+  let t := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f
   let H := strictTransportEvaluationPrism (pullback.snd q k) f ≫ pullback.fst q k
   have hp : H ≫ q = SSet.const b := by
     dsimp only [H]

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLeftKanExtension
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSiftedContinuousLeftKan
-public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitCanonical
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitCanonical
 
 /-!
 概要：元の左 Kan 延長は、元の指定頂点への全密度余錐を余極限へ送る。

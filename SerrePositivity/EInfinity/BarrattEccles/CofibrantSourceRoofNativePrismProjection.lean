@@ -54,7 +54,7 @@ lemma cofibrantSourceRoofProductCommaNativePrism_projection :
       (cofibrantSourceRoofProductCommaEvaluation A X Y b) Γ
       (stdSimplex.objEquiv t).toOrderHom) =
     (nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
-      (Opposite.op ⦋n⦌) (((F1B.kanNerveNatTransHomotopy
+      (Opposite.op ⦋n⦌) (((SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
         (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h.app (Opposite.op ⦋n⦌)
           (Γ, t)) ⋙ kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A))
   rw [FrameHom.nerveNatTransHomotopy_app]

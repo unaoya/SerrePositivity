@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalFunctorOpposite
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeLimit
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeTerminalMapping
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaceHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLimit
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeTerminalMapping
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingSpaceHom
 
 /-!
 概要：全パラメータの Hom 全単射と native な相対終点境界充填を接続する。
@@ -36,9 +36,9 @@ lemma relativeTerminal_of_intervalFunctorMap {X Y : SSet.{u}}
 lemma terminalBoundaryLifting_of_parameterHom_bijective {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) [InnerFibration f] (x : X _⦋0⦌)
     (h : ∀ (A : SSet.{u}) [Quasicategory A] (y : X _⦋0⦌),
-      Function.Bijective (F1B.kanConstantHomPostcomp f A y x)) : TerminalBoundaryLifting f x := by
+      Function.Bijective (SerrePositivity.InfinityCategories.F1B.constantHomPostcomp f A y x)) : TerminalBoundaryLifting f x := by
   have ht := relativeTerminal_of_intervalFunctorMap f x (fun y ↦
-    (F1B.kanIntervalFunctorMap_equivalence_of_constantHom_bijective f y x
+    (SerrePositivity.InfinityCategories.F1B.intervalFunctorMap_equivalence_of_constantHom_bijective f y x
       (fun A _ ↦ h A y)).isQCatEquivalence)
   exact terminalBoundaryLifting_of_initialBoundaryLifting_op f x
     (F1B.kanInitialBoundaryLifting_of_relativeInitial (SSet.opFunctor.map f)

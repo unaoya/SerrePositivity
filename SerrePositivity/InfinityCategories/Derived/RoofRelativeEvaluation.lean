@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.CofinalFixedPrism
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFixedPrism
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：指定部分の評価と全時刻の比較を保ち、同じ底のホモトピー上で全体を fiber に評価する。
 方針：始端固定の相対 left fibration prism を使い、終端を指定 fiber へ戻す。

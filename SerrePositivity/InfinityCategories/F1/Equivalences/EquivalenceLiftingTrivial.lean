@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 前合成同値を右に持ち上げる同値には、厳密な切断が存在する。 -/
 lemma IsQCatEquivalence.exists_section_of_kanEquivalenceLifting {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} (hp : IsQCatEquivalence p)
-    (hl : F1B.KanEquivalenceLifting p) : ∃ s : Y ⟶ X, s ≫ p = 𝟙 Y := by
+    (hl : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : ∃ s : Y ⟶ X, s ≫ p = 𝟙 Y := by
   let j := equivalencePathReplacementSection p
   have hj : j ≫ equivalencePathReplacementProjection p = 𝟙 X :=
     equivalencePathReplacementSection_projection p
@@ -46,7 +46,7 @@ lemma IsQCatEquivalence.exists_section_of_kanEquivalenceLifting {X Y : SSet.{u}}
 /-- 前合成同値を右に持ち上げる同値は、全ての境界を持ち上げる。 -/
 lemma IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} (hp : IsQCatEquivalence p)
-    (hl : F1B.KanEquivalenceLifting p) : TrivialKanFibration p := by
+    (hl : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : TrivialKanFibration p := by
   have := hl.innerFibration
   obtain ⟨s, hs⟩ := hp.exists_section_of_kanEquivalenceLifting hl
   apply hp.isFullyFaithful.trivialKanFibration_of_surjective
@@ -59,7 +59,7 @@ lemma trivialKanFibration_replacementSquareEndCorner {A B X Y : SSet.{u}}
     [Quasicategory A] [Quasicategory B] [Quasicategory X] [Quasicategory Y]
     (u : A ⟶ X) (v : B ⟶ Y) (p : A ⟶ B) (q : X ⟶ Y) (h : u ≫ q = p ≫ v)
     (hu : IsQCatEquivalence u) (hv : IsQCatEquivalence v)
-    (hp : F1B.KanEquivalenceLifting p) (hq : F1B.KanEquivalenceLifting q) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q) :
     TrivialKanFibration (replacementSquareEndCorner u v p q h) := by
   have ht := hv.equivalencePathReplacementMap_trivialKanFibration
   have : TrivialKanFibration (pullback.fst q (equivalencePathReplacementMap v)) :=

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialRawHomDiagram
-public import SerrePositivity.InfinityCategories.F1B.CofinalOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOppositeFibration
 
 /-!
 概要：BF 置換への全パラメータの持ち上げを反変 Hom の end 全体で選ぶ。

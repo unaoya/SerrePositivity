@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
-public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
@@ -24,8 +24,8 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma equivalence_isColimitCone_iff {K C E : SSet.{u}} [Quasicategory C] [Quasicategory E]
     {G : C ⟶ E} (hG : IsQCatEquivalence G) {D : K ⟶ C} (c : JoinCocone D) :
     IsColimitCone c ↔ IsColimitCone (mapJoinCocone G c) :=
-  (F1B.kanIsColimitCone_iff_reverseCone c).trans
-    (((F1B.kanIsQCatEquivalence_op hG).isLimitCone_iff (F1B.kanCoconeReverseCone c)).trans
+  (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).trans
+    (((SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op hG).isLimitCone_iff (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)).trans
       (isLimitCone_reverse_postcomp_iff c G))
 
 /-- 同値は宇宙 u の元の小さい κ-filtered 全余錐を保存する。 -/

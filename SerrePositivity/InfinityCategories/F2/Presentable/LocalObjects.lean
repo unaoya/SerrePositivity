@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PinchedActionEquivalences
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyComparisonBijective
-public import SerrePositivity.InfinityCategories.F1B.ConstantHomFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyComparisonBijective
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantHomFaithful
 
 /-!
 概要：指定辺集合に対する局所対象と写像空間の局所性の基本性質。
@@ -33,11 +33,11 @@ lemma isLocalForHom_iff_interval {x y : X _⦋0⦌}
   let e := PinchedInterval.liftMapComparisonIso (intervalPrecompose z f)
   constructor
   · intro h
-    exact (PinchedInterval.comparison_isQCatEquivalence y z).cancel_left
-      ((h.comp (PinchedInterval.comparison_isQCatEquivalence x z)).ofFunctorIso e)
+    exact (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence y z).cancel_left
+      ((h.comp (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z)).ofFunctorIso e)
   · intro h
-    exact (PinchedInterval.comparison_isQCatEquivalence x z).cancel_right
-      (((PinchedInterval.comparison_isQCatEquivalence y z).comp h).ofFunctorIso e.symm)
+    exact (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).cancel_right
+      (((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence y z).comp h).ofFunctorIso e.symm)
 
 /-- 同型に対して全ての対象が局所。 -/
 lemma isLocalForHom_of_isIso {x y : X _⦋0⦌}

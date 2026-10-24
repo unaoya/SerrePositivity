@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SliceEndpointConeComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift
-public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
@@ -24,19 +24,19 @@ namespace SerrePositivity.InfinityCategories.HomotopyLimits
 
 /-- 余錐の反転比較は、元の図式への制限と厳密に可換。 -/
 lemma cosliceOppositeIso_restrict {J K X : SSet.{u}} (p : J ⟶ X) (i : K ⟶ J) :
-    SSet.opFunctor.map (sliceUnderRestrict p i) ≫ (F1B.kanSliceUnderOpIso (i ≫ p)).hom =
-      (F1B.kanSliceUnderOpIso p).hom ≫
+    SSet.opFunctor.map (sliceUnderRestrict p i) ≫ (SerrePositivity.InfinityCategories.F1B.sliceUnderOpIso (i ≫ p)).hom =
+      (SerrePositivity.InfinityCategories.F1B.sliceUnderOpIso p).hom ≫
         sliceOverRestrict (SSet.opFunctor.map p) (SSet.opFunctor.map i) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   apply Subtype.ext
-  change (F1B.kanSliceUnderOpObjEquiv (i ≫ p) ⦋n⦌
+  change (SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv (i ≫ p) ⦋n⦌
     ((SSet.opFunctor.map (sliceUnderRestrict p i)).app _ s)).val =
       joinMap (𝟙 (Δ[n] : SSet.{u})) (SSet.opFunctor.map i) ≫
-        (F1B.kanSliceUnderOpObjEquiv p ⦋n⦌ s).val
-  rw [F1B.kanSliceUnderOpObjEquiv_val, F1B.kanSliceUnderOpObjEquiv_val]
+        (SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv p ⦋n⦌ s).val
+  rw [SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv_val, SerrePositivity.InfinityCategories.F1B.sliceUnderOpObjEquiv_val]
   have hs : (SSet.opObjEquiv
       ((SSet.opFunctor.map (sliceUnderRestrict p i)).app (Opposite.op ⦋n⦌) s)).val =
       joinMap i (𝟙 (Δ[n] : SSet.{u})) ≫ (SSet.opObjEquiv s).val := rfl
@@ -50,15 +50,15 @@ lemma cosliceOppositeIso_restrict {J K X : SSet.{u}} (p : J ⟶ X) (i : K ⟶ J)
 def cosliceReverseFiberIso {J X : SSet.{u}} (p : J ⟶ X) (z : X _⦋0⦌) :
     (vertexFiber (sliceUnderProjection p) z).op ≅
       vertexFiber (sliceOverProjection (SSet.opFunctor.map p)) (SSet.opObjEquiv.symm z) :=
-  oppositeVertexFiberIso _ z ≪≫ vertexFiberTotalIso _ _ (F1B.kanSliceUnderOpIso p)
-    (F1B.kanSliceUnderOpIso_projection p) (SSet.opObjEquiv.symm z)
+  oppositeVertexFiberIso _ z ≪≫ vertexFiberTotalIso _ _ (SerrePositivity.InfinityCategories.F1B.sliceUnderOpIso p)
+    (SerrePositivity.InfinityCategories.F1B.sliceUnderOpIso_projection p) (SSet.opObjEquiv.symm z)
 
 /-- 反転した余錐の fiber の同型は元の全空間への包含を保つ。 -/
 lemma cosliceReverseFiberIso_ι {J X : SSet.{u}} (p : J ⟶ X) (z : X _⦋0⦌) :
     (cosliceReverseFiberIso p z).hom ≫
         vertexFiberι (sliceOverProjection (SSet.opFunctor.map p)) (SSet.opObjEquiv.symm z) =
       SSet.opFunctor.map (vertexFiberι (sliceUnderProjection p) z) ≫
-        (F1B.kanSliceUnderOpIso p).hom := rfl
+        (SerrePositivity.InfinityCategories.F1B.sliceUnderOpIso p).hom := rfl
 
 /-- 元の制限射を反転した fiber の同型は、錐の制限と厳密に可換。 -/
 lemma cosliceReverseFiberIso_restrict {J K X : SSet.{u}} (p : J ⟶ X)

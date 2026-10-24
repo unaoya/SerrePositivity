@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumBFPiTransport
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-! # 固定 dg K の辺と元の S• スペクトルの整数 π 作用
 

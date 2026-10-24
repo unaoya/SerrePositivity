@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionCanonicalColimits
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 
 /-!
 概要：元の全部分圏の冪等完備化への制限は、任意の標的の全関手空間で充満忠実。

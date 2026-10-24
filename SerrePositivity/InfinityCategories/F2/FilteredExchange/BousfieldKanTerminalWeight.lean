@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKan
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyNaturality
-public import SerrePositivity.InfinityCategories.F1B.KanNerveConeFamilyUnderlying
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyNaturality
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
 
 /-!
 概要：終対象 t を持つ添字の反変 Bousfield–Kan 重みは、t へ向かう射の頂点に収縮する。
@@ -51,13 +51,13 @@ def terminalWeightNatTrans (ht : IsTerminal t) (i : I) :
 def terminalWeightHomotopy (ht : IsTerminal t) (i : I) :
     SSet.Homotopy (SSet.const (nerveVertex (terminalWeightPoint ht i)))
       (𝟙 (nerve (Over (Opposite.op i)))) where
-  h := (F1B.kanNerveNatTransHomotopy (terminalWeightNatTrans ht i)).h
+  h := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (terminalWeightNatTrans ht i)).h
   h₀ := by
-    rw [(F1B.kanNerveNatTransHomotopy (terminalWeightNatTrans ht i)).h₀,
-      F1B.kanNerveMap_const]
+    rw [(SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (terminalWeightNatTrans ht i)).h₀,
+      SerrePositivity.InfinityCategories.F1B.nerveMap_const]
     rfl
   h₁ := by
-    rw [(F1B.kanNerveNatTransHomotopy (terminalWeightNatTrans ht i)).h₁]
+    rw [(SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (terminalWeightNatTrans ht i)).h₁]
     change nerveMap (𝟭 (Over (Opposite.op i))) = 𝟙 _
     exact nerveFunctor.map_id (Cat.of (Over (Opposite.op i)))
   rel := by

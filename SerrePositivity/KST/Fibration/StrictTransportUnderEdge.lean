@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.SectionEdgePrism
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily
 
 /-! # strict transport の元の undercategory 内の恒等射からの辺 -/

@@ -1,0 +1,141 @@
+{
+  "protections": [
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/KanRelativeJoinSliceRestriction.lean",
+      "name": "SerrePositivity.InfinityCategories.kanSliceOverRestrict_projection",
+      "raw": "kanSliceOverRestrict_projection"
+    }
+  ],
+  "unsafe": [],
+  "binding_candidates": [],
+  "module_name_literals": [
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 5387,
+      "old": "SerrePositivity.InfinityCategories.F1B.DeformationLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.DeformationLocalization,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 5445,
+      "old": "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.MappingSpaces.PointConstantHomEquivalence",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 5446,
+      "old": "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Adjunction.HomotopyCategory",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 5981,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 6113,
+      "old": "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 6122,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.FunctorExtension",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 6123,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.RightKanCriterion",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion,"
+    },
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "line": 6124,
+      "old": "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RightPrecompositionFaithful",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 5531,
+      "old": "SerrePositivity.InfinityCategories.F1B.DeformationLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.DeformationLocalization,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 5585,
+      "old": "SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.MappingSpaces.PointConstantHomEquivalence",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.PointConstantHomEquivalence,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 5586,
+      "old": "SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Adjunction.HomotopyCategory",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 6094,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationPrecompositionCriterion,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 6230,
+      "old": "SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.CofinalLimitExistence,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 6239,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.FunctorExtension",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationFunctorExtension,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 6240,
+      "old": "SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.Localization.RightKanCriterion",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.LocalizationRightKanCriterion,"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "line": 6241,
+      "old": "SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful",
+      "new_module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RightPrecompositionFaithful",
+      "also_a_constant": false,
+      "context": "`SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful,"
+    }
+  ]
+}

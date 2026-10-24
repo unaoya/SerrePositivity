@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomCompositionInputLifts
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomDerivedCompositionInputLifts
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 
 /-! 元の二三角形と係数模型の二三角形を、同じ元 Hom 入力の上で結ぶ。 -/
 @[expose] public section

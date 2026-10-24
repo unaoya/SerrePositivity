@@ -25,27 +25,27 @@ lemma cocartesianRelativeFunctorPredicate_iff_scaffold
     {C : Type u} [Category.{u} C] {E D : SSet.{u}}
     (p : E ⟶ nerve C) (q : D ⟶ nerve C) [CocartesianFibration p] [InnerFibration q]
     (v : (relativeFunctorSpace q p) _⦋0⦌) :
-    CocartesianScaffoldFunctorPredicate (kanCocartesianStrictTransportDiagram p) q
+    CocartesianScaffoldFunctorPredicate (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q
       ((relativeFunctorOverPre q (Over.homMk
-        (U := Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
-        (V := Over.mk p) (kanUniversalScaffold p) (kanUniversalScaffold_projection p))).app _ v) ↔
+        (U := Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
+        (V := Over.mk p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p))).app _ v) ↔
       cocartesianRelativeFunctorPredicate p q v := by
   obtain ⟨g, hg, rfl⟩ := exists_relativeFunctorVertex q p v
   have hpre : (relativeFunctorOverPre q (Over.homMk
-      (U := Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
-      (V := Over.mk p) (kanUniversalScaffold p) (kanUniversalScaffold_projection p))).app
+      (U := Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
+      (V := Over.mk p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p))).app
       (Opposite.op ⦋0⦌) (relativeFunctorVertex q p g hg) =
     relativeFunctorVertex q
-      (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))
-      (kanUniversalScaffold p ≫ g) (by
-        rw [Category.assoc, hg, kanUniversalScaffold_projection]) := by
+      (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))
+      (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p ≫ g) (by
+        rw [Category.assoc, hg, SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection]) := by
     apply Subtype.ext
     rfl
   rw [hpre, cocartesianScaffoldFunctorPredicate_vertex, cocartesianRelativeFunctorPredicate_vertex]
   constructor
   · exact preservesCocartesianEdges_of_kanUniversalScaffold_horizontal p q g
   · intro hc c d f x
-    exact hc _ (kanUniversalScaffold_horizontal p f x)
+    exact hc _ (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_horizontal p f x)
 
 /-- 水平辺を保つ相対制限の四角形は、元の全相対 Hom と二つの包含の厳密な pullback。 -/
 lemma cocartesianStrictTransportScaffoldRestriction_isPullback
@@ -53,13 +53,13 @@ lemma cocartesianStrictTransportScaffoldRestriction_isPullback
     (p : E ⟶ nerve C) (q : D ⟶ nerve C) [CocartesianFibration p] [InnerFibration q] :
     IsPullback (cocartesianStrictTransportScaffoldRestriction p q)
       (cocartesianRelativeFunctorInclusion p q)
-      (cocartesianScaffoldFunctorInclusion (kanCocartesianStrictTransportDiagram p) q)
+      (cocartesianScaffoldFunctorInclusion (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q)
       (relativeFunctorOverPre q (Over.homMk
-        (U := Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
-        (V := Over.mk p) (kanUniversalScaffold p) (kanUniversalScaffold_projection p))) := by
+        (U := Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
+        (V := Over.mk p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p))) := by
   let R := relativeFunctorOverPre q (Over.homMk
-    (U := Over.mk (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)))
-    (V := Over.mk p) (kanUniversalScaffold p) (kanUniversalScaffold_projection p))
+    (U := Over.mk (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)))
+    (V := Over.mk p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p) (SerrePositivity.InfinityCategories.cocartesianUniversalScaffold_projection p))
   apply IsPullback.of_forall_isPullback_app
   intro d
   apply (Types.isPullback_iff _ _ _ _).2
@@ -73,24 +73,24 @@ lemma cocartesianStrictTransportScaffoldRestriction_isPullback
         cocartesianRelativeFunctorPredicate p q ((relativeFunctorSpace q p).map α.op w) := by
       intro α
       apply (cocartesianRelativeFunctorPredicate_iff_scaffold p q _).mp
-      have hc : CocartesianScaffoldFunctorPredicate (kanCocartesianStrictTransportDiagram p) q
+      have hc : CocartesianScaffoldFunctorPredicate (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q
           ((relativeFunctorSpace q
-            (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map
+            (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map
               α.op v) := hv α
       have hn := ConcreteCategory.congr_hom (R.naturality α.op) w
       change R.app (Opposite.op ⦋0⦌) ((relativeFunctorSpace q p).map α.op w) =
         (relativeFunctorSpace q
-          (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map
+          (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map
             α.op (R.app d w) at hn
       have hvr : (relativeFunctorSpace q
-          (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map α.op v =
+          (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map α.op v =
           R.app (Opposite.op ⦋0⦌) ((relativeFunctorSpace q p).map α.op w) :=
         (congrArg (fun t => (relativeFunctorSpace q
-          (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))).map α.op t)
+          (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))).map α.op t)
             he).trans hn.symm
       intro c d f x
       exact (Eq.mp (congrArg
-        (CocartesianScaffoldFunctorPredicate (kanCocartesianStrictTransportDiagram p) q) hvr)
+        (CocartesianScaffoldFunctorPredicate (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) q) hvr)
           @hc) f x
     exact ⟨⟨w, hw⟩, Subtype.ext he.symm, rfl⟩
 

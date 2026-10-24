@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyFamilyNaturality
-public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
 
 /-!
 概要：指定単位の標準写像空間比較を、元の左右輸送の比較へ接続する。

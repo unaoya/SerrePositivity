@@ -5,7 +5,7 @@ public import SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationZer
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRoundTrip
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 
 /-!
 概要：普遍の恒等 lax 差への比較の第一射影は D 包含上で零となる。

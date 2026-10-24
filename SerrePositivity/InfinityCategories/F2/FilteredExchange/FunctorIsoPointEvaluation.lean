@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-!
 概要：既存の指定関手同型の成分は、同じ同型を元の一点評価で写したものである。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：二重の関手単体集合の二胞体を、同じ直積パラメータの二胞体へ移す。

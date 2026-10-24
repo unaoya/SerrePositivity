@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
 public import SerrePositivity.InfinityCategories.F1.Universe.TrivialKanFibration
-public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationCofinality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TrivialFibrationCofinality
 
 /-!
 概要：小さい right cofinal map は宇宙を持ち上げても同じ写像として right cofinal。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ProductIndexCocartesian
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionScaffoldValue
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianScaffold
+public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Definition
 
 /-!
 概要：元の under scaffold の水平辺は、元の添字への射影に関して cocartesian。
@@ -26,11 +26,11 @@ lemma underSectionScaffold_horizontal_parameter {i j : I} (f : i ⟶ j)
     (x : underSectionFamily p i _⦋0⦌) :
     (p ≫ fst B (nerve I)).app (Opposite.op ⦋1⦌)
       ((underSectionScaffold p).app _
-        (kanScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)) =
+        (SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)) =
       PinchedHom.constant ((underSectionFamilyProjection p i).app _ x) 1 := by
   have h := ConcreteCategory.congr_hom
     (NatTrans.congr_app (underSectionScaffold_fst p) (Opposite.op ⦋1⦌))
-    (kanScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)
+    (SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)
   change _ = SSet.yonedaEquiv
     ((SSet.const x : (Δ[1] : SSet.{u}) ⟶ underSectionFamily p i) ≫
       underSectionFamilyProjection p i) at h
@@ -42,12 +42,12 @@ lemma underSectionScaffold_horizontal [Quasicategory B] [LeftFibration p]
     {i j : I} (f : i ⟶ j) (x : underSectionFamily p i _⦋0⦌) :
     IsCocartesianEdge (p ≫ snd B (nerve I))
       ((underSectionScaffold p).app _
-        (kanScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)) := by
+        (SerrePositivity.InfinityCategories.cocartesianScaffoldHorizontalEdge (underSectionTotalDiagram p) f x)) := by
   apply (isCocartesianEdge_of_leftFibration p _).comp
-  apply F1B.kanIsCocartesianEdge_productSnd_of_invertible
+  apply SerrePositivity.InfinityCategories.F1B.isCocartesianEdge_productSnd_of_invertible
   change IsInvertibleEdge (edgeOfSimplex ((p ≫ fst B (nerve I)).app _ _))
   rw [underSectionScaffold_horizontal_parameter]
-  exact F1B.kanConstantEdge_isInvertible _
+  exact SerrePositivity.InfinityCategories.F1B.constantEdge_isInvertible _
 
 instance underSectionTotalDiagram_quasicategory [Quasicategory B] [LeftFibration p] (i : I) :
     Quasicategory ((underSectionTotalDiagram p).obj i) :=

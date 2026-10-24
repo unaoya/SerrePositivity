@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.ArrowIsoEndpointControl
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 
 /-!
 概要：端点を共有する指定四辺から境界を作り、各辺の類の一致を全境界の変形へ移す。

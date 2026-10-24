@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Spectra.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-! # 点つき全基点 π 同型の coherent な可逆性
 概要：L9 の点つき Whitehead の逆を、点つき Kan 複体の ∞ 圏の可逆辺へ移す。

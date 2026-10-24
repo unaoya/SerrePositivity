@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwiseIntervalContraction
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopyInverse
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 
 /-!

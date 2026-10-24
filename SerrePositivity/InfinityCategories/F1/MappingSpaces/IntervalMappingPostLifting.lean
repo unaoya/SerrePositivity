@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostInclusion
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInternalHomLifting
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInternalHomLifting
 
 /-!
 概要：相対内部 Hom の持ち上げを、元の両端固定の区間 Hom の後合成へ移す。
@@ -73,9 +73,9 @@ lemma hasLiftingProperty_intervalMappingPostOfEq {T U X Y : SSet.{u}}
 
 /-- 同値を右に持ち上げる射の、同じ区間 Hom の後合成も同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_intervalMappingPostOfEq {X Y : SSet.{u}} (p : X ⟶ Y)
-    (hp : F1B.KanEquivalenceLifting p) (x y : X _⦋0⦌) {x' y' : Y _⦋0⦌}
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (x y : X _⦋0⦌) {x' y' : Y _⦋0⦌}
     (hx : p.app _ x = x') (hy : p.app _ y = y') :
-    F1B.KanEquivalenceLifting (intervalMappingPostOfEq p x y hx hy) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (intervalMappingPostOfEq p x y hx hy) := by
   let r := CategoryTheory.Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι p
   intro T U j hj he
   have := hp.relativeInternalHom (boundary 1).ι r j hj he

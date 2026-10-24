@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomSquare
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!

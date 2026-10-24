@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofSliceTransport
 public import SerrePositivity.InfinityCategories.Core.SliceMap
-public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 /-!
 概要：引き戻し圏内の実 slice の全錐を、両成分の厳密に整合する全錐として表示する。
 方針：slice の普遍性と元の引き戻しの普遍性を二度適用する。
@@ -30,8 +30,8 @@ lemma slicePullbackRightMap_projection :
       sliceOverProjection (a ≫ pullback.snd f g) ≫ g := by
   dsimp only [slicePullbackRightMap]
   rw [Category.assoc,
-    F1B.kanSliceOverProjection_eqTransport (slicePullbackPoint_comm f g a).symm,
-    F1B.kanSliceOverPostcomp_projection]
+    SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (slicePullbackPoint_comm f g a).symm,
+    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
 /-- 等式による図式の輸送は、全パラメータの錐の展開を変えない。 -/
 lemma sliceTransport_uncurry {Y : SSet.{u}} {p q : K ⟶ Y} (h : p = q)
     (s : A ⟶ sliceOver p) :

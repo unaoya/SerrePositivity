@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：単体的ホモトピーの両端だけを厳密な等式で表示変更する。
@@ -32,6 +32,6 @@ lemma homotopyEndpointTransport_hom_arrow {A X : SSet.{u}} {f g f' g' : A ⟶ X}
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
       (homotopyEndpointTransport H hf hg))) =
       Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) :=
-  kanFunctorHomotopy_hom_arrow_of_h_eq _ _ (homotopyEndpointTransport_raw H hf hg)
+  SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq _ _ (homotopyEndpointTransport_raw H hf hg)
 
 end SerrePositivity.InfinityCategories.HomotopyLimits

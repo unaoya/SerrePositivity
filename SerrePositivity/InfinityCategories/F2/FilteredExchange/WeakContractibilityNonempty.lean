@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nonempty
 
 /-!

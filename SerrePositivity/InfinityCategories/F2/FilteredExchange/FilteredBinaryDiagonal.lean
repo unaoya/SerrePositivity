@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoproductFunctorIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointFunctorIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredDiagonalCofinality
-public import SerrePositivity.InfinityCategories.F1B.CofinalOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
 
 /-!
 概要：filtered な底の実際の二項積への対角射は right cofinal。

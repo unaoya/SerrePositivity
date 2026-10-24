@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorOppositeHom
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorOppositeHom
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 /-!
 概要：反対圏の随伴を、元の二関手の随伴へ戻す。
 方針：h Fun の反転 Hom 全単射と反対側の adjunct を合成し、全パラメータの自然性を移す。
@@ -20,13 +20,13 @@ open CategoryTheory MonoidalClosed SSet
 /-- 反転 Hom 全単射は、同じ標的関手での後合成に両立する。 -/
 lemma functorOppositeHomEquiv_postcomp {A D E : SSet.{u}} [Quasicategory D] [Quasicategory E]
     (J : D ⟶ E) {F G : A ⟶ D} (α : FunctorHom F G) :
-    F1B.kanFunctorOppositeHomEquiv (F ≫ J) (G ≫ J)
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (F ≫ J) (G ≫ J)
       ((hoFunctor.map ((ihom A).map J)).toFunctor.map α) =
     (hoFunctor.map ((ihom A.op).map (opFunctor.map J))).toFunctor.map
-      (F1B.kanFunctorOppositeHomEquiv F G α) := by
+      (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G α) := by
   have h := functorHomHomotopy_hom α
-  rw [← h, ← functorHomotopyPostcomp_hom, F1B.kanFunctorOppositeHomEquiv_homotopy,
-    F1B.kanFunctorOppositeHomEquiv_homotopy, ← functorHomotopyPostcomp_hom]
+  rw [← h, ← functorHomotopyPostcomp_hom, SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy,
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy, ← functorHomotopyPostcomp_hom]
   congr 1
 
 /-- 反対側の随伴から、元の全パラメータ h Fun の Hom 全単射を作る。 -/
@@ -38,8 +38,8 @@ def qcatAdjunctionOppositeHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicate
   have e₂ : FunctorHom (opFunctor.map (V ≫ G)) (opFunctor.map U) ≃
       FunctorHom (opFunctor.map V) (opFunctor.map (U ≫ F)) := by
     simpa only [opFunctor.map_comp] using a.homEquiv (opFunctor.map V) (opFunctor.map U)
-  exact (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V).trans
-    (e₂.symm.trans (F1B.kanFunctorOppositeHomEquiv U (V ≫ G)).symm)
+  exact (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V).trans
+    (e₂.symm.trans (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv U (V ≫ G)).symm)
 
 /-- 元の Hom 対応を反転すると、反対側の adjunct の逆になる。 -/
 lemma qcatAdjunctionOppositeHomEquiv_spec
@@ -47,9 +47,9 @@ lemma qcatAdjunctionOppositeHomEquiv_spec
     (a : QCatAdjunction (opFunctor.map G) (opFunctor.map F))
     {A : SSet.{u}} [Quasicategory A] (U : A ⟶ X) (V : A ⟶ Y)
     (α : FunctorHom (U ≫ F) V) :
-    F1B.kanFunctorOppositeHomEquiv U (V ≫ G) (qcatAdjunctionOppositeHomEquiv a U V α) =
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv U (V ≫ G) (qcatAdjunctionOppositeHomEquiv a U V α) =
       (a.homEquiv (opFunctor.map V) (opFunctor.map U)).symm
-        (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α) := by
+        (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α) := by
   simp only [qcatAdjunctionOppositeHomEquiv, Equiv.trans_apply, Equiv.apply_symm_apply]
   rfl
 
@@ -62,16 +62,16 @@ lemma qcatAdjunctionOppositeHomEquiv_naturality_right
     qcatAdjunctionOppositeHomEquiv a U V' (α ≫ β) =
       qcatAdjunctionOppositeHomEquiv a U V α ≫
         (hoFunctor.map ((ihom A).map G)).toFunctor.map β := by
-  apply (F1B.kanFunctorOppositeHomEquiv U (V' ≫ G)).injective
-  rw [qcatAdjunctionOppositeHomEquiv_spec, F1B.kanFunctorOppositeHomEquiv_comp,
-    F1B.kanFunctorOppositeHomEquiv_comp, functorOppositeHomEquiv_postcomp,
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv U (V' ≫ G)).injective
+  rw [qcatAdjunctionOppositeHomEquiv_spec, SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp,
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, functorOppositeHomEquiv_postcomp,
     qcatAdjunctionOppositeHomEquiv_spec]
   apply (a.homEquiv (opFunctor.map V') (opFunctor.map U)).injective
   rw [Equiv.apply_symm_apply]
   have h := (QCatFunctorHomCorrespondence.ofAdjunction a).naturality_left
-    (F1B.kanFunctorOppositeHomEquiv V V' β)
+    (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv V V' β)
     ((a.homEquiv (opFunctor.map V) (opFunctor.map U)).symm
-      (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α))
+      (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α))
   simpa only [QCatFunctorHomCorrespondence.ofAdjunction, Equiv.apply_symm_apply] using h.symm
 
 /-- 元の Hom 対応は、始域側の二胞体での前合成に自然。 -/
@@ -83,19 +83,19 @@ lemma qcatAdjunctionOppositeHomEquiv_naturality_left
     qcatAdjunctionOppositeHomEquiv a U' V
       ((hoFunctor.map ((ihom A).map F)).toFunctor.map γ ≫ α) =
       γ ≫ qcatAdjunctionOppositeHomEquiv a U V α := by
-  apply (F1B.kanFunctorOppositeHomEquiv U' (V ≫ G)).injective
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv U' (V ≫ G)).injective
   let γF : FunctorHom (U' ≫ F) (U ≫ F) :=
     (hoFunctor.map ((ihom A).map F)).toFunctor.map γ
-  have hc := F1B.kanFunctorOppositeHomEquiv_comp γF α
+  have hc := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp γF α
   have hp := functorOppositeHomEquiv_postcomp F γ
   rw [qcatAdjunctionOppositeHomEquiv_spec, hc,
-    F1B.kanFunctorOppositeHomEquiv_comp, hp, qcatAdjunctionOppositeHomEquiv_spec]
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, hp, qcatAdjunctionOppositeHomEquiv_spec]
   apply (a.homEquiv (opFunctor.map V) (opFunctor.map U')).injective
   rw [Equiv.apply_symm_apply]
   have h := (QCatFunctorHomCorrespondence.ofAdjunction a).naturality_right
     ((a.homEquiv (opFunctor.map V) (opFunctor.map U)).symm
-      (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α))
-    (F1B.kanFunctorOppositeHomEquiv U' U γ)
+      (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α))
+    (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv U' U γ)
   simpa only [QCatFunctorHomCorrespondence.ofAdjunction, Equiv.apply_symm_apply] using h.symm
 
 /-- 元の Hom 対応は、任意の quasicategory パラメータの前合成に自然。 -/
@@ -107,13 +107,13 @@ lemma qcatAdjunctionOppositeHomEquiv_precomp
     qcatAdjunctionOppositeHomEquiv a (i ≫ U) (i ≫ V)
       ((hoFunctor.map ((pre i).app Y)).toFunctor.map α) =
     (hoFunctor.map ((pre i).app X)).toFunctor.map (qcatAdjunctionOppositeHomEquiv a U V α) := by
-  apply (F1B.kanFunctorOppositeHomEquiv (i ≫ U) ((i ≫ V) ≫ G)).injective
-  have hα := F1B.kanFunctorOppositeHomEquiv_precomp i α
-  have hβ := F1B.kanFunctorOppositeHomEquiv_precomp i
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (i ≫ U) ((i ≫ V) ≫ G)).injective
+  have hα := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp i α
+  have hβ := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_precomp i
     (qcatAdjunctionOppositeHomEquiv a U V α)
-  change F1B.kanFunctorOppositeHomEquiv ((i ≫ U) ≫ F) (i ≫ V)
+  change SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv ((i ≫ U) ≫ F) (i ≫ V)
     ((hoFunctor.map ((pre i).app Y)).toFunctor.map α) = _ at hα
-  change F1B.kanFunctorOppositeHomEquiv (i ≫ U) ((i ≫ V) ≫ G)
+  change SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (i ≫ U) ((i ≫ V) ≫ G)
     ((hoFunctor.map ((pre i).app X)).toFunctor.map
       (qcatAdjunctionOppositeHomEquiv a U V α)) = _ at hβ
   rw [qcatAdjunctionOppositeHomEquiv_spec, hα, hβ,
@@ -123,13 +123,13 @@ lemma qcatAdjunctionOppositeHomEquiv_precomp
   have h := (QCatFunctorHomCorrespondence.ofAdjunction a).precomp (opFunctor.map i)
     (opFunctor.map V) (opFunctor.map U)
     ((a.homEquiv (opFunctor.map V) (opFunctor.map U)).symm
-      (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α))
+      (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α))
   change (hoFunctor.map ((pre (opFunctor.map i)).app Y.op)).toFunctor.map
-      (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α) =
+      (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α) =
     a.homEquiv (opFunctor.map i ≫ opFunctor.map V) (opFunctor.map i ≫ opFunctor.map U)
       ((hoFunctor.map ((pre (opFunctor.map i)).app X.op)).toFunctor.map
         ((a.homEquiv (opFunctor.map V) (opFunctor.map U)).symm
-          (F1B.kanFunctorOppositeHomEquiv (U ≫ F) V α)))
+          (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (U ≫ F) V α)))
   simpa only [QCatFunctorHomCorrespondence.ofAdjunction, Equiv.apply_symm_apply,
     opFunctor.map_comp] using h.symm
 

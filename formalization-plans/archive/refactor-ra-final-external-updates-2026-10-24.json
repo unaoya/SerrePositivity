@@ -1,0 +1,4316 @@
+[
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CAlgLocalizationUniversal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceFrameLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanLegs.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofEvaluationHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofProductFunctorCell.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofRightSlice.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofSlices.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedUnit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedUnitRecoveryComponent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitComma.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitIntervalMap.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/IntervalFamilyFunctorPrecomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedOrdinaryDerivedFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorConeDerivedFamilyInverse.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorConeFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorDoubleConeAugmentationDerived.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementAugmentedColumnJoin.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorElementEvaluationJoin.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorPinchedDerivedRoof.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/OrdinaryDerivedAmbientEdges.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/ComplexLimits/PinchedPostcompositionFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/AnodyneFamilyHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/AnodyneWeakDetection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/CofinalAnodyneImage.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/CostructuredArrowCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameArrowAugmentationLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameArrowCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameArrowRightKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRightKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerEvaluationPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofCornerNormalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofQuillenSlice.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofSliceFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofSliceWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofSource.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/FrameRoofSourceProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/HomotopyEvaluationEndpointTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/LocalizationExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/MixedNerveCoconePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/MixedNerveCostructuredPullback.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/MixedNerveNatTrans.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/NerveCoconePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/NerveNatTransCylinder.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/NerveOverRightPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/NerveQuillenA.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/OverTerminalEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/PinchedFamilyWeakDetection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/ProductSimplexProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/ResolutionCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/RightFibrationCofinalPullback.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/TerminalCoconeSimplex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/TerminalFiberBaseHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/TerminalSimplex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/FrameHom/ThinNerveExt.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/Hammock/FixedObjectHomTransportIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/Hammock/LeftRoofSameUniverseComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/Hammock/LocalizationEquivalenceTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/Hammock/WeakAnodyneLocalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/Hammock/WeakTensor.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/SimplicialLocalization/HammockInvertsEdges.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonWeak.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "その他 / EInfinity",
+    "file": "SerrePositivity/EInfinity/SimplicialLocalization/RoofPrefixPrismZeroSlice.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/ActualRoofInvertingEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/CofinalConeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/ConstantEdgeFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/CosliceHomotopyRealization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGClosedNerveOverMap.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGClosedOverMapVertex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGClosedPostcompositionInterval.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGCoherentCosliceTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGFiniteRoofOrePrecomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGInvertingRoof.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGInvertingRoofTerminalEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGKernelRightAdjointClassicalComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGLeftPinchedChainMap.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGModuleOutputResolutionHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGModuleResolutionLocalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGMoritaAdjunctionInfinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGNerveOppositeComponent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGNerveOppositeHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGPinchedCompositionPrismProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGQuotientLocalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGRoofCorrespondenceFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGRoofCorrespondenceMap.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGSkeletalComparisonPieces.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGStrictNatTransNerveHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGUniversalCounitInterval.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierOverLimit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierOverTerminal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanDiagram.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanLegs.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/DeformationFunctorDescent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/ExactFunctorCategory.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FiniteDiagramSpanLifts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FiniteNullSpanWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FiniteRelativeCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FiniteSliceDiagramApproximation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FiniteTerminalMappingCone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FixedDiagramHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FullSubcomplexHomotopyLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorFamilyHomotopyUncurry.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorHomFaithfulPostcomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorHomPostcompPointwiseInvertible.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorHomWhiskerExchange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorHomotopyPostcompHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorHomotopyRawTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorRightConstantSquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorSliceRepresentation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/FunctorSliceTerminal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ArrowHomTrianglePair.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CoefficientPathComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/ComplexPinchedCochainHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionInputDiagonalFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/CompositionTriangleEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/DGCompositionFunctorTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/FunctorTriangleOfFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomDerivedCoefficientDiagonalHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomotopyIntervalPathPostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomotopyIsoPrecomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/HomotopyTriangleBoundary.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IntervalPathHomotopyPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/IntervalUncurryHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomDiagonalDeformations.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/LaxHomInputHomotopies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativeDerivedCoefficientTriangles.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/RelativePrismHomotopyPrecomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/StrictIntervalPullbackComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/TriangleBoundaryFamilyCompatibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/TrivialFibrationHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/Gluing/UliftPrismHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/HomotopyComponentPrecomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/HomotopyCompositionOver.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/HomotopyPostcomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/HomotopyPrecompVertex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/InitialDiagramSlice.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/IntervalEndpointTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/ModuleNormalizedWeakEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/OrdinaryRoofVertexData.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/OrdinaryRoofVertexEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/PinchedFamilyCompositionParameters.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/PinchedFamilyHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/PinchedFamilyPostcomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/PrismFunctorSquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/QCatEquivalenceAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RelativeRoofBaseChange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RelativeRoofCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RelativeRoofPullbackLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/ResolvedDGQuotientLocalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RightFibrationCofinalPullback.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RightKanSliceRoof.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RightKanTransportComponents.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofComparisonTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofCompatibleTransportComposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofCompositionFaces.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofConePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofEvaluationLiftSpace.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofFunctorCorrespondence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofJoinReverseEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofRelativeEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofRelativePrismLiftSpace.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofReverseVertexEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofRightPrismLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofTargetFunctor.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/RoofTerminalFiberCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/SliceCornerRightFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/SlicePullbackFamilies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/SliceRoofCorner.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/WeakHomotopyDescent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/WeakHomotopyExtensionSpace.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/WeakRoofDescentEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/WeakRoofDescentTransportEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Derived/WeaklyContractibleConstantLimit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ArrowBoundary.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ArrowEndpointPair.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ArrowInitialVertices.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CoconeReversePostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ColimitConeImageStrictification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ConeFamilyPostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/ConeFamilyPostcompLifting.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CoreInvertibleEdgeLifting.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CoreIsofibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CoreRightFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/FatCoconeHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/FatCoconeHomotopyEquiv.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/FunctorCoconePointwiseCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/FunctorColimitConeExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/KanTensorComplex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxCosliceDiagonalComma.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackEquivalenceProjections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackFunctorCore.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LimitConeImageStrictification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackCoconeGluing.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackColimitConeExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackLimitConeExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackSquareCoconeCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/QCatPullbackHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/QCatPullbackLimit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/QCatTensorAndArrowObjects.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/SpecifiedFiberCospan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/SpecifiedFunctorEdgeLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/SquareConePostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/TensorCoconeComponentCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/TensorInitialVertices.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Compact/ColimitRepresentableCone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Compact/ComponentLabels.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Compact/IndComplete.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Compact/InitialCompact.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Compact/Subcategory.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/BousfieldKanTerminalContraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/BousfieldKanTerminalWeight.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/BousfieldKanTerminalWeightNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoconeHomotopyUnitCylinder.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitCoconeTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitEdgeNativeComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitUnitSquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitUnitTrianglePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentCospanConeValuePath.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentCospanModelTotalEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentFunctorTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ConeMappingShapePushout.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ConeMappingSpace.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ConeRestrictionTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ContinuousKanCoconeContraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ContinuousKanHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ContinuousKanRelativeReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ContinuousKanSpecifiedHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/ContinuousKanUnitHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanFiniteKanPointTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanRectificationBaseIsos.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanTransportedKanPointReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/DiagonalCommaWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberProductCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberwiseFunctorCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberwiseIntervalEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberwiseIntervalKanEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredBinaryDiagonal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredCosliceCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredDiagonalCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredHomotopyClasses.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredKanContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredLeftFibrationDetection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredNullHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FilteredWeakEquivalences.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorHomotopyTensorProjection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorHomotopyTensorVertex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPointEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoUliftRecovery.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorPointwiseColimitCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorTrianglePostcomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/HomotopyConstantIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/HomotopyIsoTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/HomotopyVertexPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/InitialShapeLimitExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalCospanEndModels.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalPathPrecompCylinder.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalPullbackDoubleReplacement.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalReplacementPathIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalReplacementSection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanBoundaryHomotopyExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanFixedSquareDiagonal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanHomotopyRectification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanHomotopyRectificationImage.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeProjections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalCospanIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanSpecifiedIntervalLiftEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/LiftedIntervalCospanEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/LimitConeFamilyReindex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/NullHomotopyRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/OppositeWeakHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/PointConeIdentityComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/PullbackHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativeHomotopyConstantComposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativeHomotopyConstantInverse.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativeKanHomotopyStrictification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativePathBoundaryCylinderCompatibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativeTerminalFamilyTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/RelativeVertexIsoHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/SimultaneousFiberDetection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/SpaceCompositionZeroPointedHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/SpaceHomotopyClasses.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/SpecifiedEdgeTriangleBoundary.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/StrictPullbackHomotopyGluing.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/StrictPullbackIsoGluing.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/FilteredExchange/WeakContractibilityNonempty.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/BicartesianZeroIsoLifting.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompleteSubcomplexRetracts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessUniverse.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCanonicalColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCofibers.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionLeftCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionOppositeGeneral.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionTerminalContraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/DiagramOppositeRetracts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/FullSubcomplexSplitting.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemCoconeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRetraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemLeftCofinality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemLocalColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/IdemWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/ImageCanonicalCocone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/LeftFibrationRetracts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/MappingRetractContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/MappingRetractionNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PointColimitExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PointConeLimit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PointJoinNerveExt.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PresheafClosure.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PresheafComplete.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PresheafKanExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/PresheafLocalKanColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialRetracts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/ShapeOppositeIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/SliceCanonicalCocone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/SourceSubcomplex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingCanonicalColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrictImageRecovery.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingCones.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingExistence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniverseLeftKanShape.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingCommaContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingFullCocone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingFullCoconePoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingFullCone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingFullConePoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingJoinCones.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WalkingLeftCommaContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Idempotent/ZeroRetracts.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/CodiscreteProductCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalCoconeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/CofinalUniverseLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/CommaFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/CommaPostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/ConeTerminalSliceComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteCoconeSections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteColimitExactness.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteIndCommaSections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteYonedaColimitPreservation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteYonedaOppositeLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FiniteYonedaSliceSections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/FullyFaithfulKanUnit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/HomotopyTransformationClassIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndCommaPullbackIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndContinuousLeftKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanShapeAmbient.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/InitialBoundaryCoconeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/KanCanonicalCoconeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/NerveBoundCocone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/NerveSublevelLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/OppositeUnstraighteningSections.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/PointSlicePostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/ProductIndexCocartesian.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/RelativeJoinFiberEmbedding.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/RelativeJoinFiberVertex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableTerminalValues.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/RightFibrationPrismCorner.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/TerminalCarrierCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/TrivialSectionCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/UliftCoconeReverse.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/UnderSectionScaffoldEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/UnderSectionScaffoldHorizontal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/UniverseCocartesianFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedCoefficientNativeFiberPointedIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedDensityGlobalFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedDensityGlobalUniversal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedDensityRelativeFamilyImage.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedIndDensityRelativeRealization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedIndRelativeCoefficientClass.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedIndRelativeNativeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/WeightedTotalAssemblyCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Ind/YonedaSliceOppositeComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceColimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/KanConeComparisonCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanHomComposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocalObjects.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocalSectionComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/LocalTargetCocones.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/MappingOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/NerveFinalInitialComma.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedCoproductCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteFiberProduct.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteProductNativeLegs.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanDensityImage.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanHomCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaPresheafInfinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionFullyFaithful.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaSiftedContinuousLeftKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInitial.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredTotalCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFullModel.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallPieceFiberCofinal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallPieceKanIndex.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SmallPieceLeftKanExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceColimitMapping.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / Ind・P",
+    "file": "SerrePositivity/InfinityCategories/F2/Presentable/TerminalKanColimit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ArbitraryParameterAdjunct.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ArrowCoconePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianComparisonComposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianEdgeTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianHomotopyExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianSourceComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CocartesianIntervalPrecomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeBoundaryTransportCylinder.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeDomainHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeSectionRestrictionComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoconeWholeEdgeNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CofinalTensor.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentConeFamilyHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentInvertibleTotalKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentProductTotalEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTransportTriangleUniqueness.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentUnderlyingHo.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ColimitAttachmentTransportIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaFiberRepresentative.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaSectionFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaSectionUnit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaUnitRepresentative.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaUnitTransportComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaUnitTransportEndpoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaUnitTransportPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ConstantBaseEndpointHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ConstantCoconeHomotopyComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CosliceCommaComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CosliceCommaEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CosliceEdgeFamilyNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CosliceEdgeSectionFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CosliceRestrictionOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/DiscreteConeHomotopyComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/EdgeCosliceFamilySquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/EndpointFunctorIsoReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiberPointHomPath.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentProductKanComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentProductNativeLegs.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentTotalEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteEvaluationProjectionHomotopies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteKanProductComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FixedBaseHomotopyClasses.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FullHomColimitDetection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FullSubcomplexCoconeLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FullSubcomplexColimitReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FunctorHomSquareRealization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FunctorHomUncurry.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/FunctorIsoPointEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyConstantFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyCospanPathDiagram.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyEndpointTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyIsoPostcomp.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyPathPointEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyPrecompInverse.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyPrecompInverseTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/HomotopyPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/InitialEvaluationHomotopyTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/InitialHomEdgeNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/InitialRestrictionUniversalClass.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalFunctorOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalMappingOppositeComposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalPrecompositionPostMap.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalPrecompositionTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalUnitCollageComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/KanOppositeCanonicalLimits.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/KanSpecifiedPathLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/LeftKanRestrictionIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterUnitHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PartialColimitSpanHomPath.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PartialColimitSpanTriangles.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PinchedActionEquivalences.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PointHomBasePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PointHomotopyEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PrescribedCocartesianTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PresheafElementsLeftKan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": false
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PrismCylinderParameter.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PrismSquareComposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/PrismTransportIdentity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/QuasicategoryParameter.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/QuillenCfDerivedAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/QuillenCfFullyFaithful.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/QuillenCfLeftOrdinaryComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveLocality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RelativeCosliceFamilyHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RelativeExtensionHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RelativeTerminalHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RelativeTriangleFamilies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RepresentableCosliceComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightAnodyneTensor.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightFibrationLocalFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightKanAdjunctComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightKanRestrictionIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SourceFixedTriangleHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTensorProduct.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTerminalValues.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpanPointHomEndInverseHomotopies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeAttachmentOriginalCoherence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeAttachmentOriginalSquares.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeCommonNativeHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeCorrectionClass.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeInverseNativeHomSquares.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeLeftNativeComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeLeftUniversalHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeNativeHomCoherence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeNativeHomSquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeNativeUniversalNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRightNativeComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRightUniversalHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRootInitialNativeClass.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedHomotopyLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/TensorHomotopyEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/TotalKanUnitComparisonReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/TransportComponentEdgeLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/UniversalCommaSection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseLeftKanCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseRightKanCanonical.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-C / P",
+    "file": "SerrePositivity/InfinityCategories/HomotopyLimits/UniverseRightKanShape.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/AdjunctionCompositeCounit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/AdjunctionOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/AdjunctionOppositeCounit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/CofiberLocalizingEdges.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/ContractibleBaseInitialFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/CounitIntervalOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/CounitMappingAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/CounitMappingAdjunctionRecovery.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/EquivalenceTriangleCoherence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/FinitePosetLeftKanExtension.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/FinitePosetLeftKanShape.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/FunctorIsoArrowTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/FunctorOppositeEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopConeClassifier.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopConeClassifierFiberEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopConeClassifierInterval.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopConeDiagramFibers.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopConeFixedApexDiagramFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/LoopSourceUniversalUnit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/PosetSubtypeLowerKanShape.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/PosetSubtypeNerveInclusion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/QCatAdjunctionTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/SimplicialHomotopyOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/SquareFixedSpanCocone.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/TerminalComparisonIntervalFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/TerminalRightFibrationComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/UnitCommaArrowNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/UnitCommaFamilyArrow.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/UnitCommaInitialArrowCriterion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/UnitCommaSectionArrow.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/ZeroCornerSquareSourcePointInitial.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/ZeroCornerSquareSpan.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/ZeroCornerSquareSpanPullback.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "R-B / D",
+    "file": "SerrePositivity/InfinityCategories/Stable/ZeroCornerSquareSpanSourceFiber.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/BaseChangeSectionFiberPoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/CocartesianKanDiagram.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/CoslicePointHomNaturality.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/DGKPiComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/FractionClassificationRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/FullFunctorCore.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/FunctorIsoComponent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/GroupoidCompletionWeakUnit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/InitialVertexLocalizedContraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/KernelWeakContractibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/LeftCocartesianClassificationPoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/LeftCocartesianKanComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/LeftCocartesianKanPointHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/LeftFibrationInvertedBaseChange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/LocalizationFactorizationHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/PullbackStrictBilateralEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/PullbackStrictConstantEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/PullbackStrictEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/ScaffoldCocartesianBaseChange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/ScaffoldCocartesianClassification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/ScaffoldCocartesianPostBaseChange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/SectionEdgePrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/SectionPostToLeftFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/SmallUnstraighteningFunctorHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/SpaceLocalizationFactorizationHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StraighteningBaseChangeRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StrictKanPostEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StrictTransportEvaluationPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StrictTransportPostEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StrictTransportPostToLeftFibration.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/StrictTransportUnderEdge.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/TransportWitnessPointEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/VerdierZeroTriangle.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/VertexFiberBaseChangeHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/WeakComparisonComponentRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/WeakHomotopyAnodyneComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/WeakIdentitySpanPoint.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/WeakSpanKanFiberComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Fibration",
+    "file": "SerrePositivity/KST/Fibration/WeakStringOctahedronEvaluations.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjointLocalization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjunctInverseFormula.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjunctionCounitImage.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjunctionCounitIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjunctionHomTriangles.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/AdjunctionOfOpposite.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ArrowFamilyRoundTrip.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ArrowTargetContraction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/CofiberAdjunctionCounit.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/CompositionTriangleHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/CoreAnodyneLifting.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/CurryHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/DiagramFamilyTranspose.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/EquivalenceArrowFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ExactMapHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FiberDiagramPrism.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FinalFiberGroupoidCompletion.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FullSubcomplexReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FullyFaithfulEdgeRealization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FunctorHomExchange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FunctorHomWhiskering.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/FunctorSquareArrowFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/GroupoidCompletionAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/HomotopyFiberSquareComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/HomotopyNerveExponential.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/IdentityLaxDiagonal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/InitialPrismTwoEndpoints.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/IntervalFunctorMapFromHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/InverseAttachment.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/KanFibrationEquivalenceBaseChange.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LaxCounitCofiberSecond.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LaxDAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceUnitSquare.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LaxUniversalDifferenceFirst.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LocalizationAdjunctionDescent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LocalizationFactorization.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/LocalizationRightAdjunctionDescent.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/MappingFunctorIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/MappingTargetIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/MarkedSpanDiagrams.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/OppositeAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/OppositeFunctorHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/OppositeFunctorIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/PinchedPrecomposeEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/PointInitialAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/PointTerminalAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/PointwiseLocalizingEdges.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/PullbackDifferenceVertices.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ReflectiveIsoTargetMapping.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ReflectiveMappingAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetConstants.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetHom.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ReflectiveTargetMapping.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/RelativeBoundaryInvertibility.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/RelativeInitialAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/RelativeInitialVertexIso.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/RestrictedFunctorEdgeEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/RetractionHomotopyAdjunction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/SemiorthogonalDecomposition.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/SliceConeComparison.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/SpectrumMappingIntervalPath.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/SquareDiagonalHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/SquareFrameEdges.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/TensorHomotopyEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/TerminalPrismTwoEndpoints.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/WalkingEquivalence.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/WalkingEquivalenceRestriction.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/WalkingEquivalenceUniversal.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / LocalizingInvariants",
+    "file": "SerrePositivity/KST/LocalizingInvariants/ZeroArrowFamily.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / NonConnective",
+    "file": "SerrePositivity/KST/NonConnective/SequentialCoherentLift.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CofiberGappedPushout.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CoherentArrowNativeFamilies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CoherentHomotopyComponentCalculus.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CoherentIntervalFamilyRecovery.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CoherentPathMappingHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/CoherentSquareMappingTriangles.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/EnrichedCollageTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/EquivalenceDiagramEvaluation.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/EquivalenceFamilyPathRecovery.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/FamilyChainCompositionWitness.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/FixedEndpointRestrictionCorrection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/FixedKanSpanBoundary.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/FullSubcomplexFunctorIsoReflection.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/MappingSquareUncurry.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/McCarthyRho.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/PerfectStableInfinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/PointedKanDiagramExtensions.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/PointedKanDiagramInverseTriangles.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/PointedKanDiagramTriangleComponents.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/PointedKanEnrichedEquivalences.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/RelativeFamilyRectification.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/SequenceCompatibilityFamilyTransport.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/SpecifiedPointConstantHomotopies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/SpecifiedPointSpanBoundary.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/VaryingKanSpanHornFamilies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / SConstruction",
+    "file": "SerrePositivity/KST/SConstruction/VertexDiscretePinchedFamilies.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Spectra",
+    "file": "SerrePositivity/KST/Spectra/SpectrumFunctorZero.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Spectra",
+    "file": "SerrePositivity/KST/Spectra/SpectrumZeroObject.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "KST / Spectra",
+    "file": "SerrePositivity/KST/Spectra/SplitTrivialSpanHomotopy.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_derived_infinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_einfinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_infinity_f1_f1b.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_infinity_f1b.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_infinity_stable.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  },
+  {
+    "lane": "監査スクリプト",
+    "file": "scripts/audit_refactor_infinity.lean",
+    "kind": "import・宣言参照・モジュール名参照の機械的置換",
+    "tracked": true
+  }
+]

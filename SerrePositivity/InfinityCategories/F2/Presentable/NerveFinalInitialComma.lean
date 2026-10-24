@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotalCofinal
-public import SerrePositivity.InfinityCategories.F1B.Cofinality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
 
 /-!
 概要：通常の各右 comma に始対象を構成して、同じ nerve 写像の right cofinal 性を得る。
@@ -34,7 +34,7 @@ lemma nerveMap_isRightCofinal_of_initial_comma {P Q : Type u}
   have hcomma : IsWeaklyContractible (nerve (StructuredArrow q F)) :=
     (nervePoint_isLeftCofinal hc).isWeakHomotopyEquivalence.weaklyContractible_iff.mp
       h0.isWeaklyContractible
-  let e := F1B.kanNerveRightKanShapeIso q F ≪≫ pullbackSymmetry _ _
+  let e := SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso q F ≪≫ pullbackSymmetry _ _
   exact (qCatEquivalenceOfIso e).isQCatEquivalence.isWeakHomotopyEquivalence
     |>.weaklyContractible_iff.mp hcomma
 

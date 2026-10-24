@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanHomotopy
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：自明 Kan fibration 上の円柱の類は、底の同じ raw な円柱によって一意に定まる。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
-public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
 
 /-!
 概要：sifted 単体集合の弱可縮性を、対角によるホモトピー類の単射性から導く。

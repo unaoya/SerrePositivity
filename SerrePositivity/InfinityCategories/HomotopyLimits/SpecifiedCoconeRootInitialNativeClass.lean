@@ -44,7 +44,7 @@ lemma specifiedCoconeRootInitialComparisonIso_native_hom_arrow :
     (specifiedCoconeRootInitialComparisonIso_base_hom_arrow hp p c hc dB dC y)
   refine h.trans ?_
   rw [homotopyIso_postcomp_hom]
-  exact kanFunctorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp HR (P ≫ B)) J
+  exact SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (functorHomotopyPostcomp HR (P ≫ B)) J
     (specifiedCoconeRootEndInitialHomotopy_native_projection hp p c hc dB dC y)
 
 /-- 厳密な評価固定代表の底も、元の指定した初期射影円柱の同じ射の類を持つ。 -/

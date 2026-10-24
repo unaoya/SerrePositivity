@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitComma
-public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
 
 /-!
 # 元の導来自由単位が誘導する標準区間比較

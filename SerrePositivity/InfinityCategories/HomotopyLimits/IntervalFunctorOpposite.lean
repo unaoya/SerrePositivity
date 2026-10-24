@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalMappingOppositeComposition
-public import SerrePositivity.InfinityCategories.F1B.KanParameterizedFullFaithfulness
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.ParameterizedFullFaithfulness
 
 /-!
 概要：区間写像空間の反転と元の関手の後合成を照合する。
@@ -49,7 +49,7 @@ lemma intervalFunctorMap_op_isQCatEquivalence {X Y : SSet.{u}}
     (h : IsQCatEquivalence (intervalFunctorMap f x y)) :
     IsQCatEquivalence (intervalFunctorMap (SSet.opFunctor.map f)
       (SSet.opObjEquiv.symm y) (SSet.opObjEquiv.symm x)) := by
-  have hop := F1B.kanIsQCatEquivalence_op h
+  have hop := SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op h
   have hs := (qCatEquivalenceOfIso (intervalOppositeIso x y)).isQCatEquivalence
   have ht := (qCatEquivalenceOfIso (intervalOppositeIso
     (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y))).isQCatEquivalence
@@ -65,9 +65,9 @@ lemma pinchedHomMap_equivalence_of_intervalFunctorMap {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (x y : X _⦋0⦌)
     (h : IsQCatEquivalence (intervalFunctorMap f x y)) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap f x y) := by
-  have hc := (PinchedInterval.comparison_isQCatEquivalence x y).comp h
+  have hc := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x y).comp h
   rw [← pinchedIntervalComparison_naturality] at hc
-  have hh := (PinchedInterval.comparison_isQCatEquivalence
+  have hh := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)).cancel_right hc
   exact hh.isSimplicialHomotopyEquivalence
 

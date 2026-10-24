@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalVertexCocone
-public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
 public import Mathlib.CategoryTheory.Limits.Preorder
 
 /-!

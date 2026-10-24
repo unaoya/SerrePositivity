@@ -46,7 +46,7 @@ lemma normalizedTensorConeDerivedFamilyHom_inverse_arrow :
   have h₁ := arrow_mk_of_heq rfl hy (normalizedTensorConeDerivedFamilyHom A X Y)
     (normalizedTensorConeMappedFamilyHom A X Y F)
     (normalizedTensorConeDerivedFamilyHom_heq_mapped A X Y)
-  have h₂ := kanFunctorHomotopy_hom_arrow_of_h_eq (normalizedTensorConeMappedHomotopy A X Y F)
+  have h₂ := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (normalizedTensorConeMappedHomotopy A X Y F)
     (functorHomotopyPostcomp (normalizedTensorConeHomotopy A X Y) F) rfl
   exact h₁.trans (h₂.trans (normalizedTensorConePostDerived_inverse_arrow A X Y))
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFunctorInitialBoundary
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFunctorInitialBoundary
 
 /-!
 概要：元の共同分類を持つ同じ相対 join 族の native 全余錐空間を比較する。

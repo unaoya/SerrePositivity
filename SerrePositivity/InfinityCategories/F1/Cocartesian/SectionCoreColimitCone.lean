@@ -31,7 +31,7 @@ lemma cocartesianSectionCoreCone_compatible {J : Type v} [Category.{w} J]
     (s : Cone (D.op ⋙ cocartesianSectionCoreFunctor p ⋙ kanObjectForget))
     {j k : J} (f : j ⟶ k) :
     s.π.app (Opposite.op j) = s.π.app (Opposite.op k) ≫
-      quasicategoryCoreMap (kanCocartesianSectionsPre p (D.map f)) :=
+      quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)) :=
   (s.w f.op).symm
 
 /-- 底上の余極限の section の core は、各項上の core の元の制限錐の極限。 -/

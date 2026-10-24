@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationCofinality
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TrivialFibrationCofinality
 /-!
 概要：全値が始対象である実図式から指定対象への全三角形は、元の添字と弱ホモトピー同値。
 方針：各 fiber を同じ出る pinched Hom と同定し、可縮 fiber の右ファイブレーション判定を使う。

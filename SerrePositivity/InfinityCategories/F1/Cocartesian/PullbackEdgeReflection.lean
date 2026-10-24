@@ -44,7 +44,7 @@ lemma isCocartesianEdge_isPullback_iff {P E A B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [CocartesianFibration p] {i : P ⟶ E} {r : P ⟶ A} {f : A ⟶ B}
     (hs : IsPullback i r p f) (e : P _⦋1⦌) :
     IsCocartesianEdge r e ↔ IsCocartesianEdge p (i.app (Opposite.op ⦋1⦌) e) :=
-  ⟨isCocartesianEdge_image_of_isPullback p hs e, kanIsCocartesianEdge_isPullback hs e⟩
+  ⟨isCocartesianEdge_image_of_isPullback p hs e, SerrePositivity.InfinityCategories.isCocartesianEdge_isPullback hs e⟩
 
 /-- 標準 pullback の第一射影によって、任意の底でも cocartesian 性を検出できる。 -/
 lemma isCocartesianEdge_pullback_iff {E A B : SSet.{u}} [Quasicategory B]

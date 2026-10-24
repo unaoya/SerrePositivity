@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma exists_coreAnodyne_lift {A B X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
-    (p : X ⟶ Y) (hp : F1B.KanEquivalenceLifting p) (j : A ⟶ B)
+    (p : X ⟶ Y) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (j : A ⟶ B)
     (hj : anodyneExtensions j) (f : A ⟶ X) (g : B ⟶ Y)
     (hf : ∀ s : A _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (f.app (Opposite.op ⦋1⦌) s)))
     (hg : ∀ s : B _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (g.app (Opposite.op ⦋1⦌) s)))

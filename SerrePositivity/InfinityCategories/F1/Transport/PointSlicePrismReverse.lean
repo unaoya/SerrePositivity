@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.QuillenASliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpposite
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite

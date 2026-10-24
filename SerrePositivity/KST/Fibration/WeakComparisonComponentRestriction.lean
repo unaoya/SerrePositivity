@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakQuotientMappingComparison
 public import SerrePositivity.KST.Fibration.FunctorIsoComponent
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-! # 元の商・初頂点の制限式を、指定済みの同じ制限同型の実成分で正規化する -/
 

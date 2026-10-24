@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteIndCommaSections
 public import SerrePositivity.InfinityCategories.F2.Ind.PullbackRightBaseIso
-public import SerrePositivity.InfinityCategories.F1B.KanLeftKanShapeCommaProjection
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftKanShapeCommaProjection
 
 /-!
 概要：実際の Ind Yoneda comma の反転を、同じ頂点の coslice の厳密な底変換へ同定する。

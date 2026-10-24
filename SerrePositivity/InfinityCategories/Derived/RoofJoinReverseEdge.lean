@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofSliceTransport
-public import SerrePositivity.InfinityCategories.F1B.KanCosliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
 
 /-! # 点と点の join の反転と実辺の正規化
 

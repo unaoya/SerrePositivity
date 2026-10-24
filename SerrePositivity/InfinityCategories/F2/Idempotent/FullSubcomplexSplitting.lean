@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Coherent
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：retract に閉じた全部分圏へ、元の coherent 図式の厳密な強い分裂を反映する。

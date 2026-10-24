@@ -22,15 +22,15 @@ variable {C : Type u} [Category.{u} C] {E : SSet.{u}}
 lemma cocartesianScaffoldPullbackOverMap_fst :
     (cocartesianScaffoldPullbackOverMap p a).left ≫ pullback.fst a.hom p =
       pullback.fst a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) :=
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) :=
   pullback.lift_fst _ _ _
 
 /-- 同じ比較の第二射影は元の scaffold 比較との合成。 -/
 lemma cocartesianScaffoldPullbackOverMap_snd :
     (cocartesianScaffoldPullbackOverMap p a).left ≫ pullback.snd a.hom p =
       pullback.snd a.hom
-        (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-          kanUniversalScaffold p :=
+        (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+          SerrePositivity.InfinityCategories.cocartesianUniversalScaffold p :=
   pullback.lift_snd _ _ _
 
 end SerrePositivity.InfinityCategories

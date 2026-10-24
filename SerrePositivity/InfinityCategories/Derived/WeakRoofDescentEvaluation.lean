@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
 public import SerrePositivity.InfinityCategories.Derived.KanEvaluationEdgeIso
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-! # 実屋根の評価辺による全高次降下作用の比較
 

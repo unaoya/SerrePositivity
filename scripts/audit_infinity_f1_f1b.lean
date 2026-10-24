@@ -26,4 +26,4 @@ run_cmd do
   logInfo m!"F1/F1B collision audit passed: {f1Count} F1 and {f1bCount} F1B declarations."
 
 #check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_overPullbackMap
-#check @SerrePositivity.InfinityCategories.F1B.kanScaffoldBaseChange_overPullbackMap
+#check @SerrePositivity.InfinityCategories.F1B.cocartesianScaffoldBaseChange_overPullbackMap

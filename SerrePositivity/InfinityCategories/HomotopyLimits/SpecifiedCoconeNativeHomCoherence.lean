@@ -56,14 +56,14 @@ lemma specifiedCoconeProjectedNativeHom_comp :
 /-- 共通 end の元の左右の円柱と、公開した native 比較同型の積は同じ Arrow である。 -/
 lemma specifiedCoconeNativeHom_comp_hom_arrow :
     Arrow.mk (cls(HL) ≫ (IL).hom) = Arrow.mk (cls(HR) ≫ (IR).hom) := by
-  have hL := kanFunctorHomotopy_hom_arrow_of_h_eq PL HL
+  have hL := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq PL HL
     (specifiedCoconeLeftProjectedCylinder_raw hp p c hc dB hB dC y)
-  have hR := kanFunctorHomotopy_hom_arrow_of_h_eq PR HR
+  have hR := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq PR HR
     (specifiedCoconeRightProjectedCylinder_raw hp p c hc dB dC hC y)
   have hIL : Arrow.mk (IL).hom = Arrow.mk (cls(TL) ≫ cls(NL)) :=
-    kanFunctorIsoTransport_hom_arrow _ _ _
+    SerrePositivity.InfinityCategories.functorIsoTransport_hom_arrow _ _ _
   have hIR : Arrow.mk (IR).hom = Arrow.mk (cls(TR) ≫ cls(NR)) :=
-    kanFunctorIsoTransport_hom_arrow _ _ _
+    SerrePositivity.InfinityCategories.functorIsoTransport_hom_arrow _ _ _
   exact (arrowComposition_congr hL.symm hIL).trans
     ((congrArg Arrow.mk
       (specifiedCoconeProjectedNativeHom_comp hp p c hc dB hB dC hC y)).trans

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLimits
 public import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
-public import SerrePositivity.InfinityCategories.F1B.RightKanPrecompositionFaithful
-public import SerrePositivity.InfinityCategories.F1B.KanRightCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightPrecompositionFaithful
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightCanonicalMapping
 /-!
 概要：商上の任意関手は、商関手での制限からの実右 Kan 拡張である。
 方針：実逆分母への cofinal 制限後の標準錐を、全 prism を持つ coslice 実現の実極限錐と同定する。

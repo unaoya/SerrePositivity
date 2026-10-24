@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.VertexDiscreteFunctionSimplices
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-! # 離散頂点上の固定端点写像空間の族
 概要：各頂点で指定した固定端点の高次単体・辺を一つの関手空間の単体・辺へ束ねる。

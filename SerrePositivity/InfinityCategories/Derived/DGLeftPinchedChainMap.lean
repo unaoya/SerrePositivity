@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PinchedHomIso
-public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
 /-!
 概要：左 pinched Hom を dg 反対模型の右 pinched Hom へ移し、全 Hom 鎖写像を作用させる。
@@ -46,6 +46,6 @@ lemma dgLeftPinchedChainMap_isQCatEquivalence
     (x := Opposite.op y) (y := Opposite.op x)
     (x' := Opposite.op y') (y' := Opposite.op x') φ).isQCatEquivalence
   exact (qCatEquivalenceOfIso (dgLeftPinchedOppositeIso R D x y)).isQCatEquivalence.comp
-    ((F1B.kanIsQCatEquivalence_op h).comp
+    ((SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op h).comp
       (qCatEquivalenceOfIso (dgLeftPinchedOppositeIso R E x' y').symm).isQCatEquivalence)
 end SerrePositivity.InfinityCategories

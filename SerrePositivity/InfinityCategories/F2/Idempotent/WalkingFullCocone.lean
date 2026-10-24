@@ -31,24 +31,24 @@ def walkingFullCocone : Cocone (𝟭 WalkingSplit.{u}) where
 
 /-- 元の全分裂添字の恒等図式への native な全余錐。 -/
 def walkingFullJoinCocone : JoinCocone (𝟙 SplitShape.{u}) :=
-  F1B.kanNerveCoconeEquiv walkingFullCocone
+  SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv walkingFullCocone
 
 /-- 元の全余錐の点側への制限は、元の分裂対象の包含。 -/
 lemma walkingFullJoinCocone_point :
     joinInr SplitShape (Δ[0] : SSet.{u}) ≫ walkingFullJoinCocone.val = nervePoint walkingImage :=
-  F1B.kanNerveCocone_point walkingFullCocone
+  SerrePositivity.InfinityCategories.F1B.nerveCocone_point walkingFullCocone
 
 /-- 元の冪等包含へ制限した全余錐は、元の Idem の余錐そのもの。 -/
 lemma walkingFullJoinCocone_restrict :
     joinMap idemInclusion (𝟙 (Δ[0] : SSet.{u})) ≫ walkingFullJoinCocone.val =
       walkingJoinCocone.val :=
-  F1B.kanNerveCocone_whisker walkingFullCocone walkingInclusion
+  SerrePositivity.InfinityCategories.F1B.nerveCocone_whisker walkingFullCocone walkingInclusion
 
 /-- 元の分裂対象での全余錐の脚は、その元の恒等辺。 -/
 lemma walkingFullJoinCocone_image_leg :
     walkingFullJoinCocone.{u}.val.app (Opposite.op ⦋1⦌)
-      (F1B.kanJoinCoconeLegSimplex (nerveVertex walkingImage)) =
+      (SerrePositivity.InfinityCategories.F1B.joinCoconeLegSimplex (nerveVertex walkingImage)) =
         ComposableArrows.mk₁ (𝟙 walkingImage) :=
-  F1B.kanNerveCocone_leg walkingFullCocone walkingImage
+  SerrePositivity.InfinityCategories.F1B.nerveCocone_leg walkingFullCocone walkingImage
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

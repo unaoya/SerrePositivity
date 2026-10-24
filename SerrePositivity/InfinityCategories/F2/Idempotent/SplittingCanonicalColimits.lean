@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.ImageCanonicalCocone
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemInclusionFull
-public import SerrePositivity.InfinityCategories.F1B.KanLeftIdentityLeg
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftIdentityLeg
 
 /-!
 概要：元の任意の強分裂図式の全標準左 Kan 余錐は、同じ全余錐のまま余極限。

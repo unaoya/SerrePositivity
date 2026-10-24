@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedArrowTarget
-public import SerrePositivity.InfinityCategories.F1B.QuillenASliceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpposite
 
 /-!
 概要：元の表現可能 right fibration の反転から、実際の終点固定の twisted arrow への比較。

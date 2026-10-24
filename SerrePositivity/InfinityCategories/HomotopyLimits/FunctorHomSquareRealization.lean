@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorHomSquare
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomSquare
 public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
 
 /-!
@@ -24,7 +24,7 @@ lemma nonempty_functorHomSquare_of_homEq {A X : SSet.{u}} [Quasicategory X]
         SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy r) =
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy l) ≫
         SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy t)) :
-    Nonempty (KanFunctorHomSquare b t l r) := by
+    Nonempty (SerrePositivity.InfinityCategories.FunctorHomSquare b t l r) := by
   obtain ⟨Q, hb, ht, hl, hr⟩ := exists_stableSquare_of_homMk_comm
     (functorEdgeOfSimplicialHomotopy b) (functorEdgeOfSimplicialHomotopy t)
     (functorEdgeOfSimplicialHomotopy l) (functorEdgeOfSimplicialHomotopy r) h

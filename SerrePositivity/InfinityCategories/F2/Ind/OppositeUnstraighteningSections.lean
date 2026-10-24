@@ -29,9 +29,9 @@ include hκ hex hc hF
 lemma indPresheaf_finiteColimit_oppositeRightSections_isQCatEquivalence :
     IsQCatEquivalence (leftFibrationConeRestriction
       (SSet.opFunctor.map (smallRightUnstraighteningProjection F))
-      (F1B.kanCoconeReverseCone c)) := by
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)) := by
   have hs : IsQCatEquivalence (leftFibrationConeRestriction
-      (smallLeftUnstraighteningProjection F) (F1B.kanCoconeReverseCone c)) := by
+      (smallLeftUnstraighteningProjection F) (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)) := by
     rw [leftFibrationConeRestriction_eq_overPre]
     exact indPresheaf_finiteColimit_smallSectionRestriction_isQCatEquivalence κ hκ hex c hc F hF
   exact (leftFibrationConeRestriction_isQCatEquivalence_iff_of_comparison
@@ -39,14 +39,14 @@ lemma indPresheaf_finiteColimit_oppositeRightSections_isQCatEquivalence :
     (smallLeftUnstraighteningProjection F) (smallRightUnstraighteningOppositeIso F).hom
     (smallRightUnstraighteningProjection_op F).symm
     (isPrecompositionEquivalence_of_iso (smallRightUnstraighteningOppositeIso F))
-    (F1B.kanCoconeReverseCone c)).mpr hs
+    (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)).mpr hs
 
 /-- 元の反転全錐と全空間の同じ宇宙持ち上げでも、元の切断制限が同値。 -/
 lemma indPresheaf_finiteColimit_liftedOppositeRightSections_isQCatEquivalence :
     IsQCatEquivalence (leftFibrationConeRestriction
       ((SSet.uliftFunctor.{u + 1, u}).map
         (SSet.opFunctor.map (smallRightUnstraighteningProjection F)))
-      (JoinCone.ulift.{u, u + 1} (F1B.kanCoconeReverseCone c))) :=
+      (JoinCone.ulift.{u, u + 1} (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c))) :=
   leftFibrationConeRestriction_isQCatEquivalence_ulift _ _
     (indPresheaf_finiteColimit_oppositeRightSections_isQCatEquivalence κ hκ hex c hc F hF)
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.AdjunctionHomotopyCategory
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.HomotopyCategory
 public import SerrePositivity.InfinityCategories.Derived.DGKernelAdjunction
 public import SerrePositivity.InfinityCategories.Derived.DGKernelHomotopyAdjunction
 public import Mathlib.CategoryTheory.Adjunction.Unique

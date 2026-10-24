@@ -27,17 +27,17 @@ def lifted : ULift.{u} (Fin (n + 1)) ⥤ I :=
   (⟨ULift.down, fun _ _ h => h⟩ : ULift.{u} (Fin (n + 1)) →o Fin (n + 1)).toFunctor ⋙ Γ
 
 def diagram : Fin (n + 2) ⥤ C :=
-  TerminalSimplex.index n ⋙ F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ))
+  TerminalSimplex.index n ⋙ SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ))
 
 lemma diagram_obj_cast (i : Fin (n + 1)) :
     (diagram c Γ).obj i.castSucc = F.obj (Γ.obj i) := by
-  change (F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ))).obj
+  change (SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ))).obj
     (TerminalSimplex.obj n i.castSucc) = _
   rw [TerminalSimplex.obj_cast]
   rfl
 
 lemma diagram_obj_last : (diagram c Γ).obj (Fin.last (n + 1)) = c.pt := by
-  change (F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ))).obj
+  change (SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ))).obj
     (TerminalSimplex.obj n (Fin.last (n + 1))) = _
   rw [TerminalSimplex.obj_last]
   rfl
@@ -46,7 +46,7 @@ lemma diagram_map_cast_cast (i j : Fin (n + 1)) (hij : i ≤ j) :
     HEq ((diagram c Γ).map (homOfLE (Fin.castSucc_le_castSucc_iff.mpr hij)))
       (F.map (Γ.map (homOfLE hij))) := by
   exact TerminalSimplex.map_heq
-    (F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ)))
+    (SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ)))
     (TerminalSimplex.obj_cast n i) (TerminalSimplex.obj_cast n j)
     ((TerminalSimplex.index n).map (homOfLE (Fin.castSucc_le_castSucc_iff.mpr hij)))
     (WithTerminal.incl.map (homOfLE
@@ -55,7 +55,7 @@ lemma diagram_map_cast_cast (i j : Fin (n + 1)) (hij : i ≤ j) :
 lemma diagram_map_cast_last (i : Fin (n + 1)) :
     HEq ((diagram c Γ).map (homOfLE (Fin.le_last i.castSucc))) (c.ι.app (Γ.obj i)) := by
   exact TerminalSimplex.map_heq
-    (F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ)))
+    (SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ)))
     (TerminalSimplex.obj_cast n i) (TerminalSimplex.obj_last n)
     ((TerminalSimplex.index n).map (homOfLE (Fin.le_last i.castSucc)))
     (WithTerminal.homFrom (ULift.up i))
@@ -68,15 +68,15 @@ lemma diagram_join :
     (joinStdSimplexIso n 0).hom ≫
       SSet.yonedaEquiv.symm (show (nerve C) _⦋n + 1⦌ from diagram c Γ) =
     joinMap (SSet.yonedaEquiv.symm (show (nerve I) _⦋n⦌ from Γ))
-      (𝟙 (Δ[0] : SSet.{u})) ≫ (F1B.kanNerveCoconeEquiv c).val := by
+      (𝟙 (Δ[0] : SSet.{u})) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv c).val := by
   have h : SSet.yonedaEquiv.symm
       (show (nerve C) _⦋n + 1⦌ from diagram c Γ) =
       SSet.yonedaEquiv.symm
         (show (nerve _) _⦋n + 1⦌ from TerminalSimplex.index n) ≫
-        nerveMap (F1B.kanCoconeWithTerminalFunctor (c.whisker (lifted Γ))) := by
+        nerveMap (SerrePositivity.InfinityCategories.F1B.coconeWithTerminalFunctor (c.whisker (lifted Γ))) := by
     rfl
   rw [h, ← Category.assoc, TerminalSimplex.index_join, Category.assoc,
-    F1B.kanNerveCocone_withTerminal, ← F1B.kanNerveCocone_whisker]
+    SerrePositivity.InfinityCategories.F1B.nerveCocone_withTerminal, ← SerrePositivity.InfinityCategories.F1B.nerveCocone_whisker]
   rw [← Category.assoc, ← joinMap_comp, lifted_nerve, Category.id_comp]
 
 end SerrePositivity.EInfinity.FrameHom.TerminalCoconeSimplex

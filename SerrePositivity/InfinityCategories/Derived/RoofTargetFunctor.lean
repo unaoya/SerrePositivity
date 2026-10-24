@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp
-public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 
 /-! # 任意の関手による標的 slice の変換
 
@@ -34,8 +34,8 @@ def roofTargetSliceMap {X Y : SSet.{u}} (F : X ⟶ Y) (y : X _⦋0⦌) :
 lemma roofTargetSliceMap_projection {X Y : SSet.{u}} (F : X ⟶ Y) (y : X _⦋0⦌) :
     roofTargetSliceMap F y ≫ sliceOverProjection _ = sliceOverProjection _ ≫ F := by
   dsimp only [roofTargetSliceMap]
-  rw [Category.assoc, F1B.kanSliceOverProjection_eqTransport,
-    F1B.kanSliceOverPostcomp_projection]
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport,
+    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
   exact roofTargetPoint F y
 
 /-- 標的 slice の写像は、台の join 射の後合成である。 -/

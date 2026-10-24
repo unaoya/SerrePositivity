@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F1B.FunctorInitial
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorInitial
 
 /-!
 概要：両端が始対象である矢印は矢印圏の始対象。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianStrictTransport
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport
 
 /-!
 概要：薄い通常圏の undercategory の反変な nerve 射は単射。

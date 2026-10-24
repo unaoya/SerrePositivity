@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 全区間族から読んだホモトピーを再び curry すると、同じ後合成した全 path を回収する。 -/
 @[expose] public section

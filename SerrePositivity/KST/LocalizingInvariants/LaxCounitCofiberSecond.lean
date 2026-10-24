@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiber
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
 public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 
 /-!
 概要：元の D 随伴余単位の cofiber は、第二射影で全て零となる。

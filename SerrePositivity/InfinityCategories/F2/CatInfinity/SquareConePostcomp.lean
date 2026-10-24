@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!
 概要：四角形の後合成と指定された極限錐・余極限余錐の一致。

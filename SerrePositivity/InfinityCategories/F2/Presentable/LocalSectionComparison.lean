@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalCoslicePrecomposition
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
-public import SerrePositivity.InfinityCategories.F1B.KanLeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftFibrationFiberComparison
 
 /-!
 概要：局所対象の図式への表現可能 left fibration の切断の比較。
@@ -26,8 +26,8 @@ lemma relativeFunctorBaseChangeForward_post {A E F B D : SSet.{u}}
     (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p)
     (k : D ⟶ B) (a : A ⟶ D) :
     relativeFunctorPost (pullback.snd p k) (pullback.snd q k)
-        (F1B.kanFiberComparisonBaseChange p q f hf k)
-        (F1B.kanFiberComparisonBaseChange_projection p q f hf k) a ≫
+        (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange p q f hf k)
+        (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_projection p q f hf k) a ≫
       (relativeFunctorBaseChangeIso q k a).hom =
     (relativeFunctorBaseChangeIso p k a).hom ≫ relativeFunctorPost p q f hf (a ≫ k) := by
   apply vertexFiber_hom_ext ((ihom A).map q) (functorVertex (a ≫ k))
@@ -38,7 +38,7 @@ lemma relativeFunctorBaseChangeForward_post {A E F B D : SSet.{u}}
     ← Category.assoc]
   conv_rhs => rw [← Category.assoc, relativeFunctorBaseChangeForward_ι]
   simp only [Category.assoc, ← Functor.map_comp,
-    F1B.kanFiberComparisonBaseChange, pullback.lift_fst]
+    SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange, pullback.lift_fst]
 
 /-- 同値な fiber を持つ部分圏へ着地する任意の図式では、相対切断の後合成が同値。 -/
 lemma relativeFunctorPost_isQCatEquivalence_on_base {A E F B D : SSet.{u}}
@@ -54,19 +54,19 @@ lemma relativeFunctorPost_isQCatEquivalence_on_base {A E F B D : SSet.{u}}
     ⟨leftFibrations.pullback_snd q k (LeftFibration.mem (p := q))⟩
   have he := F1B.kanIsPrecompositionEquivalence_of_leftFibration_fibers
     (pullback.snd p k) (pullback.snd q k)
-    (F1B.kanFiberComparisonBaseChange p q f hf k)
-    (F1B.kanFiberComparisonBaseChange_projection p q f hf k) (by
+    (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange p q f hf k)
+    (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_projection p q f hf k) (by
       intro d
       apply (qCatEquivalenceOfIso
         (cofinalVertexFiberBaseChangeIso q k d)).isQCatEquivalence.cancel_right
       change IsQCatEquivalence (_ ≫ (cofinalVertexFiberBaseChangeIso q k d).hom)
-      rw [F1B.kanFiberComparisonBaseChange_fiber]
+      rw [SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_fiber]
       exact (qCatEquivalenceOfIso
         (cofinalVertexFiberBaseChangeIso p k d)).isQCatEquivalence.comp (h d))
   have hs := relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence
     (pullback.snd p k) (pullback.snd q k)
-    (F1B.kanFiberComparisonBaseChange p q f hf k)
-    (F1B.kanFiberComparisonBaseChange_projection p q f hf k) he a
+    (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange p q f hf k)
+    (SerrePositivity.InfinityCategories.F1B.fiberComparisonBaseChange_projection p q f hf k) he a
   have ht : IsQCatEquivalence (relativeFunctorBaseChangeIso q k a).hom :=
     (qCatEquivalenceOfIso (relativeFunctorBaseChangeIso q k a)).isQCatEquivalence
   have hu : IsQCatEquivalence (relativeFunctorBaseChangeIso p k a).hom :=

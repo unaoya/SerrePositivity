@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
 public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-! # 指定対象の cofiber により定まる局所化の辺
 

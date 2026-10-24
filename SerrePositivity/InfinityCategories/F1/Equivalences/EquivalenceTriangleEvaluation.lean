@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangle
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
 
 /-!
 概要：元の可逆三角形の頂点評価と定値三角形の切断。

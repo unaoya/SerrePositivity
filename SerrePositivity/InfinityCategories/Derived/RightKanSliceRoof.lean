@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
 /-!
 概要：右 Kan 形状への実写像の Quillen A の slice を、同じ始域を持つ元の実屋根へ送る。

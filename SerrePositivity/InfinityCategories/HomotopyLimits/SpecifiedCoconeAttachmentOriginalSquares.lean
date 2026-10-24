@@ -41,7 +41,7 @@ lemma specifiedCoconeLeftAttachment_original_homMk_comp : cls(L) ≫ cls(B₁) =
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using h
 
 /-- 元の左 HL・HR を下辺、枝比較を右辺、根辺比較を左辺、付加辺面比較を上辺に保つ。 -/
-def specifiedCoconeLeftAttachmentOriginalSquare : KanFunctorHomSquare L D₁ C₁ B₁ :=
+def specifiedCoconeLeftAttachmentOriginalSquare : SerrePositivity.InfinityCategories.FunctorHomSquare L D₁ C₁ B₁ :=
   (nonempty_functorHomSquare_of_homEq L D₁ C₁ B₁
     (specifiedCoconeLeftAttachment_original_homMk_comp hp p c hc dB hB dC y)).some
 end
@@ -62,7 +62,7 @@ lemma specifiedCoconeRightAttachment_original_homMk_comp :
   simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using h
 
 /-- 元の右 HL・HR を下辺、枝比較を右辺、根辺比較を左辺、付加辺面比較を上辺に保つ。 -/
-def specifiedCoconeRightAttachmentOriginalSquare : KanFunctorHomSquare L D₁ C₁ B₁ :=
+def specifiedCoconeRightAttachmentOriginalSquare : SerrePositivity.InfinityCategories.FunctorHomSquare L D₁ C₁ B₁ :=
   (nonempty_functorHomSquare_of_homEq L D₁ C₁ B₁
     (specifiedCoconeRightAttachment_original_homMk_comp hp p c hc dB dC hC y)).some
 end

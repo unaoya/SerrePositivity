@@ -1,0 +1,15 @@
+{
+  "command": [
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1",
+    "SerrePositivity.InfinityCategories.F1B",
+    "SerrePositivity.InfinityCategories.F2",
+    "SerrePositivity.InfinityCategories.HomotopyLimits"
+  ],
+  "started": "2026-10-24T15:34:51.984804",
+  "completed_at": "2026-10-24T16:10:04.301906",
+  "seconds": 2112.23,
+  "exit_code": 0,
+  "log": "/tmp/r-a-final-round/four-aggregates-build-2.log"
+}

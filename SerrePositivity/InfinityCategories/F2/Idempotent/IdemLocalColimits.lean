@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemInclusionFull
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemImageKanShape
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PointColimitExistence
-public import SerrePositivity.InfinityCategories.F1B.KanLeftKanIdentityVertex
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftKanIdentityVertex
 
 /-!
 概要：元の冪等図式が余極限を持てば、元の包含に沿う全ての左局所図式が余極限を持つ。

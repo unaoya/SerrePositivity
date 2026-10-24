@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestrictionHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
 
 /-!
 概要：恒等単位を持つ二つの元の左 Kan 延長は、制限の全自然同型から全自然同型を得る。

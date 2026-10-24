@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointConeDegeneracy
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFibrationInvertibleReflection
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 
@@ -56,7 +56,7 @@ lemma isLimitCone_point_iff_invertible {X : SSet.{u}} [Quasicategory X]
     (x : X _⦋0⦌) (c : JoinCone (SSet.yonedaEquiv.symm x)) :
     IsLimitCone c ↔ IsInvertibleEdge (sliceOverVertexEdge x c) := by
   let e := pointConeIdentityComparison x c
-  have hd := F1B.kanSliceIdentityCone_isTerminalVertex x
+  have hd := SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex x
   constructor
   · intro hc
     have he : IsInvertibleEdge e.toTruncated :=

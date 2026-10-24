@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FinitePosetLeftKanShape
 public import SerrePositivity.InfinityCategories.Stable.Definition
-public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftStrictExistence
 
 /-!
 概要：有限順序添字の局所余極限から、元の図式に厳密に等しい左 Kan 拡張を得る。

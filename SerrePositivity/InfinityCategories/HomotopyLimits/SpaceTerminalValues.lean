@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
-public import SerrePositivity.InfinityCategories.F1B.WeakContractibleKan
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibleKan
 public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
 
 /-!

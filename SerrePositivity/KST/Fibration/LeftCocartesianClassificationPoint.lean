@@ -19,12 +19,12 @@ omit [LeftFibration p] in
 /-- 元の section 包含の後の恒等射評価は、元の cocartesian section の評価そのもの。 -/
 theorem leftCocartesianStrictTransportEvaluation_eq (i : I) :
     (cocartesianStrictTransportInclusion p).app i ≫ leftStrictTransportEvaluate p i =
-      kanCocartesianStrictTransportEvaluate p i := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p i := by
   apply vertexFiber_hom_ext p (nerveVertex i)
   have hl := congrArg (fun m => (cocartesianStrictTransportInclusion p).app i ≫ m)
     (leftStrictTransportEvaluate_ι p i)
   have hr := congrArg
-    (fun m => kanCocartesianSectionsι p (nerveMap (Under.forget i)) ≫ m)
+    (fun m => SerrePositivity.InfinityCategories.cocartesianSectionsι p (nerveMap (Under.forget i)) ≫ m)
     (SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι p (nerveMap (Under.forget i))
       ((nerveEquiv (C := Under i)).symm (Under.mk (𝟙 i))))
   rw [Category.assoc]
@@ -37,11 +37,11 @@ def leftCocartesianKanClassificationIso :
 
 /-- 置換単位上の同じ係数点を、同じ恒等射評価点の pointed 復元像へ送る。 -/
 theorem leftCocartesianKanClassificationIso_pointHom (i : I)
-    (v : ((kanCocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
+    (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
     cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
         ((F2.continuousKanReplacementUnit.app
-          ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
+          ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
       (eqToIso (congrArg HomotopyCategory.mk
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram p) i))).inv ≫
       functorHomEvaluate (leftCocartesianKanClassificationIso p).hom
@@ -61,7 +61,7 @@ theorem leftCocartesianKanClassificationIso_pointHom (i : I)
   let x := cosliceFiberPointHom
     ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
       ((F2.continuousKanReplacementUnit.app
-        ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
+        ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
   let a := x ≫ A.inv ≫ functorHomEvaluate (leftCocartesianKanComparisonIso p).hom z
   have hl := leftCocartesianKanComparisonValueIso_pointHom p i v
   simp only [leftCocartesianKanComparisonValueIso, kanDiagramValueIso, Iso.trans_hom,

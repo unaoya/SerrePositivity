@@ -32,7 +32,7 @@ lemma dgNerveOppositeHomotopy_vertex_edge (R : Type u) [CommRing R]
       (Simplex.vertex (Opposite.op x))).edge =
       DGNerveOppositeData.opSimplex (simplicialHomotopyVertexEdge H (Simplex.vertex x)).edge := by
   change (dgNerveOppositeIso R E).hom.app (Opposite.op ⦋1⦌)
-    ((kanHomotopyOpposite H).h.app (Opposite.op ⦋1⦌)
+    ((SerrePositivity.InfinityCategories.homotopyOpposite H).h.app (Opposite.op ⦋1⦌)
       ((dgNerveOppositeIso R C).inv.app (Opposite.op ⦋1⦌)
         ((dgNerve R Cᵒᵖ).σ 0 (Simplex.vertex (Opposite.op x))), homotopyIntervalEdge.edge)) = _
   have hn := (dgNerveOppositeIso R C).inv.naturality_apply
@@ -41,7 +41,7 @@ lemma dgNerveOppositeHomotopy_vertex_edge (R : Type u) [CommRing R]
     ((dgNerve R Cᵒᵖ).σ 0 (Simplex.vertex (Opposite.op x))) = _ at hn
   rw [hn, dgNerveOppositeIso_inv_vertex]
   change (dgNerveOppositeIso R E).hom.app (Opposite.op ⦋1⦌)
-    (simplicialHomotopyVertexEdge (kanHomotopyOpposite H)
+    (simplicialHomotopyVertexEdge (SerrePositivity.InfinityCategories.homotopyOpposite H)
       (SSet.opObjEquiv.symm (Simplex.vertex x))).edge = _
   rw [kanHomotopyOpposite_vertex_edge]
   rfl

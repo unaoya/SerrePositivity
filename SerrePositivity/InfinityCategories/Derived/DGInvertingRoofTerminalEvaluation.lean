@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
 public import SerrePositivity.InfinityCategories.Derived.RoofTerminalEvaluation
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 任意の反転関手の屋根全空間の実評価
 

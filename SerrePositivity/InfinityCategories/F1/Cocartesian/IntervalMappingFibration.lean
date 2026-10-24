@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 元の一次元輸送図式の遷移は、全内部 Hom で同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_cocartesianIntervalPostHom
     (G : CocartesianTransportDiagramCategory (ULift.{u} (Fin 2))) (A : SSet.{u}) :
-    F1B.KanEquivalenceLifting ((ihom A).map (G.val.map strictIntervalIndexArrow)) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting ((ihom A).map (G.val.map strictIntervalIndexArrow)) := by
   obtain ⟨q, hq⟩ := G.property
   rw [← hq]
   exact kanEquivalenceLifting_kanCocartesianStrictTransportPostHom q.val.hom

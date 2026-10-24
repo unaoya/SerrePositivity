@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeHomotopyNaturality
 public import SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberExtension
 
 /-!
 概要：太い coslice の族と対角関手の固定始域 comma の族を自然に比較する。

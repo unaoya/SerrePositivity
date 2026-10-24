@@ -39,7 +39,7 @@ lemma cocartesianScaffoldStrictPullbackMap_isPrecompositionEquivalence
     (htail : IsQCatEquivalence
       (cocartesianLocalHomComparison (cocartesianScaffoldTailCell n k) p q)) :
     IsPrecompositionEquivalence (cocartesianScaffoldStrictPullbackMap n k p q) := by
-  have hq : F1B.KanEquivalenceLifting ((T).map WalkingCospan.Hom.inl) := by
+  have hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting ((T).map WalkingCospan.Hom.inl) := by
     intro A B j hj he
     exact cocartesianScaffoldLocalTarget_first_kanEquivalenceLifting n k p q j hj he
   have : Fibration ((T).map WalkingCospan.Hom.inl) :=

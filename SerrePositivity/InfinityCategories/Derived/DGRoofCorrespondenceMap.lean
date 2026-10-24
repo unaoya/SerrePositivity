@@ -39,8 +39,8 @@ lemma dgQuotientTargetSliceMap_projection (P : Set D) (y : D) :
     dgQuotientTargetSliceMap A D P y ≫ sliceOverProjection _ =
       sliceOverProjection _ ≫ dgQuotientNerveProjection A D P := by
   dsimp only [dgQuotientTargetSliceMap]
-  rw [Category.assoc, F1B.kanSliceOverProjection_eqTransport,
-    F1B.kanSliceOverPostcomp_projection]
+  rw [Category.assoc, SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport,
+    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
   exact dgQuotientNervePoint A D P y
 
 /-- 元の実屋根の右ファイブレーションから商側の実屋根への、全高次単体を保つ比較。 -/

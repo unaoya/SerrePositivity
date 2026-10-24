@@ -1,0 +1,17 @@
+{
+  "full_declaration_rename_rules": 797,
+  "raw_grep_lines_including_comments": 11,
+  "bare_code_occurrences": [
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinSliceRestriction.lean",
+      "line": 25,
+      "token": "kanSliceOverRestrict_projection"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinSliceRestriction.lean",
+      "line": 42,
+      "token": "kanSliceOverRestrict_projection"
+    }
+  ],
+  "unresolved_bare_candidates": []
+}

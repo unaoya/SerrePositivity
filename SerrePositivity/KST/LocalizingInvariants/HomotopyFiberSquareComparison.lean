@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquare
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：任意の厳密 BF 正方形の元の fiber 射を、元の BF fiber 正方形間の全比較へ移す。

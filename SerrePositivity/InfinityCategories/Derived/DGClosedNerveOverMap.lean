@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.NerveInclusion
-public import SerrePositivity.InfinityCategories.F1B.KanNerveOverIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OverIso
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-! # 閉零圏の厳密 over nerve から dg nerve の実 over slice へ
@@ -54,7 +54,7 @@ def dgClosedNerveOverMap (x : D) :
     nerve (Over (ForgetEnrichment.of (Complex A) x)) ⟶
       sliceOver ((SSet.yonedaEquiv (X := dgNerve A D)).symm (Simplex.vertex x)) :=
   dgClosedNerveOverUp A D x ≫
-  (F1B.kanNerveOverIso ((AsSmall.up : ClosedCategory A D ⥤ DGCommonClosedCategory A D).obj
+  (SerrePositivity.InfinityCategories.F1B.nerveOverIso ((AsSmall.up : ClosedCategory A D ⥤ DGCommonClosedCategory A D).obj
     (ForgetEnrichment.of (Complex A) x))).hom ≫
   sliceOverPostcomp (nervePoint ((AsSmall.up : ClosedCategory A D ⥤ DGCommonClosedCategory A D).obj
     (ForgetEnrichment.of (Complex A) x))) (dgCommonClosedNerveToDG A D) ≫
@@ -72,9 +72,9 @@ lemma dgClosedNerveOverMap_projection (x : D) :
         dgClosedNerveOverSourceMap A D x ≫ closedNerveInclusion A D := by
   dsimp only [dgClosedNerveOverMap]
   simp only [Category.assoc]
-  rw [F1B.kanSliceOverProjection_eqTransport, F1B.kanSliceOverPostcomp_projection]
-  · rw [← Category.assoc (F1B.kanNerveOverIso _).hom (sliceOverProjection _)
-      (dgCommonClosedNerveToDG A D), F1B.kanNerveOverIso_projection]
+  rw [SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport, SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
+  · rw [← Category.assoc (SerrePositivity.InfinityCategories.F1B.nerveOverIso _).hom (sliceOverProjection _)
+      (dgCommonClosedNerveToDG A D), SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection]
     rfl
   · exact dgCommonClosedNervePoint A D x
 

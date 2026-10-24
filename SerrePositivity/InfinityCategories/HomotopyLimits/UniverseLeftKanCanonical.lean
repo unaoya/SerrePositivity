@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEqualit
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalRestrictionHom
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
 
 /-!
 概要：左 Kan 標準全余錐の宇宙変更は、元の局所添字の同型を介して厳密に一致する。

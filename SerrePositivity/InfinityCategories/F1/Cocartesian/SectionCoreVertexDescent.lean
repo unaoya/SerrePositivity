@@ -23,17 +23,17 @@ lemma isInvertibleEdge_cocartesianSection_of_vertex_cover
     {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [InnerFibration p]
     {J : Type v} (a : Over B) (D : J → Over B) (i : ∀ j, D j ⟶ a)
     (hi : ∀ x : a.left _⦋0⦌, ∃ j y, (i j).left.app (Opposite.op ⦋0⦌) y = x)
-    {v w : (kanCocartesianSections p a.hom) _⦋0⦌}
-    (e : Truncated.Edge (X := (truncation 2).obj (kanCocartesianSections p a.hom)) v w)
-    (he : ∀ j, IsInvertibleEdge (X := kanCocartesianSections p (D j).hom)
-      (e.map ((truncation 2).map (kanCocartesianSectionsPre p (i j))))) :
+    {v w : (SerrePositivity.InfinityCategories.cocartesianSections p a.hom) _⦋0⦌}
+    (e : Truncated.Edge (X := (truncation 2).obj (SerrePositivity.InfinityCategories.cocartesianSections p a.hom)) v w)
+    (he : ∀ j, IsInvertibleEdge (X := SerrePositivity.InfinityCategories.cocartesianSections p (D j).hom)
+      (e.map ((truncation 2).map (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (i j))))) :
     IsInvertibleEdge e := by
   apply (isInvertibleEdge_cocartesianSection_iff_evaluate p a.hom e).mpr
   intro x
   obtain ⟨j, y, rfl⟩ := hi x
   have h := (he j).map (cocartesianSectionEvaluate p (D j).hom y)
   apply (isInvertibleEdge_congr
-    (e := (e.map ((truncation 2).map (kanCocartesianSectionsPre p (i j)))).map
+    (e := (e.map ((truncation 2).map (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (i j)))).map
       ((truncation 2).map (cocartesianSectionEvaluate p (D j).hom y)))
     (f := e.map ((truncation 2).map
       (cocartesianSectionEvaluate p a.hom ((i j).left.app (Opposite.op ⦋0⦌) y)))) ?_).mp h
@@ -45,11 +45,11 @@ def cocartesianSectionCoreLift_of_vertex_cover
     {T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [InnerFibration p]
     {J : Type v} (a : Over B) (D : J → Over B) (i : ∀ j, D j ⟶ a)
     (hi : ∀ x : a.left _⦋0⦌, ∃ j y, (i j).left.app (Opposite.op ⦋0⦌) y = x)
-    (g : T ⟶ kanCocartesianSections p a.hom)
-    (s : ∀ j, T ⟶ (quasicategoryCore (kanCocartesianSections p (D j).hom) : SSet.{u}))
-    (hs : ∀ j, g ≫ kanCocartesianSectionsPre p (i j) =
-      s j ≫ (quasicategoryCore (kanCocartesianSections p (D j).hom)).ι) :
-    T ⟶ (quasicategoryCore (kanCocartesianSections p a.hom) : SSet.{u}) :=
+    (g : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a.hom)
+    (s : ∀ j, T ⟶ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p (D j).hom) : SSet.{u}))
+    (hs : ∀ j, g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsPre p (i j) =
+      s j ≫ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p (D j).hom)).ι) :
+    T ⟶ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p a.hom) : SSet.{u}) :=
   quasicategoryCoreLift g (by
     intro e
     apply isInvertibleEdge_cocartesianSection_of_vertex_cover p a D i hi
@@ -57,7 +57,7 @@ def cocartesianSectionCoreLift_of_vertex_cover
     have hh := congrArg (fun k ↦ k.app (Opposite.op ⦋1⦌) e) (hs j)
     exact (isInvertibleEdge_congr
       (e := (edgeOfSimplex (g.app (Opposite.op ⦋1⦌) e)).map
-        ((truncation 2).map (kanCocartesianSectionsPre p (i j))))
+        ((truncation 2).map (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (i j))))
       (f := edgeOfSimplex ((s j).app (Opposite.op ⦋1⦌) e).val) hh).mpr
         (quasicategoryCore_edge _))
 

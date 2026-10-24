@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Spectra.SpectrumWhiteheadEquivalence
 public import SerrePositivity.KST.Spectra.CoherentNerve
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingFaceEndpoints
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-!
 概要：BF 写像空間の指定区間を、両端の対象を固定した Sp の辺の全族へ送る。

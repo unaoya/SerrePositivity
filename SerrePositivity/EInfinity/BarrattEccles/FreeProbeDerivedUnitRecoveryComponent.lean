@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitAmbientComponent
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
 
 /-!
 # 同じ導来単位二胞体の成分の回収

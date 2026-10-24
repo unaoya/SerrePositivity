@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 
 /-!
 # 通常の comma の元の可縮性から nerve の余終性への接続
@@ -44,7 +44,7 @@ lemma nerveMap_isLeftCofinal_of_weaklyContractible_comma
   have hb : nerveVertex d = b := ComposableArrows.ext₀ rfl
   change IsWeaklyContractible (leftKanShape (nerveMap F) b)
   rw [← hb]
-  let e := kanNerveLeftKanShapeIso F d
+  let e := SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso F d
   exact (AnodyneWeakDetection.isWeakHomotopyEquivalence e.hom
     (inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map e.hom)))).weaklyContractible_iff.mp
       (h d)
@@ -66,7 +66,7 @@ lemma nerveMap_isLeftCofinal
 使われ方：全図式の comma の収縮先の弱可縮性。 -/
 lemma comma_isWeaklyContractible (hF : IsLeftCofinal (nerveMap F)) (d : D) :
     IsWeaklyContractible (nerve (CostructuredArrow F d)) := by
-  let e := kanNerveLeftKanShapeIso F d
+  let e := SerrePositivity.InfinityCategories.F1B.nerveLeftKanShapeIso F d
   exact (AnodyneWeakDetection.isWeakHomotopyEquivalence e.hom
     (inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map e.hom)))).weaklyContractible_iff.mpr
       (hF.slice_isWeaklyContractible (nerveVertex d))

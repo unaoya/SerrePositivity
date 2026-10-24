@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafValues
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace
 
 /-!
 概要：元の Yoneda 前層は、始対象を元の一点空間と同値な終対象へ送る。

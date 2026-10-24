@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronRelative
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-! # 核内の八面体比較関手の元の辺との照合
 

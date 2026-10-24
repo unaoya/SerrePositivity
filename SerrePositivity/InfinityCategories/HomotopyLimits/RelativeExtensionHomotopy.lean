@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
 
 /-!

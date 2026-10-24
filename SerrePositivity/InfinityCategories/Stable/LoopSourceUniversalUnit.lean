@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
 public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
-public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaInitialFromMapping
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaInitialFromMapping
 /-!
 概要：loop 始点評価の逆による実随伴と comma の普遍単位。
 方針：元の同値を三角式付き随伴へ移し、全写像空間の単位条件を使う。

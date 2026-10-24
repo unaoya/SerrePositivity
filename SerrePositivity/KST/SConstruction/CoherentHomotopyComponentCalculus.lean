@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomotopyComposition
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-! # Coherent な円柱と実三角形の成分の計算

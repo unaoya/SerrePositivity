@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.NerveULiftHom
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopyComponent
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
 public import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
@@ -59,7 +59,7 @@ lemma recover (F : C ⥤ D) :
 def homotopy {F G : C ⥤ D} (η : F ⟶ G) : SSet.Homotopy (nerveMap F) (nerveMap G) :=
   stableHomotopyRetarget
     (HomotopyClasses.postHomotopy (down D)
-      (functorHomotopyPrecomp (F1B.kanNerveNatTransHomotopy (liftedNatTrans η)) (up C)))
+      (functorHomotopyPrecomp (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans η)) (up C)))
     (recover F) (recover G)
 
 lemma up_vertex (i : C) : (up C).app (Opposite.op ⦋0⦌) (nerveVertex i) =
@@ -75,10 +75,10 @@ lemma down_mk₁ {i j : ULiftHom.{u + 1} D} (f : i ⟶ j) :
 lemma homotopy_component {F G : C ⥤ D} (η : F ⟶ G) (i : C) :
     (simplicialHomotopyVertexEdge (homotopy η) (nerveVertex i)).edge =
       (nerve.edgeMk (η.app i)).edge := by
-  let H := F1B.kanNerveNatTransHomotopy (liftedNatTrans η)
+  let H := SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans η)
   have hp := homotopyComponent_precomp_edge H (up C) (nerveVertex i)
   rw [up_vertex] at hp
-  have hc := hp.trans (F1B.kanNerveNatTransHomotopy_component
+  have hc := hp.trans (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy_component
     (liftedNatTrans η) (ULiftHom.objUp i))
   have h := congrArg ((down D).app (Opposite.op ⦋1⦌)) hc
   change (down D).app (Opposite.op ⦋1⦌)

@@ -31,7 +31,7 @@ lemma walkingEquivalenceRestriction_lifting {A B X : SSet.{u}} [Quasicategory X]
     rw [internalHomFlipHomEquiv_pre_app, internalHomFlipHomEquiv_pre] at ht
     exact ht.symm
   obtain ⟨l, hl, hr⟩ := walkingEquivalence_relative_extension ((pre i).app X)
-    (F1B.kanEquivalenceLifting_pre i) V (equivalencePath_flip_invertible v) U h
+    (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre i) V (equivalencePath_flip_invertible v) U h
   let r := (internalHomFlipHomEquiv B walkingEquivalence X).symm l
   refine CommSq.HasLift.mk' { l := r, fac_left := ?_, fac_right := ?_ }
   · apply (internalHomFlipHomEquiv A walkingEquivalence X).injective

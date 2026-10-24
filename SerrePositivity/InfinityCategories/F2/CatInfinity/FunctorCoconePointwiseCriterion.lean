@@ -32,16 +32,16 @@ lemma isColimitCone_functor_of_pointwise {J K C : SSet.{u}} [Quasicategory C]
       IsColimitCone (F1B.kanPostcomposeCocone (evaluateFunctorAt k) c)) :
     IsColimitCone c := by
   let e := HomotopyLimits.oppositeInternalHomIso K C
-  apply (F1B.kanIsColimitCone_iff_reverseCone c).2
-  apply ((qCatEquivalenceOfIso e).isLimitCone_iff (F1B.kanCoconeReverseCone c)).2
+  apply (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).2
+  apply ((qCatEquivalenceOfIso e).isLimitCone_iff (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)).2
   apply isLimitCone_of_pointwise
   intro k'
   obtain ⟨k, rfl⟩ := SSet.opObjEquiv.symm.surjective k'
   apply (isLimitCone_iff_of_cone_val_eq _ _ ?_).2
     ((isLimitCone_reverse_postcomp_iff c (evaluateFunctorAt k)).2 (hc k))
-  change ((F1B.kanCoconeReverseCone c).val ≫ e.hom) ≫
+  change ((SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ e.hom) ≫
     evaluateFunctorAt (SSet.opObjEquiv.symm k) =
-      (F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map (evaluateFunctorAt k)
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map (evaluateFunctorAt k)
   rw [Category.assoc]
   change _ ≫ (HomotopyLimits.oppositeInternalHomIso K C).hom ≫
     evaluateFunctorAt (SSet.opObjEquiv.symm k) = _

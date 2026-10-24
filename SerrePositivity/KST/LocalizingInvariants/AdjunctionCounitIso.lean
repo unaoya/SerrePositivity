@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Adjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 
 /-!
 概要：随伴の余単位の可逆性を h Fun の表示から実二胞体へ戻す。

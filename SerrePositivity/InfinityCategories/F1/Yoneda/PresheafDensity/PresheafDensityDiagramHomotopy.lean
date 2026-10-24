@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CurryJointHomotopy
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityTransformation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.ElementsDiagram
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の小さい Yoneda 図式から、元の F の定値図式への一つの自然変換を得る。

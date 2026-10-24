@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeDiagramKernel
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 
 /-! # 核上の相対図式の弱可縮性
 

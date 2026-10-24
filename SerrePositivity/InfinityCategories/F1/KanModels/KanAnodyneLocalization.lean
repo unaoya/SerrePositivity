@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
 
 /-!

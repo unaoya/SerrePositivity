@@ -57,7 +57,7 @@ lemma cartesianHomotopy_extend {A D E B : SSet.{u}} (p : E ⟶ B) [CartesianFibr
       ∀ x : D _⦋0⦌, IsCartesianEdge p
         (F.app (Opposite.op ⦋1⦌)
           (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)) := by
-  have := F1B.kanCartesianFibration_op_toCocartesianHornFibration p
+  have := SerrePositivity.InfinityCategories.F1B.cartesianFibration_op_toCocartesianHornFibration p
   have : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor
   have hm : Mono (SSet.opFunctor.map i) := inferInstance
   have h0 : prismEndpoint 0 A.op ≫ reversePrism H =

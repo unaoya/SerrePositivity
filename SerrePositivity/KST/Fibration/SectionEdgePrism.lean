@@ -16,8 +16,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 同じ全 section を、指定した始域の実辺に沿って同時に評価する。 -/
 def sectionEdgePrism {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (e : Δ[1] ⟶ A) :
-    (Δ[1] : SSet.{u}) ⊗ kanCocartesianSections p a ⟶ E :=
-  uncurry (kanCocartesianSectionsι p a ≫
+    (Δ[1] : SSet.{u}) ⊗ SerrePositivity.InfinityCategories.cocartesianSections p a ⟶ E :=
+  uncurry (SerrePositivity.InfinityCategories.cocartesianSectionsι p a ≫
     vertexFiberι ((ihom A).map p) (functorVertex a) ≫ (pre e).app E)
 
 /-- 元の両端評価は、全 section 上の同じ prism の端点そのもの。 -/
@@ -36,7 +36,7 @@ theorem sectionEdgePrism_projection {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ 
     sectionEdgePrism p a e ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ e ≫ a := by
   unfold sectionEdgePrism
   rw [← uncurry_natural_right]
-  have hp : (kanCocartesianSectionsι p a ≫
+  have hp : (SerrePositivity.InfinityCategories.cocartesianSectionsι p a ≫
       vertexFiberι ((ihom A).map p) (functorVertex a) ≫ (pre e).app E) ≫
         (ihom (Δ[1] : SSet.{u})).map p =
       SSet.const (functorVertex (e ≫ a)) := by

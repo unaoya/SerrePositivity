@@ -68,7 +68,7 @@ lemma exists_cocartesianFactorizationTriangle {E B : SSet.{u}} [Quasicategory B]
     rw [ht₂]
     exact hac
   refine ⟨t, sq.fac_right, ht₁, htc, ?_⟩
-  apply kanIsCocartesianEdge_triangle_second_of_first_long t p htc
+  apply SerrePositivity.InfinityCategories.isCocartesianEdge_triangle_second_of_first_long t p htc
   rw [ht₁, Equiv.apply_symm_apply]
   exact he
 

@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber
 public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
-public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.CofinalVertexFiberPullback
-public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalVertexFiberPullback
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-! # 屋根の左ファイブレーションの終対象 fiber の cofinality

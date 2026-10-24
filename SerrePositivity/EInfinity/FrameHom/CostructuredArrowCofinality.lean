@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.KanNerveLeftKanShapeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 
 /-!
 # 元の分解の余終性を固定右脚の costructured arrow へ移す
@@ -34,7 +34,7 @@ variable {K L C : Type u} [Category.{u} K] [Category.{u} L] [Category.{u} C]
 使われ方：分解の余終性の底変換。 -/
 lemma costructuredArrowProjection_rightFibration (Q : L ⥤ C) (V : C) :
     RightFibration (nerveMap (CostructuredArrow.proj Q V)) := by
-  exact ⟨rightFibrations.of_isPullback (kanNerveLeftKanShape_isPullback Q V).flip
+  exact ⟨rightFibrations.of_isPullback (SerrePositivity.InfinityCategories.F1B.nerveLeftKanShape_isPullback Q V).flip
     (RightFibration.mem (p := sliceOverProjection (nervePoint V)))⟩
 
 /-- 概要：元の固定右脚の比較の nerve は分解図式の引き戻し（Low 命題 3.7）。
@@ -45,12 +45,12 @@ lemma costructuredArrowPre_isPullback (P : K ⥤ L) (Q : L ⥤ C) (V : C) :
     IsPullback (nerveMap (CostructuredArrow.pre P Q V))
       (nerveMap (CostructuredArrow.proj (P ⋙ Q) V))
       (nerveMap (CostructuredArrow.proj Q V)) (nerveMap P) := by
-  have h := kanNerveCostructuredArrow_isPullback (P ⋙ Q) V
+  have h := SerrePositivity.InfinityCategories.F1B.nerveCostructuredArrow_isPullback (P ⋙ Q) V
   change IsPullback (nerveMap (CostructuredArrow.pre P Q V) ≫
       nerveMap (CostructuredArrow.toOver Q V))
     (nerveMap (CostructuredArrow.proj (P ⋙ Q) V)) (nerveMap (Over.forget V))
     (nerveMap P ≫ nerveMap Q) at h
-  exact h.of_right (by rfl) (kanNerveCostructuredArrow_isPullback Q V)
+  exact h.of_right (by rfl) (SerrePositivity.InfinityCategories.F1B.nerveCostructuredArrow_isPullback Q V)
 
 /-- 概要：分解の余終性は各固定右脚の比較に保たれる（Low 命題 3.7）。
 方針：元の costructured arrow の right fibration に沿って分解を引き戻す。

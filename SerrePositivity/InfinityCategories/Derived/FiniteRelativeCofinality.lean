@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FiniteSliceWeakContractibility
-public import SerrePositivity.InfinityCategories.F1B.KanSliceIdentityTerminal
-public import SerrePositivity.InfinityCategories.F1B.QuillenALeft
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 
 /-! # 有限対充填からの cofinality と弱同値
 
@@ -20,7 +20,7 @@ lemma HasFiniteHomotopyRelativeFillers.isLeftCofinal {E Q : SSet.{u}} [Quasicate
   apply isLeftCofinal_of_weaklyContractible_slices
   intro q
   exact hF.weaklyContractiblePullback (sliceOverProjection (SSet.yonedaEquiv.symm q))
-    (F1B.kanSliceIdentityCone_isTerminalVertex q)
+    (SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex q)
 
 /-- 有限対充填条件は、全 Kan 標的で検査する元の弱ホモトピー同値性を与える。 -/
 lemma HasFiniteHomotopyRelativeFillers.isWeakHomotopyEquivalence

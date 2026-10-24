@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UniverseCocartesianFibration
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityRelativeFamilyImage
-public import SerrePositivity.InfinityCategories.F1B.KanGlobalColimitFiberAssembly
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalColimitFiberAssembly
 
 /-!
 概要：元の weighted 密度図式の全 fiber の余極限を、一つの coherent 相対 join 図式へ束ねる。

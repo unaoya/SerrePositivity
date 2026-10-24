@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
-public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
 /-!
 概要：区間写像空間の端点輸送と、同じ実辺による標準後合成を比較する。
 方針：同じ実辺の回収と標準比較の反転を、全パラメータの随伴判定へ渡す。

@@ -30,19 +30,19 @@ lemma isColimitCone_tensor_of_components {J X Y : SSet.{u}}
   have : Quasicategory (X ⊗ Y) := quasicategory_tensor X Y
   have : Quasicategory (X.op ⊗ Y.op) := quasicategory_tensor X.op Y.op
   let e := (opTensorIso X Y).symm
-  apply (F1B.kanIsColimitCone_iff_reverseCone c).2
-  apply ((qCatEquivalenceOfIso e).isLimitCone_iff (F1B.kanCoconeReverseCone c)).2
+  apply (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).2
+  apply ((qCatEquivalenceOfIso e).isLimitCone_iff (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)).2
   apply isLimitCone_tensor_of_components
   · apply (isLimitCone_iff_of_cone_val_eq _ _ ?_).2
       ((isLimitCone_reverse_postcomp_iff c (fst X Y)).2 hx)
-    change ((F1B.kanCoconeReverseCone c).val ≫ e.hom) ≫ fst X.op Y.op =
-      (F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map (fst X Y)
+    change ((SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ e.hom) ≫ fst X.op Y.op =
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map (fst X Y)
     have he : e.hom ≫ fst X.op Y.op = SSet.opFunctor.map (fst X Y) := rfl
     rw [Category.assoc, he]
   · apply (isLimitCone_iff_of_cone_val_eq _ _ ?_).2
       ((isLimitCone_reverse_postcomp_iff c (snd X Y)).2 hy)
-    change ((F1B.kanCoconeReverseCone c).val ≫ e.hom) ≫ snd X.op Y.op =
-      (F1B.kanCoconeReverseCone c).val ≫ SSet.opFunctor.map (snd X Y)
+    change ((SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ e.hom) ≫ snd X.op Y.op =
+      (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c).val ≫ SSet.opFunctor.map (snd X Y)
     have he : e.hom ≫ snd X.op Y.op = SSet.opFunctor.map (snd X Y) := rfl
     rw [Category.assoc, he]
 

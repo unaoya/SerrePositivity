@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence

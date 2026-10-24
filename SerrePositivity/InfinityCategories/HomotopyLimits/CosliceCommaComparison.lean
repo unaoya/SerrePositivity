@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
-public import SerrePositivity.InfinityCategories.F1B.KanUnitCommaFiberIntervalIso
-public import SerrePositivity.InfinityCategories.F1B.VertexFiberBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberExtension
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 
 /-!
 概要：join 型の coslice の底変換から、始点固定の区間型 comma への標準比較。
@@ -51,7 +51,7 @@ def cosliceCommaComparison {X Y : SSet.{u}} (G : Y ⟶ X) (x : X _⦋0⦌) :
 
 /-- 標準比較は元の標的図式を厳密に保持する。 -/
 lemma cosliceCommaComparison_projection {X Y : SSet.{u}} (G : Y ⟶ X) (x : X _⦋0⦌) :
-    cosliceCommaComparison G x ≫ F1B.kanUnitCommaFiberProjection G x =
+    cosliceCommaComparison G x ≫ SerrePositivity.InfinityCategories.F1B.unitCommaFiberProjection G x =
       pullback.snd (sliceUnderProjection (SSet.yonedaEquiv.symm x)) G :=
   unitCommaFiberCurry_target G x _ _
 

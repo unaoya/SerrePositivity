@@ -43,7 +43,7 @@ lemma fromD_mapping_equivalence (x : D.obj _⦋0⦌)
     (y : (laxCategory p q).obj _⦋0⦌) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap (laxSnd p q).hom
       ((fromD p q).app (Opposite.op ⦋0⦌) x) y) :=
-  F1B.kanPinchedHomMap_equivalence_of_initialBoundary _ _ _ (fromD_initialBoundary p q x)
+  SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary _ _ _ (fromD_initialBoundary p q x)
 
 /-- 単位は fromD_snd の厳密な恒等から選ぶ、元の両関手の実随伴。 -/
 def fromDAdjunction : QCatAdjunction (fromD p q) (laxSnd p q).hom :=

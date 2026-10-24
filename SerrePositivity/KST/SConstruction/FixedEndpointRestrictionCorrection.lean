@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceFibration
 public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 固定端点の変換を単射部分上の指定した辺へ補正する
 概要：部分上で同じホモトピー圏の射を表す変換へ、全体の変換を厳密に補正する。

@@ -1,0 +1,7 @@
+--- a/scripts/audit_bhatt_scholze_refactoring.lean
++++ b/scripts/audit_bhatt_scholze_refactoring.lean
+@@ -829,2 +829,2 @@
+-local notation "ψ" => RingHom.comp (Ideal.Quotient.mk I)
+-  (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
++local notation "ψ" => (RingHom.comp (Ideal.Quotient.mk I)
++  (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d)) : L →+* L ⧸ I)

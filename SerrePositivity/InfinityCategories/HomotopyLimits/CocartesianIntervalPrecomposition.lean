@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeCosliceFamilySquare
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
-public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.SquareComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.SquareComposition
 
 /-!
 概要：区間を被覆する coCartesian 辺による前合成は、区間写像空間のホモトピー同値。

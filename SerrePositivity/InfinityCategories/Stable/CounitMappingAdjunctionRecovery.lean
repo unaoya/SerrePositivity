@@ -24,7 +24,7 @@ lemma qcatAdjunctionOfCounitIntervalCondition_counitHom {X Y : SSet.{u}}
           (Truncated.HomotopyCategory.homMk (simplicialHomotopyVertexEdge H y).toTruncated))) :
     (qcatAdjunctionOfCounitIntervalCondition H h).counitHom =
       Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) := by
-  apply (F1B.kanFunctorOppositeHomEquiv (G ≫ F) (𝟙 Y)).injective
+  apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y)).injective
   unfold qcatAdjunctionOfCounitIntervalCondition
   rw [qcatAdjunctionOfOpposite_counitHom,
     qcatAdjunctionOfUnitMappingSpaceCondition_unitHom]

@@ -51,10 +51,10 @@ lemma cocartesianIntervalOuterHorn_isPullback :
 
 /-- 元の第一三角形への同じ制限写像は、単射な同値を右に持ち上げる。 -/
 lemma kanEquivalenceLifting_cocartesianIntervalCompositionTriangleMap :
-    F1B.KanEquivalenceLifting (cocartesianIntervalCompositionTriangleMap F G v) := by
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (cocartesianIntervalCompositionTriangleMap F G v) := by
   intro A B i hi he
   letI : HasLiftingProperty i ((pre (horn 2 2).ι).app CatInfinity.{u}) :=
-    F1B.kanEquivalenceLifting_pre (horn 2 2).ι i hi he
+    SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre (horn 2 2).ι i hi he
   exact (cocartesianIntervalOuterHorn_isPullback F G v).hasLiftingProperty i
 
 /-- 同じ可縮な合成三角形空間への、元の固定成分 fiber の制限写像は Kan fibration。 -/

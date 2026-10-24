@@ -21,16 +21,16 @@ variable {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
 
 def restoredFunctorIso (e : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.map F)) :
     FunctorIso F G where
-  hom := (kanFunctorOppositeHomEquiv F G).symm e.hom
-  inv := (kanFunctorOppositeHomEquiv G F).symm e.inv
+  hom := (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G).symm e.hom
+  inv := (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G F).symm e.inv
   hom_inv_id := by
-    apply (kanFunctorOppositeHomEquiv F F).injective
-    rw [kanFunctorOppositeHomEquiv_comp, oppositeFunctorHom_id]
+    apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F).injective
+    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, oppositeFunctorHom_id]
     simp only [Equiv.apply_symm_apply]
     exact e.inv_hom_id
   inv_hom_id := by
-    apply (kanFunctorOppositeHomEquiv G G).injective
-    rw [kanFunctorOppositeHomEquiv_comp, oppositeFunctorHom_id]
+    apply (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G).injective
+    rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, oppositeFunctorHom_id]
     simp only [Equiv.apply_symm_apply]
     exact e.hom_inv_id
 

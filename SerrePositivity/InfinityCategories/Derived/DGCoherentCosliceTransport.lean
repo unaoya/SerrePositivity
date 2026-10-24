@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
-public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
+public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 /-!
 概要：同じ豊穣後合成が同値なら、coherent nerve の実 coslice 輸送も同値。
 方針：指定閉射を二点の実通常図式に束ね、既存の weighted coslice prism と両 fiber 比較を使う。
@@ -35,7 +35,7 @@ lemma dgCoherentCosliceTransport_isQCatEquivalence_of_sHom
   have hc : IsQCatEquivalence
       ((HomotopyLimits.simplicialHomDiagram F x ⋙ SSet.opFunctor).map g) := by
     change IsQCatEquivalence (SSet.opFunctor.map (eHomWhiskerLeft SSet x f))
-    exact F1B.kanIsQCatEquivalence_op hf
+    exact SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op hf
   have hu := (isQCatEquivalence_ulift_iff_of_kan.{u, v}
     ((HomotopyLimits.simplicialHomDiagram F x ⋙ SSet.opFunctor).map g)).mpr hc
   have hy := (HomotopyLimits.coherentCosliceFiberComparison_homotopyEquivalence

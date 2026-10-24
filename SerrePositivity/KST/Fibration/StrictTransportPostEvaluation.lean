@@ -32,8 +32,8 @@ theorem strictTransportPostToLeftFibration_evaluate_ambient
     (p : E ⟶ nerve I) (q : T ⟶ nerve I) [LeftFibration q]
     (f : E ⟶ T) (hf : f ≫ q = p) (c : I) :
     (strictTransportPostToLeftFibration p q f hf).app c ≫
-      kanCocartesianStrictTransportEvaluate q c ≫ vertexFiberι q (nerveVertex c) =
-      kanCocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) ≫ f := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate q c ≫ vertexFiberι q (nerveVertex c) =
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) ≫ f := by
   rw [strictTransportEvaluate_ambient, ← Category.assoc,
     strictTransportEvaluate_ambient]
   exact sectionPostToLeftFibration_evaluate p q f hf _ _
@@ -44,8 +44,8 @@ theorem strictTransportPostToLeftFibration_evaluate
     (p : E ⟶ nerve I) (q : T ⟶ nerve I) [LeftFibration q]
     (f : E ⟶ T) (hf : f ≫ q = p) (c : I) :
     (strictTransportPostToLeftFibration p q f hf).app c ≫
-      kanCocartesianStrictTransportEvaluate q c =
-      kanCocartesianStrictTransportEvaluate p c ≫ vertexFiberMap p q f hf (nerveVertex c) := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate q c =
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberMap p q f hf (nerveVertex c) := by
   apply vertexFiber_hom_ext q (nerveVertex c)
   rw [Category.assoc, strictTransportPostToLeftFibration_evaluate_ambient,
     Category.assoc, vertexFiberMap_ι]

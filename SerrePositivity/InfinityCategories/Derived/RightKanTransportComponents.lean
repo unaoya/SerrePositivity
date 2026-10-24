@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
-public import SerrePositivity.InfinityCategories.F1B.KanExtension
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
 /-!
 概要：右 Kan 輸送の全錐ホモトピーの頂点・図式成分を、元の実単位成分と照合する。

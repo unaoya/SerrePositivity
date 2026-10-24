@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
-public import SerrePositivity.InfinityCategories.F1B.KanEquivalenceLifting
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLifting
 
 /-!
 概要：標準区間の二つの端点を指定する単射。

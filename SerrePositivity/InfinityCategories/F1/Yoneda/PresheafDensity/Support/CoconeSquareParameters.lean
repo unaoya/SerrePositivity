@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconePointHomSquare
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHomotopyEdges
 
 /-!
 概要：余錐の二つの時間と図式・Hom のパラメータを、標準三角形の入力の順へ並べる。

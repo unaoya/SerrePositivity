@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：Kan 複体の二頂点の Yoneda 族のホモトピーから実際の頂点同型を作る。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFunctorMapFromHom
-public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces
 
 /-!
 概要：反射の左関手は、右随伴の像を終点とする元の写像空間に同値を誘導する。
@@ -30,11 +30,11 @@ lemma reflectiveTargetIntervalMap_equivalence (x : X _⦋0⦌) (y : Y _⦋0⦌) 
 include a hG in
 lemma reflectiveTargetPinchedHomMap_equivalence (x : X _⦋0⦌) (y : Y _⦋0⦌) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap F x (G.app (Opposite.op ⦋0⦌) y)) := by
-  have h := (PinchedInterval.comparison_isQCatEquivalence x
+  have h := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x
     (G.app (Opposite.op ⦋0⦌) y)).comp
       (reflectiveTargetIntervalMap_equivalence a hG x y).isQCatEquivalence
   rw [← pinchedIntervalComparison_naturality] at h
-  exact ((PinchedInterval.comparison_isQCatEquivalence (F.app (Opposite.op ⦋0⦌) x)
+  exact ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence (F.app (Opposite.op ⦋0⦌) x)
     (F.app (Opposite.op ⦋0⦌) (G.app (Opposite.op ⦋0⦌) y))).cancel_right h
   ).isSimplicialHomotopyEquivalence
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredBinaryDiagonal
-public import SerrePositivity.InfinityCategories.F1B.InitialTerminalWeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 
 /-!
 概要：非空な ∞ 圏の二項余積の存在から sifted 性を得る。

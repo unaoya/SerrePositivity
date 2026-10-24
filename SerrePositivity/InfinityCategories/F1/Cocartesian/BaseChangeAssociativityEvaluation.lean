@@ -22,12 +22,12 @@ variable {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C]
 
 /-- 同じ結合同型の展開は、二重 pullback の元の全空間への射影を保持する。 -/
 lemma cocartesianBaseChangeAssociativityComponent_uncurry_snd (a : A) {T : SSet.{u}}
-    (s : T ⟶ kanCocartesianStrictTransport
+    (s : T ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a) :
     relativeFunctorUncurry ((s ≫ (cocartesianBaseChangeAssociativityComponent p l k a).hom) ≫
-      kanCocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (pullback.fst (nerveMap (l ⋙ k)) p)
         (nerveMap (Under.forget a))) ≫ pullback.snd (nerveMap (l ⋙ k)) p =
-    relativeFunctorUncurry (s ≫ kanCocartesianSectionsι
+    relativeFunctorUncurry (s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) (nerveMap (Under.forget a))) ≫
       pullback.snd (nerveMap l) (pullback.fst (nerveMap k) p) ≫ pullback.snd (nerveMap k) p := by
   have hd := cocartesianSectionsPullbackIso_hom_uncurry
@@ -38,7 +38,7 @@ lemma cocartesianBaseChangeAssociativityComponent_uncurry_snd (a : A) {T : SSet.
     (cocartesianBaseChangeComposite_isPullback p l k)
     (nerveMap (Under.forget a)) (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) rfl s
   have ht := congrArg (fun z ↦ relativeFunctorUncurry
-    ((s ≫ z) ≫ kanCocartesianSectionsι p
+    ((s ≫ z) ≫ SerrePositivity.InfinityCategories.cocartesianSectionsι p
       (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k))))
     (cocartesianBaseChangeAssociativityComponent_iso p l k a)
   simpa only [Category.assoc] using hd.symm.trans (ht.trans hc)
@@ -46,7 +46,7 @@ lemma cocartesianBaseChangeAssociativityComponent_uncurry_snd (a : A) {T : SSet.
 /-- 同じ結合同型の評価は、任意の次数の section の同じ全空間での評価に一致する。 -/
 lemma cocartesianBaseChangeAssociativityComponent_apply_snd (a : A)
     {n : SimplexCategoryᵒᵖ}
-    (s : (kanCocartesianStrictTransport
+    (s : (SerrePositivity.InfinityCategories.cocartesianStrictTransport
       (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a).obj n)
     (x : (nerve (Under a)).obj n) :
     (pullback.snd (nerveMap (l ⋙ k)) p).app n

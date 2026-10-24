@@ -23,7 +23,7 @@ def liftedCocone (c : Cocone F) : Cocone (lifted F) where
   ι := liftedNatTrans c.ι
 
 def coconeJoin (c : Cocone F) : join (nerve I) (Δ[0] : SSet.{u + 1}) ⟶ nerve C :=
-  joinMap (up I) (𝟙 Δ[0]) ≫ (F1B.kanNerveCoconeEquiv (liftedCocone c)).val ≫ down C
+  joinMap (up I) (𝟙 Δ[0]) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val ≫ down C
 
 lemma coconePrism_eq_homotopy (c : Cocone F) :
     (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ rightMappingSpacePrism (nerve I) ≫
@@ -33,12 +33,12 @@ lemma coconePrism_eq_homotopy (c : Cocone F) :
       (β_ (nerve (ULiftHom.{u + 1} I)) (Δ[1] : SSet.{u + 1})).hom =
       (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ (Δ[1] ◁ up I) := rfl
   change (β_ (nerve I) (Δ[1] : SSet.{u + 1})).hom ≫ rightMappingSpacePrism (nerve I) ≫
-      (joinMap (up I) (𝟙 Δ[0]) ≫ (F1B.kanNerveCoconeEquiv (liftedCocone c)).val ≫ down C) =
+      (joinMap (up I) (𝟙 Δ[0]) ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val ≫ down C) =
       (up I ▷ (Δ[1] : SSet.{u + 1})) ≫
-        (F1B.kanNerveNatTransHomotopy (liftedNatTrans c.ι)).h ≫ down C
-  have hc : (F1B.kanNerveNatTransHomotopy (liftedNatTrans c.ι)).h =
+        (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans c.ι)).h ≫ down C
+  have hc : (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (liftedNatTrans c.ι)).h =
       (β_ (nerve (ULiftHom.{u + 1} I)) (Δ[1] : SSet.{u + 1})).hom ≫
-        rightMappingSpacePrism _ ≫ (F1B.kanNerveCoconeEquiv (liftedCocone c)).val := by
+        rightMappingSpacePrism _ ≫ (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (liftedCocone c)).val := by
     exact (FrameHom.nerveCoconePrism_eq_natTrans (lifted F) (liftedCocone c)).symm
   rw [hc]
   simp only [← Category.assoc]

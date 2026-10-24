@@ -22,11 +22,11 @@ def scaffoldCocartesianKanClassificationIso :
 
 /-- 置換単位上の同じ係数点を、同じ恒等射評価点の pointed 復元像へ送る。 -/
 theorem scaffoldCocartesianKanClassificationIso_pointHom (i : I)
-    (v : ((kanCocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
+    (v : ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i) _⦋0⦌) :
     cosliceFiberPointHom
       ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
         ((F2.continuousKanReplacementUnit.app
-          ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
+          ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v)) ≫
       (eqToIso (congrArg HomotopyCategory.mk
         (kanDiagramCoherentNerve_vertex (cocartesianKanDiagram p) i))).inv ≫
       functorHomEvaluate (scaffoldCocartesianKanClassificationIso p).hom
@@ -46,7 +46,7 @@ theorem scaffoldCocartesianKanClassificationIso_pointHom (i : I)
   let x := cosliceFiberPointHom
     ((pointedSpaceFiberVertexEquiv ((cocartesianKanDiagram p).obj i)).symm
       ((F2.continuousKanReplacementUnit.app
-        ((kanCocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
+        ((SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p).obj i)).app (Opposite.op ⦋0⦌) v))
   let a := x ≫ A.inv ≫ functorHomEvaluate (leftCocartesianKanComparisonIso p).hom z
   have hl := leftCocartesianKanComparisonValueIso_pointHom p i v
   simp only [leftCocartesianKanComparisonValueIso, kanDiagramValueIso, Iso.trans_hom,

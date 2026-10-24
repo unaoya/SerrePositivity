@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianScaffold
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTransportUnit
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianSectionFamilies
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionFamilies
 
 /-!
 概要：係数図式から weighted nerve の cocartesian strict transport への自然な比較。
@@ -43,8 +43,8 @@ lemma tautScaffold_underEvaluation_isCocartesian {C : Type u} [Category.{u} C]
 /-- 係数の値を、同じ taut scaffold が定める cocartesian section の族へ写す。 -/
 def weightedNerveCocartesianUnitComponent {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] (c : C) :
-    F.obj c ⟶ kanCocartesianStrictTransport (weightedNerveProjection F) c :=
-  kanCocartesianSectionsCurry
+    F.obj c ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransport (weightedNerveProjection F) c :=
+  SerrePositivity.InfinityCategories.cocartesianSectionsCurry
     (simplicialReplacementUnderEvaluation F c ≫ tautScaffold F) (by
       rw [Category.assoc, tautScaffold_projection,
         simplicialReplacementUnderEvaluation_projection])
@@ -54,7 +54,7 @@ def weightedNerveCocartesianUnitComponent {C : Type u} [Category.{u} C]
 lemma weightedNerveCocartesianUnitComponent_ι {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] (c : C) :
     weightedNerveCocartesianUnitComponent F c ≫
-      kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) =
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) =
         (weightedNerveTransportUnit F).app c := by
   apply SSet.hom_ext
   intro n
@@ -70,31 +70,31 @@ lemma weightedNerveCocartesianUnitComponent_ι {C : Type u} [Category.{u} C]
 /-- 元の係数図式から cocartesian strict transport への図式全体の自然変換。 -/
 def weightedNerveCocartesianTransportUnit {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] :
-    F ⟶ kanCocartesianStrictTransportDiagram (weightedNerveProjection F) where
+    F ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (weightedNerveProjection F) where
   app := weightedNerveCocartesianUnitComponent F
   naturality c d f := by
     apply (cancel_mono
-      (kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d)))).1
+      (SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d)))).1
     rw [Category.assoc, weightedNerveCocartesianUnitComponent_ι]
     let i : Over.mk (nerveMap (Under.forget d)) ⟶
         Over.mk (nerveMap (Under.forget c)) :=
       Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f)
-    have hpre := kanCocartesianSectionsPre_ι (weightedNerveProjection F) i
-    change kanCocartesianSectionsPre (weightedNerveProjection F) i ≫
-        kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d)) =
-      kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) ≫
+    have hpre := SerrePositivity.InfinityCategories.cocartesianSectionsPre_ι (weightedNerveProjection F) i
+    change SerrePositivity.InfinityCategories.cocartesianSectionsPre (weightedNerveProjection F) i ≫
+        SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d)) =
+      SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) ≫
         (leftStrictTransportDiagram (weightedNerveProjection F)).map f at hpre
     calc
       _ = (weightedNerveTransportUnit F).app c ≫
           (leftStrictTransportDiagram (weightedNerveProjection F)).map f :=
         (weightedNerveTransportUnit F).naturality f
       _ = (weightedNerveCocartesianUnitComponent F c ≫
-          kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c))) ≫
+          SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c))) ≫
           (leftStrictTransportDiagram (weightedNerveProjection F)).map f := by
         rw [weightedNerveCocartesianUnitComponent_ι]
       _ = weightedNerveCocartesianUnitComponent F c ≫
-          (kanCocartesianSectionsPre (weightedNerveProjection F) i ≫
-            kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d))) := by
+          (SerrePositivity.InfinityCategories.cocartesianSectionsPre (weightedNerveProjection F) i ≫
+            SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget d))) := by
         rw [Category.assoc, hpre]
       _ = _ := (Category.assoc _ _ _).symm
 
@@ -102,10 +102,10 @@ def weightedNerveCocartesianTransportUnit {C : Type u} [Category.{u} C]
 lemma weightedNerveCocartesianTransportUnit_evaluate {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] (c : C) :
     (weightedNerveCocartesianTransportUnit F).app c ≫
-      kanCocartesianStrictTransportEvaluate (weightedNerveProjection F) c =
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate (weightedNerveProjection F) c =
         weightedNerveFiberMap F c := by
   change weightedNerveCocartesianUnitComponent F c ≫
-    (kanCocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) ≫ _) = _
+    (SerrePositivity.InfinityCategories.cocartesianSectionsι (weightedNerveProjection F) (nerveMap (Under.forget c)) ≫ _) = _
   rw [← Category.assoc, weightedNerveCocartesianUnitComponent_ι]
   exact weightedNerveTransportUnit_evaluate F c
 
@@ -113,7 +113,7 @@ lemma weightedNerveCocartesianTransportUnit_evaluate {C : Type u} [Category.{u} 
 lemma weightedNerveCocartesianTransportUnit_isQCatEquivalence {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] (c : C) :
     IsQCatEquivalence ((weightedNerveCocartesianTransportUnit F).app c) := by
-  apply (kanCocartesianStrictTransportEvaluate_isQCatEquivalence
+  apply (SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate_isQCatEquivalence
     (weightedNerveProjection F) c).cancel_right
   rw [weightedNerveCocartesianTransportUnit_evaluate]
   exact (qCatEquivalenceOfIso (weightedNerveFiberIso F c)).isQCatEquivalence

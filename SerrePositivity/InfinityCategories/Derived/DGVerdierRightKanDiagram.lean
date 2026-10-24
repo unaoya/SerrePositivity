@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverEvaluation
 public import SerrePositivity.InfinityCategories.Derived.CosliceHomotopyRealization
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 /-!
 概要：実 Verdier 分母の coherent な逆像図式を、商関手の実右 Kan 形状へ送る。
 方針：商内の全添字の評価同型を反転し、同じ全ホモトピーを coslice に持ち上げる。

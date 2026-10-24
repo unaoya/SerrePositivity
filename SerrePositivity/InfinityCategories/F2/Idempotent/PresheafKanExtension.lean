@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafLocalKanColimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseFullyFaithful
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
-public import SerrePositivity.InfinityCategories.F1B.KanLeftStrictExistence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftStrictExistence
 
 /-!
 概要：持ち上げた元の全部分圏包含に沿って、任意の元の前層図式を厳密に延長する。

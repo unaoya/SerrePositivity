@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialEvaluationFamilyExtension
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 public import Mathlib.CategoryTheory.Monoidal.Limits.Preserves
 

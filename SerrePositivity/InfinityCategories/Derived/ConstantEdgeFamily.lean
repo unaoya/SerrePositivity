@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
 
 /-!
 概要：一つの実辺の定数パラメータ族を、同じ実辺の定値関手への像に同定する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
 
 /-! 指定した全三辺を持つ具体的な二単体族を、そのまま関手合成三角形に curry する。 -/
 @[expose] public section

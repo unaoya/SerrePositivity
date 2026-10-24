@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 
 /-! # 指定した coherent な二胞体を、同じ小さい unstraightening の底上の実写像へ移す -/
 

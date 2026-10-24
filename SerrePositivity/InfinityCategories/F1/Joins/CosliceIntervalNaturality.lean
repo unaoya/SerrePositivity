@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
-public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorMap
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorMap
 
 /-!
 概要：coslice fiber と区間模型の比較の後合成に関する自然性。
@@ -68,9 +68,9 @@ lemma cosliceIntervalComparison_naturality {E F : SSet.{u}} (f : E ⟶ F) (x y :
 規約：比較射の逆の選択には依存しない。
 使われ方：Kerodon §4.6.5–4.6.6、右 pinched の自然性の再利用。 -/
 lemma pinchedInterval_comparison_eq {E : SSet.{u}} (x y : E _⦋0⦌) :
-    PinchedInterval.comparison x y = pinchedHomToIntervalMappingSpace x y := by
+    SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y = pinchedHomToIntervalMappingSpace x y := by
   apply intervalMappingUncurry_injective
-  have hl := PinchedInterval.comparison_uncurry (𝟙 (pinchedHom x y))
+  have hl := SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_uncurry (𝟙 (pinchedHom x y))
   have hr := pinchedHomToIntervalMappingSpace_uncurry (𝟙 (pinchedHom x y))
   simpa only [Category.id_comp] using hl.trans hr.symm
 

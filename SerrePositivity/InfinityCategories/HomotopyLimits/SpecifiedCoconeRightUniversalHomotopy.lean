@@ -91,11 +91,11 @@ lemma specifiedCoconeRightUniversalHomotopy_hom_arrow :
         (specifiedCoconeRightEndHomotopy hp p c hc dB dC hC y))) := by
   have h := colimitAttachmentUniversalHomCylinder_hom_arrow c hc g (j ≫ p)
     (coconePushoutBoundary_eq hp p) dC hC y
-  have hpre := kanFunctorHomotopy_precomp_hom_arrow _ _ h U
-  have hu := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have hpre := SerrePositivity.InfinityCategories.functorHomotopy_precomp_hom_arrow _ _ h U
+  have hu := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (specifiedCoconeRightUniversalHomotopy hp p c hc dB dC hC y) (functorHomotopyPrecomp H U)
     (by rw [specifiedCoconeRightUniversalHomotopy, homotopyEndpointTransport_raw])
-  have ho := kanFunctorHomotopy_hom_arrow_of_h_eq
+  have ho := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
     (specifiedCoconeRightEndHomotopy hp p c hc dB dC hC y)
     (functorHomotopyPrecomp
       (colimitAttachmentRestrictionHomCylinder c hc g (j ≫ p)

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F1B.HomotopyRepresentative
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：可逆とは限らない実関手変換と、前後合成による交換則を証明する。
 方針：元の二つの実辺の積の正方形を、全関手空間の合成へ写す。

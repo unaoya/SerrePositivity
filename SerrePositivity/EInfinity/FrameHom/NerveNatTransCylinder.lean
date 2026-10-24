@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveNatTransHomotopy
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopy
 
 /-!
 # 自然変換の元の円柱の全単体での評価
@@ -23,20 +23,20 @@ open SerrePositivity.InfinityCategories
 variable {C D : Type u} [Category.{u} C] [Category.{u} D] {F G : C ⥤ D}
 lemma nerveNatTransHomotopy_app (η : F ⟶ G) (n : SimplexCategoryᵒᵖ)
     (a : (nerve C).obj n) (t : (Δ[1] : SSet.{u}).obj n) :
-    (F1B.kanNerveNatTransHomotopy η).h.app n (a, t) =
+    (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy η).h.app n (a, t) =
       ((stdSimplex.objEquiv t).toOrderHom.monotone.functor.prod' a) ⋙
         Functor.uncurry.obj (ComposableArrows.mk₁ η) := by
   let T := (nerve (C ⥤ D)).map (stdSimplex.objEquiv t).op (ComposableArrows.mk₁ η)
   have h := ConcreteCategory.congr_hom (NatTrans.congr_app
-    (F1B.kanNerveFunctorCategoryIso_uncurry C D) n) (a.prod' T)
-  change (((F1B.kanNerveFunctorCategoryIso C D).hom.app n T).app n (𝟙 n)) a = _ at h
+    (SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso_uncurry C D) n) (a.prod' T)
+  change (((SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso C D).hom.app n T).app n (𝟙 n)) a = _ at h
   dsimp only [T] at h
-  rw [(F1B.kanNerveFunctorCategoryIso C D).hom.naturality_apply
+  rw [(SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso C D).hom.naturality_apply
     (stdSimplex.objEquiv t).op] at h
-  change (((F1B.kanNerveFunctorCategoryIso C D).hom.app (op ⦋1⦌)
+  change (((SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso C D).hom.app (op ⦋1⦌)
     (ComposableArrows.mk₁ η)).app n ((stdSimplex.objEquiv t).op ≫ 𝟙 n)) a = _ at h
   rw [Category.comp_id] at h
-  change (((F1B.kanNerveFunctorCategoryIso C D).hom.app (op ⦋1⦌)
+  change (((SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso C D).hom.app (op ⦋1⦌)
     (ComposableArrows.mk₁ η)).app n (stdSimplex.objEquiv t).op) a = _
   refine h.trans ?_
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_

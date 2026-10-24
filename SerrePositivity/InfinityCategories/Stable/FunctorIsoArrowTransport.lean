@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import Mathlib.CategoryTheory.Comma.Arrow
 /-!

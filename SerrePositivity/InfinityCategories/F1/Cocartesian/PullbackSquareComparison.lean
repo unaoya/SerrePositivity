@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackEdgeComparison
-public import SerrePositivity.InfinityCategories.F1B.KanFiberwiseHomCartesianFibration
-public import SerrePositivity.InfinityCategories.F1B.KanFinalHornPullbackExtension
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.FiberwiseHomCartesianFibration
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.FinalHornPullbackExtension
 
 /-!
 概要：任意の pullback 表示で、quasicategory の底上の cocartesian 辺の像を比較する。
@@ -31,7 +31,7 @@ lemma isCocartesianEdge_image_of_isPullback_of_quasicategory_base
   have he' : IsCocartesianEdge (k.hom ≫ pullback.snd p f) e := by
     rw [hk]
     exact he
-  have hc := kanIsCocartesianEdge_map_iso k (pullback.snd p f) e he'
+  have hc := SerrePositivity.InfinityCategories.isCocartesianEdge_map_iso k (pullback.snd p f) e he'
   have h := isCocartesianEdge_pullback_image_of_quasicategory_base p f
     (k.hom.app (Opposite.op ⦋1⦌) e) hc
   have hfst : (pullback.fst p f).app (Opposite.op ⦋1⦌)

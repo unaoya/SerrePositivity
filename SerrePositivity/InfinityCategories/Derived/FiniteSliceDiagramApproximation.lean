@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Derived.FiniteTerminalMappingCo
 public import SerrePositivity.InfinityCategories.Derived.RightFibrationHomotopyLift
 public import SerrePositivity.InfinityCategories.Derived.PullbackDiagramHomotopy
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # slice 型引き戻しの有限図式の錐への比較
 

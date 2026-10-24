@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianSectionsMixedHom_unit {B : SSet.{u}} {a b : Over B}
     (f : a ⟶ b) (p : Over B) :
     cocartesianRelativeFunctorIdentity p ≫ cocartesianSectionsMixedHom f p p =
-      curry' (kanCocartesianSectionsPre p.hom f) := by
+      curry' (SerrePositivity.InfinityCategories.cocartesianSectionsPre p.hom f) := by
   rw [cocartesianSectionsMixedHom, ← Category.assoc, cocartesianSectionsPostHom_id,
     ← curry'_id, curry'_ihom_map, Category.id_comp]
 
@@ -30,7 +30,7 @@ lemma cocartesianSectionsMixedCoreHom_unit {B : SSet.{u}} {a b : Over B}
     (f : a ⟶ b) (p : CocartesianFibrationCategory B) :
     eId SSet p ≫ cocartesianSectionsMixedCoreHom f p p =
       eHomEquiv SSet (show cocartesianSectionsQCatObject b p ⟶ cocartesianSectionsQCatObject a p
-        from kanCocartesianSectionsPre p.val.hom f) := by
+        from SerrePositivity.InfinityCategories.cocartesianSectionsPre p.val.hom f) := by
   apply (SSet.unitHomEquiv _).injective
   apply Subtype.ext
   exact congrArg (SSet.unitHomEquiv _) (cocartesianSectionsMixedHom_unit f p.val)

@@ -35,8 +35,8 @@ lemma cocartesianScaffoldPullbackMarkedPre_ι :
     cocartesianScaffoldPullbackMarkedPre p q a ≫
       markedCocartesianFunctorInclusion q
         (pullback.snd a.hom
-          (simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p)) ≫
-            simplicialReplacementProjection (kanCocartesianStrictTransportDiagram p))
+          (simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p)) ≫
+            simplicialReplacementProjection (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p))
         (cocartesianScaffoldPullbackMark p a) =
       markedCocartesianFunctorInclusion q (pullback.snd a.hom p ≫ p)
         {e | IsCocartesianEdge (pullback.fst a.hom p) e} ≫

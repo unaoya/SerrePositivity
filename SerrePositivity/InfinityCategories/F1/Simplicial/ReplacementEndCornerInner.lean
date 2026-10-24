@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerPrismBoundaryExtension
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInternalHomLifting
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInternalHomLifting
 
 /-!
 概要：比較四角形の終点側の比較の内ホーン充填。
@@ -170,16 +170,16 @@ lemma hasLiftingProperty_replacementSquareEndCorner {A B X Y T U : SSet.{u}}
 /-- 両縦射の前合成同値の持ち上げは、終点比較にも伝わる。 -/
 lemma kanEquivalenceLifting_replacementSquareEndCorner {A B X Y : SSet.{u}}
     [Quasicategory X] (u : A ⟶ X) (v : B ⟶ Y) (p : A ⟶ B) (q : X ⟶ Y)
-    (h : u ≫ q = p ≫ v) (hp : F1B.KanEquivalenceLifting p)
-    (hq : F1B.KanEquivalenceLifting q) :
-    F1B.KanEquivalenceLifting (replacementSquareEndCorner u v p q h) := by
+    (h : u ≫ q = p ≫ v) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
+    (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q) :
+    SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (replacementSquareEndCorner u v p q h) := by
   intro T U i hm hi
   have : Mono i := hm
   have := hp i hm hi
   have := kanEquivalenceLifting_equivalencePathι X i hm hi
   let r := Functor.PullbackObjObj.ofHasPullback internalHom (boundary 1).ι q
   exact hasLiftingProperty_replacementSquareEndCorner_of_lifting u v p q h i
-    (F1B.KanEquivalenceLifting.relativeInternalHom hq (boundary 1).ι r i hm hi)
+    (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.relativeInternalHom hq (boundary 1).ι r i hm hi)
 
 /-- 両縦射が inner fibration の比較四角形の終点比較も inner fibration。 -/
 instance replacementSquareEndCorner_innerFibration {A B X Y : SSet.{u}}

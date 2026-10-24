@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndContinuousLeftKan
 public import SerrePositivity.InfinityCategories.F2.Ind.ContinuousFunctorRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCanonicalMapping
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 
 /-!
 概要：小さい κ-filtered 余極限を保つ関手の元の Yoneda 制限射は充満忠実。

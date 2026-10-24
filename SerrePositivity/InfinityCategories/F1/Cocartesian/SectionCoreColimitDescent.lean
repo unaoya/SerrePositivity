@@ -20,36 +20,36 @@ namespace SerrePositivity.InfinityCategories
 variable {J : Type v} [Category.{w} J] [Small.{u} J]
   {T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [InnerFibration p]
   {D : J ⥤ Over B} (c : Cocone D) (hc : IsColimit ((Over.forget B).mapCocone c))
-  (s : ∀ j, T ⟶ (quasicategoryCore (kanCocartesianSections p (D.obj j).hom) : SSet.{u}))
+  (s : ∀ j, T ⟶ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom) : SSet.{u}))
   (hs : ∀ {j k} (f : j ⟶ k), s j =
-    s k ≫ quasicategoryCoreMap (kanCocartesianSectionsPre p (D.map f)))
+    s k ≫ quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (D.map f)))
 
 /-- core の貼り合わせの包含後は、元の section の族の貼り合わせそのもの。 -/
 lemma cocartesianSectionCoreFamilyColimitLift_ι :
     cocartesianSectionCoreFamilyColimitLift p c hc s hs ≫
-      (quasicategoryCore (kanCocartesianSections p c.pt.hom)).ι =
+      (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p c.pt.hom)).ι =
     cocartesianSectionFamilyColimitLift p c hc
-      (fun j ↦ s j ≫ (quasicategoryCore (kanCocartesianSections p (D.obj j).hom)).ι)
+      (fun j ↦ s j ≫ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)).ι)
       (cocartesianSectionCoreFamily_underlying_compatible p D s hs) :=
   cocartesianSectionCoreLift_of_vertex_cover_ι _ _ _ _ _ _ _ _
 
 /-- 貼った core の族は、各項上の元の core の族を厳密に回収する。 -/
 lemma cocartesianSectionCoreFamilyColimitLift_fac (j : J) :
     cocartesianSectionCoreFamilyColimitLift p c hc s hs ≫
-      quasicategoryCoreMap (kanCocartesianSectionsPre p (c.ι.app j)) = s j :=
+      quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (c.ι.app j)) = s j :=
   cocartesianSectionCoreLift_of_vertex_cover_fac _ _ _ _ _ _ _ _ j
 
 /-- 各項で指定した同じ core の族を回収する全体上の族は一意。 -/
 lemma cocartesianSectionCoreFamilyColimitLift_unique
-    (m : T ⟶ (quasicategoryCore (kanCocartesianSections p c.pt.hom) : SSet.{u}))
-    (hm : ∀ j, m ≫ quasicategoryCoreMap (kanCocartesianSectionsPre p (c.ι.app j)) = s j) :
+    (m : T ⟶ (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p c.pt.hom) : SSet.{u}))
+    (hm : ∀ j, m ≫ quasicategoryCoreMap (SerrePositivity.InfinityCategories.cocartesianSectionsPre p (c.ι.app j)) = s j) :
     m = cocartesianSectionCoreFamilyColimitLift p c hc s hs := by
-  apply (cancel_mono (quasicategoryCore (kanCocartesianSections p c.pt.hom)).ι).mp
+  apply (cancel_mono (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p c.pt.hom)).ι).mp
   rw [cocartesianSectionCoreFamilyColimitLift_ι]
   apply cocartesianSectionFamilyColimitLift_unique
   intro j
   have h := congrArg (fun k ↦ k ≫
-    (quasicategoryCore (kanCocartesianSections p (D.obj j).hom)).ι) (hm j)
+    (quasicategoryCore (SerrePositivity.InfinityCategories.cocartesianSections p (D.obj j).hom)).ι) (hm j)
   rwa [Category.assoc, quasicategoryCoreMap_ι, ← Category.assoc] at h
 
 end SerrePositivity.InfinityCategories

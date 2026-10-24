@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramTriangleComponents
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 図式全体の比較逆射の三角形と元の成分の逆条件
 概要：関手同型の逆の代表を、元の比較と両方向の恒等辺を保つ三角形で照合する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Functor
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
-public import SerrePositivity.InfinityCategories.F1B.KanCocartesianHomotopyEdges
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHomotopyEdges
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 
@@ -55,7 +55,7 @@ lemma isCocartesianEdge_of_functorIso {A E B : SSet.{u}}
     apply stdSimplex.ext
     intro i
     fin_cases i <;> rfl
-  have hc := kanCocartesianHomotopy_targetEdge p K (SSet.yonedaEquiv.symm e)
+  have hc := SerrePositivity.InfinityCategories.cocartesianHomotopy_targetEdge p K (SSet.yonedaEquiv.symm e)
     (by rw [h₀, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]; exact he) hv
   rwa [h₁, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at hc
 

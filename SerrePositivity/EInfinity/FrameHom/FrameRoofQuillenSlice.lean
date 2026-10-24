@@ -31,8 +31,8 @@ lemma roofTargetOverBaseMap_projection : roofTargetOverBaseMap A Y q b ≫
     sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex (roofTargetDegree A Y q b))) =
       sliceOverProjection (SSet.yonedaEquiv.symm b) ≫ roofTargetProjection A Y q := by
   rw [roofTargetOverBaseMap, Category.assoc,
-    F1B.kanSliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b),
-    F1B.kanSliceOverPostcomp_projection]
+    SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b),
+    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
 
 variable {S : SSet.{u}} (f : S ⟶ roofTarget A Y q)
 
@@ -41,18 +41,18 @@ abbrev roofQuillenSlice := pullback f (sliceOverProjection (SSet.yonedaEquiv.sym
 def roofQuillenSliceOver : roofQuillenSlice A Y q b f ⟶
     nerve (Over (roofTargetDegree A Y q b)) :=
   pullback.snd _ _ ≫ roofTargetOverBaseMap A Y q b ≫
-    (F1B.kanNerveOverIso (roofTargetDegree A Y q b)).inv
+    (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).inv
 
 lemma roofQuillenSliceOver_projection : roofQuillenSliceOver A Y q b f ≫
     nerveMap (Over.forget (roofTargetDegree A Y q b)) =
       pullback.fst f (sliceOverProjection (SSet.yonedaEquiv.symm b)) ≫
         f ≫ roofTargetProjection A Y q := by
-  have hi : (F1B.kanNerveOverIso (roofTargetDegree A Y q b)).inv ≫
+  have hi : (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
       nerveMap (Over.forget (roofTargetDegree A Y q b)) =
         sliceOverProjection (SSet.yonedaEquiv.symm
           (nerveVertex (roofTargetDegree A Y q b))) := by
     change _ = sliceOverProjection (nervePoint (roofTargetDegree A Y q b))
-    rw [← F1B.kanNerveOverIso_projection, Iso.inv_hom_id_assoc]
+    rw [← SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   rw [roofQuillenSliceOver, Category.assoc, Category.assoc, hi,
     roofTargetOverBaseMap_projection]
   rw [← Category.assoc, ← pullback.condition, Category.assoc]

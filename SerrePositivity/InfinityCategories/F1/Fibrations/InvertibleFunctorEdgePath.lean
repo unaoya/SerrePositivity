@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.PointwiseHomotopyPath
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.PointwiseHomotopyPath
 
 /-!
 概要：指定された可逆な関手の辺を、同じ全円柱の可逆 path の族として保つ。

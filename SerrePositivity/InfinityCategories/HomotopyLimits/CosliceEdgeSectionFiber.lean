@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeFiberPrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeRestrictionTransport
-public import SerrePositivity.InfinityCategories.F1B.TrivialFibrationHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：固定辺の余錐の終点制限の切断を固定終点の fiber に移し、始点制限との比較を構成する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.TerminalComparisonIntervalFamily
 public import SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality
-public import SerrePositivity.InfinityCategories.F1B.UnitCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCompositionTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
 public import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
 

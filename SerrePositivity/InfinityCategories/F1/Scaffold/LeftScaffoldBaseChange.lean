@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps
+
 public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffold
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementBaseChange
@@ -26,38 +28,6 @@ instance leftFibration_nervePullback
     (p : E ⟶ nerve C) [LeftFibration p] (H : D ⥤ C) :
     LeftFibration (pullback.snd p (nerveMap H)) :=
   ⟨leftFibrations.pullback_snd p (nerveMap H) (LeftFibration.mem (p := p))⟩
-
-/-- 概要：係数値の定値包含は通常の関手による底変換と可換。
-方針：定値射列の後合成が像の対象の定値射列になることを関手の恒等則で示す。
-規約：係数単体は同じ射を使う。
-使われ方：Kerodon Remark 5.3.2.3、底変換した scaffold の fiber 比較。 -/
-lemma simplicialReplacementConstantLift_baseMap
-    {C D : Type u} [Category.{u} C] [Category.{u} D]
-    (H : D ⥤ C) (F : C ⥤ SSet.{u}) (d : D) :
-    simplicialReplacementConstantLift (H ⋙ F) d ≫ simplicialReplacementBaseMap H F =
-      simplicialReplacementConstantLift F (H.obj d) := by
-  apply SSet.hom_ext
-  intro k
-  apply ConcreteCategory.hom_ext
-  intro s
-  have hσ : (CategoryTheory.Functor.const (Fin (k.unop.len + 1))).obj d ⋙ H =
-      (CategoryTheory.Functor.const (Fin (k.unop.len + 1))).obj (H.obj d) := by
-    refine CategoryTheory.Functor.ext (fun _ ↦ rfl) ?_
-    intro i j f
-    simp
-  exact Sigma.ext hσ (HEq.rfl)
-
-/-- 概要：底を保つ simplicial replacement の比較射を新しい底へ引き戻す。
-方針：元の比較射と新しい底の射影を引き戻しの普遍性で組にする。
-規約：h は元の比較射の底上の可換性。
-使われ方：Kerodon Remark 5.3.2.3、scaffold の底変換の比較射。 -/
-noncomputable def leftScaffoldBaseChange
-    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
-    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
-    (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) :
-    simplicialReplacement (H ⋙ F) ⟶ pullback p (nerveMap H) :=
-  pullback.lift (simplicialReplacementBaseMap H F ≫ l) (simplicialReplacementProjection (H ⋙ F))
-    (by rw [Category.assoc, h, simplicialReplacementBaseMap_projection])
 
 /-- 概要：底変換した比較射は新しい底の nerve 上の射。
 方針：引き戻しの持ち上げの第二射影の計算則を使う。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentStringNativeMaps
 public import SerrePositivity.KST.SConstruction.CoherentStringFullPaths
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 元の coherent 図式からの端点固定の全合成列の native Hom 族
 概要：元の図式の全合成列を、追加の円柱入力なしに一つの native Hom の単体射へ束ねる。

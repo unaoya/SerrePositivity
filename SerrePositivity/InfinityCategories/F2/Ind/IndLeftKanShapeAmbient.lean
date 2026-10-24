@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FullSlicePullback
 public import SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity
-public import SerrePositivity.InfinityCategories.F1B.KanExtensionShapes
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!
 概要：Indκ 内の元の Yoneda の左 Kan 局所添字を、前層内の同じ添字へ移す。

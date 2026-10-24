@@ -15,15 +15,15 @@ namespace SerrePositivity.KST.Fibration
 /-- 元の恒等射評価を全空間へ含めると、同じ全 section の恒等射頂点での評価になる。 -/
 theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) (c : I) :
-    kanCocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
+    SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
       cocartesianSectionEvaluate p (nerveMap (Under.forget c)) (nerveVertex (Under.mk (𝟙 c))) := by
   let a := nerveMap (Under.forget c)
   let v := (nerveEquiv (C := Under c)).symm (Under.mk (𝟙 c))
   have hv : v = nerveVertex (Under.mk (𝟙 c)) := ComposableArrows.ext₀ rfl
-  have he : kanCocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
+  have he : SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
       cocartesianSectionEvaluate p a v :=
     (Category.assoc _ _ _).trans
-      (congrArg (fun m => kanCocartesianSectionsι p a ≫ m)
+      (congrArg (fun m => SerrePositivity.InfinityCategories.cocartesianSectionsι p a ≫ m)
         (SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι p a v))
   exact he.trans (congrArg (cocartesianSectionEvaluate p a) hv)
 
@@ -31,14 +31,14 @@ theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.
 /-- 同じ入力射に沿い、元の全 strict section を同時に評価する prism。 -/
 def strictTransportEvaluationPrism {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) {c d : I} (f : c ⟶ d) :
-    (Δ[1] : SSet.{u}) ⊗ kanCocartesianStrictTransport p c ⟶ E :=
+    (Δ[1] : SSet.{u}) ⊗ SerrePositivity.InfinityCategories.cocartesianStrictTransport p c ⟶ E :=
   sectionEdgePrism p (nerveMap (Under.forget c)) (strictTransportUnderEdge f)
 
 /-- 始点は元の strict section の同じ恒等射評価。 -/
 theorem strictTransportEvaluationPrism_zero {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) {c d : I} (f : c ⟶ d) :
     prismEndpoint 0 _ ≫ strictTransportEvaluationPrism p f =
-      kanCocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) := by
   have he := sectionEdgePrism_endpoint p (nerveMap (Under.forget c))
     (strictTransportUnderEdge f) 0
   rw [strictTransportUnderEdge_zero] at he
@@ -49,8 +49,8 @@ theorem strictTransportEvaluationPrism_zero {I : Type u} [Category.{u} I] {E : S
 theorem strictTransportEvaluationPrism_one {I : Type u} [Category.{u} I] {E : SSet.{u}}
     (p : E ⟶ nerve I) {c d : I} (f : c ⟶ d) :
     prismEndpoint 1 _ ≫ strictTransportEvaluationPrism p f =
-      kanCocartesianStrictTransportMap p f ≫
-        kanCocartesianStrictTransportEvaluate p d ≫ vertexFiberι p (nerveVertex d) := by
+      SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f ≫
+        SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p d ≫ vertexFiberι p (nerveVertex d) := by
   have he := sectionEdgePrism_endpoint p (nerveMap (Under.forget c))
     (strictTransportUnderEdge f) 1
   rw [strictTransportUnderEdge_one] at he
@@ -58,13 +58,13 @@ theorem strictTransportEvaluationPrism_one {I : Type u} [Category.{u} I] {E : SS
     (Over.homMk (nerveUnderMap f) (nerveUnderMap_projection f) :
       Over.mk (nerveMap (Under.forget d)) ⟶ Over.mk (nerveMap (Under.forget c)))
     (nerveVertex (Under.mk (𝟙 d)))
-  change kanCocartesianStrictTransportMap p f ≫
+  change SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f ≫
       cocartesianSectionEvaluate p (nerveMap (Under.forget d)) (nerveVertex (Under.mk (𝟙 d))) =
     cocartesianSectionEvaluate p (nerveMap (Under.forget c))
       ((nerveUnderMap f).app (Opposite.op ⦋0⦌) (nerveVertex (Under.mk (𝟙 d)))) at ht
   rw [kanCocartesianUnderMap_identity_vertex] at ht
   exact he.trans (ht.symm.trans (congrArg
-    (fun m => kanCocartesianStrictTransportMap p f ≫ m)
+    (fun m => SerrePositivity.InfinityCategories.cocartesianStrictTransportMap p f ≫ m)
     (strictTransportEvaluate_ambient p d).symm))
 
 

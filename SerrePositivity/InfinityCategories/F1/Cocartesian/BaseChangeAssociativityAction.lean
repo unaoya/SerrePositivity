@@ -23,7 +23,7 @@ lemma cocartesianBaseChangeAssociativityComponent_action
     {A D C : Type u} [Category.{u} A] [Category.{u} D] [Category.{u} C] {E F : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] (q : F ⟶ nerve C) [CocartesianFibration q]
     (l : A ⥤ D) (k : D ⥤ C) (a : A) :
-    (𝟙 (kanCocartesianStrictTransport
+    (𝟙 (SerrePositivity.InfinityCategories.cocartesianStrictTransport
         (pullback.fst (nerveMap l) (pullback.fst (nerveMap k) p)) a) ⊗ₘ
       (cocartesianPullbackNativeRestriction p q (Over.mk (nerveMap k)) ≫
         cocartesianPullbackNativeRestriction (pullback.fst (nerveMap k) p)
@@ -41,7 +41,7 @@ lemma cocartesianBaseChangeAssociativityComponent_action
     (IsPullback.of_hasPullback (nerveMap (l ⋙ k)) q).flip
     (nerveMap (Under.forget a)) (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)) rfl).hom).mp
   simp only [Category.assoc, cocartesianBaseChangeAssociativityComponent_iso]
-  apply (cancel_mono (kanCocartesianSectionsι q
+  apply (cancel_mono (SerrePositivity.InfinityCategories.cocartesianSectionsι q
     (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k)))).mp
   apply relativeFunctorUncurry_injective q (nerveMap (Under.forget a) ≫ nerveMap (l ⋙ k))
   apply SSet.hom_ext

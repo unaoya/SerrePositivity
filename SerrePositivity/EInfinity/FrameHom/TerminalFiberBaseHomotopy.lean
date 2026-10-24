@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.RoofTerminalEvaluation
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 
 /-!

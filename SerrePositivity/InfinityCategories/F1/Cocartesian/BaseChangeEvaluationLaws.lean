@@ -22,13 +22,13 @@ namespace SerrePositivity.InfinityCategories
 lemma cocartesianStrictTransportBaseChangeComponent_apply_snd
     {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] (k : D ⥤ C) (d : D)
-    {n : SimplexCategoryᵒᵖ} (s : (kanCocartesianStrictTransport p (k.obj d)).obj n)
+    {n : SimplexCategoryᵒᵖ} (s : (SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj d)).obj n)
     (x : (nerve (Under d)).obj n) :
     (pullback.snd (nerveMap k) p).app n
       ((((cocartesianStrictTransportBaseChangeComponent p k d).app n s).val.val.app n (𝟙 n)) x) =
     s.val.val.app n (𝟙 n) ((nerveMap (Under.post k)).app n x) := by
   have h := cocartesianStrictTransportBaseChangeComponent_uncurry_snd p k d
-    (𝟙 (kanCocartesianStrictTransport p (k.obj d)))
+    (𝟙 (SerrePositivity.InfinityCategories.cocartesianStrictTransport p (k.obj d)))
   exact congrArg (fun z ↦ z.app n (x, s)) h
 
 /-- 元の全相対 Hom の底変換は、元の全空間への評価後に元の関手の評価となる。 -/

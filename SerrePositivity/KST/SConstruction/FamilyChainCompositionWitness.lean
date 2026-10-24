@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FamilyHomotopyChains
 public import SerrePositivity.KST.SConstruction.KanMappingComposition
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 元の全区間を記録する有限列の実合成証人
 概要：有限補正列を一本の実円柱へまとめるとき、元の各区間と各合成三角形を保存する。

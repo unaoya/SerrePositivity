@@ -82,6 +82,6 @@ lemma laxPullbackFunctorCoreIso_inputs (K : SSet.{u}) (p : A ⟶ C) (q : B ⟶ C
 lemma arrowEndpointPair_internalHom_core_fibration (K : SSet.{u}) :
     HomotopicalAlgebra.Fibration (quasicategoryCoreMap ((ihom K).map (arrowEndpointPair C))) :=
   coreMap_fibration_of_kanEquivalenceLifting _
-    (F1B.KanEquivalenceLifting.internalHom (arrowEndpointPair_kanEquivalenceLifting C) K)
+    (SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.internalHom (arrowEndpointPair_kanEquivalenceLifting C) K)
 
 end SerrePositivity.InfinityCategories.F2

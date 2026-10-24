@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanUnitRecovery
-public import SerrePositivity.InfinityCategories.F1B.KanLeftUnitCanonical
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitCanonical
 
 /-!
 概要：元の Yoneda に沿う左 Kan 延長の局所普遍性を、元の標準 Kan 余錐で読む。

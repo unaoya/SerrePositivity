@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：矢印を終点の恒等矢印へ縮める、全単体に自然な区間族。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.EquivalenceSpanTriangles
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-!
 概要：指定辺集合に左脚を持つ span の実単体集合と、反転関手による後合成を構成する。

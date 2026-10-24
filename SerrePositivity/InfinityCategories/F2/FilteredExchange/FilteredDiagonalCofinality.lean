@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalCommaWeakContractibility
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 
 /-!
 概要：filtered ∞ 圏の有限形状への対角関手と、κ 版の対角関手は right cofinal。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 /-!

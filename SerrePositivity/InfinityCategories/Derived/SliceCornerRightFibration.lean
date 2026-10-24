@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RelativeSliceRightFibration
 public import SerrePositivity.InfinityCategories.Derived.InitialIndexSlice
-public import SerrePositivity.InfinityCategories.F1B.KanSliceProjectionLaws
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 /-!
 概要：inner fibration の実 slice を、標的の slice と元の始域の corner へ写すと右ファイブレーション。
 方針：空部分図式の相対 slice の右ファイブレーションを、空 slice の厳密同型で正規化する。
@@ -20,7 +20,7 @@ def sliceOverCorner : SSet.{u} := pullback (sliceOverProjection (p ≫ r)) r
 /-- 実 slice の各錐を、標的の全錐と元の始域の組へ写す。 -/
 def sliceOverCornerMap : sliceOver p ⟶ sliceOverCorner p r :=
   pullback.lift (sliceOverPostcomp p r) (sliceOverProjection p)
-    (F1B.kanSliceOverPostcomp_projection p r)
+    (SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection p r)
 /-- 空部分図式の相対 slice を、元の始域を記憶する corner へ厳密に正規化する。 -/
 def relativeSliceEmptyCornerMap :
     relativeSliceOver p (⊥ : K.Subcomplex).ι r ⟶ sliceOverCorner p r :=
@@ -30,8 +30,8 @@ def relativeSliceEmptyCornerMap :
     (sliceOverProjection ((⊥ : K.Subcomplex).ι ≫ p))
     (sliceOverProjection (((⊥ : K.Subcomplex).ι ≫ p) ≫ r))
     (by simpa only [Category.id_comp] using!
-      F1B.kanSliceOverRestrict_projection (p ≫ r) (⊥ : K.Subcomplex).ι)
-    (F1B.kanSliceOverPostcomp_projection ((⊥ : K.Subcomplex).ι ≫ p) r)
+      SerrePositivity.InfinityCategories.F1B.sliceOverRestrict_projection (p ≫ r) (⊥ : K.Subcomplex).ι)
+    (SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection ((⊥ : K.Subcomplex).ι ≫ p) r)
 /-- 空部分図式の正規化は、全次数で厳密な同型。 -/
 instance relativeSliceEmptyCornerMap_isIso : IsIso (relativeSliceEmptyCornerMap p r) := by
   have := initialIndexSliceProjection_isIso Subcomplex.isInitialBot
@@ -53,7 +53,7 @@ lemma relativeSliceOverMap_empty_corner :
       pullback.map]
     rw [Category.assoc, pullback.lift_snd, ← Category.assoc,
       pullback.lift_snd, pullback.lift_snd]
-    exact F1B.kanSliceOverRestrict_projection p (⊥ : K.Subcomplex).ι
+    exact SerrePositivity.InfinityCategories.F1B.sliceOverRestrict_projection p (⊥ : K.Subcomplex).ι
 /-- inner fibration の実 slice の corner 比較は右ファイブレーション。 -/
 instance sliceOverCornerMap_rightFibration [InnerFibration r] :
     RightFibration (sliceOverCornerMap p r) := by

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityFullyFaithful
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexMapping
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!
 概要：元の前層 ∞ 圏内で Yoneda 像の retract 閉包を構成する。

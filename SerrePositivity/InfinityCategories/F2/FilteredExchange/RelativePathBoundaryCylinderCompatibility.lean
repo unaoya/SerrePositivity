@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePathInputTransportData
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackPathPrismHomotopy
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalBoundaryHomotopy
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の境界 path の全輸送と二入力の全円柱は、相対境界の共通部分で一致する。

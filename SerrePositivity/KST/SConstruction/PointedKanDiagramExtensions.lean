@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramEquivalences
-public import SerrePositivity.InfinityCategories.F1B.FunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyComposition
 
 /-! # Kan 延長を図式全体の coherent な変換として構成する
 概要：R→L の元の自然変換を、Kan(R)→L の全射列に自然な変換へ移す。

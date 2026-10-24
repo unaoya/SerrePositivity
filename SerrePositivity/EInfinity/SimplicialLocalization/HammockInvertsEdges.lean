@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockWeakArrows
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-!
 # 元の W の辺を反転する実 hammock nerve 関手

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.WeightedCotensor
 public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralOriginalCriterion
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 
 /-!

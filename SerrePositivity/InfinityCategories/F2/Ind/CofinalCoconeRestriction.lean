@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
 
-public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!

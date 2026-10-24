@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal
 public import SerrePositivity.KST.LocalizingInvariants.ParametricDiagramGluing
-public import SerrePositivity.InfinityCategories.F1B.Localization
+public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
 /-!
 概要：任意の辺集合に可逆区間を一斉に貼り、元の全ての指定辺を反転する実射を作る。

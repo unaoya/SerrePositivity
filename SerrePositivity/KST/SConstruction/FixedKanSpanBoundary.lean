@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeKanSpanFamilies
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 定数な二円柱の境界からの指定逆・合成三角形
 概要：境界で定数な二円柱に、恒等合成辺を持つ実際の span 三角形を供給する。

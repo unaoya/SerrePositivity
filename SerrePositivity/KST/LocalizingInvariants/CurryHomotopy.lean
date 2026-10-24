@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalObjects
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalObjects
 public import Mathlib.CategoryTheory.Comma.Arrow
 
 /-!

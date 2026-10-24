@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierCosliceFiltered
-public import SerrePositivity.InfinityCategories.F1B.QuillenA
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 
 /-!
 概要：全鎖の実現空間の元の値写像は right cofinal。

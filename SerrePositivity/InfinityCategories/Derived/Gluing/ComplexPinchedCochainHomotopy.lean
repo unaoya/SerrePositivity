@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.CochainCylinder
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TrivialFibrationHomotopy
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyRetargetValue
 public import SerrePositivity.InfinityCategories.Derived.ComplexPinchedQuasiIso
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! 全比較 cochain の境界式を、実 pinched 空間の全単体ホモトピーへ移す。 -/
 @[expose] public section

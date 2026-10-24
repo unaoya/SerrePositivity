@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.TerminalExtension
-public import SerrePositivity.InfinityCategories.F1B.FunctorRelativeInitial
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 
 /-!

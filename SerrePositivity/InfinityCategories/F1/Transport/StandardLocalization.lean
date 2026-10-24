@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.StandardInvertingComparison
-public import SerrePositivity.InfinityCategories.F1B.RestrictedPrecomposition
-public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.RestrictedPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-!
 概要：標準単体上の初頂点写像の局所化普遍性。

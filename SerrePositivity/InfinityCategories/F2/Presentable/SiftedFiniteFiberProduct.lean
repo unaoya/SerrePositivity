@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteDiagonal
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison
-public import SerrePositivity.InfinityCategories.F1B.LeftFibrationCofinalPullback
-public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
 
 /-!
 概要：sifted な底上の元の有限非空 fiber 積の全空間 Kan 比較。

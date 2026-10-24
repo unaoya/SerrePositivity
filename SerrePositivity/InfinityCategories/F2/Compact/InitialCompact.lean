@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.FilteredUniverse
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeInitialBoundaryCriterion
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
 
 /-!
 概要：元の始対象は、任意の小さい無限 κ の κ-filtered 余極限に関して compact。

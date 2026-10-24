@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPath
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：区間 path 置換の元の全 path を正規化した円柱と指定同型で読む。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.IntervalMappingOpposite
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorOppositeHom
-public import SerrePositivity.InfinityCategories.F1B.KanQCatEquivalenceOpposite
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalMappingOpposite
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorOppositeHom
+public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CocartesianIntervalPrecomposition
 
 /-!
@@ -64,18 +64,18 @@ def intervalOppositeIso : (intervalMappingSpace x y).op ≅
 lemma intervalReverseFamily_hom {A : SSet.{u}} [Quasicategory X]
     (f : A ⟶ intervalMappingSpace x y) :
     intervalFamilyHom (intervalReverseFamily f) =
-      F1B.kanFunctorOppositeHomEquiv (SSet.const x : A ⟶ X) (SSet.const y)
+      SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (SSet.const x : A ⟶ X) (SSet.const y)
         (intervalFamilyHom f) := by
   change SSet.Truncated.HomotopyCategory.homMk
       (functorEdgeOfSimplicialHomotopy (intervalFamilyHomotopy (intervalReverseFamily f))) =
-    F1B.kanFunctorOppositeHomEquiv _ _
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv _ _
       (SSet.Truncated.HomotopyCategory.homMk
         (functorEdgeOfSimplicialHomotopy (intervalFamilyHomotopy f)))
-  rw [F1B.kanFunctorOppositeHomEquiv_homotopy]
+  rw [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy]
   congr 1
   apply SSet.Truncated.Edge.ext
   change SSet.yonedaEquiv (curry (intervalFamilyHomotopy (intervalReverseFamily f)).h) =
-    SSet.yonedaEquiv (curry (kanHomotopyOpposite (intervalFamilyHomotopy f)).h)
+    SSet.yonedaEquiv (curry (SerrePositivity.InfinityCategories.homotopyOpposite (intervalFamilyHomotopy f)).h)
   congr 2
   change (β_ A.op (Δ[1] : SSet.{u})).hom ≫
       intervalMappingUncurry (intervalReverseFamily f) = _
@@ -104,21 +104,21 @@ lemma constantFunctorHomMap_homMk {A E : SSet.{u}} {x y : E _⦋0⦌}
 /-- 定値関手による元の辺の像は、反対 Hom 同値と整合する。 -/
 lemma constantFunctorHomMap_op_homMk {A E : SSet.{u}} [Quasicategory E] {x y : E _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) :
-    F1B.kanFunctorOppositeHomEquiv (SSet.const x : A ⟶ E) (SSet.const y)
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (SSet.const x : A ⟶ E) (SSet.const y)
       (constantFunctorHomMap A (SSet.Truncated.HomotopyCategory.homMk f)) =
         constantFunctorHomMap A.op (SSet.Truncated.HomotopyCategory.homMk (edgeOp f)) := by
   rw [constantFunctorHomMap_homMk, constantFunctorHomMap_homMk]
-  simp only [F1B.kanFunctorOppositeHomEquiv, Equiv.trans_apply,
-    F1B.kanHomotopyCategoryOpHomEquiv_homMk, Iso.homCongr_apply, eqToIso.inv, eqToIso.hom]
-  apply homMk_transport (F1B.kanOppositeInternalHom_vertex (SSet.const y : A ⟶ E))
-    (F1B.kanOppositeInternalHom_vertex (SSet.const x : A ⟶ E))
+  simp only [SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv, Equiv.trans_apply,
+    SerrePositivity.InfinityCategories.F1B.homotopyCategoryOpHomEquiv_homMk, Iso.homCongr_apply, eqToIso.inv, eqToIso.hom]
+  apply homMk_transport (SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex (SSet.const y : A ⟶ E))
+    (SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex (SSet.const x : A ⟶ E))
   apply CategoryTheory.Functor.functorHom_ext
   intro n α
   apply ConcreteCategory.hom_ext
   intro a
   change (((oppositeInternalHomIso A E).hom.app (Opposite.op ⦋1⦌)
     (SSet.opObjEquiv.symm (constantFunctorEdge (A := A) f).edge)).app n α) a = _
-  rw [F1B.kanOppositeInternalHom_apply]
+  rw [SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_apply]
   rfl
 
 /-- 元の後合成を反転した族は、反対圏の標準の前合成とホモトピックである。 -/
@@ -132,7 +132,7 @@ lemma intervalReverseFamily_postcompose_hom {E : SSet.{u}} [Quasicategory E]
           (SSet.Truncated.HomotopyCategory.homMk (edgeOp f)))) := by
   apply intervalFamilyHom_eq_imp_homotopy
   rw [intervalReverseFamily_hom, intervalPostcompose_hom,
-    F1B.kanFunctorOppositeHomEquiv_comp, constantFunctorHomMap_op_homMk,
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, constantFunctorHomMap_op_homMk,
     ← intervalReverseFamily_hom, intervalPrecompose_family]
 
 /-- 任意の族の反転は、元の写像の反転と標準の反転同型の合成である。 -/
@@ -145,7 +145,7 @@ lemma intervalReverseFamily_eq {A : SSet.{u}} (f : A ⟶ intervalMappingSpace x 
 /-- 反対写像の圏同値性から元の写像の圏同値性を回収する。 -/
 lemma isQCatEquivalence_of_op {A B : SSet.{u}} [Quasicategory A] [Quasicategory B]
     (f : A ⟶ B) (hf : IsQCatEquivalence (SSet.opFunctor.map f)) : IsQCatEquivalence f := by
-  have hff := F1B.kanIsQCatEquivalence_op hf
+  have hff := SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op hf
   let α : A ≅ A.op.op := (SSet.opFunctorCompOpFunctorIso.app A).symm
   let β : B.op.op ≅ B := SSet.opFunctorCompOpFunctorIso.app B
   have hi := (qCatEquivalenceOfIso α).isQCatEquivalence

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction
-public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
-public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalMappingContractible
 
 /-!
 概要：始対象は点からの実左随伴を与え、点からの実左随伴の値は始対象になる。

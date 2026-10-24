@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanFunctorOppositeHom
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorOppositeHom
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：関手の二胞体の反転と、恒等・標的での後合成との両立。
@@ -20,21 +20,21 @@ open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma oppositeFunctorHom_id {A D : SSet.{u}} [Quasicategory D] (F : A ⟶ D) :
-    kanFunctorOppositeHomEquiv F F (𝟙 (HomotopyCategory.mk (functorVertex F))) = 𝟙 _ := by
-  obtain ⟨α, hα⟩ := (kanFunctorOppositeHomEquiv F F).surjective (𝟙 _)
-  have h := kanFunctorOppositeHomEquiv_comp (𝟙 (HomotopyCategory.mk (functorVertex F))) α
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F (𝟙 (HomotopyCategory.mk (functorVertex F))) = 𝟙 _ := by
+  obtain ⟨α, hα⟩ := (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F).surjective (𝟙 _)
+  have h := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (𝟙 (HomotopyCategory.mk (functorVertex F))) α
   rw [Category.id_comp, hα, Category.id_comp] at h
   exact h.symm
 
 lemma oppositeFunctorHom_postcomp {A D E : SSet.{u}} [Quasicategory D] [Quasicategory E]
     (p : D ⟶ E) {F G : A ⟶ D} (α : FunctorHom F G) :
-    kanFunctorOppositeHomEquiv (F ≫ p) (G ≫ p)
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (F ≫ p) (G ≫ p)
         ((hoFunctor.map ((ihom A).map p)).toFunctor.map α) =
       (hoFunctor.map ((ihom A.op).map (SSet.opFunctor.map p))).toFunctor.map
-        (kanFunctorOppositeHomEquiv F G α) := by
+        (SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G α) := by
   have h := functorHomHomotopy_hom α
-  rw [← h, ← functorHomotopyPostcomp_hom, kanFunctorOppositeHomEquiv_homotopy,
-    kanFunctorOppositeHomEquiv_homotopy, ← functorHomotopyPostcomp_hom]
+  rw [← h, ← functorHomotopyPostcomp_hom, SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy,
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_homotopy, ← functorHomotopyPostcomp_hom]
   congr 1
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.ShapeOppositeIso
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeStrongSplitting
-public import SerrePositivity.InfinityCategories.F1B.KanLimitColimitOpposite
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 
 /-!
 概要：指定した元の全 Idem 図式を反転し、反転図式の強い分裂を元へ戻す。

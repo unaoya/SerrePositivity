@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.UnitCommaArrowNaturality
 public import SerrePositivity.InfinityCategories.Stable.HomotopyVertexArrow
 public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
-public import SerrePositivity.InfinityCategories.F1B.UnitCommaUnitComponent
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaUnitComponent
 
 /-!
 概要：指定 loop 単位と任意の実パラメータ族の comma 矢印の可逆性。

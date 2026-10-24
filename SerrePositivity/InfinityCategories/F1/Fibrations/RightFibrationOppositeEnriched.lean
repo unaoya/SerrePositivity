@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationInf
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInfinity
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRelativeFunctorOpposite
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnrichedComparison
-public import SerrePositivity.InfinityCategories.F1B.CofinalOppositeFibration
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOppositeFibration
 
 /-!
 概要：元の相対 Hom を持つ right fibrations の共通解像から、反対の底上の left fibrations への豊穣関手。

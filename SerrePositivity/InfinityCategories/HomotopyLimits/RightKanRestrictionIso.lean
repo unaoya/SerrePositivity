@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanRightHomUniversal
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightHomUniversal
 
 /-!
 概要：恒等単位を持つ二つの元の右 Kan 延長は、制限の全自然同型から全自然同型を得る。

@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorHomReflection
-public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
-public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
-public import SerrePositivity.InfinityCategories.F1B.WeakReverseHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotopy
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEdgeFromPrism
 
 /-!
@@ -29,7 +29,7 @@ lemma terminalRetract_contraction_exists {C D : SSet.{u}}
     (c : C _⦋0⦌) (b : D _⦋0⦌) (hb : IsTerminalVertex b)
     (r : VertexRetraction b (f.app (Opposite.op ⦋0⦌) c)) :
     Nonempty (SSet.Homotopy (𝟙 C) (SSet.const c)) := by
-  obtain ⟨H, h₀, h₁, _hfix⟩ := F1B.kanExists_fixed_terminal_prism hb
+  obtain ⟨H, h₀, h₁, _hfix⟩ := SerrePositivity.InfinityCategories.F1B.exists_fixed_terminal_prism hb
   let Hf := (Δ[1] ◁ f) ≫ H
   have h₀f : prismEndpoint 0 C ≫ Hf = f := by
     dsimp only [Hf]

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：指定実ホモトピーを、全パラメータ関手圏の後合成の実ホモトピーへ移す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndDensityFiberImage
-public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinFiberCocone
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberCocone
 
 /-!
 概要：元の weighted 密度図式を延ばす一つの相対 join 図式の、全 fiber の余極限性を左 Kan 像へ移す。

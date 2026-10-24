@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.ScaffoldUnderChain
+public import SerrePositivity.InfinityCategories.F1B.Diagrams.ScaffoldUnderChain
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportWeightedNerve
 
 /-!

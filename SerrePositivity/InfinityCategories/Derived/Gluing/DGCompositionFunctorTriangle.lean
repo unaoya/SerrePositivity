@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionTrianglePost
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FunctorTriangleOfFamily
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilySquare
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilySquare
 
 /-! native の具体的な三角形族を、そのまま実導来関手の合成三角形として保持する。 -/
 @[expose] public section

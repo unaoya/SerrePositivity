@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluation
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 
 /-!
@@ -30,7 +30,7 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
 lemma roofTargetSlicePointIso_projection : (roofTargetSlicePointIso Y q).hom ≫
     sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) =
       sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q) :=
-  F1B.kanSliceOverProjection_eqTransport (roofTargetPoint q (nerveVertex Y))
+  SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (roofTargetPoint q (nerveVertex Y))
 
 def roofCornerSourceSliceMap :
     sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶

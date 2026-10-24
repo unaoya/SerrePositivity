@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 
 /-!

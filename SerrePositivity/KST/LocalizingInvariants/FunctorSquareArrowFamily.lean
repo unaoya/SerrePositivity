@@ -28,7 +28,7 @@ def shape (A : SSet.{u}) :
 variable {A X : SSet.{u}} {U₀ U₁ V₀ V₁ : A ⟶ X}
   {b : SSet.Homotopy U₀ U₁} {t : SSet.Homotopy V₀ V₁}
   {l : SSet.Homotopy U₀ V₀} {r : SSet.Homotopy U₁ V₁}
-  (s : KanFunctorHomSquare b t l r)
+  (s : SerrePositivity.InfinityCategories.FunctorHomSquare b t l r)
 
 /-- 四辺を持つ元の関手正方形の、時間付きの矢印族。 -/
 def family : A ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=

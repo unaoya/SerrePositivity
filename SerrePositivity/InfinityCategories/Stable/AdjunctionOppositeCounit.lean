@@ -16,9 +16,9 @@ open scoped Simplicial
 
 /-- 反転 Hom 全単射は恒等射を保つ。 -/
 lemma functorOppositeHomEquiv_id {A D : SSet.{u}} [Quasicategory D] (F : A ⟶ D) :
-    F1B.kanFunctorOppositeHomEquiv F F (𝟙 _) = 𝟙 _ := by
-  let e := F1B.kanFunctorOppositeHomEquiv F F
-  have h := F1B.kanFunctorOppositeHomEquiv_comp (𝟙 (HomotopyCategory.mk (functorVertex F)))
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F (𝟙 _) = 𝟙 _ := by
+  let e := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F F
+  have h := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp (𝟙 (HomotopyCategory.mk (functorVertex F)))
     (e.symm (𝟙 _))
   change e (𝟙 _ ≫ e.symm (𝟙 _)) = e (e.symm (𝟙 _)) ≫ e (𝟙 _) at h
   rw [Category.id_comp, Equiv.apply_symm_apply, Category.id_comp] at h
@@ -49,12 +49,12 @@ lemma QCatAdjunction.homEquiv_id_unitHom {X Y : SSet.{u}}
 lemma qcatAdjunctionOfOpposite_counitHom {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
     (a : QCatAdjunction (opFunctor.map G) (opFunctor.map F)) :
-    F1B.kanFunctorOppositeHomEquiv (G ≫ F) (𝟙 Y)
+    SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv (G ≫ F) (𝟙 Y)
       (qcatAdjunctionOfOpposite a).counitHom = a.unitHom := by
   have h := qcatAdjunctionOppositeHomEquiv_spec a G (𝟙 Y)
     (qcatAdjunctionOfOpposite a).counitHom
   rw [← qcatAdjunctionOfOpposite_homEquiv, QCatAdjunction.homEquiv_counitHom] at h
-  change F1B.kanFunctorOppositeHomEquiv G G (𝟙 _) = _ at h
+  change SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G G (𝟙 _) = _ at h
   rw [functorOppositeHomEquiv_id] at h
   have he := congrArg (a.homEquiv (opFunctor.map (𝟙 Y)) (opFunctor.map G)) h
   rw [Equiv.apply_symm_apply] at he

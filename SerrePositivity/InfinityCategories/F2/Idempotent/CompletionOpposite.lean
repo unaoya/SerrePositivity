@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessOpposite
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
-public import SerrePositivity.InfinityCategories.F1B.KanOppositeLifting
+public import SerrePositivity.InfinityCategories.F1B.Diagrams.OppositeLifting
 
 /-!
 概要：元の充満忠実な inner fibration の冪等完備化を反転する。
@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 lemma IsIdempotentCompletion.op {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
     (f : C ⟶ D) [InnerFibration f] (hf : IsIdempotentCompletion f) :
     IsIdempotentCompletion (SSet.opFunctor.map f) := by
-  refine ⟨hf.1.op, F1B.kanIsFullyFaithful_op f hf.2.1, ?_⟩
+  refine ⟨hf.1.op, SerrePositivity.InfinityCategories.F1B.isFullyFaithful_op f hf.2.1, ?_⟩
   intro d
   obtain ⟨c, hc⟩ := hf.2.2 (SSet.opObjEquiv d)
   refine ⟨SSet.opObjEquiv.symm c, ?_⟩

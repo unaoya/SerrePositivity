@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanCoconeContraction
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCoslices
-public import SerrePositivity.InfinityCategories.F1B.WeakContractibility
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 
 /-!

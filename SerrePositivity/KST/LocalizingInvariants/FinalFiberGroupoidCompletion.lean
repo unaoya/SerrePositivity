@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionPrism
-public import SerrePositivity.InfinityCategories.F1B.KanFinalFiberRetraction
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.FinalFiberRetraction
 
 /-!
 概要：標準単体上の cocartesian fibration の最終 fiber の包含は、亜群化後に実同値。

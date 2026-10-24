@@ -33,7 +33,7 @@ lemma cocartesianStrictTransportBaseChangeComponent_action
     (IsPullback.of_hasPullback (nerveMap k) q).flip (nerveMap (Under.forget d))
     (nerveMap (Under.forget d) ≫ nerveMap k) rfl).hom).mp
   rw [Category.assoc, cocartesianStrictTransportBaseChangeComponent_iso]
-  apply (cancel_mono (kanCocartesianSectionsι q
+  apply (cancel_mono (SerrePositivity.InfinityCategories.cocartesianSectionsι q
     (nerveMap (Under.forget d) ≫ nerveMap k))).mp
   apply relativeFunctorUncurry_injective q (nerveMap (Under.forget d) ≫ nerveMap k)
   apply SSet.hom_ext

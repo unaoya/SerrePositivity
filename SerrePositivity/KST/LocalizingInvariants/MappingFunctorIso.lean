@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.MappingTargetIso
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
-public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyComparisonBijective
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyComparisonBijective
 
 /-!
 概要：関手同型は、指定した二頂点間の元の写像空間比較の同値性を保つ。
@@ -53,10 +53,10 @@ lemma pinchedHomMap_equivalence_of_functorIso {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F F' : X ⟶ Y} (e : FunctorIso F F')
     (x z : X _⦋0⦌) (h : IsSimplicialHomotopyEquivalence (pinchedHomMap F' x z)) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap F x z) := by
-  have hh := h.isQCatEquivalence.comp (PinchedInterval.comparison_isQCatEquivalence
+  have hh := h.isQCatEquivalence.comp (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F'.app (Opposite.op ⦋0⦌) x) (F'.app (Opposite.op ⦋0⦌) z))
   rw [pinchedIntervalComparison_naturality] at hh
-  have hi := ((PinchedInterval.comparison_isQCatEquivalence x z).cancel_left hh
+  have hi := ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).cancel_left hh
     ).isSimplicialHomotopyEquivalence
   have hf := intervalFunctorMap_equivalence_of_constantHom_bijective F x z (by
     intro A _
@@ -64,9 +64,9 @@ lemma pinchedHomMap_equivalence_of_functorIso {X Y : SSet.{u}}
     apply functorMap_bijective_of_natIso (e.map_post A).toNatIso
     exact (constantFunctorPostMap_bijective_iff F' A x z).mp
       (constantFunctorPostMap_bijective_of_interval F' x z hi))
-  have hg := (PinchedInterval.comparison_isQCatEquivalence x z).comp hf.isQCatEquivalence
+  have hg := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).comp hf.isQCatEquivalence
   rw [← pinchedIntervalComparison_naturality] at hg
-  exact ((PinchedInterval.comparison_isQCatEquivalence
+  exact ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) z)).cancel_right hg
     ).isSimplicialHomotopyEquivalence
 

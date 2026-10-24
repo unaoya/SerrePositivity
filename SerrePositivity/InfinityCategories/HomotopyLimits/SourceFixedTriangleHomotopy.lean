@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison
-public import SerrePositivity.InfinityCategories.F1B.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!
 概要：指定した三角形を始点固定の正方形へ引き戻し、同じ二辺の円柱を構成する。

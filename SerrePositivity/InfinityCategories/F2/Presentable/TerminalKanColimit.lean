@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanNerveTerminal
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 
@@ -26,10 +26,10 @@ lemma leftKanProjection_nerveTerminal_isIso {T : Type u} [Category.{u} T]
     {t : T} (ht : IsTerminal t) {K : SSet.{u}} (p : K ⟶ nerve T) :
     IsIso (leftKanProjection p (nerveVertex t)) := by
   have : IsIso (nerveMap (Over.forget t)) :=
-    nerveFunctor.map_isIso (F1B.kanOverForgetIsoOfTerminal ht).hom
+    nerveFunctor.map_isIso (SerrePositivity.InfinityCategories.F1B.overForgetIsoOfTerminal ht).hom
   have he : sliceOverProjection (nervePoint t) =
-      (F1B.kanNerveOverIso t).inv ≫ nerveMap (Over.forget t) := by
-    rw [← F1B.kanNerveOverIso_projection, Iso.inv_hom_id_assoc]
+      (SerrePositivity.InfinityCategories.F1B.nerveOverIso t).inv ≫ nerveMap (Over.forget t) := by
+    rw [← SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   have : IsIso (sliceOverProjection (nervePoint t)) := by rw [he]; infer_instance
   exact inferInstanceAs (IsIso (pullback.fst p (sliceOverProjection (nervePoint t))))
 

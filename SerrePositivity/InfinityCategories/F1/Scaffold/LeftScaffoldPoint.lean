@@ -16,21 +16,6 @@ universe u
 open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories
 
-/-- 概要：一点の薄い圏の nerve を標的とする射の fiber 包含は同型。
-方針：各次数で底の単体が指定した頂点の定値単体と等しいことを使う。
-規約：元の射の充填性は不要。
-使われ方：Kerodon Theorem 5.3.5.7、底が一点のときの fiber と全空間の一致。 -/
-lemma vertexFiberι_isIso_of_nervePoint
-    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
-    {E : SSet.{u}} (p : E ⟶ nerve C) (c : C) : IsIso (vertexFiberι p (nerveVertex c)) := by
-  rw [NatTrans.isIso_iff_isIso_app]
-  intro d
-  rw [isIso_iff_bijective]
-  refine ⟨Subtype.val_injective, ?_⟩
-  intro e
-  refine ⟨⟨e, ?_⟩, rfl⟩
-  exact simplexChain_eq_constant c (p.app d e)
-
 /-- 概要：一点の薄い圏上の Kan 値図式の simplicial replacement は Kan 複体。
 方針：係数値との標準同型でホーンを移し、充填を全空間へ戻す。
 規約：指定した対象 c の係数値にのみ Kan 性を要求する。

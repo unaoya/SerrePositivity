@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.RightAnodyneTensor
+public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.F1B.KanTerminalPointAnodyne
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeApexTerminal
 
 /-!
@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Ind
 /-- 任意の試験形状の右余錐の頂点包含は right anodyne。 -/
 lemma conePoint_rightAnodyne (A : SSet.{u}) :
     rightAnodyneExtensions (joinInr A (Δ[0] : SSet.{u})) := by
-  have h := F1B.kanTerminalPoint_rightAnodyne (coneApex_isTerminalVertex A)
+  have h := SerrePositivity.InfinityCategories.F1B.terminalPoint_rightAnodyne (coneApex_isTerminalVertex A)
   have he : SSet.yonedaEquiv.symm (coneApex A) = joinInr A (Δ[0] : SSet.{u}) := by
     apply SSet.yonedaEquiv.injective
     rw [Equiv.apply_symm_apply]

@@ -1,0 +1,14 @@
+{
+  "source_paths": 1643,
+  "declaration_header_errors": [],
+  "all_declaration_bodies_and_import_order_match_plan": true,
+  "replay_import_header_whitespace_variants": [
+    {
+      "file": "SerrePositivity/InfinityCategories/F1B/CocartesianScaffold/FiniteFiberComparison.lean",
+      "difference": "one blank line between two sequentially added imports; module order and the entire doc/declaration body are identical"
+    }
+  ],
+  "actual_source_hashes_recorded": 1643,
+  "old_source_paths_absent": 773,
+  "seconds": 61.4
+}

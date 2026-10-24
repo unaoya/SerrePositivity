@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
 lemma vertexFiberι_isQCatEquivalence_of_contractible_base_of_equivalenceLifting
     {E B : SSet.{u}} [Quasicategory E] [KanComplex B] (p : E ⟶ B) [InnerFibration p]
-    (hp : F1B.KanEquivalenceLifting p) (hB : IsContractibleKan B) (b : B _⦋0⦌) :
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (hB : IsContractibleKan B) (b : B _⦋0⦌) :
     IsQCatEquivalence (vertexFiberι p b) := by
   have := hp.innerFibration
   have : Quasicategory (vertexFiber p b) :=
@@ -40,7 +40,7 @@ lemma vertexFiberι_isQCatEquivalence_of_contractible_base_of_equivalenceLifting
 /-- 零終点 span の族と同じ固定境界を保つ比較。 -/
 lemma vertexFiber_hasInitial_of_contractible_base_of_equivalenceLifting
     {E B : SSet.{u}} [Quasicategory E] [KanComplex B] (p : E ⟶ B)
-    (hp : F1B.KanEquivalenceLifting p) (hB : IsContractibleKan B) (b : B _⦋0⦌)
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (hB : IsContractibleKan B) (b : B _⦋0⦌)
     (hi : ∃ v : E _⦋0⦌, IsInitialVertex v) :
     ∃ v : (vertexFiber p b) _⦋0⦌, IsInitialVertex v := by
   have := hp.innerFibration

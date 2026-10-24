@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluation
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.InfinityCategories.F1B.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 /-!

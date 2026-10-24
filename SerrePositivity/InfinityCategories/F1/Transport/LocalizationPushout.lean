@@ -43,7 +43,7 @@ lemma transportSimplexFirstVertexMap_isLocalization_of_isPushout {A B C D : SSet
     isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting
       ((pre i).app E) ((pre g).app E) (transportSimplexInvertingRestriction i E)
       (transportSimplexInvertingRestriction g E) (L A) (L B) (L C) h₁ h₂
-      (hL A hA) (hL B hB) (hL C hC) (F1B.kanEquivalenceLifting_pre i)
+      (hL A hA) (hL B hB) (hL C hC) (SerrePositivity.InfinityCategories.F1B.equivalenceLifting_pre i)
       (kanEquivalenceLifting_transportSimplexInvertingRestriction i E)
   have hs := (isPullback_pre_of_isPushout h E).flip
   have ht := (transportSimplexInverting_isPullback_of_isPushout h E).flip

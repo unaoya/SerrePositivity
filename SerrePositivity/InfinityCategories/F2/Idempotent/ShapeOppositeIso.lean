@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplitOpposite
-public import SerrePositivity.InfinityCategories.F1B.KanNerveOppositeIso
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OppositeIso
 
 /-!
 概要：元の全 Idem と分裂添字を、それぞれ元の単体反転と同型にする。
@@ -20,11 +20,11 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の全 Idem と、元の単体反転の指定同型。 -/
 def idemOppositeIso : IdemShape.{u} ≅ IdemShape.op :=
-  nerveFunctor.mapIso walkingIdemOppositeIso ≪≫ F1B.kanNerveOppositeIso WalkingIdem
+  nerveFunctor.mapIso walkingIdemOppositeIso ≪≫ SerrePositivity.InfinityCategories.F1B.nerveOppositeIso WalkingIdem
 
 /-- 元の全分裂添字と、元の単体反転の指定同型。 -/
 def splitOppositeIso : SplitShape.{u} ≅ SplitShape.op :=
-  nerveFunctor.mapIso walkingSplitOppositeIso ≪≫ F1B.kanNerveOppositeIso WalkingSplit
+  nerveFunctor.mapIso walkingSplitOppositeIso ≪≫ SerrePositivity.InfinityCategories.F1B.nerveOppositeIso WalkingSplit
 
 /-- 元の全包含と、元の二つの反転同型の正方形は厳密に可換。 -/
 lemma idemOppositeIso_inclusion : idemInclusion.{u} ≫ splitOppositeIso.hom =
@@ -34,10 +34,10 @@ lemma idemOppositeIso_inclusion : idemInclusion.{u} ≫ splitOppositeIso.hom =
   change nerveMap walkingInclusion ≫ nerveMap walkingSplitToOpposite =
     nerveMap walkingIdemToOpposite ≫ nerveMap walkingInclusion.op at h
   change (nerveMap walkingInclusion ≫ nerveMap walkingSplitToOpposite) ≫
-    (F1B.kanNerveOppositeIso WalkingSplit).hom =
+    (SerrePositivity.InfinityCategories.F1B.nerveOppositeIso WalkingSplit).hom =
       nerveMap walkingIdemToOpposite ≫
-        ((F1B.kanNerveOppositeIso WalkingIdem).hom ≫ SSet.opFunctor.map (nerveMap walkingInclusion))
-  rw [h, Category.assoc, F1B.kanNerveOppositeIso_natural]
+        ((SerrePositivity.InfinityCategories.F1B.nerveOppositeIso WalkingIdem).hom ≫ SSet.opFunctor.map (nerveMap walkingInclusion))
+  rw [h, Category.assoc, SerrePositivity.InfinityCategories.F1B.nerveOppositeIso_natural]
 
 /-- 元の逆同型の正方形も、同じ全包含と厳密に可換。 -/
 lemma idemOppositeIso_inv_inclusion : idemOppositeIso.{u}.inv ≫ idemInclusion =

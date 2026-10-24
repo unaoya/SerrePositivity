@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.ReflectiveUnitInvertible
+public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveUnitInvertible
 
 /-!
 概要：可逆な単位を持つ随伴の余単位は、右随伴で写すと可逆になる。

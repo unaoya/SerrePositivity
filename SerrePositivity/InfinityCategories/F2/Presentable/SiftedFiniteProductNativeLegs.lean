@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteProductNativeCone
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanConeHomotopyTriangles
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 
 /-!
 概要：元の有限 fiber 積の全空間 Kan 模型の native 積錐の全脚。

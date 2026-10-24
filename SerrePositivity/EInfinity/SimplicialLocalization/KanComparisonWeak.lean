@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonEnri
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak
 public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
-public import SerrePositivity.InfinityCategories.F1B.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!
 # 元の Kan 豊穣比較の各 Hom の同値性

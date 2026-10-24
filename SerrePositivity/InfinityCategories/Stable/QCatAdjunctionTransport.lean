@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.Adjunction
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 public import Mathlib.CategoryTheory.Comma.Arrow
 /-!
 概要：指定随伴を関手の等式で輸送しても、余単位の Arrow 表示を保つ。

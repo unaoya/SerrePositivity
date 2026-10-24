@@ -38,14 +38,14 @@ lemma localizationRightAdjunction_leftTriangle (η : FunctorHom (𝟙 Z) (H ≫ 
   change homPre L (homPost H η ≫
     homPre (F := F ≫ (L ≫ H)) (G := 𝟙 X) H a.counitHom) = homPre L (𝟙 _)
   rw [homPre_homComp, homPre_id, homPre_post, hη, ← homPost_comp, ← homPre_comp]
-  exact kanAdjunction_leftTriangleHom a
+  exact SerrePositivity.InfinityCategories.F1B.adjunction_leftTriangleHom a
 
 lemma localizationRightAdjunction_rightTriangle (η : FunctorHom (𝟙 Z) (H ≫ (F ≫ L)))
     (hη : homPre L η = homPost L a.unitHom) :
     homPre (F ≫ L) η ≫ homPost (F := F ≫ (L ≫ H)) (G := 𝟙 X) (F ≫ L) a.counitHom =
       𝟙 (HomotopyCategory.mk (functorVertex (F ≫ L))) := by
   rw [homPre_comp F L η, hη, homPre_post, homPost_comp, ← homPost_homComp]
-  exact (congrArg (homPost L) (kanAdjunction_rightTriangleHom a)).trans (homPost_id L F)
+  exact (congrArg (homPost L) (SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a)).trans (homPost_id L F)
 
 def localizationRightAdjunctionDescent : QCatAdjunction H (F ≫ L) :=
   adjunctionOfFunctorHomTriangles (F := H) (G := F ≫ L)

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison
+
 public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHorn
 public import SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffoldArbitraryBaseChange
 
@@ -16,36 +18,6 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-
-/-- 概要：部分複体の逆像の通常の四角形は pullback。
-方針：各次数で元と所属証明の組を一意に回収する。
-規約：射の充填性は不要。
-使われ方：部分複体による逆像の表示と標準 pullback の同定。 -/
-lemma subcomplexInverseImage_isPullback {E B : SSet.{u}} (p : E ⟶ B) (A : B.Subcomplex) :
-    IsPullback (A.fromPreimage p) (A.preimage p).ι A.ι p := by
-  apply IsPullback.of_forall_isPullback_app
-  intro d
-  apply (Types.isPullback_iff _ _ _ _).2
-  refine ⟨rfl, ?_, ?_⟩
-  · intro x y h
-    exact Subtype.ext h.2
-  · intro a e h
-    have he : p.app d e ∈ A.obj d := by rw [← h]; exact a.property
-    exact ⟨⟨e, he⟩, Subtype.ext h.symm, rfl⟩
-
-/-- 概要：逆像部分複体の包含の前合成同値性を標準 pullback の射影へ移す。
-方針：pullback の標準同型を消去する。
-規約：射影は全空間 E への第二射影。
-使われ方：replacement の内ホーンのセル分解を pullback の比較に渡す。 -/
-lemma isPrecompositionEquivalence_pullback_snd_of_subcomplexInverseImage
-    {E B : SSet.{u}} (p : E ⟶ B) (A : B.Subcomplex)
-    (h : IsPrecompositionEquivalence (A.preimage p).ι) :
-    IsPrecompositionEquivalence (pullback.snd A.ι p) := by
-  let hp := subcomplexInverseImage_isPullback p A
-  have hh : hp.isoPullback.hom ≫ pullback.snd A.ι p = (A.preimage p).ι :=
-    hp.isoPullback_hom_snd
-  rw [← hh] at h
-  exact (isPrecompositionEquivalence_of_iso hp.isoPullback).cancel_left h
 
 /-- 概要：replacement の部分底への制限が前合成同値なら実際の left fibration の制限も同値。
 方針：universal scaffold の元の比較と底変換した比較を消去する。

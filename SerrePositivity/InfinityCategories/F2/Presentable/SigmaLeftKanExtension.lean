@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPre
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaSiftedGeneration
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.FullyFaithfulKanUnit
-public import SerrePositivity.InfinityCategories.F1B.KanLeftCommaCoconeColimit
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 
 /-!
 概要：小さい sifted 余極限を持つ標的へ、元の P_Σ Yoneda に沿う左 Kan 延長を構成。
