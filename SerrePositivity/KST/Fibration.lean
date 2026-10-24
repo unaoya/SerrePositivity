@@ -600,3 +600,6 @@ public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrism
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrismFaces
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrismIso
 public import SerrePositivity.KST.Fibration.VerdierFullSUpperPrism
+
+public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrism
+public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrismIso

@@ -7,6 +7,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.VerdierFullSSquarePrism,
+    `SerrePositivity.KST.Fibration.VerdierFullSSquarePrismIso,
+
     `SerrePositivity.KST.Fibration.ZeroMiddleFullSKanHorn,
     `SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrism,
     `SerrePositivity.KST.Fibration.ZeroMiddleFullSKanPrismFaces,

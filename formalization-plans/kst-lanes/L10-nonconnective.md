@@ -20,7 +20,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（95 モジュール・1062 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
+- NonConnective 集約・専用監査は成功（97 モジュール・1079 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -78,8 +78,8 @@
 
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
-| `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 14／4 |
-| `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | K-B：固定 S の全高次作用と照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D の範囲は選択 cone の厳密関手性の評価後に確定 | 8／1 |
+| `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 17／6 |
+| `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | K-B：固定 S の全高次作用と照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D の範囲は選択 cone の厳密関手性の評価後に確定 | 11／2 |
 
 | フィールド／照合 | 供給元 |
 |---|---|
@@ -93,7 +93,7 @@
 ### c4 の全高次作用の供給境界（採用（03:55））
 - I・P と `DGSuspensionStageProvider` は対象別の供給であり、選んだ同じ cone に対する全 native Hom の作用を含まない。`DGSuspensionIterationMaps` の通常射に対する条件付き恒等・合成則だけを、固定 S 上の ∞ 関手の供給とは数えない。
 - 採用：`DGSuspensionNativeActionInput` を別の明示境界とする。固定 `dgKInputInfinity` 上の全単体的自己射 `map`、同じ平坦懸垂との `vertex` 照合、元の各 dg 射の増大可換データ `data`、同じ実商射の全一単体との `edge` 照合を要求する。存在は主張せず、固定 S・ν・K や I・P の型を変えない。
-- 利用側は検証済み：同じ作用の全高次反復を作り、各頂点を既存の `dgSuspensionIteration`、元の各厳密 dg 辺を既存の `dgSuspensionIterationMap` と厳密照合する。通常射の厳密合成則を追加で仮定せず、`map` 自体が全高次整合性を保持する。
+- 利用側は検証済み：`DGSuspensionEnrichedAction.ofEnrichedHom` は明示全 Hom 族・豊穣単位合成則・元の実 dg 射との照合から指定供給路を実装する。対応する豊穣自己関手の coherentNerveMap が元の各頂点・辺を保持する。供給された同じ作用の全高次反復を作り、各頂点を既存の `dgSuspensionIteration`、元の各厳密 dg 辺を既存の `dgSuspensionIterationMap` と厳密照合する。通常射の厳密合成則を追加で仮定せず、`map` 自体が全高次整合性を保持する。
 - 供給分担：K-B が全単体的作用と頂点・辺の照合を組み立てる。供給路は **PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap**。D 側の供給範囲は、D が選んだ cone 模型の厳密関手性を評価してから確定する（コーディネータが依頼済み）。対象別の `covers` による代表選択から厳密・高次の自然性を推論しない。この境界は I・P・実相対屋根とは別であり、存在・実供給は主張しない。評価待ちで停止せず K-6 c4・c5 と K-7 d を進める。
 
 ### D-12 供給境界（採用済み）
@@ -112,12 +112,12 @@
 
 
 ### K-7 d の三段目（2026-10-25、c の供給待ちと並行）
-- [ ] d1 元の連結固定 K から、同じ実 Sp 余極限余錐の零段の脚による実比較射。
+- [x] d1 元の連結固定 K から、同じ実 Sp 余極限余錐の零段の脚による実比較射。
 - [ ] d2 元の native loop 反復と整数 π の次数移動を、同じ隣接遷移射へ照合。
 - [ ] d3 非負次数の隣接安定化を証明し、同じ実比較射の非負整数 π 同型へ接続。
 - [ ] d4 Ind I-2 e の公開結果との照合、選択比較と全入力の自然性。
 
-- `DGSuspensionConnectedComparison` は明示された同じ構造辺の下で、零段を元の K(D) と厳密一致させ、元の実 Sp 余錐の脚を実 BF 比較射として使う。隣接遷移が指定次数で全単射なら同じ実脚も全単射であり、全非負次数の安定化を仮定すれば元の実比較射を順写像とする非負整数群同型を得る。隣接安定化そのもの・native loop の π 次数移動・I-2 e との照合は未証明。
+- `DGSuspensionConnectedComparison` は明示された同じ構造辺の下で、零段を元の K(D) と厳密一致させ、元の実 Sp 余錐の脚を実 BF 比較射として使う。隣接遷移が指定次数で全単射なら同じ実脚も全単射であり、全非負次数の安定化を仮定すれば元の実比較射を順写像とする非負整数群同型を得る。実 BF 比較射の全一単体も同じ余錐の脚へ厳密照合し、同じ公開 SOA 比較を前合成した実 Perf の連結 BF K からの実比較射にも同じ非負次数同型を接続した。隣接安定化そのもの・native loop の π 次数移動・I-2 e との照合は未証明。
 
 ## 原典との照合・受入条件
 - [BGT 2013 §9.1、Def. 9.1・Lem. 9.4・Prop. 9.5・Def. 9.6・Lem. 9.7](https://msp.org/gt/2013/17-2/gt-v17-n2-p03-s.pdf) を基準とする。一般安定 ∞ 圏での構成は参照先の主張であり、本レーンでは厳密 dg 供給に限定する。
