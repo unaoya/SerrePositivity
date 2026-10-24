@@ -23,16 +23,15 @@
 - 局所小ささは、元の各 pinched Hom と宇宙 u の Kan 空間の持ち上げとの全同値で定義した。
   固定頂点写像の小ささから二対象の小さい全部分模型を作り、Ind・accessible・presentable 圏へ供給する。
 - P-1 g は g1〜g7 を完了。元の Yoneda 制限上の有限余積条件と全小余極限保存を同値にした。
-- P-1 c：個々の presentable 圏の全小極限・反映による小余極限構成を提供する。
-  Pr^L 自身の小極限（HTT 5.5.3.13）は未着手。c 全体は未完了。
+- P-1 c は完了。個々の presentable 圏の全小極限・反映による小余極限構成を提供する。
+  ユーザー確定により HTT 5.5.3.13 は e へ移し、c は六項目のままとする。
 
 ### 残り（依存順）
-1. P-1 c：Pr^L 自身の小極限と Cat∞ への包含の保存（HTT 5.5.3.13）。
-   個々の presentable 圏の完備性（5.5.2.4）は提供済み。三段目への配置をユーザーに照会中。
-2. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
-3. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
-4. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
-   HTT 5.5.4.15。c〜f の個別見積もりは各着手時に精査する。
+1. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
+2. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
+   Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。d の後に着手。
+3. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
+   HTT 5.5.4.15。d〜f の個別見積もりは各着手時に精査する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -54,6 +53,7 @@
 - `IsPresentable.exists_reflectiveIndModel`、`IsPresentable.exists_presheafReflection`、`reflectiveIndModel_hasSmallColimits`
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
+- `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -78,12 +78,13 @@
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
 
 ### 未コミット
-- 所有ファイルは検証後に保存。共同作業中の他レーンの差分は変更しない。
+- 所有ファイルは保存済み。共同作業中の他レーンの差分は変更しない。
 
 ### 次の一手
-- 初期の c1〜c6 は個々の圏内の構成まで。HTT 5.5.3.13 の Pr^L 小極限は含まれていなかった。
-- 三段目に c7 を追加して続行するか、5.5.3.13 を e と接続するか、ユーザーに配置を照会中。
-- c 全体の完了は宣言せず、d は未着手。
+- c は最初の六項目で完了。二段目完了の引き継ぎとして停止し、次チャットで d に着手する。
+- e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
+- e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
+  accessibility・presentable 性の閉性、Pr^L 自身の小極限は未着手。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
 
 ## P-1 b 三段目（v3）

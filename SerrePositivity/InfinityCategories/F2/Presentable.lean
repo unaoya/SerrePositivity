@@ -218,3 +218,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafYonedaLe
 public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectionSmallColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectionSmallLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveModelLimitDetection
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorSmallColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackSmallColimits

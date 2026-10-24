@@ -458,3 +458,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_limitDetectingPresheafModel
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveIndModel_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_isColimitCone_iff_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_fst_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_snd_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_preservesSmallColimits_iff_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isColimitCone_iff_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_snd_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_preservesSmallColimits_iff_components
