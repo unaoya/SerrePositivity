@@ -48,6 +48,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRightKanCanonicalCone_restrict_val
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_oppositeDensityImages_canonicalLimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presheafOppositeDensityIsoOfYoneda
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverse_covariantPointIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverseDiagram_map_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_oppositeDensity_image_isRightKanExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentationCandidate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentation_restrictionIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.SendsSmallColimitsToLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsRepresentableSmallSpaceFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isRepresentable_of_sendsSmallColimitsToLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.SendsSmallColimitsToLimits.precomp_op
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
