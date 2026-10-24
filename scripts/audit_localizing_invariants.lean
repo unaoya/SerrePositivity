@@ -1500,7 +1500,19 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreLayerInverse,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRoof,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization,
-    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroRight]
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroRight,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassInverseEndpoints,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightBaseIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClassWitness,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenBaseIso,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenStandard,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightShiftedCoefficient,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightStandardClass,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightZeroTarget,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreShiftedInverse,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreZeroRightCoefficient]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

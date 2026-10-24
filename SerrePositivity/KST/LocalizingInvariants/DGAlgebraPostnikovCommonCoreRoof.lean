@@ -39,4 +39,10 @@ abbrev roofDenominatorLayer := denominatorLayer R hn f c
 abbrev roofShiftedNumeratorLayer (s : ℤ) := shiftedNumeratorLayer R hn f c s
 abbrev roofShiftedDenominatorLayer (s : ℤ) := shiftedDenominatorLayer R hn f c s
 
+local instance roof_apex_nonpositive : c.roof.apex.X.IsStrictlyLE 0 := c.roof_nonpositive
+
+abbrev roofZeroBase := postnikov R c.roof.apex 0
+abbrev roofZeroDenominator := PostnikovRoofZeroSpan.denominator R n hn f c
+abbrev roofZeroNumerator := PostnikovRoofZeroSpan.numerator R n hn f c
+
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovCommonCore

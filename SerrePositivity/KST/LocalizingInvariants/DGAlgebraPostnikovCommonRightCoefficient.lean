@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightCoefficient
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonLayerInverse
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZeroRightCoefficient
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerZeroRestrictionIso
@@ -45,11 +47,8 @@ def postnikovCommonRightNumeratorMap :
         (postnikovCommonZeroRightNumeratorMap R 1 f c d.zero)
 
 lemma postnikovCommonRightNumeratorMap_hom :
-    (postnikovCommonRightNumeratorMap R f c d).hom = postnikovLayerMap R (f.app i).hom 1 := by
-  unfold postnikovCommonRightNumeratorMap
-  rw [Bimod.comp_hom', postnikovLayerBaseZeroRestrictionIso_hom, bimoduleRestrictionMap_hom,
-    postnikovCommonZeroRightNumeratorMap_hom]
-  exact Category.id_comp _
+    (postnikovCommonRightNumeratorMap R f c d).hom = postnikovLayerMap R (f.app i).hom 1 :=
+  PostnikovCommonCore.postnikovCommonRightNumeratorMap_hom R (by omega) f c (d.toCore R f c)
 
 def postnikovCommonRightDenominatorMap :
     postnikovOneRoofDenominatorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) ⟶
@@ -62,18 +61,11 @@ def postnikovCommonRightDenominatorMap :
 
 lemma postnikovCommonRightDenominatorMap_hom :
     (postnikovCommonRightDenominatorMap R f c d).hom =
-      postnikovLayerMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1 := by
-  unfold postnikovCommonRightDenominatorMap
-  rw [Bimod.comp_hom', postnikovLayerBaseZeroRestrictionIso_hom, bimoduleRestrictionMap_hom,
-    postnikovCommonZeroRightDenominatorMap_hom]
-  exact Category.id_comp _
+      postnikovLayerMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1 :=
+  PostnikovCommonCore.postnikovCommonRightDenominatorMap_hom R (by omega) f c (d.toCore R f c)
 
 lemma postnikovCommonRight_coefficient : d.coefficient ≫
-    postnikovCommonRightNumeratorMap R f c d = postnikovCommonRightDenominatorMap R f c d := by
-  apply Bimod.Hom.ext
-  exact (Bimod.comp_hom' _ _).trans
-    ((congrArg (fun t => d.coefficient.hom ≫ t)
-      (postnikovCommonRightNumeratorMap_hom R f c d)).trans
-        (d.right_coefficient.trans (postnikovCommonRightDenominatorMap_hom R f c d).symm))
+    postnikovCommonRightNumeratorMap R f c d = postnikovCommonRightDenominatorMap R f c d :=
+  PostnikovCommonCore.postnikovCommonRight_coefficient R (by omega) f c (d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
