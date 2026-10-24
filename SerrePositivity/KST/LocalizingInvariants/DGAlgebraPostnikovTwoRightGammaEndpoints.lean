@@ -29,7 +29,10 @@ lemma postnikovCommonRightGammaToSource_toCell :
       cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) =
         postnikovCommonClassCompatibilityToCell R f c d := by
   simp only [postnikovCommonRightGammaToSource, postnikovCommonClassCompatibilityToCell,
-    postnikovCommonRightGlueToCell, Category.assoc]
+    postnikovCommonRightGlueToCell,
+    PostnikovCommonCore.postnikovCommonRightGammaToSource,
+    PostnikovCommonCore.postnikovCommonClassCompatibilityToCell,
+    PostnikovCommonCore.postnikovCommonRightGlueToCell, Category.assoc]
 
 lemma postnikovCommonRightGamma_comparison {C : Mon (Complex R)}
     (b : postnikovCommonClassBase R f c d ⟶ C) :
@@ -48,6 +51,10 @@ lemma postnikovCommonRightGammaSourceWitness_source :
         postnikovMap R (B.transition hj).hom 1)) ≫
           postnikovCellLift R (B.obj j).obj 1 (by omega) := by
   rw [(postnikovCommonRightGammaSourceWitness R f c d hj).source_eq]
+  change postnikovCommonRightGammaToSource R f c d ≫
+    (cellPathNonpositiveComparison R (postnikovCommonRightBase R f c d ≫
+      postnikovMap R (B.transition hj).hom 1) ≫
+        postnikovCellLift R (B.obj j).obj 1 (by decide)) = _
   rw [← Category.assoc, postnikovCommonRightGamma_comparison]
 
 lemma postnikovCommonRightGammaSourceWitness_target :
@@ -58,14 +65,22 @@ lemma postnikovCommonRightGammaSourceWitness_target :
         postnikovMap R (B.transition hj).hom 1)) ≫
           postnikovCellLift R (B.obj j).obj 1 (by omega) := by
   rw [(postnikovCommonRightGammaSourceWitness R f c d hj).target_eq]
+  change postnikovCommonRightGammaToSource R f c d ≫
+    (cellPathNonpositiveComparison R (postnikovCommonRightDenBase R f c d ≫
+      postnikovMap R (B.transition hj).hom 1) ≫
+        postnikovCellLift R (B.obj j).obj 1 (by decide)) = _
   rw [← Category.assoc, postnikovCommonRightGamma_comparison]
 
 lemma postnikovCommonClassRightDenominatorBase_composite :
     postnikovCommonClassRightDenominatorBase R f c d hj =
       postnikovCommonRightDenBase R f c d ≫ postnikovMap R (B.transition hj).hom 1 := by
-  rw [postnikovCommonClassRightDenominatorBase,
-    ← postnikovCommonRightDenDirect_factorization, postnikovMap_composition,
-    postnikovCommonRightDenBase, Category.assoc]
+  change (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
+    postnikovMap R (postnikovCommonRightDenDirectMap R f c d hj) 1 =
+      ((postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
+        postnikovMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1) ≫
+          postnikovMap R (B.transition hj).hom 1
+  rw [← postnikovCommonRightDenDirect_factorization, postnikovMap_composition]
+  exact (Category.assoc _ _ _).symm
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 

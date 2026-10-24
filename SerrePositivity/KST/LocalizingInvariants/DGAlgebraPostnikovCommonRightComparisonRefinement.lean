@@ -6,6 +6,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonC
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseChange
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightComparisonRefinement
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の Γ 源から、classifying 比較と二因子分解比較の両方の源へ写す。
 方針：既存の非正次数射影を前合成し、各比較の元の P への射影を計算する。
@@ -25,54 +28,43 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 def postnikovCommonRightToClassifying : postnikovCommonClassStandardGlueSource R f c d ⟶
     cellResolution R (postnikovCommonRightCellSource R f c d) :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    cellPathNonpositiveToCell R (postnikovCommonRightCellSource R f c d)
+  PostnikovCommonCore.postnikovCommonRightToClassifying
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightToClassifying_projection :
     postnikovCommonRightToClassifying R f c d ≫
       postnikovCommonRightClassifyingProjection R f c d =
-        postnikovCommonClassStandardGlueProjection R f c d := by
-  simp only [postnikovCommonRightToClassifying, postnikovCommonRightClassifyingProjection,
-    postnikovCommonClassStandardGlueProjection, postnikovCommonRightZeroGlueProjection,
-    Category.assoc, reassoc_of% cellPathNonpositiveToCell_projection]
+        postnikovCommonClassStandardGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonRightToClassifying_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightToFactorization : postnikovCommonClassStandardGlueSource R f c d ⟶
     cellResolution R (cellResolution R (cellResolution R
       (cellResolution R (postnikovCommonClassBase R f c d)))) :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    cellPathNonpositiveProjection R (postnikovCommonRightCellSource R f c d) ≫
-      cellFixedNonpositiveToFourthCell R (postnikovCommonClassBase R f c d)
+  PostnikovCommonCore.postnikovCommonRightToFactorization
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightToFactorization_projection :
     postnikovCommonRightToFactorization R f c d ≫
       postnikovCellFactorizationProjection R (postnikovCommonClassBase R f c d) =
-        postnikovCommonClassStandardGlueProjection R f c d := by
-  simp only [postnikovCommonRightToFactorization, postnikovCommonClassStandardGlueProjection,
-    postnikovCommonRightZeroGlueProjection, postnikovCommonRightCellProjection,
-    Category.assoc, cellFixedNonpositiveToFourthCell_projection]
+        postnikovCommonClassStandardGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonRightToFactorization_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightToClassifying_quasiIso :
-    QuasiIso (postnikovCommonRightToClassifying R f c d).hom := by
-  have := postnikovCommonRightClassifyingProjection_quasiIso R f c d
-  have : QuasiIso ((postnikovCommonRightToClassifying R f c d).hom ≫
-      (postnikovCommonRightClassifyingProjection R f c d).hom) := by
-    change QuasiIso ((postnikovCommonRightToClassifying R f c d ≫
-      postnikovCommonRightClassifyingProjection R f c d).hom)
-    rw [postnikovCommonRightToClassifying_projection]
-    exact postnikovCommonClassStandardGlueProjection_quasiIso R f c d
-  exact quasiIso_of_comp_right (postnikovCommonRightToClassifying R f c d).hom
-    (postnikovCommonRightClassifyingProjection R f c d).hom
+    QuasiIso (postnikovCommonRightToClassifying R f c d).hom :=
+  PostnikovCommonCore.postnikovCommonRightToClassifying_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightToFactorization_quasiIso :
-    QuasiIso (postnikovCommonRightToFactorization R f c d).hom := by
-  have := postnikovCellFactorizationProjection_quasiIso R (postnikovCommonClassBase R f c d)
-  have : QuasiIso ((postnikovCommonRightToFactorization R f c d).hom ≫
-      (postnikovCellFactorizationProjection R (postnikovCommonClassBase R f c d)).hom) := by
-    change QuasiIso ((postnikovCommonRightToFactorization R f c d ≫
-      postnikovCellFactorizationProjection R (postnikovCommonClassBase R f c d)).hom)
-    rw [postnikovCommonRightToFactorization_projection]
-    exact postnikovCommonClassStandardGlueProjection_quasiIso R f c d
-  exact quasiIso_of_comp_right (postnikovCommonRightToFactorization R f c d).hom
-    (postnikovCellFactorizationProjection R (postnikovCommonClassBase R f c d)).hom
+    QuasiIso (postnikovCommonRightToFactorization R f c d).hom :=
+  PostnikovCommonCore.postnikovCommonRightToFactorization_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightZeroSquare
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquarePrecomp
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedBaseNormalization
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：native fixed class の零底射を、元の P 上の classifying 底射へ厳密に同定する。
 方針：A 遷移と fⱼ の零切断自然性、元の二因子分解の可換式を使う。
@@ -25,18 +28,18 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 lemma postnikovCommonClassFixedZeroBase_classifying :
     postnikovCommonClassFixedZeroBase R f c d hj =
-      postnikovCommonRightClassifyingBase R f c d hj := by
-  rw [← postnikovCommonRightComposite_zero_base R f c d hj]
-  simp only [postnikovCommonClassFixedZeroBase, postnikovCommonClassRetractBase,
-    postnikovCommonRightNaturalityComposite, postnikovMap_composition, Category.assoc]
-  rw [postnikovTransition_naturality R (A.obj j).obj (f.app j).hom 1 0 (by omega)]
+      postnikovCommonRightClassifyingBase R f c d hj :=
+  PostnikovCommonCore.postnikovCommonClassFixedZeroBase_classifying
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassFixedZeroBase_projection :
     postnikovCommonClassStandardGlueProjection R f c d ≫
       postnikovCommonClassFixedZeroBase R f c d hj =
     postnikovCommonClassStandardGlueProjection R f c d ≫
       postnikovCommonRightClassifyingBase R f c d hj :=
-  congrArg (fun k => postnikovCommonClassStandardGlueProjection R f c d ≫ k)
-    (postnikovCommonClassFixedZeroBase_classifying R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassFixedZeroBase_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

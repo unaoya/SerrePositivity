@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightSourceFirstComparison
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageZeroMap
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourRightPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の輪郭の R と第二 ImageWitness の零底像を、同じ Γ 源上で取り出す。
 方針：既存の classifying 正方形の内側 target 評価と、元の係数同型を使う。
@@ -23,30 +26,20 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
-def postnikovCommonRightContourRightPath := SquareZero.RectangleOfHom.innerTarget
-  (postnikovCommonRightClassifyingLayer R f c d hj)
-  (postnikovCommonRightClassifyingBaseChangeHom R f c d hj)
-  (postnikovCommonRightClassifyingProjection R f c d)
-  (postnikovCommonRightClassifyingBaseChangeHom_projection R f c d hj)
+def postnikovCommonRightContourRightPath :=
+  PostnikovCommonCore.postnikovCommonRightContourRightPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourRightRefinedPath :=
-  ((postnikovCommonRightContourRightPath R f c d hj).precomp
-    (postnikovCommonRightToClassifying R f c d)).rebase
-    (postnikovCommonRightToClassifying_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightContourRightRefinedPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightDenSecondZeroPath :=
-  (((postnikovCellImageRelative R (B.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    ((postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
-      postnikovMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1)
-      (B.transition hj).hom).mapOver (𝟙 _)
-    (postnikovCommonRightDenCompositeZeroIso R f c d hj).hom
-    ((postnikovCommonRightDenCompositeZeroIso_projection R f c d hj).trans
-      (Category.comp_id _).symm)).precomp
-    (postnikovCommonRightImageToSecond R f c d)).rebase
-    (q' := postnikovCommonClassStandardGlueProjection R f c d) (by
-      rw [Category.comp_id]
-      exact postnikovCommonRightImageToSecond_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightDenSecondZeroPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightContourRightPath_map :
     (postnikovCommonRightContourRightPath R f c d hj).hom ≫ Path.map R
@@ -57,12 +50,9 @@ lemma postnikovCommonRightContourRightPath_map :
       (postnikovCellClassOverNaturalityWitness R (B.obj i).obj (B.obj j).obj
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightDenBase R f c d) (B.transition hj).hom).hom ≫
-      Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) := by
-  change (postnikovCommonRightClassifyingBaseChangeHom R f c d hj ≫
-    Path.map R (Path.target R _)) ≫ Path.map R _ = _
-  rw [Category.assoc, ← Path.map_comp, ← Path.map_target, Path.map_comp,
-    ← Category.assoc, postnikovCommonRightClassifyingBaseChangeHom_map R f c d hj,
-    postnikovCommonRightClassifyingZeroSquare_target_trace R f c d hj]
-  simp only [Path.Witness.precompNonpositiveCell, Category.assoc]
+      Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovCommonCore.postnikovCommonRightContourRightPath_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

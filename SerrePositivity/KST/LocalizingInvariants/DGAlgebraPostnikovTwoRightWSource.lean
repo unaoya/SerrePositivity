@@ -47,6 +47,9 @@ lemma rightWBasePath_source : d.rightWBasePath R ≫ Path.source R (postnikov R 
   change (α ≫ _) ≫ _ = _
   rw [Category.assoc,
     (postnikovCommonRightGammaBasePath R f d.baseInverse d.layerInverse d.target_le).source_eq]
+  change α ≫ (postnikovCommonClassStandardGlueProjection R f d.baseInverse d.layerInverse ≫
+    (postnikovCommonRightBase R f d.baseInverse d.layerInverse ≫
+      postnikovMap R (B.transition d.target_le).hom 1)) = _
   rw [← postnikovCommonClassRightImageBase_composite, ← Category.assoc]
   change (α ≫ d.classProjection R) ≫ _ = _
   rw [← d.rightImageRelativeRight R]
@@ -56,6 +59,9 @@ lemma rightWBasePath_target : d.rightWBasePath R ≫ Path.target R (postnikov R 
   change (α ≫ _) ≫ _ = _
   rw [Category.assoc,
     (postnikovCommonRightGammaBasePath R f d.baseInverse d.layerInverse d.target_le).target_eq]
+  change α ≫ (postnikovCommonClassStandardGlueProjection R f d.baseInverse d.layerInverse ≫
+    (postnikovCommonRightDenBase R f d.baseInverse d.layerInverse ≫
+      postnikovMap R (B.transition d.target_le).hom 1)) = _
   rw [← postnikovCommonClassRightDenominatorBase_composite, ← Category.assoc]
   change (α ≫ d.classProjection R) ≫ _ = _
   rw [← d.rightImageRelativeRight R]

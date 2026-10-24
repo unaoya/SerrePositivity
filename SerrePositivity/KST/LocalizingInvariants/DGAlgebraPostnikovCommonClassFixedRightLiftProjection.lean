@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightLift
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedRightLiftProjection
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の P へ戻した native 右 class 経路と二重経路の二射影を保持する。
 方針：底変更 lift の厳密な射影式を、元の Γ と classifying 底射へ適用する。
@@ -24,36 +27,27 @@ lemma postnikovCommonClassFixedRightCompletedLift_map :
     (postnikovCommonClassFixedRightCompletedLift R f c d hj e).hom ≫ Path.map R
       (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
-    (postnikovCommonClassFixedRightCompletedPath R f c d hj e).hom := by
-  let h := SquareZero.baseChangeRelativeWitness_map
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-    (postnikovCommonClassStandardGlueProjection R f c d)
-    (postnikovCommonClassFixedRightCompletedZero R f c d hj e)
-  exact h.trans (SquareZero.RelativeWitness.rebase_hom _ _)
+    (postnikovCommonClassFixedRightCompletedPath R f c d hj e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedRightCompletedLift_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedRightDenominatorLift_map :
     (postnikovCommonClassFixedRightDenominatorLift R f c d hj e).hom ≫ Path.map R
       (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
-    (postnikovCommonClassFixedRightDenominatorPath R f c d hj e).hom := by
-  let h := SquareZero.baseChangeRelativeWitness_map
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-    (postnikovCommonClassStandardGlueProjection R f c d)
-    (postnikovCommonClassFixedRightDenominatorZero R f c d hj e)
-  exact h.trans (SquareZero.RelativeWitness.rebase_hom _ _)
+    (postnikovCommonClassFixedRightDenominatorPath R f c d hj e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedRightDenominatorLift_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedRightRelativeSquare_map :
     (postnikovCommonClassFixedRightRelativeSquare R f c d hj e).hom ≫ Path.map R
       (Path.map R (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))) =
-    (postnikovCommonClassFixedRightRebasedZeroSquare R f c d hj e).hom := by
-  let h := SquareZero.baseChangeSquareHom_map
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-    (postnikovCommonClassStandardGlueProjection R f c d)
-    (postnikovCommonClassFixedRightRebasedZeroSquare R f c d hj e)
-  exact h
+    (postnikovCommonClassFixedRightRebasedZeroSquare R f c d hj e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedRightRelativeSquare_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

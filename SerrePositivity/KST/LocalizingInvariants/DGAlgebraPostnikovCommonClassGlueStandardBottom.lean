@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonC
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquareAppend
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeSquarePrepend
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassGlueStandardBottom
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：native 標準像の実比較に、元の G の反転と指定 W を接続する。
 方針：同じ端点表示の二重経路へ W を後置し、G の反転を前置する。
@@ -24,33 +27,35 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonClassContourBottomZero :=
-  (postnikovCommonRightContourBottomRefinedPath R f c d hj).mapOver
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))
-    (SquareZero.baseChangeMap_projection _ _)
+  PostnikovCommonCore.postnikovCommonClassContourBottomZero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassStandardThenBottom :=
-  (postnikovCommonClassStandardContourPath R f c d hj).comp
-    (postnikovCommonClassContourBottomZero R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassStandardThenBottom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassViaBThenBottomZero :=
-  (postnikovCommonClassViaBContourZero R f c d hj).comp
-    (postnikovCommonClassContourBottomZero R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassViaBThenBottomZero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassGlueStandardBottom :=
-  (postnikovCommonRightGlueZeroRelative R f c d hj).reverse.comp
-    (postnikovCommonClassStandardThenBottom R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassGlueStandardBottom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassGlueViaBBottom :=
-  (postnikovCommonRightGlueZeroRelative R f c d hj).reverse.comp
-    (postnikovCommonClassViaBThenBottomZero R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassGlueViaBBottom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassGlueStandardBottomSquare : SquareZero.RelativeWitnessSquare
     (postnikovCommonClassGlueStandardBottom R f c d hj)
     (postnikovCommonClassGlueViaBBottom R f c d hj) :=
-  ((postnikovCommonClassStandardContourSquare R f c d hj).append
-    (postnikovCommonClassContourBottomZero R f c d hj)).prepend
-    (postnikovCommonRightGlueZeroRelative R f c d hj).reverse
+  PostnikovCommonCore.postnikovCommonClassGlueStandardBottomSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

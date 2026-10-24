@@ -5,6 +5,9 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourFirstComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourTargetLeft
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の輪郭の T′L の合成を、同じ Γ 源上の既存 affineViaB 経路そのものへ同定する。
 方針：二つの全経路同定と、前合成・affine 合成の厳密な保存を使う。
@@ -25,38 +28,26 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightContourTargetPath :=
-  let N := postnikovCommonRightClassifyingLayer R f c d hj
-  let H := postnikovCommonRightClassifyingBaseChangeHom R f c d hj
-  let p := postnikovCommonRightClassifyingProjection R f c d
-  let V := postnikovCommonRightTransitionLift R f c d hj
-    (postnikovCommonRightFixedCentralRelative R f c d)
-  let T := postnikovCommonRightTransitionLift R f c d hj
-    (postnikovCommonRightFixedTargetRelative R f c d)
-  let hTop := postnikovCommonRightClassifyingBaseChangeHom_central R f c d hj
-  SquareZero.RectangleOfHom.towardTopSource N H p V hTop T
+  PostnikovCommonCore.postnikovCommonRightContourTargetPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourTargetLeft :=
-  (postnikovCommonRightContourTargetPath R f c d hj).comp
-    (postnikovCommonRightContourLeftPath R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightContourTargetLeft
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourTargetLeftRefined :=
-  ((postnikovCommonRightContourTargetLeft R f c d hj).precomp
-    (postnikovCommonRightToClassifying R f c d)).rebase
-    (postnikovCommonRightToClassifying_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightContourTargetLeftRefined
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 元の輪郭の T′L は元の Γ 源上の affineViaB と全乗法的経路として厳密に一致。 -/
 lemma postnikovCommonRightContourTargetLeft_hom :
     (postnikovCommonRightContourTargetLeftRefined R f c d hj).hom =
-      (postnikovCommonRightZeroAffineViaB R f c d hj).hom := by
-  let t := postnikovCommonRightContourTargetPath R f c d hj
-  let l := postnikovCommonRightContourLeftPath R f c d hj
-  let e := postnikovCommonRightToClassifying R f c d
-  have ht : (t.precomp e).hom = (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom :=
-    postnikovCommonRightContourFirst_hom R f c d hj
-  have hl : (l.precomp e).hom = (postnikovCommonRightViaBSecondZeroPath R f c d hj).hom :=
-    postnikovCommonRightContourLeftSecond_hom R f c d hj
-  exact (SquareZero.RelativeWitness.precomp_comp_hom t l e).trans
-    ((SquareZero.RelativeWitness.comp_congr_hom_of_paths ht hl).trans
-      (postnikovCommonRightZeroAffineViaB_pair_hom R f c d hj).symm)
+      (postnikovCommonRightZeroAffineViaB R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightContourTargetLeft_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

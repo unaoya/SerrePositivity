@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightBottom
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightZeroSquare
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedRightZeroSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の fixed class 互換性に自然性と W を接いだ経路を、分母自然性と実比較する。
 方針：元の native 合成の全射の同定に沿い、分母比較の両端と底を移す。
@@ -25,20 +28,20 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (e : PostnikovZeroLayerInverse R 1 f j i hj)
 
 def postnikovCommonClassFixedRightDenominatorPath :=
-  SquareZero.RelativeWitness.transferEndpoints
-    (postnikovCommonClassGlueStandardBottom R f c d hj)
-    (postnikovCommonClassFixedRightCompletedPath R f c d hj e)
-    (postnikovCommonClassFixedRightCompletedPath_hom R f c d hj e).symm
-    (postnikovCommonClassDenContourZero R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassFixedRightDenominatorPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 def postnikovCommonClassFixedRightZeroSquare : SquareZero.RelativeWitnessSquare
     (postnikovCommonClassFixedRightDenominatorPath R f c d hj e)
     (postnikovCommonClassFixedRightCompletedPath R f c d hj e) :=
-  (postnikovCommonClassRightZeroSquare R f c d hj).reindex _ _ rfl
-    (postnikovCommonClassFixedRightCompletedPath_hom R f c d hj e).symm
+  PostnikovCommonCore.postnikovCommonClassFixedRightZeroSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 def postnikovCommonClassFixedRightZeroTransportHomotopy :=
-  SquareZeroExtension.transportHomotopy _
-    (postnikovCommonClassFixedRightZeroSquare R f c d hj e)
+  PostnikovCommonCore.postnikovCommonClassFixedRightZeroTransportHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

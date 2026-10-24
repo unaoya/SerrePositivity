@@ -5,6 +5,9 @@ public import
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativePathCompositionCongr
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRectangleTopGlue
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourSourceRight
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の輪郭の S′R を、分母の二つの指定 ImageWitness の零底 affine 合成へ同定する。
 方針：S′ は元の S と同じ射、R は target trace からの同定を使い、合成の全射を保つ。
@@ -25,41 +28,31 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightContourSourcePath :=
-  let N := postnikovCommonRightClassifyingLayer R f c d hj
-  let H := postnikovCommonRightClassifyingBaseChangeHom R f c d hj
-  let p := postnikovCommonRightClassifyingProjection R f c d
-  let V := postnikovCommonRightTransitionLift R f c d hj
-    (postnikovCommonRightFixedCentralRelative R f c d)
-  let S := postnikovCommonRightTransitionLift R f c d hj
-    (postnikovCommonRightFixedSourceRelative R f c d)
-  let hTop := postnikovCommonRightClassifyingBaseChangeHom_central R f c d hj
-  SquareZero.RectangleOfHom.towardTopTarget N H p V hTop S
+  PostnikovCommonCore.postnikovCommonRightContourSourcePath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourSourceRight :=
-  (postnikovCommonRightContourSourcePath R f c d hj).comp
-    (postnikovCommonRightContourRightPath R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightContourSourceRight
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourSourceRightRefined :=
-  ((postnikovCommonRightContourSourceRight R f c d hj).precomp
-    (postnikovCommonRightToClassifying R f c d)).rebase
-    (postnikovCommonRightToClassifying_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightContourSourceRightRefined
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightDenZeroComposite :=
-  (postnikovCommonRightDenFirstZeroPath R f c d hj).comp
-    (postnikovCommonRightDenSecondZeroPath R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightDenZeroComposite
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 元の分母境界 S′R は指定した二自然性の零底 affine 合成と全経路で厳密に一致。 -/
 lemma postnikovCommonRightContourSourceRight_hom :
     (postnikovCommonRightContourSourceRightRefined R f c d hj).hom =
-      (postnikovCommonRightDenZeroComposite R f c d hj).hom := by
-  let s := postnikovCommonRightContourSourcePath R f c d hj
-  let r := postnikovCommonRightContourRightPath R f c d hj
-  let e := postnikovCommonRightToClassifying R f c d
-  have hs : (s.precomp e).hom = (postnikovCommonRightDenFirstZeroPath R f c d hj).hom :=
-    postnikovCommonRightSourceFirst_hom R f c d hj
-  have hr : (r.precomp e).hom = (postnikovCommonRightDenSecondZeroPath R f c d hj).hom :=
-    postnikovCommonRightContourRightSecond_hom R f c d hj
-  exact (SquareZero.RelativeWitness.precomp_comp_hom s r e).trans
-    (SquareZero.RelativeWitness.comp_congr_hom_of_paths hs hr)
+      (postnikovCommonRightDenZeroComposite R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightContourSourceRight_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

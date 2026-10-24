@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedZeroPaths
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeReverseCongr
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedZeroComposition
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fixed Γ の右 class 像を反転と標準像の実 affine 合成として同定する。
 方針：前合成・底付き移送による反転合成の保存を元の二経路へ適用する。
@@ -26,24 +29,23 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 lemma postnikovCommonClassFixedCompatibilityMapped_hom :
     (postnikovCommonClassFixedCompatibilityMappedRelative R f c d hj e).hom =
       ((postnikovCommonClassFixedTransitionMappedRelative R f c d hj e).reverse.comp
-        (postnikovCommonClassFixedStandardMappedRelative R f c d hj)).hom := by
-  exact SquareZero.RelativeWitness.precomp_mapOver_reverse_comp_hom
-    (postnikovCommonClassFixedTransitionRelative R f c d e)
-    (postnikovCommonClassStandardRelative R f c d (hj := hj))
-    (cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d))
-    (postnikovCommonClassFixedZeroBase R f c d hj)
-    (postnikovCommonClassFixedZeroMap R f c d hj)
-    (postnikovCommonClassFixedZeroMap_projection R f c d hj)
+        (postnikovCommonClassFixedStandardMappedRelative R f c d hj)).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedCompatibilityMapped_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedTransitionMapped_glue :
     (postnikovCommonClassFixedTransitionMappedRelative R f c d hj e).hom =
       (postnikovCommonRightGlueZeroRelative R f c d hj).hom :=
-  postnikovCommonClassFixedTransitionZeroRight_hom R f c d hj e
+  PostnikovCommonCore.postnikovCommonClassFixedTransitionMapped_glue
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedTransitionMapped_reverse_glue :
     (postnikovCommonClassFixedTransitionMappedRelative R f c d hj e).reverse.hom =
       (postnikovCommonRightGlueZeroRelative R f c d hj).reverse.hom :=
-  SquareZero.RelativeWitness.reverse_congr_hom_of_paths
-    (postnikovCommonClassFixedTransitionMapped_glue R f c d hj e)
+  PostnikovCommonCore.postnikovCommonClassFixedTransitionMapped_reverse_glue
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

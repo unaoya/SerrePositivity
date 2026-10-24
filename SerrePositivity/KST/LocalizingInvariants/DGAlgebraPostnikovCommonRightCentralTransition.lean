@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueTransition
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessBaseChange
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightCentralTransition
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：P 上の classifying 正方形の元の中央辺を、B 遷移後の三経路貼合せの中央辺と同定する。
 方針：同じ全底経路と、零底 class への全経路射影による一意性を使う。
@@ -31,20 +34,9 @@ lemma postnikovCommonRightClassifyingBaseChangeHom_central :
       (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
       (postnikovCommonRightClassifyingProjection R f c d)
       (postnikovCommonRightTransitionOverRelative R f c d hj
-        (postnikovCommonRightFixedCentralRelative R f c d))).hom := by
-  apply SquareZero.baseChangePath_hom_ext (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  · have h := (SquareZero.RectangleOfHom.outerSource
-      (bimoduleRestrict (postnikovCommonRightClassifyingBase R f c d hj)
-        (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))
-      (postnikovCommonRightClassifyingBaseChangeHom R f c d hj)
-      (postnikovCommonRightClassifyingProjection R f c d)
-      (postnikovCommonRightClassifyingBaseChangeHom_projection R f c d hj)).projection_eq
-    exact h.trans (SquareZero.baseChangeRelativeWitness _ _ _
-      (postnikovCommonRightTransitionOverRelative R f c d hj
-        (postnikovCommonRightFixedCentralRelative R f c d))).projection_eq.symm
-  · rw [SquareZero.baseChangeRelativeWitness_map,
-      postnikovCommonRightTransitionOverRelative_hom]
-    exact postnikovCommonRightClassifyingBaseChangeHom_source_fixed R f c d hj
+        (postnikovCommonRightFixedCentralRelative R f c d))).hom :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseChangeHom_central
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

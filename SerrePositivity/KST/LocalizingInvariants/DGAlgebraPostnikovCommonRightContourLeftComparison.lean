@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourLeftPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourLeftComparison
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の L を、同じ Γ 源上の零底 affine 第二経路へ全射で同定する。
 方針：source trace の全零 class 像と第二 ImageWitness の底変更式を照合する。
@@ -29,16 +32,10 @@ lemma postnikovCommonRightViaBSecondZeroPath_map :
       (postnikovCellClassOverNaturalityWitness R (B.obj i).obj (B.obj j).obj
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightBase R f c d) (B.transition hj).hom).hom ≫
-      Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) := by
-  change (postnikovCommonRightImageToSecond R f c d ≫
-    ((postnikovCellImageRelative R (B.obj i).obj (B.obj j).obj
-      (postnikovCommonClassBase R f c d) 1 (by omega)
-      ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
-        postnikovMap R (f.app i).hom 1) (B.transition hj).hom).hom ≫
-      Path.map R (postnikovCommonRightViaBImageToZero R f c d hj))) ≫ _ = _
-  simp only [Category.assoc, ← Path.map_comp, postnikovCommonRightViaBImageToZero_map]
-  rw [postnikovCellImageRelative_zero_map]
-  rfl
+      Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovCommonCore.postnikovCommonRightViaBSecondZeroPath_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightContourLeftSecond_map :
     (postnikovCommonRightContourLeftRefinedPath R f c d hj).hom ≫ Path.map R
@@ -46,21 +43,16 @@ lemma postnikovCommonRightContourLeftSecond_map :
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
     (postnikovCommonRightViaBSecondZeroPath R f c d hj).hom ≫ Path.map R
       (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-        (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) := by
-  have hl := congrArg (fun t => postnikovCommonRightToClassifying R f c d ≫ t)
-    (postnikovCommonRightContourLeftPath_map R f c d hj)
-  have hr := postnikovCommonRightViaBSecondZeroPath_map R f c d hj
-  simp only [postnikovCommonRightImageToSecond_eq, Category.assoc] at hr
-  simpa only [postnikovCommonRightContourLeftRefinedPath, SquareZero.RelativeWitness.rebase_hom,
-    SquareZero.RelativeWitness.precomp_hom, Category.assoc] using hl.trans hr.symm
+        (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) :=
+  PostnikovCommonCore.postnikovCommonRightContourLeftSecond_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightContourLeftSecond_hom :
     (postnikovCommonRightContourLeftRefinedPath R f c d hj).hom =
-      (postnikovCommonRightViaBSecondZeroPath R f c d hj).hom := by
-  apply SquareZero.baseChangePath_hom_ext (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  · exact (postnikovCommonRightContourLeftRefinedPath R f c d hj).projection_eq.trans
-      (postnikovCommonRightViaBSecondZeroPath R f c d hj).projection_eq.symm
-  · exact postnikovCommonRightContourLeftSecond_map R f c d hj
+      (postnikovCommonRightViaBSecondZeroPath R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightContourLeftSecond_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

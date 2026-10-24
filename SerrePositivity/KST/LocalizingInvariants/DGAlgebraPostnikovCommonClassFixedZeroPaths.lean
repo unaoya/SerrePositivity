@@ -3,6 +3,9 @@ module
 public import
 SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionZeroProjection
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedZeroPaths
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fixed Γ の遷移・標準 class・互換性を同じ零底上の実相対経路へ移す。
 方針：元の零底射の射影式を保つ底付き平方零代数射で移す。
@@ -23,39 +26,37 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonClassFixedZeroBase :=
-  postnikovCommonClassRetractBase R f c d (hj := hj) ≫
-    postnikovTransition R (A.obj j).obj 1 0 (by omega) ≫ postnikovMap R (f.app j).hom 0
+  PostnikovCommonCore.postnikovCommonClassFixedZeroBase
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassFixedZeroMap :=
-  postnikovCommonClassTransitionToZero R f c d hj ≫ postnikovZeroClassMap R 1 1 (f.app j).hom
+  PostnikovCommonCore.postnikovCommonClassFixedZeroMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassFixedZeroMap_projection :
     postnikovCommonClassFixedZeroMap R f c d hj ≫ SquareZero.projection _ _ =
-      SquareZero.projection _ _ ≫ postnikovCommonClassFixedZeroBase R f c d hj := by
-  rw [postnikovCommonClassFixedZeroMap, Category.assoc, postnikovZeroClassMap_projection,
-    ← Category.assoc, postnikovCommonClassTransitionToZero_projection]
-  simp only [postnikovCommonClassFixedZeroBase, Category.assoc]
+      SquareZero.projection _ _ ≫ postnikovCommonClassFixedZeroBase R f c d hj :=
+  PostnikovCommonCore.postnikovCommonClassFixedZeroMap_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 variable (e : PostnikovZeroLayerInverse R 1 f j i hj)
 
 def postnikovCommonClassFixedTransitionMappedRelative :=
-  ((postnikovCommonClassFixedTransitionRelative R f c d e).precomp
-    (cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d))).mapOver
-    (postnikovCommonClassFixedZeroBase R f c d hj)
-    (postnikovCommonClassFixedZeroMap R f c d hj)
-    (postnikovCommonClassFixedZeroMap_projection R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassFixedTransitionMappedRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 def postnikovCommonClassFixedStandardMappedRelative :=
-  ((postnikovCommonClassStandardRelative R f c d (hj := hj)).precomp
-    (cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d))).mapOver
-    (postnikovCommonClassFixedZeroBase R f c d hj)
-    (postnikovCommonClassFixedZeroMap R f c d hj)
-    (postnikovCommonClassFixedZeroMap_projection R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassFixedStandardMappedRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassFixedCompatibilityMappedRelative :=
-  (postnikovCommonClassFixedGlueCompatibility R f c d e).mapOver
-    (postnikovCommonClassFixedZeroBase R f c d hj)
-    (postnikovCommonClassFixedZeroMap R f c d hj)
-    (postnikovCommonClassFixedZeroMap_projection R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassFixedCompatibilityMappedRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

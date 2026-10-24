@@ -5,6 +5,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenStandard
 public import SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionComposition
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightZeroTarget
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の共通底上の右 class 標的を、B の零底平方零標的へ写す。
 方針：元の零底射の合成と制限合成同型を使い、恒等係数の shift を保つ。
@@ -31,55 +34,61 @@ local instance rightZero_target_lowerBound : (postnikov R (B.obj i).obj 0).X.IsS
 
 def postnikovCommonRightZeroBase : postnikovCommonClassBase R f c d ⟶
     postnikov R (B.obj i).obj 0 :=
-  postnikovQuotient R (postnikovCommonClassBase R f c d) 0 ≫
-    (postnikovOneRoofZeroDenominator R f (postnikovOneRoofRefine R f c d.zero.source_le) ≫
-      postnikovMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 0)
+  PostnikovCommonCore.postnikovCommonRightZeroBase
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroBase_num : postnikovCommonRightZeroBase R f c d =
     postnikovCommonRightBase R f c d ≫ postnikovTransition R (B.obj i).obj 1 0 (by omega) :=
-  (congrArg (fun t => postnikovQuotient R (postnikovCommonClassBase R f c d) 0 ≫ t)
-    (postnikovCommonRightBase_zero R f c d).symm).trans (postnikovQuotient_desc R 0 _)
+  PostnikovCommonCore.postnikovCommonRightZeroBase_num
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroBase_den : postnikovCommonRightZeroBase R f c d =
     postnikovCommonRightDenBase R f c d ≫ postnikovTransition R (B.obj i).obj 1 0 (by omega) :=
-  (congrArg (fun t => postnikovQuotient R (postnikovCommonClassBase R f c d) 0 ≫ t)
-    (postnikovCommonRightDenBase_zero R f c d).symm).trans (postnikovQuotient_desc R 0 _)
+  PostnikovCommonCore.postnikovCommonRightZeroBase_den
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightZeroLayerIso :
     bimoduleRestrict (postnikovCommonRightZeroBase R f c d)
       (postnikovLayerZeroBimodule R (B.obj i).obj 1) ≅ postnikovCommonRightLayer R f c d :=
-  bimoduleRestrictionCompIso _ _ _
+  PostnikovCommonCore.postnikovCommonRightZeroLayerIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightZeroCoefficient :
     DGBimoduleShift.obj (postnikovCommonRightLayer R f c d) 1 ⟶
       bimoduleRestrict (postnikovCommonRightZeroBase R f c d)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1) :=
-  DGBimoduleShift.mapOver _ _ 1 (postnikovCommonRightZeroLayerIso R f c d).inv
+  PostnikovCommonCore.postnikovCommonRightZeroCoefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroCoefficient_hom :
     (postnikovCommonRightZeroCoefficient R f c d).hom =
-      𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦(1 : ℤ)⟧) := by
-  rw [postnikovCommonRightZeroCoefficient, DGBimoduleShift.mapOver_hom]
-  have he : (postnikovCommonRightZeroLayerIso R f c d).inv.hom =
-      𝟙 (postnikovLayer R (B.obj i).obj 1) := rfl
-  rw [he]
-  change (shiftFunctor (Complex R) (1 : ℤ)).map (𝟙 (postnikovLayer R (B.obj i).obj 1)) = 𝟙 _
-  exact (shiftFunctor (Complex R) (1 : ℤ)).map_id _
+      𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦(1 : ℤ)⟧) :=
+  PostnikovCommonCore.postnikovCommonRightZeroCoefficient_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightClassToZero : postnikovCommonRightClassTarget R f c d ⟶
     postnikovZeroClassTarget R (B.obj i).obj 1 1 :=
-  SquareZero.mapOver _ _ _ (postnikovCommonRightZeroCoefficient R f c d)
+  PostnikovCommonCore.postnikovCommonRightClassToZero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightClassToZero_projection : postnikovCommonRightClassToZero R f c d ≫
     SquareZero.projection _ _ = SquareZero.projection _ _ ≫ postnikovCommonRightZeroBase R f c d :=
-  SquareZero.mapOver_projection _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassToZero_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightClassToZero_hom : (postnikovCommonRightClassToZero R f c d).hom =
     biprod.map (postnikovCommonRightZeroBase R f c d).hom
-      (𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦(1 : ℤ)⟧)) := by
-  change biprod.map (postnikovCommonRightZeroBase R f c d).hom
-    (postnikovCommonRightZeroCoefficient R f c d).hom = _
-  rw [postnikovCommonRightZeroCoefficient_hom]
-  rfl
+      (𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦(1 : ℤ)⟧)) :=
+  PostnikovCommonCore.postnikovCommonRightClassToZero_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

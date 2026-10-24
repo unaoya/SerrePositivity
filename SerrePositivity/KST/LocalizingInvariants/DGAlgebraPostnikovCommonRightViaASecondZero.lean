@@ -5,6 +5,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightTargetFirstPath
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageZeroMap
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightViaASecondZero
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の Γ 源上で、A 遷移と fⱼ の零底 affine 第二辺を取り出す。
 方針：元の指定細分・ViaA の実係数射を使い、同じ Γ 射影上の相対経路を保つ。
@@ -25,17 +28,9 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightViaASecondZeroPath :=
-  (((postnikovCellImageRelative R (A.obj j).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
-      postnikovMap R (A.transition hj).hom 1) (f.app j).hom).mapOver (𝟙 _)
-    (postnikovCommonRightViaAImageToZero R f c d hj)
-    ((postnikovCommonRightViaAImageToZero_projection R f c d hj).trans
-      (Category.comp_id _).symm)).precomp
-    (postnikovCommonRightImageToSecond R f c d)).rebase
-    (q' := postnikovCommonClassStandardGlueProjection R f c d) (by
-      rw [Category.comp_id]
-      exact postnikovCommonRightImageToSecond_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightViaASecondZeroPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightViaASecondZeroPath_map :
     (postnikovCommonRightViaASecondZeroPath R f c d hj).hom ≫ Path.map R
@@ -46,18 +41,9 @@ lemma postnikovCommonRightViaASecondZeroPath_map :
         (postnikovCommonClassBase R f c d) 1 (by omega)
         ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
           postnikovMap R (A.transition hj).hom 1) (f.app j).hom).hom ≫
-        Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) := by
-  change (postnikovCommonRightImageToSecond R f c d ≫
-    ((postnikovCellImageRelative R (A.obj j).obj (B.obj j).obj
-      (postnikovCommonClassBase R f c d) 1 (by omega)
-      ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
-        postnikovMap R (A.transition hj).hom 1) (f.app j).hom).hom ≫
-      Path.map R (postnikovCommonRightViaAImageToZero R f c d hj))) ≫ _ = _
-  simp only [Category.assoc, ← Path.map_comp, postnikovCommonRightViaAImageToZero_map]
-  exact congrArg (fun k => postnikovCommonRightImageToSecond R f c d ≫ k)
-    (postnikovCellImageRelative_zero_map R (A.obj j).obj (B.obj j).obj
-      (postnikovCommonClassBase R f c d) 1 (by omega)
-      ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
-        postnikovMap R (A.transition hj).hom 1) (f.app j).hom)
+        Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovCommonCore.postnikovCommonRightViaASecondZeroPath_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellAffineFactorizationSquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCompositeSquare
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightAffineCompositeSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：A 遷移と fⱼ、fᵢ と B 遷移の実 affine class 合成を同じ底上で比較する。
 方針：元の二因子分解の cell 比較に、cell–affine の実二重経路を縦合成する。
@@ -28,39 +31,34 @@ def postnikovCommonRightAffineNaturalityViaA : SquareZero.RelativeWitness
     (postnikovCommonRightNaturalityCompositeLayer R f c d hj)
     (postnikovCommonRightNaturalityCompositeSource R f c d hj)
     (postnikovCommonRightNaturalityCompositeTarget R f c d hj) :=
-  postnikovCellFactorizationAffineCommonWitness R (A.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-    (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj
-    (A.transition hj).hom (f.app j).hom rfl
+  PostnikovCommonCore.postnikovCommonRightAffineNaturalityViaA
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightAffineNaturalityViaB : SquareZero.RelativeWitness
     (postnikovCellFactorizationProjection R (postnikovCommonClassBase R f c d))
     (postnikovCommonRightNaturalityCompositeLayer R f c d hj)
     (postnikovCommonRightNaturalityCompositeSource R f c d hj)
     (postnikovCommonRightNaturalityCompositeTarget R f c d hj) :=
-  postnikovCellFactorizationAffineCommonWitness R (A.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-    (postnikovCommonRightNaturalityComposite R f hj) (B.obj i).obj
-    (f.app i).hom (B.transition hj).hom (congrArg (fun t => t.hom) (f.naturality hj)).symm
+  PostnikovCommonCore.postnikovCommonRightAffineNaturalityViaB
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightAffineCompositeSquare : SquareZero.RelativeWitnessSquare
     (postnikovCommonRightAffineNaturalityViaA R f c d hj)
     (postnikovCommonRightAffineNaturalityViaB R f c d hj) :=
-  postnikovCellAffineFactorizationCommonSquare R (A.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-    (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj (B.obj i).obj
-    (A.transition hj).hom (f.app j).hom rfl
-    (f.app i).hom (B.transition hj).hom (congrArg (fun t => t.hom) (f.naturality hj)).symm
+  PostnikovCommonCore.postnikovCommonRightAffineCompositeSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightAffineCompositeTransportHomotopy : Path.Witness R
     (SquareZeroExtension.transport (postnikovCommonRightNaturalityCompositeLayer R f c d hj)
       (postnikovCommonRightAffineNaturalityViaA R f c d hj))
     (SquareZeroExtension.transport (postnikovCommonRightNaturalityCompositeLayer R f c d hj)
       (postnikovCommonRightAffineNaturalityViaB R f c d hj)) :=
-  SquareZeroExtension.transportHomotopy _ (postnikovCommonRightAffineCompositeSquare R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightAffineCompositeTransportHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightAffineCompositeTransportHomotopy_left :
     (postnikovCommonRightAffineCompositeTransportHomotopy R f c d hj).hom ≫
@@ -71,8 +69,9 @@ lemma postnikovCommonRightAffineCompositeTransportHomotopy_left :
       (postnikovCommonRightNaturalityCompositeSource R f c d hj) ≫
       Path.diagonal R (cellResolution R (cellResolution R (cellResolution R
         (cellResolution R (postnikovCommonClassBase R f c d))))) :=
-  SquareZeroExtension.transportHomotopy_left _
-    (postnikovCommonRightAffineCompositeSquare R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightAffineCompositeTransportHomotopy_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightAffineCompositeTransportHomotopy_right :
     (postnikovCommonRightAffineCompositeTransportHomotopy R f c d hj).hom ≫
@@ -82,7 +81,8 @@ lemma postnikovCommonRightAffineCompositeTransportHomotopy_right :
     SquareZeroExtension.relativeRight (postnikovCommonRightNaturalityCompositeLayer R f c d hj)
       (postnikovCommonRightNaturalityCompositeSource R f c d hj) ≫
       Path.diagonal R (postnikovCommonClassBase R f c d) :=
-  SquareZeroExtension.transportHomotopy_right _
-    (postnikovCommonRightAffineCompositeSquare R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightAffineCompositeTransportHomotopy_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -30,7 +30,8 @@ def sourceCoefficientHomologyIso :
 
 def targetCoefficientHomologyIso :
     (d.numeratorLayer R).X.homology (-3) ≅ (A.obj j).obj.X.homology (-2) := by
-  dsimp only [numeratorLayer, postnikovCommonClassTransitionLayer, bimoduleRestrict]
+  dsimp only [numeratorLayer, postnikovCommonClassTransitionLayer,
+    PostnikovCommonCore.postnikovCommonClassTransitionLayer, bimoduleRestrict]
   exact postnikovShiftedLayerHomologyIso R (A.obj j).obj 1 (by omega) 1
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.PostnikovTwoClassInverseData

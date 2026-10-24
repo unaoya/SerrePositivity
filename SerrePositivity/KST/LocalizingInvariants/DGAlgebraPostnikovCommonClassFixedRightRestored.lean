@@ -3,6 +3,9 @@ module
 public import
 SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedRightDenLiftComparison
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedRightRestored
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の P 上で、元の分母自然性と復元した native 右 class 合成を実比較する。
 方針：分母経路の全射の同定で端点を揃え、持ち上げた全二重経路を保持する。
@@ -22,42 +25,36 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (e : PostnikovZeroLayerInverse R 1 f j i hj)
 
 def postnikovCommonClassFixedRightRestoredPath :=
-  SquareZero.RelativeWitness.transferEndpoints
-    (postnikovCommonClassFixedRightDenominatorLift R f c d hj e)
-    (postnikovCommonRightDenContourPath R f c d hj)
-    (postnikovCommonClassFixedRightDenominatorLift_hom R f c d hj e)
-    (postnikovCommonClassFixedRightCompletedLift R f c d hj e)
+  PostnikovCommonCore.postnikovCommonClassFixedRightRestoredPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedRightRestoredPath_hom :
     (postnikovCommonClassFixedRightRestoredPath R f c d hj e).hom =
-      (postnikovCommonClassFixedRightCompletedLift R f c d hj e).hom := by
-  let h := SquareZero.RelativeWitness.transferEndpoints_hom
-    (postnikovCommonClassFixedRightDenominatorLift R f c d hj e)
-    (postnikovCommonRightDenContourPath R f c d hj)
-    (postnikovCommonClassFixedRightDenominatorLift_hom R f c d hj e)
-    (postnikovCommonClassFixedRightCompletedLift R f c d hj e)
-  exact h
+      (postnikovCommonClassFixedRightCompletedLift R f c d hj e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedRightRestoredPath_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 def postnikovCommonClassFixedRightRestoredSquare : SquareZero.RelativeWitnessSquare
     (postnikovCommonRightDenContourPath R f c d hj)
     (postnikovCommonClassFixedRightRestoredPath R f c d hj e) :=
-  (postnikovCommonClassFixedRightRelativeSquare R f c d hj e).reindex _ _
-    (postnikovCommonClassFixedRightDenominatorLift_hom R f c d hj e)
-    (postnikovCommonClassFixedRightRestoredPath_hom R f c d hj e).symm
+  PostnikovCommonCore.postnikovCommonClassFixedRightRestoredSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedRightRestoredPath_map :
     (postnikovCommonClassFixedRightRestoredPath R f c d hj e).hom ≫ Path.map R
       (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
-    (postnikovCommonClassFixedRightCompletedPath R f c d hj e).hom := by
-  let h := congrArg (fun k => k ≫ Path.map R
-    (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)))
-    (postnikovCommonClassFixedRightRestoredPath_hom R f c d hj e)
-  exact h.trans (postnikovCommonClassFixedRightCompletedLift_map R f c d hj e)
+    (postnikovCommonClassFixedRightCompletedPath R f c d hj e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedRightRestoredPath_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 def postnikovCommonClassFixedRightRestoredTransportHomotopy :=
-  SquareZeroExtension.transportHomotopy (postnikovCommonRightClassifyingLayer R f c d hj)
-    (postnikovCommonClassFixedRightRestoredSquare R f c d hj e)
+  PostnikovCommonCore.postnikovCommonClassFixedRightRestoredTransportHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

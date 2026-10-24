@@ -29,12 +29,15 @@ local instance oneRoofZero_targetB_lowerBound : (postnikov R (B.obj m).obj 0).X.
 local instance oneRoofZero_targetB_nonpositive : (postnikov R (B.obj m).obj 0).X.IsStrictlyLE 0 :=
   postnikovComplex_nonpositive R (B.obj m).obj 0
 
+@[reducible]
 def postnikovOneRoofZeroBase : Mon (Complex R) := postnikov R c.roof.apex 0
 
+@[reducible]
 def postnikovOneRoofZeroDenominator : postnikovOneRoofZeroBase R f c ⟶
     postnikov R (B.obj m).obj 0 :=
   postnikovDesc R 0 (c.roof.denominator ≫ postnikovTransition R (B.obj m).obj 1 0 (by omega))
 
+@[reducible]
 def postnikovOneRoofZeroNumerator : postnikovOneRoofZeroBase R f c ⟶
     postnikov R (A.obj i).obj 0 :=
   postnikovDesc R 0 (c.roof.numerator ≫ postnikovTransition R (A.obj i).obj 1 0 (by omega))
@@ -58,6 +61,7 @@ lemma postnikovOneRoofZeroDenominator_isIso : IsIso (postnikovOneRoofZeroDenomin
   rw [Functor.map_comp]
   infer_instance
 
+@[reducible]
 def postnikovOneRoofZeroInverse : postnikov R (B.obj m).obj 0 ⟶ postnikov R (A.obj i).obj 0 := by
   have := postnikovOneRoofZeroDenominator_isIso R f c
   exact inv (postnikovOneRoofZeroDenominator R f c) ≫ postnikovOneRoofZeroNumerator R f c

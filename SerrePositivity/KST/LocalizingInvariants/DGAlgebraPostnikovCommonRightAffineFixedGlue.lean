@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroNormalize
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessPrecomp
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightAffineFixedGlue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：指定右経路を保つ中央経路を、両側の class 自然性と同じ源上で affine 貼合せする。
 方針：共通零底への三経路を相対証人へ束ね、同じ源の合成と反転を使う。
@@ -31,26 +34,20 @@ def postnikovCommonRightFixedTargetRelative : SquareZero.RelativeWitness
     (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1)
     (postnikovCommonRightZeroImageTarget R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) where
-  toWitness := postnikovCommonRightZeroImageTargetWitness R f c d
-  projection_eq := (Path.Witness.hom_eq_constant R
-    ((postnikovCommonRightZeroImageTargetWitness R f c d).postcomp
-      (SquareZero.projection _ _))).trans
-    (congrArg (fun t => t ≫ Path.diagonal R (postnikov R (B.obj i).obj 0))
-      (postnikovCommonRightZeroImageTarget_projection R f c d))
+      postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
+  PostnikovCommonCore.postnikovCommonRightFixedTargetRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightFixedSourceRelative : SquareZero.RelativeWitness
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d)
     (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1)
     (postnikovCommonRightZeroImageSource R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) where
-  toWitness := postnikovCommonRightZeroImageSourceWitness R f c d
-  projection_eq := (Path.Witness.hom_eq_constant R
-    ((postnikovCommonRightZeroImageSourceWitness R f c d).postcomp
-      (SquareZero.projection _ _))).trans
-    (congrArg (fun t => t ≫ Path.diagonal R (postnikov R (B.obj i).obj 0))
-      (postnikovCommonRightZeroImageSource_projection R f c d))
+      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
+  PostnikovCommonCore.postnikovCommonRightFixedSourceRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightFixedCentralRelative : SquareZero.RelativeWitness
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d)
@@ -58,21 +55,18 @@ def postnikovCommonRightFixedCentralRelative : SquareZero.RelativeWitness
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
       postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) where
-  hom := (postnikovCommonRightFixedZeroPathWitness R f c d).hom
-  source_eq := (postnikovCommonRightFixedZeroPathWitness R f c d).source_eq.trans
-    (postnikovCommonRightZeroPathLeft_eq R f c d)
-  target_eq := (postnikovCommonRightFixedZeroPathWitness R f c d).target_eq.trans
-    (postnikovCommonRightZeroPathRight_eq R f c d)
-  projection_eq := postnikovCommonRightFixedZeroPathWitness_projection R f c d
+      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
+  PostnikovCommonCore.postnikovCommonRightFixedCentralRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightAffineFixedGlue : SquareZero.RelativeWitness
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d)
     (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1)
     (postnikovCommonRightZeroImageTarget R f c d) (postnikovCommonRightZeroImageSource R f c d) :=
-  ((postnikovCommonRightFixedTargetRelative R f c d).comp
-    (postnikovCommonRightFixedCentralRelative R f c d)).comp
-    (postnikovCommonRightFixedSourceRelative R f c d).reverse
+  PostnikovCommonCore.postnikovCommonRightAffineFixedGlue
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightAffineFixedGlue_linear :
     (postnikovCommonRightAffineFixedGlue R f c d).hom.hom =
@@ -85,10 +79,9 @@ lemma postnikovCommonRightAffineFixedGlue_linear :
       (postnikovCommonRightZeroImageSource R f c d ≫
         Path.diagonal R (SquareZero.algebra (postnikov R (B.obj i).obj 0)
             (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1))).hom -
-      (postnikovCommonRightFixedSourceRelative R f c d).hom.hom := by
-  change (((postnikovCommonRightFixedTargetRelative R f c d).comp _).comp _).hom.hom = _
-  rw [SquareZero.RelativeWitness.comp_hom_linear, SquareZero.RelativeWitness.comp_hom_linear,
-    SquareZero.RelativeWitness.reverse_hom_linear]
-  abel
+      (postnikovCommonRightFixedSourceRelative R f c d).hom.hom :=
+  PostnikovCommonCore.postnikovCommonRightAffineFixedGlue_linear
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellPathNaturalitySquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClassifyingSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：指定右経路の class と B 遷移の自然性を、元の四辺を持つ実二重経路で比較する。
 方針：任意底経路に沿う classifying 自然性正方形を、元の c の右経路へ適用する。
@@ -28,9 +31,9 @@ def postnikovCommonRightClassifyingSquare : Path.Witness R
       Path.map R (postnikovDerivationTargetMap R (B.transition hj).hom 1 (by omega)))
     (cellAugmentation R (postnikovCommonRightCellSource R f c d) ≫
       (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom) :=
-  postnikovCellClassPathNaturalitySquare R (B.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovCommonRightBasePath R f c d) (B.transition hj).hom
+  PostnikovCommonCore.postnikovCommonRightClassifyingSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingSquare_source_trace :
     (postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
@@ -39,7 +42,9 @@ lemma postnikovCommonRightClassifyingSquare_source_trace :
       ((postnikovCellClassOverNaturalityWitness R (B.obj i).obj (B.obj j).obj
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightBase R f c d) (B.transition hj).hom).precompNonpositiveCell R).hom :=
-  postnikovCellClassPathNaturalitySquare_source_trace R _ _ _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassifyingSquare_source_trace
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingSquare_target_trace :
     (postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
@@ -49,7 +54,9 @@ lemma postnikovCommonRightClassifyingSquare_target_trace :
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightDenBase R f c d) (B.transition hj).hom).precompNonpositiveCell
         R).hom :=
-  postnikovCellClassPathNaturalitySquare_target_trace R _ _ _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassifyingSquare_target_trace
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingSquare_base_trace :
     (postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
@@ -60,6 +67,8 @@ lemma postnikovCommonRightClassifyingSquare_base_trace :
         ((postnikovCommonRightBasePath R f c d).postcomp
           (postnikovMap R (B.transition hj).hom 1)).hom) ≫
         Path.diagonal R (Path.algebra R (postnikov R (B.obj j).obj 1))) :=
-  postnikovCellClassPathNaturalitySquare_base_trace R _ _ _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassifyingSquare_base_trace
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -3,6 +3,9 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassGlueStandardBottom
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassGlueViaBMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の分母比較の右辺の零底像を、同じ G⁻¹・ViaB・W の実合成へ同定する。
 方針：底付き移送の反転保存と二回の合成保存を、全経路の等式として使う。
@@ -23,29 +26,15 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonClassGlueSolvedMappedPath :=
-  (postnikovCommonRightGlueSolvedPath R f c d hj).mapOver
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))
-    (SquareZero.baseChangeMap_projection _ _)
+  PostnikovCommonCore.postnikovCommonClassGlueSolvedMappedPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassGlueViaB_map_hom :
     (postnikovCommonClassGlueSolvedMappedPath R f c d hj).hom =
-      (postnikovCommonClassGlueViaBBottom R f c d hj).hom := by
-  let k := SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  let hk := SquareZero.baseChangeMap_projection
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  let g := postnikovCommonRightGlueRefinedPath R f c d hj
-  let v := postnikovCommonRightViaBContourPath R f c d hj
-  let w := postnikovCommonRightContourBottomRefinedPath R f c d hj
-  have hm := SquareZero.RelativeWitness.mapOver_comp_hom
-    (postnikovCommonRightClassifyingBase R f c d hj) k hk g.reverse (v.comp w)
-  have hr := SquareZero.RelativeWitness.mapOver_reverse_hom
-    (postnikovCommonRightClassifyingBase R f c d hj) k hk g
-  have hb := SquareZero.RelativeWitness.mapOver_comp_hom
-    (postnikovCommonRightClassifyingBase R f c d hj) k hk v w
-  exact hm.trans (SquareZero.RelativeWitness.comp_congr_hom_of_paths hr hb)
+      (postnikovCommonClassGlueViaBBottom R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonClassGlueViaB_map_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

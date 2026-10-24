@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassFixedTransition
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassAffineRight
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassFixedRight
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：新しい class 互換性を fⱼ で移した経路を、元の B 遷移と指定右貼合せで計算する。
 方針：同じ係数逆の厳密な右三角形と底変更射影を使う。
@@ -26,11 +29,10 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 lemma postnikovCommonClassFixedTransition_zero :
     (postnikovCommonClassFixedTransitionWitness R f c d e).hom ≫
       Path.map R (postnikovCommonClassTransitionToZero R f c d hj) =
-    (postnikovCommonClassFixedRetractWitness R f c d e).hom := by
-  change ((postnikovCommonClassFixedRetractRelativeWitness R f c d e).hom ≫
-    Path.map R (postnikovCommonClassTransitionIso R f c d hj).inv) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCommonClassTransitionIso_inv_zero,
-    postnikovCommonClassFixedRetractRelativeWitness, SquareZero.baseChangeWitness_map]
+    (postnikovCommonClassFixedRetractWitness R f c d e).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedTransition_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedTransition_zero_right :
     (postnikovCommonClassFixedTransitionWitness R f c d e).hom ≫ Path.map R
@@ -38,25 +40,19 @@ lemma postnikovCommonClassFixedTransition_zero_right :
         postnikovZeroClassMap R 1 1 (f.app j).hom) =
     (postnikovCommonRightFixedClassGlueWitness R f c d).hom ≫ Path.map R
       (postnikovCommonRightClassToZero R f c d ≫
-        postnikovZeroClassMap R 1 1 (B.transition hj).hom) := by
-  rw [Path.map_comp, ← Category.assoc, postnikovCommonClassFixedTransition_zero]
-  change ((postnikovCommonRightFixedClassGlueWitness R f c d).hom ≫
-    Path.map R (postnikovCommonRightRetract R f c d e)) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCommonRightRetract_right]
+        postnikovZeroClassMap R 1 1 (B.transition hj).hom) :=
+  PostnikovCommonCore.postnikovCommonClassFixedTransition_zero_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedCompatibility_linear :
     (postnikovCommonClassFixedCompatibility R f c d e).hom.hom =
     (postnikovCommonClassTransitionSource R f c d (hj := hj) ≫ Path.diagonal R _).hom -
       (postnikovCommonClassFixedTransitionWitness R f c d e).hom.hom +
-      (postnikovCommonClassStandardWitness R f c d hj).hom.hom := by
-  change (((postnikovCommonClassFixedTransitionRelative R f c d e).reverse).comp _).hom.hom = _
-  rw [SquareZero.RelativeWitness.comp_hom_linear, SquareZero.RelativeWitness.reverse_hom_linear]
-  change (postnikovCommonClassTransitionTarget R f c d (hj := hj) ≫ Path.diagonal R _).hom -
-      (postnikovCommonClassFixedTransitionWitness R f c d e).hom.hom +
-      (postnikovCommonClassTransitionSource R f c d (hj := hj) ≫ Path.diagonal R _).hom -
-      (postnikovCommonClassTransitionTarget R f c d (hj := hj) ≫ Path.diagonal R _).hom +
-      (postnikovCommonClassStandardWitness R f c d hj).hom.hom = _
-  abel
+      (postnikovCommonClassStandardWitness R f c d hj).hom.hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedCompatibility_linear
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassFixedCompatibility_zero_right :
     ((postnikovCommonClassFixedCompatibility R f c d e).hom ≫ Path.map R
@@ -71,14 +67,9 @@ lemma postnikovCommonClassFixedCompatibility_zero_right :
         postnikovZeroClassMap R 1 1 (B.transition hj).hom)).hom +
     ((postnikovCommonClassStandardWitness R f c d hj).hom ≫ Path.map R
       (postnikovCommonClassTransitionToZero R f c d hj ≫
-        postnikovZeroClassMap R 1 1 (f.app j).hom)).hom := by
-  let z : SquareZero.algebra (postnikovCommonClassBase R f c d)
-      (postnikovCommonClassTransitionLayer R f c d hj) ⟶
-      postnikovZeroClassTarget R (B.obj j).obj 1 1 :=
-    postnikovCommonClassTransitionToZero R f c d hj ≫ postnikovZeroClassMap R 1 1 (f.app j).hom
-  have hh := congrArg (fun t => t ≫ (Path.map R z).hom)
-    (postnikovCommonClassFixedCompatibility_linear R f c d e)
-  simpa only [z, add_comp, sub_comp, ← Mon.comp_hom', Category.assoc,
-    Path.diagonal_naturality, postnikovCommonClassFixedTransition_zero_right] using hh
+        postnikovZeroClassMap R 1 1 (f.app j).hom)).hom :=
+  PostnikovCommonCore.postnikovCommonClassFixedCompatibility_zero_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonC
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightViaAImageMap
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellImageForwardZero
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassStandardOriginalZero
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fixed Γ の標準経路の右像を、元の A 遷移の ImageWitness の零底像へ同定する。
 方針：元の標準証人の前合成射を、同じ Γ の二重 cell 射へ厳密に揃える。
@@ -31,13 +34,9 @@ lemma postnikovCommonClassFixedStandardMapped_original_hom :
         (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
         (A.transition hj).hom).hom ≫ Path.map R
       (postnikovCommonClassTransitionToZero R f c d hj) ≫
-        Path.map R (postnikovZeroClassMap R 1 1 (f.app j).hom) := by
-  simp only [postnikovCommonClassFixedStandardMappedRelative, SquareZero.RelativeWitness.mapOver,
-    SquareZero.RelativeWitness.precomp, postnikovCommonClassStandardRelative,
-    postnikovCommonClassStandardWitness, Path.Witness.precomp, Path.Witness.postcomp,
-    Path.Witness.precompNonpositiveCell, postnikovCellImageRelative_hom,
-    postnikovCommonClassFixedZeroMap, Path.map_comp, postnikovCommonRightImageToSecond_eq,
-    postnikovCommonRightToClassifying, Category.assoc,
-    reassoc_of% cellPathNonpositiveToCell_projection]
+        Path.map R (postnikovZeroClassMap R 1 1 (f.app j).hom) :=
+  PostnikovCommonCore.postnikovCommonClassFixedStandardMapped_original_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

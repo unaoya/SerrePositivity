@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardNaturalitySquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueSolved
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassStandardContour
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：native 標準像と fⱼ の自然性の合成を、元の輪郭の端点表示へ厳密に移す。
 方針：ViaB の全射が元の輪郭の全射と一致することから、二重経路の端点を移す。
@@ -24,31 +27,34 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonClassViaBContourZero :=
-  (postnikovCommonRightViaBContourPath R f c d hj).mapOver
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))
-    (SquareZero.baseChangeMap_projection _ _)
+  PostnikovCommonCore.postnikovCommonClassViaBContourZero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassStandardViaB_contour_hom :
     (postnikovCommonClassStandardViaBZeroRelative R f c d hj).hom =
-      (postnikovCommonClassViaBContourZero R f c d hj).hom := rfl
+      (postnikovCommonClassViaBContourZero R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonClassStandardViaB_contour_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassStandardContourPath :=
-  SquareZero.RelativeWitness.transferEndpoints
-    (postnikovCommonClassStandardViaBZeroRelative R f c d hj)
-    (postnikovCommonClassViaBContourZero R f c d hj)
-    (postnikovCommonClassStandardViaB_contour_hom R f c d hj)
-    (postnikovCommonClassStandardThenNaturality R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassStandardContourPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassStandardContourPath_hom :
     (postnikovCommonClassStandardContourPath R f c d hj).hom =
-      (postnikovCommonClassStandardThenNaturality R f c d hj).hom := rfl
+      (postnikovCommonClassStandardThenNaturality R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonClassStandardContourPath_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassStandardContourSquare : SquareZero.RelativeWitnessSquare
     (postnikovCommonClassStandardContourPath R f c d hj)
     (postnikovCommonClassViaBContourZero R f c d hj) :=
-  (postnikovCommonClassStandardNaturalitySquare R f c d hj).reindex _ _ rfl
-    (postnikovCommonClassStandardViaB_contour_hom R f c d hj)
+  PostnikovCommonCore.postnikovCommonClassStandardContourSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

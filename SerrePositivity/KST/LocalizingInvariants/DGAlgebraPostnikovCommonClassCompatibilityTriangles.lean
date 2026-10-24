@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassCompatibility
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassCompatibilityTriangles
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：標準 class に整合した新しい係数逆が、元の層の左右三角形を満たすことを示す。
 方針：同じ実逆 d の三角形と A の遷移の自然性を、元の整数 shift で写す。
@@ -24,44 +27,27 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 lemma postnikovCommonClassCompatibilityCoefficient_hom :
     (postnikovCommonClassCompatibilityCoefficient R f c d (hj := hj)).hom =
       d.coefficient.hom⟦(1 : ℤ)⟧' ≫
-        (postnikovLayerMap R (A.transition hj).hom 1)⟦(1 : ℤ)⟧' := by
-  rw [postnikovCommonClassCompatibilityCoefficient, Bimod.comp_hom',
-    postnikovCommonShiftedCoefficientMap_hom, postnikovCommonClassTransitionCoefficient,
-    postnikovCellClassOverCoefficient_hom]
+        (postnikovLayerMap R (A.transition hj).hom 1)⟦(1 : ℤ)⟧' :=
+  PostnikovCommonCore.postnikovCommonClassCompatibilityCoefficient_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassCompatibilityCoefficient_left :
     (postnikovLayerMap R (f.app d.zero.stage).hom 1)⟦(1 : ℤ)⟧' ≫
       (postnikovCommonClassCompatibilityCoefficient R f c d (hj := hj)).hom =
         (postnikovLayerMap R
-          (A.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1)⟦(1 : ℤ)⟧' := by
-  have h : postnikovLayerMap R (f.app d.zero.stage).hom 1 ≫
-      (d.coefficient.hom ≫ postnikovLayerMap R (A.transition hj).hom 1) =
-    postnikovLayerMap R
-      (A.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1 := by
-    rw [← Category.assoc, d.left_coefficient, ← postnikovLayerMap_comp]
-    exact congrArg (fun t => postnikovLayerMap R t 1)
-      (congrArg (fun t => t.hom)
-        (A.transition_comp (d.zero.inverse_le.trans d.zero.stage_le) hj))
-  rw [postnikovCommonClassCompatibilityCoefficient_hom,
-    ← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp, h]
+          (A.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1)⟦(1 : ℤ)⟧' :=
+  PostnikovCommonCore.postnikovCommonClassCompatibilityCoefficient_left
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassCompatibilityCoefficient_right :
     (postnikovCommonClassCompatibilityCoefficient R f c d (hj := hj)).hom ≫
       (postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧' =
         (postnikovLayerMap R
-          (B.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1)⟦(1 : ℤ)⟧' := by
-  have hn : postnikovLayerMap R (A.transition hj).hom 1 ≫
-      postnikovLayerMap R (f.app j).hom 1 = postnikovLayerMap R (f.app i).hom 1 ≫
-        postnikovLayerMap R (B.transition hj).hom 1 :=
-    (f.map (postnikovLayerFunctor R 1)).naturality hj
-  have h : (d.coefficient.hom ≫ postnikovLayerMap R (A.transition hj).hom 1) ≫
-      postnikovLayerMap R (f.app j).hom 1 = postnikovLayerMap R
-        (B.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1 := by
-    rw [Category.assoc, hn, ← Category.assoc, d.right_coefficient, ← postnikovLayerMap_comp]
-    exact congrArg (fun t => postnikovLayerMap R t 1)
-      (congrArg (fun t => t.hom)
-        (B.transition_comp (d.zero.inverse_le.trans d.zero.stage_le) hj))
-  rw [postnikovCommonClassCompatibilityCoefficient_hom,
-    ← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp, h]
+          (B.transition (hj.trans (d.zero.inverse_le.trans d.zero.stage_le))).hom 1)⟦(1 : ℤ)⟧' :=
+  PostnikovCommonCore.postnikovCommonClassCompatibilityCoefficient_right
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

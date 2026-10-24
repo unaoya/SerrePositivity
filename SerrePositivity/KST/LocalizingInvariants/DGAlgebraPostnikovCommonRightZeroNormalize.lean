@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroPath
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathSourceMap
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightZeroNormalize
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：共通零標的で三つの元の class 経路を、同じ非正次数共通源上の両端へ正規化する。
 方針：元の標準 class の底変更式と一重・二重 cell 源への比較射を使用する。
@@ -25,69 +28,65 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 lemma postnikovCommonRightZeroPathLeft_eq : postnikovCommonRightZeroPathLeft R f c d =
     (cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d := by
-  simp only [postnikovCommonRightZeroPathLeft, cellPathNonpositiveComparison_toCell,
-    Category.assoc, postnikovCommonRightStandardClass_zero]
+      postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d :=
+  PostnikovCommonCore.postnikovCommonRightZeroPathLeft_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroPathRight_eq : postnikovCommonRightZeroPathRight R f c d =
     (cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d := by
-  simp only [postnikovCommonRightZeroPathRight, cellPathNonpositiveComparison_toCell,
-    Category.assoc, postnikovCommonRightDenStandardClass_zero]
+      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d :=
+  PostnikovCommonCore.postnikovCommonRightZeroPathRight_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 abbrev postnikovCommonRightZeroImageSource :=
-  (cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-    (postnikovCommonClassSource R f c d ≫ postnikovCommonRightClassNumeratorMap R f c d)) ≫
-      postnikovCommonRightClassToZero R f c d
+  PostnikovCommonCore.postnikovCommonRightZeroImageSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 abbrev postnikovCommonRightZeroImageTarget :=
-  (cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-    (postnikovCommonClassTarget R f c d ≫ postnikovCommonRightClassNumeratorMap R f c d)) ≫
-      postnikovCommonRightClassToZero R f c d
+  PostnikovCommonCore.postnikovCommonRightZeroImageTarget
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightZeroImageSourceWitness : Path.Witness R
     (postnikovCommonRightZeroImageSource R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
       postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
-  ((postnikovCommonClassSourceRightWitness R f c d).precompNonpositiveCell R).postcomp
-    (postnikovCommonRightClassToZero R f c d)
+  PostnikovCommonCore.postnikovCommonRightZeroImageSourceWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightZeroImageTargetWitness : Path.Witness R
     (postnikovCommonRightZeroImageTarget R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
       postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
-  ((postnikovCommonClassTargetRightWitness R f c d).precompNonpositiveCell R).postcomp
-    (postnikovCommonRightClassToZero R f c d)
+  PostnikovCommonCore.postnikovCommonRightZeroImageTargetWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightZeroStandardWitness : Path.Witness R
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
       postnikovCommonRightStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d)
     ((cellPathNonpositiveToCell R (postnikovCommonClassBase R f c d) ≫
-      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) where
-  hom := (postnikovCommonRightZeroPathWitness R f c d).hom
-  source_eq := (postnikovCommonRightZeroPathWitness R f c d).source_eq.trans
-    (postnikovCommonRightZeroPathLeft_eq R f c d)
-  target_eq := (postnikovCommonRightZeroPathWitness R f c d).target_eq.trans
-    (postnikovCommonRightZeroPathRight_eq R f c d)
+      postnikovCommonRightDenStandardClass R f c d) ≫ postnikovCommonRightClassToZero R f c d) :=
+  PostnikovCommonCore.postnikovCommonRightZeroStandardWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroImageTarget_projection : postnikovCommonRightZeroImageTarget R f c d ≫
     SquareZero.projection _ _ =
-      postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d := by
-  simp only [postnikovCommonRightZeroImageTarget, Category.assoc]
-  rw [postnikovCommonRightClassToZero_projection,
-    reassoc_of% (postnikovCommonRightClassNumeratorMap_projection R f c d),
-    reassoc_of% (postnikovCommonClassTarget_projection R f c d),
-    reassoc_of% (cellPathNonpositiveToCell_projection R (postnikovCommonClassBase R f c d))]
-  rfl
+      postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d :=
+  PostnikovCommonCore.postnikovCommonRightZeroImageTarget_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightZeroImageSource_projection : postnikovCommonRightZeroImageSource R f c d ≫
     SquareZero.projection _ _ =
-      postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d := by
-  simp only [postnikovCommonRightZeroImageSource, Category.assoc]
-  rw [postnikovCommonRightClassToZero_projection,
-    reassoc_of% (postnikovCommonRightClassNumeratorMap_projection R f c d),
-    reassoc_of% (postnikovCommonClassSource_projection R f c d),
-    reassoc_of% (cellPathNonpositiveToCell_projection R (postnikovCommonClassBase R f c d))]
-  rfl
+      postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d :=
+  PostnikovCommonCore.postnikovCommonRightZeroImageSource_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

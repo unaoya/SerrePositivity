@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectData
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenDirectZeroMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：直接 B 遷移の係数表示から、元の P と零 class 標的への二射影を保持する。
 方針：二段表示との実同型と、元の分母の零底係数同型の射影式を合成する。
@@ -25,16 +28,10 @@ lemma postnikovCommonRightDenDirectToZero_projection :
     SquareZero.projection (postnikovCommonClassBase R f c d)
       (bimoduleRestrict ((postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
         postnikovMap R (postnikovCommonRightDenDirectMap R f c d hj) 1)
-        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)) := by
-  let hz := congrArg (fun k => (postnikovCommonRightDenDirectImageIso R f c d hj).hom ≫ k)
-    (postnikovCommonRightDenCompositeZeroIso_projection R f c d hj)
-  let hi := postnikovCellFactorizationImageIso_projection R (B.obj d.zero.stage).obj
-    (B.obj j).obj (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (postnikovCommonRightDenDirectMap R f c d hj) (B.obj i).obj
-    (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom (B.transition hj).hom
-    (postnikovCommonRightDenDirect_factorization R f c d hj)
-  exact (Category.assoc _ _ _).trans (hz.trans hi)
+        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)) :=
+  PostnikovCommonCore.postnikovCommonRightDenDirectToZero_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightDenDirectToZero_map :
     postnikovCommonRightDenDirectToZero R f c d hj ≫
@@ -44,16 +41,9 @@ lemma postnikovCommonRightDenDirectToZero_map :
       ((postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
         postnikovMap R (postnikovCommonRightDenDirectMap R f c d hj) 1)
       (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≫
-        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 := by
-  let hz := congrArg (fun k => (postnikovCommonRightDenDirectImageIso R f c d hj).hom ≫ k)
-    (postnikovCommonRightDenCompositeZeroIso_map R f c d hj)
-  let hi := postnikovCellFactorizationImageIso_map R (B.obj d.zero.stage).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (postnikovCommonRightDenDirectMap R f c d hj) (B.obj i).obj
-    (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom (B.transition hj).hom
-    (postnikovCommonRightDenDirect_factorization R f c d hj)
-  exact (Category.assoc _ _ _).trans (hz.trans ((Category.assoc _ _ _).symm.trans
-    (congrArg (fun k => k ≫ postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) hi)))
+        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 :=
+  PostnikovCommonCore.postnikovCommonRightDenDirectToZero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

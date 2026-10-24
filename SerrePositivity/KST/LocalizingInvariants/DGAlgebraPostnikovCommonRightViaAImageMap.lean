@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellFactorizationImageInverse
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightViaAImageMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：二 ImageWitness 表示から零底への射の、元の P と零 class 標的への二射影を計算する。
 方針：底射等式の同型の逆と、元の零底係数同型の厳密な可換式を合成する。
@@ -30,16 +33,10 @@ lemma postnikovCommonRightViaAImageToZero_projection :
     SquareZero.projection (postnikovCommonClassBase R f c d)
       (bimoduleRestrict (((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
         postnikovMap R (A.transition hj).hom 1) ≫ postnikovMap R (f.app j).hom 1)
-        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)) := by
-  exact (Category.assoc _ _ _).trans
-    ((congrArg (fun t => (postnikovCommonRightViaAImageIso R f c d hj).inv ≫ t)
-      (postnikovCommonRightCompositeZeroIso_projection R f c d hj)).trans
-      (postnikovCellFactorizationImageIso_inv_projection R (A.obj i).obj (B.obj j).obj
-        (postnikovCommonClassBase R f c d) 1 (by omega)
-        (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-        (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj
-        (A.transition hj).hom (f.app j).hom
-        rfl))
+        (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)) :=
+  PostnikovCommonCore.postnikovCommonRightViaAImageToZero_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightViaAImageToZero_map :
     postnikovCommonRightViaAImageToZero R f c d hj ≫
@@ -49,17 +46,9 @@ lemma postnikovCommonRightViaAImageToZero_map :
       (((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
         postnikovMap R (A.transition hj).hom 1) ≫ postnikovMap R (f.app j).hom 1)
       (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≫
-        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 := by
-  exact (Category.assoc _ _ _).trans
-    ((congrArg (fun t => (postnikovCommonRightViaAImageIso R f c d hj).inv ≫ t)
-      (postnikovCommonRightCompositeZeroIso_map R f c d hj)).trans
-      ((Category.assoc _ _ _).symm.trans
-        (congrArg (fun t => t ≫ postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1)
-          (postnikovCellFactorizationImageIso_inv_map R (A.obj i).obj (B.obj j).obj
-            (postnikovCommonClassBase R f c d) 1 (by omega)
-            (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-            (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj
-            (A.transition hj).hom (f.app j).hom
-            rfl))))
+        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 :=
+  PostnikovCommonCore.postnikovCommonRightViaAImageToZero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

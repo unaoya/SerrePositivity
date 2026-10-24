@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroDescNaturality
 public import SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionBaseEquality
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenBaseIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：共通底の右係数標的を、元の分母と B の遷移の合成に沿う標準の層制限と同定する。
 方針：零降下の自然性と元の右底三角形で二重制限の底射を厳密に一致させる。
@@ -32,36 +35,31 @@ local instance commonRightDenBase_target_lowerBound :
 
 def postnikovCommonRightDenBase : (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex ⟶
     postnikov R (B.obj i).obj 1 :=
-  (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
-    postnikovMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1
+  PostnikovCommonCore.postnikovCommonRightDenBase
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightDenBase_zero :
     postnikovDesc R 0 (postnikovCommonRightDenBase R f c d ≫
       postnikovTransition R (B.obj i).obj 1 0 (by omega)) =
     postnikovOneRoofZeroDenominator R f (postnikovOneRoofRefine R f c d.zero.source_le) ≫
       postnikovMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 0 :=
-  postnikovZeroDesc_map R (B.obj d.zero.stage).obj (B.obj i).obj _ 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom
+  PostnikovCommonCore.postnikovCommonRightDenBase_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightDenBaseIso :
     bimoduleRestrict (postnikovCommonRightDenBase R f c d)
       (postnikovLayerBaseBimodule R (B.obj i).obj 1 (by omega)) ≅
         postnikovCommonRightLayer R f c d :=
-  postnikovLayerBaseZeroRestrictionIso R (B.obj i).obj _ 1 (by omega)
-    (postnikovCommonRightDenBase R f c d) ≪≫
-      bimoduleRestrictionBaseEqIso
-        (postnikovQuotient R (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex 0)
-        (postnikovCommonRightDenBase_zero R f c d) (postnikovLayerZeroBimodule R (B.obj i).obj 1)
+  PostnikovCommonCore.postnikovCommonRightDenBaseIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightDenBaseIso_hom : (postnikovCommonRightDenBaseIso R f c d).hom.hom =
-    𝟙 (postnikovLayer R (B.obj i).obj 1) := by
-  unfold postnikovCommonRightDenBaseIso
-  change (postnikovLayerBaseZeroRestrictionIso R (B.obj i).obj _ 1 (by omega)
-    (postnikovCommonRightDenBase R f c d)).hom.hom ≫
-    (bimoduleRestrictionBaseEqIso _ (postnikovCommonRightDenBase_zero R f c d)
-      (postnikovLayerZeroBimodule R (B.obj i).obj 1)).hom.hom = _
-  rw [postnikovLayerBaseZeroRestrictionIso_hom, bimoduleRestrictionBaseEqIso_hom]
-  exact Category.id_comp _
+    𝟙 (postnikovLayer R (B.obj i).obj 1) :=
+  PostnikovCommonCore.postnikovCommonRightDenBaseIso_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

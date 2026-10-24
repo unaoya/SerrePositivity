@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightTargetFirstPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightTargetFirstComparison
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の T の B 遷移後の持ち上げを、Γ 源上の零底 affine 第一経路そのものに同定する。
 方針：元の全零 class 像を第一 ImageWitness の式で照合し、同じ P 射影の一意性を使う。
@@ -27,29 +30,17 @@ lemma postnikovCommonRightTargetFirst_map :
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) =
     (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom ≫ Path.map R
       (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-        (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) := by
-  have ht := congrArg (fun t => postnikovCommonRightToClassifying R f c d ≫ t)
-    (postnikovCommonRightTargetTransition_original_map R f c d hj)
-  have hm := congrArg (fun t => postnikovCommonRightImageToSecond R f c d ≫ t)
-    (postnikovCellImageForwardRelative_zero_map R (A.obj i).obj (B.obj i).obj (B.obj j).obj
-      (postnikovCommonClassBase R f c d) 1 (by omega)
-      (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-      (f.app i).hom (B.transition hj).hom)
-  have hf := postnikovCommonRightViaBFirstZeroPath_map R f c d hj
-  simp only [postnikovCommonRightImageToSecond_eq, postnikovCommonRightBase,
-    Category.assoc] at ht hm hf
-  simpa only [postnikovCommonRightTargetRefinedPath, SquareZero.RelativeWitness.rebase_hom,
-    SquareZero.RelativeWitness.precomp_hom, Category.assoc] using
-    ht.trans (hm.symm.trans hf.symm)
+        (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)) :=
+  PostnikovCommonCore.postnikovCommonRightTargetFirst_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 元の T と affine 第一辺は、同じ Γ 源の全乗法的経路として厳密に一致する。 -/
 lemma postnikovCommonRightTargetFirst_hom :
     (postnikovCommonRightTargetRefinedPath R f c d hj).hom =
-      (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom := by
-  apply SquareZero.baseChangePath_hom_ext (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  · exact (postnikovCommonRightTargetRefinedPath R f c d hj).projection_eq.trans
-      (postnikovCommonRightViaBFirstZeroPath R f c d hj).projection_eq.symm
-  · exact postnikovCommonRightTargetFirst_map R f c d hj
+      (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightTargetFirst_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

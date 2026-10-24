@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingSquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroPath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClassifyingZeroSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の classifying 正方形を零底へ送り、全二重底射影を定数にする。
 方針：元の指定右経路の零切断への射影を、非正次数源と零切断の次数境界で同定する。
@@ -34,10 +37,9 @@ local instance zeroSquare_target_lowerBound :
 def postnikovCommonRightClassifyingZeroProjection :
     cellResolution R (postnikovCommonRightCellSource R f c d) ⟶
       postnikov R (B.obj j).obj 0 :=
-  cellAugmentation R (postnikovCommonRightCellSource R f c d) ≫
-    postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightBase R f c d ≫
-      postnikovMap R (B.transition hj).hom 1 ≫
-        postnikovTransition R (B.obj j).obj 1 0 (by omega)
+  PostnikovCommonCore.postnikovCommonRightClassifyingZeroProjection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightClassifyingZeroSquare : Path.Witness R
     ((cellAugmentation R (postnikovCommonRightCellSource R f c d) ≫
@@ -47,39 +49,19 @@ def postnikovCommonRightClassifyingZeroSquare : Path.Witness R
     ((cellAugmentation R (postnikovCommonRightCellSource R f c d) ≫
       (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom) ≫
         Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1)) :=
-  (postnikovCommonRightClassifyingSquare R f c d hj).postcomp
-    (Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1))
+  PostnikovCommonCore.postnikovCommonRightClassifyingZeroSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingZeroSquare_projection :
     (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom ≫
       Path.map R (Path.map R (SquareZero.projection _ _)) =
     (postnikovCommonRightClassifyingZeroProjection R f c d hj ≫
       Path.diagonal R (postnikov R (B.obj j).obj 0)) ≫
-        Path.diagonal R (Path.algebra R (postnikov R (B.obj j).obj 0)) := by
-  let z := postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1
-  let t := postnikovTransition R (B.obj j).obj 1 0 (by omega)
-  let p := SquareZero.projection (postnikov R (B.obj j).obj 1)
-    (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)
-  have hz : Path.map R (Path.map R z) ≫ Path.map R (Path.map R (SquareZero.projection _ _)) =
-      Path.map R (Path.map R p) ≫ Path.map R (Path.map R t) := by
-    rw [← Path.map_comp, ← Path.map_comp, ← Path.map_comp, ← Path.map_comp]
-    exact congrArg (fun k => Path.map R (Path.map R k))
-      (postnikovClassToZeroBase_projection R (B.obj j).obj 1 (by omega) 1)
-  have hp : (((postnikovCommonRightBasePath R f c d).postcomp
-      (postnikovMap R (B.transition hj).hom 1)).hom ≫ Path.map R t) =
-      (postnikovCommonRightBase R f c d ≫ postnikovMap R (B.transition hj).hom 1 ≫ t) ≫
-        Path.diagonal R (postnikov R (B.obj j).obj 0) :=
-    Path.Witness.hom_eq_constant R
-      (((postnikovCommonRightBasePath R f c d).postcomp
-        (postnikovMap R (B.transition hj).hom 1)).postcomp t)
-  change ((postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
-    Path.map R (Path.map R z)) ≫ _ = _
-  rw [Category.assoc, hz, ← Category.assoc,
-    postnikovCommonRightClassifyingSquare_base_trace]
-  simp only [Category.assoc]
-  rw [Path.diagonal_naturality]
-  rw [reassoc_of% hp]
-  rfl
+        Path.diagonal R (Path.algebra R (postnikov R (B.obj j).obj 0)) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingZeroSquare_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingZeroSquare_source_trace :
     (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom ≫
@@ -89,11 +71,10 @@ lemma postnikovCommonRightClassifyingZeroSquare_source_trace :
       ((postnikovCellClassOverNaturalityWitness R (B.obj i).obj (B.obj j).obj
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightBase R f c d) (B.transition hj).hom).precompNonpositiveCell R).hom) ≫
-          Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) := by
-  change ((postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
-    Path.map R (Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1))) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, Path.map_source, Path.map_comp,
-    ← Category.assoc, postnikovCommonRightClassifyingSquare_source_trace]
+          Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingZeroSquare_source_trace
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingZeroSquare_target_trace :
     (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom ≫
@@ -104,10 +85,9 @@ lemma postnikovCommonRightClassifyingZeroSquare_target_trace :
         (postnikovCommonClassBase R f c d) 1 (by omega)
         (postnikovCommonRightDenBase R f c d) (B.transition hj).hom).precompNonpositiveCell
           R).hom) ≫
-          Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) := by
-  change ((postnikovCommonRightClassifyingSquare R f c d hj).hom ≫
-    Path.map R (Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1))) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, Path.map_target, Path.map_comp,
-    ← Category.assoc, postnikovCommonRightClassifyingSquare_target_trace]
+          Path.map R (postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingZeroSquare_target_trace
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

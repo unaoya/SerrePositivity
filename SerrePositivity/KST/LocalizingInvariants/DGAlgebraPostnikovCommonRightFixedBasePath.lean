@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroPath
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathNonpositiveFixed
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightFixedBasePath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の共通源と両 class を保ち、c の指定右経路の全射影を固定する class 経路。
 方針：両端固定の新しい cell 持ち上げを既存の非正次数源へ移し、実 class を後合成する。
@@ -27,19 +30,18 @@ def postnikovCommonRightFixedCellClassWitness : Path.Witness R
       postnikovCellClass R (B.obj i).obj 1 (by omega))
     (cellPathNonpositiveComparison R (postnikovCommonRightDenBase R f c d) ≫
       postnikovCellClass R (B.obj i).obj 1 (by omega)) :=
-  (cellPathNonpositiveFixedWitness R (postnikovCommonRightBasePath R f c d)).postcomp
-    (postnikovCellClass R (B.obj i).obj 1 (by omega))
+  PostnikovCommonCore.postnikovCommonRightFixedCellClassWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightFixedCellClassWitness_projection :
     (postnikovCommonRightFixedCellClassWitness R f c d).hom ≫
       Path.map R (SquareZero.projection (postnikov R (B.obj i).obj 1)
         (postnikovShiftedLayerBimodule R (B.obj i).obj 1 (by omega) 1)) =
-    postnikovCommonRightCellProjection R f c d ≫ (postnikovCommonRightBasePath R f c d).hom := by
-  change ((cellPathNonpositiveFixedWitness R (postnikovCommonRightBasePath R f c d)).hom ≫
-    Path.map R (postnikovCellClass R (B.obj i).obj 1 (by omega))) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCellClass_projection,
-    cellPathNonpositiveFixedWitness_map]
-  rfl
+    postnikovCommonRightCellProjection R f c d ≫ (postnikovCommonRightBasePath R f c d).hom :=
+  PostnikovCommonCore.postnikovCommonRightFixedCellClassWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightFixedCellClassWitness_zero :
     (postnikovCommonRightFixedCellClassWitness R f c d).hom ≫
@@ -48,42 +50,39 @@ lemma postnikovCommonRightFixedCellClassWitness_zero :
           postnikovTransition R (B.obj i).obj 1 0 (by omega)) =
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightBase R f c d ≫
       postnikovTransition R (B.obj i).obj 1 0 (by omega)) ≫
-        Path.diagonal R (postnikov R (B.obj i).obj 0) := by
-  rw [Path.map_comp, ← Category.assoc, postnikovCommonRightFixedCellClassWitness_projection,
-    Category.assoc, postnikovCommonRightBasePath_zero]
-  simp only [Category.assoc]
+        Path.diagonal R (postnikov R (B.obj i).obj 0) :=
+  PostnikovCommonCore.postnikovCommonRightFixedCellClassWitness_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightFixedZeroPathWitness : Path.Witness R
     (postnikovCommonRightZeroPathLeft R f c d) (postnikovCommonRightZeroPathRight R f c d) :=
-  (postnikovCommonRightFixedCellClassWitness R f c d).postcomp
-    (postnikovClassToZeroBase R (B.obj i).obj 1 (by omega) 1)
+  PostnikovCommonCore.postnikovCommonRightFixedZeroPathWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightFixedZeroPathWitness_projection :
     (postnikovCommonRightFixedZeroPathWitness R f c d).hom ≫
       Path.map R (SquareZero.projection _ _) =
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightZeroBase R f c d) ≫
-      Path.diagonal R (postnikov R (B.obj i).obj 0) := by
-  change ((postnikovCommonRightFixedCellClassWitness R f c d).hom ≫
-    Path.map R (postnikovClassToZeroBase R (B.obj i).obj 1 (by omega) 1)) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovClassToZeroBase_projection]
-  exact (postnikovCommonRightFixedCellClassWitness_zero R f c d).trans
-    (congrArg (fun t => t ≫ Path.diagonal R (postnikov R (B.obj i).obj 0))
-      (congrArg (fun t => postnikovCommonRightCellProjection R f c d ≫ t)
-        (postnikovCommonRightZeroBase_num R f c d).symm))
+      Path.diagonal R (postnikov R (B.obj i).obj 0) :=
+  PostnikovCommonCore.postnikovCommonRightFixedZeroPathWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightFixedZeroRelativeWitness : Path.Witness R
     (postnikovCommonRightZeroPathSource R f c d) (postnikovCommonRightZeroPathTarget R f c d) :=
-  SquareZero.baseChangeWitness _ _ _ _ _
-    (postnikovCommonRightZeroPathLeft_projection R f c d)
-    (postnikovCommonRightZeroPathRight_projection R f c d)
-    (postnikovCommonRightFixedZeroPathWitness R f c d)
-    (postnikovCommonRightFixedZeroPathWitness_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightFixedZeroRelativeWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightFixedZeroRelativeWitness_projection :
     (postnikovCommonRightFixedZeroRelativeWitness R f c d).hom ≫
       Path.map R (SquareZero.projection _ _) =
     postnikovCommonRightCellProjection R f c d ≫
       Path.diagonal R (postnikovCommonClassBase R f c d) :=
-  SquareZero.baseChangeWitness_relative _ _ _ _ _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightFixedZeroRelativeWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -28,6 +28,7 @@ abbrev postnikovCommonClassBase :=
   PostnikovCommonCore.classBase R f
     (postnikovOneRoofRefine R f c d.zero.source_le)
 
+@[reducible]
 def postnikovCommonClassCoefficientMap :
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovOneRoofShiftedDenominatorLayer R f
@@ -46,6 +47,7 @@ lemma postnikovCommonClassCoefficientMap_projection : postnikovCommonClassCoeffi
   PostnikovCommonCore.classCoefficientMap_projection R (by omega) f
     (postnikovOneRoofRefine R f c d.zero.source_le) d.coefficient
 
+@[reducible]
 def postnikovCommonClassSource : cellResolution R (postnikovCommonClassBase R f c d) ⟶
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovOneRoofShiftedNumeratorLayer R f
@@ -54,6 +56,7 @@ def postnikovCommonClassSource : cellResolution R (postnikovCommonClassBase R f 
     (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator ≫
       postnikovCommonClassCoefficientMap R f c d
 
+@[reducible]
 def postnikovCommonClassTarget : cellResolution R (postnikovCommonClassBase R f c d) ⟶
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovOneRoofShiftedNumeratorLayer R f

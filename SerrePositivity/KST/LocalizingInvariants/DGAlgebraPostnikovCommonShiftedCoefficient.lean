@@ -23,9 +23,11 @@ open ProExcision
 variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : LevelHom A B)
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
 
+@[reducible]
 def postnikovOneRoofShiftedDenominatorLayer (s : ℤ) : Bimod c.roof.apex c.roof.apex :=
   PostnikovCommonCore.shiftedDenominatorLayer R (by omega) f c s
 
+@[reducible]
 def postnikovOneRoofShiftedNumeratorLayer (s : ℤ) : Bimod c.roof.apex c.roof.apex :=
   PostnikovCommonCore.shiftedNumeratorLayer R (by omega) f c s
 

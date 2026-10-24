@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingContour
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroBaseChangeDoublePath
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClassifyingBaseChange
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の classifying 二重経路を、指定した同じ共通底 P 上へ持ち上げる。
 方針：零底射の実因子化と二重経路 pullback の持ち上げを使う。
@@ -25,31 +28,35 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 def postnikovCommonRightClassifyingBase :
     postnikovCommonClassBase R f c d ⟶ postnikov R (B.obj j).obj 0 :=
-  postnikovCommonRightBase R f c d ≫ postnikovMap R (B.transition hj).hom 1 ≫
-    postnikovTransition R (B.obj j).obj 1 0 (by omega)
+  PostnikovCommonCore.postnikovCommonRightClassifyingBase
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightClassifyingProjection :
     cellResolution R (postnikovCommonRightCellSource R f c d) ⟶ postnikovCommonClassBase R f c d :=
-  cellAugmentation R (postnikovCommonRightCellSource R f c d) ≫
-    postnikovCommonRightCellProjection R f c d
+  PostnikovCommonCore.postnikovCommonRightClassifyingProjection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightClassifyingProjection_quasiIso :
-    QuasiIso (postnikovCommonRightClassifyingProjection R f c d).hom := by
-  have := cellAugmentation_quasiIso R (postnikovCommonRightCellSource R f c d)
-  have := postnikovCommonRightCellProjection_quasiIso R f c d
-  exact quasiIso_comp _ _
+    QuasiIso (postnikovCommonRightClassifyingProjection R f c d).hom :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingProjection_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightClassifyingProjection_surjective (n : ℤ) :
-    Function.Surjective ((postnikovCommonRightClassifyingProjection R f c d).hom.f n) := by
-  exact (postnikovCommonRightCellProjection_surjective R f c d n).comp
-    (cellAugmentation_surjective R (postnikovCommonRightCellSource R f c d) n)
+    Function.Surjective ((postnikovCommonRightClassifyingProjection R f c d).hom.f n) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingProjection_surjective
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (degree := n)
 
 lemma postnikovCommonRightClassifyingProjection_factor :
     postnikovCommonRightClassifyingProjection R f c d ≫
       postnikovCommonRightClassifyingBase R f c d hj =
-        postnikovCommonRightClassifyingZeroProjection R f c d hj := by
-  simp only [postnikovCommonRightClassifyingProjection, postnikovCommonRightClassifyingBase,
-    postnikovCommonRightClassifyingZeroProjection, Category.assoc]
+        postnikovCommonRightClassifyingZeroProjection R f c d hj :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingProjection_factor
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingBaseChange_condition :
     ((postnikovCommonRightClassifyingProjection R f c d ≫
@@ -57,23 +64,19 @@ lemma postnikovCommonRightClassifyingBaseChange_condition :
         Path.diagonal R (Path.algebra R (postnikovCommonClassBase R f c d))) ≫
           Path.map R (Path.map R (postnikovCommonRightClassifyingBase R f c d hj)) =
     (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom ≫
-      Path.map R (Path.map R (SquareZero.projection _ _)) := by
-  rw [postnikovCommonRightClassifyingZeroSquare_projection]
-  simp only [Category.assoc, Path.diagonal_naturality]
-  rw [reassoc_of% (Path.diagonal_naturality R (postnikovCommonRightClassifyingBase R f c d hj)),
-    ← Category.assoc (postnikovCommonRightClassifyingProjection R f c d)
-      (postnikovCommonRightClassifyingBase R f c d hj),
-    postnikovCommonRightClassifyingProjection_factor]
+      Path.map R (Path.map R (SquareZero.projection _ _)) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseChange_condition
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightClassifyingBaseChangeHom :
     cellResolution R (postnikovCommonRightCellSource R f c d) ⟶ Path.algebra R
       (Path.algebra R (SquareZero.algebra (postnikovCommonClassBase R f c d)
         (bimoduleRestrict (postnikovCommonRightClassifyingBase R f c d hj)
           (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)))) :=
-  SquareZero.baseChangeDoublePathLift (postnikovCommonRightClassifyingBase R f c d hj) _
-    ((postnikovCommonRightClassifyingProjection R f c d ≫ Path.diagonal R _) ≫ Path.diagonal R _)
-    (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom
-    (postnikovCommonRightClassifyingBaseChange_condition R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseChangeHom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingBaseChangeHom_projection :
     postnikovCommonRightClassifyingBaseChangeHom R f c d hj ≫
@@ -81,7 +84,9 @@ lemma postnikovCommonRightClassifyingBaseChangeHom_projection :
     (postnikovCommonRightClassifyingProjection R f c d ≫
       Path.diagonal R (postnikovCommonClassBase R f c d)) ≫
         Path.diagonal R (Path.algebra R (postnikovCommonClassBase R f c d)) :=
-  SquareZero.baseChangeDoublePathLift_projection _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseChangeHom_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightClassifyingBaseChangeHom_map :
     postnikovCommonRightClassifyingBaseChangeHom R f c d hj ≫
@@ -89,6 +94,8 @@ lemma postnikovCommonRightClassifyingBaseChangeHom_map :
         (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))) =
     (postnikovCommonRightClassifyingZeroSquare R f c d hj).hom :=
-  SquareZero.baseChangeDoublePathLift_map _ _ _ _ _
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseChangeHom_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

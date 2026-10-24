@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonShiftedCoefficient
 public import SerrePositivity.KST.LocalizingInvariants.DGBimoduleShiftFromRestriction
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightShiftedCoefficient
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の細分 roof 底上の右係数比較を、class の shift 係数へ移す。
 方針：元の分子・分母の shift 制限から、同じ右標的の shift へ実射を作る。
@@ -26,35 +29,36 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 def postnikovCommonRightShiftedNumeratorMap :
     postnikovOneRoofShiftedNumeratorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) s ⟶
       DGBimoduleShift.obj (postnikovCommonRightLayer R f c d) s :=
-  DGBimoduleShift.fromRestriction _ _ _ s (postnikovCommonRightNumeratorMap R f c d)
+  PostnikovCommonCore.postnikovCommonRightShiftedNumeratorMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 lemma postnikovCommonRightShiftedNumeratorMap_hom :
     (postnikovCommonRightShiftedNumeratorMap R f c d s).hom =
       (postnikovLayerMap R (f.app i).hom 1)⟦s⟧' :=
-  (DGBimoduleShift.fromRestriction_hom _ _ _ s
-    (postnikovCommonRightNumeratorMap R f c d)).trans
-      (congrArg (fun t => t⟦s⟧') (postnikovCommonRightNumeratorMap_hom R f c d))
+  PostnikovCommonCore.postnikovCommonRightShiftedNumeratorMap_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 def postnikovCommonRightShiftedDenominatorMap :
     postnikovOneRoofShiftedDenominatorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) s ⟶
       DGBimoduleShift.obj (postnikovCommonRightLayer R f c d) s :=
-  DGBimoduleShift.fromRestriction _ _ _ s (postnikovCommonRightDenominatorMap R f c d)
+  PostnikovCommonCore.postnikovCommonRightShiftedDenominatorMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 lemma postnikovCommonRightShiftedDenominatorMap_hom :
     (postnikovCommonRightShiftedDenominatorMap R f c d s).hom =
       (postnikovLayerMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1)⟦s⟧' :=
-  (DGBimoduleShift.fromRestriction_hom _ _ _ s
-    (postnikovCommonRightDenominatorMap R f c d)).trans
-      (congrArg (fun t => t⟦s⟧') (postnikovCommonRightDenominatorMap_hom R f c d))
+  PostnikovCommonCore.postnikovCommonRightShiftedDenominatorMap_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 lemma postnikovCommonRightShifted_coefficient : postnikovCommonShiftedCoefficientMap R f c d s ≫
     postnikovCommonRightShiftedNumeratorMap R f c d s =
-      postnikovCommonRightShiftedDenominatorMap R f c d s := by
-  apply Bimod.Hom.ext
-  exact (Bimod.comp_hom' _ _).trans
-    ((congrArg (fun t => (postnikovCommonShiftedCoefficientMap R f c d s).hom ≫ t)
-      (postnikovCommonRightShiftedNumeratorMap_hom R f c d s)).trans
-        ((postnikovCommonShiftedCoefficientMap_right R f c d s).trans
-          (postnikovCommonRightShiftedDenominatorMap_hom R f c d s).symm))
+      postnikovCommonRightShiftedDenominatorMap R f c d s :=
+  PostnikovCommonCore.postnikovCommonRightShifted_coefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

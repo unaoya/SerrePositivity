@@ -30,6 +30,7 @@ local instance refinementTargetLevel_nonpositive :
     ((B.map (postnikovFunctor R 1)).obj k).X.IsStrictlyLE 0 :=
   postnikovComplex_nonpositive R (B.obj k).obj 1
 
+@[reducible]
 def postnikovOneRoofRefine :
     NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i k (hi.trans hm) :=
   c.refine R hm

@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroNaturality
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovZeroClassInverse
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassRetract
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：後続段の実係数逆で右 class 像の経路を戻し、A の遷移後の二 class を比較する。
 方針：元の係数逆の厳密な左三角形で f の右像を外し、実経路を同じ代数射で後合成する。
@@ -26,63 +29,61 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 def postnikovCommonRightRetract : postnikovCommonRightClassTarget R f c d ⟶
     postnikovZeroClassTarget R (A.obj j).obj 1 1 :=
-  postnikovCommonRightClassToZero R f c d ≫ e.shiftedClassMap R 1
+  PostnikovCommonCore.postnikovCommonRightRetract
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonRightNumerator_retract : postnikovCommonRightClassNumeratorMap R f c d ≫
     postnikovCommonRightRetract R f c d e = postnikovCommonNumeratorToZero R f c d ≫
-      postnikovZeroClassMap R 1 1 (A.transition hj).hom := by
-  rw [postnikovCommonRightRetract, ← Category.assoc, postnikovCommonRightNumerator_zero,
-    Category.assoc, e.shiftedClassMap_left]
+      postnikovZeroClassMap R 1 1 (A.transition hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightNumerator_retract
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonRightRetract_projection : postnikovCommonRightRetract R f c d e ≫
     SquareZero.projection _ _ = SquareZero.projection _ _ ≫
-      (postnikovCommonRightZeroBase R f c d ≫ e.base) := by
-  rw [postnikovCommonRightRetract, Category.assoc, e.shiftedClassMap_projection,
-    ← Category.assoc, postnikovCommonRightClassToZero_projection, Category.assoc]
+      (postnikovCommonRightZeroBase R f c d ≫ e.base) :=
+  PostnikovCommonCore.postnikovCommonRightRetract_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
-def postnikovCommonClassRetractTarget := postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassTarget R f c d ≫ postnikovCommonNumeratorToZero R f c d ≫
-    postnikovZeroClassMap R 1 1 (A.transition hj).hom
+def postnikovCommonClassRetractTarget :=
+  PostnikovCommonCore.postnikovCommonClassRetractTarget
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
-def postnikovCommonClassRetractSource := postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassSource R f c d ≫ postnikovCommonNumeratorToZero R f c d ≫
-    postnikovZeroClassMap R 1 1 (A.transition hj).hom
+def postnikovCommonClassRetractSource :=
+  PostnikovCommonCore.postnikovCommonClassRetractSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightGlueTarget_retract : postnikovCommonRightGlueTarget R f c d ≫
-    postnikovCommonRightRetract R f c d e = postnikovCommonClassRetractTarget R f c d (hj := hj)
-    := by
-  simp only [postnikovCommonRightGlueTarget, postnikovCommonClassRetractTarget, Category.assoc]
-  rw [postnikovCommonRightNumerator_retract]
+    postnikovCommonRightRetract R f c d e = postnikovCommonClassRetractTarget R f c d (hj := hj) :=
+  PostnikovCommonCore.postnikovCommonRightGlueTarget_retract
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonRightGlueSource_retract : postnikovCommonRightGlueSource R f c d ≫
-    postnikovCommonRightRetract R f c d e = postnikovCommonClassRetractSource R f c d (hj := hj)
-    := by
-  simp only [postnikovCommonRightGlueSource, postnikovCommonClassRetractSource, Category.assoc]
-  rw [postnikovCommonRightNumerator_retract]
+    postnikovCommonRightRetract R f c d e = postnikovCommonClassRetractSource R f c d (hj := hj) :=
+  PostnikovCommonCore.postnikovCommonRightGlueSource_retract
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 /-- 右像の経路と後続段の実係数逆だけから、A の遷移後の二 class の経路を得る。 -/
 def postnikovCommonClassRetractWitness : Path.Witness R
     (postnikovCommonClassRetractTarget R f c d (hj := hj))
-    (postnikovCommonClassRetractSource R f c d (hj := hj)) where
-  hom := (postnikovCommonRightClassGlueWitness R f c d).hom ≫
-    Path.map R (postnikovCommonRightRetract R f c d e)
-  source_eq := by
-    rw [Category.assoc, Path.map_source, ← Category.assoc,
-      (postnikovCommonRightClassGlueWitness R f c d).source_eq,
-      postnikovCommonRightGlueTarget_retract]
-  target_eq := by
-    rw [Category.assoc, Path.map_target, ← Category.assoc,
-      (postnikovCommonRightClassGlueWitness R f c d).target_eq,
-      postnikovCommonRightGlueSource_retract]
+    (postnikovCommonClassRetractSource R f c d (hj := hj)) :=
+  PostnikovCommonCore.postnikovCommonClassRetractWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassRetractWitness_projection :
     (postnikovCommonClassRetractWitness R f c d e).hom ≫ Path.map R (SquareZero.projection _ _) =
       postnikovCommonRightZeroGlueProjection R f c d ≫
         (postnikovCommonRightZeroBase R f c d ≫ e.base) ≫
-          Path.diagonal R (postnikov R (A.obj j).obj 0) := by
-  change (_ ≫ Path.map R (postnikovCommonRightRetract R f c d e)) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCommonRightRetract_projection,
-    Path.map_comp, ← Category.assoc, postnikovCommonRightClassGlueWitness_projection,
-    Category.assoc, Path.diagonal_naturality]
+          Path.diagonal R (postnikov R (A.obj j).obj 0) :=
+  PostnikovCommonCore.postnikovCommonClassRetractWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

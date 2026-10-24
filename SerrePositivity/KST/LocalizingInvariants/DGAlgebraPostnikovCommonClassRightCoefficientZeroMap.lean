@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientTriangle
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroUnderlyingMaps
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassRightCoefficientZeroMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：実 fⱼ 係数射の零 class 像が、元の native class 互換性で使った右射と一致する。
 方針：元の P 底射と層射を保つ二座標の公式を比較する。
@@ -28,18 +31,9 @@ lemma postnikovCommonClassRightTargetCoefficient_zero_map :
       (postnikovCommonClassRightTargetCoefficient R f c d hj) ≫
       SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
         (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1) =
-    postnikovCommonClassFixedZeroMap R f c d hj := by
-  apply Mon.Hom.ext
-  rw [Mon.comp_hom', SquareZero.coefficientMap_hom,
-    postnikovCommonClassRightTargetCoefficient_hom, SquareZero.baseChangeMap_hom,
-    postnikovCommonClassFixedZeroMap, Mon.comp_hom',
-    postnikovCommonClassTransitionToZero_hom, postnikovZeroClassMap_hom,
-    cochainBiprodMap_comp, cochainBiprodMap_comp]
-  simp only [Category.id_comp, ← Mon.comp_hom']
-  let hb := (Category.assoc (postnikovCommonClassRetractBase R f c d (hj := hj))
-    (postnikovTransition R (A.obj j).obj 1 0 (by omega)) (postnikovMap R (f.app j).hom 0)).trans
-    (postnikovCommonClassFixedZeroBase_classifying R f c d hj)
-  exact congrArg (fun b => biprod.map b.hom
-    ((postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧')) hb.symm
+    postnikovCommonClassFixedZeroMap R f c d hj :=
+  PostnikovCommonCore.postnikovCommonClassRightTargetCoefficient_zero_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

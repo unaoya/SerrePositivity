@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedClassGlue
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fixed native 貼合せの全経路を、元の零底 affine 貼合せへ厳密に戻す。
 方針：元の底変更同型の逆の射影式と、底変更経路の全射影を使う。
@@ -26,17 +29,16 @@ lemma postnikovCommonRightZeroBaseIso_inv_map :
       postnikovCommonRightClassToZero R f c d =
     SquareZero.baseChangeMap (postnikovCommonRightZeroBase R f c d)
       (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj i).obj 1) 1) :=
-  (Iso.inv_comp_eq (postnikovCommonRightZeroBaseIso R f c d)).mpr
-    (postnikovCommonRightZeroBaseIso_map R f c d).symm
+  PostnikovCommonCore.postnikovCommonRightZeroBaseIso_inv_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightFixedClassGlueWitness_zero :
     (postnikovCommonRightFixedClassGlueWitness R f c d).hom ≫
       Path.map R (postnikovCommonRightClassToZero R f c d) =
-    (postnikovCommonRightFixedZeroGlueWitness R f c d).hom := by
-  change ((postnikovCommonRightFixedZeroGlueRelativeWitness R f c d).hom ≫
-    Path.map R (postnikovCommonRightZeroBaseIso R f c d).inv) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCommonRightZeroBaseIso_inv_map]
-  unfold postnikovCommonRightFixedZeroGlueRelativeWitness
-  exact SquareZero.baseChangeWitness_map _ _ _ _ _ _ _ _ _
+    (postnikovCommonRightFixedZeroGlueWitness R f c d).hom :=
+  PostnikovCommonCore.postnikovCommonRightFixedClassGlueWitness_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

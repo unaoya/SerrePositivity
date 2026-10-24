@@ -3,6 +3,9 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassifyingBaseChange
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightClassifyingBaseContour
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の共通底 P 上で、指定右経路の classifying 正方形の輪郭比較を構成する。
 方針：全二重経路の底変更後に四辺を相対化し、固定端点補正と実輸送を適用する。
@@ -33,13 +36,10 @@ def postnikovCommonRightClassifyingBaseContourSquare :
   let w := SquareZero.RectangleOfHom.outerTarget N H q h
   let l := SquareZero.RectangleOfHom.innerSource N H q h
   let r := SquareZero.RectangleOfHom.innerTarget N H q h
-  SquareZero.RelativeWitnessSquare (v.comp r) (l.comp w) := by
-  let N := bimoduleRestrict (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  let H := postnikovCommonRightClassifyingBaseChangeHom R f c d hj
-  let q := postnikovCommonRightClassifyingProjection R f c d
-  let h := postnikovCommonRightClassifyingBaseChangeHom_projection R f c d hj
-  exact (SquareZero.RectangleOfHom.rectangle N H q h).contourSquare
+  SquareZero.RelativeWitnessSquare (v.comp r) (l.comp w) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseContourSquare
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 元の P 上の相対模型で、輪郭の二つの実輸送合成を結ぶ経路。 -/
 def postnikovCommonRightClassifyingBaseContourTransportHomotopy :
@@ -54,13 +54,9 @@ def postnikovCommonRightClassifyingBaseContourTransportHomotopy :
   let r := SquareZero.RectangleOfHom.innerTarget N H q h
   Path.Witness R
     (SquareZeroExtension.transport N v ≫ SquareZeroExtension.transport N r)
-    (SquareZeroExtension.transport N l ≫ SquareZeroExtension.transport N w) := by
-  let N := bimoduleRestrict (postnikovCommonRightClassifyingBase R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)
-  let H := postnikovCommonRightClassifyingBaseChangeHom R f c d hj
-  let q := postnikovCommonRightClassifyingProjection R f c d
-  let h := postnikovCommonRightClassifyingBaseChangeHom_projection R f c d hj
-  exact SquareZeroExtension.contourTransportHomotopy N
-    (SquareZero.RectangleOfHom.rectangle N H q h)
+    (SquareZeroExtension.transport N l ≫ SquareZeroExtension.transport N w) :=
+  PostnikovCommonCore.postnikovCommonRightClassifyingBaseContourTransportHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

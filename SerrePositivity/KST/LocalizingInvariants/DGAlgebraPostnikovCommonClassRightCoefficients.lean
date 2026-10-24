@@ -3,6 +3,9 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassRightCoefficientBase
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassRightCoefficients
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fⱼ と直接 B 遷移の実係数射を、元の P 上の同じ classifying 双加群へ構成する。
 方針：元の層射を零底係数へ移し、底射の厳密な等式で係数表示を揃える。
@@ -25,47 +28,30 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 def postnikovCommonClassRightTargetCoefficient :
     postnikovCommonClassTransitionLayer R f c d hj ⟶
       postnikovCommonRightClassifyingLayer R f c d hj :=
-  postnikovCellClassOverCoefficient R (A.obj j).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovCommonClassRetractBase R f c d (hj := hj)) (f.app j).hom ≫
-  postnikovClassBaseZeroCoefficient R (B.obj j).obj (postnikovCommonClassBase R f c d)
-    1 (by omega) 1 (postnikovCommonClassRightImageBase R f c d hj) ≫
-  (bimoduleRestrictBaseEqIso (postnikovCommonClassRightImageBase_zero R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)).hom
+  PostnikovCommonCore.postnikovCommonClassRightTargetCoefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassRightDenominatorCoefficient :
     postnikovOneRoofShiftedDenominatorLayer R f
       (postnikovOneRoofRefine R f c d.zero.source_le) 1 ⟶
       postnikovCommonRightClassifyingLayer R f c d hj :=
-  postnikovCellClassOverCoefficient R (B.obj d.zero.stage).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (postnikovCommonRightDenDirectMap R f c d hj) ≫
-  postnikovClassBaseZeroCoefficient R (B.obj j).obj (postnikovCommonClassBase R f c d)
-    1 (by omega) 1 (postnikovCommonClassRightDenominatorBase R f c d hj) ≫
-  (bimoduleRestrictBaseEqIso (postnikovCommonClassRightDenominatorBase_zero R f c d hj)
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1)).hom
+  PostnikovCommonCore.postnikovCommonClassRightDenominatorCoefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassRightTargetCoefficient_hom :
     (postnikovCommonClassRightTargetCoefficient R f c d hj).hom =
-      (postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧' := by
-  simp only [postnikovCommonClassRightTargetCoefficient, Bimod.comp_hom',
-    postnikovCellClassOverCoefficient_hom, postnikovClassBaseZeroCoefficient_hom,
-    bimoduleRestrictBaseEqIso_hom]
-  change (postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧' ≫
-    𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧) ≫
-    𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧) = _
-  simp only [Category.comp_id]
+      (postnikovLayerMap R (f.app j).hom 1)⟦(1 : ℤ)⟧' :=
+  PostnikovCommonCore.postnikovCommonClassRightTargetCoefficient_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassRightDenominatorCoefficient_hom :
     (postnikovCommonClassRightDenominatorCoefficient R f c d hj).hom =
-      (postnikovLayerMap R (postnikovCommonRightDenDirectMap R f c d hj) 1)⟦(1 : ℤ)⟧' := by
-  simp only [postnikovCommonClassRightDenominatorCoefficient, Bimod.comp_hom',
-    postnikovCellClassOverCoefficient_hom, postnikovClassBaseZeroCoefficient_hom,
-    bimoduleRestrictBaseEqIso_hom]
-  change (postnikovLayerMap R (postnikovCommonRightDenDirectMap R f c d hj) 1)⟦(1 : ℤ)⟧' ≫
-    𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧) ≫
-    𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧) = _
-  simp only [Category.comp_id]
+      (postnikovLayerMap R (postnikovCommonRightDenDirectMap R f c d hj) 1)⟦(1 : ℤ)⟧' :=
+  PostnikovCommonCore.postnikovCommonClassRightDenominatorCoefficient_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

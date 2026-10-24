@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightCompositeZeroCoefficient
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroUnderlyingMaps
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightCompositeZeroIso
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：合成自然性の実平方零標的を、classifying 側の同じ零底標的へ写す同型。
 方針：underlying 恒等の係数同型を平方零関手で写し、元の二つの射影を比較する。
@@ -28,23 +31,31 @@ def postnikovCommonRightCompositeZeroIso :
       (postnikovCommonRightNaturalityCompositeLayer R f c d hj) ≅
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovCommonRightClassifyingLayer R f c d hj) :=
-  SquareZero.coefficientIso _ (postnikovCommonRightCompositeZeroCoefficientIso R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightCompositeZeroIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightCompositeZeroIso_projection :
     (postnikovCommonRightCompositeZeroIso R f c d hj).hom ≫ SquareZero.projection _ _ =
-      SquareZero.projection _ _ := SquareZero.coefficientMap_projection _ _
+      SquareZero.projection _ _ :=
+  PostnikovCommonCore.postnikovCommonRightCompositeZeroIso_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightCompositeZeroIso_inv_projection :
     (postnikovCommonRightCompositeZeroIso R f c d hj).inv ≫ SquareZero.projection _ _ =
-      SquareZero.projection _ _ := SquareZero.coefficientMap_projection _ _
+      SquareZero.projection _ _ :=
+  PostnikovCommonCore.postnikovCommonRightCompositeZeroIso_inv_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightCompositeZeroIso_hom :
     (postnikovCommonRightCompositeZeroIso R f c d hj).hom.hom =
       biprod.map (𝟙 (postnikovCommonClassBase R f c d).X)
-        (𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧)) := by
-  rw [postnikovCommonRightCompositeZeroIso, SquareZero.coefficientIso_hom,
-    SquareZero.coefficientMap_hom, postnikovCommonRightCompositeZeroCoefficientIso_hom]
-  rfl
+        (𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧)) :=
+  PostnikovCommonCore.postnikovCommonRightCompositeZeroIso_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 底変更した class 標的への全射も元の零切断射と厳密に一致する。 -/
 lemma postnikovCommonRightCompositeZeroIso_map :
@@ -55,17 +66,9 @@ lemma postnikovCommonRightCompositeZeroIso_map :
       ((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
         postnikovMap R (postnikovCommonRightNaturalityComposite R f hj) 1)
       (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1) ≫
-        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 := by
-  apply Mon.Hom.ext
-  rw [Mon.comp_hom', Mon.comp_hom', postnikovCommonRightCompositeZeroIso_hom,
-    SquareZero.baseChangeMap_hom, SquareZero.baseChangeMap_hom, postnikovClassToZeroBase_hom]
-  change biprod.map (𝟙 (postnikovCommonClassBase R f c d).X)
-      (𝟙 ((postnikovLayer R (B.obj j).obj 1)⟦(1 : ℤ)⟧)) ≫
-    biprod.map (postnikovCommonRightClassifyingBase R f c d hj).hom (𝟙 _) =
-    biprod.map (((postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator ≫
-      postnikovMap R (postnikovCommonRightNaturalityComposite R f hj) 1).hom) (𝟙 _) ≫
-    biprod.map (postnikovTransition R (B.obj j).obj 1 0 (by omega)).hom (𝟙 _)
-  apply biprod.hom_ext <;> simp [Category.assoc, ← Mon.comp_hom',
-    postnikovCommonRightComposite_zero_base R f c d hj]
+        postnikovClassToZeroBase R (B.obj j).obj 1 (by omega) 1 :=
+  PostnikovCommonCore.postnikovCommonRightCompositeZeroIso_map
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

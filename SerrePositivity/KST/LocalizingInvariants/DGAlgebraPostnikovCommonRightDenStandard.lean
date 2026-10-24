@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClass
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientFunctor
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenStandard
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：共通底の右 class 標的を標準の制限層の平方零代数と実同型で比較する。
 方針：恒等 underlying 層同型を shift し、元の B の class を元の分母側の指定底で引き戻す。
@@ -27,41 +30,43 @@ def postnikovCommonRightShiftedDenBaseIso (s : ℤ) :
     bimoduleRestrict (postnikovCommonRightDenBase R f c d)
       (postnikovShiftedLayerBimodule R (B.obj i).obj 1 (by omega) s) ≅
         DGBimoduleShift.obj (postnikovCommonRightLayer R f c d) s :=
-  (DGBimoduleShift.restrictionIso (postnikovCommonRightDenBase R f c d)
-    (postnikovLayerBaseBimodule R (B.obj i).obj 1 (by omega)) s).symm ≪≫
-      (DGBimoduleShift.functor _ s).mapIso (postnikovCommonRightDenBaseIso R f c d)
+  PostnikovCommonCore.postnikovCommonRightShiftedDenBaseIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 lemma postnikovCommonRightShiftedDenBaseIso_hom (s : ℤ) :
     (postnikovCommonRightShiftedDenBaseIso R f c d s).hom.hom =
-      𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦s⟧) := by
-  change 𝟙 _ ≫ (postnikovCommonRightDenBaseIso R f c d).hom.hom⟦s⟧' = _
-  rw [postnikovCommonRightDenBaseIso_hom]
-  change 𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦s⟧) ≫
-    (shiftFunctor (Complex R) s).map (𝟙 (postnikovLayer R (B.obj i).obj 1)) = 𝟙 _
-  rw [(shiftFunctor (Complex R) s).map_id]
-  exact Category.id_comp _
+      𝟙 ((postnikovLayer R (B.obj i).obj 1)⟦s⟧) :=
+  PostnikovCommonCore.postnikovCommonRightShiftedDenBaseIso_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (s := s)
 
 def postnikovCommonRightDenClassIso :
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (bimoduleRestrict (postnikovCommonRightDenBase R f c d)
         (postnikovShiftedLayerBimodule R (B.obj i).obj 1 (by omega) 1)) ≅
           postnikovCommonRightClassTarget R f c d :=
-  SquareZero.coefficientIso _ (postnikovCommonRightShiftedDenBaseIso R f c d 1)
+  PostnikovCommonCore.postnikovCommonRightDenClassIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightDenClassIso_projection : (postnikovCommonRightDenClassIso R f c d).hom ≫
     SquareZero.projection _ _ = SquareZero.projection _ _ :=
-  SquareZero.coefficientMap_projection _ _
+  PostnikovCommonCore.postnikovCommonRightDenClassIso_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightDenStandardClass : cellResolution R (postnikovCommonClassBase R f c d) ⟶
     postnikovCommonRightClassTarget R f c d :=
-  postnikovCellClassOver R (B.obj i).obj (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovCommonRightDenBase R f c d) ≫ (postnikovCommonRightDenClassIso R f c d).hom
+  PostnikovCommonCore.postnikovCommonRightDenStandardClass
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightDenStandardClass_projection :
     postnikovCommonRightDenStandardClass R f c d ≫
-    SquareZero.projection _ _ = cellAugmentation R (postnikovCommonClassBase R f c d) := by
-  rw [postnikovCommonRightDenStandardClass, Category.assoc,
-    postnikovCommonRightDenClassIso_projection]
-  exact postnikovCellClassOver_projection _ _ _ _ _ _
+    SquareZero.projection _ _ = cellAugmentation R (postnikovCommonClassBase R f c d) :=
+  PostnikovCommonCore.postnikovCommonRightDenStandardClass_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

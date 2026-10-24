@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandard
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassStandardZeroGlue
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：遷移後の係数像と A の標準 class の二経路を、同じ非正次数共通源上で貼り合わせる。
 方針：零標的へ移して反転・合成し、次数零の底への経路は定数であることを用いる。
@@ -23,57 +26,59 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (e : PostnikovZeroLayerInverse R 1 f j i hj)
 
 abbrev postnikovCommonClassStandardGlueSource :=
-  cellPathNonpositiveSource R (postnikovCommonRightZeroGlueSource R f c d)
+  PostnikovCommonCore.postnikovCommonClassStandardGlueSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonClassStandardGlueProjection :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    postnikovCommonRightZeroGlueProjection R f c d
+  PostnikovCommonCore.postnikovCommonClassStandardGlueProjection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonClassStandardGlueProjection_quasiIso :
     QuasiIso (postnikovCommonClassStandardGlueProjection R f c d).hom :=
-  quasiIso_comp _ _ (hφ := cellPathNonpositiveProjection_quasiIso R _ (by
-    change (postnikovCommonRightZeroGlueSource R f c d).X.IsLE 0
-    infer_instance)) (hφ' := postnikovCommonRightZeroGlueProjection_quasiIso R f c d)
+  PostnikovCommonCore.postnikovCommonClassStandardGlueProjection_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonClassStandardGlueProjection_surjective (n : ℤ) :
     Function.Surjective ((postnikovCommonClassStandardGlueProjection R f c d).hom.f n) :=
-  (postnikovCommonRightZeroGlueProjection_surjective R f c d n).comp
-    (cellPathNonpositiveProjection_surjective R (postnikovCommonRightZeroGlueSource R f c d) n)
+  PostnikovCommonCore.postnikovCommonClassStandardGlueProjection_surjective
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (degree := n)
 
 def postnikovCommonClassStandardGlueLeft :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    postnikovCommonClassTransitionSource R f c d (hj := hj)
+  PostnikovCommonCore.postnikovCommonClassStandardGlueLeft
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassStandardGlueRight :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    postnikovCommonClassStandardEndpoint R f c d hj
+  PostnikovCommonCore.postnikovCommonClassStandardGlueRight
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassStandardGlueLeft_projection :
     postnikovCommonClassStandardGlueLeft R f c d (hj := hj) ≫ SquareZero.projection _ _ =
-      postnikovCommonClassStandardGlueProjection R f c d := by
-  rw [postnikovCommonClassStandardGlueLeft, Category.assoc,
-    postnikovCommonClassTransitionSource_projection]
-  rfl
+      postnikovCommonClassStandardGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonClassStandardGlueLeft_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassStandardGlueRight_projection :
     postnikovCommonClassStandardGlueRight R f c d (hj := hj) ≫ SquareZero.projection _ _ =
-      postnikovCommonClassStandardGlueProjection R f c d := by
-  rw [postnikovCommonClassStandardGlueRight, Category.assoc,
-    postnikovCommonClassStandardEndpoint_projection]
-  rfl
+      postnikovCommonClassStandardGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonClassStandardGlueRight_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassStandardZeroGlueWitness : Path.Witness R
     (postnikovCommonClassStandardGlueLeft R f c d (hj := hj) ≫
       postnikovCommonClassTransitionToZero R f c d hj)
     (postnikovCommonClassStandardGlueRight R f c d (hj := hj) ≫
-      postnikovCommonClassTransitionToZero R f c d hj) := by
-  let z := postnikovCommonClassTransitionToZero R f c d hj
-  let w := (((postnikovCommonClassTransitionWitness R f c d e).postcomp z).cellReverse R).cellComp R
-    (((postnikovCommonClassStandardWitness R f c d hj).postcomp z).precomp
-      (cellAugmentation R (postnikovCommonRightZeroGlueSource R f c d)))
-  let v := w.precompNonpositiveDouble R
-  exact ⟨v.hom, v.source_eq.trans (Category.assoc _ _ _).symm,
-    v.target_eq.trans (Category.assoc _ _ _).symm⟩
+      postnikovCommonClassTransitionToZero R f c d hj) :=
+  PostnikovCommonCore.postnikovCommonClassStandardZeroGlueWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassStandardZeroGlueWitness_projection :
     (postnikovCommonClassStandardZeroGlueWitness R f c d e).hom ≫
@@ -81,19 +86,9 @@ lemma postnikovCommonClassStandardZeroGlueWitness_projection :
         (postnikovCommonClassStandardGlueProjection R f c d ≫
           (postnikovCommonClassRetractBase R f c d (hj := hj) ≫
             postnikovTransition R (A.obj j).obj 1 0 (by omega))) ≫
-              Path.diagonal R (postnikov R (A.obj j).obj 0) := by
-  have : (postnikov R (A.obj j).obj 0).X.IsStrictlyGE 0 := by
-    simpa only [neg_zero] using postnikov_lowerBound R (A.obj j).obj 0
-  have hp : (postnikovCommonClassStandardGlueLeft R f c d (hj := hj) ≫
-      postnikovCommonClassTransitionToZero R f c d hj) ≫ SquareZero.projection _ _ =
-    postnikovCommonClassStandardGlueProjection R f c d ≫
-      (postnikovCommonClassRetractBase R f c d (hj := hj) ≫
-        postnikovTransition R (A.obj j).obj 1 0 (by omega)) := by
-    rw [Category.assoc, postnikovCommonClassTransitionToZero_projection,
-      ← Category.assoc, postnikovCommonClassStandardGlueLeft_projection]
-  exact (Path.Witness.hom_eq_constant R
-    ((postnikovCommonClassStandardZeroGlueWitness R f c d e).postcomp
-      (SquareZero.projection _ _))).trans (congrArg (fun t => t ≫
-        Path.diagonal R (postnikov R (A.obj j).obj 0)) hp)
+              Path.diagonal R (postnikov R (A.obj j).obj 0) :=
+  PostnikovCommonCore.postnikovCommonClassStandardZeroGlueWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

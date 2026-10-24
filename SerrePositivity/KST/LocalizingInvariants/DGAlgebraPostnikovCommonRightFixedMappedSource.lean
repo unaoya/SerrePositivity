@@ -3,6 +3,9 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedNaturality
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightFixedMappedSource
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の W の class 経路を生む、摂動代数への実 source 経路を取り出す。
 方針：指定した fixed cell 経路に元の cell lift を後合成する。
@@ -23,33 +26,26 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightFixedMappedSourceWitness :=
-  (cellPathNonpositiveFixedWitness R ((postnikovCommonRightBasePath R f c d).postcomp
-    (postnikovMap R (B.transition hj).hom 1))).postcomp
-      (postnikovCellLift R (B.obj j).obj 1 (by omega))
+  PostnikovCommonCore.postnikovCommonRightFixedMappedSourceWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightFixedMappedSourceWitness_class :
     (postnikovCommonRightFixedMappedSourceWitness R f c d hj).hom ≫
       Path.map R (postnikovPerturbedClass R (B.obj j).obj 1 (by omega)) =
-        (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom := by
-  change ((cellPathNonpositiveFixedWitness R
-    ((postnikovCommonRightBasePath R f c d).postcomp
-      (postnikovMap R (B.transition hj).hom 1))).hom ≫
-        Path.map R (postnikovCellLift R (B.obj j).obj 1 (by omega))) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp]
-  rfl
+        (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightFixedMappedSourceWitness_class
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightFixedMappedSourceWitness_projection :
     (postnikovCommonRightFixedMappedSourceWitness R f c d hj).hom ≫
       Path.map R (postnikovPerturbedProjection R (B.obj j).obj 1 (by omega)) =
         postnikovCommonRightCellProjection R f c d ≫
           ((postnikovCommonRightBasePath R f c d).postcomp
-            (postnikovMap R (B.transition hj).hom 1)).hom := by
-  change ((cellPathNonpositiveFixedWitness R
-    ((postnikovCommonRightBasePath R f c d).postcomp
-      (postnikovMap R (B.transition hj).hom 1))).hom ≫
-        Path.map R (postnikovCellLift R (B.obj j).obj 1 (by omega))) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCellLift_projection,
-    cellPathNonpositiveFixedWitness_map]
-  rfl
+            (postnikovMap R (B.transition hj).hom 1)).hom :=
+  PostnikovCommonCore.postnikovCommonRightFixedMappedSourceWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

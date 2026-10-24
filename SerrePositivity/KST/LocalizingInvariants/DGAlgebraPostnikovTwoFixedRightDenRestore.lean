@@ -48,6 +48,8 @@ lemma rightDenominatorCoefficientIso_map :
     postnikovCellFactorizationImageIso, postnikovCommonRightDenCompositeZeroIso,
     postnikovClassZeroRebaseIso, postnikovClassBaseZeroIso, SquareZero.restrictionEqualityIso,
     Iso.trans_hom, SquareZero.coefficientIso_hom, ← SquareZero.coefficientMap_comp]
+  rfl
+
 def rightDenominatorClassRestore := SquareZero.coefficientRestore
   (postnikovCommonClassRightDenominatorBase R f d.baseInverse d.layerInverse d.target_le)
   (postnikovShiftedLayerBimodule R (B.obj j).obj 1 (by omega) 1)

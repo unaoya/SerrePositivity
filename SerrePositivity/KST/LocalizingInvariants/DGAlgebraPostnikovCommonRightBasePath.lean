@@ -5,6 +5,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellPathNonpositive
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathDiscreteTarget
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightBasePath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の指定右経路を、非正次数共通源上の二つの標準 cell class の実経路へ移す。
 方針：cell 比較への経路反映と実 class の後合成を使い、零底への像を定数経路と照合する。
@@ -33,38 +36,49 @@ local instance commonBasePath_target_lowerBound :
 
 def postnikovCommonRightBasePath : Path.Witness R (postnikovCommonRightBase R f c d)
     (postnikovCommonRightDenBase R f c d) :=
-  (postnikovOneRoofRefine R f c d.zero.source_le).rightPath
+  PostnikovCommonCore.postnikovCommonRightBasePath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightBasePath_zero : (postnikovCommonRightBasePath R f c d).hom ≫
     Path.map R (postnikovTransition R (B.obj i).obj 1 0 (by omega)) =
     (postnikovCommonRightBase R f c d ≫ postnikovTransition R (B.obj i).obj 1 0 (by omega)) ≫
       Path.diagonal R (postnikov R (B.obj i).obj 0) :=
-  Path.Witness.hom_eq_constant R ((postnikovCommonRightBasePath R f c d).postcomp
-    (postnikovTransition R (B.obj i).obj 1 0 (by omega)))
+  PostnikovCommonCore.postnikovCommonRightBasePath_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 abbrev postnikovCommonRightCellSource :=
-  cellPathNonpositiveSource R (postnikovCommonClassBase R f c d)
+  PostnikovCommonCore.postnikovCommonRightCellSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightCellProjection : postnikovCommonRightCellSource R f c d ⟶
-    postnikovCommonClassBase R f c d := cellPathNonpositiveProjection R _
+    postnikovCommonClassBase R f c d :=
+  PostnikovCommonCore.postnikovCommonRightCellProjection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightCellProjection_quasiIso :
     QuasiIso (postnikovCommonRightCellProjection R f c d).hom :=
-  cellPathNonpositiveProjection_quasiIso R _ (by
-    change (postnikovCommonClassBase R f c d).X.IsLE 0
-    infer_instance)
+  PostnikovCommonCore.postnikovCommonRightCellProjection_quasiIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightCellProjection_surjective (n : ℤ) :
     Function.Surjective ((postnikovCommonRightCellProjection R f c d).hom.f n) :=
-  cellPathNonpositiveProjection_surjective R _ n
+  PostnikovCommonCore.postnikovCommonRightCellProjection_surjective
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (degree := n)
 
 def postnikovCommonRightCellClassWitness : Path.Witness R
     (cellPathNonpositiveComparison R (postnikovCommonRightBase R f c d) ≫
       postnikovCellClass R (B.obj i).obj 1 (by omega))
     (cellPathNonpositiveComparison R (postnikovCommonRightDenBase R f c d) ≫
       postnikovCellClass R (B.obj i).obj 1 (by omega)) :=
-  (cellPathNonpositiveWitness R (postnikovCommonRightBasePath R f c d)).postcomp
-    (postnikovCellClass R (B.obj i).obj 1 (by omega))
+  PostnikovCommonCore.postnikovCommonRightCellClassWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightCellClassWitness_zero :
     (postnikovCommonRightCellClassWitness R f c d).hom ≫
@@ -73,20 +87,9 @@ lemma postnikovCommonRightCellClassWitness_zero :
           postnikovTransition R (B.obj i).obj 1 0 (by omega)) =
     (postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightBase R f c d ≫
       postnikovTransition R (B.obj i).obj 1 0 (by omega)) ≫
-        Path.diagonal R (postnikov R (B.obj i).obj 0) := by
-  let q := SquareZero.projection (postnikov R (B.obj i).obj 1)
-    (postnikovShiftedLayerBimodule R (B.obj i).obj 1 (by omega) 1) ≫
-      postnikovTransition R (B.obj i).obj 1 0 (by omega)
-  have h := Path.Witness.hom_eq_constant R
-    ((postnikovCommonRightCellClassWitness R f c d).postcomp q)
-  have he : (cellPathNonpositiveComparison R (postnikovCommonRightBase R f c d) ≫
-      postnikovCellClass R (B.obj i).obj 1 (by omega)) ≫ q =
-      postnikovCommonRightCellProjection R f c d ≫ postnikovCommonRightBase R f c d ≫
-        postnikovTransition R (B.obj i).obj 1 0 (by omega) := by
-    simp only [q, Category.assoc]
-    rw [reassoc_of% (postnikovCellClass_projection R (B.obj i).obj 1 (by omega)),
-      reassoc_of% (cellPathNonpositiveComparison_projection R (postnikovCommonRightBase R f c d))]
-    rfl
-  exact h.trans (congrArg (fun t => t ≫ Path.diagonal R (postnikov R (B.obj i).obj 0)) he)
+        Path.diagonal R (postnikov R (B.obj i).obj 0) :=
+  PostnikovCommonCore.postnikovCommonRightCellClassWitness_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

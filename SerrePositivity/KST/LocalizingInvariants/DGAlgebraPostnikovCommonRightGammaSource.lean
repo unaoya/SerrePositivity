@@ -5,6 +5,9 @@ public import
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassStandardZeroGlue
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightGammaSource
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の W source の実経路を、標準 class を貼り合わせた Γ 上へ移す。
 方針：既存の二つの非正次数射影を前合成し、全 class 経路と底経路を回収する。
@@ -26,42 +29,45 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 
 def postnikovCommonRightGammaToSource : postnikovCommonClassStandardGlueSource R f c d ⟶
     postnikovCommonRightCellSource R f c d :=
-  cellPathNonpositiveProjection R (postnikovCommonRightZeroGlueSource R f c d) ≫
-    cellPathNonpositiveProjection R (postnikovCommonRightCellSource R f c d)
+  PostnikovCommonCore.postnikovCommonRightGammaToSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightGammaToSource_projection :
     postnikovCommonRightGammaToSource R f c d ≫ postnikovCommonRightCellProjection R f c d =
-      postnikovCommonClassStandardGlueProjection R f c d := by
-  simp only [postnikovCommonRightGammaToSource, postnikovCommonClassStandardGlueProjection,
-    postnikovCommonRightZeroGlueProjection, Category.assoc]
+      postnikovCommonClassStandardGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonRightGammaToSource_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 variable {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightGammaSourceWitness :=
-  (postnikovCommonRightFixedMappedSourceWitness R f c d hj).precomp
-    (postnikovCommonRightGammaToSource R f c d)
+  PostnikovCommonCore.postnikovCommonRightGammaSourceWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightGammaBasePath :=
-  (((postnikovCommonRightBasePath R f c d).postcomp
-    (postnikovMap R (B.transition hj).hom 1)).precomp
-      (postnikovCommonClassStandardGlueProjection R f c d))
+  PostnikovCommonCore.postnikovCommonRightGammaBasePath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightGammaSourceWitness_class :
     (postnikovCommonRightGammaSourceWitness R f c d hj).hom ≫
       Path.map R (postnikovPerturbedClass R (B.obj j).obj 1 (by omega)) =
     postnikovCommonRightGammaToSource R f c d ≫
-      (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom := by
-  change (postnikovCommonRightGammaToSource R f c d ≫ _) ≫ _ = _
-  rw [Category.assoc, postnikovCommonRightFixedMappedSourceWitness_class]
+      (postnikovCommonRightFixedMappedClassWitness R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightGammaSourceWitness_class
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightGammaSourceWitness_projection :
     (postnikovCommonRightGammaSourceWitness R f c d hj).hom ≫
       Path.map R (postnikovPerturbedProjection R (B.obj j).obj 1 (by omega)) =
-        (postnikovCommonRightGammaBasePath R f c d hj).hom := by
-  change (postnikovCommonRightGammaToSource R f c d ≫ _) ≫ _ = _
-  rw [Category.assoc, postnikovCommonRightFixedMappedSourceWitness_projection,
-    ← Category.assoc, postnikovCommonRightGammaToSource_projection]
-  rfl
+        (postnikovCommonRightGammaBasePath R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightGammaSourceWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightGammaBasePath_zero :
     (postnikovCommonRightGammaBasePath R f c d hj).hom ≫
@@ -69,12 +75,9 @@ lemma postnikovCommonRightGammaBasePath_zero :
     ((postnikovCommonRightGammaBasePath R f c d hj).hom ≫
       Path.source R (postnikov R (B.obj j).obj 1) ≫
         postnikovTransition R (B.obj j).obj 1 0 (by omega)) ≫
-          Path.diagonal R (postnikov R (B.obj j).obj 0) := by
-  have : (postnikov R (B.obj j).obj 0).X.IsStrictlyGE 0 := by
-    simpa only [neg_zero] using postnikov_lowerBound R (B.obj j).obj 0
-  have h := Path.map_to_discrete_constant R
-    ((postnikovCommonRightGammaBasePath R f c d hj).hom ≫
-      Path.map R (postnikovTransition R (B.obj j).obj 1 0 (by omega)))
-  simpa only [Category.assoc, Path.map_source] using h
+          Path.diagonal R (postnikov R (B.obj j).obj 0) :=
+  PostnikovCommonCore.postnikovCommonRightGammaBasePath_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

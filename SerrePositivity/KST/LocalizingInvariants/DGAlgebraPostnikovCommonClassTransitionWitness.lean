@@ -2,6 +2,9 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonClassTransition
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreClassTransitionWitness
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：遷移後の class の底変更経路を、元の層を制限した class 標的へ戻す。
 方針：二つの底変更射影で両端を同定し、恒等係数同型の逆で経路を移す。
@@ -25,94 +28,75 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 def postnikovCommonClassTransitionTarget : postnikovCommonRightZeroGlueSource R f c d ⟶
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovCommonClassTransitionLayer R f c d hj) :=
- postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassTarget R f c d ≫ postnikovCommonClassTransitionMap R f c d hj
+  PostnikovCommonCore.postnikovCommonClassTransitionTarget
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonClassTransitionSource : postnikovCommonRightZeroGlueSource R f c d ⟶
     SquareZero.algebra (postnikovCommonClassBase R f c d)
       (postnikovCommonClassTransitionLayer R f c d hj) :=
- postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassSource R f c d ≫ postnikovCommonClassTransitionMap R f c d hj
+  PostnikovCommonCore.postnikovCommonClassTransitionSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassTransitionTarget_projection :
     postnikovCommonClassTransitionTarget R f c d (hj := hj) ≫ SquareZero.projection _ _ =
-      postnikovCommonRightZeroGlueProjection R f c d := by
-  rw [postnikovCommonClassTransitionTarget, Category.assoc, Category.assoc,
-    postnikovCommonClassTransitionMap, SquareZero.coefficientMap_projection,
-    postnikovCommonClassTarget_projection, postnikovCommonRightGlueToCell_projection]
+      postnikovCommonRightZeroGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonClassTransitionTarget_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassTransitionSource_projection :
     postnikovCommonClassTransitionSource R f c d (hj := hj) ≫ SquareZero.projection _ _ =
-      postnikovCommonRightZeroGlueProjection R f c d := by
-  rw [postnikovCommonClassTransitionSource, Category.assoc, Category.assoc,
-    postnikovCommonClassTransitionMap, SquareZero.coefficientMap_projection,
-    postnikovCommonClassSource_projection, postnikovCommonRightGlueToCell_projection]
+      postnikovCommonRightZeroGlueProjection R f c d :=
+  PostnikovCommonCore.postnikovCommonClassTransitionSource_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassTransitionTarget_zero :
     postnikovCommonClassTransitionTarget R f c d (hj := hj) ≫
       postnikovCommonClassTransitionToZero R f c d hj =
-        postnikovCommonClassRetractTarget R f c d (hj := hj) := by
-  rw [postnikovCommonClassTransitionTarget, Category.assoc, Category.assoc,
-    postnikovCommonClassTransition_zero]
-  rfl
+        postnikovCommonClassRetractTarget R f c d (hj := hj) :=
+  PostnikovCommonCore.postnikovCommonClassTransitionTarget_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassTransitionSource_zero :
     postnikovCommonClassTransitionSource R f c d (hj := hj) ≫
       postnikovCommonClassTransitionToZero R f c d hj =
-        postnikovCommonClassRetractSource R f c d (hj := hj) := by
-  rw [postnikovCommonClassTransitionSource, Category.assoc, Category.assoc,
-    postnikovCommonClassTransition_zero]
-  rfl
+        postnikovCommonClassRetractSource R f c d (hj := hj) :=
+  PostnikovCommonCore.postnikovCommonClassTransitionSource_zero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonClassRetractLeft_eq : postnikovCommonClassRetractLeft R f c d e =
     postnikovCommonClassTransitionTarget R f c d (hj := hj) ≫
-      (postnikovCommonClassTransitionIso R f c d hj).hom := by
-  apply SquareZero.baseChange_hom_ext
-    (postnikovCommonClassRetractBase R f c d (hj := hj) ≫
-      postnikovTransition R (A.obj j).obj 1 0 (by omega))
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (A.obj j).obj 1) 1)
-  · rw [postnikovCommonClassRetractLeft, SquareZero.baseChangeLift_projection,
-      Category.assoc, postnikovCommonClassTransitionIso, postnikovClassBaseZeroIso_projection,
-      postnikovCommonClassTransitionTarget_projection]
-  · rw [postnikovCommonClassRetractLeft, SquareZero.baseChangeLift_map,
-      Category.assoc, postnikovCommonClassTransitionIso, postnikovClassBaseZeroIso_map]
-    exact (postnikovCommonClassTransitionTarget_zero R f c d (hj := hj)).symm
+      (postnikovCommonClassTransitionIso R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonClassRetractLeft_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassRetractRight_eq : postnikovCommonClassRetractRight R f c d e =
     postnikovCommonClassTransitionSource R f c d (hj := hj) ≫
-      (postnikovCommonClassTransitionIso R f c d hj).hom := by
-  apply SquareZero.baseChange_hom_ext
-    (postnikovCommonClassRetractBase R f c d (hj := hj) ≫
-      postnikovTransition R (A.obj j).obj 1 0 (by omega))
-    (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (A.obj j).obj 1) 1)
-  · rw [postnikovCommonClassRetractRight, SquareZero.baseChangeLift_projection,
-      Category.assoc, postnikovCommonClassTransitionIso, postnikovClassBaseZeroIso_projection,
-      postnikovCommonClassTransitionSource_projection]
-  · rw [postnikovCommonClassRetractRight, SquareZero.baseChangeLift_map,
-      Category.assoc, postnikovCommonClassTransitionIso, postnikovClassBaseZeroIso_map]
-    exact (postnikovCommonClassTransitionSource_zero R f c d (hj := hj)).symm
+      (postnikovCommonClassTransitionIso R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonClassRetractRight_eq
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 /-- 遷移後の元の二 class の像を、P に相対的な実乗法的経路で結ぶ。 -/
 def postnikovCommonClassTransitionWitness : Path.Witness R
     (postnikovCommonClassTransitionTarget R f c d (hj := hj))
-    (postnikovCommonClassTransitionSource R f c d (hj := hj)) where
-  hom := (postnikovCommonClassRetractRelativeWitness R f c d e).hom ≫
-    Path.map R (postnikovCommonClassTransitionIso R f c d hj).inv
-  source_eq := by
-    rw [Category.assoc, Path.map_source, ← Category.assoc,
-      (postnikovCommonClassRetractRelativeWitness R f c d e).source_eq,
-      postnikovCommonClassRetractLeft_eq, Category.assoc, Iso.hom_inv_id, Category.comp_id]
-  target_eq := by
-    rw [Category.assoc, Path.map_target, ← Category.assoc,
-      (postnikovCommonClassRetractRelativeWitness R f c d e).target_eq,
-      postnikovCommonClassRetractRight_eq, Category.assoc, Iso.hom_inv_id, Category.comp_id]
+    (postnikovCommonClassTransitionSource R f c d (hj := hj)) :=
+  PostnikovCommonCore.postnikovCommonClassTransitionWitness
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 lemma postnikovCommonClassTransitionWitness_projection :
     (postnikovCommonClassTransitionWitness R f c d e).hom ≫ Path.map R (SquareZero.projection _ _) =
       postnikovCommonRightZeroGlueProjection R f c d ≫
-        Path.diagonal R (postnikovCommonClassBase R f c d) := by
-  change (_ ≫ Path.map R (postnikovCommonClassTransitionIso R f c d hj).inv) ≫ _ = _
-  rw [Category.assoc, ← Path.map_comp, postnikovCommonClassTransitionIso,
-    postnikovClassBaseZeroIso_inv_projection, postnikovCommonClassRetractRelativeWitness_projection]
+        Path.diagonal R (postnikovCommonClassBase R f c d) :=
+  PostnikovCommonCore.postnikovCommonClassTransitionWitness_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

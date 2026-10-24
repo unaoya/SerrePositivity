@@ -7,6 +7,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonZ
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerZeroRestrictionIso
 public import SerrePositivity.KST.LocalizingInvariants.BimoduleRestrictionOver
 
+
 /-!
 概要：零底上の右係数標的と二つの実射を、元の細分 roof 底へ戻す。
 方針：元の商射による制限と恒等 underlying 比較を使い、元の係数三角形で照合する。
@@ -33,39 +34,41 @@ local instance commonRight_apex_nonpositive :
 def postnikovCommonRightLayer :
     Bimod (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex
       (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex :=
-  bimoduleRestrict
-    (postnikovQuotient R (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex 0)
-    (postnikovCommonZeroRightLayer R 1 f c d.zero)
+  PostnikovCommonCore.postnikovCommonRightLayer
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightNumeratorMap :
     postnikovOneRoofNumeratorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) ⟶
       postnikovCommonRightLayer R f c d :=
-  (postnikovLayerBaseZeroRestrictionIso R (A.obj i).obj _ 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator).hom ≫
-      bimoduleRestrictionMap
-        (postnikovQuotient R (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex 0)
-        (postnikovCommonZeroRightNumeratorMap R 1 f c d.zero)
+  PostnikovCommonCore.postnikovCommonRightNumeratorMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightNumeratorMap_hom :
     (postnikovCommonRightNumeratorMap R f c d).hom = postnikovLayerMap R (f.app i).hom 1 :=
-  PostnikovCommonCore.postnikovCommonRightNumeratorMap_hom R (by omega) f c (d.toCore R f c)
+  PostnikovCommonCore.postnikovCommonRightNumeratorMap_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 def postnikovCommonRightDenominatorMap :
     postnikovOneRoofDenominatorLayer R f (postnikovOneRoofRefine R f c d.zero.source_le) ⟶
       postnikovCommonRightLayer R f c d :=
-  (postnikovLayerBaseZeroRestrictionIso R (B.obj d.zero.stage).obj _ 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator).hom ≫
-      bimoduleRestrictionMap
-        (postnikovQuotient R (postnikovOneRoofRefine R f c d.zero.source_le).roof.apex 0)
-        (postnikovCommonZeroRightDenominatorMap R 1 f c d.zero)
+  PostnikovCommonCore.postnikovCommonRightDenominatorMap
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRightDenominatorMap_hom :
     (postnikovCommonRightDenominatorMap R f c d).hom =
       postnikovLayerMap R (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom 1 :=
-  PostnikovCommonCore.postnikovCommonRightDenominatorMap_hom R (by omega) f c (d.toCore R f c)
+  PostnikovCommonCore.postnikovCommonRightDenominatorMap_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 lemma postnikovCommonRight_coefficient : d.coefficient ≫
     postnikovCommonRightNumeratorMap R f c d = postnikovCommonRightDenominatorMap R f c d :=
-  PostnikovCommonCore.postnikovCommonRight_coefficient R (by omega) f c (d.toCore R f c)
+  PostnikovCommonCore.postnikovCommonRight_coefficient
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -23,6 +23,7 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
   (d : PostnikovCommonZeroInverse R 1 f c)
 
+@[reducible]
 def postnikovCommonCoefficientMap :
     postnikovOneRoofDenominatorLayer R f (postnikovOneRoofRefine R f c d.source_le) ⟶
       postnikovOneRoofNumeratorLayer R f (postnikovOneRoofRefine R f c d.source_le) :=

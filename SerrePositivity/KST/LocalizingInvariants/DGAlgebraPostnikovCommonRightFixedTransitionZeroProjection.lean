@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightFixedTransitionRefinement
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeWitnessMapOver
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightFixedTransitionZeroProjection
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：fixed Γ の遷移の右像を、零底に相対的な元の G として保持する。
 方針：底変更射による相対経路の移送と、全経路の厳密同定を使う。
@@ -24,11 +27,9 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightGlueZeroRelative :=
-  (postnikovCommonRightGlueRefinedPath R f c d hj).mapOver
-    (postnikovCommonRightClassifyingBase R f c d hj)
-    (SquareZero.baseChangeMap (postnikovCommonRightClassifyingBase R f c d hj)
-      (DGBimoduleShift.obj (postnikovLayerZeroBimodule R (B.obj j).obj 1) 1))
-    (SquareZero.baseChangeMap_projection _ _)
+  PostnikovCommonCore.postnikovCommonRightGlueZeroRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 variable (e : PostnikovZeroLayerInverse R 1 f j i hj)
 
@@ -37,14 +38,15 @@ lemma postnikovCommonClassFixedTransitionZeroRight_projection :
       Path.map R (SquareZero.projection _ _) =
     (postnikovCommonClassStandardGlueProjection R f c d ≫
       postnikovCommonRightClassifyingBase R f c d hj) ≫
-      Path.diagonal R (postnikov R (B.obj j).obj 0) := by
-  rw [postnikovCommonClassFixedTransitionZeroRight_hom R f c d hj e]
-  exact (postnikovCommonRightGlueZeroRelative R f c d hj).projection_eq
+      Path.diagonal R (postnikov R (B.obj j).obj 0) :=
+  PostnikovCommonCore.postnikovCommonClassFixedTransitionZeroRight_projection
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 /-- 同じ G の端点表示で、全射は fixed 遷移の元の右像そのもの。 -/
 def postnikovCommonRightFixedTransitionZeroRelative :=
-  (postnikovCommonRightGlueZeroRelative R f c d hj).replaceHom
-    (postnikovCommonClassFixedTransitionZeroRightPath R f c d hj e).hom
-    (postnikovCommonClassFixedTransitionZeroRight_hom R f c d hj e).symm
+  PostnikovCommonCore.postnikovCommonRightFixedTransitionZeroRelative
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj) (e := e)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

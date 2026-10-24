@@ -4,6 +4,9 @@ public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightTargetFirstComparison
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightGlueContour
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourFirstComparison
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：貼合せ輪郭の元の T′ を、同じ Γ 源上の零底 affine 第一経路へ同定する。
 方針：T′ の端点移送が全射を変更しないことと、元の T の全経路同定を使う。
@@ -35,7 +38,9 @@ lemma postnikovCommonRightContourFirst_hom :
     let hTop := postnikovCommonRightClassifyingBaseChangeHom_central R f c d hj
     let T' := SquareZero.RectangleOfHom.towardTopSource N H p V hTop T
     postnikovCommonRightToClassifying R f c d ≫ T'.hom =
-      (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom := by
-  exact postnikovCommonRightTargetFirst_hom R f c d hj
+      (postnikovCommonRightViaBFirstZeroPath R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightContourFirst_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

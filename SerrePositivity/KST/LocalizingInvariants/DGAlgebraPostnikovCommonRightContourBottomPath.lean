@@ -3,6 +3,9 @@ module
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightContourTargetLeft
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightContourBottomPath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の W と、元の T′L の端点表示にそろえた既存 affineViaB を取り出す。
 方針：証明済みの全経路同定で端点の表示だけを移し、Γ 射影を保持する。
@@ -22,28 +25,31 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
-def postnikovCommonRightContourBottomPath := SquareZero.RectangleOfHom.outerTarget
-  (postnikovCommonRightClassifyingLayer R f c d hj)
-  (postnikovCommonRightClassifyingBaseChangeHom R f c d hj)
-  (postnikovCommonRightClassifyingProjection R f c d)
-  (postnikovCommonRightClassifyingBaseChangeHom_projection R f c d hj)
+def postnikovCommonRightContourBottomPath :=
+  PostnikovCommonCore.postnikovCommonRightContourBottomPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightContourBottomRefinedPath :=
-  ((postnikovCommonRightContourBottomPath R f c d hj).precomp
-    (postnikovCommonRightToClassifying R f c d)).rebase
-    (postnikovCommonRightToClassifying_projection R f c d)
+  PostnikovCommonCore.postnikovCommonRightContourBottomRefinedPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightViaBContourPath :=
-  (postnikovCommonRightContourTargetLeftRefined R f c d hj).replaceHom
-    (postnikovCommonRightZeroAffineViaB R f c d hj).hom
-    (postnikovCommonRightContourTargetLeft_hom R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightViaBContourPath
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightViaBThenBottom :=
-  (postnikovCommonRightViaBContourPath R f c d hj).comp
-    (postnikovCommonRightContourBottomRefinedPath R f c d hj)
+  PostnikovCommonCore.postnikovCommonRightViaBThenBottom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightViaBContourPath_hom :
     (postnikovCommonRightViaBContourPath R f c d hj).hom =
-      (postnikovCommonRightZeroAffineViaB R f c d hj).hom := rfl
+      (postnikovCommonRightZeroAffineViaB R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightViaBContourPath_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

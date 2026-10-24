@@ -18,14 +18,15 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 open ProExcision
+
 variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : LevelHom A B)
   {i m : ℕ} {hi : i ≤ m}
   (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
 
 namespace PostnikovCommonZeroInverse
 
-def toCore (d : PostnikovCommonZeroInverse R 1 f c) :
-    PostnikovCommonCore.ZeroInverse R (by omega) f c where
+abbrev toCore (d : PostnikovCommonZeroInverse R 1 f c) :
+    PostnikovCommonCore.ZeroInverse R (by decide) f c where
   inverseStage := d.inverseStage
   inverse_le := d.inverse_le
   inverse := d.inverse
@@ -42,8 +43,8 @@ end PostnikovCommonZeroInverse
 
 namespace PostnikovCommonLayerInverse
 
-def toCore (d : PostnikovCommonLayerInverse R f c) :
-    PostnikovCommonCore.LayerInverse R (by omega) f c where
+abbrev toCore (d : PostnikovCommonLayerInverse R f c) :
+    PostnikovCommonCore.LayerInverse R (by decide) f c where
   zero := d.zero.toCore R f c
   coefficient := d.coefficient
   coefficient_hom := d.coefficient_hom
@@ -57,12 +58,12 @@ lemma toCore_source_le (d : PostnikovCommonLayerInverse R f c) :
     (d.toCore R f c).zero.source_le = d.zero.source_le := rfl
 
 lemma toCore_classSource (d : PostnikovCommonLayerInverse R f c) :
-    PostnikovCommonCore.classSource R (by omega) f
+    PostnikovCommonCore.classSource R (by decide) f
       (postnikovOneRoofRefine R f c (d.toCore R f c).zero.source_le)
       (d.toCore R f c).coefficient = postnikovCommonClassSource R f c d := rfl
 
 lemma toCore_classTarget (d : PostnikovCommonLayerInverse R f c) :
-    PostnikovCommonCore.classTarget R (by omega) f
+    PostnikovCommonCore.classTarget R (by decide) f
       (postnikovOneRoofRefine R f c (d.toCore R f c).zero.source_le) =
         postnikovCommonClassTarget R f c d := rfl
 

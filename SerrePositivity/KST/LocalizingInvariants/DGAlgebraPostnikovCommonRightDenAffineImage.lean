@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightDenDirectSquare
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPathImageWhisker
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightDenAffineImage
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：分母の正規化 affine 経路を、元の二 ImageWitness の同じ Γ 上の合成へ同定する。
 方針：元の係数表示同型の全経路式を、元の Γ と分母零底同型で写す。
@@ -21,39 +24,26 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightDenImageComposite :=
-  postnikovCellImageComposite R (B.obj d.zero.stage).obj (B.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom (B.transition hj).hom
+  PostnikovCommonCore.postnikovCommonRightDenImageComposite
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightDenAffineCommon_image_hom :
     (postnikovCommonRightDenAffineCommonPath R f c d hj).hom ≫
       Path.map R (postnikovCommonRightDenDirectImageIso R f c d hj).hom =
     postnikovCellImageToSecond R (postnikovCommonClassBase R f c d) ≫
-      (postnikovCommonRightDenImageComposite R f c d hj).hom := by
-  let h := postnikovCellFactorizationImagePath_hom R (B.obj d.zero.stage).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.denominator
-    (postnikovCommonRightDenDirectMap R f c d hj) (B.obj i).obj
-    (B.transition (d.zero.inverse_le.trans d.zero.stage_le)).hom (B.transition hj).hom
-    (postnikovCommonRightDenDirect_factorization R f c d hj)
-  exact h
+      (postnikovCommonRightDenImageComposite R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightDenAffineCommon_image_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 lemma postnikovCommonRightDenAffinePath_image_hom :
     (postnikovCommonRightDenAffinePath R f c d hj).hom =
     postnikovCommonRightImageToSecond R f c d ≫
       (postnikovCommonRightDenImageComposite R f c d hj).hom ≫
-        Path.map R (postnikovCommonRightDenCompositeZeroIso R f c d hj).hom := by
-  change (postnikovCommonRightToFactorization R f c d ≫
-    ((postnikovCommonRightDenAffineCommonPath R f c d hj).hom ≫
-      Path.map R (postnikovCommonRightDenDirectToZero R f c d hj))) = _
-  let h := Path.map_image_whisker R (postnikovCommonRightToFactorization R f c d)
-    (postnikovCommonRightDenAffineCommonPath R f c d hj).hom
-    (postnikovCellImageToSecond R (postnikovCommonClassBase R f c d))
-    (postnikovCommonRightDenImageComposite R f c d hj).hom
-    (postnikovCommonRightDenDirectImageIso R f c d hj).hom
-    (postnikovCommonRightDenCompositeZeroIso R f c d hj).hom
-    (postnikovCommonRightDenAffineCommon_image_hom R f c d hj)
-  exact h
+        Path.map R (postnikovCommonRightDenCompositeZeroIso R f c d hj).hom :=
+  PostnikovCommonCore.postnikovCommonRightDenAffinePath_image_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

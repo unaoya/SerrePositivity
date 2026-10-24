@@ -3,6 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightClassGlue
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroCoefficientHomotopy
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightCoefficientHomotopy
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：貼り合わせた元の右 class 経路から、係数逆候補の右像の鎖ホモトピーを回収する。
 方針：元の二 class と cell 比較射を保持し、実係数射への一般回収補題を適用する。
@@ -22,25 +25,24 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   {i m : ℕ} {hi : i ≤ m} (c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi)
   (d : PostnikovCommonLayerInverse R f c)
 
-abbrev postnikovCommonGlueClassTarget := postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassTarget R f c d
+abbrev postnikovCommonGlueClassTarget :=
+  PostnikovCommonCore.postnikovCommonGlueClassTarget
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
-abbrev postnikovCommonGlueClassSource := postnikovCommonRightGlueToCell R f c d ≫
-  postnikovCommonClassSource R f c d
+abbrev postnikovCommonGlueClassSource :=
+  PostnikovCommonCore.postnikovCommonGlueClassSource
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 /-- 元の層の係数射の右像は、追加の経路仮定なしに実際に鎖ホモトピック。 -/
 def postnikovCommonRightCoefficientHomotopy : Homotopy
     (((postnikovCommonGlueClassTarget R f c d).hom ≫ biprod.snd) ≫
       (postnikovCommonRightShiftedNumeratorMap R f c d 1).hom)
     (((postnikovCommonGlueClassSource R f c d).hom ≫ biprod.snd) ≫
-      (postnikovCommonRightShiftedNumeratorMap R f c d 1).hom) := by
-  apply SquareZero.coefficientHomotopy R
-    (postnikovCommonRightShiftedNumeratorMap R f c d 1)
-    (postnikovCommonGlueClassTarget R f c d) (postnikovCommonGlueClassSource R f c d)
-  refine ⟨(postnikovCommonRightClassGlueWitness R f c d).hom, ?_, ?_⟩
-  · exact (postnikovCommonRightClassGlueWitness R f c d).source_eq.trans
-      (Category.assoc _ _ _).symm
-  · exact (postnikovCommonRightClassGlueWitness R f c d).target_eq.trans
-      (Category.assoc _ _ _).symm
+      (postnikovCommonRightShiftedNumeratorMap R f c d 1).hom) :=
+  PostnikovCommonCore.postnikovCommonRightCoefficientHomotopy
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

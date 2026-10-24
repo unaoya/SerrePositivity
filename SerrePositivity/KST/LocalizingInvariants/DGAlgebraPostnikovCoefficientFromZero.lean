@@ -27,6 +27,7 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
 local instance coefficientFromZero_apex_nonpositive : c.roof.apex.X.IsStrictlyLE 0 :=
   c.roof_nonpositive
 
+@[reducible]
 def postnikovCoefficientFromZero : postnikovOneRoofDenominatorLayer R f c ⟶
     postnikovOneRoofNumeratorLayer R f c :=
   PostnikovCommonCore.coefficientFromZero R (by omega) f c u

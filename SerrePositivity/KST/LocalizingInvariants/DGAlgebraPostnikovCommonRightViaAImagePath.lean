@@ -4,6 +4,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import
   SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonRightZeroAffineRefinement
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreRightViaAImagePath
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonCoreSpecialization
+
 /-!
 概要：元の Γ 源上の A 遷移≫fⱼの零底 affine 経路を、元の二 ImageWitness の合成で表示する。
 方針：因子分解経路の実同定を前合成し、係数同型の逆と元の零底同型で後合成する。
@@ -24,39 +27,28 @@ variable (R : Type u) [CommRing R] {A B : Tower (NonpositiveAlgebra R)} (f : Lev
   (d : PostnikovCommonLayerInverse R f c) {j : ℕ} (hj : j ≤ i)
 
 def postnikovCommonRightViaAImageComposite :=
-  postnikovCellImageComposite R (A.obj i).obj (A.obj j).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-    (A.transition hj).hom (f.app j).hom
+  PostnikovCommonCore.postnikovCommonRightViaAImageComposite
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightViaAImageIso :=
-  postnikovCellFactorizationImageIso R (A.obj i).obj (B.obj j).obj
-    (postnikovCommonClassBase R f c d) 1 (by omega)
-    (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-    (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj
-    (A.transition hj).hom (f.app j).hom rfl
+  PostnikovCommonCore.postnikovCommonRightViaAImageIso
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 def postnikovCommonRightViaAImageToZero :=
-  (postnikovCommonRightViaAImageIso R f c d hj).inv ≫
-    (postnikovCommonRightCompositeZeroIso R f c d hj).hom
+  PostnikovCommonCore.postnikovCommonRightViaAImageToZero
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 /-- 元の零底 Γ 経路は、指定した二自然性経路の affine 合成の同じ像に厳密に一致。 -/
 lemma postnikovCommonRightZeroAffineViaA_image_hom :
     (postnikovCommonRightZeroAffineViaA R f c d hj).hom =
     postnikovCommonRightImageToSecond R f c d ≫
       (postnikovCommonRightViaAImageComposite R f c d hj).hom ≫
-        Path.map R (postnikovCommonRightViaAImageToZero R f c d hj) := by
-  change ((postnikovCommonRightToFactorization R f c d ≫
-    (postnikovCellFactorizationAffineCommonWitness R (A.obj i).obj (B.obj j).obj
-      (postnikovCommonClassBase R f c d) 1 (by omega)
-      (postnikovOneRoofRefine R f c d.zero.source_le).roof.numerator
-      (postnikovCommonRightNaturalityComposite R f hj) (A.obj j).obj
-      (A.transition hj).hom (f.app j).hom
-      rfl).hom) ≫
-      Path.map R (postnikovCommonRightCompositeZeroIso R f c d hj).hom) = _
-  rw [postnikovCellFactorizationImagePath_inv_hom]
-  simp only [postnikovCommonRightImageToSecond, postnikovCommonRightViaAImageComposite,
-    postnikovCommonRightViaAImageToZero, postnikovCommonRightViaAImageIso,
-    Path.map_comp, Category.assoc]
+        Path.map R (postnikovCommonRightViaAImageToZero R f c d hj) :=
+  PostnikovCommonCore.postnikovCommonRightZeroAffineViaA_image_hom
+    (R := R) (n := (1 : ℤ)) (hn := by decide) (A := A) (B := B) (f := f) (i := i) (m := m)
+    (hi := hi) (c := c) (d := d.toCore R f c) (j := j) (hj := hj)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra
