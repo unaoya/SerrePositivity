@@ -609,3 +609,7 @@ public import SerrePositivity.KST.Fibration.VerdierFullSUpperPrism
 
 public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrism
 public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrismIso
+
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerDeformation
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerShortFaces
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerRelativeDeformation
