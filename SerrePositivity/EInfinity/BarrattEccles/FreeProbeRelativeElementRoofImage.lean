@@ -69,11 +69,21 @@ lemma freeProbeRelativeElementRoofMap_image :
     freeProbeRelativeElementNormalizedIndexNerveMap A X B ≫
       freeNormalizedTensorReducedRoof A X B.obj := by
   let := modelCategory A
+  have hg : graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word ≫
+      cofibrantAlgebraHammockColimitInclusionMap A (freeProbeElementCofibrantSource A X) B =
+      cofibrantAlgebraHammockGraphInclusionMap A (freeProbeRelativeElementSource A X)
+        (ULiftHom.objUp.{u + 1, u + 1} B) LeftRoof.word ≫
+      algebraHammockGraphInclusion A LeftRoof.word ((freeProbeFunctor A).obj X) B.obj ≫
+        (algebraHammockReductionIso A ((freeProbeFunctor A).obj X) B.obj).hom :=
+    cofibrantAlgebraHammockColimitInclusionMap_graph A
+      (freeProbeElementCofibrantSource A X) B LeftRoof.word
   change (LeftRoof.Precompose.SameUniverse.diagramGraphMap
     (cofibrantAlgebraRelativeCategory A).weakEquivalences (freeProbeRelativeElementRoof A X B) ≫
     graphInclusion _ _ _ LeftRoof.word) ≫ _ = _
-  rw [Category.assoc, cofibrantAlgebraHammockColimitInclusionMap_graph,
+  rw [Category.assoc, hg,
     ← Category.assoc, ← Category.assoc, freeProbeRelativeElementRoof_graph_image]
-  simp only [freeNormalizedTensorReducedRoof, FrameHom.frameLeftRoofColimitMap, Category.assoc]
+  simp only [freeNormalizedTensorReducedRoof, FrameHom.frameLeftRoofColimitMap,
+    algebraHammockGraphInclusion, Category.assoc]
 
 end SerrePositivity.EInfinity.BarrattEccles

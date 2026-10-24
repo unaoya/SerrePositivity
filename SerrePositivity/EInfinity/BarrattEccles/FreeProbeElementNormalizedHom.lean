@@ -31,8 +31,12 @@ def freeProbeElementNormalizedHomMap :
 方針：元の標的弱比較と実随伴 Hom 同型を使う。
 規約：別の Hom 同値に置換しない。使われ方：全要素圏写像の反転性。 -/
 lemma freeProbeElementNormalizedHomMap_homotopyEquivalence :
-    IsSimplicialHomotopyEquivalence (freeProbeElementNormalizedHomMap A X B) :=
-  (normalizedProbeTargetReplacementMap_homotopyEquivalence A X B.carrier).comp
+    IsSimplicialHomotopyEquivalence (freeProbeElementNormalizedHomMap A X B) := by
+  have := normalizedProbeTensorHom_kanComplex A (op X)
+    (complexSemifreeResolutionValue A B.carrier).val
+  have := normalizedProbeTensorHom_kanComplex A (op X) B.carrier
+  have := freeNormalizedProbeHom_kanComplex A (op X) B
+  exact (normalizedProbeTargetReplacementMap_homotopyEquivalence A X B.carrier).comp
     (DoldKanComparison.simplicialHomotopyEquivalence_iso_hom
       (((freeNormalizedProbeHomAdjunctionIso A).app (op X)).app B).symm)
 
@@ -109,8 +113,8 @@ lemma freeProbeElementNormalizedIndexMap_localized_isIso :
     (complexSemifreeResolutionValue A B.carrier).val
   have := FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
     (((freeNormalizedProbeHom A).obj (op X)).obj B)
-  have hc : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
-      (freeProbeElementNormalizedIndexMap A X B)) ≫
+  have hc : IsIso (AnodyneHomotopy.anodyneQ.map
+      (freeProbeElementNormalizedIndexNerveMap A X B) ≫
       AnodyneHomotopy.anodyneQ.map (FrameHom.SimplexTerminalNerve.liftedAugmentation
         (((freeNormalizedProbeHom A).obj (op X)).obj B))) := by
     rw [← Functor.map_comp, freeProbeElementNormalizedIndexMap_parameter, Functor.map_comp]
