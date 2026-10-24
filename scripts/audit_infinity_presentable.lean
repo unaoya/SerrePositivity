@@ -512,3 +512,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_projection
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallSolutionCone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_generatorSolution_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_cone_vertex_of_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_generatorSolutionCone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleGeneratorSolutionCone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneClassificationOver
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneClassificationHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionClassificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.solutionConeHomComparison
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits.isIdempotentComplete
+#check @SerrePositivity.InfinityCategories.F2.Presentable.unstraightening_isIdempotentComplete_of_smallLimits
