@@ -31,7 +31,8 @@
   実入力二変形の三角形と全時間の射影一致があれば、選択済み対角三辺の指定境界へ移す接続も供給済み。
   augmentation 全四面体を四つの四単体族へ制限し、隣接片の共有三面と両端の二射影四面体を厳密に回収する。
   固定二辺を全時間で保つ補正済み三角形族から合成対応内の実ホモトピーを作り、元入力付き引き戻しへ持ち上げる入口も供給済み。
-  **側面の射影自然性を実例化し、選択済み二変形へ相対比較を移す工程は未完。**
+  六つの側面射影等式は coherent prism の自然性から Small 仮定なしで実例化済み。
+  **元の固定辺へ戻す側面補正と、選択済み二変形へ相対比較を移す工程は未完。**
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -72,26 +73,26 @@
 - 読み取り専用：`Derived/` の β5・β3、`F2/CatInfinity/`、`Core/`・`F1/`・`F1B/`。
 - 提供先：Sp（K-8 の ⊙）、K-B・K-S•（具体的 Verdier 列）。D2 の f 完了後は D が Gluing を吸収。
 - β5 の入口：`dgAlgebraDerivedInfinityCategory`、`Bimodule`、`Morita.kernelTensor`、`dgKernelDerivedInfinity`。
-- D の Small 不要 Direct prism 自然性入口は `059a227ad` で供給済み。ただし D2 の標準側面は `dgPinchedCompositionFamilyPrism` による coherent 版。
-  Direct 版を六つの射影等式へそのまま代入していない。
-- コーディネータ経由の追加依頼：`dgPinchedCompositionFamilyPrism` の Small 不要 dg 関手自然性（閉射が第一・第二入力の双方、端点輸送込み）。
-  または Direct 版との全パラメーター比較を上流から供給。閉包外の本体はコピーしない。
+- D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
+  入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
+- `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
+  `dgGluingDGCompositionTriangleFamily_naturality` は任意の二入力と dg 関手で使える。閉包外の本体はコピーしていない。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
   したがって、全時間の第一三角形族をそのまま元の始辺固定入力 fiber 内のホモトピーとは扱えない。
 - **採用（2026-10-24、コーディネータ指示）**：共有面と側面の標準合成三角形も含む貼り合わせを先に構成し、その相対二次元比較を選択済み二変形へ移す。
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
-  D の自然性供給までは当該射影自然性（前後・終側の三角形それぞれ二射影、計六等式）だけを明示入力に隔離して先へ進む。供給後に実例へ差し替える。
+  隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **再開（2026-10-24、コーディネータ指示）**：追加依頼は D へ伝達済み。入口名の通知までは六つの射影等式を明示入力に保ち、③を続ける。
+- **再開（2026-10-24、コーディネータ指示）**：D の追加供給を接続済み。元固定辺を保つ側面補正と、実入力二変形・その合成三角形の構成を続ける。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8729 jobs、公理監査 721 モジュール・6774 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-triangle-prism-aggregate-build.log`・`/tmp/d2-v3-triangle-prism-audit.log`。新規モジュールは集約・監査へ接続済み。
+- 検証済み：集約ビルド 8739 jobs、公理監査 723 モジュール・6787 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-projection-supply-aggregate-build.log`・`/tmp/d2-v3-projection-supply-audit.log`。新規モジュールは集約・監査へ接続済み。
 - 本更新の所有パスをコミット後、未コミットの D2 ファイルなし。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 

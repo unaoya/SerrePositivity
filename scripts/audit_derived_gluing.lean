@@ -725,7 +725,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyTriangleFillingCriterion,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DiagonalInputChoiceComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationAugmentationStaircase,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTrianglePrismLift]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionTrianglePrismLift,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismTrianglePostcomp,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationProjectionNaturality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
