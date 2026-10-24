@@ -59,4 +59,26 @@ lemma dgGluingNativeNormalizationSimplexProjection_face {n : ℕ}
       intro p
       rfl
     _ = _ := by rw [reassoc_of% dgGluingUliftSimplexFamily_face V i]; rfl
+
+lemma dgGluingNativeNormalizationSimplexProjection_degeneracy {n : ℕ}
+    (V : (Δ[n] : SSet.{max (u + 1) v}) ⊗
+      DGNerve.pinchedHom R Q IX IY ⟶ dgNerve R E) (i : Fin (n + 1)) :
+    (stdSimplex.σ i ▷ P) ≫
+      dgGluingNativeNormalizationSimplexProjection R C D M X Y n V =
+    dgGluingNativeNormalizationSimplexProjection R C D M X Y (n + 1)
+      ((stdSimplex.σ i ▷ DGNerve.pinchedHom R Q IX IY) ≫ V) := by
+  calc
+    _ = (Δ[n + 1] ◁ dgGluingNativeNormalizationHomInput R C D M X Y) ≫
+        (stdSimplex.σ i ▷ _) ≫
+          dgGluingUliftSimplexFamily.{max (u + 1) v, max (u + 1) v w} n V ≫
+            dgGluingUniverseModuleDerivedComparison.{u,v,w} R C := by
+      apply SSet.hom_ext
+      intro m
+      apply ConcreteCategory.hom_ext
+      intro p
+      rfl
+    _ = _ := by
+      rw [reassoc_of% dgGluingUliftSimplexFamily_restrict V
+        (stdSimplex.σ i) (stdSimplex.σ i) (by rfl)]
+      rfl
 end SerrePositivity.InfinityCategories

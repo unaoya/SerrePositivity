@@ -850,7 +850,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CompositionInputCoordinatesIso,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputCoordinateComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.DerivedInputStrictKanComplex,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictEquivalenceOfFilling]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomInputStrictEquivalenceOfFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IntervalMappingProductPair,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.SlicePrismUnitGeometry,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.DGCompositionFirstUnitTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationSourceUnitFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceUnitFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ModelSourceUnitNullity]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

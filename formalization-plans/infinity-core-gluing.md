@@ -40,7 +40,7 @@
   同じ Hom 模型同型の逆で主経路のパラメーターへ移し、元端は正本第一・第二入力 lift、補正端は単位補正との共通端へ厳密に同定済み。
   標準係数端も同じ coherent 三角形全体と元入力の一致で正本係数 lift へ同定済み。終側標準面は同じ四面体の第零面を使う。
   実四補正道と選択済み二変形の三辺を保持する相対充填・合成三角形・対角後合成を供給済み。二次元全域で元左右鎖射影を固定する。
-  主経路上の六片は五頂点・六実合成構造・全共有辺・二補正辺・係数辺・橋を保持する。二つの実単位閉路の零性だけを入力として指定境界を充填する④の入口まで接続済み。**二つの単位面の退化は D 供給待ちとして隔離し、③・④の無仮定での完了は未達。**
+  主経路上の六片は五頂点・六実合成構造・全共有辺・二補正辺・係数辺・橋を保持する。二つの実単位閉路の零性だけを入力として指定境界を充填する④の入口まで接続済み。**D-13 の第一単位則を始側の全射影面へ接続し、左単位閉路の零性は無仮定で証明済み。第二単位則の全三角形化が残り、③・④の無仮定での完了は未達。**
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -84,7 +84,7 @@
 - D の Small 不要 Direct prism 自然性は `059a227ad`。coherent prism 自身の自然性は追加供給 `9b40d1218`。
   入口は `DGPinchedCompositionClosedFamilyNaturality` の `dgPinchedCompositionFamilyPrism_closed_first_naturality`／`closed_second_naturality`。
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
-  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D に依頼中。F1B の公開 `RelativeDiagramHomotopy` を直接利用し、Λ³₂ を固定した相対四面体比較の存在は実例化済み。
+  標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D-13 で供給済み。第一単位は主経路へ接続済み、第二単位は全三角形化中。F1B の公開 `RelativeDiagramHomotopy` を直接利用し、Λ³₂ を固定した相対四面体比較の存在は実例化済み。
 
 ### 設計上の確認点・次の一手
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
@@ -99,9 +99,9 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- 検証済み：集約ビルド 8867 jobs、公理監査 846 モジュール・8071 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-input-coordinate-equivalence-aggregate-build.log`・`/tmp/d2-v3-input-coordinate-equivalence-audit.log`。指定充填から入力付き path・同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
-- 検証済み部分をコミットし、元 pinched Hom と区間 Hom の比較を保つ主標的への輸送を構成中。数学的未完は③〜⑥・e・f。
+- 検証済み：集約ビルド 8877 jobs、公理監査 852 モジュール・8111 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
+  ログ：`/tmp/d2-v3-first-unit-connected-aggregate-build.log`・`/tmp/d2-v3-first-unit-connected-audit.log`。指定充填から入力付き path・同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
+- 検証済み部分をコミットし、D-13 の第二単位面の三角形化を優先し、元 pinched Hom と区間 Hom の比較を保つ主標的への輸送も構成中。数学的未完は③〜⑥・e・f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約
