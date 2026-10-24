@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparison
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceRelativeComparison
 
 /-!
 概要：同じ指定点写像の slice のまま、恒等終点を持つ全余錐の持ち上げを比較する。
-方針：指定点を Yoneda 表示に一度戻して、証明済みの相対頂点同型を使う。
+方針：元の点の標準持ち上げと right-anodyne 相対比較を、同じ始域境界で制限する。
 規約：元の指定点・底の全図式を保持。使われ方：実補間円柱への直接適用。
 -/
 
@@ -28,14 +28,8 @@ def conePointSliceBoundaryRelativeIso {A X : SSet.{u}} [Quasicategory X]
         (joinInl A Δ[0] ≫ W) (by rw [Category.assoc, hp]))
       (relativeFunctorVertex (sliceOverProjection p) (joinInl A Δ[0] ≫ b)
         (sliceOverCurry b hb) (sliceOverCurry_projection b hb)) := by
-  generalize hx : SSet.yonedaEquiv p = x at *
-  have he : SSet.yonedaEquiv.symm x = p := by rw [← hx, Equiv.symm_apply_apply]
-  cases he
-  have htip : joinInr A Δ[0] ≫ W = SSet.yonedaEquiv.symm (sliceIdentityCone x) := by
-    apply sliceOverUncurry_injective (SSet.yonedaEquiv.symm x)
-    rw [sliceOverUncurry_yoneda]
-    change sliceOverUncurry (joinInr A Δ[0] ≫ W) = SSet.const x
-    exact ht
-  exact coneTerminalSliceBoundaryRelativeIso x b hb W hp htip
+  have h := VertexIso.map (conePointSliceRelativeIso p b hb W hp ht)
+    (relativeFunctorPre (sliceOverProjection p) b (joinInl A Δ[0]))
+  simpa only [relativeFunctorPre_vertex, conePointSliceLift_old] using h
 
 end SerrePositivity.InfinityCategories.F2.Ind

@@ -767,3 +767,19 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceBoundaryImage
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceBoundaryNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceLiftTip
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceRelativeComparison
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceFunctorIsoNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceBoundaryImage
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceBoundaryNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Ind.ConePointSliceNormalization
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceOld
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceNaturality
