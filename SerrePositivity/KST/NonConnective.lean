@@ -70,6 +70,12 @@ public import SerrePositivity.KST.NonConnective.DGKappaSuspensionConnectivePi
 
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationKernel
 
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelComplete
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationPerfect
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationMorita
+
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationQuasiEquivalence
+
 /-!
 概要：厳密 dg 入力の非連結 K に向けた K-7 所有界面。
 規約：実逐次 Sp 余極限、明示の κ-compact dg 模型に対する実 swindle と平坦懸垂。

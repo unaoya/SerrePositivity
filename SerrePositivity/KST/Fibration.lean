@@ -613,3 +613,4 @@ public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrismIso
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerDeformation
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerShortFaces
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerRelativeDeformation
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerMaximalFaces
