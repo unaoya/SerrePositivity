@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence
 public import SerrePositivity.KST.Fibration.ZeroStableHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTerminal
 public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace

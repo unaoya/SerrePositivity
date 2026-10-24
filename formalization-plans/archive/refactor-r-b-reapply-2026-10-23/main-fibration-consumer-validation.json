@@ -1,0 +1,8 @@
+{
+  "imports_only": true,
+  "types_proofs_data_unchanged": true,
+  "targeted_build_passed": true,
+  "nine_aggregate_closure_project_modules": 15235,
+  "repaired_modules_in_nine_aggregate_closure": [],
+  "retained_aggregate_verification_source": "556dc9993e342eee8289593abf1e21b5eab9b0b0"
+}

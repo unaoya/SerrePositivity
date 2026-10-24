@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.KST.SConstruction.LocalizedPiComparison
 public import SerrePositivity.KST.Spectra.SpectrumIntegerHomotopyDetection
 public import SerrePositivity.KST.Spectra.SpectrumZeroObject

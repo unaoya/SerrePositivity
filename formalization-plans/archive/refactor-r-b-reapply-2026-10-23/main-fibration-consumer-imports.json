@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "SerrePositivity/KST/Fibration/SpectrumZeroFromPositiveLevels.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.Stable.InitialTransport"
+      ]
+    },
+    "SerrePositivity/KST/Fibration/VerdierZeroTriangle.lean": {
+      "add": [
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence"
+      ]
+    }
+  }
+}

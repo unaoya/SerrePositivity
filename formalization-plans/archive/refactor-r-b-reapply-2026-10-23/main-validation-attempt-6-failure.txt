@@ -1,0 +1,16 @@
+=== verify 2026-10-24 11:33:28 HEAD 556dc9993
+--- remove orphan oleans (modules without source)
+removed orphan modules: 0
+--- lake build SerrePositivity
+Build completed successfully (25315 jobs).
+--- lake build <audit targets> (2793 modules, derived from scripts/audit_*.lean)
+✖ [31278/31397] Building SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels (5.1s)
+error: SerrePositivity/KST/Fibration/SpectrumZeroFromPositiveLevels.lean:70:45: Invalid field `of_vertexIso`: The environment does not contain `And.of_vertexIso`, so it is not possible to project the field `of_vertexIso` from an expression
+✖ [31370/31466] Building SerrePositivity.KST.Fibration.VerdierZeroTriangle (3.6s)
+error: SerrePositivity/KST/Fibration/VerdierZeroTriangle.lean:40:9: Unknown identifier `pinchedHomLeftRightEquivalence`
+error: SerrePositivity/KST/Fibration/VerdierZeroTriangle.lean:41:2: No goals to be solved
+- SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels
+- SerrePositivity.KST.Fibration.VerdierZeroTriangle
+error: build failed
+--- audits
+audit_infinity_core rc=0 15s
