@@ -56,20 +56,27 @@ theorem spectrumPoint_homotopyGroup_subsingleton (j : ℤ) :
     Subsingleton (OmegaSpectrum.homotopyGroup spectrumPoint.{u} j) :=
   pointKanHomotopy_subsingleton _ _
 
-/-- 全正段の実一点射が局所化可逆なら、同じ元のスペクトル頂点は Sp 内で零。 -/
-theorem spectrum_isZeroVertex_of_positive_toPoint (X : OmegaSpectrum.{u})
-    (hX : ∀ r : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
-      (toUnit (((X.level (r + 1)).space).right)))) :
+/-- 全整数群が自明なら、元のスペクトル頂点は同じ一点スペクトルとの実同型により零。 -/
+theorem spectrum_isZeroVertex_of_homotopyGroup_subsingleton (X : OmegaSpectrum.{u})
+    (hX : ∀ j : ℤ, Subsingleton (OmegaSpectrum.homotopyGroup X j)) :
     IsZeroVertex (coherentNerveVertex X) := by
   let f := spectrumPoint_isTerminal.from X
   have hf : OmegaSpectrum.PiIsomorphism f := by
     intro j
-    have := spectrum_homotopyGroup_subsingleton_of_positive_toPoint X hX j
+    have := hX j
     have := spectrumPoint_homotopyGroup_subsingleton.{u} j
     exact ⟨fun _ _ _ => Subsingleton.elim _ _, fun y => ⟨1, Subsingleton.elim _ _⟩⟩
   have : IsIso (Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated) :=
     OmegaSpectrum.isInvertible_of_piIsomorphism f hf
   exact OmegaSpectrum.pointZeroVertex.isZero.of_vertexIso
     (asIso (Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated)).symm
+
+/-- 全正段の実一点射が局所化可逆なら、同じ元のスペクトル頂点は Sp 内で零。 -/
+theorem spectrum_isZeroVertex_of_positive_toPoint (X : OmegaSpectrum.{u})
+    (hX : ∀ r : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
+      (toUnit (((X.level (r + 1)).space).right)))) :
+    IsZeroVertex (coherentNerveVertex X) :=
+  spectrum_isZeroVertex_of_homotopyGroup_subsingleton X
+    (spectrum_homotopyGroup_subsingleton_of_positive_toPoint X hX)
 
 end SerrePositivity.KST.Fibration
