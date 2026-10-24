@@ -24,6 +24,7 @@ run_cmd do
     `SerrePositivity.KST.NonConnective.DGKappaSplitProjections,
     `SerrePositivity.KST.NonConnective.DGKappaSplitRelations,
     `SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations,
+    `SerrePositivity.KST.NonConnective.DGKappaSplitPerfEvaluation,
     `SerrePositivity.KST.NonConnective.DGKappaSplitNativeSquare,
     `SerrePositivity.KST.NonConnective.DGKappaSplitPerfSquareCoordinates,
     `SerrePositivity.KST.NonConnective.DGKappaSuspension,

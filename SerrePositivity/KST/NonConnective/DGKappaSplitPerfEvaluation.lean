@@ -1,0 +1,82 @@
+module
+public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfRelations
+public import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
+
+/-!
+概要：元の全 native 分裂四角形の各 Perf ラベルでの評価を同じ dg 作用へ戻す。
+方針：K-S• の左定数単体の公開比較を用い、全パラメータ単体を保持する。
+規約：注入・射影と二胞体を選び直さず、同じ実零三角形を評価する。
+使われ方：各 Perf ラベルでの分裂 cofiber 性と加法性への接続。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u v
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.KST.SConstruction
+namespace SerrePositivity.KST.NonConnective
+
+private lemma curryFamily_evaluate {A B P : SSet.{u}} (H : A ⊗ P ⟶ B)
+    (x : A _⦋0⦌) {n : ℕ} (p : P _⦋n⦌) :
+    (curry H ≫ evaluateFunctorAt x).app (Opposite.op ⦋n⦌) p =
+      H.app (Opposite.op ⦋n⦌) (PinchedHom.constant x n, p) := by
+  change H.app _ (PinchedHom.constant x n, P.map (𝟙 _) p) = _
+  rw [P.map_id]
+  rfl
+
+private lemma squareVertex_post {A B : SSet.{u}}
+    (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ A) (g : A ⟶ B) (i j : Fin 2) :
+    squareVertex (F ≫ g) i j =
+      g.app (Opposite.op ⦋0⦌) (squareVertex F i j) := rfl
+
+variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+  {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
+  (X : PresentedPerfectDGObject R (DGKappaCone R D I))
+
+/-- 元のラベル頂点の全退化は、K-S• の同じ native 定数単体と一致する。 -/
+theorem dgKappaPerfLabel_constant (n : ℕ) :
+    PinchedHom.constant (X := dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))
+      (Simplex.vertex X) n =
+      dgNativePointSimplex R (PresentedPerfectDGObject R (DGKappaCone R D I)) X n := by
+  change (Simplex.vertex X).pullback
+    (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom = _
+  rw [← dgNativePointSimplex_zero]
+  exact dgNativePointSimplex_pullback R _ X _
+
+/-- 全 native 関手族を元の Perf ラベルで評価すると、同じ全次数 dg ラベル作用に戻る。 -/
+theorem dgKappaFullPerfFamilyMap_label_app {n : ℕ}
+    (s : Simplex R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) n) :
+    (dgKappaFullPerfFamilyMap R D I ≫ evaluateFunctorAt (Simplex.vertex X)).app
+        (Opposite.op ⦋n⦌) (ULift.up s) =
+      s.map (presentedPerfectDGLabelAction R (DGKappaCone R D I) (DGKappaCone R D I) X) := by
+  rw [dgKappaFullPerfFamilyMap, curryFamily_evaluate, dgKappaPerfLabel_constant,
+    presentedPerfectDGNativeAction_app]
+  exact presentedPerfectDGNativeActionSimplex_label R _ _ X s
+
+/-- 元の二胞体を持つ同じ全分裂四角形を、同じ Perf ラベルで点ごとに評価する。 -/
+def dgKappaSplitPerfPointwiseSquare (Z : DGKappaZeroInput R D I) :=
+  dgKappaSplitPerfFamilySquare R D I Z ≫ evaluateFunctorAt (Simplex.vertex X)
+
+/-- 同じ点ごとの四角形の全単体は、元の閉関手四角形の dg ラベル作用そのもの。 -/
+theorem dgKappaSplitPerfPointwiseSquare_app (Z : DGKappaZeroInput R D I) {n : ℕ}
+    (t : ((Δ[1] : SSet.{max (u + 1) v}) ⊗ Δ[1]).obj (Opposite.op ⦋n⦌)) :
+    (dgKappaSplitPerfPointwiseSquare R D I X Z).app (Opposite.op ⦋n⦌) t =
+      (((dgKappaSplitFullNativeSquare R D I Z).app (Opposite.op ⦋n⦌) t).down).map
+        (presentedPerfectDGLabelAction R (DGKappaCone R D I) (DGKappaCone R D I) X) :=
+  dgKappaFullPerfFamilyMap_label_app R D I X _
+
+/-- 同じ点ごとの評価は、元の零角を持つ実三角形である。 -/
+def dgKappaSplitPerfPointwiseZeroTriangle (Z : DGKappaZeroInput R D I) :
+    ZeroTriangle (dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I))) where
+  square := dgKappaSplitPerfPointwiseSquare R D I X Z
+  zero_corner := by
+    dsimp only [dgKappaSplitPerfPointwiseSquare]
+    rw [squareVertex_post, dgKappaSplitPerfFamilySquare_corner,
+      dgKappaFullPerfFamilyMap_vertex, evaluateFunctorAt_functorVertex]
+    exact dgKappaZeroPerfAction_values R D I Z (Simplex.vertex X)
+
+end SerrePositivity.KST.NonConnective

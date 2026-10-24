@@ -9,7 +9,7 @@
 ## 引き継ぎ（2026-10-24）
 
 ### 現在地
-- 停止条件：`DGKappaSplitPerfEvaluation` の接続検査で所有外の `Derived.ResolvedDGQuotientVerdierSequence` が `Derived/RoofSliceTransport.olean` 欠落で失敗（対応ソースあり）。上流未編集。二段目の完了ではない。
+- 上流 import 閉包の復旧と両所有集約の再ビルドを確認。`DGKappaSplitPerfEvaluation` を検証し、集約・監査へ接続済み。元の全 native 関手族と同じ実四角形の全単体を、元の各 Perf ラベルの dg 作用へ照合し、同じ点ごとの零三角形を構成した。cofiber 普遍性は未証明。
 - 工程 a 完了：任意の厳密な逐次 BF 列の実 Sp 余極限を K-7 内で構成。同じ `filteredOmegaSpectrum` を頂点とする `sequentialCandidateColimitCocone` の `IsColimitCone` と、実辺の全整数 π 作用・群余極限比較を接続済み。
 - 工程 b の明示入力版完了：β5 の実半自由 D(D)・Perf と β3 の平坦分解後の Drinfeld 商を読み取り専用で使用。未供給の非可算正則 κ の dg 小模型を `DGKappaConeInput`、元の Perf との全関手比較を `DGKappaPerfectInput` として明示した。[未供給宣言の名前・型一覧](archive/L10-dg-kappa-inputs.md)。両入力の存在は未証明。
 - 工程 c 進行中：同じ κ と同じ供給 s を保つ反復 `dgSuspensionIteration` を構成。実 swindle を dg 関手圏の閉同型・元の native Kan Hom の実辺へ束ね、固定 `dgKInputK` の同じ二つの実 BF 自己射の全整数 π 作用の等号 `dgKappaSwindleFixedK_pi` まで接続した。これだけで K の消滅とは扱わない。
@@ -20,7 +20,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- 破損検出前の NonConnective 集約・専用監査は成功（74 モジュール・781 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
+- NonConnective 集約・専用監査は成功（75 モジュール・789 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性、K の消滅、構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明した S• 境界商の加法性と実 swindle を同じ Perf の実 cofiber 族で結び、同じ cone の連結 K の消滅を証明し、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -50,8 +50,7 @@
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- 未追跡 `SerrePositivity/KST/NonConnective/DGKappaSplitPerfEvaluation.lean` を保存。集約・監査は未接続。公開 `PresentedPerfectDGNativeLabel` を import し、全族の固定ラベル評価・同じ四角形の全単体照合・点ごとの零三角形を構成中。
-- 前回検査では巨大な dg 項の `change` が既定 200000 heartbeats で timeout、点ごとの零角の汎用評価には `HasZeroVertex` が未供給。現在は小さい汎用 curry 評価公式と四角形の後合成頂点公式に切り分け、同じ Z の零値公式で直接証明する形へ変更済み。ただし最新形は上流 import 破損により未検証。上限を上げず `sorry` にしない。
+- なし。`DGKappaSplitPerfEvaluation.lean` の小さい curry 評価公式・直接零角の型は解決し、既定 heartbeats のまま検証・集約・監査への接続済み。
 
 ### 既知の問題
 - D は上記の個別フィールドを供給したが、I・P の完成した実値は未提供。両構造の存在、選択独立性・全入力射での反復の整合性は証明済みと扱わない。未供給型一覧はコーディネータの仲介用であり、K-7 からの直接メッセージ送信はしていない。
@@ -60,8 +59,7 @@
 - a の以前の end 持ち上げ余錐は保持するが、完成界面は `sequentialCandidateColimitCocone`。通常の Hom 極限性だけでは ∞ 余極限性の代用にならない。
 
 ### 次の一手
-- コーディネータ経由で上記 D の import 閉包の復旧を確認する。両集約を検査後、未追跡 `DGKappaSplitPerfEvaluation.lean` を単体検査し、小さい評価公式と直接零角の型を解決してから集約・監査へ接続する。
-- `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。実分裂四角形の二胞体・四辺・零角と、各ラベルの閉分裂関係は接続済み。次は同じ零三角形の点ごとの cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
+- `dgKappaZeroPerfAction_values` と後続二宣言は検証・集約・監査への接続済み。実分裂四角形の二胞体・四辺・零角、全単体での点ごとのラベル評価、各ラベルの閉分裂関係は接続済み。次は同じ点ごとの零三角形の cofiber 性を証明し、`connectedKMiddle_additivity` と `dgKappaSwindleFixedK_pi` を結ぶ。K-6・I・P の存在は完成扱いしない。
 
 ### K-7 c の三段目（v3）
 - [x] c1 `dgKappaZeroPerfAction_values` の修正・集約・監査への接続。
