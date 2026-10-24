@@ -99,7 +99,7 @@
   元の定値自然変換の全円柱、同じ実 U の全源比較の定値制限、元の複体屋根の定値族と単位三角形まで接続した。`freeProbeRelativeUnitIntervalMap_family` は同じ全要素族上の全射の一致、`freeProbeRelativeUnitIntervalMap_weak` は局所化源頂点での元の単位誘導射自身の弱同値性。標準の選択済み頂点への輸送は未完了であり、g1-4 は未完了。
 - **依存状況**：D の保存完了の合図を受けて再開。公開入口は `Derived/SliceOverEqualityTransport` と dg 非依存の `Derived/FunctorHomGeneral`。所有閉包の他レーン未保存依存0件を確認してからビルド・監査する。依頼・報告はユーザー経由で進捗確認チャットへ届ける。
   `FrameHom/UnitComparisonWeakDetection.lean` に、同じ弱な CAlg_R 全族・弱な複体屋根族・元の単位の全族等式を代入した。`FreeProbeRelativeSourceComparison` は選択済み自由頂点との同型を元の置換 augmentation で与え、順射を同じ局所化像へ回収する。
-  **所有レーンへの依頼**：閉包外の `F1B/Localization/ReflectiveLocalObjects.lean` の `functorHomEvaluate_naturality` を、既存の `F1B/FunctorCategories/FunctorHomEvaluationNaturality` 側の入口で公開するようコーディネータ経由で依頼中。E2 へはコピーしない。標準単位との端点整合に使う。既存の評価成分との一致は閉包内で `functorIsoEvaluate_eq_app` に接続済み。`FreeProbeDerivedUnitEndpointRecovery` は `freeProbeDerivedUnitComponent_recovery` により既存の標準単位成分を元の通常単位の導来像へ、同じ両端同型で回収する。
+  **端点比較の入口**：閉包内の `NerveColumn.hom_naturality` を定値列で評価し、実 U と同じ cofibrant 射の通常忘却像の成分正方形へ接続した。元の置換 augmentation に特殊化し、全代数源・全自由源の忘却比較を同じ通常成分辺へ回収する。閉包外の評価自然性の公開依頼は必須ではなくなり、コピー・新規 import はしていない。`FreeProbeDerivedUnitEndpointRecovery` は既存の標準単位成分を元の通常単位の導来像へ、同じ両端同型で回収する。
   閉包外の `Derived/FunctorHomTypedWhiskerAlgebra` 等は使用しない。`NerveColumn` の通常列への特殊化は閉包内の `Bicategory.whisker_exchange`・`qcatCell_whiskerLeft/Right`・関手合成保存を直接使用し、閉包外補題をコピーしない。
   必須宣言は各128項目以下の noinline 配列へ追加し、既存配列の式・順序・run_cmd 登録を保持する。主経路へ ModelCategory SSet・CharZero・元の対象の cofibrancy の入力仮定を追加しない。検証の実施記録はコミットメッセージへ残す。
   モデル構造は局所選択し大域 instance を追加しない。Inputs/Homotopy/KanQuillen.lean の既存 sorry を import しない。他レーンの作業中依存が閉包に入ったら回避せず停止。
@@ -107,7 +107,7 @@
   集約 import 後の framedLimitProbeFunctor は複体側と代数側に同名がある。独立例では ComplexLimits.framedLimitProbeFunctor を明示する。必要なら型付き change と明示した始終域で推論を切る。型推論のために maxHeartbeats を上げない。
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
-- **次の一手**：評価自然性の上流公開を確認後、同じ cofibrant 置換 augmentation の辺に実 U の全源比較の自然性を適用する。`freeProbeRelativeFullSourceIso_hom` と `freeProbeDerivedUnit_recovery` を使い、局所化源での元の単位と `derivedFreeProbeUnitHom` の端点輸送の整合を証明する。その後、`derivedFreeProbeUnitIntervalMap` 自身の弱同値性を任意頂点へ移す。
+- **次の一手**：閉包内の全列自然性から回収した同じ cofibrant 置換 augmentation の正方形を使う。`freeProbeRelativeFullSourceIso_hom` と `freeProbeDerivedUnit_recovery` を使い、局所化源での元の単位と `derivedFreeProbeUnitHom` の端点輸送の整合を証明する。その後、`derivedFreeProbeUnitIntervalMap` 自身の弱同値性を任意頂点へ移す。
   g1-5 は実単位射を結論とする検査、集約と全公理監査、端点・全パラメータの独立例を通過して初めて完了とする。検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認する。
   g1-4 の代入条件は、同じ要素 nerve K から標準単位比較の始域への弱な probe、元の標準単位比較自身、標的の既存 pinched Hom への弱な屋根族、および同じ両端を持つ全 h Fun の射の一致。端点同型の共役を含め実単位公式でこの一致を証明し、`unitComparison_weak_of_probe_family` に代入する。点ごとの Hom 同値で代用しない。
   `FreeProbeRelativeElementForgetFamily` は元の実 U 像と同じ複体屋根の定値族を、全端点比較の二射まで保持して照合する。`FreeProbeRelativeUnitReference` の元の複体屋根基準族は弱同値。標準単位との端点同型の整合と標準単位比較自身の弱同値性は未証明。

@@ -1,0 +1,44 @@
+module
+public import SerrePositivity.EInfinity.FrameHom.NerveColumnComponentArrow
+public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixColumnRoof
+/-!
+概要：既存の全列自然性を元の指定通常射の成分正方形へ回収する。
+方針：同じ指定射の定値列へ全列自然性を適用し、両経路を評価する。
+規約：閉包内の全列比較を再利用し、元の成分射を保持する。
+使われ方：実 U の全源比較と cofibrant 置換 augmentation の端点整合。
+-/
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.FrameHom.NerveColumn
+open CategoryTheory SSet MonoidalClosed SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+
+/-- 概要：元の指定射の定値列に沿う全源同型の自然性は同じ成分正方形を与える。
+方針：既存の全列自然性と元の円柱成分を両経路で比較する。
+規約：元の射の両像を全 Arrow で保持。使われ方：指定置換射での全源比較。 -/
+lemma hom_naturality_const_component {C : Type u} [Category.{u} C]
+    {D : SSet.{u}} [Quasicategory D] {F G : nerve C ⟶ D}
+    (e : FunctorIso F G) {x y : C} (f : x ⟶ y) :
+    Arrow.mk (Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map F).toTruncated ≫
+      functorHomEvaluate e.hom (nerveVertex y)) =
+    Arrow.mk (functorHomEvaluate e.hom (nerveVertex x) ≫
+      Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map G).toTruncated) := by
+  let a : (Functor.const C).obj x ⟶ (Functor.const C).obj y := (Functor.const C).map f
+  have h := congrArg (fun α : FunctorHom
+      (nerveMap ((Functor.const C).obj x) ≫ F)
+      (nerveMap ((Functor.const C).obj y) ≫ G) =>
+    functorHomEvaluate α (nerveVertex x)) (hom_naturality e a)
+  rw [functorHomEvaluate_comp, functorHomEvaluate_comp] at h
+  have hf := hom_component_arrow F a x
+  have hg := hom_component_arrow G a x
+  have hx := constRestriction_component_arrow (I := C) e.hom x x
+  have hy := constRestriction_component_arrow (I := C) e.hom y x
+  have hl := RoofPrefix.comp_arrow_eq _ _ _ _ hf hy
+  have hr := RoofPrefix.comp_arrow_eq _ _ _ _ hx hg
+  exact hl.symm.trans ((congrArg Arrow.mk h).trans hr)
+
+end SerrePositivity.EInfinity.FrameHom.NerveColumn

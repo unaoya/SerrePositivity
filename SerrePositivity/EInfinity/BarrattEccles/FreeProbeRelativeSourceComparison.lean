@@ -25,7 +25,8 @@ variable (A : Type u) [CommRing A] (X : Complex A)
 lemma freeProbeCAlgSource_relativeReplacement_vertex :
     (freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
     (cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((cofibrantAlgebraDKReplacement A).obj ((freeProbeFunctor A).obj X))) := by
+      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1}
+        ((cofibrantAlgebraReplacement A).obj (freeProbeElementCofibrantSource A X).obj))) := by
   apply congrArg ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌))
   exact ComposableArrows.ext₀ rfl
 
