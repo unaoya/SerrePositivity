@@ -742,7 +742,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LastUnitCollarFamilies,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PostNormalizeUnitCollarTriangles,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaProjectionIntervalFamilies,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.PostNormalizeLastCompositionPath]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PostNormalizeLastCompositionPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseTriangleTimeFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarTriangles]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -737,3 +737,5 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.LastUnitCollarFa
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PostNormalizeUnitCollarTriangles
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaProjectionIntervalFamilies
 public import SerrePositivity.InfinityCategories.Derived.Gluing.PostNormalizeLastCompositionPath
+public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseTriangleTimeFamilies
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeUnitCollarTriangles
