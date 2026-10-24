@@ -746,3 +746,6 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ExitLastComposit
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationStandardCompositionFaces
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizationUnitCaps
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseUnitCapFamilies
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeExitUnitCollarTriangles
+public import SerrePositivity.InfinityCategories.Derived.Gluing.InputHomotopyTriangleComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleTimeTransport
