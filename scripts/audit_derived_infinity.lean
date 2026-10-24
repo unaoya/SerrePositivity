@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGIdempotentCompleteGeneral
+import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
 import SerrePositivity.InfinityCategories.Derived.DGStandardSimplexMap
 import SerrePositivity.InfinityCategories.Derived.DGStandardEnrichedFunctor
 import SerrePositivity.InfinityCategories.Derived.DGCoherentComparisonNaturality
@@ -7125,6 +7127,8 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
   `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGIdempotentCompleteGeneral,
+  `SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGStandardSimplexMap,
   `SerrePositivity.InfinityCategories.Derived.DGStandardEnrichedFunctor,
   `SerrePositivity.InfinityCategories.Derived.DGCoherentComparisonNaturality,

@@ -2255,6 +2255,8 @@ public import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionNa
 public import SerrePositivity.InfinityCategories.Derived.DGStandardPinchedNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyGeneral
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionClosedFamilyNaturality
+public import SerrePositivity.InfinityCategories.Derived.DGIdempotentCompleteGeneral
+public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
 /-! # Semifree 複体による導来圏の dg 表示
 
 概要：semifree 複体の H⁰ と Mathlib の導来圏の同値を公開する。
