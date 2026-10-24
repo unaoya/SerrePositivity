@@ -1,4 +1,7 @@
 module
+
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
+public import SerrePositivity.InfinityCategories.DGNerve.VertexIdentity
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundarySharedResiduals
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryUnknowns
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryComponents

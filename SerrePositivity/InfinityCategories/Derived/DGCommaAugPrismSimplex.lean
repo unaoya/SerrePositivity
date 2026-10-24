@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugSamePhaseEquation
 /-!
 概要：元の実 augmentation 切断補正和が全 HA 方程式を満たす単体を構成する。

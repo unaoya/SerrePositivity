@@ -26,22 +26,22 @@ lemma dgCommaAugmentationPrismCorrection_differential
       (dgCommaAugmentationPrismCorrection R C E F s.toSimplexData β I a b k) =
     (∑ j ∈ Index.interior I a b, Index.sign I j •
       dgCommaAugmentationPrismCorrection R C E F s.toSimplexData β (I.erase j) a b (k + 1)) +
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutQuadraticBoundary R C E F s.toSimplexData I a b k l) -
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutComparisonBoundary R C E F s.toSimplexData I a b k l) := by
   have hd :
       (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d k (k + 1)
         (dgCommaAugmentationPrismCorrection R C E F s.toSimplexData β I a b k) =
-      ∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      ∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d k (k + 1)
           (dgCommaAugmentationHomotopyCut R C E F s.toSimplexData I a b k l) := by
     simp only [dgCommaAugmentationPrismCorrection, Units.smul_def, map_sum, map_zsmul]
   have he :
-      (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d k (k + 1)
           (dgCommaAugmentationHomotopyCut R C E F s.toSimplexData I a b k l)) =
-      ∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      ∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         (-dgCommaAugmentationCutLinearBoundary R C E F s.toSimplexData I a b k l +
           dgCommaAugmentationCutQuadraticBoundary R C E F s.toSimplexData I a b k l -
           dgCommaAugmentationCutComparisonBoundary R C E F s.toSimplexData I a b k l) := by
@@ -72,9 +72,9 @@ lemma dgCommaAugmentationPrismMixedHom_differential_reduction
     (homObject R E (s.obj a).replacement (F.obj (s.obj b).source)).d k (k + 1) base +
     (∑ j ∈ Index.interior I a b, Index.sign I j •
       dgCommaAugmentationPrismCorrection R C E F s.toSimplexData β (I.erase j) a b (k + 1)) +
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutQuadraticBoundary R C E F s.toSimplexData I a b k l) -
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutComparisonBoundary R C E F s.toSimplexData I a b k l) := by
   dsimp only
   rw [dgCommaAugmentationPrismMixedHom_eq_base_add_correction, map_add,

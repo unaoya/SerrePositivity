@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGCommaAugImageCutSigns
+
+public import SerrePositivity.InfinityCategories.Derived.DGCommaAugQuadraticCancellation
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 /-!
 概要：実候補の左補正の後合成を、中央比較三重合成の同じ有限和へ接続する。
 方針：同じ左右区間の切断和に展開し、実三重合成の順序同定と相付き符号を使う。
@@ -41,7 +43,7 @@ lemma dgCommaAugmentationImageCorrection_expansion
     omega
   rw [dgCommaAugmentationImageCorrection, dite_eq_left hsum]
   simp only [dgCommaAugmentationPrismCorrection, compose_sum_right, compose_units_smul_right,
-    dgCommaAugmentationCutPoints_eq_filter_interior, Index.interior_left_cut I a b l hlb]
+    dgModuleAugmentationCutPoints_eq_filter_interior, Index.interior_left_cut I a b l hlb]
   apply Finset.sum_congr rfl
   intro j _
   rw [dgCommaAugmentationNestedImageLeft, dite_eq_left hsum]
@@ -49,18 +51,18 @@ lemma dgCommaAugmentationImageCorrection_expansion
 lemma dgCommaAugmentationImageCorrection_sum_cancel
     (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (k : ℤ) (hk : k = 2 - (I.card : ℤ)) :
-    (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+    (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
       ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
         ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
           dgCommaAugmentationNestedImageRight R C E F s I a b k j l)) +
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationImageCorrection R C E F s β I a b k l) = 0 := by
   have hr :
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
           ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
             dgCommaAugmentationNestedImageRight R C E F s I a b k j l)) =
-      (∑ j ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I j •
+      (∑ j ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I j •
         ∑ l ∈ (Index.interior I a b).filter (j < ·), Index.sign (I.filter (j ≤ ·)) l •
           ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
             dgCommaAugmentationNestedImageLeft R C E F s I a b k j l)) := by
@@ -73,9 +75,9 @@ lemma dgCommaAugmentationImageCorrection_sum_cancel
       (Finset.mem_filter.mp hj).1
       (Finset.mem_filter.mp (Finset.mem_filter.mp hl).1).1 (Finset.mem_filter.mp hl).2]
   have hl :
-      (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         dgCommaAugmentationImageCorrection R C E F s β I a b k l) =
-      ∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+      ∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
         ∑ j ∈ ((Index.interior I a b).filter (· < l)).filter (β · = 1),
           Index.sign (I.filter (· ≤ l)) j •
             dgCommaAugmentationNestedImageLeft R C E F s I a b k j l := by
@@ -95,9 +97,9 @@ lemma dgCommaAugmentationImageCorrection_sum_cancel
     change 1 ≤ (β l).val at h
     omega
   rw [hr, hl]
-  have hc := dgCommaAugmentationImage_phase_double_cut_cancel I (Index.interior I a b)
+  have hc := dgModuleAugmentationImage_phase_double_cut_cancel I (Index.interior I a b)
     (Finset.filter_subset _ _) (fun j ↦ β j = 1) hm
     (fun j l ↦ dgCommaAugmentationNestedImageLeft R C E F s I a b k j l)
-  simpa only [dgCommaAugmentationCutPoints_eq_filter_interior, Finset.sum_filter,
+  simpa only [dgModuleAugmentationCutPoints_eq_filter_interior, Finset.sum_filter,
     ite_and, smul_ite, smul_zero, Finset.sum_ite_irrel, Finset.sum_const_zero] using hc
 end SerrePositivity.InfinityCategories

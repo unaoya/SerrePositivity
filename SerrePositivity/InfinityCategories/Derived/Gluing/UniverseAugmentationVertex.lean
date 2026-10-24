@@ -38,7 +38,7 @@ lemma dgGluingUniverseAugmentationHomotopy_vertex_edge
       (homotopyIntervalEdge.{max (u + 1) v w}).edge).toOrderHom = OrderHom.id := by
     ext i
     fin_cases i <;> rfl
-  rw [hb, dgCommaNerve_vertex_identity_simplex,
+  rw [hb, dgNerve_vertex_identity_simplex,
     dgGluingSimplex_unit_map, dgGluingCommaPrism_unitEdge]
   rfl
 

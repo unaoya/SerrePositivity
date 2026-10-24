@@ -54,7 +54,7 @@ lemma dgCommaAugmentationNestedHomotopy_phase_cancel
         (Finset.mem_filter.mp (Finset.mem_filter.mp hl).1).1 (Finset.mem_filter.mp hl).2
     · rfl
   rw [hs]
-  apply dgCommaAugmentationPhase_double_cut_cancel I (Index.interior I a b)
+  apply dgModuleAugmentationPhase_double_cut_cancel I (Index.interior I a b)
     (Finset.filter_subset _ _) (fun j ↦ β j = 1)
   intro j _ l _ hjl hp
   have h := β.monotone hjl.le

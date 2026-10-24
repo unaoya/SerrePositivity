@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationExtendedCut
 /-!
 概要：全実混合係数を、augmentation の実後合成と同じ全域切断補正和に分解する。
@@ -12,16 +14,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve
-/-- 相一の実内部切断点の有限集合。 -/
-def dgModuleAugmentationCutPoints {n : ℕ} (β : Fin (n + 1) →o Fin 2)
-    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) : Finset (Fin (n + 1)) :=
-  I.filter (fun j ↦ a < j ∧ j < b ∧ β j = 1)
-/-- 実相切断点の形成は、元の有限集合の点の削除と可換。 -/
-lemma dgModuleAugmentationCutPoints_erase {n : ℕ} (β : Fin (n + 1) →o Fin 2)
-    (I : Finset (Fin (n + 1))) (a b j : Fin (n + 1)) :
-    dgModuleAugmentationCutPoints β (I.erase j) a b =
-      (dgModuleAugmentationCutPoints β I a b).erase j :=
-  Finset.filter_erase _ _ _
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] [Small.{u} E] (F : DGFunctor R C (RightModule R E))
   {n : ℕ} (s : SimplexData R (DGModuleFunctorResolutionObject R C E F) n)

@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.Derived.AugmentationProofCases
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCollapsedPair
 /-!
 概要：同じ実 augmentation 候補と実単体の族が、全単調添字変更と厳密に可換と示す。

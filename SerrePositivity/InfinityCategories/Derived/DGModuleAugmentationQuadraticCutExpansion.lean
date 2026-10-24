@@ -1,6 +1,8 @@
 module
+
+public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationCorrectionDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationNestedImageCut
-public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationPhaseDoubleCut
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 /-!
 概要：実二次切断境界を、中央比較補正と右比較補正を持つ同じ三重合成へ展開する。
 方針：元の実二次境界の全有限和へ斉次合成則を適用し、内部点集合をそろえる。

@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugCutErasure
 /-!
 概要：同じ混合候補の全削除補正と、実切断の左右線形境界の符号和を相殺する。
@@ -13,13 +15,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory DifferentialGraded DGNerve
-/-- 相一の切断点は、元の内部点集合を同じ相で制限したもの。 -/
-lemma dgCommaAugmentationCutPoints_eq_filter_interior {n : ℕ}
-    (β : Fin (n + 1) →o Fin 2) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) :
-    dgCommaAugmentationCutPoints β I a b = (Index.interior I a b).filter (β · = 1) := by
-  ext j
-  simp only [dgCommaAugmentationCutPoints, Index.interior, Finset.mem_filter]
-  tauto
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] (F : DGFunctor R C E)
   {n : ℕ} (s : SimplexData R (DGFunctorCommaObject R C E F) n)
@@ -71,7 +66,7 @@ lemma dgCommaAugmentationPrismCorrection_linear_cancel
     (a b : Fin (n + 1)) (k : ℤ) (hk : k = 2 - (I.card : ℤ)) :
     (∑ j ∈ Index.interior I a b, Index.sign I j •
       dgCommaAugmentationPrismCorrection R C E F s β (I.erase j) a b (k + 1)) +
-    (∑ l ∈ dgCommaAugmentationCutPoints β I a b, Index.sign I l •
+    (∑ l ∈ dgModuleAugmentationCutPoints β I a b, Index.sign I l •
       dgCommaAugmentationCutLinearBoundary R C E F s I a b k l) = 0 := by
   let K := Index.interior I a b
   have hcut :
@@ -90,13 +85,13 @@ lemma dgCommaAugmentationPrismCorrection_linear_cancel
     have hl' := Finset.mem_filter.mp (Finset.mem_filter.mp hl).1
     rw [dgCommaAugmentationCutLinearBoundary_eq_erasedCuts R C E F s I a b k hk
       l hl'.1 hl'.2.1 hl'.2.2, smul_add]
-  rw [dgCommaAugmentationCutPoints_eq_filter_interior]
+  rw [dgModuleAugmentationCutPoints_eq_filter_interior]
   change (∑ j ∈ K, Index.sign I j •
     dgCommaAugmentationPrismCorrection R C E F s β (I.erase j) a b (k + 1)) + _ = 0
   rw [hcut]
   simp only [dgCommaAugmentationPrismCorrection,
-    dgCommaAugmentationCutPoints_eq_filter_interior, Index.interior_erase]
-  have hh := dgCommaAugmentation_sum_mixed_cancel_filter I K (Finset.filter_subset _ _)
+    dgModuleAugmentationCutPoints_eq_filter_interior, Index.interior_erase]
+  have hh := dgModuleAugmentation_sum_mixed_cancel_filter I K (Finset.filter_subset _ _)
     (fun l ↦ β l = 1)
     (fun j l ↦ dgCommaAugmentationHomotopyCut R C E F s (I.erase j) a b (k + 1) l)
   simpa only [add_assoc] using hh

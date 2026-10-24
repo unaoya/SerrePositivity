@@ -1,4 +1,6 @@
 module
+
+public import SerrePositivity.InfinityCategories.DGNerve.AugmentationCombinatorics
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugCutBoundary
 /-!
 概要：実切断の左右の削除を同じ合成へ同定し、線形境界を削除和へ移す。
@@ -78,22 +80,6 @@ lemma dgCommaAugmentationHomotopyCut_erase_left
     omega
   unfold dgCommaAugmentationHomotopyCut
   rw [hR, Finset.filter_erase, hdeg, dite_eq_left (by omega)]
-/-- 切断点の支持を制限しても、同じ削除・切断混合符号和は相殺する。 -/
-lemma dgCommaAugmentation_sum_mixed_cancel_filter
-    {α : Type*} [LinearOrder α] {M : Type*} [AddCommGroup M]
-    (I K : Finset α) (hKI : K ⊆ I) (p : α → Prop) [DecidablePred p]
-    (f : α → α → M) :
-    (∑ j ∈ K, Index.sign I j • ∑ l ∈ (K.erase j).filter p,
-      Index.sign (I.erase j) l • f j l) +
-    (∑ l ∈ K.filter p, Index.sign I l • ∑ j ∈ K.filter (l < ·),
-      Index.sign (I.filter (l ≤ ·)) j • f j l) +
-    (∑ l ∈ K.filter p, Index.sign I l •
-      ((2 - ((I.filter (l ≤ ·)).card : ℤ)).negOnePow •
-      ∑ j ∈ K.filter (· < l), Index.sign (I.filter (· ≤ l)) j • f j l)) = 0 := by
-  classical
-  simpa only [Finset.sum_filter, smul_ite, smul_zero, Finset.sum_ite_irrel,
-    Finset.sum_const_zero] using
-    Index.sum_mixed_cancel I K hKI (fun j l ↦ if p l then f j l else 0)
 /-- 右線形境界の同じ比較成分との合成は、右側の削除後の実切断和。 -/
 lemma dgCommaAugmentationHomotopyCut_linear_right
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ)

@@ -41,7 +41,7 @@ lemma dgCommaAugmentationSuffixCorrection_expansion
     omega
   rw [dgCommaAugmentationSuffixCorrection, dite_eq_left hsum]
   simp only [dgCommaAugmentationPrismCorrection,
-    dgCommaAugmentationCutPoints_eq_filter_interior, Index.interior_right_cut I a b j haj]
+    dgModuleAugmentationCutPoints_eq_filter_interior, Index.interior_right_cut I a b j haj]
   trans ∑ l ∈ ((Index.interior I a b).filter (j < ·)).filter (β · = 1),
     compose R
       (Index.sign (I.filter (j ≤ ·)) l •
