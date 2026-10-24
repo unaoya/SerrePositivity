@@ -31240,3 +31240,105 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone_isLimit
 #print axioms SerrePositivity.KST.SConstruction.DGOdotVerdierRectangleInput.comparisonCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientNuEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientNuEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_forward
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_forward
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_backward
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_backward
+
+#check @SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_isCompletion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotQuotientCompletion_isCompletion
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient_projection
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient_projection
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient_right
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.perfectQuotient_right
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeSquare
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeSquare
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_bottom
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_bottom
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_left
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_left
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_right
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_right
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_top
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_top
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_source
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_source
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_odot
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_odot
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_leftValue
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_leftValue
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_rightValue
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_rightValue
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone_source
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCone_source
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCLeg_comparison
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCLeg_comparison
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeDLeg_comparison
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeDLeg_comparison
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_cSource_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_cSource_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_dSource_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_dSource_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_cLeg_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_cLeg_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_dLeg_original
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTamme_dLeg_original
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan_C
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan_C
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan_D
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.landTammeCospan_D
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_fst
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_fst
+
+#check @SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_snd
+#print axioms SerrePositivity.KST.SConstruction.DGOdotCatPerfInput.tammeProjectionEquivalence_snd

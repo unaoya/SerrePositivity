@@ -2564,4 +2564,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotVerdierInput
 public import SerrePositivity.KST.SConstruction.DGOdotLaxVerdierConnection
 public import SerrePositivity.KST.SConstruction.DGOdotVerdierRectangle
 
+public import SerrePositivity.KST.SConstruction.DGOdotCatPerfInput
+public import SerrePositivity.KST.SConstruction.DGOdotLandTamme
+
 /-! # ∞-S• 構成と連結 K 理論 -/
