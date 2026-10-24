@@ -54,6 +54,8 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
+- `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
+- `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -81,7 +83,7 @@
 - 所有ファイルは保存済み。共同作業中の他レーンの差分は変更しない。
 
 ### 次の一手
-- c は最初の六項目で完了。二段目完了の引き継ぎとして停止し、次チャットで d に着手する。
+- d2 の小余極限を小極限へ送る前層の表現可能性を構成する。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   accessibility・presentable 性の閉性、Pr^L 自身の小極限は未着手。
@@ -117,6 +119,15 @@
 - [x] c4. 反映された全部分圏の小極限構成。
 - [x] c5. 表現可能関手による検出と、presentable 圏の全小極限の存在。
 - [x] c6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
+
+## P-1 d 三段目（v3）
+
+- [x] d1. 小さい対象族の共通 compact 濃度と Hom 族の保存判定。
+- [ ] d2. 小余極限を小極限へ送る前層の表現可能性。
+- [ ] d3. accessible かつ小極限保存な空間値関手の余表現可能性。
+- [ ] d4. 小余極限保存と右随伴の存在の同値。
+- [ ] d5. accessible・小極限保存と左随伴の存在の同値、右随伴の accessibility。
+- [ ] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-6 三段目
 

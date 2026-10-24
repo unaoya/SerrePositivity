@@ -29,6 +29,17 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_common_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCosliceComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCosliceComparison_fiber
+#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomCommaClassificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.mappingArrowHomFamilyIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_hom_preservesKappaFilteredColimits_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_exists_common_hom_preservationCardinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
