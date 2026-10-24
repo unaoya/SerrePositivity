@@ -1,88 +1,94 @@
 # P レーン：presentable ∞ 圏（HTT 5.4〜5.5）
 
-> **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本で、P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読。所有：F2/Presentable/、HomotopyLimits/。N の局所化・sifted 系モジュールは R16 で F2/Presentable/ に移動済み。
+> **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本。
+> P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読する。
+> 所有：`F2/Presentable/`、`HomotopyLimits/`。N の局所化・sifted 系は R16 で前者へ移動済み。
+> 集約：`SerrePositivity/InfinityCategories/F2/Presentable.lean`、`HomotopyLimits.lean`。
 
-> 計画 v2 の P（foundations.md §2・§6）。第 II 段の animated 環・降下の基盤。
-> 配置は `SerrePositivity/InfinityCategories/F2/Presentable/`、集約は `F2/Presentable.lean`。
-
-## 引き継ぎ（2026-10-23、コーディネータ停止指示）
+## 引き継ぎ（2026-10-24）
 
 ### 現在地
-- コーディネータ停止指示でこのチャットを終了する。再開は新しいチャットで行う。工程 (1) 完了、工程 (2) 途中、工程 (3)〜(7) は未完。
-- κ-accessible を正則 κ・小さい κ-filtered 余極限・小さい κ-compact 全部分生成圏で定義した。
-  生成は各指定対象を厳密な頂点とする全余錐。比較の充満忠実性や Ind 同値を定義の仮定には入れていない。
-- 小さい生成圏から Ind 比較を構成し、元の任意の二対象の pinched Hom 同値・全充満忠実性・本質的全射性を実証。
-  `IsKappaAccessible.exists_indEquivalence` と `isKappaAccessible_iff_indEquivalence`、存在量化版の iff まで証明済み。
-- accessible 関手の恒等・合成・全自然同型不変性、圏の同値不変性・同値による共役不変性を証明済み。
-- `IsCardinalChangeBound κ μ`（κ < μ と冪の評価）から圏自身の μ-accessibility を証明した。
-  小さい κ-filtered 部分 poset の μ-filtered 全表示・元の指定頂点への回収・小さい μ-compact 生成圏を実際に構成した。
-- μ-small poset の極限と、一般の μ-filtered ∞ 添字の空間余極限との coherent な交換を証明済み。
-  宇宙移送、μ-small poset 余極限の μ-compact 閉性、任意の上限超え・小さい族の共通 accessibility 濃度を提供する。
-- `IsPresentable` は accessibility と全小余極限で定義。同値不変性と、小余極限を持つ Ind 模型による特徴づけを証明した。
-  前層・空間の全小極限と全小余極限を提供。任意の小さい A の Indκ(A) を無条件に presentable とは主張しない。
-- 空間は有限単体集合の共通の小さい符号族の Kan 置換から小さい compact 全部分生成圏を構成し、presentable 性を実証した。
-  有限部分複体の Kan 置換の filtered 全表示は各指定 Kan 空間そのものを厳密な頂点に持つ。
-- 一般の前層に向け、底上の有限全空間の有限表示性、有限底上模型の共通の小さい符号型を構成した。
-  具体的な左ホーン付加の可算反復が filtered 余極限を保つ left fibration 置換であり、元の単位が左アノダインと証明した。
-- 置換前後の相対 Hom は全 coherent な関手として同型。有限始域の元の相対 Hom は通常の filtered 余極限を保つ。
-  底上の strict filtered 全余錐の相対 Hom 像は、空間の native な余極限。全 join 射の等式で元の余錐と比較した。
-- 有限底上模型の通常の filtered 全表示・符号族との底上の同型・left fibration の filtered 余極限閉性を証明した。
-  底上の全表示自身の native 性、一般 coherent 添字での相対 Hom 保存、有限模型の compact 性、前層の accessibility は未証明。
-- 今回の `leftFibrationPointEvaluationIso` は、一点始域の相対 Hom と同じ底の頂点 fiber 評価の全関手同型。
-  単体ビルド成功（5140 jobs）。直前コミット `c542c9a4d` の六モジュールは個別チェック・独立監査 128 宣言が標準三公理のみ。
-- 停止前の所有集約ビルド成功（7750 jobs）、全体公理監査 852 宣言は標準三公理のみ。
+- P-1 a は完了。正則 κ、小さい κ-filtered 余極限、小さい κ-compact 全部分生成圏による accessibility、
+  元の Ind 比較の全同値、accessible 関手、同値不変性、正則濃度変更を提供する。
+- P-1 b は完了。所有集約ビルドと両公理監査を検証済み。二段目の完了によりこのチャットを停止し、次は新チャットで P-1 g を再開する。
+- 任意の小さい quasicategory C 上の前層について、有限底上符号族の連続 left fibration 置換から、
+  宇宙 u の小さい compact 全部分生成圏を構成した。各指定前層を厳密な頂点とする filtered 全表示を持つ。
+- 通常の strict filtered 全余錐の native 性、元の left fibration への頂点回収、
+  一般 coherent filtered 添字での相対 Hom 保存、有限模型の置換の compact 性を提供する。
+  図式の strict 化は既存の under 切断の共同分類を再利用し、全添字の一つの関手同型で比較する。
+- 一般の前層の ℵ₀-accessibility と presentable 性、構成した小さい生成圏の Ind 同値を提供する。
+  その具体的な Ind 模型の全小余極限・presentable 性も、存在入力を残さず供給する。
+- 一般の正則 κ の Indκ(A) は、全小余極限の存在を明示すれば presentable。
+  presentable 圏を κ-compact 生成する小さい A に対しては、Ind 自身の余完備性を入力にせず回収する。
+- 局所小ささは、元の各 pinched Hom と宇宙 u の Kan 空間の持ち上げとの全同値で定義した。
+  固定頂点写像の小ささから二対象の小さい全部分模型を作り、Ind・accessible・presentable 圏へ供給する。
+- P-1 g は未完了。N の検証済み範囲は e-infinity-algebras.md の N 節を正本とする。
 
 ### 残り（依存順）
-1. 工程 (1)：定義・Ind iff・関手・同値不変性・正則濃度変更は完了。
-2. 工程 (2)：一般の前層の小さい compact 生成、accessibility、適切な条件下の Ind の presentable 性、局所小ささ。
-3. presentable の極限・余極限（HTT 5.5.2.4、5.5.3.13）。
-4. 随伴関手定理（5.5.2.9）：余極限保存から左随伴、accessible かつ極限保存から右随伴。
-5. Pr^L／Pr^R の双対性（5.5.3.4）。
-6. Bousfield 局所化の存在（5.5.4.15）。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換の存在を実証する。
-7. P_Σ の普遍性と sifted 生成（5.5.8.14〜15）。N の `SigmaPresheafInfinity` を再利用する。
+1. P-1 g：元の左 Kan 延長の任意小 sifted 余極限保存、Yoneda 制限の本質的全射性・全関手 ∞ 圏の同値。
+   未接続7ファイルの検証から再開。HTT 5.5.8.14〜15、30〜80時間（暫定）。
+2. P-1 c：presentable の小さい極限・余極限。HTT 5.5.2.4・5.5.3.13。
+3. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
+4. P-1 e：Pr^L／Pr^R の双対性。HTT 5.5.3.4。
+5. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
+   HTT 5.5.4.15。c〜f の個別見積もりは各着手時に精査する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
 - `IsKappaAccessible.exists_indEquivalence`、`isKappaAccessible_iff_indEquivalence`、`IsKappaCompactGenerating.compact_iff_retract`
-- `IsCardinalChangeBound`、`exists_filteredPartialPresentation`、`coherentCardinalFilteredLimitExchange_poset`、`IsKappaAccessible.of_cardinalChangeBound`
-- `IsPresentable`、`isPresentable_iff_cocompleteIndEquivalence`、`smallKanObject_isKappaCompact`、`space_isPresentable`
-- `FiniteOverCode`、`finiteOver_isFinitelyPresentable`、`continuousLeftFibrationReplacement`、`continuousLeftFibrationReplacementUnit_leftAnodyne`
-- `continuousLeftFibrationHomIso`、`finiteRelativeOverHom_preservesFilteredColimits`、`finiteRelativeHom_preserves_strictCocone`
-- `finiteOverReplacementCocone_isColimit`、`finiteOverReplacementDiagram_in_family`、`leftFibration_of_filtered_isColimit`、`leftFibrationPointEvaluationIso`
+- `IsCardinalChangeBound`、`coherentCardinalFilteredLimitExchange_poset`、`IsKappaAccessible.of_cardinalChangeBound`
+- `IsPresentable`、`isPresentable_iff_cocompleteIndEquivalence`、`space_isPresentable`
+- `leftFibrationStrictCocone_isColimit`、`continuousLeftFibrationUnitVertexIso`、`exists_finiteLeftFibrationPresentation`
+- `finiteLeftFibrationDiagram_in_family`、`leftFibrationDiagramStrictificationIso`、`finiteRelativeHom_isKappaAccessibleFunctor`
+- `finiteLeftFibrationReplacement_isCompact`、`presheafCompactGeneratorCategory`、`presheafCompactGeneratorInclusion`
+- `presheafCompactGeneratorInclusion_isCompactGenerating`、`presheaf_isKappaAccessible_aleph0`、`presheaf_isPresentable`
+- `presheaf_exists_compactGeneratorIndEquivalence`、`indInfinity_isPresentable_iff_hasSmallColimits`
+- `indInfinity_isPresentable_of_compactGenerating`、`presheafCompactGeneratorInd_isPresentable`
+- `IsLocallySmall`、`indInfinity_isLocallySmall`、`IsAccessible.isLocallySmall`、`IsPresentable.isLocallySmall`
 
 ### 依存と提供
-- 読み取り専用：F2/Ind（F1）、F2/Idempotent・F2/Compact・HomotopyLimits（N）、F1・F1B・Core、使用する Stable の界面。
-- F1 の分類：`leftStraighteningInfinityMap_isQCatEquivalence`、`leftStraighteningInfinityMap_evaluateIso`、`relativeFunctorEvaluationComparisonIso`。
-- N の compact 定義へは所有ファイル `RelativeHomModel.lean` の `relativeHom_covariantModelIso` で元の大きい共変 Hom と全自然比較済み。
-- 供給先は第 II 段の animated 環・降下・K。一般の前層の presentable 性はまだ提供できない。
+- 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
+- 主な分類界面：`leftStraighteningInfinityEquivalence`、`leftStraighteningInfinityMap_evaluateIso`、
+  `relativeFunctorEvaluationComparisonIso`、`underSectionClassificationIso`、`strictLeftWeightedClassificationIso`。
+- 相対 Hom と既存の大きい共変 Hom は `relativeHom_covariantModelIso` で全自然比較する。
+- 一般の前層の compact 生成・accessibility・presentable 性と、accessible 圏の局所小ささを提供する。
+  Ind 側の a7 はこの完成範囲の新しい入力ではなく、既存の明示入力を勝手に無条件化しない。
 
 ### 未コミット
-- N の未検証7ファイルは再開指示に従い `F2/Presentable/` へ置き直し、import を現所在へ更新。P-1 g で検証するまで集約・監査には接続しない。
-- 他レーンの変更には触れていない。停止コミットに含めるのは検証済みの一点評価・所有集約・監査・この計画だけ。
+- 以下の7本は未検証の作業中ファイル。再開指示に従い `HomotopyLimits/` から `F2/Presentable/` へ置き直し、
+  import を現所在へ合わせた。集約・監査には未接続であり、P-1 b の成果には数えない。
+- `PresheafDensityLeftKan.lean`、`PresheafElementsLeftKan.lean`、`PresheafUniverseArbitraryColimits.lean`、
+  `SigmaHomWeightComparison.lean`、`YonedaHomWeightColimits.lean`、`YonedaWeightFamilyComparison.lean`、`YonedaWeightLeftKan.lean`。
+- 上記7本だけが P 所有の未追跡作業中ファイル。検証済みの P-1 b の実装・所有集約・公理監査・この計画を保存する。他レーンは変更しない。
 
 ### 既知の問題
-- 停止前の全体検証は成功。ログは `/tmp/p-stop-aggregate.log`（7750 jobs）と `/tmp/p-stop-audit.log`（852 宣言、標準三公理のみ）。未接続の作業中ファイルは監査範囲外。
-- 旧集約セッション 77644 は再照会で Unknown process id。成功終了は確認していない。終了操作の承認呼び出しも中断されたため、実行成否は不明。
-- 濃度変更の単調性は κ ≤ μ だけでは主張しない。`IsCardinalChangeBound κ μ` と μ の正則性が必要。
-- 任意の小さい A の Indκ(A) は一般には presentable でない。必要な小余極限の条件を明示する。
+- 任意の小さい A の Indκ(A) は無条件には presentable でない。
+  一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
+- accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
+- 未接続7ファイルの証明本体と R13 による宣言名の変化は、P-1 g 着手時に改めて検証する。
+- 最終検証ログ：`/tmp/p-v3-final-build.log`、`/tmp/p-v3-final-presentable-audit.log`、`/tmp/p-v3-final-homotopy-audit.log`。
 
-### 次の一手（新しいチャット）
-1. 所有集約と `scripts/audit_infinity_presentable.lean` の全体検証状態を確認し、必要なら依存を順番に再ビルドする。
-2. 作業中の `LeftFibrationStrictColimit.lean` を検証する。分類同値で元の strict 全余錐を写し、全頂点で一点相対 Hom に比較する構成。
-   `leftFibrationPointEvaluationIso` と `leftStraighteningInfinityMap_evaluateIso` を余錐全体へ前合成し、`F2.isColimitCone_of_pointwise` と同値反映を使う。
-3. 有限模型の置換の通常の全表示を LeftFibrationObject の strict 全余錐に持ち上げ、同じ余錐の native 性を示す。
-   置換対象だけでなく元の指定 left fibration 自身への頂点同型で表示を厳密に戻す必要がある。
-4. 一般の coherent filtered 添字での相対 Hom 保存と compact 性、小さい生成圏を閉じ、分類で一般の前層の accessibility へ移す。
+### 次の一手
+1. P-1 b の完了後は新チャットで P-1 g を再開する。e-infinity-algebras.md の N 節を併読する。
+2. 新所在の `Presentable.SigmaHomWeightComparison` と `Presentable.PresheafUniverseArbitraryColimits` を対象ビルドし、
+   未接続7ファイルを依存順に修正・検証する。元の指定単位と全係数の自然性を保持する。
+3. 両対象の成功後にだけ集約・監査へ接続し、所有の集約ビルドと全公理監査を行う。
+4. 元の左 Kan 延長の sifted 余極限保存へ進む。全 Hom 比較で元の指定余錐像の普遍性を判定する。
 
 ## P-1 b 三段目（v3）
 
 - [x] b1. strict filtered 全余錐の left fibration ∞ 圏での余極限性。
-- [ ] b2. 有限底上模型による、元の指定 left fibration の小さい全表示。
-- [ ] b3. 一般 coherent filtered 添字での相対 Hom 保存と有限模型の compact 性。
-- [ ] b4. 一般の小さい底上の前層の小さい compact 生成圏と accessibility。
-- [ ] b5. 前層の presentable 性、条件を明示した Indκ(C) の presentable 性。
-- [ ] b6. 局所小ささの公開界面、集約ビルド・公理監査・引き継ぎ更新。
+- [x] b2. 有限底上模型による、元の指定 left fibration の小さい全表示。
+- [x] b3. 一般 coherent filtered 添字での相対 Hom 保存と有限模型の compact 性。
+- [x] b4. 一般の小さい底上の前層の小さい compact 生成圏と accessibility。
+- [x] b5. 前層の presentable 性、条件を明示した Indκ(C) の presentable 性。
+- [x] b6. 局所小ささの公開界面、集約ビルド・公理監査・引き継ぎ更新。
 
 ## 規約
-- foundations.md §8。所有ファイルだけ `set -o pipefail` のうえ `git commit --only`。新規 sorry・公理・引用なし、他レーン不変。
-- 結論を仮定する instance を主経路へ入れない。Ind・標的は u+1、添字と有限符号は u。本文 300 行以内、引き継ぎ 100 行以内。
+
+- foundations.md §8。所有だけ `set -o pipefail` のうえ `git commit --only`。新規 sorry・公理・引用なし。
+- 他レーンのファイルは読むだけ。補題が自レーンの import 閉包の外にあれば、コーディネータ経由で所有レーンへ依頼する。
+- モジュールの移動・改名・削除は R の停止窓で行う。記録された未追跡ファイルの再配置は再開指示に従う。
+- 主経路に `ModelCategory SSet` 等の instance 仮定を入れない。docstring は 概要/方針/規約/使われ方。
+- Ind・標的は u+1、添字と有限符号は u。本文300行以内、引き継ぎ100行以内。実施記録はコミットメッセージ。
+- 報告後は承認を待たず続行。二段目の完了・設計変更提案・所有 import 閉包破損・稼働24時間で停止する。

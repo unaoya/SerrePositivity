@@ -208,3 +208,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPointEvaluationIso
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationStrictCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationUnit_isInvertible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationUnitVertexIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteLeftFibrationPresentation
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationDiagram_in_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationDiagramStrictificationIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.filteredLeftFibrationCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeHom_isKappaAccessibleFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationReplacement_isCompact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInclusion_isCompactGenerating
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isKappaAccessible_aleph0
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isPresentable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_compactGeneratorIndEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isPresentable_iff_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInd_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInd_isPresentable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isLocallySmall_of_smallFixedVertexMaps
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isPresentable_of_compactGenerating

@@ -137,3 +137,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredLeftFibr
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeLeftFibrationHomNative
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationPointEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationStrictColimit
+public import SerrePositivity.InfinityCategories.F2.Presentable.IndPresentable
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocallySmall
