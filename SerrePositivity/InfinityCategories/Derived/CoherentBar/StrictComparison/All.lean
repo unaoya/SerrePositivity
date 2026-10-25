@@ -1,0 +1,7 @@
+module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Diagram
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FilteredExactness
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationGraded
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Columns
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexColimit
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendSimplex

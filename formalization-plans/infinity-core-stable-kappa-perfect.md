@@ -1,5 +1,27 @@
 # D-e：D-8 e の実 perfect 比較と D-8 d の covers
 
+## 再割当：strict bar 比較 C1・C2（2026-10-25）
+
+- 現在地：C1 続行中。strict 図式・高次 prefix 消滅・graded augmentation・
+  非有界複体の filtered strict 余極限による擬同型保存を構成・集約ビルド済み。
+  正規化 bar の augmentation の擬同型性はまだ未完。
+- 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
+  `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
+- 三段目：1 strict 図式と標準射の型、2 正規化 augmentation、3 filtered 完全性と
+  局所縮約による擬同型性、4 自分の集約・専用監査・限定保存、
+  5 工程 B 到着後に比較値と covers の無条件の系。
+- 残り：augmentation の bar 微分に関する閉性、有限 support の共通上界への
+  縮約、filtered 完全性への接続（C1、8–24時間）。工程 B の余錐と普遍性の代入
+  （C2、B 到着後1–3時間）。
+- 主要宣言：`dgCoherentBarStrictDiagram`、`dgCoherentBarStrictNormalizedModule`、
+  `dgCoherentBarStrictAugmentationGraded`、`dgCoherentBarStrictColumn`、
+  `dgStrictFilteredColimit_quasiIso`。
+- 依存：D-bar の正規化加群と公開 MC、Mathlib の ModuleCat AB5 と複体の関手。
+  C1 の証明へ native 普遍性を仮定していない。B は現計画で未構成。
+- 検証：自分の集約3,689 jobs成功。専用監査6葉82宣言、許容三公理のみ。
+  所有内6葉・集約・専用監査を限定保存し、C1 を続行する。C1 完了とは扱わない。
+- 次の一手：augmentation の閉性と、上界頂点付加による局所縮約。
+
 ## 引き継ぎ（2026-10-25）
 
 - 現在地：D-8 e 完了（5bf80c07c）。採用済み D-8 d も、指定された
