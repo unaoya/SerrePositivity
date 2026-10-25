@@ -55,7 +55,7 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
-- `functor_isPresentable`、`piSSet_isPresentable`、`PrL`、`PrR`、`isKappaCompact_pullback_of_components`、`exists_pullbackCandidate_nativeCompactCardinal`
+- `functor_isPresentable`、`piSSet_isPresentable`、`PrL`、`PrR`、`exists_smallComponentCompactModel`、`exists_presentablePullback_compactCandidate`
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
@@ -96,10 +96,10 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `StrictSpanComparison`：厳密な成分同値による一般模型との比較を構成中。compact 成分の全代表族・厳密な模型の対象ビルドと監査は通過。
+- `SmallRelativeOverHom` は対象ビルド済み、`SmallRelativeHomAccessible` は μ-small 始域の全相対 Hom の filtered 保存を検証中。
 
 ### 次の一手
-- e5 は compact 成分の全頂点を小さい native compact 族で代表する。小さい cospan 模型との比較と、元の引き戻しの filtered 生成表示へ進む。
+- e5 は一般の元の引き戻し内の小さい native compact 全部分候補圏まで構成。μ-small 図式の相対因子化を使い、各対象の filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
