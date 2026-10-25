@@ -50,6 +50,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.Classifie
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.JoinAssociatorComparison
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftKanHomTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CosliceLeftKanHomUniversal
+
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。
 方針：新規供給葉と、コミット番号が中継された P の読み取り専用の途中成果を接続する。

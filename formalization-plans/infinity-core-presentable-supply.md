@@ -83,6 +83,14 @@
   空区間を含む切断・和表示を比較し、点二つへの特殊化も公開する。
 - P-13 追加後の Supply.All は 8682 jobs で成功。独立監査は 514 宣言、標準三公理のみ。
 
+- 指定左 Kan 単位の Hom 比較を、標的同型および始点・延長図式の同型で
+  移す補題を構成した。
+- 任意の元の関手の coslice 比較の分類単位について、任意の全標的図式に
+  対する左 Kan Hom 普遍性を証明した。
+- 元の `covariantHomComparison` 自体の同じ普遍性も証明した。
+  指定 Yoneda 単位の評価との両立と、全自然な end 比較は引き続き未構成。
+- 最新 Supply.All は 8684 jobs で成功。独立監査は 537 宣言、標準三公理のみ。
+
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
   （HTT 5.3.4.9、4〜8 時間）。
@@ -168,6 +176,13 @@
 - `stableJoinAssociator_eq_joinAssociator`
 - `stableJoinAssociator_hom_eq_joinAssociator_point_point`
 
+- `leftKanHomMap_bijective_of_iso_target`
+- `leftKanHomUniversal_iso_unit`
+- `classifiedCosliceHomRestriction_eq_leftKanHomMap`
+- `classifiedCosliceLeftKanUnit_bijective_classifiedTarget`
+- `classifiedCosliceLeftKanUnit_homUniversal`
+- `covariantHomComparison_homUniversal`
+
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
   `scripts/audit_infinity_presentable_supply.lean`、この計画（300 行以内）。
@@ -177,7 +192,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（P-13 比較葉・集約・独立監査・本計画を記録）。
+- なし（指定 coslice・共変 Hom 単位の Hom 普遍性の二葉・集約・監査・計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -202,8 +217,9 @@
   これだけから比較射の可逆性を推論しない。指定単位から来る余錐との両立が残る。
   `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
   共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
-- 分類後の実 coslice Hom 制限の全単射性を、任意の標的の
-  `leftStraighteningInfinityCounit` で移し、指定共変 Hom 比較の左 Kan 普遍性を得る。
+- 指定共変 Hom 比較の Hom 普遍性は完成。`homWeightYonedaUnit F` の
+  各前層評価をこの指定比較と照合する。curry の評価と、元の twisted arrow
+  比較から始点固定射影への底変換・元の coslice 比較との可換性を保持する。
 - この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
   `functorHomToHomWeightDiagramEquivalence` と接続する。
   点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。
