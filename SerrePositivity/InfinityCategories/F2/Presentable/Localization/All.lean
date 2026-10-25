@@ -61,6 +61,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceAccessibleTerminal
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.OperationsIndImageCandidates
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageRetracts
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourcePointAccessibility
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -157,6 +158,8 @@ pushout 四角形から入力 span への制限と、四角形から上辺への
 固定始域圏の accessibility を明示的な入力として残すと、既存の小余完備性と
 公開 presentable 完備性から空極限として終対象が存在し、元の始点から局所置換を得る。
 この accessibility はまだ元の仮定から証明しておらず、f3 完成とはしない。
+同じ濃度を保持する通常の点引き戻しとの accessibility の同値も証明し、
+e5 の未公開の点 fiber 生成表示から局所置換へ接続する境界を揃えた。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
