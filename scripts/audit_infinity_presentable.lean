@@ -831,3 +831,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverPostcomp_equivalenceLifting
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sliceUnderPostcomp_equivalenceLifting
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackSliceVertex_of_compatible_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactOverVertex_of_compatible_sources

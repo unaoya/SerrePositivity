@@ -96,10 +96,10 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- `PullbackSliceVertexCandidates`：元の対象上の成分同型から compact comma 頂点への回収を検証中。
+- なし。
 
 ### 次の一手
-- e5 公開名予告：`pullback_isAccessible`、`fiber_isAccessible_of_presentable`、`pullback_isPresentable`（未証明）。accessible な両脚に共通の κ-filtered 余極限・保存と小さい native compact 候補まで構成。presentable 両脚版では compact 成分の対象上の comma の全 μ-small 試験余錐と、指定小模型への μ-filtered 性の移送まで構成。対象上の小余極限・filtered 余極限の作成と保存、後合成の同値持ち上げ、引き戻しの全 slice 比較も構成。残りは小さい comma 模型と、対象上の成分表示の cofinal 比較による filtered 生成表示。
+- e5（未完、設計変更案で停止）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する案。小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
