@@ -37,7 +37,7 @@
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
 - `IsKappaAccessible.exists_indEquivalence`、`isKappaAccessible_iff_indEquivalence`、`indComparison_isFullyFaithful_of_compact`（P-f 供給済み）
-- `IsCardinalChangeBound`、`coherentCardinalFilteredLimitExchange_poset`、`IsKappaAccessible.of_cardinalChangeBound`
+- `IsCardinalChangeBound`、`cardinalChangeBound_aleph0`、`isKappaCompact_iff_equivalence_universe`、`isKappaCompact_smallPosetColimit_universe`（P-9）
 - `IsPresentable`、`isPresentable_iff_cocompleteIndEquivalence`、`space_isPresentable`
 - `leftFibrationStrictCocone_isColimit`、`continuousLeftFibrationUnitVertexIso`、`exists_finiteLeftFibrationPresentation`
 - `finiteLeftFibrationDiagram_in_family`、`leftFibrationDiagramStrictificationIso`、`finiteRelativeHom_isKappaAccessibleFunctor`
@@ -96,7 +96,7 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `ConeFunctorCounitPrism`：全錐族と極限関手の自然比較を構成中。
+- `ConeFunctorCounitPrism`・`ConeFamilyAdjunct`・`LeftConeHomRestriction` は e5 の全錐族比較、`NerveConeCoherentComparison` は P-8 の全錐比較を構成中。
 
 ### 次の一手
 - e5 は小さい native compact 全部分候補圏と μ-small 極限関手の同じ μ の保存まで構成。全錐族比較と相対因子化から各対象の filtered 生成表示へ進む。

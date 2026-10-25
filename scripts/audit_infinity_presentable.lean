@@ -721,3 +721,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallConstantPointDiagram_isKappaCompact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaContinuousSpaceLimitFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence_universe
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_smallPosetColimit_universe

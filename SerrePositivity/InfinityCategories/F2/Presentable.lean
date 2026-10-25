@@ -367,3 +367,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallRelativeHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallConstantDiagramCompact
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceRightAdjointContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallLimitFunctorContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.CompactEquivalenceUniverse
+public import SerrePositivity.InfinityCategories.F2.Presentable.Aleph0CardinalChangeBound
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetColimitCompactUniverse
