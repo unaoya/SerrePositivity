@@ -26,6 +26,8 @@
 - Compact/YonedaHomNaturality：`dgBarCompactYoneda_homNaturality` は全 Hom 複体の自然性、`dgBarCompactYoneda_strict` は同じ比較の厳密 dg 自然変換。
 - Compact/YonedaNerveIso：`dgBarCompactYoneda_nerveIso` は独立の対象宇宙を共通宇宙に置いた全 nerve 関手同型。全 coherent 図式で前合成できる。
 - Compact/NativeHomCriterion：`dgBarCompact_iff_nativeHom_preserves` は実半自由対象の native κ-compact 性と、実 Hom 空間関手の全 native κ-filtered 余極限保存の同値。
+- Compact/ProjectiveHomCriterion：`dgBarCompactRepresentable_iff_hom_preserves` は同じ代表そのものの射影的頂点の全 Hom 保存による判定。分解を余極限計算の始域へ持ち込まない。
+- Compact/GeneratorClosure：`dgBarCompactRepresentableShift_of_hom_preserves`・`dgBarCompactSphereFree_of_hom_preserves`・`dgBarCompactClosedProjective_of_hom_preserves` は全 native 図式での代表 Hom 保存を明示入力とする接続。c6・c7 の無条件供給とは扱わない。
 - これらは compact 性そのものの実証拠ではない。coherent C1 の代入と評価交換は未完。
 
 ## 次の一手

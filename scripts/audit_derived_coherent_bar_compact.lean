@@ -13,7 +13,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.RepresentableEvaluation,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomCriterion,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaHomNaturality,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaNerveIso]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ProjectiveHomCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.GeneratorClosure]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

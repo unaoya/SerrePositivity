@@ -3,6 +3,8 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Rep
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomCriterion
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaHomNaturality
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaNerveIso
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ProjectiveHomCriterion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.GeneratorClosure
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。

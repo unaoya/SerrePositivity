@@ -19,6 +19,28 @@ open CategoryTheory DifferentialGraded DGNerve SSet
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
+/-- 任意の dg 模型の実 Hom 空間関手を、同じ頂点の共変代表へ比較する。 -/
+def dgBarCompactHomIso (C : Type (max (u + 1) v)) [DGCategory R C] (x : C) :
+    FunctorIso (dgHomTargetUnderlyingSpaceInfinity R C x)
+      (covariantRepresentableInfinity (C := dgNerve R C) (Simplex.vertex (A := R) x)) :=
+  dgHomTargetSpaceComparisonIso R C x ≪≫
+    dgCosliceYonedaClassificationIso (dgNerve R C) (Simplex.vertex (A := R) x) ≪≫
+    (F2.Compact.covariantRepresentableInfinity_cosliceIso (C := dgNerve R C)
+      (Simplex.vertex (A := R) x)).symm
+
+/-- 全 native 図式での実 Hom 保存と同じ頂点の compact 性の一般判定。 -/
+lemma dgBarCompact_iff_hom_preserves (C : Type (max (u + 1) v)) [DGCategory R C]
+    (κ : Cardinal.{u}) (x : C) :
+    F2.Compact.IsKappaCompact.{u, max (u + 1) v} (C := dgNerve R C) κ
+        (Simplex.vertex (A := R) x) ↔
+      F2.Compact.PreservesKappaFilteredColimits.{u, max (u + 1) v} κ
+        (dgHomTargetUnderlyingSpaceInfinity R C x) := by
+  constructor
+  · intro h
+    exact h.of_functorIso (dgBarCompactHomIso R C x).symm
+  · intro h
+    exact h.of_functorIso (dgBarCompactHomIso R C x)
+
 /-- 実半自由 Hom の全空間関手と compact 性の定義にある元の共変代表の比較。 -/
 def dgBarCompactNativeHomIso (P : SemifreeDGModules R D) :
     FunctorIso (dgSemifreeDerivedHomTargetSpaceInfinity R D P)
