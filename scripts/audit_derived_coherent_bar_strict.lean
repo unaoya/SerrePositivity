@@ -86,7 +86,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomologyInclusions,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ModuleCoproductHomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerHomologyInclusions,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCoefficientInclusions]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCoefficientInclusions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ShiftUnitValues,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ShiftUnitSigns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ShiftBlockValues,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SignedShiftBlockValues,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyRepresentative,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerHomologyMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerConnecting,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneCyclesMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyNaturality]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -160,3 +172,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgComplexCoproductHomologyIso_ι
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerHomologyIso_ι
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerHomologyCoefficientsIso_ι
+
+#check SerrePositivity.InfinityCategories.dgBarSignedShiftBlock_v
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerFirstHom_d
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerFirstHom_eval
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerConnecting_eq_firstHomology
