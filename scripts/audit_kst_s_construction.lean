@@ -32090,3 +32090,36 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInputMap
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal_targetMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal_targetMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContractingElement
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContractingElement
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContractingElement_d
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContractingElement_d
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContracted
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityContracted
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_zero_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_zero_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_perfect_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_perfect_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_difference
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_difference

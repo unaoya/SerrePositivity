@@ -2633,4 +2633,8 @@ public import SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityDGInput
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityNullSquare
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityNuSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/
