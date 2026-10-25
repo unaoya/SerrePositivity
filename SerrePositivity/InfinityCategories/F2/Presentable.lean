@@ -524,3 +524,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.RightFibrationEq
 public import SerrePositivity.InfinityCategories.F2.Presentable.CompactSourceSliceDensity
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiberCompactPresentations
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiberAccessibility
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.All
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.All

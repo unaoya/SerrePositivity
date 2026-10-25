@@ -2,7 +2,7 @@
 
 > **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本。
 > P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読する。
-> 所有：`F2/Presentable/`（P-f の `Localization/`・P-d の `Duality/`・P-s の `Supply/` を除く）、`HomotopyLimits/`。
+> 所有：`F2/Presentable/`（P-f の `Localization/`・P-d の `Duality/`・`AccessiblePullback/`・P-s の `Supply/` を除く）、`HomotopyLimits/`。
 > 集約：`SerrePositivity/InfinityCategories/F2/Presentable.lean`、`HomotopyLimits.lean`。
 
 ## 引き継ぎ（2026-10-24）
@@ -31,7 +31,7 @@
 1. P-1 e：P の e5 fiber accessibility は公開済み。P は e8 の集約・監査を準備し、accessible 一般版（5.4.6.6）は P-d の到着待ち。
    e6 の全体同値（5.5.3.4）と e7 の小極限（5.5.3.13）は保留（第 II 段／R、ユーザー判断）。
 2. P-1 f：Bousfield 局所化の存在（HTT 5.5.4.15）は P-f が `F2/Presentable/Localization/` で並行。
-   P は同ディレクトリを編集せず e5 → e8 に集中し、e8 では Duality/・Supply/・LocalObjects/ も含めて集約・監査し、P-d の一般版の到着後に閉じる。
+   P は同ディレクトリを編集せず e5 → e8 に集中し、e8 では Duality/・Supply/・LocalObjects/・AccessiblePullback/ も含めて集約・監査し、P-d の一般版の到着後に閉じる。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -93,14 +93,14 @@
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
 - e5 の濃度評価は Ind-S (7)、`d39ae1d0a` で供給済み。`SmallHullCardinal` の有界 Hull を使い、任意の μ-small 試験図式を同じ濃度の quasicategory へ厳密に因子化する。
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
-- e8 の統合 import 閉包が破損：`Supply.LeftClassificationBaseChangeEdges` と P の `CosliceBaseChangePreservation` が `Presentable.instLeftFibrationSndSSet` で衝突。P-s 側の匿名 local instance の衝突解消をユーザー経由でコーディネータへ依頼し、規約に従って停止。
+- e8 の統合 import 閉包が破損：`Supply.LeftClassificationBaseChangeEdges` と P の `CosliceBaseChangePreservation` が `Presentable.instLeftFibrationSndSSet` で衝突。P-s 側の匿名 local instance の衝突解消はユーザー経由で依頼済みだが未修正。Supply.All には未コミット葉の import もあり、到着まで統合を保留。
 
 ### 未コミット
-- なし。e8 で追加した三集約 import は instance 名衝突のため除き、検証済みの集約へ復旧。
+- e8 準備を保存：Duality.All・Localization.LocalObjects.All を接続。両集約 9791 jobs、P 4677 宣言・H 12233 宣言の再帰公理監査と既存 H 監査は成功。Supply は衝突修正・コミット待ち、AccessiblePullback は未到着。
 
 ### 次の一手
 - e5：P の fiber 版は `fiber_isAccessible_of_presentable`（強い入口 `fiber_isAccessible_of_cocomplete_accessible`）で構成済み。共通濃度・全 compact 成分の小模型・元の各対象の小さい μ-filtered 全表示を接続し、点射の全小余極限保存を仮定しない。対象・集約ビルドと公理監査済み。公開名を報告し、e8 の準備へ移る。accessible 一般版 `pullback_isAccessible` と系 `pullback_isPresentable` は P-d に移管。
-- e6 の全体同値と e7 の小極限は保留（第 II 段／R）。P-s の instance 衝突修正後、Duality.All・Supply.All・Localization.LocalObjects.All を集約へ再追加して両集約・監査を実行。P-d の accessible 一般版の到着後に e8 を閉じる。
+- e6 の全体同値と e7 の小極限は保留（第 II 段／R）。Duality.All・Localization.LocalObjects.All は接続済み。P-s の instance 衝突修正・コミット後に Supply.All、P-d の供給後に AccessiblePullback.All を追加して両集約・監査を実行し、e8 を閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
@@ -154,7 +154,7 @@
 - [ ] e5. P の fiber accessibility は公開済み。accessible 一般版（5.4.6.6）と presentable 系（5.5.3.12）は P-d の到着待ち。
 - [ ] e6. 保留（第 II 段／R）：Pr^L と Pr^R の全体同値（5.5.3.4）。`Duality/` は読み取り専用。
 - [ ] e7. 保留（第 II 段／R）：Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
-- [ ] e8. 三集約の同時 import が匿名 local instance 名衝突で失敗し停止。P-s の修正後に両集約・監査を再実行、P-d の一般版の到着後に閉じる。
+- [ ] e8. Duality/・LocalObjects/ を接続し両集約・公理監査成功（P 4677、H 12233 宣言）。Supply/ の名前衝突修正・コミットと AccessiblePullback/ 到着後に四集約の監査で閉じる。
 
 ## P-6 三段目
 

@@ -1000,3 +1000,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberPresentation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_isAccessible_of_cocomplete_accessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_isAccessible_of_presentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isPresentable_of_reflection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isPresentable_of_localReplacements
