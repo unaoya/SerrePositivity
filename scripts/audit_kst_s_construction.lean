@@ -32243,3 +32243,36 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareBoundary
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullComposite_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullComposite_zero
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullCoherenceSpace
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullCoherenceSpace
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceSpace_contractible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceSpace_contractible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCompositeVertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCompositeVertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopCompositeVertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopCompositeVertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCompositeEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCompositeEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension_restriction
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension_restriction
