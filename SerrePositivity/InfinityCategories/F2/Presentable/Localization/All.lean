@@ -65,6 +65,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleCompactPresentations
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleOperationsIndImageCandidates
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleRefinement
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativeCompactCoconeFactorization
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -87,7 +89,8 @@ f3 の準備：固定始域の全 coslice 部分圏と、同じ始域から閉�
 各段階の compact 源からの任意の指定 coslice 点を、同じ余錐脚の上の実辺で因子化する入口。
 compact な始対象像を持つ left fibration の指定点を、同じ余錐脚の上で一段へ因子化した。
 これを小さい compact 図式の余極限始対象へ適用し、その全余錐の一段への因子化も証明した。
-既存の部分余錐を固定する相対延長は未構成。
+終頂点を持つ既存の全前置余錐を厳密に固定する相対一段延長を構成した。
+全交互列への接続は未構成。
 指定した元の辺を合成辺、元の filtered 余錐脚を後半辺とする実二単体も回収した。
 二つの実表示を結ぶ coherent 交互列と共通部分余極限は未構成。
 全射の filtered 生成性・飽和射圏全体の accessibility は未証明。
@@ -200,6 +203,10 @@ P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生�
 段階ごとの辺の実像所属を、元の三角形の同じ辺の指定 filtered 余極限へ戻す入口も得た。
 三角形表示と実像の演算の濃度も統一した。同じ濃度・同じ実像の選択で、
 全 compact 閉包射の被覆・全生成射と恒等射・pushout・左消去・三辺の同時表示を保持する。
+同時細分された表示から、欠けている辺の添字一つで三方向の元の辺を回収する入口も得た。
+P の公開コミット c3998b340 の終前置 coslice の compact 判定を制限 left fibration に適用し、
+小さい compact 全図式の指定余錐を、元の全前置余錐を厳密に固定して一段へ因子化した。
+返る実辺は同じ filtered 余錐脚を被覆する。交互列全体と共通部分表示はまだ未構成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
