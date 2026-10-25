@@ -44,6 +44,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSourceCandidates
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalExtension
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalMapping
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialColimits
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -131,6 +132,8 @@ P の公開コミット 06c0eeae2 の point-fiber 版を使い、同じ固定始
 同じ公開 fiber 候補構成を、既に accessible な実 Ind 像の始点評価にも適用した。
 任意の指定始域で、全成分 compact 点を被覆する充満忠実な小さい native compact 候補を得た。
 この実像 fiber の候補にも filtered 生成性はまだ付けていない。
+P-s の公開コミット a8dc9eb19 の望遠鏡の一般入口を使い、Ind 実像と固定始域圏に
+元の可算列の保存余極限を構成した。固定始域の周囲の指定可算余極限の閉性も保持する。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
