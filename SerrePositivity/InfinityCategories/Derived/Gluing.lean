@@ -907,3 +907,6 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTenso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer
+public import SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedExactness
+public import SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalStableStructure
+public import SerrePositivity.InfinityCategories.Derived.Gluing.NativeCFactorKernel

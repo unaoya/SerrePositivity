@@ -29,13 +29,20 @@
 ### G-1 e の三段目（固定）
 - [x] ① 共通宇宙の dg nerve の安定性・dg 関手の完全性を接続。
 - [x] ② gluing の安定性と元の左右射影の完全性を供給。
-- [ ] ③ F2 の安定 lax pullback と正本比較の完全性を照合。
-- [ ] ④ 既存の半直交分解・K-8b の分裂との整合を接続。
-- [ ] ⑤ 集約ビルド・公理監査・引き継ぎの保存。
+- [x] ③ F2 の安定 lax pullback と正本比較の完全性を照合。
+- [x] ④ 既存の半直交分解・K-8b の分裂との整合を接続。
+- [x] ⑤ 集約ビルド・公理監査・引き継ぎの保存。
+
+### G-1 f の三段目（固定）
+- [ ] ① 通常 pullback を表す元 dg gluing 内の充満部分圏と正本比較の制限を構成。
+- [ ] ② 通常 pullback の同値・安定性・実完全包含と二射影の整合を供給。
+- [ ] ③ D-9 の同じ平坦屋根・実小核・Verdier 商を gluing へ接続。
+- [ ] ④ ⊙ の dg 同定と元の二射を保持する K-8 d8 の IsVerdierSequence を供給。
+- [ ] ⑤ 集約ビルド・公理監査・D 向け引き継ぎを保存して停止。
 
 ### 残り（依存順）
 1. (d) ①〜⑥完了。Tamme Remark 6 に対応する正本比較同値と全試験関手の普遍性を供給済み。
-2. (e) 安定性・完全射影と F2 の `laxPullback_isStable`・K-8b の半直交分解との整合。Tamme Lemma 8。見積り 1 日。
+2. (e) 完了。元 C・D の前三角性から安定性・実完全射影・F2 の安定 lax pullback・両因子の本質像・K-8b の分裂を供給。Tamme Lemma 8。
 3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、K-8 d8 の `IsVerdierSequence` の供給。D-9 と共同。
    Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。完了時に D 向けの引き継ぎを整えて停止する。
 
@@ -76,18 +83,19 @@
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
   隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **次工程 (e)**：元 C・D の前三角性から安定性と実完全射影を接続し、F2 の `laxPullback_isStable` と K-8b の半直交分解を照合する。
+- **次工程 (f)**：通常 pullback を表す gluing 内の充満 dg 部分圏を取り、正本比較を制限する。続いて D-9 の平坦屋根と同じ Verdier 商を接続し、⊙ の dg 同定と K-8 d8 へ進む。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 未コミット・既知の問題
-- e の作業中：native gluing と導来 lax pullback の安定性、共通宇宙の元左右射影・正本比較・逆比較・F2 二射影の完全性を接続済み。元の二因子の対象条件は、実安定射影の零対象核に一致する。D-14 の実分解・同宇宙の加群値関手の完全性を確認済み。完全性の ULift 持ち上げと異なる対象宇宙の入口は D に追加依頼中。C 因子の逆向きの本質像照合用 `LaxInclusion.snd_kernel` は Sp に依頼中。
-- `criterionPerfTensorYonedaHom_naturality` から任意対象宇宙の厳密比較・実共通宇宙 FunctorIso・導来係数比較まで接続済み。同宇宙の完全性は D-14（`867d0e27f`・`40b561b57`）を利用する。入口は `dgGluingUniverseDerivedCoefficientTensorCompositeIso`。K-8b の分解を `dgGluingNativeSemiorthogonal` として native nerve へ戻し、元二射影・実随伴・充満忠実性・D 因子の本質像・写像空間の可縮性・分裂 Verdier 列を接続済み。元二射影の値を持つ Tamme 分裂も構成済み。二脚完全性は隔離中。`TensorCoefficientExactTransfer` は同じ FunctorIso から raw／導来係数脚への完全性の移送を供給する。
-- e の接続済み部分の検証：集約ビルド 11594 jobs、公理監査 908 モジュール・8437 宣言。許容三公理のみ。ログ：`/tmp/d2-e-native-semiorthogonal-aggregate-build.log`・`/tmp/d2-e-native-semiorthogonal-audit.log`。三段目③〜⑤は未完。
+- (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
+- `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
+- `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
+- e の検証：集約ビルド 11872 jobs、公理監査 911 モジュール・8461 宣言。許容三公理のみ。ログ：`/tmp/d2-e-complete-aggregate-build.log`・`/tmp/d2-e-complete-audit.log`。残る数学的工程は f。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
-- 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は e・f。
+- 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約

@@ -912,7 +912,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CoefficientTensorNerveIso,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseCoefficientTensorIso,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedExactness,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalStableStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCFactorKernel]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
