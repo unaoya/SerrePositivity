@@ -120,6 +120,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Par
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSubsequenceEquality
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoPresentationComparison
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallPresentationCompact
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -296,8 +298,10 @@ slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域�
 元の二つの compact filtered 表示から、指定左開始点と右開始点の後続点を保持する
 同じ大域頂点上の全可算比較を構成した。その偶数・奇数部分列は元の両表示余錐の
 全図式と厳密に一致する。大域頂点の compact 性や比較列の存在を追加入力にしない。
-この全比較からの共通小部分余極限の回収、および元の三角形表示の同時細分への接続は
-まだ未完成。
+両種集合を支配する全比較から、各種集合を含む小さい filtered 部分 poset を構成した。
+その部分表示の余極限は共通大域頂点の slice 内で同型であり、同じ元の余錐を保持する。
+対象上の小 poset 余極限を底へ射影した頂点の compact 性も証明した。
+元の三角形表示の同時細分への接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と

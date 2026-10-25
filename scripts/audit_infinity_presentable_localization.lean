@@ -531,3 +531,15 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @comparison_odd_subsequence_eq
 #check @sequentialIndexDiagram_initial_of_point
 #check @exists_twoPresentationComparison
+
+#check @nerveIndexPiece_nerve_isRightCofinal
+#check @cofinalDiagramCocone
+#check @cofinalDiagramCocone_vertex
+#check @cofinalDiagramCocone_isColimit
+#check @nonempty_twoCofinalPresentation_colimitIso
+#check @SeedBoundedTwoPresentationComparison
+#check @nonempty_seedBoundedTwoPresentationComparison
+#check @exists_commonSmallPresentation_colimits
+#check @SmallPresentationComparison
+#check @nonempty_smallPresentationComparison
+#check @smallSlicePresentation_projection_compact
