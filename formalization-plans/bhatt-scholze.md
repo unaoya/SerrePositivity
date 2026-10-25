@@ -192,3 +192,8 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 - 2026-10-25：E3 の `coconnective` 欄（Lemma 8.4）がどの橋からも読まれていないことを確認。外して入力を弱める調整案を
   `bhatt-scholze-e3-coconnective.md` にまとめた（EInfinity 側の変更を含むので進捗確認チャット経由）。
   記録のみ：E3 の目標の型を D(R) 版のまま残すか、原典 Def 8.2 に近い CAlg 版（EInfinity）に一本化するかは、A4 以降の設計で決める。
+- 2026-10-25：ユーザーの決定。(1) 直下の集約 `BhattScholze/PerfectoidizationInterface.lean` は削除する（root と BS 監査の import を
+  統合後の 3 本へ直してから）。(2) `PerfectoidizationInterface/`（W7 後は Interface・IntegralExistence・Excision の 3 本）は
+  §8 の導来 perfectoid 化とその環への帰結なので `Perfectoidization/Derived/` へ移す（案 B）。EInfinity が
+  `PerfectoidizationInterface.Interface` を import しているので、旧名の書き換えは進捗確認チャット経由。文献入力
+  `Inputs/PerfectoidizationInterface.lean` は Inputs に残す。いずれも W7 の完了後、W8 の最初の作業として行う。
