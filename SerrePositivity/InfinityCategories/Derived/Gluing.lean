@@ -931,3 +931,6 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullback
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaHom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaComponents
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaUnit
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaElements
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetPrimitiveComposition
+public import SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackThickClosure

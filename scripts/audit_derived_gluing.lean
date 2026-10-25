@@ -936,7 +936,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackRetracts,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaHom,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaComponents,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaUnit]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaUnit,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaElements,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetPrimitiveComposition,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackThickClosure]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
