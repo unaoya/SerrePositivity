@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaNativeFibration
 public import SerrePositivity.KST.Fibration.VerdierFullSMovingSquarePrism
+public import SerrePositivity.KST.Fibration.RelativeFirstRowRealization
 
 /-!
 概要：同じ D-9 の native 実四角形を、指定全二胞体を保つ比較の利用側へ接続する。
@@ -56,5 +57,18 @@ theorem dgKappaNativeFullSSquare_isPullback
       coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) :=
   (dgKappaNativeQuotientSKernel_isPullback R D I hstage).of_functorIso
     (dgKappaNativeFullSSquareIso R D I V hdiag hV).symm
+
+include V hdiag hV in
+/-- 概要：同じ実商の有限第一行比較から、未完備全 S• 四角形の引き戻しへ接続する。
+方針：同じ第一行四角形で元の正段比較に戻し、指定全四角形比較を使う。
+規約：上側全族と Sp 正本の第一行比較に条件付きで、存在は主張しない。
+使われ方：K-6 c5 の具体的な Sp 供給を同じ D-9 実列で消費する。 -/
+theorem dgKappaNativeFullSSquare_isPullback_of_firstRows
+    (hrow : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
+      (relativeFirstRowQuotient (dgKappaNativeQuotient R D I) (n + 1)))) :
+    IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) :=
+  dgKappaNativeFullSSquare_isPullback R D I V hdiag hV
+    ((relativeSQuotient_positive_stages_iff_firstRows (dgKappaNativeQuotient R D I)).mpr hrow)
 
 end SerrePositivity.KST.NonConnective

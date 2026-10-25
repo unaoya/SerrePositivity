@@ -71,4 +71,18 @@ theorem dgKappaNativeBFFixedStructure_nonnegative_of_kernel
   dgKappaNativeBFConnectiveFixedStructureMap_nonnegative R D I hBF hcofinal Z
     (dgKappaNativeFullSSquare_isPullback R D I V hdiag hV hstage) j hj
 
+include V hdiag hV in
+/-- 概要：同じ実商の有限第一行比較から、元の固定 K 構造射の非負次数同型へ接続する。
+方針：同じ指定全 S• 四角形を一回の BF fiber 比較と同じ cone の零性へ渡す。
+規約：上側全族・有限 BF・共終性・第一行比較に条件付き。固定 K の Sp 引き戻し性は使わない。
+使われ方：K-6 c5 の Sp 供給を K-7 c5・d3 の元の実構造辺へ代入する。 -/
+theorem dgKappaNativeBFFixedStructure_nonnegative_of_firstRows
+    (hrow : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
+      (relativeFirstRowQuotient (dgKappaNativeQuotient R D I) (n + 1))))
+    (j : ℤ) (hj : 0 ≤ j) :
+    Function.Bijective (OmegaSpectrum.homotopyMap (dgKappaNativeStructureMap R D I
+      (dgKappaNativeBFConnectiveFibrationEdge R D I hBF hcofinal Z)) j) :=
+  dgKappaNativeBFConnectiveFixedStructureMap_nonnegative R D I hBF hcofinal Z
+    (dgKappaNativeFullSSquare_isPullback_of_firstRows R D I V hdiag hV hrow) j hj
+
 end SerrePositivity.KST.NonConnective
