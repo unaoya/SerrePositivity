@@ -70,7 +70,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.WeightedCoproductDecomposition,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSplittingCoefficients,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSplitting,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomology]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyComplex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStageIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyObjects,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCycleBoundary,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerConnectingRepresentative]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -132,3 +139,9 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgHomologyBarNondegZeroHomologyIso
 #check SerrePositivity.InfinityCategories.dgHomologyBarNondeg_exactAt
 #check SerrePositivity.InfinityCategories.dgComplexCoproductHomologyIso
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerHomologyCoefficientsIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyComplex
+#check SerrePositivity.InfinityCategories.dgCoherentBarZeroStageIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyObjectIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerConnecting_representative
