@@ -1,3 +1,16 @@
+import SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison
+import SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison
+import SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality
+import SerrePositivity.DifferentialGraded.Complexes.TensorShiftSecondNaturality
+import SerrePositivity.DifferentialGraded.Complexes.SphereTensorShiftNaturality
+import SerrePositivity.DifferentialGraded.Module.FreeSphereImageCoefficient
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereExtensionComparison
+import SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereMatrixLift
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCoveredArrowRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedSphereFreeCover
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeMatrixRefinement
 import SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift
 import SerrePositivity.DifferentialGraded.Complexes.CycleTransport
 import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient
@@ -7345,6 +7358,20 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison,
+    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison,
+    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShiftSecondNaturality,
+    `SerrePositivity.DifferentialGraded.Complexes.SphereTensorShiftNaturality,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereImageCoefficient,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereExtensionComparison,
+    `SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereMatrixLift,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCoveredArrowRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedSphereFreeCover,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeMatrixRefinement,
+
     `SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift,
     `SerrePositivity.DifferentialGraded.Complexes.CycleTransport,
     `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient,
