@@ -55,7 +55,7 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
-- `functor_isPresentable`、`piSSet_isPresentable`、`PrL`、`PrR`、`exists_presentablePullback_compactCandidate`、`isKappaCompact_smallQuasicategoryColimit_universe`
+- `functor_isPresentable`、`piSSet_isPresentable`、`PrL`、`PrR`、`exists_presentablePullback_compactCandidate`、`isKappaCompact_smallQuasicategoryColimit_universe`、`exists_common_kappaFiltered_cofinal_index`（P-10）
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
@@ -96,7 +96,7 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- なし。
+- `SequentialNerveStages`：e5 の有限始区間からの全図式の貼り合わせを対象ビルド中。
 
 ### 次の一手
 - e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型を使い、各対象の filtered 生成表示へ進む。

@@ -385,3 +385,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompact
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialCofinalSubsequences
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialColimitComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialImageColimitComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.PiSmallQuasicategory
+public import SerrePositivity.InfinityCategories.F2.Presentable.PiSmallFiltered

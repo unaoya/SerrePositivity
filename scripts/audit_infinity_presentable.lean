@@ -738,3 +738,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSubsequenceColimitVertexIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequenceColimitVertexIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequenceImageColimitIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallLift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallLift_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_hom_ext
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_quasicategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_pullback_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_isRightCofinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_kappaFiltered_cofinal_index
