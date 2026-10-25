@@ -96,6 +96,18 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_lift_generatedEdge
 #check @generatedSource_terminal_generatedEdge_retraction
 #check @generatedSource_terminal_generatedEdge_isSplitMono
+#check @initialInclusion_nerve_isRightCofinal
+#check @sourceJoinInr_nerve_isRightCofinal
+#check @sourceJoinInr_ulift_nerve_isRightCofinal
+#check @iteratedSliceUnderIso_sourceRightRestriction
+#check @sourceCoslice_isColimitCone_iff_projection
+#check @generatedSource_colimit_mem_of_cofinal
+#check @generatedSource_nerve_colimit_mem
+#check @generatedSource_hasNerveColimit
+#check @generatedSource_hasPreservedFiniteColimit
+#check @generatedSource_hasFiniteColimits
+#check @generatedSourceInclusion_preservesFiniteColimit
+#check @generatedSource_finite_colimit_mem
 
 #check @indArrowImageFactor_isQCatEquivalence
 #check @indArrowImageVertex_mem

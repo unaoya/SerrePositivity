@@ -38,6 +38,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceProjection
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -108,6 +109,11 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 閉包内の指定終域辺に沿う全 coslice の標準輸送辺を、固定始域の閉包内射圏へ持ち上げた。
 終対象を仮定した場合、その同じ辺の戻り辺を同じ圏内で回収し、元の終域辺が
 ホモトピー圏で split mono となることも証明した。終対象の存在と局所対象性は未証明。
+弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
+全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
+その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
+元の恒等射の始対象性と標準 span を有限セル帰納へ渡し、固定始域圏の大宇宙の
+全有限余極限の存在・包含の指定余錐保存・周囲での閉性まで証明した。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
