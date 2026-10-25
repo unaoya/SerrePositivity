@@ -834,3 +834,6 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackSliceVertex_of_compatible_components
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactOverVertex_of_compatible_sources
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.familySaturationEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallFamilySaturationModel
