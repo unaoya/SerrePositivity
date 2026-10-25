@@ -20,6 +20,8 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionF
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareDiagramChosenComparison
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareChosenPrecomp
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareSourceNaturality
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCompositionMovingNaturality
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightMovingComparison
 import Lean.Util.CollectAxioms
 
 /-!
@@ -89,6 +91,13 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.transportIntervalSquareSourceActionIso
 #check @SerrePositivity.InfinityCategories.F2.transportIntervalSquareSourceActionIso_app_heq
 #check @SerrePositivity.InfinityCategories.F2.transportIntervalSquare_transportIso_source_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.diagonalFiberTransport_constantIso_precomp_heq
+#check @SerrePositivity.InfinityCategories.F2.diagonalFiberTransport_constantIso_source_naturality
+#check @SerrePositivity.InfinityCategories.F2.transportIntervalSquare_constantTopIso_source_naturality
+#check @SerrePositivity.InfinityCategories.F2.coherentKanRightCompositionMovingIso_source_naturality
+#check @SerrePositivity.InfinityCategories.F2.coherentKanRightCompositionDiagonalIso_heq_moving
+#check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyTransportIso_symm_heq_moving
 
 open Lean in
 run_cmd do

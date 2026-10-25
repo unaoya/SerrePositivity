@@ -64,8 +64,16 @@ X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
 専用監査は9881宣言で通過、標準三公理のみ。
 同じ普遍始点比較から関手空間上の `transportIntervalSquareSourceActionIso` を作り、
 その全成分が元の transportIso に一致することを確認した。係数は任意の単体集合。
-Ncomp 本体は未完。次は定値終辺を消去する指定比較との整合を確認し、
-共通の実高次図式上で元の二段評価と合成評価を照合する。
+定値終辺の元の指定消去についても、係数・始点同型の自然性を証明した。
+公開名は `transportIntervalSquare_constantTopIso_source_naturality`。
+元の Kan 合成へ戻し、
+`coherentKanRightCompositionMovingIso_source_naturality` と
+`coherentKanRightCompositionDiagonalIso_heq_moving` を構成した。
+右 Hom の点評価比較の元の逆も
+`pointedRightFamilyTransportIso_symm_heq_moving` で同じ moving 比較へ戻した。
+両対象の統合ビルド5697 jobs、専用監査9921宣言で通過、標準三公理のみ。
+Ncomp 本体は未完。次は三射と一点係数を同時に保持した実高次図式を使い、
+元の二段評価と合成評価の指定値を一致させる。
 
 
 凍結時の a①・a② は完了。長辺の因子式 Nlong も
