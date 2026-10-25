@@ -391,3 +391,16 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s) :
     IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s) :=
   generatedSource_terminal_target_isLocalObject hC edges x s hs
+
+#check @CompactPresentationComparison
+#check @CompactPresentationComparison.swap
+#check @CompactPresentationComparison.swap_swap
+#check @CompactPresentationComparison.vertex_left
+#check @CompactPresentationComparison.vertex_right
+#check @comparisonLeftStages
+#check @comparisonLeftCocone
+#check @ComparisonLeftFactor
+#check @nonempty_comparisonLeftFactor
+#check @comparisonLeftStages_projection
+#check @ComparisonLeftFactor.vertex
+#check @ComparisonLeftFactor.compact

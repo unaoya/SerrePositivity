@@ -70,6 +70,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Rel
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativePrefixPresentationFactorization
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialCoconeNaturality
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactPresentationComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonPrefixFactor
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
