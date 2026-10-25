@@ -3,9 +3,9 @@
 ## 引き継ぎ（2026-10-26）
 
 ### 現在地
-- 状態：ユーザーの続行指示で P-12 を再開。指定底変換合成則を Supply 内で進める。
-- 直前の停止理由は合成則の独立供給という設計提案。所有 import 閉包の破損はない。
-- P-11 と P-13 は完了。P-s の残る担当は P-12 のみ。最終 compact 判定は未供給。
+- 状態：ユーザー指示で P-12 を第 II 段／R へ保留。最終 compact 判定は未供給。
+- P-f は P-12 を使わず P-1 f を 00:15 に完了。現在の P-12 消費者はいない。
+- P-11 と P-13 は完了。P の e8 を阻む Supply の局所 instance 名衝突の修正後に停止。
 - P-14 の割り当てはユーザー指示で取り消し。反射を構成済みの P-f が f4 を閉じる。
 - curry と第一変数評価の可換性は全関手空間の厳密な等式。
   Hom の比較も同じ指定射の異種等式であり、対象ごとの同型の存在ではない。
@@ -20,10 +20,11 @@
 - 共同比較の豊穣前合成と、元の既存実現同型の関手前合成の全自然な等式を公開。
 - 共同比較の添字制限も元の指定実現同型の値域制限へ、全図式の同型として同定。
 - 元の相対切断底変換の実現同型・転置後の指定同型の添字制限との両立を公開。
-- 最新 Supply.All は 8704 jobs で成功、独立監査は 719 宣言で標準三公理のみ。
-  追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
-- 指定 straightening 底変換の合成則を Supply 内の基盤補題として分離して証明中。
-  最終定理への追加仮定にはしない。所有外ファイルは変更していない。
+- 切断底変換の指定実現同型の合成式を保存。straightening への降下は未完了。
+- 最新 Supply.All は 8705 jobs で成功、独立監査は 726 宣言で標準三公理のみ。
+  追加の ModelCategory 仮定なし。所有外ファイルは変更していない。
+- Supply の匿名局所 instance 14 個に葉ごとの固有名を付け、監査で
+  `CosliceBaseChangePreservation` との同時 import も監査で成功。衝突は解消済み。
 
 ### 残り（依存順、見積もり）
 - 指定底変換同型の合成則と、共同 Hom 単位の固定始点制限の照合（4〜8 時間）。
@@ -61,6 +62,7 @@
 - `sectionBaseChangeCompositeRealizationIso_eq`・`jointRealizationIso_precompose`
 - `jointRealizationIso_reindex`・`functorIsoCurry_precompose_first`
 - `relativeSectionBaseChangeRealizationIso_reindex`・`relativeSectionDiagramInfinityBaseChangeIso_reindex`
+- `sectionBaseChangeCompRealizationIso`・`relativeSectionBaseChangeRealizationIso_comp`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -83,13 +85,12 @@
 - `YonedaEvaluationJointSource` も固定対象での比較だけで、全二変数の同型ではない。
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
-### 次の一手
+### 第 II 段／R の再開手順（現在は実行しない）
 - 全比較データと指定転置後同型の添字制限を単体添字関手へ特殊化する。
 - 端点正規化を介して単体切断比較の合成へ移し、初頂点回収と
   前合成の忠実性で指定 straightening 底変換同型の合成を降下する。
 - 標準 pullback 比較の分類像と節の共同標準比較を全図式の Hom として照合する。
-- 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
-  straightening 同型で証明する。Supply 内で証明を進め、供給元・分担の変更が必要ならユーザー経由で提案する。
+- 下記の合成則を同じ実 pullback 比較と同じ指定 straightening 同型で証明する。
 - `homWeightYonedaUnit_heq_curry` と一般の curry 評価式を接続する。
   具体的な評価後の異種等式への直接適用は kernel timeout を起こすため、
   大きな端点の展開を避ける表示で接続する（未検証宣言は残していない）。
@@ -99,10 +100,10 @@
   実左 Kan 比較の各評価での可逆性から全比較の可逆性へ進む。
 - 完成した全自然 end 錐族を `isKappaCompact_functorVertex_of_endFamily` に渡す。
 
-## 設計：指定底変換の合成則（Supply 内で進行中）
+## 保留設計：指定底変換の合成則（第 II 段／R）
 
 P-12 の要求する全自然な比較は、選んだ分類同型を保持する必要がある。
-未接続部分を次の合成則に切り分け、ユーザーの続行指示により Supply 内で証明中。
+未接続部分を次の合成則に切り分けた。ユーザー指示により第 II 段／R へ保留。
 所有外の straightening 実装は変更しない。分担変更が必要な提案はユーザー経由とする。
 
 `U = SSet.uliftFunctor`、`St(p) = leftStraighteningInfinityDiagram p`、

@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.F2.Presentable.Supply.All
+import SerrePositivity.InfinityCategories.F2.Presentable.CosliceBaseChangePreservation
 import Lean.Util.CollectAxioms
 
 /-!
@@ -6,6 +7,7 @@ import Lean.Util.CollectAxioms
 方針：宣言の所属モジュールを調べ、再帰的な公理依存を検査する。
 規約：許す公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：Supply.All の対象ビルド後に lake env lean で実行する。
+CosliceBaseChangePreservation も同時 import し、局所 instance 名の衝突を検出する。
 -/
 
 open Lean in
@@ -180,3 +182,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoTranspose_postcomp_pre
 #check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionDiagramInfinityBaseChangeIso_normalized
 #check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionDiagramInfinityBaseChangeIso_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sectionBaseChangeCompRealizationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionBaseChangeRealizationIso_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceBaseChangeClassification_preservesKappaFilteredColimits

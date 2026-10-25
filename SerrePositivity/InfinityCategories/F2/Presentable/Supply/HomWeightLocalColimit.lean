@@ -22,12 +22,14 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 open HomotopyLimits Ind
 
-local instance {A C : SSet.{u}} [Quasicategory C] (F : A ⟶ C) (c : C _⦋0⦌) :
+local instance supplyHomWeightLocalColimit_projectionRightFibration
+    {A C : SSet.{u}} [Quasicategory C] (F : A ⟶ C) (c : C _⦋0⦌) :
     RightFibration (leftKanProjection F c) :=
   ⟨rightFibrations.pullback_fst _ _ (RightFibration.mem (p :=
     sliceOverProjection (SSet.yonedaEquiv.symm c)))⟩
 
-local instance {A C : SSet.{u}} [Quasicategory A] [Quasicategory C]
+local instance supplyHomWeightLocalColimit_shapeQuasicategory
+    {A C : SSet.{u}} [Quasicategory A] [Quasicategory C]
     (F : A ⟶ C) (c : C _⦋0⦌) : Quasicategory (leftKanShape F c) :=
   quasicategory_of_innerFibration (leftKanProjection F c)
 

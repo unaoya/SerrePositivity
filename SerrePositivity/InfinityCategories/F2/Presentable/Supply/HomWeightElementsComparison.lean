@@ -25,9 +25,11 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 open HomotopyLimits
 
-local instance : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor
+local instance supplyHomWeightElementsComparison_opEquivalence
+    : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor
 
-local instance {A C : SSet.{u}} [Quasicategory C] (F : A ⟶ C) (c : C _⦋0⦌) :
+local instance supplyHomWeightElementsComparison_projectionRightFibration
+    {A C : SSet.{u}} [Quasicategory C] (F : A ⟶ C) (c : C _⦋0⦌) :
     RightFibration (leftKanProjection F c) :=
   ⟨rightFibrations.pullback_fst _ _ (RightFibration.mem (p :=
     sliceOverProjection (SSet.yonedaEquiv.symm c)))⟩

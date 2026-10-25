@@ -21,10 +21,12 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
-local instance {A : SSet.{u}} [Quasicategory A] : Quasicategory (A.op ⊗ A) :=
+local instance supplyEndSectionsRelativeHom_productQuasicategory
+    {A : SSet.{u}} [Quasicategory A] : Quasicategory (A.op ⊗ A) :=
   quasicategory_of_innerFibration (fst A.op A)
 
-local instance {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
+local instance supplyEndSectionsRelativeHom_sectionsKanComplex
+    {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
     KanComplex (HomotopyLimits.simplicialSections (functorEndProjection F G)) :=
   HomotopyLimits.simplicialSections_kanComplex _
 

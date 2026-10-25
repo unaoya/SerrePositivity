@@ -25,7 +25,8 @@ variable {A C : SSet.{u}} [Quasicategory A] [Quasicategory C]
 local notation "sA" => sliceUnderProjection (SSet.yonedaEquiv.symm a)
 local notation "sC" => sliceUnderProjection (SSet.yonedaEquiv.symm a ≫ F)
 
-local instance {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+local instance supplyCosliceLeftKanHomUniversal_pullbackLeftFibration
+    {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
     LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 

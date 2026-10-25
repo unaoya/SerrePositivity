@@ -21,7 +21,8 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 open HomotopyLimits
 
-local instance {A : SSet.{u}} [Quasicategory A] : Quasicategory (A.op ⊗ A) :=
+local instance supplyHomWeightYonedaUnit_productQuasicategory
+    {A : SSet.{u}} [Quasicategory A] : Quasicategory (A.op ⊗ A) :=
   quasicategory_of_innerFibration (CartesianMonoidalCategory.fst A.op A)
 
 /-- 概要：全共同図式間の射を curry した全図式間の射へ移す。

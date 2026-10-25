@@ -19,7 +19,8 @@ open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
-local instance {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
+local instance supplyLeftClassificationBaseChangeHom_pullbackLeftFibration
+    {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) :
     LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 

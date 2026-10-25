@@ -21,7 +21,8 @@ open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SS
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
-local instance {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
+local instance supplyEndSectionsYonedaModel_sectionsKanComplex
+    {A C : SSet.{u}} [Quasicategory C] (F G : A ⟶ C) :
     KanComplex (HomotopyLimits.simplicialSections (functorEndProjection F G)) :=
   HomotopyLimits.simplicialSections_kanComplex _
 
