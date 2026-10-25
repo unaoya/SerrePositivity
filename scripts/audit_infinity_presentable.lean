@@ -784,3 +784,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeCocone_edge_extension
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeJoin_edge_extension
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_smallCoproduct
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_preservedRealizations
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_simplex_of_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_twistedArrow

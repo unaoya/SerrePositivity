@@ -399,3 +399,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialEdgeSi
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialSimplexGluing
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialEdgeDiagram
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeCoconeEdgeExtension
+public import SerrePositivity.InfinityCategories.F2.Presentable.PreservedColimitGeneration
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallTwistedArrowShapes

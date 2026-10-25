@@ -2,7 +2,7 @@
 
 > **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本。
 > P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読する。
-> 所有：`F2/Presentable/`（P-f の `Localization/`・P-d の `Duality/` を除く）、`HomotopyLimits/`。
+> 所有：`F2/Presentable/`（P-f の `Localization/`・P-d の `Duality/`・P-s の `Supply/` を除く）、`HomotopyLimits/`。
 > 集約：`SerrePositivity/InfinityCategories/F2/Presentable.lean`、`HomotopyLimits.lean`。
 
 ## 引き継ぎ（2026-10-24）
@@ -32,7 +32,7 @@
 1. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
    Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
 2. P-1 f：Bousfield 局所化の存在（HTT 5.5.4.15）は P-f が `F2/Presentable/Localization/` で並行。
-   P は同ディレクトリを編集せず e5 → e7 → e8 に集中し、e8 では Duality/ も含めて集約・監査する。
+   P は同ディレクトリを編集せず e5 → e7 → e8 に集中し、e8 では Duality/・Supply/ も含めて集約・監査する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -93,10 +93,10 @@
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
 - e5 は Ind-S へ内ホーン充填閉包の非退化単体濃度評価をユーザー経由で依頼済み。任意の μ-small 試験形状への拡張に使う。
-- e5 の F1B 指定同型持ち上げ依頼は取り下げ。P-11（有限余極限と小余積からの全小余極限）・P-12（小図式の各点 compact 性）は P-f 向け優先供給。
+- P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- なし。
+- `RelativeSimplexEdgeExtension`：e5 の基底上の有限全単体延長を対象ビルド中。
 
 ### 次の一手
 - e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型と指定可算辺列の coherent 実現を使い、基底上の相対交互構成から filtered 生成表示へ進む。
@@ -154,7 +154,7 @@
 - [ ] e5. 引き戻しの presentable 性。
 - [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。P-d へ分離（14:44 承認）、`Duality/` は読み取り専用。
 - [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
-- [ ] e8. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
+- [ ] e8. Duality/・Supply/ を含む集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-6 三段目
 
