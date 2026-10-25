@@ -1,4 +1,8 @@
 import SerrePositivity.InfinityCategories.F2.Ind
+import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily
+import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitConeFamily
+import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
+import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.cylinderEvaluationSwitch
@@ -2197,3 +2201,30 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_has_singleFilteredDiagramPresentation
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_has_singleFilteredDiagramPresentation
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indYoneda_finiteColimit_coconeFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indYoneda_finiteColimit_coconeFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_yoneda_finiteLimit_coneFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_yoneda_finiteLimit_coneFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_indFunctor_kappaFiltered_colimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_indFunctor_kappaFiltered_colimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFullConeLift
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFullConeLift
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFullConeLift_inclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFullConeLift_inclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_isLimit_of_inclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_isLimit_of_inclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_filteredLimitCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_filteredLimitCone_isLimit
+
+#check SerrePositivity.InfinityCategories.F2.IsPointwiseColimitCone.postcompose
+#print axioms SerrePositivity.InfinityCategories.F2.IsPointwiseColimitCone.postcompose
+
+#check SerrePositivity.InfinityCategories.F2.functorVertexCone_postcompose_isLimit_iff
+#print axioms SerrePositivity.InfinityCategories.F2.functorVertexCone_postcompose_isLimit_iff
