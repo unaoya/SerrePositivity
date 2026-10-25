@@ -33275,3 +33275,63 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor_inclusion
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerTriangle_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerTriangle_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerTriangle_projection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerTriangle_projection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerTriangle_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerTriangle_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerTriangle_projection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerTriangle_projection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerHom_maximal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerHom_maximal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_maximal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_maximal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullTargetComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullTargetComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_target
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_target
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_target
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionNullFactor_target
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerComposite_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerComposite_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroCornerNullFactor_hom
