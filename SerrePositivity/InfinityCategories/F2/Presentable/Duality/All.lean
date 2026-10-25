@@ -51,6 +51,18 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.Precompo
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUniversalUnits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitFiberComparison
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.AdjointHomOneFormula
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionIdentityEvaluation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.TransposeHomEvaluation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionUnitEvaluation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionSourceEvaluation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionUnitComponent
+
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。

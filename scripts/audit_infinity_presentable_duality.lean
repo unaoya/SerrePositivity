@@ -142,3 +142,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitCosliceComparison_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitCoslice_hasInitial
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftFiberToCoslice
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_formula
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_identity
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeIdentity_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposePre_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeHomEquiv_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTargetEquiv_unit_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionSourceEquiv_unit_evaluate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionAdjunction_unitComponent_identity

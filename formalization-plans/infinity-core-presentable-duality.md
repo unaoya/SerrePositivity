@@ -22,7 +22,7 @@
 - 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
   両局所射影は Kan fibration。右射影は trivial Kan fibration・QCat 同値として公開済み。
   左射影の同値性と全 Pr 上の対応 quasicategory はまだ未構成。
-- 最新の検証済み専用集約は8,555 jobs 成功、専用監査412宣言は標準3公理のみ。
+- 最新の検証済み専用集約は8,561 jobs 成功、専用監査430宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -56,6 +56,7 @@
 - `adjointUnitRightMappingEquivalence`（二対象間の局所写像空間の同値）
 - `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
 - `precompositionTransposeEquiv`、`precompositionCorrespondence`、`precompositionAdjunction`
+- `precompositionAdjunction_unitComponent_identity`（元の指定単位の回収）
 - `leftUniversalUnitSpace_isContractibleKan`、`leftUnitCosliceComparison_isQCatEquivalence`
 - `adjointUnitLeftFiberToCoslice`
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
@@ -64,7 +65,7 @@
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,911 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,917 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
@@ -81,7 +82,13 @@
   （全パラメータ自然性と `precompositionAdjunction` による全 QCat 随伴）。
 - 検証済み：`LeftUniversalUnits.lean`（固定左の普遍単位空間の可縮性）。
 - 検証済み：`LeftUnitFiberComparison.lean`（元の左ファイバーから固定左 coslice への比較）。
-- 未検証：`AdjointHomOneFormula.lean`（元の単位による公式。専用集約にはまだ含めない）。
+- 検証済み：`AdjointHomOneFormula.lean`・`PrecompositionIdentityEvaluation.lean`
+  （元の単位による Hom₁ 公式と恒等関手での評価）。
+- 検証済み：`TransposeHomEvaluation.lean`・`PrecompositionUnitEvaluation.lean`・
+  `PrecompositionSourceEvaluation.lean`・`PrecompositionUnitComponent.lean`。
+  `precompositionAdjunction_unitComponent_identity` は元の指定単位を厳密に回収する。
+- 未検証：`LeftUnitData.lean`・`LeftUnitInvariance.lean`・`LeftUnitVertices.lean`
+  （固定左 coslice の単位と右関手の表示・不変性・指定随伴の頂点）。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -98,7 +105,7 @@
 
 ### 次の一手
 - 前合成の全 QCat 随伴 `precompositionAdjunction` と固定左の普遍単位空間は検証済み。
-  前合成随伴の単位を恒等関手で評価した成分と元の単位を同定し、
+  恒等関手での単位成分と元の単位の一致まで検証済み。
   指定単位条件と左 coslice の始対象性を接続する。
   元の左ファイバーとの同型・可縮性と左射影の同値性はこれから。
 - その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
