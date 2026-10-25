@@ -103,7 +103,7 @@
 - 停止用検証は全て終端0：`/tmp/d-stop-target.log`（8722 jobs）、`/tmp/d-stop-aggregate.log`（11358 jobs）、`/tmp/d-stop-signatures.log`（43明示署名、ModelCategory 仮定なし）、`/tmp/d-stop-derived-audit-final.log`（22104宣言／2522モジュール）、`/tmp/d-stop-stable-audit-final.log`（23219宣言／2792モジュール）。許容三公理のみ、追加11ソースに警告なし。初回監査はビルド中の共有 Completion.olean 不在で失敗したが、集約完了後の再監査が成功。旧61101・61368は handle 不在、停止用実行も全終了。共有生成物不在を避けるため次チャットでも集約の終端を確認してから全体監査を開始する。他レーンは変更しない。
 
 ### 次の一手
-- HEAD 集約・両全体監査は復旧済み。異なる提示の二項／可算直和の葉監査を保存し、D-18 を集約へ接続する。任意標的閉射の係数をκ-small源へ取り込む精密化が cone の核心として残る。D-17 は K-S•-S の公開分離が届き次第 import を差し替える。D-16 の追加宇宙局所化は Ind-S (4) 待ち。
+- HEAD 集約・両全体監査は復旧済み。異なる提示の二項／可算直和の葉監査を保存し、D-18 を集約へ接続する。任意標的閉射の係数をκ-small源へ取り込む精密化が cone の核心として残る。D-17 は所有の thick 生成判定で完成し、K-S•-S の合成入口の供給も受領したが新規依存は不要。D-16 の追加宇宙局所化は明示入力のまま。Ind-S (4) の IsLocalization.of_ulift は降下のみで、一般の持ち上げは未供給。直接の宇宙多相再証明の可否は c′ 判定時に評価する。
 - 第2チャットの D-12・D-8 b は完了・保存・両全体監査済み。D-13 は `fefab5a7c`、[x] 1（標準単位と全 coherent 図式）・[x] 2（元の prism の全パラメーター・端点輸送付き退化表示）・[x] 3（最小入口・24署名・集約11,073 jobs・保存）・[x] 4（両全体監査・保存報告：Derived 22,406宣言／2,574モジュール、Stable 23,468／2,843、許容三公理のみ）。入口 `Derived.DGPinchedCompositionUnitLaws` の `dgPinchedCompositionFamilyPrism_first_unit`／`dgPinchedCompositionFamilyPrism_second_unit_val`、全図式は `dgCoherentCompositionSimplex_first_unit`／`dgCoherentCompositionSimplex_second_unit_eq_map`。Small 不要。D-9 の K-B c5 向け実小 dg 核・同じ平坦 cone と Σ の屋根側は `61516c824` で供給済み（`Derived.ResolvedDGQuotientFlatKernel` の `resolvedDGQuotientFlatKernel`／`resolvedDGQuotientFlatKernelInclusion`／`resolvedDGQuotientFlatKernel_isStableVerdierSequence`／`resolvedDGQuotientProjection_eq_nerve`／`resolvedDGQuotientFlatKernel_roof`、Small・Hom K-flat・安定性も公開）。K-B の元の束・右辺への直接適用と両全体監査（Derived 22,368／2,570、Stable 23,430／2,839）成功。固定 ν の接続は Sp、元の Perf・P 照合は K-B 所有。既存宣言は不変、新名の dg 最小入口へ置く。D-8 c・d・e は未着手。
 - D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`。実 `ExcisionSquareGrid` は任意の元の四角形への厳密制限と二段階の native 左 Kan 局所余極限を持つ。比較格子の全六面の押し出し性、全単体の共有辺四式、元の指定零頂点二式は `187b42df0` までに統合・両全体監査済み。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
 - D-8 b は31宣言の試作を再現し7モジュールへ分割、同じ代表系の `dgKappaClosedProjectiveObjects_isDGPretriangulated` まで本体統合・集約・両全体監査・保存完了。次の通常工程 c は全 Hom κ-compact 性を `dgKappaClosedProjectiveObjects_property` の零・shift・二項直和・cone・可算直和・sphere-free 基底・perfect 代表の七入力へ供給する。d の κ未満 cell／retract 代表化による全被覆と併せ DGKappaConeInput を構成する。ordinary compact/perfect で代用しない。D-13 と D-9 の K-B 分を先行し、c の前の模型評価は本計画「D-8 c 前の厳密関手性評価」を参照。16時間試作は採用済み、成功／上限時の分岐は本計画の試作節に従う。K-7 ファイルは読み取り専用。
@@ -185,8 +185,12 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 - 共通提示・b の橋：逆再添字→評価は元の恒等 dg 関手と全 Hom 上で等しい。各成分包含→共通評価は元の arrow と厳密一致。精密化 seed の実延長の合成を元の実評価へホモトピー同型で戻す一般比較も対象成功。`dgModuleFamily_isDGPretriangulated_of_homotopy_cones` は零・実 shift 同型・実評価の任意 cone のホモトピー被覆から b を適用でき、厳密 cone 値の一致は不要。新規6本18宣言の葉監査は許容三公理のみ。模型全体の任意閉射 cone 被覆は未供給で、ゲート3・5は未完。
 
+### D-17：元の dg 関手の thick 生成判定
+- `Derived/DGFunctorThickHomCriterion` の `dgFunctor_homQuasiIso_of_thickGenerators`：指定 G が modulePerfectOver = modulePerfect を満たし、G 間の元の全 Hom 写像が準同型なら同じ F の全 Hom が準同型。単一生成元版 `dgFunctor_homQuasiIso_of_singleThickGenerator`、独立な追加対象宇宙版 `dgUniverseLiftFunctor_homQuasiIso_of_thickGenerators`。所有 Morita の相対 Hom 帰納を生成集合へ一般化し、graph の射影的列との比較で接続した。前三角性を追加仮定にせず、S 構成本体への依存なし。対象2,818 jobs・新規3本8宣言の葉監査は許容三公理のみ。旧3本の未統合試作は使わない。集約接続は D-18 の監査後。
+
 ### D-18：実小 Perf の dg 前三角性
 - `Derived/SmallPerfectDGPretriangulated`（`93da034ac`）の `smallPerfectDGModuleOver_isDGPretriangulated`・`smallPerfectDGModuleOver_tria_isRepresentable`。指定 S の実小 Perf 評価核の完全忠実性、S-perfect な像、小代表の H⁰ 比較の本質的全射性から tria の表現可能性を戻す。全 Perf の Small 仮定なし、既存宣言不変。対象4,453 jobs・新規3本30宣言の葉監査は許容三公理のみ。集約未接続。
+- 補足入口 `Derived/DGPretriangulatedQuasiEquivalenceForward` の `isDGPretriangulated_of_quasiEquivalence_forward` と `dgDerivedRestriction_finiteCell_of_quasiEquivalence`。実導来制限の finite-cell 保存を代表から帰納し、同じ余単位で前三角性を移す。対象4,237 jobs・2宣言の葉監査は許容三公理のみ。
 
 ### D-15：全加群実分解の準同型検出
 
