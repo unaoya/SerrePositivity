@@ -666,3 +666,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.vertexIso_small
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallFixedVertexMaps
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isKappaAccessibleFunctor_of_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackVertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackVertexCandidate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateIndex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateCategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateInclusion_isFullyFaithful

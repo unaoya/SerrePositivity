@@ -92,10 +92,11 @@
   P の反映移送と小さい Hom から、d2・d4・d5 を無条件に接続した。
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
-- b12e99858 復旧後の HEAD に対する両集約・両公理監査は完了し、所有 import 閉包は復旧済み。
+- b12e99858 復旧後の所有 import 閉包は復旧済み。
+- e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
 
 ### 未コミット
-- e5 の `PullbackVertexCandidates` は頂点の持ち上げを対象検証中。
+- `PullbackCosliceComparison` は全余錐比較を構成中。候補族・小さい充満模型・成分の compact 性は集約・監査済み。
 
 ### 次の一手
 - e5 は Hom・同型型の小ささと引き戻しの固定頂点小ささ・filtered 保存判定を検証済み。小さい候補族の生成性へ進む。

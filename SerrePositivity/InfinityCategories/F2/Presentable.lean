@@ -323,3 +323,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PiPresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.AdjointFunctorTheorem
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocallySmallHomTypes
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackAccessibilityDetection
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackVertexCandidates
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateFamily
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateModel
