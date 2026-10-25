@@ -1,10 +1,10 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 14:22 JST）
+## 引き継ぎ（2026-10-25 18:13 JST）
 
 - 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
-- 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp は import しない。
-- 順序：(5) の供給、続いて (4) の順方向。計画正本は本ファイル。
+- 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp・EInfinity は import しない。
+- 今回：(6) E2 向け弱変形による局所化源の移送。計画正本は本ファイル。
   `infinity-core-F1.md` は Ind 所有なので編集しない。
 - (5)：`d4062a19f` で L3 指定型の全族写像・厳密な底・全 fiber 回収を供給済み。
   同じ写像について指定点の値照合から fiber 内の頂点同型を反映する公開補題も供給済み。
@@ -12,9 +12,14 @@
 - (4)：`5686de2be` で内ホーン閉包と小模型、`14923a0d5` で指定逆三角形の保持と
   大きい標的への延長を保存済み。境界・可逆 path の同じ小模型への因子化を接続し、
   `IsLocalization.ulift`・`isLocalization_ulift_iff` まで対象ビルドが通過。
-- 現在地：(4) 順方向と iff の公開型確認、葉公理・no-straightening 監査、
-  Core/F1B 全監査が全て通過。二段目 (4) 完了の規約で区切る。
-  K-B での具体的な恒等点接続は消費側の残件で、本レーンでは未検証。
+- 現在地：(6) 完了。本体・逆向き版の対象ビルド、要求型への直接適用、
+  追加葉24宣言の公理・禁止仮定・禁止依存監査、Core/F1/F1B 三監査が全て通過。
+- 主要宣言：`isLocalization_of_weakDeformation`・`isLocalization_of_weakDeformation_reverse`。
+- 依存と提供：(6) は Core/F1B の既存公開界面のみを使用し、E2-S (6) へ供給する。
+  他レーンの証明はコピーしない。既存 `isLocalization_of_deformation` は変更しない。
+- 未コミット：なし。既知の問題：なし。
+- 残り：(6) の供給残件なし。E2 の具体的な消費は E2 所有。
+- 次の一手：公開名をユーザーへ報告し、二段目 (6) 完了の規約で停止する。
 - 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
   以後のコミット本文には変更・検証・残件の実施記録を書く。
 
@@ -123,3 +128,33 @@ Core 全監査、F1B 全監査（延長三葉まで）も通過。
 最終検証：UniverseAscent 対象ビルド 1680 jobs、元の要求型の直接適用例と iff、
 主定理の公理確認、最終 Core 8 宣言・F1B 13 宣言の葉監査、Core/F1B 全監査が通過。
 追加閉包は no-straightening、許容公理は標準三つのみ。F1 全監査は (5) 保存時に通過済み。
+
+## (6) 弱変形による局所化源の移送
+
+1. [x] 規約・既存の変形局所化界面・要求型を確認する。
+2. [x] 指定辺を保つ制限と、反転関手圏上の全変形同型を構成する。
+3. [x] 相互逆の制限同値を既存局所化の前合成同値へ合成し、本体を公開する。
+4. [x] 恒等射から合成への逆向き H・K の版を同じ葉で公開する。
+5. [x] 対象ビルド・三監査・公開型・禁止仮定を検査し、本文記録付きで保存する。
+
+要求：i : A ⟶ B、r : B ⟶ A が WA・WB を相互に保ち、
+H : Homotopy (r ≫ i) (𝟙 B)、K : Homotopy (i ≫ r) (𝟙 A) の点辺が WB・WA に入るとき、
+IsLocalization q WA → IsLocalization (r ≫ q) WB。H・K が逆向きの場合も供給する。
+源・標的の quasicategory 性、ModelCategory、局所化の追加存在仮定を加えない。
+配置：新規 `F1B/Localization/WeakDeformationSource`。no-straightening を維持する。
+
+公開名（namespace `SerrePositivity.InfinityCategories`）：
+
+- `isLocalization_of_weakDeformation`：合成から恒等射への H・K による移送。
+- `isLocalization_of_weakDeformation_reverse`：恒等射から合成への H・K による移送。
+- `WeakDeformationSource.restriction`・`restriction_ι`：反転関手全族の制限と厳密な包含照合。
+- `WeakDeformationSource.restrictionEquivalence`：全関手同型を保持する相互逆の制限同値。
+
+両主定理の引数は i・r・q・WA・WB・相互保存・H・K・点辺所属・hq。
+A・B・D の quasicategory 性は仮定しない。逆向き版は元のホモトピーを逆転させず、
+反転関手族上で作った全同型を逆にして同じ普遍性を使う。
+追加葉は `DeformationLocalization` のみを import し、既存定理を変更しない。
+
+検証：対象ビルド 1980 jobs、要求された両向きの型への直接適用、両主定理の公理確認、
+葉24宣言の公理・禁止依存・公開型中の ModelCategory 検査、Core/F1/F1B 三監査が通過。
+許容公理は propext・Classical.choice・Quot.sound のみ。F1B 監査登録は末尾追記のみ。

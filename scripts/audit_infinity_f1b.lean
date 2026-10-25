@@ -3152,3 +3152,36 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S localization universe ascent audit: {count} declarations."
+
+-- Ind-S (6): 弱変形による局所化源の移送。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.F1B.Localization.WeakDeformationSource },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    let s := mod.module.toString
+    if (s.toLower.splitOn "straightening").length != 1 then
+      throwError "Ind-S (6): forbidden straightening dependency: {mod.module}"
+    if #["SerrePositivity.KST", "SerrePositivity.EInfinity",
+        "SerrePositivity.InfinityCategories.F2"].any (s.startsWith ·) then
+      throwError "Ind-S (6): forbidden lane dependency: {mod.module}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless env.header.modules[idx.toNat]!.module ==
+        `SerrePositivity.InfinityCategories.F1B.Localization.WeakDeformationSource do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (6): unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  for name in #[`SerrePositivity.InfinityCategories.isLocalization_of_weakDeformation,
+      `SerrePositivity.InfinityCategories.isLocalization_of_weakDeformation_reverse] do
+    let info ← getConstInfo name
+    let bad := info.type.foldConsts false fun n found =>
+      found || (n.toString.splitOn "ModelCategory").length != 1
+    if bad then throwError "Ind-S (6): forbidden ModelCategory assumption: {name}"
+  setEnv saved
+  if count == 0 then throwError "Ind-S (6): no declarations audited"
+  logInfo m!"Ind-S weak deformation source audit passed: {count} declarations."
