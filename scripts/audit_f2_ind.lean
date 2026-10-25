@@ -2110,3 +2110,48 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_pushout_apex_isRightCofinal
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_cone_pushout_apex_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.emptyShapeTensorIsInitial
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.emptyShapeTensorIsInitial
+
+#check SerrePositivity.InfinityCategories.F2.Ind.emptyDiagramCommaFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.emptyDiagramCommaFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.emptyDiagramComma_hom_ext
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.emptyDiagramComma_hom_ext
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_emptyDiagramComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_emptyDiagramComma_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramComma_isKappaFiltered_of_empty_shape
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramComma_isKappaFiltered_of_empty_shape
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indEmpty_has_singleFilteredDiagramPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indEmpty_has_singleFilteredDiagramPresentation
+
+#check SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_eq_postcomp_transport
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_eq_postcomp_transport
+
+#check SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.pointSlicePostcomp_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.commaPostcomp_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.commaPostcomp_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_cocone_lift_of_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_cocone_lift_of_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_of_shape_isIso
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_of_shape_isIso
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_full_posetSubset
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_full_posetSubset
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_comp
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_comp
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_cone_pushout_fix_subshape
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_cone_pushout_fix_subshape

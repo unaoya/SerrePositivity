@@ -2693,3 +2693,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.CoconeShapeNaturali
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetMaximalCover
 
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationEdgeDetection
+
+public import SerrePositivity.InfinityCategories.F1.Simplicial.FinitePosetLowerSet
+
+public import SerrePositivity.InfinityCategories.F1.Simplicial.FullPosetSubsetNerveIso

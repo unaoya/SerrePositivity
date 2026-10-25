@@ -855,3 +855,23 @@ public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutF
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPushoutRightLift
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutApex
+
+public import SerrePositivity.InfinityCategories.F2.Ind.EmptyShapeTensor
+
+public import SerrePositivity.InfinityCategories.F2.Ind.EmptyDiagramCommaFamily
+
+public import SerrePositivity.InfinityCategories.F2.Ind.EmptyDiagramPresentation
+
+public import SerrePositivity.InfinityCategories.F2.Ind.PointSlicePostcompIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.CommaPostcompIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaRestrictionIso
+
+public import SerrePositivity.InfinityCategories.F2.Ind.IsoCoconeLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.FullPosetSubsetCoconeLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaCoconeLiftComp
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutRelativeLift
