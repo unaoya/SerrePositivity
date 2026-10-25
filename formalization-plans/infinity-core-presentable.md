@@ -29,10 +29,10 @@
 - P-1 d は完了。連続前層の表現可能性と随伴関手定理（5.5.2.9）を比較入力なしで提供する。
 
 ### 残り（依存順）
-1. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
-   Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
+1. P-1 e：e5 の fiber・accessible 引き戻しと e8 の集約・監査を完成する。
+   e6 の全体同値（5.5.3.4）と e7 の小極限（5.5.3.13）は保留（第 II 段／R、ユーザー判断）。
 2. P-1 f：Bousfield 局所化の存在（HTT 5.5.4.15）は P-f が `F2/Presentable/Localization/` で並行。
-   P は同ディレクトリを編集せず e5 → e7 → e8 に集中し、e8 では Duality/・Supply/ も含めて集約・監査する。
+   P は同ディレクトリを編集せず e5 → e8 に集中し、e8 では Duality/・Supply/ も含めて集約・監査する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -96,11 +96,11 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- なし。
+- `SourceCosliceRestrictedCocone.lean`：指定段上の全余錐比較を検証中。
 
 ### 次の一手
-- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい対象族の同型飽和の模型と、全 slice 交互比較から compact fiber 射への回収は構成済み（点射には filtered 保存のみ）。小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
-- e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
+- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端の coslice 内 compact 性と表示切断まで構成（点射には filtered 保存のみ）。小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
+- e6 の全体同値と e7 の小極限は保留（第 II 段／R）。e5 の fiber → accessible 一般版の後、e8 で P-1 を閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
@@ -152,8 +152,8 @@
 - [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
 - [x] e4. 積の presentable 性。
 - [ ] e5. 引き戻しの accessibility（5.4.6.6）と presentable 性（5.5.3.12）。点を第二脚とする fiber 版を先行可。
-- [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。P-d へ分離（14:44 承認）、`Duality/` は読み取り専用。
-- [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
+- [ ] e6. 保留（第 II 段／R）：Pr^L と Pr^R の全体同値（5.5.3.4）。`Duality/` は読み取り専用。
+- [ ] e7. 保留（第 II 段／R）：Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
 - [ ] e8. Duality/・Supply/ を含む集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-6 三段目
