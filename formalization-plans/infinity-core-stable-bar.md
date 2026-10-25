@@ -4,7 +4,7 @@
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（4011 jobs、121葉）。専用公理監査成功（1191宣言、標準三公理のみ）。
+- 所有 All のビルド成功（4031 jobs、141葉）。専用公理監査成功（1361宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
@@ -28,7 +28,9 @@
 - 全 HA と Leibniz 項を相殺し、回収した Hom の正次数の境界式と零次の閉性を証明。
 - 全面・退化と可換な実 pinched Hom 比較射と、全次数の単射性を構成（無条件版を併設）。
 - 線形成分から全混合 HA 単体・余錐族そのものを復元する外延性を証明。
-- 比較射の全射性・同値性と native 普遍性は未完。単射性だけで完了としない。
+- 任意の pinched 線形単体から逆構成の全 join 単体データと左右の制限を構成。
+- 比較射の像で全 HA 単体の回収を証明。任意入力の元の単体側の HA 和も因数分解済み。
+- 任意入力のパラメーター側の HA 和・全面の方程式・自然性と、同値性・native 普遍性は未完。
 - c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
 ### 残り（依存順）
 - 1. 工程A：変形 retract は D に移管。CoherentBar/Retract/ の新規葉は読み取り専用。
@@ -64,6 +66,7 @@
 - dgCoherentBarCoconeFamily_parameter_sum／FamilyHom_differential／FamilyHom_closed_zero。
 - dgCoherentBarCoconeHomSpaceComparison／CoconeHomSpaceComparisonUnconditional。
 - dgCoherentBarCoconeFamily_ext／CoconeHomSpaceComparison_injective。
+- dgCoherentBarInverseRawData／InverseRawData_recovery／Inverse_source_sum。
 ### 依存と提供
 - D の既存 Derived・DGNerve・DifferentialGraded と KST/NonConnective は読み取り専用。
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
@@ -71,7 +74,7 @@
 - MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
 - 編集所有は Derived/CoherentBar/（Retract/・StrictComparison/ を除く）、その All、専用監査、本計画のみ。
 ### 未コミット
-- なし（線形比較射と全次数単射性の検証済み10葉を限定保存）。
+- なし（逆構成の全単体データと元の単体側の HA 和の検証済み20葉を限定保存）。
 ### 既知の問題
 - native 余錐は構成済み。全写像空間の普遍性と filtered 評価比較は未完。
   代数的閉列同値や零次の普遍射を全 native 普遍性とは扱わない。
@@ -79,7 +82,7 @@
   安定自己写像の恒等への鎖ホモトピーだけで、正規化模型との retract とは扱わない。
 - MC 仮定付き API を保持し、公開 MC 定理を代入する無条件 API を併設。
 ### 次の一手
-- 任意の pinched 線形単体から、符号を戻した高次 Hom と全混合 HA 成分を作る。
+- 逆構成のパラメーター側の削除・切断・有限和を、線形単体の境界式へ同定する。
 - 同じ混合成分比較を用いて高次逆構成を束ね、写像空間の同値を結論する。
 
 ## 採用された設計追加（19:40）

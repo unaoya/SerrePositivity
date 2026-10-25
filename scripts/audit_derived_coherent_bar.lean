@@ -131,7 +131,27 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinSimplexDataExt,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearRecovery,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyExt]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyExt,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinMixedEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseMixedColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinRawGluing,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinRawCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinRawPureCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinRawRestrictions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseMixedRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseNativeFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawPureHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceSum]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
