@@ -6,7 +6,7 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。次は I-2 b と Ind-S の残る二件。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。次は I-2 b と Ind-S (4) の局所化の宇宙持ち上げ。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
@@ -37,10 +37,12 @@
 - I-2 a④ の共有下方部分の持ち上げ：`exists_diagramComma_cocone_pushout_fix_right` は既存部分から共有部分への厳密な指定余錐持ち上げを、右部分への指定余錐持ち上げへ移す。`diagramCommaEvaluation_cone_pushout_apex_isRightCofinal` はその明示条件と下方 comma の filtered 性から新頂点評価の共終性。下方閉部分を固定する有限半順序帰納で指定余錐持ち上げ条件を充足済み。
 - 供給経路（コーディネータ許可）：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`_hom_ι` と `Stable.FinitePosetNerve.finitePosetNerve_finite` は読み取り専用で直接 import 可。Ind → Stable は第 I 段終了時に R が移動。P の `nerveOrderIso` は循環するため import 不可。新名 `orderIsoNerveIso` を F1 に置く準重複を許可済み、第 I 段終了時に R が P 版を付け替える。
 - I-2 a④ の元の族への適用：`indConeSliceInterpolationData_nonempty` は元の q と指定下方余錐 G の二段持ち上げ。`indConeEndpointRaw`・`indConeLowerEndpointRaw` は同じ実終点 comma 内の両全族、`indConeEndpointRaw_boundary` はその全共有境界の厳密な一致。元の C 全図式と全 slice 円柱を保持する。
-- Ind-S（P-1 d 向け）：F1 の `LeftTransportRepresentation.transport_isQCatEquivalence_iff_invertible` は元の指定分類辺と輸送の同値性を判定。Compact の `spaceUniverseDiagram_reflects_invertibleEdge_native` は同じ宇宙変更の保守性、`spaceUniverseDiagram_reflects_small_isColimit` は元の小さい quasicategory 形状の全図式の指定余錐の余極限性の反映。表現可能前層の反対辺作用から Hom 前合成の局所性への接続と、小極限反映は未了。`isLimitCone_of_conservative_image` は保存された基準極限と辺の可逆性の反映から指定全錐の極限性を回収する。P の `spaceUniverse_covariantPointIso`・`spaceUniverseDiagram_map_isLimit`・`kanHom_covariantModelIso` と D の `functorIso_map_isInvertible_of_map` は所有集約閉包外。コピーせず、コーディネータ経由で閉包内の供給界面を依頼する。`RepresentableInversionDetectsLocality` 自体も P 所有であり、F1 はその本体に適合する一般の公開補題を供給する。二件の供給完了扱いにはしない。
+- Ind-S（P-1 d 向け供給済み）：`presheafInfinity_representableInversion_detects_locality` は P の `RepresentableInversionDetectsLocality (PresheafInfinity A)` の本体に直接適合する無条件の一方向。一般形は `representablePresheafInfinity_precompose_isQCatEquivalence_of_invertible`。Compact の `spaceUniverseDiagram_reflects_invertibleEdge_native` は保守性、`spaceUniverseDiagram_reflects_small_isColimit` は小さい quasicategory 形状の全指定余錐の余極限反映。`isLimitCone_of_conservative_image` は保存された基準極限から元の指定錐を反映。小極限反映そのものはコーディネータ指示で P 自身へ差し戻した。
+- Ind-S の許可された逆方向 import：D の `FunctorIsoConstantEdges`・`PinchedSliceCompositionRealization`・`ConstantEdgeFamily` を、各依存閉包外の新規 F1 葉から読み取り専用 import。既存の閉包内 F1 モジュールは変更しない。R が第 I 段終了時に Core/PinchedHom または F1B へ移す。P の局所性述語は F1 から import しない。
 - Ind-S（D-16 向け追加）：`IsLocalization.of_subset_invertedEdges` は一般の局所化で `W ⊆ W' ⊆ invertedEdges F` への移行、`IsLocalization.saturate` は反転辺全体への移行。反射・随伴を仮定しない。
 - I-2 a④ 完了：`exists_diagramComma_cocone_lift_poset_lowerSet` は任意の下方閉部分の指定全余錐を厳密に持ち上げる。空部分から `smallFinitePosetDiagramComma_isKappaFiltered`、弱下方部分から `diagramCommaEvaluation_finitePoset_isRightCofinal` を導く。`smallFinitePosetDiagramCommaCocone_isColimit` と `indFinitePoset_has_singleFilteredDiagramPresentation` は元の全図式 D を厳密な頂点とする同じ標準全余錐の余極限性と単一 κ-filtered 表示を公開。一般交換・安定性・任意の有限単体集合への表示一般化は主張しない。
-- 次の一手：I-2 b の有限余極限・有限極限。Ind-S の残る局所性判定と小極限反映は、コーディネータ経由の循環しない供給入口を確認して接続する。D 向け局所化飽和は公開済み。
+- Ind-S (4)（D-16 向け追加）：一般の `IsLocalization F W` の ULift 宇宙持ち上げ・可能なら降下と iff。既存の初頂点写像の専用定理を一般の場合の証明とは扱わない。反転辺集合・全反転関手圏・同値の宇宙移送を接続する工程は未了。
+- 次の一手：Ind-S (4) の局所化の宇宙持ち上げを調べ、I-2 b の有限余極限・有限極限へ進む。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

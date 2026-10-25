@@ -2701,3 +2701,15 @@ public import SerrePositivity.InfinityCategories.F1.Simplicial.FullPosetSubsetNe
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetSubsetPointRemoval
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.OrderIsoNerve
+
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.ClassifierTransportInversion
+
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableInversionTransport
+
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PinchedSlicePrismTransportIso
+
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PinchedPrecompositionPrism
+
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PinchedSliceTransportReflection
+
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableInversionLocality
