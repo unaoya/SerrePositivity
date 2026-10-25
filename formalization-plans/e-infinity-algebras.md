@@ -82,7 +82,7 @@
   `algebraEmbeddingForgetIso`・`disc_forget_iff`・`underlyingUnit_hom` が実 U・離散性・単位の比較。`BSLimitConeDataCAlg.underlying_isLimit`・`forget_pullback` が任意 coherent 極限保存を代入する。`PerfectoidizationInterfaceCAlg.toE3` と `nonempty_e3_of_cAlg` が既存 G1 への系。
   既存 `BSLimitConeData` は非普遍的な比較データだけを再利用し、D(R) の極限性・excision は追加仮定しない。既存 Inputs の一件の存在入力は import・編集せず、引用の述べ直し先の型とその下流への証明済みの還元を提供する。具体的 prismatic 構成の存在証明を完了したとは扱わない。
 - **E2-S の供給**：`AlexanderWhitney/CochainComonoid` の `cochainComon`・`cochainComonMap`・`cochainComonFunctor`・`simplexCochainComonFunctor`。既存の AW 三律・自然性から共変な余代数関手を束ね、底の複体・対角・余単位・射・全関手を定義上の等式で照合する。Sp K-9 β6 f4 向け。反変化・双対化は Sp 側。供給後は停止。
-- **E2-S (2) の供給**：`AlexanderWhitney/SimplexCounitContraction`。標準単体の AW 余単位と既存収縮の順射を照合し、元の射の実ホモトピー同値と零単体での IsIso を提供する。例外指示により対象ビルド・新宣言の公理確認だけで先行保存し、集約・全監査は Ind の F1/Universe コミット完了の合図後に実施して追記コミットする。対象閉包の未保存依存は零。
+- **E2-S (2) の供給**：`AlexanderWhitney/SimplexCounitContraction`。標準単体の AW 余単位と既存収縮の順射を照合し、元の射の実ホモトピー同値と零単体での IsIso を提供する。対象ビルド・新宣言の公理確認・集約ビルド・全公理監査まで完了。閉包の未保存依存は零。供給完了により E2-S (2) は停止。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
   `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。
