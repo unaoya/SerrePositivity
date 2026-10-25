@@ -9,6 +9,13 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumPiZero,
+    `SerrePositivity.KST.LocalizingInvariants.FiberDiagramVertexEvaluation,
+    `SerrePositivity.KST.LocalizingInvariants.NativeFiberBoundaryIso,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumLoopFiberDiagram,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumLoopBoundaryIso,
+    `SerrePositivity.KST.LocalizingInvariants.SpectrumNativeLoopPi,
+
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPathCone,
     `SerrePositivity.KST.LocalizingInvariants.DGSquareZeroRelativeConeEquiv,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellExtensionValue,

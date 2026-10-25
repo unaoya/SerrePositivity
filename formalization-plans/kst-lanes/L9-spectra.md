@@ -12,7 +12,7 @@
 - [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
 ### Sp-6 の追加依頼（β6 f と並行、区切りで対応）
-- [ ] r1. K-B K-7 d2：nativeLoop の整数 π 関手の次数移動自然同型と、実 loop／円 cotensor 比較との照合。
+- [x] r1. K-B K-7 d2：nativeLoop の整数 π 関手の次数移動自然同型と、実 loop／円 cotensor 比較との照合。
 - [x] r2. D2 G-1 e④：LaxInclusion.snd_kernel により第二射影の核と C 因子の本質像を照合。
 
 ### β6 f の三段目
@@ -67,6 +67,7 @@
 
 ### 主要宣言：一般局所化・補助成果（共通接頭辞 KST.LocalizingInvariants）
 
+- K-B K-7 d2 追加依頼：SpectrumHo.nativeLoopPiIso、nativeCirclePiIso、nativeLoopPiIso_circle_comparison。全整数 j の元の h Sp 上の π 関手の自然同型。実 loop 四角形の接続射の全図式自然性から構成し、公開の nativeLoopCircleFunctorIso に沿う円 cotensor 比較を保持する。
 - D2 追加依頼：LaxInclusion.snd_kernel（元の lax 第二射影の零対象性と exactFromC の本質像）。
 
 - Sp-6 の追加接続口：VerdierSquareDiagramIso、VerdierRectangleDiagramIso、RelativeVerdierRectangle.ofActualFaces、DGOdotVerdierRectangleComparisonInput.toStrict／toStrict_comparison_isPullback、DGKappaRelativeRoofComparisonInput.toStrict／toStrict_isPullback、exists_dgKappaRelativeRoof_of_fixedNull。
@@ -154,7 +155,7 @@
 - 供給待ちの間は β6 f→h を進め、供給到着時に最優先で s4 に戻る。s2・s3 の具体的入力（D の Perf 零性・実核等）が揃い次第 s5 で接続する。具体的入力は未供給として維持する。
 
 ### 次の一手
-- **次の一工程（β6 f4・Sp-6 r1）**：f1〜f3 の実全経路付き錐の同値と、元の二脚・class 経路を保つ connective 準同型反転後の比較を使う。導来写像空間の普遍性への接続は未完。区切りで nativeLoop の整数 π の自然性を供給し、s4 の実全族単位が到着したら最優先で戻る。
+- **次の一工程（β6 f4・Sp-6 r1）**：f1〜f3 の実全経路付き錐の同値と、元の二脚・class 経路を保つ connective 準同型反転後の比較を使う。導来写像空間の普遍性への接続は未完。nativeLoop の整数 π の自然同型と円 cotensor 比較は供給済み。s4 の実全族単位が到着したら最優先で戻る。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
