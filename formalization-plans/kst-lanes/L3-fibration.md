@@ -222,3 +222,17 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
       IsContractibleKan E ∧ ∀ old controlled : E _⦋0⦌,
         Nonempty (VertexIso old controlled))
 ```
+
+
+### 設計確認案：実商と Perf 完備化の K 比較を分ける（未採用）
+- D-9 の `resolvedDGQuotientFlatKernel_isStableVerdierSequence` は完備化前の native 実商への列。固定 ν の `IsVerdierSequence` は Perf 完備化後の射に通常の `IsLocalization` を要求する。今回の実核・P・Morita 照合は、この追加認証を含まない。
+- 提案：K-6 の完備化前の連結 fibration と、同じ実商の元の dg Yoneda 完備化の実 K 比較を分ける。K-7 の同じ cone について、後者の正次数 π 同型・零次 π 単射と構成済みの K 零性を使い、固定 K への実 fiber 比較の非負次数 π 同型を得る。K₀ 全射性・連結 K の Sp 引き戻し性は要求しない。
+- 固定 S・ν・K と同じ I・採用済み供給境界は不変。既存の条件付き相対屋根と Sp fiber 定理も保持する。完備化前の商の局所化は D・Sp、K の cofinality は K-S• 正本とし、K-B に同種 API を重ねない。
+- K-S• へコーディネータ経由で依頼したい型は下記。型だけを `/tmp/kb-idempotent-cofinality-request.lean` で検査済み。証明・存在の仮定を主経路へ追加しない。ユーザーへの設計確認時にこのチャットから中継を依頼する。
+```lean
+∀ (X Y : StableModel.{u}) (f : X ⟶ Y),
+  F2.Idempotent.IsIdempotentCompletion f.val →
+    (∀ j : ℤ, 0 < j → Function.Bijective
+      (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
+    Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0)
+```

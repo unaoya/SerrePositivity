@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionYonedaCompletion
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedYonedaEvaluation
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelYoneda
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelRepresentability
