@@ -50,3 +50,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.countableStageSimplexToComma_proj
 #check @SerrePositivity.InfinityCategories.F2.Presentable.countableFiniteStageCocone_isColimit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_iff_lastVertexRestriction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.oppositeSimplexRestriction_naturality
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableStageKanComparison_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_countableStage_leftKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_countable_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite

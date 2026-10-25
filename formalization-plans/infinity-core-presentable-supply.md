@@ -16,11 +16,14 @@
   可換性を構成した。幾何学的実現の添字の全単体の可算性も確認した。
 - 最後の頂点写像への制限による保存余極限の検出を、宇宙変更後に公開した。
 - Supply.All は 8217 jobs で成功。独立監査は 209 宣言、標準三公理のみ。
-- P-11 の全小形状の最終命題と P-12 の compact 判定は未供給。
+- 反対単体圏の局所化の自然性と有限段階の cofinal 比較を合成し、全局所
+  左 Kan 図式の保存余極限を構成した。
+- 可算形状を有限段階・可算列から閉じ、P の既存の実現版を再利用して
+  P-11 の全小形状の要求命題と任意の指定余錐の保存を証明した。
+- 最新 Supply.All は 8220 jobs で成功。独立監査は 223 宣言、標準三公理のみ。
+- P-12 の compact 判定は未供給。
 
 ### 残り（依存順、見積もり）
-- P-11：有限骨格と可算列による実現、その保存と全小形状への接続
-  （HTT 4.4.2.6–7、4〜8 時間）。
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
   （HTT 5.3.4.9、4〜8 時間）。
 - P-12：点ごと余極限・交換・compact 判定（HTT 5.3.4.9、2〜4 時間）。
@@ -45,6 +48,12 @@
 - `countableStageCommaEquivalence`、`countableStageSimplexToComma_proj`
 - `countableFiniteStageCocone_isColimit`
 - `hasPreservedColimit_iff_lastVertexRestriction`
+- `oppositeSimplexRestriction_naturality`
+- `countableStageKanComparison_projection`
+- `hasPreservedColimit_countableStage_leftKan`
+- `hasPreservedColimit_countable_of_coproducts_finite`
+- `hasPreservedColimit_of_coproducts_finite`
+- `preservesSmallColimits_of_coproducts_finite`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -55,27 +64,25 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（s11.3 前半の五葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
+- なし（P-11 最終接続の三葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
-- 可算列の供給だけでは P-11 は閉じない。有限部分形状の列を用いて幾何学的
-  実現の存在・保存を構成し、P の既存の実現版へ接続することが残る。
+- P-11 の全小形状の要求命題はビルド・独立監査済み。
 - P-12 の接続前の試作は `/tmp/p-s-TwistedArrowLimitContinuity.lean` に退避。
   未検証であり供給・集約・コミットに含めない。
 
 ### 次の一手
-- コンマ圏の比較と最後の頂点写像の自然性を結び、局所左 Kan 図式の
-  保存余極限を有限段階の保存余極限から得る。可算列の余極限と合成して
-  可算形状を閉じ、既存の実現版へ接続する。
+- P-12 の Fun の写像空間の end 表示について、既存の反変 Hom の
+  全自然な極限錐族と twisted arrow 分類の比較入口を確認する。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
 - [x] s11.1 保存余錐の既存入口と所有 import 閉包の確認。
 - [x] s11.2 可算列の余積・pushout 表示と指定余錐の保存。
-- [ ] s11.3 有限骨格から幾何学的実現の構成と保存。
-- [ ] s11.4 既存の実現版を再利用して要求された全小形状の入口を公開。
-- [ ] s11.5 Supply.All と独立公理監査、公開名報告。
+- [x] s11.3 有限骨格から幾何学的実現の構成と保存。
+- [x] s11.4 既存の実現版を再利用して要求された全小形状の入口を公開。
+- [x] s11.5 Supply.All と独立公理監査、公開名報告。
 
 ## P-12 三段目（HTT 5.3.4.9）
 

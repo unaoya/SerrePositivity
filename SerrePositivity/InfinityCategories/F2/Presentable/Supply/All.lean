@@ -19,6 +19,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.Countable
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CountableSimplexStages
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CountableStageComma
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LastVertexPrecomposition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.OppositeSimplexRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CountableStageKanComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。
