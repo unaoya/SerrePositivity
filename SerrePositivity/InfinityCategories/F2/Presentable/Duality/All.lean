@@ -134,9 +134,26 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairClas
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitPointedRestrictions
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairPointedRestrictionFibers
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairPointedRightRestrictionFibers
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitSharedPoint
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitUnstraightening
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairTransformationEvaluation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairCanonicalUnitPoint
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairEvaluatedTransport
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairHomFamilyFullyFaithful
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairDuality
+
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。
-規約：実単位の局所対応の両射影の QCat 同値を含み、全関手圏の対ごとの同値は構成中。全 Pr の同値は第 II 段。
+規約：局所単位射影と元の全関手圏の対ごとの QCat 同値を含む。全 Pr の同値は第 II 段。
 使われ方：P-d の専用ビルドと公理監査。
 -/
