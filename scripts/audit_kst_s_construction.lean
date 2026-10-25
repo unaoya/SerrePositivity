@@ -31949,3 +31949,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isExact
 #print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isExact
+
+#check @SerrePositivity.KST.SConstruction.dgKPerfectNativeCompositionIso
+#print axioms SerrePositivity.KST.SConstruction.dgKPerfectNativeCompositionIso
+
+#check @SerrePositivity.KST.SConstruction.dgKNativePerfectDownMapComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativePerfectDownMapComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeInputExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeInputExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeInputMapEvaluationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeInputMapEvaluationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeYonedaExtensionComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeYonedaExtensionComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueEvaluationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueEvaluationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeNuYonedaEvaluationComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeNuYonedaEvaluationComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeNuEvaluatedComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeNuEvaluatedComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeNuNaturality
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeNuNaturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelNuComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelNuComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionNuComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionNuComparison

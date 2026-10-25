@@ -2611,4 +2611,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNativeValue
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellVerdier
 
+public import SerrePositivity.KST.SConstruction.DGKNativeMapComparison
+
+public import SerrePositivity.KST.SConstruction.DGKNativeYonedaNaturality
+
+public import SerrePositivity.KST.SConstruction.DGKNativeNuNaturality
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNuComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
