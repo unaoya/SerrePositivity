@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - Ind I-2 e（13:17、c763f4ec6）を固定 ν 値の Indω へ接続済み。安定性のみ明示有限交換入力に条件付きで、最終公開入口 `ind_stableCompactGeneration_of_isStable`（13:47、d126810cf）を採用し、元の有限全存在の追加仮定を除去した。K-6 は引き続き未供給。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（127 モジュール・1428 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
+- NonConnective 集約・専用監査は成功（128 モジュール・1442 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -132,6 +132,7 @@
 - `DGSuspensionPerfectTransitionPi` は同じ実評価 Perf 比較と元の実零角を代入し、段別 I・P・Z と連結版 K-6 の非負次数比較に条件付きで、全非負次数の実隣接安定化・同じ実余錐への連結比較・元の SOA 連結 K 比較を供給する。任意整数 j と n≥(-j).toNat では、同じ実余錐の n 段の脚が π_j 同型であり、候補の π_j を元の n 回懸垂 K の π_(j+n) から群同型で比較する。`dgSuspensionPerfectCandidate_tailPiEquiv_succ` は、この段別表示が元の実隣接構造射を経ても同じ実余錐の脚を与えることを証明する。負群の消滅・段別入力の存在・無条件 K-6・全入力自然性は主張しない。
 - `DGKInputIndCompactGeneration` は元の固定 ν の冪等完備性から、同じ `Indω` の compact 生成同値・元の全 Yoneda への厳密包含式・compact 本質像・任意族の包含と逆射選択比較を供給する。`dgKInputStableCompactGeneration` は `StableSourceCompactGeneration` の最終入口を使い、正本の全頂点の filtered 生成表示も保持する。有限交換入力だけに条件付きで、K-B 側の有限全存在の局所設定も除去した。同じ生成同値は交換・有限全存在の証拠で選び直さない。
 - `DGKInputCompactNativeFamily` は元の `presentedPerfectDGNativeFamilyMap` の全 native Hom を宇宙移送し、同じ生成逆射・順射で compact 生成元間へ送る。同じ全族の包含後は元の ν 全族と元の Yoneda の合成へ厳密に戻り、元の各厳密 dg 射を同じ全族の頂点として回収する。固定二入力間の全パラメータ比較であり、全入力間の合成整合・構造辺 β の自然性・D-8 の実 κ-compact cone との比較は未完。`Indω` の通常 compact 生成と `(Indω C)^κ` の非可算 κ-compact cone を混同せず、d4 完了とは数えない。
+- `DGKInputCompactNativeComposition` は元の ν の通常関手の恒等・厳密合成保存を同じ生成同値の単位・余単位へ代入し、既存の全 native Hom 族の各元の dg 射について恒等・合成の全関手同型を与える。高次の合成整合・全入力の β 自然性や実 cone 比較を完成したとは数えない。
 - Sp 正本から供給済み（09:30、472ca0e29）の `SpectrumHo.nativeLoopPiIso` を d2 に代入済み。同じ実 loop／円 cotensor 比較との可換性は正本の `nativeLoopPiIso_circle_comparison` が保持する。d3 の無条件化は連結版 K-6 の証明に依存する。
 
 
