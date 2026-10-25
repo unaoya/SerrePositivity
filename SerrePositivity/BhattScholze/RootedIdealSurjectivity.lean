@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.BhattScholze.RootedExtension.RootedIdealSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedIdealSurjectivity
 
 /-! # 互換用の転送モジュール
 
 ## 概要
-このモジュールの本体は `SerrePositivity.BhattScholze.RootedExtension.RootedIdealSurjectivity` へ移した（BS-W1、2026-10-25）。
+このモジュールの本体は `SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedIdealSurjectivity` へ移した（BS-W1、2026-10-25）。
 
 ## 方針
 所有範囲外のファイル（root の集約や共有の監査）が旧名で import しているため、

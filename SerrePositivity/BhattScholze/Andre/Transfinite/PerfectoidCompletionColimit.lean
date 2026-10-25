@@ -2,12 +2,12 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
-public import SerrePositivity.BhattScholze.Prism.PerfectoidDistinguishedKernel
-public import SerrePositivity.BhattScholze.Prism.FontaineKernelNaturality
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidDistinguishedKernel
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineKernelNaturality
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
 public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
-public import SerrePositivity.BhattScholze.Delta.WittDelta
+public import SerrePositivity.BhattScholze.Delta.Perfect.WittDelta
 open SerrePositivity SerrePositivity.BhattScholze
 @[expose] public noncomputable section
 universe u

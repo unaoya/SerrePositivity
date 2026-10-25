@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaAdicLift
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicLift
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
 
 /-! # δ除算商の古典的(p,d)完備化

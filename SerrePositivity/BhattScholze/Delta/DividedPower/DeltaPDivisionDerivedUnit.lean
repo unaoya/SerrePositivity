@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Distinguished
+public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Jacobson
 

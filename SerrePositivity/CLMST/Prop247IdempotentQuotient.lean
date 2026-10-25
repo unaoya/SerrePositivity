@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.IdempotentAnnihilator
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
-public import SerrePositivity.BhattScholze.RootedExtension.CompatibleRoot.CompatibleRootFamilyCompletionPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyCompletionPerfectoid
 
 /-! # Prop 2.4.7：perfectoid 環の冪等元による直因子
 

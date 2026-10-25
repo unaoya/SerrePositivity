@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionIteratedRelations
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 

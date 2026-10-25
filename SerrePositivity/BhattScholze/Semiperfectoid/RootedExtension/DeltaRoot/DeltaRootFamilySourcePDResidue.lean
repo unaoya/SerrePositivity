@@ -1,0 +1,94 @@
+module
+
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourcePDReduction
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootFamilySourceQuotientFlat
+
+/-! # 元の係数環上の実(p,d)還元とraw残余商
+
+有限根族の実源商での比較を元の係数環へ渡す。一般Koszul還元や完備化後CFFは含まない。
+-/
+
+@[expose] public noncomputable section
+universe u
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+attribute [local instance] HasDerivedCategory.standard
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (d : A) (b : σ → A) {m : ℕ}
+local notation "P₀" => MvPolynomial σ A
+local notation "L₀" => RelativeFreeDeltaRing (R := P₀) σ
+local notation "E₀" => polynomialRankOneDeltaStructure σ D
+local notation "c₀" => deltaRootRelationFamily (p := p) b
+local notation "K₀" => Ideal.span {(p : L₀), MvPolynomial.C (MvPolynomial.C d)}
+local notation "Q₀" => L₀ ⧸ K₀
+local notation "I₀" => Ideal.span {(p : A), d}
+local notation "R₀" => A ⧸ I₀
+local notation "κ₀" => deltaRootSourceQuotientCoefficientMap (σ := σ) (p := p) d
+local notation "α₀" => deltaDivisionSourceMap (σ := σ) E₀ (MvPolynomial.C d)
+local notation "ψ₀" => RingHom.comp (Ideal.Quotient.mk K₀) α₀
+local notation "Res₀" => DeltaAdjoinDivisionResidue E₀ (MvPolynomial.C d) c₀
+local notation "Y₀" => CategoryTheory.Functor.obj
+  (boundedAboveDerivedBaseChange (Ideal.Quotient.mk I₀)) (DeltaRootSourceCoefficientObject d D b)
+local notation "MRes" => CategoryTheory.Functor.obj (ModuleCat.restrictScalars κ₀)
+  (ModuleCat.of Q₀ Res₀)
+
+/-- 元のA上の実根添加対象の実(p,d)還元と、作用を制限したraw商のsingle比較。 -/
+def deltaRootFamilySourceCoefficientPDResidueIso (s : Fin m ≃ σ)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    letI := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
+    letI : Module Q₀ Res₀ := Algebra.toModule
+    Y₀ ≅ boundedAboveDerivedSingleFunctor.obj MRes := by
+  letI := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
+  letI : Module Q₀ Res₀ := Algebra.toModule
+  exact deltaRootSourceCoefficientPDReductionIso d D b ≪≫
+    (boundedAboveDerivedRestrictScalars κ₀).mapIso
+      (deltaRootFamilySourceQuotientDerivedSingleIso D d b s hpA v hv) ≪≫
+    ObjectProperty.isoMk _ ((derivedRestrictScalarsSingleIso κ₀ 0).app (ModuleCat.of Q₀ Res₀))
+
+/-- 元のA上の実還元のH0と、標準係数作用を制限したraw商の加群同型。 -/
+def deltaRootFamilySourceCoefficientPDResidueH0Iso (s : Fin m ≃ σ)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    letI := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
+    letI : Module Q₀ Res₀ := Algebra.toModule
+    (DerivedCategory.homologyFunctor (ModuleCat R₀) 0).obj (Y₀).obj ≅ MRes := by
+  letI := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
+  letI : Module Q₀ Res₀ := Algebra.toModule
+  exact (DerivedCategory.homologyFunctor (ModuleCat R₀) 0).mapIso
+      (DerivedCategory.Minus.ι.mapIso
+        (deltaRootFamilySourceCoefficientPDResidueIso D d b s hpA v hv)) ≪≫
+    (realizedSingleH0Iso R₀).app MRes
+
+/-- 元のA上の実(p,d)還元の非零次数ホモロジーは零。 -/
+theorem deltaRootFamilySourceCoefficientPDResidue_homology_isZero (s : Fin m ≃ σ)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d)
+    (i : ℤ) (hi : i ≠ 0) :
+    IsZero ((DerivedCategory.homologyFunctor (ModuleCat R₀) i).obj (Y₀).obj) := by
+  let := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
+  let : Module Q₀ Res₀ := Algebra.toModule
+  exact (derivedSingleHomology_isZero MRes i hi).of_iso
+    ((DerivedCategory.homologyFunctor (ModuleCat R₀) i).mapIso
+      (DerivedCategory.Minus.ι.mapIso
+        (deltaRootFamilySourceCoefficientPDResidueIso D d b s hpA v hv)))
+
+/-- 元のA上の実(p,d)還元のH0は、実係数商A/(p,d)上忠実平坦。 -/
+theorem deltaRootFamilySourceCoefficientPDResidueH0_faithfullyFlat (s : Fin m ≃ σ)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    Module.FaithfullyFlat R₀
+      ((DerivedCategory.homologyFunctor (ModuleCat R₀) 0).obj (Y₀).obj) := by
+  let e : (DerivedCategory.homologyFunctor (ModuleCat R₀) 0).obj (Y₀).obj ≅
+      (ModuleCat.restrictScalars κ₀).obj
+        ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
+          (DeltaRootSourceQuotientDerived D d b).obj) :=
+    (DerivedCategory.homologyFunctor (ModuleCat R₀) 0).mapIso
+      (DerivedCategory.Minus.ι.mapIso (deltaRootSourceCoefficientPDReductionIso d D b)) ≪≫
+    (derivedRestrictScalarsHomologyIso κ₀ 0).app (DeltaRootSourceQuotientDerived D d b).obj
+  have := deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat
+    D d b s hpA v hv
+  exact Module.FaithfullyFlat.of_linearEquiv _ _ e.toLinearEquiv
+
+end SerrePositivity.BhattScholze

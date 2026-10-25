@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Free.PolynomialDelta
-public import SerrePositivity.BhattScholze.Delta.DeltaRankOne
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne
 
 /-! # rank 1変数を持つ補助多項式δ構造
 

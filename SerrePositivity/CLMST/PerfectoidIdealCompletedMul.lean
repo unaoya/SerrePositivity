@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.CLMST.PerfectoidIdealRoots
-public import SerrePositivity.BhattScholze.Results.SemiperfectoidSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidSurjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedQuotientMul
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidRingEquiv
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidRingEquiv
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 
 /-! # The actual perfectoid ideal quotient and its original completed multiplication -/

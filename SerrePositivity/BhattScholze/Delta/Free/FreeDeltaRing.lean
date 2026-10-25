@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaFrobenius
-public import SerrePositivity.BhattScholze.Delta.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
 public import Mathlib.Algebra.MvPolynomial.CommRing
 public import Mathlib.Data.ZMod.Basic
 public import Mathlib.Algebra.CharP.Quotient

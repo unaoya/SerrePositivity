@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceResidue
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionSourceCoefficientRightFactor
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceCoefficientRightFactor
 
 /-!
 # André E1・E2：モニック族の係数側の実導来剰余比較

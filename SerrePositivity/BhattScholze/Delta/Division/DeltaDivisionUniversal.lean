@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivision
-public import SerrePositivity.BhattScholze.Delta.DeltaTorsionReduction
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaTorsionReduction
 
 /-! # 正則なdの像へのδ除算の普遍性
 

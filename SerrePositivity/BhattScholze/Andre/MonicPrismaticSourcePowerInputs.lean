@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticCanonicalPowerResidue
-public import SerrePositivity.BhattScholze.Prism.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 
 /-!

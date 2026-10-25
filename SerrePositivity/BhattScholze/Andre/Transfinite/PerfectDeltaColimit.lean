@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaDirectLimit
-public import SerrePositivity.BhattScholze.Delta.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
 /-! # 完全 δ 環の余極限の完全性
 
 BS Lemma 3.9（著者版 pp.31–32）および Thm 7.14（p.61）の極限操作に用いる。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat
-public import SerrePositivity.BhattScholze.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
-public import SerrePositivity.BhattScholze.Delta.DeltaPDCompletion
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!
 # André E1・E2：raw モニック PD 環の δ 完全化への平坦性入力

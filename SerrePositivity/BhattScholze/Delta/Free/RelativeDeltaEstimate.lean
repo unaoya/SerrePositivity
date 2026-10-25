@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaRing
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.RingTheory.Ideal.Operations
 public import Mathlib.RingTheory.Ideal.Maps

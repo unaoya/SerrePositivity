@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueSolution
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWittCoefficientNaturality
-public import SerrePositivity.BhattScholze.Delta.DeltaWittJetComparison
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionIteratedRelations
+public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoefficientNaturality
+public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaWittJetComparison
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 public import Mathlib.RingTheory.Regular.Flat
 
 /-! # 具体的Witt解を用いるrawδ除算包からの通常環射

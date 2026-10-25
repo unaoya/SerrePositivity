@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.BhattScholze.Prism.FontaineCompletedTensorDiscrete
+public import SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.FontaineCompletedTensorDiscrete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorZero
 
 /-! # Discreteness and perfectoid H⁰ of the original completed tensor of perfectoid algebras -/

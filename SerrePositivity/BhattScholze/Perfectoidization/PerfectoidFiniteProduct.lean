@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Inputs.Perfectoidization
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidRingEquiv
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidRingEquiv
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
 public import Mathlib.RingTheory.Finiteness.Basic
 

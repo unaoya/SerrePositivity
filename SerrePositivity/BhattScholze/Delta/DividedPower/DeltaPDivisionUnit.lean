@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaPTorsionReduction
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaPTorsionReduction
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionClassicalCompletion
-public import SerrePositivity.BhattScholze.Delta.Distinguished
+public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison

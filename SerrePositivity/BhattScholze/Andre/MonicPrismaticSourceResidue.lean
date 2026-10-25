@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticFiniteResidueKoszul
-public import SerrePositivity.BhattScholze.RootedExtension.DeltaRoot.DeltaRootFamilySourceColimitTor
-public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionSourceResidueTensor
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootFamilySourceColimitTor
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaDivisionSourceResidueTensor
 
 /-!
 # André E1・E2：有限モニック族の実残余導来評価比較

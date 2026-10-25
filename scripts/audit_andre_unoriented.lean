@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.Andre.Unoriented
+import SerrePositivity.BhattScholze.Andre.Remark715.Unoriented
 import Mathlib.Util.AssertNoSorry
 
 /-!
@@ -52,9 +52,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.Unoriented.Category,
-    `SerrePositivity.BhattScholze.Andre.Unoriented.Initial,
-    `SerrePositivity.BhattScholze.Andre.Unoriented.SourceInitiality]
+    `SerrePositivity.BhattScholze.Andre.Remark715.Unoriented.Category,
+    `SerrePositivity.BhattScholze.Andre.Remark715.Unoriented.Initial,
+    `SerrePositivity.BhattScholze.Andre.Remark715.Unoriented.SourceInitiality]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

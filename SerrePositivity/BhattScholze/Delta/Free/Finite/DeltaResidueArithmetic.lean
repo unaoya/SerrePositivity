@@ -1,0 +1,53 @@
+module
+
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne
+public import SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
+
+/-! # B4-6：通常剰余射の下でのδ反復計算
+
+δは剰余環へ降りるとは仮定せず、源でδを計算してから環射で写す。
+既存のWitt自然性・δ冪の可除性・δ(p)の合同式を再利用する。
+-/
+
+@[expose] public noncomputable section
+universe u v
+namespace SerrePositivity.BhattScholze.DeltaStructure
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {B : Type v} [CommRing B]
+
+/-- pを消す任意の通常環射の下で、δ(p)は1となる。零終域も含む。 -/
+theorem map_delta_prime_of_zero (D : DeltaStructure p A) (q : A →+* B)
+    (hp : q (p : A) = 0) : q (D.delta (p : A)) = 1 := by
+  have hle : Ideal.span {(p : A)} ≤ RingHom.ker q :=
+    (Ideal.span_singleton_le_iff_mem _).mpr hp
+  have he := hle (D.delta_p_sub_one_mem)
+  change q (D.delta (p : A) - 1) = 0 at he
+  rw [map_sub, map_one, sub_eq_zero] at he
+  exact he
+
+/-- pを消す射の下でδ(x^p)は零。源のp正則性は不要。 -/
+theorem map_delta_pow_prime_of_zero (D : DeltaStructure p A) (q : A →+* B)
+    (hp : q (p : A) = 0) (x : A) : q (D.delta (x ^ p)) = 0 := by
+  obtain ⟨b, hb⟩ := D.p_mul_delta_dvd_delta_pow x
+  rw [hb, map_mul, map_mul, hp, zero_mul, zero_mul]
+
+/-- 左項が消える通常環射の下では、δの加法補正項も消える。 -/
+theorem map_delta_add_of_left_zero (D : DeltaStructure p A) (q : A →+* B)
+    (x y : A) (hx : q x = 0) : q (D.delta (x + y)) = q (D.delta x) + q (D.delta y) := by
+  exact wittTwoLift_map_delta_add_of_left_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q x y hx
+
+/-- 右項が消える場合のδ加法公式。 -/
+theorem map_delta_add_of_right_zero (D : DeltaStructure p A) (q : A →+* B)
+    (x y : A) (hy : q y = 0) : q (D.delta (x + y)) = q (D.delta x) + q (D.delta y) := by
+  exact wittTwoLift_map_delta_add_of_right_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q x y hy
+
+/-- pを消す通常環射の下でのδ積公式。 -/
+theorem map_delta_mul_of_prime_zero (D : DeltaStructure p A) (q : A →+* B)
+    (hp : q (p : A) = 0) (x y : A) :
+    q (D.delta (x * y)) = (q x) ^ p * q (D.delta y) + q (D.delta x) * (q y) ^ p := by
+  exact wittTwoLift_map_delta_mul_of_prime_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q hp x y
+
+end SerrePositivity.BhattScholze.DeltaStructure

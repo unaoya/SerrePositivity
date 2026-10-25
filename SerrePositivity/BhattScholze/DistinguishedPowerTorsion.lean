@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DistinguishedPowerTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion
 
 /-! # 互換用の転送モジュール
 
 ## 概要
-このモジュールの本体は `SerrePositivity.BhattScholze.Delta.DistinguishedPowerTorsion` へ移した（BS-W1、2026-10-25）。
+このモジュールの本体は `SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion` へ移した（BS-W1、2026-10-25）。
 
 ## 方針
 所有範囲外のファイル（root の集約や共有の監査）が旧名で import しているため、

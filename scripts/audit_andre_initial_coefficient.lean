@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.Andre.Unconditional.InitialCoefficient.RawResidue
+import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.RawResidue
 import Mathlib.Util.AssertNoSorry
 
 /-!
@@ -82,8 +82,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.Unconditional.InitialCoefficient.Comparison,
-    `SerrePositivity.BhattScholze.Andre.Unconditional.InitialCoefficient.RawResidue]
+    `SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.Comparison,
+    `SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.RawResidue]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

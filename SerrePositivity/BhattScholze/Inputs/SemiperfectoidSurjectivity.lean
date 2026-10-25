@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Results.SemiperfectoidSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidSurjectivity
 
 /-! # semiperfectoid全射性の証明済み互換入口
 

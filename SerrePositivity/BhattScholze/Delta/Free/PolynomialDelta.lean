@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
 public import Mathlib.Algebra.MvPolynomial.CommRing
 
 /-! # 変数のδ値を指定した多項式δ構造

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFactorialStable
-public import SerrePositivity.BhattScholze.Delta.DeltaSubring
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSubring
 
 /-! # 具体的階乗生成部分環のδ構造と分冪作用
 

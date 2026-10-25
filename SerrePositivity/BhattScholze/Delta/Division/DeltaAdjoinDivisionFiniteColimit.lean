@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionFiniteSystem
-public import SerrePositivity.BhattScholze.Delta.DeltaDirectLimit
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit
 
 /-! # 有限部分族raw包の環余極限と標準δ構造 -/
 

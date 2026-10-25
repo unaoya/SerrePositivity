@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.BhattScholze.Results.PerfectoidAlmost
+public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 
 /-! # 互換用の転送モジュール
 
 ## 概要
-このモジュールの本体は `SerrePositivity.BhattScholze.Results.PerfectoidAlmost` へ移した（BS-W1、2026-10-25）。
+このモジュールの本体は `SerrePositivity.BhattScholze.Almost.PerfectoidAlmost` へ移した（BS-W1、2026-10-25）。
 
 ## 方針
 所有範囲外のファイル（root の集約や共有の監査）が旧名で import しているため、

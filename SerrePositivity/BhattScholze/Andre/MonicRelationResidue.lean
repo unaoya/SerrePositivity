@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicRelation
-public import SerrePositivity.BhattScholze.RootedExtension.MonicPowerFamilyBaseQuotient
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.MonicPowerFamilyBaseQuotient
 
 /-!
 # André E1：係数商後のモニック関係の正則性

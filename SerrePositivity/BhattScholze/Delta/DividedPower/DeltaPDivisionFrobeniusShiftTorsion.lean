@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFrobeniusShift
-public import SerrePositivity.BhattScholze.Delta.DeltaPTorsionReduction
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaPTorsionReduction
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionClassicalCompletion
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionQuotient
 

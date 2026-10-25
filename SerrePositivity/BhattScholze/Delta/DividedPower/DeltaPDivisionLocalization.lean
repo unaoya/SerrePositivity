@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DeltaPTorsionReduction
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaPTorsionReduction
 
 /-! # p除算添加環のp局所化
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticCandidateComparison
-public import SerrePositivity.BhattScholze.Prism.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom
 
 /-!
 # André E1・E2：多項式 prism 候補の標準基底射

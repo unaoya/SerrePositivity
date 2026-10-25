@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.WittPresentedPerfectoidTensorModP
-public import SerrePositivity.BhattScholze.Prism.PerfectoidWittBasePresentation
-public import SerrePositivity.BhattScholze.Prism.PerfectoidDistinguishedKernel
+public import SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.WittPresentedPerfectoidTensorModP
+public import SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.PerfectoidWittBasePresentation
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidDistinguishedKernel
 
 /-! # B4-5：任意perfectoid環の通常テンソルのperfectoid化
 
