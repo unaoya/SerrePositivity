@@ -77,7 +77,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStageIso,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyObjects,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCycleBoundary,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerConnectingRepresentative]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerConnectingRepresentative,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarNondegFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarNondegDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexHomologyCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerProjection,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomologyLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomologyInclusions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ModuleCoproductHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerHomologyInclusions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerCoefficientInclusions]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -145,3 +154,9 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarZeroStageIso
 #check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyObjectIso
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerConnecting_representative
+
+#check SerrePositivity.InfinityCategories.dgHomologyBarNondegDifferential
+#check SerrePositivity.InfinityCategories.dgCoherentBarColumn_projected_first
+#check SerrePositivity.InfinityCategories.dgComplexCoproductHomologyIso_ι
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerHomologyIso_ι
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerHomologyCoefficientsIso_ι

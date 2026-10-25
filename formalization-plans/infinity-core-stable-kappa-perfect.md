@@ -12,6 +12,8 @@
   非有界加群複体の直和のホモロジー比較も構成。
   実次元層のホモロジーと非退化ホモロジー bar の対象同型、
   実長完全列による一次複体と二乗零、連結射の cycle 代表元公式まで構成。
+  非退化 bar の実微分の交代面和公式、高次 HA 列の直下層への射影零、
+  層ホモロジー同型と各非退化係数包含の可換性も構成。
   最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
@@ -34,7 +36,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,528 jobs・専用監査73葉659宣言通過。
+- 検証：coherent 入力への修正後、集約4,537 jobs・専用監査82葉732宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
