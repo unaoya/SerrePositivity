@@ -1,131 +1,69 @@
 # I-1 a7：X レーン（交換定理）の正本
 
-> **v3 追記（2026-10-25）**：凍結中の I-1 a7 を X が担当する。
+> **v3 停止追記（2026-10-25 17:53 JST）**：
+> **Ind の d′ で完了、X の部分成果は未使用の補助**。
+> Ind の厳密経路 `f350dce62`（15:21）で I-1 a7 は完了。X は保存後に停止する。
 > a7 の計画・現在地の正本は本ファイル。Ind 全体の正本は infinity-core-F1.md。
-> 旧 v3 の「Ind に統合・8時間上限」は凍結時の記録であり、今回の上限は
-> 着手から48時間（2026-10-27 13:07:39 JST）とする。
+> 着手時の48時間上限は、17:53 のユーザー停止指示により解除。
 
 ## 所有範囲と完了条件
 
-- 着手：2026-10-25 13:07:39 JST。上限で未完なら不足を記録して停止する。
+- 着手：2026-10-25 13:07:39 JST。17:53 の指示により証明開発を終了。
 - 所有：F2/FilteredExchange/ の今回新設した葉、
   scripts/audit_infinity_f2_exchange.lean、および本計画ファイル。
 - F2/Ind・Compact・Idempotent・F1・F1B・Core は読み取り専用。
   既存の集約と scripts/audit_infinity_f2.lean は変更しない。
 - foundations.md §6・§8、foundations-progress.md の Ind I-1、
   infinity-core-F1.md と本ファイルの凍結時引き継ぎを読了。
-- X は直接経路の a③・a④・b①（cospan 形状の交換）を証明する。
+- 当初の X 担当は直接経路の a③・a④・b①（cospan 形状の交換）。停止により不要。
   全有限形状への帰納 b② と公開 b③ は Ind の I-2 d′ に移管する。
   strict 図式や端点の一致だけで完了とはしない。指定比較・全パラメータを保持する。
 - sorry・追加公理・文献を仮定にした入力は使わない。
   許す公理は propext・Classical.choice・Quot.sound のみ。
-- b① が閉じたら公開名を報告し、Ind の有限形状帰納へ渡す。
+- b① の引き渡しは不要。未追跡の補助15葉をビルド可能な形で保存して停止。
 - 2026-10-25 14:44 のユーザー承認による分担変更：Ind は P の poset 交換の
-  ℵ₀ 特殊化による代替経路 I-2 d′ を並行実施。48時間の上限と他規約は維持。
+  ℵ₀ 特殊化による代替経路 I-2 d′ を並行実施。その後17:53に停止・上限解除。
 
-## 三段目（依存順、2026-10-25 14:44 分担変更反映）
+## 三段目（14:44 分担変更・17:53 停止指示反映）
 
 | 番号 | 工程・所有 | 完了条件 | 現在地 |
 | --- | --- | --- | --- |
-| 1 | X：a③ Ncomp | 元の零面値・終点比較・raw 二辺値比較の因子式 | 作業中 |
-| 2 | X：a④ 普遍三角形の一致 | Nlong と Ncomp を代入し、同じ零面値を消去 | 未着手 |
-| 3 | X：b① cospan 形状の交換 | 指定二三角形・path を保つ全錐比較と保存、直接経路の cospan 交換 | 未着手 |
-| 4 | Ind：b② 有限形状帰納と交換入力の実証拠化 | 部分極限・接着の同時帰納、全有限形状の交換定理 | I-2 d′ へ移管 |
-| 5 | Ind：b③ 公開・集約・監査 | 公開し、IndFiniteLimitExchangeInput に渡せることを検証 | I-2 d′ へ移管 |
+| 1 | X：a③ Ncomp | 元の零面値・終点比較・raw 二辺値比較の因子式 | 停止・未使用の補助のみ |
+| 2 | X：a④ 普遍三角形の一致 | Nlong と Ncomp を代入し、同じ零面値を消去 | 不要・未着手で停止 |
+| 3 | X：b① cospan 形状の交換 | 指定二三角形・path を保つ全錐比較と保存、直接経路の cospan 交換 | 不要・未着手で停止 |
+| 4 | Ind：b② 有限形状帰納と交換入力の実証拠化 | 部分極限・接着の同時帰納、全有限形状の交換定理 | Ind の d′ で完了 |
+| 5 | Ind：b③ 公開・集約・監査 | 公開し、IndFiniteLimitExchangeInput に渡せることを検証 | Ind の d′ で完了 |
 
-X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
-工程4・5は Ind の所有であり、X の完了条件には含めない。
+工程1〜3は不要となった。工程4・5は Ind の所有で完了。
+X は保存対象のビルド・専用監査だけを行い、新たな証明開発は行わない。
 
-## 現在地：1 a③ の指定評価比較の合成則
+## 現在地：停止・補助成果の保存
 
-14:44 分担変更後も工程1を続行中。同じ固定底辺を持つ任意の
-`TransportSquareLift` の比較値が、元の `TransportIntervalSquare.transportIso` と
-一致する補題を構成・検証した（3251 jobs）。専用監査は9723宣言で通過、
-標準三公理のみ。公開名はいずれも F2 名前空間の
-`TransportSquareLift.comparison_eq` と
-`TransportSquareLift.comparison_eq_transportIso`。
-固定初期図式上の終点比較の恒等性、元の区間比較の始点正方形、左右・上辺の
-指定自然性から、中間の頂点比較を消去した。全パラメータと元の指定同型を保持。
-さらに固定底辺の条件を外し、左下角だけを固定した任意の実四角形について
-`TransportSquareDiagram.comparison_eq` と
-`TransportSquareDiagram.comparison_eq_transportIso` を構成した（3264 jobs）。
-専用監査は9831宣言で通過、標準三公理のみ。
-下辺の指定比較を右辺に沿って輸送し、四つの元の指定比較を貼った値を使う。
-元の普遍 prism の区間比較が恒等であることも
-`leftFibrationPrism_transportIntervalIso_universal_refl` で確認した。
-係数制限についても、元の選択済み sourceIso・四辺比較・四角形全体の比較の
-値を保つ自然性を構成した。公開名は
-`diagonalFiberTransport_sourceIso_precomp_heq`、
-`TransportSquareDiagram.comparison_precomp_heq`、
-`transportIntervalSquare_transportIso_precomp_heq`（3309 jobs）。
-専用監査は9852宣言で通過、標準三公理のみ。
-元の始点同型の自然性も
-`transportIntervalSquare_transportIso_source_naturality` で証明した（3317 jobs）。
-専用監査は9881宣言で通過、標準三公理のみ。
-同じ普遍始点比較から関手空間上の `transportIntervalSquareSourceActionIso` を作り、
-その全成分が元の transportIso に一致することを確認した。係数は任意の単体集合。
-定値終辺の元の指定消去についても、係数・始点同型の自然性を証明した。
-公開名は `transportIntervalSquare_constantTopIso_source_naturality`。
-元の Kan 合成へ戻し、
-`coherentKanRightCompositionMovingIso_source_naturality` と
-`coherentKanRightCompositionDiagonalIso_heq_moving` を構成した。
-右 Hom の点評価比較の元の逆も
-`pointedRightFamilyTransportIso_symm_heq_moving` で同じ moving 比較へ戻した。
-両対象の統合ビルド5697 jobs、専用監査9921宣言で通過、標準三公理のみ。
-同じ実三角形の三本の実辺から、元の指定合成比較を回収する
-`TransportTriangleDiagram.constantTopIso_eq` を証明した。
-`transportTriangleDiagramOfSimplex` と `transportTetrahedronFaceOfSimplex` は
-同じ実二単体・四面体の実頂点と実三辺を保つ。別々の面の充填は選ばない。
-`exists_simplexInitialLift` は任意の底の実単体族を、元の初期値を固定して
-left fibration に持ち上げる。`simplexSharedFacePrism` は隣接面の共有辺の
-厳密等式、`transportTriangleSimplex_bottomPrism`・`_leftPrism`・`_rightPrism` は
-折り畳み後の実三辺が元の面の制限そのものであることを保証する。
-`leftFibrationPrism_transportIntervalIso_shared_prism_heq` で、共有する実辺の
-射影から底の族の等式を導き、元の選択済み区間比較の値も保持した。
-対象ビルド3341 jobs、専用監査10006宣言で通過、標準三公理のみ。
-推移的 import は2123プロジェクトモジュール、他レーンの未保存依存は0。
-さらに同じ実四面体の六本の共有辺の底の族と元の指定比較を照合した。
-`TransportTetrahedronDiagram.shared_curve01`〜`shared_curve23` と
-`shared_comparison01`〜`shared_comparison23` は、実辺の等式からの帰結。
-四面の元の指定合成比較は `comparison012`・`comparison013`・`comparison023`・
-`comparison123` で共通六辺上に表示し、`comparisonAlong_heq` が元の値を保持する。
-`TransportTetrahedronDiagram.comparison_coherence` で四面の合成則を証明した。
-元の始点自然性と四面の実三辺貼り合わせ式から中間因子を消去しており、
-高次整合性の新しい仮定はない。`exists_transportTetrahedronDiagram` は
-任意の底の実四面体族について、元の初期値を固定する同じ実全四面体を与える。
-統合ビルド3360 jobs、専用監査10118宣言で通過、標準三公理のみ。
-推移的 import は2142プロジェクトモジュール、他レーンの未保存依存は0。
-元の合成四角形の全図式も `coherentCompositionSquare_triangle_recovery` と
-`coherentCompositionSquare_triangle_recovery_precomp` で、同じ三角形の折り畳み
-から厳密に回収した。右 join prism の先頭制限の計算によるもので、四辺一致
-だけへの弱化ではない。`transportTriangleBaseOfLift_eq_coherentKanSquare` により、
-元の Kan 三角形を被覆する実三角形の底を元の合成四角形そのものへ戻した。
-`coherentSimplexAppendMorphism_face_penultimate` は追加した射の直前の面を
-元の後合成へ同定する。`coherentSimplexAppendMorphism_reindex` はその追加を
-二重の最終点固定添字制限に関して全 Hom ごと自然にする。
-統合ビルド3407 jobs、専用監査10137宣言で通過、標準三公理のみ。
-推移的 import は2161プロジェクトモジュール、他レーンの未保存依存は0。
-最後を保つ任意の制限（零次元も含む）へ追加操作の自然性を拡張した。
-公開名は `coherentSimplexAppendMorphism_lastPreserving`。
-`coherentSimplexAppendMorphism_terminalEdge_of_eq` により、元の追加射の終辺全体を
-固定した。`coherentRightSliceAppendCone` は元の全錐と指定射を同時に保持し、
-全添字自然性と元の前面・終辺の厳密回収を持つ。
-`coherentRightSliceAppendEdge` で同じ射の辺上の slice への実写像に束ねた。
-`coherentRightSliceAppendEdge_front` は任意の元の全錐族を始端側の実全面から戻す。
-`coherentCompositionAppendTetrahedron` で元の二 Hom 全係数と同じ追加射を持つ
-単一の実四面体族を構成した。四面の元の合成図式への同定はまだ未証明。
-統合ビルド2159 jobs、専用監査10192宣言で通過、標準三公理のみ。
-推移的 import は2181プロジェクトモジュール、他レーンの未保存依存は0。
-元の合成三角形へ終点を追加する `coherentCompositionConeTetrahedron` も構成し、
-`coherentCompositionConeTetrahedron_face012` で 012 面全体を元の三角形へ同定した。
-`coherentCompositionConeTetrahedron_face012_precomp` は全同時係数制限でも保持する。
-対象ビルド2173 jobs、専用監査10211宣言で通過、標準三公理のみ。
-推移的 import は2185プロジェクトモジュール、他レーンの未保存依存は0。
-Ncomp 本体は未完。残る 013・023・123 面を元の合成図式へ同定する。
-係数付きの標準三角形錐と元の右 join prism 三角形の一致も次の計算対象。
-その後、証明済みの四面体則から元の二段評価と合成評価の指定値へ接続する。
-a④・b① は未着手であり、これらの補題だけで完了とは主張しない。
+**Ind の d′ で完了、X の部分成果は未使用の補助**。
+Ind の `f350dce62` にある公開定理
+`SerrePositivity.InfinityCategories.F2.Ind.indFiniteLimitExchangeInput` を確認した。
+`coherentFilteredLimitExchangeShape_finite` から全有限形状の交換入力を構成しており、
+交換入力を仮定する宣言ではない。X の a③・a④・b① の継続は不要。
+48時間上限は解除。未追跡ファイルを破棄せず15葉とも保存した。
 
+今回保存した補助の主要公開名（名前空間は F2）：
+- `triangleRightConeParameter_eq_simplexCone`：元の右 prism 三角形と標準錐の全体の一致。
+- `simplexConeParameter_index_naturality`：係数付き錐の添字自然性。
+- `triangleRightConeParameter_first`・`_last`・`_long`：元の実三辺の回収。
+- `coherentRightSliceAppendEdge_back`：同じ追加射の実終端面と元の後合成の一致。
+- `coherentCompositionConeTetrahedron_face013` と `_precomp`：013 面全体と
+  元の合成三角形の一致、任意の同時係数制限での保持。
+
+保存検証：`CompositionConePostFace` の対象ビルド2198 jobsで通過。
+専用監査10240宣言で通過、標準三公理のみ。停止コミット本文にも記録する。
+推移的 import は2214プロジェクトモジュール、他レーンの未保存依存は0。
+全15葉が検証対象の import 閉包に入り、各葉100行・100桁以内。
+既存の集約・既存 audit_infinity_f2・読み取り専用の各領域は変更していない。
+
+X 側の Ncomp 本体は未証明。012・013 面の同定は補助として保存したが、
+023・123 面の元の合成図式への接続と指定評価比較の一致は未完。
+a④・b①は未着手で停止。X の直接経路の完了とは扱わない。
+以下は停止前の構成・不足の履歴であり、今後の作業指示ではない。
 
 凍結時の a①・a② は完了。長辺の因子式 Nlong も
 `coherentColimitApexLongEvaluationComparison_heq_value_composite` で完成済み。

@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CompositionConePostFace
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyFixedEvaluation
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyTwoStage
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexTwoEvaluationCriterion
@@ -160,6 +161,15 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coneTetrahedronParameter_front
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face012
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face012_precomp
+
+#check @SerrePositivity.InfinityCategories.F2.triangleRightConeParameter_eq_simplexCone
+#check @SerrePositivity.InfinityCategories.F2.simplexConeParameter_index_naturality
+#check @SerrePositivity.InfinityCategories.F2.triangleRightConeParameter_first
+#check @SerrePositivity.InfinityCategories.F2.triangleRightConeParameter_last
+#check @SerrePositivity.InfinityCategories.F2.triangleRightConeParameter_long
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendEdge_back
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face013
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face013_precomp
 
 open Lean in
 run_cmd do
