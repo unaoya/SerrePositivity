@@ -200,7 +200,10 @@ with a ring isomorphism by the existing common lemma. Public names and types are
 Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
 EOF
 )"
-# 作業 3a：移動と import の書き換え。スタブは未追跡のままなのでこのコミットに入らない
+# 作業 3a：移動と import の書き換え。旧パスは HEAD で追跡されているため、スタブが作業ツリーにあると
+# `git commit --only <dir>` がそれを「変更」として取り込み rename が壊れる（Codex が一時リポジトリで確認、10-25）。
+# 検証が済んだら 32 本のスタブをいったん削除してから 3a をコミットし、3b の前に --stubs で作り直す。
+xargs rm -- < <(python3 -c "import json;print('\n'.join(m.replace('.','/')+'.lean' for m in json.load(open('formalization-plans/bhatt-scholze-codex-w1-moves.json'))['stubs']))")
 git commit --only SerrePositivity/BhattScholze SerrePositivity/CLMST SerrePositivity/Inputs/Perfectoidization.lean \
   scripts/audit_bhatt_scholze*.lean scripts/audit_clmst*.lean scripts/audit/bhatt_scholze.lean scripts/audit/clmst.lean -m "$(cat <<'EOF'
 refactor(bs): split the flat BhattScholze/ directory by subject (BR1)
@@ -214,7 +217,8 @@ Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
 EOF
 )"
 git show --stat -M HEAD | tail -3      # 616 renames を確認
-# 作業 3b：転送スタブ
+# 作業 3b：転送スタブ（作り直して追加する）
+python3 formalization-plans/bhatt-scholze-codex-w1-apply.py --stubs    # "wrote 32 stubs"
 python3 -c "import json;print('\n'.join(m.replace('.','/')+'.lean' for m in json.load(open('formalization-plans/bhatt-scholze-codex-w1-moves.json'))['stubs']))" > /tmp/bs_w1_stubs.txt
 xargs git add -- < /tmp/bs_w1_stubs.txt
 git commit --only $(cat /tmp/bs_w1_stubs.txt) -m "$(cat <<'EOF'
