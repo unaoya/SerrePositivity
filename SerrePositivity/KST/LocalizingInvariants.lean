@@ -2300,4 +2300,12 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMappingDescent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMappingDescentLimit
 
+public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierPresentation
+public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierImageTransport
+public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierStrict
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeOrdinaryHomKan
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeCoherentUnits
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
