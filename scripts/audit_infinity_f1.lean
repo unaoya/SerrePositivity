@@ -9494,3 +9494,26 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S leaf: no declarations audited"
   logInfo m!"Ind-S fiber comparison audit passed: {count} declarations."
+
+-- Ind-S (5): 実全族単位・全 fiber 回収・同じ指定点の照合。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanUnstraighteningUnitPoints },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  let modules := #[`SerrePositivity.InfinityCategories.F1.Diagrams.StrictKanUnstraighteningFiberRecovery,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.SmallKanUnstraighteningUnitValue,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanUnstraighteningUnit,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanUnstraighteningUnitPoints]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (5): unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (5): no declarations audited"
+  logInfo m!"Ind-S (5) audit passed: {count} declarations."
