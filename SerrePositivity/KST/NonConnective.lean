@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupplyComparison
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupply
 public import SerrePositivity.KST.NonConnective.DGKInputCompactGenerationAdjoint
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeStageFamily
