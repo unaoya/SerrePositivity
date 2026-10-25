@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso
 import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift
 import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransClosedIso
 import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMap
@@ -7261,6 +7262,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedModuleValuedExact,
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,
