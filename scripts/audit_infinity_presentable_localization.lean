@@ -573,3 +573,18 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @nonempty_triangleFacePartialRefinement
 #check @smallShape_leftKanDiagram_hasColimit
 #check @exists_smallShape_leftKanExtension
+
+#check @exists_interleavedRefinementSequence
+#check @filteredPieceSequenceUnion
+#check @filteredPieceSequenceUnion_isFiltered
+#check @filteredPieceSequenceUnion_hasCardinalLT
+#check @filteredPieceSequenceUnion_eq_of_interleaved
+#check @PieceSequenceTotal
+#check @pieceSequenceTotalValue_nerve_isRightCofinal
+#check @pieceSequenceFiberToComma_initial
+#check @pieceSequenceFiberKanComparison_isRightCofinal
+#check @pieceSequenceFiberKanComparisonUniverse_isRightCofinal
+#check @pieceSequence_leftKan_value_isPartialColimit
+#check @pieceSequenceTotalDiagram_restrict_fiber
+#check @pieceSequenceTotalDiagram_restrict_union
+#check @exists_pieceSequenceColimitPresentation
