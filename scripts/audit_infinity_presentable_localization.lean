@@ -344,6 +344,8 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_terminal_edge_isLocalForHom
 #check @generatedSource_terminal_target_isLocalObject_generated
 #check @generatedSource_terminal_target_isLocalObject
+#check @generatedSource_isTerminal_of_target_isLocalObject
+#check @generatedSource_isTerminal_iff_target_isLocalObject
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
