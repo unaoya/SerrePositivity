@@ -25,6 +25,7 @@ run_cmd do
   logInfo m!"Presentable local objects audit passed: {count} declarations, standard three axioms only."
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Category
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isLocalObject_range_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isLocalForHom_iff_representableInverts
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.localPrecompositionComparison_isIso_iff

@@ -15,8 +15,10 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Loc
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Presentable
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Accessible
+
 /-!
-概要：局所対象の accessibility と条件付き presentability の所有界面を集約する。
+概要：局所対象の無条件 accessibility と条件付き presentability の所有界面を集約する。
 方針：所有する新規葉だけを読み込む。
 規約：周囲の集約は編集しない。使われ方：P-d の専用ビルドと監査。
 -/
