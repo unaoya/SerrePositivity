@@ -6,7 +6,7 @@
 
 ## 引き継ぎ（2026-10-25）
 ### 現在地
-- D 本体の bar MC は対象・両集約12,015 jobs・公開型・追加9葉57宣言の監査まで成功。Derived/DGCoherentBarMaurerCartan の dgCoherentBarColumn_maurerCartan／dgCoherentBarTheta_maurerCartan は元の R・D・I・F のみを仮定する（filtered 性・MC・全加群 Small・ModelCategory 仮定なし）。両全体監査は実行中。対象・集約・葉監査済みの主入口を先に限定保存して D-bar へ引き渡す。
+- D 本体の bar MC は対象・両集約12,015 jobs・公開型・追加9葉57宣言の監査まで成功。Derived/DGCoherentBarMaurerCartan の dgCoherentBarColumn_maurerCartan／dgCoherentBarTheta_maurerCartan は元の R・D・I・F のみを仮定する（filtered 性・MC・全加群 Small・ModelCategory 仮定なし）。主入口は1017d8a9cに保存。両全体監査も終端0（Derived 24,881宣言／2,844モジュール、Stable 25,943／3,113、許容三公理のみ）。D-bar は同じ MC 引数へ主定理を代入できる。
 - D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は 589c10392 で全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を保存、両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。D-8 c を現模型で再開。D-16 の追加宇宙局所化は UniverseAscent で明示入力を解消した新規葉を検証済み（既存版不変）。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
 - c′ は13:13 JSTに未成立判定（開始04:11:16 JST、上限20:11:16 JSTより前）。ゲート1・2・4済み、3・5未完。κ未満の全シフト自由直和間の任意閉射は共通コードと選択 seed へ精密化済み。一般 seed の perfect/retract・cone 閉包への同時精密化と拡大全四角形族は未供給。承認済み分岐により D-8 c/d は現模型、全高次作用は第 I 段の明示入力を保持する。D-7′ は本体・葉監査・両集約・両全体監査成功。今回の再開対象は D-8 c。
 - c′ の最終集約・両全体監査成功：11,590 jobs、Derived 24,035宣言／2,752モジュール、Stable 25,097／3,021（許容三公理のみ）。実自由閉射の全行列比較・選択 seed への共通源精密化を含む。D-7′の2本（75a0b606d）を含む最終集約11,614 jobs・両全体監査成功：Derived 24,043宣言／2,754モジュール、Stable 25,105／3,023（許容三公理のみ）。
@@ -88,7 +88,7 @@
 - D2 入口：`Derived/DGClosedSlicePrismDirectNaturality`（自由 Hom 側は `DGWalkingHomPrismDirectNaturality`）。直接の斉次合成で始域・標的の Small 仮定を除く別名4補題を追加。旧4宣言は `DGWalkingHomPrismGeneral`・`DGClosedSlicePrismGeneral` に型・本文保持で分離。`DGPrismDirectComparison` に鎖写像・評価・自然変換・全単体・slice prism の一致6補題を置く。上流入口から従来の Small 版・屋根への依存を除外。
 - slice 輸送の最小3パスは `954d53b5f`、D2 向け入口の15パスは `059a227ad` に対象・署名検証後保存済み。E2 入口の7パスは Ind 供給 `ed79dcb7f` に続く `8f39eaafd` に保存済み。供給分の最終検証は集約11,347 jobs・12明示署名・両全体監査で終端0（Derived 22,160宣言／2,531モジュール、Stable 23,222／2,800、許容三公理のみ）。全供給差分は新規11本、既存7本、Derived.lean、両監査、本計画の22パス。D-7 d2 の草稿は `b133279c0` で統合済み。 追加供給：元の coherent prism の Small 不要・両入力・端点輸送付き自然性は `DGPinchedCompositionFamilyGeneral` と `DGPinchedCompositionClosedFamilyNaturality`、`9b40d1218`。実 Perf の coherent 完備性は `DGPerfectIdempotentCompleteGeneral`、`c66ce0648`（一般 H⁰ 判定・実／相対／小模型の新名4本、旧宣言の型・本文は完全一致）。両供給の対象・26署名検査と集約11,356 jobs 成功。両全体監査も終端0（Derived 22,200宣言／2,540モジュール、Stable 23,261／2,809、許容三公理のみ）。
 - D-16 追加 (3) と c′ の全保存ソースは集約・両全体監査へ接続済み。旧「集約未接続」の6本も統合済み。
-- D-7′ の2本は両集約と両監査へ接続済み。c′ の実自由閉射・行列・選択 seed 精密化までの全保存分は集約・両全体監査済み。公開された最終の自由場合は Derived/DGKappaPresentedFreeMatrixRefinement の dgKappaPresentedClosedArrowRefinement_of_free_matrix（4f100122a）。旧 D-17 試作 DGPerfectExtensionReflectsHomQuasiIso／DGExtensionYonedaReflectsHomQuasiIso／DGFunctorThickGeneratorCriterion は未使用のまま保存し削除しない。既存未追跡 Morita/ScalarExtensionKernelOutputComponents は今回の対象外。追加 KST 一般論は DGGraphCompositionInputLeft のみ（既登録57本に追加、読み取り専用）。生成係数層は既存の純 dg Derived/DGObjectImage を再利用する。MC 後の c2 支援試作 DifferentialGraded/Complexes/MaurerCartanTargetHom は未統合・未検証で、MC の保存対象には含めない。
+- D-7′ の2本は両集約と両監査へ接続済み。c′ の実自由閉射・行列・選択 seed 精密化までの全保存分は集約・両全体監査済み。公開された最終の自由場合は Derived/DGKappaPresentedFreeMatrixRefinement の dgKappaPresentedClosedArrowRefinement_of_free_matrix（4f100122a）。旧 D-17 試作 DGPerfectExtensionReflectsHomQuasiIso／DGExtensionYonedaReflectsHomQuasiIso／DGFunctorThickGeneratorCriterion は未使用のまま保存し削除しない。既存未追跡 Morita/ScalarExtensionKernelOutputComponents は今回の対象外。追加 KST 一般論は DGGraphCompositionInputLeft のみ（既登録57本に追加、読み取り専用）。生成係数層は既存の純 dg Derived/DGObjectImage を再利用する。MC 後の c2 支援試作 DifferentialGraded/Complexes/MaurerCartanTargetHom は対象検証済み・未統合で、MC の保存対象には含めない。
 
 ### 既知の問題
 - d1 追加時の Derived 監査は期待配列のコード生成再帰上限に達したため、同じ2,521モジュール名と順序を保つ37個の非インライン定数へ分割した。再帰上限・許容公理・監査条件は変更せず、再監査終端0。
@@ -205,7 +205,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - DGCoherentBarBianchiCriterion.dgCoherentBarCurvature_eq_zero_of_bianchi_rhs は実 HA 右辺＝θ作用から同じ元の bar の曲率零まで戻す中間判定。その実入力は BianchiEquation.dgCoherentBarBianchiData_rhs で無条件に供給済み。ShiftedDetection は全次数 Hom を実包含で検出する。
 - FaceInclusionComparison／PrefixInclusionComparison は元の面・prefix 列と shift 包含との合成を照合。ColumnAction の dgCoherentBarTheta_comp_shiftedInclusion_positive は θ 作用を dgCoherentBarUnshiftedBoundary へ展開する。BianchiFullTerms は HA 全体右辺の両端を除いた有限和と元の符号を保持する。
 - BianchiFullComponents→TermComparison→FullRhs→Naturality→BianchiEquation による全部分集合の実証を接続済み。各列の dgCoherentBarColumn_maurerCartan を既存 of_columns に渡して主結論を得る。公開後は D-bar の c2 支援を選び、MC 摂動後の終端 HA 成分の一般比較を D 所有の新規葉に整備する。D-bar の所有ファイルは編集しない。
-- 最新の登録済み本文は両集約12,015 jobs、直近9葉57宣言と公開型の監査成功（許容三公理のみ）。両全体監査は終端確認中。途中の実施記録はコミットメッセージへ置く。
+- 最新の登録済み本文は両集約12,015 jobs、直近9葉57宣言と公開型の監査成功（許容三公理のみ）。主入口1017d8a9cの両全体監査も終端0（Derived 24,881／2,844、Stable 25,943／3,113、許容三公理のみ）。途中の実施記録はコミットメッセージへ置く。
 
 ### D-20：全対象 dg 商の Perf 零性
 - [x] 1 全対象商上の加群の acyclic 性と Perf の H⁰ 零性。[x] 2 native 全頂点の零性と IsZeroCategory の公開入口。[x] 3 対象・集約・両全体監査・保存報告。
