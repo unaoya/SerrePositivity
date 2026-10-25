@@ -43,6 +43,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFilteredColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSourceCandidates
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalExtension
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalMapping
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -115,6 +116,8 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 ホモトピー圏で split mono となることも証明した。終対象の存在と局所対象性は未証明。
 閉包内辺の任意の pushout とその分裂を使い、終対象の終域への写像をホモトピー圏で延長した。
 任意の閉包内辺による前合成は同じホモトピー圏で全射となる。写像空間全体の判定は未構成。
+終対象への全写像空間の可縮 Kan 性を、包含の充満忠実性で周囲の全 coslice 圏へ移した。
+周囲の任意の閉包内の指定余錐も扱い、同じ全写像空間による終対象性の判定も得た。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
