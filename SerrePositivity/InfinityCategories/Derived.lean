@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
+public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom
+public import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarGraded
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartan
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom

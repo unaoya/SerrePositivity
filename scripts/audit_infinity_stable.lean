@@ -1,3 +1,9 @@
+import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom
+import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarGraded
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
 import SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation
 import SerrePositivity.DifferentialGraded.Module.MaurerCartan
 import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
@@ -7975,6 +7981,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.ShiftBlocks,
+    `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom,
+    `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarGraded,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts,
+
     `SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation,
     `SerrePositivity.DifferentialGraded.Module.MaurerCartan,
 
