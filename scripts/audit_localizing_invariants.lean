@@ -9,6 +9,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeMappingFiber,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeCellModel,
+    `SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeRightFrame,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellTestCriterion,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeCoherent,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeInvariance,
