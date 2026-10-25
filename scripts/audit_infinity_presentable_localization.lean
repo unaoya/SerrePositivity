@@ -512,3 +512,22 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @comparisonSequenceRightParityShapeIso
 #check @comparisonSequence_left_parity_face
 #check @comparisonSequence_right_parity_face
+
+#check @ComparisonParityData
+#check @comparisonInitialParityData
+#check @exists_comparisonParitySliceDiagram
+#check @exists_comparisonLeftParityIndexDiagram
+#check @exists_comparisonRightParityIndexDiagram
+#check @sequentialNerveInitialSimplex_comparison_even
+#check @sequentialNerveInitialSimplex_comparison_odd
+#check @nativeSequential_hom_ext_ulift
+#check @transportedCoconeSliceDiagram
+#check @transportedCoconeSliceDiagram_uncurry
+#check @transportedCoconeSliceDiagram_projection
+#check @comparisonSliceDiagram_left
+#check @comparisonSliceDiagram_right
+#check @nativeSubsequence_eq_of_finiteComparisons
+#check @comparison_even_subsequence_eq
+#check @comparison_odd_subsequence_eq
+#check @sequentialIndexDiagram_initial_of_point
+#check @exists_twoPresentationComparison

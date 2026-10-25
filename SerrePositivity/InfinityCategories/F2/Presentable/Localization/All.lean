@@ -112,6 +112,14 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundFaces
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParityShapes
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialParity
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParityDiagrams
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParitySubsequences
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSliceRestrictions
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ParityDiagramComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSubsequenceEquality
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoPresentationComparison
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -284,8 +292,12 @@ slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域�
 元の添字図式の全射を、種集合と実頂点列の和への因子化で保持し、初項が種集合を
 支配する場合にこの同じ列が部分 poset 内で final となることも証明した。
 標準辺と両標準点から開始する場合は、元の左右の全前置包含を、全比較形状内の
-偶数・奇数の全前置面として回収した。両側の全添字図式と全比較図式の部分列の一致、
-および元の三角形表示の同時細分への接続はまだ未完成。
+偶数・奇数の全前置面として回収した。初期実三角形からこの初期面データも構成し、
+元の二つの compact filtered 表示から、指定左開始点と右開始点の後続点を保持する
+同じ大域頂点上の全可算比較を構成した。その偶数・奇数部分列は元の両表示余錐の
+全図式と厳密に一致する。大域頂点の compact 性や比較列の存在を追加入力にしない。
+この全比較からの共通小部分余極限の回収、および元の三角形表示の同時細分への接続は
+まだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
