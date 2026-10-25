@@ -91,7 +91,7 @@
 - D2 入口：`Derived/DGClosedSlicePrismDirectNaturality`（自由 Hom 側は `DGWalkingHomPrismDirectNaturality`）。直接の斉次合成で始域・標的の Small 仮定を除く別名4補題を追加。旧4宣言は `DGWalkingHomPrismGeneral`・`DGClosedSlicePrismGeneral` に型・本文保持で分離。`DGPrismDirectComparison` に鎖写像・評価・自然変換・全単体・slice prism の一致6補題を置く。上流入口から従来の Small 版・屋根への依存を除外。
 - slice 輸送の最小3パスは `954d53b5f`、D2 向け入口の15パスは `059a227ad` に対象・署名検証後保存済み。E2 入口の7パスは Ind 供給 `ed79dcb7f` に続く `8f39eaafd` に保存済み。供給分の最終検証は集約11,347 jobs・12明示署名・両全体監査で終端0（Derived 22,160宣言／2,531モジュール、Stable 23,222／2,800、許容三公理のみ）。全供給差分は新規11本、既存7本、Derived.lean、両監査、本計画の22パス。D-7 d2 の草稿は `b133279c0` で統合済み。 追加供給：元の coherent prism の Small 不要・両入力・端点輸送付き自然性は `DGPinchedCompositionFamilyGeneral` と `DGPinchedCompositionClosedFamilyNaturality`、`9b40d1218`。実 Perf の coherent 完備性は `DGPerfectIdempotentCompleteGeneral`、`c66ce0648`（一般 H⁰ 判定・実／相対／小模型の新名4本、旧宣言の型・本文は完全一致）。両供給の対象・26署名検査と集約11,356 jobs 成功。両全体監査も終端0（Derived 22,200宣言／2,540モジュール、Stable 23,261／2,809、許容三公理のみ）。
 
-- 未統合：D-16 本体の Derived.lean・両監査は全体監査成功。追加 (3) の3本は葉で保存済み、集約未接続。c′ の `DGModuleFamilyYoneda` は対象成功の未追跡試作。D-17 の `DGPerfectExtensionReflectsHomQuasiIso`・`DGExtensionYonedaReflectsHomQuasiIso` は対象成功、`DGFunctorThickGeneratorCriterion` は合成比較を明示入力にして検証中。K-S の `DGKPerfectComposition` は S 構成本体を含むため import せず、同じ宣言の上流分離をコーディネータへ依頼。
+- 未統合：D-16 本体の Derived.lean・両監査は全体監査成功。追加 (3) の3本は葉で保存済み、集約11,477 jobs 成功。更新後の両監査は共有 F1/Coherent/HomEquivalence.olean 不在で import 時に終了したため、生成物を回復する集約再ビルド中。c′ の seed 精密化・一般 b 入口は葉で保存する。`DGModuleFamilyYonedaNaturality` は未追跡の自然比較試作で、対象検証中。D-17 の `DGPerfectExtensionReflectsHomQuasiIso`・`DGExtensionYonedaReflectsHomQuasiIso` は対象成功、`DGFunctorThickGeneratorCriterion` は合成比較を明示入力にして検証中。K-S の `DGKPerfectComposition` は S 構成本体を含むため import せず、同じ宣言の上流分離をコーディネータへ依頼。
 ### 既知の問題
 - d1 追加時の Derived 監査は期待配列のコード生成再帰上限に達したため、同じ2,521モジュール名と順序を保つ37個の非インライン定数へ分割した。再帰上限・許容公理・監査条件は変更せず、再監査終端0。
 
@@ -176,6 +176,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 同時精密化の出発圏基盤は a774cee3e：DifferentialGraded/Presentation の ZeroComplexCode・CategoryData・CategoryReindex・EnrichedLawTransport・CategorySigma・CategorySigmaInclusion・CategorySigmaDesc・CategoryReindexInverse・CategorySigmaComponents と Derived/DGKappaSourceCodeCoproduct。κ 未満個のコードを一つへまとめ、各成分包含・共通評価・成分内の全 Hom の厳密一致を保持する。対象2,107 jobs・10本127宣言の葉監査は許容三公理のみ。追加 KST 閉包は既登録の4本以内。seed 延長の代表化と任意閉射の精密化は未証明で、ゲート3の印は動かさない。
 
 - 固定共通源の seed 二項・可算直和と閉射 cone は `c409cbc59`：`DGKappaPresentedSeedOperations`・`DGKappaPresentedSourceCommonOperations`。対象2,537 jobs・40宣言の葉監査済み。実評価との二項／可算／cone 同型とラベル後合成の厳密式を保持するが、異なる源の seed 延長の代表化と任意標的閉射の精密化は未解決で、ゲート3は未完。
+
+- seed 延長の全段階の代表化は `Derived/DGKappaSeedExtensionRange` の `dgKappaClosedProjectiveSeed_extension_homotopyRange`：任意 dg 関手・正則非可算κで、閉代表族の全 seed の実延長像を標的の同じ族へホモトピー同型まで戻す。基底の sphere-free／perfect と零・shift・二項／可算直和・任意閉射 cone の超限帰納法を接続した。関連9本と `DGUniverseLiftHomQuasiIso` は対象成功・10本44宣言の葉監査で許容三公理のみ（集約未接続）。追加KST依存は既登録の57本内。`DGModuleFamilyPretriangulated.dgModuleFamily_isDGPretriangulated` は重複ラベル族の厳密演算被覆から b を再利用する一般入口。任意標的閉射の共通源への係数精密化は残り、ゲート3・5の印は動かさない。
 
 ### D-15：全加群実分解の準同型検出
 
