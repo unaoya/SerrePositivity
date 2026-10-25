@@ -151,3 +151,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_trans
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_normalized
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeBaseChangeForward_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeBaseChangeCompIso_hom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.iteratedPullbackInv_relativeFunctorPullback
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sectionBaseChangeCompComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sectionBaseChangeComposite_eq
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sectionBaseChangeCompositeRealizationIso_eq

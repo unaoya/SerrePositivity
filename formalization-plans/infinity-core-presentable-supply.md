@@ -16,7 +16,10 @@
   同定した。同じ三辺の合成三角形と全 Hom の合成式を公開。
 - 指定底変換同型の初頂点制限の回収と、前合成による同型等式の反映を公開。
 - 指定同型の curry の合成保存、および既存 realizationIso の合成保存を公開。
-- 最新 Supply.All は 8693 jobs で成功、独立監査は 630 宣言で標準三公理のみ。
+- 標準反復 pullback 比較の相対切断の厳密同型・全高次相対射の自然性を公開。
+- 元の底変換比較の合成を共同比較の等式へ束ね、三つの既存 realizationIso の
+  合成が一度の底変換比較の実現同型と一致することを証明。
+- 最新 Supply.All は 8695 jobs で成功、独立監査は 669 宣言で標準三公理のみ。
   追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
 - 設計変更案：指定 straightening 底変換の合成則を、P-12 内の局所照合から
   独立した基盤供給として切り出す。具体的な供給仕様は本文に記す。
@@ -54,6 +57,9 @@
 - `straighteningBaseChangeIso_firstVertex`・`functorIso_precomp_injective`
 - `functorIsoCurry_hom`・`functorIsoCurry_trans`
 - `jointRealizationIso_normalized`・`jointRealizationIso_trans`
+- `relativeBaseChangeForward_comp`・`iteratedPullbackInv_relativeFunctorPullback`
+- `sectionBaseChangeCompComparison`・`sectionBaseChangeComposite_eq`
+- `sectionBaseChangeCompositeRealizationIso_eq`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -77,9 +83,10 @@
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
-- 実際の相対切断空間の底変換比較の合成を、標準反復 pullback 同型で照合する。
-  全パラメーターの比較を jointRealizationIso_trans に渡し、初頂点回収と
-  前合成の忠実性で指定底変換同型の合成を降下する。
+- 共同比較の豊穣前合成の実現を、元の実現同型の関手前合成と照合する。
+  相対切断の底変換比較の合成自体と共同実現の三同型の合成は完成。
+- 単体添字関手への制限の比較を合わせ、初頂点回収と前合成の忠実性で
+  指定 straightening 底変換同型の合成を降下する。
 - 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
   straightening 同型で証明する。Supply 内で証明を進め、供給元・分担の変更が必要ならユーザー経由で提案する。
 - `homWeightYonedaUnit_heq_curry` と一般の curry 評価式を接続する。
