@@ -817,3 +817,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactOver_cocone_of_small
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaFiltered_of_small_tests_equivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOver_model_isKappaFiltered
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverCoconeForward_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_of_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sliceOver_colimitCone_with_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_iff_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverProjection_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverProjection_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverPostcomp_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverPostcomp_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceUnderPostcomp_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceIso
