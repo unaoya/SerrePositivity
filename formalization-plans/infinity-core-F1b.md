@@ -1,115 +1,93 @@
-# F1b（旧 α2b）：随伴・局所化・Kan 拡張 → F2-lite
+# I-1 a7：X レーン（交換定理）の正本
 
-> **v3（2026-10-24）**：F1b は **Ind レーン**に統合（正本は infinity-core-F1.md）。本ファイルは a7 の引き継ぎとしてのみ使う。a7 には着手から 8 時間の上限がある。F2 最上位の作業中モジュールは F2/FilteredExchange/ に移動済み。
+> **v3 追記（2026-10-25）**：凍結中の I-1 a7 を X が担当する。
+> a7 の計画・現在地の正本は本ファイル。Ind 全体の正本は infinity-core-F1.md。
+> 旧 v3 の「Ind に統合・8時間上限」は凍結時の記録であり、今回の上限は
+> 着手から48時間（2026-10-27 13:07:39 JST）とする。
 
-> **v2 の位置づけ（2026-10-19）**：foundations.md §6 の F1b → F2-lite。B4・B5 の後、Cat_∞ を ∞ 圏として（Kerodon 5.5）、Cat_∞ の極限、lax pullback。
+## 所有範囲と完了条件
 
-## 引き継ぎ（2026-10-23、停止準備、第 2 部）
+- 着手：2026-10-25 13:07:39 JST。上限で未完なら不足を記録して停止する。
+- 所有：F2/FilteredExchange/ の今回新設した葉、
+  scripts/audit_infinity_f2_exchange.lean、および本計画ファイル。
+- F2/Ind・Compact・Idempotent・F1・F1B・Core は読み取り専用。
+  既存の集約と scripts/audit_infinity_f2.lean は変更しない。
+- foundations.md §6・§8、foundations-progress.md の Ind I-1、
+  infinity-core-F1.md と本ファイルの凍結時引き継ぎを読了。
+- 一般の coherent filtered 図式と全有限形状について交換を証明する。
+  strict 図式や端点の一致だけで完了とはしない。指定比較・全パラメータを保持する。
+- sorry・追加公理・文献を仮定にした入力は使わない。
+  許す公理は propext・Classical.choice・Quot.sound のみ。
+- 完了時は公開名を報告し、Ind I-2 d の明示入力差し替えへ渡す。
 
-### 現在地
+## 三段目（依存順、2026-10-25 初回報告）
 
-- B1〜B5 は明示した模型・宇宙で完了。随伴・反射的局所化・左右 Quillen A・左右 Kan 拡張を構成。
-  B4 は元の指定変換を保つ相対 join 表示・厳密化・局所判定・組み立て・一意性まで証明。
-  B5 は nerve の通常随伴・指定局所 Kan 錐との双方向比較。一般の局所化の存在は F2 の範囲。
-- F2 第 1 部 F2L-1〜4 は完了。coherent nerve の Cat_∞、引き戻しと lax pullback、
-  全関手 core と写像空間の普遍性、二射影の指定比較と元の指定 path の整合を証明。
-  laxPullback_isStable は元の三圏の安定性と二関手の完全性のみから安定性を構成し、両射影も完全。
-- 第 2 部の F1b 担当は F2N-1 a7 のみ（10-23 分担改訂、Ind・安定性は F1、compact・冪等完備化は N）。strict Kan cospan の filtered 比較は全 path 座標を保持。
-  一般 coherent filtered 図式の相対有限検出は、元の値・全境界・元の円柱を保持。
-  一般 coherent 図式の全空間模型の native 余極限性と filtered 有限検出を証明済み。
-  a6 は元の模型 fiber・全空間比較の同値性、指定 path・二脚の整合まで完了。
-  a7 は元の余極限頂点を持つ native 引き戻し極限錐、終対象・空形状・全単体の交換、
-  形状接着の錐空間の native 極限性、finiteShape_cell_induction を整備済み。
-  coherentColimitFunctor は元の全空間頂点・native 余錐を保ち、指定各点余錐による完成と全錐の像を比較。
-  元の単位三角柱の三三単体・共有面・上下二面・六側面と、全係数 EF⊗K の実 pointed 持ち上げを保持。
-  元の指定三角形比較の二辺・長辺を同じ普遍 prism へ厳密に回収し、全 prism 比較の指定自然性を証明。
-  元の相対三角形比較の前合成を、同じ全実三角形の三辺の指定比較で値まで同定。
-  六共有辺の実 prism・実始点・実終点・指定比較を保ち、四面を同じ共通四頂点と六比較へ正規化。
-  CoherentColimitUnitTetrahedronBoundary.comparison_square は同じ全族の四面の厳密な可換性。
-  二内部三角形は元の三単体の実共有面そのもの。元の定値余極限三角形・外側六面を保持して境界を構成。
-  三つの coherentColimitUnit{First,Middle,Last}TotalRelation は同じ元の全空間・恒等初期値上の指定関係。
-  coherentColimitUnitTriangleValue_coherence は二内部面を消去した元の上下二面・指定対角の整合式。
-  元の五因子全式を同じ固定 native 値へ写し、実三頂点・元の模型三角形を保って a6 の区間比較式へ代入済み。
-  模型三角形式の下側輸送・上側単位を消去。残りの像を同じ raw fiber 二面比較の最後辺輸送で回収し、最初辺の元の模型比較への同じ射影と反映判定を証明。
-  第一辺の模型比較への反映・最後辺輸送と四因子境界式は構成済み。全反転 Hom の pointed 族と元の raw 普遍三角形の始点固定比較を構成。
-  pointedHomTriangleLongEvaluationComparison_eq_morphism / CompositeEvaluationComparison_eq_morphism は元の長辺・二辺評価比較を同じ固定射の比較へ同定。spaceCompositionZero_morphism_coherence は元の指定零面・精密化・値と三射の固定比較の整合式。元の全実長辺と固定射の実 prism は PointedMorphismPrismEquality / CoherentColimitApexLongMorphismPrism で一致。NativeComparison.postcomp V₂ と固定射の元の ValueComparison は CoherentColimitApexLongFixedValue で値まで一致。RawLongValueIso.precomp q の canonical 表示と移送初期係数の標準表示は CoherentColimitApexRawLongCanonical。coherentColimitApexLongRawValueRatio_heq_evaluation は同じ raw 値比較の逆と指定普遍比較の値の合成を元の右評価成分へ回収。coherentColimitApexLongRawValueRatio_cancel は raw 値比較と同じ比の合成を元の指定普遍比較へ厳密に回収。coherentColimitApexLongValueComposite_trans_ratio は元の LongComparison と raw 長辺値比較の合成に同じ比を続けると元の NativeComparison の値になることを証明。三つの実頂点の値を CoherentColimitApexLongValueVertices で照合し、coherentColimitApexLongEvaluationComparison_heq_value_composite は元の全三角形の長辺評価比較 Nlong を同じ実長辺比較と raw 長辺値比較の合成へ値まで同定（元の実結合表示は functorIsoOfEq で保持）。長辺評価の因子式は完了。relativePrismSpecified_naturality は始点も動く二実 prism の元の指定対角比較に対する可換正方形。全相対関手 R 上の同じ実評価 prism を比較・curry して構成し、一点成分は relativePrismDiagonalComparison_at_vertex で元の指定値へ回収。relativePrismActualEndpointIso_restrict_heq は辺制限後の実終点像と同じ全図式の終点評価の指定像の一致。relativePrismNativeEndpointIso_heq_initial_postcomp は固定区間の native 終点像を同じ実始点比較の同じ普遍輸送による後合成へ値まで同定。relativePrismEndpointImage_restrict_heq は同じ辺の両端像を元の全端点評価へ回収し、実始点表示は relativePrismInitialEndpointIso_restrict_heq。CoherentColimitApexPointedLastPrism は元の全初点係数を保つ最後辺の実始点・終点・底を保持し、projection_constant は底を元の raw 区間頂点の定値族へ厳密に同定。coherentColimitApexPointedLastConstantIso は元の PointedLastIso と値まで同じ固定区間上の比較。coherentColimitApexLastSpecified_naturality は元の最後辺の二実 prism・実両端・同じ指定比較の自然性正方形。coherentColimitApexLastNative_heq_initial_postcomp はその同じ native 像を実始点比較の普遍輸送による後合成へ同定。coherentColimitApexLastInitialEndpointIso_eq_middle / coherentColimitApexLastActualEndpointIso_eq_target はその実始点・終点像を元の全三角形の中間・終点比較へ厳密に同定。coherentColimitApexLastSpecified_endpoint_square / coherentColimitApexLastNative_heq_middle_postcomp は同じ正方形をその元の二比較で表示。spaceCompositionZeroFamily_last_eq_original は零面の実最後辺と元の最後辺の一致、middle/target_eq_original は同じ共有辺の両端作用の一致。spaceCompositionZeroFamily_first_eq_standard は退化した実初辺の一致。spaceCompositionZeroMiddleEndpointIso_eq_refl は同じ指定中間像の恒等性。relativePrismNativeEndpointIso_heq_initial_action / eq_refl_of_initial は全区間族の native 作用の始点評価への因数分解と恒等性の移送。未完：これらを零面の同じ最後辺制限比較に適用し、Ncomp の零面・終点比較・二 raw 辺値比較との値照合、spaceCompositionZero_morphism_coherence への二式の代入と零面値の消去による長辺値式、全錐比較と保存性。
-  未完：同じ長辺輸送の残りと raw 二面比較の像の全区間族への照合・反映、二三角形・指定 path の全錐比較、引き戻し保存、
-  部分極限 cospan の各点の極限性、有限和・単射側の接着の存在と交換の同時帰納。
-  a7 完了後は F1 の交換入力に合う定理を公開し、次の割り当てを待つ。
-  各 fiber と元の三値の path 引き戻しの厳密な同型、三座標を保つ包含と元の値による境界固定の相対有限検出を証明。
-  検証：三集約同時ビルド10372 jobs、公理監査19484宣言（標準三公理のみ）、F1/F1B 同時 import 16331/5164宣言成功。
-  追加11モジュール20明示宣言：零面の初辺の厳密一致、元の指定中間点像の恒等性、全区間族の native 作用の始点評価への因数分解と指定始点像の恒等性からの native 像の恒等性。
+| 番号 | 工程 | 完了条件 | 現在地 |
+| --- | --- | --- | --- |
+| 1 | a③ Ncomp | 元の零面値・終点比較・raw 二辺値比較の因子式 | 作業中 |
+| 2 | a④ 普遍三角形の一致 | Nlong と Ncomp を代入し、同じ零面値を消去 | 未着手 |
+| 3 | b① 全錐比較と保存 | 指定二三角形・path を保つ全錐比較と引き戻し保存 | 未着手 |
+| 4 | b② 有限形状帰納と交換入力の実証拠化 | 部分極限・接着の同時帰納、全有限形状の交換定理 | 未着手 |
+| 5 | b③ 公開・集約・監査 | 新規葉で公開し、IndFiniteLimitExchangeInput に渡せることを検証 | 未着手 |
 
-### 残り（依存順、実作業時間の概算）
+補助構成の対象ビルド・公理監査は工程1でも実施するが、工程5の完了とは数えない。
 
-- 第 1 部は完了。F1b は a7 のみ（10-23 改訂）。F2N-3 は N、F2N-5 は F1。
-  F2N-2（Ind）は F1、F2N-4（冪等完備化）は N。Ind の必要時は公開 API を使い、未提供なら F1 に依頼して待つ。
+## 現在地：1 a③ の指定評価比較の合成則
 
-### 主要宣言（名前のみ）
+凍結時の a①・a② は完了。長辺の因子式 Nlong も
+`coherentColimitApexLongEvaluationComparison_heq_value_composite` で完成済み。
+二辺については `coherentColimitApexZeroCompositeValue_heq_two_evaluation` がある。
+今回の `coherentColimitApexZeroCompositeValue_heq_triangle_iff` は Ncomp を
+次の二つの**元の指定同型の HEq**へ帰着する。帰着先はまだ未証明。
 
-- `QCatAdjunction` / `F1B.kanNonempty_adjunction_iff_nerveAdjunction` / `RightKanRelativeJoinRealization.Strictification.isRightKanExtension_iff_local_limits`
-- `LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits` / `F1B.exists_kanLeftExtension_iff_local_colimits` / `F1B.exists_kanRightExtension_iff_local_limits`
-- `F1B.kanRelativeLeftMappingPullbackComparison_equivalence` / `F1B.kanRelativeRightMappingPullbackComparison_equivalence` / `F1B.kanNerve_leftKanHomUniversal_iff` / `F1B.kanNerve_rightKanHomUniversal_iff`
-- `F1B.kanNerve_isLeftKanExtensionHom_iff_pointwise` / `F1B.kanNerve_isRightKanExtensionHom_iff_pointwise` / `F1B.kanNerveLeftCoconeTransport_cocone` / `F1B.kanNerveRightConeTransport_cone`
-- `F2.catInfinityMappingEquivalence` / `F2.catInfinityEdge_isInvertible_iff` / `F2.catPullbackObject` / `F2.catPullbackFunctorIso` / `F2.catPullbackFunctorCoreIso`
-- `F2.catPullbackReplacementDiagramIso` / `F2.catPullbackCone_isLimit` / `F2.catPullbackCone_vertex` / `F2.catPullbackConeHomotopy_apex` / `F2.catPullbackConeHomotopy_diagram`
-- `F2.catPullbackConeLegSectionIso` / `F2.catPullbackConeFstIso` / `F2.catPullbackConeSndIso`
-- `F2.laxPullback` / `F2.laxPullbackCone_isLimit` / `F2.laxPullbackCone_arrow` / `F2.laxPullbackCone_inputs`
-- `F2.laxPullbackVertexEquiv` / `F2.laxPullbackMappingProduct_isPullback` / `F2.laxPullbackMappingEndpointMap_fibration`
-- `F2.laxPullbackFst_isExactFunctor` / `F2.laxPullbackSnd_isExactFunctor` / `F2.laxPullback_isStable`
+- `pointedHomTwoMorphismEvaluationComparison f g`
+- `pointedHomCompositeMorphismEvaluationComparison f g`
 
-- `F2.fiberwisePullbackNativeCone_isLimit` / `F2.fiberwisePullbackNativeCone_vertex` / `F2.fiberwisePullbackNativeConeHomotopy_apexEdge` / `F2.coherentCospanNativeSectionFiberPathDownIso_eq_native` / `F2.coherentCospanModelFiberPathIso_eq_section_down` / `F2.coherentCospanNativeFiberCospanEndComparison_homotopyEquivalence` / `F2.coherentCospanNativeSectionEndComparison_homotopyEquivalence` / `F2.strictPullback_functorIso_exists` / `F2.kanHomotopyRectificationIso_image` / `F2.coherentCospanNativeLeftLegFinalImage_heq` / `F2.functorIsoDown_injective` / `F2.coherentCospanNormalizedModelPathLiftIso_eq_section` / `F2.coherentCospanCommonLeftIso` / `F2.coherentCospanCommonRightIso` / `F2.intervalReplacementSectionIso_endpoint` / `F2.coherentCospanConeNativePathDownIso_whisker` / `F2.coherentTotalNativeKanIso_postValueImage` / `F2.coherentCospanCommonRightImage` / `F2.cospanRectificationLeftIso_inverse_image` / `F2.coherentCospanNativeFirstPathIso_heq` / `F2.coherentCospanModelFirstPathIso_heq` / `F2.coherentCospanCommonComparisonIso` / `F2.coherentCospanConeNativeComparison_homotopyEquivalence` / `F2.coherentCospanConeNativeComparison_isWeakHomotopyEquivalence` / `F2.coherentCospanNativeLimitCone` / `F2.coherentCospanNativeLimitCone_isLimit` / `F2.coherentCospanNativeLimitCone_vertex` / `F2.coherentCospanNativeLimitConeFstIso` / `F2.coherentCospanNativeLimitConeSndIso` / `F2.coherentCospanNativeLimitCone_projection_commutativity` / `F2.coherentFilteredColimitVertex_isTerminal` / `F2.coneMappingShapePushoutIso` / `F2.coneMappingShapePushout_right_fibration` / `F2.coneMappingShapePushoutNativeCone_isLimit` / `F2.finiteShape_cell_induction` / `F2.CoherentFilteredLimitExchangeShape` / `F2.coherentColimitFunctor` / `F2.coherentCompletedLimit_iff_colimitFunctor` / `F2.coherentCospanOfFunctorTriangles` / `F2.functorCospanNativeLimitCone_isLimit` / `F2.exists_limitFamilyRestrictionTriangle` / `F2.coneFamilyReindex_apex` / `F2.exists_limitConeFamilyReplacement` / `F2.HasSpaceLimitsOfShape` / `F2.coherentFilteredLimitExchangeShape_simplex` / `F2.coherentFilteredLimitExchangeShape_of_empty`
+固定評価の作用と指定値の後合成との一致を構成済み。
+`pointedValueFamilyTwoStageIso` と `pointedValueFamilyCompositeIso` は
+同じ端点を持つが、両者の等式はまだ証明していない。
+`pointedRightFamilyEvaluation_comp` の端点等式をその代用にしない。
 
-- `F2.coherentColimitUnitValueAction_coherence` / `F2.coherentColimitUnitValueAction_total_heq_native` / `F2.coherentColimitUnitValueAction_precomp_firstEdge`
-- `F2.coherentColimitApexRawTriangleBoundaryAt` / `F2.coherentColimitApexRawTriangleBoundaryAt_precomp` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff` / `F2.spaceSimplexPointedLift` / `F2.spaceSimplexPointedLift_projection` / `F2.spaceSimplexPointedFamily` / `F2.coherentColimitApexCoefficientMap` / `F2.coherentColimitApexPointedFamilyComparisonIso` / `F2.coherentColimitApexPointedFamilyRestrictionIso` / `F2.coherentColimitApexPointedFirstIso` / `F2.coherentColimitApexPointedLastIso` / `F2.coherentColimitApexPointedLongIso` / `F2.pointedCoherentSourcePrecomposition_fixed` / `F2.spaceTrianglePointedFamily_middle_action` / `F2.spaceTrianglePointedFamily_target_action` / `F2.coherentColimitApexMiddleCoefficientMap` / `F2.coherentColimitApexTargetCoefficientMap` / `F2.coherentColimitApexPointedMiddleEndpointIso` / `F2.coherentColimitApexPointedTargetEndpointIso` / `F2.coherentColimitApexPointedLongComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_eq_longEndpointComparison` / `F2.coherentColimitApexPointedTargetEndpointIso_trans_universal` / `F2.coherentColimitRawUniversalTriangleComparison_precomp` / `F2.coherentColimitApexRawUniversalBoundary_iff_coefficient` / `F2.coherentColimitApexRawTriangleCandidate_eq_universal_iff_long_value` / `F2.pointedValueRightComparison_triangle` / `F2.pointedValueRightComparison_triangle_inverse` / `F2.pointedFiberValueToRightEquivalence` / `F2.pointedFiberValueTo_triangle_at` / `F2.pointedFiberValueTo_triangle_inverse_at` / `F2.pointedRightFamilyTransportIso_precomp_heq` / `F2.pointedRightFamilyTransportIso_heq_universal` / `F2.pointedRightFamilyTransportIso_action_square` / `F2.pointedRightFamilyTransportIso_counit_square` / `F2.pointedValueFamilyTargetCounitIso_conjugation` / `F2.pointedValueFamilyTransportIso_at_right` / `F2.spaceCompositionZeroPointedHomotopy_projection` / `F2.spaceCompositionZeroPointedHomotopy_initial` / `F2.spaceCompositionZeroExtensionPath_uncurry` / `F2.spaceCompositionZeroCylinderIso_eq_comparison` / `F2.spaceCompositionTetrahedronZeroComparison_hom_eq_cylinder` / `F2.spaceCompositionZeroComparison_endpoint_hom` / `F2.spaceCompositionZeroEndpointEdge_action` / `F2.spaceCompositionZeroCosliceEndpointFiber` / `F2.spaceCompositionZeroCosliceEndpoint_refinement` / `F2.coherentKanRefinement_original_square` / `F2.coherentKanRefinement_value_square` / `F2.pointedValueTriangleIntervalImage_iso` / `F2.pointedLeftHomValueActionIso` / `F2.pointedHomRefinement_value_coherence` / `F2.pointedHomTriangle_value_coherence` / `F2.spaceCompositionZeroValueIso_heq_endpoint` / `F2.spaceCompositionZero_evaluation_coherence` / `F2.coherentColimitApexCoefficientMap_value` / `F2.coherentColimitApexMiddleCoefficientMap_value` / `F2.coherentColimitApexTargetCoefficientMap_value` / `F2.pointedHomMorphismEvaluationComparison` / `F2.pointedHomTriangleLongEvaluationComparison_eq_morphism` / `F2.pointedHomTriangleCompositeEvaluationComparison_eq_morphism` / `F2.spaceCompositionZero_morphism_coherence` / `F2.coherentKanMorphismIntervalComparison_heq_refl` / `F2.pointedHomMorphismValueComparison_eq_left` / `F2.pointedHomMorphismEvaluationComparison_factor_left` / `F2.pointedCoherentMorphismPrism` / `F2.coherentColimitApexPointedLongPrism_heq_morphism` / `F2.pointedReverseMorphismPrism` / `F2.pointedReverseMorphismPrism_coordinates` / `F2.pointedCoherentMorphismPrism_coordinates` / `F2.pointedMorphismPrism_obj` / `F2.coherentReverseThickening_initial_map` / `F2.coherentReverseComposition_initial_transport` / `F2.pointedMorphismPrism_simplex_eq` / `F2.pointedCoherentMorphismPrism_eq_reverse` / `F2.coherentColimitApexPointedLongPrism_heq_reverse` / `F2.pointedLeftHomValueActionIso_app_heq_fixed` / `F2.pointedHomMorphismValueComparison_heq_prism` / `F2.fiberTransportDiagonalIso_postcomp_precomp_heq_prism` / `F2.pointedReverseDiagonalPrism_fixed_eq_coherent` / `F2.diagonalUniversalPrism` / `F2.leftFibrationPrism_diagonalTransportIso_precomp_eq_witness` / `F2.pointedIntervalTransportAt_universalIso_heq_endpoint` / `F2.pointedParametrizedTransportPullback_point_prism` / `F2.pointedIntervalUniversalSource_comparison_trans` / `F2.coherentColimitApexPointedLongComparison_trans_universal` / `F2.coherentColimitApexPointedLongNativeComparison_heq_diagonal` / `F2.leftFibrationPrism_diagonalTransportIso_precomp_heq` / `F2.diagonalTransportIso_heq_of_boundary` / `F2.coherentColimitApexPointedLongNativeComparison_post_value_heq_morphism` / `F2.coherentColimitApexRawLongValueIso_precomp_heq_standard` / `F2.coherentColimitApexCoefficientMap_standard` / `F2.coherentColimitApexLongEvaluationComparison_heq_value_composite` / `F2.coherentColimitApexLongValueComposite_trans_ratio` / `F2.coherentColimitApexLongRawValueRatio_heq_evaluation` / `F2.relativePrismSpecified_naturality` / `F2.relativePrismDiagonalComparison_at_vertex` / `F2.relativePrismActualEndpointIso_restrict_heq` / `F2.relativePrismNativeEndpointIso_heq_initial_postcomp` / `F2.relativePrismInitialEndpointIso_restrict_heq` / `F2.coherentColimitApexPointedLastPrism_projection_constant` / `F2.coherentColimitApexLastSpecified_naturality` / `F2.coherentColimitApexLastNative_heq_initial_postcomp` / `F2.coherentColimitApexLastInitialEndpointIso_eq_middle` / `F2.coherentColimitApexLastActualEndpointIso_eq_target` / `F2.coherentColimitApexLastSpecified_endpoint_square` / `F2.spaceCompositionZeroFamily_last_eq_original` / `F2.spaceCompositionZeroMiddleEndpointIso_eq_refl` / `F2.relativePrismNativeEndpointIso_eq_refl_of_initial`
+今回、最後の対象への後合成を coherent 単体の全 Hom 上で構成した。
+右 slice の実際の単体写像へ組み立て、元の合成 prism と canonical Hom 比較に
+対する厳密自然性まで対象ビルドが通過した。主要な公開名は以下。
+名前空間はいずれも SerrePositivity.InfinityCategories.F2。
 
-### 依存と提供
+- `coherentSimplexLastPost` / `coherentSimplexLastPost_comp`
+- `coherentSimplexAppendMorphism_face_last`
+- `coherentCompositionSimplex_last_post`
+- `coherentSimplexLastPost_reindex`
+- `coherentRightSlicePost` / `coherentRightSlicePost_projection`
+- `coherentRightSlicePost_comp`
+- `coherentCompositionPrism_post`
+- `coherentHomSliceComparison_post`
 
-- Core/・F1/・Stable/・HomotopyLimits/ の必要な閉包を読み取り専用で使用。F1B は推移的にも straightening に依存しない。
-- 提供：F1B 集約、随伴・反射的局所化・Quillen A、左右 Kan の局所判定・相対制限・組み立て・一意性・古典比較。
-- F2N-1 a7 のみ担当。F1 の F2/Ind/・Ind.lean と N の Compact・Idempotent の集約・サブディレクトリは読み取り専用。
+**次の一手**：同じ実右 slice 写像と元の合成 prism の自然性を、
+元の指定普遍輸送比較へ移す。`relativePrismSpecified_naturality`、
+`pointedHomMorphismValueComparison_heq_prism`、
+`pointedValueFamilyTransportIso_at_right` に接続し、指定同型の合成則を証明する。
+新しい比較を選び直したり、その合成則を入力仮定に加えたりしない。
+Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong で a④へ進む。
+`TargetEndpointIso_trans_universal` や反映判定は未証明の値式の代用にしない。
 
-### 未コミット
+## 検証と保存
 
-- 所有ファイルの未コミットなし。本区切りの F2 直下 11 モジュール・集約・監査・両計画を同じパス限定コミットで保存。コンパイルしない作業中ソースなし。共有ツリーの他レーンの変更は対象外。/tmp の試行ファイルは再開に不要。
+- 保存 009f79677：固定評価・二段指定比較・Ncomp 帰着。7199 jobs、9142 宣言監査通過。
+- 保存 58f9c4d47：単体の後合成・一辺追加。1694 jobs、9193 宣言監査通過。
+- 今回の個別対象：元の合成 prism の自然性1780 jobs、
+  canonical Hom 比較の自然性1779 jobs、右 slice 後合成則1778 jobs、いずれも成功。
+- 追加分の三対象統合ビルド1784 jobsで成功。
+  専用公理監査9349宣言で通過（標準三公理のみ）。
+- 専用監査は読込済み FilteredExchange の生成宣言を含む全宣言を宣言元で選別し、
+  推移的な依存公理を検査する。上記の監査は標準三公理のみ。
+- 以後のコミット本文には、構成した宣言と公開名・検証対象と jobs 数・監査結果を記録する。
+- 他レーンの変更は含めず、所有パスを明示してコミットする。
 
-### 既知の問題
+## 旧 F1b の完了記録（X の作業対象外）
 
-- 保存 `43c25ad6` は D レーンの 9 ファイルも同梱。履歴は変更せず、以後 `git commit --only` で所有パスを限定。 前回の依存停止は R の共有ツリーの一時変更と判明、10-23 09:58 に取り消し・元の olean を再構築済みとの連絡。再実行中の ScaffoldFiniteCylinderEndpoints の生成物不在も単独ビルド 1929 jobs で回復、対象 F2.SpaceCompositionZeroFirstPrism は 2881 jobs で成功（/tmp/f2-zero-first-prism-resume-confirmed.log）。R は今後別 worktree。今回の再ビルド・両監査は成功し、現存する import 閉包の破損なし。
-- F1/F1B の同名宣言衝突は `efdd0fb3` で修正済み。F1B の intervalMinimum 複製は straightening 非依存の F1.IntervalMinimum import に置換。衝突ゼロ。所有ソースの名前衝突なし。
-- 新規・再構成は F1B 名前空間。F1B のソースに `ModelCategory` 仮定なし。前提は Lean が正本。
-- B1 の空間値二変数 Hom 関手との比較は F1h の範囲で未形式化。B2 は一般の局所化の存在を含まない。
-- 右円柱の前合成同値は未証明だが B4・B5 の局所判定には不要。必要なら Kerodon Prop 5.2.4.5 の双対で構成する。
-- 旧 N の詳細は F2 の archive へ保持。Cat_∞ の strict pullback と ∞ 圏内の引き戻しを区別する。
-
-### 次の一手
-
-- F2N-1 a7：まず SpaceCompositionZeroMiddleIdentity / RelativePrismNativeInitialIdentity を読む。零面の最後辺への同じ指定制限比較の始点像を spaceCompositionZeroMiddleEndpointIso に同定し、恒等性を native 終点像へ送る（以下の具体手順）。a7 は未完。
-  coherentColimitApexCoefficientMap は全反転 Hom から元の実初点 fiber への同値で包含を保持。
-  coherentColimitApexPointedFamilyComparisonIso は元の raw 普遍三角形と spaceSimplexPointedFamily を同じ図式・初点を固定して比較する。
-  PointedFirst/Last/LongIso は三面を元の実 prism に同定済み。RestrictionIso_precomp/shared と initial は二段制限・共有制限・初点の整合。
-  三頂点の作用は SpaceTrianglePointedVertexActions で計算済み。Middle/TargetCoefficientMap は元の実 fiber 内の同じ全係数作用。
-  PointedMiddle/TargetEndpointIso は同じ全比較の終点像。PointedLongTransport は δ₁ ▷ A ≫ spaceSimplexPointedFamily s と同じ実両端を持つ元の長区間の輸送証人。
-  次の値照合は RawTriangleCandidate_eq_universal_iff_long_value の右辺：TargetEndpointIso.postcomp V₂ ≪≫ RawTriangleBoundaryAt B T q = PointedLongComparison.postcomp V₂。Nlong は coherentColimitApexLongEvaluationComparison_heq_value_composite で完了。Ncomp の零面値 ≪≫ PointedTargetEndpointIso.postcomp V₂ ≪≫ 二辺評価（元の RawLastValueIso・RawFirstValueIso の二因子）は未完。零面の元の指定中間像 spaceCompositionZeroMiddleEndpointIso_eq_refl は完成。具体的に M=coherentSimplexMaximalization s、A=元の全初点係数、r=δ₀▷A、β=r≫(fst Δ[2] A≫Yoneda M)、W=r≫family M、W′=r≫ZeroFamily、e=spaceCompositionTetrahedronZeroRestrictionIso s r と置く。始点の添字式 endpoint₀≫r=simplexPrismVertex 2 1 A と spaceCompositionZeroMiddleMap_standard/zero、spaceCompositionZeroMiddle_base で両実始点と底を揃える。spaceSimplexPointedRestrictionEndpointImage_heq_endpoint の i=0 と vertexIsoOfEq_heq により relativePrismInitialEndpointIso e を同じ spaceCompositionZeroMiddleEndpointIso s に厳密同定する。終点の底は SpaceCompositionZeroEndpointAction の spaceCompositionZeroEndpoint_base。relativePrismNativeEndpointIso_eq_refl_of_initial を適用し、同じ e の native 像を恒等にする。relativePrismSpecified_naturality の正方形から零面の実終点像 ≪≫ 元の最後辺の指定対角比較 = 最大化側の最後辺の指定対角比較を得る。W′ は spaceCompositionZeroFamily_last_eq_original で元の実最後辺に厳密一致。終点像は同じ汎用制限端点補題を i=1 で用いて元の零面値へ接続する。Apex 側の実最後辺の指定正方形は coherentColimitApexLastSpecified_endpoint_square、native 中間像は coherentColimitApexLastNative_heq_middle_postcomp で完成済み。coherent 合成四角形、pointedValueFamilyTransportIso_at_right と元の単位・余単位三角式で最大化側の比較を同じ二辺評価へ戻し、最後辺の raw 値比較を functorIso_whisker_exchange で同じ中間比較に沿って移す。元の RawLastValueIso・RawFirstValueIso を保持し Ncomp を独立に証明する。Nlong/Ncomp を spaceCompositionZero_morphism_coherence に代入し同じ零面値を消去、目標の長辺値式へ戻す。全零面・δ₀ 面の係数は元の s.obj 0。TargetEndpointIso_trans_universal や反映判定を未証明の値式の代用にしない。raw な全 ΦZero の中間像を直接 HEq の型に展開する補題は200k whnfに達したため採用せず、同じ値を保つ正規化端点と汎用制限補題を使う。資源上限は変更なし。
-  δ₀ の面の係数は元の s.obj 0 のまま保持する。RawUniversalBoundary_iff_coefficient と of_long_value は、値照合から恒等初期値と任意の全初期値への忠実な反映を証明済み。反映を未証明の値式の代わりに使わない。
-  RawUnitFiberComparison_eq_iff_model は元の最初辺模型比較への同じ射影で raw 比較を反映する。未完：長辺輸送の残りとの合成を同じ全族の三辺・指定三角形へ戻す。
-  同じ余錐 fiber 写像の前合成の充満忠実性で整合を反映し、二三角形・指定 path を保つ全錐比較を束ねる。
-  その極限性から引き戻し保存へ接続。値の整合式・辺ごとの同型だけでは全錐比較の完了としない。
-  続いて部分極限 cospan の極限性、有限和・単射側の接着の存在と交換の同時帰納、finiteShape_cell_induction。
-  HTT §5.3.3、a7 残り12〜24時間（暫定。三角形に沿う全指定因子の照合に不確実性）。strict 図式だけでは完了としない。
-  a7 後は全有限 K の CoherentFilteredLimitExchangeShape K を公開し、F1 の IndFiniteLimitExchangeInput.exchange に渡せることを確認して報告、次の割り当てを待つ。
-
-## 0. 目標と範囲
-
-正本は [infinity-core-F1.md](infinity-core-F1.md) の F1e〜F1g と [foundations.md](foundations.md) §6・§8。
-本計画は目標・設計・現在地・主要宣言を管理し、実施記録はコミットメッセージに置く。
-
-quasicategory の随伴、反射的局所化、cofinality、点ごとの左右 Kan 拡張を構成する。
-Lean は `SerrePositivity/InfinityCategories/F1B/`、namespace は
-新規・再構成は `SerrePositivity.InfinityCategories.F1B`、既存の親名前空間 API は保持。集約は `InfinityCategories/F1B.lean`。
-Core/・F1/・Stable/ は読むだけ。straightening に推移的にも依存しない。
-sorry・追加公理・文献入力を使わず、監査で許す公理は
-`propext`・`Classical.choice`・`Quot.sound` のみ。
+以下は B1〜B5 と F2 第1部の完了記録。旧 F1B の straightening 非依存という制約は
+その旧構成についての記録であり、X が読み取り専用の F1 API を利用することを妨げない。
+凍結時の詳細は本ファイルの X 着手前の履歴と末尾の archive に保持される。
 
 ## 1. 原典と工程
 

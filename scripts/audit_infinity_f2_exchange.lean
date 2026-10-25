@@ -4,6 +4,9 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApe
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroMorphismCoherence
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentSimplexAppendMorphism
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentSimplexLastPostComposition
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCompositionPrismPost
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentRightSlicePostComposition
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentHomSlicePost
 import Lean.Util.CollectAxioms
 
 /-!
@@ -25,6 +28,13 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentSimplexLastPost_comp
 #check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism
 #check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_face_last
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionSimplex_last_post
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexLastPost_reindex
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSlicePost
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSlicePost_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSlicePost_comp
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionPrism_post
+#check @SerrePositivity.InfinityCategories.F2.coherentHomSliceComparison_post
 
 open Lean in
 run_cmd do

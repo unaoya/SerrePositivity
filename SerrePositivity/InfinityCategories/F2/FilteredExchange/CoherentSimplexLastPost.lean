@@ -47,4 +47,14 @@ lemma coherentSimplexLastPost_last :
     (coherentSimplexLastPost s g).obj ⟨ULift.up (Fin.last (n + 1))⟩ = Y :=
   coherentSimplexLastPostObj_last s
 
+/-- 同じ実単体の表示変更は、指定した同じ終域射の後合成を厳密に保持する。 -/
+lemma coherentSimplexLastPost_of_source_eq {n : ℕ}
+    {s t : (SimplicialNerve C) _⦋n + 1⦌} (e : s = t) {Z W : C}
+    (hs : s.obj ⟨ULift.up (Fin.last (n + 1))⟩ = Z)
+    (ht : t.obj ⟨ULift.up (Fin.last (n + 1))⟩ = Z) (g : Z ⟶ W) :
+    coherentSimplexLastPost s (eqToHom hs ≫ g) =
+      coherentSimplexLastPost t (eqToHom ht ≫ g) := by
+  cases e
+  rfl
+
 end SerrePositivity.InfinityCategories.F2
