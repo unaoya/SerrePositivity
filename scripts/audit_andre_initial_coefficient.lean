@@ -82,7 +82,6 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue,
     `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

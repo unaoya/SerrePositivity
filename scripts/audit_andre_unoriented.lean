@@ -53,7 +53,6 @@ run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
     `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory,
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Initiality,
     `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Initiality]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
