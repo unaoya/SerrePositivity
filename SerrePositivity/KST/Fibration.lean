@@ -605,6 +605,8 @@ public import SerrePositivity.KST.Fibration.RelativeSQuotientZeroStage
 public import SerrePositivity.KST.Fibration.RelativeFirstRow
 public import SerrePositivity.KST.Fibration.RelativeFirstRowQuotient
 public import SerrePositivity.KST.Fibration.RelativeFirstRowRealization
+public import SerrePositivity.KST.Fibration.RelativeFirstRowSimplex
+public import SerrePositivity.KST.Fibration.RelativeFirstRowSimplexQuotient
 
 public import SerrePositivity.KST.Fibration.ZeroFunctorFullSCoreFamily
 public import SerrePositivity.KST.Fibration.ZeroFunctorFullSMap

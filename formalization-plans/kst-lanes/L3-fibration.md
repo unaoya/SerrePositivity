@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は相対第一行比較と固定三面からの上側全境界回収まで成功（644 モジュール・4249 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は相対第一行の標準単体座標と固定三面からの上側全境界回収まで成功（646 モジュール・4263 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -246,3 +246,4 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 ### c5 の有限第一行比較の消費
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。
 - `RelativeFirstRowRealization` は正段の残入力を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowQuotient q (n+1)))` に移し、同じ実現・Ex∞ 射・商核四角形へ条件付きで接続する。第一行の標準単体座標同型は同じ商後合成に厳密自然。同じ D-9 実列の `dgKappaNativeFullSSquare_isPullback_of_firstRows` と `dgKappaNativeBFFixedStructure_nonnegative_of_firstRows` まで接続。一般局所化から core 比較を推論せず、有限図式の Verdier 分数・core 比較は Sp 正本へユーザー経由で中継済み。
+- `RelativeFirstRowSimplex` は同じ相対部分複体の標準単体座標への厳密な両側逆を供給する。`RelativeFirstRowSimplexQuotient` は元の商比較との厳密四角形を保持し、正段条件を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowSimplexQuotient q n))` と同値にする。この型から元の商実現への条件付き利用側まで接続済み。先の第一行型と同値な供給型として Sp へユーザー経由で補足した。新たな局所化存在入力は追加しない。
