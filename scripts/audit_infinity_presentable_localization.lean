@@ -349,6 +349,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_isPresentable_of_isAccessible
 #check @exists_generatedSource_terminal_of_isAccessible
 #check @exists_generatedSource_localReplacement_of_isAccessible
+#check @exists_operationsPresentableIndImage
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)

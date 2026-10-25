@@ -59,6 +59,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Pre
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalLocality
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceLocalTerminal
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceAccessibleTerminal
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.OperationsIndImageCandidates
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -180,6 +181,7 @@ P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生�
 同じ実像の既存の accessibility と合わせ、その presentable 性も得た。
 元の presentable 圏と小さい生成族だけから、そのような全 compact 閉包内射と全生成射を
 含む presentable な実 Ind 像の実在を、共通濃度と実比較を選ぶ形でもまとめた。
+同じ実像の選択で、全恒等射・元の指定 pushout の上辺への閉性・左消去を同時に得た。
 二対三則・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
