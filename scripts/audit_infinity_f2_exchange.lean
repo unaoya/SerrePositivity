@@ -28,6 +28,8 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.SimplexInitialLift
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.SimplexSharedFacePrism
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTriangleSimplexEdges
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportIntervalSharedPrism
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedronCoherence
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedronExistence
 import Lean.Util.CollectAxioms
 
 /-!
@@ -115,6 +117,16 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.transportTriangleSimplex_leftPrism
 #check @SerrePositivity.InfinityCategories.F2.transportTriangleSimplex_rightPrism
 #check @SerrePositivity.InfinityCategories.F2.leftFibrationPrism_transportIntervalIso_shared_prism_heq
+
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison01
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison02
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison03
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison12
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison13
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.shared_comparison23
+#check @SerrePositivity.InfinityCategories.F2.TransportTriangleDiagram.comparisonAlong_heq
+#check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.comparison_coherence
+#check @SerrePositivity.InfinityCategories.F2.exists_transportTetrahedronDiagram
 
 open Lean in
 run_cmd do

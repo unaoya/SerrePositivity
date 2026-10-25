@@ -84,8 +84,19 @@ left fibration に持ち上げる。`simplexSharedFacePrism` は隣接面の共�
 射影から底の族の等式を導き、元の選択済み区間比較の値も保持した。
 対象ビルド3341 jobs、専用監査10006宣言で通過、標準三公理のみ。
 推移的 import は2123プロジェクトモジュール、他レーンの未保存依存は0。
-Ncomp 本体は未完。次は同じ実四面体の四面の貼り合わせ式で共有する指定比較を
-消去し、三射と一点係数を保持した元の二段評価と合成評価へ接続する。
+さらに同じ実四面体の六本の共有辺の底の族と元の指定比較を照合した。
+`TransportTetrahedronDiagram.shared_curve01`〜`shared_curve23` と
+`shared_comparison01`〜`shared_comparison23` は、実辺の等式からの帰結。
+四面の元の指定合成比較は `comparison012`・`comparison013`・`comparison023`・
+`comparison123` で共通六辺上に表示し、`comparisonAlong_heq` が元の値を保持する。
+`TransportTetrahedronDiagram.comparison_coherence` で四面の合成則を証明した。
+元の始点自然性と四面の実三辺貼り合わせ式から中間因子を消去しており、
+高次整合性の新しい仮定はない。`exists_transportTetrahedronDiagram` は
+任意の底の実四面体族について、元の初期値を固定する同じ実全四面体を与える。
+統合ビルド3360 jobs、専用監査10118宣言で通過、標準三公理のみ。
+推移的 import は2142プロジェクトモジュール、他レーンの未保存依存は0。
+Ncomp 本体は未完。次は三射と一点係数を保持した元の coherent 図式の四面を
+この定理の四面へ同定し、元の二段評価と合成評価の指定値へ接続する。
 a④・b① は未着手であり、これらの補題だけで完了とは主張しない。
 
 
