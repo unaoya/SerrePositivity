@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiCriterion
+import SerrePositivity.InfinityCategories.Derived.DGModuleUnitShiftBlockInclusion
+import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents
 import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
@@ -7434,6 +7437,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiCriterion,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleUnitShiftBlockInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents,
     `SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition,

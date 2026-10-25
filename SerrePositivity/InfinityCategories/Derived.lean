@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiCriterion
+public import SerrePositivity.InfinityCategories.Derived.DGModuleUnitShiftBlockInclusion
+public import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents
 public import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
