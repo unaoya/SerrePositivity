@@ -19,7 +19,8 @@
   合成が一度の底変換比較の実現同型と一致することを証明。
 - 共同比較の豊穣前合成と、元の既存実現同型の関手前合成の全自然な等式を公開。
 - 共同比較の添字制限も元の指定実現同型の値域制限へ、全図式の同型として同定。
-- 最新 Supply.All は 8701 jobs で成功、独立監査は 705 宣言で標準三公理のみ。
+- 元の相対切断底変換の実現同型・転置後の指定同型の添字制限との両立を公開。
+- 最新 Supply.All は 8704 jobs で成功、独立監査は 719 宣言で標準三公理のみ。
   追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
 - 指定 straightening 底変換の合成則を Supply 内の基盤補題として分離して証明中。
   最終定理への追加仮定にはしない。所有外ファイルは変更していない。
@@ -59,6 +60,7 @@
 - `sectionBaseChangeCompComparison`・`sectionBaseChangeComposite_eq`
 - `sectionBaseChangeCompositeRealizationIso_eq`・`jointRealizationIso_precompose`
 - `jointRealizationIso_reindex`・`functorIsoCurry_precompose_first`
+- `relativeSectionBaseChangeRealizationIso_reindex`・`relativeSectionDiagramInfinityBaseChangeIso_reindex`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -82,8 +84,8 @@
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
-- 元の相対切断底変換比較の添字制限の式を、全比較データとして特殊化する。
-- 転置と端点正規化を介して単体切断比較の合成へ移し、初頂点回収と
+- 全比較データと指定転置後同型の添字制限を単体添字関手へ特殊化する。
+- 端点正規化を介して単体切断比較の合成へ移し、初頂点回収と
   前合成の忠実性で指定 straightening 底変換同型の合成を降下する。
 - 標準 pullback 比較の分類像と節の共同標準比較を全図式の Hom として照合する。
 - 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定

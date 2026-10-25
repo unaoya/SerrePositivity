@@ -173,3 +173,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_precompose_first
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_precompose_first
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionBaseChangeComparison_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionBaseChangeRealizationIso_normalized
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionBaseChangeRealizationIso_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoTranspose_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoTranspose_postcomp_pre
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionDiagramInfinityBaseChangeIso_normalized
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSectionDiagramInfinityBaseChangeIso_reindex
