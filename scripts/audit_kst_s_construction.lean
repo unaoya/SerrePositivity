@@ -32123,3 +32123,36 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_difference
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityNullSquare_nu_difference
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_nu_equivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBase_nu_equivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_nu_equivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluing_nu_equivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_equivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_equivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal_nu_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal_nu_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_comparison
