@@ -1,0 +1,11 @@
+{
+ "moves": {
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralExistence": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision"
+ },
+ "stubs": [
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface"
+ ],
+ "keep": []
+}
