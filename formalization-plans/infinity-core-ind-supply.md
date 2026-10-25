@@ -1,10 +1,10 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 18:35 JST）
+## 引き継ぎ（2026-10-25 20:11 JST、Ind-S (8) 完了）
 
 - 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
 - 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp・EInfinity は import しない。
-- 今回：(7) P 向け内ホーン充填閉包の濃度評価。計画正本は本ファイル。
+- 今回：(8) E2-S (7) 向け、豊穣表現可能関手の coherent 全図式比較。計画正本は本ファイル。
   `infinity-core-F1.md` は Ind 所有なので編集しない。
 - (5)：`d4062a19f` で L3 指定型の全族写像・厳密な底・全 fiber 回収を供給済み。
   同じ写像について指定点の値照合から fiber 内の頂点同型を反映する公開補題も供給済み。
@@ -12,17 +12,19 @@
 - (4)：`5686de2be` で内ホーン閉包と小模型、`14923a0d5` で指定逆三角形の保持と
   大きい標的への延長を保存済み。境界・可逆 path の同じ小模型への因子化を接続し、
   `IsLocalization.ulift`・`isLocalization_ulift_iff` まで対象ビルドが通過。
-- 現在地：(7) 完了。Core 三葉の対象ビルド、18宣言の公理・禁止依存・禁止仮定監査、
-  Core/F1/F1B 三監査が通過。既存 IsKappaSmall と宇宙を分けた全公開型への直接適用も通過。
-- 主要宣言：`hasCardinalLT_innerHornClosure`・`cardinal_innerHornClosure_lt`・
-  `hasCardinalLT_model`・`hasCardinalLT_hull_obj`・`exists_hull_hasCardinalLT`。
-- 依存と提供：(7) は Core と mathlib の既存界面のみを使用し、P の e5 へ供給する。
-  IsKappaSmall は F2 定義なので import・複製せず、同じ宇宙では定義通りの `#K.N < μ`、
-  宇宙間では mathlib の `HasCardinalLT K.N μ` を公開する。この型確認をユーザー経由で P へ中継。
-- 未コミット：なし。
-- 既知の問題：P の独自の型訂正は未着。現存する IsKappaSmall への直接適用は検証済み。
-- 残り：(7) の暫定要求型に対する供給残件なし。
-- 次の一手：公開名をユーザーへ報告して P へ中継し、二段目 (7) 完了の規約で停止する。
+- 現在地：(8) 完了。全図式主定理 `representableHomCoherentIso` の対象ビルド
+  （4168 jobs）、要求型への直接適用、8葉120宣言の公理・依存・禁止仮定監査、F1 全監査が通過。
+- 主要宣言：`representableHomFunctor`・`representableHomCoherent`・
+  `representableHomCoherentIso`・`representableHomCosliceIdentity_value`。
+- 依存と提供：2026-10-25 ユーザー承認で、(8) の新規 F1 葉に限り、指定された既存
+  HomInfinityBifunctor と分類側の4入口経由の KST.Spectra の推移的 import を許可。
+  新規葉の KST 直接 import、EInfinity、F2 は禁止。F1B 監査へは登録しない。
+  提供先は E2-S (7)。公開名・コミット・import 入口をユーザー経由で中継する。
+- 未コミット：なし（自身の対象は本コミットで保存）。他レーンの作業は触らない。
+- 既知の問題：既存の逆方向 import 4経路の分割は第 I 段終了時の停止窓に R が行う。
+  レーン時間中の深層編集はしない。x を動かす全比較の自然性は今回は未公開（任意追加項目）。
+- 残り：(8) の必須供給残件なし。x 方向の追加自然性と R の上流整理は上記の通り。
+- 次の一手：公開名・コミット・import 入口をユーザーへ報告し、E2 へ中継して停止する。
 - 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
   以後のコミット本文には変更・検証・残件の実施記録を書く。
 
@@ -197,3 +199,62 @@ HasCardinalLT は mathlib の宇宙多相な既存述語。既存 F2 の定義�
 閉包・各段・model・Hull の直接適用、宇宙を分けた閉包・model・Hull の直接適用、
 18宣言の公理・禁止依存・ModelCategory／強極限仮定監査、Core/F1/F1B 三監査が全て通過。
 許容公理は標準三つのみ。既存の深層三ファイルは不変、監査登録は Core 末尾への追記のみ。
+
+## (8) 三段目と公開界面
+
+1. [x] 規約・要求型・既存の相対 Hom 比較と分類界面を確認する。
+2. [x] 元の豊穣合成の curry を持つ Hom 関手と、小さい coherent nerve 上の全実現を構成する。
+3. [x] 同じ恒等射の点から coslice → unstraightening の全空間比較を作り、
+   実際の fiber 制限を全高次の豊穣作用と照合して同値を示す。
+4. [x] 始点固定 twisted arrow の分類との全図式 FunctorIso を公開する。
+5. [x] 同じ全空間比較の恒等点を厳密に回収する。x を動かす全比較の自然性は未公開。
+6. [x] 8葉120宣言と F1 を最終監査。所有分を本コミットで保存し、公開名・入口を報告して停止する。
+
+要求型：D : Type u、Category.{u} D、SimplicialCategory D、全 sHom Kan。
+始域は uliftNC(D)、値域は SpaceInfinity、各単体の作用は s.down.comp SSet H_x。
+終域図式は homInfinityCovariant (coherentNerveVertex x)。値同値だけからは導いていない。
+
+公開名（namespace SerrePositivity.InfinityCategories）：
+
+- `representableHomFunctor`：元の Hom の Kan 対象と `curry (eComp SSet x y z)` の作用。
+  `_obj`・`_map` は厳密な等式（Coherent/RepresentableHomFunctor）。
+- `representableHomCoherent`：指定された全単体での後合成。
+- `representableHomCoherentIso`：この全実現から指定された共変 Hom 全図式への FunctorIso
+  （Coherent/RepresentableHomInfinity）。`_app`・`_vertex` も供給。
+- `representableHomCosliceComparison_isQCatEquivalence`：恒等点から作った一つの大域射の同値性。
+- `representableHomIdentityCoefficient_value`・`representableHomCosliceIdentity_value`：
+  同じ恒等係数と始点 fiber の値は元の豊穣恒等射の零単体を厳密に回収する。
+  これらは対象宇宙を持ち上げた圏上で使う（Coherent/RepresentableHomCoslice）。
+- `KanCosliceComparison.map`・`projection`・`identity`・`fiber_actionIso`：
+  指定点からの全空間写像・厳密な底・恒等錐・全反転 Hom 上の作用の照合。
+- `CoherentObjectLift.nerveIso`・`nerveIso_vertex`・`realization`：Hom を変えない対象宇宙の表示変更。
+- `covariantHomIsoOfCosliceEquivalence`・`covariantHomIsoOfDisplayedCosliceEquivalence`：
+  同じ全空間同値から、元の共変 Hom 全図式への分類と表示変更。
+
+主経路：対象宇宙だけの持ち上げ → 同じ恒等点からの全 coslice 比較 →
+全 Hom 上の作用と豊穣単位則 → 同じ全空間の同値 → 小さい表示への降下 →
+始点固定 twisted arrow の分類 → 元の homInfinityCovariant。
+同型の成分が別に指定された homInfinityCovariantValueEquivalence の逆射と一致するとは主張しない。
+
+2026-10-25 ユーザー承認の import 例外（(8) の新規 F1 葉のみ）：
+
+新規 Yoneda/CovariantCosliceClassification の既存上流への入口は次の4本。
+これらを経由する KST.Spectra の推移的 import を許可し、直接 import は禁止する。
+
+- F1/MappingSpaces/HomInfinityBifunctor。
+- F1/Yoneda/YonedaSourceBaseChange。
+- F1/TwistedArrow/SourceInitial。
+- F1/StraighteningLeft/LeftStraighteningEssentialSurjectivity。
+
+R の第 I 段終了時の停止窓での分割対象（レーンでは変更しない）：
+
+- F1/Limits/ContractibleKanTower → KST/Spectra/FibrationTowerLimitCone。
+- F1/Limits/InverseSequenceQuasicategory → KST/Spectra/FibrationTowerLimitCone。
+- HomotopyLimits/FibrationComponentTransport → KST/Spectra/FibrationIntervalLifting。
+- HomotopyLimits/FibrationComponentTransport → KST/Spectra/FiberComponents。
+
+監査 (8) の項に例外を明記。新規葉のソースの直接 KST import、EInfinity/F2 閉包、
+Spectra 以外の KST 閉包を拒否し、全宣言の標準3公理・ModelCategory 不使用を検査する。
+F1B/Core の監査は変更しない。
+ログ：`/tmp/ind-s8-final-build.log`・`/tmp/ind-s8-final-public-type.log`・
+`/tmp/ind-s8-final-leaf-audit.log`・`/tmp/ind-s8-final-f1-audit.log`。

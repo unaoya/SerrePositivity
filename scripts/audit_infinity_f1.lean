@@ -9517,3 +9517,53 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (5): no declarations audited"
   logInfo m!"Ind-S (5) audit passed: {count} declarations."
+
+-- Ind-S (8): 豊穣表現可能関手の coherent 全図式比較。
+-- 2026-10-25 ユーザー許可：(8) の新規 F1 葉に限り、既存上流入口
+-- HomInfinityBifunctor・YonedaSourceBaseChange・SourceInitial・
+-- LeftStraighteningEssentialSurjectivity 経由の KST.Spectra 推移依存を許可。
+-- 逆方向 import 4経路の分割は第 I 段終了時に R が担当。深層は編集しない。
+-- 新規葉の KST 直接 import、EInfinity、F2 の依存は禁止。F1B 監査には登録しない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Coherent.RepresentableHomInfinity },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    let s := mod.module.toString
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2"].any
+        (s.startsWith ·) ||
+        (s.startsWith "SerrePositivity.KST" && !s.startsWith "SerrePositivity.KST.Spectra") then
+      throwError "Ind-S (8): forbidden lane dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.F1.Coherent.SmallKanRealization,
+    `SerrePositivity.InfinityCategories.F1.Coherent.RepresentableHomFunctor,
+    `SerrePositivity.InfinityCategories.F1.Coherent.ObjectLift,
+    `SerrePositivity.InfinityCategories.F1.Coherent.KanCosliceComparison,
+    `SerrePositivity.InfinityCategories.F1.Coherent.RepresentableHomCoslice,
+    `SerrePositivity.InfinityCategories.F1.Yoneda.CovariantCosliceClassification,
+    `SerrePositivity.InfinityCategories.F1.Yoneda.CovariantCosliceTransport,
+    `SerrePositivity.InfinityCategories.F1.Coherent.RepresentableHomInfinity]
+  for mod in modules do
+    let path := System.FilePath.mk ((mod.toString.replace "." "/") ++ ".lean")
+    let source ← IO.FS.readFile path
+    for line in source.splitOn "\n" do
+      let line := line.trimAscii.toString
+      if (line.startsWith "import " || line.startsWith "public import ") &&
+          (line.splitOn "SerrePositivity.KST").length != 1 then
+        throwError "Ind-S (8): forbidden direct KST import in {mod}"
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (8): unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (8): unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (8): no declarations audited"
+  logInfo m!"Ind-S coherent representable comparison audit passed: {count} declarations."
