@@ -143,3 +143,11 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSourceIdentity_leg_mem
 #check @generatedSourceIdentity
 #check @generatedSourceIdentity_isInitial
+
+#check @sourceCosliceArrowFamily
+#check @sourceCosliceArrowFamily_vertex
+#check @sourceCosliceArrowFamily_target
+#check @generatedSourceArrows
+#check @generatedSourceArrows_inclusion
+#check @generatedSourceArrows_target
+#check @indArrowImageFamily_hasCommonCompactPresentation
