@@ -53,7 +53,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.HomotopyStabilization,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.AccumulatedHomotopyEquation,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyEquation,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyImage,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableProjectionCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelVertexSupport]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

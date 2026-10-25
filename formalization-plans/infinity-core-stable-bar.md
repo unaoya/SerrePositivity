@@ -4,7 +4,7 @@
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（3666 jobs、43葉）。専用公理監査成功（450宣言、標準三公理のみ）。
+- 所有 All のビルド成功（3669 jobs、46葉）。専用公理監査成功（467宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
@@ -16,9 +16,13 @@
 - 19:40 採用の正規化中間模型・同じ theta の変形 retract を続行中。
 - c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
 ### 残り（依存順）
-- 1. MC 仮定付き実 bar 加群と正規化模型・変形 retract の構成（8–24時間）。
-- 2. 元の coherent 図式の native 余錐と全 Hom の普遍性（8–24時間）。
-- 3. native κ-filtered 余極限と strict dg 余極限の評価比較（8–24時間）。
+- 1. 工程A：変形 retract は D に移管。CoherentBar/Retract/ の新規葉は読み取り専用。
+  正規化加群の公開型は維持。変更が必要なら実施前にユーザーへ報告。
+- 2. 工程B：D-bar は正規化側の native 余錐と全 Hom の普遍性に専念（8–24時間）。
+- 3. 工程C1/C2：strict 擬同型と比較の組み立ては D-e に移管。StrictComparison/ は読み取り専用。
+  読み取り専用 KappaCovers.StrictComparison の DGKappaStrictFilteredColimitComparison R D κ の値として公開する。
+  添字は Type u の κ-filtered poset。c2 もこの比較から導く。
+  ∞ 圏から poset への共終性は後段の Ind.exists_cofinal_kappaFiltered_poset が担当。
 - 4. representable・全 shift・κ未満 sphere-free 基底の native κ-compact 性（4–12時間）。
 - 5. 生成元判定から c6 の実 perfect／retract、c7 の七入力へ接続（1–3時間）。
 - 6. 自分の集約・監査・限定コミット（1時間）。
@@ -38,16 +42,16 @@
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
 - DGKappaClosedCompactGeneratorCriterion を c6・c7 の正本として使用予定。
 - MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
-- 編集所有は Derived/CoherentBar/、その All、専用監査、本計画のみ。
+- 編集所有は Derived/CoherentBar/（Retract/・StrictComparison/ を除く）、その All、専用監査、本計画のみ。
 ### 未コミット
-- なし（所有葉・集約・専用監査・本計画を限定コミットで保存）。
+- なし（担当移管前の検証済み補助3葉を限定保存）。
 ### 既知の問題
 - native 余錐・普遍性と filtered 評価比較は未構成。代数的閉列同値を native 普遍性とは扱わない。
 - 安定作用素が退化因子を消すことと、実射影の補正包含・変形 retract が残る。
   安定自己写像の恒等への鎖ホモトピーだけで、正規化模型との retract とは扱わない。
 - MC 仮定付き API を保持し、公開 MC 定理を代入する無条件 API を併設。
 ### 次の一手
-- 安定作用素・累積ホモトピーの正規化射影像を計算し、退化因子の消去と補正包含を作る。
+- 正規化加群からの全 Hom を正規化列に同定し、native 余錐の全 HA・退化整合性を構成する。
 
 ## 採用された設計追加（19:40）
 - 根拠：dgCoherentBarIndex は退化を含む全単体を独立因子にする。

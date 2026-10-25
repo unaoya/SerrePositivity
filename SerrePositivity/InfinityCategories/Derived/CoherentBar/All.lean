@@ -42,3 +42,6 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.HomotopySta
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.AccumulatedHomotopyEquation
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyEquation
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyImage
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StableProjectionCompatibility
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelVertexSupport
