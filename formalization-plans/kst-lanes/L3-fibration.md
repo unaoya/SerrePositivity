@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は相対第一行の標準単体座標と制御充填族の実三角柱利用側まで成功（648 モジュール・4284 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は採用済み再構成・因子分解命題の条件付き消費まで成功（653 モジュール・4343 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -160,8 +160,8 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 | 零次 cofinality | 厳密 dg 入力の ν と K の指定比較へ接続する。完備化という条件だけでは π₀ 全射性を入力せず、実 K 比較で検査する。K-F の piZeroCofinalityObstructionEquiv は中央 π₋₁=0 の下で、元の射影の余核を左 fiber の π₋₁ と同定する。 |
 | K-7 への提供 | 指定射影と点を保つ条件付き相対 S fiber 比較、零次障害・連結性判定。各 suspension 段階の実比較と構造写像の整合性が必要。非連結 K 自体とその局所化性は未構成。 |
 
-### Ind-S (9)：指定全長 Hom の全族再構成の供給型
-- 以下は F1 新規葉への仕様命題の型であり、主経路の新しい存在仮定ではない。`K` は任意の単体集合。二短辺 `f`・`g` も指定全族として固定し、全ホーン族 `a` はその標準 coherent 区間像を厳密に回収する。
+### Ind-S (9)：指定全長 Hom の全族再構成の供給型（採用（06:29））
+- (9)・(9b) はユーザー採用（06:29）、一括で Ind-S に発注済み。以下は F1 新規葉への仕様命題の型であり、主経路の新しい存在仮定ではない。`K` は任意の単体集合。二短辺 `f`・`g` も指定全族として固定し、全ホーン族 `a` はその標準 coherent 区間像を厳密に回収する。
 - `c` は同じ全短辺族の元の豊穣合成。`L` は合成端を全入力で `c` に固定した全長 Hom 族の空間、`T` は同じ全ホーン `a` を固定した二胞体族の実延長空間。`encode`・`longHom` の厳密回収は全族を保持する。読出しは各指定入力点で元の全豊穣 Hom に一致する。
 - K-B では元の全 S• Hom を core 包含で制限してから渡す。未制限の全 S• Hom は始域が異なる。末尾の比較は同じ三面 `b` を固定する実充填空間内で取り、制御充填を実際に構成してから既存充填と比較する。任意四面の可填性を境界一致だけから要求しない。
 ```lean
@@ -249,5 +249,17 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - `RelativeFirstRowRealization` は正段の残入力を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowQuotient q (n+1)))` に移し、同じ実現・Ex∞ 射・商核四角形へ条件付きで接続する。第一行の標準単体座標同型は同じ商後合成に厳密自然。同じ D-9 実列の `dgKappaNativeFullSSquare_isPullback_of_firstRows` と `dgKappaNativeBFFixedStructure_nonnegative_of_firstRows` まで接続。一般局所化から core 比較を推論せず、有限図式の Verdier 分数・core 比較は Sp 正本へユーザー経由で中継済み。
 - `RelativeFirstRowSimplex` は同じ相対部分複体の標準単体座標への厳密な両側逆を供給する。`RelativeFirstRowSimplexQuotient` は元の商比較との厳密四角形を保持し、正段条件を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowSimplexQuotient q n))` と同値にする。この型から元の商実現への条件付き利用側まで接続済み。先の第一行型と同値な供給型として Sp へユーザー経由で補足した。新たな局所化存在入力は追加しない。
 
-### 追加設計確認：同じ三面を保つ制御三単体の実構成（未採用）
-- 現行 Ind-S (9) の二胞体再構成と固定三面 fiber の可縮性だけから、指定欠面を持つ F の存在を推論しない。元の二胞体と二つの厳密合成面を保ち、同じ長 Hom を持つ因子分解三単体族を F1 に追加供給依頼する案。[型・供給範囲・採否の影響](archive/L3-controlled-factorization-tetra-proposal.md)。全族 Hom 回収の既存要求は保持。新しい存在仮定は本体へ追加せず、ユーザー経由で設計確認する。
+### Ind-S (9b)：同じ三面を保つ制御三単体の実構成（採用（06:29））
+- ユーザー採用（06:29）。(9) と (9b) を一括で Ind-S に発注済み。元の二胞体・二つの厳密合成面・同じ長 Hom を保つ因子分解三単体族を使い、構成後に同じ固定三面 fiber 内で既存充填と比較する。[型・供給範囲](archive/L3-controlled-factorization-tetra-proposal.md)。届くまでは両命題を明示定理引数に取り、存在は主張しない。全族 Hom 回収の既存要求は保持。今後の提案・依頼は要約と型のファイル・行を必ずユーザー経由で中継する。
+
+### 採用済み供給命題の利用側
+
+| 明示定理引数 | 型の正本（SerrePositivity/ 以下） | 供給元・回収内容 |
+|---|---|---|
+| `h9 : zeroMiddleControlledTriangleSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:32 | Ind-S (9)：指定二短辺・合成端・全族 encode/read の厳密切断・指定点の全 native Hom 回収 |
+| `h9b : zeroMiddleFactorizationTetraSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:80 | Ind-S (9b)：元の native 面・二つの厳密合成面・欠面の全 native Hom 回収 |
+
+- どちらも採用済み命題の明示引数であり、存在は主張しない。`ZeroMiddleFullSReconstruction`・`ZeroMiddleReconstructedFamily` は元の core 始域・全 S• 中間頂点と同じ短辺への再構成・実ホーン回収・同じ実入力への読戻しを保持する。`ZeroMiddleFactorizationTetra`・`ZeroMiddleFactorizationComparison` は同じ実因子分解族の三面・長 Hom を回収し、ホーン全体の回収後に既存充填との固定三面 fiber 内比較へ渡す。動く共有対角の貼り合わせと K-6 c4・c5、K-7 c5・d3 の無条件化は未完。
+
+### 追加仕様確認：全族の共有対角の厳密回収（未採用）
+- 現行 (9) の各 K 頂点の全 native Hom 回収から、K の非退化一単体に沿う共有対角の厳密式を推論しない。同じ encode/read に直接 path 評価の全族回収式を添える補足案をユーザー経由で提示する。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。本体へ新たな存在仮定は追加しない。
