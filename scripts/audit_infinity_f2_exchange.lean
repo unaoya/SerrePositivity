@@ -17,6 +17,7 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePrismNativ
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalFiberSourceIsoComposition
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareLiftComparisonIndependence
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionFiberEndpointEquality
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareDiagramChosenComparison
 import Lean.Util.CollectAxioms
 
 /-!
@@ -69,6 +70,11 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.TransportSquareLift.topComparison_naturality
 #check @SerrePositivity.InfinityCategories.F2.TransportSquareLift.comparison_eq
 #check @SerrePositivity.InfinityCategories.F2.TransportSquareLift.comparison_eq_transportIso
+
+#check @SerrePositivity.InfinityCategories.F2.transportSquareOrigin_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.TransportSquareDiagram.comparison_eq
+#check @SerrePositivity.InfinityCategories.F2.TransportSquareDiagram.comparison_eq_transportIso
+#check @SerrePositivity.InfinityCategories.F2.leftFibrationPrism_transportIntervalIso_universal_refl
 
 open Lean in
 run_cmd do

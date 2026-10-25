@@ -46,6 +46,13 @@ X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
 `TransportSquareLift.comparison_eq_transportIso`。
 固定初期図式上の終点比較の恒等性、元の区間比較の始点正方形、左右・上辺の
 指定自然性から、中間の頂点比較を消去した。全パラメータと元の指定同型を保持。
+さらに固定底辺の条件を外し、左下角だけを固定した任意の実四角形について
+`TransportSquareDiagram.comparison_eq` と
+`TransportSquareDiagram.comparison_eq_transportIso` を構成した（3264 jobs）。
+専用監査は9831宣言で通過、標準三公理のみ。
+下辺の指定比較を右辺に沿って輸送し、四つの元の指定比較を貼った値を使う。
+元の普遍 prism の区間比較が恒等であることも
+`leftFibrationPrism_transportIntervalIso_universal_refl` で確認した。
 Ncomp 本体は未完。次は同じ実高次図式上で元の二段評価と合成評価を照合する。
 
 
