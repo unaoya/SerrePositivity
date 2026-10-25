@@ -52,6 +52,7 @@ a { color: var(--accent); }
 h1 { font-size: 1.7rem; line-height: 1.4; margin: 0 0 0.3rem; }
 h2 { font-size: 1.3rem; margin-top: 2.6rem; padding-bottom: 0.2rem; border-bottom: 1px solid var(--rule); }
 h3 { font-size: 1.08rem; margin-top: 1.8rem; }
+h4 { font-size: 1rem; margin-top: 1.4rem; color: var(--muted); }
 .meta { color: var(--muted); font-size: 0.88rem; }
 code, pre { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.86em; }
 code { background: var(--code-bg); padding: 0.05em 0.3em; border-radius: 3px; }

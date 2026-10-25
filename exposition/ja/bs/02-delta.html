@@ -65,6 +65,69 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td><code>Delta/Free/</code> 直下</td><td class="num">20（12）</td><td>Lemma 2.11：整数係数の自由 δ 環 <code>FreeDeltaRing</code>（\(\mathbb Z_{(p)}\) ではなく \(\mathbb Z\) 上）と相対版 <code>RelativeFreeDeltaRing</code>（基底 δ 環上の \(A\{x_s\}\)）、普遍性、生成元と関係式による表示 <code>existsUnique_relativeFreePresentationHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreePresentation.lean">RelativeFreePresentation:21</a>）。Frobenius の平坦性（p 完全忠実平坦・mod p 忠実平坦・座標ごとの剰余）は 6 本</td></tr>
 <tr><td><code>Delta/Free/Finite/</code></td><td class="num">25（13）</td><td>相対自由 δ 環の有限段 \(A[x_{s,0},\dots,x_{s,N}]\) での δ の計算、Witt 座標と δ 変数の三角形同型（Rem 2.13・2.14 の相対版）。主に André の一段の拡大の関係式計算（<code>Division/Relations</code>）のための道具</td></tr>
 </table></div>
+
+<h3>詳しく：定義（Def 2.1〜Rem 2.4）</h3>
+<p class="meta">2026-10-25。§2.1 を三つの塊（定義／商と添加／自由 δ 環）に分けて読む、その一つ目。</p>
+
+<h4>原典の内容（pp.13–14）</h4>
+<ul>
+  <li><b>Def 2.1</b>：δ 環とは可換環 \(R\) と写像 \(\delta\colon R\to R\) で、\(\delta(0)=\delta(1)=0\) と
+  \[\delta(xy)=x^p\delta(y)+y^p\delta(x)+p\,\delta(x)\delta(y),\qquad \delta(x+y)=\delta(x)+\delta(y)+\tfrac{x^p+y^p-(x+y)^p}{p}\]
+  を満たすもの。加法公式の分数は \(\mathbb Z[x,y]\) の多項式なので、どの環でも評価できる（p.13 冒頭）。</li>
+  <li><b>Rem 2.2</b>：\(\varphi(x)=x^p+p\delta(x)\) は環準同型で、\(R/p\) の Frobenius を持ち上げる。Def 2.1 の恒等式はここから逆算したもの。\(R\) が p ねじれなしなら、Frobenius の持ち上げ \(\varphi\) と δ 構造は \(\delta(x)=(\varphi(x)-x^p)/p\) で一対一。</li>
+  <li><b>Rem 2.3</b>：λ 環との関係、rank 1 の元（\(\delta(x)=0\)）。E3 には不要。</li>
+  <li><b>Rem 2.4</b>（Rezk）：\(W_2(R)=R\times R\) に Witt の加法・乗法を入れると、δ 構造は第 0 成分 \(\epsilon\colon W_2(R)\to R\) の環準同型切断 \(w(x)=(x,\delta(x))\) と同じ。</li>
+  <li><b>Rem 2.5</b>：導来の Frobenius 持ち上げとしての解釈。E3 には不要。</li>
+</ul>
+
+<h4>Lean の定義：Rem 2.4 を採る</h4>
+<p><a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:58</a></p>
+<pre><code>abbrev WittTwo := TruncatedWittVector p 2 A      -- Mathlib の長さ 2 の Witt 環
+
+structure DeltaStructure where
+  sectionHom : A →+* WittTwo p A                 -- w : R → W₂(R)
+  coeff_zero : ∀ x, (sectionHom x).coeff 0 = x   -- ε ∘ w = id
+
+def delta (D) (x) := (D.sectionHom x).coeff 1     -- δ(x) = w(x) の第 1 座標
+def frobeniusLift (D) := (wittTwoFrobenius p A).comp D.sectionHom</code></pre>
+<ul>
+  <li>δ 構造は型クラスではなくデータなので、同じ環に複数の δ 構造を持てる（Warn 2.41 のような比較ができる）。</li>
+  <li><code>wittTwoFrobenius</code> は \(W_2\) の第 1 ghost 成分 \((x_0,x_1)\mapsto x_0^p+px_1\)（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:39</a>）。ghost 成分は環準同型なので、\(\varphi=\mathrm{ghost}_1\circ w\) が環準同型であること（Rem 2.2 の前半）は合成から自動的に出る。式 \(\varphi(x)=x^p+p\delta(x)\) は <code>frobeniusLift_apply</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:120</a>）。</li>
+  <li>\(\mathbb Z_{(p)}\) 代数の仮定は不要で、零環も含め任意の可換環で通る（D2）。</li>
+</ul>
+
+<h4>Def 2.1 の恒等式の導き方</h4>
+<p><code>delta_mul</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:87</a>）と <code>delta_add</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:98</a>）は、どちらも「切断が環準同型なので、Witt 環の積・和の第 1 座標の公式を読む」だけで出る。公式は共通基盤の二本：</p>
+<ul>
+  <li><code>witt_mul_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittCoefficientOne.lean">WittCoefficientOne:24</a>）：\((xy)_1=x_0^py_1+x_1y_0^p+p\,x_1y_1\)</li>
+  <li><code>witt_add_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:18</a>）：\((x+y)_1=x_1+y_1+([x_0]+[y_0])_1\)（\([\,\cdot\,]\) は Teichmüller 元）</li>
+</ul>
+<p>この二本の証明は、原典が Lemma 2.32 などで使う「普遍の場合に帰着する」手口と同じである：(1) 変数 \(X_{(i,n)}\) の整数係数多項式環 \(U\) は p ねじれなし、(2) \(U\) で第 1 ghost 成分 \(x_0^p+px_1\) の加法性・乗法性を書いて \(p\) を消去する（<code>mul_left_cancel₀</code>）、(3) 評価写像で任意の環 \(R\) へ送る。</p>
+<p>加法公式の補正項は \(p\) で割る式ではなく、整数係数の多項式 <code>wittAdditionCarry</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:53</a>。\(p\) 倍すると \(X^p+Y^p-(X+Y)^p\) になる、:60）として定義し、どの環でも評価できる。原典の「分数は \(\mathbb Z[x,y]\) の元なので任意の環で評価できる」をそのまま形式化したもの。</p>
+<p>逆向き（Def 2.1 の恒等式を満たす写像から切断を作る）は <code>ofFunction</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdentities.lean">DeltaIdentities:19</a>）。\(x\mapsto(x,\delta x)\) が環準同型であることを、座標ごとに同じ二本の公式で確かめる。<code>ofFunction_deltaStructure</code> で、行って戻ると元の構造に戻る。</p>
+
+<h4>Rem 2.2 の一対一対応</h4>
+<ul>
+  <li><code>existsUnique_of_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:19</a>）：p 正則な \(A\) の環自己準同型 \(\varphi\) で \(\varphi(x)-x^p\in pA\) なら、\(\varphi\) を Frobenius 持ち上げとする δ 構造が一意に存在する。\(\delta(x)\) を \(p\delta(x)=\varphi(x)-x^p\) の解として選び、\(\varphi\) の加法性・乗法性を書いて \(p\) を消去すると Def 2.1 の恒等式が出るので、<code>ofFunction</code> で組み立てる。</li>
+  <li>一意性 <code>eq_of_frobeniusLift_eq</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:207</a>）。p ねじれがあると φ から δ は決まらないので、ここには p 正則が要る（原典どおり）。</li>
+  <li>mod p の形 <code>existsUnique_of_mod_p</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:63</a>）は、Witt 環 \(W(k)\) の δ 構造（Cor 2.31）を作るときに使う。</li>
+</ul>
+
+<h4>δ 射</h4>
+<ul>
+  <li><code>IsDeltaHom D E f</code> は \(f\circ\delta=\delta\circ f\) で定義（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:162</a>）。\(W_2\) の図式の可換性と同値であることは <a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaSectionNaturality.lean">DeltaSectionNaturality:18</a>。</li>
+  <li>p ねじれのない終域なら、Frobenius と可換な環準同型は自動的に δ 射（<code>isDeltaHom_of_map_frobeniusLift</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:216</a>）。Cor 2.31 の「完全 p 完備 δ 環の間の環準同型は自動的に δ 射」に使う。</li>
+</ul>
+
+<div class="box">
+<p class="label">この塊で押さえること</p>
+<ol>
+  <li>定義を Rem 2.4 の形にしたので、Def 2.1 の恒等式も φ の環準同型性も Witt 環の公式から自動的に出る。\(p\) で割る操作はどこにも現れない。</li>
+  <li>その代わり Witt 環の第 1 座標の公式（共通基盤の二本）が要る。証明は「整数係数の普遍多項式環で \(p\) を消去して評価する」で、原典がよく使う帰着の手口と同じ。</li>
+  <li>Rem 2.3・2.5 は形式化しておらず、E3 にも不要。</li>
+</ol>
+</div>
+
 <div class="box">
 <p class="label">読んで分かったこと（§2.1）</p>
 <ul>
