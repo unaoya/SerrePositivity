@@ -2753,4 +2753,16 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperFactor
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTriangleFactor
 
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFSOAAdjoint
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFSOAComparison
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFSOASpectrumComparison
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFSOAStructure
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFSOAZeroStructure
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFVertexComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -33059,3 +33059,87 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleFactor_diagonal
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleFactor_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFStepAdjoint_component
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFStepAdjoint_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSourceSOAComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSourceSOAComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAAssemblyAdjoint_component
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAAssemblyAdjoint_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_positive_adjoint
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_positive_adjoint
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparisonLevel_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparisonLevel_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparisonBoundary_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparisonBoundary_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundarySOAComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundarySOAComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundarySOAComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundarySOAComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_zero
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASequenceComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASequenceComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_component
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_levelwise
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_levelwise
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_zero
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_positive_structure
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_positive_structure
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_structure
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_structure
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_structure
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAComparison_structure
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_zero_structure
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFRawSOAComparison_zero_structure
+
+#check @SerrePositivity.KST.SConstruction.nativeBFVertexComparisonTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeBFVertexComparisonTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_homotopyMap_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_homotopyMap_eq
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOASpectrumComparison_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAVertexIso
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAVertexIso
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFKernelQuotientVertexIso
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFKernelQuotientVertexIso
