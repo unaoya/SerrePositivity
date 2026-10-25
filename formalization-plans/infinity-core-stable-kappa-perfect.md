@@ -27,6 +27,9 @@
   有限 support の cycle と境界の下降により零段階からの全射性と核を同定。
   実ホモロジーを一次微分の余核に同定し、全 coherent 入力に対する
   `dgCoherentBarHomologyColimitIso` を構成済み。strict 標準射の擬同型性は未完。
+  strict/coherent ホモロジー図式の自然同型、標的の filtered ホモロジー
+  余極限同型と全脚の可換性、実増大と graded 増大の全成分の一致、
+  零段階での増大比較、非退化 bar の標準増大の余核性を構成。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
 - 主定理の入力修正：κ-filtered poset 上でも native 図式は coherent のまま。
@@ -47,7 +50,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,593 jobs・専用監査138葉1211宣言通過。
+- 検証：coherent 入力への修正後、集約4,600 jobs・専用監査145葉1286宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
