@@ -3032,3 +3032,19 @@ Mon (Complex R) への供給では実生成 cofibration の小対象論法から
 宇宙比較 `Hammock.AsSmallComparison.colimitIso` は元の hammock 全語を実同型で揃える。
 `FrameHom/ProductSimplexUniverseOver`・`ProductSimplexUniverseProjectionWeak`・
 `UniverseNerveCostructuredPullback` は対象宇宙と Hom 宇宙の異なる同じ全積単体を扱う。
+
+`RightFrameHammockFamily` は元の right Hom と hammock Hom の全標的比較を
+anodyne 反転後の一つの自然同型として束ねる。
+`RightFrameHammockKanSpan` は同じ六つの実弱自然変換を全図式として公開する。
+`RightFrameHammockCoherent` の `rightFrameHammockCoherentComparison` は
+その同じ六辺の実現を順に反転して合成した関手 ∞ 圏の同型であり、
+点ごとの Hom 同値だけを並べた主張ではない。
+`rightFrameHammockCoherentEdge_at` は元の辺の全成分を回収し、
+`rightFrameHammockCoherentComparison_precomp` は任意の全図式への適用。
+`RightFrameUnitFamily` は元の射の全次数・全標的の単位三角形を厳密に保存する。
+`SourceRoofUnitNormalization` は同じ元の射の roof の零単体を回収し、
+元の hammock 射へ戻す実ホモトピーを与える。
+`DGAlgebra/FrameLocalizationInput` と `FrameHammockCoherent` は実自由 I/J の分解を代入し、
+source/right frame、bifibrant 局所化普遍性、全 coherent 比較を追加の分解仮定なしで公開する。
+`ModelBifibrantSpecifiedLocalization` は指定 K と指定二胞体をそのまま保持する。
+全 C の局所化普遍性は Ind-S (6) の源移送待ちである。
