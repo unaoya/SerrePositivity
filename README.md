@@ -189,6 +189,12 @@ the two expositions.
 
 ## Source and license
 
+Copyright 2026 the SerrePositivity contributors.
+The Lean code, scripts and documentation in this repository are licensed under the
+Apache License, Version 2.0; see `LICENSE`.
+
 The preprint is taken from [openai/math](https://github.com/openai/math)
 (commit `adc7f1241b42`, family 193), distributed under the Apache License 2.0.
 See `paper/SOURCE.md`. This project is not affiliated with OpenAI.
+Reference papers used for checking citations (`paper/refs/`) are not distributed with this
+repository.
