@@ -875,3 +875,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_splitCompStruct_of_identity_longEdge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_normalizedCoslice_splitCompStruct
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteAlternating_split
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialEvenFace_successor_join
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_join
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_join
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_old
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_old
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_even
+#check @SerrePositivity.InfinityCategories.F2.Presentable.iteratedCocone_vertex_val
+#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_target_face
+#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_source_face

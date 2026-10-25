@@ -454,3 +454,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SplitCoconeExten
 public import SerrePositivity.InfinityCategories.F2.Presentable.SplitTriangleDecomposition
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeSplitCompStruct
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteAlternatingSplit
+public import SerrePositivity.InfinityCategories.F2.Presentable.AlternatingJoinShapes
+public import SerrePositivity.InfinityCategories.F2.Presentable.StandardAlternatingExtension
+public import SerrePositivity.InfinityCategories.F2.Presentable.SplitCoconeExtensionFaces
