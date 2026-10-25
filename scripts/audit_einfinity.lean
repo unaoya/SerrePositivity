@@ -9802,6 +9802,23 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.Perfectoidization.PerfectoidizationInterfaceCAlg.toE3,
     `SerrePositivity.EInfinity.Perfectoidization.nonempty_e3_of_cAlg]
 
+@[noinline] private def e2RequiredBatch225 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.AlexanderWhitney.cochainComonObj,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComon,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonMap,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComon_X,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComon_comul,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComon_counit,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonMap_hom,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonMap_id,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonMap_comp,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonFunctor,
+    `SerrePositivity.EInfinity.AlexanderWhitney.cochainComonFunctor_forget,
+    `SerrePositivity.EInfinity.AlexanderWhitney.simplexCochainComonFunctor,
+    `SerrePositivity.EInfinity.AlexanderWhitney.simplexCochainComonFunctor_obj_X,
+    `SerrePositivity.EInfinity.AlexanderWhitney.simplexCochainComonFunctor_map_hom,
+    `SerrePositivity.EInfinity.AlexanderWhitney.simplexCochainComonFunctor_forget]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9835,7 +9852,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -26523,3 +26540,48 @@ example (h : Nonempty (PerfectoidizationInterfaceCAlg R p hR)) :
     Nonempty (PerfectoidizationInterfaceE3 R p hR) :=
   nonempty_e3_of_cAlg R p h
 end e2Fixtures224
+
+
+noncomputable section e2Fixtures225
+open CategoryTheory MonoidalCategory SSet
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.EInfinity.AlexanderWhitney
+open scoped Simplicial
+universe e2F225U
+variable (A : Type e2F225U) [CommRing A]
+
+example (X : SSet.{0}) : Comon (Complex A) := cochainComon A X
+
+example (X : SSet.{0}) : (cochainComon A X).X = cochains A X := rfl
+
+example (X : SSet.{0}) :
+    @ComonObj.comul _ _ _ _ (cochainComon A X).comon = cochainDiagonal A X := rfl
+
+example (X : SSet.{0}) :
+    @ComonObj.counit _ _ _ _ (cochainComon A X).comon = cochainCounit A X := rfl
+
+example {X Y : SSet.{0}} (f : X ⟶ Y) :
+    (cochainComonMap A f).hom = cochainMap A f := rfl
+
+example (X : SSet.{0}) : cochainComonMap A (𝟙 X) = 𝟙 _ := cochainComonMap_id A X
+
+example {X Y Z : SSet.{0}} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    cochainComonMap A (f ≫ g) = cochainComonMap A f ≫ cochainComonMap A g :=
+  cochainComonMap_comp A f g
+
+example : cochainComonFunctor A ⋙ Comon.forget (Complex A) =
+    SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A := rfl
+
+example : SimplexCategory ⥤ Comon (Complex A) := simplexCochainComonFunctor A
+
+example (n : ℕ) : ((simplexCochainComonFunctor A).obj ⦋n⦌).X = cochains A Δ[n] := rfl
+
+example {m n : SimplexCategory} (f : m ⟶ n) :
+    ((simplexCochainComonFunctor A).map f).hom = cochainMap A (SSet.stdSimplex.map f) := rfl
+
+example : simplexCochainComonFunctor A ⋙ Comon.forget (Complex A) =
+    SSet.stdSimplex ⋙ SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A := rfl
+
+example {X Y : SSet.{0}} (f : X ⟶ Y) :
+    CategoryTheory.IsComonHom (cochainComonMap A f).hom := inferInstance
+end e2Fixtures225

@@ -81,6 +81,7 @@
 - **G1′ の入口**：`Perfectoidization/Comparison`・`Interface`・`DerivedCorollary`。`Perfectoidization.PerfectoidizationInterfaceCAlg` が実 CAlg_R 上の界面、`BSLimitConeDataCAlg` が同じ指定錐・単位・H⁰ の乗法整合性と全錐比較。境界は完成済みの離散比較自身、頂点は同じ対象の恒等比較。
   `algebraEmbeddingForgetIso`・`disc_forget_iff`・`underlyingUnit_hom` が実 U・離散性・単位の比較。`BSLimitConeDataCAlg.underlying_isLimit`・`forget_pullback` が任意 coherent 極限保存を代入する。`PerfectoidizationInterfaceCAlg.toE3` と `nonempty_e3_of_cAlg` が既存 G1 への系。
   既存 `BSLimitConeData` は非普遍的な比較データだけを再利用し、D(R) の極限性・excision は追加仮定しない。既存 Inputs の一件の存在入力は import・編集せず、引用の述べ直し先の型とその下流への証明済みの還元を提供する。具体的 prismatic 構成の存在証明を完了したとは扱わない。
+- **E2-S の供給**：`AlexanderWhitney/CochainComonoid` の `cochainComon`・`cochainComonMap`・`cochainComonFunctor`・`simplexCochainComonFunctor`。既存の AW 三律・自然性から共変な余代数関手を束ね、底の複体・対角・余単位・射・全関手を定義上の等式で照合する。Sp K-9 β6 f4 向け。反変化・双対化は Sp 側。供給後は停止。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
   `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。

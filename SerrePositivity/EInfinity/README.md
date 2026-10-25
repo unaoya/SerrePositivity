@@ -2790,3 +2790,17 @@ H⁰ の環・単位・全射影の乗法整合性を保持する。後者には
 既存 `BhattScholze/Inputs/PerfectoidizationInterface.lean` の一件の文献入力は所有外にあり、
 この三モジュールから import しない。引用をこの型で述べ直す際に、D(R) 側の下流へは
 この系を供給できる。具体的 prismatic 構成や animated 環（BS-7）は第 II 段である。
+
+
+## Sp K-9 β6 f4 への AW 余代数の供給（E2-S）
+
+`AlexanderWhitney/CochainComonoid.lean` は既存 `cochains A X` と
+`cochainDiagonal A X`・`cochainCounit A X` を Mathlib の `Comon (Complex A)` に束ねる。
+`cochainComon` が対象、`cochainComonMap` が既存 `cochainMap` を底に持つ余代数射、
+`cochainComonFunctor : SSet.{0} ⥤ Comon (Complex A)` が共変関手。
+`simplexCochainComonFunctor : SimplexCategory ⥤ Comon (Complex A)` は標準単体への制限。
+ここで cochains は正規化鎖を負次数へ置いた模型であり、反変化や双対化は行わない。
+`cochainComon_X`・`cochainComon_comul`・`cochainComon_counit`・`cochainComonMap_hom` は
+既存の複体・対角・余単位・射との定義上の一致を与える。
+`cochainComonFunctor_forget`・`simplexCochainComonFunctor_forget` は底の全関手の照合。
+余結合性・左右余単位則・自然性は既存宣言を使い、大域 instance は追加しない。
