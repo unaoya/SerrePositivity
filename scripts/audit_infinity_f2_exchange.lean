@@ -35,6 +35,7 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendPenu
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendMorphismReindex
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CompositionAppendTetrahedron
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.RightSliceAppendFront
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CompositionConeTetrahedron
 import Lean.Util.CollectAxioms
 
 /-!
@@ -153,6 +154,12 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendEdge_front
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionAppendDiagram_fixed
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionAppendTetrahedron
+
+#check @SerrePositivity.InfinityCategories.F2.simplexConeParameter_front
+#check @SerrePositivity.InfinityCategories.F2.appendEdgeConeCoordinatesInverse_front
+#check @SerrePositivity.InfinityCategories.F2.coneTetrahedronParameter_front
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face012
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionConeTetrahedron_face012_precomp
 
 open Lean in
 run_cmd do
