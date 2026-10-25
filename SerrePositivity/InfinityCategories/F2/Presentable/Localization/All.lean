@@ -73,6 +73,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Seq
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactPresentationComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonPrefixFactor
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactTailFactorization
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialTriangle
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -216,6 +219,10 @@ P の公開コミット c3998b340 の終前置 coslice の compact 判定を制�
 これを相対因子化へ接続し、元の表示・全前置図式・指定全余錐を保つ再帰の一段を得た。
 余錐間の指定辺から次の全図式の大域余錐を構成し、旧段階への全制限・元の頂点・
 新頂点からの指定脚を厳密に回収した。この構成は前置形状の制限とも厳密に可換である。
+二つの元の表示を保持する compact 前置比較の状態を定め、その左側の後続因子化を構成した。
+小さい種集合を支配する開始点を元の filtered poset 内で選べる。指定右開始点の後で、
+左の compact 頂点からの元の脚を因子化し、元の二脚を保つ初期実三角形も構成した。
+比較状態への全形状の正規化と交互列全体の構成はまだ未完了。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と

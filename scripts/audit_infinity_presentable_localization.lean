@@ -404,3 +404,8 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @comparisonLeftStages_projection
 #check @ComparisonLeftFactor.vertex
 #check @ComparisonLeftFactor.compact
+
+#check @coconeTransportLeg_restrict_edge
+#check @compactSource_factorization_after_point
+#check @exists_sequentialSeed_bound
+#check @compactPresentations_initialTriangle
