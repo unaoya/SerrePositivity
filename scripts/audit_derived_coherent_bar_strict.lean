@@ -176,7 +176,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentGradedProjective,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanInclusionComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanModuleMap,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanZeroIso]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanZeroIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentBarQuasiIsoCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCoconeHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCoconeModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopyComponent,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopyIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ProjectiveBarNativeCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SemifreeNativeColimit]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -297,3 +305,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarCutModule_projective
 #check SerrePositivity.InfinityCategories.dgCoherentBarCutModuleIsColimit
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModule_homotopicallyProjective
+
+#check SerrePositivity.InfinityCategories.dgProjectiveBarNativeCocone_isColimit
+#check SerrePositivity.InfinityCategories.dgSemifreeCoherent_hasColimit
+#check SerrePositivity.InfinityCategories.dgCoherentBarMap_quasiIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeModuleMap
+#check SerrePositivity.InfinityCategories.dgCoherentCoconeHomology
+#check SerrePositivity.InfinityCategories.dgCoherentBarHomologyHomotopyIso
