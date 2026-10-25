@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierLowerDeformationFullSLongHom
 public import SerrePositivity.KST.Fibration.ZeroMiddleControlledTriangleInput
 public import SerrePositivity.KST.Fibration.ZeroMiddleFixedHornComparison
 public import SerrePositivity.KST.Fibration.WeakQuotientMappingEquivalence
