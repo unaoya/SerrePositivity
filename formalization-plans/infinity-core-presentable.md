@@ -27,9 +27,9 @@
   ユーザー確定により HTT 5.5.3.13 は e へ移し、c は六項目のままとする。
 
 ### 残り（依存順）
-1. P-1 d：随伴関手定理。余極限保存から左随伴、accessible かつ極限保存から右随伴。HTT 5.5.2.9。
+1. P-1 d：随伴関手定理（5.5.2.9）。二比較界面を明示した d2・d4・d5 は接続済み。Ind-S 供給後に条件を外す。
 2. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
-   Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。d の後に着手。
+   Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
 3. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
    HTT 5.5.4.15。d〜f の個別見積もりは各着手時に精査する。
 
@@ -54,6 +54,7 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
+- `functor_isPresentable`、`functor_hasSmallColimits`、`reflectiveImage_isKappaAccessible`
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
@@ -87,20 +88,20 @@
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
 - d2 の一般反映移送には、元の表現可能前層の反対辺への作用と Hom 前合成の可逆性判定が必要。
-  F1 に依頼済み。必要な一方向は `RepresentableInversionDetectsLocality (PresheafInfinity A)`。
+  Ind-S としてユーザーが依頼済み。必要な一方向は `RepresentableInversionDetectsLocality (PresheafInfinity A)`。
   この比較から一般 presentable への下降と d4 の全判定への接続は提供する。存在入力の除去は未完。
 
 - d4・d5 の無条件化には `Compact.spaceUniverseDiagram` の充満忠実性（または小極限・小余極限の反映）が必要。
-  Compact に依頼済み。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。
+  Ind-S 供給待ち。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。
 
 ### 未コミット
-- 所有ファイルは保存済み。共同作業中の他レーンの差分は変更しない。
+- `PresentableEnrichedCategory`・`PrInfinity` は豊穣合成の検証中。他レーンの差分は変更しない。
 
 ### 次の一手
-- d2 の小余極限を小極限へ送る前層の表現可能性を構成する。
+- e の d 非依存部を進める。Ind-S が届いたら d2・d4・d5 の比較入力を外す。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
-  accessibility・presentable 性の閉性、Pr^L 自身の小極限は未着手。
+  小さい ∞ 圏 K について `functor_isPresentable` を構成済み。積・引き戻しと Pr^L の小極限は未完。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
 
 ## P-1 b 三段目（v3）
@@ -141,7 +142,18 @@
 - [x] d3. accessible かつ小極限保存な空間値関手の余表現可能性。
 - [ ] d4. 小余極限保存と右随伴の存在の同値。
 - [ ] d5. accessible・小極限保存と左随伴の存在の同値、右随伴の accessibility。
-- [ ] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
+- [x] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
+
+## P-1 e 三段目（v3）
+
+- [ ] e1. Pr^L・Pr^R の対象・関手圏・全 ∞ 圏の定義。
+- [x] e2. Fun(K,C) の小余極限と各点計算。
+- [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
+- [ ] e4. 積の presentable 性。
+- [ ] e5. 引き戻しの presentable 性。
+- [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。
+- [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
+- [ ] e8. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-6 三段目
 

@@ -284,3 +284,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointE
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightAdjointFromContravariantModels
 public import SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveContinuousDescent
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointFunctorCriterion
+public import SerrePositivity.InfinityCategories.F2.Presentable.PreservingFunctorSpaces
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorSmallColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleReflectiveImage
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresheafModel
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable

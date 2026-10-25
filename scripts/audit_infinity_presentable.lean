@@ -587,3 +587,25 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveContinuous_isRepresentable_of_inversionLocality
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presentableContinuous_isRepresentable_of_inversionLocality
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrRFunctorSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrLMappingSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrRMappingSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.prLMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.prRMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_isColimitCone_iff_pointwise
+#check @SerrePositivity.InfinityCategories.F2.Presentable.evaluateFunctorAt_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_isKappaCompact_image
+#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveImage_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheafBaseIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheafIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheaf_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorInd_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_isPresentable
