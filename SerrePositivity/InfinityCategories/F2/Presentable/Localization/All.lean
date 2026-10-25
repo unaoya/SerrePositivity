@@ -22,6 +22,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImagePushout
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageEdges
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceInitial
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -62,6 +65,9 @@ P の公開済み compact 保存濃度を二つの端点評価に使い、周囲
 同じ濃度で端点評価二本と恒等射図式を compact 保存にし、元の全対象上の
 恒等射を実像に回収した。元の任意の pushout 四角形を、二本の恒等射と
 下辺・上辺からなる射圏内の実 pushout へ写し、辺クラスの pushout 保存も証明した。
+可逆な元の辺を、区間最小値の指定ホモトピーで始点の恒等射と射圏内で同型にした。
+実像を元の辺集合として読み、生成閉包への包含と全可逆辺の所属も証明した。
+元の恒等射は固定始域の閉包内 coslice に入り、その圏の実始対象となる。
 二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・

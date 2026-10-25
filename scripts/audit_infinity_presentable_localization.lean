@@ -133,3 +133,13 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @arrowPushoutFamily_isPushout
 #check @arrowPushoutFamily_vertex_top
 #check @indArrowImage_pushout_bottom_top
+
+#check @invertibleArrow_sourceIdentityIso
+#check @indArrowImageEdges
+#check @indArrowImageEdges_arrowVertex_iff
+#check @indArrowImageEdges_subset_generatedEdges
+#check @indArrowImageEdges_mem_of_isInvertible
+
+#check @generatedSourceIdentity_leg_mem
+#check @generatedSourceIdentity
+#check @generatedSourceIdentity_isInitial
