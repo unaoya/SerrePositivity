@@ -32516,3 +32516,129 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageComparison
 #print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBoundaryFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBoundaryFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroSuspensionFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroSuspensionFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroEvaluation
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroEvaluation
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroEvaluation_whisker
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZeroEvaluation_whisker
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBase_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBase_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirst_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirst_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureMap
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureMap
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureMap_mono
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureMap_mono
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_anodyne
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_anodyne
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZero_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteZero_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_whisker
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstComparison_whisker
+
+#check @SerrePositivity.KST.SConstruction.nativeFiniteFirstOmegaZeroKan
+#print axioms SerrePositivity.KST.SConstruction.nativeFiniteFirstOmegaZeroKan
+
+#check @SerrePositivity.KST.SConstruction.nativeFiniteFirstOmegaLoopKan
+#print axioms SerrePositivity.KST.SConstruction.nativeFiniteFirstOmegaLoopKan
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureAdjoint_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteFirstStructureAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.stableMultiDiagonalAssembly_action
+#print axioms SerrePositivity.KST.SConstruction.stableMultiDiagonalAssembly_action
+
+#check @SerrePositivity.KST.SConstruction.stableAssemblyQuotient_action
+#print axioms SerrePositivity.KST.SConstruction.stableAssemblyQuotient_action
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssembly_action
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssembly_action
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssemblySourceFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssemblySourceFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssemblyMap
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssemblyMap
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssembly_whisker
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssembly_whisker
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssemblyTransformation
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssemblyTransformation
+
+#check @SerrePositivity.KST.SConstruction.stableSuspensionAssemblyTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.stableSuspensionAssemblyTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblySourceFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblySourceFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyMiddleFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyMiddleFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyTargetFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyTargetFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTransformation
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTransformation
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblySigmaTransformation
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblySigmaTransformation
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyExTransformation
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyExTransformation
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyRightTransformation
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyRightTransformation
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeftMap
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeftMap
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyRightMap
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyRightMap
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeftTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyRightTransformation_app
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyRightTransformation_app
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeft_whisker
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeft_whisker
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyRight_whisker
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyRight_whisker
+
+#check @SerrePositivity.KST.SConstruction.stableKanAssemblyLeftMap_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyLeftMap_localized_isIso
