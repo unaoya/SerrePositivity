@@ -1,24 +1,30 @@
-# D-e：D-8 e の実 perfect 比較
+# D-e：D-8 e の実 perfect 比較と D-8 d の準備
 
 ## 引き継ぎ（2026-10-25）
 
-- 現在地：D-8 e 完了。専用集約 9,162 jobs、専用監査 4 葉・49 宣言が成功。
+- 現在地：D-8 e 完了（5bf80c07c）。D-8 d は提案文の採用状況を確認中。
+  可逆な準備として compact→段階 retract、同じ代表族の retract 被覆、
+  依存閉ラベルの κ-filtered 添字と自由余積層の strict 余極限を実装。
+  D-8 d の全 covers は未完。
 - 所有：`Derived/KappaPerfect/` の新規葉と `All.lean`、
-  `scripts/audit_derived_kappa_perfect.lean`、本計画。
+  `scripts/audit_derived_kappa_perfect.lean`、本計画。追加候補は
+  `Derived/KappaCovers/` の新規葉と `All.lean`。
 - 読み取り専用：既存 D 全体・D 集約と両監査、KST 全体。
-- 残り：なし（本レーンの D-8 e）。D-8 c/d の入力供給は別レーン。
+- 残り：D-8 d 担当移管の採用確認。採用時は一般 semifree 加群の cell ラベル抽出、
+  依存閉部分集合上の実 cell 部分加群と strict 余極限、各段の同じ代表系による被覆、
+  D-bar の native/strict 比較入力、最終 covers。
 - 主要宣言：`dgKappaPerfect_stableClosure_iff`、`dgKappaPerfectToPerf`、
   `dgKappaPerfectReverse_isQCatEquivalence`、`dgKappaPerfectReverse_inclusionIso`、
   `dgKappaPerfectComparison`、`dgKappaPerfectComparison_isQCatEquivalence`、
   `dgKappaPerfectComparison_inclusionIso`、`dgKappaPerfectInput`。
 - 依存と提供：K-B の `DGKappaConeInput` を明示入力として、
   `DGKappaPerfectInput` の三欄を D 側で構成する。
-- 保存：所有7ファイルだけを `git commit --only` で保存する。
+- 保存：D-8 e は所有7ファイルを限定保存済み。D-8 d の準備も限定保存する。
   共有作業木の他レーン差分は含めない。
 - 既知の問題：他レーンへの依頼なし。D-8 c/d の供給自体は本レーンの結論ではない。
-- 次の一手：公開名を報告して停止。消費側は `All` を import して同じ `I` に適用する。
+- 次の一手：採用状況の回答に従う。継続なら下記 d1 の一般 cell ラベル抽出。
 
-## 三段目
+## D-8 e の三段目
 
 1. [x] 同じ κ-cone の perfect 安定閉包の条件と元の perfect 条件を同定する。
 2. [x] 同じ加群と全 Hom を保つ逆向き dg 関手を構成し、
@@ -79,3 +85,54 @@ namespace は `SerrePositivity.InfinityCategories`。
 - 主経路の三欄と最終入力の型を `#check` で明示する。
 - 新規 sorry・引用公理・`ModelCategory SSet` なし。
 - 公開名を報告後に停止。共有計画・共有集約への統合はコーディネータ所有。
+
+
+## D-8 d の三段目（担当移管の採用確認中）
+
+1. [ ] κ-small cell 部分加群の添字圏・図式・strict 余極限表示。
+   DependencyPieces は可算依存先の閉包の κ-small 性・全ラベル被覆・
+   全 coherent 図式に対する κ-filtered 性を供給する。
+   SubsetCoproduct は自由余積層の通常の余極限を供給する。
+   twisted differential を保つ cell 部分加群や一般 semifree 表示の存在は未結論。
+2. [ ] D-bar の native/strict 比較をその結論の型で仮定引数に取り、native 表示へ接続。
+   CompactStage の `hc : IsColimitCone c` は使用箇所の最小境界であり、
+   D-bar の一般比較そのものを構成したものではない。
+3. [x] 全 Hom の compact 性から同じ native 図式の一段の retract を回収。
+   `dgKappaCompact_retract_of_nativeCellPresentation`。
+4. [x] 同じ選択代表系の native retract を同じ集合内の代表との VertexIso で被覆。
+   `dgKappaClosedProjectiveObjects_nativeRetractCovers`。
+   対象集合の零・shift・cone・可算直和閉性から h 本質像の三角閉性を作り、
+   指定 telescope cone の分裂で retract 閉性を導出する。
+   二端点の射影性で主導来 retract を K(D) へ反映し、native VertexIso へ戻す。
+   D-16 の thick 核を新たな入力にしない。
+5. [ ] 一般の κ-compact 頂点に対する最終 covers・監査・限定コミット。
+   途中成果を検証して保存しても、この工程の完了とは数えない。
+
+### D-8 d 準備成果の検証
+
+- `lake build SerrePositivity.InfinityCategories.Derived.KappaCovers.All`：9,342 jobs 成功。
+- 既存の自分の監査に KappaCovers の7葉を追加。合計11葉・107宣言で成功。
+- 許容三公理のみ。新規公理・sorry・ModelCategory 仮定なし。
+- 追加10ファイルだけを `git commit --only` で保存する。
+- 最終 covers の公開名はまだない。準備成果を D-8 d 完了とは扱わない。
+
+### D-8 d の公開補助名
+
+- `dgKappaCompact_classicalRetract_of_nativeCellPresentation`
+- `idempotentTelescope_fixedCone_splits`、`idempotentTelescope_fixedCone_iso`
+- `triangulatedProperty_of_retract_countable`
+- `dgKappaCoversImage_iff`、`dgKappaCoversImage_isTriangulated`
+- `dgKappaCoversImage_countable`、`dgKappaCoversImage_of_retract`
+- `dgKappaClosedProjectiveObjects_homotopyRetractCovers`
+- `dgProjective_homotopyRetract_of_derivedRetract`
+- `dgKappaClosedProjectiveObjects_nativeRetractCovers`
+- `dgKappaDependencyClosure_small`、`dgKappaDependencyPieces_cover`
+- `dgKappaDependencyPieces_nerve_isKappaFiltered`
+- `dgKappaSubsetCoproductIsColimit`
+
+### 採用確認の理由
+
+ユーザー文の「ユーザー判断待ちの提案。採用時に貼る」という留保と
+「続けて D-8 d を担当する」が併記されているため、採用済みかを確認中。
+確認中は新しい cell 模型の実装を止め、既存の準備成果の監査・保存だけを行う。
+無回答を採用とは扱わない。D-8 e の完成状態は維持する。

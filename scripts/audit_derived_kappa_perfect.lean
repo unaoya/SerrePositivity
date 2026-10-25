@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
+import SerrePositivity.InfinityCategories.Derived.KappaCovers.All
 import Lean
 
 open Lean Elab Command in
@@ -8,7 +9,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Closure,
     `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Equivalence,
     `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Inclusion,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Input]
+    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Input,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.CompactStage,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.TelescopeSplitting,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.RepresentativeImage,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.HomotopyRetract,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.NativeRetract,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.DependencyPieces,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetCoproduct]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -27,9 +35,14 @@ run_cmd do
     unless seen.contains mod do seen := seen.push mod
   for mod in expected do
     unless seen.contains mod do throwError "Module not audited: {mod}"
-  logInfo m!"D-8 e axiom/signature audit passed: {count} declarations in {seen.size} modules."
+  logInfo m!"D-e axiom/signature audit passed: {count} declarations in {seen.size} modules."
 
 #check SerrePositivity.InfinityCategories.dgKappaPerfectComparison
 #check SerrePositivity.InfinityCategories.dgKappaPerfectComparison_isQCatEquivalence
 #check SerrePositivity.InfinityCategories.dgKappaPerfectComparison_inclusionIso
 #check SerrePositivity.InfinityCategories.dgKappaPerfectInput
+
+#check SerrePositivity.InfinityCategories.dgKappaCompact_retract_of_nativeCellPresentation
+#check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_nativeRetractCovers
+#check SerrePositivity.InfinityCategories.dgKappaDependencyPieces_nerve_isKappaFiltered
+#check SerrePositivity.InfinityCategories.dgKappaSubsetCoproductIsColimit
