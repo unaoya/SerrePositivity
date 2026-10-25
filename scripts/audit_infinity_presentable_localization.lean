@@ -335,3 +335,18 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @normalizedCoconeMappingFiberIso
 #check @edgeCosliceSourceMapping_contractible_of_raw
 #check @exists_compactCoveringPresentableIndImage
+
+#check @pushoutSpanRightBase_val
+#check @pushoutSpanRightBase_terminal_val
+#check @squareLeftEdge_target_of_edge
+#check @pushoutSpanRightBase_terminal_of_edgeFiber
+#check @generatedSource_terminal_edgeMappingFiber_contractible
+#check @generatedSource_terminal_edge_isLocalForHom
+#check @generatedSource_terminal_target_isLocalObject_generated
+#check @generatedSource_terminal_target_isLocalObject
+
+example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
+    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s) :
+    IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s) :=
+  generatedSource_terminal_target_isLocalObject hC edges x s hs

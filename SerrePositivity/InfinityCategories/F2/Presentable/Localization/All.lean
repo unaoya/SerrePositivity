@@ -56,6 +56,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Pus
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalPushoutFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeSourceMappingTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PresentableIndImageCandidates
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalLocality
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -125,9 +126,9 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 終域射影の inner fibration 性も回収した。left fibration 性は主張しない。
 閉包内の指定終域辺に沿う全 coslice の標準輸送辺を、固定始域の閉包内射圏へ持ち上げた。
 終対象を仮定した場合、その同じ辺の戻り辺を同じ圏内で回収し、元の終域辺が
-ホモトピー圏で split mono となることも証明した。終対象の存在と局所対象性は未証明。
+ホモトピー圏で split mono となることも証明した。終対象の存在は未証明。
 閉包内辺の任意の pushout とその分裂を使い、終対象の終域への写像をホモトピー圏で延長した。
-任意の閉包内辺による前合成は同じホモトピー圏で全射となる。写像空間全体の判定は未構成。
+任意の閉包内辺による前合成は同じホモトピー圏で全射となる。
 終対象への全写像空間の可縮 Kan 性を、包含の充満忠実性で周囲の全 coslice 圏へ移した。
 周囲の任意の閉包内の指定余錐も扱い、同じ全写像空間による終対象性の判定も得た。
 終対象へ向かう指定余錐を反復 coslice の終対象とし、終対象の恒等余錐への
@@ -144,7 +145,9 @@ pushout 四角形から入力 span への制限と、四角形から上辺への
 可縮性が同値となることまで証明した。元の辺と恒等射を保持する退化余錐の基点も構成した。
 元の上辺の恒等基点上の前合成 fiber の可縮性を retraction 空間から証明し、
 左枝の終点制限が指定恒等余錐である任意の基点で、元の底辺の fiber の可縮性も得た。
-この基点を元の固定始域の局所性判定へ揃える最後の比較はまだビルド中。
+この基点を元の任意の写像空間の点へ厳密に戻す比較も証明した。
+終対象を仮定した場合、その終域は元の閉包内の全辺および指定生成族に対する
+局所対象となる。高次の全写像空間を扱う判定であり、終対象の存在はなお未証明。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
