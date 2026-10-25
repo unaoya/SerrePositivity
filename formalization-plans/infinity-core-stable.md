@@ -93,7 +93,7 @@
 - slice 輸送の最小3パスは `954d53b5f`、D2 向け入口の15パスは `059a227ad` に対象・署名検証後保存済み。E2 入口の7パスは Ind 供給 `ed79dcb7f` に続く `8f39eaafd` に保存済み。供給分の最終検証は集約11,347 jobs・12明示署名・両全体監査で終端0（Derived 22,160宣言／2,531モジュール、Stable 23,222／2,800、許容三公理のみ）。全供給差分は新規11本、既存7本、Derived.lean、両監査、本計画の22パス。D-7 d2 の草稿は `b133279c0` で統合済み。 追加供給：元の coherent prism の Small 不要・両入力・端点輸送付き自然性は `DGPinchedCompositionFamilyGeneral` と `DGPinchedCompositionClosedFamilyNaturality`、`9b40d1218`。実 Perf の coherent 完備性は `DGPerfectIdempotentCompleteGeneral`、`c66ce0648`（一般 H⁰ 判定・実／相対／小模型の新名4本、旧宣言の型・本文は完全一致）。両供給の対象・26署名検査と集約11,356 jobs 成功。両全体監査も終端0（Derived 22,200宣言／2,540モジュール、Stable 23,261／2,809、許容三公理のみ）。
 
 - 未統合：D-16 追加 (3) は HEAD 再ビルドと両全体監査まで成功。c′ の10本44宣言は `599b082d5`、続く6本18宣言（CategoryReindexIdentity／DGKappaSourceCodeCoproductComparison／DGKappaPresentedSeedRefinement／DGModuleFamilyYonedaNaturality／DGModuleFamilyHomotopyCone／DGModuleFamilyHomotopyPretriangulated）は対象・葉監査成功で保存する（いずれも集約未接続）。KST の追加依存は既登録57本以内。
-- 未追跡 WIP（削除せず再開）：共通源の seed 被覆と異なるコード・arrow の二項／可算直和は対象2,712 jobs 成功（DGKappaPresentedCommonSource・DGKappaPresentedSourceBinaryRefinement・DGKappaPresentedSourceCountableRefinement）。葉監査6宣言も許容三公理のみ。任意標的閉射の cone 精密化は残る。`DGPerfectExtensionReflectsHomQuasiIso`・`DGExtensionYonedaReflectsHomQuasiIso`・`DGFunctorThickGeneratorCriterion` は D-17 の検証済み試作3本だが、前二本が PerfectDGFullyFaithful 経由で S 構成本体を含み、後者は合成比較を明示入力に保持するため未公開・未統合（対象5,942 jobs、3宣言の葉監査成功）。K-S•-S の基礎・合成比較の dg 最小依存分離待ち。`DifferentialGraded/Morita/ScalarExtensionKernelOutputComponents.lean` は今回の作業対象外の既存未追跡で触れていない。
+- 未追跡 WIP（削除せず再開）：共通源の seed 被覆と異なるコード・arrow の二項／可算直和は対象2,712 jobs 成功（DGKappaPresentedCommonSource・DGKappaPresentedSourceBinaryRefinement・DGKappaPresentedSourceCountableRefinement）。葉監査6宣言も許容三公理のみ。任意標的閉射の cone 精密化は残る。`DGPerfectExtensionReflectsHomQuasiIso`・`DGExtensionYonedaReflectsHomQuasiIso`・`DGFunctorThickGeneratorCriterion` は D-17 の検証済み試作3本だが、前二本が PerfectDGFullyFaithful 経由で S 構成本体を含み、後者は合成比較を明示入力に保持するため未公開・未統合（対象5,942 jobs、3宣言の葉監査成功）。公開完成形は thick 生成判定 `831430f17` なので、この3本の試作は未使用。`DifferentialGraded/Morita/ScalarExtensionKernelOutputComponents.lean` は今回の作業対象外の既存未追跡で触れていない。
 
 ### 既知の問題
 - d1 追加時の Derived 監査は期待配列のコード生成再帰上限に達したため、同じ2,521モジュール名と順序を保つ37個の非インライン定数へ分割した。再帰上限・許容公理・監査条件は変更せず、再監査終端0。
@@ -188,11 +188,13 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 異なる提示の二項・可算直和は `08a201e0d` の SourceBinaryRefinement／SourceCountableRefinement（対象2,712 jobs・葉6宣言）。共通源の閉射精密化を明示入力にした `DGKappaPresentedSourceConeRefinement` は同じ標準 cone の全三角形比較から被覆し、`dgKappaPresentedSource_isDGPretriangulated_of_arrowRefinement` で b の判定へ接続（対象4,167 jobs・葉34宣言）。精密化の存在は未証明。ゲート3・5の印は変えない。
 - 拡大全四角形族への現時点の不足：任意閉射の係数精密化に加え、同じ実平坦分解・核・零角・懸垂を同時に保つ全パラメータ作用と、全 native Hom に自然な実評価の Morita 比較／元の P 包含が未供給。ホモトピー cone 被覆だけでは、各 A への制限の元の全四角形との厳密一致を得ない。20:11:16 の試作判定へ含める。D-16 の追加宇宙局所化は、右 Kan 延長群の宇宙多相化または持ち上げ商との比較が別途必要なので、承認済みの明示入力を維持する。
 
+- 係数閉包の再符号化：`DifferentialGraded/Category/HomTransport` と `Presentation/CategoryFromHomSurjections` は対象1,801 jobs・葉35宣言成功。Hom ごとの自由被覆があれば、同じ全 Hom 同型・実評価を持つ小 dg 提示コードを構成する。被覆の存在・閉射の精密化は未証明。
+
 ### D-17：元の dg 関手の thick 生成判定
-- `Derived/DGFunctorThickHomCriterion` の `dgFunctor_homQuasiIso_of_thickGenerators`：指定 G が modulePerfectOver = modulePerfect を満たし、G 間の元の全 Hom 写像が準同型なら同じ F の全 Hom が準同型。単一生成元版 `dgFunctor_homQuasiIso_of_singleThickGenerator`、独立な追加対象宇宙版 `dgUniverseLiftFunctor_homQuasiIso_of_thickGenerators`。所有 Morita の相対 Hom 帰納を生成集合へ一般化し、graph の射影的列との比較で接続した。前三角性を追加仮定にせず、S 構成本体への依存なし。対象2,818 jobs・新規3本8宣言の葉監査は許容三公理のみ。旧3本の未統合試作は使わない。集約接続は D-18 の監査後。
+- `Derived/DGFunctorThickHomCriterion` の `dgFunctor_homQuasiIso_of_thickGenerators`：指定 G が modulePerfectOver = modulePerfect を満たし、G 間の元の全 Hom 写像が準同型なら同じ F の全 Hom が準同型。単一生成元版 `dgFunctor_homQuasiIso_of_singleThickGenerator`、独立な追加対象宇宙版 `dgUniverseLiftFunctor_homQuasiIso_of_thickGenerators`。所有 Morita の相対 Hom 帰納を生成集合へ一般化し、graph の射影的列との比較で接続した。前三角性を追加仮定にせず、S 構成本体への依存なし。対象2,818 jobs・新規3本8宣言の葉監査は許容三公理のみ。旧3本の未統合試作は使わない。D-18補足と保存済み c′ の37本を含めた集約11,526 jobs成功、両全体監査実行中。
 
 ### D-18：実小 Perf の dg 前三角性
-- `Derived/SmallPerfectDGPretriangulated`（`93da034ac`）の `smallPerfectDGModuleOver_isDGPretriangulated`・`smallPerfectDGModuleOver_tria_isRepresentable`。指定 S の実小 Perf 評価核の完全忠実性、S-perfect な像、小代表の H⁰ 比較の本質的全射性から tria の表現可能性を戻す。全 Perf の Small 仮定なし、既存宣言不変。対象4,453 jobs・新規3本30宣言の葉監査は許容三公理のみ。集約未接続。
+- `Derived/SmallPerfectDGPretriangulated`（`93da034ac`）の `smallPerfectDGModuleOver_isDGPretriangulated`・`smallPerfectDGModuleOver_tria_isRepresentable`。指定 S の実小 Perf 評価核の完全忠実性、S-perfect な像、小代表の H⁰ 比較の本質的全射性から tria の表現可能性を戻す。全 Perf の Small 仮定なし、既存宣言不変。対象4,453 jobs・新規3本30宣言の葉監査は許容三公理のみ。集約11,479 jobs・両全体監査成功（Derived 23,138宣言／2,656モジュール、Stable 24,200／2,925、許容三公理のみ）。
 - 補足入口 `Derived/DGPretriangulatedQuasiEquivalenceForward` の `isDGPretriangulated_of_quasiEquivalence_forward` と `dgDerivedRestriction_finiteCell_of_quasiEquivalence`。実導来制限の finite-cell 保存を代表から帰納し、同じ余単位で前三角性を移す。対象4,237 jobs・2宣言の葉監査は許容三公理のみ。
 
 ### D-15：全加群実分解の準同型検出

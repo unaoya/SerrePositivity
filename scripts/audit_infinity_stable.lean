@@ -1,3 +1,43 @@
+import SerrePositivity.DifferentialGraded.Presentation.CategoryData
+import SerrePositivity.DifferentialGraded.Presentation.CategoryReindex
+import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse
+import SerrePositivity.DifferentialGraded.Presentation.CategorySigma
+import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaComponents
+import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaDesc
+import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaInclusion
+import SerrePositivity.DifferentialGraded.Presentation.EnrichedLawTransport
+import SerrePositivity.DifferentialGraded.Presentation.ZeroComplexCode
+import SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproduct
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedOperations
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCommonOperations
+import SerrePositivity.DifferentialGraded.Module.HomotopyConeEndpointTransport
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover
+import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectSeedRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionBase
+import SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionRange
+import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyPretriangulated
+import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyYoneda
+import SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyRangeClosure
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureExtensionRange
+import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftHomQuasiIso
+import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexIdentity
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproductComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyHomotopyCone
+import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyHomotopyPretriangulated
+import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyYonedaNaturality
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCommonSource
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceBinaryRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCountableRefinement
+import SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneratorHomComparison
+import SerrePositivity.DifferentialGraded.Morita.CriterionPerfRelativeFullyFaithful
+import SerrePositivity.InfinityCategories.Derived.DGFunctorThickHomCriterion
+import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalenceForward
+import SerrePositivity.DifferentialGraded.Presentation.ComplexFromSurjections
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceConeRefinement
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectRelativeEvaluation
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectRelativeEvaluationImage
+import SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated
 import SerrePositivity.InfinityCategories.Derived.DGNativeTriaRetract
 import SerrePositivity.InfinityCategories.Derived.DGThickKernelNativeRetract
 import SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract
@@ -7861,6 +7901,48 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso,
     `SerrePositivity.InfinityCategories.Derived.DGNativeTriaRetract,
     `SerrePositivity.InfinityCategories.Derived.DGThickKernelNativeRetract,
+    `SerrePositivity.DifferentialGraded.Presentation.CategoryData,
+    `SerrePositivity.DifferentialGraded.Presentation.CategoryReindex,
+    `SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse,
+    `SerrePositivity.DifferentialGraded.Presentation.CategorySigma,
+    `SerrePositivity.DifferentialGraded.Presentation.CategorySigmaComponents,
+    `SerrePositivity.DifferentialGraded.Presentation.CategorySigmaDesc,
+    `SerrePositivity.DifferentialGraded.Presentation.CategorySigmaInclusion,
+    `SerrePositivity.DifferentialGraded.Presentation.EnrichedLawTransport,
+    `SerrePositivity.DifferentialGraded.Presentation.ZeroComplexCode,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproduct,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedOperations,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCommonOperations,
+    `SerrePositivity.DifferentialGraded.Module.HomotopyConeEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPerfectSeedRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionBase,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionRange,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFamilyPretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFamilyYoneda,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyRangeClosure,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureExtensionRange,
+    `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftHomQuasiIso,
+    `SerrePositivity.DifferentialGraded.Presentation.CategoryReindexIdentity,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproductComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFamilyHomotopyCone,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFamilyHomotopyPretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFamilyYonedaNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCommonSource,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceBinaryRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCountableRefinement,
+    `SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneratorHomComparison,
+    `SerrePositivity.DifferentialGraded.Morita.CriterionPerfRelativeFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.DGFunctorThickHomCriterion,
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalenceForward,
+    `SerrePositivity.DifferentialGraded.Presentation.ComplexFromSurjections,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceConeRefinement,
+
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectRelativeEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectRelativeEvaluationImage,
+    `SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated,
+
     `SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract,
     `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDown,
     `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyFaithful,
