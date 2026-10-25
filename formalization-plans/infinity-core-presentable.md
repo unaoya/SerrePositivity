@@ -96,10 +96,10 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `SmallConstantDiagramCompact`：μ-small な形状上の一点定値図式の compact 性を検証中。
+- `ConeFunctorCounitPrism`：全錐族と極限関手の自然比較を構成中。
 
 ### 次の一手
-- e5 は一般の元の引き戻し内の小さい native compact 全部分候補圏まで構成。μ-small 図式の相対因子化を使い、各対象の filtered 生成表示へ進む。
+- e5 は小さい native compact 全部分候補圏と μ-small 極限関手の同じ μ の保存まで構成。全錐族比較と相対因子化から各対象の filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

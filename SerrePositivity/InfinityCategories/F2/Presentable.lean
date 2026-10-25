@@ -364,3 +364,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresentablePullb
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparisonFullyFaithful
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallRelativeOverHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallRelativeHomAccessible
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallConstantDiagramCompact
+public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceRightAdjointContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallLimitFunctorContinuity

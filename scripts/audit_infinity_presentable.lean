@@ -718,3 +718,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful_of_compact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeOverHom_preservesCardinalFilteredColimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeHom_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallConstantPointDiagram_isKappaCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaContinuousSpaceLimitFunctor
