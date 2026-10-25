@@ -355,6 +355,12 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_isKappaAccessible_iff_pointPullback
 #check @generatedSource_isAccessible_iff_pointPullback
 #check @exists_generatedSource_localReplacement_of_accessiblePointPullback
+#check @triangle_isPresentable
+#check @triangleFace_preservesSmallColimits
+#check @exists_triangleFacesCompactCardinal
+#check @HasCompactTrianglePosetPresentation
+#check @triangle_hasCompactPosetPresentation
+#check @exists_compactTrianglePosetPresentations
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
