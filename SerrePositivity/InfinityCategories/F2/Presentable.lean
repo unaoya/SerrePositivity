@@ -301,3 +301,11 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.NativeSpaceUnive
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeSmallHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeContravariantHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion
+public import SerrePositivity.InfinityCategories.F2.Presentable.ConstantQuasicategory
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaQuasicategory
+public import SerrePositivity.InfinityCategories.F2.Presentable.PiQuasicategory
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafSigmaBase
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorIsoTensor
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafTensorPresentable
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAccessibility
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorPresentable

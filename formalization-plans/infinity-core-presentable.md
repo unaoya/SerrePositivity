@@ -95,13 +95,13 @@
   Ind の小余極限反映と合わせ d5 は無条件。d4 に残る入力は d2 の局所性比較だけ。
 
 ### 未コミット
-- `ConstantQuasicategory`・`SigmaQuasicategory`・`PiQuasicategory`・`PresheafSigmaBase` は積の前層模型を検証中。
+- `PiColimitCones` で小さい全直積の余錐と成分計算を検証中。
 
 ### 次の一手
 - e の d 非依存部を進める。Ind-S (1) が届いたら d2・d4 の局所性比較入力を外す。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
-  `functor_isPresentable` と `tensorAdjunction` は構成済み。積の前層模型・引き戻し・Pr^L の小極限が残る。
+  `functor_isPresentable`・`tensor_isPresentable` と前層圏族の小さい積は構成済み。一般の小さい積・引き戻し・Pr^L 小極限が残る。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
 
 ## P-1 b 三段目（v3）

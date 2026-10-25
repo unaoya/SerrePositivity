@@ -644,3 +644,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafSigmaBaseIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piPresheaf_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafTensor_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorHom_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indTensor_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_isPresentable
