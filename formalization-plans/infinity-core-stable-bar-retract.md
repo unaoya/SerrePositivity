@@ -2,12 +2,14 @@
 
 ## 引き継ぎ（2026-10-25）
 ### 現在地
+- チャット稼働の基準は 2026-10-25 18:07 頃。24 時間の期限は 10-26 18:07 頃（新割り当てでリセットしない）。
 - ユーザーの次割り当てで再開。所有は Derived/CoherentBar/Retract/ と All・専用監査のみ。
 - D-bar の実 bar・正規化模型・射影・安定自己写像・全作用鎖ホモトピーを読み取り専用で使う。
-- 専用 All ビルド成功（3666 jobs）・専用公理監査成功（13 葉153宣言、標準三公理のみ）。
+- 専用 All ビルド成功（3668 jobs）・専用公理監査成功（15 葉160宣言、標準三公理のみ）。
 - 修正包含の一般降下、実射影の次数成分と次数付き切断、安定自己写像が実射影を保つ式を対象検証済み。
 - 面・退化の BasedOperators と合成則、前側 prefix の全高次係数一致、tail の厳密退化式、prefix 後の退化単位の合成消去を対象検証済み。
-- BasedCoproduct は未シフト係数直和と始点保存写像の作用・恒等則まで。合成則の試作は elaboration 上限で未検証（/tmp/d-retract-basedcoproduct-composition-draft.lean）。
+- BasedCoproduct の合成則は BasedCoproductComposition で三つの対象輸送を明示して対象検証済み。旧 timeout 試作は /tmp/d-retract-basedcoproduct-composition-draft.lean に保持。
+- PrefixHomotopyAction でホモトピー後の prefix を切断後の退化列へ制限する全 Hom の式を対象検証済み。
 - CorrectedInclusion は退化因子消去を明示仮定とする補助入口。無条件の retract は未完。
 ### 残り（依存順）
 - 1. 安定作用素の退化因子消去：全 prefix の相殺、始点を保つラベル正規化との照合。

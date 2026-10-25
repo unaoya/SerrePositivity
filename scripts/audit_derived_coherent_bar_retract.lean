@@ -22,7 +22,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.TailAfterComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixDegeneracyComposition,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixVanishing,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixHomotopyAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproductComposition]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

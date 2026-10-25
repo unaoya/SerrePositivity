@@ -12,6 +12,8 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.Tai
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixDegeneracyComposition
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixVanishing
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixHomotopyAction
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproductComposition
 /-!
 概要：D 所有の coherent bar の変形 retract の葉を集約する。
 方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。
