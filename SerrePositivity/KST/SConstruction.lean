@@ -2653,4 +2653,6 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullCoherence
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullHom
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTriangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/

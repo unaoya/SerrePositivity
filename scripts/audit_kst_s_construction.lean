@@ -32291,3 +32291,24 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_eq
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_source_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_source_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_target_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_target_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_target
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_target
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_middle_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangle_middle_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHom
