@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamily
+public import SerrePositivity.KST.Fibration.WeakSpanKanUnstraighteningUnit
 public import SerrePositivity.KST.Fibration.VerdierFullSMovingSquarePrism
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientRelativeDescent
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientTotalOverMap

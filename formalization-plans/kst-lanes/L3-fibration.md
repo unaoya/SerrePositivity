@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（619 モジュール・3910 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（621 モジュール・3942 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -133,7 +133,7 @@ let F := kanDiagramCoherentNerve (cocartesianStrictTransportDiagram p ⋙ R)
 IsQCatEquivalence
   (relativeFunctorPre p b (transportSimplexFirstVertexMap A))
 ```
-- 適用先は A=元の marked span 全族、p=同じ商図式の小さい unstraightening 射影、b=元の射影≫q。相対前合成の本質的全射性から、供給単位の像と相対関手空間内で同型となる厳密な底上の実射を得る `exists_weakSpanKanQuotientRelativeTotalMap` を所有内へ接続済み。`weakSpanKanQuotientRelativeTotalMap`・`_projection`・`weakSpanKanQuotientRelativeTotalMapRestrictionIso` は同じ証拠から実射・厳密な底条件・相対回収同型を選ぶ。新規公開補題を同じ実射影と底へ代入し、これらの公開利用側から相対同値性の明示引数を除去済み。主経路の存在入力は増やさない。単体圏上の全族単位・全 fiber 回収・指定恒等点の実供給は別の Ind-S (5) 本体として未完。Cat∞ 値分類や新たな一般局所化・商 API は含めない。
+- 適用先は A=元の marked span 全族、p=同じ商図式の小さい unstraightening 射影、b=元の射影≫q。相対前合成の本質的全射性から、供給単位の像と相対関手空間内で同型となる厳密な底上の実射を得る `exists_weakSpanKanQuotientRelativeTotalMap` を所有内へ接続済み。`weakSpanKanQuotientRelativeTotalMap`・`_projection`・`weakSpanKanQuotientRelativeTotalMapRestrictionIso` は同じ証拠から実射・厳密な底条件・相対回収同型を選ぶ。新規公開補題を同じ実射影と底へ代入し、これらの公開利用側から相対同値性の明示引数を除去済み。主経路の存在入力は増やさない。Ind-S (5) 本体を `WeakSpanKanUnstraighteningUnit` へ代入済み。同じ存在証拠から元の実単位・厳密射影・全 fiber 回収を取り出し、元の固定 span 座標で既存の全 fiber 単位との関手同型まで反映した。`WeakSpanKanQuotientFamily` の `weakSpanKanQuotientFamilyMap`・`_projection`・`weakSpanKanQuotientFamilyMapRestrictionIso` は、追加入力なしに元の全族から同じ商図式への実射・厳密な q・相対制限同型を与える。降下後の全 fiber 回収と既存指定恒等点の同じ fiber 内比較は未完で、K-B-S の供給完了とは数えない。Cat∞ 値分類や新たな一般局所化・商 API は含めない。
 
 ### 設計変更案：c4 の上側輸送で指定全長 Hom を保持する（未採用）
 - 現行 `zeroMiddleFullSKanTetrahedron` は三面を固定した内角充填を選び、始端上側はその未指定の面 2。`zeroMiddleFullSKanLongHom` は実構成済みだが、この選択された面の全長 Hom との厳密一致は充填条件に含まれない。短辺・共有対角の一致からこの一致を推論しない。
