@@ -64,6 +64,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourcePointAccessibility
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleCompactPresentations
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleOperationsIndImageCandidates
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -197,6 +198,8 @@ P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生�
 この表示で既知の二辺の閉包所属を全段階へ同時に揃える細分は未構成。
 結論辺が同じ濃度で compact な指定三角形では、実像の二対三則を三方向とも証明した。
 段階ごとの辺の実像所属を、元の三角形の同じ辺の指定 filtered 余極限へ戻す入口も得た。
+三角形表示と実像の演算の濃度も統一した。同じ濃度・同じ実像の選択で、
+全 compact 閉包射の被覆・全生成射と恒等射・pushout・左消去・三辺の同時表示を保持する。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
