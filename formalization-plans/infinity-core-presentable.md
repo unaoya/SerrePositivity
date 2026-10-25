@@ -92,14 +92,14 @@
   P の反映移送と小さい Hom から、d2・d4・d5 を無条件に接続した。
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
-- e5 は Ind-S へ内ホーン充填閉包の非退化単体濃度評価をユーザー経由で依頼済み。任意の μ-small 試験形状への拡張に使う。
+- e5 の濃度評価は Ind-S (7) として再送。正則非可算 μ、A : X.Subcomplex に対し IsKappaSmall μ A.toSSet → IsKappaSmall μ (SmallSubcomplex.innerHornClosure A).toSSet（小模型・Hull も同様）。
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- `RelativeSimplexEdgeExtension`：e5 の基底上の有限全単体延長を対象ビルド中。
+- なし。
 
 ### 次の一手
-- e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型と指定可算辺列の coherent 実現を使い、基底上の相対交互構成から filtered 生成表示へ進む。
+- e5 公開名予告：`pullback_isAccessible`、`fiber_isAccessible_of_presentable`、`pullback_isPresentable`（未証明）。accessible な両脚に共通の κ-filtered 余極限・保存と小さい native compact 候補まで構成。基底の全可算図式を厳密に保つ指定辺列の相対実現を使い、filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
@@ -151,7 +151,7 @@
 - [x] e2. Fun(K,C) の小余極限と各点計算。
 - [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
 - [x] e4. 積の presentable 性。
-- [ ] e5. 引き戻しの presentable 性。
+- [ ] e5. 引き戻しの accessibility（5.4.6.6）と presentable 性（5.5.3.12）。点を第二脚とする fiber 版を先行可。
 - [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。P-d へ分離（14:44 承認）、`Duality/` は読み取り専用。
 - [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
 - [ ] e8. Duality/・Supply/ を含む集約ビルド・両公理監査・公開界面と引き継ぎ更新。
