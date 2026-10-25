@@ -2791,4 +2791,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionNullBoun
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroCornerNullHom
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPathInterval
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullIntervalEdges
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerHomSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/
