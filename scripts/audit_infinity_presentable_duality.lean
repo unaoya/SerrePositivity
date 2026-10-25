@@ -174,3 +174,39 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointMappingFamily_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointMappingFamilyAdjunction
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointMappingFamilyAdjunction
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairDiagram_pre
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftLeft
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftRight
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedZeroIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairUnitVertex_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairAdjointCorrespondence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointLeft
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointRight
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointVertexAdjunction
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointTransformationEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.covariantPairUnitProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomBifunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftVertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftVertex_left
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftVertex_right
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.twistedPairLiftVertex_unit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointVertex
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointLeft_surjective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairAdjointRight_surjective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairFixedLeftBase_composition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomFamily_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairFixedLeftCosliceIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairFixedLeftCosliceIso_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomAtLeft_cosliceIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.fullLeftUnitRepresentationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomAtLeft_representationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairCovariantYoneda_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomFamily_in_covariantYonedaImage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor_ulift
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctorLifted_yonedaIso

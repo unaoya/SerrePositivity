@@ -86,9 +86,37 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitFami
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.AdjointFamilyChoice
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.TwistedPairFamilies
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitCorrespondence
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.TwistedPairVertices
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairAdjointCondition
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.MateTransformationEquivalence
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitHomFamily
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.TwistedPairVertexConstruction
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairAdjointVertices
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitHomRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairFixedLeftCoslice
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairUnitClassifications
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairLeftRepresentability
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairCovariantYoneda
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PairAdjointFunctor
+
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。
-規約：実単位の局所対応の両射影の QCat 同値を含み、全 Pr の同値は構成中。
+規約：実単位の局所対応の両射影の QCat 同値を含み、全関手圏の対ごとの同値は構成中。全 Pr の同値は第 II 段。
 使われ方：P-d の専用ビルドと公理監査。
 -/

@@ -1,182 +1,125 @@
-# P-d レーン：P-1 e6 presentable ∞ 圏の双対性
+# P-d：presentable 二対象の随伴双対性
 
-## 引き継ぎ（2026-10-25）
+## 引き継ぎ・現在の範囲
 
-### 現在地
-- e6 は未完了。目標は元の `PrL` と `PrR.op` の全 ∞ 圏としての同値。
-- e1 の実際の `PrLFunctorSpace`・`PrRFunctorSpace` の頂点に d の随伴関手定理を接続した。
-- 左右の随伴を選び、その保存条件を証明して、反対方向の元の関手圏の頂点に戻した。
-- 両往復の元の関手との `FunctorIso` を証明した。
-- 15:05 ユーザー採用の設計で続行中。全体の対応 quasicategory と両単体射影の構成が目標。
-- 二対象間の実単位を coslice に保持する `AdjointUnitMappingSpace`、その Kan 性、
-  元の左右の写像空間への単体射影と頂点上の全射性を構成した。
-  全 Pr 上の対応 quasicategory はまだ未構成。
-- 前合成の全パラメータ Hom 全単射、前合成作用の転置と評価の厳密な等式も検証済み。
-- 両局所射影は inner fibration、固定ファイバーは Kan。右ファイバーから
-  全関手圏の固定右 coslice の core への単体比較射は元の単位・左関手を保持する。
-- 固定右の coslice–comma 比較は元の単位辺を保つ QCat 同値。
-  指定実単位の随伴条件と coslice の始対象性を同値にし、
-  `RightAdjointUnitSubspace` とその core `RightAdjointUnitSpace` の可縮性を証明済み。
-  元の `adjointUnitRight` の固定ファイバーとの厳密な同型 `rightUnitFiberIso` を構成し、
-  元の右ファイバーの全高次の可縮性まで証明済み。
-- 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
-  両局所射影は trivial Kan fibration・QCat 同値として公開済み。
-  固定左でも指定単位条件を始対象性と同定し、元の左ファイバーとの厳密な同型
-  `leftUnitFiberIso` とその可縮性を証明した。
-  `adjointMappingEquivalence C D` は元の二対象間の写像空間の同値。
-  全 Pr 上の対応 quasicategory とその両射影はまだ未構成。
-- 最新の検証済み専用集約は8,577 jobs 成功、専用監査550宣言は標準3公理のみ。
+- 2026-10-25、ユーザーによる設計提案への回答で範囲を変更。
+- 全体の対応 quasicategory と `PrL ≃ PrR.op` は第 II 段／R へ回す。
+- 双 Cartesian fibration の一般分類・straightening の新工程は設けない。
+- 今回の完了条件は presentable C・D に対する元の全関手 ∞ 圏の対ごとの同値
+  `PrLFunctorSpace C D ≃ (PrRFunctorSpace D C).op`（HTT 5.2.6.2）の公開。
+- 非可逆な自然変換と全高次単体を含むことを検証する。core の同値では代用しない。
+- 現在は未完了。以下の母対応と射影、写像空間の比較まで構成・検証している。
+- 旧設計で提案した一般分類の工程分割は不採用。承認待ちには戻らず今回の範囲で続行する。
 
-### 残り（依存順）
-1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
-2. `PrL`・`PrR.op` への両射影の QCat 同値性（e6-4）。
-3. 一方の射影の逆との合成による全同値の公開（e6-5）。
-4. 完成後の専用監査と P の e8 への引き継ぎ（e6-6）。
-   以上は HTT 5.5.3.4。全体20〜60時間の暫定見積もり、e5・e7 の未保存成果には依存しない。
+## 三段目（範囲変更後）
 
-### 主要宣言
+1. p1. 全単位族の表現可能性から元の全関手圏間の反変作用を構成する。
+2. p2. 構成した同じ反変作用の充満忠実性と本質的全射性を証明する。
+3. p3. 元の全関手圏の対ごとの反変同値を公開する。
+4. p4. 専用監査と第 II 段／R への残件記録を行い停止する。
+
+- [x] p1：`pairRightAdjointFunctor` は元の全関手圏から反対全関手圏への実際の単体写像。
+  元の全単位族とその共変 Yoneda 像の全自然な比較同型も構成した。
+- [ ] p2：同じ射の充満忠実性と本質的全射性はまだ未証明。
+  補助の単位対応の両射影の頂点上の全射性は証明済み。
+- [ ] p3：全関手圏の同値は未公開。
+- [ ] p4：途中監査は実施。完了監査・停止報告は未実施。
+
+## 検証済みの局所入力（範囲変更前から）
+
 名前空間：`SerrePositivity.InfinityCategories.F2.Presentable.Duality`。
-- `leftVertex_exists_rightAdjoint`、`rightVertex_exists_leftAdjoint`
-- `chosenRightAdjoint`、`chosenRightAdjunction`、`chosenRightAdjoint_condition`
-- `chosenLeftAdjoint`、`chosenLeftAdjunction`、`chosenLeftAdjoint_condition`
-- `rightAdjointVertex`、`leftAdjointVertex`
-- `leftRoundtripIso`、`rightRoundtripIso`
-- `AdjointUnitMappingSpace`、`adjointUnitLeft`、`adjointUnitRight`、`adjointUnitAdjunction`
-- `adjointUnitVertex`、`adjointUnitLeft_surjective`、`adjointUnitRight_surjective`
-- `adjointUnitCoreIso`、`adjointUnitAdjunction_unitHom`
-- `adjointUnitLeft_innerFibration`、`adjointUnitRight_innerFibration`
-- `adjointUnitLeftFiber_kanComplex`、`adjointUnitRightFiber_kanComplex`
-- `rightUniversalUnitSpace_isContractibleKan`
-- `rightUnitCosliceComparison_isQCatEquivalence`、`rightUnitCoslice_hasInitial`
-- `adjointUnitRightFiberToCoslice`、`adjointUnitRightFiberToCore_ι`
-- `qcatAdjunctionChangeLeft`・`qcatAdjunctionChangeRight` と各 `unitHom` の回収公式
-- `rightUnitVertex_isInitial`、`rightUnit_condition_iff_isInitial`
-- `rightAdjointUnitSubspace_isContractibleKan`、`rightAdjointUnitSpace_isContractibleKan`
-- `rightFiberToAdjointUnitSpace`、`rightAdjointUnitToFiber`、`rightUnitFiberIso`
-- `adjointUnitRightFiber_isContractibleKan`
-- `rawUnitCondition_of_vertexIso`、`adjointUnitLeft_fibration`、`adjointUnitRight_fibration`
-- `adjointUnitRight_trivialKanFibration`、`adjointUnitRight_isQCatEquivalence`
-- `adjointUnitRightMappingEquivalence`（二対象間の局所写像空間の同値）
-- `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
-- `precompositionTransposeEquiv`、`precompositionCorrespondence`、`precompositionAdjunction`
-- `precompositionAdjunction_unitComponent_identity`（元の指定単位の回収）
-- `leftUniversalUnitSpace_isContractibleKan`、`leftUnitCosliceComparison_isQCatEquivalence`
-- `adjointUnitLeftFiberToCoslice`、`leftUnit_condition_iff_isInitial`
-- `leftAdjointUnitSpace_isContractibleKan`、`leftUnitFiberIso`
-- `adjointUnitLeftFiber_isContractibleKan`、`adjointUnitLeft_trivialKanFibration`
-- `adjointUnitLeft_isQCatEquivalence`、`adjointUnitLeftMappingEquivalence`
-- `adjointMappingEquivalence`（二対象間の元の左右の写像空間の同値）
-- `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
-### 依存と提供
-- 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
-  Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
-- e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,933 モジュールに他レーンの未保存依存なし（今回検証時）。
-- P の e5 の未保存成果は使用していない。
-- P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
-- 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
+- e1 の元の保存関手圏の頂点に d の随伴関手定理を接続した。
+- `chosenRightAdjoint`・`chosenRightAdjunction`・`chosenRightAdjoint_condition`。
+- `chosenLeftAdjoint`・`chosenLeftAdjunction`・`chosenLeftAdjoint_condition`。
+- `rightAdjointVertex`・`leftAdjointVertex` は元の反対方向の全関手圏の頂点。
+- `leftRoundtripIso`・`rightRoundtripIso` は元の関手との h Fun の同型。
+- `AdjointUnitMappingSpace` は二対象の元の core 上に実単位を保持する Kan 空間。
+- `adjointUnitLeft`・`adjointUnitRight` は元の両写像空間への単体射影。
+- `adjointUnitAdjunction` と `adjointUnitAdjunction_unitHom` は指定単位を回収する。
+- `rightUnit_condition_iff_isInitial`・`leftUnit_condition_iff_isInitial`。
+- 固定左・右の単位条件を始対象性と同定し、全高次の単位空間の可縮性を証明した。
+- `rightUnitFiberIso`・`leftUnitFiberIso` は元の局所射影のファイバーとの厳密な同型。
+- `adjointUnitRight_trivialKanFibration`・`adjointUnitLeft_trivialKanFibration`。
+- `adjointUnitRight_isQCatEquivalence`・`adjointUnitLeft_isQCatEquivalence`。
+- `adjointMappingEquivalence` は二対象の core の同値で、全関手圏の同値ではない。
+- `precompositionAdjunction` は元の前合成 `pre R ⊣ pre L` の全 QCat 随伴。
+- `precompositionAdjunction_unitComponent_identity` は恒等関手で元の指定単位を回収する。
+- `adjointUnitLeft_extend`・`adjointUnitRight_extend` は任意の mono に沿う相対延長。
+- `adjointUnitLeftSection`・`adjointUnitRightSection` は元の局所射影の厳密な単体切断。
+- `rightAdjointMappingFamily`・`leftAdjointMappingFamily` と各 `isQCatEquivalence`。
+- 各 `MappingFamilyAdjunction` は選んだ全単体族の各頂点の実際の随伴を回収する。
+- 以上の保存：`8779a0da8`（両局所射影）、`0a67459d5`（相対延長と族の選択）。
 
-### 保存済みの補助界面と作業中
-- 検証済み：`PrecompositionUnit.lean`（元の実単位から前合成の単位辺を構成）。
-- 検証済み：`PrecompositionFlipHom.lean`（転置の合成保存と両前合成自然性）。
-- 検証済み：`AdjointHomOneNaturality.lean`・`AdjointHomOne.lean`
-  （元の Hom₁ 逆対応とその三つの自然性）。
-- 検証済み：`HomTransportNaturality.lean`（端点輸送と関手作用・Hom₁ 対応の両立）。
-- 検証済み：`SourceTransport.lean`（cast の実装と証明済みの仕様を不透明な値に保存）。
-  実装と仕様を構成しており、新しい公理や存在仮定ではない。専用監査にも含めた。
-- 検証済み：`PrecompositionCorrespondence.lean`・`PrecompositionParameter.lean`
-  （全パラメータ自然性と `precompositionAdjunction` による全 QCat 随伴）。
-- 検証済み：`LeftUniversalUnits.lean`（固定左の普遍単位空間の可縮性）。
-- 検証済み：`LeftUnitFiberComparison.lean`（元の左ファイバーから固定左 coslice への比較）。
-- 検証済み：`AdjointHomOneFormula.lean`・`PrecompositionIdentityEvaluation.lean`
-  （元の単位による Hom₁ 公式と恒等関手での評価）。
-- 検証済み：`TransposeHomEvaluation.lean`・`PrecompositionUnitEvaluation.lean`・
-  `PrecompositionSourceEvaluation.lean`・`PrecompositionUnitComponent.lean`。
-  `precompositionAdjunction_unitComponent_identity` は元の指定単位を厳密に回収する。
-- 検証済み：固定左 coslice の単位・右関手の表示、不変性、指定随伴の頂点と始対象性。
-- 検証済み：`leftUnit_condition_iff_isInitial` と `LeftAdjointUnitSpace` の可縮性。
-- 検証済み：元の左ファイバーからの比較と逆射、`leftUnitFiberIso` の両往復。
-- 検証済み：`LeftProjectionEquivalence.lean` と `LocalMappingEquivalence.lean`。
-- 検証済み：`UnitFamilyLifting.lean`（任意の mono に沿う相対延長と両局所切断）。
-- 検証済み：`AdjointFamilyChoice.lean`（両写像空間の単体写像と各頂点の実際の随伴）。
-- 現時点の所有ファイルは専用集約・監査に含める。
+## 現在の二対象の全関手族の構成
 
-### 既知の問題
-- `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
-  ホモトピー圏の反変同値や対象ごとの往復同型では目標を満たさない。
-- `QCatAdjunction.rightAdjointFunctorIso`・`leftAdjointFunctorIso` は h Fun の同型を返す。
-  既存の `QCatAdjunction.intervalMap` は固定した随伴の対象間の写像空間比較であり、
-  随伴関手そのものが変動する対応空間の射ではない。
-- F1・F1B・F2 の既存随伴 API の調査では、随伴を忘れる射影の自明 fibration 性や、
-  随伴関手を取り出す高次の対応を公開する入口は確認できなかった。
-- `QCatAdjunction` の証拠を頂点に付けるだけ、または二つの関手圏の積の全部分複体を取るだけでは、
-  高次の mate の整合性と両射影の同値性は得られない。
-- inner fibration の可縮ファイバーだけでは射影の同値性は結論できない。
-  辺の持ち上げまたは充満忠実性も証明する。
+- `TwistedPairFamilies.lean`：標準単体 K の twisted arrow 上で、左族 K→A と
+  右族 K→B.op を共同評価し、指定射影への実際の持ち上げを保持する。
+- `twistedPairLift` は面・退化写像と両関手則を証明した一つの単体集合。
+- `twistedPairLiftLeft`・`twistedPairLiftRight` は A と B.op への単体射影。
+- `PairUnitCorrespondence.lean`：元の `PrLFunctorSpace`・`PrRFunctorSpace` の
+  全包含と実合成 `pairUnitComposition`、実単位を持つ `PairRawUnitCorrespondence`。
+- `pairUnitComposition_core` は旧局所合成を厳密に回収する。
+- `TwistedPairVertices.lean`：`twistedZeroIso`、零頂点評価と単位の射影公式。
+- `TwistedPairVertexConstruction.lean`：指定両頂点と指定単位から母対応の頂点を作り、
+  左・右・単位を厳密に回収する。
+- `PairAdjointCondition.lean`：指定単位の条件を課した `PairAdjointCorrespondence`。
+  core は取らず、充填性はまだ主張していない。
+- `pairAdjointLeft`・`pairAdjointRight` は元の全関手圏と反対全関手圏への単体射影。
+- `pairAdjointVertexAdjunction` は各頂点の元の二関手と指定単位から随伴を回収する。
+- `PairAdjointVertices.lean`：元の随伴の持ち上げ、指定辺の回収、
+  `pairAdjointLeft_surjective`・`pairAdjointRight_surjective`。
+- `MateTransformationEquivalence.lean`：`adjointTransformationEquivalence` は
+  `Map(L₁,L₂) ≃ Map(R₂,R₁)` を非可逆な変換と全高次を含む区間模型で与える。
+  後合成随伴と前合成随伴を同じ `id→L₂R₁` 空間で合成する。
+  これは対応射影の Hom 作用の同値性自体とはまだ同定していない。
+- `PairUnitHomFamily.lean`：元の coslice の left fibration を全保存関手圏の積へ
+  引き戻し、既存の空間値分類で `pairUnitHomBifunctor`・`pairUnitHomFamily` を構成。
+  一般の Cartesian 分類の新工程や新しい存在仮定は追加していない。
+- `PairUnitHomRestriction.lean`：元の左関手への制限と curry の頂点の厳密な同定。
+  `pairFixedLeftBase_composition` と分類の底変換同型。
+- `PairFixedLeftCoslice.lean`：全単位族の固定左制限を保存条件付きの同じ coslice に
+  引き戻しの貼り合わせで比較する。
 
-### 設計変更の提案（今回の停止理由）
-- 15:05 採用の「全体の対応 quasicategory と両 QCat 同値射影」という目標は維持する。
-- 直接の実単位 coslice から全体を組み立てる経路を、双 Cartesian fibration による
-  随伴の分類空間を経由する経路へ変更することを提案する。
-- 理由：局所射影の相対延長は二対象を固定する。三対象を通る合成では単位の
-  合成三角形が必要で、局所切断はその面写像・退化写像との両立を保証しない。
-  既存の合成三角形の比較は一つの第二射を固定する結果であり、全次元の分類ではない。
-- 必要な一般結果：全有限単体上の双 Cartesian fibration の随伴図式の分類を、
-  全ての単体作用と両立する一つの quasicategory として構成し、左分類と右分類を
-  それぞれ元の coherent nerve への QCat 同値として証明する。
-  単体ごとの分類や、再添字付けが同型まで両立するだけの結果では足りない。
-- 工程分割案：上記の一般分類・straightening の接続を担当する工程を設け、P-d は
-  presentable 条件への制限、d による辺の存在、両射影から全同値の公開を担当する。
-  これは一般定理の証明を新工程へ分ける提案であり、その存在を新しい仮定にはしない。
-- 現行の所有範囲だけでも一般定理を新規葉に証明する余地はあるが、局所切断から
-  自動的には従わない。深層編集の必要性や所有 import 閉包の破損を主張していない。
-- 二対象間の全単体族の選択まで実装・検証済み。全体の対応および全 Pr の同値は未構成。
-- 設計変更提案はユーザー指定の停止条件。採用された場合の次工程は一般分類の構成。
+- `PairUnitClassifications.lean`：固定左の全単位族と保存条件付き coslice の全分類同型。
+- `PairLeftRepresentability.lean`：`pairUnitHomAtLeft_representationIso` は元の右随伴による
+  固定左値の全自然な表現可能性。元の全右保存関手圏を底にする。
+- `PairCovariantYoneda.lean`：共変 Yoneda の実単体写像・充満忠実性・元の単位族の本質像所属。
+- `PairAdjointFunctor.lean`：`pairRightAdjointFunctor` とその持ち上げ、
+  `pairRightAdjointFunctorLifted_yonedaIso` による元の全単位族との全自然な比較。
+- 直接の反変単体写像を構成したので、その同値性を主経路で証明する。
+  母単位対応の quasicategory 性は補助の残件であり、それを完成したとはしない。
 
-## 三段目（初回確定、6 項目）
+## 次の作業
 
-- [x] e6-1. e1 の保存関手圏と d の随伴存在判定の接続。
-- [x] e6-2. 左右の随伴選択と保存条件、元の関手圏への回収、両往復の一意性比較。
-- [ ] e6-3. 全体の随伴対応 quasicategory と両単体射影の構成。
-- [ ] e6-4. `PrL`・`PrR.op` への両射影の QCat 同値性。
-- [ ] e6-5. 元の `PrL` と `PrR.op` の全 ∞ 圏の同値の公開。
-- [ ] e6-6. 完成後の専用集約・公理監査・P の e8 への引き継ぎ。
+1. 全単位族の固定左制限を、既存の固定左の普遍単位へ同じ底上で接続する。
+2. その普遍単位を表現可能性の比較に使い、全自然変換への反変作用を構成する。
+3. 構成した射の Hom 作用と検証済みの変換空間同値を照合し、両射影の同値性を証明する。
+4. 全関手圏の対ごとの同値を公開・監査する。独立な Hom 空間同値だけで完成としない。
 
-## 採用された設計（15:05）
+## 第 II 段／R への残件
 
-全体の対応を quasicategory として構成し、両単体射影を QCat 同値にする。
-一方の射影の逆との合成から元の Pr の全同値を得る。
-恒等・合成との高次整合は対応 quasicategory と単体射影の構成に含まれるため、
-別個の mate 整合の証明を完了条件にしない。
+- 三つの presentable 対象を経由する随伴の合成と、今回の対ごとの同値の整合。
+- 恒等と合成を全単体で保持する全体の対応 quasicategory と両単体射影。
+- 元の `PrL` と `PrR.op` の全 ∞ 圏としての同値（HTT 5.5.3.4）。
+- 一般分類・straightening の必要性と供給方法は第 II 段／R で判断する。
+  今回その工程を新設せず、同値の存在を仮定や公理として追加しない。
+- P の e8 への `Duality.All` の集約・監査追加は、今回の完了時に公開名と範囲を報告する。
+  全 Pr の同値が完成したとは報告しない。
 
-1. 写像空間側では presentable な C・D に対し、全高次の実単位の Kan 空間を作る。
-   左射影は `PrLMappingSpace C D`、右射影は `PrRMappingSpace D C` へ向かう。
-   頂点上では実際の二つの関手の `QCatAdjunction` を回収する。
-2. 両射影を `IsQCatEquivalence` として証明する。
-   d の随伴関手定理は頂点の存在に使用し、高次の延長性・選択の可縮性は別に証明する。
-3. 全体の対応 quasicategory と両射影を構成する。
-   Hom ごとの同値だけで Pr 全体の同値が得られたとはしない。
-4. 両射影が QCat 同値であることから元の `PrL`・`PrR.op` の同値を構成する。
-
-全体の対応と両射影の同値性はまだ未実装であり、その存在を仮定や公理として追加していない。
-一般の随伴対応を上流へ依頼する場合は、コーディネータ経由で所有レーンに依頼する。
-P-d 内で構成を進める場合も、新規葉に限定する。
-
-## 検証
-
-- ビルド：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
-- 監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
-- 検証済み：専用集約8,577 jobs 成功、所有550宣言の再帰的公理依存は標準3公理のみ。
-- 主経路の公開名を `#check @...` で検査し、追加 instance 引数なし。
-- 根のビルド、既存 Presentable 集約・監査、`.lake` の削除は行わない。
-- 主経路に `ModelCategory SSet` 等の instance 仮定を導入しない。
-- 実施記録と最終検証件数は限定コミットの本文に保存する。
-
-## 規約
+## 検証と規約
 
 - 所有：`F2/Presentable/Duality/` の新規葉と集約、本計画、専用監査のみ。
-- 新規 sorry・公理・引用なし。既存ファイル、深層モジュールは読み取り専用。
+- 既存の Presentable・HomotopyLimits・F1・F1B・Core・Ind・Compact・Idempotent は読み取り専用。
+- P の e5 はコミット済みの依存だけを使用する。
+- 専用集約8,592 jobs 成功、専用監査711宣言は標準3公理のみ。
+- 所有 import 閉包は直近確認で4,948モジュール、他レーンの未保存依存なし。
+- 自分の集約：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
+- 自分の監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
+- 新規 sorry・公理・引用なし。主経路に ModelCategory SSet 等の instance 仮定なし。
+- 根のビルド、既存 Presentable 集約・監査、`.lake` の削除は行わない。
 - docstring は概要・方針・規約・使われ方。
+- `SourceTransport.lean` の不透明な値は実装と仕様を構成済みであり、公理ではない。
+- 実施記録と最終検証件数は限定コミット本文に保存する。
 - `set -o pipefail` のうえ所有ファイルのみ `git commit --only`。
-- 停止は e6 完了・設計変更提案・所有 import 閉包の破損・稼働24時間。
+- 停止は今回の工程完了・設計変更提案・所有 import 閉包の破損・稼働24時間。
