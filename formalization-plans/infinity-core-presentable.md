@@ -2,7 +2,7 @@
 
 > **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本。
 > P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読する。
-> 所有：`F2/Presentable/`（P-f の `Localization/` を除く）、`HomotopyLimits/`。
+> 所有：`F2/Presentable/`（P-f の `Localization/`・P-d の `Duality/` を除く）、`HomotopyLimits/`。
 > 集約：`SerrePositivity/InfinityCategories/F2/Presentable.lean`、`HomotopyLimits.lean`。
 
 ## 引き継ぎ（2026-10-24）
@@ -32,7 +32,7 @@
 1. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
    Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
 2. P-1 f：Bousfield 局所化の存在（HTT 5.5.4.15）は P-f が `F2/Presentable/Localization/` で並行。
-   P は同ディレクトリを編集せず e5〜e8 に集中し、e8 の集約・監査を担当する。
+   P は同ディレクトリを編集せず e5 → e7 → e8 に集中し、e8 では Duality/ も含めて集約・監査する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -92,7 +92,7 @@
   P の反映移送と小さい Hom から、d2・d4・d5 を無条件に接続した。
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
-- b12e99858 復旧後の所有 import 閉包は復旧済み。
+- e5 は Ind-S へ内ホーン充填閉包の非退化単体濃度評価をユーザー経由で依頼済み。任意の μ-small 試験形状への拡張に使う。
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
@@ -152,7 +152,7 @@
 - [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
 - [x] e4. 積の presentable 性。
 - [ ] e5. 引き戻しの presentable 性。
-- [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。
+- [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。P-d へ分離（14:44 承認）、`Duality/` は読み取り専用。
 - [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
 - [ ] e8. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
