@@ -31469,3 +31469,135 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorFlatKernelNullSquare
 #print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorFlatKernelNullSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeft
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeft
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRight
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRight
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxBase
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxBase
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxYoneda
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxYoneda
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxCoefficient
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxCoefficient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxCategory
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxCategory
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLiftIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLiftIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison_fst
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison_fst
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison_snd
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLaxComparison_snd
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeft_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeft_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRight_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRight_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxProjection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxProjection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxProjection_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxProjection_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxKernel
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxKernel
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLocalization
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLocalization
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLax_isVerdier
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxPerfectQuotient
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxPerfectQuotient
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxPerfectProjection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxPerfectProjection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_isPullback
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_isPullback
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_bottom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_bottom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_left
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_left
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_right
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_top
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTamme_top
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCospan
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCospan
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone_isLimit
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone_isLimit
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLandTammeCone_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLeftPerfectDownEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLeftPerfectDownEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightPerfectDownEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightPerfectDownEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeftInputEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeftInputEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRightInputEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRightInputEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeftInputComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxLeftInputComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRightInputComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxRightInputComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLeftLiftIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLeftLiftIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightLiftIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightLiftIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLeftProjection_lift
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLeftProjection_lift
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeRightProjection_lift
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeRightProjection_lift
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fst_original
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_fst_original
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_snd_original
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorLaxInclusion_snd_original

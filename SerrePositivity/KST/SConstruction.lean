@@ -2576,4 +2576,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorResolvedInput
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNativePerfect
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorFlatKernelNullSquare
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxModel
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxVerdier
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLandTamme
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxInputComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxSourceMaps
+
 /-! # ∞-S• 構成と連結 K 理論 -/
