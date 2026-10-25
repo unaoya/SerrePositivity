@@ -93,3 +93,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitToFiber
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightUnitFiberIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRightFiber_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.internalHomComposition_tensorEdge_hom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rawUnitCondition_of_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rawUnitCondition_of_vertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitFullSpace_fibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeft_fibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_fibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRightMappingEquivalence

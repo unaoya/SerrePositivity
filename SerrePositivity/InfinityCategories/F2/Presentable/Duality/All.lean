@@ -28,10 +28,16 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUni
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitReturnCondition
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitFiberReturn
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitFiberIso
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitCompositionHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RawUnitComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RawUnitInvariance
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitPairTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitProjectionFibrations
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightProjectionEquivalence
 
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。
-規約：実単位の局所対応・Kan ファイバー・普遍単位との比較を含み、Pr 全体の同値は未公開。
+規約：実単位の局所対応と局所右射影の QCat 同値までを含み、Pr 全体の同値は未公開。
 使われ方：P-d の専用ビルドと公理監査。
 -/

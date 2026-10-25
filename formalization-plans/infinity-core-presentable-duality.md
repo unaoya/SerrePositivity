@@ -19,7 +19,10 @@
   `RightAdjointUnitSubspace` とその core `RightAdjointUnitSpace` の可縮性を証明済み。
   元の `adjointUnitRight` の固定ファイバーとの厳密な同型 `rightUnitFiberIso` を構成し、
   元の右ファイバーの全高次の可縮性まで証明済み。
-- 最新の専用集約は8,534 jobs 成功、専用監査274宣言は標準3公理のみ。
+- 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
+  両局所射影は Kan fibration。右射影は trivial Kan fibration・QCat 同値として公開済み。
+  左射影の同値性と全 Pr 上の対応 quasicategory はまだ未構成。
+- 最新の専用集約は8,540 jobs 成功、専用監査320宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -48,6 +51,9 @@
 - `rightAdjointUnitSubspace_isContractibleKan`、`rightAdjointUnitSpace_isContractibleKan`
 - `rightFiberToAdjointUnitSpace`、`rightAdjointUnitToFiber`、`rightUnitFiberIso`
 - `adjointUnitRightFiber_isContractibleKan`
+- `rawUnitCondition_of_vertexIso`、`adjointUnitLeft_fibration`、`adjointUnitRight_fibration`
+- `adjointUnitRight_trivialKanFibration`、`adjointUnitRight_isQCatEquivalence`
+- `adjointUnitRightMappingEquivalence`（二対象間の局所写像空間の同値）
 - `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
@@ -55,13 +61,13 @@
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,890 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,896 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
 
 ### 未コミット
-- なし（元の右ファイバーとの厳密同型・全高次可縮性までを限定コミットで保存）。
+- `PrecompositionUnit.lean`（左側の指定単位候補。集約への import とビルドは次工程）。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -77,8 +83,9 @@
   辺の持ち上げまたは充満忠実性も証明する。
 
 ### 次の一手
-- 単位条件の不変性を使い、右射影の辺の持ち上げと QCat 同値性を検証する。
-- 左側には前合成の随伴と普遍単位の模型を接続する。
+- 左側には前合成の全 QCat 随伴と普遍単位の模型を接続する。
+  全パラメータ Hom 全単射 `precompositionHomEquiv` と転置・評価の式は検証済み。
+  それを指定単位の判定または自然な Hom 対応へ接続する工程が残る。
 - その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
   深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
 
@@ -115,7 +122,7 @@ P-d 内で構成を進める場合も、新規葉に限定する。
 
 - ビルド：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
 - 監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
-- 検証済み：専用集約8,534 jobs 成功、所有274宣言の再帰的公理依存は標準3公理のみ。
+- 検証済み：専用集約8,540 jobs 成功、所有320宣言の再帰的公理依存は標準3公理のみ。
 - 主経路の公開名を `#check @...` で検査し、追加 instance 引数なし。
 - 根のビルド、既存 Presentable 集約・監査、`.lake` の削除は行わない。
 - 主経路に `ModelCategory SSet` 等の instance 仮定を導入しない。
