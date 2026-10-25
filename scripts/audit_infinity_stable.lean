@@ -1,3 +1,18 @@
+import SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableComposition
+import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativity
+import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule
+import SerrePositivity.DifferentialGraded.Category.HomTransport
+import SerrePositivity.DifferentialGraded.Presentation.CategoryFromHomSurjections
+import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCategory
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCode
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComplex
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComposition
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFreeCover
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSpan
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomUnit
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWordCardinality
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWords
 import SerrePositivity.DifferentialGraded.Presentation.CategoryData
 import SerrePositivity.DifferentialGraded.Presentation.CategoryReindex
 import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse
@@ -7901,6 +7916,22 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso,
     `SerrePositivity.InfinityCategories.Derived.DGNativeTriaRetract,
     `SerrePositivity.InfinityCategories.Derived.DGThickKernelNativeRetract,
+    `SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableComposition,
+    `SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativity,
+    `SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule,
+    `SerrePositivity.DifferentialGraded.Category.HomTransport,
+    `SerrePositivity.DifferentialGraded.Presentation.CategoryFromHomSurjections,
+    `SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCategory,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCode,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComplex,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComposition,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFreeCover,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSpan,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomUnit,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWordCardinality,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWords,
+
     `SerrePositivity.DifferentialGraded.Presentation.CategoryData,
     `SerrePositivity.DifferentialGraded.Presentation.CategoryReindex,
     `SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse,
