@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（613 モジュール・3821 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（614 モジュール・3829 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -120,6 +120,7 @@ let F := kanDiagramCoherentNerve (cocartesianStrictTransportDiagram p ⋙ R)
 - `WeakIdentityQuotientTransport` は元の指定値同型の実辺で既存指定点を輸送し、既存の値比較で同じ Kan 恒等点へ正規化する。`weakIdentityQuotientFiberUnit_recovery` と `weakIdentityQuotientFiberUnit_pointIso` は元の両端 x 固定 fiber の全単位の回収と既存 `weakIdentityQuotientFiberPoint` への実小 fiber 内同型を供給する。これを可変終点の実全族写像の像へ照合する部分は未証明。
 - F1 の供給依頼では同じ単位変換の pointedMap 比較も保持し、上記の既存指定恒等点条件を同じ全族写像について検証する。非 pointed な fiber 値同値の選択だけからこの条件を推論しない。K-B 内に一般分類 API や追加の存在仮定は導入しない。
 - 指定 `smallCoherentStraighteningUnitTransformation F` は元の F から既存 left unstraightening の復元図式への単位である。元の span 射影は一般の cocartesian fibration なので、この単位だけから上記 f の存在を推論しない。全族 f と厳密な底、全 fiber 単位の照合が揃うまで K-B-S の供給完了とは数えない。
+- `WeakSpanKanQuotientUnstraighteningMap` は指定商降下同型の全変換空間での実像と既存の底変換を合成し、単体圏上の同じ小さい unstraightening から商上への実全空間射を構成する。元の単体圏上の全族単位が供給されれば、同じ実射へ後合成して初頂点写像と q を厳密に保持する。元の marked span 全族への降下・全 fiber 単位の回収・指定恒等点との照合は未完で、K-B-S の供給完了とは数えない。
 
 ### 未コミット
 - 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。
