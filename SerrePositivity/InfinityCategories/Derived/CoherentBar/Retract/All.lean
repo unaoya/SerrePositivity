@@ -52,6 +52,18 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.Uni
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalBoundaryCoefficients
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedFullEndColumnAction
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundarySigns
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalBoundarySupport
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryCoefficientPositive
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryCoefficientComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoefficientRestriction
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LabelBoundaryNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PostcompositionLinear
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndBlock
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndActionPush
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryPostcomposeBasis
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryPostcomposeCoefficients
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.DeformationRetract
 /-!
 概要：D 所有の coherent bar の変形 retract の葉を集約する。
 方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。

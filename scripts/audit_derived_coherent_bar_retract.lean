@@ -62,7 +62,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalCompositeBasis,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalBoundaryCoefficients,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedFullEndColumnAction,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundarySigns]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundarySigns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalBoundarySupport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryCoefficientPositive,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryCoefficientComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoefficientRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LabelBoundaryNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PostcompositionLinear,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndBlock,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndActionPush,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryPostcomposeBasis,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryPostcomposeCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.DeformationRetract]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -81,3 +93,10 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleInclusionOfDegenerateVanish
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleRetractHomotopyOfDegenerateVanish
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarStageCoefficientComparison
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizationKillsDegenerate
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleInclusionUnconditional
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleInclusionUnconditional_projection
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleProjectionUnconditional_inclusion
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModuleRetractHomotopyUnconditional

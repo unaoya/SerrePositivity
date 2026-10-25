@@ -1,64 +1,43 @@
-# D：coherent bar の変形 retract（工程 A）
+# D：coherent bar の変形 retract（工程 A、完了）
 
-## 引き継ぎ（2026-10-25）
-### 現在地
-- チャット稼働の基準は 2026-10-25 18:07 頃。24 時間の期限は 10-26 18:07 頃（新割り当てでリセットしない）。
-- ユーザーの次割り当てで再開。所有は Derived/CoherentBar/Retract/ と All・専用監査のみ。
-- D-bar の実 bar・正規化模型・射影・安定自己写像・全作用鎖ホモトピーを読み取り専用で使う。
-- 専用 All ビルド成功（3727 jobs）・専用公理監査成功（53 葉463宣言、標準三公理のみ）。
-- 修正包含の一般降下、実射影の次数成分と次数付き切断、安定自己写像が実射影を保つ式を対象検証済み。
-- 面・退化の BasedOperators と合成則、前側 prefix の全高次係数一致、tail の厳密退化式、prefix 後の退化単位の合成消去を対象検証済み。
-- BasedCoproduct の合成則は BasedCoproductComposition で三つの対象輸送を明示して対象検証済み。旧 timeout 試作は /tmp/d-retract-basedcoproduct-composition-draft.lean に保持。
-- PrefixHomotopyAction でホモトピー後の prefix を切断後の退化列へ制限する全 Hom の式を対象検証済み。
-- PrefixBlockInterchange・PrefixTermInterchange で退化前後の prefix 合成が全 Hom で一致。PrefixSums は正位置の有限和を相殺、PrefixAtZero は零位置の残余単位項と面を同定（対象検証済み）。
-- UniversalLabelCoefficients・UniversalLabelNaturality は標準単体の普遍正規化係数・始点支持・退化押出し零。BasedCoefficientAction・BasedUniversalCoefficients は始点保存の部分型に制限し、未シフト係数直和作用での退化消滅まで対象検証済み。
-- BoundaryFaceTerms・BoundaryExpansion は theta/H と元の列との二合成を展開。BoundaryFacesOnly.dgCoherentBarNormalizationBoundary_restrict_faces は正位置（q < n+1）の実境界を面和だけで計算する（対象検証済み）。
-- FaceHomotopyAction は面の後の H の作用と次数消滅。LastBoundaryParts・LastBoundaryFacesOnly は最後の段（q = 単体次数）の単位面・prefix の相殺と残る面和、VertexBoundary は次数零の境界消滅を対象検証済み。
-- BasedColumns・BasedColumnComposition・BasedColumnAction で面・退化列を始点保存作用へ移し、普遍係数の押出しを実全 Hom の前合成と同定（対象検証済み）。
-- ShiftUnitCancellation で全次数の単位シフトを消去し、BasedUniversalColumn は普遍 PInfty 係数から作る実列が全退化単体で零と証明（対象検証済み）。実安定作用素との同一視は未完。
-- ProjectorCoefficientCriterion・StageCoefficientCriterion は「有限段比較 ⇒ 安定作用素比較 ⇒ 退化消去」の明示仮定つき接続。有限段比較の無条件証明が残る。
-- BasedIdentityColumn・StageCoefficientBase で有限段比較の q=0 を無条件に証明。BasedEndColumnAction・BasedFullEndColumnAction は係数作用を同じ零次数へ線形移送し、面項との通常の等式比較を与える。
-- FaceLeftBasedAction・FaceRightBasedAction で実境界の両面項を始点保存自己写像の作用へ戻す。LabelBoundaryPositive・LabelBoundaryLast は Mathlib Hσ の正位置・最後・上方の面表示。UniversalBoundaryCoefficients は恒等ラベルでの全場合の係数を評価（対象検証済み）。
-- CorrectedInclusion は退化因子消去を明示仮定とする補助入口。無条件の retract は未完。
-### 残り（依存順）
-- 1. 安定作用素の退化因子消去：全 prefix の相殺、始点を保つラベル正規化との照合。
-- 2. 修正包含の閉性・包含後射影の恒等・射影後包含の全作用鎖ホモトピーへ無条件代入。
-- 3. 自分の集約・専用監査、限定コミット、工程 A の公開名を報告。
-- 4. 工程 A の完了後、CoherentBar/Compact/ の新規葉・All・専用監査で c2・c6・c7 へ（次のユーザー割り当て）。
-### 主要宣言
-- dgBarRetract_correctedSection・dgBarRetract_projection_correctedSection。
-- dgBarRetract_correctedSection_projection。
-- dgCoherentBarNormalizedModuleProjection_evaluation_f。
-- dgCoherentBarNormalizedGradedSection_projection・_naturality。
-- dgCoherentBarNormalizationEndomorphism_evaluation_f・_projection。
-- DGCoherentBarNormalizationKillsDegenerate（残る係数検証の正確な型）。
-- dgCoherentBarNormalizedModuleInclusionOfDegenerateVanish。
-- dgCoherentBarNormalizedModuleRetractHomotopyOfDegenerateVanish。
-### 依存と提供
-- D-bar の既存 CoherentBar/ は編集しない。D-e の KappaCovers/・KappaPerfect/ も編集しない。
-- Mathlib DoldKan の PInfty・homotopyPInftyToId・退化消滅を直接使用できる。
-- D-bar へ同じ正規化実加群・同じ閉射影による変形 retract を提供する。
-### 保存範囲
-- 検証済みの53葉と All・専用監査を限定コミットで保存。無条件の退化消去は未供給。
-### 既知の問題
-- 安定自己写像が恒等にホモトピックで射影を保つことだけでは因子化は導けない。
-- 補助入口の退化消去仮定を無条件に解消するまで工程 A の完了とはしない。
-### 次の一手
-- 実境界の列 = BasedFullEndColumnAction (UniversalBoundaryCoefficients) を同定する。BoundarySigns の正位置左右・最後の段の三符号比較は対象検証済み。
-- Hσ の普遍係数の始点支持と自然性、係数押出しと全 Hom の合成の交換を接続し、P_succ の係数を有限段比較の帰納段へ代入する（q=0 は済み）。
-- DGCoherentBarStageCoefficientComparison を無条件に閉じ、StageCoefficientCriterion と ProjectorCoefficientCriterion から退化消去・既存の修正包含へ代入する。
+## 現在地
+- 工程 A の無条件の変形 retract を証明済み。専用 All は 3739 jobs、専用監査は65葉529宣言で成功（標準三公理のみ）。
+- チャット稼働の基準は 2026-10-25 18:07 頃。24 時間の期限は10-26 18:07 頃（新割り当てでリセットしない）。
+- 所有：Derived/CoherentBar/Retract/ の新規葉・All・専用監査。D-bar の既存 CoherentBar/ は読み取り専用のまま。
+- 有限段階の実正規化作用素を普遍 P 係数と無条件に比較し、安定作用素の全退化列の零性を証明した。
+- 同じ正規化実加群・同じ閉射影を使う修正包含は閉じており、包含≫射影は厳密に恒等、射影≫包含は既存の安定作用素そのもの。
+- 恒等への比較は ModuleHomotopy。評価ごとの鎖ホモトピーだけに弱めず、全次数の dg 作用を保持する。
+
+## D-bar への公開入口
+- モジュール：`Derived.CoherentBar.Retract.DeformationRetract`（または `Retract.All`）。名前空間は `SerrePositivity.InfinityCategories`。
+- 修正包含：`dgCoherentBarNormalizedModuleInclusionUnconditional`。
+- 厳密な分裂：`dgCoherentBarNormalizedModuleInclusionUnconditional_projection`。
+- 安定作用素との一致：`dgCoherentBarNormalizedModuleProjectionUnconditional_inclusion`。
+- 全作用付き鎖ホモトピー：`dgCoherentBarNormalizedModuleRetractHomotopyUnconditional`。
+- 一般の既存 MC 証明を保持する版：`dgCoherentBarNormalizedModuleInclusion`・`_projection`、`dgCoherentBarNormalizedModuleProjection_inclusion`、`dgCoherentBarNormalizedModuleRetractHomotopy`。
+- 無条件版の仮定：R の CommRing、D の DGCategory と Small.{u}、I : SSet.{u}、F : ULift I ⟶ dgNerve R (RightModule R D)。MC・退化消去・係数比較の追加入力は不要。
+- 元の bar・正規化模型・射影・安定自己写像・既存宣言は変更していない。移動・改名・削除なし。
+
+## 証明の接続
+1. [x] prefix と退化の全 Hom の合成比較、正位置の全 prefix 和の相殺、零位置の単位面の相殺。
+2. [x] 始点保存作用の厳密合成と線形係数押出し、普遍 PInfty 係数の全退化列の消滅。
+3. [x] Mathlib Hσ の全場合の面表示と普遍係数、始点支持、自然性、実境界との無条件比較。
+4. [x] P_succ による有限段比較、安定作用素の退化消去、修正包含・分裂・ModuleHomotopy への無条件代入。
+5. [x] 専用 All の終端後に専用監査を完了。限定コミットで公開する。
+
+## 主要な内部入口
+- `StageCoefficientComparison.dgCoherentBarStageCoefficientComparison`。
+- `BoundaryCoefficientComparison.dgCoherentBarNormalizationBoundary_coefficients`。
+- `DeformationRetract.dgCoherentBarNormalizationKillsDegenerate`。
+- `CorrectedInclusion` の明示入力版は内部の一般降下として保持し、上記入口で無条件証明を代入する。
+
+## 次工程
+- ユーザーの追加割り当てに従い、D 本体は CoherentBar/Compact/ の c2・c6・c7 を担当する。
+- 正本：`infinity-core-stable-bar-compact.md`。D-bar は native 余錐・普遍性・filtered 評価比較を担当する。
+- c2 の仮定は全 native κ-filtered な coherent 図式の比較。D-e の公開型は中継待ちで、strict 比較や poset 制限で代用しない。
 
 ## 運用
-- 新規 sorry・公理・引用なし。ModelCategory SSet の instance を主経路に置かない。
-- 新規葉のみ。既存宣言・既存モジュールは不変。移動・改名・削除はしない。
-- All のビルド終端後に専用監査。根のビルド・.lake の削除はしない。
-- set -o pipefail のうえ所有パスのみ git commit --only。
-- 実施記録はコミット本文。工程 A 完成後は公開名を報告し、追加割り当ての Compact へ進む。
-
-## 工程 A 後の割り当て（ユーザー判断）
-- 所有：Derived/CoherentBar/Compact/ の新規葉・集約・専用監査。
-- c2 の仮定は coherent な全 native κ-filtered 図式についての比較（D-e が C1 を再定式化、公開型は中継待ち）。strict 比較・poset 制限では代用しない。
-- c2：Yoneda と評価の交換、coherent 比較を通じた余極限の計算から、representable・全シフト・κ未満 sphere-free 基底の native IsKappaCompact。
-- c6・c7：DGKappaClosedCompactGeneratorCriterion を通じ、dgKappaClosedProjectiveObjects_property の七入力へ接続。
-- 比較の実値が D-e から届いたら代入の系を追加し DGKappaConeInput の実例を構成する。
-- D-bar の c2・c6・c7 は D に移管。工程 A 完了前には Compact 本体へ着手しない。
+- 新規 sorry・公理・引用なし。ModelCategory SSet 等の instance を主経路へ入れない。
+- 新規葉のみ。既存の D-bar 模型と他レーンのファイルは読み取り専用。
+- All の終端後に専用監査。根のビルド・.lake の削除はしない。
+- set -o pipefail のうえ所有パスのみ git commit --only。実施記録はコミット本文。
