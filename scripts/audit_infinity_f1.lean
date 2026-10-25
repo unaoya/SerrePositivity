@@ -8,6 +8,7 @@ import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteCospanNerveEdges
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
 import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionFirstVertexLocalization
 import SerrePositivity.InfinityCategories.F1.Joins.LimitConeDiagramComparison
+import SerrePositivity.InfinityCategories.F1.Joins.ColimitCoconeDiagramComparison
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp

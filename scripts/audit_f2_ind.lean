@@ -8,6 +8,7 @@ import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetColimits
 import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitsColimits
 import SerrePositivity.InfinityCategories.F2.Ind.PullbacksArePushouts
 import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
+import SerrePositivity.InfinityCategories.F2.Ind.Stability
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.cylinderEvaluationSwitch
@@ -2296,3 +2297,15 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isExactFunctor
 #check SerrePositivity.InfinityCategories.F2.Ind.ind_pushout_of_pullback_square
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_pushout_of_pullback_square
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_pullback_of_pushout_square
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_pullback_of_pushout_square
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_isPullbackSquare_iff_isPushoutSquare
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_isPullbackSquare_iff_isPushoutSquare
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_isStable
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_isStable
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda
