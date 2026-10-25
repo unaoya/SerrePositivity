@@ -1505,20 +1505,21 @@ Frobenius の性質は使わない。一般の有限自由複体についての 
   \item $f$ が両立する $p$ 冪根をもてば、perfectoid 環の被約性から $(R/f)_{\mathrm{perfd}}=(R/(f^{1/p^\infty}))^\wedge$ となり、全射性がわかる。
   \item 全射性を $p$ 完全忠実平坦な底変換 $R\to T$ から $R$ へ降下する。
 \end{enumerate}
-André の補題の原典の証明（Prop.~7.10、7.11）は、導来 prismatic コホモロジー、Hodge--Tate 比較、結晶コホモロジー、余接複体、$\infty$ 圏の左 Kan 拡張に依存する。
 
-形式化では、3・4 を原典どおりに証明した。1 は不要になった（下の構成は任意の元の族を直接扱うので、有限生成への帰着も単項への帰納も要らない）。Cor.~7.3（存在）は δ 環・prism の基礎（完全 δ 環と完全 $\mathbb{F}_p$ 代数の対応、distinguished 元、完全 prism と perfectoid 環の対応）から示した。ただし原典の Prop.~7.2（全 prism の始対象を超限反復で作る構成）の一般形は経由せず、$J/d$ の δ 環としての添加（除算）、完全化（Lemma 3.9）、導来 $(p,d)$ 完備化の順に、完全な試験 prism の始対象を直接構成している。
+形式化は\textbf{原典どおり André の補題を使う}（2026-10-25 に、André を使わない旧経路から切り替えた）。André の補題で絶対整閉な perfectoid 環 $T$ へ $p$ 完全忠実平坦に拡大すると、$J$ の\emph{全ての}元が $T$ で両立する $p$ 冪根をもつので、3 で $T$ 上の全射性が出て、4 で $R$ へ降下する。1 の有限生成・単項への帰着は、全ての元を同時に扱えるので不要になる（原典の証明の簡略化）。主張は原典と同じ一般性で、$R$ を任意の整 perfectoid 環、$S=R/J$ を導来 $p$ 完備な全射商として、任意の perfectoid 化 $S\to C$ が全射である。$p$ 正則性や古典的完備性は仮定しない。André の補題そのものは次の段落のとおり証明済みである。
 
-2 の André の補題は使わず、\textbf{Thm.~7.4 に必要な主張だけを原典にない経路で証明した}。必要なのは絶対整閉な拡大ではなく、「指定した元の族が両立する $p$ 冪根をもつ $p$ 完全忠実平坦な perfectoid 拡大」だけである。完全 prism $(A,(d))$ 上で、元の族 $(f_s)$ について次のように構成する。
+Cor.~7.3（存在）は δ 環・prism の基礎（完全 δ 環と完全 $\mathbb{F}_p$ 代数の対応、distinguished 元、完全 prism と perfectoid 環の対応）から示した。原典の Prop.~7.2（全 prism の始対象を超限反復で作る構成）は経由せず、$J/d$ の δ 環としての添加（除算）、完全化（Lemma 3.9）、導来 $(p,d)$ 完備化の順に、完全な試験 prism の始対象を直接構成している（完全化の後では $d$ が非零因子になるので超限反復が要らない）。
+
+\textbf{André を使わない別証明も保存してある}（主定理の経路では使わない）。André の補題がまだ引用だった時期（2026-10-16）に、Thm.~7.4 に必要な主張「指定した元の族が両立する $p$ 冪根をもつ $p$ 完全忠実平坦な perfectoid 拡大」だけを、完全 prism $(A,(d))$ 上で次のように構成して示したものである。
 \begin{enumerate}
   \item 自由 δ 環に根の変数を入れ、$X_s^{p^n}-f_s$ を割る\textbf{割り算包}（pd 包の δ 版）をとる。有限部分族と有限の δ 深さごとに、残余の Koszul 分解を与えて Tor の消滅と $p$ 正則性を示し、有限段の有向余極限として任意の族へ移す。
   \item この割り算包を $(p,d)$ で導来完備化した源について、$A/(p,d)$ への導来還元の次数零への集中と、$H^0$ の忠実平坦性を示す。生成元の冪による商 $A/(d^n)$ を経由した mod $p$ 還元と、完備な平坦複体を冪商から再構成する議論（Milnor 列）で、完備化した源そのものの離散性に持ち上げる。
   \item 完備化した源の $H^0$ を raw の PD 完備化と同一視し、δ 完全化とその完備化が既存の perfectoid の候補に一致することを示す。こうして候補が $p$ 完全忠実平坦であることがわかる。
 \end{enumerate}
-これで任意の元族に $p$ 冪根を添加する $p$ 完全忠実平坦な perfectoid 拡大が得られ、4 の降下と合わせて Thm.~7.4 が引用なしに従う。主張は原典と同じ一般性で、$R$ を任意の整 perfectoid 環、$S=R/J$ を導来 $p$ 完備な全射商として、任意の perfectoid 化 $S\to C$ が全射である。$p$ 正則性や古典的完備性は仮定しない。途中で使う導来完備化・導来テンソル・Tor と余極限の交換などの一般論は、CLMST と共有する基盤として証明した。
+この構成（完全 prism 上の $X^p-b$ 族の prismatic envelope の離散性と平坦性）は、原典の Ex.~7.9・Prop.~7.10 の計算に近く、導来 prismatic コホモロジーの形式化で使える見込みがあるので残している。途中で使う導来完備化・導来テンソル・Tor と余極限の交換などの一般論は、CLMST と共有する基盤として証明した。
 
-Thm.~1.17(1)（整代数の perfectoid 化の存在）の環としての主張は、導来 perfectoid 化界面の integral と離散時 universal から証明した。引用するのは界面の存在だけであり、その integral の根拠は Thm.~10.11（$\Delta_{S/A,\mathrm{perf}}$ から得る perfectoid 化の離散性）である。具体的な導来 prismatic コホモロジーの構成は保留している。ただし CLMST の巡回長さの評価（Prop.~4.0.10 の証明）は、Thm.~1.17(1) の代わりに上の Cor.~7.3 の構成を使うよう付け替えた。André の補題（Thm.~7.14）自体も、次の段落のとおり別経路で証明した。Thm.~7.14 に相対的な Thm.~7.4 の条件付きの証明も残しているが、主定理の経路では使わない。
-\lean{存在：\ld{BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient}、\ld{exists_perfectoidization_of_perfectoid_surjective_quotient}。根付き拡大：\ld{exists_rootedPerfectoidExtension_of_perfectPrism}。全射性：\ld{BhattScholze.SemiperfectoidSurjectivity} の \ld{surjective_of_isPerfectoidization_of_semiperfectoid_quotient}。旧入口 \texttt{BhattScholze.Inputs.exists\_surjective\_perfectoidization\_of\_complete\_torsionFree\_quotient}（ルートからは import されない互換モジュール）は同じ型のまま証明に置き換え、\ld{BhattScholze.surjective_of_isPerfectoidization_of_adic_complete_quotient} が同じ主張の公開入口である。いずれも引用なし。}
+Thm.~1.17(1)（整代数の perfectoid 化の存在）の環としての主張は、導来 perfectoid 化界面の integral と離散時 universal から証明した。引用するのは界面の存在だけであり、その integral の根拠は Thm.~10.11（$\Delta_{S/A,\mathrm{perf}}$ から得る perfectoid 化の離散性）である。具体的な導来 prismatic コホモロジーの構成は保留している。ただし CLMST の巡回長さの評価（Prop.~4.0.10 の証明）は、Thm.~1.17(1) の代わりに上の Cor.~7.3 の構成を使うよう付け替えた。
+\lean{存在：\ld{BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient}、\ld{exists_perfectoidization_of_perfectoid_surjective_quotient}。全射性（原典どおり André 経由）：\ld{BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient}（\texttt{Semiperfectoid/SemiperfectoidSurjectivity}）、その中身 \ld{BhattScholze.surjective_of_isPerfectoidization_of_andre}（\texttt{Semiperfectoid/AndreSurjectivity}）。André を使わない別証明：\ld{BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope} と根付き拡大 \ld{exists_rootedPerfectoidExtension_of_perfectPrism}（\texttt{Semiperfectoid/RootEnvelope/}）。旧入口 \texttt{BhattScholze.Inputs.exists\_surjective\_perfectoidization\_of\_complete\_torsionFree\_quotient}（ルートからは import されない互換モジュール）は同じ型のまま証明に置き換え、\ld{BhattScholze.surjective_of_isPerfectoidization_of_adic_complete_quotient} が同じ主張の公開入口である。いずれも標準公理のみ。}
 
 \paragraph{André の補題（Thm.~7.14）の証明}\label{par:bs-andre}
 主張は原典のまま（任意の perfectoid 環 $R$ に、絶対整閉な perfectoid 環への $p$ 完全忠実平坦な写像 $R\to S$ がある）で、証明は原典の Prop.~7.11・Hodge--Tate 比較を使わず、Remark 7.15 の pd 包の計算に沿う。第一段は、正次数のモニック多項式の任意の族 $(f_s)$ について、$R\langle Y_s^{1/p^\infty}\rangle/(f_s(Y_s))$ の perfectoid 化が $p$ 完全忠実平坦で各 $f_s$ の根をもつこと。mod $\varpi$ で割り算包が $R/\varpi[Y^{1/p^\infty}]/(f^p)$ 上の切断多項式環として自由になることから忠実平坦性を得る（段落~\ref{par:bs-thm74} の $X_s^{p^n}-f_s$ の場合の一般化）。第二段は、この操作を $\omega_1$ まで超限的に反復する。可算共終の極限段では $p$ 進完備化をとり、非可算共終の極限は自動的に $p$ 完備で、終段では任意のモニック多項式の係数がある段に入るので根をもつ。極限段の perfectoid 性と $p$ 完全忠実平坦性の保存も証明した。原典の「mod $p$ で ind-syntomic に取れる」という強化は主定理に不要なので含めない。
