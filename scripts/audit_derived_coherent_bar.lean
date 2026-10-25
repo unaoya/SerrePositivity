@@ -37,7 +37,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanDescent,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanMap,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedProjection]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedProjection,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.HomFiltration,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FiltrationColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelNormalizationRecurrence,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.BoundaryFiltration,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebaseAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.GradedStages,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.GradedStabilization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CycleAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StageComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebaseInjective,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.TwistedEndDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StabilizedEndomorphism,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.HomotopyStabilization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.AccumulatedHomotopyEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
