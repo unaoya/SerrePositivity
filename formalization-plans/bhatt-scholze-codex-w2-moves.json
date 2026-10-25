@@ -1,0 +1,28 @@
+{
+ "moves": {
+  "SerrePositivity.BhattScholze.Delta.DeltaRing": "SerrePositivity.BhattScholze.Delta.Basic.DeltaRing",
+  "SerrePositivity.BhattScholze.Delta.DeltaIdentities": "SerrePositivity.BhattScholze.Delta.Basic.DeltaIdentities",
+  "SerrePositivity.BhattScholze.Delta.DeltaFrobenius": "SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius",
+  "SerrePositivity.BhattScholze.Delta.DeltaFrobeniusNaturality": "SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobeniusNaturality",
+  "SerrePositivity.BhattScholze.Delta.DeltaSectionNaturality": "SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality",
+  "SerrePositivity.BhattScholze.Delta.DeltaTransport": "SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport",
+  "SerrePositivity.BhattScholze.Delta.WittTwoMap": "SerrePositivity.BhattScholze.Delta.Basic.WittTwoMap",
+  "SerrePositivity.BhattScholze.Delta.WittTwoUnits": "SerrePositivity.BhattScholze.Delta.Basic.WittTwoUnits",
+  "SerrePositivity.BhattScholze.Delta.DeltaPrime": "SerrePositivity.BhattScholze.Delta.Basic.DeltaPrime",
+  "SerrePositivity.BhattScholze.Delta.DeltaQuotient": "SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient",
+  "SerrePositivity.BhattScholze.Delta.DeltaIdeal": "SerrePositivity.BhattScholze.Delta.Basic.DeltaIdeal",
+  "SerrePositivity.BhattScholze.Delta.DeltaClosureGeneration": "SerrePositivity.BhattScholze.Delta.Basic.DeltaClosureGeneration",
+  "SerrePositivity.BhattScholze.Delta.DeltaDirectLimit": "SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit",
+  "SerrePositivity.BhattScholze.Delta.DeltaSubring": "SerrePositivity.BhattScholze.Delta.Basic.DeltaSubring",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostCoefficients": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostCoefficients",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostCoefficientTwo": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostCoefficientTwo",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostFrobenius": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostFrobenius",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostLowCoefficients": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostLowCoefficients",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostNaturality": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostNaturality",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostRingHom": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostRingHom",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittGhostStep": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostStep",
+  "SerrePositivity.BhattScholze.Delta.DeltaWittJetComparison": "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittJetComparison"
+ },
+ "stubs": [],
+ "keep": []
+}
