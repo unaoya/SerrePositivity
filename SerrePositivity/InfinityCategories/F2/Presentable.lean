@@ -398,3 +398,4 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialSimple
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialEdgeSimplices
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialSimplexGluing
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialEdgeDiagram
+public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeCoconeEdgeExtension

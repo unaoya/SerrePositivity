@@ -93,10 +93,10 @@
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
 - e5 は Ind-S へ内ホーン充填閉包の非退化単体濃度評価をユーザー経由で依頼済み。任意の μ-small 試験形状への拡張に使う。
-- e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
+- e5 の F1B 指定同型持ち上げ依頼は取り下げ。P-11（有限余極限と小余積からの全小余極限）・P-12（小図式の各点 compact 性）は P-f 向け優先供給。
 
 ### 未コミット
-- `RelativeCoconeEdgeExtension`：指定基底上での全余錐辺の相対延長を対象ビルド中。
+- なし。
 
 ### 次の一手
 - e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型と指定可算辺列の coherent 実現を使い、基底上の相対交互構成から filtered 生成表示へ進む。

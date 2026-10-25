@@ -780,3 +780,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge_simplex
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_realizing_edges
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeCocone_edge_extension
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeJoin_edge_extension
