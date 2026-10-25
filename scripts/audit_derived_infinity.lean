@@ -1,3 +1,5 @@
+import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
 import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
@@ -7401,6 +7403,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion,
+
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential,
 

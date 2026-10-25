@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion
+public import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
