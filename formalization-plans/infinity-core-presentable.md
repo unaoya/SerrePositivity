@@ -26,11 +26,12 @@
 - P-1 c は完了。個々の presentable 圏の全小極限・反映による小余極限構成を提供する。
   ユーザー確定により HTT 5.5.3.13 は e へ移し、c は六項目のままとする。
 
+- P-1 d1〜d5 の定理は完了。連続前層の表現可能性と随伴関手定理（5.5.2.9）を比較入力なしで提供する。
+
 ### 残り（依存順）
-1. P-1 d：随伴関手定理（5.5.2.9）。d5 は無条件化。d2・d4 は Ind-S (1) の局所性比較だけを明示し、供給後に条件を外す。
-2. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
+1. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
    Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
-3. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
+2. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
    HTT 5.5.4.15。d〜f の個別見積もりは各着手時に精査する。
 
 ### 主要宣言
@@ -54,11 +55,11 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
-- `functor_isPresentable`、`functor_hasSmallColimits`、`reflectiveImage_isKappaAccessible`、`PrL`、`PrR`
+- `functor_isPresentable`、`piSSet_isPresentable`、`piSSetProjection_preservesSmallColimits`、`PrL`、`PrR`
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
-- `presheaf_isRepresentable_of_sendsSmallColimitsToLimits`（自由前層圏。一般 presentable への移送は未完）
+- `presentableContinuous_isRepresentable`、`exists_rightAdjoint_iff_preservesSmallColimits`（d2・d4、比較入力なし）
 
 - `IsCorepresentableSmallSpaceFunctor`、`accessible_preservesLimits_isCorepresentable`（d3、存在入力なし）。
 - `IsAccessible.exists_smallCovariantHom`、`IsAccessible.exists_smallContravariantHom`
@@ -87,21 +88,21 @@
 - 任意の小さい A の Indκ(A) は無条件には presentable でない。
   一般の公開定理の余完備性条件と、構成した前層生成圏の具体的な無条件の例を区別する。
 - accessibility の濃度変更には `IsCardinalChangeBound κ μ` と μ の正則性を要求し、κ ≤ μ だけでは主張しない。
-- d2 の一般反映移送には、元の表現可能前層の反対辺への作用と Hom 前合成の可逆性判定が必要。
-  Ind-S としてユーザーが依頼済み。必要な一方向は `RepresentableInversionDetectsLocality (PresheafInfinity A)`。
-  この比較から一般 presentable への下降と d4 の全判定への接続は提供する。存在入力の除去は未完。
-
+- d2 の局所性比較は Ind-S の `presheafInfinity_representableInversion_detects_locality` で解消済み。
+  P の反映移送と小さい Hom から、d2・d4・d5 を無条件に接続した。
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
-  Ind の小余極限反映と合わせ d5 は無条件。d4 に残る入力は d2 の局所性比較だけ。
+  Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
+- d6 の最新監査は共有 `.olean` の読み込み失敗で未完了。定理と両集約は 9389 ジョブでコンパイル済み。
+  同じ実行内の再構築・監査を進行中。直前の成功監査は P 2662・H 5544 宣言で標準三公理のみ。
 
 ### 未コミット
-- `PiColimitCones` で小さい全直積の余錐と成分計算を検証中。
+- なし。
 
 ### 次の一手
-- e の d 非依存部を進める。Ind-S (1) が届いたら d2・d4 の局所性比較入力を外す。
+- d6 の最新監査を完了し、e5 の引き戻し、e6 の双対性、e7 の Pr^L 小極限へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
-  `functor_isPresentable`・`tensor_isPresentable` と前層圏族の小さい積は構成済み。一般の小さい積・引き戻し・Pr^L 小極限が残る。
+  `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
 
 ## P-1 b 三段目（v3）
@@ -138,18 +139,18 @@
 ## P-1 d 三段目（v3）
 
 - [x] d1. 小さい対象族の共通 compact 濃度と Hom 族の保存判定。
-- [ ] d2. 小余極限を小極限へ送る前層の表現可能性。
+- [x] d2. 小余極限を小極限へ送る前層の表現可能性。
 - [x] d3. accessible かつ小極限保存な空間値関手の余表現可能性。
-- [ ] d4. 小余極限保存と右随伴の存在の同値。
+- [x] d4. 小余極限保存と右随伴の存在の同値。
 - [x] d5. accessible・小極限保存と左随伴の存在の同値、右随伴の accessibility。
-- [x] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
+- [ ] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-1 e 三段目（v3）
 
 - [x] e1. Pr^L・Pr^R の対象・関手圏・全 ∞ 圏の定義。
 - [x] e2. Fun(K,C) の小余極限と各点計算。
 - [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
-- [ ] e4. 積の presentable 性。
+- [x] e4. 積の presentable 性。
 - [ ] e5. 引き戻しの presentable 性。
 - [ ] e6. Pr^L と Pr^R の双対性（5.5.3.4）。
 - [ ] e7. Pr^L の小極限と Cat∞ での計算（5.5.3.13）。

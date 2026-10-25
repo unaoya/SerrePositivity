@@ -652,3 +652,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.tensorHom_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indTensor_isPresentable
 #check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_isPresentable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetProjection_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_preservesSmallColimits_iff_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_representableInversionDetectsLocality
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableContinuous_isRepresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits
