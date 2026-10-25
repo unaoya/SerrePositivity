@@ -28,6 +28,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.Aleph0Pos
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorEndCoefficient
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorCompactEndReduction
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedHomEndSection
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedHomEndRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteSubcomplexEndComparison
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。

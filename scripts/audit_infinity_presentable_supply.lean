@@ -69,3 +69,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient_vertex
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndProjection_classificationIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.twistedFunctorHomToEndSections
+#check @SerrePositivity.InfinityCategories.F2.Presentable.twistedFunctorHomToEndSections_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsRestriction_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexEndComparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexTwistedHomCone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexEndSectionsCone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexEndComparisonConeMorphism

@@ -36,6 +36,11 @@
 - 元の関手圏の twisted Hom から、実際の pullback による end 係数の
   切断空間への比較射を構成した。各 G の分類図式との比較も得た。
 - 最新 Supply.All は 8631 jobs で成功。独立監査は 253 宣言、標準三公理のみ。
+- twisted Hom と end 切断の任意の始域制限、および恒等・合成則を構成した。
+  実比較射の制限正方形は、元の写像の厳密な等式で可換。
+- 有限部分複体上の二つの制限図式と一つの自然変換、元の全空間を頂点とする
+  制限錐とその比較射を構成した。これらの錐の極限性はまだ主張していない。
+- 最新 Supply.All は 8633 jobs で成功。独立監査は 288 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -79,6 +84,11 @@
 - `isKappaCompact_functorVertex_of_endFamily`（全自然な end 極限錐族が明示的な入力）
 - `functorEndCoefficient_vertex`、`functorEndProjection_classificationIso`
 - `twistedFunctorHomToEndSections`
+- `twistedFunctorHomToEndSections_precomp`
+- `functorEndSectionsRestriction_comp`
+- `finiteSubcomplexEndComparison`
+- `finiteSubcomplexTwistedHomCone`、`finiteSubcomplexEndSectionsCone`
+- `finiteSubcomplexEndComparisonConeMorphism`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -89,7 +99,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（P-12 の end 係数・還元・実切断比較の三葉と集約・監査・本計画を記録）。
+- なし（実切断比較の始域制限・有限部分図式の二葉と集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -98,10 +108,17 @@
   各脚の保存と極限関手の保存だけでは、compact 判定を結論していない。
 - `twistedFunctorHomToEndSections` の同値性は未証明。
   点ごとの切断比較射だけでは全自然な Hom 同型を主張していない。
+- 有限部分複体上の制限錐の極限性と、比較の同値性の降下は未証明。
 
 ### 次の一手
 - 実切断比較の同値性を証明し、G に自然な全 Hom の end 同型へ束ねる。
   切断空間の既存の極限表示と接続して、還元定理の全自然な極限錐族を構成する。
+- 始域の分解を使う場合、構成した制限錐の極限性と制限の充填性を確認する。
+  `MonoidalClosed.internalHom.flip.obj` の極限保存と fiber の極限表示が入口。
+- 比較の別の証明入口として、切断を元の Hom 射影への相対関手空間へ移し、
+  left fibration 分類で `Hom_A` と `Hom_C(F(-),G(-))` の全自然変換へ読む。
+  Yoneda と指定された左 Kan の普遍性で元の Fun の Hom へ戻せるかを確認する。
+  `relativeHomCoherentEquivalence`・`PresheafYonedaLeftKan` は読み取り専用の候補。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
