@@ -5,13 +5,14 @@
 - 現在地：C1 続行中。strict 図式、graded augmentation の全 theta 消滅、
   dg 加群の filtered strict 余極限による擬同型保存、有限 support の共通上界、
   末尾付加の次数 −1 作用素と実正規化 MC 加群への移送まで構成。
-  実 augmentation の閉性と局所縮約恒等式、最終擬同型性はまだ未完。
+  実正規化 bar から strict 余極限への標準 dg 射と、実自己 Hom の MC 微分公式も構成。
+  局所縮約恒等式と最終擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
 - 三段目：1 strict 図式と標準射の型、2 正規化 augmentation、3 filtered 完全性と
   局所縮約による擬同型性、4 自分の集約・専用監査・限定保存、
   5 工程 B 到着後に比較値と covers の無条件の系。
-- 残り：実 augmentation の閉性の最終照合、末尾付加の局所縮約恒等式、
+- 残り：末尾付加の局所縮約恒等式、
   filtered 完全性への接続（C1、8–24時間）。工程 B の余錐と普遍性の代入
   （C2、B 到着後1–3時間）。
 - 主要宣言：`dgCoherentBarStrictDiagram`、`dgCoherentBarStrictNormalizedModule`、
@@ -19,11 +20,11 @@
   `dgStrictFilteredColimit_quasiIso`。
 - 依存：D-bar の正規化加群と公開 MC、Mathlib の ModuleCat AB5 と複体の関手。
   C1 の証明へ native 普遍性を仮定していない。B は現計画で未構成。
-- 検証：所有集約3,715 jobs成功。専用監査22葉172宣言、許容三公理のみ。
-- 保存区切り：集約と専用監査は検証済み22葉に限定する。
-  `Augmentation.lean` と `EndDifferential.lean` は作業中で、今回の保存には含めない。
-  C1 完了とは扱わず、保存・一行報告後も継続する。
-- 次の一手：実 augmentation の閉性と、実 MC 自己 Hom の微分公式を仕上げる。
+- 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
+  自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
+- 検証：専用監査24葉203宣言通過、許容三公理のみ。C1 完了とは扱わない。
+- 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
+- 次の一手：末尾付加作用素の bar 微分を計算し、有限 support 上で縮約恒等式を示す。
 
 ## 引き継ぎ（2026-10-25）
 

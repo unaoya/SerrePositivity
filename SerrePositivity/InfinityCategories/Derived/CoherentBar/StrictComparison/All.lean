@@ -21,3 +21,5 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictCompa
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FiniteBounds
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendDifferential
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NormalizedEndRebase
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Augmentation
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EndDifferential

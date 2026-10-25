@@ -26,7 +26,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendHom,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FiniteBounds,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendDifferential,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NormalizedEndRebase]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NormalizedEndRebase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Augmentation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EndDifferential]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -56,3 +58,6 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarStrictAugmentation_postNormalizedTheta
 #check SerrePositivity.InfinityCategories.dgStrictAppendHom
 #check SerrePositivity.InfinityCategories.dgStrictNormalizedDegree_finiteSupport
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarStrictColimitAugmentation
+#check SerrePositivity.InfinityCategories.dgStrictNormalizedEndRebase_d
