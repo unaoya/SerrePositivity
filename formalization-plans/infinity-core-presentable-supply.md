@@ -7,8 +7,6 @@
 - 直前の停止理由は合成則の独立供給という設計提案。所有 import 閉包の破損はない。
 - P-11 と P-13 は完了。P-s の残る担当は P-12 のみ。最終 compact 判定は未供給。
 - P-14 の割り当てはユーザー指示で取り消し。反射を構成済みの P-f が f4 を閉じる。
-- 前回の補助宣言供給後のターン終了には停止理由がなかった。今回は再開し、
-  指定 Yoneda 単位と共同 Hom 単位の curry の比較、および一般の curry 評価式を得た。
 - curry と第一変数評価の可換性は全関手空間の厳密な等式。
   Hom の比較も同じ指定射の異種等式であり、対象ごとの同型の存在ではない。
 - `HomWeightUnitEvaluation` の curry 評価・端点移送を公開済み。
@@ -19,10 +17,10 @@
 - 標準反復 pullback 比較の相対切断の厳密同型・全高次相対射の自然性を公開。
 - 元の底変換比較の合成を共同比較の等式へ束ね、三つの既存 realizationIso の
   合成が一度の底変換比較の実現同型と一致することを証明。
-- 最新 Supply.All は 8695 jobs で成功、独立監査は 669 宣言で標準三公理のみ。
+- 共同比較の豊穣前合成と、元の既存実現同型の関手前合成の全自然な等式を公開。
+- 最新 Supply.All は 8698 jobs で成功、独立監査は 687 宣言で標準三公理のみ。
   追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
-- 設計変更案：指定 straightening 底変換の合成則を、P-12 内の局所照合から
-  独立した基盤供給として切り出す。具体的な供給仕様は本文に記す。
+- 指定 straightening 底変換の合成則を Supply 内の基盤補題として分離して証明中。
   最終定理への追加仮定にはしない。所有外ファイルは変更していない。
 
 ### 残り（依存順、見積もり）
@@ -59,7 +57,7 @@
 - `jointRealizationIso_normalized`・`jointRealizationIso_trans`
 - `relativeBaseChangeForward_comp`・`iteratedPullbackInv_relativeFunctorPullback`
 - `sectionBaseChangeCompComparison`・`sectionBaseChangeComposite_eq`
-- `sectionBaseChangeCompositeRealizationIso_eq`
+- `sectionBaseChangeCompositeRealizationIso_eq`・`jointRealizationIso_precompose`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -83,8 +81,8 @@
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
-- 共同比較の豊穣前合成の実現を、元の実現同型の関手前合成と照合する。
-  相対切断の底変換比較の合成自体と共同実現の三同型の合成は完成。
+- 共同比較の添字関手への制限を、元の実現同型の値域側の制限と照合する。
+  豊穣前合成の実現との両立、および共同実現の三同型の合成は完成。
 - 単体添字関手への制限の比較を合わせ、初頂点回収と前合成の忠実性で
   指定 straightening 底変換同型の合成を降下する。
 - 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
@@ -98,12 +96,11 @@
   実左 Kan 比較の各評価での可逆性から全比較の可逆性へ進む。
 - 完成した全自然 end 錐族を `isKappaCompact_functorVertex_of_endFamily` に渡す。
 
-## 設計変更案：指定底変換の合成則を独立供給にする
+## 設計：指定底変換の合成則（Supply 内で進行中）
 
 P-12 の要求する全自然な比較は、選んだ分類同型を保持する必要がある。
-今回の curry 評価公式により、未接続部分は次の合成則に切り分けられる。
-所有外の straightening 実装を変更する要求ではなく、新規葉での公開定理の供給案。
-供給元はコーディネータ判断とし、P-s から直接依頼は送信しない。
+未接続部分を次の合成則に切り分け、ユーザーの続行指示により Supply 内で証明中。
+所有外の straightening 実装は変更しない。分担変更が必要な提案はユーザー経由とする。
 
 `U = SSet.uliftFunctor`、`St(p) = leftStraighteningInfinityDiagram p`、
 `δ(p,k) = leftStraighteningInfinityDiagram_baseChangeIso p k` と書く。
