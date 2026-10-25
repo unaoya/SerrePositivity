@@ -36,7 +36,7 @@
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
-- `IsKappaAccessible.exists_indEquivalence`、`isKappaAccessible_iff_indEquivalence`、`IsKappaCompactGenerating.compact_iff_retract`
+- `IsKappaAccessible.exists_indEquivalence`、`isKappaAccessible_iff_indEquivalence`、`indComparison_isFullyFaithful_of_compact`（P-f 供給済み）
 - `IsCardinalChangeBound`、`coherentCardinalFilteredLimitExchange_poset`、`IsKappaAccessible.of_cardinalChangeBound`
 - `IsPresentable`、`isPresentable_iff_cocompleteIndEquivalence`、`space_isPresentable`
 - `leftFibrationStrictCocone_isColimit`、`continuousLeftFibrationUnitVertexIso`、`exists_finiteLeftFibrationPresentation`
@@ -96,7 +96,7 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `SmallRelativeOverHom` は対象ビルド済み、`SmallRelativeHomAccessible` は μ-small 始域の全相対 Hom の filtered 保存を検証中。
+- `SmallConstantDiagramCompact`：μ-small な形状上の一点定値図式の compact 性を検証中。
 
 ### 次の一手
 - e5 は一般の元の引き戻し内の小さい native compact 全部分候補圏まで構成。μ-small 図式の相対因子化を使い、各対象の filtered 生成表示へ進む。

@@ -361,3 +361,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SmallSpanPullbac
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPullbackModels
 public import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompactGeneralModels
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentablePullbackCompactCandidate
+public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparisonFullyFaithful
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallRelativeOverHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallRelativeHomAccessible

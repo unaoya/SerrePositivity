@@ -715,3 +715,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallStrictPullbackModel_of_component_models
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallComponentCompactModel
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentablePullback_compactCandidate
+#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful_of_compact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeOverHom_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeHom_isKappaAccessibleFunctor
