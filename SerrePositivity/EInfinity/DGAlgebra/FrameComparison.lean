@@ -1,0 +1,144 @@
+module
+
+public import SerrePositivity.EInfinity.DGAlgebra.FrameHammockCoherent
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelRightFrameComparison
+
+/-!
+概要：実 dg 代数の right frame と擬同型 ∞ 局所化の全写像空間比較。
+方針：実自由 I/J の分解と源移送を代入し、全 coherent 比較と指定二胞体を保持する。
+規約：局所モデルだけを選び、SSet モデルや追加の関手的分解仮定を残さない。
+使われ方：Sp β6 f4c の全標的に自然な実導来比較。
+-/
+
+@[expose] public noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.DGAlgebra
+open CategoryTheory HomotopicalAlgebra SSet Opposite
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SimplicialLocalization
+open scoped Simplicial
+attribute [local instance] FrameHom.rightFrameHom_kanComplex
+variable (R : Type u) [CommRing R]
+
+/-- 概要：実全 dg 代数の hammock は同じ擬同型による ∞ 局所化。
+方針：第一分解を同じ自由 I の小対象論法から放電し、同じ right frame を代入する。
+規約：モデル・分解・源移送の追加入力なし。
+使われ方：Sp の指定全圏局所化との全比較。 -/
+lemma hammock_isLocalization :
+    letI _modelInst := modelCategory R
+    IsLocalization (hammockLocalizationNerveMap (modelRelativeCategory (Mon (Complex R))))
+      (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))) := by
+  let _modelInst := modelCategory R
+  have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
+  exact modelHammock_isLocalization (rightFrameFamily R)
+
+/-- 概要：実 cofibrant dg 代数の hammock も同じ擬同型による ∞ 局所化。
+方針：同じ bifibrant からの源移送と実第一分解を使う。
+規約：追加の分解仮定なし。使われ方：Sp の cofibrant 源局所化の版。 -/
+lemma cofibrantHammock_isLocalization :
+    letI _modelInst := modelCategory R
+    IsLocalization (hammockLocalizationNerveMap (modelCofibrantRelativeCategory (Mon (Complex R))))
+      (weakNerveEdges (modelCofibrantRelativeCategory (Mon (Complex R)))) := by
+  let _modelInst := modelCategory R
+  have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
+  exact modelCofibrantHammock_isLocalization (rightFrameFamily R)
+
+/-- 概要：実 dg 全圏の指定局所化への比較 K と全二胞体を構成する。
+方針：実局所化普遍性で指定 G を延長する。
+規約：K の存在や関手的分解を追加入力にしない。
+使われ方：全 Hom 族の端点輸送と全自然性。 -/
+def frameLocalizationComparison {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
+      IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))) →
+        FrameHom.CoherentLocalizationComparison
+          (hammockLocalizationNerveMap (modelRelativeCategory (Mon (Complex R)))) G := by
+  letI _modelInst := modelCategory R
+  intro G hG
+  have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
+  exact modelRightFrameLocalizationComparison (rightFrameFamily R) G hG
+
+/-- 概要：実 dg right Hom と指定局所化の同じ pinched Hom の実 QCat 同値。
+方針：実全六辺の同じ成分と普遍性から構成した指定二胞体を合成する。
+規約：係数環・指定局所化・cofibrant 源だけを要求する。
+使われ方：Sp の任意標的の実 frame Hom 比較。 -/
+def framePinchedEquivalence {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
+      IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))) →
+      ∀ (X : Mon (Complex R)) (hX : IsCofibrant X),
+        letI := hX
+        ∀ (Y : Mon (Complex R)),
+        QCatEquivalence (SSet.uliftFunctor.{u + 1, u}.obj
+          ((FrameHom.rightFrameHom (rightFrameFamily R) X).obj Y))
+          (pinchedHom (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))
+            (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject (Mon (Complex R)) Y)))) := by
+  letI _modelInst := modelCategory R
+  intro G hG X hX Y
+  letI _sourceCofibrant := hX
+  exact (FrameHom.rightFrameHammockPinchedEquivalence ((sourceFrameFamily R).atObject X)
+    (rightFrameFamily R) (cofibrantFactorization R) Y).trans
+      ((frameLocalizationComparison R G hG).pinchedEquivalence
+        (nerveVertex (modelRelativeObject (Mon (Complex R)) X))
+        (nerveVertex (modelRelativeObject (Mon (Complex R)) Y)))
+
+/-- 概要：実 dg の全 coherent 比較と同じ指定局所化の全二胞体を同時に公開する。
+方針：同じ六辺の関手 ∞ 圏の同型と同じ K の比較を保持する。
+規約：点ごとの Hom 同値だけで完成扱いしない。
+使われ方：Sp の全標的図式と全二胞体の coherent な合成。 -/
+def frameCoherentComparison {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q),
+      IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))) →
+      ∀ (X : Mon (Complex R)), IsCofibrant X →
+        (FunctorIso
+          (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+            (rightFrameFamily R) 0)
+          (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+            (rightFrameFamily R) 6)) ×
+        FrameHom.CoherentLocalizationComparison
+          (hammockLocalizationNerveMap (modelRelativeCategory (Mon (Complex R)))) G := by
+  letI _modelInst := modelCategory R
+  intro G hG X hX
+  exact ⟨rightFrameHammockCoherentComparison R X hX, frameLocalizationComparison R G hG⟩
+
+/-- 概要：実 dg 比較の単位点は同じ元の射の局所化点と指定成分の共役を回収する。
+方針：実自由分解・同じ right frame・構成済みの局所化比較を一般単位公式へ代入する。
+規約：関手的分解・全圏普遍性・比較 K の存在を追加入力にしない。
+使われ方：Sp の元の dg 代数射と全標的比較の零単体照合。
+-/
+lemma framePinchedEquivalence_unit_Q {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
+      (hG : IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))))
+      (X : Mon (Complex R)) (hX : IsCofibrant X),
+      letI := hX
+      ∀ (Y : Mon (Complex R)) (f : X ⟶ Y),
+        SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+          (FrameHom.rightFrameHammockUnitPoint ((sourceFrameFamily R).atObject X)
+            (rightFrameFamily R) f 0 ≫ (framePinchedEquivalence R G hG X hX Y).hom) =
+        SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+          (Hammock.arrowMap (modelRelativeCategory (Mon (Complex R))).weakEquivalences
+            (AsSmall.up.map f) ≫ SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+            kanHammockHomPinchedMap (modelRelativeCategory (Mon (Complex R)))
+              (modelRelativeObject (Mon (Complex R)) X)
+              (modelRelativeObject (Mon (Complex R)) Y) ≫
+            ((frameLocalizationComparison R G hG).pinchedEquivalence
+              (nerveVertex (modelRelativeObject (Mon (Complex R)) X))
+              (nerveVertex (modelRelativeObject (Mon (Complex R)) Y))).hom) := by
+  letI _modelInst := modelCategory R
+  intro G hG X hX Y f
+  letI _sourceCofibrant := hX
+  have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
+  have h := congrArg (fun t => t ≫ SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
+    ((frameLocalizationComparison R G hG).pinchedEquivalence
+      (nerveVertex (modelRelativeObject (Mon (Complex R)) X))
+      (nerveVertex (modelRelativeObject (Mon (Complex R)) Y))).hom)
+    (FrameHom.rightFrameHammockPinchedEquivalence_unit_arrow_Q
+      ((sourceFrameFamily R).atObject X) (rightFrameFamily R) f (cofibrantFactorization R))
+  simpa only [framePinchedEquivalence, QCatEquivalence.trans, Functor.map_comp,
+    Category.assoc] using h
+
+end SerrePositivity.EInfinity.DGAlgebra

@@ -3047,4 +3047,43 @@ anodyne 反転後の一つの自然同型として束ねる。
 `DGAlgebra/FrameLocalizationInput` と `FrameHammockCoherent` は実自由 I/J の分解を代入し、
 source/right frame、bifibrant 局所化普遍性、全 coherent 比較を追加の分解仮定なしで公開する。
 `ModelBifibrantSpecifiedLocalization` は指定 K と指定二胞体をそのまま保持する。
-全 C の局所化普遍性は Ind-S (6) の源移送待ちである。
+全 C の局所化普遍性は次節の Ind-S (6) の源移送への代入で放電する。
+
+
+### E2-S (6)：全圏の指定局所化への実 right frame 比較
+
+`SimplicialLocalization/ModelHammockLocalization` は Ind の
+`F1B/Localization/WeakDeformationSource` を読み取り専用で使う。
+`modelCofibrantHammock_isLocalization`・`modelHammock_isLocalization` は、
+同じ bifibrant 局所化から cofibrant 部分圏・全圏への普遍性を証明する。
+第一の関手的分解と指定 right frame が一般モデルの追加入力であり、
+SSet のモデル構造や cofibration＝単射の仮定はない。
+
+主入口 `ModelRightFrameComparison` の `modelRightFramePinchedEquivalence` は
+cofibrant な X と任意の Y について、元の `rightFrameHom` と指定局所化の
+同じ端点の `pinchedHom` の実 QCat 同値を返す。
+`modelRightFrameCoherentComparison` は同じ六辺の全標的の関手 ∞ 圏の同型と、
+構成した比較 K の全二胞体を同時に公開する。
+`modelRightFramePinchedEquivalenceWithComparison` は消費者が指定した K と二胞体を保持する。
+
+`RightFrameHammockComponentImage` は同じ実逆と元の全比較辺の反転を照合する。
+`RightFrameHammockUnitPoints`・`RightFrameHammockUnitComparison`・`RightFrameSpecifiedUnit` は
+元の射の零単体を六辺の実合成と指定二胞体の輸送で追跡する。
+`kanHammockHomPinchedMap_arrow_zero` は原本の
+`coherentHomComparisonSimplex_zero_edge` を再利用し、終端で元の局所化辺そのものを回収する。
+`modelRightFramePinchedEquivalenceWithComparison_unit_Q` と
+`modelRightFrameOriginalArrow_conjugation` は同じ指定二胞体の源の逆成分・標的成分による共役との整合。
+
+実 dg 代数の入口は `DGAlgebra/FrameComparison` の
+`hammock_isLocalization`・`cofibrantHammock_isLocalization`、
+`frameLocalizationComparison`・`framePinchedEquivalence`・`frameCoherentComparison`・
+`framePinchedEquivalence_unit_Q`。
+局所モデルと実自由 I/J の小対象論法による分解を代入済みで、
+モデル構造・関手的分解・全圏普遍性・比較 K の存在の追加入力はない。
+指定局所化は全対象の AsSmall 表示を源とし、元の全対象・全射・擬同型を保つ。
+元の一般局所化層への暫定 KST import、代数版との準重複と全置換圏による一般化候補は、
+既定どおり第 I 段終了時の R の整理対象とする。
+
+検証：集約11917 jobs、全公理監査27973宣言、独立例7件、新49公開宣言の公理検査が成功。
+標準三公理のみ。閉包7962本の検証前後 SHA は不変、他レーン未保存依存は零。
+E2-S (6) は供給完了により停止。
