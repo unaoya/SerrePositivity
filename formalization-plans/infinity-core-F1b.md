@@ -68,11 +68,24 @@
 専用公理監査も9358宣言で通過（標準三公理のみ）。
 この式から指定輸送比較の合成則への接続は引き続き未完。
 
+続行分として、同じ底を保つ全空間の射で相対延長空間を後合成する
+`relativeExtensionPost` と、その終点 fiber 評価の厳密可換式
+`relativeExtensionFiberEndpoint_post` を構成した。
+`relativeExtensionFiberEndpoint_witnessIso_post` は元の二実延長の指定比較を
+fiber 射へ後合成すると、同じ二延長の像の指定比較そのものになることを証明する。
+さらに `leftFibrationPrism_diagonalTransportIso_post` は元の実 prism の指定比較と、
+元の普遍 prism の像の指定比較を貼ると、像の実 prism の元の指定比較になる等式。
+比較を新しく選んだものへ置換していない。Ncomp 自体はなお未完。
+
 **次の一手**：同じ実右 slice 写像と元の合成 prism の自然性を、
 元の指定普遍輸送比較へ移す。`relativePrismSpecified_naturality`、
 `pointedHomMorphismValueComparison_heq_prism`、
 `pointedValueFamilyTransportIso_at_right` に接続し、指定同型の合成則を証明する。
 新しい比較を選び直したり、その合成則を入力仮定に加えたりしない。
+後合成に関する指定対角比較の一般式は今回完成したので、同じ右 slice の
+反対 left fibration に適用し、元の Hom 合成 prism の比較をその像へ移す。
+左反転 Hom 側は最終対象が一点に固定された元の逆合成 prism なので、
+右 Hom 側の終域後合成と混同せず、同じ三射の高次整合で両側を照合する。
 Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong で a④へ進む。
 `TargetEndpointIso_trans_universal` や反映判定は未証明の値式の代用にしない。
 
@@ -84,6 +97,10 @@ Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong �
   canonical Hom 比較の自然性1779 jobs、右 slice 後合成則1778 jobs、いずれも成功。
 - 追加分の三対象統合ビルド1784 jobsで成功。
   専用公理監査9349宣言で通過（標準三公理のみ）。
+- 相対延長の後合成自然性：四モジュールの対象ビルド2651 jobs、
+  専用監査9390宣言で通過（標準三公理のみ）。
+- 元の指定対角比較の後合成貼り合わせ：二モジュールの対象ビルド2691 jobsで成功。
+  これを含む専用監査9416宣言で通過（標準三公理のみ）。
 - 専用監査は読込済み FilteredExchange の生成宣言を含む全宣言を宣言元で選別し、
   推移的な依存公理を検査する。上記の監査は標準三公理のみ。
 - 以後のコミット本文には、構成した宣言と公開名・検証対象と jobs 数・監査結果を記録する。

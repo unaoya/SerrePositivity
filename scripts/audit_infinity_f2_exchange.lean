@@ -8,6 +8,8 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCompositio
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentRightSlicePostComposition
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentHomSlicePost
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentRightSlicePostFiber
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionFiberWitnessPost
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPostNaturality
 import Lean.Util.CollectAxioms
 
 /-!
@@ -38,6 +40,11 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentHomSliceComparison_post
 #check @SerrePositivity.InfinityCategories.F2.coherentRightSlicePostFiber_comp
 #check @SerrePositivity.InfinityCategories.F2.coherentHomSliceFiberComparison_post
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionPost_vertex
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_post
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberComparison_post
+#check @SerrePositivity.InfinityCategories.F2.relativeExtensionFiberEndpoint_witnessIso_post
+#check @SerrePositivity.InfinityCategories.F2.leftFibrationPrism_diagonalTransportIso_post
 
 open Lean in
 run_cmd do
