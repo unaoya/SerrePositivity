@@ -160,3 +160,31 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededRelativeAlternatingTower
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededRelativeAlternatingDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.cosliceShapeIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.cosliceShapeIso_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_hom_val
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.iteratedSourceUncurry_prefix
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.expandedSourcePrefixMap_mono
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_prefix
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactDiagram_factorization_relative_coslice_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactDiagram_factorization_over_smallPrefixPresentation_coslice_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingOpenStage.vertex_image_isKappaCompact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingFactorization_coslice_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingTower_coslice_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingDiagram_coslice_ind

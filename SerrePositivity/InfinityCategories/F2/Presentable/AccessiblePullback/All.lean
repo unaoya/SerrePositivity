@@ -93,6 +93,20 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SeededAlternatingDiagram
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CosliceShapeIso
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FixedSourceUncurryIso
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExpandedSourcePrefix
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CosliceIndRelativeFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CosliceIndRelativePresentation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CosliceAlternatingFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CosliceAlternatingTower
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。
