@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGNativeTriaRetract
+import SerrePositivity.InfinityCategories.Derived.DGThickKernelNativeRetract
+import SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract
 import SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero
 import SerrePositivity.InfinityCategories.Derived.DGQuotientThickKernelCriterion
 import SerrePositivity.InfinityCategories.Derived.DGFullKernelEssentialImage
@@ -7274,6 +7277,11 @@ run_cmd do
 
     `SerrePositivity.InfinityCategories.Derived.DGModuleAllResolvedExact,
     `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.DGNativeTriaRetract,
+    `SerrePositivity.InfinityCategories.Derived.DGThickKernelNativeRetract,
+    `SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract,
+    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDown,
+    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientThickKernelCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGFullKernelEssentialImage,
