@@ -6,12 +6,17 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。Ind-S (5) の区切り作業を経て I-2 c へ進む。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。I-2 c①・c⑤ は完了、c②・c③・c④ を進める。Ind-S (5) の全族単位は未完。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
+- I-2 c の固定三段目：c① 有限 cospan の包含による保存 [x]、c② fiber・cofiber の単一 filtered 表示 [ ]、c③ bicartesian 判定 [ ]、c④ Ind の安定性 [ ]、c⑤ 包含の完全性と公開界面 [x]。
+- I-2 c① の公開入口：`ind_cospan_inclusion_isLimit`・`ind_cospan_isLimit_iff_inclusion` は任意の元の標準 cospan 全錐の保存・反映。`ind_inclusion_isPullbackSquare_iff` は元の実四角形の引き戻し性の保存・反映。C の有限極限・正則 κ・明示交換入力を保持する。
+- I-2 c③ の一方向：`ind_exists_bicartesianLimitCone` は元の cospan の bicartesian 全錐を同じ単一 filtered 表示から構成。`ind_pushout_of_pullback_square` は元の任意の引き戻し四角形自身の押し出し性。逆方向と Ind の安定性は未完。
+- I-2 c⑤ の公開入口：`indYoneda_isExactFunctor` は既存 `Stable.IsExactFunctor` による元の Yoneda 包含の完全性。`indYoneda_preservesZeroVertices` と元の全 cofiber 保存を証明し、Ind の安定性を仮定しない。`indYoneda_isLimit` は任意の小さい全極限錐を追加の有限性・交換入力なしで保存する。
+- I-2 c の供給許可：`Stable.ExactFunctor`・`Stable.Bicartesian` は新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。C の有限全存在は D-7′ 供給まで明示仮定。
 - I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [x]、b④ 有限半順序図式の有限余極限の普遍性 [x]、b⑤ 任意の有限単体集合形状への接続と公開界面 [x]。
 - I-2 b の公開入口：`yonedaInfinityMap_isLimit` は任意の小さい極限全錐の保存。`exists_yoneda_finiteLimit_coneFamily` と `exists_indYoneda_finiteColimit_coconeFamily` は元の制限を厳密に固定した全族。余極限保存は明示交換入力を残す。`exists_indFunctor_kappaFiltered_colimit` は全関手形状で同じ filtered 余極限全余錐と包含による全評価の保存。
 - I-2 b③ の接続：`ind_filteredLimitCone_isLimit` は元の Ind 全錐族の点ごとの filtered 補完に明示の形状交換を適用し、完成後の元の錐と包含像の極限性を同時に結論する。`indYonedaConeFamily_restriction` は元の下方全図式への厳密な制限回収。`ind_exists_limitCone_of_singleFilteredDiagramPresentation` は元の指定全図式の極限と包含像の極限の同時存在。`indFinitePoset_hasLimit`・`indFinitePoset_inclusion_isLimit`・`indFinitePoset_isLimit_iff_inclusion` で有限半順序図式の存在・保存・反映を公開。

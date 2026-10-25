@@ -1,4 +1,6 @@
 import SerrePositivity.InfinityCategories.F2
+import SerrePositivity.InfinityCategories.F2.Ind.PullbacksArePushouts
+import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyEvaluation_comp
