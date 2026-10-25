@@ -81,6 +81,11 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeVertices
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSeedBounds
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorDiagram
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorAugmentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexMonotonicity
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -90,8 +95,12 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 ## 現在の工程（2026-10-25、ユーザーが設計変更を採用して再開）
 
 三段目：f1 [x] 生成元の局所性と compact 端点、f2 [ ] 飽和射クラスの小生成と
-presentable 性、f3 [ ] 固定始域の終対象＝局所置換の存在、f4 [ ] 反射関手と普遍性、
-f5 [ ] 強飽和性との同定・監査・引き継ぎ。
+presentable 性、f3 [ ] 固定始域の終対象からの局所置換の存在と反射の構成、
+f4 [ ] 強飽和性との同定、f5 [ ] 監査・引き継ぎ。
+ユーザーの分担変更により、局所対象の accessibility（5.5.4.2）と反射を入力にした
+局所対象圏の presentable 性（5.5.4.15(3)）は P-d が LocalObjects/ の新規葉で担当する。
+P-f はその公開結論を最後に代入する。LocalObjects/ は読み取り専用とし、局所対象の
+定義や反射の公開型の変更が必要なら事前に報告する。
 f2 の検証済み範囲：元の飽和射圏の小余極限、全小余極限を保存する全部分包含、
 周囲で compact な射の小さい模型、その包含先での compact 性。
 元の圏・射圏の共通正則 accessible 濃度、生成射と両端点の compact 性、
@@ -229,7 +238,10 @@ P の公開コミット c3998b340 の終前置 coslice の compact 判定を制�
 左の compact 頂点からの元の脚を因子化し、元の二脚を保つ初期実三角形も構成した。
 初期実三角形を小さい標準辺の全形状へ正規化し、元の両余錐と開始点を保持する
 compact 初期比較状態の存在も構成した。後続余錐の全頂点の compact 性も得た。
-交互列全体の構成はまだ未完了。
+両種集合を支配する初期状態も構成した。後続の全図式は左側の元の添字余錐と
+右側の旧全図式を保ち、大域余錐の旧全形状への制限と右側の元の余錐も厳密に残る。
+元の poset 内の後続添字は旧前置図式の全頂点を支配する。左側の全増大余錐の
+整合は依頼済みの P-13 の公開比較を待つ。交互列全体の構成はまだ未完了。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と

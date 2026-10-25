@@ -419,3 +419,19 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @exists_comparisonInitialState
 #check @coconeVertices_compact
 #check @ComparisonLeftFactor.cocone_compact
+
+#check @nerve_pointCoslice_le
+#check @exists_seedBoundedComparison
+#check @uliftCoconeShapeIso_left_naturality
+#check @comparisonLeftStages_val
+#check @comparisonSuccessorDiagram
+#check @comparisonSuccessorDiagram_compact
+#check @comparisonSuccessorDiagram_left
+#check @comparisonSuccessorDiagram_right
+#check @comparisonSuccessorAugmentation
+#check @comparisonSuccessorAugmentation_vertex
+#check @comparisonSuccessorAugmentation_old_val
+#check @comparisonSuccessorAugmentation_right
+#check @nerve_cocone_le
+#check @ComparisonLeftFactor.index_ge
+#check @ComparisonLeftFactor.terminal_index_le
