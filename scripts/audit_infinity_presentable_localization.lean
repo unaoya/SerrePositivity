@@ -107,3 +107,15 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 
 #check @exists_endpointCompactArrowCardinal
 #check @generatedSourceEdge_mem
+
+#check @arrowVertexEdge_source
+#check @arrowVertexEdge_target
+#check @functorVertexCocone_apex
+#check @kanCoconeFamilyAt_diagram
+#check @indArrowImage_finitePoset_colimit_mem
+#check @indArrowImage_finitePoset_colimit_mem_of_image
+#check @indArrowImage_hasFinitePosetColimits
+#check @indArrowImageInclusion_preservesFinitePosetColimits
+#check @indArrowImage_span_colimit_mem
+#check @indArrowImage_hasSpanColimit
+#check @indArrowImageInclusion_preservesSpanColimit
