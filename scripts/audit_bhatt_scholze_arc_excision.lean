@@ -1,5 +1,5 @@
 import SerrePositivity.BhattScholze.Inputs.ArcExcision
-import SerrePositivity.BhattScholze.PerfectoidizationExcision
+import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcision
 
 /-!
 Cor 8.12 の指定された一つの引用と、その受渡し型の監査。

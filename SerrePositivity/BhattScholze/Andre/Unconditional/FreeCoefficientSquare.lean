@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaRootSourceCoefficientModels
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaRoot.DeltaRootSourceCoefficientModels
 
 /-!
 # 自由な係数代数の実導来商正方形

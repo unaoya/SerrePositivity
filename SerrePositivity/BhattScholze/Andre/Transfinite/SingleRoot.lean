@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension
-public import SerrePositivity.BhattScholze.PerfectoidTrialPrism
+public import SerrePositivity.BhattScholze.Prism.PerfectoidTrialPrism
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Existence
 open SerrePositivity SerrePositivity.BhattScholze SerrePositivity.BhattScholze.Andre
 open SerrePositivity.BhattScholze.Andre.Transfinite

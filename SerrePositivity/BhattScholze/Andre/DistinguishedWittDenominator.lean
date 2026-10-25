@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaPDivisionWittResidueSolution
+public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueSolution
 public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
 
 /-!

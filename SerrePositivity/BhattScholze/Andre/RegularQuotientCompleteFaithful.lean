@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.CompletelyFaithfulPairReduction
-public import SerrePositivity.BhattScholze.PrismaticGeneratorPowerModPFaithful
+public import SerrePositivity.BhattScholze.Prism.PrismaticGeneratorPowerModPFaithful
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 
 /-!

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaDivisionUnitDenominator
-public import SerrePositivity.BhattScholze.DeltaLocalizationSaturation
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUnitDenominator
+public import SerrePositivity.BhattScholze.Delta.DeltaLocalizationSaturation
 public import Mathlib.RingTheory.Localization.Ideal
 
 /-!

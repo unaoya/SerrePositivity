@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Unconditional.SourceUnitDenominator
-public import SerrePositivity.BhattScholze.DeltaDivisionSourceCoefficientTor
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionSourceCoefficientTor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationIso
 
 /-!

@@ -4,7 +4,7 @@ public import SerrePositivity.CLMST.Prop247CanonicalRankDescent
 public import SerrePositivity.CLMST.Prop247RankClosedSides
 public import SerrePositivity.CLMST.Prop247RankSourceValuation
 public import SerrePositivity.CLMST.Prop247FiniteComparisonValuation
-public import SerrePositivity.BhattScholze.PerfectoidizationExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcision
 
 /-! # Prop 2.4.7：BS の excision による引用の置換
 

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.PCompletedDeltaDivision
-public import SerrePositivity.BhattScholze.PerfectDeltaPDPrism
-public import SerrePositivity.BhattScholze.PerfectPrismQuotientPerfectoid
+public import SerrePositivity.BhattScholze.Prism.PCompletedDeltaDivision
+public import SerrePositivity.BhattScholze.Prism.PerfectDeltaPDPrism
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismQuotientPerfectoid
 
 /-!
 # André E1：任意関係族の δ 除算による perfectoid 候補

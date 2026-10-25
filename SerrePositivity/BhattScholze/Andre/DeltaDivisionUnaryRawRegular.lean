@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryFiniteInitialRegular
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteRegularStep
-public import SerrePositivity.BhattScholze.DeltaDivisionUniversal
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
 
 /-!
 # André E1・E2：正則対上の一元 raw δ 除算包の p 正則性

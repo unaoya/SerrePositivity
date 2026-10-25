@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDUniversal
-public import SerrePositivity.BhattScholze.DeltaDivisionPDCompletion
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
 
 /-!
 # André E1・E2：正則な実 raw 完備化と旧ねじれ除去後の実完備化

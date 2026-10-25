@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimeShift
-public import SerrePositivity.BhattScholze.RankOneDPPrimeBlockBasis
-public import SerrePositivity.BhattScholze.MonicPowerFamilyPresentation
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPPrimeBlockBasis
+public import SerrePositivity.BhattScholze.RootedExtension.MonicPowerFamilyPresentation
 public import Mathlib.RingTheory.Adjoin.Basic
 
 /-!

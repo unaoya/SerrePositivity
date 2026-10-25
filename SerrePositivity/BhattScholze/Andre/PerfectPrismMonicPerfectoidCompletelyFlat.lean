@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicQuotientReduction
-public import SerrePositivity.BhattScholze.PrismaticGeneratorPowerModPFaithful
+public import SerrePositivity.BhattScholze.Prism.PrismaticGeneratorPowerModPFaithful
 
 /-!
 # André E1・E2：有限モニック族の標準 perfectoid 候補の p 完全忠実平坦性

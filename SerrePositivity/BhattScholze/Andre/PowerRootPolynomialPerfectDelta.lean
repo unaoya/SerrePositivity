@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta
-public import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.PerfectDeltaFrobenius
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientAut
 
 /-!

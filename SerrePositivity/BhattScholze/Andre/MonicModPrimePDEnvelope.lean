@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal
 public import SerrePositivity.BhattScholze.Andre.MonicRelationResidue
-public import SerrePositivity.BhattScholze.PolynomialRankOneDelta
-public import SerrePositivity.BhattScholze.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Prism.PerfectOrientedPrism
 
 /-!
 # André E1・E2：モニック入力の実 mod p 分冪包

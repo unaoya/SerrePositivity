@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PolynomialPerfectoidCandidate
-public import SerrePositivity.BhattScholze.DeltaPDCompletionPerfectionComparison
-public import SerrePositivity.BhattScholze.DeltaPerfectionPDCompletionComparison
-public import SerrePositivity.BhattScholze.DeltaAlgebraPerfectionCocone
+public import SerrePositivity.BhattScholze.Delta.DeltaPDCompletionPerfectionComparison
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaPerfectionPDCompletionComparison
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionCocone
 
 /-!
 # André E1・E2：PD 先行 δ 完全化と多項式 prism 候補の標準比較

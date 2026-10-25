@@ -1,5 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
-import SerrePositivity.BhattScholze.QuotientPerfectoidization
+import SerrePositivity.BhattScholze.Perfectoidization.QuotientPerfectoidization
 import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
 import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers

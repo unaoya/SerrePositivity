@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.OrientedPrism
+public import SerrePositivity.BhattScholze.Prism.OrientedPrism
 public import SerrePositivity.BhattScholze.Andre.RegularPowerQuotientTorsion
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessSup
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison

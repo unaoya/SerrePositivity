@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticCoefficient
-public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionResidueRegular
-public import SerrePositivity.BhattScholze.DeltaRootSourceRegularGhost
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaAdjoinDivisionResidueRegular
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaRoot.DeltaRootSourceRegularGhost
 
 /-!
 # André E1・E2：一般 f/d 包の raw (p,d) 剰余の忠実平坦性

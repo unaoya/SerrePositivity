@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimeShift
-public import SerrePositivity.BhattScholze.RankOneDPTruncatedAction
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPTruncatedAction
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 public import Mathlib.RingTheory.TensorProduct.Maps
 

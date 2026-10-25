@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.CompletedTowerAllModuleTor
-public import SerrePositivity.BhattScholze.PerfectoidAlmostExtension
+public import SerrePositivity.BhattScholze.Results.PerfectoidAlmostExtension
 
 /-!
 # BS Prop 10.2 を受領した全加群 Tor と条件付き KL-Q

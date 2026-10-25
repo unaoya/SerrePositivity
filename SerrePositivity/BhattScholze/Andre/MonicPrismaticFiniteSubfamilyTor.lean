@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticFirstResidueKoszul
-public import SerrePositivity.BhattScholze.DeltaDivisionFiniteSubfamilyTor
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFiniteSubfamilyTor
 
 /-!
 # André E1・E2：任意モニック族内の有限部分族の実残余 Tor

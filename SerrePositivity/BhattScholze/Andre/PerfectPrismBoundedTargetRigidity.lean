@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectSourceAdicRigidity
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismAdicComplete
-public import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
-public import SerrePositivity.BhattScholze.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Delta.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Prism.OrientedPrismHom
 
 /-!
 # André A1-a：完全な源から一般有界 prism への射の一意性

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootAResidue
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceComplete
-public import SerrePositivity.BhattScholze.PrismaticCoefficientCompletionReduction
+public import SerrePositivity.BhattScholze.Prism.PrismaticCoefficientCompletionReduction
 
 /-!
 # 元の無限根源の実逐次完備性

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaDivisionFiniteRelationsRegular
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFiniteRelationsRegular
 
 /-!
 # André E1・E2：有限 δ 関係商の mod p と最高変数の正則性

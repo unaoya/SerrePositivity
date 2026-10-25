@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyCoefficientQuotient
-public import SerrePositivity.BhattScholze.DeltaDivisionFirstCoefficientPowerEquiv
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFirstCoefficientPowerEquiv
 
 /-!
 # André E1・E2：一般 f/d 包の初期係数商

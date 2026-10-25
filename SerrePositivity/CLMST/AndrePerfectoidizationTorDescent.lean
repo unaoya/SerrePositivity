@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.CLMST.AndreTorDescent
-public import SerrePositivity.BhattScholze.PerfectoidizationCompletedBaseChange
+public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedBaseChange
 
 /-! # One actual André extension detects Tor after base-changing the original perfectoidization
 

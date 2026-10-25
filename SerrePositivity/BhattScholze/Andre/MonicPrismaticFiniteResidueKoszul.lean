@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticFirstResidueKoszul
-public import SerrePositivity.BhattScholze.DeltaDivisionFiniteFamilyEvaluation
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFiniteFamilyEvaluation
 
 /-!
 # André E1・E2：有限モニック族の全有限 δ 深さの残余 Koszul 分解

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionSum
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionSum
 
 /-!
 # André E1・E2：係数 δ 自己同型による raw 除算包の比較

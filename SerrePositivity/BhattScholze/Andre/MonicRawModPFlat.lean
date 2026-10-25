@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicFrobeniusCoefficient
-public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionResidueRegular
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaAdjoinDivisionResidueRegular
 
 /-!
 # André E1・E2：モニック族の raw φ/p 包の実 mod p 商の忠実平坦性

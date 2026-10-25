@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateRoot
-public import SerrePositivity.BhattScholze.DeltaPDCompletion
+public import SerrePositivity.BhattScholze.Delta.DeltaPDCompletion
 
 /-!
 # André E1・E2：無限根モニック raw 包の実完備化 prism

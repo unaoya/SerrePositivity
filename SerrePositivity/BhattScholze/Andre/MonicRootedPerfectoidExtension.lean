@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicRootedExtension
 public import SerrePositivity.BhattScholze.Andre.MonicRootedBaseEquiv
-public import SerrePositivity.BhattScholze.PerfectoidTrialPrism
+public import SerrePositivity.BhattScholze.Prism.PerfectoidTrialPrism
 
 /-!
 # André E1・E2：任意の整 perfectoid 基底上のモニック根付き拡大

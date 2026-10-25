@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaPDCompletionPerfectionComparison
-public import SerrePositivity.BhattScholze.DeltaPerfectionPDCompletionComparison
+public import SerrePositivity.BhattScholze.Delta.DeltaPDCompletionPerfectionComparison
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaPerfectionPDCompletionComparison
 public import SerrePositivity.BhattScholze.Andre.DivisionPerfectoidCandidate
 
 /-!

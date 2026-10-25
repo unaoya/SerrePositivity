@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.PrincipalDPQuotientFlat
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPQuotientFlat
 
 /-!
 # André E1：分冪表示環の実 p 乗商上の自由性

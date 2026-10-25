@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismAdicComplete
-public import SerrePositivity.BhattScholze.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Prism.OrientedPrismHom
 
 /-!
 # André E1・E2：有界試験 prism への基底射の生成元の単元係数

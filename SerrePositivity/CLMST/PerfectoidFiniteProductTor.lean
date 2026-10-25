@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectoidFiniteProduct
+public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidFiniteProduct
 public import SerrePositivity.CLMST.PerfectoidizationImageTorComparison
 public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds
 

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular
-public import SerrePositivity.BhattScholze.DeltaDivisionFiniteResidueKoszul
-public import SerrePositivity.BhattScholze.DeltaDivisionMappedEvaluationKoszul
-public import SerrePositivity.BhattScholze.DeltaDivisionSourceEvaluationColimitTor
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFiniteResidueKoszul
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionMappedEvaluationKoszul
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionSourceEvaluationColimitTor
 public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
 
 /-!

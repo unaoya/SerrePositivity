@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.RankOneDPAnyBasis
-public import SerrePositivity.BhattScholze.PrincipalDPPresentation
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPAnyBasis
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPPresentation
 
 /-!
 # André E1・E2：係数環同型に沿う一元分冪表示の移送

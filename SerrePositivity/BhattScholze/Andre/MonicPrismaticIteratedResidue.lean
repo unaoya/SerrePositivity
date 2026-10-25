@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticPDReduction
-public import SerrePositivity.BhattScholze.PrismaticCoefficientCompletionReduction
+public import SerrePositivity.BhattScholze.Prism.PrismaticCoefficientCompletionReduction
 
 /-!
 # André E1・E2：実逐次 p,d 完備化後のモニック源の剰余

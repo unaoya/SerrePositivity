@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.RankOneDPAnyBasis
-public import SerrePositivity.BhattScholze.RankOneDPPrimeBlocks
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPAnyBasis
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPPrimeBlocks
 public import Mathlib.Data.Nat.Choose.Lucas
 public import Mathlib.Algebra.Algebra.Bilinear
 

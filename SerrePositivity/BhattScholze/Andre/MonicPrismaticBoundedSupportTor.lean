@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaDivisionBoundedSupportColimit
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionBoundedSupportColimit
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticFiniteSubfamilyTor
 public import SerrePositivity.HomologicalAlgebra.TorExactColimits
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits

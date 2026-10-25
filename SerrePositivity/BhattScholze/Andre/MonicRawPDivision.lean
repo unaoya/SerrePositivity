@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicRelationResidue
-public import SerrePositivity.BhattScholze.DeltaPDivisionRawRegular
-public import SerrePositivity.BhattScholze.PolynomialRankOneDelta
-public import SerrePositivity.BhattScholze.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaPDivisionRawRegular
+public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Prism.PerfectOrientedPrism
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
 
 /-!

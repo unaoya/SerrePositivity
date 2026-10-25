@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta
-public import SerrePositivity.BhattScholze.DeltaSectionNaturality
-public import SerrePositivity.BhattScholze.DeltaRankOne
+public import SerrePositivity.BhattScholze.Delta.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.DeltaRankOne
 
 /-!
 # André E1・E2：rank 1 の互換根列による無限根 δ 射の普遍性

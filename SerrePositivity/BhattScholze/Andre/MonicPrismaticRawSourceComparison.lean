@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticIteratedResidue
-public import SerrePositivity.BhattScholze.DeltaDivisionSourceTensor
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionSourceTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 
 /-!

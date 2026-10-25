@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRegular
-public import SerrePositivity.BhattScholze.DistinguishedPowerTorsion
+public import SerrePositivity.BhattScholze.Delta.DistinguishedPowerTorsion
 
 /-!
 # hpR の正則性計算における境界

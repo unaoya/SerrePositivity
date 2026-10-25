@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
-public import SerrePositivity.BhattScholze.PerfectoidizationExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcision
 public import Mathlib.RingTheory.IntegralClosure.Algebra.Basic
 
 /-!

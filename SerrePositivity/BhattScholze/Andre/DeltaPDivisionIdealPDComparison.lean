@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaPDivisionRawPrincipal
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaPDivisionRawPrincipal
 public import SerrePositivity.BhattScholze.Andre.PrincipalDPIdealQuotient
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionPairResidueWitt
 

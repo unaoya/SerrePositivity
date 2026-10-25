@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient
 public import SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom
-public import SerrePositivity.BhattScholze.PerfectPrismWittPresentation
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismWittPresentation
 public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
 public import Mathlib.RingTheory.Perfectoid.FontaineTheta
 

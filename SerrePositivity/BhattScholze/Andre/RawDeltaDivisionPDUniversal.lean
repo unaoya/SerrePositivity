@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaDivisionUniversal
-public import SerrePositivity.BhattScholze.DeltaPDCompletionUniversal
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
+public import SerrePositivity.BhattScholze.Delta.DeltaPDCompletionUniversal
 
 /-!
 # André E1・E2：元の raw δ 割り算包の実完備化の普遍性

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Prism.OrientedPrismHom
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 

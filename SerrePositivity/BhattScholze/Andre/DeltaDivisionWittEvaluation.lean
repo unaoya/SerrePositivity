@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaPDivisionWittResidueEvaluation
+public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueEvaluation
 
 /-!
 # André E1・E2：任意の Witt 解から raw δ 除算包への通常環射

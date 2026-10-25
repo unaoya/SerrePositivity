@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation
-public import SerrePositivity.BhattScholze.PrincipalDPQuotientFlat
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPQuotientFlat
 
 /-!
 # André E1・E2：可算切断表示の普遍射と素数冪生成元の外延性

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicRawDerivedReduction
-public import SerrePositivity.BhattScholze.DeltaAlgebraPerfectionResidue
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionResidue
 
 /-!
 # André E1・E2：補助 raw 包の δ 完全化の忠実平坦剰余

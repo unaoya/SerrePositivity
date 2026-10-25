@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaDividedPowers
+public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaDividedPowers
 public import Mathlib.RingTheory.DividedPowers.SubDPIdeal
 
 /-!

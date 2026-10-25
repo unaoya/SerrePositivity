@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
-public import SerrePositivity.BhattScholze.SemiperfectoidSurjectivity
+public import SerrePositivity.BhattScholze.Results.SemiperfectoidSurjectivity
 
 /-! # Prop 2.4.7：原典の像の商の指定 perfectoid 化への全射性
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.MonicRawModPFlat
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular
-public import SerrePositivity.BhattScholze.DeltaRootSourceRegularGhost
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaRoot.DeltaRootSourceRegularGhost
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 

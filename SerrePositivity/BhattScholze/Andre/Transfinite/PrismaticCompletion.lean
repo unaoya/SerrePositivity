@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectPrismQuotientPerfectoid
-public import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientEquiv
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismQuotientPerfectoid
+public import SerrePositivity.BhattScholze.Prism.PerfectDeltaPDQuotientEquiv
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
 /-! # Distinguished 商の通常 p 進完備化の perfectoid 性
 

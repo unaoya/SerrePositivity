@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyPowerResidue
 public import SerrePositivity.BhattScholze.Andre.MonicRawPDivision
-public import SerrePositivity.BhattScholze.DeltaRootFiniteRawRegular
-public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFamilyRegular
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaRoot.DeltaRootFiniteRawRegular
+public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionFamilyRegular
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
 
 /-!

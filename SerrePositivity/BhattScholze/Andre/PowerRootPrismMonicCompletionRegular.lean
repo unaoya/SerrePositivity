@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionFirstRegular
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
-public import SerrePositivity.BhattScholze.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Prism.PDCompletionInterface
 
 /-!
 # André E1・E2：無限根モニック実完備化と Hodge–Tate 商の p 正則性

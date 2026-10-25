@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RegularQuotientCompleteFaithful
-public import SerrePositivity.BhattScholze.PerfectPrismDeltaAlgebraPDCompletelyFlat
-public import SerrePositivity.BhattScholze.PerfectDeltaPDPrism
+public import SerrePositivity.BhattScholze.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Prism.PerfectDeltaPDPrism
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraAcyclicBaseChange
 
 /-!

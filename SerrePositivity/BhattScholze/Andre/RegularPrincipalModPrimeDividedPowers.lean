@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.FactorialModPrimeDividedPowers
-public import SerrePositivity.BhattScholze.RegularPrincipalDPModP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularPrincipalDPModP
 
 /-!
 # André E1・E2：正則一元入力の mod p 一次関係商の実分冪構造

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionFinitePrimeQuotients
-public import SerrePositivity.BhattScholze.DeltaDivisionFirstJetResidueRegular
-public import SerrePositivity.BhattScholze.DeltaDivisionFiniteJetRegularity
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFirstJetResidueRegular
+public import SerrePositivity.BhattScholze.RootedExtension.Division.DeltaDivisionFiniteJetRegularity
 
 /-!
 # André E1・E2：有限 δ 関係商の p,d 正則性を次段へ保つ

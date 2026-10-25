@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PrimeDividedPowerQuotient
-public import SerrePositivity.BhattScholze.RegularPrincipalDPUniversal
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularPrincipalDPUniversal
 
 /-!
 # André E1・E2：階乗部分環の正次数イデアルの実 mod p 分冪構造

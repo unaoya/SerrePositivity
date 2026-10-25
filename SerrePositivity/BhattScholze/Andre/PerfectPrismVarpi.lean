@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectOrientedPrism
-public import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Prism.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Delta.PerfectDeltaFrobenius
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 /-!

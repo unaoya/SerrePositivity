@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
-public import SerrePositivity.BhattScholze.PerfectoidRingEquiv
+public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidRingEquiv
 
 /-! # Prop 2.4.7：異なる perfectoid 対象の有限直積の指定普遍単位
 
