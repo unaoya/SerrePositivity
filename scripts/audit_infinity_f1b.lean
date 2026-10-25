@@ -1,5 +1,6 @@
 import SerrePositivity.InfinityCategories.F1B
 import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
+import SerrePositivity.InfinityCategories.F1B.Localization.UniverseDescent
 import Lean.Util.CollectAxioms
 
 /-!
@@ -3037,3 +3038,12 @@ end
 #print axioms SerrePositivity.InfinityCategories.IsLocalization.precomposition_isFullyFaithful
 #check SerrePositivity.InfinityCategories.IsLocalization.exists_extension
 #print axioms SerrePositivity.InfinityCategories.IsLocalization.exists_extension
+
+#check SerrePositivity.InfinityCategories.invertsEdges_ulift_iff
+#print axioms SerrePositivity.InfinityCategories.invertsEdges_ulift_iff
+#check SerrePositivity.InfinityCategories.IsLocalization.of_ulift
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.of_ulift
+#check SerrePositivity.InfinityCategories.LocalizationUniverse.fullyFaithful_of_ulift
+#print axioms SerrePositivity.InfinityCategories.LocalizationUniverse.fullyFaithful_of_ulift
+#check SerrePositivity.InfinityCategories.LocalizationUniverse.functorIso_of_ulift
+#print axioms SerrePositivity.InfinityCategories.LocalizationUniverse.functorIso_of_ulift

@@ -41,10 +41,10 @@
 - Ind-S の許可された逆方向 import：D の `FunctorIsoConstantEdges`・`PinchedSliceCompositionRealization`・`ConstantEdgeFamily` を、各依存閉包外の新規 F1 葉から読み取り専用 import。既存の閉包内 F1 モジュールは変更しない。R が第 I 段終了時に Core/PinchedHom または F1B へ移す。P の局所性述語は F1 から import しない。
 - Ind-S（D-16 向け追加）：`IsLocalization.of_subset_invertedEdges` は一般の局所化で `W ⊆ W' ⊆ invertedEdges F` への移行、`IsLocalization.saturate` は反転辺全体への移行。反射・随伴を仮定しない。
 - I-2 a④ 完了：`exists_diagramComma_cocone_lift_poset_lowerSet` は任意の下方閉部分の指定全余錐を厳密に持ち上げる。空部分から `smallFinitePosetDiagramComma_isKappaFiltered`、弱下方部分から `diagramCommaEvaluation_finitePoset_isRightCofinal` を導く。`smallFinitePosetDiagramCommaCocone_isColimit` と `indFinitePoset_has_singleFilteredDiagramPresentation` は元の全図式 D を厳密な頂点とする同じ標準全余錐の余極限性と単一 κ-filtered 表示を公開。一般交換・安定性・任意の有限単体集合への表示一般化は主張しない。
-- Ind-S (4)（D-16 向け追加）：一般の `IsLocalization F W` の ULift 宇宙持ち上げ・可能なら降下と iff。既存の初頂点写像の専用定理を一般の場合の証明とは扱わない。反転辺集合・全反転関手圏・同値の宇宙移送を接続する工程は未了。
+- Ind-S (4)（D-16 向け追加）：一般の `IsLocalization F W` の ULift 宇宙持ち上げ・可能なら降下と iff。既存の初頂点写像の専用定理を一般の場合の証明とは扱わない。`invertsEdges_ulift_iff` と `IsLocalization.of_ulift` は新規の葉だけで供給。任意の大きな標的への普遍性を要求する順方向は未証明。
 - Ind-S (4) の供給許可：`Stable.UniverseVertexIso` は直接 import せず、辺・三角形・可逆性の上げ下げを `Core.UniverseEdgeTransport` に新名の準重複として置く。既存 Core ファイルは変更しない。R が第 I 段終了時に旧入口を付け替える。
-- Ind-S (4) の軽い入口：`UniverseEdge.invertible_up`・`invertible_down` は quasicategory 仮定なしの実可逆辺の宇宙移送。`IsLocalization.precomposition_isFullyFaithful`・`exists_extension` は元の全前合成の充満忠実性・元の実関手同型付き延長。既存の同名でない宣言は不変、一般の局所化の持ち上げ・降下の結論は未公開。
-- 深層編集禁止：R の停止窓以外で既存の深層モジュールを変更しない。必要な一般化・新宣言は新規の葉へ置く。やむを得ない深層変更は着手前にコーディネータへ申告する。Universe 4 本・Coherent 2 本・LeftStraighteningRepresentation の変更は全て復元済み。
+- Ind-S (4) の軽い入口：`UniverseEdge.invertible_up`・`invertible_down` は quasicategory 仮定なしの実可逆辺の宇宙移送。`IsLocalization.precomposition_isFullyFaithful`・`exists_extension` は元の全前合成の充満忠実性・元の実関手同型付き延長。既存の同名でない宣言は不変、`IsLocalization.of_ulift` は同じ元の射の局所化性を元の宇宙へ降ろす。順方向は未公開。
+- 深層編集禁止：R の停止窓以外で既存の深層モジュールを変更しない。必要な一般化・新宣言は新規の葉へ置く。やむを得ない深層変更は着手前にコーディネータへ申告する。Universe 4 本・Coherent 2 本・LeftStraighteningRepresentation の変更は全て復元済み。局所化の宇宙操作は `F1B.Localization.LocalizationUniverse` の新名で葉に閉じる。第 I 段終了時に R が既存 F1 の宇宙操作との準重複を整理する。
 - Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。
 - 次の一手：Ind-S (4) の局所化の宇宙持ち上げを調べ、I-2 b の有限余極限・有限極限へ進む。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
 
