@@ -7,10 +7,12 @@
 
 まとめ方（宣言・証明・名前空間・variable には手を加えない）：
 - 先頭は `module`、元モジュールの `public import` の和（同じ統合先に入るモジュールと自分自身は除き、
-  統合された名前は新しい名前に置き換えて重複を除く）、計画の docstring、
-  `@[expose] public noncomputable section`、元の universe 宣言の和。
-- 各元モジュールは `/-! ## 見出し（旧 パス） ... -/` と `section 元ファイル名 ... end 元ファイル名` で包む。
+  統合された名前は新しい名前に置き換えて重複を除く）、計画の docstring、元の universe 宣言の和。
+- 各元モジュールは `/-! ## 見出し（旧 パス） ... -/` の後、元の冒頭の section 行（`@[expose] public noncomputable section`・
+  `@[expose] public section`・`public section` など）に元ファイル名を付けた名前付き section で包み、`end 元ファイル名` で閉じる。
+  修飾子（公開・expose・noncomputable）の効果は section ごとに効くので、元のファイルと同じ意味が保たれる。
   見出しの下には元の module docstring の本文をそのまま残す。variable・set_option・open は section の中に閉じる。
+  section 行のない元モジュール（import と docstring だけの集約）は見出しだけを残す。
 - 元ファイルは git rm する（統合先と同じパスのものは上書き）。
 - 所有範囲（BS・CLMST・BS/CLMST の監査）の import 行・`let mods` の名前一覧・バッククォートのモジュール名を
   新しい名前に書き換え、重複した import 行と自分自身の import を除く。
@@ -36,6 +38,9 @@ OWNED = [
     re.compile(r"^scripts/audit_andre_[^/]*\.lean$"),
     re.compile(r"^scripts/audit/bhatt_scholze\.lean$"),
     re.compile(r"^scripts/audit/clmst\.lean$"),
+    # CommutativeAlgebra のうち BS・CLMST だけが使う 4 本（BS-W4 で確認済み）
+    re.compile(r"^SerrePositivity/CommutativeAlgebra/(AbsolutelyIntegrallyClosedPerfectoidQuotient|PerfectoidIdeal|"
+               r"PerfectoidIdealCompatibleRoots|PerfectoidIdealCover)\.lean$"),
 ]
 NAME = re.compile(r"(?<![\w.])SerrePositivity\.BhattScholze\.[\w.']+")
 IMPORT = re.compile(r"^[ \t]*(public[ \t]+)?import[ \t]+(\S+)[ \t]*$")
@@ -55,7 +60,7 @@ public import {new}
 旧名の import 元が新しい名前へ切り替わったら削除する。
 -/
 """
-HEADER = re.compile(r"^@\[expose\] public noncomputable section\s*$")
+HEADER = re.compile(r"^(@\[expose\] )?public (noncomputable )?section\s*$")
 UNIVERSE = re.compile(r"^universe\s+(.*)$")
 
 
@@ -77,7 +82,9 @@ def parse(mod):
             doc = "\n".join(lines[i:j + 1])
             i = j
         i += 1
-    assert i < len(lines), f"no section header in {mod}"
+    if i >= len(lines):
+        return imports, doc, [], None, None
+    header = lines[i].strip()
     i += 1
     universes = []
     while i < len(lines) and (UNIVERSE.match(lines[i]) or not lines[i].strip()):
@@ -85,7 +92,16 @@ def parse(mod):
         if m:
             universes += m.group(1).split()
         i += 1
-    return imports, doc, universes, "\n".join(lines[i:]).rstrip() + "\n"
+    # section 行の直後以外（open や set_option の後など）にある universe 宣言も冒頭へ集める。
+    # 統合先の冒頭で和を宣言するので、本文に残すと同名の宇宙変数の二重宣言になる（BS-W6 の失敗）。
+    rest = []
+    for line in lines[i:]:
+        m = UNIVERSE.match(line)
+        if m:
+            universes += [u for u in m.group(1).split() if u not in universes]
+        else:
+            rest.append(line)
+    return imports, doc, universes, header, "\n".join(rest).rstrip() + "\n"
 
 
 def part_heading(mod, doc):
@@ -102,7 +118,7 @@ def part_heading(mod, doc):
 def build(new, parts, rename, docstring):
     imports, universes, chunks = [], [], []
     for mod in parts:
-        imps, doc, unis, body = parse(mod)
+        imps, doc, unis, header, body = parse(mod)
         for imp in imps:
             imp2 = rename.get(imp, imp)
             if imp2 != new and imp2 not in imports:
@@ -111,11 +127,14 @@ def build(new, parts, rename, docstring):
             if u not in universes:
                 universes.append(u)
         stem = mod.split(".")[-1]
-        chunks.append(f"{part_heading(mod, doc)}\n\nsection {stem}\n\n{body}\nend {stem}\n")
+        if header is None:
+            chunks.append(f"{part_heading(mod, doc)}\n")
+        else:
+            chunks.append(f"{part_heading(mod, doc)}\n\n{header} {stem}\n\n{body}\nend {stem}\n")
     head = "module\n\n" + "".join(f"public import {i}\n" for i in imports)
-    head += f"\n/-!\n{docstring.strip()}\n-/\n\n@[expose] public noncomputable section\n"
+    head += f"\n/-!\n{docstring.strip()}\n-/\n"
     if universes:
-        head += f"universe {' '.join(universes)}\n"
+        head += f"\nuniverse {' '.join(universes)}\n"
     return head + "\n" + "\n".join(chunks)
 
 
