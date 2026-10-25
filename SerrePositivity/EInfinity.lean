@@ -2503,3 +2503,5 @@ public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
 public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
 
 public import SerrePositivity.EInfinity.AlexanderWhitney.HornCochainContraction
+
+public import SerrePositivity.EInfinity.ComplexLimits.ProjectivePullbackHomClosed

@@ -2840,3 +2840,30 @@ H⁰ の環・単位・全射影の乗法整合性を保持する。後者には
 ModelCategory SSet・Kan–Quillen は入力せず、既存の宣言と cofibration 判定は変更しない。
 
 対象・集約ビルド、全公理監査および独立した利用例の検証まで完了。
+
+
+## Sp β6 f4c への固定底 pullback-Hom（E2-S (4)）
+
+`ComplexLimits/ProjectivePullbackHom` の `complexPullbackHom i p` は、
+元の `homComplex A Q X` から
+`pullback (homPostcompose P p) (homPrecompose i Y)` への実比較射。
+`complexPullbackHom_fst`・`complexPullbackHom_snd` が、両射影との合成を
+元の前合成・後合成へ照合する。係数環は任意の可換環で、複体は非有界でもよい。
+
+`complexPullbackHom_projectiveFibration` は i が射影 cofibration、p が次数別全射なら
+同じ比較が次数別全射であることを示す。`ProjectiveComponentLifting` の
+`projectiveCofibration_component_lifting` が、評価と可縮 codisk の随伴から
+各成分の全射に対する持ち上げを供給する。`complexPullbackHom_quasiIso` はさらに
+`QuasiIso i` を仮定し、p への追加条件なしに同じ比較自身の QuasiIso を示す。
+前合成の鎖ホモトピー同値、trivial fibration の引き戻し安定性、二対三を用いる。
+両結論をまとめた公開入口は `complexPullbackHom_trivialFibration`。
+
+`ComplexLimits/ProjectivePullbackHomClosed` は complexMonoidalClosed の標準
+`MonoidalCategory.Arrow.pullbackHom` を使う入口。
+`complexPullbackHomClosedTargetIso` とその `_fst`・`_snd`、
+`complexPullbackHomClosed_compare` が標的・二射影・比較射自身を照合し、
+`complexPullbackHomClosed_trivialFibration` が標準比較の全射性と QuasiIso を返す。
+射影モデル構造は証明内でのみ選択する。モノイダルモデル構造や単体集合の
+モデル構造は入力せず、大域 instance は追加しない。
+
+対象・集約ビルド、全公理監査と実射影モデル構造の条件を含む独立例を検証済み。
