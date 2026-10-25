@@ -25,7 +25,6 @@
 - P-1 g は g1〜g7 を完了。元の Yoneda 制限上の有限余積条件と全小余極限保存を同値にした。
 - P-1 c は完了。個々の presentable 圏の全小極限・反映による小余極限構成を提供する。
   ユーザー確定により HTT 5.5.3.13 は e へ移し、c は六項目のままとする。
-
 - P-1 d は完了。連続前層の表現可能性と随伴関手定理（5.5.2.9）を比較入力なしで提供する。
 
 ### 残り（依存順）
@@ -94,13 +93,14 @@
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
 - e5 の濃度評価は Ind-S (7)、`d39ae1d0a` で供給済み。`SmallHullCardinal` の有界 Hull を使い、任意の μ-small 試験図式を同じ濃度の quasicategory へ厳密に因子化する。
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
+- e8 の統合 import 閉包が破損：`Supply.LeftClassificationBaseChangeEdges` と P の `CosliceBaseChangePreservation` が `Presentable.instLeftFibrationSndSSet` で衝突。P-s 側の匿名 local instance の衝突解消をユーザー経由でコーディネータへ依頼し、規約に従って停止。
 
 ### 未コミット
-- なし。fiber accessibility まで対象・集約ビルドと公理監査済み。
+- なし。e8 で追加した三集約 import は instance 名衝突のため除き、検証済みの集約へ復旧。
 
 ### 次の一手
 - e5：P の fiber 版は `fiber_isAccessible_of_presentable`（強い入口 `fiber_isAccessible_of_cocomplete_accessible`）で構成済み。共通濃度・全 compact 成分の小模型・元の各対象の小さい μ-filtered 全表示を接続し、点射の全小余極限保存を仮定しない。対象・集約ビルドと公理監査済み。公開名を報告し、e8 の準備へ移る。accessible 一般版 `pullback_isAccessible` と系 `pullback_isPresentable` は P-d に移管。
-- e6 の全体同値と e7 の小極限は保留（第 II 段／R）。fiber 版の公開名を報告後、Duality/・Supply/・LocalObjects/ を含む e8 を準備し、P-d の accessible 一般版到着で閉じる。
+- e6 の全体同値と e7 の小極限は保留（第 II 段／R）。P-s の instance 衝突修正後、Duality.All・Supply.All・Localization.LocalObjects.All を集約へ再追加して両集約・監査を実行。P-d の accessible 一般版の到着後に e8 を閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
 - E2・K-B から供給依頼が来たら工程の区切りで優先する。
@@ -154,7 +154,7 @@
 - [ ] e5. P の fiber accessibility は公開済み。accessible 一般版（5.4.6.6）と presentable 系（5.5.3.12）は P-d の到着待ち。
 - [ ] e6. 保留（第 II 段／R）：Pr^L と Pr^R の全体同値（5.5.3.4）。`Duality/` は読み取り専用。
 - [ ] e7. 保留（第 II 段／R）：Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
-- [ ] e8. Duality/・Supply/・LocalObjects/ を含む集約ビルド・両公理監査・公開界面と引き継ぎ更新。P-d の一般版の到着後に閉じる。
+- [ ] e8. 三集約の同時 import が匿名 local instance 名衝突で失敗し停止。P-s の修正後に両集約・監査を再実行、P-d の一般版の到着後に閉じる。
 
 ## P-6 三段目
 
