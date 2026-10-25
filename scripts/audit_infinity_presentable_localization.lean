@@ -194,3 +194,14 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @indArrowImage_hasFiniteColimits
 #check @indArrowImageInclusion_preservesFiniteColimit
 #check @indArrowImage_finite_colimit_mem
+
+#check @arrowCancellationPrism
+#check @arrowCancellationPrism_zero
+#check @arrowCancellationPrism_one
+#check @arrowCancellationFamily
+#check @arrowCancellationFamily_isPushout
+#check @arrowCancellationFamily_vertex_first
+#check @arrowCancellationFamily_vertex_identity
+#check @arrowCancellationFamily_vertex_composite
+#check @arrowCancellationFamily_vertex_last
+#check @indArrowImage_cancel_left

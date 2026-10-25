@@ -32,6 +32,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Sou
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberPullback
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageAllFiniteColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCancellation
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -94,6 +95,9 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 この比較だけでは固定始域圏の余完備性・accessibility はまだ得られない。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
+元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
+射圏内の実 pushout へ送り、最初の辺と合成辺が実像に入れば最後の辺も入ると証明した。
+この向きの左消去は検証済みだが、合成閉性と反対向きの消去はまだ未証明。
 二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
