@@ -34,6 +34,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageAllFiniteColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCancellation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeFactorization
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorizationTriangle
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowEvaluation
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -57,6 +59,7 @@ f3 の準備：固定始域の全 coslice 部分圏と、同じ始域から閉�
 compact な始対象像を持つ left fibration の指定点を、同じ余錐脚の上で一段へ因子化した。
 これを小さい compact 図式の余極限始対象へ適用し、その全余錐の一段への因子化も証明した。
 既存の部分余錐を固定する相対延長は未構成。
+指定した元の辺を合成辺、元の filtered 余錐脚を後半辺とする実二単体も回収した。
 二つの実表示を結ぶ coherent 交互列と共通部分余極限は未構成。
 全射の filtered 生成性・飽和射圏全体の accessibility は未証明。
 P のコミット 1381907fe の引数分離済み indComparison_isFullyFaithful_of_compact を使用。
@@ -97,6 +100,7 @@ compact な閉包内射の任意の小さい余積を、有限部分余積の全
 証明した。さらに厳密な fiber を周囲の fiber の全部分圏として表示し、公開の
 isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性を証明した。
 この比較だけでは固定始域圏の余完備性・accessibility はまだ得られない。
+強飽和射圏の全部分包含と各端点評価の同値持ち上げ性、各評価の小余極限保存性も構成した。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
