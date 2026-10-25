@@ -120,4 +120,50 @@ def adjointUnitLeftFiberToCoslice (C D : PresentableInfinityObject.{u})
       simpa only [Category.assoc, unitComposition_fixedLeft] using
         congrArg (· ≫ unitComposition C D) (adjointUnitLeftFiber_base C D w))
 
+/-- 概要：左ファイバーの比較は元の実単位の coslice 成分を保持する。
+方針：引き戻しの持ち上げの第一射影を計算する。
+規約：全次数での厳密な射の等式。
+使われ方：比較の単位の Hom 類を同定する。 -/
+lemma adjointUnitLeftFiberToCoslice_unit (C D : PresentableInfinityObject.{u})
+    (w : PrLMappingSpace C D _⦋0⦌) :
+    adjointUnitLeftFiberToCoslice C D w ≫ pullback.fst _
+      ((pre (leftVertexFunctor w.val)).app C.obj) =
+    vertexFiberι (adjointUnitLeft C D) w ≫ adjointUnitUnderlying C D ≫
+      pullback.fst _ (unitComposition C D) :=
+  pullback.lift_fst _ _ _
+
+/-- 概要：左ファイバーの比較は元の右関手の全単体を保持する。
+方針：引き戻しの持ち上げの第二射影を計算する。
+規約：元の全関手圏への包含を通して比較する。
+使われ方：普遍単位の右関手の保存条件を照合する。 -/
+lemma adjointUnitLeftFiberToCoslice_right (C D : PresentableInfinityObject.{u})
+    (w : PrLMappingSpace C D _⦋0⦌) :
+    adjointUnitLeftFiberToCoslice C D w ≫ pullback.snd _
+      ((pre (leftVertexFunctor w.val)).app C.obj) =
+    vertexFiberι (adjointUnitLeft C D) w ≫ adjointUnitRight C D ≫ rightMappingInclusion D C :=
+  pullback.lift_snd _ _ _
+
+/-- 概要：左ファイバーの coslice 比較は最大 Kan 部分複体へ因子化する。
+方針：ファイバーの Kan 性と core の厳密同型を通して core 上の写像を使う。
+規約：単位の高次単体を失う離散化は行わない。
+使われ方：始対象の全部分空間との比較。 -/
+def adjointUnitLeftFiberToCore (C D : PresentableInfinityObject.{u})
+    (w : PrLMappingSpace C D _⦋0⦌) :
+    vertexFiber (adjointUnitLeft C D) w ⟶
+      (quasicategoryCore (LeftUnitCoslice C D w.val) : SSet.{u + 1}) :=
+  (quasicategoryCoreIsoOfKan _).inv ≫ quasicategoryCoreMap (adjointUnitLeftFiberToCoslice C D w)
+
+/-- 概要：core への因子化を元へ含めると同じ coslice 比較。
+方針：core 上の写像と包含の自然性、core の同型の逆則を使う。
+規約：元の実単位の比較射を変更しない。
+使われ方：core 内での検証を元の coslice の計算へ戻す。 -/
+lemma adjointUnitLeftFiberToCore_ι (C D : PresentableInfinityObject.{u})
+    (w : PrLMappingSpace C D _⦋0⦌) :
+    adjointUnitLeftFiberToCore C D w ≫ (quasicategoryCore (LeftUnitCoslice C D w.val)).ι =
+      adjointUnitLeftFiberToCoslice C D w := by
+  unfold adjointUnitLeftFiberToCore
+  rw [Category.assoc, quasicategoryCoreMap_ι, ← Category.assoc]
+  change ((quasicategoryCoreIsoOfKan _).inv ≫ (quasicategoryCoreIsoOfKan _).hom) ≫ _ = _
+  rw [Iso.inv_hom_id, Category.id_comp]
+
 end SerrePositivity.InfinityCategories.F2.Presentable.Duality

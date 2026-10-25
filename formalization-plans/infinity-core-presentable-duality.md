@@ -20,9 +20,12 @@
   元の `adjointUnitRight` の固定ファイバーとの厳密な同型 `rightUnitFiberIso` を構成し、
   元の右ファイバーの全高次の可縮性まで証明済み。
 - 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
-  両局所射影は Kan fibration。右射影は trivial Kan fibration・QCat 同値として公開済み。
-  左射影の同値性と全 Pr 上の対応 quasicategory はまだ未構成。
-- 最新の検証済み専用集約は8,561 jobs 成功、専用監査430宣言は標準3公理のみ。
+  両局所射影は trivial Kan fibration・QCat 同値として公開済み。
+  固定左でも指定単位条件を始対象性と同定し、元の左ファイバーとの厳密な同型
+  `leftUnitFiberIso` とその可縮性を証明した。
+  `adjointMappingEquivalence C D` は元の二対象間の写像空間の同値。
+  全 Pr 上の対応 quasicategory とその両射影はまだ未構成。
+- 最新の検証済み専用集約は8,575 jobs 成功、専用監査528宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -58,14 +61,18 @@
 - `precompositionTransposeEquiv`、`precompositionCorrespondence`、`precompositionAdjunction`
 - `precompositionAdjunction_unitComponent_identity`（元の指定単位の回収）
 - `leftUniversalUnitSpace_isContractibleKan`、`leftUnitCosliceComparison_isQCatEquivalence`
-- `adjointUnitLeftFiberToCoslice`
+- `adjointUnitLeftFiberToCoslice`、`leftUnit_condition_iff_isInitial`
+- `leftAdjointUnitSpace_isContractibleKan`、`leftUnitFiberIso`
+- `adjointUnitLeftFiber_isContractibleKan`、`adjointUnitLeft_trivialKanFibration`
+- `adjointUnitLeft_isQCatEquivalence`、`adjointUnitLeftMappingEquivalence`
+- `adjointMappingEquivalence`（二対象間の元の左右の写像空間の同値）
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
 ### 依存と提供
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,917 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,931 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
@@ -87,8 +94,11 @@
 - 検証済み：`TransposeHomEvaluation.lean`・`PrecompositionUnitEvaluation.lean`・
   `PrecompositionSourceEvaluation.lean`・`PrecompositionUnitComponent.lean`。
   `precompositionAdjunction_unitComponent_identity` は元の指定単位を厳密に回収する。
-- 未検証：`LeftUnitData.lean`・`LeftUnitInvariance.lean`・`LeftUnitVertices.lean`
-  （固定左 coslice の単位と右関手の表示・不変性・指定随伴の頂点）。
+- 検証済み：固定左 coslice の単位・右関手の表示、不変性、指定随伴の頂点と始対象性。
+- 検証済み：`leftUnit_condition_iff_isInitial` と `LeftAdjointUnitSpace` の可縮性。
+- 検証済み：元の左ファイバーからの比較と逆射、`leftUnitFiberIso` の両往復。
+- 検証済み：`LeftProjectionEquivalence.lean` と `LocalMappingEquivalence.lean`。
+- 現時点の所有ファイルは専用集約・監査に含めて保存済み。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -104,12 +114,12 @@
   辺の持ち上げまたは充満忠実性も証明する。
 
 ### 次の一手
-- 前合成の全 QCat 随伴 `precompositionAdjunction` と固定左の普遍単位空間は検証済み。
-  恒等関手での単位成分と元の単位の一致まで検証済み。
-  指定単位条件と左 coslice の始対象性を接続する。
-  元の左ファイバーとの同型・可縮性と左射影の同値性はこれから。
-- その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
-  深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
+- 全 Pr 上の対応 quasicategory と元の `PrL`・`PrR.op` への単体射影を構成する。
+- 両局所射影の trivial Kan fibration 性から、境界で指定した随伴族を保つ
+  相対持ち上げと厳密な切断を取り出す。
+- その局所の族を、恒等・合成を含む全体の対応の単体に組み込む。
+  個々の写像空間の同値だけで全 Pr の同値とはしない。
+- 深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
 
 ## 三段目（初回確定、6 項目）
 

@@ -63,9 +63,28 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.Precompo
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionUnitComponent
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitData
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitInvariance
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitVertices
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitInitial
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitInitialCriterion
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitContractible
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftFiberUnitCondition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitRightMap
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitRawReturn
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitReturnCondition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitFiberReturn
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitFiberIso
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftProjectionEquivalence
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LocalMappingEquivalence
+
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。
-規約：実単位の局所対応と局所右射影の QCat 同値までを含み、Pr 全体の同値は未公開。
+規約：実単位の局所対応の両射影の QCat 同値を含み、全 Pr の同値は構成中。
 使われ方：P-d の専用ビルドと公理監査。
 -/

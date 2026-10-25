@@ -151,3 +151,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTargetEquiv_unit_evaluate
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionSourceEquiv_unit_evaluate
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionAdjunction_unitComponent_identity
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitVertex_condition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitVertex_isInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnit_condition_iff_isInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointUnitSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointUnitRight_condition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftFiberToAdjointUnitSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointUnitToFiber
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitFiberIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftFiber_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeft_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeft_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftMappingEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointMappingEquivalence
