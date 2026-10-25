@@ -32276,3 +32276,18 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension_restriction
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceExtension_restriction
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_composite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_composite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_top
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullCoherenceHom_top
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTopComposite_eq
