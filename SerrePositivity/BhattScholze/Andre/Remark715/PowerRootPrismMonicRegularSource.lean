@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicCompletionPrism
-public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 /-!
 # André A1-a：生成元正則性を明示した元の H の prism 構造

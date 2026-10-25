@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootAdjoinCompatibleRoots
-public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivision
-public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrism
-public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
+public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 
 /-! # 根δ除算包からの具体的なperfectoid候補
 

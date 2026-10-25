@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionResidue
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.BoundedSupport.DeltaRootBoundedSupportPDResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticCoefficientCompletionReduction
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 /-! # 実根添加対象の逐次主元完備化後の(p,d)還元
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionDiagram
+public import SerrePositivity.BhattScholze.Perfectoidization.Excision
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPullback
 

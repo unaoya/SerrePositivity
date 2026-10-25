@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaFrobeniusQuotientSquare
+public import SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaResidue
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.PerfectDeltaPrismaticDerivedFlat
 
 /-! # 実Frobeniusねじれ段の標準prism還元の次数消滅と忠実平坦性 -/

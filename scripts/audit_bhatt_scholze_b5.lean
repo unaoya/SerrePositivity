@@ -1,8 +1,5 @@
 import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
-import SerrePositivity.BhattScholze.Almost.Lemma103PerfectoidTensor
-import SerrePositivity.BhattScholze.Almost.PerfectoidIdealLemma103
-import SerrePositivity.BhattScholze.Almost.PerfectoidIdealIdempotent
-import SerrePositivity.BhattScholze.Almost.PerfectoidAlmostExtension
+import SerrePositivity.BhattScholze.Almost.Lemma103
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry

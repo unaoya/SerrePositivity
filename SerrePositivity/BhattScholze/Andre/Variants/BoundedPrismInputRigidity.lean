@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismInputCategory
-public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetRigidity
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 
 /-!
 # André A1-a：完全基底上の入力作用からの基底保存性

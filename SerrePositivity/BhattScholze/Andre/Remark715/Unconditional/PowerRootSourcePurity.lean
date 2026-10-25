@@ -3,8 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.PowerRootSourceComplete
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.RawResidue
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.RegularityBoundary
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueCanonical
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity

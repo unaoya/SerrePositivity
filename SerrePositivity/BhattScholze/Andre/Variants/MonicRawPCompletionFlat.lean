@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Variants.MonicRawPerfectionFlat
-public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaPerfection
+public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionOpenQuotient
 
 /-!

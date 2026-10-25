@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 

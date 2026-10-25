@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyCompletionPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 
 /-! # B4-6：根付き生成族による全射商の全射性
 

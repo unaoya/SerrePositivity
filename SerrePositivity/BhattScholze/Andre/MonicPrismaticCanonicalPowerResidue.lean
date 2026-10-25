@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceComplete
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueDerived
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueCanonical
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 /-!
 # André E1・E2：モニック源の生成元冪商の標準冪零還元

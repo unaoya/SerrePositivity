@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootPerfectionFaithful
-public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaPerfection
+public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionOpenQuotient
 
 /-! # 既存p進完備δ完全化への実係数射のp完全忠実平坦性 -/

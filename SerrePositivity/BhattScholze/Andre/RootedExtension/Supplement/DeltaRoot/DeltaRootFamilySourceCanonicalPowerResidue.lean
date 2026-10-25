@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootFamilySourceIteratedResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueDerived
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueCanonical
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 /-! # 具体的根添加対象のG10標準冪零還元入力
 

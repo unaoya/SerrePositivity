@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.MonicPowerFamilyCover
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectCoefficientTensor
+public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
 
 /-! # B4-6：通常のモニック冪根添加環の普遍性
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootSourcePowerResidueFaithful
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerComplete
 
 /-! # G9へ渡す実生成元冪商の標準mod p入力 -/

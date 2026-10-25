@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismInputCategory
-public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismHomRigidity
+public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import Mathlib.CategoryTheory.Equivalence
 
 /-!

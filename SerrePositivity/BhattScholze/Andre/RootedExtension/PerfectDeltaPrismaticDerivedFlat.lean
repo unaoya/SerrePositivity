@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaPrismaticResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerDerivedFlat
+public import SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaResidue
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.PerfectPrismRootFamilySourceInputs
 
 /-! # 実Frobenius係数剰余へのprism冪剰余判定の接続 -/

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.DeltaRootPerfectoidCandidate
-public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 /-! # 根添加prism候補への基底射と標準商射
 

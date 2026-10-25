@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueDerived
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 /-! # 具体的逐次根添加対象の冪零剰余射による実還元
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismHomRigidity
+public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicBoundedResidueRootUniversal
 
 /-!

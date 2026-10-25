@@ -82,11 +82,10 @@ public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicOr
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicSourcePrismUniversal
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicEnvelopeInitial
 public import SerrePositivity.BhattScholze.Andre.Variants.BoundedPrismInputRigidity
-public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismPrimeComplete
-public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectSourceDeltaHom
-public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismTiltQuotient
+public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
+public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicSourceInitiality
-public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetLift
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicAbsoluteUniversal
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.FrobeniusTensorPD
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.FullFrobeniusPD

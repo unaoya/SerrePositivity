@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedBaseChange
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedBaseChangeDiscrete
+public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 
 /-! # Prop 2.4.7：終域の実完備導来底変換と perfectoid 化
 

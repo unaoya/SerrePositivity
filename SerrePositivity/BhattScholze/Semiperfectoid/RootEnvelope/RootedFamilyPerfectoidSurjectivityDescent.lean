@@ -1,10 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.TensorBaseChangeKernel
+public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RootedPresentationSurjectivity
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationBaseChange
-public import SerrePositivity.BhattScholze.Semiperfectoid.TensorResidueBaseChangeComparison
-public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectivityDescent
+public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization
 
 /-! # B4-6：元の核の生成族の根だけを持つ拡大からの降下
 

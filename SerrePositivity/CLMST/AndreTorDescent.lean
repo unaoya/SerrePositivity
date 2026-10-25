@@ -3,7 +3,7 @@ public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedBaseChangeDiscrete
+public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 
 /-! # The existing André extension detects original power-torsion Tor coefficient actions
 

@@ -1,7 +1,5 @@
-import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidUniversal
-import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationTensorCompatibility
-import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedTensorCompatibility
-import SerrePositivity.BhattScholze.Perfectoidization.Prop813PerfectoidBaseChange
+import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
+import SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility
 import Mathlib.Algebra.Ring.PUnit
 import Mathlib.Util.AssertNoSorry
 

@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionPowerComplete
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerDerivedFlat
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
 

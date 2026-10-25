@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Almost.PerfectoidizationImageComparison
+public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
 public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonBounds
 

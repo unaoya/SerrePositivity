@@ -1,10 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.BoundedSupport.DeltaRootBoundedSupportIteratedResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerDerivedFlat
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerComplete
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootedPerfectoidExtension
-public import SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidPerfectoidization
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 
 /-! # B4：根の割り算包による別証明
 

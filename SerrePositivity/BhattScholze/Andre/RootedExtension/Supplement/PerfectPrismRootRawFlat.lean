@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootPCompletedPerfectionFlat
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 /-! # 完全prismから任意根族のraw平坦包と実p完備化への入口 -/
 

@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
-public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidDistinguishedKernel
-public import SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineKernelNaturality
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
 public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness

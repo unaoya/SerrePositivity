@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootFamilySourceCanonicalPowerResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerComplete
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 

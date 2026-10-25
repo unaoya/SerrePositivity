@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.MonicRelationResidue
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaPDivisionRawRegular
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
 
 /-!

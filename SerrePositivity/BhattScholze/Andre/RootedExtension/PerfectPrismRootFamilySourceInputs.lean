@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootFamilySourceIteratedResidue
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionComplete
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 /-! # 完全prismから有限根族の実逐次完備化源への入力 -/
 

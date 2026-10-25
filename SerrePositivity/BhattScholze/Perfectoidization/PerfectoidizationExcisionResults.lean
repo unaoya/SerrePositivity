@@ -1,16 +1,15 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcExcision
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.Excision
 
-/-!
-# 環の excision の引用とその二つの系の集約
+/-! # 互換用の転送モジュール
+
 ## 概要
-BS 著者版 Cor 8.12（印刷 p.69）の環の引用と、標準閉側四角形に関する二つの系を公開する。
+このモジュールの本体は `SerrePositivity.BhattScholze.Perfectoidization.Excision` へ統合した。
+
 ## 方針
-既存の引用モジュールと、その引用だけから導いた系のモジュールを読み込む。
-## 規約
-引用入力は ArcExcision の一件であり、系の証明に新しい引用を追加しない。
+所有範囲外のファイルが旧名で import しているため、旧名を残して新しい場所を再公開する。宣言は持たない。
+
 ## 使われ方
-ルートの一行の import と、CLMST-D・KL-T への公開入口に使う。
+旧名の import 元が新しい名前へ切り替わったら削除する。
 -/

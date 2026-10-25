@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PolynomialPerfectoidCandidate
-public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPDCompletionPerfectionComparison
-public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPerfectionPDCompletionComparison
+public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionCocone
 
 /-!

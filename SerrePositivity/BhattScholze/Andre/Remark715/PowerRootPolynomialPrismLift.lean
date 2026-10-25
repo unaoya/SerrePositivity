@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPolynomialDeltaUniversal
-public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismCompatibleRootsLift
+public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt
 
 /-!
 # André E1・E2：完全試験 prism の剰余根列からの無限根入力 δ 射

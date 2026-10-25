@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionResidue
-public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticCoefficientCompletionReduction
+public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 
 /-! # 実δ完全化の逐次導来完備化の標準還元 -/
 

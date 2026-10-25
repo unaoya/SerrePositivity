@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionCompletionResidue
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
 
 /-! # 完全prism上の実δ完全化逐次対象の完備性と還元入力 -/

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AlgebraBaseChangeTensorUnit
-public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidization
+public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 
 /-! # Prop 2.4.7：元の完備底変換単位と BS の通常 tensor 写像
 

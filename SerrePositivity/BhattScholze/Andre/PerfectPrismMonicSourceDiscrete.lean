@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticSourcePowerInputs
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity

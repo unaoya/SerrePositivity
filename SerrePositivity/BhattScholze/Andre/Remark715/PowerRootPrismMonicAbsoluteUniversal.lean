@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicSourceInitiality
-public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetLift
+public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 
 /-!
 # André A1-a：基底射を指定しない有界入力への源の普遍性

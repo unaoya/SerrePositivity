@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.Remark715.RegularPrincipalModPrimeUniversal
 public import SerrePositivity.BhattScholze.Andre.MonicRelationResidue
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 
 /-!
 # André E1・E2：モニック入力の実 mod p 分冪包
