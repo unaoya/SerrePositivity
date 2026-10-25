@@ -281,3 +281,15 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_hasSmallColimits
 #check @generatedSourceInclusion_preservesSmallColimits
 #check @generatedSource_small_colimit_mem
+
+#check @edgeCosliceUnderIso
+#check @edgeCosliceSourceRestriction
+#check @edgeCosliceUnderIso_projection
+#check @edgeCosliceSourceFiberIso
+#check @edgeCosliceSourceFiberIso_hom_ι
+#check @edgeCosliceSourceRestriction_projection
+#check @edgeCosliceSourceMapping
+#check @edgeCosliceSourceMappingFiberIso
+#check @edgeCosliceSourceMapping_fibration
+#check @edgeCosliceSourceMapping_trivial_of_contractible
+#check @isLocalForHom_of_coslice_mapping_contractible
