@@ -1,3 +1,7 @@
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiData
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetNaturality
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetInclusions
 import SerrePositivity.InfinityCategories.DGNerve.LastVertexTwistingBianchi
 import SerrePositivity.InfinityCategories.DGNerve.LastVertexReplacementData
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetLabels
@@ -8006,6 +8010,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiData,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetInclusions,
     `SerrePositivity.InfinityCategories.DGNerve.LastVertexTwistingBianchi,
     `SerrePositivity.InfinityCategories.DGNerve.LastVertexReplacementData,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetLabels,
