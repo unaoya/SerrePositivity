@@ -100,6 +100,12 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Nat
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceDiagram
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceSliceDiagram
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.OneConeSimplexShape
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallShapeTowerGluing
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexShapes
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexDiagrams
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexSequence
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -267,7 +273,10 @@ compact 初期比較状態の存在も構成した。後続余錐の全頂点の
 この全比較列の各形状を共終な標準単体列へ正規化し、P の公開済み貼合入口で
 native な可算 nerve 上の全図式へ貼り合わせた。さらに全増大余錐を元の共通大域頂点の
 slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域頂点の compact 性は不要。
-両側の部分表示との比較と、元の三角形表示の同時細分への接続はまだ未完成。
+両側の元の前置添字形状も一段ずつの標準単体列で正規化し、元の各小さい添字圏内に
+値を取る全可算図式へ貼り合わせた。poset の場合は同じ実頂点列の単調性も得た。
+両側の部分表示と全比較図式の部分列との一致、および元の三角形表示の同時細分への
+接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
