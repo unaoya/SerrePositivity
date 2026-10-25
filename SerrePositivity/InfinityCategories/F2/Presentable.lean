@@ -291,3 +291,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresheafM
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEnrichedCategory
 public import SerrePositivity.InfinityCategories.F2.Presentable.PrInfinity
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorTensorIso
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorHomTensor
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorUnitHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAdjunctionUnit
+public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAdjunction

@@ -624,3 +624,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.PrR
 #check @SerrePositivity.InfinityCategories.F2.Presentable.prL_quasicategory
 #check @SerrePositivity.InfinityCategories.F2.Presentable.prR_quasicategory
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorTensorIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_apply
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorUnitHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorUnitHom_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_homMap_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunction
