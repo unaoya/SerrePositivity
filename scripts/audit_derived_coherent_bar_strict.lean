@@ -10,7 +10,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationGraded,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Columns,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexColimit,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendSimplex]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendSimplex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroShift,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Edge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ShiftPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ModuleColimit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EdgeObjects,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EdgeCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendColumn,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationTheta,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendClosed,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomExchange,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FiniteBounds,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NormalizedEndRebase]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -35,3 +51,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarStrictNormalizedModule
 #check SerrePositivity.InfinityCategories.dgCoherentBarStrictAugmentationGraded
 #check SerrePositivity.InfinityCategories.dgStrictFilteredColimit_quasiIso
+
+#check SerrePositivity.InfinityCategories.dgStrictFilteredModuleColimit_quasiIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarStrictAugmentation_postNormalizedTheta
+#check SerrePositivity.InfinityCategories.dgStrictAppendHom
+#check SerrePositivity.InfinityCategories.dgStrictNormalizedDegree_finiteSupport
