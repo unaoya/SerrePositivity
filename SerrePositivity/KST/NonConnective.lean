@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaNativeSquareComparison
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeFibrationSequence
 public import SerrePositivity.KST.NonConnective.DGKappaNativeStructure
 public import SerrePositivity.KST.NonConnective.DGKappaNativeConeZero
