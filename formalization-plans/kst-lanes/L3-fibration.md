@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（656 モジュール・4386 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（658 モジュール・4403 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -279,7 +279,7 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - (9) は採用済み命題の明示引数であり存在は主張しない。(9b) は実供給を代入する入口も接続。`ZeroMiddleFullSReconstruction`・`ZeroMiddleReconstructedFamily` は元の core 始域・全 S• 中間頂点と同じ短辺への再構成・実ホーン回収・同じ実入力への読戻しを保持する。`ZeroMiddleFactorizationTetra`・`ZeroMiddleFactorizationComparison` は同じ実因子分解族の三面・長 Hom を回収し、ホーン全体の回収後に既存充填との固定三面 fiber 内比較へ渡す。動く共有対角の貼り合わせと K-6 c4・c5、K-7 c5・d3 の無条件化は未完。
 
 ### 採用済み仕様補足：全族の共有対角の厳密回収
-- ユーザー採用、Ind-S (9) へ中継済み。各 K 頂点の全 native Hom 回収から全時刻の式を推論せず、同じ encode/read の normalize(t)=encode(longHom(t)) に対する直接 path 評価の全族厳密回収式と、元 t との固定ホーン内の可逆比較を持つ強化命題を明示引数に取る。元 t 自身への厳密式は要求しない。`ZeroMiddleReconstructedDiagonal` は encode(ℓ) の正規化不変性から共有対角を Δ[1] ⊗ K 上で厳密回収する。`ZeroMiddleNormalizedFamily` は読出し保存・冪等性・固定ホーン内同型を介して元の族へ戻す。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。本体へ新たな存在仮定は追加しない。
+- ユーザー採用、Ind-S (9) へ中継済み。各 K 頂点の全 native Hom 回収から全時刻の式を推論せず、同じ encode/read の normalize(t)=encode(longHom(t)) に対する直接 path 評価の全族厳密回収式と、元 t との固定ホーン内の可逆比較を持つ強化命題を明示引数に取る。元 t 自身への厳密式は要求しない。`ZeroMiddleReconstructedDiagonal` は encode(ℓ) の正規化不変性から共有対角を Δ[1] ⊗ K 上で厳密回収する。`ZeroMiddleNormalizedFamily` は読出し保存・冪等性・固定ホーン内同型を介して元の族へ戻す。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。VerdierLowerReconstructionBoundary は元の実下側変形の二短辺と固定ホーン族の実入力点を厳密回収する。VerdierLowerNormalizedReconstruction は (9) に条件付きで、同じ実下側族との全関手同型・元の二短辺・正規化側の全対角・各入力点の全 native Hom 読出しを接続する。本体へ新たな存在仮定は追加しない。
 
 ### K-S•-S3 の実供給と採用済み二頂点比較
 - 実供給 `dgKappaNativeCoherentBFSquare` は新 BF 四対象を持ち、旧 K とは指定整数群同型を介して四辺の π 作用が可換。`DGKappaSuppliedBFSquare` は元の全 S• 比較と旧 K-cof の群作用を消費し、`DGKappaSuppliedBFZero`・`DGKappaSuppliedBFFiberComparison`・`DGKappaSuppliedBFOneStage` は hBF の存在仮定なしで零角・同じ実 fiber 比較・非負次数 π 比較へ接続する。`DGKappaSuppliedBFConeZero`・`DGKappaSuppliedBFConnectiveStructure` は同じ cone の零性から新 BF 上の実構造辺を作る。旧四対象を固定した hBF の条件付き定理は保持する。

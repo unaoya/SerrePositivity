@@ -94,17 +94,17 @@ theorem dgKappaSuppliedBFVertexComparison_of_sConstruction :
   dgKappaNativeBFKernelQuotientVertexIso R D I
 
 /-- 概要：元の実核 K を同じ実供給全錐の始点へ戻す指定同型。
-方針：番号 0 の二頂点供給を同じ錐頂点へ読み替える。
+方針：番号 0 の元の SOA 比較同型を同じ錐頂点へ読み替える。
 規約：公開済みの実 Sp 同型を使い、整数群から構成しない。
 使われ方：固定 K から元の新 BF 構造辺へ入る実始点比較。 -/
 def dgKappaSuppliedBFSourceIso : VertexIso
     (coherentNerveVertex (kOmegaSpectrum (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
     (pullbackCone (dgKappaNativeCoherentBFSquare R D I)).vertex := by
   rw [dgKappaSuppliedBFFiberComparison_source]
-  exact Classical.choice (dgKappaSuppliedBFVertexComparison_of_sConstruction R D I 0 (Or.inl rfl))
+  exact dgKappaNativeBFSOAVertexIso R D I (dgKappaNativeBFFiniteNativeObject R D I 0)
 
 /-- 概要：元の実商 K を同じ実供給四角形の終点へ戻す指定同型。
-方針：番号 3 の二頂点供給を同じ実四角形の終点へ読み替える。
+方針：番号 3 の元の SOA 比較同型を同じ実四角形の終点へ読み替える。
 規約：公開済みの実 Sp 同型を使い、実商は同じ未完備の値を保つ。
 使われ方：新 BF 商の loop から元の Yoneda 完備化比較へ戻す。 -/
 def dgKappaSuppliedBFTargetIso : VertexIso
@@ -112,6 +112,6 @@ def dgKappaSuppliedBFTargetIso : VertexIso
       (stableCategoryModel (dgKappaNativeSuspensionCategory R D I))))
     (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 1) := by
   rw [dgKappaSuppliedBFSquare_target]
-  exact Classical.choice (dgKappaSuppliedBFVertexComparison_of_sConstruction R D I 3 (Or.inr rfl))
+  exact dgKappaNativeBFSOAVertexIso R D I (dgKappaNativeBFFiniteNativeObject R D I 3)
 
 end SerrePositivity.KST.NonConnective

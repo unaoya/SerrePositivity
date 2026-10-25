@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierLowerNormalizedReconstruction
+public import SerrePositivity.KST.Fibration.VerdierLowerReconstructionBoundary
 public import SerrePositivity.KST.Fibration.ZeroMiddleNormalizedFamily
 public import SerrePositivity.KST.Fibration.ZeroMiddleNativeFactorization
 public import SerrePositivity.KST.Fibration.ZeroMiddleReconstructedDiagonal

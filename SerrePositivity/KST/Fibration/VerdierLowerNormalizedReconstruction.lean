@@ -1,0 +1,85 @@
+module
+public import SerrePositivity.KST.Fibration.VerdierLowerReconstructionBoundary
+
+/-!
+概要：元の下側全変形を、同じ長 Hom 読出しの正規化族へ可逆に戻す。
+方針：同じ実ホーンと実入力点を Ind-S (9) の正規化仕様へ代入する。
+規約：供給命題に条件付き。元 t 自身の厳密対角回収は使わない。
+使われ方：K-6 c4 の動く共有対角を正規化側で貼るための実下側の準備。
+-/
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.Fibration
+
+/-- 概要：実下側族は同じ全 native Hom 読出しと正規化側の厳密対角を持つ族へ可逆比較される。
+方針：元の下側全変形を固定ホーン fiber の指定点として同じ再構成へ渡す。
+規約：Ind-S (9) に条件付き。元の全族・短辺・各入力点の全 native Hom を保持する。
+使われ方：上側の正規化族との共有対角の照合に渡す実下側の長 Hom 族。 -/
+theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
+    (h9 : zeroMiddleControlledTriangleSupply.{u}) :
+    let P := SimplicialThickening.Path
+      (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
+    let direct : P :=
+      { I := {ULift.up 0, ULift.up 2}
+        left := by simp
+        right := by simp
+        left_le := fun k _ => Fin.zero_le k.down
+        le_right := fun k _ => Fin.le_last k.down }
+    let Pu := (SSet.uliftFunctor.{u + 1, u}).obj (nerve P)
+    let H := (SSet.uliftFunctor.{u + 1, u}).obj
+      (SimplicialCategory.sHom
+        (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
+        (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)))
+    ∃ (N : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
+      (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom Pu).obj H),
+      Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
+      ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N =
+        fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d ∧
+      (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ N =
+        (Δ[1] ◁ (L ≫ evaluateFunctorAt
+          (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
+          intervalMappingUncurry (coherentHomIntervalComparison
+            (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
+            (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩))) ∧
+      ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
+        let s := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+          ((curry (verdierFullSLowerDeformation d).h).app (Opposite.op ⦋0⦌) k))
+        HEq (L.app (Opposite.op ⦋0⦌) k)
+          (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+            (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
+  obtain ⟨encode, read, he, hread, hdiag, hnorm, _⟩ := h9
+    (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
+    (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
+    (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)) Δ[1]
+    (verdierLowerReconstructionFirstFamily d Δ[1])
+    (verdierLowerReconstructionLastFamily d Δ[1])
+    (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)
+    (verdierLowerReconstructionHorn_first d Δ[1])
+    (verdierLowerReconstructionHorn_last d Δ[1])
+  let t := verdierLowerReconstructionPoint d
+  let ℓ := read.app (Opposite.op ⦋0⦌) t
+  let nt := encode.app (Opposite.op ⦋0⦌) ℓ
+  let N := (functorVertexEquiv (Δ[2] ⊗ Δ[1]) SpaceInfinity.{u}).symm nt.val
+  refine ⟨N, (functorVertexEquiv _ _).symm ℓ.val, ?_, ?_, hdiag t, hread t⟩
+  · have hi := VertexIso.map (Classical.choice (hnorm t))
+      (vertexFiberι ((pre ((horn 2 (1 : Fin 3)).ι ▷ Δ[1])).app SpaceInfinity.{u})
+        (functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)))
+    have hN : functorVertex N = nt.val := (functorVertexEquiv _ _).apply_symm_apply _
+    exact ⟨hi ≪≫ eqToIso (congrArg HomotopyCategory.mk hN.symm)⟩
+  · apply (functorVertexEquiv _ _).injective
+    change functorVertex (((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N) =
+      functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)
+    change ((pre ((horn 2 (1 : Fin 3)).ι ▷ Δ[1])).app SpaceInfinity.{u}).app
+      (Opposite.op ⦋0⦌) (functorVertex N) =
+        functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)
+    rw [show functorVertex N = nt.val from (functorVertexEquiv _ _).apply_symm_apply _]
+    simpa only [pinchedConstant_zero] using nt.property
+
+end SerrePositivity.KST.Fibration
