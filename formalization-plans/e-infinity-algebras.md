@@ -83,6 +83,7 @@
   既存 `BSLimitConeData` は非普遍的な比較データだけを再利用し、D(R) の極限性・excision は追加仮定しない。既存 Inputs の一件の存在入力は import・編集せず、引用の述べ直し先の型とその下流への証明済みの還元を提供する。具体的 prismatic 構成の存在証明を完了したとは扱わない。
 - **E2-S の供給**：`AlexanderWhitney/CochainComonoid` の `cochainComon`・`cochainComonMap`・`cochainComonFunctor`・`simplexCochainComonFunctor`。既存の AW 三律・自然性から共変な余代数関手を束ね、底の複体・対角・余単位・射・全関手を定義上の等式で照合する。Sp K-9 β6 f4 向け。反変化・双対化は Sp 側。供給後は停止。
 - **E2-S (2) の供給**：`AlexanderWhitney/SimplexCounitContraction`。標準単体の AW 余単位と既存収縮の順射を照合し、元の射の実ホモトピー同値と零単体での IsIso を提供する。対象ビルド・新宣言の公理確認・集約ビルド・全公理監査まで完了。閉包の未保存依存は零。供給完了により E2-S (2) は停止。
+- **E2-S (3) の供給**：`AlexanderWhitney/HornSimplicialContraction`・`CochainMapHomotopy`・`HornCochainContraction`。`normalizedHornInclusion_quasiIso` は全 n・全 i の元の標準ホーン包含の像自身の QuasiIso。min(-,i) から恒等・定値への実円柱を正規化し、同じ余単位と標準単体収縮の二対三へ接続。`hornCochainCounitHomotopyEquiv` は元の余単位を順射に持つ実収縮。ModelCategory SSet 等の入力はない。対象・集約ビルド、全公理監査と独立例を検証済み。供給完了により停止。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
   `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。

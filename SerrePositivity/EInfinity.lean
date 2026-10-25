@@ -2501,3 +2501,5 @@ public import SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary
 public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
 
 public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
+
+public import SerrePositivity.EInfinity.AlexanderWhitney.HornCochainContraction

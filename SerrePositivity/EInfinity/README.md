@@ -2818,3 +2818,25 @@ H⁰ の環・単位・全射影の乗法整合性を保持する。後者には
 零単体の正次数の正規化鎖は退化消滅で零となり、両収縮ホモトピーを等式へ強められる。
 集約から公開し、全監査の必須宣言配列226に登録している。
 対象ビルド・新宣言の公理確認・集約ビルド・全公理監査まで完了。
+
+
+## Sp β6 f4c への元のホーン包含の擬同型性（E2-S (3)）
+
+`AlexanderWhitney/HornCochainContraction.lean` の
+`normalizedHornInclusion_quasiIso A n i` は、各 n : ℕ・i : Fin(n+2) に対し、
+元の `(BarrattEccles.normalizedFunctor A).map (SSet.horn (n+1) i).ι` 自身の QuasiIso。
+`cochainMap A` で書いても同じ射で、任意の可換係数環に適用する。
+`hornCochainContraction` はホーンから零単体への実収縮、
+`hornCochainCounitHomotopyEquiv` はホーンの元の余単位を順射に持つ実収縮。
+`hornCochainCounitHomotopyEquiv_hom` はその定義上の一致、
+`cochainCounit_horn_quasiIso` は同じ余単位自身の擬同型性。
+
+`HornSimplicialContraction.lean` の `hornContractionToId`・`hornContractionToConst` は、
+共通の `hornContractionMin` から恒等・頂点 i への定値写像への実単体的円柱。
+円柱の各単体の頂点は元の像と i の和集合に含まれるので、全単体でホーンに留まる。
+`CochainMapHomotopy.lean` の `cochainMapHomotopy` がその実円柱を元の正規化射の
+鎖ホモトピーへ送り、Moore 包含・射影と同じ負次数延長を保持する。
+最後に既存の標準単体の余単位の収縮・余単位の自然性・二対三を適用する。
+ModelCategory SSet・Kan–Quillen は入力せず、既存の宣言と cofibration 判定は変更しない。
+
+対象・集約ビルド、全公理監査および独立した利用例の検証まで完了。
