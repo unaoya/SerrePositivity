@@ -126,6 +126,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Cof
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativeSmallPresentationPiece
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageRelativePiece
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -313,6 +315,8 @@ slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域�
 厳密に再表示できる。比較対内の任意の指定部分余極限の頂点同型も回収した。
 一方の表示の全段が同型と小 poset 余極限で閉じたクラスに属するなら、他方でも
 任意の小さい種集合を含む同じクラス内の部分余極限を構成できる。
+実 Ind 像への相対部分表示の適用も構成した。実像に属す大域辺の任意の compact
+表示には、任意の小さい種集合を含む、同じ実像内の小部分余極限が存在する。
 元の三角形表示の同時細分への接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・

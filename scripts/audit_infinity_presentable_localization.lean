@@ -564,3 +564,6 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @exists_compatiblePiecePresentations
 #check @nonempty_compatiblePiece_colimitVertexIso
 #check @exists_relativeSmallPresentationPiece
+
+#check @indArrowImage_ambientSmall_colimit_mem
+#check @indArrowImage_exists_smallPartialPiece
