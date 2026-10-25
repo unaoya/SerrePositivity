@@ -1,3 +1,9 @@
+import SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition
+import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
+import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalOrders
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarVertexColumn
+import SerrePositivity.InfinityCategories.Derived.DGModuleFiniteColumnComposition
 import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
@@ -7403,6 +7409,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition,
+    `SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition,
+    `SerrePositivity.DifferentialGraded.Module.HomClosedInsertion,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalOrders,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarVertexColumn,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleFiniteColumnComposition,
+
     `SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion,
 
