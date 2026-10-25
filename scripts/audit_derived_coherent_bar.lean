@@ -109,7 +109,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceLeftCut,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceRightCut,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceTerm,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceSum]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexComposite,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterComposite,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.ParameterBoundarySum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyResidual,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyBoundary,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyHomDifferential]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
