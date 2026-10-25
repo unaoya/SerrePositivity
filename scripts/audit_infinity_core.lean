@@ -3624,3 +3624,29 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S marked hull audit: {count} declarations."
+
+-- Ind-S small diagram core audit
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Core.SmallHullFactorization },
+    { module := `SerrePositivity.InfinityCategories.Core.EquivalencePathReplacementNaturality },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    unless `SerrePositivity |>.isPrefixOf mod.module do continue
+    if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
+      throwError "Ind-S: forbidden straightening dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.Core.SmallHullFactorization,
+    `SerrePositivity.InfinityCategories.Core.EquivalencePathReplacementNaturality]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S: no declarations audited"
+  logInfo m!"Ind-S small diagram core audit: {count} declarations."

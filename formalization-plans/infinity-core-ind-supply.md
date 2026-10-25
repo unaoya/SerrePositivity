@@ -1,6 +1,6 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 14:12 JST）
+## 引き継ぎ（2026-10-25 14:22 JST）
 
 - 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
 - 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp は import しない。
@@ -9,11 +9,12 @@
 - (5)：`d4062a19f` で L3 指定型の全族写像・厳密な底・全 fiber 回収を供給済み。
   同じ写像について指定点の値照合から fiber 内の頂点同型を反映する公開補題も供給済み。
   K-B 所有の具体的な恒等点への代入は未検証であり、K-B-S 全体の完成とは数えない。
-- (4)：`5686de2be` で小さい内ホーン閉包、小さい quasicategory 模型、
-  同じ包含への全小図式の厳密因子化を保存済み。局所化の宇宙持ち上げは未証明。
-- (4) の追加：指定辺族の逆三角形を含む小模型と反転条件を保つ厳密因子化がビルド済み。
-  `IsLocalization.exists_extension_ulift` で任意の大きい標的への実延長もビルド済み。
-- 次：大きい標的に対する前合成の充満忠実性。境界資料と可逆 path を同じ小模型へ因子化する。
+- (4)：`5686de2be` で内ホーン閉包と小模型、`14923a0d5` で指定逆三角形の保持と
+  大きい標的への延長を保存済み。境界・可逆 path の同じ小模型への因子化を接続し、
+  `IsLocalization.ulift`・`isLocalization_ulift_iff` まで対象ビルドが通過。
+- 現在地：(4) 順方向と iff の公開型確認、葉公理・no-straightening 監査、
+  Core/F1B 全監査が全て通過。二段目 (4) 完了の規約で区切る。
+  K-B での具体的な恒等点接続は消費側の残件で、本レーンでは未検証。
 - 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
   以後のコミット本文には変更・検証・残件の実施記録を書く。
 
@@ -68,9 +69,8 @@
 2. [x] ambient quasicategory 内で小さい内ホーン充填閉包を構成する。
 3. [x] 閉包を小さい quasicategory に縮小し、同じ包含で全小図式を厳密因子化する。
 4. [x] 逆辺と二つの逆三角形を種に追加し、指定可逆辺を保存する小模型を作る。
-5. [ ] 大きい標的への局所化延長と、全前合成の充満忠実性を小模型から回収する。
-   延長成分は `IsLocalization.exists_extension_ulift` でビルド済み。充満忠実性が残る。
-6. [ ] `IsLocalization` の ULift 持ち上げと既存降下を合わせた iff を公開し、監査・保存する。
+5. [x] 大きい標的への局所化延長と、全前合成の充満忠実性を小模型から回収する。
+6. [x] `IsLocalization` の ULift 持ち上げと既存降下を合わせた iff を公開し、監査・保存する。
 
 保存済みの公開名（namespace `SerrePositivity.InfinityCategories.SmallSubcomplex`）：
 
@@ -85,8 +85,8 @@
 
 既存の供給済み降下：`IsLocalization.of_ulift`・`invertsEdges_ulift_iff`
 (`F1B/Localization/UniverseDescent`)。
-現在の小模型だけでは ambient での可逆性を反映しないため、段目 4 は必要。
-順方向の公開名はまだない。対象ビルドと追加 Core 4 葉の 72 宣言公理監査は通過済み。
+段目 3 の小模型だけでは ambient での可逆性を反映しないため、段目 4 を経由する。
+最初の Core 4 葉の対象ビルドと 72 宣言公理監査は通過済み。
 
 段目 4〜5 の追加公開名：
 
@@ -105,4 +105,21 @@
   (`F1B/FunctorCategories/PositiveBoundaryFaithful`)：正次元境界の持ち上げからの判定。
 
 追加の Core 二葉 14 宣言、延長三葉 11 宣言の公理・no-straightening 監査通過。
-Core 全監査、F1B 全監査（延長三葉まで）も通過。最終の充満忠実性と iff は未供給。
+Core 全監査、F1B 全監査（延長三葉まで）も通過。
+
+最終公開名（`F1B/Localization/UniverseAscent`）：
+
+- `IsLocalization.precomposition_isFullyFaithful_ulift`：任意の大きい標的での全前合成の充満忠実性。
+- `IsLocalization.ulift`：`IsLocalization F W` から
+  `IsLocalization (SSet.uliftFunctor.map F) (ULift.up '' W)`。
+- `isLocalization_ulift_iff`：上の持ち上げと元の局所化性の iff。
+
+源・標的の quasicategory 性、ModelCategory、局所化の追加存在証明は仮定しない。
+証明は `Core/SmallHullFactorization`・`EquivalencePathReplacementNaturality` と
+`F1B/FunctorCategories/SmallTargetDiagrams`・`SmallTargetBoundary` の新規葉へ隔離。
+元の正次元境界とその二関手族・可逆 path 族・底単体を同じ marked 小模型へ移し、
+小さい標的での充填を元の正方形へ厳密に戻す。
+
+最終検証：UniverseAscent 対象ビルド 1680 jobs、元の要求型の直接適用例と iff、
+主定理の公理確認、最終 Core 8 宣言・F1B 13 宣言の葉監査、Core/F1B 全監査が通過。
+追加閉包は no-straightening、許容公理は標準三つのみ。F1 全監査は (5) 保存時に通過済み。
