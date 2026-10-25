@@ -105,8 +105,19 @@ left fibration に持ち上げる。`simplexSharedFacePrism` は隣接面の共�
 二重の最終点固定添字制限に関して全 Hom ごと自然にする。
 統合ビルド3407 jobs、専用監査10137宣言で通過、標準三公理のみ。
 推移的 import は2161プロジェクトモジュール、他レーンの未保存依存は0。
-Ncomp 本体は未完。次はこの追加操作を元の三射・一点係数の実高次族へ束ね、
-四面を四面体則へ同定して、元の二段評価と合成評価の指定値へ接続する。
+最後を保つ任意の制限（零次元も含む）へ追加操作の自然性を拡張した。
+公開名は `coherentSimplexAppendMorphism_lastPreserving`。
+`coherentSimplexAppendMorphism_terminalEdge_of_eq` により、元の追加射の終辺全体を
+固定した。`coherentRightSliceAppendCone` は元の全錐と指定射を同時に保持し、
+全添字自然性と元の前面・終辺の厳密回収を持つ。
+`coherentRightSliceAppendEdge` で同じ射の辺上の slice への実写像に束ねた。
+`coherentRightSliceAppendEdge_front` は任意の元の全錐族を始端側の実全面から戻す。
+`coherentCompositionAppendTetrahedron` で元の二 Hom 全係数と同じ追加射を持つ
+単一の実四面体族を構成した。四面の元の合成図式への同定はまだ未証明。
+統合ビルド2159 jobs、専用監査10192宣言で通過、標準三公理のみ。
+推移的 import は2181プロジェクトモジュール、他レーンの未保存依存は0。
+Ncomp 本体は未完。次はこの実四面体族の四面を元の合成図式に同定し、
+証明済みの四面体則から元の二段評価と合成評価の指定値へ接続する。
 a④・b① は未着手であり、これらの補題だけで完了とは主張しない。
 
 

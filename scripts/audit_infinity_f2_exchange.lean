@@ -33,6 +33,8 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedr
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCompositionTriangleBaseRecovery
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendPenultimateFace
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendMorphismReindex
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CompositionAppendTetrahedron
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.RightSliceAppendFront
 import Lean.Util.CollectAxioms
 
 /-!
@@ -140,6 +142,17 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.transportTriangleBaseOfLift_eq_coherentKanSquare
 #check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_face_penultimate
 #check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_reindex
+
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_lastPreserving
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_terminalEdge_of_eq
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendCone_naturality
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendCone_front
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendCone_tail
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentRightSliceAppendEdge_front
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionAppendDiagram_fixed
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionAppendTetrahedron
 
 open Lean in
 run_cmd do
