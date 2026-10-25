@@ -567,3 +567,9 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 #check @indArrowImage_ambientSmall_colimit_mem
 #check @indArrowImage_exists_smallPartialPiece
+
+#check @indArrowImage_exists_mappedSmallPartialPiece
+#check @TriangleFacePartialRefinement
+#check @nonempty_triangleFacePartialRefinement
+#check @smallShape_leftKanDiagram_hasColimit
+#check @exists_smallShape_leftKanExtension
