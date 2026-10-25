@@ -32195,3 +32195,24 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_projection
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_projection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorActualRightDiagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualRightDiagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorActualOuterDiagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualOuterDiagram
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.comparison_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.comparison_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.completedComparison_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.completedComparison_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceRoof
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceRoof
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceValueIso
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceValueIso
