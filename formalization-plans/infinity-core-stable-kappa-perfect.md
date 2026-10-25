@@ -8,6 +8,8 @@
   通常のホモロジー図式の増大 simplicial bar と、実 bar への頂点の閉零射を公開。
   filtered poset 上の通常のホモロジー bar の全正次数完全性と
   零次ホモロジー＝余極限を構成。実 bar の隣接段階と内部次元層の短完全列も構成。
+  通常の bar の splitting と非退化複体へのホモトピー同値、非退化側の完全性、
+  非有界加群複体の直和のホモロジー比較も構成。
   最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
@@ -30,7 +32,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,496 jobs・専用監査61葉495宣言通過。
+- 検証：coherent 入力への修正後、集約4,515 jobs・専用監査66葉578宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、

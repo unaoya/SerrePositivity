@@ -65,7 +65,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerSurjectivity,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerRemainder,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerShortExact]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerShortExact,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSplittingIndex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.WeightedCoproductDecomposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSplittingCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSplitting,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomology]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -123,3 +128,7 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgCoherentBarStageToLayer
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerSequence_shortExact
+
+#check SerrePositivity.InfinityCategories.dgHomologyBarNondegZeroHomologyIso
+#check SerrePositivity.InfinityCategories.dgHomologyBarNondeg_exactAt
+#check SerrePositivity.InfinityCategories.dgComplexCoproductHomologyIso
