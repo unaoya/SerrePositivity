@@ -179,7 +179,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseCoconeHomRecovery,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceIso,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeColimitCosliceCriterion,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeColimitPointHomCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeCoconeFamily,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftMixedHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftPureHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftResidual]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -210,3 +226,5 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarCoconeHomSpaceIsoUnconditional
 #check SerrePositivity.InfinityCategories.dgCoherentBarCoconeHomSpaceComparison_homotopyEquivalence
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedNativeCocone_isColimit_of_cosliceComparison
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedNativeCocone_isColimit_of_pointHomComparison
+#check SerrePositivity.InfinityCategories.dgCoherentBarNativeCoconePoint_hom
