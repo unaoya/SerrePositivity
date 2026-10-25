@@ -185,6 +185,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 
 - 共通提示・b の橋：逆再添字→評価は元の恒等 dg 関手と全 Hom 上で等しい。各成分包含→共通評価は元の arrow と厳密一致。精密化 seed の実延長の合成を元の実評価へホモトピー同型で戻す一般比較も対象成功。`dgModuleFamily_isDGPretriangulated_of_homotopy_cones` は零・実 shift 同型・実評価の任意 cone のホモトピー被覆から b を適用でき、厳密 cone 値の一致は不要。新規6本18宣言の葉監査は許容三公理のみ。模型全体の任意閉射 cone 被覆は未供給で、ゲート3・5は未完。
 
+- 異なる提示の二項・可算直和は `08a201e0d` の SourceBinaryRefinement／SourceCountableRefinement（対象2,712 jobs・葉6宣言）。共通源の閉射精密化を明示入力にした `DGKappaPresentedSourceConeRefinement` は同じ標準 cone の全三角形比較から被覆し、`dgKappaPresentedSource_isDGPretriangulated_of_arrowRefinement` で b の判定へ接続（対象4,167 jobs・葉34宣言）。精密化の存在は未証明。ゲート3・5の印は変えない。
+- 拡大全四角形族への現時点の不足：任意閉射の係数精密化に加え、同じ実平坦分解・核・零角・懸垂を同時に保つ全パラメータ作用と、全 native Hom に自然な実評価の Morita 比較／元の P 包含が未供給。ホモトピー cone 被覆だけでは、各 A への制限の元の全四角形との厳密一致を得ない。20:11:16 の試作判定へ含める。D-16 の追加宇宙局所化は、右 Kan 延長群の宇宙多相化または持ち上げ商との比較が別途必要なので、承認済みの明示入力を維持する。
+
 ### D-17：元の dg 関手の thick 生成判定
 - `Derived/DGFunctorThickHomCriterion` の `dgFunctor_homQuasiIso_of_thickGenerators`：指定 G が modulePerfectOver = modulePerfect を満たし、G 間の元の全 Hom 写像が準同型なら同じ F の全 Hom が準同型。単一生成元版 `dgFunctor_homQuasiIso_of_singleThickGenerator`、独立な追加対象宇宙版 `dgUniverseLiftFunctor_homQuasiIso_of_thickGenerators`。所有 Morita の相対 Hom 帰納を生成集合へ一般化し、graph の射影的列との比較で接続した。前三角性を追加仮定にせず、S 構成本体への依存なし。対象2,818 jobs・新規3本8宣言の葉監査は許容三公理のみ。旧3本の未統合試作は使わない。集約接続は D-18 の監査後。
 
