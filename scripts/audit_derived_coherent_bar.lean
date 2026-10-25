@@ -121,7 +121,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterSum,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyResidual,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyBoundary,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyHomDifferential]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyHomDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.ParameterSubsetLabels,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearFullCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearFullEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinSimplexDataExt,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLinearRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyExt]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
