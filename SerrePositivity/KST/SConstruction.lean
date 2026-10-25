@@ -2582,4 +2582,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorLandTamme
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxInputComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxSourceMaps
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorPerfectNullSquare
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletion
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletedLandTamme
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRectangle
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRoofSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/
