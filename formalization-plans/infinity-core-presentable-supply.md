@@ -28,6 +28,14 @@
   各脚から頂点への保存判定を接続した。
 - P の poset 全錐交換を `cardinalChangeBound_aleph0` で特殊化した。
 - 最新 Supply.All は 8628 jobs で成功。独立監査は 230 宣言、標準三公理のみ。
+- 共同 Hom と普遍的な評価から全自然な end 係数を構成し、全評価脚を
+  始点固定の共同 Hom と終点評価の合成として厳密に同定した。
+- 点ごと compact 性から end 係数全体の κ-filtered 保存を構成した。
+- P-12 の compact 判定を、元の全 Hom を頂点とする全自然な end 極限錐族の
+  構成へ還元した。還元定理の追加仮定を除いた最終命題は未供給。
+- 元の関手圏の twisted Hom から、実際の pullback による end 係数の
+  切断空間への比較射を構成した。各 G の分類図式との比較も得た。
+- 最新 Supply.All は 8631 jobs で成功。独立監査は 253 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -66,6 +74,11 @@
 - `exists_kappaContinuousTwistedArrowLimitFunctor`
 - `preservesKappaFilteredColimits_twistedArrowLimitFamily_apex`
 - `cardinalFilteredLimitExchangeShape_aleph0_poset`
+- `functorEndCoefficient`、`functorEndCoefficient_evaluation`
+- `functorEndCoefficient_preservesKappaFilteredColimits`
+- `isKappaCompact_functorVertex_of_endFamily`（全自然な end 極限錐族が明示的な入力）
+- `functorEndCoefficient_vertex`、`functorEndProjection_classificationIso`
+- `twistedFunctorHomToEndSections`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -76,19 +89,19 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（P-12 前後部品の三葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
+- なし（P-12 の end 係数・還元・実切断比較の三葉と集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
 - P-11 の全小形状の要求命題はビルド・独立監査済み。
 - P-12 の全 Hom と end の一つの全自然な極限錐族との比較は未構成。
   各脚の保存と極限関手の保存だけでは、compact 判定を結論していない。
+- `twistedFunctorHomToEndSections` の同値性は未証明。
+  点ごとの切断比較射だけでは全自然な Hom 同型を主張していない。
 
 ### 次の一手
-- P-12 の Fun の写像空間の end 表示について、既存の反変 Hom の
-  全自然な極限錐族と twisted arrow 分類の比較入口を確認する。
-- 元の共同 Hom の分類図式から end 係数を構成し、評価脚を同定する。
-  関手圏の全 Hom を頂点とする全極限錐族を構成して前後の供給を結ぶ。
+- 実切断比較の同値性を証明し、G に自然な全 Hom の end 同型へ束ねる。
+  切断空間の既存の極限表示と接続して、還元定理の全自然な極限錐族を構成する。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 

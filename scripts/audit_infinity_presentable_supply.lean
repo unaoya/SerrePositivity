@@ -62,3 +62,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaContinuousTwistedArrowLimitFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.preservesKappaFilteredColimits_twistedArrowLimitFamily_apex
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredLimitExchangeShape_aleph0_poset
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient_evaluation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndProjection_classificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.twistedFunctorHomToEndSections
