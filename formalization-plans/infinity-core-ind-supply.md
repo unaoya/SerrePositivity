@@ -6,13 +6,13 @@
 - 深層編集は禁止、F2 は読み取り専用、K-B・Sp・EInfinity は import しない。
   F1 の straightening は使用可。(8) の限定推移 import 例外は今回へ拡大しない。
 - 今回：(9) 制御二胞体族と (9b) 因子分解三単体族。提供先は K-B。
-- 現在地：(9b) 完了コミット 77a33b4c9。(9) は未完、追加全対角条項の像条件を検証。
+- 現在地：(9b) 完了 77a33b4c9。像条件 f18c411f3。(9) は採用済み正規化で続行。
 - 主要補助宣言：tetrahedronFamilyExtensionSpace_compare・factorizationTetrahedronFamily_faces・
   innerHornFamily_lift_with_vertices。いずれも両主仕様全体の供給完了とは扱わない。
 - 依存と提供：Core/F1/mathlib の既存界面を読み取り専用で使用。連絡・提案はユーザー経由。
-- 未コミット：CanonicalIntervalTriangle・WholeDiagonalImageObstruction、本計画、F1 監査末尾。
-- 既知の問題：(9) の厳密な全族回収、(9b) の末尾の全 native Hom 一致は未証明。
-  後者は単なる長い辺の等式ではない。仕様型を保持して構成を進める。
+- 保存対象：正規化・相対左逆・二単体 native Hom 制御・path 区間同型・合成端評価の6葉、
+  本計画、F1 監査末尾。未コミットの続稿：TriangleNativeFamilyControl（全 K の頂点指定）。
+- 既知の問題：(9) の encode・longHom の存在と厳密切断は未供給。(9b) は全 HEq 込みで完了。
 - 残り：下記三段目 2〜5。見積りは制御全族の有限座標を確認した後に更新する。
 - 次の一手：旧 (9) の encode・longHom の厳密切断を構成し、採用済み正規化後の
   全対角式と元の t との固定ホーン内の可逆比較を接続する。
@@ -214,10 +214,7 @@ x 方向の追加自然性は未公開。詳細・三段目・検証記録は同
 (9b) は kst-lanes/archive/L3-controlled-factorization-tetra-proposal.md の
 controlledFactorizationTetraFamilyRequest。仕様型の緩和・存在仮定化はしない。
 
-現在地：FixedInnerHornFamily・TetrahedronFamilyFilling・FactorizationTetrahedronFaces・
-TetrahedronPathFold・InnerHornFamilyPrescribedVertices の対象ビルド通過。
-TetrahedronLongHomReplacement・StrictFaceHomConstancy も対象ビルド通過。
-TetrahedronFoldedLongHom・TetrahedronStrictCompositionHom と全族復元を接続済み。
+現在地：(9b) の有限 native Hom 制御と全族復元を接続済み。
 F1 全監査と新規11葉93宣言の公理・禁止依存・ModelCategory 監査が通過。
 controlledFactorizationTetraFamily は K-B 正本の要求型への直接適用も通過。
 (9b) の末尾 HEq は二つの長い辺の一致より強く、全 native Hom 写像の一致を要求する。
@@ -228,8 +225,7 @@ controlledFactorizationTetraFamily は K-B 正本の要求型への直接適用�
 `F1/Diagrams/ControlledFactorizationTetrahedronFamily`。全 K の三面厳密回収と
 要求どおりの full native Hom HEq を含む。内部合成値の定値性を指定厳密面から導き、
 長い Hom を論理和で畳み込み、零骨格の選択を同じ全ホーンへ延長する。
-(9) は未完了。(9) 追加全対角仕様（ユーザー採用）も保持し、標準区間比較の
-像条件との整合性を検査中。KST の仕様ファイルは読取りのみ。
+(9) は未完了。追加全対角仕様は下記の採用済み正規化へ修正。KST の仕様は読取りのみ。
 
 ## (9) 追加全対角条項：像障害と設計変更案
 
@@ -265,3 +261,19 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
 元の全 t の長辺との厳密等号は主張しない。ユーザー採用により承認待ちなく実施を続行。
 追加2葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。
 残件は旧 (9) の厳密切断・各 k の full native Hom 回収、正規化後の全対角式と可逆比較。
+
+
+## (9) 採用後の構成補助
+
+- SplitTriangleNormalization：厳密切断から冪等性・読出し保存・正規化後の対角式、
+  可縮 Kan な同じ固定ホーン fiber 内の VertexIso を得る（存在は条件付き）。
+- ContractiblePrescribedRetraction：可縮 Kan 始域からの単射と整合する全頂点読出しから、
+  その全頂点を厳密に保つ左逆を構成する。encode の単射性はまだ残る。
+- TriangleLongHomReplacement・TriangleNativeHomControl：二短辺を保持して全 native Hom を
+  指定写像へ置換する。内部合成 path は全 path に定値で、合成端の指定で関手則を満たす。
+- TrianglePathInterval・KanIntervalEvaluation：native path と Δ[1] の厳密同型を作り、
+  大きい宇宙の全 K の合成端固定 fiber の可縮性を証明。
+  公開名 triangleLongHomFamilyFiber_isContractibleKan。
+対象6葉のビルド・85宣言の葉監査・全 F1 監査が通過。
+続稿 TriangleNativeFamilyControl は同じ全ホーンを保つ各 K₀ の native Hom 指定を構成中。
+次は有限 native Hom 制御を全 K に整合させ、単射 encode と全頂点読出しを実構成する。

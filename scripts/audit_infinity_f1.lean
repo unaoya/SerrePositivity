@@ -9642,3 +9642,43 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) diagonal: no declarations audited"
   logInfo m!"Ind-S whole-diagonal image-condition audit passed: {count} declarations."
+
+-- Ind-S (9) 採用済み正規化：有限 native Hom 制御・合成端 fiber・条件付き厳密切断。
+-- encode/read の主仕様の存在は未供給。F2/KST/EInfinity の閉包禁止を継続。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.SplitTriangleNormalization },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ContractiblePrescribedRetraction },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongHomReplacement },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.KanIntervalEvaluation },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeHomControl },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) normalization: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.SplitTriangleNormalization,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ContractiblePrescribedRetraction,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongHomReplacement,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.KanIntervalEvaluation,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeHomControl ]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) normalization: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) normalization: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) normalization: no declarations audited"
+  logInfo m!"Ind-S normalization and native-triangle audit passed: {count} declarations."
