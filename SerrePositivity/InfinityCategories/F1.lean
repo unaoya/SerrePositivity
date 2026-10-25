@@ -2697,3 +2697,5 @@ public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationEdge
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FinitePosetLowerSet
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FullPosetSubsetNerveIso
+
+public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetSubsetPointRemoval

@@ -9349,3 +9349,15 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.fullPosetSubsetNerveMap_isIso
 #print axioms SerrePositivity.InfinityCategories.fullPosetSubsetNerveMap_isIso
+
+#check SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso
+#print axioms SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso
+
+#check SerrePositivity.InfinityCategories.posetSubsetPointRemovalLift
+#print axioms SerrePositivity.InfinityCategories.posetSubsetPointRemovalLift
+
+#check SerrePositivity.InfinityCategories.posetSubsetPointRemovalLift_comp
+#print axioms SerrePositivity.InfinityCategories.posetSubsetPointRemovalLift_comp
+
+#check SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso_comp
+#print axioms SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso_comp
