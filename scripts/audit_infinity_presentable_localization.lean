@@ -3,7 +3,9 @@ import Lean.Util.CollectAxioms
 
 /-!
 P-f の独立監査。新規所有モジュールの全宣言について標準三公理のみを許す。
-局所化の存在の完成監査ではなく、現在検証済みの生成族・飽和射圏・小さい compact 候補の監査。
+生成族・飽和射圏の presentable 性・局所置換・反射の無条件の存在を監査する。
+P-d の LocalObjects/ は所有宣言の計数から除き、利用する主定理の依存公理は検査する。
+強飽和生成閉包・局所同値・同じ局所化関手の反転辺の一致も監査する。
 -/
 
 open Lean in
@@ -14,6 +16,8 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless `SerrePositivity.InfinityCategories.F2.Presentable.Localization |>.isPrefixOf mod do
+      continue
+    if `SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects |>.isPrefixOf mod then
       continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
@@ -597,3 +601,51 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @mappedIndImagePartialCondition_sequenceUnion
 #check @exists_mappedIndImagePartialCondition_extension
 #check @exists_twoMappedPartialConditions
+
+#check @TwoMappedPartialPieces
+#check @twoMappedPartialPieces_isCardinalFiltered
+#check @twoMappedPartialPieceProjection_nerve_isRightCofinal
+#check @partialFamily_values_property
+#check @partialFamily_mapped_values_compact
+#check @exists_twoMappedRefinementPresentation
+#check @indArrowImage_triangle_twoOfThree
+#check @indArrowImageEdges_stronglySaturated
+#check @indArrowImageEdges_eq_generatedEdges
+#check @indArrowImageCategory_eq_generatedArrowCategory
+#check @generatedArrowCategory_isPresentable
+#check @generatedSource_isAccessible
+#check @generatedSource_isPresentable
+#check @exists_generatedSource_terminal
+#check @exists_bousfieldLocalReplacement
+#check @bousfield_isReflectiveSubcategory
+#check @bousfieldReflection
+#check @bousfieldLocalizationFunctor
+#check @bousfieldLocalObjects_isPresentable
+#check @bousfieldLocalizationFunctor_preservesSmallColimits
+#check @bousfieldLocalizationFunctor_isAccessible
+#check @bousfieldLocalizationFunctor_isLocalization_invertedEdges
+
+#print axioms generatedArrowCategory_isPresentable
+#print axioms exists_bousfieldLocalReplacement
+#print axioms bousfieldReflection
+#print axioms bousfieldLocalObjects_isPresentable
+#print axioms bousfieldLocalizationFunctor_isLocalization_invertedEdges
+
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+    {I : Type u} (edges : I → C _⦋1⦌) :
+    Nonempty (ReflectiveSubcategory C (IsLocalObject (Set.range edges))) :=
+  ⟨bousfieldReflection hC edges⟩
+
+#check @reflective_isLocal_iff_localObject
+#check @bousfield_localEquivalences_eq_invertedEdges
+#check @bousfield_generatedEdges_eq_localEquivalences
+#check @bousfield_generatedEdges_eq_invertedEdges
+#check @bousfieldLocalizationFunctor_isLocalization_generatedEdges
+
+#print axioms bousfield_generatedEdges_eq_invertedEdges
+#print axioms bousfieldLocalizationFunctor_isLocalization_generatedEdges
+
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+    {I : Type u} (edges : I → C _⦋1⦌) (s : C _⦋1⦌) :
+    s ∈ generatedEdges edges ↔ s ∈ invertedEdges (bousfieldLocalizationFunctor hC edges) := by
+  rw [bousfield_generatedEdges_eq_invertedEdges hC edges]
