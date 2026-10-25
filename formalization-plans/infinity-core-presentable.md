@@ -96,10 +96,10 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- `SequentialCofinalStageGluing`・`SequentialSimplexPrefix`：共終な段階での貼り合わせと全前置面の比較を検証中。
+- `CoconeSliceImageMap`：元の第一成分の表示と像の表示の全後合成比較まで対象ビルド済み。compact fiber 射の回収へ接続中。
 
 ### 次の一手
-- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化・全交互前置図式を保つ分裂三角形まで構成（点射には filtered 保存のみ）。全交互有限段の標準単体への拡張と全増大余錐・二頂点面の比較まで構成。元の表示余錐を全段で保持する可算再帰まで構成。可算貼り合わせ、小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
+- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化・全交互前置図式を保つ分裂三角形まで構成（点射には filtered 保存のみ）。全交互有限段の標準単体への拡張と全増大余錐・二頂点面の比較まで構成。元の表示余錐を全段で保持する可算再帰・全可算貼り合わせまで構成。`exists_nativeAlternatingPresentation` は偶数部分の元の native 表示との全射等式と、奇数部分の定値標的との全 FunctorIso を入力なしで構成する。元の fiber 射への compact 回収の接続、小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
 - e6 の全体同値と e7 の小極限は保留（第 II 段／R）。e5 の fiber → accessible 一般版の後、e8 で P-1 を閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
