@@ -71,6 +71,8 @@ dry-run の期待値（2026-10-25 12:40、W1 の移動を適用した作業ツ�
 ```
 
 件数が違う場合は `--apply` せずに報告する。
+`scripts/audit/bhatt_scholze.lean`・`scripts/audit/clmst.lean` では、import 行に加えて `let mods` の名前一覧もスクリプトが書き換える
+（W1 で一覧が旧名のまま残り監査が失敗したため、10-25 に追加）。この二ファイルに限り、import 行以外の差分を許す。
 
 ## 3. 受入条件
 
@@ -78,8 +80,10 @@ BS-W1 §5 の「作業 3 の後」と同じコマンド一式に、`scripts/audi
 加えて次を確認する。
 
 ```bash
-git diff --cached -M --diff-filter=RM -- SerrePositivity scripts | grep -E '^[-+]' | grep -vE '^(\+\+\+|---) ' \
-  | grep -vE '^[-+][ \t]*(public )?import '    # 出力が空
+git diff --cached -M --diff-filter=RM -- SerrePositivity scripts \
+    ':!scripts/audit/bhatt_scholze.lean' ':!scripts/audit/clmst.lean' \
+  | grep -E '^[-+]' | grep -vE '^(\+\+\+|---) ' \
+  | grep -vE '^[-+][ \t]*(public )?import '    # 出力が空（生成監査の名前一覧は除く）
 ls SerrePositivity/BhattScholze/Delta/*.lean SerrePositivity/BhattScholze/Prism/*.lean 2>/dev/null | wc -l   # 0
 ```
 

@@ -31,6 +31,9 @@ OWNED = [
     re.compile(r"^scripts/audit/bhatt_scholze\.lean$"),
     re.compile(r"^scripts/audit/clmst\.lean$"),
 ]
+# 生成された領域監査は import 行のほかに `let mods` の名前一覧を持つので、モジュール名の字句をすべて置き換える。
+NAME_LISTS = {"scripts/audit/bhatt_scholze.lean", "scripts/audit/clmst.lean"}
+NAME = re.compile(r"(?<![\w.])SerrePositivity\.BhattScholze\.[\w.']+")
 IMPORT = re.compile(r"^([ \t]*(?:public[ \t]+)?import[ \t]+)(SerrePositivity\.BhattScholze\.[\w.']+)([ \t]*)$", re.M)
 
 STUB = """module
@@ -92,6 +95,11 @@ def main():
             continue
         src = (ROOT / f).read_text()
         hit = [m.group(2) for m in IMPORT.finditer(src) if m.group(2) in moves]
+        if f in NAME_LISTS and f in owned:
+            new = NAME.sub(lambda m: moves.get(m.group(0), m.group(0)), src)
+            if new != src:
+                edits[f] = new
+            continue
         if not hit:
             continue
         if f in owned:
