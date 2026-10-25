@@ -108,7 +108,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomTargetTransportPostcomposition,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TransportedShiftBlockHomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFaceBlockHomology,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixBlockHomology]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixBlockHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixEdgeRaw,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixDiagramEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixEdgeClosed,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentVertexHomologyTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixHomologyDiagram,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFaceHomologyDiagram]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -191,3 +197,7 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgBarSignedShiftHomology
 #check SerrePositivity.InfinityCategories.dgCoherentBarSignedFaceHomology
 #check SerrePositivity.InfinityCategories.dgCoherentBarSignedPrefixHomology
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarPrefixCycle_eq_diagramEdge
+#check SerrePositivity.InfinityCategories.dgCoherentBarSignedPrefixHomologyDiagram
+#check SerrePositivity.InfinityCategories.dgCoherentBarSignedFaceHomologyDiagram

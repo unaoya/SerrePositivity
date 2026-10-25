@@ -18,6 +18,8 @@
   閉じた次数一層作用素、その cycle 上の評価と実連結射との一致も構成。
   元の正の面ブロックと一次 prefix ブロックのホモロジーを、
   端点等号射と元の閉零 prefix 係数から作る実加群射へ同定した。
+  prefix の実加群射を元の図式の辺へ同定し、ホモロジー図式の関手の射との
+  可換式も構成。正の面の係数の恒等性も同じ頂点ホモロジー同型で検証した。
   最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
@@ -40,7 +42,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,559 jobs・専用監査104葉915宣言通過。
+- 検証：coherent 入力への修正後、集約4,565 jobs・専用監査110葉982宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
@@ -51,7 +53,7 @@
   通常の増大 simplicial bar、実正規化 bar への頂点の閉零射も構成。
 - 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
 - 次の一手：対象同型を通して一次ホモロジー微分と非退化 bar 微分を同定する。
-  prefix の実加群射をホモロジー図式の辺へ同定し、有限面和をまとめる。
+  面・辺の個別係数の同定を、層の直和同型を通して有限面和へまとめる。
   `dgHomologyBarZeroHomologyColimitIso` が通常の bar の零次の比較。
   `dgCoherentBarLayerSequence_shortExact` が実複体の隣接段階の短完全列。
   正次数完全性は有限 support を終頂点のある下方部分圏へ持ち上げ、
