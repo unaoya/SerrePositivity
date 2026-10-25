@@ -12,9 +12,9 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
-public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 public import SerrePositivity.BhattScholze.Andre.Variants.MonicRootedExtension
-public import SerrePositivity.BhattScholze.Andre.Remark715.Unoriented
+public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Initiality
 
 /-!
 # Bhatt–Scholze の形式化の集約

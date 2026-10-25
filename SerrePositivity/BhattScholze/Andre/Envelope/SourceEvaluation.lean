@@ -1,0 +1,693 @@
+module
+
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionEvaluationSource
+public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionUnitDenominator
+public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceAlgebras
+public import Mathlib.CategoryTheory.Functor.OfSequence
+public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
+public import SerrePositivity.HomologicalAlgebra.FiniteSupQuotientColimit
+public import Mathlib.CategoryTheory.Filtered.Final
+public import Mathlib.Data.Finset.Prod
+
+/-!
+# 源グラフ商と評価環の余極限・Tor
+
+## 概要
+源 δ 評価核の有限グラフ Koszul 分解、一般の除数・任意有限 δ 座標の源グラフ商の Tor、任意一元評価の源有限グラフ商の逐次極限と Tor の移送、任意根族の評価核の有限座標支持と有限座標商の余極限、有界 δ 深さの評価図式。
+
+## 方針
+統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
+
+## 規約
+宣言名・名前空間・型は統合前のまま。
+
+## 使われ方
+`Envelope/FamilyEvaluation`、`Envelope/JetRegularity`、`Envelope/PDivision`、`Envelope/PDivisionSource`、`Envelope/RootResidueKoszul`、`Envelope/RootSource`、`PowerRootEnvelope/Unconditional/Residue`、`RootEnvelope/Source`、`Variants/Auxiliary`。
+-/
+
+universe u v
+
+/-! ## 源δ評価核の有限グラフKoszul分解（旧 Andre/RootedExtension/Division/DeltaDivisionSourceGraphKoszul.lean）
+
+任意の異なる有限δ座標を扱い、係数環のp正則性・ghost単射・完備性は要求しない。
+指数1の商表示は既存APIを用い、正則性はモニック一次式から示す。
+-/
+
+@[expose] public noncomputable section DeltaDivisionSourceGraphKoszul
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.BhattScholze
+
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
+
+/-- 源δ評価射の座標グラフ関係。 -/
+def deltaDivisionSourceGraphRelation (D : DeltaStructure p A) (a : σ → A) (z : σ × ℕ) :
+    RelativeFreeDeltaRing (R := A) σ :=
+  MvPolynomial.X z - MvPolynomial.C (D.delta^[z.2] (a z.1))
+
+/-- 任意の異なる有限δ座標の源グラフ関係は弱正則列。 -/
+theorem deltaDivisionSourceGraph_fin_isWeaklyRegular (D : DeltaStructure p A) (a : σ → A)
+    {m : ℕ} (s : Fin m → σ × ℕ) (hs : Function.Injective s) :
+    RingTheory.Sequence.IsWeaklyRegular (RelativeFreeDeltaRing (R := A) σ)
+      (List.ofFn fun i => deltaDivisionSourceGraphRelation D a (s i)) := by
+  simpa only [List.map_ofFn, Function.comp_def, deltaDivisionSourceGraphRelation,
+    deltaRootRelationFamily, pow_one] using
+    deltaRootRelation_list_isWeaklyRegular_of_ne_zero (p := 1) one_ne_zero
+      (fun z : σ × ℕ => D.delta^[z.2] (a z.1))
+      (List.ofFn s) (List.nodup_ofFn_ofInjective hs)
+
+/-- 異なる有限δ座標の源グラフKoszul複体は、その実通常商の分解。 -/
+theorem deltaDivisionSourceGraph_fin_isKoszulResolution (D : DeltaStructure p A) (a : σ → A)
+    {m : ℕ} (s : Fin m → σ × ℕ) (hs : Function.Injective s) :
+    SerrePositivity.IsKoszulResolution (fun i => deltaDivisionSourceGraphRelation D a (s i)) :=
+  SerrePositivity.isKoszulResolution_of_isWeaklyRegular _
+    (deltaDivisionSourceGraph_fin_isWeaklyRegular D a s hs)
+
+/-- 源グラフ関係のαに沿う通常像は、実終域上の評価関係。 -/
+theorem deltaDivisionSourceGraph_map (D : DeltaStructure p A) (d : A) (a : σ → A)
+    (z : σ × ℕ) :
+    deltaDivisionSourceMap D d (deltaDivisionSourceGraphRelation D a z) =
+      deltaDivisionEvaluationRelation D d a z.1 z.2 :=
+  deltaDivisionSourceMap_graphRelation D d a z.1 z.2
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionSourceGraphKoszul
+
+/-! ## 一般除数・任意有限δ座標の源グラフ商のTor（旧 Andre/RootedExtension/Division/DeltaDivisionSourceFiniteTor.lean）
+
+実自由δ射 x_s ↦ d z_s に沿う有限源商のTorを、終域の評価関係の
+Koszulホモロジーで計算する。全源評価環への移行は含まない。
+-/
+
+@[expose] public noncomputable section DeltaDivisionSourceFiniteTor
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.BhattScholze
+open CategoryTheory
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (d : A) (c : σ → A)
+local notation "P₀" => RelativeFreeDeltaRing (R := A) σ
+
+/-- 指定した有限δ座標の源グラフ関係による実通常商。 -/
+abbrev DeltaDivisionSourceFiniteCoordinateQuotient {m : ℕ} (s : Fin m → σ × ℕ) :=
+  P₀ ⧸ Ideal.span (Set.range fun i => deltaDivisionSourceGraphRelation D c (s i))
+
+/-- 一般自由δ射に沿う有限源商のTorは、実終域の評価関係Koszulホモロジー。 -/
+def deltaDivisionSourceFiniteCoordinateKoszulTorIso {m : ℕ} (s : Fin m → σ × ℕ)
+    (hs : Function.Injective s) (i : ℕ) :
+    ((ModuleCat.extendScalars.{u, u, u} (deltaDivisionSourceMap (σ := σ) D d)).leftDerived i).obj
+      (ModuleCat.of P₀ (DeltaDivisionSourceFiniteCoordinateQuotient D c s)) ≅
+      (SerrePositivity.koszulComplex (fun j =>
+        deltaDivisionEvaluationRelation D d c (s j).1 (s j).2)).homology (-(i : ℤ)) := by
+  have e := SerrePositivity.torAlgKoszulIso (deltaDivisionSourceMap (σ := σ) D d)
+    (fun j => deltaDivisionSourceGraphRelation D c (s j))
+    (deltaDivisionSourceGraph_fin_isKoszulResolution D c s hs) i
+  have he : (deltaDivisionSourceMap (σ := σ) D d) ∘
+      (fun j => deltaDivisionSourceGraphRelation D c (s j)) =
+      (fun j => deltaDivisionEvaluationRelation D d c (s j).1 (s j).2) := by
+    funext j
+    exact deltaDivisionSourceGraph_map D d c (s j)
+  rw [he] at e
+  exact e
+
+/-- 終域の有限評価関係がKoszul分解を与える場合、実有限源商の全正次数Torは零。 -/
+theorem deltaDivisionSourceFiniteCoordinate_tor_subsingleton {m : ℕ}
+    (s : Fin m → σ × ℕ) (hs : Function.Injective s)
+    (hr : SerrePositivity.IsKoszulResolution (fun j =>
+      deltaDivisionEvaluationRelation D d c (s j).1 (s j).2)) (i : ℕ) :
+    Subsingleton (SerrePositivity.TorAlg (deltaDivisionSourceMap (σ := σ) D d) (i + 1)
+      (DeltaDivisionSourceFiniteCoordinateQuotient D c s)) := by
+  have hz := hr.isZero (-((i + 1 : ℕ) : ℤ)) (by omega)
+  have ht := hz.of_iso (deltaDivisionSourceFiniteCoordinateKoszulTorIso D d c s hs (i + 1))
+  exact ModuleCat.subsingleton_of_isZero ht
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionSourceFiniteTor
+
+/-! ## 任意一元評価の源有限グラフ商の標準逐次極限（旧 Andre/RootedExtension/Division/DeltaDivisionSourceEvaluationColimit.lean）
+
+源評価射βの核が有限グラフイデアルの上限であることから、実評価環Aへの標準余錐の普遍性を示す。
+Torとcolimitの交換はここでは仮定も結論もしない。
+-/
+
+@[expose] public noncomputable section DeltaDivisionSourceEvaluationColimit
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A] [Unique σ]
+variable (D : DeltaStructure p A) (a : σ → A)
+local notation "P₀" => RelativeFreeDeltaRing (R := A) σ
+local notation "a₀" => a
+local notation "β₀" => deltaDivisionSourceEval D a₀
+/-- 任意一元評価の深さ≤Nの具体的な源グラフ関係列。 -/
+def deltaDivisionEvaluationSourceGraphPrefix (N : ℕ) : Fin (N + 1) → P₀ :=
+  fun i => deltaDivisionSourceGraphRelation D a (default, i.val)
+
+/-- 任意一元評価の深さ≤Nの実源グラフ商。 -/
+abbrev DeltaDivisionEvaluationSourceFiniteQuotient (N : ℕ) :=
+  DeltaDivisionSourceFiniteCoordinateQuotient D a
+    (fun i : Fin (N + 1) => (default, i.val))
+
+local notation "K₀" => fun N : ℕ =>
+  Ideal.span (Set.range (deltaDivisionEvaluationSourceGraphPrefix (σ := σ) D a N))
+local notation "Q₀" => DeltaDivisionEvaluationSourceFiniteQuotient (σ := σ) D a
+
+omit [Unique σ] in
+private theorem evaluation_one (s : σ) (n : ℕ) :
+    deltaDivisionEvaluationRelation D (1 : A) a₀ s n =
+      deltaDivisionSourceGraphRelation D a₀ (s, n) := by
+  have h := deltaDivisionSourceGraph_map D (1 : A) a₀ (s, n)
+  rw [deltaDivisionSourceMap_one] at h
+  exact h.symm
+
+/-- 実源有限グラフイデアルは、分母1の有限δ関係イデアル。 -/
+theorem deltaDivisionEvaluationSourceFiniteIdeal_eq_one (N : ℕ) :
+    K₀ N = deltaDivisionFiniteRelationIdeal D (1 : A) a₀ N := by
+  rw [← deltaDivisionFiniteEvaluationIdeal_eq]
+  change Ideal.span (Set.range (deltaDivisionEvaluationSourceGraphPrefix (σ := σ) D a N)) =
+    Ideal.span (Set.range fun z : σ × Fin (N + 1) =>
+      deltaDivisionEvaluationRelation D (1 : A) a₀ z.1 z.2.val)
+  apply congrArg Ideal.span
+  ext z
+  constructor
+  · rintro ⟨i, rfl⟩
+    exact ⟨(default, i), evaluation_one D a default i.val⟩
+  · rintro ⟨⟨s, i⟩, rfl⟩
+    have hs : s = (default : σ) := Subsingleton.elim _ _
+    subst s
+    exact ⟨i, (evaluation_one D a default i.val).symm⟩
+
+/-- 実源評価核は、実有限グラフイデアルの上限。 -/
+theorem deltaDivisionEvaluationSourceEval_ker_eq_iSup_finite : RingHom.ker β₀ = ⨆ N, K₀ N := by
+  rw [← deltaDivisionUnitDenominator_ideal, deltaDivision_deltaClosure_eq_iSup_finiteRelations]
+  congr 1
+  funext N
+  exact (deltaDivisionEvaluationSourceFiniteIdeal_eq_one D a N).symm
+
+/-- 実源の有限グラフイデアルは深さについて単調。 -/
+theorem deltaDivisionEvaluationSourceFiniteIdeal_mono : Monotone K₀ := by
+  intro N M h
+  rw [deltaDivisionEvaluationSourceFiniteIdeal_eq_one,
+    deltaDivisionEvaluationSourceFiniteIdeal_eq_one]
+  exact deltaDivisionFiniteRelationIdeal_mono D (1 : A) a₀ h
+
+private theorem finite_le_ker (N : ℕ) : K₀ N ≤ RingHom.ker β₀ := by
+  rw [deltaDivisionEvaluationSourceEval_ker_eq_iSup_finite]
+  exact le_iSup (fun M : ℕ => Ideal.span
+    (Set.range (deltaDivisionEvaluationSourceGraphPrefix (σ := σ) D a M))) N
+
+/-- 有限源商間の標準線形遷移射。 -/
+def deltaDivisionEvaluationSourceFiniteTransition (N : ℕ) : Q₀ N →ₗ[P₀] Q₀ (N + 1) :=
+  Submodule.mapQ (K₀ N) (K₀ (N + 1)) LinearMap.id
+    (by exact deltaDivisionEvaluationSourceFiniteIdeal_mono D a (Nat.le_succ N))
+
+/-- 標準遷移射は元の源環の標準商元を保つ。 -/
+theorem deltaDivisionEvaluationSourceFiniteTransition_mk (N : ℕ) (r : P₀) :
+    deltaDivisionEvaluationSourceFiniteTransition D a N (Ideal.Quotient.mk (K₀ N) r) =
+      Ideal.Quotient.mk (K₀ (N + 1)) r :=
+  Submodule.mapQ_apply _ _ _ r
+
+/-- 実有限源商の具体的なP加群逐次図式。 -/
+def deltaDivisionEvaluationSourceFiniteModuleDiagram : ℕ ⥤ ModuleCat.{u} P₀ :=
+  Functor.ofSequence
+    (fun N => ModuleCat.ofHom (deltaDivisionEvaluationSourceFiniteTransition D a N))
+
+/-- 実源商図式の隣接射は、定義した標準商遷移射。 -/
+theorem deltaDivisionEvaluationSourceFiniteModuleDiagram_map_succ (N : ℕ) :
+    (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a).map (homOfLE (Nat.le_succ N)) =
+      ModuleCat.ofHom (deltaDivisionEvaluationSourceFiniteTransition D a N) :=
+  Functor.ofSequence_map_homOfLE_succ _ N
+
+/-- βにより有限源商から実評価環Aへ降下する標準線形射。 -/
+def deltaDivisionEvaluationSourceFiniteEval (N : ℕ) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    Q₀ N →ₗ[P₀] A := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a₀
+  exact Submodule.liftQ (K₀ N) (Algebra.linearMap P₀ A) (by exact finite_le_ker D a N)
+
+/-- 有限源評価射は標準商元をβの実値へ送る。 -/
+theorem deltaDivisionEvaluationSourceFiniteEval_mk (N : ℕ) (r : P₀) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    deltaDivisionEvaluationSourceFiniteEval D a N (Ideal.Quotient.mk (K₀ N) r) = β₀ r := by
+  let := deltaDivisionSourceEvaluationAlgebra D a₀
+  exact Submodule.liftQ_apply _ _ r
+
+/-- 実評価環Aを頂点とする、有限源商の標準余錐。 -/
+def deltaDivisionEvaluationSourceFiniteEvalCocone :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    Cocone (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a) := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a₀
+  exact
+    { pt := ModuleCat.of P₀ A
+      ι := NatTrans.ofSequence
+        (fun N => ModuleCat.ofHom (deltaDivisionEvaluationSourceFiniteEval D a N))
+        (by
+          intro N
+          rw [deltaDivisionEvaluationSourceFiniteModuleDiagram_map_succ]
+          apply ModuleCat.hom_ext
+          apply LinearMap.ext
+          intro z
+          obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective z
+          change deltaDivisionEvaluationSourceFiniteEval D a (N + 1)
+            (deltaDivisionEvaluationSourceFiniteTransition D a N (Ideal.Quotient.mk (K₀ N) r)) =
+              deltaDivisionEvaluationSourceFiniteEval D a N (Ideal.Quotient.mk (K₀ N) r)
+          rw [deltaDivisionEvaluationSourceFiniteTransition_mk,
+            deltaDivisionEvaluationSourceFiniteEval_mk,
+            deltaDivisionEvaluationSourceFiniteEval_mk]) }
+
+private theorem cocone_mk_independent
+    (c : Cocone (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a)) (N : ℕ) (r : P₀) :
+    (c.ι.app N).hom (Ideal.Quotient.mk (K₀ N) r) =
+      (c.ι.app 0).hom (Ideal.Quotient.mk (K₀ 0) r) := by
+  induction N with
+  | zero => rfl
+  | succ N ih =>
+    have h := congrArg (fun f => f.hom (Ideal.Quotient.mk (K₀ N) r))
+      (c.w (homOfLE (Nat.le_succ N)))
+    rw [deltaDivisionEvaluationSourceFiniteModuleDiagram_map_succ] at h
+    change (c.ι.app (N + 1)).hom
+      (deltaDivisionEvaluationSourceFiniteTransition D a N (Ideal.Quotient.mk (K₀ N) r)) = _ at h
+    rw [deltaDivisionEvaluationSourceFiniteTransition_mk] at h
+    exact h.trans ih
+
+private theorem cocone_base_ker
+    (c : Cocone (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a)) :
+    RingHom.ker β₀ ≤ LinearMap.ker ((c.ι.app 0).hom.comp (Submodule.mkQ (K₀ 0))) := by
+  rw [deltaDivisionEvaluationSourceEval_ker_eq_iSup_finite]
+  apply iSup_le
+  intro N r hr
+  change (c.ι.app 0).hom (Ideal.Quotient.mk (K₀ 0) r) = 0
+  rw [← cocone_mk_independent D a c N r, Ideal.Quotient.eq_zero_iff_mem.mpr hr, map_zero]
+
+/-- 実評価環Aは、源有限グラフ商の標準逐次colimitである。 -/
+def deltaDivisionEvaluationSourceFiniteEvalIsColimit :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    IsColimit (deltaDivisionEvaluationSourceFiniteEvalCocone (σ := σ) D a) := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a₀
+  let b : P₀ →ₗ[P₀] A := Algebra.linearMap P₀ A
+  let e := LinearMap.quotKerEquivOfSurjective b (deltaDivisionSourceEval_surjective D a₀)
+  let desc (c : Cocone (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a)) :
+      A →ₗ[P₀] c.pt :=
+    (Submodule.liftQ (LinearMap.ker b)
+      ((c.ι.app 0).hom.comp (Submodule.mkQ (K₀ 0))) (by exact cocone_base_ker D a c)).comp
+        e.symm.toLinearMap
+  have hdesc (c : Cocone (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a)) (r : P₀) :
+      desc c (β₀ r) = (c.ι.app 0).hom (Ideal.Quotient.mk (K₀ 0) r) := by
+    change Submodule.liftQ (LinearMap.ker b)
+      ((c.ι.app 0).hom.comp (Submodule.mkQ (K₀ 0)))
+        (by exact cocone_base_ker D a c) (e.symm (b r)) = _
+    dsimp only [e]
+    rw [LinearMap.quotKerEquivOfSurjective_symm_apply]
+    rfl
+  exact
+    { desc := fun c => ModuleCat.ofHom (desc c)
+      fac := by
+        intro c N
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro z
+        obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective z
+        change desc c
+          (deltaDivisionEvaluationSourceFiniteEval D a N (Ideal.Quotient.mk (K₀ N) r)) = _
+        rw [deltaDivisionEvaluationSourceFiniteEval_mk, hdesc]
+        exact (cocone_mk_independent D a c N r).symm
+      uniq := by
+        intro c f hf
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro z
+        obtain ⟨r, rfl⟩ := deltaDivisionSourceEval_surjective D a₀ z
+        have h := congrArg (fun g => g.hom (Ideal.Quotient.mk (K₀ 0) r)) (hf 0)
+        change f.hom
+          (deltaDivisionEvaluationSourceFiniteEval D a 0 (Ideal.Quotient.mk (K₀ 0) r)) = _ at h
+        rw [deltaDivisionEvaluationSourceFiniteEval_mk] at h
+        exact h.trans (hdesc c r).symm }
+
+/-- 実圏論的colimitと、βで作用する実評価環Aとの標準比較同型。 -/
+def deltaDivisionEvaluationSourceFiniteColimitEvalIso :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    colimit (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a) ≅
+      ModuleCat.of P₀ A := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a₀
+  exact (colimit.isColimit _).coconePointUniqueUpToIso
+    (deltaDivisionEvaluationSourceFiniteEvalIsColimit D a)
+
+/-- 標準colimit比較同型は、各有限商からの標準β評価射を保つ。 -/
+theorem deltaDivisionEvaluationSourceFiniteColimitEvalIso_ι (N : ℕ) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a₀
+    colimit.ι (deltaDivisionEvaluationSourceFiniteModuleDiagram (σ := σ) D a) N ≫
+      (deltaDivisionEvaluationSourceFiniteColimitEvalIso D a).hom =
+        ModuleCat.ofHom (deltaDivisionEvaluationSourceFiniteEval D a N) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a₀
+  exact IsColimit.comp_coconePointUniqueUpToIso_hom (colimit.isColimit _)
+    (deltaDivisionEvaluationSourceFiniteEvalIsColimit D a) N
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionSourceEvaluationColimit
+
+/-! ## G7交換入力に相対的な任意一元評価環へのTor移送（旧 Andre/RootedExtension/Division/DeltaDivisionSourceEvaluationColimitTor.lean）
+
+BSの具体的な有限グラフ商図式だけを扱う。
+標準PreservesColimit入力を公開型に保持し、共通G7のTor消滅補題を再利用する。
+-/
+
+@[expose] public noncomputable section DeltaDivisionSourceEvaluationColimitTor
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A] [Unique σ]
+variable (D : DeltaStructure p A) (a : σ → A)
+variable {T : Type u} [CommRing T]
+local notation "P₀" => RelativeFreeDeltaRing (R := A) σ
+local notation "F₀" => deltaDivisionEvaluationSourceFiniteModuleDiagram D a
+
+/-- 実有限グラフ商のTor消滅は、明示したG7交換入力の下で全評価環Aへ移る。 -/
+theorem deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
+    (φ : P₀ →+* T) (i : ℕ)
+    (hfin : ∀ N : ℕ, Subsingleton (SerrePositivity.TorAlg φ (i + 1)
+      (DeltaDivisionEvaluationSourceFiniteQuotient D a N)))
+    (hpres : PreservesColimit F₀ ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1))) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    Subsingleton (SerrePositivity.TorAlg φ (i + 1) A) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  have := hpres
+  let H := (ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1)
+  have hz : IsZero (H.obj (colimit F₀)) :=
+    torAlg_colimit_isZero_of_stages φ F₀ (i + 1)
+      (fun N => ModuleCat.isZero_iff_subsingleton.mpr (hfin N))
+  let e : H.obj (ModuleCat.of P₀ A) ≅ H.obj (colimit F₀) :=
+    H.mapIso (deltaDivisionEvaluationSourceFiniteColimitEvalIso D a).symm
+  exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionSourceEvaluationColimitTor
+
+/-! ## 任意根族の評価核の有限座標支持による検出（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionEvaluationFiniteSupport.lean） -/
+
+@[expose] public noncomputable section DeltaDivisionEvaluationFiniteSupport
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.BhattScholze
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (a : σ → A)
+local notation "L" => RelativeFreeDeltaRing (R := A) σ
+local notation "β" => deltaDivisionSourceEval D a
+
+/-- 有限個の実座標グラフ関係で生成される源イデアル。 -/
+abbrev deltaDivisionEvaluationFiniteSupportIdeal (S : Finset (σ × ℕ)) : Ideal L :=
+  Ideal.span (deltaDivisionSourceGraphRelation D a '' (S : Set (σ × ℕ)))
+
+/-- 座標集合の包含は、同じ源環内の関係イデアルの包含を与える。 -/
+theorem deltaDivisionEvaluationFiniteSupportIdeal_mono :
+    Monotone (deltaDivisionEvaluationFiniteSupportIdeal D a) := by
+  intro S T h
+  exact Ideal.span_mono (Set.image_mono h)
+
+/-- 任意添字の有限座標イデアルは、有限和集合により有向である。 -/
+theorem deltaDivisionEvaluationFiniteSupportIdeal_directed :
+    Directed (· ≤ ·) (deltaDivisionEvaluationFiniteSupportIdeal D a) := by
+  classical
+  intro S T
+  exact ⟨S ∪ T, deltaDivisionEvaluationFiniteSupportIdeal_mono D a Finset.subset_union_left,
+    deltaDivisionEvaluationFiniteSupportIdeal_mono D a Finset.subset_union_right⟩
+
+/-- 任意根族の実評価核は、有限座標グラフイデアルの上限。 -/
+theorem deltaDivisionEvaluation_ker_eq_iSup_finiteSupport :
+    RingHom.ker β = ⨆ S : Finset (σ × ℕ), deltaDivisionEvaluationFiniteSupportIdeal D a S := by
+  classical
+  rw [deltaDivisionSourceEval_ker]
+  change Ideal.span (Set.range (deltaDivisionSourceGraphRelation D a)) = _
+  apply le_antisymm
+  · apply Ideal.span_le.mpr
+    rintro x ⟨z, rfl⟩
+    exact (le_iSup (fun S : Finset (σ × ℕ) =>
+      deltaDivisionEvaluationFiniteSupportIdeal D a S) {z})
+      (Ideal.subset_span ⟨z, by simp, rfl⟩)
+  · apply iSup_le
+    intro S
+    apply Ideal.span_mono
+    rintro x ⟨z, _, rfl⟩
+    exact ⟨z, rfl⟩
+
+/-- 元の評価射の等式は、一つの有限座標商での標準像の等式として検出できる。 -/
+theorem deltaDivisionEvaluation_eq_iff_finiteSupport (x y : L) :
+    β x = β y ↔ ∃ S : Finset (σ × ℕ),
+      Ideal.Quotient.mk (deltaDivisionEvaluationFiniteSupportIdeal D a S) x =
+        Ideal.Quotient.mk (deltaDivisionEvaluationFiniteSupportIdeal D a S) y := by
+  have hmem : β x = β y ↔ x - y ∈ RingHom.ker β := by
+    change β x = β y ↔ β (x - y) = 0
+    rw [map_sub, sub_eq_zero]
+  rw [hmem, deltaDivisionEvaluation_ker_eq_iSup_finiteSupport]
+  rw [Submodule.mem_iSup_of_directed _ (deltaDivisionEvaluationFiniteSupportIdeal_directed D a)]
+  exact exists_congr fun S => (Ideal.Quotient.mk_eq_mk_iff_sub_mem x y).symm
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionEvaluationFiniteSupport
+
+/-! ## 任意根族の実評価環は有限座標商の加群余極限（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionEvaluationFiniteSupportColimit.lean） -/
+
+@[expose] public noncomputable section DeltaDivisionEvaluationFiniteSupportColimit
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (a : σ → A)
+local notation "L" => RelativeFreeDeltaRing (R := A) σ
+local notation "β" => deltaDivisionSourceEval D a
+local notation "K" => deltaDivisionEvaluationFiniteSupportIdeal D a
+
+/-- 有限座標の包含による、同じ源環の標準商加群射。 -/
+def deltaDivisionFiniteSupportTransition {S T : Finset (σ × ℕ)} (h : S ⊆ T) :
+    (L ⧸ K S) →ₗ[L] L ⧸ K T :=
+  Submodule.mapQ (K S) (K T) LinearMap.id
+    (by exact deltaDivisionEvaluationFiniteSupportIdeal_mono D a h)
+
+/-- 標準遷移射は元の源環の商元を保つ。 -/
+theorem deltaDivisionFiniteSupportTransition_mk {S T : Finset (σ × ℕ)} (h : S ⊆ T)
+    (r : L) :
+    deltaDivisionFiniteSupportTransition D a h (Ideal.Quotient.mk (K S) r) =
+      Ideal.Quotient.mk (K T) r := rfl
+
+/-- 任意根族の有限座標商の実加群図式。 -/
+def deltaDivisionFiniteSupportModuleDiagram : Finset (σ × ℕ) ⥤ ModuleCat.{u} L where
+  obj S := ModuleCat.of L (L ⧸ K S)
+  map h := ModuleCat.ofHom (deltaDivisionFiniteSupportTransition D a (leOfHom h))
+  map_id S := by
+    apply ModuleCat.hom_ext
+    apply LinearMap.ext
+    intro x
+    obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective x
+    rfl
+  map_comp f g := by
+    apply ModuleCat.hom_ext
+    apply LinearMap.ext
+    intro x
+    obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective x
+    rfl
+
+private theorem finiteSupport_le_ker (S : Finset (σ × ℕ)) : K S ≤ RingHom.ker β := by
+  rw [deltaDivisionEvaluation_ker_eq_iSup_finiteSupport D a]
+  exact le_iSup K S
+
+/-- 各有限座標商から、元のβ作用を持つ評価環への標準線形射。 -/
+def deltaDivisionFiniteSupportEval (S : Finset (σ × ℕ)) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    (L ⧸ K S) →ₗ[L] A := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  exact Submodule.liftQ (K S) (Algebra.linearMap L A) (by exact finiteSupport_le_ker D a S)
+
+/-- 有限座標商の評価射は、元の評価射βの実値を与える。 -/
+theorem deltaDivisionFiniteSupportEval_mk (S : Finset (σ × ℕ)) (r : L) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    deltaDivisionFiniteSupportEval D a S (Ideal.Quotient.mk (K S) r) = β r := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  rfl
+
+/-- 元のβ評価環を頂点とする、有限座標商図式の標準余錐。 -/
+def deltaDivisionFiniteSupportEvalCocone :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    Cocone (deltaDivisionFiniteSupportModuleDiagram D a) := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  exact
+    { pt := ModuleCat.of L A
+      ι :=
+        { app := fun S => ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a S)
+          naturality := by
+            intro S T h
+            apply ModuleCat.hom_ext
+            apply LinearMap.ext
+            intro x
+            obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective x
+            rfl } }
+
+/-- 元の評価環は、任意根族の有限座標商図式の実加群余極限である。 -/
+def deltaDivisionFiniteSupportEvalIsColimit :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+  classical
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  let J : σ × ℕ → Ideal L := fun z => Ideal.span {deltaDivisionSourceGraphRelation D a z}
+  have hK (S : Finset (σ × ℕ)) : K S = S.sup J := by
+    induction S using Finset.induction_on with
+    | empty => simp [deltaDivisionEvaluationFiniteSupportIdeal]
+    | @insert z S hz ih =>
+      simpa only [deltaDivisionEvaluationFiniteSupportIdeal, Finset.coe_insert,
+        Set.image_insert_eq, Ideal.span_insert, Finset.sup_insert] using
+          congrArg (fun I => J z ⊔ I) ih
+  let eF : deltaDivisionFiniteSupportModuleDiagram D a ≅ finiteSupQuotientDiagram J :=
+    NatIso.ofComponents
+      (fun S => (Submodule.quotEquivOfEq _ _ (hK S)).toModuleIso) (by
+        intro S T h
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro q
+        obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective q
+        rfl)
+  let b : L →ₗ[L] A := Algebra.linearMap L A
+  have hker : (⨆ z, J z) = LinearMap.ker b := by
+    change (⨆ z, J z) = RingHom.ker β
+    rw [deltaDivisionSourceEval_ker, Ideal.span_range_eq_iSup]
+    rfl
+  let eA := ((Submodule.quotEquivOfEq _ _ hker).trans
+    (LinearMap.quotKerEquivOfSurjective b (deltaDivisionSourceEval_surjective D a))).toModuleIso
+  let hc := (IsColimit.precomposeHomEquiv eF (finiteSupQuotientCocone J)).symm
+    (finiteSupQuotient_isColimit J)
+  refine hc.ofIsoColimit (Cocone.ext eA ?_)
+  intro S
+  apply ModuleCat.hom_ext
+  apply LinearMap.ext
+  intro q
+  obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective q
+  rfl
+
+/-- 実圏論的余極限と、元のβ作用を持つ評価環との標準比較同型。 -/
+def deltaDivisionFiniteSupportColimitEvalIso :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    colimit (deltaDivisionFiniteSupportModuleDiagram D a) ≅ ModuleCat.of L A := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  exact (colimit.isColimit _).coconePointUniqueUpToIso
+    (deltaDivisionFiniteSupportEvalIsColimit D a)
+
+/-- 同じ余極限比較は、すべての有限座標商の標準β評価射を保つ。 -/
+theorem deltaDivisionFiniteSupportColimitEvalIso_ι (S : Finset (σ × ℕ)) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    colimit.ι (deltaDivisionFiniteSupportModuleDiagram D a) S ≫
+      (deltaDivisionFiniteSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a S) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact IsColimit.comp_coconePointUniqueUpToIso_hom (colimit.isColimit _)
+    (deltaDivisionFiniteSupportEvalIsColimit D a) S
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionEvaluationFiniteSupportColimit
+
+/-! ## 有限部分根族の有界δ深さによる実評価図式（旧 Andre/RootedExtension/Supplement/Division/DeltaDivisionBoundedSupportColimit.lean） -/
+
+@[expose] public noncomputable section DeltaDivisionBoundedSupportColimit
+
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+variable {σ : Type u}
+
+/-- 有限座標集合を、その根と最大δ深さによる全長方形へ広げる。 -/
+def deltaDivisionCoordinateHull (S : Finset (σ × ℕ)) : Finset (σ × ℕ) := by
+  classical
+  exact (S.image Prod.fst) ×ˢ Finset.range (S.sup Prod.snd + 1)
+
+/-- 標準長方形は、選ばれた根の最大深さ以下の座標をちょうど含む。 -/
+theorem mem_deltaDivisionCoordinateHull (S : Finset (σ × ℕ)) (z : σ × ℕ) :
+    letI : DecidableEq σ := Classical.decEq σ
+    z ∈ deltaDivisionCoordinateHull S ↔ z.1 ∈ S.image Prod.fst ∧ z.2 ≤ S.sup Prod.snd := by
+  classical
+  simp only [deltaDivisionCoordinateHull, Finset.mem_product, Finset.mem_range,
+    Nat.lt_succ_iff]
+
+/-- 元のすべての有限座標は、その標準長方形に含まれる。 -/
+theorem subset_deltaDivisionCoordinateHull (S : Finset (σ × ℕ)) :
+    S ⊆ deltaDivisionCoordinateHull S := by
+  classical
+  intro z hz
+  exact (mem_deltaDivisionCoordinateHull S z).mpr
+    ⟨Finset.mem_image.mpr ⟨z, hz, rfl⟩, Finset.le_sup hz⟩
+
+/-- 有限座標集合の包含は、標準長方形の包含を与える。 -/
+theorem deltaDivisionCoordinateHull_mono :
+    Monotone (deltaDivisionCoordinateHull (σ := σ)) := by
+  classical
+  intro S T h z hz
+  obtain ⟨hs, hn⟩ := (mem_deltaDivisionCoordinateHull S z).mp hz
+  exact (mem_deltaDivisionCoordinateHull T z).mpr
+    ⟨Finset.image_mono Prod.fst h hs, hn.trans (Finset.sup_mono h)⟩
+
+/-- 有限座標添字上の、標準長方形へ広げる関手。 -/
+def deltaDivisionCoordinateHullFunctor : Finset (σ × ℕ) ⥤ Finset (σ × ℕ) :=
+  deltaDivisionCoordinateHull_mono.functor
+
+/-- この標準長方形関手は余終であり、評価環を尽くす余極限を変えない。 -/
+theorem deltaDivisionCoordinateHullFunctor_final :
+    Functor.Final (deltaDivisionCoordinateHullFunctor (σ := σ)) := by
+  classical
+  apply Functor.final_of_exists_of_isFiltered
+  · intro S
+    exact ⟨S, ⟨homOfLE (subset_deltaDivisionCoordinateHull S)⟩⟩
+  · intro S T f g
+    exact ⟨T, 𝟙 T, Subsingleton.elim _ _⟩
+
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (a : σ → A)
+local notation "L" => RelativeFreeDeltaRing (R := A) σ
+local notation "H" => deltaDivisionCoordinateHullFunctor (σ := σ)
+local notation "F" => deltaDivisionFiniteSupportModuleDiagram D a
+
+/-- 有限部分根族・全有限δ深さの商のみからなる、元の実図式の前合成。 -/
+def deltaDivisionBoundedSupportModuleDiagram : Finset (σ × ℕ) ⥤ ModuleCat.{u} L := H ⋙ F
+
+/-- 同じβ作用の評価環を頂点に持つ、有界深さ有限部分族の標準余錐。 -/
+def deltaDivisionBoundedSupportEvalCocone :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    Cocone (deltaDivisionBoundedSupportModuleDiagram D a) := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  exact (deltaDivisionFiniteSupportEvalCocone D a).whisker H
+
+/-- 評価環は、Tor消滅を扱う有界深さ有限部分族の商図式の実余極限である。 -/
+def deltaDivisionBoundedSupportEvalIsColimit :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionBoundedSupportEvalCocone D a) := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  letI := deltaDivisionCoordinateHullFunctor_final (σ := σ)
+  exact (Functor.Final.isColimitWhiskerEquiv H _).symm
+    (deltaDivisionFiniteSupportEvalIsColimit D a)
+
+/-- 有界深さ有限部分族図式の実圏論的余極限と、元のβ評価環との標準同型。 -/
+def deltaDivisionBoundedSupportColimitEvalIso :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    colimit (deltaDivisionBoundedSupportModuleDiagram D a) ≅ ModuleCat.of L A := by
+  letI := deltaDivisionSourceEvaluationAlgebra D a
+  exact (colimit.isColimit _).coconePointUniqueUpToIso
+    (deltaDivisionBoundedSupportEvalIsColimit D a)
+
+/-- 標準余極限同型は、全段の元のβ評価射を保つ。 -/
+theorem deltaDivisionBoundedSupportColimitEvalIso_ι (S : Finset (σ × ℕ)) :
+    letI := deltaDivisionSourceEvaluationAlgebra D a
+    colimit.ι (deltaDivisionBoundedSupportModuleDiagram D a) S ≫
+      (deltaDivisionBoundedSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a (deltaDivisionCoordinateHull S)) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact IsColimit.comp_coconePointUniqueUpToIso_hom (colimit.isColimit _)
+    (deltaDivisionBoundedSupportEvalIsColimit D a) S
+
+end SerrePositivity.BhattScholze
+
+end DeltaDivisionBoundedSupportColimit

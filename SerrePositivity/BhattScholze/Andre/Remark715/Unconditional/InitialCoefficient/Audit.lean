@@ -1,6 +1,6 @@
 module
 
-import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.RawResidue
+import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
 import Mathlib.Util.AssertNoSorry
 
 /-! BS Rem 7.15（著者版 p.62）：A1-d の公開宣言・正確な受渡し型・標準三公理の専用監査。 -/
@@ -85,8 +85,8 @@ open Lean Elab Command
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.Comparison,
-    `SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.RawResidue]
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

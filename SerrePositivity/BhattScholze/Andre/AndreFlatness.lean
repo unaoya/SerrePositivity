@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
-public import SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 
 /-!
 # André の平坦性補題の証明済み公開入口

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.MonicFamilySubsetRegular
+public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import Mathlib.Data.List.Nodup
 

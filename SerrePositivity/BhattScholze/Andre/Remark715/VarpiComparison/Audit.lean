@@ -1,8 +1,6 @@
 module
 
-import SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.Candidate
-import SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PDCompatibility
-import SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PrimeReduction
+import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
 import Mathlib.Util.AssertNoSorry
 
 /-! BS Rem 7.15（著者版 p.62）：A1-c の全公開宣言と生成宣言の専用監査。 -/
@@ -53,11 +51,11 @@ open Lean Elab Command
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.Flatness,
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PDBaseChange,
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PDCompatibility,
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.Candidate,
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PrimeReduction]
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

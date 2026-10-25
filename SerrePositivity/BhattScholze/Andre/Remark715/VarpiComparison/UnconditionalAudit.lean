@@ -1,7 +1,6 @@
 module
 
-import SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.UnconditionalCandidate
-import SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.PDCompatibility
+import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
 import Mathlib.Util.AssertNoSorry
 
 /-!
@@ -100,8 +99,8 @@ private partial def checkUnconditional (todo : List (Name × List Name))
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.UnconditionalPD,
-    `SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.UnconditionalCandidate]
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
