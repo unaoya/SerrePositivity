@@ -158,3 +158,56 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 | 安定・完全性 | N の IsIdempotentCompletion.isStable・isExactFunctor、idem_isStable・idemYoneda_isExactFunctor を使う。元の Idem C は宇宙 u+1、idemYoneda の始域は ulift C。 |
 | 零次 cofinality | 厳密 dg 入力の ν と K の指定比較へ接続する。完備化という条件だけでは π₀ 全射性を入力せず、実 K 比較で検査する。K-F の piZeroCofinalityObstructionEquiv は中央 π₋₁=0 の下で、元の射影の余核を左 fiber の π₋₁ と同定する。 |
 | K-7 への提供 | 指定射影と点を保つ条件付き相対 S fiber 比較、零次障害・連結性判定。各 suspension 段階の実比較と構造写像の整合性が必要。非連結 K 自体とその局所化性は未構成。 |
+
+### Ind-S (9)：指定全長 Hom の全族再構成の供給型
+- 以下は F1 新規葉への仕様命題の型であり、主経路の新しい存在仮定ではない。`K` は任意の単体集合、`L` は指定合成端を固定した全長 Hom 空間、`T` は同じ二短辺を固定する既存の二胞体延長空間。`encode`・`longHom` の全族の厳密回収と頂点での元の豊穣 Hom 読出しを要求する。
+- K-B への特殊化では、`zeroMiddleFullSKanLongHom` を元の core 包含で前合成した族を渡す。始域の異なる未制限の全 S• Hom を直接比較しない。頂点読出しの単射性は元の指定 core 二胞体自体の回収に使う。
+- 末尾は同じ三面 `a` を固定する実充填空間内の比較。任意の四面の可填性を境界一致だけから主張せず、制御した充填を構成してから元の充填との比較をここで取る。
+```lean
+import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFamily
+import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
+import SerrePositivity.InfinityCategories.Core.EquivalencePath
+import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+universe u
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+-- Supply specification only; no assertion or additional input in the main route.
+def indS9ControlledTriangleFamilyRequest : Prop :=
+  ∀ (X Y Z : KanObject.{u}) (f : X ⟶ Y) (g : Y ⟶ Z),
+  let P := SimplicialThickening.Path
+    (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
+  let p : P :=
+    { I := Set.univ
+      left := Set.mem_univ _
+      right := Set.mem_univ _
+      left_le := fun k _ => Fin.zero_le k.down
+      le_right := fun k _ => Fin.le_last k.down }
+  let H := (ihom X.obj).obj Z.obj
+  let L := vertexFiber (evaluateFunctorAt (X := nerve P) (Y := H) (ComposableArrows.mk₀ p))
+    (functorVertex (show X.obj ⟶ Z.obj from f ≫ g))
+  let Lu := (SSet.uliftFunctor.{u + 1, u}).obj L
+  let T := compositionTriangleSpace (coherentNerveEdge f) (coherentNerveEdge g)
+  ∃ (encode : Lu ⟶ T) (longHom : T ⟶ Lu),
+    encode ≫ longHom = 𝟙 Lu ∧
+    Function.Injective (longHom.app (Opposite.op ⦋0⦌)) ∧
+    (∀ t : T _⦋0⦌,
+      let s := SSet.yonedaEquiv ((functorVertexEquiv _ _).symm t.val)
+      HEq ((longHom.app (Opposite.op ⦋0⦌) t).down.val)
+        (functorVertex (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) ∧
+    (∀ (K : SSet.{u + 1}) (l : K ⟶ Lu),
+      (l ≫ encode) ≫ longHom = l ∧
+      ((stdSimplex.δ (2 : Fin 3) ▷ K) ≫ innerTriangleExtensionUncurry (l ≫ encode) =
+        fst (Δ[1] : SSet.{u + 1}) K ≫ SSet.yonedaEquiv.symm (coherentNerveEdge f).edge) ∧
+      ((stdSimplex.δ (0 : Fin 3) ▷ K) ≫ innerTriangleExtensionUncurry (l ≫ encode) =
+        fst (Δ[1] : SSet.{u + 1}) K ≫ SSet.yonedaEquiv.symm (coherentNerveEdge g).edge)) ∧
+    (∀ (K : SSet.{u + 1}) (a : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u}),
+      let E := vertexFiber ((pre ((horn 3 (2 : Fin 4)).ι ▷ K)).app SpaceInfinity.{u})
+        (functorVertex a)
+      IsContractibleKan E ∧ ∀ old controlled : E _⦋0⦌,
+        Nonempty (VertexIso old controlled))
+```
