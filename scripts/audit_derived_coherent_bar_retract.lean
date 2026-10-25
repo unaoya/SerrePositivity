@@ -51,7 +51,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ShiftUnitCancellation,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedUniversalColumn,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ProjectorCoefficientCriterion,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientCriterion]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedIdentityColumn,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientBase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndColumnAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.FaceLeftBasedAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.FaceRightBasedAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LabelBoundaryPositive,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LabelBoundaryLast,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalCompositeBasis,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalBoundaryCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedFullEndColumnAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundarySigns]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

@@ -5,7 +5,7 @@
 - チャット稼働の基準は 2026-10-25 18:07 頃。24 時間の期限は 10-26 18:07 頃（新割り当てでリセットしない）。
 - ユーザーの次割り当てで再開。所有は Derived/CoherentBar/Retract/ と All・専用監査のみ。
 - D-bar の実 bar・正規化模型・射影・安定自己写像・全作用鎖ホモトピーを読み取り専用で使う。
-- 専用 All ビルド成功（3716 jobs）・専用公理監査成功（42 葉392宣言、標準三公理のみ）。
+- 専用 All ビルド成功（3727 jobs）・専用公理監査成功（53 葉463宣言、標準三公理のみ）。
 - 修正包含の一般降下、実射影の次数成分と次数付き切断、安定自己写像が実射影を保つ式を対象検証済み。
 - 面・退化の BasedOperators と合成則、前側 prefix の全高次係数一致、tail の厳密退化式、prefix 後の退化単位の合成消去を対象検証済み。
 - BasedCoproduct の合成則は BasedCoproductComposition で三つの対象輸送を明示して対象検証済み。旧 timeout 試作は /tmp/d-retract-basedcoproduct-composition-draft.lean に保持。
@@ -17,6 +17,8 @@
 - BasedColumns・BasedColumnComposition・BasedColumnAction で面・退化列を始点保存作用へ移し、普遍係数の押出しを実全 Hom の前合成と同定（対象検証済み）。
 - ShiftUnitCancellation で全次数の単位シフトを消去し、BasedUniversalColumn は普遍 PInfty 係数から作る実列が全退化単体で零と証明（対象検証済み）。実安定作用素との同一視は未完。
 - ProjectorCoefficientCriterion・StageCoefficientCriterion は「有限段比較 ⇒ 安定作用素比較 ⇒ 退化消去」の明示仮定つき接続。有限段比較の無条件証明が残る。
+- BasedIdentityColumn・StageCoefficientBase で有限段比較の q=0 を無条件に証明。BasedEndColumnAction・BasedFullEndColumnAction は係数作用を同じ零次数へ線形移送し、面項との通常の等式比較を与える。
+- FaceLeftBasedAction・FaceRightBasedAction で実境界の両面項を始点保存自己写像の作用へ戻す。LabelBoundaryPositive・LabelBoundaryLast は Mathlib Hσ の正位置・最後・上方の面表示。UniversalBoundaryCoefficients は恒等ラベルでの全場合の係数を評価（対象検証済み）。
 - CorrectedInclusion は退化因子消去を明示仮定とする補助入口。無条件の retract は未完。
 ### 残り（依存順）
 - 1. 安定作用素の退化因子消去：全 prefix の相殺、始点を保つラベル正規化との照合。
@@ -37,12 +39,14 @@
 - Mathlib DoldKan の PInfty・homotopyPInftyToId・退化消滅を直接使用できる。
 - D-bar へ同じ正規化実加群・同じ閉射影による変形 retract を提供する。
 ### 保存範囲
-- 検証済みの42葉と All・専用監査を限定コミットで保存。無条件の退化消去は未供給。
+- 検証済みの53葉と All・専用監査を限定コミットで保存。無条件の退化消去は未供給。
 ### 既知の問題
 - 安定自己写像が恒等にホモトピックで射影を保つことだけでは因子化は導けない。
 - 補助入口の退化消去仮定を無条件に解消するまで工程 A の完了とはしない。
 ### 次の一手
-- DGCoherentBarStageCoefficientComparison を無条件に証明する。基底 q=0 は単位列、帰納段は BoundaryFacesOnly・LastBoundaryFacesOnly・VertexBoundary の面式を BasedColumnAction へ移し、Mathlib の P_succ/Hσ の係数と比較する。StageCoefficientCriterion と ProjectorCoefficientCriterion から DGCoherentBarNormalizationKillsDegenerate、既存の修正包含へ代入する。
+- 実境界の列 = BasedFullEndColumnAction (UniversalBoundaryCoefficients) を同定する。BoundarySigns の正位置左右・最後の段の三符号比較は対象検証済み。
+- Hσ の普遍係数の始点支持と自然性、係数押出しと全 Hom の合成の交換を接続し、P_succ の係数を有限段比較の帰納段へ代入する（q=0 は済み）。
+- DGCoherentBarStageCoefficientComparison を無条件に閉じ、StageCoefficientCriterion と ProjectorCoefficientCriterion から退化消去・既存の修正包含へ代入する。
 
 ## 運用
 - 新規 sorry・公理・引用なし。ModelCategory SSet の instance を主経路に置かない。
