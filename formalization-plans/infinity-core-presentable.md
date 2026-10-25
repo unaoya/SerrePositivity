@@ -96,10 +96,10 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `CoconeSpecifiedEdgeExtension`：元の余錐と指定辺を保つ全 join 図式の対象ビルド中。
+- `RelativeCoconeEdgeExtension`：指定基底上での全余錐辺の相対延長を対象ビルド中。
 
 ### 次の一手
-- e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型と有限段階からの全可算図式の貼り合わせを使い、指定辺を保つ交互構成から filtered 生成表示へ進む。
+- e5 は小さい native compact 全部分候補圏と μ-small な quasicategory 形状の compact 余極限閉性まで構成。全錐族の同型と指定可算辺列の coherent 実現を使い、基底上の相対交互構成から filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

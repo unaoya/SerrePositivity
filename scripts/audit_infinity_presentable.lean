@@ -762,3 +762,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso_transition
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerveStage_extension
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_extensions
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_inl
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_zero
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_inr
+#check @SerrePositivity.InfinityCategories.F2.Presentable.joinStdSimplexIso_rightEdge_zero
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexTerminalCocone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_front
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_lastEdge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexTerminalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.joinStdSimplexIso_rightEdge_lastVertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialEdgeSimplices
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_simplices
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge_simplex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_realizing_edges
