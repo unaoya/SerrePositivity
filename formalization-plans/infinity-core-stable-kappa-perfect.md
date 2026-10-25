@@ -2,11 +2,11 @@
 
 ## 再割当：strict bar 比較 C1・C2（2026-10-25）
 
-- 現在地：C1 続行中。strict 図式、graded augmentation の全 theta 消滅、
-  dg 加群の filtered strict 余極限による擬同型保存、有限 support の共通上界、
-  末尾付加の次数 −1 作用素と実正規化 MC 加群への移送まで構成。
-  実正規化 bar から strict 余極限への標準 dg 射と、実自己 Hom の MC 微分公式も構成。
-  局所縮約恒等式と最終擬同型性はまだ未完。
+- 現在地：C1 続行中。元の coherent G のホモロジー図式と実 bar の
+  単体次元フィルトレーション、実部分複体の段階模型とその余極限性まで構成。
+  一次成分の閉性、高次 HA の二段下降、零段階での theta 消滅も構成。
+  通常のホモロジー図式の増大 simplicial bar と、実 bar への頂点の閉零射を公開。
+  最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
 - 主定理の入力修正：κ-filtered poset 上でも native 図式は coherent のまま。
@@ -16,7 +16,8 @@
 - 三段目：1 coherent G のホモロジー図式、2 実 bar の単体次元フィルトレーション、
   3 有限 support と filtered 完全性によるホモロジー比較、4 strict 版の特殊化、
   5 自分の集約・専用監査・限定保存、6 B 到着後の比較値と無条件 covers。
-- 残り：単体次元フィルトレーションとホモロジー比較（C1）。
+- 残り：段階商の内部ホモロジーと通常の bar の同定、filtered bar の正次数消滅、
+  有限 support の下降による最終比較、strict 版への特殊化（C1）。
   非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
   高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
   工程 B の余錐と普遍性の代入は C2（B 到着後）。
@@ -24,18 +25,20 @@
   `dgCoherentBarStrictAugmentationGraded`、`dgCoherentBarStrictColumn`、
   `dgStrictFilteredColimit_quasiIso`。
 - 依存：D-bar の正規化加群と公開 MC、Mathlib の ModuleCat AB5 と複体の関手。
-  C1 の証明へ native 普遍性を仮定していない。B は現計画で未構成。
+  C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,462 jobs・専用監査36葉313宣言通過。
+- 検証：coherent 入力への修正後、集約4,471 jobs・専用監査42葉372宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
   高次 HA prefix の二段以上下降、任意の元の有限 support と次元上限。
   評価複体の実部分複体、段同士の包含、段階模型の実余極限性を構成。
   ホモロジー図式の射と元の辺の鎖写像によるホモロジー射の自然性も検証済み。
+  一次列の内部閉性、高次列の二段下降、零段階 theta 消滅、
+  通常の増大 simplicial bar、実正規化 bar への頂点の閉零射も構成。
 - 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
-- 次の一手：coherent G のホモロジー図式と単体次元フィルトレーションを実装する。
+- 次の一手：通常のホモロジー bar の filtered 消滅と、段階商との同定を示す。
   strict 版の既存部品は保持するが、一般の G を strict と仮定しない。
 
 ## 引き継ぎ（2026-10-25）

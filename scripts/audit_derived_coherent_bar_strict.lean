@@ -40,7 +40,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeSubcomplex,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStages,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FilteredModuleUnion,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageColimit]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageColimit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStage,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstClosed,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSimplicial,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentVertexInclusion]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -83,3 +89,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedStageComplex
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedStagesIsColimit
 #check SerrePositivity.InfinityCategories.dgCoherentBarHomologyDiagramObjIso_naturality
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstColumn_d
+#check SerrePositivity.InfinityCategories.dgCoherentBarColumn_sub_first_mem_filtration
+#check SerrePositivity.InfinityCategories.dgHomologyBarColimitAugmented
+#check SerrePositivity.InfinityCategories.dgCoherentBarVertexHomologyMap
