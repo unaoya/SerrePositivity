@@ -106,6 +106,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexDiagrams
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexSequence
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexPiece
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -275,6 +277,8 @@ native な可算 nerve 上の全図式へ貼り合わせた。さらに全増大
 slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域頂点の compact 性は不要。
 両側の元の前置添字形状も一段ずつの標準単体列で正規化し、元の各小さい添字圏内に
 値を取る全可算図式へ貼り合わせた。poset の場合は同じ実頂点列の単調性も得た。
+元の添字図式の全射を、種集合と実頂点列の和への因子化で保持し、初項が種集合を
+支配する場合にこの同じ列が部分 poset 内で final となることも証明した。
 両側の部分表示と全比較図式の部分列との一致、および元の三角形表示の同時細分への
 接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。

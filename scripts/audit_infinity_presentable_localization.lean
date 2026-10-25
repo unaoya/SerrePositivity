@@ -492,3 +492,11 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @exists_comparisonRightIndexDiagram
 #check @nerveIndexSequence
 #check @nerveIndexSequence_monotone
+
+#check @nerveIndexFunctor
+#check @nerveIndexFunctor_nerveMap
+#check @nerveIndexFunctor_obj
+#check @nerveIndexPieceMonotone
+#check @sequentialPieceInclusionFunctor
+#check @nerveIndexPiece_factorization
+#check @nerveIndexPiece_final
