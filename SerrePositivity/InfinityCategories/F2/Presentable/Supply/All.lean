@@ -40,6 +40,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeight
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightLocalColimit
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightYonedaLeftKan
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CosliceHomRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationHomLifting
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftFibrationHomClasses
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationBaseChangeEdges
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。

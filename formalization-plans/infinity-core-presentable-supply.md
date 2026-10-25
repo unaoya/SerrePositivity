@@ -67,6 +67,12 @@
 - 任意の F の coslice 作用による実相対 Hom の制限が同値であることを、
   始対象での二つの実評価の自明 Kan 性から証明した。
 - 最新 Supply.All は 8672 jobs で成功。独立監査は 438 宣言、標準三公理のみ。
+- 元の分類図式間の任意の射を、底を厳密に保つ実全空間射で回収した。
+  分類射が等しいことと、元の相対 Hom 内の頂点が同型なことの同値も証明した。
+- left fibration の底変換が実比較射の coherent な辺に与える作用を、
+  実際の `fiberComparisonBaseChange` の辺と厳密に同定した。
+  その辺の類への作用も、元の指定頂点等式で正規化して同定した。
+- 最新 Supply.All は 8677 jobs で成功。独立監査は 455 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -136,6 +142,10 @@
 - `exists_homWeightYonedaLeftKan`
 - `homWeightYonedaLeftKanComparison`、`homWeightYonedaLeftKanComparison_fac`
 - `cosliceHomRestriction_isQCatEquivalence`
+- `exists_leftClassificationHom`
+- `leftClassificationHom_eq_iff_relativeVertexIso`
+- `leftFibrationBaseChange_edge`
+- `leftFibrationBaseChange_normalizedHom`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -146,8 +156,8 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（局所元の圏比較・密度余極限・Yoneda 左 Kan 候補・coslice Hom 制限の
-  四葉と集約・監査・本計画を記録）。
+- なし（分類 Hom の実射による回収・実相対 Hom 内の同型の反映・底変換の実辺の
+  三葉と集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -172,6 +182,10 @@
   これだけから比較射の可逆性を推論しない。指定単位から来る余錐との両立が残る。
   `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
   共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
+- 分類への移送では、構成した実 Hom の回収・反映を使う。次に
+  `leftStraighteningInfinityMap_baseChangeIso` の自然性を実比較辺の底変換則で
+  正規化し、`leftClassificationHom` と底変換の可換正方形を得る。
+  実相対 Hom 制限との全射・単射の比較を、この指定正方形で閉じる。
 - この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
   `functorHomToHomWeightDiagramEquivalence` と接続する。
   点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。

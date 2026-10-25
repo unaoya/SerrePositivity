@@ -96,3 +96,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_homWeightYonedaLeftKan
 #check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaLeftKanComparison_fac
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomRestriction_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftClassificationHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_eq_iff_relativeVertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationBaseChange_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationBaseChange_normalizedHom
