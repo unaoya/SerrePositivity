@@ -10,8 +10,18 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitMapp
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitMappingVertices
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitMappingKan
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitMappingFibers
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitCosliceTriangle
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUniversalUnits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitFiberComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitData
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInvariance
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitVertices
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitCommaVertices
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitPostcomposition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitial
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitialCriterion
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
 
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。

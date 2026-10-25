@@ -14,9 +14,11 @@
 - 前合成の全パラメータ Hom 全単射、前合成作用の転置と評価の厳密な等式も検証済み。
 - 両局所射影は inner fibration、固定ファイバーは Kan。右ファイバーから
   全関手圏の固定右 coslice の core への単体比較射は元の単位・左関手を保持する。
-- 固定右の coslice–comma 比較は QCat 同値。comma の普遍単位空間の可縮性と
-  coslice の始対象の存在を証明済み。右ファイバーとの同値性は未証明。
-- 最新の専用集約は8,518 jobs 成功、専用監査158宣言は標準3公理のみ。
+- 固定右の coslice–comma 比較は元の単位辺を保つ QCat 同値。
+  指定実単位の随伴条件と coslice の始対象性を同値にし、
+  `RightAdjointUnitSubspace` とその core `RightAdjointUnitSpace` の可縮性を証明済み。
+  元の `adjointUnitRight` の固定ファイバーとの同型は未証明。
+- 最新の専用集約は8,528 jobs 成功、専用監査232宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -40,6 +42,9 @@
 - `rightUniversalUnitSpace_isContractibleKan`
 - `rightUnitCosliceComparison_isQCatEquivalence`、`rightUnitCoslice_hasInitial`
 - `adjointUnitRightFiberToCoslice`、`adjointUnitRightFiberToCore_ι`
+- `qcatAdjunctionChangeLeft`・`qcatAdjunctionChangeRight` と各 `unitHom` の回収公式
+- `rightUnitVertex_isInitial`、`rightUnit_condition_iff_isInitial`
+- `rightAdjointUnitSubspace_isContractibleKan`、`rightAdjointUnitSpace_isContractibleKan`
 - `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
@@ -47,13 +52,13 @@
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,874 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,884 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
 
 ### 未コミット
-- なし（Kan ファイバー・右単位の普遍空間・coslice 比較までを所有ファイルの限定コミットで保存）。
+- なし（固定右の随伴単位空間の可縮性までを所有ファイルの限定コミットで保存）。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -65,9 +70,12 @@
   随伴関手を取り出す高次の対応を公開する入口は確認できなかった。
 - `QCatAdjunction` の証拠を頂点に付けるだけ、または二つの関手圏の積の全部分複体を取るだけでは、
   高次の mate の整合性と両射影の同値性は得られない。
+- inner fibration の可縮ファイバーだけでは射影の同値性は結論できない。
+  辺の持ち上げまたは充満忠実性も証明する。
 
 ### 次の一手
-- 右ファイバーの core 比較の像が普遍単位の全部分空間と一致することを検証する。
+- 元の右ファイバーの core 比較を `RightAdjointUnitSpace` との同型に仕上げる。
+- 単位条件の不変性を使い、右射影の辺の持ち上げと QCat 同値性を検証する。
 - 左側には前合成の随伴と普遍単位の模型を接続する。
 - その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
   深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
@@ -105,7 +113,7 @@ P-d 内で構成を進める場合も、新規葉に限定する。
 
 - ビルド：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
 - 監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
-- 検証済み：専用集約8,518 jobs 成功、所有158宣言の再帰的公理依存は標準3公理のみ。
+- 検証済み：専用集約8,528 jobs 成功、所有232宣言の再帰的公理依存は標準3公理のみ。
 - 主経路の公開名を `#check @...` で検査し、追加 instance 引数なし。
 - 根のビルド、既存 Presentable 集約・監査、`.lake` の削除は行わない。
 - 主経路に `ModelCategory SSet` 等の instance 仮定を導入しない。
