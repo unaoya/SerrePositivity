@@ -7,6 +7,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKInputCompactNativeLiftedComposition,
+    `SerrePositivity.KST.NonConnective.DGKInputCompactNativeFamilyComposition,
+
     `SerrePositivity.KST.NonConnective.DGKInputCompactNativeComposition,
     `SerrePositivity.KST.NonConnective.DGKInputCompactNativeFamily,
     `SerrePositivity.KST.NonConnective.DGKInputIndCompactGeneration,

@@ -7,6 +7,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.WeakQuotientMappingEquivalence,
     `SerrePositivity.KST.Fibration.WeakIdentityQuotientValueCoordinates,
     `SerrePositivity.KST.Fibration.WeakIdentityQuotientZeroValue,
     `SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamilyIdentity,

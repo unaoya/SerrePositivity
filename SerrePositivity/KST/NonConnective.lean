@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeLiftedComposition
+public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeFamilyComposition
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComposition
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeFamily
 public import SerrePositivity.KST.NonConnective.DGKInputIndCompactGeneration

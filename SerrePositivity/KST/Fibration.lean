@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.WeakQuotientMappingEquivalence
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientValueCoordinates
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientZeroValue
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamilyIdentity

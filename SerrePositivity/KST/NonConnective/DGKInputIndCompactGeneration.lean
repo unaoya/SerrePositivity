@@ -1,11 +1,11 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKInputIdempotentComplete
-public import SerrePositivity.InfinityCategories.F2.Ind.StableSourceCompactGeneration
+public import SerrePositivity.InfinityCategories.F2.Ind.UnconditionalStableCompactGeneration
 
 /-!
 概要：固定 dg 入力の元の ν 値を、同じ Indω の compact 生成界面へ接続する。
 方針：元の ν の安定性と冪等完備性を、有限全存在を要しない Ind 正本の入口へ渡す。
-規約：Ind の安定性は明示交換入力に条件付き。D-8 の κ-compact cone と同一視しない。
+規約：Ind の安定性に交換入力を追加せず、D-8 の κ-compact cone と同一視しない。
 使われ方：K-7 d4 の元の包含・選択比較。構造射と全 dg 入力での照合は別工程。
 -/
 
@@ -81,25 +81,23 @@ theorem dgKInputInd_isCompact_iff_yoneda (x : (dgKInputIndCompletion R A) _⦋0�
           (Opposite.op ⦋0⦌) (ULift.up y)) x) :=
   ind_isKappaCompact_iff_yoneda Cardinal.aleph0 (dgKInputStableValue_isIdempotentComplete R A) x
 
-/-- 概要：固定 ν の Indω は、明示交換入力のもとで元の compact 生成界面を持つ。
-方針：有限全存在を内部で供給する Ind 正本の最終公開入口へ同じ ν 値を渡す。
-規約：有限全存在を追加仮定にせず、交換入力だけを明示する。
+/-- 概要：固定 ν の Indω は、元の compact 生成界面を追加の交換入力なしで持つ。
+方針：交換を定理化した Ind 正本の最終公開入口へ同じ安定な ν 値を渡す。
+規約：交換入力も有限全存在も追加仮定にしない。
 使われ方：K-7 d4 の安定性・完全 Yoneda・元の全頂点の filtered 生成表示。 -/
-def dgKInputStableCompactGeneration
-    (hex : IndFiniteLimitExchangeInput.{max (u + 1) v}) :
+def dgKInputStableCompactGeneration :
     StableCompactGeneration Cardinal.aleph0 (dgKInputStableValue R A).obj :=
-  ind_stableCompactGeneration_of_isStable Cardinal.aleph0 le_rfl hex _
+  ind_stableCompactGeneration_unconditional Cardinal.aleph0 le_rfl _
     (dgKInputStableValue_isIdempotentComplete R A)
 
 /-- 概要：安定 compact 生成界面も同じ元の生成同値を保持する。
 方針：最終公開入口が元の生成同値を保持する正本の厳密等式を使う。
-規約：交換入力や有限全存在の証拠によって生成同値を選び直さない。
+規約：元の生成同値と包含を選び直さない。
 使われ方：K-7 d4 の固定した包含と安定 Ind 界面の厳密照合。 -/
-theorem dgKInputStableCompactGeneration_equivalence
-    (hex : IndFiniteLimitExchangeInput.{max (u + 1) v}) :
-    (dgKInputStableCompactGeneration R A hex).equivalence =
+theorem dgKInputStableCompactGeneration_equivalence :
+    (dgKInputStableCompactGeneration R A).equivalence =
       dgKInputCompactGenerationEquivalence R A :=
-  ind_stableCompactGeneration_of_isStable_equivalence Cardinal.aleph0 le_rfl hex _
+  ind_stableCompactGeneration_unconditional_equivalence Cardinal.aleph0 le_rfl _
     (dgKInputStableValue_isIdempotentComplete R A)
 
 /-- 概要：任意の compact 入力族に対し、同じ生成逆射と元の包含は全関手同型。
