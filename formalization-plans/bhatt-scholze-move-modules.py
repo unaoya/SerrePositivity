@@ -27,6 +27,7 @@ OWNED = [
     re.compile(r"^SerrePositivity/Inputs/Perfectoidization\.lean$"),
     re.compile(r"^scripts/audit_bhatt_scholze[^/]*\.lean$"),
     re.compile(r"^scripts/audit_clmst[^/]*\.lean$"),
+    re.compile(r"^scripts/audit_andre_[^/]*\.lean$"),
     re.compile(r"^scripts/audit/bhatt_scholze\.lean$"),
     re.compile(r"^scripts/audit/clmst\.lean$"),
 ]
