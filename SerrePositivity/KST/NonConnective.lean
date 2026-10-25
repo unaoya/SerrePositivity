@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelYoneda
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelRepresentability
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupplyComparison
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupply
 public import SerrePositivity.KST.NonConnective.DGKInputCompactGenerationAdjoint
