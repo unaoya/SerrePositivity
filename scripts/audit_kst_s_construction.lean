@@ -32312,3 +32312,51 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHom
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleStableObject
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleStableObject
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleMaximalComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleMaximalComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleMaximalComposite_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleMaximalComposite_zero
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFStageSquare
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFStageSquare
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexCategory
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexSpectrum
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexSpectrum
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAProjection
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAProjection
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAProjection_rlp
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSOAProjection_rlp
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveProjection_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_bottom
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_bottom
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_right
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_right
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_left
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_left
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_top
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_top
