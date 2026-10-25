@@ -2930,3 +2930,51 @@ anodyne を反転する指定関手への版は同じ接頭辞の `left/right_is
 畳み込み一般版は、コーディネータ指示により KST 側を読み取り専用で参照して
 EInfinity に構成した準重複。KST の import は追加していない。
 第 I 段終了時に R が Sp の畳み込み・定数射の版をこの入口へ付け替える。
+
+
+## 一般 right frame 比較の準備（E2-S (6)、未完）
+
+`FrameHom.rightFrameFamilyOfFactorization` は任意モデル圏の第二の関手的分解から
+反対圏の同じ cofibrant 解像族を作る。`rightFrameDiagram` と `rightFrameUnit` は
+元の圏の対象・射に戻した全標的の実図式と augmentation。
+`rightFrameHom r X` は全標的 Y における `Hom(X,RⁿY)` を厳密な関手に束ね、
+`rightFrameHomUnit` は元の射を同じ augmentation 合成へ送る。
+`rightFrameHom_kanComplex` は cofibrant X に対し任意の Y で Kan 性を与え、
+`rightFrameHom_map_isQCatEquivalence` は標的弱同値の像自身が QCat 同値であることを示す。
+単体集合のモデル構造は要求しない。任意の添字図式への前合成で全自然性を保持する。
+
+`rightFrameElementSpanFunctor` は Hom の全単体を恒等左脚・元の augmentation 右脚の
+特殊三本矢へ送る。これはまだその nerve の弱同値性や局所化普遍性を含まない。
+`FrameHom/LocalizationComparison` は承認された一般局所化の一意性だけを
+KST から暫定 import する葉で、dg 代数側の KST モジュールは参照しない。
+`localizationComparison_pinchedHom_isQCatEquivalence` は指定比較 K の Hom 射を反転し、
+`localizationPinchedComparison_isQCatEquivalence` は厳密三角形の明示入力の下で
+両方の元の局所化頂点を保持した実比較を与える。
+一般の `FunctorIso (F ≫ K) G` を厳密な等式として扱うことはしない。
+
+ユーザー承認により coherent な形式を採用する。
+`localizationComparisonData` は同じ比較 K と指定二胞体を保持し、
+`CoherentLocalizationComparison.pinchedEquivalence` は両端の成分による共役を含む実 QCat 同値。
+二胞体は `.triangle`、全射での自然性は `.triangle_naturality` で公開する。
+`pinchedEndpointEquivalence_family` は任意のパラメータ族で同じ共役の公式を与える。
+
+`rightFrameRoofComparison_isWeakHomotopyEquivalence` は反対圏の同じ frame の全単体と
+全右屋根の実比較を反転する。`rightFrameReplacement` は元の right frame の次数零で、
+fibrant 値・cofibrancy の保存・弱同値の保存を持つ。
+`FibrantRightSpans.inclusion_isWeakHomotopyEquivalence` はこの同じ置換と自然単位を使い、
+fibrant な右終域の全図式の包含の nerve 自身を弱同値と示す。
+全対象 fibrant の仮定は要求しない。
+
+`SimplicialLocalization.modelCofibrantRelativeCategory` は任意モデル圏の cofibrant 全部分圏を束ねる。
+`modelCofibrantFrame`・`modelCofibrantFrameHomIso` は元の Reedy 解像の全作用素と実 Hom を保持する。
+`modelCofibrantFrameRightKanMap` は同じ augmentation による実次数比較で、
+`modelCofibrantFrameRightKanMap_projection` は元の射影を厳密に回収する。
+`modelCofibrantFrame_hasLimit` は弱同値を反転する全関手の同じ frame 図式の極限を与える。
+
+**未完部分**：実次数比較の余終性、三つの一般 right Kan 判定入力による局所化普遍性、
+frame Hom から指定局所化の pinched Hom への全族の比較と同じ射の QCat 同値性、零単体の coherent な正規化。
+代数版の既存宣言は保持し、一般化部分は第 I 段終了時の R の準重複整理対象とする。
+
+代数版の raw roof による余終性判定は標的の fibrancy を使う。
+この補題を cofibrant 部分圏の非 fibrant 標的へ無条件に移したとは扱わない。
+bifibrant 部分圏で判定した後、同じ right frame の変形で cofibrant 部分圏と全 C へ戻す補助経路を採用した。

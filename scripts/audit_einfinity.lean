@@ -10002,6 +10002,86 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.FrameHom.frameComparison_right_isWeakHomotopyEquivalence]
 
 
+@[noinline] private def e2RequiredBatch231 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.rightFrameFamilyOfFactorization,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameDiagram,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameUnit,
+      `SerrePositivity.EInfinity.FrameHom.ordinaryHomFamily,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHomUnit,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHomUnit_app,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_obj,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_map,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHomOpIso,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_kanComplex,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHomOpIso_naturality,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_map_isIso,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_map_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameHom_map_isQCatEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameUnit_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameElementSpan,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameElementSpanFunctor,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameElementSpan_unit_middle,
+      `SerrePositivity.EInfinity.FrameHom.localizationComparison_pinchedHom_isQCatEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.localizationPinchedComparison,
+      `SerrePositivity.EInfinity.FrameHom.localizationPinchedComparison_isQCatEquivalence]
+
+@[noinline] private def e2RequiredBatch232 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.FrameHom.pinchedPrecomposeEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.pinchedPostcomposeEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.pinchedEndpointEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.pinchedPrecomposeEquivalence_family,
+      `SerrePositivity.EInfinity.FrameHom.pinchedPostcomposeEquivalence_family,
+      `SerrePositivity.EInfinity.FrameHom.pinchedEndpointEquivalence_family,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.property,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.FibrantSpan,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.inclusion,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.replacedObject,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.replacement,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.retraction,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.unitMap,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.unit,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.FibrantRightSpans.inclusion_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison,
+      `SerrePositivity.EInfinity.FrameHom.localizationComparisonData,
+      `SerrePositivity.EInfinity.FrameHom.localizationComparisonData_triangle,
+      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.pinchedEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.pinchedEquivalence_hom,
+      `SerrePositivity.EInfinity.FrameHom.CoherentLocalizationComparison.triangle_naturality,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameDiagram_isFibrant,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacement,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacementUnit,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacementUnit_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacement_isFibrant,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacement_isCofibrant,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameReplacement_map_weak,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofCategory,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.rightFrameRoofComparison_middle,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrame,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrame_inclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantDKFrame,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantDKFrameAugmentation,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantDKFrame_map_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantDKFrameAugmentation_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameHomIso,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantInclusion,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantRelativeCategory,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantRelativeCategory_weak_iff,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantObject,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantInclusionRelative,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelFrameIndex_weaklyContractible,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantHammockVertex,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameAugmentation_invertible,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap_projection,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrameRightKanMap_diagram,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantFrame_hasLimit]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -10035,7 +10115,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229, e2RequiredBatch230] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229, e2RequiredBatch230, e2RequiredBatch231, e2RequiredBatch232] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -27024,3 +27104,139 @@ example
   FrameHom.targetComparison_right_isWeakHomotopyEquivalence fib fib₁ fib₂ q X Y
 
 end e2Fixtures230
+
+noncomputable section e2Fixtures231
+open CategoryTheory Limits HomotopicalAlgebra Opposite
+open SerrePositivity SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.Reedy SerrePositivity.DifferentialGraded
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+universe e2F231U e2F231V e2F231I e2F231J
+variable {C : Type e2F231U} [Category.{e2F231V} C] [ModelCategory C]
+  (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+  (X : C) [IsCofibrant X]
+
+attribute [local instance] rightFrameHom_kanComplex
+
+example (Y : C) : SSet.KanComplex ((rightFrameHom r X).obj Y) :=
+  rightFrameHom_kanComplex r X Y
+example {Y Z : C} (f : Y ⟶ Z) (hf : weakEquivalences C f) :
+    IsQCatEquivalence ((rightFrameHom r X).map f) :=
+  rightFrameHom_map_isQCatEquivalence r X f hf
+example {Y Z : C} (f : Y ⟶ Z) :
+    (ordinaryHomFamily X).map f ≫ (rightFrameHomUnit r X).app Z =
+      (rightFrameHomUnit r X).app Y ≫ (rightFrameHom r X).map f :=
+  (rightFrameHomUnit r X).naturality f
+example {I : Type e2F231I} [Category.{e2F231J} I] (F : I ⥤ C) :
+    F ⋙ ordinaryHomFamily X ⟶ F ⋙ rightFrameHom r X :=
+  Functor.whiskerLeft F (rightFrameHomUnit r X)
+example (Y : C) (n : SimplexCategoryᵒᵖ) (f : X ⟶ Y) :
+    (((rightFrameHomUnit r X).app Y).app n) f =
+      f ≫ ((rightFrameUnit r).app Y).app n := rightFrameHomUnit_app r X Y n f
+example (Y : C) : ((rightFrameHom r X).obj Y).Elements ⥤ SpecialHammock X Y :=
+  rightFrameElementSpanFunctor r X Y
+example (Y : C) (s : ((rightFrameHom r X).obj Y).Elements) :
+    (rightFrameElementSpan r X Y s).middle = s.val := rfl
+example (Y : C) (n : SimplexCategoryᵒᵖ) :
+    trivialCofibrations C (((rightFrameUnit r).app Y).app n) :=
+  rightFrameUnit_trivialCofibration r Y n
+example (fib : MorphismProperty.FunctorialFactorizationData
+    (trivialCofibrations C) (fibrations C)) :
+    CofibrantResolutionFamily (C := Cᵒᵖ) simplex := rightFrameFamilyOfFactorization fib
+
+section Localization
+variable {A Q D : SSet.{e2F231U}} [SSet.Quasicategory Q] [SSet.Quasicategory D]
+  (F : A ⟶ Q) (G : A ⟶ D) (W : Set (A _⦋1⦌))
+  (hF : IsLocalization F W) (hG : IsLocalization G W)
+  (K : Q ⟶ D) (e : FunctorIso (F ≫ K) G)
+
+example (x y : Q _⦋0⦌) : IsQCatEquivalence (pinchedHomMap K x y) :=
+  localizationComparison_pinchedHom_isQCatEquivalence F G W hF hG K e x y
+example (h : F ≫ K = G) (x y : A _⦋0⦌) :
+    IsQCatEquivalence (localizationPinchedComparison F G K h x y) :=
+  localizationPinchedComparison_isQCatEquivalence F G W hF hG K e h x y
+end Localization
+end e2Fixtures231
+
+noncomputable section e2Fixtures231DG
+open CategoryTheory Limits HomotopicalAlgebra HomologicalComplex
+open SerrePositivity SerrePositivity.Reedy
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.DifferentialGraded
+universe e2F231R
+variable (R : Type e2F231R) [CommRing R]
+attribute [local instance] DGAlgebra.hasBinaryProducts DGAlgebra.hasTerminal
+
+private def e2S6dgRightFrame :
+    let := DGAlgebra.modelCategory R
+    CofibrantResolutionFamily (C := (Mon (Complex R))ᵒᵖ) simplex := by
+  let := DGAlgebra.modelCategory R
+  have := DGAlgebra.modelCategory_cofibrantlyGenerated R
+  have := ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+    (DGAlgebra.generatingCofibrations (R := R))
+    (DGAlgebra.generatingTrivialCofibrations (R := R))
+  exact rightFrameFamilyOfFactorization (MorphismProperty.functorialFactorizationData
+    (trivialCofibrations (Mon (Complex R))) (fibrations (Mon (Complex R))))
+
+local instance : ModelCategory (Mon (Complex R)) := DGAlgebra.modelCategory R
+
+example (X : Mon (Complex R)) [IsCofibrant X] (Y : Mon (Complex R)) :
+    SSet.KanComplex ((rightFrameHom (e2S6dgRightFrame R) X).obj Y) :=
+  rightFrameHom_kanComplex (e2S6dgRightFrame R) X Y
+
+attribute [local instance] rightFrameHom_kanComplex
+example (X : Mon (Complex R)) [IsCofibrant X] {Y Z : Mon (Complex R)}
+    (f : Y ⟶ Z) (hf : QuasiIso f.hom) :
+    InfinityCategories.IsQCatEquivalence ((rightFrameHom (e2S6dgRightFrame R) X).map f) := by
+  have hw : weakEquivalences (Mon (Complex R)) f :=
+    (HomologicalComplex.mem_quasiIso_iff _).mpr hf
+  exact rightFrameHom_map_isQCatEquivalence (e2S6dgRightFrame R) X f hw
+end e2Fixtures231DG
+
+noncomputable section e2Fixtures232
+open CategoryTheory Limits HomotopicalAlgebra Opposite
+open SerrePositivity SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+universe e2F232U e2F232V
+variable {C : Type e2F232U} [Category.{e2F232V} C] [ModelCategory C]
+  (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+
+example (X Y : C) :
+    IsWeakHomotopyEquivalence (nerveMap (FibrantRightSpans.inclusion X Y)) :=
+  FibrantRightSpans.inclusion_isWeakHomotopyEquivalence r X Y
+example (X Y : C) :
+    IsWeakHomotopyEquivalence (nerveMap (rightFrameRoofComparison r X Y)) :=
+  rightFrameRoofComparison_isWeakHomotopyEquivalence r X Y
+example (Y : C) : IsFibrant ((rightFrameReplacement r).obj Y) :=
+  rightFrameReplacement_isFibrant r Y
+example (Y : C) [IsCofibrant Y] : IsCofibrant ((rightFrameReplacement r).obj Y) :=
+  rightFrameReplacement_isCofibrant r Y
+example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj) :
+    modelCofibrantFrame X q ⋙ CofibrantObject.ι = q.obj := modelCofibrantFrame_inclusion X q
+example (X : CofibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
+    {E : SSet.{max e2F232U e2F232V}} [SSet.Quasicategory E]
+    (F : nerve (modelCofibrantRelativeCategory C).category ⟶ E)
+    (hF : InvertsEdges F (weakNerveEdges (modelCofibrantRelativeCategory C))) :
+    HasLimit (nerveMap (modelCofibrantDKFrame X q) ≫ F) :=
+  modelCofibrantFrame_hasLimit X q F hF
+
+section Coherent
+variable {A Q D T : SSet.{e2F232U}} [SSet.Quasicategory Q] [SSet.Quasicategory D]
+  {F : A ⟶ Q} {G : A ⟶ D} (c : CoherentLocalizationComparison F G)
+
+example (x y : A _⦋0⦌) :
+    QCatEquivalence (pinchedHom (F.app (op ⦋0⦌) x) (F.app (op ⦋0⦌) y))
+      (pinchedHom (G.app (op ⦋0⦌) x) (G.app (op ⦋0⦌) y)) := c.pinchedEquivalence x y
+example {x y x' y' : D _⦋0⦌}
+    (ex : SSet.HomotopyCategory.mk x ≅ SSet.HomotopyCategory.mk x')
+    (ey : SSet.HomotopyCategory.mk y ≅ SSet.HomotopyCategory.mk y')
+    (f : T ⟶ pinchedHom x y) :
+    intervalFamilyHom ((f ≫ (pinchedEndpointEquivalence ex ey).hom) ≫
+      pinchedHomToIntervalMappingSpace x' y') = constantFunctorHomMap T ex.inv ≫
+        intervalFamilyHom (f ≫ pinchedHomToIntervalMappingSpace x y) ≫
+          constantFunctorHomMap T ey.hom := pinchedEndpointEquivalence_family ex ey f
+end Coherent
+end e2Fixtures232

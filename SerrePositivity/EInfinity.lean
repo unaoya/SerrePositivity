@@ -2511,3 +2511,11 @@ public import SerrePositivity.EInfinity.ComplexLimits.PullbackHomTargetTrivial
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
 
 public import SerrePositivity.EInfinity.FrameHom.ReplacementComparison
+
+public import SerrePositivity.EInfinity.FrameHom.RightFrameInvariance
+public import SerrePositivity.EInfinity.FrameHom.RightFrameSpans
+public import SerrePositivity.EInfinity.FrameHom.LocalizationComparison
+
+public import SerrePositivity.EInfinity.FrameHom.RightFrameRoofComparison
+public import SerrePositivity.EInfinity.FrameHom.FibrantRightSpans
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantRightKanShape
