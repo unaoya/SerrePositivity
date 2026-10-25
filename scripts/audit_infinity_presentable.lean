@@ -837,3 +837,9 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.familySaturationEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallFamilySaturationModel
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequencePreservedImageColimitIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactOverVertex_of_sequential_comparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberOverVertex_of_sequential_comparison
