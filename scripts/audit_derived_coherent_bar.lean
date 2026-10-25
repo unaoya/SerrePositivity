@@ -65,7 +65,25 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedTargetProjection,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSimplexData,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSimplices,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeLabelCoordinates]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeLabelCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.SubsetPartialNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.BianchiLabelPartialNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSimplexNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.ShiftedHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedNativeHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeHomComposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeHomUniversalColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeCoordinateNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeDegenerateColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSubsetCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LastPostcompositionResidual,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomCandidate,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomRestoration,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeFullCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeUniversalMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeUniversalMapUnique]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

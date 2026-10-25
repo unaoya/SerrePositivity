@@ -4,7 +4,7 @@
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（3678 jobs、55葉）。専用公理監査成功（596宣言、標準三公理のみ）。
+- 所有 All のビルド成功（3816 jobs、73葉）。専用公理監査成功（746宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
@@ -16,7 +16,10 @@
 - 19:40 採用の正規化中間模型・同じ theta の変形 retract を続行中。
 - 工程B：正規化実 bar の全次数 Hom・非退化列の微分同値、実 native 列と退化消滅を構成。
 - D の Bianchi データを再利用し、全 HA 単体 NativeSimplex と全末端成分のラベル比較を構成。
-- 単体作用に対する自然性・JoinCocone への貼り合わせ・native Hom 普遍性は未完。
+- 全単調写像に対する自然性と正規化 native JoinCocone を構成（無条件版も公開）。
+- 全次数の native 成分写像の線形同値と閉列微分の対応を証明。
+- 任意の native 余錐の全成分を復元する閉加群射 UniversalMap と成分による一意性を構成。
+- 高次余錐族の逆構成と写像空間の同値は未完。零次の一意性で代用しない。
 - c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
 ### 残り（依存順）
 - 1. 工程A：変形 retract は D に移管。CoherentBar/Retract/ の新規葉は読み取り専用。
@@ -44,6 +47,9 @@
 - dgCoherentBarNativeColumn、dgCoherentBarNativeColumn_degenerate／vertex_closed／d_positive。
 - dgCoherentBarNativeSimplex、dgCoherentBarNativeSimplex_front／last。
 - dgCoherentBarNativeSimplexData_last_hom_heq。
+- dgCoherentBarNormalizedNativeCocone／NormalizedNativeCoconeUnconditional。
+- dgCoherentBarNativeHomUniversalColumns／NativeClosedHomEquiv。
+- dgCoherentBarCoconeUniversalMap／UniversalMap_unique／UniversalMapUnconditional。
 ### 依存と提供
 - D の既存 Derived・DGNerve・DifferentialGraded と KST/NonConnective は読み取り専用。
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
@@ -51,14 +57,15 @@
 - MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
 - 編集所有は Derived/CoherentBar/（Retract/・StrictComparison/ を除く）、その All、専用監査、本計画のみ。
 ### 未コミット
-- なし（工程Bの検証済み9葉・所有集約・監査・計画を限定保存）。
+- 工程Bの検証済み18葉・所有集約・監査・計画を限定保存する。
 ### 既知の問題
-- native 余錐・普遍性と filtered 評価比較は未構成。代数的閉列同値を native 普遍性とは扱わない。
+- native 余錐は構成済み。全写像空間の普遍性と filtered 評価比較は未完。
+  代数的閉列同値や零次の普遍射を全 native 普遍性とは扱わない。
 - 安定作用素が退化因子を消すことと、実射影の補正包含・変形 retract が残る。
   安定自己写像の恒等への鎖ホモトピーだけで、正規化模型との retract とは扱わない。
 - MC 仮定付き API を保持し、公開 MC 定理を代入する無条件 API を併設。
 ### 次の一手
-- 任意の単調写像に対する NativeSimplex の自然性を証明し、JoinCocone と全 Hom 普遍性へ進む。
+- 任意の高次余錐族からの Hom 成分復元を構成し、写像空間の同値へ進む。
 
 ## 採用された設計追加（19:40）
 - 根拠：dgCoherentBarIndex は退化を含む全単体を独立因子にする。
