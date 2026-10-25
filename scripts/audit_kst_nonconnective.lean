@@ -7,6 +7,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFSquare,
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFZero,
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFiberComparison,
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFOneStage,
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFConeZero,
+    `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFConnectiveStructure,
     `SerrePositivity.KST.NonConnective.DGKappaNativeBFBoundaryInput,
     `SerrePositivity.KST.NonConnective.DGKappaNativeBFArrowComparison,
     `SerrePositivity.KST.NonConnective.DGKappaNativeBFRightArrow,

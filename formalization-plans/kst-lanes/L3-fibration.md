@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は採用済み再構成・因子分解命題の条件付き消費まで成功（653 モジュール・4343 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（654 モジュール・4362 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -179,7 +179,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 -- Supply specification only; no existence assumption in the main route.
-def indS9ControlledTriangleFamilyRequest : Prop :=
+def indS9ControlledTriangleFamilyRequest: Prop :=
   ∀ (X Y Z : KanObject.{u}) (K : SSet.{u + 1})
     (f : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Y))
     (g : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom Y Z))
@@ -217,6 +217,20 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
       HEq (Lt.app (Opposite.op ⦋0⦌) k)
         (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))) ∧
+    (∀ t : T _⦋0⦌,
+      let direct : P :=
+        { I := {ULift.up 0, ULift.up 2}
+          left := by simp
+          right := by simp
+          left_le := fun k _ => Fin.zero_le k.down
+          le_right := fun k _ => Fin.le_last k.down }
+      let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+        ((longHom.app (Opposite.op ⦋0⦌) t).val)
+      let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+      (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
+        (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
+          (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
+            intervalMappingUncurry (coherentHomIntervalComparison X Z)) ∧
     (∀ b : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u},
       let E := vertexFiber ((pre ((horn 3 (2 : Fin 4)).ι ▷ K)).app SpaceInfinity.{u})
         (functorVertex b)
@@ -241,8 +255,8 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 
 ### 採用済み：同じ未完備実列だけの有限 BF 四角形比較
 - `kSpectrumMap` の射ごとの供給だけから、元の native 二胞体を持つ実 BF 四角形は回収しない。一般の BF 高次面整流は L1 のユーザー指示で中断済み。固定 `dgKInputK` を代入すると商が Perf 完備化後に戻る。
-- ユーザー採用：同じ D-9 の厳密 dg 実列の一つの native 提示だけに限る有限 BF 比較を K-S• へ依頼済み。届くまでは同じ存在命題を明示定理引数として消費する。ユーザー採用の K-S•-S3 型変更：同じ四 BF 頂点の間の新 coherent 四辺を用い、旧 kSpectrumMap とは全正段の指定比較と全整数 π 作用の一致を要求する。旧辺との厳密等式は撤回。全正段で元の S• 境界商の全四角形への比較も保持する。一般 StableInfinity の K 関手化は再開せず、供給命題の存在は主張しない。
-- [採用型と範囲](archive/L3-raw-bf-square-proposal.md)。`DGKappaNativeBFBoundaryInput` は変更済み hBF のデータ表示。`DGKappaNativeBFSquare` は新四辺・同じ四頂点・全正段の全図式比較を保持する。`DGKappaNativeBFArrowComparison` は指定正段比較と全整数 π 一致を介して旧 K-cof の結論を新辺へ渡す。`DGKappaNativeBFRightArrow` は実 Φ の右辺を同じ新 BF 射に回収し、その π 作用を旧商射へ照合する。旧商射の Sp fiber との同型は主張しない。`DGKappaNativeBFZero` は同じ実零角を全正段から認証し、`DGKappaNativeBFFiberComparison` は元の cospan の実極限錐への同じ全比較辺を供給する。主経路 `DGKappaNativeBFOneStage` は一回の S• 引き戻しだけから同じ実比較の非負次数 π 同型を検出する。`DGKappaNativeBFConnectiveKernel` は指定上側全族・動く共有対角と正段商比較をこの判定と同じ固定 K 構造射へ代入する。存在の証明や一般 BF 整流の再開はしない。c4・c5 と K-7 c5・d3 の印は未完。
+- ユーザー採用の有限 BF 比較は K-S•-S3 から実供給済み。同じ D-9 未完備実列の元二胞体を、新 BF 四対象・四辺上の実 Φ へ送り、各正段の全 S• 四角形比較と旧 K への指定整数群同型との可換性を保持する。`DGKappaSuppliedBF*` の主利用側は供給を直接消費し、hBF の存在引数を取らない。一般 StableInfinity の K 関手化は再開しない。
+- [旧四対象固定型と範囲](archive/L3-raw-bf-square-proposal.md) の `DGKappaNativeBFBoundaryInput`・`DGKappaNativeBFSquare`・旧 hBF に条件付きの fiber・loop・固定 K 構造射の利用側は保持する。ただし実 S3 の BF 対象は旧四対象と厳密には等しくなく、旧 hBF の存在は主張しない。実供給側の構造辺から固定 K への戻しは末尾の二頂点比較の設計補足で扱う。c4・c5 と K-7 c5・d3 の印は未完。
 
 ### c5 の有限第一行比較の消費
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。
@@ -256,10 +270,14 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 
 | 明示定理引数 | 型の正本（SerrePositivity/ 以下） | 供給元・回収内容 |
 |---|---|---|
-| `h9 : zeroMiddleControlledTriangleSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:32 | Ind-S (9)：指定二短辺・合成端・全族 encode/read の厳密切断・指定点の全 native Hom 回収 |
-| `h9b : zeroMiddleFactorizationTetraSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:80 | Ind-S (9b)：元の native 面・二つの厳密合成面・欠面の全 native Hom 回収 |
+| `h9 : zeroMiddleControlledTriangleSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:32 | Ind-S (9)：指定二短辺・合成端・全族 encode/read の厳密切断・指定点の全 native Hom 回収・共有対角の全族厳密回収 |
+| `h9b : zeroMiddleFactorizationTetraSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:94 | Ind-S (9b)：元の native 面・二つの厳密合成面・欠面の全 native Hom 回収 |
 
 - どちらも採用済み命題の明示引数であり、存在は主張しない。`ZeroMiddleFullSReconstruction`・`ZeroMiddleReconstructedFamily` は元の core 始域・全 S• 中間頂点と同じ短辺への再構成・実ホーン回収・同じ実入力への読戻しを保持する。`ZeroMiddleFactorizationTetra`・`ZeroMiddleFactorizationComparison` は同じ実因子分解族の三面・長 Hom を回収し、ホーン全体の回収後に既存充填との固定三面 fiber 内比較へ渡す。動く共有対角の貼り合わせと K-6 c4・c5、K-7 c5・d3 の無条件化は未完。
 
-### 追加仕様確認：全族の共有対角の厳密回収（未採用）
-- 現行 (9) の各 K 頂点の全 native Hom 回収から、K の非退化一単体に沿う共有対角の厳密式を推論しない。同じ encode/read に直接 path 評価の全族回収式を添える補足案をユーザー経由で提示する。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。本体へ新たな存在仮定は追加しない。
+### 採用済み仕様補足：全族の共有対角の厳密回収
+- ユーザー採用、Ind-S (9) へ中継済み。各 K 頂点の全 native Hom 回収から全時刻の式を推論せず、同じ encode/read に直接 path 評価の全族厳密回収式を添える強化命題を明示引数に取る。`ZeroMiddleReconstructedDiagonal` は元の実長 Hom 入力から再構成された上側の共有対角を、Δ[1] ⊗ K 上で厳密回収する。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。本体へ新たな存在仮定は追加しない。
+
+### K-S•-S3 の実供給の消費と二頂点比較の設計補足（未採用）
+- 実供給 `dgKappaNativeCoherentBFSquare` は新 BF 四対象を持ち、旧 K とは指定整数群同型を介して四辺の π 作用が可換。`DGKappaSuppliedBFSquare` は元の全 S• 比較と旧 K-cof の群作用を消費し、`DGKappaSuppliedBFZero`・`DGKappaSuppliedBFFiberComparison`・`DGKappaSuppliedBFOneStage` は hBF の存在仮定なしで零角・同じ実 fiber 比較・非負次数 π 比較へ接続する。`DGKappaSuppliedBFConeZero`・`DGKappaSuppliedBFConnectiveStructure` は同じ cone の零性から新 BF 上の実構造辺を作る。旧四対象を固定した hBF の条件付き定理は保持する。
+- 固定 K へ戻すには、実核と実商の二頂点だけの実 Sp 同型を K-S• 正本へ追加依頼する設計補足を提示した。[型（28行）・範囲・採否の影響](archive/L3-supplied-bf-vertex-comparison.md)。本体の存在仮定には未追加。整数群の抽象同型だけから Sp 同型を推論しない。

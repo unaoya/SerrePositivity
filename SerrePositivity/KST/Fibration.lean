@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.ZeroMiddleReconstructedDiagonal
 public import SerrePositivity.KST.Fibration.ZeroMiddleReconstructionSupply
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSReconstruction
 public import SerrePositivity.KST.Fibration.ZeroMiddleReconstructedFamily

@@ -154,6 +154,36 @@ def zeroMiddleFullSReconstructionRecovery
       (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (st.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
 
+/-- 概要：同じ全族読出しの直接 path 評価は実共有対角を厳密回収する。
+方針：採用済み補足の全一単体式を同じ core 始域・全 S• 中間頂点へ特殊化する。
+規約：パラメータの頂点だけの式へ弱めない。供給命題に条件付き。
+使われ方：動く共有対角を全時刻で同じ下側へ貼り合わせる。 -/
+def zeroMiddleFullSReconstructionDiagonalRecovery
+    (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
+      zeroMiddleFullSReconstructionLongSpace s hZ K) : Prop :=
+  let P := CategoryTheory.SimplicialThickening.Path
+    (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
+  let Pu := (SSet.uliftFunctor.{u + 1, u}).obj (nerve P)
+  let H := (SSet.uliftFunctor.{u + 1, u}).obj
+    (SimplicialCategory.sHom (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
+      (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
+  ∀ t : (zeroMiddleFullSReconstructionTriangleSpace s hZ K) _⦋0⦌,
+    let direct : P :=
+      { I := {ULift.up 0, ULift.up 2}
+        left := by simp
+        right := by simp
+        left_le := fun k _ => Fin.zero_le k.down
+        le_right := fun k _ => Fin.le_last k.down }
+    let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+      ((longHom.app (Opposite.op ⦋0⦌) t).val)
+    let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+    (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
+      (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
+        (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
+          intervalMappingUncurry (coherentHomIntervalComparison
+            (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
+            (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
+
 /-- 概要：供給命題に条件付きで、同じ実長 Hom 空間から制御二胞体空間への切断がある。
 方針：同じ core 始域・全 S• 中間頂点と元の二短辺を Ind-S (9) へ代入する。
 規約：存在は供給命題の明示引数に条件付き。全族回収・指定点の全 native Hom を保持する。
@@ -163,15 +193,17 @@ theorem zeroMiddleFullSReconstruction_exists (h9 : zeroMiddleControlledTriangleS
         zeroMiddleFullSReconstructionTriangleSpace s hZ K)
       (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
         zeroMiddleFullSReconstructionLongSpace s hZ K),
-      encode ≫ longHom = 𝟙 _ ∧ zeroMiddleFullSReconstructionRecovery s hZ K longHom := by
-  obtain ⟨encode, longHom, he, hread, _⟩ := h9 (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
+      encode ≫ longHom = 𝟙 _ ∧ zeroMiddleFullSReconstructionRecovery s hZ K longHom ∧
+        zeroMiddleFullSReconstructionDiagonalRecovery s hZ K longHom := by
+  obtain ⟨encode, longHom, he, hread, hdiag, _⟩ := h9
+    (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K
     (zeroMiddleFullSFirstFamily s K) (zeroMiddleFullSLastFamily s hZ K)
     (zeroMiddleFullSReconstructionHorn s hZ K)
     (zeroMiddleFullSReconstructionHorn_first s hZ K)
     (zeroMiddleFullSReconstructionHorn_last s hZ K)
-  exact ⟨encode, longHom, he, hread⟩
+  exact ⟨encode, longHom, he, hread, hdiag⟩
 
 variable (h9 : zeroMiddleControlledTriangleSupply.{u})
 
@@ -209,6 +241,15 @@ theorem zeroMiddleFullSReconstructionEncode_read :
 theorem zeroMiddleFullSReconstructionRead_recovery :
     zeroMiddleFullSReconstructionRecovery s hZ K
       (zeroMiddleFullSReconstructionRead s hZ K h9) :=
-  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2
+  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.1
+
+/-- 概要：同じ読出しは共有対角の全パラメータ一単体を厳密回収する。
+方針：encode と同時に得た採用済み対角回収式を使う。
+規約：各頂点の全 Hom 一致で代用しない。
+使われ方：K-6 c4 の動く共有対角の接続。 -/
+theorem zeroMiddleFullSReconstructionRead_diagonal :
+    zeroMiddleFullSReconstructionDiagonalRecovery s hZ K
+      (zeroMiddleFullSReconstructionRead s hZ K h9) :=
+  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.2
 
 end SerrePositivity.KST.Fibration

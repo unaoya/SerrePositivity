@@ -29,7 +29,7 @@ namespace SerrePositivity.KST.Fibration
 方針：採用済み Ind-S (9) の encode・longHom と固定三面比較をそのまま型にする。
 規約：命題の証明や主経路の新しい存在仮定は追加しない。
 使われ方：供給前の再構成利用側の明示定理引数。 -/
-def zeroMiddleControlledTriangleSupply : Prop :=
+def zeroMiddleControlledTriangleSupply: Prop :=
   ∀ (X Y Z : KanObject.{u}) (K : SSet.{u + 1})
     (f : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Y))
     (g : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom Y Z))
@@ -67,6 +67,20 @@ def zeroMiddleControlledTriangleSupply : Prop :=
       HEq (Lt.app (Opposite.op ⦋0⦌) k)
         (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))) ∧
+    (∀ t : T _⦋0⦌,
+      let direct : P :=
+        { I := {ULift.up 0, ULift.up 2}
+          left := by simp
+          right := by simp
+          left_le := fun k _ => Fin.zero_le k.down
+          le_right := fun k _ => Fin.le_last k.down }
+      let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+        ((longHom.app (Opposite.op ⦋0⦌) t).val)
+      let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+      (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
+        (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
+          (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
+            intervalMappingUncurry (coherentHomIntervalComparison X Z)) ∧
     (∀ b : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u},
       let E := vertexFiber ((pre ((horn 3 (2 : Fin 4)).ι ▷ K)).app SpaceInfinity.{u})
         (functorVertex b)
