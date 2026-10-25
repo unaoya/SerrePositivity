@@ -79,6 +79,12 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CurryPrec
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.JointRealizationPrecomposition
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.JointComparisonReindex
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CurryFirstPrecomposition
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.JointRealizationReindex
+
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。
 方針：新規供給葉と、コミット番号が中継された P の読み取り専用の途中成果を接続する。

@@ -165,3 +165,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_precompose_second
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_precompose_second
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_precompose
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonFamily_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonEdge_reindex_edge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonHom_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonIso_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorSpaceCurryMap_precompose_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_precompose_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_precompose_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_reindex
