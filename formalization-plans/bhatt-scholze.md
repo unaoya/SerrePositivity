@@ -201,3 +201,5 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
   （中身は今のルートが import している BS のモジュールを新しい名前で）、ルートの BS の 32 行と `audit_f5`・`audit_f7` の BS の import を
   この 1 行に替えてもらう（進捗確認チャット経由）。その後 BS 側で W6・W7 の転送スタブと直下の集約 `PerfectoidizationInterface.lean` を削除する。
   以後の整理では BS が自分の集約を直すだけでよい。例外は EInfinity が直接 import する E3 の型のモジュールで、W8 で名前を決めたら以後変えない。
+- 2026-10-26：進捗確認チャットが `e660efe6b` で root・`audit_f5`・`audit_f7` の BS の import を集約 `SerrePositivity.BhattScholze` の 1 行に、EInfinity の import を `Perfectoidization.Derived.Interface` に書き換え、E3 と CAlg 版から `coconnective` 欄を削除（文献入力が Lemma 8.4 の分だけ弱くなった）。W8b（転送スタブ 29 本と直下の集約の削除）を Codex へ。
+- 2026-10-26：W8（André・RootEnvelope の整理）の方針を決定。主経路は `Andre/{OrdinaryRoots,Envelope,Perfection,Transfinite}` と `AndreFlatness` に。`Remark715` は Rem 7.15 の結論（ind-syntomic）を証明していないため `Andre/PowerRootEnvelope` に改名（原典どおりの一元拡大と Rem 7.15 の途中の pd 比較）。Variants は残してまとめる。Supplement は (a) p で割る δ 除算 24 本・(c) δ 関係の Koszul 計算 10 本・(b) 根の関係の生の包 10 本＋依存 4 本を `Andre/Envelope` へ残し、(d) δ 完全化の重複 6 本と旧 B4 経路のつなぎ 26 本を削除（`MonicPowerFamilyCompleteFlat` は OrdinaryRoots へ）。Supplement ディレクトリはなくなる。

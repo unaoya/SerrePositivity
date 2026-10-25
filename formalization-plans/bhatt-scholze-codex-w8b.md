@@ -1,7 +1,7 @@
 # Codex 作業指示書 BS-W8b：転送スタブ 29 本と直下の集約 PerfectoidizationInterface.lean を削除する
 
 作成：2026-10-26（BS 作業チャット）。宛先：Codex。
-**前提：進捗確認チャットが root・`audit_f5`・`audit_f7`・EInfinity の import を書き換えたコミットの後に行う**
+**前提：進捗確認チャットが root・`audit_f5`・`audit_f7`・EInfinity の import を書き換えたコミット `e660efe6b` の後に行う**
 （root の BS の import を `SerrePositivity.BhattScholze` の 1 行に、両監査も同じ 1 行に、EInfinity の
 `…PerfectoidizationInterface.Interface` を `…Perfectoidization.Derived.Interface` に）。BS-W8a（`6e1da9815`・`d3895b976`・`a79f1711f`）の後。
 ユーザーの決定（10-25）：転送スタブを無くす。以後は BS の集約 `SerrePositivity/BhattScholze.lean` だけを直す。
@@ -15,6 +15,7 @@
 
 ```bash
 set -o pipefail
+git log --oneline -1 e660efe6b   # 進捗確認チャットの書き換え（E3 の coconnective 欄の削除も含む）があること
 git status --short SerrePositivity/BhattScholze scripts/audit   # 空であること
 # (a) 削除する 30 本の一覧
 { grep -rl "互換用の転送モジュール" SerrePositivity/BhattScholze; echo SerrePositivity/BhattScholze/PerfectoidizationInterface.lean; } | sort > /tmp/bs_w8b_delete.txt
