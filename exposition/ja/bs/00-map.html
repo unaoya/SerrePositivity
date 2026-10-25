@@ -102,18 +102,18 @@
 <p>外部文献の最小採用集合は {BS17, BM18, Mat16, Lur11} の切片で、新規引用にせず形式化の対象に数える。最初の実装単位は「固定完全 prism \((A,(d))\) 上の一変数多項式の Čech 模型と HT 比較」。</p>
 
 <h2>6. コードの所在</h2>
-<p class="meta">BS-W4（<code>05bbd64d6</code>）後。パスは <code>SerrePositivity/BhattScholze/</code> からの相対。</p>
+<p class="meta">BS-W4 と転送スタブの削除（<code>201b022cc</code>）の後。パスは <code>SerrePositivity/BhattScholze/</code> からの相対。</p>
 <div class="table-wrap"><table>
 <tr><th>場所</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
 <tr><td><code>Delta/</code></td><td class="num">227</td><td class="num">21,059</td><td>§2 δ 環。Basic・Distinguished・DividedPower・Division・Extension・Free・Perfect</td></tr>
 <tr><td><code>Prism/</code></td><td class="num">88</td><td class="num">7,929</td><td>§3 prism。Basic・Perfection（Lemma 3.9）・Perfectoid（Thm 3.10）・Residue・Tensor</td></tr>
 <tr><td><code>Semiperfectoid/</code></td><td class="num">63</td><td class="num">5,052</td><td>§7.1〜7.2。Cor 7.3（B3）、Thm 7.4（B4、André 経由）。RootedExtension/ 20 本（Thm 7.4 の降下と CLMST の両立根）、RootEnvelope/ 33 本（Thm 7.4 の旧証明）</td></tr>
-<tr><td><code>Andre/</code></td><td class="num">551</td><td class="num">65,258</td><td>§7.3 Thm 7.14。直下 49 本（一段の拡大 46、公開入口 AndreFlatness、転送スタブ 2）、RootedExtension/ 206 本（うち Supplement/ 98 本は主定理に使われない）、Transfinite/ 30 本（ω₁ 反復）、Remark715/ 224 本、Variants/ 42 本</td></tr>
+<tr><td><code>Andre/</code></td><td class="num">549</td><td class="num">65,226</td><td>§7.3 Thm 7.14。直下 47 本（一段の拡大 46、公開入口 AndreFlatness）、RootedExtension/ 206 本（うち Supplement/ 98 本は主定理に使われない）、Transfinite/ 30 本（ω₁ 反復）、Remark715/ 224 本、Variants/ 42 本</td></tr>
 <tr><td><code>Perfectoidization/</code></td><td class="num">24</td><td class="num">2,761</td><td>§8 の環の結果。Prop 8.13 の環版、切除の環の帰結、有限直積、底変換</td></tr>
 <tr><td><code>Almost/</code></td><td class="num">10</td><td class="num">1,082</td><td>§10。Lemma 10.3、Rem 10.7、Prop 10.2・10.4 の使う部分、CLMST 用の比較補題 3 本</td></tr>
 <tr><td><code>PerfectoidizationInterface/</code></td><td class="num">14</td><td class="num">1,743</td><td>E3 の界面の型と、そこから導く定理（Thm 1.17(1)・Cor 8.12 の環の帰結を含む）</td></tr>
-<tr><td><code>Inputs/</code></td><td class="num">2</td><td class="num">72</td><td>唯一の sorry（E3）と、転送スタブ 1 本</td></tr>
-<tr><td>直下</td><td class="num">30</td><td class="num">—</td><td>転送スタブ 29 本（root と audit_f5・f7 が旧名を import）と、界面の集約 <code>PerfectoidizationInterface.lean</code></td></tr>
+<tr><td><code>Inputs/</code></td><td class="num">1</td><td class="num">56</td><td>唯一の sorry（E3）</td></tr>
+<tr><td>直下</td><td class="num">1</td><td class="num">—</td><td>界面の集約 <code>PerfectoidizationInterface.lean</code></td></tr>
 <tr><td><code>CommutativeAlgebra/</code>（BS の外）</td><td class="num">465</td><td class="num">—</td><td>完備化・平坦性・AIC など BS と CLMST の共有基盤。<code>IsPerfectoidization</code> の定義もここ</td></tr>
 </table></div>
 <p>直下 618 ファイルの名前の接頭辞は、多い順に <code>DeltaDivision</code>（104）、<code>DeltaRoot</code>（97）、<code>Delta</code>（60）、<code>PerfectDelta</code>（30）、<code>RelativeFree</code>（28）、<code>RankOne</code>（25）、<code>PerfectPrism</code>（24）、<code>CompatibleRoot</code>（16）、<code>Principal</code>（15）。<code>DeltaDivision</code>・<code>DeltaRoot</code> の約 200 本は B4 の根付き拡大（割り算包と根の変数）の構成で、§2 の一般論ではない。</p>

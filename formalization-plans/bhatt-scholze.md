@@ -187,3 +187,5 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
   主定理に使われない 98 本を `Andre/RootedExtension/Supplement/` へ。`Inputs/` は E3 だけ（＋転送スタブ `AndreFlatness`）にし、
   証明済みの旧入力 4 本と直下の `Perfectoidization.lean` を各章へ。`CommutativeAlgebra/` 4 本の import を切り替えて転送スタブ 4 本を削除。
   残る転送スタブ 32 本は root（30 行）と `audit_f5`・`audit_f7` の旧名 import の切り替え待ち。
+- 2026-10-25：進捗確認チャットが root と `audit_f5`・`audit_f7` の旧名 import を切り替えた（`f4968ad5d`）ので、転送スタブ 32 本を削除した（`201b022cc`）。
+  BS の直下は集約 `PerfectoidizationInterface.lean` だけ、`Inputs/` は E3 だけになった。領域監査は終了 0（976 モジュール）。
