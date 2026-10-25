@@ -2,6 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
 public import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+public import SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport
 /-!
 概要：元の coherent 図式の面と prefix の斉次成分を、bar 直和上の次数一成分に置く。
 方針：同じ単体ラベルの shift ブロックと、元の余積包含を合成する。
@@ -25,16 +26,15 @@ def dgCoherentBarFaceBlock {n : ℕ} (s : I _⦋n + 1⦌) (i : Fin (n + 1)) :
       (ForgetEnrichment.to (Complex R) (dgCoherentBarFamily R D F ⟨n + 1, s⟩))
       (ForgetEnrichment.to (Complex R)
         (dgCoherentBarFamily R D F (dgCoherentBarFace s i.succ)))).X 1 :=
-  by
-    change (moduleHom R D
-      (shiftModule ((n + 1 : ℕ) : ℤ) (dgCoherentBarSource R D F ⟨n + 1, s⟩))
-      (shiftModule (n : ℤ)
-        (dgCoherentBarSource R D F (dgCoherentBarFace s i.succ)))).X 1
-    rw [dgCoherentBarSource_face_succ]
-    exact moduleHomShiftBlock R D ((n + 1 : ℕ) : ℤ) (n : ℤ)
+  (dgModuleHomTargetTransport R D
+    (shiftModule ((n + 1 : ℕ) : ℤ) (dgCoherentBarSource R D F ⟨n + 1, s⟩))
+    (shiftModule (n : ℤ) (dgCoherentBarSource R D F ⟨n + 1, s⟩))
+    (shiftModule (n : ℤ) (dgCoherentBarSource R D F (dgCoherentBarFace s i.succ)))
+    (congrArg (shiftModule (n : ℤ)) (dgCoherentBarSource_face_succ R D F s i)).symm 1
+    (moduleHomShiftBlock R D ((n + 1 : ℕ) : ℤ) (n : ℤ)
       (M := dgCoherentBarSource R D F ⟨n + 1, s⟩)
       (N := dgCoherentBarSource R D F ⟨n + 1, s⟩)
-      (unitElement R (dgCoherentBarSource R D F ⟨n + 1, s⟩)).val (by omega)
+      (unitElement R (dgCoherentBarSource R D F ⟨n + 1, s⟩)).val (by omega))).val
 
 lemma dgCoherentBarPrefix_target {n : ℕ} (s : I _⦋n⦌) (k : ℕ) (h : k + 1 ≤ n) :
     coherentDiagramVertex F

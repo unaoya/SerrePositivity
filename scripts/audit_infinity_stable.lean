@@ -1,3 +1,12 @@
+import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
+import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBoundaryTerms
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaceDifferential
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixDifferential
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSigns
+import SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices
 import SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition
 import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
 import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
@@ -7991,6 +8000,16 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear,
+    `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBoundaryTerms,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaceDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixDifferential,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSigns,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices,
+
     `SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition,
     `SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition,
     `SerrePositivity.DifferentialGraded.Module.HomClosedInsertion,
