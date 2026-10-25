@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiNaturality
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullEquation
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullRhs
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiLabelNaturality
+import SerrePositivity.InfinityCategories.DGNerve.FaceHomComparison
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTermComparison
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullComponents
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullTerms
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaceInclusionComparison
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixInclusionComparison
@@ -8023,6 +8032,15 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiNaturality,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullEquation,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullRhs,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiLabelNaturality,
+    `SerrePositivity.InfinityCategories.DGNerve.FaceHomComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTermComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullComponents,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFullTerms,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaceInclusionComparison,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixInclusionComparison,
