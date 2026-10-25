@@ -3599,3 +3599,28 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S small hull: no declarations audited"
   logInfo m!"Ind-S small hull audit passed: {count} declarations."
+
+-- Ind-S marked hull audit
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Core.SmallMarkedQuasicategoryHull },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    unless `SerrePositivity |>.isPrefixOf mod.module do continue
+    if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
+      throwError "Ind-S: forbidden straightening dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.Core.SmallMarkedQuasicategoryHull,
+    `SerrePositivity.InfinityCategories.Core.SmallInverseWitnessSeed]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S: no declarations audited"
+  logInfo m!"Ind-S marked hull audit: {count} declarations."

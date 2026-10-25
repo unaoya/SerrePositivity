@@ -1,6 +1,6 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 14:00 JST）
+## 引き継ぎ（2026-10-25 14:12 JST）
 
 - 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
 - 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp は import しない。
@@ -11,7 +11,9 @@
   K-B 所有の具体的な恒等点への代入は未検証であり、K-B-S 全体の完成とは数えない。
 - (4)：`5686de2be` で小さい内ホーン閉包、小さい quasicategory 模型、
   同じ包含への全小図式の厳密因子化を保存済み。局所化の宇宙持ち上げは未証明。
-- 次：有限個の逆辺・逆三角形を種に含め、因子化後も指定辺の可逆性を保持する。
+- (4) の追加：指定辺族の逆三角形を含む小模型と反転条件を保つ厳密因子化がビルド済み。
+  `IsLocalization.exists_extension_ulift` で任意の大きい標的への実延長もビルド済み。
+- 次：大きい標的に対する前合成の充満忠実性。境界資料と可逆 path を同じ小模型へ因子化する。
 - 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
   以後のコミット本文には変更・検証・残件の実施記録を書く。
 
@@ -65,8 +67,9 @@
 1. [x] 小さい像・小さい和と、有限単体集合の像が増大列の一段に入る補題。
 2. [x] ambient quasicategory 内で小さい内ホーン充填閉包を構成する。
 3. [x] 閉包を小さい quasicategory に縮小し、同じ包含で全小図式を厳密因子化する。
-4. [ ] 逆辺と二つの逆三角形を種に追加し、指定可逆辺を保存する小模型を作る。
+4. [x] 逆辺と二つの逆三角形を種に追加し、指定可逆辺を保存する小模型を作る。
 5. [ ] 大きい標的への局所化延長と、全前合成の充満忠実性を小模型から回収する。
+   延長成分は `IsLocalization.exists_extension_ulift` でビルド済み。充満忠実性が残る。
 6. [ ] `IsLocalization` の ULift 持ち上げと既存降下を合わせた iff を公開し、監査・保存する。
 
 保存済みの公開名（namespace `SerrePositivity.InfinityCategories.SmallSubcomplex`）：
@@ -84,3 +87,22 @@
 (`F1B/Localization/UniverseDescent`)。
 現在の小模型だけでは ambient での可逆性を反映しないため、段目 4 は必要。
 順方向の公開名はまだない。対象ビルドと追加 Core 4 葉の 72 宣言公理監査は通過済み。
+
+段目 4〜5 の追加公開名：
+
+- `inverseWitnessSeed`・`small_inverseWitnessSeed`・`inverseWitnessSeed_reflects_edge`
+  (`Core/SmallInverseWitnessSeed`)：同じ逆辺と二つの実三角形を保持する。
+- `markedHull`・`markedHull_reflects_edge` (`Core/SmallMarkedQuasicategoryHull`)。
+- `exists_small_inverting_factorization` (`F1B/Localization/SmallMarkedFactorization`)：
+  元の持ち上げた図式を厳密に因子化し、指定辺の反転を保持する。
+- `LocalizationUniverse.functorIso_ulift` (`F1B/Localization/UniverseMorphismUp`)：
+  同じ実関手同型を持ち上げる軽量入口。
+- `IsLocalization.exists_extension_ulift` (`F1B/Localization/UniverseExtension`)：
+  任意の大きい quasicategory を標的とする反転関手の実延長。
+- `LocalizationUniverse.fullyFaithful_ulift`・`precomposition_fullyFaithful_ulift_target`
+  (`F1B/Localization/UniverseFaithfulUp`)：小さい標的を持ち上げた場合の充満忠実性。
+- `isFullyFaithful_of_positive_boundary`
+  (`F1B/FunctorCategories/PositiveBoundaryFaithful`)：正次元境界の持ち上げからの判定。
+
+追加の Core 二葉 14 宣言、延長三葉 11 宣言の公理・no-straightening 監査通過。
+Core 全監査、F1B 全監査（延長三葉まで）も通過。最終の充満忠実性と iff は未供給。
