@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuUpperTriangleEdges
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuStandardZeroNullHom
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTriangleEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionNullHom
 public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
@@ -89,5 +91,34 @@ lemma dgOdotMilnorNuAbsoluteLowerHom_maximal (h : DGGluingMilnorSquare R d) :
     (dgOdotMilnorNuAbsoluteLowerTriangle_projection R d h)
     (dgOdotMilnorNuAbsoluteTriangle_source R d h 1)
     (dgOdotMilnorNuAbsoluteTriangle_target R d h 1)
+
+/-- 概要：元実上三角形の最大 path は元実零角経由の同じ合成。
+方針：元の零角への二短辺と同じ固定 ν 端点を使う。
+規約：元全 Hom 頂点の等号。使われ方：指定零角比較の実面側の端点。 -/
+lemma dgOdotMilnorNuNullUpperHom_maximal :
+    (dgOdotMilnorNuNullTriangleHom R d 0).app (Opposite.op ⦋0⦌)
+      (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
+      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+        (dgOdotMilnorNuNullTopComposite R d) :=
+  nullMaximalVertexOfEdges (dgOdotMilnorNuNullTriangle R d 0) (K)
+    (dgKInputStableValue R (dgFixedNullInput R (dgOdotMilnorFlatKernelInput R d))) (B)
+    (dgOdotMilnorNuZeroActualLeft R d) (dgOdotMilnorNuZeroActualTop R d)
+    (dgOdotMilnorNuNullUpperTriangle_left R d) (dgOdotMilnorNuNullUpperTriangle_top R d)
+    (dgOdotMilnorNuNullTriangle_source R d 0) (dgOdotMilnorNuNullTriangle_target R d 0)
+
+/-- 概要：同じ絶対上三角形の最大 path は元標準零角経由の同じ合成。
+方針：元標準零角への二短辺と同じ固定 ν 端点を使う。
+規約：元絶対二胞体を保持。使われ方：指定零角比較の絶対面側の端点。 -/
+lemma dgOdotMilnorNuAbsoluteUpperHom_maximal (h : DGGluingMilnorSquare R d) :
+    (dgOdotMilnorNuAbsoluteTriangleHom R d h 0).app (Opposite.op ⦋0⦌)
+      (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) =
+      SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (B)
+        (dgOdotMilnorNuStandardZeroComposite R d (fromZeroCategory (B))) :=
+  nullMaximalVertexOfEdges (dgOdotMilnorNuAbsoluteNullTriangle R d h 0) (K)
+    zeroCategory.{u + 1} (B) (toZeroCategory (K)) (fromZeroCategory (B))
+    (dgOdotMilnorNuAbsoluteUpperTriangle_left R d h)
+    (dgOdotMilnorNuAbsoluteUpperTriangle_top R d h)
+    (dgOdotMilnorNuAbsoluteTriangle_source R d h 0)
+    (dgOdotMilnorNuAbsoluteTriangle_target R d h 0)
 
 end SerrePositivity.KST.SConstruction

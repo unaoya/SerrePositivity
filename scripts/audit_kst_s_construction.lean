@@ -33410,3 +33410,207 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerHomSquare_absolute_fullHom
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullLowerHomSquare_absolute_fullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroActualLeft
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroActualLeft
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroActualTop
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroActualTop
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeft
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeft
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTop
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTop
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeftIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeftIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTopIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTopIso
+
+#check @SerrePositivity.KST.SConstruction.nuZeroComparisonLeftHom_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.nuZeroComparisonLeftHom_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.nuZeroComparisonTopHom_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.nuZeroComparisonTopHom_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeftEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonLeftEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTopEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroComparisonTopEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuStandardZeroNullFactor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedStart
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedStart
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedMiddle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedMiddle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTarget
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTarget
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedMiddle_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedMiddle_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedLeftEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedLeftEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTopEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTopEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeData
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeData
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedCompositeTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperTriangle_left
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperTriangle_left
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperTriangle_top
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperTriangle_top
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperTriangle_left
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperTriangle_left
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperTriangle_top
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperTriangle_top
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedStart_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedStart_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTarget_eq
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedTarget_eq
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryFirstEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryFirstEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundarySecondEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundarySecondEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryTriangle_simplex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroMixedBoundaryTriangle_simplex
+
+#check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuNullUpperHomSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuNullUpperHomSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_actual_fullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_actual_fullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_absolute_fullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHomSquare_absolute_fullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleCompositeComparisonEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleCompositeComparisonEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_actual_fullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_actual_fullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_absolute_fullHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_absolute_fullHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_sharedDiagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_sharedDiagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_actual_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_actual_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_absolute_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullTriangleHomSquares_absolute_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_edge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_edge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_edge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_edge
+
+#check @SerrePositivity.KST.SConstruction.nuNullDiagonalHom_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.nuNullDiagonalHom_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalComparison_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalComparison_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalComparison_target
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalComparison_target
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalCoreEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalCoreEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalCoreEdge_parameter
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalCoreEdge_parameter
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullPerfectDiagonalArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullPerfectDiagonalArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteDiagonalMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullPerfectDiagonalDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullPerfectDiagonalDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHom_maximal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullUpperHom_maximal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_maximal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_maximal

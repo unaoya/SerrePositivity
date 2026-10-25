@@ -1,0 +1,102 @@
+module
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroCornerNullHom
+
+/-!
+概要：実零角と標準零角の指定比較に沿う元二短辺の完全関手比較。
+方針：同じ fromZeroCategory を零角の成分とし、元左辺・元上辺を全零性で比較する。
+規約：元零角・元上辺を変更しない。使われ方：上二胞体の混合 Hom 境界。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.KST.SConstruction
+open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
+open scoped Simplicial
+variable (R : Type u) [CommRing R] (d : DGOdotInput R)
+local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
+local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
+local notation "Z" => dgKInputStableValue R
+  (dgFixedNullInput R (dgOdotMilnorFlatKernelInput R d))
+
+/-- 概要：同じ実零化面の元左辺の固定 ν 完全射。
+方針：同じ全対象商への射を固定 ν で写す。
+規約：元の左辺。使われ方：零角の指定比較の実側。 -/
+abbrev dgOdotMilnorNuZeroActualLeft : ExactMap (K) (Z) :=
+  dgKInputNuMap R (dgFixedNullLeft R (A := dgOdotMilnorFlatKernelInput R d))
+
+/-- 概要：同じ実零化面の元上辺の固定 ν 完全射。
+方針：元の全対象商延長を固定 ν で写す。
+規約：元の上辺。使われ方：零角の指定比較の実側。 -/
+abbrev dgOdotMilnorNuZeroActualTop : ExactMap (Z) (B) :=
+  dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))
+local notation "t" => dgOdotMilnorNuZeroActualTop R d
+
+/-- 概要：同じ標準零角から実零角への成分を経由する左辺。
+方針：元核の toZeroCategory と同じ実零角への fromZeroCategory を合成する。
+規約：零角成分は既指定のもの。使われ方：混合左面の終点。 -/
+def dgOdotMilnorNuZeroComparisonLeft : ExactMap (K) (Z) where
+  hom := (toZeroCategory (K)).hom ≫ (fromZeroCategory (Z)).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (toZeroCategory (K)).isExact
+    (fromZeroCategory (Z)).isExact
+
+/-- 概要：同じ零角成分と元実上辺の合成。
+方針：指定 fromZeroCategory と元上辺を合成する。
+規約：元の実上辺。使われ方：混合上面の始点。 -/
+def dgOdotMilnorNuZeroComparisonTop : ExactMap zeroCategory.{u + 1} (B) where
+  hom := (fromZeroCategory (Z)).hom ≫ (t).hom
+  isExact := @isExactFunctor_comp _ _ _ _ _ (fromZeroCategory (Z)).isExact (t).isExact
+
+/-- 概要：元実左辺と零角の指定成分を経由する左辺の全関手同型。
+方針：同じ実零角の全零性を両関手へ適用する。
+規約：元の左辺と同じ零角成分。使われ方：混合左面の元 Hom 辺。 -/
+def dgOdotMilnorNuZeroComparisonLeftIso : FunctorIso
+    (dgOdotMilnorNuZeroActualLeft R d).hom (dgOdotMilnorNuZeroComparisonLeft R d).hom :=
+  zeroDiagramFunctorIso _ _ (fun _ => dgFixedNullInput_isZeroCategory R _ _)
+    (fun _ => dgFixedNullInput_isZeroCategory R _ _)
+
+/-- 概要：指定零角成分後の元上辺と同じ絶対上辺の全関手同型。
+方針：実零角の全零性と両完全射の零対象保存を使う。
+規約：元二関手を保持。使われ方：混合上面の元 Hom 辺。 -/
+def dgOdotMilnorNuZeroComparisonTopIso : FunctorIso
+    (dgOdotMilnorNuZeroComparisonTop R d).hom (fromZeroCategory (B)).hom :=
+  zeroDiagramFunctorIso _ _
+    (fun _ => @IsExactFunctor.preservesZero _ _ (t).hom (t).isExact _
+      (dgFixedNullInput_isZeroCategory R _ _))
+    (fun x => @IsExactFunctor.preservesZero _ _ (fromZeroCategory (B)).hom
+      (fromZeroCategory (B)).isExact x (zeroCategory_isZero x))
+
+local instance nuZeroComparisonLeftHom_kanComplex :
+    KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)) :=
+  stableQCat_sHom_kanComplex (K) (Z)
+
+local instance nuZeroComparisonTopHom_kanComplex :
+    KanComplex (SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)) :=
+  stableQCat_sHom_kanComplex zeroCategory.{u + 1} (B)
+
+/-- 概要：元実左辺から同じ指定零角成分を経由する左辺への実 Hom 辺。
+方針：同じ全関手同型の core 像を実辺で表示する。
+規約：元の両完全射を固定。使われ方：元上面の混合零 Hom 合成。 -/
+def dgOdotMilnorNuZeroComparisonLeftEdge :
+    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)).Edge
+      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (Z)
+        (dgOdotMilnorNuZeroActualLeft R d))
+      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) (K) (Z)
+        (dgOdotMilnorNuZeroComparisonLeft R d)) :=
+  Edge.ofTruncated (homotopyCategory_homMk_surjective
+    (X := SimplicialCategory.sHom (C := StableQCat.{u + 1}) (K) (Z)) _ _
+    (exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonLeftIso R d)).hom).choose
+
+/-- 概要：指定零角成分後の元上辺から同じ絶対上辺への実 Hom 辺。
+方針：同じ全関手同型の core 像の実辺を取る。
+規約：元の両完全射を固定。使われ方：元上面の混合零 Hom 合成。 -/
+def dgOdotMilnorNuZeroComparisonTopEdge :
+    (SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)).Edge
+      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)
+        (dgOdotMilnorNuZeroComparisonTop R d))
+      (SimplicialCategory.homEquiv' (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)
+        (fromZeroCategory (B))) :=
+  Edge.ofTruncated (homotopyCategory_homMk_surjective
+    (X := SimplicialCategory.sHom (C := StableQCat.{u + 1}) zeroCategory.{u + 1} (B)) _ _
+    (exactMapCoreVertexIso (dgOdotMilnorNuZeroComparisonTopIso R d)).hom).choose
+
+end SerrePositivity.KST.SConstruction
