@@ -2318,4 +2318,6 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameUn
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCoherentSource
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeHomInfinityComparison
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
