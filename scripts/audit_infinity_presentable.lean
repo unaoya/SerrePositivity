@@ -865,3 +865,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.terminalSource_relative_cocone_factorization
 #check @SerrePositivity.InfinityCategories.F2.Presentable.terminalSource_relative_presentation_section
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeCoslice_splitTriangle
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialEvenFace_rightAnodyne
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSourceCosliceIso_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStage_compact_presentation_section
+#check @SerrePositivity.InfinityCategories.F2.Presentable.compStructCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_old_val
+#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_splitCompStruct_of_identity_longEdge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_normalizedCoslice_splitCompStruct
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteAlternating_split

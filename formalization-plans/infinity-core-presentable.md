@@ -96,10 +96,10 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- `SimplexTerminalFaceAnodyne.lean`：偶数前置面の right anodyne 判定を検証中。
+- なし。
 
 ### 次の一手
-- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化まで構成（点射には filtered 保存のみ）。全交互有限段の再帰、小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
+- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は共通 κ₀ の filtered 表示添字内で長さ κ₀ の相対交互構成へ拡張する。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化・全交互前置図式を保つ分裂三角形まで構成（点射には filtered 保存のみ）。全交互有限段の標準単体への拡張と再帰、小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
 - e6 の全体同値と e7 の小極限は保留（第 II 段／R）。e5 の fiber → accessible 一般版の後、e8 で P-1 を閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
