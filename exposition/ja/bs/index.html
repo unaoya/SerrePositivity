@@ -37,10 +37,13 @@
 <tr><td><a href="10-almost.html">10</a></td><td>almost 数学と almost purity：Lemma 10.3、Thm 10.9、Thm 10.11</td><td>§10</td><td>精読済み</td></tr>
 </table></div>
 
-<h2>一覧</h2>
+<h2>原典との差の方針</h2>
+<p>各章の末尾に「原典の項目一覧」（その節の全項目の必要性と形式化の状況）と「原典との差の評価」（D 番号）を置く。§1 は §2 以降の定義の要約、§9（étale 比較）と §11〜§18 は §8・§10 から参照されないので一覧に含めない。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。HT 比較は迂回せず原論文どおり形式化する（2026-10-25 決定）。</p>
 <ul>
-  <li><a href="divergences.html">原典との差の評価</a>：原典と経路が違う箇所（D1〜D15）ごとに、それぞれの証明の利点・欠点と方針</li>
-  <li><a href="inventory.html">原典の項目一覧</a>：§2〜§8・§10 の全項目を「必要で形式化済み／一部／未形式化／不要」に分け、Lean の所在を付けたもの</li>
+  <li><b>Lean の方が簡単で、保つもの</b>：D1（W₂ 切断）、D3（Lemma 2.25）（<a href="02-delta.html">2</a>）、D5（向き付き prism）（<a href="03-prism.html">3</a>）、D10（Prop 7.2 を経由しない Cor 7.3）、D11 の André 経由版（<a href="07-semiperfectoid.html">7</a>）、D13（Lemma 10.3 の Tor 独立性）（<a href="10-almost.html">10</a>）。</li>
+  <li><b>原典の方が簡単で、揃えるもの</b>：D6（剛性の仮定、BR27）、D9（Fontaine 比較の正則版、BR16）（<a href="03-prism.html">3</a>）、D11（Thm 7.4、W3 で実施済み）（<a href="07-semiperfectoid.html">7</a>）。</li>
+  <li><b>今は保ち、後で原典に揃える候補</b>：D12（Thm 7.14 の一段、A3 の後、BR30）（<a href="07-semiperfectoid.html">7</a>）、D15（Prop 8.13、A7 の後、BR31）（<a href="08-perfection.html">8</a>）。どちらも HT 比較と導来 prismatic コホモロジーができれば原典の方が短くなる。</li>
+  <li><b>両方を持つもの</b>：D7（Lemma 3.9）、D8（Thm 3.10）（<a href="03-prism.html">3</a>）。部品は保ち、原典の形の主張を加える。</li>
 </ul>
 
 <h2>読書ルート</h2>
@@ -54,7 +57,7 @@
 <div class="table-wrap"><table>
 <tr><th>番号</th><th>内容</th><th>章</th><th>状態</th></tr>
 <tr><td>BR1</td><td>トップレベル 618 ファイルの平置き：主題別のサブディレクトリへの分割</td><td><a href="00-map.html">0</a></td><td>実施済み（W1：主題別、W2：原典の節ごと）</td></tr>
-<tr><td>BR2</td><td>Q10：普遍性の手書き展開 3 箇所を既存の <code>IsPerfectoidization.precomp_ringEquiv</code> に置換</td><td><a href="00-map.html">0</a></td><td>W1 で実施（Codex、コミット待ち）</td></tr>
+<tr><td>BR2</td><td>Q10：普遍性の手書き展開 3 箇所を既存の <code>IsPerfectoidization.precomp_ringEquiv</code> に置換</td><td><a href="00-map.html">0</a></td><td>実施済み（W1）</td></tr>
 <tr><td>BR3</td><td>リファクタ監査 838 行の型不一致（10-24 から失敗中）</td><td><a href="00-map.html">0</a></td><td>済（9095aff46）</td></tr>
 <tr><td>BR4</td><td>自由 δ 環の二重構成（\(\mathbb Z\) 版と相対版）</td><td><a href="02-delta.html">2</a></td><td>候補（規模を測る）</td></tr>
 <tr><td>BR5</td><td>Frobenius が δ 射であることの二つの版</td><td><a href="02-delta.html">2</a></td><td>W2 の候補</td></tr>
@@ -90,7 +93,8 @@
 <ul>
   <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
   <li>数学の定義・定理を述べ、対応する Lean の宣言名（<code>&lt;code&gt;</code>）とファイル（<code>../../../SerrePositivity/...</code> への相対リンク）を添える。証明は方針・鍵になる補題・Lean での組み立て方まで追う。</li>
-  <li>原典との差（経路・規約・一般性）は独立した囲みにする。</li>
+  <li>原典との差（経路・規約・一般性）は本文では独立した囲みにし、章末の「原典との差の評価」に D 番号で利点・欠点・方針をまとめる。</li>
+  <li>章末に「原典の項目一覧」を置き、その節の全項目を済／一部／未／不要に分けて Lean の所在を付ける。</li>
   <li>リファクタ候補は赤い囲みにし、番号（BR1、BR2、…）を全章で通す。</li>
   <li>BS 固有の節として「形式化の状況」（証明済み／界面で引用／未着手を宣言名付きで）と「形式化の課題」（Codex へ渡せる粒度の作業項目）を置く。</li>
   <li>末尾に「この章で押さえること」を置く。</li>

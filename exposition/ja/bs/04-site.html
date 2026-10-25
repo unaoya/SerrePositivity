@@ -19,7 +19,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
 <h1>第 4 章　prismatic site と HT 比較の定式化（§4）</h1>
-<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.36–45。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.36–45。E3 に必要な項目だけを載せる（判定は <a href="#items-04">原典の項目一覧</a>）。</p>
 <p>固定した有界 prism \((A,I)\) と p 完全 smooth な \(A/I\) 代数 \(R\) について、prismatic site \((R/A)_\Delta\) とその構造層のコホモロジー \(\Delta_{R/A}\) を定義し（§4.1）、HT 比較を定式化し（§4.2）、Čech–Alexander 複体で \(\Delta_{R/A}\) を具体的に計算する（§4.3）。この章の内容は全て未形式化で、A0 の範囲。</p><div class="box">
 <p class="label">方針（2026-10-25 決定）</p>
 <p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
@@ -70,7 +70,26 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Rem 4.19</td><td>affine 直線の底変換と両立する複体</td><td class="todo">未</td><td>A0。最初の実装単位</td></tr>
 <tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
 <tr><td>Lemma 4.22</td><td>有限 Tor 振幅の完備底変換と totalization</td><td class="todo">未</td><td>A0・A5</td></tr>
-</table></div><h2>リファクタの候補</h2>
+</table></div><h2 id="items-04">原典の項目一覧（§4）</h2>
+<p>§4 prismatic site と HT 比較の定式化 の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
+<tr><td>Def 4.1</td><td>prismatic site</td><td class="todo">未</td><td>affine の場合だけ。Čech 模型で定義すれば site 自体は避けられる見込み（A0）</td></tr>
+<tr><td>Rem 4.2・4.3、Constr 4.4、Rem 4.5</td><td>位相の変種、topos、étale 層</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>Lemma 8.4 で使う（A0・A4）</td></tr>
+<tr><td>Rem 4.7</td><td>絶対 prismatic site</td><td class="no">不要</td><td>Prop 7.2 用。迂回済み</td></tr>
+<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="part">一部</td><td>標的が完全 prism なら Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（Prism/Perfectoid）で足りる（Lemma 8.4・Prop 8.5 はこの場合）。一般の標的は A3（変形理論と逆極限の完全化）</td></tr>
+<tr><td>Constr 4.9、Lemma 4.10</td><td>HT 比較の写像</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Thm 4.11</td><td>HT 比較</td><td class="todo">未</td><td>A1（証明は §5・§6）</td></tr>
+<tr><td>Cor 4.12</td><td>底変換</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Rem 4.13・4.14、Prop 4.15</td><td>Higgs、持ち上げの障害、余接複体</td><td class="no">不要</td><td></td></tr>
+<tr><td>Not 4.16、Constr 4.17・4.18、Rem 4.19</td><td>弱始対象、Čech–Alexander 複体、affine 直線</td><td class="todo">未</td><td>A0 の中心</td></tr>
+<tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
+<tr><td>Lemma 4.21</td><td>étale 局所化</td><td class="no">不要</td><td>多項式代数からの左 Kan 延長で済ませる場合</td></tr>
+<tr><td>Lemma 4.22</td><td>完備底変換と totalization</td><td class="todo">未</td><td>A0・A5（Prop 8.5 でも使う）</td></tr>
+</table></div>
+
+<h2>リファクタの候補</h2>
 <p>§4 に対応するコードはまだないので、この章自体の候補はない。ただし Rem 7.15 の照合用に作った <code>Andre/Remark715/BoundedPrism*</code>（有界 prism の完備性・剛性・入力圏）と <code>PerfectPrismBoundedTarget*</code>（完全 prism の標的への持ち上げ）は、A0 で要る Lemma 3.7・Lemma 4.8 の一般形の出発点になり得る。第 7 章の BR11 で Rem 7.15 の行き先のないファイルを削除する前に、これらを Prism/ へ切り出せるかを確かめる。</p>
 
 <h2>この章で押さえること</h2>

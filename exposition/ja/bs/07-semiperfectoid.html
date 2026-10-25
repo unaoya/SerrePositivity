@@ -19,7 +19,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 7 章</nav>
 <h1>第 7 章　semiperfectoid 環と perfection（§7）</h1>
-<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25、W2 後。W3 は f4dcf1d1a・7b82e02aa で完了）。原典 pp.55–62。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25、W2 後。W3 は f4dcf1d1a・7b82e02aa で完了）。原典 pp.55–62。E3 に必要な項目だけを載せる（判定は <a href="#items-07">原典の項目一覧</a>、原典との差の評価は <a href="#diff-07">末尾</a>）。</p>
 <p>§7 は三つの小節からなる。§7.1 は semiperfectoid 環 \(S\)（perfectoid 環の商）について、全ての prism の中での始対象（Prop 7.2）と普遍 perfectoid 環 \(S_{\mathrm{perfd}}\)（Cor 7.3）を作り、主定理「\(S\to S_{\mathrm{perfd}}\) は全射」（Thm 7.4）を述べる。§7.2 は導来 prismatic コホモロジー（Construction 7.6）と、それが離散な場合の性質（Lemma 7.7、Ex 7.9、Prop 7.10）。§7.3 は prismatic site の被覆の持ち上げ（Prop 7.11）から André の補題（Thm 7.14）を出し、Thm 7.4 を証明する。</p>
 <p>形式化は §7.1 と §7.3 の環の結果（Cor 7.3、Thm 7.4、Thm 7.14）を、§7.2 を使わずに証明している。§7.2 は E3 の Def 8.2 の土台で、未形式化（A2・A3）。</p>
 
@@ -65,8 +65,34 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Thm 7.4</td><td>\(S\to S_{\mathrm{perfd}}\) は全射（B4）</td><td class="ok">済</td><td><code>surjective_of_isPerfectoidization_of_semiperfectoid_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/SemiperfectoidSurjectivity.lean">SemiperfectoidSurjectivity:19</a>）。W3 で André 経由に替え、André を使わない証明は <code>…_of_rootEnvelope</code>（Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity）として残す</td></tr>
-<tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Transfinite/Theorem714.lean">Theorem714:32</a>）、入口（<a href="../../../SerrePositivity/BhattScholze/Inputs/AndreFlatness.lean">AndreFlatness:58</a>）。一段の拡大は原典と別経路</td></tr>
-</table></div><h2>リファクタの候補</h2>
+<tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Transfinite/Theorem714.lean">Theorem714:32</a>）、入口（<a href="../../../SerrePositivity/BhattScholze/Andre/AndreFlatness.lean">AndreFlatness:58</a>）。一段の拡大は原典と別経路</td></tr>
+</table></div><h2 id="items-07">原典の項目一覧（§7）</h2>
+<p>§7 semiperfectoid 環と perfection の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Not 7.1</td><td>semiperfectoid</td><td class="ok">済</td><td>perfectoid 環の商として扱う</td></tr>
+<tr><td>Prop 7.2</td><td>普遍 prism の存在</td><td class="no">不要</td><td>迂回済み：Cor 7.3 を完全試験 prism の始対象で直接構成</td></tr>
+<tr><td>Cor 7.3</td><td>S_perfd の存在（B3）</td><td class="ok">済</td><td><code>SemiperfectoidPerfectoidization</code>（Semiperfectoid）</td></tr>
+<tr><td>Thm 7.4</td><td>S → S_perfd は全射（B4）</td><td class="ok">済</td><td><code>SemiperfectoidSurjectivity</code>（Semiperfectoid）。原典どおり André 経由（W3）。旧経路は Semiperfectoid/RootEnvelope/</td></tr>
+<tr><td>Rem 7.5</td><td>Zariski 閉集合</td><td class="no">不要</td><td></td></tr>
+<tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2</td></tr>
+<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造</td><td class="todo">未</td><td>A3</td></tr>
+<tr><td>Ex 7.9、Prop 7.10</td><td>lci 商・qrsp の計算</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
+<tr><td>Prop 7.11、Ex 7.12・7.13</td><td>quasisyntomic 被覆の持ち上げ</td><td class="no">不要</td><td>André の原典の証明用。迂回済み</td></tr>
+<tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（Andre/Transfinite）。別経路</td></tr>
+<tr><td>Rem 7.15</td><td>André の補題の精密形</td><td class="no">不要</td><td>照合として形式化済み（Andre/Remark715、224 本）。主定理に不要</td></tr>
+</table></div>
+
+<h2 id="diff-07">原典との差の評価</h2>
+<p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
+<tr><td>D10</td><td>Prop 7.2・Cor 7.3</td><td>全 prism の中の始対象（超限帰納）を経由せず、完全試験 prism への写像の始対象を直接作る</td><td>超限帰納が不要（完全化の後では d が非零因子）</td><td>全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) がない。Prop 7.10（\(\Delta_S=\Delta^{\mathrm{init}}_S\)）を述べるときに要るかもしれない</td><td>Lean の方が簡単</td><td>Lean を保つ。A3 で \(\Delta^{\mathrm{init}}_S\) が要るか確かめる</td></tr>
+<tr><td>D11</td><td>Thm 7.4</td><td>（W3 前）André を使わない根付き拡大の経路。（W3 後）原典どおり André 経由</td><td>André 経由版は、原典の「有限生成・単項への帰着」も不要（絶対整閉なので全元が同時に根を持つ）</td><td>旧経路は B4 専用の 33 本を要した</td><td>André 経由版は原典より簡単</td><td>W3 で André 経由に揃えた（f4dcf1d1a・7b82e02aa）。旧経路は Semiperfectoid/RootEnvelope/ に別証明として保存</td></tr>
+<tr><td>D12</td><td>Thm 7.14 の一段の拡大</td><td>Prop 7.11(2)（導来 prismatic コホモロジー・HT 比較）の代わりに、モニック根の割り算包の pd 計算（Rem 7.15）</td><td>当時は HT 比較なしで André の補題が証明できた</td><td>一段の拡大のために根付き拡大の構成（100 本規模）が要る。A1〜A3 ができれば原典の一段は Prop 7.10 の議論の系として短い</td><td><b>A3 の後は原典の方が簡単</b></td><td>今は Lean を保つ。A3 の後に原典に揃えるかを決める（BR30）</td></tr>
+</table></div>
+
+<h2>リファクタの候補</h2>
 <div class="box refactor">
 <p class="label">BR30　Thm 7.14 の一段の拡大を原典の経路に揃えるか（将来の判断）</p>
 <p>Thm 7.14 の一段の拡大は、原典では Prop 7.11(2)（導来 prismatic コホモロジーと HT 比較）から出る。いまの Lean は Rem 7.15 の pd 計算に沿った別経路（Andre/ 直下の 46 本と、その下の根付き拡大の構成）。HT 比較は迂回しないと決めたので、A1〜A3 が揃えば Prop 7.11 を形式化して原典どおりに証明できる。そのときは今の証明を別証明として残すか（BR9 と同じ扱い）を決める。A3 までは判断しない。</p>
@@ -105,7 +131,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 <div class="box refactor">
 <p class="label">BR12　条件付き版と降下の重複系列</p>
-<p><code>AndreSurjectivityConditional</code>・<code>AndreCompatibleRootsConditional</code> はどこからも import されず、監査 <code>audit_bhatt_scholze_andre_conditional</code> だけが読む。docstring の「sorryAx に依存」は古い。BR9 で採るなら B4 の正規の入口に改名し、採らないなら削除する。<code>RootedKernelSurjectivity → RootedTensorBaseChangeSurjectivity → RootedPerfectoidSurjectivityDescent</code> は条件付き版からしか使われず、B4 本体は別の系列（<code>RootedPresentation → RootedFamilyPerfectoidSurjectivityDescent</code>）を使う。また <code>Semiperfectoid/PerfectoidizationSurjectivity</code>:13 と <code>Inputs/SemiperfectoidSurjectivity</code>:19 は、仮定（p ねじれなし）を外した <code>surjective_of_isPerfectoidization_of_adic_complete_quotient</code>（SemiperfectoidSurjectivity:51）が既にある旧い適用形で、監査からしか使われない。</p>
+<p><code>AndreSurjectivityConditional</code>・<code>AndreCompatibleRootsConditional</code> はどこからも import されず、監査 <code>audit_bhatt_scholze_andre_conditional</code> だけが読む。docstring の「sorryAx に依存」は古い。BR9 で採るなら B4 の正規の入口に改名し、採らないなら削除する。<code>RootedKernelSurjectivity → RootedTensorBaseChangeSurjectivity → RootedPerfectoidSurjectivityDescent</code> は条件付き版からしか使われず、B4 本体は別の系列（<code>RootedPresentation → RootedFamilyPerfectoidSurjectivityDescent</code>）を使う。また <code>Semiperfectoid/PerfectoidizationSurjectivity</code>:13 と <code>Semiperfectoid/TorsionFreeQuotientSurjectivity</code>:19 は、仮定（p ねじれなし）を外した <code>surjective_of_isPerfectoidization_of_adic_complete_quotient</code>（SemiperfectoidSurjectivity:51）が既にある旧い適用形で、監査からしか使われない。</p>
 </div>
 <div class="box refactor">
 <p class="label">BR13　手で繰り返している証明の型</p>

@@ -19,7 +19,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 5 章</nav>
 <h1>第 5 章　Hodge–Tate 比較と結晶比較（§5・§6）</h1>
-<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.45–55。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.45–55。E3 に必要な項目だけを載せる（判定は <a href="#items-05">原典の項目一覧</a>）。</p>
 <p>HT 比較（Thm 4.11）の証明。§5 で標数 p（\(I=(p)\) の結晶 prism）の場合を、結晶比較（Thm 5.2）と Cartier 同型から示し（Cor 5.5）、§6 で普遍向き付き prism を結晶 prism へ写す構成（Construction 6.1）を使って一般の場合に延ばす（Prop 6.2、Thm 6.3）。全て未形式化で、A1 の範囲。</p><div class="box">
 <p class="label">方針（2026-10-25 決定）</p>
 <p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
@@ -52,6 +52,19 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位（第 4 章の Rem 4.19 と組で）</td></tr>
 <tr><td>Thm 6.3</td><td>HT 比較（多項式代数）</td><td class="todo">未</td><td>A1。étale 局所化は不要（多項式代数なら Prop 6.2 と同じ議論）</td></tr>
 </table></div>
+<h2 id="items-05">原典の項目一覧（§5・§6）</h2>
+<p>§5・§6 HT 比較と結晶比較 の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
+<tr><td>Not 5.1、Thm 5.2、Rem 5.3</td><td>標数 p の結晶比較</td><td class="todo">未</td><td>A1。\(A=\mathbb Z_p\)・I=(p)・多項式代数の場合だけで足りる（Prop 6.2 の帰着）。結晶コホモロジーは pd 包の Čech 複体として具体的に扱う</td></tr>
+<tr><td>Lemma 5.4</td><td>多項式代数の計算（Cartier 型）</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ。Cartier 同型が要る</td></tr>
+<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1（Ex 2.21・Ex 3.4・Lemma 3.6 を使う）</td></tr>
+<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位</td></tr>
+<tr><td>Thm 6.3</td><td>HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ（Construction 7.6 は多項式代数からの左 Kan 延長）</td></tr>
+<tr><td>Thm 6.4</td><td>de Rham 比較</td><td class="no">不要</td><td></td></tr>
+</table></div>
+
 <h2>リファクタの候補</h2>
 <p>§5・§6 に対応するコードはまだないので、候補はない。使う既存の部品は、pd 包の計算（Delta/DividedPower、第 2 章 §2.5）と δ 除算（Delta/Division）。Lemma 2.36 の一変数版を Cor 2.39 の多変数版へ一般化する T2-1・T2-2 が A1 の入口になる。</p>
 <h2>この章で押さえること</h2>

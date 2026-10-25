@@ -102,13 +102,19 @@
 <p>外部文献の最小採用集合は {BS17, BM18, Mat16, Lur11} の切片で、新規引用にせず形式化の対象に数える。最初の実装単位は「固定完全 prism \((A,(d))\) 上の一変数多項式の Čech 模型と HT 比較」。</p>
 
 <h2>6. コードの所在</h2>
+<p class="meta">BS-W4（<code>05bbd64d6</code>）後。パスは <code>SerrePositivity/BhattScholze/</code> からの相対。</p>
 <div class="table-wrap"><table>
 <tr><th>場所</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
-<tr><td><code>BhattScholze/</code> 直下</td><td class="num">618</td><td class="num">約 59,000</td><td>δ 環・prism・perfectoid・compatible roots・semiperfectoid・B3〜B5・Prop 8.13 の本体（平置き）</td></tr>
-<tr><td><code>BhattScholze/Andre/</code></td><td class="num">342</td><td class="num">44,096</td><td>André の補題（Thm 7.14）と Remark 7.15 の照合</td></tr>
-<tr><td><code>BhattScholze/PerfectoidizationInterface/</code></td><td class="num">11</td><td class="num">1,597</td><td>界面の型と、そこから二入口を導く証明</td></tr>
-<tr><td><code>BhattScholze/Inputs/</code></td><td class="num">5</td><td class="num">264</td><td>唯一の sorry と界面からの二入口</td></tr>
-<tr><td><code>CommutativeAlgebra/</code></td><td class="num">465</td><td class="num">—</td><td>完備化・平坦性・AIC など BS と CLMST の共有基盤。<code>IsPerfectoidization</code> の定義もここ</td></tr>
+<tr><td><code>Delta/</code></td><td class="num">227</td><td class="num">21,059</td><td>§2 δ 環。Basic・Distinguished・DividedPower・Division・Extension・Free・Perfect</td></tr>
+<tr><td><code>Prism/</code></td><td class="num">88</td><td class="num">7,929</td><td>§3 prism。Basic・Perfection（Lemma 3.9）・Perfectoid（Thm 3.10）・Residue・Tensor</td></tr>
+<tr><td><code>Semiperfectoid/</code></td><td class="num">63</td><td class="num">5,052</td><td>§7.1〜7.2。Cor 7.3（B3）、Thm 7.4（B4、André 経由）。RootedExtension/ 20 本（Thm 7.4 の降下と CLMST の両立根）、RootEnvelope/ 33 本（Thm 7.4 の旧証明）</td></tr>
+<tr><td><code>Andre/</code></td><td class="num">551</td><td class="num">65,258</td><td>§7.3 Thm 7.14。直下 49 本（一段の拡大 46、公開入口 AndreFlatness、転送スタブ 2）、RootedExtension/ 206 本（うち Supplement/ 98 本は主定理に使われない）、Transfinite/ 30 本（ω₁ 反復）、Remark715/ 224 本、Variants/ 42 本</td></tr>
+<tr><td><code>Perfectoidization/</code></td><td class="num">24</td><td class="num">2,761</td><td>§8 の環の結果。Prop 8.13 の環版、切除の環の帰結、有限直積、底変換</td></tr>
+<tr><td><code>Almost/</code></td><td class="num">10</td><td class="num">1,082</td><td>§10。Lemma 10.3、Rem 10.7、Prop 10.2・10.4 の使う部分、CLMST 用の比較補題 3 本</td></tr>
+<tr><td><code>PerfectoidizationInterface/</code></td><td class="num">14</td><td class="num">1,743</td><td>E3 の界面の型と、そこから導く定理（Thm 1.17(1)・Cor 8.12 の環の帰結を含む）</td></tr>
+<tr><td><code>Inputs/</code></td><td class="num">2</td><td class="num">72</td><td>唯一の sorry（E3）と、転送スタブ 1 本</td></tr>
+<tr><td>直下</td><td class="num">30</td><td class="num">—</td><td>転送スタブ 29 本（root と audit_f5・f7 が旧名を import）と、界面の集約 <code>PerfectoidizationInterface.lean</code></td></tr>
+<tr><td><code>CommutativeAlgebra/</code>（BS の外）</td><td class="num">465</td><td class="num">—</td><td>完備化・平坦性・AIC など BS と CLMST の共有基盤。<code>IsPerfectoidization</code> の定義もここ</td></tr>
 </table></div>
 <p>直下 618 ファイルの名前の接頭辞は、多い順に <code>DeltaDivision</code>（104）、<code>DeltaRoot</code>（97）、<code>Delta</code>（60）、<code>PerfectDelta</code>（30）、<code>RelativeFree</code>（28）、<code>RankOne</code>（25）、<code>PerfectPrism</code>（24）、<code>CompatibleRoot</code>（16）、<code>Principal</code>（15）。<code>DeltaDivision</code>・<code>DeltaRoot</code> の約 200 本は B4 の根付き拡大（割り算包と根の変数）の構成で、§2 の一般論ではない。</p>
 <p>監査は <code>scripts/audit_bhatt_scholze*.lean</code>（本体・b4・b5・prop813・arc_excision・andre_conditional・refactoring）と <code>scripts/audit_clmst*.lean</code>。実行は <code>lake env lean scripts/&lt;name&gt;.lean</code>。</p>
@@ -116,7 +122,7 @@
 <h2>7. リファクタの候補</h2>
 <div class="box refactor">
 <p class="label">BR1　直下 618 ファイルの平置き</p>
-<p>主題（δ 環の一般論、prism、根付き拡大、perfectoid 化の普遍性）で分かれていない。<code>Delta/</code>、<code>Prism/</code>、<code>RootedExtension/</code>、<code>Perfectoidization/</code> のようなサブディレクトリに分ける案がある。外から import されるモジュール（<code>EInfinity/Perfectoidization/</code>、<code>CommutativeAlgebra/Perfectoidization.lean</code>、<code>CLMST/</code>、<code>Inputs/</code>）は公開名を保つ必要があり、<code>scripts/move_module.py</code> を使う。モジュール移動なので、どの章でどこを動かすかを決めてから着手前に確認する。</p>
+<p>（W1 前の記録）主題（δ 環の一般論、prism、根付き拡大、perfectoid 化の普遍性）で分かれていなかった。W1（主題別）・W2（原典の節ごと）・W3・W4 で上の表の形にした。<code>Delta/</code>、<code>Prism/</code>、<code>RootedExtension/</code>、<code>Perfectoidization/</code> のようなサブディレクトリに分ける案がある。外から import されるモジュール（<code>EInfinity/Perfectoidization/</code>、<code>CommutativeAlgebra/Perfectoidization.lean</code>、<code>CLMST/</code>、<code>Inputs/</code>）は公開名を保つ必要があり、<code>scripts/move_module.py</code> を使う。モジュール移動なので、どの章でどこを動かすかを決めてから着手前に確認する。</p>
 </div>
 <div class="box refactor">
 <p class="label">BR2　普遍性の手書き展開の重複（Q10）</p>
@@ -129,7 +135,7 @@
 
 <div class="box refactor">
 <p class="label">BR8　どこからも使われないモジュール 173 本</p>
-<p>BS の 1008 本のうち 173 本は、BS の外（CLMST・CommutativeAlgebra・KST・EInfinity）からも、入口（<code>Inputs/</code>）からも、root の集約からも import されない（監査だけが読む）。多いのは <code>Semiperfectoid/RootedExtension/Division</code>（38）、<code>…/DeltaRoot</code>（37）、<code>Delta/DividedPower</code>（24）、<code>Delta/Free</code>・<code>Free/Finite</code>（20）、<code>Prism</code>（19）。途中で使わなくなった経路の残りと見られる。BS-W2 では動かさず、削除するかを後で判断する（一覧は W2 の作業ツリーから再計算する）。主定理の経路に乗るのは 455 本、Rem 7.15 の照合が 265 本、root の集約だけが import するものが 115 本（W1 のスタブ 32 本を含む）。</p>
+<p>BS の 1008 本のうち 173 本は、BS の外（CLMST・CommutativeAlgebra・KST・EInfinity）からも、入口（<code>Inputs/</code>）からも、root の集約からも import されない（監査だけが読む）。多いのは <code>Semiperfectoid/RootedExtension/Division</code>（38、W4 で <code>Andre/RootedExtension/</code> へ）、<code>…/DeltaRoot</code>（37）、<code>Delta/DividedPower</code>（24）、<code>Delta/Free</code>・<code>Free/Finite</code>（20）、<code>Prism</code>（19）。途中で使わなくなった経路の残りと見られる。BS-W2 では動かさず、削除するかを後で判断する（一覧は W2 の作業ツリーから再計算する）。主定理の経路に乗るのは 455 本、Rem 7.15 の照合が 265 本、root の集約だけが import するものが 115 本（W1 のスタブ 32 本を含む）。</p>
 </div>
 
 <div class="box refactor">

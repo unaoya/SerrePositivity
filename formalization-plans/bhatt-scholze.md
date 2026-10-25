@@ -24,7 +24,7 @@
 | B3 | Cor 7.3：semiperfectoid 商の perfectoid 化の存在と普遍性 | `exists_perfectoidization_of_semiperfectoid_quotient` |
 | B4 | Thm 7.4：導来 p 完備な全射商の任意の perfectoid 化は全射（原典どおり André 経由。旧経路は `…_of_rootEnvelope`） | `surjective_of_isPerfectoidization_of_semiperfectoid_quotient` |
 | B5 | Lemma 10.3（perfectoid 環の完備導来テンソルは離散で perfectoid）、Remark 10.7（`perfectoidIdealMod_idempotent`、全 N） | `BhattScholze.PerfectoidAlmost`、`lemma103_perfectoidTensor` |
-| André | Thm 7.14：絶対整閉な perfectoid 環への p 完全忠実平坦な拡大 | `BhattScholze/Inputs/AndreFlatness.lean`（証明済み） |
+| André | Thm 7.14：絶対整閉な perfectoid 環への p 完全忠実平坦な拡大 | `BhattScholze/Andre/AndreFlatness.lean`（証明済み） |
 | Prop 8.13 環版 | 指定済みの perfectoid 化をもつ図式での完備導来テンソルとの可換性 | `prop813CompletedTensorMap_isPerfectoidization` |
 
 CLMST の Prop 2.4.7・Cor 4.0.4 はこれらから証明済み（2026-10-17）。
@@ -174,7 +174,7 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 ## 9. 変更記録
 
 - 2026-10-25：BS 作業チャットを開始（引き継ぎ書 `bhatt-scholze-handover-2026-10-25.md`）。方針：HT 比較を迂回せず原論文の経路で E3 を消す。
-  原典との差は「Lean が簡略化なら保ち、原典が簡単なら揃える」（ノート `divergences.html`）。
+  原典との差は「Lean が簡略化なら保ち、原典が簡単なら揃える」（ノート各章末の「原典との差の評価」）。
 - 2026-10-25：BS-W1（`9095aff46`・`e039377a6`・`2d288b899`・`afbd30ef5`）。監査 838 行の修正、Q10（既存の `precomp_ringEquiv` の適用）、
   直下 616 本の主題別分割（外から import される 32 本は旧名の転送スタブ）。
 - 2026-10-25：BS-W2（`c9d5fea53`・`6c13fe6be`）。760 本を原典の節ごとに再配置（Delta/・Prism/・Perfectoidization/・Semiperfectoid/・Almost/・
@@ -182,3 +182,8 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 - 2026-10-25：BR9 の決定と BS-W3（`f4dcf1d1a`・`7b82e02aa`）。B4（Thm 7.4）を原典どおり André 経由で証明。旧証明と B4 専用の 32 本は
   `Semiperfectoid/RootEnvelope/` に保存。`scripts/audit_clmst_b3.lean` の禁止リストから証明済みの André 入口を外した。公理は標準三公理のみ。
 - 2026-10-25：リポジトリを Apache-2.0 にした（`ee1404187`・`d3e4f0ce0`）。
+- 2026-10-25：ノートの「原典の項目一覧」と「原典との差の評価」を独立ファイルから各章末へ移した（ユーザー指示）。
+- 2026-10-25：BS-W4（`a8d77f61f`・`65d7b8d74`・`05bbd64d6`）。Thm 7.14 が使う根付き拡大 108 本を `Andre/RootedExtension/` へ、
+  主定理に使われない 98 本を `Andre/RootedExtension/Supplement/` へ。`Inputs/` は E3 だけ（＋転送スタブ `AndreFlatness`）にし、
+  証明済みの旧入力 4 本と直下の `Perfectoidization.lean` を各章へ。`CommutativeAlgebra/` 4 本の import を切り替えて転送スタブ 4 本を削除。
+  残る転送スタブ 32 本は root（30 行）と `audit_f5`・`audit_f7` の旧名 import の切り替え待ち。

@@ -73,3 +73,9 @@ table.matrix td.diag { color: var(--muted); }
 .box > :last-child { margin-bottom: 0; }
 .label { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; }
 ol.checks li, ul li { margin: 0.25rem 0; }
+
+/* 項目一覧の判定 */
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+td.no { color: var(--muted); white-space: nowrap; }

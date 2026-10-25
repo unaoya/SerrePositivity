@@ -19,7 +19,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 2 章</nav>
 <h1>第 2 章　δ 環（§2）</h1>
-<p class="meta">基準コミット <code>7c56bbf72</code>（2026-10-25）。原典 pp.13–27。E3 に必要な項目だけを載せる（不要な項目と判定の根拠は <a href="inventory.html">項目一覧</a>）。Lean のパスは BS-W2 の再配置後のもの（W2 の完了まではリンク先が古い場所にある）。名前空間は <code>SerrePositivity.BhattScholze</code>、δ 構造の API は <code>DeltaStructure.</code>（<code>DS.</code> と略す）。</p>
+<p class="meta">基準コミット <code>7c56bbf72</code>（2026-10-25）。原典 pp.13–27。E3 に必要な項目だけを載せる（不要な項目と判定は <a href="#items-02">原典の項目一覧</a>、原典との差の評価は <a href="#diff-02">末尾</a>）。Lean のパスは BS-W2 の再配置後のもの（W2 の完了まではリンク先が古い場所にある）。名前空間は <code>SerrePositivity.BhattScholze</code>、δ 構造の API は <code>DeltaStructure.</code>（<code>DS.</code> と略す）。</p>
 <p>§2 は prism を定義するための言葉を用意する節である。E3 への道で後に効くのは、δ 構造の基本（§2.1・§2.2）、distinguished 元（§2.3）、完全 δ 環（§2.4、第 3 章の Thm 3.10 の土台）、pd 包との関係と envelope の平坦性（§2.5・§2.6、第 4・5 章の Čech 計算と結晶比較の土台）である。</p>
 <div class="box">
 <p class="label">原典との差（全体）</p>
@@ -93,7 +93,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Lemma 2.35</td><td>\(\gamma_p(z)\in A\) なら全 \(\gamma_n(z)\in A\)</td><td class="ok">済</td><td><code>DS.factorial_dvd_pow_of_prime_dvd_pow</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/DividedPower/DeltaFactorialDivision.lean">DeltaFactorialDivision:44</a>）、<code>DS.primeDividedPowers</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/DividedPower/DeltaDividedPowers.lean">DeltaDividedPowers:68</a>）</td></tr>
 <tr><td>Lemma 2.36</td><td>\(\mathbb Z_{(p)}\{x,\varphi(x)/p\}\) ＝ pd 包</td><td class="part">一部</td><td>一変数 <code>existsUnique_regularPrincipalDPMorphism</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/DividedPower/RegularPrincipalDPUniversal.lean">RegularPrincipalDPUniversal:76</a>）。多変数版は標的の p 正則性を仮定</td></tr>
 <tr><td>Lemma 2.38</td><td>正則列の pd 包</td><td class="todo">未</td><td>A0・A1（課題 T2-1）</td></tr>
-<tr><td>Cor 2.39</td><td>\(A\{\varphi(f)/p\}\cong D_{(f)}(A)\)</td><td class="part">一部</td><td>根の関係の族 <code>deltaRootFamilyRaw_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/RootedExtension/DeltaRoot/DeltaRootFamilyRawCompletelyFlat.lean">DeltaRootFamilyRawCompletelyFlat:47</a>）とモニック族（<a href="../../../SerrePositivity/BhattScholze/Andre/Variants/MonicRawCompletelyFlat.lean">MonicRawCompletelyFlat:140</a>）の特殊形。一般形は A0・A1（課題 T2-2）</td></tr>
+<tr><td>Cor 2.39</td><td>\(A\{\varphi(f)/p\}\cong D_{(f)}(A)\)</td><td class="part">一部</td><td>根の関係の族 <code>deltaRootFamilyRaw_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/RootedExtension/Supplement/DeltaRoot/DeltaRootFamilyRawCompletelyFlat.lean">DeltaRootFamilyRawCompletelyFlat:47</a>）とモニック族（<a href="../../../SerrePositivity/BhattScholze/Andre/Variants/MonicRawCompletelyFlat.lean">MonicRawCompletelyFlat:140</a>）の特殊形。一般形は A0・A1（課題 T2-2）</td></tr>
 </table></div>
 
 <h2>§2.6 pd 包と prismatic envelope の平坦性</h2>
@@ -104,6 +104,59 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Def 2.42</td><td>相対的 \(I\) 完全正則</td><td class="todo">未</td><td>A0（課題 T2-3）。近い道具：<code>IsCompletelyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/../CommutativeAlgebra/CompletelyFlat.lean">CommutativeAlgebra/CompletelyFlat:45</a>）、<code>IsKoszulResolution</code>（<a href="../../../SerrePositivity/BhattScholze/../CommutativeAlgebra/KoszulResolution.lean">CommutativeAlgebra/KoszulResolution:69</a>）</td></tr>
 <tr><td>Lemma 2.43</td><td>pd 包の pushout の p 完全平坦性</td><td class="todo">未</td><td>A0（T2-3）</td></tr>
 <tr><td>Cor 2.44</td><td>prismatic envelope の p 完全平坦性</td><td class="todo">未</td><td>A0（T2-3）→ Prop 3.13</td></tr>
+</table></div>
+
+<h2 id="items-02">原典の項目一覧（§2）</h2>
+<p>§2 δ 環 の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Def 2.1</td><td>δ 環</td><td class="ok">済</td><td><code>DeltaRing</code>・<code>DeltaIdentities</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.2</td><td>Frobenius 持ち上げ</td><td class="ok">済</td><td><code>DeltaRing</code>・<code>DeltaFrobenius</code>・<code>DeltaFrobeniusNaturality</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.3</td><td>λ 環との関係</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 2.4</td><td>δ 構造 ＝ W₂ への切断</td><td class="ok">済</td><td>定義そのもの。<code>DeltaSectionNaturality</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.5</td><td>導来 Frobenius 持ち上げ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Ex 2.6</td><td>始 δ 環 \(\mathbb Z_{(p)}\)</td><td class="no">不要</td><td>\(\mathbb Z_{(p)}\) 代数を仮定しない。δ(p) の計算は Ex 2.20</td></tr>
+<tr><td>Rem 2.7</td><td>極限・余極限、Witt</td><td class="part">一部</td><td>有向余極限 <code>DeltaDirectLimit</code>、完全かつ p 正則なテンソル（Prism/Tensor）、Witt への写像は ghost 単射時のみ。<b>一般のテンソル積（A0 の Čech 計算）が未</b></td></tr>
+<tr><td>Not 2.8</td><td>添加と消去</td><td class="ok">済</td><td><code>RelativeFreeDelta</code>（Delta/Free）、δ 閉包の商</td></tr>
+<tr><td>Lemma 2.9</td><td>商</td><td class="ok">済</td><td><code>DeltaQuotient</code>（Delta/Basic）</td></tr>
+<tr><td>Ex 2.10</td><td>δ 閉包での商</td><td class="ok">済</td><td><code>DeltaIdeal</code>・<code>DeltaClosureGeneration</code>（Delta/Basic）</td></tr>
+<tr><td>Lemma 2.11</td><td>自由 δ 環、Frobenius の忠実平坦性</td><td class="part">一部</td><td><code>FreeDeltaRing</code>・<code>FreeDeltaUniversal</code>（Delta/Free）。Frobenius は p 完全忠実平坦と mod p 平坦まで</td></tr>
+<tr><td>Cor 2.12</td><td>Frobenius は fpqc 局所全射</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 2.13・2.14</td><td>Joyal の δₙ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Lemma 2.15</td><td>局所化</td><td class="ok">済</td><td><code>DeltaLocalization</code>（Delta/Extension）</td></tr>
+<tr><td>Rem 2.16</td><td>p 局所化</td><td class="ok">済</td><td><code>DeltaLocalizationSaturation</code>（Delta/Extension）</td></tr>
+<tr><td>Lemma 2.17</td><td>I 進完備化</td><td class="ok">済</td><td><code>DeltaAdicCompletion</code>・<code>DeltaAdicEstimate</code>（Delta/Extension）</td></tr>
+<tr><td>Lemma 2.18</td><td>エタール射・導来完備化への延長</td><td class="part">一部</td><td>導来 (p,d) 完備化の H⁰ だけ <code>DeltaPDCompletion</code>（Delta/Extension）。エタール部分は Lemma 4.21 用で、多項式代数で済ませるなら不要</td></tr>
+<tr><td>Def 2.19</td><td>distinguished</td><td class="ok">済</td><td><code>DeltaRing</code></td></tr>
+<tr><td>Ex 2.20</td><td>distinguished 元の例</td><td class="ok">済</td><td>(1) のみ必要：<code>DeltaPrime</code>（Delta/Distinguished）</td></tr>
+<tr><td>Ex 2.21</td><td>普遍 distinguished δ 環</td><td class="todo">未</td><td>Ex 3.4 → Construction 6.1（A1）で使う。小さい</td></tr>
+<tr><td>Rem 2.22</td><td>distinguished 元を p へ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Lemma 2.23〜2.25</td><td>単元倍、因子、p ∈ (d, φd)</td><td class="ok">済</td><td><code>Distinguished</code>（Delta/Distinguished）</td></tr>
+<tr><td>Def 2.26</td><td>完全 δ 環</td><td class="ok">済</td><td><code>DeltaRing</code></td></tr>
+<tr><td>Rem 2.27</td><td>完全化</td><td class="ok">済</td><td>余極限側 <code>DeltaPerfection</code>・<code>DeltaPerfectionUniversal</code>（Delta/Perfect）。逆極限側 \(\lim_\varphi\) は Lemma 4.8 の一般の標的（A3）で要る</td></tr>
+<tr><td>Lemma 2.28</td><td>p ねじれ</td><td class="ok">済</td><td><code>DeltaTorsion</code>（Delta/Perfect）</td></tr>
+<tr><td>Rem 2.29・2.30</td><td>注意</td><td class="no">不要</td><td></td></tr>
+<tr><td>Cor 2.31</td><td>完全 δ 環 ↔ 完全 F_p 代数</td><td class="ok">済</td><td><code>PerfectDeltaModP</code>・<code>WittDelta</code>・<code>PerfectDeltaWittRecovery</code>（Delta/Perfect）。対象ごと</td></tr>
+<tr><td>Lemma 2.32</td><td>完全な元は rank 1</td><td class="ok">済</td><td><code>DeltaRankOne</code>（Delta/Perfect）</td></tr>
+<tr><td>Lemma 2.33</td><td>Teichmüller 係数による判定</td><td class="ok">済</td><td>W(k) の形 <code>WittDistinguished</code>（Delta/Perfect）で足りる</td></tr>
+<tr><td>Lemma 2.34</td><td>d は非零因子、R[p]=R[p^∞]</td><td class="ok">済</td><td><code>DistinguishedRegular</code>・<code>DistinguishedTorsion</code> ほか（Delta/Perfect）</td></tr>
+<tr><td>Lemma 2.35</td><td>γ_p から全 γ_n</td><td class="ok">済</td><td><code>DeltaFactorialDivision</code>・<code>DeltaDividedPowers</code>（Delta/DividedPower）</td></tr>
+<tr><td>Lemma 2.36</td><td>A{φ(x)/p} ＝ pd 包</td><td class="part">一部</td><td>一変数 <code>RegularPrincipalDPUniversal</code> ほか（Delta/DividedPower）</td></tr>
+<tr><td>Rem 2.37</td><td>導来 pushout の離散性</td><td class="no">不要</td><td>離散版で進める前提（A0 の設計で確認）</td></tr>
+<tr><td>Lemma 2.38</td><td>正則列の pd 包</td><td class="todo">未</td><td>A0・A1。課題 T2-1</td></tr>
+<tr><td>Cor 2.39</td><td>A{φ(f)/p} ＝ D_I(A)</td><td class="part">一部</td><td>根・モニック族の特殊形（Andre/RootedExtension、Andre）。一般形は課題 T2-2</td></tr>
+<tr><td>Rem 2.40・Warn 2.41</td><td>注意</td><td class="no">不要</td><td></td></tr>
+<tr><td>Def 2.42、Lemma 2.43、Cor 2.44</td><td>envelope の p 完全平坦性</td><td class="todo">未</td><td>Prop 3.13 の入力（A0）。課題 T2-3</td></tr>
+</table></div>
+
+<h2 id="diff-02">原典との差の評価</h2>
+<p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
+<tr><td>D1</td><td>Def 2.1・Rem 2.4</td><td>δ 構造を Def 2.1 の写像ではなく W₂ への切断（Rem 2.4）として定義</td><td>Def 2.1 の恒等式が環準同型であることから自動的に出る。δ 射も W₂ 図式の可換性で扱える</td><td>δ の公式を使うたびに W₂ の座標を経由する。恒等式から作るには <code>ofFunction</code> が要る</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
+<tr><td>D2</td><td>§2 全般</td><td>\(\mathbb Z_{(p)}\) 代数を仮定しない（零環も含む）</td><td>一般性。perfectoid 環などをそのまま扱える</td><td>Ex 2.6（δ(p) 単元）に頼る議論を書き換える必要がある（Lemma 2.28 など）</td><td>同程度</td><td>Lean を保つ</td></tr>
+<tr><td>D3</td><td>Lemma 2.25（逆向き）</td><td>局所化・完備化の代わりに、極大イデアルでの計算で \(\delta(d)\) の単元性を出す</td><td>局所化・完備化の道具を使わずに済み、証明が短い</td><td>—</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
+<tr><td>D4</td><td>Lemma 2.28</td><td>\(\delta(p)\) の単元性の代わりに \(\delta(p)-1\in(p)\) で消去</td><td>p 局所性を仮定しない</td><td>—</td><td>同程度</td><td>Lean を保つ</td></tr>
 </table></div>
 
 <h2>形式化の課題</h2>
