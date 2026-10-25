@@ -49,7 +49,7 @@
 - `sigmaFiniteFamilyComparison_isIso`、`sigma_preservesFiniteCoproducts_iff_yoneda`
 - `sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted`、`sigmaLeftKanExtension_preservesSmallColimits_iff`
 - `unitIntervalMapAt`、`unitIntervalMapAt_commaTransportIso`、`unitIntervalMapAt_unitCommaSectionTargetFiberVertex`
-- `unitIntervalMapAt_commaTransportIso_unit`（`HomotopyLimits/CommaLocalUnitTransportComparison`）。
+- `unitIntervalMapAt_commaTransportIso_unit`（P-6）、`uliftNerveCone_coherent_eq`（`HomotopyLimits/NerveConeCoherentComparison`、P-8）。
 - `mapJoinCocone_isColimit_of_adjunction`、`adjunction_preservesSmallColimits`、`hasColimit_of_reflection`
 - `IsPresentable.exists_reflectiveIndModel`、`IsPresentable.exists_presheafReflection`、`reflectiveIndModel_hasSmallColimits`
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
@@ -96,7 +96,7 @@
 - e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `ConeFunctorCounitPrism`・`ConeFamilyAdjunct`・`LeftConeHomRestriction` は e5 の全錐族比較、`NerveConeCoherentComparison` は P-8 の全錐比較を構成中。
+- `ConeFunctorCounitPrism`・`ConeFamilyAdjunct`・`LeftConeHomRestriction` は e5 の全錐族比較を構成中。
 
 ### 次の一手
 - e5 は小さい native compact 全部分候補圏と μ-small 極限関手の同じ μ の保存まで構成。全錐族比較と相対因子化から各対象の filtered 生成表示へ進む。

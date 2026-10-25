@@ -6,6 +6,9 @@ set_option pp.explicit false
 
 open SerrePositivity.InfinityCategories.HomotopyLimits
 
+#check @uliftNerveCone_coherent_eq
+#print axioms uliftNerveCone_coherent_eq
+
 #check @isContractibleKan_conePinchedHom_of_isLimitCone
 #print axioms isContractibleKan_conePinchedHom_of_isLimitCone
 #check @isLimitCone_iff_conePinchedHom_isContractibleKan

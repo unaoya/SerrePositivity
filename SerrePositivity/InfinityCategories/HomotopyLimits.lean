@@ -1083,6 +1083,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFunctorP
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFunctorPullbackLimit
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationPullbackLimits
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveConeCoherentComparison
 
 /-!
 概要：coherent nerve によるホモトピー極限と Quillen 随伴の比較の入口。
