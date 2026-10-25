@@ -21,7 +21,7 @@
 - 同じ対象条件の実安定閉包との一致から、元の dg 包含と同じ cell 平坦商への `IsStableVerdierSequence` を供給。分解上の実小核・K-flat Hom・同じ商射影との屋根を保持する。
 - D-16 は thick 閉包へ接続する方針に改訂。対象条件の共通宇宙の実ホモトピー圏での retract 閉性は証明済み。D-16 追加 (3) を適用し元対象条件と thick 閉包の一致を証明。実平坦 thick 核の本質像との一致・元包含への核反映・辺局所化から Sp の native `IsVerdierSequence` を供給済み。集約・公理監査も通過。
 - D-15 の公開反映を適用し、対象条件と元 augmentation の `moduleQuasiIso` の同値を供給。Sp 正本への商の核一致は接続済み。追加 ULift 局所化の保存は公開供給待ちで、完成とはしていない。
-- ④の Milnor 比較を Sp 正本の fiber 模型へ移し、元の自由対角の Hom 作用と厳密に照合。元二射影・零比較を保持し、その同じ一回 Perf 延長の Hom 準同型性・nerve 充満忠実性を証明。K-S• の既存小 Perf 対角との比較は D-17 待ち。
+- ④の Milnor 比較を Sp 正本の fiber 模型へ移し、元の自由対角の Hom 作用と厳密に照合。元二射影・零比較を保持し、その同じ一回 Perf 延長の Hom 準同型性・nerve 充満忠実性を証明。元小 Perf 対角と同じ cell 商の native Verdier 列は D-17 の生成判定・前三角性・完全性を明示して対象ビルド済み。
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -98,7 +98,7 @@
 - (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
 - `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
 - `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
-- 未追跡：`MilnorSmallPerfectFaithfulness`・`MilnorDiagonalStableImage`・`MilnorDiagonalThickImage`・`MilnorResolvedQuotient`・`MilnorFlatThickTransport` は対象ビルド済み。D-17 は明示入力、D-18 補足の準同値による前三角性の順方向輸送は供給待ち。③の集約は12744 jobs、監査は941モジュール・8772宣言を通過。吸収対象は元包含・同じ平坦屋根を保つ公開宣言。
+- ④検証済み：`MilnorSmallPerfectFaithfulness`・`MilnorDiagonalStableImage`・`MilnorDiagonalThickImage`・`MilnorResolvedQuotient`・`MilnorFlatThickTransport`・`MilnorResolvedKernel`・`MilnorResolvedVerdier` は集約13142 jobs・監査948モジュール8815宣言を通過。D-17 は `DGGluingMilnorSmallPerfectGeneration` に隔離。D-18 補足の順方向輸送は供給待ち。K-S• は `dgGluingMilnorResolvedProjection` へ射影を付け替え、`dgGluingMilnor_isResolvedVerdierSequence` を使う。③の集約は12744 jobs、監査は941モジュール・8772宣言を通過。吸収対象は元包含・同じ平坦屋根を保つ公開宣言。未追跡 `HomTargetCommaFunctor` は元終域 comma 比較を束ねる接続として対象ビルド中。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
 - 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。

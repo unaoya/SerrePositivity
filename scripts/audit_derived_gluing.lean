@@ -945,7 +945,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackThickFlatTransport,
     `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackThickImage,
     `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackKernelLocalization,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackNativeVerdier]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackNativeVerdier,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorSmallPerfectFaithfulness,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorDiagonalStableImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorDiagonalThickImage,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedQuotient,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFlatThickTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedKernel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedVerdier]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
