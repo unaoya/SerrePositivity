@@ -2661,4 +2661,8 @@ public import SerrePositivity.KST.SConstruction.DGKappaNativeBFStages
 
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFBoundary
 
+public import SerrePositivity.KST.SConstruction.SpectrumPositiveComponentEquality
+
+public import SerrePositivity.KST.SConstruction.DGKappaNativeBFArrowComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

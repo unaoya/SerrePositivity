@@ -32360,3 +32360,15 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_top
 #print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFBoundary_top
+
+#check @SerrePositivity.KST.SConstruction.spectrumHomotopyMap_eq_of_positive_component
+#print axioms SerrePositivity.KST.SConstruction.spectrumHomotopyMap_eq_of_positive_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFNativeArrow
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFNativeArrow
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFArrowProjection_component
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFArrowProjection_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFArrow_homotopyMap_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFArrow_homotopyMap_eq
