@@ -1,3 +1,17 @@
+import SerrePositivity.DifferentialGraded.Functor.FullHomLift
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFunctorLift
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFaithful
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFunctorLift
+import SerrePositivity.DifferentialGraded.Presentation.QuotientGeneratorImage
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceContainment
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceGenerators
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCoefficients
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCode
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCochainLift
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedLift
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedClosedFamily
+import SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableClosedNaturality
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedFamilyRepresentables
 import SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableComposition
 import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativity
 import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule
@@ -7896,6 +7910,21 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Functor.FullHomLift,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFunctorLift,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFaithful,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFunctorLift,
+    `SerrePositivity.DifferentialGraded.Presentation.QuotientGeneratorImage,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceContainment,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceGenerators,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCoefficients,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCode,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCochainLift,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedLift,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedClosedFamily,
+    `SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableClosedNaturality,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedFamilyRepresentables,
+
     `SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift,
     `SerrePositivity.InfinityCategories.Derived.DGStrictNatTransClosedIso,
     `SerrePositivity.InfinityCategories.Derived.DGNerveCommonMap,
