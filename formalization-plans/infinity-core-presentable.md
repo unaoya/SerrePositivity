@@ -96,10 +96,10 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- なし。任意 μ-small fiber 試験余錐まで対象・集約ビルドと公理監査済み。
+- `FiberSliceCoconeComparison`：第一成分の全余錐同型を保持する強化版を対象ビルド中。小さい μ-filtered comma 模型まで集約・監査済み。
 
 ### 次の一手
-- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は P-d へ移管（ユーザー判断）。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化・全交互前置図式を保つ分裂三角形まで構成（点射には filtered 保存のみ）。全交互有限段の標準単体への拡張と全増大余錐・二頂点面の比較まで構成。元の表示余錐を全段で保持する可算再帰・全可算貼り合わせまで構成。`exists_nativeAlternatingPresentation` は偶数部分の元の native 表示との全射等式と、奇数部分の定値標的との全 FunctorIso を入力なしで構成する。`exists_componentCompactFiberOver_of_isKappaAccessible` で元の fiber の各対象への compact 成分の実射を構成（第一脚の小余極限・compact 保存、固定標的の compact 性）。`nonempty_componentCompactFiberOver_cocone_of_small` は任意 μ-small 全試験図式の内部余錐を構成（点射の全小余極限保存なし）。小さい comma 模型と成分表示への cofinal 比較による生成性が残る。
+- e5（未完、設計変更採用済み・fiber 版を先行）：公開名予定は `pullback_isAccessible`・`fiber_isAccessible_of_presentable`・`pullback_isPresentable`。共通濃度・小 compact 候補・対象上の余極限・全 slice 比較・compact comma 頂点の回収まで構成。全 μ-small 試験余錐は両脚の全小余極限保存を使うため点射へ適用できない。fiber は対象上の可算交互構成を先行し、accessible 一般版は P-d へ移管（ユーザー判断）。小さい同型飽和模型、全 slice 交互比較から compact fiber 射への回収、固定始域の filtered 余極限、compact 両端・終頂点付き図式の coslice 内 compact 性、指定段と全前置余錐の因子化・全交互前置図式を保つ分裂三角形まで構成（点射には filtered 保存のみ）。全交互有限段の標準単体への拡張と全増大余錐・二頂点面の比較まで構成。元の表示余錐を全段で保持する可算再帰・全可算貼り合わせまで構成。`exists_nativeAlternatingPresentation` は偶数部分の元の native 表示との全射等式と、奇数部分の定値標的との全 FunctorIso を入力なしで構成する。`exists_componentCompactFiberOver_of_isKappaAccessible` で元の fiber の各対象への compact 成分の実射を構成（第一脚の小余極限・compact 保存、固定標的の compact 性）。`nonempty_componentCompactFiberOver_cocone_of_small` は任意 μ-small 全試験図式の内部余錐を構成（点射の全小余極限保存なし）。`exists_smallKappaFilteredFiberCommaModel` で compact comma の小さい μ-filtered 全模型まで構成。成分表示への cofinal 比較による生成性が残る。
 - e6 の全体同値と e7 の小極限は保留（第 II 段／R）。fiber 版の公開名を報告後、Duality/・Supply/・LocalObjects/ を含む e8 を準備し、P-d の accessible 一般版到着で閉じる。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
