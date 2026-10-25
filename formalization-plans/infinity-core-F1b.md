@@ -59,7 +59,12 @@ X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
 `TransportSquareDiagram.comparison_precomp_heq`、
 `transportIntervalSquare_transportIso_precomp_heq`（3309 jobs）。
 専用監査は9852宣言で通過、標準三公理のみ。
-Ncomp 本体は未完。次はこの係数自然性を元の始点同型の自然性へ接続し、
+元の始点同型の自然性も
+`transportIntervalSquare_transportIso_source_naturality` で証明した（3317 jobs）。
+専用監査は9881宣言で通過、標準三公理のみ。
+同じ普遍始点比較から関手空間上の `transportIntervalSquareSourceActionIso` を作り、
+その全成分が元の transportIso に一致することを確認した。係数は任意の単体集合。
+Ncomp 本体は未完。次は定値終辺を消去する指定比較との整合を確認し、
 共通の実高次図式上で元の二段評価と合成評価を照合する。
 
 
