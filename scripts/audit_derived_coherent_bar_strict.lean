@@ -149,7 +149,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AugmentationComponents,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarNondegCokernel,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictHomologyColimit,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroStageAugmentation]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroStageAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictHomologyCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarNondegAugmentationLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictZeroLayerCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationHomologyLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationQuasiIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.KappaFilteredComparisonC1]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -256,3 +263,7 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgStrictCoherentHomologyColimitIso_leg
 #check SerrePositivity.InfinityCategories.dgCoherentBarZeroStage_augmentation
 #check SerrePositivity.InfinityCategories.dgHomologyBarNondegAugmentationIsCokernel
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarStrictColimitAugmentation_quasiIso
+#check SerrePositivity.InfinityCategories.dgKappaCoherentBarHomologyColimitIso
+#check SerrePositivity.InfinityCategories.dgKappaStrictBarColimitAugmentation_quasiIso
