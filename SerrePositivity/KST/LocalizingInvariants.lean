@@ -2316,4 +2316,6 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCo
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameUnits
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCoherentSource
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
