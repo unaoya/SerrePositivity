@@ -189,3 +189,6 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
   残る転送スタブ 32 本は root（30 行）と `audit_f5`・`audit_f7` の旧名 import の切り替え待ち。
 - 2026-10-25：進捗確認チャットが root と `audit_f5`・`audit_f7` の旧名 import を切り替えた（`f4968ad5d`）ので、転送スタブ 32 本を削除した（`201b022cc`）。
   BS の直下は集約 `PerfectoidizationInterface.lean` だけ、`Inputs/` は E3 だけになった。領域監査は終了 0（976 モジュール）。
+- 2026-10-25：E3 の `coconnective` 欄（Lemma 8.4）がどの橋からも読まれていないことを確認。外して入力を弱める調整案を
+  `bhatt-scholze-e3-coconnective.md` にまとめた（EInfinity 側の変更を含むので進捗確認チャット経由）。
+  記録のみ：E3 の目標の型を D(R) 版のまま残すか、原典 Def 8.2 に近い CAlg 版（EInfinity）に一本化するかは、A4 以降の設計で決める。
