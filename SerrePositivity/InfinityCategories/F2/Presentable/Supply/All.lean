@@ -30,6 +30,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorCo
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedHomEndSection
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedHomEndRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteSubcomplexEndComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.EndSectionsRelativeHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.PinchedHomVertexTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.EndSectionsYonedaModel
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。

@@ -41,6 +41,11 @@
 - 有限部分複体上の二つの制限図式と一つの自然変換、元の全空間を頂点とする
   制限錐とその比較射を構成した。これらの錐の極限性はまだ主張していない。
 - 最新 Supply.All は 8633 jobs で成功。独立監査は 288 宣言、標準三公理のみ。
+- end 切断と元の相対関手空間の厳密な同型、および left fibration 分類後の
+  全 Hom 二変数図式間の写像空間との同値を構成した。
+- 二変数図式の curry を元の Yoneda 関手と元の Hom 係数前層族に正規化した。
+  end 切断からこの二つの全図式間の写像空間への同値を公開する。
+- 最新 Supply.All は 8636 jobs で成功。独立監査は 349 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -89,6 +94,12 @@
 - `finiteSubcomplexEndComparison`
 - `finiteSubcomplexTwistedHomCone`、`finiteSubcomplexEndSectionsCone`
 - `finiteSubcomplexEndComparisonConeMorphism`
+- `functorEndSectionsRelativeHomIso`
+- `relativeHomStraighteningEquivalence`
+- `pinchedHomTargetVertexIsoEquivalence`
+- `functorEndSectionsHomDiagramEquivalence`
+- `homBifunctorCurryIso`
+- `functorEndSectionsYonedaHomEquivalence`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -99,7 +110,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（実切断比較の始域制限・有限部分図式の二葉と集約・監査・本計画を記録）。
+- なし（end 切断の相対 Hom・頂点同型移送・Yoneda 模型の三葉と集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -115,10 +126,10 @@
   切断空間の既存の極限表示と接続して、還元定理の全自然な極限錐族を構成する。
 - 始域の分解を使う場合、構成した制限錐の極限性と制限の充填性を確認する。
   `MonoidalClosed.internalHom.flip.obj` の極限保存と fiber の極限表示が入口。
-- 比較の別の証明入口として、切断を元の Hom 射影への相対関手空間へ移し、
-  left fibration 分類で `Hom_A` と `Hom_C(F(-),G(-))` の全自然変換へ読む。
-  Yoneda と指定された左 Kan の普遍性で元の Fun の Hom へ戻せるかを確認する。
-  `relativeHomCoherentEquivalence`・`PresheafYonedaLeftKan` は読み取り専用の候補。
+- 構成済みの Yoneda 模型から元の Fun の Hom へ戻す比較を構成する。
+  全前層 Hom 族と指定された Yoneda 左 Kan 延長の Hom 族を、同じ制限と
+  右 Kan の一意性で比較する経路を確認する。既存の Ind 版の証明構造が候補。
+  宇宙に注意し、C に大きい余極限の存在を追加仮定しない。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 

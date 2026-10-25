@@ -75,3 +75,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexTwistedHomCone
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexEndSectionsCone
 #check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSubcomplexEndComparisonConeMorphism
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsRelativeHomIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeHomStraighteningEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomTargetVertexIsoEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsHomDiagramEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homBifunctorCurryIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsYonedaHomEquivalence
