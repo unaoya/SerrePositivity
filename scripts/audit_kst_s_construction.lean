@@ -33143,3 +33143,135 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgKappaNativeBFKernelQuotientVertexIso
 #print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFKernelQuotientVertexIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_diagonal_data
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_diagonal_data
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_source
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_source
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_target
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_target
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleHom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerExactTransport
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerExactTransport
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteLowerExactTransport_isIso
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteLowerExactTransport_isIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_transport
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_transport
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFixedHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFixedHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerFactor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperPathFunctor_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperPathFunctor_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerDiagonal_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerDiagonal_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteLowerExactFunctors
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteLowerExactFunctors
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteLowerExact_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteLowerExact_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_path_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteLowerHom_path_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteNullTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteNullTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleStableObject
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleStableObject
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_middle_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_middle_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximalComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximalComposite
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximalComposite_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximalComposite_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleHom_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleHom_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleFactor_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperExactTransport
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperExactTransport
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteUpperExactTransport_isIso
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteUpperExactTransport_isIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_transport
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_transport
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFixedHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFixedHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFactor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperFactor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteUpperExactFunctors
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteUpperExactFunctors
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomInclusion
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteUpperSource_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteUpperSource_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteUpperTarget_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteUpperTarget_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.nuAbsoluteUpperExact_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.nuAbsoluteUpperExact_quasicategory
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximal_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximal_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximal_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangleMaximal_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_path_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteTriangle_path_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_vertex_isTerminal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_vertex_isTerminal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHomTerminalFactor_inclusion
