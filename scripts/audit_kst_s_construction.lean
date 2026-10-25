@@ -32372,3 +32372,147 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgKappaNativeBFArrow_homotopyMap_eq
 #print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFArrow_homotopyMap_eq
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPointedStageSquare
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPointedStageSquare
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPointedStageSquare_forget
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPointedStageSquare_forget
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexProperty
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFVertexProperty
+
+#check @SerrePositivity.KST.SConstruction.DGKappaNativeBFFiniteInput
+#print axioms SerrePositivity.KST.SConstruction.DGKappaNativeBFFiniteInput
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare_inclusion
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSOneCoreComparison
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSOneCoreComparison
+
+#check @SerrePositivity.KST.SConstruction.stableMultiSOneCoreComparison_val
+#print axioms SerrePositivity.KST.SConstruction.stableMultiSOneCoreComparison_val
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionCoreDiagram
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionCoreDiagram
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionObjectEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionObjectEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionObjectEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionObjectEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor_obj
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor_action
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionEnrichedFunctor_action
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction_app
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction_app
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionComparison_action
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionComparison_action
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction_mem_zeroRange
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction_mem_zeroRange
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction_mem_fatBoundary
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction_mem_fatBoundary
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionBoundaryAction
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionBoundaryAction
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionBoundaryAction_inclusion
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionBoundaryAction_inclusion
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_collapse
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_collapse
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_quotient
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_quotient
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_basepoint
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_basepoint
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedFamilyMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction_unit
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction_unit
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionAction_comp
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionAction_comp
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_unit
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_unit
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_comp
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedAction_comp
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedObject
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedObject
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedComparison_quotient_app
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedComparison_quotient_app
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionReducedComparison_family
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionReducedComparison_family
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparisonMap
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparisonMap
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison_whisker
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison_whisker
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison_app
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionPointedComparison_app
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanEnrichedFunctor
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanEnrichedFunctor
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonMap
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonMap
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanComparison
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanComparison
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanComparison_app
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanComparison_app
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonFunctorIso
+#print axioms SerrePositivity.KST.SConstruction.stableOneDirectionKanComparisonFunctorIso
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageSquare
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageSquare
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFOneDirectionStageComparison

@@ -65,13 +65,13 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- `DGKappaNativeBFArrowComparison` の四未完備辺・正段射影自然性・同じ比較を持つ辺の全整数 π 作用回収と、`SpectrumPositiveComponentEquality` の正段だけによる整数群一致を集約・監査済み。共終性は K-cof 所有。既存の公開型は不変。
+- `DGKappaNativeBFFiniteInput` は同じ四頂点像の充満部分圏へ元の全二胞体を厳密に制限する。`DGKappaNativeBFPointedStages` は基点忘却後に元正段全像へ厳密に戻る。`StableOneDirection*` は元の反復 core S₁ 比較・一次方向全実現作用・零境界保存・同じ基点固定商の単位合成・全族自然性・Ex∞ 後の全図式同型を構成する。`dgKappaNativeBFOneDirectionStageComparison` は同じ未完備 native 全四角形の点つき S₁ 比較。新48宣言は集約・公式監査済み。有限 BF 再帰・新四辺・実 BF 四角形・全正段の全図式比較は未完。一般安定圏上の BF 関手は構成しない。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
 - **採用済み（元始域の増大屋根、10-25 17:53）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の元始域回収は「元入力への増大屋根＋ν 像の指定同値」とする。native Verdier 列・LT 極限錐の元始域は不変。既存の strict 始域版は互換入口として保持。Sp の新葉（1d3c261b1）を `DGOdotMilnorRelativeRoofRectangleInput` へ接続し、始域屋根を構成済みとする主経路を供給。`Resolution.CellComparison` は既存の同じ正本を読み取り専用で接続。元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 最新の集約15,188 jobs・公式監査12,548公理出力は成功。元二単体の最大 path 全零性3宣言と、D-9 native 四角形の元 BF 境界・正段像・四頂点の SOA 射影と Ex∞ 比較13宣言を含め標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包11378モジュールは全て解決。新規 sorry・公理・heartbeat／透明性オプションの変更なし。他レーンのソースは読み取り専用。実施記録はコミットメッセージ。全体ビルドは R-A の統合検証を使用。
+- 最新の集約15,207 jobs・公式監査12,596公理出力は成功。元二単体の最大 path 全零性3宣言と、D-9 native 四角形の元 BF 境界・正段像・四頂点の SOA 射影と Ex∞ 比較13宣言を含め標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包11397モジュールは全て解決。新規 sorry・公理・heartbeat／透明性オプションの変更なし。他レーンのソースは読み取り専用。実施記録はコミットメッセージ。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較と Sp-6 の実 S 長方形は未供給。
 - 本レーン内の未解決の名前衝突なし。Core・Stable・F1 等の公開名・型は不変。固定 S の Hom は厳密 dg 自然変換 end の native core。resolved 厚核・始域比較の実零化面と同じ合成三角形を保つ源長方形は構成済み。残る LT 全長方形と全指定境界比較は未供給。Sp の新入口 `isPullback_of_perfectImageIso`・`comparison_isPullback_of_actualFaces`・`_imageIso` は、絶対提示から実 ν 二面への指定三境界付き全比較を直接受ける。別の S 内厳密代表は不要。`DGOdotMilnorActualRectangleInput` は同じ実長方形とこの三比較を直接受け、二面の値・全比較輸送・同じ屋根の始域成分を新入口へ接続済み。主経路の残りは LT の実右面・外周の `VerdierSquareDiagramIso` と、上下二単体を保つ `VerdierRectangleDiagramIso` の三つの実在証明。商辺だけの指定関手同型では不足。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
