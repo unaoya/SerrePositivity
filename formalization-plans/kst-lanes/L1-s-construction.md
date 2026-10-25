@@ -65,7 +65,7 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- Φ と全正段比較・全整数群同型は保存済み。`DGKappaNativeBFArrowStages`・`ArrowNaturality`・`NativeObjects`・`DGKappaNativeCoherentBFBoundary`・`ArrowComparison` の新5葉26宣言は対象・集約15,233 jobs・公式監査12,737件を通過。標準三公理のみ、ModelCategory 仮定なし、閉包11,423モジュールは全解決。元四辺の厳密回収と指定全整数群同型による旧四辺との可換性を無条件に構成。d④ の全 Hom 零成分への因子分解を新葉で再開中。一般安定圏の BF 関手は構成しない。
+- Φ と全正段比較・元四辺回収・指定全整数群同型の自然性は保存済み。d④ の `NuNullTriangleTerminal`・`NuNullUpperFactor`・`NuNullDiagonal`・`NuNullLowerTerminal`・`NuNullLowerFactor`・`NuNullTriangleFactor` は対象・集約15,239 jobs・公式監査12,777件を通過。標準三公理のみ、ModelCategory 仮定なし、閉包11,429モジュールは全解決。元上下二単体の全 Hom を同じ固定 ν 零合成空間へ因子分解し、元 Hom の全単体の厳密回収と元共有対角での厳密一致まで構成した。LT 実右面・外周・全長方形の三比較は未完。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
@@ -94,7 +94,7 @@
   4. [ ] d④：Sp の零角・実面・長方形比較を接続し、未供給の全図式入力を分離する。
   5. [ ] e②：四完備性を保持して Cat^perf の実商入力と LT 結論へ接続する。
   6. [x] 集約・公式監査・禁止仮定検査を通し、引き継ぎを保存する。
-- 次の一手：Sp の絶対二面から実 ν 面への新入口は `DGOdotMilnorActualRectangle` に接続・検証済み。`NuProjectionArrow`・`NuNullBoundary` の実核面の指定三境界は具体化済み。`NuNullCoherence` の同じ実二経路の全零性・比較空間の可縮性・境界固定の全単射充填は集約・監査済み。`NuNullHom` の元の豊穣 Hom・両端点・二経路の厳密合成一致は集約・監査済み。`NuNullTriangle` の元二単体・端点・全 Hom 回収は集約・監査済み。`NuNullTriangleZero` の元最大 path 合成の全零性は集約・監査済み。その Hom の全像を零成分へ因子分解し、三境界を保つ全四角形への相対延長を構成する。F1 の全境界充填から coherent 三単体を回収する一般入口はユーザー経由で供給依頼済み。残りの公開物は LT 実右面・外周の指定三境界付き `VerdierSquareDiagramIso` と、上下二単体付き `VerdierRectangleDiagramIso`。型・条件付き接続を存在の証明と数えない。D の元二脚／恒等二脚 lax 全比較はユーザーへ明示依頼済み。同じ native／ν 比較と合成して実項を構成する。始域比較長方形の13宣言は LT 本体と区別する。strict 商と ν 完備商を混同しない。
+- 次の一手：Sp の絶対二面から実 ν 面への新入口は `DGOdotMilnorActualRectangle` に接続・検証済み。`NuProjectionArrow`・`NuNullBoundary` の実核面の指定三境界は具体化済み。`NuNullCoherence` の同じ実二経路の全零性・比較空間の可縮性・境界固定の全単射充填は集約・監査済み。`NuNullHom` の元の豊穣 Hom・両端点・二経路の厳密合成一致は集約・監査済み。`NuNullTriangle` の元二単体・端点・全 Hom 回収は集約・監査済み。`NuNullTriangleZero` の元最大 path 合成の全零性は集約・監査済み。`dgOdotMilnorNuNullTriangleFactor` は両元二単体の Hom 全像を同じ固定 ν の零成分へ因子分解し、`_hom` が同じ元全 Hom の厳密回収、`_diagonal` が元共有対角での厳密一致を供給する。S3 補足（ユーザー採用）は同じ I の c=0・c=3 で旧 K から新 BF への実 Sp 頂点同型を構成する。点ごとの全段構造比較を既存の列修正へ接続し、四辺の全 Sp 写像空間比較は追わない。この補足を挟んでから、絶対提示側と混合比較面の Hom 全像を同じ零成分に置き、三境界を保つ全四角形への相対延長へ接続する。F1 の全境界充填から coherent 三単体を回収する一般入口はユーザー経由で供給依頼済み。残りの公開物は LT 実右面・外周の指定三境界付き `VerdierSquareDiagramIso` と、上下二単体付き `VerdierRectangleDiagramIso`。型・条件付き接続を存在の証明と数えない。D の元二脚／恒等二脚 lax 全比較はユーザーへ明示依頼済み。同じ native／ν 比較と合成して実項を構成する。始域比較長方形の13宣言は LT 本体と区別する。strict 商と ν 完備商を混同しない。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
