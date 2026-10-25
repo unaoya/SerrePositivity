@@ -22,7 +22,7 @@
 - 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
   両局所射影は Kan fibration。右射影は trivial Kan fibration・QCat 同値として公開済み。
   左射影の同値性と全 Pr 上の対応 quasicategory はまだ未構成。
-- 最新の専用集約は8,540 jobs 成功、専用監査320宣言は標準3公理のみ。
+- 最新の検証済み専用集約は8,550 jobs 成功、専用監査347宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -61,13 +61,20 @@
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,896 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,906 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
 
-### 未コミット
-- `PrecompositionUnit.lean`（左側の指定単位候補。集約への import とビルドは次工程）。
+### 保存済みの補助界面と作業中
+- 検証済み：`PrecompositionUnit.lean`（元の実単位から前合成の単位辺を構成）。
+- 検証済み：`PrecompositionFlipHom.lean`（転置の合成保存と両前合成自然性）。
+- 検証済み：`AdjointHomOneNaturality.lean`・`AdjointHomOne.lean`
+  （元の Hom₁ 逆対応とその三つの自然性）。
+- 検証済み：`HomTransportNaturality.lean`（端点輸送と関手作用・Hom₁ 対応の両立）。
+- 検証中：`PrecompositionCorrespondence.lean`（前合成の Hom 対応の両変数自然性）。
+- 未検証：`PrecompositionParameter.lean`（全パラメータ自然性と前合成の QCat 随伴）。
+- 検証中・未検証の二葉は専用集約へ含めず、継続作業として残す。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。

@@ -102,3 +102,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_trivialKanFibration
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRightMappingEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionUnitEdge
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionUnitHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeHomEquiv_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeHomEquiv_pre_right
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeHomEquiv_pre_left
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneSymm_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneSymm_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneSymm_whiskerRight
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_refl
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_source_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_postcomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_congr

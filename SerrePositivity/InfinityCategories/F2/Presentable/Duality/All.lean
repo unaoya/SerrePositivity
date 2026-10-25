@@ -34,6 +34,15 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RawUnitI
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitPairTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitProjectionFibrations
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightProjectionEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionUnit
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.PrecompositionFlipHom
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.AdjointHomOneNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.AdjointHomOne
+
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.HomTransportNaturality
 
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
