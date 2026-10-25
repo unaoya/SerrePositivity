@@ -136,3 +136,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHomCongr_evaluate_heq
 #check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_evaluate_heq
 #check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaUnit_heq_curry
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonTrans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonDiagonalTriangle_reindex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonTriangleFamily_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonTriangleFamily_second
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonTriangleFamily_long
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonEdge_compStruct
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonEdge_hom_trans

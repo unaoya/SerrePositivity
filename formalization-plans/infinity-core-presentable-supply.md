@@ -3,15 +3,19 @@
 ## 引き継ぎ（2026-10-26）
 
 ### 現在地
-- 状態：設計変更提案で停止（下記の指定底変換合成則を独立基盤供給に切り出す案）。
+- 状態：ユーザーの続行指示で P-12 を再開。指定底変換合成則を Supply 内で進める。
+- 直前の停止理由は合成則の独立供給という設計提案。所有 import 閉包の破損はない。
 - P-11 と P-13 は完了。P-s の残る担当は P-12 のみ。最終 compact 判定は未供給。
 - P-14 の割り当てはユーザー指示で取り消し。反射を構成済みの P-f が f4 を閉じる。
 - 前回の補助宣言供給後のターン終了には停止理由がなかった。今回は再開し、
   指定 Yoneda 単位と共同 Hom 単位の curry の比較、および一般の curry 評価式を得た。
 - curry と第一変数評価の可換性は全関手空間の厳密な等式。
   Hom の比較も同じ指定射の異種等式であり、対象ごとの同型の存在ではない。
-- 新規葉 `HomWeightUnitEvaluation` を公開。Supply.All は 8688 jobs で成功、
-  独立監査は 582 宣言で標準三公理のみ。追加の ModelCategory 仮定なし。
+- `HomWeightUnitEvaluation` の curry 評価・端点移送を公開済み。
+- `JointComparisonComposition` で共同三点族を構成し、三つの面を元の比較族と
+  同定した。同じ三辺の合成三角形と全 Hom の合成式を公開。
+- 最新 Supply.All は 8689 jobs で成功、独立監査は 605 宣言で標準三公理のみ。
+  追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
 - 設計変更案：指定 straightening 底変換の合成則を、P-12 内の局所照合から
   独立した基盤供給として切り出す。具体的な供給仕様は本文に記す。
   最終定理への追加仮定にはしない。所有外ファイルは変更していない。
@@ -42,6 +46,9 @@
 - `functorSpaceCurryMap_evaluate_first`
 - `curryFunctorHom_evaluate_first`
 - `homWeightYonedaUnit_heq_curry`・`curryFunctorHom_evaluate_heq`
+- `jointComparisonTrans`・`jointComparisonTriangleFamily_first`
+- `jointComparisonTriangleFamily_second`・`jointComparisonTriangleFamily_long`
+- `jointComparisonEdge_compStruct`・`jointComparisonEdge_hom_trans`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -65,8 +72,10 @@
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
+- 指定降下同型を初頂点局所化へ制限して元の共同切断比較を回収する式を公開する。
+  共同比較の合成式を底変換の切断比較へ適用し、充満忠実性で降下する。
 - 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
-  straightening 同型で証明する。供給元・分担の変更はユーザー経由で調整する。
+  straightening 同型で証明する。Supply 内で証明を進め、供給元・分担の変更が必要ならユーザー経由で提案する。
 - `homWeightYonedaUnit_heq_curry` と一般の curry 評価式を接続する。
   具体的な評価後の異種等式への直接適用は kernel timeout を起こすため、
   大きな端点の展開を避ける表示で接続する（未検証宣言は残していない）。
