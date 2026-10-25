@@ -2571,4 +2571,8 @@ public import SerrePositivity.KST.SConstruction.DGKInputIdempotentComplete
 public import SerrePositivity.KST.SConstruction.DGKInputPerfectNu
 public import SerrePositivity.KST.SConstruction.DGOdotLandTammeComplete
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorVerdier
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorResolvedInput
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNativePerfect
+
 /-! # ∞-S• 構成と連結 K 理論 -/

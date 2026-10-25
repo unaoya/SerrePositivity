@@ -1,19 +1,19 @@
 # K-S• → K-基盤 1・2：∞-S• と局所化不変量
 
-> **v3（2026-10-24）**：K-S• レーンの正本。所有：KST/SConstruction/。K-10 c は完了。d は未供給界面を隔離済み。e の Cat^perf 形式的結論を検証・保存済み。D の入口から四完備性を充足、残る具体的供給は d → e。VertexPrescribedExtension・ZeroBoundaryExtension と Stable 由来の 4 本は R で Core/・Stable/ へ移動済み。
+> **v3（2026-10-24）**：K-S• レーンの正本。所有：KST/SConstruction/。K-10 c は完了。d は Milnor 条件付き native Verdier 列と固定 ν の resolved 屋根を接続済み。e の Cat^perf 形式的結論を検証・保存済み。D の入口から四完備性を充足、残る具体的供給は d → e。VertexPrescribedExtension・ZeroBoundaryExtension と Stable 由来の 4 本は R で Core/・Stable/ へ移動済み。
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-S• → K-基盤。L1c〜f の後、L3 は非連結 K を BGT (a) のみで（暫定 (b) は使わない）、続けて局所化不変量・Tamme・Land–Tamme（K-基盤 1・2）。
 
 ## 引き継ぎ（2026-10-25）
 
 ### 現在地
-- D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d の再開は別指示。
+- D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d は Milnor・resolved 商の採用済み経路で再開。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
-- K-10 d は明示入力の下での形式的接続を検証・保存済み。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
-- D2 の比較同値・具体的 β3 の核一致と局所化・比較先への輸送証拠・S 内の零化と長方形は明示入力。これらの存在、D2 f・Sp-6 の完成、K の局所化性は証明していない。供給後に各欄を差し替える。
+- 旧未分解商の K-10 d は明示入力の下での形式的接続を保持。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
+- native の Milnor 列は D2 完成供給から具体化済み（`DGOdotMilnorVerdier`）。元の固定 ν 対角の充満忠実性も Milnor 条件から導く。固定 S には同じ cell 増大と商包含の二辺を置き、ν 増大の逆による resolved 屋根と回収二胞体を構成（`DGOdotMilnorResolvedInput`）。旧未分解商への比較は要求しない。
 - 条件付き出力は、比較後包含の充満忠実性と `IsVerdierSequence`、元の商合成の回収、全比較四角形の ν 像、同じ相対 E の pullback・fiber 列・極限錐。元の dg 対角始域を S の頂点として保持する。
 - K-10 e の形式的接続：c の同じ Morita 辺の逆を完全射・実完備化射にし、D の `DGPerfectIdempotentCompleteGeneral` と同じ評価同値から四完備性を証明した `dgOdotCatPerfInput`、d の `DGOdotLaxVerdierInput` から実 ⊙ を終点とする `PerfectLaxQuotient` を構成。
-- 同じ Cat^perf 不変量の LT pullback、四頂点・元の四 BF 辺・二脚の cospan・元の始域値を頂点とする実極限錐、両射影を保つ Tamme 積同値を接続する。絶対 Cat^perf 版は Sp-6 の S 長方形を使わない。四完備性は供給済み。`DGOdotLaxVerdierInput.landTamme_isPullback`・`landTammeCone_isLimit` は d だけを仮定する。d の実証拠は未完。
+- resolved 経路では native の左右小 Perf と gluing の coherent 完備性を証明。native resolved 商から `dgKInputStableValue R (dgOdotMilnorResolvedInput R d)` への完全射とその `IsIdempotentCompletion` を D 向けの一つの不足型として依頼する。`DGOdotMilnorNativePerfect` はその証拠だけを残し実 Cat^perf 図式・fiber 列まで接続。旧経路では同じ Cat^perf 不変量の LT pullback、四頂点・元の四 BF 辺・二脚の cospan・元の始域値を頂点とする実極限錐、両射影を保つ Tamme 積同値を接続する。絶対 Cat^perf 版は Sp-6 の S 長方形を使わない。四完備性は供給済み。`DGOdotLaxVerdierInput.landTamme_isPullback`・`landTammeCone_isLimit` は d だけを仮定する。d の実証拠は未完。
 - L1a〜f は厳密 dg 入力で完了。全 gapped S•、第一行比較、McCarthy の相対二ホモトピー、単体積 Quillen A、自然な加法性、切断・全辺 Segal 比較、全反復実現、元の零段と BF Ω 条件を供給済み。
 - 厳密豊穣 BF 関手・同じ Sp 値 K と全 Hom 作用、Morita・準同値の可逆性、元の dgK への実比較・全整数 π の自然比較、π₀=三角圏 K₀ と対象類を供給済み。一般の安定圏上の K や BF の手作業高次整流は主経路に入れない。
 - Cat^perf の実商・冪等完備化を入力とする Tamme 分裂と抽象切除は完了。具体的 dg gluing 比較・β3 の列・S 内長方形の供給は K-10 d、具体的 LT 結論は e に残る。
@@ -25,6 +25,7 @@
 - d8〜d10 は完了：実 BF Ω スペクトル・全 Hom の厳密豊穣作用・γ1 の Sp 値関手・通常 dg 射の厳密な恒等合成保存、元の dgK への同じ実比較・全整数群自然同型、Morita・準同値の可逆性、同じ Perf の π₀=K₀ 自然同型・対象類回収、新 BF の正段連結性・全負整数群消滅を供給する。原典は BGT §7・Rivera–Zeinalian Prop.4.6・γ1。残工程なし。
 - L3・K-基盤 1・2 は §6・7 の依存順に続行。Cat^perf の実 ∞ 圏と充満忠実な包含、実商の冪等完備化を保つ列と coherent 四角形、filtered 余極限保存を含む局所化不変量、半直交分解から同じ射影を保つ列まで構成済み。任意の実提示列から同じ全単体と二辺を保つ Cat^perf の coherent 提示を構成し、任意の局所化不変量の同じ三対象・二辺を持つ実 Sp fiber 列まで供給済み。同じ完全関手の h 圏の関手法則と右包含の値の切断を証明し、実 Sp 積分解・左包含／切断／射影の回収・元の値への可逆辺・実積錐の ∞ 極限性まで供給済み。元の `laxCategory p q` の coherent 冪等完備性を両入力の完備性だけから証明し、元の両包含・第一射影を保つ Cat^perf 上の Tamme 分裂へ接続済み。LT の実商・完備化入力と完備化後の二脚の全関手同型、四辺固定の補助正方形、包含の零化から作る普遍差の指定比較道・正方形と Cat^perf への全単体を保つ持ち上げまで供給済み。同じ比較正方形と恒等 lax 差の図式を両合成三角形を保って貼り、長方形全体の Cat^perf 持ち上げ・元の商と完備化を保つ外周の提示・二つの実 fiber 列の消去による Sp 値の引き戻し性まで証明済み。Cat^perf の零関手の値の零性と元の値の BF 表示、元の C・D の値の実積への分裂・両軸の包含回収、元の両射影を順方向に持つ Tamme 積同値・逆の両包含回収まで証明済み。同じ全比較正方形を元の C・D と完備化先の値の実 BF 積へ移し、四頂点・全図式の関手同型・引き戻し性・四成分と四辺の自然性まで回収済み。元の二脚の完備化像と完備化後の商射の二脚も、C 側の suspension 自然性を含む全関手同型で比較済み。元の比較正方形の四辺と同じ値の射の類を回収し、実積への移送後も下辺の包含・両射影、上辺の対角、右辺の元の完備化後の二脚の実積射を Arrow の等号で照合済み。下辺を元の射対の実 Binary.lift に照合し、同じ四つの BF 射を固定する境界変形・全関手同型・引き戻し性、元の完備化後の二脚の実極限錐と元の左端の不変量値そのものへの頂点等号まで供給済み。Cat^perf の実商・完備化の抽象切除は完了。dg 関手の実対象像を指定 ε で収縮する path 商と指定対象の全 dg End を構成し、全複体・微分・乗法、指定収縮からの End の比較射と元の End 射の厳密回収、実 dg nerve 内の対角像の零化を証明済み。元の零左成分・右対象・実対角関手から gluing の (0,b,0) の同じ商 End へ特殊化済み。厳密 dg 四角形の標準対角・左右関手の厳密回収、小さい元の gluing を先に作る実 Perf 延長と両射影の全 Hom 自然比較、元の標準対角像の商 End への接続まで構成済み。左右小模型の実自由生成条件と、元の実 ⊙→指定商の Morita／native Perf 比較は生成仮定なしで供給済み。Perf(gluing) と Perf lax pullback の同定、S 内長方形全体・ν 像の等式と具体的 LT は未完。非連結化は F2-lite の Ind を待つ。
 ### 主要宣言（名前のみ）
+- Milnor 接続：`dgOdotMilnorDiagonal_fullyFaithful`・`dgOdotMilnorNativeSequence`・`dgOdotMilnorNativeKernel`・`dgOdotMilnorNativeLocalization`・`dgOdotMilnorNativeEdges`・`dgOdotMilnorResolvedProjectionNu`・`dgOdotMilnorResolvedProjectionNu_roof`・`dgOdotMilnorNativeMiddle_complete`・`dgOdotMilnorPerfectSequence`・`dgOdotMilnorPerfect_isFiber`。
 - K-10 e：`dgKInputStableValue_isIdempotentComplete`・`dgKInputPerfectNu`・`dgKInputPerfectNu_inclusion`・`dgOdotCatPerfInput`・`DGOdotLaxVerdierInput.landTammeCone_source`・`dgOdotQuotientCompletion`・`dgOdotQuotientCompletion_isCompletion`・`DGOdotCatPerfInput`・`DGOdotCatPerfInput.perfectQuotient`・`DGOdotCatPerfInput.landTamme_isPullback`・`DGOdotCatPerfInput.landTammeCone_isLimit`・`DGOdotCatPerfInput.tammeProjectionEquivalence`。
 - K-10 d：`DGOdotVerdierInput`・`DGOdotVerdierInput.isVerdier`・`DGOdotLaxVerdierInput`・`DGOdotLaxVerdierInput.isVerdier`・`DGOdotLaxVerdierInput.projection_original`・`DGOdotVerdierRectangleInput`・`DGOdotVerdierRectangleInput.comparison_image`・`DGOdotVerdierRectangleInput.comparison_isPullback`・`DGOdotVerdierRectangleInput.comparisonCone_isLimit`。
 - `presentedPerfectDGOneDirectionEnrichedFunctor`、`presentedPerfectDGOneDirectionPointedEnrichedFunctor`、`presentedPerfectDGOneDirectionPointedEnrichedFunctor_hom`、`presentedPerfectDGMultiSOneCoreComparison`、`presentedPerfectDGOneDirectionReducedComparison_family`、`presentedPerfectDGOneDirectionKanEnrichedFunctor`、`presentedPerfectDGOneDirectionKanUnit_action`、`presentedPerfectDGOneDirectionKanComparison`、`presentedPerfectDGOneDirectionKanComparisonFunctorIso`、`exInfinitySuspensionComparison`、`exInfinitySuspensionComparison_unit`、`coaugmentedPointedSuspensionComparison_family_action`、`exInfinitySuspensionTransformation`、`presentedPerfectDGOneDirectionSuspensionComparison`、`presentedPerfectDGAssemblyTransformation`、`presentedPerfectDGKanAssemblyRightTransformation`、`presentedPerfectDGKanAssemblyRightMap_unit`、`presentedPerfectDGKanAssemblyLeftTransformation`、`presentedPerfectDGKanAssemblySpanEnrichedFunctor`。、`pointedTensorCylinderFunctor`、`pointedTensorCylinderEndTransformation`、`pointedTensorCylinderProjectionTransformation`、`pointedTensorMappingCylinderFunctor`、`pointedTensorMappingCylinderSource_projection`、`pointedSpanPushoutEnrichedFunctor`、`pointedSpanPushoutEnrichedFunctor_hom`、`pointedEnrichedMappingCylinderFunctor`、`presentedPerfectDGKanAssemblyLeftCylinderFunctor`、`presentedPerfectDGKanAssemblyCylinderSourceTransformation`、`presentedPerfectDGKanAssemblyCylinderProjectionTransformation`、`presentedPerfectDGKanAssemblyCylinderPushoutFunctor`、`pointedTensorMappingCylinderSource_mono`、`pointedDoubleMappingCylinderLeft_mono`、`presentedPerfectDGKanAssemblyCylinderPushoutLeftMap_mono`、`pointedWhiskerRight_anodyne`、`pointedTensorMappingCylinderTarget_anodyne`、`pointedTensorMappingCylinderProjection_localized_isIso`、`presentedPerfectDGKanAssemblyCylinderSourceMap_localized_isIso`、`pointedPushout_inr_localized_isIso`、`presentedPerfectDGKanAssemblyCylinderPushoutRightTransformation`、`presentedPerfectDGKanAssemblyCylinderPushoutRightMap_localized_isIso`、`exInfinityPointedUnit_whisker`、`presentedPerfectDGKanAssemblyCylinderCompletionKanFunctor`、`presentedPerfectDGKanAssemblyCylinderCompletionLeftMap_mono`、`presentedPerfectDGKanAssemblyCylinderCompletionRightMap_localized_isIso`、`presentedPerfectDGKanAssemblyCylinderCompletion_localized_square`、`pointedStandardLoopEnrichedFunctor`、`pointedStandardLoopEvaluation_whisker`、`pointedEnrichedMonicReplacementFunctor`、`pointedEnrichedMonicReplacementTarget_anodyne`、`presentedPerfectDGBFZeroFunctor`、`presentedPerfectDGBFZeroFunctor_obj`、`presentedPerfectDGBFFirstKanFunctor`、`presentedPerfectDGBFFirstStructureMap_mono`、`presentedPerfectDGBFFirstComparison_piIsomorphism`、`presentedPerfectDGBFFirstStructure_localized_eq`、`stableMultiRealizationEnrichedFunctor`、`multiRealizationHomotopyOfFunctorIso`、`multiRealizationFunctor_map_localized_eq_of_functorIso`、`multiRealization_map_positive_localized_eq_of_functorIso`、`pointedEnrichedCylinderCompletionFunctor`、`pointedEnrichedCylinderCompletionRight_localized_isIso`、`presentedPerfectDGBFStepLeftMap_localized_isIso`、`PresentedPerfectDGBFStage`、`presentedPerfectDGBFPositiveStage`、`presentedPerfectDGBFLevelFunctor`、`presentedPerfectDGBFStructureTransformation`、`presentedPerfectDGBFKanSequence`、`presentedPerfectDGBFStructureMap_mono`、`presentedPerfectDGBFKanSequence_omegaCondition`・`presentedPerfectDGBFOmegaSpectrum`・`presentedPerfectDGBFOmegaSpectrum_zero`・`presentedPerfectDGBFOmegaSpectrum_sigma`。 `presentedPerfectDGBFMapping`・`presentedPerfectDGBFEnrichedFunctor`・`presentedPerfectDGBFMap_app`・`presentedPerfectDGBFInfinityFunctor`。 `pointedSOAExInfinityComparison`・`presentedPerfectDGBFSOAComparison_piIsomorphism`・`presentedPerfectDGBFRawSOAComparison_zero_structure`・`presentedPerfectDGBFEvaluationKMap_piIsomorphism`。 `presentedPerfectDGBFSOAComparison_structure`・`presentedPerfectDGBFSOASpectrumComparison_levelwise`・`presentedPerfectDGBFDGKComparison_piIsomorphism`・`presentedPerfectDGBFDGKGroupEquiv_apply`。 `presentedPerfectDGBFMap_morita_levelwise`・`presentedPerfectDGBFMap_morita_piIsomorphism`・`presentedPerfectDGBFInfinityFunctor_morita_isInvertible`・`presentedPerfectDGBFInfinityFunctor_quasiEquivalence_isInvertible`。 `presentedPerfectDGBFSOAGroupEquiv_naturality`・`presentedPerfectDGBFKZeroEquiv_naturality`・`presentedPerfectDGBFKZeroEquiv_vertex`・`presentedPerfectDGBFKZeroPiZeroEquiv_naturality`。
@@ -63,11 +64,11 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- なし（D-17 分離は保存済み。F1 復元後の集約・公式監査の再検証結果を本計画に保存）。c の4ファイルと d の3モジュールも接続・保存済み。
+- なし（Milnor 接続の所有3葉・集約・公式監査・本計画を保存）。c の4ファイルと d の3モジュールも接続・保存済み。
 
 ### 既知の問題
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え・固定 ν 持ち上げ・追加仮定なしの形式的結論13宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包8367モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
+- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の23宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包10079モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。D2 f・β3 実証拠・Sp-6 は引き続き明示入力。
 - 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -81,26 +82,19 @@
 
 ### 次の一手
 - **厳密 dg 入力に限定**（ユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
-- **K-10 c 三段目（固定）**：
-  1. [x] 角→小模型 Yoneda の既存 Morita・一回 Perf 同値と固定 S の辺を確認。
-  2. [x] native ラベル評価を修復し、同じ一回 Perf 延長へ照合。
-  3. [x] 抽象 Hom 辺の Yoneda パラメータ計算を修復。
-  4. [x] 元の比較四角形の ν 像を、同じ全 Hom 作用へ照合。
-  5. [x] cone 比較の順逆成分・元の右脚を保持して小模型へ接続。
-  6. [x] Sp・D の正本 API を使い、対角像の商 End と元の右対象 End を同定。
-  7. [x] 集約ビルド・公理監査・instance 仮定検査を通し、引き継ぎを更新。
-- **K-10 d 三段目（固定、明示入力の下での形式的接続）**：
-  1. [x] 固定 S の元の包含・商射と、D2／β3／Sp の必要界面を明示入力として分離する。
-  2. [x] β3 の列から、核の一致・充満忠実性・局所化を保持して Sp の `IsVerdierSequence` へ接続する。
-  3. [x] Perf(gluing) と Perf lax pullback の比較で、元の二射を保つ d8 入力を構成する。
-  4. [x] S 内の零化 2-cell・長方形と ν 像を明示入力に保ち、相対 Verdier 提示へ接続する。
-  5. [x] 同じ入力から既存 K-8 d8 へ接続し、元の辺・比較四角形を回収する。
-  6. [x] 集約ビルド・公理監査・仮定検査を通し、供給待ちと証明済み部分を分けて保存する。
-- 次の一手：D2 G-1 f の比較同値・同じ射影の整合、D β3 の具体的列の核一致・cofiber 辺局所化、Sp-6 の S 内長方形と ν 像の供給を確認して入力へ代入する。供給前は d を完了扱いにしない。D の完全関手∞圏での普遍性だけから Sp の核一致・全辺局所化は推論しない。
+- **K-10 c 三段目（完了）**：7 項目を完了し、元の右脚・商 End・全 Hom 比較を保持して保存済み。
+- **K-10 d②〜d④・e② 三段目（固定）**：
+  1. [ ] d②：D2 の Milnor 条件・実 lax 比較・cell 平坦商の型を照合する。
+  2. [x] d③：元対角の充満忠実性と thick 核・局所化を Milnor 条件から接続する。
+  3. [x] d②〜③：固定 S・ν の主経路を resolved 射影へ接続する。
+  4. [ ] d④：Sp の零角・実面・長方形比較を接続し、未供給の全図式入力を分離する。
+  5. [ ] e②：四完備性を保持して Cat^perf の実商入力と LT 結論へ接続する。
+  6. [x] 集約・公式監査・禁止仮定検査を通し、引き継ぎを保存する。
+- 次の一手：D2 の derived Yoneda／係数による実 lax 比較を、元の二代数射の固定 ν lax pullback へ照合する。Sp の ofSquare／ofActualFaces と strict transport の実入力も続行。D には resolved 商の同じ実完備化比較を依頼済み。native strict 商の証拠から ν の完備商の strict 局所化を推論しない。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-e-complete-aggregate.log`、`/tmp/kst-s-e-complete-audit.log`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-milnor-aggregate.log`、`/tmp/kst-s-milnor-audit.log`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 

@@ -31382,3 +31382,72 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotCatPerfInput
 #print axioms SerrePositivity.KST.SConstruction.dgOdotCatPerfInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSquare_iff
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSquare_iff
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorDiagonal_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorDiagonal_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeKernel
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeKernel
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLocalization
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLocalization
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeEdges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeEdges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeProjection_roof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeProjection_roof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationNu_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationNu_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationNuEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorAugmentationNuEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedProjectionNu
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedProjectionNu
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedProjectionNu_roof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedProjectionNu_roof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLeft_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeLeft_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeRight_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeRight_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNativeMiddle_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNativeMiddle_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectDiagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectDiagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfect_isFiber
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfect_isFiber
