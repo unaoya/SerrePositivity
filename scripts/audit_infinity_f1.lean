@@ -2,7 +2,7 @@ import SerrePositivity.InfinityCategories.F1.Cocartesian
 import SerrePositivity.InfinityCategories.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
 import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
-import SerrePositivity.InfinityCategories.F1.Joins.PushoutShapeColimit
+import SerrePositivity.InfinityCategories.F1.Joins.FiniteLimitGeneration
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp
@@ -9412,3 +9412,8 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.yonedaInfinityMap_isLimit
 #print axioms SerrePositivity.InfinityCategories.yonedaInfinityMap_isLimit
+
+#check SerrePositivity.InfinityCategories.hasFiniteColimits_of_initial_pushouts
+#print axioms SerrePositivity.InfinityCategories.hasFiniteColimits_of_initial_pushouts
+#check SerrePositivity.InfinityCategories.hasFiniteLimits_of_terminal_pullbacks
+#print axioms SerrePositivity.InfinityCategories.hasFiniteLimits_of_terminal_pullbacks
