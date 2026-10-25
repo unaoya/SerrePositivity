@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.QuotientPerfectoidization
+public import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
 public import Mathlib.RingTheory.FinitePresentation
 
 /-! # B3による主イデアル商から定義するperfectoid ideal -/

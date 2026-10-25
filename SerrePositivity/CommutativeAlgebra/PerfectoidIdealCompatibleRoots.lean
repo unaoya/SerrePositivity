@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
-public import SerrePositivity.BhattScholze.CompatibleRootCompletionPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootCompletionPerfectoid
 
 /-! # The original perfectoid ideal and the ideal of compatible roots modulo p powers
 

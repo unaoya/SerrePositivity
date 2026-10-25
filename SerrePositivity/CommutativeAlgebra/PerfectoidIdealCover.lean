@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCompatibleRoots
-public import SerrePositivity.BhattScholze.CompatibleRootFamilyCompletionPerfectoid
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyCompletionPerfectoid
 
 /-! # Gluing perfectoid-ideal annihilation from a rooted cover
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
 public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
 public import SerrePositivity.CommutativeAlgebra.AdicKernelQuotient
-public import SerrePositivity.BhattScholze.RootedIdealSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedIdealSurjectivity
 
 /-! # Complete radical quotients of absolutely integrally closed perfectoid rings
 
