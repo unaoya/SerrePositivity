@@ -19,7 +19,9 @@
 - D-13 の両単位則を同じ射影四面体の二単位面へ接続済み。左閉路は Λ³₂ の相対比較、右閉路は全正方形の厳密退化で零性を証明し、指定三辺の境界充填を無仮定で供給済み。
 - (f) 導来 augmentation が可逆な元 gluing の充満 dg 部分圏を構成し、正本比較の通常 pullback への制限同値・安定性・実完全包含・元二射影との厳密整合を供給した。
 - 同じ対象条件の実安定閉包との一致から、元の dg 包含と同じ cell 平坦商への `IsStableVerdierSequence` を供給。分解上の実小核・K-flat Hom・同じ商射影との屋根を保持する。
+- D-16 は thick 閉包へ接続する方針に改訂。対象条件の共通宇宙の実ホモトピー圏での retract 閉性は証明済み。実 thick 核への差し替えは未完なので③を再開する。
 - D-15 の公開反映を適用し、対象条件と元 augmentation の `moduleQuasiIso` の同値を供給。Sp 正本への商の核一致と追加 ULift の接続は D に依頼中。これらを仮定で埋めて完成とはしない。
+- ④の Milnor 比較を Sp 正本の fiber 模型へ移し、元の自由対角の Hom 作用と厳密に照合。元二射影・零比較を保持し、その同じ一回 Perf 延長の Hom 準同型性・nerve 充満忠実性を証明。K-S• の既存小 Perf 対角との比較は D-17 待ち。
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -39,7 +41,7 @@
 ### G-1 f の三段目（固定）
 - [x] ① 通常 pullback を表す元 dg gluing 内の充満部分圏と正本比較の制限を構成。
 - [x] ② 通常 pullback の同値・安定性・実完全包含と二射影の整合を供給。
-- [x] ③ D-9 の同じ平坦屋根・実小核・Verdier 商を gluing へ接続。
+- [ ] ③ D-9 の同じ平坦屋根・実小核・Verdier 商を gluing へ接続。
 - [ ] ④ ⊙ の dg 同定と元の二射を保持する K-8 d8 の IsVerdierSequence を供給。
 - [ ] ⑤ 集約ビルド・公理監査・D 向け引き継ぎを保存して停止。
 
@@ -86,8 +88,8 @@
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
   隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **次工程 (f)**：Sp 正本の商の核一致・追加 ULift と、K-S• の固定 ν 上の元対角・商射を④へ接続する。K-S• の `DGOdotInput` は可換四角形だけなので、元対角の充満忠実性に必要な導来 pullback／切除条件の公開入口をコーディネータへ確認中。
-- **④の設計変更提案（未採用）**：固定三段目と既存公開界面を保ち、元対角像と通常 pullback を同定する切除証人を別の条件として明示する。`DGOdotInput` の全例に `DGOdotVerdierInput.fullyFaithful` を無条件供給しない。source＝非零体・他三角＝零代数の可換四角形では対角は零関手で、充満忠実にならない。
+- **次工程 (f)**：D-16 の thick 核へ③を差し替え、D-17 の自由代表からの生成判定または一回 Perf 延長との比較を元の小 Perf 対角へ適用する。Sp 正本の商の核一致・追加 ULift と、K-S• の固定 ν 上の元対角・商射を④へ接続する。
+- **採用（2026-10-25、コーディネータ指示）**：④では `dgGluingMilnorSquareComparison` が準同型である dg 形の Milnor 条件だけを四角形の仮定に取る。Sp 正本の `HomotopyPullbackModel.algebra` と同じ比較射を使い、元対角の充満忠実性と元二射の `IsVerdierSequence` を導く。一般の可換四角形への無条件供給はしない。具体例の検証は K-S• の再開後。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
@@ -96,7 +98,7 @@
 - (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
 - `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
 - `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
-- e の検証：集約ビルド 11872 jobs、公理監査 911 モジュール・8461 宣言。許容三公理のみ。ログ：`/tmp/d2-e-complete-aggregate-build.log`・`/tmp/d2-e-complete-audit.log`。残る数学的工程は f。
+- 未接続の `HomTargetCommaHom` は元の共通終域への comma 比較の作業中。検証後に集約へ接続する。残る数学的工程は f③の thick 核と④の元小 Perf 対角・元商への比較。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
 - 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。
