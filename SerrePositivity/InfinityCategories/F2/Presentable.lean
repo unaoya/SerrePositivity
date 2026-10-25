@@ -326,3 +326,6 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackAccessib
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackVertexCandidates
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateFamily
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateModel
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCosliceComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateCardinals
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackExchangeShape

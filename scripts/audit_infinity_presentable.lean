@@ -672,3 +672,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateFamily
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateCategory
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateInclusion_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso_projection_fst
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso_projection_snd
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackFamily_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackCandidate_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredLimitExchangeShape_cospan
