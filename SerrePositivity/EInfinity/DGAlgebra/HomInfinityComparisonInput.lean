@@ -1,0 +1,77 @@
+module
+
+public import SerrePositivity.EInfinity.DGAlgebra.FrameComparison
+public import SerrePositivity.EInfinity.FrameHom.RightFrameTerminalHomReduction
+
+/-!
+概要：実 dg モデルの指定局所化への全 Hom 比較を原本 Yoneda の一入力へ還元する。
+方針：同じ実自由分解・right frame・指定局所化比較を完成済みの全図式還元へ代入する。
+規約：この条件付き補助入口だけで供給完了とはしない。
+使われ方：Ind-S (8) の全比較を代入する dg 主入口の構成。
+-/
+
+@[expose] public noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.DGAlgebra
+open CategoryTheory HomotopicalAlgebra SSet Opposite
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+variable (R : Type u) [CommRing R]
+
+/-- 概要：同じ実 dg 終端から指定局所化の正本 Hom 関手への全図式比較の還元。
+方針：実分解の入力を放電済みの同じ局所化比較を代入する。
+規約：唯一の追加仮定は原本側の全 Yoneda 同型。
+使われ方：原本比較の公開後の直接代入。 -/
+def frameTerminalHomIso_of_yonedaIso {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
+      (_hG : IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))))
+      (X : Mon (Complex R)),
+      FunctorIso
+        (kanHammockHomCoherent (modelRelativeCategory (Mon (Complex R)))
+          (modelRelativeObject (Mon (Complex R)) X))
+        (homInfinityCovariant ((hammockLocalizationNerveMap
+          (modelRelativeCategory (Mon (Complex R)))).app (op ⦋0⦌)
+            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) →
+      FunctorIso
+        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+          (rightFrameFamily R) 6)
+        (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
+          homInfinityCovariant (G.app (op ⦋0⦌)
+            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) := by
+  letI _modelInst := modelCategory R
+  intro G hG X h
+  exact FrameHom.rightFrameTerminalHomIso_of_yonedaIso
+    ((sourceFrameFamily R).atObject X) (rightFrameFamily R)
+    (frameLocalizationComparison R G hG) h
+
+/-- 概要：同じ実 dg right frame の始端から正本の共変 Hom 図式への全比較の還元。
+方針：元の六辺の全比較を同じ終端の還元へ合成する。
+規約：cofibrant 源・任意標的、モデルや分解の追加入力なし。
+使われ方：Sp の実 right frame 図式から指定局所化の Hom への主比較の構成。 -/
+def frameCoherentHomIso_of_yonedaIso {Q : SSet.{u + 1}} [Quasicategory Q] :
+    letI _modelInst := modelCategory R
+    ∀ (G : nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ Q)
+      (_hG : IsLocalization G (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))))
+      (X : Mon (Complex R)), IsCofibrant X →
+      FunctorIso
+        (kanHammockHomCoherent (modelRelativeCategory (Mon (Complex R)))
+          (modelRelativeObject (Mon (Complex R)) X))
+        (homInfinityCovariant ((hammockLocalizationNerveMap
+          (modelRelativeCategory (Mon (Complex R)))).app (op ⦋0⦌)
+            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) →
+      FunctorIso
+        (FrameHom.rightFrameHammockCoherentDiagram ((sourceFrameFamily R).atObject X)
+          (rightFrameFamily R) 0)
+        (SSet.uliftFunctor.{u + 2, u + 1}.map G ≫
+          homInfinityCovariant (G.app (op ⦋0⦌)
+            (nerveVertex (modelRelativeObject (Mon (Complex R)) X)))) := by
+  letI _modelInst := modelCategory R
+  intro G hG X hX h
+  exact rightFrameHammockCoherentComparison R X hX ≪≫
+    frameTerminalHomIso_of_yonedaIso R G hG X h
+
+end SerrePositivity.EInfinity.DGAlgebra

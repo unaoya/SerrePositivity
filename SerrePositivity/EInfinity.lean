@@ -2612,3 +2612,7 @@ public import SerrePositivity.EInfinity.FrameHom.RightFrameTerminalRealization
 public import SerrePositivity.EInfinity.Hammock.AsSmallComposition
 public import SerrePositivity.EInfinity.Hammock.ExInfinityPointActions
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent
+
+public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparisonInput
+public import SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomNormalization
+public import SerrePositivity.EInfinity.Hammock.AsSmallKanArrow
