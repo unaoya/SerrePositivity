@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents
 public import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts
