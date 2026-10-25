@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierFullSLowerDeformationSource
+public import SerrePositivity.KST.Fibration.WeakSpanKanFiberUnit
+public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFiberUnit
 public import SerrePositivity.KST.Fibration.QuotientSKernelFullSquare
 public import SerrePositivity.KST.Fibration.QuotientSKernelFullSquareIso
 public import SerrePositivity.KST.Fibration.KanCommSqTriangles

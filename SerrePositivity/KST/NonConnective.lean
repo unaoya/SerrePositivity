@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectStructurePi
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedNullPerf
 public import SerrePositivity.KST.NonConnective.DGSuspensionResolvedConnectiveSequence
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelAugmentation

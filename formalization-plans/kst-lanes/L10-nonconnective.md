@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値は P の明示入力で、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - F1 の Ind 安定性・K-6 は入力せず、待機もしていない。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は成功（121 モジュール・1330 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
+- NonConnective 集約・専用監査は成功（122 モジュール・1335 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。構造射は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -82,7 +82,7 @@
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
 | `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 19／7 |
-| `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | K-B：固定 S の全高次作用と照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D の範囲は選択 cone の厳密関手性の評価後に確定 | 11／2 |
+| `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | D-8 e（供給仕様拡張を採用、未供給）：同じ実核・cone・零角・懸垂の全四角形族と、実評価 Morita 比較・元の P の包含の全 native Hom 自然性。K-B：固定 S・ν・K での照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D への伝達は c′ 試作の判定後 | 11／2 |
 
 | フィールド／照合 | 供給元 |
 |---|---|
@@ -93,11 +93,18 @@
 | 元の Perf・P との全関手照合（構造のフィールドには未追加） | K-B：同じ分解増大を実核へ制限した準同値と native nerve 同値を構成。P の実比較を逆に通す `dgKappaPerfectResolvedComparison` は元の導来模型への全包含同型を保持する。I・P に条件付きで同じ実評価 Morita 核の ∞-Perf 同値と固定 ν 値間の完全な順逆同値を供給。native P と同じ厳密評価の合成は元の Perf の恒等に全関手同型。元の Perf 包含との照合・全入力自然性は未完 |
 
 
+| `DGSuspensionNativeActionInput` の追加供給仕様（現行 Lean フィールドには未追加） | 供給元 |
+|---|---|
+| 同じ実核・cone・零角・懸垂の全四角形族。各 A への制限は `dgKappaResolvedConnectiveSquare R A (s A).cone` 全体と厳密一致 | D-8 e：厳密模型。K-B：固定 S 上への接続 |
+| 同じ実評価 Morita 比較の全 native Hom 自然性 | D-8 e：同じ実評価族。K-B：固定 ν・K の比較へ移送 |
+| 元の P の包含との全 native Hom 自然な比較 | D-8 e：元の包含族。K-B：元の P・Perf 包含への照合 |
+
+
 ### c4 の全高次作用の供給境界（採用（03:55））
 - I・P と `DGSuspensionStageProvider` は対象別の供給であり、選んだ同じ cone に対する全 native Hom の作用を含まない。`DGSuspensionIterationMaps` の通常射に対する条件付き恒等・合成則だけを、固定 S 上の ∞ 関手の供給とは数えない。
 - 採用：`DGSuspensionNativeActionInput` を別の明示境界とする。固定 `dgKInputInfinity` 上の全単体的自己射 `map`、同じ平坦懸垂との `vertex` 照合、元の各 dg 射の増大可換データ `data`、同じ実商射の全一単体との `edge` 照合を要求する。存在は主張せず、固定 S・ν・K や I・P の型を変えない。
 - 利用側は検証済み：`DGSuspensionEnrichedAction.ofEnrichedHom` は明示全 Hom 族・豊穣単位合成則・元の実 dg 射との照合から指定供給路を実装する。対応する豊穣自己関手の coherentNerveMap が元の各頂点・辺を保持する。供給された同じ作用の全高次反復を作り、各頂点を既存の `dgSuspensionIteration`、元の各厳密 dg 辺を既存の `dgSuspensionIterationMap` と厳密照合する。通常射の厳密合成則を追加で仮定せず、`map` 自体が全高次整合性を保持する。
-- 供給分担：K-B が全単体的作用と頂点・辺の照合を組み立てる。供給路は **PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap**。D 側の供給範囲は、D が選んだ cone 模型の厳密関手性を評価してから確定する（コーディネータが依頼済み）。対象別の `covers` による代表選択から厳密・高次の自然性を推論しない。この境界は I・P・実相対屋根とは別であり、存在・実供給は主張しない。評価待ちで停止せず K-6 c4・c5 と K-7 d を進める。
+- 供給分担：K-B が全単体的作用と頂点・辺の照合を組み立てる。供給路は **PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap**。D-8 e の供給仕様は下記の全四角形族・実評価 Morita 比較・元の P の包含の全 native Hom 自然性へ拡張済み（未供給、c′ 試作判定後にコーディネータが伝達）。対象別の `covers` による代表選択から厳密・高次の自然性を推論しない。この境界は I・P・実相対屋根とは別であり、存在・実供給は主張しない。評価待ちで停止せず K-6 c4・c5 と K-7 d を進める。
 
 ### D-12 供給境界（採用済み）
 - c2 の汎用 dg 加群の分裂 cofiber 判定は D 正本（D-12）。K-B は元のラベル作用・二胞体との照合と Perf への反映を担当する。K-B 内に一般 dg 加群の cofiber API を重ねない。
@@ -120,15 +127,15 @@
 - [ ] d3 非負次数の隣接安定化を証明し、同じ実比較射の非負整数 π 同型へ接続。
 - [ ] d4 Ind I-2 e の公開結果との照合、選択比較と全入力の自然性。
 
-- `DGSuspensionConnectedComparison` は元の連結固定 K から同じ実 Sp 余錐の零段の脚を実 BF 比較射として回収する。隣接遷移の非負次数安定化に条件付きで、元の比較射を順方向とする群同型を構成し、同じ SOA 比較からの実連結 K 比較も全単射となる。`DGSuspensionLoopStagePi` は同じ n 段の native loop 反復値の整数 π を元の n 回懸垂 K の j+n 次数へ同型で比較する。`DGSuspensionShiftedTransition` は同じ実隣接 BF 射をこの座標で読み、元の作用との厳密な可換性・全単射性の同値・同じ実余錐の連結比較への移送を保持する。元の構造辺そのものの π 作用との自然性、隣接安定化、I-2 e との照合は未証明。
+- `DGSuspensionConnectedComparison` は元の連結固定 K から同じ実 Sp 余錐の零段の脚を実 BF 比較射として回収する。隣接遷移の非負次数安定化に条件付きで、元の比較射を順方向とする群同型を構成し、同じ SOA 比較からの実連結 K 比較も全単射となる。`DGSuspensionLoopStagePi` は同じ n 段の native loop 反復値の整数 π を元の n 回懸垂 K の j+n 次数へ同型で比較する。`DGSuspensionShiftedTransition` は同じ実隣接 BF 射をこの座標で読み、元の作用との厳密な可換性・全単射性の同値・同じ実余錐の連結比較への移送を保持する。`DGSuspensionPerfectStructurePi` は段別 I・P・Z と同じ実 fiber 比較の非負次数条件に対し、実評価 Perf 比較を代入した元の構造射の j+n 次数の全単射性を供給する。全非負 j・全段、および任意整数 j の n≥(-j).toNat の範囲を保持する。元の構造辺そのものの π 作用との自然性、反復 loop 後の実隣接安定化、I-2 e との照合は未証明。
 - Sp 正本への供給依頼（コーディネータ経由）：native loop の整数 π 次数移動の自然性。必要な界面は各 j の `((hoFunctor.map OmegaSpectrum.nativeLoop).toFunctor ⋙ SpectrumHo.piFunctor j) ≅ SpectrumHo.piFunctor (j+1)` と、公開の実 loop／円 cotensor 比較との照合。対象別次数同型だけでは、同じ隣接構造辺への自然性を結論しない。K-B 内に一般 Sp loop API を重ねず、c4・c5 の独立部分を続ける。
 
 
-### 設計確認案（未採用）：全入力自然性への供給範囲
+### 採用済み供給仕様：D-8 e の全入力自然性（未供給）
 - 現行 `DGSuspensionNativeActionInput` は Σ の全高次作用と元の各 dg 辺のデータを保持する。今回の実評価による固定 ν 比較・元の P との全包含比較は対象別であり、これらだけから構造辺 β の全入力自然性を結論しない。
-- 提案：D の厳密模型の評価対象を、`((Δ[1] ⊗ Δ[1]) ⊗ dgKInputInfinity R) ⟶ dgKInputInfinity R` で表す同じ実核・cone・零角・懸垂の全四角形族へ広げる。各元の入力 A への制限は同じ `dgKappaResolvedConnectiveSquare R A (s A).cone` 全体と厳密に照合する。
+- 採用：D の厳密模型の評価対象を、`((Δ[1] ⊗ Δ[1]) ⊗ dgKInputInfinity R) ⟶ dgKInputInfinity R` で表す同じ実核・cone・零角・懸垂の全四角形族へ広げる。各元の入力 A への制限は同じ `dgKappaResolvedConnectiveSquare R A (s A).cone` 全体と厳密に照合する。
 - 併せて、今回の実評価 Morita 比較と元の P の包含を同じ全 native Hom に自然な比較として供給する。K-B はその像から固定 K の構造辺・実逐次図式の自然性を構成する。β の自然性や Sp 引き戻し性を追加入力にして完成扱いしない。
-- I・P・既採用境界の型は変えず、現段階では新しい入力構造も存在仮定も追加しない。上記の全四角形族と評価比較を別の供給境界として採用するか、D の厳密模型から K-B が組み立てる正本界面を確定する設計確認である。
+- `DGSuspensionNativeActionInput` の D-8 e 供給仕様として記録する。現行 Lean 型は全四角形族をまだ表さず、仕様充足・完成とは数えない。I・P・固定 S・ν・K を変更せず、存在も主張しない。D への伝達はコーディネータが c′ 試作の判定（20:11）後に行う。
 
 ### 採用済み設計：連結 K の fiber 条件の適用範囲
 - 検証済みの帰結：全段で同じ実屋根・元の Perf との指定同値・元の相対 K 四角形の Sp 引き戻し性を仮定すると、`dgSuspensionRoofTransition_piIsomorphism` は全整数の隣接 π 同型を与える。同じ実余錐の零段の脚が全整数 π 同型・実可逆辺となり、同じ候補の全負整数 π が消える。供給の存在や一般の負群消滅を主張する定理ではない。
