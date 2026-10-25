@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison
+public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamilyIdentity
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMinimum
 public import SerrePositivity.InfinityCategories.F1B.Diagrams.IntervalMaximum
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
@@ -31,8 +32,8 @@ public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquiva
 /-!
 概要：一般 Verdier 分数の全族に対して、分母 roof からの二つの実変形を保持する。
 方針：元の span の第一辺を保つ変形と、分母による恒等 span への変形を用いる。
-規約：私有の構成段階。π₀ の比較だけで高次の充満忠実性を結論しない。
-使われ方：Sp-6 s4 の左三角形の検証。
+規約：元の実全族単位・全 fiber 回収と指定恒等点照合を適用する。π₀ だけでは代用しない。
+使われ方：Sp-6 s4 の一般 Verdier 分数比較の充満忠実性。
 -/
 
 @[expose] public section
@@ -2319,5 +2320,35 @@ private lemma verdierFractionComparison_of_kanUnitRecovery {A B C : StableCatego
       Category.assoc] using! ht
   have hc := (groupoidCompletionKanComparison_isQCatEquivalence X).ofFunctorIso he.symm
   exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e (hv.cancel_right hc)
+
+/-- 概要：元の一般 Verdier 分数比較は全写像空間で充満忠実。
+方針：実全族写像・同じ底・全固定 fiber の Kan 単位回収・元の恒等点照合を適用する。
+規約：全族単位や fiber 同値を追加入力にしない。
+使われ方：K-B の分数比較と K-S• の再開条件。 -/
+lemma verdierFractionMappingComparison_isFullyFaithful {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌) :
+    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  let U := weakSpanKanQuotientFamilyMap h x
+  have hU : U ≫ p = markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom :=
+    weakSpanKanQuotientFamilyMap_projection h x
+  have hi : verdierLiftedIdentityFiberPoint h x p U hU =
+      (weakSpanKanQuotientFamilyFixedFiber h x x).app (Opposite.op ⦋0⦌)
+        (weakIdentityFixedSpan h x) := by
+    apply Subtype.ext
+    change U.app _ (verdierIdentitySpanFamily h x) =
+      U.app _ ((fixedMarkedSpanToFamily B.obj (weakEquivalences i) x x).app _
+        (weakIdentityFixedSpan h x))
+    congr 1
+  let e : VertexIso (verdierLiftedIdentityFiberPoint h x p U hU)
+      (weakIdentityQuotientFiberPoint h x) :=
+    eqToIso (congrArg HomotopyCategory.mk hi) ≪≫
+      weakSpanKanQuotientFamilyFixedFiber_identityIso h x
+  apply verdierFractionComparison_of_kanUnitRecovery h x y U hU e
+    (weakSpanKanQuotientZeroValueComparison h x y)
+    (weakSpanKanQuotientZeroValueComparison_isQCatEquivalence h x y)
+  simpa only [verdierFixedLiftedFamily, weakSpanKanQuotientFamilyFixedFiber] using!
+    weakSpanKanQuotientFamilyFixedFiber_recovery h x y
 
 end SerrePositivity.KST.LocalizingInvariants

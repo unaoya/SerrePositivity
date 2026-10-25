@@ -8,7 +8,7 @@
 - [x] s1. 固定 S・ν と商合成を照合し、源内の零化と ν 像の認証を分離する。
 - [x] s2. S 内の実零化 2-cell を構成し、指定商合成と ν 像を回収する。
 - [ ] s3. 二つの三角形を保つ具体的長方形と、K-B の DGKappaSuspensionRelativeRoofInput 用の固定 ν 上の相対 Verdier 接続を供給する。
-- [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を公開する（実全族・厳密な底・元の Kan 単位回収・指定恒等点を適用し、verdierFractionMappingComparison_isFullyFaithful は追加仮定なしで集約・監査合格。K-B-S の供給葉の保存待ち。Sp 側の公開保存後に完了へ）。
+- [x] s4. K-B-S c13c179e3 の実全族・厳密な底・元の Kan 単位回収・指定恒等点を適用し、元の verdierFractionMappingComparison_isFullyFaithful を追加仮定なしで公開。対象・集約・専用監査合格。
 - [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
 ### Sp-6 の追加依頼（β6 f と並行、区切りで対応）
@@ -42,11 +42,11 @@
 ## 引き継ぎ（2026-10-25）
 
 ### 現在地
-- **再開の第一工程**：K-B-S の供給一式の保存を確認し、作業木の VerdierSpanCoherentContraction.lean と計画だけを commit --only で保存して s4 を完了へ。実証明は対象・集約・専用監査合格済み。供給元に変更があれば先に再検証し、所有外のファイルを保存しない。
+- **再開の第一工程**：s4 の実分数比較は K-B-S c13c179e3 を適用して保存。次は s3 の完備化付き接続に「元入力への増大屋根＋ν 像の指定同値」による始域回収を加える（17:53 採用）。S 内の始域頂点等号を要求せず、旧厳密版を特殊化として保持する。
 - **β6 f・h の現在地**：実 AW／選択 right frame の全標的比較と元の単位保持、指定局所化への降下、P-8 を適用した元の全錐像の極限性まで保存済み。E2-S (6) の実 Hom 比較を受け、指定二胞体を厳密回収して元の局所化錐の極限性へ代入する組立ては私有証明まで。表現可能 Hom 比較・指定底の最終接続・f4d 全体は未完。
-- **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。実長方形・resolved native 商から固定 ν 値への実完備化と指定境界比較は未供給。s4 は実適用・集約・監査済みで、供給元の保存待ち。その間は β6 f→h。
+- **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。実長方形・resolved native 商から固定 ν 値への実完備化と指定境界比較は未供給。s4 は実適用・集約・監査・公開保存を完了。s3 の実供給待ちの間は β6 f→h。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
-- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 の供給元保存・Sp 公開保存を最優先し、その待機中は β6 f→h を進める。その後 K-8 e→Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
+- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 は完了。s3 の完備化付き始域屋根の接続を進め、実供給待機中は β6 f→h を進める。その後 K-8 e→Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
 - **正本の入口**：PostnikovCommonCore、PostnikovSuccessorClassInverseData、postnikovFiniteMap_exists_nonpositiveInverseRoof_int、ConnectedLevelRepresentation／connectedLevelRepresentation、IsKConnective.invariantLevelMap_piProConnected、invariantLevelMap_piProEquivalence_of_piProEquivalence／of_eventual_groups／of_forall_proConnected。元の n=1 Common・Two の宣言名・型・所在は特殊化界面として維持する。
 - **運用**：自分の集約ビルドと専用監査のみ。全体の統合検証は R の停止窓。所有外は読むだけ。新規 sorry・公理・引用、ModelCategory 仮定、モジュール移動・改名・削除を導入しない。記録はコミットメッセージ。
 - **Spectra 4 WIP**：未追跡の PointedUncurryActionTensor、PointedParametricUncurryAction、PointedUncurryComposition、PointedParametricUncurryPre は保持し、集約・監査・コミットに接続しない。旧 evaluationPost・uncurry 経路を再開しない。
@@ -156,7 +156,6 @@
 - f4d の全錐比較 P-8 は統合済み、HomotopyLimits/NerveConeCoherentComparison.uliftNerveCone_coherent_eq を実適用済み：持ち上げた F1B.nerveCone の kanDiagramCoherentNerve 像と、同じ通常像錐の strictCoherentCone の全錐 FunctorIso。図式比較・頂点脚比較では代用しない。HomotopyLimits の所有者 P の一般正本を Sp で複製しない。
 
 ### 未コミット
-- VerdierSpanCoherentContraction.lean の実供給 import と verdierFractionMappingComparison_isFullyFaithful は作業木に保持（差分の控え /tmp/sp-fraction-native-pending.patch）。元の IsVerdierSequence と二端点だけの型で対象・集約・専用監査に合格。K-B-S の WeakSpanKanQuotientFamilyIdentity・ZeroRecovery 等が未追跡のため、所有レーンの保存をコーディネータ経由で依頼中。供給元保存後、所有するこの一葉と計画だけを commit --only で保存して s4 を完了へ更新する。
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
 - LocalizingInvariants の上記公開界面は集約・監査に登録。DGAlgebraNativeFrameKan・DGAlgebraNativeLargeMixed は対象・集約・監査に合格して登録済み。DGAlgebraNativeFrameCoherent・DGAlgebraPostnikovFrameCoherent（元の提示錐全体への制限）は対象・集約・監査に合格。DGAlgebraNativeChosenRightFrame・NativeChosenMixedFrame・NativeChosenFrameKan・NativeChosenLargeMixed・NativeChosenFrameCoherent・NativeFrameUnits は対象・集約・監査に合格。DGFixedNullPerfectZero・DGFixedNullCertifiedSquare・DGAlgebraPostnikovPresentedSpaceLimit・DGAlgebraNativeMappingDescent・DGAlgebraPostnikovMappingDescentLimit も対象・集約・監査に合格。LocalizingInvariants の未接続 WIP なし。始対象射の LLP、全局所化頂点の cell 像表示、大宇宙の Kan 値関手と同じ大宇宙の実 Postnikov 空間値極限を集約・監査へ登録。E2-S (5) の実モデルへの適用と E2-S (6) の導来比較への接続準備であり、導来比較の完成とはしない。停止中 Spectra 4 WIP は上記の状態で保持し、コミットしない。所有外の staged／unstaged／untracked 変更もそのまま保持する。
 
@@ -171,8 +170,8 @@
 - 採用済み修正：固定 ν の Perf 商辺は strict Verdier 商でなく冪等完備化までの列。K-S• 正本 PerfectVerdierSequence（実 strict 商＋完備化）を使う。Sp の RelativePerfectVerdierDiagram.ofSquare／ofStableSquare、RelativePerfectVerdierRectangle.ofActualFaces と境界付き全源比較・全 ν 像比較で、Cat^perf 不変量の同じ制限の pullback を得る。ofStrict は元の四角形・長方形と恒等完備化を保ち、完備性を追加入力にしない。D-21 の実完備化射と K-S• の実長方形は未供給。新たな不変量条件や一般商 API は導入しない。
 - 固定 S・ν・K を保ち、零角に A/A を使う。対象別 ε からの自然な収縮を構成せず、全対象商からの厳密延長を用いる。
 - 具体的 S 長方形 F の実際の ν 像を、右面・外周の Verdier 証拠で認証する。独立に選択した絶対 Tamme 長方形との厳密等号 image_eq に代えて、指定境界を保つ全図式 FunctorIso を接続口に追加する。既存の厳密等号版は特殊化として保持する。
-- 元の包含・商・四辺・始域頂点と二つの合成三角形を明示して保持する。ν 像の関手同型だけから E の値を移送せず、RelativeVerdierRectangle の同じ源図式に相対不変量を適用する。長方形と全図式比較の存在は未証明。
-- K-B の DGKappaSuspensionRelativeRoofInput は現行の型で受けられる。I・P は変更せず、実核・指定収縮・Verdier 証拠・零角の Perf 値の零性の供給後に exists_dgFixedNullRelativeRoof を適用する。一般分数比較の充満忠実性は s4 に残る。
+- 元の包含・商・四辺と二つの合成三角形を明示して保持する。始域回収は元入力への増大屋根と ν 像の指定同値で受け、S 内の source_vertex_eq を主経路で要求しない（17:53 採用、接続実装中）。旧等号版は特殊化として保持する。ν 像の関手同型だけから E の値を移送せず、RelativeVerdierRectangle の同じ源図式に相対不変量を適用する。長方形と全図式比較の存在は未証明。
+- K-B の DGKappaSuspensionRelativeRoofInput は現行の型で受けられる。I・P は変更せず、実核・指定収縮・Verdier 証拠・零角の Perf 値の零性の供給後に exists_dgFixedNullRelativeRoof を適用する。一般分数比較の充満忠実性は s4 で供給済み。
 
 ### Sp-6 の仮定入力一覧（実在は未証明、完成扱いにしない）
 - 下記の旧 strict Verdier 入力は特殊化として保持し、一般 Perf 商の主経路には用いない。主経路は完備化付き列と Cat^perf 不変量。新たな相対不変量条件は置かない。
@@ -182,16 +181,15 @@
 - DGOdotVerdierRectangleComparisonInput：実 S 長方形の二つの相対 Verdier 認証、上記境界付き全 ν 比較、元の始域頂点。
 - DGOdotVerdierRectangleStrictTransport：旧 image_eq を満たす実 S 代表、指定境界付きの S 内全比較、その ν 像と指定比較の一致、元の始域頂点の保持。ν 像の FunctorIso だけからは供給しない。
 - DGKappaRelativeRoofComparisonInput：実相対屋根、指定三境界を保つ全 ν 比較、元の三頂点・商一単体。exists_dgKappaRelativeRoof_of_fixedNull の実核・収縮・Verdier は供給待ち。Perf 零性は dgFixedNullInput_isZeroCategory で供給済み。I・P は変更しない。
-- s4：実全族写像・底 q の厳密保存・全固定 fiber の元の Kan 単位回収・既存恒等点との同型はコード供給済み。Sp は元の fractionMappingComparison に無追加入力で適用し集約・監査も合格。供給元 K-B-S の保存をコーディネータ経由で依頼し、保存確認後に Sp の公開補題をコミットする。条件付き主経路にはしない。
 
-### s4 の供給待ちの優先順（採用済み）
+### 実供給と待機中の優先順（採用済み）
 - E2-S (5)：e36b192d3 で E2 の実転送モデル・新名の一般 AW path・SSet モデルを仮定しない frame 選択比較を受領。全標的に自然な指定 ∞ 局所化の pinchedHom 比較は未提供で、E2-S (6) として依頼済み。比較は指定局所化の二胞体 FunctorIso (F≫K) G を保つ全 Hom 族として受け、零単体はその可逆辺に沿う合成で照合する。生の辺の等式は要求せず、指定底の輸送と全錐の極限性の輸送を明示する。Sp の convolutionFunctor／convolutionPrecompose／convolutionConstantMap、multiplicativeSimplices／Augmentation、matching_fibration の名前と型をユーザー経由で中継済み。専用の端点対 B×B 照合は未提供。第 I 段後の付け替えは R が行い、Sp は移動しない。
 - コーディネータから K-B へ、同じ弱 span 図式の空間値に限った実共変単位の供給を依頼済み。範囲は元の全 roof 族の実写像・底の厳密保存・元の Kan 置換単位の全族回収・恒等点照合。Cat∞ 値分類全体の再開や一般局所化・商 API の追加は含めない。
-- Sp は供給された同じ単位を私有証明へ適用し、元の fractionMappingComparison の仮定追加なしの充満忠実性を公開して s4 を閉じる。条件付き入力を主経路の代替にしない。
+- s4 は K-B-S c13c179e3 の同じ単位を適用し、元の fractionMappingComparison の充満忠実性を公開済み。全族回収等の条件付き入力は残さない。
 - 供給待ちの間は β6 f→h を進め、供給到着時に最優先で s4 に戻る。s2・s3 の具体的入力（D の Perf 零性・実核等）が揃い次第 s5 で接続する。具体的入力は未供給として維持する。
 
 ### 次の一手
-- **次の一工程（β6 f4・f5・h）**：E2-S の実 AW 余モノイドから乗法的単体模型を構成し、元の厳密 Postnikov 錐の像の極限性を証明済み。E2-S (2) の実 cochainCounit の鎖ホモトピー同値・Δ[0] の IsIso を受領。余単位からの実定数射の全自然性・全次数の擬同型性・零単体の同型性と指定底の相対単体を構成済み。実代数の matching 制限の次数別全射性と全自然な増大を供給し、f4b の実 frame 条件を検証済み。cell 源の任意射の全段持ち上げと全小単体集合の Hom 比較・固定底の厳密同値を構成済み。E2-S (3) の実ホーン擬同型と D の宇宙同型を適用し、絶対写像模型の Kan 性を検証済み。E2-S (4)（3d37cf3a2）を実相対制限へ適用し、写像の Kan fibration 性・指定底の Kan 性と元の Postnikov 空間値錐の極限性まで検証済み。指定底の全単体同型・零単体の元の射との同定・通常局所化への π₀ 比較射も供給。E2-S (4) 追加（7288ca16d）も実境界へ適用し、全標的擬同型の像の弱ホモトピー同値性と零次比較の二変数自然性を検証済み。元の局所化錐の極限性を実 cell 像による全表現可能試験へ帰着済み。E2-S (5) の実転送モデル e36b192d3 を受領し、native cell の cofibrancy と元の augmentation の全射擬同型性、実 AW frame 族・選択 right resolution への全標的比較と単位保持まで集約・監査済み。P-8 を元の全提示錐へ適用し、指定局所化へ降下した実 AW 関手の元の錐像は極限と証明済み。次は依頼済み E2-S (6) による表現可能な同じ試験錐と実 AW 空間値錐の全自然比較への接続。代数の ∞ 局所化との導来比較・その錐の極限性は未完。区切りごとに f5 の検証・h の記録を行い、s4 の実全族写像が到着したら最優先で戻る。
+- **次の一工程（β6 f4・f5・h）**：E2-S の実 AW 余モノイドから乗法的単体模型を構成し、元の厳密 Postnikov 錐の像の極限性を証明済み。E2-S (2) の実 cochainCounit の鎖ホモトピー同値・Δ[0] の IsIso を受領。余単位からの実定数射の全自然性・全次数の擬同型性・零単体の同型性と指定底の相対単体を構成済み。実代数の matching 制限の次数別全射性と全自然な増大を供給し、f4b の実 frame 条件を検証済み。cell 源の任意射の全段持ち上げと全小単体集合の Hom 比較・固定底の厳密同値を構成済み。E2-S (3) の実ホーン擬同型と D の宇宙同型を適用し、絶対写像模型の Kan 性を検証済み。E2-S (4)（3d37cf3a2）を実相対制限へ適用し、写像の Kan fibration 性・指定底の Kan 性と元の Postnikov 空間値錐の極限性まで検証済み。指定底の全単体同型・零単体の元の射との同定・通常局所化への π₀ 比較射も供給。E2-S (4) 追加（7288ca16d）も実境界へ適用し、全標的擬同型の像の弱ホモトピー同値性と零次比較の二変数自然性を検証済み。元の局所化錐の極限性を実 cell 像による全表現可能試験へ帰着済み。E2-S (5) の実転送モデル e36b192d3 を受領し、native cell の cofibrancy と元の augmentation の全射擬同型性、実 AW frame 族・選択 right resolution への全標的比較と単位保持まで集約・監査済み。P-8 を元の全提示錐へ適用し、指定局所化へ降下した実 AW 関手の元の錐像は極限と証明済み。次は依頼済み E2-S (6) による表現可能な同じ試験錐と実 AW 空間値錐の全自然比較への接続。代数の ∞ 局所化との導来比較・その錐の極限性は未完。区切りごとに f5 の検証・h の記録を行い、s3 の実長方形・完備化射が到着したら同じ具体的入力へ接続する。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
