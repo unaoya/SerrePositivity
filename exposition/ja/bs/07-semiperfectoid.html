@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 第 7 章 semiperfectoid と perfection</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 7 章</nav>
+<h1>第 7 章　semiperfectoid 環と perfection（§7）</h1>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25、W2 後。W3 実施中）。原典 pp.55–62。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p>§7 は三つの小節からなる。§7.1 は semiperfectoid 環 \(S\)（perfectoid 環の商）について、全ての prism の中での始対象（Prop 7.2）と普遍 perfectoid 環 \(S_{\mathrm{perfd}}\)（Cor 7.3）を作り、主定理「\(S\to S_{\mathrm{perfd}}\) は全射」（Thm 7.4）を述べる。§7.2 は導来 prismatic コホモロジー（Construction 7.6）と、それが離散な場合の性質（Lemma 7.7、Ex 7.9、Prop 7.10）。§7.3 は prismatic site の被覆の持ち上げ（Prop 7.11）から André の補題（Thm 7.14）を出し、Thm 7.4 を証明する。</p>
+<p>形式化は §7.1 と §7.3 の環の結果（Cor 7.3、Thm 7.4、Thm 7.14）を、§7.2 を使わずに証明している。§7.2 は E3 の Def 8.2 の土台で、未形式化（A2・A3）。</p>
+
+<h2>1. semiperfectoid 環の perfectoid 化（Prop 7.2・Cor 7.3）</h2>
+<p><b>原典の証明.</b> 全射 \(R\to S\)（\(R\) perfectoid）を取り、\(J=\ker(A_{\inf}(R)\to S)\)。prism \((C,K)\) と \(S\to C/K\) が与えられると、\((A_{\inf}(R),(d))\to(C,K)\) が一意に決まり（Lemma 4.8）、\(K=dC\)（Lemma 3.5）、\(f\in J\) ごとに \(f/d\in C\) が一意に決まる。そこで \(B=A_{\inf}(R)\{x_f\}/(dx_f-f)_\delta\) から、\(d\) ねじれの δ 閉包での商と導来 \((p,d)\) 完備化を超限的に繰り返して、全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) を作る（Prop 7.2）。Cor 7.3：perfectoid な \(S\) 代数の圏は「\(J\) を \(d\) で割り切る完全 prism」の圏と同値なので、Lemma 3.9 で \(S_{\mathrm{perfd}}=(\Delta^{\mathrm{init}}_S)_{\mathrm{perf}}/I\) の p 進完備化。</p>
+<p><b>Lean での組み立て</b>（<code>exists_perfectoidization_of_perfectoid_surjective_quotient</code>、Semiperfectoid/SemiperfectoidPerfectoidization:21）。整 perfectoid 環 \(R\) を完全 prism の商で表し（<code>exists_perfectoidTrialPrism</code>、Thm 3.10）、完全試験 prism の商への全射について <code>exists_perfectoidization_of_perfectPrism_quotient</code>（Prism/Perfectoid/PerfectPrismQuotientPerfectoidization:163）を当てる。後者は δ 除算 \(A\{J/d\}\)（Delta/Division）→ \(d\) ねじれの除去 → δ 完全化 → 導来 \((p,d)\) 完備化で、完全試験 prism への写像の始対象を直接作り、Thm 3.10 で perfectoid 環の普遍性に読み替える。</p>
+<div class="box">
+<p class="label">原典との差</p>
+<p>Prop 7.2（全 prism の中での始対象、超限帰納）を経由しない。標的が完全 prism なら、完全化の後では \(d\) が非零因子になる（Lemma 2.34）ので、ねじれ除去と完備化を一回ずつ行えば足り、超限帰納が要らない。主張（Cor 7.3 の存在と普遍性）は原典と同じ一般性。\(S\) の導来 p 完備性を仮定しない入口も別にある。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Not 7.1</td><td>semiperfectoid 環</td><td class="ok">済</td><td>perfectoid 環の全射商として扱う</td></tr>
+<tr><td>Cor 7.3</td><td>\(S_{\mathrm{perfd}}\) の存在と普遍性（B3）</td><td class="ok">済</td><td><code>exists_perfectoidization_of_semiperfectoid_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/SemiperfectoidPerfectoidization.lean">SemiperfectoidPerfectoidization:53</a>）、完全試験 prism の商の版（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismQuotientPerfectoidization.lean">PerfectPrismQuotientPerfectoidization:163</a>）、選んだ普遍環 <code>QuotientPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/QuotientPerfectoidization.lean">QuotientPerfectoidization:20</a>）</td></tr>
+</table></div>
+
+<h2>2. 導来 prismatic コホモロジー（Construction 7.6〜Prop 7.10）</h2>
+<p><b>Construction 7.6.</b> 有界 prism \((A,I)\) 上、p 完全 smooth な \(A/I\) 代数の \(\Delta_{R/A}\) を左 Kan 延長して、任意の導来 p 完備な単体的 \(A/I\) 代数に \(\Delta_{R/A}\) を定める。HT 比較から \(\overline\Delta_{R/A}\) は \(\wedge^iL_{R/(A/I)}\{-i\}[-i]\) を次数商とする filtration を持ち、(1) smooth なら元と一致、(2) étale 層、(3) 完全 prism 上で quasisyntomic 層、(4) 底変換と可換、(5) 余極限と可換（対称モノイダル）。</p>
+<p><b>Lemma 7.7・7.8.</b> \(\Delta_{R/A}\) が離散なら δ 構造を持ち（W₂ への切断を Čech–Alexander 複体から移す）、prism になり、\((R/A)_\Delta\) の弱始対象。Lemma 7.8（冪等完備な圏の一般論）で始対象はその冪等元の像。<b>Ex 7.9.</b> \(R=A/(I,f_1,\dots,f_r)\)（Koszul 正則）なら \(\Delta_{R/A}=A\{f/d\}^\wedge\)（prismatic envelope）で、始対象。<b>Prop 7.10.</b> quasiregular semiperfectoid な \(S\) では \(\Delta_{S/A}\) は離散で \(\Delta^{\mathrm{init}}_S\) と一致し、\(S\to\Delta_S\) は p 完全忠実平坦。証明は \(T=R\langle X_1^{1/p^\infty},\dots,X_r^{1/p^\infty}\rangle/(X_i-f_i)\) という正則 semiperfectoid 環の場合に帰着し、Ex 7.9 を使う。</p>
+<div class="box">
+<p class="label">既存のコードとの関係</p>
+<p>W3 で残す <code>Semiperfectoid/RootEnvelope/</code> は、完全 prism 上の \(X^p-b\) 族の割り算包（\(A\{f/d\}\) の形の envelope）が離散で p 完全忠実平坦であること、その完全化が perfectoid 候補と一致することを示している。これは Prop 7.10 の証明で帰着先になる \(T\) の envelope（Ex 7.9）の計算そのものに近く、A3 で \(\Delta_T\) を既存の環と比べるときの材料になる見込み（A3 の設計で確かめる）。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2。∞ 圏側の P_Σ（提供済み）を読み取り専用で使う</td></tr>
+<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造と始対象</td><td class="todo">未</td><td>A3</td></tr>
+<tr><td>Ex 7.9</td><td>lci 商の \(\Delta\) は prismatic envelope</td><td class="todo">未</td><td>A3。完全 prism 上の \(X^p-b\) 族の envelope の計算は Semiperfectoid/RootEnvelope/（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/PerfectPrismRootSourceDiscrete.lean">PerfectPrismRootSourceDiscrete:41</a> の <code>perfectPrismRootSource_pure</code> ほか）</td></tr>
+<tr><td>Prop 7.10</td><td>qrsp の \(\Delta_S\) は離散で始対象、\(S\to\Delta_S\) は p 完全忠実平坦</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
+</table></div>
+
+<h2>3. André の補題と Thm 7.4（§7.3）</h2>
+<p><b>原典の証明（Thm 7.14）.</b> \(R=A/I\)（完全 prism）とし、全てのモニック多項式の根を形式的に添加した \(\tilde R\)（quasisyntomic 被覆）を取る。Prop 7.11(2)（導来 prismatic コホモロジーと HT 比較による prismatic site の被覆の持ち上げ）で、完全 prism \((B,IB)\) と \(\tilde R\to B/IB=R_1\) を得る。\(R\to R_1\) は p 完全忠実平坦で、R のモニック多項式は \(R_1\) で根を持つ。これを超限的に反復すると絶対整閉な perfectoid 環に達する。<b>Thm 7.4</b>：有向余極限で単項 \(J=(f)\) に帰着し、André の補題で \(f\) が両立する p 冪根を持つと仮定してよい。perfectoid 環は被約なので \(S_{\mathrm{perfd}}\) は \(R/(f^{1/p^\infty})\) の p 完備化で、全射。</p>
+<p><b>Lean での組み立て（Thm 7.14）</b>（<code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>、Andre/Transfinite/Theorem714:32）。四段：(a) 完全 prism の商の上で、正次数モニック多項式 \(f\) の根の割り算包（\(f/d\) の δ 除算）の完備化が p 完全忠実平坦な perfectoid 拡大になる（Andre/ 直下の 46 本）。(b) それを一般の perfectoid 基底へ移す（<code>Transfinite.exists_monicRootPerfectoidExtension</code>、SingleRoot:50）。(c) 固定した族を後続基数で一元ずつ飽和させる（FamilySaturation・FamilyExtension）。(d) ω₁ まで反復する。可算共終の極限段では p 進完備化を取り、ω₁ では自動的に p 完備、終段で全モニック多項式が根を持つ（OmegaOne・Existence・CountableDescent・RootClosure）。</p>
+<p><b>Lean での組み立て（Thm 7.4）.</b> W3 で原典どおりに替える：André の補題で絶対整閉な perfectoid 環 \(T\) へ p 完全忠実平坦に拡大し（核の全元が \(T\) で両立する p 冪根を持つ）、\(T\) 上の全射性を降下する（<code>surjective_of_isPerfectoidization_of_andre</code>、W3 後は Semiperfectoid/AndreSurjectivity）。原典の「有限生成・単項への帰着」は、任意の元の族を直接扱うので不要。</p>
+<div class="box">
+<p class="label">原典との差</p>
+<p>Thm 7.14：反復の外側の構造（一段の拡大を超限的に積む）は原典と同じだが、一段の拡大の作り方が違う。原典は Prop 7.11(2)（HT 比較と導来 prismatic コホモロジー）を使い、Lean はモニック根の割り算包の pd 計算（Rem 7.15 の計算）で p 完全忠実平坦性を直接示す。原典の「mod p で ind-syntomic」という強化は含めない。Rem 7.15 との照合は Andre/Remark715/ にあるが主定理には不要。Thm 7.4：W3 の後は原典どおり。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Thm 7.4</td><td>\(S\to S_{\mathrm{perfd}}\) は全射（B4）</td><td class="ok">済</td><td><code>surjective_of_isPerfectoidization_of_semiperfectoid_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/SemiperfectoidSurjectivity.lean">SemiperfectoidSurjectivity:19</a>）。W3 で André 経由に替え、André を使わない証明は <code>…_of_rootEnvelope</code>（Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity）として残す</td></tr>
+<tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Transfinite/Theorem714.lean">Theorem714:32</a>）、入口（<a href="../../../SerrePositivity/BhattScholze/Inputs/AndreFlatness.lean">AndreFlatness:58</a>）。一段の拡大は原典と別経路</td></tr>
+</table></div><h2>リファクタの候補</h2>
+<div class="box refactor">
+<p class="label">BR30　Thm 7.14 の一段の拡大を原典の経路に揃えるか（将来の判断）</p>
+<p>Thm 7.14 の一段の拡大は、原典では Prop 7.11(2)（導来 prismatic コホモロジーと HT 比較）から出る。いまの Lean は Rem 7.15 の pd 計算に沿った別経路（Andre/ 直下の 46 本と、その下の根付き拡大の構成）。HT 比較は迂回しないと決めたので、A1〜A3 が揃えば Prop 7.11 を形式化して原典どおりに証明できる。そのときは今の証明を別証明として残すか（BR9 と同じ扱い）を決める。A3 までは判断しない。</p>
+</div>
+
+<p>2026-10-25 の調査（import グラフからの到達性の計算と、宣言の型の突き合わせ）による。終点は Thm 7.14（<code>Andre/Transfinite/Theorem714</code>）、B4（<code>Semiperfectoid/SemiperfectoidSurjectivity</code>）、Rem 7.15 の最終 3 定理、root の集約。</p>
+
+<div class="box refactor">
+<p class="label">BR9　B4（Thm 7.4）を Thm 7.14 の系にするか — 決定（10-25）：原典に揃える。W3 で実施中</p>
+<p><b>いまの B4 の証明.</b> perfectoid 環 \(R\) と全射 \(R\to S=R/J\) について、完全 prism 上で「\(J\) の元に両立する p 冪根を添加する割り算包」を作り、その完備化が p 完全忠実平坦な perfectoid 拡大 \(R\to T\) になることを示す（<code>PerfectPrismRootedPerfectoidExtension</code>）。\(T\) 上では \(J\) の生成元が根を持つので全射性が出て、それを \(R\) へ降下する（<code>RootedFamilyPerfectoidSurjectivityDescent</code>）。André の補題を使わない。</p>
+<p><b>原典の証明.</b> Thm 7.4 の原典の証明は、André の補題（Thm 7.14）で絶対整閉な perfectoid 環 \(T\) へ p 完全忠実平坦に拡大し（絶対整閉なら全ての元が両立する p 冪根を持つ）、\(T\) 上の全射性を降下する。</p>
+<p><b>なぜ二つあるのか.</b> B4 を証明した時点（10-16 18:05、<code>ca7121e79</code>）では André の補題が未証明の引用だったので、引用を避けるために André を使わない経路を新しく作った。翌日 10-17 13:18（<code>f9b959e61</code>）に André の補題が別経路で証明されたので、この理由はもう成り立っていない。原典どおりの André 経由版 <code>surjective_of_isPerfectoidization_of_andre</code>（Semiperfectoid/RootedExtension/AndreSurjectivityConditional:18）は B4 本体と同じ主張で、今は無条件に成り立つ（docstring の「sorryAx に依存」は古い）。</p>
+<p><b>差し替えると何が起きるか</b>（import の到達性で計算、10-25）：</p>
+<ul>
+  <li>Thm 7.14 の証明は B4 も B3 も使わないので、循環は起きない。主定理はすでに CLMST 経由で Thm 7.14 に依存しているので、主定理の依存は増えない。公理は どちらも標準三公理。</li>
+  <li>既定のビルドから外れるのは <b>33 本・3,395 行</b>：<code>PerfectPrismRoot*</code> と <code>PerfectPrismRootedPerfectoidExtension</code> など直下 12 本、<code>DeltaRoot/</code> の 19 本（有界台の余極限、源の離散性、perfectoid 候補）、<code>DeltaDivisionBoundedSupportTor</code>、<code>TensorBaseChangeKernel</code>。代わりに降下の 3 本（<code>RootedKernel</code>・<code>RootedTensorBaseChange</code>・<code>RootedPerfectoidSurjectivityDescent</code>）と André 経由版が入る。</li>
+  <li>このほかに、もともとどこからも使われない B4 関連のファイル（BR8 の旧「p で割る」経路など）がある。これも含めて片付けると、調査の数え方で約 67 本・6,600 行になる。</li>
+  <li>Thm 7.14 の証明は RootedExtension/ の 109 本（割り算包の一般論、Koszul・Tor の計算、δ 代数の完全化）を使うので、これらは残る。外れるのは「任意の元の族に両立する根の列を同時に添加する」B4 固有の部分だけ。</li>
+</ul>
+<p><b>判断の材料.</b></p>
+<ul>
+  <li>差し替える利点：証明が原典と同じ形になり、Thm 7.4 の証明が一本になる。B4 固有の 33 本（と未使用の残り）を保守しなくてよい。</li>
+  <li>差し替えの損失：André を使わない Thm 7.4 の証明という独立した成果がなくなる（解説 <code>par:bs-thm74</code> の後半は「原典にない経路で証明した」と書いているので書き直しが要る）。B4 が Thm 7.14 の超限反復（ω₁ 反復、後続基数による飽和）に依存するようになり、証明の依存としては重くなる。</li>
+  <li>今後の形式化への影響（推測）：B4 固有の部分には「完全 prism 上の \(X^p-b\) の族の prismatic envelope の離散性と平坦性」（<code>PerfectPrismRootSourceDiscrete</code>、<code>PerfectPrismRootPrismCompletelyFlat</code> など）がある。これは semiperfectoid 環の prismatic コホモロジーの計算（Ex 7.9・Prop 7.10、A3）や Prop 3.13 の特殊形に近い。A3 の設計で使える見込みがあるなら、削除せずに残す価値がある。</li>
+  <li>中間の選択肢：B4 本体の証明だけ André 経由に差し替え、B4 固有の 33 本は削除せずに「別証明」として root の集約から外して残す（既定のビルドを軽くし、成果は監査で保つ）。</li>
+</ul>
+<p><b>決定（10-25）.</b> 証明は原典に揃え、役に立ちそうなコードは残す。B4 の公開定理は André 経由で証明し、これまでの証明は別名の定理 <code>surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope</code> として、その構成 32 本とともに <code>Semiperfectoid/RootEnvelope/</code>（直下・<code>Source/</code>・<code>BoundedSupport/</code>）へ移す（指示書 BS-W3）。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR10　André の一般化版（Variants）の重複</p>
+<p>Variants の最終定理 <code>exists_monicRootedPerfectoidExtension</code>（Andre/Variants/MonicRootedPerfectoidExtension:41）は、本証明の <code>Transfinite.exists_monicFamilyRootedPerfectoidExtension</code>（Andre/Transfinite/FamilyExtension:62）と仮定のまとめ方以外は同じ型（確認済み）。本証明は一元の根添加と飽和、Variants は有界台の余極限で一段に作る別経路。一元版 <code>exists_monicRootPerfectoidExtension</code>（Variants/FiniteMonicRootedExtension:94 と Transfinite/SingleRoot:50）、補助補題 <code>isCompletelyFaithfullyFlat_self</code>・<code>isCompletelyFaithfullyFlat_ringEquiv</code> も重複。Variants の Arbitrary 系列 14 本ほかは、本証明の系として 1 行で出るので削除できる。補助補題は CommutativeAlgebra/CompletelyFlat へ移す。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR11　行き先のない照合と旧経路（Rem 7.15、Variants）</p>
+<p>Rem 7.15 のうち最終 3 定理にも Thm 7.14 にも到達しないものが 28 本・3,421 行（Frobenius 引き戻しの PD 普遍性の別経路、<code>PerfectPrismVarpi*</code>・<code>PowerRootPrismMonic*</code> の一部、監査 4 本など）。Variants の <code>MonicRaw*</code> 10 本（約 1,500 行）は旧「補助 raw φ(f)/p 包」経路でどの定理にも至らない。Variants の集約 <code>Variants/MonicRootedExtension</code>（import だけ約 100 行）が、これらを root へ流し込む唯一の経路。集約を最終定理だけの import に縮め、残りを削除する。ただし削除の前に、<code>BoundedPrism*</code>・<code>PerfectPrismBoundedTarget*</code> が A0 の Lemma 3.7・4.8 の出発点として使えるか確かめる（第 4 章）。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR12　条件付き版と降下の重複系列</p>
+<p><code>AndreSurjectivityConditional</code>・<code>AndreCompatibleRootsConditional</code> はどこからも import されず、監査 <code>audit_bhatt_scholze_andre_conditional</code> だけが読む。docstring の「sorryAx に依存」は古い。BR9 で採るなら B4 の正規の入口に改名し、採らないなら削除する。<code>RootedKernelSurjectivity → RootedTensorBaseChangeSurjectivity → RootedPerfectoidSurjectivityDescent</code> は条件付き版からしか使われず、B4 本体は別の系列（<code>RootedPresentation → RootedFamilyPerfectoidSurjectivityDescent</code>）を使う。また <code>Semiperfectoid/PerfectoidizationSurjectivity</code>:13 と <code>Inputs/SemiperfectoidSurjectivity</code>:19 は、仮定（p ねじれなし）を外した <code>surjective_of_isPerfectoidization_of_adic_complete_quotient</code>（SemiperfectoidSurjectivity:51）が既にある旧い適用形で、監査からしか使われない。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR13　手で繰り返している証明の型</p>
+<p>(a)「商の導来 H⁰ → 高次の消滅 → IsGE/IsLE → single との同型」の 8〜11 宣言の骨格が 6 回（<code>DeltaRootSourceQuotientDerived</code>、<code>DeltaRootFamilySourceQuotientFlat</code>、<code>DeltaRootBoundedSupportQuotientFlat</code>、<code>MonicPrismaticQuotientDerived</code>、<code>ArbitraryMonicPrismaticQuotientDerived</code>、<code>PowerRootQuotientDerived</code>）。「L 線形同型を商写像の全射性で Q 線形に上げる」構造も同じ 6 ファイルで手書き。汎用補題 1 本で置き換えられる。(b)「perfectoid 環を完全 prism の商として表す」約 12 行が 6 か所（Semiperfectoid の 2 本、Transfinite/SingleRoot、Variants の 2 本、Prism/Perfectoid/PerfectPrismQuotientPerfectoidization）。「零環か、完全 prism P と R ≃ A/d がある」という補題 1 本にまとめる。(c) SourceDiscrete・PDCompletelyFlat・PerfectoidCompletelyFlat の三段が 4〜5 系列（B4、André 有限、Arbitrary、DeltaAlgebra、PowerRoot）で並行。パラメータ化した一系列にまとめる案は規模が大きく、調査が要る。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR14　ライブラリ内の監査ファイル</p>
+<p><code>Andre/Remark715/…/Audit.lean</code> など 4 本は <code>#print axioms</code> を並べた監査で、ライブラリの中にある（W2 の初回ビルドが一覧の旧名で止まったのもこれ）。<code>scripts/</code> へ移す。</p>
+</div>
+<p>BR7（根の関係とモニック関係の並行）の詳細：B4 の \(X^p-b\) は André のモニック関係の特殊形で、<code>deltaRootRelationFamily b s</code> と <code>monicRelation (X^p − C b) s</code> は命題として等しい（rfl ではない）。対応するファイルの組は 15 主題ほどある（perfectoid・prism・PD の完全忠実平坦性、源の離散性、商の導来 H⁰、剰余 Koszul など）。B4 の結論は互換根列 <code>σ → ℕ → T</code>、André は根一つ <code>σ → T</code> なので、そのままでは特殊化にならない。André 本体が DeltaRoot から使うのは \(b\) に依存しない汎用の 4 宣言だけで、これを Delta/Division 配下へ移せば Thm 7.14 が \(X^p-b\) 専用ファイルを引き込まなくなる（推移的な依存は未検証）。BR9 の判断で扱いが変わる。</p>
+<p>BR8（未使用 173 本）の詳細：Semiperfectoid の 88 本は、ほぼ全部が旧「p で割る（φ(r)/p）」経路（<code>DeltaPDivision*</code>、DeltaRoot の <code>Raw*</code>・<code>Perfection*</code> など）。173 本はどれも監査スクリプトだけが import していて、既定のビルドでは一度もコンパイルされない。</p>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>Cor 7.3（B3）は Prop 7.2 を経ずに、完全試験 prism への写像の始対象として作る。完全化の後では \(d\) が非零因子なので超限帰納が要らない。</li>
+  <li>Thm 7.4（B4）は W3 で原典どおり André 経由になる。André を使わない証明は別名で残る。</li>
+  <li>Thm 7.14 は反復の構造は原典どおりで、一段の拡大だけが別経路（Rem 7.15 の pd 計算）。原典に揃えるのは A1〜A3 の後（BR30）。</li>
+  <li>§7.2（Construction 7.6、Lemma 7.7、Ex 7.9、Prop 7.10）は未形式化で、E3 の Def 8.2 の土台（A2・A3）。RootEnvelope/ は Ex 7.9 の envelope の計算に近い。</li>
+</ol>
+</main>
+</body>
+</html>

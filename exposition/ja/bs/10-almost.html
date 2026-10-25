@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 第 10 章 almost purity</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 10 章</nav>
+<h1>第 10 章　almost purity（§10）</h1>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.78–83。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>、原典との差の評価は <a href="divergences.html">一覧</a>）。</p>
+<p>§10 は二つに分かれる。§10.1 は perfectoid 環 \(R\) と導来 p 完備なイデアル \(J\) について、\(J_{\mathrm{perfd}}=\ker(R\to(R/J)_{\mathrm{perfd}})\) に関する almost 数学を作る（Thm 7.4 で \(R\to(R/J)_{\mathrm{perfd}}\) が全射なので意味を持つ）。§10.2 は almost purity（Thm 10.9）と、その帰結の整代数の perfectoid 化の離散性（Thm 10.11 ＝ Thm 1.17(1)、E3 の <code>integral</code> 欄）。§10.1 は形式化済み（B5）、§10.2 は未形式化（A8）。</p>
+
+<h2>1. 任意のイデアルに関する almost 数学（§10.1）</h2>
+<p><b>Def 10.1.</b> 導来 p 完備な R 加群 M が J-almost zero ⇔ \(J_{\mathrm{perfd}}M=0\)。\(J=(p)\) なら \(J_{\mathrm{perfd}}=\sqrt{pR}\) で、通常の almost zero。</p>
+<p><b>Prop 10.2.</b> J-almost zero な導来 p 完備加群の部分圏は核・余核・拡大で閉じた ⊗ イデアルで、導来 p 完備な \((R/J)_{\mathrm{perfd}}\) 加群の圏と同値。<b>証明</b>：忘却関手が RHom を保つことを示せばよく、それは \(M\to M\widehat\otimes^L_R(R/J)_{\mathrm{perfd}}\) が同型であることに帰着し、\(M=(R/J)_{\mathrm{perfd}}\) の場合が Lemma 10.3。</p>
+<p><b>Lemma 10.3.</b> \(J_{\mathrm{perfd}}\widehat\otimes^LJ_{\mathrm{perfd}}\to J_{\mathrm{perfd}}\)、\((R/J)_{\mathrm{perfd}}\widehat\otimes^L(R/J)_{\mathrm{perfd}}\to(R/J)_{\mathrm{perfd}}\) は擬同型で、\(J_{\mathrm{perfd}}\widehat\otimes^L(R/J)_{\mathrm{perfd}}=0\)。<b>証明</b>：より一般に、perfectoid 環の図式 \(S\leftarrow R\to T\) について \(S\widehat\otimes^L_RT\) は次数 0 に集中し perfectoid。対応する完全 prism の \(B\widehat\otimes^L_AC\) は、mod p で完全環の Tor 独立性（[BS17, Lemma 3.16]）により離散な完全 δ 環で、その商が \(S\widehat\otimes^L_RT\)。</p>
+<p><b>Prop 10.4・Lemma 10.5.</b> 複体 M が J-almost zero ⇔ \(J_{\mathrm{perfd}}\widehat\otimes^LM=0\)。M が連結 ⇔ \(M\widehat\otimes^LR/J_{\mathrm{perfd}}\) が連結かつ M が J-almost 連結（Thm 10.11 の帰納法で使う）。<b>Rem 10.7.</b> \(J_{\mathrm{perfd}}\) の \(R/p^n\) での像は冪等なイデアル（almost の基本設定になる）。</p>
+<p><b>Lean での組み立て.</b> (1) 一般の主張「perfectoid 環の完備導来テンソルは離散で perfectoid」<code>lemma103_perfectoidTensor</code>（Almost/Lemma103PerfectoidTensor:46）。これは完全 δ 環の完備テンソルの離散性（Prism/Tensor）→ 表示による移送 → Fontaine 版 → perfectoid 版の鎖で、完全環の Tor 独立性は共通基盤の <code>CommutativeAlgebra/PerfectTorIndependence</code> の代数的な証明を使う。(2) そこから Lemma 10.3 の三つの主張（Almost/Lemma103KernelTensor）。(3) Prop 10.2 のうち必要な拡大閉性を、「J-almost zero ⇔ 完備テンソルが消える」という判定（<code>perfectoidIdeal_isAlmostZero_of_completedTensor_isZero</code>、PerfectoidAlmostExtension:103）を経て示す（<code>perfectoidIdeal_isAlmostZero_extension</code>、:127）。(4) Rem 10.7 の冪等性 <code>perfectoidIdealMod_idempotent</code>（PerfectoidIdealIdempotent:99）は、\(K=J_{\mathrm{perfd}}\) について \(K/K^2\) の導来完備化が零になることから。</p>
+<div class="box">
+<p class="label">原典との差</p>
+<p>Lemma 10.3 の Tor 独立性を、[BS17, Lemma 3.16] の単体的な証明ではなく、平坦な全射表示による代数的な証明で置き換える（外部文献が不要、<a href="divergences.html">D13</a>）。Prop 10.2 は圏同値・RHom の保存ではなく、使う拡大閉性だけを示す（D14）。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Def 10.1</td><td>J-almost zero</td><td class="ok">済</td><td><code>IsAlmostZero</code>（<a href="../../../SerrePositivity/BhattScholze/../CommutativeAlgebra/Almost/Zero.lean">CommutativeAlgebra/Almost/Zero:25</a>）</td></tr>
+<tr><td>Prop 10.2</td><td>almost zero の拡大閉性</td><td class="ok">済</td><td><code>perfectoidIdeal_isAlmostZero_extension</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/PerfectoidAlmostExtension.lean">PerfectoidAlmostExtension:127</a>）。圏同値は不要</td></tr>
+<tr><td>Lemma 10.3</td><td>\(J_{\mathrm{perfd}}\) と \((R/J)_{\mathrm{perfd}}\) の完備テンソル</td><td class="ok">済</td><td>一般形 <code>lemma103_perfectoidTensor</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/Lemma103PerfectoidTensor.lean">Lemma103PerfectoidTensor:46</a>）、三つの主張（<a href="../../../SerrePositivity/BhattScholze/Almost/Lemma103KernelTensor.lean">Almost/Lemma103KernelTensor</a>）</td></tr>
+<tr><td>Prop 10.4</td><td>複体の almost zero 判定</td><td class="part">一部</td><td>B5 で使う部分 <code>perfectoidIdeal_completedTensor_isZero_of_isAlmostZero</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/PerfectoidAlmostExtension.lean">PerfectoidAlmostExtension:78</a>）。A8 で要る範囲を決める</td></tr>
+<tr><td>Lemma 10.5</td><td>連結性の判定</td><td class="todo">未</td><td>A8</td></tr>
+<tr><td>Rem 10.7</td><td>\(J_{\mathrm{perfd}}\) の mod pⁿ の冪等性</td><td class="ok">済</td><td><code>perfectoidIdealMod_idempotent</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/PerfectoidIdealIdempotent.lean">PerfectoidIdealIdempotent:99</a>）</td></tr>
+</table></div>
+
+<h2>2. almost purity と整代数の離散性（§10.2）</h2>
+<p><b>Thm 10.9.</b> R perfectoid、J 有限生成、S を V(J) の外で有限エタールな有限表示有限 R 代数とすると、\(S_{\mathrm{perfd}}\) は離散で perfectoid、\(S\to S_{\mathrm{perfd}}\) は V(J) の外で同型、\(R/p^n\to S_{\mathrm{perfd}}/p^n\) は almost 有限射影・almost 不分岐。</p>
+<p><b>J-almost 版の証明.</b> (1) Cor 8.12 により、S を V(J) の外で同型な整 S 代数で置き換えても \(S_{\mathrm{perfd}}\) は J-almost に変わらない。(2) Galois の場合：André の補題（Thm 7.14）で R を絶対整閉としてよい。すると局所化上の有限エタール被覆は Zariski 局所的に分裂するので、J の生成元 \(f_i\) ごとに \(R[1/f_i]\) 上で分裂し、(1) で自明な torsor に置き換えられる。(3) 定次数の場合は \(\Sigma_r\) Galois 閉包（[And18b, Lemma 1.9.2]）と Prop 10.8（[And18b]）で Galois の場合に帰着。(4) 一般には次数一定の開閉分解 \(\bigsqcup U_i\) と Cor 8.12 で定次数に帰着。</p>
+<p><b>Thm 10.11</b>（E3 の <code>integral</code>）. R perfectoid、S を整写像の p 完備化とすると \(\Delta_{S/A,\mathrm{perf}}\) は離散で、\(S_{\mathrm{perfd}}\) は離散な perfectoid 環。<b>証明</b>：有向余極限で有限表示有限に帰着し、Cor 8.14 で \(S_{\mathrm{perfd}}\) の連結性を示せばよい。Lemma 10.12 の層別 \(g_1,\dots,g_n\) の長さ n に関する帰納法：n=1 なら \(S_{\mathrm{red}}\) は有限エタールで perfectoid、Cor 8.11 で \(S_{\mathrm{perfd}}=S_{\mathrm{red}}\)。n>1 なら帰納法の仮定と Prop 8.13 で \((S/g_1)_{\mathrm{perfd}}\) は連結、Lemma 10.5 で \(g_1\)-almost 連結性に帰着し、\(R[1/g_1]\to S_{\mathrm{red}}[1/g_1]\) が有限エタールであることと Cor 8.12・Thm 10.9（J-almost 版）で示す。<b>Lemma 10.12</b>：有限表示有限射は、構成可能な層別の上で（普遍同相を除いて）有限エタールになる。</p>
+<div class="box">
+<p class="label">E3 に要る範囲</p>
+<p>E3 の <code>integral</code> に要るのは Thm 10.11 で、そのために Thm 10.9 の J-almost 連結性の部分だけが要る（almost 有限射影性・不分岐性は不要）。BS-0 の案（A8）では、(3) の \(\Sigma_r\) Galois 閉包と [And18b] を使わず、CLMST の Prop 2.4.7 の形式化と同じく「絶対整閉な基底上で開被覆ごとに \(R^r\) と比べる」方法で連結性だけを示す。これは原典の (2) の議論を定次数に直接使うもので、原典の証明の簡略化になる見込み（A8 の設計で確かめる）。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Thm 10.9</td><td>almost purity</td><td class="todo">未</td><td>A8。J-almost 連結性の部分だけ</td></tr>
+<tr><td>Thm 10.11</td><td>整代数の \(S_{\mathrm{perfd}}\) は離散で perfectoid</td><td class="todo">未（界面）</td><td>E3 の <code>integral</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:39</a>）。環の帰結 <code>exists_perfectoidization_of_integral</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/IntegralExistence.lean">PerfectoidizationInterface/IntegralExistence:19</a>）、有限代数版 <code>exists_perfectoidization_of_finite</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization.lean">Perfectoidization:20</a>）は界面から証明済み</td></tr>
+<tr><td>Lemma 10.12</td><td>有限表示有限射の層別</td><td class="todo">未</td><td>A8</td></tr>
+</table></div><h2>リファクタの候補</h2>
+<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
+<div class="box refactor">
+<p class="label">BR24　almost の言葉で述べ直す</p>
+<p>Almost/ の supported quotient の系列（<code>PerfectoidizationSupportedQuotientKernel</code>:50,77,98、<code>…Linear</code>:30、<code>PerfectoidizationImageComparison</code>:30–55）は、「\(J_{\mathrm{perfd}}\) の全元が x を消す」を毎回手で書いている。共通側の <code>IsAlmostZero</code>・<code>IsAlmostIso</code>（CommutativeAlgebra/Almost/Zero:25、Morphism:34）で述べ直せる。CLMST 側の利用も変わるので規模は中。<code>lemma103_perfectoidTensor</code> の宣言 docstring は一般の perfectoid テンソルを「Lemma 10.3」と呼んでいるが、原典ではこれは Lemma 10.3 の証明中の主張（module docstring は正しい）。<code>Almost/PerfectoidAlmost</code>（17 行）は集約だけのファイル。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>§10.1（Def 10.1、Prop 10.2、Lemma 10.3、Rem 10.7）は形式化済み。Lemma 10.3 は一般の「perfectoid 環の完備テンソルは離散で perfectoid」から出し、Tor 独立性は代数的に示す。</li>
+  <li>§10.2 は未形式化。E3 に要るのは Thm 10.11 と、そのための Thm 10.9 の J-almost 連結性だけ。</li>
+  <li>Thm 10.11 の証明は Cor 8.11・8.12・8.14、Prop 8.13、Thm 7.14、Lemma 10.5・10.12 を使う。§8 の結果がそろうことが前提。</li>
+</ol>
+</main>
+</body>
+</html>

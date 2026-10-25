@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 項目一覧</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; }
+td.todo { color: var(--warn); font-weight: 600; }
+td.part { color: var(--accent); font-weight: 600; }
+td.no { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 項目一覧</nav>
+<h1>原典の項目一覧：必要性と形式化の状況</h1>
+<p class="meta">2026-10-25 作成。原典は著者版。必要性は E3 を消す原典の経路 A（A0〜A9、<a href="../../../formalization-plans/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）で判定した。Lean の所在はモジュール名（ファイル名）で、括弧内は BS-W2 後のディレクトリ。</p>
+
+<h2>凡例と集計</h2>
+<ul>
+  <li><b>済</b>：必要で、形式化済み（原典と同じか、それ以上の一般性）。</li>
+  <li><b>一部</b>：必要で、特殊形だけ形式化済み。残りが未形式化。</li>
+  <li><b>未</b>：必要で、未形式化。§8・§10 の「界面」は E3 の欄として引用しているもの。</li>
+  <li><b>不要</b>：E3 に不要。迂回済み（別経路で証明済みなので原典の形は不要）も含む。</li>
+</ul>
+<p>§1 は §2 以降の定義の要約、§9（étale 比較）と §11〜§18 は §8・§10 から参照されないので一覧に含めない（§2〜§8・§10 から §9・§11 以降への参照は、外部文献の節番号と de Rham 比較の一般形への言及だけ）。</p>
+<div class="box">
+<p class="label">方針（2026-10-25 決定）</p>
+<p>HT 比較は迂回せず、原論文の経路（Construction 7.6・Prop 7.10・Prop 8.5・Prop 8.13 が HT 比較を使う）に沿って形式化する。</p>
+</div>
+
+<h2>§2 δ 環</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Def 2.1</td><td>δ 環</td><td class="ok">済</td><td><code>DeltaRing</code>・<code>DeltaIdentities</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.2</td><td>Frobenius 持ち上げ</td><td class="ok">済</td><td><code>DeltaRing</code>・<code>DeltaFrobenius</code>・<code>DeltaFrobeniusNaturality</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.3</td><td>λ 環との関係</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 2.4</td><td>δ 構造 ＝ W₂ への切断</td><td class="ok">済</td><td>定義そのもの。<code>DeltaSectionNaturality</code>（Delta/Basic）</td></tr>
+<tr><td>Rem 2.5</td><td>導来 Frobenius 持ち上げ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Ex 2.6</td><td>始 δ 環 \(\mathbb Z_{(p)}\)</td><td class="no">不要</td><td>\(\mathbb Z_{(p)}\) 代数を仮定しない。δ(p) の計算は Ex 2.20</td></tr>
+<tr><td>Rem 2.7</td><td>極限・余極限、Witt</td><td class="part">一部</td><td>有向余極限 <code>DeltaDirectLimit</code>、完全かつ p 正則なテンソル（Prism/Tensor）、Witt への写像は ghost 単射時のみ。<b>一般のテンソル積（A0 の Čech 計算）が未</b></td></tr>
+<tr><td>Not 2.8</td><td>添加と消去</td><td class="ok">済</td><td><code>RelativeFreeDelta</code>（Delta/Free）、δ 閉包の商</td></tr>
+<tr><td>Lemma 2.9</td><td>商</td><td class="ok">済</td><td><code>DeltaQuotient</code>（Delta/Basic）</td></tr>
+<tr><td>Ex 2.10</td><td>δ 閉包での商</td><td class="ok">済</td><td><code>DeltaIdeal</code>・<code>DeltaClosureGeneration</code>（Delta/Basic）</td></tr>
+<tr><td>Lemma 2.11</td><td>自由 δ 環、Frobenius の忠実平坦性</td><td class="part">一部</td><td><code>FreeDeltaRing</code>・<code>FreeDeltaUniversal</code>（Delta/Free）。Frobenius は p 完全忠実平坦と mod p 平坦まで</td></tr>
+<tr><td>Cor 2.12</td><td>Frobenius は fpqc 局所全射</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 2.13・2.14</td><td>Joyal の δₙ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Lemma 2.15</td><td>局所化</td><td class="ok">済</td><td><code>DeltaLocalization</code>（Delta/Extension）</td></tr>
+<tr><td>Rem 2.16</td><td>p 局所化</td><td class="ok">済</td><td><code>DeltaLocalizationSaturation</code>（Delta/Extension）</td></tr>
+<tr><td>Lemma 2.17</td><td>I 進完備化</td><td class="ok">済</td><td><code>DeltaAdicCompletion</code>・<code>DeltaAdicEstimate</code>（Delta/Extension）</td></tr>
+<tr><td>Lemma 2.18</td><td>エタール射・導来完備化への延長</td><td class="part">一部</td><td>導来 (p,d) 完備化の H⁰ だけ <code>DeltaPDCompletion</code>（Delta/Extension）。エタール部分は Lemma 4.21 用で、多項式代数で済ませるなら不要</td></tr>
+<tr><td>Def 2.19</td><td>distinguished</td><td class="ok">済</td><td><code>DeltaRing</code></td></tr>
+<tr><td>Ex 2.20</td><td>distinguished 元の例</td><td class="ok">済</td><td>(1) のみ必要：<code>DeltaPrime</code>（Delta/Distinguished）</td></tr>
+<tr><td>Ex 2.21</td><td>普遍 distinguished δ 環</td><td class="todo">未</td><td>Ex 3.4 → Construction 6.1（A1）で使う。小さい</td></tr>
+<tr><td>Rem 2.22</td><td>distinguished 元を p へ</td><td class="no">不要</td><td></td></tr>
+<tr><td>Lemma 2.23〜2.25</td><td>単元倍、因子、p ∈ (d, φd)</td><td class="ok">済</td><td><code>Distinguished</code>（Delta/Distinguished）</td></tr>
+<tr><td>Def 2.26</td><td>完全 δ 環</td><td class="ok">済</td><td><code>DeltaRing</code></td></tr>
+<tr><td>Rem 2.27</td><td>完全化</td><td class="ok">済</td><td>余極限側 <code>DeltaPerfection</code>・<code>DeltaPerfectionUniversal</code>（Delta/Perfect）。逆極限側 \(\lim_\varphi\) は Lemma 4.8 の一般の標的（A3）で要る</td></tr>
+<tr><td>Lemma 2.28</td><td>p ねじれ</td><td class="ok">済</td><td><code>DeltaTorsion</code>（Delta/Perfect）</td></tr>
+<tr><td>Rem 2.29・2.30</td><td>注意</td><td class="no">不要</td><td></td></tr>
+<tr><td>Cor 2.31</td><td>完全 δ 環 ↔ 完全 F_p 代数</td><td class="ok">済</td><td><code>PerfectDeltaModP</code>・<code>WittDelta</code>・<code>PerfectDeltaWittRecovery</code>（Delta/Perfect）。対象ごと</td></tr>
+<tr><td>Lemma 2.32</td><td>完全な元は rank 1</td><td class="ok">済</td><td><code>DeltaRankOne</code>（Delta/Perfect）</td></tr>
+<tr><td>Lemma 2.33</td><td>Teichmüller 係数による判定</td><td class="ok">済</td><td>W(k) の形 <code>WittDistinguished</code>（Delta/Perfect）で足りる</td></tr>
+<tr><td>Lemma 2.34</td><td>d は非零因子、R[p]=R[p^∞]</td><td class="ok">済</td><td><code>DistinguishedRegular</code>・<code>DistinguishedTorsion</code> ほか（Delta/Perfect）</td></tr>
+<tr><td>Lemma 2.35</td><td>γ_p から全 γ_n</td><td class="ok">済</td><td><code>DeltaFactorialDivision</code>・<code>DeltaDividedPowers</code>（Delta/DividedPower）</td></tr>
+<tr><td>Lemma 2.36</td><td>A{φ(x)/p} ＝ pd 包</td><td class="part">一部</td><td>一変数 <code>RegularPrincipalDPUniversal</code> ほか（Delta/DividedPower）</td></tr>
+<tr><td>Rem 2.37</td><td>導来 pushout の離散性</td><td class="no">不要</td><td>離散版で進める前提（A0 の設計で確認）</td></tr>
+<tr><td>Lemma 2.38</td><td>正則列の pd 包</td><td class="todo">未</td><td>A0・A1。課題 T2-1</td></tr>
+<tr><td>Cor 2.39</td><td>A{φ(f)/p} ＝ D_I(A)</td><td class="part">一部</td><td>根・モニック族の特殊形（Semiperfectoid/RootedExtension、Andre）。一般形は課題 T2-2</td></tr>
+<tr><td>Rem 2.40・Warn 2.41</td><td>注意</td><td class="no">不要</td><td></td></tr>
+<tr><td>Def 2.42、Lemma 2.43、Cor 2.44</td><td>envelope の p 完全平坦性</td><td class="todo">未</td><td>Prop 3.13 の入力（A0）。課題 T2-3</td></tr>
+</table></div>
+
+<h2>§3 prism</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Lemma 3.1</td><td>δ-pair の条件</td><td class="ok">済</td><td><code>OrientedDeltaPair</code>（Prism/Basic）。主イデアルの場合</td></tr>
+<tr><td>Def 3.2</td><td>prism の圏</td><td class="part">一部</td><td>向き付き（主イデアルと生成元を選んだ）prism <code>OrientedPrism</code>・<code>OrientedPrismHom</code>（Prism/Basic）。一般の locally principal は未。A0 の site に向き付きで足りるかは設計で判断</td></tr>
+<tr><td>Ex 3.3</td><td>結晶 prism</td><td class="ok">済</td><td><code>CrystallineOrientedPrism</code>（Prism/Basic）</td></tr>
+<tr><td>Ex 3.4</td><td>普遍向き付き prism</td><td class="todo">未</td><td>Construction 6.1（A1）</td></tr>
+<tr><td>Lemma 3.5</td><td>剛性</td><td class="ok">済</td><td><code>OrientedPrismHomRigidity</code>・<code>OrientedPrismRegularRigidity</code>（Prism/Basic）</td></tr>
+<tr><td>Lemma 3.6</td><td>φ(I)A は主で生成元は distinguished</td><td class="todo">未</td><td>A0・A1（Construction 6.1 で使う）</td></tr>
+<tr><td>Lemma 3.7</td><td>有界 prism の性質</td><td class="part">一部</td><td>Rem 7.15 用の <code>BoundedPrism*</code>（Andre/Remark715）にあるが主経路にはない。A0 で要る</td></tr>
+<tr><td>Lemma 3.8</td><td>完全 prism の性質</td><td class="ok">済</td><td><code>PerfectOrientedPrism</code>（Prism/Basic）</td></tr>
+<tr><td>Lemma 3.9</td><td>prism の完全化</td><td class="ok">済</td><td><code>PCompletedDelta*</code>・<code>PerfectDeltaPDPrism</code> ほか（Prism/Perfection）</td></tr>
+<tr><td>Thm 3.10</td><td>perfectoid 環 ＝ 完全 prism</td><td class="ok">済</td><td><code>PerfectPrismQuotientPerfectoid</code>・<code>WittQuotientFontaineIso</code> ほか（Prism/Perfectoid）</td></tr>
+<tr><td>Rem 3.11</td><td>正則局所環の perfectoid 被覆</td><td class="no">不要</td><td></td></tr>
+<tr><td>Cor 3.12</td><td>全 prism の site</td><td class="no">不要</td><td>固定基底の affine な site で進める</td></tr>
+<tr><td>Prop 3.13</td><td>正則イデアルの prismatic envelope</td><td class="part">一部</td><td>向き付き・モニックの特殊形（Andre/Remark715）。一般形は A0</td></tr>
+<tr><td>Ex 3.14</td><td>Prop 3.13 の典型的な適用</td><td class="todo">未</td><td>A0 の Čech 計算の各項がこの形</td></tr>
+</table></div>
+
+<h2>§4 prismatic site と HT 比較の定式化</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
+<tr><td>Def 4.1</td><td>prismatic site</td><td class="todo">未</td><td>affine の場合だけ。Čech 模型で定義すれば site 自体は避けられる見込み（A0）</td></tr>
+<tr><td>Rem 4.2・4.3、Constr 4.4、Rem 4.5</td><td>位相の変種、topos、étale 層</td><td class="no">不要</td><td></td></tr>
+<tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>Lemma 8.4 で使う（A0・A4）</td></tr>
+<tr><td>Rem 4.7</td><td>絶対 prismatic site</td><td class="no">不要</td><td>Prop 7.2 用。迂回済み</td></tr>
+<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="part">一部</td><td>標的が完全 prism なら Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（Prism/Perfectoid）で足りる（Lemma 8.4・Prop 8.5 はこの場合）。一般の標的は A3（変形理論と逆極限の完全化）</td></tr>
+<tr><td>Constr 4.9、Lemma 4.10</td><td>HT 比較の写像</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Thm 4.11</td><td>HT 比較</td><td class="todo">未</td><td>A1（証明は §5・§6）</td></tr>
+<tr><td>Cor 4.12</td><td>底変換</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Rem 4.13・4.14、Prop 4.15</td><td>Higgs、持ち上げの障害、余接複体</td><td class="no">不要</td><td></td></tr>
+<tr><td>Not 4.16、Constr 4.17・4.18、Rem 4.19</td><td>弱始対象、Čech–Alexander 複体、affine 直線</td><td class="todo">未</td><td>A0 の中心</td></tr>
+<tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
+<tr><td>Lemma 4.21</td><td>étale 局所化</td><td class="no">不要</td><td>多項式代数からの左 Kan 延長で済ませる場合</td></tr>
+<tr><td>Lemma 4.22</td><td>完備底変換と totalization</td><td class="todo">未</td><td>A0・A5（Prop 8.5 でも使う）</td></tr>
+</table></div>
+
+<h2>§5・§6 HT 比較と結晶比較</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
+<tr><td>Not 5.1、Thm 5.2、Rem 5.3</td><td>標数 p の結晶比較</td><td class="todo">未</td><td>A1。\(A=\mathbb Z_p\)・I=(p)・多項式代数の場合だけで足りる（Prop 6.2 の帰着）。結晶コホモロジーは pd 包の Čech 複体として具体的に扱う</td></tr>
+<tr><td>Lemma 5.4</td><td>多項式代数の計算（Cartier 型）</td><td class="todo">未</td><td>A1</td></tr>
+<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ。Cartier 同型が要る</td></tr>
+<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1（Ex 2.21・Ex 3.4・Lemma 3.6 を使う）</td></tr>
+<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位</td></tr>
+<tr><td>Thm 6.3</td><td>HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ（Construction 7.6 は多項式代数からの左 Kan 延長）</td></tr>
+<tr><td>Thm 6.4</td><td>de Rham 比較</td><td class="no">不要</td><td></td></tr>
+</table></div>
+
+<h2>§7 semiperfectoid 環と perfection</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Not 7.1</td><td>semiperfectoid</td><td class="ok">済</td><td>perfectoid 環の商として扱う</td></tr>
+<tr><td>Prop 7.2</td><td>普遍 prism の存在</td><td class="no">不要</td><td>迂回済み：Cor 7.3 を完全試験 prism の始対象で直接構成</td></tr>
+<tr><td>Cor 7.3</td><td>S_perfd の存在（B3）</td><td class="ok">済</td><td><code>SemiperfectoidPerfectoidization</code>（Semiperfectoid）</td></tr>
+<tr><td>Thm 7.4</td><td>S → S_perfd は全射（B4）</td><td class="ok">済</td><td><code>SemiperfectoidSurjectivity</code>（Semiperfectoid）。André を使わない別経路</td></tr>
+<tr><td>Rem 7.5</td><td>Zariski 閉集合</td><td class="no">不要</td><td></td></tr>
+<tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2</td></tr>
+<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造</td><td class="todo">未</td><td>A3</td></tr>
+<tr><td>Ex 7.9、Prop 7.10</td><td>lci 商・qrsp の計算</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
+<tr><td>Prop 7.11、Ex 7.12・7.13</td><td>quasisyntomic 被覆の持ち上げ</td><td class="no">不要</td><td>André の原典の証明用。迂回済み</td></tr>
+<tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（Andre/Transfinite）。別経路</td></tr>
+<tr><td>Rem 7.15</td><td>André の補題の精密形</td><td class="no">不要</td><td>照合として形式化済み（Andre/Remark715、224 本）。主定理に不要</td></tr>
+</table></div>
+
+<h2>§8 一般の perfection</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>備考（E3 の欄）</th></tr>
+<tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
+<tr><td>Def 8.2</td><td>perfectoid 化 S_perfd</td><td class="todo">未（界面）</td><td>perfd・unit・h0（A4）</td></tr>
+<tr><td>Ex 8.3</td><td>標数 p の場合</td><td class="no">不要</td><td></td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td>coconnective（A4、Lur11 の切片）</td></tr>
+<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td>limitCone・limit_isLimit（A5）</td></tr>
+<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 の切片）</td></tr>
+<tr><td>Def 8.7、Lemma 8.8</td><td>arc 位相、perfectoid による被覆</td><td class="todo">未</td><td>A6</td></tr>
+<tr><td>Rem 8.9</td><td>より簡単な基底</td><td class="no">不要</td><td></td></tr>
+<tr><td>Prop 8.10、Cor 8.11</td><td>arc 層性</td><td class="todo">未</td><td>A6（BM18・BS17 の切片）</td></tr>
+<tr><td>Cor 8.12</td><td>excision</td><td class="todo">未（界面）</td><td>excision（A6）。環の帰結は界面から証明済み <code>PerfectoidizationExcision</code></td></tr>
+<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版は済 <code>PerfectoidizationCompletedTensorCompatibility</code>（Perfectoidization）。導来版が A7</td></tr>
+<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td>universal（A7）</td></tr>
+</table></div>
+
+<h2>§10 almost purity</h2>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
+<tr><td>Def 10.1</td><td>J-almost zero</td><td class="ok">済</td><td><code>PerfectoidAlmost</code>（Almost）</td></tr>
+<tr><td>Prop 10.2</td><td>almost zero の拡大閉性</td><td class="ok">済</td><td><code>perfectoidIdeal_isAlmostZero_extension</code>（Almost）。圏同値全体は不要</td></tr>
+<tr><td>Lemma 10.3</td><td>J_perfd の冪等性</td><td class="ok">済</td><td><code>lemma103_perfectoidTensor</code>（Almost）</td></tr>
+<tr><td>Prop 10.4</td><td>非有界複体の almost zero</td><td class="part">一部</td><td>B5 で使う部分のみ <code>PerfectoidAlmostExtension</code>（Almost）。A8 で要る範囲を決める</td></tr>
+<tr><td>Lemma 10.5</td><td>連結性の判定</td><td class="todo">未</td><td>A8</td></tr>
+<tr><td>Def 10.6、Prop 10.8</td><td>almost Galois、And18b</td><td class="no">不要</td><td>A8 を四文献で進める場合</td></tr>
+<tr><td>Rem 10.7</td><td>mod pⁿ の冪等性</td><td class="ok">済</td><td><code>PerfectoidIdealIdempotent</code>（Almost）</td></tr>
+<tr><td>Thm 10.9</td><td>almost purity</td><td class="todo">未</td><td>almost-connective の部分だけ（A8）。有限射影性の部分は不要</td></tr>
+<tr><td>Rem 10.10</td><td>注意</td><td class="no">不要</td><td></td></tr>
+<tr><td>Thm 10.11</td><td>整代数の perfectoid 化は離散で perfectoid</td><td class="todo">未（界面）</td><td>integral（A8）。有限代数の環版は界面から証明済み</td></tr>
+<tr><td>Lemma 10.12</td><td>有限表示有限射の層別</td><td class="todo">未</td><td>A8</td></tr>
+<tr><td>Rem 10.13</td><td>可換環論への応用</td><td class="no">不要</td><td></td></tr>
+</table></div>
+
+<h2>この一覧で押さえること</h2>
+<ol class="checks">
+  <li>§2・§3 の基礎（δ 環、distinguished、完全 δ 環、Thm 3.10）と、§7・§10 の環の結果（Cor 7.3、Thm 7.4、Thm 7.14、Lemma 10.3、Rem 10.7）は形式化済み。</li>
+  <li>未形式化で必要なものの中心は、§4.3 の Čech–Alexander 複体、§5・§6 の HT 比較と結晶比較、Construction 7.6、§8 のほぼ全部、§10 の Lemma 10.5・Thm 10.9・10.11・Lemma 10.12。</li>
+  <li>§2・§3 の未形式化で必要なものは、一般のテンソル積、pd 包と envelope の平坦性（2.38・2.39・2.42〜2.44）、Ex 2.21・3.4・3.14、Lemma 3.6・3.7、Prop 3.13 の一般形。</li>
+  <li>§9 と §11〜§18 は不要。§4〜§6 の HT 比較は原論文どおり形式化する（迂回しない）。</li>
+</ol>
+</main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 第 4 章 prismatic site</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
+<h1>第 4 章　prismatic site と HT 比較の定式化（§4）</h1>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.36–45。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p>固定した有界 prism \((A,I)\) と p 完全 smooth な \(A/I\) 代数 \(R\) について、prismatic site \((R/A)_\Delta\) とその構造層のコホモロジー \(\Delta_{R/A}\) を定義し（§4.1）、HT 比較を定式化し（§4.2）、Čech–Alexander 複体で \(\Delta_{R/A}\) を具体的に計算する（§4.3）。この章の内容は全て未形式化で、A0 の範囲。</p><div class="box">
+<p class="label">方針（2026-10-25 決定）</p>
+<p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
+</div>
+<h2>1. prismatic site（§4.1）</h2>
+<p><b>Def 4.1.</b> \((X/A)_\Delta\)：有界 prism の射 \((A,I)\to(B,IB)\) と \(\mathrm{Spf}(B/IB)\to X\) の組の圏。被覆は忠実平坦な prism の射。構造層 \(\mathcal O_\Delta(B)=B\)、\(\overline{\mathcal O}_\Delta(B)=B/IB\)。Cor 3.12 で site で、\(\mathcal O_\Delta\) は層。<b>Rem 4.3・4.5</b>：位相（flat・étale・Zariski）によらず同じコホモロジー。<b>Rem 4.6</b>：完全 prismatic site は perfectoid 環への写像の圏と同じ（§8 で使う）。<b>Lemma 4.8</b>：完全 prism \((A,I)\) と任意の prism \((B,J)\) について、環準同型 \(A/I\to B/J\) は prism の射に一意に持ち上がる。<b>証明</b>：\(A=W(\text{完全})\) は p 完全に \(L_{A/\mathbb Z_p}=0\) なので変形理論で \(A\to B\) に一意に持ち上がる。δ 射であることは、\(A\to B\) が逆極限の完全化 \(B^{\mathrm{perf}}=\lim_\varphi B\)（p ねじれなしの完全 δ 環）を経由することから。</p>
+<div class="box">
+<p class="label">A0 で要る範囲</p>
+<p>E3 で使うのは affine な R、特に多項式代数だけ。\(\Delta_{R/A}\) は §4.3 の Čech–Alexander 複体で定義でき、site・topos・étale 層との関係（Construction 4.4、Rem 4.3・4.5）は形式化しなくてよい見込み。ただし Lemma 7.7(3)・Prop 8.5 は「\(\Delta_{R/A}=\lim_{C\in(R/A)_\Delta}C\)」（圏上の極限としての記述）を使うので、「弱始対象の Čech 脈体の totalization が圏上の極限を計算する」という一般的な事実（脚注 10）は要る。Lemma 4.8 は、標的が完全 prism なら Thm 3.10 の射の一意持ち上げ（<code>existsUnique_perfectPrismHomLift</code>）で足りる。一般の標的（Prop 7.10 で使う）には変形理論（\(W\)(完全) の p 完全な形式エタール性）と逆極限の完全化が要る（A3）。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Def 4.1</td><td>prismatic site と構造層</td><td class="todo">未</td><td>A0。affine の場合だけ。Čech–Alexander 複体を定義に使い、圏上の極限との一致を示す</td></tr>
+<tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>A0・A4（Lemma 8.4・Prop 8.5）</td></tr>
+<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="part">一部</td><td>標的が完全 prism の場合は Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismHomLift.lean">PerfectPrismHomLift:19</a>）。Rem 7.15 用の特殊形（<code>PerfectPrismBoundedTarget*</code>、Andre/Remark715）。一般の標的は A3</td></tr>
+</table></div>
+
+<h2>2. HT 比較の定式化（§4.2）</h2>
+<p><b>Construction 4.9.</b> \(\overline\Delta_{X/A}=\Delta_{X/A}\otimes^L_AA/I\)。三角形 \(\overline\Delta\{i+1\}\to\Delta\otimes^LI^i/I^{i+2}\to\overline\Delta\{i\}\) の Bockstein \(\beta_I\) で \(H^*(\overline\Delta_{X/A})\{*\}\) は可換 dg 代数になる。\(\eta^0:\mathcal O_X\to H^0\) と \(\eta^1:\Omega^1\to H^1\{1\}\)（\(f\,dg\mapsto f\beta_I(g)\)）から、<b>Lemma 4.10</b>（\(\beta_I(f)^2=0\)、p=2 でだけ非自明、Prop 6.2 から出る）を使って de Rham 複体からの写像 \(\eta^*:\Omega^*_{X/(A/I)}\to H^*(\overline\Delta_{X/A})\{*\}\) に延ばす。向き付きなら捻り \(\{i\}\) は外せる。</p>
+<p><b>Thm 4.11</b>（HT 比較）. \(\eta^*\) は dg 代数の同型。特に \(H^i(\overline\Delta_{X/A})\cong\Omega^i\{-i\}\)。証明は第 5 章（§5・§6）。<b>Cor 4.12</b>：\(\Delta_{X/A}\) の形成は有界 prism の任意の底変換と可換（導来 Nakayama で mod I に帰着し、微分形式の底変換から）。</p>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Constr 4.9、Lemma 4.10</td><td>HT 比較の写像、\(\beta_I(f)^2=0\)</td><td class="todo">未</td><td>A1。多項式代数の場合だけ</td></tr>
+<tr><td>Thm 4.11</td><td>HT 比較</td><td class="todo">未</td><td>A1（証明は第 5 章）</td></tr>
+<tr><td>Cor 4.12</td><td>底変換</td><td class="todo">未</td><td>A1（Construction 7.6 の底変換の性質に使う）</td></tr>
+</table></div>
+
+<h2>3. Čech–Alexander 複体（§4.3）— A0 の中心</h2>
+<p><b>Construction 4.17</b>（弱始対象）. \(B_0\to R\) を A 上の p 完備多項式代数からの全射、\(B=\mathrm{Free}_{\delta,A}(B_0)^\wedge\)（自由 δ-A 代数の完備化）、\(J_0=\ker(B_0\to R)\)。\((B,\ker(B\to(B/J_0B)^\wedge))\) に Prop 3.13 を当てた envelope \(C=B\{J_0B/I\}^\wedge\) が \((R/A)_\Delta\) の弱始対象。<b>証明</b>：任意の対象 D について、\(B_0\to D\) を R→D/ID の持ち上げとして選び（多項式なので選べる）、δ 構造で \(B\to D\) に一意に延ばし、envelope の普遍性で \(C\to D\)。構成は \(B_0\) のテンソル積を \((R/A)_\Delta\) の余積に送る。</p>
+<p><b>Construction 4.18</b>（Čech–Alexander 複体）. \(A\to B_0\) の（完備化した）Čech 脈体 \(B_0^\bullet\) に 4.17 を当てると、\(C^0\) の Čech 脈体 \(C^\bullet\) ができ、\(C^\bullet\) が \(\Delta_{R/A}\)、\(C^\bullet/IC^\bullet\) が \(\overline\Delta_{R/A}\) を計算する（弱始対象の Čech 脈体と層の高次コホモロジーの消滅、脚注 10）。<b>Rem 4.19</b>：\(R=A/I\langle X\rangle\) なら \(B_0=A\langle X\rangle\) と取れ、\(C^\bullet\) は prism の底変換と可換。</p>
+<p><b>Lemma 4.20</b>（底変換）. \(A\to A'\) が有限 \((p,I)\) 完全 Tor 振幅なら \(\Delta_{R/A}\widehat\otimes^L_AA'\cong\Delta_{R'/A'}\)（Čech–Alexander 複体の項ごとの底変換と Lemma 4.22）。<b>Lemma 4.22</b>：有限 J 完全 Tor 振幅の写像に沿う J 完備底変換は、\(D^{\ge0}\) の totalization と可換（n 骨格で示し、Koszul 複体で振幅を評価して極限を取る）。<b>Lemma 4.21</b>（étale 局所化）は多項式代数で済ませるなら不要。</p>
+<div class="box">
+<p class="label">A0 の設計で決めること（読んで分かったこと）</p>
+<ul>
+  <li><b>向き付きで足りるか</b>：Construction 4.17 の対象 C・D は、固定した向き付き基底 \((A,(d))\) 上では剛性（Lemma 3.5）により \(IC=dC\) で単項。向き付き prism のまま進められる。</li>
+  <li><b>離散版で足りるか</b>：多項式代数の \(J_0\) は正則列で生成されるので、Prop 3.13 の envelope は離散で平坦（Cor 2.44 の離散版、T2-3）。Čech 脈体の各項も同じ形なので、単体的環は要らない見込み。</li>
+  <li><b>要る部品</b>：自由 δ-A 代数の完備化（既存の相対自由 δ 環 + Lemma 2.17）、δ 環の完備テンソル積（T2-0、Čech 脈体と余積）、Prop 3.13 の一般形（T3-4）、Lemma 4.22（導来完備化と Koszul 複体の一般論、共通基盤の DerivedCompletion にある部品を確認）、弱始対象の Čech 脈体が圏上の極限を計算するという一般論（∞ 圏側の極限か、具体的な cosimplicial の計算か）。</li>
+  <li><b>最初の単位</b>：\(R=A/d\langle X\rangle\)、\(B_0=A\langle X\rangle\)（Rem 4.19）。\(C^n\) は \(A\langle X_0,\dots,X_n\rangle\) の δ 完備化に \((X_i-X_j)/d\) を添加した envelope で、具体的に書ける。</li>
+</ul>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Not 4.16、Constr 4.17</td><td>弱始対象（多項式代数の envelope）</td><td class="todo">未</td><td>A0。入力は Prop 3.13（T3-4）、T2-0</td></tr>
+<tr><td>Constr 4.18</td><td>Čech–Alexander 複体</td><td class="todo">未</td><td>A0</td></tr>
+<tr><td>Rem 4.19</td><td>affine 直線の底変換と両立する複体</td><td class="todo">未</td><td>A0。最初の実装単位</td></tr>
+<tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
+<tr><td>Lemma 4.22</td><td>有限 Tor 振幅の完備底変換と totalization</td><td class="todo">未</td><td>A0・A5</td></tr>
+</table></div><h2>リファクタの候補</h2>
+<p>§4 に対応するコードはまだないので、この章自体の候補はない。ただし Rem 7.15 の照合用に作った <code>Andre/Remark715/BoundedPrism*</code>（有界 prism の完備性・剛性・入力圏）と <code>PerfectPrismBoundedTarget*</code>（完全 prism の標的への持ち上げ）は、A0 で要る Lemma 3.7・Lemma 4.8 の一般形の出発点になり得る。第 7 章の BR11 で Rem 7.15 の行き先のないファイルを削除する前に、これらを Prism/ へ切り出せるかを確かめる。</p>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>E3 に要るのは多項式代数の \(\Delta_{R/A}\) で、Čech–Alexander 複体（Construction 4.17・4.18）で具体的に定義・計算できる。site と topos の一般論は避けられる見込み。</li>
+  <li>固定した向き付き基底の上では envelope も単項のままなので、向き付き prism で進められる。正則列なので離散版で足りる見込み。</li>
+  <li>部品：自由 δ 代数の完備化、δ 環の完備テンソル積（T2-0）、Prop 3.13（T3-4）、Lemma 4.22、弱始対象の Čech 脈体と極限の一般論。最初の単位は affine 直線（Rem 4.19）。</li>
+</ol>
+</main>
+</body>
+</html>

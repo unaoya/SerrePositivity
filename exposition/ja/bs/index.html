@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhatt–Scholze 勉強ノート</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<h1>Bhatt–Scholze 勉強ノート</h1>
+<p class="meta">自分用の読解ノート。Bhatt–Scholze『Prisms and prismatic cohomology』（著者版 <a href="../../../paper/refs/BS-prisms-author.pdf">paper/refs/BS-prisms-author.pdf</a>、番号はすべて著者版）を、主定理が使う範囲に絞って最初から読み、<code>SerrePositivity/BhattScholze/</code> の形式化と照らし合わせる。</p>
+
+<h2>目標：E3 の文献入力を消す</h2>
+<p>主定理 <code>SerrePositivity.main_statement</code> が BS 側で使う未証明の入力は一つだけである。</p>
+<ul>
+  <li><code>BhattScholze.Inputs.exists_perfectoidizationInterfaceE3</code>（<a href="../../../SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean">Inputs/PerfectoidizationInterface.lean</a>）：perfectoid 環 \(R\) 上で、導来 perfectoid 化 \(S\mapsto S_{\mathrm{perfd}}\) の性質を束ねた構造 <code>PerfectoidizationInterfaceE3 R p hR</code> が存在する。</li>
+  <li>2026-10-25 に E2 レーンが同じ界面を \(E_\infty\) 代数の ∞ 圏 \(\mathrm{CAlg}_R\) で述べ直した（<code>EInfinity.Perfectoidization.PerfectoidizationInterfaceCAlg</code>、そこから <code>toE3</code>）。原典の \(S_{\mathrm{perfd}}\)（Def 8.2）は \(p\) 完備 \(E_\infty\)-\(S\) 代数なので、こちらを構成するのが原典に近い。</li>
+</ul>
+<p>このノートは三つのことを同時に進めるための土台である：(1) 原典を必要な範囲で数学として理解する、(2) 既存コードを読んでリファクタの候補を記録する、(3) 残りの形式化を Codex に渡せる作業項目に分ける。Lean のコードは Codex が書き、このノートは指示書と検収の根拠になる。</p>
+
+<h2>章</h2>
+<p>章の番号は原典の節の番号に合わせる。E3 に必要な項目だけを載せ、形式化済みのものには Lean の所在を付ける。§1 は §2 以降の定義の要約、§9 と §11〜§18 は不要なので章を立てない。</p>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>内容</th><th>原典</th><th>状態</th></tr>
+<tr><td><a href="00-map.html">0</a></td><td>全体地図：E3 とは何か、主定理までの経路、到達点、A0〜A9、コードの所在、リファクタ候補</td><td>全体</td><td>草稿</td></tr>
+<tr><td><a href="02-delta.html">2</a></td><td>δ 環：定義と W₂ 切断、延長、distinguished 元、完全 δ 環、pd 包と envelope の平坦性</td><td>§2</td><td>精読済み</td></tr>
+<tr><td><a href="03-prism.html">3</a></td><td>prism と完全 prism：剛性、完全化、Thm 3.10、prismatic envelope（証明と Lean の組み立てまで）</td><td>§3</td><td>精読済み</td></tr>
+<tr><td><a href="04-site.html">4</a></td><td>prismatic site、HT 比較の定式化、Čech–Alexander 複体（A0）</td><td>§4</td><td>精読済み</td></tr>
+<tr><td><a href="05-hodge-tate.html">5</a></td><td>HT 比較と結晶比較（A1）</td><td>§5・§6</td><td>精読済み</td></tr>
+<tr><td><a href="07-semiperfectoid.html">7</a></td><td>semiperfectoid 環の perfectoid 化（Cor 7.3、Thm 7.4）、導来 prismatic コホモロジー（Construction 7.6）、André の補題（Thm 7.14）</td><td>§7</td><td>精読済み</td></tr>
+<tr><td><a href="08-perfection.html">8</a></td><td>一般の perfection：Def 8.2〜Cor 8.14（E3 の欄の大部分）</td><td>§8</td><td>精読済み</td></tr>
+<tr><td><a href="10-almost.html">10</a></td><td>almost 数学と almost purity：Lemma 10.3、Thm 10.9、Thm 10.11</td><td>§10</td><td>精読済み</td></tr>
+</table></div>
+
+<h2>一覧</h2>
+<ul>
+  <li><a href="divergences.html">原典との差の評価</a>：原典と経路が違う箇所（D1〜D15）ごとに、それぞれの証明の利点・欠点と方針</li>
+  <li><a href="inventory.html">原典の項目一覧</a>：§2〜§8・§10 の全項目を「必要で形式化済み／一部／未形式化／不要」に分け、Lean の所在を付けたもの</li>
+</ul>
+
+<h2>読書ルート</h2>
+<ul>
+  <li><b>E3 の欄から逆にたどる</b>：第 0 章 §1 の表 → 第 8 章（Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14）→ 第 10 章（Thm 10.11）。何を作れば入力が消えるかを先に把握する。</li>
+  <li><b>原典の順に積み上げる</b>：第 2 章 → 第 3 章 → 第 4 章 → 第 5 章 → 第 7 章 → 第 8 章 → 第 10 章。A0〜A9 の実装順と同じ。</li>
+</ul>
+
+<h2>リファクタ記録</h2>
+<p>候補は各章の赤い囲みに BR 番号（∞ 圏ノートの R 番号と区別する）で記録し、ここに一覧する。実施は作業指示書を経由して Codex が行う。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>内容</th><th>章</th><th>状態</th></tr>
+<tr><td>BR1</td><td>トップレベル 618 ファイルの平置き：主題別のサブディレクトリへの分割</td><td><a href="00-map.html">0</a></td><td>W1（主題別）と W2（原典の節ごと）で実施中</td></tr>
+<tr><td>BR2</td><td>Q10：普遍性の手書き展開 3 箇所を既存の <code>IsPerfectoidization.precomp_ringEquiv</code> に置換</td><td><a href="00-map.html">0</a></td><td>W1 で実施（Codex、コミット待ち）</td></tr>
+<tr><td>BR3</td><td>リファクタ監査 838 行の型不一致（10-24 から失敗中）</td><td><a href="00-map.html">0</a></td><td>済（9095aff46）</td></tr>
+<tr><td>BR4</td><td>自由 δ 環の二重構成（\(\mathbb Z\) 版と相対版）</td><td><a href="02-delta.html">2</a></td><td>候補（規模を測る）</td></tr>
+<tr><td>BR5</td><td>Frobenius が δ 射であることの二つの版</td><td><a href="02-delta.html">2</a></td><td>W2 の候補</td></tr>
+<tr><td>BR6</td><td>pd 包の同型の三角形と分冪構造の三重構成</td><td><a href="02-delta.html">2</a></td><td>T2-1・T2-2 と同時に</td></tr>
+<tr><td>BR7</td><td>根の関係とモニック関係の平行するファイル群</td><td><a href="02-delta.html">2</a></td><td>第 7 章で評価</td></tr>
+<tr><td>BR8</td><td>どこからも使われないモジュール 173 本（削除候補）</td><td><a href="00-map.html">0</a></td><td>W2 後に一覧を作り判断</td></tr>
+<tr><td>BR9</td><td>B4 を Thm 7.14 の系にする（原典に揃え、旧証明は RootEnvelope/ に残す）</td><td><a href="07-semiperfectoid.html">7</a></td><td>決定（10-25）、W3 で実施中</td></tr>
+<tr><td>BR10</td><td>André の一般化版（Variants）の重複</td><td><a href="07-semiperfectoid.html">7</a></td><td>候補</td></tr>
+<tr><td>BR11</td><td>行き先のない照合と旧経路（Rem 7.15 の 28 本、Variants の MonicRaw 10 本）</td><td><a href="07-semiperfectoid.html">7</a></td><td>候補</td></tr>
+<tr><td>BR12</td><td>条件付き版と降下の重複系列、旧い適用形</td><td><a href="07-semiperfectoid.html">7</a></td><td>候補</td></tr>
+<tr><td>BR13</td><td>手で繰り返している証明の型（商の導来 H⁰、perfectoid 環の prism 表示、三段の並行）</td><td><a href="07-semiperfectoid.html">7</a></td><td>候補</td></tr>
+<tr><td>BR14</td><td>ライブラリ内の監査ファイル 4 本</td><td><a href="07-semiperfectoid.html">7</a></td><td>候補</td></tr>
+<tr><td>BR15</td><td>Lemma 3.9 の二系統と使われない除算の枝（約 1,050 行）</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR16</td><td>Witt 商の Fontaine 比較の正則版の枝（約 300 行）</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR17</td><td>Lemma 3.5 まわりの並存と小さな繰り返し</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR18</td><td>使われない完全 prism のテンソルの枝、標数 p の特殊化</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR19</td><td>原典番号（Lemma 3.8）と置き場所の誤り</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR20</td><td>有限直積の perfectoid 性が E3 に依存</td><td><a href="08-perfection.html">8</a></td><td>優先</td></tr>
+<tr><td>BR21</td><td>IsPerfectoidization の API 追加と手書きの展開の置換</td><td><a href="08-perfection.html">8</a></td><td>候補</td></tr>
+<tr><td>BR22</td><td>底変換・三角図式の共通化、二つのテンソルのモデル</td><td><a href="08-perfection.html">8</a></td><td>調査</td></tr>
+<tr><td>BR23</td><td>Prop 8.13 環版の公開、可換環論の事実の移動</td><td><a href="08-perfection.html">8</a></td><td>候補</td></tr>
+<tr><td>BR24</td><td>almost の言葉で述べ直す</td><td><a href="10-almost.html">10</a></td><td>候補</td></tr>
+<tr><td>BR25</td><td>docstring の工程ラベルと書式（全章）</td><td><a href="00-map.html">0</a></td><td>候補</td></tr>
+<tr><td>BR26</td><td>共通基盤が BS を import している（層の逆転）</td><td><a href="00-map.html">0</a></td><td>候補</td></tr>
+<tr><td>BR27</td><td>剛性と distinguished 性の p 正則の仮定は外せる（既存の Jacobson 補題で）</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR28</td><td>Lemma 3.9 を原典の形（prism の完全化）で述べ、環の普遍性を Prism/ へ移す</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR29</td><td>Thm 3.10 を一つの定理としてまとめる</td><td><a href="03-prism.html">3</a></td><td>候補</td></tr>
+<tr><td>BR30</td><td>Thm 7.14 の一段の拡大を原典の経路（Prop 7.11）に揃えるか</td><td><a href="07-semiperfectoid.html">7</a></td><td>A3 の後に判断</td></tr>
+<tr><td>BR31</td><td>Prop 8.13 の環版を導来版の系に置き換える</td><td><a href="08-perfection.html">8</a></td><td>A7 の後</td></tr>
+</table></div>
+
+<h2>各章の書き方</h2>
+<ul>
+  <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
+  <li>数学の定義・定理を述べ、対応する Lean の宣言名（<code>&lt;code&gt;</code>）とファイル（<code>../../../SerrePositivity/...</code> への相対リンク）を添える。証明は方針・鍵になる補題・Lean での組み立て方まで追う。</li>
+  <li>原典との差（経路・規約・一般性）は独立した囲みにする。</li>
+  <li>リファクタ候補は赤い囲みにし、番号（BR1、BR2、…）を全章で通す。</li>
+  <li>BS 固有の節として「形式化の状況」（証明済み／界面で引用／未着手を宣言名付きで）と「形式化の課題」（Codex へ渡せる粒度の作業項目）を置く。</li>
+  <li>末尾に「この章で押さえること」を置く。</li>
+</ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 原典との差の評価</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 原典との差の評価</nav>
+<h1>原典との差：それぞれの証明の利点と欠点</h1>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。各項目の詳しい説明は該当する章の「原典との差」の囲みにある。</p>
+<p>2026-10-25。第 2・3・7・8・10 章で見た「原典との差」を一か所に集め、それぞれの証明の利点と欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっている場合はそれを保ち、原典の方が簡単な場合は原典に揃える。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
+<tr><td>D1</td><td>Def 2.1・Rem 2.4</td><td>δ 構造を Def 2.1 の写像ではなく W₂ への切断（Rem 2.4）として定義</td><td>Def 2.1 の恒等式が環準同型であることから自動的に出る。δ 射も W₂ 図式の可換性で扱える</td><td>δ の公式を使うたびに W₂ の座標を経由する。恒等式から作るには <code>ofFunction</code> が要る</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
+<tr><td>D2</td><td>§2 全般</td><td>\(\mathbb Z_{(p)}\) 代数を仮定しない（零環も含む）</td><td>一般性。perfectoid 環などをそのまま扱える</td><td>Ex 2.6（δ(p) 単元）に頼る議論を書き換える必要がある（Lemma 2.28 など）</td><td>同程度</td><td>Lean を保つ</td></tr>
+<tr><td>D3</td><td>Lemma 2.25（逆向き）</td><td>局所化・完備化の代わりに、極大イデアルでの計算で \(\delta(d)\) の単元性を出す</td><td>局所化・完備化の道具を使わずに済み、証明が短い</td><td>—</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
+<tr><td>D4</td><td>Lemma 2.28</td><td>\(\delta(p)\) の単元性の代わりに \(\delta(p)-1\in(p)\) で消去</td><td>p 局所性を仮定しない</td><td>—</td><td>同程度</td><td>Lean を保つ</td></tr>
+<tr><td>D5</td><td>Def 3.2、Lemma 3.1・3.7(4)</td><td>向き付き prism（単項イデアルと生成元をデータに持つ）に限る</td><td>locally principal なイデアルと ind-Zariski 局所化（Lemma 3.1(3)、3.7(4)）が不要。E3 に要る prism はすべて単項</td><td>一般の prism と、有界 prism 全体の site（Cor 3.12）は述べられない</td><td>Lean の方が大幅に簡単</td><td>Lean を保つ。A0 で向き付きのまま足りるかを確認（固定した完全基底上では剛性により単項のまま）</td></tr>
+<tr><td>D6</td><td>Lemma 3.5</td><td>剛性・生成元の distinguished 性に p 正則を仮定</td><td>—</td><td>余計な仮定。完全版・p 正則版の二重化（BR17）</td><td><b>原典の方が簡単</b></td><td>原典に揃える（BR27：既存の Jacobson 補題で仮定を外す）</td></tr>
+<tr><td>D7</td><td>Lemma 3.9</td><td>「完全 δ 環と distinguished 元」から完全 prism を作る形に分解</td><td>prism でない入力にも使え、再利用しやすい</td><td>原典の形（prism の完全化が普遍）の定理がない。環の普遍性が B4 の構成の中にある</td><td>同程度</td><td>両方：部品は保ち、原典の形の定理を追加（BR28）</td></tr>
+<tr><td>D8</td><td>Thm 3.10</td><td>圏同値ではなく三つの事実で述べる。逆向きは \(W(R^\flat)\) の PD 完備化</td><td>関手・圏同値の構成が不要</td><td>\(A_{\inf}(R)=W(R^\flat)\) を直接使わず、PD 完備化の層が一枚余計。Mathlib の <code>fontaineTheta</code>（\(W(R^\flat)\) 上）と形が合わない</td><td>三つの事実の方は簡単、PD 層は余計</td><td>三つの事実は保つ。\(W(R^\flat)\) との比較を加えて原典・Mathlib に寄せる（BR29）</td></tr>
+<tr><td>D9</td><td>Thm 3.10 の Fontaine 比較</td><td>一般版と正則版（d₀ 正則・Fontaine 核進分離を仮定）の二系統</td><td>—</td><td>正則版は一般版に含まれる重複（約 300 行）</td><td>一般版の方が簡単</td><td>一般版に一本化（BR16）</td></tr>
+<tr><td>D10</td><td>Prop 7.2・Cor 7.3</td><td>全 prism の中の始対象（超限帰納）を経由せず、完全試験 prism への写像の始対象を直接作る</td><td>超限帰納が不要（完全化の後では d が非零因子）</td><td>全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) がない。Prop 7.10（\(\Delta_S=\Delta^{\mathrm{init}}_S\)）を述べるときに要るかもしれない</td><td>Lean の方が簡単</td><td>Lean を保つ。A3 で \(\Delta^{\mathrm{init}}_S\) が要るか確かめる</td></tr>
+<tr><td>D11</td><td>Thm 7.4</td><td>（W3 前）André を使わない根付き拡大の経路。（W3 後）原典どおり André 経由</td><td>André 経由版は、原典の「有限生成・単項への帰着」も不要（絶対整閉なので全元が同時に根を持つ）</td><td>旧経路は B4 専用の 33 本を要した</td><td>André 経由版は原典より簡単</td><td>W3 で André 経由に揃える（決定済み）。旧経路は別証明として保存</td></tr>
+<tr><td>D12</td><td>Thm 7.14 の一段の拡大</td><td>Prop 7.11(2)（導来 prismatic コホモロジー・HT 比較）の代わりに、モニック根の割り算包の pd 計算（Rem 7.15）</td><td>当時は HT 比較なしで André の補題が証明できた</td><td>一段の拡大のために根付き拡大の構成（100 本規模）が要る。A1〜A3 ができれば原典の一段は Prop 7.10 の議論の系として短い</td><td><b>A3 の後は原典の方が簡単</b></td><td>今は Lean を保つ。A3 の後に原典に揃えるかを決める（BR30）</td></tr>
+<tr><td>D13</td><td>Lemma 10.3</td><td>完全環の Tor 独立性（原典は [BS17, Lemma 3.16]、単体的な bar 構成）を、平坦な全射表示による代数的な証明で置き換える</td><td>外部文献と単体的な道具が不要。共通基盤の完全環の Tor 消滅を再利用</td><td>—</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
+<tr><td>D14</td><td>Prop 10.2・10.4</td><td>完全忠実性（RHom の保存）ではなく、必要な拡大閉性だけを完備テンソルの判定で示す</td><td>必要な分だけで短い</td><td>Prop 10.4 の全体（A8 で要る範囲）は別に要る</td><td>必要な範囲では Lean の方が簡単</td><td>今は保つ。A8 で Prop 10.4 が要るときは原典の流れ（Lemma 10.3 → 完全忠実）で足す</td></tr>
+<tr><td>D15</td><td>Prop 8.13</td><td>導来版（Δ の対称モノイダル性、HT 比較）ではなく、指定済みの環の perfectoid 化の普遍性から環版を証明</td><td>HT 比較なしで証明できる</td><td>環として perfectoid 化が存在する場合だけ。A7 で導来版ができると環版はその系になり、今の証明は重複する</td><td>原典の方が短い（HT 比較があれば一行）</td><td>A7 までは保つ。A7 の後に導来版の系へ置き換える（BR31）</td></tr>
+</table></div>
+<h2>まとめ</h2>
+<ul>
+  <li><b>Lean の方が簡単で、保つもの</b>：D1（W₂ 切断）、D3（Lemma 2.25）、D5（向き付き prism）、D10（Prop 7.2 を経由しない Cor 7.3）、D13（Lemma 10.3 の Tor 独立性）、D11 の André 経由版（単項への帰着が不要）。</li>
+  <li><b>原典の方が簡単で、揃えるもの</b>：D6（剛性の仮定、BR27）、D9（Fontaine 比較の正則版、BR16）、D11（Thm 7.4、W3 で実施中）。</li>
+  <li><b>今は保ち、後で原典に揃える候補</b>：D12（Thm 7.14 の一段、A3 の後、BR30）、D15（Prop 8.13、A7 の後、BR31）。どちらも HT 比較と導来 prismatic コホモロジーができれば原典の方が短くなる。</li>
+  <li><b>両方を持つもの</b>：D7（Lemma 3.9）、D8（Thm 3.10）。部品は保ち、原典の形の主張を加える。</li>
+</ul></main>
+</body>
+</html>

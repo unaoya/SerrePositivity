@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 第 8 章 一般の perfection</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
+td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
+td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 8 章</nav>
+<h1>第 8 章　一般の perfection（§8）</h1>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.63–70。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>、原典との差の評価は <a href="divergences.html">一覧</a>）。</p>
+<p>§8 は perfectoid 環 \(R=A/I\) 上の任意の（導来 p 完備な単体的）代数 \(S\) の perfectoid 化 \(S_{\mathrm{perfd}}\) を導来対象として定義し（Def 8.2）、perfectoid 環への写像の極限として描き（Prop 8.5）、arc 位相での降下と excision（Cor 8.11・8.12）、テンソルとの両立（Prop 8.13）、離散な場合の普遍性（Cor 8.14）を示す。E3 の欄の大部分がここにある。現状は E3 の欄として<b>引用</b>していて、そこから環の帰結を<b>証明</b>している（界面の型は <a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">PerfectoidizationInterface/Interface:21</a>）。</p>
+
+<h2>1. 定義と coconnective 性（Def 8.2・Lemma 8.4）</h2>
+<p><b>Def 8.2.</b> \(\Delta_{S/A,\mathrm{perf}}=(\mathrm{colim}_\varphi\Delta_{S/A})^\wedge\)（導来 prismatic コホモロジーの Frobenius 余極限の \((p,I)\) 完備化）、\(S_{\mathrm{perfd}}=\Delta_{S/A,\mathrm{perf}}\otimes^L_AA/I\)。p 完備な \(E_\infty\)-S 代数。A に依存しないことは Prop 8.5 から出る。</p>
+<p><b>Lemma 8.4.</b> \(\Delta_{S/A,\mathrm{perf}}\)、\(S_{\mathrm{perfd}}\in D^{\ge0}\)。<b>証明</b>：\(\Delta_{S/A,\mathrm{perf}}/p\) は \(P^0\) 作用（\(E_\infty\)-\(\mathbb F_p\) 代数の Steenrod 型の作用）が可逆な \(E_\infty\)-\(\mathbb F_p\) 代数で、\(P^0\) は正次数のホモトピーを殺す（[Lur11, Rem 2.2.7]）ので \(D^{\ge0}\)。\(S_{\mathrm{perfd}}\) については \(H^0(\Delta_{S/A,\mathrm{perf}})\) が完全 p 完備 δ 環なので d が非零因子（Lemma 2.34）。</p>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
+<tr><td>Def 8.2</td><td>\(S_{\mathrm{perfd}}\)</td><td class="todo">未（界面）</td><td><code>perfd</code>・<code>unit</code>・<code>h0</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:24</a>, :26, :28）。A4（入力は A2 の Construction 7.6）</td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td><code>coconnective</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:30</a>）。A4（Lur11 の P⁰ の切片）</td></tr>
+</table></div>
+
+<h2>2. perfectoid 環への写像の極限（Prop 8.5・Lemma 8.6）</h2>
+<p><b>Prop 8.5.</b> 完全 prismatic site 上の比較写像 \(\Delta_{S/A,\mathrm{perf}}\to R\Gamma((S/A)^{\mathrm{perf}}_\Delta,\mathcal O)\) は同値。特に \(S_{\mathrm{perfd}}\simeq\lim_{S\to R'}R'\)（S から perfectoid 環への写像全体の導来極限）で、A に依存しない。S が semiperfectoid なら Cor 7.3 の \(S_{\mathrm{perfd}}\) と一致。</p>
+<p><b>証明の流れ.</b> (1) 位相の取り方によらない：任意の元に「p 乗根を mod p で添加する」操作を超限的に繰り返すと、全ての perfectoid 環への写像が延びる semiperfectoid な \(\tilde S\) ができ、\(\tilde S_{\mathrm{perfd}}\) が弱終対象になる。Čech–Alexander の考え方で \((\tilde S^\bullet)_{\mathrm{perfd}}\) が計算する。(2) 有向余極限と両立するので、\(\pi_0S\) が位相的に有限生成としてよい。(3) \(R\langle X_1,\dots,X_r\rangle\to S\) から \(X_i\) の p 冪根を添加した \(\tilde S\) を作り、<b>Lemma 8.6</b>（強い降下）で semiperfectoid の場合に帰着。(4) semiperfectoid の場合：HT 比較で \(\Delta_{S/A}\) は連結、Lemma 8.4 と合わせて \(S_{\mathrm{perfd}}\) は perfectoid 環。\(S\to S_{\mathrm{perfd}}\to R'\)（\(R'\) は Cor 7.3 の普遍環）の合成は <b>Thm 7.4</b> で全射なので、\(S\to S_{\mathrm{perfd}}\) の全射性を示せばよい。<b>Thm 7.14</b> で核の生成元に根を持たせ、\(S'=R\langle X_j^{1/p^\infty}\rangle/(X_j)\) へ帰着し、<b>Prop 7.10</b> で結論。</p>
+<p><b>Lemma 8.6.</b> \(T=R[X_1,\dots,X_n]^\wedge\to T_\infty=R[X_i^{1/p^\infty}]^\wedge\) について、\(\Delta_{T/A}\to\Delta_{T_\infty/A}\) とその完全化は descendable（[Mat16]）。<b>証明</b>：完全化への移行は [BS17, Lemma 11.22]。n=1 に帰着し、\(A/(p,\varphi^{-1}(d))\) へ底変換して R を標数 p の完全環とし、<b>de Rham 比較と Cartier 同型</b>で、二乗零拡大 \(T\oplus\Omega^1[-1]\) 上の RHom の計算に帰着する。</p>
+<div class="box">
+<p class="label">E3 での扱い（界面の規約）</p>
+<p>E3 の <code>limitCone</code> は、極限の添字を Type u の perfectoid 標的に制限し、指定した錐と単位・\(H^0\) の乗法の整合を含めて述べる（原典の「全ての perfectoid 環への写像」の圏は大きい）。原典の (1) の \(\tilde S\) は u-small に取れるので、この制限でも同じ極限になる。Lemma 8.6 の標数 p の de Rham 比較は Thm 5.2（結晶比較、A1）から出るので、Thm 6.4（一般の de Rham 比較）は要らない。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td><code>limitCone</code>・<code>limit_isLimit</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:35</a>, :37）。A5。証明は Thm 7.4・Thm 7.14（どちらも証明済み）と Prop 7.10（A3）を使う</td></tr>
+<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 Lemma 11.22 の切片、標数 p の de Rham 比較と Cartier 同型は A1）</td></tr>
+</table></div>
+
+<h2>3. arc 降下と excision（§8.2）</h2>
+<p><b>Def 8.7・Lemma 8.8.</b> arc 被覆：p 完備な階数 1 の付値環への写像が、忠実平坦な拡大の後で持ち上がる写像。perfectoid は arc 位相の基底をなす（semiperfectoid な被覆 \(\tilde R\) と \(\tilde R\to\tilde R_{\mathrm{perfd}}\) の合成）。<b>Prop 8.10.</b> 構造層 \(\mathcal O\) は perfectoid の圏 Perfd 上の arc 層で、高次コホモロジーが消える。<b>証明</b>：tilt して \(R^\flat\to S^\flat\) の d 進完備な Čech 複体の完全性に帰着し、完全スキームの v 降下（[BS17, Thm 4.1]）と arc 降下の判定（[BM18, Thm 1.6]、[BS17, Lemma 6.3]）を使う。<b>Cor 8.11.</b> \(S_{\mathrm{perfd}}=R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)\)（Prop 8.5 と Prop 8.10 を合わせる）。<b>Cor 8.12</b>（E3 の <code>excision</code>）. \(S\to S'\) が I の外で arc 層の同型（付値環への写像が一意に延びる）なら、\(S_{\mathrm{perfd}},S'_{\mathrm{perfd}},(S/I)_{\mathrm{perfd}},(S'/I)_{\mathrm{perfd}}\) の四角形は \(E_\infty\)-S 代数の引き戻し。<b>証明</b>：\(S'\) を \(S'\times S/I\) に替えて arc 被覆とし、[BS17, Thm 2.9] にならって Perfd 上の層の押し出しとして計算する。</p>
+<p><b>Lean での扱い.</b> 環としての帰結を界面から証明している：四つの環の普遍 perfectoid 化を指定すると、それぞれが標的圏の始対象になり、導来対象が指定環の離散像と同値になる。D(R) の指定四辺の長完全列で \(H^{-1}\)・\(H^1\) の両端が消え、環の引き戻しと差写像の全射性が出る（<code>perfectoidization_excision_isPullback</code>・<code>perfectoidization_excision_difference_surjective</code>、PerfectoidizationInterface/Excision:59,70）。CLMST が使う形は <code>klCanonicalExcisionSquare_of_excision</code>（Perfectoidization/PerfectoidizationExcision:48）。脚注 14（整写像で \(V(I)\) の外で同型なら条件を満たす）も証明済み。</p>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Def 8.7、Lemma 8.8</td><td>arc 位相、perfectoid による被覆</td><td class="todo">未</td><td>A6</td></tr>
+<tr><td>Prop 8.10、Cor 8.11</td><td>構造層の arc 層性、\(S_{\mathrm{perfd}}=R\Gamma_{\mathrm{arc}}\)</td><td class="todo">未</td><td>A6（BM18・BS17 の切片）。E3 には構造層の部分だけで足り、Prop 8.10 の後半（形式スキームへの Hom の層性）は不要</td></tr>
+<tr><td>Cor 8.12</td><td>excision</td><td class="todo">未（界面）</td><td><code>excision</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:43</a>）。A6。環の帰結は界面から証明済み（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Excision.lean">PerfectoidizationInterface/Excision:59</a>, :70）、使う形（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/PerfectoidizationExcision.lean">PerfectoidizationExcision:48</a>）</td></tr>
+</table></div>
+
+<h2>4. テンソルとの両立と離散な場合の普遍性（Prop 8.13・Cor 8.14）</h2>
+<p><b>Prop 8.13.</b> \(S\mapsto S_{\mathrm{perfd}}\) は対称モノイダル：\(S_{1,\mathrm{perfd}}\widehat\otimes^L_{S_{3,\mathrm{perfd}}}S_{2,\mathrm{perfd}}\simeq(S_1\widehat\otimes^L_{S_3}S_2)_{\mathrm{perfd}}\)。<b>証明</b>：\(\Delta_{-/A}\) が HT 比較で対称モノイダル（Construction 7.6 (5)）で、それが完全化と mod I に移る。<b>Cor 8.14</b>（E3 の <code>universal</code>）. \(S_{\mathrm{perfd}}\) が連結（⇔ 離散）なら perfectoid 環で、\(S\to S_{\mathrm{perfd}}\) は普遍。<b>証明</b>：導来 Nakayama で \(\Delta_{S/A,\mathrm{perf}}\) も離散で完全 δ 環（Lemma 7.7 の議論）なので完全 prism。普遍性は Prop 8.13 で \((S_{\mathrm{perfd}}\widehat\otimes_SS_{\mathrm{perfd}})_{\mathrm{perfd}}\simeq S_{\mathrm{perfd}}\) から。</p>
+<p><b>Lean での組み立て（Prop 8.13 環版）.</b> 図式 \(S_1\leftarrow S_3\to S_2\) の各環に環としての perfectoid 化が指定されているとき、完備テンソルの \(H^0\) が \(S_1\otimes_{S_3}S_2\) の perfectoid 化であることを、環の普遍性・\(H^0\) の主元完備化の比較・perfectoid 環の完備テンソルの離散性（Lemma 10.3 の一般形）を合わせて示す（<code>prop813CompletedTensorMap_isPerfectoidization</code>、Perfectoidization/PerfectoidizationCompletedTensorCompatibility:102）。perfectoid な底変換の版 <code>prop813BaseChange_exists_algEquiv</code>（Prop813PerfectoidBaseChange:112）。</p>
+<div class="box">
+<p class="label">原典との差</p>
+<p>Prop 8.13 の環版は HT 比較を使わずに示せるが、環として perfectoid 化が存在する場合（semiperfectoid の商など）に限る。A7 で導来版（原典どおり Δ の対称モノイダル性から）ができると、環版はその系になる（<a href="divergences.html">D15</a>、BR31）。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
+<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版 <code>prop813CompletedTensorMap_isPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/PerfectoidizationCompletedTensorCompatibility.lean">PerfectoidizationCompletedTensorCompatibility:102</a>）、底変換（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Prop813PerfectoidBaseChange.lean">Prop813PerfectoidBaseChange:112</a>）。導来版は A7</td></tr>
+<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td><code>universal</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:32</a>）。A7</td></tr>
+</table></div><h2>リファクタの候補</h2>
+<div class="box refactor">
+<p class="label">BR31　Prop 8.13 の環版を導来版の系に置き換える（A7 の後）</p>
+<p>Prop 8.13 の環版（Perfectoidization/ の 4 本、約 600 行）は、HT 比較なしで示すために普遍性を手で組み立てている。原典の導来版は Δ の対称モノイダル性から一行で出て、A7 で形式化する。そのときは、環版を導来版と Cor 8.14 の系として述べ直し、今の証明を外す（主張と型は保つ）。</p>
+</div>
+
+<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
+<div class="box refactor">
+<p class="label">BR20　有限直積の perfectoid 性が E3 に依存している</p>
+<p><code>isIntegralPerfectoid_finPi</code>（Perfectoidization/PerfectoidFiniteProduct:21、「perfectoid 環の有限直積は perfectoid」）は、E3 から得た perfectoid 化の存在 <code>Inputs.exists_perfectoidization_of_integral</code> を使って証明されている（確認済み）。CLMST の 3 ファイル（<code>PerfectoidFiniteProductTor</code>、<code>Prop247ConstantRankExcision</code>、<code>KLAicTorFromExcision</code>）が使う。主定理はもともと E3 に依存するので新しい sorry ではないが、BS-0 の消費経路の一覧（stage2 §1）に載っていない E3 の使用箇所。四条件（Fontaine 核の単項性、p 完備性、Frobenius の全射性）は成分ごとに確かめられるので、E3 なしで直接示せるはず。E3 の使用箇所を本当に必要な二つ（存在と excision）に絞るために優先度が高い。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR21　IsPerfectoidization の API を足して手書きの展開を置き換える</p>
+<p>普遍性 <code>hf.2</code> を直接展開している箇所が、<code>PerfectoidFiniteProduct</code>:35、<code>PerfectoidizationSurjectiveMap</code>:40,42、<code>PerfectoidizationTensorCompatibility</code>:66–81、<code>PerfectoidizationBaseChange</code>:38,47、<code>CompletedTensorPerfectoidUniversal</code>:92、<code>PerfectoidizationCompletedTensorCompatibility</code>:154 などにある。既存の <code>lift</code>・<code>lift_unique</code>・<code>map</code> で書けるほか、共通側に二つ足すと重複が消える：(a) <code>IsPerfectoidization.hom_ext</code>（a∘f = b∘f なら a = b）、(b)「u : A → A′ が perfectoid な標的への写像を一意に延ばすなら、f′ が perfectoid 化 ⇔ f′∘u が perfectoid 化」という移送補題。(b) で <code>precomp_ringEquiv</code>、完備化への移送 2 本、<code>completedTensorPerfectoidLift_isPerfectoidization</code> が数行になり、<code>CompletedTensorPerfectoidization</code>:56 と <code>CompletedTensorPerfectoidUniversal</code>:28 の逐語複製（約 30 行）も消える。共通側（CommutativeAlgebra）の変更なので、他の利用先がないことを確かめてから。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR22　底変換・三角図式・Prop 8.13 底変換の共通化と、二つのテンソルのモデル</p>
+<p><code>PerfectoidizationBaseChange</code>:28 と <code>PerfectoidizationTensorCompatibility</code>:55 は、係数テンソルの持ち上げとテンソル積の帰納法による同じ型の証明（各 70 行ほど）。そのままでは特殊化にならないので、「C⊗_P D からの射は左右の制限で決まる」外延性補題と持ち上げの補題を共通にする。<code>prop813BaseChangeMap</code> も三角図式版の特殊化に見える（推測）。また perfectoid 環のテンソルの perfectoid 化に、Witt 余積のモデル（<code>Perfectoidization/WittPresentation/</code> ほか約 720 行）と完備テンソル H⁰ のモデルが並んでいる。Witt モデルの用途は mod p 全単射性と根付き拡大の 2 つだけで、前者は完備テンソル側の普遍性から直接出る見込み。後者が Witt モデル固有の性質を使っていないかの調査が要る。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR23　公開の形</p>
+<p>Prop 8.13 環版の 4 本（<code>Prop813PerfectoidBaseChange</code>、<code>PerfectoidizationCompletedTensorCompatibility</code>、<code>PerfectoidizationTensorCompatibility</code>、<code>CompletedTensorPerfectoidUniversal</code>）は証明済みだが root から到達せず、既定のビルドに入っていない（監査だけが読む）。到達点として挙げている結果なので、集約から公開する。<code>isIntegralPerfectoid_of_ringEquiv</code>（Prism/Perfectoid/PerfectoidRingEquiv:21）は純粋に可換環論の事実で 21 ファイルが使うので、CommutativeAlgebra/IntegralPerfectoid の近くへ移す。<code>PerfectCoefficientTensor</code>（22 行、alias だけ）は利用 4 箇所を直接の名前に切り替えて消せる。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14 は E3 の欄として引用中。ここを証明に置き換えるのが目標の中心（A4〜A7）。</li>
+  <li>Prop 8.5 の証明は Thm 7.4・Thm 7.14（証明済み）と Prop 7.10（A3）、Lemma 8.6（A5）を使う。Lemma 8.6 は標数 p の de Rham 比較と Cartier 同型（A1）を使う。</li>
+  <li>環としての帰結（excision の引き戻し、Prop 8.13 環版）は証明済みで、界面が満たされれば下流はそのまま使える。Prop 8.13 環版は A7 の後に導来版の系へ置き換える（BR31）。</li>
+</ol>
+</main>
+</body>
+</html>

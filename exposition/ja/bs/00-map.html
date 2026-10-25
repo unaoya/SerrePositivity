@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BS 全体地図</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 0 章</nav>
+<h1>第 0 章　全体地図</h1>
+<p class="meta">基準コミット <code>b02f4af3e</code>（2026-10-25 09:20）。公理の欄は同日 09:10 に既存 olean を import した一時ファイルで <code>#print axioms</code> を実行して確かめたもの。</p>
+
+<p>この章では個々の数学に立ち入らず、次の五つを確認する。</p>
+<ol>
+  <li>消したい入力 E3 は何を主張しているか</li>
+  <li>主定理のどこで E3 が使われているか</li>
+  <li>すでに証明されたものは何か</li>
+  <li>原典のどこを形式化すれば E3 が消えるか（A0〜A9）</li>
+  <li>コードはどこにあり、どこに手を入れる余地があるか</li>
+</ol>
+
+<h2>1. E3 とは何か</h2>
+<p>\(R\) を perfectoid 環とする。原典 Def 8.2 は、\(R\) 代数 \(S\) に \(p\) 完備な \(E_\infty\)-\(S\) 代数 \(S_{\mathrm{perfd}}\) を対応させる（導来 prismatic コホモロジーの Frobenius 余極限を完備化し、\(\bmod d\) したもの）。\(S\) が perfectoid 環の商（semiperfectoid）なら離散で、\(S\) から perfectoid 環への普遍写像になる。一般の \(S\) では離散とは限らない。</p>
+<p>E3 はこの関手の性質のうち主定理が使うものを束ねた構造で、その存在が現在の唯一の文献入力である。</p>
+<pre><code>theorem exists_perfectoidizationInterfaceE3 (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) : Nonempty (PerfectoidizationInterfaceE3 R p hR) := by
+  sorry</code></pre>
+
+<div class="table-wrap"><table>
+<tr><th>欄</th><th>内容</th><th>原典</th></tr>
+<tr><td><code>perfd</code></td><td>通常の \(R\) 代数の ∞ 圏から \(D(R)\) への関手 \(S\mapsto S_{\mathrm{perfd}}\)</td><td>Def 8.2</td></tr>
+<tr><td><code>unit</code>、<code>h0</code></td><td>単位 \(S\to S_{\mathrm{perfd}}\)（ホモトピー整合的）と、\(H^0\) の環構造・単位との整合</td><td>Def 8.2</td></tr>
+<tr><td><code>coconnective</code></td><td>負次数のコホモロジーが消える</td><td>Lemma 8.4</td></tr>
+<tr><td><code>universal</code></td><td>離散なら \(S\to H^0\) は環の perfectoid 化（<code>IsPerfectoidization</code>）</td><td>Cor 8.14</td></tr>
+<tr><td><code>limitCone</code>、<code>limit_isLimit</code></td><td>\(S_{\mathrm{perfd}}\) は \(S\) の下の perfectoid 環（Type u）の図式の極限</td><td>Prop 8.5</td></tr>
+<tr><td><code>integral</code></td><td>\(S\) が \(R\) 上整なら \(S_{\mathrm{perfd}}\) は離散で perfectoid</td><td>Thm 10.11（＝Thm 1.17(1)）</td></tr>
+<tr><td><code>excision</code></td><td>arc 条件を満たす商の四角形が \(D(R)\) で引き戻し</td><td>Cor 8.12（Prop 8.10・Cor 8.11 経由）</td></tr>
+</table></div>
+<p>型は <a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">PerfectoidizationInterface/Interface.lean</a>。\(\mathrm{CAlg}_R\) 版は <a href="../../../SerrePositivity/EInfinity/Perfectoidization/Interface.lean">EInfinity/Perfectoidization/Interface.lean</a> の <code>PerfectoidizationInterfaceCAlg</code> で、欄は同じ（<code>perfd</code> の値域が \(\mathrm{CAlg}_R\)、極限錐と excision が \(\mathrm{CAlg}_R\) で述べられる）。<code>DerivedCorollary.lean</code> の <code>nonempty_e3_of_cAlg</code> により、<b>CAlg 版を一つ構成すれば E3 が従う</b>。</p>
+
+<div class="box">
+<p class="label">原典との差（界面の規約）</p>
+<p>六点ある（<a href="../../../formalization-plans/perfectoidization-interface.md">perfectoidization-interface.md</a> §7）。excision は底の \(D(R)\) で述べる。universal は離散時の環の普遍性に限る。極限は Type u の標的に制限し、指定錐と単位・\(H^0\) の乗法の整合を含める。始域は導来 \(p\) 完備化の \(H^0\) を介して非完備な代数まで延ばす。差写像の全射性は欄に入れず、証明済みの帰結とする。</p>
+</div>
+
+<h2>2. 主定理での使われ方</h2>
+<p>E3 は二つの入口を通って主定理に入る。</p>
+<ol>
+  <li><b>存在</b>：E3 の integral と universal から <code>Inputs.exists_perfectoidization_of_integral</code>（任意の整代数の環としての perfectoid 化）→ 有限代数版 <code>exists_perfectoidization_of_finite</code> → CLMST の \(R_{\mathrm{perfd}}\)（<code>Section2.MixedPerfectoid</code>）。使われる \(S=R\otimes_A D\) は有限だが、\(R\) の全射商でも有限エタールでもない。</li>
+  <li><b>excision</b>：E3 の excision から <code>Inputs.perfectoidization_excision_isPullback</code>（環の引き戻し）→ <code>klCanonicalExcisionSquare_of_excision</code> → CLMST Prop 2.4.7 の有限比較と rank 四角形、Cor 4.0.4。</li>
+</ol>
+<p>詳しい経路は <a href="../../../formalization-plans/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §1。同 §2 の結論として、<b>既証の部品だけでこの二つを迂回する道（案 B）は閉じない</b>。どちらも Cor 8.12／Thm 10.9 の「almost 比較」そのものを要する。</p>
+
+<h2>3. 到達点</h2>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>公開名</th><th>公理（10-25 09:10）</th></tr>
+<tr><td>§2 δ 環（代表：積公式）</td><td><code>BhattScholze.DeltaStructure.delta_mul</code></td><td>標準三公理</td></tr>
+<tr><td>§3 完全 prism の distinguished 性、商の perfectoid 性（Thm 3.10 の一方向）</td><td><code>OrientedPrism.isDistinguished_of_perfect</code>、<code>OrientedPrism.quotient_isIntegralPerfectoid</code></td><td>標準三公理</td></tr>
+<tr><td>B3：Cor 7.3 semiperfectoid 商の perfectoid 化の存在</td><td><code>exists_perfectoidization_of_semiperfectoid_quotient</code></td><td>標準三公理</td></tr>
+<tr><td>B4：Thm 7.4 全射性（André を使わない経路）</td><td><code>surjective_of_isPerfectoidization_of_semiperfectoid_quotient</code></td><td>標準三公理</td></tr>
+<tr><td>B5：Lemma 10.3、Remark 10.7</td><td><code>lemma103_perfectoidTensor</code>、<code>perfectoidIdeal_isAlmostZero_extension</code></td><td>標準三公理</td></tr>
+<tr><td>André：Thm 7.14</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（<code>Inputs.</code> 版も）</td><td>標準三公理</td></tr>
+<tr><td>Prop 8.13 環版</td><td><code>prop813CompletedTensorMap_isPerfectoidization</code></td><td>標準三公理</td></tr>
+<tr><td>Thm 1.17(1) 有限代数版</td><td><code>exists_perfectoidization_of_finite</code></td><td><b>sorryAx</b>（E3 経由）</td></tr>
+</table></div>
+<p>原典のコホモロジー（§4〜§6）と Construction 7.6 は一切使っていない。証明済みの部分は「環の圏での普遍性」で閉じていて、導来対象 \(S_{\mathrm{perfd}}\) はまだ一度も構成されていない。</p>
+
+<h2>4. 原典の節と形式化の状況</h2>
+<div class="table-wrap"><table>
+<tr><th>節</th><th>内容</th><th>状況</th><th>章</th></tr>
+<tr><td>§2</td><td>δ 環</td><td>§2.1〜§2.4 は一般のテンソル積と Ex 2.21 を除いて済み。pd 包（Lemma 2.36・Cor 2.39）は特殊形のみ、Lemma 2.38・§2.6 は未</td><td>2</td></tr>
+<tr><td>§3</td><td>prism、Thm 3.10、Prop 3.13</td><td>Thm 3.10・Lemma 3.5・3.9 済み。Prop 3.13 は向き付きの特殊形のみ</td><td>3</td></tr>
+<tr><td>§4</td><td>prismatic site、Lemma 4.8、Thm 4.11 の定式化</td><td>未形式化（Lemma 4.8 の特殊形のみ）</td><td>4</td></tr>
+<tr><td>§5・§6</td><td>結晶比較、HT 比較</td><td>未形式化</td><td>5</td></tr>
+<tr><td>§7</td><td>Cor 7.3、Thm 7.4、Construction 7.6、Thm 7.14</td><td>Cor 7.3・Thm 7.4・Thm 7.14 済み（別経路）。Construction 7.6 は未</td><td>7</td></tr>
+<tr><td>§8</td><td>Def 8.2〜Cor 8.14</td><td>Prop 8.13 環版のみ。他は E3 の欄として引用</td><td>8</td></tr>
+<tr><td>§10</td><td>Lemma 10.3、Thm 10.9、Thm 10.11</td><td>Lemma 10.3・Remark 10.7 済み。Thm 10.11 は E3 の integral 欄</td><td>10</td></tr>
+<tr><td>§9、§11〜§18</td><td>étale 比較、Nygaard、q-de Rham ほか</td><td>主定理に不要、対象外</td><td>—</td></tr>
+</table></div>
+
+<h2>5. E3 を消すための最小部分集合 A0〜A9</h2>
+<p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。合計の計画幅は約 35〜85 人週で、A0〜A3 の不確実性が最も大きい。</p>
+<div class="table-wrap"><table>
+<tr><th>単位</th><th>原典</th><th>供給する欄・役割</th><th>章</th></tr>
+<tr><td>A0</td><td>§4.1、Rem 4.6、Lemma 4.8、Construction 4.17〜18、Lemma 4.20〜21</td><td>prismatic site、完全試験 prism、Čech 計算と自然性</td><td>4</td></tr>
+<tr><td>A1</td><td>Thm 5.2、Lemma 5.4、Cor 5.5、Construction 6.1、Prop 6.2、Thm 6.3（＝Thm 4.11）</td><td>結晶比較と Hodge–Tate 比較</td><td>5</td></tr>
+<tr><td>A2</td><td>Construction 7.6</td><td>導来 prismatic コホモロジー（多項式上の \(\Delta\) の左 Kan 延長）</td><td>7</td></tr>
+<tr><td>A3</td><td>Lemma 7.7、Ex 7.9、Prop 7.10 の必要部分</td><td>離散時の δ 構造、semiperfectoid の計算と既存の普遍環との比較</td><td>7</td></tr>
+<tr><td>A4</td><td>Def 8.2、Lemma 8.4</td><td><code>perfd</code>・<code>unit</code>・<code>h0</code>・<code>coconnective</code></td><td>8</td></tr>
+<tr><td>A5</td><td>Lemma 8.6、Prop 8.5</td><td><code>limitCone</code>・<code>limit_isLimit</code></td><td>8</td></tr>
+<tr><td>A6</td><td>Def 8.7、Lemma 8.8、Prop 8.10、Cor 8.11、Cor 8.12</td><td><code>excision</code></td><td>8</td></tr>
+<tr><td>A7</td><td>Prop 8.13 導来版、Cor 8.14</td><td><code>universal</code></td><td>8</td></tr>
+<tr><td>A8</td><td>Lemma 10.3〜10.5、Thm 10.9 の almost-connective 部分、Lemma 10.12、Thm 10.11</td><td><code>integral</code></td><td>10</td></tr>
+<tr><td>A9</td><td>—</td><td>非完備 \(S\) の \(H^0\) 導来完備化、指定錐の輸送、界面への代入</td><td>8</td></tr>
+</table></div>
+<p>外部文献の最小採用集合は {BS17, BM18, Mat16, Lur11} の切片で、新規引用にせず形式化の対象に数える。最初の実装単位は「固定完全 prism \((A,(d))\) 上の一変数多項式の Čech 模型と HT 比較」。</p>
+
+<h2>6. コードの所在</h2>
+<div class="table-wrap"><table>
+<tr><th>場所</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
+<tr><td><code>BhattScholze/</code> 直下</td><td class="num">618</td><td class="num">約 59,000</td><td>δ 環・prism・perfectoid・compatible roots・semiperfectoid・B3〜B5・Prop 8.13 の本体（平置き）</td></tr>
+<tr><td><code>BhattScholze/Andre/</code></td><td class="num">342</td><td class="num">44,096</td><td>André の補題（Thm 7.14）と Remark 7.15 の照合</td></tr>
+<tr><td><code>BhattScholze/PerfectoidizationInterface/</code></td><td class="num">11</td><td class="num">1,597</td><td>界面の型と、そこから二入口を導く証明</td></tr>
+<tr><td><code>BhattScholze/Inputs/</code></td><td class="num">5</td><td class="num">264</td><td>唯一の sorry と界面からの二入口</td></tr>
+<tr><td><code>CommutativeAlgebra/</code></td><td class="num">465</td><td class="num">—</td><td>完備化・平坦性・AIC など BS と CLMST の共有基盤。<code>IsPerfectoidization</code> の定義もここ</td></tr>
+</table></div>
+<p>直下 618 ファイルの名前の接頭辞は、多い順に <code>DeltaDivision</code>（104）、<code>DeltaRoot</code>（97）、<code>Delta</code>（60）、<code>PerfectDelta</code>（30）、<code>RelativeFree</code>（28）、<code>RankOne</code>（25）、<code>PerfectPrism</code>（24）、<code>CompatibleRoot</code>（16）、<code>Principal</code>（15）。<code>DeltaDivision</code>・<code>DeltaRoot</code> の約 200 本は B4 の根付き拡大（割り算包と根の変数）の構成で、§2 の一般論ではない。</p>
+<p>監査は <code>scripts/audit_bhatt_scholze*.lean</code>（本体・b4・b5・prop813・arc_excision・andre_conditional・refactoring）と <code>scripts/audit_clmst*.lean</code>。実行は <code>lake env lean scripts/&lt;name&gt;.lean</code>。</p>
+
+<h2>7. リファクタの候補</h2>
+<div class="box refactor">
+<p class="label">BR1　直下 618 ファイルの平置き</p>
+<p>主題（δ 環の一般論、prism、根付き拡大、perfectoid 化の普遍性）で分かれていない。<code>Delta/</code>、<code>Prism/</code>、<code>RootedExtension/</code>、<code>Perfectoidization/</code> のようなサブディレクトリに分ける案がある。外から import されるモジュール（<code>EInfinity/Perfectoidization/</code>、<code>CommutativeAlgebra/Perfectoidization.lean</code>、<code>CLMST/</code>、<code>Inputs/</code>）は公開名を保つ必要があり、<code>scripts/move_module.py</code> を使う。モジュール移動なので、どの章でどこを動かすかを決めてから着手前に確認する。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR2　普遍性の手書き展開の重複（Q10）</p>
+<p><code>RootedKernelSurjectivity</code>・<code>RootedPresentationSurjectivity</code>・<code>RootedIdealSurjectivity</code> の三箇所が、「perfectoid 化の始域を環同型で取り替えても perfectoid 化」を毎回 20 行ほどで手書きしている。同じ主張は共通側に <code>IsPerfectoidization.precomp_ringEquiv</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/PerfectoidizationFunctor.lean">CommutativeAlgebra/PerfectoidizationFunctor.lean</a>、10-17 から存在）として既にあり、三ファイルから import 閉包で見えることも確かめた。<a href="../../../formalization-plans/bhatt-scholze-refactoring.md">リファクタ計画</a> §13 では「共通側に新設する候補」とされていたが、新設は不要で、適用だけで済む。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR3　リファクタ監査 838 行の失敗</p>
+<p><code>scripts/audit_bhatt_scholze_refactoring.lean:838</code> の <code>example</code> が、局所記法 <code>ψ</code> の中の <code>Ideal.Quotient.mk I</code> で環 instance の不一致（<code>AddMonoidAlgebra.ring</code> 経由と期待される <code>RelativeFreeDeltaRing</code> 上の semiring）を起こす。同じ記法が定理のソース側では通る。結論の型の前に <code>let := deltaDivisionSourceEvaluationAlgebra E r</code> があると、<code>I</code> の台が <code>abbrev</code> を開いた <code>MvPolynomial (σ × ℕ) P</code> として推論されるためと見られる。一時ファイルでの試験では、<code>Ideal.Quotient.mk (R := L) I</code> と環を明示すると監査全体が通った（<code>let</code>→<code>letI</code> の変更や module 化では直らない）。</p>
+</div>
+
+<div class="box refactor">
+<p class="label">BR8　どこからも使われないモジュール 173 本</p>
+<p>BS の 1008 本のうち 173 本は、BS の外（CLMST・CommutativeAlgebra・KST・EInfinity）からも、入口（<code>Inputs/</code>）からも、root の集約からも import されない（監査だけが読む）。多いのは <code>Semiperfectoid/RootedExtension/Division</code>（38）、<code>…/DeltaRoot</code>（37）、<code>Delta/DividedPower</code>（24）、<code>Delta/Free</code>・<code>Free/Finite</code>（20）、<code>Prism</code>（19）。途中で使わなくなった経路の残りと見られる。BS-W2 では動かさず、削除するかを後で判断する（一覧は W2 の作業ツリーから再計算する）。主定理の経路に乗るのは 455 本、Rem 7.15 の照合が 265 本、root の集約だけが import するものが 115 本（W1 のスタブ 32 本を含む）。</p>
+</div>
+
+<div class="box refactor">
+<p class="label">BR25　docstring の工程ラベルと書式</p>
+<p>docstring に数学の説明がなく、当時の工程ラベルだけが書かれているものが多い。共通基盤への要求番号（G1・G4・G7・G9・G10）を前提にした宣言 docstring が 30 ファイル・48 行（例：「G9-4の比較で…」）、B3・B4-x を先頭に付けたモジュール見出しが 28 ファイル（例：「B4-5：根付き…」）、A1・A1-b（André の旧工程）への言及が 99 行、F4〜F7・N3・B-I もある。番号の意味は archive の記録にしか書かれていない。概要／方針／規約／使われ方の構造を持たない一行だけのモジュール docstring が 168 ファイル、英語と日本語の一行 docstring の混在もある。ラベルと数学の言葉の対応表を一つ作れば、置き換えは機械的にできる（Codex 向き）。</p>
+</div>
+<div class="box refactor">
+<p class="label">BR26　共通基盤が BS を import している（層の逆転）</p>
+<p><code>CommutativeAlgebra/PerfectoidIdeal</code>、<code>PerfectoidIdealCover</code>、<code>PerfectoidIdealCompatibleRoots</code>、<code>AbsolutelyIntegrallyClosedPerfectoidQuotient</code> の 4 本が、BS のモジュールを（W1 の旧名の転送スタブ経由で）import している。少なくとも新しい名前へ付け替える必要があり、本来はこれらの所在（共通基盤か BS か）を見直すべきもの。CommutativeAlgebra は BS・CLMST 以外の利用先を確かめてから動かす。<code>CommutativeAlgebra/PerfectoidIdealCompatibility</code>（44 行）はどこからも到達しない。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>BS 側の未証明入力は E3 の存在一つで、CAlg 版を構成すれば E3 が従う。</li>
+  <li>E3 の欄は Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14・Thm 10.11 に対応する。</li>
+  <li>証明済みの部分は環の圏の普遍性で閉じていて、導来対象 \(S_{\mathrm{perfd}}\) はまだ作られていない。</li>
+  <li>既証部品だけの迂回は閉じず、原典の経路 A0〜A9 を進める。最初の単位は固定完全 prism 上の一変数 Čech 模型と HT 比較。</li>
+  <li>直下 618 ファイルの約 200 本は B4 の根付き拡大の構成で、§2 の一般論とは別物。</li>
+</ol>
+</main>
+</body>
+</html>
