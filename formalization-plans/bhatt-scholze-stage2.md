@@ -170,7 +170,7 @@ g を逆にして平坦という事実だけでは元の (g)_perfd の全元に�
 
 | 順序 | 原典の必要部分／供給するもの | 既存と不足、追加工数 |
 | --- | --- | --- |
-| A0 | §4.1・Rem 4.6・Lemma 4.8、Construction 4.17–18、Lemma 4.20–21：prismatic site、完全試験 prism、Čech 計算と自然性 | prism/perfectoid 対応は既存。全 prism の lifting と site／係数付き導来切断は未実装。4–8 人週 |
+| A0 | §4.1・Rem 4.6・Lemma 4.8、Construction 4.17–18、Lemma 4.20–21：prismatic site、完全試験 prism、Čech 計算と自然性 | prism/perfectoid 対応は既存。Lemma 4.8 は有界な向き付き prism を標的とする形で証明済み（`Andre/Remark715/PerfectPrismBoundedTargetLift`、主経路外。2026-10-25 の第 3 章の精読で判明、BR33 で Prism/ へ移す）。site／係数付き導来切断は未実装。4–8 人週 |
 | A1 | Thm 5.2、Lemma 5.4、Cor 5.5 → Construction 6.1・Prop 6.2 → Thm 6.3＝Thm 4.11、必要な Cor 4.12・de Rham 比較 | PD 計算・複体基盤は既存。affine 空間の結晶比較、Cartier、HT 比較の射と乗法・Frobenius 整合は不足。8–18 人週 |
 | A2 | Construction 7.6：smooth／多項式上の Δ を左 Kan 延長、HT filtration・base change・余極限保存 | P_Σ の一般論を再利用。animated 代数の具体的表示、cotangent complex・導来外冪、完備化と E∞ 構造付き Δ の接続が不足。6–14 人週 |
 | A3 | Lemma 7.7、Example 7.9・Prop 7.10 の必要部分：離散時 δ 構造と semiperfectoid 計算 | Cor 7.3・Thm 7.4・André の証明は再利用。既存の普遍環と Δ の比較は別証明。3–7 人週 |
