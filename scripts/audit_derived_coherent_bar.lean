@@ -151,7 +151,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceErase,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceRightCut,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceTerm,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceSum]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSourceSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawRightHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterComposite,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseParameterSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseBoundaryColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullEquation]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
