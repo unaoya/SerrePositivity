@@ -2645,4 +2645,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangle
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -32216,3 +32216,30 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceValueIso
 #print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorActualRectangleInput.sourceValueIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionCoreEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionCoreEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectProjectionArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectProjectionArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareInclusionBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareInclusionBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareProjectionBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareProjectionBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullZeroVertexIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullZeroVertexIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareZeroVertexIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareZeroVertexIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareZeroBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareZeroBoundary
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullSquareBoundary
