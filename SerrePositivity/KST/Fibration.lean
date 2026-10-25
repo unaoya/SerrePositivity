@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientTotalOverMap
+public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientTotalResolution
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientPointedComparison
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientUnstraighteningMap
 public import SerrePositivity.KST.Fibration.VerdierLowerDeformationZeroHomFaces

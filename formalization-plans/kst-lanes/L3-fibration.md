@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（615 モジュール・3845 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（617 モジュール・3884 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -122,6 +122,18 @@ let F := kanDiagramCoherentNerve (cocartesianStrictTransportDiagram p ⋙ R)
 - 指定 `smallCoherentStraighteningUnitTransformation F` は元の F から既存 left unstraightening の復元図式への単位である。元の span 射影は一般の cocartesian fibration なので、この単位だけから上記 f の存在を推論しない。全族 f と厳密な底、全 fiber 単位の照合が揃うまで K-B-S の供給完了とは数えない。
 - `WeakSpanKanQuotientUnstraighteningMap` は指定商降下同型の全変換空間での実像と既存の底変換を合成し、単体圏上の同じ小さい unstraightening から商上への実全空間射を構成する。元の単体圏上の全族単位が供給されれば、同じ実射へ後合成して初頂点写像と q を厳密に保持する。元の marked span 全族への降下・全 fiber 単位の回収・指定恒等点との照合は未完で、K-B-S の供給完了とは数えない。
 - `WeakSpanKanQuotientPointedComparison` は同じ実全空間射の pointed-space 成分を指定降下同型の作用へ厳密照合する。`weakSpanKanQuotientSimplexFiberMap` は元の全空間射の厳密な fiber 制限であり、その全単体への作用は同じ指定降下成分の標準 transport と関手同型で比較する。点別比較に弱めず、元の marked span 全族からの単位・降下はまだ主張しない。
+- `WeakSpanKanQuotientTotalResolution` と `WeakSpanKanQuotientTotalOverMap` は、供給された単体圏単位と厳密な底条件に対して、元の marked span 全族の初頂点局所化と既存の Sp 因子化で降下し、関手空間の left fibration で底を厳密化する。`weakSpanKanQuotientTotalMap` は元の全族から商図式の小さい unstraightening への実写像で、同じ q を厳密に保持し、元の単体圏上の指定比較との全関手同型を供給する。単位自体・全 fiber 単位と指定恒等点の回収は未供給で、K-B-S の供給完了とは数えない。
+
+### 設計確認案：K-B-S の相対初頂点降下（未採用）
+- 現行の `weakSpanKanQuotientTotalMap` は元の全族と底 q を厳密に保持するが、指定単体圏比較への回収は全関手空間内の同型である。これだけから同じ fiber 内の元の Kan 単位・指定恒等点の回収を結論しない。
+- 提案：最終の単位回収は相対関手空間内の初頂点降下で行う。以下の空間値 F1 正本の供給または既存公開補題の指定を、コーディネータ経由で Ind に依頼する。既存の絶対降下・底厳密化の条件付き定理は保持し、本体に追加の存在仮定として入れない。
+```lean
+{A E B : SSet.{u}} [Quasicategory A] [Quasicategory B]
+(p : E ⟶ B) [LeftFibration p] (b : A ⟶ B) :
+IsQCatEquivalence
+  (relativeFunctorPre p b (transportSimplexFirstVertexMap A))
+```
+- 適用先は A=元の marked span 全族、p=同じ商図式の小さい unstraightening 射影、b=元の射影≫q。相対前合成の本質的全射性から、供給単位の像と相対関手空間内で同型となる厳密な底上の実射を得る利用側を試作する。Cat∞ 値分類や新たな一般局所化・商 API は含めない。
 
 ### 未コミット
 - 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。
