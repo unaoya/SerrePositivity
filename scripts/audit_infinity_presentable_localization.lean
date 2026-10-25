@@ -361,6 +361,12 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @HasCompactTrianglePosetPresentation
 #check @triangle_hasCompactPosetPresentation
 #check @exists_compactTrianglePosetPresentations
+#check @indArrowImageEdges_mem_of_compact_generated
+#check @indArrowImageEdges_comp_of_compact
+#check @indArrowImageEdges_cancel_left_of_compact
+#check @indArrowImageEdges_cancel_right_of_compact
+#check @indArrowImage_ambientFiltered_colimit_mem
+#check @indArrowImage_triangleFace_colimit_mem
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
