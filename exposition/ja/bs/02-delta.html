@@ -179,6 +179,58 @@ relativeFreeDeltaStructure σ D :=
 </ol>
 </div>
 
+
+<h3>詳しく：自由 δ 環（Lemma 2.11〜Rem 2.14）</h3>
+<p class="meta">2026-10-25。§2.1 の三つ目の塊。</p>
+
+<h4>原典の内容（pp.15–16）</h4>
+<ul>
+  <li><b>Lemma 2.11</b>：\(\mathbb Z_{(p)}\{x\}\) は \(\{x,\delta(x),\delta^2(x),\dots\}\) 上の多項式環で、Frobenius は忠実平坦。\(\mathbb Q\{x\}\) は \(\{x,\varphi(x),\varphi^2(x),\dots\}\) 上の多項式環。<br>
+  証明：\(A=\mathbb Z_{(p)}[x_0,x_1,\dots]\) に \(\varphi(x_i)=x_i^p+px_{i+1}\) を与えると \(A/p\) の Frobenius の持ち上げで、\(A\) は p ねじれなしなので δ 構造 \(\delta(x_i)=x_{i+1}\) が一意に決まる（Rem 2.2）。\(x_i\mapsto\delta^i(f)\) が δ 射になるので普遍性。忠実平坦性は、\(\varphi\) を有限段 \(\varphi_i\colon\mathbb Z_{(p)}[x,\dots,\delta^ix]\to\mathbb Z_{(p)}[x,\dots,\delta^{i+1}x]\) の有向余極限に分け、ファイバーごとの判定で \(\varphi_i[1/p]\)（生成元のずらし）と \(\varphi_i/p\)（Frobenius と包含の合成）の忠実平坦性に帰着する。</li>
+  <li><b>Cor 2.12</b>：任意の δ 環 \(A\) と \(x\) に対し、δ 射 \(A\to B\) で忠実平坦かつ \(x\) が \(\varphi(y)\) の形になるものがある（Lemma 2.11 の pushout）。E3 には不要。</li>
+  <li><b>Rem 2.13</b>：\(w\colon R\to W(R)\) の Witt 座標 \(w(x)=(\delta_0(x),\delta_1(x),\dots)\) が Joyal の \(\delta_n\)。\(\varphi^n(x)=\delta_0(x)^{p^n}+p\delta_1(x)^{p^{n-1}}+\dots+p^n\delta_n(x)\) で特徴づけられ、\(\delta_n\) は δ について次数 \(n\) のモニックな多項式。<b>Rem 2.14</b>：よって \(\mathbb Z_{(p)}\{x\}\) は \(\{\delta_n(x)\}\) 上の多項式環でもある。</li>
+</ul>
+
+<h4>Lean：自由 δ 環の二つの構成</h4>
+<div class="table-wrap"><table>
+<tr><th>構成</th><th>作り方</th><th>使われ方</th></tr>
+<tr><td>整数版 <code>FreeDeltaRing σ</code> ＝ \(\mathbb Z[x_{(s,n)}]\)</td><td><b>原典と同じ経路</b>：\(\varphi(x_{(s,n)})=x_{(s,n)}^p+px_{(s,n+1)}\)（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:25</a>）が mod p で Frobenius であることを示し、p ねじれなしなので Rem 2.2 の一対一対応 <code>existsUnique_of_mod_p</code> から δ 構造（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:69</a>）。普遍性 <a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaUniversal.lean">FreeDeltaUniversal:48</a></td><td>Frobenius の平坦性の計算の舞台。主定理の経路では、恒等式の検証（<code>DeltaFrobeniusNaturality</code>）など一部だけ</td></tr>
+<tr><td>相対版 <code>RelativeFreeDeltaRing σ</code> ＝ \(R[x_{(s,n)}]\)（\(R\) は任意の δ 環）</td><td>W₂ 切断を多項式環の普遍性で直接与える（前の塊の <code>polynomialDeltaStructure</code>）。p ねじれなしを使わない</td><td>実際の添加・表示・\(d\) で割る包はすべてこちら</td></tr>
+</table></div>
+<p>どちらも台の環を最初から多項式環 \(\mathbb Z[x_{(s,n)}]\)・\(R[x_{(s,n)}]\) として定義し、\(x_{(s,n)}\) が \(\delta^n(x_s)\) になるように δ 構造を入れる。だから Lemma 2.11 の前半「\(\{x,\delta x,\dots\}\) 上の多項式環」は<b>定義そのもの</b>になり、示すべきは普遍性だけ。係数は \(\mathbb Z_{(p)}\) ではなく \(\mathbb Z\)（局所化は平坦なので困らない）。\(\mathbb Q\{x\}\) の主張は形式化しておらず、E3 にも不要。</p>
+
+<h4>Lean：Frobenius の平坦性</h4>
+<p>原典は「本当の」忠実平坦性を示すが、Lean にあるのは <b>p 完全忠実平坦性</b>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean">freeDeltaFrobenius_isCompletelyFaithfullyFlat:100</a>）。証明は共通基盤の判定 <a href="../../../SerrePositivity/CommutativeAlgebra/CompletelyFlatCriterion.lean">CompletelyFlatCriterion:68</a>：源と（φ で加群と見た）終域がともに p 正則で、mod p のテンソルが忠実平坦なら p 完全忠実平坦。mod p の部分は：</p>
+<ol>
+  <li>\(\mathbb Z[x_{(s,n)}]/p\cong\mathbb F_p[x_{(s,n)}]\)（<code>FreeDeltaModP</code>）。mod p では \(\varphi\) は Frobenius \(f\mapsto f^p\)。</li>
+  <li>\(\mathbb F_p\) 係数では係数が Frobenius で動かないので、Frobenius は \(x\mapsto x^p\) の expand 写像に一致する（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PrimePolynomialFrobeniusFlat.lean">PrimePolynomialFrobeniusFlat:19</a>）。</li>
+  <li>expand 写像に沿って \(R[x]\) は自由加群で、基底は各指数が \(p\) 未満の単項式（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialExpandFree.lean">polynomialExpandBasis:89</a>）。よって mod p の Frobenius は自由で忠実平坦（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusModPFlat.lean">FreeDeltaFrobeniusModPFlat:89</a>）。</li>
+</ol>
+<p>原典の「有限段に分けてファイバーごとの判定」「\(\varphi_i[1/p]\) の忠実平坦性」は使わない。代わりに、p 完全版で済む場面では mod p の自由性だけで足りる。</p>
+<ul>
+  <li><b>Lemma 2.36 の (a)</b>（pushout \(C\) が p ねじれなし）には p 完全版で足りる：\(C\) は \(\varphi\) に沿う底変換で、\(\mathbb Z\{x\}\) が p ねじれなしかつ mod p で平坦なら、p 倍の核（\(\mathrm{Tor}_1\) を mod p の Tor に置き換えて計算）は消える。T2-2 はこの形で進められる。</li>
+  <li><b>Cor 2.44</b> の証明で使うのも \(\psi\colon A\{x\}^\wedge\to A\{y\}^\wedge\)（\(x_i\mapsto\varphi(y_i)\)）の p 完全忠実平坦性なので、ちょうど形式化済みの形。ただし Lean は \(\mathbb Z\) 上なので、p 完備な δ 環 \(A\) 上への底変換が要る。</li>
+  <li>座標ごとの版：\((p,\varphi(x_{(s,0)}))\) が正則列（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateRegular.lean">FreeDeltaFrobeniusCoordinateRegular:55</a>）、\(L/(p,z)\to L/(p,\varphi(z))\) が忠実平坦（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateResidueFlat.lean">FreeDeltaFrobeniusCoordinateResidueFlat:109</a>）。Cor 2.44 の \(\psi_B\) に沿う envelope の計算に向けた部品。</li>
+  <li>これらは<b>どれも今は監査以外から使われていない</b>。</li>
+</ul>
+
+<h4>Lean：Joyal の \(\delta_n\)（Rem 2.13・2.14）</h4>
+<ul>
+  <li>前の塊の \(w\colon R\to W(R)\)（ghost 座標が \(\varphi^n\)）を相対自由 δ 環の生成元に当てた Witt 係数 <code>relativeFreeWittGhostCoefficient D s n</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostRecurrence.lean">RelativeFreeWittGhostRecurrence:17</a>）が \(\delta_n(x_s)\)。</li>
+  <li>「\(\delta_n\) は δ についてモニックで次数 \(n\)」の Lean 版：第 \(n\) Witt 係数 ＝ \(x_{(s,n)}\)＋（下の \(n\) 段の変数の多項式）、表示は一意（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostTriangular.lean">RelativeFreeWittGhostTriangular:47</a>）。基底 \(A\) の p 正則性を仮定する。</li>
+  <li>Rem 2.14 の Lean 版：\(x_{(s,n)}\mapsto\delta_n(x_s)\) が \(A[x_{(s,n)}]\) の三角形の代数自己同型（<code>relativeFreeWittCoordinateEquiv</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittCoordinateChange.lean">RelativeFreeWittCoordinateChange:110</a>）。逆は段数の強帰納で作る。</li>
+  <li>E3 には不要だが<b>主定理の経路にある</b>：André の一段の拡大で、\(d\) で割る包の関係式 \(\delta^n(dx-a)\) を Witt 座標に移すとモニックな方程式になる（<code>Division/Relations</code>）。原典では Prop 7.11 経由なので出てこない計算（D12）。</li>
+</ul>
+
+<div class="box">
+<p class="label">この塊で押さえること</p>
+<ol>
+  <li>台を多項式環として定義するので、Lemma 2.11 の前半は定義で、普遍性だけが定理。整数版は原典の経路（Frobenius の持ち上げ＋p ねじれなし）、相対版は W₂ 切断を直接与える経路。</li>
+  <li>Frobenius の平坦性は p 完全忠実平坦性まで（mod p の expand 写像の自由性から）。原典の本当の忠実平坦性はないが、E3 で使う場面（Lemma 2.36 (a)、Cor 2.44）は p 完全版で足りる見込み。今は未使用。</li>
+  <li>Rem 2.13・2.14 は相対版で形式化済みで、André の一段の拡大（D12 の経路）で使っている。</li>
+</ol>
+</div>
+
 <div class="box">
 <p class="label">読んで分かったこと（§2.1）</p>
 <ul>
