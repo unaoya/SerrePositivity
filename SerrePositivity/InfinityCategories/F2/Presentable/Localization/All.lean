@@ -7,6 +7,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialPieces
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorization
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCandidates
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceCosliceColimits
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -28,11 +31,13 @@ f3 の準備：固定始域の全 coslice 部分圏と、同じ始域から閉�
 各段階の compact 源からの任意の指定 coslice 点を、同じ余錐脚の上の実辺で因子化する入口。
 二つの実表示を結ぶ coherent 交互列と共通部分余極限は未構成。
 全射の filtered 生成性・飽和射圏全体の accessibility は未証明。
-P への供給依頼（コーディネータ経由）：indComparison_isFullyFaithful の引数分離。
-小さい元の i の充満忠実性・各像の compact 性、G の同じ濃度の filtered 保存と
-元の i の全自然回収から IsFullyFaithful G を返す公開入口。
-現行の IsKappaCompactGenerating 引数の presentation はこの補題の証明に不要だが、
-未証明の生成性を入力せず適用するための公開された分離入口はまだない。複製しない。
+P のコミット 1381907fe の引数分離済み indComparison_isFullyFaithful_of_compact を使用。
+未証明の presentation を渡さず、実比較の充満忠実性と同型飽和した実像の
+κ-accessibility・元の射圏での κ-filtered 余極限閉性・包含の保存性を構成した。
+同じ濃度で compact な閉包内の全射と元の全生成射を含む実像も構成済み。
+固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
+飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
+強飽和性はまだ未証明。P の未公開葉は使用していない。
 未証明事項は以下の旧記録のまま残す。「未採用」は旧停止時の状態を表す。
 
 ## 旧停止時の引き継ぎ（2026-10-25、設計変更提案時点）
