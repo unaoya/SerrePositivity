@@ -61,6 +61,12 @@
 - `coherentRightSlicePost_comp`
 - `coherentCompositionPrism_post`
 - `coherentHomSliceComparison_post`
+- `coherentRightSlicePostFiber_comp` / `coherentHomSliceFiberComparison_post`
+
+初回報告後も続行し、同じ底上の fiber 射へ降ろした。
+元の Hom 比較の fiber 内の厳密可換式と合成則は1783 jobsで対象ビルド通過。
+専用公理監査も9358宣言で通過（標準三公理のみ）。
+この式から指定輸送比較の合成則への接続は引き続き未完。
 
 **次の一手**：同じ実右 slice 写像と元の合成 prism の自然性を、
 元の指定普遍輸送比較へ移す。`relativePrismSpecified_naturality`、
