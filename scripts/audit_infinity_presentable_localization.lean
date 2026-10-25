@@ -560,3 +560,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @compatibleRightPiece_nerve_isRightCofinal
 #check @exists_cofinalSmallPartialColimitFamily
 #check @cofinalSmallPartialColimitFamily_values_compact
+
+#check @exists_compatiblePiecePresentations
+#check @nonempty_compatiblePiece_colimitVertexIso
+#check @exists_relativeSmallPresentationPiece
