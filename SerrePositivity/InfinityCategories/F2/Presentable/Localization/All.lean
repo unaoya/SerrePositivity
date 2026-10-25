@@ -27,6 +27,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceArrows
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCommonPresentations
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallCoproducts
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCoproductColimits
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -76,7 +77,10 @@ P-10 の公開コミット 49c7fee8e の共通 filtered 添字を使い、小さ
 compact 表示を同じ添字へ揃えた。全余錐の元の頂点・普遍性・全項の compact 性を保持する。
 各成分の全図式と普遍余錐を一つの関手圏内の図式・普遍余錐にまとめ、
 非可算正則 μ で μ-small な離散形状について、元の指定余積の実像への所属を証明した。
-任意の小さい余積への拡張はまだ未証明。
+compact な閉包内射の任意の小さい余積を、有限部分余積の全左 Kan 図式と
+濃度変更後の部分余極限から実像に回収した。これと共通 filtered 表示を合わせ、
+任意の実像対象の全小余積閉性、その実像内での存在、包含の指定余積保存を構成した。
+同じ濃度の無限冪の評価には IsCardinalChangeBound aleph0 μ を明示する。
 二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・

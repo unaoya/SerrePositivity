@@ -160,3 +160,10 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @discreteArrowFamilyCocone_isColimit
 #check @discreteArrowFamilyCocone_apex_evaluate
 #check @indArrowImage_smallCoproduct_colimit_mem
+
+#check @indArrowImage_coproduct_colimit_mem_of_compactRows
+#check @compactArrowCoproduct_finitePartialDiagram
+#check @indArrowImage_compactCoproduct_colimit_mem
+#check @indArrowImage_coproduct_colimit_mem
+#check @indArrowImage_hasSmallCoproducts
+#check @indArrowImageInclusion_preservesSmallCoproducts

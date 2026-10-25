@@ -33,17 +33,19 @@ private lemma chosenColimitVertex {T Y : SSet.{u + 1}} [Quasicategory Y]
     ((chosenColimitCoconeFamily T Y hT).app _ (functorVertex p))).vertex = _
   exact functorVertexCocone_apex _
 
-/-- 同じ濃度で小さい離散形状の元の指定余極限は、実 Ind 像に属する。 -/
-lemma indArrowImage_smallCoproduct_colimit_mem
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (hμ : Cardinal.aleph0 < μ)
+/-- compact な行の余積閉性から、同期した全実像対象の余積閉性を組み立てる。 -/
+lemma indArrowImage_coproduct_colimit_mem_of_compactRows
+    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
     (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
-    (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
-      Compact.IsKappaCompact.{u, u + 1} μ f →
-      arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f)
-    {B : Type u} (hB : IsKappaSmall μ (nerve (Discrete B)))
+    {B : Type u}
+    (hrows : ∀ (q : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶
+        (ihom (Δ[1] : SSet.{u + 1})).obj C) (cq : JoinCocone q), IsColimitCone cq →
+      (∀ t, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ t)) →
+      (∀ t, arrowVertexEdge (q.app _ t) ∈ generatedEdges edges) →
+      IndArrowImageVertex edges G cq.vertex)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶
       indArrowImageCategory edges G)
     (c : JoinCocone (D ≫ indArrowImageInclusion edges G)) (hc : IsColimitCone c) :
@@ -107,12 +109,7 @@ lemma indArrowImage_smallCoproduct_colimit_mem
           generatedEdges edges
         rw [hq b]
         exact fullSubcomplexOnVertices_vertex ((d b).app _ k)
-    have hs := (stronglySaturatedClosure_stronglySaturated
-      (SSet.uliftFunctor.{u + 1, u}).obj (Set.range edges)).2.2.1
-        (nerve (Discrete B)) q cq hcq hqs
-    have hqc' := isKappaCompact_smallQuasicategoryColimit_universe hμ
-      (nerve (Discrete B)) hB cq hcq hqc
-    have him := hcover cq.vertex hqc' hs
+    have him := hrows q cq hcq hqc hqs
     have hval : cq.vertex = (R ≫ L).app _ k := by
       rw [chosenColimitVertex]
       change L.app _ ((functorVertexEquiv T Y)
@@ -134,5 +131,30 @@ lemma indArrowImage_smallCoproduct_colimit_mem
     VertexIso.map (colimitConeIso _ c (chosenColimitCocone_isColimit T Y hT E) hc)
       (sliceUnderProjection E)
   exact (indArrowImageVertex_iff_vertexIso edges G hi).mp hm
+
+/-- 同じ濃度で小さい離散形状の元の指定余極限は、実 Ind 像に属する。 -/
+lemma indArrowImage_smallCoproduct_colimit_mem
+    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (hμ : Cardinal.aleph0 < μ)
+    (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
+    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
+      ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
+    (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
+      Compact.IsKappaCompact.{u, u + 1} μ f →
+      arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f)
+    {B : Type u} (hB : IsKappaSmall μ (nerve (Discrete B)))
+    (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶
+      indArrowImageCategory edges G)
+    (c : JoinCocone (D ≫ indArrowImageInclusion edges G)) (hc : IsColimitCone c) :
+    IndArrowImageVertex edges G c.vertex := by
+  apply indArrowImage_coproduct_colimit_mem_of_compactRows edges hC G hff hG hcompact
+    (B := B) ?_ D c hc
+  intro q cq hcq hqc hqs
+  apply hcover cq.vertex
+  · exact isKappaCompact_smallQuasicategoryColimit_universe hμ
+      (nerve (Discrete B)) hB cq hcq hqc
+  · exact (stronglySaturatedClosure_stronglySaturated
+      (SSet.uliftFunctor.{u + 1, u}).obj (Set.range edges)).2.2.1
+        (nerve (Discrete B)) q cq hcq hqs
 
 end SerrePositivity.InfinityCategories.F2.Presentable.Localization
