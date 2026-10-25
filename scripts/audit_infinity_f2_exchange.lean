@@ -12,6 +12,9 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionF
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPostNaturality
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentReverseCompositionSpecifiedPost
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentReverseSlicePostFiber
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareLiftComparison
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePrismNativeSourceIso
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalFiberSourceIsoComposition
 import Lean.Util.CollectAxioms
 
 /-!
@@ -51,6 +54,10 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionReversePrism_post
 #check @SerrePositivity.InfinityCategories.F2.coherentReverseSliceFiberComparison_post
 #check @SerrePositivity.InfinityCategories.F2.coherentCompositionReverseSpecified_post
+#check @SerrePositivity.InfinityCategories.F2.transportSquareCanonicalComparison_eq_transportIso
+#check @SerrePositivity.InfinityCategories.F2.diagonalFiberTransport_sourceIso_heq_action
+#check @SerrePositivity.InfinityCategories.F2.relativePrismNativeEndpointIso_heq_sourceIso
+#check @SerrePositivity.InfinityCategories.F2.diagonalFiberTransport_sourceIso_trans
 
 open Lean in
 run_cmd do

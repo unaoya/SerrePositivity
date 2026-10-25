@@ -85,6 +85,15 @@ fiber 射へ後合成すると、同じ二延長の像の指定比較そのも�
 統合ビルド2788 jobs、専用監査9496宣言（標準三公理のみ）で通過。
 これで終域後合成に関する指定比較の移送まで完成したが、Ncomp の二射合成則とは別。
 
+現在の追加接続：元の合成四角形の持ち上げを `TransportSquareLift` に保持し、
+同じ三辺・上二頂点の境界式を公開した。
+`transportSquareCanonicalComparison_eq_transportIso` は、元の選択済み持ち上げの
+三辺の指定比較を貼った式が元の `TransportIntervalSquare.transportIso` そのものであること。
+`diagonalFiberTransport_sourceIso_heq_action` は元の sourceIso の代表辺を同じ全区間作用へ戻す。
+`diagonalFiberTransport_sourceIso_trans` はその指定合成則。
+`relativePrismNativeEndpointIso_heq_sourceIso` は元の native 終点像を同じ sourceIso へ同定する。
+三対象統合ビルド3225 jobsで通過。Ncomp は引き続き未完。
+
 **次の一手**：同じ実右 slice 写像と元の合成 prism の自然性を、
 元の指定普遍輸送比較へ移す。`relativePrismSpecified_naturality`、
 `pointedHomMorphismValueComparison_heq_prism`、
@@ -95,6 +104,11 @@ fiber 射へ後合成すると、同じ二延長の像の指定比較そのも�
 左反転 Hom 側は最終対象が一点に固定された元の逆合成 prism なので、
 右 Hom 側の終域後合成と混同せず、同じ三射の高次整合で両側を照合する。
 次は元の零面・最後辺の指定自然性と、この移送式との接続を照合する。
+直近の具体手順：底辺の同じ普遍 prism を固定した二つの実四角形の相対延長比較を取り、
+三辺の指定自然性と `sourceIso_trans` で中間頂点像を消去する。
+任意の `TransportSquareLift.comparison` と元の transportIso の一致はまだ未証明。
+今回回収したのは元の canonical な持ち上げについての厳密な定義式である。
+その選択照合後、元の coherent 合成四角形の実持ち上げで二段比較を計算する。
 `pointedReverseKanCompositionTransportFamily` は逆豊穣圏の一点を終対象に固定するため、
 終域後合成の自然性だけから二射の指定評価比較の一致を結論しない。
 Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong で a④へ進む。
@@ -112,6 +126,9 @@ Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong �
   専用監査9390宣言で通過（標準三公理のみ）。
 - 元の指定対角比較の後合成貼り合わせ：二モジュールの対象ビルド2691 jobsで成功。
   これを含む専用監査9416宣言で通過（標準三公理のみ）。
+- 元の持ち上げ四角形の三辺比較の回収2072 jobs、native 像と sourceIso の一致3219 jobs、
+  指定 sourceIso 合成則2684 jobs。三対象統合3225 jobsで成功。
+  新規七葉を含む専用監査9553宣言で通過（標準三公理のみ）。
 - 専用監査は読込済み FilteredExchange の生成宣言を含む全宣言を宣言元で選別し、
   推移的な依存公理を検査する。上記の監査は標準三公理のみ。
 - 以後のコミット本文には、構成した宣言と公開名・検証対象と jobs 数・監査結果を記録する。
