@@ -6,7 +6,7 @@
 現在の入力の正確な形、原典と経路が異なる箇所を記す正本である。
 数学の説明は [解説](../exposition/ja/exposition-ja.tex) の付録 A（`par:bs-thm74`、`par:bs-andre`、
 `par:bs-cor812` ほか）に置き、ここでは繰り返さない。
-残る二つの入力を ∞ 圏の基盤で解消する計画は [∞ 圏の計画](infinity-categories.md) が正本である。
+残る入力（E3）を ∞ 圏の基盤で解消する計画は [∞ 圏の計画](infinity-categories.md) が正本である。
 
 ## 0. 現在地（2026-10-25）
 
@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | B0〜B2 | δ 環、prism、完全 prism と perfectoid 環の対応（§2・§3、Thm 3.10） | `BhattScholze/DeltaRing.lean`、`PerfectOrientedPrism.lean`、`PerfectPrismQuotientPerfectoid.lean` |
 | B3 | Cor 7.3：semiperfectoid 商の perfectoid 化の存在と普遍性 | `exists_perfectoidization_of_semiperfectoid_quotient` |
-| B4 | Thm 7.4：導来 p 完備な全射商の任意の perfectoid 化は全射（André を使わない経路） | `surjective_of_isPerfectoidization_of_semiperfectoid_quotient` |
+| B4 | Thm 7.4：導来 p 完備な全射商の任意の perfectoid 化は全射（原典どおり André 経由。旧経路は `…_of_rootEnvelope`） | `surjective_of_isPerfectoidization_of_semiperfectoid_quotient` |
 | B5 | Lemma 10.3（perfectoid 環の完備導来テンソルは離散で perfectoid）、Remark 10.7（`perfectoidIdealMod_idempotent`、全 N） | `BhattScholze.PerfectoidAlmost`、`lemma103_perfectoidTensor` |
 | André | Thm 7.14：絶対整閉な perfectoid 環への p 完全忠実平坦な拡大 | `BhattScholze/Inputs/AndreFlatness.lean`（証明済み） |
 | Prop 8.13 環版 | 指定済みの perfectoid 化をもつ図式での完備導来テンソルとの可換性 | `prop813CompletedTensorMap_isPerfectoidization` |

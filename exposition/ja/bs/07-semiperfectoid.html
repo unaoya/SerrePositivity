@@ -19,7 +19,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 7 章</nav>
 <h1>第 7 章　semiperfectoid 環と perfection（§7）</h1>
-<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25、W2 後。W3 実施中）。原典 pp.55–62。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25、W2 後。W3 は f4dcf1d1a・7b82e02aa で完了）。原典 pp.55–62。E3 に必要な項目だけを載せる（判定の根拠は <a href="inventory.html">項目一覧</a>）。</p>
 <p>§7 は三つの小節からなる。§7.1 は semiperfectoid 環 \(S\)（perfectoid 環の商）について、全ての prism の中での始対象（Prop 7.2）と普遍 perfectoid 環 \(S_{\mathrm{perfd}}\)（Cor 7.3）を作り、主定理「\(S\to S_{\mathrm{perfd}}\) は全射」（Thm 7.4）を述べる。§7.2 は導来 prismatic コホモロジー（Construction 7.6）と、それが離散な場合の性質（Lemma 7.7、Ex 7.9、Prop 7.10）。§7.3 は prismatic site の被覆の持ち上げ（Prop 7.11）から André の補題（Thm 7.14）を出し、Thm 7.4 を証明する。</p>
 <p>形式化は §7.1 と §7.3 の環の結果（Cor 7.3、Thm 7.4、Thm 7.14）を、§7.2 を使わずに証明している。§7.2 は E3 の Def 8.2 の土台で、未形式化（A2・A3）。</p>
 
@@ -75,7 +75,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>2026-10-25 の調査（import グラフからの到達性の計算と、宣言の型の突き合わせ）による。終点は Thm 7.14（<code>Andre/Transfinite/Theorem714</code>）、B4（<code>Semiperfectoid/SemiperfectoidSurjectivity</code>）、Rem 7.15 の最終 3 定理、root の集約。</p>
 
 <div class="box refactor">
-<p class="label">BR9　B4（Thm 7.4）を Thm 7.14 の系にするか — 決定（10-25）：原典に揃える。W3 で実施中</p>
+<p class="label">BR9　B4（Thm 7.4）を Thm 7.14 の系にするか — 決定（10-25）：原典に揃える。W3 で実施済み（f4dcf1d1a・7b82e02aa）</p>
 <p><b>いまの B4 の証明.</b> perfectoid 環 \(R\) と全射 \(R\to S=R/J\) について、完全 prism 上で「\(J\) の元に両立する p 冪根を添加する割り算包」を作り、その完備化が p 完全忠実平坦な perfectoid 拡大 \(R\to T\) になることを示す（<code>PerfectPrismRootedPerfectoidExtension</code>）。\(T\) 上では \(J\) の生成元が根を持つので全射性が出て、それを \(R\) へ降下する（<code>RootedFamilyPerfectoidSurjectivityDescent</code>）。André の補題を使わない。</p>
 <p><b>原典の証明.</b> Thm 7.4 の原典の証明は、André の補題（Thm 7.14）で絶対整閉な perfectoid 環 \(T\) へ p 完全忠実平坦に拡大し（絶対整閉なら全ての元が両立する p 冪根を持つ）、\(T\) 上の全射性を降下する。</p>
 <p><b>なぜ二つあるのか.</b> B4 を証明した時点（10-16 18:05、<code>ca7121e79</code>）では André の補題が未証明の引用だったので、引用を避けるために André を使わない経路を新しく作った。翌日 10-17 13:18（<code>f9b959e61</code>）に André の補題が別経路で証明されたので、この理由はもう成り立っていない。原典どおりの André 経由版 <code>surjective_of_isPerfectoidization_of_andre</code>（Semiperfectoid/RootedExtension/AndreSurjectivityConditional:18）は B4 本体と同じ主張で、今は無条件に成り立つ（docstring の「sorryAx に依存」は古い）。</p>

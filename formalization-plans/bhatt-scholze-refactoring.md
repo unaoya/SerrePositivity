@@ -10,6 +10,7 @@ BS の証明済み構成を保ち、既存 API の再利用、一般補題の配
 原典の証明経路の正本は [BS 主計画](bhatt-scholze.md)。この計画は証明経路や引用範囲を変更しない。
 
 2026-10-18 時点の注意：André（Thm 7.14）は証明済みで、`Inputs/AndreFlatness.lean` に `sorry` はない。
+2026-10-25 追記：Q10 は新しい共通 API を作らず、既存の `IsPerfectoidization.precomp_ringEquiv` の適用で済ませた（BS-W1）。B4 は André 経由に改め（BR9、BS-W3）、Rooted 系列は `Semiperfectoid/RootEnvelope/` に移した。以下の記述のファイルの位置は W2・W3 前のもの。
 以下の「André 条件付き監査」「André の既存引用」の記述は、条件付きの途中成果を別に監査するという意味でのみ有効である。
 CLMST は完了したので、「CLMST 計画 §0.2」の担当・待合せは [archive/clmst.md](archive/clmst.md) の記録として扱う。
 

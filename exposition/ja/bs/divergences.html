@@ -33,7 +33,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>D8</td><td>Thm 3.10</td><td>圏同値ではなく三つの事実で述べる。逆向きは \(W(R^\flat)\) の PD 完備化</td><td>関手・圏同値の構成が不要</td><td>\(A_{\inf}(R)=W(R^\flat)\) を直接使わず、PD 完備化の層が一枚余計。Mathlib の <code>fontaineTheta</code>（\(W(R^\flat)\) 上）と形が合わない</td><td>三つの事実の方は簡単、PD 層は余計</td><td>三つの事実は保つ。\(W(R^\flat)\) との比較を加えて原典・Mathlib に寄せる（BR29）</td></tr>
 <tr><td>D9</td><td>Thm 3.10 の Fontaine 比較</td><td>一般版と正則版（d₀ 正則・Fontaine 核進分離を仮定）の二系統</td><td>—</td><td>正則版は一般版に含まれる重複（約 300 行）</td><td>一般版の方が簡単</td><td>一般版に一本化（BR16）</td></tr>
 <tr><td>D10</td><td>Prop 7.2・Cor 7.3</td><td>全 prism の中の始対象（超限帰納）を経由せず、完全試験 prism への写像の始対象を直接作る</td><td>超限帰納が不要（完全化の後では d が非零因子）</td><td>全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) がない。Prop 7.10（\(\Delta_S=\Delta^{\mathrm{init}}_S\)）を述べるときに要るかもしれない</td><td>Lean の方が簡単</td><td>Lean を保つ。A3 で \(\Delta^{\mathrm{init}}_S\) が要るか確かめる</td></tr>
-<tr><td>D11</td><td>Thm 7.4</td><td>（W3 前）André を使わない根付き拡大の経路。（W3 後）原典どおり André 経由</td><td>André 経由版は、原典の「有限生成・単項への帰着」も不要（絶対整閉なので全元が同時に根を持つ）</td><td>旧経路は B4 専用の 33 本を要した</td><td>André 経由版は原典より簡単</td><td>W3 で André 経由に揃える（決定済み）。旧経路は別証明として保存</td></tr>
+<tr><td>D11</td><td>Thm 7.4</td><td>（W3 前）André を使わない根付き拡大の経路。（W3 後）原典どおり André 経由</td><td>André 経由版は、原典の「有限生成・単項への帰着」も不要（絶対整閉なので全元が同時に根を持つ）</td><td>旧経路は B4 専用の 33 本を要した</td><td>André 経由版は原典より簡単</td><td>W3 で André 経由に揃えた（f4dcf1d1a・7b82e02aa）。旧経路は Semiperfectoid/RootEnvelope/ に別証明として保存</td></tr>
 <tr><td>D12</td><td>Thm 7.14 の一段の拡大</td><td>Prop 7.11(2)（導来 prismatic コホモロジー・HT 比較）の代わりに、モニック根の割り算包の pd 計算（Rem 7.15）</td><td>当時は HT 比較なしで André の補題が証明できた</td><td>一段の拡大のために根付き拡大の構成（100 本規模）が要る。A1〜A3 ができれば原典の一段は Prop 7.10 の議論の系として短い</td><td><b>A3 の後は原典の方が簡単</b></td><td>今は Lean を保つ。A3 の後に原典に揃えるかを決める（BR30）</td></tr>
 <tr><td>D13</td><td>Lemma 10.3</td><td>完全環の Tor 独立性（原典は [BS17, Lemma 3.16]、単体的な bar 構成）を、平坦な全射表示による代数的な証明で置き換える</td><td>外部文献と単体的な道具が不要。共通基盤の完全環の Tor 消滅を再利用</td><td>—</td><td>Lean の方が簡単</td><td>Lean を保つ</td></tr>
 <tr><td>D14</td><td>Prop 10.2・10.4</td><td>完全忠実性（RHom の保存）ではなく、必要な拡大閉性だけを完備テンソルの判定で示す</td><td>必要な分だけで短い</td><td>Prop 10.4 の全体（A8 で要る範囲）は別に要る</td><td>必要な範囲では Lean の方が簡単</td><td>今は保つ。A8 で Prop 10.4 が要るときは原典の流れ（Lemma 10.3 → 完全忠実）で足す</td></tr>
@@ -42,7 +42,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <h2>まとめ</h2>
 <ul>
   <li><b>Lean の方が簡単で、保つもの</b>：D1（W₂ 切断）、D3（Lemma 2.25）、D5（向き付き prism）、D10（Prop 7.2 を経由しない Cor 7.3）、D13（Lemma 10.3 の Tor 独立性）、D11 の André 経由版（単項への帰着が不要）。</li>
-  <li><b>原典の方が簡単で、揃えるもの</b>：D6（剛性の仮定、BR27）、D9（Fontaine 比較の正則版、BR16）、D11（Thm 7.4、W3 で実施中）。</li>
+  <li><b>原典の方が簡単で、揃えるもの</b>：D6（剛性の仮定、BR27）、D9（Fontaine 比較の正則版、BR16）、D11（Thm 7.4、W3 で実施済み）。</li>
   <li><b>今は保ち、後で原典に揃える候補</b>：D12（Thm 7.14 の一段、A3 の後、BR30）、D15（Prop 8.13、A7 の後、BR31）。どちらも HT 比較と導来 prismatic コホモロジーができれば原典の方が短くなる。</li>
   <li><b>両方を持つもの</b>：D7（Lemma 3.9）、D8（Thm 3.10）。部品は保ち、原典の形の主張を加える。</li>
 </ul></main>
