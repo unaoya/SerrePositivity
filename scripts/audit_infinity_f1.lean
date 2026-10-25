@@ -9723,3 +9723,145 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) native family: no declarations audited"
   logInfo m!"Ind-S native-triangle family audit passed: {count} declarations."
+
+-- Ind-S (9)：実全族空間間の longHom と全 native Hom 回収（厳密切断は未供給）。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeCompositeValue },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNativeReadout },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilySpaces },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleReadoutMap },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) readout: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeCompositeValue,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNativeReadout,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilySpaces,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleReadoutMap ]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) readout: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) readout: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) readout: no declarations audited"
+  logInfo m!"Ind-S native-triangle readout audit passed: {count} declarations."
+
+-- Ind-S (9)：実 encoder と同じ固定ホーン内の可逆比較。厳密切断は未供給。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleEncoderMap },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleSplitReduction },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) encoder: forbidden lane dependency: {mod.module}"
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless #[`SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleEncoderMap,
+        `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleSplitReduction].contains
+        env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) encoder: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) encoder: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) encoder: no declarations audited"
+  logInfo m!"Ind-S native-triangle encoder audit passed: {count} declarations."
+
+-- Ind-S (9) 限定例外（ユーザー許可 2026-10-26）：既存の
+-- F1/MappingSpaces/CompositionCorrespondenceDiagonalPullback →
+-- F1/KanModels/KanEquivalenceLiftingFibration 経由の推移 F2/CatInfinity のみ許可。
+-- その他の F2、KST、EInfinity は禁止。上流と F2 は読み取り専用。
+-- R が第 I 段終了時に当該既存依存を Core へ移す。既存の厳しい監査項は保持する。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledCompositionDiagonalTransport },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  let entry := `SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration
+  unless env.header.modules.any (·.module == entry) do
+    throwError "Ind-S (9) transport: missing authorized upstream entry"
+  -- Removing the authorized entry must cut every path from the new leaf to F2.
+  let mut todo := #[`SerrePositivity.InfinityCategories.F1.Diagrams.ControlledCompositionDiagonalTransport]
+  let mut visited : Array Name := #[]
+  while !todo.isEmpty do
+    let mod := todo.back!
+    todo := todo.pop
+    if mod == entry || visited.contains mod then continue
+    visited := visited.push mod
+    if mod.toString.startsWith "SerrePositivity.InfinityCategories.F2" then
+      throwError "Ind-S (9) transport: F2 bypasses authorized entry: {mod}"
+    let some idx := env.getModuleIdx? mod | continue
+    for imp in env.header.moduleData[idx.toNat]!.imports do
+      todo := todo.push imp.module
+  for mod in env.header.modules do
+    let n := mod.module.toString
+    if #["SerrePositivity.EInfinity", "SerrePositivity.KST"].any (n.startsWith ·) ||
+        (n.startsWith "SerrePositivity.InfinityCategories.F2." &&
+          !n.startsWith "SerrePositivity.InfinityCategories.F2.CatInfinity.") then
+      throwError "Ind-S (9) transport: forbidden lane dependency: {mod.module}"
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless env.header.modules[idx.toNat]!.module ==
+        `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledCompositionDiagonalTransport do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) transport: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) transport: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) transport: no declarations audited"
+  logInfo m!"Ind-S controlled diagonal transport audit passed: {count} declarations."
+-- Ind-S (9)：三対象ラベルの有限 path 座標（全次数の encoder 構成用）。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelPathCoordinates },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) label coordinates: forbidden lane dependency: {mod.module}"
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless env.header.modules[idx.toNat]!.module ==
+        `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelPathCoordinates do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) label coordinates: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) label coordinates: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) label coordinates: no declarations audited"
+  logInfo m!"Ind-S triangle-label path-coordinate audit passed: {count} declarations."

@@ -6,17 +6,19 @@
 - 深層編集は禁止、F2 は読み取り専用、K-B・Sp・EInfinity は import しない。
   F1 の straightening は使用可。(8) の限定推移 import 例外は今回へ拡大しない。
 - 今回：(9) 制御二胞体族と (9b) 因子分解三単体族。提供先は K-B。
-- 現在地：(9b) 完了 77a33b4c9。像条件 f18c411f3。(9) は採用済み正規化で続行。
+- 現在地：(9b) 完了 77a33b4c9。像条件 f18c411f3、正規化補助 69b3436ab、
+  長 Hom からの実二胞体全族 218e5b449。逆向き longHom 実射も対象ビルド通過。
 - 主要補助宣言：tetrahedronFamilyExtensionSpace_compare・factorizationTetrahedronFamily_faces・
   innerHornFamily_lift_with_vertices。いずれも両主仕様全体の供給完了とは扱わない。
 - 依存と提供：Core/F1/mathlib の既存界面を読み取り専用で使用。連絡・提案はユーザー経由。
 - 保存済み：正規化など6葉 69b3436ab、85宣言・F1全監査通過。
-- 今回保存：全族制御・小さい native Hom 回収など7葉、23宣言・F1全監査通過。
-- 未コミットの続稿：TriangleNativeCompositeValue・ControlledTriangleNativeReadout。
+- 保存済み追加7葉：全族制御・小さい native Hom 回収、23宣言・F1全監査通過。
+- 今回保存対象：TriangleNativeCompositeValue・ControlledTriangleNativeReadout・
+  ControlledTriangleFamilySpaces・ControlledTriangleReadoutMap、KanIntervalEvaluation の補助名重複修正。
 - 既知の問題：(9) の encode・longHom の存在と厳密切断は未供給。(9b) は全 HEq 込みで完了。
 - 残り：下記三段目 2〜5。見積りは制御全族の有限座標を確認した後に更新する。
-- 次の一手：旧 (9) の encode・longHom の厳密切断を構成し、採用済み正規化後の
-  全対角式と元の t との固定ホーン内の可逆比較を接続する。
+- 次の一手：対角制限の既存 API の import 入口を確定し、単射 encode と厳密切断、
+  正規化後の全対角式と元の t との固定ホーン内の可逆比較を接続する。
 - 検証は自分の対象と監査だけ。set -o pipefail、保存は git commit --only。
   新規 sorry・公理・ModelCategory SSet 仮定を入れない。実施記録はコミット本文へ。
 - 停止は二段目完了・設計変更提案・所有 import 閉包破損・24時間のみ。ビルド失敗では停止しない。
@@ -264,25 +266,33 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
 残件は旧 (9) の厳密切断・各 k の full native Hom 回収、正規化後の全対角式と可逆比較。
 
 
-## (9) 採用後の構成補助
+## (9) 採用後の構成補助・現在地
 
-- SplitTriangleNormalization：厳密切断から冪等性・読出し保存・正規化後の対角式、
-  可縮 Kan な同じ固定ホーン fiber 内の VertexIso を得る（存在は条件付き）。
-- ContractiblePrescribedRetraction：可縮 Kan 始域からの単射と整合する全頂点読出しから、
-  その全頂点を厳密に保つ左逆を構成する。encode の単射性はまだ残る。
-- TriangleLongHomReplacement・TriangleNativeHomControl：二短辺を保持して全 native Hom を
-  指定写像へ置換する。内部合成 path は全 path に定値で、合成端の指定で関手則を満たす。
-- TrianglePathInterval・KanIntervalEvaluation：native path と Δ[1] の厳密同型を作り、
-  大きい宇宙の全 K の合成端固定 fiber の可縮性を証明。
-  公開名 triangleLongHomFamilyFiber_isContractibleKan。
-対象6葉のビルド・85宣言の葉監査・全 F1 監査が通過。
-TriangleNativeFamilyControl は同じ全ホーンを保つ各 K₀ の native Hom 指定を構成済み。
-次は有限 native Hom 制御を全 K に整合させ、単射 encode と全頂点読出しを実構成する。
+- 69b3436ab：正規化の冪等性・読出し保存・同じ固定 fiber 内の VertexIso、
+  単射 encode からの頂点指定左逆、有限 native Hom 置換、合成端固定 L の可縮性。
+  対象6葉・85宣言・F1全監査通過。その後、重複した evaluateFunctorAt_pre を新設葉から除き、
+  既存 PreFiberKan の正本を import する形に修正。補助6葉は84宣言で再監査通過。
+- 218e5b449：controlledTriangleFamily_exists_of_longHom
+  （ControlledTriangleLongHomFamily）。合成端固定 q から元の全ホーンを厳密に持つ F を作り、
+  各 k の全 native Hom の関手頂点を HEq で回収。追加7葉23宣言・F1全監査通過。
+- 今回：controlledTriangleReadoutMap_exists（ControlledTriangleReadoutMap）。
+  要求正本の実 T → L と全 t,k の full native Hom 回収。単なる直接 path の値ではない。
+  任意の二胞体の合成端を固定短辺から依存和で同定し、零骨格指定持ち上げを二度使う。
+  正本から切り出した読出し要求型への直接適用が通過。実 encode・固定 fiber の VertexIso、
+  controlledTriangleSplit_of_mono_encoder による単射 encoder への切断還元を追加。
+  対象8葉61宣言・F1全監査通過（読出し27、encoder等13、対角輸送1、path座標20）。
+  入口は ControlledTriangleReadoutMap・ControlledTriangleEncoderMap・
+  ControlledTriangleSplitReduction・ControlledCompositionDiagonalTransport・TriangleLabelPathCoordinates。
+  encode の単射性・厳密切断は未供給で、(9) 全体の完了とは扱わない。
 
+ユーザー許可（2026-10-26）：(9) 新規葉に限り、既存の
+F1/MappingSpaces/CompositionCorrespondenceDiagonalPullback から
+F1/KanModels/KanEquivalenceLiftingFibration 経由の推移 F2/CatInfinity import を許可。
+確認済み閉包は本体952モジュール中 F2/CatInfinity が22、KST・EInfinity は0。
+その他の F2、F2 の直接 import は禁止。例外は新規監査項に明記する。
+R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core へ降ろす。
+深層・F2 は読み取り専用。残件は単射 encode・厳密切断・正規化後の全対角式。
 
-公開 controlledTriangleFamily_exists_of_longHom（ControlledTriangleLongHomFamily）：
-全入力での合成端を固定した q から、同じ元の全ホーンを厳密に持つ二胞体全族 F を作り、
-各 k の全 native Hom の関手頂点を HEq で回収。単なる直接 path の値ではない。
-controlledTriangleFamily_exists_with_native_vertices は小さい native Hom を直接入力する版。
-追加7葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。
-任意の元の二胞体からの逆向き読出しを続稿で構成中。encode の単射性・厳密切断は未供給。
+次の三段目：三対象ラベルの二切断座標 → 対角上の全区間を保つ Kan 延長 →
+二短辺・native Hom・標準全対角を保つ全次数の encoder → 単射性 → 厳密左逆。
+単なる可縮性から encode の単射性や厳密切断は結論しない。

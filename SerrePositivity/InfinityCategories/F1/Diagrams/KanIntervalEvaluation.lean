@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLiftin
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!
 概要：Kan 標的への区間族の終点評価と、その固定終点全族の可縮性。
@@ -57,23 +58,12 @@ lemma kanIntervalFamilyFiber_isContractibleKan (H K : SSet.{u}) [KanComplex H]
   letI := kanIntervalEvaluation_trivialKanFibration H
   exact vertexFiber_isContractibleKan _ _
 
-/-- 始域の同型による前合成と頂点評価は厳密に可換。 -/
-lemma evaluateFunctorAt_pre {A B H : SSet.{u}} (f : A ⟶ B) (a : A _⦋0⦌) :
-    (pre f).app H ≫ evaluateFunctorAt a = evaluateFunctorAt (Y := H) (f.app _ a) := by
-  apply SSet.hom_ext
-  intro d
-  apply ConcreteCategory.hom_ext
-  intro F
-  change F.app d (𝟙 d) (f.app d (PinchedHom.constant a d.unop.len)) =
-    F.app d (𝟙 d) (PinchedHom.constant (f.app (Opposite.op ⦋0⦌) a) d.unop.len)
-  rw [pinchedConstant_map]
-
 /-- 標準区間と同型な始域の終点評価も trivial Kan fibration。 -/
 lemma kanIntervalEvaluation_trivialKanFibration_of_iso {A H : SSet.{u}} [KanComplex H]
     (e : A ≅ (Δ[1] : SSet.{u})) (a : A _⦋0⦌)
     (ha : e.inv.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = a) :
     TrivialKanFibration (evaluateFunctorAt (Y := H) a) := by
-  have h := evaluateFunctorAt_pre (H := H) e.inv (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+  have h := evaluateFunctorAt_pre (X := H) e.inv (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
   rw [ha] at h
   rw [← h]
   have : IsIso ((pre e.inv).app H) := by
