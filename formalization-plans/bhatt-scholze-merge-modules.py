@@ -191,8 +191,8 @@ def main():
     for f in listed_files():
         if not f.endswith(".lean") or not (ROOT / f).is_file() or any(r.match(f) for r in OWNED):
             continue
-        hit = {o for o in rename
-               if re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)}
+        hit = {o for o in rename if rename[o] != o
+               and re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)}
         if hit:
             foreign.append(f)
             unstubbed |= hit - stubs

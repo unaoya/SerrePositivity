@@ -1,0 +1,319 @@
+{
+ "merges": {
+  "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism": [
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedDeltaPair",
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism",
+   "SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism",
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom",
+   "SerrePositivity.BhattScholze.Prism.Basic.CrystallineOrientedPrism"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Basic.Rigidity": [
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismRegularRigidity",
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHomRigidity",
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismIdealTensor",
+   "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismIsoCriterion",
+   "SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismHomRigidity"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Bounded.Completeness": [
+   "SerrePositivity.BhattScholze.Andre.Remark715.RegularPowerQuotientTorsion",
+   "SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismAdicComplete",
+   "SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismPrimeComplete",
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismPairAdicComplete"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Bounded.Tilt": [
+   "SerrePositivity.BhattScholze.Andre.Remark715.CommonAdicCompatibleRoots",
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismCompatibleRootsLift",
+   "SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismCompatibleRootsLift",
+   "SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismTiltQuotient"
+  ],
+  "SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift": [
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectSourceAdicRigidity",
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetRigidity",
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectSourceDeltaHom",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientHomFaithful",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientHomLift",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismHomLift",
+   "SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetLift"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaPerfection",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaRegularity",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaFunctor",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaRecovery",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDistinguishedPrism",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPrismUniversal"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrism",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrismUniversal",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDQuotientEquiv",
+   "SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPerfectionPDCompletionUniversal",
+   "SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPDCompletionPerfectionUniversal",
+   "SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPerfectionPDCompletionComparison",
+   "SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPDCompletionPerfectionComparison"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt": [
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectDeltaQuotientFrobenius",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittDistinguishedQuotient",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientModP",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientFrobeniusKernel",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltMap",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltKernel",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltKernelRegular",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltSurjective"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientPerfectoid": [
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientFontaineComparison",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittRegularQuotientPerfectoid",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittRegularQuotientFontaineKernel",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientFontaineIso",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltEquiv",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittCompleteQuotientPerfectoid"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid": [
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineNaturality",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineKernelNaturality",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidDistinguishedKernel",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidRingEquiv",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismWittPresentation",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoid",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidTrialPrism",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.WittDistinguishedQuotientPerfectoid"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue": [
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticCoefficientQuotientComposition",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticCoefficientCompletionReduction",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueNilpotent",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueDerived",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueCanonical",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerDerivedFlat",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP",
+   "SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModPFaithful"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaResidue": [
+   "SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaPrismaticResidue",
+   "SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaFrobeniusModels",
+   "SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaFrobeniusQuotientSquare"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaTensor": [
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorDiscrete",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorRegular",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorStructure",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorPCompletion",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorH0"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismTensor": [
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorH0",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorDiscrete",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorComparison",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgebra",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgEquiv",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaPresentedTensorRing",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaResidueTensorTransport"
+  ],
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensor": [
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueFactor",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismCartierTensorComparison",
+   "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensorTransport"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivision",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionComparison",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionQuotient",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionPresentation",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionPowerTorsion"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivisionComparison": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionRecovery",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionRepeat",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionSequential",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionSequentialEquiv",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionTorsion",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionTorsionQuotient"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.CharacteristicP": [
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.CharacteristicPPerfectoid",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.CharacteristicPQuotient"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaDivisionPrism",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaDivisionQuotient",
+   "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoidization",
+   "SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidPerfectoidization",
+   "SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity": [
+   "SerrePositivity.BhattScholze.Semiperfectoid.TensorResidueBaseChangeComparison",
+   "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectivityDescent",
+   "SerrePositivity.BhattScholze.Semiperfectoid.TensorBaseChangeKernel",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedIdealSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedKernelSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedTensorBaseChangeSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedPerfectoidSurjectivityDescent",
+   "SerrePositivity.BhattScholze.Semiperfectoid.AndreSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.TorsionFreeQuotientSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectivity",
+   "SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectiveMap"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot": [
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootIdeal",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootIdealFlat",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootIdealTensor",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootQuotientTor",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootPerfectQuotient",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootTilt",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyIdeal",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootQuotient",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootPerfectoidUniversal",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootCompletionSurjective",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyQuotient"
+  ],
+  "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid": [
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDQuotientComparison",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootSingletonComparison",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootPDComparison",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyPDComparison",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyCompletionPerfectoid",
+   "SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootCompletionPerfectoid"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.WittPushout": [
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectCoefficientTensor",
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.WittCoefficientPushout",
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.PerfectoidWittBasePresentation",
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.PerfectoidWittPushout",
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.PerfectoidWittPushoutModP"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility": [
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationTensorCompatibility",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedTensorCompatibility",
+   "SerrePositivity.BhattScholze.Perfectoidization.Prop813PerfectoidBaseChange"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.Excision": [
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionDiagram",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcision",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionResults"
+  ],
+  "SerrePositivity.BhattScholze.Almost.Lemma103": [
+   "SerrePositivity.BhattScholze.Almost.Lemma103KernelTensor",
+   "SerrePositivity.BhattScholze.Almost.Lemma103PerfectoidTensor",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidIdealLemma103"
+  ],
+  "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost": [
+   "SerrePositivity.BhattScholze.Almost.PerfectoidIdealConormalCompletion",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidIdealIdempotent",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidAlmostExtension",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost"
+  ],
+  "SerrePositivity.BhattScholze.Almost.SupportedQuotient": [
+   "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientKernel",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientLinear",
+   "SerrePositivity.BhattScholze.Almost.PerfectoidizationImageComparison"
+  ],
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface": [
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Setup",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Derived",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Completion",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.LimitData",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.ExcisionDiagram",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface"
+  ],
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralExistence": [
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.InitialLimit",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.InitialBridge",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralExistence",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralPerfectoidization",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence"
+  ],
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision": [
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.ExcisionBridge",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision",
+   "SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcExcision"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization": [
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.WittPresentedPerfectoidTensor",
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.WittPresentedPerfectoidTensorModP",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidTensorPerfectoidization",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationBaseChange"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor": [
+   "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.FontaineCompletedTensorDiscrete",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedTensorDiscrete",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedQuotientMul",
+   "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidization",
+   "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidUniversal",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidFiniteProduct"
+  ],
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange": [
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedBaseChangeDiscrete",
+   "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChangeCoefficientComparison",
+   "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedBaseChange"
+  ]
+ },
+ "docstrings": {
+  "SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism": "# 向き付き prism の定義と射、完全 prism の性質（BS 著者版 Lemma 3.1・3.8、Def 3.2、Ex 3.3）\n\n## 概要\n単項イデアル (d) を持つ prism とその射、p ∈ (d, φ(d)) と distinguished 性の同値（Lemma 3.1 の単項の場合）、\n完全 prism の生成元は distinguished で台環は p 進完備・商のねじれは有界（Lemma 3.8）、結晶 prism（Ex 3.3）。\n\n## 方針\n導来完備性は共通基盤の IsModuleComplete で述べ、生成元の正則性から古典的完備性へ移す。\n\n## 規約\n一般の局所単項なイデアルは扱わない（ノート D5）。\n\n## 使われ方\nBS のすべての prism の議論の土台。",
+  "SerrePositivity.BhattScholze.Prism.Basic.Rigidity": "# prism の射の剛性（BS 著者版 Lemma 3.5）\n\n## 概要\nprism の射で生成元は単元倍に写る、IB = J、I ⊗ B ≅ J。標的が p 正則・完全・有界の場合。商の射による同型判定。\n\n## 方針\nLemma 2.24 を生成元に当てる。単元性に要る根基への所属を標的の古典的完備性から得る。\n\n## 規約\n仮定なしの一般形は未（ノート BR27）。\n\n## 使われ方\n完全 prism の比較、Thm 3.10、Lemma 4.8。",
+  "SerrePositivity.BhattScholze.Prism.Bounded.Completeness": "# 有界 prism の完備性（BS 著者版 Lemma 3.7 (1)）\n\n## 概要\n有界 prism の台環は古典的 p 進・(p,d) 進完備で p 進分離。完全 prism の (p,d) 進完備性、正則元の冪商の有界ねじれ。\n\n## 方針\n導来完備性と分離性から古典的完備性を出す。d の冪商のねじれを帰納的に評価する。\n\n## 規約\n向き付き。Lemma 3.7 の (2)〜(4) は未。\n\n## 使われ方\nLemma 4.8（Prism/PerfectPrismHomLift）、有界 prism の tilt。旧 Andre/Remark715 から移した。",
+  "SerrePositivity.BhattScholze.Prism.Bounded.Tilt": "# 有界 prism とその商の tilt\n\n## 概要\n共通の標数 p 商に沿って完備な環の互換 p 冪根列の一意な持ち上げ、完全・有界 prism の商の互換根列の持ち上げ、\n有界 prism の台環と商の tilt の同型。\n\n## 方針\n互換根列を共通商で持ち上げ、完備性で収束させる。\n\n## 規約\n向き付き。\n\n## 使われ方\nLemma 4.8 の証明。旧 Andre/Remark715 から移した。",
+  "SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift": "# 完全 prism からの射の一意な持ち上げ（BS 著者版 Lemma 4.8）\n\n## 概要\n完全 prism の商から完全な、または有界な向き付き prism の商への環射は、prism の射に一意に持ち上がる。\n完全な源からの環射は δ を自動的に保ち、商上の値で決まる。Witt 商への射の一意な持ち上げも含む。\n\n## 方針\n原典の変形理論ではなく、tilt の比較と Witt 持ち上げの一意性による。\n\n## 規約\n標的は有界（原典は任意の prism）。prismatic site の対象は有界なので E3 には足りる。\n\n## 使われ方\nThm 3.10 の充満忠実性、Cor 7.3、A0（完全試験 prism）。有界な標的の版は旧 Andre/Remark715 から移した。",
+  "SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection": "# prism の完全化：完全化から導来 (p,d) 完備化へ（BS 著者版 Lemma 3.9）\n\n## 概要\n完全 δ 環と distinguished 元の導来 (p,d) 完備化 H⁰ は完全 prism で、完全試験 prism への普遍性を持つ。\n任意の δ 環から完全化を挟んだ普遍性と、完全化と PD 完備化の順序の比較。\n\n## 方針\n完全化の普遍性（Rem 2.27）と導来完備化の普遍性を合成する。\n\n## 規約\n原典の形（prism の完全化が普遍な完全 prism）の一つの定理にはまとめていない（ノート BR28）。\n\n## 使われ方\nCor 7.3 の構成、Thm 3.10（perfectoid 環の prism 表示）、André。PD 完備化の比較は旧 Andre/RootedExtension から移した。",
+  "SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection": "# prism の完全化：完全化から古典的 p 進完備化へ（BS 著者版 Lemma 3.9 の別系統）\n\n## 概要\n任意の δ 環の完全化の古典的 p 進完備化とその普遍性・関手性・冪等性・正則性、生成元像の d 進完備性を仮定した prism への普遍性。\n\n## 方針\nLemma 2.28・2.34 を完全化に当てる。\n\n## 規約\nd 進完備性の仮定を外す部分は未。\n\n## 使われ方\nd で割る完全 prism の構成（Semiperfectoid/PerfectPrismDivision）、André。",
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt": "# 完全な標数 p 環の Witt 環の distinguished 商：mod p と tilt（BS 著者版 Thm 3.10 の計算）\n\n## 概要\nW(k)/(d) の mod p、Frobenius 核の生成元、tilt への係数射とその核・全射性、完全 δ 環の商の mod p Frobenius の全射性。\n\n## 方針\nd = [a₀] + p·u（Lemma 2.33）から p 乗根を作り、Perfection の普遍性で tilt へ持ち上げる。\n\n## 規約\n商の完備性は明示した仮定。\n\n## 使われ方\nThm 3.10（Prism/Perfectoid/WittQuotientPerfectoid）。",
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientPerfectoid": "# 完備な distinguished Witt 商は perfectoid（BS 著者版 Thm 3.10 の計算）\n\n## 概要\nW(k)/(d) の標準 Fontaine 比較写像、その単射性と同型条件、tilt 同型、完備な distinguished Witt 商の perfectoid 性と Fontaine 核の生成元。\n\n## 方針\nFontaine 比較射の全単射性から核を移す。第 0 係数が正則な場合を経由して一般の場合へ。\n\n## 規約\nF7（Fontaine 核進分離性）を仮定しない。\n\n## 使われ方\n完全 prism の商の perfectoid 性（Prism/Perfectoid/PerfectPrismPerfectoid）。",
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid": "# perfectoid 環と完全 prism（BS 著者版 Thm 3.10）\n\n## 概要\n完全 prism の商は perfectoid、perfectoid 環の Fontaine 核は distinguished 元で生成され、W(R♭) の導来 (p,d) 完備化の商として表せる。\nFontaine 写像の自然性、環同型による perfectoid 性の移送、完全 prism の Witt 表示。\n\n## 方針\n完全 prism を Witt 環で表し、Witt 商の計算に帰着する。\n\n## 規約\n圏同値ではなく三つの事実（商の perfectoid 性、perfectoid 環の prism 表示、射の持ち上げ）として述べる（ノート D8、BR29）。\n\n## 使われ方\nCor 7.3、André、perfectoid 環のテンソル（Perfectoidization）、CLMST。",
+  "SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue": "# prism 係数の商に沿う導来底変換\n\n## 概要\nA → A/(a) → A/(a,d)、冪剰余 A/(a,dⁿ) → A/(a,d)、mod p 還元に沿う導来底変換の比較と忠実平坦性の判定。\n\n## 方針\n既存の導来基底変更関手を標準的な因数分解に沿って比較する。\n\n## 規約\n原典に項目のない道具。\n\n## 使われ方\nAndré の一段の拡大と RootEnvelope の平坦性計算。",
+  "SerrePositivity.BhattScholze.Prism.Residue.PerfectDeltaResidue": "# 完全な係数の Frobenius 各段の prism 剰余\n\n## 概要\n完全係数 δ 環の Frobenius 反復の各段における prism 係数商の同定と、Frobenius 係数制限による射影モデルの移送。\n\n## 方針\np を消す環射の下での Frobenius 反復の計算。\n\n## 規約\n原典に項目のない道具。\n\n## 使われ方\nAndré の一段の拡大。",
+  "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaTensor": "# 完全 δ 環のテンソル積（BS 著者版 Rem 2.7 と §2.4）\n\n## 概要\n完全 δ 環の通常テンソル積は p ねじれなしで完全 δ 構造を持ち、その古典的 p 進完備化と導来完備テンソル積 H⁰ も完全 δ 環で離散。\n\n## 方針\n両因子の Frobenius 自己同型からテンソル積の Frobenius 持ち上げを作り、p ねじれなしで δ 構造を復元する。\n\n## 規約\n一般の δ 環のテンソル積はまだない（A0 で Basic/DeltaColimit に作る）。\n\n## 使われ方\n完全 prism の完備テンソル積（Prism/Tensor）。旧 Prism/Tensor から移した。",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismTensor": "# 完全 prism の完備テンソル積とその Cartier 商\n\n## 概要\n完全 δ 環の反復完備テンソル積 H⁰ の完全 prism 構造と離散性、Cartier 商と完備剰余テンソルの比較（代数同型）、剰余表示の移送。\n\n## 方針\n完全 δ 環のテンソル積（Delta/Perfect/PerfectDeltaTensor）を (p,d) 完備化し、商を比較する。\n\n## 規約\n圏の余積としての普遍性は述べない。\n\n## 使われ方\nperfectoid 環の完備テンソル積（Perfectoidization/CompletedTensor）、Prop 8.13 の環版。",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensor": "# 完全 prism の射の剰余因子と剰余テンソル\n\n## 概要\n完全 prism の射の剰余因子の代数同型と、各 prism 自身の剰余環を使う Cartier テンソル比較、係数表示への移送。\n\n## 方針\n完全 prism の Cartier 比較を剰余因子で書き換える。\n\n## 規約\n今は主定理の経路にない。\n\n## 使われ方\n完全 prism の完備テンソル積の比較。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision": "# 完全 prism の中で J/d を割る構成（BS 著者版 Prop 7.2・Cor 7.3 の代数的部分）\n\n## 概要\nδ 環で元の族を d で割る包の p 進完備完全化とその普遍性、族の比較、d 商への標準射と完全 prism への延長、族の取り方によらないこと。\n\n## 方針\nd で割る包（Delta/Division）を p 進完備に完全化する。原典の全 prism の中の始対象（超限帰納）は経由しない。\n\n## 規約\nperfectoid 性・IsPerfectoidization はここでは結論しない。\n\n## 使われ方\nCor 7.3（Semiperfectoid/Perfectoidization）、André の perfectoid 候補。旧 Prism/Perfection から移した。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivisionComparison": "# J/d を割る構成の比較\n\n## 概要\n既に割れる場合の復元、同じ関係の再添加、段階的添加と一括添加、d 冪ねじれの除去を先に行う場合との同型。\n\n## 方針\n普遍性から比較射を作り、両合成が恒等射であることを示す。\n\n## 規約\n今は主定理の経路にない。\n\n## 使われ方\nJ/d を割る構成の性質の確認。旧 Prism/Perfection から移した。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization": "# semiperfectoid 環の perfectoid 化（BS 著者版 Cor 7.3）\n\n## 概要\n完全 prism の商の任意の商の普遍 perfectoid 化、perfectoid 環の任意の商（semiperfectoid 環）の perfectoid 化の存在と普遍性。\n\n## 方針\nJ/d を割る完全 prism を導来 (p,d) 完備化し、商の普遍性を IsPerfectoidization へ移す。\n\n## 規約\n全射性は Thm 7.4（Semiperfectoid/Surjectivity）。\n\n## 使われ方\nCLMST の perfectoid イデアル、Thm 7.4、§8 の環の結果。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity": "# semiperfectoid 環の perfectoid 化は全射（BS 著者版 Thm 7.4）\n\n## 概要\n導来 p 完備な perfectoid 環の全射商の任意の perfectoid 化は全射。原典どおり André の補題（Thm 7.14）で絶対整閉な perfectoid 環へ\np 完全忠実平坦に拡大し、根付き拡大での全射性を降下する。旧い適用形（p ねじれのない商）と全射の保存も含む。\n\n## 方針\n核の元が互換 p 冪根を持つ場合の全射性、底変換、p 完全忠実平坦な降下を組み合わせる。\n\n## 規約\nAndré を使わない旧証明は Semiperfectoid/RootEnvelope。\n\n## 使われ方\nCLMST、Lemma 10.3、Prop 8.13 の環版。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot": "# perfectoid 環の互換 p 冪根で生成されるイデアルと商\n\n## 概要\n互換 p 冪根の族が生成するイデアルの平坦性・テンソル・Tor、その商の完全性・tilt・普遍 perfectoid 化・完備化の全射性。\n\n## 方針\n共通基盤（CommutativeAlgebra の CompatibleRoot*）の計算を BS の perfectoid 化へつなぐ。\n\n## 規約\n—\n\n## 使われ方\nCLMST の perfectoid イデアル、Thm 7.4 の降下。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid": "# 互換 p 冪根の商の完備化は perfectoid\n\n## 概要\n完全 prism 商への射が延長する完備な全射候補と導来 PD 完備化商の比較、単一根・根族の場合の比較、互換根商の完備化の perfectoid 性。\n\n## 方針\n完全 prism の Witt 表示と PD 完備化商の比較から perfectoid 性を移す。\n\n## 規約\n—\n\n## 使われ方\nCLMST の perfectoid イデアル（CommutativeAlgebra/PerfectoidIdealCompatibleRoots・PerfectoidIdealCover）。",
+  "SerrePositivity.BhattScholze.Semiperfectoid.CharacteristicP": "# 標数 p の完全環の商の perfectoid 化\n\n## 概要\np = 0 の完全環は perfectoid、その任意の商の普遍 perfectoid 化は根基商 R/√J で、全射。\n\n## 方針\n根基商の完全性を直接示す。\n\n## 規約\n今はどこからも使われていない。\n\n## 使われ方\n—",
+  "SerrePositivity.BhattScholze.Perfectoidization.WittPushout": "# perfectoid 環の Witt 表示の余積\n\n## 概要\n共通の Fontaine 生成元による Witt 商表示、Witt 係数テンソルから完備環への普遍射、Witt 商の余積とその mod p。\n\n## 方針\nWitt 係数の余積を Witt 商で割って perfectoid 環の余積の候補を作る。\n\n## 規約\n—\n\n## 使われ方\nperfectoid 環の通常テンソル積の perfectoid 化。",
+  "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization": "# perfectoid 環の通常テンソル積の perfectoid 化と底変換\n\n## 概要\nWitt 商表示を持つ環のテンソル積の perfectoid 化、任意の perfectoid 環の通常テンソル積の perfectoid 化、普遍 perfectoid 化の通常テンソルによる底変換。\n\n## 方針\nWitt 余積の普遍性を IsPerfectoidization へ移す。\n\n## 規約\n—\n\n## 使われ方\nperfectoid 環の完備テンソル積、Thm 7.4 の底変換。",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor": "# perfectoid 環の完備テンソル積と有限直積\n\n## 概要\nperfectoid 代数の導来完備テンソル積 H⁰ は離散で perfectoid、普遍な perfectoid テンソル、商の完備積、有限直積の perfectoid 性。\n\n## 方針\nFontaine 表示（完全 prism の完備テンソル積）から離散性を得る。\n\n## 規約\n有限直積は今 E3（整代数の perfectoid 化）に依存している（ノート BR20）。\n\n## 使われ方\nLemma 10.3、Prop 8.13 の環版、CLMST。",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange": "# perfectoid 化の完備底変換\n\n## 概要\nperfectoid 係数の完備スカラー拡大の離散性、新しい底での係数の比較、完備底変換後の perfectoid 化の係数。\n\n## 方針\n完備テンソル積の離散性を底変換に適用する。\n\n## 規約\n—\n\n## 使われ方\nProp 8.13 の環版。",
+  "SerrePositivity.BhattScholze.Perfectoidization.TensorCompatibility": "# perfectoid 化と完備テンソル積の可換性（BS 著者版 Prop 8.13 の環版）\n\n## 概要\n指定済みの環の perfectoid 化をもつ一般のテンソル図式で、完備テンソル積の perfectoid 化は perfectoid 化の完備テンソル積。perfectoid な底変換の場合。\n\n## 方針\n環の普遍性、H⁰ 主元完備化の比較、perfectoid 完備テンソル定理の合成。\n\n## 規約\n導来版は A7（原典どおりなら Δ の対称モノイダル性から）。\n\n## 使われ方\nCLMST、Lemma 10.3。",
+  "SerrePositivity.BhattScholze.Perfectoidization.Excision": "# perfectoid 化の環としての excision の帰結（BS 著者版 Cor 8.12 の環版の適用）\n\n## 概要\nexcision 図式の四つの普遍環と標準射、CLMST の KL 標準 excision 四角形への接続（整で a の外で同型な場合を含む）。\n\n## 方針\nCor 8.12 の環版（PerfectoidizationInterface/Excision）を図式に当てる。\n\n## 規約\nCor 8.12 自体は E3 から導いた定理。\n\n## 使われ方\nCLMST。",
+  "SerrePositivity.BhattScholze.Almost.Lemma103": "# perfectoid 化の核の Lemma 10.3（BS 著者版 Lemma 10.3）\n\n## 概要\nperfectoid 環の完備導来テンソル積は離散で perfectoid、核と商の完備導来テンソルは零、単項商の perfectoid 化の核についての Lemma 10.3。\n\n## 方針\nTor 独立性を平坦な全射表示で示す（原典の単体的証明の代わり、ノート D13）。\n\n## 規約\n—\n\n## 使われ方\nProp 10.2・Rem 10.7、CLMST。",
+  "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost": "# perfectoid 化の核に関する almost 数学（BS 著者版 Prop 10.2、Rem 10.7）\n\n## 概要\n核の conormal の導来完備化は零、核の mod pⁿ 像は冪等、核で零化される導来完備加群は拡大で閉じる。\n\n## 方針\nLemma 10.3 から conormal を消し、冪等性と拡大閉性を出す。\n\n## 規約\nProp 10.4 の全体は A8。\n\n## 使われ方\nCLMST の almost Tor。",
+  "SerrePositivity.BhattScholze.Almost.SupportedQuotient": "# 全射の perfectoid 化の比較写像の almost 性（CLMST が使う比較補題）\n\n## 概要\n全射に沿う perfectoid 化の比較写像の核・余核は perfectoid イデアルで零化される。有限比較の像への全射部分。\n\n## 方針\nAndré の補題で絶対整閉な試験拡大を作り、Thm 7.4 で余核を消す。\n\n## 規約\n原典の項目ではない。\n\n## 使われ方\nCLMST の Tor 比較。",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface": "# 導来 perfectoid 化の界面 E3 の型\n\n## 概要\n添字圏、導来対象・辺・自然変換、導来完備化 H⁰ の包装、単位付き導来極限錐のデータ、excision 図式、界面 E3 の構造体。\n\n## 方針\nD(R) 上の導来 perfectoid 化の性質（Def 8.2、Prop 8.5、Cor 8.14、Thm 10.11、Cor 8.12）を欄として束ねる。\n\n## 規約\nE3 の存在そのものは Inputs の唯一の sorry。\n\n## 使われ方\nE3 から環の定理を導く橋（IntegralExistence・Excision）、EInfinity の CAlg 版。",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralExistence": "# E3 から整代数の普遍 perfectoid 化へ（BS 著者版 Thm 1.17(1)＝Thm 10.11 の環版）\n\n## 概要\n指定された普遍 perfectoid 化と導来極限の比較、始対象の値による極限錐の計算、整代数・有限代数・完備化の普遍 perfectoid 化の存在。\n\n## 方針\nE3 の limit・universal・integral 欄から環の普遍性を取り出す。\n\n## 規約\nE3 の存在を引用する。\n\n## 使われ方\nCLMST Prop 2.4.7、有限直積、almost 比較、SerrePositivity/Inputs/Perfectoidization。",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision": "# E3 から環としての excision へ（BS 著者版 Cor 8.12 の環版）\n\n## 概要\n離散性を仮定した excision の橋、四つの指定普遍環からの excision、環としての excision の引き戻し四角形。\n\n## 方針\n四頂点の離散性とファイバー列の長完全列から環の引き戻しを得る。差写像の全射性は界面から証明する。\n\n## 規約\nE3 の存在を引用する。\n\n## 使われ方\nperfectoid 化の excision の適用（Perfectoidization/Excision）、CLMST。"
+ },
+ "stubs": [
+  "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost",
+  "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientKernel",
+  "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientLinear",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChangeCoefficientComparison",
+  "SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidization",
+  "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedBaseChangeDiscrete",
+  "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedQuotientMul",
+  "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedTensorDiscrete",
+  "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedBaseChange",
+  "SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionResults",
+  "SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.FontaineCompletedTensorDiscrete",
+  "SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence",
+  "SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientFontaineIso",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgEquiv",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgebra",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorComparison",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorDiscrete",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorH0",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorDiscrete",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorH0",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaPresentedTensorRing",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaResidueTensorTransport",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorPCompletion",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorRegular",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorStructure",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismCartierTensorComparison",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueFactor",
+  "SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensorTransport"
+ ]
+}
