@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.WeakIdentityQuotientTransport
+public import SerrePositivity.KST.Fibration.VerdierLowerDeformationZeroHom
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerDeformationSource
 public import SerrePositivity.KST.Fibration.WeakSpanKanFiberUnit
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFiberUnit

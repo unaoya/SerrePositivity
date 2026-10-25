@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Fibration.WeakSpanKanFiberUnit
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent
+public import SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallStraighteningUnitTransformation
 public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
@@ -126,18 +127,18 @@ theorem weakSpanKanQuotientFamilyFiberMap_inclusion
     Iso.trans_hom, Iso.symm_hom, Category.assoc, Iso.inv_hom_id_assoc]
   rfl
 
-/-- 概要：元の恒等点を指定した同じ fiber 同値の逆で運ぶ。
+/-- 概要：元の恒等点を同じ fiber 値同値の逆で運んだ補助点。
 方針：既存の strict Kan 恒等点を用いる。
 規約：別の恒等 span や新しい Kan 点は選ばない。
-使われ方：全族写像の恒等点条件の標的。 -/
+使われ方：fiber 単位の計算。既存 weakIdentityQuotientFiberPoint との比較は別条件。 -/
 def weakSpanKanQuotientIdentityPoint :=
   (weakSpanKanQuotientFiberValueEquivalence h x
     (transportSimplexIndex (n := ⦋0⦌) x)).inv.app (Opposite.op ⦋0⦌) (weakIdentityKanPoint h x)
 
-/-- 概要：指定 fiber 単位の恒等点像は指定した同じ fiber 点に厳密一致。
+/-- 概要：指定 fiber 単位の恒等点像は同じ補助 fiber 点に厳密一致。
 方針：元の Kan 単位の恒等点計算を後合成する。
 規約：fiber 内の等式なので同型も直ちに得られる。
-使われ方：K-B-S の恒等 span の照合。 -/
+使われ方：K-B-S の恒等 span 照合の中間計算。既存の指定点との同型は未主張。 -/
 theorem weakSpanKanQuotientFiberUnit_identity :
     (weakSpanKanQuotientFiberUnit h x (transportSimplexIndex (n := ⦋0⦌) x)).app
       (Opposite.op ⦋0⦌) (weakIdentityFixedSpanAtZeroIndex h x) =
@@ -162,10 +163,10 @@ def weakSpanKanQuotientFamilyFiber_recovery
     (F2.continuousKanReplacementUnit.app _) :=
   e.postcomp _ ≪≫ weakSpanKanQuotientFiberUnit_recovery h x c
 
-/-- 概要：全族写像の指定制限に条件付きで、恒等 span 像を指定 fiber 点と比較する。
+/-- 概要：全族写像の指定制限に条件付きで、恒等 span 像を補助 fiber 点と比較する。
 方針：全 fiber 制限同型の恒等 span 成分と同じ指定点等式を合成する。
 規約：商の全空間の同型だけで fiber 内同型を代用しない。
-使われ方：K-B-S の恒等点条件。 -/
+使われ方：K-B-S の恒等点条件の中間比較。既存の指定点との照合は別途必要。 -/
 def weakSpanKanQuotientFamily_identityIso
     (f : markedSpanFamily B.obj (weakEquivalences i) x ⟶
       smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
@@ -179,5 +180,23 @@ def weakSpanKanQuotientFamily_identityIso
         (Opposite.op ⦋0⦌) (weakIdentityFixedSpanAtZeroIndex h x))
       (weakSpanKanQuotientIdentityPoint h x) :=
   e.app _ ≪≫ eqToIso (congrArg HomotopyCategory.mk (weakSpanKanQuotientFiberUnit_identity h x))
+
+/-- 概要：底 q を厳密に保つ実全族写像の恒等 span 像を、元の q(x) fiber で読む。
+方針：同じ零単体添字の初頂点等式で fiber の表示だけを移す。
+規約：全族写像と底の等式に条件付き。元の指定恒等点への同型はまだ仮定しない。
+使われ方：Sp-6 s4 の weakIdentityQuotientFiberPoint との比較の正確な始域。 -/
+def weakSpanKanQuotientFamilyIdentityImage
+    (f : markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
+    (hf : f ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom) :
+    (vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+      (q.hom.app (Opposite.op ⦋0⦌) x)) _⦋0⦌ :=
+  (eqToHom (congrArg
+    (vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)))
+    (congrArg (q.hom.app (Opposite.op ⦋0⦌)) (transportSimplexFirstVertexMap_zeroIndex x)))).app
+    (Opposite.op ⦋0⦌)
+    ((weakSpanKanQuotientFamilyFiberMap h x (transportSimplexIndex (n := ⦋0⦌) x) f hf).app
+      (Opposite.op ⦋0⦌) (weakIdentityFixedSpanAtZeroIndex h x))
 
 end SerrePositivity.KST.Fibration

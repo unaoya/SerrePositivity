@@ -9,7 +9,7 @@
 ## 引き継ぎ（2026-10-24）
 ### 現在地
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
-- `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。共有対角は動き、上側との同一対角での貼り合わせは未証明。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
+- `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。共有対角は動き、上側との同一対角での貼り合わせは未証明。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
 - 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
@@ -55,7 +55,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（610 モジュール・3768 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（612 モジュール・3819 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -99,17 +99,25 @@
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### K-B-S：Sp-6 s4 への空間値全族単位
-- 公開名：`weakSpanKanFiberUnit_valueComparison`、`weakSpanKanQuotientFiberUnit_recovery`、`weakSpanKanQuotientFamilyFiberMap_inclusion`、`weakSpanKanQuotientFamily_identityIso`。最後の二つは全族写像を入力する条件付きの利用側。
+- 公開名：`weakSpanKanFiberUnit_valueComparison`、`weakSpanKanQuotientFiberUnit_recovery`、`weakSpanKanQuotientFamilyFiberMap_inclusion`、`weakSpanKanQuotientFamily_identityIso`。最後の二つは全族写像を入力する条件付きの利用側で、恒等点の標的は補助点。Sp の既存指定点 `weakIdentityQuotientFiberPoint` との比較は未証明。
 - 公開 `WeakSpanKanFiberUnit` は元の全固定 span fiber から同じ strict Kan 値への単位と、元の Kan 置換単位の厳密回収・既存の恒等点への一致を保持する。
-- `WeakSpanKanQuotientFiberUnit` は元の降下同型の同じ成分を読み戻した小さい実 fiber 値同値、指定 fiber 単位、元の単位の全関手同型での回収、指定恒等点を保持する。全族写像が指定制限を持てば同じ回収と fiber 内恒等点同型を与える。全族写像の存在・可変終点の自然性は未証明。
-- Ind/F1 への不足界面（コーディネータ経由）は以下の一型。`h : IsVerdierSequence i q`、`x : B.obj _⦋0⦌`、`F := weakSpanKanQuotientDiagram h x`、`E := markedSpanFamily B.obj (weakEquivalences i) x`、`π := markedSpanFamilyProjection B.obj (weakEquivalences i) x` とする。F1 正本の空間値の相対単位構成を求める。Cat∞ 値の分類・一般の商 API は含めない。
+- `WeakSpanKanQuotientFiberUnit` は元の降下同型の同じ成分を読み戻した小さい実 fiber 値同値、指定 fiber 単位、元の単位の全関手同型での回収、元の Kan 恒等点を運んだ補助点を保持する。全族写像が指定制限を持てば同じ回収と補助点への fiber 内同型を与える。既存指定点への同型では代用しない。全族写像の存在・可変終点の自然性は未証明。
+- Ind/F1 への不足界面（コーディネータ経由）は以下の空間値補題一つ。`I : Type u`、`[Category I]`、`p : E ⟶ nerve I`、`[CocartesianFibration p]`、`R : SSet ⥤ KanObject`、`η : 𝟭 SSet ⟶ R ⋙ kanObjectForget` とする。F1 内で K-B・Sp を import せず述べられる。型は Lean 確認済み。
 ```lean
+let F := kanDiagramCoherentNerve (cocartesianStrictTransportDiagram p ⋙ R)
+(∀ X, SSet.anodyneExtensions (η.app X)) →
 ∃ f : E ⟶ smallLeftUnstraightening F,
-  ∃ hf : f ≫ smallLeftUnstraighteningProjection F = π ≫ q.hom,
-  ∀ c : TransportSimplexCategory B.obj,
-    Nonempty (FunctorIso (weakSpanKanQuotientFamilyFiberMap h x c f hf)
-      (weakSpanKanQuotientFiberUnit h x c))
+  ∃ hf : f ≫ smallLeftUnstraighteningProjection F = p,
+  ∀ c : I, Nonempty (FunctorIso
+    (vertexFiberMap p (smallLeftUnstraighteningProjection F) f hf (nerveVertex c) ≫
+      (smallLeftUnstraighteningFiberValueEquivalence F (nerveVertex c)).hom ≫
+      R.map (cocartesianStrictTransportEvaluate p c))
+    (η.app (vertexFiber p (nerveVertex c))))
 ```
+- K-B は `p := weakSpanSimplexProjection i x`、同じ `strictKanCompletion` とその単位へ適用する。元の底への降下と `q` 上の厳密化は K-B 担当。受入は実 `markedSpanFamily → smallLeftUnstraightening (weakSpanKanQuotientDiagram h x)`、底 `π≫q` の厳密保持、全 fiber 単位の回収、既存 `weakIdentityQuotientFiberPoint` への fiber 内同型。Cat∞ 値の分類の再開や一般の商 API は含めない。
+
+- `WeakIdentityQuotientTransport` は元の指定値同型の実辺で既存指定点を輸送し、既存の値比較で同じ Kan 恒等点へ正規化する。`weakIdentityQuotientFiberUnit_recovery` と `weakIdentityQuotientFiberUnit_pointIso` は元の両端 x 固定 fiber の全単位の回収と既存 `weakIdentityQuotientFiberPoint` への実小 fiber 内同型を供給する。これを可変終点の実全族写像の像へ照合する部分は未証明。
+- F1 の供給依頼では同じ単位変換の pointedMap 比較も保持し、上記の既存指定恒等点条件を同じ全族写像について検証する。非 pointed な fiber 値同値の選択だけからこの条件を推論しない。K-B 内に一般分類 API や追加の存在仮定は導入しない。
 - 指定 `smallCoherentStraighteningUnitTransformation F` は元の F から既存 left unstraightening の復元図式への単位である。元の span 射影は一般の cocartesian fibration なので、この単位だけから上記 f の存在を推論しない。全族 f と厳密な底、全 fiber 単位の照合が揃うまで K-B-S の供給完了とは数えない。
 
 ### 未コミット
