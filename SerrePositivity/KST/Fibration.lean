@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierOriginalCompositeNativeEdge
 public import SerrePositivity.KST.Fibration.VerdierNativeCompositeEdge
 public import SerrePositivity.KST.Fibration.ZeroMiddleControlledLongFamily
 public import SerrePositivity.KST.Fibration.VerdierLowerNormalizedReconstruction
