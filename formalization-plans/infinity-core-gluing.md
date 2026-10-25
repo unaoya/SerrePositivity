@@ -98,7 +98,7 @@
 - (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
 - `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
 - `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
-- 未接続の `HomTargetCommaHom` は元の共通終域への comma 比較の作業中。検証後に集約へ接続する。残る数学的工程は f③の thick 核と④の元小 Perf 対角・元商への比較。
+- 元共通終域への comma 比較の対象・Hom・三成分回収・単位保存を構成。全次数の合成保存を接続中。残る数学的工程は f③の thick 核と④の元小 Perf 対角・元商への比較。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
 - 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。

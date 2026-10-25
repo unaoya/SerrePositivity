@@ -928,3 +928,6 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorAlgebraDia
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorAlgebraDiagonalHom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorPerfectExtension
 public import SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackRetracts
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaHom
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaComponents
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaUnit
