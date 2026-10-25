@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.WittTwoUnits
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Localization.Basic
 
 /-! # Frobenius安定な乗法集合におけるδ局所化

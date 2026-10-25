@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPolynomial
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.MonoidAlgebra.MapDomain
 public import Mathlib.Algebra.CharP.Lemmas
 public import Mathlib.RingTheory.Flat.TorsionFree

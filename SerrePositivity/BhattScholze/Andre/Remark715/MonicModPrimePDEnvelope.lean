@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.RegularPrincipalModPrimeUniversal
 public import SerrePositivity.BhattScholze.Andre.MonicRelationResidue
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
 
 /-!

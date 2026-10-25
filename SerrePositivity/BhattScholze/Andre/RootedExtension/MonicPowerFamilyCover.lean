@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialExpandFree
+public import SerrePositivity.BhattScholze.Delta.Free.PolynomialExpand
 public import Mathlib.RingTheory.TensorProduct.Maps
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 

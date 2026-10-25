@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicExtension
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaIdentities
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionQuotient
 
 /-! # 古典的I進完備化のδ構造

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaAdjoinDivisionResidueFlat
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-! # 根添加の多項式関係による具体的係数商 -/
 

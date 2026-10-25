@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaColimit
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
 /-! # 完全 δ 環の余極限の完全性
 

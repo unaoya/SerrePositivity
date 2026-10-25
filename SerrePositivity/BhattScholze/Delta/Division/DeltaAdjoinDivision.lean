@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreePresentation
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-! # δ環でのa_s/dの添加
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
 
 /-! # W₂の第0成分の核とFrobeniusでねじれた作用

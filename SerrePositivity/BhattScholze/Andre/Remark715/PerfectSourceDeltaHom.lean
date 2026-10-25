@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetRigidity
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 
 /-!
 # André A1-a：完全な源からの環射の δ 保存性

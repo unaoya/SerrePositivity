@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPolynomialUniversal
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPolynomialDelta
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne
 
 /-!

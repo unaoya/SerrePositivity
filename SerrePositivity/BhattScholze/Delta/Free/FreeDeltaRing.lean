@@ -1,20 +1,42 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.MvPolynomial.CommRing
 public import Mathlib.Data.ZMod.Basic
 public import Mathlib.Algebra.CharP.Quotient
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
+public import Mathlib.Logic.Function.Iterate
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 
-/-! # 整数係数の自由δ環
+/-!
+# 整数係数の自由 δ 環（BS 著者版 Lemma 2.11）と、Frobenius 持ち上げが δ 射であること
+
+## 概要
+ℤ[x_(s,n)] に φ(x_(s,n)) = x_(s,n)^p + p·x_(s,n+1) を与えて δ 構造を入れ、普遍性・表示・相対版との比較を示す。
+系として任意の δ 環で φ と δ が可換、すなわち φ は δ 射（勉強ノート第 2 章の命題 2.1.5 (4)、命題 2.1.11 (1)）。
+
+## 方針
+原典どおり、p ねじれなしと Rem 2.2 の対応で δ 構造を作る。φ が δ 射であることは自由 δ 環で確かめて普遍性で送る。
+
+## 規約
+終域の p ねじれを許す。
+
+## 使われ方
+Frobenius の平坦性の計算（Free/FreeDeltaFrobeniusFlat）、δ 完全化、André の δ 代数の Frobenius 段。
+-/
+
+@[expose] public noncomputable section
+universe u v
+
+/-! ## 整数係数の自由δ環（旧 Delta/Free/FreeDeltaRing.lean）
 
 変数x_(s,n)を持つ整数多項式環にφ(x_(s,n))=x_(s,n)^p+p*x_(s,n+1)を与える。
 BS著者版Lemma 2.11の整数係数の構成。原典のZ_(p)係数への局所化と
 Frobeniusの忠実平坦性は、このモジュールで完成したとはしない。
 -/
 
-@[expose] public noncomputable section
-universe u
+section FreeDeltaRing
+
 namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (σ : Type u)
 
@@ -89,3 +111,178 @@ def freeDeltaStructure : DeltaStructure p (FreeDeltaRing σ) :=
     freeDeltaFrobenius_X]
 
 end SerrePositivity.BhattScholze
+
+end FreeDeltaRing
+
+/-! ## 自由整数δ環の普遍性（旧 Delta/Free/FreeDeltaUniversal.lean）
+
+任意のδ環と生成元の指定から、δの反復像を座標へ評価する一意なδ射を構成する。
+BS著者版Lemma 2.11の整数係数の普遍性。pねじれを持つ終域も許す。
+-/
+
+section FreeDeltaUniversal
+
+namespace SerrePositivity.BhattScholze
+variable {p : ℕ} [Fact p.Prime] {σ : Type u} {A : Type v} [CommRing A]
+
+/-- 指定した元族の反復δ像へ、自由環の各座標を評価する環準同型。 -/
+def freeDeltaEval (D : DeltaStructure p A) (a : σ → A) : FreeDeltaRing σ →+* A :=
+  MvPolynomial.eval₂Hom (Int.castRingHom A) (fun v ↦ D.delta^[v.2] (a v.1))
+
+/-- 自由δ環の評価射はx_(s,n)をδ^n(a_s)へ送る。 -/
+@[simp] theorem freeDeltaEval_X (D : DeltaStructure p A) (a : σ → A) (s : σ) (n : ℕ) :
+    freeDeltaEval D a (MvPolynomial.X (s, n)) = D.delta^[n] (a s) := by
+  simp [freeDeltaEval]
+
+/-- 自由δ環の評価射はδと可換。W₂切断の二つの環準同型を生成元上で比較する。
+終域のp正則性は仮定せず、単なるFrobenius可換性だけでδ射と判定しない。 -/
+theorem freeDeltaEval_isDeltaHom (D : DeltaStructure p A) (a : σ → A) :
+    (freeDeltaStructure p σ).IsDeltaHom D (freeDeltaEval D a) := by
+  apply DeltaStructure.isDeltaHom_mvPolynomial_of_sectionHom_comp_C _ _ _
+    (Subsingleton.elim _ _)
+  rintro ⟨s, n⟩
+  rw [freeDeltaStructure_delta_X, freeDeltaEval_X, freeDeltaEval_X,
+    Function.iterate_succ_apply']
+
+/-- 自由δ環からのδ射の生成元像は、初期座標の像の反復δとなる。 -/
+theorem freeDeltaHom_X_iterates (D : DeltaStructure p A) (f : FreeDeltaRing σ →+* A)
+    (hf : (freeDeltaStructure p σ).IsDeltaHom D f) (s : σ) (n : ℕ) :
+    f (MvPolynomial.X (s, n)) = D.delta^[n] (f (MvPolynomial.X (s, 0))) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+      rw [← freeDeltaStructure_delta_X p σ s n, hf, ih, Function.iterate_succ_apply']
+
+/-- 任意のδ環と元族a_sについて、x_(s,0)をa_sへ送るδ射が一意に存在する。
+整数係数の自由δ環の普遍性（BS Lemma 2.11の整数係数部分）。 -/
+theorem existsUnique_freeDeltaHom (D : DeltaStructure p A) (a : σ → A) :
+    ∃! f : FreeDeltaRing σ →+* A,
+      (freeDeltaStructure p σ).IsDeltaHom D f ∧
+        ∀ s : σ, f (MvPolynomial.X (s, 0)) = a s := by
+  refine ⟨freeDeltaEval D a, ⟨freeDeltaEval_isDeltaHom D a, ?_⟩, ?_⟩
+  · intro s
+    simp
+  · intro f hf
+    apply MvPolynomial.ringHom_ext' (Subsingleton.elim _ _)
+    rintro ⟨s, n⟩
+    rw [freeDeltaHom_X_iterates D f hf.1 s n, hf.2 s, freeDeltaEval_X]
+
+end SerrePositivity.BhattScholze
+
+end FreeDeltaUniversal
+
+/-! ## 自由δ環に関係式を課す普遍性（旧 Delta/Free/FreeDeltaPresentation.lean）
+
+自由整数δ環のイデアルIのδ閉包による商は、Iを零に送るδ射の普遍対象である。
+BS著者版Notation 2.8・Example 2.10の生成元と関係式の代数的構成。
+完備化やprismatic envelopeそのものはこのモジュールには含まない。
+-/
+
+section FreeDeltaPresentation
+
+namespace SerrePositivity.BhattScholze
+variable {p : ℕ} [Fact p.Prime] {σ : Type u} {A : Type v} [CommRing A]
+
+/-- 元族a_sへの評価がIを零に送れば、自由δ環のδ閉包商から、
+初期生成元をa_sへ送るδ射が一意に存在する。具体的な商構造・標準写像を明示する。 -/
+theorem existsUnique_freeDeltaPresentationHom (D : DeltaStructure p A) (a : σ → A)
+    (I : Ideal (FreeDeltaRing σ)) (hI : ∀ r ∈ I, freeDeltaEval D a r = 0) :
+    ∃! g : (FreeDeltaRing σ ⧸ (freeDeltaStructure p σ).deltaClosure I) →+* A,
+      ((freeDeltaStructure p σ).quotient ((freeDeltaStructure p σ).deltaClosure I)
+        ((freeDeltaStructure p σ).isStable_deltaClosure I)).IsDeltaHom D g ∧
+      ∀ s : σ, g (Ideal.Quotient.mk ((freeDeltaStructure p σ).deltaClosure I)
+        (MvPolynomial.X (s, 0))) = a s := by
+  let F := freeDeltaStructure p σ
+  let J := F.deltaClosure I
+  let Q := F.quotient J (F.isStable_deltaClosure I)
+  let q := Ideal.Quotient.mk J
+  let f := freeDeltaEval D a
+  have hf : F.IsDeltaHom D f := freeDeltaEval_isDeltaHom D a
+  have hker : I ≤ RingHom.ker f := fun r hr ↦ hI r hr
+  obtain ⟨g, hg, hgu⟩ := F.existsUnique_deltaClosure_quotient_lift I D f hf hker
+  refine ⟨g, ⟨hg.2, ?_⟩, ?_⟩
+  · intro s
+    have h := DFunLike.congr_fun hg.1 (MvPolynomial.X (s, 0))
+    exact h.trans (by simp [f])
+  · intro k hk
+    have hkδ : F.IsDeltaHom D (k.comp q) :=
+      hk.1.comp (F.isDeltaHom_quotient_mk J (F.isStable_deltaClosure I))
+    have hkgen : ∀ s : σ, (k.comp q) (MvPolynomial.X (s, 0)) = a s := hk.2
+    have hfg : ∀ s : σ, f (MvPolynomial.X (s, 0)) = a s := by
+      intro s
+      simp [f]
+    obtain ⟨l, _, hlu⟩ := existsUnique_freeDeltaHom D a
+    have hcomp : k.comp q = f :=
+      (hlu (k.comp q) ⟨hkδ, hkgen⟩).trans (hlu f ⟨hf, hfg⟩).symm
+    exact hgu k ⟨hcomp, hk.1⟩
+
+end SerrePositivity.BhattScholze
+
+end FreeDeltaPresentation
+
+/-! ## 相対自由構成と自由整数δ環の比較（旧 Delta/Free/RelativeFreeIntegerComparison.lean）
+
+基底が整数環の場合、相対W₂切断によるδ構造と、前段のFrobenius持上げによる
+自由整数δ構造は一致する。二つの構成を互換なAPIとして利用するための比較。
+-/
+
+section RelativeFreeIntegerComparison
+
+namespace SerrePositivity.BhattScholze
+variable (p : ℕ) [Fact p.Prime] (σ : Type u)
+
+/-- 整数上の相対自由δ構造は既存の自由整数δ構造と一致する。
+Frobeniusを係数・変数上で比較し、整数多項式環のp正則性による一意性を使う。 -/
+theorem relativeFreeDeltaStructure_int_eq (D : DeltaStructure p ℤ) :
+    relativeFreeDeltaStructure σ D = freeDeltaStructure p σ := by
+  have hφ : (relativeFreeDeltaStructure σ D).frobeniusLift = freeDeltaFrobenius p σ := by
+    apply MvPolynomial.ringHom_ext' (Subsingleton.elim _ _)
+    rintro ⟨s, n⟩
+    rw [DeltaStructure.frobeniusLift_apply, relativeFreeDeltaStructure_delta_X,
+      freeDeltaFrobenius_X]
+  exact (existsUnique_freeDeltaStructure p σ).choose_spec.2 _ hφ
+
+end SerrePositivity.BhattScholze
+
+end RelativeFreeIntegerComparison
+
+/-! ## pねじれを許すFrobeniusのδ射性（旧 Delta/Basic/DeltaFrobeniusNaturality.lean）
+
+自由整数δ環のp正則性で確認した恒等式を任意のδ環へ評価する。
+完全化の反復図式に追加のp正則性を要求しない。
+-/
+
+section DeltaFrobeniusNaturality
+
+namespace SerrePositivity.BhattScholze.DeltaStructure
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+
+/-- 任意のδ環でFrobenius持上げとδは可換。 -/
+theorem frobeniusLift_delta (D : DeltaStructure p A) (x : A) :
+    D.frobeniusLift (D.delta x) = D.delta (D.frobeniusLift x) := by
+  let F := freeDeltaStructure p Unit
+  let f := freeDeltaEval D (fun _ : Unit ↦ x)
+  have hf : F.IsDeltaHom D f := freeDeltaEval_isDeltaHom D (fun _ : Unit ↦ x)
+  let t : FreeDeltaRing Unit := MvPolynomial.X ((), 0)
+  have ht : f t = x := by simp [f, t]
+  have h := congrArg f (isDeltaHom_of_map_frobeniusLift (D := F) (E := F) F.frobeniusLift
+    (freeDeltaRing_p_mul_injective p Unit) (fun _ ↦ rfl) t)
+  rw [hf.map_frobeniusLift, hf, hf, hf.map_frobeniusLift, ht] at h
+  exact h
+
+/-- 任意のδ環のFrobenius持上げはδ射。p正則性を要求しない版。 -/
+theorem isDeltaHom_frobeniusLift_general (D : DeltaStructure p A) :
+    D.IsDeltaHom D D.frobeniusLift := D.frobeniusLift_delta
+
+/-- Frobeniusの全ての反復はδと可換。 -/
+theorem frobeniusLift_iterate_delta (D : DeltaStructure p A) (n : ℕ) (x : A) :
+    (D.frobeniusLift : A → A)^[n] (D.delta x) =
+      D.delta ((D.frobeniusLift : A → A)^[n] x) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [Function.iterate_succ_apply', Function.iterate_succ_apply', ih, D.frobeniusLift_delta]
+
+end SerrePositivity.BhattScholze.DeltaStructure
+
+end DeltaFrobeniusNaturality

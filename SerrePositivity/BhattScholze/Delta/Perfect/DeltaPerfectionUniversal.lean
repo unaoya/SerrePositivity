@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
 
 /-! # δ完全化の普遍性
 

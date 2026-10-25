@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFirstResiduePresentation
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeVariableSplit
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import Mathlib.RingTheory.Polynomial.Quotient
 
 /-! # 初期δ剰余を係数とする後続変数の多項式表示

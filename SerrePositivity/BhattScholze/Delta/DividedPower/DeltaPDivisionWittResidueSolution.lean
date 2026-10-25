@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostFrobenius
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostLowCoefficients
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 public import Mathlib.RingTheory.WittVector.Identities
 
 /-! # q(y)=0となる通常係数射に沿うφ(y)/pの具体的Witt解

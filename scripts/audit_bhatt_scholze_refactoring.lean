@@ -2,7 +2,6 @@ import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRoot
 import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraDiscrete
 import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootFamilyPDComparison
 import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.CompatibleRoot.CompatibleRootPDComparison
-import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
 import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaAdicEstimate
 import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic
@@ -24,10 +23,9 @@ import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
 import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom
 import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDQuotientEquiv
 import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDQuotientComparison
-import SerrePositivity.BhattScholze.Delta.Basic.WittTwoMap
-import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
-import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaPresentation
-import SerrePositivity.BhattScholze.Delta.Free.RelativeFreePresentation
+import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
+import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
+import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
 import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensorDelta
 import SerrePositivity.BhattScholze.Delta.Division.Relations.RelativeFreeSubsetSplit
@@ -39,13 +37,11 @@ import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.De
 import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittInverseSupport
 import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaDivisionFiniteRelationsRegular
 import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPBaseChange
-import SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport
 import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootSourceRawH0Delta
-import SerrePositivity.BhattScholze.Delta.Basic.DeltaClosureGeneration
+import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPBaseChange
 import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaDivisionFirstCoefficientPowerEquiv
-import SerrePositivity.BhattScholze.Delta.Free.PolynomialDelta
 import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStep
 import Mathlib.Algebra.Ring.PUnit
 import Mathlib.Util.AssertNoSorry

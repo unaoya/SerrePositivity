@@ -1,16 +1,35 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.Colimit.Ring
 
-/-! # 環余極限のδ構造
+/-!
+# δ 環の極限と余極限（BS 著者版 Rem 2.7）
+
+## 概要
+δ 両立な遷移を持つ有向系の環余極限の δ 構造と普遍性。勉強ノート第 2 章の命題 2.1.6 の有向の場合。
+
+## 方針
+各段の W₂ 切断を Mathlib の Ring.DirectLimit.lift で貼り合わせる。
+
+## 規約
+一般のテンソル積・積・引き戻しは未形式化（A0 で同じ方法でここに足す）。
+
+## 使われ方
+δ 完全化（Perfect）、André の ω₁ 反復、d で割る包の有限部分族の余極限。
+-/
+
+@[expose] public noncomputable section
+universe u v w
+
+/-! ## 環余極限のδ構造（旧 Delta/Basic/DeltaDirectLimit.lean）
 
 各段のW₂切断を、δと両立する遷移に沿ってMathlibの同じ環余極限へ移す。
 遷移関数を別表現に置き換えず、標準段射と適合する普遍射のδ両立性を供給する。
 -/
 
-@[expose] public noncomputable section
-universe u v w
+section DeltaDirectLimit
+
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {ι : Type u} [Preorder ι]
 variable (A : ι → Type v) [∀ i, CommRing (A i)]
@@ -99,3 +118,5 @@ theorem deltaDirectLimitLift_isDeltaHom {B : Type w} [CommRing B]
   · exact hgδ i x
 
 end SerrePositivity.BhattScholze
+
+end DeltaDirectLimit

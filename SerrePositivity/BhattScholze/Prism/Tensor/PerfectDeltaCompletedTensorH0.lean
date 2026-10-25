@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorPCompletion
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorClassicalComparison
 /-! # A perfect delta structure on the original completed derived tensor H0

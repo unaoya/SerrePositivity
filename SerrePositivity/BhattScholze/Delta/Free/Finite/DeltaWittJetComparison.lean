@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittGhostTriangular
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeUniversal
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-! # 任意の元のδjetとWitt jetの三角形比較
 

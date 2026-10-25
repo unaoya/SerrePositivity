@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensor
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 
 /-! # 実通常テンソルのδ構造と両因子の標準包含
 

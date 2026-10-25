@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootSourceRawH0Algebra
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensorDelta
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 
 /-! # 同じ実二因子源H0のδ構造と標準係数射 -/
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostNaturality
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoordinateChange
 
 /-! # 基底係数のWitt像と逆座標射での固定

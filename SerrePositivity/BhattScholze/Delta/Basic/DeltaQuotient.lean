@@ -1,17 +1,117 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaIdeal
-public import SerrePositivity.BhattScholze.Delta.Basic.WittTwoMap
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
+public import Mathlib.Logic.Function.Iterate
 
-/-! # δ安定イデアルによる商δ環
+/-!
+# δ 安定イデアル・商・δ 閉包（BS 著者版 Lemma 2.9、Ex 2.10）
+
+## 概要
+δ 安定イデアルによる商の δ 構造と普遍性、δ 閉包（I を含む最小の δ 安定イデアル）とその生成元表示。
+勉強ノート第 2 章の命題 2.1.8・2.1.9。
+
+## 方針
+切断 A → W₂(A) → W₂(A/I) が I を零に送ることから商へ降ろす。生成元の表示は、生成元の δ が入れば
+イデアル全体が δ 安定であること（加法公式の補正項と積公式の各項）から。
+
+## 規約
+p ねじれを許す。
+
+## 使われ方
+相対自由 δ 環の表示（Free/RelativeFreeDelta）、d で割る包（Division）。
+-/
+
+@[expose] public noncomputable section
+universe u v
+
+/-! ## δ安定イデアルの閉包（旧 Delta/Basic/DeltaIdeal.lean）
+
+BS著者版Example 2.10のδ安定化を、元のイデアルを含むδ安定イデアルの
+交わりとして構成する。商環のδ構造の構成とは独立な、最小性の部分を証明する。
+-/
+
+section DeltaIdeal
+
+namespace SerrePositivity.BhattScholze.DeltaStructure
+
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+
+/-- δ安定イデアルの逆像はδ安定。δ射の可換性を使い、商の普遍性に備える。 -/
+theorem IsDeltaHom.isStable_comap {B : Type v} [CommRing B]
+    {D : DeltaStructure p A} {E : DeltaStructure p B} {f : A →+* B}
+    (hf : D.IsDeltaHom E f) {J : Ideal B} (hJ : E.IsStable J) :
+    D.IsStable (J.comap f) := by
+  intro x hx
+  change f (D.delta x) ∈ J
+  rw [hf x]
+  exact hJ (f x) hx
+
+/-- δ閉包：Iを含むすべてのδ安定イデアルの交わり。
+余分な正則性・完備性を要求せず、δ環の商構成に用いる（BS Example 2.10）。 -/
+def deltaClosure (D : DeltaStructure p A) (I : Ideal A) : Ideal A :=
+  sInf {J : Ideal A | I ≤ J ∧ D.IsStable J}
+
+/-- 元がδ閉包に属するのは、Iを含むすべてのδ安定イデアルに属するとき。 -/
+theorem mem_deltaClosure (D : DeltaStructure p A) (I : Ideal A) (x : A) :
+    x ∈ D.deltaClosure I ↔ ∀ J : Ideal A, I ≤ J → D.IsStable J → x ∈ J := by
+  simp [deltaClosure, Submodule.mem_sInf]
+
+/-- 元のイデアルはそのδ閉包に含まれる。 -/
+theorem le_deltaClosure (D : DeltaStructure p A) (I : Ideal A) : I ≤ D.deltaClosure I := by
+  intro x hx
+  rw [mem_deltaClosure]
+  exact fun J hIJ _ ↦ hIJ hx
+
+/-- δ閉包はδで安定。交わりを取る各イデアルのδ安定性を使う。 -/
+theorem isStable_deltaClosure (D : DeltaStructure p A) (I : Ideal A) :
+    D.IsStable (D.deltaClosure I) := by
+  intro x hx
+  rw [mem_deltaClosure] at hx ⊢
+  intro J hIJ hJ
+  exact hJ x (hx J hIJ hJ)
+
+/-- δ閉包はIを含むδ安定イデアルの中で最小。商を経由する射の構成に使う。 -/
+theorem deltaClosure_le (D : DeltaStructure p A) {I J : Ideal A}
+    (hIJ : I ≤ J) (hJ : D.IsStable J) : D.deltaClosure I ≤ J := by
+  intro x hx
+  exact (D.mem_deltaClosure I x).mp hx J hIJ hJ
+
+/-- δで安定なイデアルのδ閉包は元のイデアル。 -/
+theorem deltaClosure_eq (D : DeltaStructure p A) {I : Ideal A} (hI : D.IsStable I) :
+    D.deltaClosure I = I :=
+  le_antisymm (D.deltaClosure_le le_rfl hI) (D.le_deltaClosure I)
+
+/-- δ閉包はイデアルの包含に関して単調。 -/
+theorem deltaClosure_mono (D : DeltaStructure p A) {I J : Ideal A} (hIJ : I ≤ J) :
+    D.deltaClosure I ≤ D.deltaClosure J :=
+  D.deltaClosure_le (hIJ.trans (D.le_deltaClosure J)) (D.isStable_deltaClosure J)
+
+/-- δ閉包を二度取っても変わらない。 -/
+@[simp] theorem deltaClosure_idempotent (D : DeltaStructure p A) (I : Ideal A) :
+    D.deltaClosure (D.deltaClosure I) = D.deltaClosure I :=
+  D.deltaClosure_eq (D.isStable_deltaClosure I)
+
+/-- δ射がIを零に送れば、そのδ閉包も零に送る。
+核のδ安定性と最小性により、δ安定商の普遍性の核条件を得る。 -/
+theorem IsDeltaHom.deltaClosure_le_ker {B : Type v} [CommRing B]
+    {D : DeltaStructure p A} {E : DeltaStructure p B} {f : A →+* B}
+    (hf : D.IsDeltaHom E f) {I : Ideal A} (hI : I ≤ RingHom.ker f) :
+    D.deltaClosure I ≤ RingHom.ker f :=
+  D.deltaClosure_le hI hf.isStable_ker
+
+end SerrePositivity.BhattScholze.DeltaStructure
+
+end DeltaIdeal
+
+/-! ## δ安定イデアルによる商δ環（旧 Delta/Basic/DeltaQuotient.lean）
 
 BS著者公開版Lemma 2.9とExample 2.10。W₂切断を商へ降下し、
 pねじれの有無によらない商δ構造とδ射としての普遍性を構成する。
 -/
 
-@[expose] public noncomputable section
-universe u v
+section DeltaQuotient
+
 namespace SerrePositivity.BhattScholze
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} {B : Type v} [CommRing A] [CommRing B]
@@ -115,3 +215,85 @@ theorem existsUnique_deltaClosure_quotient_lift (D : DeltaStructure p A) (I : Id
 
 end DeltaStructure
 end SerrePositivity.BhattScholze
+
+end DeltaQuotient
+
+/-! ## 反復δ像によるδ閉包の生成（旧 Delta/Basic/DeltaClosureGeneration.lean）
+
+BS著者版Example 2.10の表示を、δ安定イデアルの最小性と比較する。
+生成元でのδ安定性をイデアル全体へ拡張する際にδの加法・積公式を用いる。
+-/
+
+section DeltaClosureGeneration
+
+namespace SerrePositivity.BhattScholze.DeltaStructure
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+
+/-- x,yがイデアルIに属すれば、δ加法の繰上り項もIに属する。
+商へのWitt写像で両Teichmüller元を零へ送る。 -/
+theorem additionCarry_mem (I : Ideal A) {x y : A} (hx : x ∈ I) (hy : y ∈ I) :
+    (WittVector.teichmuller p x + WittVector.teichmuller p y).coeff 1 ∈ I := by
+  apply Ideal.Quotient.eq_zero_iff_mem.mp
+  have hx0 := Ideal.Quotient.eq_zero_iff_mem.mpr hx
+  have hy0 := Ideal.Quotient.eq_zero_iff_mem.mpr hy
+  simp only [← WittVector.map_coeff, map_add, WittVector.map_teichmuller, hx0, hy0,
+    WittVector.teichmuller_zero, add_zero, WittVector.zero_coeff]
+
+/-- 生成元のδが生成イデアルに属すれば、そのイデアルはδ安定。
+加法の繰上り項と積公式の各項がイデアルに属することを生成帰納法で示す。 -/
+theorem isStable_span (D : DeltaStructure p A) (s : Set A)
+    (hs : ∀ x ∈ s, D.delta x ∈ Ideal.span s) : D.IsStable (Ideal.span s) := by
+  intro x hx
+  change x ∈ Submodule.span A s at hx
+  induction hx using Submodule.span_induction with
+  | mem x hx => exact hs x hx
+  | zero => simp
+  | add x y hx hy ihx ihy =>
+      rw [D.delta_add]
+      exact (Ideal.span s).add_mem ((Ideal.span s).add_mem ihx ihy)
+        (additionCarry_mem (Ideal.span s) hx hy)
+  | smul r x hx ih =>
+      change D.delta (r * x) ∈ Ideal.span s
+      rw [D.delta_mul]
+      exact (Ideal.span s).add_mem
+        ((Ideal.span s).add_mem ((Ideal.span s).mul_mem_left (r ^ p) ih)
+          ((Ideal.span s).mul_mem_left (D.delta r)
+            ((Ideal.span s).pow_mem_of_mem hx p (Fact.out : p.Prime).pos)))
+        ((Ideal.span s).mul_mem_left ((p : A) * D.delta r) ih)
+
+/-- 生成イデアルのδ閉包は、指定生成元だけの全反復δ像で生成される。 -/
+theorem deltaClosure_span_eq_span_generator_iterates
+    (D : DeltaStructure p A) (s : Set A) :
+    D.deltaClosure (Ideal.span s) = Ideal.span (⋃ n : ℕ, D.delta^[n] '' s) := by
+  let t : Set A := ⋃ n : ℕ, D.delta^[n] '' s
+  have hle : Ideal.span s ≤ Ideal.span t := by
+    apply Ideal.span_le.mpr
+    intro x hx
+    exact Ideal.subset_span (Set.mem_iUnion.mpr ⟨0, x, hx, rfl⟩)
+  have hstable : D.IsStable (Ideal.span t) := by
+    apply D.isStable_span
+    intro x hx
+    obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
+    apply Ideal.subset_span
+    exact Set.mem_iUnion.mpr ⟨n + 1, a, ha, Function.iterate_succ_apply' D.delta n a⟩
+  apply le_antisymm (D.deltaClosure_le hle hstable)
+  apply Ideal.span_le.mpr
+  intro x hx
+  obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
+  clear hx
+  induction n with
+  | zero => exact D.le_deltaClosure _ (Ideal.subset_span ha)
+  | succ n ih =>
+      rw [Function.iterate_succ_apply']
+      exact D.isStable_deltaClosure _ _ ih
+
+/-- δ閉包はIのすべての反復δ像で生成されるイデアル（BS Example 2.10）。
+抽象的な交わりによる構成に、具体的な生成元表示を与える。 -/
+theorem deltaClosure_eq_span_iterates (D : DeltaStructure p A) (I : Ideal A) :
+    D.deltaClosure I = Ideal.span (⋃ n : ℕ, D.delta^[n] '' (I : Set A)) := by
+  simpa only [Ideal.span_eq] using
+    D.deltaClosure_span_eq_span_generator_iterates (I : Set A)
+
+end SerrePositivity.BhattScholze.DeltaStructure
+
+end DeltaClosureGeneration

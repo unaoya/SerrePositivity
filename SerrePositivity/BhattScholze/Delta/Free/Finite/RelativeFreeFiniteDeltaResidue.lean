@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStepIdentities
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
 
 /-! # 有限δ計算の通常剰余公式
 

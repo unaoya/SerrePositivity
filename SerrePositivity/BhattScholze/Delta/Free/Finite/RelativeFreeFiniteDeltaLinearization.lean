@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaResidue
 public import Mathlib.Algebra.MvPolynomial.Derivation
 

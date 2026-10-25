@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFrobeniusTopLinear
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostCoefficients
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 
 /-! # 自由初期変数のWitt係数と最高δ変数の全段再帰式
 

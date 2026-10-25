@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobeniusNaturality
+public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
 public import Mathlib.CategoryTheory.Functor.OfSequence
 

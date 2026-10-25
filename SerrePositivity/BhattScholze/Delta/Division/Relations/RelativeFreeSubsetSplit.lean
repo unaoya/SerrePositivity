@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeUniversal
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Logic.Equiv.Set

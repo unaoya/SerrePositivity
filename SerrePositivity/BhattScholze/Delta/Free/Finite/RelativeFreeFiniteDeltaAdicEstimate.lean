@@ -2,7 +2,6 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStepIdentities
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
 public import Mathlib.RingTheory.Ideal.Maps
 
 /-! # 異なる有限段の間のδ計算のイデアル冪評価

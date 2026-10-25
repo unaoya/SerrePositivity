@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobeniusNaturality
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit
+public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaColimit
 
 /-! # δ環のFrobenius余極限
 

@@ -37,8 +37,8 @@ import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion
 import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionSequentialEquiv
 import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionSequential
 -- lake build SerrePositivity.BhattScholze.DeltaRing の後に実行する。
-import SerrePositivity.BhattScholze.Delta.Basic.DeltaClosureGeneration
-import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius
+import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
+import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 import SerrePositivity.BhattScholze.Delta.Perfect.DeltaTorsion
 import SerrePositivity.BhattScholze.Delta.Perfect.WittDelta
@@ -46,11 +46,8 @@ import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
 import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedTorsion
 import SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished
 import SerrePositivity.BhattScholze.Prism.Basic.OrientedDeltaPair
-import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaPresentation
+import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeUniversal
-import SerrePositivity.BhattScholze.Delta.Free.RelativeFreePresentation
-import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeIntegerComparison
 import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivision
 import SerrePositivity.BhattScholze.Delta.Division.DeltaTorsionReduction
 import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionQuotient

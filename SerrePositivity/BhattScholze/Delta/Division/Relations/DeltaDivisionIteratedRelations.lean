@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaClosureGeneration
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivision
 
 /-! # δ除算包の全反復関係式

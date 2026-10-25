@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyCoefficientQuotient
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaPDivisionNextInput
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-!
 # André E1・E2：モニック族の raw Frobenius 除算の初期係数商

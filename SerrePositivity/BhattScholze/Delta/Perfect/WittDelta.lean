@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaModP
 public import Mathlib.RingTheory.WittVector.Complete
 

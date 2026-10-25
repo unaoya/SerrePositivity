@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.DivisionPerfectoidCandidate
 public import SerrePositivity.BhattScholze.Andre.MonicRelation
-public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-!
 # André E1：多項式族の根方程式を保つ perfectoid 候補

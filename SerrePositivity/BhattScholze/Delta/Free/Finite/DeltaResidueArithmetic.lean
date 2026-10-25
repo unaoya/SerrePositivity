@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne
 public import SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime
-public import SerrePositivity.BhattScholze.Delta.Free.RelativeDeltaEstimate
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
 
 /-! # B4-6：通常剰余射の下でのδ反復計算
 
