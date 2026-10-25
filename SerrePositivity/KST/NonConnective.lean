@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionNativeSquareFamily
 public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectTransitionPi
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeTransitionPi
 public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectStructurePi

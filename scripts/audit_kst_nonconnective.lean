@@ -7,6 +7,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGSuspensionNativeSquareFamily,
     `SerrePositivity.KST.NonConnective.DGSuspensionPerfectTransitionPi,
     `SerrePositivity.KST.NonConnective.DGSuspensionNativeTransitionPi,
     `SerrePositivity.KST.NonConnective.DGSuspensionPerfectStructurePi,
