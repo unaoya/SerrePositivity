@@ -1,6 +1,7 @@
 # Codex 作業指示書 BS-W7：Prism・Semiperfectoid・Perfectoidization・Almost・Interface を数学的な話題ごとにまとめる（181 本 → 34 本）
 
-作成：2026-10-25（BS 作業チャット）。宛先：Codex。**BS-W6（`ba0da6a23`）の後に行う。**
+作成：2026-10-25（BS 作業チャット）、同日改訂（Codex の適用前の指摘：統合先と同じ名前の `Almost.PerfectoidAlmost` が
+スタブ一覧に入っていたのを外し、スクリプトにこれを禁じる検査を足した）。宛先：Codex。**BS-W6（`ba0da6a23`）の後に行う。**
 ユーザーの決定（10-25）：ファイルは数学的な内容でまとめる。André の下にある §3・§4 の一般論（有界 prism、Lemma 4.8、Lemma 3.9）を
 Prism へ移す。Prism の中の §7（Cor 7.3 の構成）を Semiperfectoid へ、完全 δ 環のテンソル積を Delta/Perfect へ移す。
 Semiperfectoid・Perfectoidization・Almost・PerfectoidizationInterface も話題ごとにまとめる。André 本体と Semiperfectoid/RootEnvelope は W8。
@@ -17,7 +18,8 @@ Semiperfectoid・Perfectoidization・Almost・PerfectoidizationInterface も話�
   試験コンパイルし、エラーなしを確認した。
 - BS・CLMST だけが使う `CommutativeAlgebra` の 4 本（`AbsolutelyIntegrallyClosedPerfectoidQuotient`、`PerfectoidIdeal`、
   `PerfectoidIdealCompatibleRoots`、`PerfectoidIdealCover`）はスクリプトが import 行を書き換える。
-- 所有範囲外の import 元は root の `SerrePositivity.lean`（27 本）と `scripts/audit_f7.lean`（1 本）。この 28 本は旧名の位置に転送スタブを置く
+- 所有範囲外の import 元は root の `SerrePositivity.lean` と `scripts/audit_f7.lean`。root が旧名で import する 27 本のうち
+  `Almost.PerfectoidAlmost` は統合先と同じ名前なのでスタブは要らない。残る **27 本**（root の 26 本と `audit_f7` の 1 本）は旧名の位置に転送スタブを置く
   （スクリプトが書く）。EInfinity は `PerfectoidizationInterface.Interface` を import しているが、統合先が同じ名前なので影響しない。
 - 統合後の import に循環がないこと、各統合先の中の連結順が依存に沿っていること、`private` 宣言・インスタンス名の衝突がないことは確認済み。
 - 新しい sorry・axiom を加えない。
@@ -78,7 +80,7 @@ python3 formalization-plans/bhatt-scholze-merge-modules.py formalization-plans/b
 # 期待値（ba0da6a23 で確認、3 分ほどかかる）："removed_files": 176, "owned_files_rewritten": 90,
 #   "foreign_importers": ["SerrePositivity.lean", "scripts/audit_f7.lean"], "foreign_imports_without_stub": []
 python3 formalization-plans/bhatt-scholze-merge-modules.py formalization-plans/bhatt-scholze-codex-w7-merges.json --apply
-git add SerrePositivity/BhattScholze   # 新しい統合ファイル 29 本と転送スタブ 28 本を含む（BhattScholze の中だけ）
+git add SerrePositivity/BhattScholze   # 新しい統合ファイル 29 本と転送スタブ 27 本を含む（BhattScholze の中だけ）
 ```
 
 件数が違う、`foreign_imports_without_stub` が空でない、などの場合は `--apply` せずに報告する。
@@ -124,7 +126,7 @@ refactor(bs): merge Prism, Semiperfectoid, Perfectoidization, Almost and the int
 Prism now holds the general §3/§4 material that lived under Andre (bounded prisms, Lemma 4.8,
 Lemma 3.9) and is organized by topic; the Cor 7.3 constructions move to Semiperfectoid and the
 tensor products of perfect δ-rings to Delta/Perfect. Semiperfectoid, Perfectoidization, Almost
-and PerfectoidizationInterface are merged by topic. 181 modules become 34; 28 old names that
+and PerfectoidizationInterface are merged by topic. 181 modules become 34; 27 old names that
 the root aggregator and scripts/audit_f7.lean import stay as forwarding stubs. Declarations,
 names and proofs are unchanged. Plan: formalization-plans/bhatt-scholze-codex-w7-merges.json.
 

@@ -287,7 +287,6 @@
   "SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision": "# E3 から環としての excision へ（BS 著者版 Cor 8.12 の環版）\n\n## 概要\n離散性を仮定した excision の橋、四つの指定普遍環からの excision、環としての excision の引き戻し四角形。\n\n## 方針\n四頂点の離散性とファイバー列の長完全列から環の引き戻しを得る。差写像の全射性は界面から証明する。\n\n## 規約\nE3 の存在を引用する。\n\n## 使われ方\nperfectoid 化の excision の適用（Perfectoidization/Excision）、CLMST。"
  },
  "stubs": [
-  "SerrePositivity.BhattScholze.Almost.PerfectoidAlmost",
   "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientKernel",
   "SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientLinear",
   "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChangeCoefficientComparison",

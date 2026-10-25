@@ -168,6 +168,9 @@ def main():
     merges, docs = plan["merges"], plan["docstrings"]
     stubs = set(plan.get("stubs", []))
     rename = {old: new for new, olds in merges.items() for old in olds}
+    # 統合先と同じ名前の元モジュールはそのまま残るのでスタブは不要。スタブにすると統合した本文を上書きする（BS-W7 の適用前の指摘）。
+    assert not (stubs & set(merges)), f"merge targets listed as stubs: {sorted(stubs & set(merges))}"
+    assert stubs <= set(rename), f"stubs that are not merged: {sorted(stubs - set(rename))}"
     for new, olds in merges.items():
         assert new in docs, f"docstring missing for {new}"
         for old in olds:
