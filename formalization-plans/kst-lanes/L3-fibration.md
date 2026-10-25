@@ -248,3 +248,6 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。
 - `RelativeFirstRowRealization` は正段の残入力を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowQuotient q (n+1)))` に移し、同じ実現・Ex∞ 射・商核四角形へ条件付きで接続する。第一行の標準単体座標同型は同じ商後合成に厳密自然。同じ D-9 実列の `dgKappaNativeFullSSquare_isPullback_of_firstRows` と `dgKappaNativeBFFixedStructure_nonnegative_of_firstRows` まで接続。一般局所化から core 比較を推論せず、有限図式の Verdier 分数・core 比較は Sp 正本へユーザー経由で中継済み。
 - `RelativeFirstRowSimplex` は同じ相対部分複体の標準単体座標への厳密な両側逆を供給する。`RelativeFirstRowSimplexQuotient` は元の商比較との厳密四角形を保持し、正段条件を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowSimplexQuotient q n))` と同値にする。この型から元の商実現への条件付き利用側まで接続済み。先の第一行型と同値な供給型として Sp へユーザー経由で補足した。新たな局所化存在入力は追加しない。
+
+### 追加設計確認：同じ三面を保つ制御三単体の実構成（未採用）
+- 現行 Ind-S (9) の二胞体再構成と固定三面 fiber の可縮性だけから、指定欠面を持つ F の存在を推論しない。元の二胞体と二つの厳密合成面を保ち、同じ長 Hom を持つ因子分解三単体族を F1 に追加供給依頼する案。[型・供給範囲・採否の影響](archive/L3-controlled-factorization-tetra-proposal.md)。全族 Hom 回収の既存要求は保持。新しい存在仮定は本体へ追加せず、ユーザー経由で設計確認する。
