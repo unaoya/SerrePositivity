@@ -15,7 +15,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.HomDegrees,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.HomEquations,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeDegeneracy,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.RawInclusions]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.RawInclusions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedGraded,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegeneracyOperators,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelNormalization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizationStages,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateSplitting]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -37,3 +43,6 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarHomColumnsEquiv
 #check SerrePositivity.InfinityCategories.dgCoherentBarClosedColumnsEquiv
 #check SerrePositivity.InfinityCategories.dgCoherentBar_native_degenerateTriangle
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizationStageHomotopy
+#check SerrePositivity.InfinityCategories.dgCoherentBarLabelNormalizedEquiv
+#check SerrePositivity.InfinityCategories.dgCoherentBarEndRebase_d

@@ -30,4 +30,23 @@ lemma dgCoherentBar_native_degenerateTriangle (s : I _⦋1⦌) (i : Fin 2) :
     (coherentDiagramTop_min 1) (coherentDiagramTop_max 1) (by simp)
     (Finset.mem_univ _) (Finset.mem_univ _) (by simp)
 
+lemma dgCoherentBar_native_degenerateTop {n : ℕ} (s : I _⦋n + 1⦌)
+    (i : Fin (n + 2)) : coherentDiagramTopRaw F (I.σ i s) = 0 := by
+  have h : coherentDiagramSimplex F (I.σ i s) =
+      (dgNerve R C).σ i (coherentDiagramSimplex F s) :=
+    coherentDiagramSimplex_map F i.predAboveOrderHom s
+  unfold coherentDiagramTopRaw
+  rw [h]
+  exact dgNerve.σ_hom_eq_zero R C i (coherentDiagramSimplex F s)
+    Finset.univ 0 (Fin.last (n + 2)) (-((n + 1 : ℕ) : ℤ))
+    (coherentDiagramTop_card (n + 1)) (coherentDiagramTop_min (n + 1))
+    (coherentDiagramTop_max (n + 1)) (by simp)
+    (Finset.mem_univ _) (Finset.mem_univ _) (by simp)
+
+lemma dgCoherentBar_native_degenerateTop_transported {n : ℕ} (s : I _⦋n + 1⦌)
+    (i : Fin (n + 2)) : coherentDiagramTop F (I.σ i s) = 0 := by
+  unfold coherentDiagramTop
+  rw [dgCoherentBar_native_degenerateTop]
+  exact map_zero _
+
 end SerrePositivity.InfinityCategories

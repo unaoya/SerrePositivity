@@ -4,3 +4,9 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.HomDegrees
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.HomEquations
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeDegeneracy
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.RawInclusions
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedGraded
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.DegeneracyOperators
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebase
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelNormalization
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizationStages
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateSplitting
