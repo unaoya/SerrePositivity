@@ -42,6 +42,7 @@ lemma dgHomologyBarAppend_ι (n : ℕ) (s : (nerve J) _⦋n⦌) :
           (dgStrictAppendSimplex s ⊤ le_top) := by
   simp only [dgHomologyBarAppend, Sigma.ι_comp_desc]
 
+omit [OrderTop J] in
 lemma dgHomologyBarTransport_ι {Δ : SimplexCategoryᵒᵖ} {s t : (nerve J).obj Δ}
     (h : s = t) (f : s.obj 0 ⟶ t.obj 0) :
     F.map f ≫ Sigma.ι (dgHomologyBarFamily R F Δ) t =
@@ -50,6 +51,7 @@ lemma dgHomologyBarTransport_ι {Δ : SimplexCategoryᵒᵖ} {s t : (nerve J).ob
   have hf : f = 𝟙 (s.obj 0) := Subsingleton.elim _ _
   rw [hf, F.map_id, Category.id_comp]
 
+omit [OrderTop J] in
 lemma dgHomologyBarCoefficient_transport {Δ : SimplexCategoryᵒᵖ}
     {s t : (nerve J).obj Δ} (h : s = t) {a : J} (f : a ⟶ s.obj 0) (g : a ⟶ t.obj 0) :
     F.map f ≫ Sigma.ι (dgHomologyBarFamily R F Δ) s =

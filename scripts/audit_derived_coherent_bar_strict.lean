@@ -55,7 +55,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerIndex,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerEmbedding,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerCover,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarFilteredExact]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarFilteredExact,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarDegreeOne,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarCokernelData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarCokernel,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarZeroHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentDimensionLayers,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerAnnihilation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerRemainder,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerShortExact]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -107,3 +117,9 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgHomologyBarTopHomotopy_positive
 #check SerrePositivity.InfinityCategories.dgHomologyBarLowerMap_covers
 #check SerrePositivity.InfinityCategories.dgHomologyBarFiltered_exactAt
+
+#check SerrePositivity.InfinityCategories.dgHomologyBarAugmentationIsCokernel
+#check SerrePositivity.InfinityCategories.dgHomologyBarZeroHomologyColimitIso
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarStageToLayer
+#check SerrePositivity.InfinityCategories.dgCoherentBarLayerSequence_shortExact

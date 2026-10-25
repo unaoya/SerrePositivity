@@ -6,7 +6,8 @@
   単体次元フィルトレーション、実部分複体の段階模型とその余極限性まで構成。
   一次成分の閉性、高次 HA の二段下降、零段階での theta 消滅も構成。
   通常のホモロジー図式の増大 simplicial bar と、実 bar への頂点の閉零射を公開。
-  filtered poset 上の通常のホモロジー bar の全正次数完全性まで構成。
+  filtered poset 上の通常のホモロジー bar の全正次数完全性と
+  零次ホモロジー＝余極限を構成。実 bar の隣接段階と内部次元層の短完全列も構成。
   最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
@@ -17,7 +18,7 @@
 - 三段目：1 coherent G のホモロジー図式、2 実 bar の単体次元フィルトレーション、
   3 有限 support と filtered 完全性によるホモロジー比較、4 strict 版の特殊化、
   5 自分の集約・専用監査・限定保存、6 B 到着後の比較値と無条件 covers。
-- 残り：段階商の内部ホモロジーと通常の bar の同定、bar の零次と余極限の比較、
+- 残り：段階商の内部ホモロジーと非退化ホモロジー bar の同定、
   有限 support の下降による最終比較、strict 版への特殊化（C1）。
   非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
   高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
@@ -29,7 +30,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,485 jobs・専用監査51葉434宣言通過。
+- 検証：coherent 入力への修正後、集約4,496 jobs・専用監査61葉495宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
@@ -39,7 +40,9 @@
   一次列の内部閉性、高次列の二段下降、零段階 theta 消滅、
   通常の増大 simplicial bar、実正規化 bar への頂点の閉零射も構成。
 - 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
-- 次の一手：bar の零次と余極限を比較し、段階商との同定を示す。
+- 次の一手：内部次元層のホモロジーと非退化ホモロジー bar を同定する。
+  `dgHomologyBarZeroHomologyColimitIso` が通常の bar の零次の比較。
+  `dgCoherentBarLayerSequence_shortExact` が実複体の隣接段階の短完全列。
   正次数完全性は有限 support を終頂点のある下方部分圏へ持ち上げ、
   局所縮約で boundary を得て全体へ戻す形で証明した。
   `dgHomologyBarFiltered_exactAt` がこの全正次数の公開名。

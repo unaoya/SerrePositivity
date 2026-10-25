@@ -56,6 +56,11 @@ def dgBarDegreeSubcomplexMap (h : ∀ q, S q ≤ T q) :
     rw [CochainComplex.of_d, CochainComplex.of_d]
     rfl)
 
+lemma dgBarDegreeSubcomplexMap_injective (h : ∀ q, S q ≤ T q) (q : ℤ) :
+    Function.Injective ((dgBarDegreeSubcomplexMap R K S hS T hT h).f q) := by
+  intro a b hab
+  exact Subtype.ext (congrArg (fun z : T q => z.val) hab)
+
 @[reassoc]
 lemma dgBarDegreeSubcomplexMap_inclusion (h : ∀ q, S q ≤ T q) :
     dgBarDegreeSubcomplexMap R K S hS T hT h ≫
