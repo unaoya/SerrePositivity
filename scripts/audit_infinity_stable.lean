@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
+import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiNaturality
@@ -8636,6 +8638,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LimitConeTerminalComparison,
 
     `SerrePositivity.InfinityCategories.Stable.LoopConeDiagramFibers,
+    `SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber,
+    `SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity,
 ] ++
     stableAuditExpectedChunk0 ++
     stableAuditExpectedChunk1 ++

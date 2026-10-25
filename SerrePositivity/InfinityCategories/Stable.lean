@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
+public import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
 public import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
 public import SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift
