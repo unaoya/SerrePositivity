@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.KST.Fibration.WeakSpanKanSpaceInversion
 public import SerrePositivity.KST.Fibration.SpaceDiagramLocalizationDescent
 
@@ -35,8 +36,8 @@ def weakSpanKanQuotientDiagram_simplexIso :
         weakSpanKanQuotientDiagram h x) (weakSpanKanCoherentDiagram i x) := by
   have e := (weakSpanKanQuotientDiagram_restrictionIso h x).precomp
     ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B.obj))
-  rw [← Category.assoc, ← Functor.map_comp] at e
-  exact e ≪≫ weakSpanKanSpaceDiagram_restrictionIso i x
+  exact F2.functorIsoOfEq e (by rw [← Category.assoc, ← Functor.map_comp]) rfl ≪≫
+    weakSpanKanSpaceDiagram_restrictionIso i x
 
 /-- 商上の図式の元の初頂点での値は、同じ strict Kan 分数模型の値と実際に同型。 -/
 def weakSpanKanQuotientDiagram_initialVertexIso (c : TransportSimplexCategory B.obj) :
