@@ -66,18 +66,34 @@ structure RelativeAlternatingOpenStage (κ : Cardinal.{u})
     (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (alternatingLowerSection κ a c)) ≫ diagram =
       (SSet.uliftFunctor.{u + 1, u}).map (index c) ≫ P c
 
+/-- 概要：厳密前置段が指定過去の閉前置段をそのまま保持すること。
+方針：全図式と両表示添字の制限を同時に比較する。
+規約：全単体上の等式を要求する。
+使われ方：各再帰段から全過去段への整合性の回収。 -/
+def RelativeAlternatingOpenStage.Preserves {κ : Cardinal.{u}}
+    {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
+    {I : Fin 2 → SSet.{u}}
+    {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
+    {a : AlternatingIndex κ} (s : RelativeAlternatingOpenStage κ x I P a)
+    {b : AlternatingIndex κ} (hb : b < a)
+    (t : RelativeAlternatingClosedStage κ x I P b) : Prop :=
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (closedPrefixIntoStrict a ⟨b, hb⟩)) ≫
+      s.diagram = t.diagram ∧
+    ∀ c, nerveMap (componentClosedIntoLower a ⟨b, hb⟩ c) ≫ s.index c = t.index c
+
 /-- 概要：整合する全過去閉前置段から、現在の全厳密前置段を構成する。
 方針：全交互図式と元の成分表示添字を別々に厳密に貼り合わせ、被覆上で同じ成分を回収する。
 規約：極限前置段にも終頂点や余極限を要求しない。
 使われ方：well-founded 相対交互構成の各再帰段への入力。 -/
-lemma exists_relativeAlternatingOpenStage {κ : Cardinal.{u}}
+lemma exists_relativeAlternatingOpenStage_preserving {κ : Cardinal.{u}}
     {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
     {I : Fin 2 → SSet.{u}}
     {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
     (a : AlternatingIndex κ)
     (prev : ∀ b : {i : AlternatingIndex κ // i < a}, RelativeAlternatingClosedStage κ x I P b.val)
     (hprev : ∀ b d : {i : AlternatingIndex κ // i < a}, b < d → (prev b).Restricts (prev d)) :
-    Nonempty (RelativeAlternatingOpenStage κ x I P a) := by
+    ∃ s : RelativeAlternatingOpenStage κ x I P a,
+      ∀ b : {i : AlternatingIndex κ // i < a}, s.Preserves b.property (prev b) := by
   have hdiagram : ∀ (b d : {i : AlternatingIndex κ // i < a}) (h : b ≤ d),
       (SSet.uliftFunctor.{u + 1, u}).map
         (nerveMap (closedPrefixMap (I := AlternatingIndex κ) (a := b.val) (b := d.val) h)) ≫
@@ -98,7 +114,7 @@ lemma exists_relativeAlternatingOpenStage {κ : Cardinal.{u}}
       ∀ b, nerveMap (componentClosedIntoLower a b c) ≫ J = (prev b).index c :=
     fun c ↦ exists_componentPrefixGluing a c (fun b ↦ (prev b).index c) (hcomponent c)
   choose J hJ using hc
-  refine ⟨⟨J, Q, fun c ↦ ?_⟩⟩
+  refine ⟨⟨J, Q, fun c ↦ ?_⟩, fun b ↦ ⟨hQ b, fun c ↦ hJ c b⟩⟩
   apply componentPrefix_ulift_hom_ext a c
   intro b
   have hm : nerveMap (componentClosedIntoLower a b c) ≫
@@ -114,6 +130,21 @@ lemma exists_relativeAlternatingOpenStage {κ : Cardinal.{u}}
     _ = (SSet.uliftFunctor.{u + 1, u}).map ((prev b).index c) ≫ P c := (prev b).component_eq c
     _ = _ := by
       rw [← Category.assoc, ← CategoryTheory.Functor.map_comp, hJ]
+
+/-- 概要：整合する全過去閉前置段から厳密前置段が存在する。
+方針：全過去段への制限を保持する貼り合わせから段を取り出す。
+規約：元の二つの表示添字を保持する。
+使われ方：相対一段因子化へ渡す前置図式。 -/
+lemma exists_relativeAlternatingOpenStage {κ : Cardinal.{u}}
+    {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
+    {I : Fin 2 → SSet.{u}}
+    {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
+    (a : AlternatingIndex κ)
+    (prev : ∀ b : {i : AlternatingIndex κ // i < a}, RelativeAlternatingClosedStage κ x I P b.val)
+    (hprev : ∀ b d : {i : AlternatingIndex κ // i < a}, b < d → (prev b).Restricts (prev d)) :
+    Nonempty (RelativeAlternatingOpenStage κ x I P a) := by
+  obtain ⟨s, _⟩ := exists_relativeAlternatingOpenStage_preserving a prev hprev
+  exact ⟨s⟩
 
 /-- 概要：全厳密前置図式の各頂点は元のいずれかの成分の頂点。
 方針：同じ交互位置の色と元の順序段を取り出す。
@@ -160,5 +191,67 @@ lemma RelativeAlternatingOpenStage.vertex_isKappaCompact
   rw [hw] at h
   have h' := congrArg (fun z ↦ (sliceOverProjection x).app (Opposite.op ⦋0⦌) z) h
   exact h'.symm ▸ hP c ((s.index c).app (Opposite.op ⦋0⦌) w)
+
+/-- 概要：閉前置段が元の厳密前置段をそのまま保持すること。
+方針：全交互図式と両成分表示添字の旧境界を同時に比較する。
+規約：頂点だけでなく元の全単体を保持する。
+使われ方：実際の一段因子化を全相対塔の次の段へ戻す。 -/
+def RelativeAlternatingClosedStage.ExtendsOpen {κ : Cardinal.{u}}
+    {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
+    {I : Fin 2 → SSet.{u}}
+    {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
+    {a : AlternatingIndex κ}
+    (s : RelativeAlternatingClosedStage κ x I P a)
+    (t : RelativeAlternatingOpenStage κ x I P a) : Prop :=
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (strictPrefixToClosed a)) ≫ s.diagram = t.diagram ∧
+    ∀ c, nerveMap (alternatingComponentLowerToClosed κ a c) ≫ s.index c = t.index c
+
+/-- 概要：旧厳密前置段を保つ一段追加は、そこで保持した全過去段も保つ。
+方針：元の二つの包含を合成して全図式と両表示添字を比較する。
+規約：過去段への制限は元の厳密な全射の等式。
+使われ方：well-founded 選択に渡す全過去段への延長条件。 -/
+lemma RelativeAlternatingClosedStage.restricts_of_extendsOpen {κ : Cardinal.{u}}
+    {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
+    {I : Fin 2 → SSet.{u}}
+    {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
+    {a b : AlternatingIndex κ} {s : RelativeAlternatingClosedStage κ x I P a}
+    {t : RelativeAlternatingOpenStage κ x I P a}
+    {r : RelativeAlternatingClosedStage κ x I P b} (hb : b < a)
+    (hst : s.ExtendsOpen t) (htr : t.Preserves hb r) : r.Restricts s := by
+  intro h
+  constructor
+  · calc
+      _ = (SSet.uliftFunctor.{u + 1, u}).map
+          (nerveMap (closedPrefixIntoStrict a ⟨b, hb⟩)) ≫
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (strictPrefixToClosed a)) ≫ s.diagram) := rfl
+      _ = _ := by rw [hst.1]; exact htr.1
+  · intro c
+    calc
+      _ = nerveMap (componentClosedIntoLower a ⟨b, hb⟩ c) ≫
+          (nerveMap (alternatingComponentLowerToClosed κ a c) ≫ s.index c) := rfl
+      _ = _ := by rw [hst.2 c]; exact htr.2 c
+
+/-- 概要：実際の一段延長から全過去段を保つ全相対交互塔を組み立てる。
+方針：全過去段を厳密前置段へ貼り合わせ、指定された一段延長を well-founded 選択へ渡す。
+規約：本補題は塔の組み立て。実際の一段延長の存在は別途構成する。
+使われ方：相対因子化と一頂点追加の形状比較を完成した後の全塔の回収。 -/
+lemma exists_relativeAlternatingTower_of_extension {κ : Cardinal.{u}}
+    {B : SSet.{u + 1}} {x : (Δ[0] : SSet.{u + 1}) ⟶ B}
+    {I : Fin 2 → SSet.{u}}
+    {P : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (I c) ⟶ sliceOver x}
+    (step : ∀ a, ∀ s : RelativeAlternatingOpenStage κ x I P a,
+      ∃ t : RelativeAlternatingClosedStage κ x I P a, t.ExtendsOpen s) :
+    ∃ T : ∀ a, RelativeAlternatingClosedStage κ x I P a,
+      ∀ a b, a < b → (T a).Restricts (T b) := by
+  apply exists_wellFounded_coherentChoice (I := AlternatingIndex κ) wellFounded_lt
+    (fun a ↦ RelativeAlternatingClosedStage κ x I P a) RelativeAlternatingClosedStage.Restricts
+  intro a prev hprev
+  let f := fun b : {i : AlternatingIndex κ // i < a} ↦ prev b.val b.property
+  have hf : ∀ b d : {i : AlternatingIndex κ // i < a}, b < d → (f b).Restricts (f d) := by
+    intro b d hbd
+    exact hprev b.val d.val b.property d.property hbd
+  obtain ⟨s, hs⟩ := exists_relativeAlternatingOpenStage_preserving a f hf
+  obtain ⟨t, ht⟩ := step a s
+  exact ⟨t, fun b hb ↦ t.restricts_of_extendsOpen hb ht (hs ⟨b, hb⟩)⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

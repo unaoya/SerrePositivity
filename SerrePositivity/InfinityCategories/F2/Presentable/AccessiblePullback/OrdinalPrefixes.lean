@@ -134,4 +134,13 @@ instance alternatingClosedSection_nerve_mono (κ : Cardinal.{u})
   apply Subtype.ext
   exact congrArg (fun x : {b : AlternatingIndex κ // b ≤ a} ↦ (ofLex x.val).1) h
 
+/-- 概要：同じ成分の厳密前置形状を閉前置形状へ含める。
+方針：厳密な上界を弱い上界へ忘却する。
+規約：元の各順序段を保持する。
+使われ方：一頂点追加の元の成分への制限。 -/
+def alternatingComponentLowerToClosed (κ : Cardinal.{u}) (a : AlternatingIndex κ) (c : Fin 2) :
+    AlternatingComponentLower κ a c ⥤ AlternatingComponentClosed κ a c :=
+  (⟨fun i ↦ ⟨i.val, i.property.le⟩, fun _ _ h ↦ h⟩ :
+    AlternatingComponentLower κ a c →o AlternatingComponentClosed κ a c).toFunctor
+
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

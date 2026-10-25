@@ -84,3 +84,51 @@ run_cmd do
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingOpenStage
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingFactorization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingOpenStage.Preserves
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingOpenStage_preserving
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingClosedStage.ExtendsOpen
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingClosedStage.restricts_of_extendsOpen
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingTower_of_extension
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.hom_into_thinNerve_ext
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.join_hom_into_thinNerve_ext
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentConeIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentConeIso_inl
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentConeIso_inr
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingConeShape_component
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.otherComponentIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedComponentIndex_old
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingFactorization.component_slice
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.uliftCoconeShapeIso_hom_left
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.uliftCoconeShapeIso_inv_left
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.liftedCoconeIso_naturality
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedAlternatingDiagram_old
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedAlternatingDiagram_current
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedAlternatingDiagram_other
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_closedStage_of_relativeFactorization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_componentTowerGluing
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentTower_ulift_hom_ext
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingDiagram_of_tower

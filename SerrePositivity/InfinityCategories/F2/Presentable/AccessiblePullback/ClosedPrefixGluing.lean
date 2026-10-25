@@ -145,4 +145,13 @@ lemma exists_strictPrefixGluing {I : Type u} [LinearOrder I] (a : I)
     exact ComposableArrows.ext (fun _ ↦ Subtype.ext rfl) (fun _ _ ↦ Subsingleton.elim _ _)
   exact exists_compatibleMonoGluing A f g hgf hc F hF
 
+/-- 概要：厳密前置順序を同じ閉前置順序へ含める。
+方針：厳密な上界を弱い上界へ忘却する。
+規約：元の各点を保持する。
+使われ方：一頂点追加後の元の全前置段への制限。 -/
+def strictPrefixToClosed {I : Type u} [Preorder I] (a : I) :
+    {i : I // i < a} ⥤ {i : I // i ≤ a} :=
+  (⟨fun i ↦ ⟨i.val, i.property.le⟩, fun _ _ h ↦ h⟩ :
+    {i : I // i < a} →o {i : I // i ≤ a}).toFunctor
+
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

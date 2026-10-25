@@ -57,6 +57,24 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingFactorization
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ThinNerveMapExt
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ComponentConeShape
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AlternatingConeShape
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FactorizationSliceExtension
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.UniverseConeTransport
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AlternatingStageExtension
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingTower
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ComponentTowerGluing
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeAlternatingDiagram
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。
