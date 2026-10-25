@@ -1,17 +1,23 @@
 # F1：straightening・Yoneda・Indκ（旧 α2）
 
-> **v3（2026-10-24）**：F1 と F1b は **Ind レーン**に統合。本ファイルが Ind の正本で、a7 の引き継ぎは infinity-core-F1b.md を併読。所有：F1/（Cocartesian/ は休止）、F1B/、F2/Ind・FilteredExchange・Compact・Idempotent。配置は R12・R19 で変更済み（F1 は役割別サブディレクトリ、F2 の作業中部分は F2/FilteredExchange/）。
+> **v3（2026-10-25 13:10 改訂）**：Ind は F2/Ind・Compact・Idempotent とその集約、audit_infinity_f2 を所有する。Ind-S (4)・(5) の F1・F1B・Core 新規葉は新設 Ind-S、I-1 a7 の F2/FilteredExchange は新設 X が担当。Ind はこれらへ新規追加・編集をしない。下記の旧所有範囲は履歴。
 
 > **v2 の位置づけ（2026-10-23 移管）**：F1-4・F1-5・F1-3b、F2N-2(a)〜(d) は完了。次は F2N-5(a)(b)（Ind の有限存在と安定性、F1b から移管）。(c) compact 生成は完了。Cat∞ 値の一般底分類は第 II 段。
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。I-2 c①〜c⑤ は、許可された明示仮定のもとで完了。二段目完了の規約に従い保存して区切る。Ind-S (5) の全族単位は未完。Ind-S (4) の順方向は I-2 b の後。一般交換と C の有限全存在の仮定除去は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-2 c①〜c⑤・e①〜e④ は許可された明示仮定のもとで完了。Ind・Compact・Idempotent 集約と F2 公理監査を検証し、e 完了の規約に従い保存して停止。I-2 d の交換入力差し替えは X の結論後に別途指示。C の有限全存在は D-7′ の供給まで明示仮定とする。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
-- 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
+- 依存と提供：v3 冒頭の改訂所有範囲を正本とする。I-1 の結論は X、Ind-S (4)・(5) は新設 Ind-S が供給する。Ind は I-2 e の公開界面を K-B の K-7 d4 へ提供する。ModelCategory 仮定を加えない。
+- I-2 e の固定三段目：e① compact 同値と元の Yoneda・包含の厳密な比較 [x]、e② 任意の Ind 対象の compact 生成表示 [x]、e③ 安定性・完全性と合わせた K-B 向け公開界面 [x]、e④ 選択比較、集約・監査、引き継ぎ [x]。
+- I-2 e の公開入口：`F2.Ind.StableCompactGeneration` の `ind_stableCompactGeneration`。同じ Ind の安定性・元の Yoneda の充満忠実性と完全性・compact 像・生成同値・元の任意の頂点の filtered 生成表示を保持。安定性だけが明示交換入力と C の有限全存在に依存する。
+- K-B の K-7 d4 向け公開名（名前空間 `SerrePositivity.InfinityCategories.F2.Ind`）：同値 `compactGenerationEquivalence`、順射 `compactGenerationEquivalence_hom`・`compactGenerationEquivalence_inclusion`、compact 像 `compactGenerationEquivalence_image_isKappaCompact`・`ind_isKappaCompact_iff_yoneda`、生成表示 `indVertex_has_compactGeneratorPresentation`。
+- K-B 向け選択比較：`compactGenerationChoice_inclusion`・`compactGenerationInverse_inclusion`・`compactGenerationInverse_choiceIso`・`compactGenerationInverse_familyIso`、公開界面の `StableCompactGeneration.inverse_inclusion`。比較は全関手同型で、任意の入力族への前合成を保つ。K-B 自身の構造射・全入力との照合は K-B で行う。
+- Ind-S への作業木引き継ぎ：未コミットの F1 葉 `FunctorCategories/RelativeFunctorDescentOver`・`Diagrams/CocartesianKanWeightedUnitData`・`Diagrams/CocartesianKanWeightedUnit` は Ind-S (5) 草稿。Data のみビルド済み、相対降下の頂点書き換えが未解決。集約・監査未接続。移管後は Ind で変更・stage しない。
+- 次の一手（改訂目標完了）：停止。X の交換と D-7′ は別途供給を待つ。新チャットではコーディネータの指示に従い、I-2 d の入力差し替えを行う。Ind-S 草稿は新設 Ind-S に引き継ぐ。
 - I-2 c の固定三段目：c① 有限 cospan の包含による保存 [x]、c② fiber・cofiber の単一 filtered 表示 [x]、c③ bicartesian 判定 [x]、c④ Ind の安定性 [x]、c⑤ 包含の完全性と公開界面 [x]。
 - I-2 c① の公開入口：`ind_cospan_inclusion_isLimit`・`ind_cospan_isLimit_iff_inclusion` は任意の元の標準 cospan 全錐の保存・反映。`ind_inclusion_isPullbackSquare_iff` は元の実四角形の引き戻し性の保存・反映。C の有限極限・正則 κ・明示交換入力を保持する。
 - I-2 c②・c③ の公開入口：`ind_cospan_has_singleFilteredDiagramPresentation`・`ind_span_has_singleFilteredDiagramPresentation` は元の全図式の単一表示。`ind_exists_bicartesianLimitCone`・`ind_exists_bicartesianColimitCocone` は同じ表示から実 bicartesian 全錐・全余錐を構成。`ind_isPullbackSquare_iff_isPushoutSquare` は元の任意の実四角形自身について両普遍性の一致。

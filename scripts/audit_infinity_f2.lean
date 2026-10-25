@@ -2,7 +2,20 @@ import SerrePositivity.InfinityCategories.F2
 import SerrePositivity.InfinityCategories.F2.Ind.PullbacksArePushouts
 import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
 import SerrePositivity.InfinityCategories.F2.Ind.Stability
+import SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration
 import Lean.Util.CollectAxioms
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationChoice_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationInverse_inclusion
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationInverse_choiceIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationInverse_familyIso
+#check @SerrePositivity.InfinityCategories.F2.Ind.indVertex_has_compactGeneratorPresentation
+#check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence_image_isKappaCompact
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_isKappaCompact_iff_yoneda
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration
+#check @SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration.inverse_inclusion
 
 #check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyEvaluation_comp
 

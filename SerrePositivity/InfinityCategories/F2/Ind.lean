@@ -402,6 +402,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.JoinUniverseReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.UliftCoconeReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaColimitPreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.CompactGeneration
+public import SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramYoneda
 public import SerrePositivity.InfinityCategories.F2.Ind.CommaFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramComma
