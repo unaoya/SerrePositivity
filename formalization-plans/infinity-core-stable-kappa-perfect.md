@@ -9,12 +9,17 @@
   局所縮約恒等式と最終擬同型性はまだ未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
-- 三段目：1 strict 図式と標準射の型、2 正規化 augmentation、3 filtered 完全性と
-  局所縮約による擬同型性、4 自分の集約・専用監査・限定保存、
-  5 工程 B 到着後に比較値と covers の無条件の系。
-- 残り：末尾付加の局所縮約恒等式、
-  filtered 完全性への接続（C1、8–24時間）。工程 B の余錐と普遍性の代入
-  （C2、B 到着後1–3時間）。
+- 主定理の入力修正：κ-filtered poset 上でも native 図式は coherent のまま。
+  G は bar と同じ HA 成分つき入力とし、各評価 x・次数 q で
+  `H_q(normalized bar(G)(x)) ≅ colim_j H_q(G_j(x))` を先に示す。
+  strict augmentation の擬同型性はその特殊化として導く。
+- 三段目：1 coherent G のホモロジー図式、2 実 bar の単体次元フィルトレーション、
+  3 有限 support と filtered 完全性によるホモロジー比較、4 strict 版の特殊化、
+  5 自分の集約・専用監査・限定保存、6 B 到着後の比較値と無条件 covers。
+- 残り：単体次元フィルトレーションとホモロジー比較（C1）。
+  非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
+  高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
+  工程 B の余錐と普遍性の代入は C2（B 到着後）。
 - 主要宣言：`dgCoherentBarStrictDiagram`、`dgCoherentBarStrictNormalizedModule`、
   `dgCoherentBarStrictAugmentationGraded`、`dgCoherentBarStrictColumn`、
   `dgStrictFilteredColimit_quasiIso`。
@@ -22,9 +27,14 @@
   C1 の証明へ native 普遍性を仮定していない。B は現計画で未構成。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：専用監査24葉203宣言通過、許容三公理のみ。C1 完了とは扱わない。
+- 検証：coherent 入力への修正後、集約4,454 jobs・専用監査29葉253宣言通過。
+  許容三公理のみ。C1 完了とは扱わない。
+- coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
+  単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
+  高次 HA prefix の二段以上下降、任意の元の有限 support と次元上限。
 - 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
-- 次の一手：末尾付加作用素の bar 微分を計算し、有限 support 上で縮約恒等式を示す。
+- 次の一手：coherent G のホモロジー図式と単体次元フィルトレーションを実装する。
+  strict 版の既存部品は保持するが、一般の G を strict と仮定しない。
 
 ## 引き継ぎ（2026-10-25）
 

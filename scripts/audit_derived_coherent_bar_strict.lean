@@ -28,7 +28,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NormalizedEndRebase,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Augmentation,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EndDifferential]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EndDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendMaurerCartan,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyDiagram,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiniteSupport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiltration,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiltrationDifferential]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -61,3 +66,8 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgCoherentBarStrictColimitAugmentation
 #check SerrePositivity.InfinityCategories.dgStrictNormalizedEndRebase_d
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarHomologyDiagram
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedDegree_boundedSupport
+#check SerrePositivity.InfinityCategories.dgCoherentBarHigherPrefixColumn_mem_filtration
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedHomFiltration_theta
