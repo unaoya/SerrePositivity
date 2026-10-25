@@ -31,9 +31,12 @@
 - I-2 a④ の指定変換保持：`coneTensorTargetInclusion` は元の試験族から補間領域への単射。`exists_indConeExtendedSliceData_relative` は同じ初期全円柱を保ち、元の両全境界と指定終点変換を同時に延長。`nonempty_relativeCommaFamily_cocone_of_comparison` は旧族上の指定比較とその逆を相殺し、元の指定変換下の実余錐へ戻す。
 - I-2 a④ の極大点評価の共終性：`nonempty_indConeTargetUnder_cocone_of_lower_cocone` は元の q と指定終点変換を含む実 under comma の余錐。`indConeTargetEvaluationComma_isFiltered` と `diagramCommaEvaluation_cone_apex_isRightCofinal` は下方 comma の κ-filtered 性から元の極大点評価の共終性を与える。小さい模型版も同じ評価を保持。
 - I-2 a④ の余錐表示の帰結：`diagramCommaEvaluation_cone_isRightCofinal` は下方の filtered 性と各点共終性から同じ余錐形状の全頂点評価の共終性。`indCone_has_singleFilteredDiagramPresentation` は同じ D を頂点とする単一 filtered 表示。有限半順序形状の一般の点追加の貼り合わせと帰納は未証明。
+- I-2 a④ の一般形状の貼り合わせ：`diagramCommaGlue_left`・`_right` と `exists_diagramComma_cocone_gluing` は、元の形状 pushout で両全族・両指定余錐を厳密に保持。`diagramComma_shape_ext` は元の両制限による全族の決定性。共通境界の図式等号移送は同じ C 全族と全円柱を保持する。
+- I-2 a④ の点追加の相対性：`exists_diagramComma_cocone_cone_pushout` は局所余錐を貼る一般形状 pushout で、元の既存部分の指定余錐を固定した全余錐を構成。`smallDiagramComma_cone_pushout_isKappaFiltered` と `diagramCommaRestriction_cone_pushout_isRightCofinal` は既存部分の filtered 性から全体の filtered 性と旧評価の共終性を与える。
+- I-2 a④ の共有下方部分の持ち上げ：`exists_diagramComma_cocone_pushout_fix_right` は既存部分から共有部分への厳密な指定余錐持ち上げを、右部分への指定余錐持ち上げへ移す。`diagramCommaEvaluation_cone_pushout_apex_isRightCofinal` はその明示条件と下方 comma の filtered 性から新頂点評価の共終性。下方閉部分を固定する有限半順序帰納で持ち上げ条件を充足する工程は未了。
 - 供給依頼：`Stable.PosetSubtypeNerve` の `posetSubtypeNerveIso`・`posetSubtypeNerveIso_hom_ι` は現在の所有 import 閉包外。下方部分と全部分複体の比較に必要なため、コピーせずコーディネータ経由の供給依頼を報告済み。順序下方部分の圏と終点余錐の厳密な比較は独立に保存済み。
 - I-2 a④ の元の族への適用：`indConeSliceInterpolationData_nonempty` は元の q と指定下方余錐 G の二段持ち上げ。`indConeEndpointRaw`・`indConeLowerEndpointRaw` は同じ実終点 comma 内の両全族、`indConeEndpointRaw_boundary` はその全共有境界の厳密な一致。元の C 全図式と全 slice 円柱を保持する。
-- 次の一手：I-2 a④。有限半順序集合 P の極大点除去部分と下方余錐部分の実 pushout に、元の q と指定変換を保つ局所余錐拡張を貼る。下方部分の指定全余錐は `indConeExtendedCommaCocone_lower` で厳密に回収する。供給後に部分型 nerve の比較で下方包含を同じ実 pushout に接続する。一般の点追加に対する diagram comma の filtered 性と旧頂点評価下の相対余錐を得て有限半順序帰納を行い、同じ標準全余錐の余極限性と単一 filtered 表示をまとめる。
+- 次の一手：I-2 a④。部分型 nerve の供給後に、元の極大点除去部分と厳密下方余錐部分の実 pushout を接続する。任意の下方閉部分を固定する指定余錐の厳密な持ち上げを有限半順序帰納で示し、既存部分から厳密下方部分への条件を充足する。旧評価は既存部分への制限、新評価は局所余錐部分への制限を経由し、同じ標準全余錐の余極限性と単一 filtered 表示をまとめる。Ind-S の P 向け供給二件は foundations-progress.md の依頼に従い、a④ の区切りで対応する。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

@@ -831,3 +831,27 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndConeTargetEvaluationC
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeVertexCases
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeDiagramPresentation
+
+public import SerrePositivity.InfinityCategories.F2.Ind.TensorShapePushout
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramPrismGluingBoundary
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaGluing
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaShapeExt
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaCoconeGluing
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaDiagramTransport
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaGluingCompatibility
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutExtension
+
+public import SerrePositivity.InfinityCategories.F2.Ind.CofinalityOfCoconeLifts
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutFiltered
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaPushoutRightLift
+
+public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaConePushoutApex
