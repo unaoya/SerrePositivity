@@ -87,3 +87,9 @@ public import SerrePositivity.InfinityCategories.F2.Compact.HomConeFamily
 public import SerrePositivity.InfinityCategories.F2.Compact.HomConeCocone
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitClosureExchange
 public import SerrePositivity.InfinityCategories.F2.Compact.FiniteColimitClosure
+
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseConservativity
+
+public import SerrePositivity.InfinityCategories.F2.Compact.ConservativeColimitReflection
+
+public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimitReflection

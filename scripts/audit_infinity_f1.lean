@@ -9334,3 +9334,6 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.posetNerve_maximal_product_isPushout
 #print axioms SerrePositivity.InfinityCategories.posetNerve_maximal_product_isPushout
+
+#check SerrePositivity.InfinityCategories.LeftTransportRepresentation.transport_isQCatEquivalence_iff_invertible
+#print axioms SerrePositivity.InfinityCategories.LeftTransportRepresentation.transport_isQCatEquivalence_iff_invertible

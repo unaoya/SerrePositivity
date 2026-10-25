@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.F2.Compact
+import Lean.Util.CollectAxioms
 
 open SerrePositivity.InfinityCategories.F2.Compact
 
@@ -820,3 +821,36 @@ open SerrePositivity.InfinityCategories.F2.Compact
 
 #check @hasFiniteColimits_kappaCompactObjects_of_exchange
 #print axioms hasFiniteColimits_kappaCompactObjects_of_exchange
+
+#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge
+
+#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge_native
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_invertibleEdge_native
+
+#check SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_conservative_image
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_conservative_image
+
+#check SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_small_isColimit
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.spaceUniverseDiagram_reflects_small_isColimit
+
+/-!
+概要：Compact の所有モジュールの全宣言を、生成宣言も含めて公理監査する。
+方針：宣言元モジュールの接頭辞で抽出し、再帰的な公理依存を確認する。
+規約：許す公理は propext・Classical.choice・Quot.sound のみ。
+使われ方：Ind-S の宇宙変更の反映と compact の公開界面の検証。
+-/
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless `SerrePositivity.InfinityCategories.F2.Compact |>.isPrefixOf mod do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "F2 Compact: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  if count == 0 then throwError "F2 Compact: no declarations audited"
+  logInfo m!"F2 Compact audit passed: {count} declarations, standard three axioms only."

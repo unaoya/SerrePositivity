@@ -2691,3 +2691,5 @@ public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEqui
 public import SerrePositivity.InfinityCategories.F1.Universe.CoconeShapeNaturality
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetMaximalCover
+
+public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationEdgeDetection
