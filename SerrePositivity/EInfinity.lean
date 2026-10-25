@@ -2616,3 +2616,10 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCohe
 public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparisonInput
 public import SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomNormalization
 public import SerrePositivity.EInfinity.Hammock.AsSmallKanArrow
+
+public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparison
+public import SerrePositivity.EInfinity.FrameHom.EnrichedHomYoneda
+public import SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinity
+public import SerrePositivity.EInfinity.FrameHom.RightFrameHomInfinityNormalization
+public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomInfinity
+public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockYonedaNormalization

@@ -3089,7 +3089,7 @@ cofibrant な X と任意の Y について、元の `rightFrameHom` と指定�
 E2-S (6) は供給完了により停止。
 
 
-### E2-S (7)：終端図式から正本の共変 Hom への接続（進行中）
+### E2-S (7)：終端図式から正本の共変 Hom への全比較
 
 `FrameHom/EnrichedHomFunctor` の `enrichedHomFunctor` は同じ豊穣 Hom と元の合成の curry を使う。
 `EnrichedHomRealization` の `enrichedHomCoherent_ordinary` は、この全実現の通常 nerve 上の制限と、
@@ -3105,7 +3105,8 @@ E2-S (6) は供給完了により停止。
 `homInfinityTriangleSourceIso`・`homInfinityTriangleDiagramIso` は、指定二胞体を反転・持ち上げし
 同じ co-Yoneda 関手へ送る。`CoherentLocalizationComparison.homInfinityTransport` は元の K と二胞体を保つ全族輸送。
 `rightFrameTerminalHomIso_of_yonedaIso` は残る一つの全 Yoneda 比較の直接代入先である。
-この条件付き還元だけで供給完了とはしない。一般 Yoneda 比較とその零単体回収は Ind-S (8) の供給待ち。
+この条件付き還元は補助入口として保持する。`EnrichedHomYoneda` は公開済み Ind-S (8) の
+正本と先行構成の全作用を等式で照合し、原本 `representableHomCoherentIso` を代入する。
 正本 Hom の始域を合わせるため、指定局所化は S (6) の小さい G の宇宙持ち上げとして使う。
 
 `AsSmallHammockHomNormalization` は同じ全図式同型の順射・全評価成分を公開し、
@@ -3113,5 +3114,24 @@ E2-S (6) は供給完了により停止。
 `DGAlgebra/HomInfinityComparisonInput` は同じ一入力への還元を実 dg モデルへ代入する。
 追加のモデル構造・関手的分解の仮定は残さない。
 
-現段階の還元まで集約12594 jobs・全監査28053宣言・独立例8件・新34宣言の公理検査が成功。
-閉包8639本は検証前後で不変。原本 Yoneda 入力は未放電であり、S (7) の最終供給は進行中。
+`KanHammockHomInfinity.kanHammockHomInfinityIso` は同じ hammock 上の全 Yoneda 同型。
+`RightFrameHomInfinity.rightFrameTerminalHomIso` はこれを代入した無条件の主入口で、
+S (6) の終端 `rightFrameHammockCoherentDiagram q r 6` を
+`uliftFunctor.map G ≫ homInfinityCovariant (G X)` へ全標的で比較する。
+`rightFrameTerminalHomIso_precomp` は任意の coherent 添字図式での同じ全比較。
+`DGAlgebra/HomInfinityComparison` の `frameTerminalHomIso`・`frameCoherentHomIso` は、
+同じ実 dg モデルの終端・始端からの全同型で、追加の Yoneda・分解・モデル入力を残さない。
+
+`KanHammockYonedaNormalization` は原本の全空間比較と同じ恒等点・恒等錐を元の恒等射の
+零単体に回収し、`kanHammockYonedaFiberActionIso` は同じ全空間射の全 Hom 上の作用を露出する。
+元の任意の射の零単体は既存 `kanHammockHomPinchedMap_arrow_zero` で元の局所化辺に一致する。
+`RightFrameHomInfinityNormalization` の `rightFrameTerminalHomIso_hom` は同じ全比較の合成順を公開し、
+`rightFrameTerminalHomComparison`・`_triangle` は元の K と指定二胞体を保持する。
+`rightFrameTerminalHomComparison_originalArrow` は同じ成分による元の G(f) の共役公式。
+生の辺の厳密化を要求せず、指定された coherent な二胞体を全比較で保持する。
+
+先行構成と Ind 正本の準重複・許可済みの既存 KST 推移的 import の分割は R の整理対象。
+レーン内では原本の移動・改名・削除を行わない。
+集約12644 jobs・全公理監査28103宣言・独立例13件・本供給49公開宣言の公理検査を通過。
+最終六葉の15宣言は標準三公理のみ、閉包8689本は検証前後で不変、未保存の他レーン依存なし。
+S (7) は供給完了。
