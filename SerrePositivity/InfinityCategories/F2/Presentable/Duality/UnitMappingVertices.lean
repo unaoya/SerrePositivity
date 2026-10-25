@@ -233,4 +233,24 @@ lemma adjointUnitRight_surjective (C D : PresentableInfinityObject.{u}) :
   refine ⟨adjointUnitVertex (leftAdjointVertex w.val) w.val a, ?_⟩
   exact (adjointUnitVertex_right _ _ a).trans (Subtype.ext rfl)
 
+/-- 概要：実単位の対応の左射影は本質的全射。
+方針：頂点上の全射性を恒等同型と組み合わせる。
+規約：元の e1 の写像空間への射についての主張。
+使われ方：左射影の QCat 同値判定の存在側。 -/
+lemma adjointUnitLeft_isEssentiallySurjective (C D : PresentableInfinityObject.{u}) :
+    IsEssentiallySurjective (adjointUnitLeft C D) := by
+  intro v
+  obtain ⟨x, rfl⟩ := adjointUnitLeft_surjective C D v
+  exact ⟨x, ⟨Iso.refl _⟩⟩
+
+/-- 概要：実単位の対応の右射影は本質的全射。
+方針：頂点上の全射性を恒等同型と組み合わせる。
+規約：元の e1 の逆向きの写像空間への射についての主張。
+使われ方：右射影の QCat 同値判定の存在側。 -/
+lemma adjointUnitRight_isEssentiallySurjective (C D : PresentableInfinityObject.{u}) :
+    IsEssentiallySurjective (adjointUnitRight C D) := by
+  intro w
+  obtain ⟨x, rfl⟩ := adjointUnitRight_surjective C D w
+  exact ⟨x, ⟨Iso.refl _⟩⟩
+
 end SerrePositivity.InfinityCategories.F2.Presentable.Duality

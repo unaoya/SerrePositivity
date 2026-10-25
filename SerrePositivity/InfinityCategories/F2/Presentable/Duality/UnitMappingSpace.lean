@@ -195,4 +195,13 @@ def adjointUnitAdjunction {C D : PresentableInfinityObject.{u}}
   qcatAdjunctionOfUnitMappingSpaceCondition (unitCorrespondenceHom x.val.val)
     (fullSubcomplexOnVertices_vertex x.val)
 
+/-- 概要：対応の頂点から回収した随伴は、指定した実単位を保つ。
+方針：指定単位による随伴判定の回収公式を適用する。
+規約：h Fun の射の等式であり、単位を選び直さない。
+使われ方：対応の頂点と普遍単位の comma 模型の比較。 -/
+lemma adjointUnitAdjunction_unitHom {C D : PresentableInfinityObject.{u}}
+    (x : AdjointUnitMappingSpace C D _⦋0⦌) :
+    (adjointUnitAdjunction x).unitHom = unitCorrespondenceHom x.val.val :=
+  qcatAdjunctionOfUnitMappingSpaceCondition_unitHom _ _
+
 end SerrePositivity.InfinityCategories.F2.Presentable.Duality

@@ -12,7 +12,11 @@
   元の左右の写像空間への単体射影と頂点上の全射性を構成した。
   全 Pr 上の対応 quasicategory はまだ未構成。
 - 前合成の全パラメータ Hom 全単射、前合成作用の転置と評価の厳密な等式も検証済み。
-- 最新の専用集約は8,498 jobs 成功、専用監査122宣言は標準3公理のみ。
+- 両局所射影は inner fibration、固定ファイバーは Kan。右ファイバーから
+  全関手圏の固定右 coslice の core への単体比較射は元の単位・左関手を保持する。
+- 固定右の coslice–comma 比較は QCat 同値。comma の普遍単位空間の可縮性と
+  coslice の始対象の存在を証明済み。右ファイバーとの同値性は未証明。
+- 最新の専用集約は8,518 jobs 成功、専用監査158宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -30,6 +34,12 @@
 - `leftRoundtripIso`、`rightRoundtripIso`
 - `AdjointUnitMappingSpace`、`adjointUnitLeft`、`adjointUnitRight`、`adjointUnitAdjunction`
 - `adjointUnitVertex`、`adjointUnitLeft_surjective`、`adjointUnitRight_surjective`
+- `adjointUnitCoreIso`、`adjointUnitAdjunction_unitHom`
+- `adjointUnitLeft_innerFibration`、`adjointUnitRight_innerFibration`
+- `adjointUnitLeftFiber_kanComplex`、`adjointUnitRightFiber_kanComplex`
+- `rightUniversalUnitSpace_isContractibleKan`
+- `rightUnitCosliceComparison_isQCatEquivalence`、`rightUnitCoslice_hasInitial`
+- `adjointUnitRightFiberToCoslice`、`adjointUnitRightFiberToCore_ι`
 - `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
@@ -37,13 +47,13 @@
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,847 モジュールに他レーンの未保存依存なし（初回検証時）。
+- プロジェクト内の推移閉包 4,874 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
 
 ### 未コミット
-- なし（実単位の対応空間・両射影の頂点全射性までを所有ファイルの限定コミットで保存）。
+- なし（Kan ファイバー・右単位の普遍空間・coslice 比較までを所有ファイルの限定コミットで保存）。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -57,7 +67,8 @@
   高次の mate の整合性と両射影の同値性は得られない。
 
 ### 次の一手
-- 単位の対応の左右射影のファイバーを検証する。
+- 右ファイバーの core 比較の像が普遍単位の全部分空間と一致することを検証する。
+- 左側には前合成の随伴と普遍単位の模型を接続する。
 - その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
   深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
 
@@ -94,7 +105,7 @@ P-d 内で構成を進める場合も、新規葉に限定する。
 
 - ビルド：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
 - 監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
-- 検証済み：専用集約8,498 jobs 成功、所有122宣言の再帰的公理依存は標準3公理のみ。
+- 検証済み：専用集約8,518 jobs 成功、所有158宣言の再帰的公理依存は標準3公理のみ。
 - 主経路の公開名を `#check @...` で検査し、追加 instance 引数なし。
 - 根のビルド、既存 Presentable 集約・監査、`.lake` の削除は行わない。
 - 主経路に `ModelCategory SSet` 等の instance 仮定を導入しない。
