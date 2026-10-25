@@ -2196,4 +2196,12 @@ public import SerrePositivity.KST.LocalizingInvariants.SpectrumNativeLoopPi
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovInfinityCone
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolution
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionPrecompose
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionMaps
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionAlgebraMap
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionFunctor
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionContravariant
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeSimplices
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

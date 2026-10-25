@@ -21,7 +21,7 @@
 - [x] f3. 平方零微分摂動と cell class に特殊化し、元の Postnikov 拡大の二脚・class を保持する。
 - [ ] f4. 実模型の比較を導来写像空間の普遍性へ接続し、指定底との相対性を保つ。
   - [x] f4a. 実 dg 代数の準同型 ∞ 局所化と、元の頂点・二脚を保つ Postnikov 錐を固定する。
-  - [ ] f4b. AW 単体の余モノイドから実乗法的単体 frame を構成する（E2-S の束ね・単体射・照合待ち）。
+  - [ ] f4b. AW 単体の余モノイドから実乗法的単体 frame を構成する（E2-S 受領、実単体的代数は構成済み。frame 条件は未完）。
   - [ ] f4c. cell 源の導来写像空間との比較と、指定底上の相対性を証明する。
   - [ ] f4d. 局所化後の元の錐の極限性を証明する。
 - [ ] f5. 集約・監査を通し、h で記録する公開界面と適用範囲を確定する。
@@ -104,6 +104,7 @@
 
 | 項目 | 主要宣言 | 仮定・提供済みの範囲 |
 | f4 の値域・指定錐 | DGAlgebra.quasiIsoInfinity・quasiIsoInfinityMap・quasiIsoInfinity_isLocalization・quasiIsoInfinityMap_inverts、postnikovInfinityCospan・postnikovInfinityCone・vertex／leg、postnikovInfinityPresentedCone_left／right | 実代数の準同型辺を反転する既存 ∞ 局所化。n≥0・非正次数 B の元の頂点・包含・遷移を保つ錐。極限性は局所化前の presentedCone／nerveCone のみ証明済み。局所化後の極限性は未提供 |
+| f4 の実乗法的単体模型 | DGAlgebra.convolutionFunctor・convolutionFunctor_one／mul、convolutionPrecompose・convolutionPrecomposeNatTrans・convolutionContravariant、multiplicativeSimplices・multiplicativeSimplicesFunctor・multiplicativeMappingSimplices・multiplicativeMappingFunctor・multiplicativeMapping_pre_post | 任意可換環・実 dg 代数。余モノイド射の元の内部 Hom 前合成を代数射に持ち上げ、E2 の simplexCochainComonFunctor を適用。全単体作用素・標的代数の関手性と源の前合成の整合を保持。Reedy frame 条件・Kan 性・導来写像空間比較は未提供 |
 | --- | --- | --- |
 | connective cover | DGAlgebra.connectiveCover・connectiveCoverInclusion・connectiveCoverFunctor・coverTowerCounit_groups_proIso | 任意の代数。包含の準同型性は IsConnective の下。塔の群の pro 比較まで |
 | Postnikov 塔 | DGAlgebra.postnikov・postnikovQuotient・postnikovMap・postnikovTransition・postnikovTower・postnikovQuotient_connected | 元の複体が IsStrictlyLE 0。整数段、連結度は非負段。射と遷移の厳密な恒等合成を保持 |
@@ -152,7 +153,7 @@
 - DGOdotVerdierRectangleComparisonInput：実 S 長方形の二つの相対 Verdier 認証、上記境界付き全 ν 比較、元の始域頂点。
 - DGOdotVerdierRectangleStrictTransport：旧 image_eq を満たす実 S 代表、指定境界付きの S 内全比較、その ν 像と指定比較の一致、元の始域頂点の保持。ν 像の FunctorIso だけからは供給しない。
 - DGKappaRelativeRoofComparisonInput：実相対屋根、指定三境界を保つ全 ν 比較、元の三頂点・商一単体。exists_dgKappaRelativeRoof_of_fixedNull の実核・収縮・Verdier・Perf 零性は D の供給境界で、I・P は変更しない。
-- s4：元の markedSpanFamily から指定 weakSpanKanQuotientDiagram の小さい unstraightening への全族写像、底 q の厳密保存、各 fiber の元の Kan 置換単位の全族回収、恒等 span の像と指定恒等点の fiber 内同型。私有証明はこれらに条件付きで、実供給は未完。降下の同値性は全族回収から導き、独立の入力にはしない。
+- s4：元の markedSpanFamily から指定 weakSpanKanQuotientDiagram の小さい unstraightening への全族写像、底 q の厳密保存、各 fiber の元の Kan 置換単位の全族回収、恒等 span の像と指定恒等点の fiber 内同型。私有証明はこれらに条件付きで、実供給は未完。降下の同値性は全族回収から導き、独立の入力にはしない。 K-B の weakIdentityQuotientFiberUnit_recovery／pointIso は受領済みだが、実全族写像は未供給。
 
 ### s4 の供給待ちの優先順（採用済み）
 - コーディネータから K-B へ、同じ弱 span 図式の空間値に限った実共変単位の供給を依頼済み。範囲は元の全 roof 族の実写像・底の厳密保存・元の Kan 置換単位の全族回収・恒等点照合。Cat∞ 値分類全体の再開や一般局所化・商 API の追加は含めない。
@@ -160,7 +161,7 @@
 - 供給待ちの間は β6 f→h を進め、供給到着時に最優先で s4 に戻る。s2・s3 の具体的入力（D の Perf 零性・実核等）が揃い次第 s5 で接続する。具体的入力は未供給として維持する。
 
 ### 次の一手
-- **次の一工程（β6 f4・f5・h）**：元の実 Postnikov 錐の準同型 ∞ 局所化への像を固定済み。E2-S に AW の Comon_ 束ね・単体射・関手性・既存名との照合を依頼済み。供給待ちの間は f4 の他の部分と f5 の検証・h の界面記録を進める。局所化後の極限性は未完。s4 の実全族単位が到着したら最優先で戻る。
+- **次の一工程（β6 f4・f5・h）**：元の実 Postnikov 錐の準同型 ∞ 局所化への像を固定済み。E2-S の AW 余モノイド関手を受領し、実内部 Hom 畳み込み・単体的代数・写像の単体集合へ接続済み。frame 条件・導来比較を進め、区切りごとに f5 の検証・h の界面記録を行う。局所化後の極限性は未完。s4 の実全族単位が到着したら最優先で戻る。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
