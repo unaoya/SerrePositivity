@@ -2155,3 +2155,45 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_cone_pushout_fix_subshape
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_cone_pushout_fix_subshape
+
+#check SerrePositivity.InfinityCategories.F2.Ind.posetNerve_maximal_subtype_isPushout
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.posetNerve_maximal_subtype_isPushout
+
+#check SerrePositivity.InfinityCategories.F2.Ind.posetNerve_maximal_cone_isPushout
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.posetNerve_maximal_cone_isPushout
+
+#check SerrePositivity.InfinityCategories.F2.Ind.HasPosetSubsetCoconeLifts
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.HasPosetSubsetCoconeLifts
+
+#check SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_full
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_full
+
+#check SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_point_removal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_point_removal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_lowerSet
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.hasPosetSubsetCoconeLifts_of_lowerSet
+
+#check SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_poset_lowerSet
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.exists_diagramComma_cocone_lift_poset_lowerSet
+
+#check SerrePositivity.InfinityCategories.F2.Ind.nonempty_finitePosetDiagramComma_cocone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.nonempty_finitePosetDiagramComma_cocone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallFinitePosetDiagramComma_isKappaFiltered
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallFinitePosetDiagramComma_isKappaFiltered
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_poset_lowerSet_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaRestriction_poset_lowerSet_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_finitePoset_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.diagramCommaEvaluation_finitePoset_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_finitePoset_isRightCofinal
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallDiagramCommaEvaluation_finitePoset_isRightCofinal
+
+#check SerrePositivity.InfinityCategories.F2.Ind.smallFinitePosetDiagramCommaCocone_isColimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.smallFinitePosetDiagramCommaCocone_isColimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_has_singleFilteredDiagramPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_has_singleFilteredDiagramPresentation
