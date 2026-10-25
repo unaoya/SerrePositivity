@@ -19,6 +19,7 @@
 - I-2 b④ の供給許可：P の `CoconeFunctorUnitPrism` は新規 Ind 葉から読み取り専用で直接 import 可。R の移動対象。右端 Hom 判定は既存の所有内の円柱の随伴証明を新規の葉で一般化し、余錐形状の収縮へ適用した。既存の円柱ファイルは変更しない。
 - I-2 b⑤ の供給：`HomotopyLimits.CosliceShapePushout` は新規葉から読み取り専用で使用可。一般有限生成は既存入口がなく、有限セル帰納で構成する。一般部分の新規 Core モジュールは許可済み、D の D-7′ にも公開する。
 - I-2 b⑤ の準重複：`F1.Fibrations.TerminalRightFibrationRepresentation` の `rightFibration_terminal_representation_exists` は終対象を持つ right fibration の底上で厳密な slice 表示。Derived は import しない。D の `roofTerminalRepresentation_exists` との準重複は許可済みで、第 I 段終了時に R が D 側を付け替える。
+- I-2 b⑤ の一般付着：`hasColimit_pushout_shape_of_pointSpan` は単射側のある任意の形状 pushout で、両部分・共通部分の余極限と三頂点 span の余極限から元の全図式の余極限を構成する。`hasColimit_coneSpan_iff` は同じ指定部分余極限を付加する前後の余極限存在の同値。全有限形状への帰納と双対の公開は未完。
 - I-2 b の供給許可：`Core.LimitProjectionExistence`・`HomotopyLimits.FullSubcomplexConeLift`・`FullSubcomplexLimitReflection` を、新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。後二本は R が Core へ移動。`indFullConeLift_inclusion` と `ind_isLimit_of_inclusion` は元の全錐の厳密な持ち上げと任意の形状の極限反映。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [x]、a③ 射形状の標準余錐の余極限性 [x]、a④ 有限半順序形状の帰納と単一 filtered 表示 [x]。
 - I-2 a の界面：元の三条件固定比較と始点評価下の実 under comma の比較は保存済み。`exists_relativeCommaFamily_iso_of_functorIso` は任意の元の同型に沿う指定変換の輸送。`indArrowInterpolationOldFamily_withCornerCocone` は同じ slice 円柱を保つ終点拡張の選び直しで元の旧族が変わらないことを厳密に回収する。

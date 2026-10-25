@@ -2,6 +2,7 @@ import SerrePositivity.InfinityCategories.F1.Cocartesian
 import SerrePositivity.InfinityCategories.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
 import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
+import SerrePositivity.InfinityCategories.F1.Joins.PushoutShapeColimit
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp
