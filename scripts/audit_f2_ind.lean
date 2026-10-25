@@ -5,6 +5,7 @@ import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
 import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
 import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetLimits
 import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetColimits
+import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitsColimits
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.cylinderEvaluationSwitch
@@ -2281,3 +2282,8 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.colimitCoconeFamily_completion_isColimit
 #print axioms SerrePositivity.InfinityCategories.F2.colimitCoconeFamily_completion_isColimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits

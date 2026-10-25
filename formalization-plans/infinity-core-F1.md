@@ -6,23 +6,24 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①・b② は証明済み、次は b⑤。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。二段目完了の規約に従い保存して区切る。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
-- I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [x]、b④ 有限半順序図式の有限余極限の普遍性 [x]、b⑤ 任意の有限単体集合形状への接続と公開界面 [ ]。
+- I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [x]、b④ 有限半順序図式の有限余極限の普遍性 [x]、b⑤ 任意の有限単体集合形状への接続と公開界面 [x]。
 - I-2 b の公開入口：`yonedaInfinityMap_isLimit` は任意の小さい極限全錐の保存。`exists_yoneda_finiteLimit_coneFamily` と `exists_indYoneda_finiteColimit_coconeFamily` は元の制限を厳密に固定した全族。余極限保存は明示交換入力を残す。`exists_indFunctor_kappaFiltered_colimit` は全関手形状で同じ filtered 余極限全余錐と包含による全評価の保存。
 - I-2 b③ の接続：`ind_filteredLimitCone_isLimit` は元の Ind 全錐族の点ごとの filtered 補完に明示の形状交換を適用し、完成後の元の錐と包含像の極限性を同時に結論する。`indYonedaConeFamily_restriction` は元の下方全図式への厳密な制限回収。`ind_exists_limitCone_of_singleFilteredDiagramPresentation` は元の指定全図式の極限と包含像の極限の同時存在。`indFinitePoset_hasLimit`・`indFinitePoset_inclusion_isLimit`・`indFinitePoset_isLimit_iff_inclusion` で有限半順序図式の存在・保存・反映を公開。
 - I-2 b④ の公開入口：`colimitCoconeFamily_completion_isColimit` は任意の quasicategory の全余極限族の点ごとの余極限補完。有限性・filtered 性は不要。`ind_hasColimit_of_singleFilteredDiagramPresentation` と `indFinitePoset_hasColimit` は、明示交換入力と C の有限余極限のもとで元の指定全図式の余極限存在を結論する。任意の有限単体集合形状は未完。
 - I-2 b④ の供給許可：P の `CoconeFunctorUnitPrism` は新規 Ind 葉から読み取り専用で直接 import 可。R の移動対象。右端 Hom 判定は既存の所有内の円柱の随伴証明を新規の葉で一般化し、余錐形状の収縮へ適用した。既存の円柱ファイルは変更しない。
 - I-2 b⑤ の供給：`HomotopyLimits.CosliceShapePushout` は新規葉から読み取り専用で使用可。一般有限生成は既存入口がなく、有限セル帰納で構成する。一般部分の新規 Core モジュールは許可済み、D の D-7′ にも公開する。
 - I-2 b⑤ の準重複：`F1.Fibrations.TerminalRightFibrationRepresentation` の `rightFibration_terminal_representation_exists` は終対象を持つ right fibration の底上で厳密な slice 表示。Derived は import しない。D の `roofTerminalRepresentation_exists` との準重複は許可済みで、第 I 段終了時に R が D 側を付け替える。
-- I-2 b⑤ の一般付着：`hasColimit_pushout_shape_of_pointSpan` は単射側のある任意の形状 pushout で、両部分・共通部分の余極限と三頂点 span の余極限から元の全図式の余極限を構成する。`hasColimit_coneSpan_iff` は同じ指定部分余極限を付加する前後の余極限存在の同値。この付着を用いる全有限生成と双対は下記で公開。Ind の宇宙接続は未完。
+- I-2 b⑤ の一般付着：`hasColimit_pushout_shape_of_pointSpan` は単射側のある任意の形状 pushout で、両部分・共通部分の余極限と三頂点 span の余極限から元の全図式の余極限を構成する。`hasColimit_coneSpan_iff` は同じ指定部分余極限を付加する前後の余極限存在の同値。この付着を用いる全有限生成と双対は下記で公開。Ind の宇宙接続は下記の全有限存在へ接続済み。
 - I-2 b⑤ の一般生成：`F1.Joins.FiniteColimitSpanGeneration.hasFiniteColimits_of_initial_pushouts` と `F1.Joins.FiniteLimitGeneration.hasFiniteLimits_of_terminal_pullbacks`（名前空間はともに共通根）は、全有限単体集合形状についての生成定理。D の D-7′ 向け。新規 `Core.FiniteShapeInduction` は有限和も pushout から導き、既存の F2 の有限セル帰納を一般化する。旧ファイルは変更しない。
 - I-2 b⑤ の基底供給：`HomotopyLimits.EmptyCone` は新規葉から読み取り専用で使用可、反転利用も可。R の Core 移動対象。`hasLimit_emptyDiagram_of_terminal`・`hasColimit_emptyDiagram_of_initial` は任意の空部分複体の図式を扱う。
-- I-2 b⑤ の形状供給：D の excision 格子の import は避け、新規葉に標準 span/cospan と有限半順序 nerve の同型を構成する。準重複は許可済み、R が第 I 段終了時に D 側を付け替える。Ind への接続は未完。
+- I-2 b⑤ の形状供給：D の excision 格子の import は避け、新規葉の `finiteSpanNerveIso`・`finiteCospanNerveIso` を使用。両辺の `_iso` と全ての面・退化の `_hom_naturality`、宇宙持ち上げの `uliftFiniteSpanNerveIso`・`uliftFiniteCospanNerveIso` を供給。準重複は許可済み、R が第 I 段終了時に D 側を付け替える。
+- I-2 b⑤ の公開界面：`F2.Ind.FiniteLimitsColimits` の `ind_hasFiniteLimits`・`ind_hasFiniteColimits` は元の Ind の全有限単体集合形状について存在を結論。正則 κ・明示交換入力・C の対応する有限全存在を要求する。C の安定性からの無条件化は D-7′ に依頼済みで、供給まで b⑤・c はこれらを明示するよう指示済み。
 - I-2 b の供給許可：`Core.LimitProjectionExistence`・`HomotopyLimits.FullSubcomplexConeLift`・`FullSubcomplexLimitReflection` を、新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。後二本は R が Core へ移動。`indFullConeLift_inclusion` と `ind_isLimit_of_inclusion` は元の全錐の厳密な持ち上げと任意の形状の極限反映。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [x]、a③ 射形状の標準余錐の余極限性 [x]、a④ 有限半順序形状の帰納と単一 filtered 表示 [x]。
 - I-2 a の界面：元の三条件固定比較と始点評価下の実 under comma の比較は保存済み。`exists_relativeCommaFamily_iso_of_functorIso` は任意の元の同型に沿う指定変換の輸送。`indArrowInterpolationOldFamily_withCornerCocone` は同じ slice 円柱を保つ終点拡張の選び直しで元の旧族が変わらないことを厳密に回収する。
@@ -57,8 +58,8 @@
 - Ind-S (4) の供給許可：`Stable.UniverseVertexIso` は直接 import せず、辺・三角形・可逆性の上げ下げを `Core.UniverseEdgeTransport` に新名の準重複として置く。既存 Core ファイルは変更しない。R が第 I 段終了時に旧入口を付け替える。
 - Ind-S (4) の軽い入口：`UniverseEdge.invertible_up`・`invertible_down` は quasicategory 仮定なしの実可逆辺の宇宙移送。`IsLocalization.precomposition_isFullyFaithful`・`exists_extension` は元の全前合成の充満忠実性・元の実関手同型付き延長。既存の同名でない宣言は不変、`IsLocalization.of_ulift` は同じ元の射の局所化性を元の宇宙へ降ろす。順方向は未公開。
 - 深層編集禁止：R の停止窓以外で既存の深層モジュールを変更しない。必要な一般化・新宣言は新規の葉へ置く。やむを得ない深層変更は着手前にコーディネータへ申告する。Universe 4 本・Coherent 2 本・LeftStraighteningRepresentation の変更は全て復元済み。局所化の宇宙操作は `F1B.Localization.LocalizationUniverse` の新名で葉に閉じる。第 I 段終了時に R が既存 F1 の宇宙操作との準重複を整理する。
-- Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。
-- 次の一手：I-2 b⑤ の有限セル付着による任意の有限単体集合形状への接続へ進む。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
+- Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。追加の一般初頂点射の相対前合成同値は未供給。既存の `relativeFunctorOverPre_isQCatEquivalence_of_firstVertex` は標準単体間の始点保存射のみで、今回の全族の型とは異なる。
+- 次の一手：I-2 b は監査・保存済み、二段目完了の規約に従い区切る。再開時は Ind-S (5) の全族単位と一般初頂点相対制限、I-2 c の安定性へ進む。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

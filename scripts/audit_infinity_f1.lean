@@ -2,7 +2,10 @@ import SerrePositivity.InfinityCategories.F1.Cocartesian
 import SerrePositivity.InfinityCategories.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
 import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
-import SerrePositivity.InfinityCategories.F1.Joins.FiniteLimitGeneration
+import SerrePositivity.InfinityCategories.F1.Joins.FiniteEndpoints
+import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanNerveEdges
+import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteCospanNerveEdges
+import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp
