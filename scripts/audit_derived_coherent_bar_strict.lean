@@ -184,7 +184,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopyComponent,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopyIso,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ProjectiveBarNativeCocone,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SemifreeNativeColimit]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SemifreeNativeColimit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroLayerInclusion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ProjectiveBarVertexIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.QuasiIsoEdgeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ResolvedCoherentHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SemifreeBarVertexCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictNativeCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictResolutionDiagramIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TerminalHomologyCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TerminalHomologyExactness,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.UniversalMapColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroLayerHomologyAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroLayerNativeColumn]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -312,3 +324,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarCoconeModuleMap
 #check SerrePositivity.InfinityCategories.dgCoherentCoconeHomology
 #check SerrePositivity.InfinityCategories.dgCoherentBarHomologyHomotopyIso
+
+#check SerrePositivity.InfinityCategories.dgBarResolvedCoherentHomologyIso
+#check SerrePositivity.InfinityCategories.dgBarResolvedColimitTerminalHomologyIsColimit
+#check SerrePositivity.InfinityCategories.dgSemifreeCoherent_barVertexComparison
+#check SerrePositivity.InfinityCategories.dgBarStrictResolutionDiagramIso
+#check SerrePositivity.InfinityCategories.dgBarZeroLayerInclusion_homology
+#check SerrePositivity.InfinityCategories.dgBarZeroLayerInclusion_nativeColumn
