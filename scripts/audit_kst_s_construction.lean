@@ -32033,3 +32033,21 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_projection
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_projection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativePerfectIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativePerfectIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeValueIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNativeValueIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTammeCone_sourceValueIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedLandTammeCone_sourceValueIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuComparison
