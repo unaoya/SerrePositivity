@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
+import SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits
 import SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison
 import SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison
 import SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality
@@ -7940,6 +7942,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Stable.StablePushoutExistence,
+    `SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits,
+
     `SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison,
     `SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison,
     `SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality,
