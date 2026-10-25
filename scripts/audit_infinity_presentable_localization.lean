@@ -588,3 +588,12 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @pieceSequenceTotalDiagram_restrict_fiber
 #check @pieceSequenceTotalDiagram_restrict_union
 #check @exists_pieceSequenceColimitPresentation
+
+#check @filteredPieceSequenceUnionPiece
+#check @exists_commonRefinementConditions
+#check @HasPropertyPartialColimit
+#check @property_pieceSequenceUnion_colimit
+#check @hasPropertyPartialColimit_sequenceUnion
+#check @mappedIndImagePartialCondition_sequenceUnion
+#check @exists_mappedIndImagePartialCondition_extension
+#check @exists_twoMappedPartialConditions

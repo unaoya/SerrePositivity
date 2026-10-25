@@ -133,6 +133,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Sma
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceColimits
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoMappedPartialConditions
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -329,7 +331,10 @@ slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域�
 両列の同じ小さい filtered 和を証明した。列の全空間から和への元の値射影、および
 各指定段から局所 Kan 添字への比較の native 共終性も構成済み。各段の実部分余極限を
 一つの全図式へ組み立て、その余極限を和の指定余極限頂点として厳密に回収できる。
-二辺の所属を同時に和の段へ回収する接続はまだ未完成。
+同型と小余極限で閉じた頂点条件について、各段の部分余極限の所属を和の指定頂点へ
+回収した。二つの余極限保存関手の大域像が実像に属せば、任意の小部分表示を拡大して、
+同じ部分表示の両像の所属を同時に満たせる。条件を満たす部分集合族の共終性と、
+各段で二辺の所属が揃った全三角形表示への接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
