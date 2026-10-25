@@ -31,6 +31,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceArrowFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberPullback
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberEquivalence
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageAllFiniteColimits
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -91,6 +92,8 @@ compact な閉包内射の任意の小さい余積を、有限部分余積の全
 証明した。さらに厳密な fiber を周囲の fiber の全部分圏として表示し、公開の
 isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性を証明した。
 この比較だけでは固定始域圏の余完備性・accessibility はまだ得られない。
+全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
+形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
