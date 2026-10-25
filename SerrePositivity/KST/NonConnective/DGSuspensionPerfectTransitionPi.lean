@@ -148,4 +148,37 @@ def dgSuspensionPerfectCandidate_tailPiEquiv (j : ℤ) (n : ℕ) (hn : (-j).toNa
       (sequentialCandidateColimitLegHom (dgSuspensionPerfectConnectiveSequence R s A Z) ⟨n⟩) j)
       (dgSuspensionPerfectCandidateLeg_tail_bijective R s A Z h j n hn))
 
+/-- 概要：十分後の段の群比較は、元の実隣接構造射を通っても同じ余錐の脚となる。
+方針：同じ実余錐の π 群余錐の自然性を、元の次数座標へ読み戻す。
+規約：段別連結版 fiber 比較に条件付き。別の遷移射や余錐は選ばない。
+使われ方：K-7 d3 の全整数次数の段別表示を同じ実反復列へ照合する。 -/
+theorem dgSuspensionPerfectCandidate_tailPiEquiv_succ (j : ℤ) (n : ℕ)
+    (hn : (-j).toNat ≤ n)
+    (x : OmegaSpectrum.homotopyGroup
+      (dgKInputSpectrum R (dgSuspensionIteration R s A n)) (j + n)) :
+    dgSuspensionPerfectCandidate_tailPiEquiv R s A Z h j (n + 1)
+        (Nat.le_succ_of_le hn)
+        (dgSuspensionShiftedTransition R s A
+          (dgSuspensionResolvedConnectiveStructureEdge R s A Z
+            (dgSuspensionResolvedPerfEquivalence R s A)) n j x) =
+      dgSuspensionPerfectCandidate_tailPiEquiv R s A Z h j n hn x := by
+  let D := dgSuspensionPerfectConnectiveSequence R s A Z
+  have he := (sequentialCandidatePiCocone D j).ι.naturality
+    (homOfLE (X := SequentialIndex.{max (u + 1) v}) (Nat.le_succ n))
+  have hx := congrArg (fun f => f.hom
+    ((dgSuspensionNativeSequenceStage_piEquiv R s A n j).symm x)) he
+  change OmegaSpectrum.homotopyMap (sequentialCandidateColimitLegHom D ⟨n + 1⟩) j
+    (OmegaSpectrum.homotopyMap (D.map (homOfLE
+      (X := SequentialIndex.{max (u + 1) v}) (Nat.le_succ n))) j
+      ((dgSuspensionNativeSequenceStage_piEquiv R s A n j).symm x)) =
+    OmegaSpectrum.homotopyMap (sequentialCandidateColimitLegHom D ⟨n⟩) j
+      ((dgSuspensionNativeSequenceStage_piEquiv R s A n j).symm x) at hx
+  simp only [dgSuspensionPerfectCandidate_tailPiEquiv, dgSuspensionShiftedTransition,
+    MulEquiv.trans_apply, MulEquiv.ofBijective_apply, MonoidHom.comp_apply,
+    MulEquiv.toMonoidHom_eq_coe, MonoidHom.coe_ofClass, MulEquiv.symm_apply_apply,
+    D, dgSuspensionPerfectConnectiveCandidate, dgSuspensionPerfectConnectiveSequence,
+    dgSuspensionResolvedConnectiveSequence,
+    dgSuspensionNativeSequence_map_succ] at hx ⊢
+  convert hx using 1
+
 end SerrePositivity.KST.NonConnective

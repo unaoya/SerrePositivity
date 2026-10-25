@@ -129,7 +129,7 @@
 
 - `DGSuspensionConnectedComparison` は元の連結固定 K から同じ実 Sp 余錐の零段の脚を実 BF 比較射として回収する。隣接遷移の非負次数安定化に条件付きで、元の比較射を順方向とする群同型を構成し、同じ SOA 比較からの実連結 K 比較も全単射となる。`DGSuspensionLoopStagePi` は同じ n 段の native loop 反復値の整数 π を元の n 回懸垂 K の j+n 次数へ同型で比較する。`DGSuspensionShiftedTransition` は同じ実隣接 BF 射をこの座標で読み、元の作用との厳密な可換性・全単射性の同値・同じ実余錐の連結比較への移送を保持する。`DGSuspensionPerfectStructurePi` は段別 I・P・Z と同じ実 fiber 比較の非負次数条件に対し、実評価 Perf 比較を代入した元の構造射の j+n 次数の全単射性を供給する。全非負 j・全段、および任意整数 j の n≥(-j).toNat の範囲を保持する。無条件の連結版 K-6・段別入力の実供給・全入力自然性と I-2 e との照合は未証明。
 - `DGSuspensionNativeTransitionPi` は Sp 正本の自然同型を反復し、元の構造辺の全一単体に対する `dgSuspensionStructureLoopPi_naturality` と、同じ実隣接 BF 射の全単射性を元の辺の j+n 次数へ移す `dgSuspensionNativeSequenceMap_bijective_iff_structure` を供給する。既存の対象別次数座標との一致は主張せず、同じ BF 射を介して全単射性だけを移す。一般 Sp loop API は新設しない。
-- `DGSuspensionPerfectTransitionPi` は同じ実評価 Perf 比較と元の実零角を代入し、段別 I・P・Z と連結版 K-6 の非負次数比較に条件付きで、全非負次数の実隣接安定化・同じ実余錐への連結比較・元の SOA 連結 K 比較を供給する。任意整数 j と n≥(-j).toNat では、同じ実余錐の n 段の脚が π_j 同型であり、候補の π_j を元の n 回懸垂 K の π_(j+n) から群同型で比較する。負群の消滅・段別入力の存在・無条件 K-6・全入力自然性は主張しない。
+- `DGSuspensionPerfectTransitionPi` は同じ実評価 Perf 比較と元の実零角を代入し、段別 I・P・Z と連結版 K-6 の非負次数比較に条件付きで、全非負次数の実隣接安定化・同じ実余錐への連結比較・元の SOA 連結 K 比較を供給する。任意整数 j と n≥(-j).toNat では、同じ実余錐の n 段の脚が π_j 同型であり、候補の π_j を元の n 回懸垂 K の π_(j+n) から群同型で比較する。`dgSuspensionPerfectCandidate_tailPiEquiv_succ` は、この段別表示が元の実隣接構造射を経ても同じ実余錐の脚を与えることを証明する。負群の消滅・段別入力の存在・無条件 K-6・全入力自然性は主張しない。
 - Sp 正本から供給済み（09:30、472ca0e29）の `SpectrumHo.nativeLoopPiIso` を d2 に代入済み。同じ実 loop／円 cotensor 比較との可換性は正本の `nativeLoopPiIso_circle_comparison` が保持する。d3 の無条件化は連結版 K-6 の証明に依存する。
 
 
