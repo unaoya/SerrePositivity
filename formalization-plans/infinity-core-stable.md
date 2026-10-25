@@ -188,11 +188,13 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 係数閉包の再符号化：`DifferentialGraded/Category/HomTransport` と `Presentation/CategoryFromHomSurjections` は対象1,801 jobs・葉35宣言成功。Hom ごとの自由被覆があれば、同じ全 Hom 同型・実評価を持つ小 dg 提示コードを構成する。被覆の存在・閉射の精密化は未証明。
 
 ### D-8 c：実導来 ∞ 圏の κ-compact 性
-- [x] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[x] c3 零・shift 保存。[x] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
+- [x] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[x] c3 零・shift 保存。[x] c4 二項直和・任意閉射 cone 閉性。[x] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
 - c1：DGModuleKappaCompactBasic／Transport／ClassicalTransport の3本17宣言、両集約11,652 jobs・葉監査成功（許容三公理のみ）。dgModuleKappaCompact_zero、_iff_of_quasiIso、_of_acyclic、_iff_of_derivedIso、_of_derivedRetract を供給。dgConeModuleDerivedVertex_classicalIso と同型・retract の native への引き戻しを保持。c6 の perfect 代表そのものは未証明。全体監査は c7 で再実行する。
 - c3/c4：実 cone-to-zero と同じ加群 shift の頂点同型から全整数 shift を回収。span の小 poset 表示で cone を、零始点 pushout と元の加群余積への h 比較で二項直和を証明。新規7葉は両集約11,908 jobs成功。7葉78宣言の葉監査成功（許容三公理のみ）。全体監査は c7 で再実行。
 - P-9（930cdecba）供給済み：F2/Presentable/Aleph0CardinalChangeBound・CompactEquivalenceUniverse・SmallPosetColimitCompactUniverse を読み取り専用 import。正則非可算 κ には cardinalChangeBound_aleph0 を使い、同じ κ の小 poset 余極限閉性を適用する。追加交換入力なし。
-- F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput は第 I 段中は明示入力を維持。D-16 追加宇宙局所化は ResolvedDGQuotientThickLocalizationUniverse の resolvedDGQuotientFunctor_ulift_isThickLocalization・resolvedDGQuotientProjection_ulift_isThickLocalization で解消。UniverseAscent を読み取り専用 import、既存宣言不変。c6 の DGModuleKappaCompactPerfectCriterion は代表の native κ-compact 性から有限 cell・実 perfect retract へ渡す判定を供給（基底自体は c2 に残る）。この2葉を加えた両集約11,938 jobs・9葉82宣言の葉監査成功（許容三公理のみ）。区切りの両全体監査を実行中。
+- F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput は第 I 段中は明示入力を維持。D-16 追加宇宙局所化は ResolvedDGQuotientThickLocalizationUniverse の resolvedDGQuotientFunctor_ulift_isThickLocalization・resolvedDGQuotientProjection_ulift_isThickLocalization で解消。UniverseAscent を読み取り専用 import、既存宣言不変。c6 の DGModuleKappaCompactPerfectCriterion は代表の native κ-compact 性から有限 cell・実 perfect retract へ渡す判定を供給（基底自体は c2 に残る）。この2葉を加えた両集約11,938 jobs・9葉82宣言の葉監査成功（許容三公理のみ）。区切りの両全体監査成功：Derived 24,147宣言／2,768モジュール、Stable 25,209／3,037（許容三公理のみ）。保存 a68b3a386。
+
+- c5：DGModuleKappaCompactCoproduct の dgModuleKappaCompact_coproduct・dgModuleKappaCompact_countableCoproduct。実 Hom の全次数／全 DK 単体の積を射影的加群の実 coherent 余錐へ送り、P-9 と元の実導来頂点への比較で κ 未満／可算直和閉性を回収。関連10新規葉は両集約11,949 jobs成功、10葉118宣言の葉監査成功（許容三公理のみ）。両全体監査は D-21 接続の区切りで再実行する。次の区切りで D-21（前三角 dg 圏の Yoneda の IsIdempotentCompletion）を新規葉で供給し、c2・c6・c7 に戻る。未コミットの D-21 作業葉は DGPerfectYoneda（完全充満忠実性の集約検証済み）と DGPerfectYonedaIdempotentCompletion（retract と完備化性の検証前）。
 
 ### D-20：全対象 dg 商の Perf 零性
 - [x] 1 全対象商上の加群の acyclic 性と Perf の H⁰ 零性。[x] 2 native 全頂点の零性と IsZeroCategory の公開入口。[x] 3 対象・集約・両全体監査・保存報告。

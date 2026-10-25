@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees
+import SerrePositivity.InfinityCategories.Derived.PinchedLinearProductCriterion
+import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductPinchedProducts
+import SerrePositivity.InfinityCategories.Derived.DGStandardHomChainMap
+import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductStandardFan
+import SerrePositivity.InfinityCategories.Derived.DGStandardClosedPrecomposition
+import SerrePositivity.InfinityCategories.Derived.DGProjectiveCoproductCocone
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactProjectiveComparison
+import SerrePositivity.InfinityCategories.Derived.DGKappaDiscretePosetShape
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCoproduct
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientThickLocalizationUniverse
 import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactPerfectCriterion
 import SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroTarget
@@ -7374,6 +7384,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees,
+    `SerrePositivity.InfinityCategories.Derived.PinchedLinearProductCriterion,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductPinchedProducts,
+    `SerrePositivity.InfinityCategories.Derived.DGStandardHomChainMap,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductStandardFan,
+    `SerrePositivity.InfinityCategories.Derived.DGStandardClosedPrecomposition,
+    `SerrePositivity.InfinityCategories.Derived.DGProjectiveCoproductCocone,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactProjectiveComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaDiscretePosetShape,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCoproduct,
+
     `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientThickLocalizationUniverse,
     `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactPerfectCriterion,
 
