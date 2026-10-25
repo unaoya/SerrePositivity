@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
+import SerrePositivity.InfinityCategories.Derived.DGPerfectYonedaIdempotentCompletion
 import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees
 import SerrePositivity.InfinityCategories.Derived.PinchedLinearProductCriterion
 import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductPinchedProducts
@@ -7384,6 +7386,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda,
+    `SerrePositivity.InfinityCategories.Derived.DGPerfectYonedaIdempotentCompletion,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees,
     `SerrePositivity.InfinityCategories.Derived.PinchedLinearProductCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGModuleCoproductPinchedProducts,

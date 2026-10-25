@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Derived.DGPerfectYonedaIdempotentCompletion
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCoproduct
 public import SerrePositivity.InfinityCategories.Derived.DGKappaDiscretePosetShape
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactProjectiveComparison
