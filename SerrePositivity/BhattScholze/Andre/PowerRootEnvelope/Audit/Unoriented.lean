@@ -13,7 +13,7 @@ assert_no_sorry と推移的な公理の列挙を併用する。
 ## 規約
 許可公理は propext・Classical.choice・Quot.sound の三つだけ。
 ## 使われ方
-lake env lean SerrePositivity/BhattScholze/Andre/Unoriented/Audit.lean で実行する。
+lake env lean SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Audit/Unoriented.lean で実行する。
 -/
 
 open SerrePositivity.BhattScholze SerrePositivity.BhattScholze.Andre

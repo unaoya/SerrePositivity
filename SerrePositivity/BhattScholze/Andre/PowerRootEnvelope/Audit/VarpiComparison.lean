@@ -51,10 +51,6 @@ open Lean Elab Command
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison,
     `SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
