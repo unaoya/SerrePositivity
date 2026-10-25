@@ -22,6 +22,12 @@
   P-11 の全小形状の要求命題と任意の指定余錐の保存を証明した。
 - 最新 Supply.All は 8220 jobs で成功。独立監査は 223 宣言、標準三公理のみ。
 - P-12 の compact 判定は未供給。
+- P-12 の評価関手の全小余極限保存と、評価後の compact Hom・共同 Hom の
+  κ-filtered 保存を e2 の点ごと計算から構成した。
+- κ-small な twisted arrow 形状の極限関手の同じ κ の保存性と、全極限錐族の
+  各脚から頂点への保存判定を接続した。
+- P の poset 全錐交換を `cardinalChangeBound_aleph0` で特殊化した。
+- 最新 Supply.All は 8628 jobs で成功。独立監査は 230 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -54,6 +60,12 @@
 - `hasPreservedColimit_countable_of_coproducts_finite`
 - `hasPreservedColimit_of_coproducts_finite`
 - `preservesSmallColimits_of_coproducts_finite`
+- `evaluateFunctorAt_preservesSmallColimits`
+- `preservesKappaFilteredColimits_compactHom_evaluation`
+- `preservesKappaFilteredColimits_jointHom_evaluation`
+- `exists_kappaContinuousTwistedArrowLimitFunctor`
+- `preservesKappaFilteredColimits_twistedArrowLimitFamily_apex`
+- `cardinalFilteredLimitExchangeShape_aleph0_poset`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -64,17 +76,19 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（P-11 最終接続の三葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
+- なし（P-12 前後部品の三葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
 - P-11 の全小形状の要求命題はビルド・独立監査済み。
-- P-12 の接続前の試作は `/tmp/p-s-TwistedArrowLimitContinuity.lean` に退避。
-  未検証であり供給・集約・コミットに含めない。
+- P-12 の全 Hom と end の一つの全自然な極限錐族との比較は未構成。
+  各脚の保存と極限関手の保存だけでは、compact 判定を結論していない。
 
 ### 次の一手
 - P-12 の Fun の写像空間の end 表示について、既存の反変 Hom の
   全自然な極限錐族と twisted arrow 分類の比較入口を確認する。
+- 元の共同 Hom の分類図式から end 係数を構成し、評価脚を同定する。
+  関手圏の全 Hom を頂点とする全極限錐族を構成して前後の供給を結ぶ。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
@@ -88,7 +102,7 @@
 
 - [x] s12.1 twisted arrow の κ-small 性と継承入口の確認。
 - [ ] s12.2 Fun の写像空間の end 表示とその全自然比較。
-- [ ] s12.3 κ-filtered 余極限の点ごと計算との比較。
+- [x] s12.3 κ-filtered 余極限の点ごと計算との比較（評価・各脚の Hom）。
 - [ ] s12.4 `cardinalChangeBound_aleph0` による交換と compact 判定。
 - [ ] s12.5 Supply.All と独立公理監査、公開名報告。
 

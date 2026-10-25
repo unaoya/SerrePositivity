@@ -22,6 +22,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LastVerte
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.OppositeSimplexRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CountableStageKanComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.PointwiseCompactHom
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedArrowLimitContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.Aleph0PosetExchange
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。
