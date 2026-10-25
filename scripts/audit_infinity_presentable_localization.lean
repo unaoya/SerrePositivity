@@ -83,6 +83,8 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @sequentialPieceSequence_final
 #check @sequentialPiece_hasCardinalLT
 #check @compactSource_coslice_factorization
+#check @compactInitial_leftFibration_factorization
+#check @compactDiagram_cocone_factorization
 
 #check @indArrowImageFactor_isQCatEquivalence
 #check @indArrowImageVertex_mem
