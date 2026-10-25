@@ -87,3 +87,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightDiagramHomEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomToHomWeightDiagramEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaUnit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightLocalProjection_classificationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightLocalElementsComparison_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightLocalElementsComparison_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightLocalYonedaCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightLeftKanDiagramCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaLeftKan_valueIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_homWeightYonedaLeftKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaLeftKanComparison_fac
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomRestriction_isQCatEquivalence

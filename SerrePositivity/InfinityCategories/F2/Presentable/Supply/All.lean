@@ -36,6 +36,10 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.EndSectio
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.PresheafExtensionHomComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightDiagramMapping
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightYonedaUnit
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightElementsComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightLocalColimit
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightYonedaLeftKan
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CosliceHomRestriction
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。

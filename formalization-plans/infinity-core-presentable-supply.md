@@ -55,6 +55,18 @@
   `ulift.map F ≫ presheafHomWeightDiagram F` への指定単位を構成した。
   その左 Kan 普遍性は未証明。
 - 最新 Supply.All は 8668 jobs で成功。独立監査は 393 宣言、標準三公理のみ。
+- 局所形状 `A ×_C C/c` の射影の反転を分類し、元の
+  `Hom_C(F(-),c)` 前層との同型を構成した。
+- 局所形状から同じ Hom 前層の小さい元の圏への、射影を厳密に保つ
+  実比較とその前合成同値性を構成した。
+- 元の密度余錐を実比較で制限し、同じ Hom 前層を頂点とする局所 Yoneda
+  余極限を構成した。宇宙比較後の実左 Kan 局所図式についても同じ結論を得た。
+- 元の F に沿う Yoneda 左 Kan 候補の存在と各値の Hom 前層との同型、
+  および `homWeightYonedaUnit F` を正確に延長する実比較射を構成した。
+  その実比較射の可逆性はまだ証明していない。
+- 任意の F の coslice 作用による実相対 Hom の制限が同値であることを、
+  始対象での二つの実評価の自明 Kan 性から証明した。
+- 最新 Supply.All は 8672 jobs で成功。独立監査は 438 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -115,6 +127,15 @@
 - `homWeightDiagramHomEquivalence`
 - `functorHomToHomWeightDiagramEquivalence`
 - `homWeightYonedaUnit`
+- `homWeightLocalProjection_classificationIso`
+- `homWeightLocalElementsComparison_projection`
+- `homWeightLocalElementsComparison_isPrecompositionEquivalence`
+- `homWeightLocalYonedaCocone_isColimit`
+- `homWeightLeftKanDiagramCocone_isColimit`
+- `homWeightYonedaLeftKan_valueIso`
+- `exists_homWeightYonedaLeftKan`
+- `homWeightYonedaLeftKanComparison`、`homWeightYonedaLeftKanComparison_fac`
+- `cosliceHomRestriction_isQCatEquivalence`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -125,8 +146,8 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（全前層延長 Hom 比較・係数図式の写像空間・Yoneda 指定単位の三葉と
-  集約・監査・本計画を記録）。
+- なし（局所元の圏比較・密度余極限・Yoneda 左 Kan 候補・coslice Hom 制限の
+  四葉と集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -143,9 +164,14 @@
 - 始域の分解を使う場合、構成した制限錐の極限性と制限の充填性を確認する。
   `MonoidalClosed.internalHom.flip.obj` の極限保存と fiber の極限表示が入口。
 - `homWeightYonedaUnit G` の `ulift.map G` に沿う左 Kan 普遍性を証明する。
-  局所形状は `A ×_C C/c`。その表現可能前層図式の密度余極限を、元の
-  `Hom_C(G(-),c)` と同定する。単位は一般には可逆でなく、恒等単位の
-  標準 Kan 制限定理へ直接渡さない。
+  局所形状と元の圏の実比較・指定 Hom 前層を頂点とする密度余極限・実 Kan
+  局所図式への宇宙比較は完成。単位は一般には可逆でなく、恒等単位の標準 Kan
+  制限定理へ直接渡さない。
+- `homWeightYonedaLeftKanComparison` の各評価での可逆性を検証する。
+  構成した `homWeightYonedaLeftKan_valueIso` は比較射とは別の同型であり、
+  これだけから比較射の可逆性を推論しない。指定単位から来る余錐との両立が残る。
+  `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
+  共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
 - この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
   `functorHomToHomWeightDiagramEquivalence` と接続する。
   点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。
