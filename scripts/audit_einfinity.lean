@@ -9871,6 +9871,137 @@ import Mathlib.Tactic.Ring
     `SerrePositivity.EInfinity.ComplexLimits.normalizedPullbackHomClosed_target_trivialFibration,
     `SerrePositivity.EInfinity.ComplexLimits.normalizedBoundaryPullbackHomClosed_target_trivialFibration]
 
+@[noinline] private def e2RequiredBatch230 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.DGAlgebra.intervalEndpoint_comul,
+      `SerrePositivity.EInfinity.DGAlgebra.intervalEndpointComon,
+      `SerrePositivity.EInfinity.DGAlgebra.intervalEndpointComon_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitMap_trivial_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitMap_trivial_isIso,
+      `SerrePositivity.EInfinity.DGAlgebra.awEvaluation,
+      `SerrePositivity.EInfinity.DGAlgebra.awEvaluation_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.awConstant_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.awConstant_evaluation,
+      `SerrePositivity.EInfinity.DGAlgebra.awPrepath,
+      `SerrePositivity.EInfinity.DGAlgebra.awPrepath_p_compare,
+      `SerrePositivity.EInfinity.DGAlgebra.awPrepath_p_projectiveFibration,
+      `SerrePositivity.EInfinity.DGAlgebra.awConstant_quasiIso,
+      `SerrePositivity.EInfinity.DGAlgebra.awEvaluation_quasiIso,
+      `SerrePositivity.EInfinity.DGAlgebra.awPathInput,
+      `SerrePositivity.EInfinity.DGAlgebra.hasReflexiveCoequalizers,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetPreservesReflexiveCoequalizers,
+      `SerrePositivity.EInfinity.DGAlgebra.diagramForget,
+      `SerrePositivity.EInfinity.DGAlgebra.diagramForgetMonadic,
+      `SerrePositivity.EInfinity.DGAlgebra.hasColimitsOfShape,
+      `SerrePositivity.EInfinity.DGAlgebra.hasColimits,
+      `SerrePositivity.EInfinity.DGAlgebra.unitInput,
+      `SerrePositivity.EInfinity.DGAlgebra.binaryInput,
+      `SerrePositivity.EInfinity.DGAlgebra.ternaryInput,
+      `SerrePositivity.EInfinity.DGAlgebra.tensorInput_preservesColimit,
+      `SerrePositivity.EInfinity.DGAlgebra.unitInput_preservesColimit,
+      `SerrePositivity.EInfinity.DGAlgebra.colimit_one_mul,
+      `SerrePositivity.EInfinity.DGAlgebra.colimit_mul_one,
+      `SerrePositivity.EInfinity.DGAlgebra.colimit_mul_assoc,
+      `SerrePositivity.EInfinity.DGAlgebra.monoidOfJointlyEpic,
+      `SerrePositivity.EInfinity.DGAlgebra.unitCocone,
+      `SerrePositivity.EInfinity.DGAlgebra.multiplicationCocone,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitOne,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitMul,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitOne_fac,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitMul_fac,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitObject,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitCocone,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitDesc,
+      `SerrePositivity.EInfinity.DGAlgebra.colimitIsColimit,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetCreatesColimit,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraConstant,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraConstant_oplax,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_oplax,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensorIso,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraHomAdjunction,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraHomLax,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor_obj_X,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor_map_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor_obj_homComplex,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor_one,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraFunctor_mul,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitHom,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitHom_one,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitHom_mul,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitMap,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensorCounit,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensorCounit_app,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensorCounit_unit,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensorCounit_tensor,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitMap_precompose,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitMap_naturality,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionRestriction_one,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionRestriction_mul,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionRestriction,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionRestriction_hom,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionRestrictionNatTrans,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionAlgebraContravariant,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_eta,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_delta,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_eta_counit,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_pre_eta,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraTensor_pre_delta,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraHomAdjunction_homEquiv,
+      `SerrePositivity.EInfinity.DGAlgebra.coalgebraHomAdjunction_counit,
+      `SerrePositivity.EInfinity.DGAlgebra.convolutionUnitHom_unit_pre,
+      `SerrePositivity.EInfinity.DGAlgebra.freeObject,
+      `SerrePositivity.EInfinity.DGAlgebra.generator,
+      `SerrePositivity.EInfinity.DGAlgebra.lift,
+      `SerrePositivity.EInfinity.DGAlgebra.generator_lift,
+      `SerrePositivity.EInfinity.DGAlgebra.free_hom_ext,
+      `SerrePositivity.EInfinity.DGAlgebra.freeHomEquiv,
+      `SerrePositivity.EInfinity.DGAlgebra.freeHomEquiv_naturality,
+      `SerrePositivity.EInfinity.DGAlgebra.freeFunctor,
+      `SerrePositivity.EInfinity.DGAlgebra.freeForgetAdjunction,
+      `SerrePositivity.EInfinity.DGAlgebra.freeFunctor_obj,
+      `SerrePositivity.EInfinity.DGAlgebra.freeFunctor_map,
+      `SerrePositivity.EInfinity.DGAlgebra.freeForgetAdjunction_unit,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory_weakEquivalences,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory_fibrations,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory_cofibrantlyGenerated,
+      `SerrePositivity.EInfinity.DGAlgebra.forget_isRightQuillen,
+      `SerrePositivity.EInfinity.DGAlgebra.allFibrant,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetCreatesSiftedColimits,
+      `SerrePositivity.EInfinity.DGAlgebra.hasSiftedColimits,
+      `SerrePositivity.EInfinity.DGAlgebra.splitPair_input_preservesColimit,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetCreatesSplitCoequalizers,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetMonadic,
+      `SerrePositivity.EInfinity.DGAlgebra.exists_retraction_path,
+      `SerrePositivity.EInfinity.DGAlgebra.fibrations_llp_quasiIso,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingTrivialCofibrations_rlp,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingTrivialCofibrations_llp_le,
+      `SerrePositivity.EInfinity.DGAlgebra.freeCells_acyclic,
+      `SerrePositivity.EInfinity.DGAlgebra.hasFiniteLimits,
+      `SerrePositivity.EInfinity.DGAlgebra.hasBinaryProducts,
+      `SerrePositivity.EInfinity.DGAlgebra.hasTerminal,
+      `SerrePositivity.EInfinity.DGAlgebra.AWPathInput,
+      `SerrePositivity.EInfinity.DGAlgebra.terminalFrom_projectiveFibration,
+      `SerrePositivity.EInfinity.DGAlgebra.forgetIsCardinalAccessible,
+      `SerrePositivity.EInfinity.DGAlgebra.freeFinitelyPresentable,
+      `SerrePositivity.EInfinity.DGAlgebra.freeFamily_smallObjectArgument,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingCofibrations,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingTrivialCofibrations,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.DGAlgebra.generatingTrivialCofibrations_smallObjectArgument,
+      `SerrePositivity.EInfinity.FrameHom.resolutionComparison_left_isIso,
+      `SerrePositivity.EInfinity.FrameHom.resolutionComparison_right_isIso,
+      `SerrePositivity.EInfinity.FrameHom.targetComparison_left_isIso,
+      `SerrePositivity.EInfinity.FrameHom.targetComparison_right_isIso,
+      `SerrePositivity.EInfinity.FrameHom.resolutionComparison_left_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.resolutionComparison_right_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.targetComparison_left_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.targetComparison_right_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.frameComparison_left_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.frameComparison_right_isWeakHomotopyEquivalence]
+
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -9904,7 +10035,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229, e2RequiredBatch230] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -26813,3 +26944,83 @@ example (i : P ⟶ Q) (hi : (projectiveGeneratingCofibrations A).rlp.llp i)
     projectiveFibrations A (complexPullbackHom i p) ∧ QuasiIso (complexPullbackHom i p) :=
   complexPullbackHom_trivialFibration i p hi hiw hp
 end e2Fixtures229
+
+noncomputable section e2Fixtures230
+open CategoryTheory Limits MonoidalCategory HomologicalComplex HomotopicalAlgebra
+open SerrePositivity
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
+open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open scoped Simplicial
+universe e2F230U
+variable (A : Type e2F230U) [CommRing A]
+attribute [local instance] DGAlgebra.hasBinaryProducts DGAlgebra.hasTerminal
+
+example : ModelCategory (Mon (Complex A)) := DGAlgebra.modelCategory A
+example :
+    @weakEquivalences (Mon (Complex A)) _
+      (DGAlgebra.modelCategory A).categoryWithWeakEquivalences =
+      (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (Mon.forget (Complex A)) :=
+  DGAlgebra.modelCategory_weakEquivalences A
+example :
+    @fibrations (Mon (Complex A)) _ (DGAlgebra.modelCategory A).categoryWithFibrations =
+      (projectiveFibrations A).inverseImage (Mon.forget (Complex A)) :=
+  DGAlgebra.modelCategory_fibrations A
+example : let := DGAlgebra.modelCategory A
+    ModelGeneration.CofibrantlyGenerated.{e2F230U}
+      (DGAlgebra.generatingCofibrations (R := A))
+      (DGAlgebra.generatingTrivialCofibrations (R := A)) :=
+  DGAlgebra.modelCategory_cofibrantlyGenerated A
+example : let := projectiveModelCategory A
+    let := DGAlgebra.modelCategory A
+    SerrePositivity.Quillen.IsRightQuillen (Mon.forget (Complex A)) :=
+  DGAlgebra.forget_isRightQuillen A
+example (B : Mon (Complex A)) : let := DGAlgebra.modelCategory A
+    IsFibrant B := DGAlgebra.allFibrant A B
+example (B : Mon (Complex A)) :
+    ((DGAlgebra.awPrepath A B).P).X =
+      homComplex A (AlexanderWhitney.cochains A Δ[1]) B.X := rfl
+example (B : Mon (Complex A)) (b : Bool) :
+    (DGAlgebra.awEvaluation A B b).hom =
+      (IntervalCuts.coalgebraInterval A).evaluation B.X b := DGAlgebra.awEvaluation_hom A B b
+example (B : Mon (Complex A)) :
+    projectiveFibrations A (DGAlgebra.awPrepath A B).p.hom :=
+  DGAlgebra.awPrepath_p_projectiveFibration A B
+example (B : Mon (Complex A)) (b : Bool) :
+    QuasiIso (DGAlgebra.awEvaluation A B b).hom := DGAlgebra.awEvaluation_quasiIso A B b
+example (B : Mon (Complex A)) :
+    QuasiIso (DGAlgebra.convolutionUnitMap A (AlexanderWhitney.cochainComon A Δ[1]) B).hom :=
+  DGAlgebra.awConstant_quasiIso A B
+example (B : Mon (Complex A)) :
+    DGAlgebra.convolutionUnitMap A (AlexanderWhitney.cochainComon A Δ[1]) B ≫
+      DGAlgebra.awEvaluation A B false = 𝟙 B := DGAlgebra.awConstant_evaluation A B false
+example : DGAlgebra.freeFunctor (R := A) ⊣ Mon.forget (Complex A) :=
+  DGAlgebra.freeForgetAdjunction
+example : HasColimitsOfSize.{e2F230U, e2F230U} (Mon (Complex A)) := DGAlgebra.hasColimits
+example : MorphismProperty.transfiniteCompositions.{e2F230U}
+    (MorphismProperty.coproducts.{e2F230U}
+      (DGAlgebra.generatingTrivialCofibrations (R := A))).pushouts ≤
+      (quasiIso (ModuleCat A) (.up ℤ)).inverseImage (Mon.forget (Complex A)) :=
+  DGAlgebra.freeCells_acyclic (DGAlgebra.awPathInput A)
+
+local instance : ModelCategory (Mon (Complex A)) := DGAlgebra.modelCategory A
+
+example
+    (cof : MorphismProperty.FunctorialFactorizationData
+      (cofibrations (Mon (Complex A))) (trivialFibrations (Mon (Complex A))))
+    (q q' : CofibrantResolutionFamily (C := Mon (Complex A)) simplex)
+    (X : (Mon (Complex A))ᵒᵖ) (Y : Mon (Complex A)) :
+    InfinityCategories.IsWeakHomotopyEquivalence
+      (((ResolutionComparison.homLeft cof q q' (𝟭 (Mon (Complex A)))).app X).app Y) :=
+  FrameHom.resolutionComparison_left_isWeakHomotopyEquivalence cof q q'
+    (𝟭 (Mon (Complex A))) (DGAlgebra.allFibrant A) X Y
+
+example
+    (fib fib₁ fib₂ : MorphismProperty.FunctorialFactorizationData
+      (trivialCofibrations (Mon (Complex A))) (fibrations (Mon (Complex A))))
+    (q : CofibrantResolutionFamily (C := Mon (Complex A)) simplex)
+    (X : (Mon (Complex A))ᵒᵖ) (Y : Mon (Complex A)) :
+    InfinityCategories.IsWeakHomotopyEquivalence
+      (((TargetComparison.homRight fib fib₁ fib₂ q.obj).app X).app Y) :=
+  FrameHom.targetComparison_right_isWeakHomotopyEquivalence fib fib₁ fib₂ q X Y
+
+end e2Fixtures230

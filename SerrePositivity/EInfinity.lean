@@ -2507,3 +2507,7 @@ public import SerrePositivity.EInfinity.AlexanderWhitney.HornCochainContraction
 public import SerrePositivity.EInfinity.ComplexLimits.ProjectivePullbackHomClosed
 
 public import SerrePositivity.EInfinity.ComplexLimits.PullbackHomTargetTrivial
+
+public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
+
+public import SerrePositivity.EInfinity.FrameHom.ReplacementComparison

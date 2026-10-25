@@ -2885,3 +2885,48 @@ Hom(Q,p) の二対三による。正規化単射への系では両端の cofibra
 両端の cofibrancy を外した SM7 は、この追加供給の結論には含めない。
 
 追加分も対象・集約ビルド、全公理監査と独立例を検証済み。
+
+
+## Sp β6 f4c への dg 代数モデル構造（E2-S (5)）
+
+`DGAlgebra.modelCategory R` は `Mon (Complex R)` の実転送モデル構造。
+局所的に選び、弱同値は `modelCategory_weakEquivalences` により底の擬同型、
+fibration は `modelCategory_fibrations` により底の次数別全射と一致する。
+`modelCategory_cofibrantlyGenerated` は実自由モノイド関手 `freeFunctor` 上の
+球面→円盤と零→円盤の二族による余生成を与える。
+`freeForgetAdjunction`・`hasColimits`・二つの `generating…_smallObjectArgument`
+から小対象論法を構成し、`awPathInput` を用いた `freeCells_acyclic` で転送する。
+`forget_isRightQuillen` と `allFibrant` も同じモデル構造で使う。
+
+`convolutionAlgebraFunctor` は実余モノイドから内部 Hom 畳み込み代数を作る。
+`convolutionRestriction` は余モノイド射の前合成、`convolutionUnitMap` は余単位の転置。
+構造の factory は局所 instance として使い、大域登録はしない。
+`awPrepath` の底は `Hom(N(Δ¹),B)` 自身。
+`awEvaluation_hom` は元の区間評価との等式、`awPrepath_p_compare` は二端点と積の照合、
+`awPrepath_p_projectiveFibration` は全次数全射性を与える。
+`awConstant_quasiIso` は標準単体の余単位の実ホモトピー逆を前合成へ移し、
+`awEvaluation_quasiIso` は同じ定数射・端点の三角形から二対三で結論する。
+
+frame 比較では `FrameHom/ReplacementComparison` の
+`resolutionComparison_left_isWeakHomotopyEquivalence`・
+`resolutionComparison_right_isWeakHomotopyEquivalence`、
+`targetComparison_left_isWeakHomotopyEquivalence`・
+`targetComparison_right_isWeakHomotopyEquivalence`、
+`frameComparison_left_isWeakHomotopyEquivalence`・
+`frameComparison_right_isWeakHomotopyEquivalence` を使える。
+前二対は元の `ResolutionComparison.homLeft/homRight`・
+`TargetComparison.homLeft/homRight` 自身の判定であり、
+`ModelCategory SSet` と単体的 cofibration＝単射の仮定を要求しない。
+anodyne を反転する指定関手への版は同じ接頭辞の `left/right_isIso`。
+実 right frame への共同比較には既存の
+`FrameHom.MixedFrame.leftComparison_isIso`・`rightComparison_isIso`、
+分解から三本矢の図式への比較には
+`FrameHom.resolutionFixedRightComparison_isLeftCofinal`・
+`resolutionFixedRightComparison_isWeakHomotopyEquivalence` を使う。
+各定理が要求する Reedy 条件と frame の各値の弱同値性は明示入力である。
+これらの frame 選択比較だけを、擬同型 ∞ 局所化への全比較の完成とは扱わない。
+`FrameHom.RelativeLocalization.equivalence` は通常圏の局所化の同値である。
+
+畳み込み一般版は、コーディネータ指示により KST 側を読み取り専用で参照して
+EInfinity に構成した準重複。KST の import は追加していない。
+第 I 段終了時に R が Sp の畳み込み・定数射の版をこの入口へ付け替える。
