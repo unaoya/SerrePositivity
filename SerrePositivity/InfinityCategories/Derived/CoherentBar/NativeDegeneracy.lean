@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
+public import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
 /-!
 概要：native dg nerve 値図式の退化三角形では最上 cochain は必ず零になる。
 方針：図式の単体的自然性と dg nerve の退化成分公式を使う。
@@ -47,6 +48,18 @@ lemma dgCoherentBar_native_degenerateTop_transported {n : ℕ} (s : I _⦋n + 1�
     (i : Fin (n + 2)) : coherentDiagramTop F (I.σ i s) = 0 := by
   unfold coherentDiagramTop
   rw [dgCoherentBar_native_degenerateTop]
+  exact map_zero _
+
+lemma dgCoherentBar_native_top_eq_zero_of_degenerate {n : ℕ} (s : I _⦋n + 2⦌)
+    (hs : s ∈ I.degenerate (n + 2)) : coherentDiagramTopRaw F s = 0 := by
+  rw [I.degenerate_eq_iUnion_range_σ] at hs
+  obtain ⟨i, t, rfl⟩ := Set.mem_iUnion.mp hs
+  exact dgCoherentBar_native_degenerateTop F t i
+
+lemma dgCoherentBar_native_top_transported_eq_zero_of_degenerate {n : ℕ}
+    (s : I _⦋n + 2⦌) (hs : s ∈ I.degenerate (n + 2)) : coherentDiagramTop F s = 0 := by
+  unfold coherentDiagramTop
+  rw [dgCoherentBar_native_top_eq_zero_of_degenerate F s hs]
   exact map_zero _
 
 end SerrePositivity.InfinityCategories

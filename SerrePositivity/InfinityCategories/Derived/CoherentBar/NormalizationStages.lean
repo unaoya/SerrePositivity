@@ -47,6 +47,35 @@ def dgCoherentBarNormalizationBoundaryHomotopy (q : ℕ) :
       (dgCoherentBarModule R D F hMC)).X 0)
     exact (sub_zero _).symm⟩
 
+set_option maxHeartbeats 800000 in
+-- 実 bar と元の全 Hom end の特殊次数での照合に限って上限を増やす。
+lemma dgCoherentBarNormalizationBoundary_cycle (q : ℕ) :
+    (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
+      (dgCoherentBarNormalizationBoundary R D F hMC q))).val =
+    dgCoherentBarEndRebase R D F hMC 0
+      (compose R (x := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (y := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (z := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (dgCoherentBarTheta R D F) (dgCoherentBarNormalizationHomotopyGraded R D F q)
+        (show (-1 : ℤ) + 1 = 0 from rfl) +
+      compose R (x := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (y := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (z := ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+        (dgCoherentBarNormalizationHomotopyGraded R D F q) (dgCoherentBarTheta R D F)
+        (show (1 : ℤ) + -1 = 0 from rfl)) := by
+  rw [dgCoherentBarNormalizationBoundary, moduleMorphismOfCycle_cycle]
+  have h := dgCoherentBarEndRebase_d R D F hMC (-1)
+    (dgCoherentBarNormalizationHomotopyGraded R D F q)
+  simp only [show (-1 : ℤ) + 1 = 0 from rfl,
+    Int.negOnePow_zero, one_smul] at h
+  change _ = dgCoherentBarEndRebase R D F hMC 0
+    ((moduleHom R D
+      (ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))
+      (ForgetEnrichment.to (Complex R) (dgCoherentBarGraded R D F))).d (-1) 0
+      (dgCoherentBarNormalizationHomotopyGraded R D F q) + _ + _) at h
+  rw [dgCoherentBarNormalizationHomotopyGraded_d, zero_add] at h
+  exact h
+
 def dgCoherentBarNormalizationStage : ℕ →
     (dgCoherentBarObject R D F hMC ⟶ dgCoherentBarObject R D F hMC)
   | 0 => 𝟙 _

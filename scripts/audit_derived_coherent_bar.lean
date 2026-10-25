@@ -21,7 +21,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebase,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelNormalization,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizationStages,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateSplitting]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateSplitting,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomotopyImage,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateCuts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegeneratePrefixCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateFaceCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateUnit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.PositiveDegenerateFaceSum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateUnitCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.PositiveDegenerateColumn,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.ZeroDegenerateColumn,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateInvariant,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanDescent,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedProjection]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -46,3 +62,4 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizationStageHomotopy
 #check SerrePositivity.InfinityCategories.dgCoherentBarLabelNormalizedEquiv
 #check SerrePositivity.InfinityCategories.dgCoherentBarEndRebase_d
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModule

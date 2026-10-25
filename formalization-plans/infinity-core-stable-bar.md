@@ -4,10 +4,12 @@
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（3442 jobs、11葉）。専用公理監査成功（標準三公理のみ）。
+- 所有 All のビルド成功（3462 jobs、27葉）。専用公理監査成功（299宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
+- 元の theta の全退化列の非退化射影像が零であることを証明。
+- 同じ MC 仮定のみで実正規化 dg 加群と、元の実 bar からの閉零射影を構成。
 - 19:40 にユーザーが正規化中間模型・同じ theta の微分に対する変形 retract を採用。再開中。
 - c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
 ### 残り（依存順）
@@ -25,6 +27,9 @@
 - dgCoherentBarNormalizedGraded、dgCoherentBarGraded_identity_decomposition。
 - dgCoherentBarNormalizationStageHomotopy、dgCoherentBarEndRebase_d。
 - dgCoherentBarLabelNormalizedEquiv、dgCoherentBarLabelProjection_eq_zero_of_degenerate。
+- dgCoherentBarColumn_degenerate_normalizedProjection、dgCoherentBarNormalizedTheta_projection。
+- dgCoherentBarNormalizedTheta_maurerCartan、dgCoherentBarNormalizedModule。
+- dgCoherentBarNormalizedModuleProjection、dgCoherentBarNormalizationBoundary_cycle。
 ### 依存と提供
 - D の既存 Derived・DGNerve・DifferentialGraded と KST/NonConnective は読み取り専用。
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
@@ -32,14 +37,14 @@
 - MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
 - 編集所有は Derived/CoherentBar/、その All、専用監査、本計画のみ。
 ### 未コミット
-- なし（保存済みの段階的作用素から、正規化性と安定化を続行）。
+- なし（所有葉・集約・専用監査・本計画を限定コミットで保存）。
 ### 既知の問題
 - native 余錐・普遍性と filtered 評価比較は未構成。代数的閉列同値を native 普遍性とは扱わない。
-- 段階的射の像の正規化性・安定化と、退化部分の実微分での保存が残る。
+- 段階的射の像の正規化性・安定化と、実射影の補正包含・変形 retract が残る。
   各有限段階の鎖ホモトピーと、完成した変形 retract を区別する。
 - D の MC 無条件結論は未公開（確認時の公開名は _of_columns のみ）。仮定は維持。
 ### 次の一手
-- Mathlib の PInfty・homotopyPInftyToId・Moore 正規化同値を参照し、退化部分の縮約を構成する。
+- 段階的境界の単体次数に関する支持を計算し、Mathlib のラベル正規化と比較して安定化・縮約を作る。
 
 ## 採用された設計追加（19:40）
 - 根拠：dgCoherentBarIndex は退化を含む全単体を独立因子にする。
