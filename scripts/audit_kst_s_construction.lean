@@ -31736,3 +31736,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorRoofPerfectSquare_inclusion
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRoofPerfectSquare_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCompletionValueComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletionValueComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCompletion_lift_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletion_lift_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCompletionYonedaComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletionYonedaComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorProjectionYonedaComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorProjectionYonedaComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaTarget
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaTarget
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaTarget_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaTarget_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaExtension
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaExtension
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaExtension_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaExtension_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaModuleComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaModuleComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaComparison

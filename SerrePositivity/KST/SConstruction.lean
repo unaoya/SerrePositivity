@@ -2590,4 +2590,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletedLandTamme
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRectangle
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRoofSquare
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletionComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellYonedaComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

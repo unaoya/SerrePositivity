@@ -65,12 +65,13 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- なし（resolved 完備化・零角・商境界の長方形・固定 ν 屋根面・完備化付き相対接続の6新葉、集約・公式監査・本計画を保存）。
+- なし（実完備化の評価後 Yoneda 回収と cell 商包含の実 Perf 延長の全自然性を、2新葉・集約・公式監査・本計画に保存）。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
+- **設計提案（元始域の増大屋根、ユーザーへ提示中）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の S 内頂点等号を「元入力への増大屋根＋ν 像の指定同値」へ替える案。native Verdier 列・LT 極限錐の元始域は不変。現在の `DGOdotMilnorRelativeRectangleInput.source_vertex` は承認まで変更しない。依存する `Resolution.CellComparison` と元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の73宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。今回の45宣言も最終監査済み（公理出力12,336件、標準三公理のみ）。集約14,096 jobs。所有の repository import 閉包10287モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
+- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の73宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。完備化接続45宣言と続く Yoneda 比較10宣言も最終監査済み（公理出力12,346件、標準三公理のみ）。集約14,098 jobs。所有の repository import 閉包10289モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較と Sp-6 の実 S 長方形は未供給。
 - 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -92,11 +93,11 @@
   4. [ ] d④：Sp の零角・実面・長方形比較を接続し、未供給の全図式入力を分離する。
   5. [ ] e②：四完備性を保持して Cat^perf の実商入力と LT 結論へ接続する。
   6. [x] 集約・公式監査・禁止仮定検査を通し、引き継ぎを保存する。
-- 次の一手：採用された完備化付き相対提示を接続。実 lax の二因子は元代数の固定 ν 値へ指定同値で照合済み。包含後の二射影は元 top・side の実小 Perf 延長へ全単体で一致。残る固定 ν の二脚全体の比較と Sp の ofSquare／ofActualFaces・strict transport の実入力を続行。D-21 は特殊化済み。商境界の実比較面と上下三角形を保つ完備化長方形も構成済み。元二脚の lax 比較と既存 `Resolution.CellComparison` の供給は D 向け追加依頼をユーザーへ中継（具体型はチャット）。`DGOdotMilnorRelativeRectangleInput` は Sp の完備化版へ同じ指定三境界・上下二単体の全比較を接続し、実 S 長方形の存在は未供給と明示。native strict 商から ν 完備商の strict 局所化は推論しない。
+- 次の一手：ユーザーへ提示した元始域の増大屋根案の設計判断後、採用された完備化付き相対提示を接続。実 lax の二因子は元代数の固定 ν 値へ指定同値で照合済み。包含後の二射影は元 top・side の実小 Perf 延長へ全単体で一致。残る固定 ν の二脚全体の比較と Sp の ofSquare／ofActualFaces・strict transport の実入力を続行。D-21 は特殊化済み。商境界の実比較面と上下三角形を保つ完備化長方形も構成済み。`DGOdotMilnorCompletionComparison` は評価後に元商 Yoneda を全関手同型で回収し、`DGOdotMilnorCellYonedaComparison` は同じ cell 商包含の実 Perf 延長と Yoneda の全自然性を供給。元二脚の lax 比較と既存 `Resolution.CellComparison` の供給は D 向け追加依頼をユーザーへ中継（具体型はチャット）。`DGOdotMilnorRelativeRectangleInput` は Sp の完備化版へ同じ指定三境界・上下二単体の全比較を接続し、実 S 長方形の存在は未供給と明示。native strict 商から ν 完備商の strict 局所化は推論しない。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-completed-aggregate.log`、`/tmp/kst-s-completed-audit.log`、`/tmp/kst-s-completed-closure.txt`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-comparison-aggregate.log`、`/tmp/kst-s-comparison-audit.log`、`/tmp/kst-s-comparison-closure.txt`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 
