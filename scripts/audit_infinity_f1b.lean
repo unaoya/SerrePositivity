@@ -2,6 +2,8 @@ import SerrePositivity.InfinityCategories.F1B
 import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
 import SerrePositivity.InfinityCategories.F1B.Localization.UniverseDescent
 import SerrePositivity.InfinityCategories.F1B.Cones.LimitDiagramIsoImage
+import SerrePositivity.InfinityCategories.F1B.Cones.RelativeInitialCoconeVertex
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialColimitFamily
 import Lean.Util.CollectAxioms
 
 /-!
@@ -3051,3 +3053,24 @@ end
 
 #check SerrePositivity.InfinityCategories.exists_limitCone_of_functorIso_with_image
 #print axioms SerrePositivity.InfinityCategories.exists_limitCone_of_functorIso_with_image
+
+#check SerrePositivity.InfinityCategories.functorPointIso
+#print axioms SerrePositivity.InfinityCategories.functorPointIso
+
+#check SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.cancel_right
+#print axioms SerrePositivity.InfinityCategories.F1B.KanRelativeInitialVertex.cancel_right
+
+#check SerrePositivity.InfinityCategories.F1B.relativeInitial_colimitCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.F1B.relativeInitial_colimitCoconeFamily
+
+#check SerrePositivity.InfinityCategories.F1B.retractionPrecompositionAdjunction
+#print axioms SerrePositivity.InfinityCategories.F1B.retractionPrecompositionAdjunction
+
+#check SerrePositivity.InfinityCategories.F1B.coconeShapePrecompositionAdjunction
+#print axioms SerrePositivity.InfinityCategories.F1B.coconeShapePrecompositionAdjunction
+
+#check SerrePositivity.InfinityCategories.F1B.coconeShapeRight_pinchedHomMap_equivalence
+#print axioms SerrePositivity.InfinityCategories.F1B.coconeShapeRight_pinchedHomMap_equivalence
+
+#check SerrePositivity.InfinityCategories.F1B.relativeInitial_cocone_vertex
+#print axioms SerrePositivity.InfinityCategories.F1B.relativeInitial_cocone_vertex

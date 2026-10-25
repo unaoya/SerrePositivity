@@ -4,6 +4,7 @@ import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitConeFamily
 import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
 import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
 import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetLimits
+import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetColimits
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.cylinderEvaluationSwitch
@@ -2256,3 +2257,27 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_isLimit_iff_inclusion
 #print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_isLimit_iff_inclusion
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_restriction
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_restriction
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_vertex_val
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_vertex_val
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_isColimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaCoconeFamily_isColimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_hasColimit_of_singleFilteredDiagramPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_hasColimit_of_singleFilteredDiagramPresentation
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_hasColimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_hasColimit
+
+#check SerrePositivity.InfinityCategories.F2.functorVertexCocone
+#print axioms SerrePositivity.InfinityCategories.F2.functorVertexCocone
+
+#check SerrePositivity.InfinityCategories.F2.colimitCoconeFamily_completion_isColimit
+#print axioms SerrePositivity.InfinityCategories.F2.colimitCoconeFamily_completion_isColimit
