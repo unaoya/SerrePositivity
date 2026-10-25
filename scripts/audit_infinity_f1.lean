@@ -9428,3 +9428,25 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.IsLocalization.relativeFunctorPre_isQCatEquivalence
 #check SerrePositivity.InfinityCategories.relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization
 #print axioms SerrePositivity.InfinityCategories.relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization
+
+-- Ind-S: 末尾登録。既存集約を変更せず、新規葉を別環境で監査する。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanWeightedUnit },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  let modules := #[`SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorDescentOver,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanWeightedUnitData,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanWeightedUnit]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S leaf: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S leaf: no declarations audited"
+  logInfo m!"Ind-S leaf audit passed: {count} declarations."
