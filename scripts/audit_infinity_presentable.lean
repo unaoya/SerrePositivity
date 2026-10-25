@@ -1013,3 +1013,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_invertedEdges
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges
 #check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isPresentable_of_accessiblePullback
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily
