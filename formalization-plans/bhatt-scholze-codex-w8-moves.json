@@ -1,0 +1,10 @@
+{
+ "moves": {
+  "SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.Audit": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.InitialCoefficient",
+  "SerrePositivity.BhattScholze.Andre.Remark715.Unoriented.Audit": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.Unoriented",
+  "SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.Audit": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.VarpiComparison",
+  "SerrePositivity.BhattScholze.Andre.Remark715.VarpiComparison.UnconditionalAudit": "SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Audit.VarpiComparisonUnconditional"
+ },
+ "stubs": [],
+ "keep": []
+}

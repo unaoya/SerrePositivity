@@ -17,6 +17,10 @@
 - 所有範囲（BS・CLMST・BS/CLMST の監査）の import 行・`let mods` の名前一覧・バッククォートのモジュール名を
   新しい名前に書き換え、重複した import 行と自分自身の import を除く。
 
+- "deletes"（省略可）に挙げたモジュールは git rm する（BS-W8 から）。削除しないモジュールのうち所有範囲の Lean ファイルが
+  それを import していれば、監査（scripts/）の import 行だけは外し、それ以外は止まる。監査の中の宣言名の行は Codex が別途消す。
+- "private_renames"（省略可、{元モジュール名: {旧名: 新名}}）：同じ統合先に同名の private 宣言が二つあると二重宣言になるので、
+  指定した元モジュールの本文の中だけで、その名前を単語単位で置き換える（BS-W8 から）。
 - "stubs" に挙げた元モジュールは、git rm の後に旧名の位置へ転送スタブ（新しい場所を public import するだけ）を書く。
   所有範囲外の import 元がすべて stubs に入っていなければ止まる。
 
@@ -38,6 +42,8 @@ OWNED = [
     re.compile(r"^scripts/audit_andre_[^/]*\.lean$"),
     re.compile(r"^scripts/audit/bhatt_scholze\.lean$"),
     re.compile(r"^scripts/audit/clmst\.lean$"),
+    # BS の集約（BS-W8a で作成）。統合で名前が変わったときはここだけを直す
+    re.compile(r"^SerrePositivity/BhattScholze\.lean$"),
     # CommutativeAlgebra のうち BS・CLMST だけが使う 4 本（BS-W4 で確認済み）
     re.compile(r"^SerrePositivity/CommutativeAlgebra/(AbsolutelyIntegrallyClosedPerfectoidQuotient|PerfectoidIdeal|"
                r"PerfectoidIdealCompatibleRoots|PerfectoidIdealCover)\.lean$"),
@@ -70,11 +76,14 @@ def to_path(mod):
 
 def parse(mod):
     lines = to_path(mod).read_text().splitlines()
-    imports, doc, i = [], None, 0
+    imports, doc, i, pre = [], None, 0, []
     while i < len(lines) and not HEADER.match(lines[i]):
         m = IMPORT.match(lines[i])
         if m:
             imports.append(m.group(2))
+        elif lines[i].strip() and lines[i].strip() != "module" and not lines[i].startswith(("/-!", "--")):
+            # section 行より前の open・set_option など（BS-W8 の試験で `Transfinite/BoundedCompletion` の open が落ちた）
+            pre.append(lines[i])
         elif lines[i].startswith("/-!"):
             j = i
             while "-/" not in lines[j]:
@@ -87,6 +96,11 @@ def parse(mod):
     header = lines[i].strip()
     i += 1
     universes = []
+    for line in pre:
+        m = UNIVERSE.match(line)
+        if m:
+            universes += [u for u in m.group(1).split() if u not in universes]
+    pre = [line for line in pre if not UNIVERSE.match(line)]
     while i < len(lines) and (UNIVERSE.match(lines[i]) or not lines[i].strip()):
         m = UNIVERSE.match(lines[i])
         if m:
@@ -101,7 +115,25 @@ def parse(mod):
             universes += [u for u in m.group(1).split() if u not in universes]
         else:
             rest.append(line)
-    return imports, doc, universes, header, "\n".join(rest).rstrip() + "\n"
+    return imports, doc, universes, header, "\n".join(pre + rest).rstrip() + "\n"
+
+
+SCOPE_OPEN = re.compile(r"^\s*(?:@\[expose\]\s+)?(?:public\s+)?(?:noncomputable\s+)?(?:meta\s+)?(namespace|section)\b\s*(\S*)")
+SCOPE_END = re.compile(r"^\s*end\b\s*(\S*)")
+
+
+def unclosed_anonymous(body, mod):
+    stack = []
+    for line in body.splitlines():
+        m = SCOPE_OPEN.match(line)
+        if m:
+            stack.append(m.group(2))
+            continue
+        e = SCOPE_END.match(line)
+        if e and stack:
+            stack.pop()
+    assert all(name == "" for name in stack), f"named scope left open in {mod}: {stack}"
+    return len(stack)
 
 
 def part_heading(mod, doc):
@@ -115,10 +147,13 @@ def part_heading(mod, doc):
     return f"/-! ## {title}（旧 {rel}）\n\n{rest}\n-/" if rest else f"/-! ## {title}（旧 {rel}） -/"
 
 
-def build(new, parts, rename, docstring):
+def build(new, parts, rename, docstring, privs=None):
     imports, universes, chunks = [], [], []
     for mod in parts:
         imps, doc, unis, header, body = parse(mod)
+        for old, nw in (privs or {}).get(mod, {}).items():
+            body, k = re.subn(rf"(?<![\w.']){re.escape(old)}(?![\w'])", nw, body)
+            assert k > 0, f"private rename not found: {mod} {old}"
         for imp in imps:
             imp2 = rename.get(imp, imp)
             if imp2 != new and imp2 not in imports:
@@ -130,7 +165,10 @@ def build(new, parts, rename, docstring):
         if header is None:
             chunks.append(f"{part_heading(mod, doc)}\n")
         else:
-            chunks.append(f"{part_heading(mod, doc)}\n\n{header} {stem}\n\n{body}\nend {stem}\n")
+            # 本文の中で開いたまま終わる無名の section（例：`noncomputable section`）は、ファイル末尾では暗黙に閉じるが、
+            # 名前付き section で包むと `end 元ファイル名` と合わなくなるので、ここで閉じる（BS-W8 で確認）。
+            closers = "".join("end\n" for _ in range(unclosed_anonymous(body, mod)))
+            chunks.append(f"{part_heading(mod, doc)}\n\n{header} {stem}\n\n{body}{closers}\nend {stem}\n")
     head = "module\n\n" + "".join(f"public import {i}\n" for i in imports)
     head += f"\n/-!\n{docstring.strip()}\n-/\n"
     if universes:
@@ -189,17 +227,43 @@ def main():
         for old in olds:
             assert to_path(old).is_file(), f"missing source {old}"
         assert not to_path(new).exists() or new in olds, f"destination exists {new}"
-    built = {new: build(new, olds, rename, docs[new]) for new, olds in merges.items()}
-    removed = sorted({old for olds in merges.values() for old in olds} - set(merges))
+    privs = plan.get("private_renames", {})
+    assert set(privs) <= set(rename), f"private_renames outside merges: {sorted(set(privs) - set(rename))}"
+    deletes = set(plan.get("deletes", []))
+    assert not (deletes & set(rename)), f"deleted modules also merged: {sorted(deletes & set(rename))}"
+    for d in deletes:
+        assert to_path(d).is_file(), f"missing deleted module {d}"
+    built = {new: build(new, olds, rename, docs[new], privs) for new, olds in merges.items()}
+    removed = sorted(({old for olds in merges.values() for old in olds} - set(merges)) | deletes)
+    audit_unimports, blocked = {}, []
+    for f in listed_files():
+        if not f.endswith(".lean") or not (ROOT / f).is_file():
+            continue
+        mod = "SerrePositivity." + f[len("SerrePositivity/"):-5].replace("/", ".") \
+            if f.startswith("SerrePositivity/") else None
+        if mod in deletes or mod in rename:
+            continue
+        imported = {m.group(2) for m in map(IMPORT.match, (ROOT / f).read_text().splitlines()) if m}
+        hit = sorted(imported & deletes)
+        if hit:
+            if f.startswith("scripts/") and any(r.match(f) for r in OWNED):
+                audit_unimports[f] = hit
+            else:
+                blocked.append((f, hit))
+    if blocked:
+        raise SystemExit(f"deleted modules still imported: {blocked}")
     edits = {}
     for f in listed_files():
         if not f.endswith(".lean") or not any(r.match(f) for r in OWNED) or not (ROOT / f).is_file():
             continue
         mod = "SerrePositivity." + f[len("SerrePositivity/"):-5].replace("/", ".") \
             if f.startswith("SerrePositivity/") else None
-        if mod in rename:
+        if mod in rename or mod in deletes:
             continue
         src = (ROOT / f).read_text()
+        if f in audit_unimports:
+            src = "".join(l for l in src.splitlines(keepends=True)
+                          if not (IMPORT.match(l.rstrip("\n")) and IMPORT.match(l.rstrip("\n")).group(2) in deletes))
         new = rewrite(src, rename, mod)
         if new != src:
             edits[f] = new
@@ -207,8 +271,8 @@ def main():
     for f in listed_files():
         if not f.endswith(".lean") or not (ROOT / f).is_file() or any(r.match(f) for r in OWNED):
             continue
-        hit = {o for o in rename if rename[o] != o
-               and re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)}
+        imported = {m.group(2) for m in map(IMPORT.match, (ROOT / f).read_text().splitlines()) if m}
+        hit = {o for o in imported if o in rename and rename[o] != o}
         if hit:
             foreign.append(f)
             unstubbed |= hit - stubs
@@ -217,6 +281,9 @@ def main():
         "removed_files": len(removed),
         "lines": {n: built[n].count("\n") for n in built},
         "owned_files_rewritten": len(edits),
+        "deleted": len(deletes),
+        "audits_unimporting_deleted": {f: len(h) for f, h in audit_unimports.items()},
+        "private_renames": sum(len(v) for v in privs.values()),
         "foreign_importers": foreign,
         "stubs": sorted(stubs),
         "foreign_imports_without_stub": sorted(unstubbed),
