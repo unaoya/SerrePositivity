@@ -202,3 +202,27 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingColimit_vertexIso_of_hasColimit
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingFixedSourceOverColimit_vertexIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.edgeUnderCocone_old
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.edgeUnderCocone_tip
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_cocone_lift_with_vertex
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.coneSourceForget_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.coneSourceForget_isKappaAccessibleFunctor
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_normalizedSourcePresentation
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.coneTipRestriction_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_normalizedSourcePresentation_of_pointSource
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pointCosliceUniverseIso_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_nativeSourceNormalization_of_factorization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_nativeSourceNormalization_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_nativeSourceSliceNormalization_of_isKappaAccessible
