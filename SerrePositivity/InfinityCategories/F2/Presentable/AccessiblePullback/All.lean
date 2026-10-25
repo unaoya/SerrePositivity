@@ -131,6 +131,20 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleSourceSliceNormalization
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactSourceSlicePresentation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StableInputPostcomp
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StableInputColimits
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactInputPresentation
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactInputAlternatingDiagram
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactInputColimit
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactInputComparison
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。

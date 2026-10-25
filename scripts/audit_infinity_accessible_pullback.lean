@@ -226,3 +226,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_nativeSourceNormalization_of_isKappaAccessible
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_nativeSourceSliceNormalization_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactSourceSlicePresentation_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_base_isColimitCone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_orderBot_isColimitCone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_compactInputPresentation_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputAlternatingDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputOrdinalColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputColimitComparison
