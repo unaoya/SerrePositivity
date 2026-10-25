@@ -53,6 +53,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceMappingFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeTerminalMappingPoint
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanSourceFiber
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalPushoutFiber
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeSourceMappingTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PresentableIndImageCandidates
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -139,7 +142,9 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 pushout 四角形から入力 span への制限と、四角形から上辺への制限の自明 Kan 性を得た。
 同じ指定余錐の fiber で比較を取り、元の左枝の始点制限の fiber と上辺の指定 fiber の
 可縮性が同値となることまで証明した。元の辺と恒等射を保持する退化余錐の基点も構成した。
-この二つの基点を元の固定始域の局所性判定へ揃える最後の比較はまだ未構成。
+元の上辺の恒等基点上の前合成 fiber の可縮性を retraction 空間から証明し、
+左枝の終点制限が指定恒等余錐である任意の基点で、元の底辺の fiber の可縮性も得た。
+この基点を元の固定始域の局所性判定へ揃える最後の比較はまだビルド中。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
@@ -163,6 +168,8 @@ P-s の公開コミット a8dc9eb19 の望遠鏡の一般入口を使い、Ind �
 P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生成入口を使い、
 実 Ind 像の全小余極限の存在・包含による指定余錐保存・周囲での閉性を証明した。
 同じ実像の既存の accessibility と合わせ、その presentable 性も得た。
+元の presentable 圏と小さい生成族だけから、そのような全 compact 閉包内射と全生成射を
+含む presentable な実 Ind 像の実在を、共通濃度と実比較を選ぶ形でもまとめた。
 二対三則・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・

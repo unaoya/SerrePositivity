@@ -322,3 +322,16 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @pushoutSpanMapping_isPullback
 #check @pushoutSpanSourceFiberIso
 #check @pushoutSourceFiber_contractible_iff
+
+#check @edgeTerminalMappingPointAt
+#check @edgeTerminalMappingPointAt_target_val
+#check @edgeTerminalMappingPointAt_source_val
+#check @identityCoconeMappingPoint
+#check @generatedSource_terminal_identityMappingFiber_contractible
+#check @generatedSource_terminal_normalizedMappingFiber_contractible
+#check @generatedSource_terminal_squareTopFiber_contractible
+#check @generatedSource_terminal_pushout_sourceFiber_contractible
+#check @coconeMappingDiagramChange_val
+#check @normalizedCoconeMappingFiberIso
+#check @edgeCosliceSourceMapping_contractible_of_raw
+#check @exists_compactCoveringPresentableIndImage

@@ -64,4 +64,27 @@ lemma edgeTerminalMappingPoint_source_val :
     stdSimplex.σ 1 ≫ g = _
   rw [Category.assoc, ← Category.assoc (stdSimplex.δ (1 : Fin 3)), h, Category.id_comp]
 
+/-- 元の終点を等号で指定しても、同じ恒等余錐を基点として保持する。 -/
+def edgeTerminalMappingPointAt (y : C _⦋0⦌)
+    (hy : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ g) = y) :
+    (coconeMappingSpace g y) _⦋0⦌ :=
+  ⟨edgeTerminalCocone g, by
+    change (edgeTerminalCocone g).vertex = PinchedHom.constant y 0
+    rw [pinchedConstant_zero, edgeTerminalCocone_vertex, hy]⟩
+
+/-- 終点の表示を変えても、終点側への制限は同じ指定恒等余錐である。 -/
+lemma edgeTerminalMappingPointAt_target_val (y : C _⦋0⦌)
+    (hy : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ g) = y) :
+    (((cosliceRestrictionFiberMap g (stdSimplex.δ (0 : Fin 2)) y).app _
+      (edgeTerminalMappingPointAt g y hy)).val).val = SSet.const y := by
+  change ((edgeTerminalCocone g).restrict (stdSimplex.δ (0 : Fin 2))).val = _
+  rw [edgeTerminalCocone_restrict_val, hy]
+
+/-- 終点の表示を変えても、始点側の制限は元の辺そのもの。 -/
+lemma edgeTerminalMappingPointAt_source_val (y : C _⦋0⦌)
+    (hy : SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ g) = y) :
+    (((cosliceRestrictionFiberMap g (stdSimplex.δ (1 : Fin 2)) y).app _
+      (edgeTerminalMappingPointAt g y hy)).val).val = (joinStdSimplexIso 0 0).hom ≫ g :=
+  edgeTerminalMappingPoint_source_val g
+
 end SerrePositivity.InfinityCategories.F2.Presentable.Localization
