@@ -271,3 +271,13 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 
 #check @edgeCosliceVertex_generatedSourceLeg
 #check @generatedSourceIdentity_isTerminal_of_source_terminal
+
+#check @indArrowImage_hasPreservedSmallColimit
+#check @indArrowImage_hasSmallColimits
+#check @indArrowImageInclusion_preservesSmallColimits
+#check @indArrowImage_isPresentable
+#check @indArrowImage_small_colimit_mem
+#check @generatedSource_hasPreservedSmallColimit
+#check @generatedSource_hasSmallColimits
+#check @generatedSourceInclusion_preservesSmallColimits
+#check @generatedSource_small_colimit_mem

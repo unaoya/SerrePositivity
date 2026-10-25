@@ -48,6 +48,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Seq
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalCoslice
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceRetractionSpace
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedTargetIdentityTerminal
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceSmallColimits
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -149,10 +151,14 @@ P-s の公開コミット a8dc9eb19 の望遠鏡の一般入口を使い、Ind �
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
 射圏内の実 pushout へ送り、最初の辺と合成辺が実像に入れば最後の辺も入ると証明した。
 この向きの左消去は検証済みだが、合成閉性と反対向きの消去はまだ未証明。
-二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
+P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生成入口を使い、
+実 Ind 像の全小余極限の存在・包含による指定余錐保存・周囲での閉性を証明した。
+同じ実像の既存の accessibility と合わせ、その presentable 性も得た。
+二対三則・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
-飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
-強飽和性はまだ未証明。P の未公開葉は使用していない。
+同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
+包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
+強飽和射圏全体の accessibility はまだ未証明。P の未公開葉は使用していない。
 未証明事項は以下の旧記録のまま残す。「未採用」は旧停止時の状態を表す。
 
 ## 旧停止時の引き継ぎ（2026-10-25、設計変更提案時点）
