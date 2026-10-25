@@ -95,11 +95,11 @@
 - b12e99858 復旧後の所有 import 閉包は復旧済み。
 - e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
 
-### 接続中
-- 全 compact 対象の小さい代表族・全同値模型と、cospan の両関手が全 compact 対象を保つ共通濃度を構成。
+### 未コミット
+- `ComponentCompactColimits` は対象ビルド済み、`PullbackEdgeRepresentatives` は辺の貼り合わせを検証中。
 
 ### 次の一手
-- e5 は compact 成分の全部分圏の実引き戻しと各頂点の native compact 性を構成。小さい cospan 模型との接続と、元の引き戻しの filtered 生成表示へ進む。
+- e5 は compact 成分の実引き戻し・native compact 性・全自然な小さい cospan 模型を構成。辺の整合を保つ模型比較と、元の引き戻しの filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

@@ -348,3 +348,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CompactFunctorRe
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallCompactModels
 public import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompactPullback
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSpanCompactCardinals
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallModelFunctor
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallCompactSpanModel

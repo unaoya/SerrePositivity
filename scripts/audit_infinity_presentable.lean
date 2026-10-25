@@ -702,3 +702,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_isPullback
 #check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_vertex_isKappaCompact
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentableSpan_compactCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallModelFunctor_comparison
+#check @SerrePositivity.InfinityCategories.F2.Presentable.smallCompactSpanModel_nonempty
