@@ -119,6 +119,10 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSourcePointPullbackEquivalence_fst
 #check @generatedSource_hasSmallKappaFilteredColimits
 #check @generatedSourceArrows_isKappaAccessibleFunctor
+#check @indArrowImageInclusion_equivalenceLifting
+#check @indArrowImageEvaluation_equivalenceLifting
+#check @indArrowImageEvaluation_isKappaAccessibleFunctor
+#check @exists_indArrowImageSource_compactCandidate
 
 #check @indArrowImageFactor_isQCatEquivalence
 #check @indArrowImageVertex_mem

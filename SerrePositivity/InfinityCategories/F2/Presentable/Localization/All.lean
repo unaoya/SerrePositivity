@@ -41,6 +41,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceCoproducts
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFilteredColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSourceCandidates
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -121,6 +122,9 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 P の公開コミット 06c0eeae2 の point-fiber 版を使い、同じ固定始域圏と通常の点引き戻しの
 同値を、元の全脚族を回収する等式付きで構成した。任意の正則 κ で小 κ-filtered 余極限が
 存在し、全脚族が同じ余極限を保存する。accessibility の filtered 生成表示は未構成。
+同じ公開 fiber 候補構成を、既に accessible な実 Ind 像の始点評価にも適用した。
+任意の指定始域で、全成分 compact 点を被覆する充満忠実な小さい native compact 候補を得た。
+この実像 fiber の候補にも filtered 生成性はまだ付けていない。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる
