@@ -94,7 +94,22 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinMixedIndex,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyMixedHom,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexRhs]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexRhs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinSplitIndex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexSigns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinCoordinateCases,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyPureHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinCuts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSubsetHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.PostcompositionAlgebra,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexComponents,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinPointIndex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeSourceSum]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
