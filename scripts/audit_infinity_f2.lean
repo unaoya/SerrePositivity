@@ -4,7 +4,26 @@ import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
 import SerrePositivity.InfinityCategories.F2.Ind.Stability
 import SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration
 import SerrePositivity.InfinityCategories.F2.Ind.StableSourceCompactGeneration
+import SerrePositivity.InfinityCategories.F2.Ind.UnconditionalStableCompactGeneration
+import SerrePositivity.InfinityCategories.F2.Compact.FiniteColimitClosureUnconditional
 import Lean.Util.CollectAxioms
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.bousfieldKanHolimFunctor_finite_poset_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Ind.coherentFilteredLimitExchangeShape_finite_poset
+#check @SerrePositivity.InfinityCategories.F2.Ind.map_isLimit_finite_of_empty_pointCospan
+#check @SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite
+#check @SerrePositivity.InfinityCategories.F2.Ind.coherentFilteredLimitExchangeShape_finite
+#check @SerrePositivity.InfinityCategories.F2.Ind.indFiniteLimitExchangeInput
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits_of_isStable_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits_of_isStable_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_isStable_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_unconditional_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Compact.isKappaCompact_finiteColimit
+#check @SerrePositivity.InfinityCategories.F2.Compact.hasFiniteColimits_kappaCompactObjects
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits_of_isStable
 #check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits_of_isStable

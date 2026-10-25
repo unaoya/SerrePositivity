@@ -6,12 +6,22 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-2 c①〜c⑤・e①〜e④ は保存済み。I-2 e′①〜e′③ は D-7′（13:18 供給）を新規 Ind 葉で接続して完了。C の有限全存在の追加仮定を除き、集約・F2 監査を検証。所有ファイルだけを保存して停止。交換入力は明示のまま、I-2 d は X の結論後に別途指示。
+- 現在地：I-2 d′①〜d′⑤ 完了。有限 poset の strict 化、全余錐保存の形状 pushout 帰納、元の指定余錐への帰還から全有限 K の交換を結論。交換入力と Ind の有限全存在・安定性・compact 生成、旧 N-6 c の無条件化を保存して停止。X の Ncomp・元の普遍三角形の一致は別経路で未証明。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の改訂所有範囲を正本とする。I-1 の結論は X、Ind-S (4)・(5) は新設 Ind-S が供給する。Ind は I-2 e の公開界面を K-B の K-7 d4 へ提供する。ModelCategory 仮定を加えない。
+- I-2 d′ の固定三段目：d′① filtered 性の ℵ₀ 接続を確認 [x]、d′② 有限 poset の Bousfield–Kan 模型の filtered 余極限保存 [x]、d′③ strict 化を通じた有限 poset 形状の coherent 交換 [x]、d′④ cospan・単体・空形状と pushout 帰納による全有限形状への拡張 [x]、d′⑤ 交換入力の定理化、無条件の系、集約・監査 [x]。
+- I-2 d′ の基底公開名：`coherentFilteredLimitExchangeShape_finite_poset`・`coherentFilteredLimitExchangeShape_cospan`・`coherentFilteredLimitExchangeShape_cospanHorn`・`coherentFilteredLimitExchangeShape_simplex`・`coherentFilteredLimitExchangeShape_empty`（名前空間 `F2.Ind`）。一般 filtered ∞ 添字と元の指定全余錐を量化し、濃度変更境界を仮定しない。
+- I-2 d′ の一般交換の公開名：`F2.Ind.CoherentFiniteLimitExchange` の `coherentFilteredLimitExchangeShape_finite`・`indFiniteLimitExchangeInput`。`CoherentFilteredLimitExchangeShape K` は全有限単体集合 K と任意の filtered ∞ 添字、元の指定点ごとの全余錐を量化する。
+- I-2 d′ の無条件の系：`ind_hasFiniteLimits_unconditional`・`ind_hasFiniteColimits_unconditional`、安定な C 向け `ind_hasFiniteLimits_of_isStable_unconditional`・`ind_hasFiniteColimits_of_isStable_unconditional`・`ind_isStable_unconditional`・`ind_isPullbackSquare_iff_isPushoutSquare_unconditional`・`ind_stable_with_fullyFaithful_exactYoneda_unconditional`（名前空間 `F2.Ind`）。
+- K-7 d4 の無条件入口：`F2.Ind.UnconditionalStableCompactGeneration.ind_stableCompactGeneration_unconditional` と `_equivalence`。名前空間 `F2.Ind`。同じ元の生成同値・compact 像・生成表示・既存の全選択比較を保持する。正則 κ・ℵ₀ ≤ κ・安定な冪等完備 C だけを要求し、交換や C の有限全存在を追加仮定にしない。
+- 旧 N-6 c の無条件化：`F2.Compact.FiniteColimitClosureUnconditional` の `isKappaCompact_finiteColimit`・`hasFiniteColimits_kappaCompactObjects`。名前空間 `F2.Compact`、添字と標的の宇宙を分け、元の指定全余錐の頂点を保持する。
+- I-2 d′ の読み取り専用 import：P の `SmallWeightedSectionsContinuity`・`SmallBousfieldKanContinuity`・`WithInitialFilteredLimits`・`CoherentFilteredPosetExchange`・`PullbackExchangeShape`・`ChosenColimitParameterApex`・`PointwiseColimitPrecomposition`。Stable の既許可 `FinitePosetNerve` と、新規許可 `FunctorFiniteLimits`・`ExcisionRepresentableLimits`。重い後者は `FilteredColimitFiniteLimitPreservation` 一葉だけから直接 import。R が第 I 段終了時に FunctorFiniteLimits を Core、Space の有限存在を HomotopyLimits／Core へ付け替える。
+- I-2 d′ の既存閉包内の直接 import（R 参照）：Core の `FiniteShapeInduction`・`FunctorPointwiseLimitExistence`・`PushoutCommonExtension`、F1/Joins の `CommonColimitAttachment`・`ConeSpanCoconeGlue`・`FiniteLimitGeneration`・`PointConeSpanIso`・`TerminalShapeColimit`。
+- 同上：F1/Simplicial の `EmptySimplicialDomain`・`FiniteCospanNerveIso`・`FiniteHornUniverseIso`、F1B/KanExtension の `RelativeLimit`、F2/CatInfinity の `CoconeReversePostcomp`・`ConeValEquality`、HomotopyLimits の `FunctorColimitEvaluation`、Stable の `ReindexSliceOver`。
+- X 所有の読み取り専用依存：`FilteredExchange.CoherentTotalColimit`・`PointwiseColimitChoiceTransport`・`SpaceLimitShapes`。既存の無条件の空間余極限・余錐一意性・空間極限の存在を使用し、X の作業中の交換結論を仮定しない。
 - I-2 e′ の固定三段目：e′① D-7′ を接続し、安定な C から Ind の有限全存在・安定性を導く [x]、e′② K-B 向け compact 生成界面と既存の選択比較を接続する [x]、e′③ 集約・監査・引き継ぎを保存する [x]。
 - I-2 e′ の依存：`Stable.StableFiniteLimitsColimits` を新規葉 `F2.Ind.StableSourceFiniteLimitsColimits` から読み取り専用 import。D の `hasFiniteLimits_of_isStable`・`hasFiniteColimits_of_isStable` を証明内の局所 instance に置く。Ind → Stable の逆方向 import は第 I 段終了時に R が整理する。
 - I-2 e′ の公開名（名前空間 `SerrePositivity.InfinityCategories.F2.Ind`）：`ind_hasFiniteLimits_of_isStable`・`ind_hasFiniteColimits_of_isStable`・`ind_isStable_of_isStable`・`ind_isPullbackSquare_iff_isPushoutSquare_of_isStable`・`ind_stable_with_fullyFaithful_exactYoneda_of_isStable`。C の有限全存在を追加仮定にしない。
@@ -21,7 +31,7 @@
 - K-B の K-7 d4 向け公開名（名前空間 `SerrePositivity.InfinityCategories.F2.Ind`）：同値 `compactGenerationEquivalence`、順射 `compactGenerationEquivalence_hom`・`compactGenerationEquivalence_inclusion`、compact 像 `compactGenerationEquivalence_image_isKappaCompact`・`ind_isKappaCompact_iff_yoneda`、生成表示 `indVertex_has_compactGeneratorPresentation`。
 - K-B 向け選択比較：`compactGenerationChoice_inclusion`・`compactGenerationInverse_inclusion`・`compactGenerationInverse_choiceIso`・`compactGenerationInverse_familyIso`、公開界面の `StableCompactGeneration.inverse_inclusion`。比較は全関手同型で、任意の入力族への前合成を保つ。K-B 自身の構造射・全入力との照合は K-B で行う。
 - Ind-S への作業木引き継ぎ：未コミットの F1 葉 `FunctorCategories/RelativeFunctorDescentOver`・`Diagrams/CocartesianKanWeightedUnitData`・`Diagrams/CocartesianKanWeightedUnit` は Ind-S (5) 草稿。Data のみビルド済み、相対降下の頂点書き換えが未解決。集約・監査未接続。移管後は Ind で変更・stage しない。
-- 次の一手（I-2 e′ 完了）：停止。X の交換入力差し替えは別途指示。Ind-S 草稿は新設 Ind-S の所有。
+- 次の一手（I-2 d′ 完了）：停止。P・K-B へ一般交換と無条件の公開名を供給する。X の直接経路の継続・整理はコーディネータが判断する。Ind-S の供給や深層モジュールは変更しない。
 - I-2 c の固定三段目：c① 有限 cospan の包含による保存 [x]、c② fiber・cofiber の単一 filtered 表示 [x]、c③ bicartesian 判定 [x]、c④ Ind の安定性 [x]、c⑤ 包含の完全性と公開界面 [x]。
 - I-2 c① の公開入口：`ind_cospan_inclusion_isLimit`・`ind_cospan_isLimit_iff_inclusion` は任意の元の標準 cospan 全錐の保存・反映。`ind_inclusion_isPullbackSquare_iff` は元の実四角形の引き戻し性の保存・反映。C の有限極限・正則 κ・明示交換入力を保持する。
 - I-2 c②・c③ の公開入口：`ind_cospan_has_singleFilteredDiagramPresentation`・`ind_span_has_singleFilteredDiagramPresentation` は元の全図式の単一表示。`ind_exists_bicartesianLimitCone`・`ind_exists_bicartesianColimitCocone` は同じ表示から実 bicartesian 全錐・全余錐を構成。`ind_isPullbackSquare_iff_isPushoutSquare` は元の任意の実四角形自身について両普遍性の一致。
