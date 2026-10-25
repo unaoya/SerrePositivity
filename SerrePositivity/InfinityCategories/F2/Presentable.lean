@@ -321,3 +321,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PiAccessibility
 public import SerrePositivity.InfinityCategories.F2.Presentable.PiFunctorIso
 public import SerrePositivity.InfinityCategories.F2.Presentable.PiPresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.AdjointFunctorTheorem
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocallySmallHomTypes
+public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackAccessibilityDetection

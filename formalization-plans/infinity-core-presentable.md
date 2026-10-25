@@ -95,10 +95,10 @@
 - b12e99858 復旧後の HEAD に対する両集約・両公理監査は完了し、所有 import 閉包は復旧済み。
 
 ### 未コミット
-- e5 の `PullbackAccessibilityDetection`・`LocallySmallHomTypes` は未検証草稿。次に対象ビルドで検証する。
+- e5 の `PullbackVertexCandidates` は頂点の持ち上げを対象検証中。
 
 ### 次の一手
-- e5 の二草稿を対象ビルドで検証し、引き戻しの小さい生成模型と presentable 性を構成する。
+- e5 は Hom・同型型の小ささと引き戻しの固定頂点小ささ・filtered 保存判定を検証済み。小さい候補族の生成性へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

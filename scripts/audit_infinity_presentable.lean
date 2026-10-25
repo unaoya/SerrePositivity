@@ -661,3 +661,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_representableInversionDetectsLocality
 #check @SerrePositivity.InfinityCategories.F2.Presentable.presentableContinuous_isRepresentable
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.hom_small
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.vertexIso_small
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isKappaAccessibleFunctor_of_components
