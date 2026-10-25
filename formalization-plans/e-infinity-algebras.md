@@ -94,6 +94,14 @@
   工程4はユーザー承認の coherent 形式。葉 `LocalizationComparison` の `localizationComparisonData` が元の比較 K と指定 `FunctorIso (F ≫ K) G` を保持し、`CoherentLocalizationComparison.pinchedEquivalence` は同じ成分の共役による実 QCat 同値。`pinchedEndpointEquivalence_family` は任意パラメータの公式。生の辺の厳密化は構成しない。`ModelRightFrameComparison` で全圏普遍性を放電し、元の Hom から指定局所化 pinched Hom への実 QCat 同値と全 coherent 比較を構成済み。
   設計採用済み：代数版の raw roof 比較は全標的 fibrant を使う。まず bifibrant 全部分圏で三つの判定入力と hammock 普遍性を証明し、同じ `rightFrameReplacement` の自然な弱同値の変形で cofibrant 部分圏・全 C へ戻す。指定局所化の源が両方のどちらでも届く形にする。
   暫定 import は承認された Sp `LocalizationUniqueness` を新しい葉からのみ使用し、KST dg 畳み込み系は import しない。閉包中の HomotopicalAlgebra 15 本は編集しない。代数版の一般化は準重複として R の整理対象。全対象 fibrant を任意モデルの仮定に加えない。
+- **E2-S (7) 進行中**（Sp β6 f4d）：S (6) の終端 strict Kan Hom 図式から正本 `homInfinityCovariant` への全標的 FunctorIso を供給する。
+  1. [x] 同じ宇宙・源・端点の整合：元の小さい局所化射の ulift を使い、正本 Hom の始域 ulift Q と合わせる。
+  2. [ ] strict Hom の coherent 実現と共変 Hom の比較：`EnrichedHomFunctor`・`EnrichedHomRealization` で元の全合成を保持。同じ終端の全自然同型 `rightFrameHammockTerminalRealizationIso` と、同じ Yoneda 全比較一入力への還元まで対象ビルド済み。一般 Yoneda 比較は Ind-S (8) の供給待ち。
+  3. [x] 指定 K・二胞体による輸送。
+  4. [ ] 同じ元の射の零単体の回収。
+  5. [ ] 実 dg 版への代入・集約・全監査・所有ファイル限定コミット。
+  現在の10葉の還元まで、集約12591 jobs・全監査28031宣言・独立例6件・新27宣言の公理検査を通過。閉包8636本の検証前後 SHA は不変、他レーン未保存依存0件。原本 Yoneda 入力は未放電であり S (7) は未完。
+  F1/MappingSpaces/HomInfinityBifunctor と既存 import 先を新規葉から読み取り専用 import 可との指定を受領（閉包1944本、EInfinityなし）。その HomotopicalAlgebra 約170本は編集しない。F2/Compact/HomCovariantComparison・F2/Presentable/FullyFaithfulHomComparison も読み取り専用 import 可との指定を受領。原本の全比較と co-Yoneda による指定二胞体の全図式輸送を合成する。閉包外の原本を複製しない。Ind-S (8) で新設される正本の H_x と本供給の先行構成の一致を照合し、準重複は既定の R 整理対象とする。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
   `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。
@@ -137,8 +145,8 @@
 - **最終供給入口**：一般版は `SimplicialLocalization/ModelHammockLocalization` の `modelCofibrantHammock_isLocalization`・`modelHammock_isLocalization`、`ModelRightFrameComparison` の `modelRightFramePinchedEquivalence`・`modelRightFrameCoherentComparison`・`modelRightFrameLocalizationComparison`。指定 K・二胞体を保つ `modelRightFramePinchedEquivalenceWithComparison` と `_unit_Q`、`modelRightFrameOriginalArrow_conjugation` も公開。
   実 dg 版は `DGAlgebra/FrameComparison` の `hammock_isLocalization`・`cofibrantHammock_isLocalization`・`frameLocalizationComparison`・`framePinchedEquivalence`・`frameCoherentComparison`・`framePinchedEquivalence_unit_Q`。同じ自由 I/J の小対象論法で分解入力を放電し、追加モデル・普遍性入力なし。全圏の AsSmall 表示を使い元の全対象・全射・擬同型を保持。
   同じ六辺の実逆と元の全自然比較の反転を照合し、元の単位点を全合成で追跡した。承認済み `F1/Coherent/HomComparisonVertices` の `coherentHomComparisonSimplex_zero_edge` を新規葉から読み取り専用 import し、`kanHammockHomPinchedMap_arrow_zero` で終端の零単体を元の局所化辺そのものへ回収。原本の複製なし。
-- **未コミット**：なし（本供給の所有ファイル限定コミット後）。
-- **次の一手**：E2-S (6) の供給完了により停止。Sp は最終供給入口を読み取り専用で使用する。G1′-1〜5 は完了、BS-7 は第 II 段。
+- **未コミット**：`DGAlgebra/HomInfinityComparisonInput.lean`（同じ一入力への実 dg 全比較の還元）、`Hammock/AsSmallKanArrow.lean`（同じ実全比較の元の射の零単体の厳密な回収）。両方対象ビルド済み、次の集約へ接続予定。
+- **次の一手**：S (7) の同じ終端図式の実現を検証し、Ind-S (8) の原本 Yoneda 比較と指定 K の全族輸送を代入する。G1′-1〜5 は完了、BS-7 は第 II 段。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
   `FreeProbeUnderlyingReplacementComponent` は閉包内の全列自然性から元の置換 augmentation の忘却正方形を回収し、標準単位成分と局所化源単位の等式へ接続する。同型の等式を先に固定し、同じ射へ写すことで大きな関手の不要な定義展開を避ける。資源上限を上げない。

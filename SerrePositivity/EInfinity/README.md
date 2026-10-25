@@ -3087,3 +3087,26 @@ cofibrant な X と任意の Y について、元の `rightFrameHom` と指定�
 検証：集約11917 jobs、全公理監査27973宣言、独立例7件、新49公開宣言の公理検査が成功。
 標準三公理のみ。閉包7962本の検証前後 SHA は不変、他レーン未保存依存は零。
 E2-S (6) は供給完了により停止。
+
+
+### E2-S (7)：終端図式から正本の共変 Hom への接続（進行中）
+
+`FrameHom/EnrichedHomFunctor` の `enrichedHomFunctor` は同じ豊穣 Hom と元の合成の curry を使う。
+`EnrichedHomRealization` の `enrichedHomCoherent_ordinary` は、この全実現の通常 nerve 上の制限と、
+同じ strict Kan 図式の coherent 実現を全次数の等式で同定する。
+`Hammock/AsSmallComposition`・`ExInfinityPointActions` は元の全合成・後合成・Ex∞ 単位を照合する。
+`AsSmallHammockHomFamily` は一つの実自然変換から全図式同型を作り、
+`KanHammockHomCoherent.kanHammockHomCoherent_source` は同じ源関手での全制限の等式。
+`rightFrameHammockTerminalRealizationIso` は S (6) の終端図式からこの同じ実現への全自然同型で、
+任意の全図式への前合成も公開する。点ごとの弱同値から全図式同型を推論しない。
+
+`HomInfinityEquivalenceTransport` の `homInfinityEquivalenceTransport` は、読み取り専用の原本
+`homInfinityCovariant_covariantIso`・`covariantHomComparisonIso` の元の全比較を合成する。
+`homInfinityTriangleSourceIso`・`homInfinityTriangleDiagramIso` は、指定二胞体を反転・持ち上げし
+同じ co-Yoneda 関手へ送る。`CoherentLocalizationComparison.homInfinityTransport` は元の K と二胞体を保つ全族輸送。
+`rightFrameTerminalHomIso_of_yonedaIso` は残る一つの全 Yoneda 比較の直接代入先である。
+この条件付き還元だけで供給完了とはしない。一般 Yoneda 比較とその零単体回収は Ind-S (8) の供給待ち。
+正本 Hom の始域を合わせるため、指定局所化は S (6) の小さい G の宇宙持ち上げとして使う。
+
+現段階の還元まで集約12591 jobs・全監査28031宣言・独立例6件・新27宣言の公理検査が成功。
+閉包8636本は検証前後で不変。原本 Yoneda 入力は未放電であり、S (7) の最終供給は進行中。
