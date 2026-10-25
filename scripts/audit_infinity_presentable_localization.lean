@@ -3,7 +3,7 @@ import Lean.Util.CollectAxioms
 
 /-!
 P-f の独立監査。新規所有モジュールの全宣言について標準三公理のみを許す。
-局所化の存在の完成監査ではなく、現在検証済みの生成族と濃度評価の監査。
+局所化の存在の完成監査ではなく、現在検証済みの生成族・飽和射圏・小さい compact 候補の監査。
 -/
 
 open Lean in
@@ -53,3 +53,28 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @localEquivalences_eq_iff_generators
 #check @localEquivalences_eq_iff_localObjects
 #check @exists_regular_compactEndpoints
+#check @generatedEdges
+#check @generatedArrowCategory
+#check @generatedArrowInclusion_isFullyFaithful
+#check @generatedEdges_smallGeneration
+#check @generatedArrow_mem_iff_vertexIso
+#check @generatedArrow_colimit_mem
+#check @generatedArrow_hasSmallColimits
+#check @generatedArrowInclusion_preservesSmallColimits
+#check @generatedArrow_isKappaCompact_of_image
+#check @compactGeneratedArrows
+#check @compactGeneratedArrowVertex
+#check @compactGeneratedArrowInclusion_isFullyFaithful
+#check @exists_smallCompactGeneratedArrowModel
+#check @compactGeneratedArrowInclusion_compact
+#check @exists_smallCompactArrowCandidates
+#check @generatorArrowVertex_edge
+#check @arrow_isPresentable
+#check @exists_regular_generatorArrowCardinal
+#check @exists_generatorContainingCompactArrowCandidates
+#check @exists_generatorContainingIndComparison
+#check @generatedSourceCategory
+#check @generatedSourceTarget
+#check @generatedSourceInclusion_isFullyFaithful
+#check @generatedSourceLeg
+#check @generatedSourceLeg_mem

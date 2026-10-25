@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Generators
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactEndpoints
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndCandidate
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSource
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -9,7 +11,26 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 規約：局所置換の存在を未証明の入力で置き換えて完成扱いしない。
 使われ方：HTT 5.5.4.15 の実装作業。
 
-## 引き継ぎ（2026-10-25、設計変更提案による停止）
+## 現在の工程（2026-10-25、ユーザーが設計変更を採用して再開）
+
+三段目：f1 [x] 生成元の局所性と compact 端点、f2 [ ] 飽和射クラスの小生成と
+presentable 性、f3 [ ] 固定始域の終対象＝局所置換の存在、f4 [ ] 反射関手と普遍性、
+f5 [ ] 強飽和性との同定・監査・引き継ぎ。
+f2 の検証済み範囲：元の飽和射圏の小余極限、全小余極限を保存する全部分包含、
+周囲で compact な射の小さい模型、その包含先での compact 性。
+元の圏・射圏の共通正則 accessible 濃度、生成射と両端点の compact 性、
+全生成射を含む小さい compact 候補まで構成した。
+その候補の包含を全自然同型で回収する実 Ind 比較も構成済み。
+f3 の準備：固定始域の全 coslice 部分圏と、同じ始域から閉包内の実辺を回収する入口。
+全射の filtered 生成性・飽和射圏全体の accessibility は未証明。
+P への供給依頼（コーディネータ経由）：indComparison_isFullyFaithful の引数分離。
+小さい元の i の充満忠実性・各像の compact 性、G の同じ濃度の filtered 保存と
+元の i の全自然回収から IsFullyFaithful G を返す公開入口。
+現行の IsKappaCompactGenerating 引数の presentation はこの補題の証明に不要だが、
+未証明の生成性を入力せず適用するための公開された分離入口はまだない。複製しない。
+未証明事項は以下の旧記録のまま残す。「未採用」は旧停止時の状態を表す。
+
+## 旧停止時の引き継ぎ（2026-10-25、設計変更提案時点）
 
 現在地：f1 の生成族・全パラメータ Hom 判定と生成系の比較を検証済み。
 f2 の準備として、全生成辺の両端点に共通の正則 compact 濃度を検証済み。
