@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（630 モジュール・4099 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（633 モジュール・4163 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -99,41 +99,23 @@
 - 相対 (d) の固定三点は K-S• の DGKFixedInterface・DGKFixedSConstruction を読み取り専用で使う。固定 ν・K の頂点・辺、厳密 dg の K₀ 自然比較・負次数消滅は提供済み。
 - 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は L9 受付に登録済み。厚い β3 列の実核接続・有限線型図式の局所化も依頼済み。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
-### K-B-S：Sp-6 s4 への空間値全族単位
-- 公開名：`weakSpanKanFiberUnit_valueComparison`、`weakSpanKanQuotientFiberUnit_recovery`、`weakSpanKanQuotientFamilyFiberMap_inclusion`、`weakSpanKanQuotientFamily_identityIso`。最後の二つは全族写像を入力する条件付きの利用側で、恒等点の標的は補助点。Sp の既存指定点 `weakIdentityQuotientFiberPoint` との比較は未証明。
-- 公開 `WeakSpanKanFiberUnit` は元の全固定 span fiber から同じ strict Kan 値への単位と、元の Kan 置換単位の厳密回収・既存の恒等点への一致を保持する。
-- `WeakSpanKanQuotientFiberUnit` は元の降下同型の同じ成分を読み戻した小さい実 fiber 値同値、指定 fiber 単位、元の単位の全関手同型での回収、元の Kan 恒等点を運んだ補助点を保持する。全族写像が指定制限を持てば同じ回収と補助点への fiber 内同型を与える。既存指定点への同型では代用しない。全族写像の存在・可変終点の自然性は未証明。
-- Ind/F1 への不足界面（コーディネータ経由）は以下の空間値補題一つ。`I : Type u`、`[Category I]`、`p : E ⟶ nerve I`、`[CocartesianFibration p]`、`R : SSet ⥤ KanObject`、`η : 𝟭 SSet ⟶ R ⋙ kanObjectForget` とする。F1 内で K-B・Sp を import せず述べられる。型は Lean 確認済み。
-```lean
-let F := kanDiagramCoherentNerve (cocartesianStrictTransportDiagram p ⋙ R)
-(∀ X, SSet.anodyneExtensions (η.app X)) →
-∃ f : E ⟶ smallLeftUnstraightening F,
-  ∃ hf : f ≫ smallLeftUnstraighteningProjection F = p,
-  ∀ c : I, Nonempty (FunctorIso
-    (vertexFiberMap p (smallLeftUnstraighteningProjection F) f hf (nerveVertex c) ≫
-      (smallLeftUnstraighteningFiberValueEquivalence F (nerveVertex c)).hom ≫
-      R.map (cocartesianStrictTransportEvaluate p c))
-    (η.app (vertexFiber p (nerveVertex c))))
-```
-- K-B は `p := weakSpanSimplexProjection i x`、同じ `strictKanCompletion` とその単位へ適用する。元の底への降下と `q` 上の厳密化は K-B 担当。受入は実 `markedSpanFamily → smallLeftUnstraightening (weakSpanKanQuotientDiagram h x)`、底 `π≫q` の厳密保持、全 fiber 単位の回収、既存 `weakIdentityQuotientFiberPoint` への fiber 内同型。Cat∞ 値の分類の再開や一般の商 API は含めない。
+### K-B-S：Sp-6 s4 への空間値全族単位（供給完了）
+- 元の `markedSpanFamily` と同じ `weakSpanKanQuotientDiagram` を保持する。一般 Verdier 分数比較の充満忠実性への消費は Sp 正本が担当する。K-6 c5 の商実現比較自体は未完。
 
-- `WeakIdentityQuotientTransport` は元の指定値同型の実辺で既存指定点を輸送し、既存の値比較で同じ Kan 恒等点へ正規化する。`weakIdentityQuotientFiberUnit_recovery` と `weakIdentityQuotientFiberUnit_pointIso` は元の両端 x 固定 fiber の全単位の回収と既存 `weakIdentityQuotientFiberPoint` への実小 fiber 内同型を供給する。これを可変終点の実全族写像の像へ照合する部分は未証明。
-- F1 の供給依頼では同じ単位変換の pointedMap 比較も保持し、上記の既存指定恒等点条件を同じ全族写像について検証する。非 pointed な fiber 値同値の選択だけからこの条件を推論しない。K-B 内に一般分類 API や追加の存在仮定は導入しない。
-- 指定 `smallCoherentStraighteningUnitTransformation F` は元の F から既存 left unstraightening の復元図式への単位である。元の span 射影は一般の cocartesian fibration なので、この単位だけから上記 f の存在を推論しない。全族 f と厳密な底、全 fiber 単位の照合が揃うまで K-B-S の供給完了とは数えない。
-- `WeakSpanKanQuotientUnstraighteningMap` は指定商降下同型の全変換空間での実像と既存の底変換を合成し、単体圏上の同じ小さい unstraightening から商上への実全空間射を構成する。元の単体圏上の全族単位が供給されれば、同じ実射へ後合成して初頂点写像と q を厳密に保持する。元の marked span 全族への降下・全 fiber 単位の回収・指定恒等点との照合は未完で、K-B-S の供給完了とは数えない。
-- `WeakSpanKanQuotientPointedComparison` は同じ実全空間射の pointed-space 成分を指定降下同型の作用へ厳密照合する。`weakSpanKanQuotientSimplexFiberMap` は元の全空間射の厳密な fiber 制限であり、その全単体への作用は同じ指定降下成分の標準 transport と関手同型で比較する。点別比較に弱めず、元の marked span 全族からの単位・降下はまだ主張しない。
-- `WeakSpanKanQuotientTotalResolution` と `WeakSpanKanQuotientTotalOverMap` は、供給された単体圏単位と厳密な底条件に対して、元の marked span 全族の初頂点局所化と既存の Sp 因子化で降下し、関手空間の left fibration で底を厳密化する。`weakSpanKanQuotientTotalMap` は元の全族から商図式の小さい unstraightening への実写像で、同じ q を厳密に保持し、元の単体圏上の指定比較との全関手同型を供給する。単位自体・全 fiber 単位と指定恒等点の回収は未供給で、K-B-S の供給完了とは数えない。
+| 条件 | 同じ実全族に対する公開名 |
+| --- | --- |
+| 実全族写像 | `weakSpanKanQuotientFamilyMap`：元の marked span 全族から同じ商図式の小さい unstraightening への実射。 |
+| 底 q の厳密保持 | `weakSpanKanQuotientFamilyMap_projection`。 |
+| 元の各固定 fiber の実制限 | `weakSpanKanQuotientFamilyFixedFiber`・`weakSpanKanQuotientFamilyFixedFiber_ι`：包含後は元の固定 span 全族包含≫同じ実全族写像に厳密一致。 |
+| 同じ全 fiber 単位の回収 | `weakSpanKanQuotientFamilyFixedFiber_recovery`：全ての元の終点 y で、元の固定 span 全体の Kan 置換単位を全関手同型で回収する。指定正規化は `weakSpanKanQuotientZeroValueComparison`、同じ射の同値性は `weakSpanKanQuotientZeroValueComparison_isQCatEquivalence`。 |
+| 既存指定恒等点 | `weakSpanKanQuotientFamilyFixedFiber_identityIso`：元の `weakIdentityFixedSpan` の実像と既存 `weakIdentityQuotientFiberPoint` を同じ q(x) fiber 内で比較。補助点で代用しない。 |
 
-### 採用済み：K-B-S の相対初頂点降下
-- 現行の `weakSpanKanQuotientTotalMap` は元の全族と底 q を厳密に保持するが、指定単体圏比較への回収は全関手空間内の同型である。これだけから同じ fiber 内の元の Kan 単位・指定恒等点の回収を結論しない。
-- 採用：最終の単位回収は相対関手空間内の初頂点降下で行う。以下の空間値 F1 正本は Ind-S (5) の追加として 12:37 `5221e4db3` で供給済み。公開名は `relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization`（`F1/Diagrams/RelativeSectionFirstVertexLocalization`）。既存の絶対降下・底厳密化の条件付き定理は保持し、本体に追加の存在仮定として入れない。
-```lean
-{A E B : SSet.{u}} [Quasicategory A] [Quasicategory B]
-(p : E ⟶ B) [LeftFibration p] (b : A ⟶ B) :
-IsQCatEquivalence
-  (relativeFunctorPre p b (transportSimplexFirstVertexMap A))
-```
-- 適用先は A=元の marked span 全族、p=同じ商図式の小さい unstraightening 射影、b=元の射影≫q。相対前合成の本質的全射性から、供給単位の像と相対関手空間内で同型となる厳密な底上の実射を得る `exists_weakSpanKanQuotientRelativeTotalMap` を所有内へ接続済み。`weakSpanKanQuotientRelativeTotalMap`・`_projection`・`weakSpanKanQuotientRelativeTotalMapRestrictionIso` は同じ証拠から実射・厳密な底条件・相対回収同型を選ぶ。新規公開補題を同じ実射影と底へ代入し、これらの公開利用側から相対同値性の明示引数を除去済み。主経路の存在入力は増やさない。Ind-S (5) 本体を `WeakSpanKanUnstraighteningUnit` へ代入済み。同じ存在証拠から元の実単位・厳密射影・全 fiber 回収を取り出し、元の固定 span 座標で既存の全 fiber 単位との関手同型まで反映した。`WeakSpanKanQuotientFamily` の `weakSpanKanQuotientFamilyMap`・`_projection`・`weakSpanKanQuotientFamilyMapRestrictionIso` は、追加入力なしに元の全族から同じ商図式への実射・厳密な q・相対制限同型を与える。`WeakSpanFixedSimplexCollapse` は元の固定 span の全単体を零単体へ比較し、底を全パラメータで定値に保つ実 prism・同じ全族への固定射影・両端の厳密回収を供給する。`weakSpanKanQuotientFamilyFixedFiberIso` は同じ商 fiber 内の相対制限同型と実 prism を元の初頂点局所化で戻し、元の全族写像の全固定 fiber と同じ実単位の零単体制限を関手同型で比較する。`WeakSpanKanQuotientValueEdge` は元の実比較辺の類を全降下同型の指定成分へ、元の Kan 値への座標輸送後も既存指定値同型の逆へ厳密照合する。`WeakSpanKanQuotientValueCancellation` は同じ実二辺の合成を恒等へ結ぶ Kan ホモトピーを保持する。`weakSpanKanQuotientSimplexFiberValueRecovery` は同じ全 fiber transport 比較と値自然性を合成し、既存指定値比較で元の小さい fiber 値比較を全関手同型で回収する。`weakSpanKanQuotientSimplexUnitFiber_recovery` は同じ実単位の商像の各全 fiber が、既存指定値比較により元の Kan 置換単位を回収することを証明する。`WeakSpanZeroSimplexFiber` は同じ零単体上の元の fiber 同型を文字通り元の終点へ戻し、その包含後の射が元の零単体持ち上げと全単体で厳密一致することを保持する。`weakSpanKanQuotientZeroUnit_eq_fixedFiber` は同じ元の零単体単位を実全族比較の零単体制限へ全単体で厳密照合する。`weakSpanKanQuotientZeroValueComparison_isQCatEquivalence` は同じ指定値比較の座標輸送が実同値であることを保持し、`weakSpanKanQuotientFamilyFixedFiber_recovery` は元の実全族写像の全固定 fiber が同じ指定比較で元の Kan 置換単位を回収することを証明する。既存 `weakIdentityQuotientFiberPoint` への同じ fiber 内比較は継続中で、K-B-S の供給完了とは数えない。Cat∞ 値分類や新たな一般局所化・商 API は含めない。
+- Ind-S (5) の正本 `CocartesianKanUnstraighteningUnit`・`CocartesianKanUnstraighteningUnitPoints` を読み取り専用で消費。同じ元の span 射影の単体圏引き戻し、`strictKanCompletion`、元の単位へ代入し、同じ存在証拠から実単位・厳密な底・全 fiber 回収を取り出す。`weakSpanKanUnstraighteningUnit_fixedFiberIso` は元の固定 span 座標で既存の全単位へ戻す。
+- 相対初頂点降下は F1 正本 `relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization` を消費する。`weakSpanKanQuotientFamilyMapRestrictionIso` は同じ元の実単位を相対関手空間内で回収し、底を忘れた絶対同型で代用しない。追加の相対同値性や単位存在の入力は不要。
+- `WeakSpanFixedSimplexCollapse` は元の固定 span の全単体の同時比較 prism と、元の span 座標・底の全時刻固定・両端の厳密回収を保持する。`weakSpanKanQuotientFamilyFixedFiberIso` は同じ商 fiber 内の相対比較と prism を元の初頂点局所化で戻す。
+- `WeakSpanKanQuotientValueEdge`・`WeakSpanKanQuotientValueCancellation` は元の実 transport 辺と指定値比較辺を保持し、指定成分の逆関係を実三角形の Kan ホモトピーへ戻す。`weakSpanKanQuotientSimplexFiberValueRecovery` は同じ全 fiber 比較を元の小さい宇宙で正規化し、`weakSpanKanQuotientSimplexUnitFiber_recovery` は同じ実単位の商像から元の Kan 単位を回収する。
+- `WeakSpanZeroSimplexFiber`・`WeakSpanKanQuotientZeroUnit` は同じ零単体の実 fiber 包含を元の全族持ち上げへ全単体で厳密照合する。`WeakIdentityQuotientValueCoordinates`・`WeakIdentityQuotientZeroValue` は元の恒等点の既存値比較と同じ零単体比較を全関手同型で照合し、同じ指定値比較の充満忠実性で実 fiber 内の恒等点比較を反映する。
+- 既存の絶対降下・底厳密化と条件付き全族利用側は保持する。新しい供給は元の `IsVerdierSequence i q` の下で、単位や比較の存在入力を追加せず構成したもの。I・P・懸垂供給境界には変更なし。空間値に限定し、Cat∞ 値分類や一般局所化・商 API は追加しない。
 
 ### 設計変更案：c4 の上側輸送で指定全長 Hom を保持する（未採用）
 - 現行 `zeroMiddleFullSKanTetrahedron` は三面を固定した内角充填を選び、始端上側はその未指定の面 2。`zeroMiddleFullSKanLongHom` は実構成済みだが、この選択された面の全長 Hom との厳密一致は充填条件に含まれない。短辺・共有対角の一致からこの一致を推論しない。
