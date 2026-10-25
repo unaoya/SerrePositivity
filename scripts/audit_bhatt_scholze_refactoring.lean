@@ -826,7 +826,7 @@ local notation "L" => RelativeFreeDeltaRing (R := P) σ
 local notation "E" => polynomialRankOneDeltaStructure σ D
 local notation "r" => deltaRootRelationFamily (p := p) a
 local notation "I" => Ideal.span {(p : L), MvPolynomial.C (MvPolynomial.C d)}
-local notation "ψ" => RingHom.comp (Ideal.Quotient.mk I)
+local notation "ψ" => RingHom.comp (Ideal.Quotient.mk (R := L) I)
   (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
 local notation "F" => deltaDivisionBoundedSupportModuleDiagram E r
 
