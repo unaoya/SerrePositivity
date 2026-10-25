@@ -108,6 +108,17 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_hasFiniteColimits
 #check @generatedSourceInclusion_preservesFiniteColimit
 #check @generatedSource_finite_colimit_mem
+#check @discreteNerve_hasDimensionLT_one
+#check @discreteNerve_finite
+#check @uliftDiscreteNerve_finite
+#check @generatedSource_coproduct_colimit_mem
+#check @generatedSource_hasPreservedCoproduct
+#check @generatedSource_hasSmallCoproducts
+#check @generatedSourceInclusion_preservesSmallCoproducts
+#check @generatedSourcePointPullbackEquivalence
+#check @generatedSourcePointPullbackEquivalence_fst
+#check @generatedSource_hasSmallKappaFilteredColimits
+#check @generatedSourceArrows_isKappaAccessibleFunctor
 
 #check @indArrowImageFactor_isQCatEquivalence
 #check @indArrowImageVertex_mem
