@@ -228,6 +228,7 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - D-9 の `resolvedDGQuotientFlatKernel_isStableVerdierSequence` は完備化前の native 実商への列。固定 ν の `IsVerdierSequence` は Perf 完備化後の射に通常の `IsLocalization` を要求する。今回の実核・P・Morita 照合は、この追加認証を含まない。
 - 採用：K-6 の完備化前の連結 fibration と、同じ実商の元の dg Yoneda 完備化の実 K 比較を分ける。K-7 の同じ cone について、後者の正次数 π 同型・零次 π 単射と構成済みの K 零性を使い、固定 K への実 fiber 比較の非負次数 π 同型を得る。K₀ 全射性・連結 K の Sp 引き戻し性は要求しない。
 - 固定 S・ν・K と同じ I・採用済み供給境界は不変。既存の条件付き相対屋根と Sp fiber 定理も保持する。完備化前の商の局所化は D・Sp、K の cofinality は K-S• 正本とし、K-B に同種 API を重ねない。
+- `DGKappaNativeKernelThick` は同じ実核の冪等完備性で D 正本の thick 核の retract 表示を戻し、完備化前の商の零化対象が元の実小核の本質像であることを証明する。`DGKappaNativeVerdier` は同じ包含・商辺を保つ Sp の完備化前の `IsVerdierSequence`・全四角形提示を供給する。固定 ν の完備化後の認証は使わない。`DGKappaNativeFibration` はこの実列を元の相対 S• fiber 比較へ代入し、包含射影を厳密回収する。実商の fiber・Ex∞ 核四角形への接続は、既存の正段商比較 `hstage` に条件付きで、無条件化・c4 の全二胞体比較は未完。
 - 共終性はユーザーが K-S• へ依頼済み。供給までは下記命題を `hcofinal` という明示仮定引数に取って利用側を進め、供給後に同じ引数へ代入する。公理・証明済み成果として登録せず、新しい構造体の存在境界も加えない。`DGKappaSuspensionCofinality` は同じ実懸垂の元の Yoneda 安定模型射と実 K 射を保持する。
 ```lean
 ∀ (X Y : StableModel.{u}) (f : X ⟶ Y),
