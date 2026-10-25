@@ -749,3 +749,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_pullback_isKappaFiltered
 #check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_isRightCofinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_kappaFiltered_cofinal_index
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage_monotone
+#check @SerrePositivity.InfinityCategories.F2.Presentable.iSup_sequentialNerveStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerve_map
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageToFinite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveFiniteToStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso_transition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerveStage_extension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_extensions
