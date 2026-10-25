@@ -1,0 +1,133 @@
+module
+
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofCornerEvaluation
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofProductCone
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFramePinchedWeak
+public import SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseProjectionWeak
+public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
+
+/-!
+概要：元の積単体の全族から指定次数の同じ pinched Hom への弱な基準射を作る。
+方針：元の第一射影、実 frame の弱比較、同じ augmentation の前合成を合成する。
+規約：同じ balanced hammock 内で全比較を行い、包含の逆を選ばない。
+使われ方：実 roof の全 slice の同じ弱基準族。
+-/
+
+@[expose] public noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u v
+namespace SerrePositivity.EInfinity.SimplicialLocalization
+open scoped Simplicial
+open CategoryTheory HomotopicalAlgebra Opposite Hammock
+open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
+open SerrePositivity.HomotopyFunctionComplex SerrePositivity.KST.Comparison
+variable {C : Type u} [Category.{v} C] [ModelCategory C]
+  (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
+  (b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌)
+
+/-- 概要：元の積単体の全要素の第一射影自身は弱同値。
+方針：任意上限の宇宙における同じ射影の弱同値性を使う。
+規約：元の指定次数。使われ方：同じ実 frame の弱比較への入口。 -/
+lemma modelBifibrantSourceRoofProductFirstNerve_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductFirstNerve X Y q b) :=
+  FrameHom.ProductSimplexUniverseOver.firstNerveMap_weak.{v, u} _ _
+
+/-- 概要：元の積単体から同じ balanced hammock Hom への実基準射。
+方針：同じ第一射影と元の frame 比較を合成する。
+規約：元の全族。使われ方：同じ次数の augmentation 前合成。 -/
+def modelBifibrantSourceRoofProductHammockMap :=
+  modelBifibrantSourceRoofProductFirstNerve X Y q b ≫
+    modelBifibrantSourceFrameColimitMap X Y q
+
+/-- 概要：同じ指定次数の augmentation の前合成。
+方針：元の二列 hammock の同じ前合成作用を使う。
+規約：同じ実 augmentation。使われ方：指定次数の pinched 基準族。 -/
+def modelBifibrantSourceRoofDegreePrecompose :=
+  precomposePointMap (arrowMap (modelBifibrantRelativeCategory C).weakEquivalences
+    ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)))
+      (modelBifibrantObject C Y)
+
+/-- 概要：元の指定次数の augmentation の前合成自身は弱同値。
+方針：同じ弱な augmentation の実 hammock 前合成を反転する。
+規約：元の実射。使われ方：同じ全積単体の弱比較。 -/
+lemma modelBifibrantSourceRoofDegreePrecompose_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofDegreePrecompose X Y q b) :=
+  WeakArrow.precompose_forward_isWeakHomotopyEquivalence
+    ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b))
+    (modelBifibrantDKFrameAugmentation_weak X q _) (modelBifibrantObject C Y)
+
+/-- 概要：元の積単体を同じ指定次数の balanced hammock Hom へ送る。
+方針：元の全 frame 比較と同じ augmentation の前合成を合成する。
+規約：元の全単体。使われ方：native 評価 roof の基準射。 -/
+def modelBifibrantSourceRoofProductDegreeHammockMap :=
+  modelBifibrantSourceRoofProductHammockMap X Y q b ≫
+    modelBifibrantSourceRoofDegreePrecompose X Y q b
+
+/-- 概要：元の積単体から同じ指定次数の pinched Hom への実基準射。
+方針：同じ balanced hammock 比較の後に Ex∞ 単位と coherent Hom 比較を置く。
+規約：元の局所化頂点。使われ方：実屋根比較の全 interval 族への照合。 -/
+def modelBifibrantSourceRoofProductPinchedReferenceMap :
+    nerve (modelBifibrantSourceRoofProductElements X Y q b) ⟶
+      pinchedHom (modelBifibrantHammockVertex
+        (modelBifibrantSourceRoofDegreeObject X Y q b)) (modelBifibrantHammockVertex Y) :=
+  modelBifibrantSourceRoofProductDegreeHammockMap X Y q b ≫ exInfinityUnit.app _ ≫
+    kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
+      (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+      (modelBifibrantObject C Y)
+
+/-- 概要：同じ弱基準族を元の comma 全族へ厳密に戻す。
+方針：元の積単体・comma の実同型の逆を前合成する。
+規約：同じ pinched 基準射。使われ方：全 interval 族の比較。 -/
+def modelBifibrantSourceRoofProductCommaReferenceMap :=
+  (modelBifibrantSourceRoofProductCommaIso X Y q b).inv ≫
+    modelBifibrantSourceRoofProductPinchedReferenceMap X Y q b
+
+variable [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
+  (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+include r in
+/-- 概要：元の全積単体の同じ balanced hammock 比較射は弱同値。
+方針：同じ第一射影と実 frame 比較の弱同値性を合成する。
+規約：第一分解と指定 right frame。使われ方：同じ次数の弱基準族。 -/
+lemma modelBifibrantSourceRoofProductHammockMap_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductHammockMap X Y q b) :=
+  (modelBifibrantSourceRoofProductFirstNerve_weak X Y q b).comp
+    (modelBifibrantSourceFrameColimitMap_weak X Y q r)
+
+include r in
+/-- 概要：元の全積単体の同じ指定次数の hammock 比較は弱同値。
+方針：同じ元の弱比較と augmentation の前合成を合成する。
+規約：同じ実射。使われ方：native pinched 比較の弱基準射。 -/
+lemma modelBifibrantSourceRoofProductDegreeHammockMap_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductDegreeHammockMap X Y q b) :=
+  (modelBifibrantSourceRoofProductHammockMap_weak X Y q b r).comp
+    (modelBifibrantSourceRoofDegreePrecompose_weak X Y q b)
+
+include r in
+/-- 概要：元の全積単体から同じ指定次数の pinched 基準射自身は弱同値。
+方針：同じ hammock 比較と Ex∞ 単位・coherent Hom 比較を合成する。
+規約：元の全基準族を保持。使われ方：実 roof の全 slice の弱可縮性。 -/
+lemma modelBifibrantSourceRoofProductPinchedReferenceMap_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductPinchedReferenceMap X Y q b) := by
+  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
+      (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
+        (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+        (modelBifibrantObject C Y))) :=
+    FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
+      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+  exact (modelBifibrantSourceRoofProductDegreeHammockMap_weak X Y q b r).comp
+    (hu.comp (kanHammockHomPinchedMap_weak (modelBifibrantRelativeCategory C)
+      (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+      (modelBifibrantObject C Y)))
+
+include r in
+/-- 概要：元の comma 上の同じ全 pinched 基準族は弱同値。
+方針：同じ実同型の逆と元の弱基準射を合成する。
+規約：元の全パラメータ。使われ方：実屋根の全 interval 三角形の判定。 -/
+lemma modelBifibrantSourceRoofProductCommaReferenceMap_weak :
+    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCommaReferenceMap X Y q b) :=
+  (FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+    (modelBifibrantSourceRoofProductCommaIso X Y q b).inv (by infer_instance)).comp
+      (modelBifibrantSourceRoofProductPinchedReferenceMap_weak X Y q b r)
+
+end SerrePositivity.EInfinity.SimplicialLocalization

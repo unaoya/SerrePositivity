@@ -3018,3 +3018,17 @@ Mon (Complex R) への供給では実生成 cofibration の小対象論法から
 第一の関手的分解と指定 right frame の下で、元の bifibrant frame から hammock への実射自身が弱同値。
 `FrameFunctorImage` の全三角形と `ModelRawRelative` の同じ包含の Hom 弱比較で ambient 比較を反映する。
 実次数比較の余終性・局所化普遍性・指定局所化の全 pinched 族比較は引き続き未完。
+
+`ModelBifibrantSourceRoofNativeTriangle` は同じ元の roof の native prism の両端と
+射影を保持して全 interval 三角形を証明する。
+`modelBifibrantSourceRoofMap_isLeftCofinal` と
+`modelBifibrantFrameRightKanMap_isLeftCofinal` は実比較自身の余終性。
+`ModelBifibrantLocalization` の `modelBifibrantSourceRightKanExtension_refl`・
+`modelBifibrantSourceRightKanDiagram_hasLimit_all`・
+`modelBifibrantSourceRightKanUnit_isInvertible` は第一の関手的分解と指定 right frame
+だけを使い、未証明の余終性条件を持たない。
+`modelBifibrantHammock_isLocalization` は同じ bifibrant hammock の実局所化普遍性。
+全圏への源移送と全 right frame Hom 族の指定局所化への比較は後続工程である。
+宇宙比較 `Hammock.AsSmallComparison.colimitIso` は元の hammock 全語を実同型で揃える。
+`FrameHom/ProductSimplexUniverseOver`・`ProductSimplexUniverseProjectionWeak`・
+`UniverseNerveCostructuredPullback` は対象宇宙と Hom 宇宙の異なる同じ全積単体を扱う。
