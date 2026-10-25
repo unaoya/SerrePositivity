@@ -409,3 +409,13 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @compactSource_factorization_after_point
 #check @exists_sequentialSeed_bound
 #check @compactPresentations_initialTriangle
+
+#check @pointRestriction_coconeTransportLeg_val
+#check @uliftPointRestriction_coconeTransportLeg_val
+#check @normalizedEdgeCocone_restrict_val
+#check @uliftPoint_diagram
+#check @normalizedEdge_compact
+#check @comparisonInitialState
+#check @exists_comparisonInitialState
+#check @coconeVertices_compact
+#check @ComparisonLeftFactor.cocone_compact
