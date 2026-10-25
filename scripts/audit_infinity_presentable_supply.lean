@@ -81,3 +81,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsHomDiagramEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.homBifunctorCurryIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorEndSectionsYonedaHomEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafUniverse_canonicalColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.fullPresheafHomWeightFamily_isRightKanExtension
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafExtensionHom_liftedIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightDiagramHomEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomToHomWeightDiagramEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaUnit

@@ -33,6 +33,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteSub
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.EndSectionsRelativeHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.PinchedHomVertexTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.EndSectionsYonedaModel
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.PresheafExtensionHomComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightDiagramMapping
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightYonedaUnit
 
 /-!
 概要：P-s が P-f へ供給する P-11・P-12 の公開入口を集約する。

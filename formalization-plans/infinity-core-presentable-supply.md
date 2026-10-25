@@ -46,6 +46,15 @@
 - 二変数図式の curry を元の Yoneda 関手と元の Hom 係数前層族に正規化した。
   end 切断からこの二つの全図式間の写像空間への同値を公開する。
 - 最新 Supply.All は 8636 jobs で成功。独立監査は 349 宣言、標準三公理のみ。
+- 全前層係数 Hom 族と、指定された Yoneda 左 Kan 延長の全 Hom 族の
+  両変数で自然な同型を、同じ Yoneda 制限と右 Kan の一意性から構成した。
+- 元の Fun の Hom の宇宙変更と、Hom 係数図式間の逆向きの写像空間の同値を
+  co-Yoneda の充満忠実性・変数交換・反転・宇宙比較から構成した。
+  この同値の F・G に関する自然性はまだ主張していない。
+- 任意の F の実 twisted arrow 比較を分類し、元の Yoneda から
+  `ulift.map F ≫ presheafHomWeightDiagram F` への指定単位を構成した。
+  その左 Kan 普遍性は未証明。
+- 最新 Supply.All は 8668 jobs で成功。独立監査は 393 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -100,6 +109,12 @@
 - `functorEndSectionsHomDiagramEquivalence`
 - `homBifunctorCurryIso`
 - `functorEndSectionsYonedaHomEquivalence`
+- `presheafUniverse_canonicalColimits`
+- `fullPresheafHomWeightFamily_isRightKanExtension`
+- `presheafExtensionHom_liftedIso`
+- `homWeightDiagramHomEquivalence`
+- `functorHomToHomWeightDiagramEquivalence`
+- `homWeightYonedaUnit`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -110,7 +125,8 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（end 切断の相対 Hom・頂点同型移送・Yoneda 模型の三葉と集約・監査・本計画を記録）。
+- なし（全前層延長 Hom 比較・係数図式の写像空間・Yoneda 指定単位の三葉と
+  集約・監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -126,10 +142,15 @@
   切断空間の既存の極限表示と接続して、還元定理の全自然な極限錐族を構成する。
 - 始域の分解を使う場合、構成した制限錐の極限性と制限の充填性を確認する。
   `MonoidalClosed.internalHom.flip.obj` の極限保存と fiber の極限表示が入口。
-- 構成済みの Yoneda 模型から元の Fun の Hom へ戻す比較を構成する。
-  全前層 Hom 族と指定された Yoneda 左 Kan 延長の Hom 族を、同じ制限と
-  右 Kan の一意性で比較する経路を確認する。既存の Ind 版の証明構造が候補。
-  宇宙に注意し、C に大きい余極限の存在を追加仮定しない。
+- `homWeightYonedaUnit G` の `ulift.map G` に沿う左 Kan 普遍性を証明する。
+  局所形状は `A ×_C C/c`。その表現可能前層図式の密度余極限を、元の
+  `Hom_C(G(-),c)` と同定する。単位は一般には可逆でなく、恒等単位の
+  標準 Kan 制限定理へ直接渡さない。
+- この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
+  `functorHomToHomWeightDiagramEquivalence` と接続する。
+  点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。
+- 全前層 Hom 比較は別の普遍性入力として利用できる。宇宙に注意し、
+  C に大きい余極限の存在を追加仮定しない。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
