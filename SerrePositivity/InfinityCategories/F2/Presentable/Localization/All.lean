@@ -28,6 +28,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCommonPresentations
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallCoproducts
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCoproductColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceArrowFiber
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberPullback
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberEquivalence
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -81,6 +84,13 @@ compact な閉包内射の任意の小さい余積を、有限部分余積の全
 濃度変更後の部分余極限から実像に回収した。これと共通 filtered 表示を合わせ、
 任意の実像対象の全小余積閉性、その実像内での存在、包含の指定余積保存を構成した。
 同じ濃度の無限冪の評価には IsCardinalChangeBound aleph0 μ を明示する。
+固定始域からの射の全族の始点評価は、元の指定始点へ厳密に定値である。
+全 coslice と周囲の射圏の厳密な始点 fiber の同値を、公開 vertexFiberSquareIso と
+全余錐模型の同値から構成し、元の全射族の回収も証明した。
+閉包内射への比較も厳密な始点 fiber に持ち上げ、周囲の全比較の実際の引き戻しと
+証明した。さらに厳密な fiber を周囲の fiber の全部分圏として表示し、公開の
+isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性を証明した。
+この比較だけでは固定始域圏の余完備性・accessibility はまだ得られない。
 二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・

@@ -167,3 +167,25 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @indArrowImage_coproduct_colimit_mem
 #check @indArrowImage_hasSmallCoproducts
 #check @indArrowImageInclusion_preservesSmallCoproducts
+
+#check @sourceArrow_leftVertex
+#check @sourceCosliceArrowFamily_source
+#check @generatedSourceArrows_source
+#check @generatedSourceArrowFiber
+#check @generatedSourceToArrowFiber
+#check @generatedSourceToArrowFiber_inclusion
+#check @sourceCoconeArrowFiberIso
+#check @sourceCosliceArrowFiberEquivalence
+#check @sourceCoconeArrowFiberIso_inclusion
+#check @sourceCosliceArrowFiberEquivalence_inclusion
+
+#check @generatedSourceArrowFiberInclusion
+#check @generatedSourceArrowFiberInclusion_ι
+#check @generatedSourceFiber_square
+#check @generatedSourceFiber_isPullback
+
+#check @sourceArrowFiberCondition
+#check @generatedSourceArrowFullFiberIso
+#check @generatedSourceArrowFullFiberIso_inclusion
+#check @sourceArrowFiberCondition_iff_vertexIso
+#check @generatedSourceToArrowFiber_isQCatEquivalence
