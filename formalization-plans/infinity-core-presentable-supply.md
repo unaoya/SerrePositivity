@@ -14,7 +14,9 @@
 - `HomWeightUnitEvaluation` の curry 評価・端点移送を公開済み。
 - `JointComparisonComposition` で共同三点族を構成し、三つの面を元の比較族と
   同定した。同じ三辺の合成三角形と全 Hom の合成式を公開。
-- 最新 Supply.All は 8689 jobs で成功、独立監査は 605 宣言で標準三公理のみ。
+- 指定底変換同型の初頂点制限の回収と、前合成による同型等式の反映を公開。
+- 指定同型の curry の合成保存、および既存 realizationIso の合成保存を公開。
+- 最新 Supply.All は 8693 jobs で成功、独立監査は 630 宣言で標準三公理のみ。
   追加の ModelCategory 仮定なし。補助供給後も P-12 を続行する。
 - 設計変更案：指定 straightening 底変換の合成則を、P-12 内の局所照合から
   独立した基盤供給として切り出す。具体的な供給仕様は本文に記す。
@@ -49,6 +51,9 @@
 - `jointComparisonTrans`・`jointComparisonTriangleFamily_first`
 - `jointComparisonTriangleFamily_second`・`jointComparisonTriangleFamily_long`
 - `jointComparisonEdge_compStruct`・`jointComparisonEdge_hom_trans`
+- `straighteningBaseChangeIso_firstVertex`・`functorIso_precomp_injective`
+- `functorIsoCurry_hom`・`functorIsoCurry_trans`
+- `jointRealizationIso_normalized`・`jointRealizationIso_trans`
 
 ### 依存と提供
 - P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
@@ -72,8 +77,9 @@
 - 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
-- 指定降下同型を初頂点局所化へ制限して元の共同切断比較を回収する式を公開する。
-  共同比較の合成式を底変換の切断比較へ適用し、充満忠実性で降下する。
+- 実際の相対切断空間の底変換比較の合成を、標準反復 pullback 同型で照合する。
+  全パラメーターの比較を jointRealizationIso_trans に渡し、初頂点回収と
+  前合成の忠実性で指定底変換同型の合成を降下する。
 - 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
   straightening 同型で証明する。Supply 内で証明を進め、供給元・分担の変更が必要ならユーザー経由で提案する。
 - `homWeightYonedaUnit_heq_curry` と一般の curry 評価式を接続する。

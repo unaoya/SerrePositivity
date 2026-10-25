@@ -143,3 +143,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonTriangleFamily_long
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonEdge_compStruct
 #check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonEdge_hom_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointComparisonIso_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.straighteningBaseChangeIso_firstVertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIso_precomp_injective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_hom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorIsoCurry_trans
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_normalized
+#check @SerrePositivity.InfinityCategories.F2.Presentable.jointRealizationIso_trans

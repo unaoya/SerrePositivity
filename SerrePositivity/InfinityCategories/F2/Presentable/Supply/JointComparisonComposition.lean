@@ -325,4 +325,24 @@ lemma jointComparisonEdge_hom_trans
   SSet.Truncated.HomotopyCategory.homMk_comp_homMk
     (jointComparisonEdge_compStruct η θ).toTruncated
 
+/-- 概要：元の共同比較同型は、全図式の同型として合成を保存する。
+方針：順方向の射が同じ指定比較辺の類であることと合成式を使う。
+規約：可逆性の証拠だけを入力し、同型を選び直さない。
+使われ方：共同切断比較を降下する前の合成同型の照合。 -/
+lemma jointComparisonIso_trans
+    {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
+    {J : Type u} [Category.{u} J] {D E H : KanEnrichedDiagram C J}
+    (η : KanEnrichedDiagramComparison D E) (θ : KanEnrichedDiagramComparison E H)
+    (hη : ∀ j (p : C), IsQCatEquivalence
+      (X := ((D.obj j).obj p).obj) (Y := ((E.obj j).obj p).obj) ((η.component j).val p))
+    (hθ : ∀ j (p : C), IsQCatEquivalence
+      (X := ((E.obj j).obj p).obj) (Y := ((H.obj j).obj p).obj) ((θ.component j).val p))
+    (hηθ : ∀ j (p : C), IsQCatEquivalence
+      (X := ((D.obj j).obj p).obj) (Y := ((H.obj j).obj p).obj)
+        (((jointComparisonTrans η θ).component j).val p)) :
+    η.jointComparisonIso hη ≪≫ θ.jointComparisonIso hθ =
+      (jointComparisonTrans η θ).jointComparisonIso hηθ := by
+  apply Iso.ext
+  exact jointComparisonEdge_hom_trans η θ
+
 end SerrePositivity.InfinityCategories.F2.Presentable
