@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
 public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectConnectiveSequence
+public import SerrePositivity.KST.NonConnective.DGSuspensionNativeStageFamily
 
 /-!
 概要：D-8 e の実供給を同じ I に代入し、P を独立入力にしない反復懸垂の入口を作る。
@@ -77,5 +78,36 @@ theorem dgKappaSuppliedIteration_eq
   | succ n ih =>
     exact congrArg (fun B : PerfDGInput.{u, max (u + 1) v} R =>
       dgKappaSuspensionKInput R B (s B).cone) ih
+
+/-- 概要：既存の全高次懸垂作用を、同じ cone と実供給 P の段入力へそのまま移す。
+方針：元の全単体写像・頂点・元の実入力射・全一単体を再利用する。
+規約：全高次作用の存在は明示入力のまま。P の実供給から作用の存在を推論しない。
+使われ方：D-8 e を消費しても元の同じ全 native 作用を保持する。 -/
+def dgKappaSuppliedNativeAction
+    (s : DGSuspensionStageProvider.{u, v} R κ) (a : DGSuspensionNativeActionInput R s) :
+    DGSuspensionNativeActionInput R
+      (dgKappaSuppliedStageProvider R (fun B => (s B).cone)) where
+  map := a.map
+  vertex := a.vertex
+  data := a.data
+  edge := a.edge
+
+/-- 概要：P の実供給への差し替えは元の全高次懸垂写像を厳密に保つ。
+方針：同じ実入力の全単体写像の射影を計算する。
+規約：点別の比較だけへ弱めない。
+使われ方：元の全 native 入力作用を選び直さないことの照合。 -/
+theorem dgKappaSuppliedNativeAction_map
+    (s : DGSuspensionStageProvider.{u, v} R κ) (a : DGSuspensionNativeActionInput R s) :
+    (dgKappaSuppliedNativeAction R s a).map = a.map := rfl
+
+/-- 概要：P の実供給へ差し替えた後も、各段の全入力 K・native loop 族は元の同じ族。
+方針：同じ懸垂写像の同じ回数の反復と固定 K の合成を展開する。
+規約：構造辺 β の自然性は主張せず、構成済みの各段族だけを厳密照合する。
+使われ方：K-7 c4・c5 の P 実供給と元の全高次段族の整合。 -/
+theorem dgKappaSuppliedNativeStageFamily_eq
+    (s : DGSuspensionStageProvider.{u, v} R κ) (a : DGSuspensionNativeActionInput R s) (n : ℕ) :
+    dgSuspensionNativeStageFamily R
+        (dgKappaSuppliedStageProvider R (fun B => (s B).cone))
+        (dgKappaSuppliedNativeAction R s a) n = dgSuspensionNativeStageFamily R s a n := rfl
 
 end SerrePositivity.KST.NonConnective
