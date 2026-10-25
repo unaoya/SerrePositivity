@@ -167,10 +167,9 @@ elab "assert_cyclic_B3_dependencies" : command => do
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
     `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
     `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
-    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
-    `SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed]
+    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
   let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
-  logInfo "Cyclic proof paths: sorry-free; old B-I, B-S, and Andre inputs absent."
+  logInfo "Cyclic proof paths: sorry-free; old B-I and B-S inputs absent; Andre (Thm 7.14) is proved."
 
 elab "assert_almost_B3_dependencies" : command => do
   let roots := [``SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso]
@@ -178,10 +177,9 @@ elab "assert_almost_B3_dependencies" : command => do
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
     `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
     `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
-    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
-    `SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed]
+    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
   let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
-  logInfo "Almost length comparison: sorry-free; old B-I, B-S, and Andre inputs absent; B-R is proved."
+  logInfo "Almost length comparison: sorry-free; old B-I and B-S inputs absent; Andre (Thm 7.14) is proved; B-R is proved."
 end
 
 assert_cyclic_B3_dependencies

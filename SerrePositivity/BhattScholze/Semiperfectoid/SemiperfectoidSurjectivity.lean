@@ -1,10 +1,27 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootedPerfectoidExtension
+public import SerrePositivity.BhattScholze.Semiperfectoid.AndreSurjectivity
 public import SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidPerfectoidization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 
-/-! # B4：導来p完備なperfectoid環の全射商の普遍perfectoid化は全射 -/
+/-! # B4：導来p完備なperfectoid環の全射商の普遍perfectoid化は全射
+
+## 概要
+BS 著者版 Thm 7.4。perfectoid 環 R の導来 p 完備な全射商 S の任意の perfectoid 化は全射。
+
+## 方針
+原典どおり、André の補題（Thm 7.14、証明済み）で絶対整閉な perfectoid 環 T へ
+p 完全忠実平坦に拡大する。T では核の全元が両立する p 冪根を持つので全射性が出て、
+それを R へ降下する（`Semiperfectoid/AndreSurjectivity`）。
+
+## 規約
+p ねじれなし・有限性・古典的完備性は仮定しない。André を使わない別証明は
+`Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity`。
+
+## 使われ方
+CLMST、`Almost/PerfectoidIdealLemma103`、`Perfectoidization/Prop813PerfectoidBaseChange`、
+`Semiperfectoid/PerfectoidizationSurjectiveMap`、`Inputs/SemiperfectoidSurjectivity` で使う。
+-/
 
 @[expose] public noncomputable section
 universe u
@@ -15,26 +32,12 @@ variable {p : ℕ} [Fact p.Prime] {R S C : Type u}
 variable [CommRing R] [CommRing S] [CommRing C]
 
 /-- 任意perfectoid環の導来p完備な全射商の、任意の普遍perfectoid化は全射。
-pねじれのない商・有限性・古典的完備性は仮定しない。 -/
+pねじれのない商・有限性・古典的完備性は仮定しない。証明は André の補題経由。 -/
 theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
     (hS : DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
-    (f : S →+* C) (hf : IsPerfectoidization p f) : Function.Surjective f := by
-  rcases hR with hs | ⟨hp, hc, ⟨π, u, hu⟩, hF, hker⟩
-  · let := hs
-    let : Subsingleton S := q.codomain_trivial
-    let : Subsingleton C := f.codomain_trivial
-    exact fun y => ⟨0, Subsingleton.elim _ _⟩
-  · let := hc
-    let : Fact (¬ IsUnit (p : R)) := ⟨hp⟩
-    obtain ⟨d, hd, e, _⟩ := exists_perfectoidTrialPrism R p hF hker π u hu
-    let := DerivedCompletion.pdCompletionCommRing (WittVector p (PreTilt R p)) p d
-    let P := perfectDeltaPDPrism (wittDeltaStructure p (PreTilt R p))
-      (wittDeltaStructure_isPerfect p (PreTilt R p)) d hd
-    have hP := perfectDeltaPDPrism_isPerfect (wittDeltaStructure p (PreTilt R p))
-      (wittDeltaStructure_isPerfect p (PreTilt R p)) d hd
-    exact surjective_of_isPerfectoidization_of_perfectPrism_quotient P hP
-      (q.comp e.toRingHom) (hq.comp e.surjective) hS f hf
+    (f : S →+* C) (hf : IsPerfectoidization p f) : Function.Surjective f :=
+  surjective_of_isPerfectoidization_of_andre R S C p hR q hq hS f hf
 
 /-- B3の一般存在・普遍性とB4により、一般の導来p完備商は全射perfectoid化を持つ。 -/
 theorem exists_surjective_perfectoidization_of_semiperfectoid_quotient

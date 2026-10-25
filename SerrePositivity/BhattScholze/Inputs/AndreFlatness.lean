@@ -32,7 +32,7 @@ Remark 7.15（p.62）の mod p で ind-syntomic に取れるという強化は�
 
 ## 使われ方
 
-既存の `AndreCompatibleRootsConditional` と `AndreSurjectivityConditional` などに、
+既存の `AndreCompatibleRootsConditional` と `AndreSurjectivity` などに、
 元の Inputs の署名のまま、証明済みの André 拡大を供給する。
 -/
 

@@ -3,18 +3,19 @@ module
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedPerfectoidSurjectivityDescent
 public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
 
-/-! # B4の一般全射性：既存André入力に相対的な途中成果
+/-! # B4の一般全射性：André の補題による原典の証明
 
-引用なしの降下定理へ既存の名前付きAndré引用を供給する。
-この公開定理はsorryAxに依存し、B-S引用を解消したという主張ではない。
+André の補題（Thm 7.14、`Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、
+証明済み）による、原典の Thm 7.4 の証明。
+絶対整閉な perfectoid 環への p 完全忠実平坦な拡大で全射性を得て、元の基底へ降下する。
 -/
 
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.BhattScholze
 
-/-- 既存André入力に相対的に、導来p完備な全射商の任意perfectoid化は全射。
-一般pねじれ商を含む。André引用のsorryAxが残る条件付き成果であり、B4の引用解消ではない。 -/
+/-- André の補題（Thm 7.14、証明済み）による、原典の Thm 7.4 の証明。
+導来p完備な全射商の任意perfectoid化は全射であり、一般pねじれ商を含む。 -/
 theorem surjective_of_isPerfectoidization_of_andre
     (R S C : Type u) [CommRing R] [CommRing S] [CommRing C]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
