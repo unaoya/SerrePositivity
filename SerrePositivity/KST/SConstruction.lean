@@ -2455,6 +2455,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotPerfectNerve
 public import SerrePositivity.KST.SConstruction.DGOdotRightAlgebraComparison
 public import SerrePositivity.KST.SConstruction.DGOdotRightQuotientComparison
 
+public import SerrePositivity.KST.SConstruction.DGKPerfectCompositionGeneral
 public import SerrePositivity.KST.SConstruction.DGKPerfectComposition
 public import SerrePositivity.KST.SConstruction.DGKUniverseMorita
 public import SerrePositivity.KST.SConstruction.DGKUniverseQuasiEquivalence

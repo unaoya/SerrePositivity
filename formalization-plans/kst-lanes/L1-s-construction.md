@@ -4,9 +4,10 @@
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-S• → K-基盤。L1c〜f の後、L3 は非連結 K を BGT (a) のみで（暫定 (b) は使わない）、続けて局所化不変量・Tamme・Land–Tamme（K-基盤 1・2）。
 
-## 引き継ぎ（2026-10-24）
+## 引き継ぎ（2026-10-25）
 
 ### 現在地
+- D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d の再開は別指示。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
 - K-10 d は明示入力の下での形式的接続を検証・保存済み。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
 - D2 の比較同値・具体的 β3 の核一致と局所化・比較先への輸送証拠・S 内の零化と長方形は明示入力。これらの存在、D2 f・Sp-6 の完成、K の局所化性は証明していない。供給後に各欄を差し替える。
@@ -62,10 +63,11 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- なし（e の所有5モジュール・集約・公式監査・本計画だけを同時保存）。c の4ファイルと d の3モジュールも接続・保存済み。
+- なし（D-17 供給の新旧入口・集約・公式監査・本計画だけを同時保存）。c の4ファイルと d の3モジュールも接続・保存済み。
 
 ### 既知の問題
-- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え・固定 ν 持ち上げ・追加仮定なしの形式的結論13宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包8367モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
+- D-17 分離の新入口単独・初回集約は成功。公式監査は別レーンの HomEquivalence.olean 欠落で起動失敗し、再ビルドで読取専用 `F1/Yoneda/PresheafDensity/Support/UliftPrecomposition.lean:43–44` の `qCatEquivalenceOfIso` 未解決を確認。所有 import 閉包破損の停止条件に従い保存して停止。公式監査の再成功は未確認（`/tmp/kst-s-s-aggregate-rebuild.log`）。
+- 前回保存時の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え・固定 ν 持ち上げ・追加仮定なしの形式的結論13宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包8367モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。D2 f・β3 実証拠・Sp-6 は引き続き明示入力。
 - 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と

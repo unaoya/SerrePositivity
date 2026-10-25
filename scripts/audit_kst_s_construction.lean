@@ -1,4 +1,5 @@
 import SerrePositivity.KST.SConstruction
+import SerrePositivity.KST.SConstruction.DGKPerfectCompositionGeneral
 import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 
 /-!
