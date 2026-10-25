@@ -168,7 +168,7 @@ lake build SerrePositivity.CommutativeAlgebra.PerfectoidIdeal SerrePositivity.Co
 ```
 
 - ビルドが成功し、全監査がエラーなし・終了 0。`audit_bhatt_scholze_andre_conditional` など sorryAx を表示する監査は、表示が作業前と同じであること。
-- `git diff --cached -M --stat` で、移動が 616 本の rename（類似度 90% 以上）、変更が import 行だけであること（スタブはこの時点で未追跡）。
+- `git diff --cached -M --stat` で、移動が 616 本の rename（類似度の閾値は設けない。短いファイルでは import 行だけの変更でも 80% 前後になる。10-25 に 90% 以上の条件を撤回）、変更が import 行だけであること（スタブはこの時点で未追跡）。
   確認例：`git diff --cached -M --diff-filter=RM -- SerrePositivity scripts | grep -E '^[-+]' | grep -vE '^(\+\+\+|---) ' | grep -vE '^[-+][ \t]*(public )?import '`
   の出力が空（rename と変更のうち import 行以外の差分がない）。スタブは `git diff --cached --diff-filter=A --stat` で 32 本。
 - 作業 1・2 は docstring を変えない。作業 3 のスタブには上の docstring を付ける（スクリプトが書く）。
