@@ -9,11 +9,11 @@
 
 ## 三段目
 1. [ ] coherent 比較の公開型と宇宙を照合し、全 native κ-filtered 図式を保つ消費入口を確定。
-2. [/] representable の native Hom を Yoneda と評価へ接続。全シフトの比較を保持。
+2. [x] representable の native Hom を Yoneda と評価へ接続。全シフトの比較を保持。
 3. [ ] coherent 比較を通じた評価交換から、F2.Compact.IsKappaCompact による representable の κ-compact 性。
-4. [ ] 全シフトと κ 未満 sphere-free 基底の native κ-compact 性へ接続。
-5. [ ] DGKappaClosedCompactGeneratorCriterion を通じて七入力と dgKappaClosedProjectiveObjects_property へ接続（c6・c7）。
-6. [ ] 比較の実値が届いたら代入の系と DGKappaConeInput の実例を供給し、K-B へ公開名を報告。
+4. [/] 全シフトと κ 未満 sphere-free 基底の native κ-compact 性へ接続。
+5. [/] DGKappaClosedCompactGeneratorCriterion を通じて七入力と dgKappaClosedProjectiveObjects_property へ接続（c6・c7）。
+6. [/] 比較の実値が届いたら代入の系と DGKappaConeInput の実例を供給し、K-B へ公開名を報告。
 
 ## 既存入口
 - DGModuleKappaCompactBasic・Shift・Binary・Cone・Coproduct・PerfectCriterion。
@@ -28,6 +28,10 @@
 - Compact/NativeHomCriterion：`dgBarCompact_iff_nativeHom_preserves` は実半自由対象の native κ-compact 性と、実 Hom 空間関手の全 native κ-filtered 余極限保存の同値。
 - Compact/ProjectiveHomCriterion：`dgBarCompactRepresentable_iff_hom_preserves` は同じ代表そのものの射影的頂点の全 Hom 保存による判定。分解を余極限計算の始域へ持ち込まない。
 - Compact/GeneratorClosure：`dgBarCompactRepresentableShift_of_hom_preserves`・`dgBarCompactSphereFree_of_hom_preserves`・`dgBarCompactClosedProjective_of_hom_preserves` は全 native 図式での代表 Hom 保存を明示入力とする接続。c6・c7 の無条件供給とは扱わない。
+- Compact/ConeInput：`dgBarCompactConeInput` は代表 Hom の全 native 保存と同じ代表系の covers を引数に K-7 の全フィールドを束ねる。coherent C1 の代入前の条件付き組立であり、実例の存在証明とは扱わない。
+- Compact/EvaluationModuleNerveIso：`dgBarCompactProjectiveEvaluationModuleNerveIso` は射影的模型上の同じ代表 Hom と評価の全 R 加群値関手同型。
+- Compact/NativeEvaluationSpace：`dgBarCompactProjectiveEvaluationSpaceIso` は全 native Hom 空間関手と実評価空間関手の全同型。`dgBarCompactRepresentable_iff_evaluation_preserves` が同じ代表の native κ-compact 性への必要十分条件。
+- Compact/EvaluationGeneratorClosure：`dgBarCompactClosedProjective_of_evaluation` と `dgBarCompactConeInputOfEvaluationPreservation` が実評価空間の全 native 保存を消費する。covers は後者の明示引数。
 - これらは compact 性そのものの実証拠ではない。coherent C1 の代入と評価交換は未完。
 
 ## 次の一手
