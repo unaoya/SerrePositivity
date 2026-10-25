@@ -26,6 +26,12 @@ theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
     (h9 : zeroMiddleControlledTriangleSupply.{u}) :
     let P := SimplicialThickening.Path
       (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
+    let full : P :=
+      { I := Set.univ
+        left := Set.mem_univ _
+        right := Set.mem_univ _
+        left_le := fun k _ => Fin.zero_le k.down
+        le_right := fun k _ => Fin.le_last k.down }
     let direct : P :=
       { I := {ULift.up 0, ULift.up 2}
         left := by simp
@@ -37,6 +43,7 @@ theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
       (SimplicialCategory.sHom
         (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)))
+    let c := verdierLowerReconstructionCompositeFamily d Δ[1]
     ∃ (N : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
       (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom Pu).obj H),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
@@ -48,6 +55,8 @@ theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
           intervalMappingUncurry (coherentHomIntervalComparison
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
             (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩))) ∧
+      L ≫ evaluateFunctorAt (X := Pu) (Y := H)
+        (ULift.up (ComposableArrows.mk₀ full)) = c ∧
       ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
         let s := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
           ((curry (verdierFullSLowerDeformation d).h).app (Opposite.op ⦋0⦌) k))
@@ -67,7 +76,7 @@ theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
   let ℓ := read.app (Opposite.op ⦋0⦌) t
   let nt := encode.app (Opposite.op ⦋0⦌) ℓ
   let N := (functorVertexEquiv (Δ[2] ⊗ Δ[1]) SpaceInfinity.{u}).symm nt.val
-  refine ⟨N, (functorVertexEquiv _ _).symm ℓ.val, ?_, ?_, hdiag t, hread t⟩
+  refine ⟨N, (functorVertexEquiv _ _).symm ℓ.val, ?_, ?_, hdiag t, ?_, hread t⟩
   · have hi := VertexIso.map (Classical.choice (hnorm t))
       (vertexFiberι ((pre ((horn 2 (1 : Fin 3)).ι ▷ Δ[1])).app SpaceInfinity.{u})
         (functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)))
@@ -81,5 +90,14 @@ theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
         functorVertex (fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d)
     rw [show functorVertex N = nt.val from (functorVertexEquiv _ _).apply_symm_apply _]
     simpa only [pinchedConstant_zero] using nt.property
+  · apply (functorVertexEquiv _ _).injective
+    change functorVertex (((functorVertexEquiv _ _).symm ℓ.val) ≫
+      evaluateFunctorAt _) = functorVertex _
+    have hv := (functorVertexEquiv _ _).apply_symm_apply ℓ.val
+    have hℓ := ℓ.property.trans (pinchedConstant_zero _)
+    change (((ihom Δ[1]).map (evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))
+      (functorVertex ((functorVertexEquiv _ _).symm ℓ.val)) = _
+    exact (congrArg
+      ((((ihom Δ[1]).map (evaluateFunctorAt _)).app (Opposite.op ⦋0⦌))) hv).trans hℓ
 
 end SerrePositivity.KST.Fibration

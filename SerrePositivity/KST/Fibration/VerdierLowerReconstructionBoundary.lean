@@ -136,4 +136,42 @@ theorem verdierLowerReconstructionPoint_recovery :
       (verdierLowerReconstructionPoint d).val = (verdierFullSLowerDeformation d).h :=
   (functorVertexEquiv _ _).symm_apply_apply _
 
+/-- 概要：元の下側二短辺の合成を同じ全パラメータで固定する。
+方針：同じ豊穣合成と宇宙持ち上げの積比較を使う。
+規約：指定二短辺を変えず、再構成の合成端をそのまま保持する。
+使われ方：実下側の長 Hom 読出しの全時刻の合成端。 -/
+def verdierLowerReconstructionCompositeFamily :=
+  lift (verdierLowerReconstructionFirstFamily d K)
+    (verdierLowerReconstructionLastFamily d K) ≫
+      (HomotopyLimits.uliftTensorIso.{u, u + 1}
+        (SimplicialCategory.sHom
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩)))
+        (SimplicialCategory.sHom
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)))).inv ≫
+        (SSet.uliftFunctor.{u + 1, u}).map (eComp SSet.{u}
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩))
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 1⟩))
+          (stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)))
+
+/-- 概要：同じ合成端族は元の二つの実 Kan 射の厳密合成の定値族。
+方針：全単体上の元の豊穣作用を計算する。
+規約：頂点だけでなく全パラメータの射の等式を使う。
+使われ方：上側へ長 Hom 入力を渡す際の実合成端の照合。 -/
+theorem verdierLowerReconstructionCompositeFamily_eq :
+  let X := stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 0⟩)
+  let Z := stableCoreSingleKanObject ((verdierLowerTriangle d).obj ⟨ULift.up 2⟩)
+  verdierLowerReconstructionCompositeFamily d K =
+    SSet.const (ULift.up (SimplicialCategory.homEquiv' X Z
+      (stableCoreSingleKanMap (stableArrowExactMap (StableInfinity.δ 2 (verdierLowerTriangle d))) ≫
+        stableCoreSingleKanMap
+          (stableArrowExactMap (StableInfinity.δ 0 (verdierLowerTriangle d)))))) := by
+  dsimp only [verdierLowerReconstructionCompositeFamily]
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro k
+  rfl
+
 end SerrePositivity.KST.Fibration
