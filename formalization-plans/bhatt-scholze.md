@@ -8,14 +8,13 @@
 `par:bs-cor812` ほか）に置き、ここでは繰り返さない。
 残る二つの入力を ∞ 圏の基盤で解消する計画は [∞ 圏の計画](infinity-categories.md) が正本である。
 
-## 0. 現在地（2026-10-18）
+## 0. 現在地（2026-10-25）
 
-主定理が依存する BS の入力は 2 件（[公理監査](../scripts/audit_axioms.lean)）。
-
-| 入力 | 原典 | 扱い |
-| --- | --- | --- |
-| `BhattScholze.Inputs.exists_perfectoidization_of_integral` | Thm 1.17(1)（Thm 10.11 の環としての帰結） | 引用。∞ 圏の界面の `integral` 欄に保留する |
-| `BhattScholze.Inputs.perfectoidization_excision_isPullback` | Cor 8.12 の環としての帰結（Lemma 8.4・Prop 8.5 経由） | 引用。界面の `excision` 欄から導く予定 |
+主定理が依存する BS の入力は 1 件：`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`（導来 perfectoid 化の界面 E3 の存在、
+`Inputs/PerfectoidizationInterface.lean`）。旧二入力 `exists_perfectoidization_of_integral`・`perfectoidization_excision_isPullback`
+（§2）は、E3 から導いた定理になっている（`PerfectoidizationInterface/IntegralExistence`・`Excision`）。E3 を消す計画は
+[bhatt-scholze-stage2.md](bhatt-scholze-stage2.md)（BS-0、A0〜A9）、学習ノートは `exposition/ja/bs/`。
+§2 以下の「二入力」の記述は、E3 の中身（integral・excision 欄）の説明として読む。
 
 証明済みで引用を外したもの：
 
@@ -124,8 +123,8 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 | Lemma 2.28 | δ(p) の単元性を使う | p·φ(x)=0 と δ(p)−1∈(p) による消去。p 局所性を仮定しない |
 | §2 全般 | Z_(p) 代数 | 合同式と p ねじれの計算は任意の可換環上の δ 構造で証明 |
 | Cor 7.3（B3） | Prop 7.2：全 prism の始対象を超限反復で作る | 除算 → 完全化（Lemma 3.9）→ 実 PD 完備化の順で、完全試験 prism の始対象を直接構成。Prop 7.2 の一般形・ω₁ 反復・一般の Lemma 4.8 は証明していない |
-| Thm 7.4（B4）手順 1 | 有向余極限で有限生成に、帰納法で単項に帰着 | 任意の根族を直接扱うので不要 |
-| Thm 7.4（B4）手順 2 | André の補題で根をもつ拡大へ | 完全 prism 上で根の変数の割り算包を作り、その完備化が p 完全忠実平坦な perfectoid 拡大であることを示す（解説 `par:bs-thm74`） |
+| Thm 7.4（B4）手順 1 | 有向余極限で有限生成に、帰納法で単項に帰着 | 不要：André の補題で絶対整閉にすると全ての元が同時に根を持つ |
+| Thm 7.4（B4）手順 2 | André の補題で根をもつ拡大へ | 原典どおり（2026-10-25 から）。André を使わない旧経路（完全 prism 上の根の割り算包）は別証明 `…_of_rootEnvelope` として `Semiperfectoid/RootEnvelope/` に保存（解説 `par:bs-thm74`） |
 | Rem 7.15 | cover 性を pd 表示で述べる | cover 性は Prop 7.10 に依存するので、pd 表示だけを忠実性の証明として使わない。忠実性は別に証明した |
 | Thm 7.14（André） | Prop 7.11 経由 | 一元拡大はモニック根の割り算包（PD 経路）。任意の族は後続基数 c=succ(#σ ⊔ ℵ₀) による一元ずつの飽和、ω₁ 反復は `SmallObject.SuccStruct.iterationFunctor`。終段は可算個の証人の降下で自動的に p 進完備 |
 | Thm 7.14 の step | — | 定数モニック 1 に根を要求すると不整合なので、`0 < natDegree` を仮定に加えた（利用者承認） |
@@ -171,3 +170,15 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 - 各段階で対象ビルドと公理監査が通り、新しい `sorry`・引用を追加しない。
 - 引用を外したら利用先を含めて公理監査で確認し、この文書の §0 と解説の引用表を更新する。
 - docstring は README の Conventions に従い、数学の説明は解説に置く。実施記録はこの文書に書かず、コミットメッセージに書く。
+
+## 9. 変更記録
+
+- 2026-10-25：BS 作業チャットを開始（引き継ぎ書 `bhatt-scholze-handover-2026-10-25.md`）。方針：HT 比較を迂回せず原論文の経路で E3 を消す。
+  原典との差は「Lean が簡略化なら保ち、原典が簡単なら揃える」（ノート `divergences.html`）。
+- 2026-10-25：BS-W1（`9095aff46`・`e039377a6`・`2d288b899`・`afbd30ef5`）。監査 838 行の修正、Q10（既存の `precomp_ringEquiv` の適用）、
+  直下 616 本の主題別分割（外から import される 32 本は旧名の転送スタブ）。
+- 2026-10-25：BS-W2（`c9d5fea53`・`6c13fe6be`）。760 本を原典の節ごとに再配置（Delta/・Prism/・Perfectoidization/・Semiperfectoid/・Almost/・
+  Andre/{Remark715,Variants}/）。
+- 2026-10-25：BR9 の決定と BS-W3（`f4dcf1d1a`・`7b82e02aa`）。B4（Thm 7.4）を原典どおり André 経由で証明。旧証明と B4 専用の 32 本は
+  `Semiperfectoid/RootEnvelope/` に保存。`scripts/audit_clmst_b3.lean` の禁止リストから証明済みの André 入口を外した。公理は標準三公理のみ。
+- 2026-10-25：リポジトリを Apache-2.0 にした（`ee1404187`・`d3e4f0ce0`）。
