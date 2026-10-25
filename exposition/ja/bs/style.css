@@ -70,6 +70,9 @@ table.matrix td.diag { color: var(--muted); }
 .box { background: var(--box-bg); border-left: 3px solid var(--accent); padding: 0.7rem 1rem; margin: 1.2rem 0; }
 .box.lean { border-left-color: var(--ok); }
 .box.refactor { border-left-color: var(--warn); }
+.box.thm { border-left-color: var(--muted); }
+.box.thm .proof, .box.thm .lean { font-size: 0.93em; }
+.box.thm .lean { color: var(--muted); }
 .box > :first-child { margin-top: 0; }
 .box > :last-child { margin-bottom: 0; }
 .label { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; }

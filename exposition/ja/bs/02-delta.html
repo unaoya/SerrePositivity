@@ -27,37 +27,120 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 
 <h2>§2.1 定義と基本性質</h2>
-<p><b>定義.</b> δ 環とは可換環 \(R\) と写像 \(\delta\colon R\to R\) で \(\delta(0)=\delta(1)=0\)、
-\[\delta(xy)=x^p\delta(y)+y^p\delta(x)+p\,\delta(x)\delta(y),\qquad \delta(x+y)=\delta(x)+\delta(y)+\frac{x^p+y^p-(x+y)^p}{p}\]
-を満たすもの。同じことだが（Rem 2.4）、長さ 2 の Witt 環の第 0 成分 \(W_2(R)\to R\) の環準同型切断 \(x\mapsto (x,\delta(x))\) のこと。\(\varphi(x)=x^p+p\delta(x)\) は \(R/p\) の Frobenius の持ち上げになる（Rem 2.2）。</p>
-<p>Lean は Rem 2.4 の形を定義に採り、Def 2.1 の恒等式を定理として導く。</p>
-<pre><code>structure DeltaStructure where      -- Delta/Basic/DeltaRing.lean:58
-  sectionHom : A →+* WittTwo p A     -- WittTwo p A := TruncatedWittVector p 2 A
-  coeff_zero : ∀ x, (sectionHom x).coeff 0 = x</code></pre>
+<p>この節では δ 環の言葉を用意する。以下、\(p\) は素数、環はすべて可換環とする（原典は \(\mathbb Z_{(p)}\) 代数に限るが、形式化はこの仮定を置かない）。番号「命題 2.1.n」はこのノートの番号で、括弧内が原典の番号。</p>
 
-<div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Def 2.1</td><td>δ 環</td><td class="ok">済</td><td><code>DS.delta</code>・<code>DS.delta_mul</code>・<code>DS.delta_add</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:66</a>, :87, :98）。恒等式からの構成 <code>DS.ofFunction</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdentities.lean">DeltaIdentities:19</a>）</td></tr>
-<tr><td>Rem 2.2</td><td>Frobenius 持ち上げ。p ねじれなしなら δ 構造と一対一</td><td class="ok">済</td><td><code>DS.frobeniusLift</code>・<code>frobeniusLift_apply</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:116</a>, :120）。一対一対応 <code>DS.existsUnique_of_frobeniusLift</code>・<code>existsUnique_of_mod_p</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:19</a>, :63）</td></tr>
-<tr><td>Rem 2.4</td><td>δ 構造 ＝ W₂ への切断</td><td class="ok">済</td><td><code>DeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:58</a>）。δ 射と W₂ 図式 <code>DS.isDeltaHom_iff_sectionHom_comp</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaSectionNaturality.lean">DeltaSectionNaturality:18</a>）</td></tr>
-<tr><td>Ex 2.6</td><td>\(\mathbb Z_{(p)}\) が始対象。\(p\) が冪零な δ 環は零環</td><td class="ok">後半済</td><td><code>DS.subsingleton_of_isNilpotent_p</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Perfect/DeltaTorsion.lean">DeltaTorsion:94</a>）。始対象の部分は \(\mathbb Z_{(p)}\) 代数を仮定しないので不要</td></tr>
-<tr><td>Rem 2.7</td><td>極限・余極限は下の環で計算できる（特にテンソル積・pushout）</td><td class="part">一部</td><td>有向余極限 <code>deltaDirectLimitStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaDirectLimit.lean">DeltaDirectLimit:57</a>）、完全かつ p 正則な場合のテンソル <code>perfectDeltaTensorStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Tensor/PerfectDeltaTensorStructure.lean">PerfectDeltaTensorStructure:73</a>）。Witt 環への写像 \(w_R\colon R\to W(R)\) は ghost 写像が単射の場合 <code>DS.deltaWittGhostRingHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaWittGhostRingHom.lean">DeltaWittGhostRingHom:16</a>）（長さ 2 に切ると元の切断 :58）。<b>一般のテンソル積は未</b>（A0：prism の余積）</td></tr>
-<tr><td>Not 2.8</td><td>δ 環での添加 \(\{\ \}\) と消去 \((\ )_\delta\)</td><td class="ok">済</td><td>添加：<code>RelativeFreeDeltaRing</code>・<code>relativeFreeDeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean">RelativeFreeDelta:17</a>, :32）、普遍性 <code>existsUnique_relativeFreeDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeUniversal.lean">RelativeFreeUniversal:58</a>）。消去は Ex 2.10</td></tr>
-<tr><td>Lemma 2.9</td><td>I が δ 安定 ⇔ A/I に両立する δ 構造</td><td class="ok">済</td><td><code>DS.isStable_iff_existsUnique_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean">DeltaQuotient:71</a>）、商 <code>DS.quotient</code>（:38）</td></tr>
-<tr><td>Ex 2.10</td><td>IB=0 の普遍 δ-A 代数は δ 閉包での商</td><td class="ok">済</td><td><code>DS.deltaClosure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdeal.lean">DeltaIdeal:30</a>）、<code>existsUnique_deltaClosure_quotient_lift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean">DeltaQuotient:107</a>）、<code>deltaClosure_eq_span_iterates</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaClosureGeneration.lean">DeltaClosureGeneration:77</a>）</td></tr>
-<tr><td>Lemma 2.11</td><td>自由 δ 環は \(x,\delta x,\delta^2x,\dots\) 上の多項式環で、Frobenius は忠実平坦</td><td class="part">一部</td><td><code>freeDeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:75</a>）、<code>existsUnique_freeDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaUniversal.lean">FreeDeltaUniversal:48</a>）。Frobenius は p 完全忠実平坦 <code>freeDeltaFrobenius_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean">FreeDeltaFrobeniusCompletelyFlat:100</a>）と mod p 忠実平坦（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusModPFlat.lean">FreeDeltaFrobeniusModPFlat:89</a>）まで。通常の忠実平坦性が要るかは T2-2 で判断</td></tr>
-<tr><td>Cor 2.12</td><td>Frobenius は fpqc 局所的に全射</td><td class="no">不要</td><td></td></tr>
-<tr><td>Rem 2.13・2.14</td><td>Joyal の \(\delta_n\)、自由 δ 環は \(\delta_n(x)\) 上の多項式環</td><td class="ok">相対版で済</td><td>Witt 座標と δ 変数の三角形の代数同型 <code>relativeFreeWittCoordinateEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittCoordinateChange.lean">RelativeFreeWittCoordinateChange:110</a>）、第 \(n\) Witt 係数 ＝ \(\delta^n(x)\)＋下位の多項式 <a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostTriangular.lean">RelativeFreeWittGhostTriangular:47</a>。E3 には不要だが、André の一段の拡大（Division/Relations）の計算に使っている</td></tr>
-</table></div>
+<h3>定義と言い換え</h3>
+<p>環 \(A\) の長さ 2 の Witt 環 \(W_2(A)\) は、集合 \(A\times A\) に
+\[(x_0,x_1)+(y_0,y_1)=\Big(x_0+y_0,\ x_1+y_1+\tfrac{x_0^p+y_0^p-(x_0+y_0)^p}{p}\Big),\qquad (x_0,x_1)(y_0,y_1)=(x_0y_0,\ x_0^py_1+x_1y_0^p+p\,x_1y_1)\]
+で環構造を入れたもの（分数は \(\mathbb Z[x_0,y_0]\) の多項式なので任意の環で意味を持つ）。第 0 成分 \(\epsilon\colon W_2(A)\to A\) と第 1 ghost 成分 \(g_1(x_0,x_1)=x_0^p+px_1\) はどちらも環準同型。</p>
 
+<div class="box thm">
+<p class="label">定義 2.1.1（δ 構造。原典 Rem 2.4 の形）</p>
+<p>環 \(A\) 上の <b>δ 構造</b>とは、環準同型 \(w\colon A\to W_2(A)\) で \(\epsilon\circ w=\mathrm{id}_A\) を満たすもの。\(w(x)=(x,\delta(x))\) と書いて写像 \(\delta\colon A\to A\) を定め、\(\varphi=g_1\circ w\)、すなわち \(\varphi(x)=x^p+p\,\delta(x)\) を <b>Frobenius 持ち上げ</b>と呼ぶ。δ 構造を持つ環を <b>δ 環</b>という。</p>
+<p class="lean"><b>Lean.</b> <code>DeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:58</a>）（<code>sectionHom</code> と <code>coeff_zero</code> の二つの欄）、\(\delta\) は <code>delta</code>（:66）、\(\varphi\) は <code>frobeniusLift</code>（:116）。\(W_2\) は Mathlib の <code>TruncatedWittVector p 2 A</code>。型クラスではなくデータなので、同じ環に複数の δ 構造を持てる。</p>
+</div>
 
-<h3>原典の流れ（§2.1）</h3>
-<ol>
-  <li>Def 2.1 の恒等式は「\(\varphi(x)=x^p+p\delta(x)\) が \(R/p\) の Frobenius を持ち上げる環準同型になる」ことから逆算したもの（Rem 2.2）。\(p\) ねじれなしなら Frobenius 持ち上げと δ 構造は一対一。</li>
-  <li>Rem 2.4（Rezk）：δ 構造は \(W_2(R)\to R\) の切断 \(x\mapsto(x,\delta(x))\)。Rem 2.7：極限・余極限は下の環で計算でき（余極限は \(W_2\) が余極限と可換なため）、忘却関手の左随伴が自由 δ 環、右随伴が Witt 環。</li>
-  <li>Not 2.8・Lemma 2.9・Ex 2.10：δ 環での元の添加 \(\{\ \}\) と消去 \((\ )_\delta\)。\(I\) が δ 安定 ⇔ 商に δ 構造（加法公式から）。\(I\) を殺す普遍対象は δ 閉包 \(\bigcup_n\delta^n(I)\) で割ったもの。</li>
-  <li>Lemma 2.11：\(\mathbb Z_{(p)}[x_0,x_1,\dots]\) に \(\varphi(x_i)=x_i^p+px_{i+1}\) を与えると \(p\) ねじれなしなので δ 環で、\(x_i\mapsto\delta^i(f)\) が普遍性を与える。Frobenius の忠実平坦性は有限段 \(\varphi_i\) に分け、\(\varphi_i[1/p]\) と \(\varphi_i/p\) の忠実平坦性（ファイバーごとの判定）から。</li>
-</ol>
+<div class="box thm">
+<p class="label">命題 2.1.2（原典 Def 2.1 との同値）</p>
+<p>写像 \(\delta\colon A\to A\) について、次は同値：(i) \(\delta\) はある δ 構造 \(w\) から定まる；(ii) \(\delta(0)=\delta(1)=0\) かつ任意の \(x,y\) で
+\[\delta(xy)=x^p\delta(y)+y^p\delta(x)+p\,\delta(x)\delta(y),\qquad \delta(x+y)=\delta(x)+\delta(y)+\tfrac{x^p+y^p-(x+y)^p}{p}.\]
+さらに δ 構造は \(\delta\) で決まる。</p>
+<p class="proof"><b>証明.</b> \(w(x)=(x,\delta x)\) が環準同型であることを第 1 座標で書けば、上の \(W_2\) の和・積の式から (ii) の恒等式そのものになる（第 0 座標は自明）。\(W_2\) の和・積の第 1 座標の式自体は、変数 \(X_{(i,n)}\) の整数係数多項式環（p ねじれなし）で \(g_1\) の加法性・乗法性を書いて \(p\) を消去し、任意の環へ評価して得る。加法の補正項は \(p\) で割る式ではなく、\(p\) 倍すると \(X^p+Y^p-(X+Y)^p\) になる整数係数多項式として扱う。</p>
+<p class="lean"><b>Lean.</b> (i)⇒(ii)：<code>delta_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:75</a>）・<code>delta_one</code>（:79）・<code>delta_mul</code>（:87）・<code>delta_add</code>（:98）。(ii)⇒(i)：<code>ofFunction</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdentities.lean">DeltaIdentities:19</a>）、往復 <code>ofFunction_deltaStructure</code>（:72）、一意性 <code>ext</code>（DeltaRing:125）。\(W_2\) の式は共通基盤 <code>witt_mul_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittCoefficientOne.lean">WittCoefficientOne:24</a>）・<code>witt_add_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:18</a>）、補正項の多項式 <code>wittAdditionCarry</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:53</a>）。加法公式の補正項は Lean では「Teichmüller 元の和の第 1 Witt 座標」の形で書かれる。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.3（原典 Rem 2.2）</p>
+<p>(1) \(\varphi\colon A\to A\) は環準同型で、\(A/p\) の Frobenius を持ち上げる：\(f(p)=0\) となる任意の環準同型 \(f\colon A\to B\) で \(f(\varphi(x))=f(x)^p\)。<br>
+(2) \(A\) が p ねじれなしなら、\(\psi(x)\equiv x^p \bmod pA\) を満たす環自己準同型 \(\psi\) に対し、\(\varphi=\psi\) となる δ 構造がただ一つ存在する。特に Frobenius 持ち上げが一致する δ 構造は一致する。</p>
+<p class="proof"><b>証明.</b> (1) \(\varphi=g_1\circ w\) は環準同型の合成。(2) \(\delta(x)\) を \(p\,\delta(x)=\psi(x)-x^p\) の解として選び、\(\psi\) の加法性・乗法性を書いて \(p\) を消去すると命題 2.1.2 の恒等式が出る。一意性も \(p\) の消去から。</p>
+<p class="lean"><b>Lean.</b> (1) <code>frobeniusLift_apply</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:120</a>）、<code>map_frobeniusLift_of_map_p_eq_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:186</a>）。(2) <code>existsUnique_of_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:19</a>）、mod p の形 <code>existsUnique_of_mod_p</code>（:63）、一意性 <code>eq_of_frobeniusLift_eq</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:193</a>）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">定義 2.1.4（δ 射）</p>
+<p>δ 環の間の環準同型 \(f\colon A\to B\) が <b>δ 射</b>であるとは、任意の \(x\in A\) で \(f(\delta(x))=\delta(f(x))\) となること。δ 環と δ 射は圏をなす。</p>
+<p class="lean"><b>Lean.</b> <code>IsDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:143</a>）。恒等射 <code>isDeltaHom_id</code>（:161）、合成 <code>IsDeltaHom.comp</code>（:165）、環同型の逆 <code>IsDeltaHom.symm</code>（:174）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.5（δ 射の言い換え）</p>
+<p>(1) 環準同型 \(f\) が δ 射 ⇔ \(W_2(f)\circ w_A=w_B\circ f\)。<br>
+(2) δ 射は Frobenius 持ち上げと可換：\(f\circ\varphi_A=\varphi_B\circ f\)。<br>
+(3) \(B\) が p ねじれなしなら、逆に \(f\circ\varphi_A=\varphi_B\circ f\) を満たす環準同型は δ 射。<br>
+(4) 任意の δ 環で \(\varphi\) と \(\delta\) は可換で、\(\varphi\colon A\to A\) は δ 射。</p>
+<p class="proof"><b>証明.</b> (1) 両辺の第 0 座標は常に一致し、第 1 座標の一致が δ 射の条件。(2) \(\varphi(x)=x^p+p\delta(x)\) に \(f\) を当てる。(3) \(p\) の消去。(4) 自由 δ 環（p ねじれなし）で (3) を使って確かめ、普遍性で任意の δ 環へ送る。</p>
+<p class="lean"><b>Lean.</b> (1) <code>isDeltaHom_iff_sectionHom_comp</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaSectionNaturality.lean">DeltaSectionNaturality:18</a>）、(2) <code>IsDeltaHom.map_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:147</a>）、(3) <code>isDeltaHom_of_map_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:204</a>）、(4) <code>isDeltaHom_frobeniusLift_general</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobeniusNaturality.lean">DeltaFrobeniusNaturality:31</a>）。</p>
+</div>
+
+<h3>極限と余極限</h3>
+<div class="box thm">
+<p class="label">命題 2.1.6（原典 Rem 2.7）</p>
+<p>δ 環の圏はすべての極限と余極限を持ち、それらは下の環で計算される（忘却関手 \(U\colon\delta\text{-Ring}\to\text{Ring}\) は極限と余極限を保つ）。したがって \(U\) は左随伴（自由 δ 環、命題 2.1.11）と右随伴（Witt 環 \(W\)）を持ち、自然な δ 射 \(w_R\colon R\to W(R)\) がある（その最初の二成分は \(x\mapsto(x,\delta(x))\)）。</p>
+<p class="proof"><b>証明の方針.</b> 極限は成分ごとの \(W_2\) の切断を貼ればよい。余極限は自然な写像 \(\mathrm{colim}_iW_2(A_i)\to W_2(\mathrm{colim}_iA_i)\) を使って切断を作る。随伴は随伴関手定理から。<b>論理の向き</b>：随伴があることから出るのは「存在すれば下の環で計算できる」（右随伴があれば余極限を、左随伴があれば極限を保つ）までで、存在そのものは上の直接の構成（あるいはモナドの代数の圏としての一般論）による。</p>
+<p class="lean"><b>Lean.</b> <b>有向余極限だけ</b>：<code>deltaDirectLimitStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaDirectLimit.lean">DeltaDirectLimit:57</a>）（各段の切断を <code>Ring.DirectLimit.lift</code> で貼る）、普遍射も δ 射（:79）。テンソル積は完全かつ p 正則な場合だけ <code>perfectDeltaTensorStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Tensor/PerfectDeltaTensorStructure.lean">PerfectDeltaTensorStructure:73</a>）。<b>一般のテンソル積・積・引き戻しは未</b>：A0（prism の余積）で要る。作り方は直接でよく、テンソル積 \(A\otimes_CB\) は \(A\to W_2(A)\to W_2(A\otimes_CB)\) と \(B\to W_2(A\otimes_CB)\) が \(C\) 上で一致するので環のテンソル積の普遍性（<code>Algebra.TensorProduct.lift</code>）で切断が決まる（100 行程度の見込み）。随伴は形式化していない。\(w_R\) は ghost 写像が単射の場合だけ <code>deltaWittGhostRingHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaWittGhostRingHom.lean">DeltaWittGhostRingHom:16</a>）（長さ 2 に切ると \(w\) に戻る、:58）。</p>
+</div>
+
+<h3>元の添加と消去</h3>
+<div class="box thm">
+<p class="label">命題 2.1.7（元の添加。原典 Not 2.8 の \(\{\ \}\)）</p>
+<p>δ 環 \(R\) と集合 \(\sigma\) に対し、δ 環 \(R\{x_s\}_{s\in\sigma}\)、δ 射 \(R\to R\{x_s\}\)、元 \(x_s\) の組で次を満たすものがある：任意の δ 環 \(A\)、δ 射 \(f\colon R\to A\)、元 \(a_s\in A\) に対し、\(f\) を延長し \(x_s\mapsto a_s\) となる δ 射がただ一つある。具体的には \(R\{x_s\}=R[x_{(s,n)}]_{s\in\sigma,\,n\ge0}\) で、\(\delta(x_{(s,n)})=x_{(s,n+1)}\)、係数上は \(R\) の δ。</p>
+<p class="proof"><b>証明.</b> 一般に、多項式環 \(R[X_v]\) と任意の多項式 \(v_v\) に対し、係数上で \(R\) の δ に一致し \(\delta(X_v)=v_v\) となる δ 構造がただ一つある：係数の切断 \(R\to W_2(R)\to W_2(R[X])\) と \(X_v\mapsto(X_v,v_v)\) から、多項式環の普遍性で \(W_2\) への環準同型が一つ決まる（p ねじれなしは不要）。また多項式環からの環準同型は、係数と変数で δ と可換なら δ 射。これを \(v_{(s,n)}=x_{(s,n+1)}\) に使い、普遍性は \(x_{(s,n)}\mapsto\delta^n(a_s)\) の評価写像で与える。</p>
+<p class="lean"><b>Lean.</b> 多項式 δ 構造 <code>polynomialDeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialDelta.lean">PolynomialDelta:52</a>）、δ 射の判定 <code>isDeltaHom_mvPolynomial</code>（:106）。相対自由 δ 環 <code>relativeFreeDeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean">RelativeFreeDelta:32</a>）、普遍性 <code>existsUnique_relativeFreeDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeUniversal.lean">RelativeFreeUniversal:58</a>）。原典は自由 δ 環を作ってから pushout を取るが、Lean は基底 \(R\) 上で直接作る（一般の pushout が無くても済む）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.8（原典 Lemma 2.9）</p>
+<p>δ 環 \(A\) のイデアル \(I\) について、次は同値：(i) \(I\) は δ 安定（\(\delta(I)\subset I\)）；(ii) \(A/I\) 上の δ 構造で \(A\to A/I\) が δ 射になるものが存在する。このとき (ii) の δ 構造は一意で、\(I\) を零に送る δ 射 \(A\to B\) は \(A/I\) からの δ 射に一意に分解する。また δ 射の核は δ 安定。</p>
+<p class="proof"><b>証明.</b> (i)⇒(ii)：\(A\to W_2(A)\to W_2(A/I)\) は \(I\) を零に送る（第 0 座標は \(x\in I\)、第 1 座標は \(\delta(x)\in I\)）ので、商の普遍性で切断が降りる。(ii)⇒(i)：\(x\in I\) なら \(\delta(x)\bmod I=\delta(0)=0\)。原典は加法公式から \(\delta(a)\equiv\delta(a+f)\bmod I\) を示すが、\(W_2\) への環準同型が降りることで済む。</p>
+<p class="lean"><b>Lean.</b> 商 <code>quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean">DeltaQuotient:38</a>）、同値と一意性 <code>isStable_iff_existsUnique_quotient</code>（:71）、分解 <code>existsUnique_quotient_lift</code>（:84）、核 <code>IsDeltaHom.isStable_ker</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:218</a>）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.9（元の消去。原典 Ex 2.10）</p>
+<p>δ 環 \(A\) のイデアル \(I\) に対し、\(I\) を含む最小の δ 安定イデアル \(I_\delta\)（δ 閉包）があり、\(I_\delta\) は \(\bigcup_{n\ge0}\delta^n(I)\) で（\(I=(S)\) なら \(\bigcup_n\delta^n(S)\) で）生成される。\(A\to A/I_\delta\) は「\(I\) を零に送る δ 射」の普遍対象である。</p>
+<p class="proof"><b>証明.</b> \(I_\delta\) は \(I\) を含む δ 安定イデアル全部の交わり。生成元の表示には「生成元の δ が生成イデアルに入れば、イデアルは δ 安定」を使う：和は加法公式の補正項が \(I\) に入ること（Teichmüller 元を \(A/I\) へ送ると 0）、積は積公式の三項がそれぞれ \(I\) に入ることから、生成元についての帰納法。普遍性は、δ 射の核が \(I\) を含む δ 安定イデアルなので \(I_\delta\) も含むことと命題 2.1.8 から。</p>
+<p class="lean"><b>Lean.</b> <code>deltaClosure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdeal.lean">DeltaIdeal:30</a>）（最小性 <code>deltaClosure_le</code>、:53）、生成元の表示 <code>deltaClosure_eq_span_iterates</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaClosureGeneration.lean">DeltaClosureGeneration:77</a>）・<code>deltaClosure_span_eq_span_generator_iterates</code>（:50）、要の補題 <code>isStable_span</code>（:29）、普遍性 <code>existsUnique_deltaClosure_quotient_lift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean">DeltaQuotient:107</a>）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.10（生成元と関係式。原典 Not 2.8 の \(\{\ \}\) と \((\ )_\delta\) を合わせた形）</p>
+<p>δ 環 \(R\)、集合 \(\sigma\)、イデアル \(I\subset R\{x_s\}\) に対し、\(R\{x_s\}/I_\delta\) は次の普遍性を持つ：δ 射 \(f\colon R\to A\) と元 \(a_s\in A\) で、評価写像 \(x_s\mapsto a_s\) が \(I\) を零に送るものに対し、\(f\) を延長し \(x_s\mapsto a_s\) となる δ 射 \(R\{x_s\}/I_\delta\to A\) がただ一つある。例：\(\mathbb Z_{(p)}\{x,y\}/(f)_\delta\)、\(d\) で割る包 \(A\{a_s/d\}=A\{x_s\}/(dx_s-a_s)_\delta\)（<code>Delta/Division</code>）。</p>
+<p class="proof"><b>証明.</b> 命題 2.1.7 と 2.1.9 を合わせる。</p>
+<p class="lean"><b>Lean.</b> <code>existsUnique_relativeFreePresentationHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreePresentation.lean">RelativeFreePresentation:21</a>）。原典の pushout 図式の Lean での実体。</p>
+</div>
+
+<h3>自由 δ 環</h3>
+<div class="box thm">
+<p class="label">命題 2.1.11（原典 Lemma 2.11）</p>
+<p>(1) 集合 \(\sigma\) 上の自由 δ 環 \(\mathbb Z_{(p)}\{x_s\}\) は多項式環 \(\mathbb Z_{(p)}[x_{(s,n)}]\) で、\(x_{(s,n)}=\delta^n(x_s)\)。<br>
+(2) その Frobenius \(\varphi\) は忠実平坦。<br>
+(3) \(\mathbb Q\{x\}=\mathbb Z_{(p)}\{x\}[1/p]\) は \(x,\varphi(x),\varphi^2(x),\dots\) 上の多項式環。</p>
+<p class="proof"><b>証明.</b> (1) \(\mathbb Z_{(p)}[x_{(s,n)}]\) に \(\varphi(x_{(s,n)})=x_{(s,n)}^p+px_{(s,n+1)}\) を入れると \(A/p\) の Frobenius の持ち上げで、p ねじれなしなので命題 2.1.3 (2) から δ 構造 \(\delta(x_{(s,n)})=x_{(s,n+1)}\) が決まる。普遍性は \(x_{(s,n)}\mapsto\delta^n(a_s)\)。(2) 原典：有限段 \(\varphi_i\) の有向余極限に分け、ファイバーごとの判定で \(\varphi_i[1/p]\)（生成元のずらし）と \(\varphi_i/p\)（Frobenius と包含の合成）の忠実平坦性に帰着。Lean：p 完全忠実平坦性の判定（源と終域が p 正則で mod p が忠実平坦）を使い、mod p では \(\mathbb F_p[x]\) の Frobenius が expand 写像 \(x\mapsto x^p\) に一致し、各指数が \(p\) 未満の単項式を基底とする自由加群であることから。</p>
+<p class="lean"><b>Lean.</b> (1) 整数係数（\(\mathbb Z_{(p)}\) ではなく \(\mathbb Z\)）で原典どおりの経路：<code>freeDeltaFrobenius</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:25</a>）、mod p で Frobenius（:45）、δ 構造 <code>existsUnique_freeDeltaStructure</code>（:69）、普遍性 <code>existsUnique_freeDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaUniversal.lean">FreeDeltaUniversal:48</a>）。基底 \(R\) 上の版は命題 2.1.7。(2) <b>p 完全忠実平坦性まで</b>：<code>freeDeltaFrobenius_isCompletelyFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean">FreeDeltaFrobeniusCompletelyFlat:100</a>）、mod p の自由性 <a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusModPFlat.lean">FreeDeltaFrobeniusModPFlat:89</a>。本当の忠実平坦性は未。E3 で使う場面（Lemma 2.36 の (a)、Cor 2.44）は p 完全版で足りる見込み。今は監査以外から未使用。(3) 未（不要）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.12（原典 Cor 2.12：Frobenius は fpqc 局所的に全射）</p>
+<p>δ 環 \(A\) と \(x\in A\) に対し、忠実平坦な δ 射 \(A\to B\) で、\(x\) の像が \(\varphi(y)\)（\(y\in B\)）の形になるものがある。</p>
+<p class="proof"><b>証明.</b> \(B\) を \(\mathbb Z_{(p)}\{s\}\leftarrow\mathbb Z_{(p)}\{t\}\to A\)（\(t\mapsto\varphi(s)\)、\(t\mapsto x\)）の pushout とする。命題 2.1.11 (2) と、pushout が下の環で計算できること（命題 2.1.6）から忠実平坦。</p>
+<p class="lean"><b>Lean.</b> 未（E3 に不要）。一般のテンソル積と本当の忠実平坦性の両方が要る。</p>
+</div>
+
+<div class="box thm">
+<p class="label">定義 2.1.13（Joyal の \(\delta_n\)。原典 Rem 2.13）</p>
+<p>δ 環 \(R\) の元 \(x\) に対し、\(w_R(x)=(\delta_0(x),\delta_1(x),\delta_2(x),\dots)\in W(R)\)（Witt 座標）で \(\delta_n\colon R\to R\) を定める。\(\delta_0=\mathrm{id}\)、\(\delta_1=\delta\) で、\(\varphi^n(x)=\delta_0(x)^{p^n}+p\,\delta_1(x)^{p^{n-1}}+\dots+p^n\delta_n(x)\) で特徴づけられる。\(\delta_n\) は δ について次数 \(n\) のモニックな多項式で表せる。</p>
+<p class="lean"><b>Lean.</b> ghost 座標が \(\varphi^n(x)\) になる Witt 係数の列 <code>deltaWittGhostVector</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaWittGhostCoefficients.lean">DeltaWittGhostCoefficients:90</a>）（係数の存在は p ねじれがあっても成り立つ）。相対自由 δ 環の生成元での値 <code>relativeFreeWittGhostCoefficient</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostRecurrence.lean">RelativeFreeWittGhostRecurrence:17</a>）。</p>
+</div>
+
+<div class="box thm">
+<p class="label">命題 2.1.14（原典 Rem 2.14）</p>
+<p>\(\mathbb Z_{(p)}\{x\}\) は \(\{\delta_n(x)\}_{n\ge0}\) 上の多項式環である。</p>
+<p class="proof"><b>証明.</b> \(\delta_n(x)=\delta^n(x)+(\delta^{n-1}(x),\dots,x\) の多項式\()\) なので、\(\delta^n(x)\mapsto\delta_n(x)\) は三角形の変数変換で、逆も段数についての帰納法で作れる。</p>
+<p class="lean"><b>Lean.</b> 基底 \(A\) が p ねじれなしの相対版で済：\(\delta_n(x_s)=x_{(s,n)}+(\)下の \(n\) 段の変数の多項式\()\)、表示は一意 <a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostTriangular.lean">RelativeFreeWittGhostTriangular:47</a>；\(x_{(s,n)}\mapsto\delta_n(x_s)\) は \(A[x_{(s,n)}]\) の代数自己同型 <code>relativeFreeWittCoordinateEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittCoordinateChange.lean">RelativeFreeWittCoordinateChange:110</a>）（逆は強帰納）。E3 には不要だが主定理の経路にあり、André の一段の拡大で \(d\) で割る包の関係式を Witt 座標に移してモニックな方程式にする計算に使う（D12）。</p>
+</div>
+<p>原典の Rem 2.3（λ 環との関係）・Rem 2.5（導来の Frobenius 持ち上げ）・Ex 2.6（\(\mathbb Z_{(p)}\) が始対象。後半の「\(p\) が冪零な δ 環は零環」は <code>subsingleton_of_isNilpotent_p</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Perfect/DeltaTorsion.lean">DeltaTorsion:94</a>））は E3 に不要なので命題として立てない。</p>
+
 <h3>Lean の中身（§2.1）</h3>
 <div class="table-wrap"><table>
 <tr><th>場所</th><th class="num">本数（主定理で使用）</th><th>中身</th></tr>
@@ -66,170 +149,15 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td><code>Delta/Free/Finite/</code></td><td class="num">25（13）</td><td>相対自由 δ 環の有限段 \(A[x_{s,0},\dots,x_{s,N}]\) での δ の計算、Witt 座標と δ 変数の三角形同型（Rem 2.13・2.14 の相対版）。主に André の一段の拡大の関係式計算（<code>Division/Relations</code>）のための道具</td></tr>
 </table></div>
 
-<h3>詳しく：定義（Def 2.1〜Rem 2.4）</h3>
-<p class="meta">2026-10-25。§2.1 を三つの塊（定義／商と添加／自由 δ 環）に分けて読む、その一つ目。</p>
-
-<h4>原典の内容（pp.13–14）</h4>
-<ul>
-  <li><b>Def 2.1</b>：δ 環とは可換環 \(R\) と写像 \(\delta\colon R\to R\) で、\(\delta(0)=\delta(1)=0\) と
-  \[\delta(xy)=x^p\delta(y)+y^p\delta(x)+p\,\delta(x)\delta(y),\qquad \delta(x+y)=\delta(x)+\delta(y)+\tfrac{x^p+y^p-(x+y)^p}{p}\]
-  を満たすもの。加法公式の分数は \(\mathbb Z[x,y]\) の多項式なので、どの環でも評価できる（p.13 冒頭）。</li>
-  <li><b>Rem 2.2</b>：\(\varphi(x)=x^p+p\delta(x)\) は環準同型で、\(R/p\) の Frobenius を持ち上げる。Def 2.1 の恒等式はここから逆算したもの。\(R\) が p ねじれなしなら、Frobenius の持ち上げ \(\varphi\) と δ 構造は \(\delta(x)=(\varphi(x)-x^p)/p\) で一対一。</li>
-  <li><b>Rem 2.3</b>：λ 環との関係、rank 1 の元（\(\delta(x)=0\)）。E3 には不要。</li>
-  <li><b>Rem 2.4</b>（Rezk）：\(W_2(R)=R\times R\) に Witt の加法・乗法を入れると、δ 構造は第 0 成分 \(\epsilon\colon W_2(R)\to R\) の環準同型切断 \(w(x)=(x,\delta(x))\) と同じ。</li>
-  <li><b>Rem 2.5</b>：導来の Frobenius 持ち上げとしての解釈。E3 には不要。</li>
-</ul>
-
-<h4>Lean の定義：Rem 2.4 を採る</h4>
-<p><a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:58</a></p>
-<pre><code>abbrev WittTwo := TruncatedWittVector p 2 A      -- Mathlib の長さ 2 の Witt 環
-
-structure DeltaStructure where
-  sectionHom : A →+* WittTwo p A                 -- w : R → W₂(R)
-  coeff_zero : ∀ x, (sectionHom x).coeff 0 = x   -- ε ∘ w = id
-
-def delta (D) (x) := (D.sectionHom x).coeff 1     -- δ(x) = w(x) の第 1 座標
-def frobeniusLift (D) := (wittTwoFrobenius p A).comp D.sectionHom</code></pre>
-<ul>
-  <li>δ 構造は型クラスではなくデータなので、同じ環に複数の δ 構造を持てる（Warn 2.41 のような比較ができる）。</li>
-  <li><code>wittTwoFrobenius</code> は \(W_2\) の第 1 ghost 成分 \((x_0,x_1)\mapsto x_0^p+px_1\)（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:39</a>）。ghost 成分は環準同型なので、\(\varphi=\mathrm{ghost}_1\circ w\) が環準同型であること（Rem 2.2 の前半）は合成から自動的に出る。式 \(\varphi(x)=x^p+p\delta(x)\) は <code>frobeniusLift_apply</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:120</a>）。</li>
-  <li>\(\mathbb Z_{(p)}\) 代数の仮定は不要で、零環も含め任意の可換環で通る（D2）。</li>
-</ul>
-
-<h4>Def 2.1 の恒等式の導き方</h4>
-<p><code>delta_mul</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:87</a>）と <code>delta_add</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:98</a>）は、どちらも「切断が環準同型なので、Witt 環の積・和の第 1 座標の公式を読む」だけで出る。公式は共通基盤の二本：</p>
-<ul>
-  <li><code>witt_mul_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittCoefficientOne.lean">WittCoefficientOne:24</a>）：\((xy)_1=x_0^py_1+x_1y_0^p+p\,x_1y_1\)</li>
-  <li><code>witt_add_coeff_one</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:18</a>）：\((x+y)_1=x_1+y_1+([x_0]+[y_0])_1\)（\([\,\cdot\,]\) は Teichmüller 元）</li>
-</ul>
-<p>この二本の証明は、原典が Lemma 2.32 などで使う「普遍の場合に帰着する」手口と同じである：(1) 変数 \(X_{(i,n)}\) の整数係数多項式環 \(U\) は p ねじれなし、(2) \(U\) で第 1 ghost 成分 \(x_0^p+px_1\) の加法性・乗法性を書いて \(p\) を消去する（<code>mul_left_cancel₀</code>）、(3) 評価写像で任意の環 \(R\) へ送る。</p>
-<p>加法公式の補正項は \(p\) で割る式ではなく、整数係数の多項式 <code>wittAdditionCarry</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/WittAdditionCarry.lean">WittAdditionCarry:53</a>。\(p\) 倍すると \(X^p+Y^p-(X+Y)^p\) になる、:60）として定義し、どの環でも評価できる。原典の「分数は \(\mathbb Z[x,y]\) の元なので任意の環で評価できる」をそのまま形式化したもの。</p>
-<p>逆向き（Def 2.1 の恒等式を満たす写像から切断を作る）は <code>ofFunction</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdentities.lean">DeltaIdentities:19</a>）。\(x\mapsto(x,\delta x)\) が環準同型であることを、座標ごとに同じ二本の公式で確かめる。<code>ofFunction_deltaStructure</code> で、行って戻ると元の構造に戻る。</p>
-
-<h4>Rem 2.2 の一対一対応</h4>
-<ul>
-  <li><code>existsUnique_of_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:19</a>）：p 正則な \(A\) の環自己準同型 \(\varphi\) で \(\varphi(x)-x^p\in pA\) なら、\(\varphi\) を Frobenius 持ち上げとする δ 構造が一意に存在する。\(\delta(x)\) を \(p\delta(x)=\varphi(x)-x^p\) の解として選び、\(\varphi\) の加法性・乗法性を書いて \(p\) を消去すると Def 2.1 の恒等式が出るので、<code>ofFunction</code> で組み立てる。</li>
-  <li>一意性 <code>eq_of_frobeniusLift_eq</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:207</a>）。p ねじれがあると φ から δ は決まらないので、ここには p 正則が要る（原典どおり）。</li>
-  <li>mod p の形 <code>existsUnique_of_mod_p</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaFrobenius.lean">DeltaFrobenius:63</a>）は、Witt 環 \(W(k)\) の δ 構造（Cor 2.31）を作るときに使う。</li>
-</ul>
-
-<h4>δ 射</h4>
-<ul>
-  <li><code>IsDeltaHom D E f</code> は \(f\circ\delta=\delta\circ f\) で定義（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:162</a>）。\(W_2\) の図式の可換性と同値であることは <a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaSectionNaturality.lean">DeltaSectionNaturality:18</a>。</li>
-  <li>p ねじれのない終域なら、Frobenius と可換な環準同型は自動的に δ 射（<code>isDeltaHom_of_map_frobeniusLift</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:216</a>）。Cor 2.31 の「完全 p 完備 δ 環の間の環準同型は自動的に δ 射」に使う。</li>
-</ul>
-
-<div class="box">
-<p class="label">この塊で押さえること</p>
-<ol>
-  <li>定義を Rem 2.4 の形にしたので、Def 2.1 の恒等式も φ の環準同型性も Witt 環の公式から自動的に出る。\(p\) で割る操作はどこにも現れない。</li>
-  <li>その代わり Witt 環の第 1 座標の公式（共通基盤の二本）が要る。証明は「整数係数の普遍多項式環で \(p\) を消去して評価する」で、原典がよく使う帰着の手口と同じ。</li>
-  <li>Rem 2.3・2.5 は形式化しておらず、E3 にも不要。</li>
-</ol>
-</div>
-
-
-<h3>詳しく：余極限・添加・商（Rem 2.7〜Ex 2.10）</h3>
-<p class="meta">2026-10-25。§2.1 の二つ目の塊。</p>
-
-<h4>原典の内容（pp.14–15）</h4>
-<ul>
-  <li><b>Rem 2.7</b>：δ 環の圏は極限・余極限を持ち、下の環で計算できる。極限は易しい。余極限は \(\mathrm{colim}_iW_2(-)\to W_2(\mathrm{colim}_i-)\) から。よって忘却関手は左随伴（自由 δ 環、Lemma 2.11）と右随伴（Joyal の Witt 環 \(W(-)\)）を持ち、自然な δ 射 \(w_R\colon R\to W(R)\) がある（最初の二成分は \(x\mapsto(x,\delta(x))\)）。</li>
-  <li><b>Not 2.8</b>：\(\{\ \}\) は元の添加、\((\ )_\delta\) は元の消去。例えば \(\mathbb Z_{(p)}\{x,y\}/(f)_\delta\) は \(\mathbb Z_{(p)}\{t\}\to\mathbb Z_{(p)}\{x,y\}\)（\(t\mapsto f\)）と \(t\mapsto0\) の pushout。</li>
-  <li><b>Lemma 2.9</b>：\(I\) が δ 安定 ⇔ \(A/I\) に両立する δ 構造がある（一意）。逆向きは加法公式から \(\delta(a)\equiv\delta(a+f)\bmod I\)（\(f\in I\)）。</li>
-  <li><b>Ex 2.10</b>：\(IB=0\) となる普遍 δ-\(A\) 代数は \(A/J\)、\(J\) は \(I\) の δ 安定化（\(\bigcup_n\delta^n(I)\) で生成）。</li>
-</ul>
-
-<h4>Lean：余極限（Rem 2.7）</h4>
-<ul>
-  <li>一般の余極限・極限はない。あるのは<b>有向余極限</b>だけ：各段の切断 \(A_i\to W_2(A_i)\to W_2(\mathrm{colim})\) を Mathlib の <code>Ring.DirectLimit.lift</code> で貼り合わせる <a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaDirectLimit.lean">DeltaDirectLimit:57</a>。原典の「\(W_2\) が余極限と可換」の有向の場合を、普遍性で直接実現したもの。普遍射も δ 射（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaDirectLimit.lean">DeltaDirectLimit:79</a>）。使い先は δ 完全化（Rem 2.27）と André の ω₁ 反復。</li>
-  <li><b>テンソル積（pushout）は一般には無い</b>。完全かつ p 正則な場合だけ <code>Prism/Tensor</code> にある。Not 2.8 の pushout は、下の「添加＋δ 閉包による商」で必要な形だけ作る。A0（prism の余積、Čech–Alexander 複体）で一般のテンソル積が要る。</li>
-  <li>Witt 環への写像 \(w_R\colon R\to W(R)\)：ghost 座標が \(\varphi^n(a)\) になるように Witt 係数を一段ずつ選び（<code>deltaWittGhostVector</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaWittGhostCoefficients.lean">DeltaWittGhostCoefficients:90</a>、係数列は p ねじれがあっても作れる）、ghost 写像 \(W(R)\to R^{\mathbb N}\) が単射のときだけ環準同型になる（<code>deltaWittGhostRingHom</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaWittGhostRingHom.lean">DeltaWittGhostRingHom:16</a>）。長さ 2 に切ると元の切断 \(w\) に戻る（:58）。Joyal の右随伴としての普遍性は述べていない。E3 には不要で、使い先は André の一段の拡大の Witt 方程式（<code>Division/Relations</code>、<code>DividedPower</code> の Witt 剰余）。</li>
-  <li><b>論理の向き（随伴との関係）</b>：原典 Rem 2.7 は「(余)極限が存在して下の環で計算できる → 忘却関手は (余)極限と可換 → 随伴関手定理で左随伴（自由 δ 環）と右随伴（\(W\)）を持つ」の順。逆向きに随伴から出るのは「存在するなら下の環で計算できる」（右随伴があれば余極限を、左随伴があれば極限を保つ）までで、δ 環の圏での (余)極限の存在そのものは別の議論（モナドの代数の圏としての一般論など）が要る。Lean では Rem 2.4 の形のおかげで直接作るのが最も軽い：積は \(W_2(A\times B)=W_2(A)\times W_2(B)\)、テンソル積 \(A\otimes_CB\) は \(A\to W_2(A)\to W_2(A\otimes_CB)\) と \(B\to W_2(A\otimes_CB)\) が \(C\) 上で一致するので環のテンソル積の普遍性（<code>Algebra.TensorProduct.lift</code>）で切断が決まり、第 0 座標は生成元 \(a\otimes b\) で確かめればよい（有向余極限と同じ形）。一般のテンソル積が未形式化なのは必要がなかったためで、A0 で要るときは 100 行程度の見込み。随伴の経路は、自由 δ 環を関手として整えることと、任意の環（p ねじれあり）での \(W(R)\) の δ 構造と Joyal の随伴が重いので採らない。</li>
-  <li>補助：δ 安定部分環への制限 <a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaSubring.lean">DeltaSubring:16</a>（Lemma 2.36 の階乗部分環で使う）、環同型による δ 構造の移送 <a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaTransport.lean">DeltaTransport:16</a>。</li>
-</ul>
-
-<h4>Lean：元の添加（Not 2.8 の \(\{\ \}\)）</h4>
-<p>原典は自由 δ 環 \(\mathbb Z_{(p)}\{x\}\) を作ってから pushout を取るが、Lean は<b>基底 δ 環 \(R\) 上の相対自由 δ 環</b>を直接定義する。</p>
-<pre><code>abbrev RelativeFreeDeltaRing := MvPolynomial (σ × ℕ) R     -- x_(s,n) が δⁿ(x_s)
-relativeFreeDeltaStructure σ D :=
-  polynomialDeltaStructure (σ × ℕ) D (fun v ↦ X (v.1, v.2 + 1))   -- δ(x_(s,n)) = x_(s,n+1)</code></pre>
-<ul>
-  <li>鍵は <code>polynomialDeltaStructure</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialDelta.lean">PolynomialDelta:52</a>）：多項式環 \(R[X_v]\) では、係数の切断 \(R\to W_2(R)\to W_2(R[X])\) と、変数ごとの値 \(X_v\mapsto(X_v,\ \text{任意の}\ v_v)\) を指定すれば、多項式環の普遍性（<code>eval₂Hom</code>）で \(W_2\) への環準同型が一つ決まる。つまり<b>多項式環には δ(変数) を自由に指定した δ 構造が入る</b>。原典の Lemma 2.11 の証明は「\(\varphi(x_i)=x_i^p+px_{i+1}\) と p ねじれなし」から δ を出すが、Rem 2.4 の形ならこれが定義だけで済み、p ねじれなしも不要。</li>
-  <li>普遍性 <code>existsUnique_relativeFreeDeltaHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeUniversal.lean">RelativeFreeUniversal:58</a>）：基底 δ 射 \(f\colon R\to A\) と元 \(a_s\in A\) から、\(x_{(s,n)}\mapsto\delta^n(a_s)\) の評価写像が一意な δ 射。δ 射であることは「係数と変数で δ と可換なら多項式環全体で δ 射」（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialDelta.lean">PolynomialDelta:106</a>）から。</li>
-  <li>整数係数の版 <code>FreeDeltaRing</code>（Lemma 2.11 そのもの）もあるが、実際に使われているのは相対版。\(R=\mathbb Z\) で両者が一致することは <code>RelativeFreeIntegerComparison</code>（監査だけが読む）。</li>
-</ul>
-
-<h4>Lean：元の消去（Lemma 2.9・Ex 2.10）</h4>
-<ul>
-  <li>δ 閉包 <code>deltaClosure I</code> は「\(I\) を含む δ 安定イデアル全部の交わり」として定義（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaIdeal.lean">DeltaIdeal:30</a>）。最小性・冪等性・単調性はここから形式的に出る。</li>
-  <li>原典の生成元表示（\(\bigcup_n\delta^n(I)\) で生成）は定理 <code>deltaClosure_eq_span_iterates</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaClosureGeneration.lean">DeltaClosureGeneration:77</a>）。要になるのは <code>isStable_span</code>（:29）：生成元の δ が生成イデアルに入れば、イデアル全体が δ 安定。和は加法公式の補正項が \(I\) に入ること（Teichmüller 元を商へ送ると零、:19）、積は積公式の三項がそれぞれ \(I\) に入ることから、生成元についての帰納法で示す。</li>
-  <li>商 <code>quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaQuotient.lean">DeltaQuotient:38</a>）：切断 \(A\to W_2(A)\to W_2(A/I)\) が \(I\) を零に送る（第 0 座標は \(x\in I\)、第 1 座標は \(\delta(x)\in I\)）ので、商の普遍性で降りる。Lemma 2.9 は <code>isStable_iff_existsUnique_quotient</code>（:71）。原典の「加法公式から \(\delta(a)\equiv\delta(a+f)\)」の代わりに、\(W_2\) の環準同型が降りることで済ませている。</li>
-  <li>Ex 2.10 の普遍性 <code>existsUnique_deltaClosure_quotient_lift</code>（:107）：δ 射の核は δ 安定なので、\(I\) を消す δ 射は δ 閉包も消し、商から一意に降りる。</li>
-  <li>添加と消去を合わせた「生成元と関係式」の形が <code>existsUnique_relativeFreePresentationHom</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreePresentation.lean">RelativeFreePresentation:21</a>）：\(R\{x_s\}/(I)_\delta\) は、\(x_s\mapsto a_s\) が \(I\) を消す δ 射の普遍対象。Not 2.8 の pushout の Lean での実体はこれ（\(d\) で割る包 <code>Delta/Division</code> もこの形）。</li>
-</ul>
-
-<div class="box">
-<p class="label">この塊で押さえること</p>
-<ol>
-  <li>Not 2.8 の「添加」は相対自由 δ 環（多項式環に δ(変数) を指定した δ 構造）で、「消去」は δ 閉包による商で実現している。両者を合わせた表示の普遍性が、原典の pushout 図式の代わり。</li>
-  <li>Rem 2.4 の形のおかげで、多項式環の δ 構造は普遍性だけで作れ、p ねじれなしの議論が要らない。</li>
-  <li>余極限は有向のものだけ。一般のテンソル積（pushout）は A0 で必要になる未形式化の部品。</li>
-  <li>Joyal の \(R\to W(R)\) は ghost 単射の場合だけで、E3 には不要。</li>
-</ol>
-</div>
-
-
-<h3>詳しく：自由 δ 環（Lemma 2.11〜Rem 2.14）</h3>
-<p class="meta">2026-10-25。§2.1 の三つ目の塊。</p>
-
-<h4>原典の内容（pp.15–16）</h4>
-<ul>
-  <li><b>Lemma 2.11</b>：\(\mathbb Z_{(p)}\{x\}\) は \(\{x,\delta(x),\delta^2(x),\dots\}\) 上の多項式環で、Frobenius は忠実平坦。\(\mathbb Q\{x\}\) は \(\{x,\varphi(x),\varphi^2(x),\dots\}\) 上の多項式環。<br>
-  証明：\(A=\mathbb Z_{(p)}[x_0,x_1,\dots]\) に \(\varphi(x_i)=x_i^p+px_{i+1}\) を与えると \(A/p\) の Frobenius の持ち上げで、\(A\) は p ねじれなしなので δ 構造 \(\delta(x_i)=x_{i+1}\) が一意に決まる（Rem 2.2）。\(x_i\mapsto\delta^i(f)\) が δ 射になるので普遍性。忠実平坦性は、\(\varphi\) を有限段 \(\varphi_i\colon\mathbb Z_{(p)}[x,\dots,\delta^ix]\to\mathbb Z_{(p)}[x,\dots,\delta^{i+1}x]\) の有向余極限に分け、ファイバーごとの判定で \(\varphi_i[1/p]\)（生成元のずらし）と \(\varphi_i/p\)（Frobenius と包含の合成）の忠実平坦性に帰着する。</li>
-  <li><b>Cor 2.12</b>：任意の δ 環 \(A\) と \(x\) に対し、δ 射 \(A\to B\) で忠実平坦かつ \(x\) が \(\varphi(y)\) の形になるものがある（Lemma 2.11 の pushout）。E3 には不要。</li>
-  <li><b>Rem 2.13</b>：\(w\colon R\to W(R)\) の Witt 座標 \(w(x)=(\delta_0(x),\delta_1(x),\dots)\) が Joyal の \(\delta_n\)。\(\varphi^n(x)=\delta_0(x)^{p^n}+p\delta_1(x)^{p^{n-1}}+\dots+p^n\delta_n(x)\) で特徴づけられ、\(\delta_n\) は δ について次数 \(n\) のモニックな多項式。<b>Rem 2.14</b>：よって \(\mathbb Z_{(p)}\{x\}\) は \(\{\delta_n(x)\}\) 上の多項式環でもある。</li>
-</ul>
-
-<h4>Lean：自由 δ 環の二つの構成</h4>
+<h4><code>Delta/Free/</code> 直下 20 本の役割</h4>
 <div class="table-wrap"><table>
-<tr><th>構成</th><th>作り方</th><th>使われ方</th></tr>
-<tr><td>整数版 <code>FreeDeltaRing σ</code> ＝ \(\mathbb Z[x_{(s,n)}]\)</td><td><b>原典と同じ経路</b>：\(\varphi(x_{(s,n)})=x_{(s,n)}^p+px_{(s,n+1)}\)（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:25</a>）が mod p で Frobenius であることを示し、p ねじれなしなので Rem 2.2 の一対一対応 <code>existsUnique_of_mod_p</code> から δ 構造（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean">FreeDeltaRing:69</a>）。普遍性 <a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaUniversal.lean">FreeDeltaUniversal:48</a></td><td>Frobenius の平坦性の計算の舞台。主定理の経路では、恒等式の検証（<code>DeltaFrobeniusNaturality</code>）など一部だけ</td></tr>
-<tr><td>相対版 <code>RelativeFreeDeltaRing σ</code> ＝ \(R[x_{(s,n)}]\)（\(R\) は任意の δ 環）</td><td>W₂ 切断を多項式環の普遍性で直接与える（前の塊の <code>polynomialDeltaStructure</code>）。p ねじれなしを使わない</td><td>実際の添加・表示・\(d\) で割る包はすべてこちら</td></tr>
+<tr><th>まとまり</th><th>ファイル（主定理で使用）</th><th>役割</th></tr>
+<tr><td>A. 相対自由 δ 環（土台）</td><td><a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialDelta.lean"><code>PolynomialDelta</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeDelta.lean"><code>RelativeFreeDelta</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeUniversal.lean"><code>RelativeFreeUniversal</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreePresentation.lean"><code>RelativeFreePresentation</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeVariableSplit.lean"><code>RelativeFreeVariableSplit</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialRankOneDelta.lean"><code>PolynomialRankOneDelta</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeDeltaEstimate.lean"><code>RelativeDeltaEstimate</code></a>（7／7）</td><td>多項式 δ 構造（δ(変数) を自由に指定）、相対自由 δ 環とその普遍性・表示（命題 2.1.7・2.1.10）、変数の分割（<code>Division/Relations</code> が使う）、変数を rank 1 にした補助構造（André の多項式候補）、環射に沿う \(W_2\) 持ち上げの相対 δ の公式とイデアル冪評価（Lemma 2.17 と Finite が共有）</td></tr>
+<tr><td>B. 整数版の自由 δ 環</td><td><a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaRing.lean"><code>FreeDeltaRing</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaUniversal.lean"><code>FreeDeltaUniversal</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaPresentation.lean"><code>FreeDeltaPresentation</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/RelativeFreeIntegerComparison.lean"><code>RelativeFreeIntegerComparison</code></a>（4／2）</td><td>命題 2.1.11 (1) の原典どおりの構成と普遍性。実利用は <code>Basic/DeltaFrobeniusNaturality</code> 経由だけ。<code>FreeDeltaPresentation</code>・<code>RelativeFreeIntegerComparison</code> はどこからも import されない</td></tr>
+<tr><td>C. expand 写像の自由性</td><td><a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialExponentDivMod.lean"><code>PolynomialExponentDivMod</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialExpandDecomposition.lean"><code>PolynomialExpandDecomposition</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialExpandFree.lean"><code>PolynomialExpandFree</code></a>（3／3）</td><td>\(R[x]\) は \(x\mapsto x^n\) に沿って自由（基底は指数が \(n\) 未満の単項式）。一般の可換環論。André 側（<code>MonicPowerFamilyCover</code>）と D が使う</td></tr>
+<tr><td>D. Frobenius の平坦性</td><td><a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaModP.lean"><code>FreeDeltaModP</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PrimePolynomialFrobeniusFlat.lean"><code>PrimePolynomialFrobeniusFlat</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusModPFlat.lean"><code>FreeDeltaFrobeniusModPFlat</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean"><code>FreeDeltaFrobeniusCompletelyFlat</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateResidueFlat.lean"><code>FreeDeltaFrobeniusCoordinateResidueFlat</code></a>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateRegular.lean"><code>FreeDeltaFrobeniusCoordinateRegular</code></a>（6／0）</td><td>命題 2.1.11 (2) の p 完全版。mod p で Frobenius ＝ expand → 自由 → p 完全忠実平坦。座標ごとの版（\(L/(p,z)\to L/(p,\varphi(z))\) の忠実平坦性、\((p,\varphi(z))\) の正則性）は 10-15 に旧 B4 経路の部品として作られた。どれも今は監査以外から未使用だが、Lemma 2.36 (a)・Cor 2.44 で再利用できる</td></tr>
 </table></div>
-<p>どちらも台の環を最初から多項式環 \(\mathbb Z[x_{(s,n)}]\)・\(R[x_{(s,n)}]\) として定義し、\(x_{(s,n)}\) が \(\delta^n(x_s)\) になるように δ 構造を入れる。だから Lemma 2.11 の前半「\(\{x,\delta x,\dots\}\) 上の多項式環」は<b>定義そのもの</b>になり、示すべきは普遍性だけ。係数は \(\mathbb Z_{(p)}\) ではなく \(\mathbb Z\)（局所化は平坦なので困らない）。\(\mathbb Q\{x\}\) の主張は形式化しておらず、E3 にも不要。</p>
-
-<h4>Lean：Frobenius の平坦性</h4>
-<p>原典は「本当の」忠実平坦性を示すが、Lean にあるのは <b>p 完全忠実平坦性</b>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCompletelyFlat.lean">freeDeltaFrobenius_isCompletelyFaithfullyFlat:100</a>）。証明は共通基盤の判定 <a href="../../../SerrePositivity/CommutativeAlgebra/CompletelyFlatCriterion.lean">CompletelyFlatCriterion:68</a>：源と（φ で加群と見た）終域がともに p 正則で、mod p のテンソルが忠実平坦なら p 完全忠実平坦。mod p の部分は：</p>
-<ol>
-  <li>\(\mathbb Z[x_{(s,n)}]/p\cong\mathbb F_p[x_{(s,n)}]\)（<code>FreeDeltaModP</code>）。mod p では \(\varphi\) は Frobenius \(f\mapsto f^p\)。</li>
-  <li>\(\mathbb F_p\) 係数では係数が Frobenius で動かないので、Frobenius は \(x\mapsto x^p\) の expand 写像に一致する（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PrimePolynomialFrobeniusFlat.lean">PrimePolynomialFrobeniusFlat:19</a>）。</li>
-  <li>expand 写像に沿って \(R[x]\) は自由加群で、基底は各指数が \(p\) 未満の単項式（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/PolynomialExpandFree.lean">polynomialExpandBasis:89</a>）。よって mod p の Frobenius は自由で忠実平坦（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusModPFlat.lean">FreeDeltaFrobeniusModPFlat:89</a>）。</li>
-</ol>
-<p>原典の「有限段に分けてファイバーごとの判定」「\(\varphi_i[1/p]\) の忠実平坦性」は使わない。代わりに、p 完全版で済む場面では mod p の自由性だけで足りる。</p>
-<ul>
-  <li><b>Lemma 2.36 の (a)</b>（pushout \(C\) が p ねじれなし）には p 完全版で足りる：\(C\) は \(\varphi\) に沿う底変換で、\(\mathbb Z\{x\}\) が p ねじれなしかつ mod p で平坦なら、p 倍の核（\(\mathrm{Tor}_1\) を mod p の Tor に置き換えて計算）は消える。T2-2 はこの形で進められる。</li>
-  <li><b>Cor 2.44</b> の証明で使うのも \(\psi\colon A\{x\}^\wedge\to A\{y\}^\wedge\)（\(x_i\mapsto\varphi(y_i)\)）の p 完全忠実平坦性なので、ちょうど形式化済みの形。ただし Lean は \(\mathbb Z\) 上なので、p 完備な δ 環 \(A\) 上への底変換が要る。</li>
-  <li>座標ごとの版：\((p,\varphi(x_{(s,0)}))\) が正則列（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateRegular.lean">FreeDeltaFrobeniusCoordinateRegular:55</a>）、\(L/(p,z)\to L/(p,\varphi(z))\) が忠実平坦（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusCoordinateResidueFlat.lean">FreeDeltaFrobeniusCoordinateResidueFlat:109</a>）。Cor 2.44 の \(\psi_B\) に沿う envelope の計算に向けた部品。</li>
-  <li>これらは<b>どれも今は監査以外から使われていない</b>。</li>
-</ul>
-
-<h4>Lean：Joyal の \(\delta_n\)（Rem 2.13・2.14）</h4>
-<ul>
-  <li>前の塊の \(w\colon R\to W(R)\)（ghost 座標が \(\varphi^n\)）を相対自由 δ 環の生成元に当てた Witt 係数 <code>relativeFreeWittGhostCoefficient D s n</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostRecurrence.lean">RelativeFreeWittGhostRecurrence:17</a>）が \(\delta_n(x_s)\)。</li>
-  <li>「\(\delta_n\) は δ についてモニックで次数 \(n\)」の Lean 版：第 \(n\) Witt 係数 ＝ \(x_{(s,n)}\)＋（下の \(n\) 段の変数の多項式）、表示は一意（<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittGhostTriangular.lean">RelativeFreeWittGhostTriangular:47</a>）。基底 \(A\) の p 正則性を仮定する。</li>
-  <li>Rem 2.14 の Lean 版：\(x_{(s,n)}\mapsto\delta_n(x_s)\) が \(A[x_{(s,n)}]\) の三角形の代数自己同型（<code>relativeFreeWittCoordinateEquiv</code>、<a href="../../../SerrePositivity/BhattScholze/Delta/Free/Finite/RelativeFreeWittCoordinateChange.lean">RelativeFreeWittCoordinateChange:110</a>）。逆は段数の強帰納で作る。</li>
-  <li>E3 には不要だが<b>主定理の経路にある</b>：André の一段の拡大で、\(d\) で割る包の関係式 \(\delta^n(dx-a)\) を Witt 座標に移すとモニックな方程式になる（<code>Division/Relations</code>）。原典では Prop 7.11 経由なので出てこない計算（D12）。</li>
-</ul>
-
-<div class="box">
-<p class="label">この塊で押さえること</p>
-<ol>
-  <li>台を多項式環として定義するので、Lemma 2.11 の前半は定義で、普遍性だけが定理。整数版は原典の経路（Frobenius の持ち上げ＋p ねじれなし）、相対版は W₂ 切断を直接与える経路。</li>
-  <li>Frobenius の平坦性は p 完全忠実平坦性まで（mod p の expand 写像の自由性から）。原典の本当の忠実平坦性はないが、E3 で使う場面（Lemma 2.36 (a)、Cor 2.44）は p 完全版で足りる見込み。今は未使用。</li>
-  <li>Rem 2.13・2.14 は相対版で形式化済みで、André の一段の拡大（D12 の経路）で使っている。</li>
-</ol>
-</div>
+<p><code>Free/Finite/</code>（25 本、主定理で 13）は有限段での δ の計算と命題 2.1.14 の相対版。どこからも import されないのは <code>RelativeFreeFiniteDeltaIterate</code>・<code>RelativeFreeFiniteWittCoordinateChange</code>。</p>
 
 <div class="box">
 <p class="label">読んで分かったこと（§2.1）</p>
