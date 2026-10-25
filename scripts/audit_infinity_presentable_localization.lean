@@ -245,3 +245,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @arrowCancellationFamily_vertex_composite
 #check @arrowCancellationFamily_vertex_last
 #check @indArrowImage_cancel_left
+
+#check @generatedSource_terminal_pushout_extension
+#check @generatedSource_terminal_edge_extension
+#check @generatedSource_terminal_precomp_surjective
