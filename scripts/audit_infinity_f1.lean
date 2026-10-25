@@ -1,6 +1,7 @@
 import SerrePositivity.InfinityCategories.F1.Cocartesian
 import SerrePositivity.InfinityCategories.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
+import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp
