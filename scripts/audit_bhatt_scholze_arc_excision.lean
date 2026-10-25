@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 import SerrePositivity.BhattScholze.Perfectoidization.Excision
 
 /-!

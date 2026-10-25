@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.InitialCofinality
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 public import SerrePositivity.InfinityCategories.Derived.ConeEdgeCompatibility
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Derived.DiscreteCharacterization
 public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 
 /-! # 導来 perfectoid 化界面の存在（文献入力）
 

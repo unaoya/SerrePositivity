@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247ProductUniversality
 public import SerrePositivity.CLMST.Prop247RankTargetComparison
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralExistence
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 
 /-! # Prop 2.4.7：実 rank 成分単位の直積の普遍性
 

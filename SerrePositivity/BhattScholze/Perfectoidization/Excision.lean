@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Excision
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
 
 /-!
