@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteUnderRecognition
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.Interface
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 
 /-!

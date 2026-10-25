@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Stable
 public import SerrePositivity.InfinityCategories.Core
 public import SerrePositivity.InfinityCategories.F1
 public import SerrePositivity.InfinityCategories.F1B
-public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
+public import SerrePositivity.BhattScholze
 public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
 public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
@@ -265,11 +265,6 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence
-public import SerrePositivity.BhattScholze.PerfectoidizationInterface
-public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionResults
-public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv
 public import SerrePositivity.CLMST.TensorOrder
@@ -807,16 +802,12 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScala
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorDiscrete
 
 public import SerrePositivity.HomologicalAlgebra.PerfectResidueTensorRegular
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorRegular
 
 public import SerrePositivity.CommutativeAlgebra.CoefficientTensorAutomorphism
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorStructure
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorPCompletion
 
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
 
@@ -824,7 +815,6 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClas
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorClassicalComparison
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCompletedTensorH0
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFirstPairComparison
 
@@ -835,10 +825,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0P
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedAlgebraH0Comparison
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorH0Complete
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorH0
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularCompletionPure
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaIteratedTensorDiscrete
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionScalarConeComparison
 
@@ -847,7 +835,6 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuo
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
 
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierQuotient
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorComparison
 
 public import SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionAlgebra
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierNaturality
@@ -861,7 +848,6 @@ public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierRepresentativ
 public import SerrePositivity.CommutativeAlgebra.MappedPrincipalQuotient
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierAlgebra
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgebra
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierLinearComparison
 
@@ -879,26 +865,18 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorCartierProducts
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierProducts
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaCartierTensorAlgEquiv
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueFactor
 
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAlgebraCongruence
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismCartierTensorComparison
 
 public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensorTransport
 
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaResidueTensorTransport
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorZero
-public import SerrePositivity.BhattScholze.Perfectoidization.WittPresentation.FontaineCompletedTensorDiscrete
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedTensorDiscrete
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedSurjectiveAlgebraMul
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedQuotientMul
 
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
 
@@ -913,16 +891,11 @@ public import SerrePositivity.CLMST.AndreTorDescent
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTensor
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionCompletedBaseChange
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidCompletedBaseChangeDiscrete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0RingTransport
-public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaPresentedTensorRing
-public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorPerfectoidization
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeScalar
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeScalar
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorCoefficient
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeH0Coefficient
-public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChangeCoefficientComparison
-public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationCompletedBaseChange
 public import SerrePositivity.CLMST.AndrePerfectoidizationTorDescent
 public import SerrePositivity.CLMST.AndrePerfectoidIdealTorDescent
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedFibers
@@ -940,9 +913,7 @@ public import SerrePositivity.CommutativeAlgebra.FinitePresentationCommonLocaliz
 public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonTensorEquiv
 public import SerrePositivity.CLMST.PerfectoidIdealTorRoots
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
-public import SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientKernel
 public import SerrePositivity.CLMST.PerfectoidIdealTorCover
-public import SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientLinear
 public import SerrePositivity.CLMST.PerfectoidizationImageTorComparison
 public import SerrePositivity.CLMST.PerfectoidFiniteProductTor
 public import SerrePositivity.CLMST.PerfectoidIdealExcisionTor
@@ -956,8 +927,6 @@ public import SerrePositivity.CLMST.KLOriginalTorFromExcision
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 public import SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge
-public import SerrePositivity.BhattScholze.Andre.Variants.MonicRootedExtension
-public import SerrePositivity.BhattScholze.Andre.Remark715.Unoriented
 public import SerrePositivity.CLMST.KLAllModule
 
 /-!

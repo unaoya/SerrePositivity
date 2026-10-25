@@ -44,7 +44,6 @@ def PerfectoidizationInterfaceCAlg.toE3 (F : PerfectoidizationInterfaceCAlg R p 
   perfd := F.perfd ≫ cAlgForgetDerived R
   unit := underlyingUnit R F.unit
   h0 := F.h0
-  coconnective := F.coconnective
   universal S hS := F.universal S ((disc_forget_iff R _).mp hS)
   limitCone S := (F.limitCone S).underlying
   limit_isLimit S := (F.limitCone S).underlying_isLimit R p (F.limit_isLimit S)

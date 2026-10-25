@@ -63,8 +63,6 @@ structure PerfectoidizationInterfaceCAlg (hR : IsIntegralPerfectoid R p) where
   perfd : algebraNerve R ⟶ CAlg_R R
   unit : FunctorHom (algebraEmbedding R) perfd
   h0 : H0RingData R (perfd ≫ cAlgForgetDerived R) (underlyingUnit R unit)
-  coconnective : ∀ S (i : ℤ), i < 0 →
-    IsZero (H R i (vertex R (perfd ≫ cAlgForgetDerived R) S))
   universal : ∀ S, IsDiscrete R (perfd.app _ (nerveVertex S)) →
     IsPerfectoidization p (h0.unit.app S).right.hom
   limitCone : ∀ S, BSLimitConeDataCAlg R p perfd unit h0 S

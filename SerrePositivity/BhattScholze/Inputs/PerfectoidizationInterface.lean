@@ -24,7 +24,7 @@ Cor 8.11、Cor 8.12（p.69）、Cor 8.14（p.70）、Thm 10.11（p.82）であ�
 ## 方針
 各欄の導出鎖は `formalization-plans/perfectoidization-interface.md` §3 に対応する。
 Def 8.2 の p 完備 E∞-S 代数から、底の D(R) の関手 perfd、自然な unit、H⁰ の環と
-環準同型の関手性を取る。Lemma 8.4 から負次数のコホモロジーの消滅を得る。
+環準同型の関手性を取る。Lemma 8.4（負次数のコホモロジーの消滅）は界面のどの欄からも読まれないので要求しない（2026-10-26 に欄を削除）。
 Prop 8.5 と同証明の u-small な semiperfectoid cover の Čech 計算・coinitiality
 （同計画 §2.1）から、Type u の perfectoid 標的の図式上の指定極限錐を得る。
 HA Cor 3.2.2.5 による極限の忘却との整合性に加え、単位・H⁰ の射影の乗法整合性も保持する。

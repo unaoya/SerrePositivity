@@ -676,8 +676,6 @@ structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
   unit : NatInfinity R (J R) perfd
   /-- H⁰ の環構造と、単位・射のコホモロジーとの整合性。 -/
   h0 : H0RingData R perfd unit
-  /-- cochain の負次数が消える。離散性より弱い条件。 -/
-  coconnective : ∀ S (i : ℤ), i < 0 → IsZero (H R i (vertex R perfd S))
   /-- 離散な場合だけ、指定した環の単位が perfectoid 化になる。 -/
   universal : ∀ S, Disc R (vertex R perfd S) →
     IsPerfectoidization p (h0.unit.app S).right.hom
