@@ -2,6 +2,12 @@ module
 public import SerrePositivity.KST.SConstruction.Cofinality.CompleteSource
 public import SerrePositivity.KST.SConstruction.Cofinality.FullyFaithful
 public import SerrePositivity.KST.SConstruction.Cofinality.ZeroComparison
+public import SerrePositivity.KST.SConstruction.Cofinality.DiagramImage
+public import SerrePositivity.KST.SConstruction.Cofinality.StageDetection
+public import SerrePositivity.KST.SConstruction.Cofinality.MultiDiagramImage
+public import SerrePositivity.KST.SConstruction.Cofinality.StabilizedDiagramImage
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeDiagramImage
+public import SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization
 
 /-!
 概要：K-cof 所有の共終性補助結果を集約する。

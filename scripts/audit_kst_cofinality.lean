@@ -15,7 +15,13 @@ run_cmd do
   let expected := #[
     `SerrePositivity.KST.SConstruction.Cofinality.CompleteSource,
     `SerrePositivity.KST.SConstruction.Cofinality.FullyFaithful,
-    `SerrePositivity.KST.SConstruction.Cofinality.ZeroComparison]
+    `SerrePositivity.KST.SConstruction.Cofinality.ZeroComparison,
+    `SerrePositivity.KST.SConstruction.Cofinality.DiagramImage,
+    `SerrePositivity.KST.SConstruction.Cofinality.MultiDiagramImage,
+    `SerrePositivity.KST.SConstruction.Cofinality.StabilizedDiagramImage,
+    `SerrePositivity.KST.SConstruction.Cofinality.StageDetection,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeDiagramImage,
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -45,3 +51,10 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.sEndofunctor_map_isFullyFaithful
 #check @SerrePositivity.KST.SConstruction.Cofinality.multiSEndofunctor_map_isFullyFaithful
 #check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_zero_injective_iff
+#check @SerrePositivity.KST.SConstruction.Cofinality.exists_sFamily_of_pointwise_image
+#check @SerrePositivity.KST.SConstruction.Cofinality.exists_multiSFamily_of_pointwise_image
+#check @SerrePositivity.KST.SConstruction.Cofinality.sBiprodShift_mem_image_of_density
+#check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality_iff_boundary
+#check @SerrePositivity.KST.SConstruction.Cofinality.sBoundaryRecoveryIso_postcomp
+#check @SerrePositivity.KST.SConstruction.Cofinality.multiSBiprodShift_mem_image_of_completion
+#check @SerrePositivity.KST.SConstruction.Cofinality.exists_multiSFamily_of_biprodShift
