@@ -66,3 +66,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactDiagram_factorization_relative_ind
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactDiagram_factorization_over_smallPrefixPresentation_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingLower_isKappaSmall
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingComponentLower_isKappaSmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_wellFounded_coherentChoice
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compatibleMonoGluing
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_closedPrefixGluing
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_strictPrefixGluing
+
+
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_componentPrefixGluing
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingOpenStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingFactorization
