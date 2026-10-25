@@ -4,7 +4,7 @@
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（3816 jobs、73葉）。専用公理監査成功（746宣言、標準三公理のみ）。
+- 所有 All のビルド成功（3960 jobs、84葉）。専用公理監査成功（858宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
@@ -19,7 +19,10 @@
 - 全単調写像に対する自然性と正規化 native JoinCocone を構成（無条件版も公開）。
 - 全次数の native 成分写像の線形同値と閉列微分の対応を証明。
 - 任意の native 余錐の全成分を復元する閉加群射 UniversalMap と成分による一意性を構成。
-- 高次余錐族の逆構成と写像空間の同値は未完。零次の一意性で代用しない。
+- 高次余錐族の混合 HA 単体、二変数自然性、次数 −m の Hom 回収と成分一意性を構成。
+- 元の単体・パラメーターの両方の退化消滅と、全混合部分集合の係数比較を証明。
+- 回収した Hom の Leibniz 則と、HA 全体右辺の二区間の有限和表示を供給。
+- 高次 Hom の HA 方程式と全写像空間の同値は未完。零次の一意性で代用しない。
 - c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
 ### 残り（依存順）
 - 1. 工程A：変形 retract は D に移管。CoherentBar/Retract/ の新規葉は読み取り専用。
@@ -29,8 +32,8 @@
   読み取り専用 KappaCovers.StrictComparison の DGKappaStrictFilteredColimitComparison R D κ の値として公開する。
   添字は Type u の κ-filtered poset。c2 もこの比較から導く。
   ∞ 圏から poset への共終性は後段の Ind.exists_cofinal_kappaFiltered_poset が担当。
-- 4. representable・全 shift・κ未満 sphere-free 基底の native κ-compact 性（4–12時間）。
-- 5. 生成元判定から c6 の実 perfect／retract、c7 の七入力へ接続（1–3時間）。
+- 4. c2 は D に移管。D が比較を仮定引数として前倒しで構成する。
+- 5. c6・c7 も D に移管。D-bar は工程Bの全写像空間の普遍性の完了で公開名を報告し停止する。
 - 6. 自分の集約・監査・限定コミット（1時間）。
 ### 主要宣言
 - dgCoherentBarMaurerCartan、dgCoherentBarModule、dgCoherentBarModule_d。
@@ -50,6 +53,8 @@
 - dgCoherentBarNormalizedNativeCocone／NormalizedNativeCoconeUnconditional。
 - dgCoherentBarNativeHomUniversalColumns／NativeClosedHomEquiv。
 - dgCoherentBarCoconeUniversalMap／UniversalMap_unique／UniversalMapUnconditional。
+- dgCoherentBarCoconeFamilyHom／FamilyHom_unique／FamilyHom_columns。
+- dgCoherentBarCoconeFamilySimplex_mixed_hom_heq／FamilyHom_parameter_degeneracy。
 ### 依存と提供
 - D の既存 Derived・DGNerve・DifferentialGraded と KST/NonConnective は読み取り専用。
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
@@ -57,7 +62,7 @@
 - MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
 - 編集所有は Derived/CoherentBar/（Retract/・StrictComparison/ を除く）、その All、専用監査、本計画のみ。
 ### 未コミット
-- 工程Bの検証済み18葉・所有集約・監査・計画を限定保存する。
+- なし（工程Bの高次成分11葉・所有集約・監査・計画を限定保存）。
 ### 既知の問題
 - native 余錐は構成済み。全写像空間の普遍性と filtered 評価比較は未完。
   代数的閉列同値や零次の普遍射を全 native 普遍性とは扱わない。
@@ -65,7 +70,8 @@
   安定自己写像の恒等への鎖ホモトピーだけで、正規化模型との retract とは扱わない。
 - MC 仮定付き API を保持し、公開 MC 定理を代入する無条件 API を併設。
 ### 次の一手
-- 任意の高次余錐族からの Hom 成分復元を構成し、写像空間の同値へ進む。
+- HA 内部頂点和の元の単体側を Hom の Leibniz 項へ、パラメーター側を面の和へ同定する。
+- 同じ混合成分比較を用いて高次逆構成を束ね、写像空間の同値を結論する。
 
 ## 採用された設計追加（19:40）
 - 根拠：dgCoherentBarIndex は退化を含む全単体を独立因子にする。
@@ -86,5 +92,5 @@
 - 深層・既存 D 集約・両監査・他レーンを編集しない。
 - 自分の集約と監査のみ検証。根のビルド・.lake 削除はしない。
 - set -o pipefail と git commit --only によって所有ファイルだけ保存する。
-- 停止は二段目完了・設計変更提案・所有 import 閉包破損・稼働24時間。
+- 停止は工程B完了（最新分担）・設計変更提案・所有 import 閉包破損・稼働24時間。
 - 提案・依頼はユーザーへ中継する。実施記録はコミット本文。

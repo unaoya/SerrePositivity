@@ -83,7 +83,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomRestoration,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeFullCoefficient,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeUniversalMap,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeUniversalMapUnique]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeUniversalMapUnique,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinMixedIndex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyMixedHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.FullSimplexRhs]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
