@@ -86,6 +86,13 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorAugmentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexMonotonicity
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonLeftCoconeFaces
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorLeftAugmentation
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorState
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRounds
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequence
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -241,7 +248,10 @@ compact 初期比較状態の存在も構成した。後続余錐の全頂点の
 両種集合を支配する初期状態も構成した。後続の全図式は左側の元の添字余錐と
 右側の旧全図式を保ち、大域余錐の旧全形状への制限と右側の元の余錐も厳密に残る。
 元の poset 内の後続添字は旧前置図式の全頂点を支配する。左側の全増大余錐の
-整合は依頼済みの P-13 の公開比較を待つ。交互列全体の構成はまだ未完了。
+整合も P-13 の公開コミット 1e7d9538d の結合同型比較で接続した。
+左右の後続状態と実因子化の一巡を元の二表示から構成し、自然数再帰による
+全比較の可算交互列も得た。隣接段階の全図式・全余錐は厳密に制限される。
+この有限全比較列の全可算図式への貼合と、両側の共通部分表示の比較はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と
