@@ -197,3 +197,7 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
   §8 の導来 perfectoid 化とその環への帰結なので `Perfectoidization/Derived/` へ移す（案 B）。EInfinity が
   `PerfectoidizationInterface.Interface` を import しているので、旧名の書き換えは進捗確認チャット経由。文献入力
   `Inputs/PerfectoidizationInterface.lean` は Inputs に残す。いずれも W7 の完了後、W8 の最初の作業として行う。
+- 2026-10-25：ユーザーの決定。転送スタブを無くし、今後も生まない。BS が所有する集約 `SerrePositivity/BhattScholze.lean` を作り
+  （中身は今のルートが import している BS のモジュールを新しい名前で）、ルートの BS の 32 行と `audit_f5`・`audit_f7` の BS の import を
+  この 1 行に替えてもらう（進捗確認チャット経由）。その後 BS 側で W6・W7 の転送スタブと直下の集約 `PerfectoidizationInterface.lean` を削除する。
+  以後の整理では BS が自分の集約を直すだけでよい。例外は EInfinity が直接 import する E3 の型のモジュールで、W8 で名前を決めたら以後変えない。
