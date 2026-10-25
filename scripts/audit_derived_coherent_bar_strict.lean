@@ -156,7 +156,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationHomologyLegs,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationHomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationQuasiIso,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.KappaFilteredComparisonC1]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.KappaFilteredComparisonC1,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedBarDiagram,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedBarVertexComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedBarComparisonReduction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGraded,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanRestriction]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -267,3 +272,9 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarStrictColimitAugmentation_quasiIso
 #check SerrePositivity.InfinityCategories.dgKappaCoherentBarHomologyColimitIso
 #check SerrePositivity.InfinityCategories.dgKappaStrictBarColimitAugmentation_quasiIso
+
+#check SerrePositivity.InfinityCategories.dgKappaStrictDerivedBarCocone_vertexIso
+#check SerrePositivity.InfinityCategories.dgKappaStrictFilteredColimitComparison_of_barImageIsColimit
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarCutProjector_recover
+#check SerrePositivity.InfinityCategories.dgBarModuleMaurerCartan_restrict

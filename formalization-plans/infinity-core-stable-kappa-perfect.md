@@ -2,7 +2,7 @@
 
 ## 再割当：strict bar 比較 C1・C2（2026-10-25）
 
-- 現在地：C1 完了。元の coherent G のホモロジー図式と実 bar の
+- 現在地：C1 完了。B 到着により C2 続行中。元の coherent G のホモロジー図式と実 bar の
   単体次元フィルトレーション、実部分複体の段階模型とその余極限性まで構成。
   一次成分の閉性、高次 HA の二段下降、零段階での theta 消滅も構成。
   通常のホモロジー図式の増大 simplicial bar と、実 bar への頂点の閉零射を公開。
@@ -39,7 +39,9 @@
 - 三段目：1 coherent G のホモロジー図式、2 実 bar の単体次元フィルトレーション、
   3 有限 support と filtered 完全性によるホモロジー比較、4 strict 版の特殊化、
   5 自分の集約・専用監査・限定保存、6 B 到着後の比較値と無条件 covers。
-- 残り：B の実 native 余錐と無条件の普遍性を受け取る C2 のみ。
+- 作業中：CoherentCutTheta・MaurerCartanModuleMap（MC 段階を構成中、未検証）。
+- 残り：h-projective 頂点の実正規化 bar の h-projective 性、
+  実半自由模型へ余錐の余極限性を移送し、比較値と covers の無条件系を構成。
   非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
   高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
   工程 B の余錐と普遍性の代入は C2（B 到着後）。
@@ -51,12 +53,16 @@
   `dgCoherentBarStrictAugmentationGraded`、`dgCoherentBarStrictColumn`、
   `dgStrictFilteredColimit_quasiIso`。
 - 依存：D-bar の正規化加群と公開 MC、Mathlib の ModuleCat AB5 と複体の関手。
-  C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
-  読み取り時点の B は coslice 比較と全 fiber 同値・頂点式を引数に取る判定則。
+  B は 87ecf98c0 の無条件 native 余極限定理を読み取り専用で消費。
+  ただし B の標的は全加群の dg nerve、比較述語の標的は半自由模型。
+  ユーザー指示により bar の h-projective 性を単体次元フィルトレーションで構成。
+  任意の小さい直和は既存 moduleCoproduct_homotopicallyProjective を再利用。
+  実導来 bar 余錐の全単体の接続と C1 の頂点同型、消費側の還元は構成済み。
+  次元上限つき直和の分裂射影、包含に沿う MC 制限も構成済み。
   C2 の無条件値や covers の無条件系はまだ公開していない。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,607 jobs・専用監査152葉1312宣言通過。
+- 検証：coherent 入力への修正後、集約9,779 jobs・専用監査157葉1366宣言通過。
   許容三公理のみ。coherent 主定理と strict 標準射の C1 を完了。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
