@@ -26,6 +26,14 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.Bas
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixTermInterchange
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixSums
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixAtZero
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.CompositionExpansion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryFaceTerms
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryExpansion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryFacesOnly
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.FaceHomotopyAction
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryParts
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryFacesOnly
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.VertexBoundary
 /-!
 概要：D 所有の coherent bar の変形 retract の葉を集約する。
 方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。

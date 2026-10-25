@@ -36,7 +36,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedUniversalCoefficients,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixTermInterchange,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixSums,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixAtZero]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixAtZero,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.CompositionExpansion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryFaceTerms,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryExpansion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BoundaryFacesOnly,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.FaceHomotopyAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryParts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryFacesOnly,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.VertexBoundary]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
