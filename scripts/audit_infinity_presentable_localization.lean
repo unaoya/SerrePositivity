@@ -257,3 +257,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @indArrowImage_hasPreservedSequentialColimit
 #check @generatedSource_hasPreservedSequentialColimit
 #check @generatedSource_sequential_colimit_mem
+
+#check @generatedSource_terminal_coslice_isTerminal
+#check @generatedSource_terminal_identity_isTerminal
+#check @generatedSource_terminal_identity_mapping_contractible

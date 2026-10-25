@@ -45,6 +45,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalExtension
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalMapping
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalCoslice
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -119,6 +120,8 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 任意の閉包内辺による前合成は同じホモトピー圏で全射となる。写像空間全体の判定は未構成。
 終対象への全写像空間の可縮 Kan 性を、包含の充満忠実性で周囲の全 coslice 圏へ移した。
 周囲の任意の閉包内の指定余錐も扱い、同じ全写像空間による終対象性の判定も得た。
+終対象へ向かう指定余錐を反復 coslice の終対象とし、終対象の恒等余錐への
+全写像空間が可縮な Kan 複体であることも、coslice の元の fiber から証明した。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
