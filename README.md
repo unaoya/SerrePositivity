@@ -189,7 +189,7 @@ the two expositions.
 
 ## Source and license
 
-Copyright 2026 the SerrePositivity contributors.
+Copyright (c) 2026 Naoya Umezaki.
 The Lean code, scripts and documentation in this repository are licensed under the
 Apache License, Version 2.0; see `LICENSE`.
 
