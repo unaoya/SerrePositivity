@@ -296,3 +296,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorHomTensor
 public import SerrePositivity.InfinityCategories.F2.Presentable.TensorUnitHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAdjunctionUnit
 public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAdjunction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceUniverseLimitReflection
+public import SerrePositivity.InfinityCategories.F2.Presentable.NativeSpaceUniverseReflection
+public import SerrePositivity.InfinityCategories.F2.Presentable.NativeSmallHomContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.NativeContravariantHomContinuity
+public import SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion

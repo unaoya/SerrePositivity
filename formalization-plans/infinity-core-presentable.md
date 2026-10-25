@@ -27,7 +27,7 @@
   ユーザー確定により HTT 5.5.3.13 は e へ移し、c は六項目のままとする。
 
 ### 残り（依存順）
-1. P-1 d：随伴関手定理（5.5.2.9）。二比較界面を明示した d2・d4・d5 は接続済み。Ind-S 供給後に条件を外す。
+1. P-1 d：随伴関手定理（5.5.2.9）。d5 は無条件化。d2・d4 は Ind-S (1) の局所性比較だけを明示し、供給後に条件を外す。
 2. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
    Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
 3. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
@@ -64,7 +64,7 @@
 - `IsAccessible.exists_smallCovariantHom`、`IsAccessible.exists_smallContravariantHom`
 - `exists_leftAdjoint_iff_covariantHom_representable`
 - `exists_rightAdjoint_of_contravariantHom_representable`（全自然な反変 Hom 表現から構成）。
-- `exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful`（反映界面を明示、d5 は未完）。
+- `exists_leftAdjoint_iff_accessible_preservesLimits`、`rightAdjoint_isAccessible`（d5、宇宙比較入力なし）。
 
 ### 依存と提供
 - 読み取り専用：`F1/`、`F1B/`、`Core/`、`F2/Ind/`・`Compact/`・`Idempotent/`・`CatInfinity/`・`FilteredExchange/`、既存 `Stable/` の界面。
@@ -91,14 +91,14 @@
   Ind-S としてユーザーが依頼済み。必要な一方向は `RepresentableInversionDetectsLocality (PresheafInfinity A)`。
   この比較から一般 presentable への下降と d4 の全判定への接続は提供する。存在入力の除去は未完。
 
-- d4・d5 の無条件化には `Compact.spaceUniverseDiagram` の充満忠実性（または小極限・小余極限の反映）が必要。
-  Ind-S 供給待ち。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。
+- 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
+  Ind の小余極限反映と合わせ d5 は無条件。d4 に残る入力は d2 の局所性比較だけ。
 
 ### 未コミット
-- 所有ファイルは保存済み。他レーンの差分は変更しない。
+- `ConstantQuasicategory`・`SigmaQuasicategory`・`PiQuasicategory`・`PresheafSigmaBase` は積の前層模型を検証中。
 
 ### 次の一手
-- e の d 非依存部を進める。Ind-S が届いたら d2・d4・d5 の比較入力を外す。
+- e の d 非依存部を進める。Ind-S (1) が届いたら d2・d4 の局所性比較入力を外す。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `functor_isPresentable` と `tensorAdjunction` は構成済み。積の前層模型・引き戻し・Pr^L の小極限が残る。
@@ -141,7 +141,7 @@
 - [ ] d2. 小余極限を小極限へ送る前層の表現可能性。
 - [x] d3. accessible かつ小極限保存な空間値関手の余表現可能性。
 - [ ] d4. 小余極限保存と右随伴の存在の同値。
-- [ ] d5. accessible・小極限保存と左随伴の存在の同値、右随伴の accessibility。
+- [x] d5. accessible・小極限保存と左随伴の存在の同値、右随伴の accessibility。
 - [x] d6. 集約ビルド・両公理監査・公開界面と引き継ぎ更新。
 
 ## P-1 e 三段目（v3）

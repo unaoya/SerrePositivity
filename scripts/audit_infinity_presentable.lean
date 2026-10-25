@@ -637,3 +637,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_components
 #check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_homMap_components
 #check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunction
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverseDiagram_reflects_small_isLimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_of_spaceUniverse_image
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallLimits_of_spaceUniverse_image
+#check @SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality
