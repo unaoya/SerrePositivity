@@ -31988,3 +31988,18 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionNuComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellProjectionNuComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_zero_vertices
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_zero_vertices
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_top_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_top_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_bottom_invertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_bottom_invertible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_isPullback
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_value_isPullback
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle_value_outer_isPullback
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle_value_outer_isPullback
