@@ -38,25 +38,7 @@ theorem surjective_of_isPerfectoidization_of_rootedIdeal
   have hJ := compatibleRootFamilyZeroIdeal_eq_of_roots_on_ideal J ρ hρ0
   let e : R ⧸ J ≃+* R ⧸ compatibleRootFamilyZeroIdeal ρ := Ideal.quotEquivOfEq hJ.symm
   let ff := f.comp e.symm.toRingHom
-  have hff : IsPerfectoidization p ff := by
-    refine ⟨hf.1, ?_⟩
-    intro T _ hT g
-    obtain ⟨l, hl, hlu⟩ := hf.2 T hT (g.comp e.toRingHom)
-    refine ⟨l, ?_, ?_⟩
-    · apply RingHom.ext
-      intro x
-      have hh : l (f (e.symm x)) = g (e (e.symm x)) := RingHom.congr_fun hl (e.symm x)
-      change l (f (e.symm x)) = g x
-      rw [e.apply_symm_apply] at hh
-      exact hh
-    · intro k hk
-      apply hlu k
-      apply RingHom.ext
-      intro x
-      have hh : k (f (e.symm (e x))) = g (e x) := RingHom.congr_fun hk (e x)
-      change k (f x) = g (e x)
-      rw [e.symm_apply_apply] at hh
-      exact hh
+  have hff : IsPerfectoidization p ff := hf.precomp_ringEquiv e.symm
   have hsurj := surjective_of_isPerfectoidization_of_compatibleRootFamily hR ρ hρ ff hff
   intro x
   obtain ⟨y, hy⟩ := hsurj x

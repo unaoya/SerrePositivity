@@ -23,25 +23,7 @@ theorem surjective_of_isPerfectoidization_of_rootedPresentation
     (f : S →+* C) (hf : IsPerfectoidization p f) : Function.Surjective f := by
   let e : R ⧸ compatibleRootFamilyZeroIdeal ρ ≃+* S :=
     (Ideal.quotEquivOfEq hk.symm).trans (RingHom.quotientKerEquivOfSurjective hq)
-  have hfe : IsPerfectoidization p (f.comp e.toRingHom) := by
-    refine ⟨hf.1, ?_⟩
-    intro T _ hT g
-    obtain ⟨l, hl, huniq⟩ := hf.2 T hT (g.comp e.symm.toRingHom)
-    refine ⟨l, ?_, ?_⟩
-    · apply RingHom.ext
-      intro x
-      have hx := RingHom.congr_fun hl (e x)
-      change l (f (e x)) = g (e.symm (e x)) at hx
-      rw [e.symm_apply_apply] at hx
-      exact hx
-    · intro k hk'
-      apply huniq
-      apply RingHom.ext
-      intro s
-      have hs := RingHom.congr_fun hk' (e.symm s)
-      change k (f (e (e.symm s))) = g (e.symm s) at hs
-      rw [e.apply_symm_apply] at hs
-      exact hs
+  have hfe : IsPerfectoidization p (f.comp e.toRingHom) := hf.precomp_ringEquiv e
   have hs := surjective_of_isPerfectoidization_of_compatibleRootFamily hR ρ hρ
     (f.comp e.toRingHom) hfe
   intro c
