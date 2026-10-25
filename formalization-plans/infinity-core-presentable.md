@@ -96,10 +96,10 @@
 - e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
 
 ### 未コミット
-- `HomotopyLimits/RelativeFunctorPostFibration` は全 Hom 図式の極限判定に必要な後合成の持ち上げを構成中。
+- `PullbackCosliceBaseChange` は元の引き戻しの coslice と底変換した成分の全族との比較を構成中。
 
 ### 次の一手
-- e5 は小さい充満候補模型、全余錐圏の引き戻し同型、成分・標的像の共通 compact 濃度、cospan 交換を検証済み。全 Hom 族の compact 性と filtered 生成表示へ進む。
+- e5 は小さい充満候補模型・共通 compact 濃度・cospan 交換と、分類済みの全極限錐族の保存反映（小さい添字の宇宙を保持）を検証済み。元の coslice への接続と filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

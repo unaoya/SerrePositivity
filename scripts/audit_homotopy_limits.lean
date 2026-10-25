@@ -14913,3 +14913,9 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms fullSubcomplexConeLift_inclusion
 #check @isLimitCone_of_fullSubcomplex
 #print axioms isLimitCone_of_fullSubcomplex
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPost_fibration
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPullbackCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.vertexFiberMap_leftFibration
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPost_fibration
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPullbackCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.leftFibrationPullbackCone_isLimit
