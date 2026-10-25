@@ -915,7 +915,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.TensorCoefficientExactTransfer,
     `SerrePositivity.InfinityCategories.Derived.Gluing.UniverseDerivedExactness,
     `SerrePositivity.InfinityCategories.Derived.Gluing.CanonicalStableStructure,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCFactorKernel]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeCFactorKernel,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackObjects,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackFullyFaithful,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackEssentialSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackStability,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackFlatQuotient,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackStableClosure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackVerdierSequence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackQuasiIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
