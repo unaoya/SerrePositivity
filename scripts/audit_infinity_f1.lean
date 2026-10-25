@@ -9361,3 +9361,6 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso_comp
 #print axioms SerrePositivity.InfinityCategories.posetSubsetPointRemovalOrderIso_comp
+
+#check SerrePositivity.InfinityCategories.orderIsoNerveIso
+#print axioms SerrePositivity.InfinityCategories.orderIsoNerveIso

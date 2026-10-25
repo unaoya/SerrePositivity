@@ -93,3 +93,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.UniverseConservativi
 public import SerrePositivity.InfinityCategories.F2.Compact.ConservativeColimitReflection
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimitReflection
+
+public import SerrePositivity.InfinityCategories.F2.Compact.LimitComparisonApex
+
+public import SerrePositivity.InfinityCategories.F2.Compact.ConservativeLimitReflection

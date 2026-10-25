@@ -751,3 +751,5 @@ public import SerrePositivity.InfinityCategories.F1B.NerveComparison.TerminalJoi
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.PosetLowerTerminalFunctor
 
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.PosetLowerJoinIso
+
+public import SerrePositivity.InfinityCategories.F1B.Localization.Saturation

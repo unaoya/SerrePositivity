@@ -3025,3 +3025,9 @@ end
 
 #check SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inr
 #print axioms SerrePositivity.InfinityCategories.F1B.posetLowerJoinIso_inr
+
+#check SerrePositivity.InfinityCategories.IsLocalization.of_subset_invertedEdges
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.of_subset_invertedEdges
+
+#check SerrePositivity.InfinityCategories.IsLocalization.saturate
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.saturate

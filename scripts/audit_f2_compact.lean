@@ -854,3 +854,12 @@ run_cmd do
     count := count + 1
   if count == 0 then throwError "F2 Compact: no declarations audited"
   logInfo m!"F2 Compact audit passed: {count} declarations, standard three axioms only."
+
+#check SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApexEdge
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApexEdge
+
+#check SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApex_map_isInvertible
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.limitComparisonApex_map_isInvertible
+
+#check SerrePositivity.InfinityCategories.F2.Compact.isLimitCone_of_conservative_image
+#print axioms SerrePositivity.InfinityCategories.F2.Compact.isLimitCone_of_conservative_image
