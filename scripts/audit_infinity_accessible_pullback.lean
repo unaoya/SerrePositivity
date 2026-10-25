@@ -188,3 +188,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingTower_coslice_ind
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingDiagram_coslice_ind
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.joinInr_rightAnodyne_of_leftAnodyne_point
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.joinInr_ulift_orderBot_isRightCofinal
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSource_orderBot_hasColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSource_orderBot_isColimitCone_iff_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_fixedSourceOrdinalColimit_compact_image
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingColimit_vertexIso_of_hasColimit
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.alternatingFixedSourceOverColimit_vertexIso
