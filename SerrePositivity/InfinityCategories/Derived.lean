@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedDetection
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiData
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion

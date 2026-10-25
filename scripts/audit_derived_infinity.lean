@@ -1,3 +1,7 @@
+import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedDetection
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiData
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetNaturality
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion
@@ -7428,6 +7432,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedDetection,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiData,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetNaturality,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion,
