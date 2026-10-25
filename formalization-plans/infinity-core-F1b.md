@@ -72,8 +72,21 @@ X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
 右 Hom の点評価比較の元の逆も
 `pointedRightFamilyTransportIso_symm_heq_moving` で同じ moving 比較へ戻した。
 両対象の統合ビルド5697 jobs、専用監査9921宣言で通過、標準三公理のみ。
-Ncomp 本体は未完。次は三射と一点係数を同時に保持した実高次図式を使い、
-元の二段評価と合成評価の指定値を一致させる。
+同じ実三角形の三本の実辺から、元の指定合成比較を回収する
+`TransportTriangleDiagram.constantTopIso_eq` を証明した。
+`transportTriangleDiagramOfSimplex` と `transportTetrahedronFaceOfSimplex` は
+同じ実二単体・四面体の実頂点と実三辺を保つ。別々の面の充填は選ばない。
+`exists_simplexInitialLift` は任意の底の実単体族を、元の初期値を固定して
+left fibration に持ち上げる。`simplexSharedFacePrism` は隣接面の共有辺の
+厳密等式、`transportTriangleSimplex_bottomPrism`・`_leftPrism`・`_rightPrism` は
+折り畳み後の実三辺が元の面の制限そのものであることを保証する。
+`leftFibrationPrism_transportIntervalIso_shared_prism_heq` で、共有する実辺の
+射影から底の族の等式を導き、元の選択済み区間比較の値も保持した。
+対象ビルド3341 jobs、専用監査10006宣言で通過、標準三公理のみ。
+推移的 import は2123プロジェクトモジュール、他レーンの未保存依存は0。
+Ncomp 本体は未完。次は同じ実四面体の四面の貼り合わせ式で共有する指定比較を
+消去し、三射と一点係数を保持した元の二段評価と合成評価へ接続する。
+a④・b① は未着手であり、これらの補題だけで完了とは主張しない。
 
 
 凍結時の a①・a② は完了。長辺の因子式 Nlong も

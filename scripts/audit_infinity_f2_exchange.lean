@@ -22,6 +22,12 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareCho
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportSquareSourceNaturality
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCompositionMovingNaturality
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightMovingComparison
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTrianglePasting
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedronFace
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.SimplexInitialLift
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.SimplexSharedFacePrism
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTriangleSimplexEdges
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportIntervalSharedPrism
 import Lean.Util.CollectAxioms
 
 /-!
@@ -98,6 +104,17 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentKanRightCompositionMovingIso_source_naturality
 #check @SerrePositivity.InfinityCategories.F2.coherentKanRightCompositionDiagonalIso_heq_moving
 #check @SerrePositivity.InfinityCategories.F2.pointedRightFamilyTransportIso_symm_heq_moving
+
+#check @SerrePositivity.InfinityCategories.F2.TransportTriangleDiagram.constantTopIso_eq
+#check @SerrePositivity.InfinityCategories.F2.transportTriangleDiagramOfSimplex
+#check @SerrePositivity.InfinityCategories.F2.transportTetrahedronFaceOfSimplex
+#check @SerrePositivity.InfinityCategories.F2.simplexPrismVertex_zero_leftAnodyne
+#check @SerrePositivity.InfinityCategories.F2.exists_simplexInitialLift
+#check @SerrePositivity.InfinityCategories.F2.simplexSharedFacePrism
+#check @SerrePositivity.InfinityCategories.F2.transportTriangleSimplex_bottomPrism
+#check @SerrePositivity.InfinityCategories.F2.transportTriangleSimplex_leftPrism
+#check @SerrePositivity.InfinityCategories.F2.transportTriangleSimplex_rightPrism
+#check @SerrePositivity.InfinityCategories.F2.leftFibrationPrism_transportIntervalIso_shared_prism_heq
 
 open Lean in
 run_cmd do
