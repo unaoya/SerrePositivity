@@ -42,3 +42,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_smallCoproduct
 #check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_preservedRealizations
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_twistedArrow
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countable_geometricRealizationShape_simplices
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableFiniteStage_finite
+#check @SerrePositivity.InfinityCategories.F2.Presentable.iSup_countableFiniteStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableSimplexStage_le_iff
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableStageCommaEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableStageSimplexToComma_proj
+#check @SerrePositivity.InfinityCategories.F2.Presentable.countableFiniteStageCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_iff_lastVertexRestriction

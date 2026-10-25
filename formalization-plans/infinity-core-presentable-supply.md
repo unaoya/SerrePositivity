@@ -11,7 +11,11 @@
   inner anodyne 性を構成した。宇宙変更後の全余錐比較も得られる。
 - 元の小余積の存在・保存と全有限図式の保存余極限から、元の可算列の
   保存余極限と任意の指定全余錐の保存を公開した（s11.2）。
-- Supply.All は 8200 jobs で成功。独立監査は 157 宣言、標準三公理のみ。
+- 可算形状の有限増大列、各単体の最小所属段階とその単調性を構成した。
+- 段階関手のコンマ圏と有限段階の反対単体圏の同値、元の包含との厳密な
+  可換性を構成した。幾何学的実現の添字の全単体の可算性も確認した。
+- 最後の頂点写像への制限による保存余極限の検出を、宇宙変更後に公開した。
+- Supply.All は 8217 jobs で成功。独立監査は 209 宣言、標準三公理のみ。
 - P-11 の全小形状の最終命題と P-12 の compact 判定は未供給。
 
 ### 残り（依存順、見積もり）
@@ -35,6 +39,12 @@
 - `sequentialTelescopeToSpine_isIso`、`sequentialTelescopeToNerve_innerAnodyne`
 - `hasPreservedColimit_sequential_of_coproducts_finite`
 - `preservesSequentialColimits_of_coproducts_finite`
+- `countable_geometricRealizationShape_simplices`
+- `countableFiniteStage_finite`、`iSup_countableFiniteStage`
+- `countableSimplexStage_le_iff`、`countableSimplexStageFunctor`
+- `countableStageCommaEquivalence`、`countableStageSimplexToComma_proj`
+- `countableFiniteStageCocone_isColimit`
+- `hasPreservedColimit_iff_lastVertexRestriction`
 
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
@@ -45,7 +55,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（s11.2 の九葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
+- なし（s11.3 前半の五葉・Supply.All・独立監査・本計画を供給コミットへ記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -55,9 +65,9 @@
   未検証であり供給・集約・コミットに含めない。
 
 ### 次の一手
-- 幾何学的実現の添字形状の有限部分複体による増大列を作る。
-  反対 transport 単体圏の各単体の最小所属段階を使い、局所左 Kan 図式を
-  有限段階へ縮約して、供給した可算列の余極限と合成する。
+- コンマ圏の比較と最後の頂点写像の自然性を結び、局所左 Kan 図式の
+  保存余極限を有限段階の保存余極限から得る。可算列の余極限と合成して
+  可算形状を閉じ、既存の実現版へ接続する。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
