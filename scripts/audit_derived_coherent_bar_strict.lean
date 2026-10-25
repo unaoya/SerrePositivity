@@ -119,7 +119,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyFaceIndices,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPositiveFaceCoefficient,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyEqualities,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroFaceCoefficient]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroFaceCoefficient,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstFaceSigns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentSignedLayerFaces,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentSignedLayerFaceColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerFaceHomologySum,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerFaceHomologyLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerFaceHomologyMatrix,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ModuleCoproductHomologyInclusions,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCycleElements,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexHomologyClassBoundary]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -210,3 +222,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarNaturalLayerHomologyIso_ι
 #check SerrePositivity.InfinityCategories.dgCoherentBarSignedPositiveFaceCoefficient
 #check SerrePositivity.InfinityCategories.dgCoherentBarSignedZeroFaceCoefficient
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyComparison
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomology_exactAt
+#check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyZeroIso
+#check SerrePositivity.InfinityCategories.dgComplexHomologyClass_eq_zero_iff
