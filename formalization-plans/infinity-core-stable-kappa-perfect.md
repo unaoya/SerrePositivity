@@ -27,11 +27,13 @@
   C1 の証明へ native 普遍性を仮定していない。B は現計画で未構成。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,454 jobs・専用監査29葉253宣言通過。
+- 検証：coherent 入力への修正後、集約4,462 jobs・専用監査36葉313宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
   高次 HA prefix の二段以上下降、任意の元の有限 support と次元上限。
+  評価複体の実部分複体、段同士の包含、段階模型の実余極限性を構成。
+  ホモロジー図式の射と元の辺の鎖写像によるホモロジー射の自然性も検証済み。
 - 主要追加名：`dgCoherentBarStrictColimitAugmentation`、`dgStrictNormalizedEndRebase_d`。
 - 次の一手：coherent G のホモロジー図式と単体次元フィルトレーションを実装する。
   strict 版の既存部品は保持するが、一般の G を strict と仮定しない。

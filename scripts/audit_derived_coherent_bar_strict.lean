@@ -33,7 +33,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyDiagram,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiniteSupport,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiltration,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiltrationDifferential]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFiltrationDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentDegreeFiltration,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentDegreeDifferential,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyEdges,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeSubcomplex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStages,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FilteredModuleUnion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageColimit]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -71,3 +78,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedDegree_boundedSupport
 #check SerrePositivity.InfinityCategories.dgCoherentBarHigherPrefixColumn_mem_filtration
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedHomFiltration_theta
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedDegreeFiltration_d
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedStageComplex
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedStagesIsColimit
+#check SerrePositivity.InfinityCategories.dgCoherentBarHomologyDiagramObjIso_naturality
