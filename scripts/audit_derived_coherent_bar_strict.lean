@@ -131,7 +131,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCycleElements,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstHomologyComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexHomologyClassBoundary]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexHomologyClassBoundary,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentLayerHomologyExact,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageHomologySupport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageHomologyDescent,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStageHomologySurjective,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStageFiniteKernel,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageKernelDescent,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentZeroStageKernel,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyCokernel,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyBarCofork,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyBarCokernel,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyColimit]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -227,3 +238,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomology_exactAt
 #check SerrePositivity.InfinityCategories.dgCoherentBarFirstHomologyZeroIso
 #check SerrePositivity.InfinityCategories.dgComplexHomologyClass_eq_zero_iff
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarZeroStageHomology_surjective
+#check SerrePositivity.InfinityCategories.dgCoherentBarZeroStageHomology_kernel
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarHomologyIsCokernel
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarHomologyColimitIso

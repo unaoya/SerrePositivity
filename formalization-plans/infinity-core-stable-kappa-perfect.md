@@ -24,7 +24,9 @@
   正・零の両面について、通常の bar と同じ添字・同じ係数射への比較を構成。
   一次微分全体の交代面和と、実長完全列の一次複体から非退化 bar への
   複体同型を構成。一次複体の正次数完全性と零次＝余極限も構成。
-  最終ホモロジー同型と strict augmentation の擬同型性はまだ未完。
+  有限 support の cycle と境界の下降により零段階からの全射性と核を同定。
+  実ホモロジーを一次微分の余核に同定し、全 coherent 入力に対する
+  `dgCoherentBarHomologyColimitIso` を構成済み。strict 標準射の擬同型性は未完。
 - 所有追加：`Derived/CoherentBar/StrictComparison/` の新規葉とその `All`、
   `scripts/audit_derived_coherent_bar_strict.lean`。既存 CoherentBar は読み取り専用。
 - 主定理の入力修正：κ-filtered poset 上でも native 図式は coherent のまま。
@@ -34,7 +36,7 @@
 - 三段目：1 coherent G のホモロジー図式、2 実 bar の単体次元フィルトレーション、
   3 有限 support と filtered 完全性によるホモロジー比較、4 strict 版の特殊化、
   5 自分の集約・専用監査・限定保存、6 B 到着後の比較値と無条件 covers。
-- 残り：有限 support の下降による最終比較、strict 版への特殊化（C1）。
+- 残り：strict 標準射のホモロジー射を上の比較へ同定し、擬同型性を示す（C1）。
   非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
   高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
   工程 B の余錐と普遍性の代入は C2（B 到着後）。
@@ -45,7 +47,7 @@
   C1 の証明へ native 普遍性を仮定していない。B の普遍性の完了報告は未着。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約4,582 jobs・専用監査127葉1112宣言通過。
+- 検証：coherent 入力への修正後、集約4,593 jobs・専用監査138葉1211宣言通過。
   許容三公理のみ。C1 完了とは扱わない。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
