@@ -91,6 +91,18 @@
   指定 Yoneda 単位の評価との両立と、全自然な end 比較は引き続き未構成。
 - 最新 Supply.All は 8684 jobs で成功。独立監査は 537 宣言、標準三公理のみ。
 
+- 元の coslice と始点固定 twisted arrow の後合成が厳密に可換な実正方形を構成した。
+- 異なる底の間の実正方形の分類と、その指定分類射の自然性を構成した。
+- 同じ実比較の可逆性で指定 coslice 単位の普遍性を移し、元の始点固定
+  twisted arrow 後合成単位の全 Hom 左 Kan 普遍性を証明した。
+- 最新 Supply.All は 8687 jobs で成功。独立監査は 570 宣言、標準三公理のみ。
+
+### P-12 後の割り当て（ユーザー判断）
+- P-f の f4：HTT 5.5.4.15(4)。反射を明示的な引数に取り、既存の
+  `LocalReplacementSaturation` に接続して、生成元の強飽和閉包と反転辺の一致を供給する。
+- P-f の f3 完了後に反射を代入する系を置く。所有は Supply/ の新規葉。
+- 公開名をユーザーへ報告して停止する。着手は P-12 完了後。
+
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
   （HTT 5.3.4.9、4〜8 時間）。
@@ -183,6 +195,13 @@
 - `classifiedCosliceLeftKanUnit_homUniversal`
 - `covariantHomComparison_homUniversal`
 
+- `pointCosliceToTwistedArrowSource_postcomp`
+- `leftClassificationSquareHom`、`leftClassificationSquareHom_naturality`
+- `leftClassificationHom_isIso_of_precompositionEquivalence`
+- `pointCosliceSquareHom_homUniversal`
+- `twistedSourceHomUnit`、`twistedSourceHomUnit_homUniversal`
+- `leftKanHomUniversal_of_unit_iso_square`
+
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
   `scripts/audit_infinity_presentable_supply.lean`、この計画（300 行以内）。
@@ -192,7 +211,8 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（指定 coslice・共変 Hom 単位の Hom 普遍性の二葉・集約・監査・計画を記録）。
+- なし（始点固定 twisted arrow の指定単位の普遍性と実正方形の三葉・
+  所有する移送補題・集約・監査・計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -218,8 +238,10 @@
   `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
   共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
 - 指定共変 Hom 比較の Hom 普遍性は完成。`homWeightYonedaUnit F` の
-  各前層評価をこの指定比較と照合する。curry の評価と、元の twisted arrow
-  比較から始点固定射影への底変換・元の coslice 比較との可換性を保持する。
+  各前層評価をこの指定比較と照合する。元の coslice と始点固定 twisted arrow の
+  実後合成正方形の分類・指定単位の Hom 普遍性までは完成。
+  共同 Hom 単位を始点固定へ制限する底変換比較と curry の評価を照合する。
+  反復底変換を使う場合、指定 straightening 底変換同型の合成との両立も証明する。
 - この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
   `functorHomToHomWeightDiagramEquivalence` と接続する。
   点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。

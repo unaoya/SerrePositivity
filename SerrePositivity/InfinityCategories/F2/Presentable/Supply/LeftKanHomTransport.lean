@@ -58,4 +58,20 @@ lemma leftKanHomUniversal_iso_unit {A B X : SSet.{u}} (k : A ⟶ B)
     eF.hom ≫ (β ≫ (hoFunctor.map ((pre k).app X)).toFunctor.map (eL.inv ≫ η))
   simp only [CategoryTheory.Functor.map_comp, Category.assoc]
 
+/-- 概要：指定単位の同型による可換正方形は左 Kan Hom 普遍性を移す。
+方針：始点同型を打ち消して指定単位を共役表示し、同型による移送を適用する。
+規約：結論は指定された γ 自身。使われ方：coslice 単位から始点固定 Hom 単位への移送。 -/
+lemma leftKanHomUniversal_of_unit_iso_square {A B X : SSet.{u}} (k : A ⟶ B)
+    {F F' : A ⟶ X} {L L' : B ⟶ X}
+    (β : FunctorHom F (k ≫ L)) (γ : FunctorHom F' (k ≫ L'))
+    (hβ : LeftKanHomUniversal k β) (eF : FunctorIso F F') (eL : FunctorIso L L')
+    (h : eF.hom ≫ γ = β ≫ (eL.precomp k).hom) : LeftKanHomUniversal k γ := by
+  have hγ : γ = eF.inv ≫ β ≫ (eL.precomp k).hom := by
+    apply (cancel_epi eF.hom).mp
+    rw [Iso.hom_inv_id_assoc]
+    exact h
+  have ht := leftKanHomUniversal_iso_unit k β hβ eF.symm eL.symm
+  change LeftKanHomUniversal k (eF.inv ≫ β ≫ (eL.precomp k).hom) at ht
+  rwa [← hγ] at ht
+
 end SerrePositivity.InfinityCategories.F2.Presentable
