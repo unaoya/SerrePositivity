@@ -885,3 +885,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.iteratedCocone_vertex_val
 #check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_target_face
 #check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_source_face
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSourceCosliceIso_val
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSuccessor_base_join
+#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSuccessor_front
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_even_presentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_leg_uncurry
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_even_join_val
+#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_even_presentation
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_alternatingPresentationSuccessor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AlternatingPresentationSuccessor.next
+#check @SerrePositivity.InfinityCategories.F2.Presentable.initialAlternatingPresentationStage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower
+#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_index_front
+#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_diagram_old
+#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_augmentation_old
