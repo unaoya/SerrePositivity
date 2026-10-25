@@ -2,27 +2,26 @@
 
 ## 引き継ぎ（2026-10-25）
 
-- 現在地：D-8 e 完了（5bf80c07c）。D-8 d の移管はユーザーにより採用済み。
-  保存済みの補助成果として compact→段階 retract、同じ代表族の retract 被覆、
-  依存閉ラベルの κ-filtered 添字と自由余積層の strict 余極限を実装。
-  D-8 d の全 covers は未完。
+- 現在地：D-8 e 完了（5bf80c07c）。採用済み D-8 d も、指定された
+  D-bar 比較の明示引数の下で最終 covers まで構成・ビルド済み。
 - 所有：`Derived/KappaPerfect/` の新規葉と `All.lean`、
   `scripts/audit_derived_kappa_perfect.lean`、本計画。追加所有は
   `Derived/KappaCovers/` の新規葉と `All.lean`。
 - 読み取り専用：既存 D 全体・D 集約と両監査、KST 全体。
-- 残り：一般 semifree 加群の cell ラベル抽出、
-  依存閉部分集合上の実 cell 部分加群と strict 余極限、各段の同じ代表系による被覆、
-  D-bar の native/strict 比較入力、最終 covers。
+- 外部境界：D-bar の native/strict 比較の証明は明示引数。
+  cell 表示の存在・各段の代表化・compact retract・代表系の retract 閉性は構成済み。
 - 主要宣言：`dgKappaPerfect_stableClosure_iff`、`dgKappaPerfectToPerf`、
   `dgKappaPerfectReverse_isQCatEquivalence`、`dgKappaPerfectReverse_inclusionIso`、
   `dgKappaPerfectComparison`、`dgKappaPerfectComparison_isQCatEquivalence`、
   `dgKappaPerfectComparison_inclusionIso`、`dgKappaPerfectInput`。
 - 依存と提供：K-B の `DGKappaConeInput` を明示入力として、
   `DGKappaPerfectInput` の三欄を D 側で構成する。
-- 保存：D-8 e は所有7ファイルを限定保存済み。D-8 d の準備も限定保存する。
+- 保存：D-8 e は所有7ファイルを限定保存済み。D-8 d の検証済み中間成果は
+  1c7443f4a・c07d8a799。最終分も所有ファイルだけを限定保存する。
   共有作業木の他レーン差分は含めない。
-- 既知の問題：他レーンへの依頼なし。D-8 c/d の供給自体は本レーンの結論ではない。
-- 次の一手：d1 の一般 cell ラベル抽出。採用状況の再確認は不要。
+- 既知の問題：D-8 c と D-bar 比較自体の実装には依存しない。
+  比較の証明が届いたら最終定理の引数へ代入できる。
+- 次の一手：最終監査・限定保存・公開名の報告後、指定どおり停止する。
 
 ## D-8 e の三段目
 
@@ -89,14 +88,15 @@ namespace は `SerrePositivity.InfinityCategories`。
 
 ## D-8 d の三段目（採用済み）
 
-1. [ ] κ-small cell 部分加群の添字圏・図式・strict 余極限表示。
-   DependencyPieces は可算依存先の閉包の κ-small 性・全ラベル被覆・
-   全 coherent 図式に対する κ-filtered 性を供給する。
-   SubsetCoproduct は自由余積層の通常の余極限を供給する。
-   twisted differential を保つ cell 部分加群や一般 semifree 表示の存在は未結論。
-2. [ ] D-bar の native/strict 比較をその結論の型で仮定引数に取り、native 表示へ接続。
-   CompactStage の `hc : IsColimitCone c` は使用箇所の最小境界であり、
-   D-bar の一般比較そのものを構成したものではない。
+1. [x] κ-small cell 部分加群の添字圏・図式・strict 余極限表示。
+   標準 resolution の有限段の斉次要素に有限セル support を与え、各 kernel cell の
+   境界の依存先を固定する。依存閉選択の自由 disk・実 cone を帰納し、
+   比較の単射性と要素の持上げを保持する。可算余極限の実 semifree filtration を作り、
+   各自由層の κ-small 性から同じ代表系で被覆する。
+   依存閉選択全体を κ-filtered 関手にし、単射性と網羅性から strict 余極限性を得る。
+2. [x] D-bar の native/strict 比較をその結論の型で仮定引数に取り、native 表示へ接続。
+   `DGKappaStrictFilteredColimitComparison` は同じ strict 図式の全単体上の像を固定する。
+   追加の cell 表示存在仮定は要求しない。
 3. [x] 全 Hom の compact 性から同じ native 図式の一段の retract を回収。
    `dgKappaCompact_retract_of_nativeCellPresentation`。
 4. [x] 同じ選択代表系の native retract を同じ集合内の代表との VertexIso で被覆。
@@ -105,16 +105,28 @@ namespace は `SerrePositivity.InfinityCategories`。
    指定 telescope cone の分裂で retract 閉性を導出する。
    二端点の射影性で主導来 retract を K(D) へ反映し、native VertexIso へ戻す。
    D-16 の thick 核を新たな入力にしない。
-5. [ ] 一般の κ-compact 頂点に対する最終 covers・監査・限定コミット。
-   途中成果を検証して保存しても、この工程の完了とは数えない。
+5. [x] 一般の κ-compact 頂点に対する最終 covers を構成・ビルド。
+   自分の集約・監査だけを検証し、所有ファイルだけを `git commit --only` で保存する。
 
-### D-8 d 準備成果の検証
+### D-8 d の検証
 
-- `lake build SerrePositivity.InfinityCategories.Derived.KappaCovers.All`：9,342 jobs 成功。
-- 既存の自分の監査に KappaCovers の7葉を追加。合計11葉・107宣言で成功。
+- `lake build SerrePositivity.InfinityCategories.Derived.KappaCovers.All`：9,370 jobs 成功。
+- 自分の監査を KappaCovers 全31葉と KappaPerfect 全4葉に拡張。
 - 許容三公理のみ。新規公理・sorry・ModelCategory 仮定なし。
-- 追加10ファイルだけを `git commit --only` で保存する。
-- 最終 covers の公開名はまだない。準備成果を D-8 d 完了とは扱わない。
+- 最終 covers は D-bar 比較の下で完成。比較自体の証明を構成したとは主張しない。
+
+### D-8 d の主要公開名
+
+- `dgKappaCone_covers_of_strictFilteredColimitComparison`
+  ：`DGKappaConeInput.covers` と同じ全 κ-compact 頂点の被覆型。
+- `dgKappaResolutionStrictRepresentativePresentation`
+  ：任意の実加群の標準 resolution の実 κ-filtered strict 表示。
+- `dgKappaResolutionPiecesDiagram`・`dgKappaResolutionPiecesIsColimit`
+  ：依存閉部分 cell 加群の実関手と余極限性。
+- `dgKappaPartialResolution_representativeCovers`
+  ：κ-small 部分 cell 加群の同じ代表系による被覆。
+- `DGKappaStrictFilteredColimitComparison`
+  ：D-bar 側から代入する唯一の外部比較命題。
 
 ### D-8 d の公開補助名
 
@@ -147,8 +159,7 @@ D-8 d の完成と D-bar の比較構成自体の完成を区別する。
 - `dgKappaSubsetModule_finiteElement`：実余積の有限部分族への斉次要素の持上げ。
 - `dgKappaModuleConeMap_degreewiseMono`：部分 cell 付加の比較の次数ごとの単射性。
 - `dgKappaResolutionElement_finiteSupport`：標準 resolution の有限段の有限セル support。
-- 次は依存閉選択の実部分 cell 列、その κ-filtered strict 余極限と代表化を接続する。
-  これらの存在を追加入力にして D-8 d 完了とは数えない。
-- 実部分 cell の有限段まで：自分の集約 9,357 jobs 成功。
-  自分の監査は24葉・318宣言で成功（許容三公理のみ）。
-  可算列と κ-filtered 合併は続行中。
+- 依存閉選択の実部分 cell 列・その κ-filtered strict 余極限・代表化を最終定理へ接続済み。
+- 中間検証：集約9,357 jobs・監査24葉318宣言で成功。
+  最終集約9,370 jobs・最終監査35葉454宣言で成功。
+  新規公理・sorry・ModelCategory 仮定なし。推移的公理は許容三公理のみ。

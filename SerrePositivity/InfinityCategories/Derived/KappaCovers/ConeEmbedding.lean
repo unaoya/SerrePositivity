@@ -72,6 +72,18 @@ lemma dgKappaConeMap_element (n : ℤ) (u : P.X (n + 1)) (v : Q.X n) :
 
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
+lemma dgKappaModuleConeMap_comp {M N M' N' M'' N'' : ModuleCategory R D}
+    (f : M ⟶ N) (g : M' ⟶ N') (k : M'' ⟶ N'')
+    (u : M ⟶ M') (v : N ⟶ N') (u' : M' ⟶ M'') (v' : N' ⟶ N'')
+    (U : M ⟶ M'') (V : N ⟶ N'')
+    (h : f ≫ v = u ≫ g) (h' : g ≫ v' = u' ≫ k) (H : f ≫ V = U ≫ k)
+    (hu : u ≫ u' = U) (hv : v ≫ v' = V) :
+    moduleConeMap R D f g u v h ≫ moduleConeMap R D g k u' v' h' =
+      moduleConeMap R D f k U V H := by
+  subst U
+  subst V
+  exact (moduleConeMap_comp R D f g k u v u' v' h h').symm
+
 lemma dgKappaModuleMap_mono {M N : ModuleCategory R D} (i : M ⟶ N)
     (hm : ∀ x n, Mono (((moduleEvaluation R D x).map i).f n)) : Mono i where
   right_cancellation a b h := by

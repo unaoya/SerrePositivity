@@ -29,7 +29,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionSupport,
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionDependencies,
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.CellAttachment,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStage]
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStage,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.FilteredUnion,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.FilteredEmbedding,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SequencePrepend,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialTower,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialSemifree,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStageMaps,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialEmbedding,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialMaps,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionCovering,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionDiagram,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.Covers]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -64,3 +75,5 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_smallSemifreeCovers
 #check SerrePositivity.InfinityCategories.dgKappaSubsetModule_finiteElement
 #check SerrePositivity.InfinityCategories.dgKappaModuleConeMap_degreewiseMono
+#check SerrePositivity.InfinityCategories.dgKappaResolutionStrictRepresentativePresentation
+#check SerrePositivity.InfinityCategories.dgKappaCone_covers_of_strictFilteredColimitComparison
