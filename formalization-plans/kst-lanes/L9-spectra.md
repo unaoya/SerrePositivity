@@ -11,10 +11,14 @@
 - [ ] s4. K-B の一般 Verdier 分数比較の充満忠実性を証明する（元の比較の充満忠実性は、指定 unstraightening への全 roof 族の実単位・fiber の元の Kan 置換単位・恒等点照合の供給に条件付きの私有証明まで。これらの実供給は未完）。
 - [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
+### Sp-6 の追加依頼（β6 f と並行、区切りで対応）
+- [ ] r1. K-B K-7 d2：nativeLoop の整数 π 関手の次数移動自然同型と、実 loop／円 cotensor 比較との照合。
+- [x] r2. D2 G-1 e④：LaxInclusion.snd_kernel により第二射影の核と C 因子の本質像を照合。
+
 ### β6 f の三段目
 - [x] f1. 指定された二脚・全乗法的経路の錐と、実経路模型への代数射の同値を構成する。
 - [x] f2. 源の前合成・実 cospan の変換に対する全経路付き自然性を証明する。
-- [ ] f3. 平方零微分摂動と cell class に特殊化し、元の Postnikov 拡大の二脚・class を保持する。
+- [x] f3. 平方零微分摂動と cell class に特殊化し、元の Postnikov 拡大の二脚・class を保持する。
 - [ ] f4. 実模型の比較を導来写像空間の普遍性へ接続し、指定底との相対性を保つ。
 - [ ] f5. 集約・監査を通し、h で記録する公開界面と適用範囲を確定する。
 
@@ -62,6 +66,8 @@
 | 安定性 | 予定 sp_isStable | IsStable Sp は未提供。I-b 末尾の d3。K-5〜K-8 の現段階の前提にしない |
 
 ### 主要宣言：一般局所化・補助成果（共通接頭辞 KST.LocalizingInvariants）
+
+- D2 追加依頼：LaxInclusion.snd_kernel（元の lax 第二射影の零対象性と exactFromC の本質像）。
 
 - Sp-6 の追加接続口：VerdierSquareDiagramIso、VerdierRectangleDiagramIso、RelativeVerdierRectangle.ofActualFaces、DGOdotVerdierRectangleComparisonInput.toStrict／toStrict_comparison_isPullback、DGKappaRelativeRoofComparisonInput.toStrict／toStrict_isPullback、exists_dgKappaRelativeRoof_of_fixedNull。
 - Sp-6：exists_dgOdotFixedNullSquare、exists_dgOdotRelativeNullDiagram、exists_dgFixedNullRelativeRoof（K-B 用の元の三頂点・商一単体を回収）。RelativeVerdierDiagram.ofSquare／exists_of_source_comm は元の Verdier 列と源の四辺を保持する。dgNullCorner_composite／dgNullCornerComparison_epsilon は全対象商を経由する元の dg 商合成と指定 ε の厳密回収。dgNullCorner_vertex_isZero は native dg nerve の零性であり、固定 ν の Perf 値の零性とは分ける。
@@ -148,7 +154,7 @@
 - 供給待ちの間は β6 f→h を進め、供給到着時に最優先で s4 に戻る。s2・s3 の具体的入力（D の Perf 零性・実核等）が揃い次第 s5 で接続する。具体的入力は未供給として維持する。
 
 ### 次の一手
-- **次の一工程（β6 f1）**：既存の乗法的経路模型への lift と hom_ext から、指定された二脚・全経路の錐と実代数射の同値を構成する。元の平方零微分摂動・cell class と比較し、一般の導来写像空間の普遍性は別に検証する。s4 の実全族単位が到着したら最優先で戻る。
+- **次の一工程（β6 f4・Sp-6 r1）**：f1〜f3 の実全経路付き錐の同値と、元の二脚・class 経路を保つ connective 準同型反転後の比較を使う。導来写像空間の普遍性への接続は未完。区切りで nativeLoop の整数 π の自然性を供給し、s4 の実全族単位が到着したら最優先で戻る。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
