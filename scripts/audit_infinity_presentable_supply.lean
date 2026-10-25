@@ -131,3 +131,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.twistedSourceHomUnit
 #check @SerrePositivity.InfinityCategories.F2.Presentable.twistedSourceHomUnit_homUniversal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanHomUniversal_of_unit_iso_square
+#check @SerrePositivity.InfinityCategories.F2.Presentable.functorSpaceCurryMap_evaluate_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_evaluate_first
+#check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHomCongr_evaluate_heq
+#check @SerrePositivity.InfinityCategories.F2.Presentable.curryFunctorHom_evaluate_heq
+#check @SerrePositivity.InfinityCategories.F2.Presentable.homWeightYonedaUnit_heq_curry

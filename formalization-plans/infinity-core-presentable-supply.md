@@ -3,250 +3,109 @@
 ## 引き継ぎ（2026-10-25）
 
 ### 現在地
-- 運用 v3 と P・P-f の進捗、P 計画の冒頭を確認した。
-- P の二葉を `acf4bc691` のユーザー中継後に読み取り専用で接続した。
-- 可算 spine の外の非退化単体を有限頂点集合で表示し、最小番号の次の点の
-  挿入・削除の正則な inner pairing を構成した。順位は番号の幅と頂点数。
-- 望遠鏡の strict pushout と元の spine の同型、可算 nerve への同じ写像の
-  inner anodyne 性を構成した。宇宙変更後の全余錐比較も得られる。
-- 元の小余積の存在・保存と全有限図式の保存余極限から、元の可算列の
-  保存余極限と任意の指定全余錐の保存を公開した（s11.2）。
-- 可算形状の有限増大列、各単体の最小所属段階とその単調性を構成した。
-- 段階関手のコンマ圏と有限段階の反対単体圏の同値、元の包含との厳密な
-  可換性を構成した。幾何学的実現の添字の全単体の可算性も確認した。
-- 最後の頂点写像への制限による保存余極限の検出を、宇宙変更後に公開した。
-- Supply.All は 8217 jobs で成功。独立監査は 209 宣言、標準三公理のみ。
-- 反対単体圏の局所化の自然性と有限段階の cofinal 比較を合成し、全局所
-  左 Kan 図式の保存余極限を構成した。
-- 可算形状を有限段階・可算列から閉じ、P の既存の実現版を再利用して
-  P-11 の全小形状の要求命題と任意の指定余錐の保存を証明した。
-- 最新 Supply.All は 8220 jobs で成功。独立監査は 223 宣言、標準三公理のみ。
-- P-12 の compact 判定は未供給。
-- P-12 の評価関手の全小余極限保存と、評価後の compact Hom・共同 Hom の
-  κ-filtered 保存を e2 の点ごと計算から構成した。
-- κ-small な twisted arrow 形状の極限関手の同じ κ の保存性と、全極限錐族の
-  各脚から頂点への保存判定を接続した。
-- P の poset 全錐交換を `cardinalChangeBound_aleph0` で特殊化した。
-- 最新 Supply.All は 8628 jobs で成功。独立監査は 230 宣言、標準三公理のみ。
-- 共同 Hom と普遍的な評価から全自然な end 係数を構成し、全評価脚を
-  始点固定の共同 Hom と終点評価の合成として厳密に同定した。
-- 点ごと compact 性から end 係数全体の κ-filtered 保存を構成した。
-- P-12 の compact 判定を、元の全 Hom を頂点とする全自然な end 極限錐族の
-  構成へ還元した。還元定理の追加仮定を除いた最終命題は未供給。
-- 元の関手圏の twisted Hom から、実際の pullback による end 係数の
-  切断空間への比較射を構成した。各 G の分類図式との比較も得た。
-- 最新 Supply.All は 8631 jobs で成功。独立監査は 253 宣言、標準三公理のみ。
-- twisted Hom と end 切断の任意の始域制限、および恒等・合成則を構成した。
-  実比較射の制限正方形は、元の写像の厳密な等式で可換。
-- 有限部分複体上の二つの制限図式と一つの自然変換、元の全空間を頂点とする
-  制限錐とその比較射を構成した。これらの錐の極限性はまだ主張していない。
-- 最新 Supply.All は 8633 jobs で成功。独立監査は 288 宣言、標準三公理のみ。
-- end 切断と元の相対関手空間の厳密な同型、および left fibration 分類後の
-  全 Hom 二変数図式間の写像空間との同値を構成した。
-- 二変数図式の curry を元の Yoneda 関手と元の Hom 係数前層族に正規化した。
-  end 切断からこの二つの全図式間の写像空間への同値を公開する。
-- 最新 Supply.All は 8636 jobs で成功。独立監査は 349 宣言、標準三公理のみ。
-- 全前層係数 Hom 族と、指定された Yoneda 左 Kan 延長の全 Hom 族の
-  両変数で自然な同型を、同じ Yoneda 制限と右 Kan の一意性から構成した。
-- 元の Fun の Hom の宇宙変更と、Hom 係数図式間の逆向きの写像空間の同値を
-  co-Yoneda の充満忠実性・変数交換・反転・宇宙比較から構成した。
-  この同値の F・G に関する自然性はまだ主張していない。
-- 任意の F の実 twisted arrow 比較を分類し、元の Yoneda から
-  `ulift.map F ≫ presheafHomWeightDiagram F` への指定単位を構成した。
-  その左 Kan 普遍性は未証明。
-- 最新 Supply.All は 8668 jobs で成功。独立監査は 393 宣言、標準三公理のみ。
-- 局所形状 `A ×_C C/c` の射影の反転を分類し、元の
-  `Hom_C(F(-),c)` 前層との同型を構成した。
-- 局所形状から同じ Hom 前層の小さい元の圏への、射影を厳密に保つ
-  実比較とその前合成同値性を構成した。
-- 元の密度余錐を実比較で制限し、同じ Hom 前層を頂点とする局所 Yoneda
-  余極限を構成した。宇宙比較後の実左 Kan 局所図式についても同じ結論を得た。
-- 元の F に沿う Yoneda 左 Kan 候補の存在と各値の Hom 前層との同型、
-  および `homWeightYonedaUnit F` を正確に延長する実比較射を構成した。
-  その実比較射の可逆性はまだ証明していない。
-- 任意の F の coslice 作用による実相対 Hom の制限が同値であることを、
-  始対象での二つの実評価の自明 Kan 性から証明した。
-- 最新 Supply.All は 8672 jobs で成功。独立監査は 438 宣言、標準三公理のみ。
-- 元の分類図式間の任意の射を、底を厳密に保つ実全空間射で回収した。
-  分類射が等しいことと、元の相対 Hom 内の頂点が同型なことの同値も証明した。
-- left fibration の底変換が実比較射の coherent な辺に与える作用を、
-  実際の `fiberComparisonBaseChange` の辺と厳密に同定した。
-  その辺の類への作用も、元の指定頂点等式で正規化して同定した。
-- 最新 Supply.All は 8677 jobs で成功。独立監査は 455 宣言、標準三公理のみ。
-
-- 分類 Hom と底変換の自然性を実比較射について正規化した。
-- pullback 後の coslice への相対 Hom 制限が同値であることを証明し、
-  その分類後の実写像の全単射性を構成した。
-- 最新 Supply.All は 8681 jobs で成功。独立監査は 501 宣言、標準三公理のみ。
-
-- P-13：Core と HomotopyLimits の結合同型の一致を任意の三因子について証明した。
-  空区間を含む切断・和表示を比較し、点二つへの特殊化も公開する。
-- P-13 追加後の Supply.All は 8682 jobs で成功。独立監査は 514 宣言、標準三公理のみ。
-
-- 指定左 Kan 単位の Hom 比較を、標的同型および始点・延長図式の同型で
-  移す補題を構成した。
-- 任意の元の関手の coslice 比較の分類単位について、任意の全標的図式に
-  対する左 Kan Hom 普遍性を証明した。
-- 元の `covariantHomComparison` 自体の同じ普遍性も証明した。
-  指定 Yoneda 単位の評価との両立と、全自然な end 比較は引き続き未構成。
-- 最新 Supply.All は 8684 jobs で成功。独立監査は 537 宣言、標準三公理のみ。
-
-- 元の coslice と始点固定 twisted arrow の後合成が厳密に可換な実正方形を構成した。
-- 異なる底の間の実正方形の分類と、その指定分類射の自然性を構成した。
-- 同じ実比較の可逆性で指定 coslice 単位の普遍性を移し、元の始点固定
-  twisted arrow 後合成単位の全 Hom 左 Kan 普遍性を証明した。
-- 最新 Supply.All は 8687 jobs で成功。独立監査は 570 宣言、標準三公理のみ。
-
-### P-12 後の割り当て（ユーザー判断）
-- P-f の f4：HTT 5.5.4.15(4)。反射を明示的な引数に取り、既存の
-  `LocalReplacementSaturation` に接続して、生成元の強飽和閉包と反転辺の一致を供給する。
-- P-f の f3 完了後に反射を代入する系を置く。所有は Supply/ の新規葉。
-- 公開名をユーザーへ報告して停止する。着手は P-12 完了後。
+- 状態：設計変更提案で停止（下記の指定底変換合成則を独立基盤供給に切り出す案）。
+- P-11 と P-13 は完了。P-12 の最終 compact 判定は未供給、P-14 は未着手。
+- 前回の補助宣言供給後のターン終了には停止理由がなかった。今回は再開し、
+  指定 Yoneda 単位と共同 Hom 単位の curry の比較、および一般の curry 評価式を得た。
+- curry と第一変数評価の可換性は全関手空間の厳密な等式。
+  Hom の比較も同じ指定射の異種等式であり、対象ごとの同型の存在ではない。
+- 新規葉 `HomWeightUnitEvaluation` を公開。Supply.All は 8688 jobs で成功、
+  独立監査は 582 宣言で標準三公理のみ。追加の ModelCategory 仮定なし。
+- 設計変更案：指定 straightening 底変換の合成則を、P-12 内の局所照合から
+  独立した基盤供給として切り出す。具体的な供給仕様は本文に記す。
+  最終定理への追加仮定にはしない。所有外ファイルは変更していない。
 
 ### 残り（依存順、見積もり）
-- P-12：Fun の写像空間の κ-small end 表示と全自然比較
-  （HTT 5.3.4.9、4〜8 時間）。
-- P-12：点ごと余極限・交換・compact 判定（HTT 5.3.4.9、2〜4 時間）。
-- 各供給の集約ビルド・監査・公開名報告（各 30 分）。
+- 指定底変換同型の合成則と、共同 Hom 単位の固定始点制限の照合（4〜8 時間）。
+- `homWeightYonedaUnit` の左 Kan 普遍性、実 end 比較の同値性と
+  G に全自然な極限錐族（HTT 5.3.4.9、4〜8 時間）。
+- 既存の点ごと余極限・poset 交換への接続、追加仮定なしの compact 判定（2〜4 時間）。
+- P-14：反射を引数とする強飽和閉包と反転辺の一致（HTT 5.5.4.15(4)）。
 
 ### 主要宣言
-- `hasPreservedColimit_iff_rightCofinalRestriction`
-- `hasPreservedColimit_of_localLeftKan`
-- `discreteProductNerveCofan_isColimit`
-- `sequentialTelescopeShape`、`sequentialTelescopeToNerve`
-- `sequentialTelescopeFinalVertices_isRightCofinal`
-- `hasPreservedColimit_sequentialTelescopeIntervals`
-- `hasPreservedColimit_sequentialTelescopeShape`
-- `sequentialNerveSupportEquiv`、`sequentialSpinePairing`
-- `sequentialSpine_inclusion_innerAnodyne`
-- `sequentialTelescopeToSpine_isIso`、`sequentialTelescopeToNerve_innerAnodyne`
-- `hasPreservedColimit_sequential_of_coproducts_finite`
-- `preservesSequentialColimits_of_coproducts_finite`
-- `countable_geometricRealizationShape_simplices`
-- `countableFiniteStage_finite`、`iSup_countableFiniteStage`
-- `countableSimplexStage_le_iff`、`countableSimplexStageFunctor`
-- `countableStageCommaEquivalence`、`countableStageSimplexToComma_proj`
-- `countableFiniteStageCocone_isColimit`
-- `hasPreservedColimit_iff_lastVertexRestriction`
-- `oppositeSimplexRestriction_naturality`
-- `countableStageKanComparison_projection`
-- `hasPreservedColimit_countableStage_leftKan`
-- `hasPreservedColimit_countable_of_coproducts_finite`
-- `hasPreservedColimit_of_coproducts_finite`
 - `preservesSmallColimits_of_coproducts_finite`
-- `evaluateFunctorAt_preservesSmallColimits`
-- `preservesKappaFilteredColimits_compactHom_evaluation`
-- `preservesKappaFilteredColimits_jointHom_evaluation`
-- `exists_kappaContinuousTwistedArrowLimitFunctor`
-- `preservesKappaFilteredColimits_twistedArrowLimitFamily_apex`
-- `cardinalFilteredLimitExchangeShape_aleph0_poset`
-- `functorEndCoefficient`、`functorEndCoefficient_evaluation`
+- `hasPreservedColimit_of_coproducts_finite`
+- `stableJoinAssociator_hom_eq_joinAssociator`
+- `stableJoinAssociator_hom_eq_joinAssociator_point_point`
 - `functorEndCoefficient_preservesKappaFilteredColimits`
-- `isKappaCompact_functorVertex_of_endFamily`（全自然な end 極限錐族が明示的な入力）
-- `functorEndCoefficient_vertex`、`functorEndProjection_classificationIso`
-- `twistedFunctorHomToEndSections`
-- `twistedFunctorHomToEndSections_precomp`
-- `functorEndSectionsRestriction_comp`
-- `finiteSubcomplexEndComparison`
-- `finiteSubcomplexTwistedHomCone`、`finiteSubcomplexEndSectionsCone`
-- `finiteSubcomplexEndComparisonConeMorphism`
-- `functorEndSectionsRelativeHomIso`
-- `relativeHomStraighteningEquivalence`
-- `pinchedHomTargetVertexIsoEquivalence`
-- `functorEndSectionsHomDiagramEquivalence`
-- `homBifunctorCurryIso`
+- `isKappaCompact_functorVertex_of_endFamily`（追加の全自然 end 錐族を要求する還元）
+- `twistedFunctorHomToEndSections`（実比較射。同値性は未証明）
 - `functorEndSectionsYonedaHomEquivalence`
-- `presheafUniverse_canonicalColimits`
-- `fullPresheafHomWeightFamily_isRightKanExtension`
-- `presheafExtensionHom_liftedIso`
-- `homWeightDiagramHomEquivalence`
 - `functorHomToHomWeightDiagramEquivalence`
 - `homWeightYonedaUnit`
-- `homWeightLocalProjection_classificationIso`
-- `homWeightLocalElementsComparison_projection`
-- `homWeightLocalElementsComparison_isPrecompositionEquivalence`
-- `homWeightLocalYonedaCocone_isColimit`
-- `homWeightLeftKanDiagramCocone_isColimit`
-- `homWeightYonedaLeftKan_valueIso`
 - `exists_homWeightYonedaLeftKan`
-- `homWeightYonedaLeftKanComparison`、`homWeightYonedaLeftKanComparison_fac`
-- `cosliceHomRestriction_isQCatEquivalence`
-- `exists_leftClassificationHom`
-- `leftClassificationHom_eq_iff_relativeVertexIso`
-- `leftFibrationBaseChange_edge`
-- `leftFibrationBaseChange_normalizedHom`
-
-- `normalizedVertexHomMap_comp`、`normalizedVertexHomMap_naturality`
+- `homWeightYonedaLeftKanComparison_fac`
 - `leftClassificationHom_baseChange`
-- `cosliceHomPullbackRestriction_vertex`
-- `cosliceHomPullbackRestriction_sourceRestriction`
-- `cosliceHomPullbackRestriction_isQCatEquivalence`
-- `classifiedCosliceHomRestriction_actual`
-- `classifiedCosliceHomRestriction_bijective`
-
-- `stableJoinAssociator_hom_eq_joinAssociator`
-- `stableJoinAssociator_eq_joinAssociator`
-- `stableJoinAssociator_hom_eq_joinAssociator_point_point`
-
-- `leftKanHomMap_bijective_of_iso_target`
-- `leftKanHomUniversal_iso_unit`
-- `classifiedCosliceHomRestriction_eq_leftKanHomMap`
-- `classifiedCosliceLeftKanUnit_bijective_classifiedTarget`
-- `classifiedCosliceLeftKanUnit_homUniversal`
+- `leftClassificationSquareHom_naturality`
 - `covariantHomComparison_homUniversal`
-
-- `pointCosliceToTwistedArrowSource_postcomp`
-- `leftClassificationSquareHom`、`leftClassificationSquareHom_naturality`
-- `leftClassificationHom_isIso_of_precompositionEquivalence`
-- `pointCosliceSquareHom_homUniversal`
-- `twistedSourceHomUnit`、`twistedSourceHomUnit_homUniversal`
-- `leftKanHomUniversal_of_unit_iso_square`
+- `twistedSourceHomUnit_homUniversal`
+- `functorSpaceCurryMap_evaluate_first`
+- `curryFunctorHom_evaluate_first`
+- `homWeightYonedaUnit_heq_curry`・`curryFunctorHom_evaluate_heq`
 
 ### 依存と提供
-- 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
-  `scripts/audit_infinity_presentable_supply.lean`、この計画（300 行以内）。
-- 読み取り専用：Presentable の既存葉・親集約・親監査、Duality・Localization、
-  HomotopyLimits、F2/Ind・Compact・Idempotent、F1・F1B・Core。
-- `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は P の所有であり複製しない。
-- P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
+- P の `PreservedColimitGeneration`・`SmallTwistedArrowShapes` は `acf4bc691` を継承。
+  `hasPreservedColimit_smallCoproduct`・`hasPreservedColimit_of_coproducts_preservedRealizations`・
+  `isKappaSmall_twistedArrow` は読み取り専用で使い、複製しない。
+- e2 の点ごと余極限、P の poset 交換を `cardinalChangeBound_aleph0` で使う。
+- P-11 は `95f5a8f2e`、P-13 は `1e7d9538d` で公開済み。
+- 直前 `3a8981e34`：始点固定の指定単位の左 Kan Hom 普遍性。
+- 提案・依頼・供給名の報告は必ずユーザー経由。別チャットへ直接送信しない。
 
 ### 未コミット
-- なし（始点固定 twisted arrow の指定単位の普遍性と実正方形の三葉・
-  所有する移送補題・集約・監査・計画を記録）。
+- なし（今回の所有四ファイルを同じコミットに収録）。他セッションの変更は対象外。
 
 ### 既知の問題
-- 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
-- P-11 の全小形状の要求命題はビルド・独立監査済み。
-- P-12 の全 Hom と end の一つの全自然な極限錐族との比較は未構成。
-  各脚の保存と極限関手の保存だけでは、compact 判定を結論していない。
-- `twistedFunctorHomToEndSections` の同値性は未証明。
-  点ごとの切断比較射だけでは全自然な Hom 同型を主張していない。
-- 有限部分複体上の制限錐の極限性と、比較の同値性の降下は未証明。
+- 元の共同単位を固定始点へ制限する段階で、指定底変換同型の合成との両立が未証明。
+- 既存の `leftClassificationHom_baseChange` は同じ底の全空間射についての自然性。
+  異なる底写像を二段で合成する上記の両立は、その結論には含まれていない。
+- `homWeightYonedaLeftKan_valueIso` は対象ごとの別の同型であり、
+  `homWeightYonedaLeftKanComparison` の可逆性をそれだけから推論してはいけない。
+- `YonedaEvaluationJointSource` も固定対象での比較だけで、全二変数の同型ではない。
+- 大きい C の余完備性や ModelCategory SSet の仮定を追加して迂回しない。
 
 ### 次の一手
-- 実切断比較の同値性を証明し、G に自然な全 Hom の end 同型へ束ねる。
-  切断空間の既存の極限表示と接続して、還元定理の全自然な極限錐族を構成する。
-- 始域の分解を使う場合、構成した制限錐の極限性と制限の充填性を確認する。
-  `MonoidalClosed.internalHom.flip.obj` の極限保存と fiber の極限表示が入口。
-- `homWeightYonedaUnit G` の `ulift.map G` に沿う左 Kan 普遍性を証明する。
-  局所形状と元の圏の実比較・指定 Hom 前層を頂点とする密度余極限・実 Kan
-  局所図式への宇宙比較は完成。単位は一般には可逆でなく、恒等単位の標準 Kan
-  制限定理へ直接渡さない。
-- `homWeightYonedaLeftKanComparison` の各評価での可逆性を検証する。
-  構成した `homWeightYonedaLeftKan_valueIso` は比較射とは別の同型であり、
-  これだけから比較射の可逆性を推論しない。指定単位から来る余錐との両立が残る。
-  `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
-  共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
-- 指定共変 Hom 比較の Hom 普遍性は完成。`homWeightYonedaUnit F` の
-  各前層評価をこの指定比較と照合する。元の coslice と始点固定 twisted arrow の
-  実後合成正方形の分類・指定単位の Hom 普遍性までは完成。
-  共同 Hom 単位を始点固定へ制限する底変換比較と curry の評価を照合する。
-  反復底変換を使う場合、指定 straightening 底変換同型の合成との両立も証明する。
-- この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
-  `functorHomToHomWeightDiagramEquivalence` と接続する。
-  点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。
-- 全前層 Hom 比較は別の普遍性入力として利用できる。宇宙に注意し、
-  C に大きい余極限の存在を追加仮定しない。
+- 下記の合成則を基盤供給として独立させ、同じ実 pullback 比較と同じ指定
+  straightening 同型で証明する。供給元・分担の変更はユーザー経由で調整する。
+- `homWeightYonedaUnit_heq_curry` と一般の curry 評価式を接続する。
+  具体的な評価後の異種等式への直接適用は kernel timeout を起こすため、
+  大きな端点の展開を避ける表示で接続する（未検証宣言は残していない）。
+- 合成則を使い、共同単位の固定始点制限と `twistedSourceHomUnit` を
+  指定した始点・延長図式の同型で照合する。
+- `leftKanHomUniversal_of_unit_iso_square` で各前層評価の普遍性を移し、
+  実左 Kan 比較の各評価での可逆性から全比較の可逆性へ進む。
+- 完成した全自然 end 錐族を `isKappaCompact_functorVertex_of_endFamily` に渡す。
+
+## 設計変更案：指定底変換の合成則を独立供給にする
+
+P-12 の要求する全自然な比較は、選んだ分類同型を保持する必要がある。
+今回の curry 評価公式により、未接続部分は次の合成則に切り分けられる。
+所有外の straightening 実装を変更する要求ではなく、新規葉での公開定理の供給案。
+供給元はコーディネータ判断とし、P-s から直接依頼は送信しない。
+
+`U = SSet.uliftFunctor`、`St(p) = leftStraighteningInfinityDiagram p`、
+`δ(p,k) = leftStraighteningInfinityDiagram_baseChangeIso p k` と書く。
+`p : E ⟶ B` は left fibration、`k : D ⟶ B`、`l : T ⟶ D` とする。
+`q = pullback.snd p k`、`r = pullback.snd p (l ≫ k)`、
+`s = pullback.snd q l` とし、`c = (pullbackLeftPullbackSndIso p k l).inv` を
+一度の pullback から反復 pullback への標準同型の実写像とする。
+公開すべき結論は次の指定 Hom の等式（関手の結合・U の合成等式で端点を正規化）：
+
+```text
+δ(p,l ≫ k).hom ≫ leftClassificationHom r s c hc
+  = precomposeFunctorHom (U.map l) δ(p,k).hom ≫ δ(q,l).hom
+```
+
+- 公開名の案：`leftStraighteningInfinityDiagram_baseChange_comp`（まだ未宣言）。
+- 全体の FunctorIso の合成則でもよいが、上記の元の射の式を回収できること。
+- 点のファイバーの同値や、未指定の同型の存在だけに弱めない。
+- 最小の使用例は始点固定包含と `F.op ⊗ F` の可換正方形。
+  一般式から二つの同じ合成底写像を比較し、固定始点単位の正方形を得る。
+- 既存の実 pullback・transport simplex 切断比較・局所化前合成の充満忠実性から
+  証明する方針。`relativeSectionBaseChangeComparison` の豊穣比較と共同実現の
+  合成両立を先に示し、指定 `preimageVertexIso` で降下する。
+  一般の合成両立を局所 Yoneda の計算に隠さない。
+- この供給を P-12 の仮定へ追加しない。供給後に追加仮定なしで閉じる。
 
 ## P-11 三段目（HTT 4.4.2.6–7）
 
@@ -264,12 +123,20 @@
 - [ ] s12.4 `cardinalChangeBound_aleph0` による交換と compact 判定。
 - [ ] s12.5 Supply.All と独立公理監査、公開名報告。
 
+## P-14（P-12 の後、ユーザー判断による f4 の前倒し）
+
+- HTT 5.5.4.15(4)。反射を N の `LocalReplacementReflection` の形の引数に取り、
+  `LocalReplacementSaturation` で生成元の強飽和閉包と反射の反転辺の一致を公開する。
+- P-f の f3 で反射が完成したら、代入した系を置く。新規 Supply 葉に限定する。
+- P-14 の公開名を報告して停止する。P-12 完了前に着手しない。
+
 ## 検証・コミットの規約
 
-- 深層モジュールは編集せず、新規 sorry・公理・引用を導入しない。
-- ModelCategory SSet 等の instance 仮定を主経路に入れない。
-- docstring は概要・方針・規約・使われ方を記す。
-- 自分の Supply.All と独立監査だけをビルドする。根の集約はビルドしない。
+- 新規葉 `F2/Presentable/Supply/`、その `All`、所有監査、本計画だけを編集する。
+- 既存 Presentable・Duality・Localization・HomotopyLimits・Ind・Compact・Idempotent・
+  F1・F1B・Core は読み取り専用。深層の実装は変更しない。
+- 新規 sorry・公理・引用を導入しない。docstring は概要・方針・規約・使われ方。
+- 自分の Supply.All と独立監査だけをビルドする。根の集約ビルドと .lake 削除は禁止。
 - `set -o pipefail` を使い、明示した所有ファイルだけ `git commit --only` する。
-- 実施記録はコミット本文。計画は現在地を更新する。
-- 停止条件は供給完了・設計変更提案・所有 import 閉包破損・稼働 24 時間。
+- 他セッションの変更を stage しない。実施記録はコミット本文、計画は現在地。
+- 停止理由は供給項目の完了・設計変更提案・所有 import 閉包破損・稼働 24 時間。
