@@ -1,15 +1,13 @@
-# K-6 c4：Ind-S (9) の全パラメータ共有対角回収（採用済み仕様補足）
+# K-6 c4：正規化後の全族共有対角回収（採用済み仕様）
 
-概要：採用済みの全族 Hom 回収を、実四角柱の共有対角の厳密式へ接続するための型の補足。
-方針：同じ encode・longHom に、直接 path の評価が再構成二胞体の実長辺全族を回収する式を添える。
-規約：ユーザー採用、Ind-S (9) へ中継済み。Ind/F1 正本への供給仕様であり、本体の新しい存在仮定や証明済み成果には登録しない。(9b)・固定 S・ν・K、I・P は変更しない。
-使われ方：同じ K=Δ[1] の実共有対角を、下側変形の全一単体と一致させて貼り合わせる。
+概要：採用済みの全族 Hom 回収を、正規化後の実四角柱の共有対角の厳密式へ接続する。
+方針：normalize(t)=encode(longHom(t)) の直接 path 評価を実長辺全族へ厳密回収し、元 t へは固定ホーン内の可逆比較で戻す。
+規約：Ind-S の設計判断をユーザー採用。元 t 自身への全対角の厳密等式は偽なので要求しない。旧 (9)・(9b) の条項、固定 S・ν・K、I・P は保持する。
+使われ方：同じ K=Δ[1] の実共有対角を下側変形の全一単体へ貼り合わせる。
 
-- 補足前の (9) は `encode ≫ longHom = 𝟙 L` と `∀ t : T₀, ∀ k : K₀, HEq ...` を要求する。後者は各 K 頂点での全 native Hom 写像を回収するが、K の非退化一単体に沿う共有対角の実辺そのものの等式を明記していない。
-- `longHom` 自体が canonical な全族読出しであるという式も補足前の存在命題にはない。切断式だけからこの読出しを canonical と同一視せず、点ごとの一致から `Δ[1] ⊗ K` 上の実辺の等式を推論しない。
-- 採用済み補足：既存の全族 Hom 回収・指定点の HEq・固定三面比較をすべて保持し、同じ `longHom` の直接 path 評価と、再構成二胞体の δ₁ 長辺全族との厳密等式を加える。一般 BF 整流や新しい商 API は含めない。
-- 採用経路：Ind-S (9) の仕様にこの式を追加依頼済み。K-B の条件付き利用側は同じ強化命題を引数に取り、共有対角の全族の厳密回収へ接続する。K-6 c4 の上下貼り合わせと c5・K-7 c5/d3 の無条件化は未完。
-- 下の全型は `lake env lean /tmp/kb-ind9-whole-diagonal-request.lean` で型検査済み。新しい対角条項は `∀ t : T _⦋0⦌` で始まるブロック。
+- encode ≫ longHom = 𝟙 L と各指定点の全 native Hom 回収は不変。追加対角条項の対象を元 t から normalize(t) に変更し、同じ固定ホーン fiber T 内の VertexIso t normalize(t) をあわせて要求する。
+- K-B の実再構成族 encode(ℓ) は正規化不変なので、共有対角の全族厳密回収を保つ。ZeroMiddleNormalizedFamily は読出し保存・冪等性・固定ホーン内同型を回収し、実全族の FunctorIso にして元へ戻す。
+- 命題の存在は主張しない。現在の型の正本は ZeroMiddleReconstructionSupply.lean。以下の型は同じ定義を表示したもので、/tmp/kb-ind9-normalized-diagonal-request.lean にも保存する。
 
 ```lean
 import SerrePositivity.KST.Fibration.ZeroMiddleReconstructionSupply
@@ -20,7 +18,7 @@ universe u
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-def indS9WholeDiagonalRequest : Prop :=
+def indS9NormalizedDiagonalRequest : Prop :=
   ∀ (X Y Z : KanObject.{u}) (K : SSet.{u + 1})
     (f : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Y))
     (g : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom Y Z))
@@ -67,11 +65,14 @@ def indS9WholeDiagonalRequest : Prop :=
           le_right := fun k _ => Fin.le_last k.down }
       let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
         ((longHom.app (Opposite.op ⦋0⦌) t).val)
-      let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+      let nt := encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)
+      let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm nt.val
       (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
         (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
           (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
             intervalMappingUncurry (coherentHomIntervalComparison X Z)) ∧
+    (∀ t : T _⦋0⦌, Nonempty (VertexIso t
+      (encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)))) ∧
     (∀ b : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u},
       let E := vertexFiber ((pre ((horn 3 (2 : Fin 4)).ι ▷ K)).app SpaceInfinity.{u})
         (functorVertex b)

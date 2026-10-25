@@ -57,7 +57,8 @@ theorem zeroMiddleReconstructedFamily_diagonal :
   have h := zeroMiddleFullSReconstructionRead_diagonal s hZ K h9
     (zeroMiddleReconstructedFamilyPoint s hZ K h9 ℓ)
   dsimp only [zeroMiddleFullSReconstructionDiagonalRecovery] at h
-  simpa only [zeroMiddleReconstructedFamilyPoint_read, zeroMiddleReconstructedFamily,
-    zeroMiddleReconstructedDirectFamily] using h
+  simp only [zeroMiddleReconstructedFamilyPoint_read] at h
+  simpa only [zeroMiddleReconstructedFamily, zeroMiddleReconstructedDirectFamily,
+    zeroMiddleReconstructedFamilyPoint] using h
 
 end SerrePositivity.KST.Fibration

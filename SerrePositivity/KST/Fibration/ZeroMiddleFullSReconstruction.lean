@@ -154,11 +154,13 @@ def zeroMiddleFullSReconstructionRecovery
       (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (st.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
 
-/-- 概要：同じ全族読出しの直接 path 評価は実共有対角を厳密回収する。
+/-- 概要：同じ正規化族の直接 path 評価は実共有対角を厳密回収する。
 方針：採用済み補足の全一単体式を同じ core 始域・全 S• 中間頂点へ特殊化する。
 規約：パラメータの頂点だけの式へ弱めない。供給命題に条件付き。
 使われ方：動く共有対角を全時刻で同じ下側へ貼り合わせる。 -/
 def zeroMiddleFullSReconstructionDiagonalRecovery
+    (encode : zeroMiddleFullSReconstructionLongSpace s hZ K ⟶
+      zeroMiddleFullSReconstructionTriangleSpace s hZ K)
     (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
       zeroMiddleFullSReconstructionLongSpace s hZ K) : Prop :=
   let P := CategoryTheory.SimplicialThickening.Path
@@ -176,13 +178,27 @@ def zeroMiddleFullSReconstructionDiagonalRecovery
         le_right := fun k _ => Fin.le_last k.down }
     let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
       ((longHom.app (Opposite.op ⦋0⦌) t).val)
-    let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+    let nt := encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)
+    let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm nt.val
     (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
       (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
         (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
           intervalMappingUncurry (coherentHomIntervalComparison
             (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
             (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
+
+/-- 概要：元の実二胞体族と同じ読出しを再構成した正規化族の固定ホーン内比較。
+方針：同じ encode・longHom による正規化の指定点を同じ fiber 内で比較する。
+規約：元の t 自身への厳密対角回収は要求しない。
+使われ方：正規化後に共有対角で貼り合わせ、元の族へ可逆比較で戻す。 -/
+def zeroMiddleFullSReconstructionNormalizeComparison
+    (encode : zeroMiddleFullSReconstructionLongSpace s hZ K ⟶
+      zeroMiddleFullSReconstructionTriangleSpace s hZ K)
+    (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
+      zeroMiddleFullSReconstructionLongSpace s hZ K) : Prop :=
+  ∀ t : (zeroMiddleFullSReconstructionTriangleSpace s hZ K) _⦋0⦌,
+    Nonempty (VertexIso t
+      (encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)))
 
 /-- 概要：供給命題に条件付きで、同じ実長 Hom 空間から制御二胞体空間への切断がある。
 方針：同じ core 始域・全 S• 中間頂点と元の二短辺を Ind-S (9) へ代入する。
@@ -194,8 +210,9 @@ theorem zeroMiddleFullSReconstruction_exists (h9 : zeroMiddleControlledTriangleS
       (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
         zeroMiddleFullSReconstructionLongSpace s hZ K),
       encode ≫ longHom = 𝟙 _ ∧ zeroMiddleFullSReconstructionRecovery s hZ K longHom ∧
-        zeroMiddleFullSReconstructionDiagonalRecovery s hZ K longHom := by
-  obtain ⟨encode, longHom, he, hread, hdiag, _⟩ := h9
+        zeroMiddleFullSReconstructionDiagonalRecovery s hZ K encode longHom ∧
+        zeroMiddleFullSReconstructionNormalizeComparison s hZ K encode longHom := by
+  obtain ⟨encode, longHom, he, hread, hdiag, hnorm, _⟩ := h9
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K
@@ -203,7 +220,7 @@ theorem zeroMiddleFullSReconstruction_exists (h9 : zeroMiddleControlledTriangleS
     (zeroMiddleFullSReconstructionHorn s hZ K)
     (zeroMiddleFullSReconstructionHorn_first s hZ K)
     (zeroMiddleFullSReconstructionHorn_last s hZ K)
-  exact ⟨encode, longHom, he, hread, hdiag⟩
+  exact ⟨encode, longHom, he, hread, hdiag, hnorm⟩
 
 variable (h9 : zeroMiddleControlledTriangleSupply.{u})
 
@@ -243,13 +260,24 @@ theorem zeroMiddleFullSReconstructionRead_recovery :
       (zeroMiddleFullSReconstructionRead s hZ K h9) :=
   (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.1
 
-/-- 概要：同じ読出しは共有対角の全パラメータ一単体を厳密回収する。
+/-- 概要：同じ読出しを再構成した正規化族は共有対角の全一単体を厳密回収する。
 方針：encode と同時に得た採用済み対角回収式を使う。
 規約：各頂点の全 Hom 一致で代用しない。
 使われ方：K-6 c4 の動く共有対角の接続。 -/
 theorem zeroMiddleFullSReconstructionRead_diagonal :
     zeroMiddleFullSReconstructionDiagonalRecovery s hZ K
+      (zeroMiddleFullSReconstructionEncode s hZ K h9)
       (zeroMiddleFullSReconstructionRead s hZ K h9) :=
-  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.2
+  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.2.1
+
+/-- 概要：同じ再構成の正規化は元の族と固定ホーン内で可逆比較される。
+方針：同じ供給に付随する正規化比較を取り出す。
+規約：Ind-S (9) の正規化後の仕様に条件付き。
+使われ方：正規化族で対角を貼り、元の族に戻す。 -/
+theorem zeroMiddleFullSReconstructionRead_normalizeComparison :
+    zeroMiddleFullSReconstructionNormalizeComparison s hZ K
+      (zeroMiddleFullSReconstructionEncode s hZ K h9)
+      (zeroMiddleFullSReconstructionRead s hZ K h9) :=
+  (zeroMiddleFullSReconstruction_exists s hZ K h9).choose_spec.choose_spec.2.2.2
 
 end SerrePositivity.KST.Fibration

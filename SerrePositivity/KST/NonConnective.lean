@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFVertexComparison
+public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFixedStructure
+public import SerrePositivity.KST.NonConnective.DGSuspensionSuppliedBFSequence
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFSquare
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFZero
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFiberComparison
