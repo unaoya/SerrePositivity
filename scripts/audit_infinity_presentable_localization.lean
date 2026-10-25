@@ -261,3 +261,10 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSource_terminal_coslice_isTerminal
 #check @generatedSource_terminal_identity_isTerminal
 #check @generatedSource_terminal_identity_mapping_contractible
+
+#check @generatedSourceUnderTarget
+#check @generatedSourceUnderTarget_identity
+#check @generatedSourceUnderTarget_isFullyFaithful
+#check @generatedSourceUnderTarget_terminal_mapping_contractible
+#check @generatedSourceUnderTarget_lift_generatedEdge
+#check @generatedSource_terminal_retractionSpace_contractible
