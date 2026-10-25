@@ -2266,4 +2266,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeKan
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLargeSpaceLimit
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresentedMappingCone
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeInvariance
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
