@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaNativeConeResolution
+public import SerrePositivity.KST.NonConnective.DGKappaConeCofinality
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionCofinality
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionYonedaCompletion
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedYonedaEvaluation
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedKernelYoneda
