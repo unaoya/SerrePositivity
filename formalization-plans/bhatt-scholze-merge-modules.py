@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""BS の複数モジュールを一つのモジュールにまとめるスクリプト（BS-W5 以降）。
+
+計画は JSON：{"merges": {新モジュール名: [元モジュール名, ...]}, "docstrings": {新モジュール名: 本文}}。
+元モジュールは並べた順に連結する（後のものが前のものを import してよい順に並べること）。
+
+まとめ方（宣言・証明・名前空間・variable には手を加えない）：
+- 先頭は `module`、元モジュールの `public import` の和（同じ統合先に入るモジュールと自分自身は除き、
+  統合された名前は新しい名前に置き換えて重複を除く）、計画の docstring、
+  `@[expose] public noncomputable section`、元の universe 宣言の和。
+- 各元モジュールは `/-! ## 見出し（旧 パス） ... -/` と `section 元ファイル名 ... end 元ファイル名` で包む。
+  見出しの下には元の module docstring の本文をそのまま残す。variable・set_option・open は section の中に閉じる。
+- 元ファイルは git rm する（統合先と同じパスのものは上書き）。
+- 所有範囲（BS・CLMST・BS/CLMST の監査）の import 行・`let mods` の名前一覧・バッククォートのモジュール名を
+  新しい名前に書き換え、重複した import 行と自分自身の import を除く。
+
+既定は dry-run。--apply で書き込みと git rm を行う。コミット・ビルドはしない。
+"""
+import argparse
+import json
+import re
+import subprocess
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OWNED = [
+    re.compile(r"^SerrePositivity/BhattScholze/.*\.lean$"),
+    re.compile(r"^SerrePositivity/CLMST/.*\.lean$"),
+    re.compile(r"^SerrePositivity/Inputs/Perfectoidization\.lean$"),
+    re.compile(r"^scripts/audit_bhatt_scholze[^/]*\.lean$"),
+    re.compile(r"^scripts/audit_clmst[^/]*\.lean$"),
+    re.compile(r"^scripts/audit_andre_[^/]*\.lean$"),
+    re.compile(r"^scripts/audit/bhatt_scholze\.lean$"),
+    re.compile(r"^scripts/audit/clmst\.lean$"),
+]
+NAME = re.compile(r"(?<![\w.])SerrePositivity\.BhattScholze\.[\w.']+")
+IMPORT = re.compile(r"^[ \t]*(public[ \t]+)?import[ \t]+(\S+)[ \t]*$")
+HEADER = re.compile(r"^@\[expose\] public noncomputable section\s*$")
+UNIVERSE = re.compile(r"^universe\s+(.*)$")
+
+
+def to_path(mod):
+    return ROOT / (mod.replace(".", "/") + ".lean")
+
+
+def parse(mod):
+    lines = to_path(mod).read_text().splitlines()
+    imports, doc, i = [], None, 0
+    while i < len(lines) and not HEADER.match(lines[i]):
+        m = IMPORT.match(lines[i])
+        if m:
+            imports.append(m.group(2))
+        elif lines[i].startswith("/-!"):
+            j = i
+            while "-/" not in lines[j]:
+                j += 1
+            doc = "\n".join(lines[i:j + 1])
+            i = j
+        i += 1
+    assert i < len(lines), f"no section header in {mod}"
+    i += 1
+    universes = []
+    while i < len(lines) and (UNIVERSE.match(lines[i]) or not lines[i].strip()):
+        m = UNIVERSE.match(lines[i])
+        if m:
+            universes += m.group(1).split()
+        i += 1
+    return imports, doc, universes, "\n".join(lines[i:]).rstrip() + "\n"
+
+
+def part_heading(mod, doc):
+    rel = mod.replace("SerrePositivity.BhattScholze.", "").replace(".", "/") + ".lean"
+    if doc is None:
+        return f"/-! ## {mod.split('.')[-1]}（旧 {rel}） -/"
+    body = doc[3:-2].strip("\n")
+    lines = body.splitlines()
+    title = lines[0].lstrip("# ").strip() if lines and lines[0].lstrip().startswith("#") else mod.split(".")[-1]
+    rest = "\n".join(lines[1:]).strip("\n")
+    return f"/-! ## {title}（旧 {rel}）\n\n{rest}\n-/" if rest else f"/-! ## {title}（旧 {rel}） -/"
+
+
+def build(new, parts, rename, docstring):
+    imports, universes, chunks = [], [], []
+    for mod in parts:
+        imps, doc, unis, body = parse(mod)
+        for imp in imps:
+            imp2 = rename.get(imp, imp)
+            if imp2 != new and imp2 not in imports:
+                imports.append(imp2)
+        for u in unis:
+            if u not in universes:
+                universes.append(u)
+        stem = mod.split(".")[-1]
+        chunks.append(f"{part_heading(mod, doc)}\n\nsection {stem}\n\n{body}\nend {stem}\n")
+    head = "module\n\n" + "".join(f"public import {i}\n" for i in imports)
+    head += f"\n/-!\n{docstring.strip()}\n-/\n\n@[expose] public noncomputable section\n"
+    if universes:
+        head += f"universe {' '.join(universes)}\n"
+    return head + "\n" + "\n".join(chunks)
+
+
+def listed_files():
+    out = subprocess.check_output(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"], cwd=ROOT).decode()
+    return sorted(f for f in out.split("\0") if f)
+
+
+def rewrite(src, rename, self_mod):
+    out, seen = [], set()
+    for line in src.splitlines():
+        m = IMPORT.match(line)
+        if m:
+            new = rename.get(m.group(2), m.group(2))
+            if new == self_mod or (m.group(1) or "", new) in seen:
+                continue
+            seen.add((m.group(1) or "", new))
+            out.append(line.replace(m.group(2), new))
+        else:
+            out.append(NAME.sub(lambda k: rename.get(k.group(0), k.group(0)), line))
+    return "\n".join(out) + ("\n" if src.endswith("\n") else "")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("plan", type=Path)
+    ap.add_argument("--apply", action="store_true")
+    args = ap.parse_args()
+    plan = json.loads(args.plan.read_text())
+    merges, docs = plan["merges"], plan["docstrings"]
+    rename = {old: new for new, olds in merges.items() for old in olds}
+    for new, olds in merges.items():
+        assert new in docs, f"docstring missing for {new}"
+        for old in olds:
+            assert to_path(old).is_file(), f"missing source {old}"
+        assert not to_path(new).exists() or new in olds, f"destination exists {new}"
+    built = {new: build(new, olds, rename, docs[new]) for new, olds in merges.items()}
+    removed = sorted({old for olds in merges.values() for old in olds} - set(merges))
+    edits = {}
+    for f in listed_files():
+        if not f.endswith(".lean") or not any(r.match(f) for r in OWNED) or not (ROOT / f).is_file():
+            continue
+        mod = "SerrePositivity." + f[len("SerrePositivity/"):-5].replace("/", ".") \
+            if f.startswith("SerrePositivity/") else None
+        if mod in rename:
+            continue
+        src = (ROOT / f).read_text()
+        new = rewrite(src, rename, mod)
+        if new != src:
+            edits[f] = new
+    foreign = [f for f in listed_files() if f.endswith(".lean") and (ROOT / f).is_file()
+               and not any(r.match(f) for r in OWNED)
+               and any(re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)
+                       for o in rename)]
+    print(json.dumps({
+        "new_modules": {n: len(o) for n, o in merges.items()},
+        "removed_files": len(removed),
+        "lines": {n: built[n].count("\n") for n in built},
+        "owned_files_rewritten": len(edits),
+        "foreign_importers": foreign,
+        "applied": args.apply,
+    }, ensure_ascii=False, indent=1))
+    if foreign:
+        raise SystemExit("foreign importers would break: stop and report")
+    if not args.apply:
+        return
+    for new, text in built.items():
+        to_path(new).write_text(text)
+    for old in removed:
+        subprocess.run(["git", "rm", "-q", "--", str(to_path(old).relative_to(ROOT))],
+                       cwd=ROOT, check=True)
+    for f, text in edits.items():
+        (ROOT / f).write_text(text)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,42 @@
+{
+ "merges": {
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaRing": [
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaRing",
+   "SerrePositivity.BhattScholze.Delta.Basic.WittTwoMap",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaIdentities",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaSectionNaturality",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobenius",
+   "SerrePositivity.BhattScholze.Delta.Basic.WittTwoUnits"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient": [
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaIdeal",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaClosureGeneration"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaConstruction": [
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaDirectLimit",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaTransport",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaSubring"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt": [
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostStep",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostCoefficients",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostLowCoefficients",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostCoefficientTwo",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostRingHom",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostNaturality",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaWittGhostFrobenius"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Free.FreeDeltaUniversal": [
+   "SerrePositivity.BhattScholze.Delta.Free.FreeDeltaUniversal",
+   "SerrePositivity.BhattScholze.Delta.Basic.DeltaFrobeniusNaturality"
+  ]
+ },
+ "docstrings": {
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaRing": "# δ 環の定義と言い換え（BS 著者版 §2.1：Def 2.1、Rem 2.2・2.4）\n\n## 概要\nδ 構造を W₂ への環準同型切断として定義し（Rem 2.4）、Def 2.1 の恒等式との同値、\nFrobenius 持ち上げとの対応（Rem 2.2）、δ 射とその言い換えを与える。勉強ノート第 2 章の定義 2.1.1〜命題 2.1.5。\n\n## 方針\nW₂ の和・積の第 1 座標の公式（共通基盤）を切断に当てて恒等式を読む。p で割る式は使わない。\n\n## 規約\np ねじれ・零環を許す。δ 構造は型クラスではなくデータ `DeltaStructure p A`。\n\n## 使われ方\nBS のすべての δ 環の議論の土台。",
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient": "# δ 安定イデアル・商・δ 閉包（BS 著者版 Lemma 2.9、Ex 2.10）\n\n## 概要\nδ 安定イデアルによる商の δ 構造と普遍性、δ 閉包（I を含む最小の δ 安定イデアル）とその生成元表示。\n勉強ノート第 2 章の命題 2.1.8・2.1.9。\n\n## 方針\n切断 A → W₂(A) → W₂(A/I) が I を零に送ることから商へ降ろす。生成元の表示は、生成元の δ が入れば\nイデアル全体が δ 安定であること（加法公式の補正項と積公式の各項）から。\n\n## 規約\np ねじれを許す。\n\n## 使われ方\n相対自由 δ 環の表示（Free/RelativeFreePresentation）、d で割る包（Division）。",
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaConstruction": "# δ 構造の構成の道具：有向余極限・環同型による移送・δ 安定部分環（BS 著者版 Rem 2.7 の一部）\n\n## 概要\nδ 両立な遷移を持つ有向系の環余極限の δ 構造と普遍性、環同型による δ 構造の引き戻し、\nδ 安定部分環への制限。勉強ノート第 2 章の命題 2.1.6（有向の場合）。\n\n## 方針\n各段の W₂ 切断を Mathlib の環の構成の普遍性（Ring.DirectLimit.lift など）で貼り合わせる。\n\n## 規約\n一般の極限・余極限（テンソル積・積・引き戻し）はここにはない。\n\n## 使われ方\nδ 完全化（Perfect）、André の ω₁ 反復、d で割る包の有限部分族の余極限、階乗部分環（DividedPower）。",
+  "SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt": "# δ 環から Witt 環への写像（BS 著者版 Rem 2.7 の w_R、Rem 2.13 の δ_n）\n\n## 概要\nghost 座標が Frobenius 持ち上げの反復 φⁿ(a) になる Witt 係数の列を構成し、ghost 写像が単射のとき\n環準同型 A → W(A) を与える。低次の係数、自然性、Witt の Frobenius との両立。勉強ノート第 2 章の定義 2.1.13。\n\n## 方針\n可除性 p^{n+1} ∣ φ^{n+1}(a) − (…) から係数を一段ずつ選ぶ。係数列の存在は p ねじれがあっても成り立つ。\n\n## 規約\n環準同型性・一意性は ghost 写像の単射性を仮定する。Joyal の右随伴としての普遍性は述べない。\n\n## 使われ方\n相対自由 δ 環の Witt 座標（Free/Finite、Rem 2.14 の相対版）と、André の一段の拡大の Witt 方程式（Division/Relations）。",
+  "SerrePositivity.BhattScholze.Delta.Free.FreeDeltaUniversal": "# 自由整数 δ 環の普遍性と、Frobenius 持ち上げが δ 射であること（BS 著者版 Lemma 2.11）\n\n## 概要\n任意の δ 環と生成元の指定から、δ の反復像を座標へ評価する一意な δ 射を構成する。\nその系として、任意の δ 環で φ と δ が可換、すなわち φ は δ 射（勉強ノート第 2 章の命題 2.1.5 (4)）。\n\n## 方針\n自由整数 δ 環は p ねじれなしなので、そこで φ が δ 射であることを確かめ、普遍性で任意の δ 環へ送る。\n\n## 規約\n終域の p ねじれを許す。\n\n## 使われ方\nδ 完全化（Perfect/DeltaPerfection）、André の δ 代数の Frobenius 段。"
+ }
+}
