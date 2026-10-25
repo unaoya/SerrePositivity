@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
 public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom

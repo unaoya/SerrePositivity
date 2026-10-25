@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
 import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap
@@ -7981,6 +7983,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential,
+
     `SerrePositivity.DifferentialGraded.Module.ShiftBlocks,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap,
