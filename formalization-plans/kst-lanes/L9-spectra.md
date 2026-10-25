@@ -105,6 +105,7 @@
 | 項目 | 主要宣言 | 仮定・提供済みの範囲 |
 | f4 の値域・指定錐 | DGAlgebra.quasiIsoInfinity・quasiIsoInfinityMap・quasiIsoInfinity_isLocalization・quasiIsoInfinityMap_inverts、postnikovInfinityCospan・postnikovInfinityCone・vertex／leg、postnikovInfinityPresentedCone_left／right | 実代数の準同型辺を反転する既存 ∞ 局所化。n≥0・非正次数 B の元の頂点・包含・遷移を保つ錐。極限性は局所化前の presentedCone／nerveCone のみ証明済み。局所化後の極限性は未提供 |
 | f4 の実乗法的単体模型 | DGAlgebra.convolutionFunctor・convolutionFunctor_one／mul、convolutionPrecompose・convolutionPrecomposeNatTrans・convolutionContravariant、multiplicativeSimplices・multiplicativeSimplicesFunctor・multiplicativeMappingSimplices・multiplicativeMappingFunctor・multiplicativeMapping_pre_post | 任意可換環・実 dg 代数。余モノイド射の元の内部 Hom 前合成を代数射に持ち上げ、E2 の simplexCochainComonFunctor を適用。全単体作用素・標的代数の関手性と源の前合成の整合を保持。Reedy frame 条件・Kan 性・導来写像空間比較は未提供 |
+| f4 の実定数射と固定底 | DGAlgebra.convolutionConstantMap・convolutionConstantMap_precompose／naturality・convolutionConstantHom_unit_pre、simplexConstant_quasiIso・simplexConstant_zero_isIso・multiplicativeSimplicesMap_quasiIso、multiplicativeMappingBase・relativeMultiplicativeMappingSimplices・relativeMultiplicativeMapping_condition_app | E2 の実 AW 余単位から、全次数の代数定数射と全自然性を供給。各定数射・全単体作用素の底は擬同型、零単体の定数代数射は同型。相対単体は全次数で指定底を保つ実 pullback。Reedy 条件・Kan 性・導来比較は未完 |
 | f4 の厳密錐の保存 | DGAlgebra.convolutionFunctor_preservesLimitsOfShape・multiplicativeSimplicesFunctor_preservesLimitsOfShape・multiplicativeMappingFunctor_preservesLimitsOfShape、postnikovMultiplicativeMappingCone・postnikovMultiplicativeMappingCone_isLimit | 複体に存在する形状の極限を保存。元の厳密 Postnikov 代数錐そのものの像を、任意の実源代数 A の乗法的写像の単体集合の厳密極限として供給。Kan 性・homotopy pullback・局所化後の極限性とは同一視しない |
 | --- | --- | --- |
 | connective cover | DGAlgebra.connectiveCover・connectiveCoverInclusion・connectiveCoverFunctor・coverTowerCounit_groups_proIso | 任意の代数。包含の準同型性は IsConnective の下。塔の群の pro 比較まで |
@@ -162,7 +163,7 @@
 - 供給待ちの間は β6 f→h を進め、供給到着時に最優先で s4 に戻る。s2・s3 の具体的入力（D の Perf 零性・実核等）が揃い次第 s5 で接続する。具体的入力は未供給として維持する。
 
 ### 次の一手
-- **次の一工程（β6 f4・f5・h）**：E2-S の実 AW 余モノイドから乗法的単体模型を構成し、元の厳密 Postnikov 錐の像の極限性を証明済み。E2-S (2) の実 cochainCounit の鎖ホモトピー同値・Δ[0] の IsIso を受領。余単位からの定数単体・指定底の相対版を検証し、同じ供給を frame 条件へ適用する。frame 条件・導来比較・局所化後の極限性は未完。区切りごとに f5 の検証・h の記録を行い、s4 の実全族写像が到着したら最優先で戻る。
+- **次の一工程（β6 f4・f5・h）**：E2-S の実 AW 余モノイドから乗法的単体模型を構成し、元の厳密 Postnikov 錐の像の極限性を証明済み。E2-S (2) の実 cochainCounit の鎖ホモトピー同値・Δ[0] の IsIso を受領。余単位からの実定数射の全自然性・全次数の擬同型性・零単体の同型性と指定底の相対単体を構成済み。元の正規化単体の Reedy cofibrancy と Hom 制限の全射性から残る frame 条件へ進む。frame 条件・導来比較・局所化後の極限性は未完。区切りごとに f5 の検証・h の記録を行い、s4 の実全族写像が到着したら最優先で戻る。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
