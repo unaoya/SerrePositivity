@@ -3002,3 +3002,19 @@ fibrant な標的への元の source frame の同じ三本矢比較射自身を�
 ユーザー決定により E2-S (6) の主定理にも第一の HasFunctorialFactorization を明示する。
 Mon (Complex R) への供給では実生成 cofibration の小対象論法から放電し、追加仮定を残さない。
 全 cofibrant 置換の圏を使う一般化は今は構成せず、第 II 段・R の候補として記録する。
+
+
+`DGAlgebra/FrameFactorization` は実自由 I/J の小対象論法から両関手的分解を局所供給する。
+`cofibrantHammockInclusion_weak`・`cofibrantHammockNerveInclusion_isQCatEquivalence` は
+実 dg モデルで第一分解入力を放電した比較。`DGAlgebra/BifibrantCofibrant` は allFibrant を代入し、
+元の対象・射のまま cofibrant・bifibrant 全部分圏を比較する。fibrant 置換は選ばない。
+
+`ModelHammockNerveEquivalence` は同じ両部分圏・全圏の全 coherent nerve 比較の QCat 同値性を与える。
+`RelativeHammockSourceComparison.relativeKanHammockNerve_source` は
+元の局所化源との全単体の三角形の厳密な等式。
+`ThreeArrowRightReplacementOfFirst` は弱な右脚を第一分解して二対三を使い、
+特殊三本矢比較の第二分解入力を除く。既存の第二分解版は保持し、準重複は R の整理候補。
+`ModelBifibrantFrameRoofWeak.modelBifibrantFrameLeftRoofColimitMap_weak` は
+第一の関手的分解と指定 right frame の下で、元の bifibrant frame から hammock への実射自身が弱同値。
+`FrameFunctorImage` の全三角形と `ModelRawRelative` の同じ包含の Hom 弱比較で ambient 比較を反映する。
+実次数比較の余終性・局所化普遍性・指定局所化の全 pinched 族比較は引き続き未完。

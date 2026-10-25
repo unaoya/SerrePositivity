@@ -10216,6 +10216,78 @@ import Mathlib.Tactic.Ring
       `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockEnriched_map,
       `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_fullyFaithful]
 
+@[noinline] private def e2RequiredBatch235 : Array Lean.Name :=
+  #[`SerrePositivity.EInfinity.DGAlgebra.cofibrantToBifibrant,
+      `SerrePositivity.EInfinity.DGAlgebra.cofibrantBifibrantEquivalence,
+      `SerrePositivity.EInfinity.DGAlgebra.cofibrantToBifibrant_inclusion,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory_hasFunctorialFactorization_cofibration_trivialFibration,
+      `SerrePositivity.EInfinity.DGAlgebra.modelCategory_hasFunctorialFactorization_trivialCofibration_fibration,
+      `SerrePositivity.EInfinity.DGAlgebra.cofibrantFactorization,
+      `SerrePositivity.EInfinity.DGAlgebra.fibrantFactorization,
+      `SerrePositivity.EInfinity.DGAlgebra.cofibrantHammockInclusion_weak,
+      `SerrePositivity.EInfinity.DGAlgebra.cofibrantHammockNerveInclusion_isQCatEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofColimitMap,
+      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_first,
+      `SerrePositivity.EInfinity.FrameHom.resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageHom,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageHom_isIso,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageAugmentation,
+      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofFunctor_functorImage,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex,
+      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofNerveMap_functorImage,
+      `SerrePositivity.EInfinity.FrameHom.frameLeftRoofColimitMap_functorImage,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.frameFunctorImageIndex_isWeakHomotopyEquivalence,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.intermediate,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.intermediateMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.fac,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.map_first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.map_last,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.first_trivialCofibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.last_trivialFibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.left,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.fst,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.snd,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.fst_trivialFibration,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.leftMap,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.leftMap_fst,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.leftMap_snd,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.leftMap_id,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.leftMap_comp,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.obj,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.map,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.functor,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.counit,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.RightReplacementOfFirst.inclusion_localized_isIso,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion_localized_isIso_of_first,
+      `SerrePositivity.EInfinity.FrameHom.WeakThreeArrow.inclusion_isWeakHomotopyEquivalence_of_first,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_image,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantFrameLeftRoofColimitMap_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantToBifibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantToCofibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelCofibrantToModel_nerve_isQCatEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelToCofibrant_nerve_isQCatEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawCofibrantWeak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawBifibrantWeak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawBifibrantToCofibrant,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawCofibrantToBifibrant,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawBifibrantToCofibrant_colimitMap_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawCofibrantToModel,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawToCofibrant,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawCofibrantToModel_colimitMap_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawBifibrantToModel,
+      `SerrePositivity.EInfinity.SimplicialLocalization.modelRawBifibrantToModel_colimitMap_weak,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_essentiallySurjective_of_counit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_isQCatEquivalence_of_counit,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeHammockEnriched_arrowMap,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockSourceFunctor,
+      `SerrePositivity.EInfinity.SimplicialLocalization.relativeKanHammockNerve_source]
+
 -- EInfinity の全宣言の推移的な公理依存を監査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -10249,7 +10321,7 @@ run_cmd do
       e2RequiredBatch40, e2RequiredBatch41, e2RequiredBatch42, e2RequiredBatch43, e2RequiredBatch44, e2RequiredBatch45, e2RequiredBatch46,
       e2RequiredBatch47, e2RequiredBatch48, e2RequiredBatch49, e2RequiredBatch50, e2RequiredBatch51, e2RequiredBatch52, e2RequiredBatch53, e2RequiredBatch54, e2RequiredBatch55, e2RequiredBatch56, e2RequiredBatch57, e2RequiredBatch58, e2RequiredBatch59, e2RequiredBatch60, e2RequiredBatch61, e2RequiredBatch62, e2RequiredBatch63, e2RequiredBatch64, e2RequiredBatch65, e2RequiredBatch66, e2RequiredBatch67, e2RequiredBatch68, e2RequiredBatch69, e2RequiredBatch70, e2RequiredBatch71, e2RequiredBatch72, e2RequiredBatch73, e2RequiredBatch74, e2RequiredBatch75, e2RequiredBatch76, e2RequiredBatch77, e2RequiredBatch78, e2RequiredBatch79, e2RequiredBatch80, e2RequiredBatch81, e2RequiredBatch82, e2RequiredBatch83, e2RequiredBatch84, e2RequiredBatch85, e2RequiredBatch86, e2RequiredBatch87, e2RequiredBatch88, e2RequiredBatch89, e2RequiredBatch90, e2RequiredBatch91, e2RequiredBatch92, e2RequiredBatch93, e2RequiredBatch94, e2RequiredBatch95, e2RequiredBatch96, e2RequiredBatch97, e2RequiredBatch98, e2RequiredBatch99, e2RequiredBatch100, e2RequiredBatch101, e2RequiredBatch102, e2RequiredBatch103, e2RequiredBatch104, e2RequiredBatch105, e2RequiredBatch106, e2RequiredBatch107, e2RequiredBatch108, e2RequiredBatch109, e2RequiredBatch110, e2RequiredBatch111, e2RequiredBatch112, e2RequiredBatch113, e2RequiredBatch114, e2RequiredBatch115, e2RequiredBatch116, e2RequiredBatch117, e2RequiredBatch118, e2RequiredBatch119, e2RequiredBatch120, e2RequiredBatch121, e2RequiredBatch122, e2RequiredBatch123, e2RequiredBatch124, e2RequiredBatch125, e2RequiredBatch126, e2RequiredBatch127, e2RequiredBatch128, e2RequiredBatch129,
       e2RequiredBatch130, e2RequiredBatch131, e2RequiredBatch132,
-      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229, e2RequiredBatch230, e2RequiredBatch231, e2RequiredBatch232, e2RequiredBatch233, e2RequiredBatch234] do
+      e2RequiredBatch133, e2RequiredBatch134, e2RequiredBatch135, e2RequiredBatch136, e2RequiredBatch137, e2RequiredBatch138, e2RequiredBatch139, e2RequiredBatch140, e2RequiredBatch141, e2RequiredBatch142, e2RequiredBatch143, e2RequiredBatch144, e2RequiredBatch145, e2RequiredBatch146, e2RequiredBatch147, e2RequiredBatch148, e2RequiredBatch149, e2RequiredBatch150, e2RequiredBatch151, e2RequiredBatch152, e2RequiredBatch153, e2RequiredBatch154, e2RequiredBatch155, e2RequiredBatch156, e2RequiredBatch157, e2RequiredBatch158, e2RequiredBatch159, e2RequiredBatch160, e2RequiredBatch161, e2RequiredBatch162, e2RequiredBatch163, e2RequiredBatch164, e2RequiredBatch165, e2RequiredBatch166, e2RequiredBatch167, e2RequiredBatch168, e2RequiredBatch169, e2RequiredBatch170, e2RequiredBatch171, e2RequiredBatch172, e2RequiredBatch173, e2RequiredBatch174, e2RequiredBatch175, e2RequiredBatch176, e2RequiredBatch177, e2RequiredBatch178, e2RequiredBatch179, e2RequiredBatch180, e2RequiredBatch181, e2RequiredBatch182, e2RequiredBatch183, e2RequiredBatch184, e2RequiredBatch185, e2RequiredBatch186, e2RequiredBatch187, e2RequiredBatch188, e2RequiredBatch189, e2RequiredBatch190, e2RequiredBatch191, e2RequiredBatch192, e2RequiredBatch193, e2RequiredBatch194, e2RequiredBatch195, e2RequiredBatch196, e2RequiredBatch197, e2RequiredBatch198, e2RequiredBatch199, e2RequiredBatch200, e2RequiredBatch201, e2RequiredBatch202, e2RequiredBatch203, e2RequiredBatch204, e2RequiredBatch205, e2RequiredBatch206, e2RequiredBatch207, e2RequiredBatch208, e2RequiredBatch209, e2RequiredBatch210, e2RequiredBatch211, e2RequiredBatch212, e2RequiredBatch213, e2RequiredBatch214, e2RequiredBatch215, e2RequiredBatch216, e2RequiredBatch217, e2RequiredBatch218, e2RequiredBatch219, e2RequiredBatch220, e2RequiredBatch221, e2RequiredBatch222, e2RequiredBatch223, e2RequiredBatch224, e2RequiredBatch225, e2RequiredBatch226, e2RequiredBatch227, e2RequiredBatch228, e2RequiredBatch229, e2RequiredBatch230, e2RequiredBatch231, e2RequiredBatch232, e2RequiredBatch233, e2RequiredBatch234, e2RequiredBatch235] do
     for required in batch do
       unless env.contains required do
         throwError "EInfinity の必要な宣言がありません: {required}"
@@ -27417,3 +27489,59 @@ example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
       (Hammock.Relative.colimitMap modelBifibrantToModelRelative X Y) :=
   modelBifibrantToModel_colimitMap_weak r X Y
 end e2Fixtures233
+
+noncomputable section e2Fixtures235
+open CategoryTheory HomotopicalAlgebra Opposite
+open SerrePositivity.EInfinity SerrePositivity.EInfinity.FrameHom
+open SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.InfinityCategories
+universe e2F235U e2F235V
+variable {C : Type e2F235U} [Category.{e2F235V} C] [ModelCategory C]
+  (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
+
+example : IsQCatEquivalence
+    (relativeKanHammockNerve (modelBifibrantToCofibrantRelative (C := C))) :=
+  modelBifibrantToCofibrant_nerve_isQCatEquivalence r
+example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)] :
+    IsQCatEquivalence (relativeKanHammockNerve (modelCofibrantToModelRelative C)) :=
+  modelCofibrantToModel_nerve_isQCatEquivalence C
+example [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
+    (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj) :
+    IsWeakHomotopyEquivalence (modelBifibrantFrameLeftRoofColimitMap X Y q) :=
+  modelBifibrantFrameLeftRoofColimitMap_weak X Y q r
+example {X : C} (q : CofibrantResolution (C := C) simplex X) (Y : C) [IsFibrant Y]
+    (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
+    IsWeakHomotopyEquivalence (resolutionLeftRoofColimitMap q Y) :=
+  resolutionLeftRoofColimitMap_isWeakHomotopyEquivalence_of_first q Y r cof
+
+section Relative
+variable {A B : RelativeCategory.{e2F235U}}
+  (F : LocalizerMorphism A.weakEquivalences B.weakEquivalences)
+example : hammockLocalizationNerveMap A ≫ relativeKanHammockNerve F =
+    nerveMap F.functor ≫ hammockLocalizationNerveMap B := relativeKanHammockNerve_source F
+end Relative
+end e2Fixtures235
+
+noncomputable section e2Fixtures235DG
+open CategoryTheory HomotopicalAlgebra
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.SimplicialLocalization SerrePositivity.InfinityCategories
+universe e2F235R
+variable (R : Type e2F235R) [CommRing R]
+attribute [local instance] DGAlgebra.hasFiniteLimits DGAlgebra.hasTerminal
+example :
+    let := DGAlgebra.modelCategory R
+    (cofibrations (Mon (Complex R))).HasFunctorialFactorization
+      (trivialFibrations (Mon (Complex R))) :=
+  DGAlgebra.modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
+example :
+    let := DGAlgebra.modelCategory R
+    CofibrantObject (Mon (Complex R)) ≌ BifibrantObject (Mon (Complex R)) :=
+  DGAlgebra.cofibrantBifibrantEquivalence R
+example :
+    let := DGAlgebra.modelCategory R
+    IsQCatEquivalence (relativeKanHammockNerve
+      (modelCofibrantToModelRelative (Mon (Complex R)))) :=
+  DGAlgebra.cofibrantHammockNerveInclusion_isQCatEquivalence R
+end e2Fixtures235DG

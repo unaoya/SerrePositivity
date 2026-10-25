@@ -132,8 +132,8 @@
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
 - **既知の問題・依存**：P-6 は4a6a7dd91で公開済み。CommaLocalUnitComparison・CommaLocalUnitTransportComparison を読み取り専用で import する。commaTargetFiber_constant_homotopy と g2-1 の同じ候補の定値 Hom 類から、回収辺の類を元の derivedFreeProbeUnitHom へ同定した。unitIntervalMapAt_commaTransportIso を元の候補へ代入し、FreeProbeUnitTransportCondition を追加仮定なしで証明済み。条件付きの構成は補助入口として保持し、主経路は FreeProbeDerivedFreeForget の条件なし宣言を使う。P への未解決依頼はない。
-- **採用済みの追加入力**：主定理は ModelCategory と第一の HasFunctorialFactorization を明示入力に取る。Mon (Complex R) の実モデルでは generatingCofibrations_smallObjectArgument から放電し、Sp へ仮定の残らない特殊化を供給する。実 dg 代数は allFibrant。全置換圏による一般化は不採用、第 II 段・R の候補として記録するだけ。
-- **未コミット**：なし。bifibrant 中継・元の fibrant frame 比較・条件付き right Kan 還元と相対豊穣関手の17新規モジュールを保存。集約11812 jobs・全監査・28独立例・新規130宣言の公理検査を通過。閉包7857本の digest 一致、他レーン未保存依存0。一般比較全体は未完。前段は873a67f68。
+- **採用済みの追加入力**：主定理は ModelCategory と第一の HasFunctorialFactorization を明示入力に取る。Mon (Complex R) の実モデルでは generatingCofibrations_smallObjectArgument から放電し、Sp へ仮定の残らない特殊化を供給する。実 dg 代数は allFibrant。一般の弱変形による局所化源の移送（単位・余単位の両向き）は既存名／供給をコーディネータ経由で原本担当に確認中。全置換圏による一般化は不採用、第 II 段・R の候補として記録するだけ。
+- **未コミット**：SimplicialLocalization/ModelBifibrantFrameElements・ModelBifibrantFrameRoof は次工程の葉。前者は対象通過、後者は検証中で、集約・監査へ未接続。前段10新規モジュールは集約11824 jobs・全監査27198宣言・8独立例・70公理検査を通過（閉包7869本の digest 一致、他レーン未保存依存0）。実 dg 第一分解の放電、全 nerve の同値、元の源三角形、第一分解だけの bifibrant 実 frame roof 弱比較まで。一般比較全体は未完。
 - **次の一手**：採用済みの第一関手的分解を実 dg モデルで放電し、bifibrant 経由の比較を続行する。三つの判定入力の還元は完成、実次数比較の余終性と全 frame→指定 pinched Hom 比較は未完。G1′-1〜5 は完了、BS-7 は第 II 段。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
