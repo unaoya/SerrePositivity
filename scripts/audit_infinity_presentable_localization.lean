@@ -543,3 +543,20 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @SmallPresentationComparison
 #check @nonempty_smallPresentationComparison
 #check @smallSlicePresentation_projection_compact
+
+#check @IsCompatiblePresentationPiece
+#check @CompatiblePresentationPieces
+#check @SmallPresentationComparison.toCompatiblePiece
+#check @exists_compatiblePresentationPiece_containing
+#check @compatiblePresentationPieces_isCardinalFiltered
+#check @compatiblePresentationPieces_nerve_isKappaFiltered
+#check @monotoneUpperCommaEquivalence
+#check @monotone_nerveMap_isRightCofinal
+#check @compatibleLeftPiece
+#check @compatibleRightPiece
+#check @compatibleLeftPiece_dominates
+#check @compatibleRightPiece_dominates
+#check @compatibleLeftPiece_nerve_isRightCofinal
+#check @compatibleRightPiece_nerve_isRightCofinal
+#check @exists_cofinalSmallPartialColimitFamily
+#check @cofinalSmallPartialColimitFamily_values_compact
