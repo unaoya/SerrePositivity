@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary
+import SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn
 import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily
@@ -7418,6 +7420,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary,
+    `SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn,
+
     `SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily,

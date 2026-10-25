@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn
+public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSigns
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixDifferential
