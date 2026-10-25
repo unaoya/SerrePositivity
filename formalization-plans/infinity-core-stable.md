@@ -188,7 +188,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 係数閉包の再符号化：`DifferentialGraded/Category/HomTransport` と `Presentation/CategoryFromHomSurjections` は対象1,801 jobs・葉35宣言成功。Hom ごとの自由被覆があれば、同じ全 Hom 同型・実評価を持つ小 dg 提示コードを構成する。被覆の存在・閉射の精密化は未証明。
 
 ### D-8 c：実導来 ∞ 圏の κ-compact 性
-- [ ] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[ ] c3 零・shift 保存。[ ] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
+- [x] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[ ] c3 零・shift 保存。[ ] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
+- c1：DGModuleKappaCompactBasic／Transport／ClassicalTransport の3本17宣言、両集約11,652 jobs・葉監査成功（許容三公理のみ）。dgModuleKappaCompact_zero、_iff_of_quasiIso、_of_acyclic、_iff_of_derivedIso、_of_derivedRetract を供給。dgConeModuleDerivedVertex_classicalIso と同型・retract の native への引き戻しを保持。c3 の shift・c6 の perfect 代表そのものは未証明。全体監査は c7 で再実行する。
+- 上流依頼：c4/c5 の正則 κ-filtered と κ未満離散極限の交換・対応する直和閉性を Ind へ、c3 の CompactEquivalence の添字／標的宇宙分離版を P へコーディネータ経由で依頼中。既存の有限交換は明示入力、P の cardinal-change 版だけでは指定 κ へそのまま代入できない。
 - F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput と D-16 追加宇宙局所化は第 I 段中は明示入力を維持。
 
 ### D-20：全対象 dg 商の Perf 零性

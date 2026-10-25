@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport
+public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactTransport
+public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic
 public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero
 public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
 public import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence

@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactTransport
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport
 import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero
 import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
 import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
@@ -7944,6 +7947,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactTransport,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport,
     `SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero,
     `SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero,
     `SerrePositivity.InfinityCategories.Stable.StablePushoutExistence,
