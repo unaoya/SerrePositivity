@@ -51,6 +51,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceSmallColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceMappingFiber
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeTerminalMappingPoint
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanSourceFiber
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -134,7 +136,10 @@ isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性
 元の辺全体の coslice と反復 coslice の厳密な同型を、始点制限の等式付きで構成した。
 元の指定終点・指定余錐上の始点制限の fiber を、同じ coslice 内の全左写像空間と
 厳密に同型にした。その全空間の可縮性から元の辺への高次の局所性を結論する入口も得た。
-任意の始域からの局所性へ戻す pushout の写像空間比較はまだ未構成。
+pushout 四角形から入力 span への制限と、四角形から上辺への制限の自明 Kan 性を得た。
+同じ指定余錐の fiber で比較を取り、元の左枝の始点制限の fiber と上辺の指定 fiber の
+可縮性が同値となることまで証明した。元の辺と恒等射を保持する退化余錐の基点も構成した。
+この二つの基点を元の固定始域の局所性判定へ揃える最後の比較はまだ未構成。
 弱可縮な小さい通常圏の nerve の始点 join への右包含の cofinal 性を証明し、
 全 coslice の同じ指定余錐の普遍性を終域で保ち反映する比較へ接続した。
 その形状の固定始域の閉包内射の余極限閉性・内部での存在・包含の保存を構成した。
