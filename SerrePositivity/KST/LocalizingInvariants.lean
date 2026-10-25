@@ -2204,4 +2204,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionFunct
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionContravariant
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeSimplices
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraConvolutionLimits
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMappingCone
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
