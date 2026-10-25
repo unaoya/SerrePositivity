@@ -65,7 +65,7 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- `DGKappaNativeBFFiniteInput` の同じ四頂点像と元の全二胞体、元正段の点つき全像と基点忘却後の厳密回収、`StableOneDirection*` の元の S₁ 全族比較・同じ商の作用・Ex∞ 全図式同型48宣言は集約監査済み。`dgKappaNativeBFOneDirectionStageComparison` は同じ未完備 native 全四角形の点つき S₁ 比較。最初の有限 BF 段は Kan 性・構造射単射性・比較の π 同型・実 Ω 条件まで対象ビルド済み。元の suspension 組み立ての全族自然性と隣接 Kan span の全自然性・左脚の弱同値性を含む新42宣言は集約・公式監査済み。有限 BF の次段再帰・新四辺・実 BF 四角形・全正段全比較は未完。一般安定圏の BF 関手は構成しない。
+- 同じ未完備 native 四頂点像の全正段の実再帰・Ω 条件・全 Hom の BF 豊穣関手と、元の全二胞体を写す `dgKappaNativeCoherentBFSquare` を構成済み。`dgKappaNativeCoherentBFPositiveComparison` は全正段で元の S• 全四角形への指定同型。旧値から同じ実 BF 値への指定全整数群同型は `dgKappaNativeBFIntegerComparisonEquiv`。新14葉73宣言は対象・集約15,228 jobs・公式監査12,711件を通過し保存対象。標準三公理のみ、ModelCategory 仮定なし。閉包11,418モジュールは全解決。四辺の旧 π 作用との可換性は未完。一般安定圏の BF 関手は構成しない。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
@@ -84,7 +84,7 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- 優先供給（ユーザー採用・新四辺方式）：同じ未完備 D-9 native 一四角形で coherent BF 四辺を同時構成し、旧 `kSpectrumMap` とは全正段の指定比較と全整数 π 作用の一致を公開する。旧四辺との全 Sp 写像空間内比較は追わない。旧公開宣言・型は不変。公開予定名は `dgKappaNativeCoherentBFSquare`・`dgKappaNativeCoherentBFArrow`・`dgKappaNativeCoherentBFPositiveComparison`・`dgKappaNativeCoherentBFArrow_homotopyMap_eq`（未構成）。旧依頼の辺の厳密等式を指定比較＋π_* 一致へ変更する。有限二胞体に限り、一般 StableInfinity 上の K 関手化は再開しない。見積り6〜12時間。元 BF 境界・正段全像・指定 SOA→Ex∞ 比較は構成済み。全 Sp 四角形は未完。各段成分の等号から全比較を結論しない。
+- 優先供給（ユーザー採用・新四辺方式）：同じ未完備 D-9 native 一四角形で coherent BF 四辺を同時構成し、旧 `kSpectrumMap` とは全正段の指定比較と全整数 π 作用の一致を公開する。旧四辺との全 Sp 写像空間内比較は追わない。旧公開宣言・型は不変。`dgKappaNativeCoherentBFSquare`・`dgKappaNativeCoherentBFPositiveComparison` は構成済み。残る公開予定名は `dgKappaNativeCoherentBFArrow`・`dgKappaNativeCoherentBFArrow_homotopyMap_eq`。旧依頼の辺の厳密等式を指定比較＋π_* 一致へ変更する。有限二胞体に限り、一般 StableInfinity 上の K 関手化は再開しない。見積り6〜12時間。元 BF 境界・正段全像・指定 SOA→Ex∞ 比較は構成済み。全 Sp 四角形と全正段の全図式比較は実構成済み。四辺の整数 π 作用の可換性が残る。各段成分の等号から全比較を結論しない。
 - **厳密 dg 入力に限定**（ユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
 - **K-10 c 三段目（完了）**：7 項目を完了し、元の右脚・商 End・全 Hom 比較を保持して保存済み。
 - **K-10 d②〜d④・e② 三段目（固定）**：
@@ -218,7 +218,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 - **Tamme**：一般の Cat^perf の半直交分解について、任意の局所化不変量の同じ実値の分裂、元の包含・切断・射影の回収、実 Sp 積錐の ∞ 極限性と同じ分裂の可逆辺まで証明済み。元の F2 lax pullback の coherent 冪等完備性を C・D の完備性だけから証明し、同じ三頂点・両包含・第一射影を保つ Cat^perf 上の Tamme 分裂へ接続済み（Tamme 2018 §1）。残りは dg gluing との具体的同定で、D2 β4 の型確定後に接続する。Cat_∞ の極限は α2b、dg gluing 比較は D2 の β4、Sp の抽象分裂は K-5 を読み取り専用で使う。
 - **Land–Tamme の ⊙**：元の非可換 dg 代数四角形から実延長像を保持する小模型・全 Hom 自然な比較対角と実 dg gluing を構成。指定対角商 End を右加群の向きで代数化し、元の右代数射を保持。D β3 の実商と D の生成 API により、元の ⊙→指定商の実一回 Perf 延長の Morita／準同値／native 同値を生成仮定なしで供給済み。固定 S の入力・実右三角形・ν/K 像と同値も供給済み。全 Hom・単位・全次数合成を保つ実 cone 関手、固定前像の既存収縮を持つ ContractedFunctor と既存商延長、元の関手・End・ε の回収、実 ⊙→元の終域代数の比較と元の右脚を構成。商 cone 作用の同じ tensor 評価と元の三段同型は、元の比較代数射の自由代表作用に全 Hom 自然で、同じ比較・逆比較・閉零自然同型を供給。評価した同じ cone 点を含む小さい実 Perf 模型を構成し、同じ二作用・元の三段同型・全 Hom 比較を保持済み。元の Hom end の入力閉同型と逆律、実一回 Perf 延長の指定同型・全 Hom 自然性と順逆成分回収、元の比較代数射の実延長と同じ小模型内の cone 一回延長との標準合成比較を保持する全次数比較・逆比較・閉零自然同型まで供給済み。元の終域から同じ小模型への厳密 Yoneda を、元の自由代表 End への準同値とその包含へ厳密に分解し、D の自由生成 API から Morita と同じ一回 dg Perf 延長の準同値／native 同値を追加仮定なしで供給済み。同じ固定 S 辺の Morita・ν の元の完全射の同値・K の全整数 π 同型と Sp 辺の可逆性、元の比較代数射との実三角形と同じ ν/K 像も供給済み。元の閉同型の宇宙持ち上げ・入力 Hom end の同じ閉同型と native core の実辺、固定 S の標準区間比較四角形と両対象端の固定・指定三辺の選択二単体、その同じ ν/K 像を供給済み。元の native 比較四角形の ν 像と同じ一回 Perf 延長の順逆成分の照合も供給済み。残りは D2 β4 による Perf(gluing) と元の Perf lax pullback の同定、同じ実商の D β3 Verdier 列・idempotent completion 後の実比較、S 内の自然な零化・長方形全体と ν 像の等式。対象別 ε の収縮を S 内の自然な零化と取り違えない。商・局所化 API は Sp 正本と D β3、生成 API は D から読み取り専用で使う（Land–Tamme 2019 §1.2 Lemma 1.11、100〜200時間）。E₁ 環スペクトル・HA §2–4 は構成しない。
 - **主定理**：Tamme の分裂と上の Verdier 列から、B′ を ⊙ に置き換えた四角形を全ての局所化不変量が引き戻しに送ると証明する。dg の対象供給と ∞ 圏の形式的議論を接続する（Land–Tamme §2、60–120時間）。 Cat^perf 側には `PerfectLaxQuotient` の実商・完備化入力と二脚の比較を供給済み。完備化後の射は厳密 Verdier 商と仮定せず、包含の零化から普遍差への指定比較正方形を構成し、その全単体を Cat^perf へ持ち上げ済み。元の二つの Verdier 図式を含む全比較長方形と外周を Cat^perf に保持し、同じ Sp 値の比較正方形の引き戻し性を証明済み。元の C・D の値の BF 積に対する両射影を保つ Tamme 同値も証明済み。同じ全図式を元の C・D・完備化先の値の実 BF 積へ移し、四頂点・全関手同型・四成分・四辺の自然性・引き戻し性を保持済み。元の商の二脚と完備化後の商射の二脚も全比較済み。移送後の四辺は元の包含・両射影、対角、完備化後の元の二脚の実積射へ Arrow の等号で照合済み。元の実 BF 四辺に境界を固定し、元の左端の値を頂点・元の完備化後の二脚を脚とする実 Sp 極限錐まで供給済み。Cat^perf の実商・完備化を入力とする抽象切除は完了。dg gluing と ⊙ の具体的同定を追加仮定で代用せず、具体的主定理はその接続後に数える。 固定 dg 始域 S 上の現行 K-10 接続は `DGKRelativeInvariant`：E:S→Sp と `IsRelativeLocalizingInvariant (dgKInputNu A) E` を使い、S 内の長方形の ν 像が元の Tamme 長方形に一致する場合の同じ比較四角形の pullback 性と元の ν 像の回収を供給。一般 StableCategory 上の K は構成しない。
-- **pro 版**：Tor の pro 消滅から ⊙→B′ の比較を経て pro 切除へ。Sp の K-8 の抽象 pro 論と β6 の dg 連結度を読み取り専用で接続する。Tor の環論は L7 の入力を待つ（Land–Tamme §3、80–160時間）。第 II 段のスキーム応用は基盤 I-a・I-b が閉じるまで起動しない。
+- **pro 版**：K-S•-S4（Sp の K-8 e 向け dg 供給）は K-10 e 後に着手。DGOdotInput の塔上の ⊙→B′ の LevelHom と cone の H⁻ʲ・Tor 欠損の自然比較（π₀・次数差を含む）を予定し、現在は着手しない。Tor の pro 消滅から ⊙→B′ の比較を経て pro 切除へ。Sp の K-8 の抽象 pro 論と β6 の dg 連結度を読み取り専用で接続する。Tor の環論は L7 の入力を待つ（Land–Tamme §3、80–160時間）。第 II 段のスキーム応用は基盤 I-a・I-b が閉じるまで起動しない。
 
 ## 記録の所在
 
