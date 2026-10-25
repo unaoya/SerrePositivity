@@ -2639,4 +2639,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityNuSquare
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityNativeComparison
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceVerdier
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/

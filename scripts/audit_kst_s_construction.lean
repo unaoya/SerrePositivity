@@ -32156,3 +32156,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_comparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference_nu_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion_hom
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion_hom
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion_image
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceInclusion_image
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSource_isVerdier
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSource_isVerdier
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceNativeSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourceNativeSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourcePerfectSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourcePerfectSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourcePerfectProjectionComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuSourcePerfectProjectionComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_zero_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_zero_vertex
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_perfect_zero
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_perfect_zero
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_projection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullOuterSquare_nu_projection
