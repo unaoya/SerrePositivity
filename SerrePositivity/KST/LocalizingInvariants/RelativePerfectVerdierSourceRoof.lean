@@ -75,6 +75,45 @@ lemma valueIso_triangle (r : RelativePerfectVerdierSourceRoof ν original actual
   apply Iso.ext
   simp [valueIso, ofEq, VertexIso.map]
 
+/-- 認証に使う別の S 代表を要求せず、実長方形の始域屋根と全 ν 比較を接続する。 -/
+def rectangleValueIso_of_imageIso
+    {G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
+    {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
+    (b : VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : VerdierRectangleDiagramIso (G ≫ ν) F b)
+    (r : RelativePerfectVerdierSourceRoof ν original
+      (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
+    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    VertexIso ((ν ≫ E).app _ original)
+      (squareVertex (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) 0 0) := by
+  let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
+    (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
+  exact r.valueIso E ≪≫
+    (((e.comparison.precomp c).postcomp E).toNatIso.app
+      (HomotopyCategory.mk (squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0)))
+
+/-- 始域回収は全長方形比較の同じ成分を使い、元の屋根の可換式を保持する。 -/
+lemma rectangleValueIso_of_imageIso_triangle
+    {G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
+    {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
+    (b : VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : VerdierRectangleDiagramIso (G ≫ ν) F b)
+    (r : RelativePerfectVerdierSourceRoof ν original
+      (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
+    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
+      (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
+        (rectangleValueIso_of_imageIso b e r E).hom =
+    (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
+      (Truncated.HomotopyCategory.homMk r.comparison)) ≫
+        (((e.comparison.precomp ((β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
+          (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})))).postcomp E).toNatIso.app
+            (HomotopyCategory.mk
+              (squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u + 1})) 0 0))).hom := by
+  change _ ≫ ((r.valueIso E).hom ≫ _) = _
+  exact (Category.assoc _ _ _).symm.trans
+    (congrArg (fun f => f ≫ _) (r.valueIso_triangle E))
+
 end RelativePerfectVerdierSourceRoof
 
 namespace RelativePerfectVerdierRectangle
