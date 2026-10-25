@@ -2312,4 +2312,8 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovReprese
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameComparison
+
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameUnits
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
