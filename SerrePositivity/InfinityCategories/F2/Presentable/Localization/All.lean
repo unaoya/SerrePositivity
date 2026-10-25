@@ -20,6 +20,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowEndpoints
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSpanColimits
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImagePushout
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -57,7 +59,10 @@ P の公開済み compact 保存濃度を二つの端点評価に使い、周囲
 有限 poset 全図式の指定余極限閉性を、実 Ind の単一表示と全普遍余錐族から証明した。
 その実像内の有限 poset 余極限の存在と、包含の指定全余錐の保存性も構成済み。
 元の標準 span ホーンにも同じ閉性・余極限の存在・保存性を厳密な形状同型で移した。
-これは射圏内の span 図式の結論であり、辺クラスの pushout 保存や二対三則はまだ未証明。
+同じ濃度で端点評価二本と恒等射図式を compact 保存にし、元の全対象上の
+恒等射を実像に回収した。元の任意の pushout 四角形を、二本の恒等射と
+下辺・上辺からなる射圏内の実 pushout へ写し、辺クラスの pushout 保存も証明した。
+二対三則・実像の全小余極限閉性・生成閉包全体との一致はまだ未証明。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
 強飽和性はまだ未証明。P の未公開葉は使用していない。

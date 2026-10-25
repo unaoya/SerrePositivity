@@ -119,3 +119,17 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @indArrowImage_span_colimit_mem
 #check @indArrowImage_hasSpanColimit
 #check @indArrowImageInclusion_preservesSpanColimit
+
+#check @exists_operationsCompactArrowCardinal
+#check @identityArrow_mem_generatedEdges
+#check @indArrowImage_identityArrow
+#check @spanRightCollapse_isRightCofinal
+#check @spanRightCollapse_left
+#check @spanRightCollapse_right
+#check @spanRightCollapse_edgeTarget_isColimit
+#check @secondProjection_isPushoutSquare
+#check @arrowPushoutPrism_zero
+#check @arrowPushoutPrism_one
+#check @arrowPushoutFamily_isPushout
+#check @arrowPushoutFamily_vertex_top
+#check @indArrowImage_pushout_bottom_top
