@@ -36,6 +36,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeFactorization
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorizationTriangle
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowEvaluation
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceProjection
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -101,6 +102,8 @@ compact な閉包内射の任意の小さい余積を、有限部分余積の全
 isQCatEquivalence_fullSubcomplexRestriction から元の同じ比較の同値性を証明した。
 この比較だけでは固定始域圏の余完備性・accessibility はまだ得られない。
 強飽和射圏の全部分包含と各端点評価の同値持ち上げ性、各評価の小余極限保存性も構成した。
+固定始域 coslice の閉包条件の同型不変性、包含と終域射影の同値持ち上げ性も構成した。
+終域射影の inner fibration 性も回収した。left fibration 性は主張しない。
 全小余積と標準 span を公開の有限セル帰納へ接続し、大宇宙の任意の有限単体集合
 形状の余極限の存在・包含の指定余錐保存・周囲での閉性を証明した。有限 poset に限定しない。
 元の合成三角形を、最初の辺・中間対象の恒等射・合成辺・最後の辺からなる

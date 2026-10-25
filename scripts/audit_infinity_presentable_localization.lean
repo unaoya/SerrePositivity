@@ -89,6 +89,10 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedArrowInclusion_equivalenceLifting
 #check @generatedArrowEvaluation_equivalenceLifting
 #check @generatedArrowEvaluation_preservesSmallColimits
+#check @generatedSourceCondition_iff_vertexIso
+#check @generatedSourceInclusion_equivalenceLifting
+#check @generatedSourceTarget_equivalenceLifting
+#check @generatedSourceTarget_innerFibration
 
 #check @indArrowImageFactor_isQCatEquivalence
 #check @indArrowImageVertex_mem
