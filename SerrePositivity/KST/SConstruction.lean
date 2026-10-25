@@ -2621,4 +2621,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNuComparison
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofPullback
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuKernel
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuVerdier
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSquareBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/

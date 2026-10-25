@@ -10,7 +10,7 @@
 - D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d は Milnor・resolved 商の採用済み経路で再開。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
 - 旧未分解商の K-10 d は明示入力の下での形式的接続を保持。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
-- native の Milnor 列は D2 完成供給から具体化済み（`DGOdotMilnorVerdier`）。元の固定 ν 対角の充満忠実性も Milnor 条件から導く。固定 S には同じ cell 増大と商包含の二辺を置き、ν 増大の逆による resolved 屋根と回収二胞体を構成（`DGOdotMilnorResolvedInput`）。旧未分解商への比較は要求しない。 `DGOdotMilnorFlatKernelNullSquare` は同じ thick 平坦核の本質像を元対角像へ同定し、収縮元と Sp 正本から固定 S の実零化面を供給。`DGOdotMilnorPerfectNullSquare` で同じ四辺と零角 Perf 零性を接続済み。固定 ν の同じ屋根二胞体は `DGOdotMilnorRoofSquare` で全四辺・全単体を保つ Cat^perf 比較面へ実現。`DGOdotMilnorSourceRoof`・`SourceKernelEquivalence`・`SourceNuRoof` は元対角始域の cell 分解から同じ thick 平坦核への厳密比較・dg 準同値・元入力への増大屋根と指定 ν 同値を供給。`SourceSquare` は元対角と両増大の四辺固定 S 面。`DGOdotMilnorRelativeSourceRoof` は Sp の屋根入力を実証拠で充足。`SourceNullRectangle` は同じ核比較面と既存零化面を、上下の実合成三角形を保って貼る。`SourceNativePerfect`・`CellNativeValue` は同じ cell 始域・核・cell gluing の native 完備性と指定 ν 同値、`CellVerdier` は同じ核・cell gluing・resolved 商の実列と指定完備化を供給。`DGOdotMilnorCellNuComparison` は同じ実核包含と cell 商射影の native／固定 ν 二辺を全関手同型で照合し、商側は構成済み実 c を保持。`SourceRoofPullback` は同じ始域比較面の不変量値 pullback と、実右面の認証を明示入力とする同じ長方形外面の pullback を供給。全 LT 長方形は未完。
+- Milnor 条件付き native 列と元固定 ν 対角の充満忠実性は D2 から具体化済み。固定 S の主経路は同じ cell 増大・resolved 商包含と、その ν 増大の逆による屋根。厚平坦核の実零化面と元始域の cell 分解から核への厳密比較・dg 準同値を構成し、元始域を増大屋根の終端として回収する（`SourceRoof`・`SourceNuRoof`・`RelativeSourceRoof`）。同じ二零化面を上下の実合成三角形を保って貼り、始域比較面の不変量値 pullback と、右面認証を明示入力とする外面の pullback を供給（`SourceNullRectangle`・`SourceRoofPullback`）。native の cell 始域・核・cell gluing の完備性と同じ ν 頂点同値、二辺の全自然性も接続済み。`dgOdotMilnorNuPerfectSequence` は元の ν 核包含と native resolved 商の列を実 c で完備化し、`dgOdotMilnorNuPerfectProjectionComparison` は元の ν 商辺を全関手同型で回収する。`NuSquareBoundary` は元 S 面の包含・商境界の全一単体を保つ。実右面の認証・全 LT 普遍差長方形・指定全境界比較は未完。
 - 条件付き出力は、比較後包含の充満忠実性と `IsVerdierSequence`、元の商合成の回収、全比較四角形の ν 像、同じ相対 E の pullback・fiber 列・極限錐。元の dg 対角始域を S の頂点として保持する。
 - K-10 e の形式的接続：c の同じ Morita 辺の逆を完全射・実完備化射にし、D の `DGPerfectIdempotentCompleteGeneral` と同じ評価同値から四完備性を証明した `dgOdotCatPerfInput`、d の `DGOdotLaxVerdierInput` から実 ⊙ を終点とする `PerfectLaxQuotient` を構成。
 - resolved 経路では native の左右小 Perf と gluing の coherent 完備性を証明。D-21（14a814a20）を `DGOdotMilnorCompletion` に特殊化し、native resolved 商から同じ固定 ν 値への c と `IsIdempotentCompletion` を実証済み。`DGOdotMilnorCompletedLandTamme` は c・hc の明示入力を除去し、Milnor 条件だけで実 Cat^perf 図式・fiber 列・LT pullback・元小 Perf 始域値を頂点とする極限錐まで接続。旧経路では同じ Cat^perf 不変量の LT pullback、四頂点・元の四 BF 辺・二脚の cospan・元の始域値を頂点とする実極限錐、両射影を保つ Tamme 積同値を接続する。絶対 Cat^perf 版は Sp-6 の S 長方形を使わない。四完備性は供給済み。`DGOdotLaxVerdierInput.landTamme_isPullback`・`landTammeCone_isLimit` は d だけを仮定する。d の実証拠は未完。 `DGOdotMilnorLaxModel` の元二射影を持つ実比較と `DGOdotMilnorLaxVerdier` の核・局所化輸送を具体化済み。`DGOdotMilnorLandTamme` は指定完備化だけを残して同じ実 lax 模型の LT 引き戻し・四 BF 辺・極限錐を供給。
@@ -65,15 +65,15 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- `DGOdotMilnorNuKernel.lean`：同じ固定 ν 核包含と native resolved 商への射影を区別し、native 同値から充満忠実性と零対象核の照合を構成中。対象ビルドを検証中。
+- `DGOdotMilnorSourceNativeRecovery.lean`：元 native 対角始域と同じ固定 ν 始域の指定同値、元 LT 錐頂点から同じ相対始域値への同型、実 cell 増大との全自然性を構成。6宣言の対象ビルド成功、集約・公式監査は次の保存単位。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
 - **採用済み（元始域の増大屋根、10-25 17:53）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の元始域回収は「元入力への増大屋根＋ν 像の指定同値」とする。native Verdier 列・LT 極限錐の元始域は不変。既存の strict 始域版は互換入口として保持。Sp の新葉（1d3c261b1）を `DGOdotMilnorRelativeRoofRectangleInput` へ接続し、始域屋根を構成済みとする主経路を供給。`Resolution.CellComparison` は既存の同じ正本を読み取り専用で接続。元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の73宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。完備化接続45宣言と続く Yoneda 比較10宣言も最終監査済み。元始域の増大屋根・指定 ν 同値・実零化面の貼合せ・native 完備性と同じ核列の61宣言も最終監査済み（公理出力12,407件、標準三公理のみ）。実核包含・cell 商射影の同じ native／固定 ν 二辺の全比較13宣言も最終監査済み（公理出力12,420件、標準三公理のみ）。始域実比較面と長方形外面の値の貼合せ5宣言も最終監査済み（公理出力12,425件、標準三公理のみ）。集約14,133 jobs。所有の repository import 閉包10324モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
+- 最新の集約14,136 jobs・公式監査12,435公理出力は成功。固定 ν 核列・実完備化・元 S 面の包含／商境界10宣言を含め標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包10327モジュールは全て解決。新規 sorry・公理・heartbeat／透明性オプションの変更なし。他レーンのソースは読み取り専用。過去の保存単位の実施記録はコミットメッセージ。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較と Sp-6 の実 S 長方形は未供給。
-- 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
+- 本レーン内の未解決の名前衝突なし。Core・Stable・F1 等の公開名・型は不変。固定 S の Hom は厳密 dg 自然変換 end の native core。resolved 厚核・始域比較の実零化面と同じ合成三角形を保つ源長方形は構成済み。残る LT 全長方形と全指定境界比較は未供給。実面 `dgOdotMilnorPerfectNullSquare` と `dgOdotMilnorNuPerfectSequence` の右辺を指定全関手同型 `dgOdotMilnorNuPerfectProjectionComparison` で照合する入口を Sp へ追加依頼し、ユーザーへ明示中継済み（現行 ofSquare の右辺は厳密等号）。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
   anodyne 局所化を利用。推移的依存を含む model instance 全体の棚卸しは別途必要。
 - 具体的 tensor の型照合は、四対象と次元を固定した射・元の具体的射と Serre 射の型を明示した定義で解決。二段の max は余モノイド射の忠実な鎖写像への射影で検証。全右因子自然性と二変数自然同型に加え、三因子結合は全対象を固定した更新式と元の次元移送を照合して検証。既定 heartbeat で成功。検証上限・透明性オプションは変更しない。 Day tensor の各変数の余極限保存は、元の外積と左 Kan 延長の自然な比較から証明済み。閉構造の instance は仮定しない。
@@ -93,11 +93,11 @@
   4. [ ] d④：Sp の零角・実面・長方形比較を接続し、未供給の全図式入力を分離する。
   5. [ ] e②：四完備性を保持して Cat^perf の実商入力と LT 結論へ接続する。
   6. [x] 集約・公式監査・禁止仮定検査を通し、引き継ぎを保存する。
-- 次の一手：構成済みの元始域の cell 増大屋根を使い、未供給の実 S 長方形と全境界比較を接続。実 lax の二因子は元代数の固定 ν 値へ指定同値で照合済み。包含後の二射影は元 top・side の実小 Perf 延長へ全単体で一致。残る固定 ν の二脚全体の比較と Sp の ofSquare／ofActualFaces・strict transport の実入力を続行。D-21 は特殊化済み。商境界の実比較面と上下三角形を保つ完備化長方形も構成済み。`DGOdotMilnorCompletionComparison` は評価後に元商 Yoneda を全関手同型で回収し、`DGOdotMilnorCellYonedaComparison` は同じ cell 商包含の実 Perf 延長と Yoneda の全自然性を供給。元二脚の lax 比較の供給は D 向け追加依頼をユーザーへ中継（具体型はチャット）。既存 `Resolution.CellComparison` の同じ実比較を接続済み。`DGOdotMilnorRelativeRectangleInput` は Sp の完備化版へ同じ指定三境界・上下二単体の全比較を接続し、実 S 長方形の存在は未供給と明示。native strict 商から ν 完備商の strict 局所化は推論しない。
+- 次の一手：構成済みの固定 ν 核列と元 S 零化面を Sp の右辺全関手同型入口（追加依頼済み）へ接続し、全 LT 長方形と全指定境界を構成する。元二脚 lax 比較は D 向けにユーザーへ明示依頼済み。D-21 と既存 `Resolution.CellComparison` は同じ正本から特殊化済み。`DGOdotMilnorCompletionComparison`・`CellYonedaComparison`・`CellNuComparison` は実 c・商辺・元 Yoneda の全比較を供給。`DGOdotMilnorRelativeRoofRectangleInput` は同じ指定三境界・上下二単体を保つ全比較を入力し、始域屋根は実証拠で充足済み。native 商から ν 完備商の strict 局所化は推論しない。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-source-pullback-aggregate.log`、`/tmp/kst-s-source-pullback-audit.log`、`/tmp/kst-s-source-pullback-closure.txt`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-nu-verdier-aggregate.log`、`/tmp/kst-s-nu-verdier-audit.log`、`/tmp/kst-s-nu-verdier-closure.txt`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 

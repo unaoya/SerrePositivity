@@ -32003,3 +32003,33 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle_value_outer_isPullback
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle_value_outer_isPullback
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNativeProjection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNativeProjection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelInclusionComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelInclusionComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelInclusion_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelInclusion_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernel
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernel
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelLocalization
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuKernelLocalization
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNativeSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNativeSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectProjectionComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuPerfectProjectionComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_projection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfectNullSquare_nu_projection
