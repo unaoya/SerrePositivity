@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero
+import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
 import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
 import SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits
 import SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison
@@ -7942,6 +7944,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero,
+    `SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero,
     `SerrePositivity.InfinityCategories.Stable.StablePushoutExistence,
     `SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits,
 

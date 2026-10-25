@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero
+public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
 public import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
 public import SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits
 public import SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison

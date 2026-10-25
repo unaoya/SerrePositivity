@@ -1,13 +1,13 @@
 # D レーン：D7 → β3 → β5（β4 は D2 と接続）
 
-> **v3（2026-10-24）**：D レーンの正本。所有：Stable/、Derived/（Gluing/ 以外）、DGNerve/、DoldKanComparison/、DifferentialGraded/。順序は D-7 d → D-8（K-7 供給）→ D-9。Stable の一般論（Cocone・UniverseLimits・ColimitDiagramIso・join 計算・SliceOpposite 等）は R で Core/ へ移動済み。
+> **v3（2026-10-24）**：D レーンの正本。所有：Stable/、Derived/（Gluing/ を含む。D2 は11:56完了・吸収）、DGNerve/、DoldKanComparison/、DifferentialGraded/。順序は D-7 d → D-8（K-7 供給）→ D-9。Stable の一般論（Cocone・UniverseLimits・ColimitDiagramIso・join 計算・SliceOpposite 等）は R で Core/ へ移動済み。
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の D。D7 の後、β3（Drinfeld 商 = Verdier 商）、β5（D(A)・⊗_A）、β4（gluing = lax pullback）。
 
 ## 引き継ぎ（2026-10-25）
 ### 現在地
-- D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を対象検証済み、集約へ接続する。D-16 の追加宇宙局所化だけは許可された明示入力を保持する。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
-- c′ は13:13 JSTに未成立判定（開始04:11:16 JST、上限20:11:16 JSTより前）。ゲート1・2・4済み、3・5未完。κ未満の全シフト自由直和間の任意閉射は共通コードと選択 seed へ精密化済み。一般 seed の perfect/retract・cone 閉包への同時精密化と拡大全四角形族は未供給。承認済み分岐により D-8 c/d は現模型、全高次作用は第 I 段の明示入力を保持する。D-7′ は本体・葉監査・両集約・両全体監査成功。二段目完了の停止境界で保存する。
+- D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は 589c10392 で全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を保存、両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。D-8 c を現模型で再開。D-16 の追加宇宙局所化だけは許可された明示入力を保持する。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
+- c′ は13:13 JSTに未成立判定（開始04:11:16 JST、上限20:11:16 JSTより前）。ゲート1・2・4済み、3・5未完。κ未満の全シフト自由直和間の任意閉射は共通コードと選択 seed へ精密化済み。一般 seed の perfect/retract・cone 閉包への同時精密化と拡大全四角形族は未供給。承認済み分岐により D-8 c/d は現模型、全高次作用は第 I 段の明示入力を保持する。D-7′ は本体・葉監査・両集約・両全体監査成功。今回の再開対象は D-8 c。
 - c′ の最終集約・両全体監査成功：11,590 jobs、Derived 24,035宣言／2,752モジュール、Stable 25,097／3,021（許容三公理のみ）。実自由閉射の全行列比較・選択 seed への共通源精密化を含む。D-7′の2本（75a0b606d）を含む最終集約11,614 jobs・両全体監査成功：Derived 24,043宣言／2,754モジュール、Stable 25,105／3,023（許容三公理のみ）。
 - S1〜S7（D7）完了。実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性、任意四角形の双カルテジアン判定、全 fiber/cofiber と有限極限余極限、D(S) の実安定性を証明した。実 suspension・複体シフト・接続射の符号を照合。D3 の標準 cone 三角形との比較、全 distinguished triangle の保存・反映、逆関手・単位・余単位の全整数シフト整合性を持つ三角同値を公開済み。
 - β3 完了。実 Verdier over の反転の filtered 性、有限対の全境界・全時刻を保つ実 roof 比較の cofinality と弱ホモトピー同値、任意反転標的への coherent な降下を証明した。
@@ -96,7 +96,7 @@
 - 停止用検証は全て終端0：`/tmp/d-stop-target.log`（8722 jobs）、`/tmp/d-stop-aggregate.log`（11358 jobs）、`/tmp/d-stop-signatures.log`（43明示署名、ModelCategory 仮定なし）、`/tmp/d-stop-derived-audit-final.log`（22104宣言／2522モジュール）、`/tmp/d-stop-stable-audit-final.log`（23219宣言／2792モジュール）。許容三公理のみ、追加11ソースに警告なし。初回監査はビルド中の共有 Completion.olean 不在で失敗したが、集約完了後の再監査が成功。旧61101・61368は handle 不在、停止用実行も全終了。共有生成物不在を避けるため次チャットでも集約の終端を確認してから全体監査を開始する。他レーンは変更しない。
 
 ### 次の一手
-- D-20 の再開依頼を受領。全対象商の Perf 零性を供給した後、現模型で D-8 c（七入力の F2.Compact.IsKappaCompact）、続いて d/e。進捗表の D-20（全対象 dg 商の Perf 零像）は追加依頼として待ち行列へ記録し、再開時に優先順を照合する。c′ の一般 seed・任意 cone・拡大全四角形族は未成立、D-16 の追加宇宙局所化は承認済み明示入力を保持。
+- D-20 の全対象商 Perf 零性は両全体監査・保存まで完了。再開指示により現模型で D-8 c（七入力の F2.Compact.IsKappaCompact）、続いて d/e。D-20 の公開名は本文の同節に記載。c′ の一般 seed・任意 cone・拡大全四角形族は未成立、D-16 の追加宇宙局所化は承認済み明示入力を保持。
 - 第2チャットの D-12・D-8 b は完了・保存・両全体監査済み。D-13 は `fefab5a7c`、[x] 1（標準単位と全 coherent 図式）・[x] 2（元の prism の全パラメーター・端点輸送付き退化表示）・[x] 3（最小入口・24署名・集約11,073 jobs・保存）・[x] 4（両全体監査・保存報告：Derived 22,406宣言／2,574モジュール、Stable 23,468／2,843、許容三公理のみ）。入口 `Derived.DGPinchedCompositionUnitLaws` の `dgPinchedCompositionFamilyPrism_first_unit`／`dgPinchedCompositionFamilyPrism_second_unit_val`、全図式は `dgCoherentCompositionSimplex_first_unit`／`dgCoherentCompositionSimplex_second_unit_eq_map`。Small 不要。D-9 の K-B c5 向け実小 dg 核・同じ平坦 cone と Σ の屋根側は `61516c824` で供給済み（`Derived.ResolvedDGQuotientFlatKernel` の `resolvedDGQuotientFlatKernel`／`resolvedDGQuotientFlatKernelInclusion`／`resolvedDGQuotientFlatKernel_isStableVerdierSequence`／`resolvedDGQuotientProjection_eq_nerve`／`resolvedDGQuotientFlatKernel_roof`、Small・Hom K-flat・安定性も公開）。K-B の元の束・右辺への直接適用と両全体監査（Derived 22,368／2,570、Stable 23,430／2,839）成功。固定 ν の接続は Sp、元の Perf・P 照合は K-B 所有。既存宣言は不変、新名の dg 最小入口へ置く。D-8 c・d・e は未着手。
 - D7・β3・β5 は完了。実 ΣΩ 随伴は `89d77276b`、有限余極限と比較長方形は `afbb4783a`。実 `ExcisionSquareGrid` は任意の元の四角形への厳密制限と二段階の native 左 Kan 局所余極限を持つ。比較格子の全六面の押し出し性、全単体の共有辺四式、元の指定零頂点二式は `187b42df0` までに統合・両全体監査済み。順序積の圏と圏の直積を混同せず `PartOrd.nerveFunctor.obj` と局所 `Preorder.smallCategory` を明示する。
 - D-8 b は31宣言の試作を再現し7モジュールへ分割、同じ代表系の `dgKappaClosedProjectiveObjects_isDGPretriangulated` まで本体統合・集約・両全体監査・保存完了。次の通常工程 c は全 Hom κ-compact 性を `dgKappaClosedProjectiveObjects_property` の零・shift・二項直和・cone・可算直和・sphere-free 基底・perfect 代表の七入力へ供給する。d の κ未満 cell／retract 代表化による全被覆と併せ DGKappaConeInput を構成する。ordinary compact/perfect で代用しない。D-13 と D-9 の K-B 分を先行し、c の前の模型評価は本計画「D-8 c 前の厳密関手性評価」を参照。16時間試作は採用済み、成功／上限時の分岐は本計画の試作節に従う。K-7 ファイルは読み取り専用。
@@ -187,9 +187,13 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 係数閉包の実構成：`DGGeneratedHomWord.code`／`codeEvaluation` は κ 個以下の係数とκ未満の ordinal 対象族から固定基底の dg 提示と元の実評価を構成（対象1,825 jobs・10本178宣言の葉監査で許容三公理のみ）。有限語の W 型符号化で語の個数をκ以下に抑え、span の単位・微分・合成閉性、実 Hom 複体と三法則、各 Hom の固定自由被覆を接続した。任意閉射を含む生成係数の選択と、その辺の持ち上げは残る。
 - 係数閉包の再符号化：`DifferentialGraded/Category/HomTransport` と `Presentation/CategoryFromHomSurjections` は対象1,801 jobs・葉35宣言成功。Hom ごとの自由被覆があれば、同じ全 Hom 同型・実評価を持つ小 dg 提示コードを構成する。被覆の存在・閉射の精密化は未証明。
 
+### D-8 c：実導来 ∞ 圏の κ-compact 性
+- [ ] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[ ] c3 零・shift 保存。[ ] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
+- F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput と D-16 追加宇宙局所化は第 I 段中は明示入力を維持。
+
 ### D-20：全対象 dg 商の Perf 零性
-- [x] 1 全対象商上の加群の acyclic 性と Perf の H⁰ 零性。[x] 2 native 全頂点の零性と IsZeroCategory の公開入口。[ ] 3 対象・集約・両全体監査・保存報告。
-- 任意の Small.{u} D。Derived/DGTotalQuotientPerfectVerticesZero の dgTotalQuotientModule_acyclic・dgTotalQuotientPerfect_h0_isZero・dgTotalQuotientPerfect_vertex_isZero、DGTotalQuotientPerfectZero の dgTotalQuotientPerfectStableCategory・dgTotalQuotientPerfect_isZero・dgTotalQuotientPerfect_isZero_of_equivalence。対象5,402 jobs成功。K-B の特殊化は読み取り専用参照。Sp 正本 VerdierDiagrams を使用し、K-B・S 構成本体への依存なし。既存宣言不変。
+- [x] 1 全対象商上の加群の acyclic 性と Perf の H⁰ 零性。[x] 2 native 全頂点の零性と IsZeroCategory の公開入口。[x] 3 対象・集約・両全体監査・保存報告。
+- 任意の Small.{u} D。Derived/DGTotalQuotientPerfectVerticesZero の dgTotalQuotientModule_acyclic・dgTotalQuotientPerfect_h0_isZero・dgTotalQuotientPerfect_vertex_isZero、DGTotalQuotientPerfectZero の dgTotalQuotientPerfectStableCategory・dgTotalQuotientPerfect_isZero・dgTotalQuotientPerfect_isZero_of_equivalence。本体589c10392。対象5,402 jobs・新規10宣言の葉監査（許容三公理のみ）・両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。K-B の特殊化は読み取り専用参照。Sp 正本 VerdierDiagrams を使用し、K-B・S 構成本体への依存なし。既存宣言不変。
 
 ### D-7′：IsStable からの有限極限・余極限
 - [x] 1 任意 span の実押し出し（第二辺の fiber 列へ第一辺を貼り、外側 cofiber から構成）。[x] 2 双対の任意 cospan の pullback と Ind の有限形状生成への接続。[x] 3 集約・両全体監査・保存報告。
