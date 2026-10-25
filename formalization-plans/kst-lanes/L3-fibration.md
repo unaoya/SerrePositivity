@@ -10,7 +10,7 @@
 ### 現在地
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
 - `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。`VerdierFullSMovingSquarePrism` は元の動く対角を厳密に共有する上側全族に条件付きで、両全三角柱を回収する四角柱・四頂点の可逆性・同じ元の Verdier 四角形との全関手同型を構成する。終端を実全 S• 商核へ固定し、下側全二胞体の最大化との厳密一致を証明した。`verdierFullSMovingKernelSquareIso` は同じ実商核まで接続するが、上側全族自体は未供給で、存在入力を主経路へ追加しない。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
-- `VerdierLowerDeformationZeroHomFaces` は同じ零値長 Hom の持ち上げが全ての面・退化に厳密に自然であることを保持する。点ごとの零値条件を全三角柱の整合的な族へ接続するが、上側との同じ動く対角での貼り合わせは未証明。
+- `ZeroMiddleControlledTriangleInput` は元の全 S• Hom を core 包含で制限し、同じ二短辺の指定合成端を持つ実 fiber の点を構成する。元の指定 core 二胞体の全長 Hom と厳密に一致し、元の合成 path と仕様の全体 path の等号も回収する。`ZeroMiddleFixedHornComparison` は元の三面を固定する実充填空間の可縮 Kan 性・元の既存充填の指定点・構成済みの制御充填との fiber 内の同型と面 2 の上側全比較を供給する。制御充填の存在は主張しない。`VerdierLowerDeformationZeroHomFaces` は同じ零値長 Hom の持ち上げが全ての面・退化に厳密に自然であることを保持する。点ごとの零値条件を全三角柱の整合的な族へ接続するが、上側との同じ動く対角での貼り合わせは未証明。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
 - 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は商比較の無条件化まで成功（634 モジュール・4169 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は商比較の無条件化まで成功（636 モジュール・4191 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -160,15 +160,16 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 | K-7 への提供 | 指定射影と点を保つ条件付き相対 S fiber 比較、零次障害・連結性判定。各 suspension 段階の実比較と構造写像の整合性が必要。非連結 K 自体とその局所化性は未構成。 |
 
 ### Ind-S (9)：指定全長 Hom の全族再構成の供給型
-- 以下は F1 新規葉への仕様命題の型であり、主経路の新しい存在仮定ではない。`K` は任意の単体集合、`L` は指定合成端を固定した全長 Hom 空間、`T` は同じ二短辺を固定する既存の二胞体延長空間。`encode`・`longHom` の全族の厳密回収と頂点での元の豊穣 Hom 読出しを要求する。
-- K-B への特殊化では、`zeroMiddleFullSKanLongHom` を元の core 包含で前合成した族を渡す。始域の異なる未制限の全 S• Hom を直接比較しない。頂点読出しの単射性は元の指定 core 二胞体自体の回収に使う。
-- 末尾は同じ三面 `a` を固定する実充填空間内の比較。任意の四面の可填性を境界一致だけから主張せず、制御した充填を構成してから元の充填との比較をここで取る。
+- 以下は F1 新規葉への仕様命題の型であり、主経路の新しい存在仮定ではない。`K` は任意の単体集合。二短辺 `f`・`g` も指定全族として固定し、全ホーン族 `a` はその標準 coherent 区間像を厳密に回収する。
+- `c` は同じ全短辺族の元の豊穣合成。`L` は合成端を全入力で `c` に固定した全長 Hom 族の空間、`T` は同じ全ホーン `a` を固定した二胞体族の実延長空間。`encode`・`longHom` の厳密回収は全族を保持する。読出しは各指定入力点で元の全豊穣 Hom に一致する。
+- K-B では元の全 S• Hom を core 包含で制限してから渡す。未制限の全 S• Hom は始域が異なる。末尾の比較は同じ三面 `b` を固定する実充填空間内で取り、制御充填を実際に構成してから既存充填と比較する。任意四面の可填性を境界一致だけから要求しない。
 ```lean
 import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFamily
 import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 import SerrePositivity.InfinityCategories.Core.EquivalencePath
-import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
+import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalNaturality
+import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
@@ -176,9 +177,16 @@ universe u
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
--- Supply specification only; no assertion or additional input in the main route.
+-- Supply specification only; no existence assumption in the main route.
 def indS9ControlledTriangleFamilyRequest : Prop :=
-  ∀ (X Y Z : KanObject.{u}) (f : X ⟶ Y) (g : Y ⟶ Z),
+  ∀ (X Y Z : KanObject.{u}) (K : SSet.{u + 1})
+    (f : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Y))
+    (g : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom Y Z))
+    (a : (Λ[2, 1] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u}),
+    (horn₂₁.ι₀₁ ▷ K) ≫ a = (Δ[1] ◁ f) ≫
+      intervalMappingUncurry (coherentHomIntervalComparison X Y) →
+    (horn₂₁.ι₁₂ ▷ K) ≫ a = (Δ[1] ◁ g) ≫
+      intervalMappingUncurry (coherentHomIntervalComparison Y Z) →
   let P := SimplicialThickening.Path
     (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
   let p : P :=
@@ -187,27 +195,30 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
       right := Set.mem_univ _
       left_le := fun k _ => Fin.zero_le k.down
       le_right := fun k _ => Fin.le_last k.down }
-  let H := (ihom X.obj).obj Z.obj
-  let L := vertexFiber (evaluateFunctorAt (X := nerve P) (Y := H) (ComposableArrows.mk₀ p))
-    (functorVertex (show X.obj ⟶ Z.obj from f ≫ g))
-  let Lu := (SSet.uliftFunctor.{u + 1, u}).obj L
-  let T := compositionTriangleSpace (coherentNerveEdge f) (coherentNerveEdge g)
-  ∃ (encode : Lu ⟶ T) (longHom : T ⟶ Lu),
-    encode ≫ longHom = 𝟙 Lu ∧
-    Function.Injective (longHom.app (Opposite.op ⦋0⦌)) ∧
-    (∀ t : T _⦋0⦌,
-      let s := SSet.yonedaEquiv ((functorVertexEquiv _ _).symm t.val)
-      HEq ((longHom.app (Opposite.op ⦋0⦌) t).down.val)
-        (functorVertex (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) ∧
-    (∀ (K : SSet.{u + 1}) (l : K ⟶ Lu),
-      (l ≫ encode) ≫ longHom = l ∧
-      ((stdSimplex.δ (2 : Fin 3) ▷ K) ≫ innerTriangleExtensionUncurry (l ≫ encode) =
-        fst (Δ[1] : SSet.{u + 1}) K ≫ SSet.yonedaEquiv.symm (coherentNerveEdge f).edge) ∧
-      ((stdSimplex.δ (0 : Fin 3) ▷ K) ≫ innerTriangleExtensionUncurry (l ≫ encode) =
-        fst (Δ[1] : SSet.{u + 1}) K ≫ SSet.yonedaEquiv.symm (coherentNerveEdge g).edge)) ∧
-    (∀ (K : SSet.{u + 1}) (a : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u}),
+  let Pu := (SSet.uliftFunctor.{u + 1, u}).obj (nerve P)
+  let H := (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Z)
+  let c := lift f g ≫ (HomotopyLimits.uliftTensorIso.{u, u + 1}
+    (SimplicialCategory.sHom X Y) (SimplicialCategory.sHom Y Z)).inv ≫
+      (SSet.uliftFunctor.{u + 1, u}).map (eComp SSet.{u} X Y Z)
+  let L := vertexFiber ((ihom K).map
+    (evaluateFunctorAt (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ p))))
+    (functorVertex c)
+  let T := vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u})
+    (functorVertex a)
+  ∃ (encode : L ⟶ T) (longHom : T ⟶ L),
+    encode ≫ longHom = 𝟙 L ∧
+    (∀ (t : T _⦋0⦌) (k : K _⦋0⦌),
+      let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+        ((longHom.app (Opposite.op ⦋0⦌) t).val)
+      let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
+      let s := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+        ((curry Tt).app (Opposite.op ⦋0⦌) k))
+      HEq (Lt.app (Opposite.op ⦋0⦌) k)
+        (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+          (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))) ∧
+    (∀ b : (Λ[3, 2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u},
       let E := vertexFiber ((pre ((horn 3 (2 : Fin 4)).ι ▷ K)).app SpaceInfinity.{u})
-        (functorVertex a)
+        (functorVertex b)
       IsContractibleKan E ∧ ∀ old controlled : E _⦋0⦌,
         Nonempty (VertexIso old controlled))
 ```

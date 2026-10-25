@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.ZeroMiddleControlledTriangleInput
+public import SerrePositivity.KST.Fibration.ZeroMiddleFixedHornComparison
 public import SerrePositivity.KST.Fibration.WeakQuotientMappingEquivalence
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientValueCoordinates
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientZeroValue
