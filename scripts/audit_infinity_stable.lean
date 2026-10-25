@@ -1,3 +1,12 @@
+import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientThickLocalizationUniverse
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactPerfectCriterion
+import SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroTarget
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedConeSquares
+import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSuspensionComparison
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactShift
+import SerrePositivity.InfinityCategories.Derived.DGKappaSpanPosetShape
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCone
+import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBinary
 import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic
 import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactTransport
 import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport
@@ -7947,6 +7956,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientThickLocalizationUniverse,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactPerfectCriterion,
+
+    `SerrePositivity.InfinityCategories.Derived.DGModuleConeZeroTarget,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedConeSquares,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSuspensionComparison,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactShift,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSpanPosetShape,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCone,
+    `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBinary,
+
     `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic,
     `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactTransport,
     `SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport,

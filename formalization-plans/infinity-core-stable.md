@@ -6,7 +6,7 @@
 
 ## 引き継ぎ（2026-10-25）
 ### 現在地
-- D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は 589c10392 で全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を保存、両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。D-8 c を現模型で再開。D-16 の追加宇宙局所化だけは許可された明示入力を保持する。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
+- D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は 589c10392 で全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を保存、両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。D-8 c を現模型で再開。D-16 の追加宇宙局所化は UniverseAscent で明示入力を解消した新規葉を検証済み（既存版不変）。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
 - c′ は13:13 JSTに未成立判定（開始04:11:16 JST、上限20:11:16 JSTより前）。ゲート1・2・4済み、3・5未完。κ未満の全シフト自由直和間の任意閉射は共通コードと選択 seed へ精密化済み。一般 seed の perfect/retract・cone 閉包への同時精密化と拡大全四角形族は未供給。承認済み分岐により D-8 c/d は現模型、全高次作用は第 I 段の明示入力を保持する。D-7′ は本体・葉監査・両集約・両全体監査成功。今回の再開対象は D-8 c。
 - c′ の最終集約・両全体監査成功：11,590 jobs、Derived 24,035宣言／2,752モジュール、Stable 25,097／3,021（許容三公理のみ）。実自由閉射の全行列比較・選択 seed への共通源精密化を含む。D-7′の2本（75a0b606d）を含む最終集約11,614 jobs・両全体監査成功：Derived 24,043宣言／2,754モジュール、Stable 25,105／3,023（許容三公理のみ）。
 - S1〜S7（D7）完了。実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性、任意四角形の双カルテジアン判定、全 fiber/cofiber と有限極限余極限、D(S) の実安定性を証明した。実 suspension・複体シフト・接続射の符号を照合。D3 の標準 cone 三角形との比較、全 distinguished triangle の保存・反映、逆関手・単位・余単位の全整数シフト整合性を持つ三角同値を公開済み。
@@ -188,10 +188,11 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 係数閉包の再符号化：`DifferentialGraded/Category/HomTransport` と `Presentation/CategoryFromHomSurjections` は対象1,801 jobs・葉35宣言成功。Hom ごとの自由被覆があれば、同じ全 Hom 同型・実評価を持つ小 dg 提示コードを構成する。被覆の存在・閉射の精密化は未証明。
 
 ### D-8 c：実導来 ∞ 圏の κ-compact 性
-- [x] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[ ] c3 零・shift 保存。[ ] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
-- c1：DGModuleKappaCompactBasic／Transport／ClassicalTransport の3本17宣言、両集約11,652 jobs・葉監査成功（許容三公理のみ）。dgModuleKappaCompact_zero、_iff_of_quasiIso、_of_acyclic、_iff_of_derivedIso、_of_derivedRetract を供給。dgConeModuleDerivedVertex_classicalIso と同型・retract の native への引き戻しを保持。c3 の shift・c6 の perfect 代表そのものは未証明。全体監査は c7 で再実行する。
-- 上流依頼：c4/c5 の正則 κ-filtered と κ未満離散極限の交換・対応する直和閉性を Ind へ、c3 の CompactEquivalence の添字／標的宇宙分離版を P へコーディネータ経由で依頼中。既存の有限交換は明示入力、P の cardinal-change 版だけでは指定 κ へそのまま代入できない。
-- F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput と D-16 追加宇宙局所化は第 I 段中は明示入力を維持。
+- [x] c1 同じ dgConeModuleDerivedVertex による全 Hom の定式化。[ ] c2 representable・全シフト・κ未満 sphere-free 基底。[x] c3 零・shift 保存。[x] c4 二項直和・任意閉射 cone 閉性。[ ] c5 可算直和閉性。[ ] c6 retract・実 perfect 代表。[ ] c7 七入力を dgKappaClosedProjectiveObjects_property へ接続、両集約・両全体監査。
+- c1：DGModuleKappaCompactBasic／Transport／ClassicalTransport の3本17宣言、両集約11,652 jobs・葉監査成功（許容三公理のみ）。dgModuleKappaCompact_zero、_iff_of_quasiIso、_of_acyclic、_iff_of_derivedIso、_of_derivedRetract を供給。dgConeModuleDerivedVertex_classicalIso と同型・retract の native への引き戻しを保持。c6 の perfect 代表そのものは未証明。全体監査は c7 で再実行する。
+- c3/c4：実 cone-to-zero と同じ加群 shift の頂点同型から全整数 shift を回収。span の小 poset 表示で cone を、零始点 pushout と元の加群余積への h 比較で二項直和を証明。新規7葉は両集約11,908 jobs成功。7葉78宣言の葉監査成功（許容三公理のみ）。全体監査は c7 で再実行。
+- P-9（930cdecba）供給済み：F2/Presentable/Aleph0CardinalChangeBound・CompactEquivalenceUniverse・SmallPosetColimitCompactUniverse を読み取り専用 import。正則非可算 κ には cardinalChangeBound_aleph0 を使い、同じ κ の小 poset 余極限閉性を適用する。追加交換入力なし。
+- F2.Compact.IsKappaCompact.{u, max (u+1) v} を使用。ordinary compact/perfect への置換はしない。既存の深層を編集せず新規葉へ一般化。DGSuspensionNativeActionInput は第 I 段中は明示入力を維持。D-16 追加宇宙局所化は ResolvedDGQuotientThickLocalizationUniverse の resolvedDGQuotientFunctor_ulift_isThickLocalization・resolvedDGQuotientProjection_ulift_isThickLocalization で解消。UniverseAscent を読み取り専用 import、既存宣言不変。c6 の DGModuleKappaCompactPerfectCriterion は代表の native κ-compact 性から有限 cell・実 perfect retract へ渡す判定を供給（基底自体は c2 に残る）。この2葉を加えた両集約11,938 jobs・9葉82宣言の葉監査成功（許容三公理のみ）。区切りの両全体監査を実行中。
 
 ### D-20：全対象 dg 商の Perf 零性
 - [x] 1 全対象商上の加群の acyclic 性と Perf の H⁰ 零性。[x] 2 native 全頂点の零性と IsZeroCategory の公開入口。[x] 3 対象・集約・両全体監査・保存報告。
