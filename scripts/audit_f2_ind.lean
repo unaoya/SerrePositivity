@@ -3,6 +3,7 @@ import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily
 import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitConeFamily
 import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
 import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
+import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetLimits
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.cylinderEvaluationSwitch
@@ -2228,3 +2229,30 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.F2.functorVertexCone_postcompose_isLimit_iff
 #print axioms SerrePositivity.InfinityCategories.F2.functorVertexCone_postcompose_isLimit_iff
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_restriction
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_restriction
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_vertex_val
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_vertex_val
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_inclusion_isLimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indYonedaConeFamily_inclusion_isLimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.ind_exists_limitCone_of_singleFilteredDiagramPresentation
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.ind_exists_limitCone_of_singleFilteredDiagramPresentation
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_exists_limitCone
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_exists_limitCone
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_hasLimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_hasLimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_inclusion_isLimit
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_inclusion_isLimit
+
+#check SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_isLimit_iff_inclusion
+#print axioms SerrePositivity.InfinityCategories.F2.Ind.indFinitePoset_isLimit_iff_inclusion

@@ -1,6 +1,7 @@
 import SerrePositivity.InfinityCategories.F1B
 import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
 import SerrePositivity.InfinityCategories.F1B.Localization.UniverseDescent
+import SerrePositivity.InfinityCategories.F1B.Cones.LimitDiagramIsoImage
 import Lean.Util.CollectAxioms
 
 /-!
@@ -3047,3 +3048,6 @@ end
 #print axioms SerrePositivity.InfinityCategories.LocalizationUniverse.fullyFaithful_of_ulift
 #check SerrePositivity.InfinityCategories.LocalizationUniverse.functorIso_of_ulift
 #print axioms SerrePositivity.InfinityCategories.LocalizationUniverse.functorIso_of_ulift
+
+#check SerrePositivity.InfinityCategories.exists_limitCone_of_functorIso_with_image
+#print axioms SerrePositivity.InfinityCategories.exists_limitCone_of_functorIso_with_image

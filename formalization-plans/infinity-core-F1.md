@@ -6,15 +6,15 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①・b② は証明済み、次は b③。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①・b② は証明済み、次は b④。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の所有範囲を正本とする。下の v2 の所有・停止記述は履歴上の引き継ぎ。I-1 の結論の P・K-B への供給は未了、I-2 e は K-B へ公開する。ModelCategory 仮定を加えない。
-- I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [ ]、b④ 有限半順序図式の有限余極限の普遍性 [ ]、b⑤ 任意の有限単体集合形状への接続と公開界面 [ ]。
+- I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [x]、b④ 有限半順序図式の有限余極限の普遍性 [ ]、b⑤ 任意の有限単体集合形状への接続と公開界面 [ ]。
 - I-2 b の公開入口：`yonedaInfinityMap_isLimit` は任意の小さい極限全錐の保存。`exists_yoneda_finiteLimit_coneFamily` と `exists_indYoneda_finiteColimit_coconeFamily` は元の制限を厳密に固定した全族。余極限保存は明示交換入力を残す。`exists_indFunctor_kappaFiltered_colimit` は全関手形状で同じ filtered 余極限全余錐と包含による全評価の保存。
-- I-2 b③ の接続：`ind_filteredLimitCone_isLimit` は元の Ind 全錐族の点ごとの filtered 補完に明示の形状交換を適用し、完成後の元の錐と包含像の極限性を同時に結論する。元の有限半順序図式への制限回収は次の工程。
+- I-2 b③ の接続：`ind_filteredLimitCone_isLimit` は元の Ind 全錐族の点ごとの filtered 補完に明示の形状交換を適用し、完成後の元の錐と包含像の極限性を同時に結論する。`indYonedaConeFamily_restriction` は元の下方全図式への厳密な制限回収。`ind_exists_limitCone_of_singleFilteredDiagramPresentation` は元の指定全図式の極限と包含像の極限の同時存在。`indFinitePoset_hasLimit`・`indFinitePoset_inclusion_isLimit`・`indFinitePoset_isLimit_iff_inclusion` で有限半順序図式の存在・保存・反映を公開。
 - I-2 b の供給許可：`Core.LimitProjectionExistence`・`HomotopyLimits.FullSubcomplexConeLift`・`FullSubcomplexLimitReflection` を、新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。後二本は R が Core へ移動。`indFullConeLift_inclusion` と `ind_isLimit_of_inclusion` は元の全錐の厳密な持ち上げと任意の形状の極限反映。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [x]、a③ 射形状の標準余錐の余極限性 [x]、a④ 有限半順序形状の帰納と単一 filtered 表示 [x]。
 - I-2 a の界面：元の三条件固定比較と始点評価下の実 under comma の比較は保存済み。`exists_relativeCommaFamily_iso_of_functorIso` は任意の元の同型に沿う指定変換の輸送。`indArrowInterpolationOldFamily_withCornerCocone` は同じ slice 円柱を保つ終点拡張の選び直しで元の旧族が変わらないことを厳密に回収する。
@@ -50,7 +50,7 @@
 - Ind-S (4) の軽い入口：`UniverseEdge.invertible_up`・`invertible_down` は quasicategory 仮定なしの実可逆辺の宇宙移送。`IsLocalization.precomposition_isFullyFaithful`・`exists_extension` は元の全前合成の充満忠実性・元の実関手同型付き延長。既存の同名でない宣言は不変、`IsLocalization.of_ulift` は同じ元の射の局所化性を元の宇宙へ降ろす。順方向は未公開。
 - 深層編集禁止：R の停止窓以外で既存の深層モジュールを変更しない。必要な一般化・新宣言は新規の葉へ置く。やむを得ない深層変更は着手前にコーディネータへ申告する。Universe 4 本・Coherent 2 本・LeftStraighteningRepresentation の変更は全て復元済み。局所化の宇宙操作は `F1B.Localization.LocalizationUniverse` の新名で葉に閉じる。第 I 段終了時に R が既存 F1 の宇宙操作との準重複を整理する。
 - Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。
-- 次の一手：I-2 b③ の同じ全錐族の filtered 補完を明示交換入力へ接続する。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
+- 次の一手：I-2 b④ の有限余極限の普遍性へ進む。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 
