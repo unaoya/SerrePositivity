@@ -2294,4 +2294,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenLarg
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenFrameCoherent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeFrameUnits
 
+public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullPerfectZero
+public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullCertifiedSquare
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresentedSpaceLimit
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMappingDescent
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMappingDescentLimit
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
