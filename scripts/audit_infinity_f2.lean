@@ -3,7 +3,17 @@ import SerrePositivity.InfinityCategories.F2.Ind.PullbacksArePushouts
 import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
 import SerrePositivity.InfinityCategories.F2.Ind.Stability
 import SerrePositivity.InfinityCategories.F2.Ind.StableCompactGeneration
+import SerrePositivity.InfinityCategories.F2.Ind.StableSourceCompactGeneration
 import Lean.Util.CollectAxioms
+
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteLimits_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_hasFiniteColimits_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_isStable_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_isPullbackSquare_iff_isPushoutSquare_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stable_with_fullyFaithful_exactYoneda_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_of_isStable
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_of_isStable_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Ind.ind_stableCompactGeneration_of_isStable_inverse_inclusion
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Ind.compactGenerationEquivalence_inclusion

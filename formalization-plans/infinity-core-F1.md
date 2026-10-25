@@ -6,24 +6,28 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-2 c①〜c⑤・e①〜e④ は許可された明示仮定のもとで完了。Ind・Compact・Idempotent 集約と F2 公理監査を検証し、e 完了の規約に従い保存して停止。I-2 d の交換入力差し替えは X の結論後に別途指示。C の有限全存在は D-7′ の供給まで明示仮定とする。
+- 現在地：I-2 c①〜c⑤・e①〜e④ は保存済み。I-2 e′①〜e′③ は D-7′（13:18 供給）を新規 Ind 葉で接続して完了。C の有限全存在の追加仮定を除き、集約・F2 監査を検証。所有ファイルだけを保存して停止。交換入力は明示のまま、I-2 d は X の結論後に別途指示。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
 - I-1 補助界面：`pointedRightFamilyEvaluation_comp` は動く点と二射の全評価の厳密合成則。`TransportIntervalSquare.precomp` と `coherentKanRightCompositionTransport_movingIso` は同じ四角形で始点も動く合成輸送を与える。これらを指定値の合成則そのものとは扱わない。
 - 依存と提供：v3 冒頭の改訂所有範囲を正本とする。I-1 の結論は X、Ind-S (4)・(5) は新設 Ind-S が供給する。Ind は I-2 e の公開界面を K-B の K-7 d4 へ提供する。ModelCategory 仮定を加えない。
+- I-2 e′ の固定三段目：e′① D-7′ を接続し、安定な C から Ind の有限全存在・安定性を導く [x]、e′② K-B 向け compact 生成界面と既存の選択比較を接続する [x]、e′③ 集約・監査・引き継ぎを保存する [x]。
+- I-2 e′ の依存：`Stable.StableFiniteLimitsColimits` を新規葉 `F2.Ind.StableSourceFiniteLimitsColimits` から読み取り専用 import。D の `hasFiniteLimits_of_isStable`・`hasFiniteColimits_of_isStable` を証明内の局所 instance に置く。Ind → Stable の逆方向 import は第 I 段終了時に R が整理する。
+- I-2 e′ の公開名（名前空間 `SerrePositivity.InfinityCategories.F2.Ind`）：`ind_hasFiniteLimits_of_isStable`・`ind_hasFiniteColimits_of_isStable`・`ind_isStable_of_isStable`・`ind_isPullbackSquare_iff_isPushoutSquare_of_isStable`・`ind_stable_with_fullyFaithful_exactYoneda_of_isStable`。C の有限全存在を追加仮定にしない。
+- K-7 d4 の新入口：`F2.Ind.StableSourceCompactGeneration` の `ind_stableCompactGeneration_of_isStable`。`_equivalence` は同じ元の `compactGenerationEquivalence` との厳密な一致、`_inverse_inclusion` は元の compact 包含との全関手同型。既存の compact 像・生成表示・逆同値の選択比較は変更なく使う。交換入力だけを明示のまま保持。
 - I-2 e の固定三段目：e① compact 同値と元の Yoneda・包含の厳密な比較 [x]、e② 任意の Ind 対象の compact 生成表示 [x]、e③ 安定性・完全性と合わせた K-B 向け公開界面 [x]、e④ 選択比較、集約・監査、引き継ぎ [x]。
 - I-2 e の公開入口：`F2.Ind.StableCompactGeneration` の `ind_stableCompactGeneration`。同じ Ind の安定性・元の Yoneda の充満忠実性と完全性・compact 像・生成同値・元の任意の頂点の filtered 生成表示を保持。安定性だけが明示交換入力と C の有限全存在に依存する。
 - K-B の K-7 d4 向け公開名（名前空間 `SerrePositivity.InfinityCategories.F2.Ind`）：同値 `compactGenerationEquivalence`、順射 `compactGenerationEquivalence_hom`・`compactGenerationEquivalence_inclusion`、compact 像 `compactGenerationEquivalence_image_isKappaCompact`・`ind_isKappaCompact_iff_yoneda`、生成表示 `indVertex_has_compactGeneratorPresentation`。
 - K-B 向け選択比較：`compactGenerationChoice_inclusion`・`compactGenerationInverse_inclusion`・`compactGenerationInverse_choiceIso`・`compactGenerationInverse_familyIso`、公開界面の `StableCompactGeneration.inverse_inclusion`。比較は全関手同型で、任意の入力族への前合成を保つ。K-B 自身の構造射・全入力との照合は K-B で行う。
 - Ind-S への作業木引き継ぎ：未コミットの F1 葉 `FunctorCategories/RelativeFunctorDescentOver`・`Diagrams/CocartesianKanWeightedUnitData`・`Diagrams/CocartesianKanWeightedUnit` は Ind-S (5) 草稿。Data のみビルド済み、相対降下の頂点書き換えが未解決。集約・監査未接続。移管後は Ind で変更・stage しない。
-- 次の一手（改訂目標完了）：停止。X の交換と D-7′ は別途供給を待つ。新チャットではコーディネータの指示に従い、I-2 d の入力差し替えを行う。Ind-S 草稿は新設 Ind-S に引き継ぐ。
+- 次の一手（I-2 e′ 完了）：停止。X の交換入力差し替えは別途指示。Ind-S 草稿は新設 Ind-S の所有。
 - I-2 c の固定三段目：c① 有限 cospan の包含による保存 [x]、c② fiber・cofiber の単一 filtered 表示 [x]、c③ bicartesian 判定 [x]、c④ Ind の安定性 [x]、c⑤ 包含の完全性と公開界面 [x]。
 - I-2 c① の公開入口：`ind_cospan_inclusion_isLimit`・`ind_cospan_isLimit_iff_inclusion` は任意の元の標準 cospan 全錐の保存・反映。`ind_inclusion_isPullbackSquare_iff` は元の実四角形の引き戻し性の保存・反映。C の有限極限・正則 κ・明示交換入力を保持する。
 - I-2 c②・c③ の公開入口：`ind_cospan_has_singleFilteredDiagramPresentation`・`ind_span_has_singleFilteredDiagramPresentation` は元の全図式の単一表示。`ind_exists_bicartesianLimitCone`・`ind_exists_bicartesianColimitCocone` は同じ表示から実 bicartesian 全錐・全余錐を構成。`ind_isPullbackSquare_iff_isPushoutSquare` は元の任意の実四角形自身について両普遍性の一致。
-- I-2 c④ の公開入口：`F2.Ind.Stability.ind_isStable` は正則 κ・明示交換入力・安定な C と C の有限全存在から Ind の安定性を結論。`ind_stable_with_fullyFaithful_exactYoneda` は同じ元の Yoneda の充満忠実性・完全性も同時に供給。名前空間は `SerrePositivity.InfinityCategories.F2.Ind`。D-7′ の供給まで有限全存在は明示仮定のまま。
+- I-2 c④ の公開入口：`F2.Ind.Stability.ind_isStable` は正則 κ・明示交換入力・安定な C と C の有限全存在から Ind の安定性を結論。`ind_stable_with_fullyFaithful_exactYoneda` は同じ元の Yoneda の充満忠実性・完全性も同時に供給。名前空間は `SerrePositivity.InfinityCategories.F2.Ind`。元の入口は変更せず、e′ の新名の系で有限全存在を IsStable C から導く。
 - I-2 c⑤ の公開入口：`indYoneda_isExactFunctor` は既存 `Stable.IsExactFunctor` による元の Yoneda 包含の完全性。`indYoneda_preservesZeroVertices` と元の全 cofiber 保存を証明し、Ind の安定性を仮定しない。`indYoneda_isLimit` は任意の小さい全極限錐を追加の有限性・交換入力なしで保存する。
-- I-2 c の供給許可：`Stable.ExactFunctor`・`Stable.Bicartesian` は新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。C の有限全存在は D-7′ 供給まで明示仮定。
+- I-2 c の供給許可：`Stable.ExactFunctor`・`Stable.Bicartesian` は新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。C の有限全存在の仮定除去は e′ の新規葉に接続。
 - I-2 b の固定三段目：b① C の有限極限・有限余極限の全族選択と Yoneda 保存 [x]、b② Ind 関手圏での点ごとの κ-filtered 余極限の構成 [x]、b③ 有限半順序図式の有限極限と包含による保存・反映 [x]、b④ 有限半順序図式の有限余極限の普遍性 [x]、b⑤ 任意の有限単体集合形状への接続と公開界面 [x]。
 - I-2 b の公開入口：`yonedaInfinityMap_isLimit` は任意の小さい極限全錐の保存。`exists_yoneda_finiteLimit_coneFamily` と `exists_indYoneda_finiteColimit_coconeFamily` は元の制限を厳密に固定した全族。余極限保存は明示交換入力を残す。`exists_indFunctor_kappaFiltered_colimit` は全関手形状で同じ filtered 余極限全余錐と包含による全評価の保存。
 - I-2 b③ の接続：`ind_filteredLimitCone_isLimit` は元の Ind 全錐族の点ごとの filtered 補完に明示の形状交換を適用し、完成後の元の錐と包含像の極限性を同時に結論する。`indYonedaConeFamily_restriction` は元の下方全図式への厳密な制限回収。`ind_exists_limitCone_of_singleFilteredDiagramPresentation` は元の指定全図式の極限と包含像の極限の同時存在。`indFinitePoset_hasLimit`・`indFinitePoset_inclusion_isLimit`・`indFinitePoset_isLimit_iff_inclusion` で有限半順序図式の存在・保存・反映を公開。
@@ -35,7 +39,7 @@
 - I-2 b⑤ の一般生成：`F1.Joins.FiniteColimitSpanGeneration.hasFiniteColimits_of_initial_pushouts` と `F1.Joins.FiniteLimitGeneration.hasFiniteLimits_of_terminal_pullbacks`（名前空間はともに共通根）は、全有限単体集合形状についての生成定理。D の D-7′ 向け。新規 `Core.FiniteShapeInduction` は有限和も pushout から導き、既存の F2 の有限セル帰納を一般化する。旧ファイルは変更しない。
 - I-2 b⑤ の基底供給：`HomotopyLimits.EmptyCone` は新規葉から読み取り専用で使用可、反転利用も可。R の Core 移動対象。`hasLimit_emptyDiagram_of_terminal`・`hasColimit_emptyDiagram_of_initial` は任意の空部分複体の図式を扱う。
 - I-2 b⑤ の形状供給：D の excision 格子の import は避け、新規葉の `finiteSpanNerveIso`・`finiteCospanNerveIso` を使用。両辺の `_iso` と全ての面・退化の `_hom_naturality`、宇宙持ち上げの `uliftFiniteSpanNerveIso`・`uliftFiniteCospanNerveIso` を供給。準重複は許可済み、R が第 I 段終了時に D 側を付け替える。
-- I-2 b⑤ の公開界面：`F2.Ind.FiniteLimitsColimits` の `ind_hasFiniteLimits`・`ind_hasFiniteColimits` は元の Ind の全有限単体集合形状について存在を結論。正則 κ・明示交換入力・C の対応する有限全存在を要求する。C の安定性からの無条件化は D-7′ に依頼済みで、供給まで b⑤・c はこれらを明示するよう指示済み。
+- I-2 b⑤ の公開界面：`F2.Ind.FiniteLimitsColimits` の `ind_hasFiniteLimits`・`ind_hasFiniteColimits` は元の Ind の全有限単体集合形状について存在を結論。正則 κ・明示交換入力・C の対応する有限全存在を要求する。既存宣言はこの型を保ち、D-7′ の供給は e′ の新規葉から消費する。
 - I-2 b の供給許可：`Core.LimitProjectionExistence`・`HomotopyLimits.FullSubcomplexConeLift`・`FullSubcomplexLimitReflection` を、新規 Ind 葉から読み取り専用で直接 import 可。既存の深層ファイルは変更しない。後二本は R が Core へ移動。`indFullConeLift_inclusion` と `ind_isLimit_of_inclusion` は元の全錐の厳密な持ち上げと任意の形状の極限反映。
 - I-2 a の三段目：a① 三境界固定比較の curry と宇宙移送 [x]、a② 指定始点下の相対反映と両端評価の cofinal 性 [x]、a③ 射形状の標準余錐の余極限性 [x]、a④ 有限半順序形状の帰納と単一 filtered 表示 [x]。
 - I-2 a の界面：元の三条件固定比較と始点評価下の実 under comma の比較は保存済み。`exists_relativeCommaFamily_iso_of_functorIso` は任意の元の同型に沿う指定変換の輸送。`indArrowInterpolationOldFamily_withCornerCocone` は同じ slice 円柱を保つ終点拡張の選び直しで元の旧族が変わらないことを厳密に回収する。
