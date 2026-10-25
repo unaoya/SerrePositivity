@@ -268,3 +268,6 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSourceUnderTarget_terminal_mapping_contractible
 #check @generatedSourceUnderTarget_lift_generatedEdge
 #check @generatedSource_terminal_retractionSpace_contractible
+
+#check @edgeCosliceVertex_generatedSourceLeg
+#check @generatedSourceIdentity_isTerminal_of_source_terminal
