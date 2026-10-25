@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """BS の複数モジュールを一つのモジュールにまとめるスクリプト（BS-W5 以降）。
 
-計画は JSON：{"merges": {新モジュール名: [元モジュール名, ...]}, "docstrings": {新モジュール名: 本文}}。
+計画は JSON：{"merges": {新モジュール名: [元モジュール名, ...]}, "docstrings": {新モジュール名: 本文},
+"stubs": [所有範囲外から import される元モジュール名, ...]（省略可）}。
 元モジュールは並べた順に連結する（後のものが前のものを import してよい順に並べること）。
 
 まとめ方（宣言・証明・名前空間・variable には手を加えない）：
@@ -13,6 +14,9 @@
 - 元ファイルは git rm する（統合先と同じパスのものは上書き）。
 - 所有範囲（BS・CLMST・BS/CLMST の監査）の import 行・`let mods` の名前一覧・バッククォートのモジュール名を
   新しい名前に書き換え、重複した import 行と自分自身の import を除く。
+
+- "stubs" に挙げた元モジュールは、git rm の後に旧名の位置へ転送スタブ（新しい場所を public import するだけ）を書く。
+  所有範囲外の import 元がすべて stubs に入っていなければ止まる。
 
 既定は dry-run。--apply で書き込みと git rm を行う。コミット・ビルドはしない。
 """
@@ -35,6 +39,22 @@ OWNED = [
 ]
 NAME = re.compile(r"(?<![\w.])SerrePositivity\.BhattScholze\.[\w.']+")
 IMPORT = re.compile(r"^[ \t]*(public[ \t]+)?import[ \t]+(\S+)[ \t]*$")
+STUB = """module
+
+public import {new}
+
+/-! # 互換用の転送モジュール
+
+## 概要
+このモジュールの本体は `{new}` へ統合した。
+
+## 方針
+所有範囲外のファイルが旧名で import しているため、旧名を残して新しい場所を再公開する。宣言は持たない。
+
+## 使われ方
+旧名の import 元が新しい名前へ切り替わったら削除する。
+-/
+"""
 HEADER = re.compile(r"^@\[expose\] public noncomputable section\s*$")
 UNIVERSE = re.compile(r"^universe\s+(.*)$")
 
@@ -127,6 +147,7 @@ def main():
     args = ap.parse_args()
     plan = json.loads(args.plan.read_text())
     merges, docs = plan["merges"], plan["docstrings"]
+    stubs = set(plan.get("stubs", []))
     rename = {old: new for new, olds in merges.items() for old in olds}
     for new, olds in merges.items():
         assert new in docs, f"docstring missing for {new}"
@@ -147,20 +168,27 @@ def main():
         new = rewrite(src, rename, mod)
         if new != src:
             edits[f] = new
-    foreign = [f for f in listed_files() if f.endswith(".lean") and (ROOT / f).is_file()
-               and not any(r.match(f) for r in OWNED)
-               and any(re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)
-                       for o in rename)]
+    foreign, unstubbed = [], set()
+    for f in listed_files():
+        if not f.endswith(".lean") or not (ROOT / f).is_file() or any(r.match(f) for r in OWNED):
+            continue
+        hit = {o for o in rename
+               if re.search(rf"import\s+{re.escape(o)}\s*$", (ROOT / f).read_text(), re.M)}
+        if hit:
+            foreign.append(f)
+            unstubbed |= hit - stubs
     print(json.dumps({
         "new_modules": {n: len(o) for n, o in merges.items()},
         "removed_files": len(removed),
         "lines": {n: built[n].count("\n") for n in built},
         "owned_files_rewritten": len(edits),
         "foreign_importers": foreign,
+        "stubs": sorted(stubs),
+        "foreign_imports_without_stub": sorted(unstubbed),
         "applied": args.apply,
     }, ensure_ascii=False, indent=1))
-    if foreign:
-        raise SystemExit("foreign importers would break: stop and report")
+    if unstubbed:
+        raise SystemExit("foreign importers would break: add these modules to stubs")
     if not args.apply:
         return
     for new, text in built.items():
@@ -170,6 +198,8 @@ def main():
                        cwd=ROOT, check=True)
     for f, text in edits.items():
         (ROOT / f).write_text(text)
+    for old in sorted(stubs):
+        to_path(old).write_text(STUB.format(new=rename[old]))
 
 
 if __name__ == "__main__":

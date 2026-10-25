@@ -1,0 +1,99 @@
+{
+ "merges": {
+  "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta": [
+   "SerrePositivity.BhattScholze.Delta.Perfect.DeltaTorsion",
+   "SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne",
+   "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaModP",
+   "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius",
+   "SerrePositivity.BhattScholze.Delta.Perfect.WittDelta",
+   "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaWittRecovery",
+   "SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection": [
+   "SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection",
+   "SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfectionUniversal",
+   "SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPCompletion",
+   "SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDCompletion"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular": [
+   "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular",
+   "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedTorsion",
+   "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion",
+   "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedQuotientComplete"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization": [
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalizationSaturation"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion": [
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicQuotient",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicExtension",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicLift"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion": [
+   "SerrePositivity.BhattScholze.Delta.Extension.WittTwoModuleSequence",
+   "SerrePositivity.BhattScholze.Delta.Extension.WittTwoModuleComplete",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaFrobeniusComplete",
+   "SerrePositivity.BhattScholze.Delta.Extension.WittTwoPDComplete",
+   "SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion",
+   "SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletionUniversal"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished": [
+   "SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime",
+   "SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta": [
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteVariableSplit",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStep",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteTopVariableSplit",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStepIdentities",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaAdicEstimate",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaIterate"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue": [
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaAdditionCarryProduct",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaResidue",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaSubtraction",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaPerturbation",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaSquareCongruence",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaLinearization"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteTopVariable": [
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaTopDegree",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaTopCoefficient",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaTopDerivative"
+  ],
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt": [
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFrobeniusTopLinear",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittGhostRecurrence",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittGhostSupport",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittGhostTriangular",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoordinateChange",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittInverseSupport",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteWittCoordinateChange",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoefficientNaturality",
+   "SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaWittJetComparison"
+  ]
+ },
+ "docstrings": {
+  "SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta": "# 完全 δ 環の構造（BS 著者版 §2.4：Lemma 2.28・2.32・2.33、Cor 2.31、Ex 2.6）\n\n## 概要\nFrobenius は p ねじれを消す（Lemma 2.28。p が冪零な δ 環は零環、Ex 2.6）、完全 δ 環は p ねじれなしで A/p は完全、\nFrobenius 同型は δ 射、p 冪の元は rank 1（Lemma 2.32）、完全な標数 p の環の Witt 環の δ 構造と復元 A ≅ W(A/p)（Cor 2.31）、\nTeichmüller 係数による distinguished 判定（Lemma 2.33）。\n\n## 方針\npx = 0 に δ を当て、δ(p) ≡ 1 mod p で消去する。rank 1 は pδ(x) ∣ δ(x^p) の反復。Witt 環の側は Mathlib の Witt Frobenius と共通基盤の復元から。\n\n## 規約\nZ_(p) 代数や p ∈ rad を仮定しない。Cor 2.31 は圏同値ではなく対象ごと。\n\n## 使われ方\n完全 prism（Prism）、完全化、Witt 商の Fontaine 比較。",
+  "SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection": "# δ 環の完全化と、完全 δ 環が余極限・完備化で閉じること（BS 著者版 Rem 2.27）\n\n## 概要\nFrobenius に沿う余極限による完全化 A_perf とその普遍性、完全 δ 環の有向余極限・古典的 p 進完備化・導来 (p,d) 完備化 H⁰ が\n完全であること。\n\n## 方針\n各構成に逆 Frobenius を延ばし、普遍性で両合成が恒等射であることを示す。\n\n## 規約\n逆極限側の完全化 lim_φ はない（A3 で要る）。\n\n## 使われ方\nprism の完全化（Lemma 3.9、Prism/Perfection）、André の ω₁ 反復。",
+  "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular": "# distinguished 元の正則性と商の p 冪ねじれ（BS 著者版 Lemma 2.34）\n\n## 概要\np ねじれなし・p 進分離で A/p が被約な δ 環の distinguished 元は非零因子で、A/(d) の p 冪ねじれは p で消える。\n冪 dⁿ への反復、完全 p 進完備 δ 環での商の p 進完備性。\n\n## 方針\nfd = 0 に δ と φ を当てて mod p で f^{2p} = 0 を得、被約性と p 進分離性を使う。\n\n## 規約\n商の導来完備性・perfectoid 性は仮定しない。\n\n## 使われ方\n完全 prism の性質（Lemma 3.8）、Thm 3.10、prism の完全化。",
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization": "# δ 構造の局所化への延長（BS 著者版 Lemma 2.15、Rem 2.16）\n\n## 概要\nFrobenius 安定な乗法集合での局所化に δ 構造が一意に延び、普遍性を持つ。任意の分母集合はその Frobenius 像で安定化する。\n\n## 方針\nW₂ の元が単元 ⇔ 第 0 座標と第 1 ghost 成分が単元、を使って切断を延ばす（自由 δ 環への帰着をしない）。\n\n## 規約\np ねじれを許す。\n\n## 使われ方\n今は主定理の経路にない。Ex 2.21（A1）で使う予定。",
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion": "# δ とイデアル冪の評価と、古典的 I 進完備化への延長（BS 著者版 Lemma 2.17）\n\n## 概要\n環射に沿う W₂ 持ち上げの相対 δ の公式とイデアル冪の評価、p ∈ I なら δ(I^{n+1}) ⊂ Iⁿ、\nδ の有限 I 進商への降下、古典的 I 進完備化の δ 構造（一意性は I 有限生成）と、完備化からの δ 射の延長。\n\n## 方針\n評価から δ を Cauchy 列に座標ごとに作用させる。原典の I^{2^{n+1}} → I^{2^n} より強い m = n+1 の評価を使う。\n\n## 規約\n存在に有限生成性・p 正則性は不要。導来完備化との比較はここにはない。\n\n## 使われ方\nCor 7.3 の構成、完全化の p 進完備化、相対自由 δ 環の有限段の計算。",
+  "SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion": "# δ 構造の導来 (p,d) 完備化 H⁰ への延長（BS 著者版 Lemma 2.18 の完備化の部分）\n\n## 概要\nW₂ の第 0 成分の核は φ で捻った第 1 座標、(p,d) 完備なら (p,φ(d)) 完備、したがって W₂ も導来完備で、\n導来 (p,d) 完備化 H⁰ に δ 構造が一意に延び、p,d 導来完備な δ 環への普遍性を持つ。\n\n## 方針\n原典の証明の短完全列 0 → φ_*B → W₂(B) → B → 0 と完備化の比較を形式化し、切断を完備化の普遍性で延ばす。\n\n## 規約\nエタールの部分（Lemma 4.21 用）はない。古典的完備性・p 正則性・有界ねじれを仮定しない。\n\n## 使われ方\nCor 7.3、prism の完全化、d で割る包の完備化。",
+  "SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished": "# distinguished 元（BS 著者版 §2.3：Ex 2.20(1)、Lemma 2.23〜2.25）\n\n## 概要\nδ(p) ≡ 1 mod p（標数 p の環へは δ(p) ↦ 1）、p ∈ rad なら p は distinguished、単元倍・因子、\np ∈ (d, φ(d)) との同値と、それが主イデアルだけで決まること。\n\n## 方針\n積公式を展開して根基に入る項を除く。Lemma 2.25 の逆向きは δ(d) を含む極大イデアルでの計算（局所化・完備化を使わない）。\n\n## 規約\nrad は Jacobson 根基。完備性・p 正則性を仮定しない。\n\n## 使われ方\nprism の定義（Prism/Basic）、Lemma 2.28、Prop 3.13 の単元係数。",
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta": "# 相対自由 δ 環の有限段での δ の計算\n\n## 概要\nR[x_(s,n)] を初期 N+1 段と後続に分け、δ を「初期 N+1 段の多項式 → 初期 N+2 段の多項式」の写像として計算する。\n加法・乗法・Frobenius の公式、イデアル冪の評価、反復。\n\n## 方針\nW₂ への有限段の計算射を相対自由 δ 環の切断と比較する。有限段そのものに δ 構造は与えない。\n\n## 規約\n基底の p ねじれを許す。\n\n## 使われ方\nAndré の一段の拡大の関係式計算（Division/Relations）、Witt 座標（Free/RelativeFreeWitt）。",
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue": "# p を消す環射の下での δ の計算\n\n## 概要\n任意の δ 環で、p を零に送る環射を通した δ の反復・和・積の計算と加法の補正項の積可除性。\nその有限段版：剰余公式、p 倍・d 倍の補正、初期包含の核の平方での不変性、rank 1 の補助計算との差（Frobenius を係数とする微分）。\n\n## 方針\n剰余環に δ 構造を要求せず、源で δ を計算してから環射で送る。\n\n## 規約\n剰余環の δ 安定性を仮定しない。\n\n## 使われ方\nd で割る包の関係式の (p,d) 剰余の計算（Division/Relations）、André の一段の拡大。",
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteTopVariable": "# 有限段の δ 像の最高段変数についての解析\n\n## 概要\np 剰余での最高段変数に関する次数、最高係数（基底 Frobenius で表される）、最高偏微分。\n\n## 方針\n最高段変数を分離し、係数側だけを p で割る環射で計算する。\n\n## 規約\n係数商に δ 構造を仮定しない。\n\n## 使われ方\nd で割る包の関係式が最高変数について一次で係数 φⁿ(d) であることの計算（Division/Relations）。",
+  "SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt": "# 相対自由 δ 環の Witt 座標（BS 著者版 Rem 2.13・2.14 の相対版）\n\n## 概要\nFrobenius 反復の最高線形項、生成元の第 n Witt 係数（Joyal の δ_n）＝ x_(s,n) ＋ 下位の多項式という三角形表示、\nx_(s,n) ↦ δ_n(x_s) による代数自己同型とその有限段版、係数の自然性、任意の元の δ jet と Witt jet の比較。\n\n## 方針\n全段の ghost 再帰式から下位変数への所属を強帰納で示し、逆変数を段数の強帰納で作る。\n\n## 規約\n基底の p 正則性を仮定する。\n\n## 使われ方\nAndré の一段の拡大で、d で割る包の関係式を Witt 座標のモニック方程式に移す計算（Division/Relations）。"
+ },
+ "stubs": [
+  "SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion"
+ ]
+}
