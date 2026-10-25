@@ -1,3 +1,13 @@
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement
+import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement
+import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles
+import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport
+import SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage
+import SerrePositivity.DifferentialGraded.Presentation.FiniteRowCoefficientBound
+import SerrePositivity.DifferentialGraded.Module.RepresentableCoproductClosedMatrix
+import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedLinear
+import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoproductSupport
+import SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix
 import SerrePositivity.DifferentialGraded.Functor.FullHomLift
 import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFunctorLift
 import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFaithful
@@ -7910,6 +7920,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement,
+    `SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles,
+    `SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport,
+    `SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage,
+    `SerrePositivity.DifferentialGraded.Presentation.FiniteRowCoefficientBound,
+    `SerrePositivity.DifferentialGraded.Module.RepresentableCoproductClosedMatrix,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedLinear,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoproductSupport,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix,
+
     `SerrePositivity.DifferentialGraded.Functor.FullHomLift,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFunctorLift,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFaithful,
