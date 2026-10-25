@@ -88,7 +88,7 @@
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
   隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **次工程 (f)**：③の本質像輸送・native Verdier 列は集約・監査済み。④は D-17 の生成判定を明示入力に隔離し、元小 Perf 対角と cell 平坦商の Verdier 条件を組み立て、固定 ν の射影の付け替えへ引き継ぐ。D-17・D-18 と追加 ULift 局所化の公開供給が届けば代入する。
+- **次工程 (f)**：③の本質像輸送・native Verdier 列は集約・監査済み。④は D-17 の生成判定を明示入力に隔離し、元小 Perf 対角と cell 平坦商の Verdier 条件を組み立て、固定 ν の射影の付け替えへ引き継ぐ。D-17・D-18 の公開供給831430f17を適用済み。残る実自由 End の Milnor 比較を接続する。追加 ULift 局所化の保存は供給待ち。
 - **採用（2026-10-25、コーディネータ指示）**：④では `dgGluingMilnorSquareComparison` が準同型である dg 形の Milnor 条件だけを四角形の仮定に取る。Sp 正本の `HomotopyPullbackModel.algebra` と同じ比較射を使い、元対角の充満忠実性と元二射の `IsVerdierSequence` を導く。商は `resolvedDGQuotientFunctor` に固定し、未分解 path 商との比較・対角像の `localKFlat` は第 I 段で要求しない。K-S• が再開時に元射影を付け替える。具体例の検証は K-S• の再開後。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
@@ -98,7 +98,7 @@
 - (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
 - `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
 - `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
-- ④検証済み：`MilnorSmallPerfectFaithfulness`・`MilnorDiagonalStableImage`・`MilnorDiagonalThickImage`・`MilnorResolvedQuotient`・`MilnorFlatThickTransport`・`MilnorResolvedKernel`・`MilnorResolvedVerdier` は集約13142 jobs・監査948モジュール8815宣言を通過。D-17 は `DGGluingMilnorSmallPerfectGeneration` に隔離。D-18 補足の順方向輸送は供給待ち。K-S• は `dgGluingMilnorResolvedProjection` へ射影を付け替え、`dgGluingMilnor_isResolvedVerdierSequence` を使う。③の集約は12744 jobs、監査は941モジュール・8772宣言を通過。吸収対象は元包含・同じ平坦屋根を保つ公開宣言。未追跡 `HomTargetCommaFunctor` は元終域 comma 比較を束ねる接続として対象ビルド中。
+- ④検証済み：`MilnorSmallPerfectFaithfulness`・`MilnorDiagonalStableImage`・`MilnorDiagonalThickImage`・`MilnorResolvedQuotient`・`MilnorFlatThickTransport`・`MilnorResolvedKernel`・`MilnorResolvedVerdier` は集約13142 jobs・監査948モジュール8815宣言を通過。D-17 の `dgFunctor_homQuasiIso_of_singleThickGenerator` と実自由生成を `MilnorGeneratorCriterion` へ接続済み。D-18 は `MilnorNativePretriangulated` で元模型へ適用済み。残る実自由 End の比較に必要な一般延長・代表同型の整合式は D へ確認依頼中。K-S• は `dgGluingMilnorResolvedProjection` へ射影を付け替え、`dgGluingMilnor_isResolvedVerdierSequence` を使う。③の集約は12744 jobs、監査は941モジュール・8772宣言を通過。吸収対象は元包含・同じ平坦屋根を保つ公開宣言。`HomTargetCommaFunctor`・`MilnorNativePretriangulated`・`MilnorGeneratorCriterion` は集約13166 jobs・監査951モジュール8830宣言を通過。未追跡 `MilnorFreeLegComparison` は対象ビルド済み。D-19 の実延長と代表同型の整合式を待つ間、同じ自由 End の比較を構成中。
 - d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
   ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
 - 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。

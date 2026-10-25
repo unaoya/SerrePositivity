@@ -947,3 +947,6 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedQu
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFlatThickTransport
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedKernel
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedVerdier
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaFunctor
+public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorNativePretriangulated
+public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorGeneratorCriterion

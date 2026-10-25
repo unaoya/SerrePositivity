@@ -952,7 +952,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedQuotient,
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFlatThickTransport,
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedKernel,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedVerdier]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedVerdier,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorNativePretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorGeneratorCriterion]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
