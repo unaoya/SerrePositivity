@@ -46,7 +46,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstClosed,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarSimplicial,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarAugmentation,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentVertexInclusion]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentVertexInclusion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarTopAppend,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarTopContraction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarTopExact,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarIndexMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoproductIndexEmbedding,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerIndex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerEmbedding,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerCover,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarFilteredExact]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -94,3 +103,7 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarColumn_sub_first_mem_filtration
 #check SerrePositivity.InfinityCategories.dgHomologyBarColimitAugmented
 #check SerrePositivity.InfinityCategories.dgCoherentBarVertexHomologyMap
+
+#check SerrePositivity.InfinityCategories.dgHomologyBarTopHomotopy_positive
+#check SerrePositivity.InfinityCategories.dgHomologyBarLowerMap_covers
+#check SerrePositivity.InfinityCategories.dgHomologyBarFiltered_exactAt
