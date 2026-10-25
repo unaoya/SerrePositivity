@@ -1,10 +1,10 @@
-# D-bar：D-8 c2・c6・c7
+# D-bar：D-8 c・工程B（native 余錐と全 Hom）
 
-## 引き継ぎ（2026-10-25）
+## 引き継ぎ（2026-10-26）
 ### 現在地
 - 指定の foundations §6・§8、progress の D、D 計画の D-8 c を確認。
 - MC は D の公開型そのものの仮定。実 bar 加群、全次数 Hom 同値、twisted 微分、閉列方程式を実装。
-- 所有 All のビルド成功（4043 jobs、153葉）。専用公理監査成功（1443宣言、標準三公理のみ）。
+- 所有 All のビルド成功（4680 jobs、169葉）。専用公理監査成功（1513宣言、標準三公理のみ）。
 - 非退化・退化 graded 因子の分裂と恒等射の二射影分解、退化次数 −1 作用素を構成。
 - 実 bar 自己 Hom の MC 微分公式、実微分の境界による段階的射と恒等への全 dg 自然な鎖ホモトピーを供給。
 - ラベル自由加群へ Mathlib の PInfty・homotopyPInftyToId・正規化 Moore 同値を直接適用。
@@ -13,7 +13,7 @@
 - 単体次数の標的支持により有限段階と累積ホモトピーが各単体上で安定することを証明。
 - 安定値の実 bar 鎖自己写像と恒等への全 dg 自然な鎖ホモトピーを構成。
 - D の公開 MC 定理（1017d8a9c）を代入した無条件版を所有葉 Unconditional に追加。
-- 19:40 採用の正規化中間模型・同じ theta の変形 retract を続行中。
+- 19:40 採用の正規化中間模型を保持。同じ theta の変形 retract は D の担当。
 - 工程B：正規化実 bar の全次数 Hom・非退化列の微分同値、実 native 列と退化消滅を構成。
 - D の Bianchi データを再利用し、全 HA 単体 NativeSimplex と全末端成分のラベル比較を構成。
 - 全単調写像に対する自然性と正規化 native JoinCocone を構成（無条件版も公開）。
@@ -31,8 +31,10 @@
 - 任意の pinched 線形単体から逆構成の全 join 単体データと左右の制限を構成。
 - 比較射の像で全 HA 単体の回収を証明。任意入力の両区間の HA 和を因数分解。
 - 任意の pinched 線形単体から作った逆データの、全頂点集合での HA 方程式を証明。
-- 任意入力の全部分集合の HA 方程式・自然性と、同値性・native 普遍性は未完。
-- c2・c6・c7 は未完。ordinary compact／perfect に置換しない。
+- 全部分集合の HA 方程式と全面・退化の二変数自然性を証明し、実逆 HA 単体を構成。
+- 実逆余錐族を束ね、全単体での両逆則と coconeMappingSpace ≅ 実 pinched Hom を構成。
+- 公開 MC を代入した同型も供給。指定 native 余錐の IsColimitCone への接続は未完。
+- c2・c6・c7 は D の担当。自レーンの完了判定対象外。
 ### 残り（依存順）
 - 1. 工程A：変形 retract は D に移管。CoherentBar/Retract/ の新規葉は読み取り専用。
   正規化加群の公開型は維持。変更が必要なら実施前にユーザーへ報告。
@@ -69,23 +71,26 @@
 - dgCoherentBarCoconeFamily_ext／CoconeHomSpaceComparison_injective。
 - dgCoherentBarInverseRawData／InverseRawData_recovery／Inverse_source_sum。
 - dgCoherentBarInverse_parameter_sum／InverseFullHom_differential／InverseRawData_full_equation。
+- dgCoherentBarInverseSimplex／InverseSimplex_map／CoconeHomSpaceInverse。
+- dgCoherentBarCoconeHomSpaceIso／CoconeHomSpaceIsoUnconditional。
+- dgCoherentBarCoconeHomSpaceComparison_homotopyEquivalence。
+- dgCoherentBarNormalizedNativeCocone_isColimit_of_cosliceComparison（C は明示入力）。
 ### 依存と提供
 - D の既存 Derived・DGNerve・DifferentialGraded と KST/NonConnective は読み取り専用。
 - dgCoherentBarTheta と moduleMaurerCartan を使用する。
-- DGKappaClosedCompactGeneratorCriterion を c6・c7 の正本として使用予定。
-- MC の無条件結論が D から公開されたら、同じ仮定に代入する系を追加する。
+- c2・c6・c7 の実施と完了判定は D に委ねる。
+- 公開 MC 定理を代入した比較・同型の無条件 API を併設。
 - 編集所有は Derived/CoherentBar/（Retract/・StrictComparison/ を除く）、その All、専用監査、本計画のみ。
 ### 未コミット
-- なし（パラメーター側の HA 和と全頂点方程式の検証済み12葉を限定保存）。
+- なし（逆単体の全自然性・実逆余錐族・全写像空間同型・接続判定を限定保存）。
 ### 既知の問題
-- native 余錐は構成済み。全写像空間の普遍性と filtered 評価比較は未完。
-  代数的閉列同値や零次の普遍射を全 native 普遍性とは扱わない。
-- 安定作用素が退化因子を消すことと、実射影の補正包含・変形 retract が残る。
-  安定自己写像の恒等への鎖ホモトピーだけで、正規化模型との retract とは扱わない。
+- 固定終点ごとの全写像空間同型は構成済み。native IsColimitCone は未完。
+  指定 native 余錐からの標準 Hom の族との接続を省略しない。
+- 変形 retract と strict 比較の実施・完了判定は、それぞれ D と D-e に委ねる。
 - MC 仮定付き API を保持し、公開 MC 定理を代入する無条件 API を併設。
 ### 次の一手
-- 逆データの単射による二変数自然性から、任意の部分集合の HA 方程式を回収する。
-- 同じ混合成分比較を用いて高次逆構成を束ね、写像空間の同値を結論する。
+- 下の可変終点 coslice 比較の設計追加案をユーザーへ中継し、設計提案の停止条件で停止。
+- 採用されたら、固定終点の逆構成を可変終点の右 HA 単体へ拡張する。
 
 ## 採用された設計追加（19:40）
 - 根拠：dgCoherentBarIndex は退化を含む全単体を独立因子にする。
@@ -99,6 +104,24 @@
 - Mathlib の AlgebraicTopology/DoldKan を直接参照し、適用可能な API は import して使う。コピーしない。
 - 二つの検査補題だけで正規化 retract の存在まで証明したとは扱わない。
 - 三段目は報告の六項目で固定。c2/c6/c7 完了とはしない。
+
+## 設計追加の提案（2026-10-26、未採用）
+- 現在の厳密同型は各終点 y の coconeMappingSpace F y と右 pinched Hom を比較する。
+  指定した native 余錐からの標準左 Hom の族との同定は未証明。
+  この接続を省略して IsColimitCone を結論しない。
+- 提案：既存の逆構成を、可変終点の右 HA 単体に対する混合成分へ拡張し、
+  `C : sliceUnder (yonedaEquiv.symm nativeApex) ⟶ sliceUnder F` を同じ dg nerve 上で構成する。
+  C が恒等余錐を指定 native 余錐へ送ることと、全 fiber の同値性を証明する。
+- 接続の正本は所有葉 NativeColimitCosliceCriterion の
+  dgCoherentBarNormalizedNativeCocone_isColimit_of_cosliceComparison。
+  入力は実 C・射影との可換性・全 fiber の IsQCatEquivalence・恒等余錐の像の等号。
+  既存の left fibration の fiber 判定と恒等余錐の始対象性で native 余極限性まで戻す。
+  この条件付き判定は証明済みでも、C の存在を供給済みとは扱わない。
+- 所有新規葉だけで実施。正規化加群の公開型・元の theta・MC 定理は変更しない。
+  D の retract と D-e の strict 比較に変更を依頼しない。模型圏 instance・新規公理も加えない。
+- 概算：可変終点の削除／切断・全部分集合 HA・C の組み立て・fiber 同値に追加8–16時間。
+  元の単体側の混合因数分解と全部分集合移送は既存の所有補題を再利用する。
+- 提案はこの計画の記載だけで済ませず、ユーザーへの報告で中継する。
 
 ## 運用
 - 新規 sorry・公理・引用なし。主経路に ModelCategory SSet 等の instance を置かない。

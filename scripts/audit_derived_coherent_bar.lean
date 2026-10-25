@@ -163,7 +163,23 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseBoundaryColumns,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullDifferential,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullCoefficient,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullEquation]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseFullEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseMixedNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawFaceNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawMixedNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseEquationTransfer,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseSimplices,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinPartialInjectivity,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawPartialNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseRawVanishing,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseOverSection,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseCoconeFamily,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceInverse,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.InverseCoconeHomRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeColimitCosliceCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -189,3 +205,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarLabelNormalizedEquiv
 #check SerrePositivity.InfinityCategories.dgCoherentBarEndRebase_d
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModule
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeHomSpaceIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeHomSpaceIsoUnconditional
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeHomSpaceComparison_homotopyEquivalence
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedNativeCocone_isColimit_of_cosliceComparison
