@@ -3576,3 +3576,26 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.UniverseEdge.invertible_up
 #check SerrePositivity.InfinityCategories.UniverseEdge.invertible_down
 #print axioms SerrePositivity.InfinityCategories.UniverseEdge.invertible_down
+
+-- Ind-S (4): 小さい種の内ホーン充填閉包と厳密因子化。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Core.SmallQuasicategoryHull },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  let modules := #[`SerrePositivity.InfinityCategories.Core.SmallSubcomplexStages,
+    `SerrePositivity.InfinityCategories.Core.SmallInnerHornClosure,
+    `SerrePositivity.InfinityCategories.Core.SmallSimplicialModel,
+    `SerrePositivity.InfinityCategories.Core.SmallQuasicategoryHull]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S small hull: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S small hull: no declarations audited"
+  logInfo m!"Ind-S small hull audit passed: {count} declarations."
