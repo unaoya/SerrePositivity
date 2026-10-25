@@ -2193,4 +2193,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SpectrumLoopFiberDiagram
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumLoopBoundaryIso
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumNativeLoopPi
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovInfinityCone
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
