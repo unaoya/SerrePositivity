@@ -2867,3 +2867,21 @@ ModelCategory SSet・Kan–Quillen は入力せず、既存の宣言と cofibrat
 モデル構造は入力せず、大域 instance は追加しない。
 
 対象・集約ビルド、全公理監査と実射影モデル構造の条件を含む独立例を検証済み。
+
+
+`ComplexLimits/PullbackHomTargetTrivial` は、p が次数別全射擬同型の側を供給する。
+`normalizedPullbackHom_target_trivialFibration` は任意の単体集合の単射 f の
+正規化像 i に適用し、`normalizedBoundaryPullbackHom_target_trivialFibration` は
+各標準境界包含へ特殊化する。結論は前と同じ `complexPullbackHom i p` の
+次数別全射性と QuasiIso で、既存の `_fst`・`_snd` の照合をそのまま使う。
+標準閉構造の比較自身への入口は
+`normalizedPullbackHomClosed_target_trivialFibration` と
+`normalizedBoundaryPullbackHomClosed_target_trivialFibration`。
+
+一般補題 `complexPullbackHom_quasiIso_of_target_trivial` は P・Q の cofibrancy を
+明示入力に取り、i の cofibration 性を要求しない。Hom(P,p) の引き戻しと
+Hom(Q,p) の二対三による。正規化単射への系では両端の cofibrancy と i の
+射影 cofibration 性を既存補題で代入済み。任意の射影 cofibration について
+両端の cofibrancy を外した SM7 は、この追加供給の結論には含めない。
+
+追加分も対象・集約ビルド、全公理監査と独立例を検証済み。
