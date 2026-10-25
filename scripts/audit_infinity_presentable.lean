@@ -724,3 +724,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence_universe
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_smallPosetColimit_universe
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyAdjunctHom_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.coneCounitHom_bijective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.limitConeFamily_apexIso_of_constantAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesKappaFilteredColimits_limitFamily_apex_of_small
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_smallQuasicategoryColimit_universe
