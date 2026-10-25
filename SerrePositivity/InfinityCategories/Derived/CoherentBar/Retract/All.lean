@@ -34,6 +34,13 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.Fac
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryParts
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.LastBoundaryFacesOnly
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.VertexBoundary
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedColumns
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedColumnComposition
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedColumnAction
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ShiftUnitCancellation
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedUniversalColumn
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ProjectorCoefficientCriterion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.StageCoefficientCriterion
 /-!
 概要：D 所有の coherent bar の変形 retract の葉を集約する。
 方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。
