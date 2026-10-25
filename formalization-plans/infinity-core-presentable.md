@@ -55,7 +55,7 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
-- `functor_isPresentable`、`piSSet_isPresentable`、`piSSetProjection_preservesSmallColimits`、`PrL`、`PrR`
+- `functor_isPresentable`、`piSSet_isPresentable`、`PrL`、`PrR`、`isKappaCompact_pullback_of_components`、`exists_pullbackCandidate_nativeCompactCardinal`
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
@@ -96,10 +96,10 @@
 - e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
 
 ### 未コミット
-- `PullbackCosliceBaseChange` は元の引き戻しの coslice と底変換した成分の全族との比較を構成中。
+- `SmallCompactFamilies` は生成族の全 retract を小さい族で代表し、全 compact 対象を回収する構成中。
 
 ### 次の一手
-- e5 は小さい充満候補模型・共通 compact 濃度・cospan 交換と、分類済みの全極限錐族の保存反映（小さい添字の宇宙を保持）を検証済み。元の coslice への接続と filtered 生成表示へ進む。
+- e5 は元の引き戻し内の候補族の同時 compact 性と、像も compact な濃度変更生成圏を検証済み。全 compact 対象の小さい代表族と、引き戻しの filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
