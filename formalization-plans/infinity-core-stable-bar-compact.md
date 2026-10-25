@@ -9,7 +9,7 @@
 
 ## 三段目
 1. [ ] coherent 比較の公開型と宇宙を照合し、全 native κ-filtered 図式を保つ消費入口を確定。
-2. [ ] representable の native Hom を Yoneda と評価へ接続。全シフトの比較を保持。
+2. [/] representable の native Hom を Yoneda と評価へ接続。全シフトの比較を保持。
 3. [ ] coherent 比較を通じた評価交換から、F2.Compact.IsKappaCompact による representable の κ-compact 性。
 4. [ ] 全シフトと κ 未満 sphere-free 基底の native κ-compact 性へ接続。
 5. [ ] DGKappaClosedCompactGeneratorCriterion を通じて七入力と dgKappaClosedProjectiveObjects_property へ接続（c6・c7）。
@@ -20,6 +20,13 @@
 - DGKappaClosedCompactGeneratorCriterion の smallCoproduct・freeSphere・sphere-free・perfect・closedProjective 判定。
 - Retract/DeformationRetract の無条件の修正包含と ModuleHomotopy。
 - F2/Presentable の P-9 新規葉は読み取り専用 import 可。ordinary compact／perfect を native κ-compact の代わりにしない。
+
+## 新規の比較入口
+- Compact/RepresentableEvaluation：`dgBarCompactYoneda_forward`・`dgBarCompactYoneda_leftAction` は任意次数の後合成と評価の整合。`dgBarCompactRepresentablePinchedIso` は全 pinched 空間の評価同型。
+- Compact/YonedaHomNaturality：`dgBarCompactYoneda_homNaturality` は全 Hom 複体の自然性、`dgBarCompactYoneda_strict` は同じ比較の厳密 dg 自然変換。
+- Compact/YonedaNerveIso：`dgBarCompactYoneda_nerveIso` は独立の対象宇宙を共通宇宙に置いた全 nerve 関手同型。全 coherent 図式で前合成できる。
+- Compact/NativeHomCriterion：`dgBarCompact_iff_nativeHom_preserves` は実半自由対象の native κ-compact 性と、実 Hom 空間関手の全 native κ-filtered 余極限保存の同値。
+- これらは compact 性そのものの実証拠ではない。coherent C1 の代入と評価交換は未完。
 
 ## 次の一手
 - coherent C1 の公開型を待つ間、既存の native compact・Yoneda・評価の依存を読み、型に依存しない比較を進める。
