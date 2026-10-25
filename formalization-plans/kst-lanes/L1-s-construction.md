@@ -10,7 +10,7 @@
 - D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d は Milnor・resolved 商の採用済み経路で再開。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
 - 旧未分解商の K-10 d は明示入力の下での形式的接続を保持。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
-- native の Milnor 列は D2 完成供給から具体化済み（`DGOdotMilnorVerdier`）。元の固定 ν 対角の充満忠実性も Milnor 条件から導く。固定 S には同じ cell 増大と商包含の二辺を置き、ν 増大の逆による resolved 屋根と回収二胞体を構成（`DGOdotMilnorResolvedInput`）。旧未分解商への比較は要求しない。
+- native の Milnor 列は D2 完成供給から具体化済み（`DGOdotMilnorVerdier`）。元の固定 ν 対角の充満忠実性も Milnor 条件から導く。固定 S には同じ cell 増大と商包含の二辺を置き、ν 増大の逆による resolved 屋根と回収二胞体を構成（`DGOdotMilnorResolvedInput`）。旧未分解商への比較は要求しない。 `DGOdotMilnorFlatKernelNullSquare` は同じ thick 平坦核の本質像を元対角像へ同定し、収縮元と Sp 正本から固定 S の実零化面を供給。元対角始域との S 内比較・零角 Perf 零性・全長方形は未完。
 - 条件付き出力は、比較後包含の充満忠実性と `IsVerdierSequence`、元の商合成の回収、全比較四角形の ν 像、同じ相対 E の pullback・fiber 列・極限錐。元の dg 対角始域を S の頂点として保持する。
 - K-10 e の形式的接続：c の同じ Morita 辺の逆を完全射・実完備化射にし、D の `DGPerfectIdempotentCompleteGeneral` と同じ評価同値から四完備性を証明した `dgOdotCatPerfInput`、d の `DGOdotLaxVerdierInput` から実 ⊙ を終点とする `PerfectLaxQuotient` を構成。
 - resolved 経路では native の左右小 Perf と gluing の coherent 完備性を証明。native resolved 商から `dgKInputStableValue R (dgOdotMilnorResolvedInput R d)` への完全射とその `IsIdempotentCompletion` を D 向けの一つの不足型として依頼する。`DGOdotMilnorNativePerfect` はその証拠だけを残し実 Cat^perf 図式・fiber 列まで接続。旧経路では同じ Cat^perf 不変量の LT pullback、四頂点・元の四 BF 辺・二脚の cospan・元の始域値を頂点とする実極限錐、両射影を保つ Tamme 積同値を接続する。絶対 Cat^perf 版は Sp-6 の S 長方形を使わない。四完備性は供給済み。`DGOdotLaxVerdierInput.landTamme_isPullback`・`landTammeCone_isLimit` は d だけを仮定する。d の実証拠は未完。
@@ -64,11 +64,11 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- なし（Milnor 接続の所有3葉・集約・公式監査・本計画を保存）。c の4ファイルと d の3モジュールも接続・保存済み。
+- なし（Milnor 接続の所有4葉・集約・公式監査・本計画を保存）。c の4ファイルと d の3モジュールも接続・保存済み。
 
 ### 既知の問題
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の23宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包10079モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
+- 現在の集約ビルドと公式監査は成功。c の22宣言と d の30宣言は監査済み。e の既存34宣言と四完備性差し替え13宣言、Milnor 接続の29宣言も最終監査済み。いずれも標準三公理のみで、宣言型に ModelCategory 参照なし。所有の repository import 閉包10083モジュールは全て解決。D の供給された最小 dg 完備性入口を接続し、他レーンのコードは変更・複製しない。heartbeat・透明性オプションの変更なし。全体ビルドは R-A の統合検証を使用。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。D2 f・β3 実証拠・Sp-6 は引き続き明示入力。
 - 本レーン内の名前衝突の未解決例なし。Core・Stable・F1 等の公開名・型は本レーンで変更していない。 固定 S の Hom は厳密 dg 自然変換 end の native core。Drinfeld 商の対象別 ε から合成を零関手へ結ぶ S 内の二単体は自動では得られず、長方形構成の別入力として未供給。相対 API の提示源比較・追加持ち上げ供給を Sp へ照会済み。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -94,7 +94,7 @@
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-milnor-aggregate.log`、`/tmp/kst-s-milnor-audit.log`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-milnor-flat-null-aggregate.log`、`/tmp/kst-s-milnor-flat-null-audit.log`。e の集約・公式監査は成功。d・e の具体的入力の供給と無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 

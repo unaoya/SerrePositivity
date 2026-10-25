@@ -31451,3 +31451,21 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorPerfect_isFiber
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorPerfect_isFiber
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernel_image_eq_diagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernel_image_eq_diagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelImage_contractible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelImage_contractible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelContracted
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorFlatKernelContracted
+
+#check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorFlatKernelNullSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorFlatKernelNullSquare
