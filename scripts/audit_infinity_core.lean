@@ -3650,3 +3650,37 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S: no declarations audited"
   logInfo m!"Ind-S small diagram core audit: {count} declarations."
+
+-- Ind-S (7): 内ホーン充填閉包・既存模型・Hull の正則非可算濃度評価。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[{ module := `SerrePositivity.InfinityCategories.Core.SmallHullCardinal },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    let s := mod.module.toString
+    if (s.toLower.splitOn "straightening").length != 1 then
+      throwError "Ind-S (7): forbidden straightening dependency: {mod.module}"
+    if #["SerrePositivity.KST", "SerrePositivity.EInfinity",
+        "SerrePositivity.InfinityCategories.F2"].any (s.startsWith ·) then
+      throwError "Ind-S (7): forbidden lane dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.Core.SimplicialCardinalBounds,
+    `SerrePositivity.InfinityCategories.Core.InnerHornClosureCardinal,
+    `SerrePositivity.InfinityCategories.Core.SmallHullCardinal]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (7): unexpected axioms in {name}: {axioms}"
+    let info ← getConstInfo name
+    let bad := info.type.foldConsts false fun n found =>
+      found || #["ModelCategory", "IsStrongLimit"].any
+        (fun s => (n.toString.splitOn s).length != 1)
+    if bad then throwError "Ind-S (7): unexpected extra assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (7): no declarations audited"
+  logInfo m!"Ind-S inner-horn cardinal audit passed: {count} declarations."

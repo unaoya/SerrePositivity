@@ -1,10 +1,10 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 18:13 JST）
+## 引き継ぎ（2026-10-25 18:35 JST）
 
 - 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
 - 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp・EInfinity は import しない。
-- 今回：(6) E2 向け弱変形による局所化源の移送。計画正本は本ファイル。
+- 今回：(7) P 向け内ホーン充填閉包の濃度評価。計画正本は本ファイル。
   `infinity-core-F1.md` は Ind 所有なので編集しない。
 - (5)：`d4062a19f` で L3 指定型の全族写像・厳密な底・全 fiber 回収を供給済み。
   同じ写像について指定点の値照合から fiber 内の頂点同型を反映する公開補題も供給済み。
@@ -12,14 +12,17 @@
 - (4)：`5686de2be` で内ホーン閉包と小模型、`14923a0d5` で指定逆三角形の保持と
   大きい標的への延長を保存済み。境界・可逆 path の同じ小模型への因子化を接続し、
   `IsLocalization.ulift`・`isLocalization_ulift_iff` まで対象ビルドが通過。
-- 現在地：(6) 完了。本体・逆向き版の対象ビルド、要求型への直接適用、
-  追加葉24宣言の公理・禁止仮定・禁止依存監査、Core/F1/F1B 三監査が全て通過。
-- 主要宣言：`isLocalization_of_weakDeformation`・`isLocalization_of_weakDeformation_reverse`。
-- 依存と提供：(6) は Core/F1B の既存公開界面のみを使用し、E2-S (6) へ供給する。
-  他レーンの証明はコピーしない。既存 `isLocalization_of_deformation` は変更しない。
-- 未コミット：なし。既知の問題：なし。
-- 残り：(6) の供給残件なし。E2 の具体的な消費は E2 所有。
-- 次の一手：公開名をユーザーへ報告し、二段目 (6) 完了の規約で停止する。
+- 現在地：(7) 完了。Core 三葉の対象ビルド、18宣言の公理・禁止依存・禁止仮定監査、
+  Core/F1/F1B 三監査が通過。既存 IsKappaSmall と宇宙を分けた全公開型への直接適用も通過。
+- 主要宣言：`hasCardinalLT_innerHornClosure`・`cardinal_innerHornClosure_lt`・
+  `hasCardinalLT_model`・`hasCardinalLT_hull_obj`・`exists_hull_hasCardinalLT`。
+- 依存と提供：(7) は Core と mathlib の既存界面のみを使用し、P の e5 へ供給する。
+  IsKappaSmall は F2 定義なので import・複製せず、同じ宇宙では定義通りの `#K.N < μ`、
+  宇宙間では mathlib の `HasCardinalLT K.N μ` を公開する。この型確認をユーザー経由で P へ中継。
+- 未コミット：なし。
+- 既知の問題：P の独自の型訂正は未着。現存する IsKappaSmall への直接適用は検証済み。
+- 残り：(7) の暫定要求型に対する供給残件なし。
+- 次の一手：公開名をユーザーへ報告して P へ中継し、二段目 (7) 完了の規約で停止する。
 - 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
   以後のコミット本文には変更・検証・残件の実施記録を書く。
 
@@ -158,3 +161,39 @@ A・B・D の quasicategory 性は仮定しない。逆向き版は元のホモ�
 検証：対象ビルド 1980 jobs、要求された両向きの型への直接適用、両主定理の公理確認、
 葉24宣言の公理・禁止依存・公開型中の ModelCategory 検査、Core/F1/F1B 三監査が通過。
 許容公理は propext・Classical.choice・Quot.sound のみ。F1B 監査登録は末尾追記のみ。
+
+## (7) 内ホーン充填閉包の濃度評価
+
+1. [x] 規約・既存の閉包・暫定型を確認する。
+2. [x] 有限個の面でホーン写像を数え、充填一段の非退化単体数を評価する。
+3. [x] 各既存 innerHornStage と可算和の既存 innerHornClosure の μ-small 性を証明する。
+4. [x] 既存 model・canonical hull と、Small 仮定不要の有界 Hull の存在へ移す。
+5. [x] 対象ビルド・公開型・公理・禁止依存・三監査を通し、実施記録付きで保存する。
+
+仮定は正則 μ と ℵ₀ < μ。強極限性は仮定しない。非退化表示から各次数を評価し、
+ホーンからの射を有限個の面の Yoneda 値へ単射に送る。充填像は次数ごとに有限で、
+充填添字と全段階の可算和を正則性で評価する。既存 Small の証明は不変。
+F2 の IsKappaSmall は `Cardinal.mk K.N < μ` の定義だけなので、P は Core の同型の不等式を
+定義展開で使える。F2 からの import、他レーンの証明のコピー、新しい小ささ述語は導入しない。
+任意の Hull が μ-small とは主張せず、既存 canonical hull とその同じ包含・因子化を保持する。
+
+公開名（namespace `SerrePositivity.InfinityCategories.SmallSubcomplex`）：
+
+- `hasCardinalLT_innerHornData`・`hasCardinalLT_innerHornStep`・`hasCardinalLT_innerHornStage`
+  (`Core/InnerHornClosureCardinal`)：同じ充填試験族・一段・各段の濃度評価。
+- `hasCardinalLT_innerHornClosure`・`cardinal_innerHornClosure_lt`（同じ葉）：
+  宇宙多相な HasCardinalLT と、同じ宇宙での `Cardinal.mk (innerHornClosure A).toSSet.N < μ`。
+- `hasCardinalLT_model`・`hasCardinalLT_hull_obj` (`Core/SmallHullCardinal`)：
+  既存 model と既存 canonical hull の対象の μ-small 性。
+- `hullOfCardinalBound`・`hasCardinalLT_hullOfCardinalBound_obj`・`exists_hull_hasCardinalLT`
+  （同じ葉）：濃度から宇宙的 Small を放電し、既存 Hull の構造全体と μ-small 性を得る。
+
+補助葉 `Core/SimplicialCardinalBounds` は非退化単体から各次数への評価と、その可算和による逆向きを供給する。
+HasCardinalLT は mathlib の宇宙多相な既存述語。既存 F2 の定義を複製しない。
+公開型の直接適用例は F2 の定義だけを読み、閉包・全段・model・Hull の既存 IsKappaSmall を検査した。
+本体の import 閉包には F2・KST・EInfinity・straightening はない。
+
+検証：SmallHullCardinal 対象ビルド 1409 jobs、同じ宇宙の IsKappaSmall に対する
+閉包・各段・model・Hull の直接適用、宇宙を分けた閉包・model・Hull の直接適用、
+18宣言の公理・禁止依存・ModelCategory／強極限仮定監査、Core/F1/F1B 三監査が全て通過。
+許容公理は標準三つのみ。既存の深層三ファイルは不変、監査登録は Core 末尾への追記のみ。
