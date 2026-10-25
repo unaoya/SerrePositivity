@@ -9,7 +9,7 @@
 ## 引き継ぎ（2026-10-24）
 ### 現在地
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
-- `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。共有対角は動き、上側との同一対角での貼り合わせは未証明。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
+- `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。`VerdierFullSMovingSquarePrism` は元の動く対角を厳密に共有する上側全族に条件付きで、両全三角柱を回収する四角柱・四頂点の可逆性・同じ元の Verdier 四角形との全関手同型を構成する。終端を実全 S• 商核へ固定し、下側全二胞体の最大化との厳密一致を証明した。`verdierFullSMovingKernelSquareIso` は同じ実商核まで接続するが、上側全族自体は未供給で、存在入力を主経路へ追加しない。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
 - `VerdierLowerDeformationZeroHomFaces` は同じ零値長 Hom の持ち上げが全ての面・退化に厳密に自然であることを保持する。点ごとの零値条件を全三角柱の整合的な族へ接続するが、上側との同じ動く対角での貼り合わせは未証明。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約と専用監査は成功（618 モジュール・3895 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
+- Fibration 集約と専用監査は成功（619 モジュール・3912 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了、c4 は相対全円柱比較まで。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -134,6 +134,12 @@ IsQCatEquivalence
   (relativeFunctorPre p b (transportSimplexFirstVertexMap A))
 ```
 - 適用先は A=元の marked span 全族、p=同じ商図式の小さい unstraightening 射影、b=元の射影≫q。相対前合成の本質的全射性から、供給単位の像と相対関手空間内で同型となる厳密な底上の実射を得る `exists_weakSpanKanQuotientRelativeTotalMap` を所有内へ接続済み。`weakSpanKanQuotientRelativeTotalMap`・`_projection`・`weakSpanKanQuotientRelativeTotalMapRestrictionIso` は同じ証拠から実射・厳密な底条件・相対回収同型を選ぶ。同値性を利用側の引数に隔離し、主経路の存在入力は増やさない。既存の `relativeFunctorOverPre_isQCatEquivalence_of_firstVertex` は標準単体間の始点保存射に限るため、この全族の初頂点射への直接代入はできない。Cat∞ 値分類や新たな一般局所化・商 API は含めない。
+
+### 設計変更案：c4 の上側輸送で指定全長 Hom を保持する（未採用）
+- 現行 `zeroMiddleFullSKanTetrahedron` は三面を固定した内角充填を選び、始端上側はその未指定の面 2。`zeroMiddleFullSKanLongHom` は実構成済みだが、この選択された面の全長 Hom との厳密一致は充填条件に含まれない。短辺・共有対角の一致からこの一致を推論しない。
+- 提案：F1 正本の、同じ短辺・合成端と指定全長 Hom を厳密回収するパラメータ付き二胞体構成を用いる。元の core 制限・指定 Verdier 二胞体を保つ中間対象輸送も同じ指定族へ照合し、既存の非指定充填の定理は保持する。必要な汎用構成はコーディネータ経由で Ind/F1 に依頼し、K-B にコピーしない。
+- 制御した上側と既存の上側を比較する場合は、同じ元の三面を固定した充填空間内の比較を証明してから使う。新たな存在入力を本体へ追加せず、指定族の実構成と照合を証明目標とする。
+- 利用側は `VerdierFullSMovingSquarePrism` に接続済み。終端を同じ全 S• 商核に固定した下側最大化の厳密一致と `verdierFullSMovingKernelSquareIso` まで検証済み。上側全族・全対角条件・縦辺の可逆性の実供給は未完で、c4 完了とは数えない。設計変更提案のため規約に従い停止する。
 
 ### 未コミット
 - 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。
