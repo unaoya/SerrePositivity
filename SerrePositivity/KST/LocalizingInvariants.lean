@@ -2284,4 +2284,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMixedFrame
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeFrameKan
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeLargeMixed
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeFrameCoherent
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovFrameCoherent
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
