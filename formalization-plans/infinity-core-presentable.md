@@ -96,7 +96,7 @@
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- なし。
+- `IteratedCoconeReassociation`・`SliceOverCoconeFromColimit`：対象上の compact comma の余錐構成を検証中。
 
 ### 次の一手
 - e5 公開名予告：`pullback_isAccessible`、`fiber_isAccessible_of_presentable`、`pullback_isPresentable`（未証明）。accessible な両脚に共通の κ-filtered 余極限・保存と小さい native compact 候補まで構成。基底の全可算図式を厳密に保つ指定辺列の相対実現を使い、filtered 生成表示へ進む。

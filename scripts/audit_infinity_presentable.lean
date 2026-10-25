@@ -801,3 +801,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerve_hom_ext_initialSimplex
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeSequentialEdgeSimplices
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeSequentialDiagram_realizing_edges
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.point_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.F2.Presentable.point_isPresentable
+#check @SerrePositivity.InfinityCategories.F2.Presentable.pointMap_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_fst_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleFiber_compactCandidate

@@ -408,3 +408,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeSimplexE
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialDiagramFiniteStages
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeSequentialEdgeSimplices
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeSequentialEdgeDiagram
+public import SerrePositivity.InfinityCategories.F2.Presentable.PointAccessibility
+public import SerrePositivity.InfinityCategories.F2.Presentable.PointFiberFilteredColimits
