@@ -2284,4 +2284,40 @@ private lemma verdierFractionComparison_of_wholeFamilyRecovery {A B C : StableCa
     (verdierWeakFiberGroupoidEquivalence h x y).isQCatEquivalence.cancel_right hc
   exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e hu
 
+/-- 元の全族の実 Kan 単位回収を、既存の亜群化比較を介して私有判定へ渡す。 -/
+private lemma verdierFractionComparison_of_kanUnitRecovery {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    (x y : B.obj _⦋0⦌)
+    (U : markedSpanFamily B.obj (weakEquivalences i) x ⟶
+      smallLeftUnstraightening (weakSpanKanQuotientDiagram h x))
+    (hU : U ≫ smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x) =
+      markedSpanFamilyProjection B.obj (weakEquivalences i) x ≫ q.hom)
+    (e : VertexIso
+      (verdierLiftedIdentityFiberPoint h x
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU)
+      (weakIdentityQuotientFiberPoint h x))
+    (v : vertexFiber (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x))
+      (q.hom.app _ y) ⟶ (strictKanCompletion.obj
+        (fixedMarkedSpans B.obj (weakEquivalences i) x y)).obj)
+    (hv : IsQCatEquivalence v)
+    (hrecovery : FunctorIso
+      (verdierFixedLiftedFamily h x y
+        (smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)) U hU ≫ v)
+      (F2.continuousKanReplacementUnit.app (fixedMarkedSpans B.obj (weakEquivalences i) x y))) :
+    IsFullyFaithful (fractionMappingComparison q.hom (weakEquivalences i) h.inverts x y) := by
+  let p := smallLeftUnstraighteningProjection (weakSpanKanQuotientDiagram h x)
+  let X := fixedMarkedSpans B.obj (weakEquivalences i) x y
+  letI := vertexFiber_kanComplex_of_leftFibration p (q.hom.app _ y)
+  have he : FunctorIso
+      (verdierFixedLiftedCompletion h x y p U hU ≫ v)
+      (groupoidCompletionKanComparison X) := by
+    apply localizationFactorizationIso _ _ (groupoidCompletion_isLocalization X)
+    have ht := (groupoidCompletionEvaluationIso
+      (verdierFixedLiftedFamily h x y p U hU)).postcomp v ≪≫ hrecovery ≪≫
+        (groupoidCompletionEvaluationIso (F2.continuousKanReplacementUnit.app X)).symm
+    simpa only [verdierFixedLiftedCompletion, groupoidCompletionKanComparison,
+      Category.assoc] using! ht
+  have hc := (groupoidCompletionKanComparison_isQCatEquivalence X).ofFunctorIso he.symm
+  exact verdierFractionComparison_of_wholeFamilyUnit h x y U hU e (hv.cancel_right hc)
+
 end SerrePositivity.KST.LocalizingInvariants
