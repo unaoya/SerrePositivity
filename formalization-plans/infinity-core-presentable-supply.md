@@ -1,4 +1,4 @@
-# P-s レーン：P-11・P-12 の専任供給
+# P-s レーン：P-11・P-12 と中継依頼の専任供給
 
 ## 引き継ぎ（2026-10-25）
 
@@ -78,6 +78,10 @@
 - pullback 後の coslice への相対 Hom 制限が同値であることを証明し、
   その分類後の実写像の全単射性を構成した。
 - 最新 Supply.All は 8681 jobs で成功。独立監査は 501 宣言、標準三公理のみ。
+
+- P-13：Core と HomotopyLimits の結合同型の一致を任意の三因子について証明した。
+  空区間を含む切断・和表示を比較し、点二つへの特殊化も公開する。
+- P-13 追加後の Supply.All は 8682 jobs で成功。独立監査は 514 宣言、標準三公理のみ。
 
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
@@ -160,6 +164,10 @@
 - `classifiedCosliceHomRestriction_actual`
 - `classifiedCosliceHomRestriction_bijective`
 
+- `stableJoinAssociator_hom_eq_joinAssociator`
+- `stableJoinAssociator_eq_joinAssociator`
+- `stableJoinAssociator_hom_eq_joinAssociator_point_point`
+
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
   `scripts/audit_infinity_presentable_supply.lean`、この計画（300 行以内）。
@@ -169,7 +177,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- P-13：二つの join 結合同型の比較葉を作成中（集約には未追加）。
+- なし（P-13 比較葉・集約・独立監査・本計画を記録）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。

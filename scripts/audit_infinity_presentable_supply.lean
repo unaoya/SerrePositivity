@@ -108,3 +108,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomPullbackRestriction_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.classifiedCosliceHomRestriction_actual
 #check @SerrePositivity.InfinityCategories.F2.Presentable.classifiedCosliceHomRestriction_bijective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.stableAugJoinAssociatorEquiv_tripleEncoding
+#check @SerrePositivity.InfinityCategories.F2.Presentable.stableJoinAssociator_hom_eq_joinAssociator
+#check @SerrePositivity.InfinityCategories.F2.Presentable.stableJoinAssociator_eq_joinAssociator
+#check @SerrePositivity.InfinityCategories.F2.Presentable.stableJoinAssociator_hom_eq_joinAssociator_point_point
