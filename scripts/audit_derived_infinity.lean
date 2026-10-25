@@ -1,3 +1,8 @@
+import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
+import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation
+import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom
+import SerrePositivity.InfinityCategories.Derived.DGKappaClosedCompactGeneratorCriterion
+import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertices
 import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
 import SerrePositivity.InfinityCategories.Derived.DGPerfectYonedaIdempotentCompletion
 import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees
@@ -7386,6 +7391,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap,
+
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation,
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKappaClosedCompactGeneratorCriterion,
+    `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertices,
+
     `SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda,
     `SerrePositivity.InfinityCategories.Derived.DGPerfectYonedaIdempotentCompletion,
 
