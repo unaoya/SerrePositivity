@@ -56,7 +56,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableHomotopyImage,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StableProjectionCompatibility,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelVertexSupport]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LabelVertexSupport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomDegrees,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedTargetHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomEquations,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LastPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedTargetProjection,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSimplexData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeSimplices,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeLabelCoordinates]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
