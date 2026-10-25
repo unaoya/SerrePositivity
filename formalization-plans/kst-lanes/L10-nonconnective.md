@@ -128,7 +128,7 @@
 - [ ] d4 Ind I-2 e の公開結果との照合、選択比較と全入力の自然性。
 
 - `DGSuspensionConnectedComparison` は元の連結固定 K から同じ実 Sp 余錐の零段の脚を実 BF 比較射として回収する。隣接遷移の非負次数安定化に条件付きで、元の比較射を順方向とする群同型を構成し、同じ SOA 比較からの実連結 K 比較も全単射となる。`DGSuspensionLoopStagePi` は同じ n 段の native loop 反復値の整数 π を元の n 回懸垂 K の j+n 次数へ同型で比較する。`DGSuspensionShiftedTransition` は同じ実隣接 BF 射をこの座標で読み、元の作用との厳密な可換性・全単射性の同値・同じ実余錐の連結比較への移送を保持する。`DGSuspensionPerfectStructurePi` は段別 I・P・Z と同じ実 fiber 比較の非負次数条件に対し、実評価 Perf 比較を代入した元の構造射の j+n 次数の全単射性を供給する。全非負 j・全段、および任意整数 j の n≥(-j).toNat の範囲を保持する。元の構造辺そのものの π 作用との自然性、反復 loop 後の実隣接安定化、I-2 e との照合は未証明。
-- Sp 正本への供給依頼（コーディネータ経由）：native loop の整数 π 次数移動の自然性。必要な界面は各 j の `((hoFunctor.map OmegaSpectrum.nativeLoop).toFunctor ⋙ SpectrumHo.piFunctor j) ≅ SpectrumHo.piFunctor (j+1)` と、公開の実 loop／円 cotensor 比較との照合。対象別次数同型だけでは、同じ隣接構造辺への自然性を結論しない。K-B 内に一般 Sp loop API を重ねず、c4・c5 の独立部分を続ける。
+- Sp 正本から供給済み（09:30、472ca0e29）：`SpectrumHo.nativeLoopPiIso j` は `((hoFunctor.map OmegaSpectrum.nativeLoop).toFunctor ⋙ SpectrumHo.piFunctor j) ≅ SpectrumHo.piFunctor (j+1)` を与え、`nativeLoopPiIso_circle_comparison` は同じ実 loop／円 cotensor 比較との可換性を保持する。K-B は同じ実隣接構造辺へ反復適用して d2 に代入する。対象別の旧次数座標との一致や d3 の安定化は、この供給だけでは結論せず、検証後に印を更新する。一般 Sp loop API は新設しない。
 
 
 ### 採用済み供給仕様：D-8 e の全入力自然性（未供給）
