@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.F1B
+import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
 import Lean.Util.CollectAxioms
 
 /-!
@@ -3031,3 +3032,8 @@ end
 
 #check SerrePositivity.InfinityCategories.IsLocalization.saturate
 #print axioms SerrePositivity.InfinityCategories.IsLocalization.saturate
+
+#check SerrePositivity.InfinityCategories.IsLocalization.precomposition_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.precomposition_isFullyFaithful
+#check SerrePositivity.InfinityCategories.IsLocalization.exists_extension
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.exists_extension

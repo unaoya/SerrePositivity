@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.Core
+import SerrePositivity.InfinityCategories.Core.UniverseEdgeTransport
 
 /-!
 概要：Core の明示的な公開宣言の型と公理を監査する。
@@ -3558,3 +3559,20 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.sliceUnderRestrict_isIso
 #print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_isIso
+
+#check SerrePositivity.InfinityCategories.UniverseEdge.up
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.up
+#check SerrePositivity.InfinityCategories.UniverseEdge.down
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.down
+#check SerrePositivity.InfinityCategories.UniverseEdge.upComp
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.upComp
+#check SerrePositivity.InfinityCategories.UniverseEdge.downComp
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.downComp
+#check SerrePositivity.InfinityCategories.UniverseEdge.upFunctor
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.upFunctor
+#check SerrePositivity.InfinityCategories.UniverseEdge.downFunctor
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.downFunctor
+#check SerrePositivity.InfinityCategories.UniverseEdge.invertible_up
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.invertible_up
+#check SerrePositivity.InfinityCategories.UniverseEdge.invertible_down
+#print axioms SerrePositivity.InfinityCategories.UniverseEdge.invertible_down
