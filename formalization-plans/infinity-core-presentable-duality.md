@@ -20,7 +20,7 @@
 
 - [x] p1：`pairRightAdjointFunctor` は元の全関手圏から反対全関手圏への実際の単体写像。
   元の全単位族とその共変 Yoneda 像の全自然な比較同型も構成した。
-- [ ] p2：同じ射の充満忠実性と本質的全射性はまだ未証明。
+- [ ] p2：同じ射の本質的全射性と各値の実際の随伴は証明済み。充満忠実性が未証明。
   補助の単位対応の両射影の頂点上の全射性は証明済み。
 - [ ] p3：全関手圏の同値は未公開。
 - [ ] p4：途中監査は実施。完了監査・停止報告は未実施。
@@ -90,12 +90,37 @@
 - 直接の反変単体写像を構成したので、その同値性を主経路で証明する。
   母単位対応の quasicategory 性は補助の残件であり、それを完成したとはしない。
 
+- `PairAdjointFunctorVertices.lean`：元の実反変関手の指定右随伴との頂点同型と
+  `pairRightAdjointFunctor_isEssentiallySurjective`。
+- `PairAdjointFunctorMeaning.lean`：`pairRightAdjointValue` と
+  `pairRightAdjointFunctorAdjunction` は同じ射の各値が元の左関手の実際の右随伴であること。
+- `PairFunctorVertexEvaluation.lean` と `pairCovariantYonedaPreimageVertexIso` は
+  実装を構成した不透明な評価・逆像で、複雑な関手の型の正規化を局所化する。公理ではない。
+- `PairUnitRightRestriction.lean`・`PairRightRepresentability.lean`：同じ全単位族の右固定制限と
+  `pairUnitHomAtRight_representationIso` による元の左随伴の全自然な表現可能性。
+- `PairInitialRestriction.lean`・`PairPreservingUnitVertices.lean`：指定単位は左右の
+  保存条件付き coslice でも始対象。元の単位と左右の底頂点を厳密に保持する。
+- `PairUnitFiberComparison.lean`：両 coslice の固定 fiber を同じ実単位空間へ厳密に比較。
+- `PairUnitRelativeEvaluation.lean`：元の始単位での相対評価は自明 Kan fibration。
+  `pairUnitPointHomFamily` は同じ実単位空間への QCat 同値。
+  実反変関手の Hom 作用との可換性はまだ未証明。
+- `PairClassifierPointedDisplay.lean`：元の left fibration を同じ分類図式上の
+  pointed-space に送り、同じ実際の fiber 作用が各点で QCat 同値であることを証明。
+- `PairUnitPointedRestrictions.lean`：同じ全単位の pointed 比較を左右の固定単位空間へ
+  制限し、元の二変数族の各固定値の上にある厳密な射として構成した。
+
 ## 次の作業
 
-1. 全単位族の固定左制限を、既存の固定左の普遍単位へ同じ底上で接続する。
-2. その普遍単位を表現可能性の比較に使い、全自然変換への反変作用を構成する。
-3. 構成した射の Hom 作用と検証済みの変換空間同値を照合し、両射影の同値性を証明する。
-4. 全関手圏の対ごとの同値を公開・監査する。独立な Hom 空間同値だけで完成としない。
+1. 左右の固定単位空間からの同じ pointed 比較の fiber 同値性を証明する。
+2. 元の随伴の単位の同じ pointed 像を両固定空間で同定する。
+3. 固定左の像を unstraightening の始対象へ移し、その点での全変換空間の評価を同値にする。
+4. 固定右の始単位からの全左 Hom の輸送を、同じ分類の値の普遍輸送へ移す。
+   `parametrizedPointTransport_square_isQCatEquivalence_of_initial` がその比較の入口。
+5. `leftUnstraighteningMappingFiberHom_parametrizedIso` と相対点評価の式で、
+   元の `pairUnitHomFamily` の実 Hom 作用の後の評価と上記輸送を照合する。
+6. 実 Hom 作用の同値性から同じ全単位族の充満忠実性を得て、Yoneda 比較を通して
+   `pairRightAdjointFunctor` の充満忠実性を証明する。独立な Hom 同値で代用しない。
+7. 既に証明した同じ射の本質的全射性と合わせ、元の全関手圏の対ごとの同値を公開・監査する。
 
 ## 第 II 段／R への残件
 
@@ -112,8 +137,8 @@
 - 所有：`F2/Presentable/Duality/` の新規葉と集約、本計画、専用監査のみ。
 - 既存の Presentable・HomotopyLimits・F1・F1B・Core・Ind・Compact・Idempotent は読み取り専用。
 - P の e5 はコミット済みの依存だけを使用する。
-- 専用集約8,592 jobs 成功、専用監査711宣言は標準3公理のみ。
-- 所有 import 閉包は直近確認で4,948モジュール、他レーンの未保存依存なし。
+- 専用集約8,604 jobs 成功、専用監査827宣言は標準3公理のみ。
+- 所有 import 閉包は直近確認で4,960モジュール、他レーンの未保存依存なし。
 - 自分の集約：`lake build SerrePositivity.InfinityCategories.F2.Presentable.Duality.All`。
 - 自分の監査：`lake env lean scripts/audit_infinity_presentable_duality.lean`。
 - 新規 sorry・公理・引用なし。主経路に ModelCategory SSet 等の instance 仮定なし。

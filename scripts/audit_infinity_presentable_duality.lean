@@ -210,3 +210,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor_ulift
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctorLifted_yonedaIso
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairCompositeFunctorIsoVertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairCovariantYonedaPreimageVertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor_vertexIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctor_isEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointValueIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightAdjointFunctorAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitHomAtRight_representationIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.initialVertex_pullback_fullSubcomplex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.preservingLeftUnitVertex_isInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.preservingRightUnitVertex_isInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitRelativeEvaluation_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairUnitPointHomFamily_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairClassifierPointedDisplayFiber_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairLeftUnitPointedDisplay_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.pairRightUnitPointedDisplay_projection

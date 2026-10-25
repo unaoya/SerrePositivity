@@ -43,6 +43,16 @@ lemma pairCovariantYoneda_isFullyFaithful (B : SSet.{u}) [Quasicategory B] :
   exact (yonedaInfinityMap_isFullyFaithful B.op).comp
     (((qCatEquivalenceOfIso e).precompose SpaceInfinity.{u}).isQCatEquivalence.isFullyFaithful)
 
+/-- 概要：共変 Yoneda の元の二頂点の同型を実際に回収する。
+方針：証明済みの充満忠実性の逆像を、元の二頂点に一度だけ構成する。
+規約：実装を保持する不透明な定義であり、公理や存在仮定ではない。
+使われ方：複雑な単位族の値での型の正規化を局所化する。 -/
+opaque pairCovariantYonedaPreimageVertexIso (B : SSet.{u}) [Quasicategory B]
+    {x y : ((SSet.uliftFunctor.{u + 1, u}).obj B.op) _⦋0⦌}
+    (e : VertexIso ((pairCovariantYoneda B).app (Opposite.op ⦋0⦌) x)
+      ((pairCovariantYoneda B).app (Opposite.op ⦋0⦌) y)) : VertexIso x y :=
+  (pairCovariantYoneda_isFullyFaithful B).preimageVertexIso e
+
 /-- 概要：共変 Yoneda の各頂点は元の共変表現可能関手そのもの。
 方針：元の Yoneda の頂点公式を二重反転の前合成に通す。
 規約：対象ごとの同型ではなく頂点の厳密な等式。
