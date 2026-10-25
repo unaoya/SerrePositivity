@@ -289,3 +289,5 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorSmallColi
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleReflectiveImage
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresheafModel
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEnrichedCategory
+public import SerrePositivity.InfinityCategories.F2.Presentable.PrInfinity

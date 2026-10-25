@@ -54,7 +54,7 @@
 - `reflectiveSubcategory_hasSmallLimits`、`ind_hasSmallLimits_of_hasSmallColimits`、`IsPresentable.hasSmallLimits`
 - `IsPresentable.exists_limitDetectingPresheafModel`、`IsPresentable.exists_limitCone_representables`
 - `tensor_hasSmallColimits`、`pullback_hasSmallColimits`、`pullback_preservesSmallColimits_iff_components`
-- `functor_isPresentable`、`functor_hasSmallColimits`、`reflectiveImage_isKappaAccessible`
+- `functor_isPresentable`、`functor_hasSmallColimits`、`reflectiveImage_isKappaAccessible`、`PrL`、`PrR`
 - `IsAccessible.exists_common_compactCardinal`、`adjunctionCovariantHomIso`
 - `adjunction_hom_preservesKappaFilteredColimits_iff`、`adjunction_exists_common_hom_preservationCardinal`
 - `SendsSmallColimitsToLimits`、`IsRepresentableSmallSpaceFunctor`、`presheafRepresentationIso`
@@ -95,7 +95,7 @@
   Ind-S 供給待ち。小さい反変 Hom 模型とその連続性、d2 を明示した d4 接続、d5 判定を提供する。
 
 ### 未コミット
-- `PresentableEnrichedCategory`・`PrInfinity` は豊穣合成の検証中。他レーンの差分は変更しない。
+- 所有ファイルは保存済み。他レーンの差分は変更しない。
 
 ### 次の一手
 - e の d 非依存部を進める。Ind-S が届いたら d2・d4・d5 の比較入力を外す。
@@ -146,7 +146,7 @@
 
 ## P-1 e 三段目（v3）
 
-- [ ] e1. Pr^L・Pr^R の対象・関手圏・全 ∞ 圏の定義。
+- [x] e1. Pr^L・Pr^R の対象・関手圏・全 ∞ 圏の定義。
 - [x] e2. Fun(K,C) の小余極限と各点計算。
 - [x] e3. Fun(K,C) の accessibility と presentable 性（5.5.3.6、小さい ∞ 圏 K）。
 - [ ] e4. 積の presentable 性。

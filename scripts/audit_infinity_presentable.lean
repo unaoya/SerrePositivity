@@ -609,3 +609,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functorInd_isPresentable
 #check @SerrePositivity.InfinityCategories.F2.Presentable.functor_isPresentable
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableFunctorCondition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableFunctorCondition_id
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableFunctorCondition.comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctorId
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctorComp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_id_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_comp_id
+#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_assoc
+#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableEnrichedCategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableCoreCategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrL
+#check @SerrePositivity.InfinityCategories.F2.Presentable.PrR
+#check @SerrePositivity.InfinityCategories.F2.Presentable.prL_quasicategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.prR_quasicategory
