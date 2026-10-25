@@ -2,7 +2,7 @@
 
 > **v3（2026-10-24）**：N は **P レーン**に吸収。本ファイルが P の正本。
 > P-1 g（P_Σ）の引き継ぎは e-infinity-algebras.md の N 節を併読する。
-> 所有：`F2/Presentable/`、`HomotopyLimits/`。N の局所化・sifted 系は R16 で前者へ移動済み。
+> 所有：`F2/Presentable/`（P-f の `Localization/` を除く）、`HomotopyLimits/`。
 > 集約：`SerrePositivity/InfinityCategories/F2/Presentable.lean`、`HomotopyLimits.lean`。
 
 ## 引き継ぎ（2026-10-24）
@@ -93,13 +93,13 @@
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
 - b12e99858 復旧後の所有 import 閉包は復旧済み。
-- e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
+- e5 の F1B 指定同型持ち上げ依頼は取り下げ。実現される基底同型の小さい符号で全 compact 成分頂点を被覆した。
 
 ### 未コミット
-- `ComponentCompactColimits` は対象ビルド済み、`PullbackEdgeRepresentatives` は辺の貼り合わせを検証中。
+- `StrictSpanComparison`：厳密な成分同値による一般模型との比較を構成中。compact 成分の全代表族・厳密な模型の対象ビルドと監査は通過。
 
 ### 次の一手
-- e5 は compact 成分の実引き戻し・native compact 性・全自然な小さい cospan 模型を構成。辺の整合を保つ模型比較と、元の引き戻しの filtered 生成表示へ進む。
+- e5 は compact 成分の全頂点を小さい native compact 族で代表する。小さい cospan 模型との比較と、元の引き戻しの filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

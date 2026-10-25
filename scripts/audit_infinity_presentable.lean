@@ -704,3 +704,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentableSpan_compactCardinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallModelFunctor_comparison
 #check @SerrePositivity.InfinityCategories.F2.Presentable.smallCompactSpanModel_nonempty
+#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactVertex_smallPosetColimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackEdge_of_component_classes
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackVertexIso_of_compatible_components
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_realizedPullbackCandidate_iso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallNativeCompactPullbackFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallComponentCompactModel_of_component_smallFixedVertexMaps
