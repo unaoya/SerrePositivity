@@ -1,3 +1,5 @@
+import SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation
+import SerrePositivity.DifferentialGraded.Module.MaurerCartan
 import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
 import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation
 import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom
@@ -7973,6 +7975,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation,
+    `SerrePositivity.DifferentialGraded.Module.MaurerCartan,
+
     `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap,
 
     `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation,

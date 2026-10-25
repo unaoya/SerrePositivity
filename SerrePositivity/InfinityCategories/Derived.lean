@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartan
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom
 public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation
