@@ -1,16 +1,16 @@
-# D-e：D-8 e の実 perfect 比較と D-8 d の準備
+# D-e：D-8 e の実 perfect 比較と D-8 d の covers
 
 ## 引き継ぎ（2026-10-25）
 
-- 現在地：D-8 e 完了（5bf80c07c）。D-8 d は提案文の採用状況を確認中。
-  可逆な準備として compact→段階 retract、同じ代表族の retract 被覆、
+- 現在地：D-8 e 完了（5bf80c07c）。D-8 d の移管はユーザーにより採用済み。
+  保存済みの補助成果として compact→段階 retract、同じ代表族の retract 被覆、
   依存閉ラベルの κ-filtered 添字と自由余積層の strict 余極限を実装。
   D-8 d の全 covers は未完。
 - 所有：`Derived/KappaPerfect/` の新規葉と `All.lean`、
-  `scripts/audit_derived_kappa_perfect.lean`、本計画。追加候補は
+  `scripts/audit_derived_kappa_perfect.lean`、本計画。追加所有は
   `Derived/KappaCovers/` の新規葉と `All.lean`。
 - 読み取り専用：既存 D 全体・D 集約と両監査、KST 全体。
-- 残り：D-8 d 担当移管の採用確認。採用時は一般 semifree 加群の cell ラベル抽出、
+- 残り：一般 semifree 加群の cell ラベル抽出、
   依存閉部分集合上の実 cell 部分加群と strict 余極限、各段の同じ代表系による被覆、
   D-bar の native/strict 比較入力、最終 covers。
 - 主要宣言：`dgKappaPerfect_stableClosure_iff`、`dgKappaPerfectToPerf`、
@@ -22,7 +22,7 @@
 - 保存：D-8 e は所有7ファイルを限定保存済み。D-8 d の準備も限定保存する。
   共有作業木の他レーン差分は含めない。
 - 既知の問題：他レーンへの依頼なし。D-8 c/d の供給自体は本レーンの結論ではない。
-- 次の一手：採用状況の回答に従う。継続なら下記 d1 の一般 cell ラベル抽出。
+- 次の一手：d1 の一般 cell ラベル抽出。採用状況の再確認は不要。
 
 ## D-8 e の三段目
 
@@ -87,7 +87,7 @@ namespace は `SerrePositivity.InfinityCategories`。
 - 公開名を報告後に停止。共有計画・共有集約への統合はコーディネータ所有。
 
 
-## D-8 d の三段目（担当移管の採用確認中）
+## D-8 d の三段目（採用済み）
 
 1. [ ] κ-small cell 部分加群の添字圏・図式・strict 余極限表示。
    DependencyPieces は可算依存先の閉包の κ-small 性・全ラベル被覆・
@@ -130,9 +130,25 @@ namespace は `SerrePositivity.InfinityCategories`。
 - `dgKappaDependencyPieces_nerve_isKappaFiltered`
 - `dgKappaSubsetCoproductIsColimit`
 
-### 採用確認の理由
+### 採用済みの運用
 
-ユーザー文の「ユーザー判断待ちの提案。採用時に貼る」という留保と
-「続けて D-8 d を担当する」が併記されているため、採用済みかを確認中。
-確認中は新しい cell 模型の実装を止め、既存の準備成果の監査・保存だけを行う。
-無回答を採用とは扱わない。D-8 e の完成状態は維持する。
+D-8 d の移管はユーザーが明示採用済みと回答。報告後は承認を待たず続行する。
+native/strict 比較は D-bar の結論の型を仮定引数として保持し、届いたら代入する。
+D-8 d の完成と D-bar の比較構成自体の完成を区別する。
+
+### 採用後の実装進捗
+
+- `DGKappaStrictFilteredColimitComparison`：固定した strict 図式を native 図式へ
+  送る D-bar 側の必要な結論の型。頂点だけの比較には弱めていない。
+- `dgKappaCovers_of_strictRepresentativePresentation`：strict 表示を消費して
+  正本 `covers` と同じ型の結論を得る。表示の存在定理ではない。
+- `dgKappaClosedProjectiveObjects_smallSemifreeCovers`：各自由層の添字が
+  κ-small な実 semifree 加群を代表系で K(D) 同型まで被覆。
+- `dgKappaSubsetModule_finiteElement`：実余積の有限部分族への斉次要素の持上げ。
+- `dgKappaModuleConeMap_degreewiseMono`：部分 cell 付加の比較の次数ごとの単射性。
+- `dgKappaResolutionElement_finiteSupport`：標準 resolution の有限段の有限セル support。
+- 次は依存閉選択の実部分 cell 列、その κ-filtered strict 余極限と代表化を接続する。
+  これらの存在を追加入力にして D-8 d 完了とは数えない。
+- 実部分 cell の有限段まで：自分の集約 9,357 jobs 成功。
+  自分の監査は24葉・318宣言で成功（許容三公理のみ）。
+  可算列と κ-filtered 合併は続行中。

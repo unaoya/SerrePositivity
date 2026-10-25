@@ -16,7 +16,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.HomotopyRetract,
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.NativeRetract,
     `SerrePositivity.InfinityCategories.Derived.KappaCovers.DependencyPieces,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetCoproduct]
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetCoproduct,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.StrictComparison,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PresentationReduction,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SemifreeLabels,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.GradedSphereSupport,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.GradedExtension,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SmallSemifree,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetModule,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ConeEmbedding,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionLabels,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionSupport,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionDependencies,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.CellAttachment,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStage]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -46,3 +59,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_nativeRetractCovers
 #check SerrePositivity.InfinityCategories.dgKappaDependencyPieces_nerve_isKappaFiltered
 #check SerrePositivity.InfinityCategories.dgKappaSubsetCoproductIsColimit
+#check SerrePositivity.InfinityCategories.DGKappaStrictFilteredColimitComparison
+#check SerrePositivity.InfinityCategories.dgKappaCovers_of_strictRepresentativePresentation
+#check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_smallSemifreeCovers
+#check SerrePositivity.InfinityCategories.dgKappaSubsetModule_finiteElement
+#check SerrePositivity.InfinityCategories.dgKappaModuleConeMap_degreewiseMono
