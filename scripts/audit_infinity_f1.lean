@@ -9682,3 +9682,44 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) normalization: no declarations audited"
   logInfo m!"Ind-S normalization and native-triangle audit passed: {count} declarations."
+
+-- Ind-S (9)：長 Hom の各入力を回収する実二胞体全族（厳密切断は未供給）。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeFamilyControl },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongHomFamilyLift },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledNativeTriangle },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.CoherentHomFamilyVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilyVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.NativeLongHomFamilyVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleLongHomFamily },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) native family: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeFamilyControl,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongHomFamilyLift,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledNativeTriangle,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.CoherentHomFamilyVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilyVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.NativeLongHomFamilyVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleLongHomFamily ]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) native family: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) native family: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) native family: no declarations audited"
+  logInfo m!"Ind-S native-triangle family audit passed: {count} declarations."

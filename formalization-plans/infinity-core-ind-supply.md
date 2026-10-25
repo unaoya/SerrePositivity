@@ -10,8 +10,9 @@
 - 主要補助宣言：tetrahedronFamilyExtensionSpace_compare・factorizationTetrahedronFamily_faces・
   innerHornFamily_lift_with_vertices。いずれも両主仕様全体の供給完了とは扱わない。
 - 依存と提供：Core/F1/mathlib の既存界面を読み取り専用で使用。連絡・提案はユーザー経由。
-- 保存対象：正規化・相対左逆・二単体 native Hom 制御・path 区間同型・合成端評価の6葉、
-  本計画、F1 監査末尾。未コミットの続稿：TriangleNativeFamilyControl（全 K の頂点指定）。
+- 保存済み：正規化など6葉 69b3436ab、85宣言・F1全監査通過。
+- 今回保存：全族制御・小さい native Hom 回収など7葉、23宣言・F1全監査通過。
+- 未コミットの続稿：TriangleNativeCompositeValue・ControlledTriangleNativeReadout。
 - 既知の問題：(9) の encode・longHom の存在と厳密切断は未供給。(9b) は全 HEq 込みで完了。
 - 残り：下記三段目 2〜5。見積りは制御全族の有限座標を確認した後に更新する。
 - 次の一手：旧 (9) の encode・longHom の厳密切断を構成し、採用済み正規化後の
@@ -275,5 +276,13 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
   大きい宇宙の全 K の合成端固定 fiber の可縮性を証明。
   公開名 triangleLongHomFamilyFiber_isContractibleKan。
 対象6葉のビルド・85宣言の葉監査・全 F1 監査が通過。
-続稿 TriangleNativeFamilyControl は同じ全ホーンを保つ各 K₀ の native Hom 指定を構成中。
+TriangleNativeFamilyControl は同じ全ホーンを保つ各 K₀ の native Hom 指定を構成済み。
 次は有限 native Hom 制御を全 K に整合させ、単射 encode と全頂点読出しを実構成する。
+
+
+公開 controlledTriangleFamily_exists_of_longHom（ControlledTriangleLongHomFamily）：
+全入力での合成端を固定した q から、同じ元の全ホーンを厳密に持つ二胞体全族 F を作り、
+各 k の全 native Hom の関手頂点を HEq で回収。単なる直接 path の値ではない。
+controlledTriangleFamily_exists_with_native_vertices は小さい native Hom を直接入力する版。
+追加7葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。
+任意の元の二胞体からの逆向き読出しを続稿で構成中。encode の単射性・厳密切断は未供給。
