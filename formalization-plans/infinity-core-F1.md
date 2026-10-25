@@ -6,7 +6,7 @@
 
 ## 引き継ぎ v3：Ind（2026-10-24）
 
-- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。二段目完了の規約に従い保存して区切る。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
+- 現在地：I-1 c① [x]。8時間上限により「明示入力のまま第 I 段を進める」を確定し、I-2 a①〜a④ は完了。I-2 b①〜b⑤ は完了。Ind-S (5) の区切り作業を経て I-2 c へ進む。Ind-S (4) の順方向は I-2 b の後。一般交換と安定性は未証明。交換入力の差し替え（I-2 d・旧 N-6 c）は第 I 段終了時へ送る。
 - 上限：開始 2026-10-24 18:00 JST、期限 2026-10-25 02:00 JST。I-1 の追加証明はここで区切る。
 - 固定三段目：a① 指定始点像の中間点同定 [x]、a② native 恒等性と最後辺比較式 [x]、a③ raw 二辺評価の Ncomp [ ]、a④ Nlong/Ncomp から元の普遍三角形の一致 [ ]、b① 全錐比較・保存・有限形状帰納と公開 [ ]、c① 期限時の明示入力継続確定 [x]。
 - I-1 保存点：`coherentColimitApexZeroCompositeValue_heq_two_evaluation` は元の零面値と raw 二辺値を、元の二射の指定評価比較の合成まで無条件に同定。Nlong は `coherentColimitApexLongEvaluationComparison_heq_value_composite`。元の全係数と指定値は保持している。二射評価と合成射評価の指定値の一致・Ncomp・元の普遍三角形の一致・一般交換は未証明。
@@ -58,8 +58,8 @@
 - Ind-S (4) の供給許可：`Stable.UniverseVertexIso` は直接 import せず、辺・三角形・可逆性の上げ下げを `Core.UniverseEdgeTransport` に新名の準重複として置く。既存 Core ファイルは変更しない。R が第 I 段終了時に旧入口を付け替える。
 - Ind-S (4) の軽い入口：`UniverseEdge.invertible_up`・`invertible_down` は quasicategory 仮定なしの実可逆辺の宇宙移送。`IsLocalization.precomposition_isFullyFaithful`・`exists_extension` は元の全前合成の充満忠実性・元の実関手同型付き延長。既存の同名でない宣言は不変、`IsLocalization.of_ulift` は同じ元の射の局所化性を元の宇宙へ降ろす。順方向は未公開。
 - 深層編集禁止：R の停止窓以外で既存の深層モジュールを変更しない。必要な一般化・新宣言は新規の葉へ置く。やむを得ない深層変更は着手前にコーディネータへ申告する。Universe 4 本・Coherent 2 本・LeftStraighteningRepresentation の変更は全て復元済み。局所化の宇宙操作は `F1B.Localization.LocalizationUniverse` の新名で葉に閉じる。第 I 段終了時に R が既存 F1 の宇宙操作との準重複を整理する。
-- Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。追加の一般初頂点射の相対前合成同値は未供給。既存の `relativeFunctorOverPre_isQCatEquivalence_of_firstVertex` は標準単体間の始点保存射のみで、今回の全族の型とは異なる。
-- 次の一手：I-2 b は監査・保存済み、二段目完了の規約に従い区切る。再開時は Ind-S (5) の全族単位と一般初頂点相対制限、I-2 c の安定性へ進む。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
+- Ind-S (5)（K-B-S 向け追加）：`kst-lanes/L3-fibration.md` の指定型に従い、元の cocartesian fibration から Kan 置換した空間値 unstraightening への全族写像を、厳密な底と全 fiber 単位の関手同型を保って構成する。I-2 b・Ind-S (4) の区切りで対応。K-B・Sp は import しない。追加の一般初頂点射の相対前合成同値は `relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization` で供給。一般入口は `IsLocalization.relativeFunctorPre_isQCatEquivalence`（新規 `F1.Diagrams.LocalizationRelativeRestriction`）。既存の `relativeFunctorOverPre_isQCatEquivalence_of_firstVertex` は標準単体間の始点保存射のみで、今回の全族の型とは異なる。
+- 次の一手：I-2 b と一般初頂点相対制限は監査・保存済み。Ind-S (5) の全族単位を進め、I-2 c の安定性へ接続する。Ind-S (4) 順方向は既存入口なし、小さい内ホーン充填閉包の新規葉を許可済み。優先順位は I-2 b の後。P 向け局所性・余極限反映・保守性・一般極限反映と D 向け局所化飽和は公開済み。
 
 ## 参照用引き継ぎ：F2N-5（2026-10-23）
 

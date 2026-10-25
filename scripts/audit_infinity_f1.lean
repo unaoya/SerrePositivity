@@ -6,6 +6,7 @@ import SerrePositivity.InfinityCategories.F1.Joins.FiniteEndpoints
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanNerveEdges
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteCospanNerveEdges
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
+import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionFirstVertexLocalization
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.TransportIntervalSquare.precomp
@@ -9420,3 +9421,8 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.hasFiniteColimits_of_initial_pushouts
 #check SerrePositivity.InfinityCategories.hasFiniteLimits_of_terminal_pullbacks
 #print axioms SerrePositivity.InfinityCategories.hasFiniteLimits_of_terminal_pullbacks
+
+#check SerrePositivity.InfinityCategories.IsLocalization.relativeFunctorPre_isQCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.IsLocalization.relativeFunctorPre_isQCatEquivalence
+#check SerrePositivity.InfinityCategories.relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization
+#print axioms SerrePositivity.InfinityCategories.relativeFunctorPre_isQCatEquivalence_of_firstVertexLocalization
