@@ -24,7 +24,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixVanishing,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixHomotopyAction,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproductComposition]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproductComposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BlockTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.TailAtDegeneracy,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixRightComposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixBlockInterchange,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ShiftUnitIdentity,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalLabelCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalLabelNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoefficientAction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedUniversalCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixTermInterchange,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixSums,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixAtZero]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

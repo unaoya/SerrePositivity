@@ -14,6 +14,18 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.Pre
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixHomotopyAction
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproductComposition
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BlockTransport
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.TailAtDegeneracy
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixRightComposition
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixBlockInterchange
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ShiftUnitIdentity
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalLabelCoefficients
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.UniversalLabelNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoefficientAction
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedUniversalCoefficients
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixTermInterchange
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixSums
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixAtZero
 /-!
 概要：D 所有の coherent bar の変形 retract の葉を集約する。
 方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。
