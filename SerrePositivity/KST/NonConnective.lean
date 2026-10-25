@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.NonConnective.SequentialLevelColimitLaws
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMap
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMapPi
 public import SerrePositivity.KST.NonConnective.DGKappaNativeBFConnectiveKernel
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeBFConnectiveSequence
 public import SerrePositivity.KST.NonConnective.DGKappaNativeBFConnectiveStructure
