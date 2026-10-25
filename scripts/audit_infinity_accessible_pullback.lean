@@ -132,3 +132,31 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentTower_ulift_hom_ext
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeAlternatingDiagram_of_tower
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_relativeComponentFactorization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeComponentFactorization.component_slice
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceCocone_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceShapeDiagram_inl
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceShapeDiagram_inr
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceShapeDiagram_vertex_compact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_fixedSourceFactorization
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceCoconeOfShape_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceFactorizationCocone_component
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededAlternatingOpenStage_preserving
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededAlternatingCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededClosedStage_of_cocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededRelativeAlternatingTower
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_seededRelativeAlternatingDiagram
