@@ -74,6 +74,11 @@
   その辺の類への作用も、元の指定頂点等式で正規化して同定した。
 - 最新 Supply.All は 8677 jobs で成功。独立監査は 455 宣言、標準三公理のみ。
 
+- 分類 Hom と底変換の自然性を実比較射について正規化した。
+- pullback 後の coslice への相対 Hom 制限が同値であることを証明し、
+  その分類後の実写像の全単射性を構成した。
+- 最新 Supply.All は 8681 jobs で成功。独立監査は 501 宣言、標準三公理のみ。
+
 ### 残り（依存順、見積もり）
 - P-12：Fun の写像空間の κ-small end 表示と全自然比較
   （HTT 5.3.4.9、4〜8 時間）。
@@ -147,6 +152,14 @@
 - `leftFibrationBaseChange_edge`
 - `leftFibrationBaseChange_normalizedHom`
 
+- `normalizedVertexHomMap_comp`、`normalizedVertexHomMap_naturality`
+- `leftClassificationHom_baseChange`
+- `cosliceHomPullbackRestriction_vertex`
+- `cosliceHomPullbackRestriction_sourceRestriction`
+- `cosliceHomPullbackRestriction_isQCatEquivalence`
+- `classifiedCosliceHomRestriction_actual`
+- `classifiedCosliceHomRestriction_bijective`
+
 ### 依存と提供
 - 所有：`F2/Presentable/Supply/` の新規葉と `Supply/All`、
   `scripts/audit_infinity_presentable_supply.lean`、この計画（300 行以内）。
@@ -156,8 +169,7 @@
 - P-f への供給名と依頼はユーザー経由で中継する。他チャットへ直接送らない。
 
 ### 未コミット
-- なし（分類 Hom の実射による回収・実相対 Hom 内の同型の反映・底変換の実辺の
-  三葉と集約・監査・本計画を記録）。
+- P-13：二つの join 結合同型の比較葉を作成中（集約には未追加）。
 
 ### 既知の問題
 - 継承二葉の待機は解消。複製はせず、小余積段階に P の公開入口を使う。
@@ -182,10 +194,8 @@
   これだけから比較射の可逆性を推論しない。指定単位から来る余錐との両立が残る。
   `cosliceHomRestriction_isQCatEquivalence` を分類へ移し、各 a における
   共変表現可能 Hom の左 Kan 普遍性と、指定単位の評価を比較する経路を使う。
-- 分類への移送では、構成した実 Hom の回収・反映を使う。次に
-  `leftStraighteningInfinityMap_baseChangeIso` の自然性を実比較辺の底変換則で
-  正規化し、`leftClassificationHom` と底変換の可換正方形を得る。
-  実相対 Hom 制限との全射・単射の比較を、この指定正方形で閉じる。
+- 分類後の実 coslice Hom 制限の全単射性を、任意の標的の
+  `leftStraighteningInfinityCounit` で移し、指定共変 Hom 比較の左 Kan 普遍性を得る。
 - この普遍性から Yoneda 模型を係数図式間の Hom へ比較し、構成済みの
   `functorHomToHomWeightDiagramEquivalence` と接続する。
   点ごとの同値の存在と、P-12 に必要な G の全自然比較を区別する。

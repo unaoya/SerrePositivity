@@ -100,3 +100,11 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_eq_iff_relativeVertexIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationBaseChange_edge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationBaseChange_normalizedHom
+#check @SerrePositivity.InfinityCategories.F2.Presentable.normalizedVertexHomMap_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.normalizedVertexHomMap_naturality
+#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_baseChange
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomPullbackRestriction_vertex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomPullbackRestriction_sourceRestriction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceHomPullbackRestriction_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.classifiedCosliceHomRestriction_actual
+#check @SerrePositivity.InfinityCategories.F2.Presentable.classifiedCosliceHomRestriction_bijective
