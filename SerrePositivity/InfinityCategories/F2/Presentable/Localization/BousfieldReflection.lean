@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourcePresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalSaturatedClosure
-public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.All
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Presentable
 
 /-!
 概要：presentable 圏の任意の小さい辺族について、局所対象への Bousfield 反射が存在する。
