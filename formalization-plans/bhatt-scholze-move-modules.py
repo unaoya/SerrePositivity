@@ -34,6 +34,8 @@ OWNED = [
 # 生成された領域監査は import 行のほかに `let mods` の名前一覧を持つので、モジュール名の字句をすべて置き換える。
 NAME_LISTS = {"scripts/audit/bhatt_scholze.lean", "scripts/audit/clmst.lean"}
 NAME = re.compile(r"(?<![\w.])SerrePositivity\.BhattScholze\.[\w.']+")
+# 監査ファイルの `let modules` やスタブの docstring は、バッククォート付きのモジュール名で旧名を持つ。
+BACKTICK = re.compile(r"(?<=`)SerrePositivity\.BhattScholze\.[\w.']+")
 IMPORT = re.compile(r"^([ \t]*(?:public[ \t]+)?import[ \t]+)(SerrePositivity\.BhattScholze\.[\w.']+)([ \t]*)$", re.M)
 
 STUB = """module
@@ -95,6 +97,9 @@ def main():
             continue
         src = (ROOT / f).read_text()
         hit = [m.group(2) for m in IMPORT.finditer(src) if m.group(2) in moves]
+        if f in owned and not hit and any(m.group(0) in moves for m in BACKTICK.finditer(src)):
+            edits[f] = BACKTICK.sub(lambda m: moves.get(m.group(0), m.group(0)), src)
+            continue
         if f in NAME_LISTS and f in owned:
             new = NAME.sub(lambda m: moves.get(m.group(0), m.group(0)), src)
             if new != src:
@@ -104,6 +109,7 @@ def main():
             continue
         if f in owned:
             new = IMPORT.sub(lambda m: m.group(1) + moves.get(m.group(2), m.group(2)) + m.group(3), src)
+            new = BACKTICK.sub(lambda m: moves.get(m.group(0), m.group(0)), new)
             edits[f] = new
         else:
             foreign[f] = sorted(set(hit))

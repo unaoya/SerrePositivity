@@ -73,6 +73,28 @@ dry-run の期待値（2026-10-25 12:40、W1 の移動を適用した作業ツ�
 件数が違う場合は `--apply` せずに報告する。
 `scripts/audit/bhatt_scholze.lean`・`scripts/audit/clmst.lean` では、import 行に加えて `let mods` の名前一覧もスクリプトが書き換える
 （W1 で一覧が旧名のまま残り監査が失敗したため、10-25 に追加）。この二ファイルに限り、import 行以外の差分を許す。
+さらに、所有範囲の Lean ファイルでバッククォートの直後にあるモジュール名（André の監査 `Audit.lean`・`scripts/audit_andre_*.lean` の
+`let modules` の一覧、W1 のスタブの docstring）も置き換える。W2 の初回の全体ビルドで、André の監査 4 本が旧名の一覧のために失敗した（10-25）。
+`--apply` の後に気づいた場合は、§3 の前に次の単独の置き換えを行う（期待値：31 ファイル・41 件）。
+
+```bash
+python3 - <<'PY'
+import json, re, subprocess, os
+mv = json.load(open('formalization-plans/bhatt-scholze-codex-w2-moves.json'))['moves']
+bt = re.compile(r"(?<=`)SerrePositivity\.BhattScholze\.[\w.']+")
+own = [r"^SerrePositivity/BhattScholze/.*\.lean$", r"^SerrePositivity/CLMST/.*\.lean$", r"^scripts/audit_andre_[^/]*\.lean$",
+       r"^scripts/audit_bhatt_scholze[^/]*\.lean$", r"^scripts/audit_clmst[^/]*\.lean$"]
+files = [f for f in subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard']).decode().split('\n')
+         if f and os.path.isfile(f) and any(re.match(r, f) for r in own)]
+nf = n = 0
+for f in files:
+    s = open(f).read()
+    k = sum(1 for t in bt.findall(s) if t in mv)
+    if k:
+        open(f, 'w').write(bt.sub(lambda m: mv.get(m.group(0), m.group(0)), s)); nf += 1; n += k
+print('files', nf, 'replacements', n)
+PY
+```
 
 ## 3. 受入条件
 
@@ -81,7 +103,7 @@ BS-W1 §5 の「作業 3 の後」と同じコマンド一式に、`scripts/audi
 
 ```bash
 git diff --cached -M --diff-filter=RM -- SerrePositivity scripts \
-    ':!scripts/audit/bhatt_scholze.lean' ':!scripts/audit/clmst.lean' \
+    ':!scripts/audit/bhatt_scholze.lean' ':!scripts/audit/clmst.lean' ':!**/Audit.lean' ':!**/UnconditionalAudit.lean' ':!scripts/audit_andre_*.lean' \
   | grep -E '^[-+]' | grep -vE '^(\+\+\+|---) ' \
   | grep -vE '^[-+][ \t]*(public )?import '    # 出力が空（生成監査の名前一覧は除く）
 ls SerrePositivity/BhattScholze/Delta/*.lean SerrePositivity/BhattScholze/Prism/*.lean 2>/dev/null | wc -l   # 0
