@@ -60,6 +60,8 @@ S の埋め込み・全射表示・忠実な降下データを自動的には得
 - `CLMST.prop247_rankProductUnit_isPerfectoidization_of_finite_coefficients`：
   `∏ₙ(Tₙ⊗[R]S)` の存在を一度選び、指定直積単位の普遍性を証明する。
   ここは有限直積の普遍性の別証明で除去できる余地があるが、全存在消費は消えない。
+- `BhattScholze.isIntegralPerfectoid_finPi`（`Perfectoidization/PerfectoidFiniteProduct.lean`、BR20、2026-10-25 追記）：
+  有限直積の perfectoid 性。E3 に依存する（勉強ノート 08-perfection の BR20）。
 
 ### 1.2 Excision：三つの適用と四辺
 
