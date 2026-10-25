@@ -42,9 +42,11 @@
 ## 引き継ぎ（2026-10-25）
 
 ### 現在地
-- **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。実長方形・resolved native 商から固定 ν 値への実完備化と指定境界比較は未供給。s4 の全族回収待ちの間は β6 f→h。
+- **再開の第一工程**：K-B-S の供給一式の保存を確認し、作業木の VerdierSpanCoherentContraction.lean と計画だけを commit --only で保存して s4 を完了へ。実証明は対象・集約・専用監査合格済み。供給元に変更があれば先に再検証し、所有外のファイルを保存しない。
+- **β6 f・h の現在地**：実 AW／選択 right frame の全標的比較と元の単位保持、指定局所化への降下、P-8 を適用した元の全錐像の極限性まで保存済み。E2-S (6) の実 Hom 比較を受け、指定二胞体を厳密回収して元の局所化錐の極限性へ代入する組立ては私有証明まで。表現可能 Hom 比較・指定底の最終接続・f4d 全体は未完。
+- **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。実長方形・resolved native 商から固定 ν 値への実完備化と指定境界比較は未供給。s4 は実適用・集約・監査済みで、供給元の保存待ち。その間は β6 f→h。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
-- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 の供給待ちの間は β6 f→h を進め、到着時に s4 を最優先で再開する。その後 K-8 e→Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
+- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 の供給元保存・Sp 公開保存を最優先し、その待機中は β6 f→h を進める。その後 K-8 e→Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
 - **正本の入口**：PostnikovCommonCore、PostnikovSuccessorClassInverseData、postnikovFiniteMap_exists_nonpositiveInverseRoof_int、ConnectedLevelRepresentation／connectedLevelRepresentation、IsKConnective.invariantLevelMap_piProConnected、invariantLevelMap_piProEquivalence_of_piProEquivalence／of_eventual_groups／of_forall_proConnected。元の n=1 Common・Two の宣言名・型・所在は特殊化界面として維持する。
 - **運用**：自分の集約ビルドと専用監査のみ。全体の統合検証は R の停止窓。所有外は読むだけ。新規 sorry・公理・引用、ModelCategory 仮定、モジュール移動・改名・削除を導入しない。記録はコミットメッセージ。
 - **Spectra 4 WIP**：未追跡の PointedUncurryActionTensor、PointedParametricUncurryAction、PointedUncurryComposition、PointedParametricUncurryPre は保持し、集約・監査・コミットに接続しない。旧 evaluationPost・uncurry 経路を再開しない。
@@ -154,6 +156,7 @@
 - f4d の全錐比較 P-8 は統合済み、HomotopyLimits/NerveConeCoherentComparison.uliftNerveCone_coherent_eq を実適用済み：持ち上げた F1B.nerveCone の kanDiagramCoherentNerve 像と、同じ通常像錐の strictCoherentCone の全錐 FunctorIso。図式比較・頂点脚比較では代用しない。HomotopyLimits の所有者 P の一般正本を Sp で複製しない。
 
 ### 未コミット
+- VerdierSpanCoherentContraction.lean の実供給 import と verdierFractionMappingComparison_isFullyFaithful は作業木に保持（差分の控え /tmp/sp-fraction-native-pending.patch）。元の IsVerdierSequence と二端点だけの型で対象・集約・専用監査に合格。K-B-S の WeakSpanKanQuotientFamilyIdentity・ZeroRecovery 等が未追跡のため、所有レーンの保存をコーディネータ経由で依頼中。供給元保存後、所有するこの一葉と計画だけを commit --only で保存して s4 を完了へ更新する。
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
 - LocalizingInvariants の上記公開界面は集約・監査に登録。DGAlgebraNativeFrameKan・DGAlgebraNativeLargeMixed は対象・集約・監査に合格して登録済み。DGAlgebraNativeFrameCoherent・DGAlgebraPostnikovFrameCoherent（元の提示錐全体への制限）は対象・集約・監査に合格。DGAlgebraNativeChosenRightFrame・NativeChosenMixedFrame・NativeChosenFrameKan・NativeChosenLargeMixed・NativeChosenFrameCoherent・NativeFrameUnits は対象・集約・監査に合格。DGFixedNullPerfectZero・DGFixedNullCertifiedSquare・DGAlgebraPostnikovPresentedSpaceLimit・DGAlgebraNativeMappingDescent・DGAlgebraPostnikovMappingDescentLimit も対象・集約・監査に合格。LocalizingInvariants の未接続 WIP なし。始対象射の LLP、全局所化頂点の cell 像表示、大宇宙の Kan 値関手と同じ大宇宙の実 Postnikov 空間値極限を集約・監査へ登録。E2-S (5) の実モデルへの適用と E2-S (6) の導来比較への接続準備であり、導来比較の完成とはしない。停止中 Spectra 4 WIP は上記の状態で保持し、コミットしない。所有外の staged／unstaged／untracked 変更もそのまま保持する。
 
@@ -198,7 +201,7 @@
 - g4a〜g4c はこの順の構成を保持し、高次有限段でも対角の実右逆から左経路を反映する。g4〜g7 は完了。次は Sp-6→f→h→K-8 e→d3。d7・evaluationPost・旧 Ω 同値経路は再開しない。
 - **相対版の公開界面**：RelativeVerdierDiagram（S 四角形・絶対 Verdier 提示・ν 像の等式）、IsRelativeLocalizingInvariant（ν 零頂点の E 零性・全相対 Verdier 四角形の E pullback 性）、RelativeSplitVerdierDiagram（S の h 圏の切断と切断式）、RelativeVerdierRectangle（S 長方形・右面／外周の転置 Verdier 提示）。IsRelativeLocalizingInvariant.fiberTriangle_isFiber・connecting・exact_left/middle/right・splitComparison・tammeSplitComparisonと包含／切断／射影の式、RelativeVerdierRectangle.comparisonSquare_isPullback・comparisonCone_isLimit、LaxUniversalDifference.relativeRectangle・relative_comparison_isPullback を使用。最後は S 長方形 F と F ≫ ν = 元の Tamme 長方形を入力する。元の四辺と頂点を保つ d8 の出力は RelativeProductPullbackPresentation.normalizedSquare_isPullback・normalizedCone_isLimit・normalizedCone_vertex。入力は同じ比較四角形の積表示への実 FunctorIso、map(f,g)・対角・lift(a,b) の三辺の式と a≫f=b≫g の h Sp の式であり、fiber 性は入力しない。ofSourceIso は S 内の全図式同型を E で写す版。isRelativeLocalizingInvariant_id_iff・relative_id_comparison が絶対版との特殊化を保持。具体的 dg 持ち上げと K の相対条件の証明は K-S•・D が供給し、その存在を本レーンで仮定済み成果と混同しない。
 - 一般 coherent 極限の実装を再開する際の最初の工程は、F2.hasColimit_coherentSpaceDiagram から任意 D : ulift B → Sp の実錐の構成へ至る接続の設計・見積もり。空間の HasColimit から Sp の HasLimit は直接には従わず、その接続は未構成。既存の通常小図式の極限を再実装しない。
-- d3 の順序：β6 g → f → h → K-8 e の後。D の一般定理を再実装せず、Sp 固有の入力の適用だけを行う。
+- d3 の順序：β6 g → f → h → K-8 e の後。D の一般定理を再実装せず、Sp 固有の入力の適用だけを行う。適用型は切断 s と厳密終点保存 hs、および hΩ : IsQCatEquivalence (s≫loopDiagramEvaluation Sp 0 0)。現 nativeLoopTargetEquivalence の型は QCatEquivalence (loopDiagrams Sp) Sp（終点評価）であり、hΩ の実証拠は主要宣言の未提供行として保持する。
 ## K-5：K-基盤 1 の抽象部分（2026-10-20）
 
 - **分担**：本レーンは `KST/LocalizingInvariants/` と専用集約・監査を所有する。K-S• は SConstruction の構成・具体的 K 関手との接続を担当し、本レーンでは読み取り専用。F3 の IsStable・IsExactFunctor と D の β3 を変更しない。
