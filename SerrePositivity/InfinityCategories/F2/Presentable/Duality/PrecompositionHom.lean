@@ -22,6 +22,17 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 local instance precompositionHomCategory (X Y : SSet.QCat.{u}) : Category.{u} (X ⟶ Y) :=
   SSet.QCat.bicategory.homCategory X Y
 
+/-- 概要：二重内部 Hom の交換を元の Hom の射に作用させる。
+方針：交換射が h に誘導する関手の射作用を使う。
+規約：転置後の元の関手頂点を戻り値の型として明示する。
+使われ方：全単射の内部構成を展開しない転置 Hom の型付き界面。 -/
+def transposeHomMap {A B Z : SSet.{u}} [Quasicategory Z]
+    (U V : A ⟶ (ihom B).obj Z) (α : FunctorHom U V) :
+    FunctorHom (F1B.functorTranspose U) (F1B.functorTranspose V) :=
+  (hoFunctor.map (internalHomSwapIso A B Z).hom).toFunctor.map
+    (X := HomotopyCategory.mk (functorVertex U))
+    (Y := HomotopyCategory.mk (functorVertex V)) α
+
 /-- 概要：二重内部 Hom の転置は元の二胞体の Hom 全単射を与える。
 方針：交換射の h での直接の射作用に、交換同型の充満忠実性を適用する。
 規約：A・B の充填性は要求せず、標的 Z だけを quasicategory とする。
@@ -29,10 +40,7 @@ local instance precompositionHomCategory (X Y : SSet.QCat.{u}) : Category.{u} (X
 def transposeHomEquiv {A B Z : SSet.{u}} [Quasicategory Z]
     (U V : A ⟶ (ihom B).obj Z) :
     FunctorHom U V ≃ FunctorHom (F1B.functorTranspose U) (F1B.functorTranspose V) :=
-  Equiv.ofBijective
-    (fun α ↦ (hoFunctor.map (internalHomSwapIso A B Z).hom).toFunctor.map
-      (X := HomotopyCategory.mk (functorVertex U))
-      (Y := HomotopyCategory.mk (functorVertex V)) α)
+  Equiv.ofBijective (transposeHomMap U V)
     ((qCatEquivalenceOfIso (internalHomSwapIso A B Z)).isFullyFaithful.toHoFullyFaithful.homEquiv
       (X := HomotopyCategory.mk (functorVertex U))
       (Y := HomotopyCategory.mk (functorVertex V))).bijective

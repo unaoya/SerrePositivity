@@ -22,7 +22,7 @@
 - 母空間の両関手が動く辺について指定単位条件の不変性を証明した。
   両局所射影は Kan fibration。右射影は trivial Kan fibration・QCat 同値として公開済み。
   左射影の同値性と全 Pr 上の対応 quasicategory はまだ未構成。
-- 最新の検証済み専用集約は8,550 jobs 成功、専用監査347宣言は標準3公理のみ。
+- 最新の検証済み専用集約は8,555 jobs 成功、専用監査412宣言は標準3公理のみ。
 
 ### 残り（依存順）
 1. 随伴を持つ関手の全体の対応 quasicategory と両単体射影を構成（e6-3）。
@@ -55,13 +55,16 @@
 - `adjointUnitRight_trivialKanFibration`、`adjointUnitRight_isQCatEquivalence`
 - `adjointUnitRightMappingEquivalence`（二対象間の局所写像空間の同値）
 - `precompositionHomEquiv`、`precompositionMap_transpose_evaluate`
+- `precompositionTransposeEquiv`、`precompositionCorrespondence`、`precompositionAdjunction`
+- `leftUniversalUnitSpace_isContractibleKan`、`leftUnitCosliceComparison_isQCatEquivalence`
+- `adjointUnitLeftFiberToCoslice`
 - `rightMateIntervalMap`、`rightMateIntervalMap_family`（写像の構成まで。同値性は未証明）
 
 ### 依存と提供
 - 読み取り専用：`Presentable.PrInfinity`、`Presentable.AdjointFunctorTheorem`、
   Core の coslice・実ホモトピー、F1B の内部 Hom 転置・指定単位の随伴判定。
 - e1 の定義と d の随伴判定はコミット済みで、両直接依存に未保存の変更はない。
-- プロジェクト内の推移閉包 4,906 モジュールに他レーンの未保存依存なし（今回検証時）。
+- プロジェクト内の推移閉包 4,911 モジュールに他レーンの未保存依存なし（今回検証時）。
 - P の e5 の未保存成果は使用していない。
 - P の e8 が後で `Duality.All` を集約・監査へ含める。現段階で e6 完了にはしない。
 - 他チャットへの送信は行っていない。引き継ぎは本計画と停止報告を使う。
@@ -72,9 +75,13 @@
 - 検証済み：`AdjointHomOneNaturality.lean`・`AdjointHomOne.lean`
   （元の Hom₁ 逆対応とその三つの自然性）。
 - 検証済み：`HomTransportNaturality.lean`（端点輸送と関手作用・Hom₁ 対応の両立）。
-- 検証中：`PrecompositionCorrespondence.lean`（前合成の Hom 対応の両変数自然性）。
-- 未検証：`PrecompositionParameter.lean`（全パラメータ自然性と前合成の QCat 随伴）。
-- 検証中・未検証の二葉は専用集約へ含めず、継続作業として残す。
+- 検証済み：`SourceTransport.lean`（cast の実装と証明済みの仕様を不透明な値に保存）。
+  実装と仕様を構成しており、新しい公理や存在仮定ではない。専用監査にも含めた。
+- 検証済み：`PrecompositionCorrespondence.lean`・`PrecompositionParameter.lean`
+  （全パラメータ自然性と `precompositionAdjunction` による全 QCat 随伴）。
+- 検証済み：`LeftUniversalUnits.lean`（固定左の普遍単位空間の可縮性）。
+- 検証済み：`LeftUnitFiberComparison.lean`（元の左ファイバーから固定左 coslice への比較）。
+- 未検証：`AdjointHomOneFormula.lean`（元の単位による公式。専用集約にはまだ含めない）。
 
 ### 既知の問題
 - `PrL`・`PrR` は元の保存関手圏の core を豊穣 Hom とする coherent nerve。
@@ -90,9 +97,10 @@
   辺の持ち上げまたは充満忠実性も証明する。
 
 ### 次の一手
-- 左側には前合成の全 QCat 随伴と普遍単位の模型を接続する。
-  全パラメータ Hom 全単射 `precompositionHomEquiv` と転置・評価の式は検証済み。
-  それを指定単位の判定または自然な Hom 対応へ接続する工程が残る。
+- 前合成の全 QCat 随伴 `precompositionAdjunction` と固定左の普遍単位空間は検証済み。
+  前合成随伴の単位を恒等関手で評価した成分と元の単位を同定し、
+  指定単位条件と左 coslice の始対象性を接続する。
+  元の左ファイバーとの同型・可縮性と左射影の同値性はこれから。
 - その写像空間側の構成を全体の対応 quasicategory と両射影へ接続する。
   深層編集・既存の Pr 定義の変更・同値の存在仮定の追加は行わない。
 

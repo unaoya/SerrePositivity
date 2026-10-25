@@ -121,3 +121,24 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_trans
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.functorHomCongr_postcomp
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointHomOneEquiv_congr
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.transposeHomMap
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.homSourceTransportPackage
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.sourceHomTransportEquiv_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.sourceHomTransportEquiv_factor
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.sourceHomTransportEquiv_eq_congr
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionSourceEquiv
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTargetEquiv
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTransposeEquiv_formula
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTransposeEquiv_comp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTransposeEquiv_precomp
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionTransposeEquiv_parameter
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionCorrespondence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.precompositionAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitComma
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitComma_hasInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUniversalUnitSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.unitComposition_fixedLeft
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitCosliceComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftUnitCoslice_hasInitial
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftFiberToCoslice

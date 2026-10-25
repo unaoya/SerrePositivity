@@ -17,6 +17,50 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 
+/-- 概要：始点の関手の等式だけで元の Hom の型を輸送する。
+方針：FunctorHom の型の等式による cast の全単射を使う。
+規約：始点だけを変え、終点は保持する。
+使われ方：転置した始点の正規化を大きな恒等射の合成へ展開しない界面。 -/
+def functorHomSourceEquiv {A E : SSet.{u}} {U U' V : A ⟶ E} (h : U = U') :
+    FunctorHom U V ≃ FunctorHom U' V :=
+  Equiv.cast (congrArg (fun T ↦ FunctorHom T V) h)
+
+/-- 概要：始点の型輸送は Hom の合成を保つ。
+方針：始点の等式を除き恒等 cast を計算する。
+規約：中間点・終点は保持する。
+使われ方：前合成の入口の合成保存。 -/
+lemma functorHomSourceEquiv_comp {A E : SSet.{u}} {U U' V W : A ⟶ E}
+    (h : U = U') (α : FunctorHom U V) (β : FunctorHom V W) :
+    functorHomSourceEquiv h (α ≫ β) = functorHomSourceEquiv h α ≫ β := by
+  subst U'
+  rfl
+
+/-- 概要：始点の型輸送と両端の同型による輸送を合成の二因子で比較する。
+方針：二つの関手の等式を除き恒等輸送を相殺する。
+規約：終点の関手は変更しない。
+使われ方：前合成の入口の始域自然性。 -/
+lemma functorHomSourceEquiv_factor {A E : SSet.{u}} {U U' V V' W : A ⟶ E}
+    (hU : U = U') (hV : V = V') (α : FunctorHom U V) (β : FunctorHom V W) :
+    functorHomSourceEquiv hU (α ≫ β) =
+      F1B.kanFunctorHomCongr hU hV α ≫ functorHomSourceEquiv hV β := by
+  subst U'
+  subst V'
+  simp only [functorHomSourceEquiv, Equiv.cast_refl, Equiv.refl_apply,
+    F1B.kanFunctorHomCongr, Iso.homCongr_apply, eqToIso.inv, eqToIso.hom,
+    eqToHom_refl, Category.id_comp, Category.comp_id]
+
+/-- 概要：始点の型輸送は始点だけの同型輸送と同じ元の Hom を与える。
+方針：始点の等式を除き恒等輸送を計算する。
+規約：同じ端点と射を保持する。
+使われ方：既存の両端輸送による自然性との接続。 -/
+lemma functorHomSourceEquiv_eq_congr {A E : SSet.{u}} {U U' V : A ⟶ E}
+    (h : U = U') (α : FunctorHom U V) :
+    functorHomSourceEquiv h α = F1B.kanFunctorHomCongr h rfl α := by
+  subst U'
+  simp only [functorHomSourceEquiv, Equiv.cast_refl, Equiv.refl_apply,
+    F1B.kanFunctorHomCongr, Iso.homCongr_apply, eqToIso.inv, eqToIso.hom,
+    eqToHom_refl, Category.id_comp, Category.comp_id]
+
 /-- 概要：恒等の端点輸送は元の Hom を保つ。
 方針：恒等同型による共役を相殺する。
 規約：関手圏の内部構成は展開しない。
