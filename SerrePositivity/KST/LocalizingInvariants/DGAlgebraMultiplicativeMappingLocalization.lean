@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeSimplexImage
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeImageNaturality
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoLocalization
 
 /-!
@@ -29,5 +29,21 @@ lemma multiplicativeMappingPiZeroLocalization_original (f : A ⟶ B) :
       (SSet.π₀.mk (multiplicativeMappingVertexEquiv R A B f)) = (quasiIsoLocalization R).map f :=
   multiplicativeMappingPiZeroImage_original R (quasiIsoLocalization R)
     (quasiIsoLocalization_inverts R) f
+
+lemma multiplicativeMappingPiZeroLocalization_precompose {A' : Mon (Complex R)}
+    (f : A' ⟶ A) (x : SSet.π₀ (multiplicativeMappingSimplices R A B)) :
+    multiplicativeMappingPiZeroLocalization R A' B
+      (SSet.mapπ₀ (multiplicativeMappingPrecompose R f B) x) =
+        (quasiIsoLocalization R).map f ≫ multiplicativeMappingPiZeroLocalization R A B x :=
+  multiplicativeMappingPiZeroImage_precompose R (quasiIsoLocalization R)
+    (quasiIsoLocalization_inverts R) f x
+
+lemma multiplicativeMappingPiZeroLocalization_postcompose {B' : Mon (Complex R)}
+    (q : B ⟶ B') (x : SSet.π₀ (multiplicativeMappingSimplices R A B)) :
+    multiplicativeMappingPiZeroLocalization R A B'
+      (SSet.mapπ₀ (multiplicativeMappingPostcompose R A q) x) =
+        multiplicativeMappingPiZeroLocalization R A B x ≫ (quasiIsoLocalization R).map q :=
+  multiplicativeMappingPiZeroImage_postcompose R (quasiIsoLocalization R)
+    (quasiIsoLocalization_inverts R) q x
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

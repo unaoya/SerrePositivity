@@ -2256,4 +2256,9 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRelativ
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeSimplexImage
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeMappingLocalization
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeConvolutionTargetTrivial
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingBoundary
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingTargetInvariance
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraMultiplicativeImageNaturality
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/
