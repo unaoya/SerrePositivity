@@ -2804,3 +2804,17 @@ H⁰ の環・単位・全射影の乗法整合性を保持する。後者には
 既存の複体・対角・余単位・射との定義上の一致を与える。
 `cochainComonFunctor_forget`・`simplexCochainComonFunctor_forget` は底の全関手の照合。
 余結合性・左右余単位則・自然性は既存宣言を使い、大域 instance は追加しない。
+
+
+## Sp β6 f4b への標準単体の余単位の供給（E2-S (2)）
+
+`AlexanderWhitney/SimplexCounitContraction.lean` は既存の AW 余単位自身を扱う。
+`counit_stdSimplex_eq_contraction` と `cochainCounit_stdSimplex_eq_contraction` は
+標準単体上で余単位が既存の正規化単体収縮の順射に一致することを示す。
+`cochainCounitStdSimplexHomotopyEquiv` は同じ余単位を順射に持つ実ホモトピー同値で、
+`cochainCounitStdSimplexHomotopyEquiv_hom` はその定義上の一致。
+`cochainCounit_stdSimplex_homotopyEquivalence` は元の射のホモトピー同値性、
+`cochainCounit_stdSimplexZero_isIso` は Δ[0] での元の射の IsIso を与える。
+零単体の正次数の正規化鎖は退化消滅で零となり、両収縮ホモトピーを等式へ強められる。
+集約と全監査への登録も用意するが、例外指示に従い、今回の検証は対象ビルドと
+新宣言の公理確認に限る。集約・全監査は Ind の F1/Universe コミット後に実施し、追記コミットする。

@@ -2499,3 +2499,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
 public import SerrePositivity.EInfinity.Perfectoidization.DerivedCorollary
 
 public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
+
+public import SerrePositivity.EInfinity.AlexanderWhitney.SimplexCounitContraction
