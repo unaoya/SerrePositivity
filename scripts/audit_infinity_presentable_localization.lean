@@ -377,6 +377,14 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @terminalPrefix_cosliceProjection_isRightCofinal
 #check @terminalPrefix_restrictedCocone_isColimit
 #check @compactDiagram_factorization_over_terminalPrefixPresentation
+#check @sequentialCoconeExtension
+#check @sequentialCoconeExtension_target
+#check @sequentialCoconeExtension_restrict_val
+#check @sequentialCoconeExtension_vertex
+#check @sequentialCoconeExtension_comparison_edge
+#check @sequentialCoconeExtension_leg
+#check @sequentialCoconeExtension_val
+#check @sequentialCoconeExtension_restrict_naturality
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
