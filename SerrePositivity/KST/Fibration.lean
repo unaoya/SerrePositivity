@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.ZeroMiddleFixedHornFamilyComparison
 public import SerrePositivity.KST.Fibration.VerdierLowerDeformationFullSComposite
 public import SerrePositivity.KST.Fibration.VerdierLowerDeformationFullSNaturality
 public import SerrePositivity.KST.Fibration.VerdierLowerDeformationFullSLongHom
