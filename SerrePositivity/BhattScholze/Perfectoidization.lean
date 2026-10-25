@@ -1,0 +1,16 @@
+module
+
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence
+
+/-! # 互換用の転送モジュール
+
+## 概要
+このモジュールの本体は `SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence` へ移した。
+
+## 方針
+所有範囲外のファイル（root の集約や共有の監査）が旧名で import しているため、
+旧名を残して新しい場所を再公開する。宣言は持たない。
+
+## 使われ方
+旧名の import 元が新しい名前へ切り替わったら削除する。
+-/
