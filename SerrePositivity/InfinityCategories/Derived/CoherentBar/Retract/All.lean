@@ -1,0 +1,20 @@
+module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ClosedSectionDescent
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ProjectionComponents
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ProjectorComponents
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.CorrectedInclusion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixDegeneracyNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedOperators
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedComposition
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.TailDegeneracyNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.TailAfterComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixDegeneracyComposition
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixVanishing
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedCoproduct
+/-!
+概要：D 所有の coherent bar の変形 retract の葉を集約する。
+方針：元の bar・正規化模型は読み取り専用で使用し、比較を新規葉に置く。
+規約：退化因子消去を仮定する補助入口と無条件の結論を区別する。
+使われ方：専用ビルドと audit_derived_coherent_bar_retract の監査対象。
+-/
