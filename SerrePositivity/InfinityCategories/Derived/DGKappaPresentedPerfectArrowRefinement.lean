@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceConeRefinement
+public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCoveredArrowRefinement
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover
 /-!
 概要：共通提示上の射影的 perfect 端点の閉射を、選択 seed 間の閉射へ移す。
@@ -43,19 +43,7 @@ lemma dgKappaPresentedClosedArrowRefinement_of_perfect_source
   have b : H.obj (dgKappaPresentedSeedAt R κ c j) ≅ H.obj B := by
     unfold dgKappaPresentedSeedAt
     exact b
-  obtain ⟨g', hg'⟩ := H.map_surjective (a.hom ≫ H.map g ≫ b.inv)
-  let E := dgModuleExtension R (c.Objects R κ) D L
-  let J : ModuleHomotopyCategory R (c.Objects R κ) ⥤ ModuleHomotopyCategory R D := E.onHomotopy
-  refine ⟨⟨c, L, i, j, g', J.mapIso a ≪≫ eA,
-    J.mapIso b ≪≫ eB, ?_⟩⟩
-  change J.map (H.map g') ≫ (J.map b.hom ≫ eB.hom) =
-    (J.map a.hom ≫ eA.hom) ≫ (moduleToHomotopy R D).map f
-  rw [hg']
-  have hb : J.map b.inv ≫ J.map b.hom = 𝟙 _ := by
-    rw [← Functor.map_comp, b.inv_hom_id, CategoryTheory.Functor.map_id]
-  simp only [Functor.map_comp, Category.assoc]
-  rw [← Category.assoc (J.map b.inv), hb, Category.id_comp]
-  change J.map a.hom ≫ ((moduleToHomotopy R D).map (E.onClosed.map g) ≫ eB.hom) = _
-  rw [comm]
+  exact dgKappaPresentedClosedArrowRefinement_of_sourceCovers R D κ c L A B g f
+    eA eB comm i j a b
 
 end SerrePositivity.InfinityCategories
