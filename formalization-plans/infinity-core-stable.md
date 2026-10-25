@@ -8,6 +8,7 @@
 
 ### 現在地
 - D-12（469b59c33）・D-8 b（acbe504e2）・D-13・D-14 は供給済み。現在は D-8 c 前の16時間 c′ 試作：開始04:11:16 JST、上限20:11:16 JST、ゲート1・2・4済み、3（異なるcode/arrowの同時精密化）と5（bの一般判定・拡大された四角形族の評価）を継続する。D-15 は Derived/DGModuleResolvedReflectsQuasiIso（e36cf62e8）の反映・iff・追加ULift版5宣言を対象・葉監査済み、集約11,458 jobs・両全体監査成功（Derived 23,027宣言／2,635モジュール、Stable 24,089／2,904、許容三公理のみ）。D-7 d は b133279c0 で完了、D-7′は保留、Sp-5 d3はSp所有。再開時は本書の「D-8 c 前の厳密関手性評価・16時間試作」を読む。
+- D-16 本体は `05a86325c`：thick 実核包含、元関手・平坦射影の kernel／追加 ULift 判定、cofiber 辺＝反転辺、native 飽和局所化。追加宇宙の局所化だけは明示入力で、Ind-S (4) 待ち。追加 (3) は `880303187`：`Derived/DGThickKernelNativeRetract` の `dgThickClosureProperty_iff_nativeStableRetract`・`dgThickClosureProperty_iff_uliftStableRetract`（前三角・Small は D のみ）。対象6,066 jobs・新規21宣言の葉監査は許容三公理のみ。D-16 本体の集約11,472 jobs 済み、両全体監査は実行中。D-17 と c′ ゲート3・5を続ける。
 - S1〜S7（D7）完了。実境界から Q・A と二微分式を構成し、coslice の直接充填で cofiber の普遍性、任意四角形の双カルテジアン判定、全 fiber/cofiber と有限極限余極限、D(S) の実安定性を証明した。実 suspension・複体シフト・接続射の符号を照合。D3 の標準 cone 三角形との比較、全 distinguished triangle の保存・反映、逆関手・単位・余単位の全整数シフト整合性を持つ三角同値を公開済み。
 - β3 完了。実 Verdier over の反転の filtered 性、有限対の全境界・全時刻を保つ実 roof 比較の cofinality と弱ホモトピー同値、任意反転標的への coherent な降下を証明した。
 - `dgQuotientNerveProjection_isLocalization` は任意 quasicategory 標的に対する全前合成の充満忠実性・本質的全射性を与える。局所 K-flat 性を元の Hom に仮定しない平坦分解後の商についても `resolvedDGQuotientFunctor_isLocalization` を証明した。
@@ -90,6 +91,7 @@
 - D2 入口：`Derived/DGClosedSlicePrismDirectNaturality`（自由 Hom 側は `DGWalkingHomPrismDirectNaturality`）。直接の斉次合成で始域・標的の Small 仮定を除く別名4補題を追加。旧4宣言は `DGWalkingHomPrismGeneral`・`DGClosedSlicePrismGeneral` に型・本文保持で分離。`DGPrismDirectComparison` に鎖写像・評価・自然変換・全単体・slice prism の一致6補題を置く。上流入口から従来の Small 版・屋根への依存を除外。
 - slice 輸送の最小3パスは `954d53b5f`、D2 向け入口の15パスは `059a227ad` に対象・署名検証後保存済み。E2 入口の7パスは Ind 供給 `ed79dcb7f` に続く `8f39eaafd` に保存済み。供給分の最終検証は集約11,347 jobs・12明示署名・両全体監査で終端0（Derived 22,160宣言／2,531モジュール、Stable 23,222／2,800、許容三公理のみ）。全供給差分は新規11本、既存7本、Derived.lean、両監査、本計画の22パス。D-7 d2 の草稿は `b133279c0` で統合済み。 追加供給：元の coherent prism の Small 不要・両入力・端点輸送付き自然性は `DGPinchedCompositionFamilyGeneral` と `DGPinchedCompositionClosedFamilyNaturality`、`9b40d1218`。実 Perf の coherent 完備性は `DGPerfectIdempotentCompleteGeneral`、`c66ce0648`（一般 H⁰ 判定・実／相対／小模型の新名4本、旧宣言の型・本文は完全一致）。両供給の対象・26署名検査と集約11,356 jobs 成功。両全体監査も終端0（Derived 22,200宣言／2,540モジュール、Stable 23,261／2,809、許容三公理のみ）。
 
+- 未統合：D-16 本体の Derived.lean・両監査は全体監査の終端待ち。追加 (3) の3本は葉で保存済み、集約未接続。c′ の `DGModuleFamilyYoneda` は対象成功の未追跡試作。D-17 の `DGPerfectExtensionReflectsHomQuasiIso`・`DGExtensionYonedaReflectsHomQuasiIso` は対象成功、`DGFunctorThickGeneratorCriterion` は合成比較を明示入力にして検証中。K-S の `DGKPerfectComposition` は S 構成本体を含むため import せず、同じ宣言の上流分離をコーディネータへ依頼。
 ### 既知の問題
 - d1 追加時の Derived 監査は期待配列のコード生成再帰上限に達したため、同じ2,521モジュール名と順序を保つ37個の非インライン定数へ分割した。再帰上限・許容公理・監査条件は変更せず、再監査終端0。
 
@@ -172,6 +174,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 - 閉演算の続き：DGKappaPresentedSourceShift／ShiftAction は seed だけで決まる整数 shift と厳密な後合成可換性、評価の実 shift 同型、全 Hom の dg 自己関手・native shift を供給（対象3,830 jobs・2モジュール33宣言の葉監査）。DGKappaPresentedSourceZero は空提示からの零ラベル・実評価の零性・後合成での厳密保存を供給し、標的の非空性を仮定しない（対象2,542 jobs・25宣言の葉監査）。いずれも許容三公理のみ。残り3は異なる code・arrow の二項／可算直和と任意閉射の cone を同じ表示型へ収容する同時精密化。全閉演算・前三角性・κ-compact 性・被覆の完了とは扱わない。
 
 - 同時精密化の出発圏基盤は a774cee3e：DifferentialGraded/Presentation の ZeroComplexCode・CategoryData・CategoryReindex・EnrichedLawTransport・CategorySigma・CategorySigmaInclusion・CategorySigmaDesc・CategoryReindexInverse・CategorySigmaComponents と Derived/DGKappaSourceCodeCoproduct。κ 未満個のコードを一つへまとめ、各成分包含・共通評価・成分内の全 Hom の厳密一致を保持する。対象2,107 jobs・10本127宣言の葉監査は許容三公理のみ。追加 KST 閉包は既登録の4本以内。seed 延長の代表化と任意閉射の精密化は未証明で、ゲート3の印は動かさない。
+
+- 固定共通源の seed 二項・可算直和と閉射 cone は `c409cbc59`：`DGKappaPresentedSeedOperations`・`DGKappaPresentedSourceCommonOperations`。対象2,537 jobs・40宣言の葉監査済み。実評価との二項／可算／cone 同型とラベル後合成の厳密式を保持するが、異なる源の seed 延長の代表化と任意標的閉射の精密化は未解決で、ゲート3は未完。
 
 ### D-15：全加群実分解の準同型検出
 
