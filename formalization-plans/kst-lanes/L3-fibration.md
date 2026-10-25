@@ -1,6 +1,6 @@
 # K-F レーン：K-6 fibration 定理（L3）
 
-> **v3（2026-10-24）**：K-F と K-7 は **K-B レーン**に統合。本ファイルが K-B の正本（K-6）、K-7 の引き継ぎは L10-nonconnective.md を併読。所有：KST/Fibration/、KST/NonConnective/。
+> **v3（2026-10-24）**：K-F と K-7 は **K-B レーン**に統合。本ファイルが K-B の正本（K-6）、K-7 の引き継ぎは L10-nonconnective.md を併読。所有：KST/Fibration/（Relative/ を除く）、KST/NonConnective/。08:46 の分担更新で K-6 b の仕上げは K-B2 の新規 Relative/ 葉が担当し、K-B は同界面を読み取り専用で d へ代入する。第 I 段の完成条件は I-4（K-6・K-7・局所化不変量登録）。
 
 > **v2 の位置づけ（2026-10-22 新設）**：foundations.md §6 の K-F。K-S• の L1（∞-S•、加法性、homotopy fiber）と Sp の K-5
 > （抽象 Verdier 列、Sp 値局所化不変量）を読み取り専用で使う。**2026-10-25 採用の修正**：(d) は固定の厳密 dg 入力 S・ν:S→StableInfinity・連結 K:S→Sp に対し、K(D)→fib_Sp(K(C)→K(C/D)) が非負次数で π 同型となる連結版（連結スペクトラムでの引き戻し）とする。10-22 の「実 Sp fiber 四角形へ送る」は撤回。固定連結 K の Sp 引き戻し性は主張しない。既存の条件付き Sp fiber 定理は条件付きで保持する。
@@ -13,7 +13,7 @@
 - `ZeroMiddleControlledTriangleInput` は元の全 S• Hom を core 包含で制限し、同じ二短辺の指定合成端を持つ実 fiber の点を構成する。元の指定 core 二胞体の全長 Hom と厳密に一致し、元の合成 path と仕様の全体 path の等号も回収する。`ZeroMiddleFixedHornComparison` は元の三面を固定する実充填空間の可縮 Kan 性・元の既存充填の指定点・構成済みの制御充填との fiber 内の同型と面 2 の上側全比較を供給する。制御充填の存在は主張しない。`VerdierLowerDeformationZeroHomFaces` は同じ零値長 Hom の持ち上げが全ての面・退化に厳密に自然であることを保持する。点ごとの零値条件を全三角柱の整合的な族へ接続するが、上側との同じ動く対角での貼り合わせは未証明。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
 - 工程 (a) 完了。K-5 の実核条件から包含の本質像を同定し、cofiber-W と商の可逆性、二対三・pushout・pullback・ホモトピーに対する拡大安定性を証明。
-- 工程 (b)：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
+- 工程 (b)（仕上げは K-B2、既存葉は読み取り専用で供給）：全相対 S_n・面退化・core 包含・商への射と核四角形を構成。元の全 Ar 評価・S 後合成の完全性と全成分の零対象検出を証明。
   同じ実 cofiber による相対辺判定と、全 n の二対三・pushout・pullback・拡大安定性を証明。元の S_n(D) 包含は全写像空間で充満忠実で実核像に一致し、同じ cofiber の像条件を回収。W 辺・相対 cofiber 射影は trivial Kan、全正反復の加法性へ接続済み。
 - 有限 W 列の初期頂点・連続 cofiber 比較は、零長で厳密同型、全長・全正反復で局所化同型。
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（661 モジュール・4436 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（664 モジュール・4477 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -284,6 +284,8 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - ZeroMiddleControlledLongFamily は Ind の 218e5b449 を消費し、指定長 Hom 入力から全ホーン・各入力点の全 native Hom を保つ実上側族を (9) の仮定なしで構成する。全時刻対角の厳密回収とは区別する。
 - VerdierNativeCompositeEdge は元の全長 Hom 比較の実合成端成分を core 制限と宇宙持ち上げへ送り、上側・下側の同じ実合成端間の可逆辺を保持する。VerdierOriginalCompositeNativeEdge は元の比較を指定 Verdier 両端へ輸送し、下側始端を実包含・実商の合成、上側終端を指定左辺・上辺の合成の元の core S• 作用へ厳密回収する。
 - 二短辺と全 native 長 Hom の HEq による二単体外延性は Ind-S へユーザー経由で供給依頼済み（archive/L3-native-triangle-ext-request.md:19）。本体へ新たな存在仮定は追加しない。
+
+- VerdierNativeLongHomShift は指定両端の長 Hom 全族と元の実合成端比較の定数族を全関手 Kan 複体で合成し、同じ合成二単体を保持する。native path 座標へ戻した同じ族は、直接 path の全パラメータを厳密保存し上側の元の実合成端を回収する。VerdierNativeCompositeFunctoriality は両合成端を元の二つの core Kan 射の厳密合成へ照合する。VerdierLowerLongHomTransport は実下側読出しを同じ指定両端へ輸送し、元の実包含・商の合成端を全入力で回収する。(9) に条件付きの同じ下側読出しから、直接端を保つ上側合成端入力まで代入済み。有限入力頂点での指定長 Hom の照合は続行中。
 
 ### K-S•-S3 の実供給と採用済み二頂点比較
 - 実供給 `dgKappaNativeCoherentBFSquare` は新 BF 四対象を持ち、旧 K とは指定整数群同型を介して四辺の π 作用が可換。`DGKappaSuppliedBFSquare` は元の全 S• 比較と旧 K-cof の群作用を消費し、`DGKappaSuppliedBFZero`・`DGKappaSuppliedBFFiberComparison`・`DGKappaSuppliedBFOneStage` は hBF の存在仮定なしで零角・同じ実 fiber 比較・非負次数 π 比較へ接続する。`DGKappaSuppliedBFConeZero`・`DGKappaSuppliedBFConnectiveStructure` は同じ cone の零性から新 BF 上の実構造辺を作る。旧四対象を固定した hBF の条件付き定理は保持する。
