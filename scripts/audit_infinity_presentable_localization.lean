@@ -374,6 +374,9 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @indArrowImage_triangle_missing_of_refinedPresentation
 #check @compactCocone_factorization_relative_terminalPrefix
 #check @compactDiagram_factorization_relative_terminalPrefix
+#check @terminalPrefix_cosliceProjection_isRightCofinal
+#check @terminalPrefix_restrictedCocone_isColimit
+#check @compactDiagram_factorization_over_terminalPrefixPresentation
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
     (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
