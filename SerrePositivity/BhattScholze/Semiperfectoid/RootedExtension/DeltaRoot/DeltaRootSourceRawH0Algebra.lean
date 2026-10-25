@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceRawComparison
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceRawComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 
 /-! # 元の実二因子源H0とraw環の標準代数比較 -/

@@ -1,4 +1,4 @@
-import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.AndreSurjectivityConditional
+import SerrePositivity.BhattScholze.Semiperfectoid.AndreSurjectivity
 import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.AndreCompatibleRootsConditional
 import Mathlib.Util.AssertNoSorry
 

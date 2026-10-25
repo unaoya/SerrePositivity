@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectDeltaRankOneRoots
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectDeltaRankOneRoots
 
 /-! # 根δ除算包の通常商における指定元の互換p冪根族 -/
 

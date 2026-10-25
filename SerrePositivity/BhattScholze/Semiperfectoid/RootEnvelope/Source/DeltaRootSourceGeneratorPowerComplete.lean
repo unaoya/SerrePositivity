@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceGeneratorPowerReduction
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerReduction
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedRestrictionConservative
 

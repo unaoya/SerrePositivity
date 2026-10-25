@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceRawH0Delta
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootPrismBaseMap
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.DeltaRootPrismBaseMap
 
 /-! # 実源H0から既存prism候補への標準δ射 -/
 

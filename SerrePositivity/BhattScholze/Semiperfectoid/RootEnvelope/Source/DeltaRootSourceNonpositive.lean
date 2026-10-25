@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceRawComparison
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceRawComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
 
 /-! # 元の実根添加源の非正性と同じ係数制限augmentationのH0同型 -/

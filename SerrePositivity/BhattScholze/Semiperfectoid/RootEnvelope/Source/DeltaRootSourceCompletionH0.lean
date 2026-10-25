@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceNonpositive
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceNonpositive
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
 
 /-! # 元の実根添加源の逐次完備化と同じaugmentationのH0比較 -/

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceCompletionH0
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceRawCoefficients
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceCompletionH0
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceRawCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 

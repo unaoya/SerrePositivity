@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.TensorBaseChangeKernel
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedPresentationSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RootedPresentationSurjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationBaseChange
 public import SerrePositivity.BhattScholze.Semiperfectoid.TensorResidueBaseChangeComparison
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectivityDescent

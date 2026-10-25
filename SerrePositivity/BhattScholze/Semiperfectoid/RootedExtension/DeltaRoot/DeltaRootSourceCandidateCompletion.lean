@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceRawCoefficients
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceRawCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReflection
 
 /-! # 既存候補への標準射の実p,d逐次完備化からの一意延長 -/

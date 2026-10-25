@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootPrismCompletelyFlat
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootPrismCompletelyFlat
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
 

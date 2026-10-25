@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootPDCompletelyFlat
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraDiscrete
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 

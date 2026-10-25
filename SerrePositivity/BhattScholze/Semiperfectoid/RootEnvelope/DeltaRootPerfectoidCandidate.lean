@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootAdjoinCompatibleRoots
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootAdjoinCompatibleRoots
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivision
 public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrism
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoid

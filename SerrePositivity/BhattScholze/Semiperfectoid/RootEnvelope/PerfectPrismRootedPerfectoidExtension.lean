@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootPerfectoidCompletelyFlat
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedFamilyPerfectoidSurjectivityDescent
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootPerfectoidCompletelyFlat
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RootedFamilyPerfectoidSurjectivityDescent
 
 /-! # 完全prism商の根付きp完全忠実平坦perfectoid拡大と全射性 -/
 

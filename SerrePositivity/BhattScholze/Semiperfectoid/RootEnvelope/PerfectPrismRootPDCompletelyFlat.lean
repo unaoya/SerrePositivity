@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootSourceDiscrete
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootRawCompletedH0Ring
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootSourceDiscrete
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootRawCompletedH0Ring
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
 
 /-! # 完全prism上の任意根族の実PD完備化環の完全忠実平坦性 -/

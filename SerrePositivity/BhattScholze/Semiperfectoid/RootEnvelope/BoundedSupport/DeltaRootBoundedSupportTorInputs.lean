@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorExactColimits
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootBoundedSupportResidueDerived
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.BoundedSupport.DeltaRootBoundedSupportResidueDerived
 
 /-! # 任意根族の標準図式に対する無条件のTor交換 -/
 

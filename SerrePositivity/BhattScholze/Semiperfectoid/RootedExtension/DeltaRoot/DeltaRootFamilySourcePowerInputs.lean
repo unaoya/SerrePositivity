@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootFamilySourceCanonicalPowerResidue
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceGeneratorPowerComplete
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerComplete
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 
 /-! # 有限根族のG10と生成元冪商上の標準G9入力 -/

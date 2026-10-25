@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootRawCompletionRestriction
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootRawCompletionRestriction
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.IteratedPDH0Reflection
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
 

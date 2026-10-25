@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootQuotientReduction
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootQuotientReduction
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModPFaithful
 
 /-! # 任意根族のperfectoid候補の標準基底射のp完全忠実平坦性 -/

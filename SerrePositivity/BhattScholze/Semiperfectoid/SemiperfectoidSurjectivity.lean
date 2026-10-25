@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.PerfectPrismRootedPerfectoidExtension
+public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootedPerfectoidExtension
 public import SerrePositivity.BhattScholze.Semiperfectoid.SemiperfectoidPerfectoidization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 
