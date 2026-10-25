@@ -28,8 +28,7 @@ def multiplicativeMappingBasePoint {A B : Mon (Complex R)} (s : A ⟶ B) :
     (multiplicativeMappingSimplices R A B) _⦋0⦌ :=
   s ≫ convolutionConstantMap R (simplexComonoid R ⦋0⦌) B
 
-set_option maxHeartbeats 800000 in
--- 実 AW 畳み込みと coyoneda の複合を全次数で同定するための elaboration。
+set_option maxHeartbeats 800000 in -- 実 AW 畳み込みと coyoneda の複合を全次数で同定する。
 def multiplicativeMappingBase {A B : Mon (Complex R)} (s : A ⟶ B) :
     (Δ[0] : SSet.{u}) ⟶ multiplicativeMappingSimplices R A B :=
   { app := fun n => TypeCat.ofHom (fun _ =>
