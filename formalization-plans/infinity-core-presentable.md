@@ -31,8 +31,8 @@
 ### 残り（依存順）
 1. P-1 e：Pr^L／Pr^R の双対性（HTT 5.5.3.4）と Pr^L の小さい極限（5.5.3.13）。
    Fun(K,C) の presentable 性（5.5.3.6）、積・引き戻しと Cat∞ での計算を含む。ユーザー指示で d 非依存部を先行。
-2. P-1 f：Bousfield 局所化の存在。N の局所対象・強飽和性・条件付き反射を再利用し、局所置換を実証する。
-   HTT 5.5.4.15。d〜f の個別見積もりは各着手時に精査する。
+2. P-1 f：Bousfield 局所化の存在（HTT 5.5.4.15）は P-f が `F2/Presentable/Localization/` で並行。
+   P は同ディレクトリを編集せず e5〜e8 に集中し、e8 の集約・監査を担当する。
 
 ### 主要宣言
 - `IsKappaAccessible`、`IsAccessible`、`IsKappaCompactGenerating`、`IsKappaAccessibleFunctor`、`IsAccessibleFunctor`
@@ -95,11 +95,11 @@
 - b12e99858 復旧後の所有 import 閉包は復旧済み。
 - e5 は像の指定同型を保つ頂点同型の持ち上げを F1B の新規葉へ供給依頼済み（ユーザー経由）。
 
-### 未コミット
-- `SmallCompactFamilies` は生成族の全 retract を小さい族で代表し、全 compact 対象を回収する構成中。
+### 接続中
+- 全 compact 対象の小さい代表族・全同値模型と、cospan の両関手が全 compact 対象を保つ共通濃度を構成。
 
 ### 次の一手
-- e5 は元の引き戻し内の候補族の同時 compact 性と、像も compact な濃度変更生成圏を検証済み。全 compact 対象の小さい代表族と、引き戻しの filtered 生成表示へ進む。
+- e5 は compact 成分の全部分圏の実引き戻しと各頂点の native compact 性を構成。小さい cospan 模型との接続と、元の引き戻しの filtered 生成表示へ進む。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。

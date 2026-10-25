@@ -691,3 +691,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackCandidate_nativeCompactCardinal
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_imageCompactGenerating_of_cardinalChangeBound
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactPreservingCardinal_of_smallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallRetractIndex
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallRetractFamily_iso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactFamily
+#check @SerrePositivity.InfinityCategories.F2.Presentable.compactImages_of_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_compactPreservingCardinal
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kappaCompactEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.kappaCompactRestriction_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactModel
+#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_isPullback
+#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_vertex_isKappaCompact
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentableSpan_compactCardinal

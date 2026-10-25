@@ -342,3 +342,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCompactO
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateCompactness
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetImageCompact
 public import SerrePositivity.InfinityCategories.F2.Presentable.ImageCompactGenerators
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallCompactFamilies
+public import SerrePositivity.InfinityCategories.F2.Presentable.StrongCompactCardinals
+public import SerrePositivity.InfinityCategories.F2.Presentable.CompactFunctorRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SmallCompactModels
+public import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompactPullback
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSpanCompactCardinals
