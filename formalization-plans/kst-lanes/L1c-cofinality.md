@@ -3,84 +3,77 @@
 ## 引き継ぎ
 
 ### 現在地
-- K-S•-S2 を担当。目標は任意の `StableModel.{u}` 間の指定完備化射について、
-  元の `kSpectrumMap` の全正整数次数での全単射性と零次での単射性。
-- K-6 の fibration 定理を使わない S• 直接経路で開始。
-  K-B の完備化前 fibration → 共終性 → 固定 K 比較という採用済み設計に逆依存を作らない。
-- 完備始域の特殊場合を `Cofinality/CompleteSource` に実装。
-  指定射を保持し、retract 閉性 → 実同値 → 全整数 π 同型へ接続。
-  一般の非完備始域についての共終性とは数えない。
-- 零次単射性と同じ完全関手の三角圏 K₀ 単射性の同値を `ZeroComparison` に実装。
-  dense 包含の K₀ 単射性そのものは未証明。
-- 同じ完全射の全 S_n と独立な全多次数の反復 S の充満忠実性を実装・検証。
-- **10-26 06:29 採用・再開**：三段目2の一般安定圏の補対象部分は D-22 として D に発注済み。
-  D-22 は `57b4a57a4` の `Stable/IdempotentCompletionDensity` から読み取り専用で消費済み。
-  提案・依頼は必ずユーザー経由で中継し、計画への記録だけで中継済みとしない。
-- 全 Ar 値の本質像条件から S_n の全族を回収し、全多次数の有限反復へ拡張済み。
-  各値が双積懸垂として表される全パラメータ族も、同じ完全射の始域へ一つの関手同型で回収。
-- 指定境界図式との比較を同じ始域内へ反映し、再度写すと指定像内比較そのものを回収。
-  厳密な境界延長や多次数間の全自然性とは数えない。
-- 元の `kSpectrumMap` の目標条件を、未置換の零段の正次数全単射・零次単射へ同値化済み。
-- **設計変更提案で停止**：次の相対 S• 比較を、cofiber が本質像に入る辺の wide 部分圏の
-  亜群化の離散性へ接続する案。必要な一般 API は Sp に依頼する（末尾の型）。
-  ユーザー経由で中継を依頼した段階。未採用・未供給で、主定理は未完。
+- 二段目は任意の指定完備化射の一般共終性。主定理は未完成。
+- K-6 に依存しない S• 直接経路。K-B の完備化前 fibration との逆依存はない。
+- 06:29 採用の D-22（`Stable/IdempotentCompletionDensity`）を消費済み。
+  同じ全多次数の有限反復 S で双積懸垂の像回収と全パラメータ族の回収を実装。
+- **08:16 採用・再開**：HLS §7.1 の wide 部分圏の亜群化経路を採用。
+  一般の wide 部分複体と亜群化の離散性は Sp-7 として Sp に発注済み。
+- Sp-7 の結論を `StableWideCofinalitySupply` として明示的な仮定引数に取り、
+  一般供給からの変換 `stableWideCofinalitySupply_of_api` も実装。
+  この仮定の証明や一般共終性を供給済みとは数えない。
+- 反復 S の標的の完備性を第一行同値から移し、D-22 から retract 条件を作った。
+  したがって同じ指定射の全多次数の反復 S も実際に冪等完備化となる。
+- Sp-7 の供給値から全多次数の厳密な wide 図式と元の S 図式への自然包含を構成。
+  選択の自然性を仮定せず、全辺の cofiber 条件の保存で面・退化を構成する。
+- 相対旗は wide 内部 Hom の頂点像を持つ ambient 関手圏の**全部分複体**。
+  旗間の射は ambient の全射を保持。全 S 多次数と旗方向で厳密な図式に束ねた。
+- 旗の未置換零段と元の同じ反復 S 対象との厳密な同型を構成。
+  この比較は全多次数の構造射と可換。始域の旗を相対旗へ写す射も実装し、
+  零段の比較後に元の指定反復 S 射を厳密に回収する。
+- 元の `kSpectrumMap` の目標条件と未置換零段の群条件との同値は既存の自所有葉に実装済み。
+- **設計供給境界の追加提案**：core 旗の対角実現と亜群化を結ぶ一般比較が必要。
+  Sp-7 の離散性だけから相対旗の実現の離散性を結論しない。依頼の詳細は末尾。
+  ユーザー経由での中継を明示的に依頼する。追加は未採用・未供給。
 
 ### 残り（三段目、依存順）
-1. [x] 所有 import 閉包・目標型・既存比較の確認（1〜2 時間）。
-2. [x] retract から有限 S 図式の補対象を構成する入口（4〜7 時間）。
-   D-22 を全多次数の双積懸垂の本質像回収へ代入。実現後の相対比較は3に残す。
-3. [ ] dense 包含の相対 S• 比較と離散的な障害の同定（8〜12 時間）。
-4. [ ] 正次数の全単射性と零次数の単射性（5〜8 時間）。
-5. [ ] 同じ `kSpectrumMap f` との照合・一般形公開（3〜6 時間）。
-6. [ ] 自分の集約・監査・禁止仮定検査・限定コミット（2〜5 時間）。
-- 合計初期見積り：24〜40 時間。二段目は一般の Thomason 共終性全体。
-- 原典：TT 1.10.1・1.10.2、Waldhausen 1.5.9。
+1. [x] 所有閉包・指定 K 射・比較入口の確認。
+2. [x] D-22 を同じ全多次数へ代入し、反復 S の実完備化証拠を構成。
+3. [ ] 相対 S• の実現比較（HLS §7.1 第一証明、残り8〜12時間）。
+   一般 core 旗比較の供給を消費し、相対図式の実現、加法的 fiber 比較、障害の同定を行う。
+4. [ ] 正次数全単射・零次単射（HLS §7.1、5〜8時間）。
+5. [ ] 同じ `kSpectrumMap f` への照合と一般形公開（TT 1.10.1、3〜6時間）。
+6. [ ] 自分の集約・監査・型仮定検査・限定コミット（2〜5時間）。
+- 初期総見積り24〜40時間。現在の実装は主定理の二段目完了とはしない。
 
 ### 主要宣言
-- `Cofinality.completion_isEssentiallySurjective_of_complete_source`
-- `Cofinality.completion_isQCatEquivalence_of_complete_source`
-- `Cofinality.completionStableEquivalenceOfCompleteSource`
-- `Cofinality.kSpectrumMap_piIsomorphism_of_complete_source`
-- `Cofinality.sEndofunctor_map_isFullyFaithful`
-- `Cofinality.multiSEndofunctor_map_isFullyFaithful`
-- `Cofinality.kSpectrumMap_zero_injective_iff`
-- `Cofinality.exists_sFamily_of_pointwise_image`
-- `Cofinality.exists_multiSFamily_of_pointwise_image`
-- `Cofinality.sBoundaryRecoveryIso_postcomp`
-- `Cofinality.multiSBiprodShift_mem_image_of_completion`
-- `Cofinality.exists_multiSFamily_of_biprodShift`
+- `Cofinality.multiSEndofunctor_map_isIdempotentCompletion`
+- `Cofinality.StableWideCofinalitySupply`
+- `Cofinality.stableWideCofinalitySupply_of_api`
+- `Cofinality.multiWideStageDiagram`
+- `Cofinality.multiWideStageInclusion`
+- `Cofinality.suppliedMultiRelativeFlagDiagram`
+- `Cofinality.multiRelativeFlagZeroIso`
+- `Cofinality.suppliedMultiRelativeFlagsMap_zero`
+- `Cofinality.multiSourceToRelativeFlags_zero`
 - `Cofinality.kSpectrumMap_cofinality_iff_boundary`
 
 ### 依存と提供
 - 所有：`KST/SConstruction/Cofinality/` の新規葉、同名集約、
-  `scripts/audit_kst_cofinality.lean`、本計画。
-- 読取専用：既存 SConstruction の同値不変性・実 BF K・零次自然比較、
-  F2/Idempotent の全図式の像回収、Presentable の全余錐の充満忠実性による反映、
-  Stable の同値の完全性・D-22 の実密度供給。
-- KST/Fibration・NonConnective は import しない。InfinityCategories は編集しない。
-- K-B の利用側は `DGKappaSuspensionCofinality` の `hcofinal` と一致する一般形を待つ。
-  完備始域の特殊場合を代入して一般供給済みとはしない。
+  `scripts/audit_kst_cofinality.lean`、本計画（300行以内）。
+- 読取専用：既存 SConstruction の第一行同値・実 K 段比較・一点関手評価、
+  F2/Idempotent の全関手圏の完備性・図式回収、Stable の D-22。
+- 一般局所化・亜群化 API は Sp 正本。KST/Fibration・NonConnective は import しない。
+  InfinityCategories と既存 SConstruction は編集しない。
+- K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
 ### 未コミット
-- なし（実施記録は本保存単位のコミット本文）。
+- なし。自所有の新規8葉・集約・監査・計画を限定コミット。実施記録はコミット本文。
 
 ### 既知の問題
-- 一般の共終性は未証明。圏論的な right/left cofinality から core S• の比較は出ない。
-- TT 1.10.1 の原証明は弱同値を拡大し、1.8.2 の局所化定理を使用する。
-  K-B の native Verdier 列の fibration 型と同一ではない。
-  そのままの引用や、K-6 がこの拡大弱同値版を供給するとする扱いは禁止。
-- 始域の完備性や `ModelCategory SSet` を一般形に追加しない。
-- 深層モジュール・既存 SConstruction 集約・監査は編集しない。
-- 自分の集約ビルド成功（7765 jobs）。repository import 閉包4106本に欠落なし。
-  Fibration・NonConnective への逆依存なし。監査は9所有葉の全51宣言を検査し標準三公理のみ。
-  型の ModelCategory 仮定なし、新規 sorry・公理・引用なし。
-- 双積懸垂が本質像に入ることから、元の K 射の正次数同型を直接推論しない。
-  `F ⊕ ΣF` の回収は元の F の回収ではなく、相対実現比較の証明が必要。
+- 一般の共終性、相対実現の fiber 比較、離散的障害の群同定は未証明。
+- `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
+- wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
+- 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
+- 自所有集約ビルド成功（7780 jobs）。監査は17所有葉の全125宣言で標準三公理のみ。
+  型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
+- 根のビルドや `.lake` 削除はしない。
 
 ### 次の一手
-- 末尾の相対 S• 経路が採用されたら、Sp の wide 部分圏・亜群化の離散性を受け、
-  同じ全多次数の相対図式と元の未置換零段へ接続する。
-  一般の K₀ 単射性・正次数の π 同型は未証明。厳密境界延長も別工程。
+- ユーザー経由で Sp への一般 core 旗比較の追加分担が採用されたら、
+  その API を明示的な仮定引数にして、相対 core 旗と wide 内部旗の比較を続行。
+- Sp-7 の公開名が届いたら `stableWideCofinalitySupply_of_api` に代入する。
+  次いで相対実現の加法的 fiber 比較と障害の同定へ進む。
 
 ## 目標型
 
@@ -92,78 +85,35 @@
     Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0)
 ```
 
-## 証明境界
+## 採用済みの一般供給
 
-- 主経路は retract 条件からの dense 安定部分圏の S• 直接比較。
-- 全射 K₀ や完備化射自体の同値を要求しない。
-- 点ごとの補対象は、面・退化・元の core 射を保つ有限図式の比較とは別。
-- 一般局所化・分数・Verdier 商 API は Sp 正本、一般安定圏 API は D 正本。
-  所有外の新規一般補題が要る場合は複製しない。
-- 完了時は集約と全所有宣言の公理監査を実行し、標準三公理だけであることを確認する。
-  実施記録はコミット本文、計画本文は現在地のみ。根の全体ビルドや `.lake` 削除をしない。
+- D-22：指定完備化射 `f : C ⟶ D` の各 `d : ho D` について、
+  `d ⊕ Σd ≅ (ho f).obj c` となる c を供給。実装を消費済み。
+- Sp-7：安定 quasicategory の指定完備化射 f、本質像 P、
+  `W = cofiberLocalizingEdges P` について、全辺が W に属する単体からなる部分複体 M、
+  M の quasicategory 性、`continuousKanReplacement.obj M` の正次数の自明性。
+- 正確な消費型は `WideStageData` と `stableWideCofinalitySupply_of_api` が正本。
+  型を単に記録しただけで、一般供給が届いたことにはしない。
+- K-6 の fibration 定理への依存追加は行わない。
 
-## 採用済み分担・D-22（10-26 06:29 発注、消費済み）
+## 追加設計提案：一般 core 旗比較を Sp 正本で供給
 
-- 依頼先：D（`InfinityCategories/Stable/` の新規葉）。
-- 内容：指定完備化射の本質像に `d ⊕ Σd` が入ること。SConstruction 固有の import は不要。
-- 調査した既存入口：`SplitCofiberProduct`・`HomotopyBinaryBiproduct` は
-  指定された分裂 cofiber の積性を与える。
-  `F2/Idempotent/CompletionArrowRetracts` は全辺の retract を与える。
-  これらから必要な一般形を直接消費できる公開名は見つからなかった。
-- 分担：一般安定圏の補対象計算は D 正本の新規葉に保つ。
-  K-cof は同じ指定射を有限 S 図式へ適用し、元の実 K 射へ戻す証明を担当する。
-- 供給見積り：3〜5時間（K-cof 推定）。この供給だけで一般共終性は完成しない。
-- 構成方針：`d` を `f(c)` の retract とし、補冪等射 `1-e` を充満忠実性で始域へ戻す。
-  その cofiber の像を `d ⊕ Σd` と同定する。有限 S 図式上の整合性は別工程。
-- 以下の依頼型を `#check` で検査済み（存在証明を供給済みとはしない）。
-
-```lean
-open CategoryTheory CategoryTheory.Limits SSet
-open SerrePositivity.InfinityCategories
-universe u
-
-∀ (C D : SSet.{u}) [Quasicategory C] [Quasicategory D]
-  [IsStable C] [IsStable D] (f : C ⟶ D) [IsExactFunctor f],
-  F2.Idempotent.IsIdempotentCompletion f →
-  ∀ d : hoFunctor.obj D, ∃ c : hoFunctor.obj C,
-    Nonempty (biprod d ((shiftFunctor (hoFunctor.obj D) (1 : ℤ)).obj d) ≅
-      (hoFunctor.map f).toFunctor.obj c)
-```
-
-- K-6 の fibration 定理への依存追加は提案しない。
-  K-B の完備化前 fibration と本供給の間の逆依存は引き続き禁止する。
-
-## 三段目3の設計提案・Sp への依頼（未採用）
-
-- 提案：cofiber が包含の本質像に入る辺だけを持つ wide 部分圏の亜群化を使う。
-  その正次数ホモトピー群の消滅を、相対 S• 実現の障害が離散的であることへ接続する。
-  原典：Hebestreit–Lachmann–Steimle §7.1 の第一証明（S• 側の接続は K-cof 所有）。
+- ユーザー経由の依頼先：Sp。Sp-7 への追加または独立の新規葉。
+- 理由：相対旗は ambient 関手圏の全部分複体であり、その core の対角実現と
+  M の亜群化は定義的に等しくない。Sp-7 が離散性を与えるのは後者。
+  必要な一般亜群化比較を K-cof の新規一般補題として複製しない（foundations §8 正本規約）。
+- 供給仕様：任意の quasicategory C について
+  `R(C)[n] = core Fun(Δ[n], C)` を、標準単体の前合成で単体的に束ねる。
+  `diag R(C) ⟶ C` の対角評価 ε を構成し、
+  `InfinityCategories.IsWeakHomotopyEquivalence ε` を証明する。
+  ε は C の任意の関手による後合成で自然。零旗からの射を含め、元の評価を保持する。
+- 対角は一般の定義
+  `Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj (R C)` を使用できる。
+  KST/SConstruction の対角関手を import する必要はない。
+- K-cof 側の消費：M 内部の旗の core と、実装した ambient 相対旗の core を比較。
+  wide の辺条件と全可逆辺の所属からこの比較を作り、供給された自然な弱同値を使う。
+  その後の S• 固有の相対実現、加法的 fiber 比較、障害の群同定は K-cof が担当する。
+- 見積り：一般 core 旗比較4〜8時間（K-cof 推定）。
+  この追加だけでも主定理は完成しない。相対実現の fiber 比較を別に証明する。
+- 原典：Hebestreit–Lachmann–Steimle §7.1 第一証明の core と実現の交換。
   <https://arxiv.org/pdf/2205.06104#page=20>
-- 必要な理由：実装済みの図式回収と双積懸垂の密度だけでは、元の K 射への相対比較は出ない。
-  亜群化・局所化の一般 API は Sp 正本なので、同じものを Cofinality に新設しない。
-- 依頼先：Sp（新規葉）。一般の安定な C・D と指定完全射で供給し、SConstruction を import しない。
-  初期見積り：wide 部分圏・閉性2〜4時間、亜群化の離散性6〜12時間（K-cof 推定）。
-- 既存の `weakArrowCategory q` は商で可逆な辺の**図式圏**であり、この wide 部分圏とは異なる。
-  完備化前の Verdier 列や K-B の fibration 定理へこの依頼を差し替えない。
-- 以下は供給仕様の型。`M` の全単体条件を明記し、辺の集合だけで代用しない。
-  `continuousKanReplacement` は既存の亜群化の Kan 模型を使う。
-
-```lean
-∀ (C D : SSet.{u}) [Quasicategory C] [Quasicategory D]
-  [IsStable C] [IsStable D] (f : C ⟶ D) [IsExactFunctor f],
-  F2.Idempotent.IsIdempotentCompletion f →
-  let P : Set (D _⦋0⦌) :=
-    {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}
-  let W := cofiberLocalizingEdges P
-  ∃ M : D.Subcomplex,
-    (∀ (n : ℕ) (s : D _⦋n⦌), s ∈ M.obj (Opposite.op ⦋n⦌) ↔
-      ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ W) ∧
-    Quasicategory (M : SSet.{u}) ∧
-    ∀ (x : (F2.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌)
-      (n : ℕ), 0 < n →
-      Subsingleton (KanHomotopy (F2.continuousKanReplacement.obj (M : SSet.{u})) n x)
-```
-
-- 型は `/tmp/kst-cofinality-wide-request.lean` で検査。存在証明は未供給。
-- 別途 K-cof が証明するもの：全多次数の相対 S 図式との照合、元の K 射を保つ
-  相対実現の比較、零次障害の同定、正次数同型と零次単射。

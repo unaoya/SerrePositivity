@@ -7,6 +7,14 @@ public import SerrePositivity.KST.SConstruction.Cofinality.StageDetection
 public import SerrePositivity.KST.SConstruction.Cofinality.MultiDiagramImage
 public import SerrePositivity.KST.SConstruction.Cofinality.StabilizedDiagramImage
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeDiagramImage
+public import SerrePositivity.KST.SConstruction.Cofinality.SourceRelativeFlags
+public import SerrePositivity.KST.SConstruction.Cofinality.MultiRelativeFlags
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagZero
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagram
+public import SerrePositivity.KST.SConstruction.Cofinality.WideStageMaps
+public import SerrePositivity.KST.SConstruction.Cofinality.WideStageInput
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlags
+public import SerrePositivity.KST.SConstruction.Cofinality.MultiCompletion
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization
 
 /-!

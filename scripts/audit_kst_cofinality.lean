@@ -21,7 +21,15 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.StabilizedDiagramImage,
     `SerrePositivity.KST.SConstruction.Cofinality.StageDetection,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeDiagramImage,
-    `SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization]
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization,
+    `SerrePositivity.KST.SConstruction.Cofinality.MultiCompletion,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlags,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideStageInput,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideStageMaps,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagram,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagZero,
+    `SerrePositivity.KST.SConstruction.Cofinality.MultiRelativeFlags,
+    `SerrePositivity.KST.SConstruction.Cofinality.SourceRelativeFlags]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -58,3 +66,11 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.sBoundaryRecoveryIso_postcomp
 #check @SerrePositivity.KST.SConstruction.Cofinality.multiSBiprodShift_mem_image_of_completion
 #check @SerrePositivity.KST.SConstruction.Cofinality.exists_multiSFamily_of_biprodShift
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.multiSEndofunctor_map_isIdempotentCompletion
+#check @SerrePositivity.KST.SConstruction.Cofinality.stableWideCofinalitySupply_of_api
+#check @SerrePositivity.KST.SConstruction.Cofinality.multiWideStageDiagram
+#check @SerrePositivity.KST.SConstruction.Cofinality.suppliedMultiRelativeFlagDiagram
+#check @SerrePositivity.KST.SConstruction.Cofinality.multiRelativeFlagZeroIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.suppliedMultiRelativeFlagsMap_zero
+#check @SerrePositivity.KST.SConstruction.Cofinality.multiSourceToRelativeFlags_zero
