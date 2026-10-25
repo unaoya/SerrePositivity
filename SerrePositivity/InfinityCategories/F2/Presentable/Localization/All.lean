@@ -93,6 +93,13 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequence
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.DoubleConeSimplexShape
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundSimplexShape
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceSimplexShape
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.NativeShapeTowerGluing
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceDiagram
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceSliceDiagram
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -103,7 +110,12 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 
 三段目：f1 [x] 生成元の局所性と compact 端点、f2 [ ] 飽和射クラスの小生成と
 presentable 性、f3 [ ] 固定始域の終対象からの局所置換の存在と反射の構成、
-f4 [ ] 強飽和性との同定、f5 [ ] 監査・引き継ぎ。
+f4 [ ] 強飽和性との同定（P-s 所有）、f5 [ ] 監査・引き継ぎ。
+ユーザーの追加分担により、P-f は f2 の残りと f3 の局所置換・反射の存在に集中する。
+f3 の予定公開データは ReflectiveSubcategory C (IsLocalObject (Set.range edges))、
+存在命題は既存の IsReflectiveSubcategory C (IsLocalObject (Set.range edges)) とする。
+各 x の generatedEdges edges 内の局所置換も別の公開結論で保持する。
+局所対象と反射の既存定義は変更していない。反射の存在自体はまだ未証明。
 ユーザーの分担変更により、局所対象の accessibility（5.5.4.2）と反射を入力にした
 局所対象圏の presentable 性（5.5.4.15(3)）は P-d が LocalObjects/ の新規葉で担当する。
 P-f はその公開結論を最後に代入する。LocalObjects/ は読み取り専用とし、局所対象の
@@ -235,7 +247,8 @@ P-11 の公開コミット 95f5a8f2e の有限余極限・小余積の一般生�
 同時細分された表示から、欠けている辺の添字一つで三方向の元の辺を回収する入口も得た。
 P の公開コミット c3998b340 の終前置 coslice の compact 判定を制限 left fibration に適用し、
 小さい compact 全図式の指定余錐を、元の全前置余錐を厳密に固定して一段へ因子化した。
-返る実辺は同じ filtered 余錐脚を被覆する。交互列全体と共通部分表示はまだ未構成。
+返る実辺は同じ filtered 余錐脚を被覆する。可算交互列とその全図式は後述のとおり構成した。
+両側の共通部分表示との比較はまだ未構成。
 終前置図式の下の添字の共終性と、元の余錐を制限した同じ filtered 表示も構成した。
 これを相対因子化へ接続し、元の表示・全前置図式・指定全余錐を保つ再帰の一段を得た。
 余錐間の指定辺から次の全図式の大域余錐を構成し、旧段階への全制限・元の頂点・
@@ -251,7 +264,10 @@ compact 初期比較状態の存在も構成した。後続余錐の全頂点の
 整合も P-13 の公開コミット 1e7d9538d の結合同型比較で接続した。
 左右の後続状態と実因子化の一巡を元の二表示から構成し、自然数再帰による
 全比較の可算交互列も得た。隣接段階の全図式・全余錐は厳密に制限される。
-この有限全比較列の全可算図式への貼合と、両側の共通部分表示の比較はまだ未完成。
+この全比較列の各形状を共終な標準単体列へ正規化し、P の公開済み貼合入口で
+native な可算 nerve 上の全図式へ貼り合わせた。さらに全増大余錐を元の共通大域頂点の
+slice 内で貼り合わせ、全有限段の厳密な回収を得た。大域頂点の compact 性は不要。
+両側の部分表示との比較と、元の三角形表示の同時細分への接続はまだ未完成。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 同じ P-11 に固定始域圏の小余積・有限余極限を渡し、その全小余極限の存在・
 包含の保存・周囲の指定余極限での閉性も証明した。固定始域圏の accessibility と

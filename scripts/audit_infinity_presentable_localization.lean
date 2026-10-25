@@ -461,3 +461,21 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @comparisonSequenceInclusion_mono
 #check @comparisonSequence_diagram_restrict
 #check @comparisonSequence_augmentation_restrict_val
+
+#check @doubleConeSimplexIso
+#check @doubleConeSimplexIso_prefix
+#check @ComparisonRound.simplexShapeIso
+#check @ComparisonRound.simplexShapeIso_prefix
+#check @comparisonSequenceDegree
+#check @comparisonSequenceDegree_monotone
+#check @comparisonSequenceDegree_cofinal
+#check @comparisonSequenceShapeIso
+#check @comparisonSequenceShapeIso_prefix
+#check @uliftStdSimplexIso_inv_prefix
+#check @exists_nativeDiagram_of_shapeTower
+#check @exists_comparisonSequenceDiagram
+#check @comparisonSliceDiagram
+#check @comparisonSliceDiagram_uncurry
+#check @comparisonSliceDiagram_projection
+#check @comparisonSequenceSliceDiagram_restrict
+#check @exists_comparisonSequenceSliceDiagram
