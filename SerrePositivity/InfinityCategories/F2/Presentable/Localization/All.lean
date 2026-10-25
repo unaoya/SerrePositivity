@@ -4,6 +4,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactEndpoints
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndCandidate
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSource
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialPieces
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorization
 
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
@@ -22,6 +24,9 @@ f2 の検証済み範囲：元の飽和射圏の小余極限、全小余極限�
 全生成射を含む小さい compact 候補まで構成した。
 その候補の包含を全自然同型で回収する実 Ind 比較も構成済み。
 f3 の準備：固定始域の全 coslice 部分圏と、同じ始域から閉包内の実辺を回収する入口。
+5.5.4.13 の添字側：seed と増大可算列の和集合の filtered 性・列の final 性・小ささ。
+各段階の compact 源からの任意の指定 coslice 点を、同じ余錐脚の上の実辺で因子化する入口。
+二つの実表示を結ぶ coherent 交互列と共通部分余極限は未構成。
 全射の filtered 生成性・飽和射圏全体の accessibility は未証明。
 P への供給依頼（コーディネータ経由）：indComparison_isFullyFaithful の引数分離。
 小さい元の i の充満忠実性・各像の compact 性、G の同じ濃度の filtered 保存と

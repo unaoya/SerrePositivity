@@ -78,3 +78,8 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSourceInclusion_isFullyFaithful
 #check @generatedSourceLeg
 #check @generatedSourceLeg_mem
+#check @sequentialPiece_exists_le
+#check @sequentialPiece_isFiltered
+#check @sequentialPieceSequence_final
+#check @sequentialPiece_hasCardinalLT
+#check @compactSource_coslice_factorization
