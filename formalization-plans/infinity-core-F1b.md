@@ -77,15 +77,26 @@ fiber 射へ後合成すると、同じ二延長の像の指定比較そのも�
 元の普遍 prism の像の指定比較を貼ると、像の実 prism の元の指定比較になる等式。
 比較を新しく選んだものへ置換していない。Ncomp 自体はなお未完。
 
+さらに元の slice 反転同型で共役した `coherentReverseSlicePost` を構成。
+`coherentCompositionReversePrism_post` は元の反転合成 prism 全体の厳密自然性、
+`coherentReverseSliceFiberComparison_post` は元の反転 Hom 比較の fiber 内の厳密自然性。
+`coherentCompositionReverseSpecified_post` は同じ元の指定対角比較を、
+後合成の像である元の実反転合成 prism の指定比較へ値まで移す。
+統合ビルド2788 jobs、専用監査9496宣言（標準三公理のみ）で通過。
+これで終域後合成に関する指定比較の移送まで完成したが、Ncomp の二射合成則とは別。
+
 **次の一手**：同じ実右 slice 写像と元の合成 prism の自然性を、
 元の指定普遍輸送比較へ移す。`relativePrismSpecified_naturality`、
 `pointedHomMorphismValueComparison_heq_prism`、
 `pointedValueFamilyTransportIso_at_right` に接続し、指定同型の合成則を証明する。
 新しい比較を選び直したり、その合成則を入力仮定に加えたりしない。
-後合成に関する指定対角比較の一般式は今回完成したので、同じ右 slice の
-反対 left fibration に適用し、元の Hom 合成 prism の比較をその像へ移す。
+後合成に関する指定対角比較の一般式を、同じ右 slice の反対左 coslice へ適用し、
+元の Hom 合成 prism の比較をその像へ移す部分まで今回完成した。
 左反転 Hom 側は最終対象が一点に固定された元の逆合成 prism なので、
 右 Hom 側の終域後合成と混同せず、同じ三射の高次整合で両側を照合する。
+次は元の零面・最後辺の指定自然性と、この移送式との接続を照合する。
+`pointedReverseKanCompositionTransportFamily` は逆豊穣圏の一点を終対象に固定するため、
+終域後合成の自然性だけから二射の指定評価比較の一致を結論しない。
 Ncomp が閉じてから、`spaceCompositionZero_morphism_coherence` と Nlong で a④へ進む。
 `TargetEndpointIso_trans_universal` や反映判定は未証明の値式の代用にしない。
 
