@@ -1,6 +1,6 @@
 # K-L9（Sp・ホモトピー群）
 
-> **v3（2026-10-24）**：Sp レーンの正本。所有：KST/Spectra/、KST/LocalizingInvariants/。局所化・分数・Verdier 商 API の正本。β6 g 完了。第二チャットは Sp-6 を先行。s4 の一般分数比較の充満忠実性は公開済み。β6 f・h は完了。残る s3 の実長方形と全指定境界比較を接続し s5 へ進む。その後 K-8 e → Sp-5 d3。LimitProjectionExistence は R で Core/ へ移動済み。
+> **v3（2026-10-24）**：Sp レーンの正本。所有：KST/Spectra/、KST/LocalizingInvariants/。局所化・分数・Verdier 商 API の正本。β6 g 完了。第二チャットは Sp-6 を先行。s4 の一般分数比較の充満忠実性は公開済み。β6 f・h は完了。残る s3 の実長方形と全指定境界比較を接続し s5 へ進む。s3 待機中は K-8 e の抽象部分を先行（10-26 指示）、供給到着時は s3 最優先。具体的 dg 塔・Tor 同定は K-S•-S4 の未供給入力。その後 Sp-5 d3。LimitProjectionExistence は R で Core/ へ移動済み。
 
 > **v2 の位置づけ（2026-10-19）**：foundations.md §6 の K-Sp。L9e の後、γ3 を使って Sp の ∞ 極限と安定 ∞ 圏としての Sp（局所化不変量の値域）。
 
@@ -14,6 +14,12 @@
 ### Sp-6 の追加依頼（β6 f と並行、区切りで対応）
 - [x] r1. K-B K-7 d2：nativeLoop の整数 π 関手の次数移動自然同型と、実 loop／円 cotensor 比較との照合。
 - [x] r2. D2 G-1 e④：LaxInclusion.snd_kernel により第二射影の核と C 因子の本質像を照合。
+
+### K-8 e の三段目（s3 待機中、10-26 指示）
+- [x] e1. 既存の積の切断降下・Postnikov 代数切断・pro fiber 連結度判定の範囲を照合する。
+- [x] e2. 元の射の cone の全遷移・自然な長完全列から、次数範囲付き pro 消滅と元の射の pro 判定を結ぶ。
+- [x] e3. H⁻ʲ の次数規約を保ち、Cor. 2.31 で元の不変量値の連結度・π-pro 同値へ送る。
+- [x] e4. 具体的 dg 塔・Tor 欠損比較を未供給の明示入力として登録し、抽象界面の集約・監査・保存を行う。実入力の充足・元の LT 図式の pro 切除は未完。
 
 ### β6 f の三段目
 - [x] f1. 指定された二脚・全乗法的経路の錐と、実経路模型への代数射の同値を構成する。
@@ -40,14 +46,14 @@
 - [x] g6. bounded-below 条件下の切断 pro 判定と、LT Lemma 2.30 の連結なレベル表示を構成する。
 - [x] g7. Cor. 2.31 を元の不変量値の塔へ適用し、次数別 eventual 連結度から π-pro 同値へ接続する。
 
-## 引き継ぎ（2026-10-25、Sp-6 s3 再開）
+## 引き継ぎ（2026-10-26、K-8 e 抽象部分を先行）
 
 ### 現在地
-- **再開の第一工程**：ユーザー指示により同じチャットで Sp-6 s3 を再開。実二面を絶対 PerfectVerdierDiagram との指定三境界付き全比較で認証し、同じ実長方形で貼合せを消去する接続口を提供。S 内の別の厳密代表は不要で、比較先は絶対 Cat^perf 長方形を直接受ける。K-S• の実右面・外周の全比較と上下二単体付き全長方形比較を接続する。商辺の関手同型だけでは全図式比較としない。s4 は完了、旧厳密版は不変。
+- **再開の第一工程**：s3 の K-S• 実右面・外周・全長方形比較は未供給。10-26 指示で K-8 e を先行、供給時は s3 最優先。実 cone の pro 消滅判定と元の不変量値への接続を供給する。K-S•-S4 の具体的 dg 塔・Tor 比較は明示入力、実在や LT の pro 切除を完成扱いしない。
 - **β6 f・h の現在地**：E2-S (7) fd3fd4bb8 の原本 Yoneda 全比較を実適用。元の AW 全標的図式と指定局所化 Hom の同型、全 ordinary Hom 単位を保つ under 同型、元の局所化上への延長と指定二胞体の厳密回収、元の postnikovInfinityCone の IsLimitCone を提供。非正次数の実 dg 代数 B・全 n≥0、元の頂点・二脚・class と指定底の実 fiber 模型を保持。比較・frame・ModelCategory を追加入力にしない。h の主要宣言は下表、検証記録はコミットメッセージ。
 - **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。D-21 の実完備化は K-S• の dgOdotMilnorCompletion に特殊化済み。実 S 長方形・屋根と全指定境界比較の一体化は未供給。s4 は実適用・集約・監査・公開保存を完了。β6 f・h は完了。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
-- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 は完了（d08ea0c53）。s3 の完備化付き実二面・始域屋根の接続を進める。β6 f・h は完了。その後 K-8 e→Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
+- **第二チャットは Sp-6 を先行**：K-S• の S 内零化・長方形、K-B の固定 ν 上の懸垂屋根の相対 Verdier 接続、一般分数比較の充満忠実性。s4 は完了（d08ea0c53）。β6 f・h は完了。s3 待機中は K-8 e 抽象部分を先行、実供給時は s3 へ最優先で戻る。その後 Sp-5 d3。二段目完了か稼働24時間で引き継ぐ。
 - **正本の入口**：PostnikovCommonCore、PostnikovSuccessorClassInverseData、postnikovFiniteMap_exists_nonpositiveInverseRoof_int、ConnectedLevelRepresentation／connectedLevelRepresentation、IsKConnective.invariantLevelMap_piProConnected、invariantLevelMap_piProEquivalence_of_piProEquivalence／of_eventual_groups／of_forall_proConnected。元の n=1 Common・Two の宣言名・型・所在は特殊化界面として維持する。
 - **運用**：自分の集約ビルドと専用監査のみ。全体の統合検証は R の停止窓。所有外は読むだけ。新規 sorry・公理・引用、ModelCategory 仮定、モジュール移動・改名・削除を導入しない。記録はコミットメッセージ。
 - **Spectra 4 WIP**：未追跡の PointedUncurryActionTensor、PointedParametricUncurryAction、PointedUncurryComposition、PointedParametricUncurryPre は保持し、集約・監査・コミットに接続しない。旧 evaluationPost・uncurry 経路を再開しない。
@@ -94,6 +100,8 @@
 | 指定分母輸送：提供済み | tammeDenominatorSpanTransport_groupoidCompletion_isEquivalence | T、x、s∈W、輸送射 f とその両端・基底が s に一致する prism H。groupoidCompletionMapOf f の同値性。 |
 | Verdier 列の値の fiber：提供済み | laxQuotientVerdierSequence・IsLocalizingInvariant.laxQuotientFiberTriangle_isFiber・LaxQuotientPullback.square_isPullback・TammePullback.square_isPullback | 安定な Q、完全な i,r、IsVerdierSequence i r を明示入力し、局所化不変量を適用。反射的な経路では q の充満忠実な右随伴も入力。 |
 | Sp・pro の補助成果：提供済み | FiberDiagram・ProFiberSequence・IsLocalizingInvariant.proFiberSequence・ProFiberSequence.projection_piProEquivalence・ProSpectrum.piProEquivalence_iff_kernel_image | 実 fiber 図式／局所化不変量の塔。射影の π-pro 同値には左項の全整数 π-pro 零性。一般 pro ∞ 同値との同一視はしない。 |
+| K-8 e の cone・Tor 抽象判定 | CochainProCone.tower・boundary・map_isProIso・proZero_iff_map_isProIso、DGAlgebra.comparisonCone_proZero_iff_piProConnected／piProEquivalence、IsKConnective.invariantLevelMap_piProConnected／piProEquivalence_of_comparisonCone、piProEquivalence_of_positiveTorModel | 元の実射と全遷移を保持。cone の H⁻ʲ（j≤n）の pro 零性は元の射の n-pro 連結度、全次数版は π-pro 同値。値では n+k。正次数 Tor 版は実自然比較・零次数 pro 同型・離散標的が入力。一般 pro ∞ 切除とは未同定 |
+| K-S•-S4 の未供給界面 | DGAlgebra.ProComparisonTowerInput・ProComparisonConeHomologyInput、cone_proZero・comparison_piProEquivalence・comparison_piZero_isProIso・invariant_piProEquivalence／piProConnected | 非正次数 dg 代数の元の塔・LevelHom と、cone の H⁻ʲ と既に次数を合わせた Tor 欠損の全遷移に自然なレベル同型。零次数も省略しない。構造体の実在は未証明、K-10 e・d④ 後に K-S• へ実供給を依頼する |
 | 比較・正規化の補助成果：提供済み | FiberDiagram.normalizedHom_eq_modelComparison・FiberDiagram.boundaryHom_natural・LaxUniversalProductNormalization.square_isPullback | 指定 BF fiber 模型・元の図式と比較データ、または完全関手と局所化不変量。詳細な境界条件は各宣言の型。 |
 | 一般商の安定性：未提供 | — | 右随伴の仮定を外した tammeQuotient の IsStable、および一般の安定 ∞ 圏の Verdier 商の安定性。 |
 | 一般商の完全性：未提供 | — | 一般商の有限極限・有限余極限と商関手の IsExact。上記の安定 Q・完全 r を入力する定理では代用しない。 |
@@ -175,8 +183,8 @@
 - 元の包含・商・四辺と二つの合成三角形を明示して保持する。始域回収は元入力への増大屋根と ν 像の指定同値で受け、S 内の source_vertex_eq を主経路で要求しない（17:53 採用、RelativePerfectVerdierSourceRoof で受ける）。旧等号版は特殊化として保持する。絶対 PerfectVerdierDiagram の認証から同じ実 ν 二面へ全比較を運び、同じ実 S 長方形の値で貼合せを消去する。辺の関手同型だけから全図式比較や S 内の厳密代表を推論しない。長方形と全図式比較の存在は未証明。
 - K-B の DGKappaSuspensionRelativeRoofInput は現行の型で受けられる。I・P は変更せず、実核・指定収縮・Verdier 証拠・零角の Perf 値の零性の供給後に exists_dgFixedNullRelativeRoof を適用する。一般分数比較の充満忠実性は s4 で供給済み。
 
-### Sp-6 の仮定入力一覧（実在は未証明、完成扱いにしない）
-- 下記の旧 strict Verdier 入力は特殊化として保持し、一般 Perf 商の主経路には用いない。主経路は完備化付き列と Cat^perf 不変量。新たな相対不変量条件は置かない。
+### Sp-6／K-8 e の仮定入力一覧（実在は未証明、完成扱いにしない）
+- 下記の旧 strict Verdier 入力は特殊化として保持し、一般 Perf 商の主経路には用いない。主経路は完備化付き列と Cat^perf 不変量。新たな相対不変量条件は置かない。 K-S•-S4 の ProComparisonTowerInput／ProComparisonConeHomologyInput は明示入力：実 ⊙→B′ の dg 塔、次数ずれと零次数も含む実 Tor 欠損との全遷移に自然な比較。実供給は K-10 e・d④ 後。
 - D-20 の固定 ν の Perf 零性は適用済み。D-21 の実完備化は K-S• の dgOdotMilnorCompletion／_isIdempotentCompletion に特殊化済み。未分解の Perf 商辺に strict Verdier 証拠は要求しない。
 - VerdierSquareBoundaryIso／VerdierRectangleBoundaryIso：呼出側が指定する包含辺・商辺・零角の比較、および長方形の上下の合成二単体の比較。零角の比較を厳密等号とはしない。
 - VerdierSquareDiagramIso／VerdierRectangleDiagramIso：全図式 FunctorIso と、指定した各境界・二単体の比較への制限等式。
@@ -191,7 +199,7 @@
 - s4 は d08ea0c53 で完了。s3 の同じ実 S 長方形・屋根・全指定境界比較を K-S• が供給したら s5 へ接続する。β6 f・h は完了。E2-S (6)(7) の実比較・単位を元の試験錐へ適用済み。現在は Sp-6 s3 の実二面・全比較・始域屋根の接続。未供給の具体的入力で完成扱いにしない。
 
 ### 次の一手
-- **Sp-6 s3**：β6 f4・f5・h は完了・保存済み。実二面の絶対提示との全比較から元の長方形へ直接接続する。K-S• の実右面・外周の指定全比較、上下二単体を保つ全長方形比較と同じ始域屋根の供給を確認する。実在未証明の比較を条件付き主経路の完成に数えない。
+- **K-8 e／s3**：K-8 e の cone・Tor 抽象判定は公開・集約・監査済み。具体的入力は K-S•-S4 として未供給を維持し、K-10 e・d④ 後の実供給を待つ。K-S• の実右面・外周・上下二単体を保つ全長方形比較が届いたら、s3 の実二面・同じ始域屋根の接続へ最優先で戻る。
 - **β6 g の現在の界面**：有限切断の実逆は postnikovFiniteMap_exists_nonpositiveInverseRoof_int、値と切断間遷移の整合は postnikovFiniteInverse_values_transition。connectedLevelRepresentation は元の射を厳密に因子分解し、各段で n-connected な源射と全有限切断の実逆を持つ π-pro 比較脚を構成する。IsKConnective.invariantLevelMap_piProConnected は n≥1 の元の射から値の (n+k)-pro 連結度を導き、次数別 eventual 核・像条件と任意 pro 連結度から値の π-pro 同値へ接続する。
 - **g5 の設計（採用済み・実装済み）**：class・W の正本は切断次数 n≥0 の共通核。下段 roof から n を推論し、単位 shift 1 と切断次数 n・独立な層次数を区別する。Common 系と successor 模型へ一般化し、既存 n=1 Common・Two の宣言名・型・モジュール所在を特殊化界面として維持する。元の係数の両三角形・class 全経路・動く底・準同型比較・値の三角形を保持する。
 - **g4 の採用済み細分（順序固定）**：左 class 経路の別構成は行わず、Δ : τ₂A → τ₂A×ʰ_{τ₂B}τ₂A の非正次数模型に完成済みの右逆構成を適用する。20:00 の右三角形と SurjectiveRoof.diagonalCancellation を保持する。
@@ -228,7 +236,7 @@
 - **(b) D 側の完成界面**：initial_prism_extend_two_endpoints は両端と境界を固定し、最初の頂点一つの始対象性から延長する。lax_snd_initialBoundary は第一成分とその像が始対象である任意の頂点の第二射影に対する相対始点境界充填を証明する。LaxInclusion.fromD_initialBoundary・fromD_mapping_equivalence・fromDAdjunction・fromDAdjunction_unit・fromD_fullyFaithful は元の D 包含と第二射影の実随伴と写像空間の充満忠実性。単位は fromD_snd の厳密等式から選ぶ。RelativeInitialVertexIso は二つの相対始対象の像の同型を元の圏へ持ち上げ、LaxInclusion.fst_kernel は零化と本質像の一致を証明する。Tamme の写像空間正方形をさらに包装する代わりに、既存 F1b の相対境界充填からの標準写像空間の同値を使った。
 - **(c) の完成界面**：Binary.hoLift・hoMap・mapIso・swapIso と両軸・射影の整合式で、K-5 の補助因子を元の Φ(C), Φ(D) に同定する。IsLocalizingInvariant.tammeSplitEquivalence は要求の向き Φ(lax) ≃ Φ(C)×Φ(D)、tammeProductCone_isLimit は元の二因子の実 ∞ 積錐。tammeSplitComparison_C/D と projection は両包含・第一射影との h Sp の整合式。第二射影の整合式や Sp の IsStable を先取りしない。
 - **(d) の到達点**：通常 pullback の安定性・完全包含、元の完全な差と核、target 評価・cofiber の随伴は完成。q ⊣ v（v 充満忠実）の場合は差の実右随伴・局所化・Verdier 普遍性と不変量の実 fiber 列・全整数長完全列を供給する。d7 の一般局所化・pointed 商候補・真の核・Ore・元の分母輸送の亜群化同値は「主要宣言」の補助界面として保持し、一般商の安定性・完全性・分数写像空間比較は未完のまま停止。d8 は安定 Q と IsVerdierSequence を入力に、実 product fiber、元の包含・両射影と右辺を保つ三対象の比較、全整数長完全列と reflective な場合の整合を提供する。完全な入力 suspension と逆 shift により一般商の二脚を明示し、cofiber 差の場合は元の p,q に戻る。E(Σ_Q) の整数 π の負号と差の二脚の π 公式も完成。LaxCounit.cofiber の両射影を計算し、cofiber_fromCIso と laxQuotientLegsIso により C 包含および一般商の二脚を全関手同型で比較する。値の四辺固定の候補正方形・E(A) を頂点とする実錐も存在する。rightCompatibleFromCIso_right は元の cofiber 右辺と C 単位の整合を全関手圏の射の等式で保持する。商での全 cofiber 図式比較は底辺で恒等となり、右辺の自然性・始点の恒等性と C 単位の像の合成式まで提供した。quotientSelectedCIso_right と始点固定の suspension 全図式比較を結び、元の比較道の指定二単体と三次元の証人を保つ LaxQuotientRelativeSquare.square、およびその同じ E の像まで提供した。四辺を元の BF 合成射へ戻した LaxQuotientBFNormalization.square/cone と全図式比較も提供した。さらに J の第一射影は D 上で零で、元の C 単位に沿って fst を通し、C 上の零終点逆回転と suspension 全図式から firstCLegIso を構成した。J の二脚は元の一般商の二脚に同定済み。今回、J の包含上の全族の対角比較と恒等 lax 差の実 Verdier 列、指定した二次の合成を保つ長方形・元の i,r の外周 Verdier 図式を構成し、局所化不変量の比較正方形の実 pullback 性を証明した。今回、指定した頂点同型を保つ全図式移送と境界変形により、元の BF 積射・対角の実 pullback と元の E(A) を頂点とする実極限錐を構成した。今回、両射影の基底変換と graph・対角の正方形の実 pullback 性を、四辺と指定合成三角形を保って証明した。今回、その最後の厳密延長を接続し、元の二脚の実 pullback・E(A) を頂点とする実極限錐・選択した極限錐との同型を完成した。充満忠実右随伴の場合も元の p・q への全図式比較を構成済み。旧候補錐の任意の選択を極限扱いせず、証明した LaxQuotientPullback.cone を使う。
-- **現在の残工程（v3）**：β6 g と f・h は完了。Sp-6 s3 の実長方形・完備化後の商境界の全比較を接続し s5、その後 K-8 e の pro 抽象部分、Sp-5 d3。CochainTensorTruncationDesc.descendTensor、DGAlgebra.postnikov／postnikovQuotient と有限切断の実 pro 比較、ProFiberSequence.piConnective_iff_projection_connected は既存正本を使う。次数別 π-pro 条件を LT の切断 pro 零性や一般 pro ∞ 同値と同一視しない。Tor pro 比較から抽象切除への接続・実 Tor 模型の同定は未供給。
+- **現在の残工程（v3）**：β6 g と f・h は完了。10-26 指示で s3 待機中は K-8 e の pro 抽象部分を先行。K-S• の実右面・外周・全長方形比較が届けば s3→s5 を最優先。その後 Sp-5 d3。CochainTensorTruncationDesc.descendTensor、DGAlgebra.postnikov／postnikovQuotient と有限切断の実 pro 比較、ProFiberSequence.piConnective_iff_projection_connected は既存正本を使う。次数別 π-pro 条件を LT の切断 pro 零性や一般 pro ∞ 同値と同一視しない。元の比較 cone の pro 消滅から元の射・不変量値へ送る抽象判定は提供。具体的 ⊙ 比較の塔・実 Tor 欠損の同定は K-S•-S4 の明示入力で未供給、元の LT 図式の pro 切除は未完。
 - **原典**：[Tamme 2018 §1、Prop. 10–11・Cor. 12](https://arxiv.org/html/1703.03331)、[Land–Tamme 2019 §1・§2.4](https://arxiv.org/html/1808.05559)、分数写像空間は [Nuiten §3・Cor. 3.14](https://www.math.univ-toulouse.fr/~jnuiten/Writing/Localizing.pdf)。一般の正方形に excision を無条件で課さず、差の項の商の存在・普遍性を証明せずに完成扱いしない。Sp の IsStable は全工程で使わない。
 
 ## 範囲と所有
