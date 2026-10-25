@@ -32861,3 +32861,81 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.stableKanAssemblyRightAdjoint_piIsomorphism
 #print axioms SerrePositivity.KST.SConstruction.stableKanAssemblyRightAdjoint_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.nativeBFArrowNaturalityTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeBFArrowNaturalityTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFinitePositiveComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFinitePositiveComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveLevelComparison_naturality_component
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFPositiveLevelComparison_naturality_component
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFIntegerComparison_apply
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFIntegerComparison_apply
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFIntegerComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFIntegerComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.nativeBFArrowStagesTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeBFArrowStagesTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteArrow
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteArrow
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteArrow_app
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteArrow_app
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBoundaryFunctor_hom
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteBoundaryFunctor_hom
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBF_zeroVertex
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBF_zeroVertex
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteObjectOfVertexEq
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteObjectOfVertexEq
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeObject
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeObject
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow
+
+#check @SerrePositivity.KST.SConstruction.nativeCoherentBFArrowTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeCoherentBFArrowTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrow
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrow
+
+#check @SerrePositivity.KST.SConstruction.nativeCoherentBFArrowComparisonTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeCoherentBFArrowComparisonTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow_forget
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow_forget
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrowSourceIntegerEquiv
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrowSourceIntegerEquiv
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrowTargetIntegerEquiv
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrowTargetIntegerEquiv
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrow_homotopyMap_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFArrow_homotopyMap_eq
+
+#check @SerrePositivity.KST.SConstruction.nativeCoherentBFBoundaryTarget_simplicialCategory
+#print axioms SerrePositivity.KST.SConstruction.nativeCoherentBFBoundaryTarget_simplicialCategory
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFSquareEdge
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFSquareEdge
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFNativeSquare_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFNativeSquare_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteNativeArrow_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeBFFiniteSquare_boundary
+
+#check @SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFSquare_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgKappaNativeCoherentBFSquare_boundary

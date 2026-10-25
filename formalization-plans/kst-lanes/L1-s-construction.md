@@ -65,7 +65,7 @@
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
 ### 未コミット
-- 同じ未完備 native 四頂点像の全正段の実再帰・Ω 条件・全 Hom の BF 豊穣関手と、元の全二胞体を写す `dgKappaNativeCoherentBFSquare` を構成済み。`dgKappaNativeCoherentBFPositiveComparison` は全正段で元の S• 全四角形への指定同型。旧値から同じ実 BF 値への指定全整数群同型は `dgKappaNativeBFIntegerComparisonEquiv`。新14葉73宣言は対象・集約15,228 jobs・公式監査12,711件を通過し保存対象。標準三公理のみ、ModelCategory 仮定なし。閉包11,418モジュールは全解決。四辺の旧 π 作用との可換性は未完。一般安定圏の BF 関手は構成しない。
+- Φ と全正段比較・全整数群同型は保存済み。`DGKappaNativeBFArrowStages`・`ArrowNaturality`・`NativeObjects`・`DGKappaNativeCoherentBFBoundary`・`ArrowComparison` の新5葉26宣言は対象・集約15,233 jobs・公式監査12,737件を通過。標準三公理のみ、ModelCategory 仮定なし、閉包11,423モジュールは全解決。元四辺の厳密回収と指定全整数群同型による旧四辺との可換性を無条件に構成。d④ の全 Hom 零成分への因子分解を新葉で再開中。一般安定圏の BF 関手は構成しない。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
@@ -84,7 +84,7 @@
 - Git は既存の gc.log と unreachable loose objects の警告を出す。整理操作はしていない。
 
 ### 次の一手
-- 優先供給（ユーザー採用・新四辺方式）：同じ未完備 D-9 native 一四角形で coherent BF 四辺を同時構成し、旧 `kSpectrumMap` とは全正段の指定比較と全整数 π 作用の一致を公開する。旧四辺との全 Sp 写像空間内比較は追わない。旧公開宣言・型は不変。`dgKappaNativeCoherentBFSquare`・`dgKappaNativeCoherentBFPositiveComparison` は構成済み。残る公開予定名は `dgKappaNativeCoherentBFArrow`・`dgKappaNativeCoherentBFArrow_homotopyMap_eq`。旧依頼の辺の厳密等式を指定比較＋π_* 一致へ変更する。有限二胞体に限り、一般 StableInfinity 上の K 関手化は再開しない。見積り6〜12時間。元 BF 境界・正段全像・指定 SOA→Ex∞ 比較は構成済み。全 Sp 四角形と全正段の全図式比較は実構成済み。四辺の整数 π 作用の可換性が残る。各段成分の等号から全比較を結論しない。
+- 優先供給（ユーザー採用・新四辺方式、構成済み）：同じ未完備 D-9 native 一四角形で coherent BF 四辺を同時構成し、旧 `kSpectrumMap` とは全正段の指定比較と全整数 π 作用の一致を公開する。旧四辺との全 Sp 写像空間内比較は追わない。旧公開宣言・型は不変。`dgKappaNativeCoherentBFSquare`・`dgKappaNativeCoherentBFPositiveComparison` は構成済み。`dgKappaNativeCoherentBFArrow`・`dgKappaNativeCoherentBFSquare_boundary`・`dgKappaNativeCoherentBFArrow_homotopyMap_eq` も構成済み。旧依頼の辺の厳密等式を指定比較＋π_* 一致へ変更する。有限二胞体に限り、一般 StableInfinity 上の K 関手化は再開しない。対象・集約・公式監査済み。元 BF 境界・正段全像・指定 SOA→Ex∞ 比較は構成済み。全 Sp 四角形と全正段の全図式比較は実構成済み。四辺の整数 π 作用は指定群同型 `dgKappaNativeCoherentBFArrowSourceIntegerEquiv`・`TargetIntegerEquiv` により旧射と可換。元四完全射は `dgKappaNativeBFFiniteNativeArrow_forget` の Arrow 等号で回収する。各段成分の等号から全比較を結論しない。
 - **厳密 dg 入力に限定**（ユーザー指示）。一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する。既存の各段比較と六結合替え持ち上げは補助成果として保持し、native な隣接段比較や全 raw 列の完成とは数えない。
 - **K-10 c 三段目（完了）**：7 項目を完了し、元の右脚・商 End・全 Hom 比較を保持して保存済み。
 - **K-10 d②〜d④・e② 三段目（固定）**：
