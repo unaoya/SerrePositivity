@@ -195,7 +195,33 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceRightCut,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceTerm,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSourceSum,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftResidual]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftResidual,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftHomComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.PointHomLiftCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LinearReflectionSigns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LinearReflectionData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LinearReflectionNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LinearReflectionIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LeftRightHomIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSubset,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.LeftRightHomCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSubsetFactorization,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.NativePointHomLift,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterErase,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterLeftCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterRightCut,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftHomEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredParameterLeft,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredRightHom,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredParameterRight,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredParameterTerm,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredFullEquation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftParameterDegeneracies,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeLiftSubsetNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeRecoveredFaceNaturality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -228,3 +254,12 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedNativeCocone_isColimit_of_cosliceComparison
 #check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedNativeCocone_isColimit_of_pointHomComparison
 #check SerrePositivity.InfinityCategories.dgCoherentBarNativeCoconePoint_hom
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarNativeLeftRightHomIso
+#check SerrePositivity.InfinityCategories.dgCoherentBarLeftRightHomIso_component
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarNativePointHomLiftSimplex_source_hom
+#check SerrePositivity.InfinityCategories.dgCoherentBarNativePointHomLiftSimplex_tail_hom
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeLiftHom_parameter_differential
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarCoconeRecoveredRawData_full_equation
