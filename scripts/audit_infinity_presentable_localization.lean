@@ -500,3 +500,15 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #check @sequentialPieceInclusionFunctor
 #check @nerveIndexPiece_factorization
 #check @nerveIndexPiece_final
+
+#check @comparisonEvenFace
+#check @comparisonOddFace
+#check @comparisonEvenFace_succ_join
+#check @comparisonOddFace_succ_join
+#check @ComparisonRound.left_face_successor
+#check @ComparisonRound.right_face_successor
+#check @comparisonSequenceParityShapeIso
+#check @comparisonSequenceLeftParityShapeIso
+#check @comparisonSequenceRightParityShapeIso
+#check @comparisonSequence_left_parity_face
+#check @comparisonSequence_right_parity_face
