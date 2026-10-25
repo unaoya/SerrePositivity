@@ -2270,4 +2270,6 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresent
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeInvariance
 
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeCoherent
+
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

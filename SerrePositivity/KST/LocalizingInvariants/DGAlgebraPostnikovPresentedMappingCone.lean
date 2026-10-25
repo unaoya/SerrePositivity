@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLargeSpaceLimit
+public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeCoherent
 
 /-!
 概要：元の dg 代数の局所化提示の錐を、大宇宙の実 cell 写像錐と全図式で照合する。
@@ -27,6 +28,13 @@ lemma postnikovPresentedCellMappingDiagram :
     multiplicativeCellMappingInfinityKanFunctor R A = _
   rw [Functor.assoc, multiplicativeCellMappingInfinityKanFunctor_original]
   rfl
+
+lemma postnikovPresentedCellMappingCoherentDiagram :
+    SSet.uliftFunctor.{u + 2, u + 1}.map (nerveMap (postnikovInfinityCospan R B n hn)) ≫
+        multiplicativeCellMappingInfinityCoherent R A =
+      kanDiagramCoherentNerve (postnikovCellLargeKanDiagram R A B n hn) := by
+  change _ ≫ kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A) = _
+  rw [kanDiagramCoherentNerve_precomp, postnikovPresentedCellMappingDiagram]
 
 set_option maxHeartbeats 800000 in -- 元の提示錐と cell 写像錐の型の表示を照合する。
 def postnikovPresentedCellMappingCone : Cone (postnikovCellLargeKanDiagram R A B n hn) :=
