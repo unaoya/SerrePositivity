@@ -32051,3 +32051,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuComparison
+
+#check @SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
+#print axioms SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectFunctorImageLift
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectFunctorImageLift
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectFunctorImageLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectFunctorImageLift_inclusion
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityBase
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityBase
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityGluing
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityGluing
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityDifference
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityDifference
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifference
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBaseInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityBaseInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluingInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityGluingInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonalInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDiagonalInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorIdentityDifferenceInputMap
