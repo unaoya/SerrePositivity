@@ -90,7 +90,7 @@
   `FrameHom/ReplacementComparison` は元の frame・分解・終域置換の比較自身の弱ホモトピー同値を、SSet モデル・cofibration＝単射の仮定なしで証明する。right frame との混合比較・三本矢の入口と必要条件は README に列挙。選択比較だけを全 ∞ 局所化の写像空間比較の完成とは扱わない。
   コーディネータ指示で畳み込み一般版を EInfinity に新名で構成し、KST への import は追加しない。Sp の畳み込み・定数射の版は準重複として記録し、第 I 段終了時に R がこの原本へ付け替える。対象・集約ビルド、全公理監査、17 独立例と新規 128 宣言の公理検査が完了。所有 import 閉包の未保存依存は零。E2-S (5) は供給完了により停止。
 - **E2-S (6) 進行中**：工程1は一般モデル圏の実 `rightFrameHom` の全標的関手・元の射の augmentation・Kan 性・標的弱同値の QCat 同値性まで。工程2は全単体の `rightFrameElementSpanFunctor`、`rightFrameRoofComparison_isWeakHomotopyEquivalence`、`FibrantRightSpans.inclusion_isWeakHomotopyEquivalence` を検証。`rightFrameReplacement` は同じ right frame の次数零で、fibrant 値・cofibrancy 保存・弱同値保存を保持。完全な frame→hammock 比較は未完。
-  工程3は `SimplicialLocalization/ModelCofibrantRelative`・`ModelCofibrantFrame`・`ModelCofibrantRightKanShape`：一般の cofibrant 相対圏、元の Reedy 解像の持ち上げと Hom 同型、実 right Kan 次数比較・射影の一致・反転関手の frame 上の極限まで。次は次数比較の余終性を証明し、代数版の三つの right Kan 入力を一般化して `isLocalization_of_rightKan_local_limits` へ渡す。任意相対圏の普遍性は不要、全 C の指定局所化への包含比較は本項に含む。
+  工程3は `SimplicialLocalization/ModelCofibrantRelative`・`ModelCofibrantFrame`・`ModelCofibrantRightKanShape`：一般の cofibrant 相対圏、元の Reedy 解像の持ち上げと Hom 同型、実 right Kan 次数比較・射影の一致・反転関手の frame 上の極限まで。`ModelBifibrantRightKanReduction` で三つの right Kan 入力と局所化普遍性を次数比較の余終性へ還元済み。余終性そのものは未証明。任意相対圏の普遍性は不要、全 C の指定局所化への包含比較は本項に含む。
   工程4はユーザー承認の coherent 形式。葉 `LocalizationComparison` の `localizationComparisonData` が元の比較 K と指定 `FunctorIso (F ≫ K) G` を保持し、`CoherentLocalizationComparison.pinchedEquivalence` は同じ成分の共役による実 QCat 同値。`pinchedEndpointEquivalence_family` は任意パラメータの公式。生の辺の厳密化は構成しない。全 frame Hom→指定局所化 pinched Hom の供給は未完。
   設計採用済み：代数版の raw roof 比較は全標的 fibrant を使う。まず bifibrant 全部分圏で三つの判定入力と hammock 普遍性を証明し、同じ `rightFrameReplacement` の自然な弱同値の変形で cofibrant 部分圏・全 C へ戻す。指定局所化の源が両方のどちらでも届く形にする。
   暫定 import は承認された Sp `LocalizationUniqueness` を新しい葉からのみ使用し、KST dg 畳み込み系は import しない。閉包中の HomotopicalAlgebra 15 本は編集しない。代数版の一般化は準重複として R の整理対象。全対象 fibrant を任意モデルの仮定に加えない。
@@ -132,8 +132,9 @@
   Subcomplex は CompleteLattice のみ。有限分配は subcomplex_inf_finsetSup。Limits.Sigma.map は完全修飾。proof-only section 変数は include。
   既存 ThreeArrowPaddingSpan.toOuter_naturality_app のみ理由コメント付き局所 maxHeartbeats 800000。今回追加分は標準上限。監査の公開名抽出では namespace と名前付き section を区別し、必須配列を変更しない。
 - **既知の問題・依存**：P-6 は4a6a7dd91で公開済み。CommaLocalUnitComparison・CommaLocalUnitTransportComparison を読み取り専用で import する。commaTargetFiber_constant_homotopy と g2-1 の同じ候補の定値 Hom 類から、回収辺の類を元の derivedFreeProbeUnitHom へ同定した。unitIntervalMapAt_commaTransportIso を元の候補へ代入し、FreeProbeUnitTransportCondition を追加仮定なしで証明済み。条件付きの構成は補助入口として保持し、主経路は FreeProbeDerivedFreeForget の条件なし宣言を使う。P への未解決依頼はない。
-- **未コミット**：`SimplicialLocalization/ModelBifibrantRelative.lean` は次工程の編集中で、集約・監査には未接続。前段の11新規モジュールは集約11795 jobs・全監査26835宣言・21独立例・新規76宣言の公理検査を通して保存。閉包7840本の digest 一致、他レーン未保存依存0。
-- **次の一手**：E2-S (6) の採用済み bifibrant 中継を構成し、実 right Kan 次数比較の余終性と三つの判定入力を一般化する。G1′-1〜5 は完了、BS-7 は第 II 段。
+- **採用済みの追加入力**：主定理は ModelCategory と第一の HasFunctorialFactorization を明示入力に取る。Mon (Complex R) の実モデルでは generatingCofibrations_smallObjectArgument から放電し、Sp へ仮定の残らない特殊化を供給する。実 dg 代数は allFibrant。全置換圏による一般化は不採用、第 II 段・R の候補として記録するだけ。
+- **未コミット**：なし。bifibrant 中継・元の fibrant frame 比較・条件付き right Kan 還元と相対豊穣関手の17新規モジュールを保存。集約11812 jobs・全監査・28独立例・新規130宣言の公理検査を通過。閉包7857本の digest 一致、他レーン未保存依存0。一般比較全体は未完。前段は873a67f68。
+- **次の一手**：採用済みの第一関手的分解を実 dg モデルで放電し、bifibrant 経由の比較を続行する。三つの判定入力の還元は完成、実次数比較の余終性と全 frame→指定 pinched Hom 比較は未完。G1′-1〜5 は完了、BS-7 は第 II 段。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
   `FreeProbeUnderlyingReplacementComponent` は閉包内の全列自然性から元の置換 augmentation の忘却正方形を回収し、標準単位成分と局所化源単位の等式へ接続する。同型の等式を先に固定し、同じ射へ写すことで大きな関手の不要な定義展開を避ける。資源上限を上げない。

@@ -2978,3 +2978,27 @@ frame Hom から指定局所化の pinched Hom への全族の比較と同じ射
 代数版の raw roof による余終性判定は標的の fibrancy を使う。
 この補題を cofibrant 部分圏の非 fibrant 標的へ無条件に移したとは扱わない。
 bifibrant 部分圏で判定した後、同じ right frame の変形で cofibrant 部分圏と全 C へ戻す補助経路を採用した。
+
+
+`FibrantFrameSpanNormalization.comparisonNerveMap_isWeakHomotopyEquivalence` は
+fibrant な標的への元の source frame の同じ三本矢比較射自身を反転する。
+`frameElementSpanNerveMap_isWeakHomotopyEquivalence_of_fibrant` は既存の Hom 宇宙表示へ戻し、
+`resolutionLeftRoofNerveMap_normalized_isWeakHomotopyEquivalence_of_fibrant` は
+同じ二列 roof の正規化を reduced hammock まで接続する。後者は両関手的分解を明示入力に取る。
+
+`ModelBifibrantRelative`・`ModelBifibrantDeformation`・`ModelBifibrantHammockWeak` は
+同じ right frame の次数零による cofibrant・bifibrant 間の実変形と、両方向の元の hammock Hom 射の弱同値性を与える。
+`ModelBifibrantFrame` は元の解像を同じ全部分圏へ持ち上げ、全 Hom を実同型で回収する。
+`modelBifibrantHammock_isLocalization_of_frameCofinality` は実次数比較の余終性を
+**明示入力に残した還元**であり、無条件の局所化普遍性の完成ではない。
+`ModelCofibrantDeformation`・`ModelCofibrantHammockWeak` は全 C への補助比較で、
+第一の関手的分解を明示した追加の class 入力に持つ。一般の ModelCategory のみではこの入力を仮定しない。
+
+`RelativeHammockEnriched` の `relativeHammockEnriched`・`relativeKanHammockFunctor`・
+`relativeKanHammockNerve` は、元の相対関手の全 hammock Hom 射を単位と合成を保つ
+一つの豊穣関手と coherent nerve 射へ束ねる。`relativeKanHammockNerve_fullyFaithful` は
+その元の全 Hom 射の弱同値性を入力に充満忠実性を返す。点ごとの逆の選択は使わない。
+
+ユーザー決定により E2-S (6) の主定理にも第一の HasFunctorialFactorization を明示する。
+Mon (Complex R) への供給では実生成 cofibration の小対象論法から放電し、追加仮定を残さない。
+全 cofibrant 置換の圏を使う一般化は今は構成せず、第 II 段・R の候補として記録する。
