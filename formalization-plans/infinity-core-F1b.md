@@ -95,8 +95,18 @@ left fibration に持ち上げる。`simplexSharedFacePrism` は隣接面の共�
 任意の底の実四面体族について、元の初期値を固定する同じ実全四面体を与える。
 統合ビルド3360 jobs、専用監査10118宣言で通過、標準三公理のみ。
 推移的 import は2142プロジェクトモジュール、他レーンの未保存依存は0。
-Ncomp 本体は未完。次は三射と一点係数を保持した元の coherent 図式の四面を
-この定理の四面へ同定し、元の二段評価と合成評価の指定値へ接続する。
+元の合成四角形の全図式も `coherentCompositionSquare_triangle_recovery` と
+`coherentCompositionSquare_triangle_recovery_precomp` で、同じ三角形の折り畳み
+から厳密に回収した。右 join prism の先頭制限の計算によるもので、四辺一致
+だけへの弱化ではない。`transportTriangleBaseOfLift_eq_coherentKanSquare` により、
+元の Kan 三角形を被覆する実三角形の底を元の合成四角形そのものへ戻した。
+`coherentSimplexAppendMorphism_face_penultimate` は追加した射の直前の面を
+元の後合成へ同定する。`coherentSimplexAppendMorphism_reindex` はその追加を
+二重の最終点固定添字制限に関して全 Hom ごと自然にする。
+統合ビルド3407 jobs、専用監査10137宣言で通過、標準三公理のみ。
+推移的 import は2161プロジェクトモジュール、他レーンの未保存依存は0。
+Ncomp 本体は未完。次はこの追加操作を元の三射・一点係数の実高次族へ束ね、
+四面を四面体則へ同定して、元の二段評価と合成評価の指定値へ接続する。
 a④・b① は未着手であり、これらの補題だけで完了とは主張しない。
 
 

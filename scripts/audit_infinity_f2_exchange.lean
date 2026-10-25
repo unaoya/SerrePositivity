@@ -30,6 +30,9 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTriangleS
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportIntervalSharedPrism
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedronCoherence
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.TransportTetrahedronExistence
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCompositionTriangleBaseRecovery
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendPenultimateFace
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentAppendMorphismReindex
 import Lean.Util.CollectAxioms
 
 /-!
@@ -127,6 +130,16 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.TransportTriangleDiagram.comparisonAlong_heq
 #check @SerrePositivity.InfinityCategories.F2.TransportTetrahedronDiagram.comparison_coherence
 #check @SerrePositivity.InfinityCategories.F2.exists_transportTetrahedronDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.rightMappingSpacePrism_eq_of_prefix
+#check @SerrePositivity.InfinityCategories.F2.slicePrismSquare_triangle_recovery
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionSquare_triangle_recovery
+#check @SerrePositivity.InfinityCategories.F2.coherentCompositionSquare_triangle_recovery_precomp
+#check @SerrePositivity.InfinityCategories.F2.transportIntervalSquare_eq_of_square
+#check @SerrePositivity.InfinityCategories.F2.transportIntervalSquare_constantTopIso_heq_of_square
+#check @SerrePositivity.InfinityCategories.F2.transportTriangleBaseOfLift_eq_coherentKanSquare
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_face_penultimate
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_reindex
 
 open Lean in
 run_cmd do
