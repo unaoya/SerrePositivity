@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletionUniversal
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!
 # André E1・E2：座標を保つ環同型による実導来完備化の比較

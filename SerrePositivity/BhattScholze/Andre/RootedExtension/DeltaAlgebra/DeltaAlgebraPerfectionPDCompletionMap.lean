@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.DeltaAlgebraPerfectionCompletionRestriction
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReflection
 
 /-! # 実δ完全化逐次対象から直接PD完備化H0への標準一意延長 -/

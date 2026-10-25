@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaAdditionCarryProduct
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteResidueRelation
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSecondResidueRelation
 

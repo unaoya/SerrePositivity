@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHomRigidity
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 
 /-! # oriented prismの商による同型判定

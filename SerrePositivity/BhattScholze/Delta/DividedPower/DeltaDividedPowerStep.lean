@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
 
 /-! # δ環の反復p除算とp典型分母
 

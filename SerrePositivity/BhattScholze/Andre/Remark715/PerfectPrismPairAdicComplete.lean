@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedQuotientComplete
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessSup
 
 /-!

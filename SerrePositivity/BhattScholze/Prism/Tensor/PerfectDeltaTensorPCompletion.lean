@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorStructure
-public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPCompletion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 /-! # The classical p-completion of a perfect delta tensor
 
 The original completion unit and both factor maps preserve delta. Comparison

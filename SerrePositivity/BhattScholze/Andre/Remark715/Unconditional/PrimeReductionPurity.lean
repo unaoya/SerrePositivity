@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.PowerRootRawPDCompletelyFlat
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaModP
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionComparison
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 
 /-! # 異なる二つの除算元族の段階的添加と一括添加
 

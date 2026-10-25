@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrism
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-! # 完全δ環の実PD完備化と完備なdistinguished商の比較
 

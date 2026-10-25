@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectPrismBoundedTargetRigidity
-public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicEstimate
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 
 /-!

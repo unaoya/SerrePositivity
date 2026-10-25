@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaWittRecovery
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
 public import Mathlib.RingTheory.AdicCompletion.Topology
 

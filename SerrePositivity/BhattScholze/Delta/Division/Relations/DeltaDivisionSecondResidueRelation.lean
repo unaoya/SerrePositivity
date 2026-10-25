@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionResidueRelation
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
 
 /-! # B4-6：δ除算の二段目のモニック関係式
 

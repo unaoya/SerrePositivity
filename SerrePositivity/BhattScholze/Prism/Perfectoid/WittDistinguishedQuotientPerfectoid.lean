@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDQuotientEquiv
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoid
-public import SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 
 /-! # B4-5：distinguished Witt商のperfectoid性の一般入口
 

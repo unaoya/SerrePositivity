@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteTopDerivative
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaTopCoefficient
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteTopVariable
 
 /-! # 全反復除算関係式の最高変数係数と次数
 

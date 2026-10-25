@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPCompletion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 
 /-! # p進完備なδ完全化と普遍性
 

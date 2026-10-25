@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.CoefficientTensorAutomorphism
 public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectDeltaTensorRegular
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.CharP.Lemmas
 /-! # A perfect delta structure on the original ordinary tensor

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivision
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 
 /-! # 旧dねじれ除去とp進完備δ除算完全化の比較
 

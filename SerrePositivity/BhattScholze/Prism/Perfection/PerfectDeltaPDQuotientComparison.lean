@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismQuotientPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDPrism
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-! # B4の商比較の共通部分
 

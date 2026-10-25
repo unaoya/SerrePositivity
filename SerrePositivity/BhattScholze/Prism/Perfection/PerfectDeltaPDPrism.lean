@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDCompletion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedQuotientComplete
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-! # 完全δ環のdistinguished元による実完備化の完全prism
 

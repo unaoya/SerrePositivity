@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime
+public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 
 /-! # pを生成元に持つ結晶oriented prism
 

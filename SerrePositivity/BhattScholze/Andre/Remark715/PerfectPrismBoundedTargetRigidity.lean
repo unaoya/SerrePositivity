@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PerfectSourceAdicRigidity
 public import SerrePositivity.BhattScholze.Andre.Remark715.BoundedPrismAdicComplete
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrismHom
 
 /-!

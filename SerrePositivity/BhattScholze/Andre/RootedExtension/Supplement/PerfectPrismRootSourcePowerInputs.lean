@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootSourceGeneratorPowerModPFlat
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
 
 /-! # 完全prismによる元のr/d実対象のG9入力の供給 -/

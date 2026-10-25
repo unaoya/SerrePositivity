@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerDerivedFl
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticGeneratorPowerModP
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source.DeltaRootSourceGeneratorPowerComplete
 public import SerrePositivity.BhattScholze.Prism.Basic.PerfectOrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
 
 /-! # 完全prism上の任意根族の実冪商に対するG9標準入力 -/

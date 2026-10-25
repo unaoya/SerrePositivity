@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectDeltaQuotientFrobenius
 
 /-! # distinguished Witt商のp乗根と単元係数

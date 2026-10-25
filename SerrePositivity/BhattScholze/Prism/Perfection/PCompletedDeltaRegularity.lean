@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaPerfection
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-! # p進完備なδ完全化の正則性とdistinguished商
 

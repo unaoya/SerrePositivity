@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaDivisionNormalizedStepSourceQuotient
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteVariableSplit
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 
 /-! # 全相対自由環の下位正規化関係商と有限実源商の比較 -/
 

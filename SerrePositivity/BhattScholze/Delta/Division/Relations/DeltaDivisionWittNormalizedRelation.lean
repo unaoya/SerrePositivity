@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionWittFiniteRelationIdeal
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoefficientNaturality
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteTopVariableSplit
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 
 /-! # 逆Witt座標での具体的モニック有限関係式
 

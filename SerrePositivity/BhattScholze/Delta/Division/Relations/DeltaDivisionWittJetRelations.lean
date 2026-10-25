@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaWittJetComparison
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 
 /-! # 全有限δ除算関係式と切り詰めWitt積方程式の対応

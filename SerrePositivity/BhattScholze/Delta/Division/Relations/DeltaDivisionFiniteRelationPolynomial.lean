@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaStep
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 
 /-! # 全反復δ除算関係式の具体的な有限多項式表示

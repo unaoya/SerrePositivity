@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivisionComparison
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 
 /-! # 既に可除な完全p進完備δ環の除算候補からの復元
 

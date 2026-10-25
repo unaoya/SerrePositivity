@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaDivision
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedPowerTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-! # 具体的なp進完備δ除算候補の生成元冪商の有界ねじれ
 

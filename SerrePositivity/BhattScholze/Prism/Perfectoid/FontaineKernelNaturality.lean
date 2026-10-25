@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineNaturality
-public import SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
 
 /-! # B4-5：Fontaine核のdistinguished生成元の底変換

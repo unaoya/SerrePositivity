@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.MvPolynomial.CommRing
-public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaRankOne
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.Logic.Function.Iterate
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 public import Mathlib.Algebra.MvPolynomial.Equiv

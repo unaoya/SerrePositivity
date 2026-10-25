@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFirstRelationRegular
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteResidueRelation
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootRelationKoszul
-public import SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime
+public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.Polynomial.Quotient
 
 /-! # 最初のδ像を加えたp除算関係商のp正則性

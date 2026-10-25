@@ -13,7 +13,7 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.Composition
 public import SerrePositivity.BhattScholze.Andre.Transfinite.TorsionBound
 public import SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColimit
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion
-public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit

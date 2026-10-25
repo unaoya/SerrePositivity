@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittRegularQuotientFontaineKernel
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedTorsion
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 
 /-! # Witt商の標準Fontaine比較射の単射性と同型条件

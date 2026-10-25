@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSecondMonicPresentation
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteVariableSplit
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 public import Mathlib.RingTheory.Polynomial.Quotient
 
 /-! # 第2通常δ剰余を係数とする後続多項式表示

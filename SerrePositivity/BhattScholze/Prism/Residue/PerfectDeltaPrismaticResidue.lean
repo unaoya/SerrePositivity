@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticPowerResidueNilpotent
 
 /-! # 完全係数δ環のFrobenius各段における正確なprism係数商 -/

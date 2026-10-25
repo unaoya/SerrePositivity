@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueSolution
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeWittCoefficientNaturality
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaWittJetComparison
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeWitt
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
 public import Mathlib.RingTheory.Regular.Flat
 

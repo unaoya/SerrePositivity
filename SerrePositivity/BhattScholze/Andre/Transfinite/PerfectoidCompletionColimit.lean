@@ -4,10 +4,10 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitComp
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidDistinguishedKernel
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.FontaineKernelNaturality
-public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
 public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
-public import SerrePositivity.BhattScholze.Delta.Perfect.WittDelta
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 open SerrePositivity SerrePositivity.BhattScholze
 @[expose] public noncomputable section
 universe u

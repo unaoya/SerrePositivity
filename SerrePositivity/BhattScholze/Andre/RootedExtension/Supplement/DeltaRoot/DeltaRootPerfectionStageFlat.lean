@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootPerfectionStages
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.AdicFaithfulDescentAlgebra
 
 /-! # 完全係数環上の実Frobenius各段のp完全忠実平坦性 -/

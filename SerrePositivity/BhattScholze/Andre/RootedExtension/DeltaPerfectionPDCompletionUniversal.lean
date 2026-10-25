@@ -1,10 +1,9 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfectionUniversal
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedDeltaPerfection
-public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletionUniversal
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 
 /-! # 二つの実δ完全化PD完備化環の、同じ完全試験環への普遍性 -/
 

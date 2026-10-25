@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedTorsion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-! # 完全oriented prismの生成元と射
 

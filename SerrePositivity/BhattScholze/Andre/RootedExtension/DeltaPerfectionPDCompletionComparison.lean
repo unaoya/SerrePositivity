@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPerfectionPDCompletionUniversal
-public import SerrePositivity.BhattScholze.Prism.Perfection.PerfectDeltaPDCompletion
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 
 /-! # δ完全化の直接PD完備化と既存p先行候補の標準環同型 -/
 

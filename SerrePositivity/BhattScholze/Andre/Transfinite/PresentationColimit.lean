@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion
-public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
+public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 open SerrePositivity SerrePositivity.BhattScholze
 open SerrePositivity.BhattScholze.Andre.Transfinite
 @[expose] public noncomputable section

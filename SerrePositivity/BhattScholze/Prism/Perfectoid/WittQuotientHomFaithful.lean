@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTiltEquiv
 public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
-public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedQuotientComplete
+public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-! # 完備distinguished Witt商への写像の忠実性
 

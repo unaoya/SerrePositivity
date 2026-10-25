@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaPDivisionFiniteStageRegular
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
 public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFrobeniusShift
-public import SerrePositivity.BhattScholze.Delta.Distinguished.DeltaPrime
+public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.AdicCompletion.Basic
 
 /-! # 一元rawδ p除算包のp正則性と旧ねじれ除去商との比較

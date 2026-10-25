@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaTopDerivative
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteTopVariable
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteRelationPolynomial
 
 /-! # 全反復除算関係式の最高偏微分のp剰余像

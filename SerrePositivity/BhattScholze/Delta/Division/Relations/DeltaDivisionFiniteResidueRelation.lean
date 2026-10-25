@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionIteratedRelations
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.DeltaResidueArithmetic
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
 
 /-! # δ除算関係式の有限深さの通常剰余
 

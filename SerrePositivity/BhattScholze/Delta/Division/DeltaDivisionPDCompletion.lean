@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletionUniversal
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionClassicalCompletion
 
 /-! # δ除算・旧ねじれ商・実導来(p,d)完備化の一段操作

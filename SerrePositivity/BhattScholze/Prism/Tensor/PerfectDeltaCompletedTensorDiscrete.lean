@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
-public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaModP
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 /-! # The actual p-completed tensor of perfect delta rings is discrete
 
 The p-regularity and perfect residue inputs are supplied by the original delta

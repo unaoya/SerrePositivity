@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Perfect.WittDistinguished
+public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
 
 /-! # perfectoid環のFontaine核のdistinguished生成元

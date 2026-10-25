@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaSubtraction
+public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteResidue
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteRelationPolynomial
-public import SerrePositivity.BhattScholze.Delta.Free.Finite.RelativeFreeFiniteDeltaSquareCongruence
 
 /-! # 第一δ除算関係式の二次誤差を含む具体的正規形
 

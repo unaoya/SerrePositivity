@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Extension.PDCompletionInterface
+public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!
 # André E1・E2：両座標を殺す商と実導来完備化 H⁰
