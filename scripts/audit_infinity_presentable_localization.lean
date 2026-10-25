@@ -151,3 +151,12 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @generatedSourceArrows_inclusion
 #check @generatedSourceArrows_target
 #check @indArrowImageFamily_hasCommonCompactPresentation
+
+#check @discreteArrowFamilyUncurry
+#check @discreteArrowFamily
+#check @discreteArrowFamily_evaluate
+#check @discreteArrowFamily_precomp
+#check @discreteArrowFamilyCocone
+#check @discreteArrowFamilyCocone_isColimit
+#check @discreteArrowFamilyCocone_apex_evaluate
+#check @indArrowImage_smallCoproduct_colimit_mem
