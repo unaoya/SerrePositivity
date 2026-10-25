@@ -31766,3 +31766,186 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellYonedaComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellComparison_mem
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellComparison_mem
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_augmentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_augmentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_homQuasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_homQuasiIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_augmentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_augmentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_fullyFaithful
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_fullyFaithful
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_essentiallySurjective
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_essentiallySurjective
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNerve_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_quasiEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelDGMap_quasiEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNu_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNu_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNu_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNu_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceAugmentationNuEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNuEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNuEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceRecoveryNuEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceRecoveryNuEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceRecoveryNuRoof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceRecoveryNuRoof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceSquare_comm
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceSquare_comm
+
+#check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorSourceSquare
+#print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorSourceSquare
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_comp_eq_id_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_comp_eq_id_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.perfectStableHoArrow_isIso_of_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.perfectStableHoArrow_isIso_of_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKInputPerfectNu_edge
+#print axioms SerrePositivity.KST.SConstruction.dgKInputPerfectNu_edge
+
+#check @SerrePositivity.KST.SConstruction.dgKInputPerfectNu_map_isIso_of_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKInputPerfectNu_map_isIso_of_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRelativeSourceRoof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRelativeSourceRoof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRelativeSourceValueIso
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRelativeSourceValueIso
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.sourceRoof
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.sourceRoof
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.comparison_isPullback
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.comparison_isPullback
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.sourceValueIso
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeRoofRectangleInput.sourceValueIso
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullContracted
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullContracted
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNullSquare_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullBottomTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullBottomTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullTopTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullTopTriangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceNullRectangle
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCell_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCell_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernel_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernel_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddle_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddle_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernel_isDGPretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernel_isDGPretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeLiftEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeLiftEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKNativePerfectDownEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKNativePerfectDownEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKNativePerfectValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKNativePerfectValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isQCatEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellNativeValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceCellNativeValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNativeValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSourceKernelNativeValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddleNativeValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddleNativeValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellKernelCategory
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellKernelCategory
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddleCategory
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellMiddleCategory
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellKernelInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellKernelInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellNativeProjection
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellNativeProjection
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellNativeSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellNativeSequence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCellPerfectSequence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCellPerfectSequence
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison_lift_yoneda
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison_lift_yoneda
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison_eq
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison_eq
+
+#check @SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isExact
+#print axioms SerrePositivity.KST.SConstruction.dgKNativeValueComparison_isExact
