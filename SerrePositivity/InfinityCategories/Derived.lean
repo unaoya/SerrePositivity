@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.LastVertexTwistingBianchi
+public import SerrePositivity.InfinityCategories.DGNerve.LastVertexReplacementData
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetLabels
+public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedInclusions
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn
 public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices
