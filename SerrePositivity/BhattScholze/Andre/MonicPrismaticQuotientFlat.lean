@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticQuotientDerived
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticRawResidue
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourcePDReduction
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourcePDReduction
 
 /-!
 # André E1・E2：実商還元の H⁰ の元の係数商上の忠実平坦性

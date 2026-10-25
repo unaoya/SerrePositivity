@@ -1,5 +1,5 @@
 import SerrePositivity.BhattScholze.Semiperfectoid.AndreSurjectivity
-import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.AndreCompatibleRootsConditional
+import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.AndreCompatibleRootsConditional
 import Mathlib.Util.AssertNoSorry
 
 -- 根の存在から両立する根列を選ぶ一般補題は証明済み。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Almost.PerfectoidizationSupportedQuotientLinear
-public import SerrePositivity.BhattScholze.Inputs.Perfectoidization
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface.IntegralPerfectoidization
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-! # The actual supported quotient onto the image of a finite comparison

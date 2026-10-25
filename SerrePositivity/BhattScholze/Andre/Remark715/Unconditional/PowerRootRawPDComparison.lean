@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.PowerRootRawCompletionRestriction
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.IteratedPDH0Reflection
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.IteratedPDH0Reflection
 
 /-!
 # André E1・E2：モニック源の実 H⁰ と raw PD 完備化環の比較

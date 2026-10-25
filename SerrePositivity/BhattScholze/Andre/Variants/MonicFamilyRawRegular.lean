@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Variants.MonicFamilyPowerResidue
 public import SerrePositivity.BhattScholze.Andre.Variants.MonicRawPDivision
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootFiniteRawRegular
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.DeltaRoot.DeltaRootFiniteRawRegular
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaAdjoinDivisionFamilyRegular
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
 

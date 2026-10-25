@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.PowerRootResidueKoszul
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaDivisionSourceResidueTensor
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaDivisionSourceResidueTensor
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 

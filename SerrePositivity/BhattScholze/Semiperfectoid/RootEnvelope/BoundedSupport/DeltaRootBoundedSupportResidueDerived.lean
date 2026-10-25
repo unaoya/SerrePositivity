@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.BoundedSupport.DeltaDivisionBoundedSupportTor
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceCoefficientResidue
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceCoefficientResidue
 
 /-! # 任意根族の全源Tor入力から元の実係数還元への比較 -/
 

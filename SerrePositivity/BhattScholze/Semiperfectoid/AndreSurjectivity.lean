@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.RootedPerfectoidSurjectivityDescent
-public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
+public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 
 /-! # B4の一般全射性：André の補題による原典の証明
 

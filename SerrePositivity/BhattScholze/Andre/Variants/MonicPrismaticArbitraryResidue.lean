@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Variants.MonicPrismaticBoundedSupportTor
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaDivisionSourceResidueTensor
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaDivisionSourceResidueTensor
 
 /-!
 # André E1・E2：任意モニック族の実残余導来評価比較

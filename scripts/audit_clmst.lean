@@ -2,7 +2,7 @@
 import SerrePositivity.CommutativeAlgebra.GenericEtale
 import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
 import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
-import SerrePositivity.BhattScholze.Inputs.AndreFlatness
+import SerrePositivity.BhattScholze.Andre.AndreFlatness
 import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteGeneration
 import SerrePositivity.LengthAlgebra.RootTowerLength.Completion

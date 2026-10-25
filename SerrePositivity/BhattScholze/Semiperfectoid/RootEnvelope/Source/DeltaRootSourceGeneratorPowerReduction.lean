@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionComplete
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 
 /-! # 具体的根添加候補の正則生成元冪商とp導来完備性

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaDivisionBoundedSupportColimit
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaDivisionFiniteSubfamilyTor
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaDivisionBoundedSupportColimit
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaDivisionFiniteSubfamilyTor
 public import SerrePositivity.HomologicalAlgebra.TorExactColimits
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 

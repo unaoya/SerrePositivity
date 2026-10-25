@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.DividedPowerPrimeShift
 public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPPrimeBlockBasis
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.MonicPowerFamilyPresentation
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.MonicPowerFamilyPresentation
 public import Mathlib.RingTheory.Adjoin.Basic
 
 /-!

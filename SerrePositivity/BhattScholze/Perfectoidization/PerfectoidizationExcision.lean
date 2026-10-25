@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Inputs.ArcExcision
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface.ArcExcision
 public import SerrePositivity.BhattScholze.Perfectoidization.PerfectoidizationExcisionDiagram
 public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
 

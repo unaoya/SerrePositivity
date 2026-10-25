@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootPDPerfectionInputs
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.DeltaRootPDCompletedPerfectionComparison
 
 /-! # 既存根prism台環候補の標準係数射の完全忠実平坦性 -/

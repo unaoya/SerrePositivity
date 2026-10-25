@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicRelationRegularSequence
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootFiniteResidueKoszul
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootFiniteResidueKoszul
 public import Mathlib.RingTheory.Regular.Flat
 
 /-!

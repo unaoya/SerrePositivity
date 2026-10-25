@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.PerfectPrismRootPDCompletelyFlat
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraDiscrete
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraDiscrete
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-! # 任意根族の実PD環から実δ完全化の離散性への具体的入力 -/

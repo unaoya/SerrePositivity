@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.InitialCoefficient.Comparison
 public import SerrePositivity.BhattScholze.Andre.Remark715.Unconditional.PowerRootAResidue
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaAdjoinDivisionResidueFlat
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Division.DeltaAdjoinDivisionResidueFlat
 
 /-!
 # A1-d：元の係数商上の raw 残余商と実還元 H⁰ の忠実平坦性

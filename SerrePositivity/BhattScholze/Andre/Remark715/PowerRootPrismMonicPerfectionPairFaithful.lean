@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Remark715.PowerRootPrismMonicCompletionPairFaithful
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
 
 /-!
 # André E1・E2：元の実完備化を完全 δ 化した後の二元剰余

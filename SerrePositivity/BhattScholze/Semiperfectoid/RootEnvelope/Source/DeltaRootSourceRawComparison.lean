@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionResidue
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootSourceIteratedCompletionResidue
 public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 

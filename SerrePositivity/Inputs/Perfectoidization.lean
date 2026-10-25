@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface.FiniteIntegralExistence
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-! # 有限代数の perfectoid 化の存在の互換入口

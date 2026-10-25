@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.PerfectoidizationSupportedQuoti
 public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatInjective
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCompatibleRoots
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
-public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
+public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectoidizationSurjectiveMap
 
 /-! # Almost kernel support for perfectoidizations of actual surjections

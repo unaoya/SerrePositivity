@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaAlgebra.PerfectPrismDeltaAlgebraPDCompletelyFlat
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!

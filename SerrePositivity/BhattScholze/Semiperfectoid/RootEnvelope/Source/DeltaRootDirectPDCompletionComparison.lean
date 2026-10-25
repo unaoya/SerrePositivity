@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaPerfectionPDCompletionComparison
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaPerfectionPDCompletionComparison
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.DeltaRootPrismBaseMap
 
 /-! # 既存根添加候補と直接PD完備化の標準環・商比較 -/

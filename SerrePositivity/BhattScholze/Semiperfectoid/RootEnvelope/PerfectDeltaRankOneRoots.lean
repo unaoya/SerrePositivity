@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaFrobenius
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.DeltaRoot.DeltaRootAdjoinDivisionVariables
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.DeltaRoot.DeltaRootAdjoinDivisionVariables
 
 /-! # 完全δ環のrank-one元の具体的互換p冪根列 -/
 

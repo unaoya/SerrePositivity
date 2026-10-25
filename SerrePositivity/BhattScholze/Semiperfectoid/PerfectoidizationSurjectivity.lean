@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Inputs.SemiperfectoidSurjectivity
+public import SerrePositivity.BhattScholze.Semiperfectoid.TorsionFreeQuotientSurjectivity
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
 
 /-! # 証明済みsemiperfectoid全射性から任意の普遍対象への移送 -/

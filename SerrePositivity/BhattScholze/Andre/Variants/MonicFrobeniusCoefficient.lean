@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyCoefficientQuotient
-public import SerrePositivity.BhattScholze.Semiperfectoid.RootedExtension.Division.DeltaPDivisionNextInput
+public import SerrePositivity.BhattScholze.Andre.RootedExtension.Supplement.Division.DeltaPDivisionNextInput
 public import SerrePositivity.BhattScholze.Delta.Free.PolynomialRankOneDelta
 
 /-!
