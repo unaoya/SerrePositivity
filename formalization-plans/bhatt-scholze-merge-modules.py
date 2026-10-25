@@ -260,12 +260,13 @@ def main():
             if f.startswith("SerrePositivity/") else None
         if mod in rename or mod in deletes:
             continue
-        src = (ROOT / f).read_text()
+        src = orig = (ROOT / f).read_text()
         if f in audit_unimports:
             src = "".join(l for l in src.splitlines(keepends=True)
                           if not (IMPORT.match(l.rstrip("\n")) and IMPORT.match(l.rstrip("\n")).group(2) in deletes))
         new = rewrite(src, rename, mod)
-        if new != src:
+        # import 行を外しただけのファイルも書き戻す（BS-W8 で audit_bhatt_scholze_andre_conditional の import が残った）
+        if new != orig:
             edits[f] = new
     foreign, unstubbed = [], set()
     for f in listed_files():
