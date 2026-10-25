@@ -1,4 +1,13 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFConnectiveKernel
+public import SerrePositivity.KST.NonConnective.DGSuspensionNativeBFConnectiveSequence
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFConnectiveStructure
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFOneStage
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFFiberComparison
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFZero
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFSquare
+public import SerrePositivity.KST.NonConnective.DGSuspensionNativeBFSequence
+public import SerrePositivity.KST.NonConnective.DGKappaNativeBFLoopStructure
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeFibrationTail
 public import SerrePositivity.KST.NonConnective.SequentialCandidateTail
 public import SerrePositivity.KST.NonConnective.DGKappaNativeSquareComparison

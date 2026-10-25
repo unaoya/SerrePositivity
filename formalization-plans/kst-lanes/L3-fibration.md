@@ -124,7 +124,7 @@
 - 利用側は `VerdierFullSMovingSquarePrism` に接続済み。終端を同じ全 S• 商核に固定した下側最大化の厳密一致と `verdierFullSMovingKernelSquareIso` まで検証済み。上側全族・全対角条件・縦辺の可逆性の実供給は未完で、c4 完了とは数えない。採用済み経路として続行する。汎用再構成と同じ三面を固定した充填空間内の比較は Ind-S (9) に依頼し、型をユーザー経由で中継する。
 
 ### 未コミット
-- 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。設計確認の未採用案を末尾に記録し、ユーザーへ中継して停止。
+- 両所有集約・監査へ接続済み。K-B 所有 Lean ファイルの未コミットなし。有限 BF 四角形比較の採用済み供給命題を明示引数として利用側へ接続中。
 ### 既知の問題
 - 一般分数比較の同値性と元の商上比較の可逆性は接続済み。有限線型図式の局所化、span 普遍性、商実現比較、厚い β3 列の Perf 核照合、相対連結版 K-6 は未完。
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
@@ -238,7 +238,7 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
     Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0)
 ```
 
-### 追加設計確認：同じ未完備実列だけの有限 BF 四角形比較（未採用）
+### 採用済み：同じ未完備実列だけの有限 BF 四角形比較
 - `kSpectrumMap` の射ごとの供給だけから、元の native 二胞体を持つ実 BF 四角形は回収しない。一般の BF 高次面整流は L1 のユーザー指示で中断済み。固定 `dgKInputK` を代入すると商が Perf 完備化後に戻る。
-- 提案：同じ D-9 の厳密 dg 実列の一つの native 提示だけに限る有限 BF 比較を K-S• に依頼する。四辺を元の BF 射として固定し、全正段で元の S• 境界商の全四角形への比較を要求する。一般 StableInfinity の K 関手化や新しい存在仮定は追加しない。
-- [型・採用／不採用時の影響](archive/L3-raw-bf-square-proposal.md)。型は `/tmp/kb-raw-bf-square-request.lean` で成功。計画だけに留めずユーザー経由でコーディネータへ中継し、設計提案時の停止規約に従う。c4・c5 と K-7 c5・d3 の印は未完。
+- ユーザー採用：同じ D-9 の厳密 dg 実列の一つの native 提示だけに限る有限 BF 比較を K-S• へ依頼済み。届くまでは同じ存在命題を明示定理引数として消費する。四辺を元の BF 射として固定し、全正段で元の S• 境界商の全四角形への比較を要求する。一般 StableInfinity の K 関手化は再開せず、供給命題の存在は主張しない。
+- [採用型と範囲](archive/L3-raw-bf-square-proposal.md)。`DGKappaNativeBFSquare` は同じ供給命題から四辺・全正段の全図式比較を保持する。`DGKappaNativeBFZero` は同じ実零角を全正段から認証し、`DGKappaNativeBFFiberComparison` は元の cospan の実極限錐への同じ全比較辺を供給する。主経路 `DGKappaNativeBFOneStage` は一回の S• 引き戻しだけから同じ実比較の非負次数 π 同型を検出する。`DGKappaNativeBFConnectiveKernel` は指定上側全族・動く共有対角と正段商比較をこの判定と同じ固定 K 構造射へ代入する。存在の証明や一般 BF 整流の再開はしない。c4・c5 と K-7 c5・d3 の印は未完。
