@@ -83,3 +83,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightAdjointUnitSpace
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSubspace_isContractibleKan
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightFiberComparison_unitCondition
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightFiberToAdjointUnitSpace
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitLeft_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitLeft_ι
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitRaw
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitReturn
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitReturn_right
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitToFiber
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightUnitFiberIso
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRightFiber_isContractibleKan

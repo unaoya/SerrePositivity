@@ -22,6 +22,12 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUni
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitial
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitialCriterion
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightFiberUnitCondition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitLeftMap
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitRawReturn
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitReturnCondition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitFiberReturn
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitFiberIso
 
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
