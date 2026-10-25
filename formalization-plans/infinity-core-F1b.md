@@ -53,7 +53,14 @@ X は工程1〜3の各段階で対象ビルドと専用公理監査を行う。
 下辺の指定比較を右辺に沿って輸送し、四つの元の指定比較を貼った値を使う。
 元の普遍 prism の区間比較が恒等であることも
 `leftFibrationPrism_transportIntervalIso_universal_refl` で確認した。
-Ncomp 本体は未完。次は同じ実高次図式上で元の二段評価と合成評価を照合する。
+係数制限についても、元の選択済み sourceIso・四辺比較・四角形全体の比較の
+値を保つ自然性を構成した。公開名は
+`diagonalFiberTransport_sourceIso_precomp_heq`、
+`TransportSquareDiagram.comparison_precomp_heq`、
+`transportIntervalSquare_transportIso_precomp_heq`（3309 jobs）。
+専用監査は9852宣言で通過、標準三公理のみ。
+Ncomp 本体は未完。次はこの係数自然性を元の始点同型の自然性へ接続し、
+共通の実高次図式上で元の二段評価と合成評価を照合する。
 
 
 凍結時の a①・a② は完了。長辺の因子式 Nlong も
