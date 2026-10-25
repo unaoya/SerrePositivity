@@ -213,6 +213,9 @@ def main():
         raise SystemExit("foreign importers would break: add these modules to stubs")
     if not args.apply:
         return
+    # 新しいサブディレクトリ（例：Prism/Bounded/）の統合先にも書けるよう、書き込みの前に親ディレクトリを作る（BS-W7 の失敗）。
+    for new in built:
+        to_path(new).parent.mkdir(parents=True, exist_ok=True)
     for new, text in built.items():
         to_path(new).write_text(text)
     for old in removed:
