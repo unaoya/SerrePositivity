@@ -21,7 +21,7 @@
 - 同じ対象条件の実安定閉包との一致から、元の dg 包含と同じ cell 平坦商への `IsStableVerdierSequence` を供給。分解上の実小核・K-flat Hom・同じ商射影との屋根を保持する。
 - D-16 は thick 閉包へ接続する方針に改訂。対象条件の共通宇宙の実ホモトピー圏での retract 閉性は証明済み。D-16 追加 (3) を適用し元対象条件と thick 閉包の一致を証明。実平坦 thick 核の本質像との一致・元包含への核反映・辺局所化から Sp の native `IsVerdierSequence` を供給済み。集約・公理監査も通過。
 - D-15 の公開反映を適用し、対象条件と元 augmentation の `moduleQuasiIso` の同値を供給。Sp 正本への商の核一致は接続済み。追加 ULift 局所化の保存は公開供給待ちで、完成とはしていない。
-- ④の Milnor 比較を Sp 正本の fiber 模型へ移し、元の自由対角の Hom 作用と厳密に照合。元二射影・零比較を保持し、その同じ一回 Perf 延長の Hom 準同型性・nerve 充満忠実性を証明。元小 Perf 対角と同じ cell 商の native Verdier 列は D-17 の生成判定・前三角性・完全性を明示して対象ビルド済み。
+- (f) ④の Milnor 比較を Sp 正本の fiber 模型へ移し、元小 Perf 対角の実自由 End と厳密に照合。D-17 の生成判定・D-18 の前三角性・D-19 の代表合成整合を適用し、Milnor 条件だけから元対角の全 Hom 準同型性・充満忠実性と同じ cell 商の native Verdier 列を供給。生成判定の明示仮定は解消済み。
 
 ### G-1 d の三段目（固定）
 - [x] ① 未追跡2ファイルの修正・個別検証・集約／監査への接続。
@@ -42,35 +42,26 @@
 - [x] ① 通常 pullback を表す元 dg gluing 内の充満部分圏と正本比較の制限を構成。
 - [x] ② 通常 pullback の同値・安定性・実完全包含と二射影の整合を供給。
 - [x] ③ D-9 の同じ平坦屋根・実小核・Verdier 商を gluing へ接続。
-- [ ] ④ ⊙ の dg 同定と元の二射を保持する K-8 d8 の IsVerdierSequence を供給。
-- [ ] ⑤ 集約ビルド・公理監査・D 向け引き継ぎを保存して停止。
+- [x] ④ ⊙ の dg 同定と元の二射を保持する K-8 d8 の IsVerdierSequence を供給。
+- [x] ⑤ 集約ビルド・公理監査・D 向け引き継ぎを保存して停止。
 
-### 残り（依存順）
+### D への移管範囲
 1. (d) ①〜⑥完了。Tamme Remark 6 に対応する正本比較同値と全試験関手の普遍性を供給済み。
 2. (e) 完了。元 C・D の前三角性から安定性・実完全射影・F2 の安定 lax pullback・両因子の本質像・K-8b の分裂を供給。Tamme Lemma 8。
-3. (f) 通常 pullback と Verdier 商 ⊙ の dg 同定、K-8 d8 の `IsVerdierSequence` の供給。D-9 と共同。
-   Tamme §1、Drinfeld Thm 3.4、β3 の平坦商。見積り 2〜3 日。完了時に D 向けの引き継ぎを整えて停止する。
+3. (f) ①〜⑤完了。通常 pullback と同じ cell 平坦商の dg 同定、および Milnor 条件下の元小 Perf 対角の Verdier 列を供給。D2 は停止し、D が Gluing を吸収する。
 
 ### 主要宣言（型は Lean が正本）
-- `DGGluingObject`・`dgGluingDifference`・`dgGluingHomComplex`・`dgGluingDGCategory`・`dgGluingToComma`
-- `dgGluing_isDGPretriangulated`・`dgGluingFactors_semiorthogonal`・`dgGluingDecompositionTriangle_distinguished`
-- `dgGluingUniverseDerivedNerveLaxComparison`・`dgGluingUniverseDerivedNerveLaxComparison_isEssentiallySurjective`
-- `dgGluingUniverseDerivedNerveLaxComparison_isFullyFaithful`・`dgGluingLaxHomPullbackComparison_equivalence`・`dgGluingLaxHomPullbackComparisonInverse` と `_unit`／`_counit`
-- `dgGluingUniverseDerivedNerveLaxEquivalence`・`dgGluingLaxFunctorEquivalence`・`dgGluingLaxFunctorCoreComparison_equivalence` と `_arrow`／`_inputs`
-- `dgGluingHomDerivedCompositionInputPathComparison_equivalence`・`dgGluingLaxHomInputStrictComparison`
-- `dgGluingNativeDerivedPreNormalizeCube`・`dgGluingNativeDerivedPostNormalizeCube`・`dgGluingNativeDerivedNormalizationCube_shared_face`
-- `dgGluingNativeNormalizationFirstTriangle_eq`・`dgGluingNativeNormalizationLastTriangle_eq`
-- `dgGluingCoefficientYonedaSpaceIso_inv_chainMap`・`dgGluingNativeCoefficientDomainIso_inv`
-- `dgGluingNativeNormalizedPrism_canonical_coefficient`・`dgGluingNativeDerivedPostNormalizeCube_canonical_interval_face`
-- `dgGluingNativeDerivedNormalizedIntervalPrism_normalization_exists`
-- `dgGluingLaxHomFirstInputHomotopy_relative_comparison`・`dgGluingLaxHomLastInputHomotopy_relative_comparison`
-- `dgGluingNativePreNormalizeTriangleFamily`・`dgGluingNativePostNormalizeTriangleFamily`
-- `dgGluingNativeNormalizationPasting`・`DGGluingNormalizationProjectionInput`
-- `dgGluingNormalizationCompositionTetrahedron`・`dgGluingNativeNormalizationAugmentationTetrahedron`
-- `dgGluingNormalizationAugmentationTetrahedronHomotopy`・`dgGluingInputHomotopy_post_homMk_eq`
-- `dgGluingHomotopyTriangleFilling_iff`・`dgGluingHomotopyTriangleFilling_transfer`
-- `dgGluingLaxHomDiagonalComparisonBoundary_filling_of_input_triangle`
-- `dgGluingLaxHomDiagonalComparisonBoundary`・`dgGluingLaxHomFirstInputHomotopy_over`・`dgGluingLaxHomLastInputHomotopy_over`
+- `DGGluingObject`・`dgGluingHomComplex`・`dgGluingToComma`・`dgGluing_isDGPretriangulated`
+- `dgGluingFactors_semiorthogonal`・`dgGluingDecompositionTriangle_distinguished`
+- `dgGluingLaxHomPullbackComparison_equivalence`・`dgGluingLaxHomPullbackComparisonInverse` と `_unit`／`_counit`
+- `dgGluingUniverseDerivedNerveLaxEquivalence`・`dgGluingLaxFunctorCoreComparison_equivalence` と `_arrow`／`_inputs`
+- `dgGluingPullbackProperty_iff_quasiIso`・`dgGluingPullbackProperty_thickClosure_iff`
+- `dgGluingPullback_thickEssentialImage_iff`・`dgGluingPullbackFlatQuotient_zero_iff`・`dgGluingPullbackFlatQuotient_isLocalization`
+- `dgGluingPullback_isNativeVerdierSequence`（元の通常 pullback 包含、同じ cell 平坦商）
+- `dgGluingMilnorSquareComparison`・`DGGluingMilnorSquare`・`dgGluingMilnorAlgebraDiagonal_homQuasiIso`
+- `dgGluingMilnorResolvedProjection`・`dgGluingMilnor_isResolvedVerdierSequence_of_milnor`（元小 Perf 対角）
+- `dgGluingMilnorSmallPerfectDiagonal_homQuasiIso_of_milnor`・`dgGluingMilnorDiagonalExactMap_isFullyFaithful_of_milnor`
+- `dgGluingMilnorSourceGenerator_generates`・`dgGluingMilnorSmallPerfectDiagonal_homQuasiIso_of_generator`
 
 ### 依存と提供
 - 読み取り専用：`Derived/` の β5・β3、`F2/CatInfinity/`、`Core/`・`F1/`・`F1B/`。
@@ -81,27 +72,28 @@
 - `dgGluingNormalizationProjectionInput_naturality` で六等式を無仮定で実例化済み。全標準面と固定標的輸送を保持する。
   標準面の恒等入力射影・前後終側の replacement 全三角形の一致は照合済み。厳密両単位則は D-13 で供給済み。両単位は主経路へ接続済み。F1B の公開 `RelativeDiagramHomotopy` を直接利用し、Λ³₂ を固定した相対四面体比較の存在は実例化済み。
 
-### 設計上の確認点・次の一手
+### D 向けの接続手順・設計上の確認点
 - 前 cube の正規化端は `dgGluingIdentityCommaObject` を始対象とする。第一三角形の固定辺は元 augmentation から恒等辺へ変わる。
   したがって、全時間の第一三角形族をそのまま元の始辺固定入力 fiber 内のホモトピーとは扱えない。
 - **採用（2026-10-24、コーディネータ指示）**：共有面と側面の標準合成三角形も含む貼り合わせを先に構成し、その相対二次元比較を選択済み二変形へ移す。
   二つの cube それぞれの三角形族を直接、元の固定辺を保つ入力 fiber へ入れる前提を置かない。
   隔離していた射影自然性（前後・終側の三角形それぞれ二射影、計六等式）は、追加供給により実例化済み。
   公開界面と三段目③〜⑥の順序は不変。三段目の完了では停止しない。
-- **次工程 (f)**：③の本質像輸送・native Verdier 列は集約・監査済み。④は D-17 の生成判定を明示入力に隔離し、元小 Perf 対角と cell 平坦商の Verdier 条件を組み立て、固定 ν の射影の付け替えへ引き継ぐ。D-17・D-18 の公開供給831430f17を適用済み。残る実自由 End の Milnor 比較を接続する。追加 ULift 局所化の保存は供給待ち。
+- **K-S• の再開時**：`MilnorVerdierSequence` を import し、`DGGluingMilnorSquare R d` を検証する。元の小 Perf 対角は保持し、元射影を `dgGluingMilnorResolvedProjection R d` へ付け替え、`dgGluingMilnor_isResolvedVerdierSequence_of_milnor R d h` を適用する。旧 `_of_generation` の生成入力は不要。
+- `MilnorFreeDifferenceSquare` は元自由 End と同じ Milnor fiber の比較差の正方形を供給する。`MilnorFreeDiagonalComparison` は元二射影・零比較を保持する対角作用の等式を供給する。
+
 - **採用（2026-10-25、コーディネータ指示）**：④では `dgGluingMilnorSquareComparison` が準同型である dg 形の Milnor 条件だけを四角形の仮定に取る。Sp 正本の `HomotopyPullbackModel.algebra` と同じ比較射を使い、元対角の充満忠実性と元二射の `IsVerdierSequence` を導く。商は `resolvedDGQuotientFunctor` に固定し、未分解 path 商との比較・対角像の `localKFlat` は第 I 段で要求しない。K-S• が再開時に元射影を付け替える。具体例の検証は K-S• の再開後。
   公開界面・採用済み貼り合わせ経路・③〜⑥の順序は不変。
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
-### 未コミット・既知の問題
-- (e) 完了。`UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較から、元の Yoneda・係数脚・実分解の完全性を供給する。二脚完全性の隔離は解消済み。
-- `CanonicalStableStructure` は元 C・D の前三角性だけから F2 安定性・元二射影による実 cofiber 判定・native 半直交分解・元二射影の値を持つ Tamme 積同値を供給する。
-- `NativeCFactorKernel` は Sp の公開 `LaxSecondProjectionKernel.snd_kernel`（`32ed8091f`）を利用する。C・D 両因子の元の H⁰ 零性条件は、canonical native 半直交分解の二包含の本質像に一致する。実随伴・充満忠実性・交差写像空間の可縮性・対応する分裂 Verdier 列も供給済み。
-- ④検証済み：`MilnorSmallPerfectFaithfulness`・`MilnorDiagonalStableImage`・`MilnorDiagonalThickImage`・`MilnorResolvedQuotient`・`MilnorFlatThickTransport`・`MilnorResolvedKernel`・`MilnorResolvedVerdier` は集約13142 jobs・監査948モジュール8815宣言を通過。D-17 の `dgFunctor_homQuasiIso_of_singleThickGenerator` と実自由生成を `MilnorGeneratorCriterion` へ接続済み。D-18 は `MilnorNativePretriangulated` で元模型へ適用済み。残る実自由 End の比較に必要な一般延長・代表同型の整合式は D へ確認依頼中。K-S• は `dgGluingMilnorResolvedProjection` へ射影を付け替え、`dgGluingMilnor_isResolvedVerdierSequence` を使う。③の集約は12744 jobs、監査は941モジュール・8772宣言を通過。吸収対象は元包含・同じ平坦屋根を保つ公開宣言。`HomTargetCommaFunctor`・`MilnorNativePretriangulated`・`MilnorGeneratorCriterion` は集約13166 jobs・監査951モジュール8830宣言を通過。未追跡 `MilnorFreeLegComparison` は対象ビルド済み。D-19 の実延長と代表同型の整合式を待つ間、同じ自由 End の比較を構成中。
-- d の検証済み：集約ビルド 8946 jobs、公理監査 896 モジュール・8303 宣言。許容三公理のみ。新規 sorry・axiom・主経路 ModelCategory 仮定なし。
-  ログ：`/tmp/d2-v3-canonical-equivalence-universal-property-aggregate-build.log`・`/tmp/d2-v3-canonical-equivalence-universal-property-audit.log`。指定充填と入力付き path の実逆射・両往復変形を無条件で接続済み。同一対角・元二入力を持つ四座標比較まで同値性を移送済み。四座標の厳密同型と元矢印・左右鎖射影を回収する。
-- 検証済み部分をコミットし、正本標的から元二入力と二合成対応を持つ区間座標への実同値を構成済み。元正本比較の矢印射影と左右 Hom 鎖射影を厳密に回収し、既存の四座標比較の両射影との一致を供給済み。底の二作用も同定し、正本の実逆射と比較同値・全試験関手 core の普遍性を無条件で接続済み。数学的未完は f。
+### 残る接続・移管上の注意
+- 集約・公理監査済み。所有内に未追跡・作業中ファイルを残さず保存し、D2 は f 完了で停止。以後の Gluing 保守は D が担当する。
+- native の通常 pullback 包含と同じ cell 平坦商の Verdier 列は完成。任意の追加 ULift における局所化保存は公開供給待ちであり、この強化を結論していない。
+- 未分解 path 商 `dgQuotientNerve` と cell 平坦商の比較・対角像の `localKFlat` は第 I 段の要求外。元の `dgOdotQuotientInput.projection` をそのまま最終商射に使わない。
+- Milnor 条件の具体例の検証と固定 ν の商射影の付け替えは K-S• の再開時に行う。
+- `UniverseDerivedExactness` は D-14 の ULift 保存・混在宇宙完全性と既存 tensor 比較を利用し、元 Yoneda・係数脚・実分解の完全性を供給する。
+- `CanonicalStableStructure`・`NativeCFactorKernel` は元二射影と両因子の本質像を保持し、Tamme 積同値・native 半直交分解・分裂 Verdier 列を供給する。
 - β5 の Bimodule は第一 dg 圏に反変、第二に共変。KL の φ(d,c) は `M.value c d`、比較差は `gμ − νf`。
 
 ## 規約

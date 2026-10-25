@@ -955,7 +955,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedVerdier,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaFunctor,
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorNativePretriangulated,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorGeneratorCriterion]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorGeneratorCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeLegComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeHomComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeLeftNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeRightNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeLeftHomAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeRightHomAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorActualDiagonalHomComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeHomTransportComponents,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeDiagonalComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorModuleFreeSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorCornerRepresentableAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeAugmentationSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeActionConjugation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeProjectedHomAction,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeDifferenceSquare,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorVerdierSequence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
