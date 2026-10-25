@@ -10,6 +10,13 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Com
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCandidates
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceCosliceColimits
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactPartialColimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactIndCandidates
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.RefinementCardinals
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EndpointCompactCardinals
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceEdges
+
 /-!
 概要：P-f レーンの独立集約と引き継ぎ。既存の Presentable 集約は編集しない。
 方針：N の局所対象を再利用し、小さい生成辺族を明示する。
@@ -35,6 +42,14 @@ P のコミット 1381907fe の引数分離済み indComparison_isFullyFaithful_
 未証明の presentation を渡さず、実比較の充満忠実性と同型飽和した実像の
 κ-accessibility・元の射圏での κ-filtered 余極限閉性・包含の保存性を構成した。
 同じ濃度で compact な閉包内の全射と元の全生成射を含む実像も構成済み。
+実像の各頂点を厳密な頂点とする単一 filtered 表示と、周囲で compact な Yoneda 像を
+保持する実比較も構成した。その表示の全項の周囲での compact 性も保存する。
+濃度変更境界を明示すると、compact な閉包内射の小さい poset 余極限は
+同じ compact 性と閉包への所属を保ち、その全部分圏にも実際に余極限が存在する。
+指定濃度からの交換境界を持つ、生成射・両端点・元の圏と射圏の共通濃度も構成済み。
+P の公開済み compact 保存濃度を二つの端点評価に使い、周囲で compact な
+全候補射の両端点も compact となる共通濃度を構成した。生成射だけの条件ではない。
+固定始域圏の任意の指定辺は、終域射影で元の強飽和生成閉包に属する。
 固定始域の全 coslice の小余完備性は、反復 coslice と小さい展開形状から構成済み。
 飽和射の固定始域部分圏の余完備性・accessibility と、実像の全小余極限閉性・
 強飽和性はまだ未証明。P の未公開葉は使用していない。

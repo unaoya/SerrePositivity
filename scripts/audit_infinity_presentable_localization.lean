@@ -96,3 +96,14 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #check @sourceCoslice_hasSmallColimits
 
 #check @smallDiagramCoslice_hasSmallColimits
+
+#check @compactGeneratedArrow_smallPosetColimit
+#check @compactGeneratedArrows_hasSmallPosetColimits
+#check @indArrowImage_smallCompactPartialColimit
+#check @indArrowImageVertex_hasPresentation
+#check @indArrowImageVertex_hasCompactPresentation
+#check @exists_ambientCompactIndComparison
+#check @exists_regular_refinementArrowCardinal
+
+#check @exists_endpointCompactArrowCardinal
+#check @generatedSourceEdge_mem
