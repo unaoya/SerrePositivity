@@ -9567,3 +9567,48 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (8): no declarations audited"
   logInfo m!"Ind-S coherent representable comparison audit passed: {count} declarations."
+
+-- Ind-S (9)/(9b): 固定ホーン全族・指定三面・native Hom の有限座標。
+-- (8) の KST.Spectra 推移 import 例外は適用しない。F2/KST/EInfinity は閉包ごと禁止。
+-- この監査は補助葉の検証であり、両仕様命題の供給完了を表さない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.FactorizationTetrahedronFaces },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronPathFold },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.InnerHornFamilyPrescribedVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronStrictCompositionHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronFamilyVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledFactorizationTetrahedronFamily },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9)/(9b): forbidden lane dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.F1.Diagrams.FixedInnerHornFamily,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronFamilyFilling,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.FactorizationTetrahedronFaces,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronPathFold,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.InnerHornFamilyPrescribedVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronLongHomReplacement,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronFoldedLongHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.StrictFaceHomConstancy,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronStrictCompositionHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronFamilyVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledFactorizationTetrahedronFamily]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9)/(9b): unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9)/(9b): unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9)/(9b): no declarations audited"
+  logInfo m!"Ind-S fixed-horn and native-Hom coordinate audit passed: {count} declarations."

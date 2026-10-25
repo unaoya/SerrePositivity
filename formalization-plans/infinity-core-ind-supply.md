@@ -1,32 +1,24 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-25 20:11 JST、Ind-S (8) 完了）
+## 引き継ぎ（2026-10-26、Ind-S (9)・(9b) 着手）
 
-- 所有：F1/・F1B/・Core/ の新規の葉と、対応する三監査スクリプトの末尾追記。
-- 既存の深層ファイルは編集しない。F2/ は読み取り専用。K-B・Sp・EInfinity は import しない。
-- 今回：(8) E2-S (7) 向け、豊穣表現可能関手の coherent 全図式比較。計画正本は本ファイル。
-  `infinity-core-F1.md` は Ind 所有なので編集しない。
-- (5)：`d4062a19f` で L3 指定型の全族写像・厳密な底・全 fiber 回収を供給済み。
-  同じ写像について指定点の値照合から fiber 内の頂点同型を反映する公開補題も供給済み。
-  K-B 所有の具体的な恒等点への代入は未検証であり、K-B-S 全体の完成とは数えない。
-- (4)：`5686de2be` で内ホーン閉包と小模型、`14923a0d5` で指定逆三角形の保持と
-  大きい標的への延長を保存済み。境界・可逆 path の同じ小模型への因子化を接続し、
-  `IsLocalization.ulift`・`isLocalization_ulift_iff` まで対象ビルドが通過。
-- 現在地：(8) 完了。全図式主定理 `representableHomCoherentIso` の対象ビルド
-  （4168 jobs）、要求型への直接適用、8葉120宣言の公理・依存・禁止仮定監査、F1 全監査が通過。
-- 主要宣言：`representableHomFunctor`・`representableHomCoherent`・
-  `representableHomCoherentIso`・`representableHomCosliceIdentity_value`。
-- 依存と提供：2026-10-25 ユーザー承認で、(8) の新規 F1 葉に限り、指定された既存
-  HomInfinityBifunctor と分類側の4入口経由の KST.Spectra の推移的 import を許可。
-  新規葉の KST 直接 import、EInfinity、F2 は禁止。F1B 監査へは登録しない。
-  提供先は E2-S (7)。公開名・コミット・import 入口をユーザー経由で中継する。
-- 未コミット：なし（自身の対象は本コミットで保存）。他レーンの作業は触らない。
-- 既知の問題：既存の逆方向 import 4経路の分割は第 I 段終了時の停止窓に R が行う。
-  レーン時間中の深層編集はしない。x を動かす全比較の自然性は今回は未公開（任意追加項目）。
-- 残り：(8) の必須供給残件なし。x 方向の追加自然性と R の上流整理は上記の通り。
-- 次の一手：公開名・コミット・import 入口をユーザーへ報告し、E2 へ中継して停止する。
-- 停止条件は foundations §8 に従う。ビルド失敗だけで停止しない。
-  以後のコミット本文には変更・検証・残件の実施記録を書く。
+- 所有：F1/・F1B/・Core/ の新規葉と三監査の末尾追記、本計画。
+- 深層編集は禁止、F2 は読み取り専用、K-B・Sp・EInfinity は import しない。
+  F1 の straightening は使用可。(8) の限定推移 import 例外は今回へ拡大しない。
+- 今回：(9) 制御二胞体族と (9b) 因子分解三単体族。提供先は K-B。
+- 現在地：固定全ホーンの可縮性・比較、指定三面の実全族、零骨格指定延長が対象ビルド通過。
+- 主要補助宣言：tetrahedronFamilyExtensionSpace_compare・factorizationTetrahedronFamily_faces・
+  innerHornFamily_lift_with_vertices。いずれも両主仕様全体の供給完了とは扱わない。
+- 依存と提供：Core/F1/mathlib の既存界面を読み取り専用で使用。連絡・提案はユーザー経由。
+- 未コミット：F1/Diagrams/ の今回の新規葉、本計画、F1 監査末尾。
+- 既知の問題：(9) の厳密な全族回収、(9b) の末尾の全 native Hom 一致は未証明。
+  後者は単なる長い辺の等式ではない。仕様型を保持して構成を進める。
+- 残り：下記三段目 2〜5。見積りは制御全族の有限座標を確認した後に更新する。
+- 次の一手：(9b) の有限 enriched 畳み込みを完成し、指定零骨格延長で全族へ戻す。
+  (9) の厳密 retraction は引き続き未構成。
+- 検証は自分の対象と監査だけ。set -o pipefail、保存は git commit --only。
+  新規 sorry・公理・ModelCategory SSet 仮定を入れない。実施記録はコミット本文へ。
+- 停止は二段目完了・設計変更提案・所有 import 閉包破損・24時間のみ。ビルド失敗では停止しない。
 
 ## 所有と依存
 
@@ -200,61 +192,41 @@ HasCardinalLT は mathlib の宇宙多相な既存述語。既存 F2 の定義�
 18宣言の公理・禁止依存・ModelCategory／強極限仮定監査、Core/F1/F1B 三監査が全て通過。
 許容公理は標準三つのみ。既存の深層三ファイルは不変、監査登録は Core 末尾への追記のみ。
 
-## (8) 三段目と公開界面
+## (8) 保存済み供給
 
-1. [x] 規約・要求型・既存の相対 Hom 比較と分類界面を確認する。
-2. [x] 元の豊穣合成の curry を持つ Hom 関手と、小さい coherent nerve 上の全実現を構成する。
-3. [x] 同じ恒等射の点から coslice → unstraightening の全空間比較を作り、
-   実際の fiber 制限を全高次の豊穣作用と照合して同値を示す。
-4. [x] 始点固定 twisted arrow の分類との全図式 FunctorIso を公開する。
-5. [x] 同じ全空間比較の恒等点を厳密に回収する。x を動かす全比較の自然性は未公開。
-6. [x] 8葉120宣言と F1 を最終監査。所有分を本コミットで保存し、公開名・入口を報告して停止する。
+完了コミット `871293866`。F1/Coherent/RepresentableHomInfinity の
+`representableHomCoherentIso` が元の豊穣 Hom の全実現と指定共変 Hom の全図式 FunctorIso。
+同じ恒等点回収は `representableHomCosliceIdentity_value`。8葉120宣言・F1 全監査通過。
+x 方向の追加自然性は未公開。詳細・三段目・検証記録は同コミットの本計画・本文を参照。
+(8) の葉に限る、既存上流4入口経由の KST.Spectra 推移 import 例外は保持する。
+今回の (9)/(9b) には拡大しない。R が整理する4経路も同コミットに記録済み。
 
-要求型：D : Type u、Category.{u} D、SimplicialCategory D、全 sHom Kan。
-始域は uliftNC(D)、値域は SpaceInfinity、各単体の作用は s.down.comp SSet H_x。
-終域図式は homInfinityCovariant (coherentNerveVertex x)。値同値だけからは導いていない。
+## (9)・(9b) 三段目と公開界面
 
-公開名（namespace SerrePositivity.InfinityCategories）：
+1. [x] foundations §6・§8、Ind-S 進捗、両要求型を確認する。
+2. [ ] (9) の短辺・合成端・全長 Hom を保持する制御二胞体族を構成する。
+3. [ ] encode ≫ longHom = 𝟙 と零単体の全 native Hom 回収を示し、
+   同じ三面の充填空間の可縮性と既存充填との比較を供給する。
+4. [x] (9b) の三面を固定する実三単体族を構成し、末尾の全 native Hom の HEq も保持する。
+5. [ ] 自分の対象と F1 監査だけを通し、git commit --only と実施記録を保存して報告・停止する。
 
-- `representableHomFunctor`：元の Hom の Kan 対象と `curry (eComp SSet x y z)` の作用。
-  `_obj`・`_map` は厳密な等式（Coherent/RepresentableHomFunctor）。
-- `representableHomCoherent`：指定された全単体での後合成。
-- `representableHomCoherentIso`：この全実現から指定された共変 Hom 全図式への FunctorIso
-  （Coherent/RepresentableHomInfinity）。`_app`・`_vertex` も供給。
-- `representableHomCosliceComparison_isQCatEquivalence`：恒等点から作った一つの大域射の同値性。
-- `representableHomIdentityCoefficient_value`・`representableHomCosliceIdentity_value`：
-  同じ恒等係数と始点 fiber の値は元の豊穣恒等射の零単体を厳密に回収する。
-  これらは対象宇宙を持ち上げた圏上で使う（Coherent/RepresentableHomCoslice）。
-- `KanCosliceComparison.map`・`projection`・`identity`・`fiber_actionIso`：
-  指定点からの全空間写像・厳密な底・恒等錐・全反転 Hom 上の作用の照合。
-- `CoherentObjectLift.nerveIso`・`nerveIso_vertex`・`realization`：Hom を変えない対象宇宙の表示変更。
-- `covariantHomIsoOfCosliceEquivalence`・`covariantHomIsoOfDisplayedCosliceEquivalence`：
-  同じ全空間同値から、元の共変 Hom 全図式への分類と表示変更。
+要求正本：(9) は kst-lanes/L3-fibration.md の indS9ControlledTriangleFamilyRequest、
+(9b) は kst-lanes/archive/L3-controlled-factorization-tetra-proposal.md の
+controlledFactorizationTetraFamilyRequest。仕様型の緩和・存在仮定化はしない。
 
-主経路：対象宇宙だけの持ち上げ → 同じ恒等点からの全 coslice 比較 →
-全 Hom 上の作用と豊穣単位則 → 同じ全空間の同値 → 小さい表示への降下 →
-始点固定 twisted arrow の分類 → 元の homInfinityCovariant。
-同型の成分が別に指定された homInfinityCovariantValueEquivalence の逆射と一致するとは主張しない。
+現在地：FixedInnerHornFamily・TetrahedronFamilyFilling・FactorizationTetrahedronFaces・
+TetrahedronPathFold・InnerHornFamilyPrescribedVertices の対象ビルド通過。
+TetrahedronLongHomReplacement・StrictFaceHomConstancy も対象ビルド通過。
+TetrahedronFoldedLongHom・TetrahedronStrictCompositionHom と全族復元を接続済み。
+F1 全監査と新規11葉93宣言の公理・禁止依存・ModelCategory 監査が通過。
+controlledFactorizationTetraFamily は K-B 正本の要求型への直接適用も通過。
+(9b) の末尾 HEq は二つの長い辺の一致より強く、全 native Hom 写像の一致を要求する。
+δ₁F と δ₂F の native Hom は、Path(0,3) への異なる面包含で制限されるため、
+辺の単体恒等式だけで HEq を結論しない。元の要求型を保持して明示制御を調べる。
 
-2026-10-25 ユーザー承認の import 例外（(8) の新規 F1 葉のみ）：
-
-新規 Yoneda/CovariantCosliceClassification の既存上流への入口は次の4本。
-これらを経由する KST.Spectra の推移的 import を許可し、直接 import は禁止する。
-
-- F1/MappingSpaces/HomInfinityBifunctor。
-- F1/Yoneda/YonedaSourceBaseChange。
-- F1/TwistedArrow/SourceInitial。
-- F1/StraighteningLeft/LeftStraighteningEssentialSurjectivity。
-
-R の第 I 段終了時の停止窓での分割対象（レーンでは変更しない）：
-
-- F1/Limits/ContractibleKanTower → KST/Spectra/FibrationTowerLimitCone。
-- F1/Limits/InverseSequenceQuasicategory → KST/Spectra/FibrationTowerLimitCone。
-- HomotopyLimits/FibrationComponentTransport → KST/Spectra/FibrationIntervalLifting。
-- HomotopyLimits/FibrationComponentTransport → KST/Spectra/FiberComponents。
-
-監査 (8) の項に例外を明記。新規葉のソースの直接 KST import、EInfinity/F2 閉包、
-Spectra 以外の KST 閉包を拒否し、全宣言の標準3公理・ModelCategory 不使用を検査する。
-F1B/Core の監査は変更しない。
-ログ：`/tmp/ind-s8-final-build.log`・`/tmp/ind-s8-final-public-type.log`・
-`/tmp/ind-s8-final-leaf-audit.log`・`/tmp/ind-s8-final-f1-audit.log`。
+(9b) 公開：`controlledFactorizationTetraFamily`、入口
+`F1/Diagrams/ControlledFactorizationTetrahedronFamily`。全 K の三面厳密回収と
+要求どおりの full native Hom HEq を含む。内部合成値の定値性を指定厳密面から導き、
+長い Hom を論理和で畳み込み、零骨格の選択を同じ全ホーンへ延長する。
+(9) は未完了。(9) 追加全対角仕様（ユーザー採用）も保持し、標準区間比較の
+像条件との整合性を検査中。KST の仕様ファイルは読取りのみ。
