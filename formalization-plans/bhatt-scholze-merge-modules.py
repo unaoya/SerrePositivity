@@ -163,10 +163,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("plan", type=Path)
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--write-missing-stubs", action="store_true",
+                    help="部分適用からの復旧用：--apply の後、まだ書かれていないスタブだけを書く（他は何もしない）")
     args = ap.parse_args()
     plan = json.loads(args.plan.read_text())
     merges, docs = plan["merges"], plan["docstrings"]
     stubs = set(plan.get("stubs", []))
+    if args.write_missing_stubs:
+        rename = {old: new for new, olds in merges.items() for old in olds}
+        written = []
+        for old in sorted(stubs):
+            assert to_path(rename[old]).is_file(), f"merge target missing: {rename[old]}"
+            if not to_path(old).exists():
+                to_path(old).parent.mkdir(parents=True, exist_ok=True)
+                to_path(old).write_text(STUB.format(new=rename[old]))
+                written.append(old)
+        print(json.dumps({"stubs_written": len(written), "stubs_total": len(stubs)}, indent=1))
+        return
     rename = {old: new for new, olds in merges.items() for old in olds}
     # 統合先と同じ名前の元モジュールはそのまま残るのでスタブは不要。スタブにすると統合した本文を上書きする（BS-W7 の適用前の指摘）。
     assert not (stubs & set(merges)), f"merge targets listed as stubs: {sorted(stubs & set(merges))}"
@@ -223,7 +236,9 @@ def main():
                        cwd=ROOT, check=True)
     for f, text in edits.items():
         (ROOT / f).write_text(text)
+    # git rm で空になったディレクトリは消えるので、スタブの親ディレクトリも作り直す（BS-W7 の二度目の失敗）。
     for old in sorted(stubs):
+        to_path(old).parent.mkdir(parents=True, exist_ok=True)
         to_path(old).write_text(STUB.format(new=rename[old]))
 
 
