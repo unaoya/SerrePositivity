@@ -1,3 +1,10 @@
+import SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift
+import SerrePositivity.DifferentialGraded.Complexes.CycleTransport
+import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient
+import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficientCycles
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereArrowLift
+import SerrePositivity.DifferentialGraded.Module.ExtensionFreeAdjunction
+import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedSphereFamily
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement
 import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles
@@ -7338,6 +7345,14 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift,
+    `SerrePositivity.DifferentialGraded.Complexes.CycleTransport,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficientCycles,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereArrowLift,
+    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeAdjunction,
+    `SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedSphereFamily,
+
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement,
     `SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles,
