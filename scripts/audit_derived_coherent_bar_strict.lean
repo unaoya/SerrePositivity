@@ -98,7 +98,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerHomologyMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstLayerConnecting,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneCyclesMap,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyNaturality]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexShiftHomologyCycles,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneShiftHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SignedShiftBlockHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneHomologyLinear,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentNondegLayerColumns,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFirstTail,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomTargetTransportPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TransportedShiftBlockHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentFaceBlockHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentPrefixBlockHomology]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -177,3 +187,7 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerFirstHom_d
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerFirstHom_eval
 #check SerrePositivity.InfinityCategories.dgCoherentBarLayerConnecting_eq_firstHomology
+
+#check SerrePositivity.InfinityCategories.dgBarSignedShiftHomology
+#check SerrePositivity.InfinityCategories.dgCoherentBarSignedFaceHomology
+#check SerrePositivity.InfinityCategories.dgCoherentBarSignedPrefixHomology
