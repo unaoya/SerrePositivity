@@ -808,3 +808,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_hasSmallKappaFilteredColimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_fst_isKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleFiber_compactCandidate
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sliceOver_cocone_lifting_colimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_predicateOver_cocone_lifting_colimit
+#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOver
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactOver_cocone_of_smallQuasicategory
+#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaSmallQuasicategory_factorization
+#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactOver_cocone_of_small
+#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaFiltered_of_small_tests_equivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOver_model_isKappaFiltered

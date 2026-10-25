@@ -92,14 +92,14 @@
   P の反映移送と小さい Hom から、d2・d4・d5 を無条件に接続した。
 - 指定宇宙変更の小極限反映は P の `spaceUniverseDiagram_reflects_small_isLimit` で構成済み。
   Ind の小余極限反映と合わせ、宇宙比較の追加入力は残らない。
-- e5 の濃度評価は Ind-S (7) として再送。正則非可算 μ、A : X.Subcomplex に対し IsKappaSmall μ A.toSSet → IsKappaSmall μ (SmallSubcomplex.innerHornClosure A).toSSet（小模型・Hull も同様）。
+- e5 の濃度評価は Ind-S (7)、`d39ae1d0a` で供給済み。`SmallHullCardinal` の有界 Hull を使い、任意の μ-small 試験図式を同じ濃度の quasicategory へ厳密に因子化する。
 - P-11・P-12 は P-s へ移管。`PreservedColimitGeneration` は保存された実現からの一般生成、`SmallTwistedArrowShapes` は全単体・TwistedArrow の κ-small 評価まで。残りは有限余極限＋余積から実現の生成と Fun 内の全自然な end 比較・compact 性。
 
 ### 未コミット
-- `IteratedCoconeReassociation`・`SliceOverCoconeFromColimit`：対象上の compact comma の余錐構成を検証中。
+- なし。
 
 ### 次の一手
-- e5 公開名予告：`pullback_isAccessible`、`fiber_isAccessible_of_presentable`、`pullback_isPresentable`（未証明）。accessible な両脚に共通の κ-filtered 余極限・保存と小さい native compact 候補まで構成。基底の全可算図式を厳密に保つ指定辺列の相対実現を使い、filtered 生成表示へ進む。
+- e5 公開名予告：`pullback_isAccessible`、`fiber_isAccessible_of_presentable`、`pullback_isPresentable`（未証明）。accessible な両脚に共通の κ-filtered 余極限・保存と小さい native compact 候補まで構成。presentable 両脚版では compact 成分の対象上の comma の全 μ-small 試験余錐と、指定小模型への μ-filtered 性の移送まで構成。残りは小さい comma 模型の存在と成分表示への cofinal 比較による filtered 生成表示。
 - e は Pr^L／Pr^R の定義と双対性、小極限（HTT 5.5.3.13）。ユーザー確定により c から移した。
 - e の準備として二項積・同値持ち上げを持つ引き戻しの全小余極限と成分保存判定を提供する。
   `piSSet_isPresentable` は任意の小さい族を扱い、各射影の全小余極限保存と成分判定も構成済み。
