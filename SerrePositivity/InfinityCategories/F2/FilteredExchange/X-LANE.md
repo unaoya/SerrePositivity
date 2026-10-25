@@ -22,6 +22,12 @@ a③ は未完。a④・b は未着手。一般交換の仮定はまだ除去し
 `coherentKanRightCompositionTransport_movingIso` の像を貼った比較と、
 合成射の元の指定比較を同じ型に置く。両比較の一致は未証明。
 
+新規 `CoherentSimplexLastPost*`・`CoherentSimplexAppendMorphism` は、
+coherent 単体の最後への指定後合成と、一辺の付け足しを選択なしに構成する。
+旧面の全 Hom の厳密な回収と、二回の後合成と合成射の一回の後合成の
+全 Hom ごとの一致 `coherentSimplexLastPost_comp` を証明した。
+元の合成 prism との照合と Ncomp の指定値への移送はまだ行っていない。
+
 ## 次の工程
 
 1. 指定値の合成則を証明する。元の二固定射 f,g に対する
@@ -35,6 +41,11 @@ a③ は未完。a④・b は未着手。一般交換の仮定はまだ除去し
    左値比較は `pointedHomMorphismValueComparison_heq_prism`、右値比較は
    `pointedValueFamilyTransportIso_at_right` に戻せる。
    比較を新しく選び直さず、同じ指定類で貼る。
+   直近の次手：`coherentCompositionSimplex σ τ t` の最後の対象の後合成を
+   `coherentSimplexLastPost` に値まで同定する（τ を同じ固定 g で後合成）。
+   `coherentCompositionHom_*` の既存の正規化座標と
+   `eComp_eHomWhiskerLeft` を使えば元の全 Hom に沿って比較できる。
+   この照合を元の合成 prism の固定最終射の高次整合へ接続する。
 4. Ncomp が閉じた後だけ、既存の Nlong と
    `spaceCompositionZero_morphism_coherence` から a④ へ進む。
 
@@ -46,5 +57,7 @@ a③ は未完。a④・b は未着手。一般交換の仮定はまだ除去し
 - 対象ビルド：7199 jobs で通過。
 - 再監査：9142 宣言で通過。固定評価補題の証明を既存の
   `functorIsoLiftRight_postcomp_heq_map` を使う形へ整理した後も通過。
+- 高次整合の構成：追加六モジュールの対象ビルド 1694 jobs、専用監査
+  9193 宣言で通過。既存の三構成の証明と同じく標準三公理のみ。
 - 既存集約・既存監査・他レーンのファイルは編集していない。
 - 閉じたら公開名を Ind I-2 d へ渡す。上限で未完なら不足をここへ記録して停止する。

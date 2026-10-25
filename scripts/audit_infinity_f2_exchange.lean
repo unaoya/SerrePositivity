@@ -2,6 +2,8 @@ import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamily
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyTwoStage
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexTwoEvaluationCriterion
 import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceCompositionZeroMorphismCoherence
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentSimplexAppendMorphism
+import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentSimplexLastPostComposition
 import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +20,11 @@ X レーン専用。既存の audit_infinity_f2 は変更しない。
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexZeroCompositeValue_heq_two_evaluation
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexZeroCompositeValue_heq_composite_iff
 #check @SerrePositivity.InfinityCategories.F2.coherentColimitApexZeroCompositeValue_heq_triangle_iff
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexLastPost
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexLastPost_old_face
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexLastPost_comp
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism
+#check @SerrePositivity.InfinityCategories.F2.coherentSimplexAppendMorphism_face_last
 
 open Lean in
 run_cmd do
