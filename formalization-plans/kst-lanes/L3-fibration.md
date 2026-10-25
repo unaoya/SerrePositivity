@@ -241,8 +241,8 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 
 ### 採用済み：同じ未完備実列だけの有限 BF 四角形比較
 - `kSpectrumMap` の射ごとの供給だけから、元の native 二胞体を持つ実 BF 四角形は回収しない。一般の BF 高次面整流は L1 のユーザー指示で中断済み。固定 `dgKInputK` を代入すると商が Perf 完備化後に戻る。
-- ユーザー採用：同じ D-9 の厳密 dg 実列の一つの native 提示だけに限る有限 BF 比較を K-S• へ依頼済み。届くまでは同じ存在命題を明示定理引数として消費する。四辺を元の BF 射として固定し、全正段で元の S• 境界商の全四角形への比較を要求する。一般 StableInfinity の K 関手化は再開せず、供給命題の存在は主張しない。
-- [採用型と範囲](archive/L3-raw-bf-square-proposal.md)。`DGKappaNativeBFSquare` は同じ供給命題から四辺・全正段の全図式比較を保持する。`DGKappaNativeBFZero` は同じ実零角を全正段から認証し、`DGKappaNativeBFFiberComparison` は元の cospan の実極限錐への同じ全比較辺を供給する。主経路 `DGKappaNativeBFOneStage` は一回の S• 引き戻しだけから同じ実比較の非負次数 π 同型を検出する。`DGKappaNativeBFConnectiveKernel` は指定上側全族・動く共有対角と正段商比較をこの判定と同じ固定 K 構造射へ代入する。存在の証明や一般 BF 整流の再開はしない。c4・c5 と K-7 c5・d3 の印は未完。
+- ユーザー採用：同じ D-9 の厳密 dg 実列の一つの native 提示だけに限る有限 BF 比較を K-S• へ依頼済み。届くまでは同じ存在命題を明示定理引数として消費する。ユーザー採用の K-S•-S3 型変更：同じ四 BF 頂点の間の新 coherent 四辺を用い、旧 kSpectrumMap とは全正段の指定比較と全整数 π 作用の一致を要求する。旧辺との厳密等式は撤回。全正段で元の S• 境界商の全四角形への比較も保持する。一般 StableInfinity の K 関手化は再開せず、供給命題の存在は主張しない。
+- [採用型と範囲](archive/L3-raw-bf-square-proposal.md)。`DGKappaNativeBFBoundaryInput` は変更済み hBF のデータ表示。`DGKappaNativeBFSquare` は新四辺・同じ四頂点・全正段の全図式比較を保持する。`DGKappaNativeBFArrowComparison` は指定正段比較と全整数 π 一致を介して旧 K-cof の結論を新辺へ渡す。`DGKappaNativeBFRightArrow` は実 Φ の右辺を同じ新 BF 射に回収し、その π 作用を旧商射へ照合する。旧商射の Sp fiber との同型は主張しない。`DGKappaNativeBFZero` は同じ実零角を全正段から認証し、`DGKappaNativeBFFiberComparison` は元の cospan の実極限錐への同じ全比較辺を供給する。主経路 `DGKappaNativeBFOneStage` は一回の S• 引き戻しだけから同じ実比較の非負次数 π 同型を検出する。`DGKappaNativeBFConnectiveKernel` は指定上側全族・動く共有対角と正段商比較をこの判定と同じ固定 K 構造射へ代入する。存在の証明や一般 BF 整流の再開はしない。c4・c5 と K-7 c5・d3 の印は未完。
 
 ### c5 の有限第一行比較の消費
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。

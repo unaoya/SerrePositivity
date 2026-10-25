@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Fibration.DGRelativeSpaceDetection
 
 /-!
 概要：同じ未完備 BF 四角形の元の実 fiber 比較を構成する。
-方針：同じ cospan の実極限錐と元の全錐を比較し、全正段の検出を消費する。
+方針：新 coherent 右辺・上辺の同じ cospan の実極限錐と全錐を比較し、全正段の検出を消費する。
 規約：有限 BF 供給命題に条件付き。一般 BF 整流や別の固定 K は導入しない。
 使われ方：K-6 の全 S• 比較から K-7 の同じ cone の構造辺への接続。
 -/
@@ -28,7 +28,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 
 /-- 概要：元の K 四角形の右辺と上辺をそのまま底とする、Sp の構成済み極限錐。
 方針：同じ未完備 BF 四角形と元の錐比較へ既存の判定を適用する。
-規約：有限 BF 供給命題に条件付き。固定 K の完備化後の引き戻し性は主張しない。
+規約：有限 BF 供給命題に条件付き。旧 BF 右辺の fiber や固定 K の引き戻し性は主張しない。
 使われ方：同じ実 cone の構造辺へ渡す元の実 fiber 比較。 -/
 def dgKappaNativeBFKLimitCone : JoinCone (pullbackCospan (dgKappaNativeBFSquare R D I hBF)) :=
   OmegaSpectrum.CoherentPullback.infinityCone _

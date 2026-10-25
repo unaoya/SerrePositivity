@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値 P は D-8 e が同じ I から構成し、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - Ind I-2 e を固定 ν 値の Indω へ接続済み。交換を定理化した最終公開入口 `ind_stableCompactGeneration_unconditional`（15:21、f350dce62）を採用し、交換入力・有限全存在の追加仮定を除去した。K-6 は引き続き未供給。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は実逐次比較の候補への消費まで成功（165 モジュール・1887 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
+- NonConnective 集約・専用監査は新 coherent BF 四辺・旧射との整数 π 一致による接続まで成功（168 モジュール・1937 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -82,7 +82,7 @@
 
 | 名前 | 所在（SerrePositivity/ 以下） | 供給元 | 使用（一致行／ファイル） |
 |---|---|---|---|
-| `hBF : dgKappaNativeBFSquareComparison`（ユーザー採用、明示定理引数） | KST/NonConnective/DGKappaNativeBFSquare.lean | K-S•：同じ D-9 未完備 dg 実列の四辺を保つ有限 BF 四角形と全正段の全 S• 比較。K-B：実 fiber 比較・同じ cone の零性・構造辺への消費 | 集計対象外（定理引数） |
+| `hBF : dgKappaNativeBFSquareComparison`（ユーザー採用、明示定理引数） | KST/NonConnective/DGKappaNativeBFSquare.lean | K-S•-S3（ユーザー採用の型変更）：同じ D-9 未完備 dg 実列の新 coherent BF 四辺・全正段指定比較・旧 kSpectrumMap との全整数 π 作用一致と全 S• 四角形比較。旧辺との厳密等式は要求しない。K-B：実 fiber 比較・同じ cone の零性・構造辺への消費 | 集計対象外（定理引数） |
 | `hcofinal`（ユーザー採用、明示定理引数） | KST/NonConnective/DGKappaSuspensionCofinality.lean | K-S•：Yoneda 完備化の正次数 π 同型・零次 π 単射。K-B：同じ実商への代入・同じ cone の K 零性・実 fiber 比較への接続 | 集計対象外（定理引数） |
 | `DGKappaSuspensionRelativeRoofInput` | KST/NonConnective/DGKappaSuspensionRelativeRoofInput.lean:32 | 実小 dg 核・平坦屋根：D-9。固定 ν の相対 Verdier 四角形・Sp 接続：Sp-6。元の Perf・P との照合：K-B | 19／7 |
 | `DGSuspensionNativeActionInput`（採用（03:55）） | KST/NonConnective/DGSuspensionNativeActionInput.lean:25 | D-8 e（供給仕様拡張を採用、未供給）：同じ実核・cone・零角・懸垂の全四角形族と、実評価 Morita 比較・元の P の包含の全 native Hom 自然性。K-B：固定 S・ν・K での照合。供給路：PerfDGInput 上の厳密 SSet 豊穣自己関手の coherentNerveMap。D への伝達は c′ 試作の判定後 | 11／2 |

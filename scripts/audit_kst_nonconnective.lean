@@ -7,6 +7,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaNativeBFBoundaryInput,
+    `SerrePositivity.KST.NonConnective.DGKappaNativeBFArrowComparison,
+    `SerrePositivity.KST.NonConnective.DGKappaNativeBFRightArrow,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimitLaws,
     `SerrePositivity.KST.NonConnective.SequentialCandidateMap,
     `SerrePositivity.KST.NonConnective.SequentialCandidateMapPi,
