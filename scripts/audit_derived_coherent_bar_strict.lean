@@ -161,7 +161,22 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedBarVertexComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedBarComparisonReduction,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGraded,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanRestriction]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentBarProjective,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutColimit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutDiagram,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGradedSplit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGradedSplitting,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutLayerProjection,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutModule,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutProjective,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutTheta,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutTransition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutZero,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentGradedProjective,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanInclusionComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanZeroIso]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -278,3 +293,7 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgCoherentBarCutProjector_recover
 #check SerrePositivity.InfinityCategories.dgBarModuleMaurerCartan_restrict
+
+#check SerrePositivity.InfinityCategories.dgCoherentBarCutModule_projective
+#check SerrePositivity.InfinityCategories.dgCoherentBarCutModuleIsColimit
+#check SerrePositivity.InfinityCategories.dgCoherentBarNormalizedModule_homotopicallyProjective
