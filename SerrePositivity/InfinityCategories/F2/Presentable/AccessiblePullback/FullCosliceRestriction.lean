@@ -51,4 +51,22 @@ lemma fullCosliceRestrictionIso_hom_inclusion {K X : SSet.{u}} (P : X _⦋0⦌ �
       (sliceUnderProjection (q ≫ (fullSubcomplexOnVertices X P).ι)) P).flip.isoPullback_inv_snd]
   exact (Compact.fullSliceUnder_isPullback P q).isoPullback_hom_snd
 
+/-- 概要：全部分圏の全余錐制限は、周囲の同じ制限の実引き戻しとなる。
+方針：元の二つの coslice の頂点引き戻しから、下の四角形を消去する。
+規約：前置図式に有限性・終対象・余極限を要求しない。
+使われ方：周囲の相対因子化を既存の全前置余錐を固定して回収する。 -/
+lemma fullCosliceRestrict_isPullback {K L X : SSet.{u}} (P : X _⦋0⦌ → Prop)
+    (q : K ⟶ (fullSubcomplexOnVertices X P : SSet.{u})) (i : L ⟶ K) :
+    IsPullback (sliceUnderRestrict q i)
+      (sliceUnderPostcomp q (fullSubcomplexOnVertices X P).ι)
+      (sliceUnderPostcomp (i ≫ q) (fullSubcomplexOnVertices X P).ι)
+      (sliceUnderRestrict (q ≫ (fullSubcomplexOnVertices X P).ι) i) := by
+  let j := (fullSubcomplexOnVertices X P).ι
+  have ho : IsPullback (sliceUnderPostcomp q j)
+      (sliceUnderRestrict q i ≫ sliceUnderProjection (i ≫ q))
+      (sliceUnderRestrict (q ≫ j) i ≫ sliceUnderProjection (i ≫ (q ≫ j))) j := by
+    simpa only [sliceUnderRestrict_projection] using (Compact.fullSliceUnder_isPullback P q).flip
+  exact (ho.of_bot (sliceUnderRestrict_postcomp q i j)
+    (Compact.fullSliceUnder_isPullback P (i ≫ q)).flip).flip
+
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

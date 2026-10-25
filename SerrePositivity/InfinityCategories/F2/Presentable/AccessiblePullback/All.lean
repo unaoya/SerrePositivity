@@ -14,6 +14,32 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FactorizationEdgeLift
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FullCompactFactorization
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.TrivialCosliceEndpoint
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndCompactFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.TrivialFactorizationLift
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactFactorizationTransport
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.OrdinalCompactColimits
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ChainGluing
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.OrdinalColimitComparison
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SmallSourceCosliceCompactness
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SmallPrefixFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FullSmallPrefixFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SmallPrefixCofinality
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndSmallPrefixFactorization
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndRelativePresentation
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。
