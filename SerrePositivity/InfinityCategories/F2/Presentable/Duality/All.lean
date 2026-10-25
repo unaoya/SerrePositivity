@@ -82,6 +82,10 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftProj
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LocalMappingEquivalence
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.UnitFamilyLifting
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.AdjointFamilyChoice
+
 /-!
 概要：presentable 圏の双対性レーンの検証済み界面を集約する。
 方針：所有する新規葉だけを public import する。

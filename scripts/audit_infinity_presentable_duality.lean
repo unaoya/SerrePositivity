@@ -165,3 +165,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeft_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftMappingEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointMappingEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeft_extend
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRight_extend
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitLeftSection_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.adjointUnitRightSection_projection
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointMappingFamily_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointMappingFamily_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointMappingFamilyAdjunction
+#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftAdjointMappingFamilyAdjunction
