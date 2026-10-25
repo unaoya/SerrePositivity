@@ -1,21 +1,21 @@
 # Ind-S 供給計画 v3
 
-## 引き継ぎ（2026-10-26、Ind-S (9)・(9b) 着手）
+## 引き継ぎ（2026-10-26、(9b) 完了・(9) 正規化条項採用後に続行）
 
 - 所有：F1/・F1B/・Core/ の新規葉と三監査の末尾追記、本計画。
 - 深層編集は禁止、F2 は読み取り専用、K-B・Sp・EInfinity は import しない。
   F1 の straightening は使用可。(8) の限定推移 import 例外は今回へ拡大しない。
 - 今回：(9) 制御二胞体族と (9b) 因子分解三単体族。提供先は K-B。
-- 現在地：固定全ホーンの可縮性・比較、指定三面の実全族、零骨格指定延長が対象ビルド通過。
+- 現在地：(9b) 完了コミット 77a33b4c9。(9) は未完、追加全対角条項の像条件を検証。
 - 主要補助宣言：tetrahedronFamilyExtensionSpace_compare・factorizationTetrahedronFamily_faces・
   innerHornFamily_lift_with_vertices。いずれも両主仕様全体の供給完了とは扱わない。
 - 依存と提供：Core/F1/mathlib の既存界面を読み取り専用で使用。連絡・提案はユーザー経由。
-- 未コミット：F1/Diagrams/ の今回の新規葉、本計画、F1 監査末尾。
+- 未コミット：CanonicalIntervalTriangle・WholeDiagonalImageObstruction、本計画、F1 監査末尾。
 - 既知の問題：(9) の厳密な全族回収、(9b) の末尾の全 native Hom 一致は未証明。
   後者は単なる長い辺の等式ではない。仕様型を保持して構成を進める。
 - 残り：下記三段目 2〜5。見積りは制御全族の有限座標を確認した後に更新する。
-- 次の一手：(9b) の有限 enriched 畳み込みを完成し、指定零骨格延長で全族へ戻す。
-  (9) の厳密 retraction は引き続き未構成。
+- 次の一手：旧 (9) の encode・longHom の厳密切断を構成し、採用済み正規化後の
+  全対角式と元の t との固定ホーン内の可逆比較を接続する。
 - 検証は自分の対象と監査だけ。set -o pipefail、保存は git commit --only。
   新規 sorry・公理・ModelCategory SSet 仮定を入れない。実施記録はコミット本文へ。
 - 停止は二段目完了・設計変更提案・所有 import 閉包破損・24時間のみ。ビルド失敗では停止しない。
@@ -230,3 +230,38 @@ controlledFactorizationTetraFamily は K-B 正本の要求型への直接適用�
 長い Hom を論理和で畳み込み、零骨格の選択を同じ全ホーンへ延長する。
 (9) は未完了。(9) 追加全対角仕様（ユーザー採用）も保持し、標準区間比較の
 像条件との整合性を検査中。KST の仕様ファイルは読取りのみ。
+
+## (9) 追加全対角条項：像障害と設計変更案
+
+追加条項はユーザー採用済み（提案ファイルの未採用という見出しより最新指示を優先）。
+対象は全 t : T₀。Lt の直接 path 評価を r : K → H とすると、δ₁Tt 全体が
+標準 coherentHomIntervalComparison の像に厳密に入ることを要求する。
+これは readout の定義を選べば自動的に成立する条件ではない。
+
+検証した有限座標（新規 F1/Diagrams/ の二葉）：
+- CanonicalIntervalTriangle.rightMappingSpacePrism_target_triangle：右 prism の
+  終点側三角形は σ₁ ≫ δ₁。そのため標準像の終点側三角形は必ず σ₁ の像。
+- WholeDiagonalImageObstruction.coherentIntervalFamily_target_triangle_degenerate：
+  任意の raw Hom の全一単体族にも同じ退化条件が必要。
+- factorizationTrianglePrism_diagonal_not_canonical_of_distinct_edges：
+  一番面の長辺と第一辺が異なる三単体を明示三角柱へ引くと、長辺族は標準像に入らない。
+- factorizationTrianglePrism_boundary_of_unit_faces：同じ三角柱の二短辺は、
+  零番面・三番面が単位合成なら、元の恒等と元の辺への定値族を厳密に回収する。
+
+数学的な反例の形（主仕様の否定の閉じた Lean 項としては未登録）：
+X は点、Z は二対象間に唯一の同型を持つ groupoid の nerve（可縮 Kan）。
+異なる二点の射 u₀,u₁ : X → Z は異なるがホモトピック。
+s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
+Λ[3,2] の三面を (u₀,id_Z) の厳密合成、s、(id_X,u₀) の厳密合成にして充填 F を取る。
+三角柱の頂点を (0,0)↦0,(0,1)↦1,(1,0)↦1,(1,1)↦1,(2,0)↦2,(2,1)↦3
+に送って F を引く。二短辺は上の定値族だが、長辺の終点側三角形は s。
+その第一辺 u₀ と長辺 u₁ は異なるので σ₁ の像にはなく、新条項の標準像条件を満たさない。
+上の二葉はこの像条件・三角柱座標・非像判定を証明する。具体的 Z と s の実装は未登録。
+
+採用済み修正（ユーザー回答、2026-10-26）：旧 (9) の全条件と (9b) を保持し、
+追加条項の Tt を normalize(t) := encode(longHom(t)) の二胞体に置く。
+射として normalize = longHom ≫ encode。既存の切断式から冪等性と読出し保存を得る。
+元の t と normalize(t) の比較は同じ固定ホーン空間 T 内の可逆比較として別に保持する。
+元の全 t の長辺との厳密等号は主張しない。ユーザー採用により承認待ちなく実施を続行。
+追加2葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。
+残件は旧 (9) の厳密切断・各 k の full native Hom 回収、正規化後の全対角式と可逆比較。

@@ -9612,3 +9612,33 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9)/(9b): no declarations audited"
   logInfo m!"Ind-S fixed-horn and native-Hom coordinate audit passed: {count} declarations."
+
+-- Ind-S (9) 追加全対角仕様の像条件。既存11葉の登録は保持する。
+-- これらは標準像の必要条件・明示的な非像条件であり、強化仕様の存在証明ではない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.WholeDiagonalImageObstruction },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) diagonal: forbidden lane dependency: {mod.module}"
+  let modules := #[`SerrePositivity.InfinityCategories.F1.Diagrams.CanonicalIntervalTriangle,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.WholeDiagonalImageObstruction]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) diagonal: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) diagonal: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) diagonal: no declarations audited"
+  logInfo m!"Ind-S whole-diagonal image-condition audit passed: {count} declarations."
