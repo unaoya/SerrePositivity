@@ -18,7 +18,10 @@
 - 新規10葉を追加登録。元終域の係数 path 比較の逆・往復則、正規化 Hom の両射影と第三 cochain、全 prism の一致と両端固定 homotopy、二 cube の共有面・貼り合わせ、元標準合成三角形の全三辺、元入力 fiber の切断同値を検証。係数 path の逆は実 lax Hom 比較の逆と区別する。
 - 追加9葉を登録。元入力付き二対角 path への輸送同値、指定 lax 比較の矢印射影との一致、前 cube 元面と指定 augmentation 全族の一致、元左右入力の全鎖・全区間射影、補正済み前後道と両単位 cap 道の入力 fiber 内持ち上げを検証。
 - 追加11葉を登録。指定矢印 Hom の全正方形と cube 元面、後 cube 正規化面と実係数 prism、補正三角形の元端・元可変辺、指定二三角形の元入力付き持ち上げ、厳密共通対角から全 path 模型への同値を検証。四補正道の元端・共通端・標準端の全三角形一致と、元入力固定の二選択 homotopy も構成。
-- 集約ビルド（13,222 jobs）・公理監査（1,003モジュール、10,138宣言）通過。相対対角境界の三辺を接続中。実 lax Hom 比較への逆の輸送は未完であり、恒等二脚以降も未供給。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
+- 追加23葉を登録。元終域の同じ正規化四面体・六片・全共有辺・両単位退化を保持し、`dgGluingHomTargetDiagonalComparisonBoundary_filling` を無仮定で構成。指定係数道との両端固定相対比較、入力固定の指定三辺充填、左右実単位閉路の零性を接続した。
+- `dgGluingHomTargetInputPathInverse`・`_unit`・`_counit` は、指定元比較の**入力付き path 模型**上の実逆と往復則。`dgGluingHomTargetArrowInputStrictComparison_equivalence` も構成。これらは `dgGluingHomTargetLaxHomPullbackComparison` 自身の逆ではなく、第1段の完了報告はまだ行わない。
+- 元 lax Hom 標的の `dgGluingHomTargetLaxHomPinchedIntervalTransport` と `_equivalence`、`dgGluingHomTargetLaxHomPullback_kanComplex` を構成。次工程は元両 Hom 入力・矢印座標を同時に保つ標的座標同型と、指定比較の厳密一致。その同値を相殺して実 lax Hom 比較の逆へ戻す。
+- 集約ビルド（13,245 jobs）・公理監査（1,026モジュール、10,522宣言）通過。恒等二脚の特殊化と対角 `FunctorIso`・全 cone 比較は未供給。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。

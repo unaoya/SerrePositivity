@@ -1007,7 +1007,30 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientInputPathComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetStandardCapTriangles,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationInputEndpoints,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputHomotopies]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputHomotopies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientInputPathLegs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetDiagonalBoundaryFilling,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetDiagonalComparisonBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetDiagonalRelativeNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputDiagonalEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputPathEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputPathPoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputStrictEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationTetrahedron,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapCoefficientFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapIntervalTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapPastingEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapPastingTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCollarIntervalTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitLoopEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitLoopNullity,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitSixTriangleDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitSpanRelativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitSpanTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitTriangleDiagrams,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitTriangleFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PathPullbackEndpointLegs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxIntervalTransport]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

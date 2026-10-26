@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FirstFixedCompositionExt
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceFaces
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondenceDiagonal
 /-!
 概要：任意の元入力を持つ合成対応の射を、実三角形と元入力で同定する。
 方針：入力の引き戻しの外延性と三角形評価の単射性を使う。
@@ -31,6 +32,26 @@ def dgGluingLastRestrictedTriangleEvaluation (x : Z _⦋0⦌) (g : Z.Edge y z)
     (a : A ⟶ intervalMappingSpace x y) :=
   (Δ[2] ◁ pullback.fst (compositionCorrespondenceFirst x g) a) ≫
     compositionCorrespondenceEvaluation x g
+
+lemma dgGluingFirstRestrictedTriangleEvaluation_diagonal (f : Z.Edge x y) (z : Z _⦋0⦌)
+    (a : A ⟶ intervalMappingSpace y z) :
+    (stdSimplex.δ (1 : Fin 3) ▷ pullback (dgGluingFirstFixedCompositionSecond f z) a) ≫
+      dgGluingFirstRestrictedTriangleEvaluation f z a =
+    intervalMappingUncurry (pullback.fst (dgGluingFirstFixedCompositionSecond f z) a ≫
+      dgGluingFirstFixedCompositionDiagonal f z) := by
+  rw [dgGluingFirstRestrictedTriangleEvaluation, ← Category.assoc, ← whisker_exchange,
+    Category.assoc, ← dgGluingFirstFixedCompositionDiagonal_uncurry,
+    ← intervalMappingUncurry_precomp]
+
+lemma dgGluingLastRestrictedTriangleEvaluation_diagonal (x : Z _⦋0⦌) (g : Z.Edge y z)
+    (a : A ⟶ intervalMappingSpace x y) :
+    (stdSimplex.δ (1 : Fin 3) ▷ pullback (compositionCorrespondenceFirst x g) a) ≫
+      dgGluingLastRestrictedTriangleEvaluation x g a =
+    intervalMappingUncurry (pullback.fst (compositionCorrespondenceFirst x g) a ≫
+      compositionCorrespondenceDiagonal x g) := by
+  rw [dgGluingLastRestrictedTriangleEvaluation, ← Category.assoc, ← whisker_exchange,
+    Category.assoc, ← compositionCorrespondenceDiagonal_uncurry,
+    ← intervalMappingUncurry_precomp]
 
 lemma dgGluingFirstRestrictedTriangle_hom_ext (f : Z.Edge x y) (z : Z _⦋0⦌)
     (a : A ⟶ intervalMappingSpace y z)
