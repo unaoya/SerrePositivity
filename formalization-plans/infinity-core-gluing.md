@@ -35,6 +35,12 @@
 - 恒等特殊化の `dgGluingIdentityHomTargetLaxEquivalence`、固定 ν 中央同値の `dgGluingIdentityInputLaxEquivalence` も構成・チャット報告済み。後者は第2入力の gluing 欄に相当。既存の指定差終域同値と合わせる対角・cone の全同型は未供給であり、第2入力全体を完成扱いしない。
 - 集約ビルド（13,384 jobs）・公理監査（1,057モジュール、10,998宣言）通過。次工程：恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性を接続し、第2入力、第3入力 `.withCone` を順に実例化・チャット報告する。
 
+
+- 追加8葉：恒等比較を指定二射影と augmentation 全族を持つ直接の `laxPullbackLift` で表し、元終域比較の同値性を恒等二脚へ輸送した。`dgGluingIdentityNativeDiagonalIso` と固定 ν の **`dgGluingIdentityInputDiagonalIso R d`** を構成・単体検証し、後者が第2入力の diagonal 欄の型を満たすことをチャット報告済み。中央同値の恒等基底変更は矢印圏への後合成で表し、対角との厳密可換性を保つ。
+- `laxCospanCofiberComparison`・`laxCospanIsoCofiberComparison` は、前段の指定 cospan 全比較自身と選択 cofiber 差との全関手同型。可逆 path 置換の同じ二比較・同じ実逆と往復則を使う。恒等基底変更には `identityLaxArrowBaseCofiberComparison` を供給した。
+- `localizationProjectionComparison`・`localizationProjectionComparisonOfTest` と `identityLaxDifferenceCharacterization` を検証。既存の恒等 lax Verdier 局所化に沿う実関手同型付き延長と、切断／試験圏での全比較から元の射影との全 `FunctorIso` を反映する。対象ごとの cone 一致を全自然性の代用にしない。
+- 集約ビルド（13,393 jobs）・公理監査（1,065モジュール、11,094宣言）通過。第2入力の残りは cone 欄。採用候補：元の実零対象（閉零圏の零対象）による dg 右軸上で、元 cone 包含と Yoneda の全閉零自然同型を構成する。既存 `dgClosedZeroFunctor`・`dgGluingRightAxis` と小 Perf 基底の実零対象を読み取り専用で利用する。右軸での選択 cofiber は零始域の一般比較で回収し、対角零化と局所化の試験圏判定へ代入する。第3入力は元終域から恒等 Hom gluing への全 dg 比較と上記 cospan cofiber 自然性へ接続する。三入力全体の完了は引き続き未達。
+
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
 - native dg 圏・左右射影・comma 比較、実円錐・全整数シフトと dg 自然な Yoneda 加群比較を構成済み。

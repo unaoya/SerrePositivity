@@ -1061,7 +1061,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.OriginalInputLaxLegComparisons,
     `SerrePositivity.InfinityCategories.Derived.Gluing.OriginalInputLaxEquivalence,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityHomTargetLaxEquivalence,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputLaxEquivalence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityHomTargetDiagonal,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxArrowBase,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputDiagonalComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxCospanCofiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LaxCospanIsoCofiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxArrowBaseCofiber,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.LocalizationProjectionComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxDifferenceCharacterization]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IdentityHomTargetLaxEquivalence
+public import SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxArrowBase
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityValueEquivalences
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxComparisonRequest
 /-!
@@ -25,6 +26,6 @@ def dgGluingIdentityInputLaxEquivalence :
         (𝟙 (dgKInputStableValue R (dgOdotMilnorIdentityBaseInput R d)))).obj :=
   (dgOdotMilnorIdentityGluing_nu_equivalence R d).choose.symm.trans
     ((dgGluingIdentityHomTargetLaxEquivalence.{u, 0} R C).trans
-      (identityLaxChangeBaseEquivalence (dgOdotMilnorIdentityBase_nu_equivalence R d).choose))
+      (identityLaxArrowBaseEquivalence (dgOdotMilnorIdentityBase_nu_equivalence R d).choose))
 
 end SerrePositivity.InfinityCategories
