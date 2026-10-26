@@ -18,7 +18,7 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,541 ジョブで成功。専用監査は 236 モジュール・2,713 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 今回の所有集約ビルドは 16,548 ジョブで成功。専用監査は 240 モジュール・2,761 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - 到着 K-B 7bbc95274：dgKappaCanonicalSuspensionStructureMap_nonnegative と実際の公開名 dgKappaCanonicalSuspensionStructureMap_eq を消費。DGNonconnectiveKConnectiveComparison は c5 の標準単体商比較だけに条件付きで、同じ元の全一単体・隣接安定化・連結比較・全整数末尾表示を接続。K-6 c4 の全四角形比較と K-7 c4 の全入力作用を区別する。
 - d4：DGKInputCompactNativeChoiceCoherence は I-2 e の同じ無条件生成同値から任意の逆射選択を全 native Hom 族上で比較し、恒等・三選択の合成・任意族への再制限・元の ν/Yoneda 全族への指定比較の自然性を証明。非可算 κ-cone と同じ Indω の比較、全入力高次合成と構造辺 β の自然性は別工程。
@@ -62,6 +62,8 @@
 
 - DGKappaSuspensionChoiceCoherence は元の実商射を保つ下降比較の恒等・三選択合成二胞体と、任意全高次パラメータの再制限等式を供給。DGSuspensionUnconditionalMapData は D-S 8fa7ccdef の strict data を新提供者へ代入し、同じ cone 関手・perfect 保存・実入力射を厳密回収する。map・vertex・edgeIso のみで正本 B1 を構成する入口を追加。全入力作用の存在自体は供給待ち。公開入口 dgKappaUnconditionalSuspensionMapData と dgSuspensionUnconditionalCoherentActionOfMap は同じ新提供者を使う。
 
+- DGKappaSuspensionPerfectChoiceCoherence は元の Yoneda 完備化への全関手制限の充満忠実性で、実商の自己・三選択合成比較を同じ Perf 値へ反映。DGKappaSuspensionNuChoiceCoherence は元の評価同値の逆二胞体で固定 ν 値の同じ比較へ戻し、両方で任意高次パラメータの再制限を厳密保持する。DGKappaFixedKComparisonPi は元の SOA/BF 順逆比較の全整数 π 上の逆則を供給。DGKappaSuspensionKChoicePiCoherence は同じ固定 K 実選択射の π 自己・合成則へ渡す。全 dg 入力作用・反復 β 自然性・K^{nc} の模型独立性の完成は別工程。
+
 ### 残り（依存順）
 0. 2026-10-27 更新：D-2 4cd747153 の dgKappaConeInput_unconditional'・同じ P・sphere 零所属へ採用入口を切替済み。同じ P 型・同値を維持する。D-4a（D-S の map・edgeIso）＋D-4b（D の square_at・Morita/P 自然性）を正本 B1 型へ代入して c4 を無条件化。Sp-2 の sp_isStable→d3、K-B の K-6 無条件版→e、Sp-2 s3→e の相対 Verdier 接続、最後に固定 S・ν の IsRelativeLocalizingInvariant 登録。B′型変更は不採用。
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -84,14 +86,14 @@
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-3・K-4、固定界面 ν・K）、`KST/LocalizingInvariants/`（K-5 相対版、K-8）、`KST/Spectra/`、`KST/Fibration/`（K-6）、`InfinityCategories/Derived/`（β3・β5）、`F2/Ind/`。
 - 提供：厳密な逐次 BF 列の同じ BF 候補を頂点とする実 Sp 余極限・実辺の整数 π 比較。一般 coherent 列の整流を仮定してはいない。
-- D-8 は同じ `objects := dgKappaClosedProjectiveObjects R D κ` の I 全フィールドと同じ P を供給済み。`DGKappaUnconditionalStageSupply` は非可算正則 κ の明示条件だけから全厳密 dg 段へ接続する。`DGKappaUnconditionalConeZero` は D 正本の実零加群所属を Z に代入し、同じ cone の連結 K・固定 K の実 Sp 零性と全段の実零所属を供給する。
+- D-8 の旧 closed-projective 入口は維持。採用入口は D-2 4cd747153 の `dgKappaConeInput_unconditional'`（objects は sphere closure）と同じ prime P。`DGKappaUnconditionalStageSupply` は非可算正則 κ の明示条件だけから全厳密 dg 段へ接続する。`DGKappaUnconditionalConeZero` は D 正本の実零加群所属を Z に代入し、同じ cone の連結 K・固定 K の実 Sp 零性と全段の実零所属を供給する。
 - `DGSuspensionStageProvider` の対象別実供給は接続済み。全 native 入力射作用と整合性は未供給で、対象別の実 I・P・Z から推論しない。[宣言名と対応表](archive/L10-dg-kappa-inputs.md)。
 
 ### 公開界面の利用
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- なし。固定 K 選択比較・実商選択合成比較・D-S strict data 消費の新規 3 葉と集約・専用監査・本計画は検証済みで所有 6 ファイルだけを限定保存。前回 prime I・P・Z 切替は 354e05773。B′型変更は不採用。所有外は対象外。
+- なし。Perf／固定 ν 選択比較の自己・合成二胞体と、同じ固定 K 選択射の整数 π 関手則の新規 4 葉、集約・専用監査・本計画は検証済みで所有 7 ファイルだけを限定保存。前回 data 接続は cff61d952。所有外は対象外。
 - 保存注記：c2a7623c1 は共有 index の並行更新により K-B の Relative/All・ConnectiveFibrationTheorem・L3・audit_kst_fibration も併収した。K-B3 はこれらの内容を編集していない。コミット本文の所有ファイル限定という記述はこの点を訂正する。履歴・他レーンの内容は保持する。
 
 ### 既知の問題
@@ -207,7 +209,7 @@
 ### 新 cone 入力の切替点と rfl 依存（到着前の準備）
 - DGKappaSelectedConeInput に採用 I・同じ I の P・実零所属 Z を集約した。現在の I は新 sphere-only D 正本の透過的包装。D-2 4cd747153 の合図を受け、I を dgKappaConeInput_unconditional'、P を dgKappaPerfectInput_unconditional' へ同時に切替。Z は dgKappaSphereClosureObjects_zero R D hκ を消費する。
 - dgKappaUnconditionalStageProvider は採用 I・P を直接受ける。rfl 再検証点は同葉の _cone・_perfect・dgSuspensionUnconditionalIteration_succ、および DGNonconnectiveK の dgNonconnectiveKSuspensionK_succ。UnconditionalConeZero の旧 objects への change は採用葉へ移動し、全段 Z・cone K 零性も採用 I に統一した。
-- 切替後も提供者名 dgKappaUnconditionalStageProvider を維持し、dgKappaUnconditionalStageProvider_cone_newInput・_perfect_newInput で RHS に prime 正本を明記した rfl 補題を公開する。
+- 切替後も提供者名 dgKappaUnconditionalStageProvider を維持し、dgKappaUnconditionalStageProvider_cone_newInput・_perfect_newInput で RHS に prime 正本を明記した rfl 補題を公開済み。
 - 到着前の旧 I との永久等号や旧 P との比較仮定は追加しない。採用変更後の反復対象を旧候補と同一視せず、新正本上で全所有集約・監査を再検証する。
 
 ### f 登録の準備・受入条件
@@ -230,7 +232,7 @@
 
 ## 規約
 - 配置 `SerrePositivity/KST/NonConnective/`、集約 `KST/NonConnective.lean`、監査 `scripts/audit_kst_nonconnective.lean`。
-- foundations.md §8 と k-theory-kst-route.md §13（決定 15・16）。Sp の IsStable は使わない（K-5 の fiber 列・π 同値検出）。商・分数・局所化の API は Sp 正本（10-22 19:50）。工程 1 の逐次実 cocone と ∞ 余極限性は K-7 所有で自前構成（10-23 コーディネータ指示）。
+- foundations.md §8 と k-theory-kst-route.md §13（決定 15・16）。既存の fiber・整数 π 比較は Sp の IsStable に非依存。d3 は到着後の Sp-2 正本 sp_isStable を消費する。商・分数・局所化の API は Sp 正本（10-22 19:50）。工程 1 の逐次実 cocone と ∞ 余極限性は K-7 所有で自前構成（10-23 コーディネータ指示）。
 
 ### 実逐次比較の候補への消費（工程 e の形式部分）
 - `SequentialLevelColimitLaws` は元の段別余極限比較の厳密な恒等・合成を保持する。`SequentialCandidateMap` は元の BF 射影の hSp 同型で同じ比較を既存の候補へ渡し、hSp 関手則と元の射影下の可換性を認証する。BF 代表の厳密な関手性は主張しない。

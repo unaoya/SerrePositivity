@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceCoherence
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionNuChoiceCoherence
+public import SerrePositivity.KST.NonConnective.DGKappaFixedKComparisonPi
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKChoicePiCoherence
 public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMapData
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceCoherence
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKChoiceComparison

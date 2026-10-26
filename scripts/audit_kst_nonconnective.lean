@@ -13,6 +13,11 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceCoherence,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionNuChoiceCoherence,
+    `SerrePositivity.KST.NonConnective.DGKappaFixedKComparisonPi,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionKChoicePiCoherence,
+
     `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMapData,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceCoherence,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionKChoiceComparison,
@@ -513,3 +518,14 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionChoiceParameterIso_precomp
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_piIsomorphism
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_isInvertible
+
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionPerfectChoice_selfIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionPerfectChoice_compIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionPerfectChoiceParameterIso_precomp
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionNuChoice_selfIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionNuChoice_compIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionNuChoiceParameterIso_precomp
+#check SerrePositivity.KST.NonConnective.dgKappaFixedKComparisonPi_left
+#check SerrePositivity.KST.NonConnective.dgKappaFixedKComparisonPi_right
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_pi_self
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_pi_comp
