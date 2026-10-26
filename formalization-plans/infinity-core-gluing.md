@@ -41,6 +41,14 @@
 - `localizationProjectionComparison`・`localizationProjectionComparisonOfTest` と `identityLaxDifferenceCharacterization` を検証。既存の恒等 lax Verdier 局所化に沿う実関手同型付き延長と、切断／試験圏での全比較から元の射影との全 `FunctorIso` を反映する。対象ごとの cone 一致を全自然性の代用にしない。
 - 集約ビルド（13,393 jobs）・公理監査（1,065モジュール、11,094宣言）通過。第2入力の残りは cone 欄。採用候補：元の実零対象（閉零圏の零対象）による dg 右軸上で、元 cone 包含と Yoneda の全閉零自然同型を構成する。既存 `dgClosedZeroFunctor`・`dgGluingRightAxis` と小 Perf 基底の実零対象を読み取り専用で利用する。右軸での選択 cofiber は零始域の一般比較で回収し、対角零化と局所化の試験圏判定へ代入する。第3入力は元終域から恒等 Hom gluing への全 dg 比較と上記 cospan cofiber 自然性へ接続する。三入力全体の完了は引き続き未達。
 
+
+- 追加12葉：`zeroSourceModuleConeIso` は元右包含を順射とする実加群同型。`dgGluingHomTargetConeInr_naturality` は元三成分 Hom の全次数自然性であり、第三成分の零性を仮定しない。`dgGluingIdentityRightAxisPerfectConeIso` は同じ実閉零対象の右軸上で元 cone 関手を native Yoneda と全比較する。
+- `dgPerfectValuedFunctor_isExactFunctor` は元全像小包絡への厳密因子化から実 Perf 値関手の完全性を証明。全 Perf の Small 性は不要。`dgGluingNativePerfectYonedaEquivalence` は元圏の coherent 完備性と元の retract 表示から、固定 S に依存せず native 同値を与える。
+- `identityConeComparisonCriterion` に、元対角の指定収縮・右軸の二つの全比較・完全性を代入し、**`dgGluingIdentityNativeConeComparison`** を構成。固定 ν の全自然性と元全像評価へ運び、**`dgGluingIdentityInputConeIso R d`** を構成した。heartbeat 上限の増加なし。
+- **第2入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingIdentityLaxComparisonInput R d : DGOdotMilnorIdentityLaxComparisonInput R d`（`IdentityLaxComparisonInput`）。gluing・difference・diagonal・cone の全4欄を実例化し、単体ビルド後にチャット報告済み。第1入力は `ca32426eb`、恒等対角段階は `0f3f03600`。
+- 集約ビルド（13,408 jobs）・公理監査（1,077モジュール、11,314宣言）通過。第2入力の供給を保存した。
+- 残る第3入力：元二脚から同じ corner の恒等 Hom gluing への dg 関手を、左右 Hom と第三 primitive を全次数で保持して構成する。元 augmentation 全族・元 cone 関手との厳密整合を確認し、上記恒等全 cone 比較、`laxCospanIsoCofiberComparison`、指定 corner Yoneda 評価を合成して `.withCone` に代入する。型を変更せず、三入力全体が揃うまで目標は継続する。
+
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
 - native dg 圏・左右射影・comma 比較、実円錐・全整数シフトと dg 自然な Yoneda 加群比較を構成済み。

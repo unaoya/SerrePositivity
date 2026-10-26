@@ -1069,7 +1069,19 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.LaxCospanIsoCofiberComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxArrowBaseCofiber,
     `SerrePositivity.InfinityCategories.Derived.Gluing.LocalizationProjectionComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxDifferenceCharacterization]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxDifferenceCharacterization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ZeroSourceModuleConeIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetConeInrNaturality,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityRightAxisConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityRightAxisPerfectConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityConeDiagonalZero,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityRightAxisLaxDifference,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PerfectValuedFunctorExact,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityConeComparisonCriterion,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativePerfectYonedaEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityNativeConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxComparisonInput]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
