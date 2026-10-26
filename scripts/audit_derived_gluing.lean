@@ -987,7 +987,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetRelativeNormalization,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationCubes,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCompositionTriangles,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCompositionInputs]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCompositionInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputDiagonals,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetArrowComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxArrowTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetOriginalPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityCommaProjections,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationInputPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaUnitCapCompositionPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapInputPaths]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
