@@ -35344,3 +35344,18 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgModuleConeNullLeftShift_naturality
 #check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeLeftShiftNull_naturality
 #print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeLeftShiftNull_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgClosedLeftShift_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgClosedLeftShift_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleClosedLeftShift_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleClosedLeftShift_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleStrictComparisonLeftShift_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleStrictComparisonLeftShift_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationInv_pointwise
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationInv_pointwise
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationInvNerveComparison
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationInvNerveComparison
+#check @SerrePositivity.KST.SConstruction.dgConeLiftCochain_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgConeLiftCochain_naturality
+#check @SerrePositivity.KST.SConstruction.dgConeLiftModule_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgConeLiftModule_naturality

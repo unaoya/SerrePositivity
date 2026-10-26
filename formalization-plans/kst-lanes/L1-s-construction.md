@@ -6,11 +6,11 @@
 
 ## 引き継ぎ（2026-10-27・D2 三入力の無条件接続）
 ### 現在地
-- **現在地**：d④①の同じ resolved 商上の実中央射・native 全自然性・固定 ν 比較は保存済み。② の元二脚・恒等二脚・元 corner cone の三入力は `19fab5fa8` で無条件代入済み。③ は元厳密比較の同じ実 cone 全族、右射影と指定回転ホモトピーの全次数自然性を `fbdf986d5` で保存。今回、指定零化からの全厳密 cone descent と包含境界回収、二重 cone から元 shift への全厳密回転逆 `dgModuleNaturalConeRotationInv`、従来の実回転逆との同じ射の一致 `…_arrow_eq` と K(D) 成分同値 `…_isIso`、左包含の始域 shift 後の全自然性を実証。7葉17宣言を集約・専用監査へ接続。実逆回転後の合成全比較、上下指定二単体、共通 S 長方形と三認証は未完。
+- **現在地**：d④①の同じ resolved 商上の実中央射・native 全自然性・固定 ν 比較は保存済み。② の元二脚・恒等二脚・元 corner cone の三入力は `19fab5fa8` で無条件代入済み。③ は元厳密比較の同じ実 cone 全族、右射影と指定回転ホモトピーの全次数自然性を `fbdf986d5` で保存。今回、指定零化からの全厳密 cone descent と包含境界回収、二重 cone から元 shift への全厳密回転逆 `dgModuleNaturalConeRotationInv`、従来の実回転逆との同じ射の一致 `…_arrow_eq` と K(D) 成分同値 `…_isIso`、左包含の始域 shift 後の全自然性を実証。7葉17宣言を集約・専用監査へ接続。実逆回転後の合成全比較、上下指定二単体、共通 S 長方形と三認証は未完。 `dgModuleNaturalConeRotationInvNerveComparison` は同じ全ホモトピーからの native 全関手同型。閉比較と左包含の始域 shift 後の全自然性、および cone lift の二成分検出を cochain・加群 Hom end の双方で実証済み。
 - **残りの順序**：d④② の元二脚・恒等二脚・元 corner cone は三つとも無条件供給を代入。③ の元実逆回転後の合成全比較、上下指定二単体、共通 S 長方形と三認証を続け、その後 d②、e② へ進む。個別恒等実面の認証は共通長方形上の三認証の完成とは数えない。S4 は第 II 段。
 - **未送付の依頼・提案**：なし。D2 の三入力は全て到着。`dgOdotMilnorSuppliedOriginalLaxComparison`・`dgOdotMilnorSuppliedIdentityLaxComparison`・`dgOdotMilnorSuppliedOriginalLaxConeComparison` に直接代入し、残 cone 型も `dgOdotMilnorSuppliedOriginalConeComparison` で無条件充足。元二脚の両射影、恒等対角・差、同じ corner 評価を保持する。D の二射影性は既に消費済み。
-- **作業中の所有新葉**：`DGClosedLeftShiftNaturality.lean`（元閉比較の始域 shift 後の次数一の符号付き全自然性、対象ビルド済み、未登録）。今回の cone descent・回転逆等7葉は集約・専用監査へ登録済み。Cofinality 所有は読み取り専用。
-- **次の第一工程**：回転逆の全厳密比較と K(D) 同値を native 全関手同型へ接続。同じ元比較の始域 shift 後の第一・第二成分から全回転比較を作り、保存済みの指定回転ホモトピーを cone 射へ束ねる。これと同じ回転逆・逆 shift・相殺を合成して、元実逆回転 cone 比較の全自然性を証明する。続いて U の Yoneda 評価後の実差、元恒等 graph 成分、resolved 商辺への指定上二単体を照合する。厚核側の指定下二単体・左面と同じ実右面を貼り、共通 S 長方形の三認証を構成する。既存の三つの D2 入力の存在を追加仮定に戻さない。
+- **作業中の所有新葉**：`DGModuleNaturalConeLift.lean`（元二成分・指定閉条件から同じ実 cone への全厳密比較を作る構成子。対象ビルド3443 jobs成功、未登録）。今回5葉7宣言は集約・専用監査へ登録済み。Cofinality 所有は読み取り専用。
+- **次の第一工程**：対象検証済み `DGModuleNaturalConeLift` を集約・監査へ接続。元 `moduleConeRotationFirst`・`moduleConeRotationSecond` の同じ成分と既存の閉条件に、構成済み始域 shift 後の全自然性を適用し、全厳密回転比較を作る。同じ回転逆の native 全関手同型は既に実証済み。指定回転ホモトピーを全 cone 射へ束ね、回転逆・逆 shift・相殺を合成して元実逆回転 cone 比較の全自然性を証明する。続いて U の Yoneda 評価後の実差、元恒等 graph 成分、resolved 商辺への指定上二単体を照合。厚核側の指定下二単体・左面と同じ実右面を貼り、共通 S 長方形の三認証を構成する。D2 三入力の存在を追加仮定に戻さない。
 - D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d は Milnor・resolved 商の採用済み経路で再開。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
 - 旧未分解商の K-10 d は明示入力の下での形式的接続を保持。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
@@ -80,7 +80,7 @@
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
 - **採用済み（元始域の増大屋根、10-25 17:53）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の元始域回収は「元入力への増大屋根＋ν 像の指定同値」とする。native Verdier 列・LT 極限錐の元始域は不変。既存の strict 始域版は互換入口として保持。Sp の新葉（1d3c261b1）を `DGOdotMilnorRelativeRoofRectangleInput` へ接続し、始域屋根を構成済みとする主経路を供給。`Resolution.CellComparison` は既存の同じ正本を読み取り専用で接続。元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 最新の集約 15753 jobs・公式監査 13868 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 11933 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
+- 最新の集約 15758 jobs・公式監査 13875 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 11938 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較は供給済み。Sp-6 に渡す実 S 長方形の構成が未完。
 - 本レーン内の未解決の名前衝突なし。Core・Stable・F1 等の公開名・型は不変。固定 S の Hom は厳密 dg 自然変換 end の native core。resolved 厚核・始域比較の実零化面と同じ合成三角形を保つ源長方形は構成済み。残る LT 全長方形と全指定境界比較は未供給。Sp の新入口 `isPullback_of_perfectImageIso`・`comparison_isPullback_of_actualFaces`・`_imageIso` は、絶対提示から実 ν 二面への指定三境界付き全比較を直接受ける。別の S 内厳密代表は不要。`DGOdotMilnorActualRectangleInput` は同じ実長方形とこの三比較を直接受け、二面の値・全比較輸送・同じ屋根の始域成分を新入口へ接続済み。主経路は同じ実 S 長方形上の LT 実右面・外周の `VerdierSquareDiagramIso` と、上下二単体を保つ `VerdierRectangleDiagramIso` の三認証を要する。個別の厚核外面認証は実証済み。残る共通実長方形の実 dg 構成と D2 入力なしの実右面を、商辺だけの関手同型で代用しない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -107,7 +107,7 @@
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/ks-cone-rotation-inv-aggregate.log`、`/tmp/ks-cone-rotation-inv-audit.log`、`/tmp/ks-cone-rotation-inv-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/ks-rotation-native-lift-aggregate.log`、`/tmp/ks-rotation-native-lift-audit.log`、`/tmp/ks-rotation-native-lift-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 

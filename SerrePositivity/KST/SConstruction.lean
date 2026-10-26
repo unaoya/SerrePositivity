@@ -3055,4 +3055,10 @@ public import SerrePositivity.KST.SConstruction.DGConeNullLeftShiftNaturality
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvComparison
 public import SerrePositivity.KST.SConstruction.DGModuleConeNullLeftShiftNaturality
 
+public import SerrePositivity.KST.SConstruction.DGClosedLeftShiftNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleClosedLeftShiftNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvNative
+public import SerrePositivity.KST.SConstruction.DGConeLiftCochainNaturality
+public import SerrePositivity.KST.SConstruction.DGConeLiftModuleNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
