@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierNormalizedSharedDiagonal
+public import SerrePositivity.KST.Fibration.VerdierLowerNativeReadout
+public import SerrePositivity.KST.Fibration.VerdierUpperLongHomTransport
+public import SerrePositivity.KST.Fibration.VerdierReadoutUpperFamily
+public import SerrePositivity.KST.Fibration.VerdierNativeDiagonalCoordinates
 public import SerrePositivity.KST.Fibration.VerdierLowerLongHomTransport
 public import SerrePositivity.KST.Fibration.VerdierNativeCompositeFunctoriality
 public import SerrePositivity.KST.Fibration.VerdierNativeLongHomShift
