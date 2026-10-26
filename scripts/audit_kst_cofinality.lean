@@ -1,6 +1,8 @@
 import SerrePositivity.KST.SConstruction.Cofinality
 import Lean.Util.CollectAxioms
 
+open CategoryTheory
+
 /-!
 概要：K-cof 所有葉の全宣言と推移的公理依存を監査する。
 方針：実 import 元で所有宣言を列挙し、標準三公理だけであることを強制する。
@@ -119,9 +121,51 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.BoundaryKanTransfer,
     `SerrePositivity.KST.SConstruction.Cofinality.BoundaryKTransfer,
     `SerrePositivity.KST.SConstruction.Cofinality.CofinalityFromInputs,
-    `SerrePositivity.KST.SConstruction.Cofinality.KanPullbackSupply]
-  -- 採用済み K-B2-S1 の明示入力付き相対四角形の正確な閉包。
+    `SerrePositivity.KST.SConstruction.Cofinality.KanPullbackSupply,
+    `SerrePositivity.KST.SConstruction.Cofinality.Thomason]
+  -- 採用済み無条件 K-B2-S1 と相対四角形の正確な閉包。
   let approvedRelativeClosure := #[
+    `SerrePositivity.KST.Fibration.ClosedCofiberRawProjection,
+    `SerrePositivity.KST.Fibration.ClosedFlagCofiberCoordinates,
+    `SerrePositivity.KST.Fibration.ClosedFlagCofiberPostcomparison,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteAllLengths,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteComparison,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteEquivalence,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteRecursion,
+    `SerrePositivity.KST.Fibration.ClosedFlagOneComparison,
+    `SerrePositivity.KST.Fibration.ClosedFlagOneEquivalence,
+    `SerrePositivity.KST.Fibration.ClosedFlagPostCartesian,
+    `SerrePositivity.KST.Fibration.ClosedKernelCoefficient,
+    `SerrePositivity.KST.Fibration.ClosedKernelFiniteCoordinates,
+    `SerrePositivity.KST.Fibration.ClosedKernelInitialPullback,
+    `SerrePositivity.KST.Fibration.ClosedTailCanonicalComponents,
+    `SerrePositivity.KST.Fibration.ClosedTailMultiStep,
+    `SerrePositivity.KST.Fibration.CoreSinglePullbackTransfer,
+    `SerrePositivity.KST.Fibration.FibrantPullbackCancellation,
+    `SerrePositivity.KST.Fibration.KernelPostcomposition,
+    `SerrePositivity.KST.Fibration.KilledKernelIso,
+    `SerrePositivity.KST.Fibration.LocalizedFiniteProductEquality,
+    `SerrePositivity.KST.Fibration.LocalizedPairBothEquality,
+    `SerrePositivity.KST.Fibration.LocalizedPairEquality,
+    `SerrePositivity.KST.Fibration.ProductCoefficientHomotopyPullback,
+    `SerrePositivity.KST.Fibration.ProductCoordinatePullbackTransfer,
+    `SerrePositivity.KST.Fibration.PullbackCancellation,
+    `SerrePositivity.KST.Fibration.Relative.ClosedCofiberProjection,
+    `SerrePositivity.KST.Fibration.Relative.ClosedFlagFactor,
+    `SerrePositivity.KST.Fibration.Relative.ClosedStableFiber,
+    `SerrePositivity.KST.Fibration.Relative.ClosedStableFiberUnconditional,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailAdditivity,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailFlags,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailPullback,
+    `SerrePositivity.KST.Fibration.Relative.ClosedZeroFlag,
+    `SerrePositivity.KST.Fibration.Relative.StableTrivialPullback,
+    `SerrePositivity.KST.Fibration.SimplicialInitialPullback,
+    `SerrePositivity.KST.Fibration.StableTrivialPullbackSection,
+    `SerrePositivity.KST.Fibration.VerdierKernelEquivalence,
+    `SerrePositivity.KST.Fibration.WeakCofiberPostcomposition,
+    `SerrePositivity.KST.Fibration.WeakCofiberRawProjection,
+    `SerrePositivity.KST.Fibration.WeakStringFinitePostMap,
+
     `SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels,
     `SerrePositivity.KST.Fibration.ClosedTopIso,
     `SerrePositivity.KST.Fibration.CofiberFamilyTranspose,
@@ -376,3 +420,44 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality_of_inputs
 
 #check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality_of_relativeFiber_input
+
+
+-- K-B3 が消費する公開型全体を固定する。追加の供給・instance 引数を許さない。
+universe u
+example : ∀ (X Y : SerrePositivity.KST.SConstruction.StableModel.{u}) (f : X ⟶ Y),
+    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion f.val →
+      (∀ j : ℤ, 0 < j → Function.Bijective
+        (SerrePositivity.KST.Spectra.OmegaSpectrum.homotopyMap
+          (SerrePositivity.KST.SConstruction.kSpectrumMap f) j)) ∧
+      Function.Injective (SerrePositivity.KST.Spectra.OmegaSpectrum.homotopyMap
+        (SerrePositivity.KST.SConstruction.kSpectrumMap f) 0) :=
+  fun _ _ f hf => SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality f hf
+
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let mut pending := [``SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality]
+  let mut seen : NameSet := {}
+  while !pending.isEmpty do
+    let name := pending.head!
+    pending := pending.tail!
+    if seen.contains name then continue
+    seen := seen.insert name
+    if name == `SerrePositivity.KST.LocalizingInvariants.IsVerdierSequence ||
+        name == `HomotopicalAlgebra.ModelCategory then
+      throwError "K-cof: forbidden proof dependency: {name}"
+    if let some idx := env.getModuleIdxFor? name then
+      let mod := env.header.modules[idx.toNat]!.module
+      if mod == `SerrePositivity.KST.Fibration.VerdierKernelEquivalence ||
+          (`SerrePositivity.KST.NonConnective).isPrefixOf mod then
+        throwError "K-cof: forbidden proof module: {mod} ({name})"
+    if let some info := env.find? name then
+      pending := info.type.getUsedConstants.toList ++ pending
+      if let .inductInfo value := info then
+        pending := value.ctors ++ pending
+      if let some value := info.value? (allowOpaque := true) then
+        pending := value.getUsedConstants.toList ++ pending
+  logInfo m!"K-cof: unconditional theorem proof closure checked ({seen.size} constants)."
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality
+#print axioms SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality

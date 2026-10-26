@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.Thomason
 public import SerrePositivity.KST.SConstruction.Cofinality.ObstructionDiagramIso
 public import SerrePositivity.KST.SConstruction.Cofinality.CokernelDiagram
 public import SerrePositivity.KST.SConstruction.Cofinality.CanonicalWideNaturality
