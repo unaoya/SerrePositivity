@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaConeCompactComparison
+public import SerrePositivity.KST.NonConnective.DGKappaPerfectCompletionBoundary
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedIndChoiceComparison
 public import SerrePositivity.KST.NonConnective.DGSuspensionIndComparison
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedCompactComparison

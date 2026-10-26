@@ -13,6 +13,8 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaConeCompactComparison,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfectCompletionBoundary,
     `SerrePositivity.KST.NonConnective.DGKappaResolvedIndChoiceComparison,
     `SerrePositivity.KST.NonConnective.DGSuspensionIndComparison,
     `SerrePositivity.KST.NonConnective.DGKappaResolvedCompactComparison,
