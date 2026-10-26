@@ -3041,4 +3041,6 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingComparisonZer
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonConeDiagonalAction
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisConePrimitive
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorSuppliedLaxComparisons
+
 /-! # ∞-S• 構成と連結 K 理論 -/
