@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily
 import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
 import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel
 import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement
@@ -7457,6 +7458,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKappaNativeMoritaFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily,
     `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentActionInput,
     `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput,
     `SerrePositivity.InfinityCategories.Derived.NativeArrowRelativeComparison,

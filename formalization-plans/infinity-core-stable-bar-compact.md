@@ -117,3 +117,10 @@
 - 旧提案段階の検証：対象 build 11299 jobs・専用監査66宣言成功。これは B1／B2 の無条件存在の証明ではない。
 - 再開時見積り：型の公開・検証・コミットは初回ターン、実体供給は暫定1〜2日。先行全族・指定比較の構成可能性を確認して更新する。公開名・見積りはユーザーへのチャットでも報告。
 - 採用二葉の対象 build 11300 jobs成功。専用監査43宣言／2モジュール、許容三公理のみ、終端0。Derived 集約14900 jobs成功。局所 import 閉包11173モジュール、循環なし。追加後の全体監査25892宣言／2949モジュール成功、許容三公理のみ、終端0（/tmp/d8e-adopted-full-audit.log）。採用 API は51b5cc8daで公開。
+
+### 実 Morita／P/Yoneda 全族の無条件構成（固定源の核作用との一致は未供給）
+- `dgKappaNativeMoritaFamily`：実評価 Morita 辺の点別可逆性と path 始点評価の自明 Kan 性から全入力族を構成。`source` は固定 ν の全作用そのもの、`at` は同じ実 Morita 辺全体の厳密回収。
+- `dgKappaNativeKernelStableFamily` と `dgKappaNativeMoritaFamily_iso` は、その終点 StableInfinity 値と全 native 入力に自然な同型。終点を固定 S 内の核作用の ν 像と同定したわけではない。
+- `dgKappaNativePComparisonFamily`・`dgKappaNativePArrowFamily`：実構成した Morita 全族を既存21:25の相対延長へ代入。Morita 全族を追加入力に残さず、元の全 P/Yoneda 比較 path を at で厳密回収、boundary で全入力の両端作用を厳密固定。`iso` は全入力の指定同型。
+- 初期 S 内全族、懸垂の map・edgeIso・square_at、核角の ν 像との全単体一致、元の導来模型での P.inclusion 全族は未供給。B2 や模型変更は採用しない。これらの新族だけで D-8 e 完成と数えない。
+- 検証：対象 build 11764 jobs・Derived 集約14903 jobs成功。新規二葉の専用監査27宣言、許容三公理のみ、終端0。全体監査は実行中。
