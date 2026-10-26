@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaConeExtensionDerivedComparison
+public import SerrePositivity.KST.NonConnective.DGKappaConeExtensionNaturality
+public import SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita
+public import SerrePositivity.KST.NonConnective.DGKappaConeStrictImagePerfect
+public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMoritaCone
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceCoherence
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionNuChoiceCoherence
 public import SerrePositivity.KST.NonConnective.DGKappaFixedKComparisonPi

@@ -13,6 +13,12 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaConeExtensionDerivedComparison,
+    `SerrePositivity.KST.NonConnective.DGKappaConeExtensionNaturality,
+    `SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita,
+    `SerrePositivity.KST.NonConnective.DGKappaConeStrictImagePerfect,
+    `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMoritaCone,
+
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceCoherence,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionNuChoiceCoherence,
     `SerrePositivity.KST.NonConnective.DGKappaFixedKComparisonPi,
@@ -529,3 +535,13 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaFixedKComparisonPi_right
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_pi_self
 #check SerrePositivity.KST.NonConnective.dgKappaSuspensionKChoiceMap_pi_comp
+
+#check SerrePositivity.KST.NonConnective.dgKappaConeExtensionResolvedIso
+#check SerrePositivity.KST.NonConnective.dgKappaConeStrictImageDerivedIso
+#check SerrePositivity.KST.NonConnective.dgKappaConeExtension_augmentation_quasiIso
+#check SerrePositivity.KST.NonConnective.dgKappaConeStrictImageDerivedSquare
+#check SerrePositivity.KST.NonConnective.dgKappaConeStrictImage_isQCatEquivalence_of_morita
+#check SerrePositivity.KST.NonConnective.dgKappaConeStrictImage_perfect_iff
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeDerivedSquare
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeMap_isQCatEquivalence_of_morita
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeMap_perfect_iff
