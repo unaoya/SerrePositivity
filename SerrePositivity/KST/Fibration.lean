@@ -756,3 +756,4 @@ public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquare
 public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquarePrism
 public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquareIso
 public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquareComparison
+public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalFiniteFaces
