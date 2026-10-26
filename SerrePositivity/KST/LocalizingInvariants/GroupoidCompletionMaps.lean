@@ -69,6 +69,17 @@ def groupoidCompletionEquivalenceOfTrivialKanFibration {X Y : SSet.{u}} (p : X �
   rw [hs] at e
   exact e ≪≫ groupoidCompletionMapOf_idIso Y
 
+/-- 全関手同値の逆と両比較を、同じ亜群化の普遍性で下ろす。 -/
+lemma groupoidCompletionMapOf_isQCatEquivalence {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsQCatEquivalence f) :
+    IsQCatEquivalence (groupoidCompletionMapOf f) := by
+  obtain ⟨g, ⟨hfg⟩, ⟨hgf⟩⟩ := hf
+  exact ⟨groupoidCompletionMapOf g,
+    ⟨groupoidCompletionMapOf_compIso f g ≪≫ groupoidCompletionMapOf_functorIso hfg ≪≫
+      groupoidCompletionMapOf_idIso X⟩,
+    ⟨groupoidCompletionMapOf_compIso g f ≪≫ groupoidCompletionMapOf_functorIso hgf ≪≫
+      groupoidCompletionMapOf_idIso Y⟩⟩
+
 lemma groupoidCompletionMapOf_trivialKanFibration_isEquivalence {X Y : SSet.{u}} (p : X ⟶ Y)
     [TrivialKanFibration p] : IsSimplicialHomotopyEquivalence (groupoidCompletionMapOf p) :=
   (groupoidCompletionEquivalenceOfTrivialKanFibration p).isQCatEquivalence
