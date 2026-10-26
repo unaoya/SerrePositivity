@@ -1,4 +1,11 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSelectedConeInput
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceEquivalence
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceEquivalence
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceMap
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionDescent
+public import SerrePositivity.KST.NonConnective.DGKappaConePerfectChoiceComparison
+public import SerrePositivity.KST.NonConnective.DGKappaConeChoiceComparison
 public import SerrePositivity.KST.NonConnective.DGKappaConeCompactComparison
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectCompletionBoundary
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedIndChoiceComparison

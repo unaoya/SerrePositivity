@@ -37,7 +37,7 @@ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) :
     dgNonconnectiveKSuspensionK R κ hκ A (n + 1) =
       dgKInputSpectrum R (dgKappaSuspensionKInput R
         (dgSuspensionUnconditionalIteration R κ hκ A n)
-        (dgKappaConeInput_unconditional R (dgSuspensionUnconditionalIteration R κ hκ A n)
+        (dgKappaSelectedConeInput R (dgSuspensionUnconditionalIteration R κ hκ A n)
           κ hκ)) := rfl
 
 /-- 元の実構造辺 K(Σ^n A)→ΩK(Σ^{n+1} A)。全入力自然性は別工程。 -/

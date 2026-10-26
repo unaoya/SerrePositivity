@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnconditionalPerfectInput
+public import SerrePositivity.KST.NonConnective.DGKappaSelectedConeInput
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupply
 
 /-!
@@ -23,8 +23,8 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
 規約：κ の非可算正則性だけを明示し、全入力射の作用は別境界に保つ。
 使われ方：対象の全反復で独立した I・P 入力を要求しない段供給。 -/
 def dgKappaUnconditionalStageProvider : DGSuspensionStageProvider.{u, v} R κ :=
-  dgKappaSuppliedStageProvider R
-    (fun A => dgKappaConeInput_unconditional R A κ hκ)
+  fun A => { cone := dgKappaSelectedConeInput R A κ hκ
+             perfect := dgKappaSelectedPerfectInput R A κ hκ }
 
 /-- 概要：供給された各段の cone は D の同じ実代表系そのもの。
 方針：段供給の射影を計算する。
@@ -32,7 +32,7 @@ def dgKappaUnconditionalStageProvider : DGSuspensionStageProvider.{u, v} R κ :=
 theorem dgKappaUnconditionalStageProvider_cone
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).cone =
-      dgKappaConeInput_unconditional R A κ hκ := rfl
+      dgKappaSelectedConeInput R A κ hκ := rfl
 
 /-- 概要：供給された P は同じ無条件 cone に対する D の実 Perf 比較。
 方針：同じ cone への正本構成を展開する。
@@ -41,7 +41,19 @@ theorem dgKappaUnconditionalStageProvider_cone
 theorem dgKappaUnconditionalStageProvider_perfect
     (A : PerfDGInput.{u, max (u + 1) v} R) :
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).perfect =
-      dgKappaPerfectInput_unconditional R A κ hκ := rfl
+      dgKappaSelectedPerfectInput R A κ hκ := rfl
+
+/-- 採用した新 cone 正本を、D-S が同じ頂点として厳密回収する。 -/
+theorem dgKappaUnconditionalStageProvider_cone_newInput
+    (A : PerfDGInput.{u, max (u + 1) v} R) :
+    (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).cone =
+      dgKappaConeInput_unconditional' R A κ hκ := rfl
+
+/-- 同じ新 cone に対する新 P 正本を厳密回収する。 -/
+theorem dgKappaUnconditionalStageProvider_perfect_newInput
+    (A : PerfDGInput.{u, max (u + 1) v} R) :
+    (dgKappaUnconditionalStageProvider.{u, v} R κ hκ A).perfect =
+      dgKappaPerfectInput_unconditional' R A κ hκ := rfl
 
 /-- 概要：元の同じ κ の全実懸垂対象を、I・P の存在仮定なしで反復する。
 方針：実供給された同じ段入力を既存の反復へ代入する。
@@ -67,6 +79,6 @@ theorem dgSuspensionUnconditionalIteration_succ
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
     dgSuspensionUnconditionalIteration R κ hκ A (n + 1) =
       dgKappaSuspensionKInput R (dgSuspensionUnconditionalIteration R κ hκ A n)
-        (dgKappaConeInput_unconditional R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ) := rfl
+        (dgKappaSelectedConeInput R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ) := rfl
 
 end SerrePositivity.KST.NonConnective

@@ -28,9 +28,8 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 規約：同型代表への変更を使わず、元の moduleZero を保持する。
 使われ方：同じ native 零関手と分裂四角形の実入力。 -/
 theorem dgKappaUnconditionalZeroInput :
-    DGKappaZeroInput R D (dgKappaConeInput_unconditional R D κ hκ) := by
-  change dgKappaClosedProjectiveObjects R D κ (moduleZero R D)
-  exact dgKappaClosedProjectiveObjects_zero R D hκ
+    DGKappaZeroInput R D (dgKappaSelectedConeInput R D κ hκ) :=
+  dgKappaSelectedZeroInput R D κ hκ
 
 /-- 概要：同じ無条件 cone の連結 BF K 頂点は実 Sp の零対象。
 方針：実零所属と D-12 の分裂 cofiber 判定を同じ swindle へ代入する。
@@ -39,8 +38,8 @@ theorem dgKappaUnconditionalZeroInput :
 theorem dgKappaUnconditionalConnectedK_isZeroVertex :
     IsZeroVertex (coherentNerveVertex
       (kOmegaSpectrum (presentedPerfectDGStableModel R
-        (DGKappaCone R D (dgKappaConeInput_unconditional R D κ hκ))))) :=
-  dgKappaConnectedK_isZeroVertex R D (dgKappaConeInput_unconditional R D κ hκ)
+        (DGKappaCone R D (dgKappaSelectedConeInput R D κ hκ))))) :=
+  dgKappaConnectedK_isZeroVertex R D (dgKappaSelectedConeInput R D κ hκ)
     (dgKappaUnconditionalZeroInput R D κ hκ)
 
 /-- 概要：同じ無条件 cone の固定 dg K スペクトル頂点も実 Sp の零対象。
@@ -48,8 +47,8 @@ theorem dgKappaUnconditionalConnectedK_isZeroVertex :
 規約：固定 dgKInputK を変えない。使われ方：K-7 の同じ実 cone の非負次数 fiber 比較。 -/
 theorem dgKappaUnconditionalFixedK_isZeroVertex :
     IsZeroVertex (coherentNerveVertex (dgKInputSpectrum R
-      (dgKappaConeKInput R D (dgKappaConeInput_unconditional R D κ hκ)))) :=
-  dgKappaFixedK_isZeroVertex R D (dgKappaConeInput_unconditional R D κ hκ)
+      (dgKappaConeKInput R D (dgKappaSelectedConeInput R D κ hκ)))) :=
+  dgKappaFixedK_isZeroVertex R D (dgKappaSelectedConeInput R D κ hκ)
     (dgKappaUnconditionalZeroInput R D κ hκ)
 
 /-- 概要：無条件反復のすべての段で、同じ供給 cone の実零所属が得られる。

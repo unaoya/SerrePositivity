@@ -13,6 +13,13 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaSelectedConeInput,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceEquivalence,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceEquivalence,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceMap,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionDescent,
+    `SerrePositivity.KST.NonConnective.DGKappaConePerfectChoiceComparison,
+    `SerrePositivity.KST.NonConnective.DGKappaConeChoiceComparison,
     `SerrePositivity.KST.NonConnective.DGKappaConeCompactComparison,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectCompletionBoundary,
     `SerrePositivity.KST.NonConnective.DGKappaResolvedIndChoiceComparison,
@@ -489,3 +496,7 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgSuspensionCoherentKSquareIterationFamily_at
 #check SerrePositivity.KST.NonConnective.dgSuspensionCoherentSuppliedSquareIterationFamily_at
 #check SerrePositivity.KST.NonConnective.dgSuspensionCoherentSuppliedSquare_suspension
+
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalStageProvider_cone_newInput
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalStageProvider_perfect_newInput
+#check SerrePositivity.KST.NonConnective.dgKappaSelectedZeroInput
