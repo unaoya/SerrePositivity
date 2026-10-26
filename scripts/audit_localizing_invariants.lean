@@ -104,6 +104,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeEndpoint,
     `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteFactorization,
     `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanBoundaryRecovery,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeRecovery,
     `SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle,
     `SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement,
