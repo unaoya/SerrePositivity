@@ -17,6 +17,11 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgeComponents
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgePathTranspose
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgePathRealization
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PairValueRepresentatives
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PairPathEquality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.NativeTotalComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.CoconeLegNaturality
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgeStageKernel
 
 /-!
 概要：Ind-π の独立集約。全空間比較の π 判定と有限検出・基点移送の公開界面。
