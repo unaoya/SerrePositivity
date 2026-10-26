@@ -324,3 +324,145 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertex_componentCompact_of_val_eqs
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_extendedInputPullbackVertex_of_compatible_components
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactSourceSliceDensityCocone_isColimit_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_compactSourceSlice_cocone_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.hasColimit_compactModel_leftKanDiagram_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.hasComponentPresentations_of_cofinal_components
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.isRightCofinal_of_quasicategory_under_tests
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCompactOverSnd
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCompactOverSnd_inclusion
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCanonicalCocone_image_isColimit_of_isRightCofinal
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInput
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInputCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceDiagram_right
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInput_right
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInputCocone_right
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInput_compact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.liftedUnderInputDiagram
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.liftedUnderInputDiagram_right
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_liftedUnderCocone_of_inputCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.indEquivalenceImage_canonicalColimits_of_local_colimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_right_fixed
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_right_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.fixedSourceUncurryIso_right_hom
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_cosliceCocone_of_uncurriedCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableCosliceRestriction_val
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactExtendedInputPullbackVertex_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCompactOverFst_isRightCofinal_of_accessible_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCompactOverSnd_isRightCofinal_of_accessible_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullbackComponentInput
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullbackComponentInputCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputPullbackVertexData
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_extendedInputPullbackVertexData_of_compatible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputPullbackVertexData.first_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputPullbackVertexData.second_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.compactSourceSliceInclusion
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInput_right_of_companion
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.extendedSourceSliceInputCocone_right_of_companion
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.finitePairSection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_firstProjection_under_cocone_of_accessible_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_vertex_projection
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_postcomp_val
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_restrict_val
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_postcomp_restrict_val
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.cocone_vertex_image_eq_of_val_eq_restrict
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.inputVertexSliceCocone_uncurry
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.componentCompactOverInclusion
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_projectionUnderCocone_of_extended_cocones
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isKappaAccessible_of_relativeCardinals
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_secondProjection_under_cocone_of_accessible_family
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_sourceUnderCocone_of_extendedInputCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.strictPullbackCocone
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputShapes
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputShapes
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputInclusions
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputInclusions
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputDiagrams
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputDiagrams
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputCocones
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputCocones
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputShapes_quasicategory
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputShapes_isKappaSmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputShapes_quasicategory
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputShapes_isKappaSmall
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputDiagrams_compact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputDiagrams_fixed
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.firstUnderInputDiagrams_cocone_fixed
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputDiagrams_compact
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputDiagrams_fixed
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.secondUnderInputDiagrams_cocone_fixed

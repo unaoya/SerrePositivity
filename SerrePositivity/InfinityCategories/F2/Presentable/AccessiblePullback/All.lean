@@ -187,6 +187,52 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputGluing
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.UncurriedInputRightRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.LiftedUnderInput
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleCompactSourceTests
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleDensityLocalColimits
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleCompactSourceDensity
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ComponentProjectionDensity
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CofinalComponentPresentations
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedSourceSliceInput
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CofinalUnderTests
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactExtendedPullbackInput
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputCoconeValue
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputCoconeNaturality
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SourceUnderCoconeRecovery
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StrictPullbackCocones
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ProjectionUnderCoconeRecovery
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputVertexValues
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.UnderInputFamilies
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.UnderInputFamilyProperties
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FirstProjectionUnderCocones
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SecondProjectionUnderCocones
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ComponentProjectionCofinality
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeCardinalAccessibility
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.Accessibility
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。

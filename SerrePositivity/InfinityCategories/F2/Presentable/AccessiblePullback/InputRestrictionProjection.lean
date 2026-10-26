@@ -97,4 +97,28 @@ lemma stableInputRestriction_base_isColimitCone {K L C A : SSet.{u}}
   apply (isColimitCone_iff_of_cocone_val_eq _ _ ?_).mpr hc
   exact stableInputRestriction_base_uncurry q i r hi z t hz P
 
+/-- 概要：固定始域の安定な制限は各全単体の始域を制限するだけ。
+方針：図式の等号移送を元の全値で取り除く。
+規約：全次数の単体についての等式。
+使われ方：反復 coslice から戻した全余錐の厳密な回収。 -/
+lemma stableCosliceRestriction_val {K L C : SSet.{u}}
+    (q : K ⟶ C) (i : L ⟶ K) (r : L ⟶ C) (hi : i ≫ q = r) {n : ℕ}
+    (σ : (sliceUnder q) _⦋n⦌) :
+    ((stableCosliceRestriction q i r hi).app (Opposite.op ⦋n⦌) σ).val =
+      joinMap i (𝟙 Δ[n]) ≫ σ.val := by
+  dsimp only [stableCosliceRestriction, NatTrans.comp_app, types_comp_apply]
+  exact Ind.sliceUnder_eqToIso_val hi _
+
+/-- 概要：始域を安定に制限する全族の展開は元の形状制限。
+方針：図式の等号移送を消して元の coslice 制限の全展開を使う。
+規約：元の全族を厳密な等式で保持する。
+使われ方：元の pullback 頂点族の成分を追加入力側へ合わせる。 -/
+lemma stableCosliceRestriction_uncurry {K L C A : SSet.{u}}
+    (q : K ⟶ C) (i : L ⟶ K) (r : L ⟶ C) (hi : i ≫ q = r)
+    (P : A ⟶ sliceUnder q) :
+    sliceUnderUncurry (P ≫ stableCosliceRestriction q i r hi) =
+      joinMap i (𝟙 A) ≫ sliceUnderUncurry P := by
+  rw [stableCosliceRestriction, ← Category.assoc,
+    HomotopyLimits.sliceUnderUncurry_eqToHom hi, sliceUnderUncurry_restrict]
+
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback
