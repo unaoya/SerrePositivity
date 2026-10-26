@@ -2915,4 +2915,10 @@ public import SerrePositivity.KST.SConstruction.StableZeroArrowLoop
 public import SerrePositivity.KST.SConstruction.StableZeroArrowComparisons
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityZeroSideWitnesses
 
+public import SerrePositivity.KST.SConstruction.SpecifiedTwoTrianglePrism
+public import SerrePositivity.KST.SConstruction.SquareFrameTrianglePrisms
+public import SerrePositivity.KST.SConstruction.SquareFrameTriangleComparisons
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareFrame
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityTriangleComparisons
+
 /-! # ∞-S• 構成と連結 K 理論 -/
