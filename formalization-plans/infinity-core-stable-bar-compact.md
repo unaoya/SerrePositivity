@@ -105,4 +105,13 @@
 - 公開型 `DGSuspensionNativeNaturalityModel R s` は同じ全四角形・豊穣懸垂成分と Morita 全族を保持する。`moritaIso` は全 native 入力に自然な同型を導出。`perfectFamily`・`perfectComparison`・`perfectComparison_at`・`perfectFamily_boundary` もそのデータから導出される。
 - 公開名と未供給範囲はチャットで報告済み。この型の存在、先行する四角形族と Morita 全族、元の導来模型での P.inclusion 自体の全入力比較は未供給。D-8 e 全仕様の存在証明や完成型と混同しない。
 - 対象 build 11764 jobs・Derived 集約14897 jobs成功。専用監査は3葉62宣言、許容三公理のみ、終端0。局所 import 閉包7958モジュール、循環なし。追加後の全体監査25849宣言／2947モジュール成功、許容三公理のみ、終端0（/tmp/d8e-native-p-full-audit.log）。
-- 固定閉代表族への厳密豊穣持上げの既存供給が他レーンにあるか、ユーザー経由で公開名を照会中。新しい仮定は採用していない。厳密供給路が入力の厳密同型を同じ懸垂の対象型の全単射まで保つ必要性を Lean の試作で確認（/tmp/D8eStrictIsoProbe.lean）。これは現模型での不存在の証明ではない。
+- 固定閉代表族への厳密豊穣持上げの既存供給は他レーンにないとユーザー経由で確認。新しい仮定は採用していない。厳密供給路が入力の厳密同型を同じ懸垂の対象型の全単射まで保つ必要性を Lean の試作で確認（/tmp/D8eStrictIsoProbe.lean）。これは現模型での不存在の証明ではない。
+
+### 固定懸垂の緩和境界案（未採用）
+- 判断 (a)：上記相対 path の持ち上げは SSet 射と全比較を供給するが、固定対象上の厳密豊穣単位・合成則を生成しない。この経路での厳密則完成の見積りは出さない。不存在の主張ではない。
+- 案 B1 `DGSuspensionCoherentActionProposal`：元の map・厳密 vertex・実 data を保持し、edge 等号を端点固定 `intervalMappingSpace` 内の `VertexIso` に変更。`ofStrict` で現行入力から埋込み。
+- `DGSuspensionCoherentSquareProposal` は同じ全四角形の厳密一致を保ち、上位型の enriched・enriched_obj・enriched_map 要求を除く。edge だけの変更では厳密豊穣則の問題は残る。反復辺の等号を使う消費側は比較輸送へ変更が必要。
+- 案 B2 `DGSuspensionFunctorialComparisonProposal`：補助構成上の厳密豊穣自己関手と、元の固定源 S 内の全 native 自然な指定同値を保持。終点作用は固定懸垂 vertex と厳密一致。模型・I・P は変更しない。
+- `dgSuspensionFunctorialComparisonProposal_exists` は、補助作用と S 内の点別指定同値から、同じ点別比較を厳密回収する全比較を構成。点別 S 同値の存在は未供給。Morita／ν／K での同値では代用できず、元の実射データとの edgeIso も別途必要。
+- 新葉は独立した設計提案で、集約に未登録。KST と既存の公開契約は変更しない。ユーザー経由で K-B3 の影響評価に回す。
+- 検証：提案葉の対象 build 11299 jobs成功。専用監査66宣言、許容三公理のみ、終端0。計画117行。提案の型検査であり、B1／B2 の無条件存在の証明ではない。
