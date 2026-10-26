@@ -1,23 +1,17 @@
-import SerrePositivity.KST.Fibration.Relative.All
 import SerrePositivity.KST.Fibration.Relative.ClosedStableAll
 import Lean.Util.CollectAxioms
 
 /-!
-概要：K-B2 の全所有宣言を私有名も含めて公理監査する。
+概要：K-B2-S1 の狭い供給閉包の所有宣言を私有名も含めて公理監査する。
 方針：環境の宣言を定義元モジュールで選び、推移的公理を列挙する。
 規約：標準三公理のみ許可し、宣言型の ModelCategory 仮定を拒否する。
-使われ方：Relative.All の対象ビルド後の専用監査。
+使われ方：Relative.ClosedStableAll の対象ビルド後の専用監査。
 -/
 
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.KST.Fibration.Relative.FiniteCoordinates,
-    `SerrePositivity.KST.Fibration.Relative.CoordinatePostcomp,
-    `SerrePositivity.KST.Fibration.Relative.AdditivityFiber,
-    `SerrePositivity.KST.Fibration.Relative.ConnectiveInterface,
-    `SerrePositivity.KST.Fibration.Relative.SingleStageDetection,
     `SerrePositivity.KST.Fibration.Relative.ClosedStableFlags,
     `SerrePositivity.KST.Fibration.Relative.ClosedFlagFunctor,
     `SerrePositivity.KST.Fibration.Relative.ClosedCofiberProjection,
@@ -26,7 +20,12 @@ run_cmd do
     `SerrePositivity.KST.Fibration.Relative.ClosedTailFlags,
     `SerrePositivity.KST.Fibration.Relative.ClosedTailPullback,
     `SerrePositivity.KST.Fibration.Relative.StableTrivialPullback,
-    `SerrePositivity.KST.Fibration.Relative.ClosedTailAdditivity]
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailAdditivity,
+    `SerrePositivity.KST.Fibration.Relative.ClosedKernelFlags,
+    `SerrePositivity.KST.Fibration.Relative.ClosedKernelContraction,
+    `SerrePositivity.KST.Fibration.Relative.ClosedRealizationPullback,
+    `SerrePositivity.KST.Fibration.Relative.ClosedZeroFlag,
+    `SerrePositivity.KST.Fibration.Relative.ClosedStableFiber]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
