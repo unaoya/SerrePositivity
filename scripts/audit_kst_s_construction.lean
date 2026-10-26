@@ -34897,3 +34897,9 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison
 #print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeSourceComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeSourceComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeTargetComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeTargetComparison

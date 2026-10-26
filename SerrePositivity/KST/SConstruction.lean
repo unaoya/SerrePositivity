@@ -2995,4 +2995,6 @@ public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisNativeSquare
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphExtendedNativeComparison
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisPerfNativeComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
