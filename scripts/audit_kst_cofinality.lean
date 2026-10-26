@@ -60,7 +60,13 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.CokernelStructureMaps,
     `SerrePositivity.KST.SConstruction.Cofinality.CanonicalWideNaturality,
     `SerrePositivity.KST.SConstruction.Cofinality.CokernelDiagram,
-    `SerrePositivity.KST.SConstruction.Cofinality.ObstructionDiagramIso]
+    `SerrePositivity.KST.SConstruction.Cofinality.ObstructionDiagramIso,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroAdditivity,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroRestriction,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroConstant,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroEquiv,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelRestriction,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelEquiv]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -151,3 +157,8 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideGroupStructureMap_apply
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionKZeroCokernelDiagram
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideComponentCokernelNatIso
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutKZero_interval_decomposition
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutKZeroEquiv
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelEquiv
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelEquiv_apply

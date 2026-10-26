@@ -46,6 +46,8 @@
   S 交換同型、全 Ar 像条件との同値、全多次数の厳密な自然変換を構成済み。
 - 本質像包含の各整数 K 群の全単射性・単射性を元の指定射と同値にした。
   wide 成分は双積和による可換群となり、元の三角圏 K₀ 余核と全多次数で自然に群同型。
+- 元の S_n の左右の区間制限による K₀ 直積同型と、指定射の K₀ 余核の直積同型を構成。
+  順射は元の制限を回収。面・退化を含む bar 全体との同定は未完。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -59,7 +61,7 @@
 
 ### 主要宣言
 - `Cofinality.completionImageClosedPredicate`
-- `Cofinality.completionImageSStableIso`
+- `Cofinality.cutCokernelEquiv`
 - `Cofinality.completionWideKZeroObstructionEquiv`
 - `Cofinality.completionRelativeFlagWideEvaluation`
 - `Cofinality.completionWideComponentCokernelNatIso`
@@ -77,15 +79,15 @@
 - K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
 ### 保存範囲
-- `a2ea48d5a`：wide 成分の可換群構造と元の三角圏 K₀ 余核との群同型。
-  次の保存：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
+- `1753deeff`：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
+  今回の保存：元の区間制限・切断 cofiber 関係からの K₀ および K₀ 余核の直積分解。
 
 ### 既知の問題
 - 一般の共終性、相対実現の fiber 比較、障害群の全単体的 bar 同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7889 jobs）。公理監査成功（48モジュール・364宣言、標準公理のみ）。
+- 自所有集約ビルド成功（7895 jobs）。公理監査成功（54モジュール・440宣言、標準公理のみ）。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
@@ -93,7 +95,9 @@
 - Sp-8 の到着後に `CompletionCoreFlagEvaluationInput` へ実供給を代入する。
   それまでは、この入力を明示的な引数にして相対 fiber 比較と障害の同定を続行する。
 - 本質像を ClosedStablePredicate として代入し、全 S 多次数の像比較を接続する。
-  商群同定は実装済み。全単体的 bar 同定と元の実 K 射の主共終性は未完。
+  商群同定と区間余核の直積分解は実装済み。全単体的 bar 同定と主共終性は未完。
+- 一般 BG の高次ホモトピー消滅の分担追加案をユーザー経由で提示済み（末尾）。
+  提案による停止。未採用・未発注として扱い、再開時はユーザーの回答を確認する。
 
 ## 目標型
 
@@ -162,3 +166,19 @@
   離散的障害の商群同定、同じ元の `kSpectrumMap f` の正次数全単射・零次単射。
 - 見積り：共通葉の切り出しと一般化3〜6時間、K-cof の消費・照合2〜4時間。
   ユーザーが採用・発注を明示。K-cof は左項・全多次数の代入側を続行する。
+
+
+## 提案中：一般 BG の高次ホモトピー消滅
+
+- ユーザー経由で分担追加を提案。採用・発注は未確認。
+- 必要型：任意の `G : Type u`、`[Group G]`、`n : ℕ`、`1 < n`、基点 x について
+  `Subsingleton (Spectra.KanHomotopy (F2.continuousKanReplacement.obj
+    (nerve (AsSmall (SingleObj G)))) n x)`。
+- `Spectra/GroupNerveCoordinates` と `GroupNerveFaces` の座標・面公式を確認したが、
+  同じ一般消滅定理は KST の検索で見つからなかった。
+- 提案理由：一般の群 nerve のホモトピー計算を読み取り専用の Spectra 正本に追加する分担。
+  foundations §6 の Sp 所有と §8 運用 v3(2) に基づく分担変更案。
+  既存の Sp-8・K-B2-S1 の仕様や主結論の仮定は変更しない。
+- K-cof は元の全 S 余核図式の bar 同定、供給の代入、元の相対 fiber と K 射への接続を担当。
+  区間余核の直積分解だけで bar 同定や主共終性の完了を主張しない。
+- 見積り：供給2〜4時間、K-cof 消費1〜3時間。

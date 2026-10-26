@@ -48,6 +48,18 @@ public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlags
 public import SerrePositivity.KST.SConstruction.Cofinality.MultiCompletion
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization
 
+public import SerrePositivity.KST.SConstruction.Cofinality.CutKZeroAdditivity
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CutKZeroRestriction
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CutKZeroConstant
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CutKZeroEquiv
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CutCokernelRestriction
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CutCokernelEquiv
+
 /-!
 概要：K-cof 所有の共終性補助結果を集約する。
 方針：新規葉だけを公開し、既存の S• 集約には逆依存を加えない。
