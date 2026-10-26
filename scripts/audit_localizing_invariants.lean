@@ -106,6 +106,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary,
     `SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle,
     `SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement,
     `SerrePositivity.KST.LocalizingInvariants.RightFibrationConeTransport,
     `SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting,
     `SerrePositivity.KST.LocalizingInvariants.VerdierCoreSliceCones,
