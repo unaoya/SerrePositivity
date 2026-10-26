@@ -758,3 +758,5 @@ public import SerrePositivity.KST.Fibration.VerdierNativeControlledSquareIso
 public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquareComparison
 public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalFiniteFaces
 public import SerrePositivity.KST.Fibration.Relative.FirstRowSimplexComparison
+public import SerrePositivity.KST.Fibration.Relative.FibrationSupply
+public import SerrePositivity.KST.Fibration.Relative.CanonicalComparison

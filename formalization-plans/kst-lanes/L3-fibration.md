@@ -8,15 +8,15 @@
 
 ## 引き継ぎ（2026-10-26、K-6 専任で再開）
 
-### 停止時点
-- 最新実装コミット：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
-- Fibration 最新実装：`aecfa6256`（下側 canonical 二有限端点の三条件）。正規化全族・実 (9b)・四有限端点の二短辺と全 native Hom の照合は保存済み。F1 外延性の利用側は archive に型検査済みで保存し、本体へ新しい存在仮定は追加していない。
+### 現在の供給と残り
+- 再編前の固定 K 接続：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
+- c4 完了：S-1 (a) `5640d0942` の `nativeTriangle_ext` を `kbMovingCanonicalFiniteExtConsumer` の四有限端点へ代入した。`verdierCanonicalKernelSquareIso d` は実読出し・相対合成も実供給から選び、d のみから元の全四角形の FunctorIso を構成する。
 - K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
-- 残りの順序：K-6 c4 の F1 有限 native 外延性の代入 → c5 の Sp 有限線型図式・core 逆像商比較の代入 → K-B2 の b 界面と連結版 d → e。K-7 は L10 の同じ条件付き実反復と全 native 作用境界を保持する。
-- 供給依頼：F1 外延性は S-1 (a) の `nativeTriangle_ext`（`F1/Diagrams/TriangleNativeExt`、集約 `NativeTriangleSupplyAll`）を待つ。実装済み・未コミットとのユーザー中継により、コミット到着後に消費する。**Sp 有限線型図式比較はコーディネータへ未着**（ユーザー訂正）。下記の正確な型を初回報告でユーザーへ提示済み。Sp 公開名は未確認。新規の設計変更案はない。
+- 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → b の統合と連結版 d → e。K-7 の同じ条件付き実反復は K-B3 が所有する。
+- 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。**Sp 有限線型図式比較はコーディネータへ未着**。下記の正確な型を初回報告でユーザー経由の転送用に提示済み。Sp 公開名は未確認。
 - K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
-- 次の一手：S-1 (a) の実証明を archive/L3-native-triangle-ext-consumer.md:47 へ代入し四有限端点を同定する。c5 は下記の Sp 実供給を待ち、両者を Relative.SingleRelativeComparison.ofFirstRowSimplices へ渡す。b は Relative.All の既存界面と S-1 (c) の無条件 S1 を消費し、d の非負次数 π 同型を K-B3 の K-7 e へ供給する。
-- 停止確認：Fibration 集約 13,311 ジョブ・専用監査 757 モジュール／5,175 宣言（標準三公理のみ）成功。NonConnective 集約 15,793 ジョブ・監査 191 モジュール／2,140 宣言成功。最終検証結果は停止保存コミット本文へ記録する。
+- 次の一手：Sp の下記実供給を `Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices` へ渡す。c4 入力は不要。d の非負次数 π 同型を K-B3 の K-7 e へ供給する。
+- 検証：Fibration 集約と専用公理監査を行い、結果はコミット本文へ記録する。NonConnective の検証・編集は K-B3 が担当する。
 ### c5：Sp コーディネータへの供給依頼（正確な型）
 - import：`SerrePositivity.KST.Fibration.RelativeFirstRowSimplexQuotient`。`h : VerdierSequence.{u}` に対し次を依頼する（名前は供給元が決定）。
 ```lean
@@ -29,8 +29,8 @@
 
 ### 現在地
 - b の既存界面：`Relative.All` の `finiteComparisonNatIso` は局所化圏値の単体的同型（生の SSet 実現同値を含意しない）。`singleAdditivityFiberIso` と射影公式は同じ包含・指定基点を保持し、単回版に追加収縮入力はない。`relativeRealizationInfinitySquare_isPullback` は実相対核四角形に適用し、元の指定 Verdier 四角形へ戻すには `SingleRelativeComparison` の二比較が必要。
-- S-1 (c) の `ClosedStableFiberUnconditional` は作業中の新規葉として確認済み。供給コミットの中継後に消費し、既存 ClosedStable* は編集しない。
-- 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
+- S-1 (c) `69c370610` の無条件四角形・fiber 同型・元の射影公式・指定零旗の零化を `Relative.FibrationSupply` から公開し b で消費済み。同じ集約は有限座標と相対実現界面も公開する。NonConnective は import せず、既存 ClosedStable* は編集していない。
+- 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c5 と d を継続し、K-7 d は K-B3 へ渡す。
 - `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。`VerdierLowerDeformationFullSLongHom` はこの全族を元の全 S• 始域の native Kan Hom へ延長し、元の core 包含で全次数・全時刻の全 Hom を厳密回収する。二胞体では元の変形二胞体の全長 Hom 自身に一致する。`VerdierLowerDeformationFullSComposite` は指定した三頂点全体の合成 path と、その全 S• 作用の実合成端を全時刻で保持する。`VerdierLowerDeformationFullSNaturality` は同じ零値持ち上げと全 S• 延長の、全パラメータの単調な制限との厳密な可換性を与える。`VerdierFullSMovingSquarePrism` は元の動く対角を厳密に共有する上側全族に条件付きで、両全三角柱を回収する四角柱・四頂点の可逆性・同じ元の Verdier 四角形との全関手同型を構成する。終端を実全 S• 商核へ固定し、下側全二胞体の最大化との厳密一致を証明した。`verdierFullSMovingKernelSquareIso` は同じ実商核まで接続するが、上側全族自体は未供給で、存在入力を主経路へ追加しない。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
 - `ZeroMiddleControlledTriangleInput` は元の全 S• Hom を core 包含で制限し、同じ二短辺の指定合成端を持つ実 fiber の点を構成する。元の指定 core 二胞体の全長 Hom と厳密に一致し、元の合成 path と仕様の全体 path の等号も回収する。`ZeroMiddleFixedHornComparison` は元の三面を固定する実充填空間の可縮 Kan 性・元の既存充填の指定点・構成済みの制御充填との fiber 内の同型と面 2 の上側全比較を供給する。制御充填の存在は主張しない。`VerdierLowerDeformationZeroHomFaces` は同じ零値長 Hom の持ち上げが全ての面・退化に厳密に自然であることを保持する。点ごとの零値条件を全三角柱の整合的な族へ接続するが、上側との同じ動く対角での貼り合わせは未証明。
 - 上流 import 閉包は D の修正後に復旧確認済み。両所有集約を再ビルドして成功。K-6 c4 の全四角形比較と c5 の商実現比較を進める。
@@ -41,7 +41,7 @@
   全単体的有限積比較は未主張。元の相対 S と W 列 core S の対角・定数列・実押し出しを保持。
 - 元の核包含を実核への完全同値へ制限し、K-2 Segal 実現で元の核四角形を homotopy pullback と証明。
   relativeSFibrationFiberIso は実 fiber と core S(D) の局所化同型で、同じ射影は元の包含の実現射。
-  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。一つの零自己関手→恒等の実自然変換を全 S_n の全 Hom 作用へ送り、全ての面・退化に自然な実円柱を構成。核上の包含そのものを順射とする全単体的同型で相対核へ戻し、同じパラメータの対角円柱と一点への具体的収縮ホモトピーを構成。元の商比較へ全単体的円柱を送り、元の core S 包含・商の実合成に対する具体的零化ホモトピーを構成。零値後合成の全族を元の Kan Hom へ読み戻し、その全 S_n 作用が同じ商核円柱の包含後の像と厳密一致。指定下側二胞体の直接 path→合成 path 族と、実合成端を全時刻で固定した全比較辺・円柱を構成し、全正反復 S の全 Hom 作用後も固定。元の指定両端への対象座標の輸送後も同じ全収縮族を異種等号で照合。元の core 包含で制限した全単体的零化円柱の各段は、K-S• の同じ全 Kan Hom 族による core S_n 作用と厳密一致し、対角は元の零化円柱を回収。全図式 Hom の射影を用いて全入力族を全単体的円柱へ送り、対角が元の豊穣対角作用と厳密一致すると証明。全有限反復 core S• へ接続し、一回の native 図式と元の core S• の恒等成分の同型を介して、元の商核零化円柱が同じ実合成の全豊穣実現族の評価と厳密一致。core 制限・対角・Ex∞ を通る指定二胞体比較と全四角形比較は未証明。商実現比較の可逆性は未証明で、無条件 K-6(b) は未完。
+  quotientSFibrationFiberIsoOfComparison は条件付き。元の S• 商核四角形を構成し、同じ商実現比較の可逆性を入力すれば homotopy pullback。通常の全錐比較と任意の Kan 四角形の橋渡しにより、同じ Ex∞ coherent 四角形は native な ∞ 引き戻し。元の四頂点・四辺を同じ Ex∞ Kan 値と元の射の coherent な一単体として回収し、同じ相対 S 核の角の終対象性も証明。一回の反復実現への全 Hom の座標読み替えは元の豊穣関手と等しい。指定 Verdier 四角形の包含・商辺と三頂点は厳密一致し、残る角は実終対象間の同型。零値完全関手の実 Kan Hom 部分空間は可縮で、任意の指定部分族を厳密に保つ延長と元の全正反復 S の全 Hom への図式比較を構成。零圏から・零圏への全 Hom の可縮性により、指定 Verdier 四角形は元の StableInfinity の零角付き四角形となる。指定 Verdier 上側二単体の全長 Hom を元の零値部分複体へ読み出し、同じ全長 Hom と元の全正反復 S 像で厳密照合。元の上下二単体の共有対角 δ₁ は厳密一致。下側の全長 Hom も零値族へ読み出し、全正反復 S 像で厳密回収。共有対角の同じ両端で読んだ両二胞体族は直接 path の像が同じ対角頂点で、全関手同型を構成。可縮な零値 Hom 空間への制限の実 fiber により、対角上の制限が元の恒等一単体となる全比較辺を構成。評価円柱は全時刻で共有対角を固定し、全正反復 S の全 Hom 作用後も固定条件を保つ。比較円柱の合成 path 側の実辺を評価し、元の指定両端で下側合成が包含・商の合成そのものと証明。元の上側零合成との全自然同値を、同じ比較円柱から回収。合成 path 上の全時刻評価も厳密一致。一つの零自己関手→恒等の実自然変換を全 S_n の全 Hom 作用へ送り、全ての面・退化に自然な実円柱を構成。核上の包含そのものを順射とする全単体的同型で相対核へ戻し、同じパラメータの対角円柱と一点への具体的収縮ホモトピーを構成。元の商比較へ全単体的円柱を送り、元の core S 包含・商の実合成に対する具体的零化ホモトピーを構成。零値後合成の全族を元の Kan Hom へ読み戻し、その全 S_n 作用が同じ商核円柱の包含後の像と厳密一致。指定下側二胞体の直接 path→合成 path 族と、実合成端を全時刻で固定した全比較辺・円柱を構成し、全正反復 S の全 Hom 作用後も固定。元の指定両端への対象座標の輸送後も同じ全収縮族を異種等号で照合。元の core 包含で制限した全単体的零化円柱の各段は、K-S• の同じ全 Kan Hom 族による core S_n 作用と厳密一致し、対角は元の零化円柱を回収。全図式 Hom の射影を用いて全入力族を全単体的円柱へ送り、対角が元の豊穣対角作用と厳密一致すると証明。全有限反復 core S• へ接続し、一回の native 図式と元の core S• の恒等成分の同型を介して、元の商核零化円柱が同じ実合成の全豊穣実現族の評価と厳密一致。core 制限・対角・Ex∞ を通る全四角形比較は c4 で構成済み。商実現比較の可逆性は未証明で、無条件 K-6(b) の統合は未完。
 - Ore・分母輸送・固定分数・可変終点 coslice の既存構成は保持し、新設は Sp 正本へ依頼する。
   全 span 族の評価・全単体被覆・W 反転・降下・同じ分数比較の回収を構成。一般比較同値・span 普遍性は未証明。
   tamme* の lax 専用仮定を一般 Verdier 商へ流用しない。H⁰ の普遍性で全写像空間を代用しない。
@@ -143,7 +143,7 @@
 - 既存の非指定 `zeroMiddleFullSKanTetrahedron` と条件付きの `VerdierFullSMovingSquarePrism` は保持する。三面の充填条件だけから未指定欠面の全 native Hom 回収を推論しない。
 - Ind-S (9)・(9b) は実供給を消費済み。指定二短辺・合成端・全 native Hom を保持する実 canonical 族と、同じ元の三面を固定した実因子分解族を使う。正規化前後は同じ固定ホーン空間内の可逆比較で結び、厳密切断は使わない。
 - `VerdierMovingCanonicalSquareIso` は同じ読出しの正規化下側と動く全 S• 上側を全共有対角で貼り、全四頂点の可逆性・両端全関手同型を追加仮定なしで供給する。`VerdierNativeControlledSquareIso` は同じ実 (9b) 欠面と元の下側を保ち、対角固定四角柱で元の指定 Verdier 四角形へ戻す。
-- `VerdierMovingCanonicalSquareComparison` は四つの指定有限端点の二胞体同定に条件付きで、両実四角柱を同じ元の商核まで接続する。四端点の二面・全 native Hom はすべて照合済み。残る F1 の有限外延性と c5 の商実現比較を無条件化するまでは c4・c5 を完了と数えない。
+- `VerdierMovingCanonicalSquareComparison` は四つの指定有限端点の二胞体同定に条件付きで、両実四角柱を同じ元の商核まで接続する。四端点の二面・全 native Hom はすべて照合済み。S-1 (a) の消費後は `verdierCanonicalKernelSquareIso` が四端点条件なしで同じ実比較を供給する。c5 の商実現比較は未完。
 
 ### 未コミット
 - 固定三面からの上側全境界回収と、同じ実列の第一行比較から固定 K 構造辺への接続を両集約へ接続済み。両専用監査成功。所有 Lean の未コミットなし。
@@ -152,7 +152,7 @@
 - 現在の条件付き fiber 同型や一般の群判定を、具体的 K の局所化性の証明とは数えない。
 - D-9 の実小核と Sp-6 の固定零化構成子は K-B に接続済み。同じ実零角の Perf 零性は K-B で証明済み。固定 ν 上の Verdier 証拠と Perf 完備化・P 照合は別の条件。native Verdier 列だけから連結 K の Sp fiber 性を結論しない。
 ### 次の一手
-- c4：F1 の有限 native 二胞体外延性（[依頼型](archive/L3-native-triangle-ext-request.md:19)）を [型検査済み利用側](archive/L3-native-triangle-ext-consumer.md:47) へ代入し、同じ実四角柱の四有限端点を同定する。新しい存在仮定は主経路に加えない。
+- c4 は完了。c5 の実供給を `Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices` へ代入する。
 - c5：Sp 正本の有限線型図式の局所化を元の正段商比較へ代入し、同じ実商実現・連結 fibration へ接続する。分数比較の充満忠実性は供給済み。同種 API を新設しない。
 - K-7：D-8 の実 I・P・Z と同じ cone の零性を消費済み。共終性・一回の未完備 S• fibration と全 native 入力作用の残る境界を L10 の同じ実 BF 列へ接続する。K-B2 向け共通化は B・P のみの `closedStableFlagPostPullback` を供給済み。
 
@@ -160,7 +160,7 @@
 - [x] c1 `relabelEnrichedObjects` の全 Hom 座標読み替え。
 - [x] c2 `coreSingleSimplicialIso` の対角と実現同型の逆射の照合。
 - [x] c3 商核零化円柱の元の core S 実現対象への輸送。
-- [ ] c4 Ex∞ 上で指定二胞体を保つ全四角形比較。
+- [x] c4 Ex∞ 上で指定二胞体を保つ全四角形比較（S-1 (a) を実代入、d のみの FunctorIso）。
 - [ ] c5 商実現比較と無条件の連結版への接続。
 
 ## 規約
@@ -186,13 +186,13 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 - `controlledTriangleNormalizedFamilySupply`（f206fbbb1）を `ZeroMiddleComparisonSupply` で消費済み。任意 K の指定二短辺・合成端・全族可逆比較・全 native Hom 回収・正規化後の全対角を保持する。[採用仕様の全型](archive/L3-ind9-supply-specification.md)。
 - `controlledTriangleCoherentEncoder` の実像を上下で使い、同じ実読出しの全対角を厳密に貼る。元 t とは同じ固定ホーン空間内の可逆比較で戻す。厳密切断・元 t 自身の厳密全対角回収は撤回済み。
 - (9b) の実 `controlledFactorizationTetraFamily` は元の三面・全 native Hom を保持し、固定三面 fiber 内で既存充填との比較を持つ。制御された同じ実充填を使い、任意四面の可填性は要求しない。
-- 残る F1 供給は二短辺と全 native Hom による有限二胞体外延性のみ。[型](archive/L3-native-triangle-ext-request.md:19)・[型検査済み利用側](archive/L3-native-triangle-ext-consumer.md:47)。主経路へ存在仮定は追加しない。
+- 二短辺と全 native Hom による有限二胞体外延性は S-1 (a) から消費済み。`VerdierMovingCanonicalFiniteExt` が archive の利用側を実代入し、主経路に存在仮定はない。
 
 ### 採用経路：実商と Perf 完備化の K 比較を分ける（ユーザー採用）
 - D-9 の `resolvedDGQuotientFlatKernel_isStableVerdierSequence` は完備化前の native 実商への列。固定 ν の `IsVerdierSequence` は Perf 完備化後の射に通常の `IsLocalization` を要求する。今回の実核・P・Morita 照合は、この追加認証を含まない。
 - 採用：K-6 の完備化前の連結 fibration と、同じ実商の元の dg Yoneda 完備化の実 K 比較を分ける。K-7 の同じ cone について、後者の正次数 π 同型・零次 π 単射と構成済みの K 零性を使い、固定 K への実 fiber 比較の非負次数 π 同型を得る。K₀ 全射性・連結 K の Sp 引き戻し性は要求しない。
 - 固定 S・ν・K と同じ I・採用済み供給境界は不変。既存の条件付き相対屋根と Sp fiber 定理も保持する。完備化前の商の局所化は D・Sp、K の cofinality は K-S• 正本とし、K-B に同種 API を重ねない。
-- `DGKappaNativeKernelThick` は同じ実核の冪等完備性で D 正本の thick 核の retract 表示を戻し、完備化前の商の零化対象が元の実小核の本質像であることを証明する。`DGKappaNativeVerdier` は同じ包含・商辺を保つ Sp の完備化前の `IsVerdierSequence`・全四角形提示を供給する。固定 ν の完備化後の認証は使わない。`DGKappaRawSuspensionCompletion` は始域を移さない同じ実商の元の dg Yoneda を完備化として認証し、実 Perf 評価と SOA 比較で固定 K への実 BF 比較を保持する。正次数 π 同型・零次単射と一回 loop の非負次数同型は同じ `hcofinal` に条件付き。`DGKappaNativeKernelKComparison` は元の評価と同じ実供給 P による実核同値から、固定 K の始点を戻す。`DGKappaNativeFibration` はこの実列を元の相対 S• fiber 比較へ代入し、包含射影を厳密回収する。実商の fiber・Ex∞ 核四角形への接続は、既存の正段商比較 `hstage` に条件付きで、`DGKappaNativeSquareComparison` は同じ提示を動く共有対角の四角柱へ代入し、指定上側全族・全対角条件・縦辺可逆性と同じ正段比較に条件付きで、元の全 S• 四角形へ引き戻し性を移す。これらの実供給と無条件化・c4 の全二胞体比較は未完。
+- `DGKappaNativeKernelThick` は同じ実核の冪等完備性で D 正本の thick 核の retract 表示を戻し、完備化前の商の零化対象が元の実小核の本質像であることを証明する。`DGKappaNativeVerdier` は同じ包含・商辺を保つ Sp の完備化前の `IsVerdierSequence`・全四角形提示を供給する。固定 ν の完備化後の認証は使わない。`DGKappaRawSuspensionCompletion` は始域を移さない同じ実商の元の dg Yoneda を完備化として認証し、実 Perf 評価と SOA 比較で固定 K への実 BF 比較を保持する。正次数 π 同型・零次単射と一回 loop の非負次数同型は同じ `hcofinal` に条件付き。`DGKappaNativeKernelKComparison` は元の評価と同じ実供給 P による実核同値から、固定 K の始点を戻す。`DGKappaNativeFibration` はこの実列を元の相対 S• fiber 比較へ代入し、包含射影を厳密回収する。実商の fiber・Ex∞ 核四角形への接続は、既存の正段商比較 `hstage` に条件付きで、`DGKappaNativeSquareComparison` は同じ提示を動く共有対角の四角柱へ代入し、指定上側全族・全対角条件・縦辺可逆性と同じ正段比較に条件付きで、元の全 S• 四角形へ引き戻し性を移す。c4 の全二胞体比較は `verdierCanonicalKernelSquareIso` で無条件化済み。c5 の正段商比較は未完。
 - 共終性はユーザーが K-S• へ依頼済み。供給までは下記命題を `hcofinal` という明示仮定引数に取って利用側を進め、供給後に同じ引数へ代入する。公理・証明済み成果として登録せず、新しい構造体の存在境界も加えない。`DGKappaSuspensionCofinality` は同じ実懸垂の元の Yoneda 安定模型射と実 K 射を保持する。
 ```lean
 ∀ (X Y : StableModel.{u}) (f : X ⟶ Y),
@@ -205,7 +205,7 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 ### 採用済み：同じ未完備実列だけの有限 BF 四角形比較
 - `kSpectrumMap` の射ごとの供給だけから、元の native 二胞体を持つ実 BF 四角形は回収しない。一般の BF 高次面整流は L1 のユーザー指示で中断済み。固定 `dgKInputK` を代入すると商が Perf 完備化後に戻る。
 - ユーザー採用の有限 BF 比較は K-S•-S3 から実供給済み。同じ D-9 未完備実列の元二胞体を、新 BF 四対象・四辺上の実 Φ へ送り、各正段の全 S• 四角形比較と旧 K への指定整数群同型との可換性を保持する。`DGKappaSuppliedBF*` の主利用側は供給を直接消費し、hBF の存在引数を取らない。一般 StableInfinity の K 関手化は再開しない。
-- [旧四対象固定型と範囲](archive/L3-raw-bf-square-proposal.md) の `DGKappaNativeBFBoundaryInput`・`DGKappaNativeBFSquare`・旧 hBF に条件付きの fiber・loop・固定 K 構造射の利用側は保持する。ただし実 S3 の BF 対象は旧四対象と厳密には等しくなく、旧 hBF の存在は主張しない。実供給側の構造辺から固定 K への戻しは末尾の二頂点比較の設計補足で扱う。c4・c5 と K-7 c5・d3 の印は未完。
+- [旧四対象固定型と範囲](archive/L3-raw-bf-square-proposal.md) の `DGKappaNativeBFBoundaryInput`・`DGKappaNativeBFSquare`・旧 hBF に条件付きの fiber・loop・固定 K 構造射の利用側は保持する。ただし実 S3 の BF 対象は旧四対象と厳密には等しくなく、旧 hBF の存在は主張しない。実供給側の構造辺から固定 K への戻しは末尾の二頂点比較の設計補足で扱う。c4 は完了。c5 と K-7 c5・d3 の印は未完。
 
 ### c5 の有限第一行比較の消費
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。
@@ -222,14 +222,14 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 | `h9 : zeroMiddleControlledTriangleComparisonSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:105 | Ind-S (9)：f206fbbb1 の実供給を ZeroMiddleComparisonSupply で消費済み。指定二短辺・合成端・全族可逆比較・native 回収・正規化対角を保持。旧厳密切断版の供給は要求しない |
 | `h9b : zeroMiddleFactorizationTetraSupply` | KST/Fibration/ZeroMiddleReconstructionSupply.lean:97 | Ind-S (9b)：実供給済み（77a33b4c9）。ZeroMiddleNativeFactorization の zeroMiddleFactorizationTetraSupply_of_indS9b を代入 |
 
-- (9)・(9b) は実供給を代入済み。旧明示引数の入口は条件付きのまま保持する。`ZeroMiddleFullSReconstruction`・`ZeroMiddleReconstructedFamily` は元の core 始域・全 S• 中間頂点と同じ短辺への再構成・実ホーン回収・同じ実入力への読戻しを保持する。`ZeroMiddleFactorizationTetra`・`ZeroMiddleFactorizationComparison` は同じ実因子分解族の三面・長 Hom を回収し、ホーン全体の回収後に既存充填との固定三面 fiber 内比較へ渡す。動く共有対角の貼り合わせと K-6 c4・c5、K-7 c5・d3 の無条件化は未完。
+- (9)・(9b) は実供給を代入済み。旧明示引数の入口は条件付きのまま保持する。`ZeroMiddleFullSReconstruction`・`ZeroMiddleReconstructedFamily` は元の core 始域・全 S• 中間頂点と同じ短辺への再構成・実ホーン回収・同じ実入力への読戻しを保持する。`ZeroMiddleFactorizationTetra`・`ZeroMiddleFactorizationComparison` は同じ実因子分解族の三面・長 Hom を回収し、ホーン全体の回収後に既存充填との固定三面 fiber 内比較へ渡す。動く共有対角の貼り合わせと K-6 c4 は実供給で完了。K-6 c5、K-7 c5・d3 の無条件化は未完。
 
 ### 採用済み仕様補足：全族の共有対角の厳密回収
 - ユーザー採用、Ind-S (9) へ中継済み。各 K 頂点の全 native Hom 回収から全時刻の式を推論せず、同じ encode/read の normalize(t)=encode(longHom(t)) に対する直接 path 評価の全族厳密回収式と、元 t との固定ホーン内の可逆比較を持つ強化命題を明示引数に取る。元 t 自身への厳密式は要求しない。標準区間像への移送は既存の F2.Presentable.functorIsoTensor を消費して diagonalIso まで構成し、uncurry の追加供給は不要とユーザー経由で中継済み（[依存箇所・型](archive/L3-uncurry-comparison-request.md:24)）。旧 `ZeroMiddleReconstructedDiagonal` の厳密対角定理と `ZeroMiddleNormalizedFamily` の厳密読出し保存・冪等性は旧強仕様に条件付きのまま保持し、実供給を要求しない。新仕様では全族可逆比較の直接 path 評価に沿って移送する。`VerdierLowerNormalizedReconstruction` は比較条項自体を使わない形へ一般化し、`ZeroMiddleFullSComparisonReconstruction` は採用済み仕様を同じ実座標へ代入する。`ZeroMiddleComparisonSupply` は f206fbbb1 を消費し、`VerdierLowerSuppliedNormalization` から供給命題引数を除去した。`ZeroMiddleSuppliedReconstruction` は同じ実データから上側正規化族・厳密ホーン・正規化対角と元入力への直接 path 全族同型を構成する。[型・範囲・採否の影響](archive/L3-whole-diagonal-recovery-proposal.md)。
 - VerdierLowerReconstructionBoundary は元の実下側変形の二短辺と固定ホーン族の実入力点を厳密回収する。VerdierLowerNormalizedReconstruction は (9) に条件付きで、同じ実下側族との全関手同型・元の二短辺・正規化側の全対角・各入力点の全 native Hom 読出しと全時刻の実合成端を接続する。合成端は元の二つの実 Kan 射の厳密合成の定値族と一致する。
 - ZeroMiddleControlledLongFamily は Ind の 218e5b449 を消費し、指定長 Hom 入力から全ホーン・各入力点の全 native Hom を保つ実上側族を (9) の仮定なしで構成する。全時刻対角の厳密回収とは区別する。
 - VerdierNativeCompositeEdge は元の全長 Hom 比較の実合成端成分を core 制限と宇宙持ち上げへ送り、上側・下側の同じ実合成端間の可逆辺を保持する。VerdierOriginalCompositeNativeEdge は元の比較を指定 Verdier 両端へ輸送し、下側始端を実包含・実商の合成、上側終端を指定左辺・上辺の合成の元の core S• 作用へ厳密回収する。
-- 二短辺と全 native 長 Hom の HEq による二単体外延性は Ind-S へユーザー経由で供給依頼済み（archive/L3-native-triangle-ext-request.md:19）。本体へ新たな存在仮定は追加しない。
+- 二短辺と全 native 長 Hom の HEq による二単体外延性は S-1 (a) の実証明を消費済み。本体へ新たな存在仮定は追加していない。
 
 - VerdierNativeLongHomShift は指定両端の長 Hom 全族と元の実合成端比較の定数族を全関手 Kan 複体で合成し、同じ合成二単体を保持する。
 - native path 座標へ戻した同じ族は、直接 path の全パラメータを厳密保存し上側の元の実合成端を回収する。
@@ -271,7 +271,7 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 - `VerdierMovingUpperFactorizationCoordinates`・`VerdierUpperNativeOriginalCoordinates`・`VerdierMovingUpperVertices` は同じ対象座標と元の全 Hom を照合する。
 - `VerdierMovingUpperFirstComparison`・`VerdierMovingUpperLastTriangle`・`VerdierMovingUpperLastComparison` は両端で二面の厳密等式と全 native Hom の HEq を供給する。
 - 始端は同じ実 (9b) 欠面、終端は同じ二実射の標準合成である。
-- 指定有限二胞体の厳密同定と同じ三面内の比較は未完で、F1 外延性の供給は既依頼の型 archive/L3-native-triangle-ext-request.md:19。
+- 指定有限二胞体の厳密同定は `VerdierMovingCanonicalFiniteExt` で S-1 (a) を代入済み。元の同じ実 (9b) 三面内の比較を使う。
 - `VerdierLowerCanonicalFamily`・`VerdierLowerCanonicalReadout` は同じ実読出しの全 native Hom・全対角・固定ホーン内の可逆比較を同時に保持する。
 - `VerdierMovingCanonicalSharedDiagonal`・`VerdierNormalizedSquareFamily`・`VerdierMovingCanonicalSquare` は同じ読出しの上下実族を全共有対角で四角柱へ貼り、下側全 native Hom と元の族への可逆比較を保持する。
 - `VerdierLowerCanonicalShortFaces`・`VerdierLowerCanonicalVerticalEdges` は同じ下側の二短辺・全 native Hom・三頂点の元の縦辺を回収し、追加仮定なしで下側の両端関手同型を供給する。
@@ -282,8 +282,8 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 - `VerdierMovingCanonicalKernelEndpoint`・`VerdierMovingCanonicalSquareComparison` は四つの指定有限端点照合に条件付きで、同じ正規化四角柱を元の Verdier・実商核四角形の全関手同型へ接続し、元の商の各正段比較から引き戻し性を移す。
 - `VerdierLowerCanonicalFiniteFaces` は下側両端についても元の指定二胞体への二面の厳密等号と全 native Hom の HEq を供給する。
 - 四端点の全三条件は揃っており、[外延性の利用側](archive/L3-native-triangle-ext-consumer.md:47) は型検査済み。
-- F1 外延性の実供給による四端点同定と商の正段比較は未放電。
+- F1 外延性の実供給による四端点同定は完了。商の正段比較は未放電。
 - K-B2 向け共通化：`FiniteFlagComparisonInduction` を既存 q 版の帰納段へ代入した。`ClosedFlagCofiberCoordinates`・`ClosedFlagFiniteComparison`・`ClosedFlagFiniteRecursion` は B・P のみの共通補完と全座標自然性・厳密分解を保持する。`StableTrivialPullbackSection`・`ClosedTailMultiStep`・`ClosedTailCanonicalComponents` は同じ全旗の先行面と最後の cofiber 比較を K-B2 の相対加法性へ接続し、全正反復の局所化同型を供給する。`ClosedFlagOneEquivalence`・`ClosedFlagOneComparison`・`ClosedFlagFiniteEquivalence` は同じ一辺加法性を共通帰納へ接続し、全正長・全正反復の元の有限積比較の局所化同型を供給する。`ClosedFlagFiniteAllLengths` は公開済み K-B2 の零長同型を代入し、零長を含む全長の局所化同型を供給する。`ClosedKernelCoefficient`・`ClosedFlagCofiberPostcomparison` は元の P 自身の包含係数同型と全関手比較を保持する。`ClosedKernelInitialPullback` は全長・全正反復の実初期評価引き戻しを供給する。`SimplicialInitialPullback` を既存 q 版と共有し、`ClosedFlagPostCartesian.closedStableFlagPost_homotopyPullback` と `closedStableFlagPostPullback` は元の単回 F・包含・全作用素の引き戻しを B・P のみから供給する。既存の K-B2 条件付き葉は保持し、新しい利用葉で代入する。
 
 ### c4 の全関手同型から c5・K-7 への受け渡し
-- `NonConnective/DGKappaSuppliedBFFirstRowSimplices` は同じ実 D-9 列の全四角形 `FunctorIso` と元の商の標準単体比較を直接消費する。実商核の引き戻しを移し、同じ BF fiber の非負次数 π 同型と固定 K 構造射へ続ける。両比較は明示定理引数であり、存在・無条件の連結版は主張しない。c4 の正規化下側族を旧上側ホモトピーへ戻す追加要求はない。
+- `NonConnective/DGKappaSuppliedBFFirstRowSimplices` は同じ実 D-9 列の全四角形 `FunctorIso` と元の商の標準単体比較を直接消費する。実商核の引き戻しを移し、同じ BF fiber の非負次数 π 同型と固定 K 構造射へ続ける。旧入口の両比較は明示定理引数。c4 は `verdierCanonicalKernelSquareIso` を実代入でき、`Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices` は c5 だけを残す。無条件の連結版は主張しない。c4 の正規化下側族を旧上側ホモトピーへ戻す追加要求はない。
