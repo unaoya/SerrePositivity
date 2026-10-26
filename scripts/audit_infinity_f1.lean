@@ -10029,3 +10029,33 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) coherent normalization: no declarations audited"
   logInfo m!"Ind-S coherent triangle normalization audit passed: {count} declarations."
+
+-- Ind-S (9)：採用済み要求全体の、実 encoder の単射性への条件付き還元。
+-- 単射性は未供給入力であり、無条件の完了とは扱わない。F2 例外は使わない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNormalizedRequest },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) normalized request reduction: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNormalizedRequest]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) normalized request reduction: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) normalized request reduction: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) normalized request reduction: no declarations audited"
+  logInfo m!"Ind-S normalized triangle request reduction audit passed: {count} declarations."

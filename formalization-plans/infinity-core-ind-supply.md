@@ -277,9 +277,7 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
   要求正本の実 T → L と全 t,k の full native Hom 回収。単なる直接 path の値ではない。
   任意の二胞体の合成端を固定短辺から依存和で同定し、零骨格指定持ち上げを二度使う。
   正本から切り出した読出し要求型への直接適用が通過。実 encode・固定 fiber の VertexIso、
-  controlledTriangleSplit_of_mono_encoder による単射 encoder への切断還元を追加。
-  対象8葉61宣言・F1全監査通過（読出し27、encoder等13、対角輸送1、path座標20）。
-  入口は ControlledTriangleReadoutMap・ControlledTriangleEncoderMap・ ControlledTriangleSplitReduction・ControlledCompositionDiagonalTransport・TriangleLabelPathCoordinates。 encode の単射性・厳密切断は未供給で、(9) 全体の完了とは扱わない。
+  controlledTriangleSplit_of_mono_encoder による単射 encoder への切断還元を追加。 対象8葉61宣言・F1全監査通過（読出し27、encoder等13、対角輸送1、path座標20）。 入口は ControlledTriangleReadoutMap・ControlledTriangleEncoderMap・ ControlledTriangleSplitReduction・ControlledCompositionDiagonalTransport・TriangleLabelPathCoordinates。 encode の単射性・厳密切断は未供給で、(9) 全体の完了とは扱わない。
 
 ユーザー許可（2026-10-26）：(9) 新規葉に限り、既存の
 F1/MappingSpaces/CompositionCorrespondenceDiagonalPullback から
@@ -298,3 +296,5 @@ R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core 
 追加16葉80宣言・F1全監査通過：triangleSeparatedSimplex、triangleSeparatedSimplex_naturality、 triangleSeparatedFamily と同じ全 K・L 上の二短辺の厳密回収を公開。単射性・厳密切断は未完了。
 
 追加16葉61宣言・F1全監査通過：実 controlledTriangleCoherentEncoder、controlledTriangleCoherentEncoder_native、 controlledTriangleCoherentNormalization_diagonal、controlledTriangleCoherentNormalization_vertexIso。 入口 ControlledTriangleCoherentEncoderNative。元の全ホーン・各 k の full native Hom・正規化後の全 K 対角・同じ固定 fiber 内の VertexIso を実構成。 K-B 正本から厳密切断だけを True に置換した型への直接適用も通過（標準三公理のみ）。 厳密切断は依然未供給で、(9) 完了とは扱わない。
+
+実 encoder の16葉61宣言は e6ec74eb9 で保存。追加 ControlledTriangleNormalizedRequest（13宣言・対象ビルド・葉監査・F1全監査通過）は採用済み正本の厳密切断も保持し、 controlledTriangleNormalizedRequest_of_mono で実 encoder の単射性一つへ還元する。単射性は未供給入力。
