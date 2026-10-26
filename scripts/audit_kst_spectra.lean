@@ -40,6 +40,7 @@ run_cmd do
     `SerrePositivity.KST.Spectra.AdjointLoopRelativeFullGradedInclusion,
     `SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCoherentComparison,
     `SerrePositivity.KST.Spectra.AdjointLoopRelativeProjectionNaturality,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeNativeDiagram,
     `SerrePositivity.KST.Spectra.AdjointLoopKanSequence,
     `SerrePositivity.KST.Spectra.SpectrumFiniteLimits,
     `SerrePositivity.KST.Spectra.DiscreteKanHomotopy,
