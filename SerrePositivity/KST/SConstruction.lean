@@ -2933,4 +2933,12 @@ public import SerrePositivity.KST.SConstruction.StableZeroSquareComparison
 public import SerrePositivity.KST.SConstruction.SquareFrameHomotopyPostcomp
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareComparison
 
+public import SerrePositivity.KST.SConstruction.SpecifiedHomotopyRestriction
+public import SerrePositivity.KST.SConstruction.SpecifiedComparisonRestrictionComposition
+public import SerrePositivity.KST.SConstruction.StableZeroSquareTriangleRecovery
+public import SerrePositivity.KST.SConstruction.StableZeroSquareShortRecovery
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareSideRecovery
+public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareDiagramIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityLaxCompletedComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityZeroBoundary
 public import SerrePositivity.KST.SConstruction.PerfectStableArrowSquareComparison
@@ -130,18 +131,14 @@ def differenceArrowComparison : FunctorIso
 def squareBoundary (h : DGGluingMilnorSquare R d) : VerdierSquareBoundaryIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) where
-  inclusion := by
-    change FunctorIso
-      (squareBottomEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) _
-    rw [PerfectVerdierSequence.presentation_bottom,
-      dgOdotMilnorIdentityNullSquare_perfect_diagonal]
-    exact v.diagonalArrowComparison.symm
-  quotient := by
-    change FunctorIso
-      (squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) _
-    rw [PerfectVerdierSequence.presentation_right, perfectIdentityLaxSequence_projection,
-      dgOdotMilnorIdentityNullSquare_perfect_difference]
-    exact v.differenceArrowComparison.symm
+  inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
+    (dgOdotMilnorIdentityNullSquare_perfect_diagonal R d).symm
+    (PerfectVerdierSequence.presentation_bottom (perfectIdentityLaxSequence (Q) (hQ))).symm).symm
+  quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
+    (dgOdotMilnorIdentityNullSquare_perfect_difference R d).symm (by
+      change _ = squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square
+      rw [PerfectVerdierSequence.presentation_right, perfectIdentityLaxSequence_projection]
+      rfl)).symm
   zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h
 end DGOdotMilnorIdentityLaxComparisonInput
 end SerrePositivity.KST.SConstruction
