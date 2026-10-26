@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityDGInput
 public import SerrePositivity.KST.SConstruction.DGHomGluingTargetContraction
 public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
@@ -27,9 +28,8 @@ local notation "D" => DGOdotMilnorIdentityDifference R d
 lemma dgOdotMilnorIdentityDiagonal_targetMap (x : C) :
     dgHomGluingTargetMap R (C) (C) (C) (I) (I)
       ((dgOdotMilnorIdentityDiagonal R d).obj x) =
-        𝟙 (ForgetEnrichment.of (Complex R) x) := by
-  exact dgHomGluingTargetMap_comparisonObject R (C) (C) (C) (I) (I) (I) (I)
-    (dgStrictSquareClosedComparison R (C) (C) (C) (I) (I) (I) (I) rfl) x
+        𝟙 (ForgetEnrichment.of (Complex R) x) :=
+  dgIdentityHomGluingDiagonal_targetMap R (C) x
 
 /-- 概要：同じ対角像の実 cone における指定次数 −1 元。
 方針：恒等比較の既存収縮を同じ全像小模型で使用する。
@@ -39,9 +39,7 @@ def dgOdotMilnorIdentityContractingElement (x : C) :
       ((dgOdotMilnorIdentityDiagonal R d).obj x))
       ((dgOdotMilnorIdentityDifference R d).obj
         ((dgOdotMilnorIdentityDiagonal R d).obj x)) (-1) :=
-  dgHomGluingTargetConeContractingElement R (C) (C) (C) (I) (I)
-    ((dgOdotMilnorIdentityDiagonal R d).obj x) (Iso.refl _)
-    (dgOdotMilnorIdentityDiagonal_targetMap R d x)
+  dgIdentityHomGluingContractingElement R (C) x
 
 /-- 概要：同じ小模型内の指定収縮元の微分は同じ像の恒等元。
 方針：全 Hom を保持する包含の定義から既存の微分式を使用する。
@@ -54,29 +52,22 @@ lemma dgOdotMilnorIdentityContractingElement_d (x : C) :
       (dgOdotMilnorIdentityContractingElement R d x) =
         (unitElement R ((dgOdotMilnorIdentityDifference R d).obj
           ((dgOdotMilnorIdentityDiagonal R d).obj x))).val :=
-  dgHomGluingTargetConeContractingElement_d R (C) (C) (C) (I) (I)
-    ((dgOdotMilnorIdentityDiagonal R d).obj x) (Iso.refl _)
-    (dgOdotMilnorIdentityDiagonal_targetMap R d x)
+  dgIdentityHomGluingContractingElement_d R (C) x
 
 /-- 概要：同じ固定 S の対角・差の合成に指定収縮を与える。
 方針：対象宇宙を持ち上げても元の全 Hom と微分を使用する。
 規約：自然な収縮を仮定しない。使われ方：Sp 正本の実零化面構成。 -/
 def dgOdotMilnorIdentityContracted : DGQuotient.ContractedFunctor R
     (dgOdotMilnorIdentityBaseInput R d) Set.univ
-    (dgOdotMilnorIdentityDifferenceInput R d) where
-  toDGFunctor := (dgOdotMilnorIdentityDiagonalInputMap R d).down.comp
-    (dgOdotMilnorIdentityDifferenceInputMap R d).down
-  homotopy x := dgOdotMilnorIdentityContractingElement R d x.val.label.down
-  d_homotopy x := dgOdotMilnorIdentityContractingElement_d R d x.val.label.down
+    (dgOdotMilnorIdentityDifferenceInput R d) :=
+  dgIdentityHomGluingContracted R (C)
 
 /-- 概要：恒等 Hom gluing の元の四辺を持つ固定 S の実零化面。
 方針：指定収縮の同じ全対象商延長を使用する。
 規約：ν 像の列認証は別に行う。使われ方：LT 長方形の右面。 -/
 def dgOdotMilnorIdentityNullSquare :
     (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R :=
-  (exists_dgFixedNullSquare R (dgOdotMilnorIdentityDiagonalInputMap R d)
-    (dgOdotMilnorIdentityDifferenceInputMap R d)
-    (dgOdotMilnorIdentityContracted R d) rfl).choose
+  dgIdentityHomGluingNullSquare R (C)
 
 /-- 概要：同じ実零化面の四辺は元の対角・差・商包含・商延長。
 方針：同じ選択された面の境界を回収する。
@@ -91,8 +82,6 @@ lemma dgOdotMilnorIdentityNullSquare_edges :
           (dgFixedNullLeft R (A := dgOdotMilnorIdentityBaseInput R d))).edge ∧
       squareTopEdge ≫ dgOdotMilnorIdentityNullSquare R d = SSet.yonedaEquiv.symm
         (coherentNerveEdge (dgFixedNullTop R (dgOdotMilnorIdentityContracted R d))).edge :=
-  (exists_dgFixedNullSquare R (dgOdotMilnorIdentityDiagonalInputMap R d)
-    (dgOdotMilnorIdentityDifferenceInputMap R d)
-    (dgOdotMilnorIdentityContracted R d) rfl).choose_spec
+  dgIdentityHomGluingNullSquare_edges R (C)
 
 end SerrePositivity.KST.SConstruction
