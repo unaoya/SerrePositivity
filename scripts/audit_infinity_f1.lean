@@ -10059,3 +10059,87 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) normalized request reduction: no declarations audited"
   logInfo m!"Ind-S normalized triangle request reduction audit passed: {count} declarations."
+
+-- Ind-S (9)：全高次パラメーターの頂点上回収と、一点 K での実単射性・厳密切断。
+-- 一般 K の単射性・厳密切断は未供給。F2 例外は使わない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleEncoderParameterEquality },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleIntervalFaithfulness },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTrianglePointParameterMono },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.FamilyParameterEquality },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelCoordinateSection },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrismCoordinateSection },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrismLiftedSection },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedLongFaithfulness },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedPrismRecovery },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedVertexParameter },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) higher parameter recovery: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleEncoderParameterEquality,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleIntervalFaithfulness,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTrianglePointParameterMono,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.FamilyParameterEquality,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelCoordinateSection,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrismCoordinateSection,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePrismLiftedSection,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedLongFaithfulness,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedPrismRecovery,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedVertexParameter]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) higher parameter recovery: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) higher parameter recovery: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) higher parameter recovery: no declarations audited"
+  logInfo m!"Ind-S higher triangle parameter recovery audit passed: {count} declarations."
+
+-- Ind-S (9)：2026-10-26 ユーザー採用の全族可逆比較による最終供給。
+-- 切断比較 encode≫longHom → id L。全ホーン・native Hom・正規化全対角の等式は保持。
+-- 厳密切断要求は設計変更で撤回。有限反例の数学的記録は計画に残し、反例定理は作らない。
+-- この3葉では F2 例外を使わない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ContractibleFamilyComparison },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilyComparison },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNormalizedFamilySupply },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) normalized family supply: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ContractibleFamilyComparison,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleFamilyComparison,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNormalizedFamilySupply]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) normalized family supply: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) normalized family supply: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) normalized family supply: no declarations audited"
+  logInfo m!"Ind-S normalized triangle family supply audit passed: {count} declarations."
