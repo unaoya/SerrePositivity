@@ -44,6 +44,7 @@ public import SerrePositivity.KST.Spectra.AdjointLoopRelativeFullGradedInclusion
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCoherentComparison
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeProjectionNaturality
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeNativeDiagram
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeDiagramResolution
 public import SerrePositivity.KST.Spectra.FibrationSequence
 public import SerrePositivity.KST.Spectra.FibrationExactness
 public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
