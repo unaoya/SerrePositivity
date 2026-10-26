@@ -154,7 +154,10 @@
 - [ ] e5. P の fiber accessibility は公開済み。accessible 一般版（5.4.6.6）は P-d 待ち。presentable 系（5.5.3.12）は一般命題を明示入力とする `pullback_isPresentable_of_accessiblePullback` を P の新規葉で構成。
 - [ ] e6. 保留（第 II 段／R）：Pr^L と Pr^R の全体同値（5.5.3.4）。`Duality/` は読み取り専用。
 - [ ] e7. 保留（第 II 段／R）：Pr^L の小極限と Cat∞ での計算（5.5.3.13）。
-- [ ] e8. Localization/・Duality/・LocalObjects/ を接続し両集約ビルドと P 公理監査成功（5874 宣言）、既存 H 監査と H 再帰監査成功（12233 宣言）。Supply/ の修正は `10ad58008` で到着、両集約・P 公理監査（6372 宣言）・H 両監査成功。AccessiblePullback/ の一般版到着後に全集約の監査で閉じる。
+- [x] e8. 完了（2026-10-26）：AccessiblePullback.All・Supply.All・Duality.All・Localization.All・LocalObjects.All を P 集約と全宣言監査へ接続。両集約 10625 jobs、P 7044 宣言・H 12233 宣言の再帰公理監査と既存 H 監査は成功。標準三公理のみ。
+  - 引き継ぎ：一般版は `AccessiblePullback.pullback_isAccessible`（`636012a5f`）。これを `pullback_isPresentable_of_accessiblePullback` に代入した追加入力なしの presentable 引き戻しを監査内の使用例で検証済み。
+  - Supply の匿名局所 instance 衝突は `10ad58008` で解消済み。ローカル import 閉包6935モジュールに未コミットの他レーン変更なし。葉は編集せず、今回の保存対象は P 集約・P 監査・本 e8 節のみ。
+  - 第 II 段／R へ保留：e6-3〜e6-6、e7、P-12。上の旧引き継ぎの到着待ち記述は本 e8 完了記録で更新する。未完の統合作業・供給依頼なし。工程完了により停止。
 
 ## P-6 三段目
 

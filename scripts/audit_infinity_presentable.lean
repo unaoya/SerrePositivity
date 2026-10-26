@@ -1016,3 +1016,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite
 #check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_finite
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible
+#print axioms SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible
+
+universe u
+
+-- 一般版を代入した presentable 引き戻しには比較の追加入力を残さない。
+open CategoryTheory Limits SSet SerrePositivity.InfinityCategories in
+example {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
+    (p : E ⟶ B) (q : D ⟶ B)
+    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
+    (hE : F2.Presentable.IsPresentable E) (hD : F2.Presentable.IsPresentable D)
+    (hB : F2.Presentable.IsPresentable B)
+    (hpc : F2.Presentable.PreservesSmallColimits p)
+    (hqc : F2.Presentable.PreservesSmallColimits q) :
+    letI := hp.innerFibration
+    F2.Presentable.IsPresentable (pullback p q) :=
+  F2.Presentable.pullback_isPresentable_of_accessiblePullback
+    F2.Presentable.AccessiblePullback.pullback_isAccessible p q hp hE hD hB hpc hqc
