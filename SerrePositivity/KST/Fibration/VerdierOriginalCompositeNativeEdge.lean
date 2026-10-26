@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.VerdierNativeCompositeEdge
+public import SerrePositivity.KST.Fibration.VerdierOriginalNativeHomFamily
 public import SerrePositivity.KST.Fibration.StableCoreSingleKanHom
 
 /-!
@@ -19,10 +19,8 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
-set_option maxHeartbeats 800000 in
--- 対象輸送・元の全 Hom 頂点・core Kan 座標の三つの照合を同じ実データに束ねる。
 /-- 概要：元の安定比較の同じ実辺を指定両端の core Kan 可逆辺へ送る。
-方針：対象等号だけの輸送と元の豊穣作用を連続して適用する。
+方針：元の全 path 比較を同じ対象輸送へ送り、合成端の成分を回収する。
 規約：元の比較辺を保持し、一般の輸送 API は公開しない。
 使われ方：指定 Verdier の二実合成を結ぶ大きい宇宙の比較の元データ。 -/
 def verdierOriginalCompositeCoreEdgeData (d : VerdierDiagram.{u}) (j k : Fin 2) :
@@ -34,42 +32,24 @@ def verdierOriginalCompositeCoreEdgeData (d : VerdierDiagram.{u}) (j k : Fin 2) 
       (SimplicialCategory.homEquiv' _ _
         (stableCoreSingleKanMap (verdierNullCompositeOriginalMap d k))) //
       IsInvertibleEdge e.toTruncated} := by
-  let transport {A B A' B' : StableCategory.{u}}
-      (hA : A = A') (hB : B = B') (F G : ExactMap A B)
-      (e : (SimplicialCategory.sHom (C := StableQCat.{u}) A B).Edge
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B F)
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A B G))
-      (he : IsInvertibleEdge e.toTruncated) :
-      {e' : (SimplicialCategory.sHom (C := StableQCat.{u}) A' B').Edge
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A' B' (exactMapTransport hA hB F))
-        (SimplicialCategory.homEquiv' (C := StableQCat.{u}) A' B' (exactMapTransport hA hB G)) //
-        IsInvertibleEdge e'.toTruncated} := by
-    cases hA
-    cases hB
-    exact ⟨e, he⟩
-  have vertex {A B : StableQCat.{u}} (F : ExactMap A B) :
-      (stableCoreSingleKanEnrichedFunctor.map A B).app (Opposite.op ⦋0⦌)
-        (SimplicialCategory.homEquiv' A B F) =
-          SimplicialCategory.homEquiv' (stableCoreSingleKanObject A) (stableCoreSingleKanObject B)
-            (stableCoreSingleKanMap F) := by
-    exact congrArg (SSet.unitHomEquiv _) (stableCoreSingleKan_hom F)
-  let eS := verdierNullCompositeEdge d j k
-  let eS' := eS.ofEq
-    (stableHom_homEquiv'_ExactMap (verdierNullCompositeVertex d j)).symm
-    (stableHom_homEquiv'_ExactMap (verdierNullCompositeVertex d k)).symm
-  have heS : IsInvertibleEdge eS'.toTruncated :=
-    (isInvertibleEdge_congr (X := ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩ ⟶[SSet.{u}]
-      (verdierNullDiagonal d).obj ⟨ULift.up 1⟩))
-      (e := eS'.toTruncated) (f := eS.toTruncated) rfl).mpr
-      (verdierNullCompositeEdge_isInvertible d j k)
-  let p := transport (verdierNullDiagonal_source d) (verdierNullDiagonal_target d)
-    (verdierNullCompositeMap d j) (verdierNullCompositeMap d k) eS' heS
-  let e := p.val.map (stableCoreSingleKanEnrichedFunctor.map
-    (show StableQCat from d.left) (show StableQCat from d.right))
-  let e' := e.ofEq (vertex _) (vertex _)
+  let E := verdierOriginalNativeHomComparison d j k
+  let e := simplicialHomotopyVertexEdge (simplicialHomotopyOfFunctorEdge E.edge)
+    (ComposableArrows.mk₀ coherentTriangleFullPath)
+  let e' := e.ofEq (verdierOriginalNativeHomFamily_full d j)
+    (verdierOriginalNativeHomFamily_full d k)
   refine ⟨e', ?_⟩
   exact (isInvertibleEdge_congr (e := e'.toTruncated) (f := e.toTruncated) rfl).mpr
-    (p.property.map _)
+    (simplicialHomotopyOfFunctorEdge_vertex_isInvertible E.edge E.invertible _)
+
+/-- 概要：同じ全 path 比較の合成端成分は元の実合成端比較辺そのもの。
+方針：同じ元の比較の成分を回収する構成式を使う。
+規約：実一単体を保持する。
+使われ方：全長 Hom 比較と既存の合成端移送を接続する。 -/
+theorem verdierOriginalNativeHomComparison_full_edge (d : VerdierDiagram.{u}) (j k : Fin 2) :
+    (simplicialHomotopyVertexEdge
+      (simplicialHomotopyOfFunctorEdge (verdierOriginalNativeHomComparison d j k).edge)
+      (ComposableArrows.mk₀ coherentTriangleFullPath)).edge =
+        (verdierOriginalCompositeCoreEdgeData d j k).val.edge := rfl
 
 /-- 概要：元の合成完全射を両端に持つ、指定 Verdier 座標の native core 比較辺。
 方針：元の安定比較の同じ対象輸送と core S• 像を宇宙持ち上げする。

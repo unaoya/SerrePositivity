@@ -56,7 +56,7 @@
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
 - 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（669 モジュール・4498 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（670 モジュール・4498 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -285,7 +285,7 @@ def indS9ControlledTriangleFamilyRequest : Prop :=
 - VerdierNativeCompositeEdge は元の全長 Hom 比較の実合成端成分を core 制限と宇宙持ち上げへ送り、上側・下側の同じ実合成端間の可逆辺を保持する。VerdierOriginalCompositeNativeEdge は元の比較を指定 Verdier 両端へ輸送し、下側始端を実包含・実商の合成、上側終端を指定左辺・上辺の合成の元の core S• 作用へ厳密回収する。
 - 二短辺と全 native 長 Hom の HEq による二単体外延性は Ind-S へユーザー経由で供給依頼済み（archive/L3-native-triangle-ext-request.md:19）。本体へ新たな存在仮定は追加しない。
 
-- VerdierNativeLongHomShift は指定両端の長 Hom 全族と元の実合成端比較の定数族を全関手 Kan 複体で合成し、同じ合成二単体を保持する。native path 座標へ戻した同じ族は、直接 path の全パラメータを厳密保存し上側の元の実合成端を回収する。VerdierNativeCompositeFunctoriality は両合成端を元の二つの core Kan 射の厳密合成へ照合する。VerdierLowerLongHomTransport は実下側読出しを同じ指定両端へ輸送し、元の実包含・商の合成端を全入力で回収する。(9) に条件付きの同じ下側読出しから、直接端を保つ上側合成端入力まで代入済み。VerdierLowerNativeReadout は 840438555 の実読出しを代入し、上側入力の (9) 仮定を除去した。VerdierUpperLongHomTransport・VerdierReadoutUpperFamily は同じ入力を元の全 S• 上側座標へ戻し、全ホーンと各入力の全 native Hom を保持する実上側族を仮定なしで構成する。VerdierNativeDiagonalCoordinates は同じ上下座標と指定両端の全対角族を照合する。VerdierNormalizedSharedDiagonal は (9) に条件付きで、元の実下側との全関手同型と両全ホーンを保持し、正規化した上下族の全時刻対角の厳密一致を構成する。有限入力頂点での指定長 Hom と元の指定上下二胞体への照合は続行中。
+- VerdierNativeLongHomShift は指定両端の長 Hom 全族と元の実合成端比較の定数族を全関手 Kan 複体で合成し、同じ合成二単体を保持する。native path 座標へ戻した同じ族は、直接 path の全パラメータを厳密保存し上側の元の実合成端を回収する。VerdierNativeCompositeFunctoriality は両合成端を元の二つの core Kan 射の厳密合成へ照合する。VerdierLowerLongHomTransport は実下側読出しを同じ指定両端へ輸送し、元の実包含・商の合成端を全入力で回収する。(9) に条件付きの同じ下側読出しから、直接端を保つ上側合成端入力まで代入済み。VerdierLowerNativeReadout は 840438555 の実読出しを代入し、上側入力の (9) 仮定を除去した。VerdierUpperLongHomTransport・VerdierReadoutUpperFamily は同じ入力を元の全 S• 上側座標へ戻し、全ホーンと各入力の全 native Hom を保持する実上側族を仮定なしで構成する。VerdierNativeDiagonalCoordinates は同じ上下座標と指定両端の全対角族を照合する。VerdierNormalizedSharedDiagonal は (9) に条件付きで、元の実下側との全関手同型と両全ホーンを保持し、正規化した上下族の全時刻対角の厳密一致を構成する。VerdierOriginalNativeHomFamily は元の上下全 path 比較を指定両端へ送り、直接端上の恒等比較・元の合成端成分を保持する。合成端辺は同じ全族比較の成分として構成し、実一単体の回収式を接続した。有限入力頂点での指定長 Hom と元の指定上下二胞体への照合は続行中。
 
 ### K-S•-S3 の実供給と採用済み二頂点比較
 - 実供給 `dgKappaNativeCoherentBFSquare` は新 BF 四対象を持ち、旧 K とは指定整数群同型を介して四辺の π 作用が可換。`DGKappaSuppliedBFSquare` は元の全 S• 比較と旧 K-cof の群作用を消費し、`DGKappaSuppliedBFZero`・`DGKappaSuppliedBFFiberComparison`・`DGKappaSuppliedBFOneStage` は hBF の存在仮定なしで零角・同じ実 fiber 比較・非負次数 π 比較へ接続する。`DGKappaSuppliedBFConeZero`・`DGKappaSuppliedBFConnectiveStructure` は同じ cone の零性から新 BF 上の実構造辺を作る。旧四対象を固定した hBF の条件付き定理は保持する。

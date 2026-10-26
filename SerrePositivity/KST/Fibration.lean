@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierOriginalNativeHomFamily
 public import SerrePositivity.KST.Fibration.VerdierNormalizedSharedDiagonal
 public import SerrePositivity.KST.Fibration.VerdierLowerNativeReadout
 public import SerrePositivity.KST.Fibration.VerdierUpperLongHomTransport
