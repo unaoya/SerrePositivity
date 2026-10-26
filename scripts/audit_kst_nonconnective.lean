@@ -6,7 +6,18 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let env ← getEnv
+  for duplicate in #[
+      `SerrePositivity.KST.NonConnective.DGSuspensionCoherentActionInput,
+      `SerrePositivity.KST.NonConnective.DGSuspensionCoherentActionInput.ofStrict,
+      `SerrePositivity.KST.NonConnective.dgSuspensionCoherentMappedEdge] do
+    if env.contains duplicate then
+      throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoTransport,
+    `SerrePositivity.KST.NonConnective.DGSuspensionCoherentActionInput,
+    `SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageFamily,
+    `SerrePositivity.KST.NonConnective.DGSuspensionCoherentSquareFamily,
+
     `SerrePositivity.KST.NonConnective.FilteredExchangeLevelColimit,
     `SerrePositivity.KST.NonConnective.SequentialLevelColimitFunctor,
     `SerrePositivity.KST.NonConnective.SequentialFilteredExchange,
@@ -457,3 +468,15 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.sequentialFilteredCandidateInjection_pi
 #check SerrePositivity.KST.NonConnective.sequentialFilteredCandidateHoCocone
 #check SerrePositivity.KST.NonConnective.sequentialFilteredExchangeHoCoconeMap
+
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration_vertex
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iterationMappedEdge_edge
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.iteration_edgeIso
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageFamily_vertex
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageFamily_edgeIso
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageFamily_ofStrict
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.ofSquareFamily
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentSquareIterationFamily_at
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentKSquareIterationFamily_at
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentSuppliedSquareIterationFamily_at
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentSuppliedSquare_suspension
