@@ -6,6 +6,7 @@
 - C1・B（87ecf98c0）・C2 と無条件 covers（0d474aaf8）は供給済み。c2 の評価空間保存は全 native κ-filtered coherent 図式について証明する。
 - 現在の KappaCovers/StrictComparison は通常の strict 図式だけを扱う。これを κ-compact 性の全称条件へ代用しない。
 - 01845eaeb：Compact.All 10291 jobs、専用監査21葉・223宣言、両主集約12630 jobs成功。両全体監査成功：Derived 25098宣言／2865モジュール、Stable 26163／3136、許容三公理のみ。d6edccd04：30葉の集約10300 jobs・監査313宣言成功、両主集約12639 jobs、両全体監査（Derived25188／2874、Stable26253／3145）も成功。
+- 46a5b4978：両主集約12650 jobs、両全体監査成功（Derived25255宣言／2880モジュール、Stable26320／3151）。追加の宇宙・反転 π 自然性6葉は集約10322 jobs、専用監査435宣言／42葉を通過。
 - チャットの24時間基準は2026-10-25 18:07 頃のまま。期限は10-26 18:07 頃。
 
 ## 三段目
@@ -45,7 +46,7 @@
 - BridgePreservation は「橋＋同じ bar 余錐の π 条件」から全 native 評価保存への接続を対象ビルド済み。π 条件の導出は未完で、橋だけを残した ConeInput はまだ公開していない。
 - ModulePiTransport・ModulePiHomology は単体的加群の全基点 π と Moore ホモロジーの自然な比較、任意指定道の移送を供給。HomologyChartsPiData は加群ホモロジー余錐の普遍性と自然な全基点チャートから五条件を導く。ModuleHomologyCharts は同じ実単体的加群余錐への特殊化。native 評価の実脚に関するチャート自然性は未完。
 - PinchedModuleMap・StandardMooreNaturality・PinchedMooreNaturality は元の Hom 鎖写像と実 pinched Moore 比較の自然性。PinchedPiCohomology・EvaluationValueCohomology は全基点の正次数と π₀ を元の Hom／評価複体のコホモロジーへ同定（頂点比較であり脚自然性とは区別）。E2-S (8) の fcc305646 を PinchedCohomologyNaturality で代入し、切断自然性の引数は解消済み。
-- LinearUnderlyingValueComparison の dgBarCompactLinearUnderlyingValueComparison_transportIso は、同じ線形係数の射と native 基礎空間関手の実辺作用の全空間比較を供給。EdgewisePiComparison は反転した線形空間の全基点 π の比較。辺比較を全基点チャートへ送る自然性と、元の bar 余錐への代入を継続。
+- LinearUnderlyingValueComparison の dgBarCompactLinearUnderlyingValueComparison_transportIso は、同じ線形係数の射と native 基礎空間関手の実辺作用の全空間比較を供給。EdgewisePiComparison は反転した線形空間の全基点 π の比較。EdgewisePiNaturality はこの比較の自然性、UliftPiNaturality・UliftPiZeroComparison は全基点 π・π₀ の宇宙比較の自然性。元の bar 余錐への代入を継続。
 - Ind-π は実ホモトピー同値による指定道移送の反映も担当。D は同じ native bar の評価ホモロジー余極限性を、実評価空間のチャートへ接続する。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 

@@ -45,7 +45,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueNaturality,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearUnderlyingValueComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPointedSimplex,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPointedFilling,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiZeroComparison]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

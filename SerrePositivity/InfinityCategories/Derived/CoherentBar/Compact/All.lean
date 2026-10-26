@@ -35,6 +35,12 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Cos
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueNaturality
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearUnderlyingValueComparison
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPointedSimplex
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPointedFilling
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiComparison
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiZeroComparison
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。
