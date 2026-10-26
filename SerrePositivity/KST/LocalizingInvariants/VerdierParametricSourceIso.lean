@@ -37,20 +37,18 @@ lemma pullbackSourcePrefixFamily_parametric {P X : SSet.{u}} [Quasicategory X] [
     parametricPullbackDiagramFamily_ι, parametricPullbackSquares_vertex]
   rfl
 
-/-- 元の同じ左辺の全成分が分母なら、その全前段の商像は元の定値図式と同型。 -/
-def verdierParametricSourceIso
+/-- 元の実正方形の同じ左辺自身は、各成分が分母なら商後合成で可逆になる。 -/
+lemma verdierParametricSourceEdge_isInvertible
     {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
-    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
-    {P : SSet.{u}} (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
-      (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj B.obj)) (hQ : IsPullbackSquare Q)
-    (hD : squareVertex Q 0 1 = functorVertex (D ≫ constantFunctorMap P B.obj))
+    (h : IsVerdierSequence i q) {n : ℕ} {P : SSet.{u}}
+    (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
+      (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj B.obj))
     (hW : ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : P _⦋0⦌),
       (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
         weakEquivalences i) :
-    FunctorIso
-      (pullbackSourcePrefixFamily (parametricPullbackDiagramFamily Q hQ) ≫
-        (ihom (Δ[n] : SSet.{u})).map q.hom)
-      (SSet.const (functorVertex (D ≫ q.hom)) : P ⟶ _) := by
+    IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj C.obj))
+      ((squareLeftArrow Q).map ((truncation 2).map
+        ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))) := by
   let F₀ := (functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).symm (squareVertex Q 0 0)
   let F₁ := (functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).symm (squareVertex Q 0 1)
   let e : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj B.obj))
@@ -85,6 +83,41 @@ def verdierParametricSourceIso
       (f := (edgeOfSimplex
         (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge).map
           ((truncation 2).map q.hom)) rfl).mpr (h.inverts (hW k p))
+  exact (isInvertibleEdge_congr (e := eQ)
+    (f := (squareLeftArrow Q).map ((truncation 2).map
+      ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))) rfl).mp hi
+
+/-- 元の同じ左辺の全成分が分母なら、その全前段の商像は元の定値図式と同型。 -/
+def verdierParametricSourceIso
+    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+    (h : IsVerdierSequence i q) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {P : SSet.{u}} (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶
+      (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj B.obj)) (hQ : IsPullbackSquare Q)
+    (hD : squareVertex Q 0 1 = functorVertex (D ≫ constantFunctorMap P B.obj))
+    (hW : ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : P _⦋0⦌),
+      (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
+        weakEquivalences i) :
+    FunctorIso
+      (pullbackSourcePrefixFamily (parametricPullbackDiagramFamily Q hQ) ≫
+        (ihom (Δ[n] : SSet.{u})).map q.hom)
+      (SSet.const (functorVertex (D ≫ q.hom)) : P ⟶ _) := by
+  let F₀ := (functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).symm (squareVertex Q 0 0)
+  let F₁ := (functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).symm (squareVertex Q 0 1)
+  let e : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj B.obj))
+      (functorVertex F₀) (functorVertex F₁) :=
+    (SSet.Edge.ofTruncated (squareLeftArrow Q)).ofEq
+    ((functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).apply_symm_apply (squareVertex Q 0 0)).symm
+    ((functorVertexEquiv Δ[n] ((ihom P).obj B.obj)).apply_symm_apply (squareVertex Q 0 1)).symm
+  let eQ : Truncated.Edge
+      (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj C.obj)))
+      (functorVertex (F₀ ≫ (ihom P).map q.hom)) (functorVertex (F₁ ≫ (ihom P).map q.hom)) :=
+    e.toTruncated.map ((truncation 2).map
+      ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))
+  have hi : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj ((ihom P).obj C.obj)) eQ :=
+    (isInvertibleEdge_congr (e := eQ)
+      (f := (squareLeftArrow Q).map ((truncation 2).map
+        ((ihom (Δ[n] : SSet.{u})).map ((ihom P).map q.hom)))) rfl).mpr
+      (verdierParametricSourceEdge_isInvertible h Q hW)
   have := hi
   let ef : FunctorIso (F₀ ≫ (ihom P).map q.hom) (F₁ ≫ (ihom P).map q.hom) :=
     asIso (Truncated.HomotopyCategory.homMk eQ)

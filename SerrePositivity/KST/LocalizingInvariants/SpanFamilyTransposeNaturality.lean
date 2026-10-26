@@ -72,6 +72,28 @@ def spanDiagramFamilyTranspose {A L P X : SSet.{u}}
   internalHomFlipHomEquiv L P ((ihom A).obj X)
     (internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (internalHomSwapIso A P X).hom)
 
+/-- 同じ三変数の転置を二度行うと、元の全単体写像へ厳密に戻る。 -/
+lemma spanDiagramFamilyTranspose_transpose {A L P X : SSet.{u}}
+    (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
+    spanDiagramFamilyTranspose (spanDiagramFamilyTranspose Q) = Q := by
+  change internalHomFlipHomEquiv L A ((ihom P).obj X)
+    (internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) ≫
+      (internalHomSwapIso P A X).hom) = Q
+  have ht : internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) =
+      internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (internalHomSwapIso A P X).hom :=
+    (internalHomFlipHomEquiv L P ((ihom A).obj X)).symm_apply_apply _
+  rw [ht, Category.assoc, spanInternalHomSwap_swap, Category.comp_id]
+  exact (internalHomFlipHomEquiv A L ((ihom P).obj X)).symm_apply_apply Q
+
+/-- 中央の図式形状の制限も、同じ全転置と厳密に可換する。 -/
+lemma spanDiagramFamilyTranspose_pre_diagram {A L L' P X : SSet.{u}} (j : L' ⟶ L)
+    (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
+    spanDiagramFamilyTranspose (Q ≫ (pre j).app ((ihom P).obj X)) =
+      spanDiagramFamilyTranspose Q ≫ (pre j).app ((ihom A).obj X) := by
+  rw [spanDiagramFamilyTranspose, internalHomFlipHomEquiv_pre_app,
+    Category.assoc, internalHomFlipHomEquiv_pre]
+  rfl
+
 /-- 同じ全図式族の交換は、元の形状の全制限を保持する。 -/
 lemma spanDiagramFamilyTranspose_pre_shape {A A' L P X : SSet.{u}}
     (j : A' ⟶ A) (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
