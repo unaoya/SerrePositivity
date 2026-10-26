@@ -3027,4 +3027,6 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationCone
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealizedCone
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationCone
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOriginalLaxSupply
+
 /-! # ∞-S• 構成と連結 K 理論 -/

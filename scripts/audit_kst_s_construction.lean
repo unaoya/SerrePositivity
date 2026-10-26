@@ -35193,3 +35193,15 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgModuleConeShift_inr_inv
 #check @SerrePositivity.KST.SConstruction.dgModuleInverseRotationConeComparison_inr
 #print axioms SerrePositivity.KST.SConstruction.dgModuleInverseRotationConeComparison_inr
+
+-- D2 第一入力を元 corner cone の接続口へ代入。
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorSuppliedOriginalConeComparison
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorSuppliedOriginalConeComparison
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_gluing
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_gluing
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_fst
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_fst
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_snd
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_snd
