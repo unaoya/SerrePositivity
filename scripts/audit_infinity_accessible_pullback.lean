@@ -244,3 +244,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputOrdinalColimit
 
 #check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputColimitComparison
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_id
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_comp
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.stableInputPostcomp_trivialKanFibration
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.nonempty_indBaseResolution_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndBaseResolution.comparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndBaseResolution.model_hasSmallKappaFilteredColimits
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.IndBaseResolution.nonempty_inputVertexIso_of_comparison
+
+#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.exists_compactInputColimitComparison_of_isKappaAccessible_base
