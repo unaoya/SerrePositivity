@@ -132,4 +132,4 @@
 - 新 `objects` は `dgKappaSphereClosureObjects R D κ` に定義上等しい。基底は `dgKappaSphereClosureBaseFamily` の sphere-free だけ。perfect 小模型の基底を再追加せず、finite cell の retract を telescope で代表化して perfectCovers を再導出。
 - covers は旧 covers の実被覆を、新族による旧族のホモトピー被覆へ合成して移送。新族の定義は旧族に依存せず、旧族の定義・定理は不変。新族の旧族への所属で既存の κ-compact 証明を再利用する。
 - D-4b：D-S の新模型 map・edgeIso を待ち、同じ全 square_at と核角の ν 像への厳密接続を構成する。9131e7b37 の二族は任意の段提供者に適用でき、新段にも追加 Morita/P 入力なしで特殊化可能。全四角形の存在・ν 像との全単体一致は未供給。
-- 検証：新11葉の専用監査51宣言、許容三公理のみ、終端0。Derived 集約14914 jobs成功。全体監査は実行中。新規葉以外の旧基底族は無変更。
+- 検証：新11葉の専用監査51宣言、許容三公理のみ、終端0。Derived 集約14914 jobs成功。全体監査25970宣言／2962モジュール成功、許容三公理のみ、終端0（/tmp/d8e-sphere-full-audit.log）。4cd747153でコミット済み。旧基底族は無変更。
