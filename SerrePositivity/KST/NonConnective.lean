@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedIndChoiceComparison
+public import SerrePositivity.KST.NonConnective.DGSuspensionIndComparison
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedCompactComparison
+public import SerrePositivity.KST.NonConnective.DGKappaResolvedIndComparison
 public import SerrePositivity.KST.NonConnective.SequentialFilteredCandidatePi
 public import SerrePositivity.KST.NonConnective.DGSuspensionSuppliedNativeComparisons
 public import SerrePositivity.KST.NonConnective.FilteredExchangeHomotopyColimit
