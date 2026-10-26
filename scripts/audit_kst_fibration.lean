@@ -7,6 +7,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.VerdierLowerNativeReadoutEndpoints,
+    `SerrePositivity.KST.Fibration.VerdierLowerNativeReadoutCoordinates,
+    `SerrePositivity.KST.Fibration.VerdierLowerNativeReadoutHomotopy,
+    `SerrePositivity.KST.Fibration.VerdierOriginalFullSHomFamily,
     `SerrePositivity.KST.Fibration.VerdierOriginalNativeHomSquare,
     `SerrePositivity.KST.Fibration.VerdierOriginalNativeComposition,
     `SerrePositivity.KST.Fibration.VerdierOriginalNativeHomFamily,
