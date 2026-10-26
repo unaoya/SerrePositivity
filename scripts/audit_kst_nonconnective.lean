@@ -7,6 +7,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.FilteredExchangeLevelColimit,
+    `SerrePositivity.KST.NonConnective.SequentialLevelColimitFunctor,
+    `SerrePositivity.KST.NonConnective.SequentialFilteredExchange,
+    `SerrePositivity.KST.NonConnective.SequentialFilteredExchangeInjection,
+
     `SerrePositivity.KST.NonConnective.DGNonconnectiveKFibrationTail,
     `SerrePositivity.KST.NonConnective.DGKInputIndNativeFamily,
     `SerrePositivity.KST.NonConnective.DGKInputIndExtension,
@@ -439,3 +444,16 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibration_tailPiEquiv_injection
 #check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationStageMap_pi
 #check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationStageMap_nonnegative
+
+#check SerrePositivity.KST.NonConnective.FilteredExchange.levelColimitIsColimit
+#check SerrePositivity.KST.NonConnective.FilteredExchange.replacementProjection_piIsomorphism
+#check SerrePositivity.KST.NonConnective.sequentialLevelColimitFunctorIso
+#check SerrePositivity.KST.NonConnective.sequentialLevelColimitFunctor_preservesColimitsOfShape
+#check SerrePositivity.KST.NonConnective.sequentialFilteredLevelExchangeIso_injection
+#check SerrePositivity.KST.NonConnective.sequentialFilteredExchangeMap_projection
+#check SerrePositivity.KST.NonConnective.sequentialFilteredExchangeMap_levelwise
+#check SerrePositivity.KST.NonConnective.sequentialFilteredCanonicalExchangeMap_isInvertible
+#check SerrePositivity.KST.NonConnective.sequentialFilteredCandidateInjection_exchange
+#check SerrePositivity.KST.NonConnective.sequentialFilteredCandidateInjection_pi
+#check SerrePositivity.KST.NonConnective.sequentialFilteredCandidateHoCocone
+#check SerrePositivity.KST.NonConnective.sequentialFilteredExchangeHoCoconeMap

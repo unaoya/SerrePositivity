@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.NonConnective.SequentialComparison
+public import SerrePositivity.KST.NonConnective.FilteredExchangeLevelColimit
 public import Mathlib.CategoryTheory.Types.Monomorphisms
 
 /-!
@@ -21,20 +21,8 @@ namespace SerrePositivity.KST.NonConnective
 
 /-- 段ごとの逐次 Kan 余極限の構造射も単射である。 -/
 lemma sequentialKanSequence_sigma_mono (D : SpectrumSequence.{u}) (k : ℕ) :
-    Mono ((OmegaSpectrum.filteredKanSequence D).sigma k).right := by
-  let T := tensorLeft PointedSimplicialSet.circle.{u}
-  let U := PointedSimplicialSet.forget
-  let c := U.mapCocone (T.mapCocone (colimit.cocone (OmegaSpectrum.levelDiagram D k)))
-  let d := U.mapCocone (colimit.cocone (OmegaSpectrum.levelDiagram D (k + 1)))
-  let hc : IsColimit c := isColimitOfPreserves U
-    (isColimitOfPreserves T (colimit.isColimit (OmegaSpectrum.levelDiagram D k)))
-  let hd : IsColimit d := isColimitOfPreserves U
-    (colimit.isColimit (OmegaSpectrum.levelDiagram D (k + 1)))
-  let t := Functor.whiskerRight (OmegaSpectrum.structureTransformation D k) U
-  exact MorphismProperty.IsStableUnderColimitsOfShape.condition
-    (W := MorphismProperty.monomorphisms SSet.{u}) _ _ c d hc hd t
-    (fun a ↦ (D.obj a).sigma_mono k) ((OmegaSpectrum.filteredKanSequence D).sigma k).right
-    (fun a ↦ congrArg Under.Hom.right ((OmegaSpectrum.filteredKanInjection D a).comm k))
+    Mono ((OmegaSpectrum.filteredKanSequence D).sigma k).right :=
+  FilteredExchange.kanSequence_sigma_mono D k
 
 /-- 単射条件も持つ、置換前の段ごとの余極限 BF 対象。 -/
 def sequentialLevelColimitSpectrum (D : SpectrumSequence.{u}) : OmegaSpectrum.{u} :=

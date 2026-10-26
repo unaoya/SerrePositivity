@@ -20,33 +20,8 @@ namespace SerrePositivity.KST.NonConnective
 
 /-- 任意の厳密な BF 余錐へ、各段で余極限の普遍射を取った実 BF 射。 -/
 def sequentialLevelColimitDesc (D : SpectrumSequence.{u}) (s : Cocone D) :
-    sequentialLevelColimitSpectrum D ⟶ s.pt where
-  app k := colimit.desc (OmegaSpectrum.levelDiagram D k)
-    ((OmegaSpectrum.levelEvaluation k).mapCocone s)
-  comm k := by
-    apply (isColimitOfPreserves (tensorLeft PointedSimplicialSet.circle.{u})
-      (colimit.isColimit (OmegaSpectrum.levelDiagram D k))).hom_ext
-    intro a
-    change (PointedSimplicialSet.circle.{u} ◁ colimit.ι (OmegaSpectrum.levelDiagram D k) a) ≫
-      ((PointedSimplicialSet.circle.{u} ◁ colimit.desc (OmegaSpectrum.levelDiagram D k)
-        ((OmegaSpectrum.levelEvaluation k).mapCocone s)) ≫ s.pt.sigma k) =
-      (PointedSimplicialSet.circle.{u} ◁ colimit.ι (OmegaSpectrum.levelDiagram D k) a) ≫
-        ((OmegaSpectrum.filteredKanSequence D).sigma k ≫
-          colimit.desc (OmegaSpectrum.levelDiagram D (k + 1))
-            ((OmegaSpectrum.levelEvaluation (k + 1)).mapCocone s))
-    rw [← Category.assoc, ← whiskerLeft_comp, colimit.ι_desc]
-    change PointedSimplicialSet.circle.{u} ◁ (s.ι.app a).app k ≫ s.pt.sigma k = _
-    have hs : PointedSimplicialSet.circle.{u} ◁ (s.ι.app a).app k ≫ s.pt.sigma k =
-        (D.obj a).sigma k ≫ (s.ι.app a).app (k + 1) := (s.ι.app a).comm k
-    have hd := (OmegaSpectrum.filteredKanInjection D a).comm k
-    have hi : colimit.ι (OmegaSpectrum.levelDiagram D (k + 1)) a ≫
-        colimit.desc (OmegaSpectrum.levelDiagram D (k + 1))
-          ((OmegaSpectrum.levelEvaluation (k + 1)).mapCocone s) =
-            (s.ι.app a).app (k + 1) := colimit.ι_desc _ a
-    exact hs.trans (((Category.assoc _ _ _).symm.trans
-      ((congrArg (· ≫ colimit.desc (OmegaSpectrum.levelDiagram D (k + 1))
-        ((OmegaSpectrum.levelEvaluation (k + 1)).mapCocone s)) hd).trans
-          ((Category.assoc _ _ _).trans (congrArg ((D.obj a).sigma k ≫ ·) hi)))).symm)
+    sequentialLevelColimitSpectrum D ⟶ s.pt :=
+  FilteredExchange.levelColimitDesc D s
 
 
 /-- 段ごとの余錐は厳密な BF 射の通常の圏で余極限。 -/
