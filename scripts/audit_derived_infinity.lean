@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData
 import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
@@ -7452,6 +7453,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Resolution.CycleCoverComparisonLaws,
+    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapLaws,
+    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentExt,
+    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentLaws,
+    `SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData,
     `SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor,
     `SerrePositivity.DifferentialGraded.Derived.FreeProjective,
     `SerrePositivity.DifferentialGraded.Derived.RestrictionProjective,

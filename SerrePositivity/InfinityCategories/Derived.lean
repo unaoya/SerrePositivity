@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData
 public import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan

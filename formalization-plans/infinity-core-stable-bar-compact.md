@@ -68,3 +68,13 @@
 - 全四角形・懸垂成分の中間型 `DGSuspensionNativeSquareModel R s` を先行公開・報告。11297 jobs で成功、局所 import 閉包7493モジュールに循環なし。存在と Morita・P 自然性は含まず、全仕様の完成型ではない。専用 `audit_derived_suspension_native.lean` は23宣言、許容三公理のみ。
 - 注意：元の四角形は指定収縮と零化四角形の存在定理から選んだ全二胞体を含む。四辺・四頂点の一致だけでは全族の厳密一致にならない。
 - 既存の対象別 covers・通常 dg 射の条件付き恒等合成・P 選択不変性を全入力自然性の供給済みとは数えない。
+
+### D-8 e 本体：固定分解への作用（作業中）
+- 初期 cycle 被覆・固定対象増大の比較・境界 cell 付加・全段階・実余極限の順に、元の比較の恒等／合成を厳密に証明。
+- `DifferentialGraded.DGCategoryCellResolution.comparisonFunctor_identity`・`comparisonFunctor_composition` を公開。元の `comparisonFunctor` 自体の等号で、増大後／導来圏での等号に弱めていない。
+- `InfinityCategories.dgKappaSuspensionMapDataOfCone_identity`・`dgKappaSuspensionMapDataOfCone_composition` は、既存 `ofConeFunctor` の同じ分解データの厳密則。
+- `InfinityCategories.dgKappaSuspensionInputMapOfCone_identity`・`dgKappaSuspensionInputMapOfCone_composition` は同じ実平坦商の入力射の厳密則。
+- 以上の各段の公開名はユーザーへのチャットでも報告済み。通常射の則だけでは全 native Hom の作用・全四角形族を供給済みと数えない。
+- Derived 集約14639 jobs成功。新規6葉の専用 `scripts/audit_dg_cell_comparison.lean`：49宣言、許容三公理のみ。追加後の全体監査25688宣言／2936モジュール成功、許容三公理のみ、終端0。局所 import 閉包7301モジュール、循環なし。
+- 次の中心課題：同じ選択代表系へ全 native 入力の作用を構成する。元の加群延長の値が選んだ代表と導来同型であることと、同じ代表系への厳密豊穣作用の存在を混同しない。
+- `DGKappaPresentedSourceObject`／`DGKappaPresentedFreeObject` の旧試作で模型を置き換えない。固定 cone・I・P の上で作用を作り、選択された四角形全体への一致まで証明する。
