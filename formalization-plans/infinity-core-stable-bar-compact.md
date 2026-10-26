@@ -107,11 +107,13 @@
 - 対象 build 11764 jobs・Derived 集約14897 jobs成功。専用監査は3葉62宣言、許容三公理のみ、終端0。局所 import 閉包7958モジュール、循環なし。追加後の全体監査25849宣言／2947モジュール成功、許容三公理のみ、終端0（/tmp/d8e-native-p-full-audit.log）。
 - 固定閉代表族への厳密豊穣持上げの既存供給は他レーンにないとユーザー経由で確認。新しい仮定は採用していない。厳密供給路が入力の厳密同型を同じ懸垂の対象型の全単射まで保つ必要性を Lean の試作で確認（/tmp/D8eStrictIsoProbe.lean）。これは現模型での不存在の証明ではない。
 
-### 固定懸垂の緩和境界案（未採用）
+### 固定懸垂の緩和境界（B1 採用、B2 不採用）
 - 判断 (a)：上記相対 path の持ち上げは SSet 射と全比較を供給するが、固定対象上の厳密豊穣単位・合成則を生成しない。この経路での厳密則完成の見積りは出さない。不存在の主張ではない。
-- 案 B1 `DGSuspensionCoherentActionProposal`：元の map・厳密 vertex・実 data を保持し、edge 等号を端点固定 `intervalMappingSpace` 内の `VertexIso` に変更。`ofStrict` で現行入力から埋込み。
-- `DGSuspensionCoherentSquareProposal` は同じ全四角形の厳密一致を保ち、上位型の enriched・enriched_obj・enriched_map 要求を除く。edge だけの変更では厳密豊穣則の問題は残る。反復辺の等号を使う消費側は比較輸送へ変更が必要。
-- 案 B2 `DGSuspensionFunctorialComparisonProposal`：補助構成上の厳密豊穣自己関手と、元の固定源 S 内の全 native 自然な指定同値を保持。終点作用は固定懸垂 vertex と厳密一致。模型・I・P は変更しない。
-- `dgSuspensionFunctorialComparisonProposal_exists` は、補助作用と S 内の点別指定同値から、同じ点別比較を厳密回収する全比較を構成。点別 S 同値の存在は未供給。Morita／ν／K での同値では代用できず、元の実射データとの edgeIso も別途必要。
-- 新葉は独立した設計提案で、集約に未登録。KST と既存の公開契約は変更しない。ユーザー経由で K-B3 の影響評価に回す。
-- 検証：提案葉の対象 build 11299 jobs成功。専用監査66宣言、許容三公理のみ、終端0。計画117行。提案の型検査であり、B1／B2 の無条件存在の証明ではない。
+- 案 B1 `DGSuspensionCoherentActionInput`：採用条件どおり map・厳密 vertex・実 data を保持し、edge 等号を端点固定 `intervalMappingSpace` 内の `VertexIso` に変更。`ofStrict` で現行入力から埋込み。
+- `DGSuspensionCoherentSquareInput` は同じ全四角形の厳密一致を保ち、上位型の enriched・enriched_obj・enriched_map 要求を除く。edge だけの変更では厳密豊穣則の問題は残る。反復辺の等号を使う消費側は比較輸送へ変更が必要。
+- B2 はユーザー判断で不採用。旧提案葉と専用監査を採用 B1 の二葉・専用監査へ置換し、B2 API を正本へ登録しない。
+- 実体供給の順：相対同値 path による全 map → edgeIso → 同じ全 square_at → 実評価 Morita／元の P 包含の全 native 自然性。先行全族と指定相対 path の存在はなお未供給で、延長定理だけで無条件存在を主張しない。
+- ユーザー指示で採用名を Derived 集約・全体監査へ登録。map・vertex・data、全 square_at、suspension 角等号は保持し、edge だけを端点固定 VertexIso に緩和。action／square の ofStrict を保持。KST は読み取り専用。
+- 旧提案段階の検証：対象 build 11299 jobs・専用監査66宣言成功。これは B1／B2 の無条件存在の証明ではない。
+- 再開時見積り：型の公開・検証・コミットは初回ターン、実体供給は暫定1〜2日。先行全族・指定比較の構成可能性を確認して更新する。公開名・見積りはユーザーへのチャットでも報告。
+- 採用二葉の対象 build 11300 jobs成功。専用監査43宣言／2モジュール、許容三公理のみ、終端0。Derived 集約14900 jobs成功。局所 import 閉包11173モジュール、循環なし。全体監査は実行中。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
 public import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel
 public import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement
 public import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition

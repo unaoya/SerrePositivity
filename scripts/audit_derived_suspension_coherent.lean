@@ -1,11 +1,12 @@
-import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeCoherenceProposal
+import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
 import Lean
-/-! 未採用の固定懸垂作用緩和案の全宣言を監査する。 -/
+/-! 採用 B1 の作用・全四角形入力の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeCoherenceProposal]
+    `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentActionInput,
+    `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -21,10 +22,9 @@ run_cmd do
     unless counts[position]! > 0 do
       throwError "No declarations checked in {modules[position]!}"
   let total := counts.foldl (· + ·) (0 : Nat)
-  logInfo m!"D coherence proposal audit passed: {total} declarations in {modules.size} modules."
+  logInfo m!"D coherent input audit passed: {total} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionProposal
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionProposal.ofStrict
-#check SerrePositivity.InfinityCategories.DGSuspensionCoherentSquareProposal
-#check SerrePositivity.InfinityCategories.DGSuspensionFunctorialComparisonProposal
-#check SerrePositivity.InfinityCategories.dgSuspensionFunctorialComparisonProposal_exists
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.ofStrict
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentSquareInput
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentSquareInput.ofStrict
