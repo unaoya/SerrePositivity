@@ -9,6 +9,9 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Con
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationModuleNerveIso
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationSpace
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationGeneratorClosure
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeAugmentationIdentity
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCoconeCriterion
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomologyColimit
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。

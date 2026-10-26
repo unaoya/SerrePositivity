@@ -3,12 +3,13 @@
 ## 現在地と範囲
 - ユーザーの追加割り当て。工程 A の無条件の変形 retract は完了し、専用集約・監査済み。
 - 所有：Derived/CoherentBar/Compact/ の新規葉・All・専用監査。既存 CoherentBar/、D-e の KappaCovers/・KappaPerfect/、KST/・F2/ は読み取り専用。
-- c2 の仮定は、全 native な κ-filtered coherent 図式についての比較。D-e の C1 の公開型は中継待ち。
+- C1・B（87ecf98c0）・C2 と無条件 covers（0d474aaf8）は供給済み。c2 の評価空間保存は全 native κ-filtered coherent 図式について証明する。
 - 現在の KappaCovers/StrictComparison は通常の strict 図式だけを扱う。これを κ-compact 性の全称条件へ代用しない。
+- 検証済み：Compact.All 9771 jobs、専用監査 13 葉・122 宣言、許容三公理のみ。両主集約と両全体監査への登録は検証中。
 - チャットの24時間基準は2026-10-25 18:07 頃のまま。期限は10-26 18:07 頃。
 
 ## 三段目
-1. [ ] coherent 比較の公開型と宇宙を照合し、全 native κ-filtered 図式を保つ消費入口を確定。
+1. [x] C1・B・C2・covers の公開型を照合。C2 は strict 図式の余極限頂点比較であり、評価空間保存とは別。
 2. [x] representable の native Hom を Yoneda と評価へ接続。全シフトの比較を保持。
 3. [ ] coherent 比較を通じた評価交換から、F2.Compact.IsKappaCompact による representable の κ-compact 性。
 4. [/] 全シフトと κ 未満 sphere-free 基底の native κ-compact 性へ接続。
@@ -32,10 +33,13 @@
 - Compact/EvaluationModuleNerveIso：`dgBarCompactProjectiveEvaluationModuleNerveIso` は射影的模型上の同じ代表 Hom と評価の全 R 加群値関手同型。
 - Compact/NativeEvaluationSpace：`dgBarCompactProjectiveEvaluationSpaceIso` は全 native Hom 空間関手と実評価空間関手の全同型。`dgBarCompactRepresentable_iff_evaluation_preserves` が同じ代表の native κ-compact 性への必要十分条件。
 - Compact/EvaluationGeneratorClosure：`dgBarCompactClosedProjective_of_evaluation` と `dgBarCompactConeInputOfEvaluationPreservation` が実評価空間の全 native 保存を消費する。covers は後者の明示引数。
-- これらは compact 性そのものの実証拠ではない。coherent C1 の代入と評価交換は未完。
+- NativeAugmentationIdentity：`dgBarCompactNativeAugmentation_isIso` は bar 自身の native 余錐の閉増大の恒等性。
+- HomologyCoconeCriterion：`dgBarCompactHomologyCocone_isColimit_of_cokernel` は元の全脚を保持する逆向きの余核判定。
+- NativeHomologyColimit：`dgBarCompactNativeHomologyCocone_isColimit`・`dgBarCompactProjectiveHomologyCocone_isColimit` は同じ実 native bar 余錐の全整数次数の評価ホモロジー余極限性。
+- 評価ホモロジーの余極限性と、評価空間の native 余極限性を区別する。後者と representable の compact 性は未完。
 
 ## 次の一手
-- coherent C1 の公開型を待つ間、既存の native compact・Yoneda・評価の依存を読み、型に依存しない比較を進める。
+- 同じ bar 余錐の評価ホモロジー余極限性を、全評価空間の余極限性へ接続する。coherent filtered 空間の全基点 π_n による判定入口と、poset 帰着の宇宙分離版をコーディネータ経由で Ind に照会中。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 
 ## 運用
