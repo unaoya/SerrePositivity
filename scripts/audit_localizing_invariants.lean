@@ -66,6 +66,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSimplexCoconeFamilyLift,
     `SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison,
     `SerrePositivity.KST.LocalizingInvariants.VerdierFiniteCoreCoconeFamily,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierParametricTerminalRefinement,
     `SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism,
     `SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction,
