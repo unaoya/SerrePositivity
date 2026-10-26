@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.ImageComponentBasepoint
+public import SerrePositivity.KST.SConstruction.Cofinality.ImageComponentObstruction
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiscreteness
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso
 public import SerrePositivity.KST.SConstruction.Cofinality.WideInvertibleReflection
 public import SerrePositivity.KST.SConstruction.Cofinality.WideInternalFlags

@@ -39,7 +39,10 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeImageFlagEquivalence,
     `SerrePositivity.KST.SConstruction.Cofinality.WideInternalFlags,
     `SerrePositivity.KST.SConstruction.Cofinality.WideInvertibleReflection,
-    `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso]
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiscreteness,
+    `SerrePositivity.KST.SConstruction.Cofinality.ImageComponentObstruction,
+    `SerrePositivity.KST.SConstruction.Cofinality.ImageComponentBasepoint]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -106,3 +109,7 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideFlagDiagonalComparison_isWeak
 #check @SerrePositivity.KST.SConstruction.Cofinality.CompletionCoreFlagEvaluationInput
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlag_positive_subsingleton_of_input
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlag_recovery_iff_imageComponent
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideImageComponent_iff_basepoint
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlag_recovery_iff_basepoint
