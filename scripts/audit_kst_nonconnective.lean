@@ -13,6 +13,10 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaPerfectYonedaNaturality,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfectMapEquivalence,
+    `SerrePositivity.KST.NonConnective.DGKappaPerfectMapMorita,
+    `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMoritaK,
     `SerrePositivity.KST.NonConnective.DGKappaConePerfectRepleteness,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionProjectionNaturality,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionInverseDescent,
@@ -296,6 +300,12 @@ run_cmd do
   for mod in expected do
     unless modules.contains mod do throwError "K-7: required module missing: {mod}"
   logInfo m!"K-7: {count} declarations in {modules.size} modules audited; standard axioms only."
+
+#check SerrePositivity.KST.NonConnective.dgKappaPerfectYonedaNaturality
+#check SerrePositivity.KST.NonConnective.dgKappaPerfectMap_isQCatEquivalence
+#check SerrePositivity.KST.NonConnective.dgKappaPerfectExtension_isEquivalence_of_native
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalSuspensionKMap_piIsomorphism_of_morita
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalSuspensionKMap_isInvertible_of_morita
 
 #check SerrePositivity.KST.NonConnective.sequentialPiCoconeIsColimit
 #check SerrePositivity.KST.NonConnective.sequentialPiUnderlyingIsColimit

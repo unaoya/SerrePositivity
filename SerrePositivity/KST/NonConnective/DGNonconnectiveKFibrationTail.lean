@@ -1,11 +1,11 @@
 module
 public import SerrePositivity.KST.NonConnective.DGNonconnectiveKConnectiveComparison
-public import SerrePositivity.KST.Fibration.Relative.ConnectiveFibrationTheorem
+public import SerrePositivity.KST.Fibration.Relative.ConnectiveFibration
 
 /-!
 概要：K-6 の同じ実 BF fiber 比較を、各実懸垂段と非連結 K の全整数末尾表示へ渡す。
-方針：k6FibrationOfC5 の d を元の全反復へ代入し、固定 K の復号比較と実余錐の脚で移す。
-規約：hc5 は明示入力。元の BF 商射と fiber を保持し、非連結化後の Verdier fiber 性は別工程。
+方針：無条件 k6Fibration の d を元の全反復へ代入し、固定 K の復号比較と実余錐の脚で移す。
+規約：hc5 の追加入力なし。元の BF 商射と fiber を保持し、非連結化後の Verdier fiber 性は別工程。
 使われ方：K-7 e の連結版 fibration 入力の消費。全入力作用や Sp 安定性は要求しない。
 -/
 @[expose] public section
@@ -22,22 +22,14 @@ local instance ncKFibrationCategory : SimplicialCategory OmegaSpectrum.{w} :=
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hc5 : ∀ n m : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
-    (relativeFirstRowSimplexQuotient
-      (dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
-        (dgSuspensionIterationStage R
-          (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).projection m)))
 
-include hc5
-
-/-- 各段の同じ I と c5 一つから得た、元の実 fiber・商射・非負次数比較。 -/
+/-- 各段の同じ I から得た、元の実 fiber・商射・非負次数比較。 -/
 theorem dgNonconnectiveKFibrationConclusions (n : ℕ) :
     Relative.K6FibrationConclusions R (dgSuspensionUnconditionalIteration R κ hκ A n)
       (dgSuspensionIterationStage R
         (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone :=
-  Relative.k6FibrationOfC5 R _ _ (hc5 n)
+  Relative.k6Fibration R _ _
 
-omit hc5 in
 /-- 元の実 BF 極限錐の頂点そのものを復号した、各段の同じ実 fiber 対象。 -/
 def dgNonconnectiveKFibrationFiber (n : ℕ) : OmegaSpectrum.{max (u + 1) v} :=
   coherentNerveObject (dgKappaSuppliedBFKLimitCone R
@@ -55,7 +47,7 @@ theorem dgNonconnectiveKFibration_quotientEdge (n : ℕ) :
         (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone 1).hom).edge :=
-  (dgNonconnectiveKFibrationConclusions R κ hκ A hc5 n).quotient_edge
+  (dgNonconnectiveKFibrationConclusions R κ hκ A n).quotient_edge
 
 /-- 同じ固定 K の復号比較を通る、K-6 d の元の実 fiber 比較の非負次数同型。 -/
 def dgNonconnectiveKFibrationStagePiEquiv (n : ℕ) (k : ℤ) (hk : 0 ≤ k) :
@@ -70,9 +62,8 @@ def dgNonconnectiveKFibrationStagePiEquiv (n : ℕ) (k : ℤ) (hk : 0 ≤ k) :
       (dgSuspensionIterationStage R
         (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).toTruncated) k
   exact e₁.trans (MulEquiv.ofBijective b
-    ((dgNonconnectiveKFibrationConclusions R κ hκ A hc5 n).fiber_nonnegative k hk))
+    ((dgNonconnectiveKFibrationConclusions R κ hκ A n).fiber_nonnegative k hk))
 
-omit hc5 in
 /-- 元の固定 K と同じ実 fiber の復号 BF 対象の間で、K-6 d の実辺を表す BF 射。 -/
 def dgNonconnectiveKFibrationStageMap (n : ℕ) :
     dgNonconnectiveKSuspensionK R κ hκ A n ⟶ dgNonconnectiveKFibrationFiber R κ hκ A n :=
@@ -86,27 +77,27 @@ def dgNonconnectiveKFibrationStageMap (n : ℕ) :
 /-- 段別群同型の順方向は、元の K-6 d の辺を表す同じ BF 射の π 作用そのもの。 -/
 theorem dgNonconnectiveKFibrationStageMap_pi (n : ℕ) (k : ℤ) (hk : 0 ≤ k) :
     OmegaSpectrum.homotopyMap (dgNonconnectiveKFibrationStageMap R κ hκ A n) k =
-      (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A hc5 n k hk).toMonoidHom := by
+      (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A n k hk).toMonoidHom := by
   rw [dgNonconnectiveKFibrationStageMap, OmegaSpectrum.homotopyMap_comp]
   rfl
 
-/-- 同じ実 fiber 比較を表す BF 射は c5 のみの下で非負次数 π 同型。 -/
+/-- 同じ実 fiber 比較を表す BF 射は非負次数 π 同型。 -/
 theorem dgNonconnectiveKFibrationStageMap_nonnegative (n : ℕ) (k : ℤ) (hk : 0 ≤ k) :
     Function.Bijective (OmegaSpectrum.homotopyMap
       (dgNonconnectiveKFibrationStageMap R κ hκ A n) k) := by
-  rw [dgNonconnectiveKFibrationStageMap_pi R κ hκ A hc5 n k hk]
-  exact (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A hc5 n k hk).bijective
+  rw [dgNonconnectiveKFibrationStageMap_pi R κ hκ A n k hk]
+  exact (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A n k hk).bijective
 
 /-- 概要：同じ非連結 K の整数 π を、十分後の同じ実 BF fiber の移動次数 π で表す。
 方針：元の実余錐の末尾比較・固定 K の復号同型・K-6 d の同じ比較射を順に合成する。
-規約：hc5 に条件付き。fiber の遷移射やその逐次余極限性を新たに仮定・結論しない。
+規約：c5 の追加入力なし。fiber の遷移射やその逐次余極限性を新たに仮定・結論しない。
 使われ方：e の非連結化後の fiber 比較へ渡す、元の実 fibration の末尾座標。
 -/
 def dgNonconnectiveKFibration_tailPiEquiv (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n) :
     OmegaSpectrum.homotopyGroup (dgNonconnectiveK R κ hκ A) j ≃*
       OmegaSpectrum.homotopyGroup (dgNonconnectiveKFibrationFiber R κ hκ A n) (j + n) :=
-  (dgNonconnectiveK_tailPiEquiv R κ hκ A hc5 j n hn).symm.trans
-    (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A hc5 n (j + n) (by
+  (dgNonconnectiveK_tailPiEquiv R κ hκ A j n hn).symm.trans
+    (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A n (j + n) (by
       have hb := Int.self_le_toNat (-j)
       omega))
 
@@ -114,17 +105,17 @@ def dgNonconnectiveKFibration_tailPiEquiv (j : ℤ) (n : ℕ) (hn : (-j).toNat �
 theorem dgNonconnectiveKFibration_tailPiEquiv_injection
     (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n) (hj : 0 ≤ j + (n : ℤ))
     (x : OmegaSpectrum.homotopyGroup (dgNonconnectiveKStage R κ hκ A n) j) :
-    dgNonconnectiveKFibration_tailPiEquiv R κ hκ A hc5 j n hn
+    dgNonconnectiveKFibration_tailPiEquiv R κ hκ A j n hn
         (OmegaSpectrum.homotopyMap (dgNonconnectiveKInjection R κ hκ A n) j x) =
-      dgNonconnectiveKFibrationStagePiEquiv R κ hκ A hc5 n (j + n) hj
+      dgNonconnectiveKFibrationStagePiEquiv R κ hκ A n (j + n) hj
         (dgNonconnectiveKStage_piEquiv R κ hκ A n j x) := by
   have hx : OmegaSpectrum.homotopyMap (dgNonconnectiveKInjection R κ hκ A n) j x =
-      dgNonconnectiveK_tailPiEquiv R κ hκ A hc5 j n hn
+      dgNonconnectiveK_tailPiEquiv R κ hκ A j n hn
         (dgNonconnectiveKStage_piEquiv R κ hκ A n j x) := by
     simp only [dgNonconnectiveK_tailPiEquiv, MulEquiv.trans_apply,
       MulEquiv.symm_apply_apply, MulEquiv.ofBijective_apply]
   rw [hx]
-  exact congrArg (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A hc5 n (j + n) hj)
-    ((dgNonconnectiveK_tailPiEquiv R κ hκ A hc5 j n hn).symm_apply_apply _)
+  exact congrArg (dgNonconnectiveKFibrationStagePiEquiv R κ hκ A n (j + n) hj)
+    ((dgNonconnectiveK_tailPiEquiv R κ hκ A j n hn).symm_apply_apply _)
 
 end SerrePositivity.KST.NonConnective

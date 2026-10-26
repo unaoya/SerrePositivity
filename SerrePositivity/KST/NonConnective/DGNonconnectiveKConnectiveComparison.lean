@@ -1,12 +1,12 @@
 module
 public import SerrePositivity.KST.NonConnective.DGNonconnectiveK
-public import SerrePositivity.KST.Fibration.Relative.CanonicalSuspensionInput
+public import SerrePositivity.KST.Fibration.Relative.ConnectiveFibration
 public import SerrePositivity.KST.Fibration.Relative.CanonicalComparison
 
 /-!
 概要：到着した K-6 d の構造射判定を同じ非連結 K の実逐次列へ代入する。
-方針：同じ実構造射との厳密等号を回収し、c5 だけから隣接安定化・連結比較を得る。
-規約：c5 は明示入力。K-7 c4 の全入力作用や Sp 安定性は結論しない。
+方針：同じ実構造射との厳密等号を回収し、無条件 K-6 から隣接安定化・連結比較を得る。
+規約：c5 の追加入力なし。K-7 c4 の全入力作用や Sp 安定性は結論しない。
 使われ方：c5・d3 の同じ実余錐の零段比較と全整数末尾表示。
 -/
 @[expose] public section
@@ -24,14 +24,7 @@ local instance ncKConnectiveSpectrumCategory : SimplicialCategory OmegaSpectrum.
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hrow : ∀ n m : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
-    (relativeFirstRowSimplexQuotient
-      (dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
-        (dgSuspensionIterationStage R
-          (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).projection m)))
-include hrow
 
-omit hrow in
 /-- 元の実構造辺の全一単体は、K-B の canonical 構造射の全一単体そのもの。 -/
 theorem dgNonconnectiveKStructureEdge_canonical (n : ℕ) :
     (dgNonconnectiveKStructureEdge R κ hκ A n).edge =
@@ -43,13 +36,17 @@ theorem dgNonconnectiveKStructureEdge_canonical (n : ℕ) :
   rw [Relative.dgKappaCanonicalSuspensionStructureMap_eq R _ _ dgKThomasonCofinality]
   exact (dgKappaNativeStructureMap_edge R _ _ _).symm
 
-/-- 同じ実反復の相対比較は、K-B の無条件 c4 と明示 c5 から得られる。 -/
+/-- 同じ実反復の相対比較は、K-B の無条件 c4・c5 から得られる。 -/
 def dgNonconnectiveKCanonicalRelativeComparison (n : ℕ) :
     Relative.SingleRelativeComparison
       (dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone) :=
-  Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices _ (hrow n)
+  Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices _
+    (VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso
+      (dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
+        (dgSuspensionIterationStage R
+          (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).toVerdierSequence)
 
 /-- 元の同じ実隣接射は移動後非負範囲で π 同型。 -/
 theorem dgNonconnectiveKTransition_nonnegative (n : ℕ) (j : ℤ) (hj : 0 ≤ j + n) :
@@ -60,24 +57,24 @@ theorem dgNonconnectiveKTransition_nonnegative (n : ℕ) (j : ℤ) (hj : 0 ≤ j
   apply (dgSuspensionNativeSequenceMap_bijective_iff_structure R
     (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A _ n j).mpr
   rw [SpectrumHo.piMap_edge]
-  exact Relative.dgKappaCanonicalSuspensionStructureMap_nonnegative R
+  exact Relative.k6SuspensionStructureMap_nonnegative R
     (dgSuspensionUnconditionalIteration R κ hκ A n)
     (dgSuspensionIterationStage R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone
-    (dgSuspensionUnconditionalIteration_zeroInput R κ hκ A n) (hrow n) (j + n) hj
+    (dgSuspensionUnconditionalIteration_zeroInput R κ hκ A n) (j + n) hj
 
-/-- 同じ元の固定 K から非連結 K への比較は c5 のみに条件付きで非負次数 π 同型。 -/
+/-- 同じ元の固定 K から非連結 K への比較は非負次数 π 同型。 -/
 theorem dgNonconnectiveKConnectiveComparison_nonnegative (j : ℤ) (hj : 0 ≤ j) :
     Function.Bijective (OmegaSpectrum.homotopyMap
       (dgNonconnectiveKConnectiveComparison R κ hκ A) j) :=
   dgSuspensionThomasonConnectedComparison_nonnegative R κ hκ A
-    (dgNonconnectiveKCanonicalRelativeComparison R κ hκ A hrow) j hj
+    (dgNonconnectiveKCanonicalRelativeComparison R κ hκ A) j hj
 
 /-- 十分後の段の元の実余錐の脚は同じ非連結 K の任意整数 π と同型。 -/
 theorem dgNonconnectiveKInjection_tail_bijective (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n) :
     Function.Bijective (OmegaSpectrum.homotopyMap (dgNonconnectiveKInjection R κ hκ A n) j) := by
   apply sequentialCandidateLeg_bijective_of_adjacent_tail
   intro m hm
-  apply dgNonconnectiveKTransition_nonnegative R κ hκ A hrow m j
+  apply dgNonconnectiveKTransition_nonnegative R κ hκ A m j
   have hb := Int.self_le_toNat (-j)
   omega
 
@@ -87,6 +84,6 @@ def dgNonconnectiveK_tailPiEquiv (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n) :
       OmegaSpectrum.homotopyGroup (dgNonconnectiveK R κ hκ A) j :=
   (dgNonconnectiveKStage_piEquiv R κ hκ A n j).symm.trans
     (MulEquiv.ofBijective (OmegaSpectrum.homotopyMap (dgNonconnectiveKInjection R κ hκ A n) j)
-      (dgNonconnectiveKInjection_tail_bijective R κ hκ A hrow j n hn))
+      (dgNonconnectiveKInjection_tail_bijective R κ hκ A j n hn))
 
 end SerrePositivity.KST.NonConnective
