@@ -196,7 +196,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TerminalHomologyExactness,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.UniversalMapColumns,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroLayerHomologyAugmentation,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroLayerNativeColumn]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroLayerNativeColumn,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ClosedEdgeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ClosedHomTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoconeHomologyLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoconeVertexRecovery,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentVertexHomologyTransportGeneral,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedCoherentAugmentation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DerivedStrictFilteredComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ExtendedCoconeHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ExtendedCoconeVertexMaps,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ExtendedHomologyRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ExtendedNativeCocone,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.NativeVertexModuleMaps,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SemifreeHomologyColimitCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.TerminalNativeLeg,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.UniversalCoconeHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroShiftIn,
+    `SerrePositivity.InfinityCategories.Derived.KappaCovers.UnconditionalCovers]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -331,3 +348,6 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgBarStrictResolutionDiagramIso
 #check SerrePositivity.InfinityCategories.dgBarZeroLayerInclusion_homology
 #check SerrePositivity.InfinityCategories.dgBarZeroLayerInclusion_nativeColumn
+
+#check SerrePositivity.InfinityCategories.dgKappaStrictFilteredColimitComparison_unconditional
+#check SerrePositivity.InfinityCategories.dgKappaCone_covers_unconditional

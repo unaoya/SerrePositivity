@@ -2,7 +2,7 @@
 
 ## 再割当：strict bar 比較 C1・C2（2026-10-25）
 
-- 現在地：C1 完了。B 到着により C2 続行中。元の coherent G のホモロジー図式と実 bar の
+- 現在地：C1・C2 完了。元の coherent G のホモロジー図式と実 bar の
   単体次元フィルトレーション、実部分複体の段階模型とその余極限性まで構成。
   一次成分の閉性、高次 HA の二段下降、零段階での theta 消滅も構成。
   通常のホモロジー図式の増大 simplicial bar と、実 bar への頂点の閉零射を公開。
@@ -51,11 +51,17 @@
   bar から射影的頂点への擬同型による、半自由 native 余極限頂点の指定も構成。
   正本の strict 導来図式との全関手同型、零次元層の実 dg 包含、
   C1 増大への同定、native 零次元列との一致まで検証。
-- 残り：指定増大射の零次元係数からホモロジー余核比較への接続、
-  その擬同型性、比較値と covers の無条件系。
+- 指定増大射の零次元係数からホモロジー余核比較へ接続済み。
+  `dgBarCoconeUniversal_quasiIso_of_homologyColimit` と
+  `dgSemifreeCoherent_vertexComparison_of_homologyColimit` を構成。
+  終頂点付加図式のホモロジー余錐の比較も接続済み。
+  `dgKappaStrictFilteredColimitComparison_unconditional` は正則 κ のみを入力とする
+  `DGKappaStrictFilteredColimitComparison R D κ` の無条件値。
+  `dgKappaCone_covers_unconditional` は比較引数を持たず、正則非可算 κ の
+  全 κ-compact 頂点を同じ実代表系で被覆する。
   非有界複体なので、有限 support の最大単体次元を下げる証明で収束を扱う。
   高次 HA 項を零とはせず、単体次元を二つ以上下げる項として扱う。
-  工程 B の余錐と普遍性の代入は C2（B 到着後）。
+  工程 B の余錐と普遍性は射影的 bar を介して半自由模型へ接続済み。
 - C1 最終公開名：`dgCoherentBarHomologyColimitIso`、
   `dgCoherentBarStrictColimitAugmentation_quasiIso`、
   `dgKappaCoherentBarHomologyColimitIso`、
@@ -70,10 +76,10 @@
   任意の小さい直和は既存 moduleCoproduct_homotopicallyProjective を再利用。
   実導来 bar 余錐の全単体の接続と C1 の頂点同型、消費側の還元は構成済み。
   次元上限つき直和の分裂射影、包含に沿う MC 制限も構成済み。
-  C2 の無条件値や covers の無条件系はまだ公開していない。
+  C2 の無条件値と covers の無条件系まで集約ビルド済み。
 - 保存：9fe01e67a に検証済み22葉を限定保存。その後、実 augmentation と
   自己 Hom の MC 微分公式を仕上げ、集約3,717 jobs成功。
-- 検証：coherent 入力への修正後、集約9,939 jobs・専用監査192葉1677宣言通過。
+- 検証：coherent 入力への修正後、集約9,981 jobs・専用監査209葉1799宣言通過。
   許容三公理のみ。coherent 主定理と strict 標準射の C1 を完了。
 - coherent 版の実装：各評価・各次数のホモロジー図式、実正規化 theta の
   単体次元による Hom 支持、内部微分による支持保存、theta による一段下降、
