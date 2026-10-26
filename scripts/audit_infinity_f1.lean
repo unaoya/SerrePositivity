@@ -9865,3 +9865,47 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) label coordinates: no declarations audited"
   logInfo m!"Ind-S triangle-label path-coordinate audit passed: {count} declarations."
+
+-- Ind-S (9)：二切断座標・対角を保つ Kan 延長・全次数の長 Hom 置換。
+-- これらは構成部品。単射 encoder と主仕様の完了は主張しない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelPathComposition },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleDiagonalKanExtension },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleTwoCutCoordinates },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedLongHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedDirectHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelHomReplacement },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNestedSecondHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaseline },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) separated coordinates: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelPathComposition,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleDiagonalKanExtension,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleTwoCutCoordinates,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedLongHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedDirectHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelHomReplacement,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNestedSecondHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaseline]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) separated coordinates: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) separated coordinates: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) separated coordinates: no declarations audited"
+  logInfo m!"Ind-S separated triangle coordinates audit passed: {count} declarations."

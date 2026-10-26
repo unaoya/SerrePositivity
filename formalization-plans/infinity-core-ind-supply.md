@@ -262,9 +262,7 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
 射として normalize = longHom ≫ encode。既存の切断式から冪等性と読出し保存を得る。
 元の t と normalize(t) の比較は同じ固定ホーン空間 T 内の可逆比較として別に保持する。
 元の全 t の長辺との厳密等号は主張しない。ユーザー採用により承認待ちなく実施を続行。
-追加2葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。
-残件は旧 (9) の厳密切断・各 k の full native Hom 回収、正規化後の全対角式と可逆比較。
-
+追加2葉23宣言の公理・禁止依存・ModelCategory 監査と F1 全監査が通過。残件は旧 (9) の厳密切断・各 k の full native Hom 回収、正規化後の全対角式と可逆比較。
 
 ## (9) 採用後の構成補助・現在地
 
@@ -296,3 +294,7 @@ R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core 
 次の三段目：三対象ラベルの二切断座標 → 対角上の全区間を保つ Kan 延長 →
 二短辺・native Hom・標準全対角を保つ全次数の encoder → 単射性 → 厳密左逆。
 単なる可縮性から encode の単射性や厳密切断は結論しない。
+
+追加8葉62宣言・F1全監査通過：TriangleDiagonalKanExtension、TriangleTwoCutCoordinates、
+TriangleSeparatedLongHom / DirectHom、TriangleLabelHomReplacement、TriangleLabelBaseline 等。
+全対角の Hom 座標の厳密回収まで。全次数の encoder への接続・単射性・厳密左逆は未完了。
