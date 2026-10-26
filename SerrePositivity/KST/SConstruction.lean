@@ -2895,4 +2895,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxComparisonRequest
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityValueEquivalences
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityConeValueComparison
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityLaxBaseChange
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityLaxCompletedComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
