@@ -6,7 +6,7 @@
 
 ## 引き継ぎ（2026-10-26）
 
-### 再開工程：K-S• 全比較（進行中）
+### 再開工程：K-S• 全比較（三入力公開・集約・公理監査済み）
 - 採用（2026-10-26、ユーザー指示）：元終域向け Hom 比較を D2 内で直接構成する。F2 への依頼は行わない。一般の充満忠実基底変更 API の存在を前提にしない。途中で一般命題自体を証明した場合だけ `F2/CatInfinity/` の新規葉へ置き、登録は D2 集約のみとする（F2 集約への登録は R 候補）。
 - 供給順：実 lax Hom 比較の逆射・往復則 → 恒等二脚の特殊化 → 対角 `FunctorIso`・全 cone 比較。各段の検証済み公開名をユーザー経由で報告する。K-S• は D の射影性を消費して d④ ① を完了し、全 lax 比較待ち。
 - 読み取り専用の消費型：`DGOdotMilnorOriginalLaxComparisonInput`、`DGOdotMilnorIdentityLaxComparisonInput`、`DGOdotMilnorOriginalLaxConeComparisonInput`（`.withCone`）。入力型の変更なし。
@@ -47,7 +47,12 @@
 - `identityConeComparisonCriterion` に、元対角の指定収縮・右軸の二つの全比較・完全性を代入し、**`dgGluingIdentityNativeConeComparison`** を構成。固定 ν の全自然性と元全像評価へ運び、**`dgGluingIdentityInputConeIso R d`** を構成した。heartbeat 上限の増加なし。
 - **第2入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingIdentityLaxComparisonInput R d : DGOdotMilnorIdentityLaxComparisonInput R d`（`IdentityLaxComparisonInput`）。gluing・difference・diagonal・cone の全4欄を実例化し、単体ビルド後にチャット報告済み。第1入力は `ca32426eb`、恒等対角段階は `0f3f03600`。
 - 集約ビルド（13,408 jobs）・公理監査（1,077モジュール、11,314宣言）通過。第2入力の供給を保存した。
-- 残る第3入力：元二脚から同じ corner の恒等 Hom gluing への dg 関手を、左右 Hom と第三 primitive を全次数で保持して構成する。元 augmentation 全族・元 cone 関手との厳密整合を確認し、上記恒等全 cone 比較、`laxCospanIsoCofiberComparison`、指定 corner Yoneda 評価を合成して `.withCone` に代入する。型を変更せず、三入力全体が揃うまで目標は継続する。
+- 第3入力の採用工程（下記で完成）：元二脚から同じ corner の恒等 Hom gluing への dg 関手を、左右 Hom と第三 primitive を全次数で保持して構成する。元 augmentation 全族・元 cone 関手との厳密整合を確認し、上記恒等全 cone 比較、`laxCospanIsoCofiberComparison`、指定 corner Yoneda 評価を合成して `.withCone` に代入する。
+
+- 追加6葉：`dgGluingHomTargetToIdentity` は元二脚の左右 Hom と第三 primitive を保持する実 dg 関手。`_left`・`_right`・`_comma`、全 augmentation の `_prism`・`_homotopy`・`_arrow` と元実 cone の `_cone` を厳密に検証した。
+- **`dgGluingHomTargetNativeConeComparison`** は一般の元共通終域において、元 lax 比較後の選択 cofiber 差と元実 Perf cone 関手を全 `FunctorIso` で比較する。検証済み恒等比較への前合成を使い、元 corner の指定評価と cospan 全自然性へ接続した。
+- **第3入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingOriginalLaxConeComparisonInput R d : DGOdotMilnorOriginalLaxConeComparisonInput R d`（`OriginalInputConeComparison`）。`dgGluingOriginalInputConeIso R d` を第1入力の `.withCone` に代入。単体ビルド（13,241 jobs）後、チャットでユーザーへ代入名を報告済み。
+- 第1入力 `dgGluingOriginalLaxComparisonInput`、第2入力 `dgGluingIdentityLaxComparisonInput`（`88112f27c`）、第3入力の実例がすべて揃った。新規6葉は D2 集約・監査へ登録。集約ビルド（13,414 jobs）・公理監査（1,083モジュール、11,504宣言）・集約経由の三入力型照合がすべて通過。今回の三入力供給目標は完了。K-S• の消費実装は同レーン所有。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。

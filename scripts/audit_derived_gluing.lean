@@ -1081,7 +1081,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.NativePerfectYonedaEquivalence,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityNativeConeComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputConeComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxComparisonInput]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityLaxComparisonInput,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityFunctor,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityCone,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNativeConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OriginalInputConeComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
