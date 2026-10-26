@@ -6,6 +6,11 @@ public import SerrePositivity.KST.Fibration.Relative.CanonicalSuspensionInput
 方針：同じ native 実列の d と、実共終性を代入済みの e を一つの結論へ束ねる。
 規約：K(C)→K(C/D) は同じ実供給 BF 右辺。旧固定右辺への輸送は含めない。
 使われ方：Sp の依頼どおりの c5 を一回代入して、同じ実比較と実構造射を得る。
+
+BF 中央対象は `dgKappaNativeBFFiniteOmegaSpectrum R D I
+  (dgKappaNativeBFFiniteNativeObject R D I 1)`、商対象は同じ式の添字 3。
+商射は `(dgKappaNativeCoherentBFArrow R D I 1).hom`。
+結論の `quotient_edge` が、この商射と指定 Sp fiber の実右辺を照合する。
 -/
 @[expose] public section
 noncomputable section
@@ -43,11 +48,29 @@ theorem k6Fibration_fiberTarget :
   rw [sliceSquareDiagramMap_vertex] at h
   exact h.symm
 
+/-- 概要：主定理の Sp fiber の右辺は指定した同じ BF 商射である。
+方針：実 fiber の右辺回収と、元の全 BF 四角形の境界回収を合成する。
+規約：頂点同型や群作用から射の比較を推論しない。
+使われ方：K-B3 が L10 の同じ実 BF 右辺と照合する。 -/
+theorem k6Fibration_quotientEdge :
+    squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
+      SSet.yonedaEquiv.symm
+        (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge := by
+  calc
+    _ = squareRightEdge ≫ dgKappaNativeCoherentBFSquare R D I := by
+      rw [(dgKappaSuppliedBFCanonicalFiberSquare R D I).right_edge, squareRightArrow_edge]
+      exact SSet.yonedaEquiv.symm_apply_apply _
+    _ = _ := dgKappaNativeCoherentBFSquare_boundary R D I 1
+
 /-- 概要：元の固定 K(D) の実 fiber 比較と、BGT 入力となる同じ実構造射の結論。
 方針：d の非負次数 π 同型、完備化比較、e の元の隣接射を記録する。
 規約：新しい存在仮定を加えず、全入力自然性・非連結局所化性は含めない。
 使われ方：K-B3 が一回の c5 代入結果から各結論を射影する。 -/
 structure K6FibrationConclusions : Prop where
+  fiber_target : (dgKappaSuppliedBFKLimitCone R D I).vertex =
+    (dgKappaSuppliedBFCanonicalFiberSquare R D I).fiber
+  quotient_edge : squareRightEdge ≫ (dgKappaSuppliedBFCanonicalFiberSquare R D I).square =
+    SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 1).hom).edge
   fiber_nonnegative : ∀ j : ℤ, 0 ≤ j →
     Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
       (dgKappaCanonicalFixedSourceFiberComparison R D I).toTruncated) j)
@@ -75,6 +98,8 @@ theorem k6FibrationOfC5 :
   dsimp only
   intro hc5
   exact {
+    fiber_target := k6Fibration_fiberTarget R D I
+    quotient_edge := k6Fibration_quotientEdge R D I
     fiber_nonnegative := dgKappaCanonicalFixedSourceFiberComparison_nonnegative R D I hc5
     completion_positive := dgKappaCanonicalCompletion_positive R D I
     completion_zero_injective := dgKappaCanonicalCompletion_zero_injective R D I

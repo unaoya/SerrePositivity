@@ -14,7 +14,7 @@
 - K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
 - 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → 条件付きで組み立てた b・d と e の構造射入力の放電。K-7 の同じ条件付き実反復は K-B3 が所有する。
 - 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。Sp 有限線型図式比較の依頼は、ユーザーが循環のない閉包を確認して中継済み。下記の正確な型の実供給待ち。
-- K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
+- 所有外の NonConnective・ClosedStable* は編集していない。未コミットの作業は停止時に所有ファイルだけで保存する。
 - 次の一手：ここまでを保存して停止し、ユーザー経由の Sp 到着を待つ。到着後は下記と同じ型の証明を `Relative.k6FibrationOfC5 R D I` へ一回代入する。c4・共終性の追加入力はない。
 - 検証：Fibration 集約と専用公理監査を行い、結果はコミット本文へ記録する。NonConnective の検証・編集は K-B3 が担当する。
 ### c5：Sp コーディネータへの供給依頼（正確な型）
@@ -32,7 +32,7 @@
 - `dgKappaCanonicalSuspensionStructureMap_nonnegative` は同じ I・Z と c5 だけを取り、元の固定 K の実隣接構造射の非負次数 π 同型を供給する。`_eq` は K-B3 の既存 hcofinal 付き射との厳密等号で、反復の隣接射を選び直さない。全 native 自然性・逐次余極限・非連結化後の局所化性は K-B3 側。
 - b の統合：`Relative.CanonicalRealization` は c5 だけから元の商射の指定基点上の fiber 同型と、元の核包含への射影公式を供給する。S1 の実閉部分圏四角形は `closedRelativeInfinitySquare_isPullback` で無条件の native 引き戻しへ接続した。
 - d の組み立て：`Relative.CanonicalSingleStageDetection` は c5 のみから同じ実供給 BF fiber 比較の非負次数 π 全単射性と群同型を得る。`Relative.CanonicalFixedSourceFiber` は元の実核比較と指定始点同型を前置し、元の固定 K(D) 始点を持つ実比較辺と非負次数 π 同型まで接続する。
-- d の境界：上記の比較先は同じ実供給 BF 右辺の fiber。商側を旧固定 K 右辺の fiber へ移したとは主張しない。c5 は未放電。d の葉は既存 NonConnective を読み取り専用で消費する Relative.All に集約し、主 Fibration 集約へ NonConnective を逆 import しない。
+- d の境界：上記の比較先は同じ実供給 BF 右辺の fiber。ユーザー確定により旧固定 K 右辺への輸送は K-6 の範囲外。必要時は K-B3 が K-7 f で K-S• へ提起する。c5 は未放電。d の葉は既存 NonConnective を読み取り専用で消費する Relative.All に集約し、主 Fibration 集約へ NonConnective を逆 import しない。
 - b の既存界面：`Relative.All` の `finiteComparisonNatIso` は局所化圏値の単体的同型（生の SSet 実現同値を含意しない）。`singleAdditivityFiberIso` と射影公式は同じ包含・指定基点を保持し、単回版に追加収縮入力はない。`relativeRealizationInfinitySquare_isPullback` は実相対核四角形に適用し、元の指定 Verdier 四角形へ戻すには `SingleRelativeComparison` の二比較が必要。
 - S-1 (c) `69c370610` の無条件四角形・fiber 同型・元の射影公式・指定零旗の零化を `Relative.FibrationSupply` から公開し b で消費済み。同じ集約は有限座標と相対実現界面も公開する。NonConnective は import せず、既存 ClosedStable* は編集していない。
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c5 と d を継続し、K-7 d は K-B3 へ渡す。
@@ -91,10 +91,11 @@
 4. 固定 dg 界面との接続後に、完備化と BGT §9 の非連結化への実入力を確定する（8–16時間、K-7 本体は別）。
 ### K-B3 向け公開界面（共通接頭辞 SerrePositivity.KST.Fibration.Relative）
 - 一葉 import：`SerrePositivity.KST.Fibration.Relative.ConnectiveFibrationTheorem`。主 Fibration 集約の NonConnective 非依存は保持する。
+- BF 中央／商対象：`dgKappaNativeBFFiniteOmegaSpectrum R D I (dgKappaNativeBFFiniteNativeObject R D I 1)`／同添字 3。商射：`(dgKappaNativeCoherentBFArrow R D I 1).hom`。主定理の `.quotient_edge` で照合する。
 | 出力 | 公開名 | 範囲 |
 | --- | --- | --- |
-| c5 一回の入口 | `k6FibrationOfC5`・`K6FibrationConclusions` | `.fiber_nonnegative` と e の四結論を射影。c5 の Prop は依頼文どおり。 |
-| d | `dgKappaCanonicalFixedSourceFiberComparison_nonnegative`・`k6Fibration_fiberTarget` | 元の固定 K(D) から実供給 BF 右辺の Sp fiber。旧固定右辺の fiber への輸送は含めない。 |
+| c5 一回の入口 | `k6FibrationOfC5`・`K6FibrationConclusions` | `.fiber_nonnegative`・`.quotient_edge` と e の四結論を射影。c5 の Prop は依頼文どおり。 |
+| d | `dgKappaCanonicalFixedSourceFiberComparison_nonnegative`・`k6Fibration_fiberTarget` | 元の固定 K(D) から実供給 BF 右辺の Sp fiber。旧固定右辺への輸送は範囲外（ユーザー確定）。`k6Fibration_quotientEdge` が実右辺を照合。 |
 | e の隣接射 | `dgKappaCanonicalSuspensionStructureMap_nonnegative` | 同じ I・Z と c5 のみ。正次数同型・零次単射・loop 比較は実共終性で放電済み。 |
 | 既存反復との照合 | `dgKappaCanonicalSuspensionStructureMap_eq` | 任意の既存 hcofinal 証明を用いた元の構造射との厳密等号。 |
 
