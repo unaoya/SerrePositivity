@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierReadoutPathBoundary
+public import SerrePositivity.KST.Fibration.VerdierReadoutRelativeComposition
 public import SerrePositivity.KST.Fibration.VerdierReadoutBoundaryDiagram
 public import SerrePositivity.KST.Fibration.ZeroMiddleComparisonSupply
 public import SerrePositivity.KST.Fibration.ZeroMiddleSuppliedReconstruction
