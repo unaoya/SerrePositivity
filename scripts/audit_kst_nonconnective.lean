@@ -7,6 +7,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalFirstRowComparison,
     `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFirstRowSimplices,
     `SerrePositivity.KST.NonConnective.DGSuspensionSuppliedBFTailComparison,
     `SerrePositivity.KST.NonConnective.SequentialCandidateMapShiftedPi,
@@ -346,3 +347,7 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaSuppliedBFFixedStructure_nonnegative_of_kernelIso_firstRowSimplices
 #check SerrePositivity.KST.NonConnective.dgSuspensionSuppliedBFCandidate_tailPiEquiv_naturality
 #check SerrePositivity.KST.NonConnective.dgSuspensionSuppliedBFCandidate_tailPiEquiv_symm_naturality
+
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_fibration
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_connectedComparison_nonnegative
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_SOAComparison_nonnegative
