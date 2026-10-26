@@ -2884,4 +2884,9 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareTriangle
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareShortComparisons
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullRawSquareDiagramIso
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectSquareRecovery
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectBoundaryComponent
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectSquareDiagramIso
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareValue
+
 /-! # ∞-S• 構成と連結 K 理論 -/
