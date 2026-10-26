@@ -109,7 +109,17 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.ClosedRelativeExInfinityVanishing,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFiberKanSquare,
     `SerrePositivity.KST.SConstruction.Cofinality.ClosedKernelExInfinityVanishing,
-    `SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput]
+    `SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeKanFactor,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeKanProjection,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeKanInclusion,
+    `SerrePositivity.KST.SConstruction.Cofinality.SingleRealizationBoundary,
+    `SerrePositivity.KST.SConstruction.Cofinality.CoreSPointedBoundary,
+    `SerrePositivity.KST.SConstruction.Cofinality.BoundaryExInfinityTransfer,
+    `SerrePositivity.KST.SConstruction.Cofinality.BoundaryKanTransfer,
+    `SerrePositivity.KST.SConstruction.Cofinality.BoundaryKTransfer,
+    `SerrePositivity.KST.SConstruction.Cofinality.CofinalityFromInputs,
+    `SerrePositivity.KST.SConstruction.Cofinality.KanPullbackSupply]
   -- 採用済み K-B2-S1 の明示入力付き相対四角形の正確な閉包。
   let approvedRelativeClosure := #[
     `SerrePositivity.KST.Fibration.SpectrumZeroFromPositiveLevels,
@@ -360,3 +370,9 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeKanComparison_piIsomorphism_of_input
 
 #check @SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeKanInclusion_groupConditions_of_inputs
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality_of_inputs
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality_of_relativeFiber_input
