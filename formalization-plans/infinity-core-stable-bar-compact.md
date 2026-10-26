@@ -39,7 +39,10 @@
 - 評価ホモロジーの余極限性と、評価空間の native 余極限性を区別する。後者と representable の compact 性は未完。
 
 ## 次の一手
-- 設計変更提案中：一般の空間余錐判定を Ind に分離し、D は同じ native bar の評価ホモロジー余錐を接続する分担。監査・保存は完了し、規約に従って判断待ちで停止。無条件の評価空間保存・DGKappaConeInput は未供給。
+- 設計変更は採用済み。Ind-π が一般の空間余錐判定を供給し、D は正確な Prop 入力の公開・評価 π とホモロジーの比較・各条件の導出・橋だけを引数に残した ConeInput を担当する。
+- 宇宙分離版の poset 帰着は NativePreservationPosetReductionUniverse の F2.Ind.Compact.preservesKappaFilteredColimits_of_poset を使用する。
+- Ind-π の公開目標は FilteredSpaceBridgeInput の DGBarCompactFilteredSpacePiBridge（Prop）。元の F・c と実 transition・脚を使う五条件を DGBarCompactFilteredSpacePiData で与える。π は n+1、境界が指定道をたどる球面円柱で基点を移送する。正次数の全射条件は全ての指定道に対する強い形（評価空間の単体的アーベル性を使う）。型と PiTransportMap の後合成を検証・葉監査済み。
+- BridgePreservation は「橋＋同じ bar 余錐の π 条件」から全 native 評価保存への接続を対象ビルド済み。π 条件の導出は未完で、橋だけを残した ConeInput はまだ公開していない。
 - 同じ bar 余錐の評価ホモロジー余極限性を、全評価空間の余極限性へ接続する。coherent filtered 空間の全基点 π_n による判定入口と、poset 帰着の宇宙分離版をコーディネータ経由で Ind に照会中。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 
