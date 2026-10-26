@@ -27,6 +27,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCoconeLift,
     `SerrePositivity.KST.LocalizingInvariants.CoconeApexIsoNormalization,
     `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison,
     `SerrePositivity.KST.LocalizingInvariants.CochainProCone,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraProConeComparison,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraProTorCriterion,
