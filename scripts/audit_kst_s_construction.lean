@@ -34903,3 +34903,93 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeTargetComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeTargetComparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellPerfectExtensionNativeFamily
+#print axioms SerrePositivity.KST.SConstruction.dgCellPerfectExtensionNativeFamily
+
+#check @SerrePositivity.KST.SConstruction.dgCellPerfectExtensionNativeFamily_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgCellPerfectExtensionNativeFamily_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectStrictNatTrans
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectStrictNatTrans
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectStrictNatTrans_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectStrictNatTrans_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNerveArrow
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNerveArrow
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNerveArrow_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNerveArrow_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgCellGraphExtendedNativeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgCellGraphExtendedNativeFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeAction_heq
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeAction_heq
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedStrictNatTrans
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedStrictNatTrans
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNerveArrow
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNerveArrow
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNerveArrow_family_heq
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNerveArrow_family_heq
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeArrow
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeArrow
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeAugmentationSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisPerfNativeAugmentationSquare
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_complete
+#print axioms SerrePositivity.KST.SConstruction.dgSmallPerfectEnvelope_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisComparisonBase_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisComparisonBase_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisBase_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisBase_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisBase_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisBase_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTarget_pretriangulated
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTarget_pretriangulated
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTarget_complete
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTarget_complete
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTargetNativeValueEquivalence
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisTargetNativeValueEquivalence
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuNativeRoof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuNativeRoof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuNativeRoof_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuNativeRoof_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeFamily_source
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeFamily_source
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeFamily_target
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectNativeFamily_target
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison_family_heq
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison_family_heq

@@ -1,5 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
+public import SerrePositivity.KST.SConstruction.DGCellPerfectExtensionNativeFamily
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
 public import SerrePositivity.InfinityCategories.Derived.DGCellResolvedGraphProjective
@@ -66,16 +68,58 @@ lemma dgCellResolvedGraphPerfectExtension_inclusion (projection : DGFunctor R (P
   rw [strictDGFunctor_comp_assoc, perfectDGExtension_inclusion,
     ← strictDGFunctor_comp_assoc, dgCellResolvedGraphPerfectFunctor_inclusion]
 
+
+local notation "K" => dgCellResolvedGraphPerfectFunctor R B F (dgCellResolvedGraph_projective R B F)
+local notation "J" => perfectDGModuleInclusion R (P) Set.univ
+
+/-- 概要：共通比較族の前合成始端は元 graph の同じ native 延長。
+方針：元 graph の厳密包含等号を全 nerve へ写す。規約：同じ実対象を保持。
+使われ方：前合成した比較の端点正規化。 -/
+lemma dgCellResolvedGraphPerfectNativeFamily_source (projection : DGFunctor R (P) E) :
+    dgNerve.map (K) ≫ ((dgNerve.map (J) ≫ (ρ)) ≫
+      dgModuleExtensionInfinity R (P) E projection ≫ dgNerve.map (I)) =
+    ((dgNerve.map (MF) ≫ (ρ)) ≫ dgModuleExtensionInfinity R (P) E projection ≫ dgNerve.map (I)) := by
+  have hI : dgNerve.map (K) ≫ dgNerve.map (J) = dgNerve.map (MF) :=
+    (dgNerve.map_comp (K) (J)).symm.trans
+      (congrArg (fun L => dgNerve.map L) (dgCellResolvedGraphPerfectFunctor_inclusion R B F
+        (dgCellResolvedGraph_projective R B F)))
+  simpa only [Category.assoc] using congrArg
+    (fun L => (L ≫ (ρ)) ≫ dgModuleExtensionInfinity R (P) E projection ≫ dgNerve.map (I)) hI
+
+/-- 概要：共通比較族の前合成終端は保存済み実 Perf 延長の包含像。
+方針：元二つの包含等号を全 nerve の合成で照合する。
+規約：元の同じ実延長を保持。使われ方：前合成した比較の端点正規化。 -/
+lemma dgCellResolvedGraphPerfectNativeFamily_target (projection : DGFunctor R (P) E) :
+    dgNerve.map (K) ≫ dgNerve.map ((J).comp (dgModuleExtension R (P) E projection)) =
+      dgNerve.map ((((K).comp (perfectDGExtension R (P) E projection))).comp
+        (perfectDGModuleInclusion R E Set.univ)) := by
+  have hI : dgNerve.map (K) ≫ dgNerve.map (J) = dgNerve.map (MF) :=
+    (dgNerve.map_comp (K) (J)).symm.trans
+      (congrArg (fun L => dgNerve.map L) (dgCellResolvedGraphPerfectFunctor_inclusion R B F
+        (dgCellResolvedGraph_projective R B F)))
+  rw [dgCellResolvedGraphPerfectExtension_inclusion, dgNerve.map_comp, dgNerve.map_comp,
+    ← Category.assoc, hI]
+
 /-- 概要：native graph の実導来延長を同じ実 Perf 延長の包含像へ全比較する。
-方針：実加群比較の終端に元全 Hom 包含等号を代入する。
-規約：D の射影性を充足済み。使われ方：同じ resolved 商上の Perf 成分の回収。 -/
+方針：共通 Perf 比較族の前合成を元二端点へ正規化する。
+規約：D の射影性を充足済み。使われ方：元比較射に自然な同じ Perf 成分の回収。 -/
 def dgCellResolvedGraphPerfectExtendedNativeComparison (projection : DGFunctor R (P) E) :
     FunctorIso
       ((dgNerve.map (MF) ≫ (ρ)) ≫ dgModuleExtensionInfinity R (P) E projection ≫ dgNerve.map (I))
-      (dgNerve.map (((dgCellResolvedGraphPerfectFunctor R B F
-        (dgCellResolvedGraph_projective R B F)).comp (perfectDGExtension R (P) E projection)).comp
-          (perfectDGModuleInclusion R E Set.univ))) := by
-  rw [dgCellResolvedGraphPerfectExtension_inclusion]
-  exact dgCellResolvedGraphExtendedNativeComparison R B E F projection
+      (dgNerve.map (((K).comp (perfectDGExtension R (P) E projection)).comp
+          (perfectDGModuleInclusion R E Set.univ))) :=
+  F2.functorIsoOfEq
+    ((dgCellPerfectExtensionNativeFamily R B E projection).precomp (dgNerve.map (K)))
+    (dgCellResolvedGraphPerfectNativeFamily_source R B E F projection)
+    (dgCellResolvedGraphPerfectNativeFamily_target R B E F projection)
+
+/-- 概要：指定した graph 比較は共通比較族の同じ前合成そのもの。
+方針：端点正規化の型付き回収を使う。規約：比較の値を選び直さない。
+使われ方：元の任意の比較射に対する全自然性の輸送。 -/
+lemma dgCellResolvedGraphPerfectExtendedNativeComparison_family_heq
+    (projection : DGFunctor R (P) E) :
+    HEq (dgCellResolvedGraphPerfectExtendedNativeComparison R B E F projection)
+      ((dgCellPerfectExtensionNativeFamily R B E projection).precomp (dgNerve.map (K))) :=
+  F2.functorIsoOfEq_heq _ _ _
 
 end SerrePositivity.KST.SConstruction
