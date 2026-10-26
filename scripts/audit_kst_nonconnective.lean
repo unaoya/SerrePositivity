@@ -7,6 +7,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGNonconnectiveK,
+    `SerrePositivity.KST.NonConnective.DGNonconnectiveKConnectiveComparison,
+    `SerrePositivity.KST.NonConnective.DGNonconnectiveKMorita,
+    `SerrePositivity.KST.NonConnective.DGKInputCompactNativeChoiceCoherence,
+    `SerrePositivity.KST.NonConnective.DGKappaStrictQuotientComparison,
+    `SerrePositivity.KST.NonConnective.SequentialCandidatePiColimitExchange,
+    `SerrePositivity.KST.NonConnective.DGKappaNullParameterPostcomposition,
     `SerrePositivity.KST.NonConnective.DGSuspensionThomasonComparison,
     `SerrePositivity.KST.NonConnective.DGSuspensionThomasonSequence,
     `SerrePositivity.KST.NonConnective.SequentialCandidateMapThomason,
@@ -375,3 +382,31 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap
 #check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap_piIsomorphism_of_completion
 #check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap_isInvertible_of_completion
+
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveK
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_succ
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKDiagram_map_succ
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKCocone_vertex
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKCocone_isColimit
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKPiCoconeIsColimit
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKTransition_nonnegative
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKStructureEdge_canonical
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKConnectiveComparison_nonnegative
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKInjection_tail_bijective
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveK_tailPiEquiv
+#check SerrePositivity.KST.NonConnective.dgKInputStableCompactGenerationChoice
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoiceIso_refl
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoiceIso_trans
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoiceParameterIso_precomp
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoiceParameterIso_trans
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoice_generationIso_naturality
+#check SerrePositivity.KST.NonConnective.dgKInputCompactNativeChoice_yonedaIso
+#check SerrePositivity.KST.NonConnective.dgKappaStrictQuotientNuNaturality
+#check SerrePositivity.KST.NonConnective.dgKappaStrictQuotientNuDown_square
+#check SerrePositivity.KST.NonConnective.dgKappaStrictQuotientKDown_square
+#check SerrePositivity.KST.NonConnective.dgKappaStrictQuotientTargetDown_piIsomorphism
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKMap_isInvertible_of_stagewise_morita
+#check SerrePositivity.KST.NonConnective.sequentialCandidatePiColimitIso
+#check SerrePositivity.KST.NonConnective.sequentialCandidatePi_mapCoconeIsColimit_of_stages
+#check SerrePositivity.KST.NonConnective.dgKappaNullParameterPostcomposition_app
+#check SerrePositivity.KST.NonConnective.dgKappaNullParameterPostcomposition_heq

@@ -6,16 +6,16 @@
 > （抽象 Verdier 列、Sp 値局所化不変量）を読み取り専用で使う。**2026-10-25 採用の修正**：(d) は固定の厳密 dg 入力 S・ν:S→StableInfinity・連結 K:S→Sp に対し、K(D)→fib_Sp(K(C)→K(C/D)) が非負次数で π 同型となる連結版（連結スペクトラムでの引き戻し）とする。10-22 の「実 Sp fiber 四角形へ送る」は撤回。固定連結 K の Sp 引き戻し性は主張しない。既存の条件付き Sp fiber 定理は条件付きで保持する。
 > 非連結化（K-7、BGT §9）は F1b・N の Ind・冪等完備化の後に別途。
 
-## 引き継ぎ（2026-10-26、K-6 専任で再開）
+## 引き継ぎ（2026-10-26、c5 代入入口を公開して Sp 中継待ち）
 
 ### 現在の供給と残り
-- 再編前の固定 K 接続：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
+- 公開主定理：`Relative.ConnectiveFibrationTheorem` の `k6FibrationOfC5`。同じ R・D・I を固定し、依頼文そのままの c5 一つから d の非負次数比較と e の出力を `K6FibrationConclusions` に束ねる。c5 自体の実供給は未着。
 - c4 完了：S-1 (a) `5640d0942` の `nativeTriangle_ext` を `kbMovingCanonicalFiniteExtConsumer` の四有限端点へ代入した。`verdierCanonicalKernelSquareIso d` は実読出し・相対合成も実供給から選び、d のみから元の全四角形の FunctorIso を構成する。
 - K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
 - 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → 条件付きで組み立てた b・d と e の構造射入力の放電。K-7 の同じ条件付き実反復は K-B3 が所有する。
 - 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。Sp 有限線型図式比較の依頼は、ユーザーが循環のない閉包を確認して中継済み。下記の正確な型の実供給待ち。
 - K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
-- 次の一手：Sp の下記実供給を canonical 比較と d の `dgKappaCanonicalFixedSourceFiberComparison_nonnegative` へ渡す。c4 入力は不要。K-B3 は同じ native BF 比較を既存の K-7 e へ消費できる。
+- 次の一手：ここまでを保存して停止し、ユーザー経由の Sp 到着を待つ。到着後は下記と同じ型の証明を `Relative.k6FibrationOfC5 R D I` へ一回代入する。c4・共終性の追加入力はない。
 - 検証：Fibration 集約と専用公理監査を行い、結果はコミット本文へ記録する。NonConnective の検証・編集は K-B3 が担当する。
 ### c5：Sp コーディネータへの供給依頼（正確な型）
 - import：`SerrePositivity.KST.Fibration.RelativeFirstRowSimplexQuotient`。`h : VerdierSequence.{u}` に対し次を依頼する（名前は供給元が決定）。
@@ -89,6 +89,15 @@
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
 3. 証明済みの固定 K の相対零保存と元の四角形を保持し、K(D)→fib_Sp(K(C)→K(C/D)) の非負次数 π 同型へ接続する（BGT §7–8、16–32時間）。
 4. 固定 dg 界面との接続後に、完備化と BGT §9 の非連結化への実入力を確定する（8–16時間、K-7 本体は別）。
+### K-B3 向け公開界面（共通接頭辞 SerrePositivity.KST.Fibration.Relative）
+- 一葉 import：`SerrePositivity.KST.Fibration.Relative.ConnectiveFibrationTheorem`。主 Fibration 集約の NonConnective 非依存は保持する。
+| 出力 | 公開名 | 範囲 |
+| --- | --- | --- |
+| c5 一回の入口 | `k6FibrationOfC5`・`K6FibrationConclusions` | `.fiber_nonnegative` と e の四結論を射影。c5 の Prop は依頼文どおり。 |
+| d | `dgKappaCanonicalFixedSourceFiberComparison_nonnegative`・`k6Fibration_fiberTarget` | 元の固定 K(D) から実供給 BF 右辺の Sp fiber。旧固定右辺の fiber への輸送は含めない。 |
+| e の隣接射 | `dgKappaCanonicalSuspensionStructureMap_nonnegative` | 同じ I・Z と c5 のみ。正次数同型・零次単射・loop 比較は実共終性で放電済み。 |
+| 既存反復との照合 | `dgKappaCanonicalSuspensionStructureMap_eq` | 任意の既存 hcofinal 証明を用いた元の構造射との厳密等号。 |
+
 ### 主要宣言（共通接頭辞 SerrePositivity.KST.Fibration）
 - weakEquivalences、mem_weakEquivalences_iff_invertible、weakEquivalences_twoOfThree、weakEquivalences_pushout_iff、weakEquivalences_pullback_iff、weakEquivalences_extension。
 - verdierSStageKernelEquivalence_inclusion、verdierSPostcomp_fullyFaithful、verdierSPostcomp_kernel、relativeSConstruction_mem_edge_iff_cofiber_image。
