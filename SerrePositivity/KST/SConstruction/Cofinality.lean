@@ -1,4 +1,12 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstructionEquiv
+public import SerrePositivity.KST.SConstruction.Cofinality.KZeroToWideGroup
+public import SerrePositivity.KST.SConstruction.Cofinality.WideTriangleAdditivity
+public import SerrePositivity.KST.SConstruction.Cofinality.WideComponentGroup
+public import SerrePositivity.KST.SConstruction.Cofinality.WideComponentAddition
+public import SerrePositivity.KST.SConstruction.Cofinality.WideBiproductEdges
+public import SerrePositivity.KST.SConstruction.Cofinality.WideHomotopyObjectClasses
+public import SerrePositivity.KST.SConstruction.Cofinality.KZeroObjectRepresentatives
 public import SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstruction
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageDiagram
 public import SerrePositivity.KST.SConstruction.Cofinality.ImageInclusionKComparison

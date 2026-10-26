@@ -45,7 +45,7 @@
 - 本質像を全多次数の `ClosedStablePredicate` として実装。元の始域との安定模型同値、
   S 交換同型、全 Ar 像条件との同値、全多次数の厳密な自然変換を構成済み。
 - 本質像包含の各整数 K 群の全単射性・単射性を元の指定射と同値にした。
-  wide 成分から元の三角圏 K₀ 余核への実写像も構成済み。全単射性は未証明。
+  wide 成分は双積和による可換群となり、元の三角圏 K₀ 余核と群同型。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -60,12 +60,12 @@
 ### 主要宣言
 - `Cofinality.completionImageClosedPredicate`
 - `Cofinality.completionImageSStableIso`
+- `Cofinality.completionWideKZeroObstructionEquiv`
 - `Cofinality.completionRelativeFlagWideEvaluation`
 - `Cofinality.completionRelativeImageFlagEquivalence`
 - `Cofinality.completionWideRelativeFlagDiagonalIso`
 - `Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input`
 - `Cofinality.completionMultiWide_componentRetraction`
-- `Cofinality.completionSourceFlagVertexImage_iff`
 
 ### 依存と提供
 - 所有：`KST/SConstruction/Cofinality/` の新規葉、同名集約、
@@ -77,15 +77,15 @@
 - K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
 ### 保存範囲
-- `2fc63fd5c`：内部 core 旗と相対旗の自然同型・対角同型、対角制限の照合。
-  `8a35d7774`：条件付き正次数消滅・像成分の基点判定。新規6葉を保存準備中。
+- `f2b0ee2e1`：本質像の閉条件・全 S 多次数の交換・元の K 射への照合。
+  次の保存：wide 成分の可換群構造と元の三角圏 K₀ 余核との群同型。
 
 ### 既知の問題
-- 一般の共終性、相対実現の fiber 比較、離散的障害の群同定は未証明。
+- 一般の共終性、相対実現の fiber 比較、障害群の全単体的 bar 同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7876 jobs）。監査は36所有葉の全272宣言で標準三公理のみ。
+- 自所有集約ビルド成功（7884 jobs）。監査は44所有葉の全336宣言で標準三公理のみ。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
@@ -93,7 +93,7 @@
 - Sp-8 の到着後に `CompletionCoreFlagEvaluationInput` へ実供給を代入する。
   それまでは、この入力を明示的な引数にして相対 fiber 比較と障害の同定を続行する。
 - 本質像を ClosedStablePredicate として代入し、全 S 多次数の像比較を接続する。
-  一般共終性・障害の商群同定は未完。条件付きの離散性だけで主定理を結論しない。
+  商群同定は実装済み。全単体的 bar 同定と元の実 K 射の主共終性は未完。
 
 ## 目標型
 

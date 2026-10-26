@@ -48,7 +48,15 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageSComparison,
     `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageDiagram,
     `SerrePositivity.KST.SConstruction.Cofinality.ImageInclusionKComparison,
-    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstruction]
+    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstruction,
+    `SerrePositivity.KST.SConstruction.Cofinality.KZeroObjectRepresentatives,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideHomotopyObjectClasses,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideBiproductEdges,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideComponentAddition,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideComponentGroup,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideTriangleAdditivity,
+    `SerrePositivity.KST.SConstruction.Cofinality.KZeroToWideGroup,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstructionEquiv]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -128,3 +136,9 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionK_bijective_iff_imageInclusion
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionK_injective_iff_imageInclusion
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstruction
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstruction_surjective
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideAddCommGroup
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideTriangle_additivity
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionKZeroCokernelToWide_leftInverse
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstruction_bijective
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstructionEquiv
