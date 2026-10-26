@@ -17,5 +17,12 @@
 ## 状態
 
 - (a)：専用集約ビルド成功（1679 jobs）。公開名 `SerrePositivity.InfinityCategories.nativeTriangle_ext`。
-- (c)：供給定理・既存条件付き後段を確認済み。
-- 実施記録と検証結果は各コミット本文に記載する。
+- (c)：専用集約ビルド成功（7193 jobs）。条件付き後段は保持。
+- (c) 公開名前空間：`SerrePositivity.KST.Fibration.Relative`。
+  - `closedRelativeSquare_homotopyPullback_unconditional`
+  - `closedRelativeFiberIso_unconditional`
+  - `closedRelativeFiberIso_unconditional_projection`
+  - `closedRelativeNullhomotopy_unconditional`
+- 監査：(a) 全2宣言、(c) 全175宣言・15モジュール、標準三公理のみ。
+- KST の Cofinality・NonConnective は推移的 import にも存在しない。
+- 両供給完了。本チャットを閉鎖する。実施記録は各コミット本文に記載。

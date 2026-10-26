@@ -13,6 +13,7 @@ public import SerrePositivity.KST.Fibration.Relative.ClosedKernelContraction
 public import SerrePositivity.KST.Fibration.Relative.ClosedRealizationPullback
 public import SerrePositivity.KST.Fibration.Relative.ClosedZeroFlag
 public import SerrePositivity.KST.Fibration.Relative.ClosedStableFiber
+public import SerrePositivity.KST.Fibration.Relative.ClosedStableFiberUnconditional
 
 /-!
 概要：K-B2-S1 の循環しない供給葉の集約。
