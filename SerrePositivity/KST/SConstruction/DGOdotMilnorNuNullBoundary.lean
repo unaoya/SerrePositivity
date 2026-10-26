@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.SConstruction.DGKFixedNullPerfectZeroIso
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow
 public import SerrePositivity.KST.SConstruction.PerfectStableHoArrow
 public import SerrePositivity.KST.LocalizingInvariants.ZeroMaps
@@ -30,27 +31,8 @@ local notation "hZ" => dgKInputStableValue_isIdempotentComplete R
 規約：元の全対象商の頂点を保つ。使われ方：実零角の指定比較。 -/
 def dgOdotMilnorNuNullZeroVertexIso :
     VertexIso (perfectStableVertex zeroCategory.{u + 1}
-      perfectZeroCategory_isIdempotentComplete) (perfectStableVertex (Z) (hZ)) where
-  hom := perfectStableHoArrow (fromZeroCategory (Z))
-    perfectZeroCategory_isIdempotentComplete (hZ)
-  inv := perfectStableHoArrow (toZeroCategory (Z))
-    (hZ) perfectZeroCategory_isIdempotentComplete
-  hom_inv_id := by
-    rw [← perfectStableHoArrow_comp]
-    trans perfectStableHoArrow (show zeroCategory.{u + 1} ⟶ zeroCategory from 𝟙 _)
-      perfectZeroCategory_isIdempotentComplete perfectZeroCategory_isIdempotentComplete
-    · apply perfectStableHoArrow_eq_of_functorIso
-      exact zeroDiagramFunctorIso _ _ (fun _ => zeroCategory_isZero _)
-        (fun _ => zeroCategory_isZero _)
-    · exact perfectStableHoArrow_id _ _
-  inv_hom_id := by
-    rw [← perfectStableHoArrow_comp]
-    trans perfectStableHoArrow (show (Z) ⟶ (Z) from 𝟙 _) (hZ) (hZ)
-    · apply perfectStableHoArrow_eq_of_functorIso
-      exact zeroDiagramFunctorIso _ _
-        (fun _ => dgFixedNullInput_isZeroCategory R _ _)
-        (fun _ => dgFixedNullInput_isZeroCategory R _ _)
-    · exact perfectStableHoArrow_id _ _
+      perfectZeroCategory_isIdempotentComplete) (perfectStableVertex (Z) (hZ)) :=
+  dgKFixedNullPerfectZeroIso R (dgOdotMilnorFlatKernelInput R d)
 
 variable (h : DGGluingMilnorSquare R d)
 
