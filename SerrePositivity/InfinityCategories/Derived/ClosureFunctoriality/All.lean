@@ -9,4 +9,6 @@ public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Co
 
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeHom
 
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ContractionComparison
+
 /-! D-S 独自集約：基底非依存の実閉包関手化。 -/

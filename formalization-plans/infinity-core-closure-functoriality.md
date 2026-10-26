@@ -16,6 +16,7 @@
 D-2 の具体化を含む 13 葉・115 宣言の公理監査が終了コード 0 で通過。
 D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣言の
 公理監査が終了コード 0 で通過。両独自集約のビルドも成功。
+固定収縮の二次補正まで追加した 21 葉・211 宣言の公理監査も終了コード 0。
 
 実装済みの葉：
 
@@ -97,6 +98,17 @@ D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣
   `dgSuspensionQuotientParameter`、`_epsilon_necessary`。
   正本 data の同じ resolved 射と選択 ε を使う、全次数変換の商への延長入口。
   同じ成分を保持する厳密延長に ε 整合が必要なことも証明する。
+
+- `ClosureFunctoriality/ContractionComparison`：
+  `dgContractionCommutatorPrimitive_d`、`dgGradedContractionPrimitive_d`、
+  `_d_of_closed`、`_map`。二つの固定収縮の交換差を境界で制御する。
+  任意次数では入力の微分項も保持し、dg 関手との厳密可換性を証明。
+- `SuspensionAction/QuotientContractionComparison`：
+  `dgSuspensionContractionCorrection`、`_d`。正本 data の同じ ε に特殊化。
+  境界であることは厳密な ε 整合の代用ではない。
+- 2026-10-27 ユーザー回答：cell comparison の native Hom 作用と固定 ε の
+  商への族作用は、K-B3・D・DifferentialGraded に既存・進行中の供給なし。
+  D-S が引き続き構成し、全単体 map は edgeIso より先に公開してよい。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。

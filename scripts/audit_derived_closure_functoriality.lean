@@ -6,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ContractionComparison,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.StrictRange,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ExtensionRange,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FamilyImage,
@@ -24,7 +25,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.UnconditionalData,
-    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientParameter]
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientParameter,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientContractionComparison]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -67,3 +69,7 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgSuspensionQuotientParameter
 #check SerrePositivity.InfinityCategories.dgSuspensionQuotientParameter_epsilon_necessary
+
+#check SerrePositivity.InfinityCategories.dgGradedContractionPrimitive_d
+#check SerrePositivity.InfinityCategories.dgGradedContractionPrimitive_map
+#check SerrePositivity.InfinityCategories.dgSuspensionContractionCorrection_d

@@ -7,4 +7,6 @@ public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.Uncond
 
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientParameter
 
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientContractionComparison
+
 /-! D-S 独自集約：固定 cone 間の strict data への接続。 -/
