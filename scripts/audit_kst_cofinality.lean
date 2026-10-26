@@ -56,7 +56,11 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.WideComponentGroup,
     `SerrePositivity.KST.SConstruction.Cofinality.WideTriangleAdditivity,
     `SerrePositivity.KST.SConstruction.Cofinality.KZeroToWideGroup,
-    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstructionEquiv]
+    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstructionEquiv,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelStructureMaps,
+    `SerrePositivity.KST.SConstruction.Cofinality.CanonicalWideNaturality,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelDiagram,
+    `SerrePositivity.KST.SConstruction.Cofinality.ObstructionDiagramIso]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -142,3 +146,8 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionKZeroCokernelToWide_leftInverse
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstruction_bijective
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstructionEquiv
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionKZeroCokernelStructureMap
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionCanonicalWideStructureMap_obstruction
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideGroupStructureMap_apply
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionKZeroCokernelDiagram
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideComponentCokernelNatIso

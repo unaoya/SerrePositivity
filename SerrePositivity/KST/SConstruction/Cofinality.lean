@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.ObstructionDiagramIso
+public import SerrePositivity.KST.SConstruction.Cofinality.CokernelDiagram
+public import SerrePositivity.KST.SConstruction.Cofinality.CanonicalWideNaturality
+public import SerrePositivity.KST.SConstruction.Cofinality.CokernelStructureMaps
 public import SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstructionEquiv
 public import SerrePositivity.KST.SConstruction.Cofinality.KZeroToWideGroup
 public import SerrePositivity.KST.SConstruction.Cofinality.WideTriangleAdditivity

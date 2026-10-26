@@ -45,7 +45,7 @@
 - 本質像を全多次数の `ClosedStablePredicate` として実装。元の始域との安定模型同値、
   S 交換同型、全 Ar 像条件との同値、全多次数の厳密な自然変換を構成済み。
 - 本質像包含の各整数 K 群の全単射性・単射性を元の指定射と同値にした。
-  wide 成分は双積和による可換群となり、元の三角圏 K₀ 余核と群同型。
+  wide 成分は双積和による可換群となり、元の三角圏 K₀ 余核と全多次数で自然に群同型。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -62,7 +62,7 @@
 - `Cofinality.completionImageSStableIso`
 - `Cofinality.completionWideKZeroObstructionEquiv`
 - `Cofinality.completionRelativeFlagWideEvaluation`
-- `Cofinality.completionRelativeImageFlagEquivalence`
+- `Cofinality.completionWideComponentCokernelNatIso`
 - `Cofinality.completionWideRelativeFlagDiagonalIso`
 - `Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input`
 - `Cofinality.completionMultiWide_componentRetraction`
@@ -77,15 +77,15 @@
 - K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
 ### 保存範囲
-- `f2b0ee2e1`：本質像の閉条件・全 S 多次数の交換・元の K 射への照合。
-  次の保存：wide 成分の可換群構造と元の三角圏 K₀ 余核との群同型。
+- `a2ea48d5a`：wide 成分の可換群構造と元の三角圏 K₀ 余核との群同型。
+  次の保存：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
 
 ### 既知の問題
 - 一般の共終性、相対実現の fiber 比較、障害群の全単体的 bar 同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7884 jobs）。監査は44所有葉の全336宣言で標準三公理のみ。
+- 自所有集約ビルド成功（7889 jobs）。公理監査成功（48モジュール・364宣言、標準公理のみ）。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
