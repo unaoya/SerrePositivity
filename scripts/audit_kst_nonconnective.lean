@@ -13,6 +13,12 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKappaConePerfectRepleteness,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionProjectionNaturality,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionInverseDescent,
+    `SerrePositivity.KST.NonConnective.DGKappaSuspensionMoritaEquivalence,
+    `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMorita,
+
     `SerrePositivity.KST.NonConnective.DGKappaConeExtensionDerivedComparison,
     `SerrePositivity.KST.NonConnective.DGKappaConeExtensionNaturality,
     `SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita,
@@ -545,3 +551,14 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeDerivedSquare
 #check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeMap_isQCatEquivalence_of_morita
 #check SerrePositivity.KST.NonConnective.dgKappaUnconditionalConeMap_perfect_iff
+
+#check SerrePositivity.KST.NonConnective.dgKappaConePerfectObjects_iff_of_vertexIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionProjectionNaturality
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionInputMap_isExact
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionInverseSource_kills_generator
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionInverseMap_facIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionMorita_leftIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionMorita_rightIso
+#check SerrePositivity.KST.NonConnective.dgKappaSuspensionInputMap_isQCatEquivalence
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalSuspensionMoritaEquivalence_hom
+#check SerrePositivity.KST.NonConnective.dgKappaUnconditionalSuspensionInputMap_isQCatEquivalence_of_morita

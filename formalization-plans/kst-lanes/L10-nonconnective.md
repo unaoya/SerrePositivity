@@ -18,7 +18,7 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,571 ジョブで成功。専用監査は 245 モジュール・2,805 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 今回の所有集約ビルドは 16,576 ジョブで成功。専用監査は 250 モジュール・2,860 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - 到着 K-B 7bbc95274：dgKappaCanonicalSuspensionStructureMap_nonnegative と実際の公開名 dgKappaCanonicalSuspensionStructureMap_eq を消費。DGNonconnectiveKConnectiveComparison は c5 の標準単体商比較だけに条件付きで、同じ元の全一単体・隣接安定化・連結比較・全整数末尾表示を接続。K-6 c4 の全四角形比較と K-7 c4 の全入力作用を区別する。
 - d4：DGKInputCompactNativeChoiceCoherence は I-2 e の同じ無条件生成同値から任意の逆射選択を全 native Hom 族上で比較し、恒等・三選択の合成・任意族への再制限・元の ν/Yoneda 全族への指定比較の自然性を証明。非可算 κ-cone と同じ Indω の比較、全入力高次合成と構造辺 β の自然性は別工程。
@@ -64,7 +64,9 @@
 
 - DGKappaSuspensionPerfectChoiceCoherence は元の Yoneda 完備化への全関手制限の充満忠実性で、実商の自己・三選択合成比較を同じ Perf 値へ反映。DGKappaSuspensionNuChoiceCoherence は元の評価同値の逆二胞体で固定 ν 値の同じ比較へ戻し、両方で任意高次パラメータの再制限を厳密保持する。DGKappaFixedKComparisonPi は元の SOA/BF 順逆比較の全整数 π 上の逆則を供給。DGKappaSuspensionKChoicePiCoherence は同じ固定 K 実選択射の π 自己・合成則へ渡す。全 dg 入力作用・反復 β 自然性・K^{nc} の模型独立性の完成は別工程。
 
-- e の実 cone Morita：DGKappaConeExtensionDerivedComparison／Naturality は、同じ実延長と strict image の全 Hom 自然性を出力分解変更へ送り、元の実導来包含と実導来延長の全関手四角形を構成。DGKappaConeStrictImageMorita は主導来 Morita 射の実 cone 作用の全 Hom 同値性と、κ-compact 逆像・I.covers による頂点回収を証明。DGKappaConeStrictImagePerfect は元の perfect 集合の保存・反映を示す。DGSuspensionUnconditionalMoritaCone で D-S の同じ実 data と新提供者へ代入する。懸垂商の Morita 同値性・全反復作用・K^{nc} の Morita 不変性の完成は別工程。
+- e の実 cone Morita：DGKappaConeExtensionDerivedComparison／Naturality は、同じ実延長と strict image の全 Hom 自然性を出力分解変更へ送り、元の実導来包含と実導来延長の全関手四角形を構成。DGKappaConeStrictImageMorita は主導来 Morita 射の実 cone 作用の全 Hom 同値性と、κ-compact 逆像・I.covers による頂点回収を証明。DGKappaConeStrictImagePerfect は元の perfect 集合の保存・反映を示す。DGSuspensionUnconditionalMoritaCone で D-S の同じ実 data と新提供者へ代入する。懸垂商への Morita 移送は次項を参照。全反復作用・K^{nc} の Morita 不変性の完成は別工程。
+
+- e の実懸垂 Morita：DGKappaConePerfectRepleteness は同じ実 cone の頂点同型による perfect 性の不変性を保持。DGKappaSuspensionProjectionNaturality は元の増大と厳密商射影の四角形から全関手比較を反映し、同じ実懸垂入力射の完全性も供給。DGKappaSuspensionInverseDescent／MoritaEquivalence は cone 同値の逆の perfect 零化を証明して元の商へ下降し、両逆二胞体を商普遍性で反映する。DGSuspensionUnconditionalMorita は新提供者の D-S 実入力射自身を順射とする一回の実懸垂同値を供給。固定 K の実射・全反復構造辺・K^{nc} への Morita 移送は別工程。
 
 ### 残り（依存順）
 0. 2026-10-27 更新：D-2 4cd747153 の dgKappaConeInput_unconditional'・同じ P・sphere 零所属へ採用入口を切替済み。同じ P 型・同値を維持する。D-4a（D-S の map・edgeIso）＋D-4b（D の square_at・Morita/P 自然性）を正本 B1 型へ代入して c4 を無条件化。Sp-2 の sp_isStable→d3、K-B の K-6 無条件版→e、Sp-2 s3→e の相対 Verdier 接続、最後に固定 S・ν の IsRelativeLocalizingInvariant 登録。B′型変更は不採用。
@@ -95,7 +97,7 @@
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- なし。実 cone 射の導来自然性・Morita 同値・perfect 核反映と新提供者への代入の新規 5 葉、集約・専用監査・本計画は検証済みで所有 8 ファイルだけを限定保存。前回の選択比較整合は d128cf58b。所有外は対象外。
+- なし。実懸垂商の Morita 同値（元の厳密入力射を順射として保持）の新規 5 葉、集約・専用監査・本計画は検証済みで所有 8 ファイルだけを限定保存。前回の実 cone 段は aef3ac72f。所有外は対象外。
 - 保存注記：c2a7623c1 は共有 index の並行更新により K-B の Relative/All・ConnectiveFibrationTheorem・L3・audit_kst_fibration も併収した。K-B3 はこれらの内容を編集していない。コミット本文の所有ファイル限定という記述はこの点を訂正する。履歴・他レーンの内容は保持する。
 
 ### 既知の問題
