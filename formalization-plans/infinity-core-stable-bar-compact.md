@@ -123,4 +123,4 @@
 - `dgKappaNativeKernelStableFamily` と `dgKappaNativeMoritaFamily_iso` は、その終点 StableInfinity 値と全 native 入力に自然な同型。終点を固定 S 内の核作用の ν 像と同定したわけではない。
 - `dgKappaNativePComparisonFamily`・`dgKappaNativePArrowFamily`：実構成した Morita 全族を既存21:25の相対延長へ代入。Morita 全族を追加入力に残さず、元の全 P/Yoneda 比較 path を at で厳密回収、boundary で全入力の両端作用を厳密固定。`iso` は全入力の指定同型。
 - 初期 S 内全族、懸垂の map・edgeIso・square_at、核角の ν 像との全単体一致、元の導来模型での P.inclusion 全族は未供給。B2 や模型変更は採用しない。これらの新族だけで D-8 e 完成と数えない。
-- 検証：対象 build 11764 jobs・Derived 集約14903 jobs成功。新規二葉の専用監査27宣言、許容三公理のみ、終端0。全体監査は実行中。
+- 検証：対象 build 11764 jobs・Derived 集約14903 jobs成功。新規二葉の専用監査27宣言、許容三公理のみ、終端0。追加後の全体監査25919宣言／2951モジュール成功、許容三公理のみ、終端0（/tmp/d8e-native-family-full-audit.log）。実構成は9131e7b37で公開。
