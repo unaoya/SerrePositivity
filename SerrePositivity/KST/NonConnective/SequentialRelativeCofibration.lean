@@ -27,6 +27,29 @@ def sequentialRelativeLatchingMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : �
 def IsSequentialRelativeCofibration {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) : Prop :=
   Mono (f.app 0).right ∧ ∀ n, Mono (sequentialRelativeLatchingMap f n).right
 
+/-- 概要：一般 Kan 標的への分解の相対 latching 射は同じ実境界分解の左因子。
+方針：元の構造正方形の押し出しを一般構成の回収式へ読み替える。
+規約：標的の構造射の単射性を使わない。
+使われ方：K-B-S2 の左因子を既存の相対 cofibration 条件へ接続する。 -/
+lemma sequentialBFKanArrowLeft_relativeLatching
+    {X : OmegaSpectrum.{u}} {Y : KanSequence.{u}}
+    (f : KanSequence.Hom X.toKanSequence Y) (hY : Y.OmegaCondition) (n : ℕ) :
+    sequentialRelativeLatchingMap (sequentialBFKanArrowLeft f hY) n =
+      PointedFactorization.left
+        (sequentialBFKanArrowNextMap f n (sequentialBFKanArrowStage f n)) :=
+  sequentialBFKanArrowLeft_latching f hY n
+
+/-- 概要：一般 Kan 標的への実分解の左因子は全段で相対 cofibration 条件を満たす。
+方針：同じ零段単射と全相対 latching 単射を元の定義へ代入する。
+規約：標的の Ω 条件は明示証明としてだけ使う。
+使われ方：Sp 向けの K-B-S2 公開相対分解界面。 -/
+lemma sequentialBFKanArrowLeft_isRelativeCofibration
+    {X : OmegaSpectrum.{u}} {Y : KanSequence.{u}}
+    (f : KanSequence.Hom X.toKanSequence Y) (hY : Y.OmegaCondition) :
+    IsSequentialRelativeCofibration (sequentialBFKanArrowLeft f hY) :=
+  ⟨sequentialBFKanArrowLeft_zero_mono f hY,
+    fun n => sequentialBFKanArrowLeft_latching_mono f hY n⟩
+
 /-- 構成した左因子の相対 latching 射は、元の境界分解の左因子そのもの。 -/
 lemma sequentialBFArrowLeft_latching {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
     sequentialRelativeLatchingMap (sequentialBFArrowLeft f) n =

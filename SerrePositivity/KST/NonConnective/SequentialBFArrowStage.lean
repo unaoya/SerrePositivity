@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.KST.NonConnective.SequentialPointedPushoutMono
-public import SerrePositivity.KST.Spectra.PointedFactorization
+public import SerrePositivity.KST.NonConnective.SequentialBFKanArrowStage
 
 /-!
 概要：BF 射を構造射に沿って相対分解する一段の実データ。
@@ -19,70 +18,115 @@ open CategoryTheory Limits MonoidalCategory SSet
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 
-/-- 指定された元の BF 射の一段の相対分解。 -/
+/-- 概要：指定された元の BF 射の一段の相対分解。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 structure SequentialBFArrowStage {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) where
-  /-- 新しい点つき Kan 段。 -/
+  /-- 概要：新しい点つき Kan 段。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
   level : PointedKanComplex.{u}
-  /-- 元の源の同じ段からの左因子。 -/
+  /-- 概要：元の源の同じ段からの左因子。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
   inclusion : (X.level n).space ⟶ level.space
-  /-- 元の標的の同じ段への右因子。 -/
+  /-- 概要：元の標的の同じ段への右因子。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
   projection : level.space ⟶ (Y.level n).space
-  /-- 元の射を厳密に回収する式。 -/
+  /-- 概要：元の射を厳密に回収する式。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
   fac : inclusion ≫ projection = f.app n
-  /-- 右因子の全ての単射への RLP。 -/
+  /-- 概要：右因子の全ての単射への RLP。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
   projection_rlp : (MorphismProperty.monomorphisms SSet.{u}).rlp projection.right
+
+/-- 概要：元の BF 射を同じ段と構造射の Kan 列の厳密射として読む。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
+def sequentialBFArrowToKanHom {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
+    KanSequence.Hom X.toKanSequence Y.toKanSequence where
+  app := f.app
+  comm := f.comm
+
+/-- 概要：旧段データを一般化された同じ実段へ移す。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
+def SequentialBFArrowStage.toKanStage {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
+    {n : ℕ} (s : SequentialBFArrowStage f n) :
+    SequentialBFKanArrowStage (sequentialBFArrowToKanHom f) n :=
+  ⟨s.level, s.inclusion, s.projection, s.fac, s.projection_rlp⟩
+
+/-- 概要：一般化された同じ段データを旧構造体へ戻す。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
+def sequentialBFArrowStageOfKan {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ)
+    (s : SequentialBFKanArrowStage (sequentialBFArrowToKanHom f) n) :
+    SequentialBFArrowStage f n :=
+  ⟨s.level, s.inclusion, s.projection, s.fac, s.projection_rlp⟩
 
 variable {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ)
   (s : SequentialBFArrowStage f n)
 
-/-- 次段の相対 latching 対象から元の標的への実際の射。 -/
+/-- 概要：旧 BF 標的への次段写像を一般の Kan 列版へ特殊化する。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 def sequentialBFArrowNextMap :
     pushout (PointedSimplicialSet.circle.{u} ◁ s.inclusion) (X.sigma n) ⟶
       (Y.level (n + 1)).space :=
-  pushout.desc (PointedSimplicialSet.circle.{u} ◁ s.projection ≫ Y.sigma n)
-    (f.app (n + 1)) (by
-      rw [← Category.assoc, ← whiskerLeft_comp, s.fac, f.comm n])
+  sequentialBFKanArrowNextMap (sequentialBFArrowToKanHom f) n s.toKanStage
 
-/-- 相対 latching 対象からの境界分解により得られる次の実 Kan 段。 -/
-def sequentialBFArrowNext : SequentialBFArrowStage f (n + 1) where
-  level := ⟨PointedFactorization.middle (sequentialBFArrowNextMap f n s), inferInstance⟩
-  inclusion := pushout.inr _ _ ≫ PointedFactorization.left (sequentialBFArrowNextMap f n s)
-  projection := PointedFactorization.right (sequentialBFArrowNextMap f n s)
-  fac := by
-    rw [Category.assoc, PointedFactorization.fac]
-    exact pushout.inr_desc _ _ _
-  projection_rlp := PointedFactorization.right_rlp _
+/-- 概要：同じ相対分解の次段を旧構造体へ戻す。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
+def sequentialBFArrowNext : SequentialBFArrowStage f (n + 1) :=
+  sequentialBFArrowStageOfKan f (n + 1)
+    (sequentialBFKanArrowNext (sequentialBFArrowToKanHom f) n s.toKanStage)
 
-/-- 新しい前段の suspension から新しい次段への構造射。 -/
+/-- 概要：旧版の構造射は同じ一般化された構造射そのもの。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 def sequentialBFArrowNextSigma :
     suspension s.level.space ⟶ (sequentialBFArrowNext f n s).level.space :=
-  pushout.inl _ _ ≫ PointedFactorization.left (sequentialBFArrowNextMap f n s)
+  sequentialBFKanArrowNextSigma (sequentialBFArrowToKanHom f) n s.toKanStage
 
-/-- 次の構造射は、元の BF 源の単射構造射を押し出した単射である。 -/
-instance sequentialBFArrowNextSigma_mono : Mono (sequentialBFArrowNextSigma f n s).right := by
-  let : Mono (X.sigma n).right := X.sigma_mono n
-  let : Mono (pushout.inl (PointedSimplicialSet.circle.{u} ◁ s.inclusion) (X.sigma n)).right :=
-    sequentialPointedPushout_inl_mono _ _
-  change Mono ((pushout.inl (PointedSimplicialSet.circle.{u} ◁ s.inclusion) (X.sigma n)).right ≫
-    (PointedFactorization.left (sequentialBFArrowNextMap f n s)).right)
-  infer_instance
+/-- 概要：同じ次段構造射の単射性は一般化された実構成から従う。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
+instance sequentialBFArrowNextSigma_mono : Mono (sequentialBFArrowNextSigma f n s).right :=
+  sequentialBFKanArrowNextSigma_mono (sequentialBFArrowToKanHom f) n s.toKanStage
 
-/-- 左因子は元の源の構造射と厳密に可換。 -/
+/-- 概要：同じ左因子の構造射との厳密可換式を旧版へ戻す。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 lemma sequentialBFArrowNext_inclusion_comm :
     PointedSimplicialSet.circle.{u} ◁ s.inclusion ≫ sequentialBFArrowNextSigma f n s =
-      X.sigma n ≫ (sequentialBFArrowNext f n s).inclusion := by
-  exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (· ≫ PointedFactorization.left (sequentialBFArrowNextMap f n s))
-      (pushout.condition (f := PointedSimplicialSet.circle.{u} ◁ s.inclusion)
-        (g := X.sigma n))).trans
-        (Category.assoc _ _ _))
+      X.sigma n ≫ (sequentialBFArrowNext f n s).inclusion :=
+  sequentialBFKanArrowNext_inclusion_comm (sequentialBFArrowToKanHom f) n s.toKanStage
 
-/-- 右因子は元の標的の構造射と厳密に可換。 -/
+/-- 概要：同じ右因子の構造射との厳密可換式を旧版へ戻す。
+方針：同じ実段を一般化された Kan 列版から取り出す。
+規約：既存の BF 型と段の厳密な射を保持する。
+使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 lemma sequentialBFArrowNext_projection_comm :
     PointedSimplicialSet.circle.{u} ◁ s.projection ≫ Y.sigma n =
-      sequentialBFArrowNextSigma f n s ≫ (sequentialBFArrowNext f n s).projection := by
-  change _ = (pushout.inl _ _ ≫ PointedFactorization.left _) ≫ PointedFactorization.right _
-  rw [Category.assoc, PointedFactorization.fac]
-  exact (pushout.inl_desc _ _ _).symm
+      sequentialBFArrowNextSigma f n s ≫ (sequentialBFArrowNext f n s).projection :=
+  sequentialBFKanArrowNext_projection_comm (sequentialBFArrowToKanHom f) n s.toKanStage
 
 end SerrePositivity.KST.NonConnective

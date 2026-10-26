@@ -1,11 +1,12 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialBFArrowStage
+public import SerrePositivity.KST.NonConnective.SequentialBFKanArrowFactorization
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 
 /-!
 概要：任意の BF 射の、構造射に相対な単射と段ごとの自明 fibration への実分解。
-方針：相対 latching の境界分解をスペクトル段に沿って帰納する。
+方針：旧再帰式を保持し、一般化された同じ次段構成への特殊化を各段で照合する。
 規約：元の射を各段で厳密に回収し、Ω 条件も実際の右射影から証明する。
 使われ方：逐次図式の相対 cofibrant 置換と Hom の fibration 塔。
 -/
@@ -23,13 +24,25 @@ variable {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
 
 /-- 相対分解の各 Kan 段を、元の同じ BF 射に沿って帰納する。 -/
 def sequentialBFArrowStage : (n : ℕ) → SequentialBFArrowStage f n
-  | 0 => {
-      level := ⟨PointedFactorization.middle (f.app 0), inferInstance⟩
-      inclusion := PointedFactorization.left (f.app 0)
-      projection := PointedFactorization.right (f.app 0)
-      fac := PointedFactorization.fac (f.app 0)
-      projection_rlp := PointedFactorization.right_rlp (f.app 0) }
+  | 0 => sequentialBFArrowStageOfKan f 0
+      (sequentialBFKanArrowStage (sequentialBFArrowToKanHom f) 0)
   | n + 1 => sequentialBFArrowNext f n (sequentialBFArrowStage n)
+
+/-- 概要：元の旧段は同じ BF 標的への一般化された段の特殊化。
+方針：元の再帰式を保持し、一般化された同じ次段構成を帰納して照合する。
+規約：旧 eq_1・eq_2 の公開名と型も保持する。
+使われ方：旧版の厳密な段データを一般 Kan 列版へ接続する。 -/
+lemma sequentialBFArrowStage_toKanStage (n : ℕ) :
+    (sequentialBFArrowStage f n).toKanStage =
+      sequentialBFKanArrowStage (sequentialBFArrowToKanHom f) n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    change sequentialBFKanArrowNext (sequentialBFArrowToKanHom f) n
+      (sequentialBFArrowStage f n).toKanStage =
+      sequentialBFKanArrowNext (sequentialBFArrowToKanHom f) n
+        (sequentialBFKanArrowStage (sequentialBFArrowToKanHom f) n)
+    rw [ih]
 
 /-- 新しい構造射も保持した、相対分解の中間 Kan 列。 -/
 def sequentialBFArrowKanSequence : KanSequence.{u} where

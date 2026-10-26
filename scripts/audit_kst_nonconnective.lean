@@ -7,6 +7,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.SequentialBFKanArrowStage,
+    `SerrePositivity.KST.NonConnective.SequentialBFKanArrowFactorization,
     `SerrePositivity.KST.NonConnective.DGSuspensionRelativeComparison,
     `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFKernel,
     `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFVertexComparison,
@@ -292,3 +294,17 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKappaFullPerfFamilyMap_vertex
 #check SerrePositivity.KST.NonConnective.dgKappaPerfClosedHomotopy
 #check SerrePositivity.KST.NonConnective.dgKappaSplitPerfFamilySquare
+
+#check SerrePositivity.KST.NonConnective.SequentialBFKanArrowStage
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowKanSequence
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowKanSequence_omegaCondition
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowMiddle
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowLeft
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowRight
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrow_fac
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowRight_rlp
+#check SerrePositivity.KST.NonConnective.sequentialBFKanArrowLeft_isRelativeCofibration
+
+#check SerrePositivity.KST.NonConnective.sequentialBFArrowStage.eq_1
+#check SerrePositivity.KST.NonConnective.sequentialBFArrowStage.eq_2
+#check SerrePositivity.KST.NonConnective.sequentialBFArrowStage_toKanStage
