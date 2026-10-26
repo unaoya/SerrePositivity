@@ -49,6 +49,29 @@ lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_isPullback
     (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
     IsPullbackSquare r.cylinderSquare := pullbackFamilySquare_isPullback _
 
+/-- 元の実円柱の始端正方形は、保存済みの同じ一つの pullback 補完の一様正方形。 -/
+lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_start
+    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    r.cylinderSquare ≫ (ihom (Δ[n] : SSet.{u})).map
+        ((pre (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))).app B.obj) =
+      uniformTerminalRefinementSquare S.toSSet r.cylinder.single := by
+  change pullbackFamilySquare r.cylinder.pullbacks ≫ _ = _
+  rw [← pullbackFamilySquare_pre_parameter, r.cylinder.pullbacks_start]
+  have he := congrArg (fun F : S.toSSet ⟶ (ihom (Δ[n] : SSet.{u})).obj (pullbackDiagrams B.obj) =>
+    pullbackFamilySquare F) (uniformTerminalRefinementSquare_family S.toSSet r.cylinder.single)
+  rw [pullbackFamilySquare_parametric] at he
+  exact he.symm
+
+/-- 元の実円柱の終端正方形も、保存済みの同じ正規化終端正方形に厳密一致する。 -/
+lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_end
+    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    r.cylinderSquare ≫ (ihom (Δ[n] : SSet.{u})).map
+        ((pre (SSet.ι₁ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))).app B.obj) =
+      r.cylinder.endSquare := by
+  change pullbackFamilySquare r.cylinder.pullbacks ≫ _ = _
+  rw [← pullbackFamilySquare_pre_parameter, r.cylinder.pullbacks_end,
+    pullbackFamilySquare_parametric]
+
 lemma VerdierFiniteMappingCoconeRecovery.cylinderSquare_right
     (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
     squareRightEdge ≫ r.cylinderSquare = squareRightEdge ≫ r.square :=

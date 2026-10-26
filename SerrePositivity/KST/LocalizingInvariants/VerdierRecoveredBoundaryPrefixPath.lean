@@ -37,6 +37,48 @@ def VerdierFiniteMappingCoconeRecovery.boundaryFractionHomotopy
   spanSquareFamilyHomotopy (r.boundary.h ≫ verdierSpanEvaluationSquare h
     (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
 
+/-- 保存済みの同じ実始端全族に元の分数評価正方形を適用した全比較円柱。 -/
+def VerdierFiniteMappingCoconeRecovery.initialFractionHomotopy
+    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :=
+  spanSquareFamilyHomotopy
+    (r.numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
+      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) r.denominator ≫
+      verdierSpanEvaluationSquare h
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
+
+/-- 境界二胞体の始端は、同じ実始端全族の比較辺を境界へ制限した一次単体そのもの。 -/
+lemma VerdierFiniteMappingCoconeRecovery.boundaryFractionComparison_start
+    (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
+    (((functorEdgeOfSimplicialHomotopy r.boundaryFractionHomotopy).map ((truncation 2).map
+      ((ihom (Δ[1] : SSet.{u})).map
+        ((pre (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))).app C.obj)))).edge) =
+      (((functorEdgeOfSimplicialHomotopy r.initialFractionHomotopy).map ((truncation 2).map
+        ((ihom (Δ[1] : SSet.{u})).map ((pre S.ι).app C.obj)))).edge) := by
+  have he := spanSquareFamilyComparisonEdge_pre_parameter
+    (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u}))
+    (r.boundary.h ≫ verdierSpanEvaluationSquare h
+      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
+  have hf : (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ (Δ[1] : SSet.{u})) ≫ r.boundary.h ≫
+      verdierSpanEvaluationSquare h
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z =
+      S.ι ≫ r.numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) r.denominator ≫
+        verdierSpanEvaluationSquare h
+          (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z := by
+    rw [← Category.assoc (SSet.ι₀ : S.toSSet ⟶ S.toSSet ⊗ Δ[1]) r.boundary.h,
+      r.boundary.h₀]
+    simp only [Category.assoc]
+  have hh := congrArg
+    (fun F : S.toSSet ⟶ (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj C.obj =>
+      (functorEdgeOfSimplicialHomotopy (spanSquareFamilyHomotopy F)).edge) hf
+  have hg := spanSquareFamilyComparisonEdge_pre_parameter S.ι
+    (r.numerator ≫ vertexFiberι (verdierDenominatorSpanProjection i
+      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z) r.denominator ≫
+      verdierSpanEvaluationSquare h
+        (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)
+  simpa only [boundaryFractionHomotopy, initialFractionHomotopy, Category.assoc] using
+    he.trans (hh.trans hg.symm)
+
 lemma VerdierFiniteMappingCoconeRecovery.boundaryFractionHomotopy_source
     (r : VerdierFiniteMappingCoconeRecovery h D z S a f) :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ r.boundaryFractionHomotopy.h =

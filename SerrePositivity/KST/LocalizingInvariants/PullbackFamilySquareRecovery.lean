@@ -46,6 +46,14 @@ lemma pullbackFamilySquare_parametric {P L X : SSet.{u}} [Quasicategory X] [IsSt
   rw [pullbackFamilySquare, parametricPullbackDiagramFamily_ι]
   exact spanDiagramFamilyTranspose_transpose Q
 
+/-- 同じ補完全族のパラメータ制限は、復元した全正方形の厳密な制限に一致する。 -/
+lemma pullbackFamilySquare_pre_parameter {P P' L X : SSet.{u}} (j : P' ⟶ P)
+    (F : P ⟶ (ihom L).obj (pullbackDiagrams X)) :
+    pullbackFamilySquare (j ≫ F) =
+      pullbackFamilySquare F ≫ (ihom L).map ((pre j).app X) := by
+  rw [pullbackFamilySquare, Category.assoc, spanDiagramFamilyTranspose_pre_shape]
+  rfl
+
 lemma pullbackFamilySquare_pre_diagram {P L L' X : SSet.{u}} (j : L' ⟶ L)
     (F : P ⟶ (ihom L).obj (pullbackDiagrams X)) :
     pullbackFamilySquare (F ≫ (pre j).app (pullbackDiagrams X)) =

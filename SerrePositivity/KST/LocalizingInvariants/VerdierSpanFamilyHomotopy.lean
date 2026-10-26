@@ -74,6 +74,20 @@ lemma spanSquareFamilyHomotopy_target {K X : SSet.{u}}
     rfl
   rw [he, Category.assoc, ← internalHomFlipHomEquiv_pre_app]
 
+/-- 元の全正方形から作った比較辺は、パラメータ制限でも同じ一次単体を保持する。 -/
+lemma spanSquareFamilyComparisonEdge_pre_parameter {P P' X : SSet.{u}} (j : P' ⟶ P)
+    (F : P ⟶ (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :
+    (((functorEdgeOfSimplicialHomotopy (spanSquareFamilyHomotopy F)).map ((truncation 2).map
+      ((ihom (Δ[1] : SSet.{u})).map ((pre j).app X)))).edge) =
+      (functorEdgeOfSimplicialHomotopy (spanSquareFamilyHomotopy (j ≫ F))).edge := by
+  change ((ihom (Δ[1] : SSet.{u})).map ((pre j).app X)).app (Opposite.op ⦋1⦌)
+      (SSet.yonedaEquiv (curry (spanSquareFamilyHomotopy F).h)) = _
+  rw [← SSet.yonedaEquiv_comp]
+  apply congrArg SSet.yonedaEquiv
+  rw [← curry_natural_right]
+  apply congrArg curry
+  exact (internalHomFlipHomEquiv_pre j F).symm
+
 /-- 実分母の元の辺図式を、商後合成した同じ一単体。 -/
 def verdierSpanDenominatorDiagram {A B C : StableCategory.{u}}
     (i : ExactMap A B) (q : ExactMap B C) (x : B.obj _⦋0⦌)

@@ -90,6 +90,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.IntervalMappingCoconeExtension,
     `SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder,
     `SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryPrefixPath,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryComparison,
     `SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism,
     `SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction,
