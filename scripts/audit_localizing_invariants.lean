@@ -29,6 +29,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity,
     `SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison,
     `SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparisonResolution,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierRawFractionComparisonResolution,
     `SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism,
     `SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction,
