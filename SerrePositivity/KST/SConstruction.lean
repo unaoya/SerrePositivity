@@ -3043,4 +3043,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisConePrimiti
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSuppliedLaxComparisons
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictCone
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRetraction
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationPrimitive
+
 /-! # ∞-S• 構成と連結 K 理論 -/
