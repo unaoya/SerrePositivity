@@ -34687,3 +34687,108 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationFunctor_left
 #check SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationFunctor_right
 #print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationFunctor_right
+
+#check @SerrePositivity.KST.SConstruction.dgCellRestrictedGraph
+#print axioms SerrePositivity.KST.SConstruction.dgCellRestrictedGraph
+#check @SerrePositivity.KST.SConstruction.dgCellRestrictedGraphMap
+#print axioms SerrePositivity.KST.SConstruction.dgCellRestrictedGraphMap
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphResolution
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphResolution
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphMap
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphMap
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphMap_fac
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphMap_fac
+#check @SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectCondition
+#print axioms SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectCondition
+#check @SerrePositivity.KST.SConstruction.dgCellRestrictedGraph_evaluation
+#print axioms SerrePositivity.KST.SConstruction.dgCellRestrictedGraph_evaluation
+#check @SerrePositivity.KST.SConstruction.dgCellRestrictedGraph_perfect
+#print axioms SerrePositivity.KST.SConstruction.dgCellRestrictedGraph_perfect
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraph_evaluation_quasiIso
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraph_evaluation_quasiIso
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraph_perfect
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraph_perfect
+#check @SerrePositivity.KST.SConstruction.DGCellResolvedGraphProjectiveCondition
+#print axioms SerrePositivity.KST.SConstruction.DGCellResolvedGraphProjectiveCondition
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectCondition_of_projective
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectCondition_of_projective
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift_map
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift_map
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLift_inclusion
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLiftComparisonMap
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLiftComparisonMap
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLiftComparisonMap_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleFunctorLiftComparisonMap_hom_naturality
+#check @SerrePositivity.KST.SConstruction.dgBimodulePerfectFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgBimodulePerfectFunctor
+#check @SerrePositivity.KST.SConstruction.dgBimodulePerfectFunctor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgBimodulePerfectFunctor_inclusion
+#check @SerrePositivity.KST.SConstruction.dgBimodulePerfectMap
+#print axioms SerrePositivity.KST.SConstruction.dgBimodulePerfectMap
+#check @SerrePositivity.KST.SConstruction.dgBimodulePerfectMap_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgBimodulePerfectMap_hom_naturality
+#check @SerrePositivity.KST.SConstruction.dgBimodulePerfectComparison
+#print axioms SerrePositivity.KST.SConstruction.dgBimodulePerfectComparison
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphModuleFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphModuleFunctor
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectFunctor
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectFunctor_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectFunctor_inclusion
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectMap
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectMap
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectMap_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectMap_hom_naturality
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectComparison
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisEndofunctor
+#check @SerrePositivity.KST.SConstruction.DGGluingCellRightAxisProjectiveInput
+#print axioms SerrePositivity.KST.SConstruction.DGGluingCellRightAxisProjectiveInput
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectSource
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectSource
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectTarget
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectTarget
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisPerfectComparison
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonFamily
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonFamily
+#check @SerrePositivity.KST.SConstruction.DGPerfectComparisonBase
+#print axioms SerrePositivity.KST.SConstruction.DGPerfectComparisonBase
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonFirst
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonFirst
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonSecond
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonSecond
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonModuleMap
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonModuleMap
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonModuleMap_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonModuleMap_hom_naturality
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonMap
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonMap
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonMap_hom_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonMap_hom_naturality
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonHomGluingFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonHomGluingFunctor
+#check @SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationBase
+#print axioms SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationBase
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor_left
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor_left
+#check @SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor_right
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectComparisonInverseRotationFunctor_right
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientSource
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientSource
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientTarget
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientTarget
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientComparison
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientComparison
+#check @SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLiftBase
+#print axioms SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLiftBase
+#check @SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLiftTarget
+#print axioms SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLiftTarget
+#check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientLift
+#print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientLift

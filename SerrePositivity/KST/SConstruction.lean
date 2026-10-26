@@ -2977,4 +2977,13 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingLoopConeProjection
 public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotation
 public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationProjections
 
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphArrow
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfect
+public import SerrePositivity.KST.SConstruction.DGPerfectModuleFunctorLift
+public import SerrePositivity.KST.SConstruction.DGBimodulePerfectFunctor
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectFunctor
+public import SerrePositivity.KST.SConstruction.DGGluingCellRightAxisPerfectArrow
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonHomGluing
+public import SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLift
+
 /-! # ∞-S• 構成と連結 K 理論 -/
