@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFirstRowSimplices
+public import SerrePositivity.KST.NonConnective.DGSuspensionSuppliedBFTailComparison
 public import SerrePositivity.KST.NonConnective.SequentialCandidateMapShiftedPi
 public import SerrePositivity.KST.NonConnective.SequentialCandidateMapExactPi
 public import SerrePositivity.KST.NonConnective.SequentialCandidateMapEventualPi

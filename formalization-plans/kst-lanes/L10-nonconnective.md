@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値 P は D-8 e が同じ I から構成し、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - Ind I-2 e を固定 ν 値の Indω へ接続済み。交換を定理化した最終公開入口 `ind_stableCompactGeneration_unconditional`（15:21、f350dce62）を採用し、交換入力・有限全存在の追加仮定を除去した。K-B2 の f7d3f64a4 の SingleRelativeComparison を DGSuspensionRelativeComparison で消費し、同じ実構造射・実反復列の連結比較・SOA 比較の非負次数 π 同型へ接続した。c4・c5 の二比較と共終性は明示引数のまま。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は実供給 BF 四角形・cone 零性・新 BF 構造辺と非負次数比較まで成功（188 モジュール・2129 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
+- NonConnective 集約・専用監査は実供給 BF 四角形・cone 零性・新 BF 構造辺と非負次数比較まで成功（190 モジュール・2136 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -182,3 +182,7 @@
 - `SequentialCandidateMapEventualPi` は、同じ厳密逐次比較について各次数で十分後の各段の単射・全射・全単射から同じ候補比較の判定を供給し、次数別末尾の全整数 π 同型から元の実 Sp 辺の可逆性へ渡す。元の実注入・遷移射を保持する。dg 入力上の比較や Morita 不変性自体の供給とは数えない。
 - `SequentialCandidateMapExactPi` は、同じ厳密逐次比較対の十分後の段別の核・像一致を、元の同じ実候補比較の整数 π へ渡す。実注入と遷移を保持する。Sp fiber 四角形・dg Verdier 列の比較や局所化登録そのものは主張しない。
 - `SequentialCandidateMapShiftedPi` は各段の移動後非負範囲 `0 ≤ j+n` の比較・核像一致を、同じ候補の全整数 π の比較・完全性へ渡す。次数移動の実際の loop 比較は Sp 正本を消費し、この群判定だけで Sp fiber 性を結論しない。
+
+### 同じ実列の比較と商標準単体の受け渡し
+- `DGSuspensionSuppliedBFTailComparison` は、明示された同じ実 BF 逐次比較について元の全整数末尾表示の自然性と逆座標式を保持する。共終性・二入力の一回の S• fibration に条件付きであり、全 native 入力作用の存在は追加しない。
+- `DGKappaSuppliedBFFirstRowSimplices` は c4 の全四角形 `FunctorIso` と c5 の同じ実商の標準単体比較を直接受け、未完備全 S• 引き戻し・実 BF fiber の非負次数比較・同じ固定 K 構造射へ渡す。有限 F1 外延性と Sp 有限図式比較は未放電で、従来の条件付き上側ホモトピー経路も保持する。

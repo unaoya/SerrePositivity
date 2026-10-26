@@ -262,3 +262,6 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 - 四端点の全三条件は揃っており、[外延性の利用側](archive/L3-native-triangle-ext-consumer.md:47) は型検査済み。
 - F1 外延性の実供給による四端点同定と商の正段比較は未放電。
 - K-B2 向け共通化：`FiniteFlagComparisonInduction` を既存 q 版の帰納段へ代入した。`ClosedFlagCofiberCoordinates`・`ClosedFlagFiniteComparison`・`ClosedFlagFiniteRecursion` は B・P のみの共通補完と全座標自然性・厳密分解を保持する。`StableTrivialPullbackSection`・`ClosedTailMultiStep`・`ClosedTailCanonicalComponents` は同じ全旗の先行面と最後の cofiber 比較を K-B2 の相対加法性へ接続し、全正反復の局所化同型を供給する。`ClosedFlagOneEquivalence`・`ClosedFlagOneComparison`・`ClosedFlagFiniteEquivalence` は同じ一辺加法性を共通帰納へ接続し、全正長・全正反復の元の有限積比較の局所化同型を供給する。`ClosedFlagFiniteAllLengths` は公開済み K-B2 の零長同型を代入し、零長を含む全長の局所化同型を供給する。`ClosedKernelCoefficient`・`ClosedFlagCofiberPostcomparison` は元の P 自身の包含係数同型と全関手比較を保持する。`ClosedKernelInitialPullback` は全長・全正反復の実初期評価引き戻しを供給する。`SimplicialInitialPullback` を既存 q 版と共有し、`ClosedFlagPostCartesian.closedStableFlagPost_homotopyPullback` と `closedStableFlagPostPullback` は元の単回 F・包含・全作用素の引き戻しを B・P のみから供給する。既存の K-B2 条件付き葉は保持し、新しい利用葉で代入する。
+
+### c4 の全関手同型から c5・K-7 への受け渡し
+- `NonConnective/DGKappaSuppliedBFFirstRowSimplices` は同じ実 D-9 列の全四角形 `FunctorIso` と元の商の標準単体比較を直接消費する。実商核の引き戻しを移し、同じ BF fiber の非負次数 π 同型と固定 K 構造射へ続ける。両比較は明示定理引数であり、存在・無条件の連結版は主張しない。c4 の正規化下側族を旧上側ホモトピーへ戻す追加要求はない。
