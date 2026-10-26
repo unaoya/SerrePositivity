@@ -6,7 +6,7 @@
 
 ## 引き継ぎ（2026-10-25）
 ### 現在地
-- D-8 c2：B・C1・C2 と無条件 covers は供給済み。479df5967 の Compact 新三葉で、同じ native bar 余錐の閉増大の恒等性と全整数次数の評価ホモロジー余極限性を証明。全評価空間への移行は未完で、一般の coherent filtered 空間余錐判定と poset 帰着の宇宙分離版を Ind 供給へ分離する設計変更を提案中。無条件 DGKappaConeInput はまだ公開していない。専用集約9771 jobs・監査122宣言／13葉成功、両主集約12405 jobs・両全体監査成功（Derived 24996宣言／2857モジュール、Stable 26061／3128、許容三公理のみ）。設計変更の判断待ちで停止。
+- D-8 c2：一般の coherent filtered 空間余錐判定は Ind-π に分離する設計変更が採用済み。D は 854212ffc の DGBarCompactFilteredSpacePiBridge を明示引数として接続中。単体的加群の全基点 π／Moore ホモロジー比較・指定道移送と、実ホモロジー余錐のチャートから五条件への導出は対象ビルド済み。native 評価の実脚とのチャート自然性は未完で、橋だけを残す ConeInput は未公開。旧13葉の両主集約・両全体監査は成功済み。
 - D 本体の bar MC は対象・両集約12,015 jobs・公開型・追加9葉57宣言の監査まで成功。Derived/DGCoherentBarMaurerCartan の dgCoherentBarColumn_maurerCartan／dgCoherentBarTheta_maurerCartan は元の R・D・I・F のみを仮定する（filtered 性・MC・全加群 Small・ModelCategory 仮定なし）。主入口は1017d8a9cに保存。両全体監査も終端0（Derived 24,881宣言／2,844モジュール、Stable 25,943／3,113、許容三公理のみ）。D-bar は同じ MC 引数へ主定理を代入できる。
 - D-7 d・D-8 a/b・D-12〜D-19 は供給済み。D-20 は 589c10392 で全対象商の Perf 全頂点の零性と IsZeroCategory の一般入口を保存、両集約11,621 jobs・両全体監査成功（Derived 24,053宣言／2,756モジュール、Stable 25,115／3,025、許容三公理のみ）。D-8 c を現模型で再開。D-16 の追加宇宙局所化は UniverseAscent で明示入力を解消した新規葉を検証済み（既存版不変）。D-7′ は IsStable から任意 pushout・pullback と有限極限・余極限を供給済み（75a0b606d）。Sp-5 d3 の実適用は Sp 所有。
 - c′ は13:13 JSTに未成立判定（開始04:11:16 JST、上限20:11:16 JSTより前）。ゲート1・2・4済み、3・5未完。κ未満の全シフト自由直和間の任意閉射は共通コードと選択 seed へ精密化済み。一般 seed の perfect/retract・cone 閉包への同時精密化と拡大全四角形族は未供給。承認済み分岐により D-8 c/d は現模型、全高次作用は第 I 段の明示入力を保持する。D-7′ は本体・葉監査・両集約・両全体監査成功。今回の再開対象は D-8 c。

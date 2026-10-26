@@ -22,7 +22,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationGeneratorClosure,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeAugmentationIdentity,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCoconeCriterion,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomologyColimit]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomologyColimit,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.FilteredSpaceBridgeInput,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiTransportMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.BridgePreservation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModulePiTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModulePiHomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCharts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyChartsPiData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleHomologyCharts]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

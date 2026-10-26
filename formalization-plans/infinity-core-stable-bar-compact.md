@@ -43,7 +43,8 @@
 - 宇宙分離版の poset 帰着は NativePreservationPosetReductionUniverse の F2.Ind.Compact.preservesKappaFilteredColimits_of_poset を使用する。
 - Ind-π の公開目標は FilteredSpaceBridgeInput の DGBarCompactFilteredSpacePiBridge（Prop）。元の F・c と実 transition・脚を使う五条件を DGBarCompactFilteredSpacePiData で与える。π は n+1、境界が指定道をたどる球面円柱で基点を移送する。正次数の全射条件は全ての指定道に対する強い形（評価空間の単体的アーベル性を使う）。型と PiTransportMap の後合成を検証・葉監査済み。
 - BridgePreservation は「橋＋同じ bar 余錐の π 条件」から全 native 評価保存への接続を対象ビルド済み。π 条件の導出は未完で、橋だけを残した ConeInput はまだ公開していない。
-- 同じ bar 余錐の評価ホモロジー余極限性を、全評価空間の余極限性へ接続する。coherent filtered 空間の全基点 π_n による判定入口と、poset 帰着の宇宙分離版をコーディネータ経由で Ind に照会中。
+- ModulePiTransport・ModulePiHomology は単体的加群の全基点 π と Moore ホモロジーの自然な比較、任意指定道の移送を供給。HomologyChartsPiData は加群ホモロジー余錐の普遍性と自然な全基点チャートから五条件を導く。ModuleHomologyCharts は同じ実単体的加群余錐への特殊化。native 評価の実脚に関するチャート自然性は未完。
+- Ind-π は実ホモトピー同値による指定道移送の反映も担当。D は同じ native bar の評価ホモロジー余極限性を、実評価空間のチャートへ接続する。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 
 ## 運用
