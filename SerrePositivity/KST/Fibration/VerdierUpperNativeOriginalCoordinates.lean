@@ -1,0 +1,59 @@
+module
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperNativeEndpoints
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperFactorizationCoordinates
+
+/-!
+概要：元の指定上側二胞体の全 native Hom と、同じ Verdier 両端での読出しを照合する。
+方針：元の共有対角と両端の厳密等号だけで Hom 座標を輸送する。
+規約：同じ元の二胞体を保持し、独立な比較関手を選ばない。
+使われ方：K-6 c4 の再構成始端と実 (9b) 欠面の全 native Hom 条件。
+-/
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.KST.Fibration
+
+private theorem upperNativeTriangle_coordinate_heq
+    (s : StableInfinity.{u} _⦋2⦌) (a : StableInfinity.{u} _⦋1⦌)
+    (h : StableInfinity.δ 1 s = a) (A C : StableCategory.{u})
+    (hA : s.obj ⟨ULift.up 0⟩ = A) (hC : s.obj ⟨ULift.up 2⟩ = C)
+    (haA : a.obj ⟨ULift.up 0⟩ = A) (haC : a.obj ⟨ULift.up 1⟩ = C) :
+    HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s).map
+          ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
+      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        (stableTriangleHomOverDiagonal a s h ≫
+          eqToHom (congrArg₂ (fun (X Y : StableCategory.{u}) =>
+            SimplicialCategory.sHom (C := StableQCat.{u}) X Y) haA haC) ≫
+          stableCoreSingleKanEnrichedFunctor.map (show StableQCat from A)
+            (show StableQCat from C)))) := by
+  subst a
+  cases hA
+  cases hC
+  simp only [eqToHom_refl]
+  rfl
+
+/-- 概要：元の上側二胞体の全 native Hom 頂点は同じ元の Verdier 両端の読出し。
+方針：元の共有対角回収と同じ両端の座標等号を使う。
+規約：全長 Hom 自身の HEq。使われ方：再構成始端の指定 native 条件の座標読替え。 -/
+theorem verdierOriginalNativeHomFamily_upper_heq (d : VerdierDiagram.{u}) :
+    HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌)
+          (verdierUpperTriangle d)).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
+      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))) := by
+  have h := upperNativeTriangle_coordinate_heq (verdierUpperTriangle d) (verdierNullDiagonal d)
+    (verdierTriangle_diagonal d 0) d.left d.right
+    ((verdierUpperTriangle_source d).trans (congrArg stableObject d.left_eq))
+    ((verdierUpperTriangle_target d).trans (congrArg stableObject d.right_eq))
+    (verdierNullDiagonal_source d) (verdierNullDiagonal_target d)
+  simpa only [verdierOriginalNativeHomFamily, verdierOriginalNativeHomMap,
+    verdierNullHomFamily, verdierTriangle, verdierUpperTriangle,
+    verdierOriginalNativeHomTarget, Category.assoc] using h
+
+end SerrePositivity.KST.Fibration

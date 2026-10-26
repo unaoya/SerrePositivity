@@ -1,4 +1,10 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperFactorizationCoordinates
+public import SerrePositivity.KST.Fibration.VerdierUpperNativeOriginalCoordinates
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperVertices
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperFirstComparison
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperLastTriangle
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperLastComparison
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortFaces
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperBoundaryEdges
 public import SerrePositivity.KST.Fibration.ZeroMiddleNativeUpperBoundary
