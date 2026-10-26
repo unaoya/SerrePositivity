@@ -27,6 +27,19 @@ def parametricPullbackSquares {P L X : SSet.{u}}
     P ⟶ (ihom L).obj ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :=
   spanDiagramFamilyTranspose Q
 
+/-- 元の正方形の任意の頂点も、同じ全パラメータ族として回収する。 -/
+lemma parametricPullbackSquares_vertex {P L X : SSet.{u}}
+    (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
+    (v : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) _⦋0⦌) :
+    parametricPullbackSquares Q ≫ (ihom L).map (evaluateFunctorAt v) =
+      internalHomFlipHomEquiv L P X
+        ((functorVertexEquiv L ((ihom P).obj X)).symm (Q.app (Opposite.op ⦋0⦌) v)) := by
+  rw [parametricPullbackSquares, spanDiagramFamilyTranspose,
+    ← spanInternalHomFlip_post (evaluateFunctorAt v)
+      (internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) L ((ihom P).obj X) Q ≫
+        (internalHomSwapIso ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X).hom),
+    Category.assoc, internalHomSwapIso_evaluate, spanTransposeFamily_evaluate]
+
 /-- 転置は同じ二つの評価で得られる元の全四角形を厳密に回収する。 -/
 lemma parametricPullbackSquares_evaluate {P L X : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
