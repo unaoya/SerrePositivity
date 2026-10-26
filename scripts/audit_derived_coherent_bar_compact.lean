@@ -39,7 +39,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedHomologyNaturality,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedPiCohomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationValueCohomology,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleCohomology]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedCohomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CoherentCosliceEvaluationComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearUnderlyingValueComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

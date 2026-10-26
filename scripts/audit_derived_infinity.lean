@@ -7481,6 +7481,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedPiCohomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationValueCohomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedCohomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CoherentCosliceEvaluationComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CosliceUnderlyingValueNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearUnderlyingValueComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison,
 
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation,
