@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTerminalPullbackFamilies
+public import SerrePositivity.KST.LocalizingInvariants.SpanFamilyTransposeNaturality
 public import SerrePositivity.KST.LocalizingInvariants.VerdierParametricTerminalRefinement
 
 /-!
@@ -24,9 +25,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def parametricPullbackSquares {P L X : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X)) :
     P ⟶ (ihom L).obj ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) :=
-  internalHomFlipHomEquiv L P ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
-    (internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) L ((ihom P).obj X) Q ≫
-      (internalHomSwapIso ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X).hom)
+  spanDiagramFamilyTranspose Q
 
 /-- 転置は同じ二つの評価で得られる元の全四角形を厳密に回収する。 -/
 lemma parametricPullbackSquares_evaluate {P L X : SSet.{u}}
@@ -35,7 +34,8 @@ lemma parametricPullbackSquares_evaluate {P L X : SSet.{u}}
     (evaluateFunctorAt (Y := (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) l).app
       (Opposite.op ⦋0⦌) ((parametricPullbackSquares Q).app (Opposite.op ⦋0⦌) p) =
       functorVertex (Q ≫ evaluateFunctorAt l ≫ evaluateFunctorAt p) := by
-  rw [parametricPullbackSquares, internalHomFlipHomEquiv_app_zero,
+  rw [parametricPullbackSquares, spanDiagramFamilyTranspose,
+    internalHomFlipHomEquiv_app_zero,
     evaluateFunctorAt_functorVertex]
   change (evaluateFunctorAt (Y := (ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) p).app
       (Opposite.op ⦋0⦌)
@@ -55,7 +55,7 @@ lemma parametricPullbackSquares_evaluate_family {P L X : SSet.{u}}
     parametricPullbackSquares Q ≫ evaluateFunctorAt l =
       internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X
         (Q ≫ evaluateFunctorAt l) := by
-  rw [parametricPullbackSquares, spanTransposeFamily_evaluate]
+  rw [parametricPullbackSquares, spanDiagramFamilyTranspose, spanTransposeFamily_evaluate]
   change (functorVertexEquiv P ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)).symm
     ((internalHomSwapIso ((Δ[1] : SSet.{u}) ⊗ Δ[1]) P X).hom.app (Opposite.op ⦋0⦌)
       ((internalHomFlipHomEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) L ((ihom P).obj X) Q).app
@@ -112,6 +112,71 @@ lemma parametricPullbackDiagramFamily_evaluate_ι {P L X : SSet.{u}} [Quasicateg
       IsPullbackDiagramVertex).ι := rfl
   rw [← hn, ← Category.assoc, parametricPullbackDiagramFamily_ι,
     parametricPullbackSquares_evaluate_family]
+
+/-- 実 pullback 族の cospan は、元の同じ全正方形の cospan 制限を転置したもの。 -/
+lemma parametricPullbackDiagramFamily_projection {P L X : SSet.{u}} [Quasicategory X]
+    [HasFiniteLimits X] [HasFiniteLimits ((ihom P).obj X)]
+    (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
+    (hQ : IsPullbackSquare Q) :
+    parametricPullbackDiagramFamily Q hQ ≫ (ihom L).map (pullbackProjection X) =
+      spanDiagramFamilyTranspose (cospanSquareBoundary ≫ Q) := by
+  rw [pullbackProjection, Functor.map_comp, ← Category.assoc,
+    parametricPullbackDiagramFamily_ι]
+  exact (spanDiagramFamilyTranspose_pre_shape cospanSquareBoundary Q).symm
+
+/-- 元の二辺が全族で一致すれば、同じ実 pullback 族の cospan 境界も全族で一致する。 -/
+lemma parametricPullbackDiagramFamily_projection_eq {P L X : SSet.{u}} [Quasicategory X]
+    [HasFiniteLimits X] [HasFiniteLimits ((ihom P).obj X)]
+    (Q R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
+    (hQ : IsPullbackSquare Q) (hR : IsPullbackSquare R)
+    (hright : squareRightEdge ≫ Q = squareRightEdge ≫ R)
+    (htop : squareTopEdge ≫ Q = squareTopEdge ≫ R) :
+    parametricPullbackDiagramFamily Q hQ ≫ (ihom L).map (pullbackProjection X) =
+      parametricPullbackDiagramFamily R hR ≫ (ihom L).map (pullbackProjection X) := by
+  rw [parametricPullbackDiagramFamily_projection, parametricPullbackDiagramFamily_projection]
+  congr 1
+  apply horn₂₂.isPushout.hom_ext
+  · simpa only [← Category.assoc, cospanSquareBoundary_rightEdge] using hright
+  · simpa only [← Category.assoc, cospanSquareBoundary_topEdge] using htop
+
+/-- パラメータ制限後の同じ全正方形も、元の各評価の pullback 性を保持する。 -/
+lemma parametricPullbackSquare_pre_parameter {P P' L X : SSet.{u}} [Quasicategory X]
+    [HasFiniteLimits X] [HasFiniteLimits ((ihom P).obj X)]
+    [HasFiniteLimits ((ihom P').obj X)] (j : P' ⟶ P)
+    (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
+    (hQ : IsPullbackSquare Q) :
+    IsPullbackSquare (Q ≫ (ihom L).map ((pre j).app X)) := by
+  apply (isPullbackSquare_functor_iff _).mpr
+  intro l
+  apply (isPullbackSquare_functor_iff _).mpr
+  intro p
+  have hn : (ihom L).map ((pre j).app X) ≫ evaluateFunctorAt l =
+      evaluateFunctorAt l ≫ (pre j).app X := rfl
+  simp only [Category.assoc]
+  rw [← Category.assoc ((ihom L).map ((pre j).app X))
+    (evaluateFunctorAt l) (evaluateFunctorAt p), hn,
+    Category.assoc, stable_pre_evaluateFunctorAt]
+  have hL := (isPullbackSquare_functor_iff Q).mp hQ l
+  exact (isPullbackSquare_functor_iff (Q ≫ evaluateFunctorAt l)).mp hL
+    (j.app (Opposite.op ⦋0⦌) p)
+
+/-- 実 pullback 族の回収も、元のパラメータ制限を全単体で厳密に保持する。 -/
+lemma parametricPullbackDiagramFamily_pre_parameter {P P' L X : SSet.{u}} [Quasicategory X]
+    [HasFiniteLimits X] [HasFiniteLimits ((ihom P).obj X)]
+    [HasFiniteLimits ((ihom P').obj X)] (j : P' ⟶ P)
+    (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom L).obj ((ihom P).obj X))
+    (hQ : IsPullbackSquare Q) :
+    parametricPullbackDiagramFamily (Q ≫ (ihom L).map ((pre j).app X))
+      (parametricPullbackSquare_pre_parameter j Q hQ) =
+      j ≫ parametricPullbackDiagramFamily Q hQ := by
+  have : Mono ((ihom L).map
+      (fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
+        IsPullbackDiagramVertex).ι) := (ihom L).map_mono _
+  apply (cancel_mono ((ihom L).map
+    (fullSubcomplexOnVertices ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X)
+      IsPullbackDiagramVertex).ι)).mp
+  rw [parametricPullbackDiagramFamily_ι, Category.assoc, parametricPullbackDiagramFamily_ι]
+  exact spanDiagramFamilyTranspose_pre_parameter j Q
 
 local instance stableFiniteLimits {X : SSet.{u}} [Quasicategory X] [IsStable X] :
     HasFiniteLimits X := hasFiniteLimits_of_isStable _

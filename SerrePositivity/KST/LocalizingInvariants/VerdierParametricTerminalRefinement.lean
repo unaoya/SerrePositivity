@@ -33,11 +33,17 @@ lemma exists_simplexTerminalRefinementSquare {X : SSet.{u}}
     ∃ Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj X,
       IsPullbackSquare Q ∧ squareVertex Q 0 1 = functorVertex D ∧
       Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) = squareColumnDiagram s ∧
-      ∀ k : (Δ[n] : SSet.{u}) _⦋0⦌, squareRightEdge ≫ Q ≫ evaluateFunctorAt k = s := by
+      (∀ k : (Δ[n] : SSet.{u}) _⦋0⦌, squareRightEdge ≫ Q ≫ evaluateFunctorAt k = s) ∧
+      squareRightEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] X
+        (SSet.const (functorVertex s)) ∧
+      squareTopEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] X
+        (simplexTerminalArrowFamily D) := by
   obtain ⟨F, hF, hlast⟩ := exists_simplexTerminalPullbackFamily D s hs
   refine ⟨terminalRefinementSquare F,
     terminalRefinementSquare_isPullback (B := ⟨X, inferInstance, inferInstance⟩) F,
-    terminalRefinementSquare_original D s hs F hF, ?_, ?_⟩
+    terminalRefinementSquare_original D s hs F hF, ?_, ?_,
+    terminalRefinementSquare_right D s hs F hF,
+    terminalRefinementSquare_top D s hs F hF⟩
   · rw [terminalRefinementSquare_evaluate, hlast]
     exact Equiv.symm_apply_apply _ _
   · intro k
@@ -58,14 +64,19 @@ lemma exists_verdierParametricTerminalRefinement
       IsPullbackSquare Q ∧ squareVertex Q 0 1 = functorVertex D ∧
       Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) = squareColumnDiagram s ∧
       (∀ k : (Δ[n] : SSet.{u}) _⦋0⦌, squareRightEdge ≫ Q ≫ evaluateFunctorAt k = s) ∧
+      squareRightEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj B.obj)
+        (SSet.const (functorVertex s)) ∧
+      squareTopEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj B.obj)
+        (simplexTerminalArrowFamily D) ∧
       ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : P _⦋0⦌),
         (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
           weakEquivalences i := by
   have : IsStable ((ihom P).obj B.obj) := (stableFunctorCategory P B).isStable
   have : HasFiniteLimits ((ihom P).obj B.obj) := hasFiniteLimits_of_isStable _
   have : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable _
-  obtain ⟨Q, hQ, hD, hlast, hright⟩ := exists_simplexTerminalRefinementSquare D s hs
-  refine ⟨Q, hQ, hD, hlast, hright, ?_⟩
+  obtain ⟨Q, hQ, hD, hlast, hright, hrightAll, htop⟩ :=
+    exists_simplexTerminalRefinementSquare D s hs
+  refine ⟨Q, hQ, hD, hlast, hright, hrightAll, htop, ?_⟩
   intro k p
   have hK := (isPullbackSquare_functor_iff Q).mp hQ k
   have hP := (isPullbackSquare_functor_iff (Q ≫ evaluateFunctorAt k)).mp hK p
@@ -142,6 +153,11 @@ lemma exists_verdierDenominatorFamilyTerminalRefinement
       (∀ k : (Δ[n] : SSet.{u}) _⦋0⦌, squareRightEdge ≫ Q ≫ evaluateFunctorAt k =
         verdierDenominatorFamilyEdge i
           (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) a) ∧
+      squareRightEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj B.obj)
+        (SSet.const (functorVertex (verdierDenominatorFamilyEdge i
+          (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) a))) ∧
+      squareTopEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1] ((ihom P).obj B.obj)
+        (simplexTerminalArrowFamily (D ≫ curry (snd P B.obj))) ∧
       ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : P _⦋0⦌),
         (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
           weakEquivalences i := by
@@ -199,14 +215,23 @@ lemma exists_verdierRelativeMappingBoundaryRefinement
               (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
               (L.h ≫ verdierDenominatorSpanProjection i
                 (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)) ∧
+          squareRightEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1]
+            ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
+            (SSet.const (functorVertex (verdierDenominatorFamilyEdge i
+              (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
+              (L.h ≫ verdierDenominatorSpanProjection i
+                (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))) z)))) ∧
+          squareTopEdge ≫ Q = internalHomFlipHomEquiv Δ[n] Δ[1]
+            ((ihom (S.toSSet ⊗ (Δ[1] : SSet.{u}))).obj B.obj)
+            (simplexTerminalArrowFamily (D ≫ curry (snd (S.toSSet ⊗ Δ[1]) B.obj))) ∧
           ∀ (k : (Δ[n] : SSet.{u}) _⦋0⦌) (p : (S.toSSet ⊗ (Δ[1] : SSet.{u})) _⦋0⦌),
             (squareLeftArrow (Q ≫ evaluateFunctorAt k ≫ evaluateFunctorAt p)).edge ∈
               weakEquivalences i := by
   let x := D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))
   obtain ⟨d, g, L, G, hG⟩ := verdierFiniteMappingFamily_relative_recovery h x z S a f ha
-  obtain ⟨Q, hQ, hD, hlast, hright, hW⟩ :=
+  obtain ⟨Q, hQ, hD, hlast, hright, hrightAll, htop, hW⟩ :=
     exists_verdierDenominatorFamilyTerminalRefinement h D
       (L.h ≫ verdierDenominatorSpanProjection i x z)
-  exact ⟨d, g, L, G, hG, Q, hQ, hD, hlast, hright, hW⟩
+  exact ⟨d, g, L, G, hG, Q, hQ, hD, hlast, hright, hrightAll, htop, hW⟩
 
 end SerrePositivity.KST.LocalizingInvariants
