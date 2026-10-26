@@ -1,0 +1,17 @@
+module
+
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.TotalComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.KanMapCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.TotalPiCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.UniverseShape
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.FiniteDetection
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PathTransport
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.ConstantBoundaryDetection
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.SphereClassPath
+
+/-!
+概要：Ind-π の独立集約。全空間比較の π 判定と有限検出・基点移送の公開界面。
+方針：このレーンの証明済み葉だけを公開する。
+規約：F2 の既存集約には追加しない。filtered な元ごとの最終判定は未完。
+使われ方：D-8 c2 に向けた第 I 段の進捗と独立監査。
+-/
