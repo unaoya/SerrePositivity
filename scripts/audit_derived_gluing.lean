@@ -977,7 +977,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNerveLaxComparison,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxVertices,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetStableComparison,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxHomComparison]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxHomComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientPath,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientPathInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizedHom,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityComma,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizedPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetRelativeNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationCubes,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCompositionTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCompositionInputs]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

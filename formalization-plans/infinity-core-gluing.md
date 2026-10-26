@@ -7,13 +7,16 @@
 ## 引き継ぎ（2026-10-26）
 
 ### 再開工程：K-S• 全比較（進行中）
+- 採用（2026-10-26、ユーザー指示）：元終域向け Hom 比較を D2 内で直接構成する。F2 への依頼は行わない。一般の充満忠実基底変更 API の存在を前提にしない。途中で一般命題自体を証明した場合だけ `F2/CatInfinity/` の新規葉へ置き、登録は D2 集約のみとする（F2 集約への登録は R 候補）。
+- 供給順：実 lax Hom 比較の逆射・往復則 → 恒等二脚の特殊化 → 対角 `FunctorIso`・全 cone 比較。各段の検証済み公開名をユーザー経由で報告する。K-S• は D の射影性を消費して d④ ① を完了し、全 lax 比較待ち。
 - 読み取り専用の消費型：`DGOdotMilnorOriginalLaxComparisonInput`、`DGOdotMilnorIdentityLaxComparisonInput`、`DGOdotMilnorOriginalLaxConeComparisonInput`（`.withCone`）。入力型の変更なし。
 - 元共通終域への `dgGluingHomTargetNerveLaxComparison` を構成。両射影と arrow 全単体族を厳密回収し、各頂点で元閉比較射を回収する。
 - `dgGluingHomTargetNerveLaxComparison_vertex_surjective` と `_isEssentiallySurjective` を証明。元前三角性から `_isExactFunctor` と `dgGluingHomTargetStableComparison` を構成。新規5葉の個別ビルド通過。
 - `dgGluingHomTargetLaxHomPullbackComparison` は同じ実 Hom 複体から F2 の写像空間 pullback への指定比較。`dgGluingHomTargetNerveLaxComparison_fullyFaithful_iff` で同値性の残課題を厳密に指定する。これは Hom 同値性の証明ではない。
 - 残り：元終域比較の全 Hom 同値、導来係数模型・元固定 ν 二脚との比較、恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性。3つの消費型の存在は未証明。
 - 次の一手：`dgGluingHomTargetLaxHomPullbackComparison` の実ホモトピー逆と両往復則を、同じ左右 Hom と第三 cochain を保持して構成する。恒等二脚はその特殊化とする。
-- 新規5葉を含む集約ビルド（13,192 jobs）・公理監査（973モジュール、9,669宣言）通過。所有内に未保存の作業葉なし。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
+- 新規10葉を追加登録。元終域の係数 path 比較の逆・往復則、正規化 Hom の両射影と第三 cochain、全 prism の一致と両端固定 homotopy、二 cube の共有面・貼り合わせ、元標準合成三角形の全三辺、元入力 fiber の切断同値を検証。係数 path の逆は実 lax Hom 比較の逆と区別する。
+- 集約ビルド（13,202 jobs）・公理監査（983モジュール、9,821宣言）通過。入力付き対角 path への接続は作業中。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
