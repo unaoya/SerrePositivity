@@ -147,5 +147,5 @@
 - `dgFullRestrictionNativeMap`：その標準 coherent nerve の core 上の全単体写像。`inclusion` で元の全単体作用を厳密回収。D-S 所有葉への依存はなく、公開名をユーザー経由で先行報告。
 - `dgKappaSuspensionKernelParameter`・`dgKappaSuspensionKernelHom` は同じ実 data の resolved 変換を実核へ制限。app／π は同じ対象の元の成分、identity／composition は同じ tensor パラメータの厳密則。
 - 入力 A,B を動かす resolved 全 Hom 作用や全四角形自体の存在は、この制限部品だけでは供給済みとしない。残る指定収縮・全二胞体比較と D-S の map／edgeIso の接続は継続中。
-- 検証：新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14931 jobs、専用監査70宣言／6モジュール成功、許容三公理のみ。局所 import 閉包8972モジュール、循環なし、外部未コミット依存なし。追加後の全体監査は /tmp/d4b-kernel-native-full-audit.log で実行中。
+- 検証：新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14931 jobs、専用監査70宣言／6モジュール成功、許容三公理のみ。局所 import 閉包8972モジュール、循環なし、外部未コミット依存なし。追加後の全体監査26014宣言／2966モジュール成功、許容三公理のみ、終端0（/tmp/d4b-kernel-native-full-audit.log）。445404f65でコミット済み。
 - 指定収縮は各対象の零性から選ばれている。対象ごとの零性・収縮比較から、厳密自然変換 end 内の同型や全四角形の相対 path を自動的に推論しない。指定 ε の全次数整合は実際に証明する。
