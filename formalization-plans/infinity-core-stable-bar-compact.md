@@ -91,3 +91,10 @@
 - `parameterExtension_postcomposition_heq`：元の厳密 `extension_postcomp` 等号の下で、全パラメータ変換も元の前合成作用そのものと比較。公開名はチャットで報告済み。
 - この後合成の経路では ε 整合を追加入力に残さない。全入力を動かす cone・実核作用と同じ選択四角形の全族はまだ未供給。
 - 後合成を含む5葉版の Derived 集約14644 jobs成功。専用監査は5葉76宣言、許容三公理のみ、終端0。追加後の全体監査25764宣言／2941モジュール成功、許容三公理のみ、終端0（/tmp/d8e-post-full-audit.log）。
+
+### 元の選択四角形全体への復帰
+- `nativeDiagramFamily_relativeReplacement`：予備の全図式族と、指定部分を固定する各入力の全可逆 path から、同じ部分制限を保つ全比較族を実構成。指定 path 自体も厳密に回収。
+- `dgSuspensionNativeSquare_exists_replacement`：同じ元の `dgKappaResolvedConnectiveSquare` 全体へ各入力で厳密一致する全族を構成。指定単射部分の全 native 作用を厳密に保持。四辺だけの一致で全二胞体を同定しない。
+- 公開名と設計はユーザーへのチャットで報告済み。予備族と指定部分に相対的な点別可逆 path の存在は未供給。実核・cone・懸垂の厳密豊穣作用や Morita・P 自然性を完成扱いしない。
+- 設計：先に構成した全族を、零骨格上の指定全比較を保つ相対 path の自明 Kan 持ち上げで元の選択へ戻す。P の指定包含にも同じ方式を検討する。単なる対象同型ではなく、指定部分上で恒等 path になる全比較が必要。
+- 二葉の対象 build 11297 jobs・Derived 集約14833 jobs成功。専用監査は2葉3宣言、許容三公理のみ、終端0。局所 import 閉包7493モジュール、循環なし。追加後の全体監査25766宣言／2943モジュール成功、許容三公理のみ、終端0（/tmp/d8e-replacement-full-audit.log）。

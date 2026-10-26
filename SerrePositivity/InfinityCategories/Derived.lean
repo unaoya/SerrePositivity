@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement
 public import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData
 public import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
