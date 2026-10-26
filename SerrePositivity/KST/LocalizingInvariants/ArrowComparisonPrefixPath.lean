@@ -23,6 +23,59 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 次辺の可逆比較を構成し、前段の指定点上の全経路と厳密に一致させる。 -/
+lemma exists_arrowComparison_preservingEndpointPaths {K X : SSet.{u}} [Quasicategory X]
+    {F G : K ⟶ X}
+    (a : SSet.Edge (X := (ihom K).obj X) (functorVertex F) (functorVertex G))
+    (j : (Δ[0] : SSet.{u}) ⟶ K) {z z' : X _⦋0⦌}
+    (f : SSet.Edge (F.app (Opposite.op ⦋0⦌) (SSet.yonedaEquiv j)) z)
+    (g : SSet.Edge (G.app (Opposite.op ⦋0⦌) (SSet.yonedaEquiv j)) z')
+    (w : SSet.Edge z z')
+    (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
+    (hc : Truncated.HomotopyCategory.homMk f.toTruncated ≫
+        Truncated.HomotopyCategory.homMk w.toTruncated =
+      Truncated.HomotopyCategory.homMk (functorEdgeAt a (SSet.yonedaEquiv j)).toTruncated ≫
+        Truncated.HomotopyCategory.homMk g.toTruncated) :
+    ∃ b : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[1] : SSet.{u})).obj X))
+      (functorVertex (SSet.yonedaEquiv.symm f.edge))
+      (functorVertex (SSet.yonedaEquiv.symm g.edge)),
+      IsInvertibleEdge (X := (ihom (Δ[1] : SSet.{u})).obj X) b ∧
+      SSet.yonedaEquiv.symm b.edge ≫ (pre (stdSimplex.δ (1 : Fin 2))).app X =
+        SSet.yonedaEquiv.symm a.edge ≫ (pre j).app X ∧
+      SSet.yonedaEquiv.symm b.edge ≫ (pre (stdSimplex.δ (0 : Fin 2))).app X =
+        curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm w.edge) := by
+  let c := functorEdgeAt a (SSet.yonedaEquiv j)
+  have hci : IsInvertibleEdge c.toTruncated := by
+    exact (isInvertibleEdge_congr (e := a.toTruncated.map ((truncation 2).map
+      (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)))) (f := c.toTruncated) rfl).mp
+      (ha.map (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)))
+  obtain ⟨H, h0, h1⟩ := exists_arrowHomotopy_of_homMk_comm
+    f.toTruncated g.toTruncated c.toTruncated w.toTruncated hc
+  refine ⟨functorEdgeOfSimplicialHomotopy H,
+    arrowHomotopy_isInvertible_of_endpointPaths H c.toTruncated w.toTruncated hci hw h0 h1,
+    ?_, ?_⟩
+  · change SSet.yonedaEquiv.symm (SSet.yonedaEquiv (curry H.h)) ≫ _ = _
+    rw [Equiv.symm_apply_apply, curry_pre_app, h0]
+    apply (cancel_mono (pointFunctorEvaluationIso X).hom).mp
+    change curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm c.edge) ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
+      (SSet.yonedaEquiv.symm a.edge ≫ (pre j).app X) ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
+    rw [curry_evaluateFunctorAt_vertex, Category.assoc, stable_pre_evaluateFunctorAt]
+    simp only [← Category.assoc, lift_snd, Category.id_comp]
+    have hp : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
+        SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by decide
+    have hj : j.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
+        SSet.yonedaEquiv j := by
+      rw [hp, ← SSet.yonedaEquiv_comp, Category.id_comp]
+    rw [hj]
+    change SSet.yonedaEquiv.symm
+        ((evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)).app (Opposite.op ⦋1⦌) a.edge) = _
+    rw [SSet.yonedaEquiv_symm_comp]
+  · change SSet.yonedaEquiv.symm (SSet.yonedaEquiv (curry H.h)) ≫ _ = _
+    rw [Equiv.symm_apply_apply, curry_pre_app, h1]
+    rfl
+
+/-- 前段の指定全経路を回収する従来の入口。 -/
 lemma exists_arrowComparison_preservingPrefixPath {K X : SSet.{u}} [Quasicategory X]
     {F G : K ⟶ X}
     (a : SSet.Edge (X := (ihom K).obj X) (functorVertex F) (functorVertex G))
@@ -41,33 +94,7 @@ lemma exists_arrowComparison_preservingPrefixPath {K X : SSet.{u}} [Quasicategor
       IsInvertibleEdge (X := (ihom (Δ[1] : SSet.{u})).obj X) b ∧
       SSet.yonedaEquiv.symm b.edge ≫ (pre (stdSimplex.δ (1 : Fin 2))).app X =
         SSet.yonedaEquiv.symm a.edge ≫ (pre j).app X := by
-  let c := functorEdgeAt a (SSet.yonedaEquiv j)
-  have hci : IsInvertibleEdge c.toTruncated := by
-    exact (isInvertibleEdge_congr (e := a.toTruncated.map ((truncation 2).map
-      (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)))) (f := c.toTruncated) rfl).mp
-      (ha.map (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)))
-  obtain ⟨H, h0, h1⟩ := exists_arrowHomotopy_of_homMk_comm
-    f.toTruncated g.toTruncated c.toTruncated w.toTruncated hc
-  refine ⟨functorEdgeOfSimplicialHomotopy H,
-    arrowHomotopy_isInvertible_of_endpointPaths H c.toTruncated w.toTruncated hci hw h0 h1,
-    ?_⟩
-  change SSet.yonedaEquiv.symm (SSet.yonedaEquiv (curry H.h)) ≫ _ = _
-  rw [Equiv.symm_apply_apply, curry_pre_app, h0]
-  apply (cancel_mono (pointFunctorEvaluationIso X).hom).mp
-  change curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm c.edge) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
-    (SSet.yonedaEquiv.symm a.edge ≫ (pre j).app X) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
-  rw [curry_evaluateFunctorAt_vertex, Category.assoc, stable_pre_evaluateFunctorAt]
-  simp only [← Category.assoc, lift_snd, Category.id_comp]
-  have hp : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
-      SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by decide
-  have hj : j.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
-      SSet.yonedaEquiv j := by
-    rw [hp, ← SSet.yonedaEquiv_comp, Category.id_comp]
-  rw [hj]
-  change SSet.yonedaEquiv.symm
-      ((evaluateFunctorAt (Y := X) (SSet.yonedaEquiv j)).app (Opposite.op ⦋1⦌) a.edge) = _
-  rw [SSet.yonedaEquiv_symm_comp]
+  obtain ⟨b, hi, hp, _⟩ := exists_arrowComparison_preservingEndpointPaths a j f g w ha hw hc
+  exact ⟨b, hi, hp⟩
 
 end SerrePositivity.KST.LocalizingInvariants

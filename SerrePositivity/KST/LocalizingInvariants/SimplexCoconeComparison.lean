@@ -17,12 +17,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed SSet
+open CartesianMonoidalCategory
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 終端脚の四角形から、共有経路を構成して全余錐の同型を貼り、前段比較を保つ。 -/
-lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
+lemma exists_simplexCoconeComparison {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : JoinCocone F) (d : JoinCocone G)
     (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (functorVertex F) (functorVertex G))
     (w : SSet.Edge c.vertex d.vertex)
@@ -34,13 +35,18 @@ lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
           (functorEdgeAt a (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
         Truncated.HomotopyCategory.homMk
           (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated) :
-    ∃ e : FunctorIso c.val d.val,
-      Arrow.mk ((hoFunctor.map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
-        e.hom) = Arrow.mk (Truncated.HomotopyCategory.homMk a.toTruncated) := by
+    ∃ l : Truncated.Edge
+        (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X))
+        (functorVertex c.val) (functorVertex d.val),
+      IsInvertibleEdge (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj X) l ∧
+      ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X).app
+        (Opposite.op ⦋1⦌) l.edge = a.edge ∧
+      SSet.yonedaEquiv.symm l.edge ≫ (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app X =
+        curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm w.edge) := by
   let k := SSet.yonedaEquiv (simplexLastPoint.{u} n)
   let f := HomotopyLimits.coconeVertexLeg c k
   let g := HomotopyLimits.coconeVertexLeg d k
-  obtain ⟨b, hbi, hbs⟩ := exists_arrowComparison_preservingPrefixPath a
+  obtain ⟨b, hbi, hbs, hbt⟩ := exists_arrowComparison_preservingEndpointPaths a
     (simplexLastPoint n) f g w ha hw hc
   have hf : (joinStdSimplexIso 0 0).hom ≫ SSet.yonedaEquiv.symm f.edge =
       joinMap (simplexLastPoint n) (𝟙 Δ[0]) ≫ c.val := by
@@ -80,9 +86,51 @@ lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
     rw [← hbraw, hm, Category.assoc, ← NatTrans.comp_app, ← pre_map,
       joinStdSimplexIso_zero_inl]
     exact hbs.symm
-  obtain ⟨e, he, _⟩ := exists_simplexAttachmentFunctorIso n c.val d.val
-    a'.toTruncated b'.toTruncated hs ha' hb'
-  refine ⟨e, he.trans ?_⟩
-  exact Truncated.HomotopyCategory.congr_arrowMk_homMk a'.toTruncated a.toTruncated rfl
+  obtain ⟨l, hl, hr⟩ := exists_simplexAttachmentComparison n c.val d.val
+    a'.toTruncated b'.toTruncated hs
+  have hla : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj X)
+      (l.map ((truncation 2).map ((pre (joinInl Δ[n] Δ[0])).app X))) :=
+    (isInvertibleEdge_congr hl).mpr ha'
+  have hlb : IsInvertibleEdge (X := (ihom (join (Δ[0] : SSet.{u}) Δ[0])).obj X)
+      (l.map ((truncation 2).map
+        ((pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X))) :=
+    (isInvertibleEdge_congr hr).mpr hb'
+  refine ⟨l, simplexAttachmentComparison_isInvertible n l hla hlb, hl, ?_⟩
+  have hj : joinInr (Δ[0] : SSet.{u}) Δ[0] ≫
+      joinMap (simplexLastPoint n) (𝟙 Δ[0]) = joinInr (Δ[n] : SSet.{u}) Δ[0] := by
+    simpa only [Category.id_comp] using
+      joinInr_joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u}))
+  have hr' : SSet.yonedaEquiv.symm l.edge ≫
+      (pre (joinMap (simplexLastPoint n) (𝟙 Δ[0]))).app X =
+        SSet.yonedaEquiv.symm b'.edge := by
+    rw [SSet.yonedaEquiv_symm_comp]
+    exact congrArg SSet.yonedaEquiv.symm hr
+  rw [← hj, pre_map, NatTrans.comp_app, ← Category.assoc, hr']
+  change SSet.yonedaEquiv.symm
+      (((pre (joinStdSimplexIso 0 0).hom).app X).app (Opposite.op ⦋1⦌) b.edge) ≫ _ = _
+  rw [← SSet.yonedaEquiv_symm_comp, Category.assoc, ← NatTrans.comp_app,
+    ← pre_map, joinStdSimplexIso_zero_inr]
+  exact hbt
+
+/-- 終端脚の四角形から、元の前段比較を保つ全余錐同型を得る。 -/
+lemma exists_simplexCoconeFunctorIso {X : SSet.{u}} [Quasicategory X] {n : ℕ}
+    {F G : (Δ[n] : SSet.{u}) ⟶ X} (c : JoinCocone F) (d : JoinCocone G)
+    (a : SSet.Edge (X := (ihom (Δ[n] : SSet.{u})).obj X) (functorVertex F) (functorVertex G))
+    (w : SSet.Edge c.vertex d.vertex)
+    (ha : IsInvertibleEdge a.toTruncated) (hw : IsInvertibleEdge w.toTruncated)
+    (hc : Truncated.HomotopyCategory.homMk
+          (HomotopyLimits.coconeVertexLeg c (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+        Truncated.HomotopyCategory.homMk w.toTruncated =
+      Truncated.HomotopyCategory.homMk
+          (functorEdgeAt a (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated ≫
+        Truncated.HomotopyCategory.homMk
+          (HomotopyLimits.coconeVertexLeg d (SSet.yonedaEquiv (simplexLastPoint n))).toTruncated) :
+    ∃ e : FunctorIso c.val d.val,
+      Arrow.mk ((hoFunctor.map ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app X)).toFunctor.map
+        e.hom) = Arrow.mk (Truncated.HomotopyCategory.homMk a.toTruncated) := by
+  obtain ⟨l, hi, hp, _⟩ := exists_simplexCoconeComparison c d a w ha hw hc
+  have := hi
+  exact ⟨asIso (Truncated.HomotopyCategory.homMk l),
+    Truncated.HomotopyCategory.congr_arrowMk_homMk _ a.toTruncated hp⟩
 
 end SerrePositivity.KST.LocalizingInvariants

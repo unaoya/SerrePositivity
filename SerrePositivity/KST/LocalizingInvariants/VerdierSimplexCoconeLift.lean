@@ -16,6 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
+open CartesianMonoidalCategory
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
@@ -33,7 +34,7 @@ private lemma comp_arrow_congr {T : Type*} [Category* T] {a b c a' b' c' : T}
   rfl
 
 /-- 商の元の全余錐を、前段全体の分母精密化と全余錐図式の同型を保って持ち上げる。 -/
-lemma exists_verdierSimplexCoconeLift {A B C : StableCategory.{u}}
+lemma exists_verdierSimplexCoconeLift_preservingPaths {A B C : StableCategory.{u}}
     {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
     (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z) :
@@ -41,7 +42,18 @@ lemma exists_verdierSimplexCoconeLift {A B C : StableCategory.{u}}
       (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
         (functorVertex D') (functorVertex D)) (c : JoinCocone D'),
       t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
-      c.vertex = z ∧ Nonempty (FunctorIso (c.val ≫ q.hom) d.val) := by
+      c.vertex = z ∧
+      ∃ l : Truncated.Edge
+        (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj))
+        (functorVertex (c.val ≫ q.hom)) (functorVertex d.val),
+        IsInvertibleEdge (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) l ∧
+        ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj).app
+          (Opposite.op ⦋1⦌) l.edge =
+            ((ihom (Δ[n] : SSet.{u})).map q.hom).app (Opposite.op ⦋1⦌) t.edge ∧
+        SSet.yonedaEquiv.symm l.edge ≫
+          (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
+            curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm
+              (C.obj.σ 0 (q.hom.app (Opposite.op ⦋0⦌) z))) := by
   let k := SSet.yonedaEquiv (simplexLastPoint.{u} n)
   have hk : k = stdSimplex.obj₀Equiv.symm (Fin.last n) := Equiv.apply_symm_apply _ _
   let f₀ := HomotopyLimits.coconeVertexLeg d k
@@ -121,7 +133,22 @@ lemma exists_verdierSimplexCoconeLift {A B C : StableCategory.{u}}
             Truncated.HomotopyCategory.homMk f.toTruncated) :=
         congrArg Arrow.mk (Truncated.HomotopyCategory.homMk_comp_homMk hcomp).symm
       _ = _ := (comp_arrow_congr hcomponentA htargetA).symm
-  obtain ⟨e, _⟩ := exists_simplexCoconeFunctorIso cQ d a w ha hw hc
-  exact ⟨D', t, c, ht, hcz, ⟨e⟩⟩
+  obtain ⟨l, hi, hp, hv⟩ := exists_simplexCoconeComparison cQ d a w ha hw hc
+  exact ⟨D', t, c, ht, hcz, l, hi, hp, hv⟩
+
+/-- 元の入口も、二つの実経路を保持する右分数比較から従う。 -/
+lemma exists_verdierSimplexCoconeLift {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
+    (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z) :
+    ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
+      (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
+        (functorVertex D') (functorVertex D)) (c : JoinCocone D'),
+      t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
+      c.vertex = z ∧ Nonempty (FunctorIso (c.val ≫ q.hom) d.val) := by
+  obtain ⟨D', t, c, ht, hz, l, hi, _, _⟩ :=
+    exists_verdierSimplexCoconeLift_preservingPaths h D z d hz
+  have := hi
+  exact ⟨D', t, c, ht, hz, ⟨asIso (Truncated.HomotopyCategory.homMk l)⟩⟩
 
 end SerrePositivity.KST.LocalizingInvariants
