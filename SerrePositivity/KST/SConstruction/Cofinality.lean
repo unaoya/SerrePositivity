@@ -80,6 +80,20 @@ public import SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveCoordina
 
 public import SerrePositivity.KST.SConstruction.Cofinality.CokernelBarIso
 
+public import SerrePositivity.KST.SConstruction.Cofinality.MultiCokernelRow
+
+public import SerrePositivity.KST.SConstruction.Cofinality.WideComponentBar
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CanonicalComponentProjection
+
+public import SerrePositivity.KST.SConstruction.Cofinality.WideHeadDiscretization
+
+public import SerrePositivity.KST.SConstruction.Cofinality.WideHeadVanishing
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeEvaluationNaturality
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeHeadComparison
+
 /-!
 概要：K-cof 所有の共終性補助結果を集約する。
 方針：新規葉だけを公開し、既存の S• 集約には逆依存を加えない。

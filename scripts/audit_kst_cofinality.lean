@@ -76,7 +76,14 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.CokernelSimplicialSet,
     `SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveMap,
     `SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveCoordinates,
-    `SerrePositivity.KST.SConstruction.Cofinality.CokernelBarIso]
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelBarIso,
+    `SerrePositivity.KST.SConstruction.Cofinality.MultiCokernelRow,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideComponentBar,
+    `SerrePositivity.KST.SConstruction.Cofinality.CanonicalComponentProjection,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideHeadDiscretization,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideHeadVanishing,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeEvaluationNaturality,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeHeadComparison]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -175,3 +182,6 @@ run_cmd do
 
 #check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelBarIso
 #check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernel_higher_of_input
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideHead_higher_of_input
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeHead_higher_of_input
