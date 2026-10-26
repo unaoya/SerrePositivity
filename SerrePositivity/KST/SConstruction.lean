@@ -3020,4 +3020,11 @@ public import SerrePositivity.KST.SConstruction.DGPerfectComparisonStrictArrow
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisBaseValue
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisSmallArrow
 
+public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
+public import SerrePositivity.KST.SConstruction.DGModuleConnectingConeComparison
+public import SerrePositivity.KST.SConstruction.DGModuleInverseRotationCone
+public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationCone
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealizedCone
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationCone
+
 /-! # ∞-S• 構成と連結 K 理論 -/
