@@ -1,3 +1,4 @@
+import SerrePositivity.KST.LocalizingInvariants.CoreFlag.All
 import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanPullbackAll
 
 /-!
