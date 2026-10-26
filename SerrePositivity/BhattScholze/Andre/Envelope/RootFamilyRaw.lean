@@ -1,10 +1,9 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionReindex
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionEmpty
+public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaAdjoinDivisionFamilyRegular
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul

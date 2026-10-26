@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DividedPowerPrime
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularPrincipalDPModP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
 
 /-!
 # 一次関係の分冪表示と係数商

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionQuotient
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
 
 /-!
 # J/d を割る構成の比較

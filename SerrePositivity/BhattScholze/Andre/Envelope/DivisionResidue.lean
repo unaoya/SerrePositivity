@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.Normalized
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensor
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import Mathlib.RingTheory.TensorProduct.Quotient
 
 /-!

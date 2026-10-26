@@ -1,9 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionEvaluationSource
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionUnitDenominator
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceAlgebras
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
 public import SerrePositivity.HomologicalAlgebra.FiniteSupQuotientColimit

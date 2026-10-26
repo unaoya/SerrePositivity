@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteNormalizedStep
+public import SerrePositivity.BhattScholze.Delta.Division.Witt
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFirstResiduePowerPresentation
+public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import Mathlib.Algebra.Colimit.DirectLimit
 public import Mathlib.Algebra.Colimit.Module
 public import SerrePositivity.CommutativeAlgebra.ModuleDirectLimitFlat

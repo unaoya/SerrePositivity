@@ -1,32 +1,24 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFirstRelationRegular
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteResidueRelation
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision
+public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import Mathlib.RingTheory.Polynomial.Quotient
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetKoszul
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSecondFinitePresentation
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFrobeniusShift
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivisionCompletion
 public import Mathlib.RingTheory.AdicCompletion.Basic
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionLocalization
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFactorialStable
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPFactorialEquiv
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionSum
+public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionFactorial
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaDividedPowers
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulCanonicalZero
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.HomologicalAlgebra.SequentialComplexColimits
 public import Mathlib.Algebra.Category.ModuleCat.AB
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPRelativeCompletionModP
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPQuotientFlat
 public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueEvaluation
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
 
 /-!
 # p で割る δ 除算 A{φ(y)/p}：正則性・Koszul 分解・pd 包との同型（BS 著者版 Cor 2.39 の r = 1）

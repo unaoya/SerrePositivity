@@ -1,23 +1,18 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPAnyBasis
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPPresentation
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaDividedPowers
+public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
+public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
 public import Mathlib.RingTheory.DividedPowers.SubDPIdeal
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularPrincipalDPUniversal
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPPrimeBlocks
 public import Mathlib.Data.Nat.Choose.Lucas
 public import Mathlib.Algebra.Algebra.Bilinear
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPTruncatedAction
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 public import Mathlib.RingTheory.TensorProduct.Maps
 public import Mathlib.Algebra.Category.CommAlgCat.Basic
 public import Mathlib.RingTheory.Flat.Basic
-public import SerrePositivity.BhattScholze.Delta.DividedPower.RankOneDPPrimeBlockBasis
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import Mathlib.RingTheory.Adjoin.Basic
 public import Mathlib.Algebra.MvPolynomial.Variables
-public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDPQuotientFlat
 public import Mathlib.RingTheory.Flat.TorsionFree
 public import Mathlib.Algebra.Module.Projective
 public import Mathlib.RingTheory.Ideal.Quotient.Operations

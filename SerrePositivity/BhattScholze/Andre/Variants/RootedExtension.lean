@@ -14,7 +14,7 @@ public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaAdjoinDivisionFamilyRegular
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion

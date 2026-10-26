@@ -7,7 +7,7 @@ import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientPerfectoid
 import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
-import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
+import SerrePositivity.BhattScholze.Delta.Division.Basic
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 import SerrePositivity.BhattScholze.Semiperfectoid.CharacteristicP
 import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot
@@ -20,12 +20,8 @@ import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivision
-import SerrePositivity.BhattScholze.Delta.Division.DeltaTorsionReduction
-import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionQuotient
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
-import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionClassicalCompletion
 import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection
 import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 import Mathlib.Util.AssertNoSorry

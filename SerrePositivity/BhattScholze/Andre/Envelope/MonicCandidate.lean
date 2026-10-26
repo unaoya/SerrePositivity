@@ -12,7 +12,7 @@ public import Mathlib.RingTheory.Regular.Flat
 public import SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilySource
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceCoefficientRightFactor
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 

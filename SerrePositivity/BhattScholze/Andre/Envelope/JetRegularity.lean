@@ -1,11 +1,10 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteResidueRelation
+public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionFiniteLeadingLinear
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSecondFinitePresentation
+public import SerrePositivity.BhattScholze.Delta.Division.Relations
 public import Mathlib.Algebra.Polynomial.Degree.SmallDegree
 public import Mathlib.Algebra.Polynomial.RingDivision
 public import Mathlib.Algebra.Ring.NonZeroDivisors

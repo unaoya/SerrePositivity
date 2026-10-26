@@ -4,12 +4,9 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.JetKoszul
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul
 public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionEvaluationFamilyStep
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionUnitDenominator
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceAlgebras
 public import Mathlib.CategoryTheory.Functor.OfSequence
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.RelativeFreeSubsetSplit
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 
 /-!

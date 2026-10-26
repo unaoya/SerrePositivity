@@ -2,13 +2,12 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensor
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import Mathlib.RingTheory.TensorProduct.Maps
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorSymmetry
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorModuleComparison
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensorDelta
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
 
 /-!
 # 自由 δ 射に沿う p 除算包のテンソルと導来比較

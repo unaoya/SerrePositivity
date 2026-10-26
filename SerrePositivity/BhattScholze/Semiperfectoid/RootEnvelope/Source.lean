@@ -17,7 +17,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceTensor
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison

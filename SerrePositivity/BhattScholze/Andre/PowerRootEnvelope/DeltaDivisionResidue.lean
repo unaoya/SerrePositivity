@@ -8,7 +8,7 @@ public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetKoszul
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
 
 /-!
 # raw δ 除算包の完備化後の剰余と正則性

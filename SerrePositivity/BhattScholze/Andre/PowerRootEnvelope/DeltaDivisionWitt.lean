@@ -1,16 +1,14 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaAdjoinDivisionSum
+public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueEvaluation
-public import SerrePositivity.BhattScholze.Delta.DividedPower.DeltaPDivisionWittResidueSolution
+public import SerrePositivity.BhattScholze.Delta.DividedPower.PDivision
 public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionPDCompletion
 
 /-!
 # raw δ 除算包の係数比較と Witt 普遍性

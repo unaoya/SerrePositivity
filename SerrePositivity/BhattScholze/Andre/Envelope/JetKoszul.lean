@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.NormalizedStep
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionWittJetRegularity
+public import SerrePositivity.BhattScholze.Delta.Division.Witt
 public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import Mathlib.RingTheory.Regular.Flat
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation

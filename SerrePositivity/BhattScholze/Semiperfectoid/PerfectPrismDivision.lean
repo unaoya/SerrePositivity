@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Delta.Division.DeltaDivisionUniversal
+public import SerrePositivity.BhattScholze.Delta.Division.Basic
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta

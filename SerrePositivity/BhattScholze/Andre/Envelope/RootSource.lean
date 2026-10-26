@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
-public import SerrePositivity.BhattScholze.Delta.Division.Relations.DeltaDivisionSourceCoefficientRightFactor
+public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import Mathlib.LinearAlgebra.Finsupp.VectorSpace
