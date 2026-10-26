@@ -40,8 +40,8 @@
 
 
 ## Sp-2 工程
-- [ ] d3b②：実 loop 始点 L_X と X→L_X→T_X を構成。a_X の相対 cofibration と指定単位の厳密因子分解を証明。
-- [ ] relativeCorner a_X q_X の指定境界 fiber から c_X:L_X→M_X を構成し、a_X≫c_X=i_X、c_X≫q_X=r_X を保持。
+- [x] d3b②の対象別入力：実 loop 始点 L_X と X→L_X→T_X を構成。a_X の相対 cofibration と指定単位の厳密因子分解を証明。全 Hom の整合は下項。
+- [x] relativeCorner a_X q_X の指定境界 fiber から対象別 c_X:L_X→M_X を構成し、a_X≫c_X=i_X、c_X≫q_X=r_X を保持。
 - [ ] 比較射を含む全 Hom の RLP・恒等・合成・全単体整合を実証。図式側だけの RLP で代用しない。
 - [ ] 指定 loop 図式と厳密 tail 終点を保つ nativeLoop への全図式 FunctorIso を構成。
 - [ ] d3b③→d3c：nativeTailEquivalence と合わせて元の nativeLoop の hΩ。
@@ -79,3 +79,21 @@
 - 監査で PointedParametricUncurryAction／Pre、PointedUncurryActionTensor／Composition の未接続も検査。
 - 本計画は300行以内。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants への編集なし。
 - 注意：r_X は相対左因子に沿う元の η_X の延長として選んだ実射であり、実 loop 図式の射影との全図式整合はまだ証明していない。点別の図式始点同型を全図式自然性に昇格しない。
+
+## 2026-10-27：実 loop 錐と指定境界の全パラメータ充填
+- [x] `D3LoopSourceCone`：`loopSourceConeLift` を固定 cospan の slice 内で実構成。`loopSourceConeLift_projection`／`loopSourceConeEdge_projection` は元の BF 右脚そのものの一次単体を回収。
+- [x] `loopSourceConeIso`／`loopSourceCone_isLimit`：同じ錐比較の可逆性を右 fibration の反映で認証し、錐全体の指定同型から極限性を証明。
+- [x] `loopSourceSquare`／`loopSourceSquare_vertex`：L_X を厳密な実始点とする loop 四角形。終点は同じ tail X。右辺・上辺は `loopSourceSquare_right`／`_top` で元の path 終点射・一点からの射を厳密回収。
+- [x] `loopSourceSquareFunctorIso`：同じ固定 cospan 上の錐比較を、元の BasedLoop.square (tail X) への全四角形 FunctorIso に移す。X を動かす関手の自然同型ではない。
+- [x] `D3LoopConeRelativeLifting`：`loopConeLiftCorner_trivialKanFibration`／`exists_relative_loopConeLift` は固定 cospan の上で、終端錐・全 apex 辺と既存の部分パラメータを同時に固定した実充填を供給。
+- [x] `loopSourceConeBoundary_fst`／`_snd`：構成済みの同じ錐比較の終端制限と、同じ BF 右脚全体を厳密回収。`loopSourceConeChosenPoint` を含む `loopSourceConeChoiceSpace_isContractibleKan` を証明。
+- [x] `D3ComparisonHomLifting`：異なる X,Y の a_X・q_Y へ適用した `loopComparisonHomCorner_trivialKanFibration` と、任意次元 n の `loopComparisonBoundaryCorner_trivialKanFibration` を証明。
+- [x] `exists_relative_loopComparisonBoundary`／`loopComparisonBoundaryFiber_isContractibleKan`：比較 Hom の既存部分パラメータ・n 単体の全境界・元の左右境界を同時に保持。n=1 の相対自然性比較に加え高次境界も含む。
+- **未完の接続**：実際の Hom の恒等・合成から指定境界を実構成し、実 loop 図式も保持する共通解像の全 Hom 射影 RLP と豊穣法則を実証する。上記の充填器を、共通解像の完成とは扱わない。
+- 次の具体的検討：比較 c_X は全段 π 同型だが全段 RLP は未証明。c_X を相対 BF 分解して比較右脚を全段 RLP にし、元の a_X を保つ二段の相対充填から全 Hom の比較を構成する。図式比較との合成整合も同じ解像上で証明する必要がある。
+- s3 再確認：更新中の L1 正本でも、共通実 S 長方形・上下指定二単体・三認証は未完。D2 の三入力の供給と、共通長方形の三認証の完成を区別する。
+
+### 今回の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5756 jobs）。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：499 modules／5179 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
+- d3b② 全体、hΩ、sp_isStable は未完のまま。対象別の全四角形比較と比較 Hom の指定境界充填を、X 全体の nativeLoop 比較と取り違えない。
