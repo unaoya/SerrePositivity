@@ -7,6 +7,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKInputIndNativeFamily,
+    `SerrePositivity.KST.NonConnective.DGKInputIndExtension,
+    `SerrePositivity.KST.NonConnective.DGKInputIndEquivalence,
+    `SerrePositivity.KST.NonConnective.DGKInputIndMorita,
+    `SerrePositivity.KST.NonConnective.DGKInputIndNativeComposition,
+    `SerrePositivity.KST.NonConnective.DGKInputIndCompactNaturality,
+
     `SerrePositivity.KST.NonConnective.DGNonconnectiveK,
     `SerrePositivity.KST.NonConnective.DGNonconnectiveKConnectiveComparison,
     `SerrePositivity.KST.NonConnective.DGNonconnectiveKMorita,
@@ -410,3 +417,16 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.sequentialCandidatePi_mapCoconeIsColimit_of_stages
 #check SerrePositivity.KST.NonConnective.dgKappaNullParameterPostcomposition_app
 #check SerrePositivity.KST.NonConnective.dgKappaNullParameterPostcomposition_heq
+
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_restrictionIso
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_restrictionParameterIso_precomp
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_preservesFilteredColimits
+#check SerrePositivity.KST.NonConnective.dgKInputIndExtension_restrictionIso
+#check SerrePositivity.KST.NonConnective.dgKInputIndFunctorIso_of_restriction
+#check SerrePositivity.KST.NonConnective.dgKInputIndEquivalence_hom
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_eq_extension
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_morita_isQCatEquivalence
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_idIso
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_compIso
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_compactIso
+#check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_compactParameterIso_precomp

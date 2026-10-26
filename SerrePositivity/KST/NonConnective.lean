@@ -1,4 +1,10 @@
 module
+public import SerrePositivity.KST.NonConnective.DGKInputIndCompactNaturality
+public import SerrePositivity.KST.NonConnective.DGKInputIndNativeComposition
+public import SerrePositivity.KST.NonConnective.DGKInputIndMorita
+public import SerrePositivity.KST.NonConnective.DGKInputIndEquivalence
+public import SerrePositivity.KST.NonConnective.DGKInputIndExtension
+public import SerrePositivity.KST.NonConnective.DGKInputIndNativeFamily
 public import SerrePositivity.KST.NonConnective.DGKappaNullParameterPostcomposition
 public import SerrePositivity.KST.NonConnective.DGNonconnectiveKConnectiveComparison
 public import SerrePositivity.KST.NonConnective.DGNonconnectiveKMorita

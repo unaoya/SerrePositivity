@@ -18,10 +18,12 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,292 ジョブで成功。専用監査は 202 モジュール・2,268 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。所有外は未編集。
+- 今回の所有集約ビルドは 16,308 ジョブで成功。専用監査は 208 モジュール・2,350 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - 到着 K-B 7bbc95274：dgKappaCanonicalSuspensionStructureMap_nonnegative と実際の公開名 dgKappaCanonicalSuspensionStructureMap_eq を消費。DGNonconnectiveKConnectiveComparison は c5 の標準単体商比較だけに条件付きで、同じ元の全一単体・隣接安定化・連結比較・全整数末尾表示を接続。K-6 c4 の全四角形比較と K-7 c4 の全入力作用を区別する。
 - d4：DGKInputCompactNativeChoiceCoherence は I-2 e の同じ無条件生成同値から任意の逆射選択を全 native Hom 族上で比較し、恒等・三選択の合成・任意族への再制限・元の ν/Yoneda 全族への指定比較の自然性を証明。非可算 κ-cone と同じ Indω の比較、全入力高次合成と構造辺 β の自然性は別工程。
+- d4 の Indω 全体への延長：DGKInputIndNativeFamily は元の全 native Hom 族を、同じ Yoneda 制限同値の実逆で filtered 余極限保存関手へ一括延長する。元の全 Yoneda 族との比較・任意全高次パラメータへの再制限等式を保持。DGKInputIndExtension は同じ制限の充満忠実性で保存延長を比較し、DGKInputIndEquivalence は指定 ν 同値を元の Indω 間の実同値へ延長する。
+- d4・e の実射照合：DGKInputIndMorita は全 native 族から回収した元の dg 射が固定 ν 射の指定 Ind 延長と厳密一致すること、元の Morita 射の Ind 作用が実同値であることを証明。DGKInputIndNativeComposition は同じ実射の恒等・二項合成比較、DGKInputIndCompactNaturality は元の compact 包含との全 native Hom 自然性と任意族の再制限等式を供給。全高次合成整合・非可算 κ-cone 比較・各懸垂段の作用・構造辺 β の自然性・最終 K^{nc} の Morita/filtered 保存の完成は主張しない。
 - e：DGKappaStrictQuotientComparison は対象宇宙 u+1 で strict 商辺と固定 ν の Perf 商辺の Yoneda 自然性、元の strict 入力・ν・K への厳密下降四角形と下降 K 射の π 同型を接続。D の全作用や固定 ν の Verdier 認証は要求しない。一般 v への拡張は K-S• 正本の宇宙境界に従う。
 - e：DGNonconnectiveKMorita は指定実逐次比較が各実懸垂段の元の Morita K 射と可換なら、同じ非連結 K 比較の全整数 π 同型・実辺の可逆性を証明。SequentialCandidatePiColimitExchange は元の実注入を保ち、外側余錐の段別 π 余極限から同じ候補の π 余極限を得る。初期 Morita 射からの全段保存・実逐次作用、dg filtered 図式の段別保存と実 Sp filtered 余錐は未供給で、Morita・filtered 保存全体の完成とは数えない。
 - D b21e4906c の部分供給：DGKappaNullParameterPostcomposition は元の核→懸垂の同じ選択収縮に全パラメータ・全次数の後合成延長を適用し、元の成分と商延長後の前合成作用を回収する。D-8 e 本体の存在は推論しない。
