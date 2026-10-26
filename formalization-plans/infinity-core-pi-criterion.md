@@ -8,7 +8,7 @@
 - 独自集約 `PiCriterion/All.lean`、`scripts/audit_f2_pi_criterion.lean`、本計画（≤300行）。
 - 他レーンの葉・集約は編集しない。import は既コミット公開モジュールのみ。
 - 新 sorry/axiom/citation なし。`ModelCategory SSet` 不使用。
-- D の正確な型は未到着。ユーザーから暫定条件と所在なしの回答を受領（2026-10-26）。
+- D の確定型を受領。公開入力 commit `854212ffc`（10:25）。後述の型を直接消費する。
 
 ## 目標
 
@@ -62,13 +62,21 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 - `SphereClassPath`: 非基点固定の球面ホモトピーの指数転置から、両端の群の類が
   同じ path 対象の一つの群の類で得られることを証明。単体上の非相対ホモトピーと区別。
 
-## D の暫定条件（ユーザー経由）
+## D の確定条件（ユーザー経由）
+
+`Derived/CoherentBar/Compact/FilteredSpaceBridgeInput` を直接 import してよいとの指示。
+供給すべき結論は `DGBarCompactFilteredSpacePiBridge.{u, v} κ`：
+元の F,c に対する `DGBarCompactFilteredSpacePiData F c → IsColimitCone c`。
+`[Fact κ.IsRegular]`、`[IsCardinalFiltered I κ]` を保持する。
+`DGBarCompactSpacePiData` を複製しない。抽象構造を F2 へ降ろすことは R 候補。
 
 - π₀: 候補頂点の各頂点はある段階の頂点から道で来る。
   段階の二頂点の候補頂点内での同一視は、共通の後続段階で起こる。
 - 正次数: i の基点 y ごと、候補頂点への群写像が j≥i への押し出しと
   基点移送を含めた元ごとの全射・単射を満たす。
-- 群の圏の余極限は使わない。正確な Lean 型の確定は D の報告待ち。
+- 群の圏の余極限は使わない。
+- 指定辺に沿う移送は `dgBarCompactPiTransport`：境界がその辺をたどる球面円柱。
+  自由な path の存在だけへ弱めない。`positive_surjective` は返す代表に対して全ての辺を量化。
 - strict 版の参考 `KST/Spectra/FilteredHomotopyGroups.pointedHomotopyGroupColimitIso`。
 
 ## 次の作業
@@ -80,7 +88,21 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 2. 群の等式を相対球面ホモトピーとして有限検出し、poset の共通上界へ押す。
    既公開の有限 Homotopy 検出だけでは、指定基点・元の transition との整合性は未完。
 3. 元の余錐の脚と全空間比較の可換性を、同じ余錐比較の coherent 辺から回収。
-4. D 型の確定後に条件の消費定理、宇宙 w の最終型、κ-filtered poset の特殊化を接続。
+4. 確定した D 型の消費定理、宇宙 w の最終型、κ-filtered poset の特殊化を接続。
+
+## 継続作業（進行中）
+
+- `SphereClassPath` に任意の類の球面代表と元の射を保持する pointed image を追加。
+  commit `2e75cd20c`。
+- `PositiveValueRepresentatives`: 正次数の全空間の類を元の値と実際の path の群の類で表す。
+- `PiZeroRepresentatives`: π₀ の全空間の各成分に元の値の代表を取る。
+- `LiftedTotalPiCriterion`: 宇宙を分離した元の余錐の余極限性と全空間 π 判定の iff。
+- `PiPathRelation`: 自由な path による類の比較と基点表示の変更、後合成の自然性。
+  D の指定辺の条件そのものではなく、構成の中間補題。
+- `BridgeComponents`: D の構造を直接消費し、代表・脚の可換性・transition の自然性から
+  比較射の π₀ の全単射性を導く。元の coherent 図式での可換性の入力は未接続。
+- 以上5葉のビルド成功。全62宣言の標準3公理監査に成功。
+- `BridgePathTranspose` は D の指定辺を固定した path 頂点へ変換する補題を実装・検証中。
 
 ## 検証と保存
 
@@ -93,5 +115,5 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 - 外部の repo import 閉包2004本に未コミット・編集中の入力なし。
 - 基礎5葉と初期計画: `591c62fdb`。π接続・定数境界・球面path: `7cbc996e4`。
 - 独自集約: `4b511d49e`。監査と本チェックポイントを追加保存。
-- R候補の既存 API 複製は現在なし。
+- 既存 API の宇宙分離の複製は現在なし。D 入力の抽象構造を F2 に降ろすことは R 候補。
 - 最終目標の達成は未宣言。正次数の代表と同一視の filtered 段階整合性が残る。
