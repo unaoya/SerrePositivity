@@ -250,6 +250,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanUnitRecovery
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanCanonical
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanDensityImage
 public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReduction
+public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReductionUniverse
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictClassifiedIndCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.IndPreservationStrictReduction
