@@ -98,3 +98,11 @@
 - 公開名と設計はユーザーへのチャットで報告済み。予備族と指定部分に相対的な点別可逆 path の存在は未供給。実核・cone・懸垂の厳密豊穣作用や Morita・P 自然性を完成扱いしない。
 - 設計：先に構成した全族を、零骨格上の指定全比較を保つ相対 path の自明 Kan 持ち上げで元の選択へ戻す。P の指定包含にも同じ方式を検討する。単なる対象同型ではなく、指定部分上で恒等 path になる全比較が必要。
 - 二葉の対象 build 11297 jobs・Derived 集約14833 jobs成功。専用監査は2葉3宣言、許容三公理のみ、終端0。局所 import 閉包7493モジュール、循環なし。追加後の全体監査25766宣言／2943モジュール成功、許容三公理のみ、終端0（/tmp/d8e-replacement-full-audit.log）。
+
+### 同じ P/Yoneda 比較の全入力延長
+- `dgKappaNativePExactMap` は元の P・元の Yoneda・元のラベル評価を保持する完全関手。`dgKappaNativePComparisonPath` は既存の指定 Morita 逆比較の実辺を使い、境界で全 path が厳密に定値となる。
+- `dgKappaNativePFamily_exists`：同じ実評価 Morita 比較の全族 M を先行入力にすると、元の P/Yoneda 包含と指定比較の全族を実構成。全 ν 両端を固定し、各入力の同じ全比較 path を厳密に回収する。比較の全入力自然性を別の入力として残さない。
+- 公開型 `DGSuspensionNativeNaturalityModel R s` は同じ全四角形・豊穣懸垂成分と Morita 全族を保持する。`moritaIso` は全 native 入力に自然な同型を導出。`perfectFamily`・`perfectComparison`・`perfectComparison_at`・`perfectFamily_boundary` もそのデータから導出される。
+- 公開名と未供給範囲はチャットで報告済み。この型の存在、先行する四角形族と Morita 全族、元の導来模型での P.inclusion 自体の全入力比較は未供給。D-8 e 全仕様の存在証明や完成型と混同しない。
+- 対象 build 11764 jobs・Derived 集約14897 jobs成功。専用監査は3葉62宣言、許容三公理のみ、終端0。局所 import 閉包7958モジュール、循環なし。追加後の全体監査25849宣言／2947モジュール成功、許容三公理のみ、終端0（/tmp/d8e-native-p-full-audit.log）。
+- 固定閉代表族への厳密豊穣持上げの既存供給が他レーンにあるか、ユーザー経由で公開名を照会中。新しい仮定は採用していない。厳密供給路が入力の厳密同型を同じ懸垂の対象型の全単射まで保つ必要性を Lean の試作で確認（/tmp/D8eStrictIsoProbe.lean）。これは現模型での不存在の証明ではない。
