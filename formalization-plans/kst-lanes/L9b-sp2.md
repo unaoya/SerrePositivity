@@ -90,10 +90,30 @@
 - [x] `D3ComparisonHomLifting`：異なる X,Y の a_X・q_Y へ適用した `loopComparisonHomCorner_trivialKanFibration` と、任意次元 n の `loopComparisonBoundaryCorner_trivialKanFibration` を証明。
 - [x] `exists_relative_loopComparisonBoundary`／`loopComparisonBoundaryFiber_isContractibleKan`：比較 Hom の既存部分パラメータ・n 単体の全境界・元の左右境界を同時に保持。n=1 の相対自然性比較に加え高次境界も含む。
 - **未完の接続**：実際の Hom の恒等・合成から指定境界を実構成し、実 loop 図式も保持する共通解像の全 Hom 射影 RLP と豊穣法則を実証する。上記の充填器を、共通解像の完成とは扱わない。
-- 次の具体的検討：比較 c_X は全段 π 同型だが全段 RLP は未証明。c_X を相対 BF 分解して比較右脚を全段 RLP にし、元の a_X を保つ二段の相対充填から全 Hom の比較を構成する。図式比較との合成整合も同じ解像上で証明する必要がある。
+- 比較 c_X の相対 BF 分解と二段の corner 充填は下記の共通 BF 解像で実装した。実 loop 図式との合成整合は同じ解像上で別途証明する必要がある。
 - s3 再確認：更新中の L1 正本でも、共通実 S 長方形・上下指定二単体・三認証は未完。D2 の三入力の供給と、共通長方形の三認証の完成を区別する。
 
 ### 今回の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5756 jobs）。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：499 modules／5179 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - d3b② 全体、hΩ、sp_isStable は未完のまま。対象別の全四角形比較と比較 Hom の指定境界充填を、X 全体の nativeLoop 比較と取り違えない。
+
+## 2026-10-27：比較射を含む共通 BF Hom
+- `D3CompositeCorner`：二つの実相対左因子の合成に対する corner の全単射 RLP を、二段の実充填から証明。合成左因子の cofibration 性を新仮定にしない。
+- `D3SpectrumCorner`：同じ corner の BF 豊穣 Hom 表示と射影・右射影の合成を一般 BF 変数の段階で検査。具体的置換対象上で Raw と BF の引き戻しを直接書き換えると kernel の巨大展開が生じるため、この一般補題を使用する。
+- `commonRefinement`／`commonLoopInclusion`／`commonComparison`：元の c_X:L_X→M_X の相対 BF 分解。`commonComparison_fac` が同じ c_X を厳密回収。`commonComparison_rlp` は全段 RLP。
+- `commonInclusion_comparison`／`commonLoopInclusion_projection`／`commonProjection_fac`：元の包含 i_X・元の右脚 r_X・元の単位 η_X を同じ分解で保持。
+- `commonHom` は元の FullCompatible Hom の指定二境界への実引き戻し。`commonBaseMap_trivialKanFibration`／`commonOriginalMap_trivialKanFibration` は比較を含む元の全 Hom の実 RLP。
+- `commonIdentity`／`commonComposition` と `commonIdentity_composition`／`commonComposition_identity`／`commonComposition_assoc` は同じ二境界を保つ厳密な単位・合成・結合律。`CommonObject` は局所 Kan な実単体的圏。
+- `commonOriginalInfinityEquivalence`：比較射を含む同じ共通 BF 解像から元の Sp への実同値。
+- `commonInclusionFunctorIso`／`commonComparisonFunctorIso`：二段包含と指定比較右脚を成分とする全図式同型。対象別の可逆性だけでなく、同じ全 Hom 上の厳密な豊穣自然性から構成。
+- `common_right_projection`：同じ共通 Hom の右条件に元の q_Y を後合成し、元の補助標的への右射影の全パラメータ自然性を回収する。
+- 上記の全対象・専用集約・専用監査は合格。結果は下記。
+- **重要な未完**：CommonObject の Hom は包含・比較・元の q を保持する共通 BF Hom であり、実 loop 図式の族をまだ含まない。`commonComparisonFunctorIso` は nativeLoop との同型ではない。
+- **次工程**：元の実 loop 四角形を共通対象上へ、指定終点と比較成分を保って移し、同じ全 Hom と全 loop 図式の整合を実証する。元の L_X の点別図式比較や上記 Hom 射影の RLP だけから、図式を追加した射影の RLP を推論しない。hΩ・sp_isStable は未提供。
+
+### 共通 BF Hom の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5766 jobs）。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：509 modules／5344 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
+- 所有新葉・集約・計画・専用監査だけを保存。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
+- s3 は L1 正本を再確認し、共通 S 長方形と三認証が未完であることを確認。実供給が到着したら優先して接続する。

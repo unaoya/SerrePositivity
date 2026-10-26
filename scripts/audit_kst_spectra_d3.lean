@@ -30,7 +30,16 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3LoopSourceComparison,
     `SerrePositivity.KST.Spectra.D3LoopSourceCone,
     `SerrePositivity.KST.Spectra.D3LoopConeRelativeLifting,
-    `SerrePositivity.KST.Spectra.D3ComparisonHomLifting]
+    `SerrePositivity.KST.Spectra.D3ComparisonHomLifting,
+    `SerrePositivity.KST.Spectra.D3CompositeCorner,
+    `SerrePositivity.KST.Spectra.D3SpectrumCorner,
+    `SerrePositivity.KST.Spectra.D3CommonRefinement,
+    `SerrePositivity.KST.Spectra.D3CommonHom,
+    `SerrePositivity.KST.Spectra.D3CommonHomComposition,
+    `SerrePositivity.KST.Spectra.D3CommonHomLaws,
+    `SerrePositivity.KST.Spectra.D3CommonEnrichment,
+    `SerrePositivity.KST.Spectra.D3CommonCoherentComparison,
+    `SerrePositivity.KST.Spectra.D3CommonProjectionNaturality]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
