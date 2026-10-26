@@ -35205,3 +35205,39 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_fst
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_snd
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorOriginalLaxSupplyWithCone_snd
+
+-- 実逆回転 cone の全 dg 関手族と元右包含。
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeArrow
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeArrow
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeArrow_cycle
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeArrow_cycle
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeZeroBoundary
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeZeroBoundary
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_apply
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_apply
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_unit
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_unit
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_comp
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_comp
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_forward
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeHomMap_forward
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeFunctor
+#check @SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_inr
+#print axioms SerrePositivity.KST.SConstruction.dgGluingModuleConeElement_inr
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeInr
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeInr
+#check @SerrePositivity.KST.SConstruction.dgPerfectModuleUnderlying
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectModuleUnderlying
+#check @SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationStrictNatTrans
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationStrictNatTrans
+#check @SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationStrictNatTrans_arrow
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationStrictNatTrans_arrow
+#check @SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamily
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamily
+#check @SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamily_obj
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamily_obj
+#check @SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamilyInr
+#print axioms SerrePositivity.KST.SConstruction.dgHomGluingInverseRotationConeFamilyInr
