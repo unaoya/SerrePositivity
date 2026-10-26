@@ -2,84 +2,65 @@
 
 ## 引き継ぎ
 
+### 停止状態・最新コミット
+- コーディネータのレーン再編指示により停止準備を完了し、再開指示を待つ。
+- 最新実装コミット：3839a204d。直前保存：8ff1ace3c。
+  この引き継ぎの保存コミットは停止報告で通知する。
+- 二段目は任意の指定完備化射の一般共終性。無条件の主定理は未完成。
+- 検証：自所有集約ビルド成功（8956 jobs）、専用監査成功
+  （107モジュール・701宣言、標準三公理のみ）、所有範囲の diff --check 成功。
+
 ### 現在地
-- 二段目は任意の指定完備化射の一般共終性。主定理は未完成。
-- D-22（57b4a57a4）、Sp-7（c85f08b8d）、Sp-8 (1)(2)（9b6037230）を実証明で消費済み。
-- 指定完備化射は同じ全多次数の有限反復 S でも実際に冪等完備化。
-- 元の相対旗は、wide 内へ全体として持ち上がる旗を頂点とする ambient 全関手圏の全部分圏。
-  元の未置換零段と元の反復 S 対象の厳密同型は全多次数の構造射と可換。
-- 相対 core 旗の対角評価は Δ[n] → Δ[n]×Δ[n] の対角制限。
-  Sp-8 counit と rfl で一致。CompletionCoreFlagEvaluationInput を実証明で消去済み。
-- 本質像を全多次数の ClosedStablePredicate として実装。元の始域との安定模型同値、
-  S 交換同型、全 Ar 像条件、元の指定 K 射への比較を実装済み。
-- wide 成分は双積和による可換群で、元の K₀ 余核と全多次数で自然に群同型。
-- 元の区間制限・全ての面と退化による S 余核の bar 同型を構成済み。
-  群 nerve の高次消滅へ Sp-8 (2) を代入済み。
-- 元の自然な成分射影は全多次数で弱同値。元の相対先頭実現の二次以上の消滅を、
-  Sp-8 (1)(2) の追加仮定なしで公開済み。
-- K-B2-S1 は採用・発注済み。公開された明示入力付き相対四角形の正確な121葉閉包を消費。
-  本質像を代入した供給側 R_P と元の相対旗の包含を保つ厳密同型・安定模型同型を構成。
-- 元の相対旗の S 転置は、全 Ar 評価の分母判定で次段の元の相対旗へ持ち上がる。
-  逆転置も全 Ar 成分で元の相対旗へ入り、全部分圏から gapped 性を反映する。
-  completionRelativeSInterchangeIso で往復が厳密に恒等となる同型を構成済み。
-  二方向の全ての面・退化の自然性を示し、供給側の元の相対実現との同型へ接続。
-  completionClosedRelative_higher_subsingleton は供給右項の任意基点の高次消滅。
-  同じ右項の Ex∞ 模型にも任意基点での実消滅を移送済み。
-- 相対 fiber 本体の全旗自然性は未供給。公開された条件付き四角形を明示 Prop 引数で消費。
-  元の包含の Kan 四角形、実引き戻し比較、射影回収、入力下の全基点 π 同型を接続。
-  完備化前の K-6 と循環しない読み取り専用閉包だけを使用する。
+- D-22（57b4a57a4）、Sp-7（c85f08b8d）、Sp-8 (1)(2)（9b6037230）、
+  Sp-8 (3)（b9bffc3c9）を実証明で消費済み。
+- 指定完備化射の同じ全多次数の有限反復 S に対する完備化証拠、
+  本質像 ClosedStablePredicate、元の始域との安定模型同値・S 交換を実装済み。
+- 相対 core 旗の対角評価は Δ[n] → Δ[n]×Δ[n] の対角制限で、Sp-8 counit と rfl で一致。
+- wide 成分の可換群は元の K₀ 余核と全多次数で自然に群同型。
+  元の区間制限・面・退化を保つ S 余核の bar 同型と、相対先頭実現の高次消滅を構成済み。
+- 相対旗の全 Ar 転置と逆転置、二方向の面・退化の自然性を証明。
+  K-B2 供給側 R_P の元の相対実現との厳密同型へ接続済み。
+  右項の任意基点の高次消滅を continuousKanReplacement と Ex∞ の双方で証明済み。
+- 元の Kan 四角形・射影回収・可縮な核を接続し、Sp-8 (3) を実代入済み。
+  相対 fiber 入力から元の本質像包含の π₁ 単射・二次以上全単射を得る。
+- 元の core S 実現から境界商・Ex∞・SOA Kan・loop 空間への自然な比較を接続。
+  同じ元の kSpectrumMap f の正次数全単射・零次単射まで到達した。
+- 公開名 Cofinality.kSpectrumMap_cofinality_of_relativeFiber_input の唯一の残存入力は
+  Fibration.Relative.ClosedStableFlagPostPullback
+  (completionImageClosedPredicate 0 Fin.elim0 f hf)。K-B2-S1 の未供給本体である。
+  Sp-8 (1)(2)(3) の明示仮定はこの公開名には残っていない。
 
 ### 残り（三段目、依存順）
-1. [x] 所有閉包・指定 K 射・比較入口の確認。
-2. [x] D-22 を全多次数へ代入し、反復 S の実完備化証拠を構成。
-3. [ ] 相対 S• の実現比較（HLS §7.1、残り6〜10時間）。
-   相対旗 S 交換と供給右項の実現同型は完了。Kan 四角形・相対 fiber を接続する。
-4. [ ] 正次数全単射・零次単射（HLS §7.1、5〜8時間）。
-5. [ ] 同じ kSpectrumMap f への照合と一般形公開（TT 1.10.1、3〜6時間）。
-6. [ ] 自所有集約・監査・型仮定検査・限定コミット（2〜5時間）。
-- 初期総見積り24〜40時間。現在の実装は主定理の二段目完了とはしない。
+1. K-B2-S1 の相対全旗自然性・fiber 本体と上流 WeakString 共通化の供給を確認する。
+2. 本質像 P の ClosedStableFlagPostPullback を実証明で代入し、無条件の主共終性を公開する。
+3. 元の指定 kSpectrumMap f の型・追加仮定なしを確認し、自所有集約・専用監査を再実行する。
+4. 所有ファイルのみ限定保存し、公開名をユーザー経由で報告する。
+- 残る K-cof 側の消費・照合の見積り2〜4時間（供給待ちを除く）。
+  現時点を主定理の二段目完了とはしない。
 
-### 主要宣言
-- Cofinality.completionCoreFlagEvaluationInput
-- Cofinality.groupNerveHigherVanishingInput
-- Cofinality.completionRelativeHead_higher_subsingleton
-- Cofinality.completionRelativeFlagWideEvaluation_isWeak
-- Cofinality.cutCokernelBarIso
-- Cofinality.completionWideKZeroObstructionEquiv
-- Cofinality.completionClosedFlagStableIso
-- Cofinality.completionRelativeSTranspose
-- Cofinality.completionClosedRelativeRealizationIso
-- Cofinality.completionClosedRelative_higher_subsingleton
+### 依存と import 境界
+- 所有：KST/SConstruction/Cofinality/ 新規葉、同名集約、専用監査、本計画。
+- 既存 SConstruction・InfinityCategories・他レーンの集約・監査は読み取り専用。
+  Fibration は監査の正確な121葉閉包だけを許可。NonConnective は不使用。
+- Sp-8 (3) は独立入口 CoreFlag.KanPullbackAll から消費。
+  一般補助葉は入力定義に非依存、互換定理のみ Cofinality の入力定義を import する。
+  入力定義・旧 CoreFlag.All は KanPullbackAll と K-cof 消費葉を import しない。
+  新消費葉の局所 import 閉包5532モジュールの非循環を確認済み。
+- K-B2 共通葉は Cofinality/NonConnective を import せず、完備化前 K-6 と循環しない。
+- 始域の完備性・全射 K₀・ModelCategory SSet を主経路へ追加しない。
 
-### 依存と提供
-- 所有：KST/SConstruction/Cofinality/ 新規葉、同名集約、
-  scripts/audit_kst_cofinality.lean、本計画（300行以内）。
-- 読取専用：既存 SConstruction、F2/Idempotent、Stable/D-22、Sp/LocalizingInvariants。
-  Fibration は採用済み旗定義の正確な121葉閉包だけを監査で許可。NonConnective は不使用。
-- InfinityCategories、既存 SConstruction・他レーンの集約・監査は編集しない。
+### 未送付の供給依頼・設計提案
+- なし。K-B2-S1 は既に採用・発注済みであり、残る既存依頼はその供給のみ。
+- Sp-8 (3) は到着・消費済み。追加の分担変更は提案していない。
 
-### 保存範囲・未コミット
-- 1753deeff：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
-- 0c5d6b4ea：元の区間制限・切断による K₀ とその余核の直積分解。
-- 1d7d3618c：元の S 余核の bar 同型と条件付き高次消滅。
-- 202d72e78：元の相対先頭実現への条件付き高次消滅の接続。
-- fd7a87922：Sp-8 実消費、K-B2 の旗同型と元の相対旗の S 転置・逆転置。
-- 今回：供給側の相対実現との同型・元の右項の無条件な高次消滅、
-  明示入力付きの元の Kan 四角形・射影回収・可縮な核の全次数消滅。
-  所有葉・集約・監査・本計画を限定保存する。実施記録はコミット本文。
+### 未追跡のまま残す所有ファイル
+- なし。今回の新規10葉はすべて集約ビルド・専用監査を通過して3839a204dに保存済み。
+  ビルド不能な作業中ファイルもない。他レーンの未追跡ファイルは対象外。
 
-### 既知の問題
-- 主共終性・相対 fiber 本体・元の包含の Kan 完全列への接続は未完成。
-- F ⊕ ΣF の像回収から元の F の像回収や K 射の正次数同型を推論しない。
-- 主経路に始域の完備性・全射 K₀・ModelCategory SSet を追加しない。
-- 検証済み：集約ビルド成功（8924 jobs）、97モジュール・674宣言の公理監査成功。
-  標準三公理のみ、型の ModelCategory 仮定・禁止 import・新規 sorry・公理なし。
-
-### 次の一手
-- 一般 Kan 引き戻しの射影の群条件の追加供給をユーザー経由で提案（末尾、未採用）。
-  採用時は元の Kan 四角形へ代入し、元の境界 K 空間との loop 比較を接続する。
-- K-B2-S1 の相対 fiber 本体到着後、元の相対先頭実現の無条件な高次消滅を代入する。
-  元の kSpectrumMap の正次数全単射・零次単射は未完。
+### 再開の第一工程
+- K-B2-S1 の ClosedStableFlagPostPullback の実証明が到着しているかを確認する。
+  到着後、KanPullbackSupply の kSpectrumMap_cofinality_of_relativeFiber_input へ代入する。
+  供給が未到着なら新規項目へ進まず、再開時の指示に従う。
 
 ## 目標型
 
@@ -169,9 +150,9 @@
 - 見積り：供給2〜4時間、K-cof 消費1〜3時間。
 
 
-## 提案中：一般 Kan 引き戻しの第一射影の群条件（未採用）
+## 採用済み Sp-8 (3)：一般 Kan 引き戻しの第一射影の群条件
 
-- Sp への追加供給をユーザー経由で提案する。一般空間の完全列の計算は Spectra 正本。
+- Sp-8 (3) は b9bffc3c9 で到着し、KanPullbackSupply で実証明を消費済み。
 - 正確な型は `Cofinality.KanPullbackCofinalityInput`。公理ではなく Prop 値の明示入力。
 - 入力：Kan 複体 P, X, E, B、元の厳密 pullback 四角形 (q,s,g,p)、p の全 horn RLP、
   E の全基点・全次数のホモトピーの一意性、B の全基点で二次以上の一意性。
@@ -180,7 +161,8 @@
 - 既存の Spectra/FibrationExactness・FibrationNaturality は完全列と fiberMap を供給する。
   そのまま渡せる一般 pullback 射影のこの群条件は検索で見つかっていない。
 - K-cof は元の相対実現の同型・両角の消滅・元の包含の Kan 比較を保持する。
-  一般供給には SConstruction/Cofinality を import させない。
+  一般補助葉は入力定義に非依存。互換定理の入力定義への import は独立集約に隔離する。
+  旧 CoreFlag.All と入力定義から KanPullbackAll・消費葉への逆 import を禁止する。
 - 見積り：一般供給2〜4時間、元の相対四角形への代入と K 境界比較2〜4時間。
 - foundations §6 の Sp 所有、§8 運用 v3(2)(4) に基づく分担変更の提案。
-  主結論にこの入力を残す変更ではない。設計提案時の規約に従い停止する。
+  主結論にこの入力を残す変更ではない。実証明を代入し、K 境界比較も接続済み。
