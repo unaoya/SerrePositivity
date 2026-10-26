@@ -124,6 +124,28 @@ public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSInverse
 
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSInterchange
 
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedSFlagComparison
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedSFlagInclusion
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedSFlagNaturality
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedSFlagSNaturality
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedSFlagDiagramIso
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedRelativeRealizationIso
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedRelativeVanishing
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedRelativeExInfinityVanishing
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFiberKanSquare
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedKernelExInfinityVanishing
+
+public import SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput
+
 /-!
 概要：K-cof 所有の共終性補助結果を集約する。
 方針：新規葉だけを公開し、既存の S• 集約には逆依存を加えない。
