@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortFaces
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperBoundaryEdges
+public import SerrePositivity.KST.Fibration.ZeroMiddleNativeUpperBoundary
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperNativeEndpoints
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortEndpoints
 public import SerrePositivity.KST.Fibration.ClosedCofiberRawProjection

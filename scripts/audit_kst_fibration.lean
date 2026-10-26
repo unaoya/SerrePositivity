@@ -7,6 +7,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.VerdierMovingUpperShortFaces,
+    `SerrePositivity.KST.Fibration.VerdierMovingUpperBoundaryEdges,
+    `SerrePositivity.KST.Fibration.ZeroMiddleNativeUpperBoundary,
+
     `SerrePositivity.KST.Fibration.VerdierMovingUpperNativeEndpoints,
     `SerrePositivity.KST.Fibration.VerdierMovingUpperShortEndpoints,
 
