@@ -63,6 +63,17 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Eva
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationScalarClosedMap
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationVertexPiChart
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationClosedNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationEdgeNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CoconeLegNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationCoconeGeometry
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationHomologyCoefficients
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationHomologyCharts
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationChartNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationChartLegs
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationPiData
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationPreservation
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnconditionalConeInput
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnconditionalPerfectInput
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。

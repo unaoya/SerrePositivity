@@ -73,7 +73,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationPiChart,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationScalarClosedMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationVertexPiChart,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationClosedNaturality]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationClosedNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationEdgeNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.CoconeLegNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationCoconeGeometry,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationHomologyCoefficients,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationHomologyCharts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationChartNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationChartLegs,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationPiData,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationPreservation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnconditionalConeInput,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnconditionalPerfectInput]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -89,3 +100,8 @@ run_cmd do
     unless counts[position]! > 0 do
       throwError "No declarations checked in {modules[position]!}"
   logInfo m!"D compact audit passed: {counts.foldl (· + ·) (0 : Nat)} declarations in {modules.size} modules."
+
+#check SerrePositivity.InfinityCategories.dgKappaConeInput_unconditional
+#check SerrePositivity.InfinityCategories.dgKappaPerfectInput_unconditional
+#check SerrePositivity.InfinityCategories.dgKappaConeInput_unconditional_derivedFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.dgKappaConeInput_unconditional
