@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMapShiftedPi
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMapExactPi
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMapEventualPi
 public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalBFComparison
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalStageSupply
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalConeZero

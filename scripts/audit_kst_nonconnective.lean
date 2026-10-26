@@ -7,6 +7,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.SequentialCandidateMapShiftedPi,
+    `SerrePositivity.KST.NonConnective.SequentialCandidateMapExactPi,
+    `SerrePositivity.KST.NonConnective.SequentialCandidateMapEventualPi,
     `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalBFComparison,
     `SerrePositivity.KST.NonConnective.DGKappaUnconditionalStageSupply,
     `SerrePositivity.KST.NonConnective.DGKappaUnconditionalConeZero,
@@ -323,3 +326,16 @@ run_cmd do
 
 #check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalBFSOAComparison_nonnegative
 #check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalBFCandidate_tailPiEquiv_succ
+
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_pi_injective_of_eventually
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_pi_surjective_of_eventually
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_isInvertible_of_eventually
+
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_mulExact_of_eventually
+
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_piIsomorphism_of_nonnegative_shift
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_mulExact_of_nonnegative_shift
+
+#check SerrePositivity.KST.NonConnective.dgSuspensionNativeSquareDiagramFamily_recovery
+#check SerrePositivity.KST.NonConnective.dgSuspensionNativeKSquareIterationFamily_at
+#check SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput.ofSquareFamily
