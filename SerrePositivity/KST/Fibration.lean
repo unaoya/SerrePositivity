@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperNativeEndpoints
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortEndpoints
 public import SerrePositivity.KST.Fibration.ClosedCofiberRawProjection
 public import SerrePositivity.KST.Fibration.ClosedKernelCoefficient
 public import SerrePositivity.KST.Fibration.ClosedFlagCofiberPostcomparison

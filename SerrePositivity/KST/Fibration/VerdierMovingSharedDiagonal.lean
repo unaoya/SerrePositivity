@@ -1,6 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierNativeDiagonalCoordinates
 public import SerrePositivity.KST.Fibration.VerdierReadoutMovingLongInput
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperNativeEndpoints
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperShortEndpoints
 public import SerrePositivity.KST.Fibration.VerdierLowerSuppliedNormalization
 
 /-!
@@ -22,23 +24,36 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 概要：同じ実下側の正規化と動く実上側族を、同じ全共有対角で接続する。
 方針：元の下側読出しを固定境界付きで合成し、その同じ実長 Hom を再構成する。
-規約：上側第二短辺を定値へ置き換えず、全一単体の比較を保持する。
+規約：上側第二短辺を定値へ置き換えず、全一単体の比較と同じ両端の全 native Hom を保持する。
 使われ方：残る指定有限端点・同じ三面内比較を行うための実上下族。 -/
-theorem verdierMovingSharedDiagonal_exists (d : VerdierDiagram.{u}) :
+theorem verdierMovingSharedDiagonal_nativeEndpoints_exists (d : VerdierDiagram.{u}) :
     ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
       Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
       ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N =
         fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d ∧
       ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ F = verdierMovingUpperHorn d ∧
       (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ N =
-        (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ F := by
+        (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ F ∧
+      HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+          (verdierOriginalNativeHomFamily d 0)))
+        (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+          ((SSet.yonedaEquiv (familyAtVertex F
+            (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) ∧
+      HEq (functorVertex (SSet.const
+          (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+          (verdierNativeCompositePoint d 1)))
+        (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+          ((SSet.yonedaEquiv (familyAtVertex F
+            (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) := by
   obtain ⟨N, L, hN, hNhorn, hNdiag, hL, hread⟩ :=
     verdierLowerNormalizedReconstruction_supplied d
   have hRec := verdierLowerNormalizedReadout_recovery d L hread
   obtain ⟨H, T, hT⟩ := verdierReadoutRelativeComposition_exists d L hRec hL
   let ℓ := verdierReadoutMovingLongInput d L hRec hL H T hT
   let F := verdierMovingUpperFamily d ℓ
-  refine ⟨N, F, hN, hNhorn, verdierMovingUpperFamily_horn d ℓ, ?_⟩
+  refine ⟨N, F, hN, hNhorn, verdierMovingUpperFamily_horn d ℓ, ?_,
+    verdierMovingUpperFamily_first_native d L hRec hL H T hT,
+    verdierMovingUpperFamily_last_native d L hRec hL H T hT⟩
   let direct : TriangleNativePath.{u} :=
     { I := {ULift.up 0, ULift.up 2}
       left := by simp
@@ -65,5 +80,20 @@ theorem verdierMovingSharedDiagonal_exists (d : VerdierDiagram.{u}) :
     (L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct))))
   exact hlower.trans ((congrArg (verdierNativeDiagonalFamily d Δ[1])
     (hd.trans hlow).symm).trans hF.symm)
+
+/-- 概要：同じ実下側と動く上側全族を、全共有対角で接続する既存の公開形。
+方針：同じ実両端の全 native Hom も持つ強化存在定理を特殊化する。
+規約：既存の公開型を保持。使われ方：元の全四角形比較への利用側。 -/
+theorem verdierMovingSharedDiagonal_exists (d : VerdierDiagram.{u}) :
+    ∃ (N F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u}),
+      Nonempty (FunctorIso (verdierFullSLowerDeformation d).h N) ∧
+      ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ N =
+        fst (Λ[2, 1] : SSet.{u + 1}) Δ[1] ≫ verdierFullSLowerHorn d ∧
+      ((horn 2 (1 : Fin 3)).ι ▷ Δ[1]) ≫ F = verdierMovingUpperHorn d ∧
+      (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ N =
+        (stdSimplex.δ (1 : Fin 3) ▷ Δ[1]) ≫ F := by
+  obtain ⟨N, F, hN, hNhorn, hFhorn, hdiag, _, _⟩ :=
+    verdierMovingSharedDiagonal_nativeEndpoints_exists d
+  exact ⟨N, F, hN, hNhorn, hFhorn, hdiag⟩
 
 end SerrePositivity.KST.Fibration
