@@ -2839,4 +2839,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroLeftDiagramHom
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroTopDiagramHomotopy
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismSideHomotopies
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismSideBoundary
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismTriangleFaces
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryHomotopy
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
