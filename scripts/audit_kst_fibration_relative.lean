@@ -14,7 +14,9 @@ run_cmd do
   let expected := #[
     `SerrePositivity.KST.Fibration.Relative.FiniteCoordinates,
     `SerrePositivity.KST.Fibration.Relative.CoordinatePostcomp,
-    `SerrePositivity.KST.Fibration.Relative.AdditivityFiber]
+    `SerrePositivity.KST.Fibration.Relative.AdditivityFiber,
+    `SerrePositivity.KST.Fibration.Relative.ConnectiveInterface,
+    `SerrePositivity.KST.Fibration.Relative.SingleStageDetection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

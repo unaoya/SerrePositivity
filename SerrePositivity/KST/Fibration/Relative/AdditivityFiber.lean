@@ -90,4 +90,15 @@ def singleAdditivityFiberIso
   additivityFiberIsoOfKernelContractible h 0
     (weakStringKernelDiagonal_toPoint_localized_isIso h) (singleAdditivityBasepoint h)
 
+/-- 概要：単回の実 fiber 同型の射影は元の包含の実現射そのもの。
+方針：一般の射影公式へ既存の単回核収縮を代入する。
+規約：同じ実 fiber・基点を保持。使われ方：K-6 b の両射を保つ fiber 列。 -/
+theorem singleAdditivityFiberIso_projection
+    {A B C : StableCategory.{u}} {i : ExactMap A B} {q : ExactMap B C}
+    (h : IsVerdierSequence i q) :
+    (singleAdditivityFiberIso h).hom ≫ AnodyneHomotopy.anodyneQ.map (pullback.fst _ _) =
+      AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor 1).map (sInputExactMap i)) :=
+  additivityFiberIsoOfKernelContractible_projection h 0
+    (weakStringKernelDiagonal_toPoint_localized_isIso h) (singleAdditivityBasepoint h)
+
 end SerrePositivity.KST.Fibration.Relative

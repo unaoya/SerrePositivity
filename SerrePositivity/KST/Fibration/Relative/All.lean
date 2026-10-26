@@ -2,6 +2,8 @@ module
 public import SerrePositivity.KST.Fibration.Relative.FiniteCoordinates
 public import SerrePositivity.KST.Fibration.Relative.CoordinatePostcomp
 public import SerrePositivity.KST.Fibration.Relative.AdditivityFiber
+public import SerrePositivity.KST.Fibration.Relative.SingleStageDetection
+public import SerrePositivity.KST.Fibration.Relative.ConnectiveInterface
 
 /-!
 概要：K-B2 の所有葉の集約。
