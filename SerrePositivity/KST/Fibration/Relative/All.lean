@@ -8,6 +8,7 @@ public import SerrePositivity.KST.Fibration.Relative.CanonicalSingleStageDetecti
 public import SerrePositivity.KST.Fibration.Relative.CanonicalFixedSourceFiber
 public import SerrePositivity.KST.Fibration.Relative.CanonicalSuspensionInput
 public import SerrePositivity.KST.Fibration.Relative.ConnectiveFibrationTheorem
+public import SerrePositivity.KST.Fibration.Relative.ConnectiveFibration
 
 /-!
 概要：K-6 b の相対構成と d の単回検出・固定始点比較の集約。

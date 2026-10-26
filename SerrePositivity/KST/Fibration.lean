@@ -761,3 +761,4 @@ public import SerrePositivity.KST.Fibration.Relative.FirstRowSimplexComparison
 public import SerrePositivity.KST.Fibration.Relative.FibrationSupply
 public import SerrePositivity.KST.Fibration.Relative.CanonicalComparison
 public import SerrePositivity.KST.Fibration.Relative.CanonicalRealization
+public import SerrePositivity.KST.Fibration.Relative.SuppliedRealization
