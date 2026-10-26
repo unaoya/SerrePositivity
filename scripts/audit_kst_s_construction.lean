@@ -35359,3 +35359,40 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgConeLiftCochain_naturality
 #check @SerrePositivity.KST.SConstruction.dgConeLiftModule_naturality
 #print axioms SerrePositivity.KST.SConstruction.dgConeLiftModule_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap_cycle
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap_cycle
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeLiftMap_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeLift
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeLift
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationFirst_eq
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationFirst_eq
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationFirst_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationFirst_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSecond_eq
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSecond_eq
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSecond_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSecond_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_boundary
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom
+
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_arrow
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_arrow
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_input_hom
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_input_hom
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_isIso
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_isIso
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_pointwise
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHom_pointwise
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHomNerveComparison
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationHomNerveComparison
+
+#check @SerrePositivity.KST.SConstruction.dgModuleRotationLift_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgModuleRotationLift_boundary
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSquare_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeRotationSquare_boundary

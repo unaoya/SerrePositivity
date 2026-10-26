@@ -3061,4 +3061,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvNa
 public import SerrePositivity.KST.SConstruction.DGConeLiftCochainNaturality
 public import SerrePositivity.KST.SConstruction.DGConeLiftModuleNaturality
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeLift
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationHomInputs
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationHom
+
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationHomComparison
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationHomNative
+
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/
