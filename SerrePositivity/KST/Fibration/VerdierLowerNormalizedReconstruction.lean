@@ -20,10 +20,11 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 概要：実下側族は同じ全 native Hom 読出しと正規化側の厳密対角を持つ族へ可逆比較される。
 方針：元の下側全変形を固定ホーン fiber の指定点として同じ再構成へ渡す。
-規約：Ind-S (9) に条件付き。元の全族・短辺・各入力点の全 native Hom を保持する。
+規約：Ind-S (9) に条件付き。切断・読出し合成の比較条項には依存しない。
 使われ方：上側の正規化族との共有対角の照合に渡す実下側の長 Hom 族。 -/
 theorem verdierLowerNormalizedReconstruction_exists (d : VerdierDiagram.{u})
-    (h9 : zeroMiddleControlledTriangleSupply.{u}) :
+    {comparison : ∀ (A : SSet.{u + 1}), (A ⟶ A) → Prop}
+    (h9 : zeroMiddleControlledTriangleSupplyWith comparison) :
     let P := SimplicialThickening.Path
       (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)
     let full : P :=

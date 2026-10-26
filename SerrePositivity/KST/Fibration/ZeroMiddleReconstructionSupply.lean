@@ -29,7 +29,8 @@ namespace SerrePositivity.KST.Fibration
 方針：採用済み Ind-S (9) の encode・longHom と固定三面比較をそのまま型にする。
 規約：命題の証明や主経路の新しい存在仮定は追加しない。
 使われ方：供給前の再構成利用側の明示定理引数。 -/
-def zeroMiddleControlledTriangleSupply : Prop :=
+def zeroMiddleControlledTriangleSupplyWith
+    (comparison : ∀ (A : SSet.{u + 1}), (A ⟶ A) → Prop) : Prop :=
   ∀ (X Y Z : KanObject.{u}) (K : SSet.{u + 1})
     (f : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom X Y))
     (g : K ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (SimplicialCategory.sHom Y Z))
@@ -57,7 +58,7 @@ def zeroMiddleControlledTriangleSupply : Prop :=
   let T := vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u})
     (functorVertex a)
   ∃ (encode : L ⟶ T) (longHom : T ⟶ L),
-    encode ≫ longHom = 𝟙 L ∧
+    comparison L (encode ≫ longHom) ∧
     (∀ (t : T _⦋0⦌) (k : K _⦋0⦌),
       let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
         ((longHom.app (Opposite.op ⦋0⦌) t).val)
@@ -89,6 +90,21 @@ def zeroMiddleControlledTriangleSupply : Prop :=
         (functorVertex b)
       IsContractibleKan E ∧ ∀ old controlled : E _⦋0⦌,
         Nonempty (VertexIso old controlled))
+
+/-- 概要：旧仕様の厳密切断に条件付きの再構成命題を保持する。
+方針：共通仕様の比較条項を厳密等式へ特殊化する。
+規約：この仕様の実供給は要求しない。採用済み経路は可逆比較版を使う。
+使われ方：旧条件付き定理の型と証明の保存。 -/
+def zeroMiddleControlledTriangleSupply : Prop :=
+  zeroMiddleControlledTriangleSupplyWith.{u} (fun A e => e = 𝟙 A)
+
+/-- 概要：厳密切断を要求せず全族の可逆比較で長 Hom を回収する採用済み供給命題。
+方針：同じ二短辺・native Hom 回収・正規化対角・固定ホーン内同型を保持する。
+規約：存在は主張しない。比較は長 Hom 族の空間上の全関手同型である。
+使われ方：K-6 c4 の新仕様に条件付きの正規化と可逆移送。 -/
+def zeroMiddleControlledTriangleComparisonSupply : Prop :=
+  zeroMiddleControlledTriangleSupplyWith.{u}
+    (fun A e => Nonempty (FunctorIso e (𝟙 A)))
 
 /-- 概要：元の二胞体と二つの合成面を保つ因子分解三単体族の供給命題。
 方針：採用済み Ind-S (9b) の三面回収と欠面の指定点の全 native Hom 回収を保持する。
