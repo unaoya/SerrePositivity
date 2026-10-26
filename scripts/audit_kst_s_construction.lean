@@ -33614,3 +33614,42 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_maximal
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteUpperHom_maximal
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroToZero_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroToZero_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuZeroLeftArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuZeroLeftArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy_paths
+
+#check @SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuZeroTopArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.exists_dgOdotMilnorNuZeroTopArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy_paths
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowHomotopy_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowHomotopy_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectLeftArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectLeftArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopArrowComparison

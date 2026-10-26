@@ -2819,4 +2819,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullDiagonalCompar
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullDiagonalBoundary
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroArrowHomotopies
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroArrowComparisons
+
 /-! # ∞-S• 構成と連結 K 理論 -/
