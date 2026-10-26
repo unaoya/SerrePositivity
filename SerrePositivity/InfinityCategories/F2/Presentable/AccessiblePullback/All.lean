@@ -153,6 +153,40 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullba
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleInputComparison
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StableInputLifting
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputPullbackGluing
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputVertexProjection
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputCompactGluing
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputCoconeRecovery
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactInputSliceCocones
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactCommaFiltered
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputFunctorColimits
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeInputComparison
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.AccessibleRelativeInputComparison
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputRestriction
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.InputRestrictionProjection
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeInputPostcomp
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.RelativeInputColimits
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputComparison
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StrictInputCompactProjection
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedInputGluing
+
 /-!
 概要：accessible 引き戻し一般版の所有する新規界面を集約する。
 方針：共通 κ₀ と μ、小表示部分、長さ κ₀ の相対交互構成、生成表示を順に接続する。
