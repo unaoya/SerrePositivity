@@ -107,6 +107,8 @@ public import SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachm
 public import SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares
+public import SerrePositivity.KST.LocalizingInvariants.CosliceRoofPasting
+public import SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowQuotientPasting
 public import SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle
 public import SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement

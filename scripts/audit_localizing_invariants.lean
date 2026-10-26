@@ -116,6 +116,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed,
     `SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization,
     `SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares,
+    `SerrePositivity.KST.LocalizingInvariants.CosliceRoofPasting,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowQuotientPasting,
     `SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle,
     `SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement,

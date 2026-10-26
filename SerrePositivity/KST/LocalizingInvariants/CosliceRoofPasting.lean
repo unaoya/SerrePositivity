@@ -1,0 +1,238 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares
+public import SerrePositivity.InfinityCategories.Stable.PastingCornerGluing
+public import SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso
+public import SerrePositivity.InfinityCategories.Stable.GridOpposite
+public import SerrePositivity.InfinityCategories.Core.JoinReverseFactors
+public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
+
+/-!
+概要：指定商四角形と同じ coslice 内の分数三角形を、実合成三角柱へ貼る。
+方針：五頂点の貼合せを反転し、始点の join 表示で三角柱へ戻す。
+規約：元の全四角形と指定三角形を保持し、合成を Hom 類で選び直さない。
+使われ方：回収した二つの実四角形の商像を元の商四角形へ接続する。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory CategoryTheory.Limits MonoidalCategory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.LocalizingInvariants
+
+/-- 両座標の反転をまとめた標準格子の同型。 -/
+def roofGridReverseIso (m n : ℕ) :
+    (Δ[m] : SSet.{u}) ⊗ Δ[n] ≅ ((Δ[m] : SSet.{u}) ⊗ Δ[n]).op :=
+  tensorIso (stdSimplex.opIso ⦋m⦌).symm (stdSimplex.opIso ⦋n⦌).symm ≪≫
+    opTensorIso Δ[m] Δ[n]
+
+lemma roofGridReverseIso_hom_map {X : SSet.{u}} {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⊗ Δ[n] ⟶ X) :
+    (roofGridReverseIso m n).hom ≫ SSet.opFunctor.map f = reverseGrid f := rfl
+
+/-- 五頂点図式の反転に同じ始点を付けた、三角柱全体の表示。 -/
+def roofPastingPrismIso : join (Δ[0] : SSet.{u}) (pastingCorner : SSet.{u}).op ≅
+    (Δ[2] : SSet.{u}) ⊗ Δ[1] :=
+  joinIso (stdSimplex.opIso ⦋0⦌).symm (Iso.refl _) ≪≫
+    (stableJoinReverseIso (pastingCorner : SSet.{u}) Δ[0]).symm ≪≫
+    SSet.opFunctor.mapIso pastingCornerJoinIso ≪≫
+    (roofGridReverseIso 2 1).symm
+
+/-- 三角柱の残る五頂点の包含。 -/
+def roofPastingCornerInclusion : (pastingCorner : SSet.{u}).op ⟶
+    (Δ[2] : SSet.{u}) ⊗ Δ[1] :=
+  SSet.opFunctor.map pastingCorner.ι ≫ (roofGridReverseIso 2 1).inv
+
+lemma roofPastingPrismIso_inr : joinInr (Δ[0] : SSet.{u}) (pastingCorner : SSet.{u}).op ≫
+    roofPastingPrismIso.hom = roofPastingCornerInclusion := by
+  simp only [roofPastingPrismIso, Iso.trans_hom, joinIso, Iso.symm_hom,
+    roofPastingCornerInclusion]
+  rw [← Category.assoc (joinInr _ _) (joinMap _ _), joinInr_joinMap,
+    Iso.refl_hom, Category.id_comp, ← Category.assoc (joinInr _ _) (stableJoinReverseIso _ _).inv,
+    stableJoinReverse_inr_inv]
+  simp only [Functor.mapIso_hom]
+  rw [← Category.assoc, ← SSet.opFunctor.map_comp]
+  change SSet.opFunctor.map (joinInl _ _ ≫ pastingCornerCocone) ≫ _ = _
+  rw [pastingCornerCocone_inl]
+
+/-- 原四角形の、反転した五頂点図式への包含。 -/
+def roofPastingSquareInclusion : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶
+    (pastingCorner : SSet.{u}).op :=
+  (roofGridReverseIso 1 1).hom ≫ SSet.opFunctor.map pastingCornerLeftInclusion
+
+lemma roofPastingSquareInclusion_corner : roofPastingSquareInclusion.{u} ≫
+    roofPastingCornerInclusion = stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u}) := by
+  apply (cancel_mono (roofGridReverseIso 2 1).hom).mp
+  simp only [roofPastingSquareInclusion, roofPastingCornerInclusion,
+    Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  rw [← SSet.opFunctor.map_comp]
+  have hi : pastingCornerLeftInclusion.{u} ≫ pastingCorner.ι =
+      stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u}) := by
+    change pastingLeftSquareIso.hom ≫
+      (Subcomplex.homOfLE pastingLeftSquare_le_corner ≫ pastingCorner.ι) = _
+    exact pastingLeftSquareIso_hom_ι
+  rw [hi]
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  rintro ⟨s, t⟩
+  apply Prod.ext
+  · apply SSet.stdSimplex.ext
+    intro j
+    change (SimplexCategory.δ (2 : Fin 3)).toOrderHom ((s j.rev).rev) =
+      ((SimplexCategory.δ (0 : Fin 3)).toOrderHom (s j.rev)).rev
+    exact (by decide : ∀ v : Fin 2,
+      (SimplexCategory.δ (2 : Fin 3)).toOrderHom v.rev =
+        ((SimplexCategory.δ (0 : Fin 3)).toOrderHom v).rev) (s j.rev)
+  · rfl
+
+/-- 指定分数三角形の、反転した五頂点図式への包含。 -/
+def roofPastingTriangleInclusion : (Δ[2] : SSet.{u}) ⟶
+    (pastingCorner : SSet.{u}).op :=
+  (stdSimplex.opIso ⦋2⦌).inv ≫ SSet.opFunctor.map pastingCornerBottomInclusion
+
+lemma roofPastingTriangleInclusion_corner : roofPastingTriangleInclusion.{u} ≫
+    roofPastingCornerInclusion = CartesianMonoidalCategory.lift (𝟙 Δ[2])
+      (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
+  apply (cancel_mono (roofGridReverseIso 2 1).hom).mp
+  simp only [roofPastingTriangleInclusion, roofPastingCornerInclusion,
+    Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  rw [← SSet.opFunctor.map_comp]
+  have hi : pastingCornerBottomInclusion.{u} ≫ pastingCorner.ι =
+      CartesianMonoidalCategory.lift (𝟙 Δ[2])
+        (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro t
+    rfl
+  rw [hi]
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro t
+  rfl
+
+/-- 同じ指定単体を、頂点順と値域を同時に反転する。 -/
+def roofReverseSimplex {X : SSet.{u}} {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ X) :
+    (Δ[n] : SSet.{u}) ⟶ X.op :=
+  (stdSimplex.opIso ⦋n⦌).inv ≫ SSet.opFunctor.map f
+
+lemma roofReverseSquare_bottom {X : SSet.{u}}
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
+    squareBottomEdge ≫ reverseGrid ((β_ Δ[1] Δ[1]).hom ≫ F) =
+      roofReverseSimplex (squareRightEdge ≫ F) := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro s
+  rfl
+
+lemma roofReverseTriangle_last {X : SSet.{u}} (σ : (Δ[2] : SSet.{u}) ⟶ X) :
+    stdSimplex.δ (2 : Fin 3) ≫ roofReverseSimplex σ =
+      roofReverseSimplex (stdSimplex.δ (0 : Fin 3) ≫ σ) := by
+  apply SSet.hom_ext
+  rintro ⟨⟨n⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro s
+  change SSet.opObjEquiv.symm (σ.app _ _) = SSet.opObjEquiv.symm (σ.app _ _)
+  congr 2
+  apply SSet.stdSimplex.ext
+  intro j
+  change ((SimplexCategory.δ (2 : Fin 3)).toOrderHom (s j.rev)).rev =
+    (SimplexCategory.δ (0 : Fin 3)).toOrderHom ((s j.rev).rev)
+  exact (by decide : ∀ v : Fin 2,
+    ((SimplexCategory.δ (2 : Fin 3)).toOrderHom v).rev =
+      (SimplexCategory.δ (0 : Fin 3)).toOrderHom v.rev) (s j.rev)
+
+lemma roofReverseSimplex_double {X : SSet.{u}} {n : ℕ}
+    (f : (Δ[n] : SSet.{u}) ⟶ X) :
+    roofReverseSimplex (roofReverseSimplex f) ≫
+      (SSet.opFunctorCompOpFunctorIso.app X).hom = f := by
+  apply SSet.hom_ext
+  rintro ⟨⟨d⟩⟩
+  apply ConcreteCategory.hom_ext
+  intro t
+  change f.app _ _ = f.app _ t
+  congr 1
+  apply SSet.stdSimplex.ext
+  intro j
+  change ((t j.rev.rev).rev).rev = t j
+  simp
+
+/-- 元の商四角形と実分数三角形の同じ共有辺に沿う、五頂点の全 coslice 図式。 -/
+def roofPastingCosliceDiagram {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder a)
+    (σ : (Δ[2] : SSet.{u}) ⟶ sliceUnder a)
+    (hσ : stdSimplex.δ (0 : Fin 3) ≫ σ = squareRightEdge ≫ F) :
+    (pastingCorner : SSet.{u}).op ⟶ sliceUnder a :=
+  SSet.opFunctor.map (pastingCornerGlue
+    (reverseGrid ((β_ Δ[1] Δ[1]).hom ≫ F)) (roofReverseSimplex σ) (by
+      rw [roofReverseSquare_bottom, roofReverseTriangle_last, hσ])) ≫
+    (SSet.opFunctorCompOpFunctorIso.app (sliceUnder a)).hom
+
+/-- 全 coslice 貼合せから取り出す、同じ指定商四角形を含む実合成三角柱。 -/
+def roofPastingPrism {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder a)
+    (σ : (Δ[2] : SSet.{u}) ⟶ sliceUnder a)
+    (hσ : stdSimplex.δ (0 : Fin 3) ≫ σ = squareRightEdge ≫ F) :
+    (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X :=
+  roofPastingPrismIso.inv ≫ sliceUnderUncurry (roofPastingCosliceDiagram F σ hσ)
+
+/-- 同じ商四角形を、三角柱の元の面として厳密に保持する。 -/
+lemma roofPastingPrism_original {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder a)
+    (σ : (Δ[2] : SSet.{u}) ⟶ sliceUnder a)
+    (hσ : stdSimplex.δ (0 : Fin 3) ≫ σ = squareRightEdge ≫ F) :
+    pastingSquare (roofPastingPrism F σ hσ) 0 =
+      (β_ Δ[1] Δ[1]).hom ≫ F ≫ sliceUnderProjection a := by
+  have hi : (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫
+      roofPastingPrismIso.inv = roofPastingSquareInclusion ≫ joinInr Δ[0] _ := by
+    apply (cancel_mono roofPastingPrismIso.hom).mp
+    simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    rw [roofPastingPrismIso_inr, roofPastingSquareInclusion_corner]
+  change (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫
+    (roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
+  rw [← Category.assoc, hi, Category.assoc, sliceUnderUncurry_projection]
+  change (roofPastingSquareInclusion ≫ roofPastingCosliceDiagram F σ hσ) ≫
+    sliceUnderProjection a = ((β_ Δ[1] Δ[1]).hom ≫ F) ≫ sliceUnderProjection a
+  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder a =>
+    f ≫ sliceUnderProjection a)
+  dsimp only [roofPastingSquareInclusion, roofPastingCosliceDiagram]
+  simp only [Category.assoc]
+  rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),
+    ← SSet.opFunctor.map_comp, pastingCornerGlue_left]
+  rw [← Category.assoc, roofGridReverseIso_hom_map]
+  exact reverseGrid_double (X := sliceUnder a) (m := 1) (n := 1) ((β_ Δ[1] Δ[1]).hom ≫ F)
+
+/-- 三角柱の終端列は、同じ指定分数三角形の商射影そのもの。 -/
+lemma roofPastingPrism_top {X : SSet.{u}} {a : (Δ[0] : SSet.{u}) ⟶ X}
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ sliceUnder a)
+    (σ : (Δ[2] : SSet.{u}) ⟶ sliceUnder a)
+    (hσ : stdSimplex.δ (0 : Fin 3) ≫ σ = squareRightEdge ≫ F) :
+    pastingTopTriangle (roofPastingPrism F σ hσ) = σ ≫ sliceUnderProjection a := by
+  have hi : CartesianMonoidalCategory.lift (𝟙 (Δ[2] : SSet.{u}))
+        (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
+      roofPastingPrismIso.inv = roofPastingTriangleInclusion ≫ joinInr Δ[0] _ := by
+    apply (cancel_mono roofPastingPrismIso.hom).mp
+    simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    rw [roofPastingPrismIso_inr, roofPastingTriangleInclusion_corner]
+  change CartesianMonoidalCategory.lift (𝟙 (Δ[2] : SSet.{u}))
+      (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
+    (roofPastingPrismIso.inv ≫ sliceUnderUncurry _) = _
+  rw [← Category.assoc, hi, Category.assoc, sliceUnderUncurry_projection]
+  change (roofPastingTriangleInclusion ≫ roofPastingCosliceDiagram F σ hσ) ≫
+    sliceUnderProjection a = σ ≫ sliceUnderProjection a
+  apply congrArg (fun f : (Δ[2] : SSet.{u}) ⟶ sliceUnder a => f ≫ sliceUnderProjection a)
+  dsimp only [roofPastingTriangleInclusion, roofPastingCosliceDiagram]
+  simp only [Category.assoc]
+  rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),
+    ← SSet.opFunctor.map_comp, pastingCornerGlue_bottom]
+  exact roofReverseSimplex_double (X := sliceUnder a) σ
+
+end SerrePositivity.KST.LocalizingInvariants
