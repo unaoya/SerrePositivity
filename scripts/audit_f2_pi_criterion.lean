@@ -37,7 +37,28 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.coconeLegNaturalityHomotopy
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.coconeLegNaturality_components
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_stage_positive_kernel
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.finite_positive_pair_representative
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.totalLegToKan_homotopy_valueToTotal
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.finite_nativeTotalLeg_detection
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_positive_injective
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.pathVertexEdge_exists
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.piPathRelated_iff_exists_transport
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.PiPathRelated.trans
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.PiPathRelated.symm
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.path_map_surjective_iff
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_positive_surjective
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_finite_piCriterion
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.isColimitCone_of_coherent_spacePiData
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.coconeTransportLeg_restrict
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.dgBarCompactFilteredSpacePiBridge
 #check @SerrePositivity.InfinityCategories.DGBarCompactFilteredSpacePiBridge
+
+universe u v
+example (κ : Cardinal.{u}) [Fact κ.IsRegular] :
+    SerrePositivity.InfinityCategories.DGBarCompactFilteredSpacePiBridge.{u, v} κ :=
+  SerrePositivity.InfinityCategories.F2.PiCriterion.dgBarCompactFilteredSpacePiBridge κ
+
+#print axioms SerrePositivity.InfinityCategories.F2.PiCriterion.dgBarCompactFilteredSpacePiBridge
 
 open Lean in
 run_cmd do
