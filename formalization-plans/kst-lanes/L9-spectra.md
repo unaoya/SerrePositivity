@@ -59,7 +59,7 @@
 ## 引き継ぎ（2026-10-26、K-B-S2 取込済み、d3b①を続行）
 
 ### 現在地
-- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。K-B-S2 bf29e6b53 の Kan 列標的の実相対分解を元の補助単位へ直接適用する（AdjointLoopRelativeBF）。Compatible 系・GradedInclusion・CoherentComparison の7葉は集約・監査へ接続済みで、元の全 Hom を回収する originalInfinityEquivalence と指定左因子を保つ inclusionFunctorIso を供給する。①の残りは右射影 q を含む全 Hom 自然性。補助 loop の全パラメータ作用と単位の厳密自然性は AdjointLoopParameterHom で検証中、i と q の二変数 Raw Hom corner の全単射 RLP は K-B 正本へ確認依頼中。実 nativeLoop 比較・hΩ・sp_isStable は未提供。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
+- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。K-B-S2 bf29e6b53 の Kan 列標的の実相対分解を元の補助単位へ直接適用する（AdjointLoopRelativeBF）。Compatible 系・GradedInclusion・CoherentComparison の7葉は集約・監査へ接続済みで、元の全 Hom を回収する originalInfinityEquivalence と指定左因子を保つ inclusionFunctorIso を供給する。①の残りは右射影 q を含む全 Hom 自然性。補助 loop の全パラメータ作用・制限可換性・単位の厳密自然性は AdjointLoopParameterHom。二変数 corner は許可に従い Sp の新葉で実構成し、RawSpectrumMapping.relativeCorner_rlp_monomorphisms／relativeCorner_trivialKanFibration と元の二射影・全段評価を供給する。次はこの corner を同じ単位・右射影へ実適用し、全 Hom の恒等・合成との整合を保つ。実 nativeLoop 比較・hΩ・sp_isStable は未提供。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
 - **β6 f・h の現在地**：E2-S (7) fd3fd4bb8 の原本 Yoneda 全比較を実適用。元の AW 全標的図式と指定局所化 Hom の同型、全 ordinary Hom 単位を保つ under 同型、元の局所化上への延長と指定二胞体の厳密回収、元の postnikovInfinityCone の IsLimitCone を提供。非正次数の実 dg 代数 B・全 n≥0、元の頂点・二脚・class と指定底の実 fiber 模型を保持。比較・frame・ModelCategory を追加入力にしない。h の主要宣言は下表、検証記録はコミットメッセージ。
 - **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。D-21 の実完備化は K-S• の dgOdotMilnorCompletion に特殊化済み。実 S 長方形・屋根と全指定境界比較の一体化は未供給。s4 は実適用・集約・監査・公開保存を完了。β6 f・h は完了。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
@@ -171,20 +171,20 @@
 - 外部提供は零・実極限錐・実 fiber と整数長完全列・同値検出、および既存の有理化・Tot・hG・骨格障害計算。局所化不変量の定義・K の合流そのものは K-基盤所有。
 
 - Sp-6 s2 の D 依頼への補足：K-B の DGKappaResolvedNullPerf は特定の核に特殊化され Sp から import できない。任意の小さい D の全対象商 D/D の Perf 零性は D-20 として Derived/DGTotalQuotientPerfectZero・DGTotalQuotientPerfectVerticesZero に統合済み。固定 ν 像の零性は dgFixedNullInput_isZeroCategory で構成済み。K-S• の全四辺を保つ認証は exists_dgOdotCertifiedNullSquare。集約・監査も合格。K-B の証明はコピーしない。
-
 - E2-S (6) の指定標的：InfinityPresentation R = ULiftHom.{u+1} (Mon (Complex R)) の全体の nerve、W は底の QuasiIso である全辺、写像は KST.LocalizingInvariants.edgeLocalizationMap（GeneralLocalization、quasiIsoInfinityMap）。cofibrant 部分圏には制限しない。hammock の IsLocalization から localizationComparisonEquivalence で輸送し、その比較二胞体を保持する。
 
 - f4d の全錐比較 P-8 は統合済み、HomotopyLimits/NerveConeCoherentComparison.uliftNerveCone_coherent_eq を実適用済み：持ち上げた F1B.nerveCone の kanDiagramCoherentNerve 像と、同じ通常像錐の strictCoherentCone の全錐 FunctorIso。図式比較・頂点脚比較では代用しない。HomotopyLimits の所有者 P の一般正本を Sp で複製しない。
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- LocalizingInvariants の上記公開界面は集約・専用監査へ登録。E2-S (7) の実 AW 全図式比較・全単位・元の Postnikov 極限も登録。d3a、AdjointLoopKanSequence、実相対 BF 分解と指定左因子の全図式比較は集約・監査へ登録。AdjointLoopParameterHom は未追跡・未接続で検証中、nativeLoop との同定は未実施。LocalizingInvariants の未接続 WIP なし。停止中 Spectra 4 WIP と所有外の変更は従来どおり保持する。
+- LocalizingInvariants の上記公開界面は集約・専用監査へ登録。E2-S (7) の実 AW 全図式比較・全単位・元の Postnikov 極限も登録。d3a、AdjointLoopKanSequence、実相対 BF 分解と指定左因子の全図式比較は集約・監査へ登録。AdjointLoopParameterHom と RawSpectrumRelativeCorner 系も集約・監査へ登録。nativeLoop との同定は未実施。LocalizingInvariants の未接続 WIP なし。停止中 Spectra 4 WIP と所有外の変更は従来どおり保持する。
 
 ### 既知の問題
 - pro fiber 最小形式は関手 ∞ 圏のホモトピー圏上の塔であり、元の全正方形・接続射・全整数 π の比較まで供給する。一般 pro ∞ 圏の零対象性／同値性・全添字方向の高次 coherence は未提供。LT Def. 2.27 の n-connectivity（τ≤n−1(fib f) の pro 零性）と現在の次数別 IsPiProConnected／IsPiProConnective の比較には bounded-below 条件と有限 Postnikov の議論が要る。任意の有限切断の実逆、bounded-below 判定、元の射を保つ連結なレベル表示、Cor. 2.31 の native dg／π-pro 値界面は供給済み。Tor pro 切除と一般 pro ∞ 圏への同一視は未提供。Postnikov 層の cycles 模型は平方零で実 kernel と準同型比較するが、実 kernel の積が厳密に零とは主張しない。任意の実 dg 双加群の分裂平方零・厳密 derivation、実 Postnikov 摂動代数と cell 上の class を供給する一方、一般の非分裂導来拡大の分類・任意 cospan の homotopy pullback の ∞ 普遍性は未提供。実 cell 源の全標的導来写像空間比較と元の Postnikov 錐の ∞ 普遍性は β6 f で供給済み。実 cospan 模型は指定された乗法的経路に対する代数的 lift と一意性、元の差の cocone との複体同型を持ち、一脚が次数全射なら通常 pullback からの元の比較は準同型。これを一般の ∞ 普遍性と同一視しない。Path.Witness は実経路代数への射であり、任意の鎖ホモトピーからその存在を仮定しない。cellResolutionMap の厳密な恒等・合成則は未提供で、比較・反映・合成の経路は明示した有限反復 cell augmentation と非正次数 cover の後で作る。次数全射性・準同型性・元の射影を証明して使い、任意の源の cofibrant 性は仮定しない。D の実 Perf 延長の恒等・合成は実自然同型で扱い、抽象 IsKConnectiveOn の厳密 P を dg 模型に要求せず具体的 IsKConnective と元の値の射を使う。
 - 旧 LaxQuotientSquare.square と cone は四辺固定の可換実現であり、h Sp の可換式から選び直した候補。特定のこの錐が極限であるとは未証明で、四辺や整数 π の可換性だけからは従わない。今回、元の積・対角の実 pullback の全図式を保持して構成した LaxQuotientPullback.cone に置き換えた。この新しい錐の極限性を使用する。
 - Sp の IsStable、Ω の完全忠実性・関手同値、任意の coherent 図式への極限の移送は未完。いずれも上表で未提供と明記し、存在を仮定する構造体で完成扱いにしない。
 - **採用済み d3b の自然性条件**：T(X) := adjointLoop (tail X.toKanSequence)、α_X := adjointLoopTailUnit。実分解 X → R(X) → T(X) の合成は各段で α_X に厳密一致する。AdjointLoopUnitRawHom が証明したのは α_X の後合成の全 Hom 比較（源の豊穣合成自然性、標的の通常射の自然性、実 π 同型）。未接続の Compatible 系は元の射 f と置換射 g に i_X ≫ g = f ≫ i_Y を全パラメータで課す。この左因子の可換性だけから右射影 q の自然性・補助 T の全 Hom 作用・nativeLoop との比較を結論しない。①の残りは同じ全パラメータ族における q の可換性と指定 α の回収。②は指定 loop 図式・厳密終点を保ち、点ごとの π 同型と厳密自然性から全図式 FunctorIso を組む。③は既存 nativeTailEquivalence と実 hΩ を D の一般定理へ代入する。①②を明示入力に残して完成扱いにせず、円交換因子の直接比較・evaluationPost・uncurry・d7 は再開しない。暫定見積りは①5〜8時間、②4〜7時間、③適用・集約監査1〜2時間（供給・閉包安定の待ち時間を除く、②の比較が主な不確定部分）。
+- R の整理候補：二変数 Raw Hom corner は当面 Sp の RawSpectrumRelativeCorner{Step,Next,Family}／RawSpectrumRelativeCorner に保持する。停止窓で NonConnective の相対 latching 正本へ移すか、既存の前合成版をこの二変数版の特殊化として導く候補を検討する。レーン内では移動・改名・削除を行わない。
 - d3 の本経路：D の Stable/LoopEquivalenceStability.isStable_of_loopEquivalence を適用する。入力は Quasicategory・HasZeroVertex・HasFiniteLimits と loop 図式切断・その同値性であり、有限余極限を追加仮定しない。Sp の有限極限と nativeLoop 同値を代入する。旧 evaluationPost・uncurry の工程は再開しない。
 - 所有ソースの sorry・追加 axiom・ModelCategory 仮定を禁ずる。専用監査は私有宣言・推移的依存・宣言型の ModelCategory 定数を検査する。KanQuillen は import しない。各保存単位は自分の集約ビルドと専用監査を通し、統合検証は R の停止窓に委ねる。D・Ind・F2・EInfinity・K-S•・K-B は読み取り専用。
 ### Sp-6 s3 の接続口（採用済み、具体的入力の存在は未供給）
