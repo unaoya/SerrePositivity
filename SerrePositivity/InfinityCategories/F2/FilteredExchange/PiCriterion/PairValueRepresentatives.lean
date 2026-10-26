@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.HomotopyIso
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
-universe u
+universe u v
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.PiCriterion
@@ -31,17 +31,19 @@ private lemma groupMap_target_rebase {X Y : SSet.{u}} [KanComplex X] [KanComplex
   simpa only [Category.comp_id, MonoidHom.comp_apply] using
     DFunLike.congr_fun (KanHomotopyGroup.map_comp f hf (𝟙 Y) hy hc) a
 
-variable {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B]
-  (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
-local notation "T" => coherentDiagramTotalKan F
-local notation "V" b => KanObject.obj (spaceInfinityObject
-  (F.app (Opposite.op ⦋0⦌) (ULift.up b)))
-local notation "j" b => coherentDiagramValueToTotalKan F b
+section FiniteDetection
+variable {J : Type v} (X : J → KanObject.{u}) (T : SSet.{u}) [KanComplex T]
+  (s : ∀ b : J, (X b).obj ⟶ T)
+local notation "V" b => KanObject.obj (X b)
+local notation "j" b => s b
 
 /-- 二つの類に共通の stage・基点・path と、その path 空間の二つの類を取れる。 -/
-lemma total_positive_pair_representative (n : ℕ) (x : T _⦋0⦌)
+lemma finite_positive_pair_representative
+    (hdetect : ∀ {K : SSet.{u}} [K.Finite] (f : K ⟶ T),
+      ∃ b : J, ∃ g : K ⟶ (X b).obj, Nonempty (Homotopy f (g ≫ s b)))
+    (n : ℕ) (x : T _⦋0⦌)
     (a : Fin 2 → KanHomotopyGroup T n x) :
-    ∃ b : B _⦋0⦌, ∃ y : (V b) _⦋0⦌,
+    ∃ b : J, ∃ y : (V b) _⦋0⦌,
       ∃ β : Fin 2 → KanHomotopyGroup (V b) n y,
       ∃ z : (KanPath.object T) _⦋0⦌,
       ∃ h₀ : (KanPath.evaluation T 0).app _ z = x,
@@ -75,7 +77,7 @@ lemma total_positive_pair_representative (n : ℕ) (x : T _⦋0⦌)
   have : K.Finite := by
     apply finite_of_isColimit (pushoutIsPushout S.hom S.hom)
     rintro (_ | _ | _) <;> dsimp [S] <;> infer_instance
-  obtain ⟨b, g, ⟨H⟩⟩ := coherentFilteredTotalKan_finite_value_detection F r
+  obtain ⟨b, g, ⟨H⟩⟩ := hdetect r
   let Y : PointedSimplicialSet.{u} := Under.mk (Q.hom ≫ g)
   let Z : PointedSimplicialSet.{u} := Under.mk (Y.hom ≫ j b)
   let P : PointedSimplicialSet.{u} := Under.mk (Q.hom ≫ KanPath.transpose H)
@@ -121,5 +123,33 @@ lemma total_positive_pair_representative (n : ℕ) (x : T _⦋0⦌)
   · exact (groupMap_target_rebase n _ h₁ hi.symm _ (γ k)).trans
       ((congrArg (KanHomotopyGroup.map (𝟙 T) hi.symm) (ht k)).trans
         (groupMap_target_rebase n (j b) hi hi.symm rfl (β k)).symm)
+
+end FiniteDetection
+
+section Coherent
+variable {B : SSet.{u}} [Quasicategory B] [IsFilteredInfinity B]
+  (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+local notation "T" => coherentDiagramTotalKan F
+local notation "V" b => KanObject.obj (spaceInfinityObject
+  (F.app (Opposite.op ⦋0⦌) (ULift.up b)))
+local notation "j" b => coherentDiagramValueToTotalKan F b
+
+/-- 二つの類に共通の stage・基点・path と、その path 空間の二つの類を取れる。 -/
+lemma total_positive_pair_representative (n : ℕ) (x : T _⦋0⦌)
+    (a : Fin 2 → KanHomotopyGroup T n x) :
+    ∃ b : B _⦋0⦌, ∃ y : (V b) _⦋0⦌,
+      ∃ β : Fin 2 → KanHomotopyGroup (V b) n y,
+      ∃ z : (KanPath.object T) _⦋0⦌,
+      ∃ h₀ : (KanPath.evaluation T 0).app _ z = x,
+      ∃ h₁ : (KanPath.evaluation T 1).app _ z = (j b).app _ y,
+      ∃ γ : Fin 2 → KanHomotopyGroup (KanPath.object T) n z,
+        ∀ k, KanHomotopyGroup.map (KanPath.evaluation T 0) h₀ (γ k) = a k ∧
+          KanHomotopyGroup.map (KanPath.evaluation T 1) h₁ (γ k) =
+            KanHomotopyGroup.map (j b) rfl (β k) := by
+  exact finite_positive_pair_representative
+    (fun b ↦ spaceInfinityObject (F.app (Opposite.op ⦋0⦌) (ULift.up b)))
+    (coherentDiagramTotalKan F) (coherentDiagramValueToTotalKan F)
+    (fun f ↦ coherentFilteredTotalKan_finite_value_detection F f) n x a
+end Coherent
 
 end SerrePositivity.InfinityCategories.F2.PiCriterion
