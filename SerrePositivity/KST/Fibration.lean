@@ -738,3 +738,11 @@ public import SerrePositivity.KST.Fibration.VerdierFullSLowerStrictArrows
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerCanonicalTriangle
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerCanonicalBoundary
 public import SerrePositivity.KST.Fibration.VerdierFullSLowerKernelTriangle
+
+public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalFamily
+public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalReadout
+public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSharedDiagonal
+public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquare
+public import SerrePositivity.KST.Fibration.VerdierNormalizedSquareFamily
+public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalShortFaces
+public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalVerticalEdges
