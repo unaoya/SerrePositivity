@@ -20,7 +20,7 @@
 
 ### Sp-5 d3 の三段目（I-5、10-26 再開）
 - [x] d3a. 実終対象と任意 coherent cospan の極限を有限極限生成定理へ接続する。
-- [ ] d3b. nativeLoop と一段移動の比較を全単体に自然な関手比較へ接続する。
+- [ ] d3b. nativeLoop と一段移動の全関手比較。設計案：通常円の補助 AdjointLoopKanSequence（厳密単位・通常射の自然性は試作検証済み）を使い、①相対 BF 置換と全 Hom 自然性、②元の nativeLoop との全図式比較、③既存 nativeTailEquivalence と両合成の FunctorIso から hΩ。補助列の構造は通常 cotensor と異なり、②は未証明。採否待ち、主経路への切り替え未実施。
 - [ ] d3c. 元の nativeLoop の IsQCatEquivalence（hΩ）を証明する。
 - [ ] d3d. D の isStable_of_loopEquivalence に実入力を代入し sp_isStable を公開する。
 - [ ] d3e. 両集約・専用監査・仮定検査を通し、引き継ぎを保存する。
@@ -56,10 +56,10 @@
 - [x] g6. bounded-below 条件下の切断 pro 判定と、LT Lemma 2.30 の連結なレベル表示を構成する。
 - [x] g7. Cor. 2.31 を元の不変量値の塔へ適用し、次数別 eventual 連結度から π-pro 同値へ接続する。
 
-## 引き継ぎ（2026-10-26、Sp-7 完了で二段目区切り、次に d3）
+## 引き継ぎ（2026-10-26、d3a 公開、d3b 設計変更案で停止）
 
 ### 現在地
-- **再開の第一工程**：Sp-7 の二段目を閉じた後、d3 の実有限極限の包装と hΩ を確認・補完し、D の isStable_of_loopEquivalence を適用して sp_isStable へ進む。Sp-7 は IdempotentCompletionCofiberGroupoid の idempotentCompletion_cofiberWide_discrete で公開（追加仮定なし、元の本質像・全単体条件・QC 性・Kan 置換の正次数の自明性）。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
+- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b の補助随伴 loop 列を使う設計変更案の採否を確認し、採用時は相対 BF 置換・全 Hom 自然性から着手する。実 nativeLoop 同値 hΩ と sp_isStable は未提供。Sp-7 は idempotentCompletion_cofiberWide_discrete で公開済み。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
 - **β6 f・h の現在地**：E2-S (7) fd3fd4bb8 の原本 Yoneda 全比較を実適用。元の AW 全標的図式と指定局所化 Hom の同型、全 ordinary Hom 単位を保つ under 同型、元の局所化上への延長と指定二胞体の厳密回収、元の postnikovInfinityCone の IsLimitCone を提供。非正次数の実 dg 代数 B・全 n≥0、元の頂点・二脚・class と指定底の実 fiber 模型を保持。比較・frame・ModelCategory を追加入力にしない。h の主要宣言は下表、検証記録はコミットメッセージ。
 - **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。D-21 の実完備化は K-S• の dgOdotMilnorCompletion に特殊化済み。実 S 長方形・屋根と全指定境界比較の一体化は未供給。s4 は実適用・集約・監査・公開保存を完了。β6 f・h は完了。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
@@ -178,7 +178,7 @@
 
 ### 未コミット
 - 停止中の未追跡 WIP：PointedUncurryActionTensor.lean、PointedParametricUncurryAction.lean、PointedUncurryComposition.lean、PointedParametricUncurryPre.lean。集約・監査に接続しない。前二つは単体ビルド成功、Composition は失敗、Pre は未検証のまま保持。
-- LocalizingInvariants の上記公開界面は集約・専用監査へ登録。E2-S (7) を実 AW 全図式から表現可能 Hom へ適用し、元の全単位と元の局所化 Postnikov 錐を保持する界面も登録。LocalizingInvariants の未接続 WIP なし。停止中 Spectra 4 WIP と所有外の staged／unstaged／untracked 変更は従来どおり保持する。
+- LocalizingInvariants の上記公開界面は集約・専用監査へ登録。E2-S (7) の実 AW 全図式比較・全単位・元の Postnikov 極限も登録。d3a と AdjointLoopKanSequence 試作は集約・監査へ登録、nativeLoop との同定は未実施。LocalizingInvariants の未接続 WIP なし。停止中 Spectra 4 WIP と所有外の変更は従来どおり保持する。
 
 ### 既知の問題
 - pro fiber 最小形式は関手 ∞ 圏のホモトピー圏上の塔であり、元の全正方形・接続射・全整数 π の比較まで供給する。一般 pro ∞ 圏の零対象性／同値性・全添字方向の高次 coherence は未提供。LT Def. 2.27 の n-connectivity（τ≤n−1(fib f) の pro 零性）と現在の次数別 IsPiProConnected／IsPiProConnective の比較には bounded-below 条件と有限 Postnikov の議論が要る。任意の有限切断の実逆、bounded-below 判定、元の射を保つ連結なレベル表示、Cor. 2.31 の native dg／π-pro 値界面は供給済み。Tor pro 切除と一般 pro ∞ 圏への同一視は未提供。Postnikov 層の cycles 模型は平方零で実 kernel と準同型比較するが、実 kernel の積が厳密に零とは主張しない。任意の実 dg 双加群の分裂平方零・厳密 derivation、実 Postnikov 摂動代数と cell 上の class を供給する一方、一般の非分裂導来拡大の分類・任意 cospan の homotopy pullback の ∞ 普遍性は未提供。実 cell 源の全標的導来写像空間比較と元の Postnikov 錐の ∞ 普遍性は β6 f で供給済み。実 cospan 模型は指定された乗法的経路に対する代数的 lift と一意性、元の差の cocone との複体同型を持ち、一脚が次数全射なら通常 pullback からの元の比較は準同型。これを一般の ∞ 普遍性と同一視しない。Path.Witness は実経路代数への射であり、任意の鎖ホモトピーからその存在を仮定しない。cellResolutionMap の厳密な恒等・合成則は未提供で、比較・反映・合成の経路は明示した有限反復 cell augmentation と非正次数 cover の後で作る。次数全射性・準同型性・元の射影を証明して使い、任意の源の cofibrant 性は仮定しない。D の実 Perf 延長の恒等・合成は実自然同型で扱い、抽象 IsKConnectiveOn の厳密 P を dg 模型に要求せず具体的 IsKConnective と元の値の射を使う。
