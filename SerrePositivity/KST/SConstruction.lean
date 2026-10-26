@@ -2986,4 +2986,13 @@ public import SerrePositivity.KST.SConstruction.DGGluingCellRightAxisPerfectArro
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonHomGluing
 public import SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLift
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisResolvedLift
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisProjections
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisNuRoof
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeSquare
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisNativeSquare
+public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphExtendedNativeComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

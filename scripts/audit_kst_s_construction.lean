@@ -34792,3 +34792,108 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLiftTarget
 #check @SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientLift
 #print axioms SerrePositivity.KST.SConstruction.dgGluingCellRightAxisQuotientLift
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisProjectiveInput
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisProjectiveInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInclusion
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInclusion_input
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorResolvedInclusion_input
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientSource
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientSource
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientTarget
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientTarget
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisQuotientComparison
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisBase
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisBase
+
+#check @SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisTarget
+#print axioms SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisTarget
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInput
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInput
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInputMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInputMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisExactMap
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisExactMap
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift_left
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift_left
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift_right
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisLift_right
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuRoof
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuRoof
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuRoof_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNuRoof_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellRestrictedGraphModuleFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgCellRestrictedGraphModuleFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationMap
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationMap
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationMap_naturality
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationStrictNatTrans
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationStrictNatTrans
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationNativeHom_isIso
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationNativeHom_isIso
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphAugmentationNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellGraphNativeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgCellGraphNativeFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgCellGraphNativeFunctor_inverts
+#print axioms SerrePositivity.KST.SConstruction.dgCellGraphNativeFunctor_inverts
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphNativeSquare
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphNativeSquare
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndofunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndofunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisProjective
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisProjective
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeFunctor
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeFunctor
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeSourceAugmentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeSourceAugmentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeTargetAugmentation
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeTargetAugmentation
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisNativeSquare
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphExtendedNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphExtendedNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtension_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtension_inclusion
+
+#check @SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellResolvedGraphPerfectExtendedNativeComparison
