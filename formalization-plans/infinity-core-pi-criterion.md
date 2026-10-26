@@ -82,10 +82,12 @@ D の構造を複製しない。n は実際の正次数 n+1、π₀ も保持す
 - Derived の入力は許可された `FilteredSpaceBridgeInput.lean` の1葉のみ。
 - 担当ソースの sorry/axiom/citation・ModelCategory SSet の使用検査と `git diff --check` に成功。
 
-## R 候補と境界
+## 引き継ぎ（分担完了・停止）
 
-- D の抽象構造 `DGBarCompactSpacePiData` を F2 へ降ろすことは R 候補。
-  現在はユーザーが許可した既コミットの公開入力を直接 import する。
+- ユーザーが最終定理を確認し、D へ中継済み。本レーンの分担は完了し、ここで停止する。
+- R 候補: 抽象構造 `DGBarCompactSpacePiData` を Derived から F2 へ降ろす。
+  現在は許可された公開入力 `Derived/CoherentBar/Compact/FilteredSpaceBridgeInput` を直接 import。
+  将来の整理で構造を F2 に置き、D 側がそれを import する形へ変更する。今回の分担では実施しない。
 - 既存 coherent total API の宇宙分離の複製は不要だった。
   底の ULift と二重持ち上げの同型だけで指定宇宙へ到達する。
 - 元の c についての全空間 π 判定の iff と、D が指定した元ごとの十分条件の供給を区別する。
