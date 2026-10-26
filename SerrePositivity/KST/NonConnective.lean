@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.SequentialFilteredCandidatePi
 public import SerrePositivity.KST.NonConnective.DGSuspensionSuppliedNativeComparisons
 public import SerrePositivity.KST.NonConnective.FilteredExchangeHomotopyColimit
 public import SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoTransport

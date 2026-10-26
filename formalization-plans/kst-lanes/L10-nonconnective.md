@@ -18,7 +18,7 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,329 ジョブで成功。専用監査は 219 モジュール・2,478 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 今回の所有集約ビルドは 16,330 ジョブで成功。専用監査は 220 モジュール・2,483 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - 到着 K-B 7bbc95274：dgKappaCanonicalSuspensionStructureMap_nonnegative と実際の公開名 dgKappaCanonicalSuspensionStructureMap_eq を消費。DGNonconnectiveKConnectiveComparison は c5 の標準単体商比較だけに条件付きで、同じ元の全一単体・隣接安定化・連結比較・全整数末尾表示を接続。K-6 c4 の全四角形比較と K-7 c4 の全入力作用を区別する。
 - d4：DGKInputCompactNativeChoiceCoherence は I-2 e の同じ無条件生成同値から任意の逆射選択を全 native Hom 族上で比較し、恒等・三選択の合成・任意族への再制限・元の ν/Yoneda 全族への指定比較の自然性を証明。非可算 κ-cone と同じ Indω の比較、全入力高次合成と構造辺 β の自然性は別工程。
@@ -32,6 +32,7 @@
 - SequentialFilteredExchange は filtered な実逐次 BF 図式 D に対し、行ごとの元の段別実現を先に外側 filtered BF 実現した対象から、段ごとの外側余極限を元の逐次 BF 候補へ送った対象への実 BF 交換射を構成。指定通常余錐の版と、余錐も構成済みの標準版を供給する。元の射影下の厳密可換性・全段全基点 π 同型・全整数 π 同型・同じ Sp 辺の可逆性を証明。c4・hc5・Sp 安定性を要求しない。
 - SequentialFilteredExchangeInjection は元の各行の BF 候補からの実注入を保持し、交換射の後が既存の sequentialCandidateMap と同じ hSp 射・全整数 π 作用であることを証明。同じ注入を hSp 余錐と元の候補比較余錐への射へ束ねる。一般 filtered Sp の IsColimitCone・dg filtered 図式の全作用/段別保存・最終 K^{nc} の filtered 保存は別工程で、通常 BF 余極限や hSp 余錐と同一視しない。
 - FilteredExchangeHomotopyColimit は元の実置換射影と同じ全注入から、任意の小 filtered な通常 BF 余錐の全整数 π 余極限性を証明する。これを各評価へ代入し、実 filtered 逐次 BF 余錐に対する候補 π の余極限性から段別 π 保存の追加入力を除去した。dg 図式の作用・段別保存や一般 filtered Sp 余極限性は別工程。
+- SequentialFilteredCandidatePi は同じ外側 BF 候補への実行注入を整数 π 余錐へ束ね、元の交換射の π 同型で既存の候補比較余錐へ同型に送る。同じ全実注入が全整数次数で群余極限を与えることまで接続する。
 - D 9131e7b37 の実 Morita／P 全族を DGSuspensionSuppliedNativeComparisons で消費。任意の全高次パラメータと同じ B1 反復作用へ指定同型を再制限し、P の全境界一致と各反復段の元の指定 Morita path・P path の厳密回収を証明。核角の全 ν 像と D の実終点の一致だけを明示入力にして、四角形核角への Morita 比較を接続する。実 Morita 全族や先行 P 全族は追加入力に残さず、核作用の全 ν 像一致・map・edgeIso・square_at の無条件供給は推論しない。
 - D b21e4906c の部分供給：DGKappaNullParameterPostcomposition は元の核→懸垂の同じ選択収縮に全パラメータ・全次数の後合成延長を適用し、元の成分と商延長後の前合成作用を回収する。D-8 e 本体の存在は推論しない。
 - b283c7f41 の到着入力消費は所有集約 16,061 ジョブでビルド成功、専用監査 195 モジュール・2,174 宣言で成功（標準三公理のみ、ModelCategory 型検査を含む）。所有外は未編集。
@@ -80,7 +81,7 @@
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- なし。D 実比較族消費と filtered BF π 余極限性の新規 2 葉・集約・専用監査・本計画は検証済みで限定保存。所有外の未追跡ファイルは対象外。
+- なし。D 実比較族消費と filtered BF π 余極限性・元の実行注入余錐の新規 3 葉・集約・専用監査・本計画は検証済みで限定保存。所有外の未追跡ファイルは対象外。
 - 保存注記：c2a7623c1 は共有 index の並行更新により K-B の Relative/All・ConnectiveFibrationTheorem・L3・audit_kst_fibration も併収した。K-B3 はこれらの内容を編集していない。コミット本文の所有ファイル限定という記述はこの点を訂正する。履歴・他レーンの内容は保持する。
 
 ### 既知の問題
