@@ -30,7 +30,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModulePiHomology,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCharts,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyChartsPiData,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleHomologyCharts]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleHomologyCharts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.MooreUliftNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.StandardMooreNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedMooreNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.TruncationHomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedHomologyNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedPiCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationValueCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleCohomology]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

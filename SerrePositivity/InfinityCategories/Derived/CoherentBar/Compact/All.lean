@@ -20,6 +20,15 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Mod
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCharts
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyChartsPiData
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleHomologyCharts
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleMap
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.MooreUliftNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.StandardMooreNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedMooreNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.TruncationHomologyNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedHomologyNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedPiCohomology
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationValueCohomology
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PinchedModuleCohomology
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。

@@ -5,7 +5,7 @@
 - 所有：Derived/CoherentBar/Compact/ の新規葉・All・専用監査。既存 CoherentBar/、D-e の KappaCovers/・KappaPerfect/、KST/・F2/ は読み取り専用。
 - C1・B（87ecf98c0）・C2 と無条件 covers（0d474aaf8）は供給済み。c2 の評価空間保存は全 native κ-filtered coherent 図式について証明する。
 - 現在の KappaCovers/StrictComparison は通常の strict 図式だけを扱う。これを κ-compact 性の全称条件へ代用しない。
-- 検証済み：Compact.All 9771 jobs、専用監査 13 葉・122 宣言、許容三公理のみ。両主集約12405 jobs成功。両全体監査成功：Derived 24996宣言／2857モジュール、Stable 26061／3128、許容三公理のみ。
+- 01845eaeb：Compact.All 10291 jobs、専用監査21葉・223宣言、両主集約12630 jobs成功。両全体監査成功：Derived 25098宣言／2865モジュール、Stable 26163／3136、許容三公理のみ。追加の実 pinched・native 頂点チャートの新規葉を統合中。
 - チャットの24時間基準は2026-10-25 18:07 頃のまま。期限は10-26 18:07 頃。
 
 ## 三段目
@@ -44,6 +44,7 @@
 - Ind-π の公開目標は FilteredSpaceBridgeInput の DGBarCompactFilteredSpacePiBridge（Prop）。元の F・c と実 transition・脚を使う五条件を DGBarCompactFilteredSpacePiData で与える。π は n+1、境界が指定道をたどる球面円柱で基点を移送する。正次数の全射条件は全ての指定道に対する強い形（評価空間の単体的アーベル性を使う）。型と PiTransportMap の後合成を検証・葉監査済み。
 - BridgePreservation は「橋＋同じ bar 余錐の π 条件」から全 native 評価保存への接続を対象ビルド済み。π 条件の導出は未完で、橋だけを残した ConeInput はまだ公開していない。
 - ModulePiTransport・ModulePiHomology は単体的加群の全基点 π と Moore ホモロジーの自然な比較、任意指定道の移送を供給。HomologyChartsPiData は加群ホモロジー余錐の普遍性と自然な全基点チャートから五条件を導く。ModuleHomologyCharts は同じ実単体的加群余錐への特殊化。native 評価の実脚に関するチャート自然性は未完。
+- PinchedModuleMap・StandardMooreNaturality・PinchedMooreNaturality は元の Hom 鎖写像と実 pinched Moore 比較の自然性。PinchedPiCohomology・EvaluationValueCohomology は全基点の正次数と π₀ を元の Hom／評価複体のコホモロジーへ同定（頂点比較であり脚自然性とは区別）。切断同型の自然性は E2-S (8) に dg 最小上流への分離を依頼済み。
 - Ind-π は実ホモトピー同値による指定道移送の反映も担当。D は同じ native bar の評価ホモロジー余極限性を、実評価空間のチャートへ接続する。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 
