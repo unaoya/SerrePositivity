@@ -51,7 +51,20 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPointedFilling,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiNaturality,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiZeroComparison]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiZeroComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.StandardPiCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleZeroChartExtension,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearLiftPiCharts,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.OppositePiZeroComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.LinearHomCohomology,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiChartTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiChartEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.StandardClosedPostcomposition,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnderlyingValueRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiTransport,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomPiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomSmallPiChart]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
