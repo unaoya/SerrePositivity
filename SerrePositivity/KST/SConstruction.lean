@@ -2889,4 +2889,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectBoundar
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPerfectSquareDiagramIso
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareValue
 
+public import SerrePositivity.KST.SConstruction.DGHomGluingIdentityCoefficient
+public import SerrePositivity.KST.SConstruction.DGHomGluingDerivedIdentityCoefficient
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorLaxComparisonRequest
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityValueEquivalences
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityConeValueComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
