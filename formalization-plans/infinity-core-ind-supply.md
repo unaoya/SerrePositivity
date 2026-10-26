@@ -279,9 +279,7 @@ s を二短辺 u₀,id_Z、長辺 u₁ の coherent 二単体とする。
   正本から切り出した読出し要求型への直接適用が通過。実 encode・固定 fiber の VertexIso、
   controlledTriangleSplit_of_mono_encoder による単射 encoder への切断還元を追加。
   対象8葉61宣言・F1全監査通過（読出し27、encoder等13、対角輸送1、path座標20）。
-  入口は ControlledTriangleReadoutMap・ControlledTriangleEncoderMap・
-  ControlledTriangleSplitReduction・ControlledCompositionDiagonalTransport・TriangleLabelPathCoordinates。
-  encode の単射性・厳密切断は未供給で、(9) 全体の完了とは扱わない。
+  入口は ControlledTriangleReadoutMap・ControlledTriangleEncoderMap・ ControlledTriangleSplitReduction・ControlledCompositionDiagonalTransport・TriangleLabelPathCoordinates。 encode の単射性・厳密切断は未供給で、(9) 全体の完了とは扱わない。
 
 ユーザー許可（2026-10-26）：(9) 新規葉に限り、既存の
 F1/MappingSpaces/CompositionCorrespondenceDiagonalPullback から
@@ -289,7 +287,7 @@ F1/KanModels/KanEquivalenceLiftingFibration 経由の推移 F2/CatInfinity impor
 確認済み閉包は本体952モジュール中 F2/CatInfinity が22、KST・EInfinity は0。
 その他の F2、F2 の直接 import は禁止。例外は新規監査項に明記する。
 R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core へ降ろす。
-深層・F2 は読み取り専用。残件は単射 encode・厳密切断・正規化後の全対角式。
+深層・F2 は読み取り専用。残件は単射 encode・厳密切断。正規化後の全対角式は下記の実 encoder で供給済み。
 
 次の三段目：三対象ラベルの二切断座標 → 対角上の全区間を保つ Kan 延長 →
 二短辺・native Hom・標準全対角を保つ全次数の encoder → 単射性 → 厳密左逆。
@@ -298,3 +296,5 @@ R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core 
 追加8葉62宣言・F1全監査通過：TriangleDiagonalKanExtension、TriangleTwoCutCoordinates、 TriangleSeparatedLongHom / DirectHom、TriangleLabelHomReplacement、TriangleLabelBaseline 等。 全対角の Hom 座標の厳密回収まで。全次数の encoder への接続・単射性・厳密左逆は未完了。
 
 追加16葉80宣言・F1全監査通過：triangleSeparatedSimplex、triangleSeparatedSimplex_naturality、 triangleSeparatedFamily と同じ全 K・L 上の二短辺の厳密回収を公開。単射性・厳密切断は未完了。
+
+追加16葉61宣言・F1全監査通過：実 controlledTriangleCoherentEncoder、controlledTriangleCoherentEncoder_native、 controlledTriangleCoherentNormalization_diagonal、controlledTriangleCoherentNormalization_vertexIso。 入口 ControlledTriangleCoherentEncoderNative。元の全ホーン・各 k の full native Hom・正規化後の全 K 対角・同じ固定 fiber 内の VertexIso を実構成。 K-B 正本から厳密切断だけを True に置換した型への直接適用も通過（標準三公理のみ）。 厳密切断は依然未供給で、(9) 完了とは扱わない。

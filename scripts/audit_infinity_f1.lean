@@ -9969,3 +9969,63 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) reconstructed family: no declarations audited"
   logInfo m!"Ind-S reconstructed triangle family audit passed: {count} declarations."
+
+-- Ind-S (9)：実 L→T・元の全ホーン・full native Hom・正規化後の全対角・VertexIso。
+-- 旧 (9) の厳密切断は未供給。この16葉では F2 例外を使わない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoder },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoderDiagonal },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoderNative },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentReconstruction },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalLongHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalNative },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalVertices },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleDiagonalLabels },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleFamilyHornFromFaces },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleFamilyHornPullback },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleIntervalIsoEvaluation },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleRightIntervalHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedConstantNative },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedDirectEvaluation },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamilyDiagonal },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexDiagonal },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) coherent normalization: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoder,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoderDiagonal,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoderNative,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentReconstruction,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalLongHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalNative,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleUniversalVertices,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleDiagonalLabels,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleFamilyHornFromFaces,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleFamilyHornPullback,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleIntervalIsoEvaluation,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleRightIntervalHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedConstantNative,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedDirectEvaluation,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamilyDiagonal,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexDiagonal]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) coherent normalization: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) coherent normalization: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) coherent normalization: no declarations audited"
+  logInfo m!"Ind-S coherent triangle normalization audit passed: {count} declarations."
