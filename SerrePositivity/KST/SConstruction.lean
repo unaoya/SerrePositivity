@@ -2847,4 +2847,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryH
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBoundary
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBoundaryFaces
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
