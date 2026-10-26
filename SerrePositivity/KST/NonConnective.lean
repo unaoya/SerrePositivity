@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalBFComparison
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalStageSupply
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalConeZero
 public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalBFSequence

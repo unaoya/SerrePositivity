@@ -21,7 +21,7 @@
 - 同じ入力の full dg cone の perfect 対象で零化する cell 分解後の実 Drinfeld 商を構成した。実商射影・安定性・β3 の実安定閉包からの Verdier 列と、固定 `PerfDGInput` への包装を保持する。元の β5 の Perf と安定閉包の同値 P は D-8 e が同じ I から構成し、その元の Perf の全頂点の零化も証明した。
 - κ-compact 性は F2 の全共変 Hom による定義を使う。ordinary compact/perfect 比較では代用しない。小ささは選んだ代表系にだけ要求し、全加群圏には要求しない。可算直和の κ-compact 閉性は I の `countableClosed` に明示され、κ の記号だけから証明したとは扱わない。
 - Ind I-2 e を固定 ν 値の Indω へ接続済み。交換を定理化した最終公開入口 `ind_stableCompactGeneration_unconditional`（15:21、f350dce62）を採用し、交換入力・有限全存在の追加仮定を除去した。K-B2 の f7d3f64a4 の SingleRelativeComparison を DGSuspensionRelativeComparison で消費し、同じ実構造射・実反復列の連結比較・SOA 比較の非負次数 π 同型へ接続した。c4・c5 の二比較と共終性は明示引数のまま。D 側の供給の仲介はコーディネータ。今回 D・Sp へ直接依頼していない。所有外のファイルは変更していない。
-- NonConnective 集約・専用監査は実供給 BF 四角形・cone 零性・新 BF 構造辺と非負次数比較まで成功（184 モジュール・2112 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
+- NonConnective 集約・専用監査は実供給 BF 四角形・cone 零性・新 BF 構造辺と非負次数比較まで成功（185 モジュール・2116 宣言、標準三公理のみ、ModelCategory 宣言型検査を含む）。零 Perf 全族、分裂四角形の二胞体・四辺・零角、各ラベルの閉分裂関係を接続済み。点ごとの cofiber 性と同じ cone の K の実零頂点性は証明済み。採用経路の段別構造辺と連結比較は、実 fibration の非負次数比較と共終性を明示引数に取る条件付き利用側として対象ビルド成功。構造射の実供給と全入力自然性は未完。
 
 ### 残り（依存順）
 1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
@@ -176,4 +176,4 @@
 
 ### D-8 の無条件実入力の消費
 - `DGKappaUnconditionalStageSupply`・`DGKappaUnconditionalConeZero` は同じ固定 κ の実 I・P・Z、同じ反復対象と各 cone の連結 K・固定 K の実零性を供給する。
-- `DGSuspensionUnconditionalBFSequence` はそれらを採用済み実 BF 経路へ代入し、同じ構造辺・候補・実 Sp 余極限余錐と零段脚を保持する。共終性は明示引数で、一回の未完備 S• fibration に条件付きの非負次数 π 同型・全整数の末尾表示まで接続する。全 native 自然性・非連結化後の局所化性と登録は未完。
+- `DGSuspensionUnconditionalBFSequence` はそれらを採用済み実 BF 経路へ代入し、同じ構造辺・候補・実 Sp 余極限余錐と零段脚を保持する。共終性は明示引数で、一回の未完備 S• fibration に条件付きの非負次数 π 同型・全整数の末尾表示まで接続する。`DGSuspensionUnconditionalBFComparison` は同じ連結 SOA 比較の非負次数 π 同型と、元の隣接実構造射を通る全整数末尾表示の整合を接続する。全 native 自然性・非連結化後の局所化性と登録は未完。
