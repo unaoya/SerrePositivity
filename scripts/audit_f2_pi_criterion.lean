@@ -28,6 +28,15 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_path_realization
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridgePiTransportEquiv
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_iff_equiv
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.total_positive_pair_representative
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.shared_path_map_equality_iff
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.homotopy_map_equality_iff
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.nativeTotalComparison_leg_components
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.nativeTotalComparison_leg_equality_iff
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.isColimitCone_iff_nativeTotalPiCriterion
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.coconeLegNaturalityHomotopy
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.coconeLegNaturality_components
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_stage_positive_kernel
 #check @SerrePositivity.InfinityCategories.DGBarCompactFilteredSpacePiBridge
 
 open Lean in

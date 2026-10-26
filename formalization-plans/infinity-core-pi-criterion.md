@@ -111,14 +111,27 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
   戻す逆向きと、`dgBarCompactPiTransport n e a b ↔ bridgePiTransportEquiv n e a = b` を証明。
 - 外部の repo import 閉包2811本に未コミット・編集中の入力なし。
 - `BridgePathRealization` を含む全98宣言の標準3公理監査成功。
+- `PairValueRepresentatives`: 共通基点で貼った二球面を一度だけ有限検出し、二つの類を
+  同じ stage・同じ基点・同じ path 頂点の二つの類で表す。commit `d71cbe468`。
+- `PairPathEquality`: 共有 path の両端の等式は後合成後も同値。
+  基点を固定しない Homotopy でも、二つの類を同一視する条件は不変。commit `3d87459e0`。
+- `NativeTotalComparison`: coslice の実際の比較辺から頂点射を取り、元の各脚との
+  合成 Homotopy・π₀ の可換式・正次数の等式条件の同値を供給。commit `4b8fae870`。
+  この実際の比較についても余極限性と全基点 π 判定の iff を証明。
+- `CoconeLegNaturality`: 底の元の指定辺と余錐頂点の join 二単体を構成し、
+  同じ脚と元の transition の合成 Homotopy・π₀ の可換式を供給。
+  成分の系では投影 Kan 型の展開により標準 heartbeat を超えたため、局所的に上限を増加。
+- `BridgeStageKernel`: D.positive_equal_at_stage を直接消費し、段階に Homotopy まで自然な
+  任意の Kan 標的で元の二つの類の像が等しいことを証明。上の自然性と合わせて使用。
+  この葉と `CoconeLegNaturality` の保存: `e878fa9e0`。
 
 ## 確定型への残る接続
 
-1. 全空間比較 q と各値からの射 s_i を、元の余錐の脚 l_i と比較する。
-   `BridgeComponents` の hcomm・hstage を、元の coslice の比較と coherent な三角形から供給。
+1. `NativeTotalComparison` と `CoconeLegNaturality` により、元の余錐の実際の脚を使う
+   hcomm・hstage の Homotopy は構成済み。有限検出の valueToTotalKan と標準余錐の脚を結ぶ。
 2. 正次数の単射性は、二つの球面の基点を貼った有限 wedge の同時検出を使う。
-   K は S.hom と S.hom の pushout、元の二代表の共通基点により K→T を作る。
-   その一つの H の指数転置は二代表に同じ path 頂点を与えるので、q の像での等式から
+   その有限 wedge の同時検出は `total_positive_pair_representative` として証明済み。
+   一つの H の指数転置は二代表に同じ path 頂点を与えるので、q の像での等式から
    stage の脚の群の等式を得る。D.positive_equal_at_stage で後続段へ移して T で等式を反映。
 3. 正次数の全射性は D.positive_surjective（全ての指定辺）と全空間側の実際の path を組み合わせる。
    指定辺を保つ必要がある箇所は BridgePathRealization の iff を使い、自由 path の存在へ弱めない。
@@ -129,15 +142,16 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 ## 検証と保存
 
 - 初期入力監査: `/tmp/audit-pi-inputs.lean`、主要4定理とも標準3公理のみ。
-- 17葉は個別の `lake build` に成功。独自集約も全葉の公開に更新済み。
-- 初期38宣言から全98宣言へ監査範囲を拡大し、いずれも標準3公理のみ。
+- 22葉は個別の `lake build` に成功。独自集約も全葉の公開に更新済み。
+- 初期38宣言から全138宣言へ監査範囲を拡大し、いずれも標準3公理のみ。
 - `lake build SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.All` 成功。
 - `lake env lean scripts/audit_f2_pi_criterion.lean` 成功:
-  `PiCriterion audit passed: 98 declarations, standard three axioms only.`
-- 外部の repo import 閉包2811本に未コミット・編集中の入力なし。
+  `PiCriterion audit passed: 138 declarations, standard three axioms only.`
+- 外部の repo import 閉包2821本に未コミット・編集中の入力なし。
 - 基礎5葉と初期計画: `591c62fdb`。π接続・定数境界・球面path: `7cbc996e4`。
 - 独自集約: `4b511d49e`。監査と本チェックポイントを追加保存。
 - 代表元・D零次数: `eb3233ea3`。指定辺の転置と元の基点: `7586484ac`。
-- D移送の群同型による双方向表示: `6492709fb`。現行独自集約: `024dd5e84`。
+- D移送の群同型による双方向表示: `6492709fb`。その時点の独自集約: `024dd5e84`。
+- 共通基点二球面から元の余錐脚の自然性まで5葉を追加。現行独自集約: `3584886ff`。
 - 既存 API の宇宙分離の複製は現在なし。D 入力の抽象構造を F2 に降ろすことは R 候補。
 - 最終目標の達成は未宣言。正次数の代表と同一視の filtered 段階整合性が残る。
