@@ -1044,7 +1044,24 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxInputCoordinates,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxInputEvaluations,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxRawInputActions,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUniverseIso]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUniverseIso,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoreVertexIso,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.PostcompositionCoreDetection,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackFunctorCoreIso,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackFunctorCoreNaturality,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackMapComponentEquivalence,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackCospanMap,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackCospanEquivalence,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.CospanPathLeg,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.CospanPathLaxSpan,
+    `SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackCospanIsoEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.EquivalenceSquareInverse,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PerfectNativeCompositionIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.PerfectDownValueComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OriginalInputLaxLegComparisons,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.OriginalInputLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityHomTargetLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityInputLaxEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
