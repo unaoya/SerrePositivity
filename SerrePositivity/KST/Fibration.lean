@@ -746,3 +746,6 @@ public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquare
 public import SerrePositivity.KST.Fibration.VerdierNormalizedSquareFamily
 public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalShortFaces
 public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalVerticalEdges
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperVertexColumns
+public import SerrePositivity.KST.Fibration.VerdierMovingUpperVerticalEdges
+public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquareIso
