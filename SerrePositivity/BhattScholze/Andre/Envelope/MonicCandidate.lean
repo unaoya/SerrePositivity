@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
-public import SerrePositivity.BhattScholze.Andre.MonicRelationRegularSequence
+public import SerrePositivity.CommutativeAlgebra.MonicRelationRegularSequence
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootResidueKoszul
 public import Mathlib.RingTheory.Regular.Flat
 public import SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation
