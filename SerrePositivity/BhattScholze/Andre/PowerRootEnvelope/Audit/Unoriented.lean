@@ -41,11 +41,11 @@ variable {p : ℕ} [Fact p.Prime] {A S : Type u} [CommRing A] [CommRing S]
 example (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (c : A ⧸ W.ideal →+* S) :
     BoundedPrismInput W c ≌ BoundedPrismInputUnoriented W c :=
-  BoundedPrismInputUnoriented.equivalence hW
+  BoundedPrismInputUnoriented.equivalence
 
 example (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
-    IsInitial (BoundedPrismInputUnoriented.forget hW
+    IsInitial (BoundedPrismInputUnoriented.forget
       (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg)) :=
   powerRootPrismMonicSourceInput_initial_unoriented W hW f hf hdeg
 

@@ -232,7 +232,7 @@ theorem existsUnique_perfectPrismCompatibleRootsLift
   let := Q.isAdicComplete_p_of_perfect hQ
   let : IsAdicComplete I B := perfectPrism_pair_isAdicComplete Q hQ
   let : IsAdicComplete (Ideal.span {(p : B ⧸ Q.ideal)}) (B ⧸ Q.ideal) :=
-    hQ.distinguished_quotient_isAdicComplete (Q.isDistinguished_of_perfect hQ)
+    hQ.distinguished_quotient_isAdicComplete (Q.isDistinguished_generator)
   let : IsAdicComplete (I.map (Ideal.Quotient.mk Q.ideal)) (B ⧸ Q.ideal) := by
     rw [prism_pair_map_ideal_eq_prime]
     infer_instance

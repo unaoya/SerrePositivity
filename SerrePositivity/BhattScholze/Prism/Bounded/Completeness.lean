@@ -324,7 +324,7 @@ theorem perfectPrism_generator_power_quotient_prime_complete (n : ℕ) :
     (I := Ideal.span {(p : B)}) (S := B ⧸ Ideal.span {Q.generator ^ n})
     (M := B ⧸ Ideal.span {Q.generator ^ n})).mp
   simpa only [Ideal.map_span, Set.image_singleton, map_natCast] using
-    hQ.distinguished_power_quotient_isAdicComplete (Q.isDistinguished_of_perfect hQ) n
+    hQ.distinguished_power_quotient_isAdicComplete (Q.isDistinguished_generator) n
 
 include hQ in
 /-- 概要：完全 prism の台環は (p,d) に沿って古典的完備。

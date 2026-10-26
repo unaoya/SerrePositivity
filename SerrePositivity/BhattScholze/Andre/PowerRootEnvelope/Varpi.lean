@@ -77,7 +77,7 @@ theorem perfectPrismVarpiLift_frobenius (W : OrientedPrism p A)
 theorem perfectPrismVarpiLift_delta_isUnit (W : OrientedPrism p A)
     (hW : W.deltaStructure.IsPerfect) :
     IsUnit (W.deltaStructure.delta (perfectPrismVarpiLift W hW)) := by
-  have h := (W.isDistinguished_of_perfect hW).map
+  have h := (W.isDistinguished_generator).map
     (W.deltaStructure.frobeniusEquiv hW).symm.toRingHom
   change IsUnit ((W.deltaStructure.frobeniusEquiv hW).symm.toRingHom
     (W.deltaStructure.delta W.generator)) at h
@@ -577,7 +577,7 @@ theorem perfectPrismVarpiFrobenius_pairIdeal :
   rw [Ideal.map_span, Set.image_pair]
   change Ideal.span {(D).frobeniusLift W.generator, (D).frobeniusLift x} = _
   rw [perfectPrismVarpiLift_frobenius]
-  exact distinguished_frobenius_pair_span _ _ (W.isDistinguished_of_perfect hW)
+  exact distinguished_frobenius_pair_span _ _ (W.isDistinguished_generator)
 
 /-- 概要：R/ϖ と R/p の具体的な Frobenius 環同型。
 方針：二元商上の係数 Frobenius を二重主イデアル商の同型と合成する。

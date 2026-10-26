@@ -1160,7 +1160,7 @@ theorem perfectPrismDeltaAlgebraCompletionPower_G9_inputs
   let := P.isAdicComplete_p_of_perfect hP
   intro k x hx
   exact hP.distinguished_quotient_power_p_pow_torsion_killed_by_p_pow
-    (P.isDistinguished_of_perfect hP) n k x hx
+    (P.isDistinguished_generator) n k x hx
 
 /-- G9-4の元の選択モデルのp余核複体へ、同じ実標準還元の消滅を渡す。 -/
 theorem perfectPrismDeltaAlgebraCompletionPower_modP_cokernel_homology_isZero

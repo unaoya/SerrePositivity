@@ -317,7 +317,7 @@ theorem perfectPrismWittGenerator_isDistinguished :
     (wittDeltaStructure p (ModP A p)).IsDistinguished (perfectPrismWittGenerator P hP) := by
   let := hP.perfectRing_mod_p
   exact (perfectPrismWittRecoveryEquiv_symm_isDeltaHom P hP).map_isDistinguished
-    (P.isDistinguished_of_perfect hP)
+    (P.isDistinguished_generator)
 
 end DeltaCompatibility
 end SerrePositivity.BhattScholze

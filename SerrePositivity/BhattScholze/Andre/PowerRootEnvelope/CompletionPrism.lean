@@ -1152,16 +1152,16 @@ theorem existsUnique_powerRootPrismMonicCompletionHom_over_bounded_prism
         exact hroot
   have hr : Function.Injective (fun x : B => g dP * x) := by
     rw [hdg]
-    exact boundedPrismHom_generator_regular k (W.isDistinguished_of_perfect hW) hB
+    exact k.map_generator_mul_injective
   have ha : ∀ s, g dP ∣ g (a s) := by
     intro s
     rw [hdg]
     apply Ideal.mem_span_singleton.mp
-    rw [boundedPrismHom_generator_span k (W.isDistinguished_of_perfect hW) hB]
+    rw [k.span_map_generator]
     exact Ideal.Quotient.eq_zero_iff_mem.mp hzero
   have hc : IsModuleComplete B (g dP) (ModuleCat.of B B) := by
     rw [hdg]
-    exact boundedPrismHom_generator_complete k (W.isDistinguished_of_perfect hW) hB
+    exact k.isModuleComplete_map_generator
   obtain ⟨F, hF, hu⟩ := existsUnique_rawDeltaDivisionPDHom E Q.deltaStructure dP a g hg.1 hr ha
     Q.complete_p hc
   refine ⟨F, ⟨hF.1, ?_, ?_⟩, ?_⟩

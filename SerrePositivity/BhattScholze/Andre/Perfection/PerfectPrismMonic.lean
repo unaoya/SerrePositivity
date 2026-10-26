@@ -107,7 +107,7 @@ theorem exists_monicRootedPerfectoidCandidate_of_perfectPrism
     ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
       IsIntegralPerfectoid T p ∧ ∀ s, (f s).eval₂ φ (ρ s) = 0 := by
   let F := perfectPrismMonicLift P f hf
-  let hd := OrientedPrism.isDistinguished_of_perfect P hP
+  let hd := OrientedPrism.isDistinguished_generator P
   let D := P.deltaStructure
   let d := P.generator
   let := polynomialPrismCommRing D d F
@@ -171,14 +171,14 @@ theorem perfectPrismMonicSourcePower_pure (n : ℕ) (hn : 0 < n) :
     Z.obj.IsGE 0 ∧ Z.obj.IsLE 0 := by
   let T := A ⧸ Ideal.span {d ^ n}
   let Z := (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).obj X
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   obtain ⟨hc, hz, hflat⟩ := monicPrismaticSourceGeneratorPower_G9_inputs D d f n hn
     hf hdeg s hP.p_mul_injective P.generator_regular v hv
   have hbound : ∃ N : ℕ, ∀ k : ℕ, ∀ x : T,
       (p : T) ^ k * x = 0 → (p : T) ^ N * x = 0 := by
     let := P.isAdicComplete_p_of_perfect hP
     exact ⟨n, fun k x hx => hP.distinguished_quotient_power_p_pow_torsion_killed_by_p_pow
-      (P.isDistinguished_of_perfect hP) n k x hx⟩
+      (P.isDistinguished_generator) n k x hx⟩
   exact derived_pure_of_complete_flat_reduction (p : T) Z hz hflat hbound hc
 
 /-- 概要：完全 prism 上の有限モニック族の実逐次 p,d 完備化源は離散的。
@@ -291,7 +291,7 @@ def perfectPrismMonicSourcePDSingleIso : X ≅ boundedAboveDerivedSingleFunctor.
 使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem perfectPrismMonicRawPD_reduction_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj (Y).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   have hz := monicPrismaticSourceIteratedPDResidue_homology_isZero D d f s hf
     hP.p_mul_injective P.generator_regular v hv i hi
   exact hz.of_iso ((DerivedCategory.homologyFunctor (ModuleCat Q) i).mapIso
@@ -305,7 +305,7 @@ theorem perfectPrismMonicRawPD_reduction_homology_isZero (i : ℤ) (hi : i ≠ 0
 使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem perfectPrismMonicRawPD_reductionH0_faithfullyFlat :
     Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj (Y).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   let : Module.FaithfullyFlat Q
       ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj
         ((boundedAboveDerivedBaseChange q).obj X).obj) :=
@@ -778,7 +778,7 @@ variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (f : σ → Polynomial A)
 local notation "D" => OrientedPrism.deltaStructure P
 local notation "d" => OrientedPrism.generator P
-local notation "hd" => OrientedPrism.isDistinguished_of_perfect P hP
+local notation "hd" => OrientedPrism.isDistinguished_generator P
 local notation "E" => polynomialRankOneDeltaStructure σ D
 local notation "r" => (fun a : σ => monicRelation (f a) a)
 local notation "T" => DivisionPrismCarrier E (MvPolynomial.C d) r
@@ -853,7 +853,7 @@ def perfectPrismMonicPrism_derivedQuotientIso :
   let := polynomialPrismCommRing D d f
   exact boundedAboveDerivedBaseChangeModuleAugmentationIso q M
     (perfectPrismMonicPrism_generator_torVanishing P hP f) ≪≫
-      boundedAboveDerivedSingleFunctor.mapIso (perfectPrismMonicPrism_ordinaryQuotientIso P hP f)
+      boundedAboveDerivedSingleFunctor.mapIso (perfectPrismMonicPrism_ordinaryQuotientIso P f)
 
 end SerrePositivity.BhattScholze.Andre
 
@@ -893,7 +893,7 @@ variable (hf : ∀ t, (f t).Monic) (hdeg : ∀ t, 0 < (f t).natDegree)
 variable {m : ℕ} (eσ : Fin m ≃ σ)
 local notation "D" => OrientedPrism.deltaStructure P
 local notation "d" => OrientedPrism.generator P
-local notation "hd" => OrientedPrism.isDistinguished_of_perfect P hP
+local notation "hd" => OrientedPrism.isDistinguished_generator P
 local notation "φ" => polynomialPrismCoefficientMap D d f
 local notation "M" => baseChangeScalarModule φ
 local notation "X" => CategoryTheory.Functor.obj boundedAboveDerivedSingleFunctor M
@@ -1125,7 +1125,7 @@ theorem exists_finiteMonicRootedPerfectoidExtension_of_perfectPrism
     exact hdeg s
   let D := P.deltaStructure
   let d := P.generator
-  let hd := OrientedPrism.isDistinguished_of_perfect P hP
+  let hd := OrientedPrism.isDistinguished_generator P
   let := polynomialPrismCommRing D d F
   let φ := polynomialPerfectoidCandidateBaseMap D d F hd
   let ρ := polynomialPerfectoidCandidateRoot D d F hd

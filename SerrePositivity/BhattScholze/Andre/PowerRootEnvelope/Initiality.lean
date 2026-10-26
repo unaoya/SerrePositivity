@@ -463,8 +463,8 @@ variable {W : OrientedPrism p A} {c : A ⧸ W.ideal →+* S}
 使われ方：元の源の向きなし初期性への共通接続。 -/
 def BoundedPrismInput.initial_unoriented (hW : W.deltaStructure.IsPerfect)
     (X : BoundedPrismInput W c) (hX : IsInitial X) :
-    IsInitial (BoundedPrismInputUnoriented.forget hW X) := by
-  have hi := hX.ofIso (BoundedPrismInputUnoriented.orientationIso hW X).symm
+    IsInitial (BoundedPrismInputUnoriented.forget X) := by
+  have hi := hX.ofIso (BoundedPrismInputUnoriented.orientationIso X).symm
   apply IsInitial.ofUniqueHom (fun Y => hi.to (BoundedPrismInputUnoriented.orient Y))
   intro Y f
   exact hi.hom_ext _ _
@@ -476,7 +476,7 @@ def BoundedPrismInput.initial_unoriented (hW : W.deltaStructure.IsPerfect)
 def powerRootPrismMonicSourceInput_initial_unoriented
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
-    IsInitial (BoundedPrismInputUnoriented.forget hW
+    IsInitial (BoundedPrismInputUnoriented.forget
       (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg)) :=
   BoundedPrismInput.initial_unoriented hW _
     (powerRootPrismMonicSourceInput_isInitialOfMonicPositive W hW f hf hdeg)
@@ -540,7 +540,7 @@ variable (hdeg : 0 < f.natDegree)
 使われ方：BS Rem 7.15（p.62）の向きなしの標準源。 -/
 def powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented :
     BoundedPrismInputUnoriented W cS :=
-  (BoundedPrismInputUnoriented.forgetFunctor (W := W) (c := cS) hW).obj
+  (BoundedPrismInputUnoriented.forgetFunctor (W := W) (c := cS)).obj
     (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg)
 
 /-- 概要：元の正次数モニック源は向きなし入力圏で初期。

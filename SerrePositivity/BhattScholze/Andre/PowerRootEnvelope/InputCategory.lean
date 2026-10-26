@@ -305,11 +305,9 @@ def orientFunctor : BoundedPrismInputUnoriented W c ⥤ BoundedPrismInput W c wh
   obj := orient
   map f := f
 
-variable (hW : W.deltaStructure.IsPerfect)
-
 /-- 概要：向き付き対象から生成元の選択を忘れる。
 方針：既存の単元倍定理から基底の d の像の正則性とイデアル等式を得る。
-規約：完全性は基底だけに要求し、有界標的の完全性は不要。
+規約：基底の完全性も有界標的の完全性も要らない（prism 射の剛性は仮定なし）。
 使われ方：忘却関手の対象写像。 -/
 def forget (X : BoundedPrismInput W c) : BoundedPrismInputUnoriented W c where
   ring := X.ring
@@ -317,13 +315,10 @@ def forget (X : BoundedPrismInput W c) : BoundedPrismInputUnoriented W c where
   base := X.base.toRingHom
   base_delta := X.base.map_delta
   ideal := X.prism.ideal
-  ideal_eq := (boundedPrismHom_generator_span X.base (W.isDistinguished_of_perfect hW)
-    X.bounded).symm
-  regular := boundedPrismHom_generator_regular X.base (W.isDistinguished_of_perfect hW)
-    X.bounded
+  ideal_eq := (X.base.span_map_generator).symm
+  regular := X.base.map_generator_mul_injective
   complete_p := X.prism.complete_p
-  complete_d := boundedPrismHom_generator_complete X.base (W.isDistinguished_of_perfect hW)
-    X.bounded
+  complete_d := X.base.isModuleComplete_map_generator
   p_mem := X.prism.p_mem_sup_map
   base_ideal := X.base.ideal_le
   input := X.input
@@ -334,21 +329,21 @@ def forget (X : BoundedPrismInput W c) : BoundedPrismInputUnoriented W c where
 方針：同じ台環上の恒等環射を往復に使う。
 規約：イデアルの等式による商の移送も入力作用を保つ。
 使われ方：忘却関手と圏同値の比較同型。 -/
-def orientationIso (X : BoundedPrismInput W c) : orient (forget hW X) ≅ X := by
-  let h : OrientedPrism.Hom (orient (forget hW X)).prism X.prism :=
+def orientationIso (X : BoundedPrismInput W c) : orient (forget X) ≅ X := by
+  let h : OrientedPrism.Hom (orient (forget X)).prism X.prism :=
     { toRingHom := RingHom.id X.ring
       map_delta := X.prism.deltaStructure.isDeltaHom_id
       ideal_le := by
         change Ideal.span {X.base.toRingHom W.generator} ≤ X.prism.ideal.comap _
         intro x hx
-        exact (forget hW X).ideal_eq.ge hx }
-  let k : OrientedPrism.Hom X.prism (orient (forget hW X)).prism :=
+        exact (forget X).ideal_eq.ge hx }
+  let k : OrientedPrism.Hom X.prism (orient (forget X)).prism :=
     { toRingHom := RingHom.id X.ring
       map_delta := X.prism.deltaStructure.isDeltaHom_id
       ideal_le := by
         change X.prism.ideal ≤ (Ideal.span {X.base.toRingHom W.generator}).comap _
         intro x hx
-        exact (forget hW X).ideal_eq.le hx }
+        exact (forget X).ideal_eq.le hx }
   refine
     { hom := { toHom := h, over_base := ?_, over_input := ?_ }
       inv := { toHom := k, over_base := ?_, over_input := ?_ }
@@ -357,15 +352,15 @@ def orientationIso (X : BoundedPrismInput W c) : orient (forget hW X) ≅ X := b
   · apply OrientedPrism.Hom.ext; rfl
   · ext s
     obtain ⟨a, ha⟩ := Ideal.Quotient.mk_surjective (X.input s)
-    change h.quotientMap ((orient (forget hW X)).input s) = X.input s
-    change h.quotientMap (Ideal.quotEquivOfEq (forget hW X).ideal_eq (X.input s)) = X.input s
+    change h.quotientMap ((orient (forget X)).input s) = X.input s
+    change h.quotientMap (Ideal.quotEquivOfEq (forget X).ideal_eq (X.input s)) = X.input s
     rw [← ha]
     rfl
   · apply OrientedPrism.Hom.ext; rfl
   · ext s
     obtain ⟨a, ha⟩ := Ideal.Quotient.mk_surjective (X.input s)
-    change k.quotientMap (X.input s) = (orient (forget hW X)).input s
-    change k.quotientMap (X.input s) = Ideal.quotEquivOfEq (forget hW X).ideal_eq (X.input s)
+    change k.quotientMap (X.input s) = (orient (forget X)).input s
+    change k.quotientMap (X.input s) = Ideal.quotEquivOfEq (forget X).ideal_eq (X.input s)
     rw [← ha]
     rfl
   · apply BoundedPrismInput.hom_ext; apply OrientedPrism.Hom.ext; rfl
@@ -376,10 +371,10 @@ def orientationIso (X : BoundedPrismInput W c) : orient (forget hW X) ≅ X := b
 規約：台の環射は元の射と同じ。
 使われ方：向きなし対象への初期性の移送。 -/
 def forgetFunctor : BoundedPrismInput W c ⥤ BoundedPrismInputUnoriented W c where
-  obj := forget hW
+  obj := forget
   map {X Y} (f : X ⟶ Y) :=
-    (show orient (forget hW X) ⟶ orient (forget hW Y) from
-      (orientationIso hW X).hom ≫ f ≫ (orientationIso hW Y).inv)
+    (show orient (forget X) ⟶ orient (forget Y) from
+      (orientationIso X).hom ≫ f ≫ (orientationIso Y).inv)
   map_id X := by apply BoundedPrismInput.hom_ext; apply OrientedPrism.Hom.ext; rfl
   map_comp {X Y Z} f g := by
     apply BoundedPrismInput.hom_ext
@@ -390,23 +385,23 @@ def forgetFunctor : BoundedPrismInput W c ⥤ BoundedPrismInputUnoriented W c wh
 方針：比較同型の恒等環射を計算する。規約：基底・入力保存も射に保持される。
 使われ方：向きなし初期性で得た射の実環上の照合。 -/
 theorem forgetFunctor_map_toRingHom {X Y : BoundedPrismInput W c} (f : X ⟶ Y) :
-    ((forgetFunctor hW).map f).toHom.toRingHom = f.toHom.toRingHom := rfl
+    ((forgetFunctor).map f).toHom.toRingHom = f.toHom.toRingHom := rfl
 
 /-- 概要：向き付き入力圏と向きなし入力圏の同値。
 方針：往復の比較同型はいずれも台環上の恒等環射。
 規約：宇宙と固定完全基底・入力作用を保つ。
 使われ方：向きに依存しない envelope の普遍性。 -/
 def equivalence : BoundedPrismInput W c ≌ BoundedPrismInputUnoriented W c where
-  functor := forgetFunctor hW
+  functor := forgetFunctor
   inverse := orientFunctor
-  unitIso := NatIso.ofComponents (fun X => (orientationIso hW X).symm) (by
+  unitIso := NatIso.ofComponents (fun X => (orientationIso X).symm) (by
     intro X Y f
     apply BoundedPrismInput.hom_ext; apply OrientedPrism.Hom.ext; rfl)
   counitIso := NatIso.ofComponents (fun X =>
-    { hom := (orientationIso hW (orient X)).hom
-      inv := (orientationIso hW (orient X)).inv
-      hom_inv_id := (orientationIso hW (orient X)).hom_inv_id
-      inv_hom_id := (orientationIso hW (orient X)).inv_hom_id }) (by
+    { hom := (orientationIso (orient X)).hom
+      inv := (orientationIso (orient X)).inv
+      hom_inv_id := (orientationIso (orient X)).hom_inv_id
+      inv_hom_id := (orientationIso (orient X)).inv_hom_id }) (by
     intro X Y f
     apply BoundedPrismInput.hom_ext; apply OrientedPrism.Hom.ext; rfl)
   functor_unitIso_comp X := by

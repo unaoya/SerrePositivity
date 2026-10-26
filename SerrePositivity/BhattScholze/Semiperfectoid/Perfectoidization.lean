@@ -190,7 +190,7 @@ theorem perfectDeltaDivisionQuotient_isAdicComplete
   let P := perfectDeltaDivisionPrism D d hd J
   have hP := perfectDeltaDivisionPrism_isPerfect D d hd J
   let := P.isAdicComplete_p_of_perfect hP
-  exact hP.distinguished_quotient_isAdicComplete (P.isDistinguished_of_perfect hP)
+  exact hP.distinguished_quotient_isAdicComplete (P.isDistinguished_generator)
 
 end SerrePositivity.BhattScholze
 
@@ -215,16 +215,16 @@ def perfectPrismQuotientPerfectoidizationMap
     letI := perfectDeltaDivisionPrismCommRing P.deltaStructure P.generator (RingHom.ker r)
     S →+* PerfectDeltaDivisionPrismCarrier P.deltaStructure P.generator (RingHom.ker r) ⧸
       (perfectDeltaDivisionPrism P.deltaStructure P.generator
-        (P.isDistinguished_of_perfect hP) (RingHom.ker r)).ideal := by
+        (P.isDistinguished_generator) (RingHom.ker r)).ideal := by
   let := perfectDeltaDivisionPrismCommRing P.deltaStructure P.generator (RingHom.ker r)
   let j := perfectDeltaDivisionPrismMap P.deltaStructure P.generator (RingHom.ker r)
   let Q := perfectDeltaDivisionPrism P.deltaStructure P.generator
-    (P.isDistinguished_of_perfect hP) (RingHom.ker r)
+    (P.isDistinguished_generator) (RingHom.ker r)
   exact r.liftOfSurjective hr ⟨(Ideal.Quotient.mk Q.ideal).comp j, by
     intro x hx
     apply Ideal.Quotient.eq_zero_iff_mem.mpr
     exact perfectDeltaDivisionPrismMap_ideal_le P.deltaStructure P.generator
-      (P.isDistinguished_of_perfect hP) (RingHom.ker r) hx⟩
+      (P.isDistinguished_generator) (RingHom.ker r) hx⟩
 
 set_option maxHeartbeats 800000 in
 -- 具体的な実完備化の環構造を展開するため、この証明に限って探索上限を増やす。
@@ -237,7 +237,7 @@ theorem perfectPrismQuotientPerfectoidizationMap_isPerfectoidization
     IsPerfectoidization p (perfectPrismQuotientPerfectoidizationMap P hP r hr) := by
   let D := P.deltaStructure
   let d := P.generator
-  have hd := P.isDistinguished_of_perfect hP
+  have hd := P.isDistinguished_generator
   let J := RingHom.ker r
   let H := PerfectDeltaDivisionPrismCarrier D d J
   let := perfectDeltaDivisionPrismCommRing D d J

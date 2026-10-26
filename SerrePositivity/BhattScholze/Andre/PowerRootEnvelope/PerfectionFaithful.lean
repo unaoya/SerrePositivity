@@ -767,7 +767,7 @@ theorem powerRootPrismMonicPerfection_generator_regular :
   let := pdCompletionCommRing Cp p x
   have hk := deltaAlgebraPerfectionCoefficient_isDeltaHom W.deltaStructure DH c
     (powerRootPrismMonicCompletionBaseMap_isDeltaHom W hW f)
-  have hd := hk.map_isDistinguished (W.isDistinguished_of_perfect hW)
+  have hd := hk.map_isDistinguished (W.isDistinguished_generator)
   exact (perfectDeltaPDPrism (deltaPerfectionStructure DH) (deltaPerfection_isPerfect DH)
     x hd).generator_regular
 

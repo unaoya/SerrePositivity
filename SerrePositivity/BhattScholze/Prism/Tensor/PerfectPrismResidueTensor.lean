@@ -47,7 +47,7 @@ def perfectPrismResidueFactorAlgEquiv
   letI : Algebra (R ⧸ PR.ideal) (S ⧸ PS.ideal) := f.quotientMap.toAlgebra
   have hi : Ideal.map (algebraMap R S) PR.ideal = PS.ideal := by
     rw [← hf]
-    exact f.map_ideal_eq_of_perfect hR hS
+    exact f.map_ideal_eq
   let e := Ideal.quotientEquivAlgOfEq R hi
   exact
     { e.toRingEquiv with
@@ -179,7 +179,7 @@ def perfectPrism_completedResidueTensorCartierAlgEquiv
   exact (derivedH0AlgEquivOfIsoUnderlying e.hom inferInstance).symm.trans
     (perfectDelta_completedResidueTensorCartierAlgEquiv p R S T PR.deltaStructure
       PS.deltaStructure PT.deltaStructure hR hS hT hRS hRT PR.generator
-      (PR.isDistinguished_of_perfect hR))
+      (PR.isDistinguished_generator))
 
 /-- The completed tensor of the actual prism residues is concentrated in degree zero. -/
 lemma perfectPrism_completedResidueTensor_pure
@@ -205,7 +205,7 @@ lemma perfectPrism_completedResidueTensor_pure
     simpa only [hfT] using fT.map_delta
   have h := perfectDelta_completedResidueTensor_pure p R S T PR.deltaStructure
     PS.deltaStructure PT.deltaStructure hR hS hT hRS hRT PR.generator
-    (PR.isDistinguished_of_perfect hR)
+    (PR.isDistinguished_generator)
   let OLD := boundedAboveCompletedTensorAlgebra Q (p : Q)
     (S ⧸ Ideal.map (algebraMap R S) PR.ideal) (T ⧸ Ideal.map (algebraMap R T) PR.ideal)
   letI : OLD.X.obj.IsGE 0 := h.1
@@ -254,7 +254,7 @@ lemma perfectPrism_completedResidueTensor_isIntegralPerfectoid
       PR PS PT hR hS hT fS fT hfS hfT).toRingEquiv.symm
     (perfectDeltaIteratedTensorH0_quotient_isIntegralPerfectoid p R S T PR.deltaStructure
       PS.deltaStructure PT.deltaStructure hR hS hT hRS hRT PR.generator
-      (PR.isDistinguished_of_perfect hR))
+      (PR.isDistinguished_generator))
 
 end SerrePositivity.BhattScholze
 

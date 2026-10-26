@@ -479,8 +479,7 @@ theorem pCompletedDistinguishedPrismLift_map_ideal
     (f : A →+* B) (hf : D.IsDeltaHom Q.deltaStructure f) (hdf : f d ∈ Q.ideal) :
     (pCompletedDistinguishedPrism D d hd).ideal.map
       (pCompletedDistinguishedPrismLift D d hd Q hQ f hf hdf).toRingHom = Q.ideal :=
-  (pCompletedDistinguishedPrismLift D d hd Q hQ f hf hdf).map_ideal_eq_of_perfect
-    (pCompletedDistinguishedPrism_isPerfect D d hd) hQ
+  (pCompletedDistinguishedPrismLift D d hd Q hQ f hf hdf).map_ideal_eq
 
 end SerrePositivity.BhattScholze
 
@@ -553,7 +552,7 @@ theorem pCompletedPerfectPrism_isAdicComplete_generator
 def pCompletedPerfectPrism (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) :
     OrientedPrism p (PCompletedDeltaPerfection P.deltaStructure) := by
   let := pCompletedPerfectPrism_isAdicComplete_generator P hP
-  exact pCompletedDistinguishedPrism P.deltaStructure P.generator (P.isDistinguished_of_perfect hP)
+  exact pCompletedDistinguishedPrism P.deltaStructure P.generator (P.isDistinguished_generator)
 
 /-- 復元対象のprismも完全。 -/
 theorem pCompletedPerfectPrism_isPerfect (P : OrientedPrism p A)
@@ -564,7 +563,7 @@ theorem pCompletedPerfectPrism_isPerfect (P : OrientedPrism p A)
 def pCompletedPerfectPrismMap (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) :
     OrientedPrism.Hom P (pCompletedPerfectPrism P hP) := by
   let := pCompletedPerfectPrism_isAdicComplete_generator P hP
-  exact pCompletedPrismMap P (P.isDistinguished_of_perfect hP)
+  exact pCompletedPrismMap P (P.isDistinguished_generator)
 
 /-- 既に完全なprismの標準射は、台環で全単射。 -/
 theorem pCompletedPerfectPrismMap_bijective (P : OrientedPrism p A)
@@ -577,13 +576,13 @@ theorem pCompletedPerfectPrismMap_bijective (P : OrientedPrism p A)
 theorem pCompletedPerfectPrismMap_quotientMap_bijective (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) :
     Function.Bijective (pCompletedPerfectPrismMap P hP).quotientMap :=
-  (pCompletedPerfectPrismMap P hP).quotientMap_bijective hP
-    (pCompletedPerfectPrism_isPerfect P hP) (pCompletedPerfectPrismMap_bijective P hP)
+  (pCompletedPerfectPrismMap P hP).quotientMap_bijective
+    (pCompletedPerfectPrismMap_bijective P hP)
 
 /-- 既に完全なprismへ戻る具体的な逆prism射。既存の同型判定から構成する。 -/
 def pCompletedPerfectPrismInverse (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) :
     OrientedPrism.Hom (pCompletedPerfectPrism P hP) P :=
-  (pCompletedPerfectPrismMap P hP).inverseOfQuotient hP (pCompletedPerfectPrism_isPerfect P hP)
+  (pCompletedPerfectPrismMap P hP).inverseOfQuotient
     (pCompletedPerfectPrismMap_quotientMap_bijective P hP)
 
 /-- 逆prism射と標準prism射の合成は、元prismの恒等射。 -/
@@ -591,16 +590,16 @@ def pCompletedPerfectPrismInverse (P : OrientedPrism p A) (hP : P.deltaStructure
     (hP : P.deltaStructure.IsPerfect) :
     (pCompletedPerfectPrismInverse P hP).comp (pCompletedPerfectPrismMap P hP) =
       OrientedPrism.Hom.id P :=
-  (pCompletedPerfectPrismMap P hP).inverseOfQuotient_comp hP
-    (pCompletedPerfectPrism_isPerfect P hP) (pCompletedPerfectPrismMap_quotientMap_bijective P hP)
+  (pCompletedPerfectPrismMap P hP).inverseOfQuotient_comp
+    (pCompletedPerfectPrismMap_quotientMap_bijective P hP)
 
 /-- 標準prism射と逆prism射の逆順の合成も、完全化prismの恒等射。 -/
 @[simp] theorem pCompletedPerfectPrismMap_comp_inverse (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) :
     (pCompletedPerfectPrismMap P hP).comp (pCompletedPerfectPrismInverse P hP) =
       OrientedPrism.Hom.id (pCompletedPerfectPrism P hP) :=
-  (pCompletedPerfectPrismMap P hP).comp_inverseOfQuotient hP
-    (pCompletedPerfectPrism_isPerfect P hP) (pCompletedPerfectPrismMap_quotientMap_bijective P hP)
+  (pCompletedPerfectPrismMap P hP).comp_inverseOfQuotient
+    (pCompletedPerfectPrismMap_quotientMap_bijective P hP)
 
 end SerrePositivity.BhattScholze
 

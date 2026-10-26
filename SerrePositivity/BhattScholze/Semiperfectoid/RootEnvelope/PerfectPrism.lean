@@ -76,7 +76,7 @@ theorem perfectPrismRootBoundedSupportPower_pure_faithfullyFlat
     (Yₙ).obj.IsGE 0 ∧ (Yₙ).obj.IsLE 0 ∧
       Module.FaithfullyFlat Qₙ
         ((DerivedCategory.homologyFunctor (ModuleCat Qₙ) 0).obj (Yₙ).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   exact prismaticPowerDerivedReduction_pure_faithfullyFlat (p : A) d n hn X
     (deltaRootBoundedSupportIteratedPDResidue_homology_isZero D d b hP.p_mul_injective
       P.generator_regular v hv hpres)
@@ -116,7 +116,7 @@ theorem perfectPrismRootBoundedSupportPower_G9_inputs
   let := P.isAdicComplete_p_of_perfect hP
   intro k x hx
   exact hP.distinguished_quotient_power_p_pow_torsion_killed_by_p_pow
-    (P.isDistinguished_of_perfect hP) n k x hx
+    (P.isDistinguished_generator) n k x hx
 
 /-- G9-4の同じ選択モデルのp余核複体にも、標準実還元の非零次数消滅を渡す。 -/
 theorem perfectPrismRootBoundedSupportPower_modP_cokernel_homology_isZero
@@ -309,7 +309,7 @@ def perfectPrismRootSourcePDSingleIso : X ≅ boundedAboveDerivedSingleFunctor.o
 /-- 実PD環の同じ(p,d)導来還元の非零次数は消える。 -/
 theorem perfectPrismRootPD_reduction_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj (Y).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   have hz := deltaRootBoundedSupportIteratedPDResidue_homology_isZero D d b
     hP.p_mul_injective P.generator_regular v hv
     (deltaRootBoundedSupport_preservesColimit D d b) i hi
@@ -320,7 +320,7 @@ theorem perfectPrismRootPD_reduction_homology_isZero (i : ℤ) (hi : i ≠ 0) :
 /-- 実PD環の同じ(p,d)導来還元のH0は忠実平坦。 -/
 theorem perfectPrismRootPD_reductionH0_faithfullyFlat :
     Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj (Y).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   let : Module.FaithfullyFlat Q
       ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj
         ((boundedAboveDerivedBaseChange q).obj X).obj) :=
@@ -668,7 +668,7 @@ variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (b : σ → A)
 local notation "D" => OrientedPrism.deltaStructure P
 local notation "d" => OrientedPrism.generator P
-local notation "hd" => OrientedPrism.isDistinguished_of_perfect P hP
+local notation "hd" => OrientedPrism.isDistinguished_generator P
 local notation "T" => DeltaRootPrismCarrier D d b
 local notation "f" => deltaRootPrismCoefficientMap D d b
 local notation "J" => Ideal.span {d}
@@ -730,7 +730,7 @@ def perfectPrismRootPrism_derivedQuotientIso :
   let := deltaRootPrismCommRing D d b
   exact boundedAboveDerivedBaseChangeModuleAugmentationIso q M
     (perfectPrismRootPrism_generator_torVanishing P hP b) ≪≫
-      boundedAboveDerivedSingleFunctor.mapIso (perfectPrismRootPrism_ordinaryQuotientIso P hP b)
+      boundedAboveDerivedSingleFunctor.mapIso (perfectPrismRootPrism_ordinaryQuotientIso P b)
 
 end SerrePositivity.BhattScholze
 
@@ -749,7 +749,7 @@ variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (b : σ → A)
 local notation "D" => OrientedPrism.deltaStructure P
 local notation "d" => OrientedPrism.generator P
-local notation "hd" => OrientedPrism.isDistinguished_of_perfect P hP
+local notation "hd" => OrientedPrism.isDistinguished_generator P
 local notation "f" => deltaRootPrismCoefficientMap D d b
 local notation "M" => baseChangeScalarModule f
 local notation "X" => CategoryTheory.Functor.obj boundedAboveDerivedSingleFunctor M
@@ -896,7 +896,7 @@ variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
 local notation "D" => OrientedPrism.deltaStructure P
 local notation "d" => OrientedPrism.generator P
-local notation "hd" => OrientedPrism.isDistinguished_of_perfect P hP
+local notation "hd" => OrientedPrism.isDistinguished_generator P
 local notation "R" => A ⧸ Ideal.span {d}
 include hP
 

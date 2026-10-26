@@ -683,21 +683,21 @@ include hP
 
 private theorem generatorRegular : IsSMulRegular A d := by
   let := P.isAdicComplete_p_of_perfect hP
-  exact hP.distinguished_mul_injective (P.isDistinguished_of_perfect hP)
+  exact hP.distinguished_mul_injective (P.isDistinguished_generator)
 
 include s
 
 /-- 完全prismから、有限根族の実逐次源の実(p,d)還元の非零次数消滅を得る。 -/
 theorem perfectPrismRootFamilySource_modPD_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q₀) i).obj (Y₀).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   exact deltaRootFamilySourceIteratedPDResidue_homology_isZero D d b s hP.p_mul_injective
     (generatorRegular P hP) v hv i hi
 
 /-- 同じ実還元のH0は、元のA/(p,d)上で忠実平坦。追加単元・ghost入力は不要。 -/
 theorem perfectPrismRootFamilySource_modPDH0_faithfullyFlat :
     Module.FaithfullyFlat Q₀ ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj (Y₀).obj) := by
-  obtain ⟨v, hv⟩ := P.isDistinguished_of_perfect hP
+  obtain ⟨v, hv⟩ := P.isDistinguished_generator
   exact deltaRootFamilySourceIteratedPDResidueH0_faithfullyFlat D d b s hP.p_mul_injective
     (generatorRegular P hP) v hv
 

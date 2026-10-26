@@ -1464,7 +1464,7 @@ theorem perfectPrism_generator_power_bounded_torsion_of_unconditional
     (p : A ⧸ Ideal.span {W.generator ^ n}) ^ n * x = 0 := by
   let := W.isAdicComplete_p_of_perfect hW
   exact hW.distinguished_quotient_power_p_pow_torsion_killed_by_p_pow
-    (W.isDistinguished_of_perfect hW) n N x hx
+    (W.isDistinguished_generator) n N x hx
 
 omit [Fact p.Prime] in
 /-- 概要：非零な標数 p 環では p の乗算は単射でない。

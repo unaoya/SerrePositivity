@@ -81,7 +81,7 @@ theorem powerRootPrismVarpiLift_inverseFrobenius :
 規約：正則性を追加仮定にしない。
 使われ方：BS Rem 7.15（著者版 p.62）の二元イデアル標準化への入力。 -/
 theorem powerRootPrismGenerator_isDistinguished : (E).IsDistinguished dP := by
-  have hunit := (W.isDistinguished_of_perfect hW).map (algebraMap A P)
+  have hunit := (W.isDistinguished_generator).map (algebraMap A P)
   change IsUnit ((algebraMap A P) (W.deltaStructure.delta W.generator)) at hunit
   have hδ := powerRootPolynomialDelta_coeff_isDeltaHom p hW.p_mul_injective
     W.deltaStructure W.generator

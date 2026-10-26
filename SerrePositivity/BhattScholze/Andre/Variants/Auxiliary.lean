@@ -852,7 +852,7 @@ theorem perfectedDeltaAlgebraQuotientBaseMap_completelyFaithfullyFlat
   let t := v.comp κ
   let : Algebra A H := t.toAlgebra
   have hk := deltaAlgebraPerfectionCoefficient_isDeltaHom P.deltaStructure E j hj
-  have hd := hk.map_isDistinguished (P.isDistinguished_of_perfect hP)
+  have hd := hk.map_isDistinguished (P.isDistinguished_generator)
   have hreg : IsSMulRegular H (algebraMap A H P.generator) :=
     (perfectDeltaPDPrism (deltaPerfectionStructure E) (deltaPerfection_isPerfect E)
       (κ P.generator) hd).generator_regular

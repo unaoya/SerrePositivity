@@ -412,7 +412,7 @@ theorem exists_monicRootedPerfectoidExtension_of_perfectPrism
     exact hdeg s
   let D := P.deltaStructure
   let d := P.generator
-  let hd := OrientedPrism.isDistinguished_of_perfect P hP
+  let hd := OrientedPrism.isDistinguished_generator P
   let := polynomialPrismCommRing D d F
   let φ := polynomialPerfectoidCandidateBaseMap D d F hd
   let ρ := polynomialPerfectoidCandidateRoot D d F hd
