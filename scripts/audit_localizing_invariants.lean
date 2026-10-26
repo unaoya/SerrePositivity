@@ -33,6 +33,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.ExactFiniteLimitPreservation,
     `SerrePositivity.KST.LocalizingInvariants.VerdierFiniteDenominatorRefinement,
     `SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorOver,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorSpanFamily,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorSpanComparison,
     `SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism,
     `SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction,
