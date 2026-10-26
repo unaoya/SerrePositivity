@@ -12,10 +12,10 @@
 - 再編前の固定 K 接続：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
 - c4 完了：S-1 (a) `5640d0942` の `nativeTriangle_ext` を `kbMovingCanonicalFiniteExtConsumer` の四有限端点へ代入した。`verdierCanonicalKernelSquareIso d` は実読出し・相対合成も実供給から選び、d のみから元の全四角形の FunctorIso を構成する。
 - K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
-- 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → b の統合と連結版 d → e。K-7 の同じ条件付き実反復は K-B3 が所有する。
-- 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。**Sp 有限線型図式比較はコーディネータへ未着**。下記の正確な型を初回報告でユーザー経由の転送用に提示済み。Sp 公開名は未確認。
+- 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → 条件付きで組み立てた b・d の放電 → e。K-7 の同じ条件付き実反復は K-B3 が所有する。
+- 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。Sp 有限線型図式比較の依頼は、ユーザーが循環のない閉包を確認して中継済み。下記の正確な型の実供給待ち。
 - K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
-- 次の一手：Sp の下記実供給を `Relative.SingleRelativeComparison.ofCanonicalFirstRowSimplices` へ渡す。c4 入力は不要。d の非負次数 π 同型を K-B3 の K-7 e へ供給する。
+- 次の一手：Sp の下記実供給を canonical 比較と d の `dgKappaCanonicalFixedSourceFiberComparison_nonnegative` へ渡す。c4 入力は不要。K-B3 は同じ native BF 比較を既存の K-7 e へ消費できる。
 - 検証：Fibration 集約と専用公理監査を行い、結果はコミット本文へ記録する。NonConnective の検証・編集は K-B3 が担当する。
 ### c5：Sp コーディネータへの供給依頼（正確な型）
 - import：`SerrePositivity.KST.Fibration.RelativeFirstRowSimplexQuotient`。`h : VerdierSequence.{u}` に対し次を依頼する（名前は供給元が決定）。
@@ -28,6 +28,9 @@
 - `Relative.SingleRelativeComparison.ofFirstRowSimplices` は同じ c4 全四角形同型と c5 入力を既存の相対実現界面へ渡す。供給の存在は主張しない。NonConnective への新規 import はない。
 
 ### 現在地
+- b の統合：`Relative.CanonicalRealization` は c5 だけから元の商射の指定基点上の fiber 同型と、元の核包含への射影公式を供給する。S1 の実閉部分圏四角形は `closedRelativeInfinitySquare_isPullback` で無条件の native 引き戻しへ接続した。
+- d の組み立て：`Relative.CanonicalSingleStageDetection` は c5 のみから同じ実供給 BF fiber 比較の非負次数 π 全単射性と群同型を得る。`Relative.CanonicalFixedSourceFiber` は元の実核比較と指定始点同型を前置し、元の固定 K(D) 始点を持つ実比較辺と非負次数 π 同型まで接続する。
+- d の境界：上記の比較先は同じ実供給 BF 右辺の fiber。商側を旧固定 K 右辺の fiber へ移したとは主張しない。c5 は未放電。d の葉は既存 NonConnective を読み取り専用で消費する Relative.All に集約し、主 Fibration 集約へ NonConnective を逆 import しない。
 - b の既存界面：`Relative.All` の `finiteComparisonNatIso` は局所化圏値の単体的同型（生の SSet 実現同値を含意しない）。`singleAdditivityFiberIso` と射影公式は同じ包含・指定基点を保持し、単回版に追加収縮入力はない。`relativeRealizationInfinitySquare_isPullback` は実相対核四角形に適用し、元の指定 Verdier 四角形へ戻すには `SingleRelativeComparison` の二比較が必要。
 - S-1 (c) `69c370610` の無条件四角形・fiber 同型・元の射影公式・指定零旗の零化を `Relative.FibrationSupply` から公開し b で消費済み。同じ集約は有限座標と相対実現界面も公開する。NonConnective は import せず、既存 ClosedStable* は編集していない。
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c5 と d を継続し、K-7 d は K-B3 へ渡す。
@@ -119,7 +122,7 @@
 - K-S• の固定 K-1/K-2 は L1 §6：加法性、MultiRealizationFunctorIso の正反復、RelativeCofiberLeftFiber、
   RelativeFiberEquivalence と Quillen A。任意 W への制限・底変換・元の射影の照合は K-F が証明する。
 - 相対 (d) の固定三点は K-S• の DGKFixedInterface・DGKFixedSConstruction を読み取り専用で使う。固定 ν・K の頂点・辺、厳密 dg の K₀ 自然比較・負次数消滅は提供済み。
-- 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は Sp 正本から供給され、元の商上比較へ代入済み。厚い β3 列の実核接続は依頼済み。有限線型図式の局所化の正確な依頼型は冒頭（コーディネータへ未着）。
+- 商・分数・局所化は Sp 正本。一般分数比較の充満忠実性は Sp 正本から供給され、元の商上比較へ代入済み。厚い β3 列の実核接続は依頼済み。有限線型図式の局所化の正確な依頼型は冒頭（依頼中継済み・実供給待ち）。
 - Sp の IsStable は使わない。実 fiber 列・整数長完全列・π 同値検出を使う。提供先は K-7 と K-基盤 2。
 ### K-B-S：Sp-6 s4 への空間値全族単位（供給完了）
 - 元の `markedSpanFamily` と同じ `weakSpanKanQuotientDiagram` を保持する。一般 Verdier 分数比較の充満忠実性は Sp 正本が消費・公開し、K-B は元の商上比較の可逆性へ代入済み。K-6 c5 の商実現比較自体は未完。
@@ -209,7 +212,7 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 
 ### c5 の有限第一行比較の消費
 - `RelativeFirstRow` は元の相対 gapped S_n を同じ商関手の相対第一行の厳密な逆像と認証し、第一行制限を底変換した trivial Kan fibration を構成する。`RelativeFirstRowQuotient` は元の商比較との厳密可換性と局所化可逆性の必要十分条件を保持する。
-- `RelativeFirstRowRealization` は正段の残入力を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowQuotient q (n+1)))` に移し、同じ実現・Ex∞ 射・商核四角形へ条件付きで接続する。第一行の標準単体座標同型は同じ商後合成に厳密自然。同じ D-9 実列の `dgKappaNativeFullSSquare_isPullback_of_firstRows` と `dgKappaNativeBFFixedStructure_nonnegative_of_firstRows` まで接続。一般局所化から core 比較を推論しない。有限図式の Verdier 分数・core 比較の依頼はコーディネータへ未着。
+- `RelativeFirstRowRealization` は正段の残入力を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowQuotient q (n+1)))` に移し、同じ実現・Ex∞ 射・商核四角形へ条件付きで接続する。第一行の標準単体座標同型は同じ商後合成に厳密自然。同じ D-9 実列の `dgKappaNativeFullSSquare_isPullback_of_firstRows` と `dgKappaNativeBFFixedStructure_nonnegative_of_firstRows` まで接続。一般局所化から core 比較を推論しない。有限図式の Verdier 分数・core 比較の依頼は依頼中継済み・実供給待ち。
 - `RelativeFirstRowSimplex` は同じ相対部分複体の標準単体座標への厳密な両側逆を供給する。`RelativeFirstRowSimplexQuotient` は元の商比較との厳密四角形を保持し、正段条件を `∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (relativeFirstRowSimplexQuotient q n))` と同値にする。この型から元の商実現への条件付き利用側まで接続済み。先の第一行型と同値な供給型。Sp へは初回報告の正確な型をユーザー経由で送る。新たな局所化存在入力は追加しない。
 
 ### Ind-S (9b)：同じ三面を保つ制御三単体の実構成（採用（06:29））

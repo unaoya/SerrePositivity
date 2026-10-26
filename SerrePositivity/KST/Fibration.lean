@@ -760,3 +760,4 @@ public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalFiniteFaces
 public import SerrePositivity.KST.Fibration.Relative.FirstRowSimplexComparison
 public import SerrePositivity.KST.Fibration.Relative.FibrationSupply
 public import SerrePositivity.KST.Fibration.Relative.CanonicalComparison
+public import SerrePositivity.KST.Fibration.Relative.CanonicalRealization

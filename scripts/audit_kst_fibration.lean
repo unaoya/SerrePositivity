@@ -1,4 +1,5 @@
 import SerrePositivity.KST.Fibration
+import SerrePositivity.KST.Fibration.Relative.All
 import Lean.Util.CollectAxioms
 
 /-! K-F の私有宣言を含む全宣言と推移的公理依存を検査する。 -/
@@ -7,6 +8,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.Relative.CanonicalFixedSourceFiber,
+    `SerrePositivity.KST.Fibration.Relative.CanonicalRealization,
+    `SerrePositivity.KST.Fibration.Relative.CanonicalSingleStageDetection,
+    `SerrePositivity.KST.Fibration.Relative.SingleStageDetection,
     `SerrePositivity.KST.Fibration.VerdierMovingCanonicalFiniteExt,
     `SerrePositivity.KST.Fibration.VerdierCanonicalKernelSquareIso,
     `SerrePositivity.KST.Fibration.Relative.CanonicalComparison,

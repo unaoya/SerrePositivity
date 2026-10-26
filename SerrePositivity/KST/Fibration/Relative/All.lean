@@ -4,10 +4,12 @@ public import SerrePositivity.KST.Fibration.Relative.CoordinatePostcomp
 public import SerrePositivity.KST.Fibration.Relative.AdditivityFiber
 public import SerrePositivity.KST.Fibration.Relative.SingleStageDetection
 public import SerrePositivity.KST.Fibration.Relative.ConnectiveInterface
+public import SerrePositivity.KST.Fibration.Relative.CanonicalSingleStageDetection
+public import SerrePositivity.KST.Fibration.Relative.CanonicalFixedSourceFiber
 
 /-!
-概要：K-B2 の所有葉の集約。
-方針：検証した相対構成だけを公開する。
-規約：K-B の既存集約を変更しない。
-使われ方：本レーンの対象ビルドと専用監査。
+概要：K-6 b の相対構成と d の単回検出・固定始点比較の集約。
+方針：同じ canonical 比較を元の実 fiber と非負次数 π へ接続する。
+規約：NonConnective を読む d の葉は主 Fibration 集約から分離する。
+使われ方：b・d の対象ビルドと専用監査、K-B3 への公開入力。
 -/
