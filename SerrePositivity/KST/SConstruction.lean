@@ -2880,4 +2880,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullAlignedLowerTr
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareHomotopy
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareComparison
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareTriangleComparisons
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullSquareShortComparisons
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullRawSquareDiagramIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/
