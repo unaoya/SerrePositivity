@@ -66,7 +66,17 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroConstant,
     `SerrePositivity.KST.SConstruction.Cofinality.CutKZeroEquiv,
     `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelRestriction,
-    `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelEquiv]
+    `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelEquiv,
+    `SerrePositivity.KST.SConstruction.Cofinality.GroupNerveHigherInput,
+    `SerrePositivity.KST.SConstruction.Cofinality.CutCokernelLaws,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelEdgeCoordinates,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelTriangleCoordinates,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelIntervals,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveSimplex,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelSimplicialSet,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveMap,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveCoordinates,
+    `SerrePositivity.KST.SConstruction.Cofinality.CokernelBarIso]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -162,3 +172,6 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.cutKZeroEquiv
 #check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelEquiv
 #check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelEquiv_apply
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernelBarIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.cutCokernel_higher_of_input
