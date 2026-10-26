@@ -16,6 +16,8 @@ public import SerrePositivity.KST.Spectra.ConstantKanModel
 public import SerrePositivity.KST.Spectra.ComponentRetractionKanHomotopy
 public import SerrePositivity.KST.Spectra.SpectrumFiniteLimits
 public import SerrePositivity.KST.Spectra.AdjointLoopKanSequence
+public import SerrePositivity.KST.Spectra.AdjointLoopUnitRawHom
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBF
 public import SerrePositivity.KST.Spectra.FibrationSequence
 public import SerrePositivity.KST.Spectra.FibrationExactness
 public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
