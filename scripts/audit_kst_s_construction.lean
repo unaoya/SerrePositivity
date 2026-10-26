@@ -33653,3 +33653,108 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopArrowComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopArrowComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionIntervalEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionIntervalEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowFunctorEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowFunctorEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_uncurry
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_uncurry
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_functorEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_functorEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionArrowHomotopy_paths
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroAbsoluteLeftMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroAbsoluteLeftMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroAbsoluteTopMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroAbsoluteTopMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroLeftDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroTopDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectLeftDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectLeftDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuZeroPerfectTopDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalIntervalEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalIntervalEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowFunctorEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowFunctorEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_uncurry
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_uncurry
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_functorEdge
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_functorEdge
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalArrowHomotopy_paths
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteProjectionMap_diagram
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuAbsoluteProjectionMap_diagram
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramComparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuProjectionDiagramHomotopy_paths
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_h
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_h
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_comparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_comparison
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_isInvertible
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_isInvertible
+
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_paths
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorNuNullDiagonalDiagramHomotopy_paths
