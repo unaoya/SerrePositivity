@@ -4,7 +4,7 @@
 
 ### 現在地
 - 二段目は任意の指定完備化射の一般共終性。主定理は未完成。
-- 現在の import は K-6 非依存。相対 fiber 本体の共通供給化を提案（末尾）。
+- K-B2-S1 採用・発注済み（末尾）。現在の import は K-6 非依存、実供給は未到着。
 - 06:29 採用の D-22（`Stable/IdempotentCompletionDensity`）を消費済み。
   同じ全多次数の有限反復 S で双積懸垂の像回収と全パラメータ族の回収を実装。
 - **08:16 採用・再開**：HLS §7.1 の wide 部分圏の亜群化経路を採用。
@@ -42,6 +42,10 @@
   Kan 置換の全正次数の一意性まで接続。一般供給を公理や instance にしない。
 - 連結な相対旗の回収障害を具体的 wide 模型の成分へ降ろし、元の始域像が
   任意の始域頂点の像の基点成分そのものであることを証明済み。
+- 本質像を全多次数の `ClosedStablePredicate` として実装。元の始域との安定模型同値、
+  S 交換同型、全 Ar 像条件との同値、全多次数の厳密な自然変換を構成済み。
+- 本質像包含の各整数 K 群の全単射性・単射性を元の指定射と同値にした。
+  wide 成分から元の三角圏 K₀ 余核への実写像も構成済み。全単射性は未証明。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -54,18 +58,14 @@
 - 初期総見積り24〜40時間。現在の実装は主定理の二段目完了とはしない。
 
 ### 主要宣言
-- `Cofinality.multiSEndofunctor_map_isIdempotentCompletion`
-- `Cofinality.stableWideCofinalitySupply`
+- `Cofinality.completionImageClosedPredicate`
+- `Cofinality.completionImageSStableIso`
 - `Cofinality.completionRelativeFlagWideEvaluation`
 - `Cofinality.completionRelativeImageFlagEquivalence`
 - `Cofinality.completionWideRelativeFlagDiagonalIso`
 - `Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input`
 - `Cofinality.completionMultiWide_componentRetraction`
 - `Cofinality.completionSourceFlagVertexImage_iff`
-- `Cofinality.multiRelativeFlagZeroIso`
-- `Cofinality.suppliedMultiRelativeFlagsMap_zero`
-- `Cofinality.exists_multiSourceFamily_of_relative_component`
-- `Cofinality.kSpectrumMap_cofinality_iff_boundary`
 
 ### 依存と提供
 - 所有：`KST/SConstruction/Cofinality/` の新規葉、同名集約、
@@ -78,21 +78,21 @@
 
 ### 保存範囲
 - `2fc63fd5c`：内部 core 旗と相対旗の自然同型・対角同型、対角制限の照合。
-  次の保存：条件付き正次数消滅・像成分の基点判定。実施記録はコミット本文。
+  `8a35d7774`：条件付き正次数消滅・像成分の基点判定。新規6葉を保存準備中。
 
 ### 既知の問題
 - 一般の共終性、相対実現の fiber 比較、離散的障害の群同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7869 jobs）。監査は30所有葉の全227宣言で標準三公理のみ。
+- 自所有集約ビルド成功（7876 jobs）。監査は36所有葉の全272宣言で標準三公理のみ。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
 ### 次の一手
 - Sp-8 の到着後に `CompletionCoreFlagEvaluationInput` へ実供給を代入する。
   それまでは、この入力を明示的な引数にして相対 fiber 比較と障害の同定を続行する。
-- 相対 fiber 本体の共通供給化をユーザー経由で提案する（末尾）。
+- 本質像を ClosedStablePredicate として代入し、全 S 多次数の像比較を接続する。
   一般共終性・障害の商群同定は未完。条件付きの離散性だけで主定理を結論しない。
 
 ## 目標型
@@ -115,7 +115,7 @@
   `LocalizingInvariants.idempotentCompletion_cofiberWide_discrete` を消費済み。
 - 正確な消費型は `WideStageData` と `stableWideCofinalitySupply_of_api` が正本。
   型を単に記録しただけで、一般供給が届いたことにはしない。
-- K-6 の依存追加は未実施。末尾の提案が採用された場合だけ狭い葉を読み取り専用で使う。
+- K-B2-S1 の依存追加は未実施。到着後に狭い供給葉を読み取り専用で使う。
 
 ## 採用済み Sp-8：一般 core 旗比較を Sp 正本で供給
 
@@ -139,14 +139,14 @@
 - 原典：Hebestreit–Lachmann–Steimle §7.1 第一証明の core と実現の交換。
   <https://arxiv.org/pdf/2205.06104#page=20>
 
-## 設計変更提案：商比較前の相対 fiber 本体を共通供給へ
+## 採用済み K-B2-S1：商比較前の相対 fiber 本体
 
 - 理由：HLS §7.1 第一証明の fiber 列は同論文2.7（Waldhausen）を使用する。
   Sp-8 は各全多次数の評価・離散性を供給し、この fiber 列を供給しない。
   K-B 既存の `weakStringConstantPostSquare_homotopyPullback` と
   `relativeSFibrationFiberIso` は `IsVerdierSequence i q` を要求する。
   完備化の本質像を商関手の厳密な核とみなすことはできず、そのまま代入できない。
-- ユーザー経由の依頼案：K-B2 に、完備化前の相対加法性から閉じた安定部分圏版を切り出す。
+- ユーザー経由で K-B2 へ発注済み。完備化前の相対加法性から閉じた安定部分圏版を切り出す。
   入力は `B : StableModel` と `P : ClosedStablePredicate B` のみ。
   `W = cofiberLocalizingEdges {x | P.predicate x}`、
   `R_P[n]` は `Fun(Δ[n], B)` の、W 内へ全体として持ち上がる旗の全部分圏。
@@ -161,4 +161,4 @@
 - K-cof が保持する仕事：本質像 P の代入、全 S 多次数との交換、Sp-8 消費、
   離散的障害の商群同定、同じ元の `kSpectrumMap f` の正次数全単射・零次単射。
 - 見積り：共通葉の切り出しと一般化3〜6時間、K-cof の消費・照合2〜4時間。
-  未採用。計画への記録だけでは中継済みとせず、ユーザーへ明示的に提案する。
+  ユーザーが採用・発注を明示。K-cof は左項・全多次数の代入側を続行する。

@@ -1,4 +1,10 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstruction
+public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageDiagram
+public import SerrePositivity.KST.SConstruction.Cofinality.ImageInclusionKComparison
+public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageSComparison
+public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageEquivalence
+public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageClosed
 public import SerrePositivity.KST.SConstruction.Cofinality.ImageComponentBasepoint
 public import SerrePositivity.KST.SConstruction.Cofinality.ImageComponentObstruction
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiscreteness

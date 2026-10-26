@@ -42,7 +42,13 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiscreteness,
     `SerrePositivity.KST.SConstruction.Cofinality.ImageComponentObstruction,
-    `SerrePositivity.KST.SConstruction.Cofinality.ImageComponentBasepoint]
+    `SerrePositivity.KST.SConstruction.Cofinality.ImageComponentBasepoint,
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageClosed,
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageEquivalence,
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageSComparison,
+    `SerrePositivity.KST.SConstruction.Cofinality.CompletionImageDiagram,
+    `SerrePositivity.KST.SConstruction.Cofinality.ImageInclusionKComparison,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideKZeroObstruction]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -113,3 +119,12 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlag_recovery_iff_imageComponent
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideImageComponent_iff_basepoint
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlag_recovery_iff_basepoint
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionImageClosedPredicate
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSourceImageStableEquivalence
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSourceImageStableMap_inclusion
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionImageSStableIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionImage_multiPointwise_iff
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSourceImageNatTrans
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionK_bijective_iff_imageInclusion
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionK_injective_iff_imageInclusion
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideKZeroObstruction
