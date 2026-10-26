@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMapData
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceCoherence
+public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKChoiceComparison
 public import SerrePositivity.KST.NonConnective.DGKappaSelectedConeInput
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionPerfectChoiceEquivalence
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceEquivalence
