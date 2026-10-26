@@ -11,6 +11,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FamilyImage,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FullFunctor,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Comparison,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Parameter,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.InputParameter,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.InputFunctor,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeHom,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ClosureFunctor,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.SphereFree,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ModuleExtension,
@@ -18,7 +22,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Perfect,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ImageLaws,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData,
-    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData]
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.UnconditionalData,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientParameter]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -54,3 +60,10 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.dgKappaSphereClosureSuspensionMapData
 #check SerrePositivity.InfinityCategories.dgKappaSphereClosureSuspensionInputMap
+
+#check SerrePositivity.InfinityCategories.dgSuspensionUnconditionalMapData
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureExtensionInputFunctor
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureNativeHom
+
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientParameter
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientParameter_epsilon_necessary

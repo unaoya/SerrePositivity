@@ -14,6 +14,8 @@
 
 状態：自然比較を含めて実装・集約ビルド・独自公理監査を完了。
 D-2 の具体化を含む 13 葉・115 宣言の公理監査が終了コード 0 で通過。
+D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣言の
+公理監査が終了コード 0 で通過。両独自集約のビルドも成功。
 
 実装済みの葉：
 
@@ -72,25 +74,39 @@ D-2 の具体化を含む 13 葉・115 宣言の公理監査が終了コード 0
 
 ## D-4a：全入力作用
 
-状態：D-2 のコミット合図 `4cd747153` をユーザー経由で受領（2026-10-27）。
-D-3 の新 cone 間の strict data を具体化。全単体作用は段提供者名を待つ。
+状態：D-2 `4cd747153` と K-B3 の切替 `354e05773` を受領。D-4a を再開。
 
-受領済み：
+採用提供者：`KST.NonConnective.dgKappaUnconditionalStageProvider R κ hκ`。
+`dgKappaUnconditionalStageProvider_cone_newInput` によって cone は D-2 の新入力と rfl で一致。
 
-- 新 cone：`dgKappaConeInput_unconditional' R D κ hκ`。
-  `CoherentBar/Compact/SphereClosureConeInput` から import 可。
-- 新 perfect 入力：`dgKappaPerfectInput_unconditional' R D κ hκ`。
-- objects は `dgKappaSphereClosureObjects R D κ` に定義上一致。
-- 零所属：`dgKappaSphereClosureObjects_zero R D hκ`。
+実装した追加工程：
 
-未受領：K-B3 が新 cone 入力へ切り替えた `DGSuspensionStageProvider` の公開名。
-その名前が届いてから、全入力作用を同じ提供者に特殊化する。
+- `SuspensionAction/UnconditionalData`：`dgSuspensionUnconditionalMapData`、
+  `_cone`、`dgSuspensionUnconditionalInputMap`。
+  data の値は `dgKappaSphereClosureSuspensionMapData R A B f.down κ hκ` そのもの。
+- `ClosureFunctoriality/Parameter`：`DGModuleStrictImage.parameter`、`.parameter_app`。
+  任意の複体パラメータの全次数変換を固定代表間へ共役する。
+- `ClosureFunctoriality/InputParameter`：`dgKappaSphereClosureExtensionParameter`、
+  `dgKappaSphereClosureExtensionInputHom`、`_π`。
+- `ClosureFunctoriality/InputFunctor`：入力 Hom の縦方向の単位・合成保存と、
+  `dgKappaSphereClosureExtensionInputFunctor`。
+- `ClosureFunctoriality/NativeHom`：`dgKappaSphereClosureNativeHom`、`_vertex`。
+  入力関手圏の native Kan core の全単体を cone 関手圏へ送る。
+
+- `SuspensionAction/QuotientParameter`：`dgSuspensionMapContractedFunctor`、
+  `dgSuspensionQuotientParameter`、`_epsilon_necessary`。
+  正本 data の同じ resolved 射と選択 ε を使う、全次数変換の商への延長入口。
+  同じ成分を保持する厳密延長に ε 整合が必要なことも証明する。
+
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
-旧 cone や別の stage provider に対して特殊化しない。
+cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 残る工程：
 
-- 具体化済みの strict data を、K-B3 の採用段提供者の cone に合わせる。
+- cone の入力全 Hom 作用を、同じ cell 分解比較関手へ延長する。
+- 同じ選択 ε を持つ商関手の族へ延長し、収縮との整合を証明する。
+  元 Hom の自然性だけでは ε 整合は出ない。`ParameterExtension` の必要十分条件を
+  使用する。新しい商への置換や収縮の変更で条件を消さない。
 - 固定 PerfDGInput の全 Hom に対する SSet 射作用を構成する。
 - 豊穣単位・合成と高次比較を証明し、coherentNerveMap を得る。
 - 頂点の厳密等号と、元の実商関手の辺との端点固定 VertexIso を照合する。
