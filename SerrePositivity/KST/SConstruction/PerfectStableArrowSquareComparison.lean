@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEd
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet InfinityCategories LocalizingInvariants F2.Idempotent
+open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants F2.Idempotent
 open scoped Simplicial
 variable {A B C D : StableCategory.{u}}
   (f : ExactMap A B) (g : ExactMap C D) (a : ExactMap A C) (b : ExactMap B D)
@@ -54,4 +54,71 @@ lemma nonempty_perfectStableArrowFunctorIso_of_equivalences
   · exact perfectStableHoArrow_isIso_of_isQCatEquivalence a hA hC ha
   · exact perfectStableHoArrow_isIso_of_isQCatEquivalence b hB hD hb
   · exact perfectStableHoArrow_square_eq_of_functorIso f g a b hA hB hC hD e
+/-- 概要：可換四辺の実ホモトピーと同じ二端点の全経路を保持する。
+方針：区間全比較を構成する実四角形を指定する。
+規約：比較の可逆性は端点の可逆性から検出。使われ方：上下二胞体の同時貼り合わせ。 -/
+structure PerfectStableArrowSquareWitness where
+  homotopy : SSet.Homotopy
+    (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+    (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge)
+  source_path : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 1})) ≫ homotopy.h =
+    CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫
+      SSet.yonedaEquiv.symm (perfectStableArrow a hA hC).edge
+  target_path : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 1})) ≫ homotopy.h =
+    CartesianMonoidalCategory.snd Δ[0] Δ[1] ≫
+      SSet.yonedaEquiv.symm (perfectStableArrow b hB hD).edge
+
+/-- 概要：元の全自然比較から同じ両端経路を保つ実四角形を構成できる。
+方針：四辺可換式を元の指定四辺の実ホモトピーへ運ぶ。
+規約：端点経路を存在型内に保持。使われ方：同じ頂点成分を持つ指定境界の選択。 -/
+lemma nonempty_perfectStableArrowSquareWitness :
+    Nonempty (PerfectStableArrowSquareWitness f g a b hA hB hC hD) := by
+  obtain ⟨H, h₀, h₁⟩ := exists_arrowHomotopy_of_homMk_comm
+    (perfectStableArrow f hA hB).toTruncated (perfectStableArrow g hC hD).toTruncated
+    (perfectStableArrow a hA hC).toTruncated (perfectStableArrow b hB hD).toTruncated
+    (perfectStableHoArrow_square_eq_of_functorIso f g a b hA hB hC hD e)
+  exact ⟨⟨H, h₀, h₁⟩⟩
+
+/-- 概要：同じ全自然比較から指定二端点の実ホモトピーを選ぶ。
+方針：元四辺の端点式も含む証人を選択する。
+規約：端点式を捨てない。使われ方：実右面の指定辺比較と全二胞体の接続。 -/
+def perfectStableArrowSquareWitness : PerfectStableArrowSquareWitness f g a b hA hB hC hD :=
+  Classical.choice (nonempty_perfectStableArrowSquareWitness f g a b hA hB hC hD e)
+
+omit e
+namespace PerfectStableArrowSquareWitness
+variable {f g a b hA hB hC hD}
+variable (w : PerfectStableArrowSquareWitness f g a b hA hB hC hD)
+
+/-- 概要：元実ホモトピーは可逆な指定二端点から全比較として可逆。
+方針：既存の両端点による区間可逆性を使う。
+規約：同じホモトピーを保持。使われ方：指定辺全比較の可逆性。 -/
+lemma isInvertible
+    (ha : IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
+    (hb : IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
+    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy w.homotopy) :=
+  arrowHomotopy_isInvertible_of_endpointPaths w.homotopy
+    (perfectStableArrow a hA hC).toTruncated (perfectStableArrow b hB hD).toTruncated
+    ha hb w.source_path w.target_path
+
+/-- 概要：同じ実四角形は二端点の可逆性から元区間全比較を与える。
+方針：元ホモトピーの辺の類を同型にする。
+規約：同じホモトピーを使用。使われ方：指定端点経路を回収できる辺比較。 -/
+def comparison
+    (ha : IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
+    (hb : IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
+    FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+      (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge) :=
+  @asIso _ _ _ _ (SSet.Truncated.HomotopyCategory.homMk
+    (functorEdgeOfSimplicialHomotopy w.homotopy)) (w.isInvertible ha hb)
+
+/-- 概要：同じ指定二端点同値を持つ実四角形の区間全比較。
+方針：二完全同値の Cat^perf 辺の可逆性を代入する。
+規約：元ホモトピーと端点式を保持。使われ方：実右面の包含・商の同じ全比較。 -/
+def comparisonOfEquivalences (ha : IsQCatEquivalence a.hom) (hb : IsQCatEquivalence b.hom) :
+    FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+      (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge) :=
+  w.comparison (perfectStableHoArrow_isIso_of_isQCatEquivalence a hA hC ha)
+    (perfectStableHoArrow_isIso_of_isQCatEquivalence b hB hD hb)
+end PerfectStableArrowSquareWitness
 end SerrePositivity.KST.SConstruction

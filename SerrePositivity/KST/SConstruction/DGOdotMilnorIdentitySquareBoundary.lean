@@ -51,8 +51,55 @@ lemma dgOdotMilnorIdentityNullSquare_perfect_difference :
   exact congrArg (fun x : perfectStableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputPerfectNu_edge R (dgOdotMilnorIdentityDifferenceInputMap R d))
 
+/-- 概要：同じ元基底値同値を右面始域の指定完全射にする。
+方針：元の順方向とその同値完全性を束ねる。規約：同じ比較を保持。
+使われ方：四辺比較で共通に使う始域成分。 -/
+def dgOdotMilnorIdentityBaseComparison : ExactMap (C) (Q) :=
+  ⟨(dgOdotMilnorIdentityBaseValueEquivalence R d).hom,
+    isExactFunctor_of_isQCatEquivalence
+      (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence⟩
+
 namespace DGOdotMilnorIdentityLaxComparisonInput
 variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
+
+/-- 概要：同じ供給中央同値を指定完全射にする。
+方針：元の順方向の完全性を束ねる。規約：二境界で同じ成分を使う。
+使われ方：実右面の共有中央頂点成分。 -/
+def completedMiddleMap : ExactMap (L) (Λ) :=
+  ⟨v.completedGluing.hom,
+    isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
+
+/-- 概要：同じ供給終域同値を元商への指定完全射にする。
+方針：元基底値同値を後合成する。規約：差と零上辺で同じ成分を使う。
+使われ方：実右面の共有終域頂点成分。 -/
+def completedTargetMap : ExactMap (D) (Q) :=
+  ⟨(v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).hom,
+    isExactFunctor_of_isQCatEquivalence
+      (v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).isQCatEquivalence⟩
+
+/-- 概要：元包含辺の全比較と指定二頂点経路を同じ証人に保持する。
+方針：同じ全対角比較を四辺の実ホモトピーへ移す。
+規約：端点式を公開。使われ方：上下二胞体の共有境界の貼り合わせ。 -/
+def diagonalWitness : PerfectStableArrowSquareWitness
+    (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d))
+    (IdentityLax.exactDiagonal (Q)) (dgOdotMilnorIdentityBaseComparison R d)
+    v.completedMiddleMap (hC) (hC) (hQ) (hΛ) :=
+  perfectStableArrowSquareWitness
+    (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d))
+    (IdentityLax.exactDiagonal (Q)) (dgOdotMilnorIdentityBaseComparison R d)
+    v.completedMiddleMap (hC) (hC) (hQ) (hΛ) v.completedDiagonal
+
+/-- 概要：元差辺の全比較と指定二頂点経路を同じ証人に保持する。
+方針：同じ全 cone 比較を四辺の実ホモトピーへ移す。
+規約：包含辺と同じ中央経路を使用。使われ方：上下二胞体の共有境界の貼り合わせ。 -/
+def differenceWitness : PerfectStableArrowSquareWitness
+    (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d))
+    (exactLaxDifference (𝟙 (Q)) (𝟙 (Q))) v.completedMiddleMap v.completedTargetMap
+    (hC) (hC) (hΛ) (hQ) :=
+  perfectStableArrowSquareWitness
+    (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d))
+    (exactLaxDifference (𝟙 (Q)) (𝟙 (Q))) v.completedMiddleMap v.completedTargetMap
+    (hC) (hC) (hΛ) (hQ) v.completedDifference.symm
 
 /-- 概要：供給された全対角比較は元実対角辺と絶対恒等対角辺の区間全比較を与える。
 方針：元基底値同値と供給中央同値を二成分に使う。
@@ -61,17 +108,10 @@ def diagonalArrowComparison : FunctorIso
     (SSet.yonedaEquiv.symm (perfectStableArrow
       (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d)) (hC) (hC)).edge)
     (SSet.yonedaEquiv.symm (perfectStableArrow (IdentityLax.exactDiagonal (Q))
-      (hQ) (hΛ)).edge) := by
-  let a : ExactMap (C) (Q) := ⟨(dgOdotMilnorIdentityBaseValueEquivalence R d).hom,
-    isExactFunctor_of_isQCatEquivalence
-      (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence⟩
-  let b : ExactMap (L) (Λ) := ⟨v.completedGluing.hom,
-    isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
-  exact (nonempty_perfectStableArrowFunctorIso_of_equivalences
-    (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d))
-    (IdentityLax.exactDiagonal (Q)) a b (hC) (hC) (hQ) (hΛ) v.completedDiagonal
+      (hQ) (hΛ)).edge) :=
+  v.diagonalWitness.comparisonOfEquivalences
     (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence
-    v.completedGluing.isQCatEquivalence).some
+    v.completedGluing.isQCatEquivalence
 
 /-- 概要：供給された全 cone 比較は元実差辺と絶対恒等 lax 差辺の区間全比較を与える。
 方針：同じ供給中央同値と指定終域同値を二成分に使う。
@@ -80,15 +120,9 @@ def differenceArrowComparison : FunctorIso
     (SSet.yonedaEquiv.symm (perfectStableArrow
       (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d)) (hC) (hC)).edge)
     (SSet.yonedaEquiv.symm (perfectStableArrow (exactLaxDifference (𝟙 (Q)) (𝟙 (Q)))
-      (hΛ) (hQ)).edge) := by
-  let a : ExactMap (L) (Λ) := ⟨v.completedGluing.hom,
-    isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
-  let E := v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)
-  let b : ExactMap (D) (Q) := ⟨E.hom, isExactFunctor_of_isQCatEquivalence E.isQCatEquivalence⟩
-  exact (nonempty_perfectStableArrowFunctorIso_of_equivalences
-    (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d))
-    (exactLaxDifference (𝟙 (Q)) (𝟙 (Q))) a b (hC) (hC) (hΛ) (hQ)
-    v.completedDifference.symm v.completedGluing.isQCatEquivalence E.isQCatEquivalence).some
+      (hΛ) (hQ)).edge) :=
+  v.differenceWitness.comparisonOfEquivalences v.completedGluing.isQCatEquivalence
+    (v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).isQCatEquivalence
 
 /-- 概要：絶対恒等提示から同じ実右零化面への三つの指定全境界比較。
 方針：元四辺回収と構成した包含・商・零角比較を同じ向きで束ねる。

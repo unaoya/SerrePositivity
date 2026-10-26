@@ -65,16 +65,14 @@
 - 提供：実 Perf dg 延長・Morita の実 dg nerve 同値・実 BF K 射の全整数 π_* 同型。dg 関手間の全次数自然変換 end、dg 関手圏、dg 前後合成と tensor dg 横合成・外側の結合単位則、標準 DK 豊穣関手と γ1、非離散な core の Kan 写像空間と前後・tensor 横合成作用、鎖区間と全有限 tensor 冪の Serre 余モノイド、具体的連結積のモノイダル圏、全 cubical sets の Day tensor、元の表現可能 tensor・単位比較を持つ充満忠実な強モノイダル Yoneda。入力の実単体的圏、元の完全 Perf と全有限反復 core S• 対角図式全体の厳密豊穣関手まで供給済み。元の全反復対角実現への全パラメータ作用と厳密豊穣関手も供給済み。全零境界保存、同じ商への全作用・基点保存・単位・合成・通常射回収、元の basedHom への全入力族と包含後の閉 Hom 値の厳密豊穣関手も供給済み。標準の点つき豊穣への包装・同じ Ex∞ の厳密豊穣 Kan 置換・通常射回収・anodyne 単位の全族自然性・各段の PointedKanInfinity 値化まで提供済み。元の区間組み立てと全 native 作用の厳密可換性、一次方向を固定した全作用、残りの各零方向の像・全零境界の保存と制限作用も証明済み。一次方向の同じ商への全作用・商射回収・基点保存・basedHom 族、二商射による全族検出、元の suspension 組み立ての全族自然性まで提供済み。一次方向の元の全作用の法則・通常射回収、標準点つき厳密豊穣関手、同じ元の S₁ 比較の全 basedHom 族自然性まで提供済み。一次方向の Ex∞ Kan 値化・単位の全族自然性と同じ S₁ 比較の厳密豊穣自然変換、全基点 π 同型・γ1 の関手同型まで提供済み。元の同じ円・単位・smash 商による Ex∞ suspension 比較と元の単位の回収、全族自然性・厳密豊穣自然変換・一次方向商への全 dg 前合成まで提供済み。元の組み立ての厳密豊穣自然変換と Ex∞ 像、隣接段 span の左右の実脚・元の単位上の右脚回収、全三頂点・二矢に自然な標準 end の実 span 図式値厳密豊穣関手まで提供済み。実 BF Ω スペクトル・同じ全 Hom の厳密豊穣関手・γ1 の Sp 値関手・通常 dg 射の全段回収まで提供済み。新 BF K→元の dgK の実比較・全整数 π 同型まで提供済み。同じ新 BF 射の Morita・準同値による全段・全整数 π 同型、Sp 値関手の同じ辺の可逆性も提供済み。同じ Perf 上の整数 π 比較と新 BF の π₀=K₀ の入力自然性・対象類の式も提供済み。元の実 Perf 評価と新 BF K→元の dgK の同じ実比較の全整数 π 入力自然性も提供済み。 左定数 native tensor の全単体と元の dg 第二包含の一致も提供。
 - 将来接続：L9 の Ω・π_*・BF、既存の実現比較（L2 は Auxiliary として凍結）、α-S の h C の三角構造、N の dg nerve、D の Perf。
 
-### 未コミット
-- `DGKFixedNullPerfectZeroIso`・`DGOdotMilnorIdentityZeroBoundary`・`DGOdotMilnorCornerPerfectValueEquivalence`・`DGOdotMilnorOriginalLaxConeComparisonRequest`・`DGOdotMilnorCornerEvaluation` と核面零角の既存実装・集約・監査を本コミットで保存する。任意固定 dg 入力の零角比較を共通化し、恒等右面の実零角全比較へ接続。元二脚側の全 cone 比較の正確な依頼型と元角の実評価・全 Yoneda 回収も追加。LT 三比較の存在証明とは数えない。
-
-- `PerfectStableArrowSquareComparison`・`DGOdotMilnorIdentitySquareBoundary` と集約・監査も本コミットで保存する。可逆二成分と全関手同型から包含・差の区間全比較と指定三境界を構成済み。D2 入力下の準備であり全四角形比較ではない。
+### 今回の保存対象
+- 共有対角の補助：`PerfectStableProductHomClass`・`StableArrowLoopEndpointRepresentative`・`StableZeroIntervalLoop`・`StableZeroArrowLoop`・`StableZeroArrowComparisons`、および `DGOdotMilnorIdentityZeroSideWitnesses` と既存二葉・集約・監査。両端の類を固定した零辺全比較の一意性を実証し、四辺の同じ頂点経路を持つ実ホモトピーと全比較を構成。LT 三比較の存在証明ではない。
 
 ### 既知の問題
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
 - **採用済み（元始域の増大屋根、10-25 17:53）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の元始域回収は「元入力への増大屋根＋ν 像の指定同値」とする。native Verdier 列・LT 極限錐の元始域は不変。既存の strict 始域版は互換入口として保持。Sp の新葉（1d3c261b1）を `DGOdotMilnorRelativeRoofRectangleInput` へ接続し、始域屋根を構成済みとする主経路を供給。`Resolution.CellComparison` は既存の同じ正本を読み取り専用で接続。元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 最新の集約 15384 jobs・公式監査 13214 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 11565 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
+- 最新の集約 15391 jobs・公式監査 13367 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 11572 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較と Sp-6 の実 S 長方形は未供給。
 - 本レーン内の未解決の名前衝突なし。Core・Stable・F1 等の公開名・型は不変。固定 S の Hom は厳密 dg 自然変換 end の native core。resolved 厚核・始域比較の実零化面と同じ合成三角形を保つ源長方形は構成済み。残る LT 全長方形と全指定境界比較は未供給。Sp の新入口 `isPullback_of_perfectImageIso`・`comparison_isPullback_of_actualFaces`・`_imageIso` は、絶対提示から実 ν 二面への指定三境界付き全比較を直接受ける。別の S 内厳密代表は不要。`DGOdotMilnorActualRectangleInput` は同じ実長方形とこの三比較を直接受け、二面の値・全比較輸送・同じ屋根の始域成分を新入口へ接続済み。主経路の残りは LT の実右面・外周の `VerdierSquareDiagramIso` と、上下二単体を保つ `VerdierRectangleDiagramIso` の三つの実在証明。商辺だけの指定関手同型では不足。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -101,7 +99,7 @@
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-identity-zero-aggregate-final.log`、`/tmp/kst-s-identity-zero-audit.log`、`/tmp/kst-s-identity-zero-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-identity-shared-vertices-aggregate.log`、`/tmp/kst-s-identity-shared-vertices-audit.log`、`/tmp/kst-s-identity-shared-vertices-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 
