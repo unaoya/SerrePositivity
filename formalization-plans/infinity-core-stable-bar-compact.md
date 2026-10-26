@@ -1,12 +1,12 @@
-# D：coherent bar の compact 生成元（c2・c6・c7）
+# D：cell graph 射影性・D-8 e 全入力懸垂作用
 
 ## 現在地と範囲
 - D-8 の数学的供給は完了。本体は `2b085b584`。元の閉射影的代表系を使う。
 - Compact.All 10433 jobs、75葉721宣言の専用監査、Derived・Stable の両集約12744 jobsは成功。両全体監査も成功：Derived 25594宣言／2919モジュール、Stable 26659宣言／3190モジュール（許容三公理のみ、両終端0）。
-- 所有：Derived/CoherentBar/Compact/ の新規葉・All・専用監査。既存 CoherentBar/、D-e の KappaCovers/・KappaPerfect/、KST/・F2/ は読み取り専用。
+- 所有：Derived/（Gluing 以外）・DifferentialGraded・DGNerve・DoldKanComparison の新規葉・集約・監査。本計画は300行以内。KST は読み取り専用。
 - C1・B（87ecf98c0）、C2・無条件 covers（0d474aaf8）、Ind-π の実橋（0ae97a051）を消費済み。
 - 仮定：R : Type u、CommRing R、D : Type v、DGCategory R D、Small.{u} D、κ : Cardinal.{u}、Fact κ.IsRegular。cone・sphere-free・perfect の供給は ℵ₀ < κ。
-- チャットの24時間基準は2026-10-25 18:07 頃のまま。期限は10-26 18:07 頃。
+- 新割当（2026-10-26）：先に K-S• の固定 graph 右制限の射影性、その後 D-8 e 全入力自然性。
 
 ## 三段目
 1. [x] C1・B・C2・covers の公開型を照合。
@@ -36,10 +36,35 @@
 - κ と添字は宇宙 u、対象は独立の v。橋・保存性・比較・covers は最終入力の追加仮定に残さない。
 - 現模型の変更はない。DGSuspensionNativeActionInput は第 I 段中の明示入力を維持。
 - D-9 は D 側残件なしとして完了記録済み（8924d1cee）。
-- 両全体監査成功、引き継ぎ完了。ユーザー指示に従い報告・停止。次の割り当てはユーザー判断。
+- 旧 D-8 は `2b085b584` で完成、`a92d893c7` で close。今回の D-8 e は別の未完了作業。
 
 ## 運用
 - 新規 sorry・公理・引用なし。深層編集・コピー・モジュールの移動・改名・削除なし。
-- K-S dg 一般論の暫定 import は既許可58本のまま。F2 の供給葉は読み取り専用。
+- K-S 一般論の逆 import は追加しない。新しい型用の読み取り専用 import は DGCellResolvedGraphPerfect・DGGluingCellRightAxisPerfectArrow の二葉。F2 の供給葉は読み取り専用。
 - 根の lake build SerrePositivity と .lake の削除はしない。両主集約の終端を確認してから全体監査。
 - set -o pipefail、所有ファイルだけ git commit --only。実施記録はコミットメッセージ。
+
+## 新割当 (1)：K-S• 射影性
+- [x] 固定 `dgCellResolvedGraphResolution` の各右制限の射影性。任意 B・任意自己関手 F に一般化して証明。
+- [x] `DGCellSourceProjective.dgCellSourceHom_isKProjective`：同じ cell source の全 Hom は K-projective。
+- [x] `Derived/RestrictionProjective`：制限後の生成 sphere の射影性から、全次数分裂と全射 Hom tower で semifree 制限の射影性。
+- [x] `Derived/BimoduleRightProjective`：相手側の全 Hom の K-projective 性を、同じ標準 bimodule 解像度の各右制限へ適用。
+- [x] 公開 `InfinityCategories.dgCellResolvedGraph_projective R B F : KST.SConstruction.DGCellResolvedGraphProjectiveCondition R B F`。
+- [x] 公開 `InfinityCategories.dgGluingCellRightAxisProjectiveInput R C D M z hz`：右軸と恒等の二証拠。DGOdotGluing を含む全 gluing に適用。
+- [x] Derived 集約 12508 jobs 成功。専用 `scripts/audit_derived_cell_projective.lean`：11葉48宣言、許容三公理のみ。局所 import 閉包1338モジュール、循環なし。
+- [x] 追加後の Derived 全体監査：25642宣言／2930モジュール、許容三公理のみ、終端0。所有ファイルだけコミット。
+- 旧未追跡3葉は既存 `DGFunctorThickHomCriterion` と用途が重複し、SConstruction 一般論の逆 import を含む。採用せず削除。退避 `/tmp/d-new-chat-residuals/`。
+
+## 新割当 (2)：D-8 e（未供給）
+- 正本：`kst-lanes/L10-nonconnective.md` 100–110・144–148行。
+- 同じ実核・cone・零角・懸垂の全族 `((Δ[1] ⊗ Δ[1]) ⊗ dgKInputInfinity R) ⟶ dgKInputInfinity R`。
+- 各 A への制限は `dgKappaResolvedConnectiveSquare R A (s A).cone` の四角形全体と厳密一致。
+- 同じ実評価 Morita 比較、元の P の包含について全 native Hom 自然性を供給する。
+- 供給路は PerfDGInput の厳密 SSet 豊穣自己関手の coherentNerveMap。閉射影的代表系・cone・I・P・固定 S・ν・K は変更しない。
+- [ ] 全 native Hom 上の cone・実核・零角・懸垂作用と厳密単位合成。
+- [ ] 元の選択された四角形全体を保持する全族。
+- [ ] 実評価 Morita 比較と元の P の包含の全 native Hom 自然性。
+- [ ] 全仕様の公開型が確定した時点で K-B3 向けに報告。完成まで報告を待たない。
+- 全四角形・懸垂成分の中間型 `DGSuspensionNativeSquareModel R s` を先行公開・報告。11297 jobs で成功、局所 import 閉包7493モジュールに循環なし。存在と Morita・P 自然性は含まず、全仕様の完成型ではない。専用 `audit_derived_suspension_native.lean` は23宣言、許容三公理のみ。
+- 注意：元の四角形は指定収縮と零化四角形の存在定理から選んだ全二胞体を含む。四辺・四頂点の一致だけでは全族の厳密一致にならない。
+- 既存の対象別 covers・通常 dg 射の条件付き恒等合成・P 選択不変性を全入力自然性の供給済みとは数えない。

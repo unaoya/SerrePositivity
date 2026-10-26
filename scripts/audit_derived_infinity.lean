@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation
@@ -7451,6 +7452,17 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor,
+    `SerrePositivity.DifferentialGraded.Derived.FreeProjective,
+    `SerrePositivity.DifferentialGraded.Derived.RestrictionProjective,
+    `SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionProjective,
+    `SerrePositivity.DifferentialGraded.Derived.BimoduleRightProjective,
+    `SerrePositivity.InfinityCategories.Derived.RingComplexColimits,
+    `SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure,
+    `SerrePositivity.InfinityCategories.Derived.DGCellAttachmentProjective,
+    `SerrePositivity.InfinityCategories.Derived.DGCellSourceProjective,
+    `SerrePositivity.InfinityCategories.Derived.DGCellResolvedGraphProjective,
+    `SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.RepresentableEvaluation,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomCriterion,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaHomNaturality,
