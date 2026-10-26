@@ -3034,4 +3034,11 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeBoundary
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlying
 public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationConeFamily
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeConnecting
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNullHomotopy
+public import SerrePositivity.KST.SConstruction.DGStrictGluingComparisonZero
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingComparisonZero
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonConeDiagonalAction
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisConePrimitive
+
 /-! # ∞-S• 構成と連結 K 理論 -/
