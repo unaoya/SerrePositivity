@@ -15,6 +15,20 @@ import Lean.Util.CollectAxioms
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.pathPiEquiv
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.pathPiEquiv_map_zero
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.sphereClass_path_witness
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.sphereClass_surjective
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.total_piZero_value_representative
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.total_positive_vertex_representative
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.isColimitCone_iff_liftedTotalPiCriterion
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.PiPathRelated.map
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.pathFamilyHomotopy_precomp
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_mapPiZero_bijective
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_path_witness
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_left_unique
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_right_unique
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_path_realization
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridgePiTransportEquiv
+#check @SerrePositivity.InfinityCategories.F2.PiCriterion.bridge_transport_iff_equiv
+#check @SerrePositivity.InfinityCategories.DGBarCompactFilteredSpacePiBridge
 
 open Lean in
 run_cmd do

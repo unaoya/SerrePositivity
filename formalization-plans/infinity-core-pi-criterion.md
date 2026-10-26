@@ -129,13 +129,15 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 ## 検証と保存
 
 - 初期入力監査: `/tmp/audit-pi-inputs.lean`、主要4定理とも標準3公理のみ。
-- 8葉は個別の `lake build` に成功。`TotalPiCriterion` も成功。
-- 初期4葉の17宣言、全8葉の38宣言とも標準3公理のみ。
+- 17葉は個別の `lake build` に成功。独自集約も全葉の公開に更新済み。
+- 初期38宣言から全98宣言へ監査範囲を拡大し、いずれも標準3公理のみ。
 - `lake build SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.All` 成功。
 - `lake env lean scripts/audit_f2_pi_criterion.lean` 成功:
-  `PiCriterion audit passed: 38 declarations, standard three axioms only.`
-- 外部の repo import 閉包2004本に未コミット・編集中の入力なし。
+  `PiCriterion audit passed: 98 declarations, standard three axioms only.`
+- 外部の repo import 閉包2811本に未コミット・編集中の入力なし。
 - 基礎5葉と初期計画: `591c62fdb`。π接続・定数境界・球面path: `7cbc996e4`。
 - 独自集約: `4b511d49e`。監査と本チェックポイントを追加保存。
+- 代表元・D零次数: `eb3233ea3`。指定辺の転置と元の基点: `7586484ac`。
+- D移送の群同型による双方向表示: `6492709fb`。現行独自集約: `024dd5e84`。
 - 既存 API の宇宙分離の複製は現在なし。D 入力の抽象構造を F2 に降ろすことは R 候補。
 - 最終目標の達成は未宣言。正次数の代表と同一視の filtered 段階整合性が残る。
