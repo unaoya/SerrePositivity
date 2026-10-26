@@ -39,6 +39,16 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
       (relativeFirstRowSimplexQuotient (dgKappaNativeQuotient R D I) m)))
 include hIso hrow
 
+/-- 同じ実反復の二比較を、K-B の単回相対比較の全段供給へ渡す。 -/
+def dgSuspensionUnconditionalFirstRow_relativeComparison (n : ℕ) :
+    Relative.SingleRelativeComparison
+      (dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
+        (dgSuspensionIterationStage R
+          (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone) :=
+  dgKappaFirstRowRelativeComparison R (dgSuspensionUnconditionalIteration R κ hκ A n)
+    (dgSuspensionIterationStage R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone
+    (hIso n) (hrow n)
+
 /-- 概要：同じ実反復の全四角形・標準単体比較から、各段の未完備全 S• 引き戻し。
 方針：元の同じ実 I を二比較の受け渡しへ代入する。
 規約：hIso・hrow に条件付き。独立した hS・I・P・Z の存在入力は取らない。
@@ -50,10 +60,7 @@ theorem dgSuspensionUnconditionalFirstRow_fibration :
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).square ≫
             coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) := by
   intro n
-  exact dgKappaNativeFullSSquare_isPullback_of_kernelIso_firstRowSimplices R
-    (dgSuspensionUnconditionalIteration R κ hκ A n)
-    (dgSuspensionIterationStage R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone
-    (hIso n) (hrow n)
+  exact (dgSuspensionUnconditionalFirstRow_relativeComparison R κ hκ A hIso hrow n).isPullback _
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
     F2.Idempotent.IsIdempotentCompletion f.val →

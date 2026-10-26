@@ -1,4 +1,8 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionThomasonComparison
+public import SerrePositivity.KST.NonConnective.DGSuspensionThomasonSequence
+public import SerrePositivity.KST.NonConnective.SequentialCandidateMapThomason
+public import SerrePositivity.KST.NonConnective.DGKappaThomasonCofinality
 public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalFirstRowComparison
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFirstRowSimplices
 public import SerrePositivity.KST.NonConnective.DGSuspensionSuppliedBFTailComparison

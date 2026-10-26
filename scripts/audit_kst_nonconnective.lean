@@ -7,6 +7,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGSuspensionThomasonComparison,
+    `SerrePositivity.KST.NonConnective.DGSuspensionThomasonSequence,
+    `SerrePositivity.KST.NonConnective.SequentialCandidateMapThomason,
+    `SerrePositivity.KST.NonConnective.DGKappaThomasonCofinality,
     `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalFirstRowComparison,
     `SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFirstRowSimplices,
     `SerrePositivity.KST.NonConnective.DGSuspensionSuppliedBFTailComparison,
@@ -353,3 +357,21 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_SOAComparison_nonnegative
 #check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_tailPiEquiv
 #check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_tailPiEquiv_succ
+
+#check SerrePositivity.KST.NonConnective.dgKThomasonCofinality
+#check SerrePositivity.KST.NonConnective.dgKappaRawSuspensionToFixedK_positive_thomason
+#check SerrePositivity.KST.NonConnective.dgKappaRawSuspensionToFixedK_zero_injective_thomason
+#check SerrePositivity.KST.NonConnective.dgKappaConeNativeK_subsingleton_thomason
+#check SerrePositivity.KST.NonConnective.dgKappaFirstRowRelativeComparison
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalFirstRow_relativeComparison
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateCocone_isColimit
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonConnectedComparison_nonnegative
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonSOAComparison_nonnegative
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidate_tailPiEquiv
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidate_tailPiEquiv_succ
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_piIsomorphism_of_thomason
+#check SerrePositivity.KST.NonConnective.sequentialCandidateMap_isInvertible_of_thomason
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonStageSOACoordinates
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap_piIsomorphism_of_completion
+#check SerrePositivity.KST.NonConnective.dgSuspensionThomasonCandidateMap_isInvertible_of_completion
