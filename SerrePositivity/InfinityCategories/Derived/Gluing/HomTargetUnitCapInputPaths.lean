@@ -65,4 +65,22 @@ lemma dgGluingHomTargetExitCapInputPath_over :
       complexPinchedMap.{u, max (u + 1) v} (dgGluingLeftHomMap R C D M X Y) :=
   pullback.lift_snd _ _ _
 
+def dgGluingHomTargetExitCollarInputPath :
+    complexPinchedSpace.{u, max (u + 1) v} (dgGluingHomComplex R C D M X Y) ⊗ Δ[1] ⟶
+      dgGluingHomTargetLastInputFiber R C D E p q X Y :=
+  pullback.lift
+    (dgGluingExitLastCompositionPath.{u, max (u + 1) v} R E IX IY
+      (dgGluingHomTargetNormalizationHomInput R C D E p q X Y))
+    (fst _ (Δ[1] : SSet.{max (u + 1) v}) ≫
+      complexPinchedMap.{u, max (u + 1) v} (dgGluingLeftHomMap R C D M X Y)) (by
+        erw [dgGluingExitLastCompositionPath_over,
+          dgGluingHomTargetNormalizationReplacementIntervalFamily, Category.assoc])
+
+lemma dgGluingHomTargetExitCollarInputPath_over :
+    dgGluingHomTargetExitCollarInputPath R C D E p q X Y ≫
+      dgGluingHomTargetLastInputProjection R C D E p q X Y =
+    fst _ (Δ[1] : SSet.{max (u + 1) v}) ≫
+      complexPinchedMap.{u, max (u + 1) v} (dgGluingLeftHomMap R C D M X Y) :=
+  pullback.lift_snd _ _ _
+
 end SerrePositivity.InfinityCategories

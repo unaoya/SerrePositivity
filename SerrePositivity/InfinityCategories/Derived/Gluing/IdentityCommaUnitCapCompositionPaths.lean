@@ -60,4 +60,18 @@ lemma dgGluingIdentityCommaExitCapCompositionPath_over :
       dgGluingIdentityCommaReplacementIntervalFamily R E X Y f :=
   dgGluingLastFixedCompositionLift_first _ _ _ _ _ _
 
+lemma dgGluingIdentityCommaPreCapCompositionPath_evaluation :
+    (Δ[2] ◁ dgGluingIdentityCommaPreCapCompositionPath R E X Y f) ≫
+      dgGluingFirstFixedCompositionEvaluation
+        (Edge.ofTruncated (X := dgNerve R E) (dgClosedEdge R E X.augmentation))
+        (Simplex.vertex Y.source) = dgGluingPreUnitCapTriangleFamily R E X Y f :=
+  dgGluingFirstFixedCompositionLift_evaluation _ _ _ _ _ _
+
+lemma dgGluingIdentityCommaExitCapCompositionPath_evaluation :
+    (Δ[2] ◁ dgGluingIdentityCommaExitCapCompositionPath R E X Y f) ≫
+      compositionCorrespondenceEvaluation (X := dgNerve R E) (Simplex.vertex X.replacement)
+        (Edge.ofTruncated (X := dgNerve R E) (dgClosedEdge R E Y.augmentation)) =
+    dgGluingExitUnitCapTriangleFamily R E X Y f :=
+  dgGluingLastFixedCompositionLift_evaluation _ _ _ _ _ _
+
 end SerrePositivity.InfinityCategories

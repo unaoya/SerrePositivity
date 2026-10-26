@@ -996,7 +996,18 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetIdentityCommaProjections,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationInputPaths,
     `SerrePositivity.InfinityCategories.Derived.Gluing.IdentityCommaUnitCapCompositionPaths,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapInputPaths]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitCapInputPaths,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetArrowPrism,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCanonicalFace,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.RestrictedCompositionTriangleExt,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCollarTriangleEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetArrowCompositionInputs,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputStrictComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputTriangleEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCoefficientInputPathComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetStandardCapTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNormalizationInputEndpoints,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputHomotopies]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
