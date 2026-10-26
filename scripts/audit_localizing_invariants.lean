@@ -122,6 +122,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.RoofPastingAttachment,
     `SerrePositivity.KST.LocalizingInvariants.VerdierRoofPastingAttachment,
     `SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowRoofComparison,
+    `SerrePositivity.KST.LocalizingInvariants.FiniteCosliceSpanAttachment,
+    `SerrePositivity.KST.LocalizingInvariants.VerdierFiniteQuotientConeSpans,
     `SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle,
     `SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement,
     `SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement,
