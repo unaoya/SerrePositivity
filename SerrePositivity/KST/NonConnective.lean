@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGSuspensionRelativeComparison
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFKernel
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFVertexComparison
 public import SerrePositivity.KST.NonConnective.DGKappaSuppliedBFFixedStructure
