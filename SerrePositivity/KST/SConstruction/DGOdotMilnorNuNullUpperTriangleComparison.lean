@@ -1,0 +1,98 @@
+module
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperPrism
+public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+
+/-!
+概要：元実／絶対上二胞体全体の同じ実比較ホモトピーの可逆性と Cat^perf 比較。
+方針：元内ホーン制限を同じ指定境界比較へ照合し、充満忠実な制限で可逆性を戻す。
+規約：元両二胞体と指定二短辺側面を保持。下二胞体との全比較は別工程。
+使われ方：元核面の上二胞体の全関手同型。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.KST.SConstruction
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open DifferentialGraded InfinityCategories LocalizingInvariants
+open scoped Simplicial
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+
+/-- 概要：元上二胞体の全比較は元内ホーン上で同じ指定境界ホモトピーに一致する。
+方針：元両端固定 prism の同じ内ホーン制限と因子交換の自然性を使う。
+規約：元二短辺側面の全単体。使われ方：指定境界から全比較の可逆性の検出。 -/
+lemma dgOdotMilnorNuNullUpperTriangleHomotopy_horn :
+    ((horn 2 1).ι ▷ (Δ[1] : SSet.{u + 2})) ≫
+        (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h =
+      (hornBoundaryInclusion 1 1 ▷ (Δ[1] : SSet.{u + 2})) ≫
+        (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h 0).h := by
+  have hs : ((horn 2 1).ι ▷ (Δ[1] : SSet.{u + 2})) ≫ (β_ Δ[2] Δ[1]).hom =
+      (β_ (horn 2 1 : SSet.{u + 2}) Δ[1]).hom ≫ (Δ[1] ◁ (horn 2 1).ι) := rfl
+  change ((horn 2 1).ι ▷ (Δ[1] : SSet.{u + 2})) ≫ (β_ Δ[2] Δ[1]).hom ≫
+    dgOdotMilnorNuNullUpperPrism R d h = _
+  rw [← Category.assoc, hs, Category.assoc,
+    (dgOdotMilnorNuNullUpperPrism_restrictions R d h).1]
+  let exchange (f : (horn 2 1 : SSet.{u + 2}) ⟶ boundary 2)
+      (H : (boundary 2 : SSet.{u + 2}) ⊗ Δ[1] ⟶ StableInfinity.{u + 1}) :
+      (β_ (horn 2 1 : SSet.{u + 2}) Δ[1]).hom ≫ (Δ[1] ◁ f) ≫
+        (β_ Δ[1] (boundary 2 : SSet.{u + 2})).hom ≫ H = (f ▷ Δ[1]) ≫ H := rfl
+  exact exchange _ _
+
+/-- 概要：元上二胞体全体の同じ比較ホモトピーは可逆な関手辺。
+方針：内ホーン制限の充満忠実性と元境界比較の可逆性を使う。
+規約：元の全ホモトピーを保持。使われ方：元両上二胞体の全関手同型。 -/
+lemma dgOdotMilnorNuNullUpperTriangleHomotopy_isInvertible :
+    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+      (dgOdotMilnorNuNullUpperTriangleHomotopy R d h)) := by
+  let q := (pre ((horn 2 1 : (Δ[2] : SSet.{u + 2}).Subcomplex).ι)).app
+    StableInfinity.{u + 1}
+  letI : TrivialKanFibration q := trivialKanFibration_pre_of_innerAnodyne _
+    (innerAnodyneExtensions.horn_ι (show 0 < (1 : Fin 3) by decide)
+      (show (1 : Fin 3) < Fin.last 2 by decide)) _
+  have hq : IsFullyFaithful q :=
+    (isQCatEquivalence_of_trivialKanFibration q).isFullyFaithful
+  apply hq.reflects_isInvertibleEdge
+  have hi := (dgOdotMilnorNuNullPrismBoundaryHomotopy_isInvertible R d h 0).map
+    ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1})
+  have he : ((functorEdgeOfSimplicialHomotopy
+      (dgOdotMilnorNuNullUpperTriangleHomotopy R d h)).map ((truncation 2).map q)).edge =
+      ((functorEdgeOfSimplicialHomotopy
+        (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h 0)).map ((truncation 2).map
+          ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1}))).edge := by
+    change q.app (Opposite.op ⦋1⦌)
+      (SSet.yonedaEquiv (curry (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h)) =
+        ((pre (hornBoundaryInclusion 1 1)).app StableInfinity.{u + 1}).app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (curry (dgOdotMilnorNuNullPrismBoundaryHomotopy R d h 0).h))
+    rw [← SSet.yonedaEquiv_comp, ← SSet.yonedaEquiv_comp]
+    change SSet.yonedaEquiv (curry (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h ≫
+      (pre (horn 2 1).ι).app StableInfinity.{u + 1}) = _
+    rw [curry_pre_app, curry_pre_app, dgOdotMilnorNuNullUpperTriangleHomotopy_horn]
+  exact (isInvertibleEdge_congr he).mpr hi
+
+/-- 概要：元実／絶対上二胞体の全単体を結ぶ同じ実全関手同型。
+方針：同じ元可逆ホモトピーの辺の類を同型として取る。
+規約：両二胞体を選び直さない。使われ方：元核面の上二胞体の全比較。 -/
+def dgOdotMilnorNuNullUpperTriangleComparison : FunctorIso
+    (SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangle R d 0))
+    (SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h 0)) :=
+  @asIso _ _ _ _ (SSet.Truncated.HomotopyCategory.homMk
+    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuNullUpperTriangleHomotopy R d h)))
+      (dgOdotMilnorNuNullUpperTriangleHomotopy_isInvertible R d h)
+
+/-- 概要：同じ元上二胞体の全比較を Cat^perf の元全二胞体へ戻す。
+方針：同じ完備包含の充満忠実性と元全二単体の回収を使う。
+規約：元実／絶対上二胞体を保持。使われ方：元 ν 核面の上二胞体の全比較。 -/
+def dgOdotMilnorNuNullUpperPerfectTriangleComparison : FunctorIso
+    (squareTriangle 0 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R)
+    (squareTriangle 0 ≫ (dgOdotMilnorNuPerfectSequence R d h).presentation.square) := by
+  apply perfectStableInfinityInclusion_isFullyFaithful.preimageFunctorIso
+  change FunctorIso
+    (squareTriangle 0 ≫ dgOdotMilnorPerfectNullSquare R d ≫
+      dgKInputPerfectNu R ≫ perfectStableInfinityInclusion)
+    (squareTriangle 0 ≫ perfectVerdierSquare (dgOdotMilnorNuPerfectSequence R d h) ≫
+      perfectStableInfinityInclusion)
+  rw [dgKInputPerfectNu_inclusion, perfectVerdierSquare_inclusion]
+  simpa only [dgOdotMilnorNuNullTriangle, dgOdotMilnorNuAbsoluteNullTriangle,
+    Equiv.symm_apply_apply] using dgOdotMilnorNuNullUpperTriangleComparison R d h
+
+end SerrePositivity.KST.SConstruction

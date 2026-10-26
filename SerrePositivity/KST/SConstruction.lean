@@ -2851,4 +2851,16 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBound
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryComparison
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerPrism
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerTriangleComparison
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerPrismSides
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperPrism
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperTriangleComparison
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperPrismSides
+
 /-! # ∞-S• 構成と連結 K 理論 -/
