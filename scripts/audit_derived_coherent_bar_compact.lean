@@ -64,7 +64,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiTransport,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiChart,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomPiChart,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomSmallPiChart]
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomSmallPiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiChartSpaceCast,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomClosedNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValuePiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValueNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValueEdgeEquality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationPiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationScalarClosedMap,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationVertexPiChart,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationClosedNaturality]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do

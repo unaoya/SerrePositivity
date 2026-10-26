@@ -54,6 +54,15 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Uli
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UliftPiChart
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomPiChart
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomSmallPiChart
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiChartSpaceCast
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomClosedNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValuePiChart
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValueNaturality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleValueEdgeEquality
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationPiChart
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationScalarClosedMap
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationVertexPiChart
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationClosedNaturality
 /-!
 概要：coherent bar の native compact 生成元比較の公開入口を集約する。
 方針：全 Hom の評価比較と native 余極限保存の判定を公開する。
