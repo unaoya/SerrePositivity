@@ -3047,4 +3047,12 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictCone
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRetraction
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationPrimitive
 
+public import SerrePositivity.KST.SConstruction.DGConeDescCochainNaturality
+public import SerrePositivity.KST.SConstruction.DGConeDescModuleNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeDesc
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
+public import SerrePositivity.KST.SConstruction.DGConeNullLeftShiftNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvComparison
+public import SerrePositivity.KST.SConstruction.DGModuleConeNullLeftShiftNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
