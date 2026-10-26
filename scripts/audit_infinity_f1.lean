@@ -9909,3 +9909,63 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (9) separated coordinates: no declarations audited"
   logInfo m!"Ind-S separated triangle coordinates audit passed: {count} declarations."
+
+-- Ind-S (9)：全次数の実再構成単体・自然性・全族二短辺の厳密回収。
+-- 単射性・厳密切断・正規化後の全対角式は別途。F2 例外はこの項には使わない。
+open Lean in
+run_cmd do
+  let saved ← getEnv
+  let env ← importModules #[
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleCutMapComposition },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaselineRealization },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaselineUnits },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLiftedCoordinateIdentities },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLiftedHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedComposition },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleCoordinates },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleEnriched },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexData },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedAssignedHom },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplex },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedCoordinateNaturality },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexNaturality },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamily },
+    { module := `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamilyShortFaces },
+    { module := `Lean.Util.CollectAxioms }] {}
+  setEnv env
+  for mod in env.header.modules do
+    if #["SerrePositivity.EInfinity", "SerrePositivity.InfinityCategories.F2",
+        "SerrePositivity.KST"].any (mod.module.toString.startsWith ·) then
+      throwError "Ind-S (9) reconstructed family: forbidden lane dependency: {mod.module}"
+  let modules := #[
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleCutMapComposition,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaselineRealization,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLabelBaselineUnits,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLiftedCoordinateIdentities,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLiftedHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedComposition,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleCoordinates,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedMiddleEnriched,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexData,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedAssignedHom,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplex,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedCoordinateNaturality,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedSimplexNaturality,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamily,
+    `SerrePositivity.InfinityCategories.F1.Diagrams.TriangleSeparatedFamilyShortFaces]
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless modules.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Ind-S (9) reconstructed family: unexpected axioms in {name}: {axioms}"
+    if info.type.foldConsts false (fun n found =>
+        found || (n.toString.splitOn "ModelCategory").length != 1) then
+      throwError "Ind-S (9) reconstructed family: unexpected ModelCategory assumption in {name}"
+    count := count + 1
+  setEnv saved
+  if count == 0 then throwError "Ind-S (9) reconstructed family: no declarations audited"
+  logInfo m!"Ind-S reconstructed triangle family audit passed: {count} declarations."

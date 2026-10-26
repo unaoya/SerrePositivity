@@ -295,6 +295,6 @@ R が第 I 段終了時に当該 F1/KanModels → F2/CatInfinity 依存を Core 
 二短辺・native Hom・標準全対角を保つ全次数の encoder → 単射性 → 厳密左逆。
 単なる可縮性から encode の単射性や厳密切断は結論しない。
 
-追加8葉62宣言・F1全監査通過：TriangleDiagonalKanExtension、TriangleTwoCutCoordinates、
-TriangleSeparatedLongHom / DirectHom、TriangleLabelHomReplacement、TriangleLabelBaseline 等。
-全対角の Hom 座標の厳密回収まで。全次数の encoder への接続・単射性・厳密左逆は未完了。
+追加8葉62宣言・F1全監査通過：TriangleDiagonalKanExtension、TriangleTwoCutCoordinates、 TriangleSeparatedLongHom / DirectHom、TriangleLabelHomReplacement、TriangleLabelBaseline 等。 全対角の Hom 座標の厳密回収まで。全次数の encoder への接続・単射性・厳密左逆は未完了。
+
+追加16葉80宣言・F1全監査通過：triangleSeparatedSimplex、triangleSeparatedSimplex_naturality、 triangleSeparatedFamily と同じ全 K・L 上の二短辺の厳密回収を公開。単射性・厳密切断は未完了。
