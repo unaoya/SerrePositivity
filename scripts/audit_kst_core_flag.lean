@@ -1,4 +1,4 @@
-import SerrePositivity.KST.LocalizingInvariants.CoreFlag.All
+import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanPullbackAll
 
 /-!
 概要：Sp-8 の公開型と推移的公理を監査する。
@@ -62,3 +62,36 @@ import SerrePositivity.KST.LocalizingInvariants.CoreFlag.All
 
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupNerve_continuousKanReplacement_kanHomotopy_subsingleton
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupNerve_continuousKanReplacement_kanHomotopy_subsingleton
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.kanPullbackCofinalityInput
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.kanPullbackCofinalityInput
