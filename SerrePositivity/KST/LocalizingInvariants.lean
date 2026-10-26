@@ -3,6 +3,11 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexDenominators
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexOreFamilies
 public import SerrePositivity.KST.LocalizingInvariants.VerdierArrowLifting
+public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalArrowFamily
+public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily
+public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement
+public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
+public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone
 
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups
