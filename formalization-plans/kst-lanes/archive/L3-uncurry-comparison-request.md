@@ -33,3 +33,11 @@ K-B の適用は A=Δ[1]、X=SpaceInfinity、B=元の同じパラメータ K。
 
 この補題だけで c4 全体の完了は主張しない。指定有限端点・二短辺と両立する移送と
 元の上下二胞体との照合が残る。厳密切断自体の再要求ではない。
+
+## 既存 API による利用側の解消
+
+この利用側では追加供給は不要。既存の
+`F2.Presentable.functorIsoTensor` で直接 path 全族の比較と区間恒等を直積にし、
+`intervalMappingUncurry (coherentHomIntervalComparison _ _)` へ後合成できる。
+`ZeroMiddleSuppliedReconstruction.diagonalIso` は正規化対角の厳密回収とこの全族比較を接続する。
+厳密切断は使わない。依頼解消はユーザー経由で中継する。
