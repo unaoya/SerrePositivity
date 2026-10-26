@@ -86,8 +86,12 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 
 - 初期入力監査: `/tmp/audit-pi-inputs.lean`、主要4定理とも標準3公理のみ。
 - 8葉は個別の `lake build` に成功。`TotalPiCriterion` も成功。
-- 初期4葉の17宣言は標準3公理のみ。全8葉の監査を追加実行中。
+- 初期4葉の17宣言、全8葉の38宣言とも標準3公理のみ。
+- `lake build SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.All` 成功。
+- `lake env lean scripts/audit_f2_pi_criterion.lean` 成功:
+  `PiCriterion audit passed: 38 declarations, standard three axioms only.`
 - 外部の repo import 閉包2004本に未コミット・編集中の入力なし。
-- 基礎5葉と初期計画: commit `591c62fdb`。続きの葉・集約・監査は保存中。
+- 基礎5葉と初期計画: `591c62fdb`。π接続・定数境界・球面path: `7cbc996e4`。
+- 独自集約: `4b511d49e`。監査と本チェックポイントを追加保存。
 - R候補の既存 API 複製は現在なし。
 - 最終目標の達成は未宣言。正次数の代表と同一視の filtered 段階整合性が残る。
