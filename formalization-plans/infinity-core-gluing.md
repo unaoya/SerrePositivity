@@ -1,10 +1,19 @@
 # D2 レーン：β4 dg gluing = 安定 ∞ 圏の lax pullback
 
-> **v3（2026-10-24）**：D2 レーンの正本。所有：`Derived/Gluing/`。完了後は D に吸収。
+> **v4（2026-10-26）**：D2 レーン再開。所有：`Derived/Gluing/` と集約・監査。K-S• 全 lax／cone 比較を供給する。
 > foundations.md §2 の β4・§6 の D2。dg 側は D の β5・β3、lax pullback は `F2/CatInfinity/` を読み取り専用で使う。
 > 用途は K の Tamme・Land–Tamme の対象供給と、⊙ の Verdier 商の dg 側の同定。
 
-## 引き継ぎ（2026-10-25）
+## 引き継ぎ（2026-10-26）
+
+### 再開工程：K-S• 全比較（進行中）
+- 読み取り専用の消費型：`DGOdotMilnorOriginalLaxComparisonInput`、`DGOdotMilnorIdentityLaxComparisonInput`、`DGOdotMilnorOriginalLaxConeComparisonInput`（`.withCone`）。入力型の変更なし。
+- 元共通終域への `dgGluingHomTargetNerveLaxComparison` を構成。両射影と arrow 全単体族を厳密回収し、各頂点で元閉比較射を回収する。
+- `dgGluingHomTargetNerveLaxComparison_vertex_surjective` と `_isEssentiallySurjective` を証明。元前三角性から `_isExactFunctor` と `dgGluingHomTargetStableComparison` を構成。新規5葉の個別ビルド通過。
+- `dgGluingHomTargetLaxHomPullbackComparison` は同じ実 Hom 複体から F2 の写像空間 pullback への指定比較。`dgGluingHomTargetNerveLaxComparison_fullyFaithful_iff` で同値性の残課題を厳密に指定する。これは Hom 同値性の証明ではない。
+- 残り：元終域比較の全 Hom 同値、導来係数模型・元固定 ν 二脚との比較、恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性。3つの消費型の存在は未証明。
+- 次の一手：`dgGluingHomTargetLaxHomPullbackComparison` の実ホモトピー逆と両往復則を、同じ左右 Hom と第三 cochain を保持して構成する。恒等二脚はその特殊化とする。
+- 新規5葉を含む集約ビルド（13,192 jobs）・公理監査（973モジュール、9,669宣言）通過。所有内に未保存の作業葉なし。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
@@ -48,7 +57,7 @@
 ### D への移管範囲
 1. (d) ①〜⑥完了。Tamme Remark 6 に対応する正本比較同値と全試験関手の普遍性を供給済み。
 2. (e) 完了。元 C・D の前三角性から安定性・実完全射影・F2 の安定 lax pullback・両因子の本質像・K-8b の分裂を供給。Tamme Lemma 8。
-3. (f) ①〜⑤完了。通常 pullback と同じ cell 平坦商の dg 同定、および Milnor 条件下の元小 Perf 対角の Verdier 列を供給。D2 は停止し、D が Gluing を吸収する。
+3. (f) ①〜⑤完了。通常 pullback と同じ cell 平坦商の dg 同定、および Milnor 条件下の元小 Perf 対角の Verdier 列を供給。G-1 は完了。2026-10-26 に K-S• 全比較の工程を追加して D2 を再開。
 
 ### 主要宣言（型は Lean が正本）
 - `DGGluingObject`・`dgGluingHomComplex`・`dgGluingToComma`・`dgGluing_isDGPretriangulated`
@@ -88,7 +97,7 @@
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
 ### 残る接続・移管上の注意
-- 集約・公理監査済み。所有内に未追跡・作業中ファイルを残さず保存し、D2 は f 完了で停止。以後の Gluing 保守は D が担当する。
+- G-1 は集約・公理監査済み。再開工程の新規葉も集約・監査へ接続し、K-S• が代入できる公開名をユーザー経由で報告する。
 - native の通常 pullback 包含と同じ cell 平坦商の Verdier 列は完成。任意の追加 ULift における局所化保存は公開供給待ちであり、この強化を結論していない。
 - 未分解 path 商 `dgQuotientNerve` と cell 平坦商の比較・対角像の `localKFlat` は第 I 段の要求外。元の `dgOdotQuotientInput.projection` をそのまま最終商射に使わない。
 - Milnor 条件の具体例の検証と固定 ν の商射影の付け替えは K-S• の再開時に行う。

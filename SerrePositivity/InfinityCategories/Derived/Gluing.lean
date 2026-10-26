@@ -967,3 +967,8 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeAction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeProjectedHomAction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeDifferenceSquare
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorVerdierSequence
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNerveStructure
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNerveLaxComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxVertices
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetStableComparison
+public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxHomComparison

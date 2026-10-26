@@ -972,7 +972,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeActionConjugation,
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeProjectedHomAction,
     `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeDifferenceSquare,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorVerdierSequence]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.MilnorVerdierSequence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNerveStructure,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetNerveLaxComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxVertices,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetStableComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxHomComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
