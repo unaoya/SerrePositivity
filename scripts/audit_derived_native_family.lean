@@ -1,4 +1,5 @@
-import SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
 import Lean
 /-! 実構成した実 Morita／P/Yoneda 全入力族の全宣言を監査する。 -/
 open Lean Elab Command in
@@ -6,7 +7,9 @@ run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
     `SerrePositivity.InfinityCategories.Derived.DGKappaNativeMoritaFamily,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily]
+    `SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -32,3 +35,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgKappaNativePArrowFamily_boundary
 #check SerrePositivity.InfinityCategories.dgKappaNativePComparisonFamily_at
 #check SerrePositivity.InfinityCategories.dgKappaNativePComparisonFamily_iso
+
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureKernelInputMap
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureKernelInputMap_inclusion
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureSuspensionInputMap_projection
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureNullInputMap_left

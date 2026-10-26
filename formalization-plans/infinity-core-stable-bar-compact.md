@@ -133,3 +133,11 @@
 - covers は旧 covers の実被覆を、新族による旧族のホモトピー被覆へ合成して移送。新族の定義は旧族に依存せず、旧族の定義・定理は不変。新族の旧族への所属で既存の κ-compact 証明を再利用する。
 - D-4b：D-S の新模型 map・edgeIso を待ち、同じ全 square_at と核角の ν 像への厳密接続を構成する。9131e7b37 の二族は任意の段提供者に適用でき、新段にも追加 Morita/P 入力なしで特殊化可能。全四角形の存在・ν 像との全単体一致は未供給。
 - 検証：新11葉の専用監査51宣言、許容三公理のみ、終端0。Derived 集約14914 jobs成功。全体監査25970宣言／2962モジュール成功、許容三公理のみ、終端0（/tmp/d8e-sphere-full-audit.log）。4cd747153でコミット済み。旧基底族は無変更。
+
+### D-4b 新模型の核射と比較族（全四角形は未供給）
+- 新段提供者は K-B3 の `354e05773`、実射 data は D-S の `8fa7ccdef` を使用。KST と D-S 所有葉は読み取り専用。
+- `dgKappaSphereClosureNativeMoritaFamily`・`dgKappaSphereClosureNativeMoritaIso` と `dgKappaSphereClosureNativePComparisonFamily`：9131e7b37 の全 native 比較族を新段へ特殊化。at の型に新 I/P を明記し、元の実評価辺と全 P 比較 path を厳密回収。対象 build12985 jobs、専用監査36宣言／3モジュール成功。
+- `dgKappaSuspensionMap_preservesKernel`：実 resolved 射の零化対象保存を、零・同型・全 cofiber/fiber の帰納で実安定核全体へ延長。`dgKappaSuspensionKernelFunctor` は元の resolved の全 Hom をそのまま制限する。
+- 新模型の `dgKappaSphereClosureKernelInputMap`・`dgKappaSphereClosureNullInputMap` を供給。`KernelInputMap_inclusion`・`SuspensionInputMap_projection`・`NullInputMap_left` は同じ実 dg 入力で三面の厳密可換性を証明。対象 build12792 jobs成功。
+- 残りは全 native 入力の四角形族・選択された全二胞体への square_at・核角の ν 像と上記 Morita 終点作用の全単体一致。通常射の三面だけで完成としない。D-S は段提供者名の中継待ちで停止していることを確認し、ユーザーへ中継事項を報告。
+- 新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14929 jobs、専用監査47宣言／4モジュール成功。許容三公理のみ。局所 import 閉包9188モジュール、循環なし、外部未コミット依存なし。全体監査は実行中。
