@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 public import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
 public import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
 public import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence

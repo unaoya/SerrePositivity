@@ -5,7 +5,7 @@
 - 所有：Derived/CoherentBar/Compact/ の新規葉・All・専用監査。既存 CoherentBar/、D-e の KappaCovers/・KappaPerfect/、KST/・F2/ は読み取り専用。
 - C1・B（87ecf98c0）・C2 と無条件 covers（0d474aaf8）は供給済み。c2 の評価空間保存は全 native κ-filtered coherent 図式について証明する。
 - 現在の KappaCovers/StrictComparison は通常の strict 図式だけを扱う。これを κ-compact 性の全称条件へ代用しない。
-- 検証済み：Compact.All 9771 jobs、専用監査 13 葉・122 宣言、許容三公理のみ。両主集約と両全体監査への登録は検証中。
+- 検証済み：Compact.All 9771 jobs、専用監査 13 葉・122 宣言、許容三公理のみ。両主集約12405 jobs成功。両全体監査成功：Derived 24996宣言／2857モジュール、Stable 26061／3128、許容三公理のみ。
 - チャットの24時間基準は2026-10-25 18:07 頃のまま。期限は10-26 18:07 頃。
 
 ## 三段目
@@ -39,6 +39,7 @@
 - 評価ホモロジーの余極限性と、評価空間の native 余極限性を区別する。後者と representable の compact 性は未完。
 
 ## 次の一手
+- 設計変更提案中：一般の空間余錐判定を Ind に分離し、D は同じ native bar の評価ホモロジー余錐を接続する分担。監査・保存は完了し、規約に従って判断待ちで停止。無条件の評価空間保存・DGKappaConeInput は未供給。
 - 同じ bar 余錐の評価ホモロジー余極限性を、全評価空間の余極限性へ接続する。coherent filtered 空間の全基点 π_n による判定入口と、poset 帰着の宇宙分離版をコーディネータ経由で Ind に照会中。
 - 既存の代表生成元判定と新しい供給済み結論を区別し、明示入力だけの補助入口を実証拠と呼ばない。
 

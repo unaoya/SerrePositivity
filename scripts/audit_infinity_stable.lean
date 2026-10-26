@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
 import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
@@ -8034,6 +8035,20 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.RepresentableEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaHomNaturality,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ProjectiveHomCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.GeneratorClosure,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeInput,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationModuleNerveIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationSpace,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationGeneratorClosure,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeAugmentationIdentity,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.HomologyCoconeCriterion,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomologyColimit,
+
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiNaturality,
