@@ -1,4 +1,5 @@
 import SerrePositivity.KST.Fibration.Relative.All
+import SerrePositivity.KST.Fibration.Relative.ClosedStableAll
 import Lean.Util.CollectAxioms
 
 /-!
@@ -16,7 +17,16 @@ run_cmd do
     `SerrePositivity.KST.Fibration.Relative.CoordinatePostcomp,
     `SerrePositivity.KST.Fibration.Relative.AdditivityFiber,
     `SerrePositivity.KST.Fibration.Relative.ConnectiveInterface,
-    `SerrePositivity.KST.Fibration.Relative.SingleStageDetection]
+    `SerrePositivity.KST.Fibration.Relative.SingleStageDetection,
+    `SerrePositivity.KST.Fibration.Relative.ClosedStableFlags,
+    `SerrePositivity.KST.Fibration.Relative.ClosedFlagFunctor,
+    `SerrePositivity.KST.Fibration.Relative.ClosedCofiberProjection,
+    `SerrePositivity.KST.Fibration.Relative.ClosedFlagConstants,
+    `SerrePositivity.KST.Fibration.Relative.ClosedFlagFactor,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailFlags,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailPullback,
+    `SerrePositivity.KST.Fibration.Relative.StableTrivialPullback,
+    `SerrePositivity.KST.Fibration.Relative.ClosedTailAdditivity]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

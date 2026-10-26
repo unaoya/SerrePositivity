@@ -1,5 +1,63 @@
 # K-B2：K-6 b の相対構成と加法性
 
+## 現在の追加項目：K-B2-S1
+
+ユーザー採用の共通供給。正本は `L1c-cofinality.md` の同名節。
+入力は `B : StableModel` と `P : ClosedStablePredicate B` のみ。
+W は cofiber が P に属する元の辺、R_P は全体として W に持ち上がる全有限旗。
+目標は元の定数旗射 `closedRelativeConstant P` の指定零旗上の fiber と F(P) の
+局所化同型、包含との射影公式、同じ包含の零化ホモトピー。
+商比較・Verdier 列・冪等完備化・共終性は仮定しない。
+新供給の集約は `Relative.ClosedStableAll`。Cofinality/NonConnective の import を禁止。
+既完了 K-6 b の `Relative.All` は NonConnective の d 検出を含むため、
+この新供給からは import しない。
+
+三段目（当初見積り3〜6時間）：
+
+1. [x] P の安定閉包との一致、元の W と全旗の正確な所属判定。
+2. [x] 全単体作用素を持つ安定旗模型、F の図式、元の定数旗射。
+3. [x] 相対 cofiber 射影の trivial Kan 性、元の有限旗の tail 引き戻しと全正反復加法性。
+4. [ ] 相対加法性を有限旗へ貼り、全 SSet 自然性四角形の homotopy pullback を導出。
+5. [ ] Segal 実現、指定零旗の収縮、実 fiber 同型と射影・零化の公開。
+6. [ ] 完成時の限定コミットとユーザーへ最終供給名報告。
+   現在の中間供給の狭い集約・公理監査・禁止 import 検査は完了。
+
+構築済み：`ClosedStableFlags`、`ClosedFlagFunctor`、`ClosedCofiberProjection`、
+`ClosedFlagConstants`、`ClosedFlagFactor`、`ClosedTailFlags`、`ClosedTailPullback`、
+`StableTrivialPullback`、`ClosedTailAdditivity`。
+`closedStableClosure_iff` は安定閉包だけを戻し retract 閉包は使わない。
+`closedFlag_factor_iff` は全旗の wide への厳密因子分解。
+`closedFlag_tail_iff` は同じ wide の inner fibration による反映。
+`closedTail_top_isPullback` は局所化前の共有端点上の実引き戻し。
+項目4以降は未完。最終 fiber の存在を仮定として包んだだけの宣言では完了としない。
+検証ログ：`/tmp/kst-relative-closed-build.log`。
+`ClosedStableAll` は3,478 jobsで成功。専用監査は150宣言・14モジュール、標準三公理のみ。
+狭い供給の局所 import 閉包1,265モジュールに禁止 import・欠落・循環なし。
+監査ログ：`/tmp/kst-relative-closed-audit.log`。新規10葉に禁止宣言・末尾空白なし。
+`closedTailRelativePullback` は B・P のみから元の相対引き戻しと共同反映を供給する。
+`closedTailPair_multi_localized_isIso` は同じ先行旗・最後の cofiber の全正反復加法性。
+
+### ユーザー経由の設計変更提案（S1 未完、K-B への依頼）
+
+既存 `WeakStringFinite*` → `WeakStringInitialPullback` → `WeakStringHeadPullback`
+→ `WeakStringConstantPullback` は q とその厳密な核を入力とする。
+任意の P をこの核へ置換すると retract 閉包を混入し得るため、この代入はできない。
+有限旗帰納・全自然性の既存証明を別名で複製せず再利用するため、
+K-B 所有の実装を B・P からの閉じた旗へ共通化し、既存 q 版をその特殊化にする案を提案。
+既存公開型は保持し、所有外ファイルを本レーンでは編集しない。
+
+依頼する公開境界（名称は提案）：`closedStableFlagPost_homotopyPullback`。
+E_P[n] を `Fun(Δ[n], closedStableModel P)` の安定模型、
+α を包含から R_P[n] への全単体的な完全射に F を適用した自然変換として、
+全 θ の元の `IsHomotopyPullback (CommSq.mk (α.naturality θ.op))` を返す。
+入力は B・P のみ。Cofinality/NonConnective の import、Verdier・商比較仮定は禁止。
+本レーンの `closedTailRelativePullback` と `closedTailPair_multi_localized_isIso` を
+有限旗帰納の加法性入力として使用できる。
+受領後、本レーンで Segal 実現、E_P の指定零旗収縮、fiber 同型と射影・零化を完成する。
+この提案をユーザーへ中継して停止。最終 fiber 同型はまだ供給していない。
+
+以下は追加項目前に完了した K-6 b の引き継ぎ記録。
+
 ## 引き継ぎ
 
 - 現在地：08:59 採用の設計で、相対 S• 実現の実 fiber 列と K-B d への供給境界を接続。
