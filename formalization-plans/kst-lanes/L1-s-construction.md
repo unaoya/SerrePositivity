@@ -94,11 +94,11 @@
   4. [ ] d④：Sp の零角・実面・長方形比較を接続し、未供給の全図式入力を分離する。
   5. [ ] e②：四完備性を保持して Cat^perf の実商入力と LT 結論へ接続する。
   6. [x] 集約・公式監査・禁止仮定検査を通し、引き継ぎを保存する。
-- 次の一手：`dgOdotMilnorNuNullTriangleHomSquares` は元実／絶対上下二胞体の全 Hom を厳密回収し、具体的指定零角混合三角形・指定商比較・同じ共有対角比較を全四辺に保持する。`dgOdotMilnorNuNullPerfectDiagonalDiagramComparison` は同じ元四角形の共有対角全辺の Cat^perf 比較。対象・集約・公式監査済み。元零角二辺の端点成分固定ホモトピーと全辺比較も集約・監査済み。元商・共有対角・包含・零角二辺の元図式ホモトピーと三側面の端点一致、元実／絶対二胞体を保持する実 prism 全境界を構成。次は同じ全境界から coherent prism の全四面を回収して実 ν 核面の全関手同型へ進む。F1 の全境界回収依頼は未達・未供給とユーザーが確認（10-26）。指定された既存補題を照合し、不足は本レーンの新規葉で固定 dg 零化面に狭めて構成する。D の元二脚／恒等二脚 lax 全比較は未供給。残りは LT 実右面・外周の指定三境界付き `VerdierSquareDiagramIso` と、上下二胞体を保つ `VerdierRectangleDiagramIso` の三つの実在証明。元厳密商と ν 完備商を混同せず、Hom 比較・境界型・条件付き接続をこの三比較の存在と数えない。始域は元入力への増大屋根＋ν 像の指定同値で回収し、native 列・LT 錐の元始域は保持する。
+- 次の一手：`dgOdotMilnorNuNullTriangleHomSquares` は元実／絶対上下二胞体の全 Hom を厳密回収し、具体的指定零角混合三角形・指定商比較・同じ共有対角比較を全四辺に保持する。`dgOdotMilnorNuNullPerfectDiagonalDiagramComparison` は同じ元四角形の共有対角全辺の Cat^perf 比較。対象・集約・公式監査済み。元零角二辺の端点成分固定ホモトピーと全辺比較も集約・監査済み。元商・共有対角・包含・零角二辺の元図式ホモトピーと三側面の端点一致、元実／絶対二胞体を保持する実 prism 全境界を構成。`dgOdotMilnorNuNullSquareComparison` と `dgOdotMilnorNuNullPerfectSquareComparison` は元両二胞体を保つ全核面比較。零 Hom 成分の可縮性と標準区間 Hom 比較の充満忠実性から上下対角の類を一致させ、下三角形の全比較の類を保つ代表修正で厳密に貼り合わせた。対象・集約・公式監査済み。次は同じ全比較から既存の指定三境界を回収し、LT の実右面・外周・全長方形へ接続する。F1 の全境界回収依頼は未達・未供給とユーザーが確認（10-26）。指定された既存補題を照合し、不足は本レーンの新規葉で固定 dg 零化面に狭めて構成する。D の元二脚／恒等二脚 lax 全比較は未供給。残りは LT 実右面・外周の指定三境界付き `VerdierSquareDiagramIso` と、上下二胞体を保つ `VerdierRectangleDiagramIso` の三つの実在証明。元厳密商と ν 完備商を混同せず、Hom 比較・境界型・条件付き接続をこの三比較の存在と数えない。始域は元入力への増大屋根＋ν 像の指定同値で回収し、native 列・LT 錐の元始域は保持する。
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/kst-s-nu-triangle-short-aggregate.log`、`/tmp/kst-s-nu-triangle-short-audit.log`、`/tmp/kst-s-nu-triangle-short-closure.txt`。集約 15308 jobs・公式監査 13101 宣言成功、推移閉包 11498 ファイル・欠落なし。d・e の無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/kst-s-nu-null-square-aggregate.log`、`/tmp/kst-s-nu-null-square-audit.log`、`/tmp/kst-s-nu-null-square-closure.txt`。集約 15317 jobs・公式監査 13139 宣言成功、推移閉包 11507 ファイル・欠落なし。d・e の無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 
