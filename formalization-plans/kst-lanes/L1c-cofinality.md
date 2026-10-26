@@ -28,11 +28,18 @@
 - 同じ wide 成分内の本質像所属の同値を証明。連結なパラメータの一頂点が像に入れば
   全図式を同じ反復 S 射の始域へ一つの関手同型で回収できる。
 - 選択した wide 模型を Sp の全辺模型と同定し、成分への実切断・全収縮も消費した。
+- 実際の相対旗の頂点から wide 持ち上げを取り出し、連結な旗の一頂点の像所属から
+  同じ相対旗圏内で始域の旗との頂点同型を回収。逆向きの判定も実装。
+- 一頂点が像に入る相対旗の全部分圏と、元の始域の全旗圏との圏同値を構成。
+  順方向の実射とその core 射が同値。像部分の安定性も移送済み。
 - 元の `kSpectrumMap` の目標条件と未置換零段の群条件との同値は既存の自所有葉に実装済み。
-- **設計供給境界の追加提案**：core 旗の対角実現と亜群化を結ぶ一般比較が必要。
-  Sp-7 の離散性だけから相対旗の実現の離散性を結論しない。依頼の詳細は末尾。
-  ユーザー経由で中継を明示的に依頼済み。追加は未採用・未供給。
-  Sp への追加発注か K-cof の S• 固有比較か、分担の確認質問を提示中。
+- **Sp-8 採用済み**：一般 core 旗比較は独立レーンへ発注済み。実供給は未到着。
+  評価は Δ[n] → Δ[n]×Δ[n] の対角制限と `rfl` で一致。変更不要。
+- 内部 wide 旗と ambient 相対旗の core の自然同型、および対角同型を構成済み。
+  ambient core 全体の wide への持ち上げから、可逆辺を wide 内へ反映する。
+- `CompletionCoreFlagEvaluationInput` を明示的に受け取れば、同じ元の
+  `completionRelativeFlagWideEvaluation` の弱同値性を結論する接続を検証済み。
+  一般供給を公理や instance にせず、相対側の比較条件は実証明で消去した。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -48,9 +55,11 @@
 - `Cofinality.multiSEndofunctor_map_isIdempotentCompletion`
 - `Cofinality.stableWideCofinalitySupply`
 - `Cofinality.completionRelativeFlagWideEvaluation`
-- `Cofinality.multiWideStageDiagram`
+- `Cofinality.completionRelativeImageFlagEquivalence`
+- `Cofinality.completionWideRelativeFlagDiagonalIso`
+- `Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input`
 - `Cofinality.completionMultiWide_componentRetraction`
-- `Cofinality.suppliedMultiRelativeFlagDiagram`
+- `Cofinality.completionSourceFlagVertexImage_iff`
 - `Cofinality.multiRelativeFlagZeroIso`
 - `Cofinality.suppliedMultiRelativeFlagsMap_zero`
 - `Cofinality.exists_multiSourceFamily_of_relative_component`
@@ -65,23 +74,25 @@
   InfinityCategories と既存 SConstruction は編集しない。
 - K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
-### 未コミット
-- なし。自所有の新規5葉・集約・監査・計画を限定コミット。実施記録はコミット本文。
+### 保存範囲
+- 自所有の新規5葉、供給型の quasicategory instance、対角制限の照合、
+  集約・監査・計画。実施記録はコミット本文。
 
 ### 既知の問題
 - 一般の共終性、相対実現の fiber 比較、離散的障害の群同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7859 jobs）。監査は22所有葉の全153宣言で標準三公理のみ。
+- 自所有集約ビルド成功（7866 jobs）。監査は27所有葉の全214宣言で標準三公理のみ。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
 ### 次の一手
-- ユーザー経由で Sp への一般 core 旗比較の追加分担が採用されたら、
-  その API を明示的な仮定引数にして、相対 core 旗と wide 内部旗の比較を続行。
+- Sp-8 の到着後に `CompletionCoreFlagEvaluationInput` へ実供給を代入する。
+  それまでは、この入力を明示的な引数にして相対 fiber 比較と障害の同定を続行する。
 - Sp-7 の実供給の代入は完了。対角評価の弱同値性と、相対実現の加法的 fiber 比較・
-  障害の同定へ進む。現在、比較射の存在だけでは離散性を移せない。
+  障害の同定へ進む。現在、比較射の存在や像部分との圏同値だけでは
+  相対実現の離散性・ホモトピー fiber 比較を結論できない。
 
 ## 目標型
 
@@ -105,9 +116,9 @@
   型を単に記録しただけで、一般供給が届いたことにはしない。
 - K-6 の fibration 定理への依存追加は行わない。
 
-## 追加設計提案：一般 core 旗比較を Sp 正本で供給
+## 採用済み Sp-8：一般 core 旗比較を Sp 正本で供給
 
-- ユーザー経由の依頼先：Sp。Sp-7 への追加または独立の新規葉。
+- ユーザー経由の依頼先：独立レーン Sp-8（採用・発注済み）。
 - 理由：相対旗は ambient 関手圏の全部分複体であり、その core の対角実現と
   M の亜群化は定義的に等しくない。Sp-7 が離散性を与えるのは後者。
   必要な一般亜群化比較を K-cof の新規一般補題として複製しない（foundations §8 正本規約）。

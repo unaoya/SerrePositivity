@@ -34,7 +34,12 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreEvaluation,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagonalEvaluation,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagImageComponents,
-    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSourceRecovery]
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSourceRecovery,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagVertexRecovery,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeImageFlagEquivalence,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideInternalFlags,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideInvertibleReflection,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -87,3 +92,17 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionMultiWide_componentRetraction
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionMultiWideComponent_image_iff
 #check @SerrePositivity.KST.SConstruction.Cofinality.exists_multiSourceFamily_of_relative_component
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.exists_completionSourceFlagVertexIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSourceFlagVertexImage_iff
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeImageFlagEquivalence
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSourceImageFlagMap_core_isQCatEquivalence
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagEvaluation_eq_diagonalRestriction
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideFlagDiagonalComparison_evaluation
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_coreFlag
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWide_invertibleEdge_of_ambient
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideRelativeCoreIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionWideFlagDiagonalComparison_isWeak
+#check @SerrePositivity.KST.SConstruction.Cofinality.CompletionCoreFlagEvaluationInput
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagWideEvaluation_isWeak_of_input

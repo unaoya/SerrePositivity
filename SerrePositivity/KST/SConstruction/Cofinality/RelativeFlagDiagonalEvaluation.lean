@@ -107,4 +107,16 @@ lemma completionRelativeFlagEvaluation_zero (r : ℕ)
     exact Subsingleton.elim _ _
   exact congrArg (fun k => v.val.val.app (Opposite.op ⦋0⦌) (𝟙 _) k) hs
 
+/-- 概要：現在の評価射は標準単体の対角による制限そのものである。
+方針：旗の n 単体を uncurry し、二つの恒等単体で評価する。
+規約：端点評価や行射影ではなく Δ[n] から Δ[n]×Δ[n] への対角を使う。
+使われ方：Sp-8 の対角制限との厳密な照合。 -/
+lemma completionRelativeFlagEvaluation_eq_diagonalRestriction (r : ℕ)
+    (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
+    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
+    (v : (completionRelativeFlagRealization r ι f hf) _⦋n⦌) :
+    (completionRelativeFlagEvaluation r ι f hf).app (Opposite.op ⦋n⦌) v =
+      SSet.yonedaEquiv (CartesianMonoidalCategory.lift (𝟙 (Δ[n] : SSet.{u})) (𝟙 _) ≫
+        uncurry (SSet.yonedaEquiv.symm v.val.val)) := rfl
+
 end SerrePositivity.KST.SConstruction.Cofinality

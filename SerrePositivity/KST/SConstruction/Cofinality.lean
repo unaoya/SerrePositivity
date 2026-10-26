@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreFlagIso
+public import SerrePositivity.KST.SConstruction.Cofinality.WideInvertibleReflection
+public import SerrePositivity.KST.SConstruction.Cofinality.WideInternalFlags
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeImageFlagEquivalence
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagVertexRecovery
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSourceRecovery
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagImageComponents
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagonalEvaluation

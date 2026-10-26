@@ -84,6 +84,16 @@ def suppliedMultiRelativeFlags (supply : StableWideCofinalitySupply.{u})
     SSet.{u} :=
   multiRelativeFlags r ι Y (multiWideStageData supply r ι f hf).subcomplex K
 
+/-- 概要：供給値から構成した相対旗は quasicategory。
+方針：同じ反復 S の関手圏の全部分複体の instance を使う。
+規約：供給型の不透明な略記を class 探索で展開することに依存しない。
+使われ方：相対旗内の頂点同型の反映と全部分圏の構成。 -/
+instance suppliedMultiRelativeFlags_quasicategory (supply : StableWideCofinalitySupply.{u})
+    (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
+    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    Quasicategory (suppliedMultiRelativeFlags supply r ι f hf K) :=
+  multiRelativeFlags_quasicategory r ι Y (multiWideStageData supply r ι f hf).subcomplex K
+
 /-- 概要：同じ多次数の供給値の亜群化は全頂点で正次数が自明。
 方針：一般供給の証明フィールドをそのまま使う。
 規約：相対旗の実現の離散性とはまだ同一視しない。
