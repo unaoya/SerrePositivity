@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceNullRectangle
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeSourceRoof
 public import SerrePositivity.KST.LocalizingInvariants.HorizontalEquivalencePullback
 public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
@@ -77,17 +77,7 @@ lemma dgOdotMilnorSourceKernelNullSquare_value_top_zero (hE : IsPerfectLocalizin
 lemma dgOdotMilnorSourceKernelNullSquare_value_bottom_invertible
     (h : DGGluingMilnorSquare R d) : IsInvertibleEdge (squareBottomArrow
       (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R ≫ E)) := by
-  have hi : IsInvertibleEdge ((coherentNerveEdge
-      (dgOdotMilnorSourceKernelInputMap R d)).map (dgKInputPerfectNu R)).toTruncated :=
-    dgKInputPerfectNu_map_isIso_of_isQCatEquivalence R
-      (dgOdotMilnorSourceKernelInputMap R d) (dgOdotMilnorSourceKernelNu_isQCatEquivalence R d h)
-  have he := hi.map E
-  apply (isInvertibleEdge_congr (e := _) (f := squareBottomArrow
-    (dgOdotMilnorSourceKernelNullSquare R d ≫ dgKInputPerfectNu R ≫ E)) ?_).mp he
-  rw [squareBottomArrow_edge, ← Category.assoc, ← Category.assoc,
-    (dgOdotMilnorSourceKernelNullSquare_edges R d).1]
-  simp only [SSet.yonedaEquiv_comp]
-  rfl
+  exact (dgOdotMilnorSourceKernelNullSquare_perfect_bottom_invertible R d h).map E
 
 /-- 概要：同じ増大屋根の始域比較面は全 Cat^perf 局所化不変量で pullback。
 方針：下辺の指定同値と上二零頂点から Sp の水平可逆辺判定を適用する。

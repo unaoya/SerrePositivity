@@ -2955,4 +2955,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareSideRecov
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterZeroBoundary
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareDiagramIso
 
+public import SerrePositivity.KST.SConstruction.PastingOuterRightVertexEdges
+public import SerrePositivity.KST.SConstruction.PastingOuterRightComparison
+public import SerrePositivity.KST.SConstruction.DGKFixedNullPerfectMap
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceOuterComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelOuterSquareDiagramIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/
