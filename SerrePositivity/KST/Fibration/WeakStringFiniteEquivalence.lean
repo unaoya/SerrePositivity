@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.FiniteFlagComparisonInduction
 public import SerrePositivity.KST.Fibration.WeakStringFiniteRecursion
 public import SerrePositivity.KST.Fibration.WeakStringFiniteComparisonOne
 
@@ -22,20 +23,12 @@ lemma weakStringFiniteComparison_localized_isIso_succ {B C : StableCategory.{u}}
       (weakStringFiniteComparison q (n + 1) (r + 1)))) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (weakStringFiniteComparison q (n + 2) (r + 1))) := by
-  let Q := AnodyneHomotopy.anodyneQ
-  have := weakStringTailMultiStep_localized_isIso q n r
-  have := AnodyneHomotopy.whiskerRight_anodyneQ_isIso
-    (weakStringFiniteComparison q (n + 1) (r + 1)) h
-    ((multiRealizationFunctor (r + 1)).obj (closedStableModel (kernelClosedPredicate q)))
-  have he := congrArg Q.map (weakStringFiniteComparison_factor q n (r + 1))
-  have hi : IsIso (Q.map (weakStringFiniteComparison q (n + 2) (r + 1)) ≫
-      Q.map (𝟙 _ ⊗ₘ (finSnocProductIso ((multiRealizationFunctor (r + 1)).obj
-        (closedStableModel (kernelClosedPredicate q))) (n + 1)).hom)) := by
-    rw [← Q.map_comp, ← he, Q.map_comp, Q.map_comp]
-    change IsIso (Q.map (weakStringTailMultiStep q n (r + 1)) ≫
-      Q.map (weakStringFiniteComparison q (n + 1) (r + 1) ▷ _) ≫ Q.map (α_ _ _ _).hom)
-    infer_instance
-  exact (isIso_comp_right_iff _ _).mp hi
+  exact finiteFlagComparison_step_localized_isIso (n + 1)
+    (weakStringFiniteComparison q (n + 1) (r + 1))
+    (weakStringFiniteComparison q (n + 2) (r + 1))
+    (weakStringTailMultiStep q n (r + 1))
+    (weakStringFiniteComparison_factor q n (r + 1)) h
+    (weakStringTailMultiStep_localized_isIso q n r)
 
 /-- 元の初期頂点と全連続 cofiber による有限比較は、全正有限長・全正有限反復で同値。 -/
 theorem weakStringFiniteComparison_positive_localized_isIso {B C : StableCategory.{u}}

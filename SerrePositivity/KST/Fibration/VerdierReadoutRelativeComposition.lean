@@ -43,6 +43,19 @@ private theorem readoutComponentCurve
     fin_cases j <;> rfl
   rw [pinchedConstant_one, hi]
 
+/-- 概要：元の実長 Hom ホモトピーの指定成分を全区間の実制限へ戻す。
+方針：同じ元の一単体の Yoneda 表示を回収する。
+規約：同じ Verdier 両端と全 path 入力を保持する。
+使われ方：相対合成の直接端を同じ下側読出しへ照合する。 -/
+theorem verdierReadoutComponentCurve
+    {f g : (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}) ⟶
+      verdierNativeLongHomTarget d}
+    (H : SSet.Homotopy f g)
+    (x : ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u})) _⦋0⦌) :
+    SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge H x).edge =
+      lift (SSet.const x) (𝟙 (Δ[1] : SSet.{u + 1})) ≫ H.h :=
+  readoutComponentCurve d H x
+
 variable
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
     (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))

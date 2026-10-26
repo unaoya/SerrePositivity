@@ -7,6 +7,24 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteAllLengths,
+    `SerrePositivity.KST.Fibration.ClosedFlagOneEquivalence,
+    `SerrePositivity.KST.Fibration.ClosedFlagOneComparison,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteEquivalence,
+
+    `SerrePositivity.KST.Fibration.VerdierMovingUpperComposite,
+    `SerrePositivity.KST.Fibration.VerdierReadoutMovingLongInput,
+    `SerrePositivity.KST.Fibration.VerdierMovingSharedDiagonal,
+    `SerrePositivity.KST.Fibration.FiniteFlagComparisonInduction,
+    `SerrePositivity.KST.Fibration.ClosedFlagCofiberCoordinates,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteComparison,
+    `SerrePositivity.KST.Fibration.ClosedFlagFiniteRecursion,
+    `SerrePositivity.KST.Fibration.StableTrivialPullbackSection,
+    `SerrePositivity.KST.Fibration.ClosedTailMultiStep,
+    `SerrePositivity.KST.Fibration.ClosedTailCanonicalComponents,
+
+    `SerrePositivity.KST.Fibration.VerdierMovingUpperShortFamilies,
+    `SerrePositivity.KST.Fibration.VerdierMovingUpperCanonical,
     `SerrePositivity.KST.Fibration.VerdierReadoutCompositionBoundary,
     `SerrePositivity.KST.Fibration.ZeroMiddleCanonicalEncoder,
     `SerrePositivity.KST.Fibration.VerdierCanonicalSharedDiagonal,
