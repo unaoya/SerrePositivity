@@ -140,4 +140,12 @@
 - `dgKappaSuspensionMap_preservesKernel`：実 resolved 射の零化対象保存を、零・同型・全 cofiber/fiber の帰納で実安定核全体へ延長。`dgKappaSuspensionKernelFunctor` は元の resolved の全 Hom をそのまま制限する。
 - 新模型の `dgKappaSphereClosureKernelInputMap`・`dgKappaSphereClosureNullInputMap` を供給。`KernelInputMap_inclusion`・`SuspensionInputMap_projection`・`NullInputMap_left` は同じ実 dg 入力で三面の厳密可換性を証明。対象 build12792 jobs成功。
 - 残りは全 native 入力の四角形族・選択された全二胞体への square_at・核角の ν 像と上記 Morita 終点作用の全単体一致。通常射の三面だけで完成としない。D-S は段提供者名の中継待ちで停止していることを確認し、ユーザーへ中継事項を報告。
-- 新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14929 jobs、専用監査47宣言／4モジュール成功。許容三公理のみ。局所 import 閉包9188モジュール、循環なし、外部未コミット依存なし。全体監査は実行中。
+- 新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14929 jobs、専用監査47宣言／4モジュール成功。許容三公理のみ。局所 import 閉包9188モジュール、循環なし、外部未コミット依存なし。全体監査25990宣言／2964モジュール成功、許容三公理のみ、終端0（/tmp/d4b-full-audit.log）。
+
+### D-4b 実安定核への全次数制限
+- `dgFullRestrictionFunctor`：対象条件を保つ dg 関手の充満 dg 部分圏から、同じ二部分圏の dg 関手圏への厳密 dg 関手。元の全 Hom end を制限し、評価で単位・縦合成を証明。
+- `dgFullRestrictionNativeMap`：その標準 coherent nerve の core 上の全単体写像。`inclusion` で元の全単体作用を厳密回収。D-S 所有葉への依存はなく、公開名をユーザー経由で先行報告。
+- `dgKappaSuspensionKernelParameter`・`dgKappaSuspensionKernelHom` は同じ実 data の resolved 変換を実核へ制限。app／π は同じ対象の元の成分、identity／composition は同じ tensor パラメータの厳密則。
+- 入力 A,B を動かす resolved 全 Hom 作用や全四角形自体の存在は、この制限部品だけでは供給済みとしない。残る指定収縮・全二胞体比較と D-S の map／edgeIso の接続は継続中。
+- 検証：新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14931 jobs、専用監査70宣言／6モジュール成功、許容三公理のみ。局所 import 閉包8972モジュール、循環なし、外部未コミット依存なし。追加後の全体監査は /tmp/d4b-kernel-native-full-audit.log で実行中。
+- 指定収縮は各対象の零性から選ばれている。対象ごとの零性・収縮比較から、厳密自然変換 end 内の同型や全四角形の相対 path を自動的に推論しない。指定 ε の全次数整合は実際に証明する。

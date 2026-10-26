@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
 import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput
@@ -7465,6 +7466,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePerfectCovers,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
     `SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput,
