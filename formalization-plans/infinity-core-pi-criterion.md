@@ -102,7 +102,29 @@ filtered 余極限条件で判定する。正次数の添字 n は実際の次�
 - `BridgeComponents`: D の構造を直接消費し、代表・脚の可換性・transition の自然性から
   比較射の π₀ の全単射性を導く。元の coherent 図式での可換性の入力は未接続。
 - 以上5葉のビルド成功。全62宣言の標準3公理監査に成功。
-- `BridgePathTranspose` は D の指定辺を固定した path 頂点へ変換する補題を実装・検証中。
+- `BridgePathTranspose` の球面円柱の転置と、同じ指定辺の移送の左右の一意性がビルド成功。
+- `PositiveVertexRepresentatives` は元の指定頂点 x を基点とする任意の類に、
+  元の値の類と実際の path を返す。構成上の ofVertex の基点表示を除去済み。
+- `PathFamilyHomotopy` は指定 path の族をそのまま円柱へ戻し、源への制限と厳密に可換。
+- 上記3葉を含む全86宣言の標準3公理監査成功。commit `7586484ac`。
+- `BridgePathRealization` がビルド成功。指定辺の path 頂点の群の類から D の球面円柱へ
+  戻す逆向きと、`dgBarCompactPiTransport n e a b ↔ bridgePiTransportEquiv n e a = b` を証明。
+- 外部の repo import 閉包2811本に未コミット・編集中の入力なし。
+- `BridgePathRealization` を含む全98宣言の標準3公理監査成功。
+
+## 確定型への残る接続
+
+1. 全空間比較 q と各値からの射 s_i を、元の余錐の脚 l_i と比較する。
+   `BridgeComponents` の hcomm・hstage を、元の coslice の比較と coherent な三角形から供給。
+2. 正次数の単射性は、二つの球面の基点を貼った有限 wedge の同時検出を使う。
+   K は S.hom と S.hom の pushout、元の二代表の共通基点により K→T を作る。
+   その一つの H の指数転置は二代表に同じ path 頂点を与えるので、q の像での等式から
+   stage の脚の群の等式を得る。D.positive_equal_at_stage で後続段へ移して T で等式を反映。
+3. 正次数の全射性は D.positive_surjective（全ての指定辺）と全空間側の実際の path を組み合わせる。
+   指定辺を保つ必要がある箇所は BridgePathRealization の iff を使い、自由 path の存在へ弱めない。
+4. 小さい底の持ち上げ、I の CardinalFiltered から filtered 性、元の脚・transition の
+   持ち上げとの一致を接続し、追加の供給仮定のない DGBarCompactFilteredSpacePiBridge を結論にする。
+   この最終結論はまだ未証明。現在の補題をその代替として完成扱いにしない。
 
 ## 検証と保存
 
