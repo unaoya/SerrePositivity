@@ -56,10 +56,10 @@
 - [x] g6. bounded-below 条件下の切断 pro 判定と、LT Lemma 2.30 の連結なレベル表示を構成する。
 - [x] g7. Cor. 2.31 を元の不変量値の塔へ適用し、次数別 eventual 連結度から π-pro 同値へ接続する。
 
-## 引き継ぎ（2026-10-26、d3a 公開、採用済み d3b①を実装中）
+## 引き継ぎ（2026-10-26、d3a 公開、d3b①の所有 import 閉包の検証不能で停止）
 
 ### 現在地
-- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。元の単位の相対 BF 分解は既存の持ち上げと K-B の SequentialBFArrow 系を組み合わせて実構成済み（AdjointLoopRelativeBF）。全 Hom 上の単位の π 同型・源の豊穣合成自然性は AdjointLoopUnitRawHom。次は相対分解の全 Hom 自然性であり、選択した持ち上げの通常関手性は主張しない。実 nativeLoop 同値 hΩ と sp_isStable は未提供。Sp-7 は idempotentCompletion_cofiberWide_discrete で公開済み。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
+- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。元の単位の相対 BF 分解は既存の持ち上げと K-B の SequentialBFArrow 系を組み合わせて実構成済み（AdjointLoopRelativeBF）。全 Hom 上の単位の π 同型・源の豊穣合成自然性は AdjointLoopUnitRawHom。次は相対分解の全 Hom 自然性。K-B-S2 編集中の依存 olean 不在が再試行でも発生し、閉包の安定確認待ちで停止。AdjointLoopRelativeCompatible{Maps,Composition,Laws,Enrichment,Functors} は単体ビルド済みだが最新閉包の集約・監査前、AdjointLoopRelativeGradedInclusion・CoherentComparison は未検証。以上7新葉は未追跡・未接続で保持し、選択した持ち上げの通常関手性は主張しない。実 nativeLoop 同値 hΩ と sp_isStable は未提供。Sp-7 は idempotentCompletion_cofiberWide_discrete で公開済み。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
 - **β6 f・h の現在地**：E2-S (7) fd3fd4bb8 の原本 Yoneda 全比較を実適用。元の AW 全標的図式と指定局所化 Hom の同型、全 ordinary Hom 単位を保つ under 同型、元の局所化上への延長と指定二胞体の厳密回収、元の postnikovInfinityCone の IsLimitCone を提供。非正次数の実 dg 代数 B・全 n≥0、元の頂点・二脚・class と指定底の実 fiber 模型を保持。比較・frame・ModelCategory を追加入力にしない。h の主要宣言は下表、検証記録はコミットメッセージ。
 - **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。D-21 の実完備化は K-S• の dgOdotMilnorCompletion に特殊化済み。実 S 長方形・屋根と全指定境界比較の一体化は未供給。s4 は実適用・集約・監査・公開保存を完了。β6 f・h は完了。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
