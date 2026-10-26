@@ -5,6 +5,7 @@ public import SerrePositivity.KST.Spectra.AdjointLoopRelativeDiagramResolution
 public import SerrePositivity.KST.Spectra.D3LoopConeRelativeLifting
 public import SerrePositivity.KST.Spectra.D3ComparisonHomLifting
 public import SerrePositivity.KST.Spectra.D3CommonProjectionNaturality
+public import SerrePositivity.KST.Spectra.D3CommonLoopInterval
 
 /-!
 概要：Sp-2 の d3 専用集約。

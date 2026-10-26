@@ -117,3 +117,18 @@
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：509 modules／5344 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - 所有新葉・集約・計画・専用監査だけを保存。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
 - s3 は L1 正本を再確認し、共通 S 長方形と三認証が未完であることを確認。実供給が到着したら優先して接続する。
+
+## 2026-10-27：共通 BF 左脚を保持する実 loop 四角形
+- `d3_rightFibration_liftEdge_source`：指定可逆辺の同じ一次単体を、指定始端から右 fibration へ持ち上げる。逆辺の終端固定持ち上げに元の逆三角形の実充填を組み合わせ、元の辺への厳密な射影を回収。
+- `commonLoopConeLift`／`commonLoopConeLift_projection`：元の固定 cospan の slice で、元の `loopSourceCone X` を始端に、同じ `commonLoopInclusion X` そのものを持ち上げる。
+- `commonLoopConeIso`／`commonLoopCone_isLimit`：同じ実錐比較全体の可逆性から極限性を移す。`commonLoopCone_vertex` は apex が共通対象 N_X 自体であることを証明。
+- `commonLoopSquare`／`commonLoopSquare_vertex`：N_X を厳密な実始点、元の tail X を厳密終点とする実 loop 四角形。`_right`／`_top` は元の cospan の二脚を保持。
+- `commonLoopSquareInclusionIso`／`commonLoopSquareFunctorIso`：元の実 loop 四角形から共通四角形へ、さらに元の BasedLoop 四角形へ、固定 cospan を保つ全四角形の同型。
+- `commonLoopSquareInterval`／`_source`／`_target`／`_sourceEdge`／`_boundary`：同じ比較辺の実区間族、両端の全四角形、始点成分の元の共通 BF 左脚、固定 cospan 三頂点の同じ定値区間を厳密回収。
+- **未完**：上記は各 X の実図式と比較成分。CommonObject の同じ全 Hom に実 loop 図式の族を加え、その射影 RLP と恒等・合成整合を証明する工程は残る。これらの対象別 FunctorIso を nativeLoop との全関手自然同型とは数えない。hΩ・sp_isStable は未提供。
+- s3：L1 の最新現在地でも、上下指定二単体・共通 S 長方形・三認証は未完。D2 三入力の無条件供給とは区別して待機。
+
+### 共通実 loop 四角形の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5774 jobs）。新規4葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：513 modules／5396 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
+- 所有新葉4本・専用集約・専用監査・本計画だけを変更。本計画は300行以内。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
