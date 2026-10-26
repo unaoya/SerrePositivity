@@ -139,7 +139,7 @@
 - `dgKappaSphereClosureNativeMoritaFamily`・`dgKappaSphereClosureNativeMoritaIso` と `dgKappaSphereClosureNativePComparisonFamily`：9131e7b37 の全 native 比較族を新段へ特殊化。at の型に新 I/P を明記し、元の実評価辺と全 P 比較 path を厳密回収。対象 build12985 jobs、専用監査36宣言／3モジュール成功。
 - `dgKappaSuspensionMap_preservesKernel`：実 resolved 射の零化対象保存を、零・同型・全 cofiber/fiber の帰納で実安定核全体へ延長。`dgKappaSuspensionKernelFunctor` は元の resolved の全 Hom をそのまま制限する。
 - 新模型の `dgKappaSphereClosureKernelInputMap`・`dgKappaSphereClosureNullInputMap` を供給。`KernelInputMap_inclusion`・`SuspensionInputMap_projection`・`NullInputMap_left` は同じ実 dg 入力で三面の厳密可換性を証明。対象 build12792 jobs成功。
-- 残りは全 native 入力の四角形族・選択された全二胞体への square_at・核角の ν 像と上記 Morita 終点作用の全単体一致。通常射の三面だけで完成としない。D-S は段提供者名の中継待ちで停止していることを確認し、ユーザーへ中継事項を報告。
+- 残りは全 native 入力の四角形族・選択された全二胞体への square_at・核角の ν 像と上記 Morita 終点作用の全単体一致。通常射の三面だけで完成としない。D-S への段提供者名の中継後、D-4a の再開を確認。
 - 新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14929 jobs、専用監査47宣言／4モジュール成功。許容三公理のみ。局所 import 閉包9188モジュール、循環なし、外部未コミット依存なし。全体監査25990宣言／2964モジュール成功、許容三公理のみ、終端0（/tmp/d4b-full-audit.log）。
 
 ### D-4b 実安定核への全次数制限
@@ -149,3 +149,4 @@
 - 入力 A,B を動かす resolved 全 Hom 作用や全四角形自体の存在は、この制限部品だけでは供給済みとしない。残る指定収縮・全二胞体比較と D-S の map／edgeIso の接続は継続中。
 - 検証：新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14931 jobs、専用監査70宣言／6モジュール成功、許容三公理のみ。局所 import 閉包8972モジュール、循環なし、外部未コミット依存なし。追加後の全体監査26014宣言／2966モジュール成功、許容三公理のみ、終端0（/tmp/d4b-kernel-native-full-audit.log）。445404f65でコミット済み。
 - 指定収縮は各対象の零性から選ばれている。対象ごとの零性・収縮比較から、厳密自然変換 end 内の同型や全四角形の相対 path を自動的に推論しない。指定 ε の全次数整合は実際に証明する。
+- 依存待ち：D-S 稼働中で、map・edgeIso は未供給であることを連続3ターン、実ソースと thread 状態で確認。D は外部供給待ちで blocked。D-4a の採用 action 公開後、同じ指定収縮と全四角形への比較、square_at、核角 ν 像との全単体一致を再開する。D-4b 完了とは扱わない。
