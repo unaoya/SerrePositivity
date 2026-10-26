@@ -42,7 +42,7 @@
 <tr><td><code>integral</code></td><td>\(S\) が \(R\) 上整なら \(S_{\mathrm{perfd}}\) は離散で perfectoid</td><td>Thm 10.11（＝Thm 1.17(1)）</td></tr>
 <tr><td><code>excision</code></td><td>arc 条件を満たす商の四角形が \(D(R)\) で引き戻し</td><td>Cor 8.12（Prop 8.10・Cor 8.11 経由）</td></tr>
 </table></div>
-<p>型は <a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">PerfectoidizationInterface/Interface.lean</a>。\(\mathrm{CAlg}_R\) 版は <a href="../../../SerrePositivity/EInfinity/Perfectoidization/Interface.lean">EInfinity/Perfectoidization/Interface.lean</a> の <code>PerfectoidizationInterfaceCAlg</code> で、欄は同じ（<code>perfd</code> の値域が \(\mathrm{CAlg}_R\)、極限錐と excision が \(\mathrm{CAlg}_R\) で述べられる）。<code>DerivedCorollary.lean</code> の <code>nonempty_e3_of_cAlg</code> により、<b>CAlg 版を一つ構成すれば E3 が従う</b>。</p>
+<p>型は <a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">PerfectoidizationInterface/Interface.lean</a>。\(\mathrm{CAlg}_R\) 版は <a href="../../../SerrePositivity/EInfinity/Perfectoidization/Interface.lean">EInfinity/Perfectoidization/Interface.lean</a> の <code>PerfectoidizationInterfaceCAlg</code> で、欄は同じ（<code>perfd</code> の値域が \(\mathrm{CAlg}_R\)、極限錐と excision が \(\mathrm{CAlg}_R\) で述べられる）。<code>DerivedCorollary.lean</code> の <code>nonempty_e3_of_cAlg</code> により、<b>CAlg 版を一つ構成すれば E3 が従う</b>。</p>
 
 <div class="box">
 <p class="label">原典との差（界面の規約）</p>
@@ -102,21 +102,19 @@
 <p>外部文献の最小採用集合は {BS17, BM18, Mat16, Lur11} の切片で、新規引用にせず形式化の対象に数える。最初の実装単位は「固定完全 prism \((A,(d))\) 上の一変数多項式の Čech 模型と HT 比較」。</p>
 
 <h2>6. コードの所在</h2>
-<p class="meta">BS-W4 と転送スタブの削除（<code>201b022cc</code>）の後。パスは <code>SerrePositivity/BhattScholze/</code> からの相対。</p>
+<p class="meta">BS-W8（<code>5a6e3285a</code>・<code>397c6a492</code>・<code>19655cbd1</code>）の後。パスは <code>SerrePositivity/BhattScholze/</code> からの相対。全体で 246 本（W1 前は約 1008 本）。転送スタブはない（W8b で削除）。</p>
 <div class="table-wrap"><table>
 <tr><th>場所</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
-<tr><td><code>Delta/</code></td><td class="num">227</td><td class="num">21,059</td><td>§2 δ 環。Basic・Distinguished・DividedPower・Division・Extension・Free・Perfect</td></tr>
-<tr><td><code>Prism/</code></td><td class="num">88</td><td class="num">7,929</td><td>§3 prism。Basic・Perfection（Lemma 3.9）・Perfectoid（Thm 3.10）・Residue・Tensor</td></tr>
-<tr><td><code>Semiperfectoid/</code></td><td class="num">63</td><td class="num">5,052</td><td>§7.1〜7.2。Cor 7.3（B3）、Thm 7.4（B4、André 経由）。RootedExtension/ 20 本（Thm 7.4 の降下と CLMST の両立根）、RootEnvelope/ 33 本（Thm 7.4 の旧証明）</td></tr>
-<tr><td><code>Andre/</code></td><td class="num">549</td><td class="num">65,226</td><td>§7.3 Thm 7.14。直下 47 本（一段の拡大 46、公開入口 AndreFlatness）、RootedExtension/ 206 本（うち Supplement/ 98 本は主定理に使われない）、Transfinite/ 30 本（ω₁ 反復）、Remark715/ 224 本、Variants/ 42 本</td></tr>
-<tr><td><code>Perfectoidization/</code></td><td class="num">24</td><td class="num">2,761</td><td>§8 の環の結果。Prop 8.13 の環版、切除の環の帰結、有限直積、底変換</td></tr>
-<tr><td><code>Almost/</code></td><td class="num">10</td><td class="num">1,082</td><td>§10。Lemma 10.3、Rem 10.7、Prop 10.2・10.4 の使う部分、CLMST 用の比較補題 3 本</td></tr>
-<tr><td><code>PerfectoidizationInterface/</code></td><td class="num">14</td><td class="num">1,743</td><td>E3 の界面の型と、そこから導く定理（Thm 1.17(1)・Cor 8.12 の環の帰結を含む）</td></tr>
+<tr><td><code>Delta/</code></td><td class="num">153</td><td class="num">22,198</td><td>§2 δ 環。Basic 4・Free 8・Extension 3・Distinguished 1・Perfect 4 は W5・W6 でまとめ済み。DividedPower 74（§2.5）と Division 59（d で割る δ 包）はまだ一本ずつ</td></tr>
+<tr><td><code>Prism/</code></td><td class="num">14</td><td class="num">7,565</td><td>§3 prism。Basic・Bounded（Lemma 3.7(1)）・Perfection（Lemma 3.9）・Perfectoid（Thm 3.10）・Residue・Tensor、<code>PerfectPrismHomLift</code>（Lemma 4.8）</td></tr>
+<tr><td><code>Semiperfectoid/</code></td><td class="num">10</td><td class="num">6,825</td><td>§7.1〜7.2。Cor 7.3（B3）、Thm 7.4（B4、André 経由）、両立する根。RootEnvelope/ 3 本は Thm 7.4 の André を使わない旧証明</td></tr>
+<tr><td><code>Andre/</code></td><td class="num">56</td><td class="num">59,902</td><td>§7.3。主経路は OrdinaryRoots/ 2（R̃）・Envelope/ 16（根の関係式の δ 除算包と Koszul 計算、Cor 2.39 の r=1）・Perfection/ 2（R₁）・Transfinite/ 3（ω₁ 反復と Thm 7.14）と公開入口 <code>AndreFlatness</code>。PowerRootEnvelope/ 27（原典どおりの一元拡大と Rem 7.15 の途中の pd 比較、監査 4 本を含む）と Variants/ 4（任意族への一般化）は主経路外。直下の <code>MonicRelationRegularSequence</code> は KST が import するので別ファイル</td></tr>
+<tr><td><code>Perfectoidization/</code></td><td class="num">9</td><td class="num">4,653</td><td>§8 の環の結果（Prop 8.13 の環版、切除、底変換、完備テンソル）。Derived/ 3 本は E3 の界面の型と、そこから導く環の定理（Thm 10.11・Cor 8.12 の環の帰結）</td></tr>
+<tr><td><code>Almost/</code></td><td class="num">3</td><td class="num">1,128</td><td>§10。Lemma 10.3、Rem 10.7、Prop 10.2・10.4 の使う部分</td></tr>
 <tr><td><code>Inputs/</code></td><td class="num">1</td><td class="num">56</td><td>唯一の sorry（E3）</td></tr>
-<tr><td>直下</td><td class="num">1</td><td class="num">—</td><td>界面の集約 <code>PerfectoidizationInterface.lean</code></td></tr>
+<tr><td><code>SerrePositivity/BhattScholze.lean</code></td><td class="num">1</td><td class="num">34</td><td>BS の集約。root と <code>audit_f5</code>・<code>audit_f7</code> はこれだけを import する。BS の中で名前が変わったときはここだけを直す</td></tr>
 <tr><td><code>CommutativeAlgebra/</code>（BS の外）</td><td class="num">465</td><td class="num">—</td><td>完備化・平坦性・AIC など BS と CLMST の共有基盤。<code>IsPerfectoidization</code> の定義もここ</td></tr>
 </table></div>
-<p>直下 618 ファイルの名前の接頭辞は、多い順に <code>DeltaDivision</code>（104）、<code>DeltaRoot</code>（97）、<code>Delta</code>（60）、<code>PerfectDelta</code>（30）、<code>RelativeFree</code>（28）、<code>RankOne</code>（25）、<code>PerfectPrism</code>（24）、<code>CompatibleRoot</code>（16）、<code>Principal</code>（15）。<code>DeltaDivision</code>・<code>DeltaRoot</code> の約 200 本は B4 の根付き拡大（割り算包と根の変数）の構成で、§2 の一般論ではない。</p>
 <p>監査は <code>scripts/audit_bhatt_scholze*.lean</code>（本体・b4・b5・prop813・arc_excision・andre_conditional・refactoring）と <code>scripts/audit_clmst*.lean</code>。実行は <code>lake env lean scripts/&lt;name&gt;.lean</code>。</p>
 
 <h2>7. リファクタの候補</h2>

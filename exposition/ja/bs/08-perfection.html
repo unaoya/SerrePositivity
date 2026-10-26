@@ -20,7 +20,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <nav class="top"><a href="index.html">目次</a> › 第 8 章</nav>
 <h1>第 8 章　一般の perfection（§8）</h1>
 <p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.63–70。E3 に必要な項目だけを載せる（判定は <a href="#items-08">原典の項目一覧</a>、原典との差の評価は <a href="#diff-08">末尾</a>）。</p>
-<p>§8 は perfectoid 環 \(R=A/I\) 上の任意の（導来 p 完備な単体的）代数 \(S\) の perfectoid 化 \(S_{\mathrm{perfd}}\) を導来対象として定義し（Def 8.2）、perfectoid 環への写像の極限として描き（Prop 8.5）、arc 位相での降下と excision（Cor 8.11・8.12）、テンソルとの両立（Prop 8.13）、離散な場合の普遍性（Cor 8.14）を示す。E3 の欄の大部分がここにある。現状は E3 の欄として<b>引用</b>していて、そこから環の帰結を<b>証明</b>している（界面の型は <a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">PerfectoidizationInterface/Interface:21</a>）。</p>
+<p>§8 は perfectoid 環 \(R=A/I\) 上の任意の（導来 p 完備な単体的）代数 \(S\) の perfectoid 化 \(S_{\mathrm{perfd}}\) を導来対象として定義し（Def 8.2）、perfectoid 環への写像の極限として描き（Prop 8.5）、arc 位相での降下と excision（Cor 8.11・8.12）、テンソルとの両立（Prop 8.13）、離散な場合の普遍性（Cor 8.14）を示す。E3 の欄の大部分がここにある。現状は E3 の欄として<b>引用</b>していて、そこから環の帰結を<b>証明</b>している（界面の型は <a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">PerfectoidizationInterface/Interface:21</a>）。</p>
 
 <h2>1. 定義と coconnective 性（Def 8.2・Lemma 8.4）</h2>
 <p><b>Def 8.2.</b> \(\Delta_{S/A,\mathrm{perf}}=(\mathrm{colim}_\varphi\Delta_{S/A})^\wedge\)（導来 prismatic コホモロジーの Frobenius 余極限の \((p,I)\) 完備化）、\(S_{\mathrm{perfd}}=\Delta_{S/A,\mathrm{perf}}\otimes^L_AA/I\)。p 完備な \(E_\infty\)-S 代数。A に依存しないことは Prop 8.5 から出る。</p>
@@ -29,8 +29,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
-<tr><td>Def 8.2</td><td>\(S_{\mathrm{perfd}}\)</td><td class="todo">未（界面）</td><td><code>perfd</code>・<code>unit</code>・<code>h0</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:24</a>, :26, :28）。A4（入力は A2 の Construction 7.6）</td></tr>
-<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td><code>coconnective</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:30</a>）。A4（Lur11 の P⁰ の切片）</td></tr>
+<tr><td>Def 8.2</td><td>\(S_{\mathrm{perfd}}\)</td><td class="todo">未（界面）</td><td><code>perfd</code>・<code>unit</code>・<code>h0</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>, :26, :28）。A4（入力は A2 の Construction 7.6）</td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td><code>coconnective</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。A4（Lur11 の P⁰ の切片）</td></tr>
 </table></div>
 
 <h2>2. perfectoid 環への写像の極限（Prop 8.5・Lemma 8.6）</h2>
@@ -44,7 +44,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td><code>limitCone</code>・<code>limit_isLimit</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:35</a>, :37）。A5。証明は Thm 7.4・Thm 7.14（どちらも証明済み）と Prop 7.10（A3）を使う</td></tr>
+<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td><code>limitCone</code>・<code>limit_isLimit</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>, :37）。A5。証明は Thm 7.4・Thm 7.14（どちらも証明済み）と Prop 7.10（A3）を使う</td></tr>
 <tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 Lemma 11.22 の切片、標数 p の de Rham 比較と Cartier 同型は A1）</td></tr>
 </table></div>
 
@@ -56,7 +56,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Def 8.7、Lemma 8.8</td><td>arc 位相、perfectoid による被覆</td><td class="todo">未</td><td>A6</td></tr>
 <tr><td>Prop 8.10、Cor 8.11</td><td>構造層の arc 層性、\(S_{\mathrm{perfd}}=R\Gamma_{\mathrm{arc}}\)</td><td class="todo">未</td><td>A6（BM18・BS17 の切片）。E3 には構造層の部分だけで足り、Prop 8.10 の後半（形式スキームへの Hom の層性）は不要</td></tr>
-<tr><td>Cor 8.12</td><td>excision</td><td class="todo">未（界面）</td><td><code>excision</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:43</a>）。A6。環の帰結は界面から証明済み（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Excision.lean">PerfectoidizationInterface/Excision:59</a>, :70）、使う形（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/PerfectoidizationExcision.lean">PerfectoidizationExcision:48</a>）</td></tr>
+<tr><td>Cor 8.12</td><td>excision</td><td class="todo">未（界面）</td><td><code>excision</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。A6。環の帰結は界面から証明済み（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean">PerfectoidizationInterface/Excision:59</a>, :70）、使う形（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Excision.lean">Excision:194</a>）</td></tr>
 </table></div>
 
 <h2>4. テンソルとの両立と離散な場合の普遍性（Prop 8.13・Cor 8.14）</h2>
@@ -69,8 +69,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版 <code>prop813CompletedTensorMap_isPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/PerfectoidizationCompletedTensorCompatibility.lean">PerfectoidizationCompletedTensorCompatibility:102</a>）、底変換（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Prop813PerfectoidBaseChange.lean">Prop813PerfectoidBaseChange:112</a>）。導来版は A7</td></tr>
-<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td><code>universal</code>（<a href="../../../SerrePositivity/BhattScholze/PerfectoidizationInterface/Interface.lean">Interface:32</a>）。A7</td></tr>
+<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版 <code>prop813CompletedTensorMap_isPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">TensorCompatibility:248</a>）、底変換（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">TensorCompatibility:431</a>）。導来版は A7</td></tr>
+<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td><code>universal</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。A7</td></tr>
 </table></div><h2 id="items-08">原典の項目一覧（§8）</h2>
 <p>§8 一般の perfection の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
 <div class="table-wrap"><table>

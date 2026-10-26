@@ -31,19 +31,19 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p class="label">命題 3.1（原典 Lemma 3.1 の単項の場合）</p>
 <p>δ 環 \(A\) と \(d\in A\) で \(d,p\in\mathrm{rad}(A)\) のとき、次は同値：(1) \(p\in(d)^p+\varphi(d)A\)；(2) \(p\in(d,\varphi(d))\)；(3) \(d\) は distinguished。</p>
 <p class="proof"><b>証明.</b> (1)⇒(2) は自明、(2)⇔(3) は Lemma 2.25（命題は第 2 章）。(3)⇒(1)：\(\varphi(d)=d^p+p\delta(d)\) と \(\delta(d)\) の単元性。原典の一般形は \(I\) が局所単項のとき ind-Zariski 局所化で単項に帰着する。</p>
-<p class="lean"><b>Lean.</b> <code>isDistinguished_iff_p_mem_span_pow</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedDeltaPair.lean">OrientedDeltaPair:34</a>）。δ 射が distinguished 元の生成するイデアルを保つこと（剛性の素）<code>IsDeltaHom.map_span_eq_of_distinguished_of_mem_span</code>（:53）。局所単項の一般形は未（D5）。</p>
+<p class="lean"><b>Lean.</b> <code>isDistinguished_iff_p_mem_span_pow</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:55</a>）。δ 射が distinguished 元の生成するイデアルを保つこと（剛性の素）<code>IsDeltaHom.map_span_eq_of_distinguished_of_mem_span</code>（:53）。局所単項の一般形は未（D5）。</p>
 </div>
 
 <div class="box thm">
 <p class="label">定義 3.2（向き付き prism。原典 Def 3.2 の単項の場合）</p>
 <p><b>向き付き prism</b>とは、δ 環 \(A\) と元 \(d\in A\) の組で、\(d\) は非零因子、\(A\) は導来 \(p\) 完備かつ導来 \(d\) 完備、\(p\in(d,\varphi(d))\) を満たすもの（\(I=(d)\)）。射 \((A,(d))\to(B,(e))\) は \(dB\subset(e)\) となる δ 射（生成元そのものの一致は要求しない）。<b>完全</b>：\(\varphi\) が全単射。<b>有界</b>：\(A/I\) の p 冪ねじれが有界。<b>結晶</b>：\(I=(p)\)。</p>
-<p class="lean"><b>Lean.</b> <code>OrientedPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:20</a>）（欄は δ 構造・生成元・生成元の正則性・導来 p 完備・導来生成元完備・\(p\in(d,\varphi(d))\)）、射 <code>OrientedPrism.Hom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrismHom.lean">OrientedPrismHom:20</a>）。導来完備性は共通基盤の <code>IsModuleComplete</code> で、生成元が非零因子なので古典的 \(d\) 進完備性と同値（<code>isAdicComplete_generator</code>、OrientedPrism:52）。「有界」は構造の欄ではなく、使う定理ごとの仮定（<code>Andre/Remark715</code> の <code>BoundedPrismInput</code> の <code>bounded</code> 欄など）。一般の局所単項な \(I\) は扱わない（D5）。</p>
+<p class="lean"><b>Lean.</b> <code>OrientedPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:20</a>）（欄は δ 構造・生成元・生成元の正則性・導来 p 完備・導来生成元完備・\(p\in(d,\varphi(d))\)）、射 <code>OrientedPrism.Hom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:238</a>）。導来完備性は共通基盤の <code>IsModuleComplete</code> で、生成元が非零因子なので古典的 \(d\) 進完備性と同値（<code>isAdicComplete_generator</code>、OrientedPrism:52）。「有界」は構造の欄ではなく、使う定理ごとの仮定（<code>Andre/PowerRootEnvelope/InputCategory</code> の <code>BoundedPrismInput</code> の <code>bounded</code> 欄など）。一般の局所単項な \(I\) は扱わない（D5）。</p>
 </div>
 
 <div class="box thm">
 <p class="label">例 3.3（原典 Ex 3.3：結晶 prism）</p>
 <p>p ねじれなしで p 進完備な δ 環 \(A\) について \((A,(p))\) は結晶 prism で、逆に結晶 prism はこの形。</p>
-<p class="lean"><b>Lean.</b> <code>OrientedPrism.crystalline</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/CrystallineOrientedPrism.lean">CrystallineOrientedPrism:18</a>）、逆向き <code>exists_crystalline_iff</code>（:39）。今は<b>どこからも使われていない</b>。A1（結晶比較）で使う。</p>
+<p class="lean"><b>Lean.</b> <code>OrientedPrism.crystalline</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:339</a>）、逆向き <code>exists_crystalline_iff</code>（:39）。今は<b>どこからも使われていない</b>。A1（結晶比較）で使う。</p>
 </div>
 <p>原典 Ex 3.4（普遍向き付き prism \(\mathbb Z_{(p)}\{d,\delta(d)^{-1}\}^\wedge\)）は未形式化（A1、Construction 6.1 で使う）。</p>
 
@@ -53,7 +53,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p class="label">命題 3.4（原典 Lemma 3.5：剛性）</p>
 <p>prism の射 \((A,I)\to(B,J)\) について \(I\otimes_AB\cong J\)、特に \(IB=J\)。向き付きなら \(f(d)=u\,e\)（\(u\) は \(B\) の単元、一意）。逆に、\(B\) が導来 \((p,I)\) 完備な δ-\(A\) 代数なら、\((B,IB)\) が prism ⇔ \(B[I]=0\)。</p>
 <p class="proof"><b>証明.</b> 原典は Lemma 3.1 で局所的に単項にし、\(d=fe\) に Lemma 2.24 を当てて \(f\) が単元。Lean は向き付きなので直接 Lemma 2.24 を当てる。そのとき \(e,p\in\mathrm{rad}(B)\) を古典的完備性から得るために、標的の p 正則性・完全性・有界性のいずれかを仮定している。</p>
-<p class="lean"><b>Lean.</b> 標的が p 正則：<code>existsUnique_generator_unit_of_p_regular</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrismRegularRigidity.lean">OrientedPrismRegularRigidity:19</a>）、<code>map_ideal_eq_of_p_regular</code>（:43）。標的が完全：<code>map_ideal_eq_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrismHom.lean">OrientedPrismHom:94</a>）。標的が有界：<code>boundedPrismHom_map_ideal_eq</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Remark715/BoundedPrismHomRigidity.lean">BoundedPrismHomRigidity:105</a>）（André の下）。\(I\otimes_AB\cong J\)：<code>idealTensorEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrismIdealTensor.lean">OrientedPrismIdealTensor:109</a>）（p 正則、どこからも使われていない）。逆の部分は未。仮定なしの一般形は BR27（既存の Jacobson 根基の補題で仮定を外す）。</p>
+<p class="lean"><b>Lean.</b> 標的が p 正則：<code>existsUnique_generator_unit_of_p_regular</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean">Rigidity:41</a>）、<code>map_ideal_eq_of_p_regular</code>（:43）。標的が完全：<code>map_ideal_eq_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:208</a>）。標的が有界：<code>boundedPrismHom_map_ideal_eq</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean">Rigidity:544</a>）（André の下）。\(I\otimes_AB\cong J\)：<code>idealTensorEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/Rigidity.lean">Rigidity:233</a>）（p 正則、どこからも使われていない）。逆の部分は未。仮定なしの一般形は BR27（既存の Jacobson 根基の補題で仮定を外す）。</p>
 </div>
 <p>原典 Lemma 3.6（\(\varphi(I)A\) は単項で生成元は distinguished、\(\varphi^*(I)\cong I^p\cong A\)）は未形式化。向き付きの範囲では不要（A0・A1 で一般の prism を扱うなら要る）。</p>
 
@@ -61,14 +61,14 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p class="label">命題 3.5（原典 Lemma 3.7：有界 prism の性質）</p>
 <p>有界 prism \((A,I)\) について：(1) \(A\) は古典的 \((p,I)\) 進完備；(2) \((p,I)\) 完全平坦な \(A\) 複体は離散で古典的に完備、\(M[I^n]=0\)；(3) \((A,I)\) 上の（忠実）平坦な prism の射は \((p,I)\) 完全（忠実）平坦な δ-\(A\) 代数と同じ；(4) 局所的に向き付け可能。</p>
 <p class="proof"><b>証明（(1)）.</b> \(A\simeq R\lim_nR\lim_m\mathrm{Kos}(A;I^n,p^m)\simeq\lim_kA/(I^k,p^k)\)。\(A/I^n\) の p 冪ねじれが有界であることを使う。</p>
-<p class="lean"><b>Lean.</b> (1) は<b>André の下にある</b>：p 進完備 <code>boundedPrism_isAdicComplete_prime</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Remark715/BoundedPrismPrimeComplete.lean">BoundedPrismPrimeComplete:48</a>）、\((p,d)\) 進完備 <code>boundedPrism_pair_isAdicComplete</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Remark715/BoundedPrismAdicComplete.lean">BoundedPrismAdicComplete:78</a>）。主定理の経路にない（Rem 7.15 の照合のために作られた）。(2)〜(4) は未（A0 で要る）。</p>
+<p class="lean"><b>Lean.</b> (1) は<b>André の下にある</b>：p 進完備 <code>boundedPrism_isAdicComplete_prime</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Bounded/Completeness.lean">Completeness:275</a>）、\((p,d)\) 進完備 <code>boundedPrism_pair_isAdicComplete</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Bounded/Completeness.lean">Completeness:187</a>）。主定理の経路にない（Rem 7.15 の照合のために作られた）。(2)〜(4) は未（A0 で要る）。</p>
 </div>
 
 <div class="box thm">
 <p class="label">命題 3.6（原典 Lemma 3.8：完全 prism の性質）</p>
 <p>完全 prism \((A,(d))\) では、生成元は distinguished、\(A\) は古典的 \(p\) 進・\(d\) 進完備、\(A/d\) の p 冪ねじれは \(p\) で消える（特に有界）。</p>
 <p class="proof"><b>証明.</b> 完全なので Lemma 2.28 で p ねじれなし、\(A/p\) は完全（被約）なので Lemma 2.34 から \(A/d\) の有界ねじれ。distinguished は Lemma 3.6（単項なら Lemma 2.25）から。</p>
-<p class="lean"><b>Lean.</b> <code>isDistinguished_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/PerfectOrientedPrism.lean">PerfectOrientedPrism:24</a>）、<code>isAdicComplete_p_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/PerfectOrientedPrism.lean">PerfectOrientedPrism:19</a>）、<code>quotient_p_pow_torsion_killed_by_p</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/PerfectOrientedPrism.lean">PerfectOrientedPrism:30</a>）。</p>
+<p class="lean"><b>Lean.</b> <code>isDistinguished_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:185</a>）、<code>isAdicComplete_p_of_perfect</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:180</a>）、<code>quotient_p_pow_torsion_killed_by_p</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/OrientedPrism.lean">OrientedPrism:191</a>）。</p>
 </div>
 
 <h2>3.3 prism の完全化（原典 Lemma 3.9）</h2>
@@ -78,8 +78,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>prism \((A,I)\) と完全化 \(A_{\mathrm{perf}}=\mathrm{colim}_\varphi A\) について、\(IA_{\mathrm{perf}}=(d)\) は distinguished 元で生成され、\(d,p\) は \(A_{\mathrm{perf}}\) の非零因子、\(A_{\mathrm{perf}}/d[p^\infty]=A_{\mathrm{perf}}/d[p]\)。導来 \((p,I)\) 完備化 \(A_\infty\) は古典的完備化と一致し、\((A_\infty,IA_\infty)\) は \((A,I)\) 上の普遍な完全 prism。</p>
 <p class="proof"><b>証明.</b> \(A\to A_{\mathrm{perf}}\) は \(\varphi\) を通るので Lemma 3.6 から \(IA_{\mathrm{perf}}\) は distinguished 元で生成。完全なので p 正則、Lemma 2.34 で \(d\) 正則と有界ねじれ。p 進完備化してから d 進完備化し、各段で導来と古典的が一致。普遍性は明らか。</p>
 <p class="lean"><b>Lean.</b> 原典の形の一つの定理はない（BR28）。部品は三系統：<br>
-(i) <b>完全化 → 導来 \((p,d)\) 完備化</b>（主経路）：完全 δ 環と distinguished 元から導来 \((p,d)\) 完備化 \(H^0\) が完全 prism <code>perfectDeltaPDPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PerfectDeltaPDPrism.lean">PerfectDeltaPDPrism:21</a>）、その普遍性 <code>existsUnique_perfectDeltaPDPrismHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PerfectDeltaPDPrismUniversal.lean">PerfectDeltaPDPrismUniversal:20</a>）。任意の δ 環から完全化を挟んだ普遍性は <code>existsUnique_deltaPerfectionPDCompletionHom</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/RootedExtension/DeltaPerfectionPDCompletionUniversal.lean">DeltaPerfectionPDCompletionUniversal:25</a>）（<b>André の下</b>）。<br>
-(ii) <b>完全化 → 古典的 p 進完備化</b>：<code>existsUnique_pCompletedDeltaPerfectionHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PCompletedDeltaPerfection.lean">PCompletedDeltaPerfection:57</a>）、正則性（Lemma 2.28・2.34 の適用）<code>PCompletedDeltaRegularity</code>、prism への普遍性 <code>existsUnique_pCompletedPrismHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPrismUniversal.lean">PCompletedPrismUniversal:35</a>）（ただし \(d\) 進完備性を仮定、主経路外）。<br>
+(i) <b>完全化 → 導来 \((p,d)\) 完備化</b>（主経路）：完全 δ 環と distinguished 元から導来 \((p,d)\) 完備化 \(H^0\) が完全 prism <code>perfectDeltaPDPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PrismPerfection.lean">PrismPerfection:43</a>）、その普遍性 <code>existsUnique_perfectDeltaPDPrismHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PrismPerfection.lean">PrismPerfection:110</a>）。任意の δ 環から完全化を挟んだ普遍性は <code>existsUnique_deltaPerfectionPDCompletionHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PrismPerfection.lean">PrismPerfection:228</a>）（<b>André の下</b>）。<br>
+(ii) <b>完全化 → 古典的 p 進完備化</b>：<code>existsUnique_pCompletedDeltaPerfectionHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean">PCompletedPerfection:80</a>）、正則性（Lemma 2.28・2.34 の適用）<code>PCompletedDeltaRegularity</code>、prism への普遍性 <code>existsUnique_pCompletedPrismHom</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfection/PCompletedPerfection.lean">PCompletedPerfection:516</a>）（ただし \(d\) 進完備性を仮定、主経路外）。<br>
 (iii) 「完全 δ 環の完備化は完全」は W6 で <code>Delta/Perfect/DeltaPerfection</code> へ移る。</p>
 </div>
 
@@ -90,9 +90,9 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>perfectoid 環の圏と完全 prism の圏は同値。関手は \(R\mapsto(A_{\inf}(R),\ker\theta)\) と \((A,I)\mapsto A/I\)。</p>
 <p class="proof"><b>証明.</b> \(A_{\inf}(R)\) は完全 δ 環で \(\ker\theta\) は distinguished な非零因子で生成（[BMS18, Rem 3.11]）。逆に完全 prism \((A,(d))\) で \(A\cong W(S)\)（Cor 2.31）、\(d=[a_0]+pu\)（Lemma 2.33）、\(\pi=[a_0^{1/p}]\) の像で \(\pi^p\mid p\)、Lemma 2.34 で \(A/d\) は有界ねじれで古典的に p 完備 → perfectoid。\(GF\simeq\mathrm{id}\) は構成から、\(FG\simeq\mathrm{id}\) は \(A_{\inf}(A/I)\to A\) の普遍性と Lemma 2.24・2.34。</p>
 <p class="lean"><b>Lean.</b> 圏同値ではなく三つの事実で述べる（D8、BR29）：<br>
-(a) 完全 prism の商は perfectoid：<code>quotient_isIntegralPerfectoid</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismQuotientPerfectoid.lean">PerfectPrismQuotientPerfectoid:18</a>）。Witt 表示 <code>perfectPrismWittRecoveryEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismWittPresentation.lean">PerfectPrismWittPresentation:20</a>） を経て、完備な distinguished Witt 商 \(W(k)/(d)\) が perfectoid であること <code>wittCompleteDistinguishedQuotient_isIntegralPerfectoid</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/WittCompleteQuotientPerfectoid.lean">WittCompleteQuotientPerfectoid:45</a>） に帰着する。Witt 商の計算（mod p、Frobenius 核、tilt、Fontaine 比較）が <code>WittQuotient*</code> の 15 本。<br>
-(b) perfectoid 環は完全 prism の商：Fontaine 核の distinguished 生成元 <code>exists_distinguished_fontaine_kernel_generator</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidDistinguishedKernel.lean">PerfectoidDistinguishedKernel:19</a>） と、\(W(R^\flat)\) の導来 \((p,d)\) 完備化による表示 <code>exists_perfectoidTrialPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectoidTrialPrism.lean">PerfectoidTrialPrism:20</a>）（原典の \(A_{\inf}(R)\) そのものではなく PD 完備化を一段挟む）。<br>
-(c) 商の射は prism の射に一意に持ち上がる（充満忠実性。Lemma 4.8 の標的が完全な場合）：<code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismHomLift.lean">PerfectPrismHomLift:19</a>）。<b>標的が一般の有界 prism の版</b>は <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Andre/Remark715/PerfectPrismBoundedTargetLift.lean">PerfectPrismBoundedTargetLift:142</a>）（André の下、主経路外。第 4 章の Lemma 4.8 を参照）。</p>
+(a) 完全 prism の商は perfectoid：<code>quotient_isIntegralPerfectoid</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:338</a>）。Witt 表示 <code>perfectPrismWittRecoveryEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:239</a>） を経て、完備な distinguished Witt 商 \(W(k)/(d)\) が perfectoid であること <code>wittCompleteDistinguishedQuotient_isIntegralPerfectoid</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/WittQuotientPerfectoid.lean">WittQuotientPerfectoid:563</a>） に帰着する。Witt 商の計算（mod p、Frobenius 核、tilt、Fontaine 比較）が <code>WittQuotient*</code> の 15 本。<br>
+(b) perfectoid 環は完全 prism の商：Fontaine 核の distinguished 生成元 <code>exists_distinguished_fontaine_kernel_generator</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:120</a>） と、\(W(R^\flat)\) の導来 \((p,d)\) 完備化による表示 <code>exists_perfectoidTrialPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:380</a>）（原典の \(A_{\inf}(R)\) そのものではなく PD 完備化を一段挟む）。<br>
+(c) 商の射は prism の射に一意に持ち上がる（充満忠実性。Lemma 4.8 の標的が完全な場合）：<code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>）。<b>標的が一般の有界 prism の版</b>は <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>）（André の下、主経路外。第 4 章の Lemma 4.8 を参照）。</p>
 </div>
 <p>原典 Rem 3.11（正則局所環の perfectoid 被覆）・Cor 3.12（有界 prism の site）は E3 に不要（Cor 3.12 は A0 で固定基底の site を作るときに参考にする）。</p>
 
@@ -102,7 +102,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p class="label">命題 3.9（原典 Prop 3.13）</p>
 <p>有界 prism \((A,I)\)、\((p,I)\) 完全平坦な δ-\(A\) 代数 \(B\)、\(IB\subset J\) で、局所的に \(J=(I,x_1,\dots,x_r)\)（\(x\) は \(A\) 上 \((p,I)\) 完全正則）とする。このとき普遍な \((B,J)\to(C,IC)\)（\(C=B\{J/I\}^\wedge\)）があり、\(C\) は \(A\) 上 \((p,I)\) 完全平坦、底変換・平坦局所化と可換。</p>
 <p class="proof"><b>証明.</b> 向き付き・大域的な場合に帰着し、\(C=B\{x_i/d\}^\wedge\) とする。\(\mathbb Z_p\{z\}\to\mathbb Z_p\{y\}\)（\(z\mapsto\varphi(y)\)、p 完全忠実平坦）で底変換し、\(\varphi(y)=pu\)（Lemma 2.24）から \(A'\{\varphi(y)/p\}^\wedge\) と Cor 2.39・2.44 に帰着する。</p>
-<p class="lean"><b>Lean.</b> <b>一般形は未</b>（A0）。生の構成 \(B\{a_s/d\}\)（\(d\) で割る δ 包）とその \(d\) 冪ねじれの除去・\((p,d)\) 完備化は <code>Delta/Division</code>、単元係数 \(\varphi(y)=pu\) は <code>Delta/DividedPower/DeltaPDivisionUnit</code>。完全 prism 上の特殊形が四系統ある：モニック多項式族（<code>Andre/MonicPrismatic*</code>）、\(X^p-b\) 族（<code>Semiperfectoid/RootEnvelope</code>）、p 冪根族（<code>Andre/Remark715/PowerRoot*</code>）、一般化版（<code>Andre/Variants</code>）。</p>
+<p class="lean"><b>Lean.</b> <b>一般形は未</b>（A0）。生の構成 \(B\{a_s/d\}\)（\(d\) で割る δ 包）とその \(d\) 冪ねじれの除去・\((p,d)\) 完備化は <code>Delta/Division</code>、単元係数 \(\varphi(y)=pu\) は <code>Delta/DividedPower/DeltaPDivisionUnit</code>。完全 prism 上の特殊形が四系統ある：モニック多項式族（<code>Andre/MonicPrismatic*</code>）、\(X^p-b\) 族（<code>Semiperfectoid/RootEnvelope</code>）、p 冪根族（<code>Andre/PowerRootEnvelope/PowerRoot*</code>）、一般化版（<code>Andre/Variants</code>）。</p>
 </div>
 <p>原典 Ex 3.14（滑らかな代数の典型的な適用）は未形式化（A0 の Čech 計算の各項）。</p>
 
@@ -114,8 +114,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td><code>Prism/Perfectoid</code></td><td class="num">28（26）</td><td>Thm 3.10（Witt 商の計算 15 本、Fontaine 写像、完全 prism の商、perfectoid 環の prism 表示、射の持ち上げ）。<b>§7 の Cor 7.3</b>（<code>PerfectPrismQuotientPerfectoidization</code>）と、標数 p の perfectoid 化（<code>CharacteristicP*</code> 2 本、どこからも使われない）も同居</td><td>§3.4、§7</td></tr>
 <tr><td><code>Prism/Residue</code></td><td class="num">11（11）</td><td>prism 係数の商 \(A\to A/(a)\to A/(a,d)\)、冪剰余、mod p に沿う導来底変換の比較。原典に項目のない導来の道具で、André の一段の拡大と RootEnvelope の平坦性計算が使う</td><td>（道具）</td></tr>
 <tr><td><code>Prism/Tensor</code></td><td class="num">15（12）</td><td>完全 δ 環・完全 prism の（完備）テンソル積の δ 構造と離散性、Cartier 商との比較。<b>§8 の道具</b>（Prop 8.13 の環版、perfectoid 環の完備テンソル）</td><td>Rem 2.7 × §3、§8</td></tr>
-<tr><td><code>Andre/Remark715</code> の一部</td><td class="num">10（0）</td><td>有界 prism の完備性・剛性・tilt（Lemma 3.7(1)・3.5）4 本、Lemma 4.8（標的が有界）2 本、向きのない prism との同値 <code>Unoriented/</code> 4 本</td><td>§3.2、§4.1</td></tr>
-<tr><td><code>Andre/RootedExtension</code> の一部</td><td class="num">4（4）</td><td>完全化と PD 完備化の順序と普遍性（Lemma 3.9）</td><td>§3.3</td></tr>
+<tr><td><code>Andre/Remark715</code> の一部（W7 で <code>Prism/Bounded</code>・<code>Prism/PerfectPrismHomLift</code> へ移した。向きなしの入力圏は W8 で <code>Andre/PowerRootEnvelope/InputCategory</code>・<code>Initiality</code>）</td><td class="num">10（0）</td><td>有界 prism の完備性・剛性・tilt（Lemma 3.7(1)・3.5）4 本、Lemma 4.8（標的が有界）2 本、向きのない prism との同値 <code>Unoriented/</code> 4 本</td><td>§3.2、§4.1</td></tr>
+<tr><td><code>Andre/RootedExtension</code> の一部（W7 で <code>Prism/Perfection/PrismPerfection</code> へ移した）</td><td class="num">4（4）</td><td>完全化と PD 完備化の順序と普遍性（Lemma 3.9）</td><td>§3.3</td></tr>
 </table></div>
 
 <div class="box">
@@ -130,7 +130,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 
 <div class="box refactor">
-<p class="label">BR33　§3 の内容を Prism の下へ集め、§7・§8 の内容を外へ出す（W7 の候補）</p>
+<p class="label">BR33　§3 の内容を Prism の下へ集め、§7・§8 の内容を外へ出す — BS-W7（<code>98849e356</code>）で実施済み</p>
 <p>(1) <code>Andre/Remark715</code> の有界 prism 4 本・Lemma 4.8 の 2 本・<code>Unoriented/</code> 4 本を <code>Prism/</code> の新しい話題（有界 prism）へ。依存する Remark715 の補助ファイル（<code>RegularPowerQuotientTorsion</code>、<code>PerfectSourceDeltaHom</code>、<code>PerfectSourceAdicRigidity</code>、<code>BoundedPrismCompatibleRootsLift</code> など）をどこまで一緒に移すかは依存関係で決める。(2) <code>Andre/RootedExtension</code> の Lemma 3.9 の 4 本を <code>Prism/Perfection</code> へ。(3) <code>Prism/Perfection</code> の除算系 13 本と <code>Prism/Perfectoid</code> の Cor 7.3・標数 p の 3 本を <code>Semiperfectoid</code> へ。(4) <code>Prism/Tensor</code> の置き場所（§8 の Perfectoidization 側か、prism の余積として Prism に残すか）。(5) Prism の中を話題ごとにまとめる。</p>
 </div>
 
@@ -144,13 +144,13 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Ex 3.4</td><td>普遍向き付き prism</td><td class="todo">未</td><td>Construction 6.1（A1）</td></tr>
 <tr><td>Lemma 3.5</td><td>剛性</td><td class="ok">済</td><td><code>OrientedPrismHomRigidity</code>・<code>OrientedPrismRegularRigidity</code>（Prism/Basic）</td></tr>
 <tr><td>Lemma 3.6</td><td>φ(I)A は主で生成元は distinguished</td><td class="todo">未</td><td>A0・A1（Construction 6.1 で使う）</td></tr>
-<tr><td>Lemma 3.7</td><td>有界 prism の性質</td><td class="part">一部</td><td>(1) は済（<code>BoundedPrismPrimeComplete</code>・<code>BoundedPrismAdicComplete</code>、Andre/Remark715、主経路外）。(2)〜(4) は未（A0）。BR33 で Prism/ へ</td></tr>
+<tr><td>Lemma 3.7</td><td>有界 prism の性質</td><td class="part">一部</td><td>(1) は済（<code>BoundedPrismPrimeComplete</code>・<code>BoundedPrismAdicComplete</code>、<a href="../../../SerrePositivity/BhattScholze/Prism/Bounded/Completeness.lean">Prism/Bounded/Completeness</a>、主経路外）。(2)〜(4) は未（A0）</td></tr>
 <tr><td>Lemma 3.8</td><td>完全 prism の性質</td><td class="ok">済</td><td><code>PerfectOrientedPrism</code>（Prism/Basic）</td></tr>
 <tr><td>Lemma 3.9</td><td>prism の完全化</td><td class="ok">済</td><td><code>PCompletedDelta*</code>・<code>PerfectDeltaPDPrism</code> ほか（Prism/Perfection）</td></tr>
 <tr><td>Thm 3.10</td><td>perfectoid 環 ＝ 完全 prism</td><td class="ok">済</td><td><code>PerfectPrismQuotientPerfectoid</code>・<code>WittQuotientFontaineIso</code> ほか（Prism/Perfectoid）</td></tr>
 <tr><td>Rem 3.11</td><td>正則局所環の perfectoid 被覆</td><td class="no">不要</td><td></td></tr>
 <tr><td>Cor 3.12</td><td>全 prism の site</td><td class="no">不要</td><td>固定基底の affine な site で進める</td></tr>
-<tr><td>Prop 3.13</td><td>正則イデアルの prismatic envelope</td><td class="part">一部</td><td>向き付き・モニックの特殊形（Andre/Remark715）。一般形は A0</td></tr>
+<tr><td>Prop 3.13</td><td>正則イデアルの prismatic envelope</td><td class="part">一部</td><td>特殊形が二系統ある：根の関係式 \(f_i(X_i)/d\) の δ 除算包が Koszul 正則性から平坦であること（主経路、<code>Andre/Envelope/</code>）と、原典どおりの一元拡大の envelope が入力作用つきの圏の始対象であること（<code>Andre/PowerRootEnvelope/InputUniversal</code>）。一般形は A0</td></tr>
 <tr><td>Ex 3.14</td><td>Prop 3.13 の典型的な適用</td><td class="todo">未</td><td>A0 の Čech 計算の各項がこの形</td></tr>
 </table></div>
 
@@ -168,7 +168,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <h2>形式化の課題</h2>
 <ol>
   <li><b>T3-1</b>　Lemma 3.6（単項の場合）：\(\varphi(d)\) が distinguished であること。</li>
-  <li><b>T3-2</b>　Lemma 3.7（有界 prism の性質）の (2)〜(4)。(1) と有界な標的への剛性は Remark715 にあるので、BR33 で Prism/ へ切り出してから足す。</li>
+  <li><b>T3-2</b>　Lemma 3.7（有界 prism の性質）の (2)〜(4)。(1) と有界な標的への剛性は W7 で <code>Prism/Bounded/</code>・<code>Prism/PerfectPrismHomLift</code> に移したので、そこへ足す。</li>
   <li><b>T3-3</b>　Ex 3.4：普遍向き付き prism（T2-4 の完備化）。</li>
   <li><b>T3-4</b>　Prop 3.13 の一般形（向き付き・固定基底）。T2-0・T2-3 の後。</li>
   <li><b>T3-5</b>　Lemma 3.5 の後半：δ 射 \(A\to B\) で \(B\) が導来 \((p,d)\) 完備かつ \(d\) の像が非零因子なら \((B,dB)\) は prism（A0 の Čech 脈体の各項を prism として扱うのに使う）。</li>
@@ -180,7 +180,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 <div class="box refactor">
 <p class="label">BR28　Lemma 3.9 を原典の形で述べる</p>
-<p>prism の完全化は部品に分かれている：δ 環の完全化（Delta/Perfect）、完全 δ 環の PD 完備化 prism（Prism/Perfection/PerfectDeltaPDPrism）、両者を続けた環の普遍性 <code>existsUnique_deltaPerfectionPDCompletionHom</code>（Andre/RootedExtension/DeltaPerfectionPDCompletionUniversal:25）。最後のものは §3 の内容なのに B4 の構成の中に置かれている。向き付き prism \(P\) を入力に「\(\mathrm{colim}_\varphi\) の PD 完備化が \(P\) の下の普遍的な完全 prism」という原典の形の定理を Prism/Perfection に置き、環の普遍性のファイルもそこへ移す。A2・A4 で prismatic コホモロジーの完全化を扱うときの土台になる。</p>
+<p>prism の完全化は部品に分かれている：δ 環の完全化（Delta/Perfect）、完全 δ 環の PD 完備化 prism（Prism/Perfection/PerfectDeltaPDPrism）、両者を続けた環の普遍性 <code>existsUnique_deltaPerfectionPDCompletionHom</code>（旧 Andre/RootedExtension/DeltaPerfectionPDCompletionUniversal、W7 で <code>Prism/Perfection/PrismPerfection</code> へ移した）。向き付き prism \(P\) を入力に「\(\mathrm{colim}_\varphi\) の PD 完備化が \(P\) の下の普遍的な完全 prism」という原典の形の定理を Prism/Perfection に置き、環の普遍性のファイルもそこへ移す。A2・A4 で prismatic コホモロジーの完全化を扱うときの土台になる。</p>
 </div>
 <div class="box refactor">
 <p class="label">BR29　Thm 3.10 を一つの定理としてまとめる</p>
