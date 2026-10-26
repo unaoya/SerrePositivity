@@ -2867,4 +2867,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTrianglePrismV
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTrianglePrismDiagonals
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullDiagonalTerminal
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullTriangleShortComparisons
+
 /-! # ∞-S• 構成と連結 K 理論 -/
