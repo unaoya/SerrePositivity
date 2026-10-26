@@ -22,10 +22,20 @@ public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.NativeTotalComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.CoconeLegNaturality
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgeStageKernel
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.TotalLegFiberComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgePositiveInjectivity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PathVertexEdge
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PiPathSphereComparison
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PathMapSurjectivity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgePositiveSurjectivity
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.BridgeFiniteCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.CoherentNativeCriterion
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.RestrictionLeg
+public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.FilteredSpaceBridge
 
 /-!
-概要：Ind-π の独立集約。全空間比較の π 判定と有限検出・基点移送の公開界面。
+概要：Ind-π の独立集約。D の確定型への元の coherent filtered 空間余錐の π 判定。
 方針：このレーンの証明済み葉だけを公開する。
-規約：F2 の既存集約には追加しない。filtered な元ごとの最終判定は未完。
-使われ方：D-8 c2 に向けた第 I 段の進捗と独立監査。
+規約：F2 の既存集約には追加せず、D の公開構造を直接消費する。
+使われ方：D-8 c2 に向けた第 I 段の最終供給と独立監査。
 -/
