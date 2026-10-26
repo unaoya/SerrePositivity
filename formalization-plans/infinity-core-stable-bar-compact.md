@@ -78,3 +78,16 @@
 - Derived 集約14639 jobs成功。新規6葉の専用 `scripts/audit_dg_cell_comparison.lean`：49宣言、許容三公理のみ。追加後の全体監査25688宣言／2936モジュール成功、許容三公理のみ、終端0。局所 import 閉包7301モジュール、循環なし。
 - 次の中心課題：同じ選択代表系へ全 native 入力の作用を構成する。元の加群延長の値が選んだ代表と導来同型であることと、同じ代表系への厳密豊穣作用の存在を混同しない。
 - `DGKappaPresentedSourceObject`／`DGKappaPresentedFreeObject` の旧試作で模型を置き換えない。固定 cone・I・P の上で作用を作り、選択された四角形全体への一致まで証明する。
+
+### D-8 e 本体：同じ実商の全パラメータ自然性（作業中）
+- `DifferentialGraded.DGQuotient.parameterExtension`：任意の複体 K をパラメータとする元の変換を、選択された収縮との整合から同じ実商へ延長。全整数次数・元の全成分を保持。
+- `parameterExtension_exists_iff`：同じ全成分を保持する延長の存在は、全 k・全 K の元での指定 ε 自然性と同値。元 Hom だけでなく全有限 path について証明した。
+- `parameterExtension_unique`・`parameterExtension_reindex`：同じ全成分による一意性と、任意のパラメータ射による制限との厳密可換性。
+- 公開名はユーザーへのチャットでも報告済み。これは商作用の構成部品であり、実選択された C(A) の ε 整合性や全族の存在を供給済みとは数えない。
+- Derived 集約14643 jobs成功。新規4葉の専用 `scripts/audit_dg_quotient_parameter.lean` は59宣言、許容三公理のみ、終端0。4葉追加後の全体監査25747宣言／2940モジュール成功、許容三公理のみ、終端0。
+- 次：同じ選択代表系の cone・実核作用を全 native Hom 上で構成し、元の選択収縮に対してこの ε 整合条件を実証する。条件を最終入力として追加しない。
+
+- `DGQuotient.parameterExtension_postcomposition`：同じ選択収縮の後合成族は、任意パラメータ・全次数の元の自然性から ε 整合を実証して商へ延長。
+- `parameterExtension_postcomposition_heq`：元の厳密 `extension_postcomp` 等号の下で、全パラメータ変換も元の前合成作用そのものと比較。公開名はチャットで報告済み。
+- この後合成の経路では ε 整合を追加入力に残さない。全入力を動かす cone・実核作用と同じ選択四角形の全族はまだ未供給。
+- 後合成を含む5葉版の Derived 集約14644 jobs成功。専用監査は5葉76宣言、許容三公理のみ、終端0。追加後の全体監査25764宣言／2941モジュール成功、許容三公理のみ、終端0（/tmp/d8e-post-full-audit.log）。

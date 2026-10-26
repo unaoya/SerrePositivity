@@ -1,3 +1,4 @@
+import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
 import SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData
 import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
@@ -7453,6 +7454,11 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition,
+    `SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality,
+    `SerrePositivity.DifferentialGraded.Quotient.EpsilonHomogeneousExt,
+    `SerrePositivity.DifferentialGraded.Quotient.HomogeneousNaturality,
+    `SerrePositivity.DifferentialGraded.Quotient.ParameterExtension,
     `SerrePositivity.DifferentialGraded.Resolution.CycleCoverComparisonLaws,
     `SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapLaws,
     `SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentExt,
