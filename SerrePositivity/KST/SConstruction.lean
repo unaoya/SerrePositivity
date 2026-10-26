@@ -2949,4 +2949,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterNuSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterAbsoluteSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareWitnesses
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareFrame
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareSideRecovery
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterZeroBoundary
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareDiagramIso
+
 /-! # ∞-S• 構成と連結 K 理論 -/
