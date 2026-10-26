@@ -2941,4 +2941,12 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareSideRe
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareDiagramIso
 
+public import SerrePositivity.KST.SConstruction.DGKPerfectNuEdgeDiagram
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterValueEquivalences
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterInclusionComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterProjectionComparison
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterNuSquare
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterAbsoluteSquare
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareWitnesses
+
 /-! # ∞-S• 構成と連結 K 理論 -/
