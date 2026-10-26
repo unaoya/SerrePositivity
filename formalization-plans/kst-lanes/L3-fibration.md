@@ -12,7 +12,7 @@
 - 再編前の固定 K 接続：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
 - c4 完了：S-1 (a) `5640d0942` の `nativeTriangle_ext` を `kbMovingCanonicalFiniteExtConsumer` の四有限端点へ代入した。`verdierCanonicalKernelSquareIso d` は実読出し・相対合成も実供給から選び、d のみから元の全四角形の FunctorIso を構成する。
 - K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
-- 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → 条件付きで組み立てた b・d の放電 → e。K-7 の同じ条件付き実反復は K-B3 が所有する。
+- 残りの順序：c5 の Sp 有限線型図式・core 逆像商比較の代入 → 条件付きで組み立てた b・d と e の構造射入力の放電。K-7 の同じ条件付き実反復は K-B3 が所有する。
 - 供給：S-1 (a) `5640d0942` と S-1 (c) `69c370610` を消費済み。Sp 有限線型図式比較の依頼は、ユーザーが循環のない閉包を確認して中継済み。下記の正確な型の実供給待ち。
 - K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
 - 次の一手：Sp の下記実供給を canonical 比較と d の `dgKappaCanonicalFixedSourceFiberComparison_nonnegative` へ渡す。c4 入力は不要。K-B3 は同じ native BF 比較を既存の K-7 e へ消費できる。
@@ -28,6 +28,8 @@
 - `Relative.SingleRelativeComparison.ofFirstRowSimplices` は同じ c4 全四角形同型と c5 入力を既存の相対実現界面へ渡す。供給の存在は主張しない。NonConnective への新規 import はない。
 
 ### 現在地
+- e の受け渡し：`Relative.CanonicalSuspensionInput` は `Cofinality.kSpectrumMap_cofinality`（7397052d8）を元の実 Yoneda 完備化比較へ代入する。正次数 π 全単射・零次単射・一回 loop 後の非負次数 π 同型に共終性入力は残らない。
+- `dgKappaCanonicalSuspensionStructureMap_nonnegative` は同じ I・Z と c5 だけを取り、元の固定 K の実隣接構造射の非負次数 π 同型を供給する。`_eq` は K-B3 の既存 hcofinal 付き射との厳密等号で、反復の隣接射を選び直さない。全 native 自然性・逐次余極限・非連結化後の局所化性は K-B3 側。
 - b の統合：`Relative.CanonicalRealization` は c5 だけから元の商射の指定基点上の fiber 同型と、元の核包含への射影公式を供給する。S1 の実閉部分圏四角形は `closedRelativeInfinitySquare_isPullback` で無条件の native 引き戻しへ接続した。
 - d の組み立て：`Relative.CanonicalSingleStageDetection` は c5 のみから同じ実供給 BF fiber 比較の非負次数 π 全単射性と群同型を得る。`Relative.CanonicalFixedSourceFiber` は元の実核比較と指定始点同型を前置し、元の固定 K(D) 始点を持つ実比較辺と非負次数 π 同型まで接続する。
 - d の境界：上記の比較先は同じ実供給 BF 右辺の fiber。商側を旧固定 K 右辺の fiber へ移したとは主張しない。c5 は未放電。d の葉は既存 NonConnective を読み取り専用で消費する Relative.All に集約し、主 Fibration 集約へ NonConnective を逆 import しない。
@@ -80,8 +82,8 @@
   元の零角・右辺を保持した canonical fiber と K(D) からの実比較辺、全脚の合成三角形を構成。元の四角形の引き戻し性 ⇔ 同じ比較辺の可逆性を証明。
   比較先を同じ dg 右射の BF fiber に比較し、両端の負次数消滅を証明。元の比較の非負次数 π が全単射なら元の K 四角形は引き戻し。非負次数の条件は未証明。
   固定 K の非負次数 π と一段 S• 境界商の π を自然に比較。元の core S•・対角実現・境界商の全 Hom を ν 後合成と照合し、指定 VerdierDiagram の境界商四角形と固定 K の各正段四角形を全高次単体で同定。元の反復実現から境界商への商射は全 Hom に自然で、同じ Ex∞ 商射を成分とする全図式同型を構成。基点忘却後の全正段で同じ Sp 辺の可逆性を検出し、元の実 fiber 錐の極限性も証明。元の相対 K 四角形が引き戻し ⇔ ν 像の元の全正反復 S• 実現の Ex∞ 四角形が引き戻し、まで証明。後者の無条件な引き戻し性は未証明。
-- 工程 (e)：N の冪等完備化の普遍性・安定性・完全性と BGT §9 の入力境界を本文に整理。K-7 本体は別工程。
-- Fibration 集約・専用監査は強化再構成命題の全族共有対角の厳密回収まで成功（757 モジュール・5175 宣言、標準三公理のみ、宣言型の ModelCategory 検査を含む）。K-6 c1〜c3 完了。全四角形比較と商実現比較は未証明。
+- 工程 (e)：冪等完備化の正次数同型・零次単射・loop 比較を実共終性で放電し、同じ元の固定 K 構造射への c5 のみの入口を供給。K-7 本体は K-B3 が担当。
+- Fibration・Relative.All と専用監査で b・d・e の供給閉包を検証する。c1〜c4 は完了。c5 の商実現比較の実供給待ちで、無条件 K-6 の完成印は変更しない。
 ### 残り（依存順）
 1. 商実現比較を証明し、無条件の連結版 fibration 定理へ接続する（Waldhausen 1.6.4、BGT §7、40–80時間）。
 2. 証明済みの任意の相対 Verdier 四角形の実 π₀ cofinality・fiber 連結性を、β3 の具体提示へ照合する（BGT §7–8、4–8時間）。
@@ -183,7 +185,7 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 | 完備化 | N の IsIdempotentCompletion は充満忠実性と retract 条件を保持。IsIdempotentCompletion.pre_isQCatEquivalence は全関手 ∞ 圏の普遍性。H⁰ では代用しない。 |
 | 安定・完全性 | N の IsIdempotentCompletion.isStable・isExactFunctor、idem_isStable・idemYoneda_isExactFunctor を使う。元の Idem C は宇宙 u+1、idemYoneda の始域は ulift C。 |
 | 零次 cofinality | 厳密 dg 入力の ν と K の指定比較へ接続する。完備化という条件だけでは π₀ 全射性を入力せず、実 K 比較で検査する。K-F の piZeroCofinalityObstructionEquiv は中央 π₋₁=0 の下で、元の射影の余核を左 fiber の π₋₁ と同定する。 |
-| K-7 への提供 | 指定射影と点を保つ条件付き相対 S fiber 比較、零次障害・連結性判定。各 suspension 段階の実比較と構造写像の整合性が必要。非連結 K 自体とその局所化性は未構成。 |
+| K-7 への提供 | 指定射影を保つ b・d と、`dgKappaCanonicalSuspensionStructureMap_nonnegative`。同じ I・Z と c5 のみから元の固定 K 隣接射の非負次数 π 同型。`_eq` で既存反復射へ厳密照合。全入力作用・逐次余極限・非連結化後の局所化性は K-B3 所有。 |
 
 ### Ind-S (9)：実供給済みの正規化全族再構成
 - `controlledTriangleNormalizedFamilySupply`（f206fbbb1）を `ZeroMiddleComparisonSupply` で消費済み。任意 K の指定二短辺・合成端・全族可逆比較・全 native Hom 回収・正規化後の全対角を保持する。[採用仕様の全型](archive/L3-ind9-supply-specification.md)。
@@ -195,15 +197,9 @@ FκA=(Indω A)κ と ΣκA=FκA/A の列、K(FκA) の消滅、完全列・κ-fi
 - D-9 の `resolvedDGQuotientFlatKernel_isStableVerdierSequence` は完備化前の native 実商への列。固定 ν の `IsVerdierSequence` は Perf 完備化後の射に通常の `IsLocalization` を要求する。今回の実核・P・Morita 照合は、この追加認証を含まない。
 - 採用：K-6 の完備化前の連結 fibration と、同じ実商の元の dg Yoneda 完備化の実 K 比較を分ける。K-7 の同じ cone について、後者の正次数 π 同型・零次 π 単射と構成済みの K 零性を使い、固定 K への実 fiber 比較の非負次数 π 同型を得る。K₀ 全射性・連結 K の Sp 引き戻し性は要求しない。
 - 固定 S・ν・K と同じ I・採用済み供給境界は不変。既存の条件付き相対屋根と Sp fiber 定理も保持する。完備化前の商の局所化は D・Sp、K の cofinality は K-S• 正本とし、K-B に同種 API を重ねない。
-- `DGKappaNativeKernelThick` は同じ実核の冪等完備性で D 正本の thick 核の retract 表示を戻し、完備化前の商の零化対象が元の実小核の本質像であることを証明する。`DGKappaNativeVerdier` は同じ包含・商辺を保つ Sp の完備化前の `IsVerdierSequence`・全四角形提示を供給する。固定 ν の完備化後の認証は使わない。`DGKappaRawSuspensionCompletion` は始域を移さない同じ実商の元の dg Yoneda を完備化として認証し、実 Perf 評価と SOA 比較で固定 K への実 BF 比較を保持する。正次数 π 同型・零次単射と一回 loop の非負次数同型は同じ `hcofinal` に条件付き。`DGKappaNativeKernelKComparison` は元の評価と同じ実供給 P による実核同値から、固定 K の始点を戻す。`DGKappaNativeFibration` はこの実列を元の相対 S• fiber 比較へ代入し、包含射影を厳密回収する。実商の fiber・Ex∞ 核四角形への接続は、既存の正段商比較 `hstage` に条件付きで、`DGKappaNativeSquareComparison` は同じ提示を動く共有対角の四角柱へ代入し、指定上側全族・全対角条件・縦辺可逆性と同じ正段比較に条件付きで、元の全 S• 四角形へ引き戻し性を移す。c4 の全二胞体比較は `verdierCanonicalKernelSquareIso` で無条件化済み。c5 の正段商比較は未完。
-- 共終性はユーザーが K-S• へ依頼済み。供給までは下記命題を `hcofinal` という明示仮定引数に取って利用側を進め、供給後に同じ引数へ代入する。公理・証明済み成果として登録せず、新しい構造体の存在境界も加えない。`DGKappaSuspensionCofinality` は同じ実懸垂の元の Yoneda 安定模型射と実 K 射を保持する。
-```lean
-∀ (X Y : StableModel.{u}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
-    (∀ j : ℤ, 0 < j → Function.Bijective
-      (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
-    Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0)
-```
+- `DGKappaNativeKernelThick` は同じ実核の冪等完備性で D 正本の thick 核の retract 表示を戻し、完備化前の商の零化対象が元の実小核の本質像であることを証明する。`DGKappaNativeVerdier` は同じ包含・商辺を保つ Sp の完備化前の `IsVerdierSequence`・全四角形提示を供給する。固定 ν の完備化後の認証は使わない。`DGKappaRawSuspensionCompletion` は始域を移さない同じ実商の元の dg Yoneda を完備化として認証し、実 Perf 評価と SOA 比較で固定 K への実 BF 比較を保持する。正次数 π 同型・零次単射と一回 loop の非負次数同型は `CanonicalSuspensionInput` が実共終性で放電済み。`DGKappaNativeKernelKComparison` は元の評価と同じ実供給 P による実核同値から、固定 K の始点を戻す。`DGKappaNativeFibration` はこの実列を元の相対 S• fiber 比較へ代入し、包含射影を厳密回収する。実商の fiber・Ex∞ 核四角形への接続は、既存の正段商比較 `hstage` に条件付きで、`DGKappaNativeSquareComparison` は同じ提示を動く共有対角の四角柱へ代入し、指定上側全族・全対角条件・縦辺可逆性と同じ正段比較に条件付きで、元の全 S• 四角形へ引き戻し性を移す。c4 の全二胞体比較は `verdierCanonicalKernelSquareIso` で無条件化済み。c5 の正段商比較は未完。
+- 共終性は K-S• の `Cofinality.kSpectrumMap_cofinality` を消費済み。旧 `hcofinal` 引数付き API は保持し、同じ指定完備化射へ実供給を代入する。K₀ 全射性は要求しない。
+- `CanonicalSuspensionInput` は主 Fibration 集約から分離した Relative.All に集約する。主集約の NonConnective 非依存と、共終性供給側からの循環回避を保つ。
 
 ### 採用済み：同じ未完備実列だけの有限 BF 四角形比較
 - `kSpectrumMap` の射ごとの供給だけから、元の native 二胞体を持つ実 BF 四角形は回収しない。一般の BF 高次面整流は L1 のユーザー指示で中断済み。固定 `dgKInputK` を代入すると商が Perf 完備化後に戻る。
