@@ -31,6 +31,23 @@ def sphereClass {X : PointedSimplicialSet.{u}} [KanComplex X.right] (n : ℕ)
     KanHomotopyGroup X.right n X.basepoint :=
   KanHomotopyGroup.mk (SphereSimplex.equiv X (n + 1) f)
 
+/-- 任意の正次数の類は実際の有限球面の点つき射で表せる。 -/
+lemma sphereClass_surjective (X : PointedSimplicialSet.{u}) [KanComplex X.right] (n : ℕ) :
+    Function.Surjective (sphereClass (X := X) n) := by
+  intro a
+  obtain ⟨s, rfl⟩ := Quotient.mk_surjective a
+  refine ⟨(SphereSimplex.equiv X (n + 1)).symm s, ?_⟩
+  simp only [sphereClass, Equiv.apply_symm_apply, KanHomotopyGroup.mk]
+
+/-- 元の射を保持し、その基点の像を標的の基点に指定する。 -/
+def pointedImageMap {A : PointedSimplicialSet.{u}} {Y : SSet.{u}} (f : A.right ⟶ Y) :
+    A ⟶ PointedSimplicialSet.ofVertex Y (f.app _ A.basepoint) :=
+  Under.homMk f (by
+    apply (SSet.unitHomEquiv Y).injective
+    change f.app _ A.basepoint =
+      (SSet.unitHomEquiv Y) ((SSet.unitHomEquiv Y).symm (f.app _ A.basepoint))
+    exact ((SSet.unitHomEquiv Y).apply_symm_apply _).symm)
+
 /-- 球面の代表の類は、指定した点つき射の後合成と可換。 -/
 lemma sphereClass_post {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (n : ℕ)
