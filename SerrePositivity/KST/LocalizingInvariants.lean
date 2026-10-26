@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexDenominators
+public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexOreFamilies
+public import SerrePositivity.KST.LocalizingInvariants.VerdierArrowLifting
+
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups
 public import SerrePositivity.KST.LocalizingInvariants.AbstractFiberSequence
