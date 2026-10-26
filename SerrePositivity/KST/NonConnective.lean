@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.DGNonconnectiveKFibrationTail
 public import SerrePositivity.KST.NonConnective.DGKInputIndCompactNaturality
 public import SerrePositivity.KST.NonConnective.DGKInputIndNativeComposition
 public import SerrePositivity.KST.NonConnective.DGKInputIndMorita

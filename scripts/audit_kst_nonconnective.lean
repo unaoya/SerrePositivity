@@ -7,6 +7,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGNonconnectiveKFibrationTail,
     `SerrePositivity.KST.NonConnective.DGKInputIndNativeFamily,
     `SerrePositivity.KST.NonConnective.DGKInputIndExtension,
     `SerrePositivity.KST.NonConnective.DGKInputIndEquivalence,
@@ -430,3 +431,11 @@ run_cmd do
 #check SerrePositivity.KST.NonConnective.dgKInputIndNativeMap_compIso
 #check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_compactIso
 #check SerrePositivity.KST.NonConnective.dgKInputIndNativeFamilyMap_compactParameterIso_precomp
+
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationConclusions
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibration_quotientEdge
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibration_tailPiEquiv
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationStagePiEquiv
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibration_tailPiEquiv_injection
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationStageMap_pi
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFibrationStageMap_nonnegative
