@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullAlignedDiagonal
+public import SerrePositivity.KST.SConstruction.SpecifiedTriangleDiagonalRepresentative
 /-!
 概要：元下全三角形比較の類を保ち、元上比較との共有対角を厳密に合わせる。
 方針：対角制限の inner fibration と同じ類の辺の代表修正を使う。
@@ -31,32 +32,7 @@ private lemma nullTriangleRepresentative {X : SSet.{u}} [Quasicategory X]
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ H.h = T.h ∧
       SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
         SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H₀) := by
-  let p := (pre (stdSimplex.δ (1 : Fin 3))).app X
-  let e := functorEdgeOfSimplicialHomotopy H₀
-  let t := functorEdgeOfSimplicialHomotopy T
-  obtain ⟨e', he', hc⟩ := F1B.exists_kanEdgeRepresentative_lift p e t hc₀
-  let H := simplicialHomotopyOfFunctorEdge e'
-  have hH : functorEdgeOfSimplicialHomotopy H = e' := by
-    apply SSet.Truncated.Edge.ext
-    change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm e'.edge))) = e'.edge
-    rw [curry_uncurry]
-    exact Equiv.apply_symm_apply SSet.yonedaEquiv _
-  have hp : SSet.yonedaEquiv.symm e'.edge ≫ p = SSet.yonedaEquiv.symm t.edge :=
-    nullTriangleEdgeYoneda p
-      (show ((ihom (Δ[2] : SSet.{u})).obj X) _⦋1⦌ from e'.edge)
-      (show ((ihom (Δ[1] : SSet.{u})).obj X) _⦋1⦌ from t.edge) he'
-  refine ⟨H, ?_, ?_⟩
-  · apply curry_injective
-    calc
-      curry ((stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ H.h) =
-          curry H.h ≫ p := (curry_pre_app _ _).symm
-      _ = SSet.yonedaEquiv.symm e'.edge ≫ p := by
-        change curry (uncurry (SSet.yonedaEquiv.symm e'.edge)) ≫ p = _
-        rw [curry_uncurry]
-      _ = SSet.yonedaEquiv.symm t.edge := hp
-      _ = curry T.h := Equiv.symm_apply_apply SSet.yonedaEquiv _
-  · rw [hH]
-    exact hc
+  exact exists_specifiedTriangleDiagonalRepresentative H₀ T hc₀
 variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
 /-- 概要：元下比較の類を保つ同じ両二胞体の比較は、元上比較と全対角を共有できる。
 方針：元の対角制限の辺を、同じ類を持つ元上対角辺へ厳密に修正する。
