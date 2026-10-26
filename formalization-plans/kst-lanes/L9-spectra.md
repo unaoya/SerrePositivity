@@ -15,11 +15,15 @@
 - [x] r1. K-B K-7 d2：nativeLoop の整数 π 関手の次数移動自然同型と、実 loop／円 cotensor 比較との照合。
 - [x] r2. D2 G-1 e④：LaxInclusion.snd_kernel により第二射影の核と C 因子の本質像を照合。
 
-### Sp-7 の三段目（K-cof 依頼、d3 より先、10-26 採用）
-- [x] w1. 元の本質像の安定閉性、全単体の全辺条件の wide 部分複体と quasicategory 性を構成する。
-- [x] w2. 密度からの実零分母・成分内輸送・成分切断と厳密右逆・全零ホモトピー・全 prism の所属を構成し、元の wide 内の全収縮へ接続する。
-- [x] w3. 同じ wide 部分複体の continuousKanReplacement の全正次数 KanHomotopy の消滅を証明する。
-- [x] w4. SConstruction なしの新葉・集約・監査を保存し、idempotentCompletion_cofiberWide_discrete を K-cof 向けに公開。二段目完了で引き継ぎ停止、次は d3 の有限極限・hΩ を埋め sp_isStable へ。
+### Sp-7（完了）
+- [x] w1〜w4. 元の本質像・全辺 wide 部分複体・QC 性・実成分収縮・Kan 置換の正次数の自明性を idempotentCompletion_cofiberWide_discrete で公開。集約・監査・保存済み。
+
+### Sp-5 d3 の三段目（I-5、10-26 再開）
+- [x] d3a. 実終対象と任意 coherent cospan の極限を有限極限生成定理へ接続する。
+- [ ] d3b. nativeLoop と一段移動の比較を全単体に自然な関手比較へ接続する。
+- [ ] d3c. 元の nativeLoop の IsQCatEquivalence（hΩ）を証明する。
+- [ ] d3d. D の isStable_of_loopEquivalence に実入力を代入し sp_isStable を公開する。
+- [ ] d3e. 両集約・専用監査・仮定検査を通し、引き継ぎを保存する。
 
 ### K-8 e の三段目（s3 待機中、10-26 指示）
 - [x] e1. 既存の積の切断降下・Postnikov 代数切断・pro fiber 連結度判定の範囲を照合する。
@@ -77,7 +81,7 @@
 | 通常の一般小図式 | OmegaSpectrum.homotopyLimitCoherentCone、homotopyLimitCoherentCone_isLimit、strictCoherentDiagram_hasLimit | I : Type u、SmallCategory I、D : I ⥤ OmegaSpectrum に HasLimit (strictCoherentDiagram D)。提供済み。任意の coherent 図式と混同しない |
 | fiber 列 | OmegaSpectrum.sp_fiber_exists、fiberSquare、homotopyFiber、homotopyFiberInclusion | 任意の Sp の辺の実 fiber 四角形、および実 BF 射の指定 fiber。提供済み |
 | 整数 π と長完全列 | OmegaSpectrum.homotopyGroup、homotopyMap、homotopyGroupEquivAt、homotopyFiberBoundary、homotopyFiberLongExact | j : ℤ の可換群と実 BF 射への作用、全整数次数の三箇所の完全性。提供済み |
-| 有限極限全体 | 予定 OmegaSpectrum.sp_hasFiniteLimits | HasFiniteLimits Sp（全有限 K : SSet.{u+1} と任意 p : K → Sp）。有限形状の小宇宙への縮小・錐の移送を含む一般の包装は未提供。提供済みの積・cospan を使用し、一般 coherent 図式の極限の接続後に供給する |
+| 有限極限全体 | OmegaSpectrum.sp_hasFiniteLimits（SpectrumFiniteLimits） | HasFiniteLimits Sp（全有限 K : SSet.{u+1} と任意 p : K → Sp）。実零対象・任意 coherent cospan の極限を F1 の hasFiniteLimits_of_terminal_pullbacks へ代入。集約・専用監査済み |
 | 同値検出（d1） | OmegaSpectrum.PiIsomorphism.levelwise、piIsomorphism_iff_levelwise、isInvertible_of_piIsomorphism、spEdge_isInvertible_of_piIsomorphism | 標準整数 π 同型 ⇒ 各段の全基点 π 同型 ⇒ 元の Sp の辺の可逆性。対象・集約・専用監査成功、提供済み |
 | tail の同値 | OmegaSpectrum.nativeTail、nativeTailEquivalence | 元の全単体上の関手を順方向に持つ QCatEquivalence Sp Sp。提供済み |
 | Ω と tail の比較 | OmegaSpectrum.nativeLoop、nativeLoopCircleFunctorIso、nativeLoopTailVertexIso、nativeTailLoopVertexIso、nativeLoop_essentiallySurjective、予定 nativeLoopEquivalence・nativeLoopTailFunctorIso・nativeTailLoopFunctorIso | Ω の実関手と対象ごとの比較は提供済み。QCatEquivalence Sp Sp（hom = nativeLoop）と両合成から恒等関手への FunctorIso は未提供・I-b 末尾。K-5〜K-8 はその完成を先取りしない |
