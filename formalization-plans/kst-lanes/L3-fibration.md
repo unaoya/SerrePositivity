@@ -6,7 +6,17 @@
 > （抽象 Verdier 列、Sp 値局所化不変量）を読み取り専用で使う。**2026-10-25 採用の修正**：(d) は固定の厳密 dg 入力 S・ν:S→StableInfinity・連結 K:S→Sp に対し、K(D)→fib_Sp(K(C)→K(C/D)) が非負次数で π 同型となる連結版（連結スペクトラムでの引き戻し）とする。10-22 の「実 Sp fiber 四角形へ送る」は撤回。固定連結 K の Sp 引き戻し性は主張しない。既存の条件付き Sp fiber 定理は条件付きで保持する。
 > 非連結化（K-7、BGT §9）は F1b・N の Ind・冪等完備化の後に別途。
 
-## 引き継ぎ（2026-10-24）
+## 引き継ぎ（2026-10-26、レーン再編のため停止）
+
+### 停止時点
+- 最新実装コミット：`71a031889`。c4 の全四角形同型と c5 の標準単体商比較を同じ D-8 の実 I・P・Z の反復へ代入し、元の固定 K・SOA K の非負次数比較まで条件付きで接続した。直前の `f5759f875` は実 BF fiber への受け渡しと末尾表示の自然性、`28032a24b` は逐次比較の末尾・完全性判定。完成印は変更していない。
+- Fibration 最新実装：`aecfa6256`（下側 canonical 二有限端点の三条件）。正規化全族・実 (9b)・四有限端点の二短辺と全 native Hom の照合は保存済み。F1 外延性の利用側は archive に型検査済みで保存し、本体へ新しい存在仮定は追加していない。
+- K-B2 向け共通化は `f2e3595d9` の `closedStableFlagPostPullback`（B・P のみ）を公開済み。K-B-S2 は `bf29e6b53` で保存・チャット報告済み。Sp 所有の二変数 corner RLP は重複実装しない。
+- 残りの順序：K-6 c4 の F1 有限 native 外延性の代入 → c5 の Sp 有限線型図式・core 逆像商比較の代入 → K-B2 の b 界面と連結版 d → e。K-7 は L10 の同じ条件付き実反復と全 native 作用境界を保持する。
+- 他レーンへの未送付の供給依頼・設計提案：なし。F1 外延性（archive/L3-native-triangle-ext-request.md:19）と Sp 有限線型図式比較はユーザー経由で依頼済み。公開名の状況確認は回答待ち。新規の設計変更案はない。
+- K-B 所有の未追跡ファイル：なし。作業中の Lean は全てビルド可能な区切りで保存した。他レーンの未追跡・変更ファイルは編集・保存していない。
+- 再開の第一工程：F1 外延性の公開名・供給状況を確認し、archive/L3-native-triangle-ext-consumer.md:47 の利用側へ代入する。未供給なら既存の条件付き接続を保持し、Sp の有限図式比較の供給状況を確認する。
+- 停止確認：Fibration 集約 13,311 ジョブ・専用監査 757 モジュール／5,175 宣言（標準三公理のみ）成功。NonConnective 集約 15,793 ジョブ・監査 191 モジュール／2,140 宣言成功。最終検証結果は停止保存コミット本文へ記録する。
 ### 現在地
 - 採用済みの連結版へ再開：K-6 d は元の実 fiber 比較の非負次数 π 同型。`DGConnectiveFiberComparison` は固定 dg 四角形と K 零角から同じ実 fiber 比較・全脚の二胞体・非負次数条件付き群同型を構成し、ν の Verdier 認証や Sp 引き戻し性を使わない。K-7 は同じ cone の K 零性から構造射・比較を作る。c4・c5 と K-7 d を継続する。
 - `VerdierFullSLowerDeformation` は元の全下側二胞体から最大 path 二胞体への実三角柱・恒等縦辺・全関手同型を与える。`VerdierFullSLowerShortFaces` は二短辺の全時刻固定、`VerdierFullSLowerRelativeDeformation` は同じ内ホーンを固定した可縮 Kan 延長空間への実辺と元の全三角柱の回収を保持する。`VerdierFullSLowerMaximalFaces` は同じ変形の時刻一で二短辺を評価し、元の指定包含・商の同じ全一単体へ戻す。`VerdierFullSLowerKernelTriangle` は同じ最大 path 図式の全二胞体を元の実 Kan 包含・商の標準合成へ同定し、元の指定 Verdier 下側全二胞体から元の商核下側全二胞体への実関手同型を与える。`VerdierFullSLowerDeformationSource` は同じ全三角柱・最大化全二胞体・動く対角族を、元の Stable∞ 二胞体から同じ S• Kan 作用への像として厳密回収する。`VerdierLowerDeformationZeroHom` は同じ Stable∞ 三角柱の全次数・全時刻単体の長い Hom を元の零値部分空間へ持ち上げ、同じ全 Hom と全正反復 S• Kan 像を厳密回収する。`VerdierLowerDeformationFullSLongHom` はこの全族を元の全 S• 始域の native Kan Hom へ延長し、元の core 包含で全次数・全時刻の全 Hom を厳密回収する。二胞体では元の変形二胞体の全長 Hom 自身に一致する。`VerdierLowerDeformationFullSComposite` は指定した三頂点全体の合成 path と、その全 S• 作用の実合成端を全時刻で保持する。`VerdierLowerDeformationFullSNaturality` は同じ零値持ち上げと全 S• 延長の、全パラメータの単調な制限との厳密な可換性を与える。`VerdierFullSMovingSquarePrism` は元の動く対角を厳密に共有する上側全族に条件付きで、両全三角柱を回収する四角柱・四頂点の可逆性・同じ元の Verdier 四角形との全関手同型を構成する。終端を実全 S• 商核へ固定し、下側全二胞体の最大化との厳密一致を証明した。`verdierFullSMovingKernelSquareIso` は同じ実商核まで接続するが、上側全族自体は未供給で、存在入力を主経路へ追加しない。F1 正本への依頼：短辺・合成端を固定した全長 Hom のパラメータ付き族から、元の全二胞体の族を厳密回収する公開界面（コーディネータ経由）。
