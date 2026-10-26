@@ -1,12 +1,12 @@
 # K-7 レーン：非連結 K（dg 形、BGT §9）
 
-> **v3（2026-10-24）**：K-7 は **K-B レーン**に統合（正本は L3-fibration.md、本ファイルは K-7 の引き継ぎ）。I・P の実供給は D-8 として D が担当。K-6 b の仕上げは K-B2、K-B は c4・c5・d・e と K-7 を担当し、界面を d へ代入する。第 I 段の完成条件は I-4（K-6・K-7・局所化不変量登録）。
+> **v4（2026-10-26）**：K-7 は **K-B3 レーン**が引き継ぐ。本ファイルが K-7 の正本。所有は `KST/NonConnective/`・同名集約・専用監査・本計画。K-6 は K-B（L3）、Fibration・SConstruction・Spectra・InfinityCategories は読み取り専用。I・P・Z と全入力作用の実供給は D 正本を消費する。第 I 段の完成条件は I-4（K-6・K-7・局所化不変量登録）。
 
 > **v2 の位置づけ（2026-10-23 新設）**：foundations.md §6 の K-7。K-S• の連結 K（厳密 dg 入力、K-3・K-4）、Sp の値域界面と相対版局所化不変量（K-5）、
 > D の β3（Drinfeld 商）・β5（D(A)・Perf(A)）、K-F の K-6（fibration 定理）、F1 の Ind と F2N-5 を読み取り専用で使い、非連結 K を dg 入力で構成する。
 > 一般の安定 ∞ 圏上の非連結 K は作らない（主経路は厳密 dg 入力限定）。
 
-## 引き継ぎ（2026-10-26、レーン再編のため停止）
+## 引き継ぎ（2026-10-26、K-B3 再開）
 
 ### 停止時点
 - 最新実装コミット：`71a031889`。D-8 の同じ実 I・P・Z の反復で、全四角形同型と標準単体商比較から各段の一回の S• fibration を導き、元の固定 K・SOA K と同じ候補の非負次数 π 比較へ接続した。両比較と共終性は条件付き。
@@ -15,9 +15,10 @@
 - 残りの順序：K-6 c4・c5 の二比較と共終性を同じ実 BF 列へ代入 → K-7 c4 の全入力作用・c5 の実自然性と d3・d4 の照合 → e の非連結化後の Verdier fiber・Morita・filtered 余極限 → f の固定 dg 相対局所化登録。固定 S・ν・K と採用済み入力境界は維持。
 - 他レーンへの未送付の供給依頼・設計提案：なし。F1 外延性・Sp 有限線型図式比較・K-S• 共終性は既依頼。新しい仕様変更は求めていない。
 - K-B 所有の未追跡ファイル：なし。今回の全 Lean 作業は保存済み。NonConnective 集約 15,793 ジョブ、専用監査 191 モジュール・2,140 宣言（標準三公理のみ）成功。
-- 再開の第一工程：L3 の c4 利用側へ F1 公開外延性を代入できるか確認し、Sp の標準単体比較とともに `DGKappaSuppliedBFFirstRowSimplices`・`DGSuspensionUnconditionalFirstRowComparison` の同じ引数へ代入する。未供給の全 native 作用を I・P・Z から推論しない。
+- 次の一手：K-B から c4 の全四角形同型・c5 の標準単体商比較、K-cof から無条件共終性の公開を確認し、`DGSuspensionUnconditionalFirstRowComparison` の同じ引数へ代入する。K-cof の現公開 `kSpectrumMap_cofinality_of_relativeFiber_input` は `ClosedStableFlagPostPullback` が残り、無条件供給ではない。未供給の全 native 作用を I・P・Z から推論しない。
 
 ### 現在地
+- K-B3 再開時に二比較から同じ候補の全整数末尾表示・隣接射整合まで接続。所有集約ビルド成功（15,793 ジョブ）、専用監査成功（191 モジュール・2,143 宣言、標準三公理のみ・ModelCategory 型検査を含む）。c4・c5・共終性は明示入力のまま。
 - 採用済み経路へ再開：K(TA)≃0 と連結版 fibration の元の実 fiber 比較を構造射・連結比較 d1〜d4 に使う。全段の Sp 引き戻し性は仮定しない。e の Verdier 列の Sp fiber 性と f の相対局所化登録は K^{nc} について非連結化後に証明する。
 - 上流 import 閉包の復旧と両所有集約の再ビルドを確認。`DGKappaSplitPerfEvaluation` を検証し、集約・監査へ接続済み。元の全 native 関手族と同じ実四角形の全単体を、元の各 Perf ラベルの dg 作用へ照合し、同じ点ごとの零三角形を構成した。D-12 の公開判定により同じ二胞体の cofiber 普遍性を証明し、同じ cone の連結 K・固定 K の実 Sp 零頂点性まで接続済み。
 - 工程 a 完了：任意の厳密な逐次 BF 列の実 Sp 余極限を K-7 内で構成。同じ `filteredOmegaSpectrum` を頂点とする `sequentialCandidateColimitCocone` の `IsColimitCone` と、実辺の全整数 π 作用・群余極限比較を接続済み。
@@ -192,4 +193,4 @@
 ### 同じ実列の比較と商標準単体の受け渡し
 - `DGSuspensionSuppliedBFTailComparison` は、明示された同じ実 BF 逐次比較について元の全整数末尾表示の自然性と逆座標式を保持する。共終性・二入力の一回の S• fibration に条件付きであり、全 native 入力作用の存在は追加しない。
 - `DGKappaSuppliedBFFirstRowSimplices` は c4 の全四角形 `FunctorIso` と c5 の同じ実商の標準単体比較を直接受け、未完備全 S• 引き戻し・実 BF fiber の非負次数比較・同じ固定 K 構造射へ渡す。有限 F1 外延性と Sp 有限図式比較は未放電で、従来の条件付き上側ホモトピー経路も保持する。
-- `DGSuspensionUnconditionalFirstRowComparison` は同じ二供給を D-8 の実 I・P・Z の全反復へ代入し、独立した `hS` を取らず元の固定 K・SOA K から同じ候補への非負次数比較を得る。二供給と共終性には条件付きで、完成印は動かさない。
+- `DGSuspensionUnconditionalFirstRowComparison` は同じ二供給を D-8 の実 I・P・Z の全反復へ代入し、独立した `hS` を取らず元の固定 K・SOA K から同じ候補への非負次数比較を得る。`dgSuspensionUnconditionalFirstRow_tailPiEquiv`・`_succ` は同じ候補の全整数末尾表示と元の隣接構造射との整合にも二供給を直接渡す。二供給と共終性には条件付きで、完成印は動かさない。

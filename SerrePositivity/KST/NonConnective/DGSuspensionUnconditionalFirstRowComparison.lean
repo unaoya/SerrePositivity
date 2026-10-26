@@ -82,4 +82,33 @@ theorem dgSuspensionUnconditionalFirstRow_SOAComparison_nonnegative
   dgSuspensionUnconditionalBFSOAComparison_nonnegative R κ hκ A hcofinal
     (dgSuspensionUnconditionalFirstRow_fibration R κ hκ A hIso hrow) j hj
 
+/-- 概要：同じ二比較から、実候補の全整数群を元の懸垂 K の十分後の群で表示する。
+方針：各段の一回の S• fibration を同じ実候補の末尾比較へ代入する。
+規約：hIso・hrow・hcofinal に条件付き。負群の消滅は主張しない。
+使われ方：K-7 d3 の非負次数比較と同じ候補の負次数表示。 -/
+def dgSuspensionUnconditionalFirstRow_tailPiEquiv
+    (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n) :
+    OmegaSpectrum.homotopyGroup
+      (dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)) (j + n) ≃*
+      OmegaSpectrum.homotopyGroup (dgSuspensionUnconditionalBFCandidate R κ hκ A hcofinal) j :=
+  dgSuspensionUnconditionalBFCandidate_tailPiEquiv R κ hκ A hcofinal
+    (dgSuspensionUnconditionalFirstRow_fibration R κ hκ A hIso hrow) j n hn
+
+set_option maxRecDepth 4096 in
+/-- 概要：同じ二比較による末尾表示は元の隣接構造射を通っても一致する。
+方針：元の実 BF 列の末尾表示の隣接射整合に同じ fibration 証拠を渡す。
+規約：hIso・hrow・hcofinal に条件付き。全入力自然性とは区別する。
+使われ方：全整数表示と元の実余錐の脚を同じ逐次列上で照合する。 -/
+theorem dgSuspensionUnconditionalFirstRow_tailPiEquiv_succ
+    (j : ℤ) (n : ℕ) (hn : (-j).toNat ≤ n)
+    (x : OmegaSpectrum.homotopyGroup
+      (dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)) (j + n)) :
+    dgSuspensionUnconditionalFirstRow_tailPiEquiv R κ hκ A hIso hrow hcofinal j (n + 1)
+        (Nat.le_succ_of_le hn)
+        (dgSuspensionShiftedTransition R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A
+          (dgSuspensionUnconditionalBFStructureEdge R κ hκ A hcofinal) n j x) =
+      dgSuspensionUnconditionalFirstRow_tailPiEquiv R κ hκ A hIso hrow hcofinal j n hn x :=
+  dgSuspensionUnconditionalBFCandidate_tailPiEquiv_succ R κ hκ A hcofinal
+    (dgSuspensionUnconditionalFirstRow_fibration R κ hκ A hIso hrow) j n hn x
+
 end SerrePositivity.KST.NonConnective
