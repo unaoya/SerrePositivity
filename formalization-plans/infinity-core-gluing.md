@@ -1,58 +1,28 @@
 # D2 レーン：β4 dg gluing = 安定 ∞ 圏の lax pullback
 
-> **v4（2026-10-26）**：D2 レーン再開。所有：`Derived/Gluing/` と集約・監査。K-S• 全 lax／cone 比較を供給する。
+> **v5（2026-10-27）**：D2 分担完了・閉鎖。K-S• 向け全 lax／cone 比較の三入力を供給し、ユーザーによる確認・中継済み。所有：`Derived/Gluing/` と集約・監査。
 > foundations.md §2 の β4・§6 の D2。dg 側は D の β5・β3、lax pullback は `F2/CatInfinity/` を読み取り専用で使う。
 > 用途は K の Tamme・Land–Tamme の対象供給と、⊙ の Verdier 商の dg 側の同定。
 
-## 引き継ぎ（2026-10-26）
+## 引き継ぎ（2026-10-27、閉鎖）
 
-### 再開工程：K-S• 全比較（三入力公開・集約・公理監査済み）
-- 採用（2026-10-26、ユーザー指示）：元終域向け Hom 比較を D2 内で直接構成する。F2 への依頼は行わない。一般の充満忠実基底変更 API の存在を前提にしない。途中で一般命題自体を証明した場合だけ `F2/CatInfinity/` の新規葉へ置き、登録は D2 集約のみとする（F2 集約への登録は R 候補）。
-- 供給順：実 lax Hom 比較の逆射・往復則 → 恒等二脚の特殊化 → 対角 `FunctorIso`・全 cone 比較。各段の検証済み公開名をユーザー経由で報告する。K-S• は D の射影性を消費して d④ ① を完了し、全 lax 比較待ち。
-- 読み取り専用の消費型：`DGOdotMilnorOriginalLaxComparisonInput`、`DGOdotMilnorIdentityLaxComparisonInput`、`DGOdotMilnorOriginalLaxConeComparisonInput`（`.withCone`）。入力型の変更なし。
-- 元共通終域への `dgGluingHomTargetNerveLaxComparison` を構成。両射影と arrow 全単体族を厳密回収し、各頂点で元閉比較射を回収する。
-- `dgGluingHomTargetNerveLaxComparison_vertex_surjective` と `_isEssentiallySurjective` を証明。元前三角性から `_isExactFunctor` と `dgGluingHomTargetStableComparison` を構成。新規5葉の個別ビルド通過。
-- `dgGluingHomTargetLaxHomPullbackComparison` は同じ実 Hom 複体から F2 の写像空間 pullback への指定比較。`dgGluingHomTargetNerveLaxComparison_fullyFaithful_iff` で同値性の検証点を厳密に指定し、下記 `HomTargetLaxHomEquivalence` でその同値性を証明した。
-- 残り：native 元二脚と固定 ν 二脚との全比較、恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性。この時点では3つの消費型の存在は未証明（下記で第1入力を公開）。
-- 次の一手：完成した元二脚全比較を固定 ν の二脚へ接続し、指定左右入力同値の逆を全射影に保持した第1入力の実例にまとめる。恒等二脚はその特殊化とする。
-- 新規10葉を追加登録。元終域の係数 path 比較の逆・往復則、正規化 Hom の両射影と第三 cochain、全 prism の一致と両端固定 homotopy、二 cube の共有面・貼り合わせ、元標準合成三角形の全三辺、元入力 fiber の切断同値を検証。係数 path の逆は実 lax Hom 比較の逆と区別する。
-- 追加9葉を登録。元入力付き二対角 path への輸送同値、指定 lax 比較の矢印射影との一致、前 cube 元面と指定 augmentation 全族の一致、元左右入力の全鎖・全区間射影、補正済み前後道と両単位 cap 道の入力 fiber 内持ち上げを検証。
-- 追加11葉を登録。指定矢印 Hom の全正方形と cube 元面、後 cube 正規化面と実係数 prism、補正三角形の元端・元可変辺、指定二三角形の元入力付き持ち上げ、厳密共通対角から全 path 模型への同値を検証。四補正道の元端・共通端・標準端の全三角形一致と、元入力固定の二選択 homotopy も構成。
-- 追加23葉を登録。元終域の同じ正規化四面体・六片・全共有辺・両単位退化を保持し、`dgGluingHomTargetDiagonalComparisonBoundary_filling` を無仮定で構成。指定係数道との両端固定相対比較、入力固定の指定三辺充填、左右実単位閉路の零性を接続した。
-- `dgGluingHomTargetInputPathInverse`・`_unit`・`_counit` は、指定元比較の**入力付き path 模型**上の実逆と往復則。`dgGluingHomTargetArrowInputStrictComparison_equivalence` も構成。これらは `dgGluingHomTargetLaxHomPullbackComparison` 自身の逆ではなく、第1段の完了報告はまだ行わない。
-- 元 lax Hom 標的の `dgGluingHomTargetLaxHomPinchedIntervalTransport` と `_equivalence`、`dgGluingHomTargetLaxHomPullback_kanComplex` を構成。この標的座標同型・指定比較の厳密一致と、実 lax Hom 比較自身への逆の輸送は下記追加14葉で完成。
-- 集約ビルド（13,245 jobs）・公理監査（1,026モジュール、10,522宣言）通過。恒等二脚の特殊化と対角 `FunctorIso`・全 cone 比較は未供給。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
+### K-S• への最終供給
+- ユーザーが `eaa2179b0` までの三入力を確認し、K-S• へ中継済み（2026-10-27）。D2 の今回分担は完了・閉鎖。消費側の実装は K-S• 所有であり、D2 の未完了作業として残さない。
+- 名前空間は `SerrePositivity.InfinityCategories`。以下はいずれも引数 `R d` の実例で、消費側の型は変更していない。
+- 元二脚：`dgGluingOriginalLaxComparisonInput : DGOdotMilnorOriginalLaxComparisonInput R d`（`OriginalInputLaxEquivalence`、`ca32426eb`）。指定左右入力同値の逆と両射影の全 `FunctorIso` を保持する。
+- 恒等二脚：`dgGluingIdentityLaxComparisonInput : DGOdotMilnorIdentityLaxComparisonInput R d`（`IdentityLaxComparisonInput`、`88112f27c`）。gluing・difference・diagonal・cone の全4欄を実例化。対角欄は `dgGluingIdentityInputDiagonalIso`、cone 欄は `dgGluingIdentityInputConeIso`。
+- 元 corner cone：`dgGluingOriginalLaxConeComparisonInput : DGOdotMilnorOriginalLaxConeComparisonInput R d`（`OriginalInputConeComparison`、`eaa2179b0`）。第1入力に `dgGluingOriginalInputConeIso` を `.withCone` で接続し、指定 corner 評価と Yoneda 全比較を保持する。
+- 集約 `SerrePositivity.InfinityCategories.Derived.Gluing` から三入力の型照合を実施済み。最終集約ビルドは13,414 jobs、公理監査は1,083モジュール・11,504宣言で通過。新規 sorry・公理・ModelCategory 仮定・heartbeat 上限増加なし。
 
-- 追加14葉：元 lax Hom の矢印座標・元左右 Hom 入力・底条件を保持する同型と指定比較の厳密一致を構成。`dgGluingHomTargetLaxHomPullbackComparisonInverse`・`_unit`・`_counit` は**元 lax Hom 標的自身**の実逆と両往復則。`dgGluingHomTargetNerveLaxEquivalence` も構成した。
-- `dgGluingHomTargetDerivedLaxEquivalence` と `_fst`・`_snd` は導来係数 lax 模型から元二脚の native lax 模型への全比較。元の左右 Hom と射影を保持し、同宇宙 ULift 表示も厳密に除く。
-- 実 Hom 逆・native 全同値・導来係数からの比較の公開名はチャットでユーザーへ報告済み。この時点では `DGOdotMilnorOriginalLaxComparisonInput` の実例は未公開。次工程は固定 ν の元二脚と native 小 Perf 二脚の全自然性を接続し、指定済み左右入力同値の逆を両射影へ合わせること。恒等二脚・全 cone 比較へ先に完了を広げない。
-- 集約ビルド（13,259 jobs）・公理監査（1,040モジュール、10,691宣言）通過。この時点では三入力実例がすべて未達。下記の追加工程へ継続。
-
-
-- 追加17葉：全試験関手 core による同値検出、同値持ち上げを持つ厳密 pullback の三成分比較、全関手同型付き cospan の可逆 path 置換を構成。`F2.laxPullbackCospanIsoEquivalence` と `_fst`・`_snd` は指定三成分同値と両射影の全関手同型を保つ。新規 F2 10葉の登録は D2 集約・監査のみ（F2 集約登録は **R 候補**）。F2 への供給依頼なし。
-- 混在対象宇宙の実 Perf 合成・下降自然性、指定逆への四角形輸送、全評価自然性を一般形で構成。元の左右の厳密小 Perf 制限へ前合成し、指定左右入力同値の逆に照合した。
-- **第1入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingOriginalLaxComparisonInput R d : DGOdotMilnorOriginalLaxComparisonInput R d`（`OriginalInputLaxEquivalence`）。二射影は `dgGluingOriginalInputLaxEquivalence_fst`・`_snd`。単体ビルド後にチャットでユーザーへ代入名を報告済み。
-- 恒等特殊化の `dgGluingIdentityHomTargetLaxEquivalence`、固定 ν 中央同値の `dgGluingIdentityInputLaxEquivalence` も構成・チャット報告済み。後者は第2入力の gluing 欄に相当。既存の指定差終域同値と合わせる対角・cone の全同型は未供給であり、第2入力全体を完成扱いしない。
-- 集約ビルド（13,384 jobs）・公理監査（1,057モジュール、10,998宣言）通過。次工程：恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性を接続し、第2入力、第3入力 `.withCone` を順に実例化・チャット報告する。
-
-
-- 追加8葉：恒等比較を指定二射影と augmentation 全族を持つ直接の `laxPullbackLift` で表し、元終域比較の同値性を恒等二脚へ輸送した。`dgGluingIdentityNativeDiagonalIso` と固定 ν の **`dgGluingIdentityInputDiagonalIso R d`** を構成・単体検証し、後者が第2入力の diagonal 欄の型を満たすことをチャット報告済み。中央同値の恒等基底変更は矢印圏への後合成で表し、対角との厳密可換性を保つ。
-- `laxCospanCofiberComparison`・`laxCospanIsoCofiberComparison` は、前段の指定 cospan 全比較自身と選択 cofiber 差との全関手同型。可逆 path 置換の同じ二比較・同じ実逆と往復則を使う。恒等基底変更には `identityLaxArrowBaseCofiberComparison` を供給した。
-- `localizationProjectionComparison`・`localizationProjectionComparisonOfTest` と `identityLaxDifferenceCharacterization` を検証。既存の恒等 lax Verdier 局所化に沿う実関手同型付き延長と、切断／試験圏での全比較から元の射影との全 `FunctorIso` を反映する。対象ごとの cone 一致を全自然性の代用にしない。
-- 集約ビルド（13,393 jobs）・公理監査（1,065モジュール、11,094宣言）通過。第2入力の残りは cone 欄。採用候補：元の実零対象（閉零圏の零対象）による dg 右軸上で、元 cone 包含と Yoneda の全閉零自然同型を構成する。既存 `dgClosedZeroFunctor`・`dgGluingRightAxis` と小 Perf 基底の実零対象を読み取り専用で利用する。右軸での選択 cofiber は零始域の一般比較で回収し、対角零化と局所化の試験圏判定へ代入する。第3入力は元終域から恒等 Hom gluing への全 dg 比較と上記 cospan cofiber 自然性へ接続する。三入力全体の完了は引き続き未達。
-
-
-- 追加12葉：`zeroSourceModuleConeIso` は元右包含を順射とする実加群同型。`dgGluingHomTargetConeInr_naturality` は元三成分 Hom の全次数自然性であり、第三成分の零性を仮定しない。`dgGluingIdentityRightAxisPerfectConeIso` は同じ実閉零対象の右軸上で元 cone 関手を native Yoneda と全比較する。
-- `dgPerfectValuedFunctor_isExactFunctor` は元全像小包絡への厳密因子化から実 Perf 値関手の完全性を証明。全 Perf の Small 性は不要。`dgGluingNativePerfectYonedaEquivalence` は元圏の coherent 完備性と元の retract 表示から、固定 S に依存せず native 同値を与える。
-- `identityConeComparisonCriterion` に、元対角の指定収縮・右軸の二つの全比較・完全性を代入し、**`dgGluingIdentityNativeConeComparison`** を構成。固定 ν の全自然性と元全像評価へ運び、**`dgGluingIdentityInputConeIso R d`** を構成した。heartbeat 上限の増加なし。
-- **第2入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingIdentityLaxComparisonInput R d : DGOdotMilnorIdentityLaxComparisonInput R d`（`IdentityLaxComparisonInput`）。gluing・difference・diagonal・cone の全4欄を実例化し、単体ビルド後にチャット報告済み。第1入力は `ca32426eb`、恒等対角段階は `0f3f03600`。
-- 集約ビルド（13,408 jobs）・公理監査（1,077モジュール、11,314宣言）通過。第2入力の供給を保存した。
-- 第3入力の採用工程（下記で完成）：元二脚から同じ corner の恒等 Hom gluing への dg 関手を、左右 Hom と第三 primitive を全次数で保持して構成する。元 augmentation 全族・元 cone 関手との厳密整合を確認し、上記恒等全 cone 比較、`laxCospanIsoCofiberComparison`、指定 corner Yoneda 評価を合成して `.withCone` に代入する。
-
-- 追加6葉：`dgGluingHomTargetToIdentity` は元二脚の左右 Hom と第三 primitive を保持する実 dg 関手。`_left`・`_right`・`_comma`、全 augmentation の `_prism`・`_homotopy`・`_arrow` と元実 cone の `_cone` を厳密に検証した。
-- **`dgGluingHomTargetNativeConeComparison`** は一般の元共通終域において、元 lax 比較後の選択 cofiber 差と元実 Perf cone 関手を全 `FunctorIso` で比較する。検証済み恒等比較への前合成を使い、元 corner の指定評価と cospan 全自然性へ接続した。
-- **第3入力を公開済み**：`SerrePositivity.InfinityCategories.dgGluingOriginalLaxConeComparisonInput R d : DGOdotMilnorOriginalLaxConeComparisonInput R d`（`OriginalInputConeComparison`）。`dgGluingOriginalInputConeIso R d` を第1入力の `.withCone` に代入。単体ビルド（13,241 jobs）後、チャットでユーザーへ代入名を報告済み。
-- 第1入力 `dgGluingOriginalLaxComparisonInput`、第2入力 `dgGluingIdentityLaxComparisonInput`（`88112f27c`）、第3入力の実例がすべて揃った。新規6葉は D2 集約・監査へ登録。集約ビルド（13,414 jobs）・公理監査（1,083モジュール、11,504宣言）・集約経由の三入力型照合がすべて通過。今回の三入力供給目標は完了。K-S• の消費実装は同レーン所有。
+### 一般 API と採用経路
+- 元終域向け Hom 比較を D2 内で直接構成した。F2 への供給依頼は行っていない。S 構成固有の固定入力への接続は結論のアダプタに置く。
+- `dgGluingHomTargetLaxHomPullbackComparisonInverse`・`_unit`・`_counit` は元 lax Hom 標的自身の実逆と両往復則。入力付き path 模型だけの逆と区別する。
+- `dgGluingHomTargetNerveLaxEquivalence` と `dgGluingHomTargetDerivedLaxEquivalence`・`_fst`・`_snd` は元二脚の全比較。恒等特殊化は `dgGluingIdentityHomTargetLaxEquivalence`。
+- `dgGluingIdentityNativeDiagonalIso` は元対角の全比較。`dgGluingIdentityNativeConeComparison` は実右軸上の Yoneda 全比較・対角の指定収縮・完全性を局所化判定へ代入した恒等全 cone 比較。
+- `dgGluingHomTargetToIdentity` は元左右 Hom と第三 primitive を全次数で保持する dg 関手。`_left`・`_right`・`_comma`、augmentation 全族の `_prism`・`_homotopy`・`_arrow`、元実 cone の `_cone` は厳密に整合する。
+- `dgGluingHomTargetNativeConeComparison` は一般の元共通終域で元 lax 比較後の選択 cofiber 差と元実 Perf cone 関手を全比較する。`laxCospanIsoCofiberComparison` により同じ指定 cospan 全比較のまま固定 ν へ輸送した。
+- `zeroSourceModuleConeIso`・`dgGluingIdentityRightAxisPerfectConeIso` は実零対象と元 cone 包含を使う。`dgPerfectValuedFunctor_isExactFunctor` は小全像包絡を通じて完全性を示し、全 Perf の Small 性を要求しない。
+- **R 候補（D2 の残作業ではない）**：`F2.laxPullbackCospanIsoEquivalence` と関連する新規 F2 10葉の F2 集約登録。現状の登録はユーザー指示どおり D2 集約・監査のみ。移動・改名・削除は R の停止窓へ委ねる。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。
@@ -135,8 +105,8 @@
 - 正本は `dgGluingLaxHomPullbackComparison`。元の両 Hom 入力・augmentation prism・二三角形を保持する。
   個別の入力固定ホモトピーだけから全 path 比較の一致を結論しない。主経路へ新しい仮定を追加しない。
 
-### 残る接続・移管上の注意
-- G-1 は集約・公理監査済み。再開工程の新規葉も集約・監査へ接続し、K-S• が代入できる公開名をユーザー経由で報告する。
+### 供給済み範囲と移管上の注意
+- G-1 と K-S• 向け三入力供給は集約・公理監査済み。公開名はユーザー経由で報告・中継済み。以下の強化・消費側作業は今回の D2 閉鎖を妨げる残件ではない。
 - native の通常 pullback 包含と同じ cell 平坦商の Verdier 列は完成。任意の追加 ULift における局所化保存は公開供給待ちであり、この強化を結論していない。
 - 未分解 path 商 `dgQuotientNerve` と cell 平坦商の比較・対角像の `localKFlat` は第 I 段の要求外。元の `dgOdotQuotientInput.projection` をそのまま最終商射に使わない。
 - Milnor 条件の具体例の検証と固定 ν の商射影の付け替えは K-S• の再開時に行う。
