@@ -12,16 +12,21 @@
 - 読み取り専用の消費型：`DGOdotMilnorOriginalLaxComparisonInput`、`DGOdotMilnorIdentityLaxComparisonInput`、`DGOdotMilnorOriginalLaxConeComparisonInput`（`.withCone`）。入力型の変更なし。
 - 元共通終域への `dgGluingHomTargetNerveLaxComparison` を構成。両射影と arrow 全単体族を厳密回収し、各頂点で元閉比較射を回収する。
 - `dgGluingHomTargetNerveLaxComparison_vertex_surjective` と `_isEssentiallySurjective` を証明。元前三角性から `_isExactFunctor` と `dgGluingHomTargetStableComparison` を構成。新規5葉の個別ビルド通過。
-- `dgGluingHomTargetLaxHomPullbackComparison` は同じ実 Hom 複体から F2 の写像空間 pullback への指定比較。`dgGluingHomTargetNerveLaxComparison_fullyFaithful_iff` で同値性の残課題を厳密に指定する。これは Hom 同値性の証明ではない。
-- 残り：元終域比較の全 Hom 同値、導来係数模型・元固定 ν 二脚との比較、恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性。3つの消費型の存在は未証明。
-- 次の一手：`dgGluingHomTargetLaxHomPullbackComparison` の実ホモトピー逆と両往復則を、同じ左右 Hom と第三 cochain を保持して構成する。恒等二脚はその特殊化とする。
+- `dgGluingHomTargetLaxHomPullbackComparison` は同じ実 Hom 複体から F2 の写像空間 pullback への指定比較。`dgGluingHomTargetNerveLaxComparison_fullyFaithful_iff` で同値性の検証点を厳密に指定し、下記 `HomTargetLaxHomEquivalence` でその同値性を証明した。
+- 残り：native 元二脚と固定 ν 二脚との全比較、恒等対角の全関手比較、元実 cone と選択 cofiber 差の全自然性。3つの消費型の存在は未証明。
+- 次の一手：完成した元二脚全比較を固定 ν の二脚へ接続し、指定左右入力同値の逆を全射影に保持した第1入力の実例にまとめる。恒等二脚はその特殊化とする。
 - 新規10葉を追加登録。元終域の係数 path 比較の逆・往復則、正規化 Hom の両射影と第三 cochain、全 prism の一致と両端固定 homotopy、二 cube の共有面・貼り合わせ、元標準合成三角形の全三辺、元入力 fiber の切断同値を検証。係数 path の逆は実 lax Hom 比較の逆と区別する。
 - 追加9葉を登録。元入力付き二対角 path への輸送同値、指定 lax 比較の矢印射影との一致、前 cube 元面と指定 augmentation 全族の一致、元左右入力の全鎖・全区間射影、補正済み前後道と両単位 cap 道の入力 fiber 内持ち上げを検証。
 - 追加11葉を登録。指定矢印 Hom の全正方形と cube 元面、後 cube 正規化面と実係数 prism、補正三角形の元端・元可変辺、指定二三角形の元入力付き持ち上げ、厳密共通対角から全 path 模型への同値を検証。四補正道の元端・共通端・標準端の全三角形一致と、元入力固定の二選択 homotopy も構成。
 - 追加23葉を登録。元終域の同じ正規化四面体・六片・全共有辺・両単位退化を保持し、`dgGluingHomTargetDiagonalComparisonBoundary_filling` を無仮定で構成。指定係数道との両端固定相対比較、入力固定の指定三辺充填、左右実単位閉路の零性を接続した。
 - `dgGluingHomTargetInputPathInverse`・`_unit`・`_counit` は、指定元比較の**入力付き path 模型**上の実逆と往復則。`dgGluingHomTargetArrowInputStrictComparison_equivalence` も構成。これらは `dgGluingHomTargetLaxHomPullbackComparison` 自身の逆ではなく、第1段の完了報告はまだ行わない。
-- 元 lax Hom 標的の `dgGluingHomTargetLaxHomPinchedIntervalTransport` と `_equivalence`、`dgGluingHomTargetLaxHomPullback_kanComplex` を構成。次工程は元両 Hom 入力・矢印座標を同時に保つ標的座標同型と、指定比較の厳密一致。その同値を相殺して実 lax Hom 比較の逆へ戻す。
+- 元 lax Hom 標的の `dgGluingHomTargetLaxHomPinchedIntervalTransport` と `_equivalence`、`dgGluingHomTargetLaxHomPullback_kanComplex` を構成。この標的座標同型・指定比較の厳密一致と、実 lax Hom 比較自身への逆の輸送は下記追加14葉で完成。
 - 集約ビルド（13,245 jobs）・公理監査（1,026モジュール、10,522宣言）通過。恒等二脚の特殊化と対角 `FunctorIso`・全 cone 比較は未供給。全比較を供給するまでは G-1 完了と区別し、D2 全体の完了を宣言しない。
+
+- 追加14葉：元 lax Hom の矢印座標・元左右 Hom 入力・底条件を保持する同型と指定比較の厳密一致を構成。`dgGluingHomTargetLaxHomPullbackComparisonInverse`・`_unit`・`_counit` は**元 lax Hom 標的自身**の実逆と両往復則。`dgGluingHomTargetNerveLaxEquivalence` も構成した。
+- `dgGluingHomTargetDerivedLaxEquivalence` と `_fst`・`_snd` は導来係数 lax 模型から元二脚の native lax 模型への全比較。元の左右 Hom と射影を保持し、同宇宙 ULift 表示も厳密に除く。
+- 実 Hom 逆・native 全同値・導来係数からの比較の公開名はチャットでユーザーへ報告済み。`DGOdotMilnorOriginalLaxComparisonInput` の実例は未公開。次工程は固定 ν の元二脚と native 小 Perf 二脚の全自然性を接続し、指定済み左右入力同値の逆を両射影へ合わせること。恒等二脚・全 cone 比較へ先に完了を広げない。
+- 集約ビルド（13,259 jobs）・公理監査（1,040モジュール、10,691宣言）通過。目標の三入力実例はすべて未達であり、目標は継続する。
 
 ### 現在地
 - (a)〜(c) 完了。比較差は `gμ − νf`。実 Hom は同じ mapping cocone、全次数の単位・合成・微分を保持する。

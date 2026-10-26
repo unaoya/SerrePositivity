@@ -1030,7 +1030,21 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitTriangleDiagrams,
     `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetUnitTriangleFamilies,
     `SerrePositivity.InfinityCategories.Derived.Gluing.PathPullbackEndpointLegs,
-    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxIntervalTransport]
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxIntervalTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCoordinateEndpointIso,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.FunctorRawIntervalEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetDerivedLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetInputCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxArrowCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxBaseCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxCoordinateComparison,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxCoordinateTransport,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxHomEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxInputCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxInputEvaluations,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetLaxRawInputActions,
+    `SerrePositivity.InfinityCategories.Derived.Gluing.NativeUniverseIso]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
