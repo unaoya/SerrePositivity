@@ -3013,4 +3013,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisIdentityNul
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisIdentityNuSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisIdentityNative
 
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeValue
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeLiftNu
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeArrow
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonStrictArrow
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisBaseValue
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisSmallArrow
+
 /-! # ∞-S• 構成と連結 K 理論 -/
