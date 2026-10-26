@@ -9,9 +9,10 @@
   同じ全多次数の有限反復 S で双積懸垂の像回収と全パラメータ族の回収を実装。
 - **08:16 採用・再開**：HLS §7.1 の wide 部分圏の亜群化経路を採用。
   一般の wide 部分複体と亜群化の離散性は Sp-7 として Sp に発注済み。
+  **09:03 到着（c85f08b8d）**：公開定理を読み取り専用 import し、実証明を代入済み。
 - Sp-7 の結論を `StableWideCofinalitySupply` として明示的な仮定引数に取り、
   一般供給からの変換 `stableWideCofinalitySupply_of_api` も実装。
-  この仮定の証明や一般共終性を供給済みとは数えない。
+  `stableWideCofinalitySupply` で供給仮定を消去済み。一般共終性は未証明。
 - 反復 S の標的の完備性を第一行同値から移し、D-22 から retract 条件を作った。
   したがって同じ指定射の全多次数の反復 S も実際に冪等完備化となる。
 - Sp-7 の供給値から全多次数の厳密な wide 図式と元の S 図式への自然包含を構成。
@@ -21,10 +22,17 @@
 - 旗の未置換零段と元の同じ反復 S 対象との厳密な同型を構成。
   この比較は全多次数の構造射と可換。始域の旗を相対旗へ写す射も実装し、
   零段の比較後に元の指定反復 S 射を厳密に回収する。
+- 実供給を代入した相対 core 旗の対角実現から、Sp-7 の具体的な wide 模型への
+  全評価射を構成。水平辺・可逆な垂直辺・斜辺を検査し、全単体を持ち上げた。
+  対角評価は包含後に元の評価を回収し、零単体で未置換零段比較と一致する。
+- 同じ wide 成分内の本質像所属の同値を証明。連結なパラメータの一頂点が像に入れば
+  全図式を同じ反復 S 射の始域へ一つの関手同型で回収できる。
+- 選択した wide 模型を Sp の全辺模型と同定し、成分への実切断・全収縮も消費した。
 - 元の `kSpectrumMap` の目標条件と未置換零段の群条件との同値は既存の自所有葉に実装済み。
 - **設計供給境界の追加提案**：core 旗の対角実現と亜群化を結ぶ一般比較が必要。
   Sp-7 の離散性だけから相対旗の実現の離散性を結論しない。依頼の詳細は末尾。
-  ユーザー経由での中継を明示的に依頼する。追加は未採用・未供給。
+  ユーザー経由で中継を明示的に依頼済み。追加は未採用・未供給。
+  Sp への追加発注か K-cof の S• 固有比較か、分担の確認質問を提示中。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
@@ -38,14 +46,14 @@
 
 ### 主要宣言
 - `Cofinality.multiSEndofunctor_map_isIdempotentCompletion`
-- `Cofinality.StableWideCofinalitySupply`
-- `Cofinality.stableWideCofinalitySupply_of_api`
+- `Cofinality.stableWideCofinalitySupply`
+- `Cofinality.completionRelativeFlagWideEvaluation`
 - `Cofinality.multiWideStageDiagram`
-- `Cofinality.multiWideStageInclusion`
+- `Cofinality.completionMultiWide_componentRetraction`
 - `Cofinality.suppliedMultiRelativeFlagDiagram`
 - `Cofinality.multiRelativeFlagZeroIso`
 - `Cofinality.suppliedMultiRelativeFlagsMap_zero`
-- `Cofinality.multiSourceToRelativeFlags_zero`
+- `Cofinality.exists_multiSourceFamily_of_relative_component`
 - `Cofinality.kSpectrumMap_cofinality_iff_boundary`
 
 ### 依存と提供
@@ -58,22 +66,22 @@
 - K-B 向けの主定理は未供給。完備始域の特殊場合で代用しない。
 
 ### 未コミット
-- なし。自所有の新規8葉・集約・監査・計画を限定コミット。実施記録はコミット本文。
+- なし。自所有の新規5葉・集約・監査・計画を限定コミット。実施記録はコミット本文。
 
 ### 既知の問題
 - 一般の共終性、相対実現の fiber 比較、離散的障害の群同定は未証明。
 - `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
 - wide の亜群化の離散性と core 相対旗の実現の離散性は別の命題。
 - 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7780 jobs）。監査は17所有葉の全125宣言で標準三公理のみ。
+- 自所有集約ビルド成功（7859 jobs）。監査は22所有葉の全153宣言で標準三公理のみ。
   型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
 - 根のビルドや `.lake` 削除はしない。
 
 ### 次の一手
 - ユーザー経由で Sp への一般 core 旗比較の追加分担が採用されたら、
   その API を明示的な仮定引数にして、相対 core 旗と wide 内部旗の比較を続行。
-- Sp-7 の公開名が届いたら `stableWideCofinalitySupply_of_api` に代入する。
-  次いで相対実現の加法的 fiber 比較と障害の同定へ進む。
+- Sp-7 の実供給の代入は完了。対角評価の弱同値性と、相対実現の加法的 fiber 比較・
+  障害の同定へ進む。現在、比較射の存在だけでは離散性を移せない。
 
 ## 目標型
 
@@ -92,6 +100,7 @@
 - Sp-7：安定 quasicategory の指定完備化射 f、本質像 P、
   `W = cofiberLocalizingEdges P` について、全辺が W に属する単体からなる部分複体 M、
   M の quasicategory 性、`continuousKanReplacement.obj M` の正次数の自明性。
+  `LocalizingInvariants.idempotentCompletion_cofiberWide_discrete` を消費済み。
 - 正確な消費型は `WideStageData` と `stableWideCofinalitySupply_of_api` が正本。
   型を単に記録しただけで、一般供給が届いたことにはしない。
 - K-6 の fibration 定理への依存追加は行わない。

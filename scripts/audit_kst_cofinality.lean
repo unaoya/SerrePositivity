@@ -29,7 +29,12 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagram,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagZero,
     `SerrePositivity.KST.SConstruction.Cofinality.MultiRelativeFlags,
-    `SerrePositivity.KST.SConstruction.Cofinality.SourceRelativeFlags]
+    `SerrePositivity.KST.SConstruction.Cofinality.SourceRelativeFlags,
+    `SerrePositivity.KST.SConstruction.Cofinality.WideCompletionSupply,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreEvaluation,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagonalEvaluation,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagImageComponents,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSourceRecovery]
   for m in env.header.modules do
     if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
@@ -74,3 +79,11 @@ run_cmd do
 #check @SerrePositivity.KST.SConstruction.Cofinality.multiRelativeFlagZeroIso
 #check @SerrePositivity.KST.SConstruction.Cofinality.suppliedMultiRelativeFlagsMap_zero
 #check @SerrePositivity.KST.SConstruction.Cofinality.multiSourceToRelativeFlags_zero
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.stableWideCofinalitySupply
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagDiagram
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagWideEvaluation
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeFlagEvaluation_zero
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionMultiWide_componentRetraction
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionMultiWideComponent_image_iff
+#check @SerrePositivity.KST.SConstruction.Cofinality.exists_multiSourceFamily_of_relative_component

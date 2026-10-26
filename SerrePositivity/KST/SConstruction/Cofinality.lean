@@ -1,4 +1,9 @@
 module
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSourceRecovery
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagImageComponents
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagDiagonalEvaluation
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeCoreEvaluation
+public import SerrePositivity.KST.SConstruction.Cofinality.WideCompletionSupply
 public import SerrePositivity.KST.SConstruction.Cofinality.CompleteSource
 public import SerrePositivity.KST.SConstruction.Cofinality.FullyFaithful
 public import SerrePositivity.KST.SConstruction.Cofinality.ZeroComparison
