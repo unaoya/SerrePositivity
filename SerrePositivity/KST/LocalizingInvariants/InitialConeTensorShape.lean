@@ -32,6 +32,14 @@ def initialConeOppositeIso (K : SSet.{u}) :
   stableJoinReverseIso K.op Δ[0] ≪≫
     joinIso (stdSimplex.opIso ⦋0⦌) (SSet.opFunctorCompOpFunctorIso.app K)
 
+/-- 反転前の元の図式の包含は、同じ左錐の底包含へ戻る。 -/
+lemma initialConeOppositeIso_old (K : SSet.{u}) :
+    SSet.opFunctor.map (joinInl K.op (Δ[0] : SSet.{u})) ≫
+      (initialConeOppositeIso K).hom =
+      (SSet.opFunctorCompOpFunctorIso.app K).hom ≫ joinInr (Δ[0] : SSet.{u}) K := by
+  rw [initialConeOppositeIso, Iso.trans_hom, ← Category.assoc, stableJoinReverse_inl]
+  exact joinInr_joinMap _ _
+
 /-- 元の図式と尾部を貼った、共通始点を追加する前の全台。 -/
 abbrev initialConeTensorCorner (A L : SSet.{u}) : SSet.{u} :=
   (F2.Ind.coneTensorCorner A.op L.op).op

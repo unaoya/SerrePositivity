@@ -31,6 +31,28 @@ def initialConeTensorTailInclusion (A L : SSet.{u}) :
   SSet.opFunctor.map (pushout.inr (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
     (joinInl A.op Δ[0] ▷ L.op))
 
+instance initialConeTensorOldInclusion_mono (A L : SSet.{u}) :
+    Mono (initialConeTensorOldInclusion A L) := by
+  have : Mono (joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) := (tensorRight _).map_mono _
+  have hm : Mono (pushout.inl (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
+      (joinInl A.op Δ[0] ▷ L.op)) :=
+    Adhesive.mono_of_isPushout_of_mono_right (IsPushout.of_hasPushout _ _)
+  unfold initialConeTensorOldInclusion
+  rw [NatTrans.mono_iff_mono_app] at hm ⊢
+  intro n
+  exact hm _
+
+instance initialConeTensorTailInclusion_mono (A L : SSet.{u}) :
+    Mono (initialConeTensorTailInclusion A L) := by
+  have : Mono (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})) := (tensorLeft _).map_mono _
+  have hm : Mono (pushout.inr (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
+      (joinInl A.op Δ[0] ▷ L.op)) :=
+    Adhesive.mono_of_isPushout_of_mono_left (IsPushout.of_hasPushout _ _)
+  unfold initialConeTensorTailInclusion
+  rw [NatTrans.mono_iff_mono_app] at hm ⊢
+  intro n
+  exact hm _
+
 /-- 元の二つの実境界は、同じ共有部分に沿う pushout で全境界を与える。 -/
 lemma initialConeTensorCorner_isPushout (A L : SSet.{u}) :
     IsPushout (SSet.opFunctor.map (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})))

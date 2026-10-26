@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismEdgeLifting
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.KST.LocalizingInvariants.SpecifiedBoundaryEdgeNormalization
 
 /-!
 概要：指定された境界同型の同じ辺を保持して、全図式の境界を厳密化する。
@@ -41,27 +40,13 @@ def iso : FunctorIso F d.diagram :=
 
 end SpecifiedBoundaryIsoNormalization
 
-private lemma boundaryMap_edge_target {E Y : SSet.{u}} (p : E ⟶ Y) (v : E _⦋1⦌) :
-    p.app (Opposite.op ⦋0⦌) (E.δ 0 v) = Y.δ 0 (p.app (Opposite.op ⦋1⦌) v) :=
-  ConcreteCategory.congr_hom (C := Type u)
-    (p.naturality (SimplexCategory.δ (0 : Fin 2)).op) v
-
 /-- 指定された境界同型の辺を変えずに、全図式の境界を厳密化する。 -/
 lemma exists_specifiedBoundaryIsoNormalization {K L X : SSet.{u}} [Quasicategory X]
     (j : K ⟶ L) [Mono j] (F : L ⟶ X) (G : K ⟶ X) (e : FunctorIso (j ≫ F) G) :
     Nonempty (SpecifiedBoundaryIsoNormalization j F G e) := by
   let a := SSet.Edge.ofTruncated (X := (ihom K).obj X) (FunctorIso.edge e)
-  obtain ⟨F', l, hl, hli⟩ := pre_liftInvertibleEdge_source j F G a
+  obtain ⟨d⟩ := exists_specifiedBoundaryEdgeNormalization j F G a
     (FunctorIso.edge_isInvertible e)
-  have hp : functorVertex (j ≫ F') = functorVertex G := by
-    calc
-      _ = ((pre j).app X).app (Opposite.op ⦋0⦌) (functorVertex F') := rfl
-      _ = ((pre j).app X).app (Opposite.op ⦋0⦌)
-          (((ihom L).obj X).δ 0 l.edge) := congrArg _ l.tgt_eq.symm
-      _ = ((ihom K).obj X).δ 0 (((pre j).app X).app (Opposite.op ⦋1⦌) l.edge) :=
-        @boundaryMap_edge_target ((ihom L).obj X) ((ihom K).obj X)
-          ((pre j).app X) l.edge
-      _ = functorVertex G := by rw [hl]; exact a.tgt_eq
-  exact ⟨⟨F', functorVertex_injective hp, l, hli, hl⟩⟩
+  exact ⟨⟨d.diagram, d.boundary, d.edge, d.isInvertible, d.restriction⟩⟩
 
 end SerrePositivity.KST.LocalizingInvariants
