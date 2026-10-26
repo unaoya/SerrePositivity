@@ -20,6 +20,8 @@ public import SerrePositivity.KST.LocalizingInvariants.CoconeApexIsoNormalizatio
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparisonResolution
+public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism
+public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement
 
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups
