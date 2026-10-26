@@ -18,6 +18,13 @@ public import SerrePositivity.KST.Spectra.SpectrumFiniteLimits
 public import SerrePositivity.KST.Spectra.AdjointLoopKanSequence
 public import SerrePositivity.KST.Spectra.AdjointLoopUnitRawHom
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBF
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleMaps
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleComposition
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleLaws
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleEnrichment
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleFunctors
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeGradedInclusion
+public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCoherentComparison
 public import SerrePositivity.KST.Spectra.FibrationSequence
 public import SerrePositivity.KST.Spectra.FibrationExactness
 public import SerrePositivity.KST.Spectra.HomotopyZeroRelations

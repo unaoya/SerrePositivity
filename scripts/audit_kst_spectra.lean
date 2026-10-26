@@ -15,6 +15,13 @@ run_cmd do
   let expected := #[
     `SerrePositivity.KST.Spectra.AdjointLoopUnitRawHom,
     `SerrePositivity.KST.Spectra.AdjointLoopRelativeBF,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleMaps,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleComposition,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleLaws,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleEnrichment,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleFunctors,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeGradedInclusion,
+    `SerrePositivity.KST.Spectra.AdjointLoopRelativeCoherentComparison,
     `SerrePositivity.KST.Spectra.AdjointLoopKanSequence,
     `SerrePositivity.KST.Spectra.SpectrumFiniteLimits,
     `SerrePositivity.KST.Spectra.DiscreteKanHomotopy,

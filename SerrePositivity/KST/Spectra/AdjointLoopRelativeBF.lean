@@ -6,7 +6,7 @@ public import SerrePositivity.KST.NonConnective.SequentialRelativeCofibration
 
 /-!
 概要：元の補助 loop 単位の相対 BF 分解を実構成する。
-方針：標的の絶対 BF 置換へ単位を持ち上げ、既存の BF 射の相対分解を適用する。
+方針：K-B-S2 の Kan 列標的の相対分解を元の単位へ直接適用する。
 規約：持ち上げの選択から関手性を結論しない。nativeLoop は変更しない。
 使われ方：全 Hom の比較へ接続する相対 cofibration と厳密な右射影。
 -/
@@ -58,45 +58,34 @@ lemma liftedUnit_projection (X : OmegaSpectrum.{u}) (n : ℕ) :
     (fun k ↦ ((target X).replacementStage k).projection_rlp) _ n
 
 /-- 概要：元の補助単位の相対 BF 分解の実中間対象。
-方針：持ち上げた BF 射に所有正本の相対分解を使う。
+方針：元の単位に所有正本の Kan 列標的の相対分解を使う。
 規約：K-B の相対 latching 帰納を複製しない。
 使われ方：全 Hom での相対比較の対象。 -/
 def middle (X : OmegaSpectrum.{u}) : OmegaSpectrum.{u} :=
-  sequentialBFArrowMiddle (liftedUnit X)
+  sequentialBFKanArrowMiddle (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X)
 
 /-- 概要：元の源から実中間 BF 対象への左因子。
 方針：既存の相対分解の左因子を使う。
 規約：元の BF 源のまま構成する。
 使われ方：相対 latching 単射条件を持つ比較。 -/
 def inclusion (X : OmegaSpectrum.{u}) : X ⟶ middle X :=
-  sequentialBFArrowLeft (liftedUnit X)
+  sequentialBFKanArrowLeft (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X)
 
 /-- 概要：実中間 BF 対象から元の補助標的への右因子。
-方針：相対分解の右因子と絶対 BF 置換射影を合成する。
+方針：元の単位を直接分解した右因子を使う。
 規約：標的を別の BF 代表に変えない。
 使われ方：元の単位の厳密回収。 -/
 def projection (X : OmegaSpectrum.{u}) : KanSequence.Hom (middle X).toKanSequence (target X) :=
-  (⟨(sequentialBFArrowRight (liftedUnit X)).app,
-    (sequentialBFArrowRight (liftedUnit X)).comm⟩ :
-      KanSequence.Hom (middle X).toKanSequence
-        ((target X).cofibrantOmegaSpectrum (target_omega X)).toKanSequence).comp
-    ((target X).cofibrantOmegaProjection (target_omega X))
+  sequentialBFKanArrowRight (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X)
 
 /-- 概要：相対分解の両因子は各段で元の補助単位を厳密に回収する。
-方針：BF 分解の合成式と持ち上げの射影式をつなぐ。
+方針：K-B-S2 の各段の厳密な分解式を適用する。
 規約：元の構造随伴そのものの等式。
 使われ方：全 Hom 比較の指定単位の境界条件。 -/
 lemma fac (X : OmegaSpectrum.{u}) (n : ℕ) :
     (inclusion X).app n ≫ (projection X).app n =
-      (KanSequence.adjointLoopTailUnit X.toKanSequence).app n := by
-  change (sequentialBFArrowLeft (liftedUnit X)).app n ≫
-    ((sequentialBFArrowRight (liftedUnit X)).app n ≫ _) = _
-  rw [← Category.assoc]
-  have h := congrArg (fun f ↦ OmegaSpectrum.Hom.app f n)
-    (sequentialBFArrow_fac (liftedUnit X))
-  change (sequentialBFArrowLeft (liftedUnit X)).app n ≫
-    (sequentialBFArrowRight (liftedUnit X)).app n = (liftedUnit X).app n at h
-  rw [h, liftedUnit_projection]
+      (KanSequence.adjointLoopTailUnit X.toKanSequence).app n :=
+  sequentialBFKanArrow_fac (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X) n
 
 /-- 概要：左因子の零段と全ての相対 latching 射は実際に単射。
 方針：所有正本の相対分解の検証を適用する。
@@ -104,17 +93,17 @@ lemma fac (X : OmegaSpectrum.{u}) (n : ℕ) :
 使われ方：後続の全 Hom の相対充填。 -/
 lemma inclusion_relative (X : OmegaSpectrum.{u}) :
     IsSequentialRelativeCofibration (inclusion X) :=
-  sequentialBFArrowLeft_isRelativeCofibration (liftedUnit X)
+  sequentialBFKanArrowLeft_isRelativeCofibration
+    (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X)
 
 /-- 概要：右因子は全ての段で全単射に対する RLP を持つ。
-方針：二つの実射影の RLP を合成する。
+方針：直接分解の右因子の RLP を適用する。
 規約：元の補助標的への射そのものを検証する。
 使われ方：全 Hom の実 trivial fibration への適用。 -/
 lemma projection_rlp (X : OmegaSpectrum.{u}) (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp ((projection X).app n).right :=
-  (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
-    (sequentialBFArrowRight_rlp (liftedUnit X) n)
-    ((target X).replacementStage n).projection_rlp
+  sequentialBFKanArrowRight_rlp
+    (KanSequence.adjointLoopTailUnit X.toKanSequence) (target_omega X) n
 
 /-- 概要：相対分解の左因子も各段で元の全基点 π 同型。
 方針：元の単位の π 同型から右因子の全単射 RLP を打ち消す。
