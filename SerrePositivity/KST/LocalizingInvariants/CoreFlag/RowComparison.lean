@@ -1,0 +1,137 @@
+module
+
+public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.TransposeSimplex
+public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.Rows
+
+/-!
+概要：core 旗を転置した行と全辺可逆な図式の部分圏の比較。
+方針：二つの標準単体の変数を交換し、点ごとの可逆性判定で core 条件を移す。
+規約：評価を外側次数について自然と主張しない。
+使われ方：Sp-8 の定数二重単体集合からの行弱同値。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+open InfinityCategories
+
+/-- パラメーター次数を外側にした core 旗。 -/
+def transposeResolution (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
+  (resolution C).flip
+
+/-- 転置した各行は全辺可逆な標準単体図式の部分圏。 -/
+def rowIso (C : SSet.{u}) [Quasicategory C] (m : SimplexCategoryᵒᵖ) :
+    (transposeResolution C).obj m ≅ equivalenceDiagrams (stdSimplex.obj m.unop) C where
+  hom :=
+    { app n := ↾fun s ↦ ⟨transposeSimplex s.val, (transpose_mem_iff s.val).mp s.property⟩
+      naturality {n k} f := by
+        apply ConcreteCategory.hom_ext
+        intro s
+        apply Subtype.ext
+        apply Functor.functorHom_ext
+        intro d g
+        apply ConcreteCategory.hom_ext
+        intro x
+        dsimp [transposeResolution, resolution, functorDiagram, equivalenceDiagrams,
+          quasicategoryCoreFunctor, quasicategoryCoreMap, quasicategoryCoreLift, transposeSimplex]
+        change s.val.app d ((𝟙 m) ≫ (stdSimplex.objEquiv x).op)
+            ((stdSimplex.map f.unop).app d (stdSimplex.objEquiv.symm g.unop)) =
+          s.val.app d (stdSimplex.objEquiv x).op (stdSimplex.objEquiv.symm (f ≫ g).unop)
+        simp only [Category.id_comp]
+        congr 1 }
+  inv :=
+    { app n := ↾fun s ↦ ⟨transposeSimplex s.val, (transpose_mem_iff _).mpr (by
+        rw [transposeSimplex_transposeSimplex]
+        exact s.property)⟩
+      naturality {n k} f := by
+        apply ConcreteCategory.hom_ext
+        intro s
+        apply Subtype.ext
+        apply Functor.functorHom_ext
+        intro d g
+        apply ConcreteCategory.hom_ext
+        intro x
+        dsimp [transposeResolution, resolution, functorDiagram, equivalenceDiagrams,
+          quasicategoryCoreFunctor, quasicategoryCoreMap, quasicategoryCoreLift, transposeSimplex]
+        change s.val.app d (f ≫ (stdSimplex.objEquiv x).op) (stdSimplex.objEquiv.symm g.unop) =
+          s.val.app d (stdSimplex.objEquiv ((stdSimplex.map f.unop).app d x)).op
+            (stdSimplex.objEquiv.symm ((𝟙 m) ≫ g).unop)
+        simp only [Category.id_comp]
+        congr 2 }
+  hom_inv_id := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro s
+    apply Subtype.ext
+    exact transposeSimplex_transposeSimplex s.val
+  inv_hom_id := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro s
+    apply Subtype.ext
+    exact transposeSimplex_transposeSimplex s.val
+
+/-- パラメーター方向に定値な二重単体集合。 -/
+def constantDiagram (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} :=
+  (Functor.const SimplexCategoryᵒᵖ).obj C
+
+/-- 元の旗を保持する行定数包含。 -/
+def rowInclusion (C : SSet.{u}) (m : SimplexCategoryᵒᵖ) :
+    C ⟶ (transposeResolution C).obj m where
+  app n := ↾fun s ↦ ⟨constantSimplex s, constantSimplex_mem s⟩
+  naturality {n k} f := by
+    apply ConcreteCategory.hom_ext
+    intro s
+    apply Subtype.ext
+    apply Functor.functorHom_ext
+    intro d g
+    apply ConcreteCategory.hom_ext
+    intro x
+    change C.map (stdSimplex.objEquiv x).op (C.map f s) =
+      C.map (stdSimplex.objEquiv ((stdSimplex.map f.unop).app d x)).op s
+    have hc := C.map_comp_apply f (stdSimplex.objEquiv x).op s
+    dsimp at hc ⊢
+    rw [← hc]
+    congr 2
+
+/-- 各行の定数包含を二重単体集合の射として束ねる。 -/
+def bisimplicialInclusion (C : SSet.{u}) : constantDiagram C ⟶ transposeResolution C where
+  app m := rowInclusion C m
+  naturality {m k} f := by
+    apply SSet.hom_ext
+    intro n
+    apply ConcreteCategory.hom_ext
+    intro s
+    apply Subtype.ext
+    rfl
+
+/-- 行の同定は元の定数包含を通常の定値図式に送る。 -/
+lemma rowInclusion_rowIso (C : SSet.{u}) [Quasicategory C] (m : SimplexCategoryᵒᵖ) :
+    rowInclusion C m ≫ (rowIso C m).hom = constant (stdSimplex.obj m.unop) C := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro s
+  apply Subtype.ext
+  apply Functor.functorHom_ext
+  intro d g
+  apply ConcreteCategory.hom_ext
+  intro x
+  rfl
+
+/-- 転置した全行の定数包含は弱ホモトピー同値。 -/
+lemma rowInclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C]
+    (m : SimplexCategoryᵒᵖ) : IsWeakHomotopyEquivalence (rowInclusion C m) := by
+  have hm := (isPrecompositionEquivalence_of_iso (rowIso C m)).isWeakHomotopyEquivalence
+  apply hm.cancel_right
+  rw [rowInclusion_rowIso]
+  exact simplexConstant_isWeakHomotopyEquivalence C m.unop.len
+
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag
