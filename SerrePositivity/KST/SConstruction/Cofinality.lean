@@ -94,6 +94,36 @@ public import SerrePositivity.KST.SConstruction.Cofinality.RelativeEvaluationNat
 
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeHeadComparison
 
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedFlagSupplyComparison
+
+public import SerrePositivity.KST.SConstruction.Cofinality.ClosedFlagSupplyIso
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagStableModel
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagInclusionExact
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSTranspose
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSEdgeDetection
+
+public import SerrePositivity.KST.SConstruction.Cofinality.CoreFlagSupply
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSSimplexDetection
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSEvaluations
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSTransposeWide
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSTransposeLift
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSEvaluationFlags
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSInverseDiagram
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSInverse
+
+public import SerrePositivity.KST.SConstruction.Cofinality.RelativeSInterchange
+
 /-!
 概要：K-cof 所有の共終性補助結果を集約する。
 方針：新規葉だけを公開し、既存の S• 集約には逆依存を加えない。

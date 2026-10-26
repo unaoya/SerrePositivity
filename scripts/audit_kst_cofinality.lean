@@ -4,7 +4,7 @@ import Lean.Util.CollectAxioms
 /-!
 概要：K-cof 所有葉の全宣言と推移的公理依存を監査する。
 方針：実 import 元で所有宣言を列挙し、標準三公理だけであることを強制する。
-規約：主経路の ModelCategory 型仮定、K-B 所有モジュールへの逆依存を拒否する。
+規約：ModelCategory 型仮定と、採用済み狭い旗供給以外の K-B 依存を拒否する。
 使われ方：K-cof の集約ビルド後の限定監査。
 -/
 
@@ -83,9 +83,37 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.Cofinality.WideHeadDiscretization,
     `SerrePositivity.KST.SConstruction.Cofinality.WideHeadVanishing,
     `SerrePositivity.KST.SConstruction.Cofinality.RelativeEvaluationNaturality,
-    `SerrePositivity.KST.SConstruction.Cofinality.RelativeHeadComparison]
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeHeadComparison,
+    `SerrePositivity.KST.SConstruction.Cofinality.ClosedFlagSupplyComparison,
+    `SerrePositivity.KST.SConstruction.Cofinality.ClosedFlagSupplyIso,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagStableModel,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagInclusionExact,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSTranspose,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSEdgeDetection,
+    `SerrePositivity.KST.SConstruction.Cofinality.CoreFlagSupply,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSSimplexDetection,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSEvaluations,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSTransposeWide,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSTransposeLift,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSEvaluationFlags,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSInverseDiagram,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSInverse,
+    `SerrePositivity.KST.SConstruction.Cofinality.RelativeSInterchange]
+  -- K-B2-S1 の公開済み旗定義だけの import 閉包。fiber 供給の到着とは区別する。
+  let approvedRelativeClosure := #[
+    `SerrePositivity.KST.Fibration.FullPredicateRestriction,
+    `SerrePositivity.KST.Fibration.KernelCofiberModel,
+    `SerrePositivity.KST.Fibration.Relative.ClosedStableFlags,
+    `SerrePositivity.KST.Fibration.WeakArrowCategory,
+    `SerrePositivity.KST.Fibration.WeakArrowClosedPredicate,
+    `SerrePositivity.KST.Fibration.WeakCofiberVertices,
+    `SerrePositivity.KST.Fibration.WeakEquivalences,
+    `SerrePositivity.KST.Fibration.WeakStrings,
+    `SerrePositivity.KST.Fibration.WeakStringsSimplicial,
+    `SerrePositivity.KST.Fibration.WeakStringsStability]
   for m in env.header.modules do
-    if (`SerrePositivity.KST.Fibration).isPrefixOf m.module ||
+    if ((`SerrePositivity.KST.Fibration).isPrefixOf m.module &&
+        !approvedRelativeClosure.contains m.module) ||
         (`SerrePositivity.KST.NonConnective).isPrefixOf m.module then
       throwError "K-cof: reverse dependency on K-B: {m.module}"
   let mut count : Nat := 0
@@ -185,3 +213,16 @@ run_cmd do
 
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionWideHead_higher_of_input
 #check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeHead_higher_of_input
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionClosedFlagPredicate_iff
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionClosedFlagStableIso
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionSWideEdge_iff_pointwise
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionCoreFlagEvaluationInput
+#check @SerrePositivity.KST.SConstruction.Cofinality.groupNerveHigherVanishingInput
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeHead_higher_subsingleton
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeSTranspose
+
+#check @SerrePositivity.KST.SConstruction.Cofinality.completionRelativeSInterchangeIso

@@ -4,100 +4,73 @@
 
 ### 現在地
 - 二段目は任意の指定完備化射の一般共終性。主定理は未完成。
-- K-B2-S1 採用・発注済み（末尾）。現在の import は K-6 非依存、実供給は未到着。
-- 06:29 採用の D-22（`Stable/IdempotentCompletionDensity`）を消費済み。
-  同じ全多次数の有限反復 S で双積懸垂の像回収と全パラメータ族の回収を実装。
-- **08:16 採用・再開**：HLS §7.1 の wide 部分圏の亜群化経路を採用。
-  一般の wide 部分複体と亜群化の離散性は Sp-7 として Sp に発注済み。
-  **09:03 到着（c85f08b8d）**：公開定理を読み取り専用 import し、実証明を代入済み。
-- Sp-7 の結論を `StableWideCofinalitySupply` として明示的な仮定引数に取り、
-  一般供給からの変換 `stableWideCofinalitySupply_of_api` も実装。
-  `stableWideCofinalitySupply` で供給仮定を消去済み。一般共終性は未証明。
-- 反復 S の標的の完備性を第一行同値から移し、D-22 から retract 条件を作った。
-  したがって同じ指定射の全多次数の反復 S も実際に冪等完備化となる。
-- Sp-7 の供給値から全多次数の厳密な wide 図式と元の S 図式への自然包含を構成。
-  選択の自然性を仮定せず、全辺の cofiber 条件の保存で面・退化を構成する。
-- 相対旗は wide 内部 Hom の頂点像を持つ ambient 関手圏の**全部分複体**。
-- 旗の未置換零段と元の同じ反復 S 対象との厳密な同型を構成。
-  この比較は全多次数の構造射と可換。始域の旗を相対旗へ写す射も実装し、
-  零段の比較後に元の指定反復 S 射を厳密に回収する。
-- 実供給を代入した相対 core 旗の対角実現から、Sp-7 の具体的な wide 模型への
-  全評価射を構成。水平辺・可逆な垂直辺・斜辺を検査し、全単体を持ち上げた。
-  対角評価は包含後に元の評価を回収し、零単体で未置換零段比較と一致する。
-- 同じ wide 成分内の本質像所属の同値を証明。連結なパラメータの一頂点が像に入れば
-  全図式を同じ反復 S 射の始域へ一つの関手同型で回収できる。
-- 選択した wide 模型を Sp の全辺模型と同定し、成分への実切断・全収縮も消費した。
-- 実際の相対旗の頂点から wide 持ち上げを取り出し、連結な旗の一頂点の像所属から
-  同じ相対旗圏内で始域の旗との頂点同型を回収。逆向きの判定も実装。
-- 一頂点が像に入る相対旗の全部分圏と、元の始域の全旗圏との圏同値を構成。
-  順方向の実射とその core 射が同値。像部分の安定性も移送済み。
-- 元の `kSpectrumMap` の目標条件と未置換零段の群条件との同値は既存の自所有葉に実装済み。
-- **Sp-8 採用済み**：一般 core 旗比較は独立レーンへ発注済み。実供給は未到着。
-  評価は Δ[n] → Δ[n]×Δ[n] の対角制限と `rfl` で一致。変更不要。
-- 内部 wide 旗と ambient 相対旗の core の自然同型、および対角同型を構成済み。
-  ambient core 全体の wide への持ち上げから、可逆辺を wide 内へ反映する。
-- `CompletionCoreFlagEvaluationInput` を明示的に受け取れば、同じ元の
-  `completionRelativeFlagWideEvaluation` の弱同値性を結論する接続を検証済み。
-  Kan 置換の全正次数の一意性まで接続。一般供給を公理や instance にしない。
-- 連結な相対旗の回収障害を具体的 wide 模型の成分へ降ろし、元の始域像が
-  任意の始域頂点の像の基点成分そのものであることを証明済み。
-- 本質像を全多次数の `ClosedStablePredicate` として実装。元の始域との安定模型同値、
-  S 交換同型、全 Ar 像条件との同値、全多次数の厳密な自然変換を構成済み。
-- 本質像包含の各整数 K 群の全単射性・単射性を元の指定射と同値にした。
-  wide 成分は双積和による可換群となり、元の三角圏 K₀ 余核と全多次数で自然に群同型。
-- 元の S_n の左右の区間制限による K₀ 直積同型と、指定射の K₀ 余核の直積同型を構成。
-  全面・退化を含む bar 同型を元の全多次数成分図式へ接続。Sp-8 (2) 入力下で高次消滅。
-- 元の自然な成分射影は全多次数で弱同値。元の相対旗の対角評価も全多次数で自然。
-  Sp-8 (1)・(2) の明示入力下で元の相対先頭実現の二次以上の消滅を接続済み。
+- D-22（57b4a57a4）、Sp-7（c85f08b8d）、Sp-8 (1)(2)（9b6037230）を実証明で消費済み。
+- 指定完備化射は同じ全多次数の有限反復 S でも実際に冪等完備化。
+- 元の相対旗は、wide 内へ全体として持ち上がる旗を頂点とする ambient 全関手圏の全部分圏。
+  元の未置換零段と元の反復 S 対象の厳密同型は全多次数の構造射と可換。
+- 相対 core 旗の対角評価は Δ[n] → Δ[n]×Δ[n] の対角制限。
+  Sp-8 counit と rfl で一致。CompletionCoreFlagEvaluationInput を実証明で消去済み。
+- 本質像を全多次数の ClosedStablePredicate として実装。元の始域との安定模型同値、
+  S 交換同型、全 Ar 像条件、元の指定 K 射への比較を実装済み。
+- wide 成分は双積和による可換群で、元の K₀ 余核と全多次数で自然に群同型。
+- 元の区間制限・全ての面と退化による S 余核の bar 同型を構成済み。
+  群 nerve の高次消滅へ Sp-8 (2) を代入済み。
+- 元の自然な成分射影は全多次数で弱同値。元の相対先頭実現の二次以上の消滅を、
+  Sp-8 (1)(2) の追加仮定なしで公開済み。
+- K-B2-S1 は採用・発注済み。公開された ClosedStableFlags の狭い10葉閉包だけを消費。
+  本質像を代入した供給側 R_P と元の相対旗の包含を保つ厳密同型・安定模型同型を構成。
+- 元の相対旗の S 転置は、全 Ar 評価の分母判定で次段の元の相対旗へ持ち上がる。
+  逆転置も全 Ar 成分で元の相対旗へ入り、全部分圏から gapped 性を反映する。
+  completionRelativeSInterchangeIso で往復が厳密に恒等となる同型を構成済み。
+- 相対 fiber 本体は未到着。完備化前の K-6 と循環しない旗定義の部分だけを使用する。
 
 ### 残り（三段目、依存順）
 1. [x] 所有閉包・指定 K 射・比較入口の確認。
-2. [x] D-22 を同じ全多次数へ代入し、反復 S の実完備化証拠を構成。
-3. [ ] 相対 S• の実現比較（HLS §7.1 第一証明、残り8〜12時間）。
-   一般 core 旗比較の供給を消費し、相対図式の実現、加法的 fiber 比較、障害の同定を行う。
+2. [x] D-22 を全多次数へ代入し、反復 S の実完備化証拠を構成。
+3. [ ] 相対 S• の実現比較（HLS §7.1、残り6〜10時間）。
+   相対旗 S 交換の往復・自然性と相対 fiber 供給の右項の実現を照合する。
 4. [ ] 正次数全単射・零次単射（HLS §7.1、5〜8時間）。
-5. [ ] 同じ `kSpectrumMap f` への照合と一般形公開（TT 1.10.1、3〜6時間）。
-6. [ ] 自分の集約・監査・型仮定検査・限定コミット（2〜5時間）。
+5. [ ] 同じ kSpectrumMap f への照合と一般形公開（TT 1.10.1、3〜6時間）。
+6. [ ] 自所有集約・監査・型仮定検査・限定コミット（2〜5時間）。
 - 初期総見積り24〜40時間。現在の実装は主定理の二段目完了とはしない。
 
 ### 主要宣言
-- `Cofinality.cutCokernelBarIso`
-- `Cofinality.cutCokernelEquiv`
-- `Cofinality.completionWideKZeroObstructionEquiv`
-- `Cofinality.completionRelativeFlagWideEvaluation`
-- `Cofinality.completionWideComponentCokernelNatIso`
-- `Cofinality.completionRelativeHead_higher_of_input`
-- `Cofinality.completionWideHeadDiscretization_isWeak`
-- `Cofinality.completionMultiWide_componentRetraction`
+- Cofinality.completionCoreFlagEvaluationInput
+- Cofinality.groupNerveHigherVanishingInput
+- Cofinality.completionRelativeHead_higher_subsingleton
+- Cofinality.completionRelativeFlagWideEvaluation_isWeak
+- Cofinality.cutCokernelBarIso
+- Cofinality.completionWideKZeroObstructionEquiv
+- Cofinality.completionClosedFlagStableIso
+- Cofinality.completionRelativeSTranspose
+- Cofinality.completionRelativeSInterchangeIso
 
 ### 依存と提供
-- 所有：`KST/SConstruction/Cofinality/` の新規葉、同名集約、
-  `scripts/audit_kst_cofinality.lean`、本計画（300行以内）。
-- 読取専用：既存 SConstruction の第一行同値・実 K 段比較・一点関手評価、
-  F2/Idempotent の全関手圏の完備性・図式回収、Stable の D-22。
-- 一般局所化・亜群化 API は Sp 正本。現時点で Fibration・NonConnective は import なし。
-  InfinityCategories と既存 SConstruction は編集しない。
+- 所有：KST/SConstruction/Cofinality/ 新規葉、同名集約、
+  scripts/audit_kst_cofinality.lean、本計画（300行以内）。
+- 読取専用：既存 SConstruction、F2/Idempotent、Stable/D-22、Sp/LocalizingInvariants。
+  Fibration は採用済み旗定義の正確な10葉閉包だけを監査で許可。NonConnective は不使用。
+- InfinityCategories、既存 SConstruction・他レーンの集約・監査は編集しない。
 
-### 保存範囲
-- `1753deeff`：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
-- `0c5d6b4ea`：元の区間制限・切断からの K₀ および K₀ 余核の直積分解。
-- `1d7d3618c`：元の S 余核の bar 同型と条件付き高次消滅。
-  今回の保存：元の全多次数相対旗の先頭実現への条件付き高次消滅の接続。
+### 保存範囲・未コミット
+- 1753deeff：元の全多単体的 wide 成分図式と K₀ 余核図式の自然同型。
+- 0c5d6b4ea：元の区間制限・切断による K₀ とその余核の直積分解。
+- 1d7d3618c：元の S 余核の bar 同型と条件付き高次消滅。
+- 202d72e78：元の相対先頭実現への条件付き高次消滅の接続。
+- 今回：Sp-8 実消費、K-B2 の旗同型と元の相対旗の S 転置・逆転置。
+  所有葉・集約・監査・本計画を限定保存する。実施記録はコミット本文。
 
 ### 既知の問題
-- 主共終性・相対 fiber 本体・R_P の S 交換と元の相対旗との照合は未証明。
-- `F ⊕ ΣF` の像回収から元の F の像回収や元の K 射の正次数同型を推論しない。
-- 主経路に始域の完備性・全射 K₀・`ModelCategory SSet` を追加しない。
-- 自所有集約ビルド成功（7918 jobs）。公理監査成功（71モジュール・579宣言、標準公理のみ）。
-  型の ModelCategory 仮定・K-B への禁止 import なし。新規 sorry・公理なし。
+- 主共終性・相対 fiber 本体・元の相対先頭実現と供給右項の照合は未完成。
+- F ⊕ ΣF の像回収から元の F の像回収や K 射の正次数同型を推論しない。
+- 主経路に始域の完備性・全射 K₀・ModelCategory SSet を追加しない。
+- 検証済み：集約ビルド成功（7964 jobs）、86モジュール・649宣言の公理監査成功。
+  標準三公理のみ、型の ModelCategory 仮定・禁止 import・新規 sorry・公理なし。
 
 ### 次の一手
-- Sp-8 の到着後に `CompletionCoreFlagEvaluationInput` へ実供給を代入する。
-  それまでは、この入力を明示的な引数にして相対 fiber 比較と障害の同定を続行する。
-- 本質像を ClosedStablePredicate として代入し、全 S 多次数の像比較を接続する。
-  元の相対先頭実現の条件付き高次消滅は実装済み。R_P の S 交換・fiber・主共終性は未完。
-- 一般 BG の高次ホモトピー消滅は Sp-8 (2) として採用・発注済み（末尾）。
-  到着まで明示仮定を保持し、元の S 余核図式の bar 同定を続行する。
+- 元の相対旗の S 交換同型の全多次数の自然性を元の包含で照合する。
+- K-B2-S1 の相対 fiber 本体到着後、元の相対先頭実現の無条件な高次消滅を代入する。
+  元の kSpectrumMap の正次数全単射・零次単射は未完。
 
 ## 目標型
 
@@ -119,7 +92,8 @@
   `LocalizingInvariants.idempotentCompletion_cofiberWide_discrete` を消費済み。
 - 正確な消費型は `WideStageData` と `stableWideCofinalitySupply_of_api` が正本。
   型を単に記録しただけで、一般供給が届いたことにはしない。
-- K-B2-S1 の依存追加は未実施。到着後に狭い供給葉を読み取り専用で使う。
+- K-B2-S1 の公開旗定義 ClosedStableFlags の10葉閉包を読み取り専用で消費済み。
+  fiber 本体の到着とは区別する。
 
 ## 採用済み Sp-8：一般 core 旗比較を Sp 正本で供給
 
@@ -170,7 +144,7 @@
 
 ## 採用済み Sp-8 (2)：一般 BG の高次ホモトピー消滅
 
-- ユーザーが採用し、Sp-8 (2) として Sp-8 に発注済み。実供給は未到着。
+- Sp-8 (2) は 9b6037230 で到着し、groupNerveHigherVanishingInput へ実証明を代入済み。
 - 必要型：任意の `G : Type u`、`[Group G]`、`n : ℕ`、`1 < n`、基点 x について
   `Subsingleton (Spectra.KanHomotopy (F2.continuousKanReplacement.obj
     (nerve (AsSmall (SingleObj G)))) n x)`。
