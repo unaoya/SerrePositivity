@@ -2962,4 +2962,19 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceOuterComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelOuterSquareDiagramIso
 
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeFunctorLift
+public import SerrePositivity.KST.SConstruction.DGFullClosedMapLift
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeClosedComparison
+public import SerrePositivity.KST.SConstruction.DGClosedComparisonPostcomposition
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingFunctor
+public import SerrePositivity.KST.SConstruction.DGModuleLoopConeProjection
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeConnectingCochain
+public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeConnecting
+public import SerrePositivity.KST.SConstruction.DGHomGluingConeConnectingComparison
+public import SerrePositivity.KST.SConstruction.DGHomGluingLoopCone
+public import SerrePositivity.KST.SConstruction.DGHomGluingLoopConeModuleMaps
+public import SerrePositivity.KST.SConstruction.DGHomGluingLoopConeProjection
+public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotation
+public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationProjections
+
 /-! # ∞-S• 構成と連結 K 理論 -/
