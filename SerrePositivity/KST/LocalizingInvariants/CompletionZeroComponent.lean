@@ -25,7 +25,10 @@ variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsSt
   (f : C ⟶ D) [IsExactFunctor f]
 local instance : Preadditive D.HomotopyCategory := preadditive_ho (X := D)
 
-/-- 指定始域からの零射が、元の本質像の cofiber 分母であるという条件。 -/
+/-- 概要：指定始域からの零射が、元の本質像の cofiber 分母であるという条件。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 def completionZeroTarget (z y : D _⦋0⦌) : Prop :=
   (stableHoClosure (completionEssentialImage f)).trW
     (0 : (HomotopyCategory.mk z : hoFunctor.obj D) ⟶ HomotopyCategory.mk y)
@@ -33,13 +36,19 @@ def completionZeroTarget (z y : D _⦋0⦌) : Prop :=
 variable (h : F2.Idempotent.IsIdempotentCompletion f)
 include h
 
-/-- 元の本質像の分母には全ての退化辺が属する。 -/
+/-- 概要：元の本質像の分母には全ての退化辺が属する。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionCofiber_degenerate (z : D _⦋0⦌) :
     D.σ 0 z ∈ cofiberLocalizingEdges (completionEssentialImage f) := by
   rw [← stableClosure_completionEssentialImage f h.2.1]
   exact cofiberStableEdges_of_isInvertible _ (isInvertibleEdge_degenerate z)
 
-/-- 元の wide 部分複体は周囲の全頂点を含む。 -/
+/-- 概要：元の wide 部分複体は周囲の全頂点を含む。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionCofiberWide_vertex (z : D _⦋0⦌) :
     z ∈ (completionCofiberWide f).obj (Opposite.op ⦋0⦌) := by
   intro θ
@@ -47,7 +56,10 @@ lemma completionCofiberWide_vertex (z : D _⦋0⦌) :
   subst θ
   exact completionCofiber_degenerate f h z
 
-/-- 元の分母辺は、両端の退化を含めて同じ wide 部分複体の一単体になる。 -/
+/-- 概要：元の分母辺は、両端の退化を含めて同じ wide 部分複体の一単体になる。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionCofiberWide_edge (e : D _⦋1⦌)
     (he : e ∈ cofiberLocalizingEdges (completionEssentialImage f)) :
     e ∈ (completionCofiberWide f).obj (Opposite.op ⦋1⦌) := by
@@ -63,7 +75,10 @@ lemma completionCofiberWide_edge (e : D _⦋1⦌)
     rw [ht, hc, op_comp, D.map_comp]
     exact completionCofiber_degenerate f h _
 
-/-- 元の分母辺の両端で、同じ零分母の始域を使う条件は同値。 -/
+/-- 概要：元の分母辺の両端で、同じ零分母の始域を使う条件は同値。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionZeroTarget_edge_iff (z : D _⦋0⦌) {x y : D _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj D) x y)
     (he : e.edge ∈ cofiberLocalizingEdges (completionEssentialImage f)) :
@@ -89,7 +104,10 @@ lemma completionZeroTarget_edge_iff (z : D _⦋0⦌) {x y : D _⦋0⦌}
   have ht := cofiberStableEdges_compStruct_twoOfThree (completionEssentialImage f) s
   exact hax.trans ((Iff.intro (fun hw => ht.1 hw he') (fun hw => ht.2.2 he' hw)).trans hby.symm)
 
-/-- 同じ元の wide 成分の全頂点に対して、一つの零分母条件を輸送する。 -/
+/-- 概要：同じ元の wide 成分の全頂点に対して、一つの零分母条件を輸送する。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionZeroTarget_component (z : D _⦋0⦌)
     (x y : (completionCofiberWide f : SSet.{u}) _⦋0⦌)
     (he : SSet.π₀.mk x = SSet.π₀.mk y) :
@@ -105,7 +123,10 @@ lemma completionZeroTarget_component (z : D _⦋0⦌)
   | symm _ _ _ ih => exact ih.symm
   | trans _ _ _ _ _ ih₁ ih₂ => exact ih₁.trans ih₂
 
-/-- 元の各成分の指定頂点には、同じ成分の全対象へ零分母を持つ始域がある。 -/
+/-- 概要：元の各成分の指定頂点には、同じ成分の全対象へ零分母を持つ始域がある。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma exists_completionComponentZeroSource
     (x : (completionCofiberWide f : SSet.{u}) _⦋0⦌) :
     ∃ z : D _⦋0⦌, ∀ y : (completionCofiberWide f : SSet.{u}) _⦋0⦌,
@@ -119,7 +140,10 @@ lemma exists_completionComponentZeroSource
     rwa [hz] at hh
   exact ⟨z, fun y hy => (completionZeroTarget_component f h z x y hy).1 hx⟩
 
-/-- 各成分の零分母始域を、元の wide 部分複体の同じ成分の頂点として回収する。 -/
+/-- 概要：各成分の零分母始域を、元の wide 部分複体の同じ成分の頂点として回収する。
+方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
+規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
+使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma exists_completionComponentZeroVertex
     (x : (completionCofiberWide f : SSet.{u}) _⦋0⦌) :
     ∃ z : (completionCofiberWide f : SSet.{u}) _⦋0⦌,

@@ -17,9 +17,9 @@
 
 ### Sp-7 の三段目（K-cof 依頼、d3 より先、10-26 採用）
 - [x] w1. 元の本質像の安定閉性、全単体の全辺条件の wide 部分複体と quasicategory 性を構成する。
-- [ ] w2. 密度からの実零分母・成分内輸送・成分切断と厳密右逆・周囲の全零ホモトピー・prism 全辺判定は集約監査済み。wide 内の全収縮への接続を続ける。
-- [ ] w3. 同じ wide 部分複体の continuousKanReplacement の全正次数 KanHomotopy の消滅を証明する。
-- [ ] w4. SConstruction なしの新葉・集約・監査を保存し、完成した公開名を K-cof へ報告。その後 d3 の有限極限・hΩ を埋め sp_isStable へ。
+- [x] w2. 密度からの実零分母・成分内輸送・成分切断と厳密右逆・全零ホモトピー・全 prism の所属を構成し、元の wide 内の全収縮へ接続する。
+- [x] w3. 同じ wide 部分複体の continuousKanReplacement の全正次数 KanHomotopy の消滅を証明する。
+- [x] w4. SConstruction なしの新葉・集約・監査を保存し、idempotentCompletion_cofiberWide_discrete を K-cof 向けに公開。二段目完了で引き継ぎ停止、次は d3 の有限極限・hΩ を埋め sp_isStable へ。
 
 ### K-8 e の三段目（s3 待機中、10-26 指示）
 - [x] e1. 既存の積の切断降下・Postnikov 代数切断・pro fiber 連結度判定の範囲を照合する。
@@ -52,10 +52,10 @@
 - [x] g6. bounded-below 条件下の切断 pro 判定と、LT Lemma 2.30 の連結なレベル表示を構成する。
 - [x] g7. Cor. 2.31 を元の不変量値の塔へ適用し、次数別 eventual 連結度から π-pro 同値へ接続する。
 
-## 引き継ぎ（2026-10-26、Sp-7 を先行、次に d3）
+## 引き継ぎ（2026-10-26、Sp-7 完了で二段目区切り、次に d3）
 
 ### 現在地
-- **再開の第一工程**：10-26 採用の Sp-7（K-cof）を d3 より先に進める。元の本質像の cofiber 分母からなる wide 部分複体・QC 性まで対象ビルド済み。亜群化の離散性は未証明。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。Sp-7 後は D の isStable_of_loopEquivalence へ実有限極限・hΩ を代入する。
+- **再開の第一工程**：Sp-7 の二段目を閉じた後、d3 の実有限極限の包装と hΩ を確認・補完し、D の isStable_of_loopEquivalence を適用して sp_isStable へ進む。Sp-7 は IdempotentCompletionCofiberGroupoid の idempotentCompletion_cofiberWide_discrete で公開（追加仮定なし、元の本質像・全単体条件・QC 性・Kan 置換の正次数の自明性）。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
 - **β6 f・h の現在地**：E2-S (7) fd3fd4bb8 の原本 Yoneda 全比較を実適用。元の AW 全標的図式と指定局所化 Hom の同型、全 ordinary Hom 単位を保つ under 同型、元の局所化上への延長と指定二胞体の厳密回収、元の postnikovInfinityCone の IsLimitCone を提供。非正次数の実 dg 代数 B・全 n≥0、元の頂点・二脚・class と指定底の実 fiber 模型を保持。比較・frame・ModelCategory を追加入力にしない。h の主要宣言は下表、検証記録はコミットメッセージ。
 - **Sp-6 s1・s2 完了**：元の K-S• の対角・実商・指定 ε から同じ固定 S の全四辺を持つ実零化四角形を構成し、全対象商 A/A の固定 ν 値の零性を D-20 の実 Perf 評価同値で認証した。S 内の自然な収縮を追加仮定しない。s3 の旧 image_eq 版の名前・型と境界付き全図式比較の接続口は維持。D-21 の実完備化は K-S• の dgOdotMilnorCompletion に特殊化済み。実 S 長方形・屋根と全指定境界比較の一体化は未供給。s4 は実適用・集約・監査・公開保存を完了。β6 f・h は完了。
 - **β6 g 完了（native dg／π-pro 界面）**：任意の有限切断の実非正次数逆 roof・両三角形・切断間遷移との整合、bounded-below 判定、元の未切断の射を保つ連結な実レベル表示、元の IsKConnective 不変量値の pro 連結度と π-pro 同値を供給する。比較脚は全有限切断の実逆を持ち、一般 pro ∞ 圏の同値との同一視は行わない。
@@ -88,6 +88,7 @@
 
 - K-B K-7 d2 追加依頼：SpectrumHo.nativeLoopPiIso、nativeCirclePiIso、nativeLoopPiIso_circle_comparison。全整数 j の元の h Sp 上の π 関手の自然同型。実 loop 四角形の接続射の全図式自然性から構成し、公開の nativeLoopCircleFunctorIso に沿う円 cotensor 比較を保持する。
 - D2 追加依頼：LaxInclusion.snd_kernel（元の lax 第二射影の零対象性と exactFromC の本質像）。
+- Sp-7：idempotentCompletion_cofiberWide_discrete（IdempotentCompletionCofiberGroupoid）。一般の安定 quasicategory と exact な冪等完備化に対し、元の本質像の cofiber 分母を全辺とする wide 部分複体・QC 性・連続 Kan 置換の全正次数の Subsingleton を与える。具体的入力・ModelCategory 仮定・SConstruction import はない。成分切断・元の wide 内の全収縮も公開。
 
 - Sp-6 の追加接続口：VerdierSquareDiagramIso、VerdierRectangleDiagramIso、RelativeVerdierRectangle.ofActualFaces、DGOdotVerdierRectangleComparisonInput.toStrict／toStrict_comparison_isPullback、DGKappaRelativeRoofComparisonInput.toStrict／toStrict_isPullback、exists_dgKappaRelativeRoof_of_fixedNull。
 - Sp-6：exists_dgOdotFixedNullSquare、exists_dgOdotRelativeNullDiagram、exists_dgFixedNullRelativeRoof（K-B 用の元の三頂点・商一単体を回収）。RelativeVerdierDiagram.ofSquare／exists_of_source_comm は元の Verdier 列と源の四辺を保持する。dgNullCorner_composite／dgNullCornerComparison_epsilon は全対象商を経由する元の dg 商合成と指定 ε の厳密回収。dgNullCorner_vertex_isZero は native dg nerve の零性であり、固定 ν の Perf 値の零性とは分ける。

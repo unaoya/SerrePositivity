@@ -11,6 +11,9 @@ public import SerrePositivity.KST.Spectra.HomotopyInvariance
 public import SerrePositivity.KST.Spectra.HomotopyDegreeZero
 public import SerrePositivity.KST.Spectra.Commutativity
 public import SerrePositivity.KST.Spectra.HomotopyIndexing
+public import SerrePositivity.KST.Spectra.DiscreteKanHomotopy
+public import SerrePositivity.KST.Spectra.ConstantKanModel
+public import SerrePositivity.KST.Spectra.ComponentRetractionKanHomotopy
 public import SerrePositivity.KST.Spectra.FibrationSequence
 public import SerrePositivity.KST.Spectra.FibrationExactness
 public import SerrePositivity.KST.Spectra.HomotopyZeroRelations

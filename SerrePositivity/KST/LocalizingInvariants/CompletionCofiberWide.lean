@@ -22,11 +22,17 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
   (f : C ⟶ D) [IsExactFunctor f]
 
-/-- 元の完全関手の頂点の本質像。 -/
+/-- 概要：元の完全関手の頂点の本質像。
+方針：h 圏の三角的本質像で安定閉包を照合し、実全辺条件の部分複体を使う。
+規約：安定閉包は元の本質像に等しく、retract 閉包への拡大を行わない。
+使われ方：Sp-7 の冪等完備化の入力と K-cof への供給。 -/
 def completionEssentialImage : Set (D _⦋0⦌) :=
   {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}
 
-/-- 完全充満忠実な包含の本質像は、元の安定閉包と等しい。 -/
+/-- 概要：完全充満忠実な包含の本質像は、元の安定閉包と等しい。
+方針：h 圏の三角的本質像で安定閉包を照合し、実全辺条件の部分複体を使う。
+規約：安定閉包は元の本質像に等しく、retract 閉包への拡大を行わない。
+使われ方：Sp-7 の冪等完備化の入力と K-cof への供給。 -/
 lemma stableClosure_completionEssentialImage (hf : IsFullyFaithful f) :
     {y | StableVertexClosure (completionEssentialImage f) y} = completionEssentialImage f := by
   let H := (hoFunctor.map f).toFunctor
@@ -45,7 +51,10 @@ lemma stableClosure_completionEssentialImage (hf : IsFullyFaithful f) :
     exact ⟨x, ⟨e⟩⟩
   · exact StableVertexClosure.of_mem
 
-/-- 全単体の全辺が、元の本質像に cofiber を持つことを要求する部分複体。 -/
+/-- 概要：全単体の全辺が、元の本質像に cofiber を持つことを要求する部分複体。
+方針：h 圏の三角的本質像で安定閉包を照合し、実全辺条件の部分複体を使う。
+規約：安定閉包は元の本質像に等しく、retract 閉包への拡大を行わない。
+使われ方：Sp-7 の冪等完備化の入力と K-cof への供給。 -/
 def completionCofiberWide : D.Subcomplex :=
   edgewiseSubcomplex (cofiberLocalizingEdges (completionEssentialImage f))
 
@@ -56,7 +65,10 @@ omit [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
       ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ cofiberLocalizingEdges (completionEssentialImage f) :=
   Iff.rfl
 
-/-- 同じ元の本質像に対する wide 部分複体は quasicategory。 -/
+/-- 概要：同じ元の本質像に対する wide 部分複体は quasicategory。
+方針：h 圏の三角的本質像で安定閉包を照合し、実全辺条件の部分複体を使う。
+規約：安定閉包は元の本質像に等しく、retract 閉包への拡大を行わない。
+使われ方：Sp-7 の冪等完備化の入力と K-cof への供給。 -/
 lemma completionCofiberWide_quasicategory (h : F2.Idempotent.IsIdempotentCompletion f) :
     Quasicategory (completionCofiberWide f : SSet.{u}) := by
   have he : completionCofiberWide f = stableCofiberWide (completionEssentialImage f) := by

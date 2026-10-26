@@ -24,7 +24,10 @@ variable {C D K : SSet.{u}} [Quasicategory C] [Quasicategory D]
   (h : F2.Idempotent.IsIdempotentCompletion f)
 include h
 
-/-- 水平・垂直の実分母から、同じ全 prism の全ての斜辺も元の分母になる。 -/
+/-- 概要：水平・垂直の実分母から、同じ全 prism の全ての斜辺も元の分母になる。
+方針：二辺の外積の実合成二単体を写し、cofiber 分母の合成閉性を適用する。
+規約：頂点成分だけでは結論せず、水平辺と垂直辺をともに検査する。
+使われ方：Sp-7 の全図式収縮を元の wide 部分複体へ持ち上げる。 -/
 lemma completionPrism_edges (H : K ⊗ (Δ[1] : SSet.{u}) ⟶ D)
     (horizontal : ∀ (e : K _⦋1⦌) (t : (Δ[1] : SSet.{u}) _⦋0⦌),
       H.app _ (e, (Δ[1] : SSet.{u}).σ 0 t) ∈

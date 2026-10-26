@@ -2332,5 +2332,9 @@ public import SerrePositivity.KST.LocalizingInvariants.CompletionZeroComponent
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamilyNullHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.CompletionComponentSection
 public import SerrePositivity.KST.LocalizingInvariants.CompletionPrismEdges
+public import SerrePositivity.KST.LocalizingInvariants.CompletionComponentContraction
+public import SerrePositivity.KST.LocalizingInvariants.CompletionContractionPrism
+public import SerrePositivity.KST.LocalizingInvariants.CompletionWideContraction
+public import SerrePositivity.KST.LocalizingInvariants.IdempotentCompletionCofiberGroupoid
 
 /-! K-5 の抽象安定対象・Verdier 列・局所化不変量の集約。 -/

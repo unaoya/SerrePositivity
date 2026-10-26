@@ -32,7 +32,10 @@ local instance (n : ℤ) : (shiftFunctor D.HomotopyCategory n).Additive :=
 local instance : Pretriangulated D.HomotopyCategory :=
   inferInstanceAs (Pretriangulated (hoFunctor.obj D))
 
-/-- 各対象へ入る元の分母を、同じ h 圏の零射で選べる。 -/
+/-- 概要：各対象へ入る元の分母を、同じ h 圏の零射で選べる。
+方針：指定 retract の包含の fiber 三角形を取り、retract 式でその第一射を零にする。
+規約：元の本質像を保ち、辺の h 圏の零性を全図式収縮とは同一視しない。
+使われ方：Sp-7 の wide 部分圏の成分収縮と、元の分母による同時均等化。 -/
 lemma exists_completionNullDenominator (x : D _⦋0⦌) :
     ∃ (z : D _⦋0⦌) (t : Truncated.Edge (X := (truncation 2).obj D) z x),
       t.edge ∈ cofiberLocalizingEdges (completionEssentialImage f) ∧
@@ -55,8 +58,11 @@ lemma exists_completionNullDenominator (x : D _⦋0⦌) :
   rw [stableClosure_completionEssentialImage f h.2.1] at he
   exact he
 
-/-- 同じ源からの全ての射は、一つの実分母の前合成で同時に零になる。
-添字集合の有限性は不要であり、分母は各射に依存しない。 -/
+/-- 概要：同じ源からの全ての射は、一つの実分母の前合成で同時に零になる。
+添字集合の有限性は不要であり、分母は各射に依存しない。
+方針：指定 retract の包含の fiber 三角形を取り、retract 式でその第一射を零にする。
+規約：元の本質像を保ち、辺の h 圏の零性を全図式収縮とは同一視しない。
+使われ方：Sp-7 の wide 部分圏の成分収縮と、元の分母による同時均等化。 -/
 lemma exists_completionDenominator_annihilating (x : D _⦋0⦌) :
     ∃ (z : D _⦋0⦌) (t : Truncated.Edge (X := (truncation 2).obj D) z x),
       t.edge ∈ cofiberLocalizingEdges (completionEssentialImage f) ∧
