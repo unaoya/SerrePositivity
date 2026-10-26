@@ -15,7 +15,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
-open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
@@ -55,24 +55,40 @@ lemma simplexDenominatorImageIso_hom {B C : StableCategory.{u}} (q : ExactMap B 
     (simplexDenominatorImageIso q t ht).hom = Truncated.HomotopyCategory.homMk
       (t.map ((truncation 2).map ((ihom (Δ[n] : SSet.{u})).map q.hom))) := rfl
 
-/-- 元の全図式への分母と、指定した次の全辺を保つ実余錐を同時に構成する。 -/
-lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
+/-- 比較の指定成分は、同じ元の分母成分の商像として厳密に回収される。 -/
+lemma simplexDenominatorImageIso_evaluation_hom {B C : StableCategory.{u}} (q : ExactMap B C)
+    {n : ℕ} {D E : (Δ[n] : SSet.{u}) ⟶ B.obj}
+    (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
+      (functorVertex D) (functorVertex E))
+    (ht : t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌))
+    (k : (Δ[n] : SSet.{u}) _⦋0⦌) {x y : B.obj _⦋0⦌}
+    (s : Truncated.Edge (X := (truncation 2).obj B.obj) x y)
+    (heval : (evaluateFunctorAt (Y := B.obj) k).app (Opposite.op ⦋1⦌) t.edge = s.edge) :
+    Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := C.obj) k)).toFunctor.map
+      (simplexDenominatorImageIso q t ht).hom) =
+        Arrow.mk (Truncated.HomotopyCategory.homMk (s.map ((truncation 2).map q.hom))) := by
+  have hn : (ihom (Δ[n] : SSet.{u})).map q.hom ≫ evaluateFunctorAt (Y := C.obj) k =
+      evaluateFunctorAt (Y := B.obj) k ≫ q.hom := rfl
+  have hc := ConcreteCategory.congr_hom (C := Type u)
+    (NatTrans.congr_app hn (Opposite.op ⦋1⦌)) t.edge
+  have he := hc.trans (congrArg (q.hom.app (Opposite.op ⦋1⦌)) heval)
+  exact Truncated.HomotopyCategory.congr_arrowMk_homMk _ _ he
+
+/-- 元の全図式を精密化し、終端で元の指定分母の一次単体そのものを回収する。 -/
+lemma exists_verdierSimplexTerminalRefinementMap {A B C : StableCategory.{u}}
     {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
-    {y z : B.obj _⦋0⦌}
+    {y : B.obj _⦋0⦌}
     (s : Truncated.Edge (X := (truncation 2).obj B.obj) y
       (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
-    (g : Truncated.Edge (X := (truncation 2).obj B.obj) y z)
     (hs : s.edge ∈ weakEquivalences i) :
     ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
       (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-        (functorVertex D') (functorVertex D)) (c : JoinCocone D'),
+        (functorVertex D') (functorVertex D)),
       t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
       D'.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) = y ∧
-      c.vertex = z ∧
-      (joinStdSimplexIso 0 0).inv ≫
-        joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
-          SSet.yonedaEquiv.symm g.edge := by
+      (evaluateFunctorAt (Y := B.obj) (stdSimplex.obj₀Equiv.symm (Fin.last n))).app
+        (Opposite.op ⦋1⦌) t.edge = s.edge := by
   let sm := SSet.yonedaEquiv.symm s.edge
   have hsm : sm.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) := by
@@ -107,6 +123,37 @@ lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
       rw [← hp, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
         Equiv.apply_symm_apply] at hsrc
       exact hsrc))
+  have ht : squareVertex Q 0 0 = functorVertex D' := hD'.symm
+  let t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
+      (functorVertex D') (functorVertex D) := edgeWithEndpoints (squareLeftArrow Q) ht horig
+  refine ⟨D', t, ?_, hv, ?_⟩
+  · simpa only [t, edgeWithEndpoints_edge] using hW
+  · rw [show t.edge = (squareLeftArrow Q).edge from edgeWithEndpoints_edge _ _ _,
+      squareLeftArrow_edge, ← SSet.yonedaEquiv_comp, Category.assoc, hlast]
+    change SSet.yonedaEquiv (squareLeftEdge ≫ squareColumnDiagram sm) = s.edge
+    simp only [squareColumnDiagram, ← Category.assoc, squareLeftEdge, lift_snd,
+      Category.id_comp]
+    exact Equiv.apply_symm_apply _ _
+
+/-- 元の全図式への分母と、指定した次の全辺を保つ実余錐を同時に構成する。 -/
+lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
+    {i : ExactMap A B} {q : ExactMap B C} (h : IsVerdierSequence i q)
+    {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    {y z : B.obj _⦋0⦌}
+    (s : Truncated.Edge (X := (truncation 2).obj B.obj) y
+      (D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n))))
+    (g : Truncated.Edge (X := (truncation 2).obj B.obj) y z)
+    (hs : s.edge ∈ weakEquivalences i) :
+    ∃ (D' : (Δ[n] : SSet.{u}) ⟶ B.obj)
+      (t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
+        (functorVertex D') (functorVertex D)) (c : JoinCocone D'),
+      t.edge ∈ (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) ∧
+      D'.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) = y ∧
+      c.vertex = z ∧
+      (joinStdSimplexIso 0 0).inv ≫
+        joinMap (simplexLastPoint n) (𝟙 (Δ[0] : SSet.{u})) ≫ c.val =
+          SSet.yonedaEquiv.symm g.edge := by
+  obtain ⟨D', t, ht, hv, _⟩ := exists_verdierSimplexTerminalRefinementMap h D s hs
   have hpoint : SSet.yonedaEquiv (simplexLastPoint n ≫ D') = y := by
     rw [SSet.yonedaEquiv_comp, simplexLastPoint, Equiv.apply_symm_apply]
     exact hv
@@ -114,11 +161,7 @@ lemma exists_verdierSimplexRefinementCocone {A B C : StableCategory.{u}}
       (SSet.yonedaEquiv (simplexLastPoint n ≫ D')) z :=
     edgeWithEndpoints g hpoint.symm rfl
   obtain ⟨c, hc, hedge⟩ := exists_simplexCocone_of_last_edge D' g'
-  have ht : squareVertex Q 0 0 = functorVertex D' := hD'.symm
-  let t : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-      (functorVertex D') (functorVertex D) := edgeWithEndpoints (squareLeftArrow Q) ht horig
-  refine ⟨D', t, c, ?_, hv, hc, ?_⟩
-  · simpa only [t, edgeWithEndpoints_edge] using hW
+  refine ⟨D', t, c, ht, hv, hc, ?_⟩
   · simpa only [g', edgeWithEndpoints_edge] using hedge
 
 end SerrePositivity.KST.LocalizingInvariants
