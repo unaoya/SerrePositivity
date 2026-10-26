@@ -124,3 +124,12 @@
 - `dgKappaNativePComparisonFamily`・`dgKappaNativePArrowFamily`：実構成した Morita 全族を既存21:25の相対延長へ代入。Morita 全族を追加入力に残さず、元の全 P/Yoneda 比較 path を at で厳密回収、boundary で全入力の両端作用を厳密固定。`iso` は全入力の指定同型。
 - 初期 S 内全族、懸垂の map・edgeIso・square_at、核角の ν 像との全単体一致、元の導来模型での P.inclusion 全族は未供給。B2 や模型変更は採用しない。これらの新族だけで D-8 e 完成と数えない。
 - 検証：対象 build 11764 jobs・Derived 集約14903 jobs成功。新規二葉の専用監査27宣言、許容三公理のみ、終端0。追加後の全体監査25919宣言／2951モジュール成功、許容三公理のみ、終端0（/tmp/d8e-native-family-full-audit.log）。実構成は9131e7b37で公開。
+
+### B′ 新割当：D-1 → D-2 → D-4b（D-S の D-4a と接続）
+- 所有は新しい sphere-only 基底関連葉、CoherentBar/Compact・KappaPerfect とこの計画。既存基底族・旧 cone/P の入口は編集しない。ClosureFunctoriality・SuspensionAction は D-S 所有。
+- D-1 `dgKappaSphereClosureObjects_smallSemifreeRetractCovers`：各層 κ-small な実 semifree 加群の K(D) retract を、新しい sphere-only 閉包の実加群でホモトピー同型まで被覆。可算直和・全閉射の cone と指定 telescope 分裂を使用。対象 build 8897 jobs成功。
+- D-2 `dgKappaConeInput_unconditional' R D κ hκ`、`dgKappaPerfectInput_unconditional' R D κ hκ`：新族の全 covers・perfectCovers・全写像空間比較同値を追加仮定なしで供給。対象 build 10441 jobs成功。末尾は ASCII prime。公開型はチャットでユーザーへ先行報告。
+- 新 `objects` は `dgKappaSphereClosureObjects R D κ` に定義上等しい。基底は `dgKappaSphereClosureBaseFamily` の sphere-free だけ。perfect 小模型の基底を再追加せず、finite cell の retract を telescope で代表化して perfectCovers を再導出。
+- covers は旧 covers の実被覆を、新族による旧族のホモトピー被覆へ合成して移送。新族の定義は旧族に依存せず、旧族の定義・定理は不変。新族の旧族への所属で既存の κ-compact 証明を再利用する。
+- D-4b：D-S の新模型 map・edgeIso を待ち、同じ全 square_at と核角の ν 像への厳密接続を構成する。9131e7b37 の二族は任意の段提供者に適用でき、新段にも追加 Morita/P 入力なしで特殊化可能。全四角形の存在・ν 像との全単体一致は未供給。
+- 検証：新11葉の専用監査51宣言、許容三公理のみ、終端0。Derived 集約14914 jobs成功。全体監査は実行中。新規葉以外の旧基底族は無変更。

@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput
+import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureSemifreeCovers
 import SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily
 import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
 import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel
@@ -7458,6 +7460,19 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePerfectCovers,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput,
+    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput,
+
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureFamily,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureOperations,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePretriangulated,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureImage,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureRetract,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureGradedExtension,
+    `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureSemifreeCovers,
+
     `SerrePositivity.InfinityCategories.Derived.DGKappaNativeMoritaFamily,
     `SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily,
     `SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentActionInput,

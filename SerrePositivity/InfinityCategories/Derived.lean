@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureInput
+public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureSemifreeCovers
 public import SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily
 public import SerrePositivity.InfinityCategories.Derived.DGSuspensionCoherentSquareInput
 public import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel
