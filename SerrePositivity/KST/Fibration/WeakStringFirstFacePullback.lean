@@ -27,16 +27,8 @@ theorem weakStringMultiPostcomp_firstFace_homotopyPullback
     (h : IsVerdierSequence i q) (r n : ℕ) :
     IsHomotopyPullback (CommSq.mk ((weakStringMultiPostcomp i q (r + 1)).naturality
       (SimplexCategory.δ (0 : Fin (n + 2))).op)) := by
-  have hsr : (SimplexCategory.σ (0 : Fin (n + 1))).op ≫
-      (SimplexCategory.δ (0 : Fin (n + 2))).op = 𝟙 _ := by
-    rw [← op_comp]
-    change (SimplexCategory.δ (Fin.castSucc (0 : Fin (n + 1))) ≫
-      SimplexCategory.σ (0 : Fin (n + 1))).op = _
-    rw [SimplexCategory.δ_comp_σ_self, op_id]
-  apply naturality_homotopyPullback_retraction_of_section
-    (weakStringMultiPostcomp i q (r + 1)) (SimplexCategory.σ (0 : Fin (n + 1))).op
-    (SimplexCategory.δ (0 : Fin (n + 2))).op hsr (Classical.arbitrary _)
-  exact weakStringMultiPostcomp_headPreserving_homotopyPullback h r
-    (SimplexCategory.σ (0 : Fin (n + 1))) (by rfl)
+  exact simplicialNaturality_homotopyPullback_of_head (weakStringMultiPostcomp i q (r + 1))
+    (fun θ hθ => weakStringMultiPostcomp_headPreserving_homotopyPullback h r θ hθ)
+    (SimplexCategory.δ (0 : Fin (n + 2)))
 
 end SerrePositivity.KST.Fibration

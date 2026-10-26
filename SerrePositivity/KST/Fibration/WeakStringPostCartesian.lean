@@ -41,8 +41,7 @@ theorem weakStringMultiPostcomp_homotopyPullback
     (h : IsVerdierSequence i q) (r : ℕ) {d e : SimplexCategory} (θ : d ⟶ e) :
     IsHomotopyPullback (CommSq.mk ((weakStringMultiPostcomp i q (r + 1)).naturality
       θ.op)) :=
-  simplicial_naturality_homotopyPullback_of_generators (weakStringMultiPostcomp i q (r + 1))
-    (fun n j => weakStringMultiPostcomp_face_homotopyPullback h r n j)
-    (fun n j => weakStringMultiPostcomp_degeneracy_homotopyPullback h r n j) θ
+  simplicialNaturality_homotopyPullback_of_head (weakStringMultiPostcomp i q (r + 1))
+    (fun θ hθ => weakStringMultiPostcomp_headPreserving_homotopyPullback h r θ hθ) θ
 
 end SerrePositivity.KST.Fibration
