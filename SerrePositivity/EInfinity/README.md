@@ -3135,3 +3135,14 @@ S (6) の終端 `rightFrameHammockCoherentDiagram q r 6` を
 集約12644 jobs・全公理監査28103宣言・独立例13件・本供給49公開宣言の公理検査を通過。
 最終六葉の15宣言は標準三公理のみ、閉包8689本は検証前後で不変、未保存の他レーン依存なし。
 S (7) は供給完了。
+
+
+### E2-S (8)：延長・切断 Hom の上流入口
+
+D-8 c2 向けの新入口は `SerrePositivity.HomologicalAlgebra.ComplexLimits` 以下の
+`ExtendTruncationHom`・`ExtendTruncationHomNaturality`・`TruncationInclusionNaturality`。
+型・本文・宣言名・namespace は既存どおり `SerrePositivity.EInfinity.ComplexLimits` に保持する。
+`truncLEIso_inv_naturality`・`extendTruncationHomEquiv_postcomp` も同じ公開名を使う。
+旧三モジュールは新入口を public import するスタブで、既存の下流 import はそのまま使える。
+新入口の閉包9本は EInfinity 内部を import しない。移設は今回のユーザー指定による運用例外。
+EInfinity 集約・全公理監査・六公開宣言の直接公理検査を通過し、供給完了。

@@ -102,6 +102,10 @@
   5. [x] 実 dg 版への代入・集約・全監査・所有ファイル限定コミット。
   全19葉まで集約12644 jobs・全監査28103宣言・独立例13件・新49宣言の公理検査を通過。最終六葉は新15宣言・独立例五件。標準三公理のみ。閉包8689本の検証前後 SHA 不変、他レーン未保存依存0件。Ind-S (8) の `871293866` を代入済みで、Yoneda 入力・追加のモデルや分解の存在仮定なし。
   F1/MappingSpaces/HomInfinityBifunctor と既存 import 先を新規葉から読み取り専用 import 可との指定を受領（閉包1944本、EInfinityなし）。その HomotopicalAlgebra 約170本は編集しない。F2/Compact/HomCovariantComparison・F2/Presentable/FullyFaithfulHomComparison も読み取り専用 import 可との指定を受領。原本の全比較と co-Yoneda による指定二胞体の全図式輸送を合成する。閉包外の原本を複製しない。Ind-S (8) の正本 H_x と本供給の先行構成の一致を全作用の等式で照合済み。準重複は既定の R 整理対象とする。
+- **E2-S (8) 供給完了**（D-8 c2 向け、ユーザー指定の移設例外）：`ExtendTruncationHom`・`ExtendTruncationHomNaturality`・`TruncationInclusionNaturality` を `HomologicalAlgebra/ComplexLimits/` へ移設し、旧三葉は新入口の public import だけのスタブとする。
+  1. [x] 型・本文・宣言名・namespace 不変の移設（内部 import のみ新パス）。
+  2. [x] 新入口・旧スタブ・既存下流の互換性検証。EInfinity.lean と NormalizedHomTargetNaturality は無変更。新入口の閉包9本に EInfinity import なし。
+  3. [x] 集約12642 jobs・全公理監査28076宣言・六公開宣言の公理検査を通過。標準三公理のみ。閉包8687本の検証前後 SHA 不変、他レーン未保存依存0件。所有ファイル限定コミット・新入口を報告して停止。
 - **主要宣言**（namespace は SerrePositivity.EInfinity、型の正本は Lean）：
   `BarrattEccles.operad`、`BarrattEccles.augmentation`、`BarrattEccles.hopf`、`Operad.CoalgebraInterval`、`TableReduction.operadMap`、`IntervalCuts.coalgebraInterval`。
   `BarrattEccles.modelCategory`、`BarrattEccles.forget_isRightQuillen`、`BarrattEccles.isFibrant`、`BarrattEccles.mappingSpace`、`BarrattEccles.mappingSpacePiZeroEquiv`。
@@ -148,7 +152,7 @@
 - **最終供給入口**：`FrameHom.rightFrameTerminalHomIso`・`rightFrameTerminalHomIso_precomp`、`DGAlgebra.frameTerminalHomIso`・`frameCoherentHomIso`。正本 `homInfinityCovariant` を終域とする全図式同型で、Yoneda 存在入力なし。`rightFrameTerminalHomComparison`・`_triangle`・`_originalArrow` は元の K・二胞体と同じ元の辺の共役を公開。
   `SimplicialLocalization.kanHammockYonedaIdentity_zero`・`kanHammockYonedaCosliceIdentity_zero`・`kanHammockYonedaFiberActionIso` は同じ原本 Yoneda 大域射の恒等点・恒等錐・全 fiber 作用の照合。元の任意射の零単体と AsSmall 実成分の回収も同じ比較を使用。
 - **未コミット**：なし。既存上流経由の KST.Spectra 推移的 import は承認済み、分割は第 I 段終了時に R が扱う。
-- **次の一手**：S (7) は供給完了により停止。次の供給はコーディネータの新規依頼から再開する。G1′-1〜5 は完了、BS-7 は第 II 段。
+- **次の一手**：S (8) は供給完了により停止。次の供給はコーディネータの新規依頼から再開する。G1′-1〜5 は完了、BS-7 は第 II 段。
   g1-5 は完了。実単位射・両端三角形・任意単体集合からの全パラメータ前合成の独立例を監査スクリプトの e2Fixtures219 に保持する。集約と全公理監査を通過し、検証前後の閉包ソース digest 一致と他レーン未保存依存0件を確認済み。
   `unitComparisonTransport_weak` は、元の CAlg_R 全族と複体基準族を指定した三つの同型で前後合成して、同じ要素 nerve K 上の全 h Fun 等式を輸送する。`FreeProbeUnitStandardFamily` はこの一般入口に元の全族三角形と `freeProbeUnitStandard_triangle` を代入し、実 `derivedFreeProbeUnitIntervalMap` 自身を結論に残す。点ごとの Hom 同値への置換はしていない。
   `FreeProbeUnderlyingReplacementComponent` は閉包内の全列自然性から元の置換 augmentation の忘却正方形を回収し、標準単位成分と局所化源単位の等式へ接続する。同型の等式を先に固定し、同じ射へ写すことで大きな関手の不要な定義展開を避ける。資源上限を上げない。
